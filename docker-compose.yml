@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    container_name: winktrade-app
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/data # SQLite-база живёт вне контейнера
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: winktrade-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data # сертификаты Let's Encrypt
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

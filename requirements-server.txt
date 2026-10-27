@@ -1,0 +1,17 @@
+# Серверная часть: Telegram-бот + FastAPI + БД (без Winky — он работает на маке)
+aiogram>=3.13,<4.0
+
+fastapi>=0.115
+uvicorn[standard]>=0.30
+
+SQLAlchemy>=2.0.35
+aiosqlite>=0.20
+greenlet>=3.0
+
+pydantic>=2.8
+pydantic-settings>=2.4
+
+tradingview-ta>=3.3
+requests>=2.31
+
+python-multipart>=0.0.9

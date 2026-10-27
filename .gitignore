@@ -1,0 +1,97 @@
+# ==========================================================
+# Wink Trade — .gitignore
+# Безопасность: никаких секретов, БД, кэшей и тяжелых ассетов
+# ==========================================================
+
+# Секреты и локальное окружение (КРИТИЧНО)
+.env
+*.env
+.env.*
+!.env.example
+config_local.*
+
+# Виртуальные окружения Python
+.venv/
+venv/
+ENV/
+env/
+.Python
+
+# Кэш Python и сборки
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Базы данных SQLite и дампы
+*.db
+*.db-journal
+*.sqlite*
+data/
+*.sqlite3
+
+# Аудио и медиа-кэш Winky / TTS
+*.mp3
+*.wav
+*.ogg
+*.aac
+*.m4a
+winky/web/media/*.mp3
+winky/web/media/*.wav
+winky/web/media/cache/
+
+# Архивы и снапшоты
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+shibahu.zip
+code_snapshot.zip
+
+# 3D модели и исходники
+*.fbx
+*.vrm
+*.obj
+*.gltf
+*.glb
+*.blend*
+winky/web/model/*
+!winky/web/model/.gitkeep
+shibahu/
+
+# Тяжелые текстуры 3D-моделей
+textures/
+textures/*.png
+winky/web/model/Texture/
+winky/web/model/Texture/*.png
+shibahu/textures/
+shibahu/textures/*.png
+
+# Сборки macOS и иконки
+Winky.app/
+*.icns
+
+# Системные файлы и IDE
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

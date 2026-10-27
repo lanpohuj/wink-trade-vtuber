@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Wink Trade — Signals</title>
+  <meta name="theme-color" content="#0b1512">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="brand" id="brand" aria-label="Wink Trade">
+      <svg class="brand-logo" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="30" height="30" rx="9" fill="#12241d" stroke="rgba(0,230,118,0.25)"/>
+        <path d="M6.5 20.5c2.4-3.2 4.6-3.2 7 0s4.6 3.2 7 0" stroke="url(#winkGradient)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M16.5 13.5 21.5 8.5m0 0h-4.2m4.2 0v4.2" stroke="#00e676" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="winkGradient" x1="6" y1="20" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2ebd85"/>
+            <stop offset="1" stop-color="#00e676"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="brand-name">WINK<span>TRADE</span></div>
+    </div>
+    <div class="lang-switch" id="langSwitch" data-active="en">
+      <span class="lang-thumb" aria-hidden="true"></span>
+      <button type="button" class="lang-btn active" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="card">
+      <div class="card-title" id="settingsTitle">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span data-i18n="settingsTitle">Signal settings</span>
+      </div>
+
+      <div class="field">
+        <label class="field-label" data-i18n="pairLabel">Trading pair</label>
+        <div class="select" id="pairSelect"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" data-i18n="durationLabel">Trade duration</label>
+        <div class="select" id="durationSelect"></div>
+      </div>
+
+      <button type="button" class="cta" id="signalBtn">
+        <span class="cta-text" id="ctaText">Get signal (5s) ↗</span>
+        <span class="spinner" id="ctaSpinner" hidden aria-hidden="true"></span>
+      </button>
+      <div class="risk-hint" data-i18n="riskHint">Risk tip: stake ≤ 3% of your deposit</div>
+    </section>
+
+    <section class="card result-card" id="resultCard">
+      <div class="analysis" id="analysisBlock" hidden>
+        <canvas class="analysis-chart" id="analysisChart"></canvas>
+        <div class="analysis-stage" data-stage="0">
+          <span class="stage-dot" aria-hidden="true"></span>
+          <span class="stage-label" data-i18n="stage1">Loading market data</span>
+        </div>
+        <div class="analysis-stage" data-stage="1">
+          <span class="stage-dot" aria-hidden="true"></span>
+          <span class="stage-label" data-i18n="stage2">RSI analysis</span>
+        </div>
+        <div class="analysis-stage" data-stage="2">
+          <span class="stage-dot" aria-hidden="true"></span>
+          <span class="stage-label" data-i18n="stage3">EMA verification</span>
+        </div>
+        <div class="analysis-stage" data-stage="3">
+          <span class="stage-dot" aria-hidden="true"></span>
+          <span class="stage-label" data-i18n="stage4">Signal confirmation</span>
+        </div>
+        <div class="analysis-bar"><div class="analysis-fill" id="analysisFill"></div></div>
+      </div>
+
+      <div class="result-content" id="resultContent">
+        <div class="result-chip idle" id="resultChip">
+          <span class="chip-dot" aria-hidden="true"></span>
+          <span id="chipText">STANDBY</span>
+        </div>
+        <div class="result-direction idle" id="resultDirection">—</div>
+        <div class="result-message" id="resultMessage" hidden></div>
+        <div class="divider"></div>
+        <div class="result-row">
+          <div class="result-cell">
+            <div class="cell-label" data-i18n="pairLabel">Trading pair</div>
+            <div class="cell-value" id="resultPair">—</div>
+          </div>
+          <div class="result-cell right">
+            <div class="cell-label" data-i18n="durationLabel">Trade duration</div>
+            <div class="cell-value" id="resultDuration">—</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="accuracy">
+          <div class="accuracy-head">
+            <span class="accuracy-label" data-i18n="accuracy">Accuracy</span>
+            <span class="accuracy-value" id="accuracyValue">0%</span>
+          </div>
+          <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+        </div>
+        <div class="expiry" id="expiryBlock" hidden>
+          <div class="expiry-head">
+            <span class="expiry-label" data-i18n="expiry">Expiration</span>
+            <span id="expiryTime">05s</span>
+          </div>
+          <div class="expiry-bar"><div class="expiry-fill" id="expiryFill"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card progress-card">
+      <div class="card-title">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span data-i18n="progressTitle">My progress</span>
+      </div>
+      <div class="progress-row">
+        <div class="progress-cell">
+          <div class="progress-value" id="progPoints">0</div>
+          <div class="progress-label" data-i18n="pointsWeek">points this week</div>
+        </div>
+        <div class="progress-cell">
+          <div class="progress-value" id="progRank">—</div>
+          <div class="progress-label" data-i18n="rankLabel">rank</div>
+        </div>
+        <div class="progress-cell">
+          <div class="progress-value" id="progStreak">0</div>
+          <div class="progress-label" data-i18n="streakLabel">day streak</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="personal-line" id="progPersonal"></div>
+      <div class="lb-title" data-i18n="leaderboardTitle">Weekly top</div>
+      <div class="lb-list" id="lbList"></div>
+      <div class="lb-rules" id="lbRules"></div>
+    </section>
+
+    <section class="card feed-card">
+      <div class="feed-head">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span data-i18n="feedTitle">Live signals</span>
+        <span class="feed-today" id="feedToday" hidden></span>
+      </div>
+      <div class="feed-list" id="feedList"></div>
+      <div class="feed-total" id="feedTotal" hidden></div>
+    </section>
+  </main>
+
+  <footer class="footer">WINK TRADE</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

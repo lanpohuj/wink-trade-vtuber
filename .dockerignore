@@ -1,0 +1,16 @@
+# Не входит в docker-контекст
+.venv
+.git
+.env
+*.db
+*.sqlite3
+__pycache__
+**/__pycache__
+.DS_Store
+winky/
+artifacts/
+_test*.py
+_dev*.py
+ROADMAP.md
+Spec.md
+README.md

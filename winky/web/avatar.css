@@ -1,0 +1,30 @@
+/* Winky — macOS Overlay 3D-аватар: 100% прозрачный фон, без UI и рамок */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#scene {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent !important;
+  cursor: grab;
+  -webkit-app-region: drag;
+}
+
+#scene:active {
+  cursor: grabbing;
+}

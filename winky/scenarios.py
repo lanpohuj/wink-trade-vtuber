@@ -1,0 +1,247 @@
+"""Сценарии Winky: что, когда и на каком языке говорить.
+
+Реплики лежат в ``winky/scenarios.yaml`` — файл можно править на ходу,
+он автоматически перезагружается при изменении (проверка каждые 2 секунды).
+Все реплики проходят цензуру при загрузке: заблокированные не попадают в пульт.
+"""
+
+from __future__ import annotations
+
+import logging
+import random
+import threading
+from dataclasses import dataclass
+from pathlib import Path
+from time import time
+
+import yaml
+
+from winky.censor import check_phrase
+
+logger = logging.getLogger(__name__)
+
+SCENARIOS_FILE = Path(__file__).parent / "scenarios.yaml"
+RELOAD_CHECK_INTERVAL = 2.0
+
+
+@dataclass(frozen=True)
+class QuickReply:
+    """Кнопка быстрой реплики на пульте."""
+
+    id: str
+    label: str
+    lang: str  # "ru" | "en"
+    emotion: str  # idle | happy | excited | thinking | wink
+    text: str
+
+
+@dataclass(frozen=True)
+class CtaConfig:
+    """Ротация призывов: Winky сама напоминает про бота каждые N минут."""
+
+    interval_minutes: int
+    messages_ru: tuple[str, ...]
+    messages_en: tuple[str, ...]
+
+    def random_message(self, lang: str) -> str:
+        pool = self.messages_ru if lang == "ru" else self.messages_en
+        return random.choice(pool) if pool else ""
+
+
+@dataclass(frozen=True)
+class KeywordReply:
+    """Ответ по ключевым словам из чата — приоритетнее LLM."""
+
+    id: str
+    keywords: tuple[str, ...]
+    emotion: str
+    text_ru: str
+    text_en: str
+
+    def text(self, lang: str) -> str:
+        return self.text_ru if lang == "ru" else self.text_en
+
+
+@dataclass(frozen=True)
+class ChatPhrases:
+    """Приветствия, благодарности за подарки и фолбэки."""
+
+    greetings_ru: tuple[str, ...] = ()
+    greetings_en: tuple[str, ...] = ()
+    gift_thanks_ru: tuple[str, ...] = ()
+    gift_thanks_en: tuple[str, ...] = ()
+    fallbacks_ru: tuple[str, ...] = ()
+    fallbacks_en: tuple[str, ...] = ()
+
+    def greeting(self, lang: str) -> str:
+        pool = self.greetings_ru if lang == "ru" else self.greetings_en
+        return random.choice(pool) if pool else ""
+
+    def gift_thank(self, lang: str) -> str:
+        pool = self.gift_thanks_ru if lang == "ru" else self.gift_thanks_en
+        return random.choice(pool) if pool else ""
+
+    def fallback(self, lang: str) -> str:
+        pool = self.fallbacks_ru if lang == "ru" else self.fallbacks_en
+        return random.choice(pool) if pool else ""
+
+
+def _load_raw(path: Path) -> dict:
+    with path.open(encoding="utf-8") as file:
+        return yaml.safe_load(file) or {}
+
+
+def _parse_quick_replies(raw: list) -> list[QuickReply]:
+    replies = []
+    for item in raw or []:
+        reply = QuickReply(
+            id=str(item.get("id", "")),
+            label=str(item.get("label", item.get("id", ""))),
+            lang=str(item.get("lang", "ru")),
+            emotion=str(item.get("emotion", "happy")),
+            text=str(item.get("text", "")),
+        )
+        if not reply.id or not reply.text:
+            continue
+        ok, reason = check_phrase(reply.text)
+        if not ok:
+            logger.warning("Реплика %s заблокирована цензурой (%s)", reply.id, reason)
+            continue
+        replies.append(reply)
+    return replies
+
+
+def _parse_cta(raw: dict) -> CtaConfig:
+    return CtaConfig(
+        interval_minutes=int(raw.get("interval_minutes", 4)),
+        messages_ru=tuple(raw.get("messages_ru") or []),
+        messages_en=tuple(raw.get("messages_en") or []),
+    )
+
+
+def _parse_keyword_replies(raw: list) -> list[KeywordReply]:
+    replies = []
+    for item in raw or []:
+        reply = KeywordReply(
+            id=str(item.get("id", "")),
+            keywords=tuple(str(k).lower() for k in (item.get("keywords") or [])),
+            emotion=str(item.get("emotion", "happy")),
+            text_ru=str(item.get("text_ru", "")),
+            text_en=str(item.get("text_en", "")),
+        )
+        if not reply.id or not reply.keywords or not (reply.text_ru or reply.text_en):
+            continue
+        for text in (reply.text_ru, reply.text_en):
+            ok, reason = check_phrase(text)
+            if not ok:
+                logger.warning("Ключевая реплика %s заблокирована цензурой (%s)", reply.id, reason)
+                break
+        else:
+            replies.append(reply)
+    return replies
+
+
+def _parse_chat_phrases(raw: dict) -> ChatPhrases:
+    def censored(items) -> tuple[str, ...]:
+        kept = []
+        for text in items or []:
+            ok, reason = check_phrase(str(text))
+            if ok:
+                kept.append(str(text))
+            else:
+                logger.warning("Фраза чата заблокирована цензурой (%s): %s", reason, text[:40])
+        return tuple(kept)
+
+    return ChatPhrases(
+        greetings_ru=censored((raw.get("greetings") or {}).get("ru")),
+        greetings_en=censored((raw.get("greetings") or {}).get("en")),
+        gift_thanks_ru=censored((raw.get("gift_thanks") or {}).get("ru")),
+        gift_thanks_en=censored((raw.get("gift_thanks") or {}).get("en")),
+        fallbacks_ru=censored((raw.get("fallbacks") or {}).get("ru")),
+        fallbacks_en=censored((raw.get("fallbacks") or {}).get("en")),
+    )
+
+
+class ScenarioBook:
+    """Загруженные сценарии с автоперезагрузкой при изменении файла."""
+
+    def __init__(self, path: Path = SCENARIOS_FILE) -> None:
+        self._path = path
+        self._lock = threading.Lock()
+        self._quick_replies: list[QuickReply] = []
+        self._keyword_replies: list[KeywordReply] = []
+        self._chat_phrases = ChatPhrases()
+        self._cta = CtaConfig(interval_minutes=4, messages_ru=(), messages_en=())
+        self._loaded_at = 0.0
+        self._file_mtime = 0.0
+        self.reload(force=True)
+
+    def reload(self, force: bool = False) -> bool:
+        """Перечитывает YAML, если файл изменился. Возвращает True при перезагрузке."""
+        if not self._path.exists():
+            logger.warning("Файл сценариев не найден: %s", self._path)
+            return False
+        mtime = self._path.stat().st_mtime
+        if not force and mtime == self._file_mtime:
+            return False
+
+        try:
+            raw = _load_raw(self._path)
+        except yaml.YAMLError:
+            logger.exception("Синтаксическая ошибка в %s — держу прошлую версию", self._path)
+            return False
+
+        with self._lock:
+            self._quick_replies = _parse_quick_replies(raw.get("quick_replies"))
+            self._keyword_replies = _parse_keyword_replies(raw.get("keyword_replies"))
+            self._chat_phrases = _parse_chat_phrases({
+                "greetings": raw.get("greetings"),
+                "gift_thanks": raw.get("gift_thanks"),
+                "fallbacks": raw.get("fallbacks"),
+            })
+            self._cta = _parse_cta(raw.get("cta") or {})
+            self._file_mtime = mtime
+            self._loaded_at = time()
+        logger.info(
+            "Сценарии загружены: %d реплик, %d ключевых, CTA каждые %d мин",
+            len(self._quick_replies), len(self._keyword_replies), self._cta.interval_minutes,
+        )
+        return True
+
+    def maybe_reload(self) -> None:
+        """Вызывается из фонового цикла: перезагружает файл при изменении."""
+        try:
+            self.reload(force=False)
+        except OSError:
+            logger.exception("Не удалось перечитать сценарии")
+
+    @property
+    def quick_replies(self) -> list[QuickReply]:
+        with self._lock:
+            return list(self._quick_replies)
+
+    def quick_reply(self, reply_id: str) -> QuickReply | None:
+        with self._lock:
+            for reply in self._quick_replies:
+                if reply.id == reply_id:
+                    return reply
+        return None
+
+    def match_keyword(self, text: str) -> KeywordReply | None:
+        """Ищет первый ключевой ответ, чьё слово встречается в сообщении."""
+        haystack = text.lower()
+        with self._lock:
+            for reply in self._keyword_replies:
+                if any(keyword in haystack for keyword in reply.keywords):
+                    return reply
+        return None
+
+    @property
+    def chat_phrases(self) -> ChatPhrases:
+        with self._lock:
+            return self._chat_phrases
+
+    @property
+    def cta(self) -> CtaConfig:
+        with self._lock:
+            return self._cta

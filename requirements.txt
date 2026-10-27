@@ -1,0 +1,34 @@
+# --- Telegram-бот (воронка) ---
+aiogram>=3.13,<4.0
+
+# --- Backend / Postback API ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+
+# --- База данных: SQLAlchemy 2.0 + асинхронный драйвер ---
+SQLAlchemy>=2.0.35
+aiosqlite>=0.20
+greenlet>=3.0
+
+# --- Конфигурация (.env) ---
+pydantic>=2.8
+pydantic-settings>=2.4
+
+# --- Теханализ для классических пар (сигналы; при недоступности — фоллбэк) ---
+tradingview-ta>=3.3
+# HTTP-клиент для DeepSeek (мозг Winky)
+requests>=2.31
+
+# --- Разбор form-тел постбеков (urlencoded/multipart) ---
+python-multipart>=0.0.9
+
+# --- VTuber-агент Winky (этап 2) ---
+pywebview>=5
+PyYAML>=6
+pynput>=1.7
+
+# --- TikTok-чат Winky (этап 3) ---
+TikTokLive>=7
+
+# --- Озвучка Winky (мультиязычный женский TTS) ---
+edge-tts>=7.0

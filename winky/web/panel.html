@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Winky — пульт</title>
+  <link rel="stylesheet" href="panel.css?v=20261026_fixed">
+</head>
+<body>
+<div class="panel">
+
+  <header class="panel-header">
+    <div class="brand">WINKY <span>PANEL</span></div>
+    <div class="state">
+      <span class="state-dot" id="stateDot"></span>
+      <span id="stateText">idle</span>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="block-title">Сказать вслух</div>
+    <textarea id="speakText" rows="3" placeholder="Текст… язык определится сам (кириллица → RU, иначе EN)"></textarea>
+    <div class="row">
+      <select id="speakLang">
+        <option value="auto">Авто-язык</option>
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+      <select id="speakEmotion">
+        <option value="happy">😊 happy</option>
+        <option value="blush">🥰 blush</option>
+        <option value="excited">🤩 excited</option>
+        <option value="wink">😉 wink</option>
+        <option value="surprised">😲 surprised</option>
+        <option value="thinking">🤔 thinking</option>
+        <option value="idle">😐 neutral</option>
+      </select>
+      <button class="primary" id="speakBtn">▶ Озвучить</button>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">Быстрые реплики <span class="hint" id="reloadHint" hidden>↻ перезагружено</span></div>
+    <div class="quick-grid" id="quickGrid"></div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">
+      TikTok чат
+      <span class="tt-status" id="ttStatus">выключен</span>
+      <span class="llm-badge" id="llmBadge" hidden>DeepSeek</span>
+    </div>
+    <div class="row">
+      <input id="ttUsername" placeholder="юзернейм стримера (без @)" spellcheck="false">
+      <button id="ttConnect">Подключить</button>
+    </div>
+    <div class="row" style="gap: 6px;">
+      <input id="simQuestion" placeholder="Симуляция вопроса зрителя" spellcheck="false" style="flex: 2;">
+      <button id="simAsk" style="flex: 1;">Спросить</button>
+      <button id="simJoin" style="flex: 1;" title="Тест входа зрителя">👋 Тест входа</button>
+    </div>
+    <div class="chat-feed" id="chatFeed">
+      <div class="feed-empty-line">Лента чата появится здесь</div>
+    </div>
+    <div class="chat-stats" id="chatStats"></div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">Эмоция аватара</div>
+    <div class="emotion-row">
+      <button data-emotion="idle" title="Покой">😐</button>
+      <button data-emotion="happy" title="Радость">😊</button>
+      <button data-emotion="blush" title="Смущение">🥰</button>
+      <button data-emotion="excited" title="Восторг">🤩</button>
+      <button data-emotion="wink" title="Подмигивание">😉</button>
+      <button data-emotion="wave" title="Помахать">👋</button>
+      <button data-emotion="win" title="Победа / Салют">🏆</button>
+      <button data-emotion="surprised" title="Удивление">😲</button>
+      <button data-emotion="thinking" title="Размышление">🤔</button>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">Настройка аватара</div>
+    <div class="row" style="margin-bottom: 8px; gap: 6px;">
+      <button class="small-btn model-btn" id="modelShibahuBtn" data-model="shibahu" style="flex:1;">🐕 Shibahu (Оригинал)</button>
+      <button class="small-btn model-btn" id="modelVrmBtn" data-model="vrm" style="flex:1;">✨ Внешний VRM</button>
+    </div>
+    <div class="hint" style="font-size: 11px; color: #8e8e93; margin-bottom: 8px;">
+      Каталоги бесплатных VRM: <a href="https://hub.vroid.com/" target="_blank" style="color:#38bdf8;">VRoid Hub</a> · <a href="https://booth.pm/en/items?tags%5B%5D=VRM&price%5B%5D=0" target="_blank" style="color:#38bdf8;">Booth (0¥)</a>
+    </div>
+    <label class="setting-row">
+      <span>🔍 Размер</span>
+      <input type="range" id="avatarScaleSlider" min="50" max="150" value="100">
+      <span id="avatarScaleValue">100%</span>
+    </label>
+    <label class="setting-row">
+      <span>↕ Положение Y</span>
+      <input type="range" id="avatarYSlider" min="-50" max="50" value="0">
+      <span id="avatarYValue">0</span>
+    </label>
+    <div class="row">
+      <button class="small-btn" id="avatarResetBtn">Сбросить размер и положение</button>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">Голос Winky (Lumean ElevenLabs)</div>
+    <div class="row" style="margin-bottom: 6px;">
+      <select id="voicePresetSelect" style="flex: 1; padding: 6px; background: #23222a; color: #f3f4f6; border: 1px solid #3f3f46; border-radius: 6px; font-size: 12px;">
+        <option value="hLjwV7lYzk15SWLUmhEH">👑 Marusya G (Slow Romantic, по умолчанию)</option>
+        <option value="cgSgspJ2msm6clMCkdW9">🌸 Jessica (Playful, Bright аниме)</option>
+        <option value="FGY2WhTYpPnrIDTdsKH5">🔥 Laura (Sassy, Upbeat стример)</option>
+        <option value="EXAVITQu4vr4xnSDxMaL">☕ Sarah (Mature, Уверенная)</option>
+        <option value="custom">✏️ Свой Voice ID...</option>
+      </select>
+    </div>
+    <div class="row">
+      <input id="lumeanVoice" placeholder="Voice ID" spellcheck="false">
+      <button id="saveVoiceBtn">Сохранить</button>
+    </div>
+    <div class="row" style="margin-top: 4px;">
+      <input id="lumeanTemplate" placeholder="Template ID (из .env)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">
+    </div>
+    <div id="voiceStatusHint" class="hint" style="margin-top:6px; color:#4ade80;" hidden>Голос сохранён</div>
+  </section>
+
+  <section class="block">
+    <div class="block-title">Управление</div>
+    <div class="row">
+      <button id="pauseBtn">⏸ Пауза</button>
+      <button id="ctaBtn">📢 Повтор CTA</button>
+    </div>
+    <label class="volume-row">
+      <span>🔊 Громкость</span>
+      <input type="range" id="volumeSlider" min="0" max="100" value="100">
+      <span id="volumeValue">100%</span>
+    </label>
+    <label class="check-row">
+      <input type="checkbox" id="ctaToggle" checked>
+      <span>CTA-ротация (каждые <span id="ctaInterval">4</span> мин)</span>
+    </label>
+  </section>
+
+  <footer class="panel-footer">
+    <div id="engineName">движок: —</div>
+    <div id="blockedInfo" class="blocked" hidden></div>
+    <div class="hotkeys">Хоткеи пульта: <b>Space</b> — пауза, <b>R</b> — повтор CTA</div>
+  </footer>
+</div>
+
+<script src="panel.js?v=20261026_fixed"></script>
+</body>
+</html>

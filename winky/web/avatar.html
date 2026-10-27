@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Winky</title>
+  <link rel="stylesheet" href="avatar.css?v=20261026_dual_shibahu_v1">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/vendor/three.module.min.js",
+      "three/addons/": "/vendor/jsm/",
+      "@pixiv/three-vrm": "/vendor/three-vrm/three-vrm.module.min.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <script>
+    window.canvas = document.getElementById("scene");
+  </script>
+  <script type="module" src="/avatar.js?v=20261026_dual_shibahu_v2"></script>
+</body>
+</html>

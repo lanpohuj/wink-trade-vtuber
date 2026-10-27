@@ -1,0 +1,436 @@
+/* Winky — пульт управления (окно вне зоны захвата OBS) */
+
+:root {
+  --bg: #0b1512;
+  --card: #111e1a;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #eef5f1;
+  --dim: rgba(238, 245, 241, 0.55);
+  --green: #2ebd85;
+  --green-bright: #00e676;
+  --red: #ff4d4d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", -apple-system, system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #070d0b 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 100vh;
+}
+
+/* ---------- шапка ---------- */
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.brand span {
+  font-weight: 300;
+  color: var(--dim);
+  margin-left: 4px;
+}
+
+.state {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--dim);
+}
+
+.state-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #5a6b63;
+}
+
+.state-dot.speaking {
+  background: var(--green-bright);
+  box-shadow: 0 0 10px var(--green-bright);
+  animation: pulse 1.1s infinite;
+}
+
+.state-dot.paused {
+  background: #f0b34a;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.45; }
+}
+
+/* ---------- блоки ---------- */
+
+.block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.block-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.hint {
+  color: var(--green-bright);
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 10px;
+  resize: vertical;
+}
+
+select {
+  width: auto;
+  flex: 1;
+}
+
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(46, 189, 133, 0.5);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: rgba(46, 189, 133, 0.14);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button.primary {
+  background: var(--green);
+  border-color: transparent;
+  color: #06120d;
+}
+
+button.primary:hover {
+  background: var(--green-bright);
+}
+
+/* ---------- быстрые реплики ---------- */
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.quick-grid button {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+  text-align: left;
+  font-size: 12.5px;
+  padding: 10px;
+}
+
+.quick-grid .qr-lang {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--green-bright);
+}
+
+.quick-grid .qr-text {
+  color: var(--dim);
+  font-weight: 500;
+  font-size: 11px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- эмоции ---------- */
+
+.emotion-row {
+  display: flex;
+  gap: 7px;
+}
+
+.emotion-row button {
+  flex: 1;
+  font-size: 21px;
+  padding: 8px 0;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.emotion-row button:active,
+.emotion-row button.active {
+  background: rgba(56, 189, 248, 0.28) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+  transform: scale(1.1);
+}
+
+.quick-grid button {
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.quick-grid button:active,
+.quick-grid button.clicked {
+  border-color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.2) !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  transform: scale(0.98);
+}
+
+/* ---------- управление ---------- */
+
+.volume-row,
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.volume-row input[type="range"],
+.setting-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--green);
+}
+
+.small-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.small-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+}
+
+.model-btn.active {
+  background: var(--green);
+  color: #0b110e;
+  font-weight: 700;
+  border-color: var(--green-bright);
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--dim);
+  cursor: pointer;
+}
+
+.check-row input {
+  accent-color: var(--green);
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- TikTok-чат ---------- */
+
+#ttUsername,
+#simQuestion {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 10px;
+}
+
+input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+input:focus {
+  outline: none;
+  border-color: rgba(46, 189, 133, 0.5);
+}
+
+.tt-status {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dim);
+}
+
+.tt-status.connected {
+  color: var(--green-bright);
+}
+
+.tt-status.connecting,
+.tt-status.reconnecting {
+  color: #f0b34a;
+}
+
+.llm-badge {
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #06120d;
+  background: var(--green-bright);
+}
+
+.chat-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 12.5px;
+}
+
+.chat-feed::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-feed::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+.chat-line {
+  display: flex;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  line-height: 1.4;
+}
+
+.chat-line .who {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--dim);
+}
+
+.chat-line.winky .who {
+  color: var(--green-bright);
+}
+
+.chat-line.winky {
+  background: rgba(46, 189, 133, 0.08);
+}
+
+.chat-line.blocked .text {
+  color: var(--red);
+}
+
+.chat-line .text {
+  overflow-wrap: anywhere;
+}
+
+.feed-empty-line {
+  color: var(--text-faint);
+  font-size: 12px;
+  text-align: center;
+  padding: 8px;
+}
+
+.chat-stats {
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+
+/* ---------- футер ---------- */
+
+.panel-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.blocked {
+  color: var(--red);
+}
+
+.hotkeys b {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-weight: 600;
+}
