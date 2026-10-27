@@ -120,7 +120,8 @@ class ChatRouter:
         if not text:
             return
         self._bump("comments")
-        self._feed("user", user, text)
+        feed_user = "Зритель" if user in ("Ручной вопрос", "") else user
+        self._feed("user", feed_user, text)
         lang = detect_lang(text)
 
         # 1. Ключевые сценарии — приоритет
@@ -222,7 +223,14 @@ class ChatRouter:
                 emotion = detected
             text = text[tag_match.end():]
 
-        text = text.replace("{user}", user or "друг").replace("{gift}", gift or "подарок")
+        # Замена плейсхолдеров. Исключаем технические имена типа "Ручной вопрос", "Зритель", "user", "viewer"
+        clean_user = (user or "").strip()
+        if not clean_user or clean_user.lower() in ("ручной вопрос", "зритель", "гость", "user", "viewer", "guest", "друг", "friend"):
+            clean_user = "друг" if lang == "ru" else "friend"
+
+        clean_gift = (gift or "").strip() or ("подарок" if lang == "ru" else "gift")
+
+        text = text.replace("{user}", clean_user).replace("{gift}", clean_gift)
         ok, reason = check_phrase(text)
         if not ok:
             logger.warning("Ответ Winky заблокирован цензурой: %s", reason)

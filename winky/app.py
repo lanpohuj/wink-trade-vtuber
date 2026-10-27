@@ -29,7 +29,7 @@ from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
 from winky.server import start_assets_server
 from winky.tiktok import TikTokConnector
-from winky.tts import EMOTIONS, SpeechController
+from winky.tts import EMOTIONS, SpeechController, compute_rms_chunks
 
 logger = logging.getLogger("winky")
 
@@ -59,6 +59,7 @@ class WinkyAPI:
     # ---------- вызовы из JS ----------
 
     def speak(self, text: str, lang: str | None = None, emotion: str = "happy") -> bool:
+        self._controller.stop_current()
         if emotion == "wave":
             self.trigger_wave()
         return self._controller.speak(text, lang, emotion, source="panel")
@@ -68,6 +69,7 @@ class WinkyAPI:
         if reply is None:
             logger.warning("Неизвестная реплика: %s", reply_id)
             return False
+        self._controller.stop_current()
         if reply_id == "greeting" or reply.emotion == "wave":
             self.trigger_wave()
         return self._controller.speak(reply.text, reply.lang, reply.emotion, source="scenario")
@@ -228,11 +230,13 @@ class WinkyAPI:
     def simulate_comment(self, text: str) -> None:
         """Ручной вопрос из пульта — тот же маршрут, что и живой чат."""
         if self._chat_router and text:
-            self._chat_router.handle_comment("Ручной вопрос", text)
+            self._controller.stop_current()
+            self._chat_router.handle_comment("Зритель", text)
             self.push_status()
 
     def simulate_join(self, user: str = "Дима 🚀") -> None:
         """Тест входа зрителя из пульта."""
+        self._controller.stop_current()
         self.trigger_wave()
         if self._chat_router:
             self._chat_router.handle_join(user or "Дима 🚀", force=True)
@@ -359,13 +363,14 @@ def main() -> None:
 
     # Фоновый прогрев кэша частых реплик (ElevenLabs Multilingual V2) для мгновенного отклика при клике на кнопки
     def _precache_phrases() -> None:
-        logger.info("Фоновый подогрев кэша фраз Winky TTS (ElevenLabs Multilingual V2)...")
+        logger.info("Фоновый подогрев кэша фраз Winky TTS и расчет RMS чанков...")
         for reply in book.quick_replies:
             try:
-                controller.engine.synthesize(reply.text, reply.lang)
+                media = controller.engine.synthesize(reply.text, reply.lang)
+                compute_rms_chunks(media)
             except Exception as e:
                 logger.debug("Предзагрузка фразы %s: %s", reply.id, e)
-        logger.info("Кэш фраз Winky успешно прогрет!")
+        logger.info("Кэш фраз Winky и RMS успешно прогрет!")
 
     threading.Thread(target=_precache_phrases, daemon=True, name="tts_precache").start()
 

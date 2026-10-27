@@ -11,6 +11,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import math
 import struct
@@ -121,6 +122,7 @@ class LumeanTTS:
         self._template_id: str | None = settings.LUMEAN_TEMPLATE_ID or None
         self._voice_id: str = settings.LUMEAN_VOICE_ID or DEFAULT_LUMEAN_VOICE_ID
         self._fallback = EdgeTTS()
+        self._backoff_until: float = 0.0
 
     def set_template_id(self, template_id: str) -> None:
         clean = template_id.strip()
@@ -222,6 +224,13 @@ class LumeanTTS:
             logger.info("edge-tts аудио найдено в локальном кэше (0 мс задержка): %s", edge_cached.name)
             return edge_cached
 
+        # Мгновенная проверка Circuit Breaker и наличия API-ключа
+        now = time.monotonic()
+        if now < self._backoff_until or not settings.LUMEAN_API_KEY:
+            if now < self._backoff_until:
+                logger.info("Lumean Circuit Breaker активен (бэкофф ещё %.1f с) — мгновенный fallback на edge-tts", self._backoff_until - now)
+            return self._fallback.synthesize(text, lang)
+
         out = cached_file
         try:
             template_id = self._ensure_template()
@@ -236,7 +245,7 @@ class LumeanTTS:
                 f"{self.BASE_URL}/orders",
                 headers=self._headers(),
                 json=order_payload,
-                timeout=4,
+                timeout=3,
             )
             create_resp.raise_for_status()
             order_data = create_resp.json().get("data", {})
@@ -244,15 +253,15 @@ class LumeanTTS:
             if not order_id:
                 raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
 
-            # 2. Быстрый опрос статуса выполнения (каждые 0.35 с для минимальной задержки)
+            # 2. Быстрый опрос статуса выполнения (каждые 0.25 с, макс 2.0 с)
             start_poll = time.monotonic()
             file_path: str | None = None
-            while time.monotonic() - start_poll < 4.0:
-                time.sleep(0.35)
+            while time.monotonic() - start_poll < 2.0:
+                time.sleep(0.25)
                 status_resp = requests.get(
                     f"{self.BASE_URL}/orders/{order_id}",
                     headers=self._headers(),
-                    timeout=3,
+                    timeout=2,
                 )
                 if status_resp.status_code != 200:
                     continue
@@ -267,14 +276,14 @@ class LumeanTTS:
                     raise TTSError(f"Заказ Lumean завершился со статусом {status}")
 
             if not file_path:
-                raise TTSError(f"Lumean таймаут >4.0с заказа {order_id}")
+                raise TTSError(f"Lumean таймаут >2.0с заказа {order_id}")
 
             # 3. Получение ссылки на скачивание
             url_resp = requests.post(
                 f"{self.BASE_URL}/storage/url",
                 headers=self._headers(),
                 json={"path": file_path, "download": True},
-                timeout=4,
+                timeout=3,
             )
             url_resp.raise_for_status()
             download_url = url_resp.json().get("data", {}).get("url")
@@ -282,13 +291,14 @@ class LumeanTTS:
                 raise TTSError("Lumean не вернул URL для скачивания файла")
 
             # 4. Скачивание аудиофайла
-            audio_resp = requests.get(download_url, timeout=6)
+            audio_resp = requests.get(download_url, timeout=5)
             audio_resp.raise_for_status()
             out.write_bytes(audio_resp.content)
             return out
 
         except Exception as exc:  # noqa: BLE001
-            logger.warning("Lumean TTS недоступен или превысил 4.0с (%s) — мгновенно переключаюсь на edge-tts (Ava)", exc)
+            self._backoff_until = time.monotonic() + 600.0
+            logger.warning("Lumean TTS ошибка/таймаут (%s) — активирован Circuit Breaker на 600с, переход на edge-tts (Ava)", exc)
             fb_file = self._fallback.synthesize(text, lang)
             try:
                 import shutil
@@ -334,7 +344,19 @@ def build_engine() -> LumeanTTS | ElevenLabsTTS | EdgeTTS | SayTTS:
 
 
 def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
-    """Конвертирует аудио через afconvert в 16-bit WAV и рассчитывает RMS чанки по 50 мс."""
+    """Конвертирует аудио через afconvert в 16-bit WAV и рассчитывает RMS чанки по 50 мс.
+    Кэширует результат в .rms.json для мгновенной отдачи при повторном воспроизведении.
+    """
+    rms_cache = media_path.with_name(media_path.name + ".rms.json")
+    if rms_cache.exists():
+        try:
+            with open(rms_cache, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list) and data:
+                    return data
+        except Exception:
+            pass
+
     tmp_wav = Path(f"/tmp/winky_speech_{time.monotonic_ns()}.wav")
     try:
         subprocess.run(
@@ -357,7 +379,15 @@ def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
                 samples = struct.unpack(f"<{count}h", frames)
                 sum_sq = sum(s * s for s in samples)
                 rms = math.sqrt(sum_sq / len(samples)) / 32768.0
-                rms_list.append(min(1.0, max(0.0, rms * 2.5)))
+                rms_list.append(round(min(1.0, max(0.0, rms * 2.5)), 4))
+
+        if rms_list:
+            try:
+                with open(rms_cache, "w", encoding="utf-8") as f:
+                    json.dump(rms_list, f)
+            except Exception:
+                pass
+
         return rms_list
     except Exception as exc:
         logger.debug("Не удалось рассчитать RMS чанки через afconvert: %s", exc)
@@ -420,6 +450,7 @@ class SpeechController:
         self._current_text = ""
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
+        self._afplay_proc: subprocess.Popen | None = None
 
     # ---------- публичное API (вызывается из js_api и таймеров) ----------
 
@@ -469,6 +500,25 @@ class SpeechController:
     def finish_current(self) -> None:
         """Аватар доиграл файл (callback из JS)."""
         self._finished.set()
+
+    def stop_current(self) -> None:
+        """Мгновенно прерывает текущую речь и очищает очередь (для мгновенного отклика на клик)."""
+        with self._lock:
+            self._queue.clear()
+        proc = self._afplay_proc
+        if proc and proc.poll() is None:
+            try:
+                proc.terminate()
+            except Exception:
+                pass
+        self._finished.set()
+        self._speaking = False
+        self._current_text = ""
+        try:
+            self.on_rms(0.0)
+        except Exception:
+            pass
+        self._emit_status()
 
     def set_volume(self, volume: float) -> None:
         self._volume = min(1.0, max(0.0, float(volume)))
@@ -570,6 +620,7 @@ class SpeechController:
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
             )
+            self._afplay_proc = afplay_proc
             for rms in rms_chunks:
                 if self._paused or afplay_proc.poll() is not None:
                     break
@@ -583,6 +634,7 @@ class SpeechController:
         except Exception as exc:
             logger.error("Ошибка воспроизведения afplay: %s", exc)
         finally:
+            self._afplay_proc = None
             self.on_rms(0.0)
             self._finished.set()
             self._speaking = False
