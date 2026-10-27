@@ -320,11 +320,11 @@ class ShibahuFBXController {
         this.lipSyncToggle = !this.lipSyncToggle;
       }
 
-      if (audioRms < 0.025) {
+      if (audioRms <= 0.03) {
         // Пауза между словами — рот строго ЗАКРЫТ (прямой взгляд null)!
         targetMorph = null;
         targetCheek = 0.35;
-      } else if (audioRms < 0.11) {
+      } else if (audioRms < 0.12) {
         // Тихий звук — маленький ротик 'о'
         targetMorph = "face_mesh9";
         targetCheek = 0.40;
@@ -686,58 +686,9 @@ function initAudioContext() {
 });
 
 function winkySpeak(mediaUrl, emotion = "happy", volume = 1.0) {
-  initAudioContext();
-
-  if (currentAudio) {
-    try {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    } catch {}
-  }
-
   if (vtuber) {
     vtuber.setEmotion(emotion || "happy", 6000);
   }
-
-  const audio = new Audio(mediaUrl);
-  audio.crossOrigin = "anonymous";
-  audio.volume = Math.min(1, Math.max(0, volume));
-  currentAudio = audio;
-  isSpeakingAudio = true;
-
-  if (audioCtx && analyser) {
-    try {
-      const source = audioCtx.createMediaElementSource(audio);
-      source.connect(analyser);
-      analyser.connect(audioCtx.destination);
-    } catch {}
-  }
-
-  audio.onended = () => {
-    isSpeakingAudio = false;
-    if (vtuber) {
-      vtuber.setAudioFormants({ aa: 0, ih: 0, ou: 0, ee: 0, oh: 0 });
-      vtuber.setEmotion("neutral", 0);
-    }
-    try { window.pywebview?.api?.on_speech_finished(); } catch {}
-  };
-
-  audio.onerror = () => {
-    isSpeakingAudio = false;
-    if (vtuber) vtuber.setAudioFormants({ aa: 0, ih: 0, ou: 0, ee: 0, oh: 0 });
-    try { window.pywebview?.api?.on_speech_finished(); } catch {}
-  };
-
-  audio.play().then(() => {
-    isSpeakingAudio = true;
-  }).catch((err) => {
-    console.warn("Audio play blocked/failed:", err);
-    setTimeout(() => {
-      isSpeakingAudio = false;
-      try { window.pywebview?.api?.on_speech_finished(); } catch {}
-    }, 2000);
-  });
-
   return true;
 }
 
@@ -754,13 +705,8 @@ window.winkySetVolume = (vol) => {
 };
 window.setAvatarSpeechVolume = (vol) => {
   const v = Math.min(1.0, Math.max(0.0, Number(vol) || 0));
-  if (v > 0.01) {
-    window.__forceSpeaking = true;
-    window.__forceAudioRms = v;
-  } else {
-    window.__forceSpeaking = false;
-    window.__forceAudioRms = 0;
-  }
+  window.__forceAudioRms = v;
+  window.__forceSpeaking = v > 0.03;
 };
 window.winkySetScale = (scale) => {
   userScale = Math.min(2.0, Math.max(0.4, scale));
@@ -798,49 +744,10 @@ function animate() {
   const delta = clock.getDelta();
   const elapsed = clock.elapsedTime;
 
-  const isSpeaking = Boolean(
-    (isSpeakingAudio && currentAudio && !currentAudio.paused && !currentAudio.ended) ||
-    window.__forceSpeaking
-  );
+  const isSpeaking = Boolean(window.__forceSpeaking);
+  const audioRms = window.__forceAudioRms !== undefined ? window.__forceAudioRms : 0;
 
-  let audioRms = window.__forceAudioRms !== undefined ? window.__forceAudioRms : 0;
-
-  // Спектральный анализ звука и RMS громкость
-  if (analyser && isSpeaking) {
-    try {
-      analyser.getByteFrequencyData(freqData);
-      let totalEnergy = 0;
-      for (let i = 0; i < freqData.length; i++) {
-        totalEnergy += freqData[i];
-      }
-      audioRms = totalEnergy / (freqData.length * 255.0);
-
-      let lowEnergy = 0;
-      let midEnergy = 0;
-      let highEnergy = 0;
-
-      for (let i = 3; i < 9; i++) lowEnergy += freqData[i];
-      for (let i = 9; i < 20; i++) midEnergy += freqData[i];
-      for (let i = 20; i < 38; i++) highEnergy += freqData[i];
-
-      const low = lowEnergy / (6 * 255.0);
-      const mid = midEnergy / (11 * 255.0);
-      const high = highEnergy / (18 * 255.0);
-
-      const formants = {
-        aa: low > 0.15 ? Math.min(1.0, low * 1.5) : 0,
-        oh: low > 0.25 ? Math.min(0.8, low * 0.9) : 0,
-        ee: mid > 0.15 ? Math.min(1.0, mid * 1.4) : 0,
-        ih: high > 0.12 ? Math.min(0.9, high * 1.3) : 0,
-        ou: low > 0.2 && mid < 0.2 ? Math.min(0.7, low * 0.8) : 0,
-      };
-      if (vtuber) vtuber.setAudioFormants(formants);
-    } catch {}
-  } else if (isSpeaking) {
-    // Процедурный слоговой ритм под аудио (4.8 слогов/сек), если analyser недоступен
-    const syllableWave = Math.sin(elapsed * 4.8 * Math.PI * 2);
-    audioRms = syllableWave > 0 ? syllableWave * 0.16 : 0.01;
-  } else if (vtuber && !isSpeaking) {
+  if (vtuber && !isSpeaking) {
     vtuber.setAudioFormants({ aa: 0, ih: 0, ou: 0, ee: 0, oh: 0 });
   }
 

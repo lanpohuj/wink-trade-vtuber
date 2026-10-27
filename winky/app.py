@@ -59,6 +59,8 @@ class WinkyAPI:
     # ---------- вызовы из JS ----------
 
     def speak(self, text: str, lang: str | None = None, emotion: str = "happy") -> bool:
+        if emotion == "wave":
+            self.trigger_wave()
         return self._controller.speak(text, lang, emotion, source="panel")
 
     def quick_reply(self, reply_id: str) -> bool:
@@ -66,6 +68,8 @@ class WinkyAPI:
         if reply is None:
             logger.warning("Неизвестная реплика: %s", reply_id)
             return False
+        if reply_id == "greeting" or reply.emotion == "wave":
+            self.trigger_wave()
         return self._controller.speak(reply.text, reply.lang, reply.emotion, source="scenario")
 
     def set_emotion(self, emotion: str) -> None:
@@ -229,6 +233,7 @@ class WinkyAPI:
 
     def simulate_join(self, user: str = "Дима 🚀") -> None:
         """Тест входа зрителя из пульта."""
+        self.trigger_wave()
         if self._chat_router:
             self._chat_router.handle_join(user or "Дима 🚀", force=True)
             self.push_status()
@@ -342,7 +347,14 @@ def main() -> None:
             "window.winkyPanel && window.winkyPanel.onChatEvent(" + json.dumps(event, ensure_ascii=False) + ")"
         )
 
-    chat_router = ChatRouter(book, brain, controller, on_feed=on_chat_feed, on_gift=winky_api.trigger_gift)
+    chat_router = ChatRouter(
+        book,
+        brain,
+        controller,
+        on_feed=on_chat_feed,
+        on_gift=winky_api.trigger_gift,
+        on_wave=winky_api.trigger_wave,
+    )
     winky_api.attach_chat(chat_router)
 
     # Фоновый прогрев кэша частых реплик (ElevenLabs Multilingual V2) для мгновенного отклика при клике на кнопки

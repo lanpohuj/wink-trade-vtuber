@@ -133,9 +133,10 @@ class LumeanTTS:
         # Проверяем, не передан ли ключ пресета (например 'marusya')
         if clean.lower() in FEMALE_VOICE_PRESETS:
             clean = FEMALE_VOICE_PRESETS[clean.lower()]
-        if clean:
+        if clean and clean != self._voice_id:
             self._voice_id = clean
-            logger.info("Установлен новый Lumean Voice ID: %s", clean)
+            self._template_id = None
+            logger.info("Установлен новый Lumean Voice ID: %s (шаблон сброшен)", clean)
 
     def get_settings(self) -> dict[str, str]:
         return {
@@ -155,6 +156,7 @@ class LumeanTTS:
             return self._template_id
 
         # 1. Проверяем существующие шаблоны
+        voice_target = self._voice_id or DEFAULT_LUMEAN_VOICE_ID
         try:
             resp = requests.get(
                 f"{self.BASE_URL}/templates?per_page=30",
@@ -165,10 +167,10 @@ class LumeanTTS:
                 payload = resp.json()
                 items = payload.get("data", {}).get("items", []) if isinstance(payload.get("data"), dict) else payload.get("data", [])
                 for item in items:
-                    service = item.get("service_key") or item.get("service")
-                    if service in ("cartesia", "elevenlabs", settings.LUMEAN_SERVICE):
+                    cfg = item.get("config", {}).get("tts_settings", {})
+                    if cfg.get("voice_id") == voice_target:
                         self._template_id = str(item["id"])
-                        logger.info("Использую существующий шаблон Lumean: %s (%s)", item.get("name"), self._template_id)
+                        logger.info("Использую существующий шаблон Lumean для %s: %s (%s)", voice_target, item.get("name"), self._template_id)
                         return self._template_id
         except requests.RequestException as exc:
             logger.debug("Не удалось получить список шаблонов Lumean: %s", exc)
@@ -178,7 +180,7 @@ class LumeanTTS:
             "tts_settings": {
                 "mode": "mode_v1",
                 "model_id": "eleven_multilingual_v2",
-                "voice_id": self._voice_id or DEFAULT_LUMEAN_VOICE_ID,
+                "voice_id": voice_target,
                 "advanced_voice_settings": True,
                 "voice_settings": {
                     "stability": 0.5,
@@ -193,7 +195,7 @@ class LumeanTTS:
             headers=self._headers(),
             json={
                 "service_key": "elevenlabs",
-                "name": "WinkyStreamTTS",
+                "name": f"WinkyStreamTTS_{voice_target[:6]}",
                 "config": config,
             },
             timeout=8,
@@ -224,22 +226,10 @@ class LumeanTTS:
         try:
             template_id = self._ensure_template()
 
-            # 1. Создание заказа строго с multilingual_v2 для идеального русского и мультиязычного произношения
+            # 1. Создание заказа строго по спецификации Lumean API (POST /orders)
             order_payload: dict = {
                 "template_id": template_id,
                 "input_text": text,
-                "config_override": {
-                    "tts_settings": {
-                        "model_id": "eleven_multilingual_v2",
-                        "voice_id": voice_override,
-                        "voice_settings": {
-                            "stability": 0.5,
-                            "similarity_boost": 0.75,
-                            "style": 0.0,
-                            "use_speaker_boost": True,
-                        },
-                    }
-                },
             }
 
             create_resp = requests.post(
@@ -384,8 +374,8 @@ def wav_duration_seconds(path: Path) -> float:
     try:
         with wave.open(str(path), "rb") as audio:
             return audio.getnframes() / float(audio.getframerate() or 22050)
-    except (wave.Error, OSError):
-        return 0.0
+    except Exception:
+        return 3.0
 
 
 @dataclass
@@ -423,6 +413,7 @@ class SpeechController:
         self._queue: deque[SpeechTask] = deque()
         self._lock = threading.Lock()
         self._finished = threading.Event()
+        self._wake = threading.Event()
         self._paused = False
         self._volume = 1.0
         self._speaking = False
@@ -471,6 +462,7 @@ class SpeechController:
                           emotion=emotion if emotion in EMOTIONS else "happy", source=source)
         with self._lock:
             self._queue.append(task)
+        self._wake.set()
         self._emit_status()
         return True
 
@@ -526,23 +518,40 @@ class SpeechController:
     def _run(self) -> None:
         while True:
             if self._paused:
-                self._finished.wait(timeout=0.3)
+                self._wake.wait(timeout=0.2)
+                self._wake.clear()
                 continue
             task = self._next_task()
             if task is None:
-                self._finished.wait(timeout=0.3)
+                self._wake.wait(timeout=0.2)
+                self._wake.clear()
                 continue
             self._process(task)
 
     def _process(self, task: SpeechTask) -> None:
+        self._speaking = True
+        self._current_text = task.text
+        self._emit_status()
+        self._finished.clear()
+
         try:
             media = self.engine.synthesize(task.text, task.lang)
         except TTSError as exc:
             logger.error("Синтез не удался: %s", exc)
+            self._speaking = False
+            self._current_text = ""
+            self._finished.set()
+            self._emit_status()
             return
 
-        media_url = f"media/{media.name}"
+        try:
+            rel_path = media.relative_to(MEDIA_DIR.parent).as_posix()
+            media_url = f"/{rel_path}"
+        except ValueError:
+            media_url = f"/media/{media.name}"
+
         rms_chunks = compute_rms_chunks(media, chunk_ms=50)
+        duration = len(rms_chunks) * 0.05 if rms_chunks else max(2.5, wav_duration_seconds(media))
 
         self._speaking = True
         self._current_text = task.text
@@ -555,35 +564,32 @@ class SpeechController:
             logger.exception("Не удалось отправить фразу в окно аватара")
 
         # Воспроизведение на macOS через afplay с потоковой передачей RMS-громкости для Lip-Sync
-        def _play_native() -> None:
+        try:
+            afplay_proc = subprocess.Popen(
+                ["/usr/bin/afplay", "-v", str(max(0.05, self._volume)), str(media)],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            for rms in rms_chunks:
+                if self._paused or afplay_proc.poll() is not None:
+                    break
+                self.on_rms(rms)
+                time.sleep(0.05)
+
             try:
-                proc = subprocess.Popen(
-                    ["/usr/bin/afplay", "-v", str(self._volume), str(media)]
-                )
-                idx = 0
-                while proc.poll() is None:
-                    rms = rms_chunks[idx] if idx < len(rms_chunks) else 0.05
-                    self.on_rms(rms)
-                    idx += 1
-                    time.sleep(0.05)
-                self.on_rms(0.0)
-            except Exception as exc:
-                logger.error("Ошибка воспроизведения afplay: %s", exc)
-            finally:
-                self.finish_current()
-
-        threading.Thread(target=_play_native, name="afplay_stream", daemon=True).start()
-
-        # Ожидание окончания воспроизведения
-        timeout = max(10.0, len(rms_chunks) * 0.05 + 4.0)
-        self._finished.wait(timeout=timeout)
-
-        self.on_rms(0.0)
-        self._speaking = False
-        self._current_text = ""
-        if "cache" not in str(media):
-            try:
-                media.unlink(missing_ok=True)
-            except OSError:
-                pass
-        self._emit_status()
+                afplay_proc.wait(timeout=max(2.0, duration + 2.0))
+            except subprocess.TimeoutExpired:
+                afplay_proc.kill()
+        except Exception as exc:
+            logger.error("Ошибка воспроизведения afplay: %s", exc)
+        finally:
+            self.on_rms(0.0)
+            self._finished.set()
+            self._speaking = False
+            self._current_text = ""
+            if "cache" not in str(media):
+                try:
+                    media.unlink(missing_ok=True)
+                except OSError:
+                    pass
+            self._emit_status()
