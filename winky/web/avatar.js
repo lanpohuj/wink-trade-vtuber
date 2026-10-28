@@ -179,12 +179,49 @@ class ShibahuFBXController {
       }
     });
 
+    // Алиасы костей для удобного доступа
+    const boneAliases = {
+      RightShoulder: "Shibahu_RightShoulder",
+      RightArm:      "Shibahu_RightArm",
+      RightForeArm:  "Shibahu_RightForeArm",
+      RightHand:     "Shibahu_RightHand",
+      LeftShoulder:  "Shibahu_LeftShoulder",
+      LeftArm:       "Shibahu_LeftArm",
+      LeftForeArm:   "Shibahu_LeftForeArm",
+      LeftHand:      "Shibahu_LeftHand",
+      Spine:         "Shibahu_Spine",
+      Spine1:        "Shibahu_Spine1",
+      Spine2:        "Shibahu_Spine2",
+      Hips:          "Shibahu_Hips",
+      Head:          "Shibahu_Head",
+      Neck:          "Shibahu_Neck",
+    };
+    for (const [alias, full] of Object.entries(boneAliases)) {
+      if (this.bones[full]) {
+        this.bones[alias] = this.bones[full];
+      }
+    }
+
+    // Массивы костей пальцев правой и левой руки (Index, Middle, Ring, Pinky, Thumb 1..3)
+    this.rightFingerBones = [];
+    this.leftFingerBones = [];
+    const fingerTypes = ["Index", "Middle", "Ring", "Pinky", "Thumb"];
+    for (const f of fingerTypes) {
+      for (let i = 1; i <= 3; i++) {
+        const rName = `Shibahu_RightHand${f}${i}`;
+        if (this.bones[rName]) this.rightFingerBones.push(this.bones[rName]);
+        const lName = `Shibahu_LeftHand${f}${i}`;
+        if (this.bones[lName]) this.leftFingerBones.push(this.bones[lName]);
+      }
+    }
+
     // Режимы и таймеры
     this.currentEmotion = "idle";
     this.emotionResetTimer = 0.0;
     this.waveTimer = 0;
     this.giftReactionTimer = 0;
-    this.actionMode = null; // 'dance', 'cheer', 'shy'
+    this.actionMode = null; // 'dance', 'cheer', 'shy', 'flirt_kiss', 'neko_paws'
+    this.actionDuration = 0.0;
     this.actionTimer = 0.0;
     this.earTwitchTimer = 0.0;
     this.nextEarTwitchTime = 4.0;
@@ -205,8 +242,24 @@ class ShibahuFBXController {
   }
 
   // Плавная сферическая интерполяция кватернионов (slerp) без Gimbal Lock:
-  lerpBoneOffset(boneName, tx, ty, tz, dt, speed = 8.0) {
-    const bone = this.bones[boneName];
+  lerpBoneOffset(boneOrName, txOrName, tyOrTx, tzOrTy, dtOrTz, speedOrDt = 8.0, maybeSpeed = 8.0) {
+    let boneName, tx, ty, tz, dt, speed;
+    if (typeof txOrName === "string") {
+      boneName = txOrName;
+      tx = tyOrTx;
+      ty = tzOrTy;
+      tz = dtOrTz;
+      dt = speedOrDt;
+      speed = maybeSpeed;
+    } else {
+      boneName = typeof boneOrName === "string" ? boneOrName : boneOrName?.name;
+      tx = txOrName;
+      ty = tyOrTx;
+      tz = tzOrTy;
+      dt = dtOrTz;
+      speed = speedOrDt;
+    }
+    const bone = this.bones[boneName] || (typeof boneOrName === "object" ? boneOrName : null);
     const base = this.baseRotations[boneName];
     if (!bone || !base) return;
     _tmpEuler.set(base.x + tx, base.y + ty, base.z + tz, "XYZ");
@@ -260,6 +313,15 @@ class ShibahuFBXController {
 
   // Живая пластика тела, кинематика махания рукой (wave), спец-анимации (dance, cheer, shy, flirts) и жестикуляция
   updateBodyPhysics(t, dt, isSpeaking, mouseX = 0, mouseY = 0) {
+    const bones = this.bones;
+    const rightFingerBones = this.rightFingerBones;
+    const leftFingerBones = this.leftFingerBones;
+    const lerpBoneOffset = (b, name, tx, ty, tz, dt, sp) => this.lerpBoneOffset(b, name, tx, ty, tz, dt, sp);
+    const smoothSetMorph = (name, val, dt, sp) => this.smoothSetMorph(name, val, dt, sp);
+    const actionMode = this.actionMode;
+    const actionDuration = this.actionDuration;
+    const actionTimer = this.actionTimer;
+
     const isTalking = isSpeaking && this.smoothedRms > 0.025;
     const activeEmotion = this.waveTimer > 0
       ? "wave"
@@ -510,39 +572,96 @@ class ShibahuFBXController {
         this.lerpBoneOffset(`Shibahu_LeftHandThumb${i}`, 0.0, -0.05, 0.0, dt, 9.0);
       }
 
-    } else if (this.actionMode === "flirt_kiss") {
-      // ВОЗДУШНЫЙ ПОЦЕЛУЙ (flirt_kiss) — правая рука подносится к губам и посылает поцелуй
-      const p = Math.max(0.0, Math.min(1.0, 1.0 - (this.actionTimer / 3.0)));
-      if (p < 0.45) {
-        this.lerpBoneOffset("Shibahu_RightArm", -0.45, 0.22, 0.16, dt, 9.0);
-        this.lerpBoneOffset("Shibahu_RightForeArm", 1.25, -0.80, 1.40, dt, 10.0);
-        this.lerpBoneOffset("Shibahu_RightHand", 0.0, -0.20, 0.10, dt, 10.0);
-        this.setFingerRotations("Right", 0.04, dt);
-      } else {
-        const blowWave = Math.sin((p - 0.45) * Math.PI);
-        this.lerpBoneOffset("Shibahu_RightArm", -0.25 - 0.10 * blowWave, 0.10, 0.14, dt, 8.0);
-        this.lerpBoneOffset("Shibahu_RightForeArm", 0.40, -0.30, 0.40, dt, 9.0);
-        this.lerpBoneOffset("Shibahu_RightHand", 0.0, 0.10 * blowWave, 0.0, dt, 10.0);
-        this.setFingerRotations("Right", 0.08 + 0.05 * blowWave, dt);
+    } else if (actionMode === "flirt_kiss") {
+      const elapsed = Math.max(0.0, (actionDuration || 3.0) - actionTimer);
+      const kissPhase1 = elapsed < 1.35;
+
+      // Эмоция лица: в Фазе 1 — губки бантиком «О» для поцелуя, в Фазе 2 — сияющая открытая улыбка!
+      smoothSetMorph("facial_cheek", 1.0, dt, 12.0);
+      smoothSetMorph("facial_irisHilight_Big", 1.0, dt, 12.0);
+      if (!isSpeaking) {
+        smoothSetMorph("face_mesh9",   kissPhase1 ? 0.85 : 0.0,  dt, 14.0);
+        smoothSetMorph("face_mesh1",   kissPhase1 ? 0.0  : 0.88, dt, 14.0);
+        smoothSetMorph("face_mesh3",   0.0, dt, 12.0);
+        smoothSetMorph("face_mesh4_2", 0.0, dt, 12.0);
       }
-      this.lerpBoneOffset("Shibahu_LeftArm", 0.0, 0.0, +0.05, dt, 6.0);
-      this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -0.16, 0.0, dt, 6.0);
-      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.0, dt, 6.0);
-      this.setFingerRotations("Left", -0.18, dt);
 
-    } else if (this.actionMode === "neko_paws") {
-      // КОШАЧЬИ ЛАПКИ (neko_paws) — обе ручки перед грудью игриво перебирают лапками
-      const pawBeat = t * 6.0;
-      this.lerpBoneOffset("Shibahu_RightArm", -0.35, 0.18, 0.16, dt, 9.0);
-      this.lerpBoneOffset("Shibahu_RightForeArm", 0.0, -1.35 + Math.sin(pawBeat) * 0.25, 0.0, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_RightHand", 0.0, 0.0, 0.25, dt, 10.0);
+      if (kissPhase1) {
+        // ФАЗА 1: Кончики пальцев правой руки прикасаются прямо к губам (X = -0.3, Y = 136.6, Z = +12.3)
+        lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.08, dt, 8.0);
+        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.80, 0.10, -0.38, dt, 8.0);
+        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  2.00, 0.20, 2.27, dt, 9.0);
+        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     0.15, 0.0, 0.0, dt, 10.0);
 
-      this.lerpBoneOffset("Shibahu_LeftArm", -0.35, -0.18, 0.16, dt, 9.0);
-      this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -1.35 - Math.sin(pawBeat) * 0.25, 0.0, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.25, dt, 10.0);
+        // Пальчики изящно вытянуты к губам:
+        rightFingerBones.forEach((fBone) => {
+          lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, 0.08, dt, 9.0);
+        });
 
-      this.setFingerRotations("Right", -0.42 + Math.sin(pawBeat) * 0.08, dt);
-      this.setFingerRotations("Left", -0.42 - Math.sin(pawBeat) * 0.08, dt);
+        // Кокетливый наклон головы и легкий прогиб корпуса:
+        lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", -0.02, 0.0, -0.04, dt, 6.0);
+        lerpBoneOffset(bones.Head,   "Shibahu_Head",   0.06, 0.06, -0.14, dt, 7.0);
+      } else {
+        // ФАЗА 2: Выдувает поцелуй ВПЕРЕД к камере (X = -10.5, Y = 124, Z = +26.2 — строго внутри окна!)
+        const flutter = Math.sin(t * 7.0) * 0.05;
+        lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.10, dt, 7.0);
+        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.75, 0.15, -0.20, dt, 7.0);
+        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  1.85, -0.25 + flutter, 1.90, dt, 8.0);
+        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     -0.35, flutter * 1.5, 0.0, dt, 9.0);
+
+        // Ладошка раскрыта вперед:
+        rightFingerBones.forEach((fBone, idx) => {
+          lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, 0.10 + Math.sin(t * 7.0 + idx * 0.3) * 0.03, dt, 9.0);
+        });
+
+        // Корпус подается вперед к зрителю, бедра игриво качаются:
+        lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", 0.06, 0.0, 0.03, dt, 6.0);
+        lerpBoneOffset(bones.Hips,   "Shibahu_Hips",   0.02, 0.05, 0.08, dt, 6.0);
+        lerpBoneOffset(bones.Head,   "Shibahu_Head",   -0.04, -0.04, 0.10, dt, 7.0);
+      }
+
+      // Левая рука остается в изящной позе снаружи у бедра:
+      lerpBoneOffset(bones.LeftArm,     "Shibahu_LeftArm",     0.0, -0.05, 0.05, dt, 7.0);
+      lerpBoneOffset(bones.LeftForeArm, "Shibahu_LeftForeArm", 0.0, -0.30, 0.0, dt, 7.0);
+
+    } else if (actionMode === "neko_paws") {
+      const p = Math.sin(t * 6.8); // Поочередный мах правой и левой лапкой у щечек (-1 .. +1)
+
+      // Эмоция: кошачья улыбка :3 + румянец + огромные сияющие зрачки
+      smoothSetMorph("facial_cheek", 1.0, dt, 12.0);
+      smoothSetMorph("facial_irisHilight_Big", 1.0, dt, 12.0);
+      if (!isSpeaking) {
+        smoothSetMorph("face_mesh3",   1.0, dt, 14.0);
+        smoothSetMorph("face_mesh1",   0.0, dt, 12.0);
+        smoothSetMorph("face_mesh9",   0.0, dt, 12.0);
+        smoothSetMorph("face_mesh4_2", 0.0, dt, 12.0);
+      }
+
+      // 1. Правая лапка поднята прямо у правой щечки (X = -10.2, Y = 125.3, Z = +20.9):
+      lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.10, dt, 8.0);
+      lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.72, 0.15, -0.12 + 0.06 * p, dt, 8.0);
+      lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  1.85, -0.05, 2.18 + 0.14 * p, dt, 10.0);
+      // Сгибаем кисть вперед-вниз лапкой (tz = -0.65) и качаем ей в такт:
+      lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     0.0, 0.12 * p, -0.65 - 0.15 * p, dt, 12.0);
+
+      // 2. Левая лапка поднята симметрично у левой щечки (X = +10.7, Y = 125.3, Z = +20.9):
+      lerpBoneOffset(bones.LeftShoulder,  "Shibahu_LeftShoulder",  0.0, 0.0, 0.10, dt, 8.0);
+      lerpBoneOffset(bones.LeftArm,       "Shibahu_LeftArm",       -0.72, 0.15, -0.12 - 0.06 * p, dt, 8.0);
+      lerpBoneOffset(bones.LeftForeArm,   "Shibahu_LeftForeArm",   1.85, -0.05, 2.18 - 0.14 * p, dt, 10.0);
+      lerpBoneOffset(bones.LeftHand,      "Shibahu_LeftHand",      0.0, -0.12 * p, -0.65 + 0.15 * p, dt, 12.0);
+
+      // 3. Сгибаем пальчики обеих рук в мягкие кошачьи лапки (tz = -0.35):
+      rightFingerBones.forEach((fBone) => {
+        lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, -0.35, dt, 10.0);
+      });
+      leftFingerBones.forEach((fBone) => {
+        lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, -0.35, dt, 10.0);
+      });
+
+      // 4. Игривое покачивание головой, бедрами и быстрые ушки:
+      lerpBoneOffset(bones.Head,   "Shibahu_Head",   0.04, Math.sin(t * 3.4) * 0.06, Math.sin(t * 3.4) * 0.14, dt, 8.0);
+      lerpBoneOffset(bones.Hips,   "Shibahu_Hips",   0.02, Math.cos(t * 3.4) * 0.07, Math.sin(t * 3.4) * 0.09, dt, 7.0);
+      lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", 0.04, 0.0, -Math.sin(t * 3.4) * 0.05, dt, 7.0);
 
     } else if (this.actionMode === "hip_groove") {
       // КОКЕТЛИВЫЙ ТАНЕЦ БЕДРАМИ (hip_groove) — ручки упираются в бедра/талию
@@ -756,14 +875,30 @@ class ShibahuFBXController {
       this.smoothSetMorph("face_mesh3", 0.0, dt, 20.0);
       this.smoothSetMorph("face_mesh4_2", targetGentleSmile, dt, 10.0);
     } else {
-      // В тишине ротовые морфы стремятся к EMOTION_MAP[activeEmotion].mouth:
-      const MOUTH_MORPHS = ["face_mesh1", "face_mesh6", "face_mesh9", "face_mesh3", "face_mesh4_2"];
-      for (const name of MOUTH_MORPHS) {
-        let target = emoCfg.mouth[name] || 0.0;
-        if (this.activeMicroHabit === "curious_look" && name === "face_mesh3") {
-          target = 0.75;
+      // В тишине ротовые морфы стремятся к EMOTION_MAP[activeEmotion].mouth или спец-фазам:
+      if (this.actionMode === "flirt_kiss") {
+        const elapsed = Math.max(0.0, (this.actionDuration || 3.0) - this.actionTimer);
+        const kissPhase1 = elapsed < 1.35;
+        this.smoothSetMorph("face_mesh9",   kissPhase1 ? 0.85 : 0.0,  dt, 14.0);
+        this.smoothSetMorph("face_mesh1",   kissPhase1 ? 0.0  : 0.88, dt, 14.0);
+        this.smoothSetMorph("face_mesh3",   0.0, dt, 12.0);
+        this.smoothSetMorph("face_mesh4_2", 0.0, dt, 12.0);
+        this.smoothSetMorph("face_mesh6",   0.0, dt, 12.0);
+      } else if (this.actionMode === "neko_paws") {
+        this.smoothSetMorph("face_mesh3",   1.0, dt, 14.0);
+        this.smoothSetMorph("face_mesh1",   0.0, dt, 12.0);
+        this.smoothSetMorph("face_mesh9",   0.0, dt, 12.0);
+        this.smoothSetMorph("face_mesh4_2", 0.0, dt, 12.0);
+        this.smoothSetMorph("face_mesh6",   0.0, dt, 12.0);
+      } else {
+        const MOUTH_MORPHS = ["face_mesh1", "face_mesh6", "face_mesh9", "face_mesh3", "face_mesh4_2"];
+        for (const name of MOUTH_MORPHS) {
+          let target = emoCfg.mouth[name] || 0.0;
+          if (this.activeMicroHabit === "curious_look" && name === "face_mesh3") {
+            target = 0.75;
+          }
+          this.smoothSetMorph(name, target, dt, 12.0);
         }
-        this.smoothSetMorph(name, target, dt, 12.0);
       }
     }
   }
@@ -791,7 +926,7 @@ class ShibahuFBXController {
       return;
     }
     if (name === "neko_paws") {
-      this.triggerAction("neko_paws", durationMs > 0 ? durationMs / 1000.0 : 3.0);
+      this.triggerAction("neko_paws", durationMs > 0 ? durationMs / 1000.0 : 3.2);
       return;
     }
     if (name === "hip_groove") {
@@ -808,7 +943,8 @@ class ShibahuFBXController {
 
   triggerAction(action, duration = 4.0) {
     this.actionMode = action;
-    this.actionTimer = Number(duration) || 4.0;
+    this.actionDuration = Number(duration) || 4.0;
+    this.actionTimer = this.actionDuration;
     if (action === "dance") {
       this.currentEmotion = "excited";
       this.emotionResetTimer = this.actionTimer;
@@ -861,7 +997,7 @@ class ShibahuFBXController {
     } else if (motion === "flirt_kiss" || motion === "kiss") {
       this.triggerAction("flirt_kiss", 3.0);
     } else if (motion === "neko_paws" || motion === "paws") {
-      this.triggerAction("neko_paws", 3.0);
+      this.triggerAction("neko_paws", 3.2);
     } else if (motion === "hip_groove" || motion === "groove") {
       this.triggerAction("hip_groove", 3.2);
     } else if (motion === "peek_closer" || motion === "peek") {
@@ -897,7 +1033,7 @@ class ShibahuFBXController {
         const flirts = ["flirt_kiss", "neko_paws", "hip_groove", "peek_closer"];
         const action = flirts[this.flirtIndex % flirts.length];
         this.flirtIndex++;
-        const dur = (action === "hip_groove") ? 3.2 : (action === "peek_closer") ? 2.8 : 3.0;
+        const dur = (action === "hip_groove") ? 3.2 : (action === "neko_paws") ? 3.2 : (action === "peek_closer") ? 2.8 : 3.0;
         this.triggerAction(action, dur);
         this.idleFlirtTimer = 4.5 + Math.random() * 2.5;
       }
@@ -1081,7 +1217,7 @@ window.winkySetEmotion = (emo) => {
   } else if (emo === "flirt_kiss") {
     window.winkyTriggerAction("flirt_kiss", 3.0);
   } else if (emo === "neko_paws") {
-    window.winkyTriggerAction("neko_paws", 3.0);
+    window.winkyTriggerAction("neko_paws", 3.2);
   } else if (emo === "hip_groove") {
     window.winkyTriggerAction("hip_groove", 3.2);
   } else if (emo === "peek_closer") {

@@ -108,7 +108,7 @@ class WinkyAPI:
         elif emotion == "flirt_kiss":
             self.trigger_action("flirt_kiss", 3.0)
         elif emotion == "neko_paws":
-            self.trigger_action("neko_paws", 3.0)
+            self.trigger_action("neko_paws", 3.2)
         elif emotion == "hip_groove":
             self.trigger_action("hip_groove", 3.2)
         elif emotion == "peek_closer":
