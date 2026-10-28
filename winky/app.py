@@ -75,6 +75,8 @@ class WinkyAPI:
         return self._controller.speak(reply.text, reply.lang, reply.emotion, source="scenario")
 
     def set_emotion(self, emotion: str) -> None:
+        if emotion == "wave":
+            self.trigger_wave()
         if emotion in EMOTIONS:
             self._avatar_js(f"window.winkySetEmotion({json.dumps(emotion)})")
 
