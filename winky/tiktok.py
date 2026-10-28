@@ -16,6 +16,7 @@ from TikTokLive.events import (
     CommentEvent,
     ConnectEvent,
     DisconnectEvent,
+    FollowEvent,
     GiftEvent,
     JoinEvent,
     LiveEndEvent,
@@ -34,12 +35,14 @@ class TikTokConnector:
         on_join,
         on_gift,
         on_status,
+        on_follow=None,
     ) -> None:
         self._username = username.lstrip("@")
         self._on_comment = on_comment
         self._on_join = on_join
         self._on_gift = on_gift
         self._on_status = on_status
+        self._on_follow = on_follow
         self._client: TikTokLiveClient | None = None
         self._loop: asyncio.AbstractEventLoop | None = None
         self._stop = threading.Event()
@@ -135,6 +138,15 @@ class TikTokConnector:
                 self._on_join(nickname)
             except Exception:  # noqa: BLE001
                 logger.exception("ошибка обработки входа")
+
+        @client.on(FollowEvent)
+        async def _on_follow(event: FollowEvent) -> None:
+            try:
+                nickname = getattr(getattr(event, "user", None), "nickname", "") or "зритель"
+                if self._on_follow:
+                    self._on_follow(nickname)
+            except Exception:  # noqa: BLE001
+                logger.exception("ошибка обработки подписки")
 
         @client.on(GiftEvent)
         async def _on_gift(event: GiftEvent) -> None:

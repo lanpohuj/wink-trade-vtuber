@@ -136,6 +136,7 @@ const EMOTION_MAP = {
   win:       { eyes: { face_mesh1_2: 0.85, facial_cheek: 1.0, facial_irisHilight_Big: 1.0 },mouth: { face_mesh1: 0.90 },   head: [-0.06, 0.0, 0.08] },
   surprised: { eyes: { facial_irisHilight_Big: 1.0, facial_cheek: 0.35 },                   mouth: { face_mesh9: 0.95 },   head: [-0.06, 0.0, 0.0] },
   thinking:  { eyes: { face_mesh7: 0.80 },                                                  mouth: { face_mesh9: 0.40 },   head: [0.04, 0.06, 0.11] },
+  dance:     { eyes: { facial_irisHilight_Big: 1.0, facial_cheek: 0.90 },                   mouth: { face_mesh1: 0.85 },   head: [-0.03, 0.0, 0.0] },
 };
 
 // Временные переменные для slerp без аллокаций в рендер-цикле
@@ -179,6 +180,14 @@ class ShibahuFBXController {
     this.emotionResetTimer = 0.0;
     this.waveTimer = 0;
     this.giftReactionTimer = 0;
+    this.actionMode = null; // 'dance', 'cheer', 'shy'
+    this.actionTimer = 0.0;
+    this.earTwitchTimer = 0.0;
+    this.nextEarTwitchTime = 4.0;
+    this.idleMicroTimer = 7.0 + Math.random() * 4.0;
+    this.activeMicroHabit = null; // 'curious_look', 'cute_wink', 'happy_vibing'
+    this.microHabitTimer = 0.0;
+    this._wasSpeaking = false;
 
     // Параметры лица и Lip-Sync
     this.smoothedRms = 0.0;
@@ -243,63 +252,206 @@ class ShibahuFBXController {
     inf[idx] = current + (targetWeight - current) * factor;
   }
 
-  // Живая пластика тела, кинематика махания рукой (wave) и жестикуляция рассказчика
+  // Живая пластика тела, кинематика махания рукой (wave), спец-анимации (dance, cheer, shy) и жестикуляция
   updateBodyPhysics(t, dt, isSpeaking, mouseX = 0, mouseY = 0) {
     const isTalking = isSpeaking && this.smoothedRms > 0.025;
-    const activeEmotion = this.waveTimer > 0 ? "wave" : (this.currentEmotion || "idle");
+    const activeEmotion = this.waveTimer > 0
+      ? "wave"
+      : this.actionMode === "dance"
+      ? "excited"
+      : this.actionMode === "cheer"
+      ? "win"
+      : this.actionMode === "shy"
+      ? "blush"
+      : (this.currentEmotion || "idle");
     const emoCfg = EMOTION_MAP[activeEmotion] || EMOTION_MAP.idle;
     const head = emoCfg.head || [0.0, 0.0, 0.0];
 
-    // 1. Бедра (Shibahu_Hips) — мягкое женственное покачивание:
-    const hipTurnY = Math.sin(t * 1.1) * 0.03;
-    const hipSwayZ = Math.cos(t * 1.1) * 0.025;
-    this.lerpBoneOffset("Shibahu_Hips", 0.0, hipTurnY, hipSwayZ, dt, 7.0);
+    // Отслеживаем старт речи для быстрого милого «тика» ушек
+    if (isSpeaking && !this._wasSpeaking) {
+      this.earTwitchTimer = 0.28;
+    }
+    this._wasSpeaking = isSpeaking;
 
-    if (this.bones["Shibahu_Hips"] && this.basePositions["Shibahu_Hips"]) {
-      const bounce = Math.sin(t * 2.2) * 0.5;
-      this.bones["Shibahu_Hips"].position.y = this.basePositions["Shibahu_Hips"].y + bounce;
+    // Таймер тиков ушек каждые 4-7 секунд
+    if (this.earTwitchTimer > 0) {
+      this.earTwitchTimer -= dt;
+    } else {
+      this.nextEarTwitchTime -= dt;
+      if (this.nextEarTwitchTime <= 0) {
+        this.earTwitchTimer = 0.28;
+        this.nextEarTwitchTime = 4.0 + Math.random() * 3.0;
+      }
     }
 
-    // 2. Позвоночник (Shibahu_Spine, Spine1, Spine2) — плавное дыхание:
-    const breathSpine = Math.sin(t * 1.8) * 0.02 + (isTalking ? 0.03 : 0.0);
-    const swaySpine = Math.sin(t * 1.1) * 0.02;
-    this.lerpBoneOffset("Shibahu_Spine", breathSpine * 0.5, 0.0, swaySpine * 0.5, dt, 7.0);
-    this.lerpBoneOffset("Shibahu_Spine1", breathSpine, 0.0, swaySpine, dt, 7.0);
-    this.lerpBoneOffset("Shibahu_Spine2", breathSpine * 1.1, 0.0, swaySpine, dt, 7.0);
+    // 1. Бедра (Shibahu_Hips) — женственный грув тела (Contrapposto Sway) или ритмичный танец
+    if (this.actionMode === "dance") {
+      const beat = t * 6.8;
+      const hipTx = Math.abs(Math.sin(beat)) * 0.04;
+      const hipTurnY = Math.sin(beat * 0.5) * 0.10;
+      const hipSwayZ = Math.sin(beat) * 0.11;
+      this.lerpBoneOffset("Shibahu_Hips", hipTx, hipTurnY, hipSwayZ, dt, 10.0);
+      if (this.bones["Shibahu_Hips"] && this.basePositions["Shibahu_Hips"]) {
+        const bounce = Math.sin(beat * 2.0) * 0.8;
+        this.bones["Shibahu_Hips"].position.y = this.basePositions["Shibahu_Hips"].y + bounce;
+      }
+    } else {
+      // 24/7 покой и речь: плавный перенос веса с бедра на бедро + дыхание
+      const hipTx = Math.sin(t * 2.2) * 0.015;
+      const hipTurnY = Math.cos(t * 0.65) * 0.045;
+      const hipSwayZ = Math.sin(t * 1.1) * 0.045;
+      this.lerpBoneOffset("Shibahu_Hips", hipTx, hipTurnY, hipSwayZ, dt, 7.0);
+      if (this.bones["Shibahu_Hips"] && this.basePositions["Shibahu_Hips"]) {
+        const bounce = Math.sin(t * 2.2) * 0.5;
+        this.bones["Shibahu_Hips"].position.y = this.basePositions["Shibahu_Hips"].y + bounce;
+      }
+    }
 
-    // 3. Шея и Голова — базовый наклон из EMOTION_MAP + дыхание + мышь:
-    const headTx = head[0] + Math.sin(t * 1.5) * 0.03 + (isTalking ? this.smoothedRms * 0.12 : 0) + mouseY * 0.10;
-    const headTy = head[1] + Math.sin(t * 0.9) * 0.05 + mouseX * 0.18;
-    const headTz = head[2] + Math.cos(t * 1.2) * 0.04;
+    // 2. Позвоночник (Shibahu_Spine, Spine1, Spine2) — мягкий S-изгиб талии в противофазе с бедрами и глубокое дыхание
+    if (this.actionMode === "dance") {
+      const beat = t * 6.8;
+      const swaySpine = -Math.sin(beat) * 0.06;
+      this.lerpBoneOffset("Shibahu_Spine", 0.0, 0.0, swaySpine * 0.5, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_Spine1", 0.0, 0.0, swaySpine, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_Spine2", 0.0, 0.0, swaySpine * 1.1, dt, 10.0);
+    } else if (this.actionMode === "shy") {
+      const shySway = Math.sin(t * 4.5) * 0.06;
+      this.lerpBoneOffset("Shibahu_Spine", 0.0, shySway * 0.5, 0.0, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_Spine1", 0.0, shySway, 0.0, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_Spine2", 0.0, shySway * 1.1, 0.0, dt, 7.0);
+    } else {
+      const breathSpine = Math.sin(t * 1.8) * 0.025 + (isTalking ? 0.03 : 0.0);
+      const spineTy = -Math.cos(t * 0.65) * 0.02;
+      const swaySpine = -Math.sin(t * 1.1) * 0.022;
+      this.lerpBoneOffset("Shibahu_Spine", breathSpine * 0.5, spineTy * 0.5, swaySpine * 0.5, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_Spine1", breathSpine, spineTy, swaySpine, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_Spine2", breathSpine * 1.1, spineTy * 1.1, swaySpine * 1.1, dt, 7.0);
+    }
 
-    this.lerpBoneOffset("Shibahu_Neck", headTx * 0.4, headTy * 0.4, headTz * 0.4, dt, 7.0);
-    this.lerpBoneOffset("Shibahu_Head", headTx * 0.6, headTy * 0.6, headTz * 0.6, dt, 7.0);
+    // 3. Шея и Голова — базовый наклон из EMOTION_MAP + дыхание + мышь + микро-привычки
+    let headTx, headTy, headTz;
+    if (this.actionMode === "dance") {
+      const beat = t * 6.8;
+      headTx = Math.abs(Math.cos(beat)) * 0.07 - 0.03;
+      headTy = Math.sin(beat * 0.5) * 0.08;
+      headTz = Math.sin(beat * 0.5) * 0.14;
+    } else if (this.actionMode === "shy") {
+      headTx = 0.06;
+      headTy = 0.0;
+      headTz = -0.12;
+    } else if (this.activeMicroHabit === "curious_look") {
+      headTx = 0.05 + mouseY * 0.05;
+      headTy = 0.08 + mouseX * 0.10;
+      headTz = -0.12;
+    } else {
+      headTx = head[0] + Math.sin(t * 1.5) * 0.03 + (isTalking ? this.smoothedRms * 0.12 : 0) + mouseY * 0.10;
+      headTy = head[1] + Math.sin(t * 0.9) * 0.05 + mouseX * 0.18;
+      headTz = head[2] + Math.cos(t * 1.2) * 0.04;
+    }
+    this.lerpBoneOffset("Shibahu_Neck", headTx * 0.4, headTy * 0.4, headTz * 0.4, dt, 8.0);
+    this.lerpBoneOffset("Shibahu_Head", headTx * 0.6, headTy * 0.6, headTz * 0.6, dt, 8.0);
 
-    // 4. Плечи:
-    const shSway = Math.sin(t * 1.8) * 0.02;
-    this.lerpBoneOffset("Shibahu_LeftShoulder", 0.0, 0.0, shSway, dt, 7.0);
-    this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, shSway, dt, 7.0);
+    // 4. Плечи — поочередный кач в танце / мягкое дыхание
+    if (this.actionMode === "dance") {
+      const beat = t * 6.8;
+      this.lerpBoneOffset("Shibahu_LeftShoulder", 0.0, 0.0, Math.sin(beat) * 0.08, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, -Math.sin(beat) * 0.08, dt, 10.0);
+    } else if (this.waveTimer > 0) {
+      const w = Math.sin(t * 5.8);
+      this.lerpBoneOffset("Shibahu_LeftShoulder", 0.0, 0.0, Math.sin(t * 1.8) * 0.025, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, 0.10 + 0.03 * w, dt, 8.0);
+    } else if (this.activeMicroHabit === "cute_wink") {
+      this.lerpBoneOffset("Shibahu_LeftShoulder", 0.0, 0.0, 0.06 + Math.sin(t * 2.0) * 0.02, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, Math.sin(t * 1.8) * 0.025, dt, 7.0);
+    } else {
+      const shSway = Math.sin(t * 1.8) * 0.025;
+      this.lerpBoneOffset("Shibahu_LeftShoulder", 0.0, 0.0, shSway, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, shSway, dt, 7.0);
+    }
 
-    // 5. Руки, кисти и пальцы:
+    // 5. Руки, предплечья, кисти и пальцы:
     if (this.waveTimer > 0) {
-      // Приветствие / махание рукой (3.0 сек) — подъем перед правым плечом, открытая ладонь
-      const sway = Math.sin(t * 6.0) * 0.18;             // Мягкое качание предплечья влево-вправо
-      const wristWave = Math.sin(t * 6.0 - 0.65) * 0.30; // Гибкий взмах кистью с отставанием по фазе
-      const wristNod  = Math.cos(t * 12.0) * 0.06;       // Легкая живая игра кисти
+      // БЛОК 1: ЧИСТОЕ КАЧАНИЕ В ПЛОСКОСТИ ЭКРАНА БЕЗ «ВКРУЧИВАНИЯ ЛАМПОЧКИ»
+      const w = Math.sin(t * 5.8);               // Фаза махания предплечьем (-1 .. +1)
+      const wLag = Math.sin(t * 5.8 - 0.55);     // Фаза кисти с мягким отставанием
 
-      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, 0.10 + Math.sin(t * 6.0) * 0.03, dt, 7.0);
-      this.lerpBoneOffset("Shibahu_RightArm", -0.60, 0.28, 0.20 + Math.sin(t * 6.0) * 0.04, dt, 7.0);
-      this.lerpBoneOffset("Shibahu_RightForeArm", 1.75, -0.35 + sway, 2.15, dt, 8.0);
-      this.lerpBoneOffset("Shibahu_RightHand", wristNod, wristWave, 0.0, dt, 10.0);
+      // 1. Плечо и предплечье качаются в плоскости экрана БЕЗ осевого скручивания ладони:
+      this.lerpBoneOffset("Shibahu_RightShoulder", 0.0, 0.0, 0.10 + 0.03 * w, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_RightArm",      -0.58, 0.26, 0.18 + 0.04 * w, dt, 8.0);
+      this.lerpBoneOffset(
+        "Shibahu_RightForeArm",
+        1.75 - 0.16 * w,   // Синхронная компенсация X (убирает скручивание кисти!)
+        -0.35 - 0.27 * w,  // Горизонтальная дуга взмаха влево-вправо
+        2.15 - 0.10 * w,   // Синхронная компенсация Z
+        dt,
+        10.0
+      );
 
-      // Живые расслабленные пальчики с легкой волной (НЕ плоская доска!):
-      this.setWaveFingerRotations("Right", t, dt);
+      // 2. Кисть мягко доводит взмах влево-вправо в плоскости ладони (по оси ty):
+      this.lerpBoneOffset("Shibahu_RightHand", 0.0, -0.26 * wLag, 0.0, dt, 12.0);
+
+      // 3. Пальчики чуть приоткрыты и живо шевелятся легкой волной:
+      const fingerNames = ["Index", "Middle", "Ring", "Pinky"];
+      let fIdx = 0;
+      for (const f of fingerNames) {
+        for (let i = 1; i <= 3; i++) {
+          const fWave = Math.sin(t * 5.8 + fIdx * 0.3) * 0.04;
+          this.lerpBoneOffset(`Shibahu_RightHand${f}${i}`, 0.0, 0.0, 0.06 + fWave, dt, 9.0);
+          fIdx++;
+        }
+      }
+      for (let i = 1; i <= 3; i++) {
+        this.lerpBoneOffset(`Shibahu_RightHandThumb${i}`, 0.0, 0.04, 0.0, dt, 9.0);
+      }
 
       // Левая рука спокойно и свободно опущена снаружи от бедра
       this.lerpBoneOffset("Shibahu_LeftArm", 0.0, 0.0, 0.03 + Math.sin(t * 1.5) * 0.015, dt, 6.0);
       this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -0.12 + Math.cos(t * 1.5) * 0.03, 0.0, dt, 6.0);
       this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.0, dt, 6.0);
       this.setFingerRotations("Left", -0.20 + Math.sin(t * 1.8) * 0.04, dt);
+
+    } else if (this.actionMode === "dance") {
+      // БЛОК 3: ТАНЕЦ НА ПОДПИСКУ (dance) — ритмичные движения предплечьями и кистями
+      const beat = t * 6.8;
+      this.lerpBoneOffset("Shibahu_RightArm", 0.0, 0.18, 0.15 + Math.sin(beat) * 0.06, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_RightForeArm", 0.0, -1.25 + Math.sin(beat) * 0.28, 0.0, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_RightHand", 0.0, Math.cos(beat) * 0.22, 0.0, dt, 12.0);
+
+      this.lerpBoneOffset("Shibahu_LeftArm", 0.0, -0.18, 0.15 - Math.sin(beat) * 0.06, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -1.25 - Math.sin(beat) * 0.28, 0.0, dt, 10.0);
+      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, -Math.cos(beat) * 0.22, 0.0, dt, 12.0);
+
+      const fingerCurl = -0.22 + Math.sin(beat) * 0.06;
+      this.setFingerRotations("Right", fingerCurl, dt);
+      this.setFingerRotations("Left", fingerCurl, dt);
+
+    } else if (this.actionMode === "cheer") {
+      // БЛОК 3: ПОБЕДНАЯ РАДОСТЬ (cheer / win) — обе руки радостно вскинуты вверх
+      const c = Math.sin(t * 7.5);
+      this.lerpBoneOffset("Shibahu_RightArm",     -0.55, 0.25, 0.20, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_RightForeArm", 1.75 - 0.14 * c, -0.35 - 0.22 * c, 2.15 - 0.08 * c, dt, 9.0);
+      this.lerpBoneOffset("Shibahu_RightHand", 0.0, 0.0, 0.0, dt, 8.0);
+
+      this.lerpBoneOffset("Shibahu_LeftArm",      -0.55, 0.25, 0.20, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_LeftForeArm",  1.75 + 0.14 * c, -0.35 + 0.22 * c, 2.15 + 0.08 * c, dt, 9.0);
+      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.0, dt, 8.0);
+
+      const cheerFingers = -0.10 + Math.sin(t * 7.5) * 0.05;
+      this.setFingerRotations("Right", cheerFingers, dt);
+      this.setFingerRotations("Left", cheerFingers, dt);
+
+    } else if (this.actionMode === "shy") {
+      // БЛОК 3: РЕАКЦИЯ НА КОМПЛИМЕНТ (shy)
+      this.lerpBoneOffset("Shibahu_RightArm", 0.0, 0.08, 0.06, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_RightForeArm", 0.0, -0.65, 0.0, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_RightHand", 0.0, 0.0, 0.0, dt, 7.0);
+
+      this.lerpBoneOffset("Shibahu_LeftArm", 0.0, -0.08, 0.06, dt, 7.0);
+      this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -0.65, 0.0, dt, 8.0);
+      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.0, dt, 7.0);
+
+      this.setFingerRotations("Right", -0.25, dt);
+      this.setFingerRotations("Left", -0.25, dt);
 
     } else if (isTalking) {
       // Речь: мягкая симметричная жестикуляция предплечьями ПЕРЕД талией (снаружи от бедер):
@@ -344,16 +496,37 @@ class ShibahuFBXController {
       this.setFingerRotations("Left", fingerCurl, dt);
     }
 
-    // 6. Ушки и Хвост:
-    const earTwitch = Math.pow(Math.max(0, Math.sin(t * 3.1)), 12) * 0.20 + (isTalking ? this.smoothedRms * 0.15 : 0.0);
-    this.lerpBoneOffset("Shibahu_Ear_Left1", 0.0, 0.0, earTwitch, dt, 12.0);
-    this.lerpBoneOffset("Shibahu_Ear_Right1", 0.0, 0.0, -earTwitch, dt, 12.0);
+    // 6. Ушки, Хвост и Хохолок (Ahoge):
+    let leftEarTz, leftEarTx, rightEarTz, rightEarTx;
+    if (this.earTwitchTimer > 0) {
+      leftEarTz = +0.22;
+      leftEarTx = +0.15;
+      rightEarTz = -0.22;
+      rightEarTx = +0.15;
+    } else {
+      const earWave = Math.sin(t * 2.1) * 0.05;
+      leftEarTz = earWave;
+      leftEarTx = 0.0;
+      rightEarTz = -earWave;
+      rightEarTx = 0.0;
+    }
+    for (let i = 1; i <= 3; i++) {
+      this.lerpBoneOffset(`Shibahu_Ear_Left${i}`, leftEarTx, 0.0, leftEarTz, dt, 12.0);
+      this.lerpBoneOffset(`Shibahu_Ear_Right${i}`, rightEarTx, 0.0, rightEarTz, dt, 12.0);
+    }
 
-    const tailSpeed = isTalking ? 3.5 : 2.2;
-    const tailMult = isTalking ? 1.4 : 1.0;
+    // Пушистый хвост (Tail1..6): плавно виляет восьмеркой за спиной
+    const tailSpeed = (isSpeaking || this.actionMode) ? 4.2 : 2.0;
     for (let i = 1; i <= 6; i++) {
-      const tailWave = Math.sin(t * tailSpeed - i * 0.5) * 0.14 * tailMult;
-      this.lerpBoneOffset(`Shibahu_Tail${i}`, 0.0, tailWave * 0.4, tailWave, dt, 8.0);
+      const ty = Math.sin(t * tailSpeed - i * 0.45) * 0.16;
+      const tz = Math.cos(t * tailSpeed * 0.7 - i * 0.3) * 0.10;
+      this.lerpBoneOffset(`Shibahu_Tail${i}`, 0.0, ty, tz, dt, 8.0);
+    }
+
+    // Хохолок на макушке (Ahoge1..3): упруго пружинит
+    const ahogeTz = Math.sin(t * 3.2) * 0.08;
+    for (let i = 1; i <= 3; i++) {
+      this.lerpBoneOffset(`Shibahu_Ahoge${i}`, 0.0, 0.0, ahogeTz * (i * 0.5), dt, 8.0);
     }
   }
 
@@ -363,7 +536,21 @@ class ShibahuFBXController {
       this.giftReactionTimer -= dt;
     }
 
-    const activeEmotion = this.waveTimer > 0 ? "wave" : (this.currentEmotion || "idle");
+    const activeEmotion = this.waveTimer > 0
+      ? "wave"
+      : this.actionMode === "dance"
+      ? "excited"
+      : this.actionMode === "cheer"
+      ? "win"
+      : this.actionMode === "shy"
+      ? "blush"
+      : this.activeMicroHabit === "curious_look"
+      ? "happy"
+      : this.activeMicroHabit === "cute_wink"
+      ? "wink"
+      : this.activeMicroHabit === "happy_vibing"
+      ? "happy"
+      : (this.currentEmotion || "idle");
     const emoCfg = EMOTION_MAP[activeEmotion] || EMOTION_MAP.idle;
 
     // 1. Сглаживание RMS звука для многофазной артикуляции:
@@ -383,6 +570,10 @@ class ShibahuFBXController {
     ];
     for (const name of EYE_CHEEK_MORPHS) {
       let target = emoCfg.eyes[name] || 0.0;
+      // В микро-привычке curious_look включаем большие сияющие зрачки:
+      if (this.activeMicroHabit === "curious_look" && name === "facial_irisHilight_Big") {
+        target = 1.0;
+      }
       // ЖЕСТКОЕ ПРАВИЛО ПРИ РЕЧИ:
       // Когда она говорит (smoothedRms > 0.025), принудительно держи face_mesh1_2 = 0.0 и face_mesh2 = 0.0
       // (чтобы во время разговора её золотые глаза ВСЕГДА были открыты и смотрели на зрителя)
@@ -440,7 +631,10 @@ class ShibahuFBXController {
       // В тишине ротовые морфы стремятся к EMOTION_MAP[activeEmotion].mouth:
       const MOUTH_MORPHS = ["face_mesh1", "face_mesh6", "face_mesh9", "face_mesh3", "face_mesh4_2"];
       for (const name of MOUTH_MORPHS) {
-        const target = emoCfg.mouth[name] || 0.0;
+        let target = emoCfg.mouth[name] || 0.0;
+        if (this.activeMicroHabit === "curious_look" && name === "face_mesh3") {
+          target = 0.75;
+        }
         this.smoothSetMorph(name, target, dt, 12.0);
       }
     }
@@ -456,20 +650,43 @@ class ShibahuFBXController {
       this.onWin();
       return;
     }
+    if (name === "dance") {
+      this.triggerAction("dance", durationMs > 0 ? durationMs / 1000.0 : 4.5);
+      return;
+    }
+    if (name === "shy") {
+      this.triggerAction("shy", durationMs > 0 ? durationMs / 1000.0 : 3.2);
+      return;
+    }
     this.currentEmotion = EMOTION_MAP[name] ? name : "idle";
-    // Таймер сброса: авто-возврат в idle через 4.0 секунды, чтобы эмоция не залипала
     this.emotionResetTimer = durationMs > 0 ? durationMs / 1000.0 : 4.0;
   }
 
+  triggerAction(action, duration = 4.0) {
+    this.actionMode = action;
+    this.actionTimer = Number(duration) || 4.0;
+    if (action === "dance") {
+      this.currentEmotion = "excited";
+      this.emotionResetTimer = this.actionTimer;
+    } else if (action === "cheer") {
+      this.currentEmotion = "win";
+      this.emotionResetTimer = this.actionTimer;
+    } else if (action === "shy") {
+      this.currentEmotion = "blush";
+      this.emotionResetTimer = this.actionTimer;
+    } else if (action === "thinking") {
+      this.currentEmotion = "thinking";
+      this.emotionResetTimer = this.actionTimer;
+    }
+  }
+
   onGift(giftName = "") {
-    this.currentEmotion = "blush";
-    this.emotionResetTimer = 5.0;
+    this.triggerAction("dance", 4.5);
     this.giftReactionTimer = 2.0;
   }
 
   onWin() {
-    this.currentEmotion = "win";
-    this.emotionResetTimer = 6.0;
+    this.triggerAction("cheer", 3.5);
   }
 
   wave() {
@@ -479,10 +696,12 @@ class ShibahuFBXController {
   playBodyMotion(motion) {
     if (motion === "wave" || motion === "greeting") {
       this.wave();
-    } else if (motion === "win") {
-      this.onWin();
-    } else if (motion === "blush" || motion === "flirt") {
-      this.setEmotion("blush", 4000);
+    } else if (motion === "win" || motion === "cheer") {
+      this.triggerAction("cheer", 3.5);
+    } else if (motion === "dance") {
+      this.triggerAction("dance", 4.5);
+    } else if (motion === "blush" || motion === "shy" || motion === "flirt") {
+      this.triggerAction("shy", 3.2);
     }
   }
 
@@ -492,10 +711,38 @@ class ShibahuFBXController {
 
   update(delta, elapsed, isSpeaking, audioRms = 0) {
     if (this.waveTimer > 0) this.waveTimer -= delta;
+
+    if (this.actionTimer > 0) {
+      this.actionTimer -= delta;
+      if (this.actionTimer <= 0) {
+        this.actionMode = null;
+      }
+    }
+
     if (this.emotionResetTimer > 0) {
       this.emotionResetTimer -= delta;
-      if (this.emotionResetTimer <= 0 && !isSpeaking && this.waveTimer <= 0) {
+      if (this.emotionResetTimer <= 0 && !isSpeaking && this.waveTimer <= 0 && !this.actionMode) {
         this.currentEmotion = "idle";
+      }
+    }
+
+    // Автономные микро-привычки в покое (каждые 7-11 секунд):
+    if (!isSpeaking && !this.actionMode && this.waveTimer <= 0 && this.currentEmotion === "idle") {
+      this.idleMicroTimer -= delta;
+      if (this.idleMicroTimer <= 0) {
+        const habits = ["curious_look", "cute_wink", "happy_vibing"];
+        this.activeMicroHabit = habits[Math.floor(Math.random() * habits.length)];
+        this.microHabitTimer = 2.2;
+        this.idleMicroTimer = 7.0 + Math.random() * 4.0;
+      }
+    } else if (isSpeaking || this.actionMode || this.waveTimer > 0) {
+      this.activeMicroHabit = null;
+    }
+
+    if (this.microHabitTimer > 0) {
+      this.microHabitTimer -= delta;
+      if (this.microHabitTimer <= 0) {
+        this.activeMicroHabit = null;
       }
     }
 
@@ -660,9 +907,16 @@ window.winkySetEmotion = (emo) => {
     window.winkyWave();
   } else if (emo === "win") {
     window.winkyOnWin();
+  } else if (emo === "dance") {
+    window.winkyTriggerAction("dance", 4.5);
+  } else if (emo === "shy") {
+    window.winkyTriggerAction("shy", 3.2);
   } else {
     vtuber.setEmotion(emo, 4000); // авто-сброс в idle через 4 секунды
   }
+};
+window.winkyTriggerAction = (action, duration = 4.0) => {
+  if (vtuber) vtuber.triggerAction(action, duration);
 };
 window.winkyOnGift = (gift) => vtuber && vtuber.onGift(gift);
 window.winkyOnWin = () => vtuber && vtuber.onWin();

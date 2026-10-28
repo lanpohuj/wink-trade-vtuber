@@ -93,14 +93,23 @@ class WinkyAPI:
     def set_emotion(self, emotion: str) -> None:
         if emotion == "wave":
             self.trigger_wave()
+        elif emotion == "dance":
+            self.trigger_action("dance", 4.5)
+        elif emotion == "win":
+            self.trigger_action("cheer", 3.5)
+        elif emotion == "shy":
+            self.trigger_action("shy", 3.2)
         if emotion in EMOTIONS:
             self._avatar_js(f"window.winkySetEmotion({json.dumps(emotion)})")
 
+    def trigger_action(self, action: str, duration: float = 4.0) -> None:
+        self._avatar_js(f"window.winkyTriggerAction && window.winkyTriggerAction({json.dumps(action)}, {float(duration)})")
+
     def trigger_gift(self, gift: str = "") -> None:
-        self._avatar_js(f"window.winkyOnGift && window.winkyOnGift({json.dumps(gift)})")
+        self.trigger_action("dance", 4.5)
 
     def trigger_win(self) -> None:
-        self._avatar_js("window.winkyOnWin && window.winkyOnWin()")
+        self.trigger_action("cheer", 3.5)
 
     def trigger_wave(self) -> None:
         self._avatar_js("window.winkyWave && window.winkyWave()")
@@ -234,6 +243,7 @@ class WinkyAPI:
             on_join=self._on_chat_join,
             on_gift=self._on_chat_gift,
             on_status=self._on_tiktok_status,
+            on_follow=self._on_chat_follow,
         )
         self._tiktok.start()
         logger.info("Подключаю TikTok-чат: @%s", username)
@@ -260,6 +270,20 @@ class WinkyAPI:
             self._chat_router.handle_join(user or "Дима 🚀", force=True)
             self.push_status()
 
+    def simulate_follow(self, user: str = "Алина ✨") -> None:
+        """Тест подписки зрителя из пульта (танец + озвучка)."""
+        self._controller.stop_current()
+        if self._chat_router:
+            self._chat_router.handle_follow(user or "Алина ✨")
+            self.push_status()
+
+    def simulate_gift(self, user: str = "Миша 🚀", gift: str = "Роза") -> None:
+        """Тест подарка зрителя из пульта (танец + благодарность)."""
+        self._controller.stop_current()
+        if self._chat_router:
+            self._chat_router.handle_gift(user or "Миша 🚀", gift or "Роза")
+            self.push_status()
+
     def _on_chat_comment(self, user: str, text: str) -> None:
         if self._chat_router:
             self._chat_router.handle_comment(user, text)
@@ -267,6 +291,10 @@ class WinkyAPI:
     def _on_chat_join(self, user: str) -> None:
         if self._chat_router:
             self._chat_router.handle_join(user)
+
+    def _on_chat_follow(self, user: str) -> None:
+        if self._chat_router:
+            self._chat_router.handle_follow(user)
 
     def _on_chat_gift(self, user: str, gift: str) -> None:
         if self._chat_router:
@@ -376,6 +404,7 @@ def main() -> None:
         on_feed=on_chat_feed,
         on_gift=winky_api.trigger_gift,
         on_wave=winky_api.trigger_wave,
+        on_action=winky_api.trigger_action,
     )
     winky_api.attach_chat(chat_router)
 

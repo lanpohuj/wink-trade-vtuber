@@ -91,6 +91,7 @@ class ChatRouter:
         on_feed: Callable[[dict], None],
         on_gift: Callable[[str], None] | None = None,
         on_wave: Callable[[], None] | None = None,
+        on_action: Callable[[str, float], None] | None = None,
     ) -> None:
         self._book = book
         self._brain = brain
@@ -98,6 +99,7 @@ class ChatRouter:
         self._on_feed = on_feed
         self._on_gift = on_gift
         self._on_wave = on_wave
+        self._on_action = on_action
         self._last_greet_at = 0.0
         self._counters = Counter()
         self._lock = threading.Lock()
@@ -115,7 +117,7 @@ class ChatRouter:
     # ---------- публичные обработчики событий ----------
 
     def handle_comment(self, user: str, text: str) -> None:
-        """Комментарий зрителя: keyword -> LLM -> фолбэк."""
+        """Комментарий зрителя: классификация типа (комплимент/приветствие/профит) -> keyword -> LLM -> фолбэк."""
         text = text.strip()
         if not text:
             return
@@ -124,17 +126,53 @@ class ChatRouter:
         self._feed("user", feed_user, text)
         lang = detect_lang(text)
 
+        lower_text = text.lower()
+        is_compliment = any(word in lower_text for word in ("красотк", "лучш", "мил", "любл", "топ", "няшк", "красив", "cute", "love", "best", "милашк", "прелесть"))
+        is_greeting = any(word in lower_text for word in ("привет", "хей", "ку", "здарова", "добрый", "hi", "hello", "hey", "салют"))
+        is_win = any(word in lower_text for word in ("плюс", "профит", "зашло", "выиграл", "ура", "win", "profit", "побед"))
+
+        if is_compliment:
+            detected_emo = "blush"
+            if self._on_action:
+                try:
+                    self._on_action("shy", 3.2)
+                except Exception:
+                    logger.exception("on_action shy упал")
+        elif is_greeting:
+            detected_emo = "wave"
+            if self._on_wave:
+                try:
+                    self._on_wave()
+                except Exception:
+                    logger.exception("on_wave упал")
+        elif is_win:
+            detected_emo = "excited"
+            if self._on_action:
+                try:
+                    self._on_action("cheer", 3.5)
+                except Exception:
+                    logger.exception("on_action cheer упал")
+        else:
+            detected_emo = None
+            if self._on_action:
+                try:
+                    self._on_action("thinking", 0.8)
+                except Exception:
+                    pass
+
         # 1. Ключевые сценарии — приоритет
         keyword = self._book.match_keyword(text)
         if keyword is not None:
-            if self._say(keyword.text(lang), lang, keyword.emotion, user):
+            emo = detected_emo or keyword.emotion
+            if self._say(keyword.text(lang), lang, emo, user):
                 self._bump("keyword_hits")
                 return
 
         # 2. DeepSeek для нестандартных вопросов
         reply = self._brain.reply(text, nickname=user)
         if reply:
-            if self._say(reply, lang, self._emotion_for(reply), user):
+            emo = detected_emo or self._emotion_for(reply)
+            if self._say(reply, lang, emo, user):
                 self._bump("llm_replies")
                 return
             self._bump("llm_censored")
@@ -142,7 +180,8 @@ class ChatRouter:
             self._bump("llm_limited")
 
         # 3. Фолбэк
-        if self._say(self._book.chat_phrases.fallback(lang), lang, "wink", user):
+        emo = detected_emo or "wink"
+        if self._say(self._book.chat_phrases.fallback(lang), lang, emo, user):
             self._bump("fallbacks")
 
     def handle_join(self, user: str, force: bool = False) -> None:
@@ -178,20 +217,57 @@ class ChatRouter:
         text = random.choice(ru_phrases if lang == "ru" else en_phrases)
         self._say(text, lang, "wave", clean_name)
 
-    def handle_gift(self, user: str, gift: str) -> None:
-        """Подарок: благодарим всегда и сразу со смущением/румянцем."""
-        if self._on_gift:
+    def handle_follow(self, user: str) -> None:
+        """Подписка зрителя: танец + озвучка благодарности."""
+        clean_name, lang = sanitize_nickname(user)
+        self._bump("follows")
+        self._feed("user", user, "❤️ подписался(лась) на эфир")
+
+        if self._on_action:
             try:
-                self._on_gift(gift)
+                self._on_action("dance", 4.5)
+            except Exception:
+                logger.exception("on_action dance упал")
+
+        ru_phrases = [
+            f"Вау, {clean_name}, спасибо за подписку! Танцую специально для тебя! Залетай по ссылке в профиле в наш бот!",
+            f"Ура, {clean_name}, добро пожаловать к нам! Лови мой фирменный танец!",
+        ]
+        en_phrases = [
+            f"Wow, {clean_name}, thank you for following! Dancing just for you! Check out the link in bio for our bot!",
+            f"Welcome, {clean_name}! Thank you for following, enjoy my dance!",
+        ]
+        text = random.choice(ru_phrases if lang == "ru" else en_phrases)
+        self._say(text, lang, "excited", clean_name)
+
+    def handle_gift(self, user: str, gift: str = "Роза") -> None:
+        """Подарок: танец + благодарность за подарок."""
+        clean_name, lang = sanitize_nickname(user)
+        clean_gift = (gift or "").strip() or ("Роза" if lang == "ru" else "Rose")
+        self._bump("gifts")
+        self._feed("user", user, f"🎁 {clean_gift}")
+
+        if self._on_action:
+            try:
+                self._on_action("dance", 4.5)
+            except Exception:
+                logger.exception("on_action dance упал")
+        elif self._on_gift:
+            try:
+                self._on_gift(clean_gift)
             except Exception:
                 pass
-        lang = random.choice(_GREET_LANGS)
-        text = self._book.chat_phrases.gift_thank(lang)
-        if not text:
-            return
-        self._bump("gifts")
-        self._feed("user", user, f"🎁 {gift}")
-        self._say(text, lang, "excited", user, gift=gift)
+
+        ru_phrases = [
+            f"Ого, {clean_name} подарил {clean_gift}! Спасибо огромное, ты супер! Лови мой фирменный танец!",
+            f"Вау, {clean_name}, какой подарок! {clean_gift} — это супер мило! Танцую специально для тебя!",
+        ]
+        en_phrases = [
+            f"Wow, {clean_name} sent {clean_gift}! Thank you so much, you are awesome! Here is my dance for you!",
+            f"Thank you, {clean_name}, for the {clean_gift}! Dancing just for you!",
+        ]
+        text = random.choice(ru_phrases if lang == "ru" else en_phrases)
+        self._say(text, lang, "excited", clean_name, gift=clean_gift)
 
     # ---------- внутреннее ----------
 

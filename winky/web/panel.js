@@ -30,6 +30,8 @@ const ttConnect = document.getElementById("ttConnect");
 const simQuestion = document.getElementById("simQuestion");
 const simAsk = document.getElementById("simAsk");
 const simJoin = document.getElementById("simJoin");
+const simFollow = document.getElementById("simFollow");
+const simGift = document.getElementById("simGift");
 const chatFeed = document.getElementById("chatFeed");
 const chatStats = document.getElementById("chatStats");
 const lumeanTemplate = document.getElementById("lumeanTemplate");
@@ -273,6 +275,14 @@ simAsk.addEventListener("click", () => {
 
 simJoin?.addEventListener("click", () => {
   api()?.simulate_join("Дима 🚀");
+});
+
+simFollow?.addEventListener("click", () => {
+  api()?.simulate_follow("Алина ✨");
+});
+
+simGift?.addEventListener("click", () => {
+  api()?.simulate_gift("Миша 🚀", "Роза");
 });
 
 simQuestion.addEventListener("keydown", (event) => {
