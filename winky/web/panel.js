@@ -116,19 +116,37 @@ function renderQuickReplies(replies) {
   quickGrid.innerHTML = "";
   for (const reply of replies) {
     const button = document.createElement("button");
+    button.className = "quick-card";
+    button.setAttribute("data-id", reply.id);
     button.innerHTML =
       '<span class="qr-lang">' + reply.lang.toUpperCase() + " · " + reply.emotion + "</span>" +
       '<span>' + reply.label + "</span>" +
       '<span class="qr-text">' + reply.text + "</span>";
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       button.classList.add("clicked");
       setTimeout(() => button.classList.remove("clicked"), 700);
-      if (reply.emotion) api()?.set_emotion(reply.emotion);
-      api()?.quick_reply(reply.id);
+      const bridge = window.pywebview?.api || api();
+      if (bridge?.quick_reply) {
+        bridge.quick_reply(reply.id);
+      }
     });
     quickGrid.appendChild(button);
   }
 }
+
+quickGrid.addEventListener("click", (e) => {
+  const card = e.target.closest(".quick-card");
+  if (!card) return;
+  const id = card.getAttribute("data-id");
+  if (id) {
+    const bridge = window.pywebview?.api || api();
+    if (bridge?.quick_reply) {
+      bridge.quick_reply(id);
+    }
+  }
+});
 
 function onScenariosReloaded() {
   reloadHint.hidden = false;

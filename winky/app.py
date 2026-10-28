@@ -67,10 +67,26 @@ class WinkyAPI:
     def quick_reply(self, reply_id: str) -> bool:
         reply = self._book.quick_reply(reply_id)
         if reply is None:
+            # Поддержка алиасов (greeting -> greet_ru, cta -> cta_ru, how_to -> howto_ru)
+            aliases = {
+                "greeting": "greet_ru",
+                "greet": "greet_ru",
+                "cta": "cta_ru",
+                "call_to_action": "cta_ru",
+                "how_to": "howto_ru",
+                "howto": "howto_ru",
+            }
+            if reply_id in aliases:
+                reply = self._book.quick_reply(aliases[reply_id])
+
+        if reply is None:
             logger.warning("Неизвестная реплика: %s", reply_id)
             return False
-        self._controller.stop_current()
-        if reply_id == "greeting" or reply.emotion == "wave":
+        try:
+            self._controller.stop_current()
+        except Exception as e:
+            logger.debug("stop_current error: %s", e)
+        if "greet" in reply.id or reply.emotion == "wave":
             self.trigger_wave()
         return self._controller.speak(reply.text, reply.lang, reply.emotion, source="scenario")
 
