@@ -69,6 +69,14 @@ function renderStatus(status) {
     }
   }
   renderChatState(status.chat);
+
+  if (Array.isArray(status.chat_history) && status.chat_history.length > 0) {
+    if (!chatFeed.querySelector(".chat-line")) {
+      for (const ev of status.chat_history) {
+        onChatEvent(ev);
+      }
+    }
+  }
 }
 
 function renderChatState(chat) {
@@ -79,7 +87,8 @@ function renderChatState(chat) {
   const c = chat.counters || {};
   chatStats.textContent =
     `комментариев: ${c.comments || 0} · ключевых: ${c.keyword_hits || 0} · ` +
-    `LLM: ${c.llm_replies || 0} · фолбэков: ${c.fallbacks || 0} · подарков: ${c.gifts || 0}`;
+    `LLM: ${c.llm_replies || 0} · фолбэков: ${c.fallbacks || 0} · подарков: ${c.gifts || 0} · ` +
+    `подписок: ${c.follows || 0} · входов: ${c.joins_greeted || 0}`;
 }
 
 const TT_LABELS = {
@@ -274,14 +283,17 @@ simAsk.addEventListener("click", () => {
 });
 
 simJoin?.addEventListener("click", () => {
+  onChatEvent({ kind: "user", who: "👋 Вход", text: "Дима 🚀 присоединился к эфиру" });
   api()?.simulate_join("Дима 🚀");
 });
 
 simFollow?.addEventListener("click", () => {
+  onChatEvent({ kind: "user", who: "💃 Подписка", text: "Алина ✨ подписалась на канал!" });
   api()?.simulate_follow("Алина ✨");
 });
 
 simGift?.addEventListener("click", () => {
+  onChatEvent({ kind: "user", who: "🎁 Подарок", text: "Миша 🚀 отправил Роза!" });
   api()?.simulate_gift("Миша 🚀", "Роза");
 });
 

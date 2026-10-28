@@ -34,7 +34,10 @@ logger = logging.getLogger(__name__)
 MEDIA_DIR = Path(__file__).parent / "web" / "media"
 MEDIA_DIR.mkdir(parents=True, exist_ok=True)
 
-EMOTIONS = ("idle", "happy", "excited", "thinking", "wink", "blush", "surprised", "neutral", "win", "wave", "dance")
+EMOTIONS = (
+    "idle", "happy", "excited", "thinking", "wink", "blush", "surprised", "neutral",
+    "win", "wave", "dance", "flirt_kiss", "neko_paws", "hip_groove", "peek_closer"
+)
 
 
 def detect_lang(text: str) -> str:

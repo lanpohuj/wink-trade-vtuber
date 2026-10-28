@@ -49,12 +49,18 @@ class WinkyAPI:
         self._chat_router: ChatRouter | None = None
         self._tiktok: TikTokConnector | None = None
         self._tiktok_status = "off"
+        self._chat_history: list[dict] = []
 
     # ---------- окна подключаются после создания ----------
 
     def attach(self, avatar_window: webview.Window, panel_window: webview.Window) -> None:
         self._avatar_window = avatar_window
         self._panel_window = panel_window
+
+    def record_chat_event(self, event: dict) -> None:
+        self._chat_history.append(event)
+        if len(self._chat_history) > 30:
+            self._chat_history = self._chat_history[-30:]
 
     # ---------- вызовы из JS ----------
 
@@ -99,6 +105,14 @@ class WinkyAPI:
             self.trigger_action("cheer", 3.5)
         elif emotion == "shy":
             self.trigger_action("shy", 3.2)
+        elif emotion == "flirt_kiss":
+            self.trigger_action("flirt_kiss", 3.0)
+        elif emotion == "neko_paws":
+            self.trigger_action("neko_paws", 3.0)
+        elif emotion == "hip_groove":
+            self.trigger_action("hip_groove", 3.2)
+        elif emotion == "peek_closer":
+            self.trigger_action("peek_closer", 2.8)
         if emotion in EMOTIONS:
             self._avatar_js(f"window.winkySetEmotion({json.dumps(emotion)})")
 
@@ -172,6 +186,7 @@ class WinkyAPI:
                 "llm_available": bool(settings.RIVER_API_KEY or settings.DEEPSEEK_API_KEY),
                 "counters": self._chat_router.counters() if self._chat_router else {},
             },
+            "chat_history": list(self._chat_history),
         }
 
     # ---------- CTA-ротация (вызывается из фонового цикла) ----------
@@ -311,8 +326,8 @@ class WinkyAPI:
     # ---------- уведомления JS ----------
 
     def push_status(self) -> None:
-        status = dataclasses.asdict(self._controller.status())
-        self._panel_js("window.winkyPanel && window.winkyPanel.renderStatus(" + json.dumps(status) + ")")
+        status = self.get_state()
+        self._panel_js("window.winkyPanel && window.winkyPanel.renderStatus(" + json.dumps(status, ensure_ascii=False) + ")")
 
     def push_quick_replies(self) -> None:
         replies = [
@@ -393,6 +408,7 @@ def main() -> None:
     brain = LLMBrain()
 
     def on_chat_feed(event: dict) -> None:
+        winky_api.record_chat_event(event)
         winky_api._panel_js(
             "window.winkyPanel && window.winkyPanel.onChatEvent(" + json.dumps(event, ensure_ascii=False) + ")"
         )
