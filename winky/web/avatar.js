@@ -25,9 +25,9 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 const scene = new THREE.Scene();
 window.scene = scene;
 
-// Камера 28° FOV на уровне груди и глаз (прямой взгляд на зрителя, ноги ниже колен за нижним срезом окна, запас сверху 33+ px)
+// Камера 28° FOV на уровне груди и глаз (отодвинута по Z на 215, +12% для надежного запаса воздуха вокруг рук и ушей)
 const camera = new THREE.PerspectiveCamera(28, window.innerWidth / window.innerHeight, 1.0, 1000.0);
-camera.position.set(0, 120, 192);
+camera.position.set(0, 120, 215);
 camera.lookAt(0, 114, 0);
 camera.updateProjectionMatrix();
 window.camera = camera;
@@ -75,9 +75,9 @@ window.addEventListener("mousemove", (e) => {
   mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
 });
 
-/* ==================== 3. Константы и хирургическое разделение морфов ==================== */
+/* ==================== 3. Хирургическое разделение морфов и пресеты эмоций ==================== */
 
-// Разделение морфов лица автора по линии Y = 138.3:
+// Разделение морфов лица по линии Y = 138.3:
 // Ниже 138.3 — строго рот, губы, зубы, язык и челюсть
 // Выше 138.3 — строго глаза, веки и брови
 function setupSurgicalFaceMorphs(faceMesh) {
@@ -89,49 +89,73 @@ function setupSurgicalFaceMorphs(faceMesh) {
 
   console.log(`[Winky Morph Surgery] Разделение морфов по Y = 138.3. Вершин: ${posAttr.count}, isRelative: ${isRelative}`);
 
-  // 1. Делаем чисто ротовые морфы (обнуляем смещения вершин выше Y = 138.3):
-  const mouthOnlyMorphs = ["face_mesh1", "face_mesh6", "face_mesh9", "face_mesh4_2", "face_mesh3"];
-  for (const name of mouthOnlyMorphs) {
-    const idx = dict[name] !== undefined ? dict[name] : dict[`blendShape1.${name}`];
-    if (idx === undefined || !morphAttrs[idx]) continue;
-    const mAttr = morphAttrs[idx];
-    let modified = 0;
+  // Вспомогательная функция копирования части морфа srcName в dstName по фильтру вершин keepFn(bx, by, bz)
+  function copyFilteredMorph(srcName, dstName, keepFn) {
+    const srcIdx = dict[srcName] !== undefined ? dict[srcName] : dict[`blendShape1.${srcName}`];
+    const dstIdx = dict[dstName] !== undefined ? dict[dstName] : dict[`blendShape1.${dstName}`];
+    if (srcIdx === undefined || dstIdx === undefined || !morphAttrs[srcIdx] || !morphAttrs[dstIdx]) return;
+    const srcAttr = morphAttrs[srcIdx];
+    const dstAttr = morphAttrs[dstIdx];
     for (let i = 0; i < posAttr.count; i++) {
+      const bx = posAttr.getX(i);
       const by = posAttr.getY(i);
-      if (by >= 138.3) {
-        mAttr.setXYZ(
-          i,
-          isRelative ? 0 : posAttr.getX(i),
-          isRelative ? 0 : by,
-          isRelative ? 0 : posAttr.getZ(i)
-        );
-        modified++;
+      const bz = posAttr.getZ(i);
+      if (keepFn(bx, by, bz)) {
+        dstAttr.setXYZ(i, srcAttr.getX(i), srcAttr.getY(i), srcAttr.getZ(i));
+      } else {
+        dstAttr.setXYZ(i, isRelative ? 0 : bx, isRelative ? 0 : by, isRelative ? 0 : bz);
       }
     }
-    mAttr.needsUpdate = true;
-    console.log(`[Winky Morph Surgery] Морф рта ${name}: изолировано ${modified} вершин верхней части лица`);
+    dstAttr.needsUpdate = true;
   }
 
-  // 2. Делаем чисто глазной морф моргания face_mesh8 (обнуляем смещения вершин ниже Y = 138.3):
-  const blinkIdx = dict["face_mesh8"] !== undefined ? dict["face_mesh8"] : dict["blendShape1.face_mesh8"];
-  if (blinkIdx !== undefined && morphAttrs[blinkIdx]) {
-    const bAttr = morphAttrs[blinkIdx];
-    let modified = 0;
-    for (let i = 0; i < posAttr.count; i++) {
-      const by = posAttr.getY(i);
-      if (by < 138.3) {
-        bAttr.setXYZ(
-          i,
-          isRelative ? 0 : posAttr.getX(i),
-          isRelative ? 0 : by,
-          isRelative ? 0 : posAttr.getZ(i)
-        );
-        modified++;
-      }
-    }
-    bAttr.needsUpdate = true;
-    console.log(`[Winky Morph Surgery] Морф моргания face_mesh8: изолировано ${modified} вершин нижней части лица`);
-  }
+  // 1. Создаем ЧИСТЫЕ МОРФЫ РТА (только Y < 138.3, глаза вообще не двигаются!):
+  // face_mesh5_2 -> MOUTH_A (милый открытый ротик «А» с розовым язычком из face_mesh1)
+  copyFilteredMorph("face_mesh1", "face_mesh5_2", (bx, by) => by < 138.3);
+  // face_mesh9_2 -> MOUTH_O (маленький круглый ротик «О/У» из face_mesh9)
+  copyFilteredMorph("face_mesh9", "face_mesh9_2", (bx, by) => by < 138.3);
+  // face_mesh6   -> MOUTH_E (средний рот «Э» — отсекаем глаза выше 138.3)
+  copyFilteredMorph("face_mesh6", "face_mesh6", (bx, by) => by < 138.3);
+  // face_mesh3   -> MOUTH_CAT (милая кошачья улыбка «:3» — только рот ниже 138.3)
+  copyFilteredMorph("face_mesh3", "face_mesh3", (bx, by) => by < 138.3);
+  // face_mesh4_2 -> MOUTH_SMILE (нежная закрытая полуулыбка — только рот ниже 138.3)
+  copyFilteredMorph("face_mesh4_2", "face_mesh4_2", (bx, by) => by < 138.3);
+
+  // 2. Создаем ЧИСТЫЕ МОРФЫ ГЛАЗ И БРОВЕЙ (только Y >= 138.3, рот не трогают!):
+  // face_mesh1_2 -> EYES_HAPPY (счастливые глаза дугой ^ ^)
+  copyFilteredMorph("face_mesh1_2", "face_mesh1_2", (bx, by) => by >= 138.3);
+  // face_mesh3_2 -> EYES_WINK (настоящее подмигивание ОДНИМ правым глазом: Y >= 138.3 и X < 0!)
+  copyFilteredMorph("face_mesh1_2", "face_mesh3_2", (bx, by) => by >= 138.3 && bx < 0.0);
+  // face_mesh8   -> EYES_BLINK (естественное моргание обоими глазами)
+  copyFilteredMorph("face_mesh8", "face_mesh8", (bx, by) => by >= 138.3);
+  // face_mesh9   -> EYES_SURPRISED (широко распахнутые удивленные глаза)
+  copyFilteredMorph("face_mesh9", "face_mesh9", (bx, by) => by >= 138.3);
+  // face_mesh7   -> EYES_THINKING (задумчивые / сведенные бровки)
+  copyFilteredMorph("face_mesh7", "face_mesh7", (bx, by) => by >= 138.3);
+}
+
+// Карта всех 9 эмоций пульта: глаза, рот в покое и наклон головы
+const EMOTION_PRESETS = {
+  idle:      { eyes: {},                                                                    idleMouth: { face_mesh4_2: 0.55 }, headTilt: [0.0, 0.0, 0.0] },
+  neutral:   { eyes: {},                                                                    idleMouth: { face_mesh4_2: 0.45 }, headTilt: [0.0, 0.0, 0.0] },
+  happy:     { eyes: { face_mesh1_2: 1.0, facial_cheek: 0.45 },                             idleMouth: { face_mesh5_2: 0.65 }, headTilt: [-0.04, 0.0, 0.06] },
+  blush:     { eyes: { facial_cheek: 1.0, facial_irisHilight_Big: 0.8 },                    idleMouth: { face_mesh3: 1.0 },    headTilt: [0.06, 0.0, -0.08] },
+  excited:   { eyes: { facial_irisHilight_Big: 1.0, facial_cheek: 0.7 },                    idleMouth: { face_mesh5_2: 0.85 }, headTilt: [-0.06, 0.0, 0.05] },
+  wink:      { eyes: { face_mesh3_2: 1.0, facial_cheek: 0.6 },                              idleMouth: { face_mesh3: 0.90 },   headTilt: [0.02, 0.0, -0.12] },
+  wave:      { eyes: { face_mesh1_2: 0.90, facial_cheek: 0.75 },                            idleMouth: { face_mesh5_2: 0.75 }, headTilt: [-0.03, 0.0, -0.12] },
+  win:       { eyes: { face_mesh1_2: 1.0, facial_cheek: 1.0, facial_irisHilight_Big: 1.0 }, idleMouth: { face_mesh5_2: 0.90 }, headTilt: [-0.08, 0.0, 0.08] },
+  surprised: { eyes: { face_mesh9: 1.0, facial_irisHilight_Big: 0.6 },                      idleMouth: { face_mesh9_2: 0.90 }, headTilt: [-0.06, 0.0, 0.0] },
+  thinking:  { eyes: { face_mesh7: 1.0 },                                                   idleMouth: { face_mesh9_2: 0.45 }, headTilt: [0.05, 0.08, 0.12] },
+};
+
+// Вспомогательная функция плавного slerp кости к целевому углу Эйлера
+const _tmpEuler = new THREE.Euler(0, 0, 0, "XYZ");
+const _tmpQuat = new THREE.Quaternion();
+function slerpBoneEuler(bone, rx, ry, rz, weight) {
+  if (!bone) return;
+  _tmpEuler.set(rx, ry, rz, "XYZ");
+  _tmpQuat.setFromEuler(_tmpEuler);
+  bone.quaternion.slerp(_tmpQuat, weight);
 }
 
 /* ==================== 4. Контроллер оригинального Shibahu FBX ==================== */
@@ -141,6 +165,8 @@ class ShibahuFBXController {
     this.fbx = fbx;
     this.faceMesh = null;
     this.mixer = null;
+    this.idleAction = null;
+    this.animPhase = 0.0;
 
     // Находим face_mesh и сразу оперируем блендшейпы по Y = 138.3
     fbx.traverse((c) => {
@@ -152,47 +178,56 @@ class ShibahuFBXController {
       setupSurgicalFaceMorphs(this.faceMesh);
     }
 
-    // 1. Фиксация нейтральной стойки автора Take 001 на t = 0.0s
+    // 1. Инициализация авторской анимации Take 001 через AnimationMixer
     const rawClip = fbx.animations && fbx.animations[0];
     if (rawClip) {
-      rawClip.tracks = rawClip.tracks.filter(
-        (t) => !t.name.includes("morphTargetInfluences") && !t.name.includes("DeformPercent")
+      const clip = rawClip.clone();
+      // Оставляем только вращение костей скелета (убираем морфы и смещение корня)
+      clip.tracks = clip.tracks.filter(
+        (t) => !t.name.includes("morphTargetInfluences") && !t.name.endsWith(".position")
       );
       this.mixer = new THREE.AnimationMixer(fbx);
-      const action = this.mixer.clipAction(rawClip);
-      action.play();
-      this.mixer.setTime(0.0);
+      this.idleAction = this.mixer.clipAction(clip);
+      this.idleAction.play();
+      this.idleAction.time = 2.35;
       this.mixer.update(0);
-      action.paused = true;
+      console.log(`[Winky] Скелетная анимация Take 001 подключена (${clip.tracks.length} костных треков вращения)`);
     }
 
-    // 2. Сохраняем исходные кватернионы и позиции всех истинных костей
+    // 2. Индексируем кости скелета и пальцы
     this.bones = {};
-    this.baseQuats = {};
-    this.basePos = {};
-
+    this.rightFingerBones = [];
     fbx.traverse((obj) => {
       if (obj.isBone) {
-        if (!this.bones[obj.name] || (obj.parent && obj.parent.name !== obj.name)) {
-          this.bones[obj.name] = obj;
-          this.baseQuats[obj.name] = obj.quaternion.clone();
-          this.basePos[obj.name] = obj.position.clone();
+        this.bones[obj.name] = obj;
+        if (obj.name.startsWith("Shibahu_RightHand") && obj.name !== "Shibahu_RightHand") {
+          this.rightFingerBones.push(obj);
         }
       }
     });
 
-    this.dummyEuler = new THREE.Euler();
-    this.dummyQuat = new THREE.Quaternion();
-    this.targetQuat = new THREE.Quaternion();
+    // Удобные алиасы ключевых костей
+    this.bones.Hips = this.bones["Shibahu_Hips"];
+    this.bones.Spine = this.bones["Shibahu_Spine"];
+    this.bones.Neck = this.bones["Shibahu_Neck"];
+    this.bones.Head = this.bones["Shibahu_Head"];
+    this.bones.RightShoulder = this.bones["Shibahu_RightShoulder"];
+    this.bones.RightArm = this.bones["Shibahu_RightArm"];
+    this.bones.RightForeArm = this.bones["Shibahu_RightForeArm"];
+    this.bones.RightHand = this.bones["Shibahu_RightHand"];
+    this.bones.LeftShoulder = this.bones["Shibahu_LeftShoulder"];
+    this.bones.LeftArm = this.bones["Shibahu_LeftArm"];
+    this.bones.LeftForeArm = this.bones["Shibahu_LeftForeArm"];
+    this.bones.LeftHand = this.bones["Shibahu_LeftHand"];
 
-    // Режимы тела: 'idle', 'talk', 'flirt', 'dance', 'wave'
-    this.bodyMode = "idle";
-    this.danceTimer = 0;
-    this.waveTimer = 0;
-    this.flirtTimer = 0;
-    this.giftReactionTimer = 0;
+    // Параметры эмоций, взмаха и таймеров
+    this.currentEmotion = "idle";
+    this.previousEmotion = "idle";
+    this.emotionTimer = 0.0;
+    this.waveTimer = 0.0;
+    this.waveWeight = 0.0;
 
-    // Параметры лица и Lip-Sync
+    // Параметры звука и Lip-Sync
     this.smoothedRms = 0.0;
     this.targetRms = 0.0;
     this.nextBlinkInterval = 3.5;
@@ -200,20 +235,8 @@ class ShibahuFBXController {
     this.blinkProgress = 0.0;
     this.isBlinking = false;
 
-    // Устанавливаем базовую улыбку и румянец в покое
+    // Базовый вид в покое
     this.smoothSetMorph("face_mesh4_2", 0.55, 1.0, 100.0);
-    this.smoothSetMorph("facial_cheek", 0.35, 1.0, 100.0);
-  }
-
-  // Плавное смещение кости поверх baseQuats через slerp
-  applySmoothBoneOffset(boneName, rx, ry, rz, dt, smoothSpeed = 8.0) {
-    const bone = this.bones[boneName];
-    const bq = this.baseQuats[boneName];
-    if (!bone || !bq) return;
-    this.dummyEuler.set(rx, ry, rz, "XYZ");
-    this.dummyQuat.setFromEuler(this.dummyEuler);
-    this.targetQuat.copy(bq).multiply(this.dummyQuat);
-    bone.quaternion.slerp(this.targetQuat, 1.0 - Math.exp(-smoothSpeed * dt));
   }
 
   // Плавная установка веса морфа (lerp)
@@ -229,117 +252,115 @@ class ShibahuFBXController {
     inf[idx] = current + (targetWeight - current) * factor;
   }
 
-  // Живая пластика тела, кинематика махания рукой (wave) и жестикуляция рассказчика
-  updateBodyPhysics(t, dt, mode = "idle", audioRms = 0, mouseX = 0, mouseY = 0) {
-    const isDance = mode === "dance";
-    const isFlirt = mode === "flirt";
-    const isTalking = this.smoothedRms > 0.025;
-    const speed = isDance ? 5.2 : isFlirt ? 2.0 : 1.35;
-
-    // 1. Бедра (Shibahu_Hips) — живое покачивание и пружинящий bounce:
-    const hipSwayZ = Math.sin(t * speed) * (isDance ? 0.14 : isFlirt ? 0.10 : 0.075) + Math.sin(t * 0.6) * 0.03;
-    const hipTurnY = Math.cos(t * speed * 0.5) * (isDance ? 0.16 : 0.08);
-    const hipTiltX = Math.sin(t * 2.2) * 0.03;
-    this.applySmoothBoneOffset("Shibahu_Hips", hipTiltX, hipTurnY, hipSwayZ, dt, 8.0);
-
-    if (this.bones["Shibahu_Hips"] && this.basePos["Shibahu_Hips"]) {
-      const bounce = isDance ? Math.abs(Math.sin(t * speed)) * 2.2 : Math.sin(t * 2.7) * 0.7;
-      this.bones["Shibahu_Hips"].position.y = this.basePos["Shibahu_Hips"].y + bounce;
+  // Авторская анимация Take 001 + процедурные акценты + кинематика взмаха
+  updateBody(t, dt, isSpeaking, mouseX = 0, mouseY = 0) {
+    // 1. Плавный пинг-понг анимации Take 001 на интервале 1.25s .. 3.45s
+    if (this.idleAction && this.mixer) {
+      const isEnergized = this.currentEmotion === "excited" || this.currentEmotion === "win";
+      const bodySpeed = isSpeaking ? 0.75 : (isEnergized ? 0.85 : 0.42);
+      this.animPhase += dt * bodySpeed;
+      this.idleAction.time = 2.35 + 1.10 * Math.sin(this.animPhase);
+      this.mixer.update(0);
     }
 
-    // 2. Талия и Грудь — легкий наклон вперед к зрителю при разговоре:
-    const breathX = Math.sin(t * 2.4) * 0.045;
-    const spineCounterZ = -hipSwayZ * 0.45;
-    const spineTurnY = -hipTurnY * 0.35 + (isDance ? Math.sin(t * speed) * 0.08 : 0);
-    const spineLean = isTalking ? (0.04 + this.smoothedRms * 0.04) : 0.0;
+    const bones = this.bones;
 
-    this.applySmoothBoneOffset("Shibahu_Spine", breathX * 0.5, spineTurnY * 0.5, spineCounterZ * 0.5, dt, 8.0);
-    this.applySmoothBoneOffset("Shibahu_Spine1", breathX + spineLean, spineTurnY, spineCounterZ, dt, 8.0);
-    this.applySmoothBoneOffset("Shibahu_Spine2", (breathX + spineLean) * 1.2, spineTurnY * 0.8, spineCounterZ * 0.8, dt, 8.0);
+    // 2. Слегка уменьшаем базовый разворот корпуса вбок из Take 001 (прямой взгляд в камеру)
+    if (bones.Hips) {
+      bones.Hips.rotation.setFromQuaternion(bones.Hips.quaternion, "XYZ");
+      bones.Hips.rotation.y *= 0.45;
+    }
+    if (bones.Neck) {
+      bones.Neck.rotation.setFromQuaternion(bones.Neck.quaternion, "XYZ");
+      bones.Neck.rotation.y *= 0.45;
+    }
+    if (bones.Head) {
+      bones.Head.rotation.setFromQuaternion(bones.Head.quaternion, "XYZ");
+      bones.Head.rotation.y *= 0.45;
 
-    // 3. Шея и Голова — смотрят на зрителя, кивают в такт речи:
-    const headNodX = 0.08 + Math.sin(t * 1.9) * 0.05 + (isTalking ? this.smoothedRms * 0.14 : 0.0) + mouseY * 0.15;
-    const headTurnY = Math.sin(t * 0.75) * 0.09 + mouseX * 0.22;
-    const headTiltZ = Math.sin(t * 1.1) * (isFlirt ? 0.16 : 0.10) + Math.cos(t * 0.45) * 0.05 + (isTalking ? Math.sin(t * 1.7) * 0.07 : 0.0);
+      // Наклон головы текущей эмоции из EMOTION_PRESETS
+      const preset = EMOTION_PRESETS[this.currentEmotion] || EMOTION_PRESETS.idle;
+      if (preset.headTilt) {
+        bones.Head.rotation.x += preset.headTilt[0];
+        bones.Head.rotation.y += preset.headTilt[1];
+        bones.Head.rotation.z += preset.headTilt[2];
+      }
 
-    // 4. Плечи и руки:
-    const shMove = Math.sin(t * 2.4) * 0.04 + (isDance ? Math.sin(t * speed) * 0.08 : 0);
-    const leftShMove = shMove + (isTalking ? Math.sin(t * 3.0) * 0.04 : 0.0);
-    const rightShMove = shMove + (isTalking ? Math.cos(t * 3.0) * 0.04 : 0.0);
-    this.applySmoothBoneOffset("Shibahu_LeftShoulder", 0, 0, leftShMove, dt, 8.0);
-    this.applySmoothBoneOffset("Shibahu_RightShoulder", 0, 0, rightShMove, dt, 8.0);
+      // Мягкие кивки головы в такт слогам при речи
+      if (isSpeaking) {
+        bones.Head.rotation.x += this.smoothedRms * 0.12;
+      }
 
-    const armSwayY = 0.18 + Math.sin(t * 1.5) * 0.08;
-    const armSwayZ = -0.06 + Math.cos(t * 1.35) * 0.05;
-
-    if (mode === "wave") {
-      // Режим приветствия / махания рукой (mode === 'wave', 3.2 сек):
-      this.applySmoothBoneOffset("Shibahu_RightShoulder", 0, 0.10, rightShMove, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_RightArm", 0.0, -0.35, +0.65, dt, 10.0);
-      const waveSwing = Math.sin(t * 8.5) * 0.28;
-      this.applySmoothBoneOffset("Shibahu_RightForeArm", +1.20, 0.0, +1.95 + waveSwing, dt, 12.0);
-      this.applySmoothBoneOffset("Shibahu_RightHand", 0.0, 0.0, Math.sin(t * 8.5 - 0.6) * 0.30, dt, 15.0);
-
-      // Кокетливый наклон головы к машущей руке:
-      this.applySmoothBoneOffset("Shibahu_Neck", headNodX * 0.4 + 0.02, headTurnY * 0.4, -0.08, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_Head", headNodX * 0.6 + 0.04, headTurnY * 0.6, -0.12, dt, 8.0);
-
-      // Левая рука спокойно опущена
-      this.applySmoothBoneOffset("Shibahu_LeftArm", 0, armSwayY, armSwayZ, dt, 4.5);
-      this.applySmoothBoneOffset("Shibahu_LeftForeArm", 0, -0.38, 0, dt, 4.5);
-      this.applySmoothBoneOffset("Shibahu_LeftHand", 0, 0, 0.25, dt, 4.5);
-    } else if (isTalking) {
-      // Режим рассказчика — выразительная жестикуляция предплечьями при речи:
-      this.applySmoothBoneOffset("Shibahu_Neck", headNodX * 0.4, headTurnY * 0.4, headTiltZ * 0.4, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_Head", headNodX * 0.6, headTurnY * 0.6, headTiltZ * 0.6, dt, 8.0);
-
-      const rForearmZ = +0.65 + Math.sin(t * 3.4) * 0.18 + this.smoothedRms * 0.28;
-      const lForearmZ = -0.65 - Math.cos(t * 2.9) * 0.18 - this.smoothedRms * 0.22;
-
-      this.applySmoothBoneOffset("Shibahu_RightArm", 0.05, -0.18, +0.18, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_RightForeArm", +0.55, 0.0, rForearmZ, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_RightHand", 0.0, 0.0, 0.15 + Math.cos(t * 2.6) * 0.12, dt, 8.0);
-
-      this.applySmoothBoneOffset("Shibahu_LeftArm", 0.05, +0.18, +0.18, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_LeftForeArm", -0.55, 0.0, lForearmZ, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_LeftHand", 0.0, 0.0, -0.15 + Math.sin(t * 2.6) * 0.12, dt, 8.0);
-    } else {
-      // Покой — руки плавно возвращаются по швам со скоростью dt * 4.5
-      this.applySmoothBoneOffset("Shibahu_Neck", headNodX * 0.4, headTurnY * 0.4, headTiltZ * 0.4, dt, 8.0);
-      this.applySmoothBoneOffset("Shibahu_Head", headNodX * 0.6, headTurnY * 0.6, headTiltZ * 0.6, dt, 8.0);
-
-      this.applySmoothBoneOffset("Shibahu_RightArm", 0, armSwayY, armSwayZ, dt, 4.5);
-      const rightElbowY = -0.38 - Math.cos(t * speed) * (isDance ? 0.25 : 0.10);
-      this.applySmoothBoneOffset("Shibahu_RightForeArm", 0, rightElbowY, 0, dt, 4.5);
-      this.applySmoothBoneOffset("Shibahu_RightHand", 0, 0, 0.25 + Math.cos(t * 2.6) * 0.12, dt, 4.5);
-
-      this.applySmoothBoneOffset("Shibahu_LeftArm", 0, armSwayY, armSwayZ, dt, 4.5);
-      const leftElbowY = -0.38 - Math.sin(t * speed) * (isDance ? 0.25 : 0.10);
-      this.applySmoothBoneOffset("Shibahu_LeftForeArm", 0, leftElbowY, 0, dt, 4.5);
-      this.applySmoothBoneOffset("Shibahu_LeftHand", 0, 0, 0.25 + Math.sin(t * 2.6) * 0.12, dt, 4.5);
+      // Деликатное слежение за курсором мыши
+      bones.Head.rotation.y += mouseX * 0.10;
+      bones.Head.rotation.x += mouseY * 0.06;
     }
 
-    // 5. Ушки и Хвост: в 1.6 раза энергичнее во время речи
-    const energyMult = isTalking ? 1.6 : 1.0;
-    const earTwitch = (Math.pow(Math.max(0, Math.sin(t * 3.1)), 12) * 0.22 + this.smoothedRms * 0.18) * energyMult;
-    this.applySmoothBoneOffset("Shibahu_Ear_Left1", 0, 0, earTwitch, dt, 14.0);
-    this.applySmoothBoneOffset("Shibahu_Ear_Right1", 0, 0, -earTwitch, dt, 14.0);
+    // 3. Во время речи — естественная жестикуляция ТОЛЬКО по анатомической оси сгиба локтя rotation.y
+    if (isSpeaking && this.waveWeight < 0.05) {
+      const talkLiftR = this.smoothedRms * 0.28 + (0.5 + 0.5 * Math.sin(t * 3.1)) * 0.14;
+      const talkLiftL = this.smoothedRms * 0.22 + (0.5 + 0.5 * Math.cos(t * 2.6)) * 0.12;
+      if (bones.RightForeArm) {
+        bones.RightForeArm.rotation.setFromQuaternion(bones.RightForeArm.quaternion, "XYZ");
+        bones.RightForeArm.rotation.y -= talkLiftR;
+      }
+      if (bones.LeftForeArm) {
+        bones.LeftForeArm.rotation.setFromQuaternion(bones.LeftForeArm.quaternion, "XYZ");
+        bones.LeftForeArm.rotation.y -= talkLiftL;
+      }
+    }
 
-    for (let i = 1; i <= 6; i++) {
-      const tailWave = (Math.sin(t * (isDance ? 6.5 : 2.8) - i * 0.55) * (isDance ? 0.22 : 0.15)) * energyMult;
-      this.applySmoothBoneOffset(`Shibahu_Tail${i}`, 0, tailWave * 0.5, tailWave, dt, 10.0);
+    // 4. Кинематика махания рукой (wave):
+    if (this.waveTimer > 0) {
+      this.waveTimer -= dt;
+      if (this.waveTimer <= 0 && this.currentEmotion === "wave") {
+        this.currentEmotion = this.previousEmotion || "idle";
+      }
+    }
+    const targetWaveWeight = this.waveTimer > 0 ? 1.0 : 0.0;
+    this.waveWeight += (targetWaveWeight - this.waveWeight) * Math.min(1.0, dt * (targetWaveWeight > 0 ? 9.0 : 6.0));
+
+    if (this.waveWeight > 0.005) {
+      const sway = Math.sin(t * 7.2) * 0.22;             // Горизонтальное качание предплечья влево-вправо
+      const wristWave = Math.sin(t * 7.2 - 0.55) * 0.28; // Мягкий довод открытой ладошкой
+
+      // 1. Локоть аккуратно опущен у правого бока и чуть выдвинут вперед
+      slerpBoneEuler(bones.RightShoulder, 0.0, 0.0, 0.15, this.waveWeight);
+      slerpBoneEuler(bones.RightArm, -0.61, 0.26, -1.09, this.waveWeight);
+
+      // 2. Предплечье поднято вверх перед правым плечом, ладошка смотрит в камеру
+      slerpBoneEuler(bones.RightForeArm, 1.75, -0.35 + sway, 2.15, this.waveWeight);
+
+      // 3. Кисть машет влево-вправо в плоскости экрана по оси Y
+      slerpBoneEuler(bones.RightHand, -0.10, 0.08 + wristWave, 0.44, this.waveWeight);
+
+      // 4. Распрямляем пальчики правой руки, открывая ладошку
+      for (const fingerBone of this.rightFingerBones) {
+        fingerBone.rotation.setFromQuaternion(fingerBone.quaternion, "XYZ");
+        fingerBone.rotation.z = THREE.MathUtils.lerp(fingerBone.rotation.z, -0.12, this.waveWeight);
+      }
+
+      // 5. Милый наклон головы и легкое покачивание в такт взмаху
+      if (bones.Head) {
+        bones.Head.rotation.z -= 0.14 * this.waveWeight;
+        bones.Head.rotation.x += 0.05 * this.waveWeight;
+      }
     }
   }
 
-  // Обновление эмоций лица, моргания и Lip-Sync на 60 FPS
-  updateFace(t, dt, mode, isSpeaking, audioRms) {
-    if (this.giftReactionTimer > 0) {
-      this.giftReactionTimer -= dt;
+  // Обновление эмоций лица, моргания и бесконфликтного Lip-Sync
+  updateFace(t, dt, isSpeaking, audioRms) {
+    // 0. Таймер временных эмоций (если задан)
+    if (this.emotionTimer > 0) {
+      this.emotionTimer -= dt;
+      if (this.emotionTimer <= 0) {
+        this.currentEmotion = "idle";
+      }
     }
 
-    // 1. Сглаживание RMS звука для многофазной артикуляции
+    // 1. Сглаживание RMS звука для артикуляции
     this.targetRms = Math.max(0.0, Number(audioRms) || 0.0);
-    const lerpSpeed = this.targetRms > this.smoothedRms ? 22.0 : 14.0;
+    const lerpSpeed = this.targetRms > this.smoothedRms ? 24.0 : 14.0;
     this.smoothedRms += (this.targetRms - this.smoothedRms) * Math.min(1.0, dt * lerpSpeed);
 
     const isTalking = this.smoothedRms > 0.025;
@@ -349,19 +370,36 @@ class ShibahuFBXController {
     const syllableWave = 0.5 + 0.5 * Math.sin(t * 13.5);
     const subWave = 0.5 + 0.5 * Math.cos(t * 9.2);
 
-    const targetMouthA = isTalking ? mouthOpen * (0.35 + 0.50 * syllableWave) : 0.0; // face_mesh1 (рот А с язычком)
-    const targetMouthO = isTalking ? mouthOpen * (1.0 - syllableWave) * 0.75 : 0.0;  // face_mesh9 (круглый рот О/У)
-    const targetMouthE = isTalking ? mouthOpen * subWave * 0.25 : 0.0;               // face_mesh6 (средний рот Э)
-    const targetGentleSmile = isTalking ? 0.15 : 0.55;                               // face_mesh4_2 (нежная улыбка в покое)
+    const preset = EMOTION_PRESETS[this.currentEmotion] || EMOTION_PRESETS.idle;
 
-    this.smoothSetMorph("face_mesh1", targetMouthA, dt, 20.0);
-    this.smoothSetMorph("face_mesh9", targetMouthO, dt, 20.0);
-    this.smoothSetMorph("face_mesh6", targetMouthE, dt, 20.0);
-    this.smoothSetMorph("face_mesh4_2", targetGentleSmile, dt, 10.0);
-    this.smoothSetMorph("face_mesh5", 0.0, dt, 20.0); // Полный запрет оскала face_mesh5!
-    this.smoothSetMorph("face_mesh4", 0.0, dt, 20.0); // Полный запрет оскала face_mesh4!
+    // 2. Рот: Lip-sync во время речи, либо idleMouth текущей эмоции
+    if (isTalking) {
+      const targetMouthA = mouthOpen * (0.40 + 0.50 * syllableWave); // face_mesh5_2 (А)
+      const targetMouthO = mouthOpen * (1.0 - syllableWave) * 0.75;  // face_mesh9_2 (О)
+      const targetMouthE = mouthOpen * subWave * 0.25;               // face_mesh6 (Э)
+      this.smoothSetMorph("face_mesh5_2", targetMouthA, dt, 24.0);
+      this.smoothSetMorph("face_mesh9_2", targetMouthO, dt, 24.0);
+      this.smoothSetMorph("face_mesh6",   targetMouthE, dt, 24.0);
+      this.smoothSetMorph("face_mesh3",   0.0, dt, 20.0);
+      this.smoothSetMorph("face_mesh4_2", 0.10, dt, 15.0);
+    } else {
+      const idle = preset.idleMouth || {};
+      this.smoothSetMorph("face_mesh5_2", idle.face_mesh5_2 || 0.0, dt, 15.0);
+      this.smoothSetMorph("face_mesh9_2", idle.face_mesh9_2 || 0.0, dt, 15.0);
+      this.smoothSetMorph("face_mesh6",   idle.face_mesh6   || 0.0, dt, 15.0);
+      this.smoothSetMorph("face_mesh3",   idle.face_mesh3   || 0.0, dt, 15.0);
+      this.smoothSetMorph("face_mesh4_2", idle.face_mesh4_2 !== undefined ? idle.face_mesh4_2 : 0.45, dt, 15.0);
+    }
 
-    // 2. Независимое плавное моргание раз в 3.2–5.5 сек (160 мс):
+    // 3. Глаза, брови, румянец и блеск глаз (всегда стремятся к preset.eyes)
+    const eyes = preset.eyes || {};
+    const eyeMorphs = ["face_mesh1_2", "face_mesh3_2", "face_mesh7", "face_mesh9", "facial_cheek", "facial_irisHilight_Big"];
+    for (const mName of eyeMorphs) {
+      const target = eyes[mName] || 0.0;
+      this.smoothSetMorph(mName, target, dt, 14.0);
+    }
+
+    // 4. Авто-моргание раз в 3.2–5.5 сек
     this.blinkTimer += dt;
     if (this.blinkTimer >= this.nextBlinkInterval) {
       this.isBlinking = true;
@@ -375,96 +413,64 @@ class ShibahuFBXController {
       this.blinkProgress += dt / 0.16;
       if (this.blinkProgress >= 1.0) {
         this.isBlinking = false;
-        blinkWeight = 0.0;
       } else {
         blinkWeight = Math.sin(this.blinkProgress * Math.PI);
       }
     }
+
+    // Если в текущей эмоции глаза уже закрыты (^ ^ или wink), отключаем авто-моргание
+    const eyesAlreadyClosed = (eyes.face_mesh1_2 || 0) > 0.5 || (eyes.face_mesh3_2 || 0) > 0.5;
+    if (eyesAlreadyClosed) {
+      blinkWeight = 0.0;
+    }
     this.smoothSetMorph("face_mesh8", blinkWeight, dt, 35.0);
 
-    // 3. Румянец и блеск глаз:
-    const targetCheek = this.giftReactionTimer > 0 ? 0.85 : (isTalking ? 0.45 : 0.35);
-    const targetIris = this.giftReactionTimer > 0 ? 1.0 : (isTalking ? 0.2 : 0.0);
-    this.smoothSetMorph("facial_cheek", targetCheek, dt, 10.0);
-    this.smoothSetMorph("facial_irisHilight_Big", targetIris, dt, 10.0);
+    // 5. Запрет паразитных морфов оскала и старых каналов
+    this.smoothSetMorph("face_mesh1", 0.0, dt, 30.0);
+    this.smoothSetMorph("face_mesh2", 0.0, dt, 30.0);
+    this.smoothSetMorph("face_mesh4", 0.0, dt, 30.0);
+    this.smoothSetMorph("face_mesh5", 0.0, dt, 30.0);
   }
 
   // Реакции на события пульта и чата
-  setEmotion(name, durationMs = 4500) {
-    const sec = durationMs / 1000.0;
-    switch (name) {
-      case "happy":
-        this.bodyMode = "talk";
-        this.flirtTimer = 3.0;
-        break;
-      case "excited":
-      case "win":
-        this.bodyMode = "dance";
-        this.danceTimer = Math.max(5.0, sec);
-        this.giftReactionTimer = 1.5;
-        break;
-      case "flirt":
-      case "blush":
-        this.bodyMode = "flirt";
-        this.flirtTimer = Math.max(4.0, sec);
-        break;
-      case "laugh":
-        this.bodyMode = "flirt";
-        this.flirtTimer = 2.5;
-        this.giftReactionTimer = 1.8;
-        break;
-      case "wave":
-      case "greeting":
-        this.bodyMode = "wave";
-        this.waveTimer = 3.2;
-        break;
-      case "wink":
-        this.bodyMode = "flirt";
-        this.flirtTimer = 2.5;
-        break;
-      case "surprised":
-      case "thinking":
-        this.bodyMode = "talk";
-        this.flirtTimer = 2.5;
-        break;
-      case "idle":
-      case "neutral":
-      default:
-        this.bodyMode = "idle";
-        this.danceTimer = 0;
-        this.flirtTimer = 0;
-        this.giftReactionTimer = 0;
-        break;
+  setEmotion(name, durationMs = 0) {
+    if (name === "wave") {
+      this.wave();
+      return;
     }
-  }
-
-  onGift(giftName = "") {
-    this.bodyMode = "dance";
-    this.danceTimer = 6.0;
-    this.giftReactionTimer = 1.6;
-    this.cheekWeight = 0.85;
-    this.irisHighlight = 1.0;
-  }
-
-  onWin() {
-    this.setEmotion("win", 6000);
+    if (name === "win") {
+      this.onWin();
+      return;
+    }
+    this.currentEmotion = EMOTION_PRESETS[name] ? name : "idle";
+    this.emotionTimer = durationMs > 0 ? durationMs / 1000.0 : 0;
   }
 
   wave() {
-    this.setEmotion("wave", 4000);
+    this.waveTimer = 3.2;
+    if (this.currentEmotion !== "wave") {
+      this.previousEmotion = this.currentEmotion;
+    }
+    this.currentEmotion = "wave";
+  }
+
+  onWin() {
+    this.currentEmotion = "win";
+    this.emotionTimer = 6.0;
+  }
+
+  onGift(giftName = "") {
+    this.currentEmotion = "excited";
+    this.emotionTimer = 5.0;
   }
 
   playBodyMotion(motion) {
-    if (motion === "dance" || motion === "react_dance1" || motion === "react_dance2") {
-      this.bodyMode = "dance";
-      this.danceTimer = 5.0;
-    } else if (motion === "flirt" || motion === "react_flirt" || motion === "laugh") {
-      this.bodyMode = "flirt";
-      this.flirtTimer = 4.0;
+    if (motion === "wave") {
+      this.wave();
+    } else if (motion === "dance") {
+      this.onWin();
     } else {
-      this.bodyMode = "idle";
-      this.danceTimer = 0;
-      this.flirtTimer = 0;
+      this.setEmotion(motion);
     }
   }
 
@@ -473,24 +479,8 @@ class ShibahuFBXController {
   }
 
   update(delta, elapsed, isSpeaking, audioRms = 0) {
-    if (this.danceTimer > 0) this.danceTimer -= delta;
-    if (this.waveTimer > 0) this.waveTimer -= delta;
-    if (this.flirtTimer > 0) this.flirtTimer -= delta;
-
-    let mode = "idle";
-    if (this.danceTimer > 0) {
-      mode = "dance";
-    } else if (this.waveTimer > 0) {
-      mode = "wave";
-    } else if (this.flirtTimer > 0) {
-      mode = "flirt";
-    } else if (isSpeaking) {
-      mode = "talk";
-    }
-
-    this.bodyMode = mode;
-    this.updateBodyPhysics(elapsed, delta, mode, audioRms, mouseX, mouseY);
-    this.updateFace(elapsed, delta, mode, isSpeaking, audioRms);
+    this.updateBody(elapsed, delta, isSpeaking, mouseX, mouseY);
+    this.updateFace(elapsed, delta, isSpeaking, audioRms);
   }
 }
 
@@ -532,47 +522,47 @@ function loadShibahuFBX() {
       try {
         fbxInstance = fbx;
 
-      // Настройка мешей и сочных материалов
-      function configureMaterial(m) {
-        if (!m) return m;
-        const matName = m.name || "";
-        if (matName.toLowerCase().includes("line")) {
-          m.visible = false;
+        // Настройка мешей и сочных материалов
+        function configureMaterial(m) {
+          if (!m) return m;
+          const matName = m.name || "";
+          if (matName.toLowerCase().includes("line")) {
+            m.visible = false;
+            return m;
+          }
+          if (matName === "Cheek_mt") {
+            return new THREE.MeshBasicMaterial({
+              color: 0xff6688,
+              alphaMap: cheekTex,
+              transparent: true,
+              opacity: 0.75,
+            });
+          }
+          if (tex[matName]) {
+            return new THREE.MeshToonMaterial({
+              map: tex[matName],
+              transparent: matName === "HairA_mt" || matName === "HairB_mt",
+              alphaTest: 0.5,
+            });
+          }
           return m;
         }
-        if (matName === "Cheek_mt") {
-          return new THREE.MeshBasicMaterial({
-            color: 0xff6688,
-            alphaMap: cheekTex,
-            transparent: true,
-            opacity: 0.75,
-          });
-        }
-        if (tex[matName]) {
-          return new THREE.MeshToonMaterial({
-            map: tex[matName],
-            transparent: matName === "HairA_mt" || matName === "HairB_mt",
-            alphaTest: 0.5,
-          });
-        }
-        return m;
-      }
 
-      fbx.traverse((child) => {
-        if (child.isMesh) {
-          // Скрываем все паразитные контурные меши (*_line) и подиум base_mesh
-          if (child.name.endsWith("_line") || child.name === "base_mesh") {
-            child.visible = false;
-            return;
-          }
+        fbx.traverse((child) => {
+          if (child.isMesh) {
+            // Скрываем все паразитные контурные меши (*_line) и подиум base_mesh
+            if (child.name.endsWith("_line") || child.name === "base_mesh") {
+              child.visible = false;
+              return;
+            }
 
-          if (Array.isArray(child.material)) {
-            child.material = child.material.map(configureMaterial);
-          } else if (child.material) {
-            child.material = configureMaterial(child.material);
+            if (Array.isArray(child.material)) {
+              child.material = child.material.map(configureMaterial);
+            } else if (child.material) {
+              child.material = configureMaterial(child.material);
+            }
           }
-        }
-      });
+        });
 
         // Кадрирование: масштаб 1.0 (нативный Maya 157 см), центрирование по X и Z
         fbx.scale.setScalar(baseScale * userScale);
@@ -586,7 +576,7 @@ function loadShibahuFBX() {
         window.activeController = vtuber;
         window.__fbxStatus = "ready";
 
-        console.log("[Winky] Оригинальный Shibahu FBX успешно загружен: все 200+ костей активны, 0% клиппинга!");
+        console.log("[Winky] Оригинальный Shibahu FBX успешно загружен: Take 001 активен, 0% клиппинга!");
       } catch (err) {
         window.__fbxStatus = "error_in_callback";
         window.__fbxError = err.stack || String(err);
@@ -614,7 +604,6 @@ loadShibahuFBX();
 let audioCtx = null;
 let analyser = null;
 let currentAudio = null;
-let isSpeakingAudio = false;
 
 function initAudioContext() {
   if (!audioCtx) {
@@ -645,7 +634,16 @@ function winkySpeak(mediaUrl, emotion = "happy", volume = 1.0) {
 /* ==================== 7. Внешнее API окна ==================== */
 
 window.winkySpeak = winkySpeak;
-window.winkySetEmotion = (emo) => vtuber && vtuber.setEmotion(emo, 5000);
+window.winkySetEmotion = (emo) => {
+  if (!vtuber) return;
+  if (emo === "wave") {
+    window.winkyWave();
+  } else if (emo === "win") {
+    window.winkyOnWin();
+  } else {
+    vtuber.setEmotion(emo, 0); // 0 = бессрочно из пульта до следующего клика
+  }
+};
 window.winkyOnGift = (gift) => vtuber && vtuber.onGift(gift);
 window.winkyOnWin = () => vtuber && vtuber.onWin();
 window.winkyWave = () => vtuber && vtuber.wave();
@@ -686,7 +684,6 @@ if (window.pywebview?.api) {
 /* ==================== 8. Рендер-цикл ==================== */
 
 const clock = new THREE.Clock();
-const freqData = new Uint8Array(128);
 
 function animate() {
   requestAnimationFrame(animate);

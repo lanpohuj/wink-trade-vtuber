@@ -383,9 +383,9 @@ def main() -> None:
     screen_w = screen.width if screen else 1728
     screen_h = screen.height if screen else 1117
 
-    avatar_w = 460
-    avatar_h = 680
-    avatar_x = max(0, screen_w - avatar_w - 20)
+    avatar_w = 600
+    avatar_h = 720
+    avatar_x = max(0, screen_w - avatar_w - 10)
     avatar_y = max(0, screen_h - avatar_h)
 
     avatar_window = webview.create_window(
