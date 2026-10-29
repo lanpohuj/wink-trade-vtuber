@@ -347,10 +347,10 @@ def build_engine() -> LumeanTTS | ElevenLabsTTS | EdgeTTS | SayTTS:
 
 
 def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
-    """Конвертирует аудио через afconvert в 16-bit WAV и рассчитывает RMS чанки по 50 мс.
-    Кэширует результат в .rms.json для мгновенной отдачи при повторном воспроизведении.
+    """Конвертирует аудио через afconvert в 16-bit WAV и рассчитывает RMS чанки по 50 мс с Noise Gate.
+    Кэширует результат в .rms2.json для мгновенной отдачи при повторном воспроизведении.
     """
-    rms_cache = media_path.with_name(media_path.name + ".rms.json")
+    rms_cache = media_path.with_suffix(media_path.suffix + ".rms2.json")
     if rms_cache.exists():
         try:
             with open(rms_cache, "r", encoding="utf-8") as f:
@@ -371,7 +371,7 @@ def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
         with wave.open(str(tmp_wav), "rb") as w:
             framerate = w.getframerate()
             chunk_size = int(framerate * (chunk_ms / 1000.0))
-            rms_list: list[float] = []
+            raw_rms: list[float] = []
             while True:
                 frames = w.readframes(chunk_size)
                 if not frames:
@@ -382,16 +382,28 @@ def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
                 samples = struct.unpack(f"<{count}h", frames)
                 sum_sq = sum(s * s for s in samples)
                 rms = math.sqrt(sum_sq / len(samples)) / 32768.0
-                rms_list.append(round(min(1.0, max(0.0, rms * 2.5)), 4))
+                raw_rms.append(rms)
 
-        if rms_list:
+        peak = max(raw_rms) if raw_rms else 1.0
+        if peak < 1e-6:
+            peak = 1.0
+        chunks = []
+        for r in raw_rms:
+            ratio = r / peak
+            if ratio < 0.18:
+                chunks.append(0.0)
+            else:
+                val = min(1.0, ((ratio - 0.18) / 0.82) ** 1.2 * 1.15)
+                chunks.append(round(val, 3))
+
+        if chunks:
             try:
                 with open(rms_cache, "w", encoding="utf-8") as f:
-                    json.dump(rms_list, f)
+                    json.dump(chunks, f)
             except Exception:
                 pass
 
-        return rms_list
+        return chunks
     except Exception as exc:
         logger.debug("Не удалось рассчитать RMS чанки через afconvert: %s", exc)
         return []
@@ -624,11 +636,21 @@ class SpeechController:
                 stderr=subprocess.DEVNULL,
             )
             self._afplay_proc = afplay_proc
-            for rms in rms_chunks:
-                if self._paused or afplay_proc.poll() is not None:
+            start_play = time.monotonic()
+            last_idx = -1
+            chunk_sec = 0.05
+            while afplay_proc.poll() is None:
+                if self._paused:
                     break
-                self.on_rms(rms)
-                time.sleep(0.05)
+                elapsed = time.monotonic() - start_play
+                idx = int(elapsed / chunk_sec)
+                if 0 <= idx < len(rms_chunks) and idx != last_idx:
+                    last_idx = idx
+                    self.on_rms(rms_chunks[idx])
+                elif idx >= len(rms_chunks) and last_idx != -2:
+                    last_idx = -2
+                    self.on_rms(0.0)
+                time.sleep(0.012)
 
             try:
                 afplay_proc.wait(timeout=max(2.0, duration + 2.0))
