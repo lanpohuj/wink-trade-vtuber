@@ -4,6 +4,7 @@
 
 const stateDot = document.getElementById("stateDot");
 const stateText = document.getElementById("stateText");
+const queueBadge = document.getElementById("queueBadge");
 const speakText = document.getElementById("speakText");
 const speakLang = document.getElementById("speakLang");
 const speakEmotion = document.getElementById("speakEmotion");
@@ -32,6 +33,8 @@ const simAsk = document.getElementById("simAsk");
 const simJoin = document.getElementById("simJoin");
 const simFollow = document.getElementById("simFollow");
 const simGift = document.getElementById("simGift");
+const simLike = document.getElementById("simLike");
+const clearQueueBtn = document.getElementById("clearQueueBtn");
 const chatFeed = document.getElementById("chatFeed");
 const chatStats = document.getElementById("chatStats");
 const modelShibahuBtn = document.getElementById("modelShibahuBtn");
@@ -135,7 +138,16 @@ function stopCurrentPreview() {
 /* ==================== Статус из Python ==================== */
 
 function renderStatus(status) {
-  stateText.textContent = status.state + (status.queue_len ? ` (+${status.queue_len})` : "");
+  const qSize = status.queue_size ?? status.queue_len ?? 0;
+  stateText.textContent = status.state + (qSize > 0 ? ` (очередь: ${qSize})` : "");
+  if (queueBadge) {
+    if (qSize > 0) {
+      queueBadge.hidden = false;
+      queueBadge.textContent = `очередь: ${qSize}`;
+    } else {
+      queueBadge.hidden = true;
+    }
+  }
   stateDot.className = "state-dot " + (status.state === "speaking" ? "speaking" : status.state === "paused" ? "paused" : "");
   engineName.textContent = "движок: " + (status.engine || "—");
   volumeSlider.value = Math.round((status.volume ?? 1) * 100);
@@ -644,6 +656,19 @@ simGift?.addEventListener("click", () => {
   const gift = isEn ? "Rose" : "Роза";
   onChatEvent({ kind: "user", who: "🎁 Подарок", text: isEn ? `${user} sent a ${gift}!` : `${user} отправил ${gift}!` });
   api()?.simulate_gift(user, gift, lang);
+});
+
+simLike?.addEventListener("click", () => {
+  const lang = simLang?.value || "auto";
+  const isEn = lang === "en";
+  const user = isEn ? "Kate ✨" : "Катя ✨";
+  onChatEvent({ kind: "user", who: "❤️ Лайки", text: isEn ? `${user} sent 5 likes!` : `${user} поставила 5 лайков!` });
+  api()?.simulate_like(user, 5, lang);
+});
+
+clearQueueBtn?.addEventListener("click", async () => {
+  await api()?.clear_queue();
+  if (queueBadge) queueBadge.hidden = true;
 });
 
 simQuestion.addEventListener("keydown", (event) => {

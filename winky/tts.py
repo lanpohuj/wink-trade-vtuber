@@ -37,8 +37,41 @@ from winky.censor import check_phrase, strip_emoji_control, sanitize_for_tiktok
 
 logger = logging.getLogger(__name__)
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+VOICE_CACHE_DIR = PROJECT_ROOT / "voice_cache"
+VOICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
 MEDIA_DIR = Path(__file__).parent / "web" / "media"
 MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+
+_manifest_lock = threading.Lock()
+
+
+def normalize_cache_text(text: str) -> str:
+    """Убирает лишние пробелы и приводит к единому регистру для точного совпадения одинаковых фраз."""
+    return re.sub(r"\s+", " ", (text or "").strip().lower())
+
+
+def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filename: str) -> None:
+    """Обновляет читаемый manifest.json в подпапке голоса."""
+    manifest_path = voice_dir / "manifest.json"
+    with _manifest_lock:
+        data: dict = {}
+        if manifest_path.exists():
+            try:
+                data = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except Exception:
+                data = {}
+        data[text_hash] = {
+            "text": original_text,
+            "file": filename,
+            "created_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        try:
+            manifest_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception as e:
+            logger.debug("Не удалось записать manifest.json: %s", e)
+
 
 EMOTIONS = (
     "idle", "happy", "excited", "thinking", "wink", "blush", "surprised", "neutral",
@@ -415,38 +448,64 @@ class LumeanTTS:
         logger.info("Успешно создан шаблон Lumean %s для %s: %s", f"Winky {service_key}", service_key, template_id)
         return template_id
 
+    def get_voice_dir(self, service_key: str, voice_id: str) -> Path:
+        voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
+        voice_dir.mkdir(parents=True, exist_ok=True)
+        return voice_dir
+
     def get_cache_path(self, text: str, lang: str = "ru") -> Path:
         clean_text = text.strip()
         _, service_key, voice_id = self._resolve_slot(clean_text, lang)
-        cache_key = hashlib.sha256(
-            f"lumean:{service_key}:{voice_id}:{clean_text}".encode("utf-8")
+        voice_dir = self.get_voice_dir(service_key, voice_id)
+        norm_text = normalize_cache_text(clean_text)
+        text_hash = hashlib.sha256(
+            f"{service_key}:{voice_id}:{norm_text}".encode("utf-8")
         ).hexdigest()[:20]
-        return self._cache_dir / f"lumean_{service_key}_{voice_id[:8]}_{cache_key}.mp3"
+        return voice_dir / f"{text_hash}.mp3"
 
     def is_cached(self, text: str, lang: str = "ru") -> bool:
         clean_text = text.strip()
         if not clean_text:
             return False
         cached_file = self.get_cache_path(clean_text, lang)
-        return cached_file.exists() and cached_file.stat().st_size > 1000
+        return cached_file.exists() and cached_file.stat().st_size > 1024
 
     def synthesize(self, text: str, lang: str = "ru") -> Path:
-        """Синтезирует речь выбранным слотом голоса (RU или EN) через прямой Keep-Alive вызов Lumean API."""
+        """Синтезирует речь выбранным слотом голоса (RU или EN) через прямой Keep-Alive вызов Lumean API.
+        При наличии в voice_cache/ не отправляет запрос в API (0 токенов, мгновенный возврат).
+        """
         clean_text = text.strip()
         if not clean_text:
             raise TTSError("Пустой текст для озвучки")
 
         slot, service_key, voice_id = self._resolve_slot(clean_text, lang)
-        cached_file = self.get_cache_path(clean_text, lang)
-        if self.is_cached(clean_text, lang):
-            logger.info("Lumean [%s] аудио найдено в локальном кэше: %s", slot.upper(), cached_file.name)
+        voice_dir = self.get_voice_dir(service_key, voice_id)
+        norm_text = normalize_cache_text(clean_text)
+        text_hash = hashlib.sha256(
+            f"{service_key}:{voice_id}:{norm_text}".encode("utf-8")
+        ).hexdigest()[:20]
+        cached_file = voice_dir / f"{text_hash}.mp3"
+
+        if cached_file.exists() and cached_file.stat().st_size > 1024:
+            logger.info("Cache HIT in voice_cache/%s: %s («%s»)", voice_dir.name, cached_file.name, clean_text[:30])
             return cached_file
 
         # Если нет ключа API Lumean — используем EdgeTTS
         if not settings.LUMEAN_API_KEY:
             logger.info("LUMEAN_API_KEY не задан — использую edge-tts (Ava Multilingual)")
-            return self._fallback.synthesize(clean_text, lang)
+            fallback_media = self._fallback.synthesize(clean_text, lang)
+            if fallback_media.exists() and fallback_media != cached_file:
+                import shutil
+                try:
+                    shutil.copyfile(fallback_media, cached_file)
+                    compute_rms_chunks(cached_file)
+                    _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
+                    return cached_file
+                except Exception:
+                    pass
+            return fallback_media
 
+        logger.info("Cache MISS in voice_cache/%s -> запрос в Lumean API («%s»)...", voice_dir.name, clean_text[:30])
         try:
             # 1. Мгновенно берём template_id из кэша (0 мс пре-ордер задержка!)
             template_id = self._templates_by_service.get(service_key)
@@ -527,13 +586,14 @@ class LumeanTTS:
             if not download_url:
                 raise TTSError("Lumean не вернул URL для скачивания файла")
 
-            # Шаг Г: Скачивание аудиофайла по постоянному Keep-Alive соединению
+            # Шаг Г: Скачивание аудиофайла по постоянному Keep-Alive соединению прямо в voice_cache/
             audio_resp = self._client.get(download_url, timeout=15.0)
             audio_resp.raise_for_status()
             cached_file.write_bytes(audio_resp.content)
             # Сразу рассчитываем RMS для мгновенного липсинка при проигрывании
             compute_rms_chunks(cached_file)
-            logger.info("Lumean TTS успешно сгенерировал речь: %s (%d байт)", cached_file.name, len(audio_resp.content))
+            _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
+            logger.info("Lumean TTS успешно синтезировал в voice_cache/%s: %s (%d байт)", voice_dir.name, cached_file.name, len(audio_resp.content))
             return cached_file
 
         except Exception as exc:  # noqa: BLE001
@@ -542,7 +602,17 @@ class LumeanTTS:
                 "Lumean TTS ошибка синтеза (%s) — фоллбэк на edge-tts (Ava) только для этой фразы",
                 exc
             )
-            return self._fallback.synthesize(clean_text, lang)
+            fallback_media = self._fallback.synthesize(clean_text, lang)
+            if fallback_media.exists() and fallback_media != cached_file:
+                import shutil
+                try:
+                    shutil.copyfile(fallback_media, cached_file)
+                    compute_rms_chunks(cached_file)
+                    _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
+                    return cached_file
+                except Exception:
+                    pass
+            return fallback_media
 
     def search_voices(
         self,
@@ -900,13 +970,23 @@ def wav_duration_seconds(path: Path) -> float:
 
 
 @dataclass
-class SpeechTask:
-    """Фраза в очереди на озвучку."""
+class SpeechItem:
+    """Фраза в конвейере озвучки."""
 
     text: str
     lang: str
     emotion: str = "happy"
+    action: str | None = None
+    action_duration: float = 3.5
+    media_path: Path | None = None
+    rms_chunks: list[float] | None = None
+    ready_event: threading.Event = field(default_factory=threading.Event)
+    failed: bool = False
     source: str = "manual"
+
+
+# Алиас для обратной совместимости
+SpeechTask = SpeechItem
 
 
 @dataclass
@@ -919,19 +999,22 @@ class SpeechStatus:
     current_text: str = ""
     last_blocked: str = ""
     queue_len: int = 0
+    queue_size: int = 0
 
 
 @dataclass
 class SpeechController:
-    """Очередь речи: цензура -> синтез -> воспроизведение -> lipsync -> следующая."""
+    """Очередь речи: цензура -> асинхронный синтез (конвейер) -> воспроизведение -> lipsync -> следующая."""
 
     on_speak: Callable[[str, str, float, str], None]  # (media_url, emotion, volume, lang)
     on_rms: Callable[[float], None] = field(default=lambda rms: None)
+    on_action: Callable[[str, float], None] = field(default=lambda act, dur: None)
+    on_emotion: Callable[[str], None] = field(default=lambda emo: None)
     on_status: Callable[[SpeechStatus], None] = field(default=lambda status: None)
     engine: ElevenLabsTTS | LumeanTTS | EdgeTTS = field(default_factory=build_engine)
 
     def __post_init__(self) -> None:
-        self._queue: deque[SpeechTask] = deque()
+        self._playback_queue: deque[SpeechItem] = deque()
         self._lock = threading.Lock()
         self._finished = threading.Event()
         self._wake = threading.Event()
@@ -942,6 +1025,7 @@ class SpeechController:
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
         self._afplay_proc: subprocess.Popen | None = None
+        self._synth_pool = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-synth")
 
     # ---------- публичное API (вызывается из js_api и таймеров) ----------
 
@@ -1021,9 +1105,16 @@ class SpeechController:
         self._worker = threading.Thread(target=self._run, name="winky-speech", daemon=True)
         self._worker.start()
 
-    def speak(self, text: str, lang: str | None = None, emotion: str = "happy",
-              source: str = "manual") -> bool:
-        """Добавляет фразу в очередь с авто-санитайзером TikTok. False — заблокирована цензурой."""
+    def speak(
+        self,
+        text: str,
+        lang: str | None = None,
+        emotion: str = "happy",
+        action: str | None = None,
+        action_duration: float = 3.5,
+        source: str = "manual",
+    ) -> bool:
+        """Добавляет фразу в конвейер озвучки: асинхронный синтез в фоне + воспроизведение без обрыва реплик."""
         actual_lang = lang or detect_lang(text)
         # TikTok Anti-Ban Sanitizer: заменяем финансовые триггеры перед любой озвучкой
         text = sanitize_for_tiktok(text, actual_lang)
@@ -1036,27 +1127,56 @@ class SpeechController:
             self._last_blocked = f"{reason} («{text[:40]}…»)"
             self._emit_status()
             return False
-        task = SpeechTask(text=text, lang=actual_lang,
-                          emotion=emotion if emotion in EMOTIONS else "happy", source=source)
+
+        item = SpeechItem(
+            text=text,
+            lang=actual_lang,
+            emotion=emotion if emotion in EMOTIONS else "happy",
+            action=action,
+            action_duration=action_duration,
+            source=source,
+        )
+
         with self._lock:
-            self._queue.append(task)
+            self._playback_queue.append(item)
+
+        # Сразу запускаем фоновый синтез в пуле потоков
+        self._synth_pool.submit(self._prepare_audio, item)
+
         self._wake.set()
         self._emit_status()
         return True
-        with self._lock:
-            self._queue.append(task)
-        self._wake.set()
-        self._emit_status()
-        return True
+
+    def _prepare_audio(self, item: SpeechItem) -> None:
+        """Фоновый синтез речи для элемента очереди."""
+        try:
+            # 1. Проверяем локальный кэш
+            if hasattr(self.engine, "is_cached") and self.engine.is_cached(item.text, item.lang):
+                cached_file = self.engine.get_cache_path(item.text, item.lang)
+                if cached_file.exists() and cached_file.stat().st_size > 1024:
+                    item.media_path = cached_file
+                    item.rms_chunks = compute_rms_chunks(cached_file)
+                    item.ready_event.set()
+                    return
+
+            # 2. Синтез через движок
+            media = self.engine.synthesize(item.text, item.lang)
+            item.media_path = media
+            item.rms_chunks = compute_rms_chunks(media)
+            item.ready_event.set()
+        except Exception as exc:
+            logger.error("Ошибка подготовки аудио для «%s»: %s", item.text[:30], exc)
+            item.failed = True
+            item.ready_event.set()
 
     def finish_current(self) -> None:
         """Аватар доиграл файл (callback из JS)."""
         self._finished.set()
 
-    def stop_current(self) -> None:
-        """Мгновенно прерывает текущую речь и очищает очередь (для мгновенного отклика на клик)."""
+    def clear_queue_and_stop(self) -> None:
+        """Очищает очередь и останавливает текущее воспроизведение."""
         with self._lock:
-            self._queue.clear()
+            self._playback_queue.clear()
         proc = self._afplay_proc
         if proc and proc.poll() is None:
             try:
@@ -1071,6 +1191,10 @@ class SpeechController:
         except Exception:
             pass
         self._emit_status()
+
+    def stop_current(self) -> None:
+        """Мгновенно прерывает текущую речь (алиас для clear_queue_and_stop)."""
+        self.clear_queue_and_stop()
 
     def set_volume(self, volume: float) -> None:
         self._volume = min(1.0, max(0.0, float(volume)))
@@ -1093,26 +1217,28 @@ class SpeechController:
     def volume(self) -> float:
         return self._volume
 
+    def queue_size(self) -> int:
+        with self._lock:
+            return len(self._playback_queue)
+
     def status(self) -> SpeechStatus:
         with self._lock:
-            queue_len = len(self._queue)
+            q_len = len(self._playback_queue)
         return SpeechStatus(
             state="paused" if self._paused else ("speaking" if self._speaking else "idle"),
             engine=self.engine.name,
             volume=self._volume,
             current_text=self._current_text,
             last_blocked=self._last_blocked,
-            queue_len=queue_len,
+            queue_len=q_len,
+            queue_size=q_len,
         )
 
-    # ---------- воркер ----------
+    # ---------- воркер воспроизведения ----------
 
-    def _emit_status() -> None:
-        pass
-
-    def _next_task(self) -> SpeechTask | None:
+    def _next_item(self) -> SpeechItem | None:
         with self._lock:
-            return self._queue.popleft() if self._queue else None
+            return self._playback_queue.popleft() if self._playback_queue else None
 
     def _run(self) -> None:
         while True:
@@ -1120,52 +1246,54 @@ class SpeechController:
                 self._wake.wait(timeout=0.2)
                 self._wake.clear()
                 continue
-            task = self._next_task()
-            if task is None:
+            item = self._next_item()
+            if item is None:
                 self._wake.wait(timeout=0.2)
                 self._wake.clear()
                 continue
-            self._process(task)
+            self._process_item(item)
 
-    def _process(self, task: SpeechTask) -> None:
-        clean_text = task.text.strip()
-        sentences = [s.strip() for s in re.split(r"(?<=[.!?…])\s+", clean_text) if s.strip()]
-
-        # Sentence Pipelining: если фраза длинная и ещё не в кэше, начинаем говорить сразу по готовности 1-го предложения
-        if len(clean_text) > 65 and len(sentences) >= 2 and not self.is_cached(clean_text):
-            first_part = sentences[0]
-            rest_part = " ".join(sentences[1:])
-            logger.info("Sentence Pipelining: разделение на 2 потока («%s» и «%s»)", first_part[:30], rest_part[:30])
-            try:
-                with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-                    f_first = executor.submit(self.engine.synthesize, first_part, task.lang)
-                    f_rest = executor.submit(self.engine.synthesize, rest_part, task.lang)
-                    media_first = f_first.result(timeout=50.0)
-                    self._play_media(media_first, first_part, task.emotion, task.lang)
-                    media_rest = f_rest.result(timeout=50.0)
-                    self._play_media(media_rest, rest_part, task.emotion, task.lang)
-                    return
-            except Exception as exc:
-                logger.warning("Sentence Pipelining ошибка (%s), выполняю обычный синтез", exc)
-
-        try:
-            media = self.engine.synthesize(task.text, task.lang)
-            self._play_media(media, task.text, task.emotion, task.lang)
-        except TTSError as exc:
-            logger.error("Синтез не удался: %s", exc)
-            self._speaking = False
-            self._current_text = ""
-            self._finished.set()
+    def _process_item(self, item: SpeechItem) -> None:
+        # Ждём завершения синтеза аудио (до 45с)
+        ready = item.ready_event.wait(timeout=45.0)
+        if not ready or item.failed or not item.media_path or not item.media_path.exists():
+            logger.warning("Аудио не готово или ошибка синтеза для «%s»", item.text[:30])
             self._emit_status_impl()
+            return
 
-    def _play_media(self, media: Path, text: str, emotion: str, lang: str) -> None:
+        # Триггерим действие и эмоцию СТРОГО в момент фактического старта воспроизведения фразы
+        if item.action:
+            try:
+                self.on_action(item.action, item.action_duration)
+            except Exception as e:
+                logger.debug("on_action error: %s", e)
+        if item.emotion:
+            try:
+                self.on_emotion(item.emotion)
+            except Exception as e:
+                logger.debug("on_emotion error: %s", e)
+
+        self._play_media(item.media_path, item.text, item.emotion, item.lang, item.rms_chunks)
+
+    def _play_media(
+        self,
+        media: Path,
+        text: str,
+        emotion: str,
+        lang: str,
+        precomputed_rms: list[float] | None = None,
+    ) -> None:
         try:
-            rel_path = media.relative_to(MEDIA_DIR.parent).as_posix()
-            media_url = f"/{rel_path}"
+            rel = media.relative_to(VOICE_CACHE_DIR).as_posix()
+            media_url = f"/voice_cache/{rel}"
         except ValueError:
-            media_url = f"/media/{media.name}"
+            try:
+                rel_path = media.relative_to(MEDIA_DIR.parent).as_posix()
+                media_url = f"/{rel_path}"
+            except ValueError:
+                media_url = f"/media/{media.name}"
 
-        rms_chunks = compute_rms_chunks(media, chunk_ms=50)
+        rms_chunks = precomputed_rms if precomputed_rms is not None else compute_rms_chunks(media, chunk_ms=50)
         duration = len(rms_chunks) * 0.05 if rms_chunks else max(2.5, wav_duration_seconds(media))
 
         self._speaking = True
@@ -1214,12 +1342,15 @@ class SpeechController:
             self._finished.set()
             self._speaking = False
             self._current_text = ""
-            if "cache" not in str(media):
+            # Не удаляем файлы из voice_cache/ и cache/
+            if "voice_cache" not in str(media) and "cache" not in str(media):
                 try:
                     media.unlink(missing_ok=True)
                 except OSError:
                     pass
             self._emit_status_impl()
+            # Естественная микропауза между фразами в очереди
+            time.sleep(0.20)
 
     def _emit_status_impl(self) -> None:
         try:

@@ -15,9 +15,17 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 WEB_DIR = Path(__file__).parent / "web"
+VOICE_CACHE_DIR = Path(__file__).resolve().parent.parent / "voice_cache"
 
 
 class _AssetsHandler(SimpleHTTPRequestHandler):
+    def translate_path(self, path: str) -> str:
+        clean = path.split("?", 1)[0].split("#", 1)[0]
+        if clean.startswith("/voice_cache/"):
+            rel = clean[len("/voice_cache/"):].lstrip("/")
+            return str(VOICE_CACHE_DIR / rel)
+        return super().translate_path(path)
+
     def end_headers(self) -> None:  # noqa: N802 — сигнатура http.server
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")

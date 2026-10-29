@@ -19,6 +19,7 @@ from TikTokLive.events import (
     FollowEvent,
     GiftEvent,
     JoinEvent,
+    LikeEvent,
     LiveEndEvent,
 )
 
@@ -36,6 +37,7 @@ class TikTokConnector:
         on_gift,
         on_status,
         on_follow=None,
+        on_like=None,
     ) -> None:
         self._username = username.lstrip("@")
         self._on_comment = on_comment
@@ -43,6 +45,7 @@ class TikTokConnector:
         self._on_gift = on_gift
         self._on_status = on_status
         self._on_follow = on_follow
+        self._on_like = on_like
         self._client: TikTokLiveClient | None = None
         self._loop: asyncio.AbstractEventLoop | None = None
         self._stop = threading.Event()
@@ -156,3 +159,13 @@ class TikTokConnector:
                 self._on_gift(nickname, gift)
             except Exception:  # noqa: BLE001
                 logger.exception("ошибка обработки подарка")
+
+        @client.on(LikeEvent)
+        async def _on_like(event: LikeEvent) -> None:
+            try:
+                nickname = getattr(getattr(event, "user", None), "nickname", "") or "зритель"
+                count = getattr(event, "count", 1) or 1
+                if self._on_like:
+                    self._on_like(nickname, count)
+            except Exception:  # noqa: BLE001
+                logger.exception("ошибка обработки лайка")

@@ -181,24 +181,43 @@ keyword_replies:
 # Приветствия новых зрителей (событие входа в эфир).
 greetings:
   ru:
-    - "Оо, новый зритель у нас! Привет-привет!"
-    - "Добро пожаловать к нам на стрим! Располагайся, сейчас будет интересно!"
-    - "Привет! Добро пожаловать, устраивайся поудобнее!"
+    - "О, {user}, приветик! Рада тебя видеть!"
+    - "Хей, {user}, добро пожаловать! Располагайся, сейчас будет интересно!"
+    - "{user}, привет! Залетай к нам, устраивайся поудобнее!"
   en:
-    - "Oh, welcome to the stream! Hey-hey!"
-    - "Welcome, glad you joined! Get comfy, it's about to get good!"
-    - "Hi there! Welcome to the stream!"
+    - "Hey {user}, welcome to the stream! So happy you're here!"
+    - "Welcome {user}! Glad to have you on the live stream!"
+    - "Hi {user}! Welcome to the stream!"
+
+# Благодарности за подписки.
+follows:
+  ru:
+    - "{user}, спасибо за подписку! Танцую для тебя! Ссылка на бота в шапке профиля!"
+    - "Ура, {user}, добро пожаловать в семью! Лови мой фирменный танец!"
+  en:
+    - "Wow {user}, thank you for following! Dancing just for you! Check the link in bio!"
+    - "Welcome {user}! Thank you for following, enjoy my dance!"
 
 # Благодарности за подарки.
 gift_thanks:
   ru:
-    - "Огромное спасибо за подарок!! Ты просто космос!"
-    - "Вау, какой крутой подарок! Спасибо огромное, очень приятно!"
-    - "Спасибо за подарок! Ты делаешь этот стрим ярче!"
+    - "Ого, {user}, огромное спасибо за {gift}! Ты просто супер! Лови мой танец!"
+    - "Вау, {user}, какой подарок! {gift} — это супер мило! Танцую для тебя!"
+    - "{user}, спасибо за {gift}! Ты делаешь этот стрим ярче!"
   en:
-    - "Huge thanks for the gift!! You're amazing!"
-    - "Wow, thank you so much for the gift!"
-    - "Thanks for the gift! You make the stream brighter!"
+    - "Wow {user}, huge thanks for the {gift}!! You are amazing!"
+    - "Thank you so much {user} for the {gift}! Dancing just for you!"
+    - "Thanks {user} for the {gift}! You make the stream brighter!"
+
+# Благодарности за лайки (тапы по экрану).
+likes:
+  ru:
+    - "{user}, спасибо огромное за лайки! Лови сердечко!"
+    - "Ого, сколько лайков от {user}! Спасибо большое, ты лучший!"
+    - "{user}, спасибо за активность и поддержку стрима!"
+  en:
+    - "{user}, thank you so much for the likes! Sending love!"
+    - "Wow {user}, thanks for tapping the screen! You're awesome!"
 
 # Фолбэки: LLM недоступен или лимит — общий живой ответ.
 fallbacks:

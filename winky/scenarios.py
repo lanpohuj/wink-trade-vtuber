@@ -78,12 +78,16 @@ class KeywordReply:
 
 @dataclass(frozen=True)
 class ChatPhrases:
-    """Приветствия, благодарности за подарки и фолбэки."""
+    """Приветствия, благодарности за подарки, подписки, лайки и фолбэки."""
 
     greetings_ru: tuple[str, ...] = ()
     greetings_en: tuple[str, ...] = ()
     gift_thanks_ru: tuple[str, ...] = ()
     gift_thanks_en: tuple[str, ...] = ()
+    follows_ru: tuple[str, ...] = ()
+    follows_en: tuple[str, ...] = ()
+    likes_ru: tuple[str, ...] = ()
+    likes_en: tuple[str, ...] = ()
     fallbacks_ru: tuple[str, ...] = ()
     fallbacks_en: tuple[str, ...] = ()
 
@@ -93,6 +97,14 @@ class ChatPhrases:
 
     def gift_thank(self, lang: str) -> str:
         pool = self.gift_thanks_ru if lang == "ru" else self.gift_thanks_en
+        return random.choice(pool) if pool else ""
+
+    def follow(self, lang: str) -> str:
+        pool = self.follows_ru if lang == "ru" else self.follows_en
+        return random.choice(pool) if pool else ""
+
+    def like(self, lang: str) -> str:
+        pool = self.likes_ru if lang == "ru" else self.likes_en
         return random.choice(pool) if pool else ""
 
     def fallback(self, lang: str) -> str:
@@ -199,6 +211,10 @@ def _parse_chat_phrases(raw: dict) -> ChatPhrases:
         greetings_en=censored((raw.get("greetings") or {}).get("en")),
         gift_thanks_ru=censored((raw.get("gift_thanks") or {}).get("ru")),
         gift_thanks_en=censored((raw.get("gift_thanks") or {}).get("en")),
+        follows_ru=censored((raw.get("follows") or {}).get("ru")),
+        follows_en=censored((raw.get("follows") or {}).get("en")),
+        likes_ru=censored((raw.get("likes") or {}).get("ru")),
+        likes_en=censored((raw.get("likes") or {}).get("en")),
         fallbacks_ru=censored((raw.get("fallbacks") or {}).get("ru")),
         fallbacks_en=censored((raw.get("fallbacks") or {}).get("en")),
     )
@@ -239,6 +255,8 @@ class ScenarioBook:
             self._chat_phrases = _parse_chat_phrases({
                 "greetings": raw.get("greetings"),
                 "gift_thanks": raw.get("gift_thanks"),
+                "follows": raw.get("follows"),
+                "likes": raw.get("likes"),
                 "fallbacks": raw.get("fallbacks"),
             })
             self._cta = _parse_cta(raw.get("cta") or {})

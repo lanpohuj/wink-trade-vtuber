@@ -26,14 +26,14 @@ import webview
 from config import settings
 from winky.chat_router import (
     ChatRouter,
-    FILLERS_RU,
-    FILLERS_EN,
     JOIN_PHRASES_RU,
     JOIN_PHRASES_EN,
     FOLLOW_PHRASES_RU,
     FOLLOW_PHRASES_EN,
     GIFT_PHRASES_RU,
     GIFT_PHRASES_EN,
+    LIKE_PHRASES_RU,
+    LIKE_PHRASES_EN,
 )
 from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
@@ -75,10 +75,8 @@ class WinkyAPI:
     # ---------- вызовы из JS ----------
 
     def speak(self, text: str, lang: str | None = None, emotion: str = "happy") -> bool:
-        self._controller.stop_current()
-        if emotion == "wave":
-            self.trigger_wave()
-        return self._controller.speak(text, lang, emotion, source="panel")
+        act = "wave" if emotion == "wave" else None
+        return self._controller.speak(text, lang, emotion, action=act, source="panel")
 
     def quick_reply(self, reply_id: str, lang: str = "ru") -> bool:
         reply = self._book.quick_reply(reply_id)
@@ -106,19 +104,31 @@ class WinkyAPI:
         if reply is None:
             logger.warning("Неизвестная реплика: %s", reply_id)
             return False
-        try:
-            self._controller.stop_current()
-        except Exception as e:
-            logger.debug("stop_current error: %s", e)
+
+        action: str | None = None
+        action_duration = 3.5
         if "greet" in reply.id or reply.emotion == "wave":
-            self.trigger_wave()
-        elif reply.emotion == "happy":
-            self.set_emotion("happy")
+            action = "wave"
+            action_duration = 3.0
         elif reply.emotion in ("win", "excited"):
-            self.trigger_action("cheer", 3.5)
+            action = "cheer"
+            action_duration = 3.5
+        elif reply.emotion == "dance":
+            action = "dance"
+            action_duration = 4.5
+        elif reply.emotion in ("flirt_kiss", "neko_paws", "hip_groove", "peek_closer", "shy"):
+            action = reply.emotion
+            action_duration = 3.2
 
         chosen_text = reply.random_text(lang)
-        return self._controller.speak(chosen_text, lang=lang, emotion=reply.emotion, source="scenario")
+        return self._controller.speak(
+            chosen_text,
+            lang=lang,
+            emotion=reply.emotion,
+            action=action,
+            action_duration=action_duration,
+            source="scenario",
+        )
 
     def set_emotion(self, emotion: str) -> None:
         if emotion == "wave":
@@ -198,20 +208,18 @@ class WinkyAPI:
     def warmup_voice_cache(self, lang_slot: str = "all", full: bool = False) -> None:
         """Фоновый прогрев ключевых фраз стрима для мгновенного отклика 0.05с.
 
-        Если full=False (старт/смена голоса): греет только 4 ключевых фразы для слота (без 429).
+        Если full=False (старт/смена голоса): греет только 3 ключевых фразы для слота (без 429).
         Если full=True (кнопка в пульте): греет весь каталог реплик и вариантов.
         """
         def _run() -> None:
             core_ru = [
                 ("Привет! Это проверка моего нового голоса на русском языке!", "ru"),
-                (FILLERS_RU[0], "ru"),
-                (FILLERS_RU[-1], "ru"),
+                ("О, друг, приветик! Рада тебя видеть!", "ru"),
                 ("Привет-привет! Я Винки — неоновая помощница Wink! Рада всех видеть на стриме, сегодня тестируем крутые инструменты!", "ru"),
             ]
             core_en = [
                 ("Hey guys! Checking out my new voice in English!", "en"),
-                (FILLERS_EN[0], "en"),
-                (FILLERS_EN[-1], "en"),
+                ("Hey friend, welcome to the stream! So happy to see you here!", "en"),
                 ("Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're testing awesome tools today!", "en"),
             ]
 
@@ -223,22 +231,22 @@ class WinkyAPI:
                     phrases.extend(core_en)
             else:
                 phrases = list(core_ru) + list(core_en)
-                for f in FILLERS_RU:
-                    phrases.append((f, "ru"))
-                for f in FILLERS_EN:
-                    phrases.append((f, "en"))
                 for p in JOIN_PHRASES_RU:
-                    phrases.append((p, "ru"))
+                    phrases.append((p.replace("{user}", "друг"), "ru"))
                 for p in JOIN_PHRASES_EN:
-                    phrases.append((p, "en"))
+                    phrases.append((p.replace("{user}", "friend"), "en"))
                 for p in FOLLOW_PHRASES_RU:
-                    phrases.append((p, "ru"))
+                    phrases.append((p.replace("{user}", "друг"), "ru"))
                 for p in FOLLOW_PHRASES_EN:
-                    phrases.append((p, "en"))
+                    phrases.append((p.replace("{user}", "friend"), "en"))
                 for p in GIFT_PHRASES_RU:
-                    phrases.append((p, "ru"))
+                    phrases.append((p.replace("{user}", "друг").replace("{gift}", "подарок"), "ru"))
                 for p in GIFT_PHRASES_EN:
-                    phrases.append((p, "en"))
+                    phrases.append((p.replace("{user}", "friend").replace("{gift}", "gift"), "en"))
+                for p in LIKE_PHRASES_RU:
+                    phrases.append((p.replace("{user}", "друг"), "ru"))
+                for p in LIKE_PHRASES_EN:
+                    phrases.append((p.replace("{user}", "friend"), "en"))
                 for reply in self._book.quick_replies:
                     for t in reply.texts_ru:
                         phrases.append((t, "ru"))
@@ -323,10 +331,19 @@ class WinkyAPI:
     def on_speech_finished(self) -> None:
         self._controller.finish_current()
 
+    def clear_queue(self) -> None:
+        """Очищает очередь речи и останавливает текущее воспроизведение."""
+        self._controller.clear_queue_and_stop()
+        self.push_status()
+
+    def stop_speech(self) -> None:
+        self.clear_queue()
+
     def get_state(self) -> dict:
         status = self._controller.status()
         return {
             **dataclasses.asdict(status),
+            "queue_size": self._controller.queue_size(),
             "quick_replies": [
                 {
                     "id": reply.id,
@@ -421,6 +438,7 @@ class WinkyAPI:
             on_gift=self._on_chat_gift,
             on_status=self._on_tiktok_status,
             on_follow=self._on_chat_follow,
+            on_like=self._on_chat_like,
         )
         self._tiktok.start()
         logger.info("Подключаю TikTok-чат: @%s", username)
@@ -433,32 +451,33 @@ class WinkyAPI:
             self._on_tiktok_status("off")
 
     def simulate_comment(self, text: str) -> None:
-        """Ручной вопрос из пульта — тот же маршрут, что и живой чат."""
+        """Ручной вопрос из пульта — тот же конвейер, что и живой чат."""
         if self._chat_router and text:
-            self._controller.stop_current()
             self._chat_router.handle_comment("Зритель", text)
             self.push_status()
 
     def simulate_join(self, user: str = "Дима 🚀", lang: str = "auto") -> None:
         """Тест входа зрителя из пульта."""
-        self._controller.stop_current()
-        self.trigger_wave()
         if self._chat_router:
             self._chat_router.handle_join(user or "Дима 🚀", force=True, lang=lang)
             self.push_status()
 
     def simulate_follow(self, user: str = "Алина ✨", lang: str = "auto") -> None:
         """Тест подписки зрителя из пульта (танец + озвучка)."""
-        self._controller.stop_current()
         if self._chat_router:
             self._chat_router.handle_follow(user or "Алина ✨", lang=lang)
             self.push_status()
 
     def simulate_gift(self, user: str = "Миша 🚀", gift: str = "Роза", lang: str = "auto") -> None:
         """Тест подарка зрителя из пульта (танец + благодарность)."""
-        self._controller.stop_current()
         if self._chat_router:
             self._chat_router.handle_gift(user or "Миша 🚀", gift or "Роза", lang=lang)
+            self.push_status()
+
+    def simulate_like(self, user: str = "Катя ✨", count: int = 5, lang: str = "auto") -> None:
+        """Тест лайков зрителя из пульта (жест cheer + благодарность)."""
+        if self._chat_router:
+            self._chat_router.handle_like(user or "Катя ✨", count=count, lang=lang)
             self.push_status()
 
     def _on_chat_comment(self, user: str, text: str) -> None:
@@ -476,6 +495,10 @@ class WinkyAPI:
     def _on_chat_gift(self, user: str, gift: str) -> None:
         if self._chat_router:
             self._chat_router.handle_gift(user, gift)
+
+    def _on_chat_like(self, user: str, count: int = 1) -> None:
+        if self._chat_router:
+            self._chat_router.handle_like(user, count=count)
 
     def maybe_say_cta(self) -> None:
         if not self._cta_enabled or self._controller.paused or self._controller.speaking:
@@ -568,10 +591,22 @@ def main() -> None:
             f"window.setAvatarSpeechVolume && window.setAvatarSpeechVolume({float(rms):.3f})"
         )
 
+    def on_action(action: str, duration: float) -> None:
+        winky_api.trigger_action(action, duration)
+
+    def on_emotion(emotion: str) -> None:
+        winky_api.set_emotion(emotion)
+
     def on_status(_status) -> None:
         winky_api.push_status()
 
-    controller = SpeechController(on_speak=on_speak, on_rms=on_rms, on_status=on_status)
+    controller = SpeechController(
+        on_speak=on_speak,
+        on_rms=on_rms,
+        on_action=on_action,
+        on_emotion=on_emotion,
+        on_status=on_status,
+    )
     winky_api = WinkyAPI(controller, book)
 
     # Чат-маршрут: сценарии -> DeepSeek -> цензура -> речь

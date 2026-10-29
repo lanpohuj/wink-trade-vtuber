@@ -14,6 +14,7 @@
     <div class="state">
       <span class="state-dot" id="stateDot"></span>
       <span id="stateText">idle</span>
+      <span class="queue-badge" id="queueBadge" hidden>очередь: 0</span>
     </div>
   </header>
 
@@ -67,6 +68,7 @@
       <button id="simJoin" style="flex: 1;" title="Тест входа зрителя">👋 Вход</button>
       <button id="simFollow" style="flex: 1;" title="Тест подписки">💃 Подписка</button>
       <button id="simGift" style="flex: 1;" title="Тест подарка">🎁 Подарок</button>
+      <button id="simLike" style="flex: 1;" title="Тест лайков">❤️ Лайки</button>
     </div>
     <div class="chat-feed" id="chatFeed">
       <div class="feed-empty-line">Лента чата появится здесь</div>
@@ -221,8 +223,9 @@
   <section class="block">
     <div class="block-title">Управление</div>
     <div class="row">
-      <button id="pauseBtn">⏸ Пауза</button>
-      <button id="ctaBtn">📢 Повтор CTA</button>
+      <button id="pauseBtn" style="flex: 1;">⏸ Пауза</button>
+      <button id="ctaBtn" style="flex: 1;">📢 Повтор CTA</button>
+      <button id="clearQueueBtn" style="flex: 1;" title="Очистить очередь и остановить речь">🗑 Очистить</button>
     </div>
     <label class="volume-row">
       <span>🔊 Громкость</span>

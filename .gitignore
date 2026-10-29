@@ -43,6 +43,7 @@ data/
 *.sqlite3
 
 # Аудио и медиа-кэш Winky / TTS
+voice_cache/
 *.mp3
 *.wav
 *.ogg
