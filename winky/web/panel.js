@@ -38,11 +38,16 @@ const modelShibahuBtn = document.getElementById("modelShibahuBtn");
 const modelVrmBtn = document.getElementById("modelVrmBtn");
 
 // Voice Library элементы
-const activeProviderBadge = document.getElementById("activeProviderBadge");
-const activeVoiceName = document.getElementById("activeVoiceName");
-const activeVoiceId = document.getElementById("activeVoiceId");
+const activeProviderBadgeRu = document.getElementById("activeProviderBadgeRu");
+const activeVoiceNameRu = document.getElementById("activeVoiceNameRu");
+const activeVoiceIdRu = document.getElementById("activeVoiceIdRu");
+const activeProviderBadgeEn = document.getElementById("activeProviderBadgeEn");
+const activeVoiceNameEn = document.getElementById("activeVoiceNameEn");
+const activeVoiceIdEn = document.getElementById("activeVoiceIdEn");
+
 const testVoiceRuBtn = document.getElementById("testVoiceRuBtn");
 const testVoiceEnBtn = document.getElementById("testVoiceEnBtn");
+const warmupCatalogBtn = document.getElementById("warmupCatalogBtn");
 const catalogSelect = document.getElementById("catalogSelect");
 const voiceSearchInput = document.getElementById("voiceSearchInput");
 const voiceLangFilter = document.getElementById("voiceLangFilter");
@@ -52,8 +57,10 @@ const voiceCardsContainer = document.getElementById("voiceCardsContainer");
 const manualProviderSelect = document.getElementById("manualProviderSelect");
 const manualVoiceId = document.getElementById("manualVoiceId");
 const manualTemplateId = document.getElementById("manualTemplateId");
-const manualSaveBtn = document.getElementById("manualSaveBtn");
+const manualSaveRuBtn = document.getElementById("manualSaveRuBtn");
+const manualSaveEnBtn = document.getElementById("manualSaveEnBtn");
 const voiceStatusHint = document.getElementById("voiceStatusHint");
+const simLang = document.getElementById("simLang");
 
 const PROVIDER_INFO = {
   elevenlabs: { icon: "🔥", name: "ElevenLabs", badgeClass: "badge-elevenlabs" },
@@ -64,6 +71,8 @@ const PROVIDER_INFO = {
 
 let currentPreviewAudio = null;
 let currentPreviewBtn = null;
+let currentActiveRu = { service: "fishaudio", id: "1db1618b6eaf4571ac7db70e20eb6727", name: "Марин китагава" };
+let currentActiveEn = { service: "fishaudio", id: "e34c486929524d41b88646b4ac2f382f", name: "Venti" };
 
 function api() {
   return window.pywebview?.api;
@@ -78,17 +87,33 @@ function showVoiceStatusHint(text) {
   }, 3000);
 }
 
-function updateActiveVoiceDisplay(serviceKey, voiceId, voiceName) {
+function updateActiveVoiceDisplay(slot, serviceKey, voiceId, voiceName) {
   const p = PROVIDER_INFO[serviceKey] || { icon: "🎙️", name: serviceKey || "Lumean" };
-  if (activeProviderBadge) {
-    activeProviderBadge.textContent = `${p.icon} ${p.name}`;
-    activeProviderBadge.className = "active-badge " + (p.badgeClass || "");
-  }
-  if (activeVoiceName) {
-    activeVoiceName.textContent = voiceName || voiceId || "Marusya G";
-  }
-  if (activeVoiceId) {
-    activeVoiceId.textContent = voiceId || "";
+  const isRu = (slot || "ru").toLowerCase() === "ru";
+  if (isRu) {
+    currentActiveRu = { service: serviceKey, id: voiceId, name: voiceName };
+    if (activeProviderBadgeRu) {
+      activeProviderBadgeRu.textContent = `${p.icon} ${p.name}`;
+      activeProviderBadgeRu.className = "active-badge " + (p.badgeClass || "");
+    }
+    if (activeVoiceNameRu) {
+      activeVoiceNameRu.textContent = voiceName || voiceId || "Марин китагава";
+    }
+    if (activeVoiceIdRu) {
+      activeVoiceIdRu.textContent = voiceId || "";
+    }
+  } else {
+    currentActiveEn = { service: serviceKey, id: voiceId, name: voiceName };
+    if (activeProviderBadgeEn) {
+      activeProviderBadgeEn.textContent = `${p.icon} ${p.name}`;
+      activeProviderBadgeEn.className = "active-badge " + (p.badgeClass || "");
+    }
+    if (activeVoiceNameEn) {
+      activeVoiceNameEn.textContent = voiceName || voiceId || "Venti";
+    }
+    if (activeVoiceIdEn) {
+      activeVoiceIdEn.textContent = voiceId || "";
+    }
   }
 }
 
@@ -120,10 +145,11 @@ function renderStatus(status) {
     blockedInfo.textContent = "⛔ " + status.last_blocked;
   }
   if (status.lumean) {
-    updateActiveVoiceDisplay(status.lumean.service_key, status.lumean.voice_id, status.lumean.voice_name);
+    updateActiveVoiceDisplay("ru", status.lumean.ru_service, status.lumean.ru_voice_id, status.lumean.ru_voice_name);
+    updateActiveVoiceDisplay("en", status.lumean.en_service, status.lumean.en_voice_id, status.lumean.en_voice_name);
     if (manualVoiceId && !manualVoiceId.value) {
-      if (manualProviderSelect) manualProviderSelect.value = status.lumean.service_key || "elevenlabs";
-      manualVoiceId.value = status.lumean.voice_id || "";
+      if (manualProviderSelect) manualProviderSelect.value = status.lumean.ru_service || "fishaudio";
+      manualVoiceId.value = status.lumean.ru_voice_id || "";
     }
   }
   renderChatState(status.chat);
@@ -190,7 +216,7 @@ function onWarmupProgress(done, total, statusText) {
   barFill.style.width = percent + "%";
   if (percentSpan) percentSpan.textContent = percent + "%";
   if (statusSpan) {
-    statusSpan.textContent = statusText || (percent === 100 ? "✅ Голос готов (мгновенный отклик 0.05с)" : `⚡ Прогрев голоса: ${done} / ${total}...`);
+    statusSpan.textContent = statusText || (percent === 100 ? "✅ Голоса готовы (мгновенный отклик 0.05с)" : `⚡ Прогрев голосов: ${done} / ${total}...`);
   }
 
   if (percent === 100) {
@@ -209,38 +235,49 @@ window.winkyPanel = { renderStatus, renderQuickReplies, onScenariosReloaded, onC
 function renderQuickReplies(replies) {
   quickGrid.innerHTML = "";
   for (const reply of replies) {
-    const button = document.createElement("button");
-    button.className = "quick-card";
-    button.setAttribute("data-id", reply.id);
-    button.innerHTML =
-      '<span class="qr-lang">' + reply.lang.toUpperCase() + " · " + reply.emotion + "</span>" +
-      '<span>' + reply.label + "</span>" +
-      '<span class="qr-text">' + reply.text + "</span>";
-    button.addEventListener("click", (e) => {
+    const card = document.createElement("div");
+    card.className = "quick-card-container";
+    card.setAttribute("data-id", reply.id);
+
+    const previewText = (reply.texts_ru && reply.texts_ru[0]) || reply.text || "";
+    const icon = reply.icon || "💬";
+
+    card.innerHTML = `
+      <div class="quick-card-header">
+        <span class="qr-title" title="${reply.label}">${icon} ${reply.label}</span>
+        <span class="qr-emo">${reply.emotion || 'happy'}</span>
+      </div>
+      <div class="qr-preview" title="${previewText}">${previewText}</div>
+      <div class="qr-btns">
+        <button class="qr-lang-btn qr-ru" title="Озвучить случайный русский вариант">🇷🇺 RU</button>
+        <button class="qr-lang-btn qr-en" title="Озвучить случайный английский вариант">🇬🇧 EN</button>
+      </div>
+    `;
+
+    const btnRu = card.querySelector(".qr-ru");
+    const btnEn = card.querySelector(".qr-en");
+
+    btnRu?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
-      button.classList.add("clicked");
-      setTimeout(() => button.classList.remove("clicked"), 700);
+      btnRu.classList.add("clicked");
+      setTimeout(() => btnRu.classList.remove("clicked"), 700);
       const bridge = window.pywebview?.api || api();
-      if (bridge?.quick_reply) {
-        bridge.quick_reply(reply.id);
-      }
+      bridge?.quick_reply(reply.id, "ru");
     });
-    quickGrid.appendChild(button);
+
+    btnEn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      btnEn.classList.add("clicked");
+      setTimeout(() => btnEn.classList.remove("clicked"), 700);
+      const bridge = window.pywebview?.api || api();
+      bridge?.quick_reply(reply.id, "en");
+    });
+
+    quickGrid.appendChild(card);
   }
 }
-
-quickGrid.addEventListener("click", (e) => {
-  const card = e.target.closest(".quick-card");
-  if (!card) return;
-  const id = card.getAttribute("data-id");
-  if (id) {
-    const bridge = window.pywebview?.api || api();
-    if (bridge?.quick_reply) {
-      bridge.quick_reply(id);
-    }
-  }
-});
 
 function onScenariosReloaded() {
   reloadHint.hidden = false;
@@ -249,7 +286,7 @@ function onScenariosReloaded() {
 
 /* ==================== Карточки Voice Library ==================== */
 
-function renderVoiceCards(voices, activeVoiceIdVal) {
+function renderVoiceCards(voices) {
   if (!voiceCardsContainer) return;
   voiceCardsContainer.innerHTML = "";
   if (!Array.isArray(voices) || voices.length === 0) {
@@ -258,9 +295,11 @@ function renderVoiceCards(voices, activeVoiceIdVal) {
   }
 
   for (const v of voices) {
-    const isSelected = v.voice_id === activeVoiceIdVal;
+    const isRuSelected = v.voice_id === currentActiveRu.id;
+    const isEnSelected = v.voice_id === currentActiveEn.id;
+
     const card = document.createElement("div");
-    card.className = "voice-card" + (isSelected ? " selected" : "");
+    card.className = "voice-card" + ((isRuSelected || isEnSelected) ? " selected" : "");
     card.setAttribute("data-voice-id", v.voice_id);
 
     const p = PROVIDER_INFO[v.service_key] || { icon: "🎙️", name: v.service_key, badgeClass: "badge-elevenlabs" };
@@ -281,7 +320,8 @@ function renderVoiceCards(voices, activeVoiceIdVal) {
         <span class="voice-card-id" title="Кликните, чтобы скопировать ID">${v.voice_id}</span>
         <div class="voice-action-btns">
           <button class="btn-preview">▶️ Превью</button>
-          <button class="btn-select">${isSelected ? "✅ Выбрано" : "Выбрать"}</button>
+          <button class="btn-select-ru ${isRuSelected ? 'active' : ''}">${isRuSelected ? "✅ RU" : "🇷🇺 На RU"}</button>
+          <button class="btn-select-en ${isEnSelected ? 'active' : ''}">${isEnSelected ? "✅ EN" : "🇬🇧 На EN"}</button>
         </div>
       </div>
     `;
@@ -317,7 +357,6 @@ function renderVoiceCards(voices, activeVoiceIdVal) {
         audio.onended = () => stopCurrentPreview();
         audio.onerror = () => stopCurrentPreview();
       } else {
-        // Если у голоса нет preview_url (как у некоторых Fish Audio) — синтезируем сэмпл
         previewBtn.disabled = true;
         previewBtn.textContent = "⏳ Синтез...";
         try {
@@ -342,27 +381,51 @@ function renderVoiceCards(voices, activeVoiceIdVal) {
       }
     });
 
-    // Кнопка Выбрать
-    const selectBtn = card.querySelector(".btn-select");
-    selectBtn?.addEventListener("click", async (e) => {
+    // Кнопка На RU
+    const selectRuBtn = card.querySelector(".btn-select-ru");
+    selectRuBtn?.addEventListener("click", async (e) => {
       e.stopPropagation();
-      selectBtn.disabled = true;
-      selectBtn.textContent = "⏳...";
+      selectRuBtn.disabled = true;
+      selectRuBtn.textContent = "⏳...";
       try {
-        await api()?.set_voice(v.service_key, v.voice_id, v.name);
-        updateActiveVoiceDisplay(v.service_key, v.voice_id, v.name);
-        document.querySelectorAll(".voice-card").forEach(c => {
-          c.classList.remove("selected");
-          const b = c.querySelector(".btn-select");
-          if (b) b.textContent = "Выбрать";
+        await api()?.set_voice("ru", v.service_key, v.voice_id, v.name);
+        updateActiveVoiceDisplay("ru", v.service_key, v.voice_id, v.name);
+        document.querySelectorAll(".btn-select-ru").forEach(b => {
+          b.classList.remove("active");
+          b.textContent = "🇷🇺 На RU";
         });
+        selectRuBtn.classList.add("active");
+        selectRuBtn.textContent = "✅ RU";
         card.classList.add("selected");
-        selectBtn.textContent = "✅ Выбрано";
-        showVoiceStatusHint(`Голос «${v.name}» выбран и сохранён во всём приложении!`);
+        showVoiceStatusHint(`Голос «${v.name}» назначен для RU ответов!`);
       } catch (err) {
-        console.error("Set voice error:", err);
+        console.error("Set RU voice error:", err);
       } finally {
-        selectBtn.disabled = false;
+        selectRuBtn.disabled = false;
+      }
+    });
+
+    // Кнопка На EN
+    const selectEnBtn = card.querySelector(".btn-select-en");
+    selectEnBtn?.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      selectEnBtn.disabled = true;
+      selectEnBtn.textContent = "⏳...";
+      try {
+        await api()?.set_voice("en", v.service_key, v.voice_id, v.name);
+        updateActiveVoiceDisplay("en", v.service_key, v.voice_id, v.name);
+        document.querySelectorAll(".btn-select-en").forEach(b => {
+          b.classList.remove("active");
+          b.textContent = "🇬🇧 На EN";
+        });
+        selectEnBtn.classList.add("active");
+        selectEnBtn.textContent = "✅ EN";
+        card.classList.add("selected");
+        showVoiceStatusHint(`Голос «${v.name}» назначен для EN ответов!`);
+      } catch (err) {
+        console.error("Set EN voice error:", err);
+      } finally {
+        selectEnBtn.disabled = false;
       }
     });
 
@@ -375,8 +438,7 @@ async function loadVoices(catalog, query = "", lang = "", gender = "") {
   voiceCardsContainer.innerHTML = '<div class="voice-cards-empty">⏳ Загрузка каталога голосов...</div>';
   try {
     const voices = await api()?.search_voices(catalog, query, lang, gender, 1);
-    const currId = activeVoiceId?.textContent || "";
-    renderVoiceCards(voices || [], currId);
+    renderVoiceCards(voices || []);
   } catch (err) {
     voiceCardsContainer.innerHTML = '<div class="voice-cards-empty">Ошибка загрузки каталога голосов</div>';
     console.error("Load voices error:", err);
@@ -386,7 +448,7 @@ async function loadVoices(catalog, query = "", lang = "", gender = "") {
 /* ==================== Слушатели событий Voice Library ==================== */
 
 searchVoicesBtn?.addEventListener("click", () => {
-  const cat = catalogSelect?.value || "elevenlabs";
+  const cat = catalogSelect?.value || "fishaudio";
   const q = voiceSearchInput?.value.trim() || "";
   const l = voiceLangFilter?.value || "";
   const g = voiceGenderFilter?.value || "";
@@ -409,27 +471,55 @@ testVoiceEnBtn?.addEventListener("click", () => {
   api()?.test_voice("en");
 });
 
-manualSaveBtn?.addEventListener("click", async () => {
-  const p = manualProviderSelect?.value || "elevenlabs";
-  const vid = manualVoiceId?.value.trim() || "";
-  const tid = manualTemplateId?.value.trim() || "";
-  if (!vid) return;
-
-  manualSaveBtn.disabled = true;
-  manualSaveBtn.textContent = "⏳...";
+warmupCatalogBtn?.addEventListener("click", async () => {
+  warmupCatalogBtn.disabled = true;
+  warmupCatalogBtn.textContent = "⏳ Запуск прогрева...";
   try {
-    if (tid) {
-      await api()?.update_lumean_settings(tid, vid, p, vid);
-    } else {
-      await api()?.set_voice(p, vid, vid);
-    }
-    updateActiveVoiceDisplay(p, vid, vid);
-    showVoiceStatusHint("Голос успешно сохранён и активирован!");
+    await api()?.warmup_full_catalog();
+    showVoiceStatusHint("Запущен фоновый прогрев всех реплик стрима!");
   } catch (err) {
-    console.error("Manual save voice error:", err);
+    console.error("Warmup catalog error:", err);
   } finally {
-    manualSaveBtn.disabled = false;
-    manualSaveBtn.textContent = "Сохранить";
+    setTimeout(() => {
+      warmupCatalogBtn.disabled = false;
+      warmupCatalogBtn.textContent = "⚡ Прогреть весь каталог реплик";
+    }, 2000);
+  }
+});
+
+manualSaveRuBtn?.addEventListener("click", async () => {
+  const p = manualProviderSelect?.value || "fishaudio";
+  const vid = manualVoiceId?.value.trim() || "";
+  if (!vid) return;
+  manualSaveRuBtn.disabled = true;
+  manualSaveRuBtn.textContent = "⏳...";
+  try {
+    await api()?.set_voice("ru", p, vid, vid);
+    updateActiveVoiceDisplay("ru", p, vid, vid);
+    showVoiceStatusHint("Голос RU успешно сохранён!");
+  } catch (err) {
+    console.error("Manual save RU voice error:", err);
+  } finally {
+    manualSaveRuBtn.disabled = false;
+    manualSaveRuBtn.textContent = "🇷🇺 Сохранить на RU";
+  }
+});
+
+manualSaveEnBtn?.addEventListener("click", async () => {
+  const p = manualProviderSelect?.value || "fishaudio";
+  const vid = manualVoiceId?.value.trim() || "";
+  if (!vid) return;
+  manualSaveEnBtn.disabled = true;
+  manualSaveEnBtn.textContent = "⏳...";
+  try {
+    await api()?.set_voice("en", p, vid, vid);
+    updateActiveVoiceDisplay("en", p, vid, vid);
+    showVoiceStatusHint("Голос EN успешно сохранён!");
+  } catch (err) {
+    console.error("Manual save EN voice error:", err);
+  } finally {
+    manualSaveEnBtn.disabled = false;
+    manualSaveEnBtn.textContent = "🇬🇧 Сохранить на EN";
   }
 });
 
@@ -532,18 +622,28 @@ simAsk.addEventListener("click", () => {
 });
 
 simJoin?.addEventListener("click", () => {
-  onChatEvent({ kind: "user", who: "👋 Вход", text: "Дима 🚀 присоединился к эфиру" });
-  api()?.simulate_join("Дима 🚀");
+  const lang = simLang?.value || "auto";
+  const isEn = lang === "en";
+  const user = isEn ? "Alex 🚀" : "Дима 🚀";
+  onChatEvent({ kind: "user", who: "👋 Вход", text: isEn ? `${user} joined the stream` : `${user} присоединился к эфиру` });
+  api()?.simulate_join(user, lang);
 });
 
 simFollow?.addEventListener("click", () => {
-  onChatEvent({ kind: "user", who: "💃 Подписка", text: "Алина ✨ подписалась на канал!" });
-  api()?.simulate_follow("Алина ✨");
+  const lang = simLang?.value || "auto";
+  const isEn = lang === "en";
+  const user = isEn ? "Emily ✨" : "Алина ✨";
+  onChatEvent({ kind: "user", who: "💃 Подписка", text: isEn ? `${user} followed!` : `${user} подписалась на канал!` });
+  api()?.simulate_follow(user, lang);
 });
 
 simGift?.addEventListener("click", () => {
-  onChatEvent({ kind: "user", who: "🎁 Подарок", text: "Миша 🚀 отправил Роза!" });
-  api()?.simulate_gift("Миша 🚀", "Роза");
+  const lang = simLang?.value || "auto";
+  const isEn = lang === "en";
+  const user = isEn ? "Mike 🚀" : "Миша 🚀";
+  const gift = isEn ? "Rose" : "Роза";
+  onChatEvent({ kind: "user", who: "🎁 Подарок", text: isEn ? `${user} sent a ${gift}!` : `${user} отправил ${gift}!` });
+  api()?.simulate_gift(user, gift, lang);
 });
 
 simQuestion.addEventListener("keydown", (event) => {
@@ -574,9 +674,11 @@ async function init() {
   pauseBtn.textContent = status.state === "paused" ? "▶ Продолжить" : "⏸ Пауза";
 
   if (status.lumean) {
-    updateActiveVoiceDisplay(status.lumean.service_key, status.lumean.voice_id, status.lumean.voice_name);
-    if (catalogSelect) catalogSelect.value = status.lumean.service_key || "elevenlabs";
-    loadVoices(catalogSelect ? catalogSelect.value : "elevenlabs");
+    updateActiveVoiceDisplay("ru", status.lumean.ru_service, status.lumean.ru_voice_id, status.lumean.ru_voice_name);
+    updateActiveVoiceDisplay("en", status.lumean.en_service, status.lumean.en_voice_id, status.lumean.en_voice_name);
+    const defaultCatalog = status.lumean.ru_service || "fishaudio";
+    if (catalogSelect) catalogSelect.value = defaultCatalog;
+    loadVoices(defaultCatalog);
   }
 
   const savedScale = localStorage.getItem("winky_avatar_scale");

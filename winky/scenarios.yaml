@@ -1,103 +1,140 @@
 # ============================================================
 # Реплики Winky — редактируйте на ходу, файл перезагрузится сам.
-# Поля: id (уникальный), label (кнопка на пульте), lang (ru|en),
-# emotion (idle|happy|excited|thinking|wink), text (что сказать).
-# Цензура: реплики со стоп-словами (гарантия, 100%, без риска…)
-# не озвучиваются — об этом будет предупреждение в пульте.
+# Формат quick_replies:
+#   id: уникальный идентификатор
+#   label: название в пульте
+#   icon: эмодзи иконка
+#   emotion: idle | happy | excited | thinking | wink | wave | win
+#   texts_ru: список вариантов на русском (выбирается случайно)
+#   texts_en: список вариантов на английском (выбирается случайно)
 # ============================================================
 
 quick_replies:
-  # ---------- Русские ----------
-  - id: greet_ru
-    label: 👋 Приветствие
-    lang: ru
+  - id: greeting
+    label: Приветствие
+    icon: 👋
     emotion: wave
-    text: >-
-      Привет-привет! Я Винки — неоновая помощница Wink Trade! Пока вы здесь смотрите,
-      наш бот уже раздаёт торговые сигналы. Ссылка — в шапке профиля, залетайте!
+    texts_ru:
+      - "Привет-привет! Я Винки — неоновая помощница Wink! Рада всех видеть на стриме, сегодня тестируем крутые инструменты!"
+      - "Хей, всем привет! Располагайтесь поудобнее, следите за экраном — сейчас всё покажу!"
+    texts_en:
+      - "Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're testing awesome tools today!"
+      - "Hello friends! Glad to see you all here, keep your eyes on the screen!"
 
-  - id: cta_ru
-    label: 🚀 Призыв (CTA)
-    lang: ru
-    emotion: happy
-    text: >-
-      Кстати, ребят! Прямо сейчас в боте Wink Trade можно получить сигнал —
-      ссылка в шапке профиля. Зарегистрируйтесь и внесите депозит — и приложение с сигналами откроется автоматически!
-
-  - id: howto_ru
-    label: 📖 Как пользоваться
-    lang: ru
+  - id: how_to_use
+    label: Как пользоваться
+    icon: 📖
     emotion: thinking
-    text: >-
-      Всё проще простого! Переходите по ссылке из шапки профиля — бот даст персональную
-      ссылку на регистрацию в Pocket Option. Регистрируетесь, вносите депозит от десяти долларов —
-      и бот сам открывает доступ к сигналам. Буквально пара минут!
+    texts_ru:
+      - "Всё очень просто! Переходи по ссылочке в шапке профиля, жми старт и следуй короткой инструкции на экране!"
+      - "Инструкция буквально в три шага! Заходи по ссылке в описании профиля, бот всё наглядно покажет за пару минут!"
+    texts_en:
+      - "Super easy! Tap the link in the bio, hit start and follow the simple steps on screen!"
+      - "Just three quick steps! Check the link in my profile bio, the assistant will guide you through!"
 
-  - id: questions_ru
-    label: 💬 Вопросы в чат
-    lang: ru
-    emotion: wink
-    text: >-
-      Если есть вопросы — пишите прямо в чат, я всё вижу и обязательно отвечу!
-      А ещё у бота есть поддержка в Telegram — кнопка прямо в меню.
-
-  - id: stream_promo_ru
-    label: 🎥 Про стрим
-    lang: ru
+  - id: about_stream
+    label: О стриме
+    icon: 🎥
     emotion: excited
-    text: >-
-      Сегодня прямо на этом стриме покажу, как бот выдаёт сигналы вживую!
-      Смотрите на экран — сейчас будет сигнальная карточка. Ну как, впечатляет?
+    texts_ru:
+      - "На этом стриме мы тестируем веб-приложение аналитики в реальном времени! Смотрите на экран — вся статистика как на ладони!"
+      - "В прямом эфире проверяем алгоритмы и смотрим за движением графиков! Задавайте вопросы в чате!"
+    texts_en:
+      - "On this stream we're testing real-time market analytics live! Check out the screen to see how it works!"
+      - "Live testing our assistant and watching the charts right in front of you! Feel free to ask questions in chat!"
 
-  # ---------- English ----------
-  - id: greet_en
-    label: 👋 Greeting
-    lang: en
-    emotion: excited
-    text: >-
-      Hey-hey! I'm Winky, the neon assistant of Wink Trade! While you're watching here,
-      our bot is already dropping trading signals. The link is in the bio — hop in!
-
-  - id: cta_en
-    label: 🚀 Call to action
-    lang: en
+  - id: cta_bio
+    label: Ссылка в био
+    icon: 🚀
     emotion: happy
-    text: >-
-      By the way, guys! Right now you can grab a signal in the Wink Trade bot —
-      the link is in the bio. Register, make a deposit — and the signals app unlocks automatically!
+    texts_ru:
+      - "Кстати, все полезные ссылки и доступ к приложению ждут вас прямо в шапке профиля! Не теряйте, заглядывайте!"
+      - "Ребят, не забывайте заглянуть в шапку профиля — там закреплена прямая ссылочка, заходите!"
+    texts_en:
+      - "By the way, all helpful links and app access are right in my bio! Check it out!"
+      - "Don't forget to tap the link in the profile bio, guys — everything is waiting there!"
 
-  - id: howto_en
-    label: 📖 How to use
-    lang: en
-    emotion: thinking
-    text: >-
-      Super simple! Follow the link in the bio — the bot gives you a personal
-      registration link for Pocket Option. Sign up, deposit from ten dollars —
-      and the bot unlocks the signals app for you. Takes just a couple of minutes!
-
-  - id: questions_en
-    label: 💬 Ask in chat
-    lang: en
+  - id: ask_in_chat
+    label: Вопросы в чат
+    icon: 💬
     emotion: wink
-    text: >-
-      Got questions? Drop them right in the chat — I see everything and I'll answer!
-      The bot also has support in Telegram — the button is right in its menu.
+    texts_ru:
+      - "Если у вас есть любые вопросы по приложению или стриму — пишите прямо в чатик, я всё вижу и на всё отвечу!"
+      - "Пишите свои вопросы и мысли в чат! С удовольствием пообщаюсь и подскажу, что к чему!"
+    texts_en:
+      - "Got any questions about the stream or app? Drop them in chat, I see everything and will gladly reply!"
+      - "Feel free to ask anything in the chat, friends! I'm here to chat and help out!"
+
+  - id: balance_info
+    label: О доступе
+    icon: ℹ️
+    emotion: thinking
+    texts_ru:
+      - "Доступ к веб-приложению совершенно свободный, все подробности расписаны по шагам в боте по ссылке в профиле!"
+      - "Чтобы открыть инструменты, просто выполните пару простых шагов в боте из шапки профиля. Это занимает буквально минуту!"
+    texts_en:
+      - "Access to the tools is super straightforward, check out the step-by-step guide via the link in bio!"
+      - "To open the app, just complete a couple quick steps in the assistant linked in my profile!"
+
+  - id: green_streak
+    label: Зелёная серия
+    icon: 🔥
+    emotion: happy
+    texts_ru:
+      - "Ого, посмотрите на эту уверенную серию! Аналитика отрабатывает отлично, графики радуют глаз!"
+      - "Вот это да, отличный результат на экране! Кто успел зайти вместе с нами — красавчики!"
+    texts_en:
+      - "Wow, look at that strong green streak! The analytics are on point today, looking beautiful!"
+      - "What a fantastic result on screen! Cheers to everyone watching along!"
+
+  - id: smart_pace
+    label: Разумный темп
+    icon: 🧠
+    emotion: thinking
+    texts_ru:
+      - "Главное правило на стриме — холодная голова и строгая дисциплина. Никакой спешки, работаем спокойно и системно!"
+      - "Никогда не торопитесь и держите эмоции под контролем! Системный подход всегда побеждает суету."
+    texts_en:
+      - "The number one rule is discipline and patience! Stay calm and stick to the plan."
+      - "Never rush, guys! A calm, systematic approach always beats emotional impulse."
+
+  - id: skeptics_reply
+    label: Для сомневающихся
+    icon: 🛡️
+    emotion: wink
+    texts_ru:
+      - "Сомневаться — это абсолютно нормально! Поэтому мы и ведём открытый прямой эфир: смотрите, проверяйте сами вживую!"
+      - "Лучшее доказательство — это открытый эфир и прозрачная статистика на экране. Наблюдайте своими глазами!"
+    texts_en:
+      - "It's totally normal to be skeptical! That's why we stream live — watch and see the transparent results for yourself!"
+      - "The best proof is seeing it live right on your screen. Watch, verify, and decide for yourself!"
+
+  - id: thanks_likes
+    label: Лайки и поддержка
+    icon: ❤️
+    emotion: excited
+    texts_ru:
+      - "Огромное спасибо за ваши тапы по экрану и сердечки! Вы невероятная аудитория, это заряжает стрим!"
+      - "Спасибо всем за лайки и поддержку стрима! Каждое сердечко помогает алгоритмам продвигать наш эфир!"
+    texts_en:
+      - "Thank you so much for the likes and screen taps! You guys are amazing, appreciate the support!"
+      - "Huge thanks for all the hearts and likes! You're making this stream shine brighter!"
 
 # Ротация призывов: Winky сама напоминает про бота каждые N минут
 cta:
   interval_minutes: 4
   messages_ru:
-    - "Напоминаю: ссылка на бота — в шапке профиля! Регистрируйтесь, пока раздаём сигналы."
-    - "Ребят, вы ещё не в Wink Trade? Серьёзно?! Ссылка в шапке — ждём вас!"
-    - "Хотите такие же сигналы, как на экране? Бот ждёт: ссылка в шапке профиля!"
-    - "Кстати, доступ к сигналам открывается автоматически после депозита — попробуйте!"
+    - "Напоминаю: ссылка на ассистента — в шапке профиля! Заходите, пока идёт стрим."
+    - "Ребят, вы ещё не открыли приложение? Ссылка в шапке — ждём вас!"
+    - "Хотите протестировать такие же инструменты, как на экране? Ссылка в шапке профиля!"
+    - "Кстати, доступ к приложению открывается по простым шагам — попробуйте!"
   messages_en:
-    - "Reminder: the bot link is in the bio! Hop in while we're dropping signals."
-    - "Guys, you're still not in Wink Trade? Seriously?! The link is in the bio!"
-    - "Want the same signals you see on screen? The bot is waiting — link in the bio!"
-    - "By the way, access unlocks automatically after a deposit — give it a try!"
+    - "Reminder: the assistant link is in the bio! Join while the stream is live."
+    - "Guys, haven't checked the app yet? The link is in the bio!"
+    - "Want to test the same tools you see on screen? Link is in the bio!"
+    - "By the way, app access opens in just a few quick steps — give it a try!"
 
-# Ответы по ключевым словам (приоритетнее LLM). Универсальные фразы для 100% предкэширования.
+# Ответы по ключевым словам (приоритетнее LLM). Универсальные фразы для предкэширования.
 keyword_replies:
   - id: kw_hello
     keywords: ["привет", "хай", "здаров", "добрый", "hello", "hi", "hey", "салют"]
@@ -108,70 +145,58 @@ keyword_replies:
   - id: kw_howto
     keywords: ["как польз", "как зарег", "как нач", "как попасть", "how to", "how do i", "how can i"]
     emotion: thinking
-    text_ru: >-
-      Всё просто: жмёшь ссылку в шапке профиля, регистрируешься в Pocket Option
-      по персональной ссылке от бота, вносишь депозит от десяти долларов — и сигналы открываются сами!
-    text_en: >-
-      Super simple: follow the link in the bio, register in Pocket Option
-      via the bot's personal link, deposit from ten dollars — and the signals unlock automatically!
+    text_ru: "Всё просто: переходишь по ссылке в шапке профиля, запускаешь бота и следуешь трём коротким шагам. Приложение откроется сразу!"
+    text_en: "Super simple: tap the link in the bio, launch the assistant and follow 3 quick steps. The app opens right away!"
 
   - id: kw_link
     keywords: ["ссылк", "где бот", "как найти", "link", "where bot", "bio"]
     emotion: excited
-    text_ru: "Ссылка на бота — прямо в шапке профиля! Бегом, пока раздаём сигналы!"
-    text_en: "The bot link is right in the bio! Hurry up, we're dropping signals!"
+    text_ru: "Ссылка на приложение — прямо в шапке профиля! Заглядывай, пока идёт эфир!"
+    text_en: "The link is right in the bio! Hop in while the stream is live!"
 
-  - id: kw_deposit
-    keywords: ["депозит", "сколько внос", "сколько нужно", "пополн", "deposit", "how much"]
+  - id: kw_access
+    keywords: ["доступ", "сколько нужно", "как открыть", "access", "how much", "cost"]
     emotion: thinking
-    text_ru: "Депозит — любая сумма от десяти долларов. Больше ничего не нужно!"
-    text_en: "Any deposit from ten dollars. Nothing else needed!"
+    text_ru: "Все детали по доступу расписаны в боте по ссылке в шапке профиля. Это занимает буквально минуту!"
+    text_en: "All access details are laid out in the assistant via the link in bio. Takes just a minute!"
 
-  - id: kw_signal
-    keywords: ["сигнал", "точност", "какой парам", "signal", "accuracy", "which pair"]
+  - id: kw_analytics
+    keywords: ["аналитик", "точност", "график", "инструмент", "analytics", "charts", "accuracy"]
     emotion: excited
-    text_ru: >-
-      Сигналы по куче пар, точность до девяноста трёх процентов!
-      Сама увидишь на экране — сейчас покажем!
-    text_en: >-
-      Signals on tons of pairs, accuracy up to ninety-three percent!
-      You'll see it on screen right now!
+    text_ru: "Аналитика обновляется в реальном времени прямо на экране! Следите за графиком!"
+    text_en: "Analytics update in real-time right on the screen! Keep your eyes on the chart!"
 
   - id: kw_scam
     keywords: ["скам", "развод", "обман", "фейк", "scam", "fake", "fraud"]
     emotion: wink
-    text_ru: >-
-      Понимаю сомнения! Всё прозрачно: смотри работу бота вживую прямо сейчас —
-      реальный телефон, реальные сигналы. И поддержка в боте на связи.
-    text_en: >-
-      I hear you! It's all transparent: watch the bot live right now —
-      real phone, real signals. And the bot's support is one tap away.
+    text_ru: "Понимаю сомнения! Поэтому эфир открытый и живой — смотрите прямо сейчас, всё прозрачно!"
+    text_en: "I hear you! That's why we stream live — watch right now, everything is open and clear!"
 
   - id: kw_bot
     keywords: ["бот", "bot", "wink", "винк"]
     emotion: happy
-    text_ru: "Всё про бота — в шапке профиля! Жми ссылку и залетай!"
-    text_en: "Everything about the bot is in the bio! Tap the link and hop in!"
+    text_ru: "Всё про ассистента — в шапке профиля! Жми ссылку и залетай!"
+    text_en: "Everything about the assistant is in the bio! Tap the link and join in!"
 
 # Приветствия новых зрителей (событие входа в эфир).
 greetings:
   ru:
     - "Оо, новый зритель у нас! Привет-привет!"
     - "Добро пожаловать к нам на стрим! Располагайся, сейчас будет интересно!"
-    - "Привет! Тебя уже ждут сигналы, лови волну!"
+    - "Привет! Добро пожаловать, устраивайся поудобнее!"
   en:
     - "Oh, welcome to the stream! Hey-hey!"
     - "Welcome, glad you joined! Get comfy, it's about to get good!"
-    - "Hi there! Signals incoming, catch the wave!"
+    - "Hi there! Welcome to the stream!"
 
 # Благодарности за подарки.
 gift_thanks:
   ru:
-    - "Огромное спасибо за подарок!! Ты просто космос! 💚"
+    - "Огромное спасибо за подарок!! Ты просто космос!"
     - "Вау, какой крутой подарок! Спасибо огромное, очень приятно!"
     - "Спасибо за подарок! Ты делаешь этот стрим ярче!"
   en:
-    - "Huge thanks for the gift!! You're amazing! 💚"
+    - "Huge thanks for the gift!! You're amazing!"
     - "Wow, thank you so much for the gift!"
     - "Thanks for the gift! You make the stream brighter!"
 
@@ -182,6 +207,6 @@ fallbacks:
     - "Слышу тебя! Все подробности — в шапке профиля, залетай!"
     - "Отличный вопрос! Смотри на экран — сейчас всё покажу!"
   en:
-    - "Great question! The bot explains everything — link in the bio!"
+    - "Great question! The assistant explains everything — link in the bio!"
     - "I hear you! Details are in the bio, hop in!"
     - "Nice one! Watch the screen — I'll show you everything!"

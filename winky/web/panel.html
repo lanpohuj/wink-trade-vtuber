@@ -56,7 +56,14 @@
     </div>
     <div class="row" style="gap: 6px;">
       <input id="simQuestion" placeholder="Симуляция вопроса зрителя" spellcheck="false" style="flex: 2;">
+      <select id="simLang" style="flex: 0 0 85px;" title="Язык ответов симуляции">
+        <option value="auto">🌐 Авто</option>
+        <option value="ru">🇷🇺 RU</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
       <button id="simAsk" style="flex: 1;">Спросить</button>
+    </div>
+    <div class="row" style="gap: 6px; margin-top: 4px;">
       <button id="simJoin" style="flex: 1;" title="Тест входа зрителя">👋 Вход</button>
       <button id="simFollow" style="flex: 1;" title="Тест подписки">💃 Подписка</button>
       <button id="simGift" style="flex: 1;" title="Тест подарка">🎁 Подарок</button>
@@ -111,38 +118,57 @@
 
   <section class="block voice-library-block">
     <div class="block-title">
-      Голос Winky (Lumean Voice Library)
-      <span class="active-badge" id="activeProviderBadge">🔥 ElevenLabs</span>
+      ГОЛОСА WINKY (LUMEAN API)
     </div>
 
-    <!-- 1. Текущий активный голос + Быстрый тест RU/EN -->
-    <div class="active-voice-box">
-      <div class="active-voice-info">
-        <span class="active-voice-name" id="activeVoiceName">Marusya G</span>
-        <span class="active-voice-id" id="activeVoiceId">hLjwV7lYzk15SWLUmhEH</span>
-      </div>
-      <div class="voice-test-btns">
+    <!-- 1. Два активных голоса: RU и EN -->
+    <div class="active-voices-row">
+      <!-- Карточка RU -->
+      <div class="active-voice-box" id="activeVoiceBoxRu">
+        <div class="active-voice-header">
+          <span class="active-voice-flag">🇷🇺 Голос RU</span>
+          <span class="active-badge" id="activeProviderBadgeRu">🐟 Fish Audio</span>
+        </div>
+        <div class="active-voice-info">
+          <span class="active-voice-name" id="activeVoiceNameRu">Марин китагава</span>
+          <span class="active-voice-id" id="activeVoiceIdRu">1db1618b6eaf4571ac7db70e20eb6727</span>
+        </div>
         <button class="test-btn" id="testVoiceRuBtn" title="Проверка русской фразы">🇷🇺 Тест RU</button>
+      </div>
+
+      <!-- Карточка EN -->
+      <div class="active-voice-box" id="activeVoiceBoxEn">
+        <div class="active-voice-header">
+          <span class="active-voice-flag">🇬🇧 Голос EN</span>
+          <span class="active-badge" id="activeProviderBadgeEn">🐟 Fish Audio</span>
+        </div>
+        <div class="active-voice-info">
+          <span class="active-voice-name" id="activeVoiceNameEn">Venti</span>
+          <span class="active-voice-id" id="activeVoiceIdEn">e34c486929524d41b88646b4ac2f382f</span>
+        </div>
         <button class="test-btn" id="testVoiceEnBtn" title="Проверка английской фразы">🇬🇧 Тест EN</button>
       </div>
     </div>
 
-    <!-- Индикатор прогрева кэша голоса для мгновенного отклика (0.05с) -->
+    <!-- Индикатор прогрева кэша голоса + кнопка полного прогрева -->
     <div class="voice-warmup-container" id="voiceWarmupContainer">
       <div class="voice-warmup-status">
-        <span id="warmupStatusText">⚡ Прогрев голоса...</span>
+        <span id="warmupStatusText">⚡ Прогрев голосов...</span>
         <span id="warmupPercentText">0%</span>
       </div>
       <div class="warmup-bar-track">
         <div class="warmup-bar-fill" id="warmupBarFill" style="width: 0%;"></div>
+      </div>
+      <div class="warmup-action-row" style="margin-top: 5px;">
+        <button class="small-btn warmup-btn" id="warmupCatalogBtn" title="Предварительно сгенерировать MP3 для всего каталога реплик">⚡ Прогреть весь каталог реплик</button>
       </div>
     </div>
 
     <!-- 2. Каталог, поиск и фильтры -->
     <div class="catalog-tabs-row">
       <select id="catalogSelect" class="catalog-select">
-        <option value="elevenlabs">🔥 ElevenLabs Voice Library</option>
         <option value="fishaudio">🐟 Fish Audio (Каталог + Клоны)</option>
+        <option value="elevenlabs">🔥 ElevenLabs Voice Library</option>
         <option value="my_library">⭐ Моя библиотека Lumean</option>
         <option value="lumvoice">💎 LumVoice Public</option>
         <option value="cartesia">⚡ Cartesia</option>
@@ -174,13 +200,16 @@
       <summary class="hint" style="cursor: pointer; user-select: none; margin: 4px 0;">✏️ Ручной ввод Voice ID с сайта lumean.app</summary>
       <div class="row" style="margin-top: 6px; gap: 6px;">
         <select id="manualProviderSelect" style="flex: 1;">
-          <option value="elevenlabs">ElevenLabs</option>
           <option value="fishaudio">Fish Audio</option>
+          <option value="elevenlabs">ElevenLabs</option>
           <option value="lumvoice">LumVoice</option>
           <option value="cartesia">Cartesia</option>
         </select>
-        <input id="manualVoiceId" placeholder="Voice ID (напр. hLjwV7...)" spellcheck="false" style="flex: 2;">
-        <button id="manualSaveBtn">Сохранить</button>
+        <input id="manualVoiceId" placeholder="Voice ID (напр. 1db1618b...)" spellcheck="false" style="flex: 2;">
+      </div>
+      <div class="row" style="margin-top: 4px; gap: 6px;">
+        <button id="manualSaveRuBtn" class="small-btn" style="flex: 1;">🇷🇺 Сохранить на RU</button>
+        <button id="manualSaveEnBtn" class="small-btn" style="flex: 1;">🇬🇧 Сохранить на EN</button>
       </div>
       <div class="row" style="margin-top: 4px;">
         <input id="manualTemplateId" placeholder="Template ID (опционально, если есть свой)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">

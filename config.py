@@ -95,17 +95,44 @@ class Settings(BaseSettings):
         default="",
         description="API-ключ Lumean (X-API-KEY): качественная озвучка Fish Audio/ElevenLabs/Cartesia с оплатой в РФ",
     )
+    # Русский голос (RU)
+    LUMEAN_RU_SERVICE: str = Field(
+        default="fishaudio",
+        description="Сервис Lumean для русской озвучки: fishaudio | elevenlabs | lumvoice | cartesia",
+    )
+    LUMEAN_RU_VOICE_ID: str = Field(
+        default="1db1618b6eaf4571ac7db70e20eb6727",
+        description="ID голоса Lumean для русского языка: по умолчанию Марин китагава (Fish Audio)",
+    )
+    LUMEAN_RU_VOICE_NAME: str = Field(
+        default="Марин китагава",
+        description="Отображаемое имя русского голоса",
+    )
+    # Английский голос (EN)
+    LUMEAN_EN_SERVICE: str = Field(
+        default="fishaudio",
+        description="Сервис Lumean для английской озвучки: fishaudio | elevenlabs | lumvoice | cartesia",
+    )
+    LUMEAN_EN_VOICE_ID: str = Field(
+        default="e34c486929524d41b88646b4ac2f382f",
+        description="ID голоса Lumean для английского языка: по умолчанию Venti (Fish Audio)",
+    )
+    LUMEAN_EN_VOICE_NAME: str = Field(
+        default="Venti",
+        description="Отображаемое имя английского голоса",
+    )
+    # Обратная совместимость для общего голоса
     LUMEAN_SERVICE: str = Field(
-        default="elevenlabs",
-        description="Сервис Lumean для озвучки: elevenlabs | fishaudio | lumvoice | cartesia",
+        default="fishaudio",
+        description="Сервис Lumean для озвучки (fallback)",
     )
     LUMEAN_VOICE_ID: str = Field(
-        default="hLjwV7lYzk15SWLUmhEH",
-        description="ID голоса в Lumean: по умолчанию Marusya G (ElevenLabs Multilingual V2)",
+        default="1db1618b6eaf4571ac7db70e20eb6727",
+        description="ID голоса в Lumean (fallback)",
     )
     LUMEAN_VOICE_NAME: str = Field(
-        default="Marusya G",
-        description="Отображаемое имя выбранного голоса в пульте Winky",
+        default="Марин китагава",
+        description="Отображаемое имя голоса (fallback)",
     )
     LUMEAN_TEMPLATE_ID: str = Field(
         default="",

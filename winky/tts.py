@@ -33,7 +33,7 @@ import httpx
 import requests
 
 from config import settings
-from winky.censor import check_phrase, strip_emoji_control
+from winky.censor import check_phrase, strip_emoji_control, sanitize_for_tiktok
 
 logger = logging.getLogger(__name__)
 
@@ -45,28 +45,37 @@ EMOTIONS = (
     "win", "wave", "dance", "flirt_kiss", "neko_paws", "hip_groove", "peek_closer"
 )
 
-DEFAULT_LUMEAN_SERVICE = "elevenlabs"
-DEFAULT_LUMEAN_VOICE_ID = "hLjwV7lYzk15SWLUmhEH"
-DEFAULT_LUMEAN_VOICE_NAME = "Marusya G"
+DEFAULT_RU_SERVICE = "fishaudio"
+DEFAULT_RU_VOICE_ID = "1db1618b6eaf4571ac7db70e20eb6727"
+DEFAULT_RU_VOICE_NAME = "Марин китагава"
+
+DEFAULT_EN_SERVICE = "fishaudio"
+DEFAULT_EN_VOICE_ID = "e34c486929524d41b88646b4ac2f382f"
+DEFAULT_EN_VOICE_NAME = "Venti"
 
 
 def detect_lang(text: str) -> str:
-    """Язык фразы по алфавиту: кириллица -> ru, иначе en."""
+    """Язык фразы: кириллица -> ru, иначе en."""
     return "ru" if any("а" <= ch.lower() <= "я" for ch in text) else "en"
 
 
-def save_voice_to_env(service: str, voice_id: str, voice_name: str) -> None:
-    """Сохраняет параметры активного голоса Winky в файл .env."""
+def save_voice_to_env(lang_slot: str, service: str, voice_id: str, voice_name: str) -> None:
+    """Сохраняет параметры активного голоса (RU или EN) Winky в файл .env."""
     env_path = Path(__file__).resolve().parent.parent / ".env"
     if not env_path.exists():
         return
     try:
         content = env_path.read_text(encoding="utf-8")
+        slot = "RU" if (lang_slot or "ru").lower() == "ru" else "EN"
         updates = {
-            "LUMEAN_SERVICE": service,
-            "LUMEAN_VOICE_ID": voice_id,
-            "LUMEAN_VOICE_NAME": voice_name,
+            f"LUMEAN_{slot}_SERVICE": service,
+            f"LUMEAN_{slot}_VOICE_ID": voice_id,
+            f"LUMEAN_{slot}_VOICE_NAME": voice_name,
         }
+        if slot == "RU":
+            updates["LUMEAN_SERVICE"] = service
+            updates["LUMEAN_VOICE_ID"] = voice_id
+            updates["LUMEAN_VOICE_NAME"] = voice_name
         lines = content.splitlines()
         found_keys: set[str] = set()
         new_lines: list[str] = []
@@ -75,7 +84,7 @@ def save_voice_to_env(service: str, voice_id: str, voice_name: str) -> None:
             matched = False
             for key, val in updates.items():
                 if trimmed.startswith(f"{key}=") or trimmed.startswith(f"#{key}="):
-                    new_lines.append(f"{key}={val}")
+                    new_lines.append(f'{key}="{val}"' if " " in val else f"{key}={val}")
                     found_keys.add(key)
                     matched = True
                     break
@@ -83,9 +92,9 @@ def save_voice_to_env(service: str, voice_id: str, voice_name: str) -> None:
                 new_lines.append(line)
         for key, val in updates.items():
             if key not in found_keys:
-                new_lines.append(f"{key}={val}")
+                new_lines.append(f'{key}="{val}"' if " " in val else f"{key}={val}")
         env_path.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
-        logger.info("Голос сохранён в .env: %s / %s (%s)", service, voice_id, voice_name)
+        logger.info("Голос %s сохранён в .env: %s / %s (%s)", slot, service, voice_id, voice_name)
     except Exception as exc:
         logger.warning("Не удалось сохранить голос в .env: %s", exc)
 
@@ -134,15 +143,24 @@ class EdgeTTS:
 
 
 class LumeanTTS:
-    """Облачный TTS через Lumean API (https://lumean.app): ElevenLabs / Fish Audio / LumVoice / Cartesia."""
+    """Облачный TTS через Lumean API (https://lumean.app): ElevenLabs / Fish Audio / LumVoice / Cartesia.
+    Поддерживает два независимых активных голоса: для русского (RU) и английского (EN).
+    """
 
     name = "Lumean"
     BASE_URL = "https://api.lumean.app/api/public"
 
     def __init__(self) -> None:
-        self._service_key: str = (settings.LUMEAN_SERVICE or DEFAULT_LUMEAN_SERVICE).strip().lower()
-        self._voice_id: str = (settings.LUMEAN_VOICE_ID or DEFAULT_LUMEAN_VOICE_ID).strip()
-        self._voice_name: str = (settings.LUMEAN_VOICE_NAME or DEFAULT_LUMEAN_VOICE_NAME).strip()
+        # Русский слот (RU)
+        self._ru_service: str = (settings.LUMEAN_RU_SERVICE or settings.LUMEAN_SERVICE or DEFAULT_RU_SERVICE).strip().lower()
+        self._ru_voice_id: str = (settings.LUMEAN_RU_VOICE_ID or settings.LUMEAN_VOICE_ID or DEFAULT_RU_VOICE_ID).strip()
+        self._ru_voice_name: str = (settings.LUMEAN_RU_VOICE_NAME or settings.LUMEAN_VOICE_NAME or DEFAULT_RU_VOICE_NAME).strip()
+
+        # Английский слот (EN)
+        self._en_service: str = (settings.LUMEAN_EN_SERVICE or DEFAULT_EN_SERVICE).strip().lower()
+        self._en_voice_id: str = (settings.LUMEAN_EN_VOICE_ID or DEFAULT_EN_VOICE_ID).strip()
+        self._en_voice_name: str = (settings.LUMEAN_EN_VOICE_NAME or DEFAULT_EN_VOICE_NAME).strip()
+
         self._template_id: str | None = (settings.LUMEAN_TEMPLATE_ID or "").strip() or None
 
         self._fallback = EdgeTTS()
@@ -155,7 +173,7 @@ class LumeanTTS:
         # Кэш шаблонов по сервисам на диске
         self._templates_by_service: dict[str, str] = self._load_templates_cache()
         if self._template_id:
-            self._templates_by_service[self._service_key] = self._template_id
+            self._templates_by_service[self._ru_service] = self._template_id
             self._save_templates_cache()
 
     def _load_templates_cache(self) -> dict[str, str]:
@@ -177,55 +195,115 @@ class LumeanTTS:
             pass
 
     @property
+    def ru_service(self) -> str:
+        return self._ru_service
+
+    @property
+    def ru_voice_id(self) -> str:
+        return self._ru_voice_id
+
+    @property
+    def ru_voice_name(self) -> str:
+        return self._ru_voice_name
+
+    @property
+    def en_service(self) -> str:
+        return self._en_service
+
+    @property
+    def en_voice_id(self) -> str:
+        return self._en_voice_id
+
+    @property
+    def en_voice_name(self) -> str:
+        return self._en_voice_name
+
+    # Обратная совместимость для старых вызовов
+    @property
     def service_key(self) -> str:
-        return self._service_key
+        return self._ru_service
 
     @property
     def voice_id(self) -> str:
-        return self._voice_id
+        return self._ru_voice_id
 
     @property
     def voice_name(self) -> str:
-        return self._voice_name
+        return self._ru_voice_name
 
     def set_template_id(self, template_id: str) -> None:
         clean = template_id.strip()
         if clean:
             self._template_id = clean
-            self._templates_by_service[self._service_key] = clean
+            self._templates_by_service[self._ru_service] = clean
             self._save_templates_cache()
             settings.LUMEAN_TEMPLATE_ID = clean
             logger.info("Установлен новый Lumean Template ID: %s", clean)
 
-    def set_voice(self, service_key: str, voice_id: str, voice_name: str = "") -> None:
-        clean_service = (service_key or self._service_key or DEFAULT_LUMEAN_SERVICE).strip().lower()
-        clean_voice = (voice_id or self._voice_id).strip()
+    def set_voice(self, lang_slot: str, service_key: str, voice_id: str, voice_name: str = "") -> None:
+        slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        clean_service = (service_key or DEFAULT_RU_SERVICE).strip().lower()
+        clean_voice = (voice_id or "").strip()
         clean_name = (voice_name or clean_voice).strip()
 
-        changed = (clean_service != self._service_key or clean_voice != self._voice_id)
-        self._service_key = clean_service
-        self._voice_id = clean_voice
-        self._voice_name = clean_name
+        if slot == "ru":
+            changed = (clean_service != self._ru_service or clean_voice != self._ru_voice_id)
+            self._ru_service = clean_service
+            self._ru_voice_id = clean_voice
+            self._ru_voice_name = clean_name
+            settings.LUMEAN_RU_SERVICE = clean_service
+            settings.LUMEAN_RU_VOICE_ID = clean_voice
+            settings.LUMEAN_RU_VOICE_NAME = clean_name
+            settings.LUMEAN_SERVICE = clean_service
+            settings.LUMEAN_VOICE_ID = clean_voice
+            settings.LUMEAN_VOICE_NAME = clean_name
+        else:
+            changed = (clean_service != self._en_service or clean_voice != self._en_voice_id)
+            self._en_service = clean_service
+            self._en_voice_id = clean_voice
+            self._en_voice_name = clean_name
+            settings.LUMEAN_EN_SERVICE = clean_service
+            settings.LUMEAN_EN_VOICE_ID = clean_voice
+            settings.LUMEAN_EN_VOICE_NAME = clean_name
 
-        settings.LUMEAN_SERVICE = clean_service
-        settings.LUMEAN_VOICE_ID = clean_voice
-        settings.LUMEAN_VOICE_NAME = clean_name
-
-        save_voice_to_env(clean_service, clean_voice, clean_name)
+        save_voice_to_env(slot, clean_service, clean_voice, clean_name)
         if changed:
             logger.info(
-                "Голос Winky обновлён: провайдер=%s, voice_id=%s, имя=%s",
-                clean_service, clean_voice, clean_name
+                "Голос Winky [%s] обновлён: провайдер=%s, voice_id=%s, имя=%s",
+                slot.upper(), clean_service, clean_voice, clean_name
             )
 
-    def get_settings(self) -> dict[str, str]:
-        active_tid = self._templates_by_service.get(self._service_key) or self._template_id or ""
+    def get_settings(self) -> dict:
+        active_tid = self._templates_by_service.get(self._ru_service) or self._template_id or ""
         return {
-            "service_key": self._service_key,
-            "voice_id": self._voice_id,
-            "voice_name": self._voice_name,
+            "ru": {
+                "service_key": self._ru_service,
+                "voice_id": self._ru_voice_id,
+                "voice_name": self._ru_voice_name,
+            },
+            "en": {
+                "service_key": self._en_service,
+                "voice_id": self._en_voice_id,
+                "voice_name": self._en_voice_name,
+            },
+            "ru_service": self._ru_service,
+            "ru_voice_id": self._ru_voice_id,
+            "ru_voice_name": self._ru_voice_name,
+            "en_service": self._en_service,
+            "en_voice_id": self._en_voice_id,
+            "en_voice_name": self._en_voice_name,
+            "service_key": self._ru_service,
+            "voice_id": self._ru_voice_id,
+            "voice_name": self._ru_voice_name,
             "template_id": active_tid,
         }
+
+    def _resolve_slot(self, text: str, lang: str = "ru") -> tuple[str, str, str]:
+        """Определяет, какой слот голоса использовать: кириллица -> RU, иначе -> EN."""
+        has_cyrillic = bool(re.search(r"[а-яА-ЯёЁ]", text or ""))
+        if (lang and lang.lower() == "ru") or has_cyrillic:
+            return "ru", self._ru_service, self._ru_voice_id
+        return "en", self._en_service, self._en_voice_id
 
     def _headers(self) -> dict[str, str]:
         return {
@@ -337,29 +415,31 @@ class LumeanTTS:
         logger.info("Успешно создан шаблон Lumean %s для %s: %s", f"Winky {service_key}", service_key, template_id)
         return template_id
 
-    def get_cache_path(self, text: str) -> Path:
+    def get_cache_path(self, text: str, lang: str = "ru") -> Path:
         clean_text = text.strip()
+        _, service_key, voice_id = self._resolve_slot(clean_text, lang)
         cache_key = hashlib.sha256(
-            f"lumean:{self._service_key}:{self._voice_id}:{clean_text}".encode("utf-8")
+            f"lumean:{service_key}:{voice_id}:{clean_text}".encode("utf-8")
         ).hexdigest()[:20]
-        return self._cache_dir / f"lumean_{self._service_key}_{self._voice_id[:8]}_{cache_key}.mp3"
+        return self._cache_dir / f"lumean_{service_key}_{voice_id[:8]}_{cache_key}.mp3"
 
-    def is_cached(self, text: str) -> bool:
+    def is_cached(self, text: str, lang: str = "ru") -> bool:
         clean_text = text.strip()
         if not clean_text:
             return False
-        cached_file = self.get_cache_path(clean_text)
+        cached_file = self.get_cache_path(clean_text, lang)
         return cached_file.exists() and cached_file.stat().st_size > 1000
 
     def synthesize(self, text: str, lang: str = "ru") -> Path:
-        """Синтезирует речь выбранным голосом через прямой Keep-Alive вызов Lumean API."""
+        """Синтезирует речь выбранным слотом голоса (RU или EN) через прямой Keep-Alive вызов Lumean API."""
         clean_text = text.strip()
         if not clean_text:
             raise TTSError("Пустой текст для озвучки")
 
-        cached_file = self.get_cache_path(clean_text)
-        if self.is_cached(clean_text):
-            logger.info("Lumean аудио найдено в локальном кэше: %s", cached_file.name)
+        slot, service_key, voice_id = self._resolve_slot(clean_text, lang)
+        cached_file = self.get_cache_path(clean_text, lang)
+        if self.is_cached(clean_text, lang):
+            logger.info("Lumean [%s] аудио найдено в локальном кэше: %s", slot.upper(), cached_file.name)
             return cached_file
 
         # Если нет ключа API Lumean — используем EdgeTTS
@@ -369,9 +449,9 @@ class LumeanTTS:
 
         try:
             # 1. Мгновенно берём template_id из кэша (0 мс пре-ордер задержка!)
-            template_id = self._templates_by_service.get(self._service_key)
+            template_id = self._templates_by_service.get(service_key)
             if not template_id:
-                template_id = self._ensure_template(self._service_key, self._voice_id)
+                template_id = self._ensure_template(service_key, voice_id)
 
             # Шаг А: Создание заказа с динамическим config_override voice_id
             order_payload: dict = {
@@ -379,7 +459,7 @@ class LumeanTTS:
                 "input_text": clean_text,
                 "config_override": {
                     "tts_settings": {
-                        "voice_id": self._voice_id
+                        "voice_id": voice_id
                     }
                 }
             }
@@ -394,8 +474,8 @@ class LumeanTTS:
             # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
             if create_resp.status_code in (400, 404, 422):
                 logger.warning("Шаблон %s недействителен, запрашиваю свежий...", template_id)
-                self._templates_by_service.pop(self._service_key, None)
-                template_id = self._ensure_template(self._service_key, self._voice_id)
+                self._templates_by_service.pop(service_key, None)
+                template_id = self._ensure_template(service_key, voice_id)
                 order_payload["template_id"] = template_id
                 create_resp = self._client.post(
                     f"{self.BASE_URL}/orders",
@@ -865,32 +945,43 @@ class SpeechController:
 
     # ---------- публичное API (вызывается из js_api и таймеров) ----------
 
-    def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "") -> dict[str, str]:
+    def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "", lang_slot: str = "ru") -> dict:
         if isinstance(self.engine, LumeanTTS):
             if template_id:
                 self.engine.set_template_id(template_id)
             if voice_id or service_key or voice_name:
                 self.engine.set_voice(
-                    service_key=service_key or self.engine.service_key,
-                    voice_id=voice_id or self.engine.voice_id,
-                    voice_name=voice_name or self.engine.voice_name,
+                    lang_slot=lang_slot,
+                    service_key=service_key or self.engine.ru_service,
+                    voice_id=voice_id or self.engine.ru_voice_id,
+                    voice_name=voice_name or self.engine.ru_voice_name,
                 )
             return self.engine.get_settings()
         return {}
 
-    def set_lumean_voice(self, service_key: str, voice_id: str, voice_name: str = "") -> dict[str, str]:
+    def set_lumean_voice(self, lang_slot: str, service_key: str, voice_id: str, voice_name: str = "") -> dict:
         if isinstance(self.engine, LumeanTTS):
-            self.engine.set_voice(service_key, voice_id, voice_name)
+            self.engine.set_voice(lang_slot, service_key, voice_id, voice_name)
             return self.engine.get_settings()
         return {}
 
-    def get_lumean_settings(self) -> dict[str, str]:
+    def get_lumean_settings(self) -> dict:
         if isinstance(self.engine, LumeanTTS):
             return self.engine.get_settings()
         return {
-            "service_key": settings.LUMEAN_SERVICE or DEFAULT_LUMEAN_SERVICE,
-            "voice_id": settings.LUMEAN_VOICE_ID or DEFAULT_LUMEAN_VOICE_ID,
-            "voice_name": settings.LUMEAN_VOICE_NAME or DEFAULT_LUMEAN_VOICE_NAME,
+            "ru": {
+                "service_key": getattr(settings, "LUMEAN_RU_SERVICE", "fishaudio"),
+                "voice_id": getattr(settings, "LUMEAN_RU_VOICE_ID", DEFAULT_RU_VOICE_ID),
+                "voice_name": getattr(settings, "LUMEAN_RU_VOICE_NAME", DEFAULT_RU_VOICE_NAME),
+            },
+            "en": {
+                "service_key": getattr(settings, "LUMEAN_EN_SERVICE", "fishaudio"),
+                "voice_id": getattr(settings, "LUMEAN_EN_VOICE_ID", DEFAULT_EN_VOICE_ID),
+                "voice_name": getattr(settings, "LUMEAN_EN_VOICE_NAME", DEFAULT_EN_VOICE_NAME),
+            },
+            "service_key": settings.LUMEAN_SERVICE or DEFAULT_RU_SERVICE,
+            "voice_id": settings.LUMEAN_VOICE_ID or DEFAULT_RU_VOICE_ID,
+            "voice_name": settings.LUMEAN_VOICE_NAME or DEFAULT_RU_VOICE_NAME,
             "template_id": settings.LUMEAN_TEMPLATE_ID or "",
         }
 
@@ -911,13 +1002,18 @@ class SpeechController:
             return self.engine.preview_voice_sample(service_key, voice_id)
         return ""
 
-    def is_cached(self, text: str) -> bool:
+    def is_cached(self, text: str, lang: str = "ru") -> bool:
         """Проверяет, есть ли готовый синтез для фразы в кэше текущего движка."""
         clean = strip_emoji_control(text).strip()
         if not clean:
             return False
         checker = getattr(self.engine, "is_cached", None)
-        return bool(checker(clean)) if checker else False
+        if not checker:
+            return False
+        try:
+            return bool(checker(clean, lang))
+        except TypeError:
+            return bool(checker(clean))
 
     def start(self) -> None:
         if self._worker and self._worker.is_alive():
@@ -927,7 +1023,10 @@ class SpeechController:
 
     def speak(self, text: str, lang: str | None = None, emotion: str = "happy",
               source: str = "manual") -> bool:
-        """Добавляет фразу в очередь. False — заблокирована цензурой."""
+        """Добавляет фразу в очередь с авто-санитайзером TikTok. False — заблокирована цензурой."""
+        actual_lang = lang or detect_lang(text)
+        # TikTok Anti-Ban Sanitizer: заменяем финансовые триггеры перед любой озвучкой
+        text = sanitize_for_tiktok(text, actual_lang)
         text = strip_emoji_control(text)
         if not text:
             return False
@@ -937,8 +1036,13 @@ class SpeechController:
             self._last_blocked = f"{reason} («{text[:40]}…»)"
             self._emit_status()
             return False
-        task = SpeechTask(text=text, lang=lang or detect_lang(text),
+        task = SpeechTask(text=text, lang=actual_lang,
                           emotion=emotion if emotion in EMOTIONS else "happy", source=source)
+        with self._lock:
+            self._queue.append(task)
+        self._wake.set()
+        self._emit_status()
+        return True
         with self._lock:
             self._queue.append(task)
         self._wake.set()

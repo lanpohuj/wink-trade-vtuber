@@ -26,13 +26,27 @@ RELOAD_CHECK_INTERVAL = 2.0
 
 @dataclass(frozen=True)
 class QuickReply:
-    """Кнопка быстрой реплики на пульте."""
+    """Двуязычный сценарий быстрой реплики с вариантами на RU и EN."""
 
     id: str
     label: str
-    lang: str  # "ru" | "en"
-    emotion: str  # idle | happy | excited | thinking | wink
-    text: str
+    icon: str
+    emotion: str  # idle | happy | excited | thinking | wink | wave | win | blush и т.д.
+    texts_ru: tuple[str, ...]
+    texts_en: tuple[str, ...]
+
+    def random_text(self, lang: str = "ru") -> str:
+        pool = self.texts_ru if (lang or "ru").lower() == "ru" else self.texts_en
+        return random.choice(pool) if pool else (self.texts_ru[0] if self.texts_ru else "")
+
+    # Обратная совместимость для старых вызовов
+    @property
+    def text(self) -> str:
+        return self.texts_ru[0] if self.texts_ru else ""
+
+    @property
+    def lang(self) -> str:
+        return "ru"
 
 
 @dataclass(frozen=True)
@@ -94,20 +108,48 @@ def _load_raw(path: Path) -> dict:
 def _parse_quick_replies(raw: list) -> list[QuickReply]:
     replies = []
     for item in raw or []:
-        reply = QuickReply(
-            id=str(item.get("id", "")),
-            label=str(item.get("label", item.get("id", ""))),
-            lang=str(item.get("lang", "ru")),
-            emotion=str(item.get("emotion", "happy")),
-            text=str(item.get("text", "")),
+        reply_id = str(item.get("id", ""))
+        label = str(item.get("label", reply_id))
+        icon = str(item.get("icon", "💬"))
+        emotion = str(item.get("emotion", "happy"))
+
+        raw_ru = item.get("texts_ru")
+        if not raw_ru:
+            if "text" in item and item.get("lang", "ru") == "ru":
+                raw_ru = [item["text"]]
+            elif "texts" in item:
+                raw_ru = item["texts"]
+
+        raw_en = item.get("texts_en")
+        if not raw_en and "text" in item and item.get("lang", "ru") == "en":
+            raw_en = [item["text"]]
+
+        def filter_texts(texts) -> tuple[str, ...]:
+            res = []
+            for t in texts or []:
+                ok, reason = check_phrase(str(t))
+                if ok:
+                    res.append(str(t))
+                else:
+                    logger.warning("Реплика %s заблокирована цензурой (%s): %s", reply_id, reason, str(t)[:40])
+            return tuple(res)
+
+        clean_ru = filter_texts(raw_ru)
+        clean_en = filter_texts(raw_en)
+
+        if not reply_id or (not clean_ru and not clean_en):
+            continue
+
+        replies.append(
+            QuickReply(
+                id=reply_id,
+                label=label,
+                icon=icon,
+                emotion=emotion,
+                texts_ru=clean_ru,
+                texts_en=clean_en,
+            )
         )
-        if not reply.id or not reply.text:
-            continue
-        ok, reason = check_phrase(reply.text)
-        if not ok:
-            logger.warning("Реплика %s заблокирована цензурой (%s)", reply.id, reason)
-            continue
-        replies.append(reply)
     return replies
 
 

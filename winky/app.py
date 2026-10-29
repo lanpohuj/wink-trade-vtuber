@@ -80,17 +80,25 @@ class WinkyAPI:
             self.trigger_wave()
         return self._controller.speak(text, lang, emotion, source="panel")
 
-    def quick_reply(self, reply_id: str) -> bool:
+    def quick_reply(self, reply_id: str, lang: str = "ru") -> bool:
         reply = self._book.quick_reply(reply_id)
         if reply is None:
-            # Поддержка алиасов (greeting -> greet_ru, cta -> cta_ru, how_to -> howto_ru)
+            # Поддержка алиасов
             aliases = {
-                "greeting": "greet_ru",
-                "greet": "greet_ru",
-                "cta": "cta_ru",
-                "call_to_action": "cta_ru",
-                "how_to": "howto_ru",
-                "howto": "howto_ru",
+                "greeting": "greeting",
+                "greet_ru": "greeting",
+                "greet_en": "greeting",
+                "cta_ru": "cta_bio",
+                "cta_en": "cta_bio",
+                "cta": "cta_bio",
+                "call_to_action": "cta_bio",
+                "how_to": "how_to_use",
+                "howto": "how_to_use",
+                "howto_ru": "how_to_use",
+                "howto_en": "how_to_use",
+                "questions_ru": "ask_in_chat",
+                "questions_en": "ask_in_chat",
+                "stream_promo_ru": "about_stream",
             }
             if reply_id in aliases:
                 reply = self._book.quick_reply(aliases[reply_id])
@@ -104,7 +112,13 @@ class WinkyAPI:
             logger.debug("stop_current error: %s", e)
         if "greet" in reply.id or reply.emotion == "wave":
             self.trigger_wave()
-        return self._controller.speak(reply.text, reply.lang, reply.emotion, source="scenario")
+        elif reply.emotion == "happy":
+            self.set_emotion("happy")
+        elif reply.emotion in ("win", "excited"):
+            self.trigger_action("cheer", 3.5)
+
+        chosen_text = reply.random_text(lang)
+        return self._controller.speak(chosen_text, lang=lang, emotion=reply.emotion, source="scenario")
 
     def set_emotion(self, emotion: str) -> None:
         if emotion == "wave":
@@ -151,9 +165,19 @@ class WinkyAPI:
         self.push_status()
         return res
 
-    def set_voice(self, service_key: str, voice_id: str, voice_name: str = "") -> dict:
-        res = self._controller.set_lumean_voice(service_key, voice_id, voice_name)
-        self.precache_phrases()
+    def set_voice(self, lang_slot_or_service: str, service_key_or_vid: str = "", voice_id: str = "", voice_name: str = "") -> dict:
+        if lang_slot_or_service in ("ru", "en"):
+            lang_slot = lang_slot_or_service
+            service_key = service_key_or_vid
+            vid = voice_id
+            vname = voice_name
+        else:
+            lang_slot = "ru"
+            service_key = lang_slot_or_service
+            vid = service_key_or_vid
+            vname = voice_id
+        res = self._controller.set_lumean_voice(lang_slot, service_key, vid, vname)
+        self.warmup_voice_cache(lang_slot=lang_slot, full=False)
         self.push_status()
         return res
 
@@ -162,7 +186,7 @@ class WinkyAPI:
 
     def test_voice(self, lang: str = "ru") -> bool:
         self._controller.stop_current()
-        if lang == "ru":
+        if (lang or "ru").lower() == "ru":
             phrase = "Привет! Это проверка моего нового голоса на русском языке!"
         else:
             phrase = "Hey guys! Checking out my new voice in English!"
@@ -171,47 +195,71 @@ class WinkyAPI:
     def preview_voice_sample(self, service_key: str, voice_id: str) -> str:
         return self._controller.preview_voice_sample(service_key, voice_id)
 
-    def warmup_voice_cache(self) -> None:
-        """Фоновый прогрев всех фиксированных фраз стрима для мгновенного отклика 0.05с."""
-        def _run() -> None:
-            phrases: list[tuple[str, str]] = [
-                ("Привет! Это проверка моего нового голоса на русском языке!", "ru"),
-                ("Hey guys! Checking out my new voice in English!", "en"),
-            ]
-            for f in FILLERS_RU:
-                phrases.append((f, "ru"))
-            for f in FILLERS_EN:
-                phrases.append((f, "en"))
-            for p in JOIN_PHRASES_RU:
-                phrases.append((p, "ru"))
-            for p in JOIN_PHRASES_EN:
-                phrases.append((p, "en"))
-            for p in FOLLOW_PHRASES_RU:
-                phrases.append((p, "ru"))
-            for p in FOLLOW_PHRASES_EN:
-                phrases.append((p, "en"))
-            for p in GIFT_PHRASES_RU:
-                phrases.append((p, "ru"))
-            for p in GIFT_PHRASES_EN:
-                phrases.append((p, "en"))
-            for reply in self._book.quick_replies:
-                phrases.append((reply.text, reply.lang))
-            for kw in self._book.keywords:
-                if kw.text_ru:
-                    phrases.append((kw.text_ru, "ru"))
-                if kw.text_en:
-                    phrases.append((kw.text_en, "en"))
+    def warmup_voice_cache(self, lang_slot: str = "all", full: bool = False) -> None:
+        """Фоновый прогрев ключевых фраз стрима для мгновенного отклика 0.05с.
 
-            seen: set[str] = set()
+        Если full=False (старт/смена голоса): греет только 4 ключевых фразы для слота (без 429).
+        Если full=True (кнопка в пульте): греет весь каталог реплик и вариантов.
+        """
+        def _run() -> None:
+            core_ru = [
+                ("Привет! Это проверка моего нового голоса на русском языке!", "ru"),
+                (FILLERS_RU[0], "ru"),
+                (FILLERS_RU[-1], "ru"),
+                ("Привет-привет! Я Винки — неоновая помощница Wink! Рада всех видеть на стриме, сегодня тестируем крутые инструменты!", "ru"),
+            ]
+            core_en = [
+                ("Hey guys! Checking out my new voice in English!", "en"),
+                (FILLERS_EN[0], "en"),
+                (FILLERS_EN[-1], "en"),
+                ("Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're testing awesome tools today!", "en"),
+            ]
+
+            if not full:
+                phrases: list[tuple[str, str]] = []
+                if lang_slot in ("ru", "all"):
+                    phrases.extend(core_ru)
+                if lang_slot in ("en", "all"):
+                    phrases.extend(core_en)
+            else:
+                phrases = list(core_ru) + list(core_en)
+                for f in FILLERS_RU:
+                    phrases.append((f, "ru"))
+                for f in FILLERS_EN:
+                    phrases.append((f, "en"))
+                for p in JOIN_PHRASES_RU:
+                    phrases.append((p, "ru"))
+                for p in JOIN_PHRASES_EN:
+                    phrases.append((p, "en"))
+                for p in FOLLOW_PHRASES_RU:
+                    phrases.append((p, "ru"))
+                for p in FOLLOW_PHRASES_EN:
+                    phrases.append((p, "en"))
+                for p in GIFT_PHRASES_RU:
+                    phrases.append((p, "ru"))
+                for p in GIFT_PHRASES_EN:
+                    phrases.append((p, "en"))
+                for reply in self._book.quick_replies:
+                    for t in reply.texts_ru:
+                        phrases.append((t, "ru"))
+                    for t in reply.texts_en:
+                        phrases.append((t, "en"))
+                for kw in self._book.keywords:
+                    if kw.text_ru:
+                        phrases.append((kw.text_ru, "ru"))
+                    if kw.text_en:
+                        phrases.append((kw.text_en, "en"))
+
+            seen: set[tuple[str, str]] = set()
             unique_phrases: list[tuple[str, str]] = []
             for text, lang in phrases:
                 clean = text.strip()
-                if clean and clean not in seen:
-                    seen.add(clean)
+                if clean and (clean, lang) not in seen:
+                    seen.add((clean, lang))
                     unique_phrases.append((clean, lang))
 
             total = len(unique_phrases)
-            cached_count = sum(1 for text, _ in unique_phrases if self._controller.is_cached(text))
+            cached_count = sum(1 for text, lang in unique_phrases if self._controller.is_cached(text, lang=lang))
             done = cached_count
 
             def _notify(d: int, t: int, msg: str) -> None:
@@ -221,29 +269,34 @@ class WinkyAPI:
                 )
 
             if cached_count >= total:
-                _notify(total, total, "✅ Голос готов (мгновенный отклик 0.05с)")
+                _notify(total, total, f"✅ Голоса готовы ({total}/{total} в кэше)")
                 logger.info("Все %d фраз стрима уже в локальном кэше", total)
                 return
 
-            _notify(done, total, f"⚡ Прогрев голоса: {done} / {total}...")
+            label = "каталога" if full else "базы"
+            _notify(done, total, f"⚡ Прогрев {label}: {done} / {total}...")
 
             for text, lang in unique_phrases:
-                if self._controller.is_cached(text):
+                if self._controller.is_cached(text, lang=lang):
                     continue
                 try:
-                    self._controller.engine.synthesize(text, lang)
+                    self._controller.engine.synthesize(text, lang=lang)
                     done += 1
-                    _notify(done, total, f"⚡ Прогрев голоса: {done} / {total}...")
+                    _notify(done, total, f"⚡ Прогрев {label}: {done} / {total}...")
                 except Exception as exc:
                     logger.debug("Ошибка прогрева фразы «%s»: %s", text[:30], exc)
 
-            _notify(total, total, "✅ Голос готов (мгновенный отклик 0.05с)")
-            logger.info("Прогрев голоса завершён: %d / %d в кэше", done, total)
+            _notify(total, total, f"✅ Голоса готовы ({total}/{total} в кэше)")
+            logger.info("Прогрев завершён: %d / %d в кэше", done, total)
 
         threading.Thread(target=_run, daemon=True, name="voice_warmup").start()
 
+    def warmup_full_catalog(self) -> None:
+        """Полный прогрев всех фраз и вариантов реплик (по кнопке из пульта)."""
+        self.warmup_voice_cache(lang_slot="all", full=True)
+
     def precache_phrases(self) -> None:
-        self.warmup_voice_cache()
+        self.warmup_voice_cache(lang_slot="all", full=False)
 
     def set_avatar_scale(self, scale: float) -> None:
         self._avatar_js(f"window.winkySetScale && window.winkySetScale({float(scale)})")
@@ -278,9 +331,11 @@ class WinkyAPI:
                 {
                     "id": reply.id,
                     "label": reply.label,
-                    "lang": reply.lang,
+                    "icon": reply.icon,
                     "emotion": reply.emotion,
-                    "text": reply.text,
+                    "texts_ru": list(reply.texts_ru),
+                    "texts_en": list(reply.texts_en),
+                    "text": reply.random_text("ru"),
                 }
                 for reply in self._book.quick_replies
             ],
@@ -384,26 +439,26 @@ class WinkyAPI:
             self._chat_router.handle_comment("Зритель", text)
             self.push_status()
 
-    def simulate_join(self, user: str = "Дима 🚀") -> None:
+    def simulate_join(self, user: str = "Дима 🚀", lang: str = "auto") -> None:
         """Тест входа зрителя из пульта."""
         self._controller.stop_current()
         self.trigger_wave()
         if self._chat_router:
-            self._chat_router.handle_join(user or "Дима 🚀", force=True)
+            self._chat_router.handle_join(user or "Дима 🚀", force=True, lang=lang)
             self.push_status()
 
-    def simulate_follow(self, user: str = "Алина ✨") -> None:
+    def simulate_follow(self, user: str = "Алина ✨", lang: str = "auto") -> None:
         """Тест подписки зрителя из пульта (танец + озвучка)."""
         self._controller.stop_current()
         if self._chat_router:
-            self._chat_router.handle_follow(user or "Алина ✨")
+            self._chat_router.handle_follow(user or "Алина ✨", lang=lang)
             self.push_status()
 
-    def simulate_gift(self, user: str = "Миша 🚀", gift: str = "Роза") -> None:
+    def simulate_gift(self, user: str = "Миша 🚀", gift: str = "Роза", lang: str = "auto") -> None:
         """Тест подарка зрителя из пульта (танец + благодарность)."""
         self._controller.stop_current()
         if self._chat_router:
-            self._chat_router.handle_gift(user or "Миша 🚀", gift or "Роза")
+            self._chat_router.handle_gift(user or "Миша 🚀", gift or "Роза", lang=lang)
             self.push_status()
 
     def _on_chat_comment(self, user: str, text: str) -> None:
@@ -438,11 +493,19 @@ class WinkyAPI:
 
     def push_quick_replies(self) -> None:
         replies = [
-            {"id": r.id, "label": r.label, "lang": r.lang, "emotion": r.emotion, "text": r.text}
+            {
+                "id": r.id,
+                "label": r.label,
+                "icon": r.icon,
+                "emotion": r.emotion,
+                "texts_ru": list(r.texts_ru),
+                "texts_en": list(r.texts_en),
+                "text": r.random_text("ru"),
+            }
             for r in self._book.quick_replies
         ]
         self._panel_js(
-            "window.winkyPanel && window.winkyPanel.renderQuickReplies(" + json.dumps(replies) + ")"
+            "window.winkyPanel && window.winkyPanel.renderQuickReplies(" + json.dumps(replies, ensure_ascii=False) + ")"
             " && window.winkyPanel.onScenariosReloaded()"
         )
 

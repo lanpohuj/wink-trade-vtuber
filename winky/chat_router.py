@@ -41,7 +41,7 @@ FILLERS_EN = [
 # Универсальные фразы для 100% предкэширования реакций лайва
 JOIN_PHRASES_RU = [
     "О, приветик! Рада, что заглянул ко мне на стрим!",
-    "Хей, добро пожаловать! Садись поудобнее, сейчас будем ловить сигнал!",
+    "Хей, добро пожаловать! Садись поудобнее, сейчас всё покажу!",
     "Привет! Залетай к нам на стрим, располагайся!",
 ]
 JOIN_PHRASES_EN = [
@@ -76,6 +76,11 @@ _BAD_NAME_PATTERNS = (
 )
 
 
+def detect_reply_lang(text: str) -> str:
+    """Определяет язык для ответа: 'ru' если есть кириллица, иначе 'en'."""
+    return "ru" if re.search(r"[а-яА-ЯёЁ]", text or "") else "en"
+
+
 def sanitize_nickname(nickname: str) -> tuple[str, str]:
     """Очищает и фильтрует ник зрителя для приветствия.
 
@@ -89,7 +94,7 @@ def sanitize_nickname(nickname: str) -> tuple[str, str]:
     # 1. Проверка через общую цензуру check_phrase
     ok, _ = check_phrase(raw)
     if not ok:
-        has_ru = any("а" <= ch.lower() <= "я" for ch in raw)
+        has_ru = bool(re.search(r"[а-яА-ЯёЁ]", raw))
         return ("котик" if has_ru else "friend"), ("ru" if has_ru else "en")
 
     lower_raw = raw.lower()
@@ -109,7 +114,7 @@ def sanitize_nickname(nickname: str) -> tuple[str, str]:
     clean = re.sub(r"\d{3,}$", "", clean).strip()
 
     if not clean or len(clean) <= 1:
-        has_ru = any("а" <= ch.lower() <= "я" for ch in raw)
+        has_ru = bool(re.search(r"[а-яА-ЯёЁ]", raw))
         return ("друг" if has_ru else "friend"), ("ru" if has_ru else "en")
 
     # 5. Повторная проверка очищенного имени через check_phrase
@@ -117,7 +122,7 @@ def sanitize_nickname(nickname: str) -> tuple[str, str]:
     if not ok_clean:
         return "котик", "ru"
 
-    lang = detect_lang(clean)
+    lang = detect_reply_lang(clean)
     return clean, lang
 
 
@@ -165,7 +170,7 @@ class ChatRouter:
         self._bump("comments")
         feed_user = "Зритель" if user in ("Ручной вопрос", "") else user
         self._feed("user", feed_user, text)
-        lang = detect_lang(text)
+        lang = detect_reply_lang(text)
 
         lower_text = text.lower()
         is_compliment = any(word in lower_text for word in ("красотк", "лучш", "мил", "любл", "топ", "няшк", "красив", "cute", "love", "best", "милашк", "прелесть"))
@@ -232,7 +237,7 @@ class ChatRouter:
 
         threading.Thread(target=_llm_worker, daemon=True, name="chat_llm_worker").start()
 
-    def handle_join(self, user: str, force: bool = False) -> None:
+    def handle_join(self, user: str, force: bool = False, lang: str = "auto") -> None:
         """Новый зритель: приветствие с жестом wave (мгновенный отклик 0.05с)."""
         if not force:
             now = monotonic()
@@ -241,7 +246,8 @@ class ChatRouter:
             if self._controller.speaking or self._controller.status().queue_len > 0:
                 return
 
-        clean_name, lang = sanitize_nickname(user)
+        clean_name, detected_lang = sanitize_nickname(user)
+        target_lang = lang if lang in ("ru", "en") else detected_lang
         self._last_greet_at = monotonic()
         self._bump("joins_greeted")
         self._feed("user", user, "👋 зашёл(ла) в эфир")
@@ -252,12 +258,13 @@ class ChatRouter:
             except Exception:
                 logger.exception("on_wave упал")
 
-        text = random.choice(JOIN_PHRASES_RU if lang == "ru" else JOIN_PHRASES_EN)
-        self._say(text, lang, "wave", clean_name)
+        text = random.choice(JOIN_PHRASES_RU if target_lang == "ru" else JOIN_PHRASES_EN)
+        self._say(text, target_lang, "wave", clean_name)
 
-    def handle_follow(self, user: str) -> None:
+    def handle_follow(self, user: str, lang: str = "auto") -> None:
         """Подписка зрителя: танец + озвучка благодарности (мгновенный отклик 0.05с)."""
-        clean_name, lang = sanitize_nickname(user)
+        clean_name, detected_lang = sanitize_nickname(user)
+        target_lang = lang if lang in ("ru", "en") else detected_lang
         self._bump("follows")
         self._feed("user", user, "❤️ подписался(лась) на эфир")
 
@@ -267,13 +274,14 @@ class ChatRouter:
             except Exception:
                 logger.exception("on_action dance упал")
 
-        text = random.choice(FOLLOW_PHRASES_RU if lang == "ru" else FOLLOW_PHRASES_EN)
-        self._say(text, lang, "excited", clean_name)
+        text = random.choice(FOLLOW_PHRASES_RU if target_lang == "ru" else FOLLOW_PHRASES_EN)
+        self._say(text, target_lang, "excited", clean_name)
 
-    def handle_gift(self, user: str, gift: str = "Роза") -> None:
+    def handle_gift(self, user: str, gift: str = "Роза", lang: str = "auto") -> None:
         """Подарок: танец + благодарность за подарок (мгновенный отклик 0.05с)."""
-        clean_name, lang = sanitize_nickname(user)
-        clean_gift = (gift or "").strip() or ("Роза" if lang == "ru" else "Rose")
+        clean_name, detected_lang = sanitize_nickname(user)
+        target_lang = lang if lang in ("ru", "en") else detected_lang
+        clean_gift = (gift or "").strip() or ("Роза" if target_lang == "ru" else "Rose")
         self._bump("gifts")
         self._feed("user", user, f"🎁 {clean_gift}")
 
@@ -288,8 +296,8 @@ class ChatRouter:
             except Exception:
                 pass
 
-        text = random.choice(GIFT_PHRASES_RU if lang == "ru" else GIFT_PHRASES_EN)
-        self._say(text, lang, "excited", clean_name, gift=clean_gift)
+        text = random.choice(GIFT_PHRASES_RU if target_lang == "ru" else GIFT_PHRASES_EN)
+        self._say(text, target_lang, "excited", clean_name, gift=clean_gift)
 
     # ---------- внутреннее ----------
 
