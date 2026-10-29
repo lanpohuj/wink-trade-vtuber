@@ -91,23 +91,25 @@ class Settings(BaseSettings):
     TEASER_MAX_COUNT: int = Field(default=7, description="Максимум тизеров одному пользователю")
 
     # --- VTuber-агент Winky ---
-    WINKY_VOICE_RU: str = Field(default="Milena", description="Голос say для русских фраз")
-    WINKY_VOICE_EN: str = Field(default="Samantha", description="Голос say для английских фраз")
     LUMEAN_API_KEY: str = Field(
         default="",
-        description="API-ключ Lumean (X-API-KEY): качественная озвучка Cartesia/ElevenLabs с оплатой в РФ",
+        description="API-ключ Lumean (X-API-KEY): качественная озвучка Fish Audio/ElevenLabs/Cartesia с оплатой в РФ",
     )
-    LUMEAN_TEMPLATE_ID: str = Field(
-        default="",
-        description="ID шаблона TTS в Lumean (создаётся в дашборде lumean.app или автоматически)",
+    LUMEAN_SERVICE: str = Field(
+        default="elevenlabs",
+        description="Сервис Lumean для озвучки: elevenlabs | fishaudio | lumvoice | cartesia",
     )
     LUMEAN_VOICE_ID: str = Field(
         default="hLjwV7lYzk15SWLUmhEH",
-        description="ID голоса в Lumean: по умолчанию Marusya G (Slow Romantic Storytelling, ElevenLabs)",
+        description="ID голоса в Lumean: по умолчанию Marusya G (ElevenLabs Multilingual V2)",
     )
-    LUMEAN_SERVICE: str = Field(
-        default="cartesia",
-        description="Сервис Lumean для озвучки: cartesia | elevenlabs | fishaudio",
+    LUMEAN_VOICE_NAME: str = Field(
+        default="Marusya G",
+        description="Отображаемое имя выбранного голоса в пульте Winky",
+    )
+    LUMEAN_TEMPLATE_ID: str = Field(
+        default="",
+        description="ID шаблона TTS в Lumean (создаётся и обновляется автоматически)",
     )
     ELEVENLABS_API_KEY: str = Field(
         default="",

@@ -135,8 +135,47 @@ class WinkyAPI:
     def get_lumean_settings(self) -> dict:
         return self._controller.get_lumean_settings()
 
-    def update_lumean_settings(self, template_id: str, voice_id: str = "") -> dict:
-        return self._controller.update_lumean_settings(template_id, voice_id)
+    def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "") -> dict:
+        res = self._controller.update_lumean_settings(template_id, voice_id, service_key, voice_name)
+        self.precache_phrases()
+        self.push_status()
+        return res
+
+    def set_voice(self, service_key: str, voice_id: str, voice_name: str = "") -> dict:
+        res = self._controller.set_lumean_voice(service_key, voice_id, voice_name)
+        self.precache_phrases()
+        self.push_status()
+        return res
+
+    def search_voices(self, catalog: str, query: str = "", language: str = "", gender: str = "", page: int = 1) -> list[dict]:
+        return self._controller.search_voices(catalog, query, language, gender, page)
+
+    def test_voice(self, lang: str = "ru") -> bool:
+        self._controller.stop_current()
+        if lang == "ru":
+            phrase = "Привет! Это проверка моего нового голоса на русском языке!"
+        else:
+            phrase = "Hey guys! Checking out my new voice in English!"
+        return self._controller.speak(phrase, lang=lang, emotion="happy", source="panel_test")
+
+    def preview_voice_sample(self, service_key: str, voice_id: str) -> str:
+        return self._controller.preview_voice_sample(service_key, voice_id)
+
+    def precache_phrases(self) -> None:
+        def _run() -> None:
+            count = 0
+            for reply in self._book.quick_replies:
+                try:
+                    media = self._controller.engine.synthesize(reply.text, reply.lang)
+                    compute_rms_chunks(media)
+                    count += 1
+                    if count >= 6:
+                        break
+                except Exception as e:
+                    logger.debug("Предзагрузка фразы %s: %s", reply.id, e)
+            logger.info("Прогрев кэша быстрых реплик завершён")
+
+        threading.Thread(target=_run, daemon=True, name="voice_precache").start()
 
     def set_avatar_scale(self, scale: float) -> None:
         self._avatar_js(f"window.winkySetScale && window.winkySetScale({float(scale)})")
@@ -424,18 +463,8 @@ def main() -> None:
     )
     winky_api.attach_chat(chat_router)
 
-    # Фоновый прогрев кэша частых реплик (ElevenLabs Multilingual V2) для мгновенного отклика при клике на кнопки
-    def _precache_phrases() -> None:
-        logger.info("Фоновый подогрев кэша фраз Winky TTS и расчет RMS чанков...")
-        for reply in book.quick_replies:
-            try:
-                media = controller.engine.synthesize(reply.text, reply.lang)
-                compute_rms_chunks(media)
-            except Exception as e:
-                logger.debug("Предзагрузка фразы %s: %s", reply.id, e)
-        logger.info("Кэш фраз Winky и RMS успешно прогрет!")
-
-    threading.Thread(target=_precache_phrases, daemon=True, name="tts_precache").start()
+    # Фоновый прогрев кэша быстрых реплик для мгновенного отклика при клике на кнопки
+    winky_api.precache_phrases()
 
     # Свой сервер ассетов: надёжные MIME/CORS для WebGL-текстур в WKWebView
     assets_host, assets_port = start_assets_server()

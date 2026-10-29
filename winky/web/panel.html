@@ -109,25 +109,73 @@
     </div>
   </section>
 
-  <section class="block">
-    <div class="block-title">Голос Winky (Lumean ElevenLabs)</div>
-    <div class="row" style="margin-bottom: 6px;">
-      <select id="voicePresetSelect" style="flex: 1; padding: 6px; background: #23222a; color: #f3f4f6; border: 1px solid #3f3f46; border-radius: 6px; font-size: 12px;">
-        <option value="hLjwV7lYzk15SWLUmhEH">👑 Marusya G (Slow Romantic, по умолчанию)</option>
-        <option value="cgSgspJ2msm6clMCkdW9">🌸 Jessica (Playful, Bright аниме)</option>
-        <option value="FGY2WhTYpPnrIDTdsKH5">🔥 Laura (Sassy, Upbeat стример)</option>
-        <option value="EXAVITQu4vr4xnSDxMaL">☕ Sarah (Mature, Уверенная)</option>
-        <option value="custom">✏️ Свой Voice ID...</option>
+  <section class="block voice-library-block">
+    <div class="block-title">
+      Голос Winky (Lumean Voice Library)
+      <span class="active-badge" id="activeProviderBadge">🔥 ElevenLabs</span>
+    </div>
+
+    <!-- 1. Текущий активный голос + Быстрый тест RU/EN -->
+    <div class="active-voice-box">
+      <div class="active-voice-info">
+        <span class="active-voice-name" id="activeVoiceName">Marusya G</span>
+        <span class="active-voice-id" id="activeVoiceId">hLjwV7lYzk15SWLUmhEH</span>
+      </div>
+      <div class="voice-test-btns">
+        <button class="test-btn" id="testVoiceRuBtn" title="Проверка русской фразы">🇷🇺 Тест RU</button>
+        <button class="test-btn" id="testVoiceEnBtn" title="Проверка английской фразы">🇬🇧 Тест EN</button>
+      </div>
+    </div>
+
+    <!-- 2. Каталог, поиск и фильтры -->
+    <div class="catalog-tabs-row">
+      <select id="catalogSelect" class="catalog-select">
+        <option value="elevenlabs">🔥 ElevenLabs Voice Library</option>
+        <option value="fishaudio">🐟 Fish Audio (Каталог + Клоны)</option>
+        <option value="my_library">⭐ Моя библиотека Lumean</option>
+        <option value="lumvoice">💎 LumVoice Public</option>
+        <option value="cartesia">⚡ Cartesia</option>
       </select>
     </div>
-    <div class="row">
-      <input id="lumeanVoice" placeholder="Voice ID" spellcheck="false">
-      <button id="saveVoiceBtn">Сохранить</button>
+
+    <div class="row voice-filters-row">
+      <input id="voiceSearchInput" placeholder="Поиск по имени, стилю или Voice ID..." spellcheck="false" style="flex: 2;">
+      <select id="voiceLangFilter" style="flex: 1;">
+        <option value="">Все языки</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+      </select>
+      <select id="voiceGenderFilter" style="flex: 1;">
+        <option value="">Все</option>
+        <option value="female">♀ Женские</option>
+        <option value="male">♂ Мужские</option>
+      </select>
+      <button class="primary" id="searchVoicesBtn">🔍 Найти</button>
     </div>
-    <div class="row" style="margin-top: 4px;">
-      <input id="lumeanTemplate" placeholder="Template ID (из .env)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">
+
+    <!-- 3. Список карточек голосов (скролл max-height: 280px) -->
+    <div class="voice-cards-container" id="voiceCardsContainer">
+      <div class="voice-cards-empty">Загрузка голосов каталога...</div>
     </div>
-    <div id="voiceStatusHint" class="hint" style="margin-top:6px; color:#4ade80;" hidden>Голос сохранён</div>
+
+    <!-- 4. Ручной ввод Voice ID -->
+    <details class="manual-voice-details">
+      <summary class="hint" style="cursor: pointer; user-select: none; margin: 4px 0;">✏️ Ручной ввод Voice ID с сайта lumean.app</summary>
+      <div class="row" style="margin-top: 6px; gap: 6px;">
+        <select id="manualProviderSelect" style="flex: 1;">
+          <option value="elevenlabs">ElevenLabs</option>
+          <option value="fishaudio">Fish Audio</option>
+          <option value="lumvoice">LumVoice</option>
+          <option value="cartesia">Cartesia</option>
+        </select>
+        <input id="manualVoiceId" placeholder="Voice ID (напр. hLjwV7...)" spellcheck="false" style="flex: 2;">
+        <button id="manualSaveBtn">Сохранить</button>
+      </div>
+      <div class="row" style="margin-top: 4px;">
+        <input id="manualTemplateId" placeholder="Template ID (опционально, если есть свой)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">
+      </div>
+    </details>
+    <div id="voiceStatusHint" class="hint" style="margin-top:2px; color:#4ade80;" hidden>Голос применён во всём приложении</div>
   </section>
 
   <section class="block">
