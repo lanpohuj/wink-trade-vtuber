@@ -28,7 +28,7 @@ PyYAML>=6
 pynput>=1.7
 
 # --- TikTok-чат Winky (этап 3) ---
-TikTokLive>=7
+TikTokLive>=7.0.1
 
 # --- Озвучка Winky (мультиязычный женский TTS) ---
 edge-tts>=7.0

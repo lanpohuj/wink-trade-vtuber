@@ -172,6 +172,8 @@ class ChatRouter:
         self._on_wave = on_wave
         self._on_action = on_action
         self._last_greet_at = 0.0
+        self._last_like_at = 0.0
+        self._last_follow_at = 0.0
         self._counters = Counter()
         self._lock = threading.Lock()
 
@@ -231,6 +233,11 @@ class ChatRouter:
                 except Exception:
                     pass
 
+        # Защита от перегрузки очереди: если в очереди уже >=4 реплик, отображаем в ленте, но не добавляем речь
+        if self._controller.queue_size() >= 4:
+            logger.info("Пропуск голосового ответа на «%s»: очередь перегружена (%d)", text[:30], self._controller.queue_size())
+            return
+
         # 1. Ключевые сценарии — приоритет (универсальные, звучат за 0.05с)
         keyword = self._book.match_keyword(text)
         if keyword is not None:
@@ -259,37 +266,44 @@ class ChatRouter:
         threading.Thread(target=_llm_worker, daemon=True, name="chat_llm_worker").start()
 
     def handle_join(self, user: str, force: bool = False, lang: str = "auto") -> None:
-        """Новый зритель: персональное приветствие с жестом wave."""
-        if not force:
-            now = monotonic()
-            if now - self._last_greet_at < 18.0:
-                return
-            if self._controller.speaking or self._controller.status().queue_len > 0:
-                return
-
-        clean_name, detected_lang = clean_nickname(user, default_lang=lang)
-        target_lang = lang if lang in ("ru", "en") else detected_lang
-        self._last_greet_at = monotonic()
+        """Новый зритель: счётчик и лента обновляются сразу; голос — только при свободной очереди (25с кулдаун)."""
         self._bump("joins_greeted")
         self._feed("user", user, "👋 зашёл(ла) в эфир")
+
+        now = monotonic()
+        if not force:
+            if now - self._last_greet_at < 25.0:
+                return
+            if self._controller.speaking or self._controller.queue_size() > 0:
+                return
+
+        self._last_greet_at = now
+        clean_name, detected_lang = clean_nickname(user, default_lang=lang)
+        target_lang = lang if lang in ("ru", "en") else detected_lang
 
         scenario_phrase = self._book.chat_phrases.greeting(target_lang)
         text = scenario_phrase if scenario_phrase else random.choice(JOIN_PHRASES_RU if target_lang == "ru" else JOIN_PHRASES_EN)
         self._say(text, target_lang, "wave", clean_name, action="wave", action_duration=3.0)
 
-    def handle_follow(self, user: str, lang: str = "auto") -> None:
-        """Подписка зрителя: персональная благодарность + танец dance."""
-        clean_name, detected_lang = clean_nickname(user, default_lang=lang)
-        target_lang = lang if lang in ("ru", "en") else detected_lang
+    def handle_follow(self, user: str, force: bool = False, lang: str = "auto") -> None:
+        """Подписка зрителя: лента обновляется сразу; голос — танец dance с кулдауном 5с."""
         self._bump("follows")
         self._feed("user", user, "❤️ подписался(лась) на эфир")
+
+        now = monotonic()
+        if not force and now - self._last_follow_at < 5.0:
+            return
+
+        self._last_follow_at = now
+        clean_name, detected_lang = clean_nickname(user, default_lang=lang)
+        target_lang = lang if lang in ("ru", "en") else detected_lang
 
         scenario_phrase = self._book.chat_phrases.follow(target_lang)
         text = scenario_phrase if scenario_phrase else random.choice(FOLLOW_PHRASES_RU if target_lang == "ru" else FOLLOW_PHRASES_EN)
         self._say(text, target_lang, "excited", clean_name, action="dance", action_duration=4.5)
 
     def handle_gift(self, user: str, gift: str = "Роза", lang: str = "auto") -> None:
-        """Подарок: персональная благодарность за конкретный подарок + танец dance."""
+        """Подарок: персональная благодарность за конкретный подарок + танец dance (всегда озвучивается)."""
         clean_name, detected_lang = clean_nickname(user, default_lang=lang)
         target_lang = lang if lang in ("ru", "en") else detected_lang
         clean_gift = (gift or "").strip() or ("Роза" if target_lang == "ru" else "Rose")
@@ -300,13 +314,22 @@ class ChatRouter:
         text = scenario_phrase if scenario_phrase else random.choice(GIFT_PHRASES_RU if target_lang == "ru" else GIFT_PHRASES_EN)
         self._say(text, target_lang, "excited", clean_name, gift=clean_gift, action="dance", action_duration=4.5)
 
-    def handle_like(self, user: str, count: int = 1, lang: str = "auto") -> None:
-        """Лайки (тапы по экрану): персональная благодарность за лайки + жест cheer."""
+    def handle_like(self, user: str, count: int = 1, force: bool = False, lang: str = "auto") -> None:
+        """Лайки: счётчик и лента обновляются сразу; голос — только при свободной очереди (25с кулдаун)."""
+        self._bump("likes")
+        feed_msg = f"❤️ поставил(а) {count} лайков" if (lang == "ru" or (lang == "auto" and detect_reply_lang(user) == "ru")) else f"❤️ sent {count} likes"
+        self._feed("user", user, feed_msg)
+
+        now = monotonic()
+        if not force:
+            if now - self._last_like_at < 25.0:
+                return
+            if self._controller.speaking or self._controller.queue_size() > 0:
+                return
+
+        self._last_like_at = now
         clean_name, detected_lang = clean_nickname(user, default_lang=lang)
         target_lang = lang if lang in ("ru", "en") else detected_lang
-        self._bump("likes")
-        feed_msg = f"❤️ поставил(а) {count} лайков" if target_lang == "ru" else f"❤️ sent {count} likes"
-        self._feed("user", user, feed_msg)
 
         scenario_phrase = self._book.chat_phrases.like(target_lang)
         text = scenario_phrase if scenario_phrase else random.choice(LIKE_PHRASES_RU if target_lang == "ru" else LIKE_PHRASES_EN)

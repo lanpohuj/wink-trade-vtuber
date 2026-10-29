@@ -414,6 +414,14 @@ input:focus {
   color: #f0b34a;
 }
 
+.tt-status.offline {
+  color: #94a3b8;
+}
+
+.tt-status.error {
+  color: #ef4444;
+}
+
 .llm-badge {
   margin-left: 6px;
   padding: 1px 6px;

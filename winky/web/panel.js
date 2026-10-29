@@ -28,6 +28,7 @@ const ttStatus = document.getElementById("ttStatus");
 const llmBadge = document.getElementById("llmBadge");
 const ttUsername = document.getElementById("ttUsername");
 const ttConnect = document.getElementById("ttConnect");
+const ttDisconnect = document.getElementById("ttDisconnect");
 const simQuestion = document.getElementById("simQuestion");
 const simAsk = document.getElementById("simAsk");
 const simJoin = document.getElementById("simJoin");
@@ -177,7 +178,7 @@ function renderStatus(status) {
 
 function renderChatState(chat) {
   if (!chat) return;
-  onTikTokStatus(chat.tiktok_status);
+  onTikTokStatus(chat.tiktok_status, chat.tiktok_detail);
   llmBadge.hidden = !chat.llm_available;
   if (chat.tiktok_username && !ttUsername.value) ttUsername.value = chat.tiktok_username;
   const c = chat.counters || {};
@@ -187,17 +188,45 @@ function renderChatState(chat) {
     `подписок: ${c.follows || 0} · входов: ${c.joins_greeted || 0}`;
 }
 
-const TT_LABELS = {
-  off: "выключен",
-  connecting: "подключаюсь…",
-  connected: "в эфире",
-  reconnecting: "переподключаюсь…",
-};
+function onTikTokStatus(status, detail) {
+  const rawUser = ttUsername?.value?.trim() || "tiktok";
+  const userMatch = rawUser.match(/@([a-zA-Z0-9_.]+)/);
+  const user = userMatch ? userMatch[1] : rawUser.replace(/[^a-zA-Z0-9_.]/g, "") || "streamer";
 
-function onTikTokStatus(status) {
-  const label = TT_LABELS[status] || status;
-  ttStatus.textContent = "@" + (ttUsername.value || "tiktok") + " · " + label;
-  ttStatus.className = "tt-status " + (status === "connected" ? "connected" : "");
+  let text = "выключен";
+  let className = "tt-status";
+
+  if (status === "connected") {
+    text = detail || `🟢 В ЭФИРЕ: @${user}`;
+    className += " connected";
+    if (ttConnect) ttConnect.hidden = true;
+    if (ttDisconnect) ttDisconnect.hidden = false;
+  } else if (status === "connecting") {
+    text = detail || `⏳ Подключаюсь к @${user}...`;
+    className += " connecting";
+    if (ttConnect) ttConnect.hidden = true;
+    if (ttDisconnect) ttDisconnect.hidden = false;
+  } else if (status === "offline") {
+    text = detail || `⚫ @${user} сейчас ОФЛАЙН (не ведет стрим)`;
+    className += " offline";
+    if (ttConnect) ttConnect.hidden = true;
+    if (ttDisconnect) ttDisconnect.hidden = false;
+  } else if (status === "error") {
+    text = detail ? `🔴 ${detail}` : `🔴 Ошибка подключения`;
+    className += " error";
+    if (ttConnect) ttConnect.hidden = false;
+    if (ttDisconnect) ttDisconnect.hidden = true;
+  } else {
+    // "off"
+    text = "выключен";
+    if (ttConnect) ttConnect.hidden = false;
+    if (ttDisconnect) ttDisconnect.hidden = true;
+  }
+
+  if (ttStatus) {
+    ttStatus.textContent = text;
+    ttStatus.className = className;
+  }
 }
 
 function onChatEvent(event) {
@@ -618,11 +647,19 @@ applyModel(initialModel, false);
 
 ctaToggle.addEventListener("change", () => api()?.toggle_cta(ctaToggle.checked));
 
-ttConnect.addEventListener("click", async () => {
+ttConnect?.addEventListener("click", async () => {
   const username = ttUsername.value.trim();
   if (!username) return;
+  onTikTokStatus("connecting", `⏳ Подключаюсь к ${username}...`);
   const ok = await api()?.connect_tiktok(username);
-  onTikTokStatus(ok ? "connecting" : "off");
+  if (!ok) {
+    onTikTokStatus("error", "Некорректный юзернейм или ссылка");
+  }
+});
+
+ttDisconnect?.addEventListener("click", async () => {
+  await api()?.disconnect_tiktok();
+  onTikTokStatus("off", "выключен");
 });
 
 simAsk.addEventListener("click", () => {

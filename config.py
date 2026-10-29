@@ -153,6 +153,10 @@ class Settings(BaseSettings):
         default="",
         description="Юзернейм TikTok-стримера (без @); пусто — коннектор выключен",
     )
+    TIKTOK_SIGN_API_KEY: str = Field(
+        default="",
+        description="API-ключ сервиса подписей EulerStream (опционально, для повышенных лимитов TikTokLive)",
+    )
     RIVER_API_KEY: str = Field(
         default="",
         description="API-ключ River AI (console.river.ai) для модели DeepSeek-V4.1-Flash",

@@ -148,7 +148,7 @@ class WinkyAPI:
         elif emotion == "peek_closer":
             self.trigger_action("peek_closer", 2.8)
         if emotion in EMOTIONS:
-            self._avatar_js(f"window.winkySetEmotion({json.dumps(emotion)})")
+            self._avatar_js(f"window.winkySetEmotion && window.winkySetEmotion({json.dumps(emotion)})")
 
     def trigger_action(self, action: str, duration: float = 4.0) -> None:
         self._avatar_js(f"window.winkyTriggerAction && window.winkyTriggerAction({json.dumps(action)}, {float(duration)})")
@@ -164,7 +164,7 @@ class WinkyAPI:
 
     def set_volume(self, volume: float) -> None:
         self._controller.set_volume(volume)
-        self._avatar_js(f"window.winkySetVolume({float(volume)})")
+        self._avatar_js(f"window.winkySetVolume && window.winkySetVolume({float(volume)})")
 
     def get_lumean_settings(self) -> dict:
         return self._controller.get_lumean_settings()
@@ -361,6 +361,7 @@ class WinkyAPI:
             "lumean": self._controller.get_lumean_settings(),
             "chat": {
                 "tiktok_status": self._tiktok_status if self._tiktok else "off",
+                "tiktok_detail": getattr(self, "_tiktok_detail", "") if self._tiktok else "выключен",
                 "tiktok_username": self._tiktok.username if self._tiktok else settings.TIKTOK_USERNAME,
                 "llm_available": bool(settings.RIVER_API_KEY or settings.DEEPSEEK_API_KEY),
                 "counters": self._chat_router.counters() if self._chat_router else {},
@@ -417,22 +418,27 @@ class WinkyAPI:
     def attach_chat(self, router: ChatRouter) -> None:
         self._chat_router = router
 
-    def _on_tiktok_status(self, status: str) -> None:
+    def _on_tiktok_status(self, status: str, detail_message: str = "") -> None:
         self._tiktok_status = status
+        self._tiktok_detail = detail_message
         self._panel_js(
-            "window.winkyPanel && window.winkyPanel.onTikTokStatus(" + json.dumps(status) + ")"
+            "window.winkyPanel && window.winkyPanel.onTikTokStatus("
+            + json.dumps(status) + ", "
+            + json.dumps(detail_message, ensure_ascii=False) + ")"
         )
 
     def connect_tiktok(self, username: str) -> bool:
-        """Подключает чат лайва по юзернейму (можно менять на лету из пульта)."""
-        username = (username or "").strip().lstrip("@")
-        if not username or len(username) > 30 or not username.replace(".", "").replace("_", "").isalnum():
-            logger.warning("Некорректный юзернейм TikTok: %r", username)
+        """Подключает чат лайва по юзернейму или ссылке стрима."""
+        from winky.tiktok import clean_tiktok_username
+        clean_user = clean_tiktok_username(username)
+        if not clean_user:
+            logger.warning("Некорректный юзернейм или ссылка TikTok: %r", username)
+            self._on_tiktok_status("error", "Некорректный юзернейм или ссылка")
             return False
         if self._tiktok:
             self._tiktok.stop()
         self._tiktok = TikTokConnector(
-            username,
+            clean_user,
             on_comment=self._on_chat_comment,
             on_join=self._on_chat_join,
             on_gift=self._on_chat_gift,
@@ -441,14 +447,14 @@ class WinkyAPI:
             on_like=self._on_chat_like,
         )
         self._tiktok.start()
-        logger.info("Подключаю TikTok-чат: @%s", username)
+        logger.info("Подключаю TikTok-чат: @%s", clean_user)
         return True
 
     def disconnect_tiktok(self) -> None:
         if self._tiktok:
             self._tiktok.stop()
             self._tiktok = None
-            self._on_tiktok_status("off")
+        self._on_tiktok_status("off", "выключен")
 
     def simulate_comment(self, text: str) -> None:
         """Ручной вопрос из пульта — тот же конвейер, что и живой чат."""
@@ -465,7 +471,7 @@ class WinkyAPI:
     def simulate_follow(self, user: str = "Алина ✨", lang: str = "auto") -> None:
         """Тест подписки зрителя из пульта (танец + озвучка)."""
         if self._chat_router:
-            self._chat_router.handle_follow(user or "Алина ✨", lang=lang)
+            self._chat_router.handle_follow(user or "Алина ✨", force=True, lang=lang)
             self.push_status()
 
     def simulate_gift(self, user: str = "Миша 🚀", gift: str = "Роза", lang: str = "auto") -> None:
@@ -477,7 +483,7 @@ class WinkyAPI:
     def simulate_like(self, user: str = "Катя ✨", count: int = 5, lang: str = "auto") -> None:
         """Тест лайков зрителя из пульта (жест cheer + благодарность)."""
         if self._chat_router:
-            self._chat_router.handle_like(user or "Катя ✨", count=count, lang=lang)
+            self._chat_router.handle_like(user or "Катя ✨", count=count, force=True, lang=lang)
             self.push_status()
 
     def _on_chat_comment(self, user: str, text: str) -> None:

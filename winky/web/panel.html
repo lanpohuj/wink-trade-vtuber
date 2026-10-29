@@ -51,9 +51,10 @@
       <span class="tt-status" id="ttStatus">выключен</span>
       <span class="llm-badge" id="llmBadge" hidden>DeepSeek</span>
     </div>
-    <div class="row">
-      <input id="ttUsername" placeholder="юзернейм стримера (без @)" spellcheck="false">
-      <button id="ttConnect">Подключить</button>
+    <div class="row" style="gap: 6px;">
+      <input id="ttUsername" placeholder="юзернейм (@username) или ссылка на стрим" spellcheck="false" style="flex: 2;">
+      <button id="ttConnect" style="flex: 1;">Подключить</button>
+      <button id="ttDisconnect" class="small-btn" style="flex: 1; background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;" hidden>Отключить</button>
     </div>
     <div class="row" style="gap: 6px;">
       <input id="simQuestion" placeholder="Симуляция вопроса зрителя" spellcheck="false" style="flex: 2;">
