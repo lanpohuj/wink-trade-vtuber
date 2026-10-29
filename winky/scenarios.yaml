@@ -97,91 +97,91 @@ cta:
     - "Want the same signals you see on screen? The bot is waiting — link in the bio!"
     - "By the way, access unlocks automatically after a deposit — give it a try!"
 
-# Ответы по ключевым словам (приоритетнее LLM). Плейсхолдер {user} — ник зрителя.
+# Ответы по ключевым словам (приоритетнее LLM). Универсальные фразы для 100% предкэширования.
 keyword_replies:
   - id: kw_hello
     keywords: ["привет", "хай", "здаров", "добрый", "hello", "hi", "hey", "салют"]
     emotion: happy
-    text_ru: "Привет-привет, {user}!! Рада тебя видеть!"
-    text_en: "Hey-hey {user}!! So happy you're here!"
+    text_ru: "Привет-привет!! Очень рада тебя видеть!"
+    text_en: "Hey-hey!! So happy you're here!"
 
   - id: kw_howto
     keywords: ["как польз", "как зарег", "как нач", "как попасть", "how to", "how do i", "how can i"]
     emotion: thinking
     text_ru: >-
-      Всё просто, {user}: жмёшь ссылку в шапке профиля, регистрируешься в Pocket Option
+      Всё просто: жмёшь ссылку в шапке профиля, регистрируешься в Pocket Option
       по персональной ссылке от бота, вносишь депозит от десяти долларов — и сигналы открываются сами!
     text_en: >-
-      Super simple, {user}: follow the link in the bio, register in Pocket Option
+      Super simple: follow the link in the bio, register in Pocket Option
       via the bot's personal link, deposit from ten dollars — and the signals unlock automatically!
 
   - id: kw_link
     keywords: ["ссылк", "где бот", "как найти", "link", "where bot", "bio"]
     emotion: excited
-    text_ru: "Ссылка на бота — прямо в шапке профиля, {user}! Бегом, пока раздаём сигналы!"
-    text_en: "The bot link is right in the bio, {user}! Hurry up, we're dropping signals!"
+    text_ru: "Ссылка на бота — прямо в шапке профиля! Бегом, пока раздаём сигналы!"
+    text_en: "The bot link is right in the bio! Hurry up, we're dropping signals!"
 
   - id: kw_deposit
     keywords: ["депозит", "сколько внос", "сколько нужно", "пополн", "deposit", "how much"]
     emotion: thinking
-    text_ru: "Депозит — любая сумма от десяти долларов, {user}. Больше ничего не нужно!"
-    text_en: "Any deposit from ten dollars, {user}. Nothing else needed!"
+    text_ru: "Депозит — любая сумма от десяти долларов. Больше ничего не нужно!"
+    text_en: "Any deposit from ten dollars. Nothing else needed!"
 
   - id: kw_signal
     keywords: ["сигнал", "точност", "какой парам", "signal", "accuracy", "which pair"]
     emotion: excited
     text_ru: >-
-      Сигналы по куче пар, {user}, точность до девяноста трёх процентов!
+      Сигналы по куче пар, точность до девяноста трёх процентов!
       Сама увидишь на экране — сейчас покажем!
     text_en: >-
-      Signals on tons of pairs, {user}, accuracy up to ninety-three percent!
+      Signals on tons of pairs, accuracy up to ninety-three percent!
       You'll see it on screen right now!
 
   - id: kw_scam
     keywords: ["скам", "развод", "обман", "фейк", "scam", "fake", "fraud"]
     emotion: wink
     text_ru: >-
-      Понимаю сомнения, {user}! Всё прозрачно: смотри работу бота вживую прямо сейчас —
+      Понимаю сомнения! Всё прозрачно: смотри работу бота вживую прямо сейчас —
       реальный телефон, реальные сигналы. И поддержка в боте на связи.
     text_en: >-
-      I hear you, {user}! It's all transparent: watch the bot live right now —
+      I hear you! It's all transparent: watch the bot live right now —
       real phone, real signals. And the bot's support is one tap away.
 
   - id: kw_bot
     keywords: ["бот", "bot", "wink", "винк"]
     emotion: happy
-    text_ru: "Всё про бота — в шапке профиля, {user}! Жми ссылку и залетай!"
-    text_en: "Everything about the bot is in the bio, {user}! Tap the link and hop in!"
+    text_ru: "Всё про бота — в шапке профиля! Жми ссылку и залетай!"
+    text_en: "Everything about the bot is in the bio! Tap the link and hop in!"
 
-# Приветствия новых зрителей (событие входа в эфир). Плейсхолдер {user}.
+# Приветствия новых зрителей (событие входа в эфир).
 greetings:
   ru:
-    - "Оо, {user} у нас! Привет-привет!"
-    - "Заходит {user} — располагайся, сейчас будет интересно!"
-    - "Привет, {user}! Тебя ждут сигналы, лови волну!"
+    - "Оо, новый зритель у нас! Привет-привет!"
+    - "Добро пожаловать к нам на стрим! Располагайся, сейчас будет интересно!"
+    - "Привет! Тебя уже ждут сигналы, лови волну!"
   en:
-    - "Oh, {user} is here! Hey-hey!"
-    - "{user} just joined — get comfy, it's about to get good!"
-    - "Hi {user}! Signals incoming, catch the wave!"
+    - "Oh, welcome to the stream! Hey-hey!"
+    - "Welcome, glad you joined! Get comfy, it's about to get good!"
+    - "Hi there! Signals incoming, catch the wave!"
 
-# Благодарности за подарки. Плейсхолдеры {user} и {gift}.
+# Благодарности за подарки.
 gift_thanks:
   ru:
-    - "Огромное спасибо, {user}, за {gift}!! Ты просто космос! 💚"
-    - "Вау, {gift} от {user}! Спасибо огромное, очень приятно!"
-    - "{user}, спасибо за {gift}! Ты делаешь стрим ярче!"
+    - "Огромное спасибо за подарок!! Ты просто космос! 💚"
+    - "Вау, какой крутой подарок! Спасибо огромное, очень приятно!"
+    - "Спасибо за подарок! Ты делаешь этот стрим ярче!"
   en:
-    - "Huge thanks, {user}, for the {gift}!! You're amazing! 💚"
-    - "Wow, {gift} from {user}! Thank you so much!"
-    - "{user}, thanks for the {gift}! You make the stream brighter!"
+    - "Huge thanks for the gift!! You're amazing! 💚"
+    - "Wow, thank you so much for the gift!"
+    - "Thanks for the gift! You make the stream brighter!"
 
-# Фолбэки: LLM недоступен или лимит — общий живой ответ. Плейсхолдер {user}.
+# Фолбэки: LLM недоступен или лимит — общий живой ответ.
 fallbacks:
   ru:
-    - "Хороший вопрос, {user}! Всё по шагам расскажет бот — ссылка в шапке!"
-    - "Слышу тебя, {user}! Подробности — в шапке профиля, залетай!"
-    - "Отлично спросил, {user}! Смотри на экран — сейчас всё покажу!"
+    - "Хороший вопрос! Всё по шагам расскажет бот — ссылка в шапке!"
+    - "Слышу тебя! Все подробности — в шапке профиля, залетай!"
+    - "Отличный вопрос! Смотри на экран — сейчас всё покажу!"
   en:
-    - "Great question, {user}! The bot explains everything — link in the bio!"
-    - "I hear you, {user}! Details are in the bio, hop in!"
-    - "Nice one, {user}! Watch the screen — I'll show you everything!"
+    - "Great question! The bot explains everything — link in the bio!"
+    - "I hear you! Details are in the bio, hop in!"
+    - "Nice one! Watch the screen — I'll show you everything!"

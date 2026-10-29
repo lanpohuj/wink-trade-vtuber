@@ -179,7 +179,32 @@ function onChatEvent(event) {
   chatFeed.scrollTop = chatFeed.scrollHeight;
 }
 
-window.winkyPanel = { renderStatus, renderQuickReplies, onScenariosReloaded, onChatEvent };
+function onWarmupProgress(done, total, statusText) {
+  const container = document.getElementById("voiceWarmupContainer");
+  const statusSpan = document.getElementById("warmupStatusText");
+  const percentSpan = document.getElementById("warmupPercentText");
+  const barFill = document.getElementById("warmupBarFill");
+  if (!container || !barFill) return;
+
+  const percent = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 100;
+  barFill.style.width = percent + "%";
+  if (percentSpan) percentSpan.textContent = percent + "%";
+  if (statusSpan) {
+    statusSpan.textContent = statusText || (percent === 100 ? "✅ Голос готов (мгновенный отклик 0.05с)" : `⚡ Прогрев голоса: ${done} / ${total}...`);
+  }
+
+  if (percent === 100) {
+    barFill.classList.add("completed");
+    setTimeout(() => {
+      if (container) container.classList.add("warmup-done");
+    }, 4500);
+  } else {
+    barFill.classList.remove("completed");
+    container.classList.remove("warmup-done");
+  }
+}
+
+window.winkyPanel = { renderStatus, renderQuickReplies, onScenariosReloaded, onChatEvent, onWarmupProgress };
 
 function renderQuickReplies(replies) {
   quickGrid.innerHTML = "";

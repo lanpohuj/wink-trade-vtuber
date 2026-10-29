@@ -127,6 +127,17 @@
       </div>
     </div>
 
+    <!-- Индикатор прогрева кэша голоса для мгновенного отклика (0.05с) -->
+    <div class="voice-warmup-container" id="voiceWarmupContainer">
+      <div class="voice-warmup-status">
+        <span id="warmupStatusText">⚡ Прогрев голоса...</span>
+        <span id="warmupPercentText">0%</span>
+      </div>
+      <div class="warmup-bar-track">
+        <div class="warmup-bar-fill" id="warmupBarFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
     <!-- 2. Каталог, поиск и фильтры -->
     <div class="catalog-tabs-row">
       <select id="catalogSelect" class="catalog-select">

@@ -24,7 +24,17 @@ from time import monotonic
 import webview
 
 from config import settings
-from winky.chat_router import ChatRouter
+from winky.chat_router import (
+    ChatRouter,
+    FILLERS_RU,
+    FILLERS_EN,
+    JOIN_PHRASES_RU,
+    JOIN_PHRASES_EN,
+    FOLLOW_PHRASES_RU,
+    FOLLOW_PHRASES_EN,
+    GIFT_PHRASES_RU,
+    GIFT_PHRASES_EN,
+)
 from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
 from winky.server import start_assets_server
@@ -161,21 +171,79 @@ class WinkyAPI:
     def preview_voice_sample(self, service_key: str, voice_id: str) -> str:
         return self._controller.preview_voice_sample(service_key, voice_id)
 
-    def precache_phrases(self) -> None:
+    def warmup_voice_cache(self) -> None:
+        """Фоновый прогрев всех фиксированных фраз стрима для мгновенного отклика 0.05с."""
         def _run() -> None:
-            count = 0
+            phrases: list[tuple[str, str]] = [
+                ("Привет! Это проверка моего нового голоса на русском языке!", "ru"),
+                ("Hey guys! Checking out my new voice in English!", "en"),
+            ]
+            for f in FILLERS_RU:
+                phrases.append((f, "ru"))
+            for f in FILLERS_EN:
+                phrases.append((f, "en"))
+            for p in JOIN_PHRASES_RU:
+                phrases.append((p, "ru"))
+            for p in JOIN_PHRASES_EN:
+                phrases.append((p, "en"))
+            for p in FOLLOW_PHRASES_RU:
+                phrases.append((p, "ru"))
+            for p in FOLLOW_PHRASES_EN:
+                phrases.append((p, "en"))
+            for p in GIFT_PHRASES_RU:
+                phrases.append((p, "ru"))
+            for p in GIFT_PHRASES_EN:
+                phrases.append((p, "en"))
             for reply in self._book.quick_replies:
-                try:
-                    media = self._controller.engine.synthesize(reply.text, reply.lang)
-                    compute_rms_chunks(media)
-                    count += 1
-                    if count >= 6:
-                        break
-                except Exception as e:
-                    logger.debug("Предзагрузка фразы %s: %s", reply.id, e)
-            logger.info("Прогрев кэша быстрых реплик завершён")
+                phrases.append((reply.text, reply.lang))
+            for kw in self._book.keywords:
+                if kw.text_ru:
+                    phrases.append((kw.text_ru, "ru"))
+                if kw.text_en:
+                    phrases.append((kw.text_en, "en"))
 
-        threading.Thread(target=_run, daemon=True, name="voice_precache").start()
+            seen: set[str] = set()
+            unique_phrases: list[tuple[str, str]] = []
+            for text, lang in phrases:
+                clean = text.strip()
+                if clean and clean not in seen:
+                    seen.add(clean)
+                    unique_phrases.append((clean, lang))
+
+            total = len(unique_phrases)
+            cached_count = sum(1 for text, _ in unique_phrases if self._controller.is_cached(text))
+            done = cached_count
+
+            def _notify(d: int, t: int, msg: str) -> None:
+                self._panel_js(
+                    f"window.winkyPanel && window.winkyPanel.onWarmupProgress && "
+                    f"window.winkyPanel.onWarmupProgress({d}, {t}, {json.dumps(msg, ensure_ascii=False)})"
+                )
+
+            if cached_count >= total:
+                _notify(total, total, "✅ Голос готов (мгновенный отклик 0.05с)")
+                logger.info("Все %d фраз стрима уже в локальном кэше", total)
+                return
+
+            _notify(done, total, f"⚡ Прогрев голоса: {done} / {total}...")
+
+            for text, lang in unique_phrases:
+                if self._controller.is_cached(text):
+                    continue
+                try:
+                    self._controller.engine.synthesize(text, lang)
+                    done += 1
+                    _notify(done, total, f"⚡ Прогрев голоса: {done} / {total}...")
+                except Exception as exc:
+                    logger.debug("Ошибка прогрева фразы «%s»: %s", text[:30], exc)
+
+            _notify(total, total, "✅ Голос готов (мгновенный отклик 0.05с)")
+            logger.info("Прогрев голоса завершён: %d / %d в кэше", done, total)
+
+        threading.Thread(target=_run, daemon=True, name="voice_warmup").start()
+
+    def precache_phrases(self) -> None:
+        self.warmup_voice_cache()
 
     def set_avatar_scale(self, scale: float) -> None:
         self._avatar_js(f"window.winkySetScale && window.winkySetScale({float(scale)})")

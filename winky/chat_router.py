@@ -26,6 +26,47 @@ from winky.tts import SpeechController, detect_lang
 
 logger = logging.getLogger(__name__)
 
+# Мгновенные голосовые филлеры (0.05с отклик для новых вопросов)
+FILLERS_RU = [
+    "О, отличный вопрос! Сейчас расскажу!",
+    "Хм, дай-ка подумать! Сейчас подскажу!",
+    "Секундочку, смотрю!",
+]
+FILLERS_EN = [
+    "Oh, great question! Let me tell you!",
+    "Hmm, let me think! Give me a second!",
+    "One second, checking that out!",
+]
+
+# Универсальные фразы для 100% предкэширования реакций лайва
+JOIN_PHRASES_RU = [
+    "О, приветик! Рада, что заглянул ко мне на стрим!",
+    "Хей, добро пожаловать! Садись поудобнее, сейчас будем ловить сигнал!",
+    "Привет! Залетай к нам на стрим, располагайся!",
+]
+JOIN_PHRASES_EN = [
+    "Hey, welcome to the stream! So happy to see you here!",
+    "Welcome! Glad to have you on the live stream!",
+]
+
+FOLLOW_PHRASES_RU = [
+    "Вау, спасибо за подписку! Танцую специально для тебя! Залетай по ссылке в профиле в наш бот!",
+    "Ура, добро пожаловать к нам! Лови мой фирменный танец!",
+]
+FOLLOW_PHRASES_EN = [
+    "Wow, thank you for following! Dancing just for you! Check out the link in bio for our bot!",
+    "Welcome! Thank you for following, enjoy my dance!",
+]
+
+GIFT_PHRASES_RU = [
+    "Ого, подарок! Спасибо огромное, ты супер! Лови мой фирменный танец!",
+    "Вау, какой крутой подарок! Это супер мило! Танцую специально для тебя!",
+]
+GIFT_PHRASES_EN = [
+    "Wow, thank you so much for the gift! You are awesome! Here is my dance for you!",
+    "Thank you for the gift! Dancing just for you!",
+]
+
 # Запрещенные шаблоны в никах (мат, казино, спам, боты, ссылки)
 _BAD_NAME_PATTERNS = (
     r"https?://", r"t\.me", r"\.com", r"\.ru", r"\.org", r"\.net", r"bot\b",
@@ -160,7 +201,7 @@ class ChatRouter:
                 except Exception:
                     pass
 
-        # 1. Ключевые сценарии — приоритет
+        # 1. Ключевые сценарии — приоритет (универсальные, звучат за 0.05с)
         keyword = self._book.match_keyword(text)
         if keyword is not None:
             emo = detected_emo or keyword.emotion
@@ -168,29 +209,35 @@ class ChatRouter:
                 self._bump("keyword_hits")
                 return
 
-        # 2. DeepSeek для нестандартных вопросов
-        reply = self._brain.reply(text, nickname=user)
-        if reply:
-            emo = detected_emo or self._emotion_for(reply)
-            if self._say(reply, lang, emo, user):
-                self._bump("llm_replies")
-                return
-            self._bump("llm_censored")
-        elif self._brain.available:
-            self._bump("llm_limited")
+        # 2. Мгновенный голосовой филлер (0.05с отклик) перед генерацией ответа LLM
+        filler = random.choice(FILLERS_RU if lang == "ru" else FILLERS_EN)
+        self._say(filler, lang, detected_emo or "thinking", user)
 
-        # 3. Фолбэк
-        emo = detected_emo or "wink"
-        if self._say(self._book.chat_phrases.fallback(lang), lang, emo, user):
-            self._bump("fallbacks")
+        # 3. Фоновая генерация через DeepSeek и синтез ответа
+        def _llm_worker() -> None:
+            reply = self._brain.reply(text, nickname=user)
+            if reply:
+                emo = detected_emo or self._emotion_for(reply)
+                if self._say(reply, lang, emo, user):
+                    self._bump("llm_replies")
+                    return
+                self._bump("llm_censored")
+            elif self._brain.available:
+                self._bump("llm_limited")
+
+            # Фолбэк, если LLM недоступен или лимит
+            emo = detected_emo or "wink"
+            if self._say(self._book.chat_phrases.fallback(lang), lang, emo, user):
+                self._bump("fallbacks")
+
+        threading.Thread(target=_llm_worker, daemon=True, name="chat_llm_worker").start()
 
     def handle_join(self, user: str, force: bool = False) -> None:
-        """Новый зритель: приветствие по имени с жестом махания рукой (wave)."""
+        """Новый зритель: приветствие с жестом wave (мгновенный отклик 0.05с)."""
         if not force:
             now = monotonic()
             if now - self._last_greet_at < 18.0:
                 return
-            # Если сейчас играет речь или очередь не пуста — пропускаем, чтобы не спамить
             if self._controller.speaking or self._controller.status().queue_len > 0:
                 return
 
@@ -205,20 +252,11 @@ class ChatRouter:
             except Exception:
                 logger.exception("on_wave упал")
 
-        ru_phrases = [
-            f"О, {clean_name}, приветик! Рада, что заглянул ко мне на стрим!",
-            f"Хей, {clean_name}, добро пожаловать! Садись поудобнее, сейчас будем ловить сигнал!",
-            f"Привет, {clean_name}! Залетай к нам на стрим, располагайся!",
-        ]
-        en_phrases = [
-            f"Hey {clean_name}, welcome to the stream! So happy to see you here!",
-            f"Welcome, {clean_name}! Glad to have you on the live stream!",
-        ]
-        text = random.choice(ru_phrases if lang == "ru" else en_phrases)
+        text = random.choice(JOIN_PHRASES_RU if lang == "ru" else JOIN_PHRASES_EN)
         self._say(text, lang, "wave", clean_name)
 
     def handle_follow(self, user: str) -> None:
-        """Подписка зрителя: танец + озвучка благодарности."""
+        """Подписка зрителя: танец + озвучка благодарности (мгновенный отклик 0.05с)."""
         clean_name, lang = sanitize_nickname(user)
         self._bump("follows")
         self._feed("user", user, "❤️ подписался(лась) на эфир")
@@ -229,19 +267,11 @@ class ChatRouter:
             except Exception:
                 logger.exception("on_action dance упал")
 
-        ru_phrases = [
-            f"Вау, {clean_name}, спасибо за подписку! Танцую специально для тебя! Залетай по ссылке в профиле в наш бот!",
-            f"Ура, {clean_name}, добро пожаловать к нам! Лови мой фирменный танец!",
-        ]
-        en_phrases = [
-            f"Wow, {clean_name}, thank you for following! Dancing just for you! Check out the link in bio for our bot!",
-            f"Welcome, {clean_name}! Thank you for following, enjoy my dance!",
-        ]
-        text = random.choice(ru_phrases if lang == "ru" else en_phrases)
+        text = random.choice(FOLLOW_PHRASES_RU if lang == "ru" else FOLLOW_PHRASES_EN)
         self._say(text, lang, "excited", clean_name)
 
     def handle_gift(self, user: str, gift: str = "Роза") -> None:
-        """Подарок: танец + благодарность за подарок."""
+        """Подарок: танец + благодарность за подарок (мгновенный отклик 0.05с)."""
         clean_name, lang = sanitize_nickname(user)
         clean_gift = (gift or "").strip() or ("Роза" if lang == "ru" else "Rose")
         self._bump("gifts")
@@ -258,15 +288,7 @@ class ChatRouter:
             except Exception:
                 pass
 
-        ru_phrases = [
-            f"Ого, {clean_name} подарил {clean_gift}! Спасибо огромное, ты супер! Лови мой фирменный танец!",
-            f"Вау, {clean_name}, какой подарок! {clean_gift} — это супер мило! Танцую специально для тебя!",
-        ]
-        en_phrases = [
-            f"Wow, {clean_name} sent {clean_gift}! Thank you so much, you are awesome! Here is my dance for you!",
-            f"Thank you, {clean_name}, for the {clean_gift}! Dancing just for you!",
-        ]
-        text = random.choice(ru_phrases if lang == "ru" else en_phrases)
+        text = random.choice(GIFT_PHRASES_RU if lang == "ru" else GIFT_PHRASES_EN)
         self._say(text, lang, "excited", clean_name, gift=clean_gift)
 
     # ---------- внутреннее ----------

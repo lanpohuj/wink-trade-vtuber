@@ -13,10 +13,12 @@
 
 from __future__ import annotations
 
+import concurrent.futures
 import hashlib
 import json
 import logging
 import math
+import re
 import struct
 import subprocess
 import threading
@@ -27,6 +29,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable
 
+import httpx
 import requests
 
 from config import settings
@@ -103,9 +106,13 @@ class EdgeTTS:
         cache_key = hashlib.md5(f"edge_{self.VOICE}_{text.strip()}".encode("utf-8")).hexdigest()
         return cache_dir / f"edge_{cache_key}.mp3"
 
+    def is_cached(self, text: str) -> bool:
+        out = self.get_cache_path(text)
+        return out.exists() and out.stat().st_size > 500
+
     def synthesize(self, text: str, lang: str = "ru") -> Path:
         out = self.get_cache_path(text)
-        if out.exists() and out.stat().st_size > 500:
+        if self.is_cached(text):
             logger.info("edge-tts аудио найдено в локальном кэше: %s", out.name)
             return out
 
@@ -137,13 +144,37 @@ class LumeanTTS:
         self._voice_id: str = (settings.LUMEAN_VOICE_ID or DEFAULT_LUMEAN_VOICE_ID).strip()
         self._voice_name: str = (settings.LUMEAN_VOICE_NAME or DEFAULT_LUMEAN_VOICE_NAME).strip()
         self._template_id: str | None = (settings.LUMEAN_TEMPLATE_ID or "").strip() or None
-        self._templates_by_service: dict[str, str] = {}
-        if self._template_id:
-            self._templates_by_service[self._service_key] = self._template_id
 
         self._fallback = EdgeTTS()
         self._cache_dir = MEDIA_DIR / "cache"
         self._cache_dir.mkdir(parents=True, exist_ok=True)
+
+        # Постоянный Keep-Alive клиент без повторных TLS handshakes
+        self._client = httpx.Client(timeout=30.0, http2=False)
+
+        # Кэш шаблонов по сервисам на диске
+        self._templates_by_service: dict[str, str] = self._load_templates_cache()
+        if self._template_id:
+            self._templates_by_service[self._service_key] = self._template_id
+            self._save_templates_cache()
+
+    def _load_templates_cache(self) -> dict[str, str]:
+        tpl_file = self._cache_dir / "lumean_templates.json"
+        if tpl_file.exists():
+            try:
+                data = json.loads(tpl_file.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    return {str(k).lower(): str(v) for k, v in data.items() if v}
+            except Exception:
+                pass
+        return {}
+
+    def _save_templates_cache(self) -> None:
+        tpl_file = self._cache_dir / "lumean_templates.json"
+        try:
+            tpl_file.write_text(json.dumps(self._templates_by_service, indent=2), encoding="utf-8")
+        except Exception:
+            pass
 
     @property
     def service_key(self) -> str:
@@ -162,6 +193,7 @@ class LumeanTTS:
         if clean:
             self._template_id = clean
             self._templates_by_service[self._service_key] = clean
+            self._save_templates_cache()
             settings.LUMEAN_TEMPLATE_ID = clean
             logger.info("Установлен новый Lumean Template ID: %s", clean)
 
@@ -208,10 +240,10 @@ class LumeanTTS:
 
         # 1. Запрашиваем существующие шаблоны пользователя (максимум per_page=30)
         try:
-            resp = requests.get(
+            resp = self._client.get(
                 f"{self.BASE_URL}/templates?per_page=30",
                 headers=headers,
-                timeout=10,
+                timeout=10.0,
             )
             if resp.status_code == 200:
                 payload = resp.json()
@@ -236,36 +268,12 @@ class LumeanTTS:
 
                 if matched_template:
                     template_id = str(matched_template["id"])
-                    cfg = matched_template.get("config", {})
-                    current_vid = cfg.get("tts_settings", {}).get("voice_id")
-                    name = matched_template.get("name") or f"Winky {service_key}"
-
-                    # Если в найденном шаблоне другой voice_id — обновляем его через PUT
-                    if current_vid != voice_id:
-                        cfg.setdefault("tts_settings", {})["voice_id"] = voice_id
-                        try:
-                            put_resp = requests.put(
-                                f"{self.BASE_URL}/templates/{template_id}",
-                                headers=headers,
-                                json={
-                                    "service_key": service_key,
-                                    "name": name,
-                                    "config": cfg,
-                                },
-                                timeout=10,
-                            )
-                            if put_resp.status_code == 200:
-                                logger.info(
-                                    "Шаблон Lumean %s (%s) обновлен на voice_id=%s",
-                                    template_id, name, voice_id
-                                )
-                        except requests.RequestException as put_err:
-                            logger.warning("Не удалось обновить шаблон %s через PUT: %s", template_id, put_err)
-
                     self._templates_by_service[service_key] = template_id
+                    self._save_templates_cache()
+                    logger.info("Найден шаблон Lumean для %s: %s", service_key, template_id)
                     return template_id
 
-        except requests.RequestException as exc:
+        except Exception as exc:
             logger.debug("Не удалось получить список шаблонов Lumean: %s", exc)
 
         # 2. Если шаблон для service_key не найден — создаём новый
@@ -289,10 +297,10 @@ class LumeanTTS:
             # Для fishaudio, cartesia, lumvoice: опрашиваем config-options
             model_id = "s2.1-pro" if service_key == "fishaudio" else ("sonic-3" if service_key == "cartesia" else "")
             try:
-                opt_resp = requests.get(
+                opt_resp = self._client.get(
                     f"{self.BASE_URL}/templates/config-options?service={service_key}",
                     headers=headers,
-                    timeout=8,
+                    timeout=8.0,
                 )
                 if opt_resp.status_code == 200:
                     opts = opt_resp.json().get("data", {}).get("tts_settings", {})
@@ -311,7 +319,7 @@ class LumeanTTS:
             if service_key == "fishaudio":
                 config["tts_settings"]["format"] = "mp3"
 
-        create_resp = requests.post(
+        create_resp = self._client.post(
             f"{self.BASE_URL}/templates",
             headers=headers,
             json={
@@ -319,28 +327,38 @@ class LumeanTTS:
                 "name": f"Winky {service_key}",
                 "config": config,
             },
-            timeout=10,
+            timeout=10.0,
         )
         create_resp.raise_for_status()
         created = create_resp.json()
         template_id = str(created.get("data", {}).get("id"))
         self._templates_by_service[service_key] = template_id
+        self._save_templates_cache()
         logger.info("Успешно создан шаблон Lumean %s для %s: %s", f"Winky {service_key}", service_key, template_id)
         return template_id
 
+    def get_cache_path(self, text: str) -> Path:
+        clean_text = text.strip()
+        cache_key = hashlib.sha256(
+            f"lumean:{self._service_key}:{self._voice_id}:{clean_text}".encode("utf-8")
+        ).hexdigest()[:20]
+        return self._cache_dir / f"lumean_{self._service_key}_{self._voice_id[:8]}_{cache_key}.mp3"
+
+    def is_cached(self, text: str) -> bool:
+        clean_text = text.strip()
+        if not clean_text:
+            return False
+        cached_file = self.get_cache_path(clean_text)
+        return cached_file.exists() and cached_file.stat().st_size > 1000
+
     def synthesize(self, text: str, lang: str = "ru") -> Path:
-        """Синтезирует речь выбранным голосом через 3-шаговый конвейер Lumean API."""
+        """Синтезирует речь выбранным голосом через прямой Keep-Alive вызов Lumean API."""
         clean_text = text.strip()
         if not clean_text:
             raise TTSError("Пустой текст для озвучки")
 
-        # Ключ кэша строго зависит от тройки (service_key, voice_id, text)
-        cache_key = hashlib.sha256(
-            f"lumean:{self._service_key}:{self._voice_id}:{clean_text}".encode("utf-8")
-        ).hexdigest()[:20]
-        cached_file = self._cache_dir / f"lumean_{self._service_key}_{self._voice_id[:8]}_{cache_key}.mp3"
-
-        if cached_file.exists() and cached_file.stat().st_size > 1000:
+        cached_file = self.get_cache_path(clean_text)
+        if self.is_cached(clean_text):
             logger.info("Lumean аудио найдено в локальном кэше: %s", cached_file.name)
             return cached_file
 
@@ -350,9 +368,12 @@ class LumeanTTS:
             return self._fallback.synthesize(clean_text, lang)
 
         try:
-            template_id = self._ensure_template(self._service_key, self._voice_id)
+            # 1. Мгновенно берём template_id из кэша (0 мс пре-ордер задержка!)
+            template_id = self._templates_by_service.get(self._service_key)
+            if not template_id:
+                template_id = self._ensure_template(self._service_key, self._voice_id)
 
-            # Шаг А: Создание заказа с config_override для гарантии использования текущего voice_id
+            # Шаг А: Создание заказа с динамическим config_override voice_id
             order_payload: dict = {
                 "template_id": template_id,
                 "input_text": clean_text,
@@ -363,64 +384,80 @@ class LumeanTTS:
                 }
             }
 
-            create_resp = requests.post(
+            create_resp = self._client.post(
                 f"{self.BASE_URL}/orders",
                 headers=self._headers(),
                 json=order_payload,
-                timeout=10,
+                timeout=12.0,
             )
+
+            # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
+            if create_resp.status_code in (400, 404, 422):
+                logger.warning("Шаблон %s недействителен, запрашиваю свежий...", template_id)
+                self._templates_by_service.pop(self._service_key, None)
+                template_id = self._ensure_template(self._service_key, self._voice_id)
+                order_payload["template_id"] = template_id
+                create_resp = self._client.post(
+                    f"{self.BASE_URL}/orders",
+                    headers=self._headers(),
+                    json=order_payload,
+                    timeout=12.0,
+                )
+
             create_resp.raise_for_status()
             order_data = create_resp.json().get("data", {})
             order_id = order_data.get("id")
             if not order_id:
                 raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
 
-            # Шаг Б: Опрос статуса выполнения заказа (до 60.0 секунд, шаг 0.5 с)
+            # Шаг Б: Быстрый опрос статуса выполнения заказа (0.30с старт, 0.20с шаг)
+            time.sleep(0.30)
             start_poll = time.monotonic()
             file_path: str | None = None
             while time.monotonic() - start_poll < 60.0:
-                time.sleep(0.5)
-                status_resp = requests.get(
+                status_resp = self._client.get(
                     f"{self.BASE_URL}/orders/{order_id}",
                     headers=self._headers(),
-                    timeout=5,
+                    timeout=5.0,
                 )
-                if status_resp.status_code != 200:
-                    continue
-                poll_data = status_resp.json().get("data", {})
-                status = poll_data.get("status")
-                if status in ("completed", "result_delivered", "partially_completed"):
-                    files = poll_data.get("result", {}).get("files") or []
-                    if files:
-                        file_path = files[0]
-                        break
-                elif status in ("failed", "cancelled", "compensated"):
-                    raise TTSError(f"Заказ Lumean завершился со статусом {status}: {poll_data}")
+                if status_resp.status_code == 200:
+                    poll_data = status_resp.json().get("data", {})
+                    status = poll_data.get("status")
+                    if status in ("completed", "result_delivered", "partially_completed"):
+                        files = poll_data.get("result", {}).get("files") or []
+                        if files:
+                            file_path = files[0]
+                            break
+                    elif status in ("failed", "cancelled", "compensated"):
+                        raise TTSError(f"Заказ Lumean завершился со статусом {status}: {poll_data}")
+                time.sleep(0.20)
 
             if not file_path:
                 raise TTSError(f"Lumean таймаут >60с заказа {order_id}")
 
             # Шаг В: Получение подписанной ссылки на скачивание
-            url_resp = requests.post(
+            url_resp = self._client.post(
                 f"{self.BASE_URL}/storage/url",
                 headers=self._headers(),
                 json={"path": file_path, "download": True},
-                timeout=10,
+                timeout=10.0,
             )
             url_resp.raise_for_status()
             download_url = url_resp.json().get("data", {}).get("url")
             if not download_url:
                 raise TTSError("Lumean не вернул URL для скачивания файла")
 
-            # Шаг Г: Скачивание аудиофайла без заголовка X-API-KEY
-            audio_resp = requests.get(download_url, timeout=15)
+            # Шаг Г: Скачивание аудиофайла по постоянному Keep-Alive соединению
+            audio_resp = self._client.get(download_url, timeout=15.0)
             audio_resp.raise_for_status()
             cached_file.write_bytes(audio_resp.content)
+            # Сразу рассчитываем RMS для мгновенного липсинка при проигрывании
+            compute_rms_chunks(cached_file)
             logger.info("Lumean TTS успешно сгенерировал речь: %s (%d байт)", cached_file.name, len(audio_resp.content))
             return cached_file
 
         except Exception as exc:  # noqa: BLE001
-            # Только для этой фразы фоллбэк на edge-tts (БЕЗ 10-минутного бэкоффа!)
+            # Только для этой фразы фоллбэк на edge-tts (БЕЗ бэкоффа)
             logger.warning(
                 "Lumean TTS ошибка синтеза (%s) — фоллбэк на edge-tts (Ava) только для этой фразы",
                 exc
@@ -465,10 +502,10 @@ class LumeanTTS:
                 # Если это первая страница и нет поиска по ID — добавляем готовые клоны пользователя
                 if page == 1 and not (len(clean_q) == 32 and all(c in "0123456789abcdefABCDEF" for c in clean_q)):
                     try:
-                        clones_resp = requests.get(
+                        clones_resp = self._client.get(
                             f"{self.BASE_URL}/voices/fishaudio/clones",
                             headers=headers,
-                            timeout=8,
+                            timeout=8.0,
                         )
                         if clones_resp.status_code == 200:
                             c_data = clones_resp.json().get("data", {})
@@ -488,7 +525,7 @@ class LumeanTTS:
                     except Exception as e:
                         logger.debug("Не удалось получить клоны Fish Audio: %s", e)
 
-                resp = requests.get(f"{self.BASE_URL}/voices/fishaudio", headers=headers, params=params, timeout=10)
+                resp = self._client.get(f"{self.BASE_URL}/voices/fishaudio", headers=headers, params=params, timeout=10.0)
                 if resp.status_code == 200:
                     data = resp.json().get("data", {})
                     items = data.get("items", []) if isinstance(data, dict) else []
@@ -521,7 +558,7 @@ class LumeanTTS:
                 if clean_lang:
                     params["language"] = clean_lang
 
-                resp = requests.get(f"{self.BASE_URL}/voices/elevenlabs/library", headers=headers, params=params, timeout=10)
+                resp = self._client.get(f"{self.BASE_URL}/voices/elevenlabs/library", headers=headers, params=params, timeout=10.0)
                 if resp.status_code == 200:
                     data = resp.json().get("data", {})
                     voices = data.get("voices", []) if isinstance(data, dict) else []
@@ -553,7 +590,7 @@ class LumeanTTS:
                 params = {"page": max(1, page), "per_page": 50}
                 if clean_q:
                     params["search"] = clean_q
-                resp = requests.get(f"{self.BASE_URL}/voices/library", headers=headers, params=params, timeout=10)
+                resp = self._client.get(f"{self.BASE_URL}/voices/library", headers=headers, params=params, timeout=10.0)
                 if resp.status_code == 200:
                     data = resp.json().get("data", {})
                     items = data.get("items", []) if isinstance(data, dict) else []
@@ -589,7 +626,7 @@ class LumeanTTS:
                 params = {"page": max(1, page), "per_page": 50}
                 if clean_q:
                     params["search"] = clean_q
-                resp = requests.get(f"{self.BASE_URL}/voices/public", headers=headers, params=params, timeout=10)
+                resp = self._client.get(f"{self.BASE_URL}/voices/public", headers=headers, params=params, timeout=10.0)
                 if resp.status_code == 200:
                     data = resp.json().get("data", {})
                     items = data.get("items", []) if isinstance(data, dict) else []
@@ -614,7 +651,7 @@ class LumeanTTS:
                 params = {"page": max(1, page), "per_page": 50}
                 if clean_q:
                     params["search"] = clean_q
-                resp = requests.get(f"{self.BASE_URL}/voices/cartesia", headers=headers, params=params, timeout=10)
+                resp = self._client.get(f"{self.BASE_URL}/voices/cartesia", headers=headers, params=params, timeout=10.0)
                 if resp.status_code == 200:
                     data = resp.json().get("data", {})
                     items = data.get("items", []) if isinstance(data, dict) else []
@@ -675,6 +712,9 @@ class ElevenLabsTTS:
 
     def __init__(self) -> None:
         self._fallback = EdgeTTS()
+
+    def is_cached(self, text: str) -> bool:
+        return False
 
     def synthesize(self, text: str, lang: str = "ru") -> Path:
         out = MEDIA_DIR / f"eleven_{time.monotonic_ns()}.mp3"
@@ -871,6 +911,14 @@ class SpeechController:
             return self.engine.preview_voice_sample(service_key, voice_id)
         return ""
 
+    def is_cached(self, text: str) -> bool:
+        """Проверяет, есть ли готовый синтез для фразы в кэше текущего движка."""
+        clean = strip_emoji_control(text).strip()
+        if not clean:
+            return False
+        checker = getattr(self.engine, "is_cached", None)
+        return bool(checker(clean)) if checker else False
+
     def start(self) -> None:
         if self._worker and self._worker.is_alive():
             return
@@ -976,21 +1024,37 @@ class SpeechController:
             self._process(task)
 
     def _process(self, task: SpeechTask) -> None:
-        self._speaking = True
-        self._current_text = task.text
-        self._emit_status_impl()
-        self._finished.clear()
+        clean_text = task.text.strip()
+        sentences = [s.strip() for s in re.split(r"(?<=[.!?…])\s+", clean_text) if s.strip()]
+
+        # Sentence Pipelining: если фраза длинная и ещё не в кэше, начинаем говорить сразу по готовности 1-го предложения
+        if len(clean_text) > 65 and len(sentences) >= 2 and not self.is_cached(clean_text):
+            first_part = sentences[0]
+            rest_part = " ".join(sentences[1:])
+            logger.info("Sentence Pipelining: разделение на 2 потока («%s» и «%s»)", first_part[:30], rest_part[:30])
+            try:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+                    f_first = executor.submit(self.engine.synthesize, first_part, task.lang)
+                    f_rest = executor.submit(self.engine.synthesize, rest_part, task.lang)
+                    media_first = f_first.result(timeout=50.0)
+                    self._play_media(media_first, first_part, task.emotion, task.lang)
+                    media_rest = f_rest.result(timeout=50.0)
+                    self._play_media(media_rest, rest_part, task.emotion, task.lang)
+                    return
+            except Exception as exc:
+                logger.warning("Sentence Pipelining ошибка (%s), выполняю обычный синтез", exc)
 
         try:
             media = self.engine.synthesize(task.text, task.lang)
+            self._play_media(media, task.text, task.emotion, task.lang)
         except TTSError as exc:
             logger.error("Синтез не удался: %s", exc)
             self._speaking = False
             self._current_text = ""
             self._finished.set()
             self._emit_status_impl()
-            return
 
+    def _play_media(self, media: Path, text: str, emotion: str, lang: str) -> None:
         try:
             rel_path = media.relative_to(MEDIA_DIR.parent).as_posix()
             media_url = f"/{rel_path}"
@@ -1001,12 +1065,12 @@ class SpeechController:
         duration = len(rms_chunks) * 0.05 if rms_chunks else max(2.5, wav_duration_seconds(media))
 
         self._speaking = True
-        self._current_text = task.text
+        self._current_text = text
         self._emit_status_impl()
 
         self._finished.clear()
         try:
-            self.on_speak(media_url, task.emotion, self._volume, task.lang)
+            self.on_speak(media_url, emotion, self._volume, lang)
         except Exception:  # noqa: BLE001 — окно могло закрыться
             logger.exception("Не удалось отправить фразу в окно аватара")
 

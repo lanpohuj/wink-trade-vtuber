@@ -706,3 +706,58 @@ input:focus {
 .manual-voice-details input {
   padding: 6px 8px;
 }
+
+/* Прогрев кэша голоса для мгновенного отклика (0.05с) */
+.voice-warmup-container {
+  margin-top: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(46, 189, 133, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: opacity 0.5s ease;
+}
+
+.voice-warmup-container.warmup-done {
+  opacity: 0.65;
+}
+
+.voice-warmup-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--dim);
+}
+
+.voice-warmup-status #warmupStatusText {
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.voice-warmup-status #warmupPercentText {
+  color: var(--green-bright);
+  font-weight: 700;
+}
+
+.warmup-bar-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.warmup-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, var(--green-bright));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 230, 118, 0.4);
+}
+
+.warmup-bar-fill.completed {
+  background: var(--green-bright);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
+}

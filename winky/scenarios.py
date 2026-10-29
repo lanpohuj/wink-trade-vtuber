@@ -220,6 +220,15 @@ class ScenarioBook:
         with self._lock:
             return list(self._quick_replies)
 
+    @property
+    def keyword_replies(self) -> list[KeywordReply]:
+        with self._lock:
+            return list(self._keyword_replies)
+
+    @property
+    def keywords(self) -> list[KeywordReply]:
+        return self.keyword_replies
+
     def quick_reply(self, reply_id: str) -> QuickReply | None:
         with self._lock:
             for reply in self._quick_replies:
