@@ -51,15 +51,21 @@ class QuickReply:
 
 @dataclass(frozen=True)
 class CtaConfig:
-    """Ротация призывов: Winky сама напоминает про бота каждые N минут."""
+    """Ротация интерактива стрима: 4 вопроса/разогрева чата на 1 напоминание про ассистента."""
 
     interval_minutes: int
     messages_ru: tuple[str, ...]
     messages_en: tuple[str, ...]
+    warmup_ru: tuple[str, ...] = ()
+    warmup_en: tuple[str, ...] = ()
 
     def random_message(self, lang: str) -> str:
-        pool = self.messages_ru if lang == "ru" else self.messages_en
+        pool = self.messages_ru if (lang or "ru").lower() == "ru" else self.messages_en
         return random.choice(pool) if pool else ""
+
+    def random_warmup(self, lang: str) -> str:
+        pool = self.warmup_ru if (lang or "ru").lower() == "ru" else self.warmup_en
+        return random.choice(pool) if pool else self.random_message(lang)
 
 
 @dataclass(frozen=True)
@@ -166,10 +172,22 @@ def _parse_quick_replies(raw: list) -> list[QuickReply]:
 
 
 def _parse_cta(raw: dict) -> CtaConfig:
+    def filter_texts(items) -> tuple[str, ...]:
+        res = []
+        for t in items or []:
+            ok, reason = check_phrase(str(t))
+            if ok:
+                res.append(str(t))
+            else:
+                logger.warning("Реплика CTA заблокирована цензурой (%s): %s", reason, str(t)[:40])
+        return tuple(res)
+
     return CtaConfig(
-        interval_minutes=int(raw.get("interval_minutes", 4)),
-        messages_ru=tuple(raw.get("messages_ru") or []),
-        messages_en=tuple(raw.get("messages_en") or []),
+        interval_minutes=int(raw.get("interval_minutes", 3)),
+        messages_ru=filter_texts(raw.get("messages_ru")),
+        messages_en=filter_texts(raw.get("messages_en")),
+        warmup_ru=filter_texts(raw.get("warmup_ru")),
+        warmup_en=filter_texts(raw.get("warmup_en")),
     )
 
 

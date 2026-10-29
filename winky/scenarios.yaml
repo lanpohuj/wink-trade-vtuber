@@ -4,7 +4,7 @@
 #   id: уникальный идентификатор
 #   label: название в пульте
 #   icon: эмодзи иконка
-#   emotion: idle | happy | excited | thinking | wink | wave | win
+#   emotion: idle | happy | excited | thinking | wink | wave | win | blush | flirt_kiss | shy
 #   texts_ru: список вариантов на русском (выбирается случайно)
 #   texts_en: список вариантов на английском (выбирается случайно)
 # ============================================================
@@ -15,217 +15,240 @@ quick_replies:
     icon: 👋
     emotion: wave
     texts_ru:
-      - "Привет-привет! Я Винки — неоновая помощница Wink! Рада всех видеть на стриме, сегодня тестируем крутые инструменты!"
-      - "Хей, всем привет! Располагайтесь поудобнее, следите за экраном — сейчас всё покажу!"
+      - "[wave] Привет-привет всем! Я Винки — ваша неоновая соведущая! Рада всех видеть на стриме, сегодня будет жарко!"
+      - "[happy] Хей, чатик, всем огромный приветик! Располагайтесь поудобнее, сегодня ловим самые сочные движения!"
     texts_en:
-      - "Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're testing awesome tools today!"
-      - "Hello friends! Glad to see you all here, keep your eyes on the screen!"
+      - "[wave] Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're catching great moves today!"
+      - "[happy] Hello friends! Glad to see you all here, make yourself comfortable and watch the screen!"
 
   - id: how_to_use
     label: Как пользоваться
     icon: 📖
     emotion: thinking
     texts_ru:
-      - "Всё очень просто! Переходи по ссылочке в шапке профиля, жми старт и следуй короткой инструкции на экране!"
-      - "Инструкция буквально в три шага! Заходи по ссылке в описании профиля, бот всё наглядно покажет за пару минут!"
+      - "[thinking] Всё супер просто: переходишь по ссылочке в шапке профиля, запускаешь бота и следуешь трём шагам на экране! Занимает меньше минуты!"
+      - "[wink] Инструкция на самом деле изи: в шапке профиля закреплена прямая ссылка на бота, он всё наглядно покажет по шагам!"
     texts_en:
-      - "Super easy! Tap the link in the bio, hit start and follow the simple steps on screen!"
-      - "Just three quick steps! Check the link in my profile bio, the assistant will guide you through!"
+      - "[thinking] Super easy: tap the link in bio, start the bot and follow 3 simple steps on screen! Takes under a minute!"
+      - "[wink] Really straightforward: the link in my profile bio guides you step-by-step through the whole setup!"
 
   - id: about_stream
     label: О стриме
     icon: 🎥
     emotion: excited
     texts_ru:
-      - "На этом стриме мы тестируем веб-приложение аналитики в реальном времени! Смотрите на экран — вся статистика как на ладони!"
-      - "В прямом эфире проверяем алгоритмы и смотрим за движением графиков! Задавайте вопросы в чате!"
+      - "[excited] На этом стриме мы тестируем веб-аналитику и смотрим за графиками в реальном времени! Вся статистика прямо перед вами на экране!"
+      - "[happy] Проверяем точность алгоритмов прямо в прямом эфире! Следите за свечами и делитесь мыслями в чате!"
     texts_en:
-      - "On this stream we're testing real-time market analytics live! Check out the screen to see how it works!"
-      - "Live testing our assistant and watching the charts right in front of you! Feel free to ask questions in chat!"
+      - "[excited] On this stream we're testing real-time market analytics live! Check out the screen to see how it works!"
+      - "[happy] Live testing our algorithms and watching the charts in front of you! Share your thoughts in chat!"
 
   - id: cta_bio
     label: Ссылка в био
     icon: 🚀
     emotion: happy
     texts_ru:
-      - "Кстати, все полезные ссылки и доступ к приложению ждут вас прямо в шапке профиля! Не теряйте, заглядывайте!"
-      - "Ребят, не забывайте заглянуть в шапку профиля — там закреплена прямая ссылочка, заходите!"
+      - "[wink] Ребятки, не теряйте: ссылка на веб-приложение закреплена прямо в шапке профиля! Заглядывайте!"
+      - "[happy] Кстати, доступ к инструментам ждёт вас прямо в шапке моего профиля! Переходите и пробуйте сами!"
     texts_en:
-      - "By the way, all helpful links and app access are right in my bio! Check it out!"
-      - "Don't forget to tap the link in the profile bio, guys — everything is waiting there!"
+      - "[wink] Friends, don't miss it: the app link is pinned right in my bio! Check it out!"
+      - "[happy] Access to the tools is waiting in my profile bio! Tap the link and test it out!"
 
   - id: ask_in_chat
     label: Вопросы в чат
     icon: 💬
     emotion: wink
     texts_ru:
-      - "Если у вас есть любые вопросы по приложению или стриму — пишите прямо в чатик, я всё вижу и на всё отвечу!"
-      - "Пишите свои вопросы и мысли в чат! С удовольствием пообщаюсь и подскажу, что к чему!"
+      - "[wink] Если есть любые вопросы или просто хотите поболтать — пишите прямо в чатик, я всё читаю и с удовольствием отвечу!"
+      - "[blush] Не стесняйтесь, пишите в чат! С кем сегодня ещё не успели познакомиться?"
     texts_en:
-      - "Got any questions about the stream or app? Drop them in chat, I see everything and will gladly reply!"
-      - "Feel free to ask anything in the chat, friends! I'm here to chat and help out!"
+      - "[wink] Got questions or just want to chat? Drop a comment, I see everything and will gladly reply!"
+      - "[blush] Don't be shy, say hi in chat! Who haven't I met yet today?"
 
   - id: balance_info
     label: О доступе
     icon: ℹ️
     emotion: thinking
     texts_ru:
-      - "Доступ к веб-приложению совершенно свободный, все подробности расписаны по шагам в боте по ссылке в профиле!"
-      - "Чтобы открыть инструменты, просто выполните пару простых шагов в боте из шапки профиля. Это занимает буквально минуту!"
+      - "[thinking] Доступ к веб-приложению совершенно свободный, все подробности расписаны по шагам в боте по ссылке в профиле!"
+      - "[happy] Чтобы открыть инструменты, просто выполните пару простых шагов в боте из шапки профиля. Это занимает буквально минуту!"
     texts_en:
-      - "Access to the tools is super straightforward, check out the step-by-step guide via the link in bio!"
-      - "To open the app, just complete a couple quick steps in the assistant linked in my profile!"
+      - "[thinking] Access to the tools is super straightforward, check out the step-by-step guide via the link in bio!"
+      - "[happy] To open the app, just complete a couple quick steps in the assistant linked in my profile!"
 
   - id: green_streak
     label: Зелёная серия
     icon: 🔥
-    emotion: happy
+    emotion: win
     texts_ru:
-      - "Ого, посмотрите на эту уверенную серию! Аналитика отрабатывает отлично, графики радуют глаз!"
-      - "Вот это да, отличный результат на экране! Кто успел зайти вместе с нами — красавчики!"
+      - "[excited] Вау, посмотрите на эту уверенную зеленую свечу! Аналитика отработала как по часам, просто кайф!"
+      - "[win] Вот это движение, отличный результат! Кто успел зайти вместе с нами — вы просто красавчики!"
     texts_en:
-      - "Wow, look at that strong green streak! The analytics are on point today, looking beautiful!"
-      - "What a fantastic result on screen! Cheers to everyone watching along!"
+      - "[excited] Wow, look at that strong green candle! Analytics are right on point today, looking beautiful!"
+      - "[win] What a fantastic move on screen! Huge props to everyone watching along!"
 
   - id: smart_pace
     label: Разумный темп
     icon: 🧠
     emotion: thinking
     texts_ru:
-      - "Главное правило на стриме — холодная голова и строгая дисциплина. Никакой спешки, работаем спокойно и системно!"
-      - "Никогда не торопитесь и держите эмоции под контролем! Системный подход всегда побеждает суету."
+      - "[thinking] Главное на стриме — холодная голова и строгая дисциплина. Никакого азарта и суеты, работаем спокойно и системно!"
+      - "[wink] Никогда не спешите и контролируйте эмоции! Тот, кто действует по системе, всегда впереди суеты."
     texts_en:
-      - "The number one rule is discipline and patience! Stay calm and stick to the plan."
-      - "Never rush, guys! A calm, systematic approach always beats emotional impulse."
+      - "[thinking] The number one rule is discipline and patience! Stay calm and stick to the plan."
+      - "[wink] Never rush, guys! A calm, systematic approach always beats emotional impulse."
 
   - id: skeptics_reply
     label: Для сомневающихся
     icon: 🛡️
     emotion: wink
     texts_ru:
-      - "Сомневаться — это абсолютно нормально! Поэтому мы и ведём открытый прямой эфир: смотрите, проверяйте сами вживую!"
-      - "Лучшее доказательство — это открытый эфир и прозрачная статистика на экране. Наблюдайте своими глазами!"
+      - "[wink] Сомневаться — это абсолютно нормально! Поэтому мы и ведём открытый прямой эфир: смотрите своими глазами на экран в реальном времени!"
+      - "[happy] Лучшее доказательство — это открытый график и прямая трансляция. Наблюдайте и делайте выводы сами!"
     texts_en:
-      - "It's totally normal to be skeptical! That's why we stream live — watch and see the transparent results for yourself!"
-      - "The best proof is seeing it live right on your screen. Watch, verify, and decide for yourself!"
+      - "[wink] It's totally normal to be skeptical! That's why we stream live — watch and see the transparent results for yourself!"
+      - "[happy] The best proof is seeing it live right on your screen. Watch, verify, and decide for yourself!"
 
   - id: thanks_likes
     label: Лайки и поддержка
     icon: ❤️
-    emotion: excited
+    emotion: blush
     texts_ru:
-      - "Огромное спасибо за ваши тапы по экрану и сердечки! Вы невероятная аудитория, это заряжает стрим!"
-      - "Спасибо всем за лайки и поддержку стрима! Каждое сердечко помогает алгоритмам продвигать наш эфир!"
+      - "[blush] Огромное спасибо за ваши тапы по экранчику и сердечки! Вы невероятные, стрим просто взлетает в топ!"
+      - "[excited] Спасибо каждому за лайки! Ваши тапы заряжают стрим космической энергией, жмём дальше!"
     texts_en:
-      - "Thank you so much for the likes and screen taps! You guys are amazing, appreciate the support!"
-      - "Huge thanks for all the hearts and likes! You're making this stream shine brighter!"
+      - "[blush] Thank you so much for the likes and screen taps! You guys are amazing, appreciate the love!"
+      - "[excited] Huge thanks for all the hearts! You're making this stream shine so bright!"
 
-# Ротация призывов: Winky сама напоминает про бота каждые N минут
+# Авто-разогрев и CTA: соотношение 4:1 (4 вопроса к чату на 1 напоминание про ассистента)
 cta:
-  interval_minutes: 4
+  interval_minutes: 3
+  # 4 раза из 5: живой разогрев молчащего чата, вопросы к зрителям, вовлечение
+  warmup_ru:
+    - "[excited] Ребятки, признавайтесь в чате, кто из какого города или страны смотрит стрим? Напишите!"
+    - "[wink] Чат, как думаете, пробьём следующий уровень или сейчас будет отскок? Пишите свои мысли!"
+    - "[happy] Кто сегодня уже поймал зелёную свечу вместе с нами — маякните плюсиком в чат!"
+    - "[blush] Обожаю эту музыку на фоне! Кому тоже заходит стрим-вайб — накидайте тапов по экранчику! 🥰"
+    - "[thinking] Ребят, а кто здесь новенький? Поставьте единички в чат, хочу со всеми познакомиться!"
+    - "[excited] Чат, активнее! Давайте добьем следующую красивую цифру лайков прямо сейчас! Вы лучшие!"
+  warmup_en:
+    - "[excited] Friends, drop your city or country in chat! Where are you watching from?"
+    - "[wink] Chat, do you think we will break this level or bounce back? Let me know your thoughts!"
+    - "[happy] Who caught the green streak with us today? Drop a plus in chat!"
+    - "[blush] Love this music in the background! Double tap the screen if you're enjoying the vibes! 🥰"
+    - "[thinking] Any newcomers here today? Type 1 in chat, I want to say hi to you all!"
+    - "[excited] Let's tap the screen and hit the next like goal right now! You guys are awesome!"
+  # 1 раз из 5: деликатное напоминание про ассистента в шапке профиля
   messages_ru:
-    - "Напоминаю: ссылка на ассистента — в шапке профиля! Заходите, пока идёт стрим."
-    - "Ребят, вы ещё не открыли приложение? Ссылка в шапке — ждём вас!"
-    - "Хотите протестировать такие же инструменты, как на экране? Ссылка в шапке профиля!"
-    - "Кстати, доступ к приложению открывается по простым шагам — попробуйте!"
+    - "[happy] Кстати, ребятки, доступ к нашему веб-приложению ждёт вас прямо в шапке профиля! Не теряйте!"
+    - "[wink] Напоминаю: все полезные алгоритмы и наш ассистент закреплены по ссылочке в описании профиля!"
+    - "[happy] Хотите протестировать инструменты сами? Заглядывайте по ссылке в шапке профиля, пока идёт стрим!"
   messages_en:
-    - "Reminder: the assistant link is in the bio! Join while the stream is live."
-    - "Guys, haven't checked the app yet? The link is in the bio!"
-    - "Want to test the same tools you see on screen? Link is in the bio!"
-    - "By the way, app access opens in just a few quick steps — give it a try!"
+    - "[happy] By the way friends, access to our web analytics is waiting right in the bio! Check it out!"
+    - "[wink] Quick reminder: all the tools and our assistant are linked in my profile bio!"
+    - "[happy] Want to test the algorithms yourself? Tap the link in bio while the stream is live!"
 
-# Ответы по ключевым словам (приоритетнее LLM). Универсальные фразы для предкэширования.
+# Ответы по ключевым словам (приоритетнее LLM при прямых вопросах)
 keyword_replies:
   - id: kw_hello
     keywords: ["привет", "хай", "здаров", "добрый", "hello", "hi", "hey", "салют"]
     emotion: happy
-    text_ru: "Привет-привет!! Очень рада тебя видеть!"
-    text_en: "Hey-hey!! So happy you're here!"
+    text_ru: "[wave] Привет-привет!! Очень рада видеть тебя на стриме!"
+    text_en: "[wave] Hey-hey!! So happy to have you on the stream!"
 
   - id: kw_howto
     keywords: ["как польз", "как зарег", "как нач", "как попасть", "how to", "how do i", "how can i"]
     emotion: thinking
-    text_ru: "Всё просто: переходишь по ссылке в шапке профиля, запускаешь бота и следуешь трём коротким шагам. Приложение откроется сразу!"
-    text_en: "Super simple: tap the link in the bio, launch the assistant and follow 3 quick steps. The app opens right away!"
+    text_ru: "[thinking] Всё просто: переходишь по ссылке в шапке профиля, запускаешь бота и следуешь трём коротким шагам. Приложение откроется сразу!"
+    text_en: "[thinking] Super simple: tap the link in bio, launch the assistant and follow 3 quick steps. The app opens right away!"
 
   - id: kw_link
     keywords: ["ссылк", "где бот", "как найти", "link", "where bot", "bio"]
     emotion: excited
-    text_ru: "Ссылка на приложение — прямо в шапке профиля! Заглядывай, пока идёт эфир!"
-    text_en: "The link is right in the bio! Hop in while the stream is live!"
+    text_ru: "[wink] Ссылка на веб-приложение — прямо в шапке профиля! Заглядывай, пока идёт эфир!"
+    text_en: "[wink] The link is right in my bio! Hop in while the stream is live!"
 
   - id: kw_access
     keywords: ["доступ", "сколько нужно", "как открыть", "access", "how much", "cost"]
     emotion: thinking
-    text_ru: "Все детали по доступу расписаны в боте по ссылке в шапке профиля. Это занимает буквально минуту!"
-    text_en: "All access details are laid out in the assistant via the link in bio. Takes just a minute!"
+    text_ru: "[happy] Все детали по доступу расписаны в боте по ссылке в шапке профиля. Это занимает буквально минуту!"
+    text_en: "[happy] All access details are laid out in the assistant via the link in bio. Takes just a minute!"
 
   - id: kw_analytics
     keywords: ["аналитик", "точност", "график", "инструмент", "analytics", "charts", "accuracy"]
     emotion: excited
-    text_ru: "Аналитика обновляется в реальном времени прямо на экране! Следите за графиком!"
-    text_en: "Analytics update in real-time right on the screen! Keep your eyes on the chart!"
+    text_ru: "[excited] Аналитика обновляется в реальном времени прямо на экране! Следи за движением графика!"
+    text_en: "[excited] Analytics update in real-time right on the screen! Keep your eyes on the chart!"
 
   - id: kw_scam
-    keywords: ["скам", "развод", "обман", "фейк", "scam", "fake", "fraud"]
+    keywords: ["скам", "развод", "лохотрон", "фейк", "scam", "fake", "fraud"]
     emotion: wink
-    text_ru: "Понимаю сомнения! Поэтому эфир открытый и живой — смотрите прямо сейчас, всё прозрачно!"
-    text_en: "I hear you! That's why we stream live — watch right now, everything is open and clear!"
+    text_ru: "[wink] Понимаю твои сомнения! Поэтому эфир открытый и живой — смотри прямо сейчас, всё максимально прозрачно!"
+    text_en: "[wink] I understand the skepticism! That's why we stream live — watch right now, everything is open and clear!"
 
   - id: kw_bot
     keywords: ["бот", "bot", "wink", "винк"]
     emotion: happy
-    text_ru: "Всё про ассистента — в шапке профиля! Жми ссылку и залетай!"
-    text_en: "Everything about the assistant is in the bio! Tap the link and join in!"
+    text_ru: "[happy] Всё про нашего ассистента — в шапке профиля! Жми ссылку и присоединяйся!"
+    text_en: "[happy] Everything about the assistant is in my bio! Tap the link and join in!"
 
-# Приветствия новых зрителей (событие входа в эфир).
+# Приветствия новых зрителей (событие входа в эфир)
 greetings:
   ru:
-    - "О, {user}, приветик! Рада тебя видеть!"
-    - "Хей, {user}, добро пожаловать! Располагайся, сейчас будет интересно!"
-    - "{user}, привет! Залетай к нам, устраивайся поудобнее!"
+    - "[wave] О, {user}, приветик! Рада тебя видеть на стриме!"
+    - "[happy] Хей, {user}, добро пожаловать! Располагайся, сейчас самое интересное!"
+    - "[wink] {user}, привет! Залетай к нам, устраивайся поудобнее!"
+    - "[excited] {user}, салют! Ты как раз вовремя, смотри на график!"
   en:
-    - "Hey {user}, welcome to the stream! So happy you're here!"
-    - "Welcome {user}! Glad to have you on the live stream!"
-    - "Hi {user}! Welcome to the stream!"
+    - "[wave] Hey {user}, welcome to the stream! So happy you're here!"
+    - "[happy] Welcome {user}! Glad to have you on the live stream!"
+    - "[wink] Hi {user}! You joined at the perfect moment, enjoy the stream!"
 
-# Благодарности за подписки.
+# Благодарности за подписки
 follows:
   ru:
-    - "{user}, спасибо за подписку! Танцую для тебя! Ссылка на бота в шапке профиля!"
-    - "Ура, {user}, добро пожаловать в семью! Лови мой фирменный танец!"
+    - "[excited] {user}, спасибо за подписку! Танцую для тебя! Добро пожаловать в нашу банду!"
+    - "[happy] Ура, {user}, добро пожаловать в семью! Лови мой фирменный танец!"
+    - "[blush] {user}, спасибо огромное за фоллоу! Танцую победный танец!"
+    - "[wink] {user}, плюс один крутой человек на стриме! Танцую для тебя!"
   en:
-    - "Wow {user}, thank you for following! Dancing just for you! Check the link in bio!"
-    - "Welcome {user}! Thank you for following, enjoy my dance!"
+    - "[excited] Wow {user}, thank you for following! Dancing just for you!"
+    - "[happy] Welcome {user}! Thank you for following, enjoy my dance!"
+    - "[blush] {user}, thank you so much! Dancing just for you!"
 
-# Благодарности за подарки.
+# Благодарности за подарки
 gift_thanks:
   ru:
-    - "Ого, {user}, огромное спасибо за {gift}! Ты просто супер! Лови мой танец!"
-    - "Вау, {user}, какой подарок! {gift} — это супер мило! Танцую для тебя!"
-    - "{user}, спасибо за {gift}! Ты делаешь этот стрим ярче!"
+    - "[excited] Ого, {user}, огромное спасибо за {gift}! Ты просто супер! Лови мой танец!"
+    - "[blush] Вау, {user}, какой подарок! {gift} — это супер мило! Танцую для тебя!"
+    - "[excited] {user}, спасибо за {gift}! Ты делаешь этот стрим ярче! Танцую!"
+    - "[happy] {user}, спасибо за такую щедрость! {gift} заряжает стрим на все сто!"
   en:
-    - "Wow {user}, huge thanks for the {gift}!! You are amazing!"
-    - "Thank you so much {user} for the {gift}! Dancing just for you!"
-    - "Thanks {user} for the {gift}! You make the stream brighter!"
+    - "[excited] Wow {user}, huge thanks for the {gift}!! You are amazing!"
+    - "[blush] Thank you so much {user} for the {gift}! Dancing just for you!"
+    - "[happy] Thanks {user} for the {gift}! You make the stream brighter!"
 
-# Благодарности за лайки (тапы по экрану).
+# Благодарности за лайки (тапы по экрану)
 likes:
   ru:
-    - "{user}, спасибо огромное за лайки! Лови сердечко!"
-    - "Ого, сколько лайков от {user}! Спасибо большое, ты лучший!"
-    - "{user}, спасибо за активность и поддержку стрима!"
+    - "[happy] {user}, спасибо огромное за лайки! Лови сердечко!"
+    - "[excited] Ого, сколько лайков от {user}! Спасибо большое, ты лучший!"
+    - "[wink] {user}, спасибо за активность и тапы! Это очень сильно помогает стриму!"
+    - "[blush] {user}, твои пальчики творят чудеса! Спасибо за тапы по экрану!"
   en:
-    - "{user}, thank you so much for the likes! Sending love!"
-    - "Wow {user}, thanks for tapping the screen! You're awesome!"
+    - "[happy] {user}, thank you so much for the likes! Sending love!"
+    - "[excited] Wow {user}, thanks for tapping the screen! You're awesome!"
+    - "[blush] {user}, appreciate all the hearts and support!"
 
-# Фолбэки: LLM недоступен или лимит — общий живой ответ.
+# Живые фолбэки: когда LLM недоступен или лимит (НИКАКОГО СПАМА В ШАПКУ ПРОФИЛЯ!)
 fallbacks:
   ru:
-    - "Хороший вопрос! Всё по шагам расскажет бот — ссылка в шапке!"
-    - "Слышу тебя! Все подробности — в шапке профиля, залетай!"
-    - "Отличный вопрос! Смотри на экран — сейчас всё покажу!"
+    - "[happy] Ух, чатик сегодня летит так быстро, что я едва успеваю читать! Кто согласен — накидайте тапов!"
+    - "[wink] Классная мысль! Чат, а вы что думаете по этому поводу? Напишите свои мысли в комменты!"
+    - "[excited] Ого, интересная тема! Ребятки в чате, кто тоже так считает — ставьте плюсики!"
+    - "[thinking] Смотрю сейчас прямо на свечу на графике, движение очень интересное! Следите за экраном!"
   en:
-    - "Great question! The assistant explains everything — link in the bio!"
-    - "I hear you! Details are in the bio, hop in!"
-    - "Nice one! Watch the screen — I'll show you everything!"
+    - "[happy] Wow, the chat is moving so fast right now! Tap the screen if you agree!"
+    - "[wink] Great thought! Chat, what do you think about that? Drop your opinion!"
+    - "[excited] That's super interesting! Drop a plus in chat if you feel the same way!"
+    - "[thinking] Keeping my eyes on this chart setup right now, looking very interesting!"

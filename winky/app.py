@@ -60,6 +60,7 @@ class WinkyAPI:
         self._tiktok: TikTokConnector | None = None
         self._tiktok_status = "off"
         self._chat_history: list[dict] = []
+        self._stream_interaction_count = 0
 
     # ---------- окна подключаются после создания ----------
 
@@ -322,11 +323,20 @@ class WinkyAPI:
         self._cta_enabled = bool(enabled)
 
     def repeat_cta(self) -> bool:
-        message = self._book.cta.random_message(CTA_LANG)
+        lang = self._chat_router.default_stream_lang if self._chat_router else "ru"
+        message = self._book.cta.random_message(lang)
         if not message:
             return False
         self._last_cta_at = monotonic()
-        return self._controller.speak(message, CTA_LANG, "happy", source="cta")
+        return self._controller.speak(message, lang, "happy", source="cta")
+
+    def set_stream_lang(self, lang: str) -> str:
+        """Переключает язык стрима по умолчанию (ru / en)."""
+        target = "en" if (lang or "").lower() == "en" else "ru"
+        if self._chat_router:
+            self._chat_router.set_stream_lang(target)
+        self.push_status()
+        return target
 
     def on_speech_finished(self) -> None:
         self._controller.finish_current()
@@ -358,6 +368,7 @@ class WinkyAPI:
             ],
             "cta_interval_minutes": self._book.cta.interval_minutes,
             "cta_enabled": self._cta_enabled,
+            "stream_lang": self._chat_router.default_stream_lang if self._chat_router else "ru",
             "lumean": self._controller.get_lumean_settings(),
             "chat": {
                 "tiktok_status": self._tiktok_status if self._tiktok else "off",
@@ -509,10 +520,28 @@ class WinkyAPI:
     def maybe_say_cta(self) -> None:
         if not self._cta_enabled or self._controller.paused or self._controller.speaking:
             return
+        if self._controller.queue_size() > 0:
+            return
         interval = self._book.cta.interval_minutes * 60
         if monotonic() - self._last_cta_at < interval:
             return
-        self.repeat_cta()
+
+        lang = self._chat_router.default_stream_lang if self._chat_router else "ru"
+        self._stream_interaction_count += 1
+
+        # Соотношение 4:1 — 4 раза интерактив/разогрев молчащего чата, 1 раз — напоминание про ассистента
+        if self._stream_interaction_count % 5 == 0:
+            message = self._book.cta.random_message(lang)
+            emotion = "happy"
+        else:
+            message = self._book.cta.random_warmup(lang)
+            emotion = "wink"
+
+        if not message:
+            return
+
+        self._last_cta_at = monotonic()
+        self._controller.speak(message, lang=lang, emotion=emotion, source="stream_warmup")
 
     # ---------- уведомления JS ----------
 

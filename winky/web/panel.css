@@ -917,3 +917,45 @@ input:focus {
   background: var(--green-bright);
   box-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
 }
+
+/* Переключатель языка эфира */
+.stream-lang-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stream-lang-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.lang-toggle-btn {
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--dim);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.lang-toggle-btn.active {
+  background: rgba(46, 189, 133, 0.25);
+  border-color: var(--green-bright);
+  color: var(--green-bright);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.25);
+}
+

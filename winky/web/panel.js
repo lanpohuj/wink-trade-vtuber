@@ -65,6 +65,8 @@ const manualSaveRuBtn = document.getElementById("manualSaveRuBtn");
 const manualSaveEnBtn = document.getElementById("manualSaveEnBtn");
 const voiceStatusHint = document.getElementById("voiceStatusHint");
 const simLang = document.getElementById("simLang");
+const streamLangRuBtn = document.getElementById("streamLangRuBtn");
+const streamLangEnBtn = document.getElementById("streamLangEnBtn");
 
 const PROVIDER_INFO = {
   elevenlabs: { icon: "🔥", name: "ElevenLabs", badgeClass: "badge-elevenlabs" },
@@ -164,6 +166,9 @@ function renderStatus(status) {
       if (manualProviderSelect) manualProviderSelect.value = status.lumean.ru_service || "fishaudio";
       manualVoiceId.value = status.lumean.ru_voice_id || "";
     }
+  }
+  if (status.stream_lang) {
+    updateStreamLangUI(status.stream_lang);
   }
   renderChatState(status.chat);
 
@@ -710,6 +715,25 @@ clearQueueBtn?.addEventListener("click", async () => {
 
 simQuestion.addEventListener("keydown", (event) => {
   if (event.key === "Enter") simAsk.click();
+});
+
+function updateStreamLangUI(lang) {
+  const isRu = (lang || "ru").toLowerCase() === "ru";
+  if (streamLangRuBtn) streamLangRuBtn.classList.toggle("active", isRu);
+  if (streamLangEnBtn) streamLangEnBtn.classList.toggle("active", !isRu);
+  if (simLang) simLang.value = isRu ? "ru" : "en";
+}
+
+streamLangRuBtn?.addEventListener("click", async () => {
+  await api()?.set_stream_lang("ru");
+  updateStreamLangUI("ru");
+  showVoiceStatusHint("Язык эфира переключен на RU 🇷🇺");
+});
+
+streamLangEnBtn?.addEventListener("click", async () => {
+  await api()?.set_stream_lang("en");
+  updateStreamLangUI("en");
+  showVoiceStatusHint("Язык эфира переключен на EN 🇬🇧");
 });
 
 /* ==================== Хоткеи пульта ==================== */
