@@ -323,6 +323,7 @@ class ShibahuFBXController {
     const actionMode = this.actionMode;
     const actionDuration = this.actionDuration;
     const actionTimer = this.actionTimer;
+    const isPhonating = this.smoothedRms > 0.03;
 
     const activeEmotion = this.waveTimer > 0
       ? "wave"
@@ -518,20 +519,43 @@ class ShibahuFBXController {
       this.lerpBoneOffset("Shibahu_LeftHand", 0.0, 0.0, 0.0, dt, 6.0);
       this.setFingerRotations("Left", -0.20 + Math.sin(t * 1.8) * 0.04, dt);
 
-    } else if (this.actionMode === "dance") {
-      // БЛОК 3: ТАНЕЦ НА ПОДПИСКУ (dance) — руки на уровне груди, ритмичные предплечья
+    } else if (actionMode === "dance") {
       const beat = t * 6.8;
-      this.lerpBoneOffset("Shibahu_RightArm", -0.30, 0.20, 0.16 + Math.sin(beat) * 0.04, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_RightForeArm", 0.0, -1.35 + Math.sin(beat) * 0.30, 0.0, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_RightHand", 0.0, Math.cos(beat) * 0.22, 0.0, dt, 12.0);
+      const bSin = Math.sin(beat);
+      const bCos = Math.cos(beat);
 
-      this.lerpBoneOffset("Shibahu_LeftArm", -0.30, -0.20, 0.16 - Math.sin(beat) * 0.04, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_LeftForeArm", 0.0, -1.35 - Math.sin(beat) * 0.30, 0.0, dt, 10.0);
-      this.lerpBoneOffset("Shibahu_LeftHand", 0.0, -Math.cos(beat) * 0.22, 0.0, dt, 12.0);
+      // Эмоция лица в танце: сияющие открытые глаза, румянец и улыбка
+      smoothSetMorph("facial_cheek", 0.90, dt, 10.0);
+      smoothSetMorph("facial_irisHilight_Big", 1.0, dt, 10.0);
+      if (!isPhonating) {
+        smoothSetMorph("face_mesh1",   0.85, dt, 12.0);
+        smoothSetMorph("face_mesh3",   0.0,  dt, 12.0);
+        smoothSetMorph("face_mesh9",   0.0,  dt, 12.0);
+        smoothSetMorph("face_mesh4_2", 0.0,  dt, 12.0);
+      }
 
-      const fingerCurl = -0.20 + Math.sin(beat) * 0.06;
-      this.setFingerRotations("Right", fingerCurl, dt);
-      this.setFingerRotations("Left", fingerCurl, dt);
+      // Бедра, корпус, плечи и голова:
+      lerpBoneOffset(bones.Hips,   "Shibahu_Hips",   Math.abs(bSin) * 0.03, Math.sin(beat * 0.5) * 0.09, bSin * 0.12, dt, 8.0);
+      lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", 0.03, -Math.sin(beat * 0.5) * 0.04, -bSin * 0.06, dt, 8.0);
+      lerpBoneOffset(bones.Spine2, "Shibahu_Spine2", 0.02, 0.0, -bSin * 0.05, dt, 8.0);
+      lerpBoneOffset(bones.Head,   "Shibahu_Head",   Math.abs(bCos) * 0.05 - 0.02, Math.sin(beat * 0.5) * 0.06, Math.sin(beat * 0.5) * 0.12, dt, 8.0);
+
+      lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.06 - bSin * 0.06, dt, 8.0);
+      lerpBoneOffset(bones.LeftShoulder,  "Shibahu_LeftShoulder",  0.0, 0.0, 0.06 + bSin * 0.06, dt, 8.0);
+
+      // Правая рука компактно перед грудью (Elbow X = -16.5, Wrist X = -15.1, Tip X = -14.4 — НЕ вылезает за рамку!):
+      lerpBoneOffset(bones.RightArm,     "Shibahu_RightArm",     -0.35, -0.25, -0.05, dt, 8.0);
+      lerpBoneOffset(bones.RightForeArm, "Shibahu_RightForeArm", 1.35, -0.45, 1.65 + 0.18 * bSin, dt, 9.0);
+      lerpBoneOffset(bones.RightHand,    "Shibahu_RightHand",    0.0, 0.15 * bCos, -0.25, dt, 10.0);
+
+      // Левая рука симметрично перед грудью (Elbow X = +13.3, Wrist X = +15.5, Tip X = +16.6):
+      lerpBoneOffset(bones.LeftArm,      "Shibahu_LeftArm",      -0.35, 0.10, -0.15, dt, 8.0);
+      lerpBoneOffset(bones.LeftForeArm,  "Shibahu_LeftForeArm",  1.60, -0.45, 1.65 - 0.18 * bSin, dt, 9.0);
+      lerpBoneOffset(bones.LeftHand,     "Shibahu_LeftHand",     0.0, -0.15 * bCos, -0.25, dt, 10.0);
+
+      // Мягко согнутые пальчики в танце:
+      rightFingerBones.forEach((fBone) => lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, -0.25, dt, 9.0));
+      leftFingerBones.forEach((fBone)  => lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, -0.25, dt, 9.0));
 
     } else if (this.actionMode === "cheer") {
       // БЛОК 3: ПОБЕДНАЯ РАДОСТЬ (cheer / win) — обе руки радостно вскинуты вверх с раскрытыми ладонями
@@ -564,7 +588,7 @@ class ShibahuFBXController {
       // Эмоция лица: в Фазе 1 — губки бантиком «О» для поцелуя, в Фазе 2 — сияющая открытая улыбка!
       smoothSetMorph("facial_cheek", 1.0, dt, 12.0);
       smoothSetMorph("facial_irisHilight_Big", 1.0, dt, 12.0);
-      if (!isSpeaking) {
+      if (!isPhonating) {
         smoothSetMorph("face_mesh9",   kissPhase1 ? 0.85 : 0.0,  dt, 14.0);
         smoothSetMorph("face_mesh1",   kissPhase1 ? 0.0  : 0.88, dt, 14.0);
         smoothSetMorph("face_mesh3",   0.0, dt, 12.0);
@@ -572,42 +596,39 @@ class ShibahuFBXController {
       }
 
       if (kissPhase1) {
-        // ФАЗА 1: Кончики пальцев правой руки прикасаются прямо к губам (X = -0.3, Y = 136.6, Z = +12.3)
+        // ФАЗА 1 (Без перекрута рукава! tz = 0.0 на предплечье):
+        // Ладошка повернута внутренней стороной к губам (PalmN.z = -0.60), большой палец снаружи (Thumb.x = -0.55)
         lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.08, dt, 8.0);
-        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.80, 0.10, -0.38, dt, 8.0);
-        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  2.00, 0.20, 2.27, dt, 9.0);
-        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     0.15, 0.0, 0.0, dt, 10.0);
+        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.90, -0.75, -0.45, dt, 8.0);
+        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  -0.45, -2.12, 0.0, dt, 9.0);
+        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     -0.40, 0.25, -0.20, dt, 10.0);
 
-        // Пальчики изящно вытянуты к губам:
+        // Пальчики мягко вытянуты к губам:
         rightFingerBones.forEach((fBone) => {
           lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, 0.08, dt, 9.0);
         });
 
-        // Кокетливый наклон головы и легкий прогиб корпуса:
         lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", -0.02, 0.0, -0.04, dt, 6.0);
-        lerpBoneOffset(bones.Head,   "Shibahu_Head",   0.06, 0.06, -0.14, dt, 7.0);
+        lerpBoneOffset(bones.Head,   "Shibahu_Head",   0.06, 0.05, -0.13, dt, 7.0);
       } else {
-        // ФАЗА 2: Выдувает поцелуй ВПЕРЕД к камере (X = -10.5, Y = 124, Z = +26.2 — строго внутри окна!)
-        const flutter = Math.sin(t * 7.0) * 0.05;
-        lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.10, dt, 7.0);
-        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.75, 0.15, -0.20, dt, 7.0);
-        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  1.85, -0.25 + flutter, 1.90, dt, 8.0);
-        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     -0.35, flutter * 1.5, 0.0, dt, 9.0);
+        // ФАЗА 2: Отводит ладошку от губ вперед к зрителю (Wrist X = -8.0, Y = 121, Z = +30.0 — без выворачивания кисти!)
+        const flutter = Math.sin(t * 7.0) * 0.04;
+        lerpBoneOffset(bones.RightShoulder, "Shibahu_RightShoulder", 0.0, 0.0, 0.08, dt, 7.0);
+        lerpBoneOffset(bones.RightArm,      "Shibahu_RightArm",      -0.75, -0.45, -0.30, dt, 7.0);
+        lerpBoneOffset(bones.RightForeArm,  "Shibahu_RightForeArm",  -0.35, -1.65 + flutter, 0.0, dt, 8.0);
+        lerpBoneOffset(bones.RightHand,     "Shibahu_RightHand",     -0.45, 0.15, -0.35 + flutter, dt, 9.0);
 
-        // Ладошка раскрыта вперед:
         rightFingerBones.forEach((fBone, idx) => {
-          lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, 0.10 + Math.sin(t * 7.0 + idx * 0.3) * 0.03, dt, 9.0);
+          lerpBoneOffset(fBone, fBone.name, 0.0, 0.0, 0.12 + Math.sin(t * 7.0 + idx * 0.3) * 0.03, dt, 9.0);
         });
 
-        // Корпус подается вперед к зрителю, бедра игриво качаются:
-        lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", 0.06, 0.0, 0.03, dt, 6.0);
-        lerpBoneOffset(bones.Hips,   "Shibahu_Hips",   0.02, 0.05, 0.08, dt, 6.0);
-        lerpBoneOffset(bones.Head,   "Shibahu_Head",   -0.04, -0.04, 0.10, dt, 7.0);
+        lerpBoneOffset(bones.Spine1, "Shibahu_Spine1", 0.05, 0.0, 0.03, dt, 6.0);
+        lerpBoneOffset(bones.Hips,   "Shibahu_Hips",   0.02, 0.04, 0.07, dt, 6.0);
+        lerpBoneOffset(bones.Head,   "Shibahu_Head",   -0.03, -0.03, 0.09, dt, 7.0);
       }
 
-      // Левая рука остается в изящной позе снаружи у бедра:
-      lerpBoneOffset(bones.LeftArm,     "Shibahu_LeftArm",     0.0, -0.05, 0.05, dt, 7.0);
-      lerpBoneOffset(bones.LeftForeArm, "Shibahu_LeftForeArm", 0.0, -0.30, 0.0, dt, 7.0);
+      lerpBoneOffset(bones.LeftArm,     "Shibahu_LeftArm",     0.0, -0.04, 0.04, dt, 7.0);
+      lerpBoneOffset(bones.LeftForeArm, "Shibahu_LeftForeArm", 0.0, -0.25, 0.0, dt, 7.0);
 
     } else if (actionMode === "neko_paws") {
       const p = Math.sin(t * 6.8); // Поочередный мах правой и левой лапкой у щечек (-1 .. +1)
