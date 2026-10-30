@@ -134,9 +134,25 @@ class Settings(BaseSettings):
         default="Марин китагава",
         description="Отображаемое имя голоса (fallback)",
     )
+    LUMEAN_RU_TEMPLATE_ID: str = Field(
+        default="",
+        description="ID шаблона TTS в Lumean для русского слота",
+    )
+    LUMEAN_EN_TEMPLATE_ID: str = Field(
+        default="",
+        description="ID шаблона TTS в Lumean для английского слота",
+    )
     LUMEAN_TEMPLATE_ID: str = Field(
         default="",
         description="ID шаблона TTS в Lumean (создаётся и обновляется автоматически)",
+    )
+    LUMEAN_BREATHING_PAUSES: bool = Field(
+        default=True,
+        description="Включить естественные дыхательные микро-паузы ({{pause=0.2}})",
+    )
+    LUMEAN_SPEED: float = Field(
+        default=1.06,
+        description="Скорость речи Winky по умолчанию",
     )
     ELEVENLABS_API_KEY: str = Field(
         default="",

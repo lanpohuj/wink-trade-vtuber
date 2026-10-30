@@ -68,6 +68,39 @@ const simLang = document.getElementById("simLang");
 const streamLangRuBtn = document.getElementById("streamLangRuBtn");
 const streamLangEnBtn = document.getElementById("streamLangEnBtn");
 
+// Элементы синхронизации шаблонов Lumean
+const refreshTemplatesBtn = document.getElementById("refreshTemplatesBtn");
+const userTemplatesSelect = document.getElementById("userTemplatesSelect");
+const applyTemplateRuBtn = document.getElementById("applyTemplateRuBtn");
+const applyTemplateEnBtn = document.getElementById("applyTemplateEnBtn");
+
+// Элементы Студии тонкой настройки живости голоса
+const applyLivePresetBtn = document.getElementById("applyLivePresetBtn");
+const tuneSlotRuBtn = document.getElementById("tuneSlotRuBtn");
+const tuneSlotEnBtn = document.getElementById("tuneSlotEnBtn");
+const tuneModelSelect = document.getElementById("tuneModelSelect");
+const tuneLatencyRow = document.getElementById("tuneLatencyRow");
+const tuneLatencySelect = document.getElementById("tuneLatencySelect");
+const tuneSpeedSlider = document.getElementById("tuneSpeedSlider");
+const tuneSpeedValue = document.getElementById("tuneSpeedValue");
+const tuneStabilityRow = document.getElementById("tuneStabilityRow");
+const tuneStabilityLabel = document.getElementById("tuneStabilityLabel");
+const tuneStabilitySlider = document.getElementById("tuneStabilitySlider");
+const tuneStabilityValue = document.getElementById("tuneStabilityValue");
+const tuneStyleRow = document.getElementById("tuneStyleRow");
+const tuneStyleSlider = document.getElementById("tuneStyleSlider");
+const tuneStyleValue = document.getElementById("tuneStyleValue");
+const tuneSimilarityRow = document.getElementById("tuneSimilarityRow");
+const tuneSimilaritySlider = document.getElementById("tuneSimilaritySlider");
+const tuneSimilarityValue = document.getElementById("tuneSimilarityValue");
+const sampleRatePills = document.querySelectorAll(".sample-rate-pills .pill-btn");
+const tuneNormalizeText = document.getElementById("tuneNormalizeText");
+const tuneNormalizeVolume = document.getElementById("tuneNormalizeVolume");
+const tuneBreathingPauses = document.getElementById("tuneBreathingPauses");
+const saveTuningBtn = document.getElementById("saveTuningBtn");
+const testTunedBtn = document.getElementById("testTunedBtn");
+const rewarmTunedBtn = document.getElementById("rewarmTunedBtn");
+
 const PROVIDER_INFO = {
   elevenlabs: { icon: "🔥", name: "ElevenLabs", badgeClass: "badge-elevenlabs" },
   fishaudio: { icon: "🐟", name: "Fish Audio", badgeClass: "badge-fishaudio" },
@@ -79,6 +112,10 @@ let currentPreviewAudio = null;
 let currentPreviewBtn = null;
 let currentActiveRu = { service: "fishaudio", id: "1db1618b6eaf4571ac7db70e20eb6727", name: "Марин китагава" };
 let currentActiveEn = { service: "fishaudio", id: "e34c486929524d41b88646b4ac2f382f", name: "Venti" };
+let activeTuningSlot = "ru";
+let currentTuningData = { ru: {}, en: {} };
+let userTemplatesList = [];
+let currentSampleRate = 44100;
 
 function api() {
   return window.pywebview?.api;
@@ -162,6 +199,8 @@ function renderStatus(status) {
   if (status.lumean) {
     updateActiveVoiceDisplay("ru", status.lumean.ru_service, status.lumean.ru_voice_id, status.lumean.ru_voice_name);
     updateActiveVoiceDisplay("en", status.lumean.en_service, status.lumean.en_voice_id, status.lumean.en_voice_name);
+    if (status.lumean.ru_tuning) currentTuningData.ru = status.lumean.ru_tuning;
+    if (status.lumean.en_tuning) currentTuningData.en = status.lumean.en_tuning;
     if (manualVoiceId && !manualVoiceId.value) {
       if (manualProviderSelect) manualProviderSelect.value = status.lumean.ru_service || "fishaudio";
       manualVoiceId.value = status.lumean.ru_voice_id || "";
@@ -569,6 +608,323 @@ manualSaveEnBtn?.addEventListener("click", async () => {
   }
 });
 
+/* ==================== Студия тонкой настройки живости и шаблонов Lumean ==================== */
+
+async function loadUserTemplates(force = false) {
+  if (!userTemplatesSelect) return;
+  userTemplatesSelect.innerHTML = '<option value="">⏳ Загрузка шаблонов с lumean.app/template...</option>';
+  try {
+    const list = await api()?.list_user_templates();
+    userTemplatesList = Array.isArray(list) ? list : [];
+    userTemplatesSelect.innerHTML = "";
+    if (userTemplatesList.length === 0) {
+      userTemplatesSelect.innerHTML = '<option value="">Шаблоны не найдены в аккаунте Lumean</option>';
+      return;
+    }
+    const currentRuTpl = currentTuningData.ru?.template_id || "";
+    const currentEnTpl = currentTuningData.en?.template_id || "";
+
+    for (const tpl of userTemplatesList) {
+      const opt = document.createElement("option");
+      opt.value = tpl.id;
+      opt.dataset.service = tpl.service_key || "";
+      opt.dataset.voice = tpl.voice_id || "";
+      let mark = "";
+      if (tpl.id === currentRuTpl) mark += " [🇷🇺 RU]";
+      if (tpl.id === currentEnTpl) mark += " [🇬🇧 EN]";
+      opt.textContent = `${tpl.name || 'Шаблон'} (${tpl.service_key || 'tts'}) — ${tpl.id.slice(0, 8)}...${mark}`;
+      userTemplatesSelect.appendChild(opt);
+    }
+  } catch (err) {
+    console.error("Load templates error:", err);
+    userTemplatesSelect.innerHTML = '<option value="">Ошибка загрузки шаблонов</option>';
+  }
+}
+
+function selectTuningSlot(slot) {
+  activeTuningSlot = slot;
+  tuneSlotRuBtn?.classList.toggle("active", slot === "ru");
+  tuneSlotEnBtn?.classList.toggle("active", slot === "en");
+  renderTuningUI(slot);
+}
+
+function renderTuningUI(slot) {
+  const tuning = (slot === "ru" ? currentTuningData.ru : currentTuningData.en) || {};
+  const activeVoice = slot === "ru" ? currentActiveRu : currentActiveEn;
+  const serviceKey = (tuning.service_key || activeVoice.service || "fishaudio").toLowerCase();
+
+  // 1. Модели и доступные контролы в зависимости от провайдера
+  if (tuneModelSelect) {
+    tuneModelSelect.innerHTML = "";
+    if (serviceKey === "fishaudio") {
+      const models = [
+        { id: "s2.1-pro", label: "s2.1-pro (Флагман, макс. живость)" },
+        { id: "s2.1", label: "s2.1 (Сбалансированная)" },
+        { id: "s1", label: "s1 (Базовая)" },
+      ];
+      for (const m of models) {
+        const opt = document.createElement("option");
+        opt.value = m.id;
+        opt.textContent = m.label;
+        if (tuning.model_id === m.id || (!tuning.model_id && m.id === "s2.1-pro")) {
+          opt.selected = true;
+        }
+        tuneModelSelect.appendChild(opt);
+      }
+      if (tuneLatencyRow) tuneLatencyRow.hidden = false;
+      if (tuneLatencySelect) tuneLatencySelect.value = tuning.latency || "normal";
+      if (tuneStyleRow) tuneStyleRow.hidden = true;
+      if (tuneSimilarityRow) tuneSimilarityRow.hidden = true;
+      if (tuneStabilityLabel) tuneStabilityLabel.textContent = "🎭 Вариативность (Температура)";
+      if (tuneStabilitySlider) {
+        const tempVal = tuning.temperature !== undefined ? Math.round(tuning.temperature * 100) : 82;
+        tuneStabilitySlider.value = tempVal;
+        if (tuneStabilityValue) tuneStabilityValue.textContent = (tempVal / 100).toFixed(2);
+      }
+    } else if (serviceKey === "elevenlabs") {
+      const models = [
+        { id: "eleven_multilingual_v2", label: "eleven_multilingual_v2 (Мультиязычная v2)" },
+        { id: "eleven_turbo_v2_5", label: "eleven_turbo_v2_5 (Быстрая Turbo)" },
+        { id: "eleven_flash_v2_5", label: "eleven_flash_v2_5 (Мгновенная Flash)" },
+      ];
+      for (const m of models) {
+        const opt = document.createElement("option");
+        opt.value = m.id;
+        opt.textContent = m.label;
+        if (tuning.model_id === m.id || (!tuning.model_id && m.id === "eleven_multilingual_v2")) {
+          opt.selected = true;
+        }
+        tuneModelSelect.appendChild(opt);
+      }
+      if (tuneLatencyRow) tuneLatencyRow.hidden = true;
+      if (tuneStyleRow) tuneStyleRow.hidden = false;
+      if (tuneSimilarityRow) tuneSimilarityRow.hidden = false;
+      if (tuneStabilityLabel) tuneStabilityLabel.textContent = "🎭 Стабильность / Эмоции";
+      if (tuneStabilitySlider) {
+        const stabVal = tuning.stability !== undefined ? Math.round(tuning.stability * 100) : 38;
+        tuneStabilitySlider.value = stabVal;
+        if (tuneStabilityValue) tuneStabilityValue.textContent = (stabVal / 100).toFixed(2);
+      }
+      if (tuneStyleSlider) {
+        const styleVal = tuning.style !== undefined ? Math.round(tuning.style * 100) : 42;
+        tuneStyleSlider.value = styleVal;
+        if (tuneStyleValue) tuneStyleValue.textContent = (styleVal / 100).toFixed(2);
+      }
+      if (tuneSimilaritySlider) {
+        const simVal = tuning.similarity_boost !== undefined ? Math.round(tuning.similarity_boost * 100) : 82;
+        tuneSimilaritySlider.value = simVal;
+        if (tuneSimilarityValue) tuneSimilarityValue.textContent = (simVal / 100).toFixed(2);
+      }
+    } else {
+      const opt = document.createElement("option");
+      opt.value = tuning.model_id || "default";
+      opt.textContent = tuning.model_id || "По умолчанию";
+      tuneModelSelect.appendChild(opt);
+      if (tuneLatencyRow) tuneLatencyRow.hidden = true;
+      if (tuneStyleRow) tuneStyleRow.hidden = true;
+      if (tuneSimilarityRow) tuneSimilarityRow.hidden = true;
+    }
+  }
+
+  // 2. Темп речи
+  const speed = tuning.speed !== undefined ? Number(tuning.speed) : 1.06;
+  if (tuneSpeedSlider) {
+    tuneSpeedSlider.value = Math.round(speed * 100);
+    if (tuneSpeedValue) tuneSpeedValue.textContent = speed.toFixed(2) + "x";
+  }
+
+  // 3. Частота дискретизации (Sample Rate pills)
+  const srate = tuning.sample_rate || 44100;
+  currentSampleRate = srate;
+  sampleRatePills.forEach((btn) => {
+    btn.classList.toggle("active", Number(btn.dataset.srate) === srate);
+  });
+
+  // 4. Чекбоксы
+  if (tuneNormalizeText) tuneNormalizeText.checked = tuning.normalize_text !== false;
+  if (tuneNormalizeVolume) tuneNormalizeVolume.checked = tuning.normalize_volume !== false;
+  if (tuneBreathingPauses) tuneBreathingPauses.checked = tuning.breathing_pauses !== false;
+}
+
+function collectTuningForm() {
+  const activeVoice = activeTuningSlot === "ru" ? currentActiveRu : currentActiveEn;
+  const serviceKey = activeVoice.service || "fishaudio";
+  const speed = Number(tuneSpeedSlider?.value || 106) / 100;
+  const normalize_text = Boolean(tuneNormalizeText?.checked);
+  const normalize_volume = Boolean(tuneNormalizeVolume?.checked);
+  const breathing_pauses = Boolean(tuneBreathingPauses?.checked);
+  const model_id = tuneModelSelect?.value || "";
+
+  const payload = {
+    service_key: serviceKey,
+    model_id: model_id,
+    speed: speed,
+    sample_rate: currentSampleRate,
+    normalize_text: normalize_text,
+    normalize_volume: normalize_volume,
+    breathing_pauses: breathing_pauses,
+    audio_quality: "high",
+  };
+
+  if (serviceKey === "fishaudio") {
+    payload.latency = tuneLatencySelect?.value || "normal";
+    payload.temperature = Number(tuneStabilitySlider?.value || 82) / 100;
+  } else if (serviceKey === "elevenlabs") {
+    payload.advanced_voice_settings = true;
+    payload.stability = Number(tuneStabilitySlider?.value || 38) / 100;
+    payload.style = Number(tuneStyleSlider?.value || 42) / 100;
+    payload.similarity_boost = Number(tuneSimilaritySlider?.value || 82) / 100;
+    payload.use_speaker_boost = true;
+  }
+
+  return payload;
+}
+
+// Переключение RU / EN слота в студии
+tuneSlotRuBtn?.addEventListener("click", () => selectTuningSlot("ru"));
+tuneSlotEnBtn?.addEventListener("click", () => selectTuningSlot("en"));
+
+// Интерактивные слайдеры
+tuneSpeedSlider?.addEventListener("input", () => {
+  if (tuneSpeedValue) tuneSpeedValue.textContent = (Number(tuneSpeedSlider.value) / 100).toFixed(2) + "x";
+});
+
+tuneStabilitySlider?.addEventListener("input", () => {
+  if (tuneStabilityValue) tuneStabilityValue.textContent = (Number(tuneStabilitySlider.value) / 100).toFixed(2);
+});
+
+tuneStyleSlider?.addEventListener("input", () => {
+  if (tuneStyleValue) tuneStyleValue.textContent = (Number(tuneStyleSlider.value) / 100).toFixed(2);
+});
+
+tuneSimilaritySlider?.addEventListener("input", () => {
+  if (tuneSimilarityValue) tuneSimilarityValue.textContent = (Number(tuneSimilaritySlider.value) / 100).toFixed(2);
+});
+
+// Кнопки частоты дискретизации
+sampleRatePills.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    sampleRatePills.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentSampleRate = Number(btn.dataset.srate) || 44100;
+  });
+});
+
+// Кнопка пресета "Живая стримерша"
+applyLivePresetBtn?.addEventListener("click", async () => {
+  applyLivePresetBtn.disabled = true;
+  applyLivePresetBtn.textContent = "⏳ Применение пресета «Живая стримерша»...";
+  try {
+    const res = await api()?.apply_live_preset(activeTuningSlot);
+    if (res && res.tuning) {
+      currentTuningData[activeTuningSlot] = res.tuning;
+    }
+    renderTuningUI(activeTuningSlot);
+    showVoiceStatusHint(`Пресет «Живая стримерша» применён и сохранён для ${activeTuningSlot.toUpperCase()}!`);
+  } catch (err) {
+    console.error("Apply live preset error:", err);
+  } finally {
+    applyLivePresetBtn.disabled = false;
+    applyLivePresetBtn.textContent = "✨ Сделать голос максимально живым (Авто-настройка)";
+  }
+});
+
+// Сохранить в Lumean
+saveTuningBtn?.addEventListener("click", async () => {
+  saveTuningBtn.disabled = true;
+  saveTuningBtn.textContent = "⏳ Сохранение в Lumean...";
+  try {
+    const payload = collectTuningForm();
+    const res = await api()?.save_voice_tuning(activeTuningSlot, payload);
+    if (res && res.tuning) {
+      currentTuningData[activeTuningSlot] = res.tuning;
+    }
+    renderTuningUI(activeTuningSlot);
+    showVoiceStatusHint(`Настройки живости для ${activeTuningSlot.toUpperCase()} успешно сохранены в Lumean!`);
+  } catch (err) {
+    console.error("Save voice tuning error:", err);
+    showVoiceStatusHint("Ошибка сохранения настроек живости");
+  } finally {
+    saveTuningBtn.disabled = false;
+    saveTuningBtn.textContent = "💾 Сохранить в Lumean";
+  }
+});
+
+// Тест (без кэша)
+testTunedBtn?.addEventListener("click", async () => {
+  testTunedBtn.disabled = true;
+  testTunedBtn.textContent = "🎙 Синтез...";
+  try {
+    await api()?.test_tuned_voice(activeTuningSlot);
+    showVoiceStatusHint(`Тестовая живая фраза отправлена на синтез (bypass кэша)`);
+  } catch (err) {
+    console.error("Test tuned voice error:", err);
+  } finally {
+    setTimeout(() => {
+      testTunedBtn.disabled = false;
+      testTunedBtn.textContent = "🎙 Тест (без кэша)";
+    }, 2500);
+  }
+});
+
+// Очистить кэш и переозвучить с новыми настройками
+rewarmTunedBtn?.addEventListener("click", async () => {
+  rewarmTunedBtn.disabled = true;
+  rewarmTunedBtn.textContent = "⏳ Очистка и переозвучка...";
+  try {
+    await api()?.clear_and_rewarm_cache(activeTuningSlot);
+    showVoiceStatusHint(`Старый кэш очищен. Запущена переозвучка реплик с новыми настройками!`);
+  } catch (err) {
+    console.error("Rewarm error:", err);
+  } finally {
+    setTimeout(() => {
+      rewarmTunedBtn.disabled = false;
+      rewarmTunedBtn.textContent = "🔄 Переозвучить кэш с новыми настройками";
+    }, 2500);
+  }
+});
+
+// Обновить список шаблонов с сайта
+refreshTemplatesBtn?.addEventListener("click", () => {
+  loadUserTemplates(true);
+});
+
+// Назначить шаблон на RU
+applyTemplateRuBtn?.addEventListener("click", async () => {
+  const tplId = userTemplatesSelect?.value;
+  if (!tplId) return;
+  applyTemplateRuBtn.disabled = true;
+  applyTemplateRuBtn.textContent = "⏳...";
+  try {
+    await api()?.apply_template_to_slot("ru", tplId);
+    showVoiceStatusHint("Шаблон Lumean успешно назначен на слот RU!");
+    loadUserTemplates();
+  } catch (err) {
+    console.error("Apply template RU error:", err);
+  } finally {
+    applyTemplateRuBtn.disabled = false;
+    applyTemplateRuBtn.textContent = "🇷🇺 Назначить на RU";
+  }
+});
+
+// Назначить шаблон на EN
+applyTemplateEnBtn?.addEventListener("click", async () => {
+  const tplId = userTemplatesSelect?.value;
+  if (!tplId) return;
+  applyTemplateEnBtn.disabled = true;
+  applyTemplateEnBtn.textContent = "⏳...";
+  try {
+    await api()?.apply_template_to_slot("en", tplId);
+    showVoiceStatusHint("Шаблон Lumean успешно назначен на слот EN!");
+    loadUserTemplates();
+  } catch (err) {
+    console.error("Apply template EN error:", err);
+  } finally {
+    applyTemplateEnBtn.disabled = false;
+    applyTemplateEnBtn.textContent = "🇬🇧 Назначить на EN";
+  }
+});
+
 /* ==================== Действия пульта ==================== */
 
 speakBtn.addEventListener("click", () => {
@@ -762,10 +1118,14 @@ async function init() {
   if (status.lumean) {
     updateActiveVoiceDisplay("ru", status.lumean.ru_service, status.lumean.ru_voice_id, status.lumean.ru_voice_name);
     updateActiveVoiceDisplay("en", status.lumean.en_service, status.lumean.en_voice_id, status.lumean.en_voice_name);
+    if (status.lumean.ru_tuning) currentTuningData.ru = status.lumean.ru_tuning;
+    if (status.lumean.en_tuning) currentTuningData.en = status.lumean.en_tuning;
+    renderTuningUI(activeTuningSlot);
     const defaultCatalog = status.lumean.ru_service || "fishaudio";
     if (catalogSelect) catalogSelect.value = defaultCatalog;
     loadVoices(defaultCatalog);
   }
+  loadUserTemplates();
 
   const savedScale = localStorage.getItem("winky_avatar_scale");
   if (savedScale !== null) {

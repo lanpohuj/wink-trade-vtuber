@@ -92,7 +92,87 @@ def detect_lang(text: str) -> str:
     return "ru" if any("а" <= ch.lower() <= "я" for ch in text) else "en"
 
 
-def save_voice_to_env(lang_slot: str, service: str, voice_id: str, voice_name: str) -> None:
+def humanize_speech_text(text: str, lang: str = "ru", breathing: bool = True) -> str:
+    """Обогащает текст живыми дыхательными микро-паузами и интонационной пунктуацией.
+
+    По официальной документации Lumean API (Voiceover text markup) тег {{pause=0.2}}
+    создаёт естественную человеческую микро-передышку, не расходуя лимит символов.
+    """
+    if not text:
+        return ""
+    clean = text.strip()
+    if not breathing:
+        return clean
+
+    # Если уже есть теги пауз, не дублируем
+    if "{{pause=" in clean:
+        return clean
+
+    is_ru = (lang or "ru").lower() == "ru"
+    if is_ru and not any("а" <= ch.lower() <= "я" for ch in clean):
+        is_ru = False
+
+    # 1. Живая интонация: если реплика заканчивается на сухую точку, заменяем на '!'
+    if clean.endswith(".") and not clean.endswith("..") and not re.search(r"\b\d+\.$", clean):
+        clean = clean[:-1].strip() + "!"
+
+    # 2. Дыхательные микро-паузы после вводных междометий и восклицаний
+    if is_ru:
+        intro_pat = r"^(Ой|Мур|Хей|Слушай|Опа|Ого|Хм|Вау|Кстати|Смотри|Ребятки|Ребят|Чат|Ура|Салют|Приветик|Привет)([,\s!]+)"
+        match = re.match(intro_pat, clean, flags=re.IGNORECASE)
+        if match:
+            word = match.group(1)
+            rest = clean[match.end():].lstrip()
+            clean = f"{word}, {{{{pause=0.20}}}} {rest}"
+    else:
+        intro_pat = r"^(Hey guys|Hey|Oh|Listen|Wow|Look|Guys|Chat|Yay|Hello|Hi)([,\s!]+)"
+        match = re.match(intro_pat, clean, flags=re.IGNORECASE)
+        if match:
+            word = match.group(1)
+            rest = clean[match.end():].lstrip()
+            clean = f"{word}, {{{{pause=0.20}}}} {rest}"
+
+    # 3. Микро-пауза перед выразительным смысловым тире ' — '
+    if " — " in clean and clean.count("{{pause=") < 2:
+        clean = clean.replace(" — ", " {{pause=0.15}} — ", 1)
+
+    return clean.strip()
+
+
+PRESET_LIVE_STREAMER_FISH = {
+    "model_id": "s2.1-pro",
+    "speed": 1.06,
+    "latency": "normal",
+    "normalize_text": True,
+    "normalize_volume": True,
+    "sample_rate": 44100,
+    "audio_quality": "high",
+    "breathing_pauses": True,
+    "temperature": 0.82,
+}
+
+PRESET_LIVE_STREAMER_ELEVEN = {
+    "model_id": "eleven_multilingual_v2",
+    "advanced_voice_settings": True,
+    "stability": 0.38,
+    "similarity_boost": 0.82,
+    "style": 0.42,
+    "use_speaker_boost": True,
+    "speed": 1.05,
+    "normalize_volume": True,
+    "sample_rate": 44100,
+    "audio_quality": "high",
+    "breathing_pauses": True,
+}
+
+
+def save_voice_to_env(
+    lang_slot: str,
+    service: str,
+    voice_id: str,
+    voice_name: str,
+    template_id: str = "",
+) -> None:
     """Сохраняет параметры активного голоса (RU или EN) Winky в файл .env."""
     env_path = Path(__file__).resolve().parent.parent / ".env"
     if not env_path.exists():
@@ -105,10 +185,14 @@ def save_voice_to_env(lang_slot: str, service: str, voice_id: str, voice_name: s
             f"LUMEAN_{slot}_VOICE_ID": voice_id,
             f"LUMEAN_{slot}_VOICE_NAME": voice_name,
         }
+        if template_id:
+            updates[f"LUMEAN_{slot}_TEMPLATE_ID"] = template_id
         if slot == "RU":
             updates["LUMEAN_SERVICE"] = service
             updates["LUMEAN_VOICE_ID"] = voice_id
             updates["LUMEAN_VOICE_NAME"] = voice_name
+            if template_id:
+                updates["LUMEAN_TEMPLATE_ID"] = template_id
         lines = content.splitlines()
         found_keys: set[str] = set()
         new_lines: list[str] = []
@@ -209,6 +293,10 @@ class LumeanTTS:
             self._templates_by_service[self._ru_service] = self._template_id
             self._save_templates_cache()
 
+        # Тюнинг живости голоса для RU и EN
+        self._ru_tuning: dict = self._load_tuning("ru")
+        self._en_tuning: dict = self._load_tuning("en")
+
     def _load_templates_cache(self) -> dict[str, str]:
         tpl_file = self._cache_dir / "lumean_templates.json"
         if tpl_file.exists():
@@ -226,6 +314,47 @@ class LumeanTTS:
             tpl_file.write_text(json.dumps(self._templates_by_service, indent=2), encoding="utf-8")
         except Exception:
             pass
+
+    def _load_tuning(self, slot: str) -> dict:
+        """Загружает параметры студии живости для слота."""
+        tuning_file = self._cache_dir / f"tuning_{slot}.json"
+        if tuning_file.exists():
+            try:
+                data = json.loads(tuning_file.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    return data
+            except Exception:
+                pass
+
+        if slot == "ru":
+            base = dict(PRESET_LIVE_STREAMER_FISH)
+            base.update({
+                "service_key": self._ru_service,
+                "voice_id": self._ru_voice_id,
+                "voice_name": self._ru_voice_name,
+                "template_id": settings.LUMEAN_RU_TEMPLATE_ID or self._template_id or "01a18705-f563-7326-bf31-9a256b4f67a9",
+            })
+            return base
+        else:
+            base = dict(PRESET_LIVE_STREAMER_ELEVEN if self._en_service == "elevenlabs" else PRESET_LIVE_STREAMER_FISH)
+            base.update({
+                "service_key": self._en_service,
+                "voice_id": self._en_voice_id,
+                "voice_name": self._en_voice_name,
+                "template_id": settings.LUMEAN_EN_TEMPLATE_ID or "",
+            })
+            return base
+
+    def _save_tuning(self, slot: str) -> None:
+        tuning_file = self._cache_dir / f"tuning_{slot}.json"
+        try:
+            target = self._ru_tuning if slot == "ru" else self._en_tuning
+            tuning_file.write_text(json.dumps(target, indent=2, ensure_ascii=False), encoding="utf-8")
+        except Exception as exc:
+            logger.debug("Не удалось сохранить tuning_%s.json: %s", slot, exc)
+
+    def get_tuning(self, slot: str) -> dict:
+        return self._ru_tuning if (slot or "ru").lower() == "ru" else self._en_tuning
 
     @property
     def ru_service(self) -> str:
@@ -269,8 +398,11 @@ class LumeanTTS:
         if clean:
             self._template_id = clean
             self._templates_by_service[self._ru_service] = clean
+            self._ru_tuning["template_id"] = clean
             self._save_templates_cache()
+            self._save_tuning("ru")
             settings.LUMEAN_TEMPLATE_ID = clean
+            settings.LUMEAN_RU_TEMPLATE_ID = clean
             logger.info("Установлен новый Lumean Template ID: %s", clean)
 
     def set_voice(self, lang_slot: str, service_key: str, voice_id: str, voice_name: str = "") -> None:
@@ -284,6 +416,10 @@ class LumeanTTS:
             self._ru_service = clean_service
             self._ru_voice_id = clean_voice
             self._ru_voice_name = clean_name
+            self._ru_tuning["service_key"] = clean_service
+            self._ru_tuning["voice_id"] = clean_voice
+            self._ru_tuning["voice_name"] = clean_name
+            self._save_tuning("ru")
             settings.LUMEAN_RU_SERVICE = clean_service
             settings.LUMEAN_RU_VOICE_ID = clean_voice
             settings.LUMEAN_RU_VOICE_NAME = clean_name
@@ -295,11 +431,16 @@ class LumeanTTS:
             self._en_service = clean_service
             self._en_voice_id = clean_voice
             self._en_voice_name = clean_name
+            self._en_tuning["service_key"] = clean_service
+            self._en_tuning["voice_id"] = clean_voice
+            self._en_tuning["voice_name"] = clean_name
+            self._save_tuning("en")
             settings.LUMEAN_EN_SERVICE = clean_service
             settings.LUMEAN_EN_VOICE_ID = clean_voice
             settings.LUMEAN_EN_VOICE_NAME = clean_name
 
-        save_voice_to_env(slot, clean_service, clean_voice, clean_name)
+        tid = self._ru_tuning.get("template_id") if slot == "ru" else self._en_tuning.get("template_id")
+        save_voice_to_env(slot, clean_service, clean_voice, clean_name, template_id=tid or "")
         if changed:
             logger.info(
                 "Голос Winky [%s] обновлён: провайдер=%s, voice_id=%s, имя=%s",
@@ -313,18 +454,24 @@ class LumeanTTS:
                 "service_key": self._ru_service,
                 "voice_id": self._ru_voice_id,
                 "voice_name": self._ru_voice_name,
+                "template_id": self._ru_tuning.get("template_id", ""),
+                "tuning": self._ru_tuning,
             },
             "en": {
                 "service_key": self._en_service,
                 "voice_id": self._en_voice_id,
                 "voice_name": self._en_voice_name,
+                "template_id": self._en_tuning.get("template_id", ""),
+                "tuning": self._en_tuning,
             },
             "ru_service": self._ru_service,
             "ru_voice_id": self._ru_voice_id,
             "ru_voice_name": self._ru_voice_name,
+            "ru_tuning": self._ru_tuning,
             "en_service": self._en_service,
             "en_voice_id": self._en_voice_id,
             "en_voice_name": self._en_voice_name,
+            "en_tuning": self._en_tuning,
             "service_key": self._ru_service,
             "voice_id": self._ru_voice_id,
             "voice_name": self._ru_voice_name,
@@ -345,6 +492,274 @@ class LumeanTTS:
             "Content-Type": "application/json",
         }
 
+    def get_config_options(self, service_key: str) -> dict:
+        """Получает точную схему допустимых параметров шаблона для сервиса."""
+        headers = self._headers()
+        cache_file = self._cache_dir / f"config_options_{service_key}.json"
+        if cache_file.exists():
+            try:
+                return json.loads(cache_file.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+        try:
+            resp = self._client.get(f"{self.BASE_URL}/templates/config-options?service={service_key}", headers=headers, timeout=10.0)
+            if resp.status_code == 200:
+                data = resp.json().get("data", {})
+                cache_file.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+                return data
+        except Exception as exc:
+            logger.debug("Не удалось получить config-options для %s: %s", service_key, exc)
+        return {}
+
+    def list_user_templates(self) -> list[dict]:
+        """Возвращает список всех шаблонов пользователя с сайта lumean.app/template."""
+        headers = self._headers()
+        try:
+            # Важно: по API Lumean per_page максимум 30, иначе возвращает 422
+            resp = self._client.get(
+                f"{self.BASE_URL}/templates?per_page=30",
+                headers=headers,
+                timeout=12.0,
+            )
+            if resp.status_code == 200:
+                payload = resp.json()
+                raw_data = payload.get("data")
+                items = raw_data if isinstance(raw_data, list) else (raw_data.get("items", []) if isinstance(raw_data, dict) else [])
+                result = []
+                for item in items:
+                    cfg = item.get("config") or {}
+                    tts = cfg.get("tts_settings") or {}
+                    result.append({
+                        "id": str(item.get("id")),
+                        "name": str(item.get("name") or "Без названия"),
+                        "service_key": str(item.get("service_key") or "fishaudio"),
+                        "voice_id": str(tts.get("voice_id") or ""),
+                        "model_id": str(tts.get("model_id") or ""),
+                        "speed": float(tts.get("voice_settings", {}).get("speed") or 1.0),
+                        "created_at": str(item.get("created_at") or ""),
+                        "config": cfg,
+                    })
+                return result
+            logger.warning("Ошибка получения шаблонов Lumean (%d): %s", resp.status_code, resp.text)
+        except Exception as exc:
+            logger.warning("Не удалось загрузить шаблоны Lumean: %s", exc)
+        return []
+
+    def apply_template_to_slot(self, lang_slot: str, template_id: str) -> dict:
+        """Назначает шаблон с сайта Lumean на слот RU или EN."""
+        clean_tid = (template_id or "").strip()
+        if not clean_tid:
+            return self.get_settings()
+        slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        headers = self._headers()
+
+        tpl_data = None
+        try:
+            resp = self._client.get(f"{self.BASE_URL}/templates/{clean_tid}", headers=headers, timeout=10.0)
+            if resp.status_code == 200:
+                tpl_data = resp.json().get("data")
+        except Exception as exc:
+            logger.warning("Не удалось загрузить данные шаблона %s: %s", clean_tid, exc)
+
+        if not tpl_data:
+            for t in self.list_user_templates():
+                if t["id"] == clean_tid:
+                    tpl_data = t
+                    break
+
+        if not tpl_data:
+            logger.warning("Шаблон %s не найден", clean_tid)
+            return self.get_settings()
+
+        service_key = str(tpl_data.get("service_key") or "fishaudio")
+        cfg = tpl_data.get("config") or {}
+        tts = cfg.get("tts_settings") or {}
+        voice_id = str(tts.get("voice_id") or "")
+        voice_name = str(tpl_data.get("name") or voice_id)
+
+        self.set_voice(slot, service_key, voice_id, voice_name)
+
+        tuning = self._ru_tuning if slot == "ru" else self._en_tuning
+        tuning["template_id"] = clean_tid
+        tuning["service_key"] = service_key
+        tuning["voice_id"] = voice_id
+        tuning["voice_name"] = voice_name
+        if tts.get("model_id"):
+            tuning["model_id"] = str(tts["model_id"])
+        if tts.get("voice_settings", {}).get("speed"):
+            tuning["speed"] = float(tts["voice_settings"]["speed"])
+        if tts.get("latency"):
+            tuning["latency"] = str(tts["latency"])
+        if "normalize" in tts:
+            tuning["normalize_text"] = bool(tts["normalize"])
+        out = cfg.get("output_settings") or {}
+        if out.get("sample_rate"):
+            tuning["sample_rate"] = int(out["sample_rate"])
+        if "loudnorm" in out:
+            tuning["normalize_volume"] = bool(out["loudnorm"].get("enabled", False))
+        pauses = cfg.get("pause_settings") or {}
+        if "enabled" in pauses:
+            tuning["breathing_pauses"] = bool(pauses["enabled"])
+
+        self._save_tuning(slot)
+        self._templates_by_service[service_key] = clean_tid
+        self._save_templates_cache()
+
+        save_voice_to_env(slot, service_key, voice_id, voice_name, clean_tid)
+        logger.info("Шаблон %s (%s) назначен на слот %s", clean_tid, voice_name, slot.upper())
+        return self.get_settings()
+
+    def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
+        """Сохраняет изменённые параметры тюнинга в шаблон на сервере Lumean (PUT / POST)."""
+        slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        current_tuning = self._ru_tuning if slot == "ru" else self._en_tuning
+        current_tuning.update(tuning_data)
+
+        service_key = current_tuning.get("service_key") or (self._ru_service if slot == "ru" else self._en_service)
+        voice_id = current_tuning.get("voice_id") or (self._ru_voice_id if slot == "ru" else self._en_voice_id)
+        voice_name = current_tuning.get("voice_name") or (self._ru_voice_name if slot == "ru" else self._en_voice_name)
+        template_id = current_tuning.get("template_id") or self._templates_by_service.get(service_key) or ""
+
+        # Формируем валидный конфиг по схеме Lumean
+        if service_key == "fishaudio":
+            config = {
+                "tts_settings": {
+                    "voice_id": voice_id,
+                    "model_id": current_tuning.get("model_id") or "s2.1-pro",
+                    "format": "mp3",
+                    "latency": current_tuning.get("latency") or "normal",
+                    "normalize": bool(current_tuning.get("normalize_text", True)),
+                    "voice_settings": {
+                        "speed": float(current_tuning.get("speed", 1.06)),
+                    },
+                },
+                "pause_settings": {
+                    "enabled": bool(current_tuning.get("breathing_pauses", True)),
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": current_tuning.get("audio_quality") or "high",
+                    "sample_rate": int(current_tuning.get("sample_rate") or 44100),
+                    "loudnorm": {
+                        "enabled": bool(current_tuning.get("normalize_volume", True)),
+                    },
+                },
+            }
+        else:
+            config = {
+                "tts_settings": {
+                    "model_id": current_tuning.get("model_id") or "eleven_multilingual_v2",
+                    "voice_id": voice_id,
+                    "mode": "mode_v1",
+                    "advanced_voice_settings": True,
+                    "voice_settings": {
+                        "stability": float(current_tuning.get("stability", 0.38)),
+                        "similarity_boost": float(current_tuning.get("similarity_boost", 0.82)),
+                        "style": float(current_tuning.get("style", 0.42)),
+                        "use_speaker_boost": bool(current_tuning.get("use_speaker_boost", True)),
+                        "speed": float(current_tuning.get("speed", 1.05)),
+                    },
+                },
+                "pause_settings": {
+                    "enabled": bool(current_tuning.get("breathing_pauses", True)),
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": current_tuning.get("audio_quality") or "high",
+                    "sample_rate": int(current_tuning.get("sample_rate") or 44100),
+                    "loudnorm": {
+                        "enabled": bool(current_tuning.get("normalize_volume", True)),
+                    },
+                },
+            }
+
+        headers = self._headers()
+        template_name = f"Winky Live {slot.upper()} — {voice_name}"
+
+        # 1. Если template_id существует, пробуем обновить через PUT
+        updated_tid = None
+        if template_id:
+            try:
+                put_resp = self._client.put(
+                    f"{self.BASE_URL}/templates/{template_id}",
+                    headers=headers,
+                    json={
+                        "service_key": service_key,
+                        "name": template_name,
+                        "config": config,
+                    },
+                    timeout=10.0,
+                )
+                if put_resp.status_code == 200:
+                    updated_tid = template_id
+                    logger.info("Шаблон Lumean %s успешно обновлен через PUT: %s", template_name, template_id)
+            except Exception as exc:
+                logger.warning("Не удалось обновить шаблон %s через PUT: %s", template_id, exc)
+
+        # 2. Если template_id не было или PUT вернул ошибку, создаём через POST
+        if not updated_tid:
+            try:
+                post_resp = self._client.post(
+                    f"{self.BASE_URL}/templates",
+                    headers=headers,
+                    json={
+                        "service_key": service_key,
+                        "name": template_name,
+                        "config": config,
+                    },
+                    timeout=10.0,
+                )
+                if post_resp.status_code in (200, 201):
+                    created_data = post_resp.json().get("data", {})
+                    updated_tid = str(created_data.get("id"))
+                    logger.info("Создан новый шаблон Lumean %s через POST: %s", template_name, updated_tid)
+            except Exception as exc:
+                logger.warning("Не удалось создать шаблон Lumean: %s", exc)
+
+        if updated_tid:
+            current_tuning["template_id"] = updated_tid
+            self._templates_by_service[service_key] = updated_tid
+            self._save_templates_cache()
+            save_voice_to_env(slot, service_key, voice_id, voice_name, updated_tid)
+
+        self._save_tuning(slot)
+        res = self.get_settings()
+        res["tuning"] = current_tuning
+        return res
+
+    def apply_live_preset(self, lang_slot: str) -> dict:
+        """Применяет экспресс-пресет 'Живая стримерша' к слоту RU или EN и сохраняет в Lumean."""
+        slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        service_key = self._ru_service if slot == "ru" else self._en_service
+        preset = PRESET_LIVE_STREAMER_FISH if service_key == "fishaudio" else PRESET_LIVE_STREAMER_ELEVEN
+        return self.save_voice_tuning(slot, dict(preset))
+
+    def clear_voice_cache(self, lang_slot: str = "all") -> int:
+        """Очищает кэшированные аудиофайлы для слота, чтобы переозвучить их с новым качеством."""
+        slots = ["ru", "en"] if lang_slot == "all" else [lang_slot]
+        removed = 0
+        for s in slots:
+            srv = self._ru_service if s == "ru" else self._en_service
+            vid = self._ru_voice_id if s == "ru" else self._en_voice_id
+            vdir = self.get_voice_dir(srv, vid)
+            if vdir.exists():
+                for mp3 in vdir.glob("*.mp3"):
+                    try:
+                        mp3.unlink()
+                        removed += 1
+                    except Exception:
+                        pass
+                manifest = vdir / "manifest.json"
+                if manifest.exists():
+                    try:
+                        manifest.unlink()
+                    except Exception:
+                        pass
+        logger.info("Очищено %d кэш-файлов для слота %s", removed, lang_slot)
+        return removed
+
     def _ensure_template(self, service_key: str, voice_id: str) -> str:
         """Получает существующий или создаёт новый шаблон TTS в Lumean для нужного провайдера."""
         headers = self._headers()
@@ -359,14 +774,8 @@ class LumeanTTS:
             if resp.status_code == 200:
                 payload = resp.json()
                 raw_data = payload.get("data")
-                if isinstance(raw_data, list):
-                    items = raw_data
-                elif isinstance(raw_data, dict):
-                    items = raw_data.get("items", [])
-                else:
-                    items = []
+                items = raw_data if isinstance(raw_data, list) else (raw_data.get("items", []) if isinstance(raw_data, dict) else [])
 
-                # Ищем шаблон для данного service_key (предпочитаем начинающийся с Winky)
                 matched_template = None
                 for item in items:
                     if item.get("service_key") == service_key:
@@ -397,38 +806,51 @@ class LumeanTTS:
                     "voice_id": voice_id,
                     "advanced_voice_settings": True,
                     "voice_settings": {
-                        "stability": 0.45,
-                        "similarity_boost": 0.80,
+                        "stability": 0.38,
+                        "similarity_boost": 0.82,
+                        "style": 0.42,
                         "use_speaker_boost": True,
-                        "speed": 1.0,
+                        "speed": 1.05,
                     },
-                }
+                },
+                "pause_settings": {
+                    "enabled": True,
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": "high",
+                    "sample_rate": 44100,
+                    "loudnorm": {
+                        "enabled": True,
+                    },
+                },
             }
         else:
-            # Для fishaudio, cartesia, lumvoice: опрашиваем config-options
-            model_id = "s2.1-pro" if service_key == "fishaudio" else ("sonic-3" if service_key == "cartesia" else "")
-            try:
-                opt_resp = self._client.get(
-                    f"{self.BASE_URL}/templates/config-options?service={service_key}",
-                    headers=headers,
-                    timeout=8.0,
-                )
-                if opt_resp.status_code == 200:
-                    opts = opt_resp.json().get("data", {}).get("tts_settings", {})
-                    if "model_id" in opts and isinstance(opts["model_id"], dict):
-                        model_id = opts["model_id"].get("default") or model_id
-            except Exception:
-                pass
-
             config = {
                 "tts_settings": {
                     "voice_id": voice_id,
-                }
+                    "model_id": "s2.1-pro",
+                    "format": "mp3",
+                    "latency": "normal",
+                    "normalize": True,
+                    "voice_settings": {
+                        "speed": 1.06,
+                    },
+                },
+                "pause_settings": {
+                    "enabled": True,
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": "high",
+                    "sample_rate": 44100,
+                    "loudnorm": {
+                        "enabled": True,
+                    },
+                },
             }
-            if model_id:
-                config["tts_settings"]["model_id"] = model_id
-            if service_key == "fishaudio":
-                config["tts_settings"]["format"] = "mp3"
 
         create_resp = self._client.post(
             f"{self.BASE_URL}/templates",
@@ -455,11 +877,21 @@ class LumeanTTS:
 
     def get_cache_path(self, text: str, lang: str = "ru") -> Path:
         clean_text = text.strip()
-        _, service_key, voice_id = self._resolve_slot(clean_text, lang)
+        slot, service_key, voice_id = self._resolve_slot(clean_text, lang)
         voice_dir = self.get_voice_dir(service_key, voice_id)
         norm_text = normalize_cache_text(clean_text)
+
+        tuning = self.get_tuning(slot)
+        speed = float(tuning.get("speed", 1.0))
+        model = str(tuning.get("model_id", ""))
+        srate = int(tuning.get("sample_rate", 44100))
+        loudnorm = int(bool(tuning.get("normalize_volume", True)))
+        breathing = int(bool(tuning.get("breathing_pauses", True)))
+        tpl_id = (tuning.get("template_id") or "")[:8]
+
+        tuning_key = f"{speed:.2f}_{model}_{srate}_{loudnorm}_{breathing}_{tpl_id}"
         text_hash = hashlib.sha256(
-            f"{service_key}:{voice_id}:{norm_text}".encode("utf-8")
+            f"{service_key}:{voice_id}:{tuning_key}:{norm_text}".encode("utf-8")
         ).hexdigest()[:20]
         return voice_dir / f"{text_hash}.mp3"
 
@@ -470,9 +902,10 @@ class LumeanTTS:
         cached_file = self.get_cache_path(clean_text, lang)
         return cached_file.exists() and cached_file.stat().st_size > 1024
 
-    def synthesize(self, text: str, lang: str = "ru") -> Path:
+    def synthesize(self, text: str, lang: str = "ru", bypass_cache: bool = False) -> Path:
         """Синтезирует речь выбранным слотом голоса (RU или EN) через прямой Keep-Alive вызов Lumean API.
         При наличии в voice_cache/ не отправляет запрос в API (0 токенов, мгновенный возврат).
+        При bypass_cache=True синтезирует свежую версию напрямую с сервера.
         """
         clean_text = text.strip()
         if not clean_text:
@@ -480,13 +913,10 @@ class LumeanTTS:
 
         slot, service_key, voice_id = self._resolve_slot(clean_text, lang)
         voice_dir = self.get_voice_dir(service_key, voice_id)
-        norm_text = normalize_cache_text(clean_text)
-        text_hash = hashlib.sha256(
-            f"{service_key}:{voice_id}:{norm_text}".encode("utf-8")
-        ).hexdigest()[:20]
-        cached_file = voice_dir / f"{text_hash}.mp3"
+        cached_file = self.get_cache_path(clean_text, lang)
+        text_hash = cached_file.stem
 
-        if cached_file.exists() and cached_file.stat().st_size > 1024:
+        if not bypass_cache and cached_file.exists() and cached_file.stat().st_size > 1024:
             logger.info("Cache HIT in voice_cache/%s: %s («%s»)", voice_dir.name, cached_file.name, clean_text[:30])
             return cached_file
 
@@ -505,22 +935,24 @@ class LumeanTTS:
                     pass
             return fallback_media
 
-        logger.info("Cache MISS in voice_cache/%s -> запрос в Lumean API («%s»)...", voice_dir.name, clean_text[:30])
+        logger.info("Cache MISS (bypass=%s) in voice_cache/%s -> запрос в Lumean API («%s»)...", bypass_cache, voice_dir.name, clean_text[:30])
         try:
-            # 1. Мгновенно берём template_id из кэша (0 мс пре-ордер задержка!)
-            template_id = self._templates_by_service.get(service_key)
+            tuning = self.get_tuning(slot)
+            template_id = tuning.get("template_id") or self._templates_by_service.get(service_key)
             if not template_id:
                 template_id = self._ensure_template(service_key, voice_id)
 
-            # Шаг А: Создание заказа с динамическим config_override voice_id
+            # Человеческий текст с дыхательными микро-паузами
+            voiced_text = humanize_speech_text(
+                clean_text,
+                lang=lang,
+                breathing=bool(tuning.get("breathing_pauses", True)),
+            )
+
+            # Шаг А: Создание заказа с чистым template_id
             order_payload: dict = {
                 "template_id": template_id,
-                "input_text": clean_text,
-                "config_override": {
-                    "tts_settings": {
-                        "voice_id": voice_id
-                    }
-                }
+                "input_text": voiced_text,
             }
 
             create_resp = self._client.post(
@@ -529,6 +961,25 @@ class LumeanTTS:
                 json=order_payload,
                 timeout=12.0,
             )
+
+            # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
+            if create_resp.status_code in (400, 404, 422):
+                logger.warning("Шаблон %s недействителен, запрашиваю свежий...", template_id)
+                self._templates_by_service.pop(service_key, None)
+                template_id = self._ensure_template(service_key, voice_id)
+                order_payload["template_id"] = template_id
+                create_resp = self._client.post(
+                    f"{self.BASE_URL}/orders",
+                    headers=self._headers(),
+                    json=order_payload,
+                    timeout=12.0,
+                )
+
+            create_resp.raise_for_status()
+            order_data = create_resp.json().get("data", {})
+            order_id = order_data.get("id")
+            if not order_id:
+                raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
 
             # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
             if create_resp.status_code in (400, 404, 422):
@@ -1048,6 +1499,70 @@ class SpeechController:
             self.engine.set_voice(lang_slot, service_key, voice_id, voice_name)
             return self.engine.get_settings()
         return {}
+
+    def get_voice_tuning(self, lang_slot: str) -> dict:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.get_tuning(lang_slot)
+        return {}
+
+    def list_user_templates(self) -> list[dict]:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.list_user_templates()
+        return []
+
+    def apply_template_to_slot(self, lang_slot: str, template_id: str) -> dict:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.apply_template_to_slot(lang_slot, template_id)
+        return {}
+
+    def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.save_voice_tuning(lang_slot, tuning_data)
+        return {}
+
+    def apply_live_preset(self, lang_slot: str) -> dict:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.apply_live_preset(lang_slot)
+        return {}
+
+    def clear_voice_cache(self, lang_slot: str = "all") -> int:
+        if isinstance(self.engine, LumeanTTS):
+            return self.engine.clear_voice_cache(lang_slot)
+        return 0
+
+    def test_tuned_voice(self, lang_slot: str = "ru", bypass_cache: bool = True) -> bool:
+        """Синтезирует выразительную тестовую фразу напрямую через Lumean (без старого кэша)."""
+        self.stop_current()
+        slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        if slot == "ru":
+            phrase = "Ой, приветик! Слушай, это проверка моего нового живого голоса с нормализацией громкости и естественным дыханием!"
+        else:
+            phrase = "Hey everyone! Listen, this is a test of my new lively voice with loudness normalization and natural breathing!"
+
+        item = SpeechItem(
+            text=phrase,
+            lang=slot,
+            emotion="happy",
+            source="panel_test_live",
+        )
+        with self._lock:
+            self._playback_queue.append(item)
+
+        def _do_synth():
+            try:
+                media = self.engine.synthesize(item.text, item.lang, bypass_cache=bypass_cache) if hasattr(self.engine, "synthesize") else self.engine.synthesize(item.text, item.lang)
+                item.media_path = media
+                item.rms_chunks = compute_rms_chunks(media)
+                item.ready_event.set()
+            except Exception as exc:
+                logger.error("Ошибка тестового синтеза: %s", exc)
+                item.failed = True
+                item.ready_event.set()
+
+        self._synth_pool.submit(_do_synth)
+        self._wake.set()
+        self._emit_status()
+        return True
 
     def get_lumean_settings(self) -> dict:
         if isinstance(self.engine, LumeanTTS):

@@ -160,6 +160,115 @@
       </div>
     </div>
 
+    <!-- 2. Синхронизация с шаблонами lumean.app/template -->
+    <div class="template-sync-box">
+      <div class="template-sync-header">
+        <span class="template-sync-title">📂 Мои шаблоны с сайта Lumean</span>
+        <button class="small-btn" id="refreshTemplatesBtn" title="Обновить список шаблонов с сайта lumean.app/template">🔄 Обновить с сайта</button>
+      </div>
+      <div class="row" style="gap: 6px; margin-top: 6px;">
+        <select id="userTemplatesSelect" style="flex: 2;">
+          <option value="">Загрузка шаблонов аккаунта...</option>
+        </select>
+      </div>
+      <div class="row" style="gap: 6px; margin-top: 4px;">
+        <button id="applyTemplateRuBtn" class="small-btn" style="flex: 1;" title="Применить выбранный шаблон на русский голос">🇷🇺 Назначить на RU</button>
+        <button id="applyTemplateEnBtn" class="small-btn" style="flex: 1;" title="Применить выбранный шаблон на английский голос">🇬🇧 Назначить на EN</button>
+      </div>
+    </div>
+
+    <!-- 3. Тонкая настройка живости голоса (Студия Lumean) -->
+    <details open class="tuning-studio-details">
+      <summary class="tuning-summary">
+        <span>🎛 Тонкая настройка живости голоса (Студия Lumean)</span>
+      </summary>
+
+      <div class="tuning-studio-body">
+        <div class="preset-action-row">
+          <button class="primary preset-hero-btn" id="applyLivePresetBtn" title="Выставить оптимальные параметры пресета 'Живая стримерша' и сохранить в шаблон Lumean">
+            ✨ Сделать голос максимально живым (Авто-настройка)
+          </button>
+        </div>
+
+        <div class="tuning-slot-row">
+          <span style="font-size: 11.5px; color: var(--dim);">Настраивать голос:</span>
+          <div class="tuning-slot-toggle">
+            <button type="button" class="tuning-slot-btn active" id="tuneSlotRuBtn" data-slot="ru">🇷🇺 Слот RU</button>
+            <button type="button" class="tuning-slot-btn" id="tuneSlotEnBtn" data-slot="en">🇬🇧 Слот EN</button>
+          </div>
+        </div>
+
+        <label class="setting-row">
+          <span>⚙️ Модель</span>
+          <select id="tuneModelSelect" style="flex: 1.5; font-size: 12px;"></select>
+        </label>
+
+        <label class="setting-row" id="tuneLatencyRow">
+          <span>⚡ Задержка</span>
+          <select id="tuneLatencySelect" style="flex: 1.5; font-size: 12px;">
+            <option value="normal">Качество (normal)</option>
+            <option value="balanced">Сбалансированный</option>
+          </select>
+        </label>
+
+        <label class="setting-row">
+          <span>⚡ Темп речи</span>
+          <input type="range" id="tuneSpeedSlider" min="75" max="130" value="106" step="1">
+          <span id="tuneSpeedValue">1.06x</span>
+        </label>
+
+        <label class="setting-row" id="tuneStabilityRow">
+          <span id="tuneStabilityLabel">🎭 Эмоциональность</span>
+          <input type="range" id="tuneStabilitySlider" min="10" max="100" value="38" step="1">
+          <span id="tuneStabilityValue">0.38</span>
+        </label>
+
+        <label class="setting-row" id="tuneStyleRow">
+          <span>✨ Экспрессия / Стиль</span>
+          <input type="range" id="tuneStyleSlider" min="0" max="100" value="42" step="1">
+          <span id="tuneStyleValue">0.42</span>
+        </label>
+
+        <label class="setting-row" id="tuneSimilarityRow">
+          <span>🎯 Сходство тембра</span>
+          <input type="range" id="tuneSimilaritySlider" min="0" max="100" value="82" step="1">
+          <span id="tuneSimilarityValue">0.82</span>
+        </label>
+
+        <div class="setting-row-buttons">
+          <span style="font-size: 11.5px; color: var(--dim);">Частота звука:</span>
+          <div class="sample-rate-pills">
+            <button type="button" class="pill-btn" data-srate="22050">22 kHz</button>
+            <button type="button" class="pill-btn active" data-srate="44100">44.1 kHz</button>
+            <button type="button" class="pill-btn" data-srate="48000">48 kHz</button>
+          </div>
+        </div>
+
+        <div class="tuning-checkboxes">
+          <label class="check-row">
+            <input type="checkbox" id="tuneNormalizeText" checked>
+            <span>Нормализация текста</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="tuneNormalizeVolume" checked>
+            <span>Нормализация громкости (Loudnorm)</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="tuneBreathingPauses" checked>
+            <span>Живые дыхательные микро-паузы</span>
+          </label>
+        </div>
+
+        <div class="row" style="margin-top: 6px; gap: 6px;">
+          <button class="primary" id="saveTuningBtn" style="flex: 1.5;">💾 Сохранить в Lumean</button>
+          <button class="small-btn test-tuned-btn" id="testTunedBtn" style="flex: 1.5;" title="Синтезировать в обход кэша и прослушать">🎙 Тест (без кэша)</button>
+        </div>
+        <div class="row" style="margin-top: 4px;">
+          <button class="small-btn rewarm-tuned-btn" id="rewarmTunedBtn" style="flex: 1;" title="Очистить старые кэш-файлы и переозвучить весь каталог с новыми настройками">🔄 Переозвучить кэш с новыми настройками</button>
+        </div>
+      </div>
+    </details>
+
     <!-- Индикатор прогрева кэша голоса + кнопка полного прогрева -->
     <div class="voice-warmup-container" id="voiceWarmupContainer">
       <div class="voice-warmup-status">

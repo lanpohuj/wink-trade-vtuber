@@ -170,6 +170,38 @@ class WinkyAPI:
     def get_lumean_settings(self) -> dict:
         return self._controller.get_lumean_settings()
 
+    def get_voice_tuning(self, lang_slot: str = "ru") -> dict:
+        return self._controller.get_voice_tuning(lang_slot)
+
+    def list_user_templates(self) -> list[dict]:
+        return self._controller.list_user_templates()
+
+    def apply_template_to_slot(self, lang_slot: str, template_id: str) -> dict:
+        res = self._controller.apply_template_to_slot(lang_slot, template_id)
+        self.precache_phrases()
+        self.push_status()
+        return res
+
+    def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
+        res = self._controller.save_voice_tuning(lang_slot, tuning_data)
+        self.precache_phrases()
+        self.push_status()
+        return res
+
+    def apply_live_preset(self, lang_slot: str) -> dict:
+        res = self._controller.apply_live_preset(lang_slot)
+        self.precache_phrases()
+        self.push_status()
+        return res
+
+    def test_tuned_voice(self, lang_slot: str = "ru") -> bool:
+        return self._controller.test_tuned_voice(lang_slot, bypass_cache=True)
+
+    def clear_and_rewarm_cache(self, lang_slot: str = "all") -> bool:
+        self._controller.clear_voice_cache(lang_slot)
+        self.warmup_full_catalog()
+        return True
+
     def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "") -> dict:
         res = self._controller.update_lumean_settings(template_id, voice_id, service_key, voice_name)
         self.precache_phrases()
@@ -753,6 +785,7 @@ def main() -> None:
                 logger.exception("Не удалось сохранить скриншот перед закрытием")
             avatar_window.destroy()
             panel_window.destroy()
+            threading.Timer(0.8, lambda: os._exit(0)).start()
 
         def _smoke_speak() -> None:
             logger.info("Smoke: авто-проверка голоса")
