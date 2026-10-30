@@ -17,7 +17,9 @@ import dataclasses
 import json
 import logging
 import os
+import random
 import threading
+import time
 from pathlib import Path
 from time import monotonic
 
@@ -121,7 +123,10 @@ class WinkyAPI:
             action = reply.emotion
             action_duration = 3.2
 
-        chosen_text = reply.random_text(lang)
+        # Выбираем фразу: если есть кэшированные варианты, берём из них для мгновенного отклика 0.05с
+        pool = reply.texts_ru if (lang or "ru").lower() == "ru" else reply.texts_en
+        cached_pool = [t for t in pool if hasattr(self._controller, "is_cached") and self._controller.is_cached(t, lang=lang)]
+        chosen_text = random.choice(cached_pool) if cached_pool else reply.random_text(lang)
         return self._controller.speak(
             chosen_text,
             lang=lang,
@@ -178,24 +183,21 @@ class WinkyAPI:
 
     def apply_template_to_slot(self, lang_slot: str, template_id: str) -> dict:
         res = self._controller.apply_template_to_slot(lang_slot, template_id)
-        self.precache_phrases()
         self.push_status()
         return res
 
     def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
         res = self._controller.save_voice_tuning(lang_slot, tuning_data)
-        self.precache_phrases()
         self.push_status()
         return res
 
     def apply_live_preset(self, lang_slot: str) -> dict:
         res = self._controller.apply_live_preset(lang_slot)
-        self.precache_phrases()
         self.push_status()
         return res
 
-    def test_tuned_voice(self, lang_slot: str = "ru") -> bool:
-        return self._controller.test_tuned_voice(lang_slot, bypass_cache=True)
+    def test_tuned_voice(self, lang_slot: str = "ru", tuning_data: dict | None = None) -> bool:
+        return self._controller.test_tuned_voice(lang_slot, tuning_data=tuning_data, bypass_cache=True)
 
     def clear_and_rewarm_cache(self, lang_slot: str = "all") -> bool:
         self._controller.clear_voice_cache(lang_slot)
@@ -204,7 +206,6 @@ class WinkyAPI:
 
     def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "") -> dict:
         res = self._controller.update_lumean_settings(template_id, voice_id, service_key, voice_name)
-        self.precache_phrases()
         self.push_status()
         return res
 
@@ -220,20 +221,22 @@ class WinkyAPI:
             vid = service_key_or_vid
             vname = voice_id
         res = self._controller.set_lumean_voice(lang_slot, service_key, vid, vname)
-        self.warmup_voice_cache(lang_slot=lang_slot, full=False)
         self.push_status()
         return res
 
     def search_voices(self, catalog: str, query: str = "", language: str = "", gender: str = "", page: int = 1) -> list[dict]:
         return self._controller.search_voices(catalog, query, language, gender, page)
 
-    def test_voice(self, lang: str = "ru") -> bool:
+    def test_voice(self, lang: str = "ru", tuning_data: dict | None = None) -> bool:
+        slot = "ru" if (lang or "ru").lower() == "ru" else "en"
+        if tuning_data and hasattr(self._controller, "save_voice_tuning"):
+            self._controller.save_voice_tuning(slot, tuning_data)
         self._controller.stop_current()
-        if (lang or "ru").lower() == "ru":
+        if slot == "ru":
             phrase = "Привет! Это проверка моего нового голоса на русском языке!"
         else:
             phrase = "Hey guys! Checking out my new voice in English!"
-        return self._controller.speak(phrase, lang=lang, emotion="happy", source="panel_test")
+        return self._controller.speak(phrase, lang=slot, emotion="happy", source="panel_test")
 
     def preview_voice_sample(self, service_key: str, voice_id: str) -> str:
         return self._controller.preview_voice_sample(service_key, voice_id)
@@ -318,12 +321,15 @@ class WinkyAPI:
             _notify(done, total, f"⚡ Прогрев {label}: {done} / {total}...")
 
             for text, lang in unique_phrases:
+                while self._controller.speaking or self._controller.queue_size() > 0:
+                    time.sleep(1.0)
                 if self._controller.is_cached(text, lang=lang):
                     continue
                 try:
                     self._controller.engine.synthesize(text, lang=lang)
                     done += 1
                     _notify(done, total, f"⚡ Прогрев {label}: {done} / {total}...")
+                    time.sleep(0.2)
                 except Exception as exc:
                     logger.debug("Ошибка прогрева фразы «%s»: %s", text[:30], exc)
 

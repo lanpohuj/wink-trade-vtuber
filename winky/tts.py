@@ -48,8 +48,9 @@ _manifest_lock = threading.Lock()
 
 
 def normalize_cache_text(text: str) -> str:
-    """Убирает лишние пробелы и приводит к единому регистру для точного совпадения одинаковых фраз."""
-    return re.sub(r"\s+", " ", (text or "").strip().lower())
+    """Убирает лишние пробелы, управляющие символы, эмодзи и приводит к единому регистру для точного совпадения."""
+    cleaned = strip_emoji_control(text or "")
+    return re.sub(r"\s+", " ", cleaned.strip().lower())
 
 
 def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filename: str) -> None:
@@ -142,13 +143,15 @@ def humanize_speech_text(text: str, lang: str = "ru", breathing: bool = True) ->
 PRESET_LIVE_STREAMER_FISH = {
     "model_id": "s2.1-pro",
     "speed": 1.06,
-    "latency": "normal",
+    "latency": "balanced",
     "normalize_text": True,
     "normalize_volume": True,
     "sample_rate": 44100,
     "audio_quality": "high",
     "breathing_pauses": True,
     "temperature": 0.82,
+    "top_p": 0.85,
+    "repetition_penalty": 1.20,
 }
 
 PRESET_LIVE_STREAMER_ELEVEN = {
@@ -287,18 +290,27 @@ class LumeanTTS:
         # Постоянный Keep-Alive клиент без повторных TLS handshakes
         self._client = httpx.Client(timeout=30.0, http2=False)
 
-        # Кэш шаблонов по сервисам на диске
-        self._templates_by_service: dict[str, str] = self._load_templates_cache()
-        if self._template_id:
-            self._templates_by_service[self._ru_service] = self._template_id
-            self._save_templates_cache()
+        # Кэш шаблонов по слотам и голосам на диске (slot:service_key:voice_id)
+        self._templates_by_slot: dict[str, str] = self._load_templates_cache()
+        if settings.LUMEAN_RU_TEMPLATE_ID:
+            self._templates_by_slot[self._slot_key("ru", self._ru_service, self._ru_voice_id)] = settings.LUMEAN_RU_TEMPLATE_ID
+        if settings.LUMEAN_EN_TEMPLATE_ID:
+            self._templates_by_slot[self._slot_key("en", self._en_service, self._en_voice_id)] = settings.LUMEAN_EN_TEMPLATE_ID
 
         # Тюнинг живости голоса для RU и EN
         self._ru_tuning: dict = self._load_tuning("ru")
         self._en_tuning: dict = self._load_tuning("en")
 
+    def _slot_key(self, slot: str, service_key: str, voice_id: str) -> str:
+        s = "ru" if (slot or "ru").lower() == "ru" else "en"
+        srv = (service_key or "").strip().lower()
+        vid = (voice_id or "").strip().lower()
+        return f"{s}:{srv}:{vid}"
+
     def _load_templates_cache(self) -> dict[str, str]:
-        tpl_file = self._cache_dir / "lumean_templates.json"
+        tpl_file = self._cache_dir / "lumean_slot_templates.json"
+        if not tpl_file.exists():
+            tpl_file = self._cache_dir / "lumean_templates.json"
         if tpl_file.exists():
             try:
                 data = json.loads(tpl_file.read_text(encoding="utf-8"))
@@ -309,9 +321,9 @@ class LumeanTTS:
         return {}
 
     def _save_templates_cache(self) -> None:
-        tpl_file = self._cache_dir / "lumean_templates.json"
+        tpl_file = self._cache_dir / "lumean_slot_templates.json"
         try:
-            tpl_file.write_text(json.dumps(self._templates_by_service, indent=2), encoding="utf-8")
+            tpl_file.write_text(json.dumps(self._templates_by_slot, indent=2), encoding="utf-8")
         except Exception:
             pass
 
@@ -332,7 +344,7 @@ class LumeanTTS:
                 "service_key": self._ru_service,
                 "voice_id": self._ru_voice_id,
                 "voice_name": self._ru_voice_name,
-                "template_id": settings.LUMEAN_RU_TEMPLATE_ID or self._template_id or "01a18705-f563-7326-bf31-9a256b4f67a9",
+                "template_id": settings.LUMEAN_RU_TEMPLATE_ID or "",
             })
             return base
         else:
@@ -397,13 +409,14 @@ class LumeanTTS:
         clean = template_id.strip()
         if clean:
             self._template_id = clean
-            self._templates_by_service[self._ru_service] = clean
+            slot_key = self._slot_key("ru", self._ru_service, self._ru_voice_id)
+            self._templates_by_slot[slot_key] = clean
             self._ru_tuning["template_id"] = clean
             self._save_templates_cache()
             self._save_tuning("ru")
             settings.LUMEAN_TEMPLATE_ID = clean
             settings.LUMEAN_RU_TEMPLATE_ID = clean
-            logger.info("Установлен новый Lumean Template ID: %s", clean)
+            logger.info("Установлен новый Lumean Template ID для RU: %s", clean)
 
     def set_voice(self, lang_slot: str, service_key: str, voice_id: str, voice_name: str = "") -> None:
         slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
@@ -439,7 +452,8 @@ class LumeanTTS:
             settings.LUMEAN_EN_VOICE_ID = clean_voice
             settings.LUMEAN_EN_VOICE_NAME = clean_name
 
-        tid = self._ru_tuning.get("template_id") if slot == "ru" else self._en_tuning.get("template_id")
+        slot_key = self._slot_key(slot, clean_service, clean_voice)
+        tid = self._templates_by_slot.get(slot_key) or (self._ru_tuning.get("template_id") if slot == "ru" else self._en_tuning.get("template_id"))
         save_voice_to_env(slot, clean_service, clean_voice, clean_name, template_id=tid or "")
         if changed:
             logger.info(
@@ -448,7 +462,7 @@ class LumeanTTS:
             )
 
     def get_settings(self) -> dict:
-        active_tid = self._templates_by_service.get(self._ru_service) or self._template_id or ""
+        active_tid = self._ru_tuning.get("template_id") or self._templates_by_slot.get(self._slot_key("ru", self._ru_service, self._ru_voice_id)) or ""
         return {
             "ru": {
                 "service_key": self._ru_service,
@@ -602,12 +616,69 @@ class LumeanTTS:
             tuning["breathing_pauses"] = bool(pauses["enabled"])
 
         self._save_tuning(slot)
-        self._templates_by_service[service_key] = clean_tid
+        slot_key = self._slot_key(slot, service_key, voice_id)
+        self._templates_by_slot[slot_key] = clean_tid
         self._save_templates_cache()
 
         save_voice_to_env(slot, service_key, voice_id, voice_name, clean_tid)
         logger.info("Шаблон %s (%s) назначен на слот %s", clean_tid, voice_name, slot.upper())
         return self.get_settings()
+
+    def _build_template_config(self, slot: str, service_key: str, voice_id: str, tuning: dict) -> dict:
+        """Формирует 100% валидный словарь config по официальной схеме Lumean."""
+        if service_key == "fishaudio":
+            return {
+                "tts_settings": {
+                    "voice_id": voice_id,
+                    "model_id": tuning.get("model_id") or "s2.1-pro",
+                    "format": "mp3",
+                    "latency": tuning.get("latency") or "balanced",
+                    "normalize": bool(tuning.get("normalize_text", True)),
+                    "voice_settings": {
+                        "speed": float(tuning.get("speed", 1.06)),
+                    },
+                },
+                "pause_settings": {
+                    "enabled": bool(tuning.get("breathing_pauses", True)),
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": tuning.get("audio_quality") or "high",
+                    "sample_rate": int(tuning.get("sample_rate") or 44100),
+                    "loudnorm": {
+                        "enabled": bool(tuning.get("normalize_volume", True)),
+                    },
+                },
+            }
+        else:
+            return {
+                "tts_settings": {
+                    "model_id": tuning.get("model_id") or "eleven_multilingual_v2",
+                    "voice_id": voice_id,
+                    "mode": "mode_v1",
+                    "advanced_voice_settings": True,
+                    "voice_settings": {
+                        "stability": float(tuning.get("stability", 0.38)),
+                        "similarity_boost": float(tuning.get("similarity_boost", 0.82)),
+                        "style": float(tuning.get("style", 0.42)),
+                        "use_speaker_boost": bool(tuning.get("use_speaker_boost", True)),
+                        "speed": float(tuning.get("speed", 1.05)),
+                    },
+                },
+                "pause_settings": {
+                    "enabled": bool(tuning.get("breathing_pauses", True)),
+                    "default_duration": 0.25,
+                },
+                "output_settings": {
+                    "audio_format": "mp3",
+                    "audio_quality": tuning.get("audio_quality") or "high",
+                    "sample_rate": int(tuning.get("sample_rate") or 44100),
+                    "loudnorm": {
+                        "enabled": bool(tuning.get("normalize_volume", True)),
+                    },
+                },
+            }
 
     def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
         """Сохраняет изменённые параметры тюнинга в шаблон на сервере Lumean (PUT / POST)."""
@@ -618,63 +689,11 @@ class LumeanTTS:
         service_key = current_tuning.get("service_key") or (self._ru_service if slot == "ru" else self._en_service)
         voice_id = current_tuning.get("voice_id") or (self._ru_voice_id if slot == "ru" else self._en_voice_id)
         voice_name = current_tuning.get("voice_name") or (self._ru_voice_name if slot == "ru" else self._en_voice_name)
-        template_id = current_tuning.get("template_id") or self._templates_by_service.get(service_key) or ""
+        
+        slot_key = self._slot_key(slot, service_key, voice_id)
+        template_id = current_tuning.get("template_id") or self._templates_by_slot.get(slot_key) or ""
 
-        # Формируем валидный конфиг по схеме Lumean
-        if service_key == "fishaudio":
-            config = {
-                "tts_settings": {
-                    "voice_id": voice_id,
-                    "model_id": current_tuning.get("model_id") or "s2.1-pro",
-                    "format": "mp3",
-                    "latency": current_tuning.get("latency") or "normal",
-                    "normalize": bool(current_tuning.get("normalize_text", True)),
-                    "voice_settings": {
-                        "speed": float(current_tuning.get("speed", 1.06)),
-                    },
-                },
-                "pause_settings": {
-                    "enabled": bool(current_tuning.get("breathing_pauses", True)),
-                    "default_duration": 0.25,
-                },
-                "output_settings": {
-                    "audio_format": "mp3",
-                    "audio_quality": current_tuning.get("audio_quality") or "high",
-                    "sample_rate": int(current_tuning.get("sample_rate") or 44100),
-                    "loudnorm": {
-                        "enabled": bool(current_tuning.get("normalize_volume", True)),
-                    },
-                },
-            }
-        else:
-            config = {
-                "tts_settings": {
-                    "model_id": current_tuning.get("model_id") or "eleven_multilingual_v2",
-                    "voice_id": voice_id,
-                    "mode": "mode_v1",
-                    "advanced_voice_settings": True,
-                    "voice_settings": {
-                        "stability": float(current_tuning.get("stability", 0.38)),
-                        "similarity_boost": float(current_tuning.get("similarity_boost", 0.82)),
-                        "style": float(current_tuning.get("style", 0.42)),
-                        "use_speaker_boost": bool(current_tuning.get("use_speaker_boost", True)),
-                        "speed": float(current_tuning.get("speed", 1.05)),
-                    },
-                },
-                "pause_settings": {
-                    "enabled": bool(current_tuning.get("breathing_pauses", True)),
-                    "default_duration": 0.25,
-                },
-                "output_settings": {
-                    "audio_format": "mp3",
-                    "audio_quality": current_tuning.get("audio_quality") or "high",
-                    "sample_rate": int(current_tuning.get("sample_rate") or 44100),
-                    "loudnorm": {
-                        "enabled": bool(current_tuning.get("normalize_volume", True)),
-                    },
-                },
-            }
-
+        config = self._build_template_config(slot, service_key, voice_id, current_tuning)
         headers = self._headers()
         template_name = f"Winky Live {slot.upper()} — {voice_name}"
 
@@ -695,6 +714,8 @@ class LumeanTTS:
                 if put_resp.status_code == 200:
                     updated_tid = template_id
                     logger.info("Шаблон Lumean %s успешно обновлен через PUT: %s", template_name, template_id)
+                elif put_resp.status_code == 422:
+                    logger.warning("PUT /templates/%s вернул 422: %s", template_id, put_resp.text)
             except Exception as exc:
                 logger.warning("Не удалось обновить шаблон %s через PUT: %s", template_id, exc)
 
@@ -715,12 +736,33 @@ class LumeanTTS:
                     created_data = post_resp.json().get("data", {})
                     updated_tid = str(created_data.get("id"))
                     logger.info("Создан новый шаблон Lumean %s через POST: %s", template_name, updated_tid)
+                elif post_resp.status_code == 422:
+                    logger.warning("POST /templates вернул 422: %s, пробую минимальный config...", post_resp.text)
+                    min_cfg = {
+                        "tts_settings": {
+                            "voice_id": voice_id,
+                            "voice_settings": {"speed": float(current_tuning.get("speed", 1.06))},
+                        }
+                    }
+                    retry_resp = self._client.post(
+                        f"{self.BASE_URL}/templates",
+                        headers=headers,
+                        json={
+                            "service_key": service_key,
+                            "name": template_name,
+                            "config": min_cfg,
+                        },
+                        timeout=10.0,
+                    )
+                    if retry_resp.status_code in (200, 201):
+                        updated_tid = str(retry_resp.json().get("data", {}).get("id"))
+                        logger.info("Создан шаблон Lumean с минимальным config: %s", updated_tid)
             except Exception as exc:
                 logger.warning("Не удалось создать шаблон Lumean: %s", exc)
 
         if updated_tid:
             current_tuning["template_id"] = updated_tid
-            self._templates_by_service[service_key] = updated_tid
+            self._templates_by_slot[slot_key] = updated_tid
             self._save_templates_cache()
             save_voice_to_env(slot, service_key, voice_id, voice_name, updated_tid)
 
@@ -760,9 +802,15 @@ class LumeanTTS:
         logger.info("Очищено %d кэш-файлов для слота %s", removed, lang_slot)
         return removed
 
-    def _ensure_template(self, service_key: str, voice_id: str) -> str:
-        """Получает существующий или создаёт новый шаблон TTS в Lumean для нужного провайдера."""
+    def _ensure_template(self, slot: str, service_key: str, voice_id: str, voice_name: str = "") -> str:
+        """Гарантирует существование шаблона в Lumean для конкретного слота (RU/EN) и голоса."""
+        slot_key = self._slot_key(slot, service_key, voice_id)
+        cached_id = self._templates_by_slot.get(slot_key)
+        if cached_id:
+            return cached_id
+
         headers = self._headers()
+        template_name = f"Winky Live {slot.upper()} — {voice_name or voice_id}"
 
         # 1. Запрашиваем существующие шаблоны пользователя (максимум per_page=30)
         try:
@@ -779,96 +827,73 @@ class LumeanTTS:
                 matched_template = None
                 for item in items:
                     if item.get("service_key") == service_key:
+                        cfg_vid = (item.get("config") or {}).get("tts_settings", {}).get("voice_id")
                         name = item.get("name") or ""
-                        if name.startswith("Winky"):
+                        if cfg_vid == voice_id and (slot.upper() in name or f"Winky Live {slot.upper()}" in name):
                             matched_template = item
                             break
-                        if matched_template is None:
+                        if cfg_vid == voice_id and matched_template is None:
                             matched_template = item
 
                 if matched_template:
                     template_id = str(matched_template["id"])
-                    self._templates_by_service[service_key] = template_id
+                    self._templates_by_slot[slot_key] = template_id
                     self._save_templates_cache()
-                    logger.info("Найден шаблон Lumean для %s: %s", service_key, template_id)
+                    logger.info("Найден существующий шаблон Lumean для [%s] %s: %s", slot.upper(), template_name, template_id)
                     return template_id
 
         except Exception as exc:
             logger.debug("Не удалось получить список шаблонов Lumean: %s", exc)
 
-        # 2. Если шаблон для service_key не найден — создаём новый
-        logger.info("Создаю новый шаблон Winky для сервиса %s (voice_id=%s)...", service_key, voice_id)
-        if service_key == "elevenlabs":
-            config = {
-                "tts_settings": {
-                    "mode": "mode_v1",
-                    "model_id": "eleven_multilingual_v2",
-                    "voice_id": voice_id,
-                    "advanced_voice_settings": True,
-                    "voice_settings": {
-                        "stability": 0.38,
-                        "similarity_boost": 0.82,
-                        "style": 0.42,
-                        "use_speaker_boost": True,
-                        "speed": 1.05,
-                    },
-                },
-                "pause_settings": {
-                    "enabled": True,
-                    "default_duration": 0.25,
-                },
-                "output_settings": {
-                    "audio_format": "mp3",
-                    "audio_quality": "high",
-                    "sample_rate": 44100,
-                    "loudnorm": {
-                        "enabled": True,
-                    },
-                },
-            }
-        else:
-            config = {
-                "tts_settings": {
-                    "voice_id": voice_id,
-                    "model_id": "s2.1-pro",
-                    "format": "mp3",
-                    "latency": "normal",
-                    "normalize": True,
-                    "voice_settings": {
-                        "speed": 1.06,
-                    },
-                },
-                "pause_settings": {
-                    "enabled": True,
-                    "default_duration": 0.25,
-                },
-                "output_settings": {
-                    "audio_format": "mp3",
-                    "audio_quality": "high",
-                    "sample_rate": 44100,
-                    "loudnorm": {
-                        "enabled": True,
-                    },
-                },
-            }
+        # 2. Если шаблон для слота не найден — создаём новый
+        logger.info("Создаю новый шаблон Winky для [%s] %s (voice_id=%s)...", slot.upper(), service_key, voice_id)
+        tuning = self.get_tuning(slot)
+        config = self._build_template_config(slot, service_key, voice_id, tuning)
 
-        create_resp = self._client.post(
-            f"{self.BASE_URL}/templates",
-            headers=headers,
-            json={
-                "service_key": service_key,
-                "name": f"Winky {service_key}",
-                "config": config,
-            },
-            timeout=10.0,
-        )
-        create_resp.raise_for_status()
-        created = create_resp.json()
-        template_id = str(created.get("data", {}).get("id"))
-        self._templates_by_service[service_key] = template_id
-        self._save_templates_cache()
-        logger.info("Успешно создан шаблон Lumean %s для %s: %s", f"Winky {service_key}", service_key, template_id)
-        return template_id
+        try:
+            create_resp = self._client.post(
+                f"{self.BASE_URL}/templates",
+                headers=headers,
+                json={
+                    "service_key": service_key,
+                    "name": template_name,
+                    "config": config,
+                },
+                timeout=10.0,
+            )
+            if create_resp.status_code in (200, 201):
+                created = create_resp.json()
+                template_id = str(created.get("data", {}).get("id"))
+                self._templates_by_slot[slot_key] = template_id
+                self._save_templates_cache()
+                logger.info("Успешно создан шаблон Lumean %s: %s", template_name, template_id)
+                return template_id
+            else:
+                logger.warning("POST /templates вернул %d: %s, пробую минимальный config...", create_resp.status_code, create_resp.text)
+                min_cfg = {
+                    "tts_settings": {
+                        "voice_id": voice_id,
+                        "voice_settings": {"speed": float(tuning.get("speed", 1.06))},
+                    }
+                }
+                retry_resp = self._client.post(
+                    f"{self.BASE_URL}/templates",
+                    headers=headers,
+                    json={
+                        "service_key": service_key,
+                        "name": template_name,
+                        "config": min_cfg,
+                    },
+                    timeout=10.0,
+                )
+                retry_resp.raise_for_status()
+                template_id = str(retry_resp.json().get("data", {}).get("id"))
+                self._templates_by_slot[slot_key] = template_id
+                self._save_templates_cache()
+                return template_id
+        except Exception as exc:
+            logger.error("Не удалось создать шаблон Lumean: %s", exc)
+            raise TTSError(f"Не удалось подготовить шаблон Lumean для {template_name}: {exc}") from exc
 
     def get_voice_dir(self, service_key: str, voice_id: str) -> Path:
         voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
@@ -881,17 +906,8 @@ class LumeanTTS:
         voice_dir = self.get_voice_dir(service_key, voice_id)
         norm_text = normalize_cache_text(clean_text)
 
-        tuning = self.get_tuning(slot)
-        speed = float(tuning.get("speed", 1.0))
-        model = str(tuning.get("model_id", ""))
-        srate = int(tuning.get("sample_rate", 44100))
-        loudnorm = int(bool(tuning.get("normalize_volume", True)))
-        breathing = int(bool(tuning.get("breathing_pauses", True)))
-        tpl_id = (tuning.get("template_id") or "")[:8]
-
-        tuning_key = f"{speed:.2f}_{model}_{srate}_{loudnorm}_{breathing}_{tpl_id}"
         text_hash = hashlib.sha256(
-            f"{service_key}:{voice_id}:{tuning_key}:{norm_text}".encode("utf-8")
+            f"{service_key}:{voice_id}:{norm_text}".encode("utf-8")
         ).hexdigest()[:20]
         return voice_dir / f"{text_hash}.mp3"
 
@@ -904,7 +920,7 @@ class LumeanTTS:
 
     def synthesize(self, text: str, lang: str = "ru", bypass_cache: bool = False) -> Path:
         """Синтезирует речь выбранным слотом голоса (RU или EN) через прямой Keep-Alive вызов Lumean API.
-        При наличии в voice_cache/ не отправляет запрос в API (0 токенов, мгновенный возврат).
+        При наличии в voice_cache/ не отправляет запрос в API (0 токенов, мгновенный возврат 0.05с).
         При bypass_cache=True синтезирует свежую версию напрямую с сервера.
         """
         clean_text = text.strip()
@@ -938,11 +954,12 @@ class LumeanTTS:
         logger.info("Cache MISS (bypass=%s) in voice_cache/%s -> запрос в Lumean API («%s»)...", bypass_cache, voice_dir.name, clean_text[:30])
         try:
             tuning = self.get_tuning(slot)
-            template_id = tuning.get("template_id") or self._templates_by_service.get(service_key)
+            slot_key = self._slot_key(slot, service_key, voice_id)
+            template_id = tuning.get("template_id") or self._templates_by_slot.get(slot_key)
             if not template_id:
-                template_id = self._ensure_template(service_key, voice_id)
+                template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
 
-            # Человеческий текст с дыхательными микро-паузами
+            # Человеческий текст с дыхательными микро-паузами для отправки в синтезатор
             voiced_text = humanize_speech_text(
                 clean_text,
                 lang=lang,
@@ -964,9 +981,9 @@ class LumeanTTS:
 
             # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
             if create_resp.status_code in (400, 404, 422):
-                logger.warning("Шаблон %s недействителен, запрашиваю свежий...", template_id)
-                self._templates_by_service.pop(service_key, None)
-                template_id = self._ensure_template(service_key, voice_id)
+                logger.warning("Шаблон %s недействителен (%d: %s), запрашиваю свежий...", template_id, create_resp.status_code, create_resp.text)
+                self._templates_by_slot.pop(slot_key, None)
+                template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
                 order_payload["template_id"] = template_id
                 create_resp = self._client.post(
                     f"{self.BASE_URL}/orders",
@@ -981,27 +998,8 @@ class LumeanTTS:
             if not order_id:
                 raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
 
-            # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
-            if create_resp.status_code in (400, 404, 422):
-                logger.warning("Шаблон %s недействителен, запрашиваю свежий...", template_id)
-                self._templates_by_service.pop(service_key, None)
-                template_id = self._ensure_template(service_key, voice_id)
-                order_payload["template_id"] = template_id
-                create_resp = self._client.post(
-                    f"{self.BASE_URL}/orders",
-                    headers=self._headers(),
-                    json=order_payload,
-                    timeout=12.0,
-                )
-
-            create_resp.raise_for_status()
-            order_data = create_resp.json().get("data", {})
-            order_id = order_data.get("id")
-            if not order_id:
-                raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
-
-            # Шаг Б: Быстрый опрос статуса выполнения заказа (0.30с старт, 0.20с шаг)
-            time.sleep(0.30)
+            # Шаг Б: Быстрый опрос статуса выполнения заказа (0.20с старт, 0.12с шаг)
+            time.sleep(0.20)
             start_poll = time.monotonic()
             file_path: str | None = None
             while time.monotonic() - start_poll < 60.0:
@@ -1020,7 +1018,7 @@ class LumeanTTS:
                             break
                     elif status in ("failed", "cancelled", "compensated"):
                         raise TTSError(f"Заказ Lumean завершился со статусом {status}: {poll_data}")
-                time.sleep(0.20)
+                time.sleep(0.12)
 
             if not file_path:
                 raise TTSError(f"Lumean таймаут >60с заказа {order_id}")
@@ -1530,14 +1528,20 @@ class SpeechController:
             return self.engine.clear_voice_cache(lang_slot)
         return 0
 
-    def test_tuned_voice(self, lang_slot: str = "ru", bypass_cache: bool = True) -> bool:
-        """Синтезирует выразительную тестовую фразу напрямую через Lumean (без старого кэша)."""
+    def test_tuned_voice(self, lang_slot: str = "ru", tuning_data: dict | None = None, bypass_cache: bool = True) -> bool:
+        """Синтезирует короткую выразительную тестовую фразу напрямую через Lumean (без старого кэша)."""
         self.stop_current()
         slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
+        if tuning_data and isinstance(self.engine, LumeanTTS):
+            curr = self.engine.get_tuning(slot)
+            changed = any(tuning_data.get(k) != curr.get(k) for k in ("speed", "model_id", "latency", "temperature", "stability", "similarity_boost", "style", "normalize_volume", "breathing_pauses") if k in tuning_data)
+            if changed:
+                self.engine.save_voice_tuning(slot, tuning_data)
+
         if slot == "ru":
-            phrase = "Ой, приветик! Слушай, это проверка моего нового живого голоса с нормализацией громкости и естественным дыханием!"
+            phrase = "Ой, приветик! Ну как тебе мой новый живой голосок?"
         else:
-            phrase = "Hey everyone! Listen, this is a test of my new lively voice with loudness normalization and natural breathing!"
+            phrase = "Hey guys! How do you like my new lively voice?"
 
         item = SpeechItem(
             text=phrase,
