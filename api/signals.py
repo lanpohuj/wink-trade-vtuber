@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 # Пары и экспирации из SPEC (раздел 5)
 CLASSIC_PAIRS = ("EUR/USD", "GBP/USD", "USD/JPY", "AUD/USD")
 OTC_PAIRS = (
+    "AUD/USD OTC",
     "AUD/CHF OTC",
     "EUR/USD OTC",
     "GBP/USD OTC",
@@ -94,6 +95,22 @@ RATIONALE_BUY = [
         "ru": "Книга ордеров: дисбаланс ликвидности в сторону покупок (+68%)",
         "en": "Order Book: liquidity imbalance tilted toward bids (+68%)",
     },
+    {
+        "ru": "Argon Radar: резкий приток ликвидности в кластер институционального бида",
+        "en": "Argon Radar: institutional bid cluster aggressive absorption detected",
+    },
+    {
+        "ru": "Luna Scalp Engine: импульсный пробой микро-флета с нулевым лагом",
+        "en": "Luna Scalp Engine: zero-lag micro-impulse breakout confirmed",
+    },
+    {
+        "ru": "Candle Psychology: вынос стопов продавцов и формирование FVG на покупку",
+        "en": "Candle Psychology: seller stop hunt followed by bullish FVG mitigation",
+    },
+    {
+        "ru": "Winky Quant v5: синхронная бычья дивергенция на тиковом потоке",
+        "en": "Winky Quant v5: synchronous bullish divergence across tick flow",
+    },
 ]
 
 RATIONALE_SELL = [
@@ -129,17 +146,46 @@ RATIONALE_SELL = [
         "ru": "Книга ордеров: концентрация плотных лимитных заявок на продажу",
         "en": "Order Book: heavy ask cluster capping upside movement",
     },
+    {
+        "ru": "Argon Radar: сброс крупного лимитного объёма в стакан предложения",
+        "en": "Argon Radar: heavy institutional limit block capping the orderbook",
+    },
+    {
+        "ru": "Luna Scalp Engine: затухание восходящего тика и разворот микро-импульса",
+        "en": "Luna Scalp Engine: upward micro-tick exhaustion and immediate reversal",
+    },
+    {
+        "ru": "Candle Psychology: ложный пробой с формированием медвежьего пин-бара",
+        "en": "Candle Psychology: liquidity sweep above highs with strong bear rejection",
+    },
+    {
+        "ru": "Winky Quant v5: фиксация лонгов и агрессивная рыночная продажа",
+        "en": "Winky Quant v5: long liquidation cascade with heavy market sell pressure",
+    },
 ]
 
 
-def _build_rationale(pair: str, direction: str, now: float | None = None) -> tuple[list[str], list[str]]:
-    """Детерминированная выборка 2-3 факторов теханализа под сигнал."""
+def _build_rationale(pair: str, direction: str, model: str = "winky-v5", now: float | None = None) -> tuple[list[str], list[str]]:
+    """Детерминированная выборка 2-3 факторов теханализа под сигнал с учётом модели."""
     moment = int((now if now is not None else time.time()) // 5)
-    digest = hashlib.sha256(f"{pair}:{direction}:{moment}".encode()).digest()
+    digest = hashlib.sha256(f"{pair}:{direction}:{model}:{moment}".encode()).digest()
     pool = RATIONALE_BUY if direction == DIRECTION_BUY else RATIONALE_SELL
-    # Выбираем 2 или 3 фактора без повторений
+
+    model_factor_idx: int | None = None
+    if "argon" in model:
+        model_factor_idx = 8
+    elif "luna" in model:
+        model_factor_idx = 9
+    elif "fable" in model:
+        model_factor_idx = 10
+    elif "winky" in model:
+        model_factor_idx = 11
+
     count = 2 if digest[0] % 3 == 0 else 3
     indices: list[int] = []
+    if model_factor_idx is not None and model_factor_idx < len(pool):
+        indices.append(model_factor_idx)
+
     offset = 1
     while len(indices) < count and offset < len(digest):
         idx = digest[offset] % len(pool)
@@ -173,7 +219,7 @@ class SignalRequest(BaseModel):
     pair: str
     duration: str
     force_dir: Literal["BUY", "SELL"] | None = None
-    model: str = "winky-v4"
+    model: str = "winky-v5"
 
 
 class SignalResponse(BaseModel):
@@ -181,7 +227,7 @@ class SignalResponse(BaseModel):
     accuracy: int = Field(ge=1, le=100)
     pair: str
     duration: str
-    model: str = "winky-v4"
+    model: str = "winky-v5"
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
     entry_delay_sec: int = 3
@@ -384,7 +430,7 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         direction, accuracy = await _user_signal(pair)
 
     # Генерация реалистичного профессионального теханализа под сигнал
-    rationale_ru, rationale_en = _build_rationale(pair, direction)
+    rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "winky-v5")
     duration_sec = DURATION_SECONDS.get(duration, 5)
 
     async with async_session_factory() as session:
@@ -411,7 +457,7 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         accuracy=accuracy,
         pair=pair,
         duration=duration,
-        model=payload.model or "winky-v4",
+        model=payload.model or "winky-v5",
         rationale_ru=rationale_ru,
         rationale_en=rationale_en,
         entry_delay_sec=3,

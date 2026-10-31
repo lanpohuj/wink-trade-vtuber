@@ -1,42 +1,44 @@
 /* ============================================================
-   WINKY AI — Premium Trading Signals & Neural Terminal
-   Cyber-Violet & Neon Glassmorphism Theme
-   #080514 -> #12092b -> #0c1226 | Neon Emerald #00ff88 | Ruby #ff3b5c | Violet #a855f7
+   WINKY AI — Quantum Trading Terminal
+   Design Theme: Winky Quantum HUD (Obsidian + Cyber-Rose + Holographic Cyan)
+   Linear / Apple VisionOS / Bloomberg HUD Aesthetic
    ============================================================ */
 
 :root {
-  --bg-deep: #080514;
-  --bg-mid: #12092b;
-  --bg-dark: #0c1226;
+  --bg-deep: #06080F;
+  --bg-mid: #0B0E1A;
+  --bg-dark: #080B14;
 
-  --card-bg: rgba(22, 14, 46, 0.78);
-  --card-bg-solid: #160e2e;
-  --card-border: rgba(139, 92, 246, 0.35);
-  --card-border-glow: rgba(168, 85, 247, 0.55);
-  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 28px rgba(139, 92, 246, 0.18);
+  --card-bg: rgba(13, 17, 28, 0.88);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-glow: rgba(0, 240, 255, 0.35);
+  --card-shadow: 0 10px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 240, 255, 0.1);
 
-  --text-main: #f3f0ff;
-  --text-muted: rgba(243, 240, 255, 0.65);
-  --text-faint: rgba(243, 240, 255, 0.38);
+  --text-main: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --text-faint: rgba(255, 255, 255, 0.38);
 
-  --neon-violet: #a855f7;
-  --neon-purple: #8b5cf6;
-  --neon-blue: #3b82f6;
-  --neon-cyan: #06b6d4;
+  /* Фирменные квантовые цвета Winky */
+  --neon-rose: #FF2E93;
+  --neon-rose-glow: rgba(255, 46, 147, 0.45);
+  --neon-cyan: #00F0FF;
+  --neon-cyan-glow: rgba(0, 240, 255, 0.45);
+  --neon-violet: #7928CA;
 
-  --neon-green: #00ff88;
-  --neon-green-glow: rgba(0, 255, 136, 0.45);
-  --green-dark: #064e3b;
+  /* Направление сделок */
+  --neon-green: #00FF9D;
+  --neon-green-glow: rgba(0, 255, 157, 0.45);
+  --green-dark: #063820;
 
-  --neon-red: #ff3b5c;
-  --neon-red-glow: rgba(255, 59, 92, 0.45);
-  --red-dark: #4c0519;
+  --neon-red: #FF2E55;
+  --neon-red-glow: rgba(255, 46, 85, 0.45);
+  --red-dark: #3a0914;
 
-  --neon-amber: #f59e0b;
-  --amber-dark: #451a03;
+  --neon-amber: #FFB800;
+  --amber-dark: #3a2a00;
 
-  --radius-card: 18px;
-  --radius-btn: 14px;
+  --radius-card: 16px;
+  --radius-btn: 12px;
   --radius-pill: 999px;
 }
 
@@ -58,41 +60,55 @@ html, body {
 
 body {
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 50%, var(--bg-dark) 100%);
-  background-attachment: fixed;
+  background-color: var(--bg-deep);
   color: var(--text-main);
   -webkit-font-smoothing: antialiased;
   user-select: none;
   overflow-x: hidden;
 }
 
-/* Ambient Radial Glows */
+/* Миллиметровая техническая микро-сетка */
+.technical-grid-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Радиальные неоновые акценты Winky */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(100px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.32;
+  opacity: 0.28;
 }
 
-.glow-1 {
-  width: 320px;
-  height: 320px;
-  top: -60px;
+.glow-rose {
+  width: 340px;
+  height: 340px;
+  top: -80px;
   left: -80px;
-  background: radial-gradient(circle, var(--neon-purple), transparent 70%);
+  background: radial-gradient(circle, var(--neon-rose), transparent 70%);
 }
 
-.glow-2 {
-  width: 350px;
-  height: 350px;
-  bottom: 80px;
+.glow-cyan {
+  width: 360px;
+  height: 360px;
+  bottom: 60px;
   right: -90px;
-  background: radial-gradient(circle, var(--neon-blue), transparent 70%);
+  background: radial-gradient(circle, var(--neon-cyan), transparent 70%);
 }
 
-/* Confetti Canvas */
+/* Конфетти */
 .confetti-canvas {
   position: fixed;
   top: 0;
@@ -103,7 +119,7 @@ body {
   z-index: 99999;
 }
 
-/* App Container */
+/* Контейнер приложения */
 .app-container {
   max-width: 440px;
   margin: 0 auto;
@@ -114,28 +130,28 @@ body {
   position: relative;
   z-index: 1;
   padding: calc(12px + env(safe-area-inset-top)) 16px calc(76px + env(safe-area-inset-bottom));
-  gap: 14px;
+  gap: 12px;
 }
 
-/* Glassmorphism Card */
+/* Карточки в стиле матового стекла */
 .card {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--card-border);
-  box-shadow: var(--card-shadow);
   border-radius: var(--radius-card);
   padding: 16px;
+  box-shadow: var(--card-shadow);
   position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ==================== ШАПКА (.topbar) ==================== */
+/* ==================== ВЕРХНЯЯ ПАНЕЛЬ (TOPBAR) ==================== */
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4px 0;
-  gap: 8px;
 }
 
 .brand {
@@ -143,14 +159,14 @@ body {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  outline: none;
+  user-select: none;
 }
 
 .brand-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
 }
 
 .brand-info {
@@ -159,39 +175,37 @@ body {
 }
 
 .brand-title {
-  font-size: 17px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 4px;
-  color: #ffffff;
 }
 
-.ai-text {
-  background: linear-gradient(135deg, #a855f7, #00ff88);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.brand-title .ai-text {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan-glow);
 }
 
-.badge-pro {
+.badge-quantum {
+  font-family: "JetBrains Mono", monospace;
   font-size: 9px;
   font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-rose), var(--neon-violet));
+  color: #FFF;
   padding: 2px 5px;
-  border-radius: 6px;
-  background: rgba(168, 85, 247, 0.25);
-  border: 1px solid rgba(168, 85, 247, 0.6);
-  color: #c084fc;
-  box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  margin-left: 2px;
 }
 
 .brand-sub {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 10.5px;
+  color: var(--text-faint);
+  font-family: "JetBrains Mono", monospace;
   letter-spacing: 0.5px;
-  color: var(--text-muted);
-  text-transform: uppercase;
 }
 
 .topbar-actions {
@@ -200,74 +214,71 @@ body {
   gap: 8px;
 }
 
-/* Кнопка LIVE */
+/* Кнопка LIVE в шапке */
 .btn-live-toggle {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-pill);
   padding: 5px 10px;
   color: var(--text-main);
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.btn-live-toggle:active {
-  transform: scale(0.95);
-}
-
 .btn-live-toggle.active {
-  background: rgba(0, 255, 136, 0.15);
-  border-color: var(--neon-green);
-  color: var(--neon-green);
-  box-shadow: 0 0 12px var(--neon-green-glow);
+  background: rgba(0, 240, 255, 0.12);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan-glow);
 }
 
-.live-dot {
+.live-pulse-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #ef4444;
-  box-shadow: 0 0 6px #ef4444;
-  animation: pulseLive 1.5s infinite;
+  background: #FF2E55;
+  box-shadow: 0 0 6px #FF2E55;
+  animation: liveDotPulse 1.5s infinite;
 }
 
-.btn-live-toggle.active .live-dot {
-  background: var(--neon-green);
-  box-shadow: 0 0 8px var(--neon-green);
+.btn-live-toggle.active .live-pulse-dot {
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
 }
 
-@keyframes pulseLive {
+@keyframes liveDotPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 0.35; transform: scale(0.8); }
 }
 
-/* Переключатель языка */
+/* Переключатель языка RU / EN */
 .lang-switch {
   position: relative;
   display: flex;
-  padding: 3px;
+  padding: 2px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--card-border);
 }
 
 .lang-thumb {
   position: absolute;
-  top: 3px;
-  bottom: 3px;
-  width: calc(50% - 3px);
+  top: 2px;
+  bottom: 2px;
+  width: calc(50% - 2px);
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-violet));
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, var(--neon-rose), var(--neon-violet));
+  box-shadow: 0 0 10px rgba(255, 46, 147, 0.4);
   transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.lang-switch[data-active="ru"] .lang-thumb {
+.lang-switch[data-active="en"] .lang-thumb {
   transform: translateX(100%);
 }
 
@@ -277,6 +288,7 @@ body {
   background: none;
   border: none;
   color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 700;
   padding: 3px 8px;
@@ -285,7 +297,7 @@ body {
 }
 
 .lang-btn.active {
-  color: #ffffff;
+  color: #FFF;
 }
 
 /* Бейдж статуса */
@@ -294,300 +306,225 @@ body {
 }
 
 .user-status-badge .badge {
-  font-size: 11px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
   font-weight: 700;
   padding: 4px 9px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
 .user-status-badge .badge.vip {
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(168, 85, 247, 0.25));
-  border: 1px solid var(--neon-green);
-  color: var(--neon-green);
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
 }
 
 .user-status-badge .badge.guest {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(255, 184, 0, 0.12);
   border: 1px solid var(--neon-amber);
   color: var(--neon-amber);
 }
 
-/* ==================== ПЛАВАЮЩИЙ ВИДЖЕТ СТРИМЕРА ==================== */
-.live-session-widget {
-  background: rgba(18, 10, 38, 0.92);
-  border: 1px solid rgba(0, 255, 136, 0.45);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
-  margin-top: 4px;
-  animation: slideDown 0.25s ease;
+/* ==================== SLEEK 1-ROW LIVE SESSION HUD BUMPER ==================== */
+.live-session-bumper {
+  width: 100%;
+  background: rgba(13, 17, 28, 0.92);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 240, 255, 0.1);
+  animation: fadeInDown 0.25s ease;
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.live-widget-head {
+.live-bumper-track {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.live-widget-title {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: var(--neon-green);
-}
-
-.pulse-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--neon-green);
-  box-shadow: 0 0 8px var(--neon-green);
-  animation: pulseLive 1.5s infinite;
-}
-
-.live-time {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.live-widget-tools {
-  display: flex;
-  align-items: center;
   gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
 }
 
-.live-active-pair {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+.live-indicator-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--neon-cyan);
   font-weight: 700;
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  padding: 2px 7px;
+  letter-spacing: 0.5px;
+}
+
+.live-indicator-pill .live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--neon-rose);
+  box-shadow: 0 0 8px var(--neon-rose);
+  animation: liveDotPulse 1.5s infinite;
+}
+
+.live-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  color: #d8b4fe;
-}
-
-.btn-icon-xs {
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  color: var(--text-muted);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
   cursor: pointer;
-  font-size: 11px;
+  user-select: none;
+  transition: all 0.15s ease;
 }
 
-.live-widget-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.1fr;
-  gap: 8px;
+.live-stat-pill:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(0, 240, 255, 0.3);
 }
 
-.stat-counter {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 8px 10px;
-}
-
-.stat-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.pill-label {
+  color: rgba(255, 255, 255, 0.45);
   font-size: 10px;
-  font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 4px;
+  font-weight: 600;
 }
 
-.stat-number-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.win-counter .stat-value {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 22px;
-  font-weight: 800;
+.val-green {
   color: var(--neon-green);
-  text-shadow: 0 0 12px var(--neon-green-glow);
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--neon-green-glow);
 }
 
-.loss-counter .stat-value {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 22px;
-  font-weight: 800;
+.val-red {
   color: var(--neon-red);
-  text-shadow: 0 0 12px var(--neon-red-glow);
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--neon-red-glow);
 }
 
-.stat-btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.val-cyan {
+  color: var(--neon-cyan);
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--neon-cyan-glow);
 }
 
-.stat-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-radius: 4px;
-  width: 20px;
-  height: 14px;
-  font-size: 10px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stat-btn:active {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.stat-winrate-box {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(0, 255, 136, 0.1));
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 12px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.winrate-title {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-}
-
-.winrate-value {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 18px;
-  font-weight: 800;
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-  margin: 1px 0;
-}
-
-.btn-reset-stats {
+.btn-live-hide {
   background: none;
   border: none;
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--text-faint);
+  color: rgba(255, 255, 255, 0.35);
   cursor: pointer;
-  text-decoration: underline;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
 }
 
-/* ==================== ВКЛАДКИ (.tab-pane) ==================== */
-.tab-pane {
-  display: none;
+.btn-live-hide:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ==================== КАРТОЧКА НАСТРОЕК СИГНАЛА ==================== */
+.settings-card {
+  display: flex;
   flex-direction: column;
   gap: 14px;
-  animation: fadeIn 0.25s ease;
 }
 
-.tab-pane.active {
+.card-title-row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Card titles */
-.card-title {
+.card-title-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
+  color: #FFF;
   letter-spacing: 0.3px;
-  color: #ffffff;
-  margin-bottom: 14px;
 }
 
-.badge-subtle {
+.quantum-sparkle {
+  color: var(--neon-rose);
+  font-size: 14px;
+  filter: drop-shadow(0 0 6px var(--neon-rose-glow));
+}
+
+.badge-market {
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 700;
-  background: rgba(168, 85, 247, 0.18);
-  border: 1px solid rgba(168, 85, 247, 0.35);
-  color: #c084fc;
-  padding: 2px 7px;
-  border-radius: var(--radius-pill);
-  margin-left: auto;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--neon-cyan);
 }
 
-/* Market Segment (Regular / OTC) */
+/* Переключатель рынка */
 .market-segment {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-btn);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
   padding: 4px;
-  gap: 4px;
-  margin-bottom: 14px;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--card-border);
 }
 
 .segment-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 8px;
-  border-radius: 10px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .segment-btn.active {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(139, 92, 246, 0.15));
-  border: 1px solid var(--neon-purple);
-  color: #ffffff;
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Field Groups */
+.segment-btn.active#btnMarketOtc {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.18);
+}
+
+/* Группа полей ввода */
 .field-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 14px;
 }
 
 .field-label {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 11.5px;
+  font-weight: 600;
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
 }
 
 .field-label-row {
@@ -597,53 +534,73 @@ body {
 }
 
 .duration-hint {
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
+  color: var(--neon-cyan);
   font-weight: 600;
-  color: var(--neon-violet);
 }
 
-/* Custom Pair Trigger */
+/* Кастомный триггер выбора пары */
 .custom-select-trigger {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.32);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-btn);
-  padding: 12px 14px;
-  color: #ffffff;
+  padding: 10px 14px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.custom-select-trigger:active {
-  background: rgba(168, 85, 247, 0.15);
-  border-color: var(--neon-violet);
+.custom-select-trigger:hover {
+  border-color: rgba(0, 240, 255, 0.35);
+  background: rgba(0, 240, 255, 0.04);
 }
 
 .pair-visual {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-.dual-flags {
-  font-size: 18px;
-  letter-spacing: -2px;
+/* Круглые металлические перекрывающиеся значки флагов */
+.dual-flags-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.dual-flags-container .flag-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.dual-flags-container .flag-icon:last-child {
+  margin-left: -9px;
+  position: relative;
+  z-index: 1;
 }
 
 .pair-name {
   font-family: "JetBrains Mono", monospace;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 700;
+  color: #FFF;
   letter-spacing: 0.3px;
 }
 
 .trigger-chevron {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
 }
 
-/* Duration Pills */
+/* Пилюли экспирации */
 .duration-pills {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -651,47 +608,137 @@ body {
 }
 
 .duration-pill {
-  background: rgba(0, 0, 0, 0.32);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 9px 2px;
+  padding: 9px 0;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
   color: var(--text-muted);
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.2s ease;
+  text-align: center;
 }
 
-.duration-pill:active {
-  transform: scale(0.95);
+.duration-pill:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FFF;
 }
 
 .duration-pill.active {
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-violet));
-  border-color: #c084fc;
-  color: #ffffff;
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
 }
 
-/* Главная неоновая кнопка CTA */
+/* Селектор ИИ-модели прямо на экране 1 */
+.model-select-chip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-btn);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.model-select-chip:hover {
+  border-color: rgba(255, 46, 147, 0.4);
+  background: rgba(255, 46, 147, 0.04);
+}
+
+.chip-model-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chip-model-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 6px var(--neon-rose-glow));
+}
+
+.chip-model-texts {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.chip-model-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.chip-model-tier {
+  font-size: 10.5px;
+  color: var(--text-faint);
+}
+
+.chip-model-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.badge-model-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 46, 147, 0.15);
+  color: var(--neon-rose);
+  border: 1px solid rgba(255, 46, 147, 0.35);
+  letter-spacing: 0.5px;
+}
+
+/* Главная голографическая кнопка получения сигнала */
 .cta-neon {
   position: relative;
   width: 100%;
-  border: none;
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #00ff88 100%);
-  border-radius: var(--radius-btn);
   padding: 15px;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg, var(--neon-rose) 0%, var(--neon-violet) 50%, var(--neon-cyan) 100%);
+  border: none;
+  color: #FFF;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.4);
-  transition: all 0.2s ease;
-  margin-top: 4px;
+  box-shadow: 0 0 25px rgba(255, 46, 147, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
 }
 
 .cta-neon:active {
   transform: scale(0.98);
-  box-shadow: 0 0 32px rgba(0, 255, 136, 0.6);
+}
+
+.cta-neon:hover {
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.55);
+}
+
+.cta-neon-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: shineSweep 2.8s infinite;
+}
+
+@keyframes shineSweep {
+  0% { left: -100%; }
+  60%, 100% { left: 150%; }
 }
 
 .cta-neon-content {
@@ -701,23 +748,19 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #080514;
-  font-size: 15px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14.5px;
   font-weight: 800;
   letter-spacing: 0.5px;
 }
 
-.cta-icon {
-  font-size: 18px;
-}
-
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(8, 5, 20, 0.25);
-  border-top-color: #080514;
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFF;
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -727,24 +770,29 @@ body {
 .risk-hint {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 11px;
+  gap: 8px;
+  font-size: 11.5px;
   color: var(--text-faint);
-  margin-top: 10px;
+  line-height: 1.4;
+  padding: 0 4px;
 }
 
-/* ==================== 3-ФАЗНЫЙ МОДАЛЬНЫЙ СКАНЕР ==================== */
+.hint-svg {
+  color: var(--neon-amber);
+  flex-shrink: 0;
+}
+
+/* ==================== ГОЛОГРАФИЧЕСКИЙ СКАНЕР СИГНАЛА ==================== */
 .scanner-backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(4, 2, 10, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(6, 8, 15, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -752,247 +800,323 @@ body {
   animation: fadeIn 0.2s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .scanner-modal {
   width: 100%;
-  max-width: 380px;
-  background: rgba(18, 10, 38, 0.95);
-  border: 1px solid var(--neon-violet);
-  box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
-  border-radius: 22px;
-  padding: 20px;
-  position: relative;
-}
-
-.scanner-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  color: var(--text-muted);
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* ФАЗА 1: Лазерный скан */
-.scanner-phase {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 14px;
-}
-
-.scanner-header {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.scanner-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.scanner-sub {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 12px;
-  color: var(--neon-cyan);
-}
-
-.canvas-box {
-  width: 100%;
-  height: 150px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  border-radius: 12px;
+  max-width: 390px;
+  background: rgba(13, 17, 28, 0.94);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.2);
+  border-radius: 20px;
+  padding: 0;
   overflow: hidden;
-  position: relative;
+  animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#laserCanvas {
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Шапка модалки: ✕ изолирована справа, никакого наложения! */
+.scanner-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   width: 100%;
-  height: 100%;
-  display: block;
 }
 
-.laser-beam-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--neon-violet);
-  box-shadow: 0 0 16px #c084fc, 0 0 24px #a855f7;
-  pointer-events: none;
-  animation: laserSweep 1.6s ease-in-out infinite alternate;
+.scanner-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 
-@keyframes laserSweep {
-  0% { left: 5%; }
-  100% { left: 95%; }
+.scanner-header-pair {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #FFF;
+  white-space: nowrap;
 }
 
-.scanner-status {
+.scanner-header-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.pill-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+.pill-time {
+  color: var(--neon-cyan);
+  border-color: rgba(0, 240, 255, 0.35);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.pill-model {
+  color: var(--neon-rose);
+  border-color: rgba(255, 46, 147, 0.35);
+  background: rgba(255, 46, 147, 0.08);
+}
+
+.scanner-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.scanner-close-btn:hover {
+  background: rgba(255, 46, 85, 0.2);
+  border-color: var(--neon-red);
+  color: var(--neon-red);
+}
+
+/* ФАЗА 1: Холст свечей */
+.scanner-phase {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scanner-sub-status {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 12px;
   color: var(--text-muted);
+  margin-bottom: 8px;
 }
 
-.scanner-dot {
-  width: 6px;
-  height: 6px;
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--neon-violet);
-  box-shadow: 0 0 8px var(--neon-violet);
-  animation: pulseLive 1s infinite;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  animation: liveDotPulse 1.2s infinite;
 }
 
-/* ФАЗА 2: Сигнал Reveal */
-.signal-badge-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.canvas-box {
+  position: relative;
   width: 100%;
+  height: 170px;
+  background: rgba(6, 8, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 4px 0 10px;
 }
 
-.pair-pill {
+#laserCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.quote-ticker-hud {
+  position: absolute;
+  top: 8px;
+  right: 10px;
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
+  background: rgba(13, 17, 28, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 3px 8px;
+  border-radius: 6px;
   font-family: "JetBrains Mono", monospace;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.time-pill {
   font-size: 11px;
-  font-weight: 700;
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  color: #d8b4fe;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
 }
 
-/* Большой круглый индикатор 96x96px */
-.big-indicator {
+.quote-label {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 9.5px;
+}
+
+.quote-val {
+  color: var(--neon-cyan);
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.5);
+}
+
+.scanner-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.meta-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 3px 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ФАЗА 2: Двойное кольцо HUD-таймера (130x130px) */
+.hud-circle-wrap {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  margin: 12px auto 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px 0;
 }
 
-.indicator-ring {
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
+.hud-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 136px;
+  height: 136px;
+  transform: rotate(-90deg);
+}
+
+.hud-circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 6;
+}
+
+.hud-circle-progress {
+  fill: none;
+  stroke: var(--neon-cyan);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 376.99; /* 2 * PI * 60 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.05s linear;
+  filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+}
+
+.hud-inner-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  transition: all 0.3s ease;
+  text-align: center;
 }
 
-/* Индикатор BUY */
-.big-indicator.buy .indicator-ring {
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.25) 0%, rgba(6, 78, 59, 0.4) 70%, transparent 100%);
-  border: 3px solid var(--neon-green);
-  box-shadow: 0 0 35px var(--neon-green-glow), inset 0 0 20px rgba(0, 255, 136, 0.3);
-}
-
-.big-indicator.buy .indicator-arrow {
-  font-size: 30px;
-  line-height: 1;
-}
-
-.big-indicator.buy .indicator-label {
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--neon-green);
-  text-shadow: 0 0 12px var(--neon-green-glow);
-}
-
-/* Индикатор SELL */
-.big-indicator.sell .indicator-ring {
-  background: radial-gradient(circle, rgba(255, 59, 92, 0.25) 0%, rgba(76, 5, 25, 0.4) 70%, transparent 100%);
-  border: 3px solid var(--neon-red);
-  box-shadow: 0 0 35px var(--neon-red-glow), inset 0 0 20px rgba(255, 59, 92, 0.3);
-}
-
-.big-indicator.sell .indicator-arrow {
-  font-size: 30px;
-  line-height: 1;
-}
-
-.big-indicator.sell .indicator-label {
-  font-size: 17px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--neon-red);
-  text-shadow: 0 0 12px var(--neon-red-glow);
-}
-
-/* Отсчёт точки входа 3 с */
-.entry-countdown-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-pill);
-  padding: 6px 16px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #fef08a;
-}
-
-/* Рамка достоверности */
-.confidence-box {
+.hud-arrow-icon {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 8px 14px;
+  justify-content: center;
 }
 
-.confidence-label {
-  font-size: 12px;
-  color: var(--text-muted);
+.hud-arrow-icon svg {
+  filter: drop-shadow(0 0 10px currentColor);
 }
 
-.confidence-val {
+.hud-dir-label {
   font-family: "JetBrains Mono", monospace;
-  font-size: 15px;
   font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-top: 2px;
 }
 
-.confidence-val.high {
-  color: var(--neon-green);
-  text-shadow: 0 0 8px var(--neon-green-glow);
+.hud-confidence {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.confidence-val.mid {
+/* Направление BUY */
+.phase-2.buy .hud-circle-progress {
+  stroke: var(--neon-green);
+  filter: drop-shadow(0 0 8px var(--neon-green-glow));
+}
+.phase-2.buy .hud-arrow-icon { color: var(--neon-green); }
+.phase-2.buy .hud-dir-label { color: var(--neon-green); }
+
+/* Направление SELL */
+.phase-2.sell .hud-circle-progress {
+  stroke: var(--neon-red);
+  filter: drop-shadow(0 0 8px var(--neon-red-glow));
+}
+.phase-2.sell .hud-arrow-icon { color: var(--neon-red); }
+.phase-2.sell .hud-dir-label { color: var(--neon-red); }
+
+/* Обратный отсчет точки входа */
+.entry-countdown-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.entry-countdown-box.active {
+  background: rgba(0, 255, 157, 0.12);
+  border-color: var(--neon-green);
+  box-shadow: 0 0 14px var(--neon-green-glow);
+}
+
+.entry-icon {
   color: var(--neon-amber);
 }
 
-/* Экспирация с живым убывающим таймером */
+.entry-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #FFF;
+  letter-spacing: 0.5px;
+}
+
+/* Рамка экспирации */
 .expiration-box {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  background: rgba(6, 8, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
 }
 
 .expiration-head {
@@ -1002,126 +1126,147 @@ body {
 }
 
 .expiry-title {
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-muted);
+  font-weight: 600;
 }
 
 .expiry-digits {
   font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.4);
 }
 
 .expiry-progress-bg {
   width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-pill);
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
   overflow: hidden;
 }
 
 .expiry-progress-fill {
   height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  box-shadow: 0 0 10px #ec4899;
-  border-radius: var(--radius-pill);
-  transition: width 0.1s linear;
+  background: linear-gradient(90deg, var(--neon-rose), var(--neon-cyan));
+  border-radius: 999px;
+  transition: width 0.05s linear;
+}
+
+/* Факторы теханализа */
+.rationale-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.rationale-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-faint);
+  letter-spacing: 0.3px;
+}
+
+.rationale-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
 }
 
 /* ФАЗА 3: Завершение экспирации */
+.finished-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 255, 157, 0.12);
+  border: 1px solid var(--neon-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px auto 10px;
+  box-shadow: 0 0 20px var(--neon-green-glow);
+}
+
 .finished-title {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
-  color: #ffffff;
+  color: #FFF;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
 .finished-desc {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 18px;
 }
 
 .phase3-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
-  margin-top: 6px;
-}
-
-.btn-win-action {
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(6, 78, 59, 0.4));
-  border: 1px solid var(--neon-green);
-  border-radius: var(--radius-btn);
-  padding: 13px;
-  color: var(--neon-green);
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 0 16px var(--neon-green-glow);
-}
-
-.btn-win-action:active {
-  transform: scale(0.97);
 }
 
 .btn-new-signal {
   padding: 13px;
 }
 
-/* ==================== ЭКРАН 2: ИИ-АНАЛИТИК (💬 AI CHAT) ==================== */
+/* ==================== ВКЛАДКА 2: ИИ ЯДРО (AI CORE) ==================== */
 .chat-header-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 14px;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .chat-model-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .model-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(168, 85, 247, 0.25);
-  border: 1px solid var(--neon-violet);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 46, 147, 0.12);
+  border: 1px solid rgba(255, 46, 147, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 14px rgba(255, 46, 147, 0.25);
 }
 
 .model-meta {
   display: flex;
   flex-direction: column;
+  gap: 2px;
 }
 
 .model-title-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .model-title-text {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 800;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .status-online-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--neon-green);
   box-shadow: 0 0 6px var(--neon-green);
@@ -1135,292 +1280,186 @@ body {
 .chat-quick-params {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .param-chip {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-pill);
-  padding: 5px 9px;
-  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--text-main);
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.param-chip:hover {
+  border-color: rgba(0, 240, 255, 0.3);
 }
 
 .chip-arrow {
-  color: var(--text-muted);
-  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
 }
 
-/* Лента чата */
 .chat-history {
-  min-height: 360px;
-  max-height: calc(100vh - 280px);
+  min-height: 220px;
+  max-height: 380px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   padding: 14px;
 }
 
-/* Сообщения чата */
-.chat-msg {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  animation: fadeIn 0.25s ease;
+.chat-bubble {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  max-width: 90%;
+  animation: fadeIn 0.2s ease;
 }
 
-.chat-msg.user {
-  align-self: flex-end;
-  max-width: 85%;
-}
-
-.chat-msg.user .msg-bubble {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(59, 130, 246, 0.35));
-  border: 1px solid rgba(168, 85, 247, 0.45);
-  border-radius: 16px 16px 4px 16px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: #ffffff;
-}
-
-.chat-msg.bot {
+.chat-bubble.bot {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFF;
   align-self: flex-start;
-  width: 100%;
 }
 
-.chat-msg.bot .msg-author-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 2px;
+.chat-bubble.user {
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #FFF;
+  align-self: flex-end;
 }
 
-.msg-author-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: #d8b4fe;
-}
-
-/* Неоновая карточка сигнала внутри чата */
-.chat-signal-card {
-  background: rgba(14, 8, 30, 0.95);
-  border-radius: 14px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-}
-
-.chat-signal-card.buy {
-  border: 1px solid var(--neon-green);
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-}
-
-.chat-signal-card.sell {
-  border: 1px solid var(--neon-red);
-  box-shadow: 0 0 20px rgba(255, 59, 92, 0.2);
-}
-
-.chat-signal-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.chat-signal-dir {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  font-weight: 900;
-}
-
-.chat-signal-card.buy .chat-signal-dir {
-  color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green-glow);
-}
-
-.chat-signal-card.sell .chat-signal-dir {
-  color: var(--neon-red);
-  text-shadow: 0 0 10px var(--neon-red-glow);
-}
-
-.chat-accuracy-circle {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.chat-tags-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.chat-tag {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 3px 8px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.chat-rationale-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.chat-rationale-item {
-  font-size: 12px;
-  line-height: 1.4;
-  color: #e2e8f0;
-}
-
-.chat-countdown-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.btn-chat-new-signal {
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid var(--neon-violet);
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px;
-  cursor: pointer;
-  text-align: center;
-}
-
-/* Нижняя панель чата */
 .chat-input-bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
+  padding: 10px;
 }
 
 .model-picker-trigger {
   flex: 1;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(168, 85, 247, 0.35);
-  border-radius: var(--radius-btn);
-  padding: 11px 12px;
-  color: #ffffff;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #FFF;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.model-picker-trigger:hover {
+  border-color: rgba(255, 46, 147, 0.4);
+}
+
+.trigger-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .trigger-name {
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
 }
 
 .trigger-arrow {
-  margin-left: auto;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .btn-analyze {
-  background: linear-gradient(135deg, #8b5cf6, #00ff88);
-  border: none;
-  border-radius: var(--radius-btn);
-  padding: 12px 18px;
-  color: #080514;
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, var(--neon-rose), var(--neon-violet));
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: #FFF;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255, 46, 147, 0.35);
+  transition: all 0.15s ease;
 }
 
 .btn-analyze:active {
   transform: scale(0.96);
 }
 
-.btn-analyze:disabled {
-  opacity: 0.6;
-  filter: grayscale(0.8);
-  cursor: not-allowed;
+/* ==================== ВКЛАДКА 3: РАДАР И ТОП-10 (STATS) ==================== */
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* ==================== ЭКРАН 3: СТАТИСТИКА И ТОП ==================== */
 .progress-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  text-align: center;
+  gap: 8px;
 }
 
 .prog-item {
-  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 10px 6px;
 }
 
 .prog-val {
   font-family: "JetBrains Mono", monospace;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  color: #ffffff;
 }
 
 .prog-lbl {
   font-size: 10px;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
+  color: var(--text-faint);
   margin-top: 2px;
 }
 
 .card-divider {
+  width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 14px 0;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 4px 0;
 }
 
 .personal-summary {
-  font-size: 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
   color: var(--text-muted);
-  margin-bottom: 12px;
 }
 
 .lb-title {
   font-size: 13px;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 8px;
+  color: #FFF;
+  margin-top: 6px;
 }
 
 .lb-list {
@@ -1429,147 +1468,83 @@ body {
   gap: 6px;
 }
 
-.lb-item {
+.lb-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 8px 10px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 13px;
-}
-
-.lb-item.highlight {
-  background: rgba(168, 85, 247, 0.15);
-  border-color: var(--neon-violet);
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
-}
-
-.lb-place {
-  font-weight: 800;
-  width: 24px;
-}
-
-.lb-name {
-  flex: 1;
-  font-weight: 600;
-  margin-left: 6px;
-}
-
-.lb-pts {
+  border-radius: 8px;
   font-family: "JetBrains Mono", monospace;
-  font-weight: 700;
-  color: var(--neon-green);
+  font-size: 12px;
+}
+
+.lb-item-row.top-1 {
+  border-color: rgba(255, 184, 0, 0.4);
+  background: rgba(255, 184, 0, 0.08);
 }
 
 .lb-rules {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--text-faint);
   line-height: 1.4;
-  margin-top: 12px;
+  margin-top: 4px;
 }
 
-/* Живая лента сообщества */
+.feed-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .feed-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
 }
 
 .feed-head-left {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .feed-today-count {
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
-  font-weight: 700;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #fca5a5;
-  padding: 2px 7px;
-  border-radius: var(--radius-pill);
+  color: var(--neon-cyan);
 }
 
 .feed-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
-.feed-item {
+.feed-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.25);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 10px 12px;
-}
-
-.feed-item-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.feed-dir-tag {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-
-.feed-dir-tag.buy {
-  background: rgba(0, 255, 136, 0.15);
-  color: var(--neon-green);
-  border: 1px solid var(--neon-green);
-}
-
-.feed-dir-tag.sell {
-  background: rgba(255, 59, 92, 0.15);
-  color: var(--neon-red);
-  border: 1px solid var(--neon-red);
-}
-
-.feed-pair {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.feed-item-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.feed-acc {
+  border-radius: 8px;
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.feed-time {
-  font-size: 11px;
-  color: var(--text-faint);
 }
 
 .feed-total-count {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 11px;
+  color: var(--text-faint);
   text-align: center;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
-/* ==================== НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ ==================== */
+/* ==================== НИЖНЯЯ ВЕКТОРНАЯ НАВИГАЦИЯ ==================== */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -1577,62 +1552,79 @@ body {
   right: 0;
   max-width: 440px;
   margin: 0 auto;
-  background: rgba(14, 8, 30, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(6, 8, 15, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-  z-index: 100;
+  padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
+  z-index: 999;
 }
 
 .nav-item {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  justify-content: center;
+  gap: 4px;
   padding: 6px 0;
-  border-radius: 10px;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.nav-icon {
-  font-size: 18px;
-  line-height: 1;
+.nav-icon-wrap {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.nav-svg {
+  transition: color 0.2s ease, filter 0.2s ease;
 }
 
 .nav-label {
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 
 .nav-item.active {
-  color: #ffffff;
-  background: rgba(168, 85, 247, 0.15);
+  color: var(--neon-cyan);
+}
+
+.nav-item.active .nav-icon-wrap {
+  transform: translateY(-2px);
+}
+
+.nav-item.active .nav-svg {
+  color: var(--neon-cyan);
+  filter: drop-shadow(0 0 8px var(--neon-cyan-glow));
 }
 
 .nav-item.active .nav-label {
-  color: var(--neon-green);
-  text-shadow: 0 0 8px var(--neon-green-glow);
+  color: var(--neon-cyan);
 }
 
-/* ==================== ШТОРКИ И МОДАЛКИ (.sheet-backdrop) ==================== */
+/* ==================== ШТОРКИ И МОДАЛЬНЫЕ ОКНА ==================== */
 .sheet-backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(4, 2, 10, 0.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 2000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(6, 8, 15, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10000;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1642,16 +1634,16 @@ body {
 .sheet-modal {
   width: 100%;
   max-width: 440px;
-  max-height: 82vh;
-  background: #140b2b;
-  border: 1px solid var(--card-border-glow);
-  border-radius: 24px 24px 0 0;
-  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.6);
-  padding: 18px 18px calc(18px + env(safe-area-inset-bottom));
+  background: rgba(13, 17, 28, 0.96);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px 20px 0 0;
+  padding: 16px 16px calc(24px + env(safe-area-inset-bottom));
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  animation: slideUp 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 12px;
+  max-height: 82vh;
+  animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes slideUp {
@@ -1663,72 +1655,81 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sheet-title {
-  font-size: 16px;
+  font-size: 14.5px;
   font-weight: 800;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .btn-sheet-close {
-  background: rgba(255, 255, 255, 0.08);
-  border: none;
-  color: var(--text-muted);
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 14px;
 }
 
-/* Поиск валютной пары */
+/* Поиск пары */
 .pair-search-box {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-btn);
-  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.search-svg {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .pair-search-input {
   flex: 1;
   background: none;
   border: none;
+  color: #FFF;
+  font-size: 13px;
   outline: none;
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.pair-search-input::placeholder {
-  color: var(--text-faint);
 }
 
 .pair-list-scroll {
   overflow-y: auto;
-  max-height: 55vh;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  max-height: 55vh;
 }
 
 .pair-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.pair-item-row:active, .pair-item-row.active {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: var(--neon-violet);
+.pair-item-row:hover {
+  background: rgba(0, 240, 255, 0.06);
+  border-color: rgba(0, 240, 255, 0.25);
+}
+
+.pair-item-row.active {
+  background: rgba(0, 240, 255, 0.12);
+  border-color: var(--neon-cyan);
 }
 
 .pair-item-left {
@@ -1737,67 +1738,62 @@ body {
   gap: 12px;
 }
 
-.pair-item-flags {
-  font-size: 20px;
-  letter-spacing: -3px;
-}
-
 .pair-item-name {
   font-family: "JetBrains Mono", monospace;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 700;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .pair-item-badge {
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 4px;
-  background: rgba(168, 85, 247, 0.2);
-  color: #c084fc;
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--neon-cyan);
 }
 
-.pair-item-check {
-  color: var(--neon-green);
-  font-size: 16px;
-  font-weight: 800;
-}
-
-/* Список нейросетей (Nova AI style) */
+/* Шторка ИИ-моделей */
 .model-list-scroll {
   overflow-y: auto;
-  max-height: 60vh;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
+  max-height: 60vh;
 }
 
 .model-category-title {
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.8px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+  margin-bottom: 2px;
 }
 
 .model-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-.model-item-row:active, .model-item-row.active {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: var(--neon-violet);
-  box-shadow: 0 0 16px rgba(168, 85, 247, 0.25);
+.model-item-row:hover {
+  background: rgba(255, 46, 147, 0.06);
+  border-color: rgba(255, 46, 147, 0.3);
+}
+
+.model-item-row.active {
+  background: rgba(255, 46, 147, 0.12);
+  border-color: var(--neon-rose);
 }
 
 .model-item-left {
@@ -1807,7 +1803,11 @@ body {
 }
 
 .model-item-icon {
-  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .model-item-info {
@@ -1816,71 +1816,104 @@ body {
 }
 
 .model-item-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .model-item-tier {
-  font-size: 11px;
-  color: var(--text-muted);
+  font-size: 10.5px;
+  color: var(--text-faint);
 }
 
-/* ==================== МОДАЛЬНОЕ ОКНО ДЕПОЗИТА ==================== */
+.model-badge-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.model-badge-tag.hot {
+  background: rgba(255, 46, 85, 0.15);
+  color: #FF2E55;
+  border: 1px solid rgba(255, 46, 85, 0.4);
+}
+
+.model-badge-tag.new {
+  background: rgba(0, 240, 255, 0.15);
+  color: #00F0FF;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+}
+
+.model-badge-tag.core {
+  background: rgba(255, 46, 147, 0.15);
+  color: #FF2E93;
+  border: 1px solid rgba(255, 46, 147, 0.4);
+}
+
+.model-badge-tag.pro {
+  background: rgba(121, 40, 202, 0.2);
+  color: #C084FC;
+  border: 1px solid rgba(121, 40, 202, 0.4);
+}
+
+/* Модалка депозита */
 .deposit-modal {
-  width: 90%;
+  width: 100%;
   max-width: 380px;
-  background: rgba(20, 10, 42, 0.98);
-  border: 1px solid var(--neon-amber);
-  box-shadow: 0 0 40px rgba(245, 158, 11, 0.35);
-  border-radius: 22px;
-  padding: 24px 20px;
-  margin: auto;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 12px;
+  text-align: center;
+  padding: 24px 20px;
+  margin: auto;
 }
 
 .deposit-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   font-weight: 800;
-  padding: 3px 10px;
+  color: var(--neon-cyan);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  padding: 4px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(245, 158, 11, 0.2);
-  border: 1px solid var(--neon-amber);
-  color: var(--neon-amber);
+  margin: 0 auto;
 }
 
 .deposit-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
-  color: #ffffff;
+  color: #FFF;
 }
 
 .deposit-desc {
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12.5px;
   color: var(--text-muted);
+  line-height: 1.45;
 }
 
 .promo-box {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px dashed var(--neon-green);
+  background: rgba(255, 46, 147, 0.08);
+  border: 1px dashed rgba(255, 46, 147, 0.35);
   border-radius: 12px;
-  padding: 12px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin: 4px 0;
+  gap: 4px;
 }
 
 .promo-hint {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--neon-green);
+  color: var(--neon-rose);
 }
 
 .promo-code-row {
@@ -1892,60 +1925,82 @@ body {
 
 .promo-code-label {
   font-size: 11px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .promo-code-val {
   font-family: "JetBrains Mono", monospace;
-  font-size: 18px;
-  font-weight: 900;
-  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFF;
   letter-spacing: 1px;
 }
 
 .btn-copy-promo {
-  background: rgba(255, 255, 255, 0.1);
+  background: none;
   border: none;
-  border-radius: 6px;
-  padding: 4px 6px;
-  font-size: 12px;
+  color: var(--neon-cyan);
   cursor: pointer;
-  color: #ffffff;
+  padding: 2px;
+  display: flex;
+  align-items: center;
 }
 
 .deposit-actions {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100%;
   margin-top: 6px;
 }
 
 .btn-register-cta {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-violet));
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
   text-decoration: none;
+  padding: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  color: #FFF;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  font-weight: 800;
+  border-radius: var(--radius-btn);
 }
 
 .btn-deposit-cta {
   text-decoration: none;
+  padding: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  color: #FFF;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  font-weight: 800;
+  border-radius: var(--radius-btn);
 }
 
 .btn-secondary {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
   padding: 10px;
-  color: var(--text-muted);
-  font-size: 13px;
+  border-radius: var(--radius-btn);
+  font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* ==================== АДАПТИВНОСТЬ ==================== */
+@media (max-width: 360px) {
+  .app-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .duration-pills {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

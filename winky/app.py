@@ -18,6 +18,7 @@ import json
 import logging
 import os
 import random
+import sys
 import threading
 import time
 from pathlib import Path
@@ -39,7 +40,7 @@ from winky.chat_router import (
 )
 from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
-from winky.server import start_assets_server
+from winky.server import register_winky_callback, start_assets_server
 from winky.tiktok import TikTokConnector
 from winky.tts import EMOTIONS, SpeechController, compute_rms_chunks
 
@@ -56,6 +57,10 @@ class WinkyAPI:
         self._book = book
         self._avatar_window: webview.Window | None = None
         self._panel_window: webview.Window | None = None
+        self._terminal_window: webview.Window | None = None
+        self._voice_signals_enabled = True
+        self._assets_host = "127.0.0.1"
+        self._assets_port = 8790
         self._cta_enabled = True
         self._last_cta_at = 0.0
         self._chat_router: ChatRouter | None = None
@@ -63,6 +68,74 @@ class WinkyAPI:
         self._tiktok_status = "off"
         self._chat_history: list[dict] = []
         self._stream_interaction_count = 0
+
+    def set_assets_endpoint(self, host: str, port: int) -> None:
+        self._assets_host = host
+        self._assets_port = port
+
+    def open_signal_terminal(self) -> bool:
+        """Открывает десктопный оверлей-терминал Winky AI поверх Pocket Option."""
+        if self._terminal_window:
+            try:
+                self._terminal_window.show()
+                self._terminal_window.restore()
+                return True
+            except Exception:
+                self._terminal_window = None
+
+        url = f"http://{self._assets_host}:{self._assets_port}/webapp/?streamer=1&lang=ru"
+        self._terminal_window = webview.create_window(
+            "Winky AI — Quantum Terminal",
+            url=url,
+            js_api=self,
+            width=430,
+            height=780,
+            on_top=True,
+            resizable=True,
+        )
+        logger.info("Десктопный оверлей-терминал запущен: %s", url)
+        return True
+
+    def toggle_voice_signals(self, enabled: bool) -> bool:
+        self._voice_signals_enabled = bool(enabled)
+        logger.info("Озвучка торговых сигналов голосом Winky: %s", "ВКЛ" if self._voice_signals_enabled else "ВЫКЛ")
+        return self._voice_signals_enabled
+
+    def get_voice_signals_enabled(self) -> bool:
+        return self._voice_signals_enabled
+
+    def on_signal_scan(self) -> None:
+        """Реакция аватара Winky на начало сканирования: присматривается к графику."""
+        self.trigger_action("peek_closer", 2.0)
+        self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+
+    def on_signal_result(self, direction: str, pair: str = "", duration: str = "", model: str = "") -> None:
+        """Реакция аватара Winky на результат сигнала: радость + озвучка живым женским голосом."""
+        self.trigger_action("cheer", 3.0)
+        self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('excited')")
+
+        if not self._voice_signals_enabled:
+            return
+
+        is_buy = str(direction).upper() == "BUY"
+        clean_dur = duration or "5 секунд"
+        clean_model = model.split(" ")[0] if model else "Winky"
+
+        if is_buy:
+            phrases = [
+                f"Модель {clean_model} даёт уверенный сигнал ВВЕРХ! Заходим на {clean_dur}!",
+                f"Вижу сильный бычий импульс! Берём ВВЕРХ на {clean_dur}, точка входа отличная!",
+                f"Отскок от зоны ликвидности подтверждён! Сигнал ВВЕРХ на {clean_dur}!",
+            ]
+        else:
+            phrases = [
+                f"Так, вижу разворот! Сигнал ВНИЗ на {clean_dur}, уверенность максимальная!",
+                f"Модель {clean_model} фиксирует сброс ликвидности! Заходим ВНИЗ на {clean_dur}!",
+                f"Медвежий импульс подтверждён! Открываем сделку ВНИЗ на {clean_dur}!",
+            ]
+
+        chosen_phrase = random.choice(phrases)
+        self._controller.speak(chosen_phrase, lang="ru", emotion="excited", source="signal_announcement")
 
     # ---------- окна подключаются после создания ----------
 
@@ -646,6 +719,25 @@ def _start_hotkeys(api: WinkyAPI) -> None:
 
 
 def main() -> None:
+    if "--terminal" in sys.argv:
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
+        )
+        assets_host, assets_port = start_assets_server()
+        url = f"http://{assets_host}:{assets_port}/webapp/?streamer=1&lang=ru"
+        logger.info("Запуск автономного оверлей-терминала: %s", url)
+        webview.create_window(
+            "Winky AI — Quantum Terminal",
+            url=url,
+            width=430,
+            height=780,
+            on_top=True,
+            resizable=True,
+        )
+        webview.start()
+        return
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
@@ -705,9 +797,15 @@ def main() -> None:
     # Фоновый прогрев кэша быстрых реплик для мгновенного отклика при клике на кнопки
     winky_api.precache_phrases()
 
-    # Свой сервер ассетов: надёжные MIME/CORS для WebGL-текстур в WKWebView
+    # Свой сервер ассетов: надёжные MIME/CORS для WebGL-текстур в WKWebView и Mini App
     assets_host, assets_port = start_assets_server()
     base_url = f"http://{assets_host}:{assets_port}"
+    winky_api.set_assets_endpoint(assets_host, assets_port)
+    register_winky_callback("scan", winky_api.on_signal_scan)
+    register_winky_callback(
+        "signal",
+        lambda direction="BUY", pair="", duration="", model="": winky_api.on_signal_result(direction, pair, duration, model),
+    )
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None

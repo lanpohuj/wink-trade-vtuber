@@ -1,31 +1,64 @@
 /* ============================================================
-   WINKY AI — Premium Trading Signals & Neural Terminal
-   Vanilla JS (без сборки).
+   WINKY AI — Quantum Trading Terminal
+   Design: Winky Quantum HUD (Obsidian + Cyber-Rose + Holographic Cyan)
+   Vanilla JS (Zero Build Step).
    ============================================================ */
 
 "use strict";
+
+/* ==================== Векторные металлические круглые флаги ==================== */
+
+const CURRENCY_FLAGS = {
+  EUR: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#003399" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="16" cy="16" r="9" fill="none" stroke="#FFCC00" stroke-width="1.5" stroke-dasharray="2 2.7"/></svg>`,
+  USD: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#B22234" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M1 11h30M1 17h30M1 23h30" stroke="#FFF" stroke-width="2"/><path d="M1 1h15v14H1z" fill="#3C3B6E"/><circle cx="8.5" cy="8" r="2.5" fill="#FFF"/></svg>`,
+  GBP: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#012169" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M4 4l24 24M28 4L4 28" stroke="#FFF" stroke-width="4"/><path d="M4 4l24 24M28 4L4 28" stroke="#C8102E" stroke-width="2"/><path d="M16 1v30M1 16h30" stroke="#FFF" stroke-width="5.5"/><path d="M16 1v30M1 16h30" stroke="#C8102E" stroke-width="2.8"/></svg>`,
+  JPY: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#FFFFFF" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="16" cy="16" r="7" fill="#BC002D"/></svg>`,
+  AUD: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#00008B" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M2 2h13v9H2z" fill="#012169"/><path d="M2 2l13 9M15 2L2 11" stroke="#FFF" stroke-width="1.8"/><circle cx="23" cy="8" r="1.5" fill="#FFF"/><circle cx="21" cy="21" r="2" fill="#FFF"/><circle cx="9" cy="22" r="2.5" fill="#FFF"/></svg>`,
+  CAD: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#D80027" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M9 1h14v30H9z" fill="#FFF"/><path d="M16 7l2 5h4l-3 3 1 5-4-3-4 3 1-5-3-3h4z" fill="#D80027"/></svg>`,
+  CHF: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#D52B1E" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M13 7h6v18h-6zM7 13h18v6H7z" fill="#FFF"/></svg>`,
+  NZD: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#00247D" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="22" cy="9" r="1.5" fill="#CC142B" stroke="#FFF" stroke-width="0.8"/><circle cx="24" cy="16" r="1.5" fill="#CC142B" stroke="#FFF" stroke-width="0.8"/><circle cx="20" cy="22" r="1.5" fill="#CC142B" stroke="#FFF" stroke-width="0.8"/><circle cx="16" cy="17" r="1.5" fill="#CC142B" stroke="#FFF" stroke-width="0.8"/></svg>`,
+  BTC: `<svg class="flag-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#F7931A" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><text x="16" y="22" font-size="17" font-weight="bold" fill="#FFF" text-anchor="middle" font-family="'JetBrains Mono', sans-serif">₿</text></svg>`,
+  GOLD: `<svg class="flag-icon" viewBox="0 0 32 32"><defs><linearGradient id="goldGrad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#FFE066"/><stop offset="1" stop-color="#D4AF37"/></linearGradient></defs><circle cx="16" cy="16" r="15" fill="url(#goldGrad)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><text x="16" y="21" font-size="11" font-weight="900" fill="#4A3B00" text-anchor="middle" font-family="'JetBrains Mono', sans-serif">AU</text></svg>`,
+};
+
+function getDualFlagsHtml(pairId) {
+  const clean = pairId.replace(" OTC", "");
+  let c1 = "EUR";
+  let c2 = "USD";
+  if (clean === "GOLD") {
+    c1 = "GOLD";
+    c2 = "USD";
+  } else if (clean.includes("/")) {
+    const parts = clean.split("/");
+    c1 = parts[0] || "EUR";
+    c2 = parts[1] || "USD";
+  }
+  const f1 = CURRENCY_FLAGS[c1] || CURRENCY_FLAGS.EUR;
+  const f2 = CURRENCY_FLAGS[c2] || CURRENCY_FLAGS.USD;
+  return `${f1}${f2}`;
+}
 
 /* ==================== Справочники данных ==================== */
 
 const PAIRS = [
   // OTC Рынки
-  { id: "EUR/USD OTC", name: "EUR/USD", flags: "🇪🇺🇺🇸", market: "otc" },
-  { id: "GBP/USD OTC", name: "GBP/USD", flags: "🇬🇧🇺🇸", market: "otc" },
-  { id: "AUD/USD OTC", name: "AUD/USD", flags: "🇦🇺🇺🇸", market: "otc" },
-  { id: "USD/JPY OTC", name: "USD/JPY", flags: "🇺🇸🇯🇵", market: "otc" },
-  { id: "AUD/CAD OTC", name: "AUD/CAD", flags: "🇦🇺🇨🇦", market: "otc" },
-  { id: "AUD/CHF OTC", name: "AUD/CHF", flags: "🇦🇺🇨🇭", market: "otc" },
-  { id: "EUR/GBP OTC", name: "EUR/GBP", flags: "🇪🇺🇬🇧", market: "otc" },
-  { id: "USD/CHF OTC", name: "USD/CHF", flags: "🇺🇸🇨🇭", market: "otc" },
-  { id: "NZD/USD OTC", name: "NZD/USD", flags: "🇳🇿🇺🇸", market: "otc" },
-  { id: "BTC/USD OTC", name: "BTC/USD", flags: "₿🇺🇸",  market: "otc" },
-  { id: "GOLD OTC",    name: "GOLD",    flags: "🥇🇺🇸", market: "otc" },
+  { id: "EUR/USD OTC", name: "EUR/USD", market: "otc" },
+  { id: "GBP/USD OTC", name: "GBP/USD", market: "otc" },
+  { id: "AUD/USD OTC", name: "AUD/USD", market: "otc" },
+  { id: "USD/JPY OTC", name: "USD/JPY", market: "otc" },
+  { id: "AUD/CAD OTC", name: "AUD/CAD", market: "otc" },
+  { id: "AUD/CHF OTC", name: "AUD/CHF", market: "otc" },
+  { id: "EUR/GBP OTC", name: "EUR/GBP", market: "otc" },
+  { id: "USD/CHF OTC", name: "USD/CHF", market: "otc" },
+  { id: "NZD/USD OTC", name: "NZD/USD", market: "otc" },
+  { id: "BTC/USD OTC", name: "BTC/USD", market: "otc" },
+  { id: "GOLD OTC",    name: "GOLD",    market: "otc" },
 
   // Классическая биржа (Regular)
-  { id: "EUR/USD", name: "EUR/USD", flags: "🇪🇺🇺🇸", market: "classic" },
-  { id: "GBP/USD", name: "GBP/USD", flags: "🇬🇧🇺🇸", market: "classic" },
-  { id: "USD/JPY", name: "USD/JPY", flags: "🇺🇸🇯🇵", market: "classic" },
-  { id: "AUD/USD", name: "AUD/USD", flags: "🇦🇺🇺🇸", market: "classic" },
+  { id: "EUR/USD", name: "EUR/USD", market: "classic" },
+  { id: "GBP/USD", name: "GBP/USD", market: "classic" },
+  { id: "USD/JPY", name: "USD/JPY", market: "classic" },
+  { id: "AUD/USD", name: "AUD/USD", market: "classic" },
 ];
 
 const DURATIONS = [
@@ -38,161 +71,216 @@ const DURATIONS = [
   { value: "5m",  seconds: 300, label: "M5",  full: { en: "5 minutes",  ru: "5 минут" } },
 ];
 
+/* Векторные иконки ИИ-провайдеров */
+const PROVIDER_ICONS = {
+  quantum: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E93" stroke-width="2.2"><circle cx="12" cy="12" r="3" fill="#FF2E93"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#00F0FF" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#FF2E93" transform="rotate(-30 12 12)"/></svg>`,
+  luna: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="rgba(0, 240, 255, 0.25)"/></svg>`,
+  winky: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF2E93" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255, 46, 147, 0.25)"/></svg>`,
+  claude: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>`,
+  google: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.2"><path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="rgba(59, 130, 246, 0.25)"/></svg>`,
+  openai: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="#10B981"/></svg>`,
+};
+
 const AI_MODELS = [
   {
-    category: "WINKY AI (EXCLUSIVE)",
-    categoryRu: "WINKY AI (ЭКСКЛЮЗИВ)",
+    category: "NEXT-GEN QUANTUM MODELS",
+    categoryRu: "КВАНТОВЫЕ НЕЙРОСЕТИ (NEW)",
     items: [
-      { id: "winky-v4", name: "Winky Neural v4", tier: "Flagship Neural Engine", icon: "💖", isDefault: true },
+      {
+        id: "argon-x1",
+        name: "Argon Omni X1",
+        tier: "Quantum Orderflow & Tick Radar · 96% Acc",
+        tag: "HOT",
+        iconSvg: PROVIDER_ICONS.quantum,
+      },
+      {
+        id: "luna-4.5",
+        name: "Luna 4.5 Ultra",
+        tier: "High-Frequency Scalping (5s–30s) · Zero-Lag",
+        tag: "NEW",
+        iconSvg: PROVIDER_ICONS.luna,
+      },
+      {
+        id: "winky-v5",
+        name: "Winky Neural v5",
+        tier: "Proprietary Waifu Quant · Deep Liquidity",
+        tag: "CORE",
+        iconSvg: PROVIDER_ICONS.winky,
+        isDefault: true,
+      },
     ],
   },
   {
-    category: "OPENAI",
-    categoryRu: "OPENAI",
+    category: "ANTHROPIC LABS",
+    categoryRu: "ANTHROPIC LABS",
     items: [
-      { id: "gpt-5.4-pro", name: "GPT-5.4 Pro", tier: "Flagship Reasoning", icon: "🟢" },
-      { id: "gpt-5-mini",  name: "GPT-5 mini",  tier: "Ultra Fast", icon: "🟢" },
+      {
+        id: "claude-fable-5.1",
+        name: "Claude Fable 5.1",
+        tier: "Next-Gen Pattern & Candle Psychology",
+        tag: "PRO",
+        iconSvg: PROVIDER_ICONS.claude,
+      },
+      {
+        id: "claude-opus-5",
+        name: "Claude Opus 5",
+        tier: "Deep Institutional Context Analysis",
+        tag: "DEEP",
+        iconSvg: PROVIDER_ICONS.claude,
+      },
+      {
+        id: "claude-sonnet-5",
+        name: "Claude Sonnet 5",
+        tier: "Fast Momentum & RSI Divergence",
+        tag: "FAST",
+        iconSvg: PROVIDER_ICONS.claude,
+      },
     ],
   },
   {
-    category: "ANTHROPIC",
-    categoryRu: "ANTHROPIC",
+    category: "GOOGLE DEEPMIND & OPENAI",
+    categoryRu: "GOOGLE & OPENAI",
     items: [
-      { id: "claude-opus-5",    name: "Claude Opus 5",    tier: "Deep Context Analysis", icon: "🟠" },
-      { id: "claude-sonnet-5",  name: "Claude Sonnet 5",  tier: "Balanced Intelligence", icon: "🟠" },
-      { id: "claude-haiku-4.5", name: "Claude Haiku 4.5", tier: "Fast Momentum", icon: "🟠" },
-    ],
-  },
-  {
-    category: "GOOGLE",
-    categoryRu: "GOOGLE",
-    items: [
-      { id: "gemini-3.1-pro",   name: "Gemini 3.1 Pro",   tier: "Multimodal Engine", icon: "🔵" },
-      { id: "gemini-3.8-flash", name: "Gemini 3.8 Flash", tier: "Microsecond Latency", icon: "🔵" },
+      {
+        id: "gemini-3.1-pro",
+        name: "Gemini 3.1 Pro",
+        tier: "Multimodal Chart Structure Flagship",
+        tag: "FLAGSHIP",
+        iconSvg: PROVIDER_ICONS.google,
+      },
+      {
+        id: "gemini-3.8-flash",
+        name: "Gemini 3.8 Flash",
+        tier: "Sub-Second Impulse Detection",
+        tag: "MICRO",
+        iconSvg: PROVIDER_ICONS.google,
+      },
+      {
+        id: "gpt-5.4-pro",
+        name: "GPT-5.4 Pro",
+        tier: "Macro & Micro Trend Reasoning",
+        tag: "REASONING",
+        iconSvg: PROVIDER_ICONS.openai,
+      },
     ],
   },
 ];
+
+/* ==================== Словари локализации (RU / EN) ==================== */
 
 const I18N = {
   en: {
     settingsTitle: "Signal settings",
     pairLabel: "Trading pair",
     durationLabel: "Trade duration",
+    activeModelLabel: "Quantum AI Model",
     getSignal: "GET SIGNAL",
     accuracy: "Signal confidence",
-    analyzingChart: "Scanning candlestick patterns and order delta...",
-    fetchingData: "Fetching market data...",
+    analyzingChart: "Scanning orderbook and candlestick structure...",
+    fetchingData: "Fetching market quotes...",
     enterIn: "Enter in",
-    tradeActive: "🔥 Trade active!",
+    tradeActive: "⚡ TRADE ACTIVE (ENTRY!)",
     expiry: "Expiration time",
-    expiryOver: "Expiration time is over",
-    tradeClosed: "Trade session completed for this signal.",
-    btnWin: "+1 WIN (Streamer)",
-    btnNewSignal: "New signal",
-    navSignal: "SIGNAL",
-    navChat: "AI CHAT",
-    navStats: "STATS",
+    expiryOver: "Trade session completed · Target reached",
+    tradeClosed: "Trade momentum successfully captured by quantum core.",
+    btnNewSignal: "NEXT SIGNAL",
+    navSignal: "SIGNALS",
+    navChat: "AI CORE",
+    navStats: "RADAR",
     selectPair: "Select trading pair",
     searchPair: "Search pair (e.g. EUR, USD, OTC)...",
-    selectModel: "Select AI Model",
+    selectModel: "Select Quantum AI Model",
     analyzeBtn: "Analyze",
     waitSignal: "Wait for signal · {s}s",
-    liveSessionStats: "EDUCATIONAL LIVE",
-    liveWins: "WINS",
-    liveLosses: "LOSSES",
-    liveWinrate: "WINRATE",
-    reset: "Reset",
+    liveWins: "WINS:",
+    liveLosses: "LOSSES:",
+    liveWinrate: "WINRATE:",
     progressTitle: "My progress",
     pointsWeek: "points this week",
     rankLabel: "rank",
     streakLabel: "day streak",
-    leaderboardTitle: "Weekly top",
+    leaderboardTitle: "Weekly top-10",
     feedTitle: "Live signals",
     feedToday: "🔥 Today: {n}",
     feedTotal: "👥 {n} traders with us",
     feedEmpty: "No signals yet",
-    depositTitle: "Free Demo Signals Used",
-    depositDesc: "You have used all 3 free demo signals! Unlock unlimited VIP accuracy, OTC algorithms, and all AI models.",
+    depositTitle: "Demo Signals Exhausted",
+    depositDesc: "You have used all 3 free demo signals! Unlock unlimited VIP accuracy, OTC algorithms, and all 9 quantum models.",
     promoBonus: "+50% Bonus on Deposit from $50",
     registerNow: "1. FAST REGISTRATION (30s)",
-    depositNow: "2. DEPOSIT (+50% BONUS: 50START)",
+    depositNow: "2. DEPOSIT (+50% BONUS)",
     close: "Close",
-    riskHint: "Risk tip: stake ≤ 3% of your deposit",
-    chatWelcome: "Hello! I am your AI Market Analyst. Select a trading pair, timeframe, and neural network to analyze market structure.",
-    chatUserQuery: "{pair}, expiration {dur} — analyze the chart.",
-    chatAnalysisComplete: "Analysis complete. Priority signal — {dir}.",
-    chatUntil: "until",
-    chatNewSignal: "🔄 Get a new signal",
+    riskHint: "Risk management: recommended stake ≤ 3% of deposit",
+    rationaleTitle: "AI Confirmation:",
+    chatWelcome: "Hello! I am your Quantum Market Core. Select a pair, timeframe, and neural model to analyze structure.",
+    chatUserQuery: "{pair}, expiration {dur} — analyze the chart structure.",
+    chatAnalysisComplete: "Analysis complete. Dominant signal: {dir}.",
     copied: "Copied!",
   },
   ru: {
     settingsTitle: "Настройки сигнала",
     pairLabel: "Валютная пара",
     durationLabel: "Время сделки",
+    activeModelLabel: "Квантовая ИИ-модель",
     getSignal: "ПОЛУЧИТЬ СИГНАЛ",
     accuracy: "Уверенность сигнала",
-    analyzingChart: "ИИ сканирует свечной паттерн и объёмы...",
+    analyzingChart: "Сканирование биржевого стакана и свечной структуры...",
     fetchingData: "Загрузка котировок...",
     enterIn: "Вход через",
-    tradeActive: "🔥 Вход открыт!",
+    tradeActive: "⚡ СДЕЛКА АКТИВНА (ВХОД!)",
     expiry: "Время экспирации",
-    expiryOver: "Время сделки завершено",
-    tradeClosed: "Торговая сессия по этому сигналу окончена.",
-    btnWin: "+1 ПОБЕДА (Стрим)",
-    btnNewSignal: "Новый сигнал",
+    expiryOver: "Сессия завершена · Точка отработана",
+    tradeClosed: "Торговый импульс зафиксирован квантовым ядром.",
+    btnNewSignal: "СЛЕДУЮЩИЙ СИГНАЛ",
     navSignal: "СИГНАЛЫ",
-    navChat: "ИИ ЧАТ",
-    navStats: "РЕЙТИНГ",
+    navChat: "ИИ ЯДРО",
+    navStats: "РАДАР",
     selectPair: "Выбор валютной пары",
     searchPair: "Поиск пары (напр. EUR, USD, OTC)...",
-    selectModel: "Выбор нейросети",
+    selectModel: "Выбор квантовой ИИ-модели",
     analyzeBtn: "Анализировать",
     waitSignal: "Ждите сигнала · {s}с",
-    liveSessionStats: "СТРИМ ТАБЛО",
-    liveWins: "ПОБЕДЫ",
-    liveLosses: "МИНУСЫ",
-    liveWinrate: "ВИНРЕЙТ",
-    reset: "Сброс",
+    liveWins: "ПОБЕДЫ:",
+    liveLosses: "МИНУСЫ:",
+    liveWinrate: "ВИНРЕЙТ:",
     progressTitle: "Мой прогресс",
     pointsWeek: "баллов за неделю",
-    rankLabel: "место",
+    rankLabel: "ранг",
     streakLabel: "дней подряд",
-    leaderboardTitle: "Топ недели",
+    leaderboardTitle: "Топ-10 недели",
     feedTitle: "Сигналы в эфире",
     feedToday: "🔥 Сегодня: {n}",
     feedTotal: "👥 {n} трейдеров с нами",
     feedEmpty: "Сигналов пока нет",
     depositTitle: "Демо-сигналы исчерпаны",
-    depositDesc: "Вы использовали 3 из 3 бесплатных демо-сигнала! Откройте безлимитный доступ к сигналам, OTC-алгоритмам и всем нейросетям.",
+    depositDesc: "Вы использовали 3 из 3 бесплатных демо-сигнала! Откройте безлимитный доступ к сигналам, OTC-алгоритмам и всем 9 квантовым нейросетям.",
     promoBonus: "+50% к депозиту от $50",
     registerNow: "1. БЫСТРАЯ РЕГИСТРАЦИЯ (30 сек)",
-    depositNow: "2. ПОПОЛНИТЬ СЧЁТ (+50% КОД: 50START)",
+    depositNow: "2. ПОПОЛНИТЬ СЧЁТ (+50% БОНУС)",
     close: "Закрыть",
-    riskHint: "Совет по риску: ставка ≤ 3% депозита",
-    chatWelcome: "Привет! Я твой ИИ-аналитик. Выбери валютную пару, таймфрейм и нейросеть для полного разбора структуры графика.",
-    chatUserQuery: "{pair}, время экспирации {dur} — проанализируй график.",
-    chatAnalysisComplete: "Анализ завершён. Приоритетный сигнал — {dir}.",
-    chatUntil: "до",
-    chatNewSignal: "🔄 Получить новый сигнал",
+    riskHint: "Мани-менеджмент: рекомендуемая ставка не более 3% от депозита",
+    rationaleTitle: "Подтверждение ИИ:",
+    chatWelcome: "Привет! Я твоё Квантовое Торговое Ядро. Выбери валютную пару, таймфрейм и нейросеть для полного анализа структуры.",
+    chatUserQuery: "{pair}, экспирация {dur} — проанализируй структуру графика.",
+    chatAnalysisComplete: "Анализ завершён. Доминантный сигнал: {dir}.",
     copied: "Скопировано!",
   },
 };
 
 /* ==================== Состояние приложения ==================== */
 
-// Читаем параметры из URL (?tg_id=...&lang=...&streamer=1)
 const urlParams = new URLSearchParams(window.location.search);
 const queryTgId = urlParams.get("tg_id") ? parseInt(urlParams.get("tg_id"), 10) : null;
 const queryLang = urlParams.get("lang") === "ru" || urlParams.get("lang") === "en" ? urlParams.get("lang") : null;
 const isStreamerParam = urlParams.get("streamer") === "1";
 
 const state = {
-  lang: queryLang || localStorage.getItem("winky_lang") || "en",
+  lang: queryLang || localStorage.getItem("winky_lang") || "ru",
   market: "otc",
   pair: "EUR/USD OTC",
   duration: "5s",
-  model: "winky-v4",
-  forceDir: null, // Скрытый режим стримера: BUY — клик по бренду, SELL — клик по настройкам
+  model: "winky-v5",
+  forceDir: null, // Скрытый режим стримера: BUY — клик по бренду, SELL — клик по заголовку настроек
   tgId: queryTgId,
   isVip: false,
   freeSignalsLeft: 3,
@@ -200,10 +288,8 @@ const state = {
   depositUrl: "",
   promoCode: "50START",
   busy: false,
-  activeTimer: null,
   activeInterval: null,
-  history: null,
-  // Live session widget stats
+  // Live Session HUD bumper
   liveWins: parseInt(localStorage.getItem("winky_live_wins") || "42", 10),
   liveLosses: parseInt(localStorage.getItem("winky_live_losses") || "1", 10),
   liveVisible: isStreamerParam || localStorage.getItem("winky_live_vis") === "true",
@@ -224,7 +310,6 @@ if (tg) {
   }
 }
 if (!state.tgId) {
-  // Для тестирования в обычном браузере
   state.tgId = 7166130676;
 }
 
@@ -246,22 +331,19 @@ const settingsTitleEl = document.getElementById("settingsTitle");
 const btnLiveToggle = document.getElementById("btnLiveToggle");
 const liveWidget = document.getElementById("liveWidget");
 const btnCloseLive = document.getElementById("btnCloseLive");
+const liveClockEl = document.getElementById("liveClock");
+const pillWins = document.getElementById("pillWins");
+const pillLosses = document.getElementById("pillLosses");
+const pillWinrate = document.getElementById("pillWinrate");
 const winCountEl = document.getElementById("winCount");
 const lossCountEl = document.getElementById("lossCount");
 const winRateValEl = document.getElementById("winRateVal");
-const btnWinMinus = document.getElementById("btnWinMinus");
-const btnWinPlus = document.getElementById("btnWinPlus");
-const btnLossMinus = document.getElementById("btnLossMinus");
-const btnLossPlus = document.getElementById("btnLossPlus");
-const btnResetLive = document.getElementById("btnResetLive");
-const liveClockEl = document.getElementById("liveClock");
-const livePairEl = document.getElementById("livePair");
 
 const langSwitchEl = document.getElementById("langSwitch");
-const langButtons = Array.from(document.querySelectorAll(".lang-btn"));
+const langButtons = langSwitchEl.querySelectorAll(".lang-btn");
 const badgeVip = document.getElementById("badgeVip");
 const badgeGuest = document.getElementById("badgeGuest");
-const guestCountEl = document.getElementById("guestCount");
+const guestCount = document.getElementById("guestCount");
 
 const btnMarketOtc = document.getElementById("btnMarketOtc");
 const btnMarketRegular = document.getElementById("btnMarketRegular");
@@ -269,61 +351,83 @@ const marketBadge = document.getElementById("marketBadge");
 const pairTrigger = document.getElementById("pairTrigger");
 const pairFlagsEl = document.getElementById("pairFlags");
 const pairDisplayEl = document.getElementById("pairDisplay");
-const durationPills = Array.from(document.querySelectorAll(".duration-pill"));
 const durationHint = document.getElementById("durationHint");
+const durationPills = document.querySelectorAll(".duration-pill");
 const signalBtn = document.getElementById("signalBtn");
 const ctaText = document.getElementById("ctaText");
 const ctaSpinner = document.getElementById("ctaSpinner");
 
-// Сканер (Elite Option Style)
+// Селектор модели на экране 1
+const mainModelChip = document.getElementById("mainModelChip");
+const mainModelIcon = document.getElementById("mainModelIcon");
+const mainModelName = document.getElementById("mainModelName");
+const mainModelTier = document.getElementById("mainModelTier");
+const mainModelTag = document.getElementById("mainModelTag");
+
+// Сканер модалка
 const scannerBackdrop = document.getElementById("scannerBackdrop");
 const btnCloseScanner = document.getElementById("btnCloseScanner");
+const phaseHeaderFlags = document.getElementById("phaseHeaderFlags");
+const phaseHeaderPair = document.getElementById("phaseHeaderPair");
+const phaseHeaderTime = document.getElementById("phaseHeaderTime");
+const phaseHeaderModel = document.getElementById("phaseHeaderModel");
+
 const phase1 = document.getElementById("phase1");
-const phase2 = document.getElementById("phase2");
-const phase3 = document.getElementById("phase3");
+const phase1Status = document.getElementById("phase1Status");
 const laserCanvas = document.getElementById("laserCanvas");
-const phase1Title = document.getElementById("phase1Title");
-const phase1Pair = document.getElementById("phase1Pair");
-const phase2Flags = document.getElementById("phase2Flags");
-const phase2Pair = document.getElementById("phase2Pair");
-const phase2Duration = document.getElementById("phase2Duration");
-const bigIndicator = document.getElementById("bigIndicator");
-const indicatorArrow = document.getElementById("indicatorArrow");
-const indicatorLabel = document.getElementById("indicatorLabel");
+const quoteVal = document.getElementById("quoteVal");
+
+const phase2 = document.getElementById("phase2");
+const hudProgressCircle = document.getElementById("hudProgressCircle");
+const hudArrowIcon = document.getElementById("hudArrowIcon");
+const hudDirLabel = document.getElementById("hudDirLabel");
+const hudConfidence = document.getElementById("hudConfidence");
+const entryBox = document.getElementById("entryBox");
 const entryText = document.getElementById("entryText");
-const confidenceVal = document.getElementById("confidenceVal");
 const expiryDigits = document.getElementById("expiryDigits");
 const expiryProgressFill = document.getElementById("expiryProgressFill");
-const btnSignalWin = document.getElementById("btnSignalWin");
+const rationaleList = document.getElementById("rationaleList");
+
+const phase3 = document.getElementById("phase3");
 const btnNewSignal = document.getElementById("btnNewSignal");
 
-// Вкладки и навигация
-const navItems = Array.from(document.querySelectorAll(".nav-item"));
-const tabPanes = Array.from(document.querySelectorAll(".tab-pane"));
-
-// Шторка выбора пары
-const pairModalBackdrop = document.getElementById("pairModalBackdrop");
-const btnClosePairModal = document.getElementById("btnClosePairModal");
-const pairSearchInput = document.getElementById("pairSearchInput");
-const pairListEl = document.getElementById("pairList");
-
-// Чат
+// AI Core
 const chatModelAvatar = document.getElementById("chatModelAvatar");
 const chatModelName = document.getElementById("chatModelName");
 const chatModelSub = document.getElementById("chatModelSub");
+const chatPairChip = document.getElementById("chatPairChip");
 const chatChipFlags = document.getElementById("chatChipFlags");
 const chatChipPair = document.getElementById("chatChipPair");
-const chatChipDuration = document.getElementById("chatChipDuration");
-const chatPairChip = document.getElementById("chatPairChip");
 const chatDurationChip = document.getElementById("chatDurationChip");
+const chatChipDuration = document.getElementById("chatChipDuration");
 const chatHistory = document.getElementById("chatHistory");
 const modelPickerTrigger = document.getElementById("modelPickerTrigger");
 const triggerModelIcon = document.getElementById("triggerModelIcon");
 const triggerModelName = document.getElementById("triggerModelName");
 const btnAnalyze = document.getElementById("btnAnalyze");
-const analyzeText = document.getElementById("analyzeText");
 
-// Шторка выбора модели
+// Stats
+const progPoints = document.getElementById("progPoints");
+const progRank = document.getElementById("progRank");
+const progStreak = document.getElementById("progStreak");
+const progPersonal = document.getElementById("progPersonal");
+const lbList = document.getElementById("lbList");
+const lbRules = document.getElementById("lbRules");
+const feedList = document.getElementById("feedList");
+const feedToday = document.getElementById("feedToday");
+const feedTotal = document.getElementById("feedTotal");
+
+// Bottom Nav
+const navItems = document.querySelectorAll(".bottom-nav .nav-item");
+const tabPanes = document.querySelectorAll(".tab-pane");
+
+// Шторка пар
+const pairModalBackdrop = document.getElementById("pairModalBackdrop");
+const btnClosePairModal = document.getElementById("btnClosePairModal");
+const pairSearchInput = document.getElementById("pairSearchInput");
+const pairListEl = document.getElementById("pairList");
+
+// Шторка моделей
 const modelSheetBackdrop = document.getElementById("modelSheetBackdrop");
 const btnCloseModelSheet = document.getElementById("btnCloseModelSheet");
 const modelListEl = document.getElementById("modelList");
@@ -331,27 +435,15 @@ const modelListEl = document.getElementById("modelList");
 // Модалка депозита
 const depositModalBackdrop = document.getElementById("depositModalBackdrop");
 const btnCloseDeposit = document.getElementById("btnCloseDeposit");
-const btnCopyPromo = document.getElementById("btnCopyPromo");
 const btnRegisterLink = document.getElementById("btnRegisterLink");
 const btnDepositLink = document.getElementById("btnDepositLink");
-const userStatusBadge = document.getElementById("userStatusBadge");
-
-// Прогресс и лента
-const progPoints = document.getElementById("progPoints");
-const progRank = document.getElementById("progRank");
-const progStreak = document.getElementById("progStreak");
-const progPersonal = document.getElementById("progPersonal");
-const lbList = document.getElementById("lbList");
-const lbRules = document.getElementById("lbRules");
-const feedToday = document.getElementById("feedToday");
-const feedTotal = document.getElementById("feedTotal");
-const feedList = document.getElementById("feedList");
+const btnCopyPromo = document.getElementById("btnCopyPromo");
 
 /* ==================== Утилиты и локализация ==================== */
 
 function t(key, vars = {}) {
-  const dict = I18N[state.lang] || I18N.en;
-  let str = dict[key] || I18N.en[key] || key;
+  const dict = I18N[state.lang] || I18N.ru;
+  let str = dict[key] || I18N.ru[key] || key;
   for (const [k, v] of Object.entries(vars)) {
     str = str.replace(new RegExp(`\\{${k}\\}`, "g"), v);
   }
@@ -375,7 +467,7 @@ function applyLang() {
 
   updateCtaLabel();
   updateDepositLinks();
-  renderChatModelInfo();
+  renderActiveModelUI();
   updateDurationHint();
 }
 
@@ -386,7 +478,7 @@ function updateCtaLabel() {
 
 function updateDurationHint() {
   const durObj = DURATIONS.find((d) => d.value === state.duration) || DURATIONS[0];
-  durationHint.textContent = durObj.full[state.lang] || durObj.full.en;
+  durationHint.textContent = durObj.full[state.lang] || durObj.full.ru;
 }
 
 function updateDepositLinks() {
@@ -405,7 +497,7 @@ function updateDepositLinks() {
   if (btnDepositLink) btnDepositLink.href = depUrl;
 }
 
-/* ==================== Часы и Live Session Stats ==================== */
+/* ==================== Часы и Live Session HUD Bumper ==================== */
 
 function updateLiveClock() {
   const now = new Date();
@@ -423,7 +515,6 @@ function updateLiveStatsUI() {
   const total = state.liveWins + state.liveLosses;
   const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "0.0";
   winRateValEl.textContent = `${rate}%`;
-  livePairEl.textContent = state.pair;
 
   localStorage.setItem("winky_live_wins", state.liveWins);
   localStorage.setItem("winky_live_losses", state.liveLosses);
@@ -444,41 +535,52 @@ btnCloseLive.addEventListener("click", () => {
   updateLiveStatsUI();
 });
 
-btnWinPlus.addEventListener("click", () => {
+// Скрытое управление стримера кликом/двойным кликом по плашкам
+pillWins.addEventListener("click", (e) => {
   state.liveWins++;
   updateLiveStatsUI();
   haptic("light");
 });
 
-btnWinMinus.addEventListener("click", () => {
-  if (state.liveWins > 0) state.liveWins--;
+pillWins.addEventListener("dblclick", (e) => {
+  e.preventDefault();
+  if (state.liveWins > 0) state.liveWins -= 2; // -2 т.к. первый клик уже сделал +1
+  state.liveWins = Math.max(0, state.liveWins);
   updateLiveStatsUI();
-  haptic("light");
+  haptic("medium");
 });
 
-btnLossPlus.addEventListener("click", () => {
+pillLosses.addEventListener("click", (e) => {
   state.liveLosses++;
   updateLiveStatsUI();
   haptic("light");
 });
 
-btnLossMinus.addEventListener("click", () => {
-  if (state.liveLosses > 0) state.liveLosses--;
-  updateLiveStatsUI();
-  haptic("light");
-});
-
-btnResetLive.addEventListener("click", () => {
-  state.liveWins = 0;
-  state.liveLosses = 0;
+pillLosses.addEventListener("dblclick", (e) => {
+  e.preventDefault();
+  if (state.liveLosses > 0) state.liveLosses -= 2;
+  state.liveLosses = Math.max(0, state.liveLosses);
   updateLiveStatsUI();
   haptic("medium");
 });
 
-/* ==================== Праздничные конфетти (1-Click WIN) ==================== */
+pillWinrate.addEventListener("click", () => {
+  // Сброс или возврат дефолтного счета
+  if (state.liveWins === 42 && state.liveLosses === 1) {
+    state.liveWins = 0;
+    state.liveLosses = 0;
+  } else {
+    state.liveWins = 42;
+    state.liveLosses = 1;
+  }
+  updateLiveStatsUI();
+  haptic("medium");
+});
+
+/* ==================== Праздничные конфетти ==================== */
 
 const confettiCanvas = document.getElementById("confettiCanvas");
-const ctx = confettiCanvas.getContext("2d");
+const cCtx = confettiCanvas.getContext("2d");
 let confettiParticles = [];
 let confettiAnimationId = null;
 
@@ -491,8 +593,8 @@ resizeConfetti();
 
 function fireConfetti() {
   haptic("success");
-  const count = 75;
-  const colors = ["#00ff88", "#a855f7", "#ec4899", "#3b82f6", "#fef08a", "#ffffff"];
+  const count = 70;
+  const colors = ["#00FF9D", "#FF2E93", "#00F0FF", "#7928CA", "#FFE066", "#FFFFFF"];
   for (let i = 0; i < count; i++) {
     confettiParticles.push({
       x: window.innerWidth * 0.5,
@@ -513,7 +615,7 @@ function fireConfetti() {
 }
 
 function animateConfetti() {
-  ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+  cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
   for (let i = confettiParticles.length - 1; i >= 0; i--) {
     const p = confettiParticles[i];
     p.x += p.vx;
@@ -527,94 +629,183 @@ function animateConfetti() {
       continue;
     }
 
-    ctx.save();
-    ctx.globalAlpha = p.alpha;
-    ctx.translate(p.x, p.y);
-    ctx.rotate((p.rotation * Math.PI) / 180);
-    ctx.fillStyle = p.color;
-    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-    ctx.restore();
+    cCtx.save();
+    cCtx.globalAlpha = p.alpha;
+    cCtx.translate(p.x, p.y);
+    cCtx.rotate((p.rotation * Math.PI) / 180);
+    cCtx.fillStyle = p.color;
+    cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+    cCtx.restore();
   }
 
   if (confettiParticles.length > 0) {
     confettiAnimationId = requestAnimationFrame(animateConfetti);
   } else {
     confettiAnimationId = null;
-    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
   }
 }
 
-/* ==================== Лазерная анимация сканера (Canvas) ==================== */
+/* ==================== Холст японских свечей и лазерного скана ==================== */
 
 let laserAnimId = null;
-function startLaserScanAnimation(pairName) {
+
+function startCandlestickScan() {
   const canvas = laserCanvas;
   const c = canvas.getContext("2d");
   const w = canvas.width;
   const h = canvas.height;
 
-  let step = 0;
-  // Генерируем псевдо-свечи
-  const points = [];
-  let y = h * 0.5;
-  for (let x = 0; x < w; x += 12) {
-    y += (Math.random() - 0.48) * 14;
-    y = Math.max(20, Math.min(h - 20, y));
-    points.push({ x, y });
+  // Генерируем набор из 16 свечей
+  const candles = [];
+  const candleW = 12;
+  const gap = 8;
+  const totalW = 16 * (candleW + gap);
+  const startX = 16;
+  let curPrice = 1.08450;
+
+  for (let i = 0; i < 16; i++) {
+    const delta = (Math.random() - 0.48) * 0.00028;
+    const open = curPrice;
+    const close = open + delta;
+    const high = Math.max(open, close) + Math.random() * 0.00015;
+    const low = Math.min(open, close) - Math.random() * 0.00015;
+    curPrice = close;
+    candles.push({ open, close, high, low });
   }
+
+  const allLows = candles.map((cd) => cd.low);
+  const allHighs = candles.map((cd) => cd.high);
+  const minP = Math.min(...allLows);
+  const maxP = Math.max(...allHighs);
+  const range = maxP - minP || 0.0005;
+
+  function toY(price) {
+    return h - 25 - ((price - minP) / range) * (h - 50);
+  }
+
+  let scanX = 0;
+  let scanSpeed = 2.4;
+
+  const statuses = [
+    t("analyzingChart"),
+    "Scanning Liquidity Delta & Orderbook...",
+    "Order Block Rejection Confirmed...",
+    "Quantum Signal Imbalance: Optimal Entry Found!",
+  ];
+  let statusIdx = 0;
+  const statusTimer = setInterval(() => {
+    statusIdx = (statusIdx + 1) % statuses.length;
+    phase1Status.textContent = statuses[statusIdx];
+  }, 450);
 
   function render() {
     c.clearRect(0, 0, w, h);
 
-    // Сетка
-    c.strokeStyle = "rgba(168, 85, 247, 0.12)";
+    // Микро-сетка графика
+    c.strokeStyle = "rgba(255, 255, 255, 0.04)";
     c.lineWidth = 1;
-    for (let x = 0; x < w; x += 30) {
+    for (let x = 0; x < w; x += 25) {
       c.beginPath();
       c.moveTo(x, 0);
       c.lineTo(x, h);
       c.stroke();
     }
-    for (let py = 0; py < h; py += 30) {
+    for (let y = 0; y < h; y += 25) {
       c.beginPath();
-      c.moveTo(0, py);
-      c.lineTo(w, py);
+      c.moveTo(0, y);
+      c.lineTo(w, y);
       c.stroke();
     }
 
-    // Траектория цены
-    c.strokeStyle = "#a855f7";
-    c.lineWidth = 2.5;
+    // Подсветка зоны Order Block / Liquidity
+    c.fillStyle = "rgba(0, 240, 255, 0.08)";
+    c.strokeStyle = "rgba(0, 240, 255, 0.25)";
+    c.lineWidth = 1;
+    const obY = toY(maxP - range * 0.35);
+    c.fillRect(0, obY, w, 28);
+    c.strokeRect(0, obY, w, 28);
+
+    c.font = "8.5px 'JetBrains Mono', monospace";
+    c.fillStyle = "rgba(0, 240, 255, 0.6)";
+    c.fillText("ORDER BLOCK (FVG)", 8, obY + 18);
+
+    // Отрисовка свечей
+    candles.forEach((cd, i) => {
+      const x = startX + i * (candleW + gap);
+      const openY = toY(cd.open);
+      const closeY = toY(cd.close);
+      const highY = toY(cd.high);
+      const lowY = toY(cd.low);
+      const isUp = cd.close >= cd.open;
+
+      const candleColor = isUp ? "#00FF9D" : "#FF2E55";
+      c.strokeStyle = candleColor;
+      c.fillStyle = candleColor;
+
+      // Тени свечи
+      c.lineWidth = 1.2;
+      c.beginPath();
+      c.moveTo(x + candleW / 2, highY);
+      c.lineTo(x + candleW / 2, lowY);
+      c.stroke();
+
+      // Тело свечи
+      const top = Math.min(openY, closeY);
+      const height = Math.max(2, Math.abs(openY - closeY));
+      c.fillRect(x, top, candleW, height);
+    });
+
+    // Голубая скользящая средняя EMA-9
+    c.strokeStyle = "#00F0FF";
+    c.lineWidth = 1.8;
     c.beginPath();
-    points.forEach((pt, i) => {
-      if (i === 0) c.moveTo(pt.x, pt.y);
-      else c.lineTo(pt.x, pt.y);
+    candles.forEach((cd, i) => {
+      const x = startX + i * (candleW + gap) + candleW / 2;
+      const y = toY((cd.open + cd.close) / 2);
+      if (i === 0) c.moveTo(x, y);
+      else c.lineTo(x, y);
     });
     c.stroke();
 
-    // Заливка под графиком
-    c.lineTo(w, h);
-    c.lineTo(0, h);
-    c.closePath();
-    const grad = c.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, "rgba(168, 85, 247, 0.25)");
-    grad.addColorStop(1, "rgba(168, 85, 247, 0.0)");
-    c.fillStyle = grad;
-    c.fill();
+    // Вертикальный сканирующий луч
+    scanX += scanSpeed;
+    if (scanX > w) scanX = 0;
 
-    step++;
+    const beamGrad = c.createLinearGradient(scanX - 15, 0, scanX + 2, 0);
+    beamGrad.addColorStop(0, "rgba(0, 240, 255, 0)");
+    beamGrad.addColorStop(0.8, "rgba(0, 240, 255, 0.35)");
+    beamGrad.addColorStop(1, "rgba(0, 240, 255, 0.9)");
+
+    c.fillStyle = beamGrad;
+    c.fillRect(scanX - 15, 0, 17, h);
+
+    c.strokeStyle = "#00F0FF";
+    c.lineWidth = 1.5;
+    c.beginPath();
+    c.moveTo(scanX, 0);
+    c.lineTo(scanX, h);
+    c.stroke();
+
+    // Живая флуктуирующая котировка
+    const liveTick = (1.08400 + Math.sin(Date.now() / 200) * 0.00045).toFixed(5);
+    quoteVal.textContent = liveTick;
+
     laserAnimId = requestAnimationFrame(render);
   }
 
   render();
+
+  return () => {
+    clearInterval(statusTimer);
+    if (laserAnimId) {
+      cancelAnimationFrame(laserAnimId);
+      laserAnimId = null;
+    }
+  };
 }
 
-function stopLaserScanAnimation() {
-  if (laserAnimId) {
-    cancelAnimationFrame(laserAnimId);
-    laserAnimId = null;
-  }
-}
+let stopLaserScan = null;
 
 /* ==================== Управление парами и рынком ==================== */
 
@@ -624,7 +815,6 @@ function setMarket(marketKey) {
   btnMarketRegular.classList.toggle("active", marketKey === "classic");
   marketBadge.textContent = marketKey === "otc" ? "OTC 24/7" : "REGULAR";
 
-  // Проверяем, подходит ли текущая пара
   const current = PAIRS.find((p) => p.id === state.pair);
   if (!current || current.market !== marketKey) {
     const firstMatch = PAIRS.find((p) => p.market === marketKey);
@@ -641,11 +831,10 @@ function selectPair(pairId) {
   state.pair = found.id;
   state.market = found.market;
 
-  pairFlagsEl.textContent = found.flags;
+  pairFlagsEl.innerHTML = getDualFlagsHtml(found.id);
   pairDisplayEl.textContent = found.id;
-  chatChipFlags.textContent = found.flags;
+  chatChipFlags.innerHTML = getDualFlagsHtml(found.id);
   chatChipPair.textContent = found.id;
-  livePairEl.textContent = found.id;
 
   btnMarketOtc.classList.toggle("active", found.market === "otc");
   btnMarketRegular.classList.toggle("active", found.market === "classic");
@@ -675,12 +864,11 @@ function renderPairList(filter = "") {
     row.className = `pair-item-row ${p.id === state.pair ? "active" : ""}`;
     row.innerHTML = `
       <div class="pair-item-left">
-        <span class="pair-item-flags">${p.flags}</span>
+        <span class="dual-flags-container">${getDualFlagsHtml(p.id)}</span>
         <span class="pair-item-name">${p.id}</span>
       </div>
       <div class="pair-item-right">
         ${p.market === "otc" ? '<span class="pair-item-badge">OTC</span>' : ""}
-        ${p.id === state.pair ? '<span class="pair-item-check">✓</span>' : ""}
       </div>
     `;
     row.addEventListener("click", () => selectPair(p.id));
@@ -711,7 +899,6 @@ durationPills.forEach((pill) => {
 });
 
 chatDurationChip.addEventListener("click", () => {
-  // Циклическое переключение таймфрейма по тапу
   const idx = DURATIONS.findIndex((d) => d.value === state.duration);
   const next = DURATIONS[(idx + 1) % DURATIONS.length];
   state.duration = next.value;
@@ -722,31 +909,39 @@ chatDurationChip.addEventListener("click", () => {
   haptic("light");
 });
 
-/* ==================== Шторка выбора AI-Модели ==================== */
+/* ==================== Шторка и выбор ИИ-модели ==================== */
+
+function getModelById(modelId) {
+  for (const cat of AI_MODELS) {
+    const it = cat.items.find((m) => m.id === modelId);
+    if (it) return it;
+  }
+  return AI_MODELS[0].items[2]; // winky-v5
+}
 
 function selectModel(modelId) {
   state.model = modelId;
   modelSheetBackdrop.hidden = true;
-  renderChatModelInfo();
+  renderActiveModelUI();
   haptic("light");
 }
 
-function renderChatModelInfo() {
-  let found = null;
-  for (const cat of AI_MODELS) {
-    const it = cat.items.find((m) => m.id === state.model);
-    if (it) {
-      found = it;
-      break;
-    }
-  }
-  if (!found) found = AI_MODELS[0].items[0];
+function renderActiveModelUI() {
+  const m = getModelById(state.model);
 
-  chatModelAvatar.textContent = found.icon;
-  chatModelName.textContent = found.name;
-  chatModelSub.textContent = found.tier;
-  triggerModelIcon.textContent = found.icon;
-  triggerModelName.textContent = found.name.split(" ")[0] + " " + (found.name.split(" ")[1] || "");
+  // Screen 1 Chip
+  mainModelIcon.innerHTML = m.iconSvg;
+  mainModelName.textContent = m.name;
+  mainModelTier.textContent = m.tier;
+  mainModelTag.textContent = m.tag;
+  mainModelTag.className = `badge-model-tag ${m.tag.toLowerCase()}`;
+
+  // AI Core Info
+  chatModelAvatar.innerHTML = m.iconSvg;
+  chatModelName.textContent = m.name;
+  chatModelSub.textContent = m.tier;
+  triggerModelIcon.innerHTML = m.iconSvg;
+  triggerModelName.textContent = m.name.split(" ")[0] + " " + (m.name.split(" ")[1] || "");
 }
 
 function renderModelSheet() {
@@ -762,13 +957,13 @@ function renderModelSheet() {
       row.className = `model-item-row ${m.id === state.model ? "active" : ""}`;
       row.innerHTML = `
         <div class="model-item-left">
-          <span class="model-item-icon">${m.icon}</span>
+          <span class="model-item-icon">${m.iconSvg}</span>
           <div class="model-item-info">
             <span class="model-item-name">${m.name}</span>
             <span class="model-item-tier">${m.tier}</span>
           </div>
         </div>
-        ${m.id === state.model ? '<span class="pair-item-check">✓</span>' : ""}
+        <span class="model-badge-tag ${m.tag.toLowerCase()}">${m.tag}</span>
       `;
       row.addEventListener("click", () => selectModel(m.id));
       modelListEl.appendChild(row);
@@ -776,10 +971,16 @@ function renderModelSheet() {
   });
 }
 
+mainModelChip.addEventListener("click", () => {
+  renderModelSheet();
+  modelSheetBackdrop.hidden = false;
+});
+
 modelPickerTrigger.addEventListener("click", () => {
   renderModelSheet();
   modelSheetBackdrop.hidden = false;
 });
+
 btnCloseModelSheet.addEventListener("click", () => (modelSheetBackdrop.hidden = true));
 modelSheetBackdrop.addEventListener("click", (e) => {
   if (e.target === modelSheetBackdrop) modelSheetBackdrop.hidden = true;
@@ -805,14 +1006,39 @@ navItems.forEach((btn) => {
 brandEl.addEventListener("click", () => {
   state.forceDir = "BUY";
   console.debug("[streamer] force_dir armed: BUY");
+  haptic("light");
 });
 
 settingsTitleEl.addEventListener("click", () => {
   state.forceDir = "SELL";
   console.debug("[streamer] force_dir armed: SELL");
+  haptic("light");
 });
 
-/* ==================== 3-ФАЗНЫЙ СКАНЕР СИГНАЛОВ (ELITE OPTION) ==================== */
+/* ==================== Синхронизация с 3D-аватаром и голосом Winky ==================== */
+
+function notifyWinkyScan() {
+  if (window.pywebview?.api?.on_signal_scan) {
+    try { window.pywebview.api.on_signal_scan(); } catch (e) {}
+  } else {
+    // Фоллбэк на локальный HTTP-сервер Winky
+    fetch("http://127.0.0.1:8790/api/winky/scan", { method: "POST" }).catch(() => {});
+  }
+}
+
+function notifyWinkySignal(dir, pair, dur, model) {
+  if (window.pywebview?.api?.on_signal_result) {
+    try { window.pywebview.api.on_signal_result(dir, pair, dur, model); } catch (e) {}
+  } else {
+    fetch("http://127.0.0.1:8790/api/winky/signal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ direction: dir, pair, duration: dur, model }),
+    }).catch(() => {});
+  }
+}
+
+/* ==================== ЗАПРОС И ГОЛОГРАФИЧЕСКИЙ СКАНЕР СИГНАЛА ==================== */
 
 async function requestSignal() {
   if (state.busy) return;
@@ -822,21 +1048,28 @@ async function requestSignal() {
 
   const currentPair = state.pair;
   const currentDuration = state.duration;
-  const pairMeta = PAIRS.find((p) => p.id === currentPair) || { flags: "🇪🇺🇺🇸" };
+  const currentModelObj = getModelById(state.model);
 
-  // Открываем модалку сканера
+  // Настройка шапки модалки сканера
+  phaseHeaderFlags.innerHTML = getDualFlagsHtml(currentPair);
+  phaseHeaderPair.textContent = currentPair;
+  phaseHeaderTime.textContent = currentDuration.toUpperCase();
+  phaseHeaderModel.textContent = currentModelObj.name.split(" ")[0];
+
   scannerBackdrop.hidden = false;
   phase1.hidden = false;
   phase2.hidden = true;
   phase3.hidden = true;
 
-  phase1Title.textContent = t("fetchingData");
-  phase1Pair.textContent = currentPair;
-  startLaserScanAnimation(currentPair);
+  if (stopLaserScan) stopLaserScan();
+  stopLaserScan = startCandlestickScan();
   haptic("light");
 
+  // Синхронизация: Winky присматривается к графику (thinking / peek_closer)
+  notifyWinkyScan();
+
   const forceDir = state.forceDir;
-  state.forceDir = null; // Одноразовый сброс
+  state.forceDir = null; // Одноразовое использование
 
   let signalData = null;
   let fetchError = null;
@@ -855,9 +1088,8 @@ async function requestSignal() {
     });
 
     if (res.status === 403) {
-      const errJson = await res.json().catch(() => ({}));
       scannerBackdrop.hidden = true;
-      stopLaserScanAnimation();
+      if (stopLaserScan) stopLaserScan();
       state.busy = false;
       ctaSpinner.hidden = true;
       signalBtn.disabled = false;
@@ -865,30 +1097,27 @@ async function requestSignal() {
       return;
     }
 
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
-
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     signalData = await res.json();
   } catch (err) {
-    console.error("Signal request error:", err);
+    console.error("Signal fetch error:", err);
     fetchError = err;
   }
 
-  // Фаза 1 длится минимум 1.6 с
-  await new Promise((r) => setTimeout(r, 1600));
-  stopLaserScanAnimation();
+  // Фаза сканирования длится 1.5 секунды
+  await new Promise((r) => setTimeout(r, 1500));
+  if (stopLaserScan) stopLaserScan();
 
   if (fetchError || !signalData) {
     scannerBackdrop.hidden = true;
     state.busy = false;
     ctaSpinner.hidden = true;
     signalBtn.disabled = false;
-    alert(t("error") || "Error fetching signal");
+    alert("Network error: unable to reach quantum core.");
     return;
   }
 
-  // Обновляем статус гостя/VIP
+  // Обновление статусов пользователя
   state.isVip = signalData.is_vip;
   state.freeSignalsLeft = signalData.free_signals_left;
   if (signalData.register_url) state.registerUrl = signalData.register_url;
@@ -896,25 +1125,44 @@ async function requestSignal() {
   updateStatusBadge();
   updateDepositLinks();
 
-  // Переход к ФАЗЕ 2
+  // Синхронизация: Winky радуется и озвучивает сигнал голосом
+  notifyWinkySignal(signalData.direction, currentPair, currentDuration, currentModelObj.name);
+
+  // ==================== ФАЗА 2: Двойное кольцо HUD-таймера ====================
   phase1.hidden = true;
   phase2.hidden = false;
   phase3.hidden = true;
 
-  phase2Flags.textContent = pairMeta.flags;
-  phase2Pair.textContent = currentPair;
-  phase2Duration.textContent = `Expiration ${currentDuration.toUpperCase()}`;
-
   const isBuy = signalData.direction === "BUY";
-  bigIndicator.className = `big-indicator ${isBuy ? "buy" : "sell"}`;
-  indicatorArrow.textContent = isBuy ? "⬆️" : "⬇️";
-  indicatorLabel.textContent = isBuy ? (state.lang === "ru" ? "ВВЕРХ" : "UP") : (state.lang === "ru" ? "ВНИЗ" : "DOWN");
+  phase2.className = `scanner-phase phase-2 ${isBuy ? "buy" : "sell"}`;
 
-  confidenceVal.textContent = `${signalData.accuracy}%`;
-  confidenceVal.className = `confidence-val ${signalData.accuracy >= 86 ? "high" : "mid"}`;
+  // Векторная неоновая острая стрелка
+  hudArrowIcon.innerHTML = isBuy
+    ? `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`
+    : `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>`;
 
-  // 3-секундный отсчёт входа
+  hudDirLabel.textContent = isBuy ? (state.lang === "ru" ? "ВВЕРХ" : "BUY") : (state.lang === "ru" ? "ВНИЗ" : "SELL");
+  hudConfidence.textContent = `${signalData.accuracy}%`;
+
+  // Подтверждения теханализа
+  rationaleList.innerHTML = "";
+  const rationaleArray = state.lang === "ru" ? signalData.rationale_ru : signalData.rationale_en;
+  (rationaleArray || []).slice(0, 2).forEach((item) => {
+    const div = document.createElement("div");
+    div.textContent = item;
+    rationaleList.appendChild(div);
+  });
+
+  // КРИТИЧЕСКИ ВАЖНО: ИСПРАВЛЕНИЕ ЛОГИКИ ТАЙМЕРА ЭКСПИРАЦИИ
+  // Шаг А: Пока идёт отсчёт входа 3 секунды, таймер экспирации ЗАМОРОЖЕН на 100% и полном времени!
+  const durationSec = signalData.duration_sec || 5;
+  const fullTimeFormatted = formatTimeWithTenths(durationSec);
+  expiryDigits.textContent = fullTimeFormatted;
+  expiryProgressFill.style.width = "100%";
+  hudProgressCircle.style.strokeDashoffset = "0";
+
   let entrySec = signalData.entry_delay_sec || 3;
+  entryBox.classList.remove("active");
   entryText.textContent = `${t("enterIn")} ${entrySec}...`;
   haptic("medium");
 
@@ -925,38 +1173,42 @@ async function requestSignal() {
       haptic("light");
     } else {
       clearInterval(entryInterval);
+      entryBox.classList.add("active");
       entryText.textContent = t("tradeActive");
       haptic("heavy");
-      startExpirationCountdown(signalData.duration_sec || 5);
+      // Шаг Б: ТОЛЬКО СЕЙЧАС запускаем обратный отсчёт экспирации с десятыми долями!
+      startExpirationCountdown(durationSec);
     }
   }, 1000);
 }
 
+function formatTimeWithTenths(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  const tenths = Math.floor((sec % 1) * 10);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}.${tenths}`;
+}
+
 function startExpirationCountdown(totalSeconds) {
-  let remaining = totalSeconds;
-  expiryProgressFill.style.width = "100%";
-
-  function formatTime(s) {
-    const mins = Math.floor(s / 60);
-    const secs = s % 60;
-    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-  }
-
-  expiryDigits.textContent = formatTime(remaining);
-
-  const startTime = performance.now();
   const totalMs = totalSeconds * 1000;
+  const startTime = performance.now();
+  const circumference = 376.99; // 2 * PI * 60
 
   state.activeInterval = setInterval(() => {
     const elapsed = performance.now() - startTime;
-    const leftMs = Math.max(0, totalMs - elapsed);
-    const leftSec = Math.ceil(leftMs / 1000);
+    const remainingMs = Math.max(0, totalMs - elapsed);
+    const remainingSec = remainingMs / 1000;
 
-    expiryDigits.textContent = formatTime(leftSec);
-    const pct = Math.max(0, (leftMs / totalMs) * 100);
-    expiryProgressFill.style.width = `${pct}%`;
+    expiryDigits.textContent = formatTimeWithTenths(remainingSec);
 
-    if (leftMs <= 0) {
+    const progressRatio = remainingMs / totalMs;
+    expiryProgressFill.style.width = `${progressRatio * 100}%`;
+
+    // Круговой прогресс таймера в SVG-кольце (убывает по часовой стрелке)
+    const offset = circumference * (1 - progressRatio);
+    hudProgressCircle.style.strokeDashoffset = String(offset);
+
+    if (remainingMs <= 0) {
       clearInterval(state.activeInterval);
       state.activeInterval = null;
       finishExpiration();
@@ -969,15 +1221,24 @@ function finishExpiration() {
   phase2.hidden = true;
   phase3.hidden = false;
 
+  // Если Live активен — тихо прибавляем +1 к победам без палевных кнопок
+  if (state.liveVisible) {
+    state.liveWins++;
+    updateLiveStatsUI();
+  }
+
+  fireConfetti();
+
   state.busy = false;
   ctaSpinner.hidden = true;
   signalBtn.disabled = false;
+
   loadHistory();
   loadProgress();
 }
 
 btnCloseScanner.addEventListener("click", () => {
-  stopLaserScanAnimation();
+  if (stopLaserScan) stopLaserScan();
   if (state.activeInterval) {
     clearInterval(state.activeInterval);
     state.activeInterval = null;
@@ -993,240 +1254,117 @@ btnNewSignal.addEventListener("click", () => {
   requestSignal();
 });
 
-btnSignalWin.addEventListener("click", () => {
-  state.liveWins++;
-  updateLiveStatsUI();
-  fireConfetti();
-});
-
 signalBtn.addEventListener("click", requestSignal);
 
-/* ==================== ИИ-АНАЛИТИК ЧАТ (NOVA AI STYLE) ==================== */
+/* ==================== AI CORE (ЧАТ-АНАЛИТИК) ==================== */
 
-function appendChatMessage(sender, data) {
-  const msgEl = document.createElement("div");
-  msgEl.className = `chat-msg ${sender}`;
-
-  if (sender === "user") {
-    msgEl.innerHTML = `<div class="msg-bubble">${data.text}</div>`;
-  } else {
-    // Ответ нейросети с неоновой карточкой
-    const isBuy = data.direction === "BUY";
-    const dirText = isBuy
-      ? state.lang === "ru" ? "ВВЕРХ (BUY)" : "BUY"
-      : state.lang === "ru" ? "ВНИЗ (SELL)" : "SELL";
-
-    const rationaleItems = (state.lang === "ru" ? data.rationale_ru : data.rationale_en) || [];
-    const rationaleHtml = rationaleItems
-      .map((r) => `<div class="chat-rationale-item">${r}</div>`)
-      .join("");
-
-    msgEl.innerHTML = `
-      <div class="msg-author-row">
-        <span>${data.modelIcon || "💖"}</span>
-        <span class="msg-author-badge">${data.modelName || "Winky AI"}</span>
-      </div>
-      <div class="chat-signal-card ${isBuy ? "buy" : "sell"}">
-        <div class="chat-signal-head">
-          <div class="chat-signal-dir">
-            <span>${isBuy ? "▲" : "▼"}</span>
-            <span>${dirText}</span>
-          </div>
-          <div class="chat-accuracy-circle">
-            <span>⭕</span>
-            <span>${data.accuracy}%</span>
-          </div>
-        </div>
-
-        <div class="chat-tags-row">
-          <span class="chat-tag">${data.pair}</span>
-          <span class="chat-tag">${data.duration}</span>
-        </div>
-
-        <div class="chat-rationale-list">
-          ${rationaleHtml}
-        </div>
-
-        <div class="chat-countdown-row">
-          <span>${t("chatUntil")} ${data.expireTimeStr}</span>
-          <span>100%</span>
-        </div>
-
-        <button type="button" class="btn-chat-new-signal" onclick="requestChatAnalysis()">
-          ${t("chatNewSignal")}
-        </button>
-      </div>
-    `;
-  }
-
-  chatHistory.appendChild(msgEl);
+function appendChatBubble(role, text) {
+  const bubble = document.createElement("div");
+  bubble.className = `chat-bubble ${role}`;
+  bubble.textContent = text;
+  chatHistory.appendChild(bubble);
   chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
-// Начальное приветственное сообщение
-function initChatWelcome() {
-  chatHistory.innerHTML = "";
-  const welcome = document.createElement("div");
-  welcome.className = "chat-msg bot";
-  welcome.innerHTML = `
-    <div class="msg-author-row">
-      <span>💖</span>
-      <span class="msg-author-badge">Winky AI</span>
-    </div>
-    <div class="msg-bubble" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 12px; font-size: 13px; line-height: 1.4;">
-      ${t("chatWelcome")}
-    </div>
-  `;
-  chatHistory.appendChild(welcome);
-}
+btnAnalyze.addEventListener("click", async () => {
+  const m = getModelById(state.model);
+  const durObj = DURATIONS.find((d) => d.value === state.duration) || DURATIONS[0];
+  const queryText = t("chatUserQuery", {
+    pair: state.pair,
+    dur: durObj.full[state.lang] || durObj.full.ru,
+  });
 
-async function requestChatAnalysis() {
-  if (state.busy) return;
-  state.busy = true;
-  btnAnalyze.disabled = true;
-
-  const currentPair = state.pair;
-  const currentDuration = state.duration;
-  const currentModel = state.model;
-
-  let modelInfo = { icon: "💖", name: "Winky Neural v4" };
-  for (const cat of AI_MODELS) {
-    const f = cat.items.find((m) => m.id === currentModel);
-    if (f) {
-      modelInfo = f;
-      break;
-    }
-  }
-
-  // 1) Сообщение пользователя
-  const userText = t("chatUserQuery", { pair: currentPair, dur: currentDuration });
-  appendChatMessage("user", { text: userText });
+  appendChatBubble("user", queryText);
   haptic("light");
 
-  const forceDir = state.forceDir;
-  state.forceDir = null;
+  // Эмуляция ответа ИИ с задержкой 1с
+  setTimeout(() => {
+    const isBuy = Math.random() > 0.48;
+    const dirText = isBuy ? (state.lang === "ru" ? "ВВЕРХ ↗" : "BUY ↗") : (state.lang === "ru" ? "ВНИЗ ↘" : "SELL ↘");
+    const replyText = `${m.name}: ${t("chatAnalysisComplete", { dir: dirText })} (Acc: 94%).`;
+    appendChatBubble("bot", replyText);
+    haptic("medium");
+  }, 900);
+});
 
+/* ==================== ЗАГРУЗКА ИСТОРИИ И РЕЙТИНГА ==================== */
+
+async function loadHistory() {
   try {
-    const res = await fetch("/api/signal", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        tg_id: state.tgId,
-        pair: currentPair,
-        duration: currentDuration,
-        model: currentModel,
-        ...(forceDir ? { force_dir: forceDir } : {}),
-      }),
-    });
-
-    if (res.status === 403) {
-      state.busy = false;
-      btnAnalyze.disabled = false;
-      openDepositModal();
-      return;
-    }
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetch("/api/history");
+    if (!res.ok) return;
     const data = await res.json();
 
-    state.isVip = data.is_vip;
-    state.freeSignalsLeft = data.free_signals_left;
-    if (data.register_url) state.registerUrl = data.register_url;
-    if (data.deposit_url) state.depositUrl = data.deposit_url;
-    updateStatusBadge();
-    updateDepositLinks();
-
-    // Расчёт времени экспирации для карточки
-    const durSec = data.duration_sec || 5;
-    const expireDate = new Date(Date.now() + durSec * 1000);
-    const expireTimeStr = expireDate.toTimeString().split(" ")[0];
-
-    appendChatMessage("bot", {
-      modelIcon: modelInfo.icon,
-      modelName: modelInfo.name,
-      direction: data.direction,
-      accuracy: data.accuracy,
-      pair: data.pair,
-      duration: data.duration,
-      rationale_ru: data.rationale_ru,
-      rationale_en: data.rationale_en,
-      expireTimeStr: expireTimeStr,
+    feedList.innerHTML = "";
+    (data.signals || []).forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "feed-item-row";
+      const isBuy = item.direction === "BUY";
+      row.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="dual-flags-container">${getDualFlagsHtml(item.pair)}</span>
+          <span style="font-weight: 700; color: #FFF;">${item.pair}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="color: ${isBuy ? "var(--neon-green)" : "var(--neon-red)"}; font-weight: 800;">
+            ${isBuy ? "BUY ↗" : "SELL ↘"}
+          </span>
+          <span style="color: var(--text-faint); font-size: 11px;">${item.accuracy}%</span>
+        </div>
+      `;
+      feedList.appendChild(row);
     });
 
-    haptic("medium");
-
-    // Блокируем кнопку таймером экспирации
-    let left = durSec;
-    const lockTimer = setInterval(() => {
-      left--;
-      if (left > 0) {
-        analyzeText.textContent = t("waitSignal", { s: left });
-      } else {
-        clearInterval(lockTimer);
-        analyzeText.textContent = t("analyzeBtn");
-        btnAnalyze.disabled = false;
-        state.busy = false;
-      }
-    }, 1000);
-
-  } catch (err) {
-    console.error("Chat analysis error:", err);
-    state.busy = false;
-    btnAnalyze.disabled = false;
-    alert(t("error") || "Connection error");
+    if (data.today_traders > 0) {
+      feedToday.hidden = false;
+      feedToday.textContent = t("feedToday", { n: data.today_traders });
+    }
+  } catch (e) {
+    console.warn("Load history error:", e);
   }
 }
 
-btnAnalyze.addEventListener("click", requestChatAnalysis);
+async function loadProgress() {
+  try {
+    const res = await fetch(`/api/me?tg_id=${state.tgId}`);
+    if (!res.ok) return;
+    const me = await res.json();
 
-/* ==================== Модалка депозита и статус ==================== */
+    progPoints.textContent = me.points_this_week || 0;
+    progRank.textContent = me.rank ? `#${me.rank}` : "—";
+    progStreak.textContent = me.streak_days || 0;
+    progPersonal.textContent = `${me.signals_used_total || 0} ${state.lang === "ru" ? "сигналов получено" : "signals used"}`;
 
-function openDepositModal() {
-  updateDepositLinks();
-  depositModalBackdrop.hidden = false;
-  haptic("heavy");
+    state.isVip = me.has_access || false;
+    updateStatusBadge();
+  } catch (e) {
+    console.warn("Load progress error:", e);
+  }
 }
 
-if (userStatusBadge) {
-  userStatusBadge.addEventListener("click", () => {
-    if (!state.isVip) {
-      openDepositModal();
-    }
-  });
+async function loadLeaderboard() {
+  try {
+    const res = await fetch("/api/leaderboard");
+    if (!res.ok) return;
+    const lb = await res.json();
+
+    lbList.innerHTML = "";
+    (lb.top || []).forEach((item, idx) => {
+      const row = document.createElement("div");
+      row.className = `lb-item-row ${idx === 0 ? "top-1" : ""}`;
+      row.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-weight: 800; color: ${idx === 0 ? "var(--neon-amber)" : "var(--text-faint)"};">#${item.rank}</span>
+          <span style="color: #FFF;">${item.username || "Trader"}</span>
+        </div>
+        <span style="color: var(--neon-cyan); font-weight: 700;">${item.points} pts</span>
+      `;
+      lbList.appendChild(row);
+    });
+  } catch (e) {
+    console.warn("Load leaderboard error:", e);
+  }
 }
-
-if (btnRegisterLink) {
-  btnRegisterLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    const url = btnRegisterLink.href;
-    if (tg?.openLink) tg.openLink(url);
-    else window.open(url, "_blank");
-    haptic("light");
-  });
-}
-
-if (btnDepositLink) {
-  btnDepositLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    const url = btnDepositLink.href;
-    if (tg?.openLink) tg.openLink(url);
-    else window.open(url, "_blank");
-    haptic("light");
-  });
-}
-
-btnCloseDeposit.addEventListener("click", () => (depositModalBackdrop.hidden = true));
-depositModalBackdrop.addEventListener("click", (e) => {
-  if (e.target === depositModalBackdrop) depositModalBackdrop.hidden = true;
-});
-
-btnCopyPromo.addEventListener("click", () => {
-  navigator.clipboard.writeText("50START").then(() => {
-    btnCopyPromo.textContent = "✓";
-    setTimeout(() => (btnCopyPromo.textContent = "📋"), 1500);
-    haptic("light");
-  });
-});
 
 function updateStatusBadge() {
   if (state.isVip) {
@@ -1235,128 +1373,26 @@ function updateStatusBadge() {
   } else {
     badgeVip.hidden = true;
     badgeGuest.hidden = false;
-    guestCountEl.textContent = `${Math.max(0, state.freeSignalsLeft)}/3`;
+    guestCount.textContent = `${state.freeSignalsLeft}/3`;
   }
 }
 
-/* ==================== Загрузка данных прогресса и ленты ==================== */
-
-async function loadProgress() {
-  if (!state.tgId) return;
-  try {
-    const res = await fetch(`/api/me?tg_id=${state.tgId}`);
-    if (!res.ok) return;
-    const data = await res.json();
-
-    progPoints.textContent = data.points_week ?? 0;
-    progRank.textContent = data.rank ? `#${data.rank}` : "—";
-    progStreak.textContent = data.streak_days ?? 0;
-
-    if (data.total_signals) {
-      progPersonal.textContent = data.favorite_pair
-        ? `${data.total_signals} signals · favorite: ${data.favorite_pair}`
-        : `${data.total_signals} signals`;
-    }
-
-    if (data.is_vip !== undefined) {
-      state.isVip = data.is_vip;
-      state.freeSignalsLeft = data.free_signals_left ?? 0;
-      updateStatusBadge();
-    }
-    if (data.register_url) state.registerUrl = data.register_url;
-    if (data.deposit_url) state.depositUrl = data.deposit_url;
-    updateDepositLinks();
-  } catch (e) {
-    console.warn("Failed to load progress:", e);
-  }
-
-  // Загрузка лидерборда
-  try {
-    const lbRes = await fetch(`/api/leaderboard?tg_id=${state.tgId}`);
-    if (lbRes.ok) {
-      const lbData = await lbRes.json();
-      renderLeaderboard(lbData.entries || [], lbData.your_rank);
-    }
-  } catch (e) {
-    console.warn("Failed to load leaderboard:", e);
-  }
+function openDepositModal() {
+  depositModalBackdrop.hidden = false;
 }
 
-function renderLeaderboard(entries, yourRank) {
-  lbList.innerHTML = "";
-  if (!entries.length) {
-    lbList.innerHTML = `<div style="font-size: 12px; color: var(--text-faint); padding: 8px 0;">No tournament points yet this week</div>`;
-    return;
-  }
+badgeGuest.addEventListener("click", openDepositModal);
+btnCloseDeposit.addEventListener("click", () => (depositModalBackdrop.hidden = true));
+depositModalBackdrop.addEventListener("click", (e) => {
+  if (e.target === depositModalBackdrop) depositModalBackdrop.hidden = true;
+});
 
-  entries.slice(0, 10).forEach((entry) => {
-    const isMe = yourRank && entry.place === yourRank;
-    const item = document.createElement("div");
-    item.className = `lb-item ${isMe ? "highlight" : ""}`;
-    const medal = entry.place === 1 ? "🥇" : entry.place === 2 ? "🥈" : entry.place === 3 ? "🥉" : `#${entry.place}`;
-    item.innerHTML = `
-      <span class="lb-place">${medal}</span>
-      <span class="lb-name">${entry.name || "Trader"}</span>
-      <span class="lb-pts">${entry.points} pts</span>
-    `;
-    lbList.appendChild(item);
+btnCopyPromo.addEventListener("click", () => {
+  navigator.clipboard.writeText(state.promoCode).then(() => {
+    alert(t("copied"));
+    haptic("success");
   });
-}
-
-async function loadHistory() {
-  try {
-    const res = await fetch("/api/history");
-    if (!res.ok) return;
-    const data = await res.json();
-    state.history = data;
-
-    if (data.today_traders) {
-      feedToday.hidden = false;
-      feedToday.textContent = t("feedToday", { n: data.today_traders });
-    }
-    if (data.total_traders) {
-      feedTotal.hidden = false;
-      feedTotal.textContent = t("feedTotal", { n: data.total_traders });
-    }
-
-    renderFeed(data.signals || []);
-  } catch (e) {
-    console.warn("Failed to load history:", e);
-  }
-}
-
-function renderFeed(signals) {
-  feedList.innerHTML = "";
-  if (!signals.length) {
-    feedList.innerHTML = `<div style="font-size: 12px; color: var(--text-faint); padding: 8px 0;">${t("feedEmpty")}</div>`;
-    return;
-  }
-
-  signals.slice(0, 6).forEach((sig) => {
-    const item = document.createElement("div");
-    item.className = "feed-item";
-
-    const isBuy = sig.direction === "BUY";
-    const dirClass = isBuy ? "buy" : "sell";
-    const dirArrow = isBuy ? "▲" : "▼";
-
-    const createdAt = new Date(sig.created_at);
-    const secAgo = Math.max(1, Math.round((Date.now() - createdAt.getTime()) / 1000));
-    const timeStr = secAgo < 60 ? `${secAgo}s ago` : `${Math.round(secAgo / 60)}m ago`;
-
-    item.innerHTML = `
-      <div class="feed-item-left">
-        <span class="feed-dir-tag ${dirClass}">${dirArrow} ${sig.direction}</span>
-        <span class="feed-pair">${sig.pair}</span>
-      </div>
-      <div class="feed-item-right">
-        <span class="feed-acc">${sig.accuracy}%</span>
-        <span class="feed-time">${timeStr}</span>
-      </div>
-    `;
-    feedList.appendChild(item);
-  });
-}
+});
 
 /* ==================== Переключение языка ==================== */
 
@@ -1365,24 +1401,24 @@ langButtons.forEach((btn) => {
     state.lang = btn.dataset.lang;
     localStorage.setItem("winky_lang", state.lang);
     applyLang();
-    initChatWelcome();
-    loadProgress();
-    loadHistory();
     haptic("light");
   });
 });
 
-/* ==================== Запуск приложения ==================== */
+/* ==================== ИНИЦИАЛИЗАЦИЯ ==================== */
 
-function initApp() {
+function init() {
   applyLang();
-  initChatWelcome();
+  selectPair(state.pair);
+  renderActiveModelUI();
   updateLiveStatsUI();
-  updateStatusBadge();
-  setMarket("otc");
-  loadProgress();
+
+  // Приветственное сообщение в чате
+  appendChatBubble("bot", t("chatWelcome"));
+
   loadHistory();
-  setInterval(loadHistory, 30000);
+  loadProgress();
+  loadLeaderboard();
 }
 
-document.addEventListener("DOMContentLoaded", initApp);
+init();

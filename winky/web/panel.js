@@ -1053,6 +1053,44 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+/* ==================== WINKY AI Terminal Overlay & Voice Signals ==================== */
+
+const openTerminalBtn = document.getElementById("openTerminalBtn");
+const voiceSignalsToggle = document.getElementById("voiceSignalsToggle");
+const voiceSignalsToggleBg = document.getElementById("voiceSignalsToggleBg");
+const voiceSignalsToggleKnob = document.getElementById("voiceSignalsToggleKnob");
+
+if (openTerminalBtn) {
+  openTerminalBtn.addEventListener("click", () => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.open_signal_terminal) {
+      window.pywebview.api.open_signal_terminal();
+    } else {
+      window.open("http://127.0.0.1:8790/webapp/?streamer=1&lang=ru", "_blank");
+    }
+  });
+}
+
+function updateVoiceToggleUI(enabled) {
+  if (!voiceSignalsToggle) return;
+  voiceSignalsToggle.checked = enabled;
+  if (voiceSignalsToggleBg) {
+    voiceSignalsToggleBg.style.background = enabled ? "#00F0FF" : "rgba(255,255,255,0.2)";
+  }
+  if (voiceSignalsToggleKnob) {
+    voiceSignalsToggleKnob.style.left = enabled ? "24px" : "4px";
+  }
+}
+
+if (voiceSignalsToggle) {
+  voiceSignalsToggle.addEventListener("change", () => {
+    const enabled = voiceSignalsToggle.checked;
+    updateVoiceToggleUI(enabled);
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.toggle_voice_signals) {
+      window.pywebview.api.toggle_voice_signals(enabled);
+    }
+  });
+}
+
 /* ==================== Инициализация ==================== */
 
 async function init() {
