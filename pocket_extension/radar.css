@@ -1,0 +1,186 @@
+/* ========================================================
+   WINKY AI — Pocket Option Chart Radar & Floating HUDs
+   ======================================================== */
+
+/* Targeting Radar Overlay on Pocket Option Chart */
+.winky-radar-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.winky-radar-box {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2) inset, 0 0 35px rgba(56, 189, 248, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+}
+
+.winky-radar-reticle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.6);
+  animation: winkyRadarSpin 8s linear infinite;
+}
+
+@keyframes winkyRadarSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.winky-radar-crosshair-h {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+}
+
+.winky-radar-crosshair-v {
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, #38BDF8, transparent);
+}
+
+.winky-radar-laser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00F0FF, #3B82F6, transparent);
+  box-shadow: 0 0 10px #00F0FF;
+  animation: winkyLaserScan 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes winkyLaserScan {
+  0% { top: 0%; opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0.2; }
+}
+
+.winky-radar-label {
+  position: absolute;
+  bottom: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  color: #38BDF8;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+  background: rgba(10, 15, 29, 0.85);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Floating Draggable Panels (Terminal & Counter HUD) */
+.winky-hud-panel {
+  position: fixed;
+  z-index: 100000;
+  background: #0A0F1D;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  resize: both;
+}
+
+.winky-hud-header {
+  background: #111827;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.winky-hud-header:active {
+  cursor: grabbing;
+}
+
+.winky-hud-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #F3F4F6;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.winky-hud-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.winky-hud-btn-close {
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.winky-hud-btn-close:hover {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.winky-hud-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #0A0F1D;
+}
+
+/* Floating HUD Toggle Button on Pocket Option Page */
+.winky-page-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  background: linear-gradient(180deg, #3B82F6 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  padding: 10px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+  transition: all 0.2s ease;
+}
+
+.winky-page-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.7);
+}

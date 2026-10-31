@@ -24,6 +24,11 @@ VOICE_CACHE_DIR = Path(__file__).resolve().parent.parent / "voice_cache"
 WEBAPP_DIR = Path(__file__).resolve().parent.parent / "webapp"
 
 _winky_sync_callbacks: dict[str, Callable] = {}
+_local_live_stats: dict[str, Any] = {
+    "wins": 110,
+    "losses": 1,
+    "pair": "EUR/USD OTC",
+}
 
 
 def register_winky_callback(event: str, fn: Callable) -> None:
@@ -89,6 +94,18 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                 ],
             })
             return
+        if clean == "/api/live_stats":
+            w = int(_local_live_stats["wins"])
+            l = int(_local_live_stats["losses"])
+            total = w + l
+            rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
+            self._send_json({
+                "wins": w,
+                "losses": l,
+                "winrate": rate,
+                "pair": str(_local_live_stats.get("pair", "EUR/USD OTC")),
+            })
+            return
 
         super().do_GET()
 
@@ -101,6 +118,39 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             payload = json.loads(body.decode("utf-8")) if body else {}
         except Exception:
             payload = {}
+
+        if clean == "/api/live_stats":
+            if payload.get("reset"):
+                _local_live_stats["wins"] = 110
+                _local_live_stats["losses"] = 1
+            else:
+                if payload.get("wins") is not None:
+                    _local_live_stats["wins"] = max(0, int(payload["wins"]))
+                if payload.get("losses") is not None:
+                    _local_live_stats["losses"] = max(0, int(payload["losses"]))
+            if payload.get("pair"):
+                _local_live_stats["pair"] = str(payload["pair"])
+            w = int(_local_live_stats["wins"])
+            l = int(_local_live_stats["losses"])
+            total = w + l
+            rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
+            self._send_json({
+                "wins": w,
+                "losses": l,
+                "winrate": rate,
+                "pair": str(_local_live_stats.get("pair", "EUR/USD OTC")),
+            })
+            return
+
+        if clean == "/api/winky/speak_signal":
+            cb = _winky_sync_callbacks.get("speak_signal")
+            if cb:
+                try:
+                    cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback speak_signal: %s", e)
+            self._send_json({"ok": True})
+            return
 
         if clean == "/api/winky/scan":
             cb = _winky_sync_callbacks.get("scan")
@@ -120,7 +170,7 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                         direction=payload.get("direction", "BUY"),
                         pair=payload.get("pair", "EUR/USD OTC"),
                         duration=payload.get("duration", "5s"),
-                        model=payload.get("model", "winky-v5"),
+                        model=payload.get("model", "claude-fable-5.1"),
                     )
                 except Exception as e:
                     logger.warning("Ошибка callback signal: %s", e)
@@ -131,7 +181,7 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             pair = payload.get("pair", "EUR/USD OTC")
             duration = payload.get("duration", "5s")
             force_dir = payload.get("force_dir")
-            model = payload.get("model", "winky-v5")
+            model = payload.get("model", "claude-fable-5.1")
             direction = force_dir if force_dir in ("BUY", "SELL") else random.choice(["BUY", "SELL"])
             accuracy = random.randint(92, 98)
 

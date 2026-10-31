@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Winky AI — Pocket Option Chart Radar & Terminal",
+  "version": "1.0.0",
+  "description": "High-tech targeting radar overlay, automated asset sync, outcome detector, and floating terminal for Pocket Option.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.pocketoption.com/*",
+    "*://*.po-ru4.click/*",
+    "*://*.shortink.io/*",
+    "http://127.0.0.1:8000/*",
+    "http://127.0.0.1:8790/*",
+    "http://127.0.0.1:8791/*",
+    "http://127.0.0.1:8792/*",
+    "https://2.31.127.199.sslip.io/*",
+    "https://winktrade-app.online/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.pocketoption.com/*",
+        "*://*.po-ru4.click/*",
+        "*://*.shortink.io/*"
+      ],
+      "css": [
+        "radar.css"
+      ],
+      "js": [
+        "chart_radar.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Winky AI Radar"
+  }
+}

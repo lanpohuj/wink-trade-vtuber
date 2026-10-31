@@ -3,504 +3,400 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>WINKY AI — Quantum Trading Terminal</title>
-  <meta name="theme-color" content="#06080F">
+  <title>WINKY AI — Fintech Trading Terminal</title>
+  <meta name="theme-color" content="#0A0F1D">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app-container">
 
-  <!-- Фоновые неоновые радиальные подсветки (Cyber-Rose + Quantum Cyan) -->
-  <div class="ambient-glow glow-rose" aria-hidden="true"></div>
-  <div class="ambient-glow glow-cyan" aria-hidden="true"></div>
-  <div class="technical-grid-bg" aria-hidden="true"></div>
+  <!-- Ambient background glow (Fintech Sapphire) -->
+  <div class="ambient-glow glow-sapphire" aria-hidden="true"></div>
+  <div class="ambient-glow glow-azure" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
 
-  <!-- Холст для салюта конфетти -->
-  <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
-
-  <!-- ==================== ВЕРХНЯЯ ПАНЕЛЬ (TOPBAR) ==================== -->
+  <!-- ==================== TOPBAR ==================== -->
   <header class="topbar">
-    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY QUANTUM HUD">
+    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI Terminal (Click for BUY trigger)">
       <div class="brand-icon">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="30" height="30" rx="9" fill="url(#brandGradBg)"/>
-          <path d="M6 15h4l3-6 4 12 3-6h4" stroke="url(#brandGradStroke)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="24" cy="9" r="2" fill="#00F0FF"/>
-          <defs>
-            <linearGradient id="brandGradBg" x1="0" y1="0" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#180C2E"/>
-              <stop offset="1" stop-color="#080B18"/>
-            </linearGradient>
-            <linearGradient id="brandGradStroke" x1="6" y1="15" x2="24" y2="15" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FF2E93"/>
-              <stop offset="0.5" stop-color="#7928CA"/>
-              <stop offset="1" stop-color="#00F0FF"/>
-            </linearGradient>
-          </defs>
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="30" height="30" rx="8" fill="#151F32"/>
+          <path d="M5 15h4l3-7 4 14 3-7h5" stroke="#38BDF8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="24" cy="9" r="2.2" fill="#10B981"/>
         </svg>
       </div>
       <div class="brand-info">
         <div class="brand-title">
           WINKY<span class="ai-text">AI</span>
-          <span class="badge-quantum">QUANTUM</span>
         </div>
-        <div class="brand-sub">neural radar · v5.0</div>
+        <div class="brand-sub">FINTECH TERMINAL</div>
       </div>
     </div>
 
     <div class="topbar-actions">
-      <!-- Кнопка включения табло стрима -->
-      <button type="button" class="btn-live-toggle" id="btnLiveToggle" title="Live Stream HUD">
-        <span class="live-pulse-dot" aria-hidden="true"></span>
-        <span class="live-label">LIVE</span>
+      <!-- Auto-Radar Toggle Button -->
+      <button type="button" class="btn-radar-toggle" id="btnAutoRadar" title="Автоматический радар сигналов">
+        <span class="radar-dot" aria-hidden="true"></span>
+        <span class="radar-label" id="radarLabel">RADAR: OFF</span>
       </button>
 
-      <!-- Переключатель языка RU / EN -->
+      <!-- Live Stream Counter HUD Toggle -->
+      <button type="button" class="btn-live-toggle" id="btnLiveToggle" title="Табло стримера WINS/LOSSES">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="live-label">LIVE HUD</span>
+      </button>
+
+      <!-- Language Switch RU / EN -->
       <div class="lang-switch" id="langSwitch" data-active="ru">
-        <span class="lang-thumb" aria-hidden="true"></span>
         <button type="button" class="lang-btn active" data-lang="ru">RU</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
       </div>
 
-      <!-- Бейдж статуса пользователя -->
+      <!-- VIP Status Badge -->
       <div class="user-status-badge" id="userStatusBadge">
         <span class="badge vip" id="badgeVip">
-          <svg class="badge-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="badge-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           VIP
         </span>
         <span class="badge guest" id="badgeGuest" hidden>
-          <svg class="badge-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
           GUEST <b id="guestCount">3/3</b>
         </span>
       </div>
     </div>
   </header>
 
-  <!-- ==================== SLEEK 1-ROW LIVE SESSION HUD BUMPER ==================== -->
-  <section class="live-session-bumper" id="liveWidget" hidden>
+  <!-- ==================== LIVE STREAM HUD BUMPER ==================== -->
+  <section class="live-bumper" id="liveBumper" hidden>
     <div class="live-bumper-track">
-      <div class="live-indicator-pill">
+      <div class="bumper-pill clock-pill">
         <span class="live-dot" aria-hidden="true"></span>
-        <span class="live-utc" id="liveClock">14:28:10 UTC</span>
+        <span id="liveClock">14:28:10</span>
       </div>
 
-      <div class="live-stat-pill pill-wins" id="pillWins" title="Клик: +1, Двойной клик: -1">
-        <span class="pill-label" data-i18n="liveWins">WINS:</span>
-        <span class="pill-value val-green" id="winCount">42</span>
+      <div class="bumper-pill stat-pill wins" id="pillWins" title="+1 Победа">
+        <span class="pill-lbl">WINS:</span>
+        <span class="pill-val val-green" id="winCount">110</span>
       </div>
 
-      <div class="live-stat-pill pill-losses" id="pillLosses" title="Клик: +1, Двойной клик: -1">
-        <span class="pill-label" data-i18n="liveLosses">LOSSES:</span>
-        <span class="pill-value val-red" id="lossCount">1</span>
+      <div class="bumper-pill stat-pill losses" id="pillLosses" title="+1 Поражение">
+        <span class="pill-lbl">LOSSES:</span>
+        <span class="pill-val val-red" id="lossCount">1</span>
       </div>
 
-      <div class="live-stat-pill pill-winrate" id="pillWinrate" title="Клик: сброс">
-        <span class="pill-label" data-i18n="liveWinrate">WINRATE:</span>
-        <span class="pill-value val-cyan" id="winRateVal">97.7%</span>
+      <div class="bumper-pill stat-pill winrate" id="pillWinrate" title="Winrate">
+        <span class="pill-lbl">RATE:</span>
+        <span class="pill-val val-blue" id="winRateVal">99.1%</span>
       </div>
 
-      <button type="button" class="btn-live-hide" id="btnCloseLive" title="Hide">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <a href="counter.html" target="_blank" class="btn-pop-widget" title="Открыть в отдельном окне">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+      <button type="button" class="btn-close-bumper" id="btnCloseBumper" title="Скрыть табло">✕</button>
     </div>
   </section>
 
-  <!-- ==================== ОСНОВНОЙ КОНТЕНТ (3 ВКЛАДКИ) ==================== -->
+  <!-- ==================== MAIN CONTENT CONTAINER (2 TABS) ==================== -->
   <main class="content-body">
 
-    <!-- ========== ВКЛАДКА 1: СИГНАЛЫ (SIGNAL) ========== -->
-    <section class="tab-pane active" id="paneSignal">
-      
-      <!-- Карточка настроек сигнала -->
-      <section class="card settings-card">
-        <div class="card-title-row" id="settingsTitle" role="button" tabindex="0">
-          <div class="card-title-left">
-            <span class="quantum-sparkle">✦</span>
-            <span data-i18n="settingsTitle">Настройки сигнала</span>
-          </div>
-          <span class="badge-market" id="marketBadge">OTC 24/7</span>
-        </div>
+    <!-- ======================================================== -->
+    <!-- TAB 1: HOME / TERMINAL (ALL INLINE, ZERO MODAL POPUPS)    -->
+    <!-- ======================================================== -->
+    <section class="tab-view active" id="tabHome">
 
-        <!-- Переключатель рынка OTC / Regular -->
-        <div class="market-segment">
-          <button type="button" class="segment-btn active" id="btnMarketOtc" data-market="otc">
-            <svg class="segment-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>OTC (24/7)</span>
-          </button>
-          <button type="button" class="segment-btn" id="btnMarketRegular" data-market="classic">
-            <svg class="segment-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <span>Regular</span>
-          </button>
-        </div>
+      <!-- Market Mode Segment (Regular vs OTC) -->
+      <div class="market-segment">
+        <button type="button" class="segment-btn active" id="btnMarketOtc" data-market="otc">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>OTC (24/7)</span>
+        </button>
+        <button type="button" class="segment-btn" id="btnMarketRegular" data-market="classic">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Regular Market</span>
+        </button>
+      </div>
 
-        <!-- Выбор валютной пары с круглыми металлическими флагами -->
-        <div class="field-group">
-          <label class="field-label" data-i18n="pairLabel">Валютная пара</label>
-          <button type="button" class="custom-select-trigger" id="pairTrigger">
-            <div class="pair-visual">
+      <!-- Controls Row: Pair Selector (65%) & Expiration (35%) -->
+      <div class="controls-row">
+        <!-- Pair Selector -->
+        <div class="control-col col-pair">
+          <label class="control-label" id="pairLabel" role="button" tabindex="0" title="Click for SELL trigger">
+            <span data-i18n="pairLabel">Валютная пара</span>
+            <span class="secret-trigger-dot" aria-hidden="true"></span>
+          </label>
+          <button type="button" class="pair-trigger" id="pairTrigger">
+            <div class="pair-trigger-left">
               <span class="dual-flags-container" id="pairFlags"></span>
               <span class="pair-name" id="pairDisplay">EUR/USD OTC</span>
             </div>
-            <div class="trigger-chevron">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
+            <svg class="chevron-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
 
-        <!-- Выбор таймфрейма / экспирации -->
-        <div class="field-group">
-          <div class="field-label-row">
-            <label class="field-label" data-i18n="durationLabel">Время сделки</label>
-            <span class="duration-hint" id="durationHint">5 секунд</span>
-          </div>
-          <div class="duration-pills" id="durationPills">
-            <button type="button" class="duration-pill active" data-duration="5s">S5</button>
-            <button type="button" class="duration-pill" data-duration="10s">S10</button>
-            <button type="button" class="duration-pill" data-duration="15s">S15</button>
-            <button type="button" class="duration-pill" data-duration="30s">S30</button>
-            <button type="button" class="duration-pill" data-duration="1m">M1</button>
-            <button type="button" class="duration-pill" data-duration="3m">M3</button>
-            <button type="button" class="duration-pill" data-duration="5m">M5</button>
+        <!-- Expiration Selector -->
+        <div class="control-col col-expiry">
+          <label class="control-label" data-i18n="durationLabel">Время экспирации</label>
+          <div class="expiry-pills" id="durationPills">
+            <button type="button" class="expiry-pill active" data-duration="5s">5s</button>
+            <button type="button" class="expiry-pill" data-duration="10s">10s</button>
+            <button type="button" class="expiry-pill" data-duration="15s">15s</button>
+            <button type="button" class="expiry-pill" data-duration="30s">30s</button>
+            <button type="button" class="expiry-pill" data-duration="1m">1m</button>
           </div>
         </div>
+      </div>
 
-        <!-- Выбор активной нейросети прямо на главном экране -->
-        <div class="field-group">
-          <label class="field-label" data-i18n="activeModelLabel">Квантовая ИИ-модель</label>
-          <button type="button" class="model-select-chip" id="mainModelChip">
-            <div class="chip-model-left">
-              <span class="chip-model-icon" id="mainModelIcon"></span>
-              <div class="chip-model-texts">
-                <span class="chip-model-name" id="mainModelName">Winky Neural v5</span>
-                <span class="chip-model-tier" id="mainModelTier">Proprietary Waifu Quant</span>
-              </div>
-            </div>
-            <div class="chip-model-right">
-              <span class="badge-model-tag" id="mainModelTag">CORE</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-            </div>
-          </button>
+      <!-- ======================================================== -->
+      <!-- PERMANENT INLINE SIGNAL TERMINAL CARD                   -->
+      <!-- ======================================================== -->
+      <section class="signal-card" id="signalCard">
+        <!-- Card Header with metadata -->
+        <div class="card-header-bar">
+          <div class="header-pair-wrap">
+            <span class="header-icon">⚡</span>
+            <span class="header-pair-text" id="cardPairTitle">EUR/USD OTC</span>
+          </div>
+          <div class="header-badges">
+            <span class="mini-badge" id="cardDurationBadge">Timeframe: 5s</span>
+            <span class="mini-badge badge-acc" id="cardAccuracyBadge">Accuracy: 94%</span>
+          </div>
         </div>
 
-        <!-- Главная голографическая кнопка получения сигнала -->
-        <button type="button" class="cta-neon" id="signalBtn">
-          <span class="cta-neon-glow"></span>
-          <span class="cta-neon-content">
-            <svg class="cta-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span class="cta-text" id="ctaText">ПОЛУЧИТЬ СИГНАЛ (S5)</span>
-            <span class="spinner" id="ctaSpinner" hidden aria-hidden="true"></span>
-          </span>
-        </button>
-
-        <div class="risk-hint">
-          <svg class="hint-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <span data-i18n="riskHint">Мани-менеджмент: рекомендуемая ставка не более 3% от депозита</span>
-        </div>
-      </section>
-
-      <!-- ==================== ГОЛОГРАФИЧЕСКИЙ СКАНЕР СИГНАЛА ==================== -->
-      <div class="scanner-backdrop" id="scannerBackdrop" hidden>
-        <div class="scanner-modal card" id="scannerModal">
+        <!-- INLINE DYNAMIC DISPLAY AREA (States: idle, scanning, signal, finished) -->
+        <div class="inline-terminal-display" id="inlineSignalDisplay">
           
-          <!-- Шапка модалки (кнопка ✕ изолирована справа без наложения!) -->
-          <div class="scanner-header-bar">
-            <div class="scanner-header-left">
-              <span class="dual-flags-container" id="phaseHeaderFlags"></span>
-              <span class="scanner-header-pair" id="phaseHeaderPair">EUR/USD OTC</span>
-            </div>
-            <div class="scanner-header-center">
-              <span class="pill-badge pill-time" id="phaseHeaderTime">S5</span>
-              <span class="pill-badge pill-model" id="phaseHeaderModel">Winky v5</span>
-            </div>
-            <button type="button" class="scanner-close-btn" id="btnCloseScanner" title="Закрыть">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-
-          <!-- ФАЗА 1: Живой свечной график + Order Blocks + Лазерный скан (1.5 с) -->
-          <div class="scanner-phase phase-1" id="phase1">
-            <div class="scanner-sub-status">
-              <span class="status-pulse-dot"></span>
-              <span id="phase1Status" data-i18n="analyzingChart">Сканирование биржевого стакана и свечной структуры...</span>
-            </div>
-            <div class="canvas-box">
-              <canvas id="laserCanvas" width="340" height="170"></canvas>
-              <div class="quote-ticker-hud" id="quoteTickerHud">
-                <span class="quote-label">TICK PRICE:</span>
-                <span class="quote-val" id="quoteVal">1.08492</span>
-              </div>
-            </div>
-            <div class="scanner-footer-meta">
-              <span class="meta-tag">EMA-9 / EMA-21</span>
-              <span class="meta-tag">LIQUIDITY ORDER BLOCK</span>
-              <span class="meta-tag">DELTA SCAN</span>
-            </div>
-          </div>
-
-          <!-- ФАЗА 2: Двойное кольцо HUD-таймера (130x130px) + Отсчёт входа 3с -> Сделка активна -->
-          <div class="scanner-phase phase-2" id="phase2" hidden>
-            
-            <!-- Двойное кольцо: внешнее SVG кольцо + острая векторная стрелка BUY/SELL -->
-            <div class="hud-circle-wrap">
-              <svg class="hud-svg" width="136" height="136" viewBox="0 0 136 136">
-                <circle class="hud-circle-bg" cx="68" cy="68" r="60" />
-                <circle class="hud-circle-progress" id="hudProgressCircle" cx="68" cy="68" r="60" />
+          <!-- STATE 1: IDLE -->
+          <div class="terminal-state state-idle" id="stateIdle">
+            <div class="radar-pulse-ring">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                <circle cx="12" cy="12" r="6" stroke-opacity="0.5"/>
+                <circle cx="12" cy="12" r="2" fill="#38BDF8"/>
+                <line x1="12" y1="2" x2="12" y2="12" stroke-linecap="round"/>
               </svg>
-              <div class="hud-inner-content">
-                <div class="hud-arrow-icon" id="hudArrowIcon">
-                  <!-- Векторная стрелка вставляется через JS -->
-                </div>
-                <div class="hud-dir-label" id="hudDirLabel">ВВЕРХ</div>
-                <div class="hud-confidence" id="hudConfidence">94%</div>
+            </div>
+            <div class="idle-title" data-i18n="idleTitle">ГОТОВ К АНАЛИЗУ</div>
+            <div class="idle-sub" data-i18n="idleSub">Нажмите кнопку «Получить сигнал» для поиска точки входа</div>
+          </div>
+
+          <!-- STATE 2: SCANNING (1.2s Fast Scan) -->
+          <div class="terminal-state state-scanning" id="stateScanning" hidden>
+            <div class="scan-ticker-bar">
+              <span class="ticker-label">TICK PRICE:</span>
+              <span class="ticker-val" id="scanPriceVal">1.08492</span>
+            </div>
+            <div class="scan-status-text" id="scanStatusText">Сканирование ликвидности и свечной структуры...</div>
+            <div class="scan-progress-bar">
+              <div class="scan-progress-fill" id="scanProgressFill"></div>
+            </div>
+            <div class="scan-tags">
+              <span class="scan-tag">EMA-9/21</span>
+              <span class="scan-tag">ORDER BOOK</span>
+              <span class="scan-tag">MOMENTUM</span>
+            </div>
+          </div>
+
+          <!-- STATE 3: SIGNAL ACTIVE -->
+          <div class="terminal-state state-signal" id="stateSignal" hidden>
+            <!-- Large Signal Direction Box -->
+            <div class="signal-direction-banner buy" id="directionBanner">
+              <div class="direction-arrow-box" id="directionArrow">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+                </svg>
+              </div>
+              <div class="direction-info">
+                <div class="direction-name" id="directionText">BUY (ВВЕРХ)</div>
+                <div class="direction-status" id="entryStatus">ВХОД ОТКРЫТ!</div>
+              </div>
+              <div class="direction-accuracy" id="signalAccuracyNum">94%</div>
+            </div>
+
+            <!-- Precision Expiration Countdown Timer -->
+            <div class="timer-countdown-box">
+              <div class="timer-top-row">
+                <span class="timer-title" data-i18n="expiryLabel">Время экспирации:</span>
+                <span class="timer-digits" id="timerDigits">00:05.0</span>
+              </div>
+              <div class="timer-bar-track">
+                <div class="timer-bar-fill" id="timerBarFill"></div>
               </div>
             </div>
 
-            <!-- Обратный отсчёт точки входа (3 с) -->
-            <div class="entry-countdown-box" id="entryBox">
-              <span class="entry-icon">⚡</span>
-              <span class="entry-text" id="entryText">Вход через 3...</span>
-            </div>
-
-            <!-- Рамка экспирации с плавным ходом десятых долей -->
-            <div class="expiration-box">
-              <div class="expiration-head">
-                <span class="expiry-title" data-i18n="expiry">Время экспирации</span>
-                <span class="expiry-digits" id="expiryDigits">00:05.0</span>
-              </div>
-              <div class="expiry-progress-bg">
-                <div class="expiry-progress-fill" id="expiryProgressFill"></div>
-              </div>
-            </div>
-
-            <!-- Факторы теханализа -->
+            <!-- Technical Analysis Rationale Points -->
             <div class="rationale-box" id="rationaleBox">
-              <div class="rationale-title" data-i18n="rationaleTitle">Подтверждение ИИ:</div>
               <div class="rationale-list" id="rationaleList"></div>
             </div>
           </div>
 
-          <!-- ФАЗА 3: Завершение экспирации + авто-инкремент + Следующий сигнал -->
-          <div class="scanner-phase phase-3" id="phase3" hidden>
-            <div class="finished-badge">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00FF9D" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <!-- STATE 4: FINISHED -->
+          <div class="terminal-state state-finished" id="stateFinished" hidden>
+            <div class="finished-check">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            <div class="finished-title" id="phase3Title" data-i18n="expiryOver">Сессия завершена · Точка отработана</div>
-            <p class="finished-desc" data-i18n="tradeClosed">Торговый импульс зафиксирован квантовым ядром.</p>
-
-            <div class="phase3-actions">
-              <button type="button" class="cta-neon btn-new-signal" id="btnNewSignal">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                <span data-i18n="btnNewSignal">СЛЕДУЮЩИЙ СИГНАЛ</span>
-              </button>
-            </div>
+            <div class="finished-title" data-i18n="tradeFinished">Сделка завершена · Точка отработана</div>
+            <div class="finished-sub" id="autoRadarCountdownText" data-i18n="statsUpdated">Результат учтён в статистике сессии.</div>
           </div>
 
         </div>
+
+        <!-- Royal Blue CTA Button -->
+        <button type="button" class="btn-royal-cta" id="signalBtn">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="btn-text" id="signalBtnText">ПОЛУЧИТЬ СИГНАЛ (5s)</span>
+        </button>
+
+        <div class="risk-disclaimer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span data-i18n="riskHint">Мани-менеджмент: рекомендуемая ставка не более 3% от депозита</span>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: AI CHAT / REASONING CORE                         -->
+    <!-- ======================================================== -->
+    <section class="tab-view" id="tabChat">
+
+      <!-- AI Chat Message Feed -->
+      <section class="chat-feed" id="chatFeed">
+        <!-- Initial Welcome Bubble -->
+        <div class="chat-bubble ai">
+          <div class="bubble-header">
+            <span class="ai-badge">WINKY AI</span>
+            <span class="bubble-model" id="chatActiveModelTag">Claude Fable 5.1</span>
+          </div>
+          <div class="bubble-content" data-i18n="chatWelcome">
+            Привет! Я Winky AI. Выберите валютную пару, экспирацию и модель теханализа, затем нажмите «Анализировать».
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Chat Parameters & Action Bar -->
+      <div class="chat-controls-bar">
+        <!-- Parameter Selectors Row -->
+        <div class="chat-params-row">
+          <!-- Model Selector -->
+          <div class="chat-param-item">
+            <label class="param-lbl">ИИ-модель</label>
+            <button type="button" class="param-select-btn" id="btnSelectModel">
+              <span id="selectedModelLabel">Claude Fable 5.1</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+
+          <!-- Pair Quick Selector -->
+          <div class="chat-param-item">
+            <label class="param-lbl">Пара</label>
+            <button type="button" class="param-select-btn" id="btnChatPair">
+              <span id="chatPairLabel">EUR/USD OTC</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+
+          <!-- Expiration Quick Selector -->
+          <div class="chat-param-item small">
+            <label class="param-lbl">Время</label>
+            <select class="param-select-native" id="selectChatDuration">
+              <option value="5s" selected>5s</option>
+              <option value="10s">10s</option>
+              <option value="15s">15s</option>
+              <option value="30s">30s</option>
+              <option value="1m">1m</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Big Analyze Button -->
+        <button type="button" class="btn-royal-cta" id="btnAnalyze">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="btn-text" id="analyzeBtnText" data-i18n="analyzeBtn">АНАЛИЗИРОВАТЬ РЫНОК</span>
+        </button>
       </div>
-
-    </section>
-
-    <!-- ========== ВКЛАДКА 2: ИИ ЯДРО (AI CORE) ========== -->
-    <section class="tab-pane" id="paneChat">
-      
-      <!-- Шапка ИИ модели -->
-      <section class="chat-header-card card">
-        <div class="chat-model-info">
-          <div class="model-avatar" id="chatModelAvatar"></div>
-          <div class="model-meta">
-            <div class="model-title-row">
-              <span class="model-title-text" id="chatModelName">Winky Neural v5</span>
-              <span class="status-online-dot" title="Active"></span>
-            </div>
-            <div class="model-sub" id="chatModelSub">Proprietary Waifu Quant Engine</div>
-          </div>
-        </div>
-
-        <div class="chat-quick-params">
-          <button type="button" class="param-chip" id="chatPairChip">
-            <span class="chip-flags" id="chatChipFlags"></span>
-            <span id="chatChipPair">EUR/USD OTC</span>
-            <span class="chip-arrow">▾</span>
-          </button>
-          <button type="button" class="param-chip" id="chatDurationChip">
-            <span id="chatChipDuration">S5</span>
-            <span class="chip-arrow">▾</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- Лента чата -->
-      <section class="chat-history card" id="chatHistory"></section>
-
-      <!-- Панель отправки запроса ИИ -->
-      <section class="chat-input-bar card">
-        <button type="button" class="model-picker-trigger" id="modelPickerTrigger">
-          <span class="trigger-icon" id="triggerModelIcon"></span>
-          <span class="trigger-name" id="triggerModelName">Winky v5</span>
-          <span class="trigger-arrow">▾</span>
-        </button>
-
-        <button type="button" class="btn-analyze" id="btnAnalyze">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span class="analyze-text" id="analyzeText" data-i18n="analyzeBtn">Анализировать</span>
-        </button>
-      </section>
-
-    </section>
-
-    <!-- ========== ВКЛАДКА 3: РАДАР И ТОП-10 (STATS) ========== -->
-    <section class="tab-pane" id="paneStats">
-      
-      <!-- Личный прогресс -->
-      <section class="card progress-card">
-        <div class="card-title-row">
-          <div class="card-title-left">
-            <span class="quantum-sparkle">✦</span>
-            <span data-i18n="progressTitle">Мой прогресс</span>
-          </div>
-        </div>
-        <div class="progress-stats-grid">
-          <div class="prog-item">
-            <div class="prog-val val-cyan" id="progPoints">0</div>
-            <div class="prog-lbl" data-i18n="pointsWeek">баллов за неделю</div>
-          </div>
-          <div class="prog-item">
-            <div class="prog-val val-rose" id="progRank">—</div>
-            <div class="prog-lbl" data-i18n="rankLabel">ранг</div>
-          </div>
-          <div class="prog-item">
-            <div class="prog-val val-green" id="progStreak">0</div>
-            <div class="prog-lbl" data-i18n="streakLabel">дней подряд</div>
-          </div>
-        </div>
-        <div class="card-divider"></div>
-        <div class="personal-summary" id="progPersonal">0 сигналов получено</div>
-        <div class="lb-title" data-i18n="leaderboardTitle">Топ-10 недели</div>
-        <div class="lb-list" id="lbList"></div>
-        <div class="lb-rules" id="lbRules"></div>
-      </section>
-
-      <!-- Живая лента сообщества -->
-      <section class="card feed-card">
-        <div class="feed-head">
-          <div class="feed-head-left">
-            <span class="status-pulse-dot"></span>
-            <span data-i18n="feedTitle">Сигналы в эфире</span>
-          </div>
-          <span class="feed-today-count" id="feedToday" hidden>🔥 Сегодня: 0</span>
-        </div>
-        <div class="feed-list" id="feedList"></div>
-        <div class="feed-total-count" id="feedTotal" hidden></div>
-      </section>
 
     </section>
 
   </main>
 
-  <!-- ==================== НИЖНЯЯ ВЕКТОРНАЯ НАВИГАЦИЯ ==================== -->
+  <!-- ==================== BOTTOM NAVIGATION (STRICTLY 2 TABS) ==================== -->
   <nav class="bottom-nav">
-    <button type="button" class="nav-item active" data-tab="paneSignal">
+    <button type="button" class="nav-item active" data-tab="tabHome" id="btnNavHome">
       <span class="nav-icon-wrap">
-        <svg class="nav-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       </span>
-      <span class="nav-label" data-i18n="navSignal">СИГНАЛЫ</span>
+      <span class="nav-label" data-i18n="navHome">СИГНАЛЫ</span>
     </button>
-    <button type="button" class="nav-item" data-tab="paneChat">
+    <button type="button" class="nav-item" data-tab="tabChat" id="btnNavChat">
       <span class="nav-icon-wrap">
-        <svg class="nav-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="4" y="4" width="16" height="16" rx="3"/>
-          <circle cx="9" cy="9" r="1.5" fill="currentColor"/>
-          <circle cx="15" cy="9" r="1.5" fill="currentColor"/>
-          <path d="M8 15h8"/>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
       </span>
-      <span class="nav-label" data-i18n="navChat">ИИ ЯДРО</span>
-    </button>
-    <button type="button" class="nav-item" data-tab="paneStats">
-      <span class="nav-icon-wrap">
-        <svg class="nav-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="12" r="6"/>
-          <circle cx="12" cy="12" r="2"/>
-          <line x1="12" y1="2" x2="12" y2="12"/>
-        </svg>
-      </span>
-      <span class="nav-label" data-i18n="navStats">РАДАР</span>
+      <span class="nav-label" data-i18n="navChat">ИИ ЧАТ</span>
     </button>
   </nav>
 
-  <!-- ==================== ШТОРКА ВЫБОРА ВАЛЮТНОЙ ПАРЫ ==================== -->
-  <div class="sheet-backdrop" id="pairModalBackdrop" hidden>
-    <div class="sheet-modal" id="pairModal">
+  <!-- ==================== CURRENCY PAIR BOTTOM SHEET ==================== -->
+  <div class="sheet-backdrop" id="pairSheetBackdrop" hidden>
+    <div class="sheet-card" id="pairSheet">
       <div class="sheet-head">
         <div class="sheet-title" data-i18n="selectPair">Выбор валютной пары</div>
-        <button type="button" class="btn-sheet-close" id="btnClosePairModal">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+        <button type="button" class="sheet-close-btn" id="btnClosePairSheet">✕</button>
       </div>
 
-      <div class="pair-search-box">
-        <svg class="search-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="pair-search-input" id="pairSearchInput" placeholder="Поиск пары (напр. EUR, USD, OTC)..." data-i18n-placeholder="searchPair">
+      <div class="pair-search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="pair-search-input" id="pairSearchInput" placeholder="Поиск пары (EUR, USD, OTC)..." data-i18n-placeholder="searchPair">
       </div>
 
       <div class="pair-list-scroll" id="pairList"></div>
     </div>
   </div>
 
-  <!-- ==================== ШТОРКА ВЫБОРА AI МОДЕЛИ ==================== -->
+  <!-- ==================== AI MODEL BOTTOM SHEET ==================== -->
   <div class="sheet-backdrop" id="modelSheetBackdrop" hidden>
-    <div class="sheet-modal" id="modelSheet">
+    <div class="sheet-card" id="modelSheet">
       <div class="sheet-head">
-        <div class="sheet-title" data-i18n="selectModel">Выбор квантовой ИИ-модели</div>
-        <button type="button" class="btn-sheet-close" id="btnCloseModelSheet">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+        <div class="sheet-title" data-i18n="selectModel">Выбор ИИ-модели теханализа</div>
+        <button type="button" class="sheet-close-btn" id="btnCloseModelSheet">✕</button>
       </div>
 
       <div class="model-list-scroll" id="modelList"></div>
     </div>
   </div>
 
-  <!-- ==================== МОДАЛЬНОЕ ОКНО ДЕПОЗИТА ==================== -->
-  <div class="sheet-backdrop" id="depositModalBackdrop" hidden>
-    <div class="deposit-modal card" id="depositModal">
-      <div class="deposit-badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        VIP UPGRADE
-      </div>
+  <!-- ==================== VIP DEPOSIT UPGRADE SHEET ==================== -->
+  <div class="sheet-backdrop" id="depositSheetBackdrop" hidden>
+    <div class="deposit-card" id="depositSheet">
+      <div class="deposit-badge">VIP UPGRADE</div>
       <div class="deposit-title" data-i18n="depositTitle">Демо-сигналы исчерпаны</div>
       <p class="deposit-desc" data-i18n="depositDesc">
-        Вы использовали 3 из 3 бесплатных демо-сигнала! Откройте безлимитный доступ к сигналам, OTC-алгоритмам и всем 9 квантовым нейросетям.
+        Вы использовали 3 бесплатных сигнала. Пополните счёт Pocket Option, чтобы получить безлимитный доступ к сигналам, OTC-алгоритмам и всем ИИ-моделям.
       </p>
 
       <div class="promo-box">
         <div class="promo-hint" data-i18n="promoBonus">+50% к депозиту от $50</div>
         <div class="promo-code-row">
-          <span class="promo-code-label">ПРОМОКОД:</span>
-          <span class="promo-code-val">50START</span>
-          <button type="button" class="btn-copy-promo" id="btnCopyPromo" title="Скопировать промокод">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </button>
+          <span class="promo-label">ПРОМОКОД:</span>
+          <span class="promo-val">50START</span>
+          <button type="button" class="btn-copy-promo" id="btnCopyPromo" title="Скопировать">Копировать</button>
         </div>
       </div>
 
       <div class="deposit-actions">
-        <a href="#" class="cta-neon btn-register-cta" id="btnRegisterLink" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <a href="#" class="btn-royal-cta" id="btnRegisterLink" target="_blank" rel="noopener">
           <span data-i18n="registerNow">1. БЫСТРАЯ РЕГИСТРАЦИЯ (30 сек)</span>
         </a>
-        <a href="#" class="cta-neon btn-deposit-cta" id="btnDepositLink" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <a href="#" class="btn-royal-cta btn-deposit-alt" id="btnDepositLink" target="_blank" rel="noopener">
           <span data-i18n="depositNow">2. ПОПОЛНИТЬ СЧЁТ (+50% БОНУС)</span>
         </a>
-        <button type="button" class="btn-secondary" id="btnCloseDeposit" data-i18n="close">Закрыть</button>
+        <button type="button" class="btn-sheet-close-text" id="btnCloseDeposit" data-i18n="close">Закрыть</button>
       </div>
     </div>
   </div>

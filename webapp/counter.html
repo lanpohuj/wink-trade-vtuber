@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>EDUCATIONAL LIVE — Winky Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background: #0A0F1D;
+      color: #F3F4F6;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 12px;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hud-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      padding-bottom: 8px;
+    }
+    .hud-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #EF4444;
+      box-shadow: 0 0 8px #EF4444;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .hud-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #94A3B8;
+      text-transform: uppercase;
+    }
+    .hud-pair {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #38BDF8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .hud-clock {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #64748B;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+      flex: 1;
+    }
+    .stat-card {
+      background: #111827;
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .stat-card.wins {
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.08) inset;
+    }
+    .stat-card.losses {
+      border-color: rgba(239, 68, 68, 0.3);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.08) inset;
+    }
+    .stat-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+    .stat-card.wins .stat-tag { color: #10B981; }
+    .stat-card.losses .stat-tag { color: #EF4444; }
+    .stat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-card.wins .stat-num {
+      color: #34D399;
+      text-shadow: 0 0 16px rgba(16, 185, 129, 0.45);
+    }
+    .stat-card.losses .stat-num {
+      color: #F87171;
+      text-shadow: 0 0 16px rgba(239, 68, 68, 0.45);
+    }
+    .btn-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .btn-step {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #E2E8F0;
+      width: 30px;
+      height: 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .btn-step:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+    .btn-step:active {
+      transform: scale(0.95);
+    }
+    .hud-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .winrate-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .winrate-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #64748B;
+      letter-spacing: 0.05em;
+    }
+    .winrate-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 800;
+      color: #38BDF8;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+    .btn-reset {
+      background: transparent;
+      border: none;
+      color: #64748B;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: color 0.15s ease;
+    }
+    .btn-reset:hover {
+      color: #EF4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header class="hud-header">
+    <div class="hud-title-wrap">
+      <span class="pulse-dot"></span>
+      <span class="hud-title">EDUCATIONAL LIVE</span>
+    </div>
+    <span class="hud-pair" id="hudPair">EUR/USD OTC</span>
+    <span class="hud-clock" id="hudClock">14:28:10</span>
+  </header>
+
+  <div class="stats-row">
+    <!-- WINS CARD -->
+    <div class="stat-card wins">
+      <span class="stat-tag">WINS</span>
+      <span class="stat-num" id="winsNum">110</span>
+      <div class="btn-controls">
+        <button type="button" class="btn-step" id="btnWinsMinus" title="Minus 1">-</button>
+        <button type="button" class="btn-step" id="btnWinsPlus" title="Plus 1">+</button>
+      </div>
+    </div>
+
+    <!-- LOSSES CARD -->
+    <div class="stat-card losses">
+      <span class="stat-tag">LOSSES</span>
+      <span class="stat-num" id="lossesNum">1</span>
+      <div class="btn-controls">
+        <button type="button" class="btn-step" id="btnLossesMinus" title="Minus 1">-</button>
+        <button type="button" class="btn-step" id="btnLossesPlus" title="Plus 1">+</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="hud-footer">
+    <div class="winrate-wrap">
+      <span class="winrate-label">WINRATE:</span>
+      <span class="winrate-val" id="winrateNum">99.1%</span>
+    </div>
+    <button type="button" class="btn-reset" id="btnReset" title="Сбросить к 110 : 1">СБРОСИТЬ</button>
+  </footer>
+
+  <script>
+    (function () {
+      const state = {
+        wins: 110,
+        losses: 1,
+        pair: 'EUR/USD OTC',
+      };
+
+      const winsEl = document.getElementById('winsNum');
+      const lossesEl = document.getElementById('lossesNum');
+      const winrateEl = document.getElementById('winrateNum');
+      const pairEl = document.getElementById('hudPair');
+      const clockEl = document.getElementById('hudClock');
+
+      function updateUI() {
+        winsEl.textContent = state.wins;
+        lossesEl.textContent = state.losses;
+        const total = state.wins + state.losses;
+        const rate = total > 0 ? ((state.wins / total) * 100).toFixed(1) + '%' : '0.0%';
+        winrateEl.textContent = rate;
+        if (state.pair) pairEl.textContent = state.pair;
+      }
+
+      function broadcast(source) {
+        updateUI();
+        try {
+          localStorage.setItem('winky_live_stats', JSON.stringify({
+            wins: state.wins,
+            losses: state.losses,
+            pair: state.pair,
+            timestamp: Date.now()
+          }));
+        } catch (_) {}
+
+        if (window.BroadcastChannel) {
+          try {
+            const bc = new BroadcastChannel('winky_live_stats');
+            bc.postMessage({
+              type: 'STATS_UPDATE',
+              wins: state.wins,
+              losses: state.losses,
+              pair: state.pair,
+              source: source || 'counter'
+            });
+            bc.close();
+          } catch (_) {}
+        }
+
+        // Синхронизация с сервером
+        fetch('/api/live_stats', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ wins: state.wins, losses: state.losses, pair: state.pair })
+        }).catch(function () {});
+      }
+
+      function loadInitial() {
+        try {
+          const raw = localStorage.getItem('winky_live_stats');
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (typeof parsed.wins === 'number') state.wins = parsed.wins;
+            if (typeof parsed.losses === 'number') state.losses = parsed.losses;
+            if (parsed.pair) state.pair = parsed.pair;
+          }
+        } catch (_) {}
+
+        fetch('/api/live_stats')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data && typeof data.wins === 'number') {
+              state.wins = data.wins;
+              state.losses = data.losses;
+              if (data.pair) state.pair = data.pair;
+              updateUI();
+            }
+          })
+          .catch(function () {});
+
+        updateUI();
+      }
+
+      // Кнопки управления
+      document.getElementById('btnWinsPlus').addEventListener('click', function () {
+        state.wins += 1;
+        broadcast('counter');
+      });
+      document.getElementById('btnWinsMinus').addEventListener('click', function () {
+        state.wins = Math.max(0, state.wins - 1);
+        broadcast('counter');
+      });
+      document.getElementById('btnLossesPlus').addEventListener('click', function () {
+        state.losses += 1;
+        broadcast('counter');
+      });
+      document.getElementById('btnLossesMinus').addEventListener('click', function () {
+        state.losses = Math.max(0, state.losses - 1);
+        broadcast('counter');
+      });
+      document.getElementById('btnReset').addEventListener('click', function () {
+        state.wins = 110;
+        state.losses = 1;
+        broadcast('counter');
+      });
+
+      // Слушатель BroadcastChannel
+      if (window.BroadcastChannel) {
+        try {
+          const rxChannel = new BroadcastChannel('winky_live_stats');
+          rxChannel.onmessage = function (ev) {
+            const msg = ev.data;
+            if (!msg) return;
+            if (typeof msg.wins === 'number') state.wins = msg.wins;
+            if (typeof msg.losses === 'number') state.losses = msg.losses;
+            if (msg.pair) state.pair = msg.pair;
+            updateUI();
+          };
+        } catch (_) {}
+      }
+
+      // Слушатель storage
+      window.addEventListener('storage', function (e) {
+        if (e.key === 'winky_live_stats' && e.newValue) {
+          try {
+            const d = JSON.parse(e.newValue);
+            if (typeof d.wins === 'number') state.wins = d.wins;
+            if (typeof d.losses === 'number') state.losses = d.losses;
+            if (d.pair) state.pair = d.pair;
+            updateUI();
+          } catch (_) {}
+        }
+      });
+
+      // Часы
+      function tickClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+        clockEl.textContent = h + ':' + m + ':' + s;
+      }
+      setInterval(tickClock, 1000);
+      tickClock();
+
+      loadInitial();
+    })();
+  </script>
+</body>
+</html>

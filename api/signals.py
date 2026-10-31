@@ -96,20 +96,20 @@ RATIONALE_BUY = [
         "en": "Order Book: liquidity imbalance tilted toward bids (+68%)",
     },
     {
-        "ru": "Argon Radar: резкий приток ликвидности в кластер институционального бида",
-        "en": "Argon Radar: institutional bid cluster aggressive absorption detected",
+        "ru": "Gemini Argon: динамический отскок от институционального уровня поддержки",
+        "en": "Gemini Argon: clean bounce from primary institutional support level",
     },
     {
-        "ru": "Luna Scalp Engine: импульсный пробой микро-флета с нулевым лагом",
-        "en": "Luna Scalp Engine: zero-lag micro-impulse breakout confirmed",
+        "ru": "GPT-5 Luna: сверхбыстрый бычий импульс на младшем тиковом потоке",
+        "en": "GPT-5 Luna: rapid bullish impulse burst across tick flow",
     },
     {
-        "ru": "Candle Psychology: вынос стопов продавцов и формирование FVG на покупку",
-        "en": "Candle Psychology: seller stop hunt followed by bullish FVG mitigation",
+        "ru": "Claude Fable 5.1: свечная структура подтверждает поглощение продавцов",
+        "en": "Claude Fable 5.1: candlestick psychology confirms complete seller exhaustion",
     },
     {
-        "ru": "Winky Quant v5: синхронная бычья дивергенция на тиковом потоке",
-        "en": "Winky Quant v5: synchronous bullish divergence across tick flow",
+        "ru": "GPT-5 Astra: графический паттерн завершён, фаза продолжения восходящего тренда",
+        "en": "GPT-5 Astra: pattern completion confirmed, entering bullish expansion phase",
     },
 ]
 
@@ -147,25 +147,25 @@ RATIONALE_SELL = [
         "en": "Order Book: heavy ask cluster capping upside movement",
     },
     {
-        "ru": "Argon Radar: сброс крупного лимитного объёма в стакан предложения",
-        "en": "Argon Radar: heavy institutional limit block capping the orderbook",
+        "ru": "Gemini Argon: отскок от сильного динамического уровня сопротивления",
+        "en": "Gemini Argon: rejection from strong dynamic resistance level",
     },
     {
-        "ru": "Luna Scalp Engine: затухание восходящего тика и разворот микро-импульса",
-        "en": "Luna Scalp Engine: upward micro-tick exhaustion and immediate reversal",
+        "ru": "GPT-5 Luna: затухание восходящего тика и резкий разворот вниз",
+        "en": "GPT-5 Luna: upward micro-tick exhaustion and immediate downward reversal",
     },
     {
-        "ru": "Candle Psychology: ложный пробой с формированием медвежьего пин-бара",
-        "en": "Candle Psychology: liquidity sweep above highs with strong bear rejection",
+        "ru": "Claude Fable 5.1: свечной паттерн ложного пробоя и фиксация прибыли",
+        "en": "Claude Fable 5.1: false breakout rejection with heavy profit taking",
     },
     {
-        "ru": "Winky Quant v5: фиксация лонгов и агрессивная рыночная продажа",
-        "en": "Winky Quant v5: long liquidation cascade with heavy market sell pressure",
+        "ru": "GPT-5 Astra: графический разворотный паттерн двойная вершина подтверждён",
+        "en": "GPT-5 Astra: double top reversal pattern completed on chart",
     },
 ]
 
 
-def _build_rationale(pair: str, direction: str, model: str = "winky-v5", now: float | None = None) -> tuple[list[str], list[str]]:
+def _build_rationale(pair: str, direction: str, model: str = "claude-fable-5.1", now: float | None = None) -> tuple[list[str], list[str]]:
     """Детерминированная выборка 2-3 факторов теханализа под сигнал с учётом модели."""
     moment = int((now if now is not None else time.time()) // 5)
     digest = hashlib.sha256(f"{pair}:{direction}:{model}:{moment}".encode()).digest()
@@ -178,7 +178,7 @@ def _build_rationale(pair: str, direction: str, model: str = "winky-v5", now: fl
         model_factor_idx = 9
     elif "fable" in model:
         model_factor_idx = 10
-    elif "winky" in model:
+    elif "astra" in model:
         model_factor_idx = 11
 
     count = 2 if digest[0] % 3 == 0 else 3
@@ -219,7 +219,7 @@ class SignalRequest(BaseModel):
     pair: str
     duration: str
     force_dir: Literal["BUY", "SELL"] | None = None
-    model: str = "winky-v5"
+    model: str = "claude-fable-5.1"
 
 
 class SignalResponse(BaseModel):
@@ -227,7 +227,7 @@ class SignalResponse(BaseModel):
     accuracy: int = Field(ge=1, le=100)
     pair: str
     duration: str
-    model: str = "winky-v5"
+    model: str = "claude-fable-5.1"
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
     entry_delay_sec: int = 3
@@ -237,6 +237,27 @@ class SignalResponse(BaseModel):
     register_url: str = ""
     deposit_url: str = ""
     promo_code: str = "50START"
+
+
+class LiveStatsRequest(BaseModel):
+    wins: int | None = None
+    losses: int | None = None
+    pair: str | None = None
+    reset: bool = False
+
+
+class LiveStatsResponse(BaseModel):
+    wins: int
+    losses: int
+    winrate: str
+    pair: str
+
+
+_live_stats_state: dict[str, Any] = {
+    "wins": 110,
+    "losses": 1,
+    "pair": "EUR/USD OTC",
+}
 
 
 class HistoryItem(BaseModel):
@@ -430,7 +451,7 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         direction, accuracy = await _user_signal(pair)
 
     # Генерация реалистичного профессионального теханализа под сигнал
-    rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "winky-v5")
+    rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "claude-fable-5.1")
     duration_sec = DURATION_SECONDS.get(duration, 5)
 
     async with async_session_factory() as session:
@@ -457,7 +478,7 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         accuracy=accuracy,
         pair=pair,
         duration=duration,
-        model=payload.model or "winky-v5",
+        model=payload.model or "claude-fable-5.1",
         rationale_ru=rationale_ru,
         rationale_en=rationale_en,
         entry_delay_sec=3,
@@ -561,3 +582,45 @@ async def get_leaderboard(tg_id: int | None = None) -> LeaderboardResponse:
         entries=[LeaderboardEntry(**entry) for entry in entries],
         your_rank=your_rank,
     )
+
+
+@router.get("/live_stats", response_model=LiveStatsResponse)
+async def get_live_stats() -> LiveStatsResponse:
+    """Получение текущей статистики побед/поражений для плавающего виджета счетчика."""
+    w = int(_live_stats_state["wins"])
+    l = int(_live_stats_state["losses"])
+    total = w + l
+    rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
+    return LiveStatsResponse(
+        wins=w,
+        losses=l,
+        winrate=rate,
+        pair=str(_live_stats_state.get("pair", "EUR/USD OTC")),
+    )
+
+
+@router.post("/live_stats", response_model=LiveStatsResponse)
+async def update_live_stats(payload: LiveStatsRequest) -> LiveStatsResponse:
+    """Обновление счетчика побед/поражений (из терминала, расширения или виджета)."""
+    if payload.reset:
+        _live_stats_state["wins"] = 110
+        _live_stats_state["losses"] = 1
+    else:
+        if payload.wins is not None:
+            _live_stats_state["wins"] = max(0, payload.wins)
+        if payload.losses is not None:
+            _live_stats_state["losses"] = max(0, payload.losses)
+    if payload.pair:
+        _live_stats_state["pair"] = payload.pair
+
+    w = int(_live_stats_state["wins"])
+    l = int(_live_stats_state["losses"])
+    total = w + l
+    rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
+    return LiveStatsResponse(
+        wins=w,
+        losses=l,
+        winrate=rate,
+        pair=str(_live_stats_state.get("pair", "EUR/USD OTC")),
+    )
+

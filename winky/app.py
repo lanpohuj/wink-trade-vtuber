@@ -96,6 +96,29 @@ class WinkyAPI:
         logger.info("Десктопный оверлей-терминал запущен: %s", url)
         return True
 
+    def open_counter_widget(self) -> bool:
+        """Открывает отдельное плавающее табло счетчика EDUCATIONAL LIVE."""
+        if hasattr(self, "_counter_window") and self._counter_window:
+            try:
+                self._counter_window.show()
+                self._counter_window.restore()
+                return True
+            except Exception:
+                self._counter_window = None
+
+        url = f"http://{self._assets_host}:{self._assets_port}/webapp/counter.html"
+        self._counter_window = webview.create_window(
+            "EDUCATIONAL LIVE — Winky Counter",
+            url=url,
+            js_api=self,
+            width=380,
+            height=240,
+            on_top=True,
+            resizable=True,
+        )
+        logger.info("Плавающее табло счетчика запущено: %s", url)
+        return True
+
     def toggle_voice_signals(self, enabled: bool) -> bool:
         self._voice_signals_enabled = bool(enabled)
         logger.info("Озвучка торговых сигналов голосом Winky: %s", "ВКЛ" if self._voice_signals_enabled else "ВЫКЛ")
@@ -109,7 +132,26 @@ class WinkyAPI:
         self.trigger_action("peek_closer", 2.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
 
-    def on_signal_result(self, direction: str, pair: str = "", duration: str = "", model: str = "") -> None:
+    def speak_signal(self, payload: Any = None) -> bool:
+        """Озвучка сигнала исключительно через LumeanTTS (женский голос) без Mac say."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        pair = payload.get("pair", "EUR/USD OTC")
+        direction = payload.get("direction", "BUY")
+        duration = payload.get("duration", "5s")
+        model = payload.get("model", "Claude Fable")
+        lang = payload.get("lang", "ru")
+
+        self.on_signal_result(direction=direction, pair=pair, duration=duration, model=model, lang=lang)
+        return True
+
+    def on_signal_result(self, direction: str, pair: str = "", duration: str = "", model: str = "", lang: str = "ru") -> None:
         """Реакция аватара Winky на результат сигнала: радость + озвучка живым женским голосом."""
         self.trigger_action("cheer", 3.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('excited')")
@@ -118,24 +160,36 @@ class WinkyAPI:
             return
 
         is_buy = str(direction).upper() == "BUY"
-        clean_dur = duration or "5 секунд"
-        clean_model = model.split(" ")[0] if model else "Winky"
+        clean_dur = duration or "5s"
+        clean_model = model.split(" ")[0] if model else "Claude"
 
-        if is_buy:
-            phrases = [
-                f"Модель {clean_model} даёт уверенный сигнал ВВЕРХ! Заходим на {clean_dur}!",
-                f"Вижу сильный бычий импульс! Берём ВВЕРХ на {clean_dur}, точка входа отличная!",
-                f"Отскок от зоны ликвидности подтверждён! Сигнал ВВЕРХ на {clean_dur}!",
-            ]
+        if lang == "en":
+            if is_buy:
+                phrases = [
+                    f"Model {clean_model} confirms a strong BUY impulse! Entering for {clean_dur}!",
+                    f"Bullish order block confirmed! Taking BUY for {clean_dur}!",
+                ]
+            else:
+                phrases = [
+                    f"Model {clean_model} confirms a clear SELL reversal! Entering for {clean_dur}!",
+                    f"Bearish momentum confirmed! Taking SELL for {clean_dur}!",
+                ]
         else:
-            phrases = [
-                f"Так, вижу разворот! Сигнал ВНИЗ на {clean_dur}, уверенность максимальная!",
-                f"Модель {clean_model} фиксирует сброс ликвидности! Заходим ВНИЗ на {clean_dur}!",
-                f"Медвежий импульс подтверждён! Открываем сделку ВНИЗ на {clean_dur}!",
-            ]
+            if is_buy:
+                phrases = [
+                    f"Модель {clean_model} даёт уверенный сигнал ВВЕРХ! Заходим на {clean_dur}!",
+                    f"Вижу сильный бычий импульс! Берём ВВЕРХ на {clean_dur}, точка входа отличная!",
+                    f"Отскок от зоны ликвидности подтверждён! Сигнал ВВЕРХ на {clean_dur}!",
+                ]
+            else:
+                phrases = [
+                    f"Так, вижу разворот! Сигнал ВНИЗ на {clean_dur}, уверенность максимальная!",
+                    f"Модель {clean_model} фиксирует сброс ликвидности! Заходим ВНИЗ на {clean_dur}!",
+                    f"Медвежий импульс подтверждён! Открываем сделку ВНИЗ на {clean_dur}!",
+                ]
 
         chosen_phrase = random.choice(phrases)
-        self._controller.speak(chosen_phrase, lang="ru", emotion="excited", source="signal_announcement")
+        self._controller.speak(chosen_phrase, lang=lang, emotion="excited", source="signal_announcement")
 
     # ---------- окна подключаются после создания ----------
 
@@ -806,6 +860,7 @@ def main() -> None:
         "signal",
         lambda direction="BUY", pair="", duration="", model="": winky_api.on_signal_result(direction, pair, duration, model),
     )
+    register_winky_callback("speak_signal", winky_api.speak_signal)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None
