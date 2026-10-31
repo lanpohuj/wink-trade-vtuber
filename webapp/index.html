@@ -3,160 +3,461 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>Wink Trade — Signals</title>
-  <meta name="theme-color" content="#0b1512">
+  <title>WINKY AI — Premium Trading Signals &amp; Neural Terminal</title>
+  <meta name="theme-color" content="#080514">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="app">
+<div class="app-container">
 
-  <header class="header">
-    <div class="brand" id="brand" aria-label="Wink Trade">
-      <svg class="brand-logo" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="#12241d" stroke="rgba(0,230,118,0.25)"/>
-        <path d="M6.5 20.5c2.4-3.2 4.6-3.2 7 0s4.6 3.2 7 0" stroke="url(#winkGradient)" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M16.5 13.5 21.5 8.5m0 0h-4.2m4.2 0v4.2" stroke="#00e676" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <defs>
-          <linearGradient id="winkGradient" x1="6" y1="20" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#2ebd85"/>
-            <stop offset="1" stop-color="#00e676"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <div class="brand-name">WINK<span>TRADE</span></div>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas for 1-Click WIN celebration -->
+  <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="topbar">
+    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="8" fill="url(#brandBgGrad)"/>
+          <path d="M6 18c2-3 4-3 6 0s4 3 6 0" stroke="url(#brandWaveGrad)" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M15 11l5-5m0 0h-4m4 0v4" stroke="#a855f7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="7" r="1.5" fill="#00ff88"/>
+          <defs>
+            <linearGradient id="brandBgGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#1e1145"/>
+              <stop offset="1" stop-color="#0c0721"/>
+            </linearGradient>
+            <linearGradient id="brandWaveGrad" x1="6" y1="18" x2="18" y2="18" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8b5cf6"/>
+              <stop offset="1" stop-color="#00ff88"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <div class="brand-title">
+          WINKY<span class="ai-text">AI</span>
+          <span class="badge-pro">PRO</span>
+        </div>
+        <div class="brand-sub">neural terminal</div>
+      </div>
     </div>
-    <div class="lang-switch" id="langSwitch" data-active="en">
-      <span class="lang-thumb" aria-hidden="true"></span>
-      <button type="button" class="lang-btn active" data-lang="en">EN</button>
-      <button type="button" class="lang-btn" data-lang="ru">RU</button>
+
+    <div class="topbar-actions">
+      <!-- Кнопка вызова плавающего табло стримера -->
+      <button type="button" class="btn-live-toggle" id="btnLiveToggle" title="Live Stream Stats">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="live-label">LIVE</span>
+      </button>
+
+      <!-- Переключатель языка RU / EN -->
+      <div class="lang-switch" id="langSwitch" data-active="en">
+        <span class="lang-thumb" aria-hidden="true"></span>
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+      </div>
+
+      <!-- Бейдж статуса пользователя -->
+      <div class="user-status-badge" id="userStatusBadge">
+        <span class="badge vip" id="badgeVip">💎 VIP</span>
+        <span class="badge guest" id="badgeGuest" hidden>🔓 GUEST <b id="guestCount">3/3</b></span>
+      </div>
     </div>
   </header>
 
-  <main class="content">
-    <section class="card">
-      <div class="card-title" id="settingsTitle">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span data-i18n="settingsTitle">Signal settings</span>
+  <!-- ==================== ПЛАВАЮЩИЙ ВИДЖЕТ СТРИМЕРА (EDUCATIONAL LIVE) ==================== -->
+  <section class="live-session-widget card" id="liveWidget" hidden>
+    <div class="live-widget-head">
+      <div class="live-widget-title">
+        <span class="pulse-indicator" aria-hidden="true"></span>
+        <span class="live-title-text" data-i18n="liveSessionStats">EDUCATIONAL LIVE</span>
+        <span class="live-time" id="liveClock">00:00:00 UTC</span>
       </div>
-
-      <div class="field">
-        <label class="field-label" data-i18n="pairLabel">Trading pair</label>
-        <div class="select" id="pairSelect"></div>
+      <div class="live-widget-tools">
+        <span class="live-active-pair" id="livePair">EUR/USD OTC</span>
+        <button type="button" class="btn-icon-xs" id="btnCloseLive" title="Close">✕</button>
       </div>
+    </div>
 
-      <div class="field">
-        <label class="field-label" data-i18n="durationLabel">Trade duration</label>
-        <div class="select" id="durationSelect"></div>
-      </div>
-
-      <button type="button" class="cta" id="signalBtn">
-        <span class="cta-text" id="ctaText">Get signal (5s) ↗</span>
-        <span class="spinner" id="ctaSpinner" hidden aria-hidden="true"></span>
-      </button>
-      <div class="risk-hint" data-i18n="riskHint">Risk tip: stake ≤ 3% of your deposit</div>
-    </section>
-
-    <section class="card result-card" id="resultCard">
-      <div class="analysis" id="analysisBlock" hidden>
-        <canvas class="analysis-chart" id="analysisChart"></canvas>
-        <div class="analysis-stage" data-stage="0">
-          <span class="stage-dot" aria-hidden="true"></span>
-          <span class="stage-label" data-i18n="stage1">Loading market data</span>
+    <div class="live-widget-body">
+      <div class="stat-counter win-counter">
+        <div class="stat-meta">
+          <span class="stat-label" data-i18n="liveWins">WINS</span>
+          <span class="stat-icon">🏆</span>
         </div>
-        <div class="analysis-stage" data-stage="1">
-          <span class="stage-dot" aria-hidden="true"></span>
-          <span class="stage-label" data-i18n="stage2">RSI analysis</span>
-        </div>
-        <div class="analysis-stage" data-stage="2">
-          <span class="stage-dot" aria-hidden="true"></span>
-          <span class="stage-label" data-i18n="stage3">EMA verification</span>
-        </div>
-        <div class="analysis-stage" data-stage="3">
-          <span class="stage-dot" aria-hidden="true"></span>
-          <span class="stage-label" data-i18n="stage4">Signal confirmation</span>
-        </div>
-        <div class="analysis-bar"><div class="analysis-fill" id="analysisFill"></div></div>
-      </div>
-
-      <div class="result-content" id="resultContent">
-        <div class="result-chip idle" id="resultChip">
-          <span class="chip-dot" aria-hidden="true"></span>
-          <span id="chipText">STANDBY</span>
-        </div>
-        <div class="result-direction idle" id="resultDirection">—</div>
-        <div class="result-message" id="resultMessage" hidden></div>
-        <div class="divider"></div>
-        <div class="result-row">
-          <div class="result-cell">
-            <div class="cell-label" data-i18n="pairLabel">Trading pair</div>
-            <div class="cell-value" id="resultPair">—</div>
-          </div>
-          <div class="result-cell right">
-            <div class="cell-label" data-i18n="durationLabel">Trade duration</div>
-            <div class="cell-value" id="resultDuration">—</div>
+        <div class="stat-number-row">
+          <span class="stat-value" id="winCount">42</span>
+          <div class="stat-btn-group">
+            <button type="button" class="stat-btn" id="btnWinMinus">-</button>
+            <button type="button" class="stat-btn" id="btnWinPlus">+</button>
           </div>
         </div>
-        <div class="divider"></div>
-        <div class="accuracy">
-          <div class="accuracy-head">
-            <span class="accuracy-label" data-i18n="accuracy">Accuracy</span>
-            <span class="accuracy-value" id="accuracyValue">0%</span>
-          </div>
-          <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      </div>
+
+      <div class="stat-counter loss-counter">
+        <div class="stat-meta">
+          <span class="stat-label" data-i18n="liveLosses">LOSSES</span>
+          <span class="stat-icon">📉</span>
         </div>
-        <div class="expiry" id="expiryBlock" hidden>
-          <div class="expiry-head">
-            <span class="expiry-label" data-i18n="expiry">Expiration</span>
-            <span id="expiryTime">05s</span>
+        <div class="stat-number-row">
+          <span class="stat-value" id="lossCount">1</span>
+          <div class="stat-btn-group">
+            <button type="button" class="stat-btn" id="btnLossMinus">-</button>
+            <button type="button" class="stat-btn" id="btnLossPlus">+</button>
           </div>
-          <div class="expiry-bar"><div class="expiry-fill" id="expiryFill"></div></div>
         </div>
       </div>
+
+      <div class="stat-winrate-box">
+        <div class="winrate-title" data-i18n="liveWinrate">WINRATE</div>
+        <div class="winrate-value" id="winRateVal">97.7%</div>
+        <button type="button" class="btn-reset-stats" id="btnResetLive" title="Reset stats" data-i18n="reset">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ОСНОВНОЙ КОНТЕНТ (3 ВКЛАДКИ) ==================== -->
+  <main class="content-body">
+
+    <!-- ========== ЭКРАН 1: СИГНАЛЫ (🏠 SIGNAL) ========== -->
+    <section class="tab-pane active" id="paneSignal">
+      
+      <!-- Карточка настроек пары и экспирации -->
+      <section class="card settings-card">
+        <div class="card-title" id="settingsTitle" role="button" tabindex="0">
+          <span class="pulse-indicator" aria-hidden="true"></span>
+          <span data-i18n="settingsTitle">Signal settings</span>
+          <span class="badge-subtle" id="marketBadge">OTC 24/7</span>
+        </div>
+
+        <!-- Переключатель Regular / OTC -->
+        <div class="market-segment">
+          <button type="button" class="segment-btn active" id="btnMarketOtc" data-market="otc">
+            <span class="segment-icon">⚡</span>
+            <span>OTC (24/7)</span>
+          </button>
+          <button type="button" class="segment-btn" id="btnMarketRegular" data-market="classic">
+            <span class="segment-icon">🌐</span>
+            <span>Regular</span>
+          </button>
+        </div>
+
+        <!-- Кастомная кнопка выбора валютной пары с флагами -->
+        <div class="field-group">
+          <label class="field-label" data-i18n="pairLabel">Trading pair</label>
+          <button type="button" class="custom-select-trigger" id="pairTrigger">
+            <div class="pair-visual">
+              <span class="dual-flags" id="pairFlags">🇪🇺🇺🇸</span>
+              <span class="pair-name" id="pairDisplay">EUR/USD OTC</span>
+            </div>
+            <div class="trigger-chevron">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+          </button>
+        </div>
+
+        <!-- Селектор таймфрейма / экспирации -->
+        <div class="field-group">
+          <div class="field-label-row">
+            <label class="field-label" data-i18n="durationLabel">Trade duration</label>
+            <span class="duration-hint" id="durationHint">5 sec</span>
+          </div>
+          <div class="duration-pills" id="durationPills">
+            <button type="button" class="duration-pill active" data-duration="5s">S5</button>
+            <button type="button" class="duration-pill" data-duration="10s">S10</button>
+            <button type="button" class="duration-pill" data-duration="15s">S15</button>
+            <button type="button" class="duration-pill" data-duration="30s">S30</button>
+            <button type="button" class="duration-pill" data-duration="1m">M1</button>
+            <button type="button" class="duration-pill" data-duration="3m">M3</button>
+            <button type="button" class="duration-pill" data-duration="5m">M5</button>
+          </div>
+        </div>
+
+        <!-- Главная неоновая кнопка получения сигнала -->
+        <button type="button" class="cta-neon" id="signalBtn">
+          <span class="cta-neon-glow"></span>
+          <span class="cta-neon-content">
+            <span class="cta-icon">⚡</span>
+            <span class="cta-text" id="ctaText">GET SIGNAL (S5)</span>
+            <span class="spinner" id="ctaSpinner" hidden aria-hidden="true"></span>
+          </span>
+        </button>
+
+        <div class="risk-hint">
+          <span class="hint-icon">💡</span>
+          <span data-i18n="riskHint">Risk tip: stake ≤ 3% of your deposit</span>
+        </div>
+      </section>
+
+      <!-- 3-Фазовый модальный сканер (ELITE OPTION STYLE) -->
+      <div class="scanner-backdrop" id="scannerBackdrop" hidden>
+        <div class="scanner-modal card" id="scannerModal">
+          <button type="button" class="scanner-close" id="btnCloseScanner">✕</button>
+
+          <!-- ФАЗА 1: Лазерное сканирование (1.6 с) -->
+          <div class="scanner-phase phase-1" id="phase1">
+            <div class="scanner-header">
+              <div class="scanner-title" id="phase1Title">Fetching market data...</div>
+              <div class="scanner-sub" id="phase1Pair">AUD/USD OTC</div>
+            </div>
+            <div class="canvas-box">
+              <canvas id="laserCanvas" width="340" height="150"></canvas>
+              <div class="laser-beam-line" id="laserBeam"></div>
+            </div>
+            <div class="scanner-status">
+              <span class="scanner-dot"></span>
+              <span id="phase1Status" data-i18n="analyzingChart">Scanning candlestick patterns and order delta...</span>
+            </div>
+          </div>
+
+          <!-- ФАЗА 2: Сигнал + Вход 3с + Живой отсчёт экспирации -->
+          <div class="scanner-phase phase-2" id="phase2" hidden>
+            <div class="signal-badge-row">
+              <div class="pair-pill">
+                <span class="pair-pill-flags" id="phase2Flags">🇪🇺🇺🇸</span>
+                <span class="pair-pill-name" id="phase2Pair">EUR/USD OTC</span>
+              </div>
+              <div class="time-pill" id="phase2Duration">Expiration S5</div>
+            </div>
+
+            <!-- Большой светящийся круглый индикатор (96x96px) -->
+            <div class="big-indicator" id="bigIndicator">
+              <div class="indicator-ring" id="indicatorRing">
+                <span class="indicator-arrow" id="indicatorArrow">⬆️</span>
+                <span class="indicator-label" id="indicatorLabel">UP</span>
+              </div>
+            </div>
+
+            <!-- Обратный отсчёт точки входа (3 с) -->
+            <div class="entry-countdown-box" id="entryBox">
+              <span class="entry-text" id="entryText">Enter in 3...</span>
+            </div>
+
+            <!-- Рамка достоверности -->
+            <div class="confidence-box">
+              <span class="confidence-label" data-i18n="accuracy">Signal confidence</span>
+              <span class="confidence-val" id="confidenceVal">94%</span>
+            </div>
+
+            <!-- Экспирация с живым убывающим таймером -->
+            <div class="expiration-box">
+              <div class="expiration-head">
+                <span class="expiry-title" data-i18n="expiry">Expiration time</span>
+                <span class="expiry-digits" id="expiryDigits">0:05</span>
+              </div>
+              <div class="expiry-progress-bg">
+                <div class="expiry-progress-fill" id="expiryProgressFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ФАЗА 3: Завершение экспирации + 1-Click WIN -->
+          <div class="scanner-phase phase-3" id="phase3" hidden>
+            <div class="finished-title" id="phase3Title" data-i18n="expiryOver">Expiration time is over</div>
+            <p class="finished-desc" data-i18n="tradeClosed">Trade session completed for this signal.</p>
+
+            <div class="phase3-actions">
+              <button type="button" class="btn-win-action" id="btnSignalWin">
+                <span class="win-icon">✅</span>
+                <span data-i18n="btnWin">+1 WIN (Streamer)</span>
+              </button>
+              <button type="button" class="cta-neon btn-new-signal" id="btnNewSignal">
+                <span class="cta-icon">🔄</span>
+                <span data-i18n="btnNewSignal">New signal</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
-    <section class="card progress-card">
-      <div class="card-title">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span data-i18n="progressTitle">My progress</span>
-      </div>
-      <div class="progress-row">
-        <div class="progress-cell">
-          <div class="progress-value" id="progPoints">0</div>
-          <div class="progress-label" data-i18n="pointsWeek">points this week</div>
+    <!-- ========== ЭКРАН 2: ИИ-АНАЛИТИК (💬 AI CHAT) ========== -->
+    <section class="tab-pane" id="paneChat">
+      
+      <!-- Шапка чата с текущей моделью и быстрыми параметрами -->
+      <section class="chat-header-card card">
+        <div class="chat-model-info">
+          <div class="model-avatar" id="chatModelAvatar">💖</div>
+          <div class="model-meta">
+            <div class="model-title-row">
+              <span class="model-title-text" id="chatModelName">Winky Neural v4</span>
+              <span class="status-online-dot" title="Online"></span>
+            </div>
+            <div class="model-sub" id="chatModelSub">Flagship Neural Engine</div>
+          </div>
         </div>
-        <div class="progress-cell">
-          <div class="progress-value" id="progRank">—</div>
-          <div class="progress-label" data-i18n="rankLabel">rank</div>
+
+        <!-- Быстрые пилюли параметров пары и экспирации -->
+        <div class="chat-quick-params">
+          <button type="button" class="param-chip" id="chatPairChip">
+            <span id="chatChipFlags">🇪🇺🇺🇸</span>
+            <span id="chatChipPair">EUR/USD OTC</span>
+            <span class="chip-arrow">▾</span>
+          </button>
+          <button type="button" class="param-chip" id="chatDurationChip">
+            <span id="chatChipDuration">S5</span>
+            <span class="chip-arrow">▾</span>
+          </button>
         </div>
-        <div class="progress-cell">
-          <div class="progress-value" id="progStreak">0</div>
-          <div class="progress-label" data-i18n="streakLabel">day streak</div>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="personal-line" id="progPersonal"></div>
-      <div class="lb-title" data-i18n="leaderboardTitle">Weekly top</div>
-      <div class="lb-list" id="lbList"></div>
-      <div class="lb-rules" id="lbRules"></div>
+      </section>
+
+      <!-- Лента сообщений чата -->
+      <section class="chat-history card" id="chatHistory">
+        <!-- Сообщения генерируются динамически через JS -->
+      </section>
+
+      <!-- Нижняя панель отправки анализа -->
+      <section class="chat-input-bar card">
+        <button type="button" class="model-picker-trigger" id="modelPickerTrigger">
+          <span class="trigger-icon" id="triggerModelIcon">💖</span>
+          <span class="trigger-name" id="triggerModelName">Winky v4</span>
+          <span class="trigger-arrow">▾</span>
+        </button>
+
+        <button type="button" class="btn-analyze" id="btnAnalyze">
+          <span class="analyze-icon">🚀</span>
+          <span class="analyze-text" id="analyzeText" data-i18n="analyzeBtn">Analyze</span>
+        </button>
+      </section>
+
     </section>
 
-    <section class="card feed-card">
-      <div class="feed-head">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span data-i18n="feedTitle">Live signals</span>
-        <span class="feed-today" id="feedToday" hidden></span>
-      </div>
-      <div class="feed-list" id="feedList"></div>
-      <div class="feed-total" id="feedTotal" hidden></div>
+    <!-- ========== ЭКРАН 3: СТАТИСТИКА И ТОП (🏆 STATS) ========== -->
+    <section class="tab-pane" id="paneStats">
+      
+      <!-- Личный прогресс пользователя -->
+      <section class="card progress-card">
+        <div class="card-title">
+          <span class="pulse-indicator" aria-hidden="true"></span>
+          <span data-i18n="progressTitle">My progress</span>
+        </div>
+        <div class="progress-stats-grid">
+          <div class="prog-item">
+            <div class="prog-val" id="progPoints">0</div>
+            <div class="prog-lbl" data-i18n="pointsWeek">points this week</div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-val" id="progRank">—</div>
+            <div class="prog-lbl" data-i18n="rankLabel">rank</div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-val" id="progStreak">0</div>
+            <div class="prog-lbl" data-i18n="streakLabel">day streak</div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="personal-summary" id="progPersonal">0 signals</div>
+        <div class="lb-title" data-i18n="leaderboardTitle">Weekly top</div>
+        <div class="lb-list" id="lbList"></div>
+        <div class="lb-rules" id="lbRules"></div>
+      </section>
+
+      <!-- Живая лента сообщества -->
+      <section class="card feed-card">
+        <div class="feed-head">
+          <div class="feed-head-left">
+            <span class="pulse-indicator" aria-hidden="true"></span>
+            <span data-i18n="feedTitle">Live signals</span>
+          </div>
+          <span class="feed-today-count" id="feedToday" hidden>🔥 Today: 0</span>
+        </div>
+        <div class="feed-list" id="feedList"></div>
+        <div class="feed-total-count" id="feedTotal" hidden></div>
+      </section>
+
     </section>
+
   </main>
 
-  <footer class="footer">WINK TRADE</footer>
+  <!-- ==================== НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ (.bottom-nav) ==================== -->
+  <nav class="bottom-nav">
+    <button type="button" class="nav-item active" data-tab="paneSignal">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label" data-i18n="navSignal">SIGNAL</span>
+    </button>
+    <button type="button" class="nav-item" data-tab="paneChat">
+      <span class="nav-icon">💬</span>
+      <span class="nav-label" data-i18n="navChat">AI CHAT</span>
+    </button>
+    <button type="button" class="nav-item" data-tab="paneStats">
+      <span class="nav-icon">🏆</span>
+      <span class="nav-label" data-i18n="navStats">STATS</span>
+    </button>
+  </nav>
+
+  <!-- ==================== ШТОРКА ВЫБОРА ВАЛЮТНОЙ ПАРЫ ==================== -->
+  <div class="sheet-backdrop" id="pairModalBackdrop" hidden>
+    <div class="sheet-modal" id="pairModal">
+      <div class="sheet-head">
+        <div class="sheet-title" data-i18n="selectPair">Select trading pair</div>
+        <button type="button" class="btn-sheet-close" id="btnClosePairModal">✕</button>
+      </div>
+
+      <div class="pair-search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="pair-search-input" id="pairSearchInput" placeholder="Search pair (e.g. EUR, USD, OTC)..." data-i18n-placeholder="searchPair">
+      </div>
+
+      <div class="pair-list-scroll" id="pairList">
+        <!-- Генерируется из JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ШТОРКА ВЫБОРА AI МОДЕЛИ (NOVA AI STYLE) ==================== -->
+  <div class="sheet-backdrop" id="modelSheetBackdrop" hidden>
+    <div class="sheet-modal" id="modelSheet">
+      <div class="sheet-head">
+        <div class="sheet-title" data-i18n="selectModel">Select AI Model</div>
+        <button type="button" class="btn-sheet-close" id="btnCloseModelSheet">✕</button>
+      </div>
+
+      <div class="model-list-scroll" id="modelList">
+        <!-- Разделы моделей: WINKY AI, OPENAI, ANTHROPIC, GOOGLE -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== МОДАЛЬНОЕ ОКНО ДЕПОЗИТА (3/3 FREE SIGNALS EXHAUSTED) ==================== -->
+  <div class="sheet-backdrop" id="depositModalBackdrop" hidden>
+    <div class="deposit-modal card" id="depositModal">
+      <div class="deposit-badge">💎 VIP UPGRADE</div>
+      <div class="deposit-title" data-i18n="depositTitle">Free Demo Signals Used</div>
+      <p class="deposit-desc" data-i18n="depositDesc">
+        You have experienced all 3 free demo signals! Unlock unlimited VIP accuracy, OTC algorithms, and all AI models.
+      </p>
+
+      <div class="promo-box">
+        <div class="promo-hint" data-i18n="promoBonus">+50% Bonus on Deposit from $50</div>
+        <div class="promo-code-row">
+          <span class="promo-code-label">PROMO CODE:</span>
+          <span class="promo-code-val">50START</span>
+          <button type="button" class="btn-copy-promo" id="btnCopyPromo" title="Copy code">📋</button>
+        </div>
+      </div>
+
+      <div class="deposit-actions">
+        <a href="#" class="cta-neon btn-deposit-cta" id="btnDepositLink" target="_blank" rel="noopener">
+          <span>💳</span>
+          <span data-i18n="depositNow">DEPOSIT (+50% BONUS)</span>
+        </a>
+        <button type="button" class="btn-secondary" id="btnCloseDeposit" data-i18n="close">Close</button>
+      </div>
+    </div>
+  </div>
+
 </div>
+
 <script src="app.js"></script>
 </body>
 </html>

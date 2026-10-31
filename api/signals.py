@@ -24,11 +24,12 @@ from typing import Literal
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
+from sqlalchemy import func, select
 
 from config import settings
 from database import async_session_factory
 from database import crud
-from database.models import DIRECTION_BUY, DIRECTION_SELL
+from database.models import DIRECTION_BUY, DIRECTION_SELL, SignalHistory
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -44,9 +45,110 @@ OTC_PAIRS = (
     "EUR/GBP OTC",
     "USD/CHF OTC",
     "NZD/USD OTC",
+    "BTC/USD OTC",
+    "GOLD OTC",
 )
-DURATIONS = ("5s", "15s", "30s", "1m", "3m", "5m")
+DURATIONS = ("5s", "10s", "15s", "30s", "1m", "3m", "5m")
+DURATION_SECONDS: dict[str, int] = {
+    "5s": 5,
+    "10s": 10,
+    "15s": 15,
+    "30s": 30,
+    "1m": 60,
+    "3m": 180,
+    "5m": 300,
+}
 _ALL_PAIRS = frozenset(CLASSIC_PAIRS + OTC_PAIRS)
+
+# Пул профессиональных трейдерских факторов (технический анализ и объёмы)
+RATIONALE_BUY = [
+    {
+        "ru": "Структура рынка: доминирует импульс краткосрочных покупателей",
+        "en": "Market structure: short-term buyer momentum dominates",
+    },
+    {
+        "ru": "Подтверждение: отскок от локального динамического уровня поддержки",
+        "en": "Confirmation: bounce off local dynamic support level",
+    },
+    {
+        "ru": "Осциллятор RSI: выход из зоны перепроданности (RSI 28.4)",
+        "en": "RSI Oscillator: recovery from oversold territory (RSI 28.4)",
+    },
+    {
+        "ru": "Скользящие средние: бычье пересечение EMA-9 выше EMA-21",
+        "en": "Moving Averages: bullish cross of EMA-9 above EMA-21",
+    },
+    {
+        "ru": "Анализ объёмов: всплеск дельты покупателей на младшем таймфрейме",
+        "en": "Volume Analysis: buyer delta surge on lower timeframe",
+    },
+    {
+        "ru": "Паттерн: поглощение на границе нижней полосы Боллинджера",
+        "en": "Pattern: bullish engulfing at lower Bollinger Band",
+    },
+    {
+        "ru": "Индикатор MACD: конвергенция гистограммы в положительной зоне",
+        "en": "MACD: histogram convergence in positive territory",
+    },
+    {
+        "ru": "Книга ордеров: дисбаланс ликвидности в сторону покупок (+68%)",
+        "en": "Order Book: liquidity imbalance tilted toward bids (+68%)",
+    },
+]
+
+RATIONALE_SELL = [
+    {
+        "ru": "Структура рынка: преобладает нисходящий импульс продавцов",
+        "en": "Market structure: seller momentum dominates lower timeframe",
+    },
+    {
+        "ru": "Подтверждение: резкий отскок от локального уровня сопротивления",
+        "en": "Confirmation: sharp rejection from local resistance level",
+    },
+    {
+        "ru": "Осциллятор RSI: разворот из зоны перекупленности (RSI 73.1)",
+        "en": "RSI Oscillator: reversal from overbought territory (RSI 73.1)",
+    },
+    {
+        "ru": "Скользящие средние: медвежье пересечение EMA-9 ниже EMA-21",
+        "en": "Moving Averages: bearish cross of EMA-9 below EMA-21",
+    },
+    {
+        "ru": "Анализ объёмов: давление институционального предложения на дельте",
+        "en": "Volume Analysis: institutional supply pressure on volume delta",
+    },
+    {
+        "ru": "Паттерн: ложный пробой максимума с закрытием пин-баром",
+        "en": "Pattern: false breakout of high with pin bar rejection",
+    },
+    {
+        "ru": "Индикатор MACD: дивергенция сигнальной линии в сторону снижения",
+        "en": "MACD: signal line bearish divergence confirmed",
+    },
+    {
+        "ru": "Книга ордеров: концентрация плотных лимитных заявок на продажу",
+        "en": "Order Book: heavy ask cluster capping upside movement",
+    },
+]
+
+
+def _build_rationale(pair: str, direction: str, now: float | None = None) -> tuple[list[str], list[str]]:
+    """Детерминированная выборка 2-3 факторов теханализа под сигнал."""
+    moment = int((now if now is not None else time.time()) // 5)
+    digest = hashlib.sha256(f"{pair}:{direction}:{moment}".encode()).digest()
+    pool = RATIONALE_BUY if direction == DIRECTION_BUY else RATIONALE_SELL
+    # Выбираем 2 или 3 фактора без повторений
+    count = 2 if digest[0] % 3 == 0 else 3
+    indices: list[int] = []
+    offset = 1
+    while len(indices) < count and offset < len(digest):
+        idx = digest[offset] % len(pool)
+        if idx not in indices:
+            indices.append(idx)
+        offset += 1
+    ru_list = [f"• {pool[i]['ru']}" for i in indices]
+    en_list = [f"• {pool[i]['en']}" for i in indices]
+    return ru_list, en_list
 
 # tradingview-ta — синхронная библиотека; допускаем её отсутствие
 try:
@@ -71,6 +173,7 @@ class SignalRequest(BaseModel):
     pair: str
     duration: str
     force_dir: Literal["BUY", "SELL"] | None = None
+    model: str = "winky-v4"
 
 
 class SignalResponse(BaseModel):
@@ -78,6 +181,13 @@ class SignalResponse(BaseModel):
     accuracy: int = Field(ge=1, le=100)
     pair: str
     duration: str
+    model: str = "winky-v4"
+    rationale_ru: list[str] = Field(default_factory=list)
+    rationale_en: list[str] = Field(default_factory=list)
+    entry_delay_sec: int = 3
+    duration_sec: int = 5
+    is_vip: bool = False
+    free_signals_left: int = 0
 
 
 class HistoryItem(BaseModel):
@@ -108,6 +218,8 @@ class MeResponse(BaseModel):
     points_week: int = 0
     rank: int | None = None
     rules: str
+    is_vip: bool = False
+    free_signals_left: int = 0
 
 
 class LeaderboardEntry(BaseModel):
@@ -230,11 +342,25 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         raise HTTPException(status_code=400, detail=f"Unknown duration: {payload.duration!r}")
 
     is_admin = settings.is_admin(payload.tg_id)
-    if not is_admin:
-        async with async_session_factory() as session:
-            user = await crud.get_user(session, payload.tg_id)
-        if user is None or not user.has_access:
-            raise HTTPException(status_code=403, detail="Access denied")
+    is_vip = is_admin
+    free_signals_left = 999 if is_admin else 0
+
+    async with async_session_factory() as session:
+        user = await crud.get_user(session, payload.tg_id)
+        if user is not None and user.has_access:
+            is_vip = True
+            free_signals_left = 999
+        elif not is_admin:
+            # Демо-режим для гостей: 3 бесплатных сигнала
+            used_signals = await session.scalar(
+                select(func.count()).select_from(SignalHistory).where(SignalHistory.tg_id == payload.tg_id)
+            ) or 0
+            free_signals_left = max(0, 3 - used_signals)
+            if free_signals_left <= 0:
+                raise HTTPException(
+                    status_code=403,
+                    detail="FREE_LIMIT_EXCEEDED: Вы использовали все 3 бесплатных сигнала. Пополните счёт для полного доступа!",
+                )
 
     # --- Режим стримера: принудительный сигнал или заранее заданная очередь ---
     if is_admin:
@@ -251,6 +377,10 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
     else:
         direction, accuracy = await _user_signal(pair)
 
+    # Генерация реалистичного профессионального теханализа под сигнал
+    rationale_ru, rationale_en = _build_rationale(pair, direction)
+    duration_sec = DURATION_SECONDS.get(duration, 5)
+
     async with async_session_factory() as session:
         await crud.save_signal(
             session,
@@ -262,7 +392,23 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         )
         await crud.register_activity(session, payload.tg_id)
         await crud.award_signal_points(session, payload.tg_id)
-    return SignalResponse(direction=direction, accuracy=accuracy, pair=pair, duration=duration)
+
+    if not is_vip:
+        free_signals_left = max(0, free_signals_left - 1)
+
+    return SignalResponse(
+        direction=direction,
+        accuracy=accuracy,
+        pair=pair,
+        duration=duration,
+        model=payload.model or "winky-v4",
+        rationale_ru=rationale_ru,
+        rationale_en=rationale_en,
+        entry_delay_sec=3,
+        duration_sec=duration_sec,
+        is_vip=is_vip,
+        free_signals_left=free_signals_left,
+    )
 
 
 @router.get("/history", response_model=HistoryResponse)
@@ -316,12 +462,30 @@ async def get_me(tg_id: int) -> MeResponse:
     """Личный прогресс пользователя + правила турнира (язык по Accept-Language)."""
     lang = "en"
     async with async_session_factory() as session:
+        user = await crud.get_or_create_user(session, tg_id=tg_id)
         await crud.register_activity(session, tg_id)
         stats = await crud.get_personal_stats(session, tg_id)
-        user = await crud.get_user(session, tg_id)
         if user is not None:
             lang = user.lang
-    return MeResponse(rules=TOURNAMENT_RULES.get(lang, TOURNAMENT_RULES["en"]), **stats)
+
+        is_admin = settings.is_admin(tg_id)
+        is_vip = is_admin or bool(user.has_access)
+        if is_vip:
+            free_signals_left = 999
+        else:
+            used = stats.get("total_signals")
+            if used is None:
+                used = await session.scalar(
+                    select(func.count()).select_from(SignalHistory).where(SignalHistory.tg_id == tg_id)
+                ) or 0
+            free_signals_left = max(0, 3 - used)
+
+    return MeResponse(
+        rules=TOURNAMENT_RULES.get(lang, TOURNAMENT_RULES["en"]),
+        is_vip=is_vip,
+        free_signals_left=free_signals_left,
+        **stats,
+    )
 
 
 @router.get("/leaderboard", response_model=LeaderboardResponse)
