@@ -10,6 +10,16 @@ from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+DEFAULT_RU_PARTNER_URL = (
+    "https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr"
+    "&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+)
+DEFAULT_EN_PARTNER_URL = (
+    "https://u3.shortink.io/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr"
+    "&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+)
+
+
 class Settings(BaseSettings):
     """Все настройки приложения в одном месте."""
 
@@ -40,12 +50,12 @@ class Settings(BaseSettings):
         description="Базовая ссылка лендинга (fallback, если RU/EN не заданы)",
     )
     RU_PARTNER_BASE_URL: str = Field(
-        default="",
-        description="Партнёрская ссылка для русскоязычных пользователей",
+        default=DEFAULT_RU_PARTNER_URL,
+        description="Партнёрская ссылка быстрой регистрации для РФ (без VPN)",
     )
     EN_PARTNER_BASE_URL: str = Field(
-        default="",
-        description="Партнёрская ссылка для англоязычных пользователей",
+        default=DEFAULT_EN_PARTNER_URL,
+        description="Партнёрская ссылка быстрой регистрации для англоязычных пользователей",
     )
     CAMPAIGN_ID: str = Field(default="wink", description="ID кампании (utm_campaign)")
     ONELINK_URL: str = Field(
@@ -251,32 +261,33 @@ class Settings(BaseSettings):
         if not base:
             base = self.PARTNER_BASE_URL
 
-        # Если ссылка ведёт в чужого ТГ-бота (/bot/...) или пуста — переключаем на прямой OneLink
+        # Если ссылка ведёт в чужого ТГ-бота (/bot/...) или пуста — отдаём прямую форму регистрации
         if not base or "/bot/" in base:
-            if self.ONELINK_URL:
-                return self.ONELINK_URL
-            if base and "/bot/" in base:
-                base = base.split("/bot/")[0]
-        return base or self.ONELINK_URL
+            return DEFAULT_EN_PARTNER_URL if lang == "en" else DEFAULT_RU_PARTNER_URL
+        return base
 
     def partner_url(self, tg_id: int, lang: str = "ru") -> str:
         """Персональная ссылка регистрации.
 
-        Передает sub_id1, click_id и af_sub1 для 100% фиксации конверсий
-        на OneLink и доменных зеркалах Pocket Partners.
+        Передает sub_id1 и click_id для 100% фиксации конверсий
+        на доменных зеркалах Pocket Partners.
         """
         base = self.partner_base(lang)
-        if not base:
-            return ""
         separator = "&" if "?" in base else "?"
-        return f"{base}{separator}sub_id1={tg_id}&click_id={tg_id}&af_sub1={tg_id}"
+        return f"{base}{separator}sub_id1={tg_id}&click_id={tg_id}"
 
     def deposit_url(self, tg_id: int, lang: str = "ru") -> str:
-        """Рабочая ссылка на кассу с промокодом 50START и трекинг-метками."""
+        """Рабочая ссылка на кассу со всеми атрибутами кампании, промокодом 50START и трекинг-метками."""
         if lang == "ru":
-            base = self.RU_DEPOSIT_URL or "https://po-ru4.click/cabinet/deposit"
+            base = (
+                "https://po-ru4.click/cabinet/deposit?utm_campaign=871226&utm_source=affiliate"
+                "&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+            )
         else:
-            base = self.EN_DEPOSIT_URL or "https://pocketoption.com/cabinet/deposit"
+            base = (
+                "https://u3.shortink.io/cabinet/deposit?utm_campaign=871226&utm_source=affiliate"
+                "&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+            )
         separator = "&" if "?" in base else "?"
         return f"{base}{separator}promo={self.PROMO_CODE}&sub_id1={tg_id}&click_id={tg_id}"
 

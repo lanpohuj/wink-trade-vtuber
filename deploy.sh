@@ -26,9 +26,11 @@ BOT_TOKEN=PASTE_BOT_TOKEN_HERE
 ADMIN_TG_IDS=
 WEBAPP_URL=https://${DOMAIN}/webapp/
 SUPPORT_USERNAME=winktrade_support
-PARTNER_BASE_URL=PASTE_PARTNER_LINK_HERE
+RU_PARTNER_BASE_URL="https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+EN_PARTNER_BASE_URL="https://u3.shortink.io/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+PROMO_CODE=50START
 CAMPAIGN_ID=wink
-PLATFORM_URL=https://pocketoption.com/
+PLATFORM_URL="https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
 POSTBACK_SECRET=\${SECRET}
 DATABASE_URL=sqlite+aiosqlite:////data/wink_trade.db
 TOTAL_COUNTER_THRESHOLD=100

@@ -10,6 +10,7 @@ from config import settings
 
 logger = logging.getLogger(__name__)
 
+BOT_ASSETS_DIR = Path(__file__).resolve().parent / "assets"
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 VOICE_CACHE_DIR = PROJECT_ROOT / "voice_cache"
 VOICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -29,8 +30,17 @@ WELCOME_TEXTS = {
 
 
 def get_welcome_voice_path(lang: str = "ru") -> Path | None:
-    """Возвращает путь к готовому кэшированному голосовому файлу приветствия, если он существует."""
+    """Возвращает путь к готовому голосовому файлу приветствия:
+
+    1. Сначала проверяет bot/assets/bot_welcome_{lang}.mp3 (для Docker-образа на проде).
+    2. Затем voice_cache/bot_welcome_{lang}.mp3.
+    """
     norm_lang = "ru" if (lang or "ru").lower() == "ru" else "en"
+    
+    asset_file = BOT_ASSETS_DIR / f"bot_welcome_{norm_lang}.mp3"
+    if asset_file.exists() and asset_file.stat().st_size > 1000:
+        return asset_file
+
     target_file = VOICE_CACHE_DIR / f"bot_welcome_{norm_lang}.mp3"
     if target_file.exists() and target_file.stat().st_size > 1000:
         return target_file
