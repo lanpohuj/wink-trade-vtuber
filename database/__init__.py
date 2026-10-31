@@ -45,6 +45,10 @@ def _apply_light_migrations(sync_conn: Connection) -> None:
         ("points_daily_earned", "ALTER TABLE users ADD COLUMN points_daily_earned INTEGER NOT NULL DEFAULT 0"),
         ("streak_days", "ALTER TABLE users ADD COLUMN streak_days INTEGER NOT NULL DEFAULT 0"),
         ("last_active_date", "ALTER TABLE users ADD COLUMN last_active_date VARCHAR(10)"),
+        ("demo_used", "ALTER TABLE users ADD COLUMN demo_used BOOLEAN NOT NULL DEFAULT 0"),
+        ("registered_at", "ALTER TABLE users ADD COLUMN registered_at DATETIME"),
+        ("followup_15m_sent", "ALTER TABLE users ADD COLUMN followup_15m_sent BOOLEAN NOT NULL DEFAULT 0"),
+        ("followup_45m_sent", "ALTER TABLE users ADD COLUMN followup_45m_sent BOOLEAN NOT NULL DEFAULT 0"),
     )
     for name, statement in migrations:
         if name not in existing:

@@ -74,6 +74,18 @@ class User(Base):
     teaser_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     last_teaser_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
+    # --- Воронка и дожим (15м / 45м / демо) ---
+    demo_used: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default="0"
+    )
+    registered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    followup_15m_sent: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default="0"
+    )
+    followup_45m_sent: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default="0"
+    )
+
     # --- Геймификация (баллы за активность, недельный рейтинг) ---
     points_total: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     points_week: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")

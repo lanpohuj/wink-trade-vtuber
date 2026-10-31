@@ -52,11 +52,13 @@ def _parse_event(raw: str | None) -> str | None:
 
 
 def _extract_tg_id(params: dict[str, str]) -> int | None:
-    """Telegram ID пользователя: sub_id1 (макрос {sub_id1} Pocket Partners) / tg_id / sub_id / utm_source."""
+    """Telegram ID пользователя: sub_id1, click_id, af_sub1, sub_id, tg_id, utm_source."""
     raw = (
         params.get("sub_id1")
-        or params.get("tg_id")
+        or params.get("click_id")
+        or params.get("af_sub1")
         or params.get("sub_id")
+        or params.get("tg_id")
         or params.get("utm_source")
     )
     if raw is None:
@@ -65,6 +67,35 @@ def _extract_tg_id(params: dict[str, str]) -> int | None:
         return int(str(raw).strip())
     except ValueError:
         return None
+
+
+def _extract_trader_id(params: dict[str, str]) -> str | None:
+    """ID аккаунта в Pocket Option: trader_id, uid, user_id, account_id."""
+    raw = (
+        params.get("trader_id")
+        or params.get("uid")
+        or params.get("user_id")
+        or params.get("account_id")
+    )
+    if not raw:
+        return None
+    return str(raw).strip()
+
+
+def _extract_amount(params: dict[str, str]) -> float:
+    """Сумма депозита в USD: amount, sumdep, ftd_amount, payout."""
+    raw = (
+        params.get("amount")
+        or params.get("sumdep")
+        or params.get("ftd_amount")
+        or params.get("payout")
+        or "0.0"
+    )
+    try:
+        val = float(raw)
+        return val if math.isfinite(val) and val >= 0 else 0.0
+    except (ValueError, TypeError):
+        return 0.0
 
 
 async def _collect_params(request: Request) -> dict[str, str]:
@@ -93,8 +124,8 @@ async def _notify_registered(bot: Bot, user: User) -> None:
     try:
         await bot.send_message(
             user.tg_id,
-            get_text(user.lang, "push_registered"),
-            reply_markup=deposit_keyboard(user.lang),
+            get_text(user.lang, "push_registered", trader_id=user.trader_id or "—"),
+            reply_markup=deposit_keyboard(user.tg_id, user.lang),
         )
     except TelegramAPIError:
         logger.warning("Не доставлено уведомление о регистрации: tg_id=%s", user.tg_id)
@@ -131,27 +162,41 @@ async def _process_postback(request: Request, params: dict[str, str]) -> JSONRes
         )
 
     tg_id = _extract_tg_id(params)
-    if tg_id is None:
-        return JSONResponse(
-            {"status": "error", "detail": "Missing tg_id (sub_id / utm_source)"},
-            status_code=400,
-        )
+    trader_id = _extract_trader_id(params)
+    amount = _extract_amount(params)
 
-    trader_id = params.get("trader_id")
-    try:
-        amount = float(params.get("amount", "") or 0.0)
-    except ValueError:
-        return JSONResponse(
-            {"status": "error", "detail": f"Invalid amount: {params.get('amount')!r}"},
-            status_code=400,
-        )
-    if not math.isfinite(amount) or amount < 0:
-        return JSONResponse({"status": "error", "detail": "Amount must be a non-negative number"}, status_code=400)
+    # Если tg_id не пришел, но есть trader_id — пробуем найти пользователя по trader_id
+    if tg_id is None and trader_id is not None:
+        async with async_session_factory() as session:
+            existing_user = await crud.get_user_by_trader_id(session, trader_id)
+            if existing_user is not None:
+                tg_id = existing_user.tg_id
 
     bot: Bot | None = getattr(request.app.state, "bot", None)
     if bot is None:
         logger.warning("Telegram-бот отключён (токен?) — постбек применён в БД, пуш не отправлен")
     raw_data = {k: v for k, v in params.items() if k.lower() != "token"}
+
+    # Если tg_id все еще нет — сохраняем в PostbackLog по trader_id (для ручной привязки)
+    if tg_id is None:
+        async with async_session_factory() as session:
+            await crud.log_postback(
+                session,
+                event,
+                trader_id=trader_id,
+                sub_id=None,
+                amount=amount,
+                status=STATUS_USER_NOT_FOUND,
+                raw_data=raw_data,
+            )
+        logger.info(
+            "Постбек сохранен без sub_id1: event=%s, trader_id=%s, amount=%s (будет связан при ручном вводе ID)",
+            event, trader_id, amount
+        )
+        return JSONResponse(
+            {"status": "logged_waiting_user", "event": event, "trader_id": trader_id},
+            status_code=200,
+        )
 
     if event == EVENT_REGISTRATION:
         async with async_session_factory() as session:

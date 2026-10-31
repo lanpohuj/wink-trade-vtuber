@@ -48,9 +48,35 @@ class Settings(BaseSettings):
         description="Партнёрская ссылка для англоязычных пользователей",
     )
     CAMPAIGN_ID: str = Field(default="wink", description="ID кампании (utm_campaign)")
+    ONELINK_URL: str = Field(
+        default="https://poaffiliate.onelink.me/t5P7/5m3y6xfj",
+        description="Прямая OneLink-ссылка на веб-регистрацию (без перехода в бота)",
+    )
+    RU_DEPOSIT_URL: str = Field(
+        default="https://po-ru4.click/cabinet/deposit",
+        description="Рабочее зеркало кассы Pocket Option для РФ/СНГ",
+    )
+    EN_DEPOSIT_URL: str = Field(
+        default="https://pocketoption.com/cabinet/deposit",
+        description="Ссылка на кассу Pocket Option для мира",
+    )
     PLATFORM_URL: str = Field(
         default="https://pocketoption.com/",
         description="Ссылка на платформу/кассу Pocket Option для кнопки «Пополнить счет»",
+    )
+
+    # --- Промокод и бонусы ---
+    PROMO_CODE: str = Field(
+        default="50START",
+        description="Промокод Pocket Partners (+50% к депозиту от $50)",
+    )
+    PROMO_BONUS_PERCENT: int = Field(
+        default=50,
+        description="Процент бонуса по промокоду",
+    )
+    PROMO_MIN_DEPOSIT_USD: int = Field(
+        default=50,
+        description="Минимальный депозит для активации бонуса +50% ($50)",
     )
 
     # --- Postback API ---
@@ -220,23 +246,39 @@ class Settings(BaseSettings):
         return tg_id in self.admin_tg_ids
 
     def partner_base(self, lang: str = "ru") -> str:
-        """Базовая партнёрская ссылка для языка пользователя (RU/EN, fallback — PARTNER_BASE_URL)."""
-        if lang == "en":
-            return self.EN_PARTNER_BASE_URL or self.PARTNER_BASE_URL
-        return self.RU_PARTNER_BASE_URL or self.PARTNER_BASE_URL
+        """Базовая партнёрская ссылка прямой веб-регистрации (без чужого ТГ-бота)."""
+        base = self.EN_PARTNER_BASE_URL if lang == "en" else self.RU_PARTNER_BASE_URL
+        if not base:
+            base = self.PARTNER_BASE_URL
+
+        # Если ссылка ведёт в чужого ТГ-бота (/bot/...) или пуста — переключаем на прямой OneLink
+        if not base or "/bot/" in base:
+            if self.ONELINK_URL:
+                return self.ONELINK_URL
+            if base and "/bot/" in base:
+                base = base.split("/bot/")[0]
+        return base or self.ONELINK_URL
 
     def partner_url(self, tg_id: int, lang: str = "ru") -> str:
         """Персональная ссылка регистрации.
 
-        Правило Pocket Partners: базовую ссылку не менять, свои метки дописывать
-        только в конец. Telegram ID идёт последним параметром ``sub_id1`` — партнёрка
-        вернёт его в макросе ``{sub_id1}`` в постбеке, по нему находим пользователя.
+        Передает sub_id1, click_id и af_sub1 для 100% фиксации конверсий
+        на OneLink и доменных зеркалах Pocket Partners.
         """
         base = self.partner_base(lang)
         if not base:
             return ""
         separator = "&" if "?" in base else "?"
-        return f"{base}{separator}sub_id1={tg_id}"
+        return f"{base}{separator}sub_id1={tg_id}&click_id={tg_id}&af_sub1={tg_id}"
+
+    def deposit_url(self, tg_id: int, lang: str = "ru") -> str:
+        """Рабочая ссылка на кассу с промокодом 50START и трекинг-метками."""
+        if lang == "ru":
+            base = self.RU_DEPOSIT_URL or "https://po-ru4.click/cabinet/deposit"
+        else:
+            base = self.EN_DEPOSIT_URL or "https://pocketoption.com/cabinet/deposit"
+        separator = "&" if "?" in base else "?"
+        return f"{base}{separator}promo={self.PROMO_CODE}&sub_id1={tg_id}&click_id={tg_id}"
 
     @property
     def support_url(self) -> str:

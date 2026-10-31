@@ -19,6 +19,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from config import settings
 from database.models import (
     AdminSignalQueue,
+    EVENT_DEPOSIT,
+    EVENT_REGISTRATION,
     PostbackLog,
     SOURCE_LIVE,
     STATUS_OK,
@@ -93,16 +95,13 @@ async def set_language(session: AsyncSession, tg_id: int, lang: str) -> User | N
 
 
 async def mark_registered(session: AsyncSession, tg_id: int, trader_id: str | None = None) -> User | None:
-    """Подтверждает регистрацию (вызывается Postback'ом регистрации).
-
-    ``tg_id`` приходит из партнёрской сети как ``sub_id``: пользователь обязан
-    регистрироваться по персональной ссылке из бота, поэтому если пользователя
-    с таким ``tg_id`` нет, возвращается ``None``.
-    """
+    """Подтверждает регистрацию (вызывается Postback'ом регистрации или вручную)."""
     user = await get_user(session, tg_id)
     if user is None:
         return None
     user.is_registered = True
+    if not user.registered_at:
+        user.registered_at = utcnow()
     if trader_id:
         user.trader_id = str(trader_id)
     await session.commit()
@@ -120,7 +119,7 @@ async def add_deposit(
     Пользователя можно найти по ``tg_id`` (``sub_id``) либо по ``trader_id`` —
     если по ``tg_id`` он не найден, поиск продолжается по ``trader_id``.
     Суммы накапливаются в ``deposit_amount``; при ``deposit_amount > 0``
-    доступ к сигналам открывается автоматически (SPEC, таблица ``users``).
+    доступ к сигналам открывается автоматически.
     """
     if tg_id is None and trader_id is None:
         raise ValueError("Для зачисления депозита укажите tg_id или trader_id")
@@ -134,6 +133,9 @@ async def add_deposit(
     user.deposit_amount = float(user.deposit_amount or 0.0) + float(amount)
     if user.deposit_amount > 0:
         user.has_access = True
+        user.is_registered = True
+        if not user.registered_at:
+            user.registered_at = utcnow()
     await session.commit()
     return user
 
@@ -413,6 +415,120 @@ async def pause_pushes(session: AsyncSession, tg_id: int) -> User | None:
     user.push_paused = True
     await session.commit()
     return user
+
+
+# =========================================================================
+# Воронка: Trader ID, пробный Демо-сигнал, быстрые дожимы 15м и 45м
+# =========================================================================
+
+
+async def get_postbacks_for_trader_id(session: AsyncSession, trader_id: str) -> list[PostbackLog]:
+    """Возвращает все полученные постбеки для указанного trader_id."""
+    clean_id = str(trader_id).strip()
+    result = await session.execute(
+        select(PostbackLog)
+        .where(PostbackLog.trader_id == clean_id)
+        .order_by(PostbackLog.id.asc())
+    )
+    return list(result.scalars().all())
+
+
+async def bind_manual_trader_id(
+    session: AsyncSession, tg_id: int, trader_id: str
+) -> tuple[User, bool, bool]:
+    """Привязывает trader_id к пользователю и проверяет архивные PostbackLog.
+
+    Возвращает (user, has_postback, had_deposit).
+    """
+    clean_id = str(trader_id).strip()
+    user = await get_or_create_user(session, tg_id)
+    user.trader_id = clean_id
+    user.is_registered = True
+    if not user.registered_at:
+        user.registered_at = utcnow()
+
+    # Проверяем, приходили ли постбеки по этому trader_id ранее
+    postbacks = await get_postbacks_for_trader_id(session, clean_id)
+    has_postback = len(postbacks) > 0
+    had_deposit = False
+
+    deposit_sum = sum(p.amount for p in postbacks if p.event_type == EVENT_DEPOSIT and p.amount > 0)
+    has_any_dep = any(p.event_type == EVENT_DEPOSIT for p in postbacks)
+    if has_any_dep:
+        had_deposit = True
+        user.deposit_amount = max(float(user.deposit_amount or 0.0), float(deposit_sum))
+        user.has_access = True
+
+    await session.commit()
+    return user, has_postback, had_deposit
+
+
+async def mark_demo_used(session: AsyncSession, tg_id: int) -> bool:
+    """Отмечает использование пробного демо-сигнала.
+
+    Возвращает True, если сигнал был доступен и успешно использован.
+    """
+    user = await get_user(session, tg_id)
+    if user is None or user.demo_used:
+        return False
+    user.demo_used = True
+    await session.commit()
+    return True
+
+
+async def get_15m_followup_targets(session: AsyncSession, threshold_minutes: int = 15) -> list[User]:
+    """Пользователи на Шаге 1 (не зарегистрированы), зашедшие >= 15 минут назад и не получавшие дожим."""
+    cutoff = utcnow() - timedelta(minutes=threshold_minutes)
+    admin_ids = set(settings.admin_tg_ids)
+    result = await session.execute(
+        select(User).where(
+            User.is_registered.is_(False),
+            User.has_access.is_(False),
+            User.push_paused.is_(False),
+            User.followup_15m_sent.is_(False),
+            User.created_at <= cutoff,
+        ).order_by(User.id)
+    )
+    return [u for u in result.scalars().all() if u.tg_id not in admin_ids]
+
+
+async def record_15m_followup_sent(session: AsyncSession, tg_id: int) -> None:
+    """Отмечает отправку первого дожима (15 минут)."""
+    user = await get_user(session, tg_id)
+    if user:
+        user.followup_15m_sent = True
+        await session.commit()
+
+
+async def get_45m_followup_targets(session: AsyncSession, threshold_minutes: int = 45) -> list[User]:
+    """Пользователи на Шаге 2 (зарегистрированы, но без депозита), зарегистрировавшиеся >= 45 мин назад."""
+    cutoff = utcnow() - timedelta(minutes=threshold_minutes)
+    admin_ids = set(settings.admin_tg_ids)
+    result = await session.execute(
+        select(User).where(
+            User.is_registered.is_(True),
+            User.has_access.is_(False),
+            User.deposit_amount == 0.0,
+            User.push_paused.is_(False),
+            User.followup_45m_sent.is_(False),
+        ).order_by(User.id)
+    )
+    targets = []
+    for u in result.scalars().all():
+        if u.tg_id in admin_ids:
+            continue
+        reg_time = _as_aware(u.registered_at or u.created_at)
+        if reg_time <= cutoff:
+            targets.append(u)
+    return targets
+
+
+async def record_45m_followup_sent(session: AsyncSession, tg_id: int) -> None:
+    """Отмечает отправку второго дожима (45 минут)."""
+    user = await get_user(session, tg_id)
+    if user:
+        user.followup_45m_sent = True
+        await session.commit()
 
 
 # =========================================================================
