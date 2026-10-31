@@ -10,7 +10,15 @@ import re
 from aiogram import Bot, F, Router
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import BaseFilter, Command, CommandObject, CommandStart
-from aiogram.types import CallbackQuery, FSInputFile, InlineKeyboardMarkup, Message
+from aiogram.types import (
+    CallbackQuery,
+    FSInputFile,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    MenuButtonWebApp,
+    Message,
+    WebAppInfo,
+)
 
 from api.signals import OTC_PAIRS, otc_signal
 from bot.keyboards import (
@@ -149,12 +157,24 @@ async def cmd_start(message: Message, command: CommandObject) -> None:
         )
         return
 
+    # Персональная кнопка MenuButtonWebApp для быстрого запуска Mini App прямо из чата
+    try:
+        await message.bot.set_chat_menu_button(
+            chat_id=message.from_user.id,
+            menu_button=MenuButtonWebApp(
+                text="⚡ WINKY AI",
+                web_app=WebAppInfo(url=settings.webapp_url_for(user.tg_id, user.lang)),
+            ),
+        )
+    except Exception:
+        pass
+
     state = _funnel_state(user)
     progress = _progress_line(user.lang, state)
     if state == "access":
         await message.answer(
             get_text(user.lang, "status_access_granted") + "\n\n" + progress,
-            reply_markup=access_keyboard(user.lang),
+            reply_markup=access_keyboard(user.lang, user.tg_id),
             parse_mode="HTML",
         )
     elif state == "deposit":
@@ -198,7 +218,20 @@ async def choose_language(callback: CallbackQuery) -> None:
         except Exception as exc:
             logger.debug("Не удалось отправить голосовое приветствие: %s", exc)
 
-    # 2. Текстовое меню Шага 1
+    # 2. Персональная синяя кнопка меню ⚡ WINKY AI слева от чата
+    if callback.bot:
+        try:
+            await callback.bot.set_chat_menu_button(
+                chat_id=callback.from_user.id,
+                menu_button=MenuButtonWebApp(
+                    text="⚡ WINKY AI",
+                    web_app=WebAppInfo(url=settings.webapp_url_for(user.tg_id, lang)),
+                ),
+            )
+        except Exception:
+            pass
+
+    # 3. Текстовое меню Шага 1
     counters = await _counters_line(lang)
     text = get_text(lang, "welcome") + "\n\n" + _progress_line(lang, "unregistered")
     if counters:
@@ -216,7 +249,7 @@ async def check_status(callback: CallbackQuery) -> None:
     progress = _progress_line(user.lang, state)
     if state == "access":
         text = get_text(user.lang, "status_access_granted") + "\n\n" + progress
-        keyboard = access_keyboard(user.lang)
+        keyboard = access_keyboard(user.lang, user.tg_id)
     elif state == "deposit":
         text = (
             get_text(user.lang, "status_registered_no_deposit", trader_id=user.trader_id or "—")
@@ -392,6 +425,110 @@ async def cmd_faq(message: Message) -> None:
         reply_markup=support_keyboard(user.lang),
         parse_mode="HTML",
     )
+
+
+@router.message(Command("id"))
+async def cmd_id(message: Message) -> None:
+    """Узнать свой Telegram ID."""
+    if message.from_user is None:
+        return
+    await message.answer(
+        f"🆔 Ваш Telegram ID: <code>{message.from_user.id}</code>",
+        parse_mode="HTML",
+    )
+
+
+@router.message(Command("app"))
+async def cmd_app(message: Message) -> None:
+    """Запуск интерактивного WINKY AI Mini App в 1 клик."""
+    if message.from_user is None:
+        return
+    user = await _get_user(message.from_user.id, message.from_user.username)
+    lang = user.lang
+    tg_id = user.tg_id
+    web_url = settings.webapp_url_for(tg_id, lang)
+    browser_url = settings.webapp_url_for(tg_id, lang, streamer=True)
+
+    is_vip = user.has_access or settings.is_admin(tg_id)
+    text = (
+        f"📱 <b>WINKY AI — Торговый терминал и ИИ-аналитик</b>\n\n"
+        f"• Режим: {'💎 VIP Доступ' if is_vip else '🔓 Демо (3 сигнала)'}\n"
+        f"• Валютные пары: OTC (24/7) и Биржа\n"
+        f"• Экспирация: от 5 секунд до 5 минут\n"
+        f"• Нейросети: Winky v4, GPT-5, Claude 5, Gemini 3\n\n"
+        f"<i>Нажми кнопку ниже для открытия прямо внутри Telegram или перейди по ссылке в браузере:</i>\n"
+        f"🌐 <code>{browser_url}</code>"
+    ) if lang == "ru" else (
+        f"📱 <b>WINKY AI — Trading Terminal & AI Analyst</b>\n\n"
+        f"• Status: {'💎 VIP Access' if is_vip else '🔓 Demo (3 Signals)'}\n"
+        f"• Markets: OTC (24/7) and Classic\n"
+        f"• Expiration: from 5s to 5m\n"
+        f"• AI Models: Winky v4, GPT-5, Claude 5, Gemini 3\n\n"
+        f"<i>Tap the button below to launch inside Telegram or open in browser:</i>\n"
+        f"🌐 <code>{browser_url}</code>"
+    )
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="⚡ Запустить WINKY AI Mini App" if lang == "ru" else "⚡ Launch WINKY AI Mini App",
+                web_app=WebAppInfo(url=web_url),
+            )],
+            [InlineKeyboardButton(
+                text="🌐 Открыть в браузере (для стрима)" if lang == "ru" else "🌐 Open in Browser",
+                url=browser_url,
+            )],
+        ]
+    )
+    await message.answer(text, reply_markup=kb, parse_mode="HTML")
+
+
+@router.message(Command("vip"))
+async def cmd_vip(message: Message, command: CommandObject) -> None:
+    """Мгновенная активация VIP / Режима Стримера для пользователя."""
+    if message.from_user is None:
+        return
+    tg_id = message.from_user.id
+    settings.add_admin(tg_id)
+
+    async with async_session_factory() as session:
+        user = await crud.get_or_create_user(session, tg_id, message.from_user.username)
+        user.is_registered = True
+        user.has_access = True
+        if not user.trader_id:
+            user.trader_id = f"VIP-{tg_id}"
+        await session.commit()
+
+    lang = user.lang
+    web_url = settings.webapp_url_for(tg_id, lang, streamer=True)
+
+    text = (
+        f"💎 <b>VIP & РЕЖИМ СТРИМЕРА АКТИВИРОВАН!</b>\n\n"
+        f"• Ваш Telegram ID: <code>{tg_id}</code>\n"
+        f"• Статус в системе: <b>💎 VIP / STREAMER ADMIN</b>\n"
+        f"• Доступ к сигналам: <b>БЕЗЛИМИТНЫЙ (100%)</b>\n"
+        f"• Скрытые триггеры стримера: <b>АКТИВНЫ</b> (клик по логотипу = BUY, клик по заголовку = SELL)\n"
+        f"• Табло EDUCATIONAL LIVE: <b>ДОСТУПНО</b>\n\n"
+        f"Запускайте WINKY AI прямо сейчас!"
+    ) if lang == "ru" else (
+        f"💎 <b>VIP & STREAMER MODE ACTIVATED!</b>\n\n"
+        f"• Your Telegram ID: <code>{tg_id}</code>\n"
+        f"• System Status: <b>💎 VIP / STREAMER ADMIN</b>\n"
+        f"• Signals Access: <b>UNLIMITED (100%)</b>\n"
+        f"• Streamer Secret Triggers: <b>ARMED</b> (Logo click = BUY, Settings click = SELL)\n"
+        f"• EDUCATIONAL LIVE Widget: <b>READY</b>\n\n"
+        f"Launch WINKY AI now!"
+    )
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(
+                text="⚡ Открыть VIP-терминал WINKY AI" if lang == "ru" else "⚡ Open VIP Terminal WINKY AI",
+                web_app=WebAppInfo(url=web_url),
+            )],
+        ]
+    )
+    await message.answer(text, reply_markup=kb, parse_mode="HTML")
 
 
 @router.callback_query(F.data == TEASER_STOP_CALLBACK)

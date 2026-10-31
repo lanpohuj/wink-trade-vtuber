@@ -36,7 +36,7 @@ class Settings(BaseSettings):
         description="Токен бота от @BotFather (на сервере обязателен для запуска бота)",
     )
     WEBAPP_URL: str = Field(
-        default="https://example.com/",
+        default="https://2.31.127.199.sslip.io/webapp/",
         description="Публичный HTTPS-URL, по которому FastAPI раздаёт Mini App",
     )
     SUPPORT_USERNAME: str = Field(
@@ -246,6 +246,8 @@ class Settings(BaseSettings):
             raise ValueError("DEFAULT_LANG должен быть 'ru' или 'en'")
         return value
 
+    _dynamic_admin_ids: set[int] = set()
+
     @property
     def admin_tg_ids(self) -> list[int]:
         """Список Telegram ID админов из строки ADMIN_TG_IDS."""
@@ -253,7 +255,27 @@ class Settings(BaseSettings):
 
     def is_admin(self, tg_id: int) -> bool:
         """Проверяет, входит ли пользователь в список админов/стримеров."""
-        return tg_id in self.admin_tg_ids
+        return tg_id in self.admin_tg_ids or tg_id in self._dynamic_admin_ids
+
+    def add_admin(self, tg_id: int) -> None:
+        """Динамически добавляет ID в список админов/стримеров в рантайме (команда /vip)."""
+        self._dynamic_admin_ids.add(tg_id)
+
+    def webapp_url_for(self, tg_id: int = 0, lang: str = "ru", streamer: bool = False) -> str:
+        """Возвращает валидный HTTPS URL для WebAppInfo в Telegram.
+
+        Telegram строго требует доверенный HTTPS-сертификат. Если в .env осталась
+        старая заглушка, заменяет её на рабочий домен sslip.io.
+        """
+        base = self.WEBAPP_URL.strip()
+        if not base or "example.com" in base or "your-domain" in base or base.startswith("http://"):
+            base = "https://2.31.127.199.sslip.io/webapp/"
+        if not base.endswith("/"):
+            base = f"{base}/"
+        url = f"{base}?tg_id={tg_id}&lang={lang}"
+        if streamer:
+            url += "&streamer=1"
+        return url
 
     def partner_base(self, lang: str = "ru") -> str:
         """Базовая партнёрская ссылка прямой веб-регистрации (без чужого ТГ-бота)."""

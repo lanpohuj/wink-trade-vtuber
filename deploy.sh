@@ -5,7 +5,7 @@ set -euo pipefail
 
 SERVER="root@2.31.127.199"
 REMOTE_DIR="/opt/winktrade"
-DOMAIN="winktrade-app.online"
+DOMAIN="2.31.127.199.sslip.io"
 MODE="${1:-update}"
 
 echo ">>> Синхронизация кода на ${SERVER}:${REMOTE_DIR}"
@@ -46,6 +46,6 @@ EOF
 fi
 
 echo ">>> Сборка и запуск"
-ssh "${SERVER}" "cd ${REMOTE_DIR} && docker compose up -d --build && docker compose ps"
+ssh "${SERVER}" "cd ${REMOTE_DIR} && docker compose up -d --build && docker compose restart caddy && docker compose ps"
 
 echo ">>> Готово: https://${DOMAIN}"

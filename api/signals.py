@@ -188,6 +188,9 @@ class SignalResponse(BaseModel):
     duration_sec: int = 5
     is_vip: bool = False
     free_signals_left: int = 0
+    register_url: str = ""
+    deposit_url: str = ""
+    promo_code: str = "50START"
 
 
 class HistoryItem(BaseModel):
@@ -220,6 +223,9 @@ class MeResponse(BaseModel):
     rules: str
     is_vip: bool = False
     free_signals_left: int = 0
+    register_url: str = ""
+    deposit_url: str = ""
+    promo_code: str = "50START"
 
 
 class LeaderboardEntry(BaseModel):
@@ -396,6 +402,10 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
     if not is_vip:
         free_signals_left = max(0, free_signals_left - 1)
 
+    user_lang = "ru"
+    if user is not None and user.lang:
+        user_lang = user.lang
+
     return SignalResponse(
         direction=direction,
         accuracy=accuracy,
@@ -408,6 +418,9 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         duration_sec=duration_sec,
         is_vip=is_vip,
         free_signals_left=free_signals_left,
+        register_url=settings.partner_url(payload.tg_id, user_lang),
+        deposit_url=settings.deposit_url(payload.tg_id, user_lang),
+        promo_code=settings.PROMO_CODE,
     )
 
 
@@ -484,6 +497,9 @@ async def get_me(tg_id: int) -> MeResponse:
         rules=TOURNAMENT_RULES.get(lang, TOURNAMENT_RULES["en"]),
         is_vip=is_vip,
         free_signals_left=free_signals_left,
+        register_url=settings.partner_url(tg_id, lang),
+        deposit_url=settings.deposit_url(tg_id, lang),
+        promo_code=settings.PROMO_CODE,
         **stats,
     )
 

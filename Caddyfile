@@ -1,3 +1,7 @@
-winktrade-app.online {
+2.31.127.199.sslip.io, winktrade-app.online {
+    reverse_proxy app:8000
+}
+
+:80 {
     reverse_proxy app:8000
 }

@@ -114,7 +114,8 @@ const I18N = {
     depositTitle: "Free Demo Signals Used",
     depositDesc: "You have used all 3 free demo signals! Unlock unlimited VIP accuracy, OTC algorithms, and all AI models.",
     promoBonus: "+50% Bonus on Deposit from $50",
-    depositNow: "DEPOSIT (+50% BONUS)",
+    registerNow: "1. FAST REGISTRATION (30s)",
+    depositNow: "2. DEPOSIT (+50% BONUS: 50START)",
     close: "Close",
     riskHint: "Risk tip: stake ≤ 3% of your deposit",
     chatWelcome: "Hello! I am your AI Market Analyst. Select a trading pair, timeframe, and neural network to analyze market structure.",
@@ -164,7 +165,8 @@ const I18N = {
     depositTitle: "Демо-сигналы исчерпаны",
     depositDesc: "Вы использовали 3 из 3 бесплатных демо-сигнала! Откройте безлимитный доступ к сигналам, OTC-алгоритмам и всем нейросетям.",
     promoBonus: "+50% к депозиту от $50",
-    depositNow: "ПОПОЛНИТЬ (+50% БОНУС)",
+    registerNow: "1. БЫСТРАЯ РЕГИСТРАЦИЯ (30 сек)",
+    depositNow: "2. ПОПОЛНИТЬ СЧЁТ (+50% КОД: 50START)",
     close: "Закрыть",
     riskHint: "Совет по риску: ставка ≤ 3% депозита",
     chatWelcome: "Привет! Я твой ИИ-аналитик. Выбери валютную пару, таймфрейм и нейросеть для полного разбора структуры графика.",
@@ -178,16 +180,25 @@ const I18N = {
 
 /* ==================== Состояние приложения ==================== */
 
+// Читаем параметры из URL (?tg_id=...&lang=...&streamer=1)
+const urlParams = new URLSearchParams(window.location.search);
+const queryTgId = urlParams.get("tg_id") ? parseInt(urlParams.get("tg_id"), 10) : null;
+const queryLang = urlParams.get("lang") === "ru" || urlParams.get("lang") === "en" ? urlParams.get("lang") : null;
+const isStreamerParam = urlParams.get("streamer") === "1";
+
 const state = {
-  lang: localStorage.getItem("winky_lang") || "en",
+  lang: queryLang || localStorage.getItem("winky_lang") || "en",
   market: "otc",
   pair: "EUR/USD OTC",
   duration: "5s",
   model: "winky-v4",
   forceDir: null, // Скрытый режим стримера: BUY — клик по бренду, SELL — клик по настройкам
-  tgId: null,
+  tgId: queryTgId,
   isVip: false,
   freeSignalsLeft: 3,
+  registerUrl: "",
+  depositUrl: "",
+  promoCode: "50START",
   busy: false,
   activeTimer: null,
   activeInterval: null,
@@ -195,7 +206,7 @@ const state = {
   // Live session widget stats
   liveWins: parseInt(localStorage.getItem("winky_live_wins") || "42", 10),
   liveLosses: parseInt(localStorage.getItem("winky_live_losses") || "1", 10),
-  liveVisible: localStorage.getItem("winky_live_vis") === "true",
+  liveVisible: isStreamerParam || localStorage.getItem("winky_live_vis") === "true",
 };
 
 /* ==================== Инициализация Telegram WebApp ==================== */
@@ -205,7 +216,7 @@ if (tg) {
   try {
     tg.ready();
     tg.expand();
-    if (tg.initDataUnsafe?.user?.id) {
+    if (!state.tgId && tg.initDataUnsafe?.user?.id) {
       state.tgId = tg.initDataUnsafe.user.id;
     }
   } catch (e) {
@@ -321,7 +332,9 @@ const modelListEl = document.getElementById("modelList");
 const depositModalBackdrop = document.getElementById("depositModalBackdrop");
 const btnCloseDeposit = document.getElementById("btnCloseDeposit");
 const btnCopyPromo = document.getElementById("btnCopyPromo");
+const btnRegisterLink = document.getElementById("btnRegisterLink");
 const btnDepositLink = document.getElementById("btnDepositLink");
+const userStatusBadge = document.getElementById("userStatusBadge");
 
 // Прогресс и лента
 const progPoints = document.getElementById("progPoints");
@@ -378,10 +391,18 @@ function updateDurationHint() {
 
 function updateDepositLinks() {
   const isRu = state.lang === "ru";
-  const base = isRu
+  const defReg = isRu
+    ? "https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+    : "https://u3.shortink.io/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START";
+  const defDep = isRu
     ? "https://po-ru4.click/cabinet/deposit?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START&promo=50START"
     : "https://u3.shortink.io/cabinet/deposit?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START&promo=50START";
-  btnDepositLink.href = `${base}&sub_id1=${state.tgId}&click_id=${state.tgId}`;
+
+  const regUrl = state.registerUrl || `${defReg}&sub_id1=${state.tgId}&click_id=${state.tgId}`;
+  const depUrl = state.depositUrl || `${defDep}&sub_id1=${state.tgId}&click_id=${state.tgId}`;
+
+  if (btnRegisterLink) btnRegisterLink.href = regUrl;
+  if (btnDepositLink) btnDepositLink.href = depUrl;
 }
 
 /* ==================== Часы и Live Session Stats ==================== */
@@ -870,7 +891,10 @@ async function requestSignal() {
   // Обновляем статус гостя/VIP
   state.isVip = signalData.is_vip;
   state.freeSignalsLeft = signalData.free_signals_left;
+  if (signalData.register_url) state.registerUrl = signalData.register_url;
+  if (signalData.deposit_url) state.depositUrl = signalData.deposit_url;
   updateStatusBadge();
+  updateDepositLinks();
 
   // Переход к ФАЗЕ 2
   phase1.hidden = true;
@@ -1107,7 +1131,10 @@ async function requestChatAnalysis() {
 
     state.isVip = data.is_vip;
     state.freeSignalsLeft = data.free_signals_left;
+    if (data.register_url) state.registerUrl = data.register_url;
+    if (data.deposit_url) state.depositUrl = data.deposit_url;
     updateStatusBadge();
+    updateDepositLinks();
 
     // Расчёт времени экспирации для карточки
     const durSec = data.duration_sec || 5;
@@ -1155,8 +1182,37 @@ btnAnalyze.addEventListener("click", requestChatAnalysis);
 /* ==================== Модалка депозита и статус ==================== */
 
 function openDepositModal() {
+  updateDepositLinks();
   depositModalBackdrop.hidden = false;
   haptic("heavy");
+}
+
+if (userStatusBadge) {
+  userStatusBadge.addEventListener("click", () => {
+    if (!state.isVip) {
+      openDepositModal();
+    }
+  });
+}
+
+if (btnRegisterLink) {
+  btnRegisterLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    const url = btnRegisterLink.href;
+    if (tg?.openLink) tg.openLink(url);
+    else window.open(url, "_blank");
+    haptic("light");
+  });
+}
+
+if (btnDepositLink) {
+  btnDepositLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    const url = btnDepositLink.href;
+    if (tg?.openLink) tg.openLink(url);
+    else window.open(url, "_blank");
+    haptic("light");
+  });
 }
 
 btnCloseDeposit.addEventListener("click", () => (depositModalBackdrop.hidden = true));
@@ -1207,6 +1263,9 @@ async function loadProgress() {
       state.freeSignalsLeft = data.free_signals_left ?? 0;
       updateStatusBadge();
     }
+    if (data.register_url) state.registerUrl = data.register_url;
+    if (data.deposit_url) state.depositUrl = data.deposit_url;
+    updateDepositLinks();
   } catch (e) {
     console.warn("Failed to load progress:", e);
   }

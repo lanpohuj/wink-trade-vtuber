@@ -73,6 +73,27 @@ async def lifespan(app: FastAPI):
 
         tasks.append(asyncio.create_task(_run_polling(dispatcher, bot), name="telegram-polling"))
         tasks.append(asyncio.create_task(run_teaser_scheduler(bot), name="daily-teaser"))
+
+        # Регистрация глобальной кнопки MenuButtonWebApp и команд бота
+        try:
+            from aiogram.types import BotCommand, MenuButtonWebApp, WebAppInfo
+
+            await bot.set_chat_menu_button(
+                menu_button=MenuButtonWebApp(
+                    text="⚡ WINKY AI",
+                    web_app=WebAppInfo(url=settings.webapp_url_for(0, "ru")),
+                )
+            )
+            await bot.set_my_commands([
+                BotCommand(command="start", description="🚀 Главное меню Winky"),
+                BotCommand(command="app", description="📱 Открыть терминал WINKY AI Mini App"),
+                BotCommand(command="vip", description="💎 Активировать мой VIP / Режим Стримера"),
+                BotCommand(command="id", description="🆔 Узнать мой Telegram ID"),
+            ])
+            logging.info("Telegram MenuButtonWebApp и команды успешно зарегистрированы")
+        except Exception:
+            logging.exception("Не удалось настроить MenuButtonWebApp или команды бота")
+
         logging.info(
             "Wink Trade запущен: FastAPI + Telegram-бот (polling) + тизер %d:00",
             settings.TEASER_HOUR,
