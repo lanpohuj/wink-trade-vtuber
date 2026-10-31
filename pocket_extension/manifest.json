@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Winky AI — Pocket Option Chart Radar & Terminal",
-  "version": "1.0.0",
-  "description": "High-tech targeting radar overlay, automated asset sync, outcome detector, and floating terminal for Pocket Option.",
+  "name": "Winky Pair Sniper — Pocket Option HUD",
+  "version": "2.0.0",
+  "description": "Tactical pair sniper, DOM asset detector, live speedometer, and score counter for Pocket Option.",
   "permissions": [
     "storage",
     "activeTab"
@@ -11,31 +11,32 @@
     "*://*.pocketoption.com/*",
     "*://*.po-ru4.click/*",
     "*://*.shortink.io/*",
-    "http://127.0.0.1:8000/*",
-    "http://127.0.0.1:8790/*",
-    "http://127.0.0.1:8791/*",
-    "http://127.0.0.1:8792/*",
+    "*://*.po.trade/*",
+    "*://*.po-ru*.click/*",
+    "http://127.0.0.1:*/*",
     "https://2.31.127.199.sslip.io/*",
-    "https://winktrade-app.online/*"
+    "https://winktrade-app.online/*",
+    "<all_urls>"
   ],
   "content_scripts": [
     {
       "matches": [
         "*://*.pocketoption.com/*",
         "*://*.po-ru4.click/*",
-        "*://*.shortink.io/*"
+        "*://*.shortink.io/*",
+        "*://*.po.trade/*",
+        "*://*.po-ru*.click/*"
       ],
       "css": [
-        "radar.css"
+        "content.css"
       ],
       "js": [
-        "chart_radar.js",
         "content.js"
       ],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ],
   "action": {
-    "default_title": "Winky AI Radar"
+    "default_title": "Winky Pair Sniper"
   }
 }

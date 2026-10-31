@@ -18,21 +18,29 @@
     </div>
   </header>
 
-  <!-- WINKY AI QUANTUM TERMINAL OVERLAY & VOICE CONTROLS -->
-  <section class="block" style="background: linear-gradient(135deg, rgba(255, 46, 147, 0.12), rgba(0, 240, 255, 0.12)); border: 1px solid rgba(0, 240, 255, 0.35); box-shadow: 0 0 16px rgba(0, 240, 255, 0.15);">
-    <div class="block-title" style="color: #00F0FF; display: flex; align-items: center; justify-content: space-between;">
-      <span>⚡ WINKY AI QUANTUM TERMINAL</span>
-      <span style="font-size: 10px; background: rgba(0,240,255,0.2); padding: 2px 6px; border-radius: 4px; color: #00F0FF;">DESKTOP OVERLAY</span>
+  <!-- WINKY AI PAIR SNIPER & POCKET OPTION INTEGRATION -->
+  <section class="block" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(0, 240, 255, 0.12)); border: 1px solid rgba(255, 107, 0, 0.45); box-shadow: 0 0 16px rgba(255, 107, 0, 0.2);">
+    <div class="block-title" style="color: #FF8800; display: flex; align-items: center; justify-content: space-between;">
+      <span>⌖ WINKY PAIR SNIPER HUD</span>
+      <span style="font-size: 10px; background: rgba(255,107,0,0.25); padding: 2px 6px; border-radius: 4px; color: #FF8800; font-weight: 800;">POCKET OPTION</span>
     </div>
     <div style="display: flex; flex-direction: column; gap: 8px;">
-      <button class="primary" id="openTerminalBtn" style="background: linear-gradient(135deg, #FF2E93, #7928CA, #00F0FF); border: none; font-weight: 800; font-size: 13.5px; padding: 12px; cursor: pointer; border-radius: 8px; box-shadow: 0 0 16px rgba(255, 46, 147, 0.4); text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
-        📈 Открыть оверлей-терминал WINKY AI (Поверх браузера)
+      <button class="primary" id="launchPocketSniperBtn" style="background: linear-gradient(135deg, #FF6B00, #FF8800); border: 1px solid rgba(255,255,255,0.2); font-weight: 800; font-size: 13.5px; padding: 12px; cursor: pointer; border-radius: 8px; box-shadow: 0 0 16px rgba(255, 107, 0, 0.4); text-shadow: 0 1px 3px rgba(0,0,0,0.5); color: #fff;">
+        🎯 Открыть Pocket Option со встроенным WINKY PAIR SNIPER
       </button>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+        <button type="button" id="openTerminalBtn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #E2E8F0; font-size: 11px; font-weight: 700; padding: 8px; border-radius: 6px; cursor: pointer;">
+          📱 Оверлей Winky
+        </button>
+        <button type="button" id="openCounterBtn" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #E2E8F0; font-size: 11px; font-weight: 700; padding: 8px; border-radius: 6px; cursor: pointer;">
+          📊 Табло LIVE SCORE
+        </button>
+      </div>
       <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: rgba(0,0,0,0.3); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06);">
         <span style="font-size: 12px; color: #e2e8f0; font-weight: 600;">🔊 Озвучивать сигналы голосом Winky:</span>
         <label style="position: relative; display: inline-block; width: 44px; height: 22px; margin: 0; cursor: pointer;">
           <input type="checkbox" id="voiceSignalsToggle" checked style="opacity: 0; width: 0; height: 0;">
-          <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #00F0FF; border-radius: 22px; transition: .3s;" id="voiceSignalsToggleBg"></span>
+          <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #FF8800; border-radius: 22px; transition: .3s;" id="voiceSignalsToggleBg"></span>
           <span style="position: absolute; height: 16px; width: 16px; left: 24px; bottom: 3px; background: white; border-radius: 50%; transition: .3s;" id="voiceSignalsToggleKnob"></span>
         </label>
       </div>

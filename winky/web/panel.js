@@ -1055,17 +1055,39 @@ document.addEventListener("keydown", (event) => {
 
 /* ==================== WINKY AI Terminal Overlay & Voice Signals ==================== */
 
+const launchPocketSniperBtn = document.getElementById("launchPocketSniperBtn");
 const openTerminalBtn = document.getElementById("openTerminalBtn");
+const openCounterBtn = document.getElementById("openCounterBtn");
 const voiceSignalsToggle = document.getElementById("voiceSignalsToggle");
 const voiceSignalsToggleBg = document.getElementById("voiceSignalsToggleBg");
 const voiceSignalsToggleKnob = document.getElementById("voiceSignalsToggleKnob");
+
+if (launchPocketSniperBtn) {
+  launchPocketSniperBtn.addEventListener("click", () => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.launch_pocket_sniper) {
+      window.pywebview.api.launch_pocket_sniper();
+    } else {
+      window.open("https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START", "_blank");
+    }
+  });
+}
 
 if (openTerminalBtn) {
   openTerminalBtn.addEventListener("click", () => {
     if (window.pywebview && window.pywebview.api && window.pywebview.api.open_signal_terminal) {
       window.pywebview.api.open_signal_terminal();
     } else {
-      window.open("http://127.0.0.1:8790/webapp/?streamer=1&lang=ru", "_blank");
+      window.open("http://127.0.0.1:8765/webapp/?streamer=1&lang=ru", "_blank");
+    }
+  });
+}
+
+if (openCounterBtn) {
+  openCounterBtn.addEventListener("click", () => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.open_counter_widget) {
+      window.pywebview.api.open_counter_widget();
+    } else {
+      window.open("http://127.0.0.1:8765/webapp/counter.html", "_blank");
     }
   });
 }

@@ -233,17 +233,18 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
 
 
 def start_assets_server() -> tuple[str, int]:
-    """Поднимает сервер winky/web на свободном локальном порту (демон-поток)."""
+    """Поднимает сервер winky/web на порту 8765 или 8790-8809 (демон-поток)."""
     handler = partial(_AssetsHandler, directory=str(WEB_DIR))
     server: ThreadingHTTPServer | None = None
-    for port in range(8790, 8810):
+    candidate_ports = [8765] + list(range(8790, 8810))
+    for port in candidate_ports:
         try:
             server = ThreadingHTTPServer(("127.0.0.1", port), handler)
             break
         except OSError:
             continue
     if server is None:
-        raise RuntimeError("Не нашлось свободного порта для ассетов Winky (8790–8809)")
+        raise RuntimeError("Не нашлось свободного порта для ассетов Winky (8765, 8790–8809)")
     server.daemon_threads = True
     import threading
 

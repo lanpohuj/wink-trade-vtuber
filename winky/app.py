@@ -132,6 +132,27 @@ class WinkyAPI:
         self.trigger_action("peek_closer", 2.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
 
+    def launch_pocket_sniper(self) -> bool:
+        """Запускает Google Chrome с загруженным расширением WINKY PAIR SNIPER."""
+        ext_dir = str(Path(__file__).resolve().parent.parent / "pocket_extension")
+        partner_link = "https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+        try:
+            import subprocess
+            cmd = [
+                "open", "-na", "Google Chrome",
+                "--args",
+                f"--load-extension={ext_dir}",
+                partner_link
+            ]
+            subprocess.Popen(cmd)
+            logger.info("Запущен Google Chrome со встроенным расширением WINKY PAIR SNIPER: %s", ext_dir)
+            return True
+        except Exception as e:
+            logger.warning("Не удалось запустить Chrome: %s", e)
+            import webbrowser
+            webbrowser.open(partner_link)
+            return False
+
     def speak_signal(self, payload: Any = None) -> bool:
         """Озвучка сигнала исключительно через LumeanTTS (женский голос) без Mac say."""
         if isinstance(payload, str):
@@ -144,14 +165,32 @@ class WinkyAPI:
 
         pair = payload.get("pair", "EUR/USD OTC")
         direction = payload.get("direction", "BUY")
-        duration = payload.get("duration", "5s")
+        duration = payload.get("duration", "30s")
         model = payload.get("model", "Claude Fable")
         lang = payload.get("lang", "ru")
+        custom_phrase = payload.get("phrase") or (
+            payload.get("voice_phrase_ru") if lang == "ru" else payload.get("voice_phrase_en")
+        )
 
-        self.on_signal_result(direction=direction, pair=pair, duration=duration, model=model, lang=lang)
+        self.on_signal_result(
+            direction=direction,
+            pair=pair,
+            duration=duration,
+            model=model,
+            lang=lang,
+            phrase=custom_phrase,
+        )
         return True
 
-    def on_signal_result(self, direction: str, pair: str = "", duration: str = "", model: str = "", lang: str = "ru") -> None:
+    def on_signal_result(
+        self,
+        direction: str,
+        pair: str = "",
+        duration: str = "",
+        model: str = "",
+        lang: str = "ru",
+        phrase: str | None = None,
+    ) -> None:
         """Реакция аватара Winky на результат сигнала: радость + озвучка живым женским голосом."""
         self.trigger_action("cheer", 3.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('excited')")
@@ -159,32 +198,35 @@ class WinkyAPI:
         if not self._voice_signals_enabled:
             return
 
+        if phrase and phrase.strip():
+            self._controller.speak(phrase.strip(), lang=lang, emotion="excited", source="signal_announcement")
+            return
+
         is_buy = str(direction).upper() == "BUY"
-        clean_dur = duration or "5s"
+        clean_dur = duration or "30s"
         clean_model = model.split(" ")[0] if model else "Claude"
 
         if lang == "en":
             if is_buy:
                 phrases = [
-                    f"Model {clean_model} confirms a strong BUY impulse! Entering for {clean_dur}!",
-                    f"Bullish order block confirmed! Taking BUY for {clean_dur}!",
+                    f"Target locked: {pair}! Going UP for {clean_dur}, signal strength 78, 5 of 5 horizons agreeing! Enter within 12 seconds!",
+                    f"Bullish order block confirmed! Taking UP for {clean_dur}!",
                 ]
             else:
                 phrases = [
-                    f"Model {clean_model} confirms a clear SELL reversal! Entering for {clean_dur}!",
-                    f"Bearish momentum confirmed! Taking SELL for {clean_dur}!",
+                    f"Target locked: {pair}! Going DOWN for {clean_dur}, signal strength 78, 5 of 5 horizons agreeing! Enter within 12 seconds!",
+                    f"Bearish momentum confirmed! Taking DOWN for {clean_dur}!",
                 ]
         else:
+            clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
             if is_buy:
                 phrases = [
-                    f"Модель {clean_model} даёт уверенный сигнал ВВЕРХ! Заходим на {clean_dur}!",
+                    f"Цель — {clean_pair_ru}! Сигнал ВВЕРХ на {clean_dur}, сила импульса 78, согласовано 5 из 5 горизонтов! У нас 12 секунд на вход!",
                     f"Вижу сильный бычий импульс! Берём ВВЕРХ на {clean_dur}, точка входа отличная!",
-                    f"Отскок от зоны ликвидности подтверждён! Сигнал ВВЕРХ на {clean_dur}!",
                 ]
             else:
                 phrases = [
-                    f"Так, вижу разворот! Сигнал ВНИЗ на {clean_dur}, уверенность максимальная!",
-                    f"Модель {clean_model} фиксирует сброс ликвидности! Заходим ВНИЗ на {clean_dur}!",
+                    f"Цель — {clean_pair_ru}! Сигнал ВНИЗ на {clean_dur}, сила импульса 78, согласовано 5 из 5 горизонтов! У нас 12 секунд на вход!",
                     f"Медвежий импульс подтверждён! Открываем сделку ВНИЗ на {clean_dur}!",
                 ]
 

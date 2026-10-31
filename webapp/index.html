@@ -3,47 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>WINKY AI — Fintech Trading Terminal</title>
-  <meta name="theme-color" content="#0A0F1D">
+  <title>WINKY PAIR SNIPER — Pocket Option Tactical Terminal</title>
+  <meta name="theme-color" content="#0B0E14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Rajdhani:wght@600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app-container">
 
-  <!-- Ambient background glow (Fintech Sapphire) -->
-  <div class="ambient-glow glow-sapphire" aria-hidden="true"></div>
-  <div class="ambient-glow glow-azure" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
+  <!-- Tactical Ambient Grid -->
+  <div class="tactical-grid-bg" aria-hidden="true"></div>
 
   <!-- ==================== TOPBAR ==================== -->
-  <header class="topbar">
-    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI Terminal (Click for BUY trigger)">
+  <header class="topbar wps-tactical-box">
+    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY PAIR SNIPER (Click for BUY trigger)">
       <div class="brand-icon">
-        <svg width="28" height="28" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="30" height="30" rx="8" fill="#151F32"/>
-          <path d="M5 15h4l3-7 4 14 3-7h5" stroke="#38BDF8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="24" cy="9" r="2.2" fill="#10B981"/>
+        <svg width="28" height="28" viewBox="0 0 30 30" fill="none">
+          <rect width="30" height="30" rx="6" fill="#10151F" stroke="rgba(255,107,0,0.5)"/>
+          <circle cx="15" cy="15" r="9" stroke="#FF6B00" stroke-width="1.8" stroke-dasharray="2 3"/>
+          <line x1="15" y1="3" x2="15" y2="27" stroke="#FF6B00" stroke-width="1.4"/>
+          <line x1="3" y1="15" x2="27" y2="15" stroke="#FF6B00" stroke-width="1.4"/>
+          <circle cx="15" cy="15" r="2.5" fill="#00FF9D"/>
         </svg>
       </div>
       <div class="brand-info">
         <div class="brand-title">
-          WINKY<span class="ai-text">AI</span>
+          WINKY<span class="ai-text">SNIPER</span>
         </div>
-        <div class="brand-sub">FINTECH TERMINAL</div>
+        <div class="brand-sub">TACTICAL HUD · v2.0</div>
       </div>
     </div>
 
     <div class="topbar-actions">
-      <!-- Auto-Radar Toggle Button -->
-      <button type="button" class="btn-radar-toggle" id="btnAutoRadar" title="Автоматический радар сигналов">
-        <span class="radar-dot" aria-hidden="true"></span>
-        <span class="radar-label" id="radarLabel">RADAR: OFF</span>
-      </button>
-
       <!-- Live Stream Counter HUD Toggle -->
       <button type="button" class="btn-live-toggle" id="btnLiveToggle" title="Табло стримера WINS/LOSSES">
         <span class="live-dot" aria-hidden="true"></span>
@@ -71,10 +65,10 @@
 
   <!-- ==================== LIVE STREAM HUD BUMPER ==================== -->
   <section class="live-bumper" id="liveBumper" hidden>
-    <div class="live-bumper-track">
+    <div class="live-bumper-track wps-tactical-box">
       <div class="bumper-pill clock-pill">
         <span class="live-dot" aria-hidden="true"></span>
-        <span id="liveClock">14:28:10</span>
+        <span id="liveClock">19:15:58 UTC</span>
       </div>
 
       <div class="bumper-pill stat-pill wins" id="pillWins" title="+1 Победа">
@@ -89,10 +83,10 @@
 
       <div class="bumper-pill stat-pill winrate" id="pillWinrate" title="Winrate">
         <span class="pill-lbl">RATE:</span>
-        <span class="pill-val val-blue" id="winRateVal">99.1%</span>
+        <span class="pill-val val-cyan" id="winRateVal">99.1%</span>
       </div>
 
-      <a href="counter.html" target="_blank" class="btn-pop-widget" title="Открыть в отдельном окне">
+      <a href="counter.html" target="_blank" class="btn-pop-widget" title="Открыть отдельное табло">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </a>
       <button type="button" class="btn-close-bumper" id="btnCloseBumper" title="Скрыть табло">✕</button>
@@ -103,218 +97,270 @@
   <main class="content-body">
 
     <!-- ======================================================== -->
-    <!-- TAB 1: HOME / TERMINAL (ALL INLINE, ZERO MODAL POPUPS)    -->
+    <!-- TAB 1: ⌖ SNIPER (TACTICAL HUD — 3 INLINE STATES)          -->
     <!-- ======================================================== -->
-    <section class="tab-view active" id="tabHome">
+    <section class="tab-view active" id="tabSniper">
 
-      <!-- Market Mode Segment (Regular vs OTC) -->
-      <div class="market-segment">
-        <button type="button" class="segment-btn active" id="btnMarketOtc" data-market="otc">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span>OTC (24/7)</span>
-        </button>
-        <button type="button" class="segment-btn" id="btnMarketRegular" data-market="classic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span>Regular Market</span>
-        </button>
-      </div>
+      <!-- STATE A: MARKET PULSE & TARGET SELECTION -->
+      <div class="sniper-state-box" id="statePulse">
+        
+        <!-- 1. MARKET PULSE HEAD -->
+        <div class="wps-section-head">
+          <div class="wps-section-title-row">
+            <span class="wps-section-title" data-i18n="pulseTitle">MARKET PULSE</span>
+            <span class="wps-section-charge-tag">CHARGE</span>
+          </div>
+          <span class="wps-section-sub" data-i18n="pulseSub">Где рынок движется сильнее всего прямо сейчас. Нажми на строку, чтобы выбрать цель.</span>
+        </div>
 
-      <!-- Controls Row: Pair Selector (65%) & Expiration (35%) -->
-      <div class="controls-row">
-        <!-- Pair Selector -->
-        <div class="control-col col-pair">
-          <label class="control-label" id="pairLabel" role="button" tabindex="0" title="Click for SELL trigger">
-            <span data-i18n="pairLabel">Валютная пара</span>
-            <span class="secret-trigger-dot" aria-hidden="true"></span>
-          </label>
-          <button type="button" class="pair-trigger" id="pairTrigger">
-            <div class="pair-trigger-left">
-              <span class="dual-flags-container" id="pairFlags"></span>
-              <span class="pair-name" id="pairDisplay">EUR/USD OTC</span>
+        <!-- 3 Hot Volatile Rows -->
+        <div class="wps-hot-list" id="hotPairsList">
+          <div class="wps-hot-row" data-pair="MAD/USD OTC" data-payout="92%">
+            <span class="wps-hot-num">01</span>
+            <div class="wps-hot-pair-wrap">
+              <span class="wps-hot-pair">MAD/USD OTC</span>
             </div>
-            <svg class="chevron-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            <span class="wps-hot-charge-bars">||||||||||</span>
+            <span class="wps-hot-score">98 →</span>
+          </div>
+
+          <div class="wps-hot-row selected" data-pair="USD/CAD OTC" data-payout="92%">
+            <span class="wps-hot-num">02</span>
+            <div class="wps-hot-pair-wrap">
+              <span class="wps-hot-pair">USD/CAD OTC</span>
+              <span class="wps-badge-selected" data-i18n="selected">ВЫБРАНА</span>
+            </div>
+            <span class="wps-hot-charge-bars">||||||||..</span>
+            <span class="wps-hot-score">87 →</span>
+          </div>
+
+          <div class="wps-hot-row" data-pair="AUD/CAD OTC" data-payout="90%">
+            <span class="wps-hot-num">03</span>
+            <div class="wps-hot-pair-wrap">
+              <span class="wps-hot-pair">AUD/CAD OTC</span>
+            </div>
+            <span class="wps-hot-charge-bars">|||||.....</span>
+            <span class="wps-hot-score">54 →</span>
+          </div>
+        </div>
+
+        <!-- 2. CATEGORY TABS -->
+        <div class="wps-section-head" style="margin-top: 4px;">
+          <span class="wps-section-sub" style="font-weight: 800; letter-spacing: 0.06em;" data-i18n="orPick">ИЛИ ВЫБЕРИТЕ САМИ</span>
+        </div>
+        <div class="wps-cat-tabs" id="catTabs">
+          <button type="button" class="wps-cat-tab active" data-cat="currencies">CURRENCIES</button>
+          <button type="button" class="wps-cat-tab" data-cat="stocks">STOCKS</button>
+          <button type="button" class="wps-cat-tab" data-cat="crypto">CRYPTO</button>
+          <button type="button" class="wps-cat-tab" data-cat="indices">INDICES</button>
+          <button type="button" class="wps-cat-tab" data-cat="commodities">COMMODITIES</button>
+        </div>
+
+        <!-- 3. TARGET CARD & AI ENGINE -->
+        <div class="wps-target-card wps-tactical-box">
+          <div class="wps-target-head">
+            <span class="wps-target-label" id="targetLabel" role="button" tabindex="0" title="Click for SELL trigger">
+              <span data-i18n="target">ЦЕЛЬ</span>
+            </span>
+            <span class="wps-payout-tag" id="targetPayoutBadge">выплата 92%</span>
+          </div>
+          <div class="wps-target-row">
+            <span class="wps-target-name" id="targetPairName">USD/CAD OTC</span>
+            <button type="button" class="wps-btn-change" id="btnChangePair" data-i18n="change">СМЕНИТЬ ▾</button>
+          </div>
+        </div>
+
+        <div class="wps-ai-engine-row">
+          <span class="wps-ai-engine-label" data-i18n="aiEngine">ИИ-ДВИЖОК:</span>
+          <select class="wps-ai-select" id="modelSelect">
+            <option value="claude-fable-5.1" selected>Claude Fable 5.1 (FLAGSHIP)</option>
+            <option value="claude-opus-5">Claude Opus 5 (DEEP)</option>
+            <option value="claude-sonnet-5">Claude Sonnet 5 (SPEED)</option>
+            <option value="gpt-5-astra">GPT-5 Astra (VISION)</option>
+            <option value="gpt-5-luna">GPT-5 Luna (HIGH-SPEED)</option>
+            <option value="gpt-5-pro">GPT-5 Pro (PROPRIETARY)</option>
+            <option value="gemini-argon">Gemini Argon (RADAR)</option>
+            <option value="gemini-3.1-pro">Gemini 3.1 Pro (CORE)</option>
+            <option value="gemini-3.8-flash">Gemini 3.8 Flash (MICRO)</option>
+          </select>
+        </div>
+
+        <!-- 4. ACTIONS BAR (ANALYSE + AUTO-SNIPER) -->
+        <div class="wps-actions-bar">
+          <button type="button" class="wps-btn-analyse" id="btnAnalyse">
+            <span>⚡</span>
+            <span id="analyseBtnText" data-i18n="analyse">АНАЛИЗИРОВАТЬ</span>
           </button>
+          <div class="wps-auto-toggle-wrap">
+            <span class="wps-auto-label" data-i18n="autoSniper">АВТО-СНАЙПЕР</span>
+            <div class="wps-switch-track" id="autoSniperSwitch">
+              <div class="wps-switch-knob"></div>
+            </div>
+          </div>
         </div>
 
-        <!-- Expiration Selector -->
-        <div class="control-col col-expiry">
-          <label class="control-label" data-i18n="durationLabel">Время экспирации</label>
-          <div class="expiry-pills" id="durationPills">
-            <button type="button" class="expiry-pill active" data-duration="5s">5s</button>
-            <button type="button" class="expiry-pill" data-duration="10s">10s</button>
-            <button type="button" class="expiry-pill" data-duration="15s">15s</button>
-            <button type="button" class="expiry-pill" data-duration="30s">30s</button>
-            <button type="button" class="expiry-pill" data-duration="1m">1m</button>
+      </div>
+
+      <!-- STATE B: RADAR SCREEN (1.3 SEC INLINE) -->
+      <div class="sniper-state-box wps-radar-screen" id="stateRadar" hidden>
+        <div class="wps-radar-reticle-wrap">
+          <svg class="wps-radar-svg" viewBox="0 0 180 180">
+            <!-- 48 Radial Ticks -->
+            <g class="wps-radar-ticks">
+              <!-- Dynamically generated or static 48 ticks -->
+              <circle cx="90" cy="90" r="80" fill="none" stroke="#FF6B00" stroke-width="1.5" stroke-dasharray="3 7.4" opacity="0.6"/>
+              <circle cx="90" cy="90" r="60" fill="none" stroke="#FF6B00" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
+              <circle cx="90" cy="90" r="35" fill="none" stroke="#FF6B00" stroke-width="1" opacity="0.3"/>
+            </g>
+            <line x1="90" y1="10" x2="90" y2="170" stroke="#FF6B00" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.5"/>
+            <line x1="10" y1="90" x2="170" y2="90" stroke="#FF6B00" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.5"/>
+            <!-- Rotating Laser Sweep -->
+            <g class="wps-radar-sweep">
+              <path d="M90 90 L90 10 A80 80 0 0 1 150 40 Z" fill="url(#miniRadarGrad)" opacity="0.4"/>
+              <line x1="90" y1="90" x2="90" y2="10" stroke="#FF8800" stroke-width="2.5"/>
+            </g>
+            <defs>
+              <radialGradient id="miniRadarGrad" cx="90" cy="90" r="80" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FF8800" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+          </svg>
+          <div class="wps-radar-center-info">
+            <span class="wps-radar-count" id="radarCountNum">23</span>
+            <span class="wps-radar-label" data-i18n="checkingPairs">ПАР ПРОВЕРЕНО</span>
           </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+          <span class="wps-radar-subhead" data-i18n="choosingExpiry">ПОДБОР ЭКСПИРАЦИИ</span>
+          <span class="wps-radar-subtext" data-i18n="toFitMove">под текущий импульс рынка</span>
+        </div>
+        <div class="wps-radar-progress-bar">
+          <div class="wps-radar-progress-fill" id="radarProgressFill"></div>
         </div>
       </div>
 
-      <!-- ======================================================== -->
-      <!-- PERMANENT INLINE SIGNAL TERMINAL CARD                   -->
-      <!-- ======================================================== -->
-      <section class="signal-card" id="signalCard">
-        <!-- Card Header with metadata -->
-        <div class="card-header-bar">
-          <div class="header-pair-wrap">
-            <span class="header-icon">⚡</span>
-            <span class="header-pair-text" id="cardPairTitle">EUR/USD OTC</span>
-          </div>
-          <div class="header-badges">
-            <span class="mini-badge" id="cardDurationBadge">Timeframe: 5s</span>
-            <span class="mini-badge badge-acc" id="cardAccuracyBadge">Accuracy: 94%</span>
+      <!-- STATE C: GAUGE SPEEDOMETER SIGNAL & ENTRY WINDOW -->
+      <div class="sniper-state-box wps-signal-screen" id="stateSignal" hidden>
+        <!-- Header -->
+        <div class="wps-signal-header">
+          <span class="wps-signal-pair" id="signalPairTitle">USD/CAD OTC</span>
+          <div class="wps-signal-meta">
+            <span id="signalCategoryTag">CURRENCIES</span>
+            <span>·</span>
+            <span class="wps-signal-model-badge" id="signalModelBadge">Fable 5.1</span>
           </div>
         </div>
 
-        <!-- INLINE DYNAMIC DISPLAY AREA (States: idle, scanning, signal, finished) -->
-        <div class="inline-terminal-display" id="inlineSignalDisplay">
-          
-          <!-- STATE 1: IDLE -->
-          <div class="terminal-state state-idle" id="stateIdle">
-            <div class="radar-pulse-ring">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.8">
-                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-                <circle cx="12" cy="12" r="6" stroke-opacity="0.5"/>
-                <circle cx="12" cy="12" r="2" fill="#38BDF8"/>
-                <line x1="12" y1="2" x2="12" y2="12" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="idle-title" data-i18n="idleTitle">ГОТОВ К АНАЛИЗУ</div>
-            <div class="idle-sub" data-i18n="idleSub">Нажмите кнопку «Получить сигнал» для поиска точки входа</div>
-          </div>
-
-          <!-- STATE 2: SCANNING (1.2s Fast Scan) -->
-          <div class="terminal-state state-scanning" id="stateScanning" hidden>
-            <div class="scan-ticker-bar">
-              <span class="ticker-label">TICK PRICE:</span>
-              <span class="ticker-val" id="scanPriceVal">1.08492</span>
-            </div>
-            <div class="scan-status-text" id="scanStatusText">Сканирование ликвидности и свечной структуры...</div>
-            <div class="scan-progress-bar">
-              <div class="scan-progress-fill" id="scanProgressFill"></div>
-            </div>
-            <div class="scan-tags">
-              <span class="scan-tag">EMA-9/21</span>
-              <span class="scan-tag">ORDER BOOK</span>
-              <span class="scan-tag">MOMENTUM</span>
+        <!-- Big Semi-Circular SVG Tachometer Gauge -->
+        <div class="wps-gauge-card wps-tactical-box">
+          <div class="wps-gauge-wrap">
+            <svg class="wps-gauge-svg" viewBox="0 0 260 140">
+              <!-- Scale Arc Background -->
+              <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#1A2232" stroke-width="14" stroke-linecap="round"/>
+              <!-- Colored Progress Arc -->
+              <path id="gaugeProgressArc" d="M 30 130 A 100 100 0 0 1 230 130" fill="none"
+                    stroke="#00FF9D" stroke-width="14" stroke-linecap="round"
+                    stroke-dasharray="314" stroke-dashoffset="0"/>
+              <!-- Scale Ticks 0, 20, 40, 60, 80 -->
+              <text x="24" y="134" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">0</text>
+              <text x="54" y="66" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">20</text>
+              <text x="124" y="24" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">40</text>
+              <text x="194" y="66" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">60</text>
+              <text x="228" y="134" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">80</text>
+              <!-- Needle Pointer -->
+              <line id="gaugeNeedle" x1="130" y1="130" x2="60" y2="50"
+                    stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="130" cy="130" r="6" fill="#FFFFFF"/>
+            </svg>
+            <div class="wps-gauge-inner-info">
+              <span class="wps-dir-badge up" id="signalDirBadge">↑ UP</span>
+              <span class="wps-gauge-countdown" id="signalCountdownDigits">12 SEC</span>
+              <span class="wps-gauge-entry-sub" id="entrySubText" data-i18n="entryWindow">ОКНО ВХОДА · ИЗ 12</span>
             </div>
           </div>
-
-          <!-- STATE 3: SIGNAL ACTIVE -->
-          <div class="terminal-state state-signal" id="stateSignal" hidden>
-            <!-- Large Signal Direction Box -->
-            <div class="signal-direction-banner buy" id="directionBanner">
-              <div class="direction-arrow-box" id="directionArrow">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
-                </svg>
-              </div>
-              <div class="direction-info">
-                <div class="direction-name" id="directionText">BUY (ВВЕРХ)</div>
-                <div class="direction-status" id="entryStatus">ВХОД ОТКРЫТ!</div>
-              </div>
-              <div class="direction-accuracy" id="signalAccuracyNum">94%</div>
-            </div>
-
-            <!-- Precision Expiration Countdown Timer -->
-            <div class="timer-countdown-box">
-              <div class="timer-top-row">
-                <span class="timer-title" data-i18n="expiryLabel">Время экспирации:</span>
-                <span class="timer-digits" id="timerDigits">00:05.0</span>
-              </div>
-              <div class="timer-bar-track">
-                <div class="timer-bar-fill" id="timerBarFill"></div>
-              </div>
-            </div>
-
-            <!-- Technical Analysis Rationale Points -->
-            <div class="rationale-box" id="rationaleBox">
-              <div class="rationale-list" id="rationaleList"></div>
-            </div>
-          </div>
-
-          <!-- STATE 4: FINISHED -->
-          <div class="terminal-state state-finished" id="stateFinished" hidden>
-            <div class="finished-check">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="finished-title" data-i18n="tradeFinished">Сделка завершена · Точка отработана</div>
-            <div class="finished-sub" id="autoRadarCountdownText" data-i18n="statsUpdated">Результат учтён в статистике сессии.</div>
-          </div>
-
         </div>
 
-        <!-- Royal Blue CTA Button -->
-        <button type="button" class="btn-royal-cta" id="signalBtn">
-          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span class="btn-text" id="signalBtnText">ПОЛУЧИТЬ СИГНАЛ (5s)</span>
+        <!-- Two Parameter Columns (EXPIRY & SIGNAL STRENGTH) -->
+        <div class="wps-params-grid">
+          <div class="wps-param-card">
+            <span class="wps-param-title" data-i18n="expiry">ЭКСПИРАЦИЯ</span>
+            <span class="wps-param-val" id="signalExpiryVal">30 sec</span>
+            <span class="wps-expiry-hint" data-i18n="keyboardHint">⌨️ Введите экспирацию вручную, если нет кнопки</span>
+          </div>
+          <div class="wps-param-card">
+            <span class="wps-param-title" data-i18n="signalStrength">СИЛА СИГНАЛА</span>
+            <div style="display:flex; align-items:baseline; justify-content:space-between;">
+              <span class="wps-param-val" id="signalStrengthVal">78</span>
+              <span class="wps-strength-bars">▬▬▬▬</span>
+            </div>
+            <span class="wps-strength-verdict" id="signalVerdictVal" data-i18n="strongSignal">сильный сигнал</span>
+          </div>
+        </div>
+
+        <!-- Live Telemetry Box -->
+        <div class="wps-telemetry-box" id="signalTelemetryBox">
+          Движение цены вверх: 0.019% за 30 с. Сила импульса к шуму — 3.4. Согласие горизонтов: 5 из 5.
+        </div>
+
+        <!-- Button NEW TARGET -->
+        <button type="button" class="wps-btn-new-target" id="btnNewTarget">
+          ⌖ <span data-i18n="newTarget">НОВАЯ ЦЕЛЬ</span>
         </button>
-
-        <div class="risk-disclaimer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <span data-i18n="riskHint">Мани-менеджмент: рекомендуемая ставка не более 3% от депозита</span>
-        </div>
-      </section>
+      </div>
 
     </section>
 
     <!-- ======================================================== -->
-    <!-- TAB 2: AI CHAT / REASONING CORE                         -->
+    <!-- TAB 2: 💬 AI CHAT / REASONING FEED                       -->
     <!-- ======================================================== -->
     <section class="tab-view" id="tabChat">
 
       <!-- AI Chat Message Feed -->
-      <section class="chat-feed" id="chatFeed">
-        <!-- Initial Welcome Bubble -->
+      <section class="chat-feed wps-tactical-box" id="chatFeed">
         <div class="chat-bubble ai">
           <div class="bubble-header">
             <span class="ai-badge">WINKY AI</span>
             <span class="bubble-model" id="chatActiveModelTag">Claude Fable 5.1</span>
           </div>
           <div class="bubble-content" data-i18n="chatWelcome">
-            Привет! Я Winky AI. Выберите валютную пару, экспирацию и модель теханализа, затем нажмите «Анализировать».
+            Привет! Я Winky AI. Выберите цель, модель теханализа и нажмите «Анализировать».
           </div>
         </div>
       </section>
 
-      <!-- Bottom Chat Parameters & Action Bar -->
-      <div class="chat-controls-bar">
-        <!-- Parameter Selectors Row -->
+      <!-- Bottom Chat Controls Bar -->
+      <div class="chat-controls-bar wps-tactical-box">
         <div class="chat-params-row">
           <!-- Model Selector -->
           <div class="chat-param-item">
             <label class="param-lbl">ИИ-модель</label>
-            <button type="button" class="param-select-btn" id="btnSelectModel">
-              <span id="selectedModelLabel">Claude Fable 5.1</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
+            <select class="param-select-native" id="chatModelSelect">
+              <option value="claude-fable-5.1" selected>Claude Fable 5.1</option>
+              <option value="claude-opus-5">Claude Opus 5</option>
+              <option value="gpt-5-astra">GPT-5 Astra</option>
+              <option value="gpt-5-luna">GPT-5 Luna</option>
+              <option value="gemini-argon">Gemini Argon</option>
+              <option value="gemini-3.1-pro">Gemini 3.1 Pro</option>
+            </select>
           </div>
 
-          <!-- Pair Quick Selector -->
-          <div class="chat-param-item">
-            <label class="param-lbl">Пара</label>
-            <button type="button" class="param-select-btn" id="btnChatPair">
-              <span id="chatPairLabel">EUR/USD OTC</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-          </div>
-
-          <!-- Expiration Quick Selector -->
+          <!-- Expiration Selector -->
           <div class="chat-param-item small">
             <label class="param-lbl">Время</label>
             <select class="param-select-native" id="selectChatDuration">
-              <option value="5s" selected>5s</option>
-              <option value="10s">10s</option>
+              <option value="5s">5s</option>
               <option value="15s">15s</option>
-              <option value="30s">30s</option>
+              <option value="30s" selected>30s</option>
               <option value="1m">1m</option>
+              <option value="2m">2m</option>
             </select>
           </div>
         </div>
 
-        <!-- Big Analyze Button -->
-        <button type="button" class="btn-royal-cta" id="btnAnalyze">
-          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          <span class="btn-text" id="analyzeBtnText" data-i18n="analyzeBtn">АНАЛИЗИРОВАТЬ РЫНОК</span>
+        <button type="button" class="wps-btn-analyse" id="btnChatAnalyze">
+          <span>⚡</span>
+          <span id="chatAnalyzeBtnText" data-i18n="analyse">АНАЛИЗИРОВАТЬ РЫНОК</span>
         </button>
       </div>
 
@@ -324,13 +370,17 @@
 
   <!-- ==================== BOTTOM NAVIGATION (STRICTLY 2 TABS) ==================== -->
   <nav class="bottom-nav">
-    <button type="button" class="nav-item active" data-tab="tabHome" id="btnNavHome">
+    <button type="button" class="nav-item active" data-tab="tabSniper" id="btnNavSniper">
       <span class="nav-icon-wrap">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="22" y1="12" x2="18" y2="12"/>
+          <line x1="6" y1="12" x2="2" y2="12"/>
+          <line x1="12" y1="6" x2="12" y2="2"/>
+          <line x1="12" y1="22" x2="12" y2="18"/>
         </svg>
       </span>
-      <span class="nav-label" data-i18n="navHome">СИГНАЛЫ</span>
+      <span class="nav-label">⌖ SNIPER</span>
     </button>
     <button type="button" class="nav-item" data-tab="tabChat" id="btnNavChat">
       <span class="nav-icon-wrap">
@@ -338,42 +388,29 @@
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
       </span>
-      <span class="nav-label" data-i18n="navChat">ИИ ЧАТ</span>
+      <span class="nav-label">💬 AI CHAT</span>
     </button>
   </nav>
 
-  <!-- ==================== CURRENCY PAIR BOTTOM SHEET ==================== -->
+  <!-- ==================== ASSET SELECTION BOTTOM SHEET ==================== -->
   <div class="sheet-backdrop" id="pairSheetBackdrop" hidden>
-    <div class="sheet-card" id="pairSheet">
+    <div class="sheet-card wps-tactical-box" id="pairSheet">
       <div class="sheet-head">
-        <div class="sheet-title" data-i18n="selectPair">Выбор валютной пары</div>
+        <div class="sheet-title" data-i18n="selectPair">Выбор торгового актива</div>
         <button type="button" class="sheet-close-btn" id="btnClosePairSheet">✕</button>
       </div>
 
       <div class="pair-search-wrap">
-        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="pair-search-input" id="pairSearchInput" placeholder="Поиск пары (EUR, USD, OTC)..." data-i18n-placeholder="searchPair">
+        <input type="text" class="pair-search-input" id="pairSearchInput" placeholder="Поиск актива (USD, CAD, OTC)...">
       </div>
 
       <div class="pair-list-scroll" id="pairList"></div>
     </div>
   </div>
 
-  <!-- ==================== AI MODEL BOTTOM SHEET ==================== -->
-  <div class="sheet-backdrop" id="modelSheetBackdrop" hidden>
-    <div class="sheet-card" id="modelSheet">
-      <div class="sheet-head">
-        <div class="sheet-title" data-i18n="selectModel">Выбор ИИ-модели теханализа</div>
-        <button type="button" class="sheet-close-btn" id="btnCloseModelSheet">✕</button>
-      </div>
-
-      <div class="model-list-scroll" id="modelList"></div>
-    </div>
-  </div>
-
-  <!-- ==================== VIP DEPOSIT UPGRADE SHEET ==================== -->
+  <!-- ==================== VIP DEPOSIT SHEET ==================== -->
   <div class="sheet-backdrop" id="depositSheetBackdrop" hidden>
-    <div class="deposit-card" id="depositSheet">
+    <div class="deposit-card wps-tactical-box" id="depositSheet">
       <div class="deposit-badge">VIP UPGRADE</div>
       <div class="deposit-title" data-i18n="depositTitle">Демо-сигналы исчерпаны</div>
       <p class="deposit-desc" data-i18n="depositDesc">
@@ -385,15 +422,15 @@
         <div class="promo-code-row">
           <span class="promo-label">ПРОМОКОД:</span>
           <span class="promo-val">50START</span>
-          <button type="button" class="btn-copy-promo" id="btnCopyPromo" title="Скопировать">Копировать</button>
+          <button type="button" class="btn-copy-promo" id="btnCopyPromo">Копировать</button>
         </div>
       </div>
 
       <div class="deposit-actions">
-        <a href="#" class="btn-royal-cta" id="btnRegisterLink" target="_blank" rel="noopener">
+        <a href="#" class="wps-btn-analyse" id="btnRegisterLink" target="_blank" rel="noopener">
           <span data-i18n="registerNow">1. БЫСТРАЯ РЕГИСТРАЦИЯ (30 сек)</span>
         </a>
-        <a href="#" class="btn-royal-cta btn-deposit-alt" id="btnDepositLink" target="_blank" rel="noopener">
+        <a href="#" class="wps-btn-analyse" style="background:linear-gradient(180deg, #10B981 0%, #059669 100%);" id="btnDepositLink" target="_blank" rel="noopener">
           <span data-i18n="depositNow">2. ПОПОЛНИТЬ СЧЁТ (+50% БОНУС)</span>
         </a>
         <button type="button" class="btn-sheet-close-text" id="btnCloseDeposit" data-i18n="close">Закрыть</button>
