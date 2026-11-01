@@ -1064,11 +1064,35 @@ const voiceSignalsToggleKnob = document.getElementById("voiceSignalsToggleKnob")
 
 if (launchPocketSniperBtn) {
   launchPocketSniperBtn.addEventListener("click", () => {
-    if (window.pywebview && window.pywebview.api && window.pywebview.api.launch_pocket_sniper) {
-      window.pywebview.api.launch_pocket_sniper();
-    } else {
-      window.open("https://po.financial/ru/cabinet/demo-quick-high-low/", "_blank");
+    const origHTML = launchPocketSniperBtn.innerHTML;
+    launchPocketSniperBtn.innerHTML = "⏳ Открываем Chrome...";
+
+    function showSuccess() {
+      launchPocketSniperBtn.innerHTML = "✅ Открыто в Chrome!";
+      launchPocketSniperBtn.style.background = "linear-gradient(135deg, #10B981, #059669)";
+      setTimeout(() => {
+        launchPocketSniperBtn.innerHTML = origHTML;
+        launchPocketSniperBtn.style.background = "";
+      }, 2500);
     }
+
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.launch_pocket_sniper) {
+      try {
+        window.pywebview.api.launch_pocket_sniper();
+        showSuccess();
+        return;
+      } catch (err) {
+        console.warn("pywebview launch_pocket_sniper error:", err);
+      }
+    }
+
+    // Direct HTTP endpoint fallback
+    fetch("http://127.0.0.1:8765/api/winky/launch_chrome", { method: "POST" })
+      .then(() => showSuccess())
+      .catch(() => {
+        window.open("https://po.financial/ru/cabinet/demo-quick-high-low/", "_blank");
+        showSuccess();
+      });
   });
 }
 

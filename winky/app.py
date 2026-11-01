@@ -102,41 +102,19 @@ class WinkyAPI:
         self.trigger_action("peek_closer", 2.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
 
-    def launch_pocket_sniper(self) -> bool:
-        """Запускает Google Chrome в выделенном профиле со встроенным WINKY NEURAL VISION HUD."""
-        ext_dir = str((Path(__file__).resolve().parent.parent / "pocket_extension").resolve())
-        profile_dir = str(Path.home() / ".winky_po_chrome_profile")
+    def launch_pocket_sniper(self) -> dict:
+        """Открывает торговый кабинет Pocket Option в основном Google Chrome."""
         target_url = "https://po.financial/ru/cabinet/demo-quick-high-low/"
-        chrome_bin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-
         try:
             import subprocess
-            if os.path.exists(chrome_bin):
-                cmd = [
-                    chrome_bin,
-                    f"--user-data-dir={profile_dir}",
-                    f"--load-extension={ext_dir}",
-                    target_url,
-                ]
-                subprocess.Popen(cmd)
-                logger.info("Запущен Google Chrome (выделенный профиль) с расширением: %s", ext_dir)
-                return True
-            else:
-                cmd = [
-                    "open", "-na", "Google Chrome",
-                    "--args",
-                    f"--user-data-dir={profile_dir}",
-                    f"--load-extension={ext_dir}",
-                    target_url,
-                ]
-                subprocess.Popen(cmd)
-                logger.info("Запущен Google Chrome через open -na с расширением: %s", ext_dir)
-                return True
+            subprocess.Popen(["open", "-a", "Google Chrome", target_url])
+            logger.info("Открыт кабинет Pocket Option в основном Google Chrome: %s", target_url)
+            return {"ok": True, "message": "Кабинет Pocket Option открыт в Google Chrome!"}
         except Exception as e:
-            logger.warning("Не удалось запустить Chrome напрямую: %s", e)
+            logger.warning("Не удалось открыть через open -a Google Chrome: %s", e)
             import webbrowser
             webbrowser.open(target_url)
-            return False
+            return {"ok": True, "message": "Кабинет открыт в браузере"}
 
     def reveal_extension_in_finder(self) -> bool:
         """Показывает папку расширения в macOS Finder для загрузки в chrome://extensions."""
@@ -900,6 +878,7 @@ def main() -> None:
         lambda direction="BUY", pair="", duration="", model="": winky_api.on_signal_result(direction, pair, duration, model),
     )
     register_winky_callback("speak_signal", winky_api.speak_signal)
+    register_winky_callback("launch_chrome", winky_api.launch_pocket_sniper)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None

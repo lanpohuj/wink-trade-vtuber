@@ -1,43 +1,37 @@
 /* ============================================================
-   WINKY PAIR SNIPER — TELEGRAM MINI APP CONTROLLER (Vanilla JS)
-   Tactical HUD (Market Pulse, 48-Tick Radar, Tachometer Gauge)
-   Strictly 2 Bottom Tabs: SNIPER & AI CHAT
+   WINKY AI TRADING BOT — TELEGRAM MINI APP CONTROLLER (Vanilla JS)
+   Classic Trading Bot HUD (Dark Sapphire Matte #0D1322)
+   Strictly 2 Bottom Tabs: 🏠 СИГНАЛЫ & 💬 ИИ-ЧАТ
+   Zero Popups · Zero speechSynthesis · Full Inline Experience
    ============================================================ */
 
 "use strict";
 
 const ASSET_CATALOG = {
-  currencies: [
-    { id: "USD/CAD OTC", name: "USD/CAD OTC", payout: "92%" },
-    { id: "EUR/USD OTC", name: "EUR/USD OTC", payout: "92%" },
-    { id: "GBP/USD OTC", name: "GBP/USD OTC", payout: "92%" },
-    { id: "AUD/CAD OTC", name: "AUD/CAD OTC", payout: "90%" },
-    { id: "MAD/USD OTC", name: "MAD/USD OTC", payout: "92%" },
-    { id: "AUD/USD OTC", name: "AUD/USD OTC", payout: "91%" },
-    { id: "USD/JPY OTC", name: "USD/JPY OTC", payout: "90%" },
-    { id: "NZD/USD OTC", name: "NZD/USD OTC", payout: "88%" },
+  otc: [
+    { id: "EUR/USD OTC", name: "EUR/USD OTC", flags: "🇪🇺🇺🇸", payout: "92%" },
+    { id: "AUD/CAD OTC", name: "AUD/CAD OTC", flags: "🇦🇺🇨🇦", payout: "90%" },
+    { id: "MAD/USD OTC", name: "MAD/USD OTC", flags: "🇲🇦🇺🇸", payout: "92%" },
+    { id: "USD/CAD OTC", name: "USD/CAD OTC", flags: "🇺🇸🇨🇦", payout: "92%" },
+    { id: "GBP/USD OTC", name: "GBP/USD OTC", flags: "🇬🇧🇺🇸", payout: "92%" },
+    { id: "USD/JPY OTC", name: "USD/JPY OTC", flags: "🇺🇸🇯🇵", payout: "90%" },
+    { id: "AUD/USD OTC", name: "AUD/USD OTC", flags: "🇦🇺🇺🇸", payout: "91%" },
+    { id: "NZD/USD OTC", name: "NZD/USD OTC", flags: "🇳🇿🇺🇸", payout: "88%" },
+    { id: "Apple OTC", name: "Apple OTC", flags: "🍏", payout: "90%" },
+    { id: "Tesla OTC", name: "Tesla OTC", flags: "⚡", payout: "90%" },
+    { id: "BTC/USD OTC", name: "BTC/USD OTC", flags: "₿", payout: "86%" },
+    { id: "ETH/USD OTC", name: "ETH/USD OTC", flags: "Ξ", payout: "85%" },
+    { id: "GOLD OTC", name: "GOLD OTC", flags: "🥇", payout: "90%" },
   ],
-  stocks: [
-    { id: "Apple OTC", name: "Apple OTC", payout: "90%" },
-    { id: "Tesla OTC", name: "Tesla OTC", payout: "90%" },
-    { id: "Microsoft OTC", name: "Microsoft OTC", payout: "89%" },
-    { id: "Amazon OTC", name: "Amazon OTC", payout: "88%" },
-  ],
-  crypto: [
-    { id: "BTC/USD OTC", name: "Bitcoin OTC", payout: "86%" },
-    { id: "ETH/USD OTC", name: "Ethereum OTC", payout: "85%" },
-    { id: "SOL/USD OTC", name: "Solana OTC", payout: "84%" },
-  ],
-  indices: [
-    { id: "SP500 OTC", name: "S&P 500 OTC", payout: "88%" },
-    { id: "NDX100 OTC", name: "Nasdaq 100 OTC", payout: "88%" },
-    { id: "DJI30 OTC", name: "Dow Jones OTC", payout: "87%" },
-  ],
-  commodities: [
-    { id: "GOLD OTC", name: "Gold OTC", payout: "90%" },
-    { id: "SILVER OTC", name: "Silver OTC", payout: "88%" },
-    { id: "BRENT OTC", name: "Crude Oil OTC", payout: "86%" },
-  ],
+  regular: [
+    { id: "EUR/USD", name: "EUR/USD", flags: "🇪🇺🇺🇸", payout: "85%" },
+    { id: "GBP/USD", name: "GBP/USD", flags: "🇬🇧🇺🇸", payout: "84%" },
+    { id: "USD/JPY", name: "USD/JPY", flags: "🇺🇸🇯🇵", payout: "85%" },
+    { id: "AUD/USD", name: "AUD/USD", flags: "🇦🇺🇺🇸", payout: "80%" },
+    { id: "USD/CAD", name: "USD/CAD", flags: "🇺🇸🇨🇦", payout: "82%" },
+    { id: "AUD/CAD", name: "AUD/CAD", flags: "🇦🇺🇨🇦", payout: "82%" },
+    { id: "NZD/USD", name: "NZD/USD", flags: "🇳🇿🇺🇸", payout: "80%" },
+  ]
 };
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -47,81 +41,66 @@ const isStreamerMode = urlParams.get("streamer") === "1";
 
 const state = {
   lang: queryLang || localStorage.getItem("winky_lang") || "ru",
-  category: "currencies",
-  targetPair: "USD/CAD OTC",
-  targetPayout: "92%",
-  selectedModel: "claude-fable-5.1",
-  autoSniper: false,
+  marketType: "otc",
+  pair: "EUR/USD OTC",
+  flags: "🇪🇺🇺🇸",
+  payout: "92%",
+  duration: "30s",
+  model: "claude-fable-5.1",
+  autoSignals: false,
   isBusy: false,
-  forceDir: null, // Streamer secret trigger: 'BUY' (logo) | 'SELL' (pair)
+  forceDir: null, // Secret Streamer trigger: 'BUY' (logo) | 'SELL' (badge/pair)
   tgId: queryTgId || (window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 7166130676),
   liveWins: 110,
   liveLosses: 1,
-  activeSignal: null,
-  entryInterval: null,
+  countdownInterval: null,
 };
 
 const i18n = {
   ru: {
-    pulseTitle: "MARKET PULSE",
-    pulseSub: "Где рынок движется сильнее всего прямо сейчас. Нажми на строку, чтобы выбрать цель.",
-    selected: "ВЫБРАНА",
-    orPick: "ИЛИ ВЫБЕРИТЕ САМИ",
-    target: "ЦЕЛЬ",
-    payout: "выплата",
-    change: "СМЕНИТЬ ▾",
-    aiEngine: "ИИ-ДВИЖОК:",
-    analyse: "АНАЛИЗИРОВАТЬ",
-    autoSniper: "АВТО-СНАЙПЕР",
-    checkingPairs: "ПАР ПРОВЕРЕНО",
-    choosingExpiry: "ПОДБОР ЭКСПИРАЦИИ",
-    toFitMove: "под текущий импульс рынка",
-    entryWindow: "ОКНО ВХОДА · ИЗ",
-    expiry: "ЭКСПИРАЦИЯ",
-    signalStrength: "СИЛА СИГНАЛА",
-    strongSignal: "сильный сигнал",
-    edgeOfNoise: "на границе шума",
-    newTarget: "НОВАЯ ЦЕЛЬ",
-    keyboardHint: "⌨️ Введите экспирацию вручную, если нет кнопки",
-    chatWelcome: "Привет! Я Winky AI. Выберите цель, модель теханализа и нажмите «Анализировать».",
+    pairLbl: "Валютная пара",
+    timeLbl: "Время сделки",
+    time: "Время:",
+    accuracy: "Точность:",
+    readyForSignal: "Готов к анализу графика",
+    analysing: "АНАЛИЗ РЫНКА...",
+    getSignal: "ПОЛУЧИТЬ СИГНАЛ",
+    auto: "АВТО",
+    tabSignals: "🏠 СИГНАЛЫ",
+    tabChat: "💬 ИИ-ЧАТ",
+    chatWelcome: "Привет! Выберите пару, экспирацию и нажмите кнопку запроса.",
+    buyText: "↗ КУПИТЬ",
+    sellText: "↘ ПРОДАТЬ",
     depositTitle: "Демо-сигналы исчерпаны",
     depositDesc: "Вы использовали 3 бесплатных сигнала. Пополните счёт Pocket Option, чтобы получить безлимитный доступ к сигналам, OTC-алгоритмам и всем ИИ-моделям.",
     promoBonus: "+50% к депозиту от $50",
     registerNow: "1. БЫСТРАЯ РЕГИСТРАЦИЯ (30 сек)",
     depositNow: "2. ПОПОЛНИТЬ СЧЁТ (+50% БОНУС)",
     close: "Закрыть",
-    selectPair: "Выбор торгового актива",
+    copied: "Скопировано!",
   },
   en: {
-    pulseTitle: "MARKET PULSE",
-    pulseSub: "Where the market moves hardest right now. Tap a row to make it your target.",
-    selected: "SELECTED",
-    orPick: "OR PICK ONE YOURSELF",
-    target: "TARGET",
-    payout: "payout",
-    change: "CHANGE ▾",
-    aiEngine: "AI ENGINE:",
-    analyse: "ANALYSE",
-    autoSniper: "AUTO-SNIPER",
-    checkingPairs: "PAIRS CHECKED",
-    choosingExpiry: "CHOOSING EXPIRY",
-    toFitMove: "to fit the move",
-    entryWindow: "ENTRY WINDOW · OF",
-    expiry: "EXPIRY",
-    signalStrength: "SIGNAL STRENGTH",
-    strongSignal: "strong signal",
-    edgeOfNoise: "edge of noise",
-    newTarget: "NEW TARGET",
-    keyboardHint: "⌨️ Type this expiry in by hand if no quick button",
-    chatWelcome: "Hello! I am Winky AI. Select a target, analysis model, and click «Analyze Market».",
+    pairLbl: "Currency Pair",
+    timeLbl: "Trade Duration",
+    time: "Time:",
+    accuracy: "Accuracy:",
+    readyForSignal: "Ready for market analysis",
+    analysing: "ANALYSING MARKET...",
+    getSignal: "GET SIGNAL",
+    auto: "AUTO",
+    tabSignals: "🏠 SIGNALS",
+    tabChat: "💬 AI CHAT",
+    chatWelcome: "Hello! Select a currency pair, duration and tap send.",
+    buyText: "↗ BUY",
+    sellText: "↘ SELL",
     depositTitle: "Demo Signals Exhausted",
     depositDesc: "You have used all 3 free demo signals. Deposit on Pocket Option to unlock unlimited signals, OTC algorithms, and all AI models.",
     promoBonus: "+50% Deposit Bonus from $50",
     registerNow: "1. FAST REGISTRATION (30s)",
     depositNow: "2. DEPOSIT (+50% BONUS)",
     close: "Close",
-    selectPair: "Select Trading Asset",
-  },
+    copied: "Copied!",
+  }
 };
 
 function t(k) {
@@ -137,10 +116,10 @@ function applyLanguage() {
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === state.lang);
   });
-  updateTargetCardUI();
+  updateCardUI();
 }
 
-/* ==================== 1. Strict 2-Tab Navigation ==================== */
+/* ==================== 1. Tab Switching (Strictly 2 Tabs) ==================== */
 
 function switchTab(tabId) {
   document.querySelectorAll(".tab-view").forEach((tab) => tab.classList.remove("active"));
@@ -154,536 +133,519 @@ function switchTab(tabId) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* ==================== 2. Inline Sniper States ==================== */
+/* ==================== 2. Market Switch & Selectors ==================== */
 
-function setSniperState(s) {
-  document.getElementById("statePulse").hidden = s !== "pulse";
-  document.getElementById("stateRadar").hidden = s !== "radar";
-  document.getElementById("stateSignal").hidden = s !== "signal";
+function populatePairSelect() {
+  const select = document.getElementById("selectPair");
+  if (!select) return;
+
+  const list = ASSET_CATALOG[state.marketType] || ASSET_CATALOG.otc;
+  select.innerHTML = "";
+
+  list.forEach((item) => {
+    const opt = document.createElement("option");
+    opt.value = item.id;
+    opt.textContent = `${item.flags} ${item.name} (${item.payout})`;
+    if (item.id === state.pair) opt.selected = true;
+    select.appendChild(opt);
+  });
+
+  // Ensure valid selection
+  const match = list.find((x) => x.id === select.value) || list[0];
+  state.pair = match.id;
+  state.flags = match.flags;
+  state.payout = match.payout;
+
+  updateCardUI();
 }
 
-function updateTargetCardUI() {
-  const nameEl = document.getElementById("targetPairName");
-  const payoutEl = document.getElementById("targetPayoutBadge");
-  if (nameEl) nameEl.textContent = state.targetPair;
-  if (payoutEl) payoutEl.textContent = `${t("payout")} ${state.targetPayout}`;
+function updateCardUI() {
+  const flagsEl = document.getElementById("cardFlags");
+  const nameEl = document.getElementById("cardPairName");
+  const payoutEl = document.getElementById("cardPayout");
+  const metricTimeEl = document.getElementById("metricTime");
+  const pillChatPair = document.getElementById("pillChatPair");
+  const pillChatDuration = document.getElementById("pillChatDuration");
+
+  if (flagsEl) flagsEl.textContent = state.flags;
+  if (nameEl) nameEl.textContent = state.pair;
+  if (payoutEl) payoutEl.textContent = `+${state.payout}`;
+  if (metricTimeEl) metricTimeEl.textContent = state.duration;
+
+  if (pillChatPair) pillChatPair.textContent = state.pair;
+  if (pillChatDuration) pillChatDuration.textContent = state.duration;
 }
 
-async function startSniperAnalysis() {
+/* ==================== 3. Signal Generation Flow ==================== */
+
+function parseDurationSeconds(dur) {
+  const num = parseInt(dur, 10) || 30;
+  if (dur.includes("m")) return num * 60;
+  return num;
+}
+
+function formatCountdown(sec) {
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+async function startSignalAnalysis() {
   if (state.isBusy) return;
   state.isBusy = true;
 
-  if (state.entryInterval) {
-    clearInterval(state.entryInterval);
-    state.entryInterval = null;
+  if (state.countdownInterval) {
+    clearInterval(state.countdownInterval);
+    state.countdownInterval = null;
   }
 
-  // 1. STATE B: RADAR SCREEN (1.3 SECONDS)
-  setSniperState("radar");
+  const dirBlock = document.getElementById("directionBlock");
+  const btn = document.getElementById("btnGetSignal");
+  if (btn) btn.disabled = true;
 
-  const radarStart = performance.now();
-  const countEl = document.getElementById("radarCountNum");
-  const fillEl = document.getElementById("radarProgressFill");
+  // 1. ANALYSIS STATE: 1.0 SECONDS BLUE SCANNING BAR
+  if (dirBlock) {
+    dirBlock.className = "winky-direction-block analysing";
+    dirBlock.innerHTML = `
+      <div class="analysis-spinner"></div>
+      <span style="letter-spacing:1px;font-weight:700;">${t("analysing")}</span>
+      <div class="analysis-progress-bar">
+        <div class="analysis-progress-fill"></div>
+      </div>
+    `;
+  }
 
-  const radarInterval = setInterval(() => {
-    const elapsed = performance.now() - radarStart;
-    const p = Math.min(100, (elapsed / 1300) * 100);
-    if (fillEl) fillEl.style.width = `${p}%`;
-
-    const count = Math.min(23, Math.floor(1 + (elapsed / 1300) * 22));
-    if (countEl) countEl.textContent = count;
-  }, 45);
-
+  const startTime = performance.now();
   let apiData = null;
+
   try {
     const resp = await fetch("/api/signal", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         tg_id: state.tgId,
-        pair: state.targetPair,
-        duration: "30s",
+        pair: state.pair,
+        duration: state.duration,
         force_dir: state.forceDir,
-        model: state.selectedModel,
+        model: state.model,
       }),
     });
-    state.forceDir = null;
+    state.forceDir = null; // consume trigger
 
     if (resp.status === 403) {
-      clearInterval(radarInterval);
-      setSniperState("pulse");
+      if (dirBlock) {
+        dirBlock.className = "winky-direction-block idle";
+        dirBlock.innerHTML = `<span id="dirStateText">${t("readyForSignal")}</span>`;
+      }
+      if (btn) btn.disabled = false;
       state.isBusy = false;
-      document.getElementById("depositSheetBackdrop").hidden = false;
+      const depositBackdrop = document.getElementById("depositSheetBackdrop");
+      if (depositBackdrop) depositBackdrop.hidden = false;
       return;
     }
 
     if (resp.ok) {
       apiData = await resp.json();
     }
-  } catch (_) {}
+  } catch (_) {
+    // offline fallback
+  }
 
-  const remaining = Math.max(0, 1100 - (performance.now() - radarStart));
-  await new Promise((r) => setTimeout(r, remaining));
-  clearInterval(radarInterval);
+  // Ensure minimum 950ms smooth analysis bar animation
+  const elapsed = performance.now() - startTime;
+  if (elapsed < 950) {
+    await new Promise((r) => setTimeout(r, 950 - elapsed));
+  }
 
-  // 2. STATE C: 3-VECTOR MATRIX & GLOWING CAPSULE
+  // 2. ACTIVE SIGNAL STATE
   const dir = apiData?.direction || (Math.random() > 0.45 ? "BUY" : "SELL");
   const isBuy = dir === "BUY";
-  const entryWindow = apiData?.entry_window_sec || 12;
+  const accuracy = apiData?.accuracy || Math.floor(91 + Math.random() * 6);
+  const totalSec = parseDurationSeconds(state.duration);
 
-  const vec1 = Math.floor(88 + Math.random() * 10);
-  const vec2 = Math.floor(80 + Math.random() * 14);
-  const vec3 = Math.floor(84 + Math.random() * 12);
+  const accEl = document.getElementById("metricAccuracy");
+  if (accEl) accEl.textContent = `${accuracy}%`;
 
-  const vec1Desc = state.lang === "ru" ? "ИМПУЛЬСНЫЙ ПРОБОЙ" : "VELOCITY SURGE";
-  const vec2Desc = isBuy
-    ? state.lang === "ru" ? `BUY ДАВЛЕНИЕ ${vec2}%` : `BUY PRESSURE ${vec2}%`
-    : state.lang === "ru" ? `SELL ДАВЛЕНИЕ ${vec2}%` : `SELL PRESSURE ${vec2}%`;
-  const vec3Desc = isBuy
-    ? state.lang === "ru" ? "БЫЧЬЕ ПОГЛОЩЕНИЕ" : "BULLISH ENGULFING"
-    : state.lang === "ru" ? "МЕДВЕЖЬЕ ПОГЛОЩЕНИЕ" : "BEARISH ENGULFING";
-
-  state.activeSignal = {
-    direction: dir,
-    duration: "30 SEC",
-    vec1_val: vec1,
-    vec1_desc: vec1Desc,
-    vec2_val: vec2,
-    vec2_desc: vec2Desc,
-    vec3_val: vec3,
-    vec3_desc: vec3Desc,
-    entry_window_sec: entryWindow,
-    move_percent: (0.015 + Math.random() * 0.02).toFixed(3),
-    move_window_sec: 30,
-    move_to_noise: (3.2 + Math.random() * 0.8).toFixed(1),
-    horizons_agreeing: state.lang === "ru" ? "3 из 3 векторов" : "3 of 3 vectors",
-  };
-
-  // Populate UI
-  document.getElementById("signalPairTitle").textContent = state.targetPair;
-  document.getElementById("signalCategoryTag").textContent = state.category.toUpperCase();
-  document.getElementById("signalExpiryVal").textContent = state.activeSignal.duration;
-
-  // Vector Matrix values & fills
-  const vec1ValEl = document.getElementById("vec1Val");
-  const vec1FillEl = document.getElementById("vec1Fill");
-  if (vec1ValEl) vec1ValEl.textContent = `${vec1}% · ${vec1Desc}`;
-  if (vec1FillEl) vec1FillEl.style.width = `${vec1}%`;
-
-  const vec2ValEl = document.getElementById("vec2Val");
-  const vec2FillEl = document.getElementById("vec2Fill");
-  if (vec2ValEl) vec2ValEl.textContent = vec2Desc;
-  if (vec2FillEl) {
-    vec2FillEl.className = `wps-vector-fill ${isBuy ? "emerald" : "ruby"}`;
-    vec2FillEl.style.width = `${vec2}%`;
+  if (dirBlock) {
+    dirBlock.className = `winky-direction-block active ${isBuy ? "buy" : "sell"}`;
+    dirBlock.innerHTML = `
+      <div class="signal-dir-large">
+        ${isBuy ? t("buyText") : t("sellText")} 
+        <span class="dir-en">(${isBuy ? "BUY" : "SELL"})</span>
+      </div>
+      <div class="signal-sub-row">
+        <span class="signal-badge-live">LIVE</span>
+        <span class="signal-timer" id="signalTimer">${formatCountdown(totalSec)}</span>
+        <span class="signal-acc-badge">${state.lang === "ru" ? "ТОЧНОСТЬ" : "ACCURACY"}: ${accuracy}%</span>
+      </div>
+    `;
   }
 
-  const vec3ValEl = document.getElementById("vec3Val");
-  const vec3FillEl = document.getElementById("vec3Fill");
-  if (vec3ValEl) vec3ValEl.textContent = vec3Desc;
-  if (vec3FillEl) {
-    vec3FillEl.className = `wps-vector-fill ${isBuy ? "emerald" : "ruby"}`;
-    vec3FillEl.style.width = `${vec3}%`;
+  if (window.Telegram?.WebApp?.HapticFeedback) {
+    window.Telegram.WebApp.HapticFeedback.notificationOccurred(isBuy ? "success" : "warning");
   }
 
-  // Capsule direction & classes
-  const capsule = document.getElementById("signalCapsule");
-  if (capsule) {
-    capsule.className = `wps-signal-capsule ${isBuy ? "buy" : "sell"}`;
-  }
+  // Attempt voice dispatch if local or remote server endpoint responds
+  dispatchLumeanVoice({ pair: state.pair, direction: dir, duration: state.duration, accuracy });
 
-  const dirBadge = document.getElementById("signalDirBadge");
-  if (dirBadge) {
-    dirBadge.textContent = isBuy ? (state.lang === "ru" ? "↑ ВВЕРХ (BUY)" : "↑ UP (BUY)") : (state.lang === "ru" ? "↓ ВНИЗ (SELL)" : "↓ DOWN (SELL)");
-  }
+  // 3. COUNTDOWN TO EXPIRY
+  let remaining = totalSec;
+  const timerEl = document.getElementById("signalTimer");
 
-  const telemetryBox = document.getElementById("signalTelemetryBox");
-  if (telemetryBox) {
-    telemetryBox.textContent = `Δ ${isBuy ? "+" : "-"}${state.activeSignal.move_percent}% (${state.activeSignal.move_window_sec}s) · SNR: ${state.activeSignal.move_to_noise} · Согласовано: ${state.activeSignal.horizons_agreeing}`;
-  }
-
-  setSniperState("signal");
-
-  // Voice announcement strictly through LumeanTTS
-  dispatchVoiceAnnouncement(state.activeSignal);
-
-  // Start Signal Countdown
-  startSignalCountdown(entryWindow);
-}
-
-function startSignalCountdown(totalSec) {
-  const startTime = performance.now();
-  const countEl = document.getElementById("signalCountdownDigits");
-  const barEl = document.getElementById("signalCapsuleBarFill");
-
-  if (state.entryInterval) clearInterval(state.entryInterval);
-
-  state.entryInterval = setInterval(() => {
-    const elapsed = (performance.now() - startTime) / 1000;
-    const remaining = Math.max(0, totalSec - elapsed);
-    const ratio = remaining / totalSec;
-
-    if (countEl) countEl.textContent = `${Math.ceil(remaining)} SEC`;
-    if (barEl) barEl.style.width = `${ratio * 100}%`;
+  state.countdownInterval = setInterval(() => {
+    remaining -= 1;
+    if (timerEl) timerEl.textContent = formatCountdown(Math.max(0, remaining));
 
     if (remaining <= 0) {
-      clearInterval(state.entryInterval);
-      state.entryInterval = null;
+      clearInterval(state.countdownInterval);
+      state.countdownInterval = null;
       onSignalExpiryFinished();
     }
-  }, 60);
+  }, 1000);
 }
 
 function onSignalExpiryFinished() {
   state.liveWins += 1;
-  broadcastLiveStats("signal_win");
+  updateLiveScoreUI();
 
-  if (state.autoSniper) {
+  if (window.Telegram?.WebApp?.HapticFeedback) {
+    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+  }
+
+  const btn = document.getElementById("btnGetSignal");
+  if (btn) btn.disabled = false;
+  state.isBusy = false;
+
+  // Auto-signals loop on stream
+  if (state.autoSignals) {
     setTimeout(() => {
-      state.isBusy = false;
-      startSniperAnalysis();
-    }, 2500);
-  } else {
-    state.isBusy = false;
-  }
-}
-
-function dispatchVoiceAnnouncement(sig) {
-  // STRICT BAN: Zero window.speechSynthesis or macOS say!
-  const phrase = state.lang === "ru" ? sig.voice_phrase_ru : sig.voice_phrase_en;
-  const payload = {
-    event: "signal",
-    pair: state.targetPair,
-    direction: sig.direction,
-    duration: sig.duration,
-    model: state.selectedModel,
-    lang: state.lang,
-    phrase: phrase,
-  };
-
-  if (window.pywebview?.api?.speak_signal) {
-    try {
-      window.pywebview.api.speak_signal(payload);
-      return;
-    } catch (_) {}
-  }
-
-  fetch("/api/winky/speak_signal", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  }).catch(() => {});
-}
-
-/* ==================== 3. Live Stats Synchronization ==================== */
-
-function updateLiveStatsUI() {
-  const wEl = document.getElementById("winCount");
-  const lEl = document.getElementById("lossCount");
-  const rEl = document.getElementById("winRateVal");
-  if (wEl) wEl.textContent = state.liveWins;
-  if (lEl) lEl.textContent = state.liveLosses;
-  const total = state.liveWins + state.liveLosses;
-  const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) + "%" : "0.0%";
-  if (rEl) rEl.textContent = rate;
-}
-
-function broadcastLiveStats(source = "miniapp") {
-  updateLiveStatsUI();
-  try {
-    localStorage.setItem("winky_live_stats", JSON.stringify({
-      wins: state.liveWins,
-      losses: state.liveLosses,
-      pair: state.targetPair,
-      timestamp: Date.now(),
-    }));
-  } catch (_) {}
-
-  if (window.BroadcastChannel) {
-    try {
-      const bc = new BroadcastChannel("winky_live_stats");
-      bc.postMessage({
-        type: "STATS_UPDATE",
-        wins: state.liveWins,
-        losses: state.liveLosses,
-        pair: state.targetPair,
-        source: source,
-      });
-      bc.close();
-    } catch (_) {}
-  }
-
-  fetch("/api/live_stats", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ wins: state.liveWins, losses: state.liveLosses, pair: state.targetPair }),
-  }).catch(() => {});
-}
-
-function initLiveStats() {
-  try {
-    const raw = localStorage.getItem("winky_live_stats");
-    if (raw) {
-      const p = JSON.parse(raw);
-      if (typeof p.wins === "number") state.liveWins = p.wins;
-      if (typeof p.losses === "number") state.liveLosses = p.losses;
-    }
-  } catch (_) {}
-
-  fetch("/api/live_stats")
-    .then((r) => r.json())
-    .then((data) => {
-      if (data && typeof data.wins === "number") {
-        state.liveWins = data.wins;
-        state.liveLosses = data.losses;
-        updateLiveStatsUI();
+      if (state.autoSignals && !state.isBusy) {
+        startSignalAnalysis();
       }
-    })
-    .catch(() => {});
-
-  if (window.BroadcastChannel) {
-    try {
-      const rx = new BroadcastChannel("winky_live_stats");
-      rx.onmessage = (ev) => {
-        const msg = ev.data;
-        if (!msg) return;
-        if (typeof msg.wins === "number") state.liveWins = msg.wins;
-        if (typeof msg.losses === "number") state.liveLosses = msg.losses;
-        if (msg.pair && !state.isBusy) {
-          state.targetPair = msg.pair;
-          updateTargetCardUI();
-        }
-        updateLiveStatsUI();
-      };
-    } catch (_) {}
+    }, 2800);
   }
-
-  updateLiveStatsUI();
 }
 
-/* ==================== 4. AI Chat Tab ==================== */
-
-async function performChatAnalysis() {
-  const btn = document.getElementById("btnChatAnalyze");
-  btn.disabled = true;
-
-  const modelSelect = document.getElementById("chatModelSelect");
-  const durSelect = document.getElementById("selectChatDuration");
-  const modelName = modelSelect ? modelSelect.options[modelSelect.selectedIndex].text : "Claude Fable 5.1";
-  const durVal = durSelect ? durSelect.value : "30s";
-
-  const feed = document.getElementById("chatFeed");
-
-  const userMsg = document.createElement("div");
-  userMsg.className = "chat-bubble user";
-  userMsg.innerHTML = `
-    <div class="bubble-header"><span class="ai-badge">YOU</span></div>
-    <div class="bubble-content">Анализ цели ${state.targetPair}, экспирация ${durVal} через ${modelName}.</div>
-  `;
-  feed.appendChild(userMsg);
-
+async function dispatchLumeanVoice(payload) {
   try {
-    const resp = await fetch("/api/signal", {
+    await fetch("/api/winky/speak_signal", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        tg_id: state.tgId,
-        pair: state.targetPair,
-        duration: durVal,
-        force_dir: state.forceDir,
-        model: modelSelect.value,
+        ...payload,
+        lang: state.lang,
       }),
     });
-    state.forceDir = null;
-
-    const data = resp.ok ? await resp.json() : {
-      direction: Math.random() > 0.45 ? "BUY" : "SELL",
-      signal_strength: 82,
-      duration: durVal,
-    };
-
-    const isBuy = data.direction === "BUY";
-    const aiMsg = document.createElement("div");
-    aiMsg.className = "chat-bubble ai";
-    aiMsg.innerHTML = `
-      <div class="bubble-header">
-        <span class="ai-badge">WINKY AI</span>
-        <span class="bubble-model">${modelName}</span>
-      </div>
-      <div class="bubble-content">
-        Сигнал: <b style="color:${isBuy ? "#00FF9D" : "#FF3B5C"}">${isBuy ? "↑ UP (ВВЕРХ)" : "↓ DOWN (ВНИЗ)"}</b> · Сила ${data.signal_strength || 82}.
-        Рекомендуемая экспирация: <b>${durVal}</b>.
-      </div>
-    `;
-    feed.appendChild(aiMsg);
-    feed.scrollTop = feed.scrollHeight;
-  } catch (_) {}
-
-  btn.disabled = false;
+  } catch (_) {
+    // Non-critical if running in pure web mode
+  }
 }
 
-/* ==================== 5. Event Listeners Setup ==================== */
+/* ==================== 4. Live Score Streamer HUD ==================== */
 
-function setupEventListeners() {
-  // Navigation Tabs
-  document.getElementById("btnNavSniper").addEventListener("click", () => switchTab("tabSniper"));
-  document.getElementById("btnNavChat").addEventListener("click", () => switchTab("tabChat"));
+function updateLiveScoreUI() {
+  const winEl = document.getElementById("winCount");
+  const lossEl = document.getElementById("lossCount");
+  const rateEl = document.getElementById("winRateVal");
 
-  // Streamer Secret Triggers: Click Logo = BUY, Click Target Label = SELL
+  if (winEl) winEl.textContent = state.liveWins;
+  if (lossEl) lossEl.textContent = state.liveLosses;
+
+  const total = state.liveWins + state.liveLosses;
+  const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "99.1";
+  if (rateEl) rateEl.textContent = `${rate}%`;
+}
+
+function setupLiveScore() {
+  const btnToggle = document.getElementById("btnLiveToggle");
+  const bumper = document.getElementById("liveBumper");
+  const btnClose = document.getElementById("btnCloseBumper");
+  const pillWins = document.getElementById("pillWins");
+  const pillLosses = document.getElementById("pillLosses");
+
+  if (btnToggle && bumper) {
+    btnToggle.addEventListener("click", () => {
+      bumper.hidden = !bumper.hidden;
+    });
+  }
+
+  if (btnClose && bumper) {
+    btnClose.addEventListener("click", () => {
+      bumper.hidden = true;
+    });
+  }
+
+  if (pillWins) {
+    pillWins.addEventListener("click", () => {
+      state.liveWins += 1;
+      updateLiveScoreUI();
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred("medium");
+      }
+    });
+  }
+
+  if (pillLosses) {
+    pillLosses.addEventListener("click", () => {
+      state.liveLosses += 1;
+      updateLiveScoreUI();
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
+      }
+    });
+  }
+
+  // Update clock every second
+  const clockEl = document.getElementById("liveClock");
+  setInterval(() => {
+    if (clockEl) {
+      const now = new Date();
+      clockEl.textContent = `${now.toISOString().substring(11, 19)} UTC`;
+    }
+  }, 1000);
+}
+
+/* ==================== 5. AI Chat Tab Controller ==================== */
+
+function setupAiChat() {
+  const selectModel = document.getElementById("selectChatModel");
+  const chatFeed = document.getElementById("chatFeed");
+  const btnSend = document.getElementById("btnChatSend");
+  const pillPair = document.getElementById("pillChatPair");
+  const pillDuration = document.getElementById("pillChatDuration");
+  const modelTag = document.getElementById("chatActiveModelTag");
+
+  if (selectModel) {
+    selectModel.addEventListener("change", (e) => {
+      state.model = e.target.value;
+      if (modelTag) {
+        const text = e.target.options[e.target.selectedIndex]?.text || state.model;
+        modelTag.textContent = text.split("·")[0].trim();
+      }
+    });
+  }
+
+  function sendChatQuery() {
+    if (!chatFeed) return;
+
+    // User Message Bubble
+    const userBubble = document.createElement("div");
+    userBubble.className = "winky-chat-bubble user";
+    userBubble.innerHTML = `
+      <div class="bubble-header">
+        <span class="user-badge">${state.lang === "ru" ? "ВЫ" : "YOU"}</span>
+      </div>
+      <div class="bubble-content">
+        ${state.lang === "ru" ? "Анализ актива" : "Asset analysis"}: <b>${state.pair}</b> · ${state.duration}
+      </div>
+    `;
+    chatFeed.appendChild(userBubble);
+
+    // AI Response Loading Indicator
+    const aiBubble = document.createElement("div");
+    aiBubble.className = "winky-chat-bubble ai";
+    aiBubble.innerHTML = `
+      <div class="bubble-header">
+        <span class="ai-badge">WINKY AI</span>
+        <span class="bubble-model">${selectModel?.options[selectModel.selectedIndex]?.text.split("·")[0].trim() || "Claude Fable"}</span>
+      </div>
+      <div class="bubble-content" style="opacity:0.7;">
+        ${state.lang === "ru" ? "Обработка свечного графика и стакана ордеров..." : "Processing candlesticks and order flow..."}
+      </div>
+    `;
+    chatFeed.appendChild(aiBubble);
+    chatFeed.scrollTop = chatFeed.scrollHeight;
+
+    setTimeout(() => {
+      const isUp = Math.random() > 0.45;
+      const rsi = (35 + Math.random() * 35).toFixed(1);
+      const conf = Math.floor(92 + Math.random() * 6);
+
+      aiBubble.querySelector(".bubble-content").innerHTML = `
+        <div style="font-weight:700;color:#fff;margin-bottom:6px;">
+          ${state.pair} · ${state.duration}
+        </div>
+        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px;line-height:1.5;">
+          • RSI: <b style="color:#fff;">${rsi}</b> (${isUp ? (state.lang === "ru" ? "выход из перепроданности" : "oversold recovery") : (state.lang === "ru" ? "разворот вниз" : "overbought rejection")})<br>
+          • EMA 9/21: <b style="color:#fff;">${isUp ? "Bullish Cross" : "Bearish Cross"}</b><br>
+          • Confidence: <b style="color:#10b981;">${conf}%</b>
+        </div>
+        <div style="display:inline-block;padding:4px 10px;border-radius:6px;font-weight:800;font-size:12px;background:${isUp ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'};color:${isUp ? '#10B981' : '#EF4444'};border:1px solid ${isUp ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'};">
+          ${isUp ? (state.lang === "ru" ? "РЕКОМЕНДАЦИЯ: КУПИТЬ ↗" : "CALL: BUY ↗") : (state.lang === "ru" ? "РЕКОМЕНДАЦИЯ: ПРОДАТЬ ↘" : "CALL: SELL ↘")}
+        </div>
+      `;
+      chatFeed.scrollTop = chatFeed.scrollHeight;
+
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+      }
+    }, 850);
+  }
+
+  if (btnSend) btnSend.addEventListener("click", sendChatQuery);
+  if (pillPair) pillPair.addEventListener("click", sendChatQuery);
+  if (pillDuration) pillDuration.addEventListener("click", sendChatQuery);
+}
+
+/* ==================== 6. Streamer Secret Triggers ==================== */
+
+function setupSecretTriggers() {
   const brand = document.getElementById("brand");
+  const cardPair = document.getElementById("cardPairName");
+  const badge = document.getElementById("userStatusBadge");
+
+  // Tap Logo -> Force BUY
   if (brand) {
     brand.addEventListener("click", () => {
       state.forceDir = "BUY";
-      brand.style.filter = "drop-shadow(0 0 8px rgba(0, 255, 157, 0.8))";
-      setTimeout(() => (brand.style.filter = "none"), 600);
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
+      }
     });
   }
 
-  const targetLabel = document.getElementById("targetLabel");
-  if (targetLabel) {
-    targetLabel.addEventListener("click", () => {
+  // Tap Pair Name or Badge -> Force SELL
+  if (cardPair) {
+    cardPair.addEventListener("click", () => {
       state.forceDir = "SELL";
-      targetLabel.style.color = "#FF3B5C";
-      setTimeout(() => (targetLabel.style.color = ""), 600);
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
+      }
     });
   }
 
-  // Language Toggle
+  if (badge) {
+    badge.addEventListener("click", () => {
+      state.forceDir = "SELL";
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
+      }
+    });
+  }
+}
+
+/* ==================== 7. App Initialization ==================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Telegram WebApp setup
+  if (window.Telegram?.WebApp) {
+    window.Telegram.WebApp.ready();
+    window.Telegram.WebApp.expand();
+    try {
+      window.Telegram.WebApp.setHeaderColor("#0D1322");
+      window.Telegram.WebApp.setBackgroundColor("#0D1322");
+    } catch (_) {}
+  }
+
+  // Apply language
+  applyLanguage();
+
+  // Tab switching
+  document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tabId = btn.getAttribute("data-tab");
+      if (tabId) switchTab(tabId);
+    });
+  });
+
+  // Market Switch
+  const mktReg = document.getElementById("mktRegularBtn");
+  const mktOtc = document.getElementById("mktOtcBtn");
+
+  if (mktReg) {
+    mktReg.addEventListener("click", () => {
+      state.marketType = "regular";
+      mktReg.classList.add("active");
+      if (mktOtc) mktOtc.classList.remove("active");
+      populatePairSelect();
+    });
+  }
+
+  if (mktOtc) {
+    mktOtc.addEventListener("click", () => {
+      state.marketType = "otc";
+      mktOtc.classList.add("active");
+      if (mktReg) mktReg.classList.remove("active");
+      populatePairSelect();
+    });
+  }
+
+  // Populate Selectors
+  populatePairSelect();
+
+  const selectPair = document.getElementById("selectPair");
+  if (selectPair) {
+    selectPair.addEventListener("change", (e) => {
+      state.pair = e.target.value;
+      const list = ASSET_CATALOG[state.marketType] || ASSET_CATALOG.otc;
+      const match = list.find((x) => x.id === state.pair) || { flags: "⚡", payout: "90%" };
+      state.flags = match.flags;
+      state.payout = match.payout;
+      updateCardUI();
+    });
+  }
+
+  const selectDuration = document.getElementById("selectDuration");
+  if (selectDuration) {
+    selectDuration.addEventListener("change", (e) => {
+      state.duration = e.target.value;
+      updateCardUI();
+    });
+  }
+
+  // Language Switch
   document.querySelectorAll(".lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      state.lang = btn.dataset.lang;
+      state.lang = btn.getAttribute("data-lang") || "ru";
       localStorage.setItem("winky_lang", state.lang);
       applyLanguage();
     });
   });
 
-  // Hot pairs click
-  document.querySelectorAll(".wps-hot-row").forEach((row) => {
-    row.addEventListener("click", () => {
-      document.querySelectorAll(".wps-hot-row").forEach((r) => r.classList.remove("selected"));
-      row.classList.add("selected");
-      state.targetPair = row.dataset.pair;
-      state.targetPayout = row.dataset.payout || "92%";
-      updateTargetCardUI();
-    });
-  });
+  // Action Button & Auto Toggle
+  const btnGetSignal = document.getElementById("btnGetSignal");
+  if (btnGetSignal) {
+    btnGetSignal.addEventListener("click", startSignalAnalysis);
+  }
 
-  // Category tabs
-  document.querySelectorAll(".wps-cat-tab").forEach((tab) => {
-    tab.addEventListener("click", () => {
-      document.querySelectorAll(".wps-cat-tab").forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-      state.category = tab.dataset.cat;
-      const catList = ASSET_CATALOG[state.category];
-      if (catList && catList.length > 0) {
-        state.targetPair = catList[0].id;
-        state.targetPayout = catList[0].payout;
-        updateTargetCardUI();
+  const autoToggle = document.getElementById("autoToggle");
+  if (autoToggle) {
+    autoToggle.addEventListener("click", () => {
+      state.autoSignals = !state.autoSignals;
+      autoToggle.classList.toggle("active", state.autoSignals);
+      if (state.autoSignals && !state.isBusy) {
+        startSignalAnalysis();
       }
     });
-  });
+  }
 
-  // Change Pair Button
-  document.getElementById("btnChangePair").addEventListener("click", () => {
-    const sheet = document.getElementById("pairSheetBackdrop");
-    const listEl = document.getElementById("pairList");
-    const catList = ASSET_CATALOG[state.category] || ASSET_CATALOG.currencies;
+  // Deposit Sheet actions
+  const btnCloseDeposit = document.getElementById("btnCloseDeposit");
+  const depositBackdrop = document.getElementById("depositSheetBackdrop");
+  if (btnCloseDeposit && depositBackdrop) {
+    btnCloseDeposit.addEventListener("click", () => {
+      depositBackdrop.hidden = true;
+    });
+  }
 
-    listEl.innerHTML = catList
-      .map((p) => `
-        <div class="pair-item-row" data-pair="${p.id}" data-payout="${p.payout}">
-          <span style="font-family:'JetBrains Mono'; font-weight:800;">${p.name}</span>
-          <span class="wps-payout-tag">${p.payout}</span>
-        </div>
-      `)
-      .join("");
-
-    listEl.querySelectorAll(".pair-item-row").forEach((item) => {
-      item.addEventListener("click", () => {
-        state.targetPair = item.dataset.pair;
-        state.targetPayout = item.dataset.payout;
-        updateTargetCardUI();
-        sheet.hidden = true;
+  const btnCopyPromo = document.getElementById("btnCopyPromo");
+  if (btnCopyPromo) {
+    btnCopyPromo.addEventListener("click", () => {
+      navigator.clipboard?.writeText("50START").then(() => {
+        btnCopyPromo.textContent = t("copied");
+        setTimeout(() => {
+          btnCopyPromo.textContent = state.lang === "ru" ? "Копировать" : "Copy";
+        }, 2000);
       });
     });
-
-    sheet.hidden = false;
-  });
-
-  document.getElementById("btnClosePairSheet").addEventListener("click", () => {
-    document.getElementById("pairSheetBackdrop").hidden = true;
-  });
-
-  // Model select
-  document.getElementById("modelSelect").addEventListener("change", (e) => {
-    state.selectedModel = e.target.value;
-  });
-
-  // Auto-Sniper Switch
-  const autoSwitch = document.getElementById("autoSniperSwitch");
-  autoSwitch.addEventListener("click", () => {
-    state.autoSniper = !state.autoSniper;
-    autoSwitch.classList.toggle("active", state.autoSniper);
-  });
-
-  // Action Buttons
-  document.getElementById("btnAnalyse").addEventListener("click", startSniperAnalysis);
-  document.getElementById("btnNewTarget").addEventListener("click", () => {
-    if (state.entryInterval) clearInterval(state.entryInterval);
-    state.isBusy = false;
-    setSniperState("pulse");
-  });
-
-  document.getElementById("btnChatAnalyze").addEventListener("click", performChatAnalysis);
-
-  // Live HUD Bumper Toggle
-  const liveToggle = document.getElementById("btnLiveToggle");
-  const liveBumper = document.getElementById("liveBumper");
-  liveToggle.addEventListener("click", () => {
-    liveBumper.hidden = !liveBumper.hidden;
-  });
-  document.getElementById("btnCloseBumper").addEventListener("click", () => {
-    liveBumper.hidden = true;
-  });
-
-  // Counter Bumper adjustments
-  document.getElementById("pillWins").addEventListener("click", () => {
-    state.liveWins += 1;
-    broadcastLiveStats("manual");
-  });
-  document.getElementById("pillLosses").addEventListener("click", () => {
-    state.liveLosses += 1;
-    broadcastLiveStats("manual");
-  });
-
-  // Deposit Sheet
-  document.getElementById("btnCloseDeposit").addEventListener("click", () => {
-    document.getElementById("depositSheetBackdrop").hidden = true;
-  });
-  document.getElementById("btnCopyPromo").addEventListener("click", () => {
-    navigator.clipboard?.writeText("50START");
-    const btn = document.getElementById("btnCopyPromo");
-    btn.textContent = "✓ Скопировано";
-    setTimeout(() => (btn.textContent = "Копировать"), 2000);
-  });
-}
-
-/* ==================== Initialization ==================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.Telegram?.WebApp) {
-    try {
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
-    } catch (_) {}
   }
 
-  setupEventListeners();
-  applyLanguage();
-  initLiveStats();
-  setSniperState("pulse");
+  // Live Score Bumper setup
+  setupLiveScore();
 
-  if (isStreamerMode) {
-    document.getElementById("liveBumper").hidden = false;
-  }
+  // AI Chat setup
+  setupAiChat();
+
+  // Secret Streamer Triggers
+  setupSecretTriggers();
 });

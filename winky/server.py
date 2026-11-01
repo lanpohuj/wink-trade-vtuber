@@ -142,6 +142,25 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             })
             return
 
+        if clean == "/api/winky/launch_chrome":
+            cb = _winky_sync_callbacks.get("launch_chrome")
+            res = {"ok": True, "message": "Кабинет Pocket Option открыт в Google Chrome!"}
+            if cb:
+                try:
+                    r = cb()
+                    if isinstance(r, dict):
+                        res = r
+                except Exception as e:
+                    logger.warning("Ошибка callback launch_chrome: %s", e)
+            else:
+                try:
+                    import subprocess
+                    subprocess.Popen(["open", "-a", "Google Chrome", "https://po.financial/ru/cabinet/demo-quick-high-low/"])
+                except Exception as e:
+                    logger.warning("Ошибка subprocess open Chrome: %s", e)
+            self._send_json(res)
+            return
+
         if clean == "/api/winky/speak_signal":
             cb = _winky_sync_callbacks.get("speak_signal")
             if cb:

@@ -1,15 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Winky Neural Vision HUD — Pocket Option",
-  "version": "2.1.0",
-  "description": "Tactical In-DOM Neural Vision HUD, 3-Vector Matrix analysis, chart laser scan, and live score counter for Pocket Option.",
+  "name": "Winky AI — Pocket Option Trading Bot",
+  "version": "2.2.0",
+  "description": "In-DOM Classic Trading Bot (Signals & AI Chat), live score HUD, and LumeanTTS voice for Pocket Option.",
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   "host_permissions": [
-    "<all_urls>"
+    "<all_urls>",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -25,6 +29,6 @@
     }
   ],
   "action": {
-    "default_title": "Winky Neural Vision HUD"
+    "default_title": "Winky AI Trading Bot"
   }
 }

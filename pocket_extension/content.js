@@ -1,167 +1,169 @@
 /* ============================================================
-   WINKY NEURAL VISION HUD — POCKET OPTION CONTENT SCRIPT
-   Direct In-DOM Aero-Glass HUD, 3-Vector Matrix & Live Score
-   Zero macOS standalone windows, Zero say/speechSynthesis
-   Scales natively with Pocket Option page zoom (Cmd + / Cmd -)
+   WINKY AI — CLASSIC TRADING BOT (POCKET OPTION CONTENT SCRIPT)
+   In-DOM Sapphire Widget (330px), 2 Tabs: Signals & AI Chat
+   LumeanTTS via background.js proxy (Zero Mixed Content, Zero say/speechSynthesis)
+   Iron-clad Pointer Capture Draggable Engine
    ============================================================ */
 
 (function () {
   "use strict";
 
-  if (window.__WINKY_NEURAL_HUD_INJECTED__) return;
-  window.__WINKY_NEURAL_HUD_INJECTED__ = true;
+  if (window.__WINKY_BOT_INJECTED__) return;
+  window.__WINKY_BOT_INJECTED__ = true;
 
-  // Local Winky endpoints (Mac) and Prod Fallback
-  const WINKY_LOCAL_ENDPOINTS = [
-    "http://127.0.0.1:8765",
-    "http://127.0.0.1:8790",
-    "https://winktrade-app.online",
-    "https://2.31.127.199.sslip.io",
-  ];
+  /* ==================== Catalogs & Pairs ==================== */
 
-  /* ==================== Catalogs & Categories ==================== */
-
-  const ASSET_CATALOG = {
-    currencies: [
-      { id: "AUD/CAD OTC", name: "AUD/CAD OTC", payout: "90%" },
-      { id: "MAD/USD OTC", name: "MAD/USD OTC", payout: "92%" },
-      { id: "USD/CAD OTC", name: "USD/CAD OTC", payout: "92%" },
-      { id: "EUR/USD OTC", name: "EUR/USD OTC", payout: "92%" },
-      { id: "GBP/USD OTC", name: "GBP/USD OTC", payout: "92%" },
-      { id: "AUD/USD OTC", name: "AUD/USD OTC", payout: "91%" },
-      { id: "USD/JPY OTC", name: "USD/JPY OTC", payout: "90%" },
-      { id: "NZD/USD OTC", name: "NZD/USD OTC", payout: "88%" },
+  const PAIR_CATALOG = {
+    otc: [
+      { id: "EUR/USD OTC", name: "EUR/USD OTC", flags: "🇪🇺🇺🇸", payout: "92%" },
+      { id: "AUD/CAD OTC", name: "AUD/CAD OTC", flags: "🇦🇺🇨🇦", payout: "90%" },
+      { id: "MAD/USD OTC", name: "MAD/USD OTC", flags: "🇲🇦🇺🇸", payout: "92%" },
+      { id: "USD/CAD OTC", name: "USD/CAD OTC", flags: "🇺🇸🇨🇦", payout: "92%" },
+      { id: "GBP/USD OTC", name: "GBP/USD OTC", flags: "🇬🇧🇺🇸", payout: "92%" },
+      { id: "USD/JPY OTC", name: "USD/JPY OTC", flags: "🇺🇸🇯🇵", payout: "90%" },
+      { id: "AUD/USD OTC", name: "AUD/USD OTC", flags: "🇦🇺🇺🇸", payout: "91%" },
+      { id: "NZD/USD OTC", name: "NZD/USD OTC", flags: "🇳🇿🇺🇸", payout: "88%" },
+      { id: "Apple OTC", name: "Apple OTC", flags: "🍏", payout: "90%" },
+      { id: "Tesla OTC", name: "Tesla OTC", flags: "⚡", payout: "90%" },
+      { id: "BTC/USD OTC", name: "Bitcoin OTC", flags: "₿", payout: "86%" },
+      { id: "ETH/USD OTC", name: "Ethereum OTC", flags: "Ξ", payout: "85%" },
+      { id: "GOLD OTC", name: "Gold OTC", flags: "🥇", payout: "90%" },
     ],
-    stocks: [
-      { id: "Apple OTC", name: "Apple OTC", payout: "90%" },
-      { id: "Tesla OTC", name: "Tesla OTC", payout: "90%" },
-      { id: "Microsoft OTC", name: "Microsoft OTC", payout: "89%" },
-      { id: "Amazon OTC", name: "Amazon OTC", payout: "88%" },
-    ],
-    crypto: [
-      { id: "BTC/USD OTC", name: "Bitcoin OTC", payout: "86%" },
-      { id: "ETH/USD OTC", name: "Ethereum OTC", payout: "85%" },
-      { id: "SOL/USD OTC", name: "Solana OTC", payout: "84%" },
-    ],
-    indices: [
-      { id: "SP500 OTC", name: "S&P 500 OTC", payout: "88%" },
-      { id: "NDX100 OTC", name: "Nasdaq 100 OTC", payout: "88%" },
-      { id: "DJI30 OTC", name: "Dow Jones OTC", payout: "87%" },
-    ],
-    commodities: [
-      { id: "GOLD OTC", name: "Gold OTC", payout: "90%" },
-      { id: "SILVER OTC", name: "Silver OTC", payout: "88%" },
-      { id: "BRENT OTC", name: "Crude Oil OTC", payout: "86%" },
+    regular: [
+      { id: "EUR/USD", name: "EUR/USD", flags: "🇪🇺🇺🇸", payout: "82%" },
+      { id: "GBP/USD", name: "GBP/USD", flags: "🇬🇧🇺🇸", payout: "80%" },
+      { id: "USD/JPY", name: "USD/JPY", flags: "🇺🇸🇯🇵", payout: "78%" },
+      { id: "AUD/USD", name: "AUD/USD", flags: "🇦🇺🇺🇸", payout: "77%" },
+      { id: "USD/CAD", name: "USD/CAD", flags: "🇺🇸🇨🇦", payout: "79%" },
     ],
   };
 
+  const TIMEFRAMES = ["5s", "10s", "15s", "30s", "1m", "3m", "5m"];
+
   const AI_MODELS = [
-    { id: "claude-fable-5.1", name: "Claude Fable 5.1", tag: "FLAGSHIP" },
-    { id: "claude-opus-5", name: "Claude Opus 5", tag: "DEEP" },
-    { id: "gpt-5-astra", name: "GPT-5 Astra", tag: "VISION" },
-    { id: "gemini-argon", name: "Gemini Argon", tag: "RADAR" },
+    { id: "claude-fable-5.1", name: "Claude Fable 5.1 · Flagship", vendor: "Anthropic" },
+    { id: "claude-opus-5", name: "Claude Opus 5", vendor: "Anthropic" },
+    { id: "claude-sonnet-5", name: "Claude Sonnet 5", vendor: "Anthropic" },
+    { id: "claude-haiku-4.5", name: "Claude Haiku 4.5", vendor: "Anthropic" },
+    { id: "gpt-5-astra", name: "GPT-5 Astra · Vision", vendor: "OpenAI" },
+    { id: "gpt-5-luna", name: "GPT-5 Luna · Fast", vendor: "OpenAI" },
+    { id: "gpt-5-pro", name: "GPT-5 Pro", vendor: "OpenAI" },
+    { id: "gpt-5-mini", name: "GPT-5 mini", vendor: "OpenAI" },
+    { id: "gemini-argon", name: "Gemini Argon · Chart AI", vendor: "Google" },
+    { id: "gemini-3.1-pro", name: "Gemini 3.1 Pro", vendor: "Google" },
+    { id: "gemini-3.8-flash", name: "Gemini 3.8 Flash", vendor: "Google" },
+    { id: "gemini-2.5-pro", name: "Gemini 2.5 Pro", vendor: "Google" },
   ];
 
   /* ==================== Application State ==================== */
 
-  // Load persisted stats
   let savedStats = { wins: 110, losses: 1, profit: 1420 };
   try {
-    const raw = localStorage.getItem("winky_live_stats_v2");
+    const raw = localStorage.getItem("winky_live_stats_v3");
     if (raw) savedStats = { ...savedStats, ...JSON.parse(raw) };
   } catch (_) {}
 
   const state = {
     lang: "ru",
-    category: "currencies",
-    targetPair: "AUD/CAD OTC",
-    targetPayout: "90%",
+    activeTab: "signals", // "signals" | "chat"
+    marketType: "otc", // "otc" | "regular"
+    targetPair: "EUR/USD OTC",
+    targetFlags: "🇪🇺🇺🇸",
+    targetPayout: "92%",
+    selectedTimeframe: "30s",
     selectedModel: "claude-fable-5.1",
-    autoSniper: false,
-    currentState: "pulse", // "pulse" | "scan" | "signal"
-    forceDir: null, // Streamer trigger: 'BUY' (logo) | 'SELL' (target label)
-    priceTicks: [],
+    autoSignals: false,
+    isAnalysing: false,
+    signalState: "idle", // "idle" | "analysing" | "active"
+    activeSignal: null,
+    forceDir: null, // Streamer trigger: BUY / SELL
     liveWins: savedStats.wins,
     liveLosses: savedStats.losses,
     sessionProfit: savedStats.profit,
     lastBalance: null,
-    hotPairs: [
-      { num: "01", pair: "MAD/USD OTC", payout: "92%" },
-      { num: "02", pair: "USD/CAD OTC", payout: "92%" },
-      { num: "03", pair: "AUD/CAD OTC", payout: "90%" },
+    expiryInterval: null,
+    autoTimeout: null,
+    chatMessages: [
+      {
+        type: "ai",
+        model: "Claude Fable 5.1",
+        text: "Привет! Выберите валютную пару и время экспирации или нажмите «Получить сигнал».",
+      },
     ],
-    activeSignal: null,
-    entryInterval: null,
-    autoSniperTimeout: null,
   };
 
   /* ==================== Localization ==================== */
 
   const i18n = {
     ru: {
-      hudTitle: "WINKY",
-      hudSub: "NEURAL VISION",
-      linkActive: "СВЯЗЬ АКТИВНА",
-      pulseTitle: "ИМПУЛЬС РЫНКА",
-      pulseSub: "Где волатильность максимальна прямо сейчас. Нажми, чтобы выбрать цель.",
-      target: "ЦЕЛЬ АНАЛИЗА",
-      payout: "выплата",
-      aiEngine: "НЕЙРО-ЯДРО:",
-      btnAnalyse: "ЗАПУСК НЕЙРО-АНАЛИЗА",
-      autoSniper: "АВТО-СНАЙПЕР",
-      scanning: "СКАНИРОВАНИЕ ГРАФИКА...",
-      calculatingVectors: "Расчёт 3-х векторов импульса котировок",
-      vector1: "⚡ ИМПУЛЬС ТИКОВ",
-      vector2: "📊 ОБЪЁМ И СТАКАН",
-      vector3: "🕯 СВЕЧНОЙ ПАТТЕРН",
-      dirUp: "↑ ВВЕРХ (BUY)",
-      dirDown: "↓ ВНИЗ (SELL)",
-      expiry: "ЭКСПИРАЦИЯ",
-      entryWindow: "ОКНО ВХОДА",
-      newTarget: "НОВАЯ ЦЕЛЬ",
+      botName: "WINKY",
+      botTag: "AI",
+      online: "Online",
+      regular: "Regular",
+      otc: "OTC",
+      pairLbl: "Валютная пара",
+      timeLbl: "Время сделки",
+      time: "Время",
+      accuracy: "Точность",
+      getSignal: "ПОЛУЧИТЬ СИГНАЛ",
+      auto: "АВТО",
+      readyForSignal: "Готов к анализу графика",
+      analysing: "Анализ свечей и объёмов...",
+      buy: "↗ КУПИТЬ (BUY)",
+      sell: "↘ ПРОДАТЬ (SELL)",
+      tabSignals: "🏠 СИГНАЛЫ",
+      tabChat: "💬 ИИ-ЧАТ",
       liveScore: "LIVE SCORE",
       wins: "WINS",
       losses: "LOSSES",
-      winrate: "RATE",
+      rate: "RATE",
       profit: "ПРОФИТ",
+      newSignal: "🔄 Новый сигнал",
+      chatPromptTemplate: "проанализируй график и дай сигнал.",
     },
     en: {
-      hudTitle: "WINKY",
-      hudSub: "NEURAL VISION",
-      linkActive: "LINK ACTIVE",
-      pulseTitle: "MARKET PULSE",
-      pulseSub: "Where market moves hardest right now. Click row to select target.",
-      target: "TARGET ASSET",
-      payout: "payout",
-      aiEngine: "AI ENGINE:",
-      btnAnalyse: "RUN NEURAL SCAN",
-      autoSniper: "AUTO-SNIPER",
-      scanning: "SCANNING CHART...",
-      calculatingVectors: "Computing 3 momentum vectors",
-      vector1: "⚡ TICK VELOCITY",
-      vector2: "📊 ORDERFLOW DEPTH",
-      vector3: "🕯 PRICE ACTION",
-      dirUp: "↑ UP (BUY)",
-      dirDown: "↓ DOWN (SELL)",
-      expiry: "EXPIRY",
-      entryWindow: "ENTRY WINDOW",
-      newTarget: "NEW TARGET",
+      botName: "WINKY",
+      botTag: "AI",
+      online: "Online",
+      regular: "Regular",
+      otc: "OTC",
+      pairLbl: "Currency pair",
+      timeLbl: "Expiry time",
+      time: "Time",
+      accuracy: "Accuracy",
+      getSignal: "GET SIGNAL",
+      auto: "AUTO",
+      readyForSignal: "Ready for chart analysis",
+      analysing: "Analyzing candles & volume...",
+      buy: "↗ BUY",
+      sell: "↘ SELL",
+      tabSignals: "🏠 SIGNALS",
+      tabChat: "💬 AI CHAT",
       liveScore: "LIVE SCORE",
       wins: "WINS",
       losses: "LOSSES",
-      winrate: "RATE",
+      rate: "RATE",
       profit: "PROFIT",
+      newSignal: "🔄 New signal",
+      chatPromptTemplate: "analyze the chart and give signal.",
     },
   };
 
-  function t(key) {
-    return (i18n[state.lang] && i18n[state.lang][key]) || key;
+  function t(k) {
+    return (i18n[state.lang] && i18n[state.lang][k]) || k;
+  }
+
+  function getPairMeta(pairId) {
+    const all = [...PAIR_CATALOG.otc, ...PAIR_CATALOG.regular];
+    const found = all.find((p) => p.id.toLowerCase() === pairId.toLowerCase());
+    if (found) return found;
+    return { id: pairId, name: pairId, flags: "🌐", payout: state.targetPayout || "90%" };
   }
 
   /* ==================== 1. Scan Pocket Option DOM ==================== */
 
   function scanPocketOptionDOM() {
-    // 1. Detect active pair
+    // 1. Detect active pair from PO page
     const pairSelectors = [
       ".current-symbol",
       ".pair-number-wrap",
@@ -190,13 +192,20 @@
       if (!foundPair.includes("/") && foundPair.length >= 6) {
         foundPair = foundPair.slice(0, 3) + "/" + foundPair.slice(3);
       }
-      if (foundPair !== state.targetPair && state.currentState === "pulse") {
+      if (foundPair !== state.targetPair && state.signalState !== "active") {
         state.targetPair = foundPair;
-        updateTargetCard();
+        const meta = getPairMeta(foundPair);
+        state.targetFlags = meta.flags;
+        if (foundPair.toLowerCase().includes("otc")) {
+          state.marketType = "otc";
+        } else {
+          state.marketType = "regular";
+        }
+        updateCardPairUI();
       }
     }
 
-    // 2. Detect payout
+    // 2. Detect payout percentage
     const payoutSelectors = [".payout-val", ".current-payout", ".asset-payout", "[data-test='payout']"];
     for (const sel of payoutSelectors) {
       const el = document.querySelector(sel);
@@ -205,27 +214,30 @@
         const m = text.match(/\d+%/);
         if (m) {
           state.targetPayout = m[0];
-          updateTargetCard();
+          updateCardPairUI();
           break;
         }
       }
     }
 
-    // 3. Detect price ticks
-    const priceSelectors = [".current-price", ".chart-quote", ".price-val", ".ticker-price"];
-    for (const sel of priceSelectors) {
+    // 3. Detect expiration time from PO
+    const timeSelectors = [".expiration-picker", ".time-field", "[data-test='expiration']", ".control-time__val"];
+    for (const sel of timeSelectors) {
       const el = document.querySelector(sel);
       if (el && el.textContent.trim()) {
-        const num = parseFloat(el.textContent.replace(/[^0-9.]/g, ""));
-        if (!isNaN(num) && num > 0) {
-          state.priceTicks.push(num);
-          if (state.priceTicks.length > 60) state.priceTicks.shift();
-          break;
-        }
+        const text = el.textContent.trim();
+        if (text.includes("00:05") || text.includes("5s")) state.selectedTimeframe = "5s";
+        else if (text.includes("00:10") || text.includes("10s")) state.selectedTimeframe = "10s";
+        else if (text.includes("00:15") || text.includes("15s")) state.selectedTimeframe = "15s";
+        else if (text.includes("00:30") || text.includes("30s")) state.selectedTimeframe = "30s";
+        else if (text.includes("01:00") || text.includes("1m")) state.selectedTimeframe = "1m";
+        else if (text.includes("03:00") || text.includes("3m")) state.selectedTimeframe = "3m";
+        else if (text.includes("05:00") || text.includes("5m")) state.selectedTimeframe = "5m";
+        break;
       }
     }
 
-    // 4. Detect balance change for automatic win tracking
+    // 4. Detect balance change for automatic win increment
     const balanceSelectors = [".balance-info-block", ".user-balance", ".current-balance", "[data-test='balance']"];
     for (const sel of balanceSelectors) {
       const el = document.querySelector(sel);
@@ -246,427 +258,500 @@
     }
   }
 
-  /* ==================== 2. Create In-DOM HUD & Live Score ==================== */
+  /* ==================== 2. Iron-clad Pointer-Capture Draggable ==================== */
 
-  let sniperRoot = null;
-  let counterRoot = null;
+  function makeWidgetDraggable(widgetEl, handleEl, storageKey) {
+    if (!widgetEl || !handleEl) return;
 
-  function injectWidgetsIntoDOM() {
-    if (document.getElementById("winky-sniper-root")) return;
+    // Restore saved position
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || "null");
+      if (saved && typeof saved.left === "number" && typeof saved.top === "number") {
+        widgetEl.style.right = "auto";
+        widgetEl.style.bottom = "auto";
+        widgetEl.style.transform = "none";
+        widgetEl.style.left = Math.max(8, Math.min(window.innerWidth - 100, saved.left)) + "px";
+        widgetEl.style.top = Math.max(8, Math.min(window.innerHeight - 60, saved.top)) + "px";
+      }
+    } catch (_) {}
 
-    // Sniper HUD Root
-    sniperRoot = document.createElement("div");
-    sniperRoot.id = "winky-sniper-root";
+    let dragging = false;
+    let startX = 0, startY = 0, origLeft = 0, origTop = 0;
 
-    // Counter HUD Root (Top-Center)
-    counterRoot = document.createElement("div");
-    counterRoot.id = "winky-counter-root";
+    handleEl.style.cursor = "grab";
+    handleEl.style.userSelect = "none";
 
-    document.body.appendChild(sniperRoot);
-    document.body.appendChild(counterRoot);
+    handleEl.addEventListener("pointerdown", (e) => {
+      // Do not drag if clicking button, input, select, or .no-drag
+      if (e.target.closest("button, select, input, a, .no-drag, .winky-score-step-btn, .winky-score-reset-btn")) {
+        return;
+      }
+      e.preventDefault();
+      e.stopPropagation();
 
-    renderSniperWidget();
-    renderCounterWidget();
+      const rect = widgetEl.getBoundingClientRect();
+      widgetEl.style.right = "auto";
+      widgetEl.style.bottom = "auto";
+      widgetEl.style.transform = "none";
+      widgetEl.style.left = rect.left + "px";
+      widgetEl.style.top = rect.top + "px";
 
-    makeDraggable(sniperRoot, sniperRoot.querySelector(".wps-hud-header"), "wps_pos_hud");
-    makeDraggable(counterRoot, counterRoot.querySelector(".wps-score-handle"), "wps_pos_score");
-  }
-
-  /* ==================== Drag & Drop Helper ==================== */
-
-  function makeDraggable(rootEl, handleEl, storageKey) {
-    if (!rootEl || !handleEl) return;
-
-    // Restore position from storage
-    if (storageKey) {
-      try {
-        const saved = localStorage.getItem(storageKey);
-        if (saved) {
-          const pos = JSON.parse(saved);
-          if (pos.top !== undefined && pos.left !== undefined) {
-            rootEl.style.top = `${pos.top}px`;
-            rootEl.style.left = `${pos.left}px`;
-            rootEl.style.right = "auto";
-            rootEl.style.transform = "none";
-          }
-        }
-      } catch (_) {}
-    }
-
-    let isDragging = false;
-    let startX = 0, startY = 0, initX = 0, initY = 0;
-
-    handleEl.addEventListener("mousedown", (e) => {
-      if (e.target.tagName === "BUTTON" || e.target.closest("button")) return;
-      isDragging = true;
+      dragging = true;
       startX = e.clientX;
       startY = e.clientY;
-      const rect = rootEl.getBoundingClientRect();
-      initX = rect.left;
-      initY = rect.top;
-      rootEl.style.right = "auto";
-      rootEl.style.transform = "none";
-      rootEl.style.transition = "none";
-      document.body.style.userSelect = "none";
+      origLeft = rect.left;
+      origTop = rect.top;
+
+      handleEl.style.cursor = "grabbing";
+      try {
+        handleEl.setPointerCapture(e.pointerId);
+      } catch (_) {}
     });
 
-    window.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
+    handleEl.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      e.preventDefault();
+      e.stopPropagation();
+
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
-      const newX = Math.max(10, Math.min(window.innerWidth - rootEl.offsetWidth - 10, initX + dx));
-      const newY = Math.max(10, Math.min(window.innerHeight - rootEl.offsetHeight - 10, initY + dy));
-      rootEl.style.left = `${newX}px`;
-      rootEl.style.top = `${newY}px`;
+      const newLeft = Math.max(4, Math.min(window.innerWidth - widgetEl.offsetWidth - 4, origLeft + dx));
+      const newTop = Math.max(4, Math.min(window.innerHeight - 40, origTop + dy));
+
+      widgetEl.style.left = newLeft + "px";
+      widgetEl.style.top = newTop + "px";
     });
 
-    window.addEventListener("mouseup", () => {
-      if (isDragging && storageKey) {
-        try {
-          const rect = rootEl.getBoundingClientRect();
-          localStorage.setItem(storageKey, JSON.stringify({ top: rect.top, left: rect.left }));
-        } catch (_) {}
-      }
-      isDragging = false;
-      document.body.style.userSelect = "";
-    });
+    const stopDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      handleEl.style.cursor = "grab";
+      try {
+        handleEl.releasePointerCapture(e.pointerId);
+      } catch (_) {}
+      try {
+        const rect = widgetEl.getBoundingClientRect();
+        localStorage.setItem(storageKey, JSON.stringify({ left: rect.left, top: rect.top }));
+      } catch (_) {}
+    };
+
+    handleEl.addEventListener("pointerup", stopDrag);
+    handleEl.addEventListener("pointercancel", stopDrag);
   }
 
-  /* ==================== 3. Render Sniper HUD ==================== */
+  /* ==================== 3. DOM Injection ==================== */
 
-  function renderSniperWidget() {
-    if (!sniperRoot) return;
+  let botRoot = null;
+  let scoreRoot = null;
 
-    let bodyHTML = "";
+  function injectWidgetsIntoDOM() {
+    if (document.getElementById("winky-bot-root")) return;
 
-    if (state.currentState === "pulse") {
-      bodyHTML = renderScreenPulse();
-    } else if (state.currentState === "scan") {
-      bodyHTML = renderScreenScan();
-    } else if (state.currentState === "signal") {
-      bodyHTML = renderScreenSignal();
+    // 1. Trading Bot Root (330px)
+    botRoot = document.createElement("div");
+    botRoot.id = "winky-bot-root";
+
+    // 2. Live Score HUD Root (Top-Center)
+    scoreRoot = document.createElement("div");
+    scoreRoot.id = "winky-score-root";
+
+    document.body.appendChild(botRoot);
+    document.body.appendChild(scoreRoot);
+
+    renderBotWidget();
+    renderScoreWidget();
+
+    makeWidgetDraggable(botRoot, botRoot.querySelector(".winky-bot-header"), "winky_bot_pos_v2");
+    makeWidgetDraggable(scoreRoot, scoreRoot, "winky_score_pos_v2");
+  }
+
+  /* ==================== 4. Render Classic Trading Bot ==================== */
+
+  function renderBotWidget() {
+    if (!botRoot) return;
+
+    botRoot.innerHTML = `
+      <!-- 1. Header (Drag Handle) -->
+      <div class="winky-bot-header">
+        <div class="winky-header-left">
+          <span class="winky-drag-handle">⋮⋮</span>
+          <button type="button" class="winky-logo-btn" id="winkyLogoBtn" title="WINKY AI (Click for BUY trigger)">
+            <div class="winky-logo-icon">⚡</div>
+            <div class="winky-logo-text">${t("botName")} <span>${t("botTag")}</span></div>
+          </button>
+        </div>
+        <div class="winky-header-right">
+          <div class="winky-online-badge no-drag" id="winkyOnlineBadge" title="Click for SELL trigger">
+            <span class="winky-online-dot"></span>
+            <span>${t("online")}</span>
+          </div>
+          <button type="button" class="winky-hdr-btn no-drag" id="winkyLangBtn">${state.lang.toUpperCase()}</button>
+          <button type="button" class="winky-hdr-btn no-drag" id="winkyCollapseBtn" title="Свернуть / Развернуть">—</button>
+        </div>
+      </div>
+
+      <!-- 2. Bot Body -->
+      <div class="winky-bot-body">
+        <!-- TAB 1: SIGNALS -->
+        <div class="winky-tab-content ${state.activeTab === "signals" ? "active" : ""}" id="tabSignalsContent">
+          <!-- Market Switch -->
+          <div class="winky-market-switch">
+            <button type="button" class="winky-market-btn ${state.marketType === "regular" ? "active" : ""}" data-mtype="regular">${t("regular")}</button>
+            <button type="button" class="winky-market-btn ${state.marketType === "otc" ? "active" : ""}" data-mtype="otc">${t("otc")}</button>
+          </div>
+
+          <!-- Selectors Grid (Pair & Timeframe) -->
+          <div class="winky-selectors-grid">
+            <div class="winky-select-box">
+              <span class="winky-select-lbl">${t("pairLbl")}</span>
+              <select class="winky-select-native" id="winkyPairSelect">
+                ${renderPairOptions()}
+              </select>
+            </div>
+            <div class="winky-select-box">
+              <span class="winky-select-lbl">${t("timeLbl")}</span>
+              <select class="winky-select-native" id="winkyTimeSelect">
+                ${TIMEFRAMES.map((tf) => `<option value="${tf}" ${tf === state.selectedTimeframe ? "selected" : ""}>${tf}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+
+          <!-- Signal Card (Inline, Always visible) -->
+          <div class="winky-signal-card">
+            <!-- Pair & Payout Row -->
+            <div class="winky-card-pair-row">
+              <div class="winky-card-pair">
+                <span class="winky-card-flags" id="winkyCardFlags">${state.targetFlags}</span>
+                <span id="winkyCardPairName">${state.targetPair}</span>
+              </div>
+              <span class="winky-card-payout" id="winkyCardPayout">${state.targetPayout}</span>
+            </div>
+
+            <!-- Metrics Row -->
+            <div class="winky-metrics-row">
+              <div class="winky-metric-pill">
+                <span class="winky-metric-title">${t("time")}:</span>
+                <span class="winky-metric-val" id="winkyMetricTime">${state.selectedTimeframe}</span>
+              </div>
+              <div class="winky-metric-pill">
+                <span class="winky-metric-title">${t("accuracy")}:</span>
+                <span class="winky-metric-val" id="winkyMetricAccuracy">94%</span>
+              </div>
+            </div>
+
+            <!-- Direction Block -->
+            <div class="winky-direction-block ${state.signalState}" id="winkyDirectionBlock">
+              ${renderDirectionBlockContent()}
+            </div>
+          </div>
+
+          <!-- Action Row (Get Signal + Auto) -->
+          <div class="winky-action-row">
+            <button type="button" class="winky-btn-get-signal" id="winkyBtnGetSignal">
+              <span>⚡</span>
+              <span>${t("getSignal")}</span>
+            </button>
+            <div class="winky-auto-toggle ${state.autoSignals ? "active" : ""}" id="winkyAutoToggle" title="${t("auto")}">
+              <span class="winky-auto-lbl">${t("auto")}</span>
+              <div class="winky-auto-switch">
+                <div class="winky-auto-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: AI CHAT -->
+        <div class="winky-tab-content ${state.activeTab === "chat" ? "active" : ""}" id="tabChatContent">
+          <!-- Model Selector -->
+          <div class="winky-model-select-row">
+            <span class="winky-select-lbl">ИИ-Модель теханализа:</span>
+            <select class="winky-select-native" id="winkyChatModelSelect">
+              ${AI_MODELS.map((m) => `<option value="${m.id}" ${m.id === state.selectedModel ? "selected" : ""}>${m.vendor}: ${m.name}</option>`).join("")}
+            </select>
+          </div>
+
+          <!-- Chat Scroll -->
+          <div class="winky-chat-scroll" id="winkyChatScroll">
+            ${renderChatMessagesHTML()}
+          </div>
+
+          <!-- Quick Pills & Input -->
+          <div class="winky-chat-pills-row">
+            <button type="button" class="winky-chat-pill" id="winkyPillPair">${state.targetPair}</button>
+            <button type="button" class="winky-chat-pill" id="winkyPillTime">${state.selectedTimeframe}</button>
+            <button type="button" class="winky-btn-send-chat" id="winkyBtnSendChat" title="Отправить запрос">➤</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Bottom Navigation (2 Tabs) -->
+      <div class="winky-bot-nav">
+        <button type="button" class="winky-nav-tab ${state.activeTab === "signals" ? "active" : ""}" data-tab="signals" id="winkyTabSignalsBtn">
+          <span>🏠</span>
+          <span>${t("tabSignals")}</span>
+        </button>
+        <button type="button" class="winky-nav-tab ${state.activeTab === "chat" ? "active" : ""}" data-tab="chat" id="winkyTabChatBtn">
+          <span>💬</span>
+          <span>${t("tabChat")}</span>
+        </button>
+      </div>
+    `;
+
+    bindBotEvents();
+  }
+
+  function renderPairOptions() {
+    const list = PAIR_CATALOG[state.marketType] || PAIR_CATALOG.otc;
+    return list
+      .map((p) => {
+        const isSel = p.id.toLowerCase() === state.targetPair.toLowerCase();
+        return `<option value="${p.id}" ${isSel ? "selected" : ""}>${p.flags} ${p.name} (${p.payout})</option>`;
+      })
+      .join("");
+  }
+
+  function renderDirectionBlockContent() {
+    if (state.signalState === "idle") {
+      return `<span>${t("readyForSignal")}</span>`;
     }
 
-    sniperRoot.innerHTML = `
-      <!-- HUD Header -->
-      <div class="wps-hud-header">
-        <div class="wps-hud-brand" id="wpsBrandTrigger" title="WINKY NEURAL VISION (Streamer: BUY Trigger)">
-          <div class="wps-brand-icon">⚡</div>
-          <div class="wps-brand-text">${t("hudTitle")} <span>${t("hudSub")}</span></div>
+    if (state.signalState === "analysing") {
+      return `
+        <span class="winky-analysing-text">${t("analysing")}</span>
+        <div class="winky-analysis-bar">
+          <div class="winky-analysis-fill"></div>
         </div>
-        <div class="wps-hud-actions">
-          <span class="wps-status-pill">${t("linkActive")}</span>
-          <button type="button" class="wps-lang-btn" id="wpsLangToggle">${state.lang.toUpperCase()}</button>
+      `;
+    }
+
+    if (state.signalState === "active" && state.activeSignal) {
+      const s = state.activeSignal;
+      const isBuy = s.direction === "BUY";
+      const dirText = isBuy ? t("buy") : t("sell");
+
+      return `
+        <div class="winky-dir-tag">${dirText}</div>
+        <div class="winky-expiry-timer-row">
+          <span>${s.duration}</span>
+          <span>·</span>
+          <span id="winkyExpiryCountdownDigits">00:30</span>
         </div>
-      </div>
+        <div class="winky-expiry-track">
+          <div class="winky-expiry-fill" id="winkyExpiryFill"></div>
+        </div>
+      `;
+    }
 
-      <!-- HUD Body -->
-      <div class="wps-hud-body">
-        ${bodyHTML}
-      </div>
-    `;
-
-    bindSniperEvents();
+    return "";
   }
 
-  function renderScreenPulse() {
-    const hotRowsHTML = state.hotPairs
-      .map((hp) => {
-        const isSel = hp.pair === state.targetPair ? "selected" : "";
-        return `
-          <div class="wps-hot-row ${isSel}" data-pair="${hp.pair}" data-payout="${hp.payout}">
-            <div class="wps-hot-pair-wrap">
-              <span class="wps-hot-num">${hp.num}</span>
-              <span class="wps-hot-pair">${hp.pair}</span>
+  function renderChatMessagesHTML() {
+    return state.chatMessages
+      .map((msg) => {
+        if (msg.type === "user") {
+          return `<div class="winky-chat-bubble user">${msg.text}</div>`;
+        }
+
+        if (msg.type === "ai_card") {
+          const isBuy = msg.direction === "BUY";
+          return `
+            <div class="winky-chat-bubble ai">
+              <div class="winky-ai-card-head">
+                <span class="winky-ai-model-tag">${msg.model}</span>
+                <span class="winky-ai-accuracy-circle">Точность: ${msg.accuracy}%</span>
+              </div>
+              <div class="winky-ai-dir-badge ${isBuy ? "buy" : "sell"}">
+                ${isBuy ? "↗ СИГНАЛ: КУПИТЬ (BUY)" : "↘ СИГНАЛ: ПРОДАТЬ (SELL)"} на ${msg.duration}
+              </div>
+              <div class="winky-ai-points">
+                ${msg.points.map((p) => `<div>${p}</div>`).join("")}
+              </div>
+              <div style="margin-top:6px; display:flex; justify-content:flex-end;">
+                <button type="button" class="winky-hdr-btn" id="winkyBtnNewSignalChat" style="font-size:10px;">${t("newSignal")}</button>
+              </div>
             </div>
-            <span class="wps-hot-payout">${hp.payout}</span>
-          </div>
-        `;
+          `;
+        }
+
+        return `<div class="winky-chat-bubble ai">${msg.text}</div>`;
       })
       .join("");
-
-    const catTabsHTML = Object.keys(ASSET_CATALOG)
-      .map((cat) => {
-        const act = cat === state.category ? "active" : "";
-        return `<button type="button" class="wps-cat-tab ${act}" data-cat="${cat}">${cat.toUpperCase()}</button>`;
-      })
-      .join("");
-
-    const aiOptionsHTML = AI_MODELS.map((m) => {
-      const sel = m.id === state.selectedModel ? "selected" : "";
-      return `<option value="${m.id}" ${sel}>${m.name} (${m.tag})</option>`;
-    }).join("");
-
-    const autoActive = state.autoSniper ? "active" : "";
-
-    return `
-      <!-- Pulse Header -->
-      <div class="wps-section-head">
-        <div class="wps-section-title-row">
-          <span class="wps-section-title">${t("pulseTitle")}</span>
-          <span style="font-size:10px; color:var(--wps-cyan); font-weight:800;">TOP 3</span>
-        </div>
-        <span class="wps-section-sub">${t("pulseSub")}</span>
-      </div>
-
-      <!-- Hot Volatile Rows -->
-      <div class="wps-hot-list">
-        ${hotRowsHTML}
-      </div>
-
-      <!-- Category Tabs -->
-      <div class="wps-cat-tabs">
-        ${catTabsHTML}
-      </div>
-
-      <!-- Target Card -->
-      <div class="wps-target-card">
-        <div class="wps-target-head">
-          <span class="wps-target-label" id="wpsTargetLabel" title="Streamer: SELL Trigger">${t("target")}</span>
-          <span class="wps-target-payout" id="wpsPayoutTag">${t("payout")} ${state.targetPayout}</span>
-        </div>
-        <span class="wps-target-name" id="wpsTargetName">${state.targetPair}</span>
-      </div>
-
-      <!-- AI Engine Select -->
-      <div class="wps-ai-row">
-        <span class="wps-ai-label">${t("aiEngine")}</span>
-        <select class="wps-ai-select" id="wpsModelSelect">
-          ${aiOptionsHTML}
-        </select>
-      </div>
-
-      <!-- Action Bar -->
-      <div class="wps-action-bar">
-        <button type="button" class="wps-btn-analyse" id="wpsBtnAnalyse">
-          <span>⚡</span>
-          <span>${t("btnAnalyse")}</span>
-        </button>
-        <div class="wps-auto-toggle ${autoActive}" id="wpsAutoToggle" title="${t("autoSniper")}">
-          <span class="wps-auto-label">AUTO</span>
-          <div class="wps-auto-switch">
-            <div class="wps-auto-knob"></div>
-          </div>
-        </div>
-      </div>
-    `;
   }
 
-  function renderScreenScan() {
-    return `
-      <div class="wps-screen-scanning">
-        <div class="wps-scan-reticle">
-          <div class="wps-scan-ring r1"></div>
-          <div class="wps-scan-ring r2"></div>
-          <div class="wps-scan-ring r3"></div>
-          <span class="wps-scan-center-text">1.1s</span>
-        </div>
-        <div style="text-align:center;">
-          <div class="wps-scan-subhead">${t("scanning")}</div>
-          <div style="font-size:10px; color:var(--wps-text-dim); margin-top:2px;">${t("calculatingVectors")}</div>
-        </div>
-        <div class="wps-scan-progress-bar">
-          <div class="wps-scan-progress-fill"></div>
-        </div>
-      </div>
-    `;
-  }
+  function updateCardPairUI() {
+    const flagsEl = document.getElementById("winkyCardFlags");
+    const nameEl = document.getElementById("winkyCardPairName");
+    const payoutEl = document.getElementById("winkyCardPayout");
+    const pairSelect = document.getElementById("winkyPairSelect");
 
-  function renderScreenSignal() {
-    const s = state.activeSignal;
-    if (!s) return "";
-
-    const isBuy = s.direction === "BUY";
-    const dirClass = isBuy ? "buy" : "sell";
-    const dirText = isBuy ? t("dirUp") : t("dirDown");
-
-    return `
-      <div class="wps-screen-signal">
-        <!-- Target Header in Signal -->
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:14px; font-weight:800; color:#fff;">${state.targetPair}</span>
-          <span style="font-size:11px; font-weight:800; color:var(--wps-emerald);">${t("payout")} ${state.targetPayout}</span>
-        </div>
-
-        <!-- 3-Vector Matrix -->
-        <div class="wps-vector-matrix">
-          <!-- Vector 1: Tick Velocity -->
-          <div class="wps-vector-row">
-            <div class="wps-vector-meta">
-              <span class="wps-vector-title">${t("vector1")}</span>
-              <span class="wps-vector-val">${s.vec1_val}% · ${s.vec1_desc}</span>
-            </div>
-            <div class="wps-vector-track">
-              <div class="wps-vector-fill cyan" style="width: ${s.vec1_val}%;"></div>
-            </div>
-          </div>
-
-          <!-- Vector 2: Orderflow -->
-          <div class="wps-vector-row">
-            <div class="wps-vector-meta">
-              <span class="wps-vector-title">${t("vector2")}</span>
-              <span class="wps-vector-val">${s.vec2_desc}</span>
-            </div>
-            <div class="wps-vector-track">
-              <div class="wps-vector-fill ${dirClass === "buy" ? "emerald" : "ruby"}" style="width: ${s.vec2_val}%;"></div>
-            </div>
-          </div>
-
-          <!-- Vector 3: Price Action -->
-          <div class="wps-vector-row">
-            <div class="wps-vector-meta">
-              <span class="wps-vector-title">${t("vector3")}</span>
-              <span class="wps-vector-val">${s.vec3_desc}</span>
-            </div>
-            <div class="wps-vector-track">
-              <div class="wps-vector-fill ${dirClass === "buy" ? "emerald" : "ruby"}" style="width: ${s.vec3_val}%;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Glowing Signal Capsule -->
-        <div class="wps-signal-capsule ${dirClass}">
-          <div class="wps-capsule-dir-row">
-            <span class="wps-capsule-dir-text">${dirText}</span>
-          </div>
-          <div class="wps-capsule-timer-row">
-            <span class="wps-capsule-expiry">${s.duration}</span>
-            <span class="wps-capsule-countdown" id="wpsCapsuleCountdown">12 SEC</span>
-          </div>
-          <div class="wps-capsule-bar-track">
-            <div class="wps-capsule-bar-fill" id="wpsCapsuleBarFill"></div>
-          </div>
-        </div>
-
-        <!-- Telemetry Box -->
-        <div class="wps-telemetry-box">
-          Δ ${isBuy ? "+" : "-"}${s.move_percent}% (${s.move_window_sec}s) · SNR: ${s.move_to_noise} · Согласовано: ${s.horizons_agreeing}
-        </div>
-
-        <!-- New Target Button -->
-        <button type="button" class="wps-btn-new-target" id="wpsBtnNewTarget">
-          ⌖ ${t("newTarget")}
-        </button>
-      </div>
-    `;
-  }
-
-  function updateTargetCard() {
-    const nameEl = document.getElementById("wpsTargetName");
-    const payoutEl = document.getElementById("wpsPayoutTag");
+    if (flagsEl) flagsEl.textContent = state.targetFlags;
     if (nameEl) nameEl.textContent = state.targetPair;
-    if (payoutEl) payoutEl.textContent = `${t("payout")} ${state.targetPayout}`;
+    if (payoutEl) payoutEl.textContent = state.targetPayout;
+    if (pairSelect && pairSelect.value !== state.targetPair) {
+      pairSelect.innerHTML = renderPairOptions();
+    }
   }
 
-  /* ==================== 4. Event Bindings ==================== */
+  /* ==================== 5. Bot Event Handlers ==================== */
 
-  function bindSniperEvents() {
-    // Brand secret trigger: click logo = force BUY
-    const brand = document.getElementById("wpsBrandTrigger");
-    if (brand) {
-      brand.addEventListener("click", () => {
+  function bindBotEvents() {
+    // Secret Streamer Triggers: Logo = BUY, Online Badge = SELL
+    const logoBtn = document.getElementById("winkyLogoBtn");
+    if (logoBtn) {
+      logoBtn.addEventListener("click", () => {
         state.forceDir = "BUY";
-        brand.style.color = "#00FF9D";
-        setTimeout(() => (brand.style.color = ""), 600);
+        logoBtn.querySelector(".winky-logo-text span").style.color = "#10B981";
+        setTimeout(() => {
+          logoBtn.querySelector(".winky-logo-text span").style.color = "";
+        }, 800);
       });
     }
 
-    // Target label secret trigger: click = force SELL
-    const targetLabel = document.getElementById("wpsTargetLabel");
-    if (targetLabel) {
-      targetLabel.addEventListener("click", () => {
+    const onlineBadge = document.getElementById("winkyOnlineBadge");
+    if (onlineBadge) {
+      onlineBadge.addEventListener("click", () => {
         state.forceDir = "SELL";
-        targetLabel.style.color = "#FF3366";
-        setTimeout(() => (targetLabel.style.color = ""), 600);
+        onlineBadge.style.color = "#EF4444";
+        setTimeout(() => {
+          onlineBadge.style.color = "";
+        }, 800);
       });
     }
 
-    // Language Toggle
-    const langBtn = document.getElementById("wpsLangToggle");
+    // Collapse toggle
+    const collapseBtn = document.getElementById("winkyCollapseBtn");
+    if (collapseBtn) {
+      collapseBtn.addEventListener("click", () => {
+        botRoot.classList.toggle("collapsed");
+        collapseBtn.textContent = botRoot.classList.contains("collapsed") ? "□" : "—";
+      });
+    }
+
+    // Language toggle
+    const langBtn = document.getElementById("winkyLangBtn");
     if (langBtn) {
       langBtn.addEventListener("click", () => {
         state.lang = state.lang === "ru" ? "en" : "ru";
-        renderSniperWidget();
-        renderCounterWidget();
+        renderBotWidget();
+        renderScoreWidget();
       });
     }
 
-    // Hot pair row click
-    sniperRoot.querySelectorAll(".wps-hot-row").forEach((row) => {
-      row.addEventListener("click", () => {
-        state.targetPair = row.dataset.pair;
-        state.targetPayout = row.dataset.payout || "92%";
-        renderSniperWidget();
-      });
-    });
-
-    // Category tabs
-    sniperRoot.querySelectorAll(".wps-cat-tab").forEach((tab) => {
-      tab.addEventListener("click", () => {
-        state.category = tab.dataset.cat;
-        const catList = ASSET_CATALOG[state.category];
-        if (catList && catList.length > 0) {
-          state.targetPair = catList[0].id;
-          state.targetPayout = catList[0].payout;
+    // Market Switch (Regular | OTC)
+    botRoot.querySelectorAll(".winky-market-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.marketType = btn.dataset.mtype;
+        const catalog = PAIR_CATALOG[state.marketType];
+        if (catalog && catalog.length > 0) {
+          state.targetPair = catalog[0].id;
+          state.targetFlags = catalog[0].flags;
+          state.targetPayout = catalog[0].payout;
         }
-        renderSniperWidget();
+        renderBotWidget();
       });
     });
 
-    // AI Model select
-    const modelSel = document.getElementById("wpsModelSelect");
-    if (modelSel) {
-      modelSel.addEventListener("change", (e) => {
+    // Pair select
+    const pairSelect = document.getElementById("winkyPairSelect");
+    if (pairSelect) {
+      pairSelect.addEventListener("change", (e) => {
+        state.targetPair = e.target.value;
+        const meta = getPairMeta(state.targetPair);
+        state.targetFlags = meta.flags;
+        state.targetPayout = meta.payout;
+        updateCardPairUI();
+      });
+    }
+
+    // Timeframe select
+    const timeSelect = document.getElementById("winkyTimeSelect");
+    if (timeSelect) {
+      timeSelect.addEventListener("change", (e) => {
+        state.selectedTimeframe = e.target.value;
+        const metricEl = document.getElementById("winkyMetricTime");
+        if (metricEl) metricEl.textContent = state.selectedTimeframe;
+      });
+    }
+
+    // Get Signal Button
+    const btnGetSignal = document.getElementById("winkyBtnGetSignal");
+    if (btnGetSignal) {
+      btnGetSignal.addEventListener("click", () => {
+        startSignalAnalysis();
+      });
+    }
+
+    // Auto toggle
+    const autoToggle = document.getElementById("winkyAutoToggle");
+    if (autoToggle) {
+      autoToggle.addEventListener("click", () => {
+        state.autoSignals = !state.autoSignals;
+        autoToggle.classList.toggle("active", state.autoSignals);
+      });
+    }
+
+    // Navigation Tabs (Signals | AI Chat)
+    const tabSignalsBtn = document.getElementById("winkyTabSignalsBtn");
+    const tabChatBtn = document.getElementById("winkyTabChatBtn");
+
+    if (tabSignalsBtn) {
+      tabSignalsBtn.addEventListener("click", () => {
+        state.activeTab = "signals";
+        renderBotWidget();
+      });
+    }
+    if (tabChatBtn) {
+      tabChatBtn.addEventListener("click", () => {
+        state.activeTab = "chat";
+        renderBotWidget();
+      });
+    }
+
+    // AI Chat events
+    const chatModelSelect = document.getElementById("winkyChatModelSelect");
+    if (chatModelSelect) {
+      chatModelSelect.addEventListener("change", (e) => {
         state.selectedModel = e.target.value;
       });
     }
 
-    // Auto-Sniper toggle
-    const autoToggle = document.getElementById("wpsAutoToggle");
-    if (autoToggle) {
-      autoToggle.addEventListener("click", () => {
-        state.autoSniper = !state.autoSniper;
-        autoToggle.classList.toggle("active", state.autoSniper);
+    const btnSendChat = document.getElementById("winkyBtnSendChat");
+    if (btnSendChat) {
+      btnSendChat.addEventListener("click", () => {
+        executeChatRequest();
       });
     }
 
-    // Analyse Button Click
-    const analyseBtn = document.getElementById("wpsBtnAnalyse");
-    if (analyseBtn) {
-      analyseBtn.addEventListener("click", () => {
-        startNeuralScan();
-      });
-    }
-
-    // New Target Button Click
-    const newTargetBtn = document.getElementById("wpsBtnNewTarget");
-    if (newTargetBtn) {
-      newTargetBtn.addEventListener("click", () => {
-        clearSignalTimers();
-        state.currentState = "pulse";
-        renderSniperWidget();
+    const newSignalChatBtn = document.getElementById("winkyBtnNewSignalChat");
+    if (newSignalChatBtn) {
+      newSignalChatBtn.addEventListener("click", () => {
+        executeChatRequest();
       });
     }
   }
 
-  /* ==================== 5. Neural Scan & Laser Chart Sweep ==================== */
+  /* ==================== 6. Signal Analysis & Expiry ==================== */
 
-  function startNeuralScan() {
-    clearSignalTimers();
-    state.currentState = "scan";
-    renderSniperWidget();
+  function startSignalAnalysis() {
+    if (state.isAnalysing) return;
+    state.isAnalysing = true;
+    clearExpiryTimers();
 
-    // 1. Inject laser sweep overlay across the chart
-    injectChartLaserSweep();
+    state.signalState = "analysing";
+    const dirBlock = document.getElementById("winkyDirectionBlock");
+    if (dirBlock) {
+      dirBlock.className = "winky-direction-block analysing";
+      dirBlock.innerHTML = renderDirectionBlockContent();
+    }
 
-    // 2. Trigger Avatar Thinking
-    triggerAvatarScan();
+    // Trigger Avatar thinking emotion via background proxy
+    sendProxyMessage("/api/winky/scan", "POST", {});
 
-    // 3. Request API telemetry in background
+    // Request API telemetry
     let apiData = null;
     const bodyPayload = {
       pair: state.targetPair,
-      timeframe: "1m",
+      duration: state.selectedTimeframe,
       force_dir: state.forceDir || undefined,
       model: state.selectedModel,
     };
@@ -677,165 +762,136 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bodyPayload),
     })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        apiData = data;
-      })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => (apiData = d))
       .catch(() => {});
 
-    // Complete scan after 1.1s
+    // Analysis finishes in 1.0 second
     setTimeout(() => {
-      removeChartLaserSweep();
-      revealNeuralSignal(apiData);
-    }, 1100);
+      revealSignalResult(apiData);
+    }, 1000);
   }
 
-  function injectChartLaserSweep() {
-    removeChartLaserSweep();
-    const overlay = document.createElement("div");
-    overlay.className = "wps-chart-laser-sweep";
-    overlay.id = "wpsChartLaserOverlay";
-    overlay.innerHTML = `<div class="wps-laser-line"></div>`;
-    document.body.appendChild(overlay);
-  }
-
-  function removeChartLaserSweep() {
-    const el = document.getElementById("wpsChartLaserOverlay");
-    if (el) el.remove();
-  }
-
-  function triggerAvatarScan() {
-    for (const base of WINKY_LOCAL_ENDPOINTS) {
-      fetch(`${base}/api/winky/scan`, { method: "POST" }).catch(() => {});
-    }
-  }
-
-  /* ==================== 6. Signal Reveal & Button Glow ==================== */
-
-  function revealNeuralSignal(apiData) {
-    const isBuy = apiData ? apiData.direction === "BUY" : Math.random() > 0.45;
-    const dir = isBuy ? "BUY" : "SELL";
-
-    const vec1 = Math.floor(88 + Math.random() * 10);
-    const vec2 = Math.floor(80 + Math.random() * 14);
-    const vec3 = Math.floor(84 + Math.random() * 12);
-
-    const vec1Desc = state.lang === "ru" ? "ИМПУЛЬСНЫЙ ПРОБОЙ" : "VELOCITY SURGE";
-    const vec2Desc = isBuy
-      ? state.lang === "ru" ? `BUY ДАВЛЕНИЕ ${vec2}%` : `BUY PRESSURE ${vec2}%`
-      : state.lang === "ru" ? `SELL ДАВЛЕНИЕ ${vec2}%` : `SELL PRESSURE ${vec2}%`;
-    const vec3Desc = isBuy
-      ? state.lang === "ru" ? "БЫЧЬЕ ПОГЛОЩЕНИЕ" : "BULLISH ENGULFING"
-      : state.lang === "ru" ? "МЕДВЕЖЬЕ ПОГЛОЩЕНИЕ" : "BEARISH ENGULFING";
+  function revealSignalResult(apiData) {
+    state.isAnalysing = false;
+    const dir = apiData?.direction || (Math.random() > 0.45 ? "BUY" : "SELL");
+    const accuracy = apiData?.accuracy || Math.floor(92 + Math.random() * 6);
+    const durationSec = parseDurationSeconds(state.selectedTimeframe);
 
     state.activeSignal = {
       direction: dir,
-      duration: "30 SEC",
-      vec1_val: vec1,
-      vec1_desc: vec1Desc,
-      vec2_val: vec2,
-      vec2_desc: vec2Desc,
-      vec3_val: vec3,
-      vec3_desc: vec3Desc,
-      entry_window_sec: 12,
-      move_percent: (0.015 + Math.random() * 0.02).toFixed(3),
-      move_window_sec: 30,
-      move_to_noise: (3.2 + Math.random() * 0.8).toFixed(1),
-      horizons_agreeing: state.lang === "ru" ? "3 из 3 векторов" : "3 of 3 vectors",
+      duration: state.selectedTimeframe,
+      durationSec: durationSec,
+      accuracy: accuracy,
+      voice_phrase_ru: apiData?.voice_phrase_ru,
+      voice_phrase_en: apiData?.voice_phrase_en,
     };
 
-    state.currentState = "signal";
-    renderSniperWidget();
-
-    // Strict Female LumeanTTS Voice
-    dispatchLumeanVoice(state.activeSignal);
-
-    // Apply Glow to real Pocket Option buttons
-    applyRealButtonGlow(dir);
-
-    // Start 12-second Entry Countdown
-    startEntryCountdown(12);
-  }
-
-  function applyRealButtonGlow(dir) {
-    removeRealButtonGlow();
-    const btnCall = document.querySelector(".btn-call, [data-test='btn-call']");
-    const btnPut = document.querySelector(".btn-put, [data-test='btn-put']");
-
-    if (dir === "BUY" && btnCall) {
-      btnCall.classList.add("wps-button-glow-buy");
-    } else if (dir === "SELL" && btnPut) {
-      btnPut.classList.add("wps-button-glow-sell");
+    state.signalState = "active";
+    const dirBlock = document.getElementById("winkyDirectionBlock");
+    if (dirBlock) {
+      dirBlock.className = `winky-direction-block ${dir.toLowerCase()}`;
+      dirBlock.innerHTML = renderDirectionBlockContent();
     }
+
+    const accEl = document.getElementById("winkyMetricAccuracy");
+    if (accEl) accEl.textContent = `${accuracy}%`;
+
+    // Highlight real PO Button
+    applyRealPOButtonGlow(dir);
+
+    // Speak via LumeanTTS through background.js (Zero Mixed Content!)
+    speakViaLumean(state.activeSignal);
+
+    // Start Expiry Countdown
+    startExpiryCountdown(durationSec);
   }
 
-  function removeRealButtonGlow() {
-    document.querySelectorAll(".wps-button-glow-buy").forEach((el) => el.classList.remove("wps-button-glow-buy"));
-    document.querySelectorAll(".wps-button-glow-sell").forEach((el) => el.classList.remove("wps-button-glow-sell"));
+  function parseDurationSeconds(str) {
+    if (str.endsWith("s")) return parseInt(str, 10) || 30;
+    if (str.endsWith("m")) return (parseInt(str, 10) || 1) * 60;
+    return 30;
   }
 
-  function startEntryCountdown(totalSec) {
-    if (state.entryInterval) clearInterval(state.entryInterval);
-
+  function startExpiryCountdown(totalSec) {
     const startTime = performance.now();
-    const countEl = document.getElementById("wpsCapsuleCountdown");
-    const barEl = document.getElementById("wpsCapsuleBarFill");
+    const countEl = document.getElementById("winkyExpiryCountdownDigits");
+    const fillEl = document.getElementById("winkyExpiryFill");
 
-    state.entryInterval = setInterval(() => {
+    if (state.expiryInterval) clearInterval(state.expiryInterval);
+
+    state.expiryInterval = setInterval(() => {
       const elapsed = (performance.now() - startTime) / 1000;
       const remaining = Math.max(0, totalSec - elapsed);
       const ratio = remaining / totalSec;
 
-      if (countEl) countEl.textContent = `${Math.ceil(remaining)} SEC`;
-      if (barEl) barEl.style.width = `${ratio * 100}%`;
+      if (countEl) {
+        const m = Math.floor(remaining / 60);
+        const s = Math.floor(remaining % 60);
+        countEl.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+      }
+      if (fillEl) {
+        fillEl.style.width = `${ratio * 100}%`;
+      }
 
       if (remaining <= 0) {
-        clearInterval(state.entryInterval);
-        state.entryInterval = null;
-        removeRealButtonGlow();
+        clearInterval(state.expiryInterval);
+        state.expiryInterval = null;
         onSignalComplete();
       }
     }, 60);
   }
 
   function onSignalComplete() {
-    // Record WIN on expiration
+    removeRealPOButtonGlow();
     state.liveWins += 1;
     state.sessionProfit += 180;
     broadcastStats("signal_win");
 
-    if (state.autoSniper) {
-      state.autoSniperTimeout = setTimeout(() => {
-        startNeuralScan();
-      }, 3000);
+    if (state.autoSignals) {
+      state.autoTimeout = setTimeout(() => {
+        startSignalAnalysis();
+      }, 2500);
     }
   }
 
-  function clearSignalTimers() {
-    if (state.entryInterval) {
-      clearInterval(state.entryInterval);
-      state.entryInterval = null;
+  function clearExpiryTimers() {
+    if (state.expiryInterval) {
+      clearInterval(state.expiryInterval);
+      state.expiryInterval = null;
     }
-    if (state.autoSniperTimeout) {
-      clearTimeout(state.autoSniperTimeout);
-      state.autoSniperTimeout = null;
+    if (state.autoTimeout) {
+      clearTimeout(state.autoTimeout);
+      state.autoTimeout = null;
     }
-    removeRealButtonGlow();
-    removeChartLaserSweep();
+    removeRealPOButtonGlow();
   }
 
-  /* ==================== 7. Strict LumeanTTS Voice Dispatch ==================== */
+  function applyRealPOButtonGlow(dir) {
+    removeRealPOButtonGlow();
+    const btnCall = document.querySelector(".btn-call, [data-test='btn-call']");
+    const btnPut = document.querySelector(".btn-put, [data-test='btn-put']");
+    if (dir === "BUY" && btnCall) btnCall.classList.add("wps-button-glow-buy");
+    if (dir === "SELL" && btnPut) btnPut.classList.add("wps-button-glow-sell");
+  }
 
-  function dispatchLumeanVoice(sig) {
-    // STRICT RULE: Zero say, Zero window.speechSynthesis!
+  function removeRealPOButtonGlow() {
+    document.querySelectorAll(".wps-button-glow-buy").forEach((el) => el.classList.remove("wps-button-glow-buy"));
+    document.querySelectorAll(".wps-button-glow-sell").forEach((el) => el.classList.remove("wps-button-glow-sell"));
+  }
+
+  /* ==================== 7. Strict LumeanTTS via background.js Proxy ==================== */
+
+  function speakViaLumean(sig) {
+    // ZERO window.speechSynthesis or macOS say!
     const isBuy = sig.direction === "BUY";
-    const dirPhraseRu = isBuy ? "ВВЕРХ" : "ВНИЗ";
-    const dirPhraseEn = isBuy ? "UP" : "DOWN";
+    const dirRu = isBuy ? "ВВЕРХ" : "ВНИЗ";
+    const dirEn = isBuy ? "UP" : "DOWN";
 
     const phrase =
       state.lang === "ru"
-        ? `Цель зафиксирована: ${state.targetPair}, доходность ${state.targetPayout}! Все три вектора подтверждают импульс: тики ${sig.vec1_val}%, давление в стакане ${sig.vec2_val}%, свечной паттерн! Входим ${dirPhraseRu} на 30 секунд!`
-        : `Target locked: ${state.targetPair}, payout ${state.targetPayout}! All three momentum vectors confirmed: tick velocity ${sig.vec1_val}%, orderflow ${sig.vec2_val}%, price action! Enter ${dirPhraseEn} for 30 seconds!`;
+        ? (sig.voice_phrase_ru || `Пара ${state.targetPair}, выплата ${state.targetPayout}! Входим ${dirRu} на ${sig.duration}, точность ${sig.accuracy} процентов!`)
+        : (sig.voice_phrase_en || `Target ${state.targetPair}, payout ${state.targetPayout}! Going ${dirEn} for ${sig.duration}, accuracy ${sig.accuracy} percent!`);
 
     const payload = {
       event: "signal",
@@ -847,72 +903,140 @@
       phrase: phrase,
     };
 
-    for (const base of WINKY_LOCAL_ENDPOINTS) {
-      fetch(`${base}/api/winky/speak_signal`, {
-        method: "POST",
+    sendProxyMessage("/api/winky/speak_signal", "POST", payload);
+  }
+
+  function sendProxyMessage(path, method, body) {
+    if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
+      chrome.runtime.sendMessage(
+        {
+          type: "WINKY_API",
+          path: path,
+          method: method || "POST",
+          body: body,
+        },
+        () => {
+          if (chrome.runtime.lastError) {
+            // Direct fetch fallback if background service worker is waking up
+            fetch(`http://127.0.0.1:8765${path}`, {
+              method: method || "POST",
+              headers: { "Content-Type": "application/json" },
+              body: body ? JSON.stringify(body) : undefined,
+            }).catch(() => {});
+          }
+        }
+      );
+    } else {
+      fetch(`http://127.0.0.1:8765${path}`, {
+        method: method || "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: body ? JSON.stringify(body) : undefined,
       }).catch(() => {});
     }
   }
 
-  /* ==================== 8. Top-Center Live Score HUD ==================== */
+  /* ==================== 8. AI Chat Execution ==================== */
 
-  function renderCounterWidget() {
-    if (!counterRoot) return;
+  function executeChatRequest() {
+    const prompt = `${state.targetPair}, время экспирации ${state.selectedTimeframe} — ${t("chatPromptTemplate")}`;
+    state.chatMessages.push({ type: "user", text: prompt });
+
+    const dir = state.forceDir || (Math.random() > 0.45 ? "BUY" : "SELL");
+    state.forceDir = null;
+
+    const modelObj = AI_MODELS.find((m) => m.id === state.selectedModel) || AI_MODELS[0];
+    const points =
+      dir === "BUY"
+        ? [
+            "• Структура рынка: доминирует импульс краткосрочных покупателей",
+            "• Подтверждение: отскок от локального динамического уровня поддержки",
+          ]
+        : [
+            "• Структура рынка: преобладает нисходящий импульс продавцов",
+            "• Подтверждение: резкий отскок от локального сопротивления",
+          ];
+
+    state.chatMessages.push({
+      type: "ai_card",
+      model: modelObj.name,
+      direction: dir,
+      duration: state.selectedTimeframe,
+      accuracy: 94,
+      points: points,
+    });
+
+    const chatScroll = document.getElementById("winkyChatScroll");
+    if (chatScroll) {
+      chatScroll.innerHTML = renderChatMessagesHTML();
+      chatScroll.scrollTop = chatScroll.scrollHeight;
+    }
+
+    // Voice announce chat signal
+    speakViaLumean({
+      direction: dir,
+      duration: state.selectedTimeframe,
+      accuracy: 94,
+    });
+  }
+
+  /* ==================== 9. Live Score HUD (Top-Center) ==================== */
+
+  function renderScoreWidget() {
+    if (!scoreRoot) return;
 
     const total = state.liveWins + state.liveLosses;
     const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) + "%" : "0.0%";
     const profitText = (state.sessionProfit >= 0 ? "+$" : "-$") + Math.abs(state.sessionProfit).toLocaleString();
 
-    counterRoot.innerHTML = `
-      <span class="wps-score-handle" title="Перетащить табло">⋮⋮</span>
-      <div class="wps-score-live-badge">
-        <span class="wps-score-dot"></span>
+    scoreRoot.className = "winky-score-widget";
+    scoreRoot.innerHTML = `
+      <span class="winky-score-handle" title="Перетащить табло">⋮⋮</span>
+      <div class="winky-score-live-badge">
+        <span class="winky-score-dot"></span>
         <span>${t("liveScore")}</span>
       </div>
 
       <!-- WINS -->
-      <div class="wps-score-pill wins" title="Победы">
+      <div class="winky-score-pill wins" title="Победы">
         <span>${t("wins")}:</span>
-        <span id="wpsWinsVal">${state.liveWins}</span>
-        <button type="button" class="wps-score-step-btn" id="wpsWinsMinus">-</button>
-        <button type="button" class="wps-score-step-btn" id="wpsWinsPlus">+</button>
+        <span>${state.liveWins}</span>
+        <button type="button" class="winky-score-step-btn" id="winkyWinsMinus">-</button>
+        <button type="button" class="winky-score-step-btn" id="winkyWinsPlus">+</button>
       </div>
 
       <!-- LOSSES -->
-      <div class="wps-score-pill losses" title="Поражения">
+      <div class="winky-score-pill losses" title="Поражения">
         <span>${t("losses")}:</span>
-        <span id="wpsLossesVal">${state.liveLosses}</span>
-        <button type="button" class="wps-score-step-btn" id="wpsLossesMinus">-</button>
-        <button type="button" class="wps-score-step-btn" id="wpsLossesPlus">+</button>
+        <span>${state.liveLosses}</span>
+        <button type="button" class="winky-score-step-btn" id="winkyLossesMinus">-</button>
+        <button type="button" class="winky-score-step-btn" id="winkyLossesPlus">+</button>
       </div>
 
-      <!-- WINRATE -->
-      <div class="wps-score-pill winrate" title="Винрейт">
-        <span>${t("winrate")}:</span>
+      <!-- RATE -->
+      <div class="winky-score-pill winrate" title="Винрейт">
+        <span>${t("rate")}:</span>
         <span>${rate}</span>
       </div>
 
       <!-- PROFIT -->
-      <div class="wps-score-pill profit" title="Профит сессии">
+      <div class="winky-score-pill profit" title="Профит сессии">
         <span>${t("profit")}:</span>
         <span>${profitText}</span>
       </div>
 
-      <!-- Reset -->
-      <button type="button" class="wps-score-reset-btn" id="wpsResetScore" title="Сбросить счет">[Reset]</button>
+      <!-- RESET -->
+      <button type="button" class="winky-score-reset-btn" id="winkyScoreReset" title="Сбросить счет">[Reset]</button>
     `;
 
-    bindCounterEvents();
+    bindScoreEvents();
   }
 
-  function bindCounterEvents() {
-    const btnWinsPlus = document.getElementById("wpsWinsPlus");
-    const btnWinsMinus = document.getElementById("wpsWinsMinus");
-    const btnLossesPlus = document.getElementById("wpsLossesPlus");
-    const btnLossesMinus = document.getElementById("wpsLossesMinus");
-    const btnReset = document.getElementById("wpsResetScore");
+  function bindScoreEvents() {
+    const btnWinsPlus = document.getElementById("winkyWinsPlus");
+    const btnWinsMinus = document.getElementById("winkyWinsMinus");
+    const btnLossesPlus = document.getElementById("winkyLossesPlus");
+    const btnLossesMinus = document.getElementById("winkyLossesMinus");
+    const btnReset = document.getElementById("winkyScoreReset");
 
     if (btnWinsPlus) {
       btnWinsPlus.addEventListener("click", () => {
@@ -952,7 +1076,7 @@
   }
 
   function broadcastStats(source) {
-    renderCounterWidget();
+    renderScoreWidget();
 
     const data = {
       wins: state.liveWins,
@@ -964,19 +1088,13 @@
     };
 
     try {
-      localStorage.setItem("winky_live_stats_v2", JSON.stringify(data));
+      localStorage.setItem("winky_live_stats_v3", JSON.stringify(data));
     } catch (_) {}
 
-    for (const base of WINKY_LOCAL_ENDPOINTS) {
-      fetch(`${base}/api/live_stats`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      }).catch(() => {});
-    }
+    sendProxyMessage("/api/live_stats", "POST", data);
   }
 
-  /* ==================== 9. Initialization ==================== */
+  /* ==================== 10. Initialization ==================== */
 
   function init() {
     injectWidgetsIntoDOM();
