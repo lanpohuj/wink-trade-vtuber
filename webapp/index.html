@@ -201,50 +201,28 @@
 
       </div>
 
-      <!-- STATE B: RADAR SCREEN (1.3 SEC INLINE) -->
+      <!-- STATE B: NEURAL SCAN SCREEN (1.1 SEC INLINE) -->
       <div class="sniper-state-box wps-radar-screen" id="stateRadar" hidden>
-        <div class="wps-radar-reticle-wrap">
-          <svg class="wps-radar-svg" viewBox="0 0 180 180">
-            <!-- 48 Radial Ticks -->
-            <g class="wps-radar-ticks">
-              <!-- Dynamically generated or static 48 ticks -->
-              <circle cx="90" cy="90" r="80" fill="none" stroke="#FF6B00" stroke-width="1.5" stroke-dasharray="3 7.4" opacity="0.6"/>
-              <circle cx="90" cy="90" r="60" fill="none" stroke="#FF6B00" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
-              <circle cx="90" cy="90" r="35" fill="none" stroke="#FF6B00" stroke-width="1" opacity="0.3"/>
-            </g>
-            <line x1="90" y1="10" x2="90" y2="170" stroke="#FF6B00" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.5"/>
-            <line x1="10" y1="90" x2="170" y2="90" stroke="#FF6B00" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.5"/>
-            <!-- Rotating Laser Sweep -->
-            <g class="wps-radar-sweep">
-              <path d="M90 90 L90 10 A80 80 0 0 1 150 40 Z" fill="url(#miniRadarGrad)" opacity="0.4"/>
-              <line x1="90" y1="90" x2="90" y2="10" stroke="#FF8800" stroke-width="2.5"/>
-            </g>
-            <defs>
-              <radialGradient id="miniRadarGrad" cx="90" cy="90" r="80" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#FF8800" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-          </svg>
-          <div class="wps-radar-center-info">
-            <span class="wps-radar-count" id="radarCountNum">23</span>
-            <span class="wps-radar-label" data-i18n="checkingPairs">ПАР ПРОВЕРЕНО</span>
-          </div>
+        <div class="wps-scan-reticle">
+          <div class="wps-scan-ring r1"></div>
+          <div class="wps-scan-ring r2"></div>
+          <div class="wps-scan-ring r3"></div>
+          <span class="wps-scan-center-text" id="radarCountNum">1.1s</span>
         </div>
         <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
-          <span class="wps-radar-subhead" data-i18n="choosingExpiry">ПОДБОР ЭКСПИРАЦИИ</span>
-          <span class="wps-radar-subtext" data-i18n="toFitMove">под текущий импульс рынка</span>
+          <span class="wps-radar-subhead" data-i18n="choosingExpiry">СКАНИРОВАНИЕ ГРАФИКА...</span>
+          <span class="wps-radar-subtext" data-i18n="toFitMove">Расчёт 3-х векторов импульса котировок</span>
         </div>
         <div class="wps-radar-progress-bar">
           <div class="wps-radar-progress-fill" id="radarProgressFill"></div>
         </div>
       </div>
 
-      <!-- STATE C: GAUGE SPEEDOMETER SIGNAL & ENTRY WINDOW -->
+      <!-- STATE C: 3-VECTOR MATRIX & GLOWING CAPSULE -->
       <div class="sniper-state-box wps-signal-screen" id="stateSignal" hidden>
         <!-- Header -->
         <div class="wps-signal-header">
-          <span class="wps-signal-pair" id="signalPairTitle">USD/CAD OTC</span>
+          <span class="wps-signal-pair" id="signalPairTitle">AUD/CAD OTC</span>
           <div class="wps-signal-meta">
             <span id="signalCategoryTag">CURRENCIES</span>
             <span>·</span>
@@ -252,55 +230,54 @@
           </div>
         </div>
 
-        <!-- Big Semi-Circular SVG Tachometer Gauge -->
-        <div class="wps-gauge-card wps-tactical-box">
-          <div class="wps-gauge-wrap">
-            <svg class="wps-gauge-svg" viewBox="0 0 260 140">
-              <!-- Scale Arc Background -->
-              <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#1A2232" stroke-width="14" stroke-linecap="round"/>
-              <!-- Colored Progress Arc -->
-              <path id="gaugeProgressArc" d="M 30 130 A 100 100 0 0 1 230 130" fill="none"
-                    stroke="#00FF9D" stroke-width="14" stroke-linecap="round"
-                    stroke-dasharray="314" stroke-dashoffset="0"/>
-              <!-- Scale Ticks 0, 20, 40, 60, 80 -->
-              <text x="24" y="134" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">0</text>
-              <text x="54" y="66" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">20</text>
-              <text x="124" y="24" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">40</text>
-              <text x="194" y="66" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">60</text>
-              <text x="228" y="134" fill="#64748B" font-size="10" font-family="'JetBrains Mono'">80</text>
-              <!-- Needle Pointer -->
-              <line id="gaugeNeedle" x1="130" y1="130" x2="60" y2="50"
-                    stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="130" cy="130" r="6" fill="#FFFFFF"/>
-            </svg>
-            <div class="wps-gauge-inner-info">
-              <span class="wps-dir-badge up" id="signalDirBadge">↑ UP</span>
-              <span class="wps-gauge-countdown" id="signalCountdownDigits">12 SEC</span>
-              <span class="wps-gauge-entry-sub" id="entrySubText" data-i18n="entryWindow">ОКНО ВХОДА · ИЗ 12</span>
+        <!-- 3-Vector Matrix -->
+        <div class="wps-vector-matrix">
+          <div class="wps-vector-row">
+            <div class="wps-vector-meta">
+              <span class="wps-vector-title" data-i18n="vector1">⚡ ИМПУЛЬС ТИКОВ</span>
+              <span class="wps-vector-val" id="vec1Val">94% · ИМПУЛЬСНЫЙ ПРОБОЙ</span>
+            </div>
+            <div class="wps-vector-track">
+              <div class="wps-vector-fill cyan" id="vec1Fill" style="width: 94%;"></div>
+            </div>
+          </div>
+          <div class="wps-vector-row">
+            <div class="wps-vector-meta">
+              <span class="wps-vector-title" data-i18n="vector2">📊 ОБЪЁМ И СТАКАН</span>
+              <span class="wps-vector-val" id="vec2Val">BUY ДАВЛЕНИЕ 84%</span>
+            </div>
+            <div class="wps-vector-track">
+              <div class="wps-vector-fill emerald" id="vec2Fill" style="width: 84%;"></div>
+            </div>
+          </div>
+          <div class="wps-vector-row">
+            <div class="wps-vector-meta">
+              <span class="wps-vector-title" data-i18n="vector3">🕯 СВЕЧНОЙ ПАТТЕРН</span>
+              <span class="wps-vector-val" id="vec3Val">БЫЧЬЕ ПОГЛОЩЕНИЕ</span>
+            </div>
+            <div class="wps-vector-track">
+              <div class="wps-vector-fill emerald" id="vec3Fill" style="width: 88%;"></div>
             </div>
           </div>
         </div>
 
-        <!-- Two Parameter Columns (EXPIRY & SIGNAL STRENGTH) -->
-        <div class="wps-params-grid">
-          <div class="wps-param-card">
-            <span class="wps-param-title" data-i18n="expiry">ЭКСПИРАЦИЯ</span>
-            <span class="wps-param-val" id="signalExpiryVal">30 sec</span>
-            <span class="wps-expiry-hint" data-i18n="keyboardHint">⌨️ Введите экспирацию вручную, если нет кнопки</span>
+        <!-- Glowing Signal Capsule -->
+        <div class="wps-signal-capsule buy" id="signalCapsule">
+          <div class="wps-capsule-dir-row">
+            <span class="wps-capsule-dir-text" id="signalDirBadge">↑ ВВЕРХ (BUY)</span>
           </div>
-          <div class="wps-param-card">
-            <span class="wps-param-title" data-i18n="signalStrength">СИЛА СИГНАЛА</span>
-            <div style="display:flex; align-items:baseline; justify-content:space-between;">
-              <span class="wps-param-val" id="signalStrengthVal">78</span>
-              <span class="wps-strength-bars">▬▬▬▬</span>
-            </div>
-            <span class="wps-strength-verdict" id="signalVerdictVal" data-i18n="strongSignal">сильный сигнал</span>
+          <div class="wps-capsule-timer-row">
+            <span class="wps-capsule-expiry" id="signalExpiryVal">30 SEC</span>
+            <span class="wps-capsule-countdown" id="signalCountdownDigits">12 SEC</span>
+          </div>
+          <div class="wps-capsule-bar-track">
+            <div class="wps-capsule-bar-fill" id="signalCapsuleBarFill"></div>
           </div>
         </div>
 
         <!-- Live Telemetry Box -->
         <div class="wps-telemetry-box" id="signalTelemetryBox">
-          Движение цены вверх: 0.019% за 30 с. Сила импульса к шуму — 3.4. Согласие горизонтов: 5 из 5.
+          Δ +0.019% (30s) · SNR: 3.4 · Согласовано: 3 из 3 векторов
         </div>
 
         <!-- Button NEW TARGET -->

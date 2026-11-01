@@ -57,7 +57,6 @@ class WinkyAPI:
         self._book = book
         self._avatar_window: webview.Window | None = None
         self._panel_window: webview.Window | None = None
-        self._terminal_window: webview.Window | None = None
         self._voice_signals_enabled = True
         self._assets_host = "127.0.0.1"
         self._assets_port = 8790
@@ -74,49 +73,20 @@ class WinkyAPI:
         self._assets_port = port
 
     def open_signal_terminal(self) -> bool:
-        """Открывает десктопный оверлей-терминал Winky AI поверх Pocket Option."""
-        if self._terminal_window:
-            try:
-                self._terminal_window.show()
-                self._terminal_window.restore()
-                return True
-            except Exception:
-                self._terminal_window = None
-
-        url = f"http://{self._assets_host}:{self._assets_port}/webapp/?streamer=1&lang=ru"
-        self._terminal_window = webview.create_window(
-            "Winky AI — Quantum Terminal",
-            url=url,
-            js_api=self,
-            width=430,
-            height=780,
-            on_top=True,
-            resizable=True,
-        )
-        logger.info("Десктопный оверлей-терминал запущен: %s", url)
-        return True
+        """Информирует, что Winky HUD встроен прямо в DOM страницы Pocket Option."""
+        logger.info("Winky HUD работает внутри страницы Pocket Option (In-DOM). Запускаем Pocket Option...")
+        return self.launch_pocket_sniper()
 
     def open_counter_widget(self) -> bool:
-        """Открывает отдельное плавающее табло счетчика EDUCATIONAL LIVE."""
-        if hasattr(self, "_counter_window") and self._counter_window:
-            try:
-                self._counter_window.show()
-                self._counter_window.restore()
-                return True
-            except Exception:
-                self._counter_window = None
+        """Информирует, что табло Live Score работает внутри страницы Pocket Option."""
+        logger.info("Табло Live Score работает внутри страницы Pocket Option (In-DOM). Запускаем Pocket Option...")
+        return self.launch_pocket_sniper()
 
-        url = f"http://{self._assets_host}:{self._assets_port}/webapp/counter.html"
-        self._counter_window = webview.create_window(
-            "EDUCATIONAL LIVE — Winky Counter",
-            url=url,
-            js_api=self,
-            width=380,
-            height=240,
-            on_top=True,
-            resizable=True,
-        )
-        logger.info("Плавающее табло счетчика запущено: %s", url)
+    def open_preview_webapp(self) -> bool:
+        """Открывает предпросмотр Mini App в браузере."""
+        import webbrowser
+        url = f"http://{self._assets_host}:{self._assets_port}/webapp/?streamer=1&lang=ru"
+        webbrowser.open(url)
         return True
 
     def toggle_voice_signals(self, enabled: bool) -> bool:
@@ -133,24 +103,51 @@ class WinkyAPI:
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
 
     def launch_pocket_sniper(self) -> bool:
-        """Запускает Google Chrome с загруженным расширением WINKY PAIR SNIPER."""
-        ext_dir = str(Path(__file__).resolve().parent.parent / "pocket_extension")
-        partner_link = "https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START"
+        """Запускает Google Chrome в выделенном профиле со встроенным WINKY NEURAL VISION HUD."""
+        ext_dir = str((Path(__file__).resolve().parent.parent / "pocket_extension").resolve())
+        profile_dir = str(Path.home() / ".winky_po_chrome_profile")
+        target_url = "https://po.financial/ru/cabinet/demo-quick-high-low/"
+        chrome_bin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
         try:
             import subprocess
-            cmd = [
-                "open", "-na", "Google Chrome",
-                "--args",
-                f"--load-extension={ext_dir}",
-                partner_link
-            ]
-            subprocess.Popen(cmd)
-            logger.info("Запущен Google Chrome со встроенным расширением WINKY PAIR SNIPER: %s", ext_dir)
+            if os.path.exists(chrome_bin):
+                cmd = [
+                    chrome_bin,
+                    f"--user-data-dir={profile_dir}",
+                    f"--load-extension={ext_dir}",
+                    target_url,
+                ]
+                subprocess.Popen(cmd)
+                logger.info("Запущен Google Chrome (выделенный профиль) с расширением: %s", ext_dir)
+                return True
+            else:
+                cmd = [
+                    "open", "-na", "Google Chrome",
+                    "--args",
+                    f"--user-data-dir={profile_dir}",
+                    f"--load-extension={ext_dir}",
+                    target_url,
+                ]
+                subprocess.Popen(cmd)
+                logger.info("Запущен Google Chrome через open -na с расширением: %s", ext_dir)
+                return True
+        except Exception as e:
+            logger.warning("Не удалось запустить Chrome напрямую: %s", e)
+            import webbrowser
+            webbrowser.open(target_url)
+            return False
+
+    def reveal_extension_in_finder(self) -> bool:
+        """Показывает папку расширения в macOS Finder для загрузки в chrome://extensions."""
+        ext_dir = str((Path(__file__).resolve().parent.parent / "pocket_extension").resolve())
+        try:
+            import subprocess
+            subprocess.Popen(["open", ext_dir])
+            logger.info("Открыта папка расширения в Finder: %s", ext_dir)
             return True
         except Exception as e:
-            logger.warning("Не удалось запустить Chrome: %s", e)
-            import webbrowser
-            webbrowser.open(partner_link)
+            logger.warning("Не удалось открыть папку расширения в Finder: %s", e)
             return False
 
     def speak_signal(self, payload: Any = None) -> bool:

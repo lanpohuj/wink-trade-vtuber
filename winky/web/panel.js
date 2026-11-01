@@ -1053,11 +1053,11 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-/* ==================== WINKY AI Terminal Overlay & Voice Signals ==================== */
+/* ==================== WINKY NEURAL VISION HUD & Voice Signals ==================== */
 
 const launchPocketSniperBtn = document.getElementById("launchPocketSniperBtn");
-const openTerminalBtn = document.getElementById("openTerminalBtn");
-const openCounterBtn = document.getElementById("openCounterBtn");
+const revealExtensionBtn = document.getElementById("revealExtensionBtn");
+const openPreviewMiniAppBtn = document.getElementById("openPreviewMiniAppBtn");
 const voiceSignalsToggle = document.getElementById("voiceSignalsToggle");
 const voiceSignalsToggleBg = document.getElementById("voiceSignalsToggleBg");
 const voiceSignalsToggleKnob = document.getElementById("voiceSignalsToggleKnob");
@@ -1067,27 +1067,25 @@ if (launchPocketSniperBtn) {
     if (window.pywebview && window.pywebview.api && window.pywebview.api.launch_pocket_sniper) {
       window.pywebview.api.launch_pocket_sniper();
     } else {
-      window.open("https://po-ru4.click/register?utm_campaign=871226&utm_source=affiliate&utm_medium=sr&a=ng70XXOKb9ECCk&al=1808145&ac=wink&cid=988258&code=50START", "_blank");
+      window.open("https://po.financial/ru/cabinet/demo-quick-high-low/", "_blank");
     }
   });
 }
 
-if (openTerminalBtn) {
-  openTerminalBtn.addEventListener("click", () => {
-    if (window.pywebview && window.pywebview.api && window.pywebview.api.open_signal_terminal) {
-      window.pywebview.api.open_signal_terminal();
+if (revealExtensionBtn) {
+  revealExtensionBtn.addEventListener("click", () => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.reveal_extension_in_finder) {
+      window.pywebview.api.reveal_extension_in_finder();
+    }
+  });
+}
+
+if (openPreviewMiniAppBtn) {
+  openPreviewMiniAppBtn.addEventListener("click", () => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.open_preview_webapp) {
+      window.pywebview.api.open_preview_webapp();
     } else {
       window.open("http://127.0.0.1:8765/webapp/?streamer=1&lang=ru", "_blank");
-    }
-  });
-}
-
-if (openCounterBtn) {
-  openCounterBtn.addEventListener("click", () => {
-    if (window.pywebview && window.pywebview.api && window.pywebview.api.open_counter_widget) {
-      window.pywebview.api.open_counter_widget();
-    } else {
-      window.open("http://127.0.0.1:8765/webapp/counter.html", "_blank");
     }
   });
 }

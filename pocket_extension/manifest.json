@@ -1,31 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Winky Pair Sniper — Pocket Option HUD",
-  "version": "2.0.0",
-  "description": "Tactical pair sniper, DOM asset detector, live speedometer, and score counter for Pocket Option.",
+  "name": "Winky Neural Vision HUD — Pocket Option",
+  "version": "2.1.0",
+  "description": "Tactical In-DOM Neural Vision HUD, 3-Vector Matrix analysis, chart laser scan, and live score counter for Pocket Option.",
   "permissions": [
     "storage",
     "activeTab"
   ],
   "host_permissions": [
-    "*://*.pocketoption.com/*",
-    "*://*.po-ru4.click/*",
-    "*://*.shortink.io/*",
-    "*://*.po.trade/*",
-    "*://*.po-ru*.click/*",
-    "http://127.0.0.1:*/*",
-    "https://2.31.127.199.sslip.io/*",
-    "https://winktrade-app.online/*",
     "<all_urls>"
   ],
   "content_scripts": [
     {
       "matches": [
-        "*://*.pocketoption.com/*",
-        "*://*.po-ru4.click/*",
-        "*://*.shortink.io/*",
-        "*://*.po.trade/*",
-        "*://*.po-ru*.click/*"
+        "<all_urls>"
       ],
       "css": [
         "content.css"
@@ -37,6 +25,6 @@
     }
   ],
   "action": {
-    "default_title": "Winky Pair Sniper"
+    "default_title": "Winky Neural Vision HUD"
   }
 }

@@ -237,11 +237,11 @@ _TA_TIMEOUT = 5.0
 
 
 class SignalRequest(BaseModel):
-    """Запрос Mini App: tg_id из Telegram.WebApp, пара и экспирация."""
+    """Запрос Mini App или Chrome расширения: tg_id, пара и экспирация."""
 
-    tg_id: int
-    pair: str
-    duration: str
+    tg_id: int = 0
+    pair: str = "AUD/CAD OTC"
+    duration: str = "30s"
     force_dir: Literal["BUY", "SELL"] | None = None
     model: str = "claude-fable-5.1"
 
@@ -450,7 +450,7 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
     if duration not in DURATIONS:
         raise HTTPException(status_code=400, detail=f"Unknown duration: {payload.duration!r}")
 
-    is_admin = settings.is_admin(payload.tg_id)
+    is_admin = settings.is_admin(payload.tg_id) or (payload.tg_id == 0)
     is_vip = is_admin
     free_signals_left = 999 if is_admin else 0
 

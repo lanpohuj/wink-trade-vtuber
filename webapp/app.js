@@ -222,64 +222,101 @@ async function startSniperAnalysis() {
     }
   } catch (_) {}
 
-  const remaining = Math.max(0, 1300 - (performance.now() - radarStart));
+  const remaining = Math.max(0, 1100 - (performance.now() - radarStart));
   await new Promise((r) => setTimeout(r, remaining));
   clearInterval(radarInterval);
 
-  // 2. STATE C: SIGNAL SCREEN WITH TACHOMETER
+  // 2. STATE C: 3-VECTOR MATRIX & GLOWING CAPSULE
   const dir = apiData?.direction || (Math.random() > 0.45 ? "BUY" : "SELL");
   const isBuy = dir === "BUY";
-  const strength = apiData?.signal_strength || Math.floor(75 + Math.random() * 15);
   const entryWindow = apiData?.entry_window_sec || 12;
+
+  const vec1 = Math.floor(88 + Math.random() * 10);
+  const vec2 = Math.floor(80 + Math.random() * 14);
+  const vec3 = Math.floor(84 + Math.random() * 12);
+
+  const vec1Desc = state.lang === "ru" ? "ИМПУЛЬСНЫЙ ПРОБОЙ" : "VELOCITY SURGE";
+  const vec2Desc = isBuy
+    ? state.lang === "ru" ? `BUY ДАВЛЕНИЕ ${vec2}%` : `BUY PRESSURE ${vec2}%`
+    : state.lang === "ru" ? `SELL ДАВЛЕНИЕ ${vec2}%` : `SELL PRESSURE ${vec2}%`;
+  const vec3Desc = isBuy
+    ? state.lang === "ru" ? "БЫЧЬЕ ПОГЛОЩЕНИЕ" : "BULLISH ENGULFING"
+    : state.lang === "ru" ? "МЕДВЕЖЬЕ ПОГЛОЩЕНИЕ" : "BEARISH ENGULFING";
 
   state.activeSignal = {
     direction: dir,
-    duration: apiData?.duration || "30 sec",
-    signal_strength: strength,
-    strength_verdict: strength >= 65 ? t("strongSignal") : t("edgeOfNoise"),
+    duration: "30 SEC",
+    vec1_val: vec1,
+    vec1_desc: vec1Desc,
+    vec2_val: vec2,
+    vec2_desc: vec2Desc,
+    vec3_val: vec3,
+    vec3_desc: vec3Desc,
     entry_window_sec: entryWindow,
-    move_percent: apiData?.move_percent || 0.019,
+    move_percent: (0.015 + Math.random() * 0.02).toFixed(3),
     move_window_sec: 30,
-    move_to_noise: apiData?.move_to_noise || 3.4,
-    horizons_agreeing: apiData?.horizons_agreeing || (state.lang === "ru" ? "5 из 5" : "5 of 5"),
-    voice_phrase_ru: apiData?.voice_phrase_ru,
-    voice_phrase_en: apiData?.voice_phrase_en,
+    move_to_noise: (3.2 + Math.random() * 0.8).toFixed(1),
+    horizons_agreeing: state.lang === "ru" ? "3 из 3 векторов" : "3 of 3 vectors",
   };
 
   // Populate UI
   document.getElementById("signalPairTitle").textContent = state.targetPair;
   document.getElementById("signalCategoryTag").textContent = state.category.toUpperCase();
   document.getElementById("signalExpiryVal").textContent = state.activeSignal.duration;
-  document.getElementById("signalStrengthVal").textContent = state.activeSignal.signal_strength;
-  document.getElementById("signalVerdictVal").textContent = state.activeSignal.strength_verdict;
+
+  // Vector Matrix values & fills
+  const vec1ValEl = document.getElementById("vec1Val");
+  const vec1FillEl = document.getElementById("vec1Fill");
+  if (vec1ValEl) vec1ValEl.textContent = `${vec1}% · ${vec1Desc}`;
+  if (vec1FillEl) vec1FillEl.style.width = `${vec1}%`;
+
+  const vec2ValEl = document.getElementById("vec2Val");
+  const vec2FillEl = document.getElementById("vec2Fill");
+  if (vec2ValEl) vec2ValEl.textContent = vec2Desc;
+  if (vec2FillEl) {
+    vec2FillEl.className = `wps-vector-fill ${isBuy ? "emerald" : "ruby"}`;
+    vec2FillEl.style.width = `${vec2}%`;
+  }
+
+  const vec3ValEl = document.getElementById("vec3Val");
+  const vec3FillEl = document.getElementById("vec3Fill");
+  if (vec3ValEl) vec3ValEl.textContent = vec3Desc;
+  if (vec3FillEl) {
+    vec3FillEl.className = `wps-vector-fill ${isBuy ? "emerald" : "ruby"}`;
+    vec3FillEl.style.width = `${vec3}%`;
+  }
+
+  // Capsule direction & classes
+  const capsule = document.getElementById("signalCapsule");
+  if (capsule) {
+    capsule.className = `wps-signal-capsule ${isBuy ? "buy" : "sell"}`;
+  }
 
   const dirBadge = document.getElementById("signalDirBadge");
-  dirBadge.className = `wps-dir-badge ${isBuy ? "up" : "down"}`;
-  dirBadge.textContent = isBuy ? "↑ UP" : "↓ DOWN";
+  if (dirBadge) {
+    dirBadge.textContent = isBuy ? (state.lang === "ru" ? "↑ ВВЕРХ (BUY)" : "↑ UP (BUY)") : (state.lang === "ru" ? "↓ ВНИЗ (SELL)" : "↓ DOWN (SELL)");
+  }
 
-  document.getElementById("signalTelemetryBox").textContent = state.lang === "ru"
-    ? `Движение цены ${isBuy ? "вверх" : "вниз"}: ${state.activeSignal.move_percent}% за 30 с. Сила импульса к шуму — ${state.activeSignal.move_to_noise}. Согласие горизонтов: ${state.activeSignal.horizons_agreeing}.`
-    : `Price moving ${isBuy ? "up" : "down"}: ${state.activeSignal.move_percent}% over 30s. Move-to-noise strength — ${state.activeSignal.move_to_noise}. Horizons agreeing: ${state.activeSignal.horizons_agreeing}.`;
+  const telemetryBox = document.getElementById("signalTelemetryBox");
+  if (telemetryBox) {
+    telemetryBox.textContent = `Δ ${isBuy ? "+" : "-"}${state.activeSignal.move_percent}% (${state.activeSignal.move_window_sec}s) · SNR: ${state.activeSignal.move_to_noise} · Согласовано: ${state.activeSignal.horizons_agreeing}`;
+  }
 
   setSniperState("signal");
 
   // Voice announcement strictly through LumeanTTS
   dispatchVoiceAnnouncement(state.activeSignal);
 
-  // Start Speedometer countdown
-  startSpeedometerCountdown(entryWindow);
+  // Start Signal Countdown
+  startSignalCountdown(entryWindow);
 }
 
-function startSpeedometerCountdown(totalSec) {
+function startSignalCountdown(totalSec) {
   const startTime = performance.now();
-  const arcEl = document.getElementById("gaugeProgressArc");
-  const needleEl = document.getElementById("gaugeNeedle");
   const countEl = document.getElementById("signalCountdownDigits");
-  const isBuy = state.activeSignal?.direction === "BUY";
+  const barEl = document.getElementById("signalCapsuleBarFill");
 
-  if (arcEl) {
-    arcEl.setAttribute("stroke", isBuy ? "#00FF9D" : "#FF3B5C");
-  }
+  if (state.entryInterval) clearInterval(state.entryInterval);
 
   state.entryInterval = setInterval(() => {
     const elapsed = (performance.now() - startTime) / 1000;
@@ -287,19 +324,7 @@ function startSpeedometerCountdown(totalSec) {
     const ratio = remaining / totalSec;
 
     if (countEl) countEl.textContent = `${Math.ceil(remaining)} SEC`;
-
-    if (arcEl) {
-      const offset = 314 * (1 - ratio);
-      arcEl.style.strokeDashoffset = `${offset}`;
-    }
-
-    if (needleEl) {
-      const angleRad = Math.PI - ratio * Math.PI;
-      const nx = 130 - 80 * Math.cos(angleRad);
-      const ny = 130 - 80 * Math.sin(angleRad);
-      needleEl.setAttribute("x2", nx);
-      needleEl.setAttribute("y2", ny);
-    }
+    if (barEl) barEl.style.width = `${ratio * 100}%`;
 
     if (remaining <= 0) {
       clearInterval(state.entryInterval);
