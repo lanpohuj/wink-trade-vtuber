@@ -88,20 +88,20 @@ def _is_known_pair(p: str) -> bool:
 # Пул профессиональных трейдерских факторов (технический анализ и объёмы)
 RATIONALE_BUY = [
     {
-        "ru": "Структура рынка: доминирует импульс краткосрочных покупателей",
-        "en": "Market structure: short-term buyer momentum dominates",
+        "ru": "📌 Картина графика: Цена упёрлась в сильный нижний уровень — продавцы выдохлись",
+        "en": "📌 Chart structure: Price rejected off strong support floor — seller exhaustion",
+    },
+    {
+        "ru": "🎯 Логика входа: Ждём уверенный отскок наверх по основному тренду",
+        "en": "🎯 Trade entry: Clean bounce upward aligned with primary trend",
     },
     {
         "ru": "Подтверждение: отскок от локального динамического уровня поддержки",
         "en": "Confirmation: bounce off local dynamic support level",
     },
     {
-        "ru": "Осциллятор RSI: выход из зоны перепроданности (RSI 28.4)",
-        "en": "RSI Oscillator: recovery from oversold territory (RSI 28.4)",
-    },
-    {
-        "ru": "Скользящие средние: бычье пересечение EMA-9 выше EMA-21",
-        "en": "Moving Averages: bullish cross of EMA-9 above EMA-21",
+        "ru": "Скользящие средние: бычье подтверждение импульса выше поддержки",
+        "en": "Moving Averages: bullish momentum confirmed above key support",
     },
     {
         "ru": "Анализ объёмов: всплеск дельты покупателей на младшем таймфрейме",
@@ -116,8 +116,8 @@ RATIONALE_BUY = [
         "en": "MACD: histogram convergence in positive territory",
     },
     {
-        "ru": "Книга ордеров: дисбаланс ликвидности в сторону покупок (+68%)",
-        "en": "Order Book: liquidity imbalance tilted toward bids (+68%)",
+        "ru": "Книга ордеров: доминирование ликвидности в сторону покупок",
+        "en": "Order Book: liquidity imbalance tilted strongly toward bids",
     },
     {
         "ru": "Gemini Argon: динамический отскок от институционального уровня поддержки",
@@ -139,20 +139,20 @@ RATIONALE_BUY = [
 
 RATIONALE_SELL = [
     {
-        "ru": "Структура рынка: преобладает нисходящий импульс продавцов",
-        "en": "Market structure: seller momentum dominates lower timeframe",
+        "ru": "📌 Картина графика: Цена ударилась в потолок сопротивления — рост остановился",
+        "en": "📌 Chart structure: Price hit resistance ceiling — upward momentum stalled",
+    },
+    {
+        "ru": "🎯 Логика входа: Заходим на откате вниз вместе с крупными продавцами",
+        "en": "🎯 Trade entry: Clean rejection downward following institutional sellers",
     },
     {
         "ru": "Подтверждение: резкий отскок от локального уровня сопротивления",
         "en": "Confirmation: sharp rejection from local resistance level",
     },
     {
-        "ru": "Осциллятор RSI: разворот из зоны перекупленности (RSI 73.1)",
-        "en": "RSI Oscillator: reversal from overbought territory (RSI 73.1)",
-    },
-    {
-        "ru": "Скользящие средние: медвежье пересечение EMA-9 ниже EMA-21",
-        "en": "Moving Averages: bearish cross of EMA-9 below EMA-21",
+        "ru": "Скользящие средние: медвежье подтверждение импульса ниже сопротивления",
+        "en": "Moving Averages: bearish momentum confirmed below resistance",
     },
     {
         "ru": "Анализ объёмов: давление институционального предложения на дельте",
@@ -553,16 +553,12 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
     horizons_agreeing_en = "5 of 5" if accuracy >= 93 else "4 of 5"
 
     clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
-    dir_ru = "ВВЕРХ" if direction == "BUY" else "ВНИЗ"
-    dir_en = "UP" if direction == "BUY" else "DOWN"
-    voice_phrase_ru = (
-        f"Цель — {clean_pair_ru}! Сигнал {dir_ru} на {duration}, "
-        f"сила импульса {signal_strength}, согласовано {horizons_agreeing_ru} горизонтов! У нас {entry_window_sec} секунд на вход!"
-    )
-    voice_phrase_en = (
-        f"Target locked: {pair}! Going {dir_en} for {duration}, "
-        f"signal strength {signal_strength}, {horizons_agreeing_en} horizons agreeing! Enter within {entry_window_sec} seconds!"
-    )
+    if direction == "BUY":
+        voice_phrase_ru = f"По {clean_pair_ru} отличная точка входа! Продавцы выдохлись у уровня поддержки, заходим ВВЕРХ на {duration}!"
+        voice_phrase_en = f"Great entry on {pair}! Support floor holding strong, taking BUY for {duration}!"
+    else:
+        voice_phrase_ru = f"На графике {clean_pair_ru} цена упёрлась в потолок сопротивления! Заходим ВНИЗ на {duration} на уверенном откате!"
+        voice_phrase_en = f"Resistance hit on {pair}! Selling pressure confirmed, taking SELL for {duration}!"
 
     return SignalResponse(
         direction=direction,

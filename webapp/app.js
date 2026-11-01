@@ -269,8 +269,12 @@ async function startSignalAnalysis() {
   if (accEl) accEl.textContent = `${accuracy}%`;
 
   const lines = state.lang === "ru" ? (apiData?.rationale_ru || []) : (apiData?.rationale_en || []);
-  const line1 = lines[0] || (isBuy ? "• RSI(7): 26.4 — выход из зоны перепроданности" : "• RSI(7): 73.1 — разворот из зоны перекупленности");
-  const line2 = lines[1] || (isBuy ? "• Уровень: отскок от локальной поддержки + бычий импульс EMA" : "• Уровень: отскок от сопротивления + медвежий импульс EMA");
+  const line1 = lines[0] || (isBuy
+    ? (state.lang === "ru" ? "📌 Картина графика: Цена упёрлась в нижний уровень — продавцы выдохлись" : "📌 Chart structure: Price rejected off support floor — seller exhaustion")
+    : (state.lang === "ru" ? "📌 Картина графика: Цена ударилась в потолок — рост остановился" : "📌 Chart structure: Price hit resistance ceiling — momentum stalled"));
+  const line2 = lines[1] || (isBuy
+    ? (state.lang === "ru" ? "🎯 Логика входа: Ждём уверенный отскок наверх по основному тренду" : "🎯 Trade entry: Clean bounce upward aligned with primary trend")
+    : (state.lang === "ru" ? "🎯 Логика входа: Заходим на откате вниз вместе с крупными продавцами" : "🎯 Trade entry: Clean rejection downward with sellers"));
 
   if (dirBlock) {
     dirBlock.className = `winky-direction-block active ${isBuy ? "buy" : "sell"}`;
@@ -658,4 +662,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Secret Streamer Triggers
   setupSecretTriggers();
+
+  // Poll synced signal from live streamer extension
+  let lastSyncedSignalKey = "";
+  async function pollSyncedStreamSignal() {
+    try {
+      const res = await fetch("/api/signal/sync");
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data.active && data.signal && data.remaining_sec > 0) {
+        const sig = data.signal;
+        const key = `${sig.pair}_${sig.direction}_${Math.floor(sig.created_at)}`;
+        if (key !== lastSyncedSignalKey) {
+          lastSyncedSignalKey = key;
+          if (!state.isBusy) {
+            state.pair = sig.pair;
+            const pairEl = document.getElementById("selectPair");
+            if (pairEl) {
+              let found = false;
+              for (const opt of pairEl.options) {
+                if (opt.value.toLowerCase() === sig.pair.toLowerCase()) {
+                  opt.selected = true;
+                  found = true;
+                  break;
+                }
+              }
+              if (!found) {
+                const newOpt = document.createElement("option");
+                newOpt.value = sig.pair;
+                newOpt.textContent = sig.pair;
+                newOpt.selected = true;
+                pairEl.prepend(newOpt);
+              }
+            }
+            const pairDisplay = document.getElementById("cardPairName");
+            if (pairDisplay) pairDisplay.textContent = sig.pair;
+          }
+        }
+      }
+    } catch (_) {}
+  }
+  setInterval(pollSyncedStreamSignal, 3500);
 });

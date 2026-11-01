@@ -460,7 +460,7 @@
   width: 0%;
   background: linear-gradient(90deg, var(--wn-mint), var(--wn-amber));
   border-radius: 3px;
-  animation: scanProgress 1.15s ease-in-out forwards;
+  animation: scanProgress 1.5s ease-in-out forwards;
 }
 
 @keyframes scanProgress {
@@ -581,10 +581,13 @@
 .winky-btn-get-signal:active {
   transform: translateY(1px);
 }
-.winky-btn-get-signal:disabled {
-  opacity: 0.55;
+.winky-btn-get-signal:disabled,
+.winky-btn-get-signal.disabled {
+  opacity: 0.65;
   cursor: not-allowed;
-  transform: none;
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  filter: grayscale(0.2);
 }
 
 /* Auto-deal switch on bottom */

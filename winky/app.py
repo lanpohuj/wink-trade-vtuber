@@ -184,25 +184,25 @@ class WinkyAPI:
         if lang == "en":
             if is_buy:
                 phrases = [
-                    f"Target locked: {pair}! Going UP for {clean_dur}, signal strength 78, 5 of 5 horizons agreeing! Enter within 12 seconds!",
-                    f"Bullish order block confirmed! Taking UP for {clean_dur}!",
+                    f"Great entry on {pair}! Support floor holding strong, taking BUY for {clean_dur}!",
+                    f"Bullish bounce confirmed on {pair}! Entering UP for {clean_dur}, buyers taking over!",
                 ]
             else:
                 phrases = [
-                    f"Target locked: {pair}! Going DOWN for {clean_dur}, signal strength 78, 5 of 5 horizons agreeing! Enter within 12 seconds!",
-                    f"Bearish momentum confirmed! Taking DOWN for {clean_dur}!",
+                    f"Resistance hit on {pair}! Selling pressure confirmed, taking SELL for {clean_dur}!",
+                    f"Clean downward rejection on {pair}! Entering DOWN for {clean_dur} with the sellers!",
                 ]
         else:
             clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
             if is_buy:
                 phrases = [
-                    f"Цель — {clean_pair_ru}! Сигнал ВВЕРХ на {clean_dur}, сила импульса 78, согласовано 5 из 5 горизонтов! У нас 12 секунд на вход!",
-                    f"Вижу сильный бычий импульс! Берём ВВЕРХ на {clean_dur}, точка входа отличная!",
+                    f"По {clean_pair_ru} отличная точка входа! Продавцы выдохлись у уровня поддержки, заходим ВВЕРХ на {clean_dur}!",
+                    f"Вижу уверенный отскок от поддержки по {clean_pair_ru}! Берём сделку ВВЕРХ на {clean_dur} по основному тренду!",
                 ]
             else:
                 phrases = [
-                    f"Цель — {clean_pair_ru}! Сигнал ВНИЗ на {clean_dur}, сила импульса 78, согласовано 5 из 5 горизонтов! У нас 12 секунд на вход!",
-                    f"Медвежий импульс подтверждён! Открываем сделку ВНИЗ на {clean_dur}!",
+                    f"На графике {clean_pair_ru} цена упёрлась в потолок сопротивления! Заходим ВНИЗ на {clean_dur} на уверенном откате!",
+                    f"Рост остановился по {clean_pair_ru}! Открываем сделку ВНИЗ на {clean_dur} вместе с крупными продавцами!",
                 ]
 
         chosen_phrase = random.choice(phrases)
