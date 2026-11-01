@@ -295,6 +295,19 @@ _live_stats_state: dict[str, Any] = {
     "pair": "EUR/USD OTC",
 }
 
+# Синхронизированный сигнал со стрима (расширение -> сервер -> Mini App)
+_latest_synced_signal: dict[str, Any] | None = None
+
+
+class SignalSyncRequest(BaseModel):
+    pair: str
+    direction: Literal["BUY", "SELL"]
+    accuracy: int = 94
+    duration: str = "30s"
+    rationale_ru: list[str] = Field(default_factory=list)
+    rationale_en: list[str] = Field(default_factory=list)
+    model: str = "claude-fable-5.1"
+
 
 class HistoryItem(BaseModel):
     """Пункт живой ленты сигналов."""
@@ -472,7 +485,23 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
                 )
 
     # --- Режим стримера: принудительный сигнал или заранее заданная очередь ---
-    if is_admin:
+    synced_rationale_ru: list[str] | None = None
+    synced_rationale_en: list[str] | None = None
+
+    if _latest_synced_signal is not None and time.time() < _latest_synced_signal.get("expires_at", 0):
+        if _latest_synced_signal.get("pair") == pair:
+            direction = _latest_synced_signal["direction"]
+            accuracy = _latest_synced_signal["accuracy"]
+            if _latest_synced_signal.get("rationale_ru"):
+                synced_rationale_ru = _latest_synced_signal["rationale_ru"]
+            if _latest_synced_signal.get("rationale_en"):
+                synced_rationale_en = _latest_synced_signal["rationale_en"]
+        elif is_admin and payload.force_dir is not None:
+            direction = payload.force_dir
+            accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
+        else:
+            direction, accuracy = await _user_signal(pair)
+    elif is_admin:
         if payload.force_dir is not None:
             direction = payload.force_dir
             accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
@@ -487,7 +516,10 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         direction, accuracy = await _user_signal(pair)
 
     # Генерация реалистичного профессионального теханализа под сигнал
-    rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "claude-fable-5.1")
+    if synced_rationale_ru and synced_rationale_en:
+        rationale_ru, rationale_en = synced_rationale_ru, synced_rationale_en
+    else:
+        rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "claude-fable-5.1")
     duration_sec = DURATION_SECONDS.get(duration, 5)
 
     async with async_session_factory() as session:
@@ -559,6 +591,37 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
         voice_phrase_ru=voice_phrase_ru,
         voice_phrase_en=voice_phrase_en,
     )
+
+
+@router.post("/signal/sync")
+async def sync_stream_signal(payload: SignalSyncRequest) -> dict[str, Any]:
+    """Синхронизация активного сигнала со стрима Pocket Option."""
+    global _latest_synced_signal
+    duration_sec = DURATION_SECONDS.get(payload.duration.lower(), 30)
+    now = time.time()
+    _latest_synced_signal = {
+        "pair": payload.pair.strip(),
+        "direction": payload.direction,
+        "accuracy": payload.accuracy,
+        "duration": payload.duration,
+        "model": payload.model,
+        "rationale_ru": payload.rationale_ru,
+        "rationale_en": payload.rationale_en,
+        "created_at": now,
+        "expires_at": now + duration_sec + 5,
+    }
+    logger.info("Синхронизирован сигнал со стрима: %s %s (%s)", payload.pair, payload.direction, payload.duration)
+    return {"ok": True, "expires_at": _latest_synced_signal["expires_at"]}
+
+
+@router.get("/signal/sync")
+async def get_synced_stream_signal() -> dict[str, Any]:
+    """Получение текущего активного сигнала со стрима (если валиден)."""
+    global _latest_synced_signal
+    if _latest_synced_signal is not None and time.time() < _latest_synced_signal.get("expires_at", 0):
+        remaining = int(_latest_synced_signal["expires_at"] - time.time())
+        return {"active": True, "signal": _latest_synced_signal, "remaining_sec": remaining}
+    return {"active": False, "signal": None}
 
 
 @router.get("/history", response_model=HistoryResponse)

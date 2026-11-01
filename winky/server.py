@@ -12,6 +12,7 @@ import json
 import logging
 import random
 import time
+from collections import deque
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -30,9 +31,23 @@ _local_live_stats: dict[str, Any] = {
     "pair": "EUR/USD OTC",
 }
 
+_chat_requested_pairs: deque[dict[str, Any]] = deque(maxlen=20)
+_last_ask_chat_time: float = time.time()
+_last_extension_ping: float = 0.0
+
 
 def register_winky_callback(event: str, fn: Callable) -> None:
     _winky_sync_callbacks[event] = fn
+
+
+def push_chat_pair_request(pair: str, user: str) -> None:
+    """Добавляет запрошенную зрителем из TikTok-чата валютную пару в очередь Winky."""
+    _chat_requested_pairs.append({
+        "pair": pair,
+        "user": user,
+        "timestamp": time.time(),
+    })
+    logger.info("В очередь добавлена пара от %s: %s", user, pair)
 
 
 class _AssetsHandler(SimpleHTTPRequestHandler):
@@ -107,6 +122,45 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             })
             return
 
+        if clean == "/api/winky/ping":
+            global _last_extension_ping
+            _last_extension_ping = time.time()
+            self._send_json({"ok": True, "connected": True, "timestamp": _last_extension_ping})
+            return
+
+        if clean == "/api/winky/status":
+            connected = (time.time() - _last_extension_ping) < 15.0
+            self._send_json({
+                "connected": connected,
+                "last_ping": _last_extension_ping,
+                "queue_len": len(_chat_requested_pairs),
+            })
+            return
+
+        if clean == "/api/winky/next_command":
+            global _last_ask_chat_time
+            # 1. Запрос от зрителя в TikTok-чате
+            if _chat_requested_pairs:
+                req = _chat_requested_pairs.popleft()
+                self._send_json({
+                    "action": "switch_pair",
+                    "pair": req["pair"],
+                    "user": req["user"],
+                    "reason": "chat_request",
+                })
+                return
+            # 2. Каждые 150 секунд (2.5 мин) авто-запрос в чат
+            now = time.time()
+            if now - _last_ask_chat_time > 150:
+                _last_ask_chat_time = now
+                self._send_json({
+                    "action": "ask_chat",
+                    "reason": "cycle",
+                })
+                return
+            self._send_json({"action": "continue"})
+            return
+
         super().do_GET()
 
     def do_POST(self) -> None:  # noqa: N802
@@ -159,6 +213,49 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                 except Exception as e:
                     logger.warning("Ошибка subprocess open Chrome: %s", e)
             self._send_json(res)
+            return
+
+        if clean == "/api/winky/ping":
+            global _last_extension_ping
+            _last_extension_ping = time.time()
+            self._send_json({"ok": True, "connected": True})
+            return
+
+        if clean == "/api/winky/event":
+            cb = _winky_sync_callbacks.get("event")
+            if cb:
+                try:
+                    cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback event: %s", e)
+            self._send_json({"ok": True})
+            return
+
+        if clean in ("/api/signal/sync", "/api/winky/sync_signal"):
+            cb = _winky_sync_callbacks.get("signal_sync")
+            if cb:
+                try:
+                    cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback signal_sync: %s", e)
+            try:
+                import threading
+                import urllib.request
+                def _fwd():
+                    try:
+                        req = urllib.request.Request(
+                            "https://winktrade-app.online/api/signal/sync",
+                            data=json.dumps(payload).encode("utf-8"),
+                            headers={"Content-Type": "application/json"},
+                            method="POST",
+                        )
+                        urllib.request.urlopen(req, timeout=3.0)
+                    except Exception:
+                        pass
+                threading.Thread(target=_fwd, daemon=True).start()
+            except Exception:
+                pass
+            self._send_json({"ok": True})
             return
 
         if clean == "/api/winky/speak_signal":

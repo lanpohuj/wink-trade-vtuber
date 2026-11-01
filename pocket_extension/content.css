@@ -1,37 +1,35 @@
 /* ========================================================
-   WINKY AI — CLASSIC TRADING BOT IN-DOM CONTENT CSS
-   Style: Dark Sapphire Matte (#0D1322), Soft Glass (blur 18px)
-   Width: 330px, Border-Radius: 18px, Border: 1px solid rgba(59, 130, 246, 0.3)
+   WINKY AI — NEKO-CYBER TRADING BOT IN-DOM CONTENT CSS
+   Style: Obsidian-Emerald Matte Glass rgba(9, 17, 20, 0.86)
+   Accents: Neko Mint (#00F5A0 -> #00D9F5), Amber Eye (#FFB800), Crimson Claw (#FF3B69)
+   Width: 330px, Border-Radius: 20px, Border: 1px solid rgba(0, 245, 160, 0.32)
    Scales natively with Pocket Option page zoom (Cmd + / Cmd -)
    ======================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap');
 
 :root {
-  --wb-bg: rgba(13, 19, 34, 0.92);
-  --wb-card: rgba(20, 29, 51, 0.85);
-  --wb-border: rgba(59, 130, 246, 0.3);
-  --wb-border-subtle: rgba(255, 255, 255, 0.08);
+  --wn-bg: rgba(9, 17, 20, 0.88);
+  --wn-card: rgba(14, 25, 30, 0.85);
+  --wn-border: rgba(0, 245, 160, 0.32);
+  --wn-border-subtle: rgba(255, 255, 255, 0.08);
 
-  --wb-blue: #3B82F6;
-  --wb-blue-dark: #1D4ED8;
-  --wb-blue-glow: rgba(59, 130, 246, 0.4);
+  --wn-mint: #00F5A0;
+  --wn-mint-cyan: #00D9F5;
+  --wn-mint-glow: rgba(0, 245, 160, 0.4);
 
-  --wb-green: #10B981;
-  --wb-green-glow: rgba(16, 185, 129, 0.45);
+  --wn-amber: #FFB800;
+  --wn-amber-glow: rgba(255, 184, 0, 0.4);
 
-  --wb-red: #EF4444;
-  --wb-red-glow: rgba(239, 68, 68, 0.45);
+  --wn-crimson: #FF3B69;
+  --wn-crimson-glow: rgba(255, 59, 105, 0.45);
 
-  --wb-gold: #F59E0B;
-  --wb-cyan: #06B6D4;
+  --wn-text: #F8FAFC;
+  --wn-text-dim: #94A3B8;
+  --wn-text-muted: #64748B;
 
-  --wb-text: #F8FAFC;
-  --wb-text-dim: #94A3B8;
-  --wb-text-muted: #64748B;
-
-  --wb-font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --wb-font-mono: 'JetBrains Mono', monospace;
+  --wn-font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --wn-font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ==================== ROOT CONTAINERS IN POCKET OPTION DOM ==================== */
@@ -40,8 +38,8 @@
   all: initial;
   position: fixed;
   z-index: 999998;
-  font-family: var(--wb-font-main);
-  color: var(--wb-text);
+  font-family: var(--wn-font-main);
+  color: var(--wn-text);
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
@@ -60,20 +58,20 @@
   top: 72px;
   right: 28px;
   width: 330px;
-  background: var(--wb-bg);
-  border: 1px solid var(--wb-border);
-  border-radius: 18px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(59, 130, 246, 0.15);
+  background: var(--wn-bg);
+  border: 1px solid var(--wn-border);
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 245, 160, 0.12);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   transition: height 0.25s ease, box-shadow 0.2s ease;
 }
 
 #winky-bot-root:hover {
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85), 0 0 28px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.8), 0 0 28px rgba(0, 245, 160, 0.22);
 }
 
 #winky-bot-root.collapsed .winky-bot-body,
@@ -85,8 +83,8 @@
 
 .winky-bot-header {
   padding: 10px 14px;
-  background: rgba(20, 29, 51, 0.95);
-  border-bottom: 1px solid var(--wb-border-subtle);
+  background: rgba(14, 25, 30, 0.95);
+  border-bottom: 1px solid var(--wn-border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -102,181 +100,252 @@
   align-items: center;
   gap: 8px;
 }
-.winky-drag-handle {
-  color: var(--wb-text-muted);
-  font-size: 13px;
-  letter-spacing: -2px;
-  cursor: grab;
-}
-.winky-logo-btn {
+
+.winky-brand-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0;
 }
-.winky-logo-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+
+/* Neon Cat-Ears Logo */
+.winky-neko-icon {
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  color: #fff;
-  font-weight: 800;
-  box-shadow: 0 0 10px var(--wb-blue-glow);
+  filter: drop-shadow(0 0 8px rgba(0, 245, 160, 0.5));
 }
-.winky-logo-text {
-  font-size: 13px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: 0.04em;
+.winky-neko-icon svg {
+  width: 100%;
+  height: 100%;
 }
-.winky-logo-text span {
-  color: var(--wb-blue);
+
+.winky-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.winky-brand-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+}
+.winky-brand-title span {
+  color: var(--wn-mint);
+  margin-left: 2px;
+}
+.winky-brand-sub {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--wn-text-dim);
+  letter-spacing: 0.8px;
 }
 
 .winky-header-right {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
 }
-.winky-online-badge {
-  display: flex;
+
+/* Live Status Badge */
+.winky-badge-live {
+  display: inline-flex;
   align-items: center;
   gap: 4px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(0, 245, 160, 0.15);
+  border: 1px solid rgba(0, 245, 160, 0.3);
   font-size: 9.5px;
-  font-weight: 700;
-  color: var(--wb-green);
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 2px 6px;
-  border-radius: 8px;
-  cursor: pointer;
+  font-weight: 800;
+  color: var(--wn-mint);
 }
-.winky-online-dot {
+.winky-badge-live .dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--wb-green);
-  box-shadow: 0 0 6px var(--wb-green);
+  background: var(--wn-mint);
+  box-shadow: 0 0 6px var(--wn-mint);
+  animation: winkyPulse 1.5s infinite;
 }
 
-.winky-hdr-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--wb-text-dim);
+/* Language switch RU / EN */
+.winky-lang-switch {
+  display: flex;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid var(--wn-border-subtle);
+}
+.winky-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--wn-text-dim);
   font-size: 10px;
-  font-weight: 800;
-  padding: 2px 6px;
+  font-weight: 700;
+  padding: 2px 5px;
   border-radius: 4px;
   cursor: pointer;
-  line-height: 1.2;
+  transition: all 0.15s ease;
 }
-.winky-hdr-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.16);
+.winky-lang-btn.active {
+  background: var(--wn-mint);
+  color: #091114;
 }
 
-/* ==================== 2. WIDGET BODY & TABS ==================== */
+/* Auto-Stream Toggle in Header */
+.winky-auto-stream-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--wn-border-subtle);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.winky-auto-stream-wrap.active {
+  background: rgba(0, 245, 160, 0.18);
+  border-color: rgba(0, 245, 160, 0.45);
+}
+.winky-auto-stream-lbl {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--wn-text-dim);
+}
+.winky-auto-stream-wrap.active .winky-auto-stream-lbl {
+  color: var(--wn-mint);
+}
+.winky-mini-knob {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--wn-text-muted);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.winky-auto-stream-wrap.active .winky-mini-knob {
+  background: var(--wn-mint);
+  box-shadow: 0 0 6px var(--wn-mint);
+}
+
+/* Minimize button */
+.winky-btn-collapse {
+  background: transparent;
+  border: none;
+  color: var(--wn-text-dim);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+.winky-btn-collapse:hover {
+  color: #FFFFFF;
+}
+
+/* ==================== 2. WIDGET BODY ==================== */
 
 .winky-bot-body {
-  padding: 12px;
+  padding: 12px 14px 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-height: 380px;
+  gap: 12px;
 }
 
 .winky-tab-content {
   display: none;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .winky-tab-content.active {
   display: flex;
 }
 
+/* ==================== TAB 1: SIGNALS UI ==================== */
+
 /* Market Switch (Regular | OTC) */
 .winky-market-switch {
   display: flex;
-  background: rgba(20, 29, 51, 0.9);
-  border: 1px solid var(--wb-border-subtle);
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--wn-border-subtle);
+  border-radius: 10px;
   padding: 3px;
-  gap: 4px;
+  gap: 3px;
 }
 .winky-market-btn {
   flex: 1;
+  padding: 7px 0;
   background: transparent;
   border: none;
-  color: var(--wb-text-dim);
-  font-size: 11px;
+  color: var(--wn-text-dim);
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 6px;
-  border-radius: 6px;
+  border-radius: 7px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 .winky-market-btn.active {
-  background: linear-gradient(135deg, #2563EB, #1D4ED8);
-  color: #fff;
-  box-shadow: 0 0 10px var(--wb-blue-glow);
+  background: linear-gradient(135deg, rgba(0, 245, 160, 0.25), rgba(0, 217, 245, 0.2));
+  border: 1px solid rgba(0, 245, 160, 0.45);
+  color: var(--wn-mint);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Two Selectors: Pair & Timeframe */
+/* Selectors Grid (Pair & Duration) */
 .winky-selectors-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
+  grid-template-columns: 1.6fr 1fr;
   gap: 8px;
 }
+
 .winky-select-box {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 .winky-select-lbl {
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
-  color: var(--wb-text-dim);
+  color: var(--wn-text-dim);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.5px;
 }
 .winky-select-native {
   width: 100%;
-  background: var(--wb-card);
-  border: 1px solid var(--wb-border);
-  color: #fff;
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 7px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--wn-border-subtle);
   border-radius: 8px;
-  outline: none;
+  padding: 7px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
   cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.winky-select-native:focus {
+  border-color: var(--wn-mint);
 }
 .winky-select-native option {
-  background: #0D1322;
-  color: #fff;
+  background: #0E191E;
+  color: #FFFFFF;
 }
 
-/* ==================== 3. SIGNAL CARD (INLINE, ALWAYS VISIBLE) ==================== */
+/* ==================== SIGNAL CARD ==================== */
 
 .winky-signal-card {
-  background: var(--wb-card);
-  border: 1px solid var(--wb-border);
-  border-radius: 12px;
+  background: var(--wn-card);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  border-radius: 14px;
   padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  gap: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Pair & Payout Row */
 .winky-card-pair-row {
   display: flex;
   align-items: center;
@@ -285,507 +354,535 @@
 .winky-card-pair {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13.5px;
+  gap: 7px;
+  font-size: 14px;
   font-weight: 800;
-  color: #fff;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 .winky-card-flags {
   font-size: 15px;
 }
 .winky-card-payout {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  color: var(--wb-green);
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--wn-mint);
+  background: rgba(0, 245, 160, 0.15);
+  border: 1px solid rgba(0, 245, 160, 0.35);
   padding: 2px 7px;
   border-radius: 6px;
 }
 
-/* Two Metric Blocks */
+/* Sub-metrics row */
 .winky-metrics-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
 }
 .winky-metric-pill {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--wb-border-subtle);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--wn-border-subtle);
   border-radius: 7px;
-  padding: 6px 8px;
+  padding: 5px 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
-  font-weight: 700;
 }
 .winky-metric-title {
-  color: var(--wb-text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--wn-text-dim);
 }
 .winky-metric-val {
-  color: #fff;
-  font-family: var(--wb-font-mono);
+  font-size: 11px;
   font-weight: 800;
+  color: #FFFFFF;
+  font-family: var(--wn-font-mono);
+}
+.winky-metric-val.amber {
+  color: var(--wn-amber);
 }
 
-/* Direction Block */
+/* ==================== DIRECTION & TA BLOCK ==================== */
+
 .winky-direction-block {
+  min-height: 82px;
   border-radius: 10px;
-  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 10px;
   text-align: center;
-  gap: 4px;
-  min-height: 72px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--wb-border-subtle);
-  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
+  transition: all 0.2s ease;
 }
 
+/* Idle State */
 .winky-direction-block.idle {
-  background: rgba(0, 0, 0, 0.25);
-  color: var(--wb-text-dim);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  color: var(--wn-text-dim);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
+/* Analysing State (1.2s smooth mint-gold scan) */
 .winky-direction-block.analysing {
-  background: rgba(37, 99, 235, 0.12);
-  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 245, 160, 0.45);
+  color: var(--wn-mint);
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
 }
-.winky-analysing-text {
+.analysis-scan-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11.5px;
-  font-weight: 700;
-  color: var(--wb-blue);
+  letter-spacing: 0.5px;
 }
-.winky-analysis-bar {
-  width: 100%;
+.analysis-progress-bar {
+  width: 90%;
   height: 5px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   overflow: hidden;
-  margin-top: 4px;
+  position: relative;
 }
-.winky-analysis-fill {
+.analysis-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #3B82F6, #10B981);
-  box-shadow: 0 0 10px #3B82F6;
+  background: linear-gradient(90deg, var(--wn-mint), var(--wn-amber));
   border-radius: 3px;
-  animation: wpsAnalysisSweep 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: scanProgress 1.15s ease-in-out forwards;
 }
-@keyframes wpsAnalysisSweep {
+
+@keyframes scanProgress {
   0% { width: 0%; }
+  50% { width: 65%; }
   100% { width: 100%; }
 }
 
-/* Signal Active State: BUY / SELL */
-.winky-direction-block.buy {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.12));
-  border: 1.5px solid var(--wb-green);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+/* Active Signal State (BUY / SELL) */
+.winky-direction-block.active {
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-.winky-direction-block.sell {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(245, 158, 11, 0.12));
-  border: 1.5px solid var(--wb-red);
-  box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+.winky-direction-block.active.buy {
+  background: linear-gradient(135deg, rgba(0, 245, 160, 0.28), rgba(0, 217, 245, 0.18));
+  border: 1.5px solid var(--wn-mint);
+  box-shadow: 0 0 24px rgba(0, 245, 160, 0.35);
 }
-
-.winky-dir-tag {
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-}
-.winky-direction-block.buy .winky-dir-tag {
-  color: var(--wb-green);
-  text-shadow: 0 0 10px var(--wb-green-glow);
-}
-.winky-direction-block.sell .winky-dir-tag {
-  color: var(--wb-red);
-  text-shadow: 0 0 10px var(--wb-red-glow);
+.winky-direction-block.active.sell {
+  background: linear-gradient(135deg, rgba(255, 59, 105, 0.28), rgba(239, 68, 68, 0.18));
+  border: 1.5px solid var(--wn-crimson);
+  box-shadow: 0 0 24px rgba(255, 59, 105, 0.35);
 }
 
-.winky-expiry-timer-row {
+.signal-dir-large {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 800;
-  color: #fff;
-  font-family: var(--wb-font-mono);
+  justify-content: center;
+  gap: 5px;
 }
-.winky-expiry-track {
+.signal-dir-large.buy { color: var(--wn-mint); text-shadow: 0 0 12px rgba(0,245,160,0.6); }
+.signal-dir-large.sell { color: var(--wn-crimson); text-shadow: 0 0 12px rgba(255,59,105,0.6); }
+
+/* 2 Clear Lines of Real Technical Analysis */
+.signal-ta-lines {
+  margin: 6px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
   width: 100%;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 3px;
 }
-.winky-expiry-fill {
-  height: 100%;
-  border-radius: 2px;
-  width: 100%;
-  transition: width 0.06s linear;
+.signal-ta-line {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #E2E8F0;
+  line-height: 1.35;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3px 6px;
+  border-radius: 5px;
+  border-left: 2px solid var(--wn-mint);
 }
-.winky-direction-block.buy .winky-expiry-fill {
-  background: var(--wb-green);
-}
-.winky-direction-block.sell .winky-expiry-fill {
-  background: var(--wb-red);
+.signal-ta-line.sell {
+  border-left-color: var(--wn-crimson);
 }
 
-/* ==================== 4. GET SIGNAL & AUTO TOGGLE ==================== */
+.signal-sub-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3px;
+}
+.signal-badge-live {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+}
+.signal-timer {
+  font-family: var(--wn-font-mono);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+}
+.signal-acc-badge {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--wn-amber);
+}
+
+/* ==================== ACTION ROW (GET SIGNAL & AUTO) ==================== */
 
 .winky-action-row {
   display: flex;
-  align-items: center;
   gap: 8px;
-  margin-top: 2px;
 }
 
 .winky-btn-get-signal {
   flex: 1;
-  background: linear-gradient(135deg, #2563EB, #1D4ED8);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--wn-mint), var(--wn-mint-cyan));
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
   font-size: 13.5px;
   font-weight: 800;
-  padding: 12px;
-  border-radius: 10px;
+  color: #091114;
   cursor: pointer;
-  box-shadow: 0 4px 16px var(--wb-blue-glow);
-  transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
+  box-shadow: 0 4px 18px rgba(0, 245, 160, 0.38);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  letter-spacing: 0.3px;
 }
 .winky-btn-get-signal:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+  box-shadow: 0 6px 22px rgba(0, 245, 160, 0.5);
 }
 .winky-btn-get-signal:active {
   transform: translateY(1px);
 }
+.winky-btn-get-signal:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
 
+/* Auto-deal switch on bottom */
 .winky-auto-toggle {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--wn-border-subtle);
+  border-radius: 12px;
+  padding: 0 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 3px;
-  padding: 6px 8px;
-  background: var(--wb-card);
-  border: 1px solid var(--wb-border);
-  border-radius: 10px;
+  gap: 6px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+.winky-auto-toggle.active {
+  background: rgba(0, 245, 160, 0.16);
+  border-color: rgba(0, 245, 160, 0.45);
 }
 .winky-auto-lbl {
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 800;
-  color: var(--wb-text-dim);
+  color: var(--wn-text-dim);
+}
+.winky-auto-toggle.active .winky-auto-lbl {
+  color: var(--wn-mint);
 }
 .winky-auto-switch {
-  width: 32px;
+  width: 28px;
   height: 16px;
   background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  border-radius: 10px;
   position: relative;
-  transition: background 0.2s;
+  transition: background 0.2s ease;
 }
 .winky-auto-knob {
   width: 12px;
   height: 12px;
-  background: #fff;
+  background: #FFFFFF;
   border-radius: 50%;
   position: absolute;
   top: 2px;
   left: 2px;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 .winky-auto-toggle.active .winky-auto-switch {
-  background: var(--wb-blue);
+  background: var(--wn-mint);
 }
 .winky-auto-toggle.active .winky-auto-knob {
-  transform: translateX(16px);
+  transform: translateX(12px);
+  background: #091114;
 }
 
-/* ==================== 5. TAB 2: AI CHAT ==================== */
+/* ==================== TAB 2: AI CHAT UI ==================== */
 
-.winky-model-select-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 .winky-chat-scroll {
-  flex: 1;
-  max-height: 250px;
-  min-height: 180px;
+  height: 180px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-right: 2px;
+  padding-right: 4px;
 }
-.winky-chat-bubble {
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 11px;
-  line-height: 1.4;
+.winky-chat-scroll::-webkit-scrollbar {
+  width: 4px;
 }
-.winky-chat-bubble.user {
-  background: rgba(37, 99, 235, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  align-self: flex-end;
-  color: #fff;
-  max-width: 90%;
-}
-.winky-chat-bubble.ai {
-  background: var(--wb-card);
-  border: 1px solid var(--wb-border);
-  align-self: flex-start;
-  color: var(--wb-text);
-  width: 100%;
+.winky-chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
 }
 
-.winky-ai-card-head {
+.winky-chat-bubble {
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.winky-chat-bubble.ai {
+  background: var(--wn-card);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  color: #E2E8F0;
+  margin-right: 18px;
+}
+.winky-chat-bubble.user {
+  background: rgba(0, 245, 160, 0.15);
+  border: 1px solid rgba(0, 245, 160, 0.35);
+  color: #FFFFFF;
+  margin-left: 18px;
+  align-self: flex-end;
+}
+
+.bubble-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--wb-border-subtle);
-  padding-bottom: 5px;
-  margin-bottom: 6px;
-}
-.winky-ai-model-tag {
-  font-size: 9.5px;
-  font-weight: 800;
-  color: var(--wb-blue);
-}
-.winky-ai-accuracy-circle {
-  font-size: 10.5px;
-  font-family: var(--wb-font-mono);
-  font-weight: 800;
-  color: var(--wb-green);
-  background: rgba(16, 185, 129, 0.15);
-  padding: 2px 5px;
-  border-radius: 4px;
-}
-.winky-ai-dir-badge {
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-.winky-ai-dir-badge.buy { color: var(--wb-green); }
-.winky-ai-dir-badge.sell { color: var(--wb-red); }
-
-.winky-ai-points {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
   font-size: 10px;
-  color: var(--wb-text-dim);
+  font-weight: 700;
+}
+.bubble-header .ai-badge {
+  color: var(--wn-mint);
+}
+.bubble-header .bubble-model {
+  color: var(--wn-text-dim);
+  font-family: var(--wn-font-mono);
 }
 
 .winky-chat-pills-row {
   display: flex;
-  align-items: center;
   gap: 6px;
+  align-items: center;
 }
 .winky-chat-pill {
   flex: 1;
-  background: rgba(20, 29, 51, 0.9);
-  border: 1px solid var(--wb-border-subtle);
-  color: #fff;
-  font-size: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--wn-border-subtle);
+  border-radius: 8px;
+  padding: 7px 8px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 6px 8px;
-  border-radius: 6px;
-  outline: none;
+  color: #FFFFFF;
+  text-align: center;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+.winky-chat-pill:hover {
+  border-color: var(--wn-mint);
+  color: var(--wn-mint);
 }
 .winky-btn-send-chat {
-  background: #2563EB;
+  background: linear-gradient(135deg, var(--wn-mint), var(--wn-mint-cyan));
   border: none;
-  color: #fff;
-  width: 32px;
-  height: 30px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
+  border-radius: 8px;
+  width: 36px;
+  height: 33px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  color: #091114;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 2px 10px rgba(0, 245, 160, 0.35);
 }
 
-/* ==================== 6. BOTTOM NAVIGATION (2 TABS) ==================== */
+/* ==================== 3. BOTTOM TAB NAVIGATION (2 TABS) ==================== */
 
 .winky-bot-nav {
-  padding: 6px 12px 10px 12px;
-  background: rgba(13, 19, 34, 0.98);
-  border-top: 1px solid var(--wb-border-subtle);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  background: rgba(14, 25, 30, 0.98);
+  border-top: 1px solid var(--wn-border-subtle);
+  padding: 4px 6px;
+  gap: 6px;
 }
-.winky-nav-tab {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--wb-text-muted);
-  font-size: 11px;
-  font-weight: 800;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
+
+.winky-nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  color: var(--wn-text-dim);
+  font-size: 11.5px;
+  font-weight: 800;
+  border-radius: 10px;
+  cursor: pointer;
   transition: all 0.15s ease;
 }
-.winky-nav-tab.active {
-  background: rgba(37, 99, 235, 0.15);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #fff;
+.winky-nav-item svg {
+  width: 16px;
+  height: 16px;
+}
+.winky-nav-item.active {
+  background: rgba(0, 245, 160, 0.16);
+  color: var(--wn-mint);
+  border: 1px solid rgba(0, 245, 160, 0.35);
 }
 
-/* ==================== 7. LIVE SCORE HUD (TOP-CENTER) ==================== */
+/* ==================== 4. LIVE SCORE HUD WIDGET ==================== */
 
 #winky-score-root {
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999999;
-  background: rgba(13, 19, 34, 0.92);
-  border: 1px solid var(--wb-border);
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(59, 130, 246, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  background: var(--wn-bg);
+  border: 1px solid var(--wn-border);
+  border-radius: 30px;
   padding: 6px 14px;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  white-space: nowrap;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 18px rgba(0, 245, 160, 0.12);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  cursor: grab;
   touch-action: none;
 }
-
-.winky-score-handle {
-  cursor: grab;
-  color: var(--wb-text-muted);
-  font-size: 12px;
-}
-.winky-score-handle:active {
+#winky-score-root:active {
   cursor: grabbing;
 }
 
-.winky-score-live-badge {
+.winky-score-track {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-title-badge {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  color: var(--wb-blue);
-  padding-right: 6px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
 }
-.winky-score-dot {
+.score-title-badge .dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--wb-green);
-  box-shadow: 0 0 6px var(--wb-green);
-  animation: wpsDotPulse 1.4s infinite alternate;
-}
-@keyframes wpsDotPulse {
-  0% { transform: scale(0.85); opacity: 0.6; }
-  100% { transform: scale(1.2); opacity: 1; }
+  background: var(--wn-mint);
+  box-shadow: 0 0 8px var(--wn-mint);
+  animation: winkyPulse 1.5s infinite;
 }
 
-.winky-score-pill {
+.score-pill {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 800;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: var(--wn-font-mono);
 }
-.winky-score-pill.wins {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: var(--wb-green);
+.score-pill .lbl {
+  font-size: 10px;
+  color: var(--wn-text-dim);
+  font-family: var(--wn-font-main);
+  text-transform: uppercase;
 }
-.winky-score-pill.losses {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: var(--wb-red);
-}
-.winky-score-pill.winrate {
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.35);
-  color: var(--wb-blue);
-}
-.winky-score-pill.profit {
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: var(--wb-gold);
-}
+.score-pill.wins .val { color: var(--wn-mint); font-weight: 800; }
+.score-pill.losses .val { color: var(--wn-crimson); font-weight: 800; }
+.score-pill.rate .val { color: var(--wn-amber); font-weight: 800; }
+.score-pill.profit .val { color: var(--wn-mint); font-weight: 800; }
 
-.winky-score-step-btn {
+.score-step-btn {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
   width: 16px;
   height: 16px;
-  font-size: 10px;
-  cursor: pointer;
-  display: flex;
+  border-radius: 4px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  padding: 0;
+  cursor: pointer;
+  margin-left: 2px;
 }
-.winky-score-step-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
+.score-step-btn:hover {
+  background: var(--wn-mint);
+  color: #091114;
 }
 
-.winky-score-reset-btn {
+.btn-score-reset {
   background: transparent;
   border: none;
-  color: var(--wb-text-muted);
+  color: var(--wn-text-muted);
   font-size: 10px;
+  font-weight: 700;
   cursor: pointer;
   padding: 2px 4px;
-  border-radius: 4px;
 }
-.winky-score-reset-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+.btn-score-reset:hover {
+  color: #FFFFFF;
 }
 
-/* ==================== REAL POCKET BUTTON GLOW ==================== */
+/* ==================== REAL POCKET OPTION BUTTON HIGHLIGHTING ==================== */
 
-.wps-button-glow-buy {
-  outline: 3px solid #10B981 !important;
-  box-shadow: 0 0 25px #10B981, inset 0 0 15px rgba(16, 185, 129, 0.5) !important;
-  animation: wpsPulseBuy 0.9s infinite alternate !important;
+.winky-po-glow-call {
+  outline: 3px solid #00F5A0 !important;
+  box-shadow: 0 0 25px rgba(0, 245, 160, 0.8) !important;
+  animation: winkyBtnPulse 1.2s infinite !important;
 }
-.wps-button-glow-sell {
-  outline: 3px solid #EF4444 !important;
-  box-shadow: 0 0 25px #EF4444, inset 0 0 15px rgba(239, 68, 68, 0.5) !important;
-  animation: wpsPulseSell 0.9s infinite alternate !important;
+
+.winky-po-glow-put {
+  outline: 3px solid #FF3B69 !important;
+  box-shadow: 0 0 25px rgba(255, 59, 105, 0.8) !important;
+  animation: winkyBtnPulse 1.2s infinite !important;
 }
-@keyframes wpsPulseBuy {
-  0% { box-shadow: 0 0 10px #10B981; }
-  100% { box-shadow: 0 0 30px #10B981, 0 0 50px rgba(16, 185, 129, 0.6); }
+
+@keyframes winkyPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
 }
-@keyframes wpsPulseSell {
-  0% { box-shadow: 0 0 10px #EF4444; }
-  100% { box-shadow: 0 0 30px #EF4444, 0 0 50px rgba(239, 68, 68, 0.6); }
+
+@keyframes winkyBtnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }

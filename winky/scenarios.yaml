@@ -120,6 +120,68 @@ quick_replies:
       - "[blush] Thank you so much for the likes and screen taps! You guys are amazing, appreciate the love!"
       - "[excited] Huge thanks for all the hearts! You're making this stream shine so bright!"
 
+  - id: trade_win
+    label: Победа (+1 Win)
+    icon: 🟢
+    emotion: win
+    texts_ru:
+      - "[win] Есть плюс в копилочку! Отличная сделка, график отработал как по учебнику!"
+      - "[excited] Плюсик зафиксирован! Красивое движение, поздравляю всех, кто заходил со мной!"
+      - "[happy] Да! Очередная победа! Забираем чистый профит со стрима!"
+      - "[win] Прекрасный импульс и чистая прибыль! Статистика на табло растёт!"
+    texts_en:
+      - "[win] Boom, that's a win! Clean execution, moving right into profit!"
+      - "[excited] Another win secured! Love this momentum, congrats everyone!"
+      - "[happy] Yes! Target hit perfectly, taking clean profit on stream!"
+
+  - id: trade_loss_step1
+    label: Перекрытие 1 (та же пара)
+    icon: 🔄
+    emotion: wink
+    texts_ru:
+      - "[wink] Ой, на последней секунде чуть зацепило тенью, вообще ничего страшного! Тренд тут сильный, захожу на перекрытие с удвоением в ту же пару и забираем своё с плюсом!"
+      - "[thinking] Чуть-чуть не хватило времени до закрытия импульса. Захожу на первое колено перекрытия в эту же пару!"
+      - "[wink] Небольшая коррекция перед выстрелом. Спокойно удваиваем ставку и забираем импульс!"
+    texts_en:
+      - "[wink] Slight wick touched our level, no worries at all! Trend is solid, entering step 1 recovery on this pair!"
+      - "[thinking] Just a micro pull-back before the move. Entering step 1 recovery with double size!"
+
+  - id: trade_loss_step2
+    label: Перекрытие 2 (смена пары)
+    icon: ⚡
+    emotion: thinking
+    texts_ru:
+      - "[thinking] Так, эта пара начала капризничать и пилить уровень, не будем с ней спорить! Переключаюсь на более чистый график и спокойно закрываем перекрытие там!"
+      - "[wink] График ушёл в микро-боковик. Переключаю пару на свежий тренд, забираем вторую ступень без нервов!"
+      - "[thinking] Вижу распил уровня на этой паре. Быстро переходим на чистый волатильный актив и закрываем плюс!"
+    texts_en:
+      - "[thinking] Alright, this pair is getting choppy! Switching to a cleaner chart for step 2 recovery!"
+      - "[wink] Chart went sideways here. Switching to a fresh trend to seal the win smoothly!"
+
+  - id: flat_skip
+    label: Пропуск флэта
+    icon: 🛑
+    emotion: thinking
+    texts_ru:
+      - "[thinking] Смотрите, ребятки, на этой паре сейчас узкий боковик и слабый объём — по моей стратегии в такой шум не лезем! Переключаюсь на другую пару с чистым трендом!"
+      - "[wink] На графике пила и флэт, уверенность ниже 82%. Пропускаем шум и ищем чёткий импульс!"
+      - "[thinking] В такой распил заходить нельзя. Дисциплина прежде всего — меняем пару на волатильную!"
+    texts_en:
+      - "[thinking] Guys, this pair is flatlining right now with weak volume. Skipping this noise to find a clear trend!"
+      - "[wink] Choppy sideways noise here, confidence below 82%. Skipping to find a clean setup!"
+
+  - id: ask_chat_pair
+    label: Запрос пары в чат
+    icon: ❓
+    emotion: happy
+    texts_ru:
+      - "[happy] Ребятки, какую валютную пару идём разбирать следующей? Пишите прямо сейчас в чат — выберем и зайдём вместе!"
+      - "[wave] Чат, жду ваши любимые валютные пары! Напишите в комментарии, на какой график переключаемся!"
+      - "[wink] Какую пару хотим разобрать прямо сейчас? Напишите в чатик — включу на экране!"
+    texts_en:
+      - "[happy] Chat, which currency pair should we analyze next? Drop your picks in the comments!"
+      - "[wave] Waiting for your favorite currency pairs in chat! Which chart should we switch to?"
+
 # Авто-разогрев и CTA: соотношение 4:1 (4 вопроса к чату на 1 напоминание про ассистента)
 cta:
   interval_minutes: 3

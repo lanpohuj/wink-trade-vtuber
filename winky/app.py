@@ -208,6 +208,90 @@ class WinkyAPI:
         chosen_phrase = random.choice(phrases)
         self._controller.speak(chosen_phrase, lang=lang, emotion="excited", source="signal_announcement")
 
+    def handle_trading_event(self, payload: Any = None) -> bool:
+        """Обрабатывает автономные события сделок со стрима: победа, перекрытие, флэт, вопрос в чат."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        event_type = payload.get("event") or payload.get("type") or "win"
+        lang = payload.get("lang") or "ru"
+        pair = payload.get("pair") or "EUR/USD OTC"
+        clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
+
+        if event_type == "win":
+            self.trigger_action("cheer", 3.5)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('win')")
+            phrases_ru = [
+                "[win] Есть плюс в копилочку! Отличная сделка, график отработал как по учебнику!",
+                "[excited] Плюсик зафиксирован! Красивое движение, поздравляю всех, кто заходил со мной!",
+                "[happy] Да! Очередная победа! Забираем чистый профит со стрима!",
+            ]
+            phrases_en = [
+                "[win] Boom, that's a win! Clean execution, moving right into profit!",
+                "[excited] Another win secured! Love this momentum, congrats everyone!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="win", source="trade_event")
+
+        elif event_type == "loss_step1":
+            self.trigger_action("think", 2.5)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            phrases_ru = [
+                "[wink] Ой, на последней секунде чуть зацепило тенью, вообще ничего страшного! Тренд тут сильный, захожу на перекрытие с удвоением в ту же пару и забираем своё с плюсом!",
+                "[thinking] Чуть-чуть не хватило времени до закрытия импульса. Захожу на первое колено перекрытия в эту же пару!",
+            ]
+            phrases_en = [
+                "[wink] Slight wick touched our level, no worries at all! Trend is solid, entering step 1 recovery on this pair!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="wink", source="trade_event")
+
+        elif event_type == "loss_step2":
+            self.trigger_action("peek_closer", 3.0)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            phrases_ru = [
+                "[thinking] Так, эта пара начала капризничать и пилить уровень, не будем с ней спорить! Переключаюсь на более чистый график и спокойно закрываем перекрытие там!",
+                "[wink] График ушёл в микро-боковик. Переключаю пару на свежий тренд, забираем вторую ступень без нервов!",
+            ]
+            phrases_en = [
+                "[thinking] Alright, this pair is getting choppy! Switching to a cleaner chart for step 2 recovery!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+
+        elif event_type == "flat_skip":
+            self.trigger_action("think", 2.0)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            phrases_ru = [
+                f"[thinking] Смотрите, ребятки, на {clean_pair_ru} сейчас узкий боковик и слабый объём — по моей стратегии в такой шум не лезем! Переключаюсь на другую пару с чистым трендом!",
+                f"[wink] На {clean_pair_ru} пила и флэт, уверенность ниже 82%. Пропускаем шум и ищем чёткий импульс!",
+            ]
+            phrases_en = [
+                f"[thinking] Guys, {pair} is flatlining right now with weak volume. Skipping this noise to find a clear trend!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+
+        elif event_type == "ask_chat":
+            self.trigger_action("wave", 2.5)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('happy')")
+            phrases_ru = [
+                "[happy] Ребятки, какую валютную пару идём разбирать следующей? Пишите прямо сейчас в чат — выберем и зайдём вместе!",
+                "[wave] Чат, жду ваши любимые валютные пары! Напишите в комментарии, на какой график переключаемся!",
+            ]
+            phrases_en = [
+                "[happy] Chat, which currency pair should we analyze next? Drop your picks in the comments!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="happy", source="trade_event")
+
+        return True
+
     # ---------- окна подключаются после создания ----------
 
     def attach(self, avatar_window: webview.Window, panel_window: webview.Window) -> None:
@@ -879,6 +963,7 @@ def main() -> None:
     )
     register_winky_callback("speak_signal", winky_api.speak_signal)
     register_winky_callback("launch_chrome", winky_api.launch_pocket_sniper)
+    register_winky_callback("event", winky_api.handle_trading_event)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None

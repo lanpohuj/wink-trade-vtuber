@@ -40,6 +40,31 @@ FILLERS_EN = [
     "One second, checking that out!",
 ]
 
+PAIR_PATTERNS = [
+    (r"(eur\s*/?\s*usd|евро\s*доллар|еврик|евро/доллар)", "EUR/USD OTC"),
+    (r"(aud\s*/?\s*cad|австралиец\s*канадец|ауд\s*кад|австрал)", "AUD/CAD OTC"),
+    (r"(mad\s*/?\s*usd|марокко|мад\s*юсд)", "MAD/USD OTC"),
+    (r"(usd\s*/?\s*cad|доллар\s*канадец|юсд\s*кад|бакс\s*канадец)", "USD/CAD OTC"),
+    (r"(gbp\s*/?\s*usd|фунт\s*доллар|кабель|фунт)", "GBP/USD OTC"),
+    (r"(usd\s*/?\s*jpy|доллар\s*йена|йена|йену)", "USD/JPY OTC"),
+    (r"(aud\s*/?\s*usd|австралиец\s*доллар)", "AUD/USD OTC"),
+    (r"(nzd\s*/?\s*usd|новозеландец|киви)", "NZD/USD OTC"),
+    (r"(золот[оае]|gold|xau)", "GOLD OTC"),
+    (r"(биткоин|биток|btc|bitcoin)", "BTC/USD OTC"),
+    (r"(эфир|эфириум|eth|ethereum)", "ETH/USD OTC"),
+    (r"(apple|эппл|эпл|яблоко)", "Apple OTC"),
+    (r"(tesla|тесла)", "Tesla OTC"),
+]
+
+
+def detect_requested_pair(text: str) -> str | None:
+    """Определяет запрошенную валютную пару из комментария зрителя."""
+    low = text.lower()
+    for pattern, pair_id in PAIR_PATTERNS:
+        if re.search(pattern, low):
+            return pair_id
+    return None
+
 # Универсальные фразы реакций лайва с поддержкой {user} и {gift} (расширенный пул 8-10 вариантов)
 JOIN_PHRASES_RU = [
     "[wave] О, {user}, приветик! Рада тебя видеть на стриме!",
@@ -447,6 +472,30 @@ class ChatRouter:
 
         # Обновляем общую ленту комнаты
         self._recent_chat.append({"who": clean_user, "text": text})
+
+        # Проверка запроса валютной пары от зрителя
+        requested_pair = detect_requested_pair(text)
+        if requested_pair:
+            try:
+                from winky.server import push_chat_pair_request
+                push_chat_pair_request(requested_pair, clean_user)
+            except Exception as e:
+                logger.warning("Ошибка push_chat_pair_request: %s", e)
+
+            clean_pair_name = requested_pair.replace(" OTC", "").replace("/", " ")
+            ack_phrases_ru = [
+                f"[wink] О, {clean_user}, приняла запрос на {clean_pair_name}! Завершу эту сделку и сразу переключаю график!",
+                f"[happy] {clean_user}, отличный выбор! Ставлю {clean_pair_name} в очередь, сейчас разберём график!",
+                f"[wink] Вижу {clean_pair_name} от {clean_user}! Переключаемся на неё следующей!",
+            ]
+            ack_phrases_en = [
+                f"[wink] Got it {clean_user}! {requested_pair} queued, analyzing right after this trade!",
+                f"[happy] Great pick {clean_user}! Switching to {requested_pair} next!",
+            ]
+            ack = random.choice(ack_phrases_ru if lang == "ru" else ack_phrases_en)
+            self._feed("winky", "Winky", ack)
+            self._controller.speak(ack, lang=lang, emotion="wink", source="chat_pair_request")
+            return
 
         lower_text = text.lower()
         is_compliment = profile.vibe == "flirty" or any(word in lower_text for word in ("красотк", "лучш", "мил", "любл", "топ", "няшк", "красив", "cute", "love", "best", "милашк", "прелесть"))

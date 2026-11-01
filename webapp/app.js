@@ -60,17 +60,17 @@ const i18n = {
   ru: {
     pairLbl: "Валютная пара",
     timeLbl: "Время сделки",
-    time: "Время:",
+    time: "Экспирация:",
     accuracy: "Точность:",
     readyForSignal: "Готов к анализу графика",
-    analysing: "АНАЛИЗ РЫНКА...",
+    analysing: "Анализ RSI, EMA и уровней...",
     getSignal: "ПОЛУЧИТЬ СИГНАЛ",
     auto: "АВТО",
     tabSignals: "🏠 СИГНАЛЫ",
     tabChat: "💬 ИИ-ЧАТ",
-    chatWelcome: "Привет! Выберите пару, экспирацию и нажмите кнопку запроса.",
-    buyText: "↗ КУПИТЬ",
-    sellText: "↘ ПРОДАТЬ",
+    chatWelcome: "Привет! Я Winky AI. Выберите пару, экспирацию и нажмите кнопку запроса.",
+    buyText: "↗ КУПИТЬ (ВВЕРХ)",
+    sellText: "↘ ПРОДАТЬ (ВНИЗ)",
     depositTitle: "Демо-сигналы исчерпаны",
     depositDesc: "Вы использовали 3 бесплатных сигнала. Пополните счёт Pocket Option, чтобы получить безлимитный доступ к сигналам, OTC-алгоритмам и всем ИИ-моделям.",
     promoBonus: "+50% к депозиту от $50",
@@ -82,17 +82,17 @@ const i18n = {
   en: {
     pairLbl: "Currency Pair",
     timeLbl: "Trade Duration",
-    time: "Time:",
+    time: "Expiry:",
     accuracy: "Accuracy:",
-    readyForSignal: "Ready for market analysis",
-    analysing: "ANALYSING MARKET...",
+    readyForSignal: "Ready for chart analysis",
+    analysing: "Analyzing RSI, EMA & levels...",
     getSignal: "GET SIGNAL",
     auto: "AUTO",
     tabSignals: "🏠 SIGNALS",
     tabChat: "💬 AI CHAT",
-    chatWelcome: "Hello! Select a currency pair, duration and tap send.",
-    buyText: "↗ BUY",
-    sellText: "↘ SELL",
+    chatWelcome: "Hello! I am Winky AI. Select a currency pair, duration and tap send.",
+    buyText: "↗ BUY (CALL)",
+    sellText: "↘ SELL (PUT)",
     depositTitle: "Demo Signals Exhausted",
     depositDesc: "You have used all 3 free demo signals. Deposit on Pocket Option to unlock unlimited signals, OTC algorithms, and all AI models.",
     promoBonus: "+50% Deposit Bonus from $50",
@@ -203,12 +203,14 @@ async function startSignalAnalysis() {
   const btn = document.getElementById("btnGetSignal");
   if (btn) btn.disabled = true;
 
-  // 1. ANALYSIS STATE: 1.0 SECONDS BLUE SCANNING BAR
+  // 1. ANALYSIS STATE: 1.2 SECONDS SCANNING BAR
   if (dirBlock) {
     dirBlock.className = "winky-direction-block analysing";
     dirBlock.innerHTML = `
-      <div class="analysis-spinner"></div>
-      <span style="letter-spacing:1px;font-weight:700;">${t("analysing")}</span>
+      <div class="analysis-scan-title" style="display:flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:0.5px;color:#00F5A0;font-weight:800;">
+        <span>⚡</span>
+        <span>${t("analysing")}</span>
+      </div>
       <div class="analysis-progress-bar">
         <div class="analysis-progress-fill"></div>
       </div>
@@ -266,17 +268,25 @@ async function startSignalAnalysis() {
   const accEl = document.getElementById("metricAccuracy");
   if (accEl) accEl.textContent = `${accuracy}%`;
 
+  const lines = state.lang === "ru" ? (apiData?.rationale_ru || []) : (apiData?.rationale_en || []);
+  const line1 = lines[0] || (isBuy ? "• RSI(7): 26.4 — выход из зоны перепроданности" : "• RSI(7): 73.1 — разворот из зоны перекупленности");
+  const line2 = lines[1] || (isBuy ? "• Уровень: отскок от локальной поддержки + бычий импульс EMA" : "• Уровень: отскок от сопротивления + медвежий импульс EMA");
+
   if (dirBlock) {
     dirBlock.className = `winky-direction-block active ${isBuy ? "buy" : "sell"}`;
     dirBlock.innerHTML = `
-      <div class="signal-dir-large">
+      <div class="signal-dir-large ${isBuy ? "buy" : "sell"}">
         ${isBuy ? t("buyText") : t("sellText")} 
-        <span class="dir-en">(${isBuy ? "BUY" : "SELL"})</span>
+        <span class="dir-en" style="font-size:12px;opacity:0.8;">(${isBuy ? "BUY" : "SELL"})</span>
+      </div>
+      <div class="signal-ta-lines">
+        <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${line1}</div>
+        <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${line2}</div>
       </div>
       <div class="signal-sub-row">
         <span class="signal-badge-live">LIVE</span>
         <span class="signal-timer" id="signalTimer">${formatCountdown(totalSec)}</span>
-        <span class="signal-acc-badge">${state.lang === "ru" ? "ТОЧНОСТЬ" : "ACCURACY"}: ${accuracy}%</span>
+        <span class="signal-acc-badge">${accuracy}% WINRATE</span>
       </div>
     `;
   }

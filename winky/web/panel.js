@@ -1055,6 +1055,42 @@ document.addEventListener("keydown", (event) => {
 
 /* ==================== WINKY NEURAL VISION HUD & Voice Signals ==================== */
 
+function pollExtensionConnection() {
+  const dot = document.getElementById("extConnDot");
+  const text = document.getElementById("extConnText");
+  const box = document.getElementById("extConnStatus");
+  if (!dot || !text || !box) return;
+
+  fetch("http://127.0.0.1:8765/api/winky/status")
+    .then((r) => r.json())
+    .then((data) => {
+      if (data && data.connected) {
+        dot.style.background = "#00F5A0";
+        dot.style.boxShadow = "0 0 10px #00F5A0";
+        text.style.color = "#00F5A0";
+        box.style.borderColor = "rgba(0, 245, 160, 0.35)";
+        box.style.background = "rgba(0, 245, 160, 0.08)";
+        text.textContent = "🟢 Расширение Winky AI на po.financial подключено" + (data.queue_len > 0 ? ` (в очереди пар: ${data.queue_len})` : "");
+      } else {
+        dot.style.background = "#64748B";
+        dot.style.boxShadow = "none";
+        text.style.color = "#94A3B8";
+        box.style.borderColor = "rgba(255, 255, 255, 0.08)";
+        box.style.background = "rgba(0, 0, 0, 0.3)";
+        text.textContent = "⚪ Ожидание подключения расширения на po.financial...";
+      }
+    })
+    .catch(() => {
+      dot.style.background = "#64748B";
+      dot.style.boxShadow = "none";
+      text.style.color = "#94A3B8";
+      text.textContent = "⚪ Локальный сервер Winky не отвечает на :8765";
+    });
+}
+
+setInterval(pollExtensionConnection, 2500);
+setTimeout(pollExtensionConnection, 500);
+
 const launchPocketSniperBtn = document.getElementById("launchPocketSniperBtn");
 const revealExtensionBtn = document.getElementById("revealExtensionBtn");
 const openPreviewMiniAppBtn = document.getElementById("openPreviewMiniAppBtn");
