@@ -113,7 +113,9 @@
     selectedTimeframe: "30s",
     selectedModel: "claude-fable-5.1",
     autoStream: false, // 🤖 АВТО-СТРИМ тумблер
-    botState: "IDLE", // Strict 4-State Machine: "IDLE" | "ANALYZING" | "IN_TRADE" | "RESULT_COOLDOWN"
+    botState: "IDLE", // Strict 7-State Machine: "IDLE" | "SWITCHING_PAIR" | "ANALYZING_PAIR" | "PREPARING_TRADE" | "IN_TRADE" | "TRADE_RESULT" | "COOLDOWN"
+    lastPairSwitchAttemptAt: 0,
+    currentPrefetchIntent: null,
     isAnalysing: false,
     signalState: "idle", // "idle" | "analysing" | "active"
     activeSignal: null,
@@ -438,55 +440,24 @@
     }
 
     // 2. Detect active pair from PO page
-    const pairSelectors = [
-      ".current-symbol",
-      ".pair-number-wrap",
-      ".symbols-list__item--active",
-      "[data-test='current-asset']",
-      ".symbol-name",
-      "h1.pair-title",
-      ".active-asset",
-      ".assets-block__active",
-    ];
-
-    let foundPair = "";
-    for (const sel of pairSelectors) {
-      const el = document.querySelector(sel);
-      if (el && el.textContent.trim()) {
-        const txt = el.textContent.trim();
-        const m = txt.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-        if (m) {
-          foundPair = m[0];
-          break;
-        } else if (txt.length >= 3 && !txt.includes("\n") && !txt.includes("%")) {
-          foundPair = txt;
-          break;
-        }
-      }
-    }
-
-    if (!foundPair) {
-      const match = document.title.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-      if (match) foundPair = match[1];
-    }
-
+    const foundPair = scanPocketOptionCurrentPair();
     if (foundPair) {
-      foundPair = foundPair.trim();
-      if (!foundPair.includes("/") && foundPair.length >= 6 && !foundPair.includes(" ")) {
-        foundPair = foundPair.slice(0, 3) + "/" + foundPair.slice(3);
+      let normPair = foundPair.trim();
+      if (!normPair.includes("/") && normPair.length >= 6 && !normPair.includes(" ")) {
+        normPair = normPair.slice(0, 3) + "/" + normPair.slice(3);
       }
-      if (!foundPair.toLowerCase().includes("otc") && !foundPair.includes(".")) {
-        foundPair += " OTC";
+      if (!normPair.toLowerCase().includes("otc") && !normPair.includes(".")) {
+        normPair += " OTC";
       }
 
       // Ensure pair is registered in catalog
       const cat = PAIR_CATALOG.otc;
-      let meta = cat.find((p) => p.id.toLowerCase() === foundPair.toLowerCase());
+      let meta = cat.find((p) => p.id.toLowerCase() === normPair.toLowerCase());
       if (!meta) {
         meta = {
-          id: foundPair,
-          name: foundPair,
-          flags: getPairFlags(foundPair),
+          id: normPair,
+          name: normPair,
+          flags: getPairFlags(normPair),
           payout: state.targetPayout || "92%",
         };
         cat.unshift(meta);
@@ -497,7 +468,7 @@
       if (select) {
         let optFound = false;
         for (let i = 0; i < select.options.length; i++) {
-          if (select.options[i].value.toLowerCase() === foundPair.toLowerCase()) {
+          if (select.options[i].value.toLowerCase() === normPair.toLowerCase()) {
             optFound = true;
             if (select.selectedIndex !== i) select.selectedIndex = i;
             break;
@@ -505,7 +476,7 @@
         }
         if (!optFound) {
           const opt = document.createElement("option");
-          opt.value = foundPair;
+          opt.value = normPair;
           opt.textContent = `${meta.flags} ${meta.name} (${meta.payout})`;
           opt.selected = true;
           select.prepend(opt);
@@ -513,11 +484,11 @@
         }
       }
 
-      if (foundPair !== state.targetPair) {
-        state.targetPair = foundPair;
+      if (normPair !== state.targetPair) {
+        state.targetPair = normPair;
         state.targetFlags = meta.flags;
         state.targetPayout = meta.payout;
-        state.marketType = foundPair.toLowerCase().includes("otc") ? "otc" : "regular";
+        state.marketType = normPair.toLowerCase().includes("otc") ? "otc" : "regular";
         updateCardPairUI();
       }
     }
@@ -561,73 +532,300 @@
     }
   }
 
+  function scanPocketOptionCurrentPair() {
+    const pairSelectors = [
+      ".current-symbol",
+      ".pair-number-wrap",
+      ".symbols-list__item--active",
+      "[data-test='current-asset']",
+      ".symbol-name",
+      "h1.pair-title",
+      ".active-asset",
+      ".assets-block__active",
+    ];
+    for (const sel of pairSelectors) {
+      const el = document.querySelector(sel);
+      if (el && el.textContent.trim()) {
+        const txt = el.textContent.trim();
+        const m = txt.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+        if (m) return m[0].trim();
+        if (txt.length >= 3 && !txt.includes("\n") && !txt.includes("%")) return txt.trim();
+      }
+    }
+    const match = document.title.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+    if (match) return match[1].trim();
+    return "";
+  }
+
   setInterval(scanPocketOptionDOM, 1000);
 
-  /* ==================== 3. Auto-Stream: UI Automation on Pocket Option ==================== */
+  /* ==================== 3. DOM Automation & PO Controls ==================== */
+
+  const failedPairsBlacklist = new Map(); // lowercase pair -> timestamp
+
+  function isPairBlacklisted(pairName) {
+    if (!pairName) return false;
+    const key = pairName.toLowerCase().trim();
+    const exp = failedPairsBlacklist.get(key);
+    if (!exp) return false;
+    if (Date.now() > exp) {
+      failedPairsBlacklist.delete(key);
+      return false;
+    }
+    return true;
+  }
+
+  function blacklistPair(pairName) {
+    if (!pairName) return;
+    const key = pairName.toLowerCase().trim();
+    failedPairsBlacklist.set(key, Date.now() + 10 * 60 * 1000); // 10 minutes
+    loggerLog(`[Blacklist] Пара «${pairName}» временно заблокирована на 10 минут`);
+  }
+
+  function robustClick(el) {
+    if (!el) return false;
+    try {
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      const eventOpts = {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        composed: true,
+        clientX: x,
+        clientY: y,
+        screenX: window.screenX + x,
+        screenY: window.screenY + y,
+        button: 0,
+        buttons: 1,
+      };
+
+      el.dispatchEvent(new PointerEvent("pointerover", eventOpts));
+      el.dispatchEvent(new MouseEvent("mouseover", eventOpts));
+      el.dispatchEvent(new PointerEvent("pointerenter", eventOpts));
+      el.dispatchEvent(new MouseEvent("mouseenter", eventOpts));
+      el.dispatchEvent(new PointerEvent("pointerdown", eventOpts));
+      el.dispatchEvent(new MouseEvent("mousedown", eventOpts));
+      if (typeof el.focus === "function") el.focus();
+      el.dispatchEvent(new PointerEvent("pointerup", { ...eventOpts, buttons: 0 }));
+      el.dispatchEvent(new MouseEvent("mouseup", { ...eventOpts, buttons: 0 }));
+      el.dispatchEvent(new MouseEvent("click", { ...eventOpts, buttons: 0 }));
+      if (typeof el.click === "function") {
+        el.click();
+      }
+      return true;
+    } catch (err) {
+      loggerLog("robustClick warning:", err);
+      try {
+        el.click();
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+  }
+
+  function closeAnyOpenModals() {
+    const closeSelectors = [
+      ".alist__close",
+      ".close-btn",
+      ".modal-close",
+      "[data-test='close-asset-select']",
+      ".alist-close",
+      ".modal-window__close",
+      ".popup__close",
+      ".icon-close",
+      ".assets-modal__close",
+      ".alist-header__close",
+    ];
+    for (const sel of closeSelectors) {
+      const btns = document.querySelectorAll(sel);
+      for (const b of btns) {
+        if (b && b.offsetParent !== null) {
+          robustClick(b);
+        }
+      }
+    }
+    const escOpts = { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true, cancelable: true };
+    document.dispatchEvent(new KeyboardEvent("keydown", escOpts));
+    document.dispatchEvent(new KeyboardEvent("keyup", escOpts));
+    window.dispatchEvent(new KeyboardEvent("keydown", escOpts));
+    window.dispatchEvent(new KeyboardEvent("keyup", escOpts));
+  }
 
   const POAutomation = {
-    // Switch currency pair via Pocket Option DOM
-    switchPair(pairName) {
-      loggerLog("POAutomation: переключение пары на", pairName);
+    // Asynchronous pair switch with retry and DOM ticker verification
+    async switchPairAsync(pairName) {
+      if (!pairName) return false;
       const cleanTarget = pairName.replace(/\s*OTC/i, "").trim().toLowerCase();
-      const clicker = document.querySelector(".current-symbol, .btn-select-pair, .pair-number-wrap, [data-test='asset-select'], .assets-block__active");
-      if (clicker) {
-        clicker.click();
-        setTimeout(() => {
-          // Look for matching pair item in search or list
-          const items = document.querySelectorAll(".symbols-list__item, .asset-item, .pair-item, .alist__item, .alist-link");
-          for (const item of items) {
-            const itemText = item.textContent.trim().toLowerCase();
-            if (itemText.includes(cleanTarget) || itemText.replace(/[^a-z]/g, "").includes(cleanTarget.replace(/[^a-z]/g, ""))) {
-              item.click();
-              break;
-            }
-          }
-          // Close asset menu explicitly so it does not hang over chart
-          setTimeout(() => {
-            const closeBtn = document.querySelector(".alist__close, .close-btn, .modal-close, [data-test='close-asset-select'], .alist-close");
-            if (closeBtn) {
-              closeBtn.click();
-            } else {
-              document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, bubbles: true }));
-              window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, bubbles: true }));
-            }
-          }, 150);
-        }, 300);
+      loggerLog("POAutomation: переключение пары на", pairName, `(поиск: ${cleanTarget})`);
+
+      // 1. Проверяем, не активна ли пара уже прямо сейчас на графике
+      const currentTicker = scanPocketOptionCurrentPair();
+      if (currentTicker && currentTicker.toLowerCase().includes(cleanTarget)) {
+        loggerLog("Пара уже активна на графике:", currentTicker);
+        state.targetPair = pairName;
+        const meta = getPairMeta(pairName);
+        state.targetFlags = meta.flags;
+        state.targetPayout = meta.payout;
+        updateCardPairUI();
+        return true;
       }
-      state.targetPair = pairName;
-      const meta = getPairMeta(pairName);
-      state.targetFlags = meta.flags;
-      state.targetPayout = meta.payout;
+
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        loggerLog(`Попытка ${attempt}/2 переключения пары на ${pairName}`);
+
+        // Шаг А: Клик по кнопке выбора актива
+        const clickerSelectors = [
+          ".current-symbol",
+          ".btn-select-pair",
+          ".pair-number-wrap",
+          "[data-test='asset-select']",
+          ".assets-block__active",
+          ".asset-select",
+          ".current-asset",
+          ".alist-trigger",
+          ".alist__head",
+        ];
+        let clicker = null;
+        for (const sel of clickerSelectors) {
+          const el = document.querySelector(sel);
+          if (el && el.offsetParent !== null) {
+            clicker = el;
+            break;
+          }
+        }
+
+        if (clicker) {
+          robustClick(clicker);
+        } else {
+          const titleEl = document.querySelector("h1, .symbol, .pair");
+          if (titleEl) robustClick(titleEl);
+        }
+
+        await new Promise((r) => setTimeout(r, 400));
+
+        // Шаг Б: Поиск через инпут фильтра (если доступен)
+        const searchInput = document.querySelector("input.assets-search, input.alist-search, .search-block input, [data-test='asset-search'], .alist input");
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.value = cleanTarget;
+          searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+          searchInput.dispatchEvent(new Event("change", { bubbles: true }));
+          await new Promise((r) => setTimeout(r, 300));
+        }
+
+        // Шаг В: Поиск и клик по элементу в списке
+        const itemSelectors = [
+          ".symbols-list__item",
+          ".asset-item",
+          ".pair-item",
+          ".alist__item",
+          ".alist-link",
+          "[data-test='asset-item']",
+          ".symbol-item",
+          ".alist__cell",
+        ];
+        const items = document.querySelectorAll(itemSelectors.join(", "));
+        for (const item of items) {
+          const itemText = (item.textContent || "").toLowerCase().trim();
+          if (itemText.includes(cleanTarget) || itemText.replace(/[^a-z0-9]/g, "").includes(cleanTarget.replace(/[^a-z0-9]/g, ""))) {
+            robustClick(item);
+            break;
+          }
+        }
+
+        await new Promise((r) => setTimeout(r, 250));
+        closeAnyOpenModals();
+
+        // Шаг Г: Проверка изменения тикера в DOM (до 5 секунд)
+        const verifyStart = Date.now();
+        while (Date.now() - verifyStart < 5000) {
+          await new Promise((r) => setTimeout(r, 300));
+          const activeNow = scanPocketOptionCurrentPair();
+          if (activeNow && activeNow.toLowerCase().includes(cleanTarget)) {
+            loggerLog(`Пара успешно переключена на ${activeNow} за ${Date.now() - verifyStart}мс!`);
+            state.targetPair = pairName;
+            const meta = getPairMeta(pairName);
+            state.targetFlags = meta.flags;
+            state.targetPayout = meta.payout;
+            updateCardPairUI();
+            return true;
+          }
+        }
+      }
+
+      // После двух неудачных попыток блокируем пару, чтобы не застрять в бесконечном цикле
+      loggerLog(`Не удалось переключить пару на ${pairName} за 2 попытки! Временный блэклист на 10 мин.`);
+      blacklistPair(pairName);
+      const fallbackPair = scanPocketOptionCurrentPair() || state.targetPair;
+      state.targetPair = fallbackPair;
       updateCardPairUI();
+      return false;
+    },
+
+    // Sync bridge for callers expecting switchPair
+    switchPair(pairName) {
+      return this.switchPairAsync(pairName);
     },
 
     // Ensure stake based on recovery step
     setupTradeParameters() {
       const stake = state.recoveryStep === 0 ? state.baseStake : state.recoveryStep === 1 ? state.baseStake * 2 : state.baseStake * 4;
-      const stakeInput = document.querySelector("input[name='amount'], .input-field--amount input, [data-test='amount-input'], .amount-block input");
-      if (stakeInput) {
-        stakeInput.value = stake;
-        stakeInput.dispatchEvent(new Event("input", { bubbles: true }));
-        stakeInput.dispatchEvent(new Event("change", { bubbles: true }));
+      const stakeInputs = document.querySelectorAll("input[name='amount'], .input-field--amount input, [data-test='amount-input'], .amount-block input, .block--amount input");
+      for (const stakeInput of stakeInputs) {
+        if (stakeInput && stakeInput.offsetParent !== null) {
+          stakeInput.focus();
+          stakeInput.value = stake;
+          stakeInput.dispatchEvent(new Event("input", { bubbles: true }));
+          stakeInput.dispatchEvent(new Event("change", { bubbles: true }));
+        }
       }
     },
 
-    // Programmatically click CALL (BUY) or PUT (SELL)
+    // Programmatically click CALL (BUY) or PUT (SELL) with robust Pointer/Mouse events
     clickTrade(direction) {
+      closeAnyOpenModals();
       this.setupTradeParameters();
-      const isBuy = direction === "BUY";
-      const btnCall = document.querySelector(".btn-call, .btn-high, [data-qa='btn-call'], [data-test='btn-call']");
-      const btnPut = document.querySelector(".btn-put, .btn-low, [data-qa='btn-put'], [data-test='btn-put']");
+      const isBuy = String(direction).toUpperCase() === "BUY";
+      const callSelectors = [
+        ".btn-call",
+        ".btn-high",
+        "[data-qa='btn-call']",
+        "[data-test='btn-call']",
+        ".call-btn",
+        ".btn-up",
+      ];
+      const putSelectors = [
+        ".btn-put",
+        ".btn-low",
+        "[data-qa='btn-put']",
+        "[data-test='btn-put']",
+        ".put-btn",
+        ".btn-down",
+      ];
 
-      if (isBuy && btnCall) {
-        btnCall.classList.add("winky-po-glow-call");
-        btnCall.click();
-        setTimeout(() => btnCall.classList.remove("winky-po-glow-call"), 2500);
-      } else if (!isBuy && btnPut) {
-        btnPut.classList.add("winky-po-glow-put");
-        btnPut.click();
-        setTimeout(() => btnPut.classList.remove("winky-po-glow-put"), 2500);
+      const selList = isBuy ? callSelectors : putSelectors;
+      let btn = null;
+      for (const sel of selList) {
+        const el = document.querySelector(sel);
+        if (el && el.offsetParent !== null) {
+          btn = el;
+          break;
+        }
+      }
+
+      if (btn) {
+        const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
+        btn.classList.add(glowClass);
+        robustClick(btn);
+        setTimeout(() => btn.classList.remove(glowClass), 2500);
+        loggerLog(`Сделка ${direction} успешно отправлена через robustClick на элементе`, btn);
+        return true;
+      } else {
+        loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
+        return false;
       }
     },
   };
@@ -648,7 +846,7 @@
 
   async function startSignalAnalysis() {
     if (state.botState !== "IDLE") return;
-    state.botState = "ANALYZING";
+    state.botState = "ANALYZING_PAIR";
 
     const btnGet = document.getElementById("btnGetSignalAction");
     if (btnGet) {
@@ -663,44 +861,97 @@
     }
 
     renderSignalCardState();
+    // Quick scanner notification to Winky
     sendProxyMessage("/api/winky/scan", "POST", {});
 
-    // Exactly 1.5s smooth scanning progress animation
-    await new Promise((r) => setTimeout(r, 1500));
+    // Exactly 1.2s smooth scanning progress animation
+    await new Promise((r) => setTimeout(r, 1200));
 
-    // Perform real technical analysis of ticks
+    // Perform technical analysis of ticks
     const analysis = ChartAnalyzer.analyzeMarket();
 
-    // Check Bad Market Filter (<80% confidence)
+    // Check Bad Market Filter with Anti-Loop Cooldown (min 45s between switches)
     if (analysis.isFlat && state.autoStream) {
-      state.botState = "IDLE";
-      renderSignalCardState();
-      if (btnGet) {
-        btnGet.disabled = false;
-        btnGet.classList.remove("disabled");
-        btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+      const now = Date.now();
+      const lastSwitch = state.lastPairSwitchAttemptAt || 0;
+      if (now - lastSwitch > 45000) {
+        state.lastPairSwitchAttemptAt = now;
+        state.botState = "SWITCHING_PAIR";
+        renderSignalCardState();
+
+        // Trigger flat_skip voice on Winky
+        sendProxyMessage("/api/winky/event", "POST", {
+          event: "flat_skip",
+          pair: state.targetPair,
+          lang: state.lang,
+        });
+
+        // Find next pair not in blacklist
+        const list = PAIR_CATALOG.otc;
+        const nextPair = list.find((p) => p.id !== state.targetPair && !isPairBlacklisted(p.id)) || list[0];
+        await POAutomation.switchPairAsync(nextPair.id);
+
+        state.botState = "IDLE";
+        renderSignalCardState();
+        if (btnGet) {
+          btnGet.disabled = false;
+          btnGet.classList.remove("disabled");
+          btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+        }
+
+        setTimeout(() => {
+          if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
+        }, 3000);
+        return;
+      } else {
+        // Cooldown active: avoid endless speech loop and proceed with calculated momentum
+        analysis.isFlat = false;
+        analysis.accuracy = Math.max(82, analysis.accuracy);
       }
-
-      // Trigger flat_skip voice on Winky
-      sendProxyMessage("/api/winky/event", "POST", {
-        event: "flat_skip",
-        pair: state.targetPair,
-        lang: state.lang,
-      });
-
-      // Auto-switch to next pair
-      const list = PAIR_CATALOG.otc;
-      const nextPair = list.find((p) => p.id !== state.targetPair) || list[0];
-      POAutomation.switchPair(nextPair.id);
-
-      // Re-trigger analysis after 3.5s
-      setTimeout(() => {
-        if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-      }, 3500);
-      return;
     }
 
-    // Active Trade State
+    // Step: PREPARING_TRADE (Prefetch TTS & await readiness to avoid 15-20s voice desync)
+    state.botState = "PREPARING_TRADE";
+    renderSignalCardState();
+    if (btnGet) {
+      btnGet.innerHTML = `<span>🎙️</span><span>${state.lang === "ru" ? "ПОДГОТОВКА СДЕЛКИ..." : "PREPARING ENTRY..."}</span>`;
+    }
+
+    const intentId = "trade_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
+    state.currentPrefetchIntent = intentId;
+
+    // Send prefetch request to Winky
+    sendProxyMessage("/api/winky/prefetch_tts", "POST", {
+      intent_id: intentId,
+      text: analysis.voicePhrase,
+      direction: analysis.direction,
+      pair: state.targetPair,
+      duration: state.selectedTimeframe,
+      lang: state.lang,
+      emotion: "excited",
+      action: "cheer",
+      expected_pair: state.targetPair,
+      expected_state: "IN_TRADE",
+      ttl_sec: 45.0,
+    });
+
+    // Wait for audio ready (poll check_tts up to 25s max)
+    let audioReady = false;
+    const pollStart = Date.now();
+    while (Date.now() - pollStart < 25000) {
+      if (state.botState !== "PREPARING_TRADE") return;
+      const checkRes = await sendProxyMessage(`/api/winky/check_tts?intent_id=${encodeURIComponent(intentId)}`, "GET");
+      if (checkRes && checkRes.data && checkRes.data.ready) {
+        audioReady = true;
+        break;
+      }
+      if (checkRes && checkRes.data && (checkRes.data.status === "failed" || checkRes.data.status === "expired")) {
+        break;
+      }
+      await new Promise((r) => setTimeout(r, 400));
+    }
+
+    // COMMIT-ON-AUDIO-READY: Transition to IN_TRADE
     state.botState = "IN_TRADE";
     const durationSec = parseDurationSeconds(state.selectedTimeframe);
     state.activeSignal = {
@@ -718,17 +969,31 @@
 
     renderSignalCardState();
 
-    // Voice announcement through local Winky server (strictly LumeanTTS)
-    sendProxyMessage("/api/winky/speak_signal", "POST", {
-      pair: state.targetPair,
-      direction: analysis.direction,
-      duration: state.selectedTimeframe,
-      model: state.selectedModel,
-      lang: state.lang,
-      phrase: analysis.voicePhrase,
-    });
+    // 1. If Auto-Stream is active, execute trade on Pocket Option right now
+    if (state.autoStream) {
+      POAutomation.clickTrade(analysis.direction);
+    }
 
-    // Sync signal to server & Mini App
+    // 2. Play speech synchronously with the trade opening
+    if (audioReady) {
+      sendProxyMessage("/api/winky/play_tts", "POST", {
+        intent_id: intentId,
+        current_pair: state.targetPair,
+        current_state: "IN_TRADE",
+      });
+    } else {
+      // Fallback: send speak_signal if prefetch timed out
+      sendProxyMessage("/api/winky/speak_signal", "POST", {
+        pair: state.targetPair,
+        direction: analysis.direction,
+        duration: state.selectedTimeframe,
+        model: state.selectedModel,
+        lang: state.lang,
+        phrase: analysis.voicePhrase,
+      });
+    }
+
+    // 3. Sync signal to server & Mini App
     sendSyncSignalToProd({
       pair: state.targetPair,
       direction: analysis.direction,
@@ -738,11 +1003,6 @@
       rationale_en: [analysis.line1, analysis.line2],
       model: state.selectedModel,
     });
-
-    // If Auto-Stream is active, automatically place the trade on Pocket Option!
-    if (state.autoStream) {
-      POAutomation.clickTrade(analysis.direction);
-    }
 
     // Start Expiry Countdown (30s)
     let remaining = durationSec;
@@ -771,7 +1031,7 @@
 
   async function onSignalTimerFinished(detectedWin = null, profitDelta = null) {
     if (state.botState !== "IN_TRADE") return;
-    state.botState = "RESULT_COOLDOWN";
+    state.botState = "TRADE_RESULT";
 
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
@@ -836,8 +1096,19 @@
       lang: state.lang,
     });
 
-    // Cooldown exactly 6 seconds for Winky to speak and cheer/recover
-    await new Promise((r) => setTimeout(r, 6000));
+    // Wait 5 seconds for reaction
+    await new Promise((r) => setTimeout(r, 5000));
+
+    // COOLDOWN STATE
+    state.botState = "COOLDOWN";
+    renderSignalCardState();
+    if (btnGet) {
+      btnGet.disabled = true;
+      btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
+    }
+
+    // 4s cooldown
+    await new Promise((r) => setTimeout(r, 4000));
 
     // TRANSITION BACK TO IDLE
     state.botState = "IDLE";
@@ -853,8 +1124,8 @@
     // If recovery step 2 -> switch pair
     if (!isWin && state.recoveryStep === 2 && state.autoStream) {
       const list = PAIR_CATALOG.otc;
-      const nextPair = list.find((p) => p.id !== state.targetPair) || list[1];
-      POAutomation.switchPair(nextPair.id);
+      const nextPair = list.find((p) => p.id !== state.targetPair && !isPairBlacklisted(p.id)) || list[1];
+      await POAutomation.switchPairAsync(nextPair.id);
     }
 
     // If Auto-Stream is active, start next signal after 1.5s
@@ -878,7 +1149,17 @@
         const cmd = res.data;
         if (cmd.action === "switch_pair" && cmd.pair) {
           loggerLog("TikTok Chat переключение пары по запросу", cmd.user, "на", cmd.pair);
-          POAutomation.switchPair(cmd.pair);
+          state.botState = "SWITCHING_PAIR";
+          renderSignalCardState();
+          sendProxyMessage("/api/winky/event", "POST", {
+            event: "switch_pair",
+            pair: cmd.pair,
+            user: cmd.user,
+            lang: state.lang,
+          });
+          await POAutomation.switchPairAsync(cmd.pair);
+          state.botState = "IDLE";
+          renderSignalCardState();
           setTimeout(() => {
             if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
           }, 2000);
@@ -1172,7 +1453,15 @@
     if (state.botState === "IDLE") {
       block.className = "winky-direction-block idle";
       block.innerHTML = `<span>${t("readyForSignal")}</span>`;
-    } else if (state.botState === "ANALYZING") {
+    } else if (state.botState === "SWITCHING_PAIR") {
+      block.className = "winky-direction-block analysing";
+      block.innerHTML = `
+        <div class="analysis-scan-title">
+          <span>🔄</span>
+          <span>${state.lang === "ru" ? "СМЕНА ВАЛЮТНОЙ ПАРЫ..." : "SWITCHING PAIR..."}</span>
+        </div>
+      `;
+    } else if (state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING") {
       block.className = "winky-direction-block analysing";
       block.innerHTML = `
         <div class="analysis-scan-title">
@@ -1183,6 +1472,20 @@
           <div class="analysis-progress-fill"></div>
         </div>
       `;
+    } else if (state.botState === "PREPARING_TRADE") {
+      block.className = "winky-direction-block analysing";
+      block.innerHTML = `
+        <div class="analysis-scan-title">
+          <span>🎙️</span>
+          <span>${state.lang === "ru" ? "ПОДГОТОВКА ТОЧКИ ВХОДА..." : "PREPARING ENTRY..."}</span>
+        </div>
+        <div class="analysis-progress-bar">
+          <div class="analysis-progress-fill"></div>
+        </div>
+      `;
+    } else if (state.botState === "COOLDOWN") {
+      block.className = "winky-direction-block idle";
+      block.innerHTML = `<span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
     } else if (state.botState === "IN_TRADE" && state.activeSignal) {
       const sig = state.activeSignal;
       const isBuy = sig.direction === "BUY";

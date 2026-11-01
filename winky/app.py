@@ -290,7 +290,108 @@ class WinkyAPI:
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
             self._controller.speak(phrase, lang=lang, emotion="happy", source="trade_event")
 
+        elif event_type == "start_analysis":
+            self.trigger_action("think", 2.0)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            phrases_ru = [
+                f"[thinking] Анализирую график {clean_pair_ru}, считываю микроструктуру и объёмы...",
+                f"[wink] Сканирую стакан и свечной паттерн по {clean_pair_ru}, секундочку...",
+                f"[thinking] Оцениваю импульс на {clean_pair_ru}, ищу идеальную точку входа...",
+            ]
+            phrases_en = [
+                f"[thinking] Analyzing {pair} chart, checking volatility and market depth...",
+                f"[wink] Scanning order flow and momentum on {pair}, one moment...",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+
+        elif event_type == "switch_pair":
+            self.trigger_action("peek_closer", 2.5)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            target_clean = pair.replace(" OTC", " на ОТС").replace("/", " ")
+            user_text = f" по просьбе {payload.get('user')}" if payload.get("user") else ""
+            phrases_ru = [
+                f"[wink] Переключаю график на {target_clean}{user_text}, сейчас заценим импульс!",
+                f"[thinking] Открываю пару {target_clean}, ищу чистый трендовый вход!",
+            ]
+            phrases_en = [
+                f"[wink] Switching chart to {pair}, let's find a clean setup!",
+            ]
+            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+
         return True
+
+    def prefetch_tts(self, payload: Any = None) -> dict:
+        """API для предзагрузки реплики сигнала (Producer)."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        text = payload.get("text", "")
+        lang = payload.get("lang", "ru")
+        intent_id = payload.get("intent_id", "")
+        emotion = payload.get("emotion", "happy")
+        action = payload.get("action")
+        expected_pair = payload.get("expected_pair", "")
+        expected_state = payload.get("expected_state", "")
+        ttl_sec = float(payload.get("ttl_sec", 40.0))
+
+        # Если текста нет напрямую, но передан сигнал (direction, pair, duration)
+        if not text and payload.get("direction"):
+            direction = str(payload.get("direction", "BUY")).upper()
+            pair = payload.get("pair", "EUR/USD OTC")
+            duration = payload.get("duration", "30s")
+            clean_dur = duration or "30s"
+            if lang == "en":
+                if direction == "BUY":
+                    text = f"Bullish bounce confirmed on {pair}! Entering UP for {clean_dur}, buyers taking over!"
+                else:
+                    text = f"Resistance hit on {pair}! Selling pressure confirmed, taking SELL for {clean_dur}!"
+            else:
+                clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
+                if direction == "BUY":
+                    text = f"Вижу уверенный отскок от поддержки по {clean_pair_ru}! Берём сделку ВВЕРХ на {clean_dur} по основному тренду!"
+                else:
+                    text = f"На графике {clean_pair_ru} цена упёрлась в потолок сопротивления! Заходим ВНИЗ на {clean_dur} на уверенном откате!"
+            emotion = "excited"
+            action = "cheer"
+
+        iid = self._controller.prefetch(
+            text=text,
+            lang=lang,
+            intent_id=intent_id,
+            emotion=emotion,
+            action=action,
+            expected_pair=expected_pair,
+            expected_state=expected_state,
+            ttl_sec=ttl_sec,
+        )
+        return {"ok": bool(iid), "intent_id": iid}
+
+    def check_tts(self, intent_id: str) -> dict:
+        """API проверки готовности аудио предзагрузки."""
+        return self._controller.check_prefetch(intent_id)
+
+    def play_tts(self, payload: Any = None) -> dict:
+        """API воспроизведения готового аудио предзагрузки (Consumer) синхронно со сделкой."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        intent_id = payload.get("intent_id", "")
+        current_pair = payload.get("current_pair", "")
+        current_state = payload.get("current_state", "")
+        ok = self._controller.play_prefetched(intent_id, current_pair=current_pair, current_state=current_state)
+        return {"ok": ok}
 
     # ---------- окна подключаются после создания ----------
 
@@ -480,11 +581,20 @@ class WinkyAPI:
                 ("Привет! Это проверка моего нового голоса на русском языке!", "ru"),
                 ("О, друг, приветик! Рада тебя видеть!", "ru"),
                 ("Привет-привет! Я Винки — неоновая помощница Wink! Рада всех видеть на стриме, сегодня тестируем крутые инструменты!", "ru"),
+                ("Есть плюс в копилочку! Отличная сделка, график отработал как по учебнику!", "ru"),
+                ("Плюсик зафиксирован! Красивое движение, поздравляю всех, кто заходил со мной!", "ru"),
+                ("Ой, на последней секунде чуть зацепило тенью, вообще ничего страшного! Тренд тут сильный, захожу на перекрытие с удвоением в ту же пару и забираем своё с плюсом!", "ru"),
+                ("Так, эта пара начала капризничать и пилить уровень, не будем с ней спорить! Переключаюсь на более чистый график и спокойно закрываем перекрытие там!", "ru"),
+                ("Ребятки, какую валютную пару идём разбирать следующей? Пишите прямо сейчас в чат — выберем и зайдём вместе!", "ru"),
             ]
             core_en = [
                 ("Hey guys! Checking out my new voice in English!", "en"),
                 ("Hey friend, welcome to the stream! So happy to see you here!", "en"),
                 ("Hey everyone! I'm Winky, your stream co-host! Welcome to the stream, we're testing awesome tools today!", "en"),
+                ("Boom, that's a win! Clean execution, moving right into profit!", "en"),
+                ("Another win secured! Love this momentum, congrats everyone!", "en"),
+                ("Slight wick touched our level, no worries at all! Trend is solid, entering step 1 recovery on this pair!", "en"),
+                ("Chat, which currency pair should we analyze next? Drop your picks in the comments!", "en"),
             ]
 
             if not full:
@@ -964,6 +1074,9 @@ def main() -> None:
     register_winky_callback("speak_signal", winky_api.speak_signal)
     register_winky_callback("launch_chrome", winky_api.launch_pocket_sniper)
     register_winky_callback("event", winky_api.handle_trading_event)
+    register_winky_callback("prefetch_tts", winky_api.prefetch_tts)
+    register_winky_callback("check_tts", winky_api.check_tts)
+    register_winky_callback("play_tts", winky_api.play_tts)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None

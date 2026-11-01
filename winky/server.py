@@ -128,6 +128,21 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             self._send_json({"ok": True, "connected": True, "timestamp": _last_extension_ping})
             return
 
+        if clean in ("/api/winky/check_tts", "/api/winky/check_prefetch"):
+            query_part = self.path.split("?", 1)[1] if "?" in self.path else ""
+            import urllib.parse
+            params = urllib.parse.parse_qs(query_part)
+            intent_id = params.get("intent_id", [""])[0]
+            cb = _winky_sync_callbacks.get("check_tts")
+            res = {"status": "not_found", "ready": False, "intent_id": intent_id}
+            if cb:
+                try:
+                    res = cb(intent_id)
+                except Exception as e:
+                    logger.warning("Ошибка callback check_tts: %s", e)
+            self._send_json(res)
+            return
+
         if clean == "/api/winky/status":
             connected = (time.time() - _last_extension_ping) < 15.0
             self._send_json({
@@ -229,6 +244,28 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                 except Exception as e:
                     logger.warning("Ошибка callback event: %s", e)
             self._send_json({"ok": True})
+            return
+
+        if clean in ("/api/winky/prefetch_tts", "/api/winky/prefetch"):
+            cb = _winky_sync_callbacks.get("prefetch_tts")
+            res = {"ok": False, "intent_id": ""}
+            if cb:
+                try:
+                    res = cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback prefetch_tts: %s", e)
+            self._send_json(res)
+            return
+
+        if clean in ("/api/winky/play_tts", "/api/winky/play_prefetched"):
+            cb = _winky_sync_callbacks.get("play_tts")
+            res = {"ok": False}
+            if cb:
+                try:
+                    res = cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback play_tts: %s", e)
+            self._send_json(res)
             return
 
         if clean in ("/api/signal/sync", "/api/winky/sync_signal"):

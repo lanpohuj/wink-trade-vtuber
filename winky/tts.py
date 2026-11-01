@@ -23,6 +23,7 @@ import struct
 import subprocess
 import threading
 import time
+import uuid
 import wave
 from collections import deque
 from dataclasses import dataclass, field
@@ -223,6 +224,21 @@ class TTSError(RuntimeError):
     """Синтез не удался."""
 
 
+class DummyTTS:
+    """Безопасная заглушка: логирует ошибки и исключает воспроизведение системных/браузерных голосов."""
+
+    name = "Dummy (Silent)"
+
+    def is_cached(self, text: str, lang: str = "ru") -> bool:
+        return False
+
+    def get_cache_path(self, text: str, lang: str = "ru") -> Path:
+        return MEDIA_DIR / "dummy.mp3"
+
+    def synthesize(self, text: str, lang: str = "ru", bypass_cache: bool = False) -> Path:
+        raise TTSError("Облачный ключ TTS не задан — режим без звука")
+
+
 class EdgeTTS:
     """Бесплатный высококачественный мультиязычный женский голос Microsoft (Ava)."""
 
@@ -283,12 +299,13 @@ class LumeanTTS:
 
         self._template_id: str | None = (settings.LUMEAN_TEMPLATE_ID or "").strip() or None
 
-        self._fallback = EdgeTTS()
+        # КАТЕГОРИЧЕСКИ БЕЗ fallback на EdgeTTS!
+        self._fallback = None
         self._cache_dir = MEDIA_DIR / "cache"
         self._cache_dir.mkdir(parents=True, exist_ok=True)
 
-        # Постоянный Keep-Alive клиент без повторных TLS handshakes
-        self._client = httpx.Client(timeout=30.0, http2=False)
+        # Постоянный Keep-Alive клиент без повторных TLS handshakes (таймаут 60с)
+        self._client = httpx.Client(timeout=60.0, http2=False)
 
         # Кэш шаблонов по слотам и голосам на диске (slot:service_key:voice_id)
         self._templates_by_slot: dict[str, str] = self._load_templates_cache()
@@ -936,132 +953,121 @@ class LumeanTTS:
             logger.info("Cache HIT in voice_cache/%s: %s («%s»)", voice_dir.name, cached_file.name, clean_text[:30])
             return cached_file
 
-        # Если нет ключа API Lumean — используем EdgeTTS
         if not settings.LUMEAN_API_KEY:
-            logger.info("LUMEAN_API_KEY не задан — использую edge-tts (Ava Multilingual)")
-            fallback_media = self._fallback.synthesize(clean_text, lang)
-            if fallback_media.exists() and fallback_media != cached_file:
-                import shutil
-                try:
-                    shutil.copyfile(fallback_media, cached_file)
-                    compute_rms_chunks(cached_file)
-                    _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
-                    return cached_file
-                except Exception:
-                    pass
-            return fallback_media
+            raise TTSError("LUMEAN_API_KEY не задан — синтез отменён (режим без звука)")
 
         logger.info("Cache MISS (bypass=%s) in voice_cache/%s -> запрос в Lumean API («%s»)...", bypass_cache, voice_dir.name, clean_text[:30])
-        try:
-            tuning = self.get_tuning(slot)
-            slot_key = self._slot_key(slot, service_key, voice_id)
-            template_id = tuning.get("template_id") or self._templates_by_slot.get(slot_key)
-            if not template_id:
-                template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
 
-            # Человеческий текст с дыхательными микро-паузами для отправки в синтезатор
-            voiced_text = humanize_speech_text(
-                clean_text,
-                lang=lang,
-                breathing=bool(tuning.get("breathing_pauses", True)),
-            )
+        last_exc: Exception | None = None
+        for attempt in range(1, 3):
+            try:
+                tuning = self.get_tuning(slot)
+                slot_key = self._slot_key(slot, service_key, voice_id)
+                template_id = tuning.get("template_id") or self._templates_by_slot.get(slot_key)
+                if not template_id:
+                    template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
 
-            # Шаг А: Создание заказа с чистым template_id
-            order_payload: dict = {
-                "template_id": template_id,
-                "input_text": voiced_text,
-            }
+                # Человеческий текст с дыхательными микро-паузами для отправки в синтезатор
+                voiced_text = humanize_speech_text(
+                    clean_text,
+                    lang=lang,
+                    breathing=bool(tuning.get("breathing_pauses", True)),
+                )
 
-            create_resp = self._client.post(
-                f"{self.BASE_URL}/orders",
-                headers=self._headers(),
-                json=order_payload,
-                timeout=12.0,
-            )
+                # Шаг А: Создание заказа с чистым template_id (таймаут 30с)
+                order_payload: dict = {
+                    "template_id": template_id,
+                    "input_text": voiced_text,
+                }
 
-            # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
-            if create_resp.status_code in (400, 404, 422):
-                logger.warning("Шаблон %s недействителен (%d: %s), запрашиваю свежий...", template_id, create_resp.status_code, create_resp.text)
-                self._templates_by_slot.pop(slot_key, None)
-                template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
-                order_payload["template_id"] = template_id
                 create_resp = self._client.post(
                     f"{self.BASE_URL}/orders",
                     headers=self._headers(),
                     json=order_payload,
-                    timeout=12.0,
+                    timeout=30.0,
                 )
 
-            create_resp.raise_for_status()
-            order_data = create_resp.json().get("data", {})
-            order_id = order_data.get("id")
-            if not order_id:
-                raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
+                # Если шаблон устарел/удалён — запрашиваем свежий и повторяем заказ
+                if create_resp.status_code in (400, 404, 422):
+                    logger.warning("Шаблон %s недействителен (%d: %s), запрашиваю свежий...", template_id, create_resp.status_code, create_resp.text)
+                    self._templates_by_slot.pop(slot_key, None)
+                    template_id = self._ensure_template(slot, service_key, voice_id, tuning.get("voice_name", ""))
+                    order_payload["template_id"] = template_id
+                    create_resp = self._client.post(
+                        f"{self.BASE_URL}/orders",
+                        headers=self._headers(),
+                        json=order_payload,
+                        timeout=30.0,
+                    )
 
-            # Шаг Б: Быстрый опрос статуса выполнения заказа (0.20с старт, 0.12с шаг)
-            time.sleep(0.20)
-            start_poll = time.monotonic()
-            file_path: str | None = None
-            while time.monotonic() - start_poll < 60.0:
-                status_resp = self._client.get(
-                    f"{self.BASE_URL}/orders/{order_id}",
+                create_resp.raise_for_status()
+                order_data = create_resp.json().get("data", {})
+                order_id = order_data.get("id")
+                if not order_id:
+                    raise TTSError(f"Lumean не вернул order_id: {create_resp.text}")
+
+                # Шаг Б: Опрос статуса выполнения заказа (до 90с с прогрессивным шагом)
+                time.sleep(0.5)
+                start_poll = time.monotonic()
+                file_path: str | None = None
+                poll_count = 0
+                while time.monotonic() - start_poll < 90.0:
+                    poll_count += 1
+                    try:
+                        status_resp = self._client.get(
+                            f"{self.BASE_URL}/orders/{order_id}",
+                            headers=self._headers(),
+                            timeout=15.0,
+                        )
+                        if status_resp.status_code == 200:
+                            poll_data = status_resp.json().get("data", {})
+                            status = poll_data.get("status")
+                            if status in ("completed", "result_delivered", "partially_completed"):
+                                files = poll_data.get("result", {}).get("files") or []
+                                if files:
+                                    file_path = files[0]
+                                    break
+                            elif status in ("failed", "cancelled", "compensated"):
+                                raise TTSError(f"Заказ Lumean завершился со статусом {status}: {poll_data}")
+                    except (httpx.TimeoutException, httpx.NetworkError) as net_err:
+                        logger.debug("Временная задержка ответа Lumean (%s), продолжаю опрос...", net_err)
+
+                    sleep_sec = 0.5 if poll_count <= 4 else 1.0
+                    time.sleep(sleep_sec)
+
+                if not file_path:
+                    raise TTSError(f"Lumean таймаут >90с заказа {order_id}")
+
+                # Шаг В: Получение подписанной ссылки на скачивание (таймаут 20с)
+                url_resp = self._client.post(
+                    f"{self.BASE_URL}/storage/url",
                     headers=self._headers(),
-                    timeout=5.0,
+                    json={"path": file_path, "download": True},
+                    timeout=20.0,
                 )
-                if status_resp.status_code == 200:
-                    poll_data = status_resp.json().get("data", {})
-                    status = poll_data.get("status")
-                    if status in ("completed", "result_delivered", "partially_completed"):
-                        files = poll_data.get("result", {}).get("files") or []
-                        if files:
-                            file_path = files[0]
-                            break
-                    elif status in ("failed", "cancelled", "compensated"):
-                        raise TTSError(f"Заказ Lumean завершился со статусом {status}: {poll_data}")
-                time.sleep(0.12)
+                url_resp.raise_for_status()
+                download_url = url_resp.json().get("data", {}).get("url")
+                if not download_url:
+                    raise TTSError("Lumean не вернул URL для скачивания файла")
 
-            if not file_path:
-                raise TTSError(f"Lumean таймаут >60с заказа {order_id}")
+                # Шаг Г: Скачивание аудиофайла прямо в voice_cache/ (таймаут 30с)
+                audio_resp = self._client.get(download_url, timeout=30.0)
+                audio_resp.raise_for_status()
+                cached_file.write_bytes(audio_resp.content)
+                # Сразу рассчитываем RMS для мгновенного липсинка при проигрывании
+                compute_rms_chunks(cached_file)
+                _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
+                logger.info("Lumean TTS успешно синтезировал в voice_cache/%s: %s (%d байт)", voice_dir.name, cached_file.name, len(audio_resp.content))
+                return cached_file
 
-            # Шаг В: Получение подписанной ссылки на скачивание
-            url_resp = self._client.post(
-                f"{self.BASE_URL}/storage/url",
-                headers=self._headers(),
-                json={"path": file_path, "download": True},
-                timeout=10.0,
-            )
-            url_resp.raise_for_status()
-            download_url = url_resp.json().get("data", {}).get("url")
-            if not download_url:
-                raise TTSError("Lumean не вернул URL для скачивания файла")
+            except Exception as exc:  # noqa: BLE001
+                last_exc = exc
+                logger.warning("Попытка %d синтеза в Lumean завершилась ошибкой: %s", attempt, exc)
+                time.sleep(1.0)
 
-            # Шаг Г: Скачивание аудиофайла по постоянному Keep-Alive соединению прямо в voice_cache/
-            audio_resp = self._client.get(download_url, timeout=15.0)
-            audio_resp.raise_for_status()
-            cached_file.write_bytes(audio_resp.content)
-            # Сразу рассчитываем RMS для мгновенного липсинка при проигрывании
-            compute_rms_chunks(cached_file)
-            _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
-            logger.info("Lumean TTS успешно синтезировал в voice_cache/%s: %s (%d байт)", voice_dir.name, cached_file.name, len(audio_resp.content))
-            return cached_file
-
-        except Exception as exc:  # noqa: BLE001
-            # Только для этой фразы фоллбэк на edge-tts (БЕЗ бэкоффа)
-            logger.warning(
-                "Lumean TTS ошибка синтеза (%s) — фоллбэк на edge-tts (Ava) только для этой фразы",
-                exc
-            )
-            fallback_media = self._fallback.synthesize(clean_text, lang)
-            if fallback_media.exists() and fallback_media != cached_file:
-                import shutil
-                try:
-                    shutil.copyfile(fallback_media, cached_file)
-                    compute_rms_chunks(cached_file)
-                    _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
-                    return cached_file
-                except Exception:
-                    pass
-            return fallback_media
+        # Категорический отказ от отката на EdgeTTS / системный голос Chrome!
+        logger.error("Lumean TTS не смог синтезировать «%s» после 2 попыток: %s", clean_text[:30], last_exc)
+        raise TTSError(f"Lumean synthesis failed after retries: {last_exc}") from last_exc
 
     def search_voices(
         self,
@@ -1310,35 +1316,35 @@ class ElevenLabsTTS:
     API_URL = "https://api.elevenlabs.io/v1/text-to-speech"
 
     def __init__(self) -> None:
-        self._fallback = EdgeTTS()
+        pass
 
-    def is_cached(self, text: str) -> bool:
+    def is_cached(self, text: str, lang: str = "ru") -> bool:
         return False
 
-    def synthesize(self, text: str, lang: str = "ru") -> Path:
+    def synthesize(self, text: str, lang: str = "ru", bypass_cache: bool = False) -> Path:
         out = MEDIA_DIR / f"eleven_{time.monotonic_ns()}.mp3"
         try:
             response = requests.post(
                 f"{self.API_URL}/{settings.ELEVENLABS_VOICE_ID}",
                 headers={"xi-api-key": settings.ELEVENLABS_API_KEY},
                 json={"text": text, "model_id": "eleven_multilingual_v2"},
-                timeout=10,
+                timeout=20,
             )
             response.raise_for_status()
             out.write_bytes(response.content)
             return out
         except requests.RequestException as exc:
-            logger.warning("ElevenLabs недоступен (%s) — переключаюсь на edge-tts", exc)
-            return self._fallback.synthesize(text, lang)
+            logger.error("ElevenLabs недоступен: %s", exc)
+            raise TTSError(f"ElevenLabs error: {exc}") from exc
 
 
-def build_engine() -> LumeanTTS | ElevenLabsTTS | EdgeTTS:
-    """Выбор движка: Lumean -> ElevenLabs -> edge-tts (мультиязычная Ava)."""
+def build_engine() -> LumeanTTS | ElevenLabsTTS | DummyTTS:
+    """Выбор движка: Lumean -> ElevenLabs -> Dummy (без голоса Chrome/Ava)."""
     if settings.LUMEAN_API_KEY:
         return LumeanTTS()
     if settings.ELEVENLABS_API_KEY and settings.ELEVENLABS_VOICE_ID:
         return ElevenLabsTTS()
-    return EdgeTTS()
+    return DummyTTS()
 
 
 def compute_rms_chunks(media_path: Path, chunk_ms: int = 50) -> list[float]:
@@ -1420,7 +1426,7 @@ def wav_duration_seconds(path: Path) -> float:
 
 @dataclass
 class SpeechItem:
-    """Фраза в конвейере озвучки."""
+    """Фраза в конвейере озвучки с защитой от рассинхрона (TTL & State Guard)."""
 
     text: str
     lang: str
@@ -1432,6 +1438,11 @@ class SpeechItem:
     ready_event: threading.Event = field(default_factory=threading.Event)
     failed: bool = False
     source: str = "manual"
+    intent_id: str = ""
+    created_at: float = field(default_factory=time.time)
+    max_age_sec: float = 35.0
+    expected_pair: str = ""
+    expected_state: str = ""
 
 
 # Алиас для обратной совместимости
@@ -1464,6 +1475,7 @@ class SpeechController:
 
     def __post_init__(self) -> None:
         self._playback_queue: deque[SpeechItem] = deque()
+        self._prefetched_items: dict[str, SpeechItem] = {}
         self._lock = threading.Lock()
         self._finished = threading.Event()
         self._wake = threading.Event()
@@ -1666,6 +1678,124 @@ class SpeechController:
         self._emit_status()
         return True
 
+    def _cleanup_prefetched(self) -> None:
+        now = time.time()
+        with self._lock:
+            expired = [iid for iid, itm in self._prefetched_items.items() if (now - itm.created_at) > 120.0]
+            for iid in expired:
+                self._prefetched_items.pop(iid, None)
+
+    def prefetch(
+        self,
+        text: str,
+        lang: str | None = None,
+        intent_id: str = "",
+        emotion: str = "happy",
+        action: str | None = None,
+        action_duration: float = 3.5,
+        source: str = "prefetch",
+        expected_pair: str = "",
+        expected_state: str = "",
+        ttl_sec: float = 40.0,
+    ) -> str:
+        """Запускает упреждающий синтез фразы в фоне без немедленного воспроизведения (Producer)."""
+        actual_lang = lang or detect_lang(text)
+        text = sanitize_for_tiktok(text, actual_lang)
+        text = strip_emoji_control(text)
+        if not text:
+            return ""
+        ok, reason = check_phrase(text)
+        if not ok:
+            logger.warning("Prefetch фраза отклонена цензурой: %s", reason)
+            return ""
+
+        iid = intent_id or str(uuid.uuid4())
+        item = SpeechItem(
+            text=text,
+            lang=actual_lang,
+            emotion=emotion if emotion in EMOTIONS else "happy",
+            action=action,
+            action_duration=action_duration,
+            source=source,
+            intent_id=iid,
+            created_at=time.time(),
+            max_age_sec=ttl_sec,
+            expected_pair=expected_pair,
+            expected_state=expected_state,
+        )
+
+        with self._lock:
+            self._prefetched_items[iid] = item
+
+        self._synth_pool.submit(self._prepare_audio, item)
+        self._cleanup_prefetched()
+        logger.info("Запущен prefetch TTS [intent=%s] для «%s» (pair=%s, state=%s, ttl=%.0fs)", iid, text[:30], expected_pair, expected_state, ttl_sec)
+        return iid
+
+    def check_prefetch(self, intent_id: str) -> dict:
+        """Проверяет готовность предзагруженного аудио."""
+        with self._lock:
+            item = self._prefetched_items.get(intent_id)
+
+        if not item:
+            return {"status": "not_found", "ready": False, "intent_id": intent_id}
+
+        age = time.time() - item.created_at
+        if age > item.max_age_sec:
+            with self._lock:
+                self._prefetched_items.pop(intent_id, None)
+            return {"status": "expired", "ready": False, "intent_id": intent_id, "age": age}
+
+        if item.failed:
+            return {"status": "failed", "ready": False, "intent_id": intent_id}
+
+        if item.ready_event.is_set() and item.media_path and item.media_path.exists():
+            duration = (len(item.rms_chunks) * 0.05) if item.rms_chunks else wav_duration_seconds(item.media_path)
+            return {
+                "status": "ready",
+                "ready": True,
+                "intent_id": intent_id,
+                "duration": duration,
+                "text": item.text,
+            }
+
+        return {"status": "generating", "ready": False, "intent_id": intent_id, "age": age}
+
+    def play_prefetched(
+        self,
+        intent_id: str,
+        current_pair: str = "",
+        current_state: str = "",
+    ) -> bool:
+        """Помещает готовый предзагруженный элемент в очередь воспроизведения (Consumer) с проверкой TTL и контекста."""
+        with self._lock:
+            item = self._prefetched_items.pop(intent_id, None)
+
+        if not item:
+            logger.warning("play_prefetched: intent %s не найден", intent_id)
+            return False
+
+        age = time.time() - item.created_at
+        if age > item.max_age_sec:
+            logger.warning("play_prefetched: intent %s устарел (возраст %.1fs > %.1fs)", intent_id, age, item.max_age_sec)
+            return False
+
+        if item.expected_pair and current_pair and item.expected_pair.replace(" ", "").upper() != current_pair.replace(" ", "").upper():
+            logger.warning("play_prefetched: рассинхрон пары (ожидали %s, на экране %s), отмена фразы", item.expected_pair, current_pair)
+            return False
+
+        if item.expected_state and current_state and item.expected_state.upper() != current_state.upper():
+            logger.warning("play_prefetched: рассинхрон состояния бота (ожидали %s, сейчас %s), отмена фразы", item.expected_state, current_state)
+            return False
+
+        with self._lock:
+            self._playback_queue.append(item)
+
+        self._wake.set()
+        self._emit_status()
+        logger.info("play_prefetched: intent %s отправлен в воспроизведение («%s»)", intent_id, item.text[:30])
+        return True
+
     def _prepare_audio(self, item: SpeechItem) -> None:
         """Фоновый синтез речи для элемента очереди."""
         try:
@@ -1773,10 +1903,24 @@ class SpeechController:
             self._process_item(item)
 
     def _process_item(self, item: SpeechItem) -> None:
+        # Проверяем начальный возраст фразы (TTL Guard)
+        age = time.time() - item.created_at
+        if age > item.max_age_sec:
+            logger.warning("Фраза устарела до начала ожидания (возраст %.1fс > %.1fс): «%s», отмена", age, item.max_age_sec, item.text[:30])
+            self._emit_status_impl()
+            return
+
         # Ждём завершения синтеза аудио (до 45с)
         ready = item.ready_event.wait(timeout=45.0)
         if not ready or item.failed or not item.media_path or not item.media_path.exists():
             logger.warning("Аудио не готово или ошибка синтеза для «%s»", item.text[:30])
+            self._emit_status_impl()
+            return
+
+        # Повторная проверка возраста фразы после ожидания синтеза
+        age_after = time.time() - item.created_at
+        if age_after > (item.max_age_sec + 15.0):
+            logger.warning("Фраза устарела после синтеза (возраст %.1fс): «%s», отмена", age_after, item.text[:30])
             self._emit_status_impl()
             return
 
