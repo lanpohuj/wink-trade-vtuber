@@ -143,6 +143,14 @@ RATIONALE_BUY = [
         "ru": "🎯 Логика входа: Входим вверх по восходящему импульсу вслед за крупными покупками",
         "en": "🎯 Trade entry: Entering UP following primary breakout momentum",
     },
+    {
+        "ru": "📌 Картина графика: Окончание коррекции в растущем тренде, откат выкуплен",
+        "en": "📌 Chart structure: Pullback completed in an uptrend, dip firmly bought up",
+    },
+    {
+        "ru": "🎯 Логика входа: Заходим вверх на откате по основному восходящему тренду",
+        "en": "🎯 Trade entry: Entering UP on the dip following the primary uptrend",
+    },
 ]
 
 RATIONALE_SELL = [
@@ -201,6 +209,14 @@ RATIONALE_SELL = [
     {
         "ru": "🎯 Логика входа: Входим вниз по тренду пробоя — не ловим падающий нож!",
         "en": "🎯 Trade entry: Entering DOWN on trend breakout — never catch a falling knife!",
+    },
+    {
+        "ru": "📌 Картина графика: Слабая попытка отката захлебнулась, медведи давят рынок",
+        "en": "📌 Chart structure: Weak relief rally collapsed, bears pushing back to lows",
+    },
+    {
+        "ru": "🎯 Логика входа: Заходим вниз на откате по основному нисходящему тренду",
+        "en": "🎯 Trade entry: Entering DOWN on the pullback aligned with dominant downtrend",
     },
 ]
 

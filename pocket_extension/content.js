@@ -701,6 +701,37 @@
       }
 
       // -------------------------------------------------------------
+      // RULE 2.5: TREND PULLBACK / RETRACEMENT (Вход на откате по тренду)
+      // -------------------------------------------------------------
+      if (!decision) {
+        if (ema5 > ema13 && c1 && c1.isGreen && (c2 && c2.isRed)) {
+          decision = {
+            direction: "BUY",
+            category: "buy_pullback",
+            confidence: 89,
+            line1: state.lang === "ru"
+              ? "📌 Картина графика: Окончание коррекции в растущем тренде, откат выкуплен."
+              : "📌 Chart structure: Pullback completed in an uptrend, dip firmly bought up.",
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Заходим вверх на откате по основному восходящему тренду."
+              : "🎯 Trade entry: Entering UP on the dip following the primary uptrend.",
+          };
+        } else if (ema5 < ema13 && c1 && c1.isRed && (c2 && c2.isGreen)) {
+          decision = {
+            direction: "SELL",
+            category: "sell_pullback",
+            confidence: 89,
+            line1: state.lang === "ru"
+              ? "📌 Картина графика: Слабая попытка отката захлебнулась, медведи давят рынок."
+              : "📌 Chart structure: Weak relief rally collapsed, bears pushing back to lows.",
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Заходим вниз на откате по основному нисходящему тренду."
+              : "🎯 Trade entry: Entering DOWN on the pullback aligned with dominant downtrend.",
+          };
+        }
+      }
+
+      // -------------------------------------------------------------
       // FALLBACK: CLASSICAL TA TREND
       // -------------------------------------------------------------
       if (!decision) {
@@ -1783,27 +1814,44 @@
     const block = document.getElementById("botDirectionBlock");
 
     if (isWin) {
+      const wasRecovery = state.recoveryStep > 0;
       state.liveWins += 1;
       state.sessionProfit += profitDelta;
       state.recoveryStep = 0;
       setPocketStakeAmount(state.baseStake);
 
-      await triggerStateWithVoice("TRADE_RESULT", "trade_win", () => {
+      const winVoiceCategory = wasRecovery ? "trade_win_recovery" : "trade_win";
+
+      await triggerStateWithVoice("TRADE_RESULT", winVoiceCategory, () => {
         if (block) {
           block.className = "winky-direction-block active buy";
-          block.innerHTML = `
-            <div class="signal-dir-large buy" style="font-size:16px;">
-              🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"} (+$${profitDelta})
-            </div>
-            <div class="signal-ta-lines">
-              <div class="signal-ta-line buy">
-                ${state.lang === "ru" ? "✅ Прогноз отработал точно по стратегии!" : "✅ Strategy executed with precision!"}
+          block.innerHTML = wasRecovery
+            ? `
+              <div class="signal-dir-large buy" style="font-size:16px;">
+                🎉 ${state.lang === "ru" ? "ПЕРЕКРЫТИЕ В ПЛЮС!" : "RECOVERY WIN!"} (+$${profitDelta})
               </div>
-              <div class="signal-ta-line buy">
-                ${state.lang === "ru" ? "Забираем чистый профит по сигналу Winky AI!" : "Securing clean profit with Winky AI!"}
+              <div class="signal-ta-lines">
+                <div class="signal-ta-line buy">
+                  ${state.lang === "ru" ? "✅ Идеальная отработка перекрытия по мани-менеджменту!" : "✅ Flawless recovery execution according to strategy!"}
+                </div>
+                <div class="signal-ta-line buy">
+                  ${state.lang === "ru" ? "Забрали чистый профит и вернули базовую ставку!" : "Clean profit locked, resetting stake to base!"}
+                </div>
               </div>
-            </div>
-          `;
+            `
+            : `
+              <div class="signal-dir-large buy" style="font-size:16px;">
+                🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"} (+$${profitDelta})
+              </div>
+              <div class="signal-ta-lines">
+                <div class="signal-ta-line buy">
+                  ${state.lang === "ru" ? "✅ Прогноз отработал точно по стратегии!" : "✅ Strategy executed with precision!"}
+                </div>
+                <div class="signal-ta-line buy">
+                  ${state.lang === "ru" ? "Забираем чистый профит по сигналу Winky AI!" : "Securing clean profit with Winky AI!"}
+                </div>
+              </div>
+            `;
         }
       }, true, "excited", "cheer");
     } else {

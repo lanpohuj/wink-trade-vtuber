@@ -55,7 +55,7 @@ def normalize_cache_text(text: str) -> str:
     return re.sub(r"\s+", " ", cleaned.strip().lower())
 
 
-def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filename: str) -> None:
+def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filename: str, provider: str = "lumean_verified") -> None:
     """Обновляет читаемый manifest.json в подпапке голоса."""
     manifest_path = voice_dir / "manifest.json"
     with _manifest_lock:
@@ -68,6 +68,7 @@ def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filena
         data[text_hash] = {
             "text": original_text,
             "file": filename,
+            "provider": provider,
             "created_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         }
         try:
@@ -1054,11 +1055,14 @@ class LumeanTTS:
                 # Шаг Г: Скачивание аудиофайла прямо в voice_cache/ (таймаут 30с)
                 audio_resp = self._client.get(download_url, timeout=30.0)
                 audio_resp.raise_for_status()
-                cached_file.write_bytes(audio_resp.content)
+                audio_data = audio_resp.content
+                if len(audio_data) < 4096:
+                    raise TTSError(f"Lumean вернул подозрительно маленький файл: {len(audio_data)} байт")
+                cached_file.write_bytes(audio_data)
                 # Сразу рассчитываем RMS для мгновенного липсинка при проигрывании
                 compute_rms_chunks(cached_file)
-                _update_manifest(voice_dir, text_hash, clean_text, cached_file.name)
-                logger.info("Lumean TTS успешно синтезировал в voice_cache/%s: %s (%d байт)", voice_dir.name, cached_file.name, len(audio_resp.content))
+                _update_manifest(voice_dir, text_hash, clean_text, cached_file.name, provider="lumean_verified")
+                logger.info("Lumean TTS успешно синтезировал в voice_cache/%s: %s (%d байт)", voice_dir.name, cached_file.name, len(audio_data))
                 return cached_file
 
             except Exception as exc:  # noqa: BLE001
@@ -1469,6 +1473,38 @@ class SpeechStatus:
     queue_size: int = 0
 
 
+class SmartCategoryDeck:
+    """Умная колода без повторов для конкретной категории фраз стрима."""
+
+    def __init__(self, category: str, lang: str):
+        self.category = category
+        self.lang = lang
+        self.deck: list[str] = []
+        self.last_played: str | None = None
+        self._lock = threading.Lock()
+
+    def get_next(self, available_phrases: list[str]) -> str | None:
+        if not available_phrases:
+            return None
+        with self._lock:
+            # Оставляем в колоде только те фразы, которые действительно есть в available_phrases
+            valid_deck = [p for p in self.deck if p in available_phrases]
+            if not valid_deck:
+                pool = list(available_phrases)
+                random.shuffle(pool)
+                # Гарантируем, что первая фраза новой колоды не совпадает с последней сыгранной (если фраз > 1)
+                if len(pool) > 1 and pool[0] == self.last_played:
+                    swap_idx = random.randint(1, len(pool) - 1)
+                    pool[0], pool[swap_idx] = pool[swap_idx], pool[0]
+                self.deck = pool
+            else:
+                self.deck = valid_deck
+
+            selected = self.deck.pop(0)
+            self.last_played = selected
+            return selected
+
+
 @dataclass
 class SpeechController:
     """Очередь речи: цензура -> асинхронный синтез (конвейер) -> воспроизведение -> lipsync -> следующая."""
@@ -1483,6 +1519,7 @@ class SpeechController:
     def __post_init__(self) -> None:
         self._playback_queue: deque[SpeechItem] = deque()
         self._prefetched_items: dict[str, SpeechItem] = {}
+        self._category_decks: dict[tuple[str, str], SmartCategoryDeck] = {}
         self._lock = threading.Lock()
         self._finished = threading.Event()
         self._wake = threading.Event()
@@ -1933,9 +1970,15 @@ class SpeechController:
             else:
                 missing_phrases.append(p)
 
-        # 2. Мгновенная выдача (0.05с)
+        # 2. Мгновенная выдача (0.05с) через Умную колоду без повторов
         if cached_phrases:
-            selected_phrase = random.choice(cached_phrases)
+            deck_key = (actual_lang, category)
+            with self._lock:
+                if deck_key not in self._category_decks:
+                    self._category_decks[deck_key] = SmartCategoryDeck(category, actual_lang)
+                deck = self._category_decks[deck_key]
+
+            selected_phrase = deck.get_next(cached_phrases) or random.choice(cached_phrases)
             cached_file = self.engine.get_cache_path(selected_phrase, lang=actual_lang)
             item = SpeechItem(
                 text=selected_phrase,
@@ -1952,7 +1995,7 @@ class SpeechController:
                 self._playback_queue.append(item)
             self._wake.set()
             self._emit_status()
-            logger.info("⚡ [0.05s Hit] speak_stream_category [%s]: «%s» (%s)", category, selected_phrase[:40], cached_file.name)
+            logger.info("⚡ [0.05s Hit Deck] speak_stream_category [%s]: «%s» (%s)", category, selected_phrase[:40], cached_file.name)
         else:
             # Страховочный поиск любого готового .mp3 файла для текущего слота голоса
             logger.warning("speak_stream_category: фразы категории [%s] ещё не закэшированы, ищу резервный .mp3...", category)
@@ -2143,16 +2186,15 @@ class SpeechController:
         self._emit_status_impl()
 
 
-def warmup_stream_voice_bank(engine: Any = None, max_workers: int = 3) -> dict[str, int]:
-    """Проверяет все фразы STREAM_VOICE_BANK и предсинтезирует недостающие в voice_cache/ через пул потоков."""
-    import concurrent.futures
+def warmup_stream_voice_bank(engine: Any = None, delay_between_sec: float = 2.0) -> dict[str, int]:
+    """Проверяет все фразы STREAM_VOICE_BANK и последовательно предсинтезирует недостающие в voice_cache/ строго через Lumean (с паузой 2.0с для защиты от 429)."""
     from winky.scenarios import STREAM_VOICE_BANK
 
     if engine is None:
         engine = build_engine()
 
     stats = {"cached": 0, "synthesized": 0, "failed": 0}
-    tasks_to_synth = []
+    tasks_to_synth: list[tuple[str, str, str]] = []
 
     for lang, categories in STREAM_VOICE_BANK.items():
         for cat, phrases in categories.items():
@@ -2169,29 +2211,21 @@ def warmup_stream_voice_bank(engine: Any = None, max_workers: int = 3) -> dict[s
         logger.info("=== Все фразы STREAM_VOICE_BANK уже закэшированы! (HIT: %d) ===", stats["cached"])
         return stats
 
-    logger.info("Кэшировано: %d, требуется синтезировать: %d", stats["cached"], len(tasks_to_synth))
+    logger.info("Кэшировано: %d, требуется синтезировать в Lumean: %d (последовательно с паузой %.1fс)", stats["cached"], len(tasks_to_synth), delay_between_sec)
 
-    def _synth_worker(lang: str, cat: str, phrase: str):
+    for i, (lang, cat, phrase) in enumerate(tasks_to_synth, 1):
         try:
             if hasattr(engine, "synthesize"):
-                logger.info("Прогрев [%s/%s]: «%s»...", lang, cat, phrase[:35])
+                logger.info("[%d/%d] Прогрев Lumean [%s/%s]: «%s»...", i, len(tasks_to_synth), lang, cat, phrase[:35])
                 engine.synthesize(phrase, lang=lang)
-                return True
-        except Exception as e:
-            logger.warning("Ошибка синтеза [%s/%s]: %s", lang, cat, e)
-            return False
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers, thread_name_prefix="warmup") as pool:
-        future_map = {
-            pool.submit(_synth_worker, l, c, p): (l, c, p)
-            for l, c, p in tasks_to_synth
-        }
-        for future in concurrent.futures.as_completed(future_map):
-            ok = future.result()
-            if ok:
                 stats["synthesized"] += 1
-            else:
-                stats["failed"] += 1
+        except Exception as e:
+            logger.warning("[%d/%d] Ошибка синтеза Lumean [%s/%s]: %s", i, len(tasks_to_synth), lang, cat, e)
+            stats["failed"] += 1
+
+        # Пауза 2.0 секунды между запросами для защиты от HTTP 429
+        if i < len(tasks_to_synth):
+            time.sleep(delay_between_sec)
 
     logger.info("=== Итоги прогрева STREAM_VOICE_BANK: %s ===", stats)
     return stats
