@@ -375,38 +375,32 @@
       // Construct 2 professional, plain confident trader rationale lines (ZERO robot numbers!)
       let line1 = "";
       let line2 = "";
-      let voicePhrase = "";
 
-      const cleanPairRu = state.targetPair.replace(" OTC", " на ОТС").replace("/", " ");
+      const isBounce = Math.random() > 0.45;
+      const category = isBuy ? (isBounce ? "buy_bounce" : "buy_trend") : (isBounce ? "sell_bounce" : "sell_trend");
 
       if (isBuy) {
         line1 = state.lang === "ru"
-          ? "📌 Картина графика: Цена упёрлась в сильный нижний уровень — продавцы выдохлись."
-          : "📌 Chart structure: Price rejected off strong support floor — seller exhaustion.";
+          ? (isBounce ? "📌 Картина графика: Цена плотно упёрлась в нижний уровень — продавцы выдохлись." : "📌 Картина графика: Мощный бычий импульс, пробитие локального сопротивления.")
+          : (isBounce ? "📌 Chart structure: Price firmly rejected off support floor — seller exhaustion." : "📌 Chart structure: Strong bullish impulse breaking local resistance.");
         line2 = state.lang === "ru"
-          ? "🎯 Логика входа: Ждём уверенный отскок наверх по основному тренду."
-          : "🎯 Trade entry: Clean bounce upward aligned with primary trend.";
-        voicePhrase = state.lang === "ru"
-          ? `По ${cleanPairRu} отличная точка входа! Продавцы выдохлись у уровня поддержки, заходим ВВЕРХ на ${state.selectedTimeframe}!`
-          : `Great entry on ${state.targetPair}! Support floor holding strong, taking BUY for ${state.selectedTimeframe}!`;
+          ? (isBounce ? "🎯 Логика входа: Заходим вверх на уверенном отскоке по стратегии." : "🎯 Логика входа: Заходим вверх по сильному восходящему движению.")
+          : (isBounce ? "🎯 Trade entry: Entering UP on clean support rebound." : "🎯 Trade entry: Entering UP following primary trend continuation.");
       } else {
         line1 = state.lang === "ru"
-          ? "📌 Картина графика: Цена ударилась в потолок сопротивления — рост остановился."
-          : "📌 Chart structure: Price hit resistance ceiling — upward momentum stalled.";
+          ? (isBounce ? "📌 Картина графика: Цена ударилась в потолок сопротивления — покупатели потеряли силу." : "📌 Картина графика: Мощный медвежий пробой уровня поддержки вниз.")
+          : (isBounce ? "📌 Chart structure: Price hit resistance ceiling — buying momentum exhausted." : "📌 Chart structure: Strong bearish breakout below support floor.");
         line2 = state.lang === "ru"
-          ? "🎯 Логика входа: Заходим на откате вниз вместе с крупными продавцами."
-          : "🎯 Trade entry: Clean rejection downward following institutional sellers.";
-        voicePhrase = state.lang === "ru"
-          ? `По ${cleanPairRu} цена ударилась в потолок сопротивления! Заходим ВНИЗ на ${state.selectedTimeframe} на уверенном откате!`
-          : `Resistance hit on ${state.targetPair}! Selling pressure confirmed, taking SELL for ${state.selectedTimeframe}!`;
+          ? (isBounce ? "🎯 Логика входа: Заходим вниз на развороте вместе с продавцами." : "🎯 Логика входа: Открываем сделку вниз по импульсному тренду.")
+          : (isBounce ? "🎯 Trade entry: Entering DOWN on clear reversal off ceiling." : "🎯 Trade entry: Opening DOWN trade aligned with downward momentum.");
       }
 
       return {
         direction: isBuy ? "BUY" : "SELL",
         accuracy: confidence,
+        category: category,
         line1: line1,
         line2: line2,
-        voicePhrase: voicePhrase,
         isFlat: confidence < 80, // Bad Market Filter
       };
     },
@@ -1063,105 +1057,28 @@
     },
   };
 
-  /* ==================== 4. Voice Manager & 0ms Sync Engine ==================== */
+  /* ==================== 4. Instant 0.05s Voice Engine (STREAM_VOICE_BANK) ==================== */
 
   const VoiceManager = {
-    manifest: null,
-    lastPlayedByCategory: {},
-    loadingPromise: null,
-
-    async loadManifest() {
-      if (this.manifest) return this.manifest;
-      if (this.loadingPromise) return this.loadingPromise;
-
-      this.loadingPromise = (async () => {
-        try {
-          const res = await sendProxyMessage("/api/winky/voice_manifest", "GET");
-          if (res && res.data && res.data.categories) {
-            this.manifest = res.data;
-            loggerLog("VoiceManager: Манифест Lumean успешно загружен! Фраз в банке:", res.data.total_phrases || 58);
-            return this.manifest;
-          }
-        } catch (err) {
-          loggerLog("VoiceManager: Ошибка загрузки манифеста:", err);
-        }
-        return null;
-      })();
-
-      return this.loadingPromise;
-    },
-
-    pickPhrase(category) {
-      if (!this.manifest || !this.manifest.categories) return null;
-      const list = this.manifest.categories[category];
-      if (!list || list.length === 0) return null;
-
-      const lastId = this.lastPlayedByCategory[category];
-      const available = list.length > 1 ? list.filter((item) => item.id !== lastId) : list;
-      const picked = available[Math.floor(Math.random() * available.length)];
-      if (picked) {
-        this.lastPlayedByCategory[category] = picked.id;
-      }
-      return picked;
-    },
-
-    async playVoice(category, isBlocking = false) {
-      if (!this.manifest) {
-        await this.loadManifest();
-      }
-
-      const item = this.pickPhrase(category);
-      if (!item) {
-        loggerLog(`VoiceManager: Нет фразы для категории «${category}»`);
-        if (isBlocking) await new Promise((r) => setTimeout(r, 1200));
-        return null;
-      }
-
-      // Настройка эмоций и действий для 3D-аватара Winky
-      let emotion = "happy";
-      let action = "talk";
-      if (category === "TRADE_WIN") {
-        emotion = "excited";
-        action = "cheer";
-      } else if (category === "TRADE_LOSS") {
-        emotion = "thinking";
-        action = "frustrated";
-      } else if (category === "TRADE_REFUND") {
-        emotion = "neutral";
-        action = "nod";
-      } else if (category === "PREPARE_ENTRY") {
-        emotion = "excited";
-        action = "talk";
-      } else if (category === "OPEN_TRADE_CALL" || category === "OPEN_TRADE_PUT") {
-        emotion = "excited";
-        action = "cheer";
-      } else if (category === "WEAK_SIGNAL_SWITCH_PAIR") {
-        emotion = "neutral";
-        action = "tilt_head";
-      }
-
-      loggerLog(`VoiceManager: [${category}] -> ${item.id} («${item.text}», ${item.duration}с)`);
-
-      sendProxyMessage("/api/winky/play_voice", "POST", {
-        file_path: item.file,
+    playCategory(category, isBlocking = false, emotion = "happy", action = null) {
+      loggerLog(`VoiceManager: Мгновенный запрос категории [${category}] (${state.lang})`);
+      sendProxyMessage("/api/winky/speak_stream_category", "POST", {
         category: category,
-        text: item.text,
-        duration: item.duration,
+        lang: state.lang || "ru",
         emotion: emotion,
         action: action,
       });
 
       if (isBlocking) {
-        const waitMs = Math.max(1200, Math.round(((item.duration || 2.5) + 0.3) * 1000));
-        await new Promise((r) => setTimeout(r, waitMs));
+        const waitMs = (category === "trade_win" || category.startsWith("trade_loss")) ? 4000 : 3200;
+        return new Promise((r) => setTimeout(r, waitMs));
       }
-
-      return item;
+      return Promise.resolve(true);
     },
   };
 
   // Immediate 0ms UI update with synchronized Lumean speech
-  async function triggerStateWithVoice(stateKey, uiUpdateFn, isBlocking = false) {
+  async function triggerStateWithVoice(stateKey, category, uiUpdateFn, isBlocking = false, emotion = "happy", action = null) {
     state.botState = stateKey;
     if (typeof uiUpdateFn === "function") {
       try {
@@ -1171,11 +1088,11 @@
       }
     }
     renderSignalCardState();
-    return await VoiceManager.playVoice(stateKey, isBlocking);
+    if (category) {
+      return await VoiceManager.playCategory(category, isBlocking, emotion, action);
+    }
+    return true;
   }
-
-  // Pre-load voice manifest on script start
-  VoiceManager.loadManifest();
 
   /* ==================== 5. Signal Execution & Lifecycle ==================== */
 
@@ -1201,8 +1118,8 @@
 
     const btnGet = document.getElementById("btnGetSignalAction");
 
-    // 1. Состояние: АНАЛИЗ ГРАФИКА (0ms UI + озвучка)
-    triggerStateWithVoice("ANALYZING_CHART", () => {
+    // 1. Состояние: АНАЛИЗ ГРАФИКА (0ms UI)
+    triggerStateWithVoice("ANALYZING_PAIR", null, () => {
       if (btnGet) {
         btnGet.disabled = true;
         btnGet.classList.add("disabled");
@@ -1223,20 +1140,16 @@
       if (now - lastSwitch > 40000) {
         state.lastPairSwitchAttemptAt = now;
 
-        // Блокирующий шаг: озвучиваем смену пары
-        await triggerStateWithVoice("WEAK_SIGNAL_SWITCH_PAIR", () => {
-          state.botState = "SWITCHING_PAIR";
+        // Блокирующий шаг: озвучиваем плановую смену пары
+        await triggerStateWithVoice("SWITCHING_PAIR", "switch_pair", () => {
           renderSignalCardState();
-        }, true);
+        }, true, "thinking", "tilt_head");
 
         // Переключаем пару в Pocket Option DOM
         await POAutomation.switchCurrencyPair();
 
-        // Озвучиваем успешное переключение
-        await triggerStateWithVoice("PAIR_SWITCHED_NEW_SCAN", () => {
-          state.botState = "IDLE";
-          renderSignalCardState();
-        }, true);
+        state.botState = "IDLE";
+        renderSignalCardState();
 
         if (btnGet) {
           btnGet.disabled = false;
@@ -1254,16 +1167,7 @@
       }
     }
 
-    // 3. Состояние: ПОДГОТОВКА СДЕЛКИ (блокирующий шаг перед входом)
-    await triggerStateWithVoice("PREPARE_ENTRY", () => {
-      state.botState = "PREPARING_TRADE";
-      renderSignalCardState();
-      if (btnGet) {
-        btnGet.innerHTML = `<span>🎙️</span><span>${state.lang === "ru" ? "ПОДГОТОВКА СДЕЛКИ..." : "PREPARING ENTRY..."}</span>`;
-      }
-    }, true);
-
-    // 4. Состояние: ВХОД В СДЕЛКУ (Озвучка направления синхронно с кликом)
+    // 3. Состояние: ВХОД В СДЕЛКУ (Мгновенная озвучка за 0.05с синхронно с кликом)
     const durationSec = parseDurationSeconds(state.selectedTimeframe);
     state.activeSignal = {
       pair: state.targetPair,
@@ -1279,13 +1183,12 @@
     };
 
     const isBuy = String(analysis.direction).toUpperCase() === "BUY";
-    const tradeVoiceCategory = isBuy ? "OPEN_TRADE_CALL" : "OPEN_TRADE_PUT";
+    const tradeVoiceCategory = analysis.category || (isBuy ? "buy_trend" : "sell_trend");
 
-    // Запускаем озвучку сделки и открываем сделку на Pocket Option
-    triggerStateWithVoice(tradeVoiceCategory, () => {
-      state.botState = "IN_TRADE";
+    // Запускаем озвучку категории и открываем сделку на Pocket Option
+    triggerStateWithVoice("IN_TRADE", tradeVoiceCategory, () => {
       renderSignalCardState();
-    }, false);
+    }, false, "excited", "cheer");
 
     if (state.autoStream) {
       POAutomation.clickTrade(analysis.direction);
@@ -1302,7 +1205,7 @@
       model: state.selectedModel,
     });
 
-    // 5. Обратный отсчет таймера экспирации (30s)
+    // 4. Обратный отсчет таймера экспирации (30s)
     let remaining = durationSec;
     const updateTradeButtonLabel = (sec) => {
       if (btnGet) {
@@ -1313,19 +1216,11 @@
     };
     updateTradeButtonLabel(remaining);
 
-    let midTradeSpoken = false;
-
     state.expiryInterval = setInterval(() => {
       remaining -= 1;
       const timerEl = document.getElementById("signalTimerVal");
       if (timerEl) timerEl.textContent = formatTime(Math.max(0, remaining));
       updateTradeButtonLabel(Math.max(0, remaining));
-
-      // На 15-й секунде даем поддерживающий комментарий Винки
-      if (remaining === 15 && !midTradeSpoken) {
-        midTradeSpoken = true;
-        VoiceManager.playVoice("IN_TRADE_WAITING", false);
-      }
 
       if (remaining <= 0) {
         clearInterval(state.expiryInterval);
@@ -1362,7 +1257,7 @@
       state.sessionProfit += profit;
       state.recoveryStep = 0;
 
-      await triggerStateWithVoice("TRADE_WIN", () => {
+      await triggerStateWithVoice("TRADE_RESULT", "trade_win", () => {
         if (block) {
           block.className = "winky-direction-block active buy";
           block.innerHTML = `
@@ -1379,13 +1274,14 @@
             </div>
           `;
         }
-      }, true);
+      }, true, "excited", "cheer");
     } else if (outcome === "LOSS") {
       state.liveLosses += 1;
       state.sessionProfit = Math.max(0, state.sessionProfit - state.baseStake);
       state.recoveryStep = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 0;
+      const lossCategory = state.recoveryStep === 1 ? "trade_loss_step1" : "trade_loss_switch";
 
-      await triggerStateWithVoice("TRADE_LOSS", () => {
+      await triggerStateWithVoice("TRADE_RESULT", lossCategory, () => {
         if (block) {
           block.className = "winky-direction-block active sell";
           block.innerHTML = `
@@ -1401,10 +1297,10 @@
             </div>
           `;
         }
-      }, true);
+      }, true, "thinking", "frustrated");
     } else {
       // REFUND (Возврат)
-      await triggerStateWithVoice("TRADE_REFUND", () => {
+      await triggerStateWithVoice("TRADE_RESULT", "trade_loss_step1", () => {
         if (block) {
           block.className = "winky-direction-block active";
           block.innerHTML = `
@@ -1418,21 +1314,20 @@
             </div>
           `;
         }
-      }, true);
+      }, true, "neutral", "nod");
     }
 
     saveStats();
     updateScoreHUDUI();
 
     // Пауза между сделками
-    await triggerStateWithVoice("PAUSE_BETWEEN_TRADES", () => {
-      state.botState = "COOLDOWN";
-      renderSignalCardState();
-      if (btnGet) {
-        btnGet.disabled = true;
-        btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
-      }
-    }, true);
+    state.botState = "COOLDOWN";
+    renderSignalCardState();
+    if (btnGet) {
+      btnGet.disabled = true;
+      btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
+    }
+    await new Promise((r) => setTimeout(r, 3500));
 
     // Возврат в IDLE
     state.botState = "IDLE";
@@ -1473,12 +1368,7 @@
           loggerLog("TikTok Chat переключение пары по запросу", cmd.user, "на", cmd.pair);
           state.botState = "SWITCHING_PAIR";
           renderSignalCardState();
-          sendProxyMessage("/api/winky/event", "POST", {
-            event: "switch_pair",
-            pair: cmd.pair,
-            user: cmd.user,
-            lang: state.lang,
-          });
+          VoiceManager.playCategory("switch_pair", false, "happy", "wave");
           await POAutomation.switchPairAsync(cmd.pair);
           state.botState = "IDLE";
           renderSignalCardState();
@@ -1486,10 +1376,7 @@
             if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
           }, 2000);
         } else if (cmd.action === "ask_chat") {
-          sendProxyMessage("/api/winky/event", "POST", {
-            event: "ask_chat",
-            lang: state.lang,
-          });
+          VoiceManager.playCategory("ask_chat", false, "happy", "wave");
         }
       }
     } catch (_) {}
@@ -1972,7 +1859,7 @@
         state.autoStream = !state.autoStream;
         autoToggle.classList.toggle("active", state.autoStream);
         if (state.autoStream) {
-          VoiceManager.playVoice("START_STREAM_READY", false);
+          VoiceManager.playCategory("switch_pair", false);
           if (state.botState === "IDLE") {
             setTimeout(startSignalAnalysis, 1200);
           }

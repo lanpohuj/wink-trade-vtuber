@@ -18,6 +18,7 @@ import hashlib
 import json
 import logging
 import math
+import random
 import re
 import struct
 import subprocess
@@ -1067,6 +1068,12 @@ class LumeanTTS:
 
         # Категорический отказ от отката на EdgeTTS / системный голос Chrome!
         logger.error("Lumean TTS не смог синтезировать «%s» после 2 попыток: %s", clean_text[:30], last_exc)
+        # Резервный поиск любого готового .mp3 файла в voice_cache для текущего слота голоса
+        ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
+        if ready_files:
+            fallback_audio = random.choice(ready_files)
+            logger.warning("Сетевой сбой Lumean: взят готовый файл слота %s из voice_cache: %s", voice_dir.name, fallback_audio.name)
+            return fallback_audio
         raise TTSError(f"Lumean synthesis failed after retries: {last_exc}") from last_exc
 
     def search_voices(
@@ -1883,6 +1890,117 @@ class SpeechController:
             queue_size=q_len,
         )
 
+    def speak_stream_category(
+        self,
+        category: str,
+        lang: str = "ru",
+        emotion: str = "happy",
+        action: str | None = None,
+        priority: bool = False,
+    ) -> bool:
+        """Мгновенно (за 0.05 сек) воспроизводит готовую фразу категории из STREAM_VOICE_BANK.
+
+        1. Считывает фразы STREAM_VOICE_BANK[lang][category], которые УЖЕ лежат в voice_cache/.
+        2. Если есть готовые — мгновенно берет одну и передаёт в очередь воспроизведения (0.05с).
+        3. В тихом фоновом потоке (не блокируя речь) догенерирует 1 недостающую фразу этой категории через Lumean.
+        4. Если готовых нет — берет любой валидный .mp3 файл слота голоса из voice_cache/ (без EdgeTTS/say!).
+        """
+        from winky.scenarios import STREAM_VOICE_BANK
+
+        actual_lang = "ru" if (lang or "ru").lower() == "ru" else "en"
+        phrases_map = STREAM_VOICE_BANK.get(actual_lang, {})
+        phrases = phrases_map.get(category)
+        if not phrases:
+            for k, v in phrases_map.items():
+                if k.lower() == category.lower():
+                    phrases = v
+                    break
+
+        if not phrases:
+            logger.warning("speak_stream_category: категория «%s» не найдена в STREAM_VOICE_BANK[%s]", category, actual_lang)
+            return False
+
+        # Приоритетные события (сделка, победа, убыток) мгновенно прерывают текущую фоновую речь
+        if priority or category in ("trade_win", "trade_loss_step1", "trade_loss_switch", "buy_bounce", "buy_trend", "sell_bounce", "sell_trend"):
+            self.stop_current()
+
+        # 1. Проверяем, какие фразы уже закэшированы в voice_cache/
+        cached_phrases: list[str] = []
+        missing_phrases: list[str] = []
+        for p in phrases:
+            if hasattr(self.engine, "is_cached") and self.engine.is_cached(p, lang=actual_lang):
+                cached_phrases.append(p)
+            else:
+                missing_phrases.append(p)
+
+        # 2. Мгновенная выдача (0.05с)
+        if cached_phrases:
+            selected_phrase = random.choice(cached_phrases)
+            cached_file = self.engine.get_cache_path(selected_phrase, lang=actual_lang)
+            item = SpeechItem(
+                text=selected_phrase,
+                lang=actual_lang,
+                emotion=emotion,
+                action=action,
+                action_duration=3.5,
+                media_path=cached_file,
+                rms_chunks=compute_rms_chunks(cached_file),
+                source=f"stream_bank_{category}",
+            )
+            item.ready_event.set()
+            with self._lock:
+                self._playback_queue.append(item)
+            self._wake.set()
+            self._emit_status()
+            logger.info("⚡ [0.05s Hit] speak_stream_category [%s]: «%s» (%s)", category, selected_phrase[:40], cached_file.name)
+        else:
+            # Страховочный поиск любого готового .mp3 файла для текущего слота голоса
+            logger.warning("speak_stream_category: фразы категории [%s] ещё не закэшированы, ищу резервный .mp3...", category)
+            slot, service_key, voice_id = ("ru", DEFAULT_RU_SERVICE, DEFAULT_RU_VOICE_ID) if actual_lang == "ru" else ("en", DEFAULT_EN_SERVICE, DEFAULT_EN_VOICE_ID)
+            if hasattr(self.engine, "get_voice_dir"):
+                voice_dir = self.engine.get_voice_dir(service_key, voice_id)
+            else:
+                voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
+
+            ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
+            if ready_files:
+                cached_file = random.choice(ready_files)
+                item = SpeechItem(
+                    text=f"[{category}]",
+                    lang=actual_lang,
+                    emotion=emotion,
+                    action=action,
+                    action_duration=3.5,
+                    media_path=cached_file,
+                    rms_chunks=compute_rms_chunks(cached_file),
+                    source=f"stream_bank_{category}",
+                )
+                item.ready_event.set()
+                with self._lock:
+                    self._playback_queue.append(item)
+                self._wake.set()
+                self._emit_status()
+                logger.info("⚡ [0.05s Fallback] speak_stream_category [%s]: взят готовый %s", category, cached_file.name)
+            else:
+                # Если папка совсем пустая — отправляем первую фразу в стандартный синтез
+                self.speak(phrases[0], lang=actual_lang, emotion=emotion, action=action, source=f"stream_bank_{category}")
+
+        # 3. Тихий фоновый синтез 1 недостающей фразы (не блокируя очередь)
+        if missing_phrases and settings.LUMEAN_API_KEY:
+            to_synth = missing_phrases[0]
+            def _background_warmup():
+                try:
+                    time.sleep(2.0)
+                    if hasattr(self.engine, "synthesize"):
+                        self.engine.synthesize(to_synth, lang=actual_lang)
+                        logger.info("Фоновый прогрев фразы [%s]: «%s» выполнен", category, to_synth[:30])
+                except Exception as e:
+                    logger.debug("Ошибка фонового прогрева фразы [%s]: %s", category, e)
+
+            threading.Thread(target=_background_warmup, daemon=True, name=f"warmup-{category}").start()
+
+        return True
+
     # ---------- воркер воспроизведения ----------
 
     def _next_item(self) -> SpeechItem | None:
@@ -2023,3 +2141,57 @@ class SpeechController:
 
     def _emit_status(self) -> None:
         self._emit_status_impl()
+
+
+def warmup_stream_voice_bank(engine: Any = None, max_workers: int = 3) -> dict[str, int]:
+    """Проверяет все фразы STREAM_VOICE_BANK и предсинтезирует недостающие в voice_cache/ через пул потоков."""
+    import concurrent.futures
+    from winky.scenarios import STREAM_VOICE_BANK
+
+    if engine is None:
+        engine = build_engine()
+
+    stats = {"cached": 0, "synthesized": 0, "failed": 0}
+    tasks_to_synth = []
+
+    for lang, categories in STREAM_VOICE_BANK.items():
+        for cat, phrases in categories.items():
+            for p in phrases:
+                try:
+                    if hasattr(engine, "is_cached") and engine.is_cached(p, lang=lang):
+                        stats["cached"] += 1
+                    else:
+                        tasks_to_synth.append((lang, cat, p))
+                except Exception as exc:
+                    logger.warning("Ошибка проверки кэша [%s/%s]: %s", lang, cat, exc)
+
+    if not tasks_to_synth:
+        logger.info("=== Все фразы STREAM_VOICE_BANK уже закэшированы! (HIT: %d) ===", stats["cached"])
+        return stats
+
+    logger.info("Кэшировано: %d, требуется синтезировать: %d", stats["cached"], len(tasks_to_synth))
+
+    def _synth_worker(lang: str, cat: str, phrase: str):
+        try:
+            if hasattr(engine, "synthesize"):
+                logger.info("Прогрев [%s/%s]: «%s»...", lang, cat, phrase[:35])
+                engine.synthesize(phrase, lang=lang)
+                return True
+        except Exception as e:
+            logger.warning("Ошибка синтеза [%s/%s]: %s", lang, cat, e)
+            return False
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers, thread_name_prefix="warmup") as pool:
+        future_map = {
+            pool.submit(_synth_worker, l, c, p): (l, c, p)
+            for l, c, p in tasks_to_synth
+        }
+        for future in concurrent.futures.as_completed(future_map):
+            ok = future.result()
+            if ok:
+                stats["synthesized"] += 1
+            else:
+                stats["failed"] += 1
+
+    logger.info("=== Итоги прогрева STREAM_VOICE_BANK: %s ===", stats)
+    return stats

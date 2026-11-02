@@ -87,8 +87,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         }
         sendResponse({ ok: res.ok, status: res.status, data: data });
       })
-      .catch((err) => {
-        sendResponse({ ok: false, error: String(err) });
+      .catch(() => {
+        // Silent catch: prevent CORS/network error cards in chrome://extensions
+        sendResponse({ ok: false, error: "network_silent" });
       });
 
     return true;

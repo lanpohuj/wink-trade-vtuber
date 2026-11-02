@@ -332,3 +332,98 @@ class ScenarioBook:
     def cta(self) -> CtaConfig:
         with self._lock:
             return self._cta
+
+
+# ============================================================================
+# STREAM_VOICE_BANK: 100% фиксированные фразы без переменных и склеек пар
+# Хэш SHA-256 каждой фразы постоянен -> мгновенная отдача из voice_cache/ (0.05с)
+# ============================================================================
+
+STREAM_VOICE_BANK: dict[str, dict[str, tuple[str, ...]]] = {
+    "ru": {
+        "buy_bounce": (
+            "Смотрите на график: цена плотно упёрлась в нижний уровень и дальше вниз её не пускают. Уверенно заходим вверх на тридцать секунд!",
+            "Видите, как активно выкупают свечу снизу? Покупатели перехватили инициативу, смело открываю сделку вверх!",
+            "Цена сильно провалилась и продавцы выдохлись — сейчас пружина выстрелит обратно. Заходим вверх на отскоке!",
+        ),
+        "buy_trend": (
+            "Отличный бычий импульс! Идёт уверенный восходящий тренд, свечи пробивают уровень наверх. Заходим вверх по движению!",
+            "Покупатели сейчас давят со всей силы, пробили локальный потолок — не стоим против паровоза, заходим уверенно вверх!",
+            "Чистое движение наверх после короткой передышки. Открываю сделку вверх по основному тренду!",
+        ),
+        "sell_bounce": (
+            "Смотрите, цена ударилась прямо в потолок и покупатели потеряли силу. Заходим уверенно вниз на тридцать секунд на развороте!",
+            "Рынок сильно перегрелся после резкого рывка наверх — сейчас пойдёт закономерный откат. Открываю сделку вниз!",
+            "Сверху давит мощный уровень сопротивления, свечи начинают разворачиваться. Смело заходим вниз!",
+        ),
+        "sell_trend": (
+            "Смотрите, какой мощный пробой уровня вниз! Продавцы полностью контролируют рынок — заходим строго вниз по тренду!",
+            "Нижний уровень пробит импульсной свечой, идёт сильное нисходящее движение. Ловить отскок тут нельзя, открываю сделку вниз!",
+            "Чистый медвежий тренд, свечи уверенно идут вниз без откатов. Заходим вниз вместе с основным движением рынка!",
+        ),
+        "trade_win": (
+            "Идеально! Точка входа отработала как по нотам, забираем уверенный плюс в копилочку!",
+            "Красота! Сделка закрывается в чистый плюс, всё чётко по нашей стратегии. Смотрим график дальше!",
+            "Есть уверенный плюс! Вот почему так важно идти вместе с движением рынка. Кто хочет торговать со мной — забирайте бота в профиле!",
+        ),
+        "trade_loss_step1": (
+            "Ой, на последней секунде чуть зацепило сделку, вообще ничего страшного! В трейдинге это обычное дело, удваиваю сумму и спокойно заходим на перекрытие!",
+            "Немного не хватило времени до разворота, бывает! Ситуация тут понятная, поэтому без эмоций захожу на перекрытие и сейчас заберём своё!",
+        ),
+        "trade_loss_switch": (
+            "Так, эта пара начала капризничать и дёргаться не по технике. Не будем тратить на неё время — переключаюсь на другую пару с чистым графиком!",
+            "Тут начался резкий шум на графике, ничего страшного! Сейчас выберу более спокойную валютную пару и отработаем минус там!",
+        ),
+        "switch_pair": (
+            "Давайте посмотрим другую валютную пару, выберем самый чистый и понятный график для следующего входа!",
+            "Ищу самый сочный импульс на рынке. Переключаюсь на свежую пару с высокой выплатой!",
+        ),
+        "ask_chat": (
+            "Ребятки, напишите в чат, какую валютную пару разобрать следующей? Сейчас вместе посмотрим график и найдём сильную точку входа!",
+            "Чат, жду ваши варианты валютных пар в комментариях! На какой график заглянем прямо сейчас?",
+        ),
+    },
+    "en": {
+        "buy_bounce": (
+            "Look at the chart: price firmly hit the lower support level and sellers can't push it down. Confidently entering UP for thirty seconds!",
+            "See how aggressively buyers are rejecting the lows? Bulls took over momentum, opening an UP trade right now!",
+            "Price oversold and sellers are exhausted — get ready for a sharp bounce back. Entering UP on the rebound!",
+        ),
+        "buy_trend": (
+            "Strong bullish momentum! Solid uptrend in play, candles breaking through resistance. Entering UP with the flow!",
+            "Buyers pushing with full force, breaking the ceiling — never stand against the train, taking UP with confidence!",
+            "Clean upward continuation after a quick pause. Opening an UP trade following the primary trend!",
+        ),
+        "sell_bounce": (
+            "Price rejected right off the ceiling and buyers ran out of steam. Entering DOWN for thirty seconds on the reversal!",
+            "Market heavily overbought after that spike up — natural pullback incoming. Opening a DOWN trade!",
+            "Heavy resistance pressing from above, candles turning red. Taking DOWN with high conviction!",
+        ),
+        "sell_trend": (
+            "Massive breakout below key support! Bears fully control the action — entering DOWN with the trend!",
+            "Support crushed by an impulse candle, strong downward drop. Don't catch falling knives, opening DOWN!",
+            "Pure bearish momentum, candles dropping without pullback. Riding the trend DOWN!",
+        ),
+        "trade_win": (
+            "Boom! Clean entry execution, securing another solid win into the bag!",
+            "Beautiful! Trade closes in pure profit, following our strategy to the letter. Onto the next setup!",
+            "Another solid win secured! That's why following market structure pays off. Link to my bot is in the bio!",
+        ),
+        "trade_loss_step1": (
+            "Slight wick touched our level at the very last second, totally fine! Doubling stake and calmly taking recovery step one!",
+            "Just ran out of time before the reversal, happens! Structure is clear, taking recovery step one without emotion!",
+        ),
+        "trade_loss_switch": (
+            "Alright, this pair is getting choppy and acting erratic. Won't waste time here — switching to a cleaner chart!",
+            "Market noise picked up on this asset, no worries! Picking a calmer currency pair to recover cleanly!",
+        ),
+        "switch_pair": (
+            "Let's scan another currency pair and find the cleanest setup for our next entry!",
+            "Looking for the highest quality momentum. Switching to a fresh pair with top payout!",
+        ),
+        "ask_chat": (
+            "Drop your favorite currency pairs in the comments! Let's analyze the charts together and find a great setup!",
+            "Chat, what asset should we look at next? Tell me in comments and let's hunt for an entry!",
+        ),
+    },
+}

@@ -483,6 +483,29 @@ class WinkyAPI:
         logger.info("play_voice: реплика %s/%s запущена (длительность %.2fс)", category, file_id, duration)
         return {"ok": True, "file_id": file_id, "duration_sec": duration}
 
+    def speak_stream_category(self, payload: Any = None) -> dict:
+        """API мгновенного (0.05с) воспроизведения реплики стрима по фиксированной категории."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        category = str(payload.get("category", "")).strip()
+        lang = str(payload.get("lang", "ru")).strip()
+        emotion = str(payload.get("emotion", "happy")).strip()
+        action = payload.get("action")
+
+        ok = self._controller.speak_stream_category(
+            category=category,
+            lang=lang,
+            emotion=emotion,
+            action=action,
+        )
+        return {"ok": ok, "category": category}
+
     # ---------- окна подключаются после создания ----------
 
     def attach(self, avatar_window: webview.Window, panel_window: webview.Window) -> None:
@@ -1168,6 +1191,7 @@ def main() -> None:
     register_winky_callback("check_tts", winky_api.check_tts)
     register_winky_callback("play_tts", winky_api.play_tts)
     register_winky_callback("play_voice", winky_api.play_voice)
+    register_winky_callback("speak_stream_category", winky_api.speak_stream_category)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None

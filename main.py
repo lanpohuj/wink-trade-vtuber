@@ -18,6 +18,7 @@ from pathlib import Path
 import uvicorn
 from aiogram import Bot, Dispatcher
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -117,6 +118,14 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     """Сборка приложения: API-роутеры + статика Mini App."""
     app = FastAPI(title="Wink Trade", lifespan=lifespan)
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.get("/", include_in_schema=False)
     async def root_redirect():

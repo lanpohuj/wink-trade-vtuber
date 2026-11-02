@@ -294,6 +294,17 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             self._send_json(res)
             return
 
+        if clean in ("/api/winky/speak_stream_category", "/api/winky/category_voice"):
+            cb = _winky_sync_callbacks.get("speak_stream_category")
+            res = {"ok": False}
+            if cb:
+                try:
+                    res = cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback speak_stream_category: %s", e)
+            self._send_json(res)
+            return
+
         if clean in ("/api/signal/sync", "/api/winky/sync_signal"):
             cb = _winky_sync_callbacks.get("signal_sync")
             if cb:
