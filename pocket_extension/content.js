@@ -126,23 +126,24 @@
   function getStakeBadgeText() {
     const step = state.recoveryStep;
     const stake = getExpectedStake(step);
+    const isRu = (state.lang === "ru");
+    const lbl = isRu ? "РАЗМЕР СДЕЛКИ:" : "TRADE SIZE:";
+    let val = "";
     if (step === 0) {
-      return state.lang === "ru" ? `💰 Ставка: $${stake} (База 1%)` : `💰 Stake: $${stake} (Base 1%)`;
+      val = isRu ? `$${stake} · БАЗА 1%` : `$${stake} · BASE 1%`;
+    } else if (step === 1) {
+      val = isRu ? `$${stake} · ПЕРЕКРЫТИЕ x2.2` : `$${stake} · RECOVERY x2.2`;
+    } else {
+      val = isRu ? `$${stake} · ПЕРЕКРЫТИЕ x2.2` : `$${stake} · RECOVERY x2.2`;
     }
-    if (step === 1) {
-      return state.lang === "ru" ? `⚡ Перекрытие 1 (x2.2): $${stake}` : `⚡ Recovery 1 (x2.2): $${stake}`;
-    }
-    if (step === 2) {
-      return state.lang === "ru" ? `🔥 Перекрытие 2 (x2.2): $${stake}` : `🔥 Recovery 2 (x2.2): $${stake}`;
-    }
-    return `💰 Ставка: $${stake}`;
+    return `<span class="winky-stake-badge-lbl">${lbl}</span><span class="winky-stake-badge-val">${val}</span>`;
   }
 
   function updateStakeBadgeUI() {
     const el = document.getElementById("winkyStakeBadge");
     if (!el) return;
     el.className = `winky-stake-badge ${state.recoveryStep === 0 ? "base" : state.recoveryStep === 1 ? "rec1" : "rec2"}`;
-    el.textContent = getStakeBadgeText();
+    el.innerHTML = getStakeBadgeText();
   }
 
   let savedStats = { wins: 28, losses: 2, profit: 1420 };
@@ -221,10 +222,10 @@
       autoStream: "АВТО-СТРИМ",
       readyForSignal: "Готов к анализу графика",
       analysing: "Анализ RSI, EMA и уровней...",
-      buy: "↗ КУПИТЬ (ВВЕРХ)",
-      sell: "↘ ПРОДАТЬ (ВНИЗ)",
-      tabSignals: "🏠 СИГНАЛЫ",
-      tabChat: "💬 ИИ-ЧАТ",
+      buy: "↗ КУПИТЬ · ВВЕРХ",
+      sell: "↘ ПРОДАТЬ · ВНИЗ",
+      tabSignals: "СИГНАЛЫ",
+      tabChat: "ИИ-ЧАТ",
       liveScore: "WINKY LIVE SCORE",
       wins: "ПЛЮСЫ",
       losses: "МИНУСЫ",
@@ -245,10 +246,10 @@
       autoStream: "AUTO-STREAM",
       readyForSignal: "Ready for chart analysis",
       analysing: "Analyzing RSI, EMA & levels...",
-      buy: "↗ BUY (CALL)",
-      sell: "↘ SELL (PUT)",
-      tabSignals: "🏠 SIGNALS",
-      tabChat: "💬 AI CHAT",
+      buy: "↗ BUY · CALL",
+      sell: "↘ SELL · PUT",
+      tabSignals: "SIGNALS",
+      tabChat: "AI CHAT",
       liveScore: "WINKY LIVE SCORE",
       wins: "WINS",
       losses: "LOSSES",
@@ -594,11 +595,11 @@
           category: fBuy ? "buy_trend" : "sell_trend",
           confidence: 94,
           line1: state.lang === "ru"
-            ? (fBuy ? "📌 Картина графика: Мощный подтверждённый бычий импульс." : "📌 Картина графика: Стремительный медвежий импульс.")
-            : (fBuy ? "📌 Chart structure: Confirmed bullish momentum." : "📌 Chart structure: Confirmed bearish momentum."),
+            ? (fBuy ? "Мощный подтверждённый бычий импульс." : "Стремительный медвежий импульс.")
+            : (fBuy ? "Confirmed bullish momentum expansion." : "Confirmed bearish momentum expansion."),
           line2: state.lang === "ru"
-            ? (fBuy ? "🎯 Логика входа: Входим вверх по силе движения покупателей." : "🎯 Логика входа: Входим вниз вслед за давлением продавцов.")
-            : (fBuy ? "🎯 Trade entry: Entering UP following buyer strength." : "🎯 Trade entry: Entering DOWN aligned with seller pressure."),
+            ? (fBuy ? "Входим вверх по силе напора покупателей." : "Входим вниз вслед за давлением продавцов.")
+            : (fBuy ? "Entering UP following buyer strength." : "Entering DOWN aligned with seller pressure."),
         };
       }
 
@@ -616,11 +617,11 @@
               category: "sell_trend",
               confidence: 93,
               line1: state.lang === "ru"
-                ? "📌 Анализ просадки: Уровень поддержки пробит вниз — нисходящий тренд продолжается."
-                : "📌 Drawdown analysis: Support level broken downwards — bearish trend continues.",
+                ? "Уровень поддержки пробит вниз — нисходящий тренд продолжается."
+                : "Support level broken downwards — bearish trend continues.",
               line2: state.lang === "ru"
-                ? "🎯 Умное перекрытие: Не ловим нож против рынка — переворачиваемся вниз (x2)!"
-                : "🎯 Smart recovery: Do not catch falling knives — flipping DOWN with x2 stake!",
+                ? "Не ловим нож против рынка — переворачиваемся вниз по движению."
+                : "Flipping DOWN aligned with current price action.",
             };
           }
         } else if (state.lastTrade.direction === "SELL") {
@@ -631,11 +632,11 @@
               category: "buy_trend",
               confidence: 93,
               line1: state.lang === "ru"
-                ? "📌 Анализ просадки: Уровень сопротивления пробит импульсом покупателей вверх."
-                : "📌 Drawdown analysis: Resistance level broken upwards by buyer impulse.",
+                ? "Уровень сопротивления пробит импульсом покупателей вверх."
+                : "Resistance level broken upwards by buyer impulse.",
               line2: state.lang === "ru"
-                ? "🎯 Умное перекрытие: Не шортим против ракеты — переворачиваемся вверх (x2)!"
-                : "🎯 Smart recovery: Do not short the rocket — flipping UP with x2 stake!",
+                ? "Не шортим против ракеты — переворачиваемся вверх по движению."
+                : "Flipping UP aligned with current price action.",
             };
           }
         }
@@ -652,11 +653,11 @@
             category: "sell_trend",
             confidence: 92,
             line1: state.lang === "ru"
-              ? `📌 Настроение рынка: Подавляющее давление медведей (${sentiment.bearish}% на продажу).`
-              : `📌 Market sentiment: Heavy bearish dominance (${sentiment.bearish}% sellers).`,
+              ? `Подавляющее давление медведей (${sentiment.bearish}% на продажу).`
+              : `Heavy bearish dominance (${sentiment.bearish}% sellers).`,
             line2: state.lang === "ru"
-              ? "🎯 Логика входа: Входим вниз строго по направлению доминирующего объёма."
-              : "🎯 Trade entry: Entering DOWN aligned with dominant order flow volume.",
+              ? "Входим вниз строго по направлению доминирующего объёма."
+              : "Entering DOWN aligned with dominant order flow volume.",
           };
         } else if (sentiment.bullish >= 72) {
           // 72%+ быков -> СТРОГО ПОКУПКА
@@ -665,11 +666,11 @@
             category: "buy_trend",
             confidence: 92,
             line1: state.lang === "ru"
-              ? `📌 Настроение рынка: Доминирующее давление быков (${sentiment.bullish}% на покупку).`
-              : `📌 Market sentiment: Dominant bullish pressure (${sentiment.bullish}% buyers).`,
+              ? `Доминирующее давление быков (${sentiment.bullish}% на покупку).`
+              : `Dominant bullish pressure (${sentiment.bullish}% buyers).`,
             line2: state.lang === "ru"
-              ? "🎯 Логика входа: Входим вверх по преобладающему напору покупателей."
-              : "🎯 Trade entry: Entering UP following dominant buyer pressure.",
+              ? "Входим вверх по преобладающему напору покупателей."
+              : "Entering UP following dominant buyer pressure.",
           };
         }
       }
@@ -685,11 +686,11 @@
             category: "sell_trend",
             confidence: 91,
             line1: state.lang === "ru"
-              ? "📌 Картина графика: Пробой уровня поддержки вниз, сильное безоткатное движение."
-              : "📌 Chart structure: Support floor breakdown with strong unidirectional momentum.",
+              ? "Пробой уровня поддержки вниз, сильное безоткатное движение."
+              : "Support floor breakdown with strong unidirectional momentum.",
             line2: state.lang === "ru"
-              ? "🎯 Логика входа: Входим вниз по тренду пробоя — не ловим падающий нож!"
-              : "🎯 Trade entry: Entering DOWN on trend breakout — never catch a falling knife!",
+              ? "Работаем строго по тренду пробоя — не ловим падающий нож."
+              : "Entering DOWN on trend breakout — never catch a falling knife.",
           };
         }
         // Ракета вверх: 3 зелёные свечи подряд с обновлением максимумов
@@ -699,11 +700,11 @@
             category: "buy_trend",
             confidence: 91,
             line1: state.lang === "ru"
-              ? "📌 Картина графика: Мощный пробой сопротивления вверх, покупатели доминируют."
-              : "📌 Chart structure: Strong resistance breakout upward, buyers dominating.",
+              ? "Мощный пробой сопротивления вверх, покупатели доминируют."
+              : "Strong resistance breakout upward, buyers dominating.",
             line2: state.lang === "ru"
-              ? "🎯 Логика входа: Входим вверх по восходящему импульсу вслед за крупными покупками."
-              : "🎯 Trade entry: Entering UP following primary breakout momentum.",
+              ? "Входим вверх по восходящему импульсу вслед за крупными покупками."
+              : "Entering UP following primary breakout momentum.",
           };
         }
       }
@@ -720,11 +721,11 @@
               category: "buy_bounce",
               confidence: 89,
               line1: state.lang === "ru"
-                ? "📌 Картина графика: Подтверждённый отскок от зоны поддержки, первая зелёная свеча."
-                : "📌 Chart structure: Confirmed bounce off support floor with first bullish candle.",
+                ? "Подтверждённый отскок от зоны поддержки, первая зелёная свеча."
+                : "Confirmed bounce off support floor with first bullish candle.",
               line2: state.lang === "ru"
-                ? "🎯 Логика входа: Заходим вверх на развороте после истощения волны продаж."
-                : "🎯 Trade entry: Entering UP on confirmed reversal after seller exhaustion.",
+                ? "Заходим вверх на развороте после истощения волны продаж."
+                : "Entering UP on confirmed reversal after seller exhaustion.",
             };
           } else {
             // Свеча всё ещё красная — цена продолжает падать!
@@ -734,11 +735,11 @@
               category: "sell_trend",
               confidence: 86,
               line1: state.lang === "ru"
-                ? "📌 Картина графика: Низкий RSI, но свечи продолжают падать — отскока нет."
-                : "📌 Chart structure: Low RSI, but candles continue dropping — no bounce confirmation.",
+                ? "Низкий RSI, но свечи продолжают падать — отскока нет."
+                : "Low RSI, but candles continue dropping — no bounce confirmation.",
               line2: state.lang === "ru"
-                ? "🎯 Логика входа: Работаем по продолжению нисходящего движения вниз."
-                : "🎯 Trade entry: Following bearish continuation downward.",
+                ? "Работаем по продолжению нисходящего движения вниз."
+                : "Following bearish continuation downward.",
             };
           }
         }
@@ -750,11 +751,11 @@
               category: "sell_bounce",
               confidence: 89,
               line1: state.lang === "ru"
-                ? "📌 Картина графика: Подтверждённый отбой от уровня сопротивления, красная свеча."
-                : "📌 Chart structure: Confirmed rejection from resistance ceiling with bearish candle.",
+                ? "Подтверждённый отбой от уровня сопротивления, красная свеча."
+                : "Confirmed rejection from resistance ceiling with bearish candle.",
               line2: state.lang === "ru"
-                ? "🎯 Логика входа: Заходим вниз на развороте после фиксации прибыли покупателями."
-                : "🎯 Trade entry: Entering DOWN on reversal after buyer profit taking.",
+                ? "Заходим вниз на развороте после фиксации прибыли покупателями."
+                : "Entering DOWN on reversal after buyer profit taking.",
             };
           } else {
             decision = {
@@ -762,11 +763,11 @@
               category: "buy_trend",
               confidence: 86,
               line1: state.lang === "ru"
-                ? "📌 Картина графика: Высокий RSI, но бычий импульс продолжается без остановки."
-                : "📌 Chart structure: High RSI, but bullish momentum continues without halt.",
+                ? "Высокий RSI, но бычий импульс продолжается без остановки."
+                : "High RSI, but bullish momentum continues without halt.",
               line2: state.lang === "ru"
-                ? "🎯 Логика входа: Входим вверх по силе восходящего тренда."
-                : "🎯 Trade entry: Entering UP following strong bullish trend continuation.",
+                ? "Входим вверх по силе восходящего тренда."
+                : "Entering UP following strong bullish trend continuation.",
             };
           }
         }
@@ -2532,17 +2533,26 @@
       if (btnGet) {
         btnGet.disabled = true;
         btnGet.classList.add("disabled");
-        btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? `СДЕЛКА В РАБОТЕ (осталось ${sec} сек...)` : `TRADE ACTIVE (${sec}s left...)`}</span>`;
+        const formatted = formatTime(sec);
+        btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
       }
     };
     updateTradeButtonLabel(remaining);
 
     state.expiryInterval = setInterval(() => {
       remaining -= 1;
+      const safeRem = Math.max(0, remaining);
       const timerEl = document.getElementById("signalTimerVal");
-      if (timerEl) timerEl.textContent = formatTime(Math.max(0, remaining));
-      updateTradeButtonLabel(Math.max(0, remaining));
-      notifyTradePhase("IN_TRADE", state.targetPair, remaining);
+      if (timerEl) timerEl.textContent = formatTime(safeRem);
+
+      const progressEl = document.getElementById("signalProgressFill");
+      if (progressEl) {
+        const pct = Math.max(0, Math.min(100, (safeRem / durationSec) * 100));
+        progressEl.style.width = `${pct}%`;
+      }
+
+      updateTradeButtonLabel(safeRem);
+      notifyTradePhase("IN_TRADE", state.targetPair, safeRem);
 
       // Полезные инсайты стратегии во время сделки (stream_insight) раз в 90-120 сек
       if (remaining >= 14 && remaining <= 18 && (Date.now() - state.lastInsightVoiceTs >= 90000)) {
@@ -2991,7 +3001,9 @@
           <!-- Action Row -->
           <div class="winky-action-row">
             <button type="button" class="winky-btn-get-signal" id="btnGetSignalAction">
-              <span>⚡</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
               <span>${t("getSignal")}</span>
             </button>
           </div>
@@ -3162,6 +3174,14 @@
     `;
   }
 
+  function cleanRationaleText(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/[📌🎯⚡⚠️]/g, "")
+      .replace(/^(Картина графика:|Логика входа:|Настроение рынка:|Анализ просадки:|Умное перекрытие:|Chart structure:|Trade entry:|Market sentiment:|Drawdown analysis:|Smart recovery:)\s*/i, "")
+      .trim();
+  }
+
   function renderSignalCardState() {
     const block = document.getElementById("botDirectionBlock");
     const accEl = document.getElementById("metricAccuracyVal");
@@ -3239,25 +3259,46 @@
     } else if (state.botState === "IN_TRADE" && state.activeSignal) {
       const sig = state.activeSignal;
       const isBuy = sig.direction === "BUY";
+      const isRu = (state.lang === "ru");
       if (accEl) accEl.textContent = `${sig.accuracy}%`;
+
+      const cleanLine1 = cleanRationaleText(sig.line1);
+      const cleanLine2 = cleanRationaleText(sig.line2);
+      let strategyText = cleanLine1;
+      if (cleanLine2 && cleanLine2 !== cleanLine1) {
+        strategyText += (strategyText.endsWith(".") ? " " : ". ") + cleanLine2;
+      }
+      if (!strategyText) {
+        strategyText = isBuy
+          ? (isRu ? "Подтверждённый отскок от зоны спроса — покупатели удерживают инициативу." : "Confirmed demand zone bounce — buyers sustaining upside momentum.")
+          : (isRu ? "Пробой локального уровня поддержки — продавцы давят цену вниз без откатов." : "Support breakdown confirmed — sellers pressing price action lower.");
+      }
 
       block.className = `winky-direction-block winky-signal-display active ${isBuy ? "buy" : "sell"}`;
       block.innerHTML = `
-        <div class="signal-dir-large ${isBuy ? "buy" : "sell"}">
-          ${isBuy ? t("buy") : t("sell")}
-        </div>
-        <div class="signal-ta-lines">
-          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">
-            ⚡ ${state.lang === "ru" ? `Вход по лучшей цене ($${state.currentStake} · ${sig.duration})` : `Best price entry ($${state.currentStake} · ${sig.duration})`}
+        <div class="winky-sig-hero">
+          <div class="winky-sig-dir-wrap ${isBuy ? "buy" : "sell"}">
+            <span class="winky-sig-arrow">${isBuy ? "↗" : "↘"}</span>
+            <span class="winky-sig-dir-text">${isBuy ? (isRu ? "КУПИТЬ · ВВЕРХ" : "BUY · CALL") : (isRu ? "ПРОДАТЬ · ВНИЗ" : "SELL · PUT")}</span>
           </div>
-          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${sig.line1}</div>
-          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${sig.line2}</div>
+          <div class="winky-sig-timer-capsule">
+            <span class="winky-sig-pulse-dot">●</span>
+            <span class="winky-sig-timer-val" id="signalTimerVal">${formatTime(sig.durationSec)}</span>
+          </div>
         </div>
-        <div class="signal-sub-row">
-          <span class="signal-badge-live">LIVE</span>
-          <span class="signal-timer" id="signalTimerVal">${formatTime(sig.durationSec)}</span>
-          <span class="signal-acc-badge">${sig.accuracy}% WINRATE</span>
-          ${sig.confluence ? `<span class="signal-acc-badge" style="background:rgba(0,217,245,0.18);border:1px solid rgba(0,217,245,0.4);color:#00D9F5;">🎯 ${sig.confluence} / 5.0</span>` : ""}
+
+        <div class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
+          <div class="winky-sig-strategy-meta">
+            <span>${isRu ? "АНАЛИТИКА ТОЧКИ ВХОДА" : "ENTRY POINT ANALYTICS"}</span>
+            <span class="winky-sig-strategy-score">★ ${sig.confluence ? sig.confluence.toFixed(1) : "4.7"} / 5.0 · ${sig.accuracy}% WINRATE</span>
+          </div>
+          <div class="winky-sig-strategy-text">
+            ${strategyText}
+          </div>
+        </div>
+
+        <div class="winky-sig-progress-track">
+          <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
         </div>
       `;
     }

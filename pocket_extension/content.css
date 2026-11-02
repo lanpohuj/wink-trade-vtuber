@@ -280,8 +280,10 @@
   background: transparent;
   border: none;
   color: var(--wn-text-dim);
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 11.5px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   border-radius: 7px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -306,11 +308,12 @@
   gap: 4px;
 }
 .winky-select-lbl {
-  font-size: 10px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--wn-text-dim);
+  color: #94A3B8;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 .winky-select-native {
   width: 100%;
@@ -318,6 +321,7 @@
   border: 1px solid var(--wn-border-subtle);
   border-radius: 8px;
   padding: 7px 8px;
+  font-family: 'JetBrains Mono', 'Chakra Petch', monospace;
   font-size: 12px;
   font-weight: 700;
   color: #FFFFFF;
@@ -342,7 +346,7 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
@@ -355,8 +359,10 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 14px;
+  font-family: 'Orbitron', -apple-system, sans-serif;
+  font-size: 13.5px;
   font-weight: 800;
+  letter-spacing: 0.6px;
   color: #FFFFFF;
   cursor: pointer;
 }
@@ -364,43 +370,48 @@
   font-size: 15px;
 }
 .winky-card-payout {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 800;
-  color: var(--wn-mint);
-  background: rgba(0, 245, 160, 0.15);
-  border: 1px solid rgba(0, 245, 160, 0.35);
-  padding: 2px 7px;
+  color: #00FF88;
+  background: rgba(0, 255, 136, 0.14);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  padding: 2px 8px;
   border-radius: 6px;
 }
 
-/* Sub-metrics row */
+/* Sub-metrics row: Even 2-column grid */
 .winky-metrics-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 8px;
 }
 .winky-metric-pill {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid var(--wn-border-subtle);
-  border-radius: 7px;
-  padding: 5px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .winky-metric-title {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--wn-text-dim);
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .winky-metric-val {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   color: #FFFFFF;
-  font-family: var(--wn-font-mono);
+  font-family: 'JetBrains Mono', monospace;
 }
-.winky-metric-val.amber {
-  color: var(--wn-amber);
+.winky-metric-val.amber,
+.winky-metric-val.green {
+  color: #00FF88 !important;
 }
 
 /* ==================== DIRECTION & TA BLOCK (FIXED 156px) ==================== */
@@ -656,85 +667,180 @@
   white-space: normal;
 }
 
-/* Active Signal State (BUY / SELL) */
+/* Active Signal State (BUY / SELL) — Premium 3-Level Display */
 .winky-direction-block.active {
   color: #FFFFFF;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-.winky-direction-block.active.buy {
-  background: linear-gradient(135deg, rgba(0, 245, 160, 0.28), rgba(0, 217, 245, 0.18));
-  border: 1.5px solid var(--wn-mint);
-  box-shadow: 0 0 24px rgba(0, 245, 160, 0.35);
-}
-.winky-direction-block.active.sell {
-  background: linear-gradient(135deg, rgba(255, 59, 105, 0.28), rgba(239, 68, 68, 0.18));
-  border: 1.5px solid var(--wn-crimson);
-  box-shadow: 0 0 24px rgba(255, 59, 105, 0.35);
-}
-
-.signal-dir-large {
-  font-size: 17px;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.signal-dir-large.buy { color: var(--wn-mint); text-shadow: 0 0 12px rgba(0,245,160,0.6); }
-.signal-dir-large.sell { color: var(--wn-crimson); text-shadow: 0 0 12px rgba(255,59,105,0.6); }
-
-/* 2 Clear Lines of Real Technical Analysis */
-.signal-ta-lines {
-  margin: 6px 0;
+  padding: 8px 12px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  text-align: left;
-  width: 100%;
+  justify-content: space-between;
+  animation: winkyFlipIn 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.signal-ta-line {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: #E2E8F0;
-  line-height: 1.35;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 3px 6px;
-  border-radius: 5px;
-  border-left: 2px solid var(--wn-mint);
+.winky-direction-block.active.buy {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.16), rgba(0, 217, 245, 0.1));
+  border: 1.5px solid rgba(0, 255, 136, 0.45);
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.22), inset 0 0 16px rgba(0, 255, 136, 0.05);
 }
-.signal-ta-line.sell {
-  border-left-color: var(--wn-crimson);
+.winky-direction-block.active.sell {
+  background: linear-gradient(135deg, rgba(255, 59, 92, 0.16), rgba(239, 68, 68, 0.1));
+  border: 1.5px solid rgba(255, 59, 92, 0.45);
+  box-shadow: 0 0 24px rgba(255, 59, 92, 0.22), inset 0 0 16px rgba(255, 59, 92, 0.05);
 }
 
-.signal-sub-row {
+/* Level 1: Hero Direction & Live Timer Capsule */
+.winky-sig-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-top: 3px;
+  gap: 8px;
 }
-.signal-badge-live {
+
+.winky-sig-dir-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.winky-sig-arrow {
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1;
+}
+.winky-sig-dir-wrap.buy .winky-sig-arrow,
+.winky-sig-dir-wrap.buy .winky-sig-dir-text {
+  color: #00FF88;
+  text-shadow: 0 0 14px rgba(0, 255, 136, 0.55);
+}
+.winky-sig-dir-wrap.sell .winky-sig-arrow,
+.winky-sig-dir-wrap.sell .winky-sig-dir-text {
+  color: #FF3B5C;
+  text-shadow: 0 0 14px rgba(255, 59, 92, 0.55);
+}
+.winky-sig-dir-text {
+  font-family: 'Orbitron', -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.winky-sig-timer-capsule {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+.winky-sig-pulse-dot {
   font-size: 9px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #FFFFFF;
+  line-height: 1;
 }
-.signal-timer {
-  font-family: var(--wn-font-mono);
+.winky-sig-dir-wrap.buy ~ .winky-sig-timer-capsule .winky-sig-pulse-dot {
+  color: #00FF88;
+  animation: winkyPulse 0.9s infinite alternate;
+}
+.winky-sig-dir-wrap.sell ~ .winky-sig-timer-capsule .winky-sig-pulse-dot {
+  color: #FF3B5C;
+  animation: winkyPulse 0.9s infinite alternate;
+}
+.winky-sig-timer-val {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 13.5px;
   font-weight: 800;
   color: #FFFFFF;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
-.signal-acc-badge {
+
+/* Level 2: Strategy Box with Left Neon Accent */
+.winky-sig-strategy-box {
+  margin: 6px 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(12, 22, 28, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.winky-sig-strategy-box.buy {
+  border-left: 3px solid #00FF88;
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.08);
+}
+.winky-sig-strategy-box.sell {
+  border-left: 3px solid #FF3B5C;
+  box-shadow: 0 0 14px rgba(255, 59, 92, 0.08);
+}
+
+.winky-sig-strategy-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 10px;
-  font-weight: 800;
-  color: var(--wn-amber);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #94A3B8;
+  white-space: nowrap;
 }
+.winky-sig-strategy-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.winky-sig-strategy-box.buy .winky-sig-strategy-score {
+  color: #00FF88;
+}
+.winky-sig-strategy-box.sell .winky-sig-strategy-score {
+  color: #FFB800;
+}
+
+.winky-sig-strategy-text {
+  font-family: 'Chakra Petch', -apple-system, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #F8FAFC;
+  line-height: 1.32;
+  text-align: left;
+}
+
+/* Level 3: Laser Countdown Progress Track */
+.winky-sig-progress-track {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin-top: 3px;
+  position: relative;
+}
+.winky-sig-progress-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  transition: width 0.3s linear;
+}
+.winky-sig-progress-fill.buy {
+  background: linear-gradient(90deg, #00FF88, #00E5FF);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+}
+.winky-sig-progress-fill.sell {
+  background: linear-gradient(90deg, #FF3B5C, #FF8A00);
+  box-shadow: 0 0 8px rgba(255, 59, 92, 0.6);
+}
+
+/* Legacy fallback classes */
+.signal-dir-large { display: none; }
+.signal-ta-lines { display: none; }
+.signal-sub-row { display: none; }
 
 /* ==================== ACTION ROW (GET SIGNAL & AUTO) ==================== */
 
@@ -745,21 +851,29 @@
 
 .winky-btn-get-signal {
   flex: 1;
+  width: 100%;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
   background: linear-gradient(135deg, var(--wn-mint), var(--wn-mint-cyan));
   border: none;
   border-radius: 12px;
-  padding: 12px;
-  font-size: 13.5px;
-  font-weight: 800;
+  padding: 0 14px;
+  font-family: 'Orbitron', 'Chakra Petch', sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.7px !important;
+  text-transform: uppercase !important;
   color: #091114;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
   box-shadow: 0 4px 18px rgba(0, 245, 160, 0.38);
   transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
-  letter-spacing: 0.3px;
 }
 .winky-btn-get-signal:hover {
   transform: translateY(-1px);
@@ -936,13 +1050,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 8px 0;
+  gap: 7px;
+  padding: 9px 0;
   border: none;
   background: transparent;
   color: var(--wn-text-dim);
-  font-size: 11.5px;
-  font-weight: 800;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -950,6 +1067,7 @@
 .winky-nav-item svg {
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 .winky-nav-item.active {
   background: rgba(0, 245, 160, 0.16);
@@ -1309,44 +1427,65 @@
 /* ==================== STAKE MODE BADGE ==================== */
 
 .winky-stake-badge-row {
-  margin-top: 6px;
+  margin-top: 4px;
   width: 100%;
 }
 
 .winky-stake-badge {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 11px;
+  justify-content: space-between;
+  padding: 5px 12px;
+  border-radius: 7px;
+  font-family: 'Chakra Petch', -apple-system, sans-serif;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.3px;
-  font-family: var(--wn-font-mono);
+  letter-spacing: 0.4px;
+  background: rgba(12, 22, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.25s ease;
 }
 
+.winky-stake-badge-lbl {
+  color: #94A3B8;
+  font-size: 10.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.winky-stake-badge-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 11.5px;
+  letter-spacing: 0.4px;
+}
+
 .winky-stake-badge.base {
-  background: rgba(0, 245, 160, 0.12);
-  border: 1px solid rgba(0, 245, 160, 0.3);
-  color: var(--wn-mint);
+  border-color: rgba(0, 255, 136, 0.35);
+  background: rgba(0, 255, 136, 0.08);
+}
+.winky-stake-badge.base .winky-stake-badge-val {
+  color: #00FF88;
 }
 
 .winky-stake-badge.rec1 {
-  background: rgba(255, 170, 0, 0.18);
-  border: 1px solid rgba(255, 170, 0, 0.5);
-  color: #FFAA00;
-  box-shadow: 0 0 12px rgba(255, 170, 0, 0.25);
+  background: rgba(255, 184, 0, 0.12);
+  border-color: rgba(255, 184, 0, 0.45);
+  box-shadow: 0 0 12px rgba(255, 184, 0, 0.2);
   animation: winkyBtnPulse 1.4s infinite;
+}
+.winky-stake-badge.rec1 .winky-stake-badge-val {
+  color: #FFB800;
 }
 
 .winky-stake-badge.rec2 {
-  background: rgba(255, 59, 105, 0.2);
-  border: 1px solid rgba(255, 59, 105, 0.6);
-  color: #FF3B69;
-  box-shadow: 0 0 16px rgba(255, 59, 105, 0.35);
+  background: rgba(255, 59, 92, 0.14);
+  border-color: rgba(255, 59, 92, 0.55);
+  box-shadow: 0 0 16px rgba(255, 59, 92, 0.25);
   animation: winkyBtnPulse 1.0s infinite;
+}
+.winky-stake-badge.rec2 .winky-stake-badge-val {
+  color: #FF3B5C;
 }
 
 /* Fallback for checklist items (if used elsewhere) */

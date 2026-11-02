@@ -178,6 +178,14 @@ function updateCardUI() {
 
 /* ==================== 3. Signal Generation Flow ==================== */
 
+function cleanRationaleText(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/[📌🎯⚡⚠️]/g, "")
+    .replace(/^(Картина графика:|Логика входа:|Настроение рынка:|Анализ просадки:|Умное перекрытие:|Chart structure:|Trade entry:|Market sentiment:|Drawdown analysis:|Smart recovery:)\s*/i, "")
+    .trim();
+}
+
 function parseDurationSeconds(dur) {
   const num = parseInt(dur, 10) || 30;
   if (dur.includes("m")) return num * 60;
@@ -269,31 +277,53 @@ async function startSignalAnalysis() {
   if (accEl) accEl.textContent = `${accuracy}%`;
 
   const lines = state.lang === "ru" ? (apiData?.rationale_ru || []) : (apiData?.rationale_en || []);
-  const line1 = lines[0] || (isBuy
-    ? (state.lang === "ru" ? "📌 Картина графика: Цена упёрлась в нижний уровень — продавцы выдохлись" : "📌 Chart structure: Price rejected off support floor — seller exhaustion")
-    : (state.lang === "ru" ? "📌 Картина графика: Цена ударилась в потолок — рост остановился" : "📌 Chart structure: Price hit resistance ceiling — momentum stalled"));
-  const line2 = lines[1] || (isBuy
-    ? (state.lang === "ru" ? "🎯 Логика входа: Ждём уверенный отскок наверх по основному тренду" : "🎯 Trade entry: Clean bounce upward aligned with primary trend")
-    : (state.lang === "ru" ? "🎯 Логика входа: Заходим на откате вниз вместе с крупными продавцами" : "🎯 Trade entry: Clean rejection downward with sellers"));
+  const cleanLine1 = cleanRationaleText(lines[0]);
+  const cleanLine2 = cleanRationaleText(lines[1]);
+  const isRu = (state.lang === "ru");
+  let strategyText = cleanLine1;
+  if (cleanLine2 && cleanLine2 !== cleanLine1) {
+    strategyText += (strategyText.endsWith(".") ? " " : ". ") + cleanLine2;
+  }
+  if (!strategyText) {
+    strategyText = isBuy
+      ? (isRu ? "Подтверждённый отскок от зоны спроса — покупатели удерживают инициативу." : "Confirmed demand zone bounce — buyers sustaining upside momentum.")
+      : (isRu ? "Пробой локального уровня поддержки — продавцы давят цену вниз без откатов." : "Support breakdown confirmed — sellers pressing price action lower.");
+  }
 
   if (dirBlock) {
     dirBlock.className = `winky-direction-block active ${isBuy ? "buy" : "sell"}`;
     dirBlock.innerHTML = `
-      <div class="signal-dir-large ${isBuy ? "buy" : "sell"}">
-        ${isBuy ? t("buyText") : t("sellText")} 
-        <span class="dir-en" style="font-size:12px;opacity:0.8;">(${isBuy ? "BUY" : "SELL"})</span>
+      <div class="winky-sig-hero">
+        <div class="winky-sig-dir-wrap ${isBuy ? "buy" : "sell"}">
+          <span class="winky-sig-arrow">${isBuy ? "↗" : "↘"}</span>
+          <span class="winky-sig-dir-text">${isBuy ? (isRu ? "КУПИТЬ · ВВЕРХ" : "BUY · CALL") : (isRu ? "ПРОДАТЬ · ВНИЗ" : "SELL · PUT")}</span>
+        </div>
+        <div class="winky-sig-timer-capsule">
+          <span class="winky-sig-pulse-dot">●</span>
+          <span class="winky-sig-timer-val" id="signalTimer">${formatCountdown(totalSec)}</span>
+        </div>
       </div>
-      <div class="signal-ta-lines">
-        <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${line1}</div>
-        <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${line2}</div>
+
+      <div class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
+        <div class="winky-sig-strategy-meta">
+          <span>${isRu ? "АНАЛИТИКА ТОЧКИ ВХОДА" : "ENTRY POINT ANALYTICS"}</span>
+          <span class="winky-sig-strategy-score">★ ${apiData?.confluence ? Number(apiData.confluence).toFixed(1) : "4.7"} / 5.0 · ${accuracy}% WINRATE</span>
+        </div>
+        <div class="winky-sig-strategy-text">
+          ${strategyText}
+        </div>
       </div>
-      <div class="signal-sub-row">
-        <span class="signal-badge-live">LIVE</span>
-        <span class="signal-timer" id="signalTimer">${formatCountdown(totalSec)}</span>
-        <span class="signal-acc-badge">${accuracy}% WINRATE</span>
-        ${apiData?.confluence ? `<span class="signal-acc-badge" style="background:rgba(0,217,245,0.18);border:1px solid rgba(0,217,245,0.4);color:#00D9F5;">🎯 ${apiData.confluence} / 5.0</span>` : ""}
+
+      <div class="winky-sig-progress-track">
+        <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
       </div>
     `;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.classList.add("disabled");
+    btn.textContent = isRu ? `СДЕЛКА АКТИВНА · ${formatCountdown(totalSec)}` : `TRADE ACTIVE · ${formatCountdown(totalSec)}`;
   }
 
   if (window.Telegram?.WebApp?.HapticFeedback) {
@@ -306,10 +336,19 @@ async function startSignalAnalysis() {
   // 3. COUNTDOWN TO EXPIRY
   let remaining = totalSec;
   const timerEl = document.getElementById("signalTimer");
+  const progressEl = document.getElementById("signalProgressFill");
 
   state.countdownInterval = setInterval(() => {
     remaining -= 1;
-    if (timerEl) timerEl.textContent = formatCountdown(Math.max(0, remaining));
+    const safeRem = Math.max(0, remaining);
+    if (timerEl) timerEl.textContent = formatCountdown(safeRem);
+    if (progressEl) {
+      const pct = Math.max(0, Math.min(100, (safeRem / totalSec) * 100));
+      progressEl.style.width = `${pct}%`;
+    }
+    if (btn) {
+      btn.textContent = isRu ? `СДЕЛКА АКТИВНА · ${formatCountdown(safeRem)}` : `TRADE ACTIVE · ${formatCountdown(safeRem)}`;
+    }
 
     if (remaining <= 0) {
       clearInterval(state.countdownInterval);
