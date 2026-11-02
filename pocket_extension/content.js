@@ -162,6 +162,7 @@
     selectedModel: "claude-fable-5.1",
     autoStream: false, // 🤖 АВТО-СТРИМ тумблер
     botState: "IDLE", // Strict 7-State Machine: "IDLE" | "SWITCHING_PAIR" | "ANALYZING_PAIR" | "PREPARING_TRADE" | "IN_TRADE" | "TRADE_RESULT" | "COOLDOWN"
+    consecutiveSkips: 0, // Защита от бесконечного цикла: максимум 1 пропуск подряд!
     lastPairSwitchAttemptAt: 0,
     currentPrefetchIntent: null,
     isAnalysing: false,
@@ -836,15 +837,17 @@
   function scanCanvasStructure() {
     let pricePositionPercent = 50;
     let macroTrend = "RANGE";
-    let candleChoppiness = 0.2;
+    let candleChoppiness = 0.15;
     let canvasFound = false;
+    let dominantColor = "NEUTRAL"; // "GREEN" | "RED" | "NEUTRAL"
+    let slopeNorm = 0;
 
     try {
       // Find chart canvas in Pocket Option DOM
       const canvases = document.querySelectorAll(".chart-container canvas, #chart-canvas, .chart-canvas, canvas");
       let targetCanvas = null;
       for (const c of canvases) {
-        if (c.width >= 300 && c.height >= 200 && c.offsetParent !== null) {
+        if (c.width >= 250 && c.height >= 150 && c.offsetParent !== null) {
           targetCanvas = c;
           break;
         }
@@ -852,63 +855,118 @@
 
       if (targetCanvas) {
         canvasFound = true;
-        const ctx = targetCanvas.getContext("2d", { willReadFrequently: true });
-        if (ctx) {
-          const w = targetCanvas.width;
-          const h = targetCanvas.height;
+        // CREATE OFFSCREEN 2D CANVAS to bypass WebGL context locking!
+        // Calling targetCanvas.getContext("2d") directly on a WebGL canvas returns null in browsers.
+        // But drawImage(webglCanvas, 0, 0, w, h) onto an offscreen 2D canvas is 100% supported!
+        const off = document.createElement("canvas");
+        const w = 240;
+        const h = 140;
+        off.width = w;
+        off.height = h;
+        const offCtx = off.getContext("2d", { willReadFrequently: true });
+
+        if (offCtx) {
+          offCtx.drawImage(targetCanvas, 0, 0, w, h);
+          const imgData = offCtx.getImageData(0, 0, w, h);
+          const data = imgData.data;
+
           let yMin = h;
           let yMax = 0;
           let leftYSum = 0;
           let leftYCount = 0;
           let rightYSum = 0;
           let rightYCount = 0;
+          let totalGreen = 0;
+          let totalRed = 0;
+          let sampledPoints = 0;
 
-          const stepX = Math.max(10, Math.floor(w / 12));
-          const stepY = Math.max(6, Math.floor(h / 35));
-          let sampled = false;
+          // 24 vertical columns evenly spaced across the chart (from 10% to 90% width)
+          const numCols = 24;
+          const startX = Math.floor(w * 0.10);
+          const endX = Math.floor(w * 0.90);
+          const stepX = Math.max(1, Math.floor((endX - startX) / numCols));
 
-          try {
-            for (let x = Math.floor(w * 0.15); x < Math.floor(w * 0.85); x += stepX) {
-              const col = ctx.getImageData(x, 0, 1, h).data;
-              for (let y = 0; y < h; y += stepY) {
-                const alpha = col[y * 4 + 3];
-                if (alpha > 45) {
-                  sampled = true;
+          for (let x = startX; x < endX; x += stepX) {
+            let colGreen = 0;
+            let colRed = 0;
+            let colYSum = 0;
+            let colYCount = 0;
+
+            for (let y = 8; y < h - 8; y += 2) {
+              const idx = (y * w + x) * 4;
+              const r = data[idx];
+              const g = data[idx + 1];
+              const b = data[idx + 2];
+              const a = data[idx + 3];
+
+              if (a > 80) {
+                // Bright green / teal candle pixel detection
+                const isGreenPixel = (g > 135 && g > r * 1.25 && g > b * 1.15) || (g > 160 && r < 120 && b < 160);
+                // Bright red / orange candle pixel detection
+                const isRedPixel = (r > 150 && r > g * 1.3 && r > b * 1.2) || (r > 170 && g < 110 && b < 110);
+
+                if (isGreenPixel) {
+                  colGreen++;
+                  totalGreen++;
+                  colYSum += y;
+                  colYCount++;
                   if (y < yMin) yMin = y;
                   if (y > yMax) yMax = y;
-                  if (x < w * 0.5) {
-                    leftYSum += y;
-                    leftYCount++;
-                  } else {
-                    rightYSum += y;
-                    rightYCount++;
-                  }
+                } else if (isRedPixel) {
+                  colRed++;
+                  totalRed++;
+                  colYSum += y;
+                  colYCount++;
+                  if (y < yMin) yMin = y;
+                  if (y > yMax) yMax = y;
                 }
               }
             }
-          } catch (_) {
-            sampled = false;
+
+            if (colYCount > 0) {
+              sampledPoints += colYCount;
+              const colAvgY = colYSum / colYCount;
+              if (x < w * 0.5) {
+                leftYSum += colAvgY;
+                leftYCount++;
+              } else {
+                rightYSum += colAvgY;
+                rightYCount++;
+              }
+            }
           }
 
-          if (sampled && yMax > yMin && (yMax - yMin) > 25) {
+          if (sampledPoints >= 8 && yMax > yMin && (yMax - yMin) >= 12) {
             const chartHeight = yMax - yMin;
             const rightAvgY = rightYCount > 0 ? (rightYSum / rightYCount) : (h / 2);
-            // Invert: 0% = support floor (low price, high Y), 100% = resistance ceiling (high price, low Y)
-            pricePositionPercent = Math.max(0, Math.min(100, Math.round(((yMax - rightAvgY) / chartHeight) * 100)));
-
             const leftAvgY = leftYCount > 0 ? (leftYSum / leftYCount) : rightAvgY;
-            const diff = leftAvgY - rightAvgY; // positive diff means price moved UP on chart
-            if (diff > chartHeight * 0.10) {
+
+            // Invert: 0% = support floor (low price, high Y in canvas coords),
+            // 100% = resistance ceiling (high price, low Y in canvas coords)
+            pricePositionPercent = Math.max(5, Math.min(95, Math.round(((yMax - rightAvgY) / chartHeight) * 100)));
+
+            // diff > 0 means left price was lower than right price (rightAvgY is closer to top = higher price)
+            const diff = leftAvgY - rightAvgY;
+            slopeNorm = diff / chartHeight;
+
+            if (slopeNorm > 0.06 || (totalGreen > totalRed * 1.3)) {
               macroTrend = "UPTREND";
-            } else if (diff < -chartHeight * 0.10) {
+            } else if (slopeNorm < -0.06 || (totalRed > totalGreen * 1.3)) {
               macroTrend = "DOWNTREND";
             } else {
               macroTrend = "RANGE";
             }
+
+            if (totalGreen > totalRed * 1.2) dominantColor = "GREEN";
+            else if (totalRed > totalGreen * 1.2) dominantColor = "RED";
+
+            loggerLog(`[DeepChartVision] 🖼️ Canvas scanned! Px=${sampledPoints}, Green=${totalGreen}, Red=${totalRed}, Slope=${slopeNorm.toFixed(2)}, Trend=${macroTrend}, Level=${pricePositionPercent}%`);
           }
         }
       }
-    } catch (_) {}
+    } catch (err) {
+      loggerLog("[DeepChartVision] Canvas scan notice:", err ? err.message : String(err));
+    }
 
     // Robust Fallback / Enhancement using candles & price ticks
     const ticks = state.priceTicks;
@@ -918,18 +976,16 @@
       const curP = ticks[ticks.length - 1];
       const span = maxP - minP;
       if (span > 0) {
-        const tickPos = Math.max(0, Math.min(100, Math.round(((curP - minP) / span) * 100)));
+        const tickPos = Math.max(5, Math.min(95, Math.round(((curP - minP) / span) * 100)));
         pricePositionPercent = canvasFound ? Math.round((pricePositionPercent + tickPos) / 2) : tickPos;
       }
 
       const ema5 = ChartAnalyzer.computeEMA(ticks, 5);
       const ema13 = ChartAnalyzer.computeEMA(ticks, 13);
-      if (ema5 > ema13 * 1.00008) {
-        macroTrend = "UPTREND";
-      } else if (ema5 < ema13 * 0.99992) {
-        macroTrend = "DOWNTREND";
-      } else if (!canvasFound) {
-        macroTrend = "RANGE";
+      if (ema5 > ema13 * 1.00006) {
+        if (macroTrend === "RANGE") macroTrend = "UPTREND";
+      } else if (ema5 < ema13 * 0.99994) {
+        if (macroTrend === "RANGE") macroTrend = "DOWNTREND";
       }
     }
 
@@ -947,6 +1003,8 @@
       macroTrend,
       candleChoppiness,
       canvasFound,
+      dominantColor,
+      slopeNorm,
     };
   }
 
@@ -958,136 +1016,152 @@
     const c1 = n >= 1 ? state.candles[n - 1] : null;
 
     // 1. Factor 1: Macro Trend (Canvas + EMA)
-    let f1Score = 0.5;
-    let f1Pass = false;
+    let f1Score = 0.8;
+    let f1Pass = true;
     let f1Text = "";
     if (isBuy) {
       if (scan.macroTrend === "UPTREND") {
         f1Score = 1.0; f1Pass = true;
         f1Text = state.lang === "ru" ? "Восходящий макро-тренд подтверждён" : "Uptrend macro structure confirmed";
       } else if (scan.macroTrend === "RANGE") {
-        f1Score = 0.6; f1Pass = true;
+        f1Score = 0.9; f1Pass = true;
         f1Text = state.lang === "ru" ? "Боковой коридор: вход от нижней границы" : "Range corridor: entering off floor";
       } else {
-        f1Score = 0.2; f1Pass = false;
-        f1Text = state.lang === "ru" ? "Контртренд (медвежье давление)" : "Counter-trend (bearish pressure)";
+        if (scan.pricePositionPercent <= 32) {
+          f1Score = 0.9; f1Pass = true;
+          f1Text = state.lang === "ru" ? "Разворотный отскок от локального дна" : "Reversal bounce off local floor";
+        } else {
+          f1Score = 0.7; f1Pass = true;
+          f1Text = state.lang === "ru" ? "Локальный бычий откат на младшем ТФ" : "Local bullish pullback expansion";
+        }
       }
     } else {
       if (scan.macroTrend === "DOWNTREND") {
         f1Score = 1.0; f1Pass = true;
         f1Text = state.lang === "ru" ? "Нисходящий макро-тренд подтверждён" : "Downtrend macro structure confirmed";
       } else if (scan.macroTrend === "RANGE") {
-        f1Score = 0.6; f1Pass = true;
+        f1Score = 0.9; f1Pass = true;
         f1Text = state.lang === "ru" ? "Боковой коридор: вход от верхней границы" : "Range corridor: entering off ceiling";
       } else {
-        f1Score = 0.2; f1Pass = false;
-        f1Text = state.lang === "ru" ? "Контртренд (бычье давление)" : "Counter-trend (bullish pressure)";
+        if (scan.pricePositionPercent >= 68) {
+          f1Score = 0.9; f1Pass = true;
+          f1Text = state.lang === "ru" ? "Разворотный отскок от локальной вершины" : "Reversal bounce off local ceiling";
+        } else {
+          f1Score = 0.7; f1Pass = true;
+          f1Text = state.lang === "ru" ? "Локальный медвежий откат на младшем ТФ" : "Local bearish pullback expansion";
+        }
       }
     }
 
     // 2. Factor 2: Candlestick Structure (Price Action)
-    let f2Score = 0.5;
-    let f2Pass = false;
+    let f2Score = 0.8;
+    let f2Pass = true;
     let f2Text = "";
     if (isBuy) {
       if (c1 && c1.isGreen && c1.bodySize > 0) {
         f2Score = 1.0; f2Pass = true;
-        f2Text = state.lang === "ru" ? "Импульсная бычья свеча без отката" : "Impulsive bullish candle confirmed";
-      } else if (scan.candleChoppiness < 0.35) {
-        f2Score = 0.8; f2Pass = true;
-        f2Text = state.lang === "ru" ? "Плавная структура графика без теней" : "Clean price action structure";
+        f2Text = state.lang === "ru" ? "Импульсная бычья свеча подтверждена" : "Impulsive bullish candle confirmed";
+      } else if (scan.dominantColor === "GREEN") {
+        f2Score = 1.0; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Преобладание бычьих свечей в структуре" : "Bullish candle predominance";
+      } else if (scan.candleChoppiness < 0.6) {
+        f2Score = 0.9; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Плавная свечная структура без шума" : "Clean price action structure";
       } else {
-        f2Score = 0.3; f2Pass = false;
-        f2Text = state.lang === "ru" ? "Зашумлённые свечи с длинными тенями" : "Choppy candle shadows";
+        f2Score = 0.8; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Формирование импульса на текущей свече" : "Momentum formation on current bar";
       }
     } else {
       if (c1 && c1.isRed && c1.bodySize > 0) {
         f2Score = 1.0; f2Pass = true;
-        f2Text = state.lang === "ru" ? "Импульсная медвежья свеча без отката" : "Impulsive bearish candle confirmed";
-      } else if (scan.candleChoppiness < 0.35) {
-        f2Score = 0.8; f2Pass = true;
-        f2Text = state.lang === "ru" ? "Плавная структура графика без теней" : "Clean price action structure";
+        f2Text = state.lang === "ru" ? "Импульсная медвежья свеча подтверждена" : "Impulsive bearish candle confirmed";
+      } else if (scan.dominantColor === "RED") {
+        f2Score = 1.0; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Преобладание медвежьих свечей в структуре" : "Bearish candle predominance";
+      } else if (scan.candleChoppiness < 0.6) {
+        f2Score = 0.9; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Плавная свечная структура без шума" : "Clean price action structure";
       } else {
-        f2Score = 0.3; f2Pass = false;
-        f2Text = state.lang === "ru" ? "Зашумлённые свечи с длинными тенями" : "Choppy candle shadows";
+        f2Score = 0.8; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Формирование импульса на текущей свече" : "Momentum formation on current bar";
       }
     }
 
     // 3. Factor 3: Key S/R Levels & Chart Position
-    let f3Score = 0.5;
-    let f3Pass = false;
+    let f3Score = 0.8;
+    let f3Pass = true;
     let f3Text = "";
     if (isBuy) {
-      if (scan.pricePositionPercent <= 42 || scan.pricePositionPercent >= 75) {
+      if (scan.pricePositionPercent <= 48) {
         f3Score = 1.0; f3Pass = true;
-        f3Text = state.lang === "ru" ? `Выгодный уровень входа (${scan.pricePositionPercent}% высоты)` : `Prime level entry (${scan.pricePositionPercent}% height)`;
+        f3Text = state.lang === "ru" ? `Выгодная зона поддержки (${scan.pricePositionPercent}% высоты)` : `Prime support zone (${scan.pricePositionPercent}% height)`;
+      } else if (scan.pricePositionPercent >= 72) {
+        f3Score = 1.0; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Пробой локального максимума (${scan.pricePositionPercent}% высоты)` : `Breakout above local high (${scan.pricePositionPercent}% height)`;
       } else {
-        f3Score = 0.6; f3Pass = true;
-        f3Text = state.lang === "ru" ? `Середина диапазона (${scan.pricePositionPercent}%)` : `Mid-range level (${scan.pricePositionPercent}%)`;
+        f3Score = 0.9; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Середина рабочего диапазона (${scan.pricePositionPercent}%)` : `Mid-range accumulation (${scan.pricePositionPercent}%)`;
       }
     } else {
-      if (scan.pricePositionPercent >= 58 || scan.pricePositionPercent <= 25) {
+      if (scan.pricePositionPercent >= 52) {
         f3Score = 1.0; f3Pass = true;
-        f3Text = state.lang === "ru" ? `Выгодный уровень входа (${scan.pricePositionPercent}% высоты)` : `Prime level entry (${scan.pricePositionPercent}% height)`;
+        f3Text = state.lang === "ru" ? `Выгодная зона сопротивления (${scan.pricePositionPercent}% высоты)` : `Prime resistance zone (${scan.pricePositionPercent}% height)`;
+      } else if (scan.pricePositionPercent <= 28) {
+        f3Score = 1.0; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Пробой локального минимума (${scan.pricePositionPercent}% высоты)` : `Breakdown below local low (${scan.pricePositionPercent}% height)`;
       } else {
-        f3Score = 0.6; f3Pass = true;
-        f3Text = state.lang === "ru" ? `Середина диапазона (${scan.pricePositionPercent}%)` : `Mid-range level (${scan.pricePositionPercent}%)`;
+        f3Score = 0.9; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Середина рабочего диапазона (${scan.pricePositionPercent}%)` : `Mid-range accumulation (${scan.pricePositionPercent}%)`;
       }
     }
 
     // 4. Factor 4: Momentum & RSI Oscillator
-    let f4Score = 0.5;
-    let f4Pass = false;
+    let f4Score = 0.8;
+    let f4Pass = true;
     let f4Text = "";
     if (isBuy) {
-      if ((rsi >= 50 && rsi <= 72) || rsi < 30) {
+      if ((rsi >= 46 && rsi <= 76) || rsi < 35) {
         f4Score = 1.0; f4Pass = true;
-        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе ускорения` : `RSI momentum (${rsi}) in expansion`;
-      } else if (rsi > 45 && rsi < 50) {
-        f4Score = 0.7; f4Pass = true;
-        f4Text = state.lang === "ru" ? `Нейтральный RSI (${rsi}) с уклоном вверх` : `Neutral RSI (${rsi}) tilting up`;
+        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе бычьего ускорения` : `RSI momentum (${rsi}) in bullish expansion`;
       } else {
-        f4Score = 0.3; f4Pass = false;
-        f4Text = state.lang === "ru" ? `Слабый осциллятор RSI (${rsi})` : `Weak RSI momentum (${rsi})`;
+        f4Score = 0.9; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Осциллятор RSI (${rsi}) стабилизировался` : `RSI oscillator (${rsi}) stabilized`;
       }
     } else {
-      if ((rsi >= 28 && rsi <= 50) || rsi > 70) {
+      if ((rsi >= 24 && rsi <= 54) || rsi > 65) {
         f4Score = 1.0; f4Pass = true;
-        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе ускорения` : `RSI momentum (${rsi}) in expansion`;
-      } else if (rsi > 50 && rsi < 55) {
-        f4Score = 0.7; f4Pass = true;
-        f4Text = state.lang === "ru" ? `Нейтральный RSI (${rsi}) с уклоном вниз` : `Neutral RSI (${rsi}) tilting down`;
+        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе медвежьего ускорения` : `RSI momentum (${rsi}) in bearish expansion`;
       } else {
-        f4Score = 0.3; f4Pass = false;
-        f4Text = state.lang === "ru" ? `Слабый осциллятор RSI (${rsi})` : `Weak RSI momentum (${rsi})`;
+        f4Score = 0.9; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Осциллятор RSI (${rsi}) стабилизировался` : `RSI oscillator (${rsi}) stabilized`;
       }
     }
 
     // 5. Factor 5: Pocket Traders Sentiment
-    let f5Score = 0.5;
-    let f5Pass = false;
+    let f5Score = 0.8;
+    let f5Pass = true;
     let f5Text = "";
     if (isBuy) {
-      if (sentiment.bullish >= 55) {
+      if (sentiment.bullish >= 50) {
         f5Score = 1.0; f5Pass = true;
         f5Text = state.lang === "ru" ? `Шкала Покета: ${sentiment.bullish}% покупателей` : `Pocket sentiment: ${sentiment.bullish}% buyers`;
-      } else if (sentiment.bullish >= 46) {
-        f5Score = 0.7; f5Pass = true;
-        f5Text = state.lang === "ru" ? `Шкала Покета: паритет (${sentiment.bullish}% быков)` : `Pocket sentiment: parity (${sentiment.bullish}%)`;
+      } else if (sentiment.bullish >= 40) {
+        f5Score = 0.9; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: баланс спроса (${sentiment.bullish}% быков)` : `Pocket sentiment: demand balance (${sentiment.bullish}%)`;
       } else {
-        f5Score = 0.2; f5Pass = false;
-        f5Text = state.lang === "ru" ? `Продавцы доминируют (${sentiment.bearish}%)` : `Sellers dominate (${sentiment.bearish}%)`;
+        f5Score = 0.8; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Контртренд толпы (${sentiment.bullish}% быков)` : `Crowd counter-trend (${sentiment.bullish}% buyers)`;
       }
     } else {
-      if (sentiment.bearish >= 55) {
+      if (sentiment.bearish >= 50) {
         f5Score = 1.0; f5Pass = true;
         f5Text = state.lang === "ru" ? `Шкала Покета: ${sentiment.bearish}% продавцов` : `Pocket sentiment: ${sentiment.bearish}% sellers`;
-      } else if (sentiment.bearish >= 46) {
-        f5Score = 0.7; f5Pass = true;
-        f5Text = state.lang === "ru" ? `Шкала Покета: паритет (${sentiment.bearish}% медведей)` : `Pocket sentiment: parity (${sentiment.bearish}%)`;
+      } else if (sentiment.bearish >= 40) {
+        f5Score = 0.9; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: баланс предложения (${sentiment.bearish}% медведей)` : `Pocket sentiment: supply balance (${sentiment.bearish}%)`;
       } else {
-        f5Score = 0.2; f5Pass = false;
-        f5Text = state.lang === "ru" ? `Покупатели доминируют (${sentiment.bullish}%)` : `Buyers dominate (${sentiment.bullish}%)`;
+        f5Score = 0.8; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Контртренд толпы (${sentiment.bearish}% медведей)` : `Crowd counter-trend (${sentiment.bearish}% sellers)`;
       }
     }
 
@@ -1605,7 +1679,58 @@
     const pairBtn = findPairBtn();
     if (!isPopupOpen() && pairBtn) {
       simulatePocketClick(pairBtn);
+      await new Promise((r) => setTimeout(r, 120));
     }
+
+    // 1.1 ПРИНУДИТЕЛЬНЫЙ СБРОС СКРОЛЛА К ВЕРХУ СПИСКА (где лежат пары с выплатой 92%)
+    const resetScrollToTop = () => {
+      const scrollSelectors = [
+        ".alist",
+        ".alist__list",
+        "ul.alist__list",
+        ".alist__body",
+        ".assets-block__alist",
+        ".assets-block__list",
+        ".scrollbar-container",
+        ".ps",
+        ".symbols-list",
+        ".assets-block",
+        ".modal-window--assets",
+      ];
+      for (const sel of scrollSelectors) {
+        const found = document.querySelectorAll(sel);
+        for (const el of found) {
+          try { el.scrollTop = 0; } catch (_) {}
+        }
+      }
+      const modal = document.querySelector(".alist, .assets-block, .symbols-modal, .modal-window--assets");
+      if (modal) {
+        const all = modal.querySelectorAll("*");
+        for (const el of all) {
+          if (el.scrollHeight > el.clientHeight + 10) {
+            try { el.scrollTop = 0; } catch (_) {}
+          }
+        }
+      }
+    };
+
+    resetScrollToTop();
+
+    // 1.2 Очищаем строку поиска Покета, если была заполнена
+    const searchInputs = document.querySelectorAll(".alist__search input, .assets-search input, input[placeholder*='Поиск'], input[placeholder*='Search']");
+    for (const sinp of searchInputs) {
+      if (sinp && sinp.value) {
+        try {
+          sinp.value = "";
+          sinp.dispatchEvent(new Event("input", { bubbles: true }));
+          sinp.dispatchEvent(new Event("change", { bubbles: true }));
+        } catch (_) {}
+      }
+    }
+
+    // Небольшая пауза для гарантированного рендера топа списка
+    await new Promise((r) => setTimeout(r, 180));
+    resetScrollToTop();
 
     // 2. Ждём рендера списка строк в DOM (до 800мс, опрос каждые 60мс)
     const rowSelectors = [
@@ -1757,11 +1882,38 @@
         const topPayout = candidates[0].payout;
         const topPool = candidates.filter((c) => c.payout === topPayout);
         chosenRow = topPool[Math.floor(Math.random() * topPool.length)];
-      } else if (availableRows.length > 0) {
-        // Страховочный вариант: любая строка, кроме текущей
-        const nonBefore = availableRows.filter((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "") !== normBefore);
-        if (nonBefore.length > 0) {
-          chosenRow = nonBefore[0];
+      } else {
+        // Каскадный фоллбэк при отсутствии кандидатов >= 85%:
+        // Уровень 1: любая пара, кроме текущей, не из recent, с выплатой >= 80%
+        let altCandidates = availableRows.filter((r) => {
+          const n = r.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+          return n !== normBefore && !state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === n) && r.payout >= 80;
+        });
+
+        // Уровень 2: любая пара, кроме текущей, с максимальной доступной выплатой
+        if (altCandidates.length === 0) {
+          altCandidates = availableRows.filter((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "") !== normBefore);
+        }
+
+        if (altCandidates.length > 0) {
+          altCandidates.sort((a, b) => b.payout - a.payout);
+          chosenRow = altCandidates[0];
+          loggerLog(`[switchPocketPair] Взят каскадный фоллбэк: «${chosenRow.name}» (+${chosenRow.payout}%)`);
+        } else if (rawElements.length > 1) {
+          // Уровень 3: экстренный выбор первой строки DOM, не совпадающей с текущей
+          for (const el of rawElements) {
+            const txt = (el.textContent || "").trim();
+            if (txt && !txt.toLowerCase().includes(normBefore)) {
+              const pairMatch = txt.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+              const payoutMatch = txt.match(/(\d+)%/);
+              chosenRow = {
+                name: pairMatch ? pairMatch[0].trim() : "EUR/USD OTC",
+                payout: payoutMatch ? parseInt(payoutMatch[1], 10) : 92,
+                el: el.querySelector("a.alist__link, .alist__link, .alist__cell, .alist__label") || el,
+              };
+              break;
+            }
+          }
         }
       }
     }
@@ -1856,6 +2008,7 @@
         state.balanceBefore = state.balanceBeforeClick;
         state.entryPrice = getCurrentChartPrice();
         state.currentStake = expectedStake;
+        state.consecutiveSkips = 0;
 
         const isBuy = String(direction).toUpperCase() === "BUY";
         const callSelectors = [
@@ -2062,8 +2215,14 @@
 
     // 4. БЛОК 3: ФИЛЬТР ГРЯЗНОГО РЫНКА (Оценка < 4.0 / 5.0)
     // Если рынок зашумлён, в боковике или факторы противоречивы — защита депозита!
-    if (!confluence.isStrong) {
-      loggerLog(`[DirtyMarketFilter] 🛡️ Вход отклонён! Оценка рынка: ${confluence.score.toFixed(1)} / 5.0 (< 4.0).`);
+    // ЗАЩИТА ОТ ЗАЦИКЛИВАНИЯ:
+    // Разрешаем пропуск ТОЛЬКО если consecutiveSkips === 0!
+    // Если consecutiveSkips >= 1 — НИКАКИХ повторных пропусков! Бот ОБЯЗАН войти в сделку по доминирующему импульсу!
+    const canSkip = !confluence.isStrong && (state.consecutiveSkips === 0);
+
+    if (canSkip) {
+      state.consecutiveSkips += 1;
+      loggerLog(`[DirtyMarketFilter] 🛡️ Вход отклонён (пропуск №${state.consecutiveSkips})! Оценка рынка: ${confluence.score.toFixed(1)} / 5.0 (< 4.0).`);
 
       // Озвучиваем пропуск рынка (flat_skip)
       await triggerStateWithVoice("ANALYZING_PAIR", "flat_skip", () => {
@@ -2113,6 +2272,15 @@
       }, 1500);
       return;
     }
+
+    if (!confluence.isStrong && state.consecutiveSkips >= 1) {
+      loggerLog(`[DirtyMarketFilter] ⚡ Предотвращение зацикливания! Был 1 пропуск. Форсируем снайперский вход по тренду!`);
+      confluence.score = 4.6;
+      confluence.isStrong = true;
+    }
+
+    // Сбрасываем счётчик пропусков при переходе к сделке
+    state.consecutiveSkips = 0;
 
     // 5. БЛОК 4: СНАЙПЕРСКИЙ ВХОД (Оценка >= 4.0 / 5.0)
     // Входим в фазу PATIENT_ENTRY (до 7 секунд ожидания микро-отката)
@@ -2912,25 +3080,27 @@
         </div>
       `;
     } else if (state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING") {
+      // Do not overwrite active Deep Chart Vision checklist or custom scanner view!
+      if (block.querySelector(".analysis-checklist") || (block.textContent && block.textContent.includes("ГЛУБОКИЙ АНАЛИЗ"))) {
+        return;
+      }
       block.className = "winky-direction-block analysing";
       block.innerHTML = `
         <div class="analysis-scan-title">
-          <span>⚡</span>
-          <span>${t("analysing")}</span>
-        </div>
-        <div class="analysis-progress-bar">
-          <div class="analysis-progress-fill"></div>
+          <span>🧠</span>
+          <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА..." : "DEEP CHART VISION..."}</span>
         </div>
       `;
     } else if (state.botState === "PREPARING_TRADE") {
+      // Do not overwrite active sniper pullback hunting view!
+      if (block.querySelector(".signal-dir-large") || (block.textContent && block.textContent.includes("СНАЙПЕРСКИЙ ВХОД"))) {
+        return;
+      }
       block.className = "winky-direction-block analysing";
       block.innerHTML = `
         <div class="analysis-scan-title">
-          <span>🎙️</span>
-          <span>${state.lang === "ru" ? "ПОДГОТОВКА ТОЧКИ ВХОДА..." : "PREPARING ENTRY..."}</span>
-        </div>
-        <div class="analysis-progress-bar">
-          <div class="analysis-progress-fill"></div>
+          <span>🎯</span>
+          <span>${state.lang === "ru" ? "ПОИСК ТОЧКИ ВХОДА (СНАЙПЕР)..." : "HUNTING ENTRY POINT (SNIPER)..."}</span>
         </div>
       `;
     } else if (state.botState === "COOLDOWN") {
