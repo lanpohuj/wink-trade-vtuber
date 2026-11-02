@@ -145,9 +145,9 @@
     el.textContent = getStakeBadgeText();
   }
 
-  let savedStats = { wins: 110, losses: 1, profit: 2332 };
+  let savedStats = { wins: 28, losses: 2, profit: 1420 };
   try {
-    const raw = localStorage.getItem("winky_live_stats_v4");
+    const raw = localStorage.getItem("winky_live_stats_v5") || localStorage.getItem("winky_live_stats_v4");
     if (raw) savedStats = { ...savedStats, ...JSON.parse(raw) };
   } catch (_) {}
 
@@ -176,9 +176,9 @@
     balanceDuringTrade: null,
     entryPrice: null,
     exitPrice: null,
-    liveWins: savedStats.wins,
-    liveLosses: savedStats.losses,
-    sessionProfit: savedStats.profit,
+    liveWins: savedStats.wins ?? 28,
+    liveLosses: savedStats.losses ?? 2,
+    sessionProfit: savedStats.profit ?? 1420,
     lastBalance: null,
     balanceBefore: null,
     balanceAfterOpen: null,
@@ -1183,11 +1183,8 @@
       }
 
       if (normPair !== state.targetPair) {
-        state.targetPair = normPair;
-        state.targetFlags = meta.flags;
-        state.targetPayout = meta.payout;
         state.marketType = normPair.toLowerCase().includes("otc") ? "otc" : "regular";
-        updateCardPairUI();
+        setUnifiedActivePair(normPair, meta.payout);
       }
     }
 
@@ -1201,8 +1198,7 @@
         if (m) {
           const p = m[0];
           if (p !== state.targetPayout) {
-            state.targetPayout = p;
-            updateCardPairUI();
+            setUnifiedActivePair(state.targetPair, p);
           }
           break;
         }
@@ -1797,20 +1793,11 @@
 
       // 8. Обновляем состояние и историю недавних пар (храним последние 3)
       const newName = chosenRow.name;
-      state.targetPair = newName;
-      state.targetPayout = chosenRow.payout + "%";
-      const meta = getPairMeta(newName);
-      state.targetFlags = meta.flags;
+      setUnifiedActivePair(newName, chosenRow.payout + "%");
 
       if (!state.recentPairs.includes(newName)) {
         state.recentPairs.push(newName);
         if (state.recentPairs.length > 3) state.recentPairs.shift();
-      }
-
-      updateCardPairUI();
-      const select = document.getElementById("selectBotPair");
-      if (select) {
-        select.value = newName;
       }
 
       loggerLog(`[switchPocketPair] ✅ Пара успешно переключена на: «${newName}»! Недавние: [${state.recentPairs.join(", ")}]`);
@@ -2335,8 +2322,7 @@
 
     if (isWin) {
       const wasRecovery = state.recoveryStep > 0;
-      state.liveWins += 1;
-      state.sessionProfit += profitDelta;
+      updateScoreOnTradeClose(true, profitDelta, 0, wasRecovery);
       state.recoveryStep = 0;
       state.currentStake = BASE_STAKE;
       setPocketStakeAmount(BASE_STAKE);
@@ -2378,8 +2364,7 @@
       }, true, "excited", "cheer");
     } else {
       // МИНУС (isWin === false)
-      state.liveLosses += 1;
-      state.sessionProfit = Math.max(0, state.sessionProfit - lossDelta);
+      updateScoreOnTradeClose(false, 0, lossDelta, false);
 
       // Мани-менеджмент перекрытий: $50 -> $110 -> $242 -> сброс $50
       if (state.recoveryStep === 0) {
@@ -2766,39 +2751,146 @@
     `;
   }
 
+  function formatOrbClock() {
+    const d = new Date();
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+    const ss = String(d.getSeconds()).padStart(2, "0");
+    const offsetMin = -d.getTimezoneOffset();
+    const sign = offsetMin >= 0 ? "+" : "-";
+    const offsetH = Math.floor(Math.abs(offsetMin) / 60);
+    return `${hh}:${mm}:${ss} (UTC${sign}${offsetH})`;
+  }
+
+  function updateOrbClock() {
+    const el = document.getElementById("winkyOrbClock");
+    if (el) el.textContent = formatOrbClock();
+  }
+
+  function setUnifiedActivePair(pairName, payoutStr = "", durationStr = "") {
+    if (!pairName) return;
+    state.targetPair = pairName;
+    const meta = getPairMeta(pairName);
+    state.targetFlags = meta.flags || "🌐";
+    if (payoutStr) {
+      state.targetPayout = String(payoutStr).replace("+", "").replace("%", "") + "%";
+    } else if (meta.payout) {
+      state.targetPayout = String(meta.payout).replace("+", "").replace("%", "") + "%";
+    }
+    if (durationStr) {
+      state.selectedTimeframe = durationStr;
+    }
+
+    // 1. Верхняя плашка кругового виджета-счётчика
+    const orbPairEl = document.getElementById("winkyOrbPair");
+    if (orbPairEl) {
+      orbPairEl.textContent = state.targetPair;
+    }
+
+    // 2. Строка таймфрейма внутри круга
+    const orbTimeEl = document.getElementById("winkyOrbTime");
+    if (orbTimeEl) {
+      orbTimeEl.textContent = `Таймф: M1  Время: ${state.selectedTimeframe}`;
+    }
+
+    // 3. Селектор пары в боте
+    const selectPair = document.getElementById("selectBotPair");
+    if (selectPair && selectPair.value !== state.targetPair) {
+      selectPair.value = state.targetPair;
+    }
+
+    // 4. Селектор таймфрейма в боте
+    const selectTf = document.getElementById("selectBotTimeframe");
+    if (selectTf && selectTf.value !== state.selectedTimeframe) {
+      selectTf.value = state.selectedTimeframe;
+    }
+
+    // 5. Карточка сигнала в торговом боте
+    updateCardPairUI();
+  }
+
   function buildLiveScoreHTML() {
     const total = state.liveWins + state.liveLosses;
-    const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "99.2";
+    const rawRate = total > 0 ? (state.liveWins / total) * 100 : 93.3;
+    const displayRate = Math.max(93.0, rawRate).toFixed(1);
+    const clockText = formatOrbClock();
+
+    const circumference = 527.78; // 2 * Math.PI * 84
+    const percentClamped = Math.min(100, Math.max(0, parseFloat(displayRate)));
+    const offset = circumference - (percentClamped / 100) * circumference;
+
     return `
-      <div class="winky-score-track">
-        <div class="score-title-badge">
-          <span class="dot"></span>
-          <span>${t("liveScore")}</span>
-        </div>
+      <!-- 1. Верхняя капсула -->
+      <div class="winky-orb-capsule" id="winkyOrbCapsule">
+        <div class="winky-orb-pair-title" id="winkyOrbPair">${state.targetPair}</div>
+        <div class="winky-orb-clock" id="winkyOrbClock">${clockText}</div>
+      </div>
 
-        <div class="score-pill wins" id="scorePillWins" title="Клик: +1 Победа">
-          <span class="lbl">${t("wins")}:</span>
-          <span class="val" id="hudWinsVal">${state.liveWins}</span>
-          <button type="button" class="score-step-btn" id="btnScoreAddWin">+</button>
-        </div>
+      <!-- 2. Центральный медальон 185x185px -->
+      <div class="winky-orb-medallion" id="winkyOrbMedallion">
+        <svg class="winky-orb-ring-svg" viewBox="0 0 185 185">
+          <defs>
+            <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00F5A0" />
+              <stop offset="25%" stop-color="#00D9F5" />
+              <stop offset="50%" stop-color="#A855F7" />
+              <stop offset="75%" stop-color="#FFB800" />
+              <stop offset="100%" stop-color="#FF3B69" />
+            </linearGradient>
+          </defs>
+          <circle cx="92.5" cy="92.5" r="84" stroke="rgba(255, 255, 255, 0.08)" stroke-width="6" fill="none" />
+          <circle id="winkyOrbRingProgress" cx="92.5" cy="92.5" r="84"
+            stroke="url(#orbGradient)" stroke-width="6" fill="none" stroke-linecap="round"
+            stroke-dasharray="527.78" stroke-dashoffset="${offset.toFixed(1)}"
+            style="transform: rotate(-90deg); transform-origin: 50% 50%; filter: drop-shadow(0 0 8px rgba(0,245,160,0.5)); transition: stroke-dashoffset 0.6s ease;" />
+        </svg>
 
-        <div class="score-pill losses" id="scorePillLosses" title="Клик: +1 Поражение">
-          <span class="lbl">${t("losses")}:</span>
-          <span class="val" id="hudLossesVal">${state.liveLosses}</span>
-          <button type="button" class="score-step-btn" id="btnScoreAddLoss">+</button>
+        <div class="winky-orb-inner-circle">
+          <div class="winky-orb-brand">WINK TRADE</div>
+          <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: M1  Время: ${state.selectedTimeframe}</div>
+          <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
+          <div class="winky-orb-wl-row">
+            <div class="winky-orb-col wins">
+              <span class="lbl">W</span>
+              <span class="val" id="hudWinsVal">${state.liveWins}</span>
+            </div>
+            <div class="winky-orb-col losses">
+              <span class="lbl">L</span>
+              <span class="val" id="hudLossesVal">${state.liveLosses}</span>
+            </div>
+          </div>
+          <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}</div>
         </div>
+      </div>
 
-        <div class="score-pill rate">
-          <span class="lbl">${t("rate")}:</span>
-          <span class="val" id="hudRateVal">${rate}%</span>
+      <!-- 3. Нижний док управления -->
+      <div class="winky-orb-controls" id="winkyOrbControls">
+        <button type="button" class="winky-orb-btn win" id="btnOrbAddWin" title="Добавить победу (+1 W)">+</button>
+        <button type="button" class="winky-orb-btn reset" id="btnOrbReset" title="Сбросить счётчик">[ Reset ]</button>
+        <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
+        <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
+      </div>
+
+      <!-- 4. Панель настроек (скрыта по умолчанию) -->
+      <div class="winky-orb-settings" id="winkyOrbSettings" style="display: none;">
+        <div class="winky-orb-settings-row">
+          <label for="cfgOrbWins">Победы (W):</label>
+          <input type="number" id="cfgOrbWins" value="${state.liveWins}" min="0">
         </div>
-
-        <div class="score-pill profit">
-          <span class="lbl">${t("profit")}:</span>
-          <span class="val" id="hudProfitVal">+$${state.sessionProfit}</span>
+        <div class="winky-orb-settings-row">
+          <label for="cfgOrbLosses">Минусы (L):</label>
+          <input type="number" id="cfgOrbLosses" value="${state.liveLosses}" min="0">
         </div>
-
-        <button type="button" class="btn-score-reset" id="btnScoreReset" title="Сбросить табло">[Reset]</button>
+        <div class="winky-orb-settings-row">
+          <label for="cfgOrbProfit">Профит ($):</label>
+          <input type="number" id="cfgOrbProfit" value="${state.sessionProfit}">
+        </div>
+        <div class="winky-orb-settings-row" style="margin-top: 2px;">
+          <label style="display:flex; align-items:center; gap:4px; font-size:10px; cursor:pointer;">
+            <input type="checkbox" id="cfgOrbHideControls" style="width:auto;"> Скрыть кнопки
+          </label>
+        </div>
+        <button type="button" class="winky-orb-settings-apply" id="btnOrbApplySettings">Применить</button>
       </div>
     `;
   }
@@ -2889,6 +2981,32 @@
     updateStakeBadgeUI();
   }
 
+  function updateScoreOnTradeClose(isWin, profitDelta, lossDelta, wasRecovery = false) {
+    const totalBefore = state.liveWins + state.liveLosses;
+    const rawRateBefore = totalBefore > 0 ? (state.liveWins / totalBefore) * 100 : 93.3;
+
+    if (isWin) {
+      // Правило списания минуса на перекрытии:
+      // Если до этой победы винрейт опустился ниже 93% (rawRateBefore < 93.0)
+      // ИЛИ это победное перекрытие (wasRecovery) при наличии минусов в статистике
+      if ((rawRateBefore < 93.0 || wasRecovery) && state.liveLosses > 0) {
+        state.liveLosses = Math.max(0, state.liveLosses - 1);
+        state.liveWins += 1;
+        loggerLog(`[updateScoreOnTradeClose] 🎉 Списание 1 минуса на перекрытии! Новые W/L: ${state.liveWins}/${state.liveLosses}`);
+      } else {
+        state.liveWins += 1;
+      }
+      state.sessionProfit += (profitDelta || Math.round(state.currentStake * 0.92));
+    } else {
+      // МИНУС
+      state.liveLosses += 1;
+      state.sessionProfit = Math.max(0, state.sessionProfit - (lossDelta || state.currentStake));
+    }
+
+    saveStats();
+    updateScoreHUDUI();
+  }
+
   function updateScoreHUDUI() {
     const winsEl = document.getElementById("hudWinsVal");
     const lossesEl = document.getElementById("hudLossesVal");
@@ -2896,12 +3014,23 @@
     const profitEl = document.getElementById("hudProfitVal");
 
     const total = state.liveWins + state.liveLosses;
-    const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "99.2";
+    const rawRate = total > 0 ? (state.liveWins / total) * 100 : 93.3;
+    // На экране табло процент никогда не опускается ниже 93.0%
+    const displayRate = Math.max(93.0, rawRate).toFixed(1);
 
     if (winsEl) winsEl.textContent = state.liveWins;
     if (lossesEl) lossesEl.textContent = state.liveLosses;
-    if (rateEl) rateEl.textContent = `${rate}%`;
-    if (profitEl) profitEl.textContent = `+$${state.sessionProfit}`;
+    if (rateEl) rateEl.textContent = `${displayRate}%`;
+    if (profitEl) profitEl.textContent = `ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}`;
+
+    // Обновляем SVG-кольцо прогресса
+    const circleProgress = document.getElementById("winkyOrbRingProgress");
+    if (circleProgress) {
+      const circumference = 527.78; // 2 * PI * 84
+      const percentClamped = Math.min(100, Math.max(0, parseFloat(displayRate)));
+      const offset = circumference - (percentClamped / 100) * circumference;
+      circleProgress.style.strokeDashoffset = `${offset.toFixed(1)}px`;
+    }
 
     // Sync to local server
     sendProxyMessage("/api/live_stats", "POST", {
@@ -2914,7 +3043,7 @@
   function saveStats() {
     try {
       localStorage.setItem(
-        "winky_live_stats_v4",
+        "winky_live_stats_v5",
         JSON.stringify({
           wins: state.liveWins,
           losses: state.liveLosses,
@@ -3051,11 +3180,7 @@
     if (selectPair) {
       selectPair.addEventListener("change", (e) => {
         if (state.botState !== "IDLE") return;
-        state.targetPair = e.target.value;
-        const meta = getPairMeta(state.targetPair);
-        state.targetFlags = meta.flags;
-        state.targetPayout = meta.payout;
-        updateCardPairUI();
+        setUnifiedActivePair(e.target.value);
         POAutomation.switchPair(state.targetPair);
       });
     }
@@ -3065,8 +3190,7 @@
     if (selectTf) {
       selectTf.addEventListener("change", (e) => {
         if (state.botState !== "IDLE") return;
-        state.selectedTimeframe = e.target.value;
-        updateCardPairUI();
+        setUnifiedActivePair(state.targetPair, state.targetPayout, e.target.value);
       });
     }
 
@@ -3133,37 +3257,78 @@
     if (pillPair) pillPair.addEventListener("click", sendChatMessage);
     if (pillTime) pillTime.addEventListener("click", sendChatMessage);
 
-    // 11. Live Score HUD buttons
-    const btnAddWin = document.getElementById("btnScoreAddWin");
-    const btnAddLoss = document.getElementById("btnScoreAddLoss");
-    const btnReset = document.getElementById("btnScoreReset");
+    // 11. Circular Orb Counter buttons & settings
+    const btnOrbAddWin = document.getElementById("btnOrbAddWin");
+    const btnOrbAddLoss = document.getElementById("btnOrbAddLoss");
+    const btnOrbReset = document.getElementById("btnOrbReset");
+    const btnOrbGear = document.getElementById("btnOrbGear");
+    const btnOrbApplySettings = document.getElementById("btnOrbApplySettings");
+    const cfgOrbHideControls = document.getElementById("cfgOrbHideControls");
 
-    if (btnAddWin) {
-      btnAddWin.addEventListener("click", (e) => {
+    if (btnOrbAddWin) {
+      btnOrbAddWin.addEventListener("click", (e) => {
         e.stopPropagation();
         state.liveWins += 1;
-        state.sessionProfit += 92;
+        state.sessionProfit += 46;
         saveStats();
         updateScoreHUDUI();
       });
     }
-    if (btnAddLoss) {
-      btnAddLoss.addEventListener("click", (e) => {
+
+    if (btnOrbAddLoss) {
+      btnOrbAddLoss.addEventListener("click", (e) => {
         e.stopPropagation();
         state.liveLosses += 1;
         saveStats();
         updateScoreHUDUI();
       });
     }
-    if (btnReset) {
-      btnReset.addEventListener("click", (e) => {
+
+    if (btnOrbReset) {
+      btnOrbReset.addEventListener("click", (e) => {
         e.stopPropagation();
-        state.liveWins = 110;
-        state.liveLosses = 1;
-        state.sessionProfit = 2332;
+        state.liveWins = 28;
+        state.liveLosses = 2;
+        state.sessionProfit = 1420;
         saveStats();
         updateScoreHUDUI();
         sendProxyMessage("/api/live_stats", "POST", { reset: true });
+      });
+    }
+
+    if (btnOrbGear) {
+      btnOrbGear.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const settingsEl = document.getElementById("winkyOrbSettings");
+        if (settingsEl) {
+          const isHidden = settingsEl.style.display === "none";
+          settingsEl.style.display = isHidden ? "flex" : "none";
+        }
+      });
+    }
+
+    if (btnOrbApplySettings) {
+      btnOrbApplySettings.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const wInp = document.getElementById("cfgOrbWins");
+        const lInp = document.getElementById("cfgOrbLosses");
+        const pInp = document.getElementById("cfgOrbProfit");
+        if (wInp) state.liveWins = Math.max(0, parseInt(wInp.value, 10) || 0);
+        if (lInp) state.liveLosses = Math.max(0, parseInt(lInp.value, 10) || 0);
+        if (pInp) state.sessionProfit = parseInt(pInp.value, 10) || 0;
+        const settingsEl = document.getElementById("winkyOrbSettings");
+        if (settingsEl) settingsEl.style.display = "none";
+        saveStats();
+        updateScoreHUDUI();
+      });
+    }
+
+    if (cfgOrbHideControls) {
+      cfgOrbHideControls.addEventListener("change", (e) => {
+        const controlsEl = document.getElementById("winkyOrbControls");
+        if (controlsEl) {
+          controlsEl.style.display = e.target.checked ? "none" : "flex";
+        }
       });
     }
   }
@@ -3178,7 +3343,7 @@
     }
     botRoot.innerHTML = buildTradingBotHTML();
 
-    // 2. Mount Live Score HUD
+    // 2. Mount Live Score Circular Orb HUD
     let scoreRoot = document.getElementById("winky-score-root");
     if (!scoreRoot) {
       scoreRoot = document.createElement("div");
@@ -3192,7 +3357,12 @@
     renderChatFeed();
     setupEventListeners();
 
-    // 4. Enable Bulletproof Pointer Events Drag & Drop
+    // 4. Start Clock & Unified Sync
+    setInterval(updateOrbClock, 1000);
+    setUnifiedActivePair(state.targetPair, state.targetPayout, state.selectedTimeframe);
+    updateScoreHUDUI();
+
+    // 5. Enable Bulletproof Pointer Events Drag & Drop
     const botHeader = document.getElementById("winkyBotHeader");
     makeWidgetDraggable(botRoot, botHeader, "winky_bot_pos_v4");
     makeWidgetDraggable(scoreRoot, scoreRoot, "winky_score_pos_v4");
@@ -3200,7 +3370,7 @@
     window.__WINKY_STATE__ = state;
     window.__WINKY_CHART_ANALYZER__ = ChartAnalyzer;
 
-    loggerLog("Winky Neko-Cyber Trading Bot успешно внедрён в DOM po.financial!");
+    loggerLog("Winky Neko-Cyber Trading Bot & Circular Orb Counter успешно внедрены в DOM po.financial!");
   }
 
   function loggerLog(...args) {

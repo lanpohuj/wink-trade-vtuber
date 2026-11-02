@@ -192,14 +192,7 @@ class LLMBrain:
 
     @property
     def model_name(self) -> str:
-        model = settings.DEEPSEEK_MODEL
-        if "api.deepseek.com" in self.api_url:
-            if not model or "deepseek-ai" in model.lower() or "flash" in model.lower():
-                return "deepseek-chat"
-            return model
-        if settings.RIVER_API_KEY:
-            return model or "deepseek-ai/DeepSeek-V4.1-Flash"
-        return model or "deepseek-chat"
+        return settings.DEEPSEEK_MODEL or "deepseek-ai/DeepSeek-V4.1-Flash"
 
     @property
     def available(self) -> bool:

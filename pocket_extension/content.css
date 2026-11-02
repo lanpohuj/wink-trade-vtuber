@@ -770,100 +770,315 @@
   border: 1px solid rgba(0, 245, 160, 0.35);
 }
 
-/* ==================== 4. LIVE SCORE HUD WIDGET ==================== */
+/* ==================== 4. CIRCULAR ORB LIVE COUNTER (WINK TRADE) ==================== */
 
 #winky-score-root {
-  top: 14px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--wn-bg);
-  border: 1px solid var(--wn-border);
-  border-radius: 30px;
-  padding: 6px 14px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 18px rgba(0, 245, 160, 0.12);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
   cursor: grab;
   touch-action: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  pointer-events: auto;
+  user-select: none;
 }
 #winky-score-root:active {
   cursor: grabbing;
 }
 
-.winky-score-track {
+/* 1. Верхняя плашка-капсула (над кругом) */
+.winky-orb-capsule {
+  background: rgba(9, 17, 20, 0.90);
+  border: 1px solid rgba(0, 245, 160, 0.35);
+  border-radius: 10px;
+  padding: 6px 18px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 12px rgba(0, 245, 160, 0.15);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 2px;
+  min-width: 170px;
 }
 
-.score-title-badge {
+.winky-orb-pair-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.winky-orb-clock {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--wn-mint);
+  font-family: var(--wn-font-mono);
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+/* 2. Центральный круговой неоновый медальон (185x185px) */
+.winky-orb-medallion {
+  width: 185px;
+  height: 185px;
+  position: relative;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  filter: drop-shadow(0 0 16px rgba(0, 245, 160, 0.45)) drop-shadow(0 0 28px rgba(0, 217, 245, 0.25));
+  user-select: none;
+}
+
+.winky-orb-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 185px;
+  height: 185px;
+  pointer-events: none;
+}
+
+.winky-orb-inner-circle {
+  width: 166px;
+  height: 166px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #101B20 0%, #070C0E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.winky-orb-brand {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px rgba(0, 245, 160, 0.4);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.winky-orb-timeframe {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.winky-orb-winrate {
+  font-size: 35px;
+  font-weight: 900;
+  color: #00F5A0;
+  font-family: var(--wn-font-mono);
+  line-height: 1;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 16px rgba(0, 245, 160, 0.55), 0 0 30px rgba(0, 245, 160, 0.25);
+  margin-bottom: 4px;
+}
+
+.winky-orb-wl-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.winky-orb-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.winky-orb-col .lbl {
+  font-size: 11px;
+  font-weight: 700;
+  color: #E2E8F0;
+  margin-bottom: 1px;
+}
+
+.winky-orb-col.wins .val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #00F5A0;
+  font-family: var(--wn-font-mono);
+  text-shadow: 0 0 10px rgba(0, 245, 160, 0.5);
+}
+
+.winky-orb-col.losses .val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #FF3B69;
+  font-family: var(--wn-font-mono);
+  text-shadow: 0 0 10px rgba(255, 59, 105, 0.5);
+}
+
+.winky-orb-profit {
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #FFFFFF;
-}
-.score-title-badge .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--wn-mint);
-  box-shadow: 0 0 8px var(--wn-mint);
-  animation: winkyPulse 1.5s infinite;
+  color: #FFB800;
+  font-family: var(--wn-font-mono);
+  background: rgba(255, 184, 0, 0.12);
+  border: 1px solid rgba(255, 184, 0, 0.35);
+  border-radius: 8px;
+  padding: 1.5px 7px;
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+  text-shadow: 0 0 6px rgba(255, 184, 0, 0.35);
 }
 
-.score-pill {
+/* 3. Нижняя интерактивная панель управления (под кругом) */
+.winky-orb-controls {
+  background: rgba(9, 17, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 4px 6px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 11.5px;
-  font-weight: 700;
-  font-family: var(--wn-font-mono);
+  gap: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-.score-pill .lbl {
-  font-size: 10px;
-  color: var(--wn-text-dim);
-  font-family: var(--wn-font-main);
-  text-transform: uppercase;
-}
-.score-pill.wins .val { color: var(--wn-mint); font-weight: 800; }
-.score-pill.losses .val { color: var(--wn-crimson); font-weight: 800; }
-.score-pill.rate .val { color: var(--wn-amber); font-weight: 800; }
-.score-pill.profit .val { color: var(--wn-mint); font-weight: 800; }
 
-.score-step-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
-  font-size: 10px;
+.winky-orb-btn {
+  border-radius: 6px;
+  font-size: 11px;
   font-weight: 800;
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  margin-left: 2px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  user-select: none;
 }
-.score-step-btn:hover {
-  background: var(--wn-mint);
-  color: #091114;
+.winky-orb-btn:hover {
+  transform: translateY(-1px);
+}
+.winky-orb-btn:active {
+  transform: translateY(1px);
 }
 
-.btn-score-reset {
-  background: transparent;
-  border: none;
-  color: var(--wn-text-muted);
-  font-size: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 2px 4px;
-}
-.btn-score-reset:hover {
+.winky-orb-btn.win {
+  background: linear-gradient(180deg, #16A34A, #15803D);
+  border: 1px solid #4ADE80;
   color: #FFFFFF;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+}
+
+.winky-orb-btn.loss {
+  background: linear-gradient(180deg, #991B1B, #7F1D1D);
+  border: 1px solid #F87171;
+  color: #FFFFFF;
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.3);
+}
+
+.winky-orb-btn.reset {
+  background: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #CBD5E1;
+  padding: 4px 8px;
+}
+.winky-orb-btn.reset:hover {
+  background: #334155;
+  color: #FFFFFF;
+}
+
+.winky-orb-btn.gear {
+  background: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #CBD5E1;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+.winky-orb-btn.gear:hover {
+  background: #334155;
+}
+
+/* 4. Всплывающая панель настроек виджета */
+.winky-orb-settings {
+  background: rgba(9, 17, 20, 0.95);
+  border: 1px solid rgba(0, 245, 160, 0.4);
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  width: 185px;
+  margin-top: 2px;
+}
+
+.winky-orb-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.winky-orb-settings-row label {
+  color: #94A3B8;
+  font-size: 10.5px;
+}
+
+.winky-orb-settings-row input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  width: 55px;
+  text-align: right;
+  font-family: var(--wn-font-mono);
+  font-size: 11px;
+}
+
+.winky-orb-settings-row input:focus {
+  border-color: var(--wn-mint);
+  outline: none;
+}
+
+.winky-orb-settings-apply {
+  background: var(--wn-mint);
+  color: #091114;
+  font-weight: 800;
+  border: none;
+  border-radius: 4px;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 10.5px;
+  text-align: center;
+  margin-top: 2px;
+}
+.winky-orb-settings-apply:hover {
+  filter: brightness(1.1);
 }
 
 /* ==================== STAKE MODE BADGE ==================== */
