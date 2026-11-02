@@ -336,6 +336,7 @@ class SignalSyncRequest(BaseModel):
     direction: Literal["BUY", "SELL"]
     accuracy: int = 94
     duration: str = "30s"
+    confluence: float = 4.8
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
     model: str = "claude-fable-5.1"
@@ -631,6 +632,7 @@ async def sync_stream_signal(payload: SignalSyncRequest) -> dict[str, Any]:
         "pair": payload.pair.strip(),
         "direction": payload.direction,
         "accuracy": payload.accuracy,
+        "confluence": payload.confluence,
         "duration": payload.duration,
         "model": payload.model,
         "rationale_ru": payload.rationale_ru,

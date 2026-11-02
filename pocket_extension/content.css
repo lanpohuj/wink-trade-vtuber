@@ -866,6 +866,99 @@
   color: #FFFFFF;
 }
 
+/* ==================== STAKE MODE BADGE ==================== */
+
+.winky-stake-badge-row {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.winky-stake-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  font-family: var(--wn-font-mono);
+  transition: all 0.25s ease;
+}
+
+.winky-stake-badge.base {
+  background: rgba(0, 245, 160, 0.12);
+  border: 1px solid rgba(0, 245, 160, 0.3);
+  color: var(--wn-mint);
+}
+
+.winky-stake-badge.rec1 {
+  background: rgba(255, 170, 0, 0.18);
+  border: 1px solid rgba(255, 170, 0, 0.5);
+  color: #FFAA00;
+  box-shadow: 0 0 12px rgba(255, 170, 0, 0.25);
+  animation: winkyBtnPulse 1.4s infinite;
+}
+
+.winky-stake-badge.rec2 {
+  background: rgba(255, 59, 105, 0.2);
+  border: 1px solid rgba(255, 59, 105, 0.6);
+  color: #FF3B69;
+  box-shadow: 0 0 16px rgba(255, 59, 105, 0.35);
+  animation: winkyBtnPulse 1.0s infinite;
+}
+
+/* ==================== 5-FACTOR CONFLUENCE CHECKLIST ==================== */
+
+.analysis-checklist {
+  width: 100%;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  padding: 2.5px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  line-height: 1.3;
+}
+
+.checklist-item.pass {
+  border-left: 2px solid var(--wn-mint);
+  color: #E2E8F0;
+}
+
+.checklist-item.fail {
+  border-left: 2px solid #FFAA00;
+  color: #CBD5E1;
+}
+
+.chk-icon {
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.chk-name {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.chk-desc {
+  color: var(--wn-text-dim);
+  font-size: 9.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ==================== REAL POCKET OPTION BUTTON HIGHLIGHTING ==================== */
 
 .winky-po-glow-call {

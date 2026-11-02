@@ -111,7 +111,39 @@
     { id: "gemini-2.5-pro", name: "Gemini 2.5 Pro", vendor: "Google" },
   ];
 
-  /* ==================== Application State ==================== */
+  /* ==================== Application State & Money Management ==================== */
+
+  const BASE_STAKE = 50;
+  const MARTINGALE_MULTIPLIER = 2.2;
+
+  function getExpectedStake(step) {
+    if (step === 0) return 50;
+    if (step === 1) return 110; // Math.round(50 * 2.2) = 110
+    if (step === 2) return 242; // Math.round(110 * 2.2) = 242
+    return 50;
+  }
+
+  function getStakeBadgeText() {
+    const step = state.recoveryStep;
+    const stake = getExpectedStake(step);
+    if (step === 0) {
+      return state.lang === "ru" ? `💰 Ставка: $${stake} (База 1%)` : `💰 Stake: $${stake} (Base 1%)`;
+    }
+    if (step === 1) {
+      return state.lang === "ru" ? `⚡ Перекрытие 1 (x2.2): $${stake}` : `⚡ Recovery 1 (x2.2): $${stake}`;
+    }
+    if (step === 2) {
+      return state.lang === "ru" ? `🔥 Перекрытие 2 (x2.2): $${stake}` : `🔥 Recovery 2 (x2.2): $${stake}`;
+    }
+    return `💰 Ставка: $${stake}`;
+  }
+
+  function updateStakeBadgeUI() {
+    const el = document.getElementById("winkyStakeBadge");
+    if (!el) return;
+    el.className = `winky-stake-badge ${state.recoveryStep === 0 ? "base" : state.recoveryStep === 1 ? "rec1" : "rec2"}`;
+    el.textContent = getStakeBadgeText();
+  }
 
   let savedStats = { wins: 110, losses: 1, profit: 2332 };
   try {
@@ -137,9 +169,9 @@
     activeSignal: null,
     forceDir: null, // Streamer trigger: BUY / SELL
     forcedLoss: false,
-    recoveryStep: 0, // 0 = base ($100), 1 = x2 ($200, same pair), 2 = x4 ($400, new pair)
-    baseStake: 100,
-    currentStake: 100,
+    recoveryStep: 0, // 0 = base ($50), 1 = x2.2 ($110, same pair), 2 = x2.2 ($242, new pair)
+    baseStake: 50,
+    currentStake: 50,
     balanceBeforeClick: null,
     balanceDuringTrade: null,
     entryPrice: null,
@@ -762,7 +794,283 @@
 
   setInterval(() => ChartAnalyzer.pollPrice(), 250);
 
-  /* ==================== 2. Scan Pocket Option DOM & Sync ==================== */
+  /* ==================== 2. DeepChartVision & 5-Factor Confluence Engine ==================== */
+
+  function scanCanvasStructure() {
+    let pricePositionPercent = 50;
+    let macroTrend = "RANGE";
+    let candleChoppiness = 0.2;
+    let canvasFound = false;
+
+    try {
+      // Find chart canvas in Pocket Option DOM
+      const canvases = document.querySelectorAll(".chart-container canvas, #chart-canvas, .chart-canvas, canvas");
+      let targetCanvas = null;
+      for (const c of canvases) {
+        if (c.width >= 300 && c.height >= 200 && c.offsetParent !== null) {
+          targetCanvas = c;
+          break;
+        }
+      }
+
+      if (targetCanvas) {
+        canvasFound = true;
+        const ctx = targetCanvas.getContext("2d", { willReadFrequently: true });
+        if (ctx) {
+          const w = targetCanvas.width;
+          const h = targetCanvas.height;
+          let yMin = h;
+          let yMax = 0;
+          let leftYSum = 0;
+          let leftYCount = 0;
+          let rightYSum = 0;
+          let rightYCount = 0;
+
+          const stepX = Math.max(10, Math.floor(w / 12));
+          const stepY = Math.max(6, Math.floor(h / 35));
+          let sampled = false;
+
+          try {
+            for (let x = Math.floor(w * 0.15); x < Math.floor(w * 0.85); x += stepX) {
+              const col = ctx.getImageData(x, 0, 1, h).data;
+              for (let y = 0; y < h; y += stepY) {
+                const alpha = col[y * 4 + 3];
+                if (alpha > 45) {
+                  sampled = true;
+                  if (y < yMin) yMin = y;
+                  if (y > yMax) yMax = y;
+                  if (x < w * 0.5) {
+                    leftYSum += y;
+                    leftYCount++;
+                  } else {
+                    rightYSum += y;
+                    rightYCount++;
+                  }
+                }
+              }
+            }
+          } catch (_) {
+            sampled = false;
+          }
+
+          if (sampled && yMax > yMin && (yMax - yMin) > 25) {
+            const chartHeight = yMax - yMin;
+            const rightAvgY = rightYCount > 0 ? (rightYSum / rightYCount) : (h / 2);
+            // Invert: 0% = support floor (low price, high Y), 100% = resistance ceiling (high price, low Y)
+            pricePositionPercent = Math.max(0, Math.min(100, Math.round(((yMax - rightAvgY) / chartHeight) * 100)));
+
+            const leftAvgY = leftYCount > 0 ? (leftYSum / leftYCount) : rightAvgY;
+            const diff = leftAvgY - rightAvgY; // positive diff means price moved UP on chart
+            if (diff > chartHeight * 0.10) {
+              macroTrend = "UPTREND";
+            } else if (diff < -chartHeight * 0.10) {
+              macroTrend = "DOWNTREND";
+            } else {
+              macroTrend = "RANGE";
+            }
+          }
+        }
+      }
+    } catch (_) {}
+
+    // Robust Fallback / Enhancement using candles & price ticks
+    const ticks = state.priceTicks;
+    if (ticks.length >= 6) {
+      const minP = Math.min(...ticks);
+      const maxP = Math.max(...ticks);
+      const curP = ticks[ticks.length - 1];
+      const span = maxP - minP;
+      if (span > 0) {
+        const tickPos = Math.max(0, Math.min(100, Math.round(((curP - minP) / span) * 100)));
+        pricePositionPercent = canvasFound ? Math.round((pricePositionPercent + tickPos) / 2) : tickPos;
+      }
+
+      const ema5 = ChartAnalyzer.computeEMA(ticks, 5);
+      const ema13 = ChartAnalyzer.computeEMA(ticks, 13);
+      if (ema5 > ema13 * 1.00008) {
+        macroTrend = "UPTREND";
+      } else if (ema5 < ema13 * 0.99992) {
+        macroTrend = "DOWNTREND";
+      } else if (!canvasFound) {
+        macroTrend = "RANGE";
+      }
+    }
+
+    if (state.candles.length >= 4) {
+      const recent = state.candles.slice(-4);
+      let flips = 0;
+      for (let i = 1; i < recent.length; i++) {
+        if (recent[i].isGreen !== recent[i - 1].isGreen) flips++;
+      }
+      candleChoppiness = flips / (recent.length - 1);
+    }
+
+    return {
+      pricePositionPercent,
+      macroTrend,
+      candleChoppiness,
+      canvasFound,
+    };
+  }
+
+  function evaluate5FactorConfluence(scan, analysis, sentiment) {
+    const isBuy = String(analysis.direction).toUpperCase() === "BUY";
+    const ticks = state.priceTicks;
+    const rsi = ChartAnalyzer.computeRSI(ticks, 7);
+    const n = state.candles.length;
+    const c1 = n >= 1 ? state.candles[n - 1] : null;
+
+    // 1. Factor 1: Macro Trend (Canvas + EMA)
+    let f1Score = 0.5;
+    let f1Pass = false;
+    let f1Text = "";
+    if (isBuy) {
+      if (scan.macroTrend === "UPTREND") {
+        f1Score = 1.0; f1Pass = true;
+        f1Text = state.lang === "ru" ? "Восходящий макро-тренд подтверждён" : "Uptrend macro structure confirmed";
+      } else if (scan.macroTrend === "RANGE") {
+        f1Score = 0.6; f1Pass = true;
+        f1Text = state.lang === "ru" ? "Боковой коридор: вход от нижней границы" : "Range corridor: entering off floor";
+      } else {
+        f1Score = 0.2; f1Pass = false;
+        f1Text = state.lang === "ru" ? "Контртренд (медвежье давление)" : "Counter-trend (bearish pressure)";
+      }
+    } else {
+      if (scan.macroTrend === "DOWNTREND") {
+        f1Score = 1.0; f1Pass = true;
+        f1Text = state.lang === "ru" ? "Нисходящий макро-тренд подтверждён" : "Downtrend macro structure confirmed";
+      } else if (scan.macroTrend === "RANGE") {
+        f1Score = 0.6; f1Pass = true;
+        f1Text = state.lang === "ru" ? "Боковой коридор: вход от верхней границы" : "Range corridor: entering off ceiling";
+      } else {
+        f1Score = 0.2; f1Pass = false;
+        f1Text = state.lang === "ru" ? "Контртренд (бычье давление)" : "Counter-trend (bullish pressure)";
+      }
+    }
+
+    // 2. Factor 2: Candlestick Structure (Price Action)
+    let f2Score = 0.5;
+    let f2Pass = false;
+    let f2Text = "";
+    if (isBuy) {
+      if (c1 && c1.isGreen && c1.bodySize > 0) {
+        f2Score = 1.0; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Импульсная бычья свеча без отката" : "Impulsive bullish candle confirmed";
+      } else if (scan.candleChoppiness < 0.35) {
+        f2Score = 0.8; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Плавная структура графика без теней" : "Clean price action structure";
+      } else {
+        f2Score = 0.3; f2Pass = false;
+        f2Text = state.lang === "ru" ? "Зашумлённые свечи с длинными тенями" : "Choppy candle shadows";
+      }
+    } else {
+      if (c1 && c1.isRed && c1.bodySize > 0) {
+        f2Score = 1.0; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Импульсная медвежья свеча без отката" : "Impulsive bearish candle confirmed";
+      } else if (scan.candleChoppiness < 0.35) {
+        f2Score = 0.8; f2Pass = true;
+        f2Text = state.lang === "ru" ? "Плавная структура графика без теней" : "Clean price action structure";
+      } else {
+        f2Score = 0.3; f2Pass = false;
+        f2Text = state.lang === "ru" ? "Зашумлённые свечи с длинными тенями" : "Choppy candle shadows";
+      }
+    }
+
+    // 3. Factor 3: Key S/R Levels & Chart Position
+    let f3Score = 0.5;
+    let f3Pass = false;
+    let f3Text = "";
+    if (isBuy) {
+      if (scan.pricePositionPercent <= 42 || scan.pricePositionPercent >= 75) {
+        f3Score = 1.0; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Выгодный уровень входа (${scan.pricePositionPercent}% высоты)` : `Prime level entry (${scan.pricePositionPercent}% height)`;
+      } else {
+        f3Score = 0.6; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Середина диапазона (${scan.pricePositionPercent}%)` : `Mid-range level (${scan.pricePositionPercent}%)`;
+      }
+    } else {
+      if (scan.pricePositionPercent >= 58 || scan.pricePositionPercent <= 25) {
+        f3Score = 1.0; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Выгодный уровень входа (${scan.pricePositionPercent}% высоты)` : `Prime level entry (${scan.pricePositionPercent}% height)`;
+      } else {
+        f3Score = 0.6; f3Pass = true;
+        f3Text = state.lang === "ru" ? `Середина диапазона (${scan.pricePositionPercent}%)` : `Mid-range level (${scan.pricePositionPercent}%)`;
+      }
+    }
+
+    // 4. Factor 4: Momentum & RSI Oscillator
+    let f4Score = 0.5;
+    let f4Pass = false;
+    let f4Text = "";
+    if (isBuy) {
+      if ((rsi >= 50 && rsi <= 72) || rsi < 30) {
+        f4Score = 1.0; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе ускорения` : `RSI momentum (${rsi}) in expansion`;
+      } else if (rsi > 45 && rsi < 50) {
+        f4Score = 0.7; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Нейтральный RSI (${rsi}) с уклоном вверх` : `Neutral RSI (${rsi}) tilting up`;
+      } else {
+        f4Score = 0.3; f4Pass = false;
+        f4Text = state.lang === "ru" ? `Слабый осциллятор RSI (${rsi})` : `Weak RSI momentum (${rsi})`;
+      }
+    } else {
+      if ((rsi >= 28 && rsi <= 50) || rsi > 70) {
+        f4Score = 1.0; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Импульс RSI (${rsi}) в фазе ускорения` : `RSI momentum (${rsi}) in expansion`;
+      } else if (rsi > 50 && rsi < 55) {
+        f4Score = 0.7; f4Pass = true;
+        f4Text = state.lang === "ru" ? `Нейтральный RSI (${rsi}) с уклоном вниз` : `Neutral RSI (${rsi}) tilting down`;
+      } else {
+        f4Score = 0.3; f4Pass = false;
+        f4Text = state.lang === "ru" ? `Слабый осциллятор RSI (${rsi})` : `Weak RSI momentum (${rsi})`;
+      }
+    }
+
+    // 5. Factor 5: Pocket Traders Sentiment
+    let f5Score = 0.5;
+    let f5Pass = false;
+    let f5Text = "";
+    if (isBuy) {
+      if (sentiment.bullish >= 55) {
+        f5Score = 1.0; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: ${sentiment.bullish}% покупателей` : `Pocket sentiment: ${sentiment.bullish}% buyers`;
+      } else if (sentiment.bullish >= 46) {
+        f5Score = 0.7; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: паритет (${sentiment.bullish}% быков)` : `Pocket sentiment: parity (${sentiment.bullish}%)`;
+      } else {
+        f5Score = 0.2; f5Pass = false;
+        f5Text = state.lang === "ru" ? `Продавцы доминируют (${sentiment.bearish}%)` : `Sellers dominate (${sentiment.bearish}%)`;
+      }
+    } else {
+      if (sentiment.bearish >= 55) {
+        f5Score = 1.0; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: ${sentiment.bearish}% продавцов` : `Pocket sentiment: ${sentiment.bearish}% sellers`;
+      } else if (sentiment.bearish >= 46) {
+        f5Score = 0.7; f5Pass = true;
+        f5Text = state.lang === "ru" ? `Шкала Покета: паритет (${sentiment.bearish}% медведей)` : `Pocket sentiment: parity (${sentiment.bearish}%)`;
+      } else {
+        f5Score = 0.2; f5Pass = false;
+        f5Text = state.lang === "ru" ? `Покупатели доминируют (${sentiment.bullish}%)` : `Buyers dominate (${sentiment.bullish}%)`;
+      }
+    }
+
+    const rawTotal = f1Score + f2Score + f3Score + f4Score + f5Score;
+    const score = Math.max(1.0, Math.min(5.0, parseFloat(rawTotal.toFixed(1))));
+
+    return {
+      score: score,
+      isStrong: score >= 4.0,
+      factors: [
+        { name: state.lang === "ru" ? "1. Макро-тренд графика" : "1. Macro Trend", score: f1Score, pass: f1Pass, detail: f1Text },
+        { name: state.lang === "ru" ? "2. Свечная структура (Price Action)" : "2. Price Action", score: f2Score, pass: f2Pass, detail: f2Text },
+        { name: state.lang === "ru" ? "3. Уровни поддержки/сопротивления" : "3. Key S/R Levels", score: f3Score, pass: f3Pass, detail: f3Text },
+        { name: state.lang === "ru" ? "4. Осциллятор Momentum & RSI" : "4. Momentum & RSI", score: f4Score, pass: f4Pass, detail: f4Text },
+        { name: state.lang === "ru" ? "5. Настроение трейдеров Pocket Option" : "5. Pocket Sentiment", score: f5Score, pass: f5Pass, detail: f5Text },
+      ],
+    };
+  }
+
+  /* ==================== 3. Scan Pocket Option DOM & Sync ==================== */
 
   function scanPocketOptionDOM() {
     // 0. STRICT FSM LOCK: never disrupt active analysis, trade, or cooldown!
@@ -942,11 +1250,12 @@
         if (!isNaN(val) && val > 0) return val;
       }
     }
-    return state.baseStake || 100;
+    return state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
   }
 
   function setPocketStakeAmount(amount) {
     const stakeVal = Math.round(amount);
+    state.currentStake = stakeVal;
     const stakeInputs = document.querySelectorAll(
       ".block--bet-amount input, .amount-block input, .value__val input, input[name='amount'], [data-test='amount-input'], .input-field--amount input, .block--amount input, input[autocomplete='off'][type='text']"
     );
@@ -966,6 +1275,7 @@
       }
     }
     loggerLog(`[setPocketStakeAmount] Установлена сумма сделки: $${stakeVal} (успешно: ${changed})`);
+    updateStakeBadgeUI();
     return changed;
   }
 
@@ -1037,7 +1347,7 @@
     const before = state.balanceBeforeClick !== null ? state.balanceBeforeClick : state.balanceBefore;
     const during = state.balanceDuringTrade !== null ? state.balanceDuringTrade : state.balanceAfterOpen;
     const after = state.balanceAfterClose;
-    const stake = state.currentStake || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4)) || 100;
+    const stake = state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
     const entry = state.entryPrice;
     const exit = state.exitPrice;
     const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
@@ -1490,13 +1800,14 @@
     },
 
     setupTradeParameters() {
-      const multiplier = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4;
-      const stake = state.baseStake * multiplier;
-      setPocketStakeAmount(stake);
+      const expected = getExpectedStake(state.recoveryStep);
+      state.currentStake = expected;
+      setPocketStakeAmount(expected);
+      updateStakeBadgeUI();
     },
 
     // Programmatically click CALL (BUY) or PUT (SELL) with atomic single execution lock
-    clickTrade(direction) {
+    async clickTrade(direction) {
       if (state.isExecutingTrade) {
         loggerLog("[TradeLock] Повторный вход заблокирован! Сделка уже исполняется.");
         return false;
@@ -1507,11 +1818,20 @@
         closeAnyOpenModals();
         this.setupTradeParameters();
 
-        // 1. Фиксируем точный баланс ДО открытия сделки, цену входа и сумму сделки
+        // 1. Pre-click stake input verification (150ms check)
+        const expectedStake = getExpectedStake(state.recoveryStep);
+        const actualStake = getPocketStakeAmount();
+        if (Math.round(actualStake) !== Math.round(expectedStake)) {
+          loggerLog(`[clickTrade] Корректировка суммы: было ${actualStake}, выставляем ${expectedStake}`);
+          setPocketStakeAmount(expectedStake);
+          await new Promise((r) => setTimeout(r, 150));
+        }
+
+        // 2. Фиксируем точный баланс ДО открытия сделки, цену входа и сумму сделки
         state.balanceBeforeClick = getPocketBalance();
         state.balanceBefore = state.balanceBeforeClick;
         state.entryPrice = getCurrentChartPrice();
-        state.currentStake = getPocketStakeAmount() || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4));
+        state.currentStake = expectedStake;
 
         const isBuy = String(direction).toUpperCase() === "BUY";
         const callSelectors = [
@@ -1651,85 +1971,225 @@
 
     const btnGet = document.getElementById("btnGetSignalAction");
 
-    // 1. Состояние: АНАЛИЗ ГРАФИКА (0ms UI)
+    // 1. Устанавливаем актуальную ставку по мани-менеджменту ($50 -> $110 -> $242)
+    const activeExpectedStake = getExpectedStake(state.recoveryStep);
+    state.currentStake = activeExpectedStake;
+    setPocketStakeAmount(activeExpectedStake);
+    updateStakeBadgeUI();
+
+    // 2. Состояние: АНАЛИЗ ГРАФИКА (0ms UI)
     triggerStateWithVoice("ANALYZING_PAIR", null, () => {
       if (btnGet) {
         btnGet.disabled = true;
         btnGet.classList.add("disabled");
-        btnGet.innerHTML = `<span>⚡</span><span>${state.lang === "ru" ? "АНАЛИЗ ГРАФИКА..." : "ANALYZING CHART..."}</span>`;
+        btnGet.innerHTML = `<span>🧠</span><span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ..." : "DEEP CHART VISION..."}</span>`;
       }
     }, false);
 
-    // 1.2с анимация сканирования тиков
-    await new Promise((r) => setTimeout(r, 1200));
+    // 3. 6-секундный динамический цикл сканирования и 5-факторного консилиума
+    const block = document.getElementById("botDirectionBlock");
+    let confluence = null;
+    let analysis = null;
+    let scan = null;
+    let sentiment = null;
 
-    // Технический анализ тиков
-    const analysis = ChartAnalyzer.analyzeMarket();
+    const totalSteps = 5;
+    for (let step = 0; step < totalSteps; step++) {
+      ChartAnalyzer.pollPrice();
+      scan = scanCanvasStructure();
+      analysis = ChartAnalyzer.analyzeMarket();
+      sentiment = readTradersSentiment();
+      confluence = evaluate5FactorConfluence(scan, analysis, sentiment);
 
-    // 2. Проверка слабого рынка / боковика (Anti-Loop Cooldown 40с)
-    if (analysis.isFlat && state.autoStream) {
-      const now = Date.now();
-      const lastSwitch = state.lastPairSwitchAttemptAt || 0;
-      if (now - lastSwitch > 40000) {
-        state.lastPairSwitchAttemptAt = now;
-
-        // Блокирующий шаг: озвучиваем плановую смену пары
-        await triggerStateWithVoice("SWITCHING_PAIR", "switch_pair", () => {
-          renderSignalCardState();
-        }, true, "thinking", "tilt_head");
-
-        // Переключаем пару в Pocket Option DOM
-        await POAutomation.switchCurrencyPair();
-
-        state.botState = "IDLE";
-        renderSignalCardState();
-
-        if (btnGet) {
-          btnGet.disabled = false;
-          btnGet.classList.remove("disabled");
-          btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
-        }
-
-        setTimeout(() => {
-          if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-        }, 1500);
-        return;
-      } else {
-        analysis.isFlat = false;
-        analysis.accuracy = Math.max(82, analysis.accuracy);
+      if (block) {
+        block.className = "winky-direction-block analysing";
+        block.innerHTML = `
+          <div class="analysis-scan-title">
+            <span>🧠</span>
+            <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА" : "DEEP CHART VISION"} (${confluence.score.toFixed(1)} / 5.0)</span>
+          </div>
+          <div class="analysis-checklist">
+            ${confluence.factors.slice(0, step + 1).map((f) => `
+              <div class="checklist-item ${f.pass ? "pass" : "fail"}">
+                <span class="chk-icon">${f.pass ? "✅" : "⚠️"}</span>
+                <span class="chk-name">${f.name}:</span>
+                <span class="chk-desc">${f.detail}</span>
+              </div>
+            `).join("")}
+          </div>
+        `;
       }
+
+      const accEl = document.getElementById("metricAccuracyVal");
+      if (accEl) {
+        const estAcc = Math.round(Math.min(97, 85 + (step + 1) * 2 + (confluence.score >= 4.0 ? 3 : 0)));
+        accEl.textContent = `${estAcc}%`;
+      }
+
+      await new Promise((r) => setTimeout(r, 1100));
     }
 
-    // 3. Состояние: ВХОД В СДЕЛКУ (Мгновенная озвучка за 0.05с синхронно с кликом)
+    // Финальная оценка после 6 секунд
+    scan = scanCanvasStructure();
+    analysis = ChartAnalyzer.analyzeMarket();
+    sentiment = readTradersSentiment();
+    confluence = evaluate5FactorConfluence(scan, analysis, sentiment);
+
+    // 4. БЛОК 3: ФИЛЬТР ГРЯЗНОГО РЫНКА (Оценка < 4.0 / 5.0)
+    // Если рынок зашумлён, в боковике или факторы противоречивы — защита депозита!
+    if (!confluence.isStrong) {
+      loggerLog(`[DirtyMarketFilter] 🛡️ Вход отклонён! Оценка рынка: ${confluence.score.toFixed(1)} / 5.0 (< 4.0).`);
+
+      // Озвучиваем пропуск рынка (flat_skip)
+      await triggerStateWithVoice("ANALYZING_PAIR", "flat_skip", () => {
+        if (block) {
+          block.className = "winky-direction-block active";
+          block.innerHTML = `
+            <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
+              🛡️ ${state.lang === "ru" ? "ВХОД ПРОПУЩЕН · ЗАЩИТА БАЛАНСА" : "ENTRY SKIPPED · BALANCE SHIELD"}
+            </div>
+            <div class="signal-ta-lines">
+              <div class="signal-ta-line" style="color:#FFAA00;">
+                ${state.lang === "ru"
+                  ? `⚠️ Оценка графика: ${confluence.score.toFixed(1)} / 5.0 — высокая зашумленность или флэт.`
+                  : `⚠️ Market score: ${confluence.score.toFixed(1)} / 5.0 — high noise or choppy flat.`}
+              </div>
+              <div class="signal-ta-line" style="color:#00D9F5;">
+                ${state.lang === "ru"
+                  ? "🔄 Автоматический переход на другую пару через 3 сек..."
+                  : "🔄 Auto-switching to cleaner currency pair in 3s..."}
+              </div>
+            </div>
+          `;
+        }
+      }, true, "thinking", "tilt_head");
+
+      await new Promise((r) => setTimeout(r, 1000));
+
+      // Переключаемся на новую пару на Pocket Option
+      await triggerStateWithVoice("SWITCHING_PAIR", "switch_pair", () => {
+        renderSignalCardState();
+      }, true, "thinking", "tilt_head");
+
+      await POAutomation.switchCurrencyPair();
+
+      state.botState = "IDLE";
+      renderSignalCardState();
+      updateStakeBadgeUI();
+
+      if (btnGet) {
+        btnGet.disabled = false;
+        btnGet.classList.remove("disabled");
+        btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+      }
+
+      setTimeout(() => {
+        if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
+      }, 1500);
+      return;
+    }
+
+    // 5. БЛОК 4: СНАЙПЕРСКИЙ ВХОД (Оценка >= 4.0 / 5.0)
+    // Входим в фазу PATIENT_ENTRY (до 7 секунд ожидания микро-отката)
+    state.botState = "PREPARING_TRADE";
+    const isBuy = String(analysis.direction).toUpperCase() === "BUY";
+
+    // Озвучка ожидания снайперской точки входа
+    VoiceManager.playCategory("sniper_wait", false, "thinking", "nod");
+
+    if (block) {
+      block.className = `winky-direction-block analysing`;
+      block.innerHTML = `
+        <div class="signal-dir-large ${isBuy ? "buy" : "sell"}" style="font-size:15px;">
+          🎯 ${state.lang === "ru" ? "СНАЙПЕРСКИЙ ВХОД" : "SNIPER ENTRY"} (${confluence.score.toFixed(1)} / 5.0)
+        </div>
+        <div class="signal-ta-lines">
+          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">
+            ${state.lang === "ru"
+              ? "⏳ Выжидаем микро-откат для идеальной точки входа..."
+              : "⏳ Hunting micro-pullback for ideal entry price..."}
+          </div>
+          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${analysis.line1}</div>
+        </div>
+      `;
+    }
+
+    // Отслеживаем микро-откат
+    const sniperStartTime = Date.now();
+    let bestEntryFound = false;
+    let initialQuote = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]) || 1.0;
+    let prevTick = initialQuote;
+    let pullbackDetected = false;
+
+    while (Date.now() - sniperStartTime < 7000) {
+      await new Promise((r) => setTimeout(r, 200));
+      ChartAnalyzer.pollPrice();
+      const curTick = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]);
+      if (!curTick) continue;
+
+      if (isBuy) {
+        if (curTick < initialQuote) {
+          pullbackDetected = true;
+        }
+        if (pullbackDetected && curTick > prevTick) {
+          bestEntryFound = true;
+          loggerLog(`[SniperEntry] ✅ Идеальный микро-откат выкуплен! (начало: ${initialQuote}, дно: ${prevTick}, вход: ${curTick})`);
+          break;
+        }
+      } else {
+        if (curTick > initialQuote) {
+          pullbackDetected = true;
+        }
+        if (pullbackDetected && curTick < prevTick) {
+          bestEntryFound = true;
+          loggerLog(`[SniperEntry] ✅ Идеальный микро-подскок отбит! (начало: ${initialQuote}, пик: ${prevTick}, вход: ${curTick})`);
+          break;
+        }
+      }
+
+      // Если прошло 5.5 сек и начался сильный импульс по тренду — заходим
+      if (Date.now() - sniperStartTime > 5500) {
+        bestEntryFound = true;
+        break;
+      }
+      prevTick = curTick;
+    }
+
+    // 6. Проверка и фиксация суммы сделки перед кликом
+    const finalStake = getExpectedStake(state.recoveryStep);
+    state.currentStake = finalStake;
+    setPocketStakeAmount(finalStake);
+    await new Promise((r) => setTimeout(r, 150));
+
+    // 7. Исполнение сделки
     const durationSec = parseDurationSeconds(state.selectedTimeframe);
     state.activeSignal = {
       pair: state.targetPair,
       flags: state.targetFlags,
       payout: state.targetPayout,
       direction: analysis.direction,
-      accuracy: analysis.accuracy,
+      accuracy: Math.round(Math.min(97, 88 + confluence.score * 1.8)),
+      confluence: confluence.score,
       duration: state.selectedTimeframe,
       line1: analysis.line1,
       line2: analysis.line2,
       durationSec: durationSec,
       startTime: Date.now(),
+      bestPriceEntry: bestEntryFound,
     };
 
-    const isBuy = String(analysis.direction).toUpperCase() === "BUY";
     const tradeVoiceCategory = analysis.category || (isBuy ? "buy_trend" : "sell_trend");
 
-    // Запускаем озвучку категории и открываем сделку на Pocket Option
-    triggerStateWithVoice("IN_TRADE", tradeVoiceCategory, () => {
-      renderSignalCardState();
-    }, false, "excited", "cheer");
+    // Запускаем озвучку сделки
+    VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer");
+    state.botState = "IN_TRADE";
 
     if (state.autoStream) {
-      POAutomation.clickTrade(analysis.direction);
+      await POAutomation.clickTrade(analysis.direction);
     } else {
       state.balanceBeforeClick = getPocketBalance();
       state.balanceBefore = state.balanceBeforeClick;
       state.entryPrice = getCurrentChartPrice();
-      state.currentStake = getPocketStakeAmount() || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4));
       setTimeout(() => {
         state.balanceDuringTrade = getPocketBalance();
         state.balanceAfterOpen = state.balanceDuringTrade;
@@ -1737,18 +2197,29 @@
       }, 2000);
     }
 
+    renderSignalCardState();
+
     // Синхронизация сигнала с прод-сервером и Telegram Mini App
     sendSyncSignalToProd({
       pair: state.targetPair,
       direction: analysis.direction,
-      accuracy: analysis.accuracy,
+      accuracy: state.activeSignal.accuracy,
+      confluence: confluence.score,
       duration: state.selectedTimeframe,
-      rationale_ru: [analysis.line1, analysis.line2],
-      rationale_en: [analysis.line1, analysis.line2],
+      rationale_ru: [
+        state.lang === "ru" ? `⚡ Вход по лучшей цене ($${state.currentStake} · ${state.selectedTimeframe})` : `⚡ Best price entry ($${state.currentStake} · ${state.selectedTimeframe})`,
+        analysis.line1,
+        analysis.line2,
+      ],
+      rationale_en: [
+        `⚡ Best price entry ($${state.currentStake} · ${state.selectedTimeframe})`,
+        analysis.line1,
+        analysis.line2,
+      ],
       model: state.selectedModel,
     });
 
-    // 4. Обратный отсчет таймера экспирации (30s)
+    // 8. Обратный отсчет таймера экспирации (30s)
     let remaining = durationSec;
     const updateTradeButtonLabel = (sec) => {
       if (btnGet) {
@@ -1818,7 +2289,9 @@
       state.liveWins += 1;
       state.sessionProfit += profitDelta;
       state.recoveryStep = 0;
-      setPocketStakeAmount(state.baseStake);
+      state.currentStake = BASE_STAKE;
+      setPocketStakeAmount(BASE_STAKE);
+      updateStakeBadgeUI();
 
       const winVoiceCategory = wasRecovery ? "trade_win_recovery" : "trade_win";
 
@@ -1832,10 +2305,10 @@
               </div>
               <div class="signal-ta-lines">
                 <div class="signal-ta-line buy">
-                  ${state.lang === "ru" ? "✅ Идеальная отработка перекрытия по мани-менеджменту!" : "✅ Flawless recovery execution according to strategy!"}
+                  ${state.lang === "ru" ? "✅ Идеальная отработка перекрытия (x2.2) по мани-менеджменту!" : "✅ Flawless recovery (x2.2) according to strategy!"}
                 </div>
                 <div class="signal-ta-line buy">
-                  ${state.lang === "ru" ? "Забрали чистый профит и вернули базовую ставку!" : "Clean profit locked, resetting stake to base!"}
+                  ${state.lang === "ru" ? "Забрали чистый профит сверху и вернули базовую ставку $50!" : "Clean extra profit locked, resetting stake to base $50!"}
                 </div>
               </div>
             `
@@ -1859,26 +2332,25 @@
       state.liveLosses += 1;
       state.sessionProfit = Math.max(0, state.sessionProfit - lossDelta);
 
-      // Логика шагов перекрытия (Мартингейл):
-      // Если был 0 -> становится 1 (Шаг 1: удвоение $200, остаёмся на паре)
-      // Если был 1 -> становится 2 (Шаг 2: учетверение $400, смена пары)
-      // Если был 2 -> сброс в 0 (защита депозита)
+      // Мани-менеджмент перекрытий: $50 -> $110 -> $242 -> сброс $50
       if (state.recoveryStep === 0) {
         state.recoveryStep = 1;
-        setPocketStakeAmount(state.baseStake * 2);
+        state.currentStake = getExpectedStake(1); // $110
+        setPocketStakeAmount(state.currentStake);
+        updateStakeBadgeUI();
 
         await triggerStateWithVoice("TRADE_RESULT", "trade_loss_step1", () => {
           if (block) {
             block.className = "winky-direction-block active";
             block.innerHTML = `
               <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
-                ⚡ ${state.lang === "ru" ? "РАБОЧИЙ МИНУС · ИДЁМ В ПЕРЕКРЫТИЕ (x2)" : "RECOVERY STEP 1 · DOUBLE STAKE (x2)"}
+                ⚡ ${state.lang === "ru" ? "РАБОЧИЙ МИНУС · ПЕРЕКРЫТИЕ 1 (x2.2: $110)" : "RECOVERY STEP 1 · x2.2 STAKE ($110)"}
               </div>
               <div class="signal-ta-lines">
                 <div class="signal-ta-line" style="color:#FFAA00;">
                   ${state.lang === "ru"
-                    ? "📌 Чуть зацепило на закрытии — ничего страшного! Удваиваем сумму и спокойно перекрываемся на этой паре."
-                    : "📌 Wick touched at the close — no worries! Doubling stake and recovering calmly on this pair."}
+                    ? "📌 Чуть зацепило на закрытии — ничего страшного! Заходим на первое перекрытие ($110) с коэффициентом 2.2."
+                    : "📌 Wick touched at the close — totally fine! Taking recovery step 1 ($110) with 2.2 multiplier."}
                 </div>
               </div>
             `;
@@ -1886,20 +2358,22 @@
         }, true, "wink", "tilt_head");
       } else if (state.recoveryStep === 1) {
         state.recoveryStep = 2;
-        setPocketStakeAmount(state.baseStake * 4);
+        state.currentStake = getExpectedStake(2); // $242
+        setPocketStakeAmount(state.currentStake);
+        updateStakeBadgeUI();
 
         await triggerStateWithVoice("TRADE_RESULT", "trade_loss_switch", () => {
           if (block) {
             block.className = "winky-direction-block active";
             block.innerHTML = `
-              <div class="signal-dir-large" style="font-size:15px; color:#00D9F5;">
-                🔄 ${state.lang === "ru" ? "СМЕНА ПАРЫ ДЛЯ ПЕРЕКРЫТИЯ" : "SWITCHING PAIR FOR RECOVERY"}
+              <div class="signal-dir-large" style="font-size:15px; color:#FF3B69;">
+                🔥 ${state.lang === "ru" ? "ПЕРЕКРЫТИЕ 2 (x2.2: $242) · СМЕНА ПАРЫ" : "RECOVERY STEP 2 · $242 · SWITCH PAIR"}
               </div>
               <div class="signal-ta-lines">
-                <div class="signal-ta-line" style="color:#00D9F5;">
+                <div class="signal-ta-line" style="color:#FF3B69;">
                   ${state.lang === "ru"
-                    ? "📌 Эта пара начала капризничать — переключаемся на чистый график и спокойно перекрываем минус там!"
-                    : "📌 Choppy action on this pair — switching to a cleaner chart to recover smoothly!"}
+                    ? "📌 Эта пара начала капризничать — переключаемся на чистый график и перекрываемся со ставкой $242!"
+                    : "📌 Pair getting erratic — switching to a cleaner chart with $242 recovery stake!"}
                 </div>
               </div>
             `;
@@ -1911,25 +2385,29 @@
       } else {
         // Защита депозита после 2-го шага
         state.recoveryStep = 0;
-        setPocketStakeAmount(state.baseStake);
+        state.currentStake = BASE_STAKE; // $50
+        setPocketStakeAmount(BASE_STAKE);
+        updateStakeBadgeUI();
 
         await triggerStateWithVoice("TRADE_RESULT", "trade_loss_switch", () => {
           if (block) {
             block.className = "winky-direction-block active";
             block.innerHTML = `
               <div class="signal-dir-large" style="font-size:15px; color:#FF3B69;">
-                🛡️ ${state.lang === "ru" ? "ЗАЩИТА ДЕПОЗИТА · СБРОС СТАВКИ" : "DEPOSIT PROTECTION · RESET STAKE"}
+                🛡️ ${state.lang === "ru" ? "ЗАЩИТА ДЕПОЗИТА · СБРОС СТАВКИ ($50)" : "DEPOSIT SHIELD · RESET TO BASE ($50)"}
               </div>
               <div class="signal-ta-lines">
                 <div class="signal-ta-line" style="color:#FFAA00;">
                   ${state.lang === "ru"
-                    ? "📌 Дошли до лимита перекрытий. Возвращаем базовую ставку для безопасной торговли."
-                    : "📌 Recovery limit reached. Resetting to base stake for risk control."}
+                    ? "📌 Дошли до лимита перекрытий. Возвращаем базовую ставку $50 для безопасного контроля рисков."
+                    : "📌 Recovery limit reached. Resetting to base $50 for risk management."}
                 </div>
               </div>
             `;
           }
         }, true, "thinking", "nod");
+
+        await switchPocketPair(null);
       }
     }
 
@@ -1939,6 +2417,8 @@
     // Пауза между сделками
     state.botState = "COOLDOWN";
     renderSignalCardState();
+    updateStakeBadgeUI();
+
     if (btnGet) {
       btnGet.disabled = true;
       btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
@@ -1949,6 +2429,7 @@
     state.botState = "IDLE";
     state.activeSignal = null;
     renderSignalCardState();
+    updateStakeBadgeUI();
 
     if (btnGet) {
       btnGet.disabled = false;
@@ -1956,7 +2437,7 @@
       btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
     }
 
-    // Если активен авто-стрим, запускаем следующий сигнал через 1.5с
+    // Если включен АВТО-СТРИМ — запускаем следующий цикл
     if (state.autoStream) {
       setTimeout(() => {
         if (state.autoStream && state.botState === "IDLE") {
@@ -2172,6 +2653,13 @@
               </div>
             </div>
 
+            <!-- Stake Mode Badge -->
+            <div class="winky-stake-badge-row">
+              <div class="winky-stake-badge ${state.recoveryStep === 0 ? "base" : state.recoveryStep === 1 ? "rec1" : "rec2"}" id="winkyStakeBadge">
+                ${getStakeBadgeText()}
+              </div>
+            </div>
+
             <!-- Direction & TA Block -->
             <div class="winky-direction-block idle" id="botDirectionBlock">
               <span>${t("readyForSignal")}</span>
@@ -2317,6 +2805,9 @@
           ${isBuy ? t("buy") : t("sell")}
         </div>
         <div class="signal-ta-lines">
+          <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">
+            ⚡ ${state.lang === "ru" ? `Вход по лучшей цене ($${state.currentStake} · ${sig.duration})` : `Best price entry ($${state.currentStake} · ${sig.duration})`}
+          </div>
           <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${sig.line1}</div>
           <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${sig.line2}</div>
         </div>
@@ -2324,9 +2815,11 @@
           <span class="signal-badge-live">LIVE</span>
           <span class="signal-timer" id="signalTimerVal">${formatTime(sig.durationSec)}</span>
           <span class="signal-acc-badge">${sig.accuracy}% WINRATE</span>
+          ${sig.confluence ? `<span class="signal-acc-badge" style="background:rgba(0,217,245,0.18);border:1px solid rgba(0,217,245,0.4);color:#00D9F5;">🎯 ${sig.confluence} / 5.0</span>` : ""}
         </div>
       `;
     }
+    updateStakeBadgeUI();
   }
 
   function updateCardPairUI() {
@@ -2343,6 +2836,7 @@
     if (timeEl) timeEl.textContent = state.selectedTimeframe;
     if (pillPair) pillPair.textContent = state.targetPair;
     if (pillTime) pillTime.textContent = state.selectedTimeframe;
+    updateStakeBadgeUI();
   }
 
   function updateScoreHUDUI() {

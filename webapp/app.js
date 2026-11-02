@@ -291,6 +291,7 @@ async function startSignalAnalysis() {
         <span class="signal-badge-live">LIVE</span>
         <span class="signal-timer" id="signalTimer">${formatCountdown(totalSec)}</span>
         <span class="signal-acc-badge">${accuracy}% WINRATE</span>
+        ${apiData?.confluence ? `<span class="signal-acc-badge" style="background:rgba(0,217,245,0.18);border:1px solid rgba(0,217,245,0.4);color:#00D9F5;">🎯 ${apiData.confluence} / 5.0</span>` : ""}
       </div>
     `;
   }
