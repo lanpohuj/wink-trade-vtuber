@@ -736,40 +736,37 @@
     loggerLog(`[Blacklist] Пара «${pairName}» временно заблокирована на 10 минут`);
   }
 
-  function robustClick(el) {
+  function simulatePocketClick(el) {
     if (!el) return false;
-    try {
-      if (typeof el.focus === "function") el.focus();
-      if (typeof el.click === "function") {
-        el.click();
-        return true;
-      }
-      const rect = el.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      const eventOpts = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        composed: true,
-        clientX: x,
-        clientY: y,
-        button: 0,
-        buttons: 1,
-      };
-      el.dispatchEvent(new MouseEvent("mousedown", eventOpts));
-      el.dispatchEvent(new MouseEvent("mouseup", { ...eventOpts, buttons: 0 }));
-      el.dispatchEvent(new MouseEvent("click", { ...eventOpts, buttons: 0 }));
-      return true;
-    } catch (err) {
-      loggerLog("robustClick warning:", err);
+    const target = el.closest("a.alist__link, .alist__item, .assets-block__item, button, a, [role='button']") || el;
+    const rect = target.getBoundingClientRect();
+    const clientX = rect.left + rect.width / 2;
+    const clientY = rect.top + rect.height / 2;
+    const opts = {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      clientX: clientX > 0 ? clientX : 100,
+      clientY: clientY > 0 ? clientY : 100,
+      button: 0,
+      buttons: 1,
+    };
+
+    target.dispatchEvent(new PointerEvent("pointerdown", opts));
+    target.dispatchEvent(new MouseEvent("mousedown", opts));
+    target.dispatchEvent(new PointerEvent("pointerup", { ...opts, buttons: 0 }));
+    target.dispatchEvent(new MouseEvent("mouseup", { ...opts, buttons: 0 }));
+    target.dispatchEvent(new MouseEvent("click", { ...opts, buttons: 0 }));
+    if (typeof target.click === "function") {
       try {
-        el.click();
-        return true;
-      } catch (_) {
-        return false;
-      }
+        target.click();
+      } catch (_) {}
     }
+    return true;
+  }
+
+  function robustClick(el) {
+    return simulatePocketClick(el);
   }
 
   function closeAnyOpenModals() {
@@ -789,7 +786,7 @@
       const btns = document.querySelectorAll(sel);
       for (const b of btns) {
         if (b && b.offsetParent !== null) {
-          robustClick(b);
+          simulatePocketClick(b);
         }
       }
     }
@@ -800,184 +797,281 @@
     window.dispatchEvent(new KeyboardEvent("keyup", escOpts));
   }
 
-  const POAutomation = {
-    // Robust asynchronous currency pair switcher with DOM rendering verification
-    async switchCurrencyPair(targetPairName = null) {
-      loggerLog("[PairSwitch] Начинаем смену валютной пары. Цель:", targetPairName || "Автовыбор лучшей пары");
+  async function switchPocketPair(targetPairName = null) {
+    loggerLog("[switchPocketPair] Запрос на смену пары. Цель:", targetPairName || "АВТО-ВЫБОР лучшей пары");
 
-      const currentTicker = scanPocketOptionCurrentPair() || state.targetPair;
+    const beforePair = scanPocketOptionCurrentPair() || state.targetPair || "";
+    const normBefore = beforePair.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-      for (let attempt = 1; attempt <= 2; attempt++) {
-        // Шаг 1: Найти и кликнуть селектор пары в шапке Pocket Option
-        const clickerSelectors = [
-          ".current-symbol",
-          ".btn-select-pair",
-          ".pair-number-wrap",
-          "[data-test='asset-select']",
-          ".assets-block__active",
-          ".asset-select",
-          ".current-asset",
-          ".alist-trigger",
-          ".alist__head",
-          ".symbols-head",
-        ];
-        let clicker = null;
-        for (const sel of clickerSelectors) {
-          const el = document.querySelector(sel);
-          if (el && el.offsetParent !== null) {
-            clicker = el;
-            break;
+    const findPairBtn = () => {
+      const selectors = [
+        ".current-symbol",
+        ".pair-number-wrap",
+        ".currencies-block__in",
+        ".top-left-block__block1 a",
+        "[data-test='asset-select']",
+        ".alist-trigger",
+        ".alist__head",
+        ".symbols-head",
+        ".btn-select-pair",
+        ".assets-block__active",
+        ".current-asset",
+      ];
+      for (const sel of selectors) {
+        const el = document.querySelector(sel);
+        if (el && el.offsetParent !== null) return el;
+      }
+      return document.querySelector("h1, .symbol, .pair");
+    };
+
+    const isPopupOpen = () => {
+      const modal = document.querySelector(".alist, .assets-block, .symbols-modal, .modal-window--assets, .alist__list");
+      return modal && (modal.offsetParent !== null || (window.getComputedStyle(modal).display !== "none" && window.getComputedStyle(modal).visibility !== "hidden"));
+    };
+
+    // 1. Открываем меню Покета, если ещё не открыто
+    const pairBtn = findPairBtn();
+    if (!isPopupOpen() && pairBtn) {
+      simulatePocketClick(pairBtn);
+    }
+
+    // 2. Ждём рендера списка строк в DOM (до 800мс, опрос каждые 60мс)
+    const rowSelectors = [
+      ".alist__item",
+      ".assets-block__item",
+      "li.alist__item",
+      "a.alist__link",
+      ".symbols-list__item",
+      "[data-test='asset-item']",
+    ];
+
+    let rawElements = [];
+    const startWait = Date.now();
+    while (Date.now() - startWait < 800) {
+      for (const sel of rowSelectors) {
+        const found = document.querySelectorAll(sel);
+        if (found && found.length > 0) {
+          rawElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
+          if (rawElements.length > 0) break;
+        }
+      }
+      if (rawElements.length > 0) break;
+      await new Promise((r) => setTimeout(r, 60));
+    }
+
+    // 3. Проверяем вкладку: если выбрана не вкладка «Валюты», кликаем по ней
+    const tabs = document.querySelectorAll(".alist__tab, .alist__nav a, .assets-nav a, [data-tab]");
+    for (const tab of tabs) {
+      const tTxt = (tab.textContent || "").trim().toLowerCase();
+      if (tTxt.includes("валют") || tTxt.includes("currenc") || tTxt.includes("forex") || tTxt === "$") {
+        const isActive = tab.classList.contains("active") || tab.classList.contains("--active") || tab.getAttribute("aria-selected") === "true";
+        if (!isActive) {
+          simulatePocketClick(tab);
+          await new Promise((r) => setTimeout(r, 150));
+          for (const sel of rowSelectors) {
+            const found = document.querySelectorAll(sel);
+            if (found && found.length > 0) {
+              rawElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
+              if (rawElements.length > 0) break;
+            }
           }
         }
-        if (!clicker) {
-          clicker = document.querySelector("h1, .symbol, .pair");
+        break;
+      }
+    }
+
+    // 4. Сбор и парсинг доступных прямо сейчас строк (availableRows)
+    const availableRows = [];
+    const seenNames = new Set();
+    for (const el of rawElements) {
+      const rawText = el.textContent || "";
+      const pairMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+      const payoutMatch = rawText.match(/(\d+)%/);
+      if (pairMatch) {
+        let pName = pairMatch[0].trim();
+        if (!pName.includes(" ") && !pName.includes("/") && pName.length >= 6) {
+          pName = pName.slice(0, 3) + "/" + pName.slice(3);
         }
-
-        if (clicker) {
-          clicker.click();
-        } else {
-          loggerLog("[PairSwitch] Не найден селектор валютной пары в DOM");
-          return false;
+        const norm = pName.toLowerCase().replace(/[^a-z0-9]/g, "");
+        if (!seenNames.has(norm)) {
+          seenNames.add(norm);
+          const payout = payoutMatch ? parseInt(payoutMatch[1], 10) : 92;
+          availableRows.push({
+            name: pName,
+            payout: payout,
+            el: el.querySelector("a.alist__link, .alist__link, .alist__cell, .alist__label") || el,
+          });
         }
+      }
+    }
 
-        // Шаг 2: Ждём рендера выпадающего списка в DOM
-        await new Promise((r) => setTimeout(r, 600));
+    loggerLog(`[switchPocketPair] Доступно реальных строк в меню Покета: ${availableRows.length}`);
 
-        // Шаг 3: Собираем отрендеренные элементы списка
-        const rowSelectors = [
-          ".alist__item",
-          ".symbols-list__item",
-          ".asset-item",
-          ".pair-item",
-          "[data-test='asset-item']",
-          ".alist-link",
-          ".symbol-item",
-        ];
-        let rowElements = [];
-        for (const sel of rowSelectors) {
-          const found = document.querySelectorAll(sel);
-          if (found && found.length > 0) {
-            rowElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
-            if (rowElements.length > 0) break;
+    // Синхронизируем <select id="selectBotPair"> актуальным списком пар Покета
+    if (availableRows.length > 0) {
+      const select = document.getElementById("selectBotPair");
+      if (select) {
+        const curVal = (select.value || state.targetPair || "").toLowerCase();
+        select.innerHTML = "";
+        availableRows.forEach((row) => {
+          const opt = document.createElement("option");
+          opt.value = row.name;
+          const meta = getPairMeta(row.name);
+          opt.textContent = `${meta.flags} ${row.name} (+${row.payout}%)`;
+          if (row.name.toLowerCase() === curVal) {
+            opt.selected = true;
           }
-        }
+          select.appendChild(opt);
+        });
+      }
+    }
 
-        loggerLog(`[PairSwitch] Найдено пар в списке: ${rowElements.length}`);
+    // 5. Выбор целевой строки (chosenRow)
+    let chosenRow = null;
 
-        let targetItem = null;
-        let targetName = targetPairName;
+    if (targetPairName) {
+      const cleanTarget = targetPairName.toLowerCase().replace(/[^a-z0-9]/g, "");
+      chosenRow = availableRows.find((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "").includes(cleanTarget));
 
-        if (targetName) {
-          const cleanTarget = targetName.replace(/\s*OTC/i, "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-          for (const item of rowElements) {
-            const itemText = (item.textContent || "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
-            if (itemText.includes(cleanTarget)) {
-              targetItem = item;
+      // Если в первых видимых строках не найдено — используем поиск внутри меню Покета
+      if (!chosenRow) {
+        const searchInput = document.querySelector(".alist__search input, .assets-search input, input[placeholder*='Поиск'], input[placeholder*='Search']");
+        if (searchInput) {
+          loggerLog(`[switchPocketPair] Вводим в поиск Покета: ${targetPairName}`);
+          try { searchInput.focus(); } catch (_) {}
+          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+          const query = targetPairName.replace(/\s*OTC/i, "").trim();
+          if (nativeSetter) {
+            nativeSetter.call(searchInput, query);
+          } else {
+            searchInput.value = query;
+          }
+          searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+          searchInput.dispatchEvent(new Event("change", { bubbles: true }));
+          await new Promise((r) => setTimeout(r, 180));
+
+          const searchRows = document.querySelectorAll(".alist__item, .assets-block__item, a.alist__link");
+          for (const sr of searchRows) {
+            if (sr.offsetParent !== null && sr.textContent.trim()) {
+              const pMatch = sr.textContent.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+              const payoutMatch = sr.textContent.match(/(\d+)%/);
+              chosenRow = {
+                name: pMatch ? pMatch[0].trim() : targetPairName,
+                payout: payoutMatch ? parseInt(payoutMatch[1], 10) : 92,
+                el: sr.querySelector("a.alist__link") || sr,
+              };
               break;
             }
           }
-        } else {
-          // Автовыбор пары с выплатой >=85%, исключая текущую и последние 2 пары
-          const candidates = [];
-          for (const item of rowElements) {
-            const rawText = item.textContent || "";
-            const pairMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-            const payoutMatch = rawText.match(/(\d+)%/);
-            if (pairMatch) {
-              const pName = pairMatch[0].trim();
-              const payout = payoutMatch ? parseInt(payoutMatch[1], 10) : 0;
-              const isCurrent = currentTicker && pName.toLowerCase().replace(/[^a-z]/g, "") === currentTicker.toLowerCase().replace(/[^a-z]/g, "");
-              const isRecent = state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z]/g, "") === pName.toLowerCase().replace(/[^a-z]/g, ""));
-              const isBlocked = isPairBlacklisted(pName);
-
-              if (!isCurrent && !isRecent && !isBlocked && payout >= 85) {
-                candidates.push({ item, name: pName, payout });
-              }
-            }
-          }
-
-          loggerLog(`[PairSwitch] Кандидатов с выплатой >=85%: ${candidates.length}`);
-
-          if (candidates.length > 0) {
-            candidates.sort((a, b) => b.payout - a.payout);
-            const topCandidates = candidates.filter((c) => c.payout === candidates[0].payout);
-            const chosen = topCandidates[Math.floor(Math.random() * topCandidates.length)];
-            targetItem = chosen.item;
-            targetName = chosen.name;
-          } else if (rowElements.length > 1) {
-            for (const item of rowElements) {
-              const rawText = item.textContent || "";
-              if (!currentTicker || !rawText.toLowerCase().includes(currentTicker.toLowerCase().slice(0, 6))) {
-                targetItem = item;
-                const pMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-                targetName = pMatch ? pMatch[0].trim() : "EUR/USD OTC";
-                break;
-              }
-            }
-          }
         }
+      }
+    } else {
+      // Автоматическая смена пары:
+      // 1) row.name !== beforePair (НЕ выбираем пару, на которой уже стоим!)
+      // 2) row.name НЕ в recentPairs (храним последние 3 пары)
+      // 3) row.payout >= 85 (в приоритете максимальная выплата 92%)
+      const candidates = availableRows.filter((row) => {
+        const normName = row.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const isBefore = normName === normBefore;
+        const isRecent = state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === normName);
+        const isBlocked = isPairBlacklisted(row.name);
+        return !isBefore && !isRecent && !isBlocked && row.payout >= 85;
+      });
 
-        if (targetItem) {
-          loggerLog(`[PairSwitch] Кликаем по паре: ${targetName}`);
-          try {
-            targetItem.scrollIntoView({ block: "center", behavior: "instant" });
-          } catch (_) {}
-          await new Promise((r) => setTimeout(r, 150));
+      loggerLog(`[switchPocketPair] Кандидатов автовыбора: ${candidates.length} (исключены текущая «${beforePair}» и недавние: ${state.recentPairs.join(", ")})`);
 
-          const clickTarget = targetItem.querySelector("a, .alist__link, .alist__cell, .symbol-name") || targetItem;
-          clickTarget.click();
-
-          // Проверяем изменение тикера в DOM (до 5 секунд)
-          const checkStart = Date.now();
-          while (Date.now() - checkStart < 5000) {
-            await new Promise((r) => setTimeout(r, 300));
-            const newActive = scanPocketOptionCurrentPair();
-            if (newActive && (!currentTicker || newActive.toLowerCase().replace(/[^a-z]/g, "") !== currentTicker.toLowerCase().replace(/[^a-z]/g, ""))) {
-              loggerLog(`[PairSwitch] Пара успешно переключена на «${newActive}» за ${Date.now() - checkStart}мс!`);
-              state.targetPair = newActive;
-              if (!state.recentPairs.includes(newActive)) {
-                state.recentPairs.push(newActive);
-                if (state.recentPairs.length > 2) state.recentPairs.shift();
-              }
-              const meta = getPairMeta(newActive);
-              state.targetFlags = meta.flags;
-              state.targetPayout = meta.payout;
-              updateCardPairUI();
-
-              const selectPair = document.getElementById("selectBotPair");
-              if (selectPair) {
-                selectPair.value = newActive;
-              }
-              return true;
-            }
-          }
+      if (candidates.length > 0) {
+        candidates.sort((a, b) => b.payout - a.payout);
+        const topPayout = candidates[0].payout;
+        const topPool = candidates.filter((c) => c.payout === topPayout);
+        chosenRow = topPool[Math.floor(Math.random() * topPool.length)];
+      } else if (availableRows.length > 0) {
+        // Страховочный вариант: любая строка, кроме текущей
+        const nonBefore = availableRows.filter((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "") !== normBefore);
+        if (nonBefore.length > 0) {
+          chosenRow = nonBefore[0];
         }
+      }
+    }
 
-        loggerLog(`[PairSwitch] Попытка ${attempt} не удалась, повторяем...`);
-        await new Promise((r) => setTimeout(r, 500));
+    // 6. Выполняем переключение
+    if (chosenRow && chosenRow.el) {
+      loggerLog(`[switchPocketPair] Кликаем по выбранной строке: «${chosenRow.name}» (+${chosenRow.payout}%)`);
+      try {
+        chosenRow.el.scrollIntoView({ block: "center", behavior: "instant" });
+      } catch (_) {}
+      await new Promise((r) => setTimeout(r, 80));
+
+      simulatePocketClick(chosenRow.el);
+      const innerLink = chosenRow.el.querySelector("a.alist__link, .alist__link, .alist__label, span");
+      if (innerLink && innerLink !== chosenRow.el) {
+        simulatePocketClick(innerLink);
+      }
+      await new Promise((r) => setTimeout(r, 220));
+
+      // 7. Обязательно закрываем меню выбора пар Покета, если оно осталось открыто
+      const closeBtn = document.querySelector(".alist__close, .alist-close, [data-test='close-asset-select'], .modal-window__close");
+      if (closeBtn && closeBtn.offsetParent !== null) {
+        simulatePocketClick(closeBtn);
+      } else {
+        const pBtn = findPairBtn();
+        if (pBtn) simulatePocketClick(pBtn);
+      }
+      closeAnyOpenModals();
+
+      // 8. Обновляем состояние и историю недавних пар (храним последние 3)
+      const newName = chosenRow.name;
+      state.targetPair = newName;
+      state.targetPayout = chosenRow.payout + "%";
+      const meta = getPairMeta(newName);
+      state.targetFlags = meta.flags;
+
+      if (!state.recentPairs.includes(newName)) {
+        state.recentPairs.push(newName);
+        if (state.recentPairs.length > 3) state.recentPairs.shift();
       }
 
-      loggerLog("[PairSwitch] Не удалось сменить пару за 2 попытки!");
-      return false;
-    },
+      updateCardPairUI();
+      const select = document.getElementById("selectBotPair");
+      if (select) {
+        select.value = newName;
+      }
 
-    // Sync & Async bridges
+      loggerLog(`[switchPocketPair] ✅ Пара успешно переключена на: «${newName}»! Недавние: [${state.recentPairs.join(", ")}]`);
+      return true;
+    }
+
+    loggerLog("[switchPocketPair] ⚠️ Не удалось выбрать строку для клика!");
+    closeAnyOpenModals();
+    return false;
+  }
+
+  const POAutomation = {
+    switchPocketPair(targetPairName = null) {
+      return switchPocketPair(targetPairName);
+    },
+    switchCurrencyPair(targetPairName = null) {
+      return switchPocketPair(targetPairName);
+    },
     switchPair(pairName) {
-      return this.switchCurrencyPair(pairName);
+      return switchPocketPair(pairName);
     },
-
     switchPairAsync(pairName) {
-      return this.switchCurrencyPair(pairName);
+      return switchPocketPair(pairName);
     },
 
-    // Ensure stake based on recovery step
     setupTradeParameters() {
       const stake = state.recoveryStep === 0 ? state.baseStake : state.recoveryStep === 1 ? state.baseStake * 2 : state.baseStake * 4;
       const stakeInputs = document.querySelectorAll("input[name='amount'], .input-field--amount input, [data-test='amount-input'], .amount-block input, .block--amount input");
       for (const stakeInput of stakeInputs) {
         if (stakeInput && stakeInput.offsetParent !== null) {
           stakeInput.focus();
-          stakeInput.value = stake;
+          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+          if (nativeSetter) {
+            nativeSetter.call(stakeInput, stake);
+          } else {
+            stakeInput.value = stake;
+          }
           stakeInput.dispatchEvent(new Event("input", { bubbles: true }));
           stakeInput.dispatchEvent(new Event("change", { bubbles: true }));
         }
@@ -1003,6 +1097,7 @@
         const callSelectors = [
           ".btn-call",
           ".btn-high",
+          ".switch-state-block__item--up",
           "[data-qa='btn-call']",
           "[data-test='btn-call']",
           ".call-btn",
@@ -1011,6 +1106,7 @@
         const putSelectors = [
           ".btn-put",
           ".btn-low",
+          ".switch-state-block__item--down",
           "[data-qa='btn-put']",
           "[data-test='btn-put']",
           ".put-btn",
@@ -1027,12 +1123,28 @@
           }
         }
 
+        // Резервный поиск по тексту на правой панели
+        if (!btn) {
+          const allButtons = document.querySelectorAll(".trade-actions button, .right-block button, .actions-block button, button");
+          for (const b of allButtons) {
+            if (b.offsetParent === null) continue;
+            const txt = (b.textContent || "").trim().toUpperCase();
+            if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
+              btn = b;
+              break;
+            } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
+              btn = b;
+              break;
+            }
+          }
+        }
+
         if (btn) {
           const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
           btn.classList.add(glowClass);
 
-          // Одиночный нативный клик (без дублирования)
-          btn.click();
+          // Глубокая эмуляция клика для React-интерфейса Покета
+          simulatePocketClick(btn);
 
           setTimeout(() => btn.classList.remove(glowClass), 2500);
 
@@ -1042,7 +1154,7 @@
             loggerLog(`[TradeBalance] До: ${state.balanceBefore}, после списания: ${state.balanceAfterOpen}`);
           }, 1200);
 
-          loggerLog(`Сделка ${direction} успешно отправлена через одиночный click() на элементе`, btn);
+          loggerLog(`Сделка ${direction} успешно отправлена через simulatePocketClick() на элементе`, btn);
           return true;
         } else {
           loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
@@ -1901,9 +2013,7 @@
         state.targetFlags = meta.flags;
         state.targetPayout = meta.payout;
         updateCardPairUI();
-        if (state.autoStream) {
-          POAutomation.switchPair(state.targetPair);
-        }
+        POAutomation.switchPair(state.targetPair);
       });
     }
 
