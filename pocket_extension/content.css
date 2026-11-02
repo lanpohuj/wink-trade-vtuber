@@ -6,7 +6,7 @@
    Scales natively with Pocket Option page zoom (Cmd + / Cmd -)
    ======================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Orbitron:wght@700;800;900&family=Chakra+Petch:wght@600;700&display=swap');
 
 :root {
   --wn-bg: rgba(9, 17, 20, 0.88);
@@ -796,12 +796,12 @@
 
 /* 1. Верхняя плашка-капсула (над кругом) */
 .winky-orb-capsule {
-  background: rgba(9, 17, 20, 0.90);
-  border: 1px solid rgba(0, 245, 160, 0.35);
-  border-radius: 10px;
-  padding: 6px 18px;
+  background: rgba(8, 14, 18, 0.92);
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  border-radius: 12px;
+  padding: 7px 20px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 12px rgba(0, 245, 160, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 255, 136, 0.12);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   display: flex;
@@ -809,103 +809,134 @@
   align-items: center;
   gap: 2px;
   min-width: 170px;
+  box-sizing: border-box;
 }
 
 .winky-orb-pair-title {
+  font-family: 'Orbitron', 'Chakra Petch', sans-serif;
   font-size: 16px;
   font-weight: 800;
   color: #FFFFFF;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   line-height: 1.2;
 }
 
 .winky-orb-clock {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 700;
-  color: var(--wn-mint);
-  font-family: var(--wn-font-mono);
-  letter-spacing: 0.3px;
+  color: #00FF88 !important;
+  letter-spacing: 0.4px;
   line-height: 1.2;
+  margin-top: 2px;
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.45);
 }
 
-/* 2. Центральный круговой неоновый медальон (185x185px) */
-.winky-orb-medallion {
-  width: 185px;
-  height: 185px;
+/* 2. Центральный круговой неоновый медальон (196x196px) 360° перелив */
+@keyframes winkyNeonSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.winky-orb-dial {
   position: relative;
+  width: 196px;
+  height: 196px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 16px rgba(0, 245, 160, 0.45)) drop-shadow(0 0 28px rgba(0, 217, 245, 0.25));
-  user-select: none;
-}
-
-.winky-orb-ring-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 185px;
-  height: 185px;
-  pointer-events: none;
-}
-
-.winky-orb-inner-circle {
-  width: 166px;
-  height: 166px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #101B20 0%, #070C0E 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.85);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 10px;
+  background: radial-gradient(circle at 50% 42%, #111F24 0%, #070D10 75%, #05080A 100%);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), inset 0 0 24px rgba(0, 255, 136, 0.08);
+  z-index: 1;
+  padding: 14px 10px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.winky-orb-dial::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #00FF88 0deg,
+    #00E5FF 75deg,
+    #8B5CF6 150deg,
+    #FF2E93 225deg,
+    #FFB800 300deg,
+    #00FF88 360deg
+  );
+  z-index: -2;
+  animation: winkyNeonSpin 5s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.45)) drop-shadow(0 0 18px rgba(0, 229, 255, 0.25));
+}
+
+.winky-orb-dial::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #111F24 0%, #070D10 78%, #05080A 100%);
+  z-index: -1;
+}
+
+/* Обратная совместимость для вспомогательных обёрток */
+.winky-orb-medallion {
   position: relative;
-  z-index: 2;
-  text-align: center;
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .winky-orb-brand {
-  font-size: 12.5px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.5px;
   color: #FFFFFF;
   text-transform: uppercase;
-  text-shadow: 0 0 8px rgba(0, 245, 160, 0.4);
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
   line-height: 1;
   margin-bottom: 2px;
 }
 
 .winky-orb-timeframe {
-  font-size: 10.5px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 11px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #CBD5E1;
   letter-spacing: 0.3px;
   line-height: 1;
+  margin-top: 2px;
   margin-bottom: 3px;
 }
 
 .winky-orb-winrate {
-  font-size: 35px;
+  font-family: 'Orbitron', 'JetBrains Mono', sans-serif;
+  font-size: 36px;
   font-weight: 900;
-  color: #00F5A0;
-  font-family: var(--wn-font-mono);
-  line-height: 1;
+  line-height: 1.05;
+  margin: 4px 0;
+  color: #00FF88 !important;
   letter-spacing: -0.5px;
-  text-shadow: 0 0 16px rgba(0, 245, 160, 0.55), 0 0 30px rgba(0, 245, 160, 0.25);
-  margin-bottom: 4px;
+  text-shadow: 0 0 16px rgba(0, 255, 136, 0.65), 0 0 32px rgba(0, 255, 136, 0.28);
 }
 
 .winky-orb-wl-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 28px;
   width: 100%;
-  margin-bottom: 4px;
+  margin: 2px 0 6px 0;
 }
 
 .winky-orb-col {
@@ -916,45 +947,47 @@
 }
 
 .winky-orb-col .lbl {
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   color: #E2E8F0;
-  margin-bottom: 1px;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
 }
 
 .winky-orb-col.wins .val {
-  font-size: 22px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 23px;
   font-weight: 800;
-  color: #00F5A0;
-  font-family: var(--wn-font-mono);
-  text-shadow: 0 0 10px rgba(0, 245, 160, 0.5);
+  color: #00FF88 !important;
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.55);
 }
 
 .winky-orb-col.losses .val {
-  font-size: 22px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 23px;
   font-weight: 800;
-  color: #FF3B69;
-  font-family: var(--wn-font-mono);
-  text-shadow: 0 0 10px rgba(255, 59, 105, 0.5);
+  color: #FF3B5C !important;
+  text-shadow: 0 0 12px rgba(255, 59, 92, 0.6);
 }
 
 .winky-orb-profit {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 800;
-  color: #FFB800;
-  font-family: var(--wn-font-mono);
-  background: rgba(255, 184, 0, 0.12);
-  border: 1px solid rgba(255, 184, 0, 0.35);
-  border-radius: 8px;
-  padding: 1.5px 7px;
+  color: #00FF88 !important;
+  background: rgba(0, 255, 136, 0.12);
+  border: 1px solid rgba(0, 255, 136, 0.45);
+  border-radius: 999px;
+  padding: 3px 12px;
   letter-spacing: 0.3px;
   line-height: 1.1;
-  text-shadow: 0 0 6px rgba(255, 184, 0, 0.35);
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
 }
 
 /* 3. Нижняя интерактивная панель управления (под кругом) */
 .winky-orb-controls {
-  background: rgba(9, 17, 20, 0.92);
+  background: rgba(8, 14, 18, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   padding: 4px 6px;
@@ -967,9 +1000,11 @@
 }
 
 .winky-orb-btn {
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 800;
+  height: 30px;
+  border-radius: 8px;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
   padding: 4px 10px;
   cursor: pointer;
   display: inline-flex;
@@ -977,6 +1012,7 @@
   justify-content: center;
   transition: transform 0.15s ease, filter 0.15s ease;
   user-select: none;
+  box-sizing: border-box;
 }
 .winky-orb-btn:hover {
   transform: translateY(-1px);
@@ -1001,9 +1037,9 @@
 
 .winky-orb-btn.reset {
   background: #1E293B;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #CBD5E1;
-  padding: 4px 8px;
+  padding: 4px 10px;
 }
 .winky-orb-btn.reset:hover {
   background: #334155;
@@ -1012,10 +1048,10 @@
 
 .winky-orb-btn.gear {
   background: #1E293B;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #CBD5E1;
-  padding: 4px 6px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 13px;
 }
 .winky-orb-btn.gear:hover {
   background: #334155;
@@ -1023,17 +1059,19 @@
 
 /* 4. Всплывающая панель настроек виджета */
 .winky-orb-settings {
-  background: rgba(9, 17, 20, 0.95);
-  border: 1px solid rgba(0, 245, 160, 0.4);
+  background: rgba(8, 14, 18, 0.95);
+  border: 1px solid rgba(0, 255, 136, 0.4);
   border-radius: 10px;
   padding: 8px 12px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 11px;
-  width: 185px;
+  width: 196px;
   margin-top: 2px;
+  box-sizing: border-box;
 }
 
 .winky-orb-settings-row {

@@ -267,6 +267,12 @@ class StreamDirector:
 
             if item_to_play:
                 self._dispatch_chat_item(item_to_play)
+            elif phase == "IN_TRADE" and rem >= 10:
+                # Полезные фишки стратегии и вовлечение зрителей (stream_insight) раз в 90–120с, если в чате тихо
+                if now - getattr(self, "_last_insight_time", 0.0) >= 95.0:
+                    self._last_insight_time = now
+                    if self._tts and hasattr(self._tts, "speak_stream_category"):
+                        self._tts.speak_stream_category("stream_insight", lang="ru", emotion="happy")
 
     def _dispatch_chat_item(self, item: ChatItem) -> None:
         """Передаёт подготовленную реплику чата в SpeechController."""

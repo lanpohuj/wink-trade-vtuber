@@ -163,6 +163,8 @@
     autoStream: false, // 🤖 АВТО-СТРИМ тумблер
     botState: "IDLE", // Strict 7-State Machine: "IDLE" | "SWITCHING_PAIR" | "ANALYZING_PAIR" | "PREPARING_TRADE" | "IN_TRADE" | "TRADE_RESULT" | "COOLDOWN"
     consecutiveSkips: 0, // Защита от бесконечного цикла: максимум 1 пропуск подряд!
+    lastPairSkipVoiceTs: 0, // Кулдаун 60 сек на озвучку смены пар
+    lastInsightVoiceTs: 0, // Кулдаун 90 сек на полезные инсайты стратегии
     lastPairSwitchAttemptAt: 0,
     currentPrefetchIntent: null,
     isAnalysing: false,
@@ -2091,6 +2093,19 @@
 
   const VoiceManager = {
     playCategory(category, isBlocking = false, emotion = "happy", action = null) {
+      if (!category) return Promise.resolve(true);
+
+      // Кулдаун 60 секунд на озвучку смены пары / пропуска рынка (чтобы не спамила при переборе пар)
+      const PAIR_SKIP_VOICE_COOLDOWN_MS = 60000;
+      if (category === "flat_skip" || category === "switch_pair") {
+        const now = Date.now();
+        if (now - state.lastPairSkipVoiceTs < PAIR_SKIP_VOICE_COOLDOWN_MS) {
+          loggerLog(`[VoiceCooldown] 🔇 Пропуск озвучки «${category}» (прошло ${Math.round((now - state.lastPairSkipVoiceTs) / 1000)}с < 60с)`);
+          return Promise.resolve(true);
+        }
+        state.lastPairSkipVoiceTs = now;
+      }
+
       loggerLog(`VoiceManager: Мгновенный запрос категории [${category}] (${state.lang})`);
       sendProxyMessage("/api/winky/speak_stream_category", "POST", {
         category: category,
@@ -2224,8 +2239,12 @@
       state.consecutiveSkips += 1;
       loggerLog(`[DirtyMarketFilter] 🛡️ Вход отклонён (пропуск №${state.consecutiveSkips})! Оценка рынка: ${confluence.score.toFixed(1)} / 5.0 (< 4.0).`);
 
-      // Озвучиваем пропуск рынка (flat_skip)
-      await triggerStateWithVoice("ANALYZING_PAIR", "flat_skip", () => {
+      const nowTs = Date.now();
+      const shouldVoice = (nowTs - state.lastPairSkipVoiceTs >= 60000);
+      const skipVoiceCategory = shouldVoice ? "flat_skip" : null;
+
+      // Озвучиваем пропуск рынка (flat_skip), если прошёл 60с кулдаун, иначе молча
+      await triggerStateWithVoice("ANALYZING_PAIR", skipVoiceCategory, () => {
         if (block) {
           block.className = "winky-direction-block active";
           block.innerHTML = `
@@ -2246,14 +2265,18 @@
             </div>
           `;
         }
-      }, true, "thinking", "tilt_head");
+      }, shouldVoice, "thinking", "tilt_head");
 
-      await new Promise((r) => setTimeout(r, 1000));
+      if (shouldVoice) {
+        state.lastPairSkipVoiceTs = Date.now();
+      }
 
-      // Переключаемся на новую пару на Pocket Option
-      await triggerStateWithVoice("SWITCHING_PAIR", "switch_pair", () => {
+      await new Promise((r) => setTimeout(r, shouldVoice ? 1000 : 400));
+
+      // Переключаемся на новую пару на Pocket Option (молча)
+      await triggerStateWithVoice("SWITCHING_PAIR", null, () => {
         renderSignalCardState();
-      }, true, "thinking", "tilt_head");
+      }, false, "thinking", "tilt_head");
 
       await POAutomation.switchCurrencyPair();
 
@@ -2430,6 +2453,12 @@
       if (timerEl) timerEl.textContent = formatTime(Math.max(0, remaining));
       updateTradeButtonLabel(Math.max(0, remaining));
       notifyTradePhase("IN_TRADE", state.targetPair, remaining);
+
+      // Полезные инсайты стратегии во время сделки (stream_insight) раз в 90-120 сек
+      if (remaining >= 14 && remaining <= 18 && (Date.now() - state.lastInsightVoiceTs >= 90000)) {
+        state.lastInsightVoiceTs = Date.now();
+        VoiceManager.playCategory("stream_insight", false, "happy", "nod");
+      }
 
       if (remaining <= 0) {
         clearInterval(state.expiryInterval);
@@ -2983,10 +3012,6 @@
     const displayRate = Math.max(93.0, rawRate).toFixed(1);
     const clockText = formatOrbClock();
 
-    const circumference = 527.78; // 2 * Math.PI * 84
-    const percentClamped = Math.min(100, Math.max(0, parseFloat(displayRate)));
-    const offset = circumference - (percentClamped / 100) * circumference;
-
     return `
       <!-- 1. Верхняя капсула -->
       <div class="winky-orb-capsule" id="winkyOrbCapsule">
@@ -2994,47 +3019,31 @@
         <div class="winky-orb-clock" id="winkyOrbClock">${clockText}</div>
       </div>
 
-      <!-- 2. Центральный медальон 185x185px -->
-      <div class="winky-orb-medallion" id="winkyOrbMedallion">
-        <svg class="winky-orb-ring-svg" viewBox="0 0 185 185">
-          <defs>
-            <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#00F5A0" />
-              <stop offset="25%" stop-color="#00D9F5" />
-              <stop offset="50%" stop-color="#A855F7" />
-              <stop offset="75%" stop-color="#FFB800" />
-              <stop offset="100%" stop-color="#FF3B69" />
-            </linearGradient>
-          </defs>
-          <circle cx="92.5" cy="92.5" r="84" stroke="rgba(255, 255, 255, 0.08)" stroke-width="6" fill="none" />
-          <circle id="winkyOrbRingProgress" cx="92.5" cy="92.5" r="84"
-            stroke="url(#orbGradient)" stroke-width="6" fill="none" stroke-linecap="round"
-            stroke-dasharray="527.78" stroke-dashoffset="${offset.toFixed(1)}"
-            style="transform: rotate(-90deg); transform-origin: 50% 50%; filter: drop-shadow(0 0 8px rgba(0,245,160,0.5)); transition: stroke-dashoffset 0.6s ease;" />
-        </svg>
-
-        <div class="winky-orb-inner-circle">
-          <div class="winky-orb-brand">WINK TRADE</div>
-          <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: M1  Время: ${state.selectedTimeframe}</div>
-          <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
-          <div class="winky-orb-wl-row">
-            <div class="winky-orb-col wins">
-              <span class="lbl">W</span>
-              <span class="val" id="hudWinsVal">${state.liveWins}</span>
-            </div>
-            <div class="winky-orb-col losses">
-              <span class="lbl">L</span>
-              <span class="val" id="hudLossesVal">${state.liveLosses}</span>
-            </div>
+      <!-- 2. Центральный медальон 196x196px с живым замкнутым неоновым кольцом 360° -->
+      <div class="winky-orb-dial" id="winkyOrbMedallion">
+        <div class="winky-orb-brand">WINK TRADE</div>
+        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: M1  Время: ${state.selectedTimeframe}</div>
+        <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
+        <div class="winky-orb-wl-row">
+          <div class="winky-orb-col wins">
+            <span class="lbl">W</span>
+            <span class="val" id="hudWinsVal">${state.liveWins}</span>
           </div>
-          <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}</div>
+          <div class="winky-orb-col losses">
+            <span class="lbl">L</span>
+            <span class="val" id="hudLossesVal">${state.liveLosses}</span>
+          </div>
         </div>
+        <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}</div>
       </div>
 
       <!-- 3. Нижний док управления -->
       <div class="winky-orb-controls" id="winkyOrbControls">
         <button type="button" class="winky-orb-btn win" id="btnOrbAddWin" title="Добавить победу (+1 W)">+</button>
-        <button type="button" class="winky-orb-btn reset" id="btnOrbReset" title="Сбросить счётчик">[ Reset ]</button>
+        <button type="button" class="winky-orb-btn reset" id="btnOrbReset" title="Сбросить счётчик">Reset</button>
+        <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
+        <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
+      </div>
         <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
         <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
       </div>

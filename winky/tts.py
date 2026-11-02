@@ -1975,6 +1975,16 @@ class SpeechController:
         3. В тихом фоновом потоке (не блокируя речь) догенерирует 1 недостающую фразу этой категории через Lumean.
         4. Если готовых нет — берет любой валидный .mp3 файл слота голоса из voice_cache/ (без EdgeTTS/say!).
         """
+        # Жёсткий кулдаун 60 секунд на озвучку смены пары / пропуска рынка (чтобы не спамила при поиске точки входа)
+        cat_lower = (category or "").lower()
+        if cat_lower in ("flat_skip", "switch_pair"):
+            now_ts = time.time()
+            last_ts = getattr(self, "_last_pair_skip_ts", 0.0)
+            if now_ts - last_ts < 60.0:
+                logger.info("⏳ [Cooldown 60s] speak_stream_category [%s] пропущен (прошло %.1f с < 60 с)", category, now_ts - last_ts)
+                return False
+            self._last_pair_skip_ts = now_ts
+
         from winky.scenarios import STREAM_VOICE_BANK
 
         actual_lang = "ru" if (lang or "ru").lower() == "ru" else "en"
