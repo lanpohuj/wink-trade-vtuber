@@ -123,6 +123,11 @@
     forcedLoss: false,
     recoveryStep: 0, // 0 = base ($100), 1 = x2 ($200, same pair), 2 = x4 ($400, new pair)
     baseStake: 100,
+    currentStake: 100,
+    balanceBeforeClick: null,
+    balanceDuringTrade: null,
+    entryPrice: null,
+    exitPrice: null,
     liveWins: savedStats.wins,
     liveLosses: savedStats.losses,
     sessionProfit: savedStats.profit,
@@ -517,8 +522,13 @@
     }
   }
 
-  function readPocketOptionBalance() {
+  function getPocketBalance() {
     const balanceSelectors = [
+      ".balance-info-block__balance",
+      ".js-hd-balance",
+      ".balance-info-block__value",
+      ".header__balance",
+      "[class*='balance-info-block'] [class*='balance']",
       ".balance-info-block",
       ".user-balance",
       ".current-balance",
@@ -530,15 +540,84 @@
     ];
     for (const sel of balanceSelectors) {
       const el = document.querySelector(sel);
-      if (el && el.textContent.trim()) {
-        const rawNum = el.textContent.replace(/[^0-9.]/g, "");
-        const num = parseFloat(rawNum);
-        if (!isNaN(num) && num > 0) {
-          return num;
+      if (el && el.textContent) {
+        // Оставляем только цифры, точку и запятую
+        const raw = el.textContent.replace(/[^\d.,]/g, "").trim();
+        if (!raw) continue;
+        // В форматах типа "48,016" или "48,016.50" запятая — это разделитель тысяч!
+        const normalized = raw.replace(/,/g, "");
+        const val = parseFloat(normalized);
+        if (!Number.isNaN(val) && val >= 0) {
+          return val;
         }
       }
     }
     return null;
+  }
+
+  function readPocketOptionBalance() {
+    return getPocketBalance();
+  }
+
+  function getCurrentChartPrice() {
+    const priceSelectors = [
+      ".current-value",
+      ".item__price",
+      ".chart-quote",
+      ".active-price",
+      "[data-qa='current-value']",
+      ".current-symbol-price",
+      ".chart-values .val",
+    ];
+    for (const sel of priceSelectors) {
+      const el = document.querySelector(sel);
+      if (el && el.textContent.trim()) {
+        const num = parseFloat(el.textContent.replace(/[^0-9.]/g, ""));
+        if (!isNaN(num) && num > 0) return num;
+      }
+    }
+    if (state.priceTicks && state.priceTicks.length > 0) {
+      return state.priceTicks[state.priceTicks.length - 1];
+    }
+    return null;
+  }
+
+  function getPocketStakeAmount() {
+    const stakeInputs = document.querySelectorAll(
+      ".block--bet-amount input, .amount-block input, .value__val input, input[name='amount'], [data-test='amount-input'], .input-field--amount input, .block--amount input, input[autocomplete='off'][type='text']"
+    );
+    for (const input of stakeInputs) {
+      if (input && input.offsetParent !== null && input.value) {
+        const raw = input.value.replace(/[^\d.]/g, "");
+        const val = parseFloat(raw);
+        if (!isNaN(val) && val > 0) return val;
+      }
+    }
+    return state.baseStake || 100;
+  }
+
+  function setPocketStakeAmount(amount) {
+    const stakeVal = Math.round(amount);
+    const stakeInputs = document.querySelectorAll(
+      ".block--bet-amount input, .amount-block input, .value__val input, input[name='amount'], [data-test='amount-input'], .input-field--amount input, .block--amount input, input[autocomplete='off'][type='text']"
+    );
+    let changed = false;
+    for (const input of stakeInputs) {
+      if (input && input.offsetParent !== null) {
+        try { input.focus(); } catch (_) {}
+        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+        if (nativeSetter) {
+          nativeSetter.call(input, String(stakeVal));
+        } else {
+          input.value = String(stakeVal);
+        }
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+        changed = true;
+      }
+    }
+    loggerLog(`[setPocketStakeAmount] Установлена сумма сделки: $${stakeVal} (успешно: ${changed})`);
+    return changed;
   }
 
   function readClosedDealsFirstRow() {
@@ -605,84 +684,85 @@
     return null;
   }
 
-  async function evaluateTradeResult() {
-    // 1.8s wait for Pocket Option backend & DOM to record deal and update balance
-    await new Promise((r) => setTimeout(r, 1800));
+  function evaluateTradeOutcome() {
+    const before = state.balanceBeforeClick !== null ? state.balanceBeforeClick : state.balanceBefore;
+    const during = state.balanceDuringTrade !== null ? state.balanceDuringTrade : state.balanceAfterOpen;
+    const after = state.balanceAfterClose;
+    const stake = state.currentStake || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4)) || 100;
+    const entry = state.entryPrice;
+    const exit = state.exitPrice;
+    const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
 
-    state.balanceAfterClose = readPocketOptionBalance();
-    const dealRow = readClosedDealsFirstRow();
-
-    loggerLog("[evaluateTradeResult] Проверка результата сделки:", {
-      balanceBefore: state.balanceBefore,
-      balanceAfterOpen: state.balanceAfterOpen,
-      balanceAfterClose: state.balanceAfterClose,
-      dealRow: dealRow,
+    loggerLog("[evaluateTradeOutcome] Замеры баланса и котировок:", {
+      balanceBeforeClick: before,
+      balanceDuringTrade: during,
+      balanceAfterClose: after,
+      currentStake: stake,
+      entryPrice: entry,
+      exitPrice: exit,
+      direction: dir,
     });
 
-    let detectedOutcome = null; // "WIN" | "LOSS" | "REFUND"
-    let profitAmount = 92;
-
-    // 1. Explicit closed deal history row (Highest Priority)
-    if (dealRow) {
-      if (dealRow.status === "LOSS") {
-        detectedOutcome = "LOSS";
-      } else if (dealRow.status === "WIN") {
-        detectedOutcome = "WIN";
-        profitAmount = dealRow.payout;
-      } else if (dealRow.status === "REFUND") {
-        detectedOutcome = "REFUND";
-      }
-    }
-
-    // 2. Balance delta check (balanceAfterClose vs balanceBefore)
-    if (!detectedOutcome && state.balanceBefore !== null && state.balanceAfterClose !== null) {
-      const delta = Math.round(state.balanceAfterClose - state.balanceBefore);
-      if (delta > 0) {
-        detectedOutcome = "WIN";
-        profitAmount = delta;
-      } else if (delta < 0) {
-        detectedOutcome = "LOSS";
-      } else if (delta === 0) {
-        // Balance returned to exact before value -> Refund
-        detectedOutcome = "REFUND";
-      }
-    }
-
-    // 3. Balance delta check (balanceAfterClose vs balanceAfterOpen)
-    if (!detectedOutcome && state.balanceAfterClose !== null && state.balanceAfterOpen !== null) {
-      const gainSinceOpen = Math.round(state.balanceAfterClose - state.balanceAfterOpen);
-      if (gainSinceOpen > state.baseStake) {
-        detectedOutcome = "WIN";
-        profitAmount = gainSinceOpen - state.baseStake;
-      } else if (gainSinceOpen === 0) {
-        detectedOutcome = "LOSS";
-      }
-    }
-
-    // 4. Secret streamer forcedLoss trigger
+    // 0. Секретный триггер стримера forcedLoss
     if (state.forcedLoss) {
       state.forcedLoss = false;
-      detectedOutcome = "LOSS";
+      return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "forced_loss" };
     }
 
-    // 5. Fallback if still undetermined: do NOT default to WIN!
-    if (!detectedOutcome) {
-      loggerLog("[evaluateTradeResult] Баланс не изменился в DOM, анализируем тики цены...");
-      if (state.priceTicks && state.priceTicks.length >= 2) {
-        const lastTick = state.priceTicks[state.priceTicks.length - 1];
-        const firstTick = state.priceTicks[0];
-        const isUp = lastTick >= firstTick;
-        const wasBuy = state.activeSignal && state.activeSignal.direction === "BUY";
-        detectedOutcome = (isUp === wasBuy) ? "WIN" : "LOSS";
-      } else {
-        // Safe default: loss is safer than false win
-        detectedOutcome = "LOSS";
+    // 1. Прямое сравнение до клика и после закрытия (balanceBeforeClick vs balanceAfterClose)
+    if (before !== null && after !== null) {
+      const delta = after - before;
+      if (delta > 0.01) {
+        return { isWin: true, profitDelta: Math.round(delta), lossDelta: 0, reason: "balance_increase_over_before" };
+      }
+      if (delta < -0.01) {
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(Math.abs(delta)), reason: "balance_decrease_under_before" };
       }
     }
 
+    // 2. Сравнение во время сделки и после закрытия (balanceDuringTrade vs balanceAfterClose)
+    if (during !== null && after !== null) {
+      if (after > during + stake * 0.5) {
+        const profit = before !== null ? Math.round(after - before) : Math.round(stake * 0.92);
+        return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
+      }
+      if (before !== null && during < before && Math.abs(after - during) < 0.5) {
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(before - after), reason: "stake_lost_stagnant_during" };
+      }
+    }
+
+    // 3. Проверка истории закрытых сделок (Closed Deals first row)
+    const dealRow = readClosedDealsFirstRow();
+    if (dealRow) {
+      if (dealRow.status === "WIN") {
+        return { isWin: true, profitDelta: Math.round(dealRow.payout), lossDelta: 0, reason: "closed_deals_win" };
+      }
+      if (dealRow.status === "LOSS") {
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "closed_deals_loss" };
+      }
+    }
+
+    // 4. Резервная проверка по котировкам (entryPrice vs exitPrice)
+    if (entry !== null && exit !== null && entry !== exit) {
+      const isUp = exit > entry;
+      const isWinByQuote = dir === "BUY" ? isUp : !isUp;
+      if (isWinByQuote) {
+        return { isWin: true, profitDelta: Math.round(stake * 0.92), lossDelta: 0, reason: "quote_direction_win" };
+      } else {
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss" };
+      }
+    }
+
+    // 5. Безопасный дефолт: МИНУС (никогда не объявляем плюс вслепую!)
+    return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "safe_loss_default" };
+  }
+
+  async function evaluateTradeResult() {
+    const res = evaluateTradeOutcome();
     return {
-      outcome: detectedOutcome,
-      profit: profitAmount,
+      outcome: res.isWin ? "WIN" : "LOSS",
+      profit: res.isWin ? res.profitDelta : 0,
+      loss: !res.isWin ? res.lossDelta : 0,
     };
   }
 
@@ -1061,21 +1141,9 @@
     },
 
     setupTradeParameters() {
-      const stake = state.recoveryStep === 0 ? state.baseStake : state.recoveryStep === 1 ? state.baseStake * 2 : state.baseStake * 4;
-      const stakeInputs = document.querySelectorAll("input[name='amount'], .input-field--amount input, [data-test='amount-input'], .amount-block input, .block--amount input");
-      for (const stakeInput of stakeInputs) {
-        if (stakeInput && stakeInput.offsetParent !== null) {
-          stakeInput.focus();
-          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-          if (nativeSetter) {
-            nativeSetter.call(stakeInput, stake);
-          } else {
-            stakeInput.value = stake;
-          }
-          stakeInput.dispatchEvent(new Event("input", { bubbles: true }));
-          stakeInput.dispatchEvent(new Event("change", { bubbles: true }));
-        }
-      }
+      const multiplier = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4;
+      const stake = state.baseStake * multiplier;
+      setPocketStakeAmount(stake);
     },
 
     // Programmatically click CALL (BUY) or PUT (SELL) with atomic single execution lock
@@ -1090,8 +1158,11 @@
         closeAnyOpenModals();
         this.setupTradeParameters();
 
-        // Фиксируем точный баланс ДО открытия сделки
-        state.balanceBefore = readPocketOptionBalance();
+        // 1. Фиксируем точный баланс ДО открытия сделки, цену входа и сумму сделки
+        state.balanceBeforeClick = getPocketBalance();
+        state.balanceBefore = state.balanceBeforeClick;
+        state.entryPrice = getCurrentChartPrice();
+        state.currentStake = getPocketStakeAmount() || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4));
 
         const isBuy = String(direction).toUpperCase() === "BUY";
         const callSelectors = [
@@ -1148,13 +1219,14 @@
 
           setTimeout(() => btn.classList.remove(glowClass), 2500);
 
-          // Фиксируем баланс ПОСЛЕ списания ставки
+          // 2. Через 2.0 секунды фиксируем баланс ПОСЛЕ списания ставки
           setTimeout(() => {
-            state.balanceAfterOpen = readPocketOptionBalance();
-            loggerLog(`[TradeBalance] До: ${state.balanceBefore}, после списания: ${state.balanceAfterOpen}`);
-          }, 1200);
+            state.balanceDuringTrade = getPocketBalance();
+            state.balanceAfterOpen = state.balanceDuringTrade;
+            loggerLog(`[TradeBalance] До клика: ${state.balanceBeforeClick}, во время сделки (списание): ${state.balanceDuringTrade}`);
+          }, 2000);
 
-          loggerLog(`Сделка ${direction} успешно отправлена через simulatePocketClick() на элементе`, btn);
+          loggerLog(`Сделка ${direction} ($${state.currentStake}) успешно отправлена через simulatePocketClick() на элементе`, btn);
           return true;
         } else {
           loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
@@ -1304,6 +1376,16 @@
 
     if (state.autoStream) {
       POAutomation.clickTrade(analysis.direction);
+    } else {
+      state.balanceBeforeClick = getPocketBalance();
+      state.balanceBefore = state.balanceBeforeClick;
+      state.entryPrice = getCurrentChartPrice();
+      state.currentStake = getPocketStakeAmount() || (state.baseStake * (state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 4));
+      setTimeout(() => {
+        state.balanceDuringTrade = getPocketBalance();
+        state.balanceAfterOpen = state.balanceDuringTrade;
+        loggerLog(`[TradeBalance Manual] До клика: ${state.balanceBeforeClick}, во время сделки: ${state.balanceDuringTrade}`);
+      }, 2000);
     }
 
     // Синхронизация сигнала с прод-сервером и Telegram Mini App
@@ -1357,28 +1439,38 @@
       btnGet.innerHTML = `<span>✨</span><span>${state.lang === "ru" ? "ПОДВЕДЕНИЕ ИТОГОВ..." : "EVALUATING TRADE..."}</span>`;
     }
 
-    // Двухфакторная проверка исхода (баланс + таблица сделок)
-    const evaluation = await evaluateTradeResult();
-    const outcome = evaluation.outcome; // "WIN" | "LOSS" | "REFUND"
-    const profit = evaluation.profit;
+    // 1. Ждём 1.2 секунды, чтобы сервер Pocket Option успел закрыть сделку и начислить выплату на баланс
+    await new Promise((r) => setTimeout(r, 1200));
+
+    state.balanceAfterClose = getPocketBalance();
+    state.exitPrice = getCurrentChartPrice();
+
+    // 2. Безошибочная проверка исхода сделки
+    const outcomeResult = evaluateTradeOutcome();
+    const isWin = outcomeResult.isWin;
+    const profitDelta = outcomeResult.profitDelta;
+    const lossDelta = outcomeResult.lossDelta;
+
+    loggerLog(`[onSignalTimerFinished] Итог: ${isWin ? "ПЛЮС (WIN)" : "МИНУС (LOSS)"} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
 
     const block = document.getElementById("botDirectionBlock");
 
-    if (outcome === "WIN") {
+    if (isWin) {
       state.liveWins += 1;
-      state.sessionProfit += profit;
+      state.sessionProfit += profitDelta;
       state.recoveryStep = 0;
+      setPocketStakeAmount(state.baseStake);
 
       await triggerStateWithVoice("TRADE_RESULT", "trade_win", () => {
         if (block) {
           block.className = "winky-direction-block active buy";
           block.innerHTML = `
             <div class="signal-dir-large buy" style="font-size:16px;">
-              🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"}
+              🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"} (+$${profitDelta})
             </div>
             <div class="signal-ta-lines">
               <div class="signal-ta-line buy">
-                ${state.lang === "ru" ? `✅ Точка входа отработала идеально (+${profit}$)` : `✅ Clean entry execution (+${profit}$)`}
+                ${state.lang === "ru" ? "✅ Прогноз отработал точно по стратегии!" : "✅ Strategy executed with precision!"}
               </div>
               <div class="signal-ta-line buy">
                 ${state.lang === "ru" ? "Забираем чистый профит по сигналу Winky AI!" : "Securing clean profit with Winky AI!"}
@@ -1387,46 +1479,83 @@
           `;
         }
       }, true, "excited", "cheer");
-    } else if (outcome === "LOSS") {
-      state.liveLosses += 1;
-      state.sessionProfit = Math.max(0, state.sessionProfit - state.baseStake);
-      state.recoveryStep = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 0;
-      const lossCategory = state.recoveryStep === 1 ? "trade_loss_step1" : "trade_loss_switch";
-
-      await triggerStateWithVoice("TRADE_RESULT", lossCategory, () => {
-        if (block) {
-          block.className = "winky-direction-block active sell";
-          block.innerHTML = `
-            <div class="signal-dir-large sell" style="font-size:15px; color:#FF3B69;">
-              ⚠️ ${state.lang === "ru" ? `СДЕЛКА В МИНУС (-${state.baseStake}$)` : `TRADE LOSS (-${state.baseStake}$)`}
-            </div>
-            <div class="signal-ta-lines">
-              <div class="signal-ta-line sell" style="color:#FFAA00;">
-                ${state.recoveryStep === 1
-                  ? (state.lang === "ru" ? "🛡️ ДОГОН 1 ШАГ: График коснулся тени уровня. Заходим в эту же пару с удвоением!" : "🛡️ STEP 1 RECOVERY: Level wick touch. Double stake on same pair!")
-                  : (state.lang === "ru" ? "🔄 ДОГОН 2 ШАГ: Пара ушла в боковик. Спокойно переключаемся на свежий тренд!" : "🔄 STEP 2 RECOVERY: Market flat. Switching to fresh pair!")}
-              </div>
-            </div>
-          `;
-        }
-      }, true, "thinking", "frustrated");
     } else {
-      // REFUND (Возврат)
-      await triggerStateWithVoice("TRADE_RESULT", "trade_loss_step1", () => {
-        if (block) {
-          block.className = "winky-direction-block active";
-          block.innerHTML = `
-            <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
-              🔄 ${state.lang === "ru" ? `ВОЗВРАТ СДЕЛКИ ($${state.baseStake})` : `REFUND ($${state.baseStake})`}
-            </div>
-            <div class="signal-ta-lines">
-              <div class="signal-ta-line" style="color:#FFFFFF;">
-                ${state.lang === "ru" ? "Цена закрылась пункт в пункт на уровне входа. Баланс сохранён!" : "Price closed at exact entry level. Balance preserved!"}
+      // МИНУС (isWin === false)
+      state.liveLosses += 1;
+      state.sessionProfit = Math.max(0, state.sessionProfit - lossDelta);
+
+      // Логика шагов перекрытия (Мартингейл):
+      // Если был 0 -> становится 1 (Шаг 1: удвоение $200, остаёмся на паре)
+      // Если был 1 -> становится 2 (Шаг 2: учетверение $400, смена пары)
+      // Если был 2 -> сброс в 0 (защита депозита)
+      if (state.recoveryStep === 0) {
+        state.recoveryStep = 1;
+        setPocketStakeAmount(state.baseStake * 2);
+
+        await triggerStateWithVoice("TRADE_RESULT", "trade_loss_step1", () => {
+          if (block) {
+            block.className = "winky-direction-block active";
+            block.innerHTML = `
+              <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
+                ⚡ ${state.lang === "ru" ? "РАБОЧИЙ МИНУС · ИДЁМ В ПЕРЕКРЫТИЕ (x2)" : "RECOVERY STEP 1 · DOUBLE STAKE (x2)"}
               </div>
-            </div>
-          `;
-        }
-      }, true, "neutral", "nod");
+              <div class="signal-ta-lines">
+                <div class="signal-ta-line" style="color:#FFAA00;">
+                  ${state.lang === "ru"
+                    ? "📌 Чуть зацепило на закрытии — ничего страшного! Удваиваем сумму и спокойно перекрываемся на этой паре."
+                    : "📌 Wick touched at the close — no worries! Doubling stake and recovering calmly on this pair."}
+                </div>
+              </div>
+            `;
+          }
+        }, true, "wink", "tilt_head");
+      } else if (state.recoveryStep === 1) {
+        state.recoveryStep = 2;
+        setPocketStakeAmount(state.baseStake * 4);
+
+        await triggerStateWithVoice("TRADE_RESULT", "trade_loss_switch", () => {
+          if (block) {
+            block.className = "winky-direction-block active";
+            block.innerHTML = `
+              <div class="signal-dir-large" style="font-size:15px; color:#00D9F5;">
+                🔄 ${state.lang === "ru" ? "СМЕНА ПАРЫ ДЛЯ ПЕРЕКРЫТИЯ" : "SWITCHING PAIR FOR RECOVERY"}
+              </div>
+              <div class="signal-ta-lines">
+                <div class="signal-ta-line" style="color:#00D9F5;">
+                  ${state.lang === "ru"
+                    ? "📌 Эта пара начала капризничать — переключаемся на чистый график и спокойно перекрываем минус там!"
+                    : "📌 Choppy action on this pair — switching to a cleaner chart to recover smoothly!"}
+                </div>
+              </div>
+            `;
+          }
+        }, true, "thinking", "frustrated");
+
+        // При 2-м минусе обязательно меняем валютную пару на Pocket Option
+        await switchPocketPair(null);
+      } else {
+        // Защита депозита после 2-го шага
+        state.recoveryStep = 0;
+        setPocketStakeAmount(state.baseStake);
+
+        await triggerStateWithVoice("TRADE_RESULT", "trade_loss_switch", () => {
+          if (block) {
+            block.className = "winky-direction-block active";
+            block.innerHTML = `
+              <div class="signal-dir-large" style="font-size:15px; color:#FF3B69;">
+                🛡️ ${state.lang === "ru" ? "ЗАЩИТА ДЕПОЗИТА · СБРОС СТАВКИ" : "DEPOSIT PROTECTION · RESET STAKE"}
+              </div>
+              <div class="signal-ta-lines">
+                <div class="signal-ta-line" style="color:#FFAA00;">
+                  ${state.lang === "ru"
+                    ? "📌 Дошли до лимита перекрытий. Возвращаем базовую ставку для безопасной торговли."
+                    : "📌 Recovery limit reached. Resetting to base stake for risk control."}
+                </div>
+              </div>
+            `;
+          }
+        }, true, "thinking", "nod");
+      }
     }
 
     saveStats();
@@ -1450,11 +1579,6 @@
       btnGet.disabled = false;
       btnGet.classList.remove("disabled");
       btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
-    }
-
-    // Если 2-й шаг догона -> смена пары
-    if (outcome === "LOSS" && state.recoveryStep === 2 && state.autoStream) {
-      await POAutomation.switchCurrencyPair();
     }
 
     // Если активен авто-стрим, запускаем следующий сигнал через 1.5с
