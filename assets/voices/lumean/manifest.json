@@ -1,0 +1,497 @@
+{
+  "version": "2.0",
+  "voice": "Марин китагава",
+  "template_id": "01a18b18-b68b-73dd-b13c-b155337800ec",
+  "total_phrases": 58,
+  "generated_at": "2026-11-02T03:20:46Z",
+  "categories": {
+    "START_STREAM_READY": [
+      {
+        "id": "start_01",
+        "category": "START_STREAM_READY",
+        "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
+        "file": "START_STREAM_READY/start_01.mp3",
+        "duration": 6.87,
+        "size": 110444
+      },
+      {
+        "id": "start_02",
+        "category": "START_STREAM_READY",
+        "text": "Так, терминал готов, индикаторы заряжены! Давайте посмотрим, где сейчас можно забрать уверенный профит.",
+        "file": "START_STREAM_READY/start_02.mp3",
+        "duration": 6.87,
+        "size": 110444
+      },
+      {
+        "id": "start_03",
+        "category": "START_STREAM_READY",
+        "text": "Начинаем новый торговый цикл! Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
+        "file": "START_STREAM_READY/start_03.mp3",
+        "duration": 5.98,
+        "size": 96233
+      },
+      {
+        "id": "start_04",
+        "category": "START_STREAM_READY",
+        "text": "Окей, я готова к анализу графика! Запускаю сканер уровней, объемов и тренда.",
+        "file": "START_STREAM_READY/start_04.mp3",
+        "duration": 5.93,
+        "size": 95397
+      }
+    ],
+    "ANALYZING_CHART": [
+      {
+        "id": "analyze_01",
+        "category": "ANALYZING_CHART",
+        "text": "Секундочку, анализирую график... Смотрю на RSI, скользящие средние и реакцию цены у ключевых уровней.",
+        "file": "ANALYZING_CHART/analyze_01.mp3",
+        "duration": 8.59,
+        "size": 138029
+      },
+      {
+        "id": "analyze_02",
+        "category": "ANALYZING_CHART",
+        "text": "Так, давайте разберем текущую картину... Проверяю силу тренда, импульсы свечей и зоны перекупленности.",
+        "file": "ANALYZING_CHART/analyze_02.mp3",
+        "duration": 7.52,
+        "size": 120893
+      },
+      {
+        "id": "analyze_03",
+        "category": "ANALYZING_CHART",
+        "text": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+        "file": "ANALYZING_CHART/analyze_03.mp3",
+        "duration": 6.82,
+        "size": 109608
+      },
+      {
+        "id": "analyze_04",
+        "category": "ANALYZING_CHART",
+        "text": "Внимательно смотрю на свечи и индикаторы... Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+        "file": "ANALYZING_CHART/analyze_04.mp3",
+        "duration": 6.17,
+        "size": 99159
+      },
+      {
+        "id": "analyze_05",
+        "category": "ANALYZING_CHART",
+        "text": "Провожу технический анализ графика: сверяю EMA, динамику RSI и ближайшие уровни поддержки и сопротивления.",
+        "file": "ANALYZING_CHART/analyze_05.mp3",
+        "duration": 8.18,
+        "size": 131342
+      },
+      {
+        "id": "analyze_06",
+        "category": "ANALYZING_CHART",
+        "text": "Хм, интересное движение на графике... Сейчас нейросеть просчитает точность сигнала на этой паре.",
+        "file": "ANALYZING_CHART/analyze_06.mp3",
+        "duration": 6.27,
+        "size": 100831
+      }
+    ],
+    "WEAK_SIGNAL_SWITCH_PAIR": [
+      {
+        "id": "switch_01",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "Не-а, на этой паре сейчас слишком слабый сигнал и рваное движение. Рисковать не будем, переключаю на другую валютную пару!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_01.mp3",
+        "duration": 8.23,
+        "size": 132178
+      },
+      {
+        "id": "switch_02",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "Здесь рынок сейчас капризный и точка входа размытая. Давайте сменим валютную пару и найдем куда более четкий график!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_02.mp3",
+        "duration": 7.11,
+        "size": 114205
+      },
+      {
+        "id": "switch_03",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "Индикаторы на этой паре дают противоречивую картину. Переключаю актив, нам нужны только надежные сетапы с высоким процентом!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_03.mp3",
+        "duration": 7.6,
+        "size": 122147
+      },
+      {
+        "id": "switch_04",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "Так, тут сейчас флэт и слабая волатильность, ловить нечего. Меняю валютную пару, посмотрим другой актив!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_04.mp3",
+        "duration": 7.18,
+        "size": 115459
+      },
+      {
+        "id": "switch_05",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "На этом графике вероятность ниже нашей планки. Без сожалений переключаемся на следующую валютную пару!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_05.mp3",
+        "duration": 6.32,
+        "size": 101667
+      },
+      {
+        "id": "switch_06",
+        "category": "WEAK_SIGNAL_SWITCH_PAIR",
+        "text": "Ой, ну тут совсем скучная картина по индикаторам. Давайте переключим пару и поищем красивое трендовое движение!",
+        "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_06.mp3",
+        "duration": 7.6,
+        "size": 122147
+      }
+    ],
+    "PAIR_SWITCHED_NEW_SCAN": [
+      {
+        "id": "switched_01",
+        "category": "PAIR_SWITCHED_NEW_SCAN",
+        "text": "Отлично, переключились на новую пару с высокой доходностью! Сейчас быстро проанализирую этот график.",
+        "file": "PAIR_SWITCHED_NEW_SCAN/switched_01.mp3",
+        "duration": 5.85,
+        "size": 94143
+      },
+      {
+        "id": "switched_02",
+        "category": "PAIR_SWITCHED_NEW_SCAN",
+        "text": "Вот, совсем другое дело! Новая валютная пара открыта, запускаю сканирование уровней и RSI.",
+        "file": "PAIR_SWITCHED_NEW_SCAN/switched_02.mp3",
+        "duration": 7.18,
+        "size": 115459
+      },
+      {
+        "id": "switched_03",
+        "category": "PAIR_SWITCHED_NEW_SCAN",
+        "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
+        "file": "PAIR_SWITCHED_NEW_SCAN/switched_03.mp3",
+        "duration": 5.9,
+        "size": 94979
+      },
+      {
+        "id": "switched_04",
+        "category": "PAIR_SWITCHED_NEW_SCAN",
+        "text": "Пара успешно изменена! Начинаю анализ индикаторов на новом графике.",
+        "file": "PAIR_SWITCHED_NEW_SCAN/switched_04.mp3",
+        "duration": 4.78,
+        "size": 77007
+      }
+    ],
+    "PREPARE_ENTRY": [
+      {
+        "id": "prep_01",
+        "category": "PREPARE_ENTRY",
+        "text": "Ого, вижу отличную формацию! Готовлю точку входа, сейчас зайдем на самом выгодном импульсе!",
+        "file": "PREPARE_ENTRY/prep_01.mp3",
+        "duration": 7.0,
+        "size": 112534
+      },
+      {
+        "id": "prep_02",
+        "category": "PREPARE_ENTRY",
+        "text": "Есть контакт! Сигнал подтвержден по всем индикаторам, приготовьтесь — сейчас будем открывать сделку!",
+        "file": "PREPARE_ENTRY/prep_02.mp3",
+        "duration": 6.35,
+        "size": 102085
+      },
+      {
+        "id": "prep_03",
+        "category": "PREPARE_ENTRY",
+        "text": "Красота! Уровень держит, RSI дает четкий разворотный сигнал. Выставляю параметры и захожу в сделку!",
+        "file": "PREPARE_ENTRY/prep_03.mp3",
+        "duration": 7.58,
+        "size": 121729
+      },
+      {
+        "id": "prep_04",
+        "category": "PREPARE_ENTRY",
+        "text": "Нашла сильный сетап с высокой точностью! Буквально пара секунд — фиксируем точку входа!",
+        "file": "PREPARE_ENTRY/prep_04.mp3",
+        "duration": 6.56,
+        "size": 105428
+      }
+    ],
+    "OPEN_TRADE_CALL": [
+      {
+        "id": "call_01",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Захожу ВВЕРХ на повышение! Цена уперлась в сильный нижний уровень, продавцы выдохлись — ждем уверенный отскок наверх!",
+        "file": "OPEN_TRADE_CALL/call_01.mp3",
+        "duration": 7.39,
+        "size": 118803
+      },
+      {
+        "id": "call_02",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Открываю сделку КУПИТЬ, идем ВВЕРХ! Индикатор RSI в зоне перепроданности, а покупатели уже перехватывают инициативу!",
+        "file": "OPEN_TRADE_CALL/call_02.mp3",
+        "duration": 7.99,
+        "size": 128416
+      },
+      {
+        "id": "call_03",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Берем сделку на ПОВЫШЕНИЕ на тридцать секунд! Отличная поддержка снизу и разворотный паттерн по тренду!",
+        "file": "OPEN_TRADE_CALL/call_03.mp3",
+        "duration": 8.91,
+        "size": 143045
+      },
+      {
+        "id": "call_04",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Нажимаю ВВЕРХ! Здесь читается чистый бычий импульс от локального минимума, сделка в работе!",
+        "file": "OPEN_TRADE_CALL/call_04.mp3",
+        "duration": 6.56,
+        "size": 105428
+      },
+      {
+        "id": "call_05",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Сделка открыта на покупку — ВВЕРХ! Все факторы за рост, теперь сопровождаем движение!",
+        "file": "OPEN_TRADE_CALL/call_05.mp3",
+        "duration": 5.67,
+        "size": 91218
+      },
+      {
+        "id": "call_06",
+        "category": "OPEN_TRADE_CALL",
+        "text": "Влетаем ВВЕРХ! Отличный вход на откате к уровню поддержки, ждем зеленую свечу!",
+        "file": "OPEN_TRADE_CALL/call_06.mp3",
+        "duration": 5.67,
+        "size": 91218
+      }
+    ],
+    "OPEN_TRADE_PUT": [
+      {
+        "id": "put_01",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Захожу ВНИЗ на понижение! Цена уперлась в мощный потолок сопротивления, покупатели выдохлись — ждем откат вниз!",
+        "file": "OPEN_TRADE_PUT/put_01.mp3",
+        "duration": 7.52,
+        "size": 120893
+      },
+      {
+        "id": "put_02",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Открываю сделку ПРОДАТЬ, идем ВНИЗ! По RSI сильная перекупленность, самое время забрать движение на коррекции!",
+        "file": "OPEN_TRADE_PUT/put_02.mp3",
+        "duration": 7.65,
+        "size": 122983
+      },
+      {
+        "id": "put_03",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Берем сделку на ПОНИЖЕНИЕ на тридцать секунд! Отличный медвежий сигнал от верхнего уровня!",
+        "file": "OPEN_TRADE_PUT/put_03.mp3",
+        "duration": 6.97,
+        "size": 112116
+      },
+      {
+        "id": "put_04",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Нажимаю ВНИЗ! Вижу затухание роста у сильной зоны сопротивления, сделка открыта!",
+        "file": "OPEN_TRADE_PUT/put_04.mp3",
+        "duration": 6.22,
+        "size": 99995
+      },
+      {
+        "id": "put_05",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Сделка в работе, прогноз — ВНИЗ! Продавцы активно давят цену от максимума, следим за графиком!",
+        "file": "OPEN_TRADE_PUT/put_05.mp3",
+        "duration": 5.75,
+        "size": 92472
+      },
+      {
+        "id": "put_06",
+        "category": "OPEN_TRADE_PUT",
+        "text": "Заходим на продажу — ВНИЗ! Идеальная точка входа на развороте от вершины!",
+        "file": "OPEN_TRADE_PUT/put_06.mp3",
+        "duration": 4.78,
+        "size": 77007
+      }
+    ],
+    "IN_TRADE_WAITING": [
+      {
+        "id": "wait_01",
+        "category": "IN_TRADE_WAITING",
+        "text": "Половина времени сделки позади! Внимательно следим за каждым тиком, точка входа держится отлично!",
+        "file": "IN_TRADE_WAITING/wait_01.mp3",
+        "duration": 6.56,
+        "size": 105428
+      },
+      {
+        "id": "wait_02",
+        "category": "IN_TRADE_WAITING",
+        "text": "Осталось около пятнадцати секунд до закрытия. Дышим ровно и смотрим, как отрабатывает наш прогноз!",
+        "file": "IN_TRADE_WAITING/wait_02.mp3",
+        "duration": 6.35,
+        "size": 102085
+      },
+      {
+        "id": "wait_03",
+        "category": "IN_TRADE_WAITING",
+        "text": "Сделка в самом разгаре! График показывает хорошую реакцию, ждем финальной фиксации таймера!",
+        "file": "IN_TRADE_WAITING/wait_03.mp3",
+        "duration": 5.93,
+        "size": 95397
+      },
+      {
+        "id": "wait_04",
+        "category": "IN_TRADE_WAITING",
+        "text": "Сопровождаем сделку, до экспирации совсем немного времени! Держим кулачки!",
+        "file": "IN_TRADE_WAITING/wait_04.mp3",
+        "duration": 4.78,
+        "size": 77007
+      },
+      {
+        "id": "wait_05",
+        "category": "IN_TRADE_WAITING",
+        "text": "Смотрим на закрытие свечи, остаются считанные секунды до результата!",
+        "file": "IN_TRADE_WAITING/wait_05.mp3",
+        "duration": 4.31,
+        "size": 69484
+      }
+    ],
+    "TRADE_WIN": [
+      {
+        "id": "win_01",
+        "category": "TRADE_WIN",
+        "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
+        "file": "TRADE_WIN/win_01.mp3",
+        "duration": 8.12,
+        "size": 130506
+      },
+      {
+        "id": "win_02",
+        "category": "TRADE_WIN",
+        "text": "Ес! Уверенный плюс! Как по учебнику — уровень отработал на все сто процентов, поздравляю всех с профитом!",
+        "file": "TRADE_WIN/win_02.mp3",
+        "duration": 6.77,
+        "size": 108772
+      },
+      {
+        "id": "win_03",
+        "category": "TRADE_WIN",
+        "text": "Красота-а! Очередная победа в нашу статистику! Люблю, когда технический анализ дает такой четкий результат!",
+        "file": "TRADE_WIN/win_03.mp3",
+        "duration": 7.71,
+        "size": 123818
+      },
+      {
+        "id": "win_04",
+        "category": "TRADE_WIN",
+        "text": "Шикарное закрытие в плюс! Профит уже на балансе, наша серия побед продолжается!",
+        "file": "TRADE_WIN/win_04.mp3",
+        "duration": 5.93,
+        "size": 95397
+      },
+      {
+        "id": "win_05",
+        "category": "TRADE_WIN",
+        "text": "Изи плюс в копилочку! Сделка зашла уверенно, нейросеть прочитала это движение как открытую книгу!",
+        "file": "TRADE_WIN/win_05.mp3",
+        "duration": 6.35,
+        "size": 102085
+      },
+      {
+        "id": "win_06",
+        "category": "TRADE_WIN",
+        "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
+        "file": "TRADE_WIN/win_06.mp3",
+        "duration": 6.45,
+        "size": 103756
+      }
+    ],
+    "TRADE_LOSS": [
+      {
+        "id": "loss_01",
+        "category": "TRADE_LOSS",
+        "text": "Эх, на последней секунде рынок дал резкий микро-импульс против нас, закрылись в минус. Ничего страшного, это рынок — сейчас спокойно перекроем!",
+        "file": "TRADE_LOSS/loss_01.mp3",
+        "duration": 9.8,
+        "size": 157255
+      },
+      {
+        "id": "loss_02",
+        "category": "TRADE_LOSS",
+        "text": "Так, эта сделка ушла в минус, OTC-график решил покапризничать. Сохраняем холодную голову и дисциплину, ищем следующий верный вход!",
+        "file": "TRADE_LOSS/loss_02.mp3",
+        "duration": 9.38,
+        "size": 150568
+      },
+      {
+        "id": "loss_03",
+        "category": "TRADE_LOSS",
+        "text": "Обидный прокол уровня под самое закрытие таймера. Без паники! У нас отличный общий винрейт, сейчас найдем сильный сетап и отработаем!",
+        "file": "TRADE_LOSS/loss_03.mp3",
+        "duration": 9.33,
+        "size": 149732
+      },
+      {
+        "id": "loss_04",
+        "category": "TRADE_LOSS",
+        "text": "В этот раз минус — рынок устроил ложный вынос. Делаем выводы, не тильтуем и готовимся к следующей точной сделке!",
+        "file": "TRADE_LOSS/loss_04.mp3",
+        "duration": 6.77,
+        "size": 108772
+      },
+      {
+        "id": "loss_05",
+        "category": "TRADE_LOSS",
+        "text": "Сделка закрылась в минус. В трейдинге главное — дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа!",
+        "file": "TRADE_LOSS/loss_05.mp3",
+        "duration": 8.49,
+        "size": 136357
+      }
+    ],
+    "TRADE_REFUND": [
+      {
+        "id": "refund_01",
+        "category": "TRADE_REFUND",
+        "text": "Ого, закрылись ровно в точку входа — возврат! Деньги полностью вернулись на баланс, ни цента не потеряли!",
+        "file": "TRADE_REFUND/refund_01.mp3",
+        "duration": 7.47,
+        "size": 120057
+      },
+      {
+        "id": "refund_02",
+        "category": "TRADE_REFUND",
+        "text": "Нулевое закрытие, сделка рассчитана возвратом. Баланс на месте, сейчас перезайдем на более сильном движении!",
+        "file": "TRADE_REFUND/refund_02.mp3",
+        "duration": 7.11,
+        "size": 114205
+      }
+    ],
+    "PAUSE_BETWEEN_TRADES": [
+      {
+        "id": "pause_01",
+        "category": "PAUSE_BETWEEN_TRADES",
+        "text": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+        "file": "PAUSE_BETWEEN_TRADES/pause_01.mp3",
+        "duration": 6.74,
+        "size": 108354
+      },
+      {
+        "id": "pause_02",
+        "category": "PAUSE_BETWEEN_TRADES",
+        "text": "Небольшая передышка по тайм-менеджменту! В трейдинге важно не спешить и входить только по лучшим сигналам.",
+        "file": "PAUSE_BETWEEN_TRADES/pause_02.mp3",
+        "duration": 6.56,
+        "size": 105428
+      },
+      {
+        "id": "pause_03",
+        "category": "PAUSE_BETWEEN_TRADES",
+        "text": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+        "file": "PAUSE_BETWEEN_TRADES/pause_03.mp3",
+        "duration": 5.33,
+        "size": 85784
+      },
+      {
+        "id": "pause_04",
+        "category": "PAUSE_BETWEEN_TRADES",
+        "text": "Короткая пауза между сделками — обновляю данные по волатильности и готовлю сканер к новому циклу!",
+        "file": "PAUSE_BETWEEN_TRADES/pause_04.mp3",
+        "duration": 6.27,
+        "size": 100831
+      }
+    ]
+  }
+}

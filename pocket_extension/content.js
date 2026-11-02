@@ -127,6 +127,11 @@
     liveLosses: savedStats.losses,
     sessionProfit: savedStats.profit,
     lastBalance: null,
+    balanceBefore: null,
+    balanceAfterOpen: null,
+    balanceAfterClose: null,
+    isExecutingTrade: false,
+    recentPairs: [],
     expiryInterval: null,
     autoStreamTimer: null,
     priceTicks: [], // Sliding buffer of last 60 ticks for real TA
@@ -511,25 +516,180 @@
       }
     }
 
-    // 4. Detect balance changes for Win/Loss tracking
-    const balanceSelectors = [".balance-info-block", ".user-balance", ".current-balance", "[data-test='balance']", ".balance_val"];
+    // 4. Track balance values
+    const num = readPocketOptionBalance();
+    if (num !== null) {
+      state.lastBalance = num;
+    }
+  }
+
+  function readPocketOptionBalance() {
+    const balanceSelectors = [
+      ".balance-info-block",
+      ".user-balance",
+      ".current-balance",
+      "[data-test='balance']",
+      ".balance_val",
+      ".balance-value",
+      ".js-balance-value",
+      ".balance-wrap .balance",
+    ];
     for (const sel of balanceSelectors) {
       const el = document.querySelector(sel);
       if (el && el.textContent.trim()) {
         const rawNum = el.textContent.replace(/[^0-9.]/g, "");
         const num = parseFloat(rawNum);
         if (!isNaN(num) && num > 0) {
-          if (state.lastBalance !== null && state.botState === "IN_TRADE") {
-            if (num > state.lastBalance) {
-              const delta = Math.round(num - state.lastBalance);
-              onSignalTimerFinished(true, delta);
-            }
+          return num;
+        }
+      }
+    }
+    return null;
+  }
+
+  function readClosedDealsFirstRow() {
+    const listSelectors = [
+      ".deals-list__item",
+      ".deals-item",
+      ".trading-history__item",
+      ".history-deal-item",
+      ".deal-item",
+      ".closed-deals__item",
+      "[data-test='closed-deal-item']",
+      ".list-deals .item",
+      ".deals-wrap .item",
+    ];
+    let firstRow = null;
+    for (const sel of listSelectors) {
+      const items = document.querySelectorAll(sel);
+      if (items && items.length > 0) {
+        for (const item of items) {
+          if (item && item.offsetParent !== null && item.textContent.trim()) {
+            firstRow = item;
+            break;
           }
-          state.lastBalance = num;
+        }
+        if (firstRow) break;
+      }
+    }
+
+    if (!firstRow) {
+      const rows = document.querySelectorAll(".trading-history tbody tr, .closed-deals tbody tr");
+      for (const r of rows) {
+        if (r && r.offsetParent !== null) {
+          firstRow = r;
           break;
         }
       }
     }
+
+    if (!firstRow) return null;
+
+    const rowText = firstRow.textContent.trim();
+    loggerLog("[ClosedDealsCheck] Первая строка закрытых сделок:", rowText);
+
+    // Check for explicit $0 or $0.00 -> LOSS (Do NOT match asset payout percentage like +92%!)
+    const isZeroPayout = /\b0(\.00)?\s*[$€₽]?\b/i.test(rowText) || /\b[$€₽]\s*0(\.00)?\b/i.test(rowText) || rowText.includes("$0") || rowText.includes("0.00 $") || rowText.includes("0.00$");
+
+    // Look for explicit profit payout like +$92, +92$, +92.00$
+    const profitMatch = rowText.match(/\+\s*([$€₽]?\s*\d+(\.\d+)?|\d+(\.\d+)?\s*[$€₽])/);
+
+    if (isZeroPayout && !profitMatch) {
+      return { status: "LOSS", payout: 0, text: rowText };
+    }
+
+    if (profitMatch) {
+      const numStr = profitMatch[0].replace(/[^0-9.]/g, "");
+      const profitVal = parseFloat(numStr) || 92;
+      return { status: "WIN", payout: profitVal, text: rowText };
+    }
+
+    if (rowText.includes("возврат") || rowText.includes("refund") || rowText.includes("0.00%")) {
+      return { status: "REFUND", payout: 0, text: rowText };
+    }
+
+    return null;
+  }
+
+  async function evaluateTradeResult() {
+    // 1.8s wait for Pocket Option backend & DOM to record deal and update balance
+    await new Promise((r) => setTimeout(r, 1800));
+
+    state.balanceAfterClose = readPocketOptionBalance();
+    const dealRow = readClosedDealsFirstRow();
+
+    loggerLog("[evaluateTradeResult] Проверка результата сделки:", {
+      balanceBefore: state.balanceBefore,
+      balanceAfterOpen: state.balanceAfterOpen,
+      balanceAfterClose: state.balanceAfterClose,
+      dealRow: dealRow,
+    });
+
+    let detectedOutcome = null; // "WIN" | "LOSS" | "REFUND"
+    let profitAmount = 92;
+
+    // 1. Explicit closed deal history row (Highest Priority)
+    if (dealRow) {
+      if (dealRow.status === "LOSS") {
+        detectedOutcome = "LOSS";
+      } else if (dealRow.status === "WIN") {
+        detectedOutcome = "WIN";
+        profitAmount = dealRow.payout;
+      } else if (dealRow.status === "REFUND") {
+        detectedOutcome = "REFUND";
+      }
+    }
+
+    // 2. Balance delta check (balanceAfterClose vs balanceBefore)
+    if (!detectedOutcome && state.balanceBefore !== null && state.balanceAfterClose !== null) {
+      const delta = Math.round(state.balanceAfterClose - state.balanceBefore);
+      if (delta > 0) {
+        detectedOutcome = "WIN";
+        profitAmount = delta;
+      } else if (delta < 0) {
+        detectedOutcome = "LOSS";
+      } else if (delta === 0) {
+        // Balance returned to exact before value -> Refund
+        detectedOutcome = "REFUND";
+      }
+    }
+
+    // 3. Balance delta check (balanceAfterClose vs balanceAfterOpen)
+    if (!detectedOutcome && state.balanceAfterClose !== null && state.balanceAfterOpen !== null) {
+      const gainSinceOpen = Math.round(state.balanceAfterClose - state.balanceAfterOpen);
+      if (gainSinceOpen > state.baseStake) {
+        detectedOutcome = "WIN";
+        profitAmount = gainSinceOpen - state.baseStake;
+      } else if (gainSinceOpen === 0) {
+        detectedOutcome = "LOSS";
+      }
+    }
+
+    // 4. Secret streamer forcedLoss trigger
+    if (state.forcedLoss) {
+      state.forcedLoss = false;
+      detectedOutcome = "LOSS";
+    }
+
+    // 5. Fallback if still undetermined: do NOT default to WIN!
+    if (!detectedOutcome) {
+      loggerLog("[evaluateTradeResult] Баланс не изменился в DOM, анализируем тики цены...");
+      if (state.priceTicks && state.priceTicks.length >= 2) {
+        const lastTick = state.priceTicks[state.priceTicks.length - 1];
+        const firstTick = state.priceTicks[0];
+        const isUp = lastTick >= firstTick;
+        const wasBuy = state.activeSignal && state.activeSignal.direction === "BUY";
+        detectedOutcome = (isUp === wasBuy) ? "WIN" : "LOSS";
+      } else {
+        // Safe default: loss is safer than false win
+        detectedOutcome = "LOSS";
+      }
+    }
+
+    return {
+      outcome: detectedOutcome,
+      profit: profitAmount,
+    };
   }
 
   function scanPocketOptionCurrentPair() {
@@ -585,6 +745,11 @@
   function robustClick(el) {
     if (!el) return false;
     try {
+      if (typeof el.focus === "function") el.focus();
+      if (typeof el.click === "function") {
+        el.click();
+        return true;
+      }
       const rect = el.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
@@ -595,25 +760,12 @@
         composed: true,
         clientX: x,
         clientY: y,
-        screenX: window.screenX + x,
-        screenY: window.screenY + y,
         button: 0,
         buttons: 1,
       };
-
-      el.dispatchEvent(new PointerEvent("pointerover", eventOpts));
-      el.dispatchEvent(new MouseEvent("mouseover", eventOpts));
-      el.dispatchEvent(new PointerEvent("pointerenter", eventOpts));
-      el.dispatchEvent(new MouseEvent("mouseenter", eventOpts));
-      el.dispatchEvent(new PointerEvent("pointerdown", eventOpts));
       el.dispatchEvent(new MouseEvent("mousedown", eventOpts));
-      if (typeof el.focus === "function") el.focus();
-      el.dispatchEvent(new PointerEvent("pointerup", { ...eventOpts, buttons: 0 }));
       el.dispatchEvent(new MouseEvent("mouseup", { ...eventOpts, buttons: 0 }));
       el.dispatchEvent(new MouseEvent("click", { ...eventOpts, buttons: 0 }));
-      if (typeof el.click === "function") {
-        el.click();
-      }
       return true;
     } catch (err) {
       loggerLog("robustClick warning:", err);
@@ -655,28 +807,14 @@
   }
 
   const POAutomation = {
-    // Asynchronous pair switch with retry and DOM ticker verification
-    async switchPairAsync(pairName) {
-      if (!pairName) return false;
-      const cleanTarget = pairName.replace(/\s*OTC/i, "").trim().toLowerCase();
-      loggerLog("POAutomation: переключение пары на", pairName, `(поиск: ${cleanTarget})`);
+    // Robust asynchronous currency pair switcher with DOM rendering verification
+    async switchCurrencyPair(targetPairName = null) {
+      loggerLog("[PairSwitch] Начинаем смену валютной пары. Цель:", targetPairName || "Автовыбор лучшей пары");
 
-      // 1. Проверяем, не активна ли пара уже прямо сейчас на графике
-      const currentTicker = scanPocketOptionCurrentPair();
-      if (currentTicker && currentTicker.toLowerCase().includes(cleanTarget)) {
-        loggerLog("Пара уже активна на графике:", currentTicker);
-        state.targetPair = pairName;
-        const meta = getPairMeta(pairName);
-        state.targetFlags = meta.flags;
-        state.targetPayout = meta.payout;
-        updateCardPairUI();
-        return true;
-      }
+      const currentTicker = scanPocketOptionCurrentPair() || state.targetPair;
 
       for (let attempt = 1; attempt <= 2; attempt++) {
-        loggerLog(`Попытка ${attempt}/2 переключения пары на ${pairName}`);
-
-        // Шаг А: Клик по кнопке выбора актива
+        // Шаг 1: Найти и кликнуть селектор пары в шапке Pocket Option
         const clickerSelectors = [
           ".current-symbol",
           ".btn-select-pair",
@@ -687,6 +825,7 @@
           ".current-asset",
           ".alist-trigger",
           ".alist__head",
+          ".symbols-head",
         ];
         let clicker = null;
         for (const sel of clickerSelectors) {
@@ -696,78 +835,145 @@
             break;
           }
         }
+        if (!clicker) {
+          clicker = document.querySelector("h1, .symbol, .pair");
+        }
 
         if (clicker) {
-          robustClick(clicker);
+          clicker.click();
         } else {
-          const titleEl = document.querySelector("h1, .symbol, .pair");
-          if (titleEl) robustClick(titleEl);
+          loggerLog("[PairSwitch] Не найден селектор валютной пары в DOM");
+          return false;
         }
 
-        await new Promise((r) => setTimeout(r, 400));
+        // Шаг 2: Ждём рендера выпадающего списка в DOM
+        await new Promise((r) => setTimeout(r, 600));
 
-        // Шаг Б: Поиск через инпут фильтра (если доступен)
-        const searchInput = document.querySelector("input.assets-search, input.alist-search, .search-block input, [data-test='asset-search'], .alist input");
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.value = cleanTarget;
-          searchInput.dispatchEvent(new Event("input", { bubbles: true }));
-          searchInput.dispatchEvent(new Event("change", { bubbles: true }));
-          await new Promise((r) => setTimeout(r, 300));
-        }
-
-        // Шаг В: Поиск и клик по элементу в списке
-        const itemSelectors = [
+        // Шаг 3: Собираем отрендеренные элементы списка
+        const rowSelectors = [
+          ".alist__item",
           ".symbols-list__item",
           ".asset-item",
           ".pair-item",
-          ".alist__item",
-          ".alist-link",
           "[data-test='asset-item']",
+          ".alist-link",
           ".symbol-item",
-          ".alist__cell",
         ];
-        const items = document.querySelectorAll(itemSelectors.join(", "));
-        for (const item of items) {
-          const itemText = (item.textContent || "").toLowerCase().trim();
-          if (itemText.includes(cleanTarget) || itemText.replace(/[^a-z0-9]/g, "").includes(cleanTarget.replace(/[^a-z0-9]/g, ""))) {
-            robustClick(item);
-            break;
+        let rowElements = [];
+        for (const sel of rowSelectors) {
+          const found = document.querySelectorAll(sel);
+          if (found && found.length > 0) {
+            rowElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
+            if (rowElements.length > 0) break;
           }
         }
 
-        await new Promise((r) => setTimeout(r, 250));
-        closeAnyOpenModals();
+        loggerLog(`[PairSwitch] Найдено пар в списке: ${rowElements.length}`);
 
-        // Шаг Г: Проверка изменения тикера в DOM (до 5 секунд)
-        const verifyStart = Date.now();
-        while (Date.now() - verifyStart < 5000) {
-          await new Promise((r) => setTimeout(r, 300));
-          const activeNow = scanPocketOptionCurrentPair();
-          if (activeNow && activeNow.toLowerCase().includes(cleanTarget)) {
-            loggerLog(`Пара успешно переключена на ${activeNow} за ${Date.now() - verifyStart}мс!`);
-            state.targetPair = pairName;
-            const meta = getPairMeta(pairName);
-            state.targetFlags = meta.flags;
-            state.targetPayout = meta.payout;
-            updateCardPairUI();
-            return true;
+        let targetItem = null;
+        let targetName = targetPairName;
+
+        if (targetName) {
+          const cleanTarget = targetName.replace(/\s*OTC/i, "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          for (const item of rowElements) {
+            const itemText = (item.textContent || "").replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+            if (itemText.includes(cleanTarget)) {
+              targetItem = item;
+              break;
+            }
+          }
+        } else {
+          // Автовыбор пары с выплатой >=85%, исключая текущую и последние 2 пары
+          const candidates = [];
+          for (const item of rowElements) {
+            const rawText = item.textContent || "";
+            const pairMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+            const payoutMatch = rawText.match(/(\d+)%/);
+            if (pairMatch) {
+              const pName = pairMatch[0].trim();
+              const payout = payoutMatch ? parseInt(payoutMatch[1], 10) : 0;
+              const isCurrent = currentTicker && pName.toLowerCase().replace(/[^a-z]/g, "") === currentTicker.toLowerCase().replace(/[^a-z]/g, "");
+              const isRecent = state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z]/g, "") === pName.toLowerCase().replace(/[^a-z]/g, ""));
+              const isBlocked = isPairBlacklisted(pName);
+
+              if (!isCurrent && !isRecent && !isBlocked && payout >= 85) {
+                candidates.push({ item, name: pName, payout });
+              }
+            }
+          }
+
+          loggerLog(`[PairSwitch] Кандидатов с выплатой >=85%: ${candidates.length}`);
+
+          if (candidates.length > 0) {
+            candidates.sort((a, b) => b.payout - a.payout);
+            const topCandidates = candidates.filter((c) => c.payout === candidates[0].payout);
+            const chosen = topCandidates[Math.floor(Math.random() * topCandidates.length)];
+            targetItem = chosen.item;
+            targetName = chosen.name;
+          } else if (rowElements.length > 1) {
+            for (const item of rowElements) {
+              const rawText = item.textContent || "";
+              if (!currentTicker || !rawText.toLowerCase().includes(currentTicker.toLowerCase().slice(0, 6))) {
+                targetItem = item;
+                const pMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+                targetName = pMatch ? pMatch[0].trim() : "EUR/USD OTC";
+                break;
+              }
+            }
           }
         }
+
+        if (targetItem) {
+          loggerLog(`[PairSwitch] Кликаем по паре: ${targetName}`);
+          try {
+            targetItem.scrollIntoView({ block: "center", behavior: "instant" });
+          } catch (_) {}
+          await new Promise((r) => setTimeout(r, 150));
+
+          const clickTarget = targetItem.querySelector("a, .alist__link, .alist__cell, .symbol-name") || targetItem;
+          clickTarget.click();
+
+          // Проверяем изменение тикера в DOM (до 5 секунд)
+          const checkStart = Date.now();
+          while (Date.now() - checkStart < 5000) {
+            await new Promise((r) => setTimeout(r, 300));
+            const newActive = scanPocketOptionCurrentPair();
+            if (newActive && (!currentTicker || newActive.toLowerCase().replace(/[^a-z]/g, "") !== currentTicker.toLowerCase().replace(/[^a-z]/g, ""))) {
+              loggerLog(`[PairSwitch] Пара успешно переключена на «${newActive}» за ${Date.now() - checkStart}мс!`);
+              state.targetPair = newActive;
+              if (!state.recentPairs.includes(newActive)) {
+                state.recentPairs.push(newActive);
+                if (state.recentPairs.length > 2) state.recentPairs.shift();
+              }
+              const meta = getPairMeta(newActive);
+              state.targetFlags = meta.flags;
+              state.targetPayout = meta.payout;
+              updateCardPairUI();
+
+              const selectPair = document.getElementById("selectBotPair");
+              if (selectPair) {
+                selectPair.value = newActive;
+              }
+              return true;
+            }
+          }
+        }
+
+        loggerLog(`[PairSwitch] Попытка ${attempt} не удалась, повторяем...`);
+        await new Promise((r) => setTimeout(r, 500));
       }
 
-      // После двух неудачных попыток блокируем пару, чтобы не застрять в бесконечном цикле
-      loggerLog(`Не удалось переключить пару на ${pairName} за 2 попытки! Временный блэклист на 10 мин.`);
-      blacklistPair(pairName);
-      const fallbackPair = scanPocketOptionCurrentPair() || state.targetPair;
-      state.targetPair = fallbackPair;
-      updateCardPairUI();
+      loggerLog("[PairSwitch] Не удалось сменить пару за 2 попытки!");
       return false;
     },
 
-    // Sync bridge for callers expecting switchPair
+    // Sync & Async bridges
     switchPair(pairName) {
-      return this.switchPairAsync(pairName);
+      return this.switchCurrencyPair(pairName);
+    },
+
+    switchPairAsync(pairName) {
+      return this.switchCurrencyPair(pairName);
     },
 
     // Ensure stake based on recovery step
@@ -784,53 +990,194 @@
       }
     },
 
-    // Programmatically click CALL (BUY) or PUT (SELL) with robust Pointer/Mouse events
+    // Programmatically click CALL (BUY) or PUT (SELL) with atomic single execution lock
     clickTrade(direction) {
-      closeAnyOpenModals();
-      this.setupTradeParameters();
-      const isBuy = String(direction).toUpperCase() === "BUY";
-      const callSelectors = [
-        ".btn-call",
-        ".btn-high",
-        "[data-qa='btn-call']",
-        "[data-test='btn-call']",
-        ".call-btn",
-        ".btn-up",
-      ];
-      const putSelectors = [
-        ".btn-put",
-        ".btn-low",
-        "[data-qa='btn-put']",
-        "[data-test='btn-put']",
-        ".put-btn",
-        ".btn-down",
-      ];
-
-      const selList = isBuy ? callSelectors : putSelectors;
-      let btn = null;
-      for (const sel of selList) {
-        const el = document.querySelector(sel);
-        if (el && el.offsetParent !== null) {
-          btn = el;
-          break;
-        }
-      }
-
-      if (btn) {
-        const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
-        btn.classList.add(glowClass);
-        robustClick(btn);
-        setTimeout(() => btn.classList.remove(glowClass), 2500);
-        loggerLog(`Сделка ${direction} успешно отправлена через robustClick на элементе`, btn);
-        return true;
-      } else {
-        loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
+      if (state.isExecutingTrade) {
+        loggerLog("[TradeLock] Повторный вход заблокирован! Сделка уже исполняется.");
         return false;
+      }
+      state.isExecutingTrade = true;
+
+      try {
+        closeAnyOpenModals();
+        this.setupTradeParameters();
+
+        // Фиксируем точный баланс ДО открытия сделки
+        state.balanceBefore = readPocketOptionBalance();
+
+        const isBuy = String(direction).toUpperCase() === "BUY";
+        const callSelectors = [
+          ".btn-call",
+          ".btn-high",
+          "[data-qa='btn-call']",
+          "[data-test='btn-call']",
+          ".call-btn",
+          ".btn-up",
+        ];
+        const putSelectors = [
+          ".btn-put",
+          ".btn-low",
+          "[data-qa='btn-put']",
+          "[data-test='btn-put']",
+          ".put-btn",
+          ".btn-down",
+        ];
+
+        const selList = isBuy ? callSelectors : putSelectors;
+        let btn = null;
+        for (const sel of selList) {
+          const el = document.querySelector(sel);
+          if (el && el.offsetParent !== null) {
+            btn = el;
+            break;
+          }
+        }
+
+        if (btn) {
+          const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
+          btn.classList.add(glowClass);
+
+          // Одиночный нативный клик (без дублирования)
+          btn.click();
+
+          setTimeout(() => btn.classList.remove(glowClass), 2500);
+
+          // Фиксируем баланс ПОСЛЕ списания ставки
+          setTimeout(() => {
+            state.balanceAfterOpen = readPocketOptionBalance();
+            loggerLog(`[TradeBalance] До: ${state.balanceBefore}, после списания: ${state.balanceAfterOpen}`);
+          }, 1200);
+
+          loggerLog(`Сделка ${direction} успешно отправлена через одиночный click() на элементе`, btn);
+          return true;
+        } else {
+          loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
+          return false;
+        }
+      } finally {
+        // Снимаем блокировку через 3 секунды
+        setTimeout(() => {
+          state.isExecutingTrade = false;
+        }, 3000);
       }
     },
   };
 
-  /* ==================== 4. Signal Execution & Smart Recovery Engine ==================== */
+  /* ==================== 4. Voice Manager & 0ms Sync Engine ==================== */
+
+  const VoiceManager = {
+    manifest: null,
+    lastPlayedByCategory: {},
+    loadingPromise: null,
+
+    async loadManifest() {
+      if (this.manifest) return this.manifest;
+      if (this.loadingPromise) return this.loadingPromise;
+
+      this.loadingPromise = (async () => {
+        try {
+          const res = await sendProxyMessage("/api/winky/voice_manifest", "GET");
+          if (res && res.data && res.data.categories) {
+            this.manifest = res.data;
+            loggerLog("VoiceManager: Манифест Lumean успешно загружен! Фраз в банке:", res.data.total_phrases || 58);
+            return this.manifest;
+          }
+        } catch (err) {
+          loggerLog("VoiceManager: Ошибка загрузки манифеста:", err);
+        }
+        return null;
+      })();
+
+      return this.loadingPromise;
+    },
+
+    pickPhrase(category) {
+      if (!this.manifest || !this.manifest.categories) return null;
+      const list = this.manifest.categories[category];
+      if (!list || list.length === 0) return null;
+
+      const lastId = this.lastPlayedByCategory[category];
+      const available = list.length > 1 ? list.filter((item) => item.id !== lastId) : list;
+      const picked = available[Math.floor(Math.random() * available.length)];
+      if (picked) {
+        this.lastPlayedByCategory[category] = picked.id;
+      }
+      return picked;
+    },
+
+    async playVoice(category, isBlocking = false) {
+      if (!this.manifest) {
+        await this.loadManifest();
+      }
+
+      const item = this.pickPhrase(category);
+      if (!item) {
+        loggerLog(`VoiceManager: Нет фразы для категории «${category}»`);
+        if (isBlocking) await new Promise((r) => setTimeout(r, 1200));
+        return null;
+      }
+
+      // Настройка эмоций и действий для 3D-аватара Winky
+      let emotion = "happy";
+      let action = "talk";
+      if (category === "TRADE_WIN") {
+        emotion = "excited";
+        action = "cheer";
+      } else if (category === "TRADE_LOSS") {
+        emotion = "thinking";
+        action = "frustrated";
+      } else if (category === "TRADE_REFUND") {
+        emotion = "neutral";
+        action = "nod";
+      } else if (category === "PREPARE_ENTRY") {
+        emotion = "excited";
+        action = "talk";
+      } else if (category === "OPEN_TRADE_CALL" || category === "OPEN_TRADE_PUT") {
+        emotion = "excited";
+        action = "cheer";
+      } else if (category === "WEAK_SIGNAL_SWITCH_PAIR") {
+        emotion = "neutral";
+        action = "tilt_head";
+      }
+
+      loggerLog(`VoiceManager: [${category}] -> ${item.id} («${item.text}», ${item.duration}с)`);
+
+      sendProxyMessage("/api/winky/play_voice", "POST", {
+        file_path: item.file,
+        category: category,
+        text: item.text,
+        duration: item.duration,
+        emotion: emotion,
+        action: action,
+      });
+
+      if (isBlocking) {
+        const waitMs = Math.max(1200, Math.round(((item.duration || 2.5) + 0.3) * 1000));
+        await new Promise((r) => setTimeout(r, waitMs));
+      }
+
+      return item;
+    },
+  };
+
+  // Immediate 0ms UI update with synchronized Lumean speech
+  async function triggerStateWithVoice(stateKey, uiUpdateFn, isBlocking = false) {
+    state.botState = stateKey;
+    if (typeof uiUpdateFn === "function") {
+      try {
+        uiUpdateFn();
+      } catch (err) {
+        loggerLog("triggerStateWithVoice UI update error:", err);
+      }
+    }
+    renderSignalCardState();
+    return await VoiceManager.playVoice(stateKey, isBlocking);
+  }
+
+  // Pre-load voice manifest on script start
+  VoiceManager.loadManifest();
+
+  /* ==================== 5. Signal Execution & Lifecycle ==================== */
 
   function parseDurationSeconds(dur) {
     const num = parseInt(dur, 10) || 30;
@@ -846,53 +1193,51 @@
 
   async function startSignalAnalysis() {
     if (state.botState !== "IDLE") return;
-    state.botState = "ANALYZING_PAIR";
-
-    const btnGet = document.getElementById("btnGetSignalAction");
-    if (btnGet) {
-      btnGet.disabled = true;
-      btnGet.classList.add("disabled");
-      btnGet.innerHTML = `<span>⚡</span><span>${state.lang === "ru" ? "АНАЛИЗ ГРАФИКА..." : "ANALYZING CHART..."}</span>`;
-    }
 
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
       state.expiryInterval = null;
     }
 
-    renderSignalCardState();
-    // Quick scanner notification to Winky
-    sendProxyMessage("/api/winky/scan", "POST", {});
+    const btnGet = document.getElementById("btnGetSignalAction");
 
-    // Exactly 1.2s smooth scanning progress animation
+    // 1. Состояние: АНАЛИЗ ГРАФИКА (0ms UI + озвучка)
+    triggerStateWithVoice("ANALYZING_CHART", () => {
+      if (btnGet) {
+        btnGet.disabled = true;
+        btnGet.classList.add("disabled");
+        btnGet.innerHTML = `<span>⚡</span><span>${state.lang === "ru" ? "АНАЛИЗ ГРАФИКА..." : "ANALYZING CHART..."}</span>`;
+      }
+    }, false);
+
+    // 1.2с анимация сканирования тиков
     await new Promise((r) => setTimeout(r, 1200));
 
-    // Perform technical analysis of ticks
+    // Технический анализ тиков
     const analysis = ChartAnalyzer.analyzeMarket();
 
-    // Check Bad Market Filter with Anti-Loop Cooldown (min 45s between switches)
+    // 2. Проверка слабого рынка / боковика (Anti-Loop Cooldown 40с)
     if (analysis.isFlat && state.autoStream) {
       const now = Date.now();
       const lastSwitch = state.lastPairSwitchAttemptAt || 0;
-      if (now - lastSwitch > 45000) {
+      if (now - lastSwitch > 40000) {
         state.lastPairSwitchAttemptAt = now;
-        state.botState = "SWITCHING_PAIR";
-        renderSignalCardState();
 
-        // Trigger flat_skip voice on Winky
-        sendProxyMessage("/api/winky/event", "POST", {
-          event: "flat_skip",
-          pair: state.targetPair,
-          lang: state.lang,
-        });
+        // Блокирующий шаг: озвучиваем смену пары
+        await triggerStateWithVoice("WEAK_SIGNAL_SWITCH_PAIR", () => {
+          state.botState = "SWITCHING_PAIR";
+          renderSignalCardState();
+        }, true);
 
-        // Find next pair not in blacklist
-        const list = PAIR_CATALOG.otc;
-        const nextPair = list.find((p) => p.id !== state.targetPair && !isPairBlacklisted(p.id)) || list[0];
-        await POAutomation.switchPairAsync(nextPair.id);
+        // Переключаем пару в Pocket Option DOM
+        await POAutomation.switchCurrencyPair();
 
-        state.botState = "IDLE";
-        renderSignalCardState();
+        // Озвучиваем успешное переключение
+        await triggerStateWithVoice("PAIR_SWITCHED_NEW_SCAN", () => {
+          state.botState = "IDLE";
+          renderSignalCardState();
+        }, true);
+
         if (btnGet) {
           btnGet.disabled = false;
           btnGet.classList.remove("disabled");
@@ -901,58 +1246,24 @@
 
         setTimeout(() => {
           if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-        }, 3000);
+        }, 1500);
         return;
       } else {
-        // Cooldown active: avoid endless speech loop and proceed with calculated momentum
         analysis.isFlat = false;
         analysis.accuracy = Math.max(82, analysis.accuracy);
       }
     }
 
-    // Step: PREPARING_TRADE (Prefetch TTS & await readiness to avoid 15-20s voice desync)
-    state.botState = "PREPARING_TRADE";
-    renderSignalCardState();
-    if (btnGet) {
-      btnGet.innerHTML = `<span>🎙️</span><span>${state.lang === "ru" ? "ПОДГОТОВКА СДЕЛКИ..." : "PREPARING ENTRY..."}</span>`;
-    }
-
-    const intentId = "trade_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
-    state.currentPrefetchIntent = intentId;
-
-    // Send prefetch request to Winky
-    sendProxyMessage("/api/winky/prefetch_tts", "POST", {
-      intent_id: intentId,
-      text: analysis.voicePhrase,
-      direction: analysis.direction,
-      pair: state.targetPair,
-      duration: state.selectedTimeframe,
-      lang: state.lang,
-      emotion: "excited",
-      action: "cheer",
-      expected_pair: state.targetPair,
-      expected_state: "IN_TRADE",
-      ttl_sec: 45.0,
-    });
-
-    // Wait for audio ready (poll check_tts up to 25s max)
-    let audioReady = false;
-    const pollStart = Date.now();
-    while (Date.now() - pollStart < 25000) {
-      if (state.botState !== "PREPARING_TRADE") return;
-      const checkRes = await sendProxyMessage(`/api/winky/check_tts?intent_id=${encodeURIComponent(intentId)}`, "GET");
-      if (checkRes && checkRes.data && checkRes.data.ready) {
-        audioReady = true;
-        break;
+    // 3. Состояние: ПОДГОТОВКА СДЕЛКИ (блокирующий шаг перед входом)
+    await triggerStateWithVoice("PREPARE_ENTRY", () => {
+      state.botState = "PREPARING_TRADE";
+      renderSignalCardState();
+      if (btnGet) {
+        btnGet.innerHTML = `<span>🎙️</span><span>${state.lang === "ru" ? "ПОДГОТОВКА СДЕЛКИ..." : "PREPARING ENTRY..."}</span>`;
       }
-      if (checkRes && checkRes.data && (checkRes.data.status === "failed" || checkRes.data.status === "expired")) {
-        break;
-      }
-      await new Promise((r) => setTimeout(r, 400));
-    }
+    }, true);
 
-    // COMMIT-ON-AUDIO-READY: Transition to IN_TRADE
-    state.botState = "IN_TRADE";
+    // 4. Состояние: ВХОД В СДЕЛКУ (Озвучка направления синхронно с кликом)
     const durationSec = parseDurationSeconds(state.selectedTimeframe);
     state.activeSignal = {
       pair: state.targetPair,
@@ -967,33 +1278,20 @@
       startTime: Date.now(),
     };
 
-    renderSignalCardState();
+    const isBuy = String(analysis.direction).toUpperCase() === "BUY";
+    const tradeVoiceCategory = isBuy ? "OPEN_TRADE_CALL" : "OPEN_TRADE_PUT";
 
-    // 1. If Auto-Stream is active, execute trade on Pocket Option right now
+    // Запускаем озвучку сделки и открываем сделку на Pocket Option
+    triggerStateWithVoice(tradeVoiceCategory, () => {
+      state.botState = "IN_TRADE";
+      renderSignalCardState();
+    }, false);
+
     if (state.autoStream) {
       POAutomation.clickTrade(analysis.direction);
     }
 
-    // 2. Play speech synchronously with the trade opening
-    if (audioReady) {
-      sendProxyMessage("/api/winky/play_tts", "POST", {
-        intent_id: intentId,
-        current_pair: state.targetPair,
-        current_state: "IN_TRADE",
-      });
-    } else {
-      // Fallback: send speak_signal if prefetch timed out
-      sendProxyMessage("/api/winky/speak_signal", "POST", {
-        pair: state.targetPair,
-        direction: analysis.direction,
-        duration: state.selectedTimeframe,
-        model: state.selectedModel,
-        lang: state.lang,
-        phrase: analysis.voicePhrase,
-      });
-    }
-
-    // 3. Sync signal to server & Mini App
+    // Синхронизация сигнала с прод-сервером и Telegram Mini App
     sendSyncSignalToProd({
       pair: state.targetPair,
       direction: analysis.direction,
@@ -1004,7 +1302,7 @@
       model: state.selectedModel,
     });
 
-    // Start Expiry Countdown (30s)
+    // 5. Обратный отсчет таймера экспирации (30s)
     let remaining = durationSec;
     const updateTradeButtonLabel = (sec) => {
       if (btnGet) {
@@ -1015,11 +1313,19 @@
     };
     updateTradeButtonLabel(remaining);
 
+    let midTradeSpoken = false;
+
     state.expiryInterval = setInterval(() => {
       remaining -= 1;
       const timerEl = document.getElementById("signalTimerVal");
       if (timerEl) timerEl.textContent = formatTime(Math.max(0, remaining));
       updateTradeButtonLabel(Math.max(0, remaining));
+
+      // На 15-й секунде даем поддерживающий комментарий Винки
+      if (remaining === 15 && !midTradeSpoken) {
+        midTradeSpoken = true;
+        VoiceManager.playVoice("IN_TRADE_WAITING", false);
+      }
 
       if (remaining <= 0) {
         clearInterval(state.expiryInterval);
@@ -1029,7 +1335,7 @@
     }, 1000);
   }
 
-  async function onSignalTimerFinished(detectedWin = null, profitDelta = null) {
+  async function onSignalTimerFinished() {
     if (state.botState !== "IN_TRADE") return;
     state.botState = "TRADE_RESULT";
 
@@ -1044,73 +1350,91 @@
       btnGet.innerHTML = `<span>✨</span><span>${state.lang === "ru" ? "ПОДВЕДЕНИЕ ИТОГОВ..." : "EVALUATING TRADE..."}</span>`;
     }
 
-    const isWin = detectedWin !== null ? detectedWin : (state.forcedLoss ? false : true);
-    state.forcedLoss = false;
-    const profit = profitDelta || parseInt(state.targetPayout, 10) || 92;
+    // Двухфакторная проверка исхода (баланс + таблица сделок)
+    const evaluation = await evaluateTradeResult();
+    const outcome = evaluation.outcome; // "WIN" | "LOSS" | "REFUND"
+    const profit = evaluation.profit;
 
     const block = document.getElementById("botDirectionBlock");
-    if (block) {
-      if (isWin) {
-        state.liveWins += 1;
-        state.sessionProfit += profit;
-        state.recoveryStep = 0;
-        block.className = "winky-direction-block active buy";
-        block.innerHTML = `
-          <div class="signal-dir-large buy" style="font-size:16px;">
-            🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"}
-          </div>
-          <div class="signal-ta-lines">
-            <div class="signal-ta-line buy">
-              ${state.lang === "ru" ? `✅ Точка входа отработала идеально (+${profit}$)` : `✅ Clean entry execution (+${profit}$)`}
+
+    if (outcome === "WIN") {
+      state.liveWins += 1;
+      state.sessionProfit += profit;
+      state.recoveryStep = 0;
+
+      await triggerStateWithVoice("TRADE_WIN", () => {
+        if (block) {
+          block.className = "winky-direction-block active buy";
+          block.innerHTML = `
+            <div class="signal-dir-large buy" style="font-size:16px;">
+              🎉 ${state.lang === "ru" ? "ПЛЮС В КОПИЛКУ!" : "WIN! PROFIT SECURED!"}
             </div>
-            <div class="signal-ta-line buy">
-              ${state.lang === "ru" ? "Забираем чистый профит по сигналу Winky AI!" : "Securing clean profit with Winky AI!"}
+            <div class="signal-ta-lines">
+              <div class="signal-ta-line buy">
+                ${state.lang === "ru" ? `✅ Точка входа отработала идеально (+${profit}$)` : `✅ Clean entry execution (+${profit}$)`}
+              </div>
+              <div class="signal-ta-line buy">
+                ${state.lang === "ru" ? "Забираем чистый профит по сигналу Winky AI!" : "Securing clean profit with Winky AI!"}
+              </div>
             </div>
-          </div>
-        `;
-      } else {
-        state.liveLosses += 1;
-        state.recoveryStep = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 0;
-        block.className = "winky-direction-block active sell";
-        block.innerHTML = `
-          <div class="signal-dir-large sell" style="font-size:15px;">
-            ${state.recoveryStep === 1 ? (state.lang === "ru" ? "🛡️ ДОГОН 1 ШАГ (УДВОЕНИЕ)" : "🛡️ STEP 1 RECOVERY") : (state.lang === "ru" ? "🔄 ДОГОН 2 ШАГ (СМЕНА ПАРЫ)" : "🔄 STEP 2 RECOVERY")}
-          </div>
-          <div class="signal-ta-lines">
-            <div class="signal-ta-line sell">
-              ${state.recoveryStep === 1 ? (state.lang === "ru" ? "График коснулся тени уровня. Заходим в эту же пару с удвоением!" : "Level wick touch. Recovering on same pair!") : (state.lang === "ru" ? "Пара ушла в боковик. Спокойно переключаемся на свежий тренд!" : "Pair flatlining. Switching to fresh trending pair!")}
+          `;
+        }
+      }, true);
+    } else if (outcome === "LOSS") {
+      state.liveLosses += 1;
+      state.sessionProfit = Math.max(0, state.sessionProfit - state.baseStake);
+      state.recoveryStep = state.recoveryStep === 0 ? 1 : state.recoveryStep === 1 ? 2 : 0;
+
+      await triggerStateWithVoice("TRADE_LOSS", () => {
+        if (block) {
+          block.className = "winky-direction-block active sell";
+          block.innerHTML = `
+            <div class="signal-dir-large sell" style="font-size:15px; color:#FF3B69;">
+              ⚠️ ${state.lang === "ru" ? `СДЕЛКА В МИНУС (-${state.baseStake}$)` : `TRADE LOSS (-${state.baseStake}$)`}
             </div>
-          </div>
-        `;
-      }
+            <div class="signal-ta-lines">
+              <div class="signal-ta-line sell" style="color:#FFAA00;">
+                ${state.recoveryStep === 1
+                  ? (state.lang === "ru" ? "🛡️ ДОГОН 1 ШАГ: График коснулся тени уровня. Заходим в эту же пару с удвоением!" : "🛡️ STEP 1 RECOVERY: Level wick touch. Double stake on same pair!")
+                  : (state.lang === "ru" ? "🔄 ДОГОН 2 ШАГ: Пара ушла в боковик. Спокойно переключаемся на свежий тренд!" : "🔄 STEP 2 RECOVERY: Market flat. Switching to fresh pair!")}
+              </div>
+            </div>
+          `;
+        }
+      }, true);
+    } else {
+      // REFUND (Возврат)
+      await triggerStateWithVoice("TRADE_REFUND", () => {
+        if (block) {
+          block.className = "winky-direction-block active";
+          block.innerHTML = `
+            <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
+              🔄 ${state.lang === "ru" ? `ВОЗВРАТ СДЕЛКИ ($${state.baseStake})` : `REFUND ($${state.baseStake})`}
+            </div>
+            <div class="signal-ta-lines">
+              <div class="signal-ta-line" style="color:#FFFFFF;">
+                ${state.lang === "ru" ? "Цена закрылась пункт в пункт на уровне входа. Баланс сохранён!" : "Price closed at exact entry level. Balance preserved!"}
+              </div>
+            </div>
+          `;
+        }
+      }, true);
     }
 
     saveStats();
     updateScoreHUDUI();
 
-    // Trigger voice reaction on Winky
-    const eventType = isWin ? "win" : state.recoveryStep === 1 ? "loss_step1" : "loss_step2";
-    sendProxyMessage("/api/winky/event", "POST", {
-      event: eventType,
-      pair: state.targetPair,
-      lang: state.lang,
-    });
+    // Пауза между сделками
+    await triggerStateWithVoice("PAUSE_BETWEEN_TRADES", () => {
+      state.botState = "COOLDOWN";
+      renderSignalCardState();
+      if (btnGet) {
+        btnGet.disabled = true;
+        btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
+      }
+    }, true);
 
-    // Wait 5 seconds for reaction
-    await new Promise((r) => setTimeout(r, 5000));
-
-    // COOLDOWN STATE
-    state.botState = "COOLDOWN";
-    renderSignalCardState();
-    if (btnGet) {
-      btnGet.disabled = true;
-      btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
-    }
-
-    // 4s cooldown
-    await new Promise((r) => setTimeout(r, 4000));
-
-    // TRANSITION BACK TO IDLE
+    // Возврат в IDLE
     state.botState = "IDLE";
     state.activeSignal = null;
     renderSignalCardState();
@@ -1121,14 +1445,12 @@
       btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
     }
 
-    // If recovery step 2 -> switch pair
-    if (!isWin && state.recoveryStep === 2 && state.autoStream) {
-      const list = PAIR_CATALOG.otc;
-      const nextPair = list.find((p) => p.id !== state.targetPair && !isPairBlacklisted(p.id)) || list[1];
-      await POAutomation.switchPairAsync(nextPair.id);
+    // Если 2-й шаг догона -> смена пары
+    if (outcome === "LOSS" && state.recoveryStep === 2 && state.autoStream) {
+      await POAutomation.switchCurrencyPair();
     }
 
-    // If Auto-Stream is active, start next signal after 1.5s
+    // Если активен авто-стрим, запускаем следующий сигнал через 1.5с
     if (state.autoStream) {
       setTimeout(() => {
         if (state.autoStream && state.botState === "IDLE") {
@@ -1649,8 +1971,11 @@
       autoToggle.addEventListener("click", () => {
         state.autoStream = !state.autoStream;
         autoToggle.classList.toggle("active", state.autoStream);
-        if (state.autoStream && state.botState === "IDLE") {
-          startSignalAnalysis();
+        if (state.autoStream) {
+          VoiceManager.playVoice("START_STREAM_READY", false);
+          if (state.botState === "IDLE") {
+            setTimeout(startSignalAnalysis, 1200);
+          }
         }
       });
     }

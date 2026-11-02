@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 WEB_DIR = Path(__file__).parent / "web"
 VOICE_CACHE_DIR = Path(__file__).resolve().parent.parent / "voice_cache"
 WEBAPP_DIR = Path(__file__).resolve().parent.parent / "webapp"
+ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 
 _winky_sync_callbacks: dict[str, Callable] = {}
 _local_live_stats: dict[str, Any] = {
@@ -53,6 +54,9 @@ def push_chat_pair_request(pair: str, user: str) -> None:
 class _AssetsHandler(SimpleHTTPRequestHandler):
     def translate_path(self, path: str) -> str:
         clean = path.split("?", 1)[0].split("#", 1)[0]
+        if clean.startswith("/assets/"):
+            rel = clean[len("/assets/"):].lstrip("/")
+            return str(ASSETS_DIR / rel)
         if clean.startswith("/voice_cache/"):
             rel = clean[len("/voice_cache/"):].lstrip("/")
             return str(VOICE_CACHE_DIR / rel)
@@ -141,6 +145,17 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                 except Exception as e:
                     logger.warning("Ошибка callback check_tts: %s", e)
             self._send_json(res)
+            return
+
+        if clean == "/api/winky/voice_manifest":
+            manifest_file = ASSETS_DIR / "voices" / "lumean" / "manifest.json"
+            if manifest_file.exists():
+                try:
+                    self._send_json(json.loads(manifest_file.read_text(encoding="utf-8")))
+                    return
+                except Exception as e:
+                    logger.warning("Ошибка чтения manifest.json: %s", e)
+            self._send_json({"error": "manifest_not_found", "categories": {}})
             return
 
         if clean == "/api/winky/status":
@@ -265,6 +280,17 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
                     res = cb(payload)
                 except Exception as e:
                     logger.warning("Ошибка callback play_tts: %s", e)
+            self._send_json(res)
+            return
+
+        if clean == "/api/winky/play_voice":
+            cb = _winky_sync_callbacks.get("play_voice")
+            res = {"ok": False}
+            if cb:
+                try:
+                    res = cb(payload)
+                except Exception as e:
+                    logger.warning("Ошибка callback play_voice: %s", e)
             self._send_json(res)
             return
 

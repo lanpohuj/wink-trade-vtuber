@@ -42,9 +42,11 @@ from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
 from winky.server import register_winky_callback, start_assets_server
 from winky.tiktok import TikTokConnector
-from winky.tts import EMOTIONS, SpeechController, compute_rms_chunks
+from winky.tts import EMOTIONS, SpeechController, SpeechItem, compute_rms_chunks
 
 logger = logging.getLogger("winky")
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 CTA_LANG = "ru"  # язык авто-призывов; в этапе 3 подстроится под язык чата
 
@@ -392,6 +394,94 @@ class WinkyAPI:
         current_state = payload.get("current_state", "")
         ok = self._controller.play_prefetched(intent_id, current_pair=current_pair, current_state=current_state)
         return {"ok": ok}
+
+    def play_voice(self, payload: Any = None) -> dict:
+        """API воспроизведения предзаписанной реплики из банка Lumean с 0 мс задержкой."""
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+        if not isinstance(payload, dict):
+            payload = {}
+
+        category = str(payload.get("category", "")).strip()
+        file_id = str(payload.get("file_id", "")).strip()
+        file_path = str(payload.get("file_path", "")).strip()
+        priority = bool(payload.get("priority", False)) or category in ("TRADE_WIN", "TRADE_LOSS", "OPEN_TRADE_CALL", "OPEN_TRADE_PUT")
+        action = payload.get("action")
+        emotion = payload.get("emotion") or "happy"
+        text = payload.get("text", "")
+
+        # Если приоритетное событие (сделка, победа, убыток) — мгновенно прерываем текущую фоновую речь
+        if priority:
+            self._controller.stop_current()
+
+        media_file = None
+        if file_path:
+            media_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / file_path
+        elif category and file_id:
+            media_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / category / f"{file_id}.mp3"
+
+        if not media_file or not media_file.exists():
+            # Попробуем найти в манифесте
+            manifest_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / "manifest.json"
+            if manifest_file.exists():
+                try:
+                    man = json.loads(manifest_file.read_text(encoding="utf-8"))
+                    items = man.get("categories", {}).get(category, [])
+                    for it in items:
+                        if it.get("id") == file_id or it.get("file") == file_path:
+                            f = PROJECT_ROOT / "assets" / "voices" / "lumean" / it.get("file", "")
+                            if f.exists():
+                                media_file = f
+                                if not text:
+                                    text = it.get("text", "")
+                                break
+                except Exception:
+                    pass
+
+        if not media_file or not media_file.exists():
+            logger.warning("play_voice: файл %s не найден на диске", file_path or f"{category}/{file_id}.mp3")
+            return {"ok": False, "error": "file_not_found"}
+
+        # Рассчитываем точную длительность
+        try:
+            from scripts.generate_lumean_voices import get_audio_duration_afinfo
+            duration = get_audio_duration_afinfo(media_file)
+        except Exception:
+            duration = max(1.5, media_file.stat().st_size / 16000.0)
+
+        # Триггерим жест и эмоцию аватара
+        if action:
+            self.trigger_action(action, duration)
+        if emotion:
+            self._avatar_js(f"window.winkySetEmotion && window.winkySetEmotion('{emotion}')")
+
+        # Создаем SpeechItem для воспроизведения через afplay + lipsync
+        item = SpeechItem(
+            text=text or f"[{category}] {file_id}",
+            lang="ru",
+            emotion=emotion,
+            action=action,
+            action_duration=duration,
+            media_path=media_file,
+            rms_chunks=compute_rms_chunks(media_file),
+            source=f"bank_{category}",
+        )
+        item.ready_event.set()
+
+        # Добавляем в очередь воспроизведения
+        with self._controller._lock:
+            if priority:
+                self._controller._playback_queue.appendleft(item)
+            else:
+                self._controller._playback_queue.append(item)
+
+        self._controller._wake.set()
+        self._controller._emit_status()
+        logger.info("play_voice: реплика %s/%s запущена (длительность %.2fс)", category, file_id, duration)
+        return {"ok": True, "file_id": file_id, "duration_sec": duration}
 
     # ---------- окна подключаются после создания ----------
 
@@ -1077,6 +1167,7 @@ def main() -> None:
     register_winky_callback("prefetch_tts", winky_api.prefetch_tts)
     register_winky_callback("check_tts", winky_api.check_tts)
     register_winky_callback("play_tts", winky_api.play_tts)
+    register_winky_callback("play_voice", winky_api.play_voice)
 
     # Определение геометрии экрана macOS (прижимаем окно стримера к правому нижнему углу)
     screen = webview.screens[0] if webview.screens else None
