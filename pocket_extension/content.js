@@ -2179,50 +2179,140 @@
       }
     }, false);
 
-    // 3. 6-секундный динамический цикл сканирования и 5-факторного консилиума
+    // 3. 4-этапный динамический 3D Flip цикл глубокого сканирования (без раздувания контейнера)
     const block = document.getElementById("botDirectionBlock");
     let confluence = null;
     let analysis = null;
     let scan = null;
     let sentiment = null;
 
-    const totalSteps = 5;
-    for (let step = 0; step < totalSteps; step++) {
+    const scanSteps = [
+      {
+        num: "01",
+        nameRu: "СТРУКТУРА И ТРЕНД",
+        nameEn: "STRUCTURE & TREND",
+        factorIdx: 0,
+        scanMs: 520,
+        confirmMs: 340,
+      },
+      {
+        num: "02",
+        nameRu: "PRICE ACTION И СВЕЧИ",
+        nameEn: "PRICE ACTION & BARS",
+        factorIdx: 1,
+        scanMs: 500,
+        confirmMs: 340,
+      },
+      {
+        num: "03",
+        nameRu: "КЛЮЧЕВЫЕ УРОВНИ",
+        nameEn: "KEY S/R LEVELS",
+        factorIdx: 2,
+        scanMs: 500,
+        confirmMs: 340,
+      },
+      {
+        num: "04",
+        nameRu: "ИМПУЛЬС И СТАКАН",
+        nameEn: "MOMENTUM & SENTIMENT",
+        factorIdx: 3,
+        scanMs: 520,
+        confirmMs: 380,
+      },
+    ];
+
+    for (let i = 0; i < scanSteps.length; i++) {
+      const stepDef = scanSteps[i];
       ChartAnalyzer.pollPrice();
       scan = scanCanvasStructure();
       analysis = ChartAnalyzer.analyzeMarket();
       sentiment = readTradersSentiment();
       confluence = evaluate5FactorConfluence(scan, analysis, sentiment);
 
+      const factor = confluence.factors[stepDef.factorIdx] || confluence.factors[0];
+      const isRu = (state.lang === "ru");
+      const stepName = isRu ? `${stepDef.num} · ${stepDef.nameRu}` : `${stepDef.num} · ${stepDef.nameEn}`;
+
+      // Специфичное развернутое описание для 4 этапа (объединяем RSI и Pocket стакан)
+      let stepDetail = factor.detail;
+      if (i === 3) {
+        const factorRsi = confluence.factors[3];
+        const factorSent = confluence.factors[4];
+        if (factorRsi && factorSent) {
+          stepDetail = `${factorRsi.detail}. ${factorSent.detail}.`;
+        }
+      }
+
+      // Генерация 4 сегментов прогресса
+      const renderSegments = (activeIndex, isConfirmed) => {
+        return [0, 1, 2, 3].map((segIdx) => {
+          if (segIdx < activeIndex) return '<div class="winky-scan-seg done"></div>';
+          if (segIdx === activeIndex) return `<div class="winky-scan-seg ${isConfirmed ? 'done' : 'active'}"></div>`;
+          return '<div class="winky-scan-seg"></div>';
+        }).join("");
+      };
+
+      // 1-я фаза: СКАН... с 3D анимацией winkyFlipIn
       if (block) {
-        block.className = "winky-direction-block analysing";
+        block.className = "winky-direction-block winky-signal-display analysing";
         block.innerHTML = `
-          <div class="analysis-scan-title">
-            <span>🧠</span>
-            <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА" : "DEEP CHART VISION"} (${confluence.score.toFixed(1)} / 5.0)</span>
+          <div class="winky-scan-top">
+            <div class="winky-scan-title">
+              <span class="winky-scan-brain-icon">🧠</span>
+              <span>${isRu ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА" : "DEEP CHART VISION"}</span>
+            </div>
+            <div class="winky-scan-score-badge ${i === scanSteps.length - 1 ? 'glow' : ''}">
+              ★ ${confluence.score.toFixed(1)} / 5.0
+            </div>
           </div>
-          <div class="analysis-checklist">
-            ${confluence.factors.slice(0, step + 1).map((f) => `
-              <div class="checklist-item ${f.pass ? "pass" : "fail"}">
-                <span class="chk-icon">${f.pass ? "✅" : "⚠️"}</span>
-                <span class="chk-name">${f.name}:</span>
-                <span class="chk-desc">${f.detail}</span>
+          <div class="winky-scan-segments">
+            ${renderSegments(i, false)}
+          </div>
+          <div class="winky-flip-stage">
+            <div class="winky-flip-card" id="winkyActiveFlipCard">
+              <div class="winky-flip-header">
+                <span class="winky-flip-step-name">${stepName}</span>
+                <span class="winky-flip-status scanning">${isRu ? "СКАН..." : "SCANNING..."}</span>
               </div>
-            `).join("")}
+              <div class="winky-flip-desc">${stepDetail}</div>
+            </div>
           </div>
         `;
       }
 
       const accEl = document.getElementById("metricAccuracyVal");
       if (accEl) {
-        const estAcc = Math.round(Math.min(97, 85 + (step + 1) * 2 + (confluence.score >= 4.0 ? 3 : 0)));
+        const estAcc = Math.round(Math.min(97, 86 + (i + 1) * 2 + (confluence.score >= 4.0 ? 3 : 0)));
         accEl.textContent = `${estAcc}%`;
       }
 
-      await new Promise((r) => setTimeout(r, 1100));
+      await new Promise((r) => setTimeout(r, stepDef.scanMs));
+
+      // 2-я фаза: ✓ ПОДТВЕРЖДЕНО
+      const cardEl = document.getElementById("winkyActiveFlipCard");
+      if (cardEl) {
+        cardEl.classList.add("done-step");
+        const statusEl = cardEl.querySelector(".winky-flip-status");
+        if (statusEl) {
+          statusEl.className = "winky-flip-status confirmed";
+          statusEl.textContent = isRu ? "✓ ПОДТВЕРЖДЕНО" : "✓ CONFIRMED";
+        }
+      }
+      const segsEl = block ? block.querySelector(".winky-scan-segments") : null;
+      if (segsEl) {
+        segsEl.innerHTML = renderSegments(i, true);
+      }
+
+      await new Promise((r) => setTimeout(r, stepDef.confirmMs));
+
+      // 3-я фаза: 3D Flip-out перед следующим шагом (кроме последнего)
+      if (i < scanSteps.length - 1 && cardEl) {
+        cardEl.classList.add("flip-out");
+        await new Promise((r) => setTimeout(r, 200));
+      }
     }
 
-    // Финальная оценка после 6 секунд
+    // Финальная оценка после сканирования
     scan = scanCanvasStructure();
     analysis = ChartAnalyzer.analyzeMarket();
     sentiment = readTradersSentiment();
@@ -2893,7 +2983,7 @@
             </div>
 
             <!-- Direction & TA Block -->
-            <div class="winky-direction-block idle" id="botDirectionBlock">
+            <div class="winky-direction-block winky-signal-display idle" id="botDirectionBlock">
               <span>${t("readyForSignal")}</span>
             </div>
           </div>
@@ -3078,26 +3168,43 @@
     if (!block) return;
 
     if (state.botState === "IDLE") {
-      block.className = "winky-direction-block idle";
+      block.className = "winky-direction-block winky-signal-display idle";
       block.innerHTML = `<span>${t("readyForSignal")}</span>`;
     } else if (state.botState === "SWITCHING_PAIR") {
-      block.className = "winky-direction-block analysing";
+      block.className = "winky-direction-block winky-signal-display analysing";
       block.innerHTML = `
-        <div class="analysis-scan-title">
-          <span>🔄</span>
-          <span>${state.lang === "ru" ? "СМЕНА ВАЛЮТНОЙ ПАРЫ..." : "SWITCHING PAIR..."}</span>
+        <div class="winky-scan-top">
+          <div class="winky-scan-title">
+            <span>🔄</span>
+            <span>${state.lang === "ru" ? "СМЕНА ВАЛЮТНОЙ ПАРЫ..." : "SWITCHING PAIR..."}</span>
+          </div>
+          <div class="winky-scan-score-badge">WAIT</div>
+        </div>
+        <div class="winky-flip-stage">
+          <div class="winky-flip-card">
+            <div class="winky-flip-header">
+              <span class="winky-flip-step-name">${state.lang === "ru" ? "ПОИСК ЧИСТОГО ГРАФИКА" : "SEEKING CLEAN CHART"}</span>
+              <span class="winky-flip-status scanning">${state.lang === "ru" ? "ПЕРЕХОД..." : "SWITCHING..."}</span>
+            </div>
+            <div class="winky-flip-desc">
+              ${state.lang === "ru" ? "Выбираем доходную валютную пару с минимальным рыночным шумом." : "Selecting high-payout asset with low market noise."}
+            </div>
+          </div>
         </div>
       `;
     } else if (state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING") {
-      // Do not overwrite active Deep Chart Vision checklist or custom scanner view!
-      if (block.querySelector(".analysis-checklist") || (block.textContent && block.textContent.includes("ГЛУБОКИЙ АНАЛИЗ"))) {
+      // Do not overwrite active Deep Chart Vision 3D flip scanner!
+      if (block.querySelector(".winky-flip-stage") || block.querySelector(".analysis-checklist") || (block.textContent && block.textContent.includes("ГЛУБОКИЙ АНАЛИЗ"))) {
         return;
       }
-      block.className = "winky-direction-block analysing";
+      block.className = "winky-direction-block winky-signal-display analysing";
       block.innerHTML = `
-        <div class="analysis-scan-title">
-          <span>🧠</span>
-          <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА..." : "DEEP CHART VISION..."}</span>
+        <div class="winky-scan-top">
+          <div class="winky-scan-title">
+            <span class="winky-scan-brain-icon">🧠</span>
+            <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА..." : "DEEP CHART VISION..."}</span>
+          </div>
+          <div class="winky-scan-score-badge">★ 5.0</div>
         </div>
       `;
     } else if (state.botState === "PREPARING_TRADE") {
@@ -3105,22 +3212,36 @@
       if (block.querySelector(".signal-dir-large") || (block.textContent && block.textContent.includes("СНАЙПЕРСКИЙ ВХОД"))) {
         return;
       }
-      block.className = "winky-direction-block analysing";
+      block.className = "winky-direction-block winky-signal-display analysing";
       block.innerHTML = `
-        <div class="analysis-scan-title">
-          <span>🎯</span>
-          <span>${state.lang === "ru" ? "ПОИСК ТОЧКИ ВХОДА (СНАЙПЕР)..." : "HUNTING ENTRY POINT (SNIPER)..."}</span>
+        <div class="winky-scan-top">
+          <div class="winky-scan-title">
+            <span>🎯</span>
+            <span>${state.lang === "ru" ? "ПОИСК ТОЧКИ ВХОДА..." : "HUNTING ENTRY POINT..."}</span>
+          </div>
+          <div class="winky-scan-score-badge">SNIPER</div>
+        </div>
+        <div class="winky-flip-stage">
+          <div class="winky-flip-card">
+            <div class="winky-flip-header">
+              <span class="winky-flip-step-name">${state.lang === "ru" ? "СНАЙПЕРСКИЙ МИКРО-ОТКАТ" : "SNIPER MICRO-PULLBACK"}</span>
+              <span class="winky-flip-status scanning">${state.lang === "ru" ? "ВЫЖИДАНИЕ..." : "HUNTING..."}</span>
+            </div>
+            <div class="winky-flip-desc">
+              ${state.lang === "ru" ? "Ждём выгодной микро-коррекции для идеальной цены входа." : "Waiting for favorable micro-correction for prime entry."}
+            </div>
+          </div>
         </div>
       `;
     } else if (state.botState === "COOLDOWN") {
-      block.className = "winky-direction-block idle";
+      block.className = "winky-direction-block winky-signal-display idle";
       block.innerHTML = `<span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
     } else if (state.botState === "IN_TRADE" && state.activeSignal) {
       const sig = state.activeSignal;
       const isBuy = sig.direction === "BUY";
       if (accEl) accEl.textContent = `${sig.accuracy}%`;
 
-      block.className = `winky-direction-block active ${isBuy ? "buy" : "sell"}`;
+      block.className = `winky-direction-block winky-signal-display active ${isBuy ? "buy" : "sell"}`;
       block.innerHTML = `
         <div class="signal-dir-large ${isBuy ? "buy" : "sell"}">
           ${isBuy ? t("buy") : t("sell")}
