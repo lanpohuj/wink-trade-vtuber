@@ -25,6 +25,8 @@ VOICE_CACHE_DIR = Path(__file__).resolve().parent.parent / "voice_cache"
 WEBAPP_DIR = Path(__file__).resolve().parent.parent / "webapp"
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 
+from winky.director import stream_director
+
 _winky_sync_callbacks: dict[str, Callable] = {}
 _local_live_stats: dict[str, Any] = {
     "wins": 110,
@@ -167,6 +169,18 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             })
             return
 
+        if clean == "/api/winky/trade_phase":
+            status = stream_director.get_status()
+            if _chat_requested_pairs:
+                status["next_requested_pair"] = _chat_requested_pairs[0]["pair"]
+                status["requested_by"] = _chat_requested_pairs[0]["user"]
+            self._send_json(status)
+            return
+
+        if clean == "/api/winky/events":
+            self._send_json({"ok": True, "events": stream_director.get_recent_events()})
+            return
+
         if clean == "/api/winky/next_command":
             global _last_ask_chat_time
             # 1. Запрос от зрителя в TikTok-чате
@@ -249,6 +263,32 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             global _last_extension_ping
             _last_extension_ping = time.time()
             self._send_json({"ok": True, "connected": True})
+            return
+
+        if clean == "/api/winky/trade_phase":
+            phase = payload.get("phase", "IDLE")
+            pair = payload.get("pair", "")
+            remaining = payload.get("remaining_sec", 0)
+            res = stream_director.update_trade_phase(phase, pair, remaining)
+            if _chat_requested_pairs:
+                res["next_requested_pair"] = _chat_requested_pairs[0]["pair"]
+                res["requested_by"] = _chat_requested_pairs[0]["user"]
+            self._send_json(res)
+            return
+
+        if clean == "/api/winky/pop_requested_pair":
+            pair = payload.get("pair", "")
+            removed = None
+            if _chat_requested_pairs:
+                if pair:
+                    for p in list(_chat_requested_pairs):
+                        if p.get("pair") == pair:
+                            _chat_requested_pairs.remove(p)
+                            removed = p
+                            break
+                if not removed and _chat_requested_pairs:
+                    removed = _chat_requested_pairs.popleft()
+            self._send_json({"ok": True, "removed": removed})
             return
 
         if clean == "/api/winky/event":

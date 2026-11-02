@@ -23,6 +23,7 @@ from typing import Callable
 from config import settings
 from winky.censor import check_phrase
 from winky.deepseek import LLMBrain
+from winky.director import stream_director
 from winky.scenarios import ScenarioBook
 from winky.tts import SpeechController, detect_lang
 
@@ -493,8 +494,7 @@ class ChatRouter:
                 f"[happy] Great pick {clean_user}! Switching to {requested_pair} next!",
             ]
             ack = random.choice(ack_phrases_ru if lang == "ru" else ack_phrases_en)
-            self._feed("winky", "Winky", ack)
-            self._controller.speak(ack, lang=lang, emotion="wink", source="chat_pair_request")
+            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion="wink", reply_text=ack)
             return
 
         lower_text = text.lower()
@@ -531,53 +531,27 @@ class ChatRouter:
                 except Exception:
                     pass
 
-        # Защита от перегрузки очереди речи
-        if self._controller.queue_size() >= 4:
-            logger.info("Пропуск голосового ответа на «%s»: очередь перегружена (%d)", text[:30], self._controller.queue_size())
-            return
-
         # 2. Ключевые сценарии — приоритет при прямых вопросах
         keyword = self._book.match_keyword(text)
         if keyword is not None:
             emo = detected_emo or keyword.emotion
             kw_text = keyword.text(lang)
-            if self._say(kw_text, lang, emo, clean_user):
-                self._bump("keyword_hits")
-                profile.history.append({"user": text, "winky": kw_text})
-                if any(w in kw_text.lower() for w in ("шапк", "профил", "ссылк", "био", "bio", "link")):
-                    profile.mentioned_bio = True
-                return
+            clean_kw = kw_text.replace("{user}", clean_user)
+            profile.history.append({"user": text, "winky": clean_kw})
+            if any(w in clean_kw.lower() for w in ("шапк", "профил", "ссылк", "био", "bio", "link")):
+                profile.mentioned_bio = True
+            self._bump("keyword_hits")
+            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion=emo, reply_text=clean_kw)
+            return
 
-        # 3. Фоновая генерация через DeepSeek с памятью зрителя и контекстом
-        def _llm_worker() -> None:
-            reply = self._brain.reply(
-                text,
-                nickname=clean_user,
-                profile=profile,
-                recent_context=list(self._recent_chat),
-            )
-            if reply:
-                # Фиксируем упоминание шапки профиля
-                if any(w in reply.lower() for w in ("шапк", "профил", "ссылк", "био", "bio", "link")):
-                    profile.mentioned_bio = True
-                profile.history.append({"user": text, "winky": reply})
-
-                emo = detected_emo or self._emotion_for(reply)
-                if self._say(reply, lang, emo, clean_user):
-                    self._bump("llm_replies")
-                    return
-                self._bump("llm_censored")
-            elif self._brain.available:
-                self._bump("llm_limited")
-
-            # Фолбэк, если LLM недоступен или лимит
-            emo = detected_emo or "wink"
-            fb_text = self._book.chat_phrases.fallback(lang)
-            if self._say(fb_text, lang, emo, clean_user):
-                profile.history.append({"user": text, "winky": fb_text})
-                self._bump("fallbacks")
-
-        threading.Thread(target=_llm_worker, daemon=True, name="chat_llm_worker").start()
+        # 3. Добавляем в очередь StreamDirector с фоновым пре-синтезом (DeepSeek / умный фоллбэк)
+        self._bump("comments_queued")
+        stream_director.enqueue_chat_comment(
+            user=clean_user,
+            text=text,
+            lang=lang,
+            emotion=detected_emo or "happy",
+        )
 
     def handle_join(self, user: str, force: bool = False, lang: str = "auto") -> None:
         """Новый зритель: язык стрима по умолчанию, красивое имя, кулдаун 20с."""

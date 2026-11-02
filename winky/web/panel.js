@@ -980,6 +980,23 @@ simAsk.addEventListener("click", () => {
   simQuestion.value = "";
 });
 
+const simCustomUser = document.getElementById("simCustomUser");
+const simCustomText = document.getElementById("simCustomText");
+const btnSimCustomSend = document.getElementById("btnSimCustomSend");
+
+btnSimCustomSend?.addEventListener("click", () => {
+  const user = simCustomUser?.value?.trim() || "Зритель";
+  const text = simCustomText?.value?.trim();
+  if (!text) return;
+  onChatEvent({ kind: "user", who: `👤 ${user}`, text });
+  api()?.simulate_custom_comment(user, text);
+  if (simCustomText) simCustomText.value = "";
+});
+
+simCustomText?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") btnSimCustomSend?.click();
+});
+
 simJoin?.addEventListener("click", () => {
   const lang = simLang?.value || "auto";
   const isEn = lang === "en";
@@ -1170,6 +1187,51 @@ if (voiceSignalsToggle) {
     }
   });
 }
+
+/* ==================== Режиссёр Стрима и Диагностика ЧАТА ==================== */
+
+function escapeHtml(str) {
+  if (typeof str !== "string") str = String(str || "");
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+async function updateDirectorUI() {
+  try {
+    const status = await api()?.get_stream_director_status();
+    if (!status) return;
+    const phaseEl = document.getElementById("directorPhase");
+    const pairEl = document.getElementById("directorPair");
+    const qEl = document.getElementById("directorQueue");
+    const spkEl = document.getElementById("directorSpeaking");
+    const logEl = document.getElementById("chatDiagLog");
+
+    if (phaseEl) {
+      phaseEl.textContent = status.phase || "IDLE";
+      phaseEl.style.color = status.phase === "IN_TRADE" ? "#f59e0b" : status.phase === "ANALYZING" ? "#a855f7" : status.phase === "RESULT" ? "#10b981" : "#38bdf8";
+    }
+    if (pairEl && status.current_pair) pairEl.textContent = status.current_pair;
+    if (qEl) qEl.textContent = status.queue_len || 0;
+    if (spkEl) {
+      spkEl.textContent = status.is_speaking ? "Говорит 🗣️" : "Свободна 💤";
+      spkEl.style.color = status.is_speaking ? "#f43f5e" : "#4ade80";
+    }
+
+    if (logEl && Array.isArray(status.recent_events) && status.recent_events.length > 0) {
+      logEl.innerHTML = status.recent_events.map(ev => {
+        const timeStr = ev.time ? new Date(ev.time * 1000).toLocaleTimeString() : "";
+        if (ev.type === "phase") {
+          return `<div style="color:#38bdf8;">[${timeStr}] 🎬 ${escapeHtml(ev.text)}</div>`;
+        } else if (ev.type === "comment") {
+          return `<div style="color:#a78bfa;">[${timeStr}] 💬 ${escapeHtml(ev.user)}: «${escapeHtml(ev.text)}» (${ev.status})</div>`;
+        } else if (ev.type === "chat_reply") {
+          return `<div style="color:#34d399;">[${timeStr}] 🗣️ Winky -> ${escapeHtml(ev.user)}: «${escapeHtml(ev.text)}»</div>`;
+        }
+        return `<div>[${timeStr}] ${escapeHtml(JSON.stringify(ev))}</div>`;
+      }).join("");
+    }
+  } catch (_) {}
+}
+setInterval(updateDirectorUI, 1500);
 
 /* ==================== Инициализация ==================== */
 

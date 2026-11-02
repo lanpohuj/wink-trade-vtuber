@@ -1927,6 +1927,39 @@ class SpeechController:
             queue_size=q_len,
         )
 
+    def speak_chat_item(self, chat_item: Any) -> bool:
+        """Воспроизводит подготовленный ответ чату (с уже готовым .mp3) без повторного синтеза."""
+        media = getattr(chat_item, "media_path", None)
+        text = getattr(chat_item, "reply_text", "") or getattr(chat_item, "text", "")
+        lang = getattr(chat_item, "lang", "ru")
+        emotion = getattr(chat_item, "emotion", "happy")
+
+        clean_text = text
+        if clean_text.startswith("[") and "]" in clean_text[:15]:
+            clean_text = clean_text[clean_text.index("]") + 1:].strip()
+
+        item = SpeechItem(
+            text=clean_text,
+            lang=lang,
+            emotion=emotion,
+            action="wave" if emotion == "wave" else ("blush" if emotion == "blush" else None),
+            action_duration=3.2,
+            media_path=media,
+            rms_chunks=compute_rms_chunks(media) if media and media.exists() else None,
+            source=f"chat_reply_{getattr(chat_item, 'user', 'viewer')}",
+        )
+        if media and media.exists():
+            item.ready_event.set()
+        else:
+            self._synth_pool.submit(self._prepare_audio, item)
+
+        with self._lock:
+            self._playback_queue.append(item)
+
+        self._wake.set()
+        self._emit_status()
+        return True
+
     def speak_stream_category(
         self,
         category: str,
@@ -1957,9 +1990,8 @@ class SpeechController:
             logger.warning("speak_stream_category: категория «%s» не найдена в STREAM_VOICE_BANK[%s]", category, actual_lang)
             return False
 
-        # Приоритетные события (сделка, победа, убыток) мгновенно прерывают текущую фоновую речь
-        if priority or category in ("trade_win", "trade_loss_step1", "trade_loss_switch", "buy_bounce", "buy_trend", "sell_bounce", "sell_trend"):
-            self.stop_current()
+        # Фразы воспроизводятся последовательно без обрывов звучащей речи
+        # (приоритет обеспечивается планированием StreamDirector)
 
         # 1. Проверяем, какие фразы уже закэшированы в voice_cache/
         cached_phrases: list[str] = []
@@ -2174,7 +2206,7 @@ class SpeechController:
                     pass
             self._emit_status_impl()
             # Естественная микропауза между фразами в очереди
-            time.sleep(0.20)
+            time.sleep(0.35)
 
     def _emit_status_impl(self) -> None:
         try:

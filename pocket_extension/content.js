@@ -309,6 +309,43 @@
     } catch (_) {}
   }
 
+  /* ==================== Trade Phase & Stream Director Bridge ==================== */
+
+  async function notifyTradePhase(phase, pair = "", remainingSec = 0) {
+    try {
+      const res = await sendProxyMessage("/api/winky/trade_phase", "POST", {
+        phase: phase,
+        pair: pair || state.targetPair,
+        remaining_sec: Math.max(0, Math.round(remainingSec || 0)),
+      });
+      if (res && res.data) {
+        const data = res.data;
+        if (
+          data.next_requested_pair &&
+          (state.botState === "IDLE" || state.botState === "WAITING_SIGNAL") &&
+          state.recoveryStep === 0 &&
+          data.next_requested_pair !== state.targetPair
+        ) {
+          loggerLog(`[notifyTradePhase] 🔄 Переключение на пару по запросу зрителя: ${data.next_requested_pair}`);
+          await switchPocketPair(data.next_requested_pair);
+          sendProxyMessage("/api/winky/pop_requested_pair", "POST", { pair: data.next_requested_pair });
+        }
+        return data;
+      }
+    } catch (_) {}
+    return { ok: false, is_speaking: false };
+  }
+
+  async function checkWinkySpeaking() {
+    try {
+      const res = await sendProxyMessage("/api/winky/trade_phase", "GET");
+      if (res && res.data) {
+        return res.data;
+      }
+    } catch (_) {}
+    return { ok: false, is_speaking: false };
+  }
+
   /* ==================== 1. Live Hook Listener & Sentiment ==================== */
 
   window.addEventListener("message", (event) => {
@@ -1963,6 +2000,7 @@
 
   async function startSignalAnalysis() {
     if (state.botState !== "IDLE") return;
+    notifyTradePhase("ANALYZING", state.targetPair, 0);
 
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
@@ -2221,6 +2259,7 @@
 
     // 8. Обратный отсчет таймера экспирации (30s)
     let remaining = durationSec;
+    notifyTradePhase("IN_TRADE", state.targetPair, remaining);
     const updateTradeButtonLabel = (sec) => {
       if (btnGet) {
         btnGet.disabled = true;
@@ -2235,6 +2274,7 @@
       const timerEl = document.getElementById("signalTimerVal");
       if (timerEl) timerEl.textContent = formatTime(Math.max(0, remaining));
       updateTradeButtonLabel(Math.max(0, remaining));
+      notifyTradePhase("IN_TRADE", state.targetPair, remaining);
 
       if (remaining <= 0) {
         clearInterval(state.expiryInterval);
@@ -2261,6 +2301,15 @@
 
     // 1. Ждём 1.2 секунды, чтобы сервер Pocket Option успел закрыть сделку и начислить выплату на баланс
     await new Promise((r) => setTimeout(r, 1200));
+
+    // 2. Бесшовная координация речи: если Winky заканчивает ответ зрителю в TikTok, ждём до 3.5с
+    const waitStart = Date.now();
+    while (Date.now() - waitStart < 3500) {
+      const spkStatus = await checkWinkySpeaking();
+      if (!spkStatus || !spkStatus.is_speaking) break;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    notifyTradePhase("RESULT", state.targetPair, 0);
 
     state.balanceAfterClose = getPocketBalance();
     state.exitPrice = getCurrentChartPrice();
@@ -2428,6 +2477,7 @@
     // Возврат в IDLE
     state.botState = "IDLE";
     state.activeSignal = null;
+    notifyTradePhase("IDLE", state.targetPair, 0);
     renderSignalCardState();
     updateStakeBadgeUI();
 

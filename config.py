@@ -222,8 +222,8 @@ class Settings(BaseSettings):
         description="Base URL для OpenAI-совместимого API (по умолчанию api.river.ai или api.deepseek.com)",
     )
     DEEPSEEK_MODEL: str = Field(
-        default="deepseek-ai/DeepSeek-V4.1-Flash",
-        description="Модель DeepSeek (в River AI: deepseek-ai/DeepSeek-V4.1-Flash)",
+        default="deepseek-chat",
+        description="Модель DeepSeek (официальный API: deepseek-chat; в River AI: deepseek-ai/DeepSeek-V4.1-Flash)",
     )
     WINKY_LLM_MIN_INTERVAL: float = Field(
         default=8.0,

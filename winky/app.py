@@ -962,6 +962,23 @@ class WinkyAPI:
             self._chat_router.handle_comment("Зритель", text)
             self.push_status()
 
+    def simulate_custom_comment(self, user: str, text: str) -> bool:
+        """Симуляция комментария от конкретного никнейма зрителя из пульта."""
+        if self._chat_router and text:
+            clean_u = (user or "").strip() or "Зритель"
+            self._chat_router.handle_comment(clean_u, text.strip())
+            self.push_status()
+            return True
+        return False
+
+    def get_stream_director_status(self) -> dict:
+        """Возвращает статус режиссера стрима для пульта управления."""
+        try:
+            from winky.director import stream_director
+            return stream_director.get_status()
+        except Exception:
+            return {"phase": "IDLE", "is_speaking": False, "queue_len": 0, "recent_events": []}
+
     def simulate_join(self, user: str = "Дима 🚀", lang: str = "auto") -> None:
         """Тест входа зрителя из пульта."""
         if self._chat_router:
@@ -1171,6 +1188,13 @@ def main() -> None:
         on_action=winky_api.trigger_action,
     )
     winky_api.attach_chat(chat_router)
+
+    # Режиссёр Стрима: фазы торговли Pocket Option + плавная очередь реплик TikTok
+    from winky.director import stream_director
+    stream_director.set_brain(brain)
+    stream_director.set_tts(controller)
+    stream_director.set_feed_callback(on_chat_feed)
+    stream_director.start()
 
     # Фоновый прогрев кэша быстрых реплик для мгновенного отклика при клике на кнопки
     winky_api.precache_phrases()

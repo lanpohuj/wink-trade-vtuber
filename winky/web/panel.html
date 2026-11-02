@@ -111,6 +111,11 @@
       <button id="simAsk" style="flex: 1;">Спросить</button>
     </div>
     <div class="row" style="gap: 6px; margin-top: 4px;">
+      <input id="simCustomUser" placeholder="Никнейм (alex_2004, Дима_777)" spellcheck="false" style="flex: 1.2;">
+      <input id="simCustomText" placeholder="Реплика / пара (EUR/USD OTC, красотка!)" spellcheck="false" style="flex: 2;">
+      <button id="btnSimCustomSend" style="flex: 1;">💬 Отправить</button>
+    </div>
+    <div class="row" style="gap: 6px; margin-top: 4px;">
       <button id="simJoin" style="flex: 1;" title="Тест входа зрителя">👋 Вход</button>
       <button id="simFollow" style="flex: 1;" title="Тест подписки">💃 Подписка</button>
       <button id="simGift" style="flex: 1;" title="Тест подарка">🎁 Подарок</button>
@@ -120,6 +125,15 @@
       <div class="feed-empty-line">Лента чата появится здесь</div>
     </div>
     <div class="chat-stats" id="chatStats"></div>
+    <div class="director-status-row" id="directorStatusRow" style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.04); border-radius:6px; padding:6px 10px; margin-top:8px; font-size:11px;">
+      <span>🎬 Фаза: <b id="directorPhase" style="color:#38bdf8;">IDLE</b></span>
+      <span>Пара: <b id="directorPair" style="color:#facc15;">AED/CNY OTC</b></span>
+      <span>Очередь: <b id="directorQueue">0</b></span>
+      <span>Речь: <b id="directorSpeaking" style="color:#4ade80;">Свободна</b></span>
+    </div>
+    <div class="chat-diag-log" id="chatDiagLog" style="max-height:100px; overflow-y:auto; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:6px; margin-top:6px; font-family:monospace; font-size:10px; color:#cbd5e1;">
+      <div>📡 Ожидание событий чата и сделок...</div>
+    </div>
   </section>
 
   <section class="block">

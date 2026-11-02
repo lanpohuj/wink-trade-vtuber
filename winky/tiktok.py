@@ -51,13 +51,15 @@ def clean_tiktok_username(raw: str) -> str:
         return ""
     text = str(raw).strip()
 
-    # Поиск @username в ссылке
+    # Срезаем URL параметры и хеши
+    text = text.split("?", 1)[0].split("#", 1)[0].strip()
+
+    # Поиск @username в ссылке или тексте
     match = re.search(r"@([a-zA-Z0-9_.]+)", text)
     if match:
         return match.group(1).lower()
 
     # Если передан просто путь URL или имя
-    text = text.split("?", 1)[0].split("#", 1)[0]
     parts = [p for p in text.split("/") if p]
     if parts:
         last = parts[-1].lstrip("@")
@@ -260,6 +262,7 @@ class TikTokConnector:
                 name = _extract_viewer_name(event)
                 text = str(getattr(event, "comment", "") or "").strip()
                 if text:
+                    logger.info("TikTok комментарий [@%s] %s: %s", self._username, name, text)
                     self._on_comment(name, text)
             except Exception:
                 logger.exception("ошибка обработки комментария TikTok")
