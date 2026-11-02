@@ -12,6 +12,22 @@
   if (window.__WINKY_NEKO_INJECTED__) return;
   window.__WINKY_NEKO_INJECTED__ = true;
 
+  function injectPageHook() {
+    try {
+      const s = document.createElement("script");
+      s.src = chrome.runtime.getURL("page_hook.js");
+      s.onload = function () {
+        this.remove();
+      };
+      (document.head || document.documentElement).appendChild(s);
+      console.log("[Winky] page_hook.js injected successfully");
+    } catch (err) {
+      console.warn("[Winky] Failed to inject page_hook.js:", err);
+    }
+  }
+
+  injectPageHook();
+
   /* ==================== Catalogs & Pairs ==================== */
 
   const CURRENCY_FLAGS = {
@@ -139,7 +155,11 @@
     recentPairs: [],
     expiryInterval: null,
     autoStreamTimer: null,
-    priceTicks: [], // Sliding buffer of last 60 ticks for real TA
+    priceTicks: [], // Sliding buffer of ticks for real TA
+    candles: [], // 5-second candles: { open, high, low, close, time, isGreen, isRed, bodySize, totalRange }
+    currentCandle: null,
+    lastHookTickTime: 0,
+    lastTrade: null, // { pair, direction, entryPrice, exitPrice, isWin, closedAt }
     chatMessages: [
       {
         type: "ai",
@@ -257,9 +277,113 @@
     } catch (_) {}
   }
 
-  /* ==================== 1. ChartAnalyzer (Real Real-Time Technical Analysis) ==================== */
+  /* ==================== 1. Live Hook Listener & Sentiment ==================== */
+
+  window.addEventListener("message", (event) => {
+    if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+    if ((event.data.type === "TICK" || event.data.type === "PRICE_TICK") && typeof event.data.price === "number") {
+      ChartAnalyzer.onNewPriceTick(event.data.price, event.data.timestamp || Date.now());
+    }
+  });
+
+  function readTradersSentiment() {
+    let bullish = 50;
+    let bearish = 50;
+    try {
+      // 1. Check known selectors
+      const callEl = document.querySelector(".sentiment-call, .sentiment__call, .chart-sentiment-bull, .trading-panel .sentiment-up");
+      const putEl = document.querySelector(".sentiment-put, .sentiment__put, .chart-sentiment-bear, .trading-panel .sentiment-down");
+      if (callEl && putEl) {
+        const cVal = parseInt(callEl.textContent.replace(/[^0-9]/g, ""), 10);
+        const pVal = parseInt(putEl.textContent.replace(/[^0-9]/g, ""), 10);
+        if (!isNaN(cVal) && !isNaN(pVal) && cVal + pVal > 0) {
+          return { bullish: cVal, bearish: pVal };
+        }
+      }
+
+      // 2. Check sentiment bars with style width or height
+      const bars = document.querySelectorAll(".sentiment-bar, .sentiment-slider, .chart-sentiment");
+      for (const b of bars) {
+        const greenPart = b.querySelector(".green, .up, .bull, .call, [style*='green']");
+        const redPart = b.querySelector(".red, .down, .bear, .put, [style*='red']");
+        if (greenPart || redPart) {
+          const gText = greenPart ? greenPart.textContent.trim() : "";
+          const rText = redPart ? redPart.textContent.trim() : "";
+          const gNum = parseInt(gText.replace(/[^0-9]/g, ""), 10);
+          const rNum = parseInt(rText.replace(/[^0-9]/g, ""), 10);
+          if (!isNaN(gNum) && !isNaN(rNum)) {
+            return { bullish: gNum, bearish: rNum };
+          }
+        }
+      }
+
+      // 3. Look for elements with % inside sentiment container
+      const sContainer = document.querySelector("[class*='sentiment'], [class*='traders-mood']");
+      if (sContainer) {
+        const matches = sContainer.textContent.match(/(\d{1,3})%/g);
+        if (matches && matches.length >= 2) {
+          const v1 = parseInt(matches[0], 10);
+          const v2 = parseInt(matches[1], 10);
+          if (v1 + v2 === 100 || (v1 >= 0 && v2 >= 0)) {
+            return { bullish: v1, bearish: v2 };
+          }
+        }
+      }
+    } catch (_) {}
+    return { bullish, bearish };
+  }
+
+  /* ==================== 2. ChartAnalyzer (Smart Trend & Breakout Engine) ==================== */
 
   const ChartAnalyzer = {
+    onNewPriceTick(price, timestamp = Date.now()) {
+      if (!price || isNaN(price) || price <= 0) return;
+      state.lastHookTickTime = timestamp;
+      state.priceTicks.push(price);
+      if (state.priceTicks.length > 120) state.priceTicks.shift();
+
+      // Aggregate into 5-second candles
+      const now = timestamp;
+      if (!state.currentCandle) {
+        state.currentCandle = {
+          open: price,
+          high: price,
+          low: price,
+          close: price,
+          startTime: now,
+        };
+      } else {
+        state.currentCandle.high = Math.max(state.currentCandle.high, price);
+        state.currentCandle.low = Math.min(state.currentCandle.low, price);
+        state.currentCandle.close = price;
+
+        if (now - state.currentCandle.startTime >= 5000) {
+          const c = state.currentCandle;
+          const candle = {
+            open: c.open,
+            high: c.high,
+            low: c.low,
+            close: c.close,
+            time: c.startTime,
+            isGreen: c.close > c.open,
+            isRed: c.close < c.open,
+            bodySize: Math.abs(c.close - c.open),
+            totalRange: Math.max(0.000001, c.high - c.low),
+          };
+          state.candles.push(candle);
+          if (state.candles.length > 30) state.candles.shift();
+
+          state.currentCandle = {
+            open: price,
+            high: price,
+            low: price,
+            close: price,
+            startTime: now,
+          };
+        }
+      }
+    },
+
     pollPrice() {
       // 1. Try to extract real live quote from Pocket Option DOM
       const priceSelectors = [
@@ -283,17 +407,19 @@
         }
       }
 
-      // Fallback: smooth tick drift if DOM quote is temporarily unmounted
+      // If hook ticks are fresh (within 2.5s), don't inject synthetic drift
+      if (currentPrice === null && Date.now() - state.lastHookTickTime < 2500) {
+        return;
+      }
+
+      // Fallback: smooth tick drift if DOM quote and hook are temporarily quiet
       if (currentPrice === null) {
         const last = state.priceTicks[state.priceTicks.length - 1] || 1.08542;
         const drift = (Math.random() - 0.49) * 0.00015;
         currentPrice = parseFloat((last + drift).toFixed(5));
       }
 
-      state.priceTicks.push(currentPrice);
-      if (state.priceTicks.length > 60) {
-        state.priceTicks.shift();
-      }
+      this.onNewPriceTick(currentPrice, Date.now());
     },
 
     computeRSI(ticks, period = 7) {
@@ -321,7 +447,7 @@
     },
 
     computeBollinger(ticks, period = 14) {
-      if (ticks.length < period) return { middle: 0, upper: 0, lower: 0 };
+      if (ticks.length < period) return { middle: 0, upper: 0, lower: 0, width: 0 };
       const slice = ticks.slice(-period);
       const mean = slice.reduce((a, b) => a + b, 0) / period;
       const variance = slice.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / period;
@@ -330,6 +456,7 @@
         middle: mean,
         upper: mean + 2 * sd,
         lower: mean - 2 * sd,
+        width: 4 * sd,
       };
     },
 
@@ -339,74 +466,265 @@
         for (let i = 0; i < 15; i++) this.pollPrice();
       }
 
+      // If we have no 5s candles yet, synthesize initial candles from ticks
+      if (state.candles.length === 0 && ticks.length >= 10) {
+        const chunkSize = Math.max(2, Math.floor(ticks.length / 5));
+        for (let i = 0; i < ticks.length; i += chunkSize) {
+          const slice = ticks.slice(i, i + chunkSize);
+          if (slice.length > 0) {
+            const open = slice[0];
+            const close = slice[slice.length - 1];
+            const high = Math.max(...slice);
+            const low = Math.min(...slice);
+            state.candles.push({
+              open,
+              high,
+              low,
+              close,
+              time: Date.now() - (ticks.length - i) * 500,
+              isGreen: close > open,
+              isRed: close < open,
+              bodySize: Math.abs(close - open),
+              totalRange: Math.max(0.000001, high - low),
+            });
+          }
+        }
+      }
+
       const rsi7 = this.computeRSI(ticks, 7);
       const ema5 = this.computeEMA(ticks, 5);
       const ema13 = this.computeEMA(ticks, 13);
       const bands = this.computeBollinger(ticks, 14);
       const currentPrice = ticks[ticks.length - 1];
+      const sentiment = readTradersSentiment();
 
-      let buyScore = 0;
-      let sellScore = 0;
+      const n = state.candles.length;
+      const c1 = n >= 1 ? state.candles[n - 1] : null;
+      const c2 = n >= 2 ? state.candles[n - 2] : null;
+      const c3 = n >= 3 ? state.candles[n - 3] : null;
 
-      // Factor 1: RSI Overbought / Oversold
-      if (rsi7 < 28) buyScore += 35;
-      else if (rsi7 < 42) buyScore += 18;
-      else if (rsi7 > 72) sellScore += 35;
-      else if (rsi7 > 58) sellScore += 18;
+      // Candle structure checks
+      const last3Red = c1 && c2 && c3 && c1.isRed && c2.isRed && c3.isRed;
+      const last3Green = c1 && c2 && c3 && c1.isGreen && c2.isGreen && c3.isGreen;
+      const lowerLows = c1 && c2 && c3 && (c1.close < c2.close && c2.close < c3.close);
+      const higherHighs = c1 && c2 && c3 && (c1.close > c2.close && c2.close > c3.close);
 
-      // Factor 2: EMA Trend
-      if (ema5 > ema13) buyScore += 28;
-      else sellScore += 28;
+      let decision = null; // { direction, category, confidence, line1, line2 }
 
-      // Factor 3: Bollinger Bands Bounce
-      if (bands.lower > 0 && currentPrice <= bands.lower * 1.0002) buyScore += 25;
-      else if (bands.upper > 0 && currentPrice >= bands.upper * 0.9998) sellScore += 25;
-
-      // Factor 4: Recent Tick Velocity (last 10 ticks)
-      const recent = ticks.slice(-10);
-      let upTicks = 0;
-      for (let i = 1; i < recent.length; i++) {
-        if (recent[i] >= recent[i - 1]) upTicks++;
+      // -------------------------------------------------------------
+      // RULE 0: STREAMER OVERRIDE (тап по логотипу или заголовку)
+      // -------------------------------------------------------------
+      if (state.forceDir === "BUY" || state.forceDir === "SELL") {
+        const fBuy = state.forceDir === "BUY";
+        state.forceDir = null; // consume trigger
+        decision = {
+          direction: fBuy ? "BUY" : "SELL",
+          category: fBuy ? "buy_trend" : "sell_trend",
+          confidence: 94,
+          line1: state.lang === "ru"
+            ? (fBuy ? "📌 Картина графика: Мощный подтверждённый бычий импульс." : "📌 Картина графика: Стремительный медвежий импульс.")
+            : (fBuy ? "📌 Chart structure: Confirmed bullish momentum." : "📌 Chart structure: Confirmed bearish momentum."),
+          line2: state.lang === "ru"
+            ? (fBuy ? "🎯 Логика входа: Входим вверх по силе движения покупателей." : "🎯 Логика входа: Входим вниз вслед за давлением продавцов.")
+            : (fBuy ? "🎯 Trade entry: Entering UP following buyer strength." : "🎯 Trade entry: Entering DOWN aligned with seller pressure."),
+        };
       }
-      if (upTicks >= 7) buyScore += 15;
-      else if (upTicks <= 3) sellScore += 15;
 
-      const isBuy = state.forceDir === "BUY" ? true : state.forceDir === "SELL" ? false : buyScore >= sellScore;
-      state.forceDir = null; // consume trigger
+      // -------------------------------------------------------------
+      // RULE 4: SMART RECOVERY FLIP (Умный переворот при перекрытии)
+      // -------------------------------------------------------------
+      if (!decision && state.recoveryStep > 0 && state.lastTrade && !state.lastTrade.isWin && state.lastTrade.pair === state.targetPair) {
+        // Предыдущая сделка на этой же паре была в МИНУС
+        if (state.lastTrade.direction === "BUY") {
+          // Мы входили ВВЕРХ, а цена продавила вниз (водопад)
+          // Если тренд всё ещё медвежий (EMA5 < EMA13 или свеча красная) -> ПЕРЕВОРОТ ВНИЗ!
+          if (ema5 <= ema13 || (c1 && c1.isRed)) {
+            decision = {
+              direction: "SELL",
+              category: "sell_trend",
+              confidence: 93,
+              line1: state.lang === "ru"
+                ? "📌 Анализ просадки: Уровень поддержки пробит вниз — нисходящий тренд продолжается."
+                : "📌 Drawdown analysis: Support level broken downwards — bearish trend continues.",
+              line2: state.lang === "ru"
+                ? "🎯 Умное перекрытие: Не ловим нож против рынка — переворачиваемся вниз (x2)!"
+                : "🎯 Smart recovery: Do not catch falling knives — flipping DOWN with x2 stake!",
+            };
+          }
+        } else if (state.lastTrade.direction === "SELL") {
+          // Мы входили ВНИЗ, а цена выстрелила вверх
+          if (ema5 >= ema13 || (c1 && c1.isGreen)) {
+            decision = {
+              direction: "BUY",
+              category: "buy_trend",
+              confidence: 93,
+              line1: state.lang === "ru"
+                ? "📌 Анализ просадки: Уровень сопротивления пробит импульсом покупателей вверх."
+                : "📌 Drawdown analysis: Resistance level broken upwards by buyer impulse.",
+              line2: state.lang === "ru"
+                ? "🎯 Умное перекрытие: Не шортим против ракеты — переворачиваемся вверх (x2)!"
+                : "🎯 Smart recovery: Do not short the rocket — flipping UP with x2 stake!",
+            };
+          }
+        }
+      }
 
-      const rawConfidence = isBuy ? buyScore : sellScore;
-      const confidence = Math.min(97, Math.max(78, rawConfidence));
+      // -------------------------------------------------------------
+      // RULE 3: SENTIMENT BAR VETO (Вето толпы на Покете)
+      // -------------------------------------------------------------
+      if (!decision) {
+        if (sentiment.bearish >= 72) {
+          // 72%+ медведей (например 84% красного давления) -> СТРОГО ПРОДАЖА
+          decision = {
+            direction: "SELL",
+            category: "sell_trend",
+            confidence: 92,
+            line1: state.lang === "ru"
+              ? `📌 Настроение рынка: Подавляющее давление медведей (${sentiment.bearish}% на продажу).`
+              : `📌 Market sentiment: Heavy bearish dominance (${sentiment.bearish}% sellers).`,
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Входим вниз строго по направлению доминирующего объёма."
+              : "🎯 Trade entry: Entering DOWN aligned with dominant order flow volume.",
+          };
+        } else if (sentiment.bullish >= 72) {
+          // 72%+ быков -> СТРОГО ПОКУПКА
+          decision = {
+            direction: "BUY",
+            category: "buy_trend",
+            confidence: 92,
+            line1: state.lang === "ru"
+              ? `📌 Настроение рынка: Доминирующее давление быков (${sentiment.bullish}% на покупку).`
+              : `📌 Market sentiment: Dominant bullish pressure (${sentiment.bullish}% buyers).`,
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Входим вверх по преобладающему напору покупателей."
+              : "🎯 Trade entry: Entering UP following dominant buyer pressure.",
+          };
+        }
+      }
 
-      // Construct 2 professional, plain confident trader rationale lines (ZERO robot numbers!)
-      let line1 = "";
-      let line2 = "";
+      // -------------------------------------------------------------
+      // RULE 1: BREAKOUT & MOMENTUM (Импульсы и водопады)
+      // -------------------------------------------------------------
+      if (!decision) {
+        // Водопад вниз: 3 красные свечи подряд с обновлением минимумов или EMA5 резче EMA13
+        if ((last3Red && lowerLows) || (ema5 < ema13 && rsi7 < 38 && c1 && c1.isRed)) {
+          decision = {
+            direction: "SELL",
+            category: "sell_trend",
+            confidence: 91,
+            line1: state.lang === "ru"
+              ? "📌 Картина графика: Пробой уровня поддержки вниз, сильное безоткатное движение."
+              : "📌 Chart structure: Support floor breakdown with strong unidirectional momentum.",
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Входим вниз по тренду пробоя — не ловим падающий нож!"
+              : "🎯 Trade entry: Entering DOWN on trend breakout — never catch a falling knife!",
+          };
+        }
+        // Ракета вверх: 3 зелёные свечи подряд с обновлением максимумов
+        else if ((last3Green && higherHighs) || (ema5 > ema13 && rsi7 > 62 && c1 && c1.isGreen)) {
+          decision = {
+            direction: "BUY",
+            category: "buy_trend",
+            confidence: 91,
+            line1: state.lang === "ru"
+              ? "📌 Картина графика: Мощный пробой сопротивления вверх, покупатели доминируют."
+              : "📌 Chart structure: Strong resistance breakout upward, buyers dominating.",
+            line2: state.lang === "ru"
+              ? "🎯 Логика входа: Входим вверх по восходящему импульсу вслед за крупными покупками."
+              : "🎯 Trade entry: Entering UP following primary breakout momentum.",
+          };
+        }
+      }
 
-      const isBounce = Math.random() > 0.45;
-      const category = isBuy ? (isBounce ? "buy_bounce" : "buy_trend") : (isBounce ? "sell_bounce" : "sell_trend");
+      // -------------------------------------------------------------
+      // RULE 2: CONFIRMED BOUNCE ONLY (Отскоки ТОЛЬКО с подтверждением свечи)
+      // -------------------------------------------------------------
+      if (!decision) {
+        // Перепроданность RSI < 32: Входим ВВЕРХ ТОЛЬКО если появилась зелёная свеча подтверждения!
+        if (rsi7 < 32) {
+          if (c1 && c1.isGreen && c1.close > c1.open) {
+            decision = {
+              direction: "BUY",
+              category: "buy_bounce",
+              confidence: 89,
+              line1: state.lang === "ru"
+                ? "📌 Картина графика: Подтверждённый отскок от зоны поддержки, первая зелёная свеча."
+                : "📌 Chart structure: Confirmed bounce off support floor with first bullish candle.",
+              line2: state.lang === "ru"
+                ? "🎯 Логика входа: Заходим вверх на развороте после истощения волны продаж."
+                : "🎯 Trade entry: Entering UP on confirmed reversal after seller exhaustion.",
+            };
+          } else {
+            // Свеча всё ещё красная — цена продолжает падать!
+            // Никаких покупок! Идём вниз по продолжению тренда
+            decision = {
+              direction: "SELL",
+              category: "sell_trend",
+              confidence: 86,
+              line1: state.lang === "ru"
+                ? "📌 Картина графика: Низкий RSI, но свечи продолжают падать — отскока нет."
+                : "📌 Chart structure: Low RSI, but candles continue dropping — no bounce confirmation.",
+              line2: state.lang === "ru"
+                ? "🎯 Логика входа: Работаем по продолжению нисходящего движения вниз."
+                : "🎯 Trade entry: Following bearish continuation downward.",
+            };
+          }
+        }
+        // Перекупленность RSI > 68: Входим ВНИЗ ТОЛЬКО если появилась красная свеча подтверждения!
+        else if (rsi7 > 68) {
+          if (c1 && c1.isRed && c1.close < c1.open) {
+            decision = {
+              direction: "SELL",
+              category: "sell_bounce",
+              confidence: 89,
+              line1: state.lang === "ru"
+                ? "📌 Картина графика: Подтверждённый отбой от уровня сопротивления, красная свеча."
+                : "📌 Chart structure: Confirmed rejection from resistance ceiling with bearish candle.",
+              line2: state.lang === "ru"
+                ? "🎯 Логика входа: Заходим вниз на развороте после фиксации прибыли покупателями."
+                : "🎯 Trade entry: Entering DOWN on reversal after buyer profit taking.",
+            };
+          } else {
+            decision = {
+              direction: "BUY",
+              category: "buy_trend",
+              confidence: 86,
+              line1: state.lang === "ru"
+                ? "📌 Картина графика: Высокий RSI, но бычий импульс продолжается без остановки."
+                : "📌 Chart structure: High RSI, but bullish momentum continues without halt.",
+              line2: state.lang === "ru"
+                ? "🎯 Логика входа: Входим вверх по силе восходящего тренда."
+                : "🎯 Trade entry: Entering UP following strong bullish trend continuation.",
+            };
+          }
+        }
+      }
 
-      if (isBuy) {
-        line1 = state.lang === "ru"
-          ? (isBounce ? "📌 Картина графика: Цена плотно упёрлась в нижний уровень — продавцы выдохлись." : "📌 Картина графика: Мощный бычий импульс, пробитие локального сопротивления.")
-          : (isBounce ? "📌 Chart structure: Price firmly rejected off support floor — seller exhaustion." : "📌 Chart structure: Strong bullish impulse breaking local resistance.");
-        line2 = state.lang === "ru"
-          ? (isBounce ? "🎯 Логика входа: Заходим вверх на уверенном отскоке по стратегии." : "🎯 Логика входа: Заходим вверх по сильному восходящему движению.")
-          : (isBounce ? "🎯 Trade entry: Entering UP on clean support rebound." : "🎯 Trade entry: Entering UP following primary trend continuation.");
-      } else {
-        line1 = state.lang === "ru"
-          ? (isBounce ? "📌 Картина графика: Цена ударилась в потолок сопротивления — покупатели потеряли силу." : "📌 Картина графика: Мощный медвежий пробой уровня поддержки вниз.")
-          : (isBounce ? "📌 Chart structure: Price hit resistance ceiling — buying momentum exhausted." : "📌 Chart structure: Strong bearish breakout below support floor.");
-        line2 = state.lang === "ru"
-          ? (isBounce ? "🎯 Логика входа: Заходим вниз на развороте вместе с продавцами." : "🎯 Логика входа: Открываем сделку вниз по импульсному тренду.")
-          : (isBounce ? "🎯 Trade entry: Entering DOWN on clear reversal off ceiling." : "🎯 Trade entry: Opening DOWN trade aligned with downward momentum.");
+      // -------------------------------------------------------------
+      // FALLBACK: CLASSICAL TA TREND
+      // -------------------------------------------------------------
+      if (!decision) {
+        const isUp = ema5 >= ema13;
+        decision = {
+          direction: isUp ? "BUY" : "SELL",
+          category: isUp ? "buy_trend" : "sell_trend",
+          confidence: 85,
+          line1: state.lang === "ru"
+            ? (isUp ? "📌 Картина графика: Устойчивое движение выше средних значений." : "📌 Картина графика: Устойчивое движение ниже средних значений.")
+            : (isUp ? "📌 Chart structure: Steady price action above moving average." : "📌 Chart structure: Steady price action below moving average."),
+          line2: state.lang === "ru"
+            ? (isUp ? "🎯 Логика входа: Заходим вверх по тренду на плавном росте." : "🎯 Логика входа: Заходим вниз по тренду на плавном снижении.")
+            : (isUp ? "🎯 Trade entry: Entering UP following steady trend upward." : "🎯 Trade entry: Entering DOWN following steady trend downward."),
+        };
       }
 
       return {
-        direction: isBuy ? "BUY" : "SELL",
-        accuracy: confidence,
-        category: category,
-        line1: line1,
-        line2: line2,
-        isFlat: confidence < 80, // Bad Market Filter
+        direction: decision.direction,
+        accuracy: decision.confidence,
+        category: decision.category,
+        line1: decision.line1,
+        line2: decision.line2,
+        isFlat: bands.width > 0 && bands.width < 0.00015,
       };
     },
   };
@@ -1453,6 +1771,15 @@
 
     loggerLog(`[onSignalTimerFinished] Итог: ${isWin ? "ПЛЮС (WIN)" : "МИНУС (LOSS)"} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
 
+    state.lastTrade = {
+      pair: state.targetPair,
+      direction: state.activeSignal ? state.activeSignal.direction : "BUY",
+      entryPrice: state.entryPrice,
+      exitPrice: state.exitPrice,
+      isWin: isWin,
+      closedAt: Date.now(),
+    };
+
     const block = document.getElementById("botDirectionBlock");
 
     if (isWin) {
@@ -2277,6 +2604,9 @@
     const botHeader = document.getElementById("winkyBotHeader");
     makeWidgetDraggable(botRoot, botHeader, "winky_bot_pos_v4");
     makeWidgetDraggable(scoreRoot, scoreRoot, "winky_score_pos_v4");
+
+    window.__WINKY_STATE__ = state;
+    window.__WINKY_CHART_ANALYZER__ = ChartAnalyzer;
 
     loggerLog("Winky Neko-Cyber Trading Bot успешно внедрён в DOM po.financial!");
   }

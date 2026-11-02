@@ -135,6 +135,14 @@ RATIONALE_BUY = [
         "ru": "GPT-5 Astra: графический паттерн завершён, фаза продолжения восходящего тренда",
         "en": "GPT-5 Astra: pattern completion confirmed, entering bullish expansion phase",
     },
+    {
+        "ru": "📌 Картина графика: Мощный пробой сопротивления вверх, покупатели доминируют",
+        "en": "📌 Chart structure: Strong resistance breakout upward, buyers dominating",
+    },
+    {
+        "ru": "🎯 Логика входа: Входим вверх по восходящему импульсу вслед за крупными покупками",
+        "en": "🎯 Trade entry: Entering UP following primary breakout momentum",
+    },
 ]
 
 RATIONALE_SELL = [
@@ -185,6 +193,14 @@ RATIONALE_SELL = [
     {
         "ru": "GPT-5 Astra: графический разворотный паттерн двойная вершина подтверждён",
         "en": "GPT-5 Astra: double top reversal pattern completed on chart",
+    },
+    {
+        "ru": "📌 Картина графика: Пробой уровня поддержки вниз, сильное безоткатное движение",
+        "en": "📌 Chart structure: Support floor breakdown with strong unidirectional momentum",
+    },
+    {
+        "ru": "🎯 Логика входа: Входим вниз по тренду пробоя — не ловим падающий нож!",
+        "en": "🎯 Trade entry: Entering DOWN on trend breakout — never catch a falling knife!",
     },
 ]
 

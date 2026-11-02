@@ -31,5 +31,21 @@
   ],
   "action": {
     "default_title": "Winky AI Trading Bot"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "page_hook.js"
+      ],
+      "matches": [
+        "*://po.financial/*",
+        "*://pocketoption.com/*",
+        "*://po.market/*",
+        "*://po4.cash/*",
+        "*://po2.cash/*",
+        "*://*.pocketoption.com/*",
+        "<all_urls>"
+      ]
+    }
+  ]
 }
