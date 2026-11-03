@@ -633,6 +633,17 @@
         }
       }
 
+      const n = state.candles.length;
+      const c1 = n >= 1 ? state.candles[n - 1] : null;
+      const c2 = n >= 2 ? state.candles[n - 2] : null;
+      const c3 = n >= 3 ? state.candles[n - 3] : null;
+
+      // Candle structure checks
+      const last3Red = c1 && c2 && c3 && c1.isRed && c2.isRed && c3.isRed;
+      const last3Green = c1 && c2 && c3 && c1.isGreen && c2.isGreen && c3.isGreen;
+      const lowerLows = c1 && c2 && c3 && (c1.close < c2.close && c2.close < c3.close);
+      const higherHighs = c1 && c2 && c3 && (c1.close > c2.close && c2.close > c3.close);
+
       const rsi7 = this.computeRSI(ticks, 7);
       const ema5 = this.computeEMA(ticks, 5);
       const ema13 = this.computeEMA(ticks, 13);
@@ -665,17 +676,6 @@
         (isPriceRising && isPriceHighOnScreen) ||
         (last3Green && higherHighs) ||
         (sentiment.bullish >= 55 && isPriceRising);
-
-      const n = state.candles.length;
-      const c1 = n >= 1 ? state.candles[n - 1] : null;
-      const c2 = n >= 2 ? state.candles[n - 2] : null;
-      const c3 = n >= 3 ? state.candles[n - 3] : null;
-
-      // Candle structure checks
-      const last3Red = c1 && c2 && c3 && c1.isRed && c2.isRed && c3.isRed;
-      const last3Green = c1 && c2 && c3 && c1.isGreen && c2.isGreen && c3.isGreen;
-      const lowerLows = c1 && c2 && c3 && (c1.close < c2.close && c2.close < c3.close);
-      const higherHighs = c1 && c2 && c3 && (c1.close > c2.close && c2.close > c3.close);
 
       let decision = null; // { direction, category, confidence, line1, line2 }
 
