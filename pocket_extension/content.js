@@ -633,25 +633,22 @@
         }
       }
 
+      // 1. Базовые переменные свечной структуры (гарантированно до любых условий)
       const n = state.candles.length;
       const c1 = n >= 1 ? state.candles[n - 1] : null;
       const c2 = n >= 2 ? state.candles[n - 2] : null;
       const c3 = n >= 3 ? state.candles[n - 3] : null;
 
-      // Candle structure checks
-      const last3Red = c1 && c2 && c3 && c1.isRed && c2.isRed && c3.isRed;
-      const last3Green = c1 && c2 && c3 && c1.isGreen && c2.isGreen && c3.isGreen;
-      const lowerLows = c1 && c2 && c3 && (c1.close < c2.close && c2.close < c3.close);
-      const higherHighs = c1 && c2 && c3 && (c1.close > c2.close && c2.close > c3.close);
+      const last3Red = Boolean(c1 && c2 && c3 && c1.isRed && c2.isRed && c3.isRed);
+      const last3Green = Boolean(c1 && c2 && c3 && c1.isGreen && c2.isGreen && c3.isGreen);
+      const lowerLows = Boolean(c1 && c2 && c3 && (c1.close < c2.close && c2.close < c3.close));
+      const higherHighs = Boolean(c1 && c2 && c3 && (c1.close > c2.close && c2.close > c3.close));
 
-      const rsi7 = this.computeRSI(ticks, 7);
-      const ema5 = this.computeEMA(ticks, 5);
-      const ema13 = this.computeEMA(ticks, 13);
-      const bands = this.computeBollinger(ticks, 14);
-      const currentPrice = ticks[ticks.length - 1] || 1.0;
-      const sentiment = readTradersSentiment();
+      // 2. Базовые котировки и сентимент
+      const currentPrice = ticks.length > 0 ? (ticks[ticks.length - 1] || 1.0) : 1.0;
+      const sentiment = readTradersSentiment() || { bullish: 50, bearish: 50 };
 
-      // Анализ динамики тиков цены за 15s и 30s + вертикальная координата Y
+      // 3. Анализ динамики тиков цены за 15s и 30s + вертикальная координата Y
       const nowTs = Date.now();
       const pHist = state.priceHistory || [];
       const item15s = pHist.find((p) => nowTs - p.ts <= 16000);
@@ -664,18 +661,25 @@
       const isPriceLowOnScreen = typeof state.lastPriceYRatio === "number" && state.lastPriceYRatio >= 0.58;
       const isPriceHighOnScreen = typeof state.lastPriceYRatio === "number" && state.lastPriceYRatio <= 0.42;
 
-      // Жёсткие флаги обвала и бычьего взлёта
+      // 4. Жёсткие флаги обвала и бычьего взлёта (объявлены строго после всех зависимостей)
       const isBearishCrash =
         sentiment.bearish >= 60 ||
         (isPriceDropping && isPriceLowOnScreen) ||
         (last3Red && lowerLows) ||
         (sentiment.bearish >= 55 && isPriceDropping);
+      const isBearishSurge = isBearishCrash;
 
       const isBullishSurge =
         sentiment.bullish >= 60 ||
         (isPriceRising && isPriceHighOnScreen) ||
         (last3Green && higherHighs) ||
         (sentiment.bullish >= 55 && isPriceRising);
+
+      // 5. Технические индикаторы и осцилляторы
+      const rsi7 = this.computeRSI(ticks, 7);
+      const ema5 = this.computeEMA(ticks, 5);
+      const ema13 = this.computeEMA(ticks, 13);
+      const bands = this.computeBollinger(ticks, 14);
 
       let decision = null; // { direction, category, confidence, line1, line2 }
 
