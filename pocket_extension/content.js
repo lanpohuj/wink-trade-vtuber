@@ -1964,6 +1964,82 @@
     return false;
   }
 
+  let lastTradeClickTime = 0;
+
+  function findPocketTradeButton(direction) {
+    const isBuy = String(direction).toUpperCase() === "BUY";
+    const callSelectors = [
+      ".btn-call",
+      ".btn-high",
+      ".switch-state-block__item--up",
+      "[data-qa='btn-call']",
+      "[data-test='btn-call']",
+      ".call-btn",
+      ".btn-up",
+    ];
+    const putSelectors = [
+      ".btn-put",
+      ".btn-low",
+      ".switch-state-block__item--down",
+      "[data-qa='btn-put']",
+      "[data-test='btn-put']",
+      ".put-btn",
+      ".btn-down",
+    ];
+
+    const selList = isBuy ? callSelectors : putSelectors;
+    for (const sel of selList) {
+      const el = document.querySelector(sel);
+      if (el && el.offsetParent !== null) {
+        return el;
+      }
+    }
+
+    // Резервный поиск по тексту на правой панели
+    const allButtons = document.querySelectorAll(".trade-actions button, .right-block button, .actions-block button, button");
+    for (const b of allButtons) {
+      if (b.offsetParent === null) continue;
+      const txt = (b.textContent || "").trim().toUpperCase();
+      if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
+        return b;
+      } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
+        return b;
+      }
+    }
+    return null;
+  }
+
+  function clickPocketTradeButton(direction) {
+    const now = Date.now();
+    if (now - lastTradeClickTime < 3000) {
+      loggerLog(`[clickPocketTradeButton] 🛑 Блокировка повторного клика! Прошло ${now - lastTradeClickTime}мс < 3000мс.`);
+      return false;
+    }
+    lastTradeClickTime = now;
+
+    const isBuy = String(direction).toUpperCase() === "BUY";
+    const btn = findPocketTradeButton(direction);
+    if (!btn) {
+      loggerLog(`[clickPocketTradeButton] ❌ Кнопка сделки ${direction} не найдена в DOM!`);
+      return false;
+    }
+
+    const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
+    btn.classList.add(glowClass);
+    setTimeout(() => btn.classList.remove(glowClass), 2500);
+
+    // Вызываем ТОЛЬКО ОДИН нативный click() — БЕЗ dispatchEvent(MouseEvent),
+    // чтобы не открывалось 2 сделки одновременно на одной свече!
+    loggerLog(`[clickPocketTradeButton] ⚡ Одиночный нативный клик по кнопке ${direction} ($${state.currentStake}):`, btn);
+    try {
+      btn.click();
+    } catch (err) {
+      loggerLog("[clickPocketTradeButton] Ошибка нативного вызова btn.click():", err);
+      return false;
+    }
+    return true;
+  }
+
   const POAutomation = {
     switchPocketPair(targetPairName = null) {
       return switchPocketPair(targetPairName);
@@ -2013,72 +2089,19 @@
         state.currentStake = expectedStake;
         state.consecutiveSkips = 0;
 
-        const isBuy = String(direction).toUpperCase() === "BUY";
-        const callSelectors = [
-          ".btn-call",
-          ".btn-high",
-          ".switch-state-block__item--up",
-          "[data-qa='btn-call']",
-          "[data-test='btn-call']",
-          ".call-btn",
-          ".btn-up",
-        ];
-        const putSelectors = [
-          ".btn-put",
-          ".btn-low",
-          ".switch-state-block__item--down",
-          "[data-qa='btn-put']",
-          "[data-test='btn-put']",
-          ".put-btn",
-          ".btn-down",
-        ];
-
-        const selList = isBuy ? callSelectors : putSelectors;
-        let btn = null;
-        for (const sel of selList) {
-          const el = document.querySelector(sel);
-          if (el && el.offsetParent !== null) {
-            btn = el;
-            break;
-          }
-        }
-
-        // Резервный поиск по тексту на правой панели
-        if (!btn) {
-          const allButtons = document.querySelectorAll(".trade-actions button, .right-block button, .actions-block button, button");
-          for (const b of allButtons) {
-            if (b.offsetParent === null) continue;
-            const txt = (b.textContent || "").trim().toUpperCase();
-            if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
-              btn = b;
-              break;
-            } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
-              btn = b;
-              break;
-            }
-          }
-        }
-
-        if (btn) {
-          const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
-          btn.classList.add(glowClass);
-
-          // Глубокая эмуляция клика для React-интерфейса Покета
-          simulatePocketClick(btn);
-
-          setTimeout(() => btn.classList.remove(glowClass), 2500);
-
-          // 2. Через 2.0 секунды фиксируем баланс ПОСЛЕ списания ставки
+        const success = clickPocketTradeButton(direction);
+        if (success) {
+          // Через 2.0 секунды фиксируем баланс ПОСЛЕ списания ставки
           setTimeout(() => {
             state.balanceDuringTrade = getPocketBalance();
             state.balanceAfterOpen = state.balanceDuringTrade;
             loggerLog(`[TradeBalance] До клика: ${state.balanceBeforeClick}, во время сделки (списание): ${state.balanceDuringTrade}`);
           }, 2000);
 
-          loggerLog(`Сделка ${direction} ($${state.currentStake}) успешно отправлена через simulatePocketClick() на элементе`, btn);
+          loggerLog(`[clickTrade] Сделка ${direction} ($${state.currentStake}) успешно исполнена одиночным кликом`);
           return true;
         } else {
-          loggerLog(`Кнопка сделки ${direction} не найдена в DOM!`);
+          loggerLog(`[clickTrade] Не удалось исполнить сделку ${direction}`);
           return false;
         }
       } finally {
@@ -2152,6 +2175,238 @@
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60);
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  }
+
+  function selectStrategyExpiration(analysis, scan) {
+    if (!analysis) return "30s";
+    const cat = analysis.category || "";
+
+    // 1. Плавный разворот / отскок от сильного уровня поддержки или потолка (buy_bounce / sell_bounce):
+    // Выбираем 1m (60s), чтобы у свечи был полный запас времени спокойно развернуться и отойти от уровня в чистый плюс!
+    if (cat === "buy_bounce" || cat === "sell_bounce") {
+      loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (разворот от уровня) -> Выбрано время экспирации: 1m (60s)`);
+      return "1m";
+    }
+
+    // 2. Вход на откате по тренду (buy_pullback / sell_pullback):
+    // Оптимально 30s для быстрого продолжения движения после отката
+    if (cat === "buy_pullback" || cat === "sell_pullback") {
+      loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (вход на откате) -> Выбрано время экспирации: 30s`);
+      return "30s";
+    }
+
+    // 3. Резкий импульсный пробой уровня (buy_trend / sell_trend):
+    // При ультра-высокой скорости тиков можно 15s, по умолчанию 30s
+    if (cat === "buy_trend" || cat === "sell_trend") {
+      if (scan && scan.tickRate && scan.tickRate > 4.0) {
+        loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» при ультра-быстром импульсе -> Выбрано 15s`);
+        return "15s";
+      }
+      loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (пробой тренда) -> Выбрано время экспирации: 30s`);
+      return "30s";
+    }
+
+    return "30s";
+  }
+
+  function getPocketChartHeaderClosingDeltaSec() {
+    try {
+      const candidates = document.querySelectorAll(
+        ".chart-top, .chart-header, .top-center-block, .chart-info, .header__item, .trading-chart-header, div, span, p"
+      );
+      for (const el of candidates) {
+        if (!el || el.offsetParent === null) continue;
+        const txt = el.textContent || "";
+        if (
+          txt.includes("Время закрытия") ||
+          txt.includes("Closing time") ||
+          txt.includes("Expiration time") ||
+          txt.includes("Закрытие")
+        ) {
+          const matchTimes = txt.match(/\b([0-2]?\d):([0-5]\d):([0-5]\d)\b/g);
+          if (matchTimes && matchTimes.length >= 1) {
+            let curH = null, curM = null, curS = null;
+            let closeH = null, closeM = null, closeS = null;
+
+            if (matchTimes.length >= 2) {
+              const t1 = matchTimes[0].split(":").map(Number);
+              const t2 = matchTimes[1].split(":").map(Number);
+              curH = t1[0]; curM = t1[1]; curS = t1[2];
+              closeH = t2[0]; closeM = t2[1]; closeS = t2[2];
+            } else {
+              const closeParts = matchTimes[0].split(":").map(Number);
+              closeH = closeParts[0]; closeM = closeParts[1]; closeS = closeParts[2];
+
+              const curTimeEls = document.querySelectorAll(
+                ".current-time, .server-time, .header__time, [data-test='current-time'], .time-now"
+              );
+              for (const cEl of curTimeEls) {
+                if (cEl && cEl.offsetParent !== null) {
+                  const mCur = cEl.textContent.match(/\b([0-2]?\d):([0-5]\d):([0-5]\d)\b/);
+                  if (mCur) {
+                    curH = parseInt(mCur[1], 10);
+                    curM = parseInt(mCur[2], 10);
+                    curS = parseInt(mCur[3], 10);
+                    break;
+                  }
+                }
+              }
+            }
+
+            if (curH !== null && closeH !== null) {
+              const curTotal = curH * 3600 + curM * 60 + curS;
+              const closeTotal = closeH * 3600 + closeM * 60 + closeS;
+              let delta = closeTotal - curTotal;
+              if (delta < 0) delta += 86400; // переход через полночь
+              if (delta > 0 && delta <= 3600) {
+                return delta;
+              }
+            }
+          }
+        }
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function hasActiveOpenDealsOnPocket() {
+    try {
+      // 1. Проверка элементов открытых сделок в правой панели
+      const openDealsSelectors = [
+        ".deals-list--open .deals-list__item",
+        ".open-deals .deals-item",
+        ".open-deals .trading-history__item",
+        "[data-tab='open'] .deals-item",
+        "[data-test='open-deal-item']",
+        ".list-deals .item--open",
+        ".deals-list__item--open",
+        ".open-trades-list .item",
+      ];
+      for (const sel of openDealsSelectors) {
+        const items = document.querySelectorAll(sel);
+        for (const item of items) {
+          if (item && item.offsetParent !== null) {
+            const text = item.textContent || "";
+            // Ищем таймер формата 00:56 или 01:20
+            const m = text.match(/\b([0-5]?\d):([0-5]\d)\b/);
+            if (m) {
+              const remSec = parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+              if (remSec > 0) {
+                return { isOpen: true, remainingSec: remSec, source: "deals_tab" };
+              }
+            }
+          }
+        }
+      }
+
+      // 2. Проверка универсальных строк списка сделок без пометок закрытия
+      const allDealItems = document.querySelectorAll(
+        ".deals-list__item, .deals-item, .trading-history__item, .deal-item, .deals-wrap .item"
+      );
+      for (const item of allDealItems) {
+        if (item && item.offsetParent !== null) {
+          const cls = (item.className || "").toLowerCase();
+          if (cls.includes("closed") || cls.includes("history")) continue;
+          const text = item.textContent || "";
+          if (text.includes("+$") || text.includes("-%") || text.includes("возврат") || text.includes("refund")) {
+            continue;
+          }
+          const m = text.match(/\b00:([0-5]\d)\b/);
+          if (m) {
+            const remSec = parseInt(m[1], 10);
+            if (remSec > 0) {
+              return { isOpen: true, remainingSec: remSec, source: "active_item" };
+            }
+          }
+        }
+      }
+
+      // 3. Проверка бейджей активных сделок на графике (например, ▲ $242 | 00:56)
+      const chartBadges = document.querySelectorAll(
+        ".deal-marker, .chart-deal-tag, .marker-deal, .trade-marker, [class*='deal-badge'], .chart-annotation"
+      );
+      for (const badge of chartBadges) {
+        if (badge && badge.offsetParent !== null) {
+          const text = badge.textContent || "";
+          const m = text.match(/\b00:([0-5]\d)\b/);
+          if (m) {
+            const remSec = parseInt(m[1], 10);
+            if (remSec > 0) {
+              return { isOpen: true, remainingSec: remSec, source: "chart_badge" };
+            }
+          }
+        }
+      }
+
+      // 4. Проверка дельты шапки графика
+      const headerDelta = getPocketChartHeaderClosingDeltaSec();
+      if (headerDelta !== null && headerDelta > 0 && headerDelta <= 180) {
+        return { isOpen: true, remainingSec: headerDelta, source: "chart_header" };
+      }
+    } catch (_) {}
+
+    return { isOpen: false, remainingSec: 0, source: "none" };
+  }
+
+  function syncAndGetRealPocketExpirationSec(targetDurationStr = "30s") {
+    const targetSec = parseDurationSeconds(targetDurationStr);
+    const targetFmt = targetSec >= 60 ? "00:01:00" : (targetSec <= 15 ? "00:00:15" : "00:00:30");
+
+    // 1. Пытаемся выставить целевое время в инпуты Pocket Option
+    try {
+      const timeInputs = document.querySelectorAll(
+        ".control--time input, .block--time input, .input-field--time input, input[name='time'], input[name='expiration'], [data-test='expiration-time'], .value__val input"
+      );
+      for (const input of timeInputs) {
+        if (input && input.offsetParent !== null) {
+          try { input.focus(); } catch (_) {}
+          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+          if (nativeSetter) {
+            nativeSetter.call(input, targetFmt);
+          } else {
+            input.value = targetFmt;
+          }
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      }
+    } catch (_) {}
+
+    // 2. Считываем реальное время экспирации с Покета
+    // Вариант А: Дельта времени закрытия в шапке графика
+    const headerDelta = getPocketChartHeaderClosingDeltaSec();
+    if (headerDelta !== null && headerDelta >= 10 && headerDelta <= 300) {
+      loggerLog(`[ExpirationSync] ✅ Реальное время экспирации по шапке графика: ${headerDelta}с`);
+      return headerDelta;
+    }
+
+    // Вариант Б: Значение из инпута времени на панели
+    const timeInputs = document.querySelectorAll(
+      ".control--time input, .block--time input, .input-field--time input, input[name='time'], input[name='expiration'], [data-test='expiration-time']"
+    );
+    for (const input of timeInputs) {
+      if (input && input.offsetParent !== null && input.value) {
+        const val = input.value.trim();
+        const m = val.match(/(\d{1,2}):(\d{2}):(\d{2})/);
+        if (m) {
+          const sec = parseInt(m[1], 10) * 3600 + parseInt(m[2], 10) * 60 + parseInt(m[3], 10);
+          if (sec > 0 && sec <= 600) {
+            loggerLog(`[ExpirationSync] ✅ Считано время из инпута Покета: ${sec}с (${val})`);
+            return sec;
+          }
+        }
+        const m2 = val.match(/(\d+)\s*(s|m|с|м)/i);
+        if (m2) {
+          const num = parseInt(m2[1], 10);
+          const unit = m2[2].toLowerCase();
+          const sec = (unit === "m" || unit === "м") ? num * 60 : num;
+          loggerLog(`[ExpirationSync] ✅ Считано время из инпута Покета: ${sec}с`);
+          return sec;
+        }
+      }
+    }
+
+    return targetSec;
   }
 
   async function startSignalAnalysis() {
@@ -2468,8 +2723,22 @@
     setPocketStakeAmount(finalStake);
     await new Promise((r) => setTimeout(r, 150));
 
+    // 6.5. Умный выбор оптимального времени экспирации по стратегии
+    const strategyTf = selectStrategyExpiration(analysis, scan);
+    const realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
+    const resolvedTf = realPocketSec >= 50 ? "1m" : (realPocketSec <= 20 ? "15s" : "30s");
+    state.selectedTimeframe = resolvedTf;
+
+    // Синхронизируем UI с выбранным таймфреймом
+    const metricTf = document.getElementById("metricTimeframeVal");
+    if (metricTf) metricTf.textContent = state.selectedTimeframe;
+    const orbTime = document.getElementById("winkyOrbTime");
+    if (orbTime) orbTime.textContent = `Таймф: M1  Время: ${state.selectedTimeframe}`;
+    const selectTf = document.getElementById("selectBotTimeframe");
+    if (selectTf) selectTf.value = state.selectedTimeframe;
+
     // 7. Исполнение сделки
-    const durationSec = parseDurationSeconds(state.selectedTimeframe);
+    let durationSec = realPocketSec || parseDurationSeconds(state.selectedTimeframe);
     state.activeSignal = {
       pair: state.targetPair,
       flags: state.targetFlags,
@@ -2526,7 +2795,7 @@
       model: state.selectedModel,
     });
 
-    // 8. Обратный отсчет таймера экспирации (30s)
+    // 8. Обратный отсчет таймера экспирации
     let remaining = durationSec;
     notifyTradePhase("IN_TRADE", state.targetPair, remaining);
     const updateTradeButtonLabel = (sec) => {
@@ -2538,6 +2807,31 @@
       }
     };
     updateTradeButtonLabel(remaining);
+
+    // 8.5. Двусторонняя Live-проверка открытой сделки через 800 мс
+    setTimeout(() => {
+      const liveCheck = hasActiveOpenDealsOnPocket();
+      if (liveCheck.isOpen && liveCheck.remainingSec > 0) {
+        const detectedSec = liveCheck.remainingSec;
+        loggerLog(`[LiveDealSync] 🔄 Обнаружена открытая сделка на Покете! Осталось: ${detectedSec}с (источник: ${liveCheck.source})`);
+        if (detectedSec > 35 && state.selectedTimeframe !== "1m") {
+          state.selectedTimeframe = "1m";
+          durationSec = Math.max(durationSec, 60);
+          remaining = detectedSec;
+
+          const mTf = document.getElementById("metricTimeframeVal");
+          if (mTf) mTf.textContent = "1m";
+          const oTime = document.getElementById("winkyOrbTime");
+          if (oTime) oTime.textContent = "Таймф: M1  Время: 1m";
+          const sTf = document.getElementById("selectBotTimeframe");
+          if (sTf) sTf.value = "1m";
+          updateTradeButtonLabel(remaining);
+        } else if (Math.abs(remaining - detectedSec) > 3) {
+          remaining = detectedSec;
+          updateTradeButtonLabel(remaining);
+        }
+      }
+    }, 800);
 
     state.expiryInterval = setInterval(() => {
       remaining -= 1;
@@ -2570,12 +2864,47 @@
 
   async function onSignalTimerFinished() {
     if (state.botState !== "IN_TRADE") return;
-    state.botState = "TRADE_RESULT";
 
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
       state.expiryInterval = null;
     }
+
+    // 0. СТРОГИЙ БАРЬЕР: Категорический запрет подводить итоги, пока сделка ещё открыта на Покете!
+    const activeCheck = hasActiveOpenDealsOnPocket();
+    if (activeCheck.isOpen && activeCheck.remainingSec > 0) {
+      loggerLog(
+        `[TradeWaitGuard] ⏳ Таймер бота 0, но сделка на Покете ЕЩЁ ОТКРЫТА (осталось ${activeCheck.remainingSec}с, источник: ${activeCheck.source})! Продлеваем ожидание.`
+      );
+      let remWait = activeCheck.remainingSec;
+      const updateWaitLabel = (sec) => {
+        const btnGet = document.getElementById("btnGetSignalAction");
+        if (btnGet) {
+          btnGet.disabled = true;
+          btnGet.classList.add("disabled");
+          const formatted = formatTime(sec);
+          btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
+        }
+      };
+      updateWaitLabel(remWait);
+
+      state.expiryInterval = setInterval(() => {
+        remWait -= 1;
+        const safeRem = Math.max(0, remWait);
+        const timerEl = document.getElementById("signalTimerVal");
+        if (timerEl) timerEl.textContent = formatTime(safeRem);
+        updateWaitLabel(safeRem);
+
+        if (remWait <= 0) {
+          clearInterval(state.expiryInterval);
+          state.expiryInterval = null;
+          onSignalTimerFinished(); // Рекурсивный повторный опрос
+        }
+      }, 1000);
+      return;
+    }
+
+    state.botState = "TRADE_RESULT";
 
     const btnGet = document.getElementById("btnGetSignalAction");
     if (btnGet) {
@@ -2583,8 +2912,8 @@
       btnGet.innerHTML = `<span>✨</span><span>${state.lang === "ru" ? "ПОДВЕДЕНИЕ ИТОГОВ..." : "EVALUATING TRADE..."}</span>`;
     }
 
-    // 1. Ждём 1.2 секунды, чтобы сервер Pocket Option успел закрыть сделку и начислить выплату на баланс
-    await new Promise((r) => setTimeout(r, 1200));
+    // 1. Ждём 1.5 секунды, чтобы сервер Pocket Option успел гарантированно закрыть сделку и начислить выплату на баланс
+    await new Promise((r) => setTimeout(r, 1500));
 
     // 2. Бесшовная координация речи: если Winky заканчивает ответ зрителю в TikTok, ждём до 3.5с
     const waitStart = Date.now();
