@@ -190,6 +190,11 @@
     expiryInterval: null,
     autoStreamTimer: null,
     priceTicks: [], // Sliding buffer of ticks for real TA
+    priceHistory: [], // [{ price, ts, yRatio }] for 15s/30s trend detection
+    lastPriceYRatio: 0.5,
+    lastOpenDealTimer: null, // { remainingSec, formatted, ts } from Canvas fillText
+    lastChartClosingDelta: null, // { closingSec, ts } from Canvas fillText
+    _currentTradeRemaining: null,
     candles: [], // 5-second candles: { open, high, low, close, time, isGreen, isRed, bodySize, totalRange }
     currentCandle: null,
     lastHookTickTime: 0,
@@ -352,10 +357,69 @@
 
   window.addEventListener("message", (event) => {
     if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
-    if ((event.data.type === "TICK" || event.data.type === "PRICE_TICK") && typeof event.data.price === "number") {
-      ChartAnalyzer.onNewPriceTick(event.data.price, event.data.timestamp || Date.now());
+    const data = event.data;
+
+    // A. Live Price Tick with Y-ratio
+    if ((data.type === "TICK" || data.type === "PRICE_TICK") && typeof data.price === "number") {
+      ChartAnalyzer.onNewPriceTick(data.price, data.timestamp || Date.now(), data.yRatio);
+    }
+
+    // B. Open Trade Countdown Timer on Chart Badge (e.g. "00:52", "00:44")
+    if (data.type === "OPEN_TRADE_TIMER" && typeof data.remainingSec === "number") {
+      state.lastOpenDealTimer = {
+        remainingSec: data.remainingSec,
+        formatted: data.formatted || formatTime(data.remainingSec),
+        ts: Date.now(),
+      };
+      if (state.botState === "IN_TRADE") {
+        syncInTradeTimerFromHook(data.remainingSec);
+      }
+    }
+
+    // C. Closing Time of Chart
+    if (data.type === "CHART_CLOSING_TIME" && typeof data.closingSec === "number") {
+      state.lastChartClosingDelta = {
+        closingSec: data.closingSec,
+        ts: Date.now(),
+      };
     }
   });
+
+  function syncInTradeTimerFromHook(realRemainingSec) {
+    if (state.botState !== "IN_TRADE" || realRemainingSec <= 0) return;
+    state._currentTradeRemaining = realRemainingSec;
+
+    // If deal is ~1 minute on Pocket Option, adapt timeframe to 1m
+    if (realRemainingSec > 35 && state.selectedTimeframe !== "1m") {
+      state.selectedTimeframe = "1m";
+      if (state.activeSignal) {
+        state.activeSignal.duration = "1m";
+        state.activeSignal.durationSec = Math.max(state.activeSignal.durationSec || 60, 60);
+      }
+      const mTf = document.getElementById("metricTimeframeVal");
+      if (mTf) mTf.textContent = "1m";
+      const oTime = document.getElementById("winkyOrbTime");
+      if (oTime) oTime.textContent = "Таймф: M1  Время: 1m";
+      const sTf = document.getElementById("selectBotTimeframe");
+      if (sTf) sTf.value = "1m";
+    }
+
+    const timerEl = document.getElementById("signalTimerVal");
+    if (timerEl) timerEl.textContent = formatTime(realRemainingSec);
+
+    const progressEl = document.getElementById("signalProgressFill");
+    if (progressEl && state.activeSignal) {
+      const dur = Math.max(state.activeSignal.durationSec || 60, realRemainingSec);
+      const pct = Math.max(0, Math.min(100, (realRemainingSec / dur) * 100));
+      progressEl.style.width = `${pct}%`;
+    }
+
+    const btnGet = document.getElementById("btnGetSignalAction");
+    if (btnGet) {
+      const formatted = formatTime(realRemainingSec);
+      btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
+    }
+  }
 
   function readTradersSentiment() {
     let bullish = 50;
@@ -373,7 +437,7 @@
       }
 
       // 2. Check sentiment bars with style width or height
-      const bars = document.querySelectorAll(".sentiment-bar, .sentiment-slider, .chart-sentiment");
+      const bars = document.querySelectorAll(".sentiment-bar, .sentiment-slider, .chart-sentiment, .traders-mood, .traders-sentiment");
       for (const b of bars) {
         const greenPart = b.querySelector(".green, .up, .bull, .call, [style*='green']");
         const redPart = b.querySelector(".red, .down, .bear, .put, [style*='red']");
@@ -389,14 +453,28 @@
       }
 
       // 3. Look for elements with % inside sentiment container
-      const sContainer = document.querySelector("[class*='sentiment'], [class*='traders-mood']");
-      if (sContainer) {
+      const sContainers = document.querySelectorAll("[class*='sentiment'], [class*='traders-mood'], .traders-bar, .deals-sentiment");
+      for (const sContainer of sContainers) {
         const matches = sContainer.textContent.match(/(\d{1,3})%/g);
         if (matches && matches.length >= 2) {
           const v1 = parseInt(matches[0], 10);
           const v2 = parseInt(matches[1], 10);
           if (v1 + v2 === 100 || (v1 >= 0 && v2 >= 0)) {
             return { bullish: v1, bearish: v2 };
+          }
+        }
+      }
+
+      // 4. Look for single red/green percent labels on chart axis (e.g. 30% / 34% / 94% on bottom right)
+      const redPercentLabels = document.querySelectorAll(".red-val, .down-percent, [style*='color: red'], [style*='color: rgb(255'], [style*='#ff']");
+      for (const lbl of redPercentLabels) {
+        if (lbl && lbl.offsetParent !== null) {
+          const m = lbl.textContent.match(/(\d{2})%/);
+          if (m) {
+            const p = parseInt(m[1], 10);
+            if (p >= 55) {
+              return { bullish: 100 - p, bearish: p };
+            }
           }
         }
       }
@@ -407,11 +485,19 @@
   /* ==================== 2. ChartAnalyzer (Smart Trend & Breakout Engine) ==================== */
 
   const ChartAnalyzer = {
-    onNewPriceTick(price, timestamp = Date.now()) {
+    onNewPriceTick(price, timestamp = Date.now(), yRatio = null) {
       if (!price || isNaN(price) || price <= 0) return;
       state.lastHookTickTime = timestamp;
       state.priceTicks.push(price);
       if (state.priceTicks.length > 120) state.priceTicks.shift();
+
+      if (typeof yRatio === "number" && !isNaN(yRatio)) {
+        state.lastPriceYRatio = yRatio;
+      }
+
+      state.priceHistory = state.priceHistory || [];
+      state.priceHistory.push({ price, ts: timestamp, yRatio: state.lastPriceYRatio });
+      if (state.priceHistory.length > 120) state.priceHistory.shift();
 
       // Aggregate into 5-second candles
       const now = timestamp;
@@ -566,8 +652,34 @@
       const ema5 = this.computeEMA(ticks, 5);
       const ema13 = this.computeEMA(ticks, 13);
       const bands = this.computeBollinger(ticks, 14);
-      const currentPrice = ticks[ticks.length - 1];
+      const currentPrice = ticks[ticks.length - 1] || 1.0;
       const sentiment = readTradersSentiment();
+
+      // Анализ динамики тиков цены за 15s и 30s + вертикальная координата Y
+      const nowTs = Date.now();
+      const pHist = state.priceHistory || [];
+      const item15s = pHist.find((p) => nowTs - p.ts <= 16000);
+      const item30s = pHist.find((p) => nowTs - p.ts <= 32000);
+      const p15 = item15s ? item15s.price : currentPrice;
+      const p30 = item30s ? item30s.price : currentPrice;
+
+      const isPriceDropping = currentPrice < p15 * 0.9999 || currentPrice < p30 * 0.9998;
+      const isPriceRising = currentPrice > p15 * 1.0001 || currentPrice > p30 * 1.0002;
+      const isPriceLowOnScreen = typeof state.lastPriceYRatio === "number" && state.lastPriceYRatio >= 0.58;
+      const isPriceHighOnScreen = typeof state.lastPriceYRatio === "number" && state.lastPriceYRatio <= 0.42;
+
+      // Жёсткие флаги обвала и бычьего взлёта
+      const isBearishCrash =
+        sentiment.bearish >= 60 ||
+        (isPriceDropping && isPriceLowOnScreen) ||
+        (last3Red && lowerLows) ||
+        (sentiment.bearish >= 55 && isPriceDropping);
+
+      const isBullishSurge =
+        sentiment.bullish >= 60 ||
+        (isPriceRising && isPriceHighOnScreen) ||
+        (last3Green && higherHighs) ||
+        (sentiment.bullish >= 55 && isPriceRising);
 
       const n = state.candles.length;
       const c1 = n >= 1 ? state.candles[n - 1] : null;
@@ -602,74 +714,131 @@
       }
 
       // -------------------------------------------------------------
-      // RULE 4: SMART RECOVERY FLIP (Умный переворот при перекрытии)
+      // RULE 1: CRASH / SURGE VETO (Железное вето: никогда не покупать против обвала!)
       // -------------------------------------------------------------
-      if (!decision && state.recoveryStep > 0 && state.lastTrade && !state.lastTrade.isWin && state.lastTrade.pair === state.targetPair) {
-        // Предыдущая сделка на этой же паре была в МИНУС
-        if (state.lastTrade.direction === "BUY") {
-          // Мы входили ВВЕРХ, а цена продавила вниз (водопад)
-          // Если тренд всё ещё медвежий (EMA5 < EMA13 или свеча красная) -> ПЕРЕВОРОТ ВНИЗ!
-          if (ema5 <= ema13 || (c1 && c1.isRed)) {
-            decision = {
-              direction: "SELL",
-              category: "sell_trend",
-              confidence: 93,
-              line1: state.lang === "ru"
-                ? "Уровень поддержки пробит вниз — нисходящий тренд продолжается."
-                : "Support level broken downwards — bearish trend continues.",
-              line2: state.lang === "ru"
-                ? "Не ловим нож против рынка — переворачиваемся вниз по движению."
-                : "Flipping DOWN aligned with current price action.",
-            };
-          }
-        } else if (state.lastTrade.direction === "SELL") {
-          // Мы входили ВНИЗ, а цена выстрелила вверх
-          if (ema5 >= ema13 || (c1 && c1.isGreen)) {
-            decision = {
-              direction: "BUY",
-              category: "buy_trend",
-              confidence: 93,
-              line1: state.lang === "ru"
-                ? "Уровень сопротивления пробит импульсом покупателей вверх."
-                : "Resistance level broken upwards by buyer impulse.",
-              line2: state.lang === "ru"
-                ? "Не шортим против ракеты — переворачиваемся вверх по движению."
-                : "Flipping UP aligned with current price action.",
-            };
-          }
+      if (!decision && isBearishCrash) {
+        decision = {
+          direction: "SELL",
+          category: "sell_trend",
+          confidence: Math.max(93, Math.min(97, Math.round(50 + sentiment.bearish * 0.5))),
+          line1:
+            state.lang === "ru"
+              ? "Стремительный медвежий импульс — цена пробивает минимумы."
+              : "Strong bearish momentum — price breaking lows.",
+          line2:
+            state.lang === "ru"
+              ? "Не покупаем против обвала — входим вниз строго по давлению рынка."
+              : "Never buy against a dump — entering DOWN following market pressure.",
+        };
+      } else if (!decision && isBullishSurge && !isBearishCrash) {
+        decision = {
+          direction: "BUY",
+          category: "buy_trend",
+          confidence: Math.max(93, Math.min(97, Math.round(50 + sentiment.bullish * 0.5))),
+          line1:
+            state.lang === "ru"
+              ? "Мощный бычий импульс — покупатели обновляют максимумы."
+              : "Strong bullish momentum — buyers breaking highs.",
+          line2:
+            state.lang === "ru"
+              ? "Входим вверх вслед за нарастающим импульсом покупателей."
+              : "Entering UP following expanding buyer momentum.",
+        };
+      }
+
+      // -------------------------------------------------------------
+      // RULE 2: SENTIMENT BAR VETO (Вето шкалы продавцов/покупателей >= 58%)
+      // -------------------------------------------------------------
+      if (!decision) {
+        if (sentiment.bearish >= 58) {
+          decision = {
+            direction: "SELL",
+            category: "sell_trend",
+            confidence: 93,
+            line1:
+              state.lang === "ru"
+                ? `Подавляющее давление медведей (${sentiment.bearish}% на продажу).`
+                : `Heavy bearish dominance (${sentiment.bearish}% sellers).`,
+            line2:
+              state.lang === "ru"
+                ? "Входим вниз строго по направлению доминирующего объёма."
+                : "Entering DOWN aligned with dominant order flow volume.",
+          };
+        } else if (sentiment.bullish >= 58 && !isPriceDropping && !isPriceLowOnScreen) {
+          decision = {
+            direction: "BUY",
+            category: "buy_trend",
+            confidence: 93,
+            line1:
+              state.lang === "ru"
+                ? `Доминирующее давление быков (${sentiment.bullish}% на покупку).`
+                : `Dominant bullish pressure (${sentiment.bullish}% buyers).`,
+            line2:
+              state.lang === "ru"
+                ? "Входим вверх по преобладающему напору покупателей."
+                : "Entering UP following dominant buyer pressure.",
+          };
         }
       }
 
       // -------------------------------------------------------------
-      // RULE 3: SENTIMENT BAR VETO (Вето толпы на Покете)
+      // RULE 3: SMART RECOVERY FLIP (Умный переворот при перекрытии)
       // -------------------------------------------------------------
-      if (!decision) {
-        if (sentiment.bearish >= 72) {
-          // 72%+ медведей (например 84% красного давления) -> СТРОГО ПРОДАЖА
+      if (
+        !decision &&
+        state.recoveryStep > 0 &&
+        state.lastTrade &&
+        !state.lastTrade.isWin &&
+        state.lastTrade.pair === state.targetPair
+      ) {
+        // Предыдущая сделка на этой же паре была в МИНУС
+        if (state.lastTrade.direction === "BUY") {
+          // Мы входили ВВЕРХ, а цена продавила вниз -> ПЕРЕВОРОТ ВНИЗ
           decision = {
             direction: "SELL",
             category: "sell_trend",
-            confidence: 92,
-            line1: state.lang === "ru"
-              ? `Подавляющее давление медведей (${sentiment.bearish}% на продажу).`
-              : `Heavy bearish dominance (${sentiment.bearish}% sellers).`,
-            line2: state.lang === "ru"
-              ? "Входим вниз строго по направлению доминирующего объёма."
-              : "Entering DOWN aligned with dominant order flow volume.",
+            confidence: 93,
+            line1:
+              state.lang === "ru"
+                ? "Уровень поддержки пробит вниз — нисходящий тренд продолжается."
+                : "Support level broken downwards — bearish trend continues.",
+            line2:
+              state.lang === "ru"
+                ? "Не ловим нож против рынка — переворачиваемся вниз по движению."
+                : "Flipping DOWN aligned with current price action.",
           };
-        } else if (sentiment.bullish >= 72) {
-          // 72%+ быков -> СТРОГО ПОКУПКА
-          decision = {
-            direction: "BUY",
-            category: "buy_trend",
-            confidence: 92,
-            line1: state.lang === "ru"
-              ? `Доминирующее давление быков (${sentiment.bullish}% на покупку).`
-              : `Dominant bullish pressure (${sentiment.bullish}% buyers).`,
-            line2: state.lang === "ru"
-              ? "Входим вверх по преобладающему напору покупателей."
-              : "Entering UP following dominant buyer pressure.",
-          };
+        } else if (state.lastTrade.direction === "SELL") {
+          // Мы входили ВНИЗ. Переворачиваемся ВВЕРХ ТОЛЬКО если рынок РЕАЛЬНО вырос и НЕ падает!
+          if (!isPriceDropping && !isPriceLowOnScreen && (ema5 >= ema13 || (c1 && c1.isGreen))) {
+            decision = {
+              direction: "BUY",
+              category: "buy_trend",
+              confidence: 93,
+              line1:
+                state.lang === "ru"
+                  ? "Уровень сопротивления пробит импульсом покупателей вверх."
+                  : "Resistance level broken upwards by buyer impulse.",
+              line2:
+                state.lang === "ru"
+                  ? "Разворот от уровня подтверждён — переворачиваемся вверх по движению."
+                  : "Flipping UP aligned with confirmed reversal.",
+            };
+          } else {
+            // Если рынок всё ещё падает — ОСТАЁМСЯ ВНИЗ!
+            decision = {
+              direction: "SELL",
+              category: "sell_trend",
+              confidence: 93,
+              line1:
+                state.lang === "ru"
+                  ? "Медвежье давление остаётся в силе — отскок вверх не подтверждён."
+                  : "Bearish pressure remains strong — continuation down.",
+              line2:
+                state.lang === "ru"
+                  ? "Продолжаем движение вниз по доминирующему тренду."
+                  : "Continuing DOWN following dominant trend.",
+            };
+          }
         }
       }
 
@@ -987,6 +1156,27 @@
         if (macroTrend === "RANGE") macroTrend = "UPTREND";
       } else if (ema5 < ema13 * 0.99994) {
         if (macroTrend === "RANGE") macroTrend = "DOWNTREND";
+      }
+    }
+
+    // Учёт вертикального положения цены (yRatio) и истории падения/роста
+    if (typeof state.lastPriceYRatio === "number") {
+      if (state.lastPriceYRatio >= 0.58) {
+        // Цена находится в нижней трети экрана
+        pricePositionPercent = Math.min(pricePositionPercent, Math.round((1 - state.lastPriceYRatio) * 100));
+        const sent = readTradersSentiment();
+        if (sent.bearish >= 55 || macroTrend === "RANGE") {
+          macroTrend = "DOWNTREND";
+          dominantColor = "RED";
+        }
+      } else if (state.lastPriceYRatio <= 0.42) {
+        // Цена находится в верхней трети экрана
+        pricePositionPercent = Math.max(pricePositionPercent, Math.round((1 - state.lastPriceYRatio) * 100));
+        const sent = readTradersSentiment();
+        if (sent.bullish >= 55 || macroTrend === "RANGE") {
+          macroTrend = "UPTREND";
+          dominantColor = "GREEN";
+        }
       }
     }
 
@@ -1644,8 +1834,65 @@
     window.dispatchEvent(new KeyboardEvent("keyup", escOpts));
   }
 
+  function requestMainWorldSwitchPair(targetPairName) {
+    return new Promise((resolve) => {
+      let resolved = false;
+      const timeoutId = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "timeout" });
+        }
+      }, 3000);
+
+      const onMsg = (event) => {
+        if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+        if (event.data.type === "WINKY_RESP_SWITCH_PAIR") {
+          if (!resolved) {
+            resolved = true;
+            clearTimeout(timeoutId);
+            window.removeEventListener("message", onMsg);
+            resolve(event.data);
+          }
+        }
+      };
+
+      window.addEventListener("message", onMsg);
+
+      window.postMessage(
+        {
+          source: "WINKY_CONTENT",
+          type: "WINKY_CMD_SWITCH_PAIR",
+          targetPair: targetPairName,
+          currentPair: state.targetPair,
+          recentPairs: state.recentPairs,
+          minPayout: 80,
+        },
+        "*"
+      );
+    });
+  }
+
   async function switchPocketPair(targetPairName = null) {
     loggerLog("[switchPocketPair] Запрос на смену пары. Цель:", targetPairName || "АВТО-ВЫБОР лучшей пары");
+
+    // 0. ПЕРВЫЙ ПРИОРИТЕТ: Смена пары через page_hook.js в MAIN World страницы (100% обход изоляции React)
+    try {
+      const mainWorldRes = await requestMainWorldSwitchPair(targetPairName);
+      if (mainWorldRes && mainWorldRes.ok && mainWorldRes.newPair) {
+        loggerLog(`[switchPocketPair] ✅ Успешно переключено через MAIN World на «${mainWorldRes.newPair}» (+${mainWorldRes.payout}%)!`);
+        setUnifiedActivePair(mainWorldRes.newPair, `+${mainWorldRes.payout}%`);
+        if (!state.recentPairs.includes(mainWorldRes.newPair)) {
+          state.recentPairs.push(mainWorldRes.newPair);
+          if (state.recentPairs.length > 5) state.recentPairs.shift();
+        }
+        updateCardPairUI();
+        renderSignalCardState();
+        return true;
+      }
+    } catch (err) {
+      loggerLog("[switchPocketPair] Ошибка MAIN World смены пары, переход к фоллбэку:", err);
+    }
 
     const beforePair = scanPocketOptionCurrentPair() || state.targetPair || "";
     const normBefore = beforePair.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -2269,6 +2516,22 @@
 
   function hasActiveOpenDealsOnPocket() {
     try {
+      // 0. ПРОВЕРКА ХУКА ХОЛСТА (Canvas fillText) — реальный таймер на флажке открытой сделки!
+      if (state.lastOpenDealTimer && (Date.now() - state.lastOpenDealTimer.ts < 2500)) {
+        const rem = state.lastOpenDealTimer.remainingSec;
+        if (rem > 0) {
+          return { isOpen: true, remainingSec: rem, source: "canvas_deal_flag" };
+        }
+      }
+
+      // 0.5. Проверка времени закрытия графика с холста
+      if (state.lastChartClosingDelta && (Date.now() - state.lastChartClosingDelta.ts < 2500)) {
+        const cd = state.lastChartClosingDelta.closingSec;
+        if (cd > 0 && cd <= 180) {
+          return { isOpen: true, remainingSec: cd, source: "canvas_closing_time" };
+        }
+      }
+
       // 1. Проверка элементов открытых сделок в правой панели
       const openDealsSelectors = [
         ".deals-list--open .deals-list__item",
@@ -2718,8 +2981,15 @@
 
     // 6.5. Умный выбор оптимального времени экспирации по стратегии
     const strategyTf = selectStrategyExpiration(analysis, scan);
-    const realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
-    const resolvedTf = realPocketSec >= 50 ? "1m" : (realPocketSec <= 20 ? "15s" : "30s");
+    let realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
+
+    // Проверяем реальное значение времени в инпуте Покета (если там уже 1m / 00:01:00)
+    const domExpSec = getPocketSelectedExpirationSeconds();
+    if (domExpSec >= 45) {
+      realPocketSec = Math.max(realPocketSec || 0, domExpSec);
+    }
+
+    const resolvedTf = (realPocketSec >= 50) ? "1m" : ((realPocketSec > 0 && realPocketSec <= 20) ? "15s" : "30s");
     state.selectedTimeframe = resolvedTf;
 
     // Синхронизируем UI с выбранным таймфреймом
@@ -2790,13 +3060,15 @@
 
     // 8. Обратный отсчет таймера экспирации
     let remaining = durationSec;
+    state._currentTradeRemaining = durationSec;
     notifyTradePhase("IN_TRADE", state.targetPair, remaining);
     const updateTradeButtonLabel = (sec) => {
-      if (btnGet) {
-        btnGet.disabled = true;
-        btnGet.classList.add("disabled");
+      const bAction = document.getElementById("btnGetSignalAction");
+      if (bAction) {
+        bAction.disabled = true;
+        bAction.classList.add("disabled");
         const formatted = formatTime(sec);
-        btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
+        bAction.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
       }
     };
     updateTradeButtonLabel(remaining);
@@ -2811,6 +3083,7 @@
           state.selectedTimeframe = "1m";
           durationSec = Math.max(durationSec, 60);
           remaining = detectedSec;
+          state._currentTradeRemaining = detectedSec;
 
           const mTf = document.getElementById("metricTimeframeVal");
           if (mTf) mTf.textContent = "1m";
@@ -2821,13 +3094,18 @@
           updateTradeButtonLabel(remaining);
         } else if (Math.abs(remaining - detectedSec) > 3) {
           remaining = detectedSec;
+          state._currentTradeRemaining = detectedSec;
           updateTradeButtonLabel(remaining);
         }
       }
     }, 800);
 
     state.expiryInterval = setInterval(() => {
+      if (typeof state._currentTradeRemaining === "number") {
+        remaining = state._currentTradeRemaining;
+      }
       remaining -= 1;
+      state._currentTradeRemaining = remaining;
       const safeRem = Math.max(0, remaining);
       const timerEl = document.getElementById("signalTimerVal");
       if (timerEl) timerEl.textContent = formatTime(safeRem);
@@ -2869,6 +3147,7 @@
       loggerLog(
         `[TradeWaitGuard] ⏳ Таймер бота 0, но сделка на Покете ЕЩЁ ОТКРЫТА (осталось ${activeCheck.remainingSec}с, источник: ${activeCheck.source})! Продлеваем ожидание.`
       );
+      state._currentTradeRemaining = activeCheck.remainingSec;
       let remWait = activeCheck.remainingSec;
       const updateWaitLabel = (sec) => {
         const btnGet = document.getElementById("btnGetSignalAction");
@@ -2882,7 +3161,11 @@
       updateWaitLabel(remWait);
 
       state.expiryInterval = setInterval(() => {
+        if (typeof state._currentTradeRemaining === "number") {
+          remWait = state._currentTradeRemaining;
+        }
         remWait -= 1;
+        state._currentTradeRemaining = remWait;
         const safeRem = Math.max(0, remWait);
         const timerEl = document.getElementById("signalTimerVal");
         if (timerEl) timerEl.textContent = formatTime(safeRem);
