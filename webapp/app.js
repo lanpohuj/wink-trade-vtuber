@@ -306,8 +306,8 @@ async function startSignalAnalysis() {
 
       <div class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
         <div class="winky-sig-strategy-meta">
-          <span>${isRu ? "АНАЛИТИКА ТОЧКИ ВХОДА" : "ENTRY POINT ANALYTICS"}</span>
-          <span class="winky-sig-strategy-score">★ ${apiData?.confluence ? Number(apiData.confluence).toFixed(1) : "4.7"} / 5.0 · ${accuracy}% WINRATE</span>
+          <span>${isRu ? "АНАЛИТИКА ВХОДА" : "ENTRY ANALYTICS"}</span>
+          <span class="winky-sig-strategy-score">★ ${apiData?.confluence ? Number(apiData.confluence).toFixed(1) : "4.7"} / 5.0 · ${accuracy}%</span>
         </div>
         <div class="winky-sig-strategy-text">
           ${strategyText}

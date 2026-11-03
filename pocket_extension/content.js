@@ -127,12 +127,10 @@
     const step = state.recoveryStep;
     const stake = getExpectedStake(step);
     const isRu = (state.lang === "ru");
-    const lbl = isRu ? "РАЗМЕР СДЕЛКИ:" : "TRADE SIZE:";
+    const lbl = isRu ? "СТАВКА:" : "STAKE:";
     let val = "";
     if (step === 0) {
       val = isRu ? `$${stake} · БАЗА 1%` : `$${stake} · BASE 1%`;
-    } else if (step === 1) {
-      val = isRu ? `$${stake} · ПЕРЕКРЫТИЕ x2.2` : `$${stake} · RECOVERY x2.2`;
     } else {
       val = isRu ? `$${stake} · ПЕРЕКРЫТИЕ x2.2` : `$${stake} · RECOVERY x2.2`;
     }
@@ -2445,35 +2443,35 @@
     const scanSteps = [
       {
         num: "01",
-        nameRu: "СТРУКТУРА И ТРЕНД",
-        nameEn: "STRUCTURE & TREND",
+        nameRu: "МАКРО-ТРЕНД",
+        nameEn: "MACRO TREND",
         factorIdx: 0,
-        scanMs: 520,
-        confirmMs: 340,
+        scanMs: 480,
+        confirmMs: 300,
       },
       {
         num: "02",
-        nameRu: "PRICE ACTION И СВЕЧИ",
-        nameEn: "PRICE ACTION & BARS",
+        nameRu: "СВЕЧНОЙ ИМПУЛЬС",
+        nameEn: "CANDLE MOMENTUM",
         factorIdx: 1,
-        scanMs: 500,
-        confirmMs: 340,
+        scanMs: 480,
+        confirmMs: 300,
       },
       {
         num: "03",
-        nameRu: "КЛЮЧЕВЫЕ УРОВНИ",
-        nameEn: "KEY S/R LEVELS",
+        nameRu: "УРОВНИ ГРАФИКА",
+        nameEn: "S/R LEVELS",
         factorIdx: 2,
-        scanMs: 500,
-        confirmMs: 340,
+        scanMs: 480,
+        confirmMs: 300,
       },
       {
         num: "04",
-        nameRu: "ИМПУЛЬС И СТАКАН",
-        nameEn: "MOMENTUM & SENTIMENT",
+        nameRu: "ТОЧКА ВХОДА",
+        nameEn: "ENTRY POINT",
         factorIdx: 3,
-        scanMs: 520,
-        confirmMs: 380,
+        scanMs: 480,
+        confirmMs: 320,
       },
     ];
 
@@ -2508,17 +2506,17 @@
         }).join("");
       };
 
-      // 1-я фаза: СКАН... с 3D анимацией winkyFlipIn
+      // 1-я фаза: Плавное появление карточки шага (winkySmoothStep)
       if (block) {
         block.className = "winky-direction-block winky-signal-display analysing";
         block.innerHTML = `
           <div class="winky-scan-top">
             <div class="winky-scan-title">
               <span class="winky-scan-brain-icon">🧠</span>
-              <span>${isRu ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА" : "DEEP CHART VISION"}</span>
+              <span>${isRu ? "АНАЛИЗ ГРАФИКА" : "CHART VISION"}</span>
             </div>
             <div class="winky-scan-score-badge ${i === scanSteps.length - 1 ? 'glow' : ''}">
-              ★ ${confluence.score.toFixed(1)} / 5.0
+              ${i === scanSteps.length - 1 ? `★ ${confluence.score.toFixed(1)} / 5.0` : (isRu ? `ШАГ ${i + 1} / 4` : `STEP ${i + 1} / 4`)}
             </div>
           </div>
           <div class="winky-scan-segments">
@@ -2528,7 +2526,7 @@
             <div class="winky-flip-card" id="winkyActiveFlipCard">
               <div class="winky-flip-header">
                 <span class="winky-flip-step-name">${stepName}</span>
-                <span class="winky-flip-status scanning">${isRu ? "СКАН..." : "SCANNING..."}</span>
+                <span class="winky-flip-status confirmed">✓ OK</span>
               </div>
               <div class="winky-flip-desc">${stepDetail}</div>
             </div>
@@ -2544,15 +2542,10 @@
 
       await new Promise((r) => setTimeout(r, stepDef.scanMs));
 
-      // 2-я фаза: ✓ ПОДТВЕРЖДЕНО
+      // 2-я фаза: Подтверждение сегмента
       const cardEl = document.getElementById("winkyActiveFlipCard");
       if (cardEl) {
         cardEl.classList.add("done-step");
-        const statusEl = cardEl.querySelector(".winky-flip-status");
-        if (statusEl) {
-          statusEl.className = "winky-flip-status confirmed";
-          statusEl.textContent = isRu ? "✓ ПОДТВЕРЖДЕНО" : "✓ CONFIRMED";
-        }
       }
       const segsEl = block ? block.querySelector(".winky-scan-segments") : null;
       if (segsEl) {
@@ -2561,10 +2554,10 @@
 
       await new Promise((r) => setTimeout(r, stepDef.confirmMs));
 
-      // 3-я фаза: 3D Flip-out перед следующим шагом (кроме последнего)
+      // 3-я фаза: Мягкий переход перед следующим шагом (кроме последнего)
       if (i < scanSteps.length - 1 && cardEl) {
-        cardEl.classList.add("flip-out");
-        await new Promise((r) => setTimeout(r, 200));
+        cardEl.classList.add("step-out");
+        await new Promise((r) => setTimeout(r, 120));
       }
     }
 
@@ -3475,9 +3468,6 @@
         <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
         <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
       </div>
-        <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
-        <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
-      </div>
 
       <!-- 4. Панель настроек (скрыта по умолчанию) -->
       <div class="winky-orb-settings" id="winkyOrbSettings" style="display: none;">
@@ -3543,7 +3533,7 @@
       `;
     } else if (state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING") {
       // Do not overwrite active Deep Chart Vision 3D flip scanner!
-      if (block.querySelector(".winky-flip-stage") || block.querySelector(".analysis-checklist") || (block.textContent && block.textContent.includes("ГЛУБОКИЙ АНАЛИЗ"))) {
+      if (block.querySelector(".winky-flip-stage") || block.querySelector(".analysis-checklist") || (block.textContent && block.textContent.includes("АНАЛИЗ ГРАФИКА"))) {
         return;
       }
       block.className = "winky-direction-block winky-signal-display analysing";
@@ -3551,7 +3541,7 @@
         <div class="winky-scan-top">
           <div class="winky-scan-title">
             <span class="winky-scan-brain-icon">🧠</span>
-            <span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ ГРАФИКА..." : "DEEP CHART VISION..."}</span>
+            <span>${state.lang === "ru" ? "АНАЛИЗ ГРАФИКА" : "CHART VISION"}</span>
           </div>
           <div class="winky-scan-score-badge">★ 5.0</div>
         </div>
@@ -3574,7 +3564,7 @@
           <div class="winky-flip-card">
             <div class="winky-flip-header">
               <span class="winky-flip-step-name">${state.lang === "ru" ? "СНАЙПЕРСКИЙ МИКРО-ОТКАТ" : "SNIPER MICRO-PULLBACK"}</span>
-              <span class="winky-flip-status scanning">${state.lang === "ru" ? "ВЫЖИДАНИЕ..." : "HUNTING..."}</span>
+              <span class="winky-flip-status confirmed">✓ OK</span>
             </div>
             <div class="winky-flip-desc">
               ${state.lang === "ru" ? "Ждём выгодной микро-коррекции для идеальной цены входа." : "Waiting for favorable micro-correction for prime entry."}
@@ -3618,8 +3608,8 @@
 
         <div class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
           <div class="winky-sig-strategy-meta">
-            <span>${isRu ? "АНАЛИТИКА ТОЧКИ ВХОДА" : "ENTRY POINT ANALYTICS"}</span>
-            <span class="winky-sig-strategy-score">★ ${sig.confluence ? sig.confluence.toFixed(1) : "4.7"} / 5.0 · ${sig.accuracy}% WINRATE</span>
+            <span>${isRu ? "АНАЛИТИКА ВХОДА" : "ENTRY ANALYTICS"}</span>
+            <span class="winky-sig-strategy-score">★ ${sig.confluence ? sig.confluence.toFixed(1) : "4.7"} / 5.0 · ${sig.accuracy}%</span>
           </div>
           <div class="winky-sig-strategy-text">
             ${strategyText}
