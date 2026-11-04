@@ -81,6 +81,11 @@
   let lastDealTimerSec = null;
   let lastDealTimerTs = 0;
   let lastClosingNoticeTs = 0;
+  let lastServerClockSec = null;
+  let lastServerClockTs = 0;
+  let lastCloseLabelPos = null;
+  let lastChartExpSyncTs = 0;
+  let lastDealBadge = null;
 
   CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
     try {
@@ -89,35 +94,86 @@
         const width = this.canvas ? this.canvas.width : 0;
         const height = this.canvas ? this.canvas.height : 0;
 
-        // A. Open Trade Countdown Timer - Disabled: canvas MM:SS is candle timer, not trade expiration
-        // (Prevent candle countdown 00:59->00:00 from corrupting trade deal expiration timer)
+        // 1. Server Clock Time (top left of chart, e.g. "21:40:07 UTC+7", "21:40:07 UTC")
+        const serverClockMatch = str.match(/(\d{1,2}):(\d{2}):(\d{2})\s*UTC/i);
+        if (serverClockMatch) {
+          const sh = parseInt(serverClockMatch[1], 10);
+          const sm = parseInt(serverClockMatch[2], 10);
+          const ss = parseInt(serverClockMatch[3], 10);
+          lastServerClockSec = sh * 3600 + sm * 60 + ss;
+          lastServerClockTs = Date.now();
+        }
 
-        // B. Closing Time of Chart (e.g. "16:22:48" or next to "Время закрытия")
+        // 2. Close Time Label ("Время закрытия", "Expiration time", "Close time")
+        const lowerStr = str.toLowerCase();
+        if (lowerStr.includes("время закрытия") || lowerStr.includes("expiration time") || lowerStr.includes("close time")) {
+          lastCloseLabelPos = { x: x, y: y, ts: Date.now() };
+        }
+
+        // 3. Close Time of Chart (e.g. "21:41:07")
         const closingTimeMatch = str.match(/^([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)$/);
         if (closingTimeMatch) {
-          const now = new Date();
           const ch = parseInt(closingTimeMatch[1], 10);
           const cm = parseInt(closingTimeMatch[2], 10);
           const cs = parseInt(closingTimeMatch[3], 10);
-          const closeDate = new Date(now);
-          closeDate.setHours(ch, cm, cs, 0);
-          let deltaSec = Math.round((closeDate.getTime() - now.getTime()) / 1000);
-          if (deltaSec < -43200) deltaSec += 86400; // handle midnight rollover
-          if (deltaSec > 0 && deltaSec <= 1800) {
-            const nowPerf = performance.now();
-            if (nowPerf - lastClosingNoticeTs > 1000) {
-              lastClosingNoticeTs = nowPerf;
+          const closeSec = ch * 3600 + cm * 60 + cs;
+
+          let chartExpSec = null;
+          if (lastServerClockSec !== null && (Date.now() - lastServerClockTs < 3500)) {
+            const elapsed = Math.round((Date.now() - lastServerClockTs) / 1000);
+            const curSec = (lastServerClockSec + elapsed) % 86400;
+            let diff = closeSec - curSec;
+            if (diff < 0) diff += 86400;
+            chartExpSec = diff;
+          } else {
+            const now = new Date();
+            const curSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+            let diff = closeSec - curSec;
+            if (diff < -43200) diff += 86400;
+            chartExpSec = diff;
+          }
+
+          if (chartExpSec !== null && chartExpSec >= 10 && chartExpSec <= 300) {
+            const nowTs = Date.now();
+            if (nowTs - lastChartExpSyncTs > 900) {
+              lastChartExpSyncTs = nowTs;
               window.postMessage(
                 {
                   source: "WINKY_HOOK",
-                  type: "CHART_CLOSING_TIME",
-                  closingSec: deltaSec,
-                  closingStr: str,
-                  timestamp: Date.now(),
+                  type: "CHART_EXPIRATION_SYNC",
+                  chartExpSec: chartExpSec,
+                  closeStr: str,
+                  timestamp: nowTs,
                 },
                 "*"
               );
             }
+          }
+        }
+
+        // 4. Real Deal Badge Stake on chart canvas (e.g. "▲ $110", "▼ $50", "$110")
+        if (/^[▲▼⬆⬇]?\s*\$\d+/.test(str)) {
+          lastDealBadge = { text: str, x: x, y: y, ts: Date.now() };
+        }
+
+        // 5. Real Deal Badge Timer MM:SS drawn inside that exact deal badge
+        const badgeTimerMatch = str.match(/^0([0-4]):([0-5]\d)$/);
+        if (badgeTimerMatch && lastDealBadge) {
+          const dt = Date.now() - lastDealBadge.ts;
+          const dx = Math.abs(x - lastDealBadge.x);
+          const dy = y - lastDealBadge.y;
+          if (dt < 80 && dx < 65 && dy >= 4 && dy <= 38) {
+            const remSec = parseInt(badgeTimerMatch[1], 10) * 60 + parseInt(badgeTimerMatch[2], 10);
+            window.postMessage(
+              {
+                source: "WINKY_HOOK",
+                type: "DEAL_BADGE_TIMER",
+                remainingSec: remSec,
+                badgeText: lastDealBadge.text,
+                timestamp: Date.now(),
+              },
+              "*"
+            );
           }
         }
 
@@ -426,65 +482,87 @@
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
       const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
 
-      // Determine formatted target e.g. "00:00:15", "00:00:30", "00:01:00"
-      let formattedTarget = "00:00:30";
-      if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") {
-        formattedTarget = "00:00:15";
-      } else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00") {
-        formattedTarget = "00:01:00";
-      }
+      const targetSec = (targetDurationStr === "15s" || targetDurationStr === "00:00:15")
+        ? 15
+        : (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00")
+        ? 60
+        : 30;
 
-      // 1. Проверяем, есть ли уже видимые быстрые пилюли времени БЕЗ открытия калькулятора
-      const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button");
+      // 1. Проверяем, есть ли уже видимые быстрые пилюли времени (S15, S30, M1)
+      const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
       for (const p of pills) {
         if (!p || p.offsetParent === null) continue;
         const pTxt = (p.textContent || "").trim();
         if (
-          (formattedTarget === "00:00:15" && (pTxt === "S15" || pTxt === "00:15")) ||
-          (formattedTarget === "00:00:30" && (pTxt === "S30" || pTxt === "00:30")) ||
-          (formattedTarget === "00:01:00" && (pTxt === "M1" || pTxt === "01:00"))
+          (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
+          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
+          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00"))
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
+          await sleep(60);
           break;
         }
       }
 
-      // 2. Если инпут времени найден, обновляем через нативный сеттер без focus/click (чтобы не открывать калькулятор!)
-      if (timeInp) {
-        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-        if (nativeSetter) {
-          nativeSetter.call(timeInp, formattedTarget);
-        } else {
-          timeInp.value = formattedTarget;
-        }
-        timeInp.dispatchEvent(new Event("input", { bubbles: true }));
-        timeInp.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-
-      await sleep(100);
-      closePocketCalculatorIfOpen();
-
-      // 3. Считываем реальное установленное время из инпута Покета
-      let actualSec = 30;
-      if (timeInp && timeInp.value) {
+      // Функция парсинга секунд из инпута времени
+      const parseInputSec = () => {
+        if (!timeInp || !timeInp.value) return 60;
         const val = timeInp.value.trim();
         const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
-        if (mTime) {
-          const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
-          const m = parseInt(mTime[2], 10);
-          const s = parseInt(mTime[3], 10);
-          actualSec = h * 3600 + m * 60 + s;
+        if (!mTime) return 60;
+        const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
+        const m = parseInt(mTime[2], 10);
+        const s = parseInt(mTime[3], 10);
+        return h * 3600 + m * 60 + s;
+      };
+
+      let currentSec = parseInputSec();
+
+      // 2. Реальные кнопки + и - рядом с полем времени в правой панели
+      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child");
+      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child");
+
+      // Если нужно 30s (или 15s), а сейчас > targetSec — нажимаем кнопку минус 1-2 раза
+      if (targetSec <= 30 && currentSec > targetSec && btnMinus) {
+        for (let i = 0; i < 2; i++) {
+          btnMinus.click();
+          await sleep(60);
+          currentSec = parseInputSec();
+          if (currentSec <= targetSec) break;
         }
+      }
+
+      // Если нужно 60s, а сейчас < 60 — нажимаем кнопку плюс 1-2 раза
+      if (targetSec >= 60 && currentSec < targetSec && btnPlus) {
+        for (let i = 0; i < 2; i++) {
+          btnPlus.click();
+          await sleep(60);
+          currentSec = parseInputSec();
+          if (currentSec >= targetSec) break;
+        }
+      }
+
+      closePocketCalculatorIfOpen();
+
+      // 3. Честное считывание реального времени
+      let actualSec = parseInputSec();
+      if (actualSec >= 45) {
+        actualSec = 60;
+      } else if (actualSec <= 20 && actualSec >= 10) {
+        actualSec = 15;
+      } else {
+        actualSec = 30;
       }
 
       const label = actualSec >= 60 ? "1m" : `${actualSec}s`;
-      console.log(`[WinkyHook] ⏱️ Итоговое время экспирации в Покете: ${actualSec}с (${label})`);
+      console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);
 
       window.postMessage(
         {
           source: "WINKY_HOOK",
           type: "WINKY_RESP_SET_EXPIRY",
+          requestId: cmd.requestId,
           ok: true,
           actualSec: actualSec,
           label: label,
@@ -496,8 +574,11 @@
         {
           source: "WINKY_HOOK",
           type: "WINKY_RESP_SET_EXPIRY",
+          requestId: cmd.requestId,
           ok: false,
           error: String(e),
+          actualSec: 60,
+          label: "1m",
         },
         "*"
       );
