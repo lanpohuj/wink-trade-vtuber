@@ -190,6 +190,11 @@
     _lastDealBadgeText: null,
     _lastDealBadgeTs: 0,
     _currentTradeRemaining: null,
+    tradeStartTime: 0,
+    tradeEndTime: 0,
+    tradeDurationSec: 60,
+    hasExtendedOnce: false,
+    isCalibratedToRealDeal: false,
     candles: [], // 5-second candles: { open, high, low, close, time, isGreen, isRed, bodySize, totalRange }
     currentCandle: null,
     lastHookTickTime: 0,
@@ -383,11 +388,63 @@
       state._lastDealBadgeRemaining = data.remainingSec;
       state._lastDealBadgeText = data.badgeText || "";
       state._lastDealBadgeTs = Date.now();
+
+      if (state.botState === "IN_TRADE" && state.tradeEndTime) {
+        const now = Date.now();
+        const remSec = data.remainingSec;
+        const localRem = Math.floor((state.tradeEndTime - now) / 1000);
+
+        // 1. Первичная калибровка таймфрейма (в первые 4 секунды после клика)
+        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 4000) && remSec >= 35) {
+          state.isCalibratedToRealDeal = true;
+          state.selectedTimeframe = "1m";
+          updateExpiryHUD("1m");
+          if (state.activeSignal) {
+            state.activeSignal.duration = "1m";
+            state.activeSignal.durationSec = remSec;
+          }
+          state.tradeEndTime = now + (remSec * 1000) + 150;
+          state.tradeDurationSec = Math.max(state.tradeDurationSec || 60, remSec);
+          updateInTradeTimerUI(remSec);
+          loggerLog(`[TradeSync] ⏱️ Мгновенная калибровка сделки под 1m с флажка Pocket Option: ${remSec}с!`);
+        } else if (remSec >= 0) {
+          // 2. Постоянная точная подстройка под реальный флажок сделки на графике:
+          // Если таймер бота отстаёт (remSec < localRem) ИЛИ в первые 4 секунды remSec > localRem + 2:
+          if (remSec < localRem || (now - state.tradeStartTime < 4000 && remSec > localRem + 2)) {
+            state.tradeEndTime = now + (remSec * 1000) + 150;
+            state.tradeDurationSec = Math.max(state.tradeDurationSec || 60, remSec);
+            updateInTradeTimerUI(remSec);
+          }
+        }
+      }
     }
   });
 
+  function updateInTradeTimerUI(remaining) {
+    state._currentTradeRemaining = remaining;
+    const dur = state.tradeDurationSec || 60;
+    const timerEl = document.getElementById("signalTimerVal");
+    if (timerEl) timerEl.textContent = formatTime(remaining);
+
+    const progressEl = document.getElementById("signalProgressFill");
+    if (progressEl) {
+      const pct = Math.max(0, Math.min(100, (remaining / dur) * 100));
+      progressEl.style.width = `${pct}%`;
+    }
+
+    const bAction = document.getElementById("btnGetSignalAction");
+    if (bAction) {
+      bAction.disabled = true;
+      bAction.classList.add("disabled");
+      const formatted = formatTime(remaining);
+      bAction.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
+    }
+
+    notifyTradePhase("IN_TRADE", state.targetPair, remaining);
+  }
+
   function syncInTradeTimerFromHook(realRemainingSec) {
-    // Disabled: countdown is strictly monotonic and managed by executeTradeWithSignal
+    // Managed via DEAL_BADGE_TIMER and executeTradeWithSignal
   }
 
   function readTradersSentiment() {
@@ -1698,65 +1755,61 @@
       return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "forced_loss" };
     }
 
-    // Предварительный расчёт по котировкам (entryPrice vs exitPrice)
+    // Предварительный расчёт по котировкам (entryPrice vs exitPrice) — только как резервный индикатор
     let isWinByQuote = null;
     if (entry !== null && exit !== null && entry !== exit) {
       const isUp = exit > entry;
       isWinByQuote = dir === "BUY" ? isUp : !isUp;
     }
 
-    // 1. Прямое сравнение до клика и после закрытия (balanceBeforeClick vs balanceAfterClose)
+    // Приоритет 1 (Реальное изменение баланса Pocket Option — 100% точность):
     if (before !== null && after !== null) {
       const delta = after - before;
       if (delta > 0.5) {
         const netProfit = (delta > stake * 1.1) ? Math.round(delta - stake) : Math.round(delta);
         return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "balance_increase_over_before" };
       }
-      // Если баланс списан на ставку (-stake), но по котировкам уверенный плюс (выплата ещё не поступила на баланс)
-      if (isWinByQuote === true && Math.abs(delta + stake) < 2.5) {
-        const netProfit = Math.round(stake * (payout / 100));
-        loggerLog(`[evaluateTradeOutcome] 💡 Баланс списан на ставку ($${stake}), но по котировкам чистый WIN (${entry} -> ${exit})! Засчитываем победу.`);
-        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "quote_direction_win_pending_balance" };
-      }
-      if (delta < -0.5 && isWinByQuote !== true) {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(Math.abs(delta)), reason: "balance_decrease_under_before" };
+      if (delta < -0.5) {
+        const loss = Math.round(Math.abs(delta));
+        return { isWin: false, profitDelta: 0, lossDelta: Math.max(1, loss), reason: "balance_decrease_under_before" };
       }
     }
 
-    // 2. Сравнение во время сделки и после закрытия (balanceDuringTrade vs balanceAfterClose)
+    // Приоритет 2 (Сравнение during и after, если before не считался):
     if (during !== null && after !== null) {
       if (after > during + stake * 0.5) {
         const profit = before !== null ? Math.round(after - before) : Math.round(stake * (payout / 100));
         return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
       }
-      if (before !== null && during < before && Math.abs(after - during) < 0.5 && isWinByQuote !== true) {
+      if (before !== null && during < before - 0.5 && Math.abs(after - during) <= 0.5) {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(before - after), reason: "stake_lost_stagnant_during" };
       }
     }
 
-    // 3. Проверка истории закрытых сделок (Closed Deals first row)
+    // Приоритет 3 (Таблица закрытых сделок брокера readClosedDealsFirstRow()):
     const dealRow = readClosedDealsFirstRow();
     if (dealRow) {
       if (dealRow.status === "WIN") {
         const pVal = dealRow.payout > 0 ? (dealRow.payout > stake * 1.1 ? Math.round(dealRow.payout - stake) : Math.round(dealRow.payout)) : Math.round(stake * (payout / 100));
         return { isWin: true, profitDelta: Math.max(1, pVal), lossDelta: 0, reason: "closed_deals_win" };
       }
-      if (dealRow.status === "LOSS" && isWinByQuote !== true) {
+      if (dealRow.status === "LOSS") {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "closed_deals_loss" };
       }
     }
 
-    // 4. Резервная проверка по котировкам (entryPrice vs exitPrice)
-    if (isWinByQuote !== null) {
+    // Приоритет 4 (Фоллбэк по цене exitPrice vs entryPrice — ТОЛЬКО если баланс не удалось прочитать или он не менялся):
+    const balanceWasUnchanged = (before === null || after === null || (Math.abs(after - before) <= 0.5 && Math.abs((during || before) - before) <= 0.5));
+    if (balanceWasUnchanged && isWinByQuote !== null) {
       if (isWinByQuote) {
         const netProfit = Math.round(stake * (payout / 100));
-        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "quote_direction_win" };
+        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "quote_direction_win_fallback" };
       } else {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss" };
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss_fallback" };
       }
     }
 
-    // 5. Безопасный дефолт: МИНУС (никогда не объявляем плюс вслепую!)
+    // Приоритет 5 (Безопасный дефолт: МИНУС):
     return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "safe_loss_default" };
   }
 
@@ -2603,88 +2656,47 @@
         model: state.selectedModel,
       });
 
-      // 5. Строго монотонный обратный отсчёт экспирации сделки
-      let tradeDurationSec = Math.max(15, Math.min(300, durationSec));
-      const tradeStartTime = Date.now();
-      let tradeEndTime = tradeStartTime + (tradeDurationSec * 1000);
-      let isCalibratedToRealDeal = false;
-      let hasExtendedOnce = false;
-      let initialRemaining = tradeDurationSec;
-      state._currentTradeRemaining = tradeDurationSec;
-      notifyTradePhase("IN_TRADE", state.targetPair, initialRemaining);
-      const updateTradeButtonLabel = (sec) => {
-        const bAction = document.getElementById("btnGetSignalAction");
-        if (bAction) {
-          bAction.disabled = true;
-          bAction.classList.add("disabled");
-          const formatted = formatTime(sec);
-          bAction.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
-        }
-      };
-      updateTradeButtonLabel(initialRemaining);
+      // 5. Строго синхронизированный обратный отсчёт экспирации сделки (шаг 200мс)
+      state.tradeDurationSec = Math.max(15, Math.min(300, durationSec));
+      state.tradeStartTime = Date.now();
+      state.tradeEndTime = state.tradeStartTime + (state.tradeDurationSec * 1000);
+      state.isCalibratedToRealDeal = false;
+      state.hasExtendedOnce = false;
+      state._currentTradeRemaining = state.tradeDurationSec;
+      updateInTradeTimerUI(state.tradeDurationSec);
 
       state.expiryInterval = setInterval(() => {
         const now = Date.now();
 
-        // Умная авто-калибровка в первые 4 секунды (если на графике появился флажок сделки >= 36с или чарт 1m)
-        if (!isCalibratedToRealDeal && (now - tradeStartTime < 4000)) {
-          const badgeRem = (state._lastDealBadgeTs && (now - state._lastDealBadgeTs < 1500)) ? state._lastDealBadgeRemaining : 0;
-          const chartExp = (state._lastChartExpSecTs && (now - state._lastChartExpSecTs < 3000)) ? state._lastChartExpSec : 0;
-          if (badgeRem >= 36 || chartExp >= 45) {
-            isCalibratedToRealDeal = true;
-            const syncedSec = badgeRem >= 36 ? badgeRem : chartExp;
-            tradeEndTime = now + (syncedSec * 1000);
-            tradeDurationSec = syncedSec;
-            updateExpiryHUD("1m");
-            if (state.activeSignal) {
-              state.activeSignal.duration = "1m";
-              state.activeSignal.durationSec = syncedSec;
-            }
-            loggerLog(`[TradeSync] ⏱️ Авто-калибровка с реальным временем Покета: ${syncedSec}с (1m)!`);
-          }
-        }
-
-        const remaining = Math.max(0, Math.ceil((tradeEndTime - now) / 1000));
-        state._currentTradeRemaining = remaining;
-
-        const timerEl = document.getElementById("signalTimerVal");
-        if (timerEl) timerEl.textContent = formatTime(remaining);
-
-        const progressEl = document.getElementById("signalProgressFill");
-        if (progressEl) {
-          const pct = Math.max(0, Math.min(100, (remaining / tradeDurationSec) * 100));
-          progressEl.style.width = `${pct}%`;
-        }
-
-        updateTradeButtonLabel(remaining);
-        notifyTradePhase("IN_TRADE", state.targetPair, remaining);
-
-        if (remaining >= 14 && remaining <= 18 && (now - state.lastInsightVoiceTs >= 90000)) {
-          state.lastInsightVoiceTs = now;
-          VoiceManager.playCategory("stream_insight", false, "happy", "nod");
-        }
-
-        if (remaining <= 0) {
-          // Защита от преждевременного закрытия: если на графике реально висит флажок сделки > 2 сек (максимум 1 продление)
-          if (!hasExtendedOnce && state._lastDealBadgeTs && (now - state._lastDealBadgeTs < 1500) && state._lastDealBadgeRemaining > 2) {
-            hasExtendedOnce = true;
-            const extSec = state._lastDealBadgeRemaining + 1;
-            tradeEndTime = now + (extSec * 1000);
-            tradeDurationSec = Math.max(tradeDurationSec, extSec);
-            updateExpiryHUD("1m");
-            if (state.activeSignal) {
-              state.activeSignal.duration = "1m";
-              state.activeSignal.durationSec = extSec;
-            }
-            loggerLog(`[TradeWaitGuard] ⏳ На графике ещё открыт флажок сделки (осталось ${state._lastDealBadgeRemaining}с)! Продлеваем до закрытия.`);
+        // 1. Проверяем окончание сделки
+        if (now >= state.tradeEndTime) {
+          // Защита от преждевременного закрытия: если на графике реально висит флажок сделки >= 2 сек (максимум 1 продление)
+          if (!state.hasExtendedOnce && state._lastDealBadgeTs && (now - state._lastDealBadgeTs < 900) && state._lastDealBadgeRemaining >= 2) {
+            state.hasExtendedOnce = true;
+            // БЕЗ прибавления +1 или +2 секунд! Ровно столько, сколько осталось на флажке:
+            state.tradeEndTime = now + (state._lastDealBadgeRemaining * 1000);
+            state.tradeDurationSec = Math.max(state.tradeDurationSec, state._lastDealBadgeRemaining);
+            updateInTradeTimerUI(state._lastDealBadgeRemaining);
+            loggerLog(`[TradeWaitGuard] ⏳ На графике ещё открыт флажок сделки (осталось ${state._lastDealBadgeRemaining}с)! Продлеваем ровно до закрытия.`);
             return;
           }
 
           clearInterval(state.expiryInterval);
           state.expiryInterval = null;
+          updateInTradeTimerUI(0);
           onSignalTimerFinished();
+          return;
         }
-      }, 1000);
+
+        // 2. Локальный остаток секунд (строго округление вниз Math.floor)
+        const remaining = Math.max(0, Math.floor((state.tradeEndTime - now) / 1000));
+        updateInTradeTimerUI(remaining);
+
+        if (remaining >= 14 && remaining <= 18 && (now - state.lastInsightVoiceTs >= 90000)) {
+          state.lastInsightVoiceTs = now;
+          VoiceManager.playCategory("stream_insight", false, "happy", "nod");
+        }
+      }, 200);
     } catch (err) {
       loggerLog("[executeTradeWithSignal] ⚠️ Error during execution:", err);
       console.error("[Winky] Execute trade error:", err);
@@ -2953,6 +2965,9 @@
       return;
     }
 
+    // 1. МГНОВЕННО фиксируем цену закрытия ровно в 00:00 (до любых задержек и пауз)
+    state.exitPrice = getCurrentChartPrice();
+
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
       state.expiryInterval = null;
@@ -2966,37 +2981,33 @@
       btnGet.innerHTML = `<span>✨</span><span>${state.lang === "ru" ? "ПОДВЕДЕНИЕ ИТОГОВ..." : "EVALUATING TRADE..."}</span>`;
     }
 
-    // 1. Ждём 1.5 секунды, чтобы сервер Pocket Option успел гарантированно закрыть сделку и начислить выплату на баланс
-    await new Promise((r) => setTimeout(r, 1500));
+    // 2. Умное ожидание расчёта баланса брокером (до 6 попыток по 300мс = макс. 1.8с)
+    const stake = state.activeStake || state.currentStake || BASE_STAKE;
+    let afterBal = getPocketBalance();
+    for (let i = 0; i < 6; i++) {
+      await new Promise((r) => setTimeout(r, 300));
+      afterBal = getPocketBalance();
+      // Если баланс уже вырос выше стартового (пришла выплата за победу) — выходим досрочно!
+      if (state.balanceBeforeClick !== null && afterBal !== null && afterBal > state.balanceBeforeClick + 0.5) {
+        break;
+      }
+      // Если баланс вырос относительно баланса во время сделки (вернулась ставка + профит) — выходим досрочно!
+      if (state.balanceDuringTrade !== null && afterBal !== null && afterBal > state.balanceDuringTrade + (stake * 0.5)) {
+        break;
+      }
+    }
+    state.balanceAfterClose = afterBal;
 
-    // 2. Бесшовная координация речи: если Winky заканчивает ответ зрителю в TikTok, ждём до 3.5с
+    // 3. Бесшовная координация речи: если Winky заканчивает ответ зрителю в TikTok, ждём до 2.5с
     const waitStart = Date.now();
-    while (Date.now() - waitStart < 3500) {
+    while (Date.now() - waitStart < 2500) {
       const spkStatus = await checkWinkySpeaking();
       if (!spkStatus || !spkStatus.is_speaking) break;
-      await new Promise((r) => setTimeout(r, 250));
+      await new Promise((r) => setTimeout(r, 200));
     }
     notifyTradePhase("RESULT", state.targetPair, 0);
 
-    state.balanceAfterClose = getPocketBalance();
-    state.exitPrice = getCurrentChartPrice();
-
-    const stake = state.activeStake || state.currentStake || BASE_STAKE;
-    const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
-    const isUp = (state.exitPrice !== null && state.entryPrice !== null) ? state.exitPrice > state.entryPrice : false;
-    const isWinByQuote = dir === "BUY" ? isUp : !isUp;
-
-    // Защита от списания ставки: если баланс всё ещё списан на -stake, но котировки в плюс — ждём ещё 1.5с
-    if (isWinByQuote && state.balanceBeforeClick !== null && state.balanceAfterClose !== null) {
-      if (Math.abs(state.balanceAfterClose - (state.balanceBeforeClick - stake)) < 1.5) {
-        loggerLog(`[TradeOutcome] ⏳ Баланс всё ещё списан (-$${stake}), но котировки в ПЛЮС! Ждём 1.5с зачисления брокера...`);
-        await new Promise((r) => setTimeout(r, 1500));
-        state.balanceAfterClose = getPocketBalance();
-        state.exitPrice = getCurrentChartPrice();
-      }
-    }
-
-    // 3. Безошибочная проверка исхода сделки
+    // 4. Безошибочная проверка исхода сделки
     const outcomeResult = evaluateTradeOutcome();
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;

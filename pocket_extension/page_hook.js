@@ -164,16 +164,21 @@
           const dy = y - lastDealBadge.y;
           if (dt < 80 && dx < 65 && dy >= 4 && dy <= 38) {
             const remSec = parseInt(badgeTimerMatch[1], 10) * 60 + parseInt(badgeTimerMatch[2], 10);
-            window.postMessage(
-              {
-                source: "WINKY_HOOK",
-                type: "DEAL_BADGE_TIMER",
-                remainingSec: remSec,
-                badgeText: lastDealBadge.text,
-                timestamp: Date.now(),
-              },
-              "*"
-            );
+            const nowTs = Date.now();
+            if (remSec !== lastDealTimerSec || nowTs - lastDealTimerTs > 150) {
+              lastDealTimerSec = remSec;
+              lastDealTimerTs = nowTs;
+              window.postMessage(
+                {
+                  source: "WINKY_HOOK",
+                  type: "DEAL_BADGE_TIMER",
+                  remainingSec: remSec,
+                  badgeText: lastDealBadge.text,
+                  timestamp: nowTs,
+                },
+                "*"
+              );
+            }
           }
         }
 
