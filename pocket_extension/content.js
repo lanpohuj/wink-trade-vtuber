@@ -2115,13 +2115,14 @@
       updateStakeBadgeUI();
     },
 
-    // Programmatically click CALL (BUY) or PUT (SELL) with atomic single execution lock
+    // Programmatically click CALL (BUY) or PUT (SELL) with timestamp execution lock
     async clickTrade(direction) {
-      if (state.isExecutingTrade) {
-        loggerLog("[TradeLock] Повторный вход заблокирован! Сделка уже исполняется.");
+      const now = Date.now();
+      if (state.lastTradeExecuteTs && (now - state.lastTradeExecuteTs < 2000)) {
+        loggerLog("[TradeLock] Повторный вход заблокирован! Прошло менее 2000 мс.");
         return false;
       }
-      state.isExecutingTrade = true;
+      state.lastTradeExecuteTs = now;
 
       try {
         closeAnyOpenModals();
@@ -2158,6 +2159,7 @@
 
         // Фоллбэк через прямой DOM-клик из контекста расширения
         if (!success) {
+          setPocketStakeAmount(expectedStake);
           success = clickPocketTradeButton(direction);
           if (success) {
             loggerLog(`[clickTrade] Сделка ${direction} ($${state.currentStake}) исполнена через DOM fallback`);
@@ -2178,11 +2180,9 @@
           loggerLog(`[clickTrade] Не удалось исполнить сделку ${direction}`);
           return false;
         }
-      } finally {
-        // Снимаем блокировку через 3 секунды
-        setTimeout(() => {
-          state.isExecutingTrade = false;
-        }, 3000);
+      } catch (err) {
+        loggerLog("[clickTrade] Ошибка в процессе клика сделки:", err);
+        return false;
       }
     },
   };
@@ -2446,65 +2446,31 @@
     return { isOpen: false, remainingSec: 0, source: "none" };
   }
 
-  function syncAndGetRealPocketExpirationSec(targetDurationStr = "30s") {
-    const targetSec = parseDurationSeconds(targetDurationStr);
-    const targetFmt = targetSec >= 60 ? "00:01:00" : (targetSec <= 15 ? "00:00:15" : "00:00:30");
-
-    // 1. Пытаемся выставить целевое время в инпуты Pocket Option
+  function getPocketSelectedExpirationSeconds() {
     try {
-      const timeInputs = document.querySelectorAll(
-        ".control--time input, .block--time input, .input-field--time input, input[name='time'], input[name='expiration'], [data-test='expiration-time'], .value__val input"
+      const inputs = Array.from(
+        document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input")
       );
-      for (const input of timeInputs) {
-        if (input && input.offsetParent !== null) {
-          try { input.focus(); } catch (_) {}
-          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-          if (nativeSetter) {
-            nativeSetter.call(input, targetFmt);
-          } else {
-            input.value = targetFmt;
-          }
-          input.dispatchEvent(new Event("input", { bubbles: true }));
-          input.dispatchEvent(new Event("change", { bubbles: true }));
-        }
+      const timeInp = inputs.find((inp) => (inp.value || "").includes(":"));
+      if (timeInp && timeInp.value) {
+        const parts = timeInp.value.trim().split(":").map((n) => parseInt(n, 10) || 0);
+        if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+        if (parts.length === 2) return parts[0] * 60 + parts[1];
       }
     } catch (_) {}
+    return 0;
+  }
 
-    // 2. Считываем реальное время экспирации с Покета
-    // Вариант А: Дельта времени закрытия в шапке графика
-    const headerDelta = getPocketChartHeaderClosingDeltaSec();
-    if (headerDelta !== null && headerDelta >= 10 && headerDelta <= 300) {
-      loggerLog(`[ExpirationSync] ✅ Реальное время экспирации по шапке графика: ${headerDelta}с`);
-      return headerDelta;
-    }
-
-    // Вариант Б: Значение из инпута времени на панели
-    const timeInputs = document.querySelectorAll(
-      ".control--time input, .block--time input, .input-field--time input, input[name='time'], input[name='expiration'], [data-test='expiration-time']"
-    );
-    for (const input of timeInputs) {
-      if (input && input.offsetParent !== null && input.value) {
-        const val = input.value.trim();
-        const m = val.match(/(\d{1,2}):(\d{2}):(\d{2})/);
-        if (m) {
-          const sec = parseInt(m[1], 10) * 3600 + parseInt(m[2], 10) * 60 + parseInt(m[3], 10);
-          if (sec > 0 && sec <= 600) {
-            loggerLog(`[ExpirationSync] ✅ Считано время из инпута Покета: ${sec}с (${val})`);
-            return sec;
-          }
-        }
-        const m2 = val.match(/(\d+)\s*(s|m|с|м)/i);
-        if (m2) {
-          const num = parseInt(m2[1], 10);
-          const unit = m2[2].toLowerCase();
-          const sec = (unit === "m" || unit === "м") ? num * 60 : num;
-          loggerLog(`[ExpirationSync] ✅ Считано время из инпута Покета: ${sec}с`);
-          return sec;
-        }
+  function syncAndGetRealPocketExpirationSec(strategyTf) {
+    try {
+      const domSec = getPocketSelectedExpirationSeconds();
+      if (domSec >= 5) return domSec;
+      const headerDelta = getPocketChartHeaderClosingDeltaSec();
+      if (headerDelta !== null && headerDelta >= 10 && headerDelta <= 300) {
+        return headerDelta;
       }
-    }
-
-    return targetSec;
+    } catch (_) {}
+    return parseDurationSeconds(strategyTf || "30s") || 30;
   }
 
   function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false) {
@@ -2551,158 +2517,104 @@
 
   async function executeTradeWithSignal(analysis, confluence, scan) {
     try {
-      state.botState = "PREPARING_TRADE";
-      const isBuy = String(analysis.direction).toUpperCase() === "BUY";
+      const isBuy = String(analysis?.direction || "BUY").toUpperCase() === "BUY" || String(analysis?.direction || "").toUpperCase() === "CALL";
+      const tradeDir = isBuy ? "BUY" : "SELL";
       const isRu = (state.lang === "ru");
 
-      const block = document.getElementById("botDirectionBlock");
-      if (block) {
-        block.className = `winky-direction-block analysing`;
-        block.innerHTML = `
-          <div class="signal-dir-large ${isBuy ? "buy" : "sell"}" style="font-size:15px;">
-            🎯 ${isRu ? "СНАЙПЕРСКИЙ ВХОД" : "SNIPER ENTRY"} (${confluence.score.toFixed(1)} / 5.0)
-          </div>
-          <div class="signal-ta-lines">
-            <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">
-              ${isRu
-                ? "⏳ Выжидаем микро-откат для идеальной точки входа..."
-                : "⏳ Hunting micro-pullback for ideal entry price..."}
-            </div>
-            <div class="signal-ta-line ${isBuy ? "buy" : "sell"}">${analysis.line1 || ""}</div>
-          </div>
-        `;
-      }
-
-      // Micro-pullback sniper wait (up to 800ms)
-      const sniperStartTime = Date.now();
-      let bestEntryFound = false;
-      let initialQuote = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]) || 1.0;
-      let prevTick = initialQuote;
-      let pullbackDetected = false;
-
-      while (Date.now() - sniperStartTime < 800) {
-        await new Promise((r) => setTimeout(r, 100));
-        try { ChartAnalyzer.pollPrice(); } catch (_) {}
-        const curTick = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]);
-        if (!curTick) continue;
-
-        if (isBuy) {
-          if (curTick < initialQuote) pullbackDetected = true;
-          if (pullbackDetected && curTick > prevTick) {
-            bestEntryFound = true;
-            loggerLog(`[SniperEntry] ✅ Идеальный микро-откат выкуплен! (начало: ${initialQuote}, дно: ${prevTick}, вход: ${curTick})`);
-            break;
-          }
-        } else {
-          if (curTick > initialQuote) pullbackDetected = true;
-          if (pullbackDetected && curTick < prevTick) {
-            bestEntryFound = true;
-            loggerLog(`[SniperEntry] ✅ Идеальный микро-подскок отбит! (начало: ${initialQuote}, пик: ${prevTick}, вход: ${curTick})`);
-            break;
-          }
-        }
-
-        if (Date.now() - sniperStartTime > 600) {
-          bestEntryFound = true;
-          break;
-        }
-        prevTick = curTick;
-      }
-
-      // Stake & money management
-      const finalStake = getExpectedStake(state.recoveryStep);
-      state.currentStake = finalStake;
-      setPocketStakeAmount(finalStake);
-      await new Promise((r) => setTimeout(r, 120));
-
-      // Expiration synchronization via MAIN World (quick pills click)
-      const strategyTf = selectStrategyExpiration(analysis, scan);
-      let realPocketSec = 0;
+      // 1. Установка ставки ($50 / $110 / $242)
+      let finalStake = 50;
       try {
+        finalStake = typeof getExpectedStake === "function" ? getExpectedStake(state.recoveryStep) : 50;
+        state.currentStake = finalStake;
+        if (typeof setPocketStakeAmount === "function") setPocketStakeAmount(finalStake);
+      } catch (e) {
+        console.warn("[Winky] Stake setup warning:", e);
+      }
+
+      // 2. Выбор и синхронизация времени экспирации
+      let strategyTf = "30s";
+      let realPocketSec = 30;
+      try {
+        if (typeof selectStrategyExpiration === "function") {
+          strategyTf = selectStrategyExpiration(analysis, scan) || "30s";
+        }
         const expRes = await requestMainWorldSetExpiry(strategyTf);
-        if (expRes && expRes.ok && expRes.actualSec) {
+        if (expRes && expRes.ok && expRes.actualSec >= 5) {
           realPocketSec = expRes.actualSec;
-          loggerLog(`[executeTradeWithSignal] ✅ MAIN World выставил экспирацию: ${realPocketSec}с (${expRes.label || strategyTf})`);
+        } else {
+          realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
+        }
+        const domExpSec = getPocketSelectedExpirationSeconds();
+        if (domExpSec >= 45) {
+          realPocketSec = Math.max(realPocketSec || 0, domExpSec);
         }
       } catch (e) {
-        loggerLog(`[executeTradeWithSignal] ⚠️ MAIN World экспирация fallback:`, e);
+        console.warn("[Winky] Expiry setup warning:", e);
+        realPocketSec = 30;
       }
 
-      if (!realPocketSec) {
-        realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
-      }
-
-      const domExpSec = getPocketSelectedExpirationSeconds();
-      if (domExpSec >= 45) {
-        realPocketSec = Math.max(realPocketSec || 0, domExpSec);
-      }
-
-      const resolvedTf = (realPocketSec >= 50) ? "1m" : ((realPocketSec > 0 && realPocketSec <= 20) ? "15s" : "30s");
+      const resolvedTf = realPocketSec >= 50 ? "1m" : (realPocketSec > 0 && realPocketSec <= 20 ? "15s" : "30s");
       state.selectedTimeframe = resolvedTf;
+      const durationSec = realPocketSec >= 5 ? realPocketSec : (parseDurationSeconds(resolvedTf) || 30);
 
+      // Обновляем UI плашек времени
       const metricTf = document.getElementById("metricTimeframeVal");
-      if (metricTf) metricTf.textContent = state.selectedTimeframe;
+      if (metricTf) metricTf.textContent = resolvedTf;
       const orbTime = document.getElementById("winkyOrbTime");
-      if (orbTime) orbTime.textContent = `Таймф: M1  Время: ${state.selectedTimeframe}`;
-      const selectTf = document.getElementById("selectBotTimeframe");
-      if (selectTf) selectTf.value = state.selectedTimeframe;
+      if (orbTime) orbTime.textContent = `Таймф: M1  Время: ${resolvedTf}`;
+      const selectTf = document.getElementById("selectBotTimeframe") || document.getElementById("selectTimeframe");
+      if (selectTf) selectTf.value = resolvedTf;
 
-      let durationSec = realPocketSec || parseDurationSeconds(state.selectedTimeframe);
       state.activeSignal = {
         pair: state.targetPair,
         flags: state.targetFlags,
         payout: state.targetPayout,
-        direction: analysis.direction,
-        accuracy: Math.round(Math.min(97, 88 + confluence.score * 1.8)),
-        confluence: confluence.score,
-        duration: state.selectedTimeframe,
-        line1: analysis.line1,
-        line2: analysis.line2,
+        direction: tradeDir,
+        accuracy: Math.round(Math.min(97, 88 + (confluence?.score || 4.7) * 1.8)),
+        confluence: confluence?.score || 4.7,
+        duration: resolvedTf,
+        line1: analysis?.line1 || "",
+        line2: analysis?.line2 || "",
         durationSec: durationSec,
         startTime: Date.now(),
-        bestPriceEntry: bestEntryFound,
+        bestPriceEntry: true,
       };
 
-      const tradeVoiceCategory = analysis.category || (isBuy ? "buy_trend" : "sell_trend");
-      VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer");
       state.botState = "IN_TRADE";
       state.analysisStartedAt = null;
-
-      if (state.autoStream) {
-        try {
-          await POAutomation.clickTrade(analysis.direction);
-        } catch (clickErr) {
-          loggerLog("[executeTradeWithSignal] Ошибка вызова POAutomation.clickTrade:", clickErr);
-        }
-      } else {
-        state.balanceBeforeClick = getPocketBalance();
-        state.balanceBefore = state.balanceBeforeClick;
-        state.entryPrice = getCurrentChartPrice();
-        setTimeout(() => {
-          state.balanceDuringTrade = getPocketBalance();
-          state.balanceAfterOpen = state.balanceDuringTrade;
-          loggerLog(`[TradeBalance Manual] До клика: ${state.balanceBeforeClick}, во время сделки: ${state.balanceDuringTrade}`);
-        }, 2000);
-      }
-
       renderSignalCardState();
+
+      const tradeVoiceCategory = analysis?.category || (isBuy ? "buy_trend" : "sell_trend");
+      try {
+        VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer");
+      } catch (_) {}
+
+      // 3. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете!
+      try {
+        const clicked = await POAutomation.clickTrade(tradeDir);
+        if (!clicked) {
+          await requestMainWorldClickTrade(tradeDir, finalStake);
+        }
+      } catch (clickErr) {
+        console.warn("[Winky] clickTrade warning:", clickErr);
+      }
 
       // Sync signal with backend & mini app
       sendSyncSignalToProd({
         pair: state.targetPair,
-        direction: analysis.direction,
+        direction: tradeDir,
         accuracy: state.activeSignal.accuracy,
-        confluence: confluence.score,
+        confluence: state.activeSignal.confluence,
         duration: state.selectedTimeframe,
         rationale_ru: [
           state.lang === "ru" ? `⚡ Вход по лучшей цене ($${state.currentStake} · ${state.selectedTimeframe})` : `⚡ Best price entry ($${state.currentStake} · ${state.selectedTimeframe})`,
-          analysis.line1,
-          analysis.line2,
+          analysis?.line1 || "",
+          analysis?.line2 || "",
         ],
         rationale_en: [
           `⚡ Best price entry ($${state.currentStake} · ${state.selectedTimeframe})`,
-          analysis.line1,
-          analysis.line2,
+          analysis?.line1 || "",
+          analysis?.line2 || "",
         ],
         model: state.selectedModel,
       });
@@ -2738,7 +2650,7 @@
             if (mTf) mTf.textContent = "1m";
             const oTime = document.getElementById("winkyOrbTime");
             if (oTime) oTime.textContent = "Таймф: M1  Время: 1m";
-            const sTf = document.getElementById("selectBotTimeframe");
+            const sTf = document.getElementById("selectBotTimeframe") || document.getElementById("selectTimeframe");
             if (sTf) sTf.value = "1m";
             updateTradeButtonLabel(remaining);
           } else if (Math.abs(remaining - detectedSec) > 3) {
@@ -3041,6 +2953,11 @@
 
   async function onSignalTimerFinished() {
     if (state.botState !== "IN_TRADE") return;
+    if (!state.activeSignal) {
+      state.botState = "IDLE";
+      renderSignalCardState();
+      return;
+    }
 
     if (state.expiryInterval) {
       clearInterval(state.expiryInterval);
