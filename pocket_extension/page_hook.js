@@ -187,7 +187,9 @@
     if (data.type === "WINKY_CMD_SWITCH_PAIR") {
       await handleMainWorldSwitchPair(data);
     } else if (data.type === "WINKY_CMD_SET_EXPIRY") {
-      handleMainWorldSetExpiry(data);
+      await handleMainWorldSetExpiry(data);
+    } else if (data.type === "WINKY_CMD_CLICK_TRADE") {
+      await handleMainWorldClickTrade(data);
     }
   });
 
@@ -227,6 +229,32 @@
       );
     };
 
+    // Extract actual currently open pair from PO page
+    let actualCurrentPair = "";
+    const activeSelectors = [
+      ".current-symbol",
+      ".pair-number-wrap",
+      ".currencies-block__in",
+      "[data-test='current-asset']",
+      "h1.pair-title",
+      ".active-asset",
+    ];
+    for (const sel of activeSelectors) {
+      const el = document.querySelector(sel);
+      if (el && el.textContent.trim()) {
+        const m = el.textContent.trim().match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+        if (m) {
+          actualCurrentPair = m[0].trim();
+          break;
+        }
+      }
+    }
+    if (!actualCurrentPair && document.title) {
+      const m = document.title.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+      if (m) actualCurrentPair = m[1].trim();
+    }
+    const normActualCur = (actualCurrentPair || currentPair || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+
     const pairBtn = findPairBtn();
     if (!pairBtn) {
       window.postMessage(
@@ -239,7 +267,7 @@
     // 1. Open popup if not open
     if (!isPopupOpen()) {
       pairBtn.click();
-      await sleep(250);
+      await sleep(350);
     }
 
     // 2. Click Currencies tab ($ Валюты) if present
@@ -262,12 +290,11 @@
         sc.scrollTop = 0;
       } catch (_) {}
     }
-    await sleep(220);
+    await sleep(250);
 
     // 4. Collect candidate rows
     const rows = document.querySelectorAll("a.alist__link, li.alist__item, .alist__item, .assets-block__item");
-    const candidates = [];
-    const normCur = (currentPair || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    let candidates = [];
 
     for (const row of rows) {
       if (!row || row.offsetParent === null) continue;
@@ -278,15 +305,19 @@
       if (payout < minPayout) continue;
 
       // Extract pair name e.g. "EUR/USD OTC" or "ZAR/USD OTC"
-      const nameMatch = text.match(/([A-Z]{3}\s*\/\s*[A-Z]{3}(\s*OTC)?)/i);
-      const pairName = nameMatch ? nameMatch[0].trim().toUpperCase() : text.split("\n")[0].trim();
+      const labelEl = row.querySelector(".alist__label, .asset-name, .symbol-name");
+      const rawName = labelEl ? labelEl.textContent.trim() : "";
+      const nameMatch = (rawName || text).match(/([A-Z]{3}\s*[\/\s]\s*[A-Z]{3}(\s*OTC)?|[A-Za-z0-9]+\s+OTC)/i);
+      let pairName = nameMatch ? nameMatch[0].trim().toUpperCase() : text.split("\n")[0].trim();
+      if (!pairName.includes("/") && pairName.length >= 6 && !pairName.includes(" ")) {
+        pairName = pairName.slice(0, 3) + "/" + pairName.slice(3);
+      }
       const normName = pairName.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-      if (!pairName || normName === normCur) continue;
-      if (recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === normName)) continue;
+      if (!pairName || normName === normActualCur || normName === "na") continue;
 
       const clickable = row.tagName.toLowerCase() === "a" ? row : row.querySelector("a") || row;
-      candidates.push({ name: pairName, payout, element: clickable });
+      candidates.push({ name: pairName, normName, payout, element: clickable, rawRow: row });
     }
 
     console.log(`[WinkyHook] Найдено кандидатов для смены: ${candidates.length}`);
@@ -294,19 +325,41 @@
     let chosen = null;
     if (targetPair) {
       const normTarget = targetPair.toLowerCase().replace(/[^a-z0-9]/g, "");
-      chosen = candidates.find((c) => c.name.toLowerCase().replace(/[^a-z0-9]/g, "").includes(normTarget));
+      chosen = candidates.find((c) => c.normName.includes(normTarget));
     }
+
     if (!chosen && candidates.length > 0) {
-      candidates.sort((a, b) => b.payout - a.payout);
-      const topPayout = candidates[0].payout;
-      const topTier = candidates.filter((c) => c.payout === topPayout);
+      // Filter out recent pairs
+      const nonRecent = candidates.filter(
+        (c) => !recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === c.normName)
+      );
+      const pool = nonRecent.length > 0 ? nonRecent : candidates; // Fallback to all candidates so chosen is never null!
+      pool.sort((a, b) => b.payout - a.payout);
+      const topPayout = pool[0].payout;
+      const topTier = pool.filter((c) => c.payout === topPayout);
       chosen = topTier[Math.floor(Math.random() * topTier.length)];
     }
 
     if (chosen && chosen.element) {
       console.log(`[WinkyHook] 🎯 Кликаем по новой паре: ${chosen.name} (+${chosen.payout}%)`);
-      chosen.element.click();
-      await sleep(180);
+      const el = chosen.element;
+      const rect = el.getBoundingClientRect();
+      const evtOpts = {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
+        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
+      };
+      el.dispatchEvent(new MouseEvent("mousedown", evtOpts));
+      el.dispatchEvent(new MouseEvent("mouseup", evtOpts));
+      el.dispatchEvent(new MouseEvent("click", evtOpts));
+      try { el.click(); } catch (_) {}
+      if (chosen.rawRow && chosen.rawRow !== el) {
+        try { chosen.rawRow.click(); } catch (_) {}
+      }
+
+      await sleep(250);
 
       // Close popup if still open
       if (isPopupOpen()) {
@@ -324,7 +377,6 @@
         "*"
       );
     } else {
-      // Close popup anyway
       if (isPopupOpen()) {
         pairBtn.click();
       }
@@ -340,26 +392,96 @@
     }
   }
 
-  function handleMainWorldSetExpiry(cmd) {
+  async function handleMainWorldSetExpiry(cmd) {
     const { targetDurationStr } = cmd;
     console.log("[WinkyHook] ⏱️ WINKY_CMD_SET_EXPIRY in MAIN World:", targetDurationStr);
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     try {
-      const timeInputs = document.querySelectorAll(
-        ".time-input, input[name='time'], .trading-panel input[type='text'], .time-select input"
+      const timeInp = document.querySelector(
+        ".block--expiration-inputs input, .value__val input, .time-input, input[name='time']"
       );
-      let currentVal = "";
-      for (const inp of timeInputs) {
-        if (inp && inp.offsetParent !== null && (inp.value.includes(":") || /^\d+$/.test(inp.value))) {
-          currentVal = inp.value;
+
+      // Determine formatted target e.g. "00:00:15", "00:00:30", "00:01:00"
+      let formattedTarget = "00:00:30";
+      if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") {
+        formattedTarget = "00:00:15";
+      } else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00") {
+        formattedTarget = "00:01:00";
+      }
+
+      // 1. Click input to open quick expiration pills
+      if (timeInp) {
+        try {
+          timeInp.focus();
+          timeInp.click();
+        } catch (_) {}
+        await sleep(100);
+      }
+
+      // 2. Look for quick pill button (S15, S30, M1, etc.)
+      const pills = document.querySelectorAll(
+        ".pills__item, .time-pill, .expiration-list button, .trading-panel__control button, .dropdown-menu button, button"
+      );
+      let pillClicked = false;
+      for (const p of pills) {
+        const pTxt = (p.textContent || "").trim();
+        if (
+          (formattedTarget === "00:00:15" && (pTxt === "S15" || pTxt === "15s" || pTxt === "15")) ||
+          (formattedTarget === "00:00:30" && (pTxt === "S30" || pTxt === "30s" || pTxt === "30")) ||
+          (formattedTarget === "00:01:00" && (pTxt === "M1" || pTxt === "1m" || pTxt === "1"))
+        ) {
+          p.click();
+          pillClicked = true;
+          console.log(`[WinkyHook] ✅ Кликнута пилюля времени Покета: ${pTxt}`);
           break;
         }
       }
+
+      // 3. Fallback: native setter on input
+      if (timeInp) {
+        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+        if (nativeSetter) {
+          nativeSetter.call(timeInp, formattedTarget);
+        } else {
+          timeInp.value = formattedTarget;
+        }
+        timeInp.dispatchEvent(new Event("input", { bubbles: true }));
+        timeInp.dispatchEvent(new Event("change", { bubbles: true }));
+        timeInp.dispatchEvent(new Event("blur", { bubbles: true }));
+      }
+
+      await sleep(150);
+
+      // 4. Read actual value after change (some OTC pairs enforce min 1m)
+      let actualSec = 30;
+      if (timeInp && timeInp.value) {
+        const val = timeInp.value.trim();
+        const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
+        if (mTime) {
+          const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
+          const m = parseInt(mTime[2], 10);
+          const s = parseInt(mTime[3], 10);
+          actualSec = h * 3600 + m * 60 + s;
+        } else {
+          const numM = val.match(/(\d+)\s*(s|m|с|м)/i);
+          if (numM) {
+            const num = parseInt(numM[1], 10);
+            const unit = numM[2].toLowerCase();
+            actualSec = (unit === "m" || unit === "м") ? num * 60 : num;
+          }
+        }
+      }
+
+      const label = actualSec >= 60 ? "1m" : `${actualSec}s`;
+      console.log(`[WinkyHook] ⏱️ Итоговое время экспирации в Покете: ${actualSec}с (${label})`);
+
       window.postMessage(
         {
           source: "WINKY_HOOK",
           type: "WINKY_RESP_SET_EXPIRY",
           ok: true,
-          currentVal: currentVal,
+          actualSec: actualSec,
+          label: label,
         },
         "*"
       );
@@ -371,6 +493,143 @@
           ok: false,
           error: String(e),
         },
+        "*"
+      );
+    }
+  }
+
+  let lastHookTradeClickTime = 0;
+
+  async function handleMainWorldClickTrade(cmd) {
+    const { direction, stake = 50 } = cmd;
+    console.log("[WinkyHook] ⚡ WINKY_CMD_CLICK_TRADE in MAIN World:", { direction, stake });
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    const now = Date.now();
+    if (now - lastHookTradeClickTime < 2500) {
+      console.warn(`[WinkyHook] 🛑 Блокировка повторного клика! (${now - lastHookTradeClickTime}ms < 2500ms)`);
+      window.postMessage(
+        { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: "debounce_blocked" },
+        "*"
+      );
+      return;
+    }
+    lastHookTradeClickTime = now;
+
+    try {
+      // 1. Set stake amount in Pocket
+      if (stake) {
+        const stakeInps = document.querySelectorAll(
+          ".block--amount-inputs input, .trading-panel input[type='text'], input[name='amount'], .amount-block input"
+        );
+        for (const inp of stakeInps) {
+          if (inp && inp.offsetParent !== null) {
+            const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+            if (nativeSetter) {
+              nativeSetter.call(inp, String(stake));
+            } else {
+              inp.value = String(stake);
+            }
+            inp.dispatchEvent(new Event("input", { bubbles: true }));
+            inp.dispatchEvent(new Event("change", { bubbles: true }));
+            inp.dispatchEvent(new Event("blur", { bubbles: true }));
+            break;
+          }
+        }
+      }
+
+      await sleep(120);
+
+      // 2. Find trade button
+      const isBuy = String(direction).toUpperCase() === "BUY";
+      const callSelectors = [
+        ".btn-call",
+        "a.btn-call",
+        "button.btn-call",
+        ".switch-state-block__item--up",
+        "[data-action='call']",
+        "[data-qa='btn-call']",
+        "[data-test='btn-call']",
+        ".call-btn",
+        ".btn-up",
+      ];
+      const putSelectors = [
+        ".btn-put",
+        "a.btn-put",
+        "button.btn-put",
+        ".switch-state-block__item--down",
+        "[data-action='put']",
+        "[data-qa='btn-put']",
+        "[data-test='btn-put']",
+        ".put-btn",
+        ".btn-down",
+      ];
+
+      const selList = isBuy ? callSelectors : putSelectors;
+      let btn = null;
+      for (const sel of selList) {
+        const el = document.querySelector(sel);
+        if (el) {
+          btn = el;
+          break;
+        }
+      }
+
+      if (!btn) {
+        const allButtons = document.querySelectorAll(
+          ".trade-actions button, .right-block button, .actions-block button, .switch-state-block button, button, a"
+        );
+        for (const b of allButtons) {
+          const txt = (b.textContent || "").trim().toUpperCase();
+          if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
+            btn = b;
+            break;
+          } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
+            btn = b;
+            break;
+          }
+        }
+      }
+
+      if (!btn) {
+        console.error(`[WinkyHook] ❌ Кнопка ${direction} не найдена в DOM!`);
+        window.postMessage(
+          { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: "button_not_found" },
+          "*"
+        );
+        return;
+      }
+
+      // 3. Dispatch full event chain in MAIN World
+      const rect = btn.getBoundingClientRect();
+      const evtOpts = {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
+        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
+      };
+      btn.dispatchEvent(new MouseEvent("mousedown", evtOpts));
+      btn.dispatchEvent(new MouseEvent("mouseup", evtOpts));
+      btn.dispatchEvent(new MouseEvent("click", evtOpts));
+      try { btn.click(); } catch (_) {}
+
+      console.log(`[WinkyHook] 🎯 Клик ${direction} ($${stake}) успешно исполнен в MAIN World!`);
+      window.postMessage(
+        {
+          source: "WINKY_HOOK",
+          type: "WINKY_RESP_CLICK_TRADE",
+          ok: true,
+          clicked: true,
+          direction: direction,
+          stake: stake,
+        },
+        "*"
+      );
+    } catch (e) {
+      console.error("[WinkyHook] ⚠️ Ошибка при клике сделки:", e);
+      window.postMessage(
+        { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: String(e) },
         "*"
       );
     }

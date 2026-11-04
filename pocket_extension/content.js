@@ -1830,9 +1830,9 @@
         if (!resolved) {
           resolved = true;
           window.removeEventListener("message", onMsg);
-          resolve({ ok: false, error: "timeout_500ms" });
+          resolve({ ok: false, error: "timeout_3500ms" });
         }
-      }, 500);
+      }, 3500);
 
       const onMsg = (event) => {
         if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
@@ -1848,13 +1848,15 @@
 
       window.addEventListener("message", onMsg);
 
+      const actualCurrentPair = scanPocketOptionCurrentPair() || state.targetPair || "";
+
       try {
         window.postMessage(
           {
             source: "WINKY_CONTENT",
             type: "WINKY_CMD_SWITCH_PAIR",
             targetPair: targetPairName,
-            currentPair: state.targetPair,
+            currentPair: actualCurrentPair,
             recentPairs: state.recentPairs,
             minPayout: 80,
           },
@@ -1871,10 +1873,100 @@
     });
   }
 
-  async function switchPocketPair(targetPairName = null) {
-    loggerLog("[switchPocketPair] Запрос на смену пары. Цель:", targetPairName || "АВТО-ВЫБОР лучшей пары");
+  function requestMainWorldSetExpiry(targetDurationStr) {
+    return new Promise((resolve) => {
+      let resolved = false;
+      const timeoutId = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "timeout_2500ms", actualSec: parseDurationSeconds(targetDurationStr) });
+        }
+      }, 2500);
 
-    // 0. ПЕРВЫЙ ПРИОРИТЕТ: Смена пары через page_hook.js в MAIN World страницы (100% обход изоляции React)
+      const onMsg = (event) => {
+        if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+        if (event.data.type === "WINKY_RESP_SET_EXPIRY") {
+          if (!resolved) {
+            resolved = true;
+            clearTimeout(timeoutId);
+            window.removeEventListener("message", onMsg);
+            resolve(event.data);
+          }
+        }
+      };
+
+      window.addEventListener("message", onMsg);
+
+      try {
+        window.postMessage(
+          {
+            source: "WINKY_CONTENT",
+            type: "WINKY_CMD_SET_EXPIRY",
+            targetDurationStr: targetDurationStr,
+          },
+          "*"
+        );
+      } catch (_) {
+        if (!resolved) {
+          resolved = true;
+          clearTimeout(timeoutId);
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "postMessage_error" });
+        }
+      }
+    });
+  }
+
+  function requestMainWorldClickTrade(direction, stake = 50) {
+    return new Promise((resolve) => {
+      let resolved = false;
+      const timeoutId = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "timeout_2500ms" });
+        }
+      }, 2500);
+
+      const onMsg = (event) => {
+        if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+        if (event.data.type === "WINKY_RESP_CLICK_TRADE") {
+          if (!resolved) {
+            resolved = true;
+            clearTimeout(timeoutId);
+            window.removeEventListener("message", onMsg);
+            resolve(event.data);
+          }
+        }
+      };
+
+      window.addEventListener("message", onMsg);
+
+      try {
+        window.postMessage(
+          {
+            source: "WINKY_CONTENT",
+            type: "WINKY_CMD_CLICK_TRADE",
+            direction: direction,
+            stake: stake,
+          },
+          "*"
+        );
+      } catch (_) {
+        if (!resolved) {
+          resolved = true;
+          clearTimeout(timeoutId);
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "postMessage_error" });
+        }
+      }
+    });
+  }
+
+  async function switchPocketPair(targetPairName = null) {
+    loggerLog("[switchPocketPair] Запрос на смену пары через MAIN World. Цель:", targetPairName || "АВТО-ВЫБОР лучшей пары (+92%)");
+
     try {
       const mainWorldRes = await requestMainWorldSwitchPair(targetPairName);
       if (mainWorldRes && mainWorldRes.ok && mainWorldRes.newPair) {
@@ -1887,323 +1979,21 @@
         updateCardPairUI();
         renderSignalCardState();
         return true;
+      } else {
+        loggerLog("[switchPocketPair] ⚠️ Ответ MAIN World:", mainWorldRes);
       }
     } catch (err) {
-      loggerLog("[switchPocketPair] Ошибка MAIN World смены пары, переход к фоллбэку:", err);
+      loggerLog("[switchPocketPair] ⚠️ Ошибка при запросе смены пары в MAIN World:", err);
     }
 
-    const beforePair = scanPocketOptionCurrentPair() || state.targetPair || "";
-    const normBefore = beforePair.toLowerCase().replace(/[^a-z0-9]/g, "");
-
-    const findPairBtn = () => {
-      const selectors = [
-        ".current-symbol",
-        ".pair-number-wrap",
-        ".currencies-block__in",
-        ".top-left-block__block1 a",
-        "[data-test='asset-select']",
-        ".alist-trigger",
-        ".alist__head",
-        ".symbols-head",
-        ".btn-select-pair",
-        ".assets-block__active",
-        ".current-asset",
-      ];
-      for (const sel of selectors) {
-        const el = document.querySelector(sel);
-        if (el && el.offsetParent !== null) return el;
-      }
-      return document.querySelector("h1, .symbol, .pair");
-    };
-
-    const isPopupOpen = () => {
-      const modal = document.querySelector(".alist, .assets-block, .symbols-modal, .modal-window--assets, .alist__list");
-      return modal && (modal.offsetParent !== null || (window.getComputedStyle(modal).display !== "none" && window.getComputedStyle(modal).visibility !== "hidden"));
-    };
-
-    // 1. Открываем меню Покета, если ещё не открыто
-    const pairBtn = findPairBtn();
-    if (!isPopupOpen() && pairBtn) {
-      simulatePocketClick(pairBtn);
-      await new Promise((r) => setTimeout(r, 120));
-    }
-
-    // 1.1 ПРИНУДИТЕЛЬНЫЙ СБРОС СКРОЛЛА К ВЕРХУ СПИСКА (где лежат пары с выплатой 92%)
-    const resetScrollToTop = () => {
-      const scrollSelectors = [
-        ".alist",
-        ".alist__list",
-        "ul.alist__list",
-        ".alist__body",
-        ".assets-block__alist",
-        ".assets-block__list",
-        ".scrollbar-container",
-        ".ps",
-        ".symbols-list",
-        ".assets-block",
-        ".modal-window--assets",
-      ];
-      for (const sel of scrollSelectors) {
-        const found = document.querySelectorAll(sel);
-        for (const el of found) {
-          try { el.scrollTop = 0; } catch (_) {}
-        }
-      }
-      const modal = document.querySelector(".alist, .assets-block, .symbols-modal, .modal-window--assets");
-      if (modal) {
-        const all = modal.querySelectorAll("*");
-        for (const el of all) {
-          if (el.scrollHeight > el.clientHeight + 10) {
-            try { el.scrollTop = 0; } catch (_) {}
-          }
-        }
-      }
-    };
-
-    resetScrollToTop();
-
-    // 1.2 Очищаем строку поиска Покета, если была заполнена
-    const searchInputs = document.querySelectorAll(".alist__search input, .assets-search input, input[placeholder*='Поиск'], input[placeholder*='Search']");
-    for (const sinp of searchInputs) {
-      if (sinp && sinp.value) {
-        try {
-          sinp.value = "";
-          sinp.dispatchEvent(new Event("input", { bubbles: true }));
-          sinp.dispatchEvent(new Event("change", { bubbles: true }));
-        } catch (_) {}
-      }
-    }
-
-    // Небольшая пауза для гарантированного рендера топа списка
-    await new Promise((r) => setTimeout(r, 180));
-    resetScrollToTop();
-
-    // 2. Ждём рендера списка строк в DOM (до 800мс, опрос каждые 60мс)
-    const rowSelectors = [
-      ".alist__item",
-      ".assets-block__item",
-      "li.alist__item",
-      "a.alist__link",
-      ".symbols-list__item",
-      "[data-test='asset-item']",
-    ];
-
-    let rawElements = [];
-    const startWait = Date.now();
-    while (Date.now() - startWait < 800) {
-      for (const sel of rowSelectors) {
-        const found = document.querySelectorAll(sel);
-        if (found && found.length > 0) {
-          rawElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
-          if (rawElements.length > 0) break;
-        }
-      }
-      if (rawElements.length > 0) break;
-      await new Promise((r) => setTimeout(r, 60));
-    }
-
-    // 3. Проверяем вкладку: если выбрана не вкладка «Валюты», кликаем по ней
-    const tabs = document.querySelectorAll(".alist__tab, .alist__nav a, .assets-nav a, [data-tab]");
-    for (const tab of tabs) {
-      const tTxt = (tab.textContent || "").trim().toLowerCase();
-      if (tTxt.includes("валют") || tTxt.includes("currenc") || tTxt.includes("forex") || tTxt === "$") {
-        const isActive = tab.classList.contains("active") || tab.classList.contains("--active") || tab.getAttribute("aria-selected") === "true";
-        if (!isActive) {
-          simulatePocketClick(tab);
-          await new Promise((r) => setTimeout(r, 150));
-          for (const sel of rowSelectors) {
-            const found = document.querySelectorAll(sel);
-            if (found && found.length > 0) {
-              rawElements = Array.from(found).filter((el) => el.offsetParent !== null || el.textContent.trim().length > 0);
-              if (rawElements.length > 0) break;
-            }
-          }
-        }
-        break;
-      }
-    }
-
-    // 4. Сбор и парсинг доступных прямо сейчас строк (availableRows)
-    const availableRows = [];
-    const seenNames = new Set();
-    for (const el of rawElements) {
-      const rawText = el.textContent || "";
-      const pairMatch = rawText.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-      const payoutMatch = rawText.match(/(\d+)%/);
-      if (pairMatch) {
-        let pName = pairMatch[0].trim();
-        if (!pName.includes(" ") && !pName.includes("/") && pName.length >= 6) {
-          pName = pName.slice(0, 3) + "/" + pName.slice(3);
-        }
-        const norm = pName.toLowerCase().replace(/[^a-z0-9]/g, "");
-        if (!seenNames.has(norm)) {
-          seenNames.add(norm);
-          const payout = payoutMatch ? parseInt(payoutMatch[1], 10) : 92;
-          availableRows.push({
-            name: pName,
-            payout: payout,
-            el: el.querySelector("a.alist__link, .alist__link, .alist__cell, .alist__label") || el,
-          });
-        }
-      }
-    }
-
-    loggerLog(`[switchPocketPair] Доступно реальных строк в меню Покета: ${availableRows.length}`);
-
-    // Синхронизируем <select id="selectBotPair"> актуальным списком пар Покета
-    if (availableRows.length > 0) {
-      const select = document.getElementById("selectBotPair");
-      if (select) {
-        const curVal = (select.value || state.targetPair || "").toLowerCase();
-        select.innerHTML = "";
-        availableRows.forEach((row) => {
-          const opt = document.createElement("option");
-          opt.value = row.name;
-          const meta = getPairMeta(row.name);
-          opt.textContent = `${meta.flags} ${row.name} (+${row.payout}%)`;
-          if (row.name.toLowerCase() === curVal) {
-            opt.selected = true;
-          }
-          select.appendChild(opt);
-        });
-      }
-    }
-
-    // 5. Выбор целевой строки (chosenRow)
-    let chosenRow = null;
-
-    if (targetPairName) {
-      const cleanTarget = targetPairName.toLowerCase().replace(/[^a-z0-9]/g, "");
-      chosenRow = availableRows.find((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "").includes(cleanTarget));
-
-      // Если в первых видимых строках не найдено — используем поиск внутри меню Покета
-      if (!chosenRow) {
-        const searchInput = document.querySelector(".alist__search input, .assets-search input, input[placeholder*='Поиск'], input[placeholder*='Search']");
-        if (searchInput) {
-          loggerLog(`[switchPocketPair] Вводим в поиск Покета: ${targetPairName}`);
-          try { searchInput.focus(); } catch (_) {}
-          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-          const query = targetPairName.replace(/\s*OTC/i, "").trim();
-          if (nativeSetter) {
-            nativeSetter.call(searchInput, query);
-          } else {
-            searchInput.value = query;
-          }
-          searchInput.dispatchEvent(new Event("input", { bubbles: true }));
-          searchInput.dispatchEvent(new Event("change", { bubbles: true }));
-          await new Promise((r) => setTimeout(r, 180));
-
-          const searchRows = document.querySelectorAll(".alist__item, .assets-block__item, a.alist__link");
-          for (const sr of searchRows) {
-            if (sr.offsetParent !== null && sr.textContent.trim()) {
-              const pMatch = sr.textContent.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-              const payoutMatch = sr.textContent.match(/(\d+)%/);
-              chosenRow = {
-                name: pMatch ? pMatch[0].trim() : targetPairName,
-                payout: payoutMatch ? parseInt(payoutMatch[1], 10) : 92,
-                el: sr.querySelector("a.alist__link") || sr,
-              };
-              break;
-            }
-          }
-        }
-      }
-    } else {
-      // Автоматическая смена пары:
-      // 1) row.name !== beforePair (НЕ выбираем пару, на которой уже стоим!)
-      // 2) row.name НЕ в recentPairs (храним последние 3 пары)
-      // 3) row.payout >= 85 (в приоритете максимальная выплата 92%)
-      const candidates = availableRows.filter((row) => {
-        const normName = row.name.toLowerCase().replace(/[^a-z0-9]/g, "");
-        const isBefore = normName === normBefore;
-        const isRecent = state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === normName);
-        const isBlocked = isPairBlacklisted(row.name);
-        return !isBefore && !isRecent && !isBlocked && row.payout >= 85;
-      });
-
-      loggerLog(`[switchPocketPair] Кандидатов автовыбора: ${candidates.length} (исключены текущая «${beforePair}» и недавние: ${state.recentPairs.join(", ")})`);
-
-      if (candidates.length > 0) {
-        candidates.sort((a, b) => b.payout - a.payout);
-        const topPayout = candidates[0].payout;
-        const topPool = candidates.filter((c) => c.payout === topPayout);
-        chosenRow = topPool[Math.floor(Math.random() * topPool.length)];
-      } else {
-        // Каскадный фоллбэк при отсутствии кандидатов >= 85%:
-        // Уровень 1: любая пара, кроме текущей, не из recent, с выплатой >= 80%
-        let altCandidates = availableRows.filter((r) => {
-          const n = r.name.toLowerCase().replace(/[^a-z0-9]/g, "");
-          return n !== normBefore && !state.recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === n) && r.payout >= 80;
-        });
-
-        // Уровень 2: любая пара, кроме текущей, с максимальной доступной выплатой
-        if (altCandidates.length === 0) {
-          altCandidates = availableRows.filter((r) => r.name.toLowerCase().replace(/[^a-z0-9]/g, "") !== normBefore);
-        }
-
-        if (altCandidates.length > 0) {
-          altCandidates.sort((a, b) => b.payout - a.payout);
-          chosenRow = altCandidates[0];
-          loggerLog(`[switchPocketPair] Взят каскадный фоллбэк: «${chosenRow.name}» (+${chosenRow.payout}%)`);
-        } else if (rawElements.length > 1) {
-          // Уровень 3: экстренный выбор первой строки DOM, не совпадающей с текущей
-          for (const el of rawElements) {
-            const txt = (el.textContent || "").trim();
-            if (txt && !txt.toLowerCase().includes(normBefore)) {
-              const pairMatch = txt.match(/([A-Z]{3}\/[A-Z]{3}(\s+OTC)?|[A-Za-z0-9]+\s+OTC)/i);
-              const payoutMatch = txt.match(/(\d+)%/);
-              chosenRow = {
-                name: pairMatch ? pairMatch[0].trim() : "EUR/USD OTC",
-                payout: payoutMatch ? parseInt(payoutMatch[1], 10) : 92,
-                el: el.querySelector("a.alist__link, .alist__link, .alist__cell, .alist__label") || el,
-              };
-              break;
-            }
-          }
-        }
-      }
-    }
-
-    // 6. Выполняем переключение
-    if (chosenRow && chosenRow.el) {
-      loggerLog(`[switchPocketPair] Кликаем по выбранной строке: «${chosenRow.name}» (+${chosenRow.payout}%)`);
-      try {
-        chosenRow.el.scrollIntoView({ block: "center", behavior: "instant" });
-      } catch (_) {}
-      await new Promise((r) => setTimeout(r, 80));
-
-      simulatePocketClick(chosenRow.el);
-      const innerLink = chosenRow.el.querySelector("a.alist__link, .alist__link, .alist__label, span");
-      if (innerLink && innerLink !== chosenRow.el) {
-        simulatePocketClick(innerLink);
-      }
-      await new Promise((r) => setTimeout(r, 220));
-
-      // 7. Обязательно закрываем меню выбора пар Покета, если оно осталось открыто
-      const closeBtn = document.querySelector(".alist__close, .alist-close, [data-test='close-asset-select'], .modal-window__close");
-      if (closeBtn && closeBtn.offsetParent !== null) {
-        simulatePocketClick(closeBtn);
-      } else {
-        const pBtn = findPairBtn();
-        if (pBtn) simulatePocketClick(pBtn);
-      }
-      closeAnyOpenModals();
-
-      // 8. Обновляем состояние и историю недавних пар (храним последние 3)
-      const newName = chosenRow.name;
-      setUnifiedActivePair(newName, chosenRow.payout + "%");
-
-      if (!state.recentPairs.includes(newName)) {
-        state.recentPairs.push(newName);
-        if (state.recentPairs.length > 3) state.recentPairs.shift();
-      }
-
-      loggerLog(`[switchPocketPair] ✅ Пара успешно переключена на: «${newName}»! Недавние: [${state.recentPairs.join(", ")}]`);
+    // Если MAIN World не вернул новую пару, синхронизируем актуальную пару из DOM
+    const actual = scanPocketOptionCurrentPair();
+    if (actual && actual !== state.targetPair) {
+      setUnifiedActivePair(actual);
+      updateCardPairUI();
+      renderSignalCardState();
       return true;
     }
-
-    loggerLog("[switchPocketPair] ⚠️ Не удалось выбрать строку для клика!");
-    closeAnyOpenModals();
     return false;
   }
 
@@ -2332,7 +2122,27 @@
         state.currentStake = expectedStake;
         state.consecutiveSkips = 0;
 
-        const success = clickPocketTradeButton(direction);
+        let success = false;
+        try {
+          const mainWorldRes = await requestMainWorldClickTrade(direction, expectedStake);
+          if (mainWorldRes && mainWorldRes.ok && mainWorldRes.clicked) {
+            success = true;
+            loggerLog(`[clickTrade] ✅ Сделка ${direction} ($${state.currentStake}) успешно исполнена через MAIN World!`);
+          } else {
+            loggerLog(`[clickTrade] ⚠️ MAIN World ответ:`, mainWorldRes);
+          }
+        } catch (e) {
+          loggerLog(`[clickTrade] Ошибка запроса клика в MAIN World:`, e);
+        }
+
+        // Фоллбэк через прямой DOM-клик из контекста расширения
+        if (!success) {
+          success = clickPocketTradeButton(direction);
+          if (success) {
+            loggerLog(`[clickTrade] Сделка ${direction} ($${state.currentStake}) исполнена через DOM fallback`);
+          }
+        }
+
         if (success) {
           // Через 2.0 секунды фиксируем баланс ПОСЛЕ списания ставки
           setTimeout(() => {
@@ -2421,13 +2231,17 @@
   }
 
   function selectStrategyExpiration(analysis, scan) {
-    if (!analysis) return "30s";
+    if (!analysis) {
+      state.expirationReason = state.lang === "ru" ? "Стандартная экспирация 30s" : "Standard 30s expiry";
+      return "30s";
+    }
     const cat = analysis.category || "";
 
     // 1. Плавный разворот / отскок от сильного уровня поддержки или потолка (buy_bounce / sell_bounce):
     // Выбираем 1m (60s), чтобы у свечи был полный запас времени спокойно развернуться и отойти от уровня в чистый плюс!
     if (cat === "buy_bounce" || cat === "sell_bounce") {
       loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (разворот от уровня) -> Выбрано время экспирации: 1m (60s)`);
+      state.expirationReason = state.lang === "ru" ? "Запас времени на разворот от уровня" : "Reversal cushion from key level";
       return "1m";
     }
 
@@ -2435,6 +2249,7 @@
     // Оптимально 30s для быстрого продолжения движения после отката
     if (cat === "buy_pullback" || cat === "sell_pullback") {
       loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (вход на откате) -> Выбрано время экспирации: 30s`);
+      state.expirationReason = state.lang === "ru" ? "Импульс продолжения по тренду" : "Trend momentum continuation";
       return "30s";
     }
 
@@ -2443,12 +2258,15 @@
     if (cat === "buy_trend" || cat === "sell_trend") {
       if (scan && scan.tickRate && scan.tickRate > 4.0) {
         loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» при ультра-быстром импульсе -> Выбрано 15s`);
+        state.expirationReason = state.lang === "ru" ? "Снайперский пробой на высокой скорости" : "High velocity sniper breakout";
         return "15s";
       }
       loggerLog(`[selectStrategyExpiration] 🎯 Категория «${cat}» (пробой тренда) -> Выбрано время экспирации: 30s`);
+      state.expirationReason = state.lang === "ru" ? "Импульс пробоя тренда" : "Trend breakout momentum";
       return "30s";
     }
 
+    state.expirationReason = state.lang === "ru" ? "Базовая экспирация стратегии" : "Base strategy expiry";
     return "30s";
   }
 
@@ -2736,15 +2554,15 @@
         `;
       }
 
-      // Micro-pullback sniper wait (up to 4.5 seconds)
+      // Micro-pullback sniper wait (up to 2.0 seconds)
       const sniperStartTime = Date.now();
       let bestEntryFound = false;
       let initialQuote = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]) || 1.0;
       let prevTick = initialQuote;
       let pullbackDetected = false;
 
-      while (Date.now() - sniperStartTime < 4500) {
-        await new Promise((r) => setTimeout(r, 200));
+      while (Date.now() - sniperStartTime < 2000) {
+        await new Promise((r) => setTimeout(r, 150));
         try { ChartAnalyzer.pollPrice(); } catch (_) {}
         const curTick = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]);
         if (!curTick) continue;
@@ -2765,7 +2583,7 @@
           }
         }
 
-        if (Date.now() - sniperStartTime > 3500) {
+        if (Date.now() - sniperStartTime > 1500) {
           bestEntryFound = true;
           break;
         }
@@ -2778,9 +2596,22 @@
       setPocketStakeAmount(finalStake);
       await new Promise((r) => setTimeout(r, 120));
 
-      // Expiration synchronization
+      // Expiration synchronization via MAIN World (quick pills click)
       const strategyTf = selectStrategyExpiration(analysis, scan);
-      let realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
+      let realPocketSec = 0;
+      try {
+        const expRes = await requestMainWorldSetExpiry(strategyTf);
+        if (expRes && expRes.ok && expRes.actualSec) {
+          realPocketSec = expRes.actualSec;
+          loggerLog(`[executeTradeWithSignal] ✅ MAIN World выставил экспирацию: ${realPocketSec}с (${expRes.label || strategyTf})`);
+        }
+      } catch (e) {
+        loggerLog(`[executeTradeWithSignal] ⚠️ MAIN World экспирация fallback:`, e);
+      }
+
+      if (!realPocketSec) {
+        realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
+      }
 
       const domExpSec = getPocketSelectedExpirationSeconds();
       if (domExpSec >= 45) {
@@ -2936,6 +2767,13 @@
         btnGet.disabled = false;
         btnGet.classList.remove("disabled");
         btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+      }
+      if (state.autoStream) {
+        setTimeout(() => {
+          if (state.autoStream && state.botState === "IDLE") {
+            startSignalAnalysis();
+          }
+        }, 2000);
       }
     }
   }
@@ -3108,8 +2946,8 @@
                 </div>
                 <div class="signal-ta-line" style="color:#00D9F5;">
                   ${state.lang === "ru"
-                    ? "🔄 Автоматический переход на другую пару через 3 сек..."
-                    : "🔄 Auto-switching to cleaner currency pair in 3s..."}
+                    ? "🔄 Переключаемся на более выгодную пару (+92%)..."
+                    : "🔄 Switching to higher payout currency pair (+92%)..."}
                 </div>
               </div>
             `;
@@ -3141,7 +2979,7 @@
 
         setTimeout(() => {
           if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-        }, 1500);
+        }, 1000);
         return;
       }
 
@@ -3149,6 +2987,7 @@
         loggerLog(`[DirtyMarketFilter] ⚡ Предотвращение зацикливания! Был 1 пропуск. Форсируем снайперский вход по тренду!`);
         confluence.score = 4.6;
         confluence.isStrong = true;
+        state.consecutiveSkips = 0;
       }
 
       state.consecutiveSkips = 0;
