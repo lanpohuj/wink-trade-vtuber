@@ -392,14 +392,63 @@
     }
   }
 
+  function closePocketCalculatorIfOpen() {
+    try {
+      const calc = document.querySelector(".calculator, .popover-calculator, .modal-calculator");
+      if (calc && calc.offsetParent !== null) {
+        const closeBtn = calc.querySelector(".close, .btn-close, .calculator__close, .icon-close");
+        if (closeBtn) {
+          closeBtn.click();
+        } else {
+          document.body.click();
+        }
+      }
+    } catch (_) {}
+  }
+
+  function findPocketTradeButton(direction) {
+    const isBuy = String(direction).toUpperCase() === "BUY" || String(direction).toUpperCase() === "CALL";
+    const exactSelectors = isBuy
+      ? [
+          "a.btn-call", ".btn-call", ".switch-state-block__item--up a", ".switch-state-block__item--up",
+          ".action-high-low .btn-call", "[data-qa='btn-call']", ".call-btn", ".btn-up"
+        ]
+      : [
+          "a.btn-put", ".btn-put", ".switch-state-block__item--down a", ".switch-state-block__item--down",
+          ".action-high-low .btn-put", "[data-qa='btn-put']", ".put-btn", ".btn-down"
+        ];
+
+    for (const sel of exactSelectors) {
+      const el = document.querySelector(sel);
+      if (el) return el;
+    }
+
+    // Поиск по ВСЕМ кликабельным элементам (a, button, div, span) по тексту КУПИТЬ / ПРОДАТЬ
+    const candidates = document.querySelectorAll("a, button, .btn, [role='button'], .switch-state-block__item");
+    for (const el of candidates) {
+      if (el.closest("#winky-sniper-root, #winky-orb-counter, .winky-widget")) continue;
+      const txt = (el.textContent || "").replace(/\s+/g, " ").trim().toUpperCase();
+      if (txt.length > 25) continue;
+      if (isBuy && (txt === "КУПИТЬ" || txt.includes("КУПИТЬ") || txt === "BUY" || txt === "HIGHER")) {
+        return el.closest("a, button, .btn, .switch-state-block__item") || el;
+      }
+      if (!isBuy && (txt === "ПРОДАТЬ" || txt.includes("ПРОДАТЬ") || txt === "SELL" || txt === "LOWER")) {
+        return el.closest("a, button, .btn, .switch-state-block__item") || el;
+      }
+    }
+    return null;
+  }
+
   async function handleMainWorldSetExpiry(cmd) {
     const { targetDurationStr } = cmd;
     console.log("[WinkyHook] ⏱️ WINKY_CMD_SET_EXPIRY in MAIN World:", targetDurationStr);
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
     try {
-      const timeInp = document.querySelector(
-        ".block--expiration-inputs input, .value__val input, .time-input, input[name='time']"
-      );
+      closePocketCalculatorIfOpen();
+
+      // Ищем инпут времени ТОЛЬКО по наличию двоеточия ":" в значении либо строго внутри .block--expiration-inputs
+      const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
+      const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
 
       // Determine formatted target e.g. "00:00:15", "00:00:30", "00:01:00"
       let formattedTarget = "00:00:30";
@@ -409,35 +458,23 @@
         formattedTarget = "00:01:00";
       }
 
-      // 1. Click input to open quick expiration pills
-      if (timeInp) {
-        try {
-          timeInp.focus();
-          timeInp.click();
-        } catch (_) {}
-        await sleep(100);
-      }
-
-      // 2. Look for quick pill button (S15, S30, M1, etc.)
-      const pills = document.querySelectorAll(
-        ".pills__item, .time-pill, .expiration-list button, .trading-panel__control button, .dropdown-menu button, button"
-      );
-      let pillClicked = false;
+      // 1. Проверяем, есть ли уже видимые быстрые пилюли времени БЕЗ открытия калькулятора
+      const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button");
       for (const p of pills) {
+        if (!p || p.offsetParent === null) continue;
         const pTxt = (p.textContent || "").trim();
         if (
-          (formattedTarget === "00:00:15" && (pTxt === "S15" || pTxt === "15s" || pTxt === "15")) ||
-          (formattedTarget === "00:00:30" && (pTxt === "S30" || pTxt === "30s" || pTxt === "30")) ||
-          (formattedTarget === "00:01:00" && (pTxt === "M1" || pTxt === "1m" || pTxt === "1"))
+          (formattedTarget === "00:00:15" && (pTxt === "S15" || pTxt === "00:15")) ||
+          (formattedTarget === "00:00:30" && (pTxt === "S30" || pTxt === "00:30")) ||
+          (formattedTarget === "00:01:00" && (pTxt === "M1" || pTxt === "01:00"))
         ) {
           p.click();
-          pillClicked = true;
-          console.log(`[WinkyHook] ✅ Кликнута пилюля времени Покета: ${pTxt}`);
+          console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
           break;
         }
       }
 
-      // 3. Fallback: native setter on input
+      // 2. Если инпут времени найден, обновляем через нативный сеттер без focus/click (чтобы не открывать калькулятор!)
       if (timeInp) {
         const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
         if (nativeSetter) {
@@ -447,12 +484,12 @@
         }
         timeInp.dispatchEvent(new Event("input", { bubbles: true }));
         timeInp.dispatchEvent(new Event("change", { bubbles: true }));
-        timeInp.dispatchEvent(new Event("blur", { bubbles: true }));
       }
 
-      await sleep(150);
+      await sleep(100);
+      closePocketCalculatorIfOpen();
 
-      // 4. Read actual value after change (some OTC pairs enforce min 1m)
+      // 3. Считываем реальное установленное время из инпута Покета
       let actualSec = 30;
       if (timeInp && timeInp.value) {
         const val = timeInp.value.trim();
@@ -462,13 +499,6 @@
           const m = parseInt(mTime[2], 10);
           const s = parseInt(mTime[3], 10);
           actualSec = h * 3600 + m * 60 + s;
-        } else {
-          const numM = val.match(/(\d+)\s*(s|m|с|м)/i);
-          if (numM) {
-            const num = parseInt(numM[1], 10);
-            const unit = numM[2].toLowerCase();
-            actualSec = (unit === "m" || unit === "м") ? num * 60 : num;
-          }
         }
       }
 
@@ -517,10 +547,12 @@
     lastHookTradeClickTime = now;
 
     try {
-      // 1. Set stake amount in Pocket
+      closePocketCalculatorIfOpen();
+
+      // 1. Устанавливаем сумму ставки БЕЗ клика и БЕЗ фокуса (чтобы не открывался калькулятор!)
       if (stake) {
         const stakeInps = document.querySelectorAll(
-          ".block--amount-inputs input, .trading-panel input[type='text'], input[name='amount'], .amount-block input"
+          ".block--amount-inputs input, .amount-block input, .block--bet-amount input, input[name='amount']"
         );
         for (const inp of stakeInps) {
           if (inp && inp.offsetParent !== null) {
@@ -536,61 +568,13 @@
             break;
           }
         }
+        closePocketCalculatorIfOpen();
       }
 
-      await sleep(120);
+      await sleep(100);
 
-      // 2. Find trade button
-      const isBuy = String(direction).toUpperCase() === "BUY";
-      const callSelectors = [
-        ".btn-call",
-        "a.btn-call",
-        "button.btn-call",
-        ".switch-state-block__item--up",
-        "[data-action='call']",
-        "[data-qa='btn-call']",
-        "[data-test='btn-call']",
-        ".call-btn",
-        ".btn-up",
-      ];
-      const putSelectors = [
-        ".btn-put",
-        "a.btn-put",
-        "button.btn-put",
-        ".switch-state-block__item--down",
-        "[data-action='put']",
-        "[data-qa='btn-put']",
-        "[data-test='btn-put']",
-        ".put-btn",
-        ".btn-down",
-      ];
-
-      const selList = isBuy ? callSelectors : putSelectors;
-      let btn = null;
-      for (const sel of selList) {
-        const el = document.querySelector(sel);
-        if (el) {
-          btn = el;
-          break;
-        }
-      }
-
-      if (!btn) {
-        const allButtons = document.querySelectorAll(
-          ".trade-actions button, .right-block button, .actions-block button, .switch-state-block button, button, a"
-        );
-        for (const b of allButtons) {
-          const txt = (b.textContent || "").trim().toUpperCase();
-          if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
-            btn = b;
-            break;
-          } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
-            btn = b;
-            break;
-          }
-        }
-      }
-
+      // 2. Ищем кнопку сделки через универсальный безотказный поиск
+      const btn = findPocketTradeButton(direction);
       if (!btn) {
         console.error(`[WinkyHook] ❌ Кнопка ${direction} не найдена в DOM!`);
         window.postMessage(
@@ -600,8 +584,9 @@
         return;
       }
 
-      // 3. Dispatch full event chain in MAIN World
-      const rect = btn.getBoundingClientRect();
+      // 3. Вызываем события клика на самой кнопке и её родительском контейнере
+      const targetEl = btn.closest("a, button, .btn, .switch-state-block__item") || btn;
+      const rect = targetEl.getBoundingClientRect();
       const evtOpts = {
         bubbles: true,
         cancelable: true,
@@ -609,9 +594,10 @@
         clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
         clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
       };
-      btn.dispatchEvent(new MouseEvent("mousedown", evtOpts));
-      btn.dispatchEvent(new MouseEvent("mouseup", evtOpts));
-      btn.dispatchEvent(new MouseEvent("click", evtOpts));
+      targetEl.dispatchEvent(new MouseEvent("mousedown", evtOpts));
+      targetEl.dispatchEvent(new MouseEvent("mouseup", evtOpts));
+      targetEl.dispatchEvent(new MouseEvent("click", evtOpts));
+      try { targetEl.click(); } catch (_) {}
       try { btn.click(); } catch (_) {}
 
       console.log(`[WinkyHook] 🎯 Клик ${direction} ($${stake}) успешно исполнен в MAIN World!`);

@@ -1540,16 +1540,31 @@
     return state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
   }
 
+  function closePocketCalculatorIfOpen() {
+    try {
+      const calc = document.querySelector(".calculator, .popover-calculator, .modal-calculator");
+      if (calc && calc.offsetParent !== null) {
+        const closeBtn = calc.querySelector(".close, .btn-close, .calculator__close, .icon-close");
+        if (closeBtn) {
+          closeBtn.click();
+        } else {
+          document.body.click();
+        }
+      }
+    } catch (_) {}
+  }
+
   function setPocketStakeAmount(amount) {
+    closePocketCalculatorIfOpen();
     const stakeVal = Math.round(amount);
     state.currentStake = stakeVal;
     const stakeInputs = document.querySelectorAll(
-      ".block--bet-amount input, .amount-block input, .value__val input, input[name='amount'], [data-test='amount-input'], .input-field--amount input, .block--amount input, input[autocomplete='off'][type='text']"
+      ".block--amount-inputs input, .amount-block input, .block--bet-amount input, input[name='amount']"
     );
     let changed = false;
     for (const input of stakeInputs) {
       if (input && input.offsetParent !== null) {
-        try { input.focus(); } catch (_) {}
+        // Устанавливаем сумму без фокуса и клика, чтобы исключить открытие калькулятора
         const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
         if (nativeSetter) {
           nativeSetter.call(input, String(stakeVal));
@@ -1558,9 +1573,11 @@
         }
         input.dispatchEvent(new Event("input", { bubbles: true }));
         input.dispatchEvent(new Event("change", { bubbles: true }));
+        input.dispatchEvent(new Event("blur", { bubbles: true }));
         changed = true;
       }
     }
+    closePocketCalculatorIfOpen();
     loggerLog(`[setPocketStakeAmount] Установлена сумма сделки: $${stakeVal} (успешно: ${changed})`);
     updateStakeBadgeUI();
     return changed;
@@ -2000,43 +2017,34 @@
   let lastTradeClickTime = 0;
 
   function findPocketTradeButton(direction) {
-    const isBuy = String(direction).toUpperCase() === "BUY";
-    const callSelectors = [
-      ".btn-call",
-      ".btn-high",
-      ".switch-state-block__item--up",
-      "[data-qa='btn-call']",
-      "[data-test='btn-call']",
-      ".call-btn",
-      ".btn-up",
-    ];
-    const putSelectors = [
-      ".btn-put",
-      ".btn-low",
-      ".switch-state-block__item--down",
-      "[data-qa='btn-put']",
-      "[data-test='btn-put']",
-      ".put-btn",
-      ".btn-down",
-    ];
+    const isBuy = String(direction).toUpperCase() === "BUY" || String(direction).toUpperCase() === "CALL";
+    const exactSelectors = isBuy
+      ? [
+          "a.btn-call", ".btn-call", ".switch-state-block__item--up a", ".switch-state-block__item--up",
+          ".action-high-low .btn-call", "[data-qa='btn-call']", ".call-btn", ".btn-up"
+        ]
+      : [
+          "a.btn-put", ".btn-put", ".switch-state-block__item--down a", ".switch-state-block__item--down",
+          ".action-high-low .btn-put", "[data-qa='btn-put']", ".put-btn", ".btn-down"
+        ];
 
-    const selList = isBuy ? callSelectors : putSelectors;
-    for (const sel of selList) {
+    for (const sel of exactSelectors) {
       const el = document.querySelector(sel);
-      if (el && el.offsetParent !== null) {
-        return el;
-      }
+      if (el) return el;
     }
 
-    // Резервный поиск по тексту на правой панели
-    const allButtons = document.querySelectorAll(".trade-actions button, .right-block button, .actions-block button, button");
-    for (const b of allButtons) {
-      if (b.offsetParent === null) continue;
-      const txt = (b.textContent || "").trim().toUpperCase();
-      if (isBuy && (txt.includes("КУПИТЬ") || txt.includes("BUY") || txt.includes("HIGHER") || txt === "ВВЕРХ")) {
-        return b;
-      } else if (!isBuy && (txt.includes("ПРОДАТЬ") || txt.includes("SELL") || txt.includes("LOWER") || txt === "ВНИЗ")) {
-        return b;
+    // Поиск по ВСЕМ кликабельным элементам (a, button, div, span) по тексту КУПИТЬ / ПРОДАТЬ
+    const candidates = document.querySelectorAll("a, button, .btn, [role='button'], .switch-state-block__item");
+    for (const el of candidates) {
+      // Игнорируем элементы внутри нашего собственного виджета Winky!
+      if (el.closest("#winky-sniper-root, #winky-orb-counter, .winky-widget")) continue;
+      const txt = (el.textContent || "").replace(/\s+/g, " ").trim().toUpperCase();
+      if (txt.length > 25) continue;
+      if (isBuy && (txt === "КУПИТЬ" || txt.includes("КУПИТЬ") || txt === "BUY" || txt === "HIGHER")) {
+        return el.closest("a, button, .btn, .switch-state-block__item") || el;
+      }
+      if (!isBuy && (txt === "ПРОДАТЬ" || txt.includes("ПРОДАТЬ") || txt === "SELL" || txt === "LOWER")) {
+        return el.closest("a, button, .btn, .switch-state-block__item") || el;
       }
     }
     return null;
@@ -2044,30 +2052,43 @@
 
   function clickPocketTradeButton(direction) {
     const now = Date.now();
-    if (now - lastTradeClickTime < 3000) {
-      loggerLog(`[clickPocketTradeButton] 🛑 Блокировка повторного клика! Прошло ${now - lastTradeClickTime}мс < 3000мс.`);
+    if (now - lastTradeClickTime < 2500) {
+      loggerLog(`[clickPocketTradeButton] 🛑 Блокировка повторного клика! Прошло ${now - lastTradeClickTime}мс < 2500мс.`);
       return false;
     }
     lastTradeClickTime = now;
 
-    const isBuy = String(direction).toUpperCase() === "BUY";
+    closePocketCalculatorIfOpen();
+
+    const isBuy = String(direction).toUpperCase() === "BUY" || String(direction).toUpperCase() === "CALL";
     const btn = findPocketTradeButton(direction);
     if (!btn) {
       loggerLog(`[clickPocketTradeButton] ❌ Кнопка сделки ${direction} не найдена в DOM!`);
       return false;
     }
 
+    const targetEl = btn.closest("a, button, .btn, .switch-state-block__item") || btn;
     const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
-    btn.classList.add(glowClass);
-    setTimeout(() => btn.classList.remove(glowClass), 2500);
+    targetEl.classList.add(glowClass);
+    setTimeout(() => targetEl.classList.remove(glowClass), 2500);
 
-    // Вызываем ТОЛЬКО ОДИН нативный click() — БЕЗ dispatchEvent(MouseEvent),
-    // чтобы не открывалось 2 сделки одновременно на одной свече!
-    loggerLog(`[clickPocketTradeButton] ⚡ Одиночный нативный клик по кнопке ${direction} ($${state.currentStake}):`, btn);
+    loggerLog(`[clickPocketTradeButton] ⚡ Клик по кнопке ${direction} ($${state.currentStake}):`, targetEl);
     try {
-      btn.click();
+      const rect = targetEl.getBoundingClientRect();
+      const evtOpts = {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
+        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
+      };
+      targetEl.dispatchEvent(new MouseEvent("mousedown", evtOpts));
+      targetEl.dispatchEvent(new MouseEvent("mouseup", evtOpts));
+      targetEl.dispatchEvent(new MouseEvent("click", evtOpts));
+      try { targetEl.click(); } catch (_) {}
+      try { btn.click(); } catch (_) {}
     } catch (err) {
-      loggerLog("[clickPocketTradeButton] Ошибка нативного вызова btn.click():", err);
+      loggerLog("[clickPocketTradeButton] Ошибка вызова клика:", err);
       return false;
     }
     return true;
@@ -2534,8 +2555,6 @@
       const isBuy = String(analysis.direction).toUpperCase() === "BUY";
       const isRu = (state.lang === "ru");
 
-      VoiceManager.playCategory("sniper_wait", false, "thinking", "nod");
-
       const block = document.getElementById("botDirectionBlock");
       if (block) {
         block.className = `winky-direction-block analysing`;
@@ -2554,15 +2573,15 @@
         `;
       }
 
-      // Micro-pullback sniper wait (up to 2.0 seconds)
+      // Micro-pullback sniper wait (up to 800ms)
       const sniperStartTime = Date.now();
       let bestEntryFound = false;
       let initialQuote = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]) || 1.0;
       let prevTick = initialQuote;
       let pullbackDetected = false;
 
-      while (Date.now() - sniperStartTime < 2000) {
-        await new Promise((r) => setTimeout(r, 150));
+      while (Date.now() - sniperStartTime < 800) {
+        await new Promise((r) => setTimeout(r, 100));
         try { ChartAnalyzer.pollPrice(); } catch (_) {}
         const curTick = getCurrentChartPrice() || (state.priceTicks[state.priceTicks.length - 1]);
         if (!curTick) continue;
@@ -2583,7 +2602,7 @@
           }
         }
 
-        if (Date.now() - sniperStartTime > 1500) {
+        if (Date.now() - sniperStartTime > 600) {
           bestEntryFound = true;
           break;
         }
@@ -2650,7 +2669,11 @@
       state.analysisStartedAt = null;
 
       if (state.autoStream) {
-        await POAutomation.clickTrade(analysis.direction);
+        try {
+          await POAutomation.clickTrade(analysis.direction);
+        } catch (clickErr) {
+          loggerLog("[executeTradeWithSignal] Ошибка вызова POAutomation.clickTrade:", clickErr);
+        }
       } else {
         state.balanceBeforeClick = getPocketBalance();
         state.balanceBefore = state.balanceBeforeClick;
@@ -3696,6 +3719,11 @@
     const block = document.getElementById("botDirectionBlock");
     const accEl = document.getElementById("metricAccuracyVal");
     if (!block) return;
+
+    // Во время активного анализа или подготовки к снайперскому входу НИКОГДА не затираем разметку!
+    if (state.botState === "ANALYZING" || state.botState === "ANALYZING_PAIR" || state.botState === "PREPARING_TRADE") {
+      return;
+    }
 
     if (state.botState === "IDLE") {
       block.className = "winky-direction-block winky-signal-display idle";
