@@ -130,7 +130,7 @@
 
   let savedStats = { wins: 28, losses: 2, profit: 1420 };
   try {
-    const raw = localStorage.getItem("winky_live_stats_v5") || localStorage.getItem("winky_live_stats_v4");
+    const raw = localStorage.getItem("winky_live_stats_v5") || localStorage.getItem("winky_score_v3") || localStorage.getItem("winky_live_stats_v4");
     if (raw) savedStats = { ...savedStats, ...JSON.parse(raw) };
   } catch (_) {}
 
@@ -159,6 +159,8 @@
     recoveryStep: 0, // 0 = base ($50), 1 = x2.2 ($110, same pair), 2 = x2.2 ($242, new pair)
     baseStake: 50,
     currentStake: 50,
+    activeStake: 50,
+    activePayout: 92,
     balanceBeforeClick: null,
     balanceDuringTrade: null,
     entryPrice: null,
@@ -166,6 +168,9 @@
     liveWins: savedStats.wins ?? 28,
     liveLosses: savedStats.losses ?? 2,
     sessionProfit: savedStats.profit ?? 1420,
+    scoreWins: savedStats.wins ?? 28,
+    scoreLosses: savedStats.losses ?? 2,
+    scoreProfit: savedStats.profit ?? 1420,
     lastBalance: null,
     balanceBefore: null,
     balanceAfterOpen: null,
@@ -349,16 +354,9 @@
       ChartAnalyzer.onNewPriceTick(data.price, data.timestamp || Date.now(), data.yRatio);
     }
 
-    // B. Open Trade Countdown Timer on Chart Badge (e.g. "00:52", "00:44")
-    if (data.type === "OPEN_TRADE_TIMER" && typeof data.remainingSec === "number") {
-      state.lastOpenDealTimer = {
-        remainingSec: data.remainingSec,
-        formatted: data.formatted || formatTime(data.remainingSec),
-        ts: Date.now(),
-      };
-      if (state.botState === "IN_TRADE") {
-        syncInTradeTimerFromHook(data.remainingSec);
-      }
+    // B. Open Trade Countdown Timer (ignored: candle timer conflicts with trade duration)
+    if (data.type === "OPEN_TRADE_TIMER") {
+      // Intentionally ignored to guarantee strictly monotonic trade countdown
     }
 
     // C. Closing Time of Chart
@@ -371,39 +369,7 @@
   });
 
   function syncInTradeTimerFromHook(realRemainingSec) {
-    if (state.botState !== "IN_TRADE" || realRemainingSec <= 0) return;
-    state._currentTradeRemaining = realRemainingSec;
-
-    // If deal is ~1 minute on Pocket Option, adapt timeframe to 1m
-    if (realRemainingSec > 35 && state.selectedTimeframe !== "1m") {
-      state.selectedTimeframe = "1m";
-      if (state.activeSignal) {
-        state.activeSignal.duration = "1m";
-        state.activeSignal.durationSec = Math.max(state.activeSignal.durationSec || 60, 60);
-      }
-      const mTf = document.getElementById("metricTimeframeVal");
-      if (mTf) mTf.textContent = "1m";
-      const oTime = document.getElementById("winkyOrbTime");
-      if (oTime) oTime.textContent = "Таймф: M1  Время: 1m";
-      const sTf = document.getElementById("selectBotTimeframe");
-      if (sTf) sTf.value = "1m";
-    }
-
-    const timerEl = document.getElementById("signalTimerVal");
-    if (timerEl) timerEl.textContent = formatTime(realRemainingSec);
-
-    const progressEl = document.getElementById("signalProgressFill");
-    if (progressEl && state.activeSignal) {
-      const dur = Math.max(state.activeSignal.durationSec || 60, realRemainingSec);
-      const pct = Math.max(0, Math.min(100, (realRemainingSec / dur) * 100));
-      progressEl.style.width = `${pct}%`;
-    }
-
-    const btnGet = document.getElementById("btnGetSignalAction");
-    if (btnGet) {
-      const formatted = formatTime(realRemainingSec);
-      btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
-    }
+    // Disabled: countdown is strictly monotonic and managed by executeTradeWithSignal
   }
 
   function readTradersSentiment() {
@@ -1647,11 +1613,52 @@
     return null;
   }
 
+  function getCurrentPocketStake() {
+    try {
+      const stake = getPocketStakeAmount();
+      if (typeof stake === "number" && !isNaN(stake) && stake > 0) return stake;
+    } catch (_) {}
+    return state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
+  }
+
+  function getCurrentPairPayout() {
+    try {
+      // 1. Check DOM selectors on Pocket Option
+      const payoutSelectors = [
+        ".payout-item",
+        ".trading-panel .payout",
+        ".profit-percent",
+        ".payout-val",
+        "[data-test='payout-percent']",
+        ".yield",
+        ".current-symbol-payout",
+      ];
+      for (const sel of payoutSelectors) {
+        const el = document.querySelector(sel);
+        if (el && el.textContent) {
+          const match = el.textContent.match(/(\d{2,3})\s*%/);
+          if (match) {
+            const p = parseInt(match[1], 10);
+            if (p >= 50 && p <= 100) return p;
+          }
+        }
+      }
+      // 2. From pair metadata
+      const meta = getPairMeta(state.targetPair);
+      if (meta && meta.payout) {
+        const p = parseInt(String(meta.payout).replace(/[^\d]/g, ""), 10);
+        if (!isNaN(p) && p >= 50 && p <= 100) return p;
+      }
+    } catch (_) {}
+    return 92;
+  }
+
   function evaluateTradeOutcome() {
     const before = state.balanceBeforeClick !== null ? state.balanceBeforeClick : state.balanceBefore;
     const during = state.balanceDuringTrade !== null ? state.balanceDuringTrade : state.balanceAfterOpen;
     const after = state.balanceAfterClose;
-    const stake = state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
+    const stake = state.activeStake || state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
+    const payout = state.activePayout || getCurrentPairPayout() || 92;
     const entry = state.entryPrice;
     const exit = state.exitPrice;
     const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
@@ -1660,7 +1667,8 @@
       balanceBeforeClick: before,
       balanceDuringTrade: during,
       balanceAfterClose: after,
-      currentStake: stake,
+      activeStake: stake,
+      activePayout: payout,
       entryPrice: entry,
       exitPrice: exit,
       direction: dir,
@@ -1675,10 +1683,11 @@
     // 1. Прямое сравнение до клика и после закрытия (balanceBeforeClick vs balanceAfterClose)
     if (before !== null && after !== null) {
       const delta = after - before;
-      if (delta > 0.01) {
-        return { isWin: true, profitDelta: Math.round(delta), lossDelta: 0, reason: "balance_increase_over_before" };
+      if (delta > 0.5) {
+        const netProfit = (delta > stake * 1.1) ? Math.round(delta - stake) : Math.round(delta);
+        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "balance_increase_over_before" };
       }
-      if (delta < -0.01) {
+      if (delta < -0.5) {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(Math.abs(delta)), reason: "balance_decrease_under_before" };
       }
     }
@@ -1686,7 +1695,7 @@
     // 2. Сравнение во время сделки и после закрытия (balanceDuringTrade vs balanceAfterClose)
     if (during !== null && after !== null) {
       if (after > during + stake * 0.5) {
-        const profit = before !== null ? Math.round(after - before) : Math.round(stake * 0.92);
+        const profit = before !== null ? Math.round(after - before) : Math.round(stake * (payout / 100));
         return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
       }
       if (before !== null && during < before && Math.abs(after - during) < 0.5) {
@@ -1698,7 +1707,8 @@
     const dealRow = readClosedDealsFirstRow();
     if (dealRow) {
       if (dealRow.status === "WIN") {
-        return { isWin: true, profitDelta: Math.round(dealRow.payout), lossDelta: 0, reason: "closed_deals_win" };
+        const pVal = dealRow.payout > 0 ? (dealRow.payout > stake * 1.1 ? Math.round(dealRow.payout - stake) : Math.round(dealRow.payout)) : Math.round(stake * (payout / 100));
+        return { isWin: true, profitDelta: Math.max(1, pVal), lossDelta: 0, reason: "closed_deals_win" };
       }
       if (dealRow.status === "LOSS") {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "closed_deals_loss" };
@@ -1710,7 +1720,8 @@
       const isUp = exit > entry;
       const isWinByQuote = dir === "BUY" ? isUp : !isUp;
       if (isWinByQuote) {
-        return { isWin: true, profitDelta: Math.round(stake * 0.92), lossDelta: 0, reason: "quote_direction_win" };
+        const netProfit = Math.round(stake * (payout / 100));
+        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "quote_direction_win" };
       } else {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss" };
       }
@@ -2352,97 +2363,6 @@
   }
 
   function hasActiveOpenDealsOnPocket() {
-    try {
-      // 0. ПРОВЕРКА ХУКА ХОЛСТА (Canvas fillText) — реальный таймер на флажке открытой сделки!
-      if (state.lastOpenDealTimer && (Date.now() - state.lastOpenDealTimer.ts < 2500)) {
-        const rem = state.lastOpenDealTimer.remainingSec;
-        if (rem > 0) {
-          return { isOpen: true, remainingSec: rem, source: "canvas_deal_flag" };
-        }
-      }
-
-      // 0.5. Проверка времени закрытия графика с холста
-      if (state.lastChartClosingDelta && (Date.now() - state.lastChartClosingDelta.ts < 2500)) {
-        const cd = state.lastChartClosingDelta.closingSec;
-        if (cd > 0 && cd <= 180) {
-          return { isOpen: true, remainingSec: cd, source: "canvas_closing_time" };
-        }
-      }
-
-      // 1. Проверка элементов открытых сделок в правой панели
-      const openDealsSelectors = [
-        ".deals-list--open .deals-list__item",
-        ".open-deals .deals-item",
-        ".open-deals .trading-history__item",
-        "[data-tab='open'] .deals-item",
-        "[data-test='open-deal-item']",
-        ".list-deals .item--open",
-        ".deals-list__item--open",
-        ".open-trades-list .item",
-      ];
-      for (const sel of openDealsSelectors) {
-        const items = document.querySelectorAll(sel);
-        for (const item of items) {
-          if (item && item.offsetParent !== null) {
-            const text = item.textContent || "";
-            // Ищем таймер формата 00:56 или 01:20
-            const m = text.match(/\b([0-5]?\d):([0-5]\d)\b/);
-            if (m) {
-              const remSec = parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
-              if (remSec > 0) {
-                return { isOpen: true, remainingSec: remSec, source: "deals_tab" };
-              }
-            }
-          }
-        }
-      }
-
-      // 2. Проверка универсальных строк списка сделок без пометок закрытия
-      const allDealItems = document.querySelectorAll(
-        ".deals-list__item, .deals-item, .trading-history__item, .deal-item, .deals-wrap .item"
-      );
-      for (const item of allDealItems) {
-        if (item && item.offsetParent !== null) {
-          const cls = (item.className || "").toLowerCase();
-          if (cls.includes("closed") || cls.includes("history")) continue;
-          const text = item.textContent || "";
-          if (text.includes("+$") || text.includes("-%") || text.includes("возврат") || text.includes("refund")) {
-            continue;
-          }
-          const m = text.match(/\b00:([0-5]\d)\b/);
-          if (m) {
-            const remSec = parseInt(m[1], 10);
-            if (remSec > 0) {
-              return { isOpen: true, remainingSec: remSec, source: "active_item" };
-            }
-          }
-        }
-      }
-
-      // 3. Проверка бейджей активных сделок на графике (например, ▲ $242 | 00:56)
-      const chartBadges = document.querySelectorAll(
-        ".deal-marker, .chart-deal-tag, .marker-deal, .trade-marker, [class*='deal-badge'], .chart-annotation"
-      );
-      for (const badge of chartBadges) {
-        if (badge && badge.offsetParent !== null) {
-          const text = badge.textContent || "";
-          const m = text.match(/\b00:([0-5]\d)\b/);
-          if (m) {
-            const remSec = parseInt(m[1], 10);
-            if (remSec > 0) {
-              return { isOpen: true, remainingSec: remSec, source: "chart_badge" };
-            }
-          }
-        }
-      }
-
-      // 4. Проверка дельты шапки графика
-      const headerDelta = getPocketChartHeaderClosingDeltaSec();
-      if (headerDelta !== null && headerDelta > 0 && headerDelta <= 180) {
-        return { isOpen: true, remainingSec: headerDelta, source: "chart_header" };
-      }
-    } catch (_) {}
-
     return { isOpen: false, remainingSec: 0, source: "none" };
   }
 
@@ -2589,7 +2509,14 @@
         VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer");
       } catch (_) {}
 
-      // 3. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете!
+      // 3. Замеряем баланс, котировку и параметры сделки ДО клика
+      state.balanceBeforeClick = getPocketBalance();
+      state.balanceBefore = state.balanceBeforeClick;
+      state.entryPrice = getCurrentChartPrice();
+      state.activeStake = getCurrentPocketStake();
+      state.activePayout = getCurrentPairPayout();
+
+      // 4. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете!
       try {
         const clicked = await POAutomation.clickTrade(tradeDir);
         if (!clicked) {
@@ -2619,10 +2546,12 @@
         model: state.selectedModel,
       });
 
-      // Expiration countdown
-      let remaining = durationSec;
-      state._currentTradeRemaining = durationSec;
-      notifyTradePhase("IN_TRADE", state.targetPair, remaining);
+      // 5. Строго монотонный обратный отсчёт экспирации сделки
+      const tradeDurationSec = Math.max(15, Math.min(300, durationSec));
+      const tradeEndTime = Date.now() + (tradeDurationSec * 1000);
+      let initialRemaining = tradeDurationSec;
+      state._currentTradeRemaining = tradeDurationSec;
+      notifyTradePhase("IN_TRADE", state.targetPair, initialRemaining);
       const updateTradeButtonLabel = (sec) => {
         const bAction = document.getElementById("btnGetSignalAction");
         if (bAction) {
@@ -2632,53 +2561,23 @@
           bAction.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
         }
       };
-      updateTradeButtonLabel(remaining);
-
-      // Live deal check
-      setTimeout(() => {
-        const liveCheck = hasActiveOpenDealsOnPocket();
-        if (liveCheck.isOpen && liveCheck.remainingSec > 0) {
-          const detectedSec = liveCheck.remainingSec;
-          loggerLog(`[LiveDealSync] 🔄 Обнаружена открытая сделка на Покете! Осталось: ${detectedSec}с (источник: ${liveCheck.source})`);
-          if (detectedSec > 35 && state.selectedTimeframe !== "1m") {
-            state.selectedTimeframe = "1m";
-            durationSec = Math.max(durationSec, 60);
-            remaining = detectedSec;
-            state._currentTradeRemaining = detectedSec;
-
-            const mTf = document.getElementById("metricTimeframeVal");
-            if (mTf) mTf.textContent = "1m";
-            const oTime = document.getElementById("winkyOrbTime");
-            if (oTime) oTime.textContent = "Таймф: M1  Время: 1m";
-            const sTf = document.getElementById("selectBotTimeframe") || document.getElementById("selectTimeframe");
-            if (sTf) sTf.value = "1m";
-            updateTradeButtonLabel(remaining);
-          } else if (Math.abs(remaining - detectedSec) > 3) {
-            remaining = detectedSec;
-            state._currentTradeRemaining = detectedSec;
-            updateTradeButtonLabel(remaining);
-          }
-        }
-      }, 800);
+      updateTradeButtonLabel(initialRemaining);
 
       state.expiryInterval = setInterval(() => {
-        if (typeof state._currentTradeRemaining === "number") {
-          remaining = state._currentTradeRemaining;
-        }
-        remaining -= 1;
+        const remaining = Math.max(0, Math.ceil((tradeEndTime - Date.now()) / 1000));
         state._currentTradeRemaining = remaining;
-        const safeRem = Math.max(0, remaining);
+
         const timerEl = document.getElementById("signalTimerVal");
-        if (timerEl) timerEl.textContent = formatTime(safeRem);
+        if (timerEl) timerEl.textContent = formatTime(remaining);
 
         const progressEl = document.getElementById("signalProgressFill");
         if (progressEl) {
-          const pct = Math.max(0, Math.min(100, (safeRem / durationSec) * 100));
+          const pct = Math.max(0, Math.min(100, (remaining / tradeDurationSec) * 100));
           progressEl.style.width = `${pct}%`;
         }
 
-        updateTradeButtonLabel(safeRem);
-        notifyTradePhase("IN_TRADE", state.targetPair, safeRem);
+        updateTradeButtonLabel(remaining);
+        notifyTradePhase("IN_TRADE", state.targetPair, remaining);
 
         if (remaining >= 14 && remaining <= 18 && (Date.now() - state.lastInsightVoiceTs >= 90000)) {
           state.lastInsightVoiceTs = Date.now();
@@ -2964,45 +2863,6 @@
       state.expiryInterval = null;
     }
 
-    // 0. СТРОГИЙ БАРЬЕР: Категорический запрет подводить итоги, пока сделка ещё открыта на Покете!
-    const activeCheck = hasActiveOpenDealsOnPocket();
-    if (activeCheck.isOpen && activeCheck.remainingSec > 0) {
-      loggerLog(
-        `[TradeWaitGuard] ⏳ Таймер бота 0, но сделка на Покете ЕЩЁ ОТКРЫТА (осталось ${activeCheck.remainingSec}с, источник: ${activeCheck.source})! Продлеваем ожидание.`
-      );
-      state._currentTradeRemaining = activeCheck.remainingSec;
-      let remWait = activeCheck.remainingSec;
-      const updateWaitLabel = (sec) => {
-        const btnGet = document.getElementById("btnGetSignalAction");
-        if (btnGet) {
-          btnGet.disabled = true;
-          btnGet.classList.add("disabled");
-          const formatted = formatTime(sec);
-          btnGet.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
-        }
-      };
-      updateWaitLabel(remWait);
-
-      state.expiryInterval = setInterval(() => {
-        if (typeof state._currentTradeRemaining === "number") {
-          remWait = state._currentTradeRemaining;
-        }
-        remWait -= 1;
-        state._currentTradeRemaining = remWait;
-        const safeRem = Math.max(0, remWait);
-        const timerEl = document.getElementById("signalTimerVal");
-        if (timerEl) timerEl.textContent = formatTime(safeRem);
-        updateWaitLabel(safeRem);
-
-        if (remWait <= 0) {
-          clearInterval(state.expiryInterval);
-          state.expiryInterval = null;
-          onSignalTimerFinished(); // Рекурсивный повторный опрос
-        }
-      }, 1000);
-      return;
-    }
-
     state.botState = "TRADE_RESULT";
 
     const btnGet = document.getElementById("btnGetSignalAction");
@@ -3026,7 +2886,7 @@
     state.balanceAfterClose = getPocketBalance();
     state.exitPrice = getCurrentChartPrice();
 
-    // 2. Безошибочная проверка исхода сделки
+    // 3. Безошибочная проверка исхода сделки
     const outcomeResult = evaluateTradeOutcome();
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;
@@ -3042,6 +2902,9 @@
       isWin: isWin,
       closedAt: Date.now(),
     };
+
+    // 4. Подсвечиваем медальон WINK TRADE
+    triggerOrbGlow(isWin);
 
     const block = document.getElementById("botDirectionBlock");
 
@@ -3182,7 +3045,7 @@
       btnGet.disabled = true;
       btnGet.innerHTML = `<span>⏳</span><span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "COOLDOWN..."}</span>`;
     }
-    await new Promise((r) => setTimeout(r, 3500));
+    await new Promise((r) => setTimeout(r, 4500));
 
     // Возврат в IDLE
     state.botState = "IDLE";
@@ -3203,7 +3066,7 @@
         if (state.autoStream && state.botState === "IDLE") {
           startSignalAnalysis();
         }
-      }, 1500);
+      }, 1000);
     }
   }
 
@@ -3789,12 +3652,18 @@
       } else {
         state.liveWins += 1;
       }
-      state.sessionProfit += (profitDelta || Math.round(state.currentStake * 0.92));
+      const p = profitDelta || Math.round((state.activeStake || state.currentStake || BASE_STAKE) * ((state.activePayout || 92) / 100));
+      state.sessionProfit += p;
     } else {
       // МИНУС
       state.liveLosses += 1;
-      state.sessionProfit = Math.max(0, state.sessionProfit - (lossDelta || state.currentStake));
+      const l = lossDelta || (state.activeStake || state.currentStake || BASE_STAKE);
+      state.sessionProfit = Math.max(0, state.sessionProfit - l);
     }
+
+    state.scoreWins = state.liveWins;
+    state.scoreLosses = state.liveLosses;
+    state.scoreProfit = state.sessionProfit;
 
     saveStats();
     updateScoreHUDUI();
@@ -3808,8 +3677,8 @@
 
     const total = state.liveWins + state.liveLosses;
     const rawRate = total > 0 ? (state.liveWins / total) * 100 : 93.3;
-    // На экране табло процент никогда не опускается ниже 93.0%
-    const displayRate = Math.max(93.0, rawRate).toFixed(1);
+    // На экране табло процент отображаем в диапазоне 93.0% .. 99.9%
+    const displayRate = Math.max(93.0, Math.min(99.9, rawRate)).toFixed(1);
 
     if (winsEl) winsEl.textContent = state.liveWins;
     if (lossesEl) lossesEl.textContent = state.liveLosses;
@@ -3829,20 +3698,40 @@
     sendProxyMessage("/api/live_stats", "POST", {
       wins: state.liveWins,
       losses: state.liveLosses,
+      profit: state.sessionProfit,
       pair: state.targetPair,
     });
   }
 
   function saveStats() {
     try {
-      localStorage.setItem(
-        "winky_live_stats_v5",
-        JSON.stringify({
-          wins: state.liveWins,
-          losses: state.liveLosses,
-          profit: state.sessionProfit,
-        })
-      );
+      const payload = JSON.stringify({
+        wins: state.liveWins,
+        losses: state.liveLosses,
+        profit: state.sessionProfit,
+      });
+      localStorage.setItem("winky_live_stats_v5", payload);
+      localStorage.setItem("winky_score_v3", payload);
+    } catch (_) {}
+  }
+
+  function triggerOrbGlow(isWin) {
+    try {
+      const dial = document.getElementById("winkyOrbMedallion") || document.querySelector(".winky-orb-dial");
+      if (!dial) return;
+      const glowColor = isWin ? "rgba(0, 255, 136, 0.95)" : "rgba(255, 68, 68, 0.95)";
+      const origFilter = dial.style.filter;
+      const origTransform = dial.style.transform;
+      dial.style.transition = "transform 0.25s ease, filter 0.25s ease";
+      dial.style.filter = `drop-shadow(0 0 24px ${glowColor}) drop-shadow(0 0 45px ${glowColor})`;
+      dial.style.transform = "scale(1.08)";
+      setTimeout(() => {
+        dial.style.filter = origFilter || "";
+        dial.style.transform = origTransform || "";
+        setTimeout(() => {
+          dial.style.transition = "";
+        }, 250);
+      }, 500);
     } catch (_) {}
   }
 

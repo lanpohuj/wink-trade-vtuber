@@ -89,32 +89,8 @@
         const width = this.canvas ? this.canvas.width : 0;
         const height = this.canvas ? this.canvas.height : 0;
 
-        // A. Open Trade Countdown Timer on Chart Badge (e.g. "00:52", "00:44", "01:00")
-        const timerMatch = str.match(/^([0-5]?\d):([0-5]\d)$/);
-        if (timerMatch) {
-          const mm = parseInt(timerMatch[1], 10);
-          const ss = parseInt(timerMatch[2], 10);
-          const totalSec = mm * 60 + ss;
-          if (totalSec >= 1 && totalSec <= 300) {
-            const now = performance.now();
-            if (totalSec !== lastDealTimerSec || now - lastDealTimerTs > 350) {
-              lastDealTimerSec = totalSec;
-              lastDealTimerTs = now;
-              window.postMessage(
-                {
-                  source: "WINKY_HOOK",
-                  type: "OPEN_TRADE_TIMER",
-                  remainingSec: totalSec,
-                  formatted: str,
-                  x: x,
-                  y: y,
-                  timestamp: Date.now(),
-                },
-                "*"
-              );
-            }
-          }
-        }
+        // A. Open Trade Countdown Timer - Disabled: canvas MM:SS is candle timer, not trade expiration
+        // (Prevent candle countdown 00:59->00:00 from corrupting trade deal expiration timer)
 
         // B. Closing Time of Chart (e.g. "16:22:48" or next to "Время закрытия")
         const closingTimeMatch = str.match(/^([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)$/);
