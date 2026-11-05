@@ -12,7 +12,7 @@
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
-  // 1. Hook WebSocket traffic for real ticks
+  // 1. Hook WebSocket traffic for real ticks and deal synchronization
   const OriginalWebSocket = window.WebSocket;
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
@@ -33,6 +33,36 @@
         }
 
         if (typeof data === "string") {
+          // Check for openOrder / deal creation response from server
+          if (data.includes("openOrder") || data.includes("successopenOrder") || data.includes('"open_time"') || data.includes('"close_time"')) {
+            try {
+              const jsonMatch = data.match(/(\{[\s\S]*\})/);
+              if (jsonMatch) {
+                const obj = JSON.parse(jsonMatch[1]);
+                let realSec = null;
+                if (typeof obj.expired === "number" && typeof obj.open_time === "number" && obj.expired > obj.open_time) {
+                  realSec = Math.round(obj.expired - obj.open_time);
+                } else if (typeof obj.close_time === "number" && typeof obj.open_time === "number" && obj.close_time > obj.open_time) {
+                  realSec = Math.round(obj.close_time - obj.open_time);
+                } else if (typeof obj.time === "number" && obj.time >= 5 && obj.time <= 300) {
+                  realSec = Math.round(obj.time);
+                }
+                if (realSec && realSec >= 5 && realSec <= 300) {
+                  console.log("[WinkyHook] 🎯 Detected open deal from WS response:", { realSec, obj });
+                  window.postMessage(
+                    {
+                      source: "WINKY_HOOK",
+                      type: "DEAL_BADGE_TIMER",
+                      remainingSec: realSec,
+                      badgeText: `WS ${realSec}s`,
+                    },
+                    "*"
+                  );
+                }
+              }
+            } catch (_) {}
+          }
+
           // Check for quote array format e.g. [["EURUSD_otc", 1730516172, 1.08542]] or JSON with price
           if (data.includes("_otc") || data.includes("updateStream") || (data.includes("[") && data.includes("]"))) {
             // Regex to find symbol and numeric price e.g. ["AEDCNY_otc", 1730516172, 1.88610]
@@ -85,6 +115,76 @@
     return ws;
   };
   window.WebSocket.prototype = OriginalWebSocket.prototype;
+
+  // Intercept WebSocket.prototype.send for openOrder packets
+  const origWsSend = OriginalWebSocket.prototype.send;
+  OriginalWebSocket.prototype.send = function (data) {
+    try {
+      const targetSec = window.__winkyTargetExpirySec || 30;
+      if (typeof data === "string" && data.includes("openOrder")) {
+        const match = data.match(/^(\d+\[\s*"openOrder"\s*,\s*)(\{[\s\S]*\})(\s*\])$/);
+        if (match) {
+          const orderObj = JSON.parse(match[2]);
+          // Если выбран OTC актив или секундный таймер 15s/30s, принудительно выставляем точное время в секундах и тип опциона 100:
+          if (targetSec <= 60) {
+            orderObj.time = targetSec;
+            if (String(orderObj.asset || "").toLowerCase().includes("otc") || orderObj.optionType === 100) {
+              orderObj.optionType = 100;
+            }
+          }
+          data = match[1] + JSON.stringify(orderObj) + match[3];
+          console.log("[WinkyHook] 🚀 Rewrote openOrder WS packet to time=" + targetSec + "s:", data);
+        }
+      } else if (data instanceof ArrayBuffer || ArrayBuffer.isView(data)) {
+        const buf = data instanceof ArrayBuffer ? new Uint8Array(data) : new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+        const text = new TextDecoder("utf-8").decode(buf);
+        if (text.includes("openOrder") && text.includes('"time"')) {
+          const updatedText = text
+            .replace(/"time"\s*:\s*\d+/g, `"time":${targetSec}`)
+            .replace(/"optionType"\s*:\s*\d+/g, `"optionType":100`);
+          if (updatedText !== text) {
+            data = new TextEncoder().encode(updatedText).buffer;
+            console.log("[WinkyHook] 🚀 Rewrote binary openOrder WS packet to time=" + targetSec + "s");
+          }
+        }
+      }
+    } catch (e) {
+      // Отправляем оригинальный пакет без сбоев
+    }
+    return origWsSend.call(this, data);
+  };
+  window.WebSocket.prototype.send = OriginalWebSocket.prototype.send;
+
+  // Poll DOM Deals List in right panel for real active deal timer e.g. 00:29, 00:14, 00:51
+  setInterval(() => {
+    try {
+      const dealItems = document.querySelectorAll(
+        ".deals-list .item, .deals-list__item, .open-deals .item, [class*='deal-item'], [class*='deals-list'] [class*='item']"
+      );
+      for (const item of dealItems) {
+        if (!item || item.offsetParent === null) continue;
+        const text = (item.textContent || "").trim();
+        const m = text.match(/\b0([0-4]):([0-5]\d)\b/);
+        if (m) {
+          const mSec = parseInt(m[1], 10);
+          const sSec = parseInt(m[2], 10);
+          const totalSec = mSec * 60 + sSec;
+          if (totalSec >= 0 && totalSec <= 300) {
+            window.postMessage(
+              {
+                source: "WINKY_HOOK",
+                type: "DEAL_BADGE_TIMER",
+                remainingSec: totalSec,
+                badgeText: m[0],
+              },
+              "*"
+            );
+            break;
+          }
+        }
+      }
+    } catch (_) {}
+  }, 400);
 
   // 2. Hook Canvas 2D fillText for active quote label, open deal timer, and closing time on chart canvas
   const origFillText = CanvasRenderingContext2D.prototype.fillText;
@@ -647,6 +747,8 @@
       else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
       else targetSec = 30;
 
+      window.__winkyTargetExpirySec = targetSec; // 15 или 30
+
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
       const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
@@ -662,17 +764,26 @@
       if (timeInp && !isTimerMode(timeInp.value)) {
         console.log(`[WinkyHook] ⚠️ Поле времени в Режиме Флажка (${timeInp.value}). Переключаем в Режим Таймера...`);
         const beforeVal = timeInp.value;
-        const expBlock = timeInp.closest(".block--expiration-inputs, .expiration-block, .trading-panel__block, .control-block") || timeInp.parentElement?.parentElement;
-        const toggleCandidates = expBlock ? Array.from(expBlock.querySelectorAll(".switch-state-block__item:not(.active), .switch-state-block a, .switch-state-block, [class*='switch'], [class*='flag'], .control-label a, i, svg")) : [];
-        for (const el of toggleCandidates) {
+        const switchTargets = Array.from(document.querySelectorAll(
+          ".block--expiration-inputs .switch-state-block__item:not(.active), " +
+          ".block--expiration-inputs .switch-state-block a, " +
+          ".block--expiration-inputs .switch-state-block, " +
+          ".switch-state-block__item:not(.active), " +
+          ".switch-state-block a, " +
+          ".switch-state-block, " +
+          ".expiration-switch, " +
+          "[class*='switch-state'], " +
+          ".trading-panel [class*='switch']"
+        ));
+        for (const el of switchTargets) {
           if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;
           try { if (typeof el.click === "function") el.click(); } catch (_) {}
-          await sleep(160);
+          await sleep(180);
           if (timeInp.value !== beforeVal || isTimerMode(timeInp.value)) break;
           el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
           el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
           el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
-          await sleep(160);
+          await sleep(180);
           if (timeInp.value !== beforeVal || isTimerMode(timeInp.value)) break;
         }
         console.log(`[WinkyHook] ⏱️ Переключен режим времени, теперь: ${timeInp.value} (isTimer=${isTimerMode(timeInp.value)})`);
@@ -713,8 +824,8 @@
       }
 
       // 5. Пошаговая настройка кнопками + и -
-      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child");
-      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child");
+      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child, .btn-minus");
+      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child, .btn-plus");
 
       let curSec = readCurrentExpirySec();
       let prevSec = null;

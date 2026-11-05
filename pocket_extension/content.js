@@ -399,28 +399,36 @@
         const remSec = data.remainingSec;
         const localRem = Math.floor((state.tradeEndTime - now) / 1000);
 
-        // 1. Первичная калибровка таймфрейма (в первые 4 секунды после клика)
-        // Калибровать таймер вверх на "1m" разрешено ТОЛЬКО если с реального бейджа на графике пришло remainingSec >= 40
-        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 4000) && remSec >= 40) {
-          state.isCalibratedToRealDeal = true;
-          const calibratedTf = secToTfLabel(remSec);
+        // 1. Первичная калибровка таймфрейма (в первые 10 секунд после клика)
+        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 10000) && remSec >= 5) {
+          if (remSec >= 40 || remSec > localRem + 3) {
+            state.isCalibratedToRealDeal = true;
+            const calibratedTf = secToTfLabel(remSec);
 
-          state.selectedTimeframe = calibratedTf;
-          updateExpiryHUD(calibratedTf);
-          if (state.activeSignal) {
-            state.activeSignal.duration = calibratedTf;
-            state.activeSignal.durationSec = remSec;
+            state.selectedTimeframe = calibratedTf;
+            updateExpiryHUD(calibratedTf);
+            if (state.activeSignal) {
+              state.activeSignal.duration = calibratedTf;
+              state.activeSignal.durationSec = remSec;
+            }
+            state.tradeEndTime = now + (remSec * 1000) + 150;
+            state.tradeDurationSec = remSec;
+            updateInTradeTimerUI(remSec);
+            loggerLog(`[TradeSync] ⏱️ Мгновенная калибровка сделки под ${calibratedTf} с Pocket Option: ${remSec}с!`);
           }
-          state.tradeEndTime = now + (remSec * 1000) + 150;
-          state.tradeDurationSec = remSec;
-          updateInTradeTimerUI(remSec);
-          loggerLog(`[TradeSync] ⏱️ Мгновенная калибровка сделки под ${calibratedTf} с флажка Pocket Option: ${remSec}с!`);
         } else if (remSec >= 0) {
-          // 2. Постоянная точная подстройка под реальный флажок сделки на графике:
-          if (remSec < localRem || (now - state.tradeStartTime < 4000 && remSec > localRem + 2 && remSec >= 40)) {
+          // 2. Постоянная точная подстройка под реальный таймер сделки на графике / в списке сделок:
+          if (remSec < localRem || (now - state.tradeStartTime < 10000 && remSec > localRem + 3)) {
             state.tradeEndTime = now + (remSec * 1000) + 150;
             if (remSec > (state.tradeDurationSec || 30)) {
               state.tradeDurationSec = remSec;
+              const calibratedTf = secToTfLabel(remSec);
+              state.selectedTimeframe = calibratedTf;
+              updateExpiryHUD(calibratedTf);
+              if (state.activeSignal) {
+                state.activeSignal.duration = calibratedTf;
+                state.activeSignal.durationSec = remSec;
+              }
             }
             updateInTradeTimerUI(remSec);
           }
