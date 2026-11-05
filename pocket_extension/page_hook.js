@@ -641,39 +641,25 @@
       const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
 
       const isTimerMode = (val) => {
-        if (!val) return false;
-        const s = val.trim();
-        if (s.startsWith("00:")) return true;
-        const parts = s.split(":");
-        if (parts.length === 2) {
-          const m = parseInt(parts[0], 10);
-          return !isNaN(m) && m <= 15;
-        }
+        const s = String(val || "").trim();
+        if (/^00:0[0-5]:[0-5]\d$/.test(s)) return true;
+        if (/^0[0-5]:[0-5]\d$/.test(s)) return true;
         return false;
       };
 
       // 3. Автоматическое переключение из Режима Флажка (21:41:00) в Режим Таймера (00:01:00)
       if (timeInp && !isTimerMode(timeInp.value)) {
         console.log(`[WinkyHook] ⚠️ Поле времени в Режиме Флажка (${timeInp.value}). Переключаем в Режим Таймера...`);
-        const switchSelectors = [
-          ".block--expiration-inputs .switch-state-block a",
-          ".block--expiration-inputs .switch-state-block",
-          ".block--expiration-inputs .expiration-switch",
-          ".block--expiration-inputs [class*='flag']",
-          ".block--expiration-inputs .fa-flag",
-          ".block--expiration-inputs .fa-clock-o",
-          ".block--expiration-inputs [class*='clock']",
-          ".block--expiration-inputs a",
-          ".block--expiration-inputs button",
-        ];
-        for (const sel of switchSelectors) {
-          const btn = document.querySelector(sel);
-          if (btn && btn.offsetParent !== null) {
-            btn.click();
-            console.log(`[WinkyHook] 🔄 Кликнут переключатель режима: ${sel}`);
-            await sleep(120);
-            break;
-          }
+        const expBlock = timeInp.closest(".block--expiration-inputs, .expiration-block, .trading-panel__block, .control-block") || timeInp.parentElement?.parentElement;
+        const candidates = expBlock ? Array.from(expBlock.querySelectorAll(".switch-state-block a, .switch-state-block, [class*='switch'], [class*='flag'], a, button, i, svg")) : [];
+        for (const el of candidates) {
+          if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;
+          const clickTarget = el.closest("a, button, .switch-state-block") || el;
+          clickTarget.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+          clickTarget.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
+          if (typeof clickTarget.click === "function") clickTarget.click();
+          await sleep(140);
+          if (isTimerMode(timeInp.value)) break;
         }
       }
 
@@ -797,8 +783,8 @@
     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
     const now = Date.now();
-    if (now - lastHookTradeClickTime < 2500) {
-      console.warn(`[WinkyHook] 🛑 Блокировка повторного клика! (${now - lastHookTradeClickTime}ms < 2500ms)`);
+    if (now - lastHookTradeClickTime < 3000) {
+      console.warn(`[WinkyHook] 🛑 Блокировка повторного клика! (${now - lastHookTradeClickTime}ms < 3000ms)`);
       window.postMessage(
         { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: "debounce_blocked" },
         "*"
@@ -845,21 +831,10 @@
         return;
       }
 
-      // 3. Вызываем события клика на самой кнопке и её родительском контейнере
-      const targetEl = btn.closest("a, button, .btn, .switch-state-block__item") || btn;
-      const rect = targetEl.getBoundingClientRect();
-      const evtOpts = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
-        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
-      };
-      targetEl.dispatchEvent(new MouseEvent("mousedown", evtOpts));
-      targetEl.dispatchEvent(new MouseEvent("mouseup", evtOpts));
-      targetEl.dispatchEvent(new MouseEvent("click", evtOpts));
-      try { targetEl.click(); } catch (_) {}
-      try { btn.click(); } catch (_) {}
+      // 3. Вызываем одиночный строгий клик по кнопке сделки
+      btn.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
+      btn.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
+      btn.click();
 
       console.log(`[WinkyHook] 🎯 Клик ${direction} ($${stake}) успешно исполнен в MAIN World!`);
       window.postMessage(

@@ -156,7 +156,12 @@
     activeSignal: null,
     forceDir: null, // Streamer trigger: BUY / SELL
     forcedLoss: false,
-    recoveryStep: 0, // 0 = base ($50), 1 = x2.2 ($110, same pair), 2 = x2.2 ($242, new pair)
+    recoveryStep: 0, // 0 = base ($50), 1 = x2.2 ($110, new pair), 2 = x2.2 ($242, new pair)
+    tradesOnSamePair: 0, // Счётчик сделок подряд на одной паре (макс 2)
+    lastTradeOutcome: null, // "WIN" | "LOSS"
+    _lastTradeClickTs: 0, // Анти-дребезг клика сделки (3000 мс)
+    actualStakePlaced: 50,
+    actualPayoutPct: 92,
     baseStake: 50,
     currentStake: 50,
     activeStake: 50,
@@ -395,13 +400,9 @@
         const localRem = Math.floor((state.tradeEndTime - now) / 1000);
 
         // 1. Первичная калибровка таймфрейма (в первые 4 секунды после клика)
-        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 4000) && remSec >= 35) {
+        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 4000) && remSec >= 15) {
           state.isCalibratedToRealDeal = true;
-          let calibratedTf = "1m";
-          if (remSec >= 150) calibratedTf = "3m";
-          else if (remSec >= 90) calibratedTf = "2m";
-          else if (remSec >= 45) calibratedTf = "1m";
-          else calibratedTf = "30s";
+          const calibratedTf = secToTfLabel(remSec);
 
           state.selectedTimeframe = calibratedTf;
           updateExpiryHUD(calibratedTf);
@@ -791,16 +792,53 @@
         paDirection = "SELL";
       }
 
+      const lastC = c0;
+      let consecutiveReds = 0;
+      for (let i = n - 1; i >= 0; i--) {
+        if (candles[i].isRed) consecutiveReds++;
+        else break;
+      }
+      let consecutiveGreens = 0;
+      for (let i = n - 1; i >= 0; i--) {
+        if (candles[i].isGreen) consecutiveGreens++;
+        else break;
+      }
+
+      // -------------------------------------------------------------
+      // VETO: Защита от падающего ножа и ракеты
+      // -------------------------------------------------------------
+      if (bb.pctB <= 0.15 && (consecutiveReds >= 3 || (lastC.isRed && bb.pctB <= 0.10)) && (!lastC.isGreen && lowerWick0 < 1.8 * body0)) {
+        return {
+          valid: true,
+          shouldTrade: false,
+          vetoReason: "FALLING_KNIFE_WAIT_REVERSAL",
+          confidence: 45,
+          explanationRu: `Падающий нож (%B: ${bb.pctB.toFixed(2)}, ${consecutiveReds} красных свечей) — ждём разворотную зелёную свечу`,
+          explanationEn: `Falling knife (%B: ${bb.pctB.toFixed(2)}, ${consecutiveReds} red candles) — waiting for green reversal`,
+        };
+      }
+
+      if (bb.pctB >= 0.85 && (consecutiveGreens >= 3 || (lastC.isGreen && bb.pctB >= 0.90)) && (!lastC.isRed && upperWick0 < 1.8 * body0)) {
+        return {
+          valid: true,
+          shouldTrade: false,
+          vetoReason: "ROCKET_WAIT_REVERSAL",
+          confidence: 45,
+          explanationRu: `Ракетный взлёт (%B: ${bb.pctB.toFixed(2)}, ${consecutiveGreens} зелёных свечей) — ждём разворотную красную свечу`,
+          explanationEn: `Parabolic rocket (%B: ${bb.pctB.toFixed(2)}, ${consecutiveGreens} green candles) — waiting for red reversal`,
+        };
+      }
+
       // -------------------------------------------------------------
       // 4 Working Setups (ProTrader Confluence)
       // -------------------------------------------------------------
       // Setup A: MOMENTUM_BREAKOUT (30s)
       let isSetupA = false;
       let setupADir = null;
-      if (cPrev1 && c0.isGreen && cPrev1.isGreen && body0 >= 0.75 * atr && ema9 > ema21 && rsi >= 52 && rsi <= 76) {
+      if (lastC.isGreen && (ema9 > ema21 || (cPrev1 && cPrev1.isGreen)) && body0 >= 0.65 * atr && rsi >= 50 && rsi <= 76 && consecutiveGreens <= 4) {
         isSetupA = true;
         setupADir = "BUY";
-      } else if (cPrev1 && c0.isRed && cPrev1.isRed && body0 >= 0.75 * atr && ema9 < ema21 && rsi >= 24 && rsi <= 48) {
+      } else if (lastC.isRed && (ema9 < ema21 || (cPrev1 && cPrev1.isRed)) && body0 >= 0.65 * atr && rsi >= 24 && rsi <= 50 && consecutiveReds <= 4) {
         isSetupA = true;
         setupADir = "SELL";
       }
@@ -808,10 +846,10 @@
       // Setup B: TREND_PULLBACK (1m or 30s)
       let isSetupB = false;
       let setupBDir = null;
-      if (ema9 > ema21 && cPrev1 && cPrev1.isRed && c0.isGreen && (trendRegime === "STRONG_UPTREND" || emaSlope > 0)) {
+      if (ema9 > ema21 && cPrev1 && cPrev1.isRed && lastC.isGreen && (trendRegime === "STRONG_UPTREND" || emaSlope > 0)) {
         isSetupB = true;
         setupBDir = "BUY";
-      } else if (ema9 < ema21 && cPrev1 && cPrev1.isGreen && c0.isRed && (trendRegime === "STRONG_DOWNTREND" || emaSlope < 0)) {
+      } else if (ema9 < ema21 && cPrev1 && cPrev1.isGreen && lastC.isRed && (trendRegime === "STRONG_DOWNTREND" || emaSlope < 0)) {
         isSetupB = true;
         setupBDir = "SELL";
       }
@@ -819,21 +857,21 @@
       // Setup C: LEVEL_REVERSAL (Engulfing or Pinbar near S/R) (1m)
       let isSetupC = false;
       let setupCDir = null;
-      if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "BUY" && (sr.distToSup < 1.0 || rsi <= 42 || bullishDiv)) {
+      if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "BUY" && (sr.distToSup < 1.0 || rsi <= 42 || bullishDiv) && (lastC.isGreen || lowerWick0 >= 1.8 * body0)) {
         isSetupC = true;
         setupCDir = "BUY";
-      } else if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "SELL" && (sr.distToRes < 1.0 || rsi >= 58 || bearishDiv)) {
+      } else if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "SELL" && (sr.distToRes < 1.0 || rsi >= 58 || bearishDiv) && (lastC.isRed || upperWick0 >= 1.8 * body0)) {
         isSetupC = true;
         setupCDir = "SELL";
       }
 
-      // Setup D: BOLLINGER_EXTREME (2m or 3m)
+      // Setup D: BOLLINGER_EXTREME (2m or 3m) - СТРОГО С ПОДТВЕРЖДЕНИЕМ СВЕЧОЙ
       let isSetupD = false;
       let setupDDir = null;
-      if ((bb.pctB <= 0.15 || rsi <= 33) && (c0.isGreen || lowerWick0 >= 1.0 * body0 || bb.pctB <= 0.08)) {
+      if ((bb.pctB <= 0.20 || rsi <= 35) && (lastC.isGreen || lowerWick0 >= 1.8 * body0)) {
         isSetupD = true;
         setupDDir = "BUY";
-      } else if ((bb.pctB >= 0.85 || rsi >= 67) && (c0.isRed || upperWick0 >= 1.0 * body0 || bb.pctB >= 0.92)) {
+      } else if ((bb.pctB >= 0.80 || rsi >= 65) && (lastC.isRed || upperWick0 >= 1.8 * body0)) {
         isSetupD = true;
         setupDDir = "SELL";
       }
@@ -916,8 +954,8 @@
         chosenFactors.push(`Разворот от экстремума Боллинджера (%B: ${bb.pctB})`);
         chosenFactors.push(`RSI экстремум: ${rsi}`);
       } else {
-        // Fallback trend alignment
-        const isUp = ema9 >= ema21 || (c0 && c0.isGreen) || (scan && scan.dominantColor === "GREEN");
+        // Fallback trend alignment: strictly align with current candle color
+        const isUp = (lastC && lastC.isGreen) || (ema9 >= ema21 && (!lastC || !lastC.isRed));
         chosenDir = isUp ? "BUY" : "SELL";
         chosenSetup = "TREND_ALIGNMENT";
         chosenConf = 80;
@@ -939,6 +977,7 @@
         trendRegime: trendRegime,
         sr: sr,
         volatilityRatio: body0 / Math.max(0.000001, atr),
+        bodyRatio: cPrev1 ? body0 / Math.max(0.000001, bodyPrev1) : 1.0,
         explanationRu: chosenFactors.join(" + "),
         explanationEn: chosenFactors.join(" + "),
       };
@@ -1926,9 +1965,9 @@
   function evaluateTradeOutcome() {
     const before = state.balanceBeforeClick !== null ? state.balanceBeforeClick : state.balanceBefore;
     const during = state.balanceDuringTrade !== null ? state.balanceDuringTrade : state.balanceAfterOpen;
-    const after = state.balanceAfterClose;
-    const stake = state.activeStake || state.currentStake || getExpectedStake(state.recoveryStep) || BASE_STAKE;
-    const payout = state.activePayout || getCurrentPairPayout() || 92;
+    const after = state.balanceAfterClose !== null ? state.balanceAfterClose : getPocketBalance();
+    const stake = state.actualStakePlaced || state.activeStake || state.currentStake || 50;
+    const payout = state.actualPayoutPct || state.activePayout || 92;
     const entry = state.entryPrice;
     const exit = state.exitPrice;
     const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
@@ -1937,8 +1976,8 @@
       balanceBeforeClick: before,
       balanceDuringTrade: during,
       balanceAfterClose: after,
-      activeStake: stake,
-      activePayout: payout,
+      actualStakePlaced: stake,
+      actualPayoutPct: payout,
       entryPrice: entry,
       exitPrice: exit,
       direction: dir,
@@ -1950,38 +1989,48 @@
       return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "forced_loss" };
     }
 
-    // Предварительный расчёт по котировкам (entryPrice vs exitPrice) — только как резервный индикатор
-    let isWinByQuote = null;
-    if (entry !== null && exit !== null && entry !== exit) {
-      const isUp = exit > entry;
-      isWinByQuote = dir === "BUY" ? isUp : !isUp;
-    }
-
-    // Приоритет 1 (Реальное изменение баланса Pocket Option — 100% точность):
-    if (before !== null && after !== null) {
-      const delta = after - before;
-      if (delta > 0.5) {
-        const netProfit = (delta > stake * 1.1) ? Math.round(delta - stake) : Math.round(delta);
+    // Способ 1 (По реальной разнице баланса afterBal - state.balanceBeforeClick — 100% точность):
+    if (before !== null && after !== null && Math.abs(after - before) > 0.5) {
+      if (after > before + 0.5) {
+        const netProfit = Math.round(after - before);
         return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "balance_increase_over_before" };
       }
-      if (delta < -0.5) {
-        const loss = Math.round(Math.abs(delta));
-        return { isWin: false, profitDelta: 0, lossDelta: Math.max(1, loss), reason: "balance_decrease_under_before" };
+      if (after < before - 0.5) {
+        const netLoss = Math.round(before - after);
+        return { isWin: false, profitDelta: 0, lossDelta: Math.max(1, netLoss), reason: "balance_decrease_under_before" };
       }
     }
 
-    // Приоритет 2 (Сравнение during и after, если before не считался):
-    if (during !== null && after !== null) {
-      if (after > during + stake * 0.5) {
-        const profit = before !== null ? Math.round(after - before) : Math.round(stake * (payout / 100));
-        return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
+    // Способ 2 (По всплывающему тосту Pocket Option слева внизу: Общая прибыль / Total profit):
+    try {
+      const candidates = document.querySelectorAll(
+        ".notification, .toast, .alert, .deal-finish, [class*='toast'], [class*='notify'], .ant-notification, .modal-dialog, div, span"
+      );
+      for (const el of candidates) {
+        if (!el || el.offsetParent === null || el.closest("#winky-sniper-root, #winky-orb-counter")) continue;
+        const txt = (el.textContent || "").trim();
+        if (/Общая прибыль|Total profit/i.test(txt)) {
+          const m = txt.match(/(?:Общая прибыль|Total profit)\s*[:]?\s*\$?([0-9]+(?:[.,][0-9]{1,2})?)/i);
+          if (m) {
+            const pVal = parseFloat(m[1].replace(/,/g, ""));
+            if (!isNaN(pVal) && pVal > 0) {
+              return { isWin: true, profitDelta: Math.round(pVal), lossDelta: 0, reason: "toast_profit" };
+            }
+          }
+        }
+        if (/Общая выплата|Total payout/i.test(txt)) {
+          const m = txt.match(/(?:Общая выплата|Total payout)\s*[:]?\s*\$?([0-9]+(?:[.,][0-9]{1,2})?)/i);
+          if (m) {
+            const pVal = parseFloat(m[1].replace(/,/g, ""));
+            if (!isNaN(pVal) && pVal === 0) {
+              return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "toast_payout_zero" };
+            }
+          }
+        }
       }
-      if (before !== null && during < before - 0.5 && Math.abs(after - during) <= 0.5) {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(before - after), reason: "stake_lost_stagnant_during" };
-      }
-    }
+    } catch (_) {}
 
-    // Приоритет 3 (Таблица закрытых сделок брокера readClosedDealsFirstRow()):
+    // Способ 2b (Таблица закрытых сделок брокера readClosedDealsFirstRow()):
     const dealRow = readClosedDealsFirstRow();
     if (dealRow) {
       if (dealRow.status === "WIN") {
@@ -1993,18 +2042,29 @@
       }
     }
 
-    // Приоритет 4 (Фоллбэк по цене exitPrice vs entryPrice — ТОЛЬКО если баланс не удалось прочитать или он не менялся):
-    const balanceWasUnchanged = (before === null || after === null || (Math.abs(after - before) <= 0.5 && Math.abs((during || before) - before) <= 0.5));
-    if (balanceWasUnchanged && isWinByQuote !== null) {
+    // Способ 3 (Сравнение during и after, если before не считался):
+    if (during !== null && after !== null) {
+      if (after > during + stake * 0.5) {
+        const profit = before !== null ? Math.round(after - before) : Math.round(stake * (payout / 100));
+        return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
+      }
+      if (before !== null && during < before - 0.5 && Math.abs(after - during) <= 0.5) {
+        return { isWin: false, profitDelta: 0, lossDelta: Math.round(before - after), reason: "stake_lost_stagnant_during" };
+      }
+    }
+
+    // Фоллбэк по котировкам (entryPrice vs exitPrice):
+    if (entry !== null && exit !== null && entry !== exit) {
+      const isUp = exit > entry;
+      const isWinByQuote = dir === "BUY" ? isUp : !isUp;
       if (isWinByQuote) {
-        const netProfit = Math.round(stake * (payout / 100));
-        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "quote_direction_win_fallback" };
+        return { isWin: true, profitDelta: Math.round(stake * (payout / 100)), lossDelta: 0, reason: "quote_direction_win_fallback" };
       } else {
         return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss_fallback" };
       }
     }
 
-    // Приоритет 5 (Безопасный дефолт: МИНУС):
+    // Дефолт: безопасный минус
     return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "safe_loss_default" };
   }
 
@@ -2364,10 +2424,11 @@
 
   function clickPocketTradeButton(direction) {
     const now = Date.now();
-    if (now - lastTradeClickTime < 2500) {
-      loggerLog(`[clickPocketTradeButton] 🛑 Блокировка повторного клика! Прошло ${now - lastTradeClickTime}мс < 2500мс.`);
+    if (now - (state._lastTradeClickTs || 0) < 3000) {
+      loggerLog(`[clickPocketTradeButton] 🛑 Блокировка повторного клика! Прошло ${now - (state._lastTradeClickTs || 0)}мс < 3000мс.`);
       return false;
     }
+    state._lastTradeClickTs = now;
     lastTradeClickTime = now;
 
     closePocketCalculatorIfOpen();
@@ -2379,26 +2440,15 @@
       return false;
     }
 
-    const targetEl = btn.closest("a, button, .btn, .switch-state-block__item") || btn;
     const glowClass = isBuy ? "winky-po-glow-call" : "winky-po-glow-put";
-    targetEl.classList.add(glowClass);
-    setTimeout(() => targetEl.classList.remove(glowClass), 2500);
+    btn.classList.add(glowClass);
+    setTimeout(() => btn.classList.remove(glowClass), 2500);
 
-    loggerLog(`[clickPocketTradeButton] ⚡ Клик по кнопке ${direction} ($${state.currentStake}):`, targetEl);
+    loggerLog(`[clickPocketTradeButton] ⚡ Одиночный клик по кнопке ${direction} ($${state.currentStake}):`, btn);
     try {
-      const rect = targetEl.getBoundingClientRect();
-      const evtOpts = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
-        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
-      };
-      targetEl.dispatchEvent(new MouseEvent("mousedown", evtOpts));
-      targetEl.dispatchEvent(new MouseEvent("mouseup", evtOpts));
-      targetEl.dispatchEvent(new MouseEvent("click", evtOpts));
-      try { targetEl.click(); } catch (_) {}
-      try { btn.click(); } catch (_) {}
+      btn.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
+      btn.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
+      btn.click();
     } catch (err) {
       loggerLog("[clickPocketTradeButton] Ошибка вызова клика:", err);
       return false;
@@ -2563,6 +2613,14 @@
     return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
   }
 
+  function secToTfLabel(sec) {
+    if (sec <= 20) return "15s";
+    if (sec <= 44) return "30s";
+    if (sec <= 95) return "1m";
+    if (sec <= 150) return "2m";
+    return "3m";
+  }
+
   function selectStrategyExpiration(analysis, scan) {
     if (!analysis) {
       state.expirationReason = state.lang === "ru" ? "Стандартная экспирация 1m" : "Standard 1m expiry";
@@ -2573,35 +2631,30 @@
     const setup = analysis.setup || "";
     const rsi = typeof analysis.rsi === "number" ? analysis.rsi : 50;
     const vol = typeof analysis.volatilityRatio === "number" ? analysis.volatilityRatio : 1.0;
+    const bodyRatio = typeof analysis.bodyRatio === "number" ? analysis.bodyRatio : 1.0;
 
-    // 1. Extreme reversals or low volatility: 2m or 3m
-    if (setup === "BOLLINGER_EXTREME" || setup === "BOLLINGER_REVERSAL" || rsi <= 25 || rsi >= 75 || vol < 0.75) {
-      const chosen = (vol < 0.65 || rsi <= 22 || rsi >= 78) ? "3m" : "2m";
+    // 1. Momentum breakout or strong impulse candles: 15s or 30s
+    if (setup === "MOMENTUM_BREAKOUT" || bodyRatio >= 1.05) {
+      const chosen = (vol >= 1.3 || bodyRatio >= 1.3) ? "15s" : "30s";
+      loggerLog(`[selectStrategyExpiration] 🎯 Быстрый импульс (setup=${setup}, bodyRatio=${bodyRatio}) -> Выбрано ${chosen}`);
+      state.expirationReason = isRu ? `Быстрый импульс пробоя (${chosen})` : `Fast momentum breakout (${chosen})`;
+      return chosen;
+    }
+
+    // 2. Bollinger Extreme / Reversal or deep level reversal: 2m or 3m
+    if (setup === "BOLLINGER_EXTREME" || setup === "BOLLINGER_REVERSAL" || (setup === "LEVEL_REVERSAL" && (rsi <= 35 || rsi >= 65))) {
+      const chosen = (vol < 0.8 || rsi <= 28 || rsi >= 72) ? "3m" : "2m";
       loggerLog(`[selectStrategyExpiration] 🎯 Разворот от границы/экстремума (setup=${setup}, rsi=${rsi}, vol=${vol.toFixed(2)}) -> Выбрано ${chosen}`);
       state.expirationReason = isRu ? `Глубокий разворот от экстремума (${chosen})` : `Deep mean-reversal cushion (${chosen})`;
       return chosen;
     }
 
-    // 2. Fast continuation / momentum breakout: 30s
-    if (setup === "MOMENTUM_BREAKOUT") {
-      loggerLog(`[selectStrategyExpiration] 🎯 Импульсный пробой (setup=${setup}) -> Выбрано 30s`);
-      state.expirationReason = isRu ? "Быстрый импульс пробоя (30s)" : "Fast momentum breakout (30s)";
-      return "30s";
-    }
-
-    // 3. Trend pullback: 1m or 30s if high volatility
-    if (setup === "TREND_PULLBACK") {
-      const chosen = vol >= 1.1 ? "30s" : "1m";
-      loggerLog(`[selectStrategyExpiration] 🎯 Вход на откате по тренду (setup=${setup}) -> Выбрано ${chosen}`);
-      state.expirationReason = isRu ? `Вход на откате по тренду (${chosen})` : `Trend pullback entry (${chosen})`;
+    // 3. Trend pullback or Level Reversal at moderate volatility: 1m (or 30s if impulse)
+    if (setup === "TREND_PULLBACK" || setup === "LEVEL_REVERSAL" || setup === "ENGULFING" || setup === "PINBAR") {
+      const chosen = vol >= 1.2 ? "30s" : "1m";
+      loggerLog(`[selectStrategyExpiration] 🎯 Вход на откате/паттерне (setup=${setup}, vol=${vol.toFixed(2)}) -> Выбрано ${chosen}`);
+      state.expirationReason = isRu ? `Вход по тренду (${chosen})` : `Trend execution (${chosen})`;
       return chosen;
-    }
-
-    // 4. Level Reversal (Engulfing / Pinbar): 1m
-    if (setup === "LEVEL_REVERSAL" || setup === "ENGULFING" || setup === "PINBAR") {
-      loggerLog(`[selectStrategyExpiration] 🎯 Свечной паттерн (${setup}) -> Выбрано 1m`);
-      state.expirationReason = isRu ? "Отработка свечного паттерна (1m)" : "Candle pattern execution (1m)";
-      return "1m";
     }
 
     // Default to 1m
@@ -2795,6 +2848,8 @@
         if (typeof selectStrategyExpiration === "function") {
           strategyTf = selectStrategyExpiration(analysis, scan) || "1m";
         }
+        // Сбрасываем старое значение таймера с графика, чтобы оно не блокировало новую экспирацию
+        state._lastChartExpSec = 0;
         const expRes = await requestMainWorldSetExpiry(strategyTf);
         if (expRes && expRes.ok && expRes.actualSec >= 5) {
           realPocketSec = expRes.actualSec;
@@ -2802,7 +2857,7 @@
           realPocketSec = syncAndGetRealPocketExpirationSec(strategyTf);
         }
         const domExpSec = getPocketSelectedExpirationSeconds();
-        if (domExpSec >= 15) {
+        if (domExpSec >= 15 && domExpSec <= 360) {
           realPocketSec = domExpSec;
         }
       } catch (e) {
@@ -2810,14 +2865,7 @@
         realPocketSec = parseDurationSeconds(strategyTf) || 60;
       }
 
-      let resolvedTf = "1m";
-      if (realPocketSec >= 240) resolvedTf = "5m";
-      else if (realPocketSec >= 150) resolvedTf = "3m";
-      else if (realPocketSec >= 90) resolvedTf = "2m";
-      else if (realPocketSec >= 45) resolvedTf = "1m";
-      else if (realPocketSec <= 20 && realPocketSec > 0) resolvedTf = "15s";
-      else resolvedTf = "30s";
-
+      let resolvedTf = secToTfLabel(realPocketSec);
       state.selectedTimeframe = resolvedTf;
       let durationSec = realPocketSec >= 5 ? realPocketSec : (parseDurationSeconds(resolvedTf) || 60);
 
@@ -2851,15 +2899,17 @@
       // 3. Замеряем баланс, котировку и параметры сделки ДО клика
       state.balanceBeforeClick = getPocketBalance();
       state.balanceBefore = state.balanceBeforeClick;
+      state.actualStakePlaced = getCurrentPocketStake() || state.currentStake || finalStake || 50;
+      state.actualPayoutPct = getCurrentPairPayout() || 92;
       state.entryPrice = getCurrentChartPrice();
-      state.activeStake = getCurrentPocketStake();
-      state.activePayout = getCurrentPairPayout();
+      state.activeStake = state.actualStakePlaced;
+      state.activePayout = state.actualPayoutPct;
 
-      // 4. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете!
+      // 4. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете (одиночный клик)!
       try {
         const clicked = await POAutomation.clickTrade(tradeDir);
         if (!clicked) {
-          await requestMainWorldClickTrade(tradeDir, finalStake);
+          loggerLog(`[executeTradeWithSignal] ⚠️ clickTrade вернул false`);
         }
       } catch (clickErr) {
         console.warn("[Winky] clickTrade warning:", clickErr);
@@ -2959,6 +3009,20 @@
     }
 
     const btnGet = document.getElementById("btnGetSignalAction");
+
+    // 0. Ротация пар: после любого минуса или после 2 сделок на одной паре
+    if (state.lastTradeOutcome === "LOSS" || state.consecutiveLosses >= 1) {
+      loggerLog("[startSignalAnalysis] 🔄 Предыдущая сделка закрылась в минус! Немедленная смена пары перед анализом...");
+      state.lastTradeOutcome = null;
+      state.tradesOnSamePair = 0;
+      await POAutomation.switchCurrencyPair();
+      await new Promise((r) => setTimeout(r, 650));
+    } else if (state.tradesOnSamePair >= 2) {
+      loggerLog(`[startSignalAnalysis] 🔄 Проведено 2 сделки подряд на паре ${state.targetPair}! Плановая смена пары...`);
+      state.tradesOnSamePair = 0;
+      await POAutomation.switchCurrencyPair();
+      await new Promise((r) => setTimeout(r, 650));
+    }
 
     // 1. Устанавливаем актуальную ставку по мани-менеджменту ($50 -> $110 -> $242)
     const activeExpectedStake = getExpectedStake(state.recoveryStep);
@@ -3171,18 +3235,25 @@
           loggerLog(`[ProTraderEngine] ⚡ Проверено 3 пары подряд! Включаем правило входа по доминирующему импульсу текущей пары!`);
           state.pairScanCount = 0;
 
-          const domIsUp = (analysis.trendRegime === "STRONG_UPTREND" || scan.slopeNorm > 0 || scan.dominantColor === "GREEN" || (sentiment && sentiment.bullish >= 50));
-          const forcedDir = domIsUp ? "BUY" : "SELL";
+          const activeCandles = (state.candles && state.candles.length > 0) ? state.candles : (scan && scan.visualCandles ? scan.visualCandles : []);
+          const lastCandle = activeCandles.length > 0 ? activeCandles[activeCandles.length - 1] : null;
+          let forcedDir = "BUY";
+          if (lastCandle) {
+            forcedDir = lastCandle.isGreen ? "BUY" : "SELL";
+          } else {
+            const domIsUp = (analysis.trendRegime === "STRONG_UPTREND" || scan.slopeNorm > 0 || scan.dominantColor === "GREEN" || (sentiment && sentiment.bullish >= 50));
+            forcedDir = domIsUp ? "BUY" : "SELL";
+          }
           analysis.direction = forcedDir;
           analysis.shouldTrade = true;
           analysis.confidence = Math.max(86, analysis.confidence || 86);
-          analysis.setup = analysis.setup && analysis.setup !== "PRICE_ACTION" ? analysis.setup : "TREND_MOMENTUM";
+          analysis.setup = forcedDir === "BUY" ? "MOMENTUM_BREAKOUT" : "TREND_PULLBACK";
           analysis.line1 = isRu
-            ? (domIsUp ? "📌 Доминирующий бычий тренд подтверждён старшей структурой." : "📌 Доминирующий медвежий тренд подтверждён старшей структурой.")
-            : (domIsUp ? "📌 Dominant bullish momentum confirmed by structure." : "📌 Dominant bearish momentum confirmed by structure.");
+            ? (forcedDir === "BUY" ? "📌 Доминирующий бычий тренд подтверждён свечной структурой." : "📌 Доминирующий медвежий тренд подтверждён свечной структурой.")
+            : (forcedDir === "BUY" ? "📌 Dominant bullish momentum confirmed by candles." : "📌 Dominant bearish momentum confirmed by candles.");
           analysis.line2 = isRu
-            ? (domIsUp ? "🎯 Снайперский вход ВВЕРХ по импульсу покупателей." : "🎯 Снайперский вход ВНИЗ по импульсу продавцов.")
-            : (domIsUp ? "🎯 Sniper entry UP with buyer momentum." : "🎯 Sniper entry DOWN with seller momentum.");
+            ? (forcedDir === "BUY" ? "🎯 Снайперский вход ВВЕРХ по цвету импульсной свечи." : "🎯 Снайперский вход ВНИЗ по цвету импульсной свечи.")
+            : (forcedDir === "BUY" ? "🎯 Sniper entry UP with candle momentum." : "🎯 Sniper entry DOWN with candle momentum.");
 
           confluence.score = Math.max(4.3, confluence.score || 4.3);
           confluence.isStrong = true;
@@ -3288,6 +3359,9 @@
     const block = document.getElementById("botDirectionBlock");
 
     if (isWin) {
+      state.consecutiveLosses = 0;
+      state.lastTradeOutcome = "WIN";
+      state.tradesOnSamePair = (state.tradesOnSamePair || 0) + 1;
       const wasRecovery = state.recoveryStep > 0;
       updateScoreOnTradeClose(true, profitDelta, 0, wasRecovery);
       state.recoveryStep = 0;
@@ -3331,6 +3405,9 @@
       }, true, "excited", "cheer");
     } else {
       // МИНУС (isWin === false)
+      state.consecutiveLosses = (state.consecutiveLosses || 0) + 1;
+      state.lastTradeOutcome = "LOSS";
+      state.tradesOnSamePair = 0;
       updateScoreOnTradeClose(false, 0, lossDelta, false);
 
       // Мани-менеджмент перекрытий: $50 -> $110 -> $242 -> сброс $50
@@ -3350,13 +3427,16 @@
               <div class="signal-ta-lines">
                 <div class="signal-ta-line" style="color:#FFAA00;">
                   ${state.lang === "ru"
-                    ? "📌 Чуть зацепило на закрытии — ничего страшного! Заходим на первое перекрытие ($110) с коэффициентом 2.2."
-                    : "📌 Wick touched at the close — totally fine! Taking recovery step 1 ($110) with 2.2 multiplier."}
+                    ? "📌 Чуть зацепило на закрытии — меняем пару и заходим на перекрытие 1 ($110) с коэффициентом 2.2!"
+                    : "📌 Wick touched at the close — switching pair and taking recovery step 1 ($110) with 2.2 multiplier!"}
                 </div>
               </div>
             `;
           }
         }, true, "wink", "tilt_head");
+
+        // При ЛЮБОМ минусе немедленно меняем валютную пару на чистую!
+        await switchPocketPair(null);
       } else if (state.recoveryStep === 1) {
         state.recoveryStep = 2;
         state.currentStake = getExpectedStake(2); // $242
@@ -3831,7 +3911,7 @@
             <span class="val" id="hudLossesVal">${state.liveLosses}</span>
           </div>
         </div>
-        <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}</div>
+        <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: ${state.scoreProfit >= 0 ? "+$" : "-$"}${Math.abs(state.scoreProfit).toLocaleString("en-US")}</div>
       </div>
 
       <!-- 3. Нижний док управления -->
@@ -4029,32 +4109,24 @@
   }
 
   function updateScoreOnTradeClose(isWin, profitDelta, lossDelta, wasRecovery = false) {
-    const totalBefore = state.liveWins + state.liveLosses;
-    const rawRateBefore = totalBefore > 0 ? (state.liveWins / totalBefore) * 100 : 93.3;
-
     if (isWin) {
-      // Правило списания минуса на перекрытии:
-      // Если до этой победы винрейт опустился ниже 93% (rawRateBefore < 93.0)
-      // ИЛИ это победное перекрытие (wasRecovery) при наличии минусов в статистике
-      if ((rawRateBefore < 93.0 || wasRecovery) && state.liveLosses > 0) {
-        state.liveLosses = Math.max(0, state.liveLosses - 1);
-        state.liveWins += 1;
-        loggerLog(`[updateScoreOnTradeClose] 🎉 Списание 1 минуса на перекрытии! Новые W/L: ${state.liveWins}/${state.liveLosses}`);
-      } else {
-        state.liveWins += 1;
-      }
-      const p = profitDelta || Math.round((state.activeStake || state.currentStake || BASE_STAKE) * ((state.activePayout || 92) / 100));
-      state.sessionProfit += p;
+      state.scoreWins = (Number(state.scoreWins) || 0) + 1;
+      state.liveWins = state.scoreWins;
+      const addAmount = (typeof profitDelta === "number" && profitDelta > 0)
+        ? Math.round(profitDelta)
+        : Math.round((state.actualStakePlaced || state.currentStake || 50) * ((state.actualPayoutPct || 92) / 100));
+      state.scoreProfit = Math.round((Number(state.scoreProfit) || 0) + addAmount);
+      state.sessionProfit = state.scoreProfit;
     } else {
-      // МИНУС
-      state.liveLosses += 1;
-      const l = lossDelta || (state.activeStake || state.currentStake || BASE_STAKE);
-      state.sessionProfit = Math.max(0, state.sessionProfit - l);
+      state.scoreLosses = (Number(state.scoreLosses) || 0) + 1;
+      state.liveLosses = state.scoreLosses;
+      const subAmount = (typeof lossDelta === "number" && lossDelta > 0)
+        ? Math.round(lossDelta)
+        : Math.round(state.actualStakePlaced || state.currentStake || 50);
+      // ОБЯЗАТЕЛЬНО ВЫЧИТАЕМ УБЫТОК ИЗ ТЕКУЩЕГО ПРОФИТА!
+      state.scoreProfit = Math.round((Number(state.scoreProfit) || 0) - subAmount);
+      state.sessionProfit = state.scoreProfit;
     }
-
-    state.scoreWins = state.liveWins;
-    state.scoreLosses = state.liveLosses;
-    state.scoreProfit = state.sessionProfit;
 
     saveStats();
     updateScoreHUDUI();
@@ -4066,15 +4138,21 @@
     const rateEl = document.getElementById("hudRateVal");
     const profitEl = document.getElementById("hudProfitVal");
 
-    const total = state.liveWins + state.liveLosses;
-    const rawRate = total > 0 ? (state.liveWins / total) * 100 : 93.3;
+    const total = state.scoreWins + state.scoreLosses;
+    const rawRate = total > 0 ? (state.scoreWins / total) * 100 : 93.3;
     // На экране табло процент отображаем в диапазоне 93.0% .. 99.9%
     const displayRate = Math.max(93.0, Math.min(99.9, rawRate)).toFixed(1);
 
-    if (winsEl) winsEl.textContent = state.liveWins;
-    if (lossesEl) lossesEl.textContent = state.liveLosses;
+    if (winsEl) winsEl.textContent = state.scoreWins;
+    if (lossesEl) lossesEl.textContent = state.scoreLosses;
     if (rateEl) rateEl.textContent = `${displayRate}%`;
-    if (profitEl) profitEl.textContent = `ПРОФИТ: +$${state.sessionProfit.toLocaleString("en-US")}`;
+    if (profitEl) {
+      if (state.scoreProfit >= 0) {
+        profitEl.textContent = `ПРОФИТ: +$${state.scoreProfit.toLocaleString("en-US")}`;
+      } else {
+        profitEl.textContent = `ПРОФИТ: -$${Math.abs(state.scoreProfit).toLocaleString("en-US")}`;
+      }
+    }
 
     // Обновляем SVG-кольцо прогресса
     const circleProgress = document.getElementById("winkyOrbRingProgress");
@@ -4087,9 +4165,9 @@
 
     // Sync to local server
     sendProxyMessage("/api/live_stats", "POST", {
-      wins: state.liveWins,
-      losses: state.liveLosses,
-      profit: state.sessionProfit,
+      wins: state.scoreWins,
+      losses: state.scoreLosses,
+      profit: state.scoreProfit,
       pair: state.targetPair,
     });
   }
@@ -4097,9 +4175,9 @@
   function saveStats() {
     try {
       const payload = JSON.stringify({
-        wins: state.liveWins,
-        losses: state.liveLosses,
-        profit: state.sessionProfit,
+        wins: state.scoreWins,
+        losses: state.scoreLosses,
+        profit: state.scoreProfit,
       });
       localStorage.setItem("winky_live_stats_v5", payload);
       localStorage.setItem("winky_score_v3", payload);
@@ -4341,8 +4419,10 @@
     if (btnOrbAddWin) {
       btnOrbAddWin.addEventListener("click", (e) => {
         e.stopPropagation();
-        state.liveWins += 1;
-        state.sessionProfit += 46;
+        state.scoreWins = (Number(state.scoreWins) || 0) + 1;
+        state.liveWins = state.scoreWins;
+        state.scoreProfit = (Number(state.scoreProfit) || 0) + 46;
+        state.sessionProfit = state.scoreProfit;
         saveStats();
         updateScoreHUDUI();
       });
@@ -4351,7 +4431,10 @@
     if (btnOrbAddLoss) {
       btnOrbAddLoss.addEventListener("click", (e) => {
         e.stopPropagation();
-        state.liveLosses += 1;
+        state.scoreLosses = (Number(state.scoreLosses) || 0) + 1;
+        state.liveLosses = state.scoreLosses;
+        state.scoreProfit = (Number(state.scoreProfit) || 0) - 50;
+        state.sessionProfit = state.scoreProfit;
         saveStats();
         updateScoreHUDUI();
       });
@@ -4360,6 +4443,9 @@
     if (btnOrbReset) {
       btnOrbReset.addEventListener("click", (e) => {
         e.stopPropagation();
+        state.scoreWins = 28;
+        state.scoreLosses = 2;
+        state.scoreProfit = 1420;
         state.liveWins = 28;
         state.liveLosses = 2;
         state.sessionProfit = 1420;
@@ -4386,9 +4472,18 @@
         const wInp = document.getElementById("cfgOrbWins");
         const lInp = document.getElementById("cfgOrbLosses");
         const pInp = document.getElementById("cfgOrbProfit");
-        if (wInp) state.liveWins = Math.max(0, parseInt(wInp.value, 10) || 0);
-        if (lInp) state.liveLosses = Math.max(0, parseInt(lInp.value, 10) || 0);
-        if (pInp) state.sessionProfit = parseInt(pInp.value, 10) || 0;
+        if (wInp) {
+          state.scoreWins = Math.max(0, parseInt(wInp.value, 10) || 0);
+          state.liveWins = state.scoreWins;
+        }
+        if (lInp) {
+          state.scoreLosses = Math.max(0, parseInt(lInp.value, 10) || 0);
+          state.liveLosses = state.scoreLosses;
+        }
+        if (pInp) {
+          state.scoreProfit = parseInt(pInp.value, 10) || 0;
+          state.sessionProfit = state.scoreProfit;
+        }
         const settingsEl = document.getElementById("winkyOrbSettings");
         if (settingsEl) settingsEl.style.display = "none";
         saveStats();
