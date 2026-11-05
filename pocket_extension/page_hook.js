@@ -19,6 +19,19 @@
 
     const handleMessage = (data) => {
       try {
+        if (data instanceof ArrayBuffer) {
+          try {
+            data = new TextDecoder("utf-8").decode(data);
+          } catch (_) {}
+        } else if (typeof Blob !== "undefined" && data instanceof Blob) {
+          data.arrayBuffer().then((buf) => {
+            try {
+              handleMessage(new TextDecoder("utf-8").decode(buf));
+            } catch (_) {}
+          });
+          return;
+        }
+
         if (typeof data === "string") {
           // Check for quote array format e.g. [["EURUSD_otc", 1730516172, 1.08542]] or JSON with price
           if (data.includes("_otc") || data.includes("updateStream") || (data.includes("[") && data.includes("]"))) {
@@ -156,8 +169,8 @@
           lastDealBadge = { text: str, x: x, y: y, ts: Date.now() };
         }
 
-        // 5. Real Deal Badge Timer MM:SS drawn inside that exact deal badge
-        const badgeTimerMatch = str.match(/^0([0-4]):([0-5]\d)$/);
+        // 5. Real Deal Badge Timer MM:SS drawn inside that exact deal badge (00:00 to 05:59)
+        const badgeTimerMatch = str.match(/^0([0-5]):([0-5]\d)$/);
         if (badgeTimerMatch && lastDealBadge) {
           const dt = Date.now() - lastDealBadge.ts;
           const dx = Math.abs(x - lastDealBadge.x);
@@ -215,6 +228,119 @@
     } catch (_) {}
 
     return origFillText.apply(this, arguments);
+  };
+
+  // 2b. Hook Canvas 2D fillRect for real-time 40-60 candle geometry snapshot
+  const origFillRect = CanvasRenderingContext2D.prototype.fillRect;
+  let canvasCandleBars = [];
+  let lastCandlesSnapshotTs = 0;
+
+  function isGreenCandleStyle(style) {
+    if (!style) return false;
+    const s = String(style).toLowerCase();
+    return s.includes("#00") || s.includes("#2e") || s.includes("#26") || s.includes("#10") ||
+           s.includes("rgb(0,") || s.includes("rgb(38,") || s.includes("rgb(46,") || s.includes("rgb(0 ");
+  }
+
+  function isRedCandleStyle(style) {
+    if (!style) return false;
+    const s = String(style).toLowerCase();
+    return s.includes("#ff") || s.includes("#e7") || s.includes("#ef") || s.includes("#f4") || s.includes("#d3") ||
+           s.includes("rgb(255,") || s.includes("rgb(239,") || s.includes("rgb(231,") || s.includes("rgb(244,");
+  }
+
+  function flushCanvasCandlesIfReady(now) {
+    if (now - lastCandlesSnapshotTs < 350) return;
+    if (canvasCandleBars.length < 12) return;
+
+    lastCandlesSnapshotTs = now;
+    const raw = canvasCandleBars;
+    canvasCandleBars = [];
+
+    // Sort by x ascending (left to right)
+    raw.sort((a, b) => a.x - b.x);
+
+    // Group adjacent parts belonging to the same candle column
+    const grouped = [];
+    for (const item of raw) {
+      const last = grouped[grouped.length - 1];
+      if (last && Math.abs(last.x - item.x) <= 3) {
+        const topY = Math.min(last.y, item.y);
+        const botY = Math.max(last.y + last.h, item.y + item.h);
+        last.y = topY;
+        last.h = botY - topY;
+        last.isGreen = last.isGreen || item.isGreen;
+      } else {
+        grouped.push({ ...item });
+      }
+    }
+
+    if (grouped.length < 8) return;
+
+    // Convert coordinates to normalized OHLC candles:
+    // Screen coords: lower y is higher on chart (higher price).
+    // Inverted normalized price = 1000 - y.
+    const canvasCandles = grouped.slice(-60).map((bar, idx) => {
+      const isGreen = bar.isGreen;
+      const topPrice = 1000 - bar.y;
+      const botPrice = 1000 - (bar.y + bar.h);
+      const open = isGreen ? botPrice : topPrice;
+      const close = isGreen ? topPrice : botPrice;
+      const bodySize = Math.max(0.001, bar.h);
+      const wickExtra = bodySize * 0.25;
+      const high = topPrice + wickExtra;
+      const low = botPrice - wickExtra;
+      return {
+        open: parseFloat(open.toFixed(2)),
+        high: parseFloat(high.toFixed(2)),
+        low: parseFloat(low.toFixed(2)),
+        close: parseFloat(close.toFixed(2)),
+        isGreen: isGreen,
+        isRed: !isGreen,
+        bodySize: parseFloat(bodySize.toFixed(2)),
+        totalRange: parseFloat((high - low).toFixed(2)),
+        x: bar.x,
+        time: Date.now() - (grouped.length - idx) * 5000,
+      };
+    });
+
+    window.postMessage(
+      {
+        source: "WINKY_HOOK",
+        type: "CANVAS_CANDLES_SNAPSHOT",
+        candles: canvasCandles,
+        timestamp: now,
+      },
+      "*"
+    );
+  }
+
+  CanvasRenderingContext2D.prototype.fillRect = function (x, y, w, h) {
+    try {
+      const width = this.canvas ? this.canvas.width : 0;
+      const height = this.canvas ? this.canvas.height : 0;
+
+      // Candle body dimensions: width 3..38px, height >= 1px, in main chart area
+      if (w >= 3 && w <= 38 && h >= 1 && y > 35 && y < height - 40 && width >= 250) {
+        const style = this.fillStyle;
+        const green = isGreenCandleStyle(style);
+        const red = !green && isRedCandleStyle(style);
+
+        if (green || red) {
+          canvasCandleBars.push({
+            x: Math.round(x),
+            y: Math.round(y),
+            w: Math.round(w),
+            h: Math.round(h),
+            isGreen: green,
+          });
+
+          flushCanvasCandlesIfReady(Date.now());
+        }
+      }
+    } catch (_) {}
+
+    return origFillRect.apply(this, arguments);
   };
 
   // 3. Message Listener for commands from content.js (Main World execution)
@@ -483,35 +609,58 @@
     try {
       closePocketCalculatorIfOpen();
 
-      // Ищем инпут времени ТОЛЬКО по наличию двоеточия ":" в значении либо строго внутри .block--expiration-inputs
+      // 1. Парсинг целевого времени в секундах
+      let targetSec = 60;
+      if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") targetSec = 15;
+      else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
+      else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00") targetSec = 60;
+      else if (targetDurationStr === "2m" || targetDurationStr === "120s" || targetDurationStr === "00:02:00") targetSec = 120;
+      else if (targetDurationStr === "3m" || targetDurationStr === "180s" || targetDurationStr === "00:03:00") targetSec = 180;
+      else if (targetDurationStr === "5m" || targetDurationStr === "300s" || targetDurationStr === "00:05:00") targetSec = 300;
+
+      // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
       const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
 
-      const targetSec = (targetDurationStr === "15s" || targetDurationStr === "00:00:15")
-        ? 15
-        : (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00")
-        ? 60
-        : 30;
+      const isTimerMode = (val) => {
+        if (!val) return false;
+        const s = val.trim();
+        if (s.startsWith("00:")) return true;
+        const parts = s.split(":");
+        if (parts.length === 2) {
+          const m = parseInt(parts[0], 10);
+          return !isNaN(m) && m <= 15;
+        }
+        return false;
+      };
 
-      // 1. Проверяем, есть ли уже видимые быстрые пилюли времени (S15, S30, M1)
-      const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
-      for (const p of pills) {
-        if (!p || p.offsetParent === null) continue;
-        const pTxt = (p.textContent || "").trim();
-        if (
-          (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
-          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
-          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00"))
-        ) {
-          p.click();
-          console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
-          await sleep(60);
-          break;
+      // 3. Автоматическое переключение из Режима Флажка (21:41:00) в Режим Таймера (00:01:00)
+      if (timeInp && !isTimerMode(timeInp.value)) {
+        console.log(`[WinkyHook] ⚠️ Поле времени в Режиме Флажка (${timeInp.value}). Переключаем в Режим Таймера...`);
+        const switchSelectors = [
+          ".block--expiration-inputs .switch-state-block a",
+          ".block--expiration-inputs .switch-state-block",
+          ".block--expiration-inputs .expiration-switch",
+          ".block--expiration-inputs [class*='flag']",
+          ".block--expiration-inputs .fa-flag",
+          ".block--expiration-inputs .fa-clock-o",
+          ".block--expiration-inputs [class*='clock']",
+          ".block--expiration-inputs a",
+          ".block--expiration-inputs button",
+        ];
+        for (const sel of switchSelectors) {
+          const btn = document.querySelector(sel);
+          if (btn && btn.offsetParent !== null) {
+            btn.click();
+            console.log(`[WinkyHook] 🔄 Кликнут переключатель режима: ${sel}`);
+            await sleep(120);
+            break;
+          }
         }
       }
 
-      // Функция парсинга секунд из инпута времени
-      const parseInputSec = () => {
+      // Функция чтения текущих секунд из инпута
+      const readCurrentExpirySec = () => {
         if (!timeInp || !timeInp.value) return 60;
         const val = timeInp.value.trim();
         const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
@@ -519,48 +668,80 @@
         const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
         const m = parseInt(mTime[2], 10);
         const s = parseInt(mTime[3], 10);
-        return h * 3600 + m * 60 + s;
+
+        if (isTimerMode(val)) {
+          return m * 60 + s;
+        }
+
+        // Если пара осталась в Режиме Флажка (HH:MM:SS), используем разницу с серверным временем
+        if (lastChartExpSyncTs && Date.now() - lastChartExpSyncTs < 3500 && lastChartExpSec) {
+          return Math.round(lastChartExpSec / 60) * 60;
+        }
+        return 60;
       };
 
-      let currentSec = parseInputSec();
-
-      // 2. Реальные кнопки + и - рядом с полем времени в правой панели
-      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child");
-      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child");
-
-      // Если нужно 30s (или 15s), а сейчас > targetSec — нажимаем кнопку минус 1-2 раза
-      if (targetSec <= 30 && currentSec > targetSec && btnMinus) {
-        for (let i = 0; i < 2; i++) {
-          btnMinus.click();
-          await sleep(60);
-          currentSec = parseInputSec();
-          if (currentSec <= targetSec) break;
+      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2, M3)
+      const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
+      for (const p of pills) {
+        if (!p || p.offsetParent === null) continue;
+        const pTxt = (p.textContent || "").trim();
+        if (
+          (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
+          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
+          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00")) ||
+          (targetSec === 120 && (pTxt === "M2" || pTxt === "02:00")) ||
+          (targetSec === 180 && (pTxt === "M3" || pTxt === "03:00"))
+        ) {
+          p.click();
+          console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
+          await sleep(65);
+          break;
         }
       }
 
-      // Если нужно 60s, а сейчас < 60 — нажимаем кнопку плюс 1-2 раза
-      if (targetSec >= 60 && currentSec < targetSec && btnPlus) {
-        for (let i = 0; i < 2; i++) {
+      // 5. Пошаговая настройка кнопками + и -
+      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child");
+      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child");
+
+      let curSec = readCurrentExpirySec();
+      let prevSec = null;
+      let stagnationCount = 0;
+
+      for (let step = 0; step < 8; step++) {
+        curSec = readCurrentExpirySec();
+        if (Math.abs(curSec - targetSec) <= 4) break;
+
+        if (prevSec !== null && prevSec === curSec) {
+          stagnationCount++;
+          if (stagnationCount >= 2) break; // Достигнут лимит брокера
+        } else {
+          stagnationCount = 0;
+        }
+        prevSec = curSec;
+
+        if (curSec > targetSec && btnMinus) {
+          btnMinus.click();
+          await sleep(65);
+        } else if (curSec < targetSec && btnPlus) {
           btnPlus.click();
-          await sleep(60);
-          currentSec = parseInputSec();
-          if (currentSec >= targetSec) break;
+          await sleep(65);
+        } else {
+          break;
         }
       }
 
       closePocketCalculatorIfOpen();
 
-      // 3. Честное считывание реального времени
-      let actualSec = parseInputSec();
-      if (actualSec >= 45) {
-        actualSec = 60;
-      } else if (actualSec <= 20 && actualSec >= 10) {
-        actualSec = 15;
-      } else {
-        actualSec = 30;
-      }
+      // 6. Честное считывание реального времени
+      let actualSec = readCurrentExpirySec();
+      let label = "1m";
+      if (actualSec <= 20) { actualSec = 15; label = "15s"; }
+      else if (actualSec <= 40) { actualSec = 30; label = "30s"; }
+      else if (actualSec <= 90) { actualSec = 60; label = "1m"; }
+      else if (actualSec <= 150) { actualSec = 120; label = "2m"; }
+      else if (actualSec <= 240) { actualSec = 180; label = "3m"; }
+      else { actualSec = 300; label = "5m"; }
 
-      const label = actualSec >= 60 ? "1m" : `${actualSec}s`;
       console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);
 
       window.postMessage(
