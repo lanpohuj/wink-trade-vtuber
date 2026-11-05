@@ -457,13 +457,12 @@
       await sleep(350);
     }
 
-    // 2. Click Currencies tab ($ Валюты) if present
-    const tabs = document.querySelectorAll(".assets-block__nav-item, .alist__tab, .tabs__item, .assets-nav a");
+    // 2. Click Currencies tab ($ Валюты) or OTC filter if present
+    const tabs = document.querySelectorAll(".assets-block__nav-item, .alist__tab, .tabs__item, .assets-nav a, [data-filter*='otc'], [class*='otc']");
     for (const tab of tabs) {
       const txt = (tab.textContent || "").toLowerCase();
-      if ((txt.includes("валют") || txt.includes("currenc")) && !tab.classList.contains("active")) {
-        tab.click();
-        await sleep(150);
+      if ((txt.includes("валют") || txt.includes("currenc") || txt.includes("otc")) && !tab.classList.contains("active")) {
+        try { tab.click(); await sleep(150); } catch (_) {}
         break;
       }
     }
@@ -479,13 +478,17 @@
     }
     await sleep(250);
 
-    // 4. Collect candidate rows
+    // 4. Collect candidate rows (СТРОГО ТОЛЬКО OTC ПАРЫ!)
     const rows = document.querySelectorAll("a.alist__link, li.alist__item, .alist__item, .assets-block__item");
     let candidates = [];
 
     for (const row of rows) {
       if (!row || row.offsetParent === null) continue;
       const text = row.textContent || "";
+
+      // Step 3: STRICTLY require OTC in row text! Non-OTC pairs have NO 15s/30s seconds expiry!
+      if (!text.toUpperCase().includes("OTC")) continue;
+
       // Extract payout e.g. "+92%", "92%", "89%"
       const pMatch = text.match(/(\d{2})%/);
       const payout = pMatch ? parseInt(pMatch[1], 10) : 0;
@@ -499,6 +502,9 @@
       if (!pairName.includes("/") && pairName.length >= 6 && !pairName.includes(" ")) {
         pairName = pairName.slice(0, 3) + "/" + pairName.slice(3);
       }
+      if (!pairName.toUpperCase().includes("OTC")) {
+        pairName += " OTC";
+      }
       const normName = pairName.toLowerCase().replace(/[^a-z0-9]/g, "");
 
       if (!pairName || normName === normActualCur || normName === "na") continue;
@@ -507,7 +513,7 @@
       candidates.push({ name: pairName, normName, payout, element: clickable, rawRow: row });
     }
 
-    console.log(`[WinkyHook] Найдено кандидатов для смены: ${candidates.length}`);
+    console.log(`[WinkyHook] Найдено OTC-кандидатов для смены: ${candidates.length}`);
 
     let chosen = null;
     if (targetPair) {
@@ -516,11 +522,15 @@
     }
 
     if (!chosen && candidates.length > 0) {
+      // Safety filter for OTC only
+      const otcOnly = candidates.filter((c) => c.name.toUpperCase().includes("OTC") || c.normName.includes("otc"));
+      const candPool = otcOnly.length > 0 ? otcOnly : candidates;
+
       // Filter out recent pairs
-      const nonRecent = candidates.filter(
+      const nonRecent = candPool.filter(
         (c) => !recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === c.normName)
       );
-      const pool = nonRecent.length > 0 ? nonRecent : candidates; // Fallback to all candidates so chosen is never null!
+      const pool = nonRecent.length > 0 ? nonRecent : candPool;
       pool.sort((a, b) => b.payout - a.payout);
       const topPayout = pool[0].payout;
       const topTier = pool.filter((c) => c.payout === topPayout);
@@ -631,14 +641,11 @@
     try {
       closePocketCalculatorIfOpen();
 
-      // 1. Парсинг целевого времени в секундах
-      let targetSec = 60;
+      // 1. Парсинг целевого времени в секундах (СТРОГО 15s или 30s!)
+      let targetSec = 30;
       if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") targetSec = 15;
       else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
-      else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00") targetSec = 60;
-      else if (targetDurationStr === "2m" || targetDurationStr === "120s" || targetDurationStr === "00:02:00") targetSec = 120;
-      else if (targetDurationStr === "3m" || targetDurationStr === "180s" || targetDurationStr === "00:03:00") targetSec = 180;
-      else if (targetDurationStr === "5m" || targetDurationStr === "300s" || targetDurationStr === "00:05:00") targetSec = 300;
+      else targetSec = 30;
 
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
@@ -651,31 +658,32 @@
         return false;
       };
 
-      // 3. Автоматическое переключение из Режима Флажка (21:41:00) в Режим Таймера (00:01:00)
+      // 3. Автоматическое переключение из Режима Флажка (21:41:00) в Режим Таймера (00:00:30)
       if (timeInp && !isTimerMode(timeInp.value)) {
         console.log(`[WinkyHook] ⚠️ Поле времени в Режиме Флажка (${timeInp.value}). Переключаем в Режим Таймера...`);
+        const beforeVal = timeInp.value;
         const expBlock = timeInp.closest(".block--expiration-inputs, .expiration-block, .trading-panel__block, .control-block") || timeInp.parentElement?.parentElement;
-        const switchBtn = expBlock ? (
-          expBlock.querySelector(".switch-state-block a, .switch-state-block, a[class*='switch'], button[class*='switch']") ||
-          expBlock.querySelector("[class*='switch-state']")
-        ) : null;
-        if (switchBtn) {
-          const rect = switchBtn.getBoundingClientRect();
-          const evt = { bubbles: true, cancelable: true, view: window, clientX: rect.x + rect.width / 2, clientY: rect.y + rect.height / 2 };
-          switchBtn.dispatchEvent(new MouseEvent("mousedown", evt));
-          switchBtn.dispatchEvent(new MouseEvent("mouseup", evt));
-          try { switchBtn.click(); } catch (_) {}
-          await sleep(220);
-          console.log(`[WinkyHook] ⏱️ Переключен режим времени, теперь: ${timeInp.value} (isTimer=${isTimerMode(timeInp.value)})`);
+        const toggleCandidates = expBlock ? Array.from(expBlock.querySelectorAll(".switch-state-block__item:not(.active), .switch-state-block a, .switch-state-block, [class*='switch'], [class*='flag'], .control-label a, i, svg")) : [];
+        for (const el of toggleCandidates) {
+          if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;
+          try { if (typeof el.click === "function") el.click(); } catch (_) {}
+          await sleep(160);
+          if (timeInp.value !== beforeVal || isTimerMode(timeInp.value)) break;
+          el.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
+          el.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
+          el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+          await sleep(160);
+          if (timeInp.value !== beforeVal || isTimerMode(timeInp.value)) break;
         }
+        console.log(`[WinkyHook] ⏱️ Переключен режим времени, теперь: ${timeInp.value} (isTimer=${isTimerMode(timeInp.value)})`);
       }
 
       // Функция чтения текущих секунд из инпута
       const readCurrentExpirySec = () => {
-        if (!timeInp || !timeInp.value) return 60;
+        if (!timeInp || !timeInp.value) return targetSec;
         const val = timeInp.value.trim();
         const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
-        if (!mTime) return 60;
+        if (!mTime) return targetSec;
         const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
         const m = parseInt(mTime[2], 10);
         const s = parseInt(mTime[3], 10);
@@ -684,24 +692,18 @@
           return m * 60 + s;
         }
 
-        // Если пара осталась в Режиме Флажка (HH:MM:SS), используем разницу с серверным временем
-        if (lastChartExpSyncTs && Date.now() - lastChartExpSyncTs < 3500 && lastChartExpSec) {
-          return Math.round(lastChartExpSec / 60) * 60;
-        }
-        return 60;
+        // Если пара осталась в Режиме Флажка (HH:MM:SS), возвращаем targetSec (15 или 30)
+        return targetSec;
       };
 
-      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2, M3)
+      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1)
       const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
       for (const p of pills) {
         if (!p || p.offsetParent === null) continue;
         const pTxt = (p.textContent || "").trim();
         if (
           (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
-          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
-          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00")) ||
-          (targetSec === 120 && (pTxt === "M2" || pTxt === "02:00")) ||
-          (targetSec === 180 && (pTxt === "M3" || pTxt === "03:00"))
+          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30"))
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
@@ -743,15 +745,11 @@
 
       closePocketCalculatorIfOpen();
 
-      // 6. Честное считывание реального времени
+      // 6. Честное считывание реального времени (15s или 30s)
       let actualSec = readCurrentExpirySec();
-      let label = "1m";
+      let label = (targetSec === 15) ? "15s" : "30s";
       if (actualSec <= 20) { actualSec = 15; label = "15s"; }
-      else if (actualSec <= 40) { actualSec = 30; label = "30s"; }
-      else if (actualSec <= 90) { actualSec = 60; label = "1m"; }
-      else if (actualSec <= 150) { actualSec = 120; label = "2m"; }
-      else if (actualSec <= 240) { actualSec = 180; label = "3m"; }
-      else { actualSec = 300; label = "5m"; }
+      else { actualSec = 30; label = "30s"; }
 
       console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);
 
