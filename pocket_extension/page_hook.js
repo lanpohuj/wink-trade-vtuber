@@ -524,7 +524,11 @@
       pool.sort((a, b) => b.payout - a.payout);
       const topPayout = pool[0].payout;
       const topTier = pool.filter((c) => c.payout === topPayout);
-      chosen = topTier[Math.floor(Math.random() * topTier.length)];
+      // Prioritize standard pairs supporting fast OTC seconds (15s/30s)
+      const preferred = ["eurusd", "gbpusd", "audcad", "eurjpy", "chfjpy", "audchf", "usdjpy", "cadjpy", "gbpjpy", "eurgbp"];
+      const preferredInTier = topTier.filter((c) => preferred.some((p) => c.normName.includes(p)));
+      const finalPool = preferredInTier.length > 0 ? preferredInTier : topTier;
+      chosen = finalPool[Math.floor(Math.random() * finalPool.length)];
     }
 
     if (chosen && chosen.element) {
@@ -651,15 +655,18 @@
       if (timeInp && !isTimerMode(timeInp.value)) {
         console.log(`[WinkyHook] ⚠️ Поле времени в Режиме Флажка (${timeInp.value}). Переключаем в Режим Таймера...`);
         const expBlock = timeInp.closest(".block--expiration-inputs, .expiration-block, .trading-panel__block, .control-block") || timeInp.parentElement?.parentElement;
-        const candidates = expBlock ? Array.from(expBlock.querySelectorAll(".switch-state-block a, .switch-state-block, [class*='switch'], [class*='flag'], a, button, i, svg")) : [];
-        for (const el of candidates) {
-          if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;
-          const clickTarget = el.closest("a, button, .switch-state-block") || el;
-          clickTarget.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
-          clickTarget.dispatchEvent(new MouseEvent("mouseup", { bubbles: true }));
-          if (typeof clickTarget.click === "function") clickTarget.click();
-          await sleep(140);
-          if (isTimerMode(timeInp.value)) break;
+        const switchBtn = expBlock ? (
+          expBlock.querySelector(".switch-state-block a, .switch-state-block, a[class*='switch'], button[class*='switch']") ||
+          expBlock.querySelector("[class*='switch-state']")
+        ) : null;
+        if (switchBtn) {
+          const rect = switchBtn.getBoundingClientRect();
+          const evt = { bubbles: true, cancelable: true, view: window, clientX: rect.x + rect.width / 2, clientY: rect.y + rect.height / 2 };
+          switchBtn.dispatchEvent(new MouseEvent("mousedown", evt));
+          switchBtn.dispatchEvent(new MouseEvent("mouseup", evt));
+          try { switchBtn.click(); } catch (_) {}
+          await sleep(220);
+          console.log(`[WinkyHook] ⏱️ Переключен режим времени, теперь: ${timeInp.value} (isTimer=${isTimerMode(timeInp.value)})`);
         }
       }
 
@@ -698,7 +705,7 @@
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
-          await sleep(65);
+          await sleep(90);
           break;
         }
       }
@@ -725,10 +732,10 @@
 
         if (curSec > targetSec && btnMinus) {
           btnMinus.click();
-          await sleep(65);
+          await sleep(90);
         } else if (curSec < targetSec && btnPlus) {
           btnPlus.click();
-          await sleep(65);
+          await sleep(90);
         } else {
           break;
         }
