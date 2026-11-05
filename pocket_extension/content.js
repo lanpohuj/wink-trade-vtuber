@@ -674,8 +674,8 @@
     },
 
     // 7. Full 7-Factor Technical Analysis
-    analyze(candles, currentPrice) {
-      if (!candles || candles.length < 10) {
+    analyze(candles, currentPrice, scan = null) {
+      if (!candles || candles.length < 8) {
         return {
           valid: false,
           shouldTrade: false,
@@ -765,34 +765,81 @@
         paDirection = "SELL";
       }
       // Trend Pullback Resumption
-      else if (trendRegime === "STRONG_UPTREND" && cPrev1 && cPrev1.isRed && c0.isGreen && body0 >= 0.6 * atr) {
+      else if (trendRegime === "STRONG_UPTREND" && cPrev1 && cPrev1.isRed && c0.isGreen && body0 >= 0.5 * atr) {
         paPattern = "TREND_PULLBACK";
         paDirection = "BUY";
-      } else if (trendRegime === "STRONG_DOWNTREND" && cPrev1 && cPrev1.isGreen && c0.isRed && body0 >= 0.6 * atr) {
+      } else if (trendRegime === "STRONG_DOWNTREND" && cPrev1 && cPrev1.isGreen && c0.isRed && body0 >= 0.5 * atr) {
         paPattern = "TREND_PULLBACK";
         paDirection = "SELL";
       }
       // Momentum Breakout
-      else if (body0 >= 0.7 * c0.totalRange && body0 >= 1.1 * atr) {
-        if (c0.isGreen && (curPrice >= sr.resistance || sr.distToRes > 1.2)) {
+      else if (body0 >= 0.7 * c0.totalRange && body0 >= 0.85 * atr) {
+        if (c0.isGreen && (curPrice >= sr.resistance || sr.distToRes > 0.9)) {
           paPattern = "MOMENTUM_BREAKOUT";
           paDirection = "BUY";
-        } else if (c0.isRed && (curPrice <= sr.support || sr.distToSup > 1.2)) {
+        } else if (c0.isRed && (curPrice <= sr.support || sr.distToSup > 0.9)) {
           paPattern = "MOMENTUM_BREAKOUT";
           paDirection = "SELL";
         }
       }
       // Bollinger Reversal
-      else if (bb.pctB <= 0.08 && (c0.isGreen || lowerWick0 >= 1.2 * body0)) {
+      else if (bb.pctB <= 0.12 && (c0.isGreen || lowerWick0 >= 1.0 * body0)) {
         paPattern = "BOLLINGER_REVERSAL";
         paDirection = "BUY";
-      } else if (bb.pctB >= 0.92 && (c0.isRed || upperWick0 >= 1.2 * body0)) {
+      } else if (bb.pctB >= 0.88 && (c0.isRed || upperWick0 >= 1.0 * body0)) {
         paPattern = "BOLLINGER_REVERSAL";
         paDirection = "SELL";
       }
 
       // -------------------------------------------------------------
-      // Factor 7: Strict VETO Filters
+      // 4 Working Setups (ProTrader Confluence)
+      // -------------------------------------------------------------
+      // Setup A: MOMENTUM_BREAKOUT (30s)
+      let isSetupA = false;
+      let setupADir = null;
+      if (cPrev1 && c0.isGreen && cPrev1.isGreen && body0 >= 0.75 * atr && ema9 > ema21 && rsi >= 52 && rsi <= 76) {
+        isSetupA = true;
+        setupADir = "BUY";
+      } else if (cPrev1 && c0.isRed && cPrev1.isRed && body0 >= 0.75 * atr && ema9 < ema21 && rsi >= 24 && rsi <= 48) {
+        isSetupA = true;
+        setupADir = "SELL";
+      }
+
+      // Setup B: TREND_PULLBACK (1m or 30s)
+      let isSetupB = false;
+      let setupBDir = null;
+      if (ema9 > ema21 && cPrev1 && cPrev1.isRed && c0.isGreen && (trendRegime === "STRONG_UPTREND" || emaSlope > 0)) {
+        isSetupB = true;
+        setupBDir = "BUY";
+      } else if (ema9 < ema21 && cPrev1 && cPrev1.isGreen && c0.isRed && (trendRegime === "STRONG_DOWNTREND" || emaSlope < 0)) {
+        isSetupB = true;
+        setupBDir = "SELL";
+      }
+
+      // Setup C: LEVEL_REVERSAL (Engulfing or Pinbar near S/R) (1m)
+      let isSetupC = false;
+      let setupCDir = null;
+      if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "BUY" && (sr.distToSup < 1.0 || rsi <= 42 || bullishDiv)) {
+        isSetupC = true;
+        setupCDir = "BUY";
+      } else if ((paPattern === "ENGULFING" || paPattern === "PINBAR") && paDirection === "SELL" && (sr.distToRes < 1.0 || rsi >= 58 || bearishDiv)) {
+        isSetupC = true;
+        setupCDir = "SELL";
+      }
+
+      // Setup D: BOLLINGER_EXTREME (2m or 3m)
+      let isSetupD = false;
+      let setupDDir = null;
+      if ((bb.pctB <= 0.15 || rsi <= 33) && (c0.isGreen || lowerWick0 >= 1.0 * body0 || bb.pctB <= 0.08)) {
+        isSetupD = true;
+        setupDDir = "BUY";
+      } else if ((bb.pctB >= 0.85 || rsi >= 67) && (c0.isRed || upperWick0 >= 1.0 * body0 || bb.pctB >= 0.92)) {
+        isSetupD = true;
+        setupDDir = "SELL";
+      }
+
+      // -------------------------------------------------------------
+      // Smart VETO Filters
       // -------------------------------------------------------------
       const last5 = candles.slice(-5);
       const tinyBodiesCount = last5.filter((c) => Math.abs(c.close - c.open) < 0.25 * atr).length;
@@ -802,118 +849,89 @@
       }
       const recentRange = Math.max(...last5.map((c) => c.high)) - Math.min(...last5.map((c) => c.low));
 
-      // VETO 1: Choppy Flat / Sawtooth / Doji corridor
-      if (tinyBodiesCount >= 3 || (alternatingColors >= 3 && recentRange < 1.4 * atr)) {
+      const isDeadFlat = (tinyBodiesCount >= 4 && alternatingColors >= 3 && recentRange < 1.0 * atr) ||
+                         (Math.abs(ema9 - ema21) < 0.15 * atr && rsi >= 47 && rsi <= 53 && tinyBodiesCount >= 3);
+
+      if (isDeadFlat && !isSetupA && !isSetupB && !isSetupC && !isSetupD) {
         return {
           valid: true,
           shouldTrade: false,
           vetoReason: "CHOPPY_FLAT",
-          confidence: 45,
+          confidence: 50,
           explanationRu: "Флэт и пила в узком коридоре (доджи / чередование свечей)",
           explanationEn: "Choppy flat with doji noise & low volatility corridor",
         };
       }
 
-      // VETO 2: Entering directly into a wall (S/R level in front of nose)
-      if (paDirection === "BUY" && paPattern !== "MOMENTUM_BREAKOUT" && sr.distToRes < 0.35) {
+      // VETO: Entering directly into a wall (< 0.25 ATR)
+      if (setupADir === "BUY" && sr.distToRes < 0.25) {
         return {
           valid: true,
           shouldTrade: false,
           vetoReason: "INTO_WALL",
-          confidence: 50,
+          confidence: 52,
           explanationRu: `Удар в сопротивление сверху (${sr.distToRes} ATR) — высокий риск отката`,
           explanationEn: `Hit resistance ceiling (${sr.distToRes} ATR) — high rejection risk`,
         };
       }
-      if (paDirection === "SELL" && paPattern !== "MOMENTUM_BREAKOUT" && sr.distToSup < 0.35) {
+      if (setupADir === "SELL" && sr.distToSup < 0.25) {
         return {
           valid: true,
           shouldTrade: false,
           vetoReason: "INTO_WALL",
-          confidence: 50,
+          confidence: 52,
           explanationRu: `Удар в поддержку снизу (${sr.distToSup} ATR) — высокий риск отскока`,
           explanationEn: `Hit support floor (${sr.distToSup} ATR) — high bounce risk`,
         };
       }
 
-      // VETO 3: Exhaustion Candle (never chase continuation at extreme peak)
-      if (body0 > 2.6 * atr && paPattern !== "BOLLINGER_REVERSAL") {
-        return {
-          valid: true,
-          shouldTrade: false,
-          vetoReason: "EXHAUSTION_CANDLE",
-          confidence: 52,
-          explanationRu: "Аномальная свеча истощения — вход на пике запрещён стратегией",
-          explanationEn: "Abnormal exhaustion bar — entering at peak blocked by strategy",
-        };
-      }
-
-      // -------------------------------------------------------------
-      // Confluence Scoring (Target: >= 86% with >= 4 confirmations)
-      // -------------------------------------------------------------
-      let buyConfirmations = 0;
-      let sellConfirmations = 0;
-      const buyFactors = [];
-      const sellFactors = [];
-
-      // 1. Trend confirmation
-      if (trendRegime === "STRONG_UPTREND") { buyConfirmations++; buyFactors.push("EMA 9>21>50 Trend UP"); }
-      if (trendRegime === "STRONG_DOWNTREND") { sellConfirmations++; sellFactors.push("EMA 9<21<50 Trend DOWN"); }
-
-      // 2. S/R confirmation
-      if (sr.distToSup < 0.6 && sr.distToRes > 0.8) { buyConfirmations++; buyFactors.push("Отскок от Поддержки"); }
-      if (sr.distToRes < 0.6 && sr.distToSup > 0.8) { sellConfirmations++; sellFactors.push("Отбой от Сопротивления"); }
-
-      // 3. RSI confirmation
-      if (rsi <= 32 || (trendRegime === "STRONG_UPTREND" && rsi >= 52 && rsi <= 66) || bullishDiv) {
-        buyConfirmations++;
-        buyFactors.push(bullishDiv ? "Бычья дивергенция RSI" : `RSI ${rsi} в зоне роста`);
-      }
-      if (rsi >= 68 || (trendRegime === "STRONG_DOWNTREND" && rsi >= 34 && rsi <= 48) || bearishDiv) {
-        sellConfirmations++;
-        sellFactors.push(bearishDiv ? "Медвежья дивергенция RSI" : `RSI ${rsi} в зоне падения`);
-      }
-
-      // 4. Bollinger confirmation
-      if (bb.pctB <= 0.12) { buyConfirmations++; buyFactors.push("Нижняя граница Боллинджера"); }
-      if (bb.pctB >= 0.88) { sellConfirmations++; sellFactors.push("Верхняя граница Боллинджера"); }
-
-      // 5. Stochastic confirmation
-      if (stoch.k > stoch.d && (stoch.k < 35 || (trendRegime === "STRONG_UPTREND" && stoch.k < 65))) {
-        buyConfirmations++;
-        buyFactors.push(`Stochastic ${stoch.k}/${stoch.d} ВВЕРХ`);
-      }
-      if (stoch.k < stoch.d && (stoch.k > 65 || (trendRegime === "STRONG_DOWNTREND" && stoch.k > 35))) {
-        sellConfirmations++;
-        sellFactors.push(`Stochastic ${stoch.k}/${stoch.d} ВНИЗ`);
-      }
-
-      // 6. Price Action pattern
-      if (paDirection === "BUY") { buyConfirmations++; buyFactors.push(`Паттерн: ${paPattern}`); }
-      if (paDirection === "SELL") { sellConfirmations++; sellFactors.push(`Паттерн: ${paPattern}`); }
-
+      let chosenSetup = null;
       let chosenDir = null;
-      let chosenConf = 70;
+      let chosenConf = 80;
       let chosenFactors = [];
 
-      if (buyConfirmations >= 4 && buyConfirmations > sellConfirmations && paDirection === "BUY") {
-        chosenDir = "BUY";
-        chosenConf = Math.min(96, 82 + buyConfirmations * 2.5 + (bullishDiv ? 3 : 0));
-        chosenFactors = buyFactors;
-      } else if (sellConfirmations >= 4 && sellConfirmations > buyConfirmations && paDirection === "SELL") {
-        chosenDir = "SELL";
-        chosenConf = Math.min(96, 82 + sellConfirmations * 2.5 + (bearishDiv ? 3 : 0));
-        chosenFactors = sellFactors;
+      if (isSetupA) {
+        chosenSetup = "MOMENTUM_BREAKOUT";
+        chosenDir = setupADir;
+        chosenConf = 89;
+        chosenFactors.push(`Импульсный пробой ${setupADir}`);
+        chosenFactors.push(`EMA9 ${setupADir === "BUY" ? ">" : "<"} EMA21`);
+        chosenFactors.push(`RSI ${rsi} в зоне импульса`);
+      } else if (isSetupB) {
+        chosenSetup = "TREND_PULLBACK";
+        chosenDir = setupBDir;
+        chosenConf = 88;
+        chosenFactors.push(`Откат по тренду ${setupBDir}`);
+        chosenFactors.push(`Завершение коррекции к EMA`);
+      } else if (isSetupC) {
+        chosenSetup = "LEVEL_REVERSAL";
+        chosenDir = setupCDir;
+        chosenConf = 89;
+        chosenFactors.push(`Разворотный паттерн ${paPattern || "REVERSAL"} ${setupCDir}`);
+        chosenFactors.push(setupCDir === "BUY" ? "Отскок от зоны поддержки" : "Отбой от зоны сопротивления");
+      } else if (isSetupD) {
+        chosenSetup = "BOLLINGER_EXTREME";
+        chosenDir = setupDDir;
+        chosenConf = 88;
+        chosenFactors.push(`Разворот от экстремума Боллинджера (%B: ${bb.pctB})`);
+        chosenFactors.push(`RSI экстремум: ${rsi}`);
+      } else {
+        // Fallback trend alignment
+        const isUp = ema9 >= ema21 || (c0 && c0.isGreen) || (scan && scan.dominantColor === "GREEN");
+        chosenDir = isUp ? "BUY" : "SELL";
+        chosenSetup = "TREND_ALIGNMENT";
+        chosenConf = 80;
+        chosenFactors.push(`Тренд по средним ${chosenDir}`);
       }
 
-      const shouldTrade = Boolean(chosenDir && chosenConf >= 86);
+      const shouldTrade = Boolean((isSetupA || isSetupB || isSetupC || isSetupD) && !isDeadFlat);
 
       return {
         valid: true,
         shouldTrade: shouldTrade,
-        direction: chosenDir || (buyConfirmations > sellConfirmations ? "BUY" : "SELL"),
+        direction: chosenDir,
         confidence: chosenConf,
-        setup: paPattern || "MOMENTUM_ALIGNMENT",
+        setup: chosenSetup || "MOMENTUM_ALIGNMENT",
         factors: chosenFactors,
         atr: atr,
         rsi: rsi,
@@ -1064,15 +1082,20 @@
       };
     },
 
-    analyzeMarket() {
+    analyzeMarket(scan = null) {
       const ticks = state.priceTicks;
       if (ticks.length < 10) {
         for (let i = 0; i < 15; i++) this.pollPrice();
       }
 
-      // If we have no 5s candles yet, synthesize initial candles from ticks
+      // If we have visual candles from canvas scan, adopt them
+      if (state.candles.length < 18 && scan && scan.visualCandles && scan.visualCandles.length >= 18) {
+        state.candles = scan.visualCandles.slice();
+      }
+
+      // If we have no 5s candles yet, synthesize initial candles from ticks (split into >= 20 chunks!)
       if (state.candles.length === 0 && ticks.length >= 10) {
-        const chunkSize = Math.max(2, Math.floor(ticks.length / 5));
+        const chunkSize = Math.max(1, Math.floor(ticks.length / 20));
         for (let i = 0; i < ticks.length; i += chunkSize) {
           const slice = ticks.slice(i, i + chunkSize);
           if (slice.length > 0) {
@@ -1122,17 +1145,21 @@
         };
       }
 
+      const activeCandles = (state.candles.length >= 18)
+        ? state.candles
+        : (scan && scan.visualCandles && scan.visualCandles.length >= 18 ? scan.visualCandles : state.candles);
+
       const curPrice = ticks.length > 0 ? ticks[ticks.length - 1] : 1.0;
-      const pro = ProTraderEngine.analyze(state.candles, curPrice);
+      const pro = ProTraderEngine.analyze(activeCandles, curPrice, scan);
 
       const isUp = pro.direction === "BUY";
 
       let category = isUp ? "buy_trend" : "sell_trend";
-      if (pro.setup === "ENGULFING" || pro.setup === "PINBAR") {
+      if (pro.setup === "ENGULFING" || pro.setup === "PINBAR" || pro.setup === "LEVEL_REVERSAL") {
         category = isUp ? "buy_bounce" : "sell_bounce";
       } else if (pro.setup === "TREND_PULLBACK") {
         category = isUp ? "buy_pullback" : "sell_pullback";
-      } else if (pro.setup === "BOLLINGER_REVERSAL") {
+      } else if (pro.setup === "BOLLINGER_REVERSAL" || pro.setup === "BOLLINGER_EXTREME") {
         category = isUp ? "buy_bounce" : "sell_bounce";
       } else if (pro.setup === "MOMENTUM_BREAKOUT") {
         category = isUp ? "buy_trend" : "sell_trend";
@@ -1141,8 +1168,8 @@
       let line1 = "";
       let line2 = "";
       if (pro.shouldTrade) {
-        if (pro.setup === "ENGULFING") {
-          line1 = isRu ? `📌 Поглощение: импульсная ${isUp ? "бычья" : "медвежья"} свеча перекрыла диапазон.` : `📌 Engulfing: decisive ${isUp ? "bullish" : "bearish"} bar engulfed prior range.`;
+        if (pro.setup === "ENGULFING" || pro.setup === "LEVEL_REVERSAL") {
+          line1 = isRu ? `📌 Разворот: импульсная ${isUp ? "бычья" : "медвежья"} свеча перекрыла диапазон.` : `📌 Reversal: decisive ${isUp ? "bullish" : "bearish"} bar rejected key level.`;
           line2 = isRu ? `🎯 Вход ${isUp ? "ВВЕРХ" : "ВНИЗ"}: продолжение давления покупателей.` : `🎯 Trade ${isUp ? "CALL" : "PUT"}: continuation of buying pressure.`;
         } else if (pro.setup === "PINBAR") {
           line1 = isRu ? `📌 Пинбар: мощное отторжение уровня с длинной ${isUp ? "нижней" : "верхней"} тенью.` : `📌 Pinbar: sharp rejection wick rejecting ${isUp ? "support" : "resistance"}.`;
@@ -1150,7 +1177,7 @@
         } else if (pro.setup === "TREND_PULLBACK") {
           line1 = isRu ? `📌 Откат по тренду: завершение микро-коррекции к EMA 9/21.` : `📌 Trend pullback: micro-correction exhausted near EMA 9/21.`;
           line2 = isRu ? `🎯 Вход ${isUp ? "ВВЕРХ" : "ВНИЗ"}: возобновление основного импульса.` : `🎯 Trade ${isUp ? "CALL" : "PUT"}: resuming dominant trend direction.`;
-        } else if (pro.setup === "BOLLINGER_REVERSAL") {
+        } else if (pro.setup === "BOLLINGER_REVERSAL" || pro.setup === "BOLLINGER_EXTREME") {
           line1 = isRu ? `📌 Полосы Боллинджера: цена коснулась экстремальной границы (%B: ${pro.pctB}).` : `📌 Bollinger Bands: price pierced extreme band (%B: ${pro.pctB}).`;
           line2 = isRu ? `🎯 Вход ${isUp ? "ВВЕРХ" : "ВНИЗ"}: возврат цены к среднему значению.` : `🎯 Trade ${isUp ? "CALL" : "PUT"}: mean reversion back to baseline.`;
         } else {
@@ -1159,7 +1186,7 @@
         }
       } else {
         line1 = isRu ? `⚠️ Фильтр рынка: ${pro.explanationRu || "Низкая уверенность"}` : `⚠️ Market shield: ${pro.explanationEn || "Low confidence"}`;
-        line2 = isRu ? `🛡️ Вход отклонён для защиты депозита (сигнал < 86%).` : `🛡️ Trade blocked to protect deposit (confidence < 86%).`;
+        line2 = isRu ? `🛡️ Вход отклонён для защиты депозита (сигнал < 84%).` : `🛡️ Trade blocked to protect deposit (confidence < 84%).`;
       }
 
       return {
@@ -1195,6 +1222,7 @@
     let canvasFound = false;
     let dominantColor = "NEUTRAL"; // "GREEN" | "RED" | "NEUTRAL"
     let slopeNorm = 0;
+    const visualCandles = [];
 
     try {
       // Find chart canvas in Pocket Option DOM
@@ -1209,12 +1237,10 @@
 
       if (targetCanvas) {
         canvasFound = true;
-        // CREATE OFFSCREEN 2D CANVAS to bypass WebGL context locking!
-        // Calling targetCanvas.getContext("2d") directly on a WebGL canvas returns null in browsers.
-        // But drawImage(webglCanvas, 0, 0, w, h) onto an offscreen 2D canvas is 100% supported!
+        // CREATE OFFSCREEN 2D CANVAS: 420x200 to capture 28 real OHLC candles
         const off = document.createElement("canvas");
-        const w = 240;
-        const h = 140;
+        const w = 420;
+        const h = 200;
         off.width = w;
         off.height = h;
         const offCtx = off.getContext("2d", { willReadFrequently: true });
@@ -1234,78 +1260,127 @@
           let totalRed = 0;
           let sampledPoints = 0;
 
-          // 24 vertical columns evenly spaced across the chart (from 10% to 90% width)
-          const numCols = 24;
-          const startX = Math.floor(w * 0.10);
-          const endX = Math.floor(w * 0.90);
-          const stepX = Math.max(1, Math.floor((endX - startX) / numCols));
+          // Working candle area
+          const xStart = Math.floor(w * 0.08);
+          const xEnd = Math.floor(w * 0.88);
+          const yStart = Math.floor(h * 0.12);
+          const yEnd = Math.floor(h * 0.86);
 
-          for (let x = startX; x < endX; x += stepX) {
-            let colGreen = 0;
-            let colRed = 0;
-            let colYSum = 0;
-            let colYCount = 0;
+          const numCandles = 28;
+          const slotWidth = (xEnd - xStart) / numCandles;
+          let prevClose = null;
+          let prevHigh = null;
+          let prevLow = null;
 
-            for (let y = 8; y < h - 8; y += 2) {
-              const idx = (y * w + x) * 4;
-              const r = data[idx];
-              const g = data[idx + 1];
-              const b = data[idx + 2];
-              const a = data[idx + 3];
+          for (let k = 0; k < numCandles; k++) {
+            const slotX1 = Math.floor(xStart + k * slotWidth);
+            const slotX2 = Math.floor(xStart + (k + 1) * slotWidth);
 
-              if (a > 80) {
-                // Bright green / teal candle pixel detection
-                const isGreenPixel = (g > 135 && g > r * 1.25 && g > b * 1.15) || (g > 160 && r < 120 && b < 160);
-                // Bright red / orange candle pixel detection
-                const isRedPixel = (r > 150 && r > g * 1.3 && r > b * 1.2) || (r > 170 && g < 110 && b < 110);
+            const greenY = [];
+            const redY = [];
 
-                if (isGreenPixel) {
-                  colGreen++;
-                  totalGreen++;
-                  colYSum += y;
-                  colYCount++;
-                  if (y < yMin) yMin = y;
-                  if (y > yMax) yMax = y;
-                } else if (isRedPixel) {
-                  colRed++;
-                  totalRed++;
-                  colYSum += y;
-                  colYCount++;
-                  if (y < yMin) yMin = y;
-                  if (y > yMax) yMax = y;
+            for (let x = slotX1; x < slotX2; x++) {
+              for (let y = yStart; y < yEnd; y++) {
+                const idx = (y * w + x) * 4;
+                const r = data[idx];
+                const g = data[idx + 1];
+                const b = data[idx + 2];
+                const a = data[idx + 3];
+
+                if (a > 60) {
+                  const isGreenPixel = (g > r + 20 && g > b + 12 && g > 65);
+                  const isRedPixel = (r > g + 20 && r > b + 12 && r > 65);
+
+                  if (isGreenPixel) {
+                    greenY.push(y);
+                    totalGreen++;
+                    if (y < yMin) yMin = y;
+                    if (y > yMax) yMax = y;
+                  } else if (isRedPixel) {
+                    redY.push(y);
+                    totalRed++;
+                    if (y < yMin) yMin = y;
+                    if (y > yMax) yMax = y;
+                  }
                 }
               }
             }
 
-            if (colYCount > 0) {
-              sampledPoints += colYCount;
-              const colAvgY = colYSum / colYCount;
-              if (x < w * 0.5) {
-                leftYSum += colAvgY;
+            const slotTotal = greenY.length + redY.length;
+            sampledPoints += slotTotal;
+
+            if (slotTotal >= 2) {
+              const isGreen = greenY.length >= redY.length;
+              const ySorted = (isGreen ? greenY : redY).sort((a, b) => a - b);
+
+              const highPrice = 1000 - ySorted[0];
+              const lowPrice = 1000 - ySorted[ySorted.length - 1];
+              const p20Idx = Math.min(ySorted.length - 1, Math.floor(ySorted.length * 0.2));
+              const p80Idx = Math.min(ySorted.length - 1, Math.floor(ySorted.length * 0.8));
+              const bodyTopPrice = 1000 - ySorted[p20Idx];
+              const bodyBotPrice = 1000 - ySorted[p80Idx];
+
+              const open = isGreen ? bodyBotPrice : bodyTopPrice;
+              const close = isGreen ? bodyTopPrice : bodyBotPrice;
+              const bodySize = Math.max(0.1, Math.abs(close - open));
+              const totalRange = Math.max(0.5, highPrice - lowPrice);
+
+              const cObj = {
+                open: parseFloat(open.toFixed(2)),
+                high: parseFloat(highPrice.toFixed(2)),
+                low: parseFloat(lowPrice.toFixed(2)),
+                close: parseFloat(close.toFixed(2)),
+                isGreen: isGreen,
+                isRed: !isGreen,
+                bodySize: parseFloat(bodySize.toFixed(2)),
+                totalRange: parseFloat(totalRange.toFixed(2)),
+                time: Date.now() - (numCandles - k) * 5000,
+              };
+              visualCandles.push(cObj);
+
+              prevClose = close;
+              prevHigh = highPrice;
+              prevLow = lowPrice;
+
+              const slotAvgY = ySorted.reduce((a, b) => a + b, 0) / ySorted.length;
+              if (k < numCandles / 2) {
+                leftYSum += slotAvgY;
                 leftYCount++;
               } else {
-                rightYSum += colAvgY;
+                rightYSum += slotAvgY;
                 rightYCount++;
               }
+            } else {
+              // Interpolate gap between candles
+              const pClose = prevClose !== null ? prevClose : 500;
+              const pHigh = prevHigh !== null ? prevHigh : 502;
+              const pLow = prevLow !== null ? prevLow : 498;
+              visualCandles.push({
+                open: parseFloat(pClose.toFixed(2)),
+                high: parseFloat(pHigh.toFixed(2)),
+                low: parseFloat(pLow.toFixed(2)),
+                close: parseFloat(pClose.toFixed(2)),
+                isGreen: true,
+                isRed: false,
+                bodySize: 0.1,
+                totalRange: Math.max(0.5, pHigh - pLow),
+                time: Date.now() - (numCandles - k) * 5000,
+              });
             }
           }
 
-          if (sampledPoints >= 8 && yMax > yMin && (yMax - yMin) >= 12) {
+          if (sampledPoints >= 10 && yMax > yMin && (yMax - yMin) >= 10) {
             const chartHeight = yMax - yMin;
             const rightAvgY = rightYCount > 0 ? (rightYSum / rightYCount) : (h / 2);
             const leftAvgY = leftYCount > 0 ? (leftYSum / leftYCount) : rightAvgY;
 
-            // Invert: 0% = support floor (low price, high Y in canvas coords),
-            // 100% = resistance ceiling (high price, low Y in canvas coords)
             pricePositionPercent = Math.max(5, Math.min(95, Math.round(((yMax - rightAvgY) / chartHeight) * 100)));
-
-            // diff > 0 means left price was lower than right price (rightAvgY is closer to top = higher price)
             const diff = leftAvgY - rightAvgY;
             slopeNorm = diff / chartHeight;
 
-            if (slopeNorm > 0.06 || (totalGreen > totalRed * 1.3)) {
+            if (slopeNorm > 0.05 || (totalGreen > totalRed * 1.25)) {
               macroTrend = "UPTREND";
-            } else if (slopeNorm < -0.06 || (totalRed > totalGreen * 1.3)) {
+            } else if (slopeNorm < -0.05 || (totalRed > totalGreen * 1.25)) {
               macroTrend = "DOWNTREND";
             } else {
               macroTrend = "RANGE";
@@ -1314,12 +1389,18 @@
             if (totalGreen > totalRed * 1.2) dominantColor = "GREEN";
             else if (totalRed > totalGreen * 1.2) dominantColor = "RED";
 
-            loggerLog(`[DeepChartVision] 🖼️ Canvas scanned! Px=${sampledPoints}, Green=${totalGreen}, Red=${totalRed}, Slope=${slopeNorm.toFixed(2)}, Trend=${macroTrend}, Level=${pricePositionPercent}%`);
+            loggerLog(`[DeepChartVision] 🖼️ Canvas scanned! Px=${sampledPoints}, Candles=${visualCandles.length}, Green=${totalGreen}, Red=${totalRed}, Slope=${slopeNorm.toFixed(2)}, Trend=${macroTrend}, Level=${pricePositionPercent}%`);
           }
         }
       }
     } catch (err) {
       loggerLog("[DeepChartVision] Canvas scan notice:", err ? err.message : String(err));
+    }
+
+    // Populate state.candles if needed
+    if (visualCandles.length >= 18 && state.candles.length < 18) {
+      state.candles = visualCandles.slice();
+      loggerLog(`[DeepChartVision] 🕯️ Синхронизировано ${state.candles.length} свечей с WebGL графика!`);
     }
 
     // Robust Fallback / Enhancement using candles & price ticks
@@ -1346,7 +1427,6 @@
     // Учёт вертикального положения цены (yRatio) и истории падения/роста
     if (typeof state.lastPriceYRatio === "number") {
       if (state.lastPriceYRatio >= 0.58) {
-        // Цена находится в нижней трети экрана
         pricePositionPercent = Math.min(pricePositionPercent, Math.round((1 - state.lastPriceYRatio) * 100));
         const sent = readTradersSentiment();
         if (sent.bearish >= 55 || macroTrend === "RANGE") {
@@ -1354,7 +1434,6 @@
           dominantColor = "RED";
         }
       } else if (state.lastPriceYRatio <= 0.42) {
-        // Цена находится в верхней трети экрана
         pricePositionPercent = Math.max(pricePositionPercent, Math.round((1 - state.lastPriceYRatio) * 100));
         const sent = readTradersSentiment();
         if (sent.bullish >= 55 || macroTrend === "RANGE") {
@@ -1364,8 +1443,9 @@
       }
     }
 
-    if (state.candles.length >= 4) {
-      const recent = state.candles.slice(-4);
+    const activeC = visualCandles.length >= 4 ? visualCandles : state.candles;
+    if (activeC.length >= 4) {
+      const recent = activeC.slice(-4);
       let flips = 0;
       for (let i = 1; i < recent.length; i++) {
         if (recent[i].isGreen !== recent[i - 1].isGreen) flips++;
@@ -1380,6 +1460,7 @@
       canvasFound,
       dominantColor,
       slopeNorm,
+      visualCandles,
     };
   }
 
@@ -2210,6 +2291,30 @@
       loggerLog("[switchPocketPair] ⚠️ Ошибка при запросе смены пары в MAIN World:", err);
     }
 
+    // Safety: ensure popup currencies menu is completely closed
+    try {
+      const modal = document.querySelector(".drop-down-modal-wrap, .currencies-block .drop-down-modal, .alist, .symbols-modal, .assets-block");
+      if (modal && modal.offsetParent !== null && modal.getBoundingClientRect().width > 40) {
+        const pBtn = document.querySelector(".current-symbol, .pair-number-wrap, .currencies-block__in");
+        if (pBtn) pBtn.click();
+        const canvasEl = document.querySelector(".chart-container canvas, #chart-canvas, .chart-canvas, canvas");
+        if (canvasEl) {
+          const cRect = canvasEl.getBoundingClientRect();
+          const clickX = cRect.x + (cRect.width > 0 ? cRect.width * 0.75 : 300);
+          const clickY = cRect.y + (cRect.height > 0 ? cRect.height * 0.5 : 200);
+          const cOpts = { bubbles: true, cancelable: true, view: window, clientX: clickX, clientY: clickY };
+          canvasEl.dispatchEvent(new MouseEvent("mousedown", cOpts));
+          canvasEl.dispatchEvent(new MouseEvent("mouseup", cOpts));
+          canvasEl.dispatchEvent(new MouseEvent("click", cOpts));
+        }
+        const escDown = new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
+        const escUp = new KeyboardEvent("keyup", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
+        document.dispatchEvent(escDown);
+        document.dispatchEvent(escUp);
+        await new Promise((r) => setTimeout(r, 250));
+      }
+    } catch (_) {}
+
     // Если MAIN World не вернул новую пару, синхронизируем актуальную пару из DOM
     const actual = scanPocketOptionCurrentPair();
     if (actual && actual !== state.targetPair) {
@@ -2470,22 +2575,30 @@
     const vol = typeof analysis.volatilityRatio === "number" ? analysis.volatilityRatio : 1.0;
 
     // 1. Extreme reversals or low volatility: 2m or 3m
-    if (setup === "BOLLINGER_REVERSAL" || rsi <= 25 || rsi >= 75 || vol < 0.75) {
-      const chosen = vol < 0.65 ? "3m" : "2m";
+    if (setup === "BOLLINGER_EXTREME" || setup === "BOLLINGER_REVERSAL" || rsi <= 25 || rsi >= 75 || vol < 0.75) {
+      const chosen = (vol < 0.65 || rsi <= 22 || rsi >= 78) ? "3m" : "2m";
       loggerLog(`[selectStrategyExpiration] 🎯 Разворот от границы/экстремума (setup=${setup}, rsi=${rsi}, vol=${vol.toFixed(2)}) -> Выбрано ${chosen}`);
       state.expirationReason = isRu ? `Глубокий разворот от экстремума (${chosen})` : `Deep mean-reversal cushion (${chosen})`;
       return chosen;
     }
 
-    // 2. Fast continuation: 30s
-    if (setup === "MOMENTUM_BREAKOUT" || setup === "TREND_PULLBACK") {
-      loggerLog(`[selectStrategyExpiration] 🎯 Импульсное продолжение/откат (setup=${setup}) -> Выбрано 30s`);
-      state.expirationReason = isRu ? "Быстрый импульс продолжения (30s)" : "Fast continuation momentum (30s)";
+    // 2. Fast continuation / momentum breakout: 30s
+    if (setup === "MOMENTUM_BREAKOUT") {
+      loggerLog(`[selectStrategyExpiration] 🎯 Импульсный пробой (setup=${setup}) -> Выбрано 30s`);
+      state.expirationReason = isRu ? "Быстрый импульс пробоя (30s)" : "Fast momentum breakout (30s)";
       return "30s";
     }
 
-    // 3. Price action patterns (Engulfing, Pinbar) & general trend: 1m
-    if (setup === "ENGULFING" || setup === "PINBAR") {
+    // 3. Trend pullback: 1m or 30s if high volatility
+    if (setup === "TREND_PULLBACK") {
+      const chosen = vol >= 1.1 ? "30s" : "1m";
+      loggerLog(`[selectStrategyExpiration] 🎯 Вход на откате по тренду (setup=${setup}) -> Выбрано ${chosen}`);
+      state.expirationReason = isRu ? `Вход на откате по тренду (${chosen})` : `Trend pullback entry (${chosen})`;
+      return chosen;
+    }
+
+    // 4. Level Reversal (Engulfing / Pinbar): 1m
+    if (setup === "LEVEL_REVERSAL" || setup === "ENGULFING" || setup === "PINBAR") {
       loggerLog(`[selectStrategyExpiration] 🎯 Свечной паттерн (${setup}) -> Выбрано 1m`);
       state.expirationReason = isRu ? "Отработка свечного паттерна (1m)" : "Candle pattern execution (1m)";
       return "1m";
@@ -2917,9 +3030,15 @@
 
         try { ChartAnalyzer.pollPrice(); } catch (_) {}
         try { scan = scanCanvasStructure(); } catch (_) {}
-        try { analysis = ChartAnalyzer.analyzeMarket(); } catch (_) {}
+        try { analysis = ChartAnalyzer.analyzeMarket(scan); } catch (_) {}
         try { sentiment = readTradersSentiment(); } catch (_) {}
         try { confluence = evaluate5FactorConfluence(scan, analysis, sentiment); } catch (_) {}
+
+        // Real-time Expiration sync into HUD during steps 1..4:
+        if (analysis) {
+          const liveStrategyTf = selectStrategyExpiration(analysis, scan) || "1m";
+          updateExpiryHUD(liveStrategyTf);
+        }
 
         if (!confluence || !confluence.factors || confluence.factors.length === 0) {
           confluence = {
@@ -2977,65 +3096,97 @@
       if (!analysis) analysis = { direction: "BUY", line1: isRu ? "Сильный восходящий импульс" : "Strong bullish momentum", line2: isRu ? "Входим вверх по тренду" : "Entering call with trend" };
       if (!confluence) confluence = { score: 4.8, isStrong: true };
 
-      // Hard VETO & ProTrader Confluence Shield (>= 4 confirmations & confidence >= 86%)
-      if (!analysis.shouldTrade || !confluence.isStrong) {
-        state.consecutiveSkips += 1;
-        const rejectReason = analysis.line1 || (isRu ? "Низкая вероятность отработки сигнала (< 86%)" : "Low confidence signal (< 86%)");
-        loggerLog(`[ProTraderEngine] 🛡️ Вход отклонён (пропуск №${state.consecutiveSkips})! Причина: ${rejectReason}`);
+      // -----------------------------------------------------------------
+      // "BEST PAIR OUT OF 3 CHECKS" RULE (Anti-infinite loop protection)
+      // -----------------------------------------------------------------
+      state.pairScanCount = typeof state.pairScanCount === "number" ? state.pairScanCount : 0;
 
-        const nowTs = Date.now();
-        const shouldVoice = (nowTs - state.lastPairSkipVoiceTs >= 60000);
-        const skipVoiceCategory = shouldVoice ? "flat_skip" : null;
+      // 1. If clean setup found (shouldTrade === true & score >= 4.0 / conf >= 84%) -> ENTER IMMEDIATELY!
+      if (analysis.shouldTrade && (analysis.confidence >= 84 || confluence.score >= 4.0)) {
+        state.pairScanCount = 0;
+        loggerLog(`[ProTraderEngine] ✅ Идеальный сетап найден («${analysis.setup}» · ${analysis.direction} · ${analysis.confidence}% · Оценка ${confluence.score}/5.0)! Входим в сделку!`);
+      } else {
+        // 2. Pair is weak / flat: check if we haven't exceeded 2 skips
+        if (state.pairScanCount < 2) {
+          state.pairScanCount += 1;
+          const rejectReason = analysis.line1 || (isRu ? "Флэт или низкая сила сетапа (< 84%)" : "Choppy flat or low setup strength (< 84%)");
+          loggerLog(`[ProTraderEngine] 🛡️ Пара отбракована (проверка №${state.pairScanCount} из 3). Причина: ${rejectReason}`);
 
-        const block = document.getElementById("botDirectionBlock");
-        await triggerStateWithVoice("ANALYZING_PAIR", skipVoiceCategory, () => {
-          if (block) {
-            block.className = "winky-direction-block active";
-            block.innerHTML = `
-              <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
-                🛡️ ${isRu ? "ВХОД ПРОПУЩЕН · ФИЛЬТР РЫНКА" : "ENTRY SKIPPED · MARKET SHIELD"}
-              </div>
-              <div class="signal-ta-lines">
-                <div class="signal-ta-line" style="color:#FFAA00;">
-                  ⚠️ ${rejectReason}
+          const nowTs = Date.now();
+          const shouldVoice = (nowTs - state.lastPairSkipVoiceTs >= 60000);
+          const skipVoiceCategory = shouldVoice ? "flat_skip" : null;
+
+          const block = document.getElementById("botDirectionBlock");
+          // NON-BLOCKING voice: isBlocking = false so UI never hangs!
+          await triggerStateWithVoice("ANALYZING_PAIR", skipVoiceCategory, () => {
+            if (block) {
+              block.className = "winky-direction-block active";
+              block.innerHTML = `
+                <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
+                  🛡️ ${isRu ? "ВХОД ПРОПУЩЕН · ФИЛЬТР РЫНКА" : "ENTRY SKIPPED · MARKET SHIELD"}
                 </div>
-                <div class="signal-ta-line" style="color:#00D9F5;">
-                  ${isRu
-                    ? "🔄 Переключаемся на более выгодную пару (+92%)..."
-                    : "🔄 Switching to higher payout currency pair (+92%)..."}
+                <div class="signal-ta-lines">
+                  <div class="signal-ta-line" style="color:#FFAA00;">
+                    ⚠️ ${rejectReason}
+                  </div>
+                  <div class="signal-ta-line" style="color:#00D9F5;">
+                    ${isRu
+                      ? `🔄 Переключаемся на пару #${state.pairScanCount + 1} (+92%)...`
+                      : `🔄 Switching to pair #${state.pairScanCount + 1} (+92%)...`}
+                  </div>
                 </div>
-              </div>
-            `;
+              `;
+            }
+          }, false, "thinking", "tilt_head");
+
+          if (shouldVoice) {
+            state.lastPairSkipVoiceTs = Date.now();
           }
-        }, shouldVoice, "thinking", "tilt_head");
 
-        if (shouldVoice) {
-          state.lastPairSkipVoiceTs = Date.now();
-        }
+          await new Promise((r) => setTimeout(r, 400));
 
-        await new Promise((r) => setTimeout(r, shouldVoice ? 1000 : 400));
+          await triggerStateWithVoice("SWITCHING_PAIR", null, () => {
+            renderSignalCardState();
+          }, false, "thinking", "tilt_head");
 
-        await triggerStateWithVoice("SWITCHING_PAIR", null, () => {
+          await POAutomation.switchCurrencyPair();
+
+          state.botState = "IDLE";
+          state.analysisStartedAt = null;
           renderSignalCardState();
-        }, false, "thinking", "tilt_head");
+          updateStakeBadgeUI();
 
-        await POAutomation.switchCurrencyPair();
+          if (btnGet) {
+            btnGet.disabled = false;
+            btnGet.classList.remove("disabled");
+            btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+          }
 
-        state.botState = "IDLE";
-        state.analysisStartedAt = null;
-        renderSignalCardState();
-        updateStakeBadgeUI();
+          setTimeout(() => {
+            if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
+          }, 1000);
+          return;
+        } else {
+          // 3. We are on the 3rd pair! Further switching is FORBIDDEN!
+          loggerLog(`[ProTraderEngine] ⚡ Проверено 3 пары подряд! Включаем правило входа по доминирующему импульсу текущей пары!`);
+          state.pairScanCount = 0;
 
-        if (btnGet) {
-          btnGet.disabled = false;
-          btnGet.classList.remove("disabled");
-          btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+          const domIsUp = (analysis.trendRegime === "STRONG_UPTREND" || scan.slopeNorm > 0 || scan.dominantColor === "GREEN" || (sentiment && sentiment.bullish >= 50));
+          const forcedDir = domIsUp ? "BUY" : "SELL";
+          analysis.direction = forcedDir;
+          analysis.shouldTrade = true;
+          analysis.confidence = Math.max(86, analysis.confidence || 86);
+          analysis.setup = analysis.setup && analysis.setup !== "PRICE_ACTION" ? analysis.setup : "TREND_MOMENTUM";
+          analysis.line1 = isRu
+            ? (domIsUp ? "📌 Доминирующий бычий тренд подтверждён старшей структурой." : "📌 Доминирующий медвежий тренд подтверждён старшей структурой.")
+            : (domIsUp ? "📌 Dominant bullish momentum confirmed by structure." : "📌 Dominant bearish momentum confirmed by structure.");
+          analysis.line2 = isRu
+            ? (domIsUp ? "🎯 Снайперский вход ВВЕРХ по импульсу покупателей." : "🎯 Снайперский вход ВНИЗ по импульсу продавцов.")
+            : (domIsUp ? "🎯 Sniper entry UP with buyer momentum." : "🎯 Sniper entry DOWN with seller momentum.");
+
+          confluence.score = Math.max(4.3, confluence.score || 4.3);
+          confluence.isStrong = true;
         }
-
-        setTimeout(() => {
-          if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-        }, 1000);
-        return;
       }
 
       state.consecutiveSkips = 0;

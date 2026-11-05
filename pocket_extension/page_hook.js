@@ -384,12 +384,36 @@
     };
 
     const isPopupOpen = () => {
-      const modal = document.querySelector(".alist, .assets-block, .symbols-modal, .modal-window--assets, .alist__list");
-      return (
-        modal &&
-        (modal.offsetParent !== null ||
-          (window.getComputedStyle(modal).display !== "none" && window.getComputedStyle(modal).visibility !== "hidden"))
-      );
+      const modal = document.querySelector(".drop-down-modal-wrap, .currencies-block .drop-down-modal, .alist, .assets-block, .symbols-modal, .modal-window--assets, .alist__list");
+      if (!modal) return false;
+      const rect = modal.getBoundingClientRect();
+      return modal.offsetParent !== null && rect.width > 40 && rect.height > 40;
+    };
+
+    const forceClosePopup = async () => {
+      if (!isPopupOpen()) return;
+      console.log("[WinkyHook] 🚪 Принудительно закрываем всплывающее меню валют...");
+      const pBtn = findPairBtn();
+      if (pBtn) {
+        try { pBtn.click(); } catch (_) {}
+      }
+      const canvasEl = document.querySelector(".chart-container canvas, #chart-canvas, .chart-canvas, canvas");
+      if (canvasEl) {
+        const cRect = canvasEl.getBoundingClientRect();
+        const clickX = cRect.x + (cRect.width > 0 ? cRect.width * 0.75 : 300);
+        const clickY = cRect.y + (cRect.height > 0 ? cRect.height * 0.5 : 200);
+        const cOpts = { bubbles: true, cancelable: true, view: window, clientX: clickX, clientY: clickY };
+        canvasEl.dispatchEvent(new MouseEvent("mousedown", cOpts));
+        canvasEl.dispatchEvent(new MouseEvent("mouseup", cOpts));
+        canvasEl.dispatchEvent(new MouseEvent("click", cOpts));
+      }
+      try {
+        const escDown = new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
+        const escUp = new KeyboardEvent("keyup", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
+        document.dispatchEvent(escDown);
+        document.dispatchEvent(escUp);
+      } catch (_) {}
+      await sleep(250);
     };
 
     // Extract actual currently open pair from PO page
@@ -522,12 +546,8 @@
         try { chosen.rawRow.click(); } catch (_) {}
       }
 
-      await sleep(250);
-
-      // Close popup if still open
-      if (isPopupOpen()) {
-        pairBtn.click();
-      }
+      await sleep(180);
+      await forceClosePopup();
 
       window.postMessage(
         {
@@ -540,9 +560,7 @@
         "*"
       );
     } else {
-      if (isPopupOpen()) {
-        pairBtn.click();
-      }
+      await forceClosePopup();
       window.postMessage(
         {
           source: "WINKY_HOOK",
