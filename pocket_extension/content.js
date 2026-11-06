@@ -391,10 +391,8 @@
 
     // A. Live Price Tick with Y-ratio
     if ((data.type === "TICK" || data.type === "PRICE_TICK") && typeof data.price === "number") {
-      ChartAnalyzer.onNewPriceTick(data.price, data.timestamp || Date.now(), data.yRatio);
-      if (typeof LiveTickBuffer !== "undefined") {
-        LiveTickBuffer.addTick(data.price, data.timestamp || Date.now());
-      }
+      if (data.rawSymbol && normalizePocketPair(data.rawSymbol) !== normalizePocketPair(state.targetPair)) return;
+      ChartAnalyzer.onNewPriceTick(data.price, data.timestamp || Date.now(), data.yRatio, data);
     }
 
     // A2. WebSocket Server History Ticks (up to 1000 points)
@@ -486,7 +484,9 @@
 
     // F. Real Canvas Candles Snapshot from page_hook fillRect
     if (data.type === "CANVAS_CANDLES_SNAPSHOT" && Array.isArray(data.candles) && data.candles.length >= 8) {
+      if (!data.pair || normalizePocketPair(data.pair) !== normalizePocketPair(state.targetPair)) return;
       state.candles = data.candles;
+      state.candles = state.candles.map(c => ({...c,source:'pixels',pair:state.targetPair,candlePeriodSec:chartPeriodSeconds()}));
       state.lastCanvasCandlesSnapshotTs = Date.now();
       if (state.priceTicks.length < 20) {
         state.priceTicks = data.candles.map((c) => c.close);
@@ -601,7 +601,7 @@
       if (asset && state.targetPair) {
         const cleanAsset = String(asset).replace(/[^a-zA-Z]/g, "").toLowerCase();
         const cleanTarget = String(state.targetPair).replace(/[^a-zA-Z]/g, "").toLowerCase();
-        if (cleanAsset.length >= 4 && cleanTarget.length >= 4 && !cleanTarget.includes(cleanAsset.slice(0, 4)) && !cleanAsset.includes(cleanTarget.slice(0, 4))) {
+        if (cleanAsset !== cleanTarget) {
           return; // different pair
         }
       }
@@ -716,8 +716,8 @@
         const low = Math.min(...prices);
         const isGreen = close >= open;
         const isRed = !isGreen;
-        const body = Math.max(0.00001, Math.abs(close - open));
-        const range = Math.max(0.00001, high - low);
+      const body = Math.abs(close - open);
+        const range = high - low;
         const upperWick = Math.max(0, high - Math.max(open, close));
         const lowerWick = Math.max(0, Math.min(open, close) - low);
         candles.push({
@@ -734,6 +734,8 @@
           isRed,
           time: k,
           candlePeriodSec: periodSec,
+          source: 'ticks',
+          pair: this.pair || state.targetPair,
         });
       }
       return candles.slice(-maxBars);
@@ -746,46 +748,28 @@
     },
   };
 
+
+  function chartPeriodSeconds(tf = state.actualChartTf) {
+    const value = String(tf || '').trim().toUpperCase();
+    const match = value.match(/^(S|M|H)(\d+)$/) || value.match(/^(\d+)(S|M|H)$/)?.slice(0,1).concat(value.slice(-1), value.slice(0,-1));
+    if (!match) return null;
+    return Number(match[2]) * ({S:1,M:60,H:3600}[match[1]] || 0) || null;
+  }
+
   function aggregateCandles(candles, groupSize) {
-    if (!candles || candles.length === 0) return [];
+    if (!candles?.length) return [];
     if (groupSize <= 1) return candles.slice();
-
     const result = [];
-    const n = candles.length;
-    for (let end = n; end > 0; end -= groupSize) {
-      const start = Math.max(0, end - groupSize);
-      const slice = candles.slice(start, end);
-      if (slice.length === 0) continue;
-
-      const first = slice[0];
-      const last = slice[slice.length - 1];
-      const open = first.open;
-      const close = last.close;
-      const high = Math.max(...slice.map((c) => c.high));
-      const low = Math.min(...slice.map((c) => c.low));
-      const isGreen = close >= open;
-      const isRed = !isGreen;
-      const body = Math.max(0.5, Math.abs(close - open));
-      const range = Math.max(1.0, high - low);
-      const upperWick = Math.max(0, high - Math.max(open, close));
-      const lowerWick = Math.max(0, Math.min(open, close) - low);
-
-      result.unshift({
-        open: parseFloat(open.toFixed(2)),
-        high: parseFloat(high.toFixed(2)),
-        low: parseFloat(low.toFixed(2)),
-        close: parseFloat(close.toFixed(2)),
-        body: parseFloat(body.toFixed(2)),
-        bodySize: parseFloat(body.toFixed(2)),
-        totalRange: parseFloat(range.toFixed(2)),
-        upperWick: parseFloat(upperWick.toFixed(2)),
-        lowerWick: parseFloat(lowerWick.toFixed(2)),
-        isGreen,
-        isRed,
-        time: last.time,
-      });
+    for (let start = 0; start + groupSize <= candles.length; start += groupSize) {
+      const slice = candles.slice(start, start + groupSize), first = slice[0], last = slice[slice.length-1];
+      if (slice.some(c => c.source !== first.source || c.pair !== first.pair || c.candlePeriodSec !== first.candlePeriodSec)) continue;
+      const open=first.open,close=last.close,high=Math.max(...slice.map(c=>c.high)),low=Math.min(...slice.map(c=>c.low));
+      const body=Math.abs(close-open),range=high-low;
+      result.push({open,close,high,low,body,bodySize:body,totalRange:range,
+        upperWick:Math.max(0,high-Math.max(open,close)),lowerWick:Math.max(0,Math.min(open,close)-low),
+        isGreen:close>open,isRed:close<open,time:first.time, source:first.source,pair:first.pair,
+        candlePeriodSec:first.candlePeriodSec ? first.candlePeriodSec*groupSize : null });
     }
-
     return result;
   }
 
@@ -817,7 +801,7 @@
       }
       if (trs.length === 0) return 0.0005;
       const slice = trs.slice(-period);
-      return Math.max(0.00001, slice.reduce((a, b) => a + b, 0) / slice.length);
+      return Math.max(Number.EPSILON, slice.reduce((a, b) => a + b, 0) / slice.length);
     },
 
     // 3. Wilder's Smoothed RSI(14)
@@ -953,20 +937,25 @@
 
       const isRu = (state.lang === "ru");
 
-      // Базовые 15-секундные свечи и их мульти-таймфрейм агрегаты / исторические тики
+      const basePeriod = candles[0].candlePeriodSec;
+      const baseSource = candles[0].source;
+      if (![15,30,60,120].includes(basePeriod) || candles.some(c => c.candlePeriodSec !== basePeriod || c.source !== baseSource || c.pair !== candles[0].pair)) {
+        return {valid:false,shouldTrade:false,vetoReason:'INCOMPATIBLE_CANDLES',confidence:0};
+      }
+      // Keep the legacy variable name internally; period is explicit and never inferred as S15.
       const candlesS15 = candles;
       let candlesS30 = [];
       let candlesM1 = [];
       let candlesM2 = [];
 
-      if (typeof LiveTickBuffer !== "undefined" && LiveTickBuffer.ticks.length >= 20) {
+      if (baseSource === 'ticks' && LiveTickBuffer.ticks.length >= 20) {
         candlesS30 = LiveTickBuffer.buildCandles(30, 45);
         candlesM1 = LiveTickBuffer.buildCandles(60, 45);
         candlesM2 = LiveTickBuffer.buildCandles(120, 45);
       }
-      if (candlesS30.length < 8) candlesS30 = aggregateCandles(candlesS15, 2);
-      if (candlesM1.length < 8) candlesM1 = aggregateCandles(candlesS15, 4);
-      if (candlesM2.length < 8) candlesM2 = aggregateCandles(candlesS15, 8);
+      if (candlesS30.length < 8 && basePeriod <= 30) candlesS30 = aggregateCandles(candlesS15, 30/basePeriod);
+      if (candlesM1.length < 8 && basePeriod <= 60) candlesM1 = aggregateCandles(candlesS15, 60/basePeriod);
+      if (candlesM2.length < 8 && basePeriod <= 120) candlesM2 = aggregateCandles(candlesS15, 120/basePeriod);
 
       const closes = candlesS15.map((c) => Number(c.close));
       const n = candlesS15.length;
@@ -1048,8 +1037,7 @@
       const roomDownATR = (curPrice - supportLevel) / Math.max(0.000001, atr);
 
       // Лимит сканирования пар: MAX_PAIR_SCANS = 7
-      const MAX_PAIR_SCANS = 7;
-      const isScanAllowedToSkip = (typeof state.pairScanCount !== "number" || state.pairScanCount < MAX_PAIR_SCANS - 1);
+      const isScanAllowedToSkip = !state.allowDominantEntry;
 
       // =============================================================
       // ФИКС ОШИБКИ А: Absolute Macro Trend Lock
@@ -1375,12 +1363,11 @@
 
       // Выбор лучшего сценария по максимальному баллу
       scenarios.sort((a, b) => b.score - a.score);
-      const best = scenarios.length > 0 ? scenarios[0] : null;
+      const best = scenarios.find(s => parseDurationSeconds(s.expiry) >= basePeriod &&
+        (s.direction === 'BUY' ? !isMacroBear && !c0.isRed : !isMacroBull && !c0.isGreen));
 
       if (best && best.score >= 84) {
-        let safeDir = best.direction;
-        if (c0.isRed && safeDir === "BUY" && !best.setup.includes("REVERSAL")) safeDir = "SELL";
-        if (c0.isGreen && safeDir === "SELL" && !best.setup.includes("REVERSAL")) safeDir = "BUY";
+        const safeDir = best.direction;
 
         return {
           valid: true,
@@ -1409,6 +1396,10 @@
           shouldTrade: false,
           vetoReason: "LOW_CONFLUENCE_WAIT",
           confidence: 50,
+          direction: waveSlope5 > 0 ? 'BUY' : waveSlope5 < 0 ? 'SELL' : null,
+          atr,rsi,pctB:bb.pctB,trendRegime,
+          hardVeto: strictVetoBuy && strictVetoSell,
+          sr: {distToRes:roomUpATR,distToSup:roomDownATR},
           recommendedExpiry: "30s",
           explanationRu: isRu ? "Сетап не подтверждён фильтрами — переключаем пару на чистый тренд" : "Setup unconfirmed by filters — switching pair",
           explanationEn: "Setup unconfirmed by filters — switching pair",
@@ -1433,7 +1424,7 @@
         };
       }
 
-      const forcedExpiry = (c0.body >= 0.70 * atr) ? "15s" : "30s";
+      const forcedExpiry = basePeriod >= 60 ? '2m' : basePeriod === 30 ? '30s' : (c0.body >= 0.70 * atr) ? "15s" : "30s";
       const forcedSetup = (forcedExpiry === "15s") ? "SNIPER_BREAKOUT_15S" : "TREND_PULLBACK_30S";
 
       const forcedFactors = [
@@ -1470,13 +1461,13 @@
   /* ==================== 2. ChartAnalyzer (Smart Trend & Breakout Engine) ==================== */
 
   const ChartAnalyzer = {
-    onNewPriceTick(price, timestamp = Date.now(), yRatio = null) {
+    onNewPriceTick(price, timestamp = Date.now(), yRatio = null, metadata = {}) {
       if (!price || isNaN(price) || price <= 0) return;
       state.lastHookTickTime = timestamp;
       state.priceTicks.push(price);
       if (state.priceTicks.length > 120) state.priceTicks.shift();
 
-      if (typeof LiveTickBuffer !== "undefined") {
+      if (metadata.source_type === 'ws' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol) === normalizePocketPair(state.targetPair)) {
         LiveTickBuffer.addTick(price, timestamp);
       }
 
@@ -1616,33 +1607,7 @@
         state.candles = scan.visualCandles.slice();
       }
 
-      // If we have no 5s candles yet, synthesize initial candles from ticks (split into >= 20 chunks!)
-      if (state.candles.length === 0 && ticks.length >= 10) {
-        const chunkSize = Math.max(1, Math.floor(ticks.length / 20));
-        for (let i = 0; i < ticks.length; i += chunkSize) {
-          const slice = ticks.slice(i, i + chunkSize);
-          if (slice.length > 0) {
-            const open = slice[0];
-            const close = slice[slice.length - 1];
-            const high = Math.max(...slice);
-            const low = Math.min(...slice);
-            const prevClose = state.candles.length > 0 ? state.candles[state.candles.length - 1].close : open;
-            const isGreen = close > open || (close === open && close >= prevClose);
-            const isRed = !isGreen;
-            state.candles.push({
-              open,
-              high,
-              low,
-              close,
-              time: Date.now() - (ticks.length - i) * 500,
-              isGreen,
-              isRed,
-              bodySize: Math.max(0.00001, Math.abs(close - open)),
-              totalRange: Math.max(0.00001, high - low),
-            });
-          }
-        }
-      }
+      // Use timestamped ticks or the existing visible candle scanner below.
 
       const isRu = (state.lang === "ru");
 
@@ -1671,25 +1636,15 @@
         };
       }
 
-      // Candle source priority:
-      // 1. LiveTickBuffer.buildCandles(15, 45) if >= 8 candles (real mathematical broker quotes)
-      // 2. scan.visualCandles if >= 8
-      // 3. state.candles
+
       let activeCandles = [];
-      if (typeof LiveTickBuffer !== "undefined") {
-        const liveS15 = LiveTickBuffer.buildCandles(15, 45);
-        if (liveS15 && liveS15.length >= 8) {
-          activeCandles = liveS15;
-        }
-      }
-      if (activeCandles.length < 8 && scan && scan.visualCandles && scan.visualCandles.length >= 8) {
-        activeCandles = scan.visualCandles;
-      }
-      if (activeCandles.length < 8 && state.candles && state.candles.length >= 8) {
-        activeCandles = state.candles;
-      }
-      if (activeCandles.length < 8) {
-        activeCandles = activeCandles.length > 0 ? activeCandles : state.candles;
+      const liveS15 = LiveTickBuffer.buildCandles(15, 45);
+      if (liveS15.length >= 8 && Date.now() - LiveTickBuffer.ticks.at(-1).ts < 5000) activeCandles = liveS15;
+      const visualPeriod = chartPeriodSeconds();
+      if (activeCandles.length < 8 && visualPeriod && visualPeriod <= 120) {
+        const visual = scan?.visualCandles?.length >= 8 ? scan.visualCandles : state.candles;
+        activeCandles = (visual || []).filter(c => !c.pair || normalizePocketPair(c.pair) === normalizePocketPair(state.targetPair))
+          .map(c => ({...c,source:'pixels',pair:state.targetPair,candlePeriodSec:visualPeriod}));
       }
 
       const curPrice = activeCandles.length > 0 ? Number(activeCandles[activeCandles.length - 1].close) : 1.0;
@@ -3369,8 +3324,8 @@
       const timeInp = inputs.find((inp) => (inp.value || "").includes(":"));
       if (timeInp && timeInp.value) {
         const parts = timeInp.value.trim().split(":").map((n) => parseInt(n, 10) || 0);
-        if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-        if (parts.length === 2) return parts[0] * 60 + parts[1];
+        if (parts.length === 3 && parts[0] === 0 && parts[1] <= 5) return parts[1] * 60 + parts[2];
+        if (parts.length === 2 && parts[0] <= 5) return parts[0] * 60 + parts[1];
       }
     } catch (_) {}
     return 0;
@@ -3502,8 +3457,8 @@
               ? 120
               : (strategyTf === "1m" || strategyTf === "60s" ? 60 : 30));
         const expRes = await requestMainWorldSetExpiry(strategyTf);
-        if (expRes && expRes.ok && expRes.actualSec >= 5 && expRes.actualSec <= 150) {
-          realPocketSec = expRes.actualSec;
+        if (expRes && expRes.ok && expRes.confirmed && expRes.observedSec >= 5 && expRes.observedSec <= 150) {
+          realPocketSec = expRes.observedSec;
         } else {
           realPocketSec = targetExpSec;
         }
@@ -4556,6 +4511,11 @@
 
   function setUnifiedActivePair(pairName, payoutStr = "", durationStr = "") {
     if (!pairName) return;
+    if (normalizePocketPair(pairName) !== normalizePocketPair(state.targetPair)) {
+      LiveTickBuffer.reset(pairName);
+      state.candles = []; state.priceTicks = []; state.priceHistory = [];
+      state.lastCanvasCandlesSnapshotTs = 0;
+    }
     state.targetPair = pairName;
     const meta = getPairMeta(pairName);
     state.targetFlags = meta.flags || "🌐";

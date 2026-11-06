@@ -150,13 +150,10 @@
                         asset = item[0];
                         t = item[1];
                         p = item[2];
-                      } else if (item.length >= 5) {
-                        t = item[0];
-                        p = item[4];
-                      }
+                      } // OHLC arrays must not be relabelled as tick history.
                     } else if (item && typeof item === "object") {
                       t = item.time || item.timestamp || item.ts;
-                      p = item.close || item.price;
+                      p = item.price;
                     }
                     if (typeof p === "number" && !isNaN(p) && p > 0) {
                       if (typeof t === "number" && t < 1e11) t = t * 1000;
@@ -546,6 +543,7 @@
       {
         source: "WINKY_HOOK",
         type: "CANVAS_CANDLES_SNAPSHOT",
+        pair: window.__winkyCurrentAsset || null,
         candles: canvasCandles,
         timestamp: now,
       },
@@ -1068,10 +1066,11 @@
 
     await sleep(180);
     const updated = getActualChartTimeframeBadge();
-    const finalTf = updated.badge || "S15";
-    window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: true, activeTf: finalTf }, "*");
-    window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: finalTf }, "*");
-    return true;
+    const finalTf = updated.badge || null;
+    const confirmed = finalTf === 'S15' || finalTf === '15S';
+    window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: confirmed, activeTf: finalTf }, "*");
+    if (finalTf) window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: finalTf }, "*");
+    return confirmed;
   }
 
   function closePocketCalculatorIfOpen() {
@@ -1180,10 +1179,10 @@
 
       // Функция чтения текущих секунд из инпута
       const readCurrentExpirySec = () => {
-        if (!timeInp || !timeInp.value) return targetSec;
+        if (!timeInp || !timeInp.value) return null;
         const val = timeInp.value.trim();
         const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
-        if (!mTime) return targetSec;
+        if (!mTime) return null;
         const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
         const m = parseInt(mTime[2], 10);
         const s = parseInt(mTime[3], 10);
@@ -1193,7 +1192,7 @@
         }
 
         // Если пара осталась в Режиме Флажка (HH:MM:SS), возвращаем targetSec (15 или 30)
-        return targetSec;
+        return null;
       };
 
       // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2)
@@ -1249,6 +1248,7 @@
 
       // 6. Честное считывание реального времени (15s, 30s, 1m или 2m)
       let actualSec = readCurrentExpirySec();
+      const confirmedSec = actualSec;
       let label = "30s";
       if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
       else if (actualSec >= 90 || targetSec === 120) { actualSec = 120; label = "2m"; }
@@ -1264,6 +1264,9 @@
           requestId: cmd.requestId,
           ok: true,
           actualSec: actualSec,
+          requestedSec: targetSec,
+          observedSec: confirmedSec,
+          confirmed: Number.isFinite(confirmedSec) && Math.abs(confirmedSec - targetSec) <= 4,
           label: label,
         },
         "*"

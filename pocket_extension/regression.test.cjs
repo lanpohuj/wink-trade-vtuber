@@ -20,7 +20,7 @@ function loadContent() {
   let source = fs.readFileSync(path.join(__dirname, 'content.js'), 'utf8');
   source = source.replace('  // Ensure DOM ready', `
     globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome,
-      readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles,
+      readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
@@ -108,4 +108,34 @@ test('REFUND leaves recovery step and W/L untouched', async () => {
   await c.onSignalTimerFinished(); assert.equal(c.state.recoveryStep,1);assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);
 });
 
+test('aggregation preserves tiny prices without pixel minima', () => {
+  const c=loadContent();
+  for(const scale of [0.000001,1,1000]) {
+    const bars=[{open:scale,close:1.1*scale,high:1.2*scale,low:.9*scale},{open:1.1*scale,close:1.15*scale,high:1.3*scale,low:scale}].map(b=>({...b,source:'ticks',pair:'EUR/USD OTC',candlePeriodSec:15}));
+    const out=c.aggregateCandles(bars,2)[0];
+    assert.equal(out.open,bars[0].open);assert.equal(out.close,bars[1].close);assert.equal(out.high,bars[1].high);
+    assert.equal(out.candlePeriodSec,30);assert.ok(out.body>0);assert.equal(out.isGreen,true);
+  }
+});
+test('mixed-source or mixed-pair candles cannot be aggregated', () => {
+  const c=loadContent();const a={open:1,close:2,high:3,low:1,source:'ticks',pair:'EUR/USD OTC',candlePeriodSec:15};
+  assert.equal(c.aggregateCandles([a,{...a,source:'pixels'}],2).length,0);
+  assert.equal(c.aggregateCandles([a,{...a,pair:'GBP/USD OTC'}],2).length,0);
+});
+test('tick buffer receives one WS sample, ignores foreign pair and synthetic polling', () => {
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',price:1,timestamp:1700000000000});
+  assert.equal(c.LiveTickBuffer.ticks.length,1);
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'GBPUSD_otc',price:2,timestamp:1700000000100});
+  c.ChartAnalyzer.onNewPriceTick(1.2,1700000000200);
+  assert.equal(c.LiveTickBuffer.ticks.length,1);
+});
+test('known M1 visual fallback starts immediately, unknown period is not S15', () => {
+  const c=loadContent();const bars=Array.from({length:30},(_,i)=>({open:100+i,close:100.5+i,high:101+i,low:99+i,isGreen:true,isRed:false,body:.5,bodySize:.5,totalRange:2}));
+  c.state.actualChartTf='M1';const known=c.ChartAnalyzer.analyzeMarket({visualCandles:bars});
+  assert.notEqual(known.vetoReason,'NOT_ENOUGH_CANDLES');
+  c.state.actualChartTf=null;c.state.candles=[];
+  assert.equal(c.ChartAnalyzer.analyzeMarket({visualCandles:bars}).shouldTrade,false);
+  assert.equal(c.chartPeriodSeconds('M1'),60);assert.equal(c.chartPeriodSeconds('S15'),15);assert.equal(c.chartPeriodSeconds('15S'),15);
+});
 module.exports={loadContent,row};
