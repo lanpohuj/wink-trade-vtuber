@@ -29,6 +29,10 @@ function loadContent() {
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
       setDirectClick(fn) { clickPocketTradeButton = fn; },
+      setPhaseNotifier(fn) { notifyTradePhase = fn; },
+      setSpeakingReader(fn) { checkWinkySpeaking = fn; },
+      setVoicePlayer(fn) { VoiceManager.playCategory = fn; },
+      setNextAnalysis(fn) { startSignalAnalysis = fn; },
       prepareExecution() {
         requestMainWorldSetExpiry = async () => ({ok:true,confirmed:true,observedSec:30});
         waitForOptimalMicroEntry = async () => ({ok:true});
@@ -54,6 +58,7 @@ function loadContent() {
   api.setBalanceReader(() => balance);
   api.setRowsReader(() => rows);
   return { ...api, document, window, storage, setBalance:v=>balance=v, setRows:v=>rows=v,
+    now:()=>now,
     tick:ms=>now+=ms, emit(data) { for(const fn of listeners) fn({source:window,data:{source:'WINKY_HOOK',...data}}); },
     trade() { const t = {seq:1,pair:'EUR/USD OTC',direction:'BUY',stake:50,startedAt:now-30000,balanceBefore:1000,historyBefore:new Set(),brokerId:'id-1',openConfirmed:true,resultApplied:false}; api.state.tradeContext=t; api.state.tradeEndTime=now-1; return t; } };
 }
@@ -66,11 +71,70 @@ function row(text, fields = {}, id = null) {
 test('x2.2 stake schedule is unchanged', () => {
   const c=loadContent(); assert.deepEqual([0,1,2,3].map(c.getExpectedStake),[50,110,242,50]);
 });
-test('deducted balance and missing broker result remain PENDING', () => {
+test('deducted balance stays PENDING until the settlement window completes', () => {
   const c=loadContent(); c.trade(); c.setBalance(950);
   assert.equal(c.evaluateTradeOutcome().outcome,'PENDING');
   c.tick(30000); assert.equal(c.evaluateTradeOutcome().outcome,'PENDING');
   assert.equal(c.state.recoveryStep,0);
+});
+test('legacy balance result does not require an optional broker acknowledgement', async () => {
+  for (const [after,status,nextStake] of [[1046,'WIN',50],[950,'LOSS',110],[1000,'REFUND',50]]) {
+    const c=loadContent(),t=c.trade(),phases=[],voices=[];
+    t.brokerId=null;t.openConfirmed=false;t.debitObserved=true;
+    c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setBalance(after);
+    c.setPhaseNotifier(phase=>phases.push(phase));c.setVoicePlayer(async category=>voices.push(category));
+    let next=0;c.state.autoStream=true;c.setNextAnalysis(()=>{next++;});
+    const wins=c.state.scoreWins,losses=c.state.scoreLosses;
+    await c.onSignalTimerFinished();await Promise.resolve();
+    assert.equal(c.state.lastTradeOutcome,status);assert.equal(c.state.currentStake,nextStake);
+    assert.equal(c.state.scoreWins,wins+(status==='WIN'?1:0));
+    assert.equal(c.state.scoreLosses,losses+(status==='LOSS'?1:0));
+    assert.deepEqual(phases,['RESULT','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);assert.equal(next,1);
+    if(status!=='REFUND')assert.ok(voices.includes(status==='WIN'?'trade_win':'trade_loss_step1'));
+    await c.onSignalTimerFinished();assert.equal(phases.length,2);
+  }
+});
+test('unavailable settlement evidence releases the cycle without fabricating a result', async () => {
+  const c=loadContent(),t=c.trade(),phases=[];
+  c.state.botState='IN_TRADE';c.state.activeSignal={direction:'SELL'};c.state.recoveryStep=1;c.state.currentStake=110;
+  c.setBalance(null);c.setPhaseNotifier(phase=>phases.push(phase));
+  const wins=c.state.scoreWins,losses=c.state.scoreLosses,profit=c.state.scoreProfit;
+  await c.onSignalTimerFinished();
+  assert.equal(t.resultApplied,true);assert.equal(c.state.lastTradeOutcome,'UNKNOWN');assert.equal(c.state.lastTrade.isWin,null);
+  assert.equal(c.state.recoveryStep,1);assert.equal(c.state.currentStake,110);
+  assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.equal(c.state.scoreProfit,profit);
+  assert.deepEqual(phases,['RESULT','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);
+});
+test('unrelated balance movement and an unobserved opening do not become a loss or refund', async () => {
+  for(const [after,observed] of [[940,true],[950,false],[1000,false]]) {
+    const c=loadContent(),t=c.trade();t.openConfirmed=false;t.debitObserved=observed;
+    c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setBalance(after);
+    await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'UNKNOWN');assert.equal(c.state.recoveryStep,0);
+  }
+});
+test('a still-open matching badge returns to the active 200ms countdown', async () => {
+  const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setBalance(950);
+  c.emit({type:'DEAL_BADGE_TIMER',remainingSec:5,badgeText:'▲ $50'});
+  await c.onSignalTimerFinished();assert.equal(c.state.botState,'IN_TRADE');assert.equal(c.state.tradeContext,t);assert.equal(t.resultApplied,false);
+  assert.ok(c.state.expiryInterval);assert.equal(c.state.recoveryStep,0);
+});
+test('a closed history row with a duration cannot keep the trade active',async()=>{
+  const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};
+  const history=row('EUR/USD OTC $50 00:30',{'.amount':'$50','.deal-timer':'00:30'});
+  history.closest=selector=>selector.includes('.closed-deals')?{}:null;
+  c.document.querySelectorAll=()=>[history];c.setBalance(1046);
+  await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.botState,'IDLE');assert.equal(t.resultApplied,true);
+});
+test('Winky speech wait is bounded and the balance is refreshed after it', async () => {
+  const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setBalance(1046);
+  let checks=0;c.setSpeakingReader(async()=>{checks++;c.setBalance(1047);return {is_speaking:true};});
+  await c.onSignalTimerFinished();assert.ok(checks>0 && checks<20);assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.lastTrade.reason,'credited_balance');
+  assert.equal(c.state.scoreProfit,1467);assert.equal(c.state.botState,'IDLE');assert.equal(t.resultApplied,true);
+});
+test('a nonresponding Winky bridge does not block score or the next cycle', async () => {
+  const c=loadContent(),t=c.trade();t.brokerResult={id:'id-1',net:46};
+  c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setSpeakingReader(()=>new Promise(()=>{}));
+  await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.botState,'IDLE');
 });
 test('money parser excludes percentages/timers and preserves decimal amounts', () => {
   const c=loadContent(); assert.equal(c.parsePocketMoney('+92%'),null); assert.equal(c.parsePocketMoney('00:00'),null);
@@ -235,5 +299,35 @@ test('automatic settlement retries through a delayed payout without advancing re
   const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};
   let checks=0;c.setBalanceReader(()=>{checks++;return checks<8?950:1046;});
   await c.onSignalTimerFinished();assert.ok(checks>=8);assert.equal(t.resultApplied,true);assert.equal(c.state.recoveryStep,0);assert.equal(c.state.lastTradeOutcome,'WIN');
+});
+test('a payout at the end of the settlement window wins over the debit fallback',async()=>{
+  const c=loadContent(),t=c.trade(),started=c.now();t.brokerId=null;t.openConfirmed=false;t.debitObserved=true;
+  c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};
+  c.setBalanceReader(()=>c.now()-started<9900?950:1046);
+  await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.recoveryStep,0);
+});
+test('a matched broker result overrides the loss implied by a stale balance',async()=>{
+  const c=loadContent(),t=c.trade(),started=c.now();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};
+  c.setBalanceReader(()=>{if(c.now()-started>=9900)c.emit({type:'BROKER_DEAL_RESULT',orderId:t.brokerId,net:46});return 950;});
+  await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.lastTrade.reason,'broker_closed_order');
+});
+test('three balance-settled losses restore 50 → 110 → 242 → 50 without a WS ID',async()=>{
+  const c=loadContent(),stakes=[50];
+  for(let i=0;i<3;i++){
+    const t=c.trade();t.brokerId=null;t.openConfirmed=false;t.debitObserved=true;t.stake=c.state.currentStake;
+    c.setBalance(1000-t.stake);c.state.botState='IN_TRADE';c.state.activeSignal={direction:'SELL'};
+    const started=c.now();await c.onSignalTimerFinished();
+    assert.ok(c.state.lastTrade.closedAt-started>=10000);assert.ok(c.state.lastTrade.closedAt-started<13000);
+    assert.equal(c.state.lastTradeOutcome,'LOSS');stakes.push(c.state.currentStake);
+  }
+  assert.deepEqual(stakes,[50,110,242,50]);
+});
+test('an obsolete settlement callback cannot apply to a replacement trade',async()=>{
+  const c=loadContent(),old=c.trade(),phases=[];let checks=0,replacement;
+  c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setPhaseNotifier(phase=>phases.push(phase));
+  const wins=c.state.scoreWins,losses=c.state.scoreLosses;
+  c.setBalanceReader(()=>{if(++checks===2)replacement=c.trade();return 950;});
+  await c.onSignalTimerFinished();assert.equal(c.state.tradeContext,replacement);assert.equal(old.resultApplied,false);
+  assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.deepEqual(phases,[]);
 });
 module.exports={loadContent,row};

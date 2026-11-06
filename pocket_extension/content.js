@@ -158,7 +158,7 @@
     forcedLoss: false,
     recoveryStep: 0, // 0 = base ($50), 1 = x2.2 ($110, new pair), 2 = x2.2 ($242, new pair)
     tradesOnSamePair: 0, // Счётчик сделок подряд на одной паре (макс 2)
-    lastTradeOutcome: null, // "WIN" | "LOSS"
+    lastTradeOutcome: null, // "WIN" | "LOSS" | "REFUND" | "UNKNOWN"
     _lastTradeClickTs: 0, // Анти-дребезг клика сделки (3000 мс)
     actualStakePlaced: 50,
     actualPayoutPct: 92,
@@ -2503,12 +2503,21 @@
     if (row) return tradeOutcome(row.status, row.net, 'matched_closed_deal');
     const active = hasActiveOpenDealsOnPocket(trade);
     if (active.isOpen) return tradeOutcome('PENDING', 0, 'deal_still_open');
-    // A credited win supports the result for this isolated trade. Deduction
-    // alone never proves LOSS: the payout can be delayed after expiration.
+    // Restore the pre-c03648e balance path even when Pocket's optional WS
+    // acknowledgement was not recognized. Always read the balance afresh.
     const after = getPocketBalance();
     state.balanceAfterClose = after;
-    if (trade.openConfirmed && trade.balanceBefore !== null && after !== null && Date.now() >= state.tradeEndTime && after > trade.balanceBefore + 0.005) {
-      return tradeOutcome('WIN', Math.round((after - trade.balanceBefore) * 100) / 100, 'credited_balance');
+    const before = trade.balanceBefore;
+    if (Number.isFinite(before) && Number.isFinite(after) && Date.now() >= state.tradeEndTime) {
+      const net = Math.round((after - before) * 100) / 100;
+      if (net > 0) return tradeOutcome('WIN', net, 'credited_balance');
+      // A debit at 00:00 may still be awaiting payout. Use the legacy loss
+      // fallback only after the bounded settlement window, for the exact stake
+      // of an observed opening; unrelated balance changes remain UNKNOWN.
+      if (trade.balanceFallbackReady && (trade.openConfirmed || trade.debitObserved)) {
+        if (Math.abs(net + trade.stake) < 0.02) return tradeOutcome('LOSS', net, 'settled_balance_debit');
+        if (net === 0 && trade.debitObserved) return tradeOutcome('REFUND', 0, 'returned_balance');
+      }
     }
     return tradeOutcome('PENDING', 0, 'awaiting_broker_settlement');
   }
@@ -3019,6 +3028,7 @@
         state.balanceBeforeClick = getPocketBalance();
         state.balanceBefore = state.balanceBeforeClick;
         state.entryPrice = getCurrentChartPrice();
+        if (state.tradeContext) state.tradeContext.balanceBefore = state.balanceBeforeClick;
         state.currentStake = expectedStake;
         state.consecutiveSkips = 0;
 
@@ -3053,6 +3063,11 @@
             if (state.tradeContext !== currentTrade) return;
             state.balanceDuringTrade = getPocketBalance();
             state.balanceAfterOpen = state.balanceDuringTrade;
+            if (currentTrade) {
+              currentTrade.balanceAfterOpen = state.balanceDuringTrade;
+              currentTrade.debitObserved = Number.isFinite(currentTrade.balanceBefore) && Number.isFinite(state.balanceDuringTrade) &&
+                Math.abs(currentTrade.balanceBefore - state.balanceDuringTrade - currentTrade.stake) < 0.02;
+            }
             loggerLog(`[TradeBalance] До клика: ${state.balanceBeforeClick}, во время сделки (списание): ${state.balanceDuringTrade}`);
           }, 2000);
 
@@ -3305,6 +3320,7 @@
     const rows = document.querySelectorAll('.open-deals .item, [data-test="open-deals"] .item, .deals-list__item');
     for (const row of rows) {
       if (row.offsetParent === null || !normalizePocketPair(row.textContent).includes(normalizePocketPair(trade.pair))) continue;
+      if (row.closest('.closed-deals, [data-test="closed-deals"], .trading-history, [data-status="closed"]')) continue;
       const timer = row.querySelector('.deal-timer, .countdown, [data-test="deal-timer"]');
       const amount = row.querySelector('.deal-amount, .amount, .bet, [data-test="deal-amount"]');
       if (!timer || !amount || parsePocketMoney(amount.textContent) === null || Math.abs(parsePocketMoney(amount.textContent) - trade.stake) > 0.01) continue;
@@ -3817,16 +3833,55 @@
     }
 
 
-    // Fresh evidence is read on every pass, including after speech delays.
+    // Restore the bounded finish -> RESULT -> score/voice -> IDLE sequence
+    // from e377527. The infinite PENDING loop introduced in c03648e prevented
+    // every downstream action when optional broker/DOM evidence was missing.
     let outcomeResult = evaluateTradeOutcome(trade);
     const settlementStartedAt = Date.now();
-    while (state.tradeContext === trade && outcomeResult.outcome === 'PENDING') {
+    const resumeActiveTrade = () => {
+      const active = hasActiveOpenDealsOnPocket(trade);
+      if (!active.isOpen) return false;
+      state.botState = 'IN_TRADE';
+      state.tradeEndTime = Date.now() + active.remainingSec * 1000;
+      state.expiryInterval = setInterval(() => {
+        if (state.tradeContext !== trade || state.botState !== 'IN_TRADE') return;
+        const remaining = Math.max(0, Math.floor((state.tradeEndTime - Date.now()) / 1000));
+        updateInTradeTimerUI(remaining);
+        if (Date.now() >= state.tradeEndTime) onSignalTimerFinished();
+      }, 200);
+      updateInTradeTimerUI(active.remainingSec);
+      return true;
+    };
+    while (state.tradeContext === trade && outcomeResult.outcome === 'PENDING' && Date.now() - settlementStartedAt < 10000) {
+      if (resumeActiveTrade()) return;
       if (btnGet) btnGet.textContent = state.lang === 'ru' ? 'СВЕРКА РЕЗУЛЬТАТА POCKET…' : 'CHECKING POCKET RESULT…';
-      await new Promise(resolve => setTimeout(resolve, Date.now() - settlementStartedAt < 10000 ? 300 : 2000));
+      await new Promise(resolve => setTimeout(resolve, Math.min(300, 10000 - (Date.now() - settlementStartedAt))));
       if (state.tradeContext !== trade) return;
-      state.balanceAfterClose = getPocketBalance();
       outcomeResult = evaluateTradeOutcome(trade);
     }
+    if (state.tradeContext !== trade || trade.resultApplied) return;
+    // A late real badge can correct an early local expiry. Return to the
+    // active countdown instead of classifying or opening another order.
+    if (outcomeResult.outcome === 'PENDING' && resumeActiveTrade()) return;
+
+    // As in e377527, allow Winky to finish her current phrase (max 2.5s).
+    // A stalled local HTTP bridge must not stall the trading cycle either.
+    const speechWaitStartedAt = Date.now();
+    while (Date.now() - speechWaitStartedAt < 2500) {
+      let timeout;
+      const status = await Promise.race([
+        checkWinkySpeaking(),
+        new Promise(resolve => { timeout = setTimeout(() => resolve(null), Math.min(600, 2500 - (Date.now() - speechWaitStartedAt))); }),
+      ]);
+      clearTimeout(timeout);
+      if (state.tradeContext !== trade) return;
+      if (!status?.is_speaking) break;
+      await new Promise(resolve => setTimeout(resolve, Math.min(200, Math.max(0, 2500 - (Date.now() - speechWaitStartedAt)))));
+    }
+    trade.balanceFallbackReady = Date.now() - settlementStartedAt >= 10000;
+    outcomeResult = evaluateTradeOutcome(trade);
+    if (outcomeResult.outcome === 'PENDING' && resumeActiveTrade()) return;
+    if (outcomeResult.outcome === 'PENDING') outcomeResult = tradeOutcome('UNKNOWN', 0, 'settlement_evidence_unavailable');
     if (state.tradeContext !== trade || trade.resultApplied) return;
     trade.resultApplied = true;
     notifyTradePhase('RESULT', trade.pair, 0);
@@ -3834,19 +3889,21 @@
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
 
-    loggerLog(`[onSignalTimerFinished] Итог: ${isWin ? "ПЛЮС (WIN)" : "МИНУС (LOSS)"} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
+    loggerLog(`[onSignalTimerFinished] Итог: ${outcomeResult.outcome} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
 
     state.lastTrade = {
-      pair: state.targetPair,
+      pair: trade.pair,
       direction: state.activeSignal ? state.activeSignal.direction : "BUY",
       entryPrice: state.entryPrice,
       exitPrice: state.exitPrice,
       isWin: isWin,
+      outcome: outcomeResult.outcome,
+      reason: outcomeResult.reason,
       closedAt: Date.now(),
     };
 
     // 4. Подсвечиваем медальон WINK TRADE
-    triggerOrbGlow(isWin);
+    if (isWin !== null) triggerOrbGlow(isWin);
 
     const block = document.getElementById("botDirectionBlock");
 
@@ -3898,6 +3955,9 @@
     } else if (outcomeResult.outcome === 'REFUND') {
       state.lastTradeOutcome = 'REFUND';
       if (block) block.textContent = state.lang === 'ru' ? 'ВОЗВРАТ СТАВКИ · шаг перекрытия сохранён' : 'REFUND · recovery step unchanged';
+    } else if (outcomeResult.outcome === 'UNKNOWN') {
+      state.lastTradeOutcome = 'UNKNOWN';
+      if (block) block.textContent = state.lang === 'ru' ? 'РЕЗУЛЬТАТ НЕ ПОЛУЧЕН · статистика и шаг перекрытия сохранены' : 'RESULT UNAVAILABLE · score and recovery step unchanged';
     } else {
       // МИНУС (isWin === false)
       state.consecutiveLosses = (state.consecutiveLosses || 0) + 1;

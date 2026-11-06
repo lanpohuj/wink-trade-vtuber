@@ -5,7 +5,7 @@ const vm = require('node:vm');
 
 function loadHook() {
   let now=1700000000000;
-  const messages=[];
+  const messages=[],intervals=[];
   class Socket { constructor(){this.handlers={};} addEventListener(event,fn){this.handlers[event]=fn;} send(data){this.sent=data;} receive(data){this.handlers.message({data});} }
   class Canvas {} Canvas.prototype.getContext=()=>null;
   class Context {} Context.prototype.fillText=()=>{};Context.prototype.fillRect=()=>{};
@@ -13,7 +13,7 @@ function loadHook() {
   const document={querySelectorAll:()=>[],querySelector:()=>null,dispatchEvent(){}};
   const sandbox={window,document,HTMLCanvasElement:Canvas,CanvasRenderingContext2D:Context,
     console:{log(){},warn(){},error(){}},TextDecoder,TextEncoder,ArrayBuffer,Uint8Array,Blob,
-    Date:class extends Date{static now(){return now;}},setInterval(){},clearInterval(){},
+    Date:class extends Date{static now(){return now;}},setInterval(fn,ms){intervals.push({fn,ms});},clearInterval(){},
     setTimeout:(fn,ms=0)=>{queueMicrotask(()=>{now+=ms;fn();});},
     MouseEvent:class{constructor(type){this.type=type;}},KeyboardEvent:class{},
     HTMLInputElement:class{},performance:{now:()=>now}};
@@ -22,7 +22,8 @@ function loadHook() {
   const at=source.lastIndexOf('})();');
   source=source.slice(0,at)+`globalThis.testing={handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe};`+source.slice(at);
   vm.runInNewContext(source,sandbox);
-  return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now};
+  return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now,
+    runIntervals(ms){for(const interval of intervals)if(interval.ms===ms)interval.fn();}};
 }
 
 test('four expiry modes retain native outgoing time rewrite and optionType 100',async()=>{
@@ -60,9 +61,31 @@ test('optional open confirmation and binary close result preserve trade ID',asyn
   const opened={id:'deal-3',asset:'EURUSD_otc',amount:50,open_time:h.now()/1000,close_time:h.now()/1000+30};
   socket.receive('42'+JSON.stringify(['successopenOrder',opened]));
   assert.equal(h.messages.find(m=>m.type==='BROKER_DEAL_OPEN').orderId,'deal-3');
+  assert.equal(h.messages.find(m=>m.type==='DEAL_BADGE_TIMER').remainingSec,30);
   socket.receive('451-["successcloseOrder",{"_placeholder":true,"num":0}]');
   socket.receive(new TextEncoder().encode(JSON.stringify({deals:[{...opened,net_profit:46}]})).buffer);
   assert.equal(h.messages.find(m=>m.type==='BROKER_DEAL_RESULT').net,46);
+});
+test('legacy parsed opening ACK without ID/time metadata still synchronizes the trade timer',async()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  h.document.querySelector=selector=>selector.includes('btn-call')?{
+    dispatchEvent(){},click(){socket.send('42'+JSON.stringify(['openOrder',{asset:'EURUSD_otc',amount:50,time:30}]));}
+  }:null;
+  await h.handleMainWorldClickTrade({direction:'BUY',stake:50,requestId:9});
+  socket.receive('42'+JSON.stringify(['successopenOrder',{asset:'GBPUSD_otc',amount:50,time:30}]));
+  assert.equal(h.messages.some(m=>m.type==='BROKER_DEAL_OPEN'),false);
+  socket.receive('42'+JSON.stringify(['successopenOrder',{asset:'EURUSD_otc',amount:50,time:30}]));
+  const timer=h.messages.find(m=>m.type==='DEAL_BADGE_TIMER');
+  assert.equal(timer.remainingSec,30);assert.equal(timer.requestId,9);assert.equal(timer.stake,50);
+  assert.equal(h.messages.find(m=>m.type==='BROKER_DEAL_OPEN').orderId,undefined);
+});
+test('DOM history duration is not published as a live deal countdown',()=>{
+  const h=loadHook();
+  const closed={offsetParent:{},textContent:'EUR/USD OTC $50 00:30',closest:()=>({})};
+  const open={offsetParent:{},textContent:'EUR/USD OTC $50 00:08',closest:()=>null};
+  h.document.querySelectorAll=()=>[closed,open];h.runIntervals(400);
+  const timers=h.messages.filter(m=>m.type==='DEAL_BADGE_TIMER');
+  assert.equal(timers.length,1);assert.equal(timers[0].remainingSec,8);
 });
 test('fractional timestamps and canvas preservation remain supported',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');

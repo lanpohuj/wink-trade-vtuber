@@ -33,10 +33,11 @@
       return Array.isArray(body) && typeof body[0] === 'string' ? { name: body[0], payload: body[1] } : null;
     } catch (_) { return null; }
   }
-  function socketDealObjects(value, depth = 0) {
+  function socketDealObjects(value, depth = 0, opening = false) {
     if (!value || typeof value !== 'object' || depth > 5) return [];
-    const own = value.id != null || value.order_id != null || value.deal_id != null ? [value] : [];
-    return own.concat(Object.values(value).flatMap(v => socketDealObjects(v, depth + 1)));
+    const own = value.id != null || value.order_id != null || value.deal_id != null ||
+      (opening && (value.asset || value.symbol) && (value.amount != null || value.bet != null)) ? [value] : [];
+    return own.concat(Object.values(value).flatMap(v => socketDealObjects(v, depth + 1, opening)));
   }
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
@@ -66,13 +67,18 @@
           }
           const packet = readSocketPacket(data);
           if (packet && /^(successopenOrder|openOrder)$/i.test(packet.name) && lastSentTrade && Date.now() - lastSentTrade.sentAt < 12000) {
-            for (const obj of socketDealObjects(packet.payload)) {
+            for (const obj of socketDealObjects(packet.payload, 0, true)) {
               const asset = obj.asset || obj.symbol;
               const amount = Number(obj.amount ?? obj.bet);
               const openedAt = toMilliseconds(obj.open_time ?? obj.openTime);
               const closesAt = toMilliseconds(obj.close_time ?? obj.closeTime ?? obj.expired);
-              if (normalizeAsset(asset) !== normalizeAsset(lastSentTrade.pair) || Math.abs(amount - lastSentTrade.stake) > 0.01 || !Number.isFinite(amount) || !Number.isFinite(openedAt) || Math.abs(openedAt - lastSentTrade.sentAt) > 12000) continue;
-              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_OPEN', requestId: lastSentTrade.requestId, pair: asset, stake: amount, orderId: obj.id ?? obj.order_id ?? obj.deal_id, closesAt }, '*');
+              if (normalizeAsset(asset) !== normalizeAsset(lastSentTrade.pair) || Math.abs(amount - lastSentTrade.stake) > 0.01 || !Number.isFinite(amount) || (Number.isFinite(openedAt) && Math.abs(openedAt - lastSentTrade.sentAt) > 12000)) continue;
+              const evidence = { requestId: lastSentTrade.requestId, pair: asset, stake: amount, orderId: obj.id ?? obj.order_id ?? obj.deal_id };
+              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_OPEN', ...evidence, closesAt }, '*');
+              // Restore the working openOrder -> DEAL_BADGE_TIMER bridge for
+              // parsed Socket.IO packets too, including ACKs without an ID.
+              const realSec = Number.isFinite(closesAt) ? Math.ceil((closesAt - Date.now()) / 1000) : Number(obj.time);
+              if (realSec >= 0 && realSec <= 300) window.postMessage({ source: 'WINKY_HOOK', type: 'DEAL_BADGE_TIMER', ...evidence, remainingSec: realSec, badgeText: `WS ${realSec}s` }, '*');
             }
           }
           if (packet && /^(successcloseOrder|closeOrder|closedOrder|updateClosedDeals)$/i.test(packet.name)) {
@@ -301,6 +307,7 @@
       );
       for (const item of dealItems) {
         if (!item || item.offsetParent === null) continue;
+        if (item.closest('.closed-deals, [data-test="closed-deals"], .trading-history, [data-status="closed"]')) continue;
         const text = (item.textContent || "").trim();
         const m = text.match(/\b0([0-4]):([0-5]\d)\b/);
         if (m) {
