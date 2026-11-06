@@ -23,8 +23,13 @@
 
   // 1. Hook WebSocket traffic for real ticks and deal synchronization
   const OriginalWebSocket = window.WebSocket;
+  // A click is not an order.  Keep the exact outgoing request until Pocket
+  // confirms it on the socket; the content script must never invent a trade.
+  let pendingWinkyOrder = null;
+
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
+    let attachmentEvent = null;
 
     const handleMessage = (data) => {
       try {
@@ -42,34 +47,33 @@
         }
 
         if (typeof data === "string") {
-          // Check for openOrder / deal creation response from server
-          if (data.includes("openOrder") || data.includes("successopenOrder") || data.includes('"open_time"') || data.includes('"close_time"')) {
-            try {
-              const jsonMatch = data.match(/(\{[\s\S]*\})/);
-              if (jsonMatch) {
-                const obj = JSON.parse(jsonMatch[1]);
-                let realSec = null;
-                if (typeof obj.expired === "number" && typeof obj.open_time === "number" && obj.expired > obj.open_time) {
-                  realSec = Math.round(obj.expired - obj.open_time);
-                } else if (typeof obj.close_time === "number" && typeof obj.open_time === "number" && obj.close_time > obj.open_time) {
-                  realSec = Math.round(obj.close_time - obj.open_time);
-                } else if (typeof obj.time === "number" && obj.time >= 5 && obj.time <= 300) {
-                  realSec = Math.round(obj.time);
-                }
-                if (realSec && realSec >= 5 && realSec <= 300) {
-                  console.log("[WinkyHook] 🎯 Detected open deal from WS response:", { realSec, obj });
-                  window.postMessage(
-                    {
-                      source: "WINKY_HOOK",
-                      type: "DEAL_BADGE_TIMER",
-                      remainingSec: realSec,
-                      badgeText: `WS ${realSec}s`,
-                    },
-                    "*"
-                  );
+          if (/^45\d*-/.test(data)) {
+            attachmentEvent = WinkyTradingCore.packet(data)?.event || null;
+            return;
+          }
+          if (attachmentEvent) {
+            const eventName = attachmentEvent;
+            attachmentEvent = null;
+            try { data = '42' + JSON.stringify([eventName, JSON.parse(data)]); } catch (_) { return; }
+          }
+          const pkt = WinkyTradingCore.packet(data);
+          if (pkt) {
+            if (/^(successopenOrder|openOrder)$/i.test(pkt.event) && pendingWinkyOrder) {
+              for (const raw of WinkyTradingCore.objects(pkt.data)) {
+                const o = WinkyTradingCore.order(raw), p = pendingWinkyOrder;
+                if (o.id && o.direction === p.direction && WinkyTradingCore.symbol(o.asset) === WinkyTradingCore.symbol(p.asset) && Math.abs(o.amount - p.amount) < 0.01 && Math.abs(o.openedAt - p.sentAt) < 12000 && o.closesAt > Date.now()) {
+                  window.postMessage({ source: 'WINKY_HOOK', type: 'ORDER_OPENED', orderId: o.id, asset: o.asset, amount: o.amount, openedAt: o.openedAt, closesAt: o.closesAt, remainingSec: Math.ceil((o.closesAt-Date.now())/1000) }, '*');
+                  pendingWinkyOrder = null;
+                  break;
                 }
               }
-            } catch (_) {}
+            }
+            if (/^(successcloseOrder|closedOrder|closeOrder|updateClosedDeals)$/i.test(pkt.event)) {
+              for (const raw of WinkyTradingCore.objects(pkt.data)) {
+                const result = WinkyTradingCore.settlement(raw);
+                if (result) window.postMessage({ source: 'WINKY_HOOK', type: 'ORDER_SETTLED', result }, '*');
+              }
+            }
           }
 
           // Check for WebSocket server history packets: updateHistoryNewFast, updateHistoryNew, history, candles, load_history
@@ -108,13 +112,10 @@
                         asset = item[0];
                         t = item[1];
                         p = item[2];
-                      } else if (item.length >= 5) {
-                        t = item[0];
-                        p = item[4];
-                      }
+                      } // OHLC arrays are not tick history; never relabel them.
                     } else if (item && typeof item === "object") {
                       t = item.time || item.timestamp || item.ts;
-                      p = item.close || item.price;
+                      p = item.price;
                     }
                     if (typeof p === "number" && !isNaN(p) && p > 0) {
                       if (typeof t === "number" && t < 1e11) t = t * 1000;
@@ -142,10 +143,10 @@
           // Check for quote array format e.g. [["EURUSD_otc", 1730516172, 1.08542]] or JSON with price
           if (data.includes("_otc") || data.includes("updateStream") || (data.includes("[") && data.includes("]"))) {
             // Regex to find symbol and numeric price e.g. ["AEDCNY_otc", 1730516172.382, 1.88610]
-            const match = data.match(/\[\s*"([A-Za-z0-9_]+)"\s*,\s*[0-9.]+\s*,\s*([0-9.]+)\s*\]/);
-            if (match) {
+            const matches = data.matchAll(/\[\s*"([A-Za-z0-9_]+)"\s*,\s*([0-9.]+)\s*,\s*([0-9.]+)\s*\]/g);
+            for (const match of matches) {
               const rawSymbol = match[1];
-              const price = parseFloat(match[2]);
+              const price = parseFloat(match[3]);
               if (!isNaN(price) && price > 0) {
                 window.postMessage(
                   {
@@ -154,7 +155,7 @@
                     price: price,
                     rawSymbol: rawSymbol,
                     source_type: "ws",
-                    timestamp: Date.now(),
+                    timestamp: WinkyTradingCore.epoch(match[2]),
                   },
                   "*"
                 );
@@ -169,81 +170,22 @@
       handleMessage(event.data);
     });
 
-    // Also wrap onmessage property setter
-    let userHandler = null;
-    Object.defineProperty(ws, "onmessage", {
-      get() {
-        return userHandler;
-      },
-      set(fn) {
-        userHandler = fn;
-        this.addEventListener("message", (e) => {
-          if (typeof userHandler === "function") {
-            try {
-              userHandler.call(this, e);
-            } catch (_) {}
-          }
-        });
-      },
-      configurable: true,
-    });
-
     return ws;
   };
   window.WebSocket.prototype = OriginalWebSocket.prototype;
 
-  // Intercept WebSocket.prototype.send for openOrder and changeSymbol packets
+  // Observe the native packet without modifying amounts, times or option type.
   const origWsSend = OriginalWebSocket.prototype.send;
   OriginalWebSocket.prototype.send = function (data) {
-    try {
-      const targetSec = window.__winkyTargetExpirySec || 30;
-      if (typeof data === "string") {
-        if (data.includes("changeSymbol")) {
-          const matchSym = data.match(/42\[\s*"changeSymbol"\s*,\s*(\{[\s\S]*\})\s*\]/);
-          if (matchSym) {
-            try {
-              const symObj = JSON.parse(matchSym[1]);
-              if (symObj && symObj.asset) {
-                window.__winkyCurrentAsset = symObj.asset;
-                console.log("[WinkyHook] 🔀 Intercepted changeSymbol asset:", symObj.asset);
-              }
-            } catch (_) {}
-          }
-        }
-        if (data.includes("openOrder")) {
-          const match = data.match(/^(\d+\[\s*"openOrder"\s*,\s*)(\{[\s\S]*\})(\s*\])$/);
-          if (match) {
-            const orderObj = JSON.parse(match[2]);
-            // Если выбран OTC актив или секундный таймер 15s/30s/1m/2m, принудительно выставляем точное время в секундах и тип опциона 100:
-            if (targetSec <= 120) {
-              orderObj.time = targetSec;
-              if (String(orderObj.asset || "").toLowerCase().includes("otc") || orderObj.optionType === 100) {
-                orderObj.optionType = 100;
-              }
-            }
-            data = match[1] + JSON.stringify(orderObj) + match[3];
-            console.log("[WinkyHook] 🚀 Rewrote openOrder WS packet to time=" + targetSec + "s:", data);
-          }
-        }
-      } else if (data instanceof ArrayBuffer || ArrayBuffer.isView(data)) {
-        const buf = data instanceof ArrayBuffer ? new Uint8Array(data) : new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
-        const text = new TextDecoder("utf-8").decode(buf);
-        if (text.includes("openOrder") && text.includes('"time"')) {
-          const updatedText = text
-            .replace(/"time"\s*:\s*\d+/g, `"time":${targetSec}`)
-            .replace(/"optionType"\s*:\s*\d+/g, `"optionType":100`);
-          if (updatedText !== text) {
-            data = new TextEncoder().encode(updatedText).buffer;
-            console.log("[WinkyHook] 🚀 Rewrote binary openOrder WS packet to time=" + targetSec + "s");
-          }
-        }
-      }
-    } catch (e) {
-      // Отправляем оригинальный пакет без сбоев
+    const p = WinkyTradingCore.packet(data);
+    if (p?.event === 'changeSymbol' && p.data?.asset) window.__winkyCurrentAsset = p.data.asset;
+    if (p?.event === 'openOrder' && window.__winkyArmedOrder && Date.now() - window.__winkyArmedOrder.at < 1500) {
+      pendingWinkyOrder = { sentAt: Date.now(), asset: p.data.asset, amount: Number(p.data.amount), direction: String(p.data.action).toLowerCase() === 'call' ? 'BUY' : 'SELL' };
+      window.__winkyArmedOrder = null;
     }
     return origWsSend.call(this, data);
   };
-  window.WebSocket.prototype.send = OriginalWebSocket.prototype.send;
+  Object.setPrototypeOf(window.WebSocket, OriginalWebSocket);
 
   // Poll DOM Deals List in right panel for real active deal timer e.g. 00:29, 00:14, 00:51
   setInterval(() => {
@@ -765,12 +707,8 @@
       await sleep(180);
       await forceClosePopup();
 
-      // Automatically ensure chart timeframe is set to S15 (15 seconds)
-      try {
-        await handleMainWorldEnsureChartTimeframe("S15");
-      } catch (tfErr) {
-        console.warn("[WinkyHook] Non-critical error ensuring S15 timeframe:", tfErr);
-      }
+      // Analysis builds S15/S30/M1/M2 from timestamped broker quotes.
+      // The visible-history H2 control and chart display need no forced clicks.
 
       window.postMessage(
         {
@@ -809,7 +747,10 @@
   }
 
   function findChartTfToolbarButton() {
-    const tfRegex = /^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1|5s|10s|15s|30s|1m|2m|5\s*сек\.?|15\s*сек\.?|30\s*сек\.?|1\s*мин\.?)$/i;
+    // Pocket places the active interval control in different areas depending
+    // on the layout.  In the supplied layout it is the H2 button at bottom
+    // left, not a toolbar control at the top left.
+    const tfRegex = /^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1|5s|10s|15s|30s|1m|2m|5\s*сек\.?|10\s*сек\.?|15\s*сек\.?|30\s*сек\.?|1\s*мин\.?|2\s*час(?:а)?\.?)$/i;
     const specificSelectors = [
       ".current-timeframe",
       ".chart-timeframe",
@@ -827,12 +768,9 @@
       const els = document.querySelectorAll(sel);
       for (const el of els) {
         if (!el || el.offsetParent === null) continue;
-        const rect = el.getBoundingClientRect();
-        if (rect.left < 480 && rect.top < 140) {
-          const txt = (el.textContent || "").trim();
-          if (tfRegex.test(txt) || /15\s*(s|sec|сек|с)/i.test(txt)) {
-            return { el, text: txt };
-          }
+        const txt = (el.textContent || "").trim();
+        if (tfRegex.test(txt) || /15\s*(s|sec|сек|с)/i.test(txt)) {
+          return { el, text: txt };
         }
       }
     }
@@ -841,7 +779,7 @@
     for (const el of allTopLeft) {
       if (!el || el.offsetParent === null) continue;
       const rect = el.getBoundingClientRect();
-      if (rect.left >= 80 && rect.left <= 450 && rect.top <= 120 && rect.width >= 15 && rect.height >= 15) {
+      if (rect.width >= 15 && rect.height >= 15) {
         const txt = (el.textContent || "").trim();
         if (tfRegex.test(txt)) {
           return { el, text: txt };
@@ -859,7 +797,7 @@
     if (found) {
       btn = found.el;
       const txt = found.text;
-      const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M15|M30|H1|H4|D1|5s|15s|30s|1m)$/i);
+      const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1|5s|10s|15s|30s|1m|2m)$/i);
       if (m) {
         badge = m[1].toUpperCase();
       } else if (/15\s*(s|sec|сек|с)/i.test(txt) && !/15\s*м/i.test(txt)) {
@@ -888,7 +826,7 @@
         for (const el of els) {
           if (!el || el.offsetParent === null) continue;
           const txt = (el.textContent || "").trim();
-          const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M15|M30|H1|H4|D1|5s|15s|30s|1m)$/i);
+          const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1|5s|10s|15s|30s|1m|2m)$/i);
           if (m) {
             badge = m[1].toUpperCase();
             if (!btn) btn = el;
@@ -965,8 +903,9 @@
       }
     }
 
-    // Ищем элемент интервала 15 сек по [data-period="15"] или тексту /^(S15|15\s*s|15\s*sec\.?|15\s*сек\.?|15\s*с\.?)$/i
-    // в области rect.left <= 550 && rect.top >= 60 && rect.top <= 520
+    // Ищем элемент интервала 15 сек по [data-period="15"] или тексту.
+    // Меню может открыться внизу слева, поэтому координатный фильтр здесь
+    // запрещён: именно он оставлял график на H2.
     const popupItems = document.querySelectorAll(
       "[data-period='15'], .drop-down-modal__item, .timeframe-item, .timeframe-list button, .timeframe-list a, .modal-window a, [data-timeframe], .alist__item, li, button, a, [data-period], [data-value], [data-tf], span"
     );
@@ -976,8 +915,6 @@
 
     for (const it of popupItems) {
       if (!it || it.offsetParent === null) continue;
-      const rect = it.getBoundingClientRect();
-      if (rect.left > 550 || rect.top < 60 || rect.top > 520) continue;
       if (it.children.length > 2) continue; // самый вложенный элемент с надписью
       const t = (it.textContent || "").trim();
       if (/15\s*(м|m|min)/i.test(t)) continue; // исключаем минуты
@@ -1018,12 +955,16 @@
       } catch (_) {}
     }
 
-    await sleep(180);
+    await sleep(350);
     const updated = getActualChartTimeframeBadge();
-    const finalTf = updated.badge || "S15";
-    window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: true, activeTf: finalTf }, "*");
-    window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: finalTf }, "*");
-    return true;
+    const finalTf = updated.badge || null;
+    const isS15 = finalTf && (finalTf === "S15" || finalTf === "15S" || finalTf === "15С" || finalTf === "15");
+    if (!isS15) {
+      console.warn("[WinkyHook] ⛔ S15 was not confirmed; trade must be skipped. Active chart timeframe:", finalTf || "unknown");
+    }
+    window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: Boolean(isS15), activeTf: finalTf, error: isS15 ? null : "s15_not_confirmed" }, "*");
+    if (finalTf) window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: finalTf }, "*");
+    return Boolean(isS15);
   }
 
   function closePocketCalculatorIfOpen() {
@@ -1093,6 +1034,9 @@
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
       const timeInp = allInputs.find((inp) => (inp.value || "").includes(":"));
+      if (!timeInp) {
+        throw new Error("expiration_input_not_found");
+      }
 
       const isTimerMode = (val) => {
         const s = String(val || "").trim();
@@ -1109,12 +1053,7 @@
           ".block--expiration-inputs .switch-state-block__item:not(.active), " +
           ".block--expiration-inputs .switch-state-block a, " +
           ".block--expiration-inputs .switch-state-block, " +
-          ".switch-state-block__item:not(.active), " +
-          ".switch-state-block a, " +
-          ".switch-state-block, " +
-          ".expiration-switch, " +
-          "[class*='switch-state'], " +
-          ".trading-panel [class*='switch']"
+          ".expiration-block .expiration-switch"
         ));
         for (const el of switchTargets) {
           if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;
@@ -1132,10 +1071,10 @@
 
       // Функция чтения текущих секунд из инпута
       const readCurrentExpirySec = () => {
-        if (!timeInp || !timeInp.value) return targetSec;
+        if (!timeInp || !timeInp.value) return null;
         const val = timeInp.value.trim();
         const mTime = val.match(/(?:(\d{1,2}):)?(\d{1,2}):(\d{2})/);
-        if (!mTime) return targetSec;
+        if (!mTime) return null;
         const h = mTime[1] ? parseInt(mTime[1], 10) : 0;
         const m = parseInt(mTime[2], 10);
         const s = parseInt(mTime[3], 10);
@@ -1144,8 +1083,9 @@
           return m * 60 + s;
         }
 
-        // Если пара осталась в Режиме Флажка (HH:MM:SS), возвращаем targetSec (15 или 30)
-        return targetSec;
+        // A clock/flag value is not a duration.  Do not forge a successful
+        // expiration configuration from the requested value.
+        return null;
       };
 
       // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2)
@@ -1167,8 +1107,8 @@
       }
 
       // 5. Пошаговая настройка кнопками + и -
-      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child, .btn-minus");
-      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child, .btn-plus");
+      const btnMinus = document.querySelector(".block--expiration-inputs .btn-minus, .block--expiration-inputs .value__val-start, .block--expiration-inputs button:first-child");
+      const btnPlus = document.querySelector(".block--expiration-inputs .btn-plus, .block--expiration-inputs .value__val-end, .block--expiration-inputs button:last-child");
 
       let curSec = readCurrentExpirySec();
       let prevSec = null;
@@ -1200,12 +1140,14 @@
       closePocketCalculatorIfOpen();
 
       // 6. Честное считывание реального времени (15s, 30s, 1m или 2m)
-      let actualSec = readCurrentExpirySec();
+      const actualSec = readCurrentExpirySec();
+      if (!Number.isFinite(actualSec) || actualSec < 5 || actualSec > 300 || Math.abs(actualSec - targetSec) > 4) {
+        throw new Error(`expiration_not_confirmed:${actualSec}`);
+      }
       let label = "30s";
-      if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
-      else if (actualSec >= 90 || targetSec === 120) { actualSec = 120; label = "2m"; }
-      else if (actualSec >= 45 || targetSec === 60) { actualSec = 60; label = "1m"; }
-      else { actualSec = 30; label = "30s"; }
+      if (actualSec <= 20) label = "15s";
+      else if (actualSec >= 90) label = "2m";
+      else if (actualSec >= 45) label = "1m";
 
       console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);
 
@@ -1228,8 +1170,8 @@
           requestId: cmd.requestId,
           ok: false,
           error: String(e),
-          actualSec: 60,
-          label: "1m",
+          actualSec: null,
+          label: null,
         },
         "*"
       );
@@ -1295,6 +1237,7 @@
       // 3. Вызываем одиночный строгий клик по кнопке сделки
       btn.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
       btn.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
+      window.__winkyArmedOrder = { at: Date.now() };
       btn.click();
 
       console.log(`[WinkyHook] 🎯 Клик ${direction} ($${stake}) успешно исполнен в MAIN World!`);
