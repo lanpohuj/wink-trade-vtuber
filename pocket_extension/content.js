@@ -2714,6 +2714,10 @@ state.closedDealBaseline = null;
     } catch (err) {
       loggerLog("[executeTradeWithSignal] ⚠️ Error during execution:", err);
       console.error("[Winky] Execute trade error:", err);
+      if (state.brokerOrder || state.pendingBrokerOrder) {
+        state.executionBlocked = true;
+        state.autoStream = false;
+      }
       state.botState = "IDLE";
       state.analysisStartedAt = null;
       renderSignalCardState();
@@ -3123,6 +3127,13 @@ state.closedDealBaseline = null;
       return;
     }
     const isWin = outcomeResult.isWin;
+    try {
+      const journal = JSON.parse(localStorage.getItem('winky_trade_journal_v1') || '[]');
+      journal.push({ id: state.brokerOrder.id, pair: state.targetPair, direction: state.activeSignal.direction,
+        expiry: state.activeSignal.duration, setup: state.lastSignalKey, closedAt: Date.now(),
+        outcome: outcomeResult.outcome, profit: outcomeResult.profitDelta - outcomeResult.lossDelta });
+      localStorage.setItem('winky_trade_journal_v1', JSON.stringify(journal.slice(-500)));
+    } catch (error) { loggerLog('[TradeJournal] Не удалось сохранить журнал:', error); }
     localStorage.removeItem('winky_unresolved_order');
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
