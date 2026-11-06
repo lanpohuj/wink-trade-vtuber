@@ -23,8 +23,24 @@
 
   // 1. Hook WebSocket traffic for real ticks and deal synchronization
   const OriginalWebSocket = window.WebSocket;
+  let pendingTradeCommand = null;
+  let lastSentTrade = null;
+  const normalizeAsset = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const toMilliseconds = value => Number(value) < 1e11 ? Number(value) * 1000 : Number(value);
+  function readSocketPacket(text) {
+    try {
+      const body = JSON.parse(text.slice(text.indexOf('[')));
+      return Array.isArray(body) && typeof body[0] === 'string' ? { name: body[0], payload: body[1] } : null;
+    } catch (_) { return null; }
+  }
+  function socketDealObjects(value, depth = 0) {
+    if (!value || typeof value !== 'object' || depth > 5) return [];
+    const own = value.id != null || value.order_id != null || value.deal_id != null ? [value] : [];
+    return own.concat(Object.values(value).flatMap(v => socketDealObjects(v, depth + 1)));
+  }
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
+    let attachmentName = null;
 
     const handleMessage = (data) => {
       try {
@@ -42,8 +58,31 @@
         }
 
         if (typeof data === "string") {
+          if (/^45\d*-/.test(data)) { attachmentName = readSocketPacket(data)?.name || null; return; }
+          if (attachmentName) {
+            const name = attachmentName;
+            attachmentName = null;
+            try { data = '42' + JSON.stringify([name, JSON.parse(data)]); } catch (_) { return; }
+          }
+          const packet = readSocketPacket(data);
+          if (packet && /^(successopenOrder|openOrder)$/i.test(packet.name) && lastSentTrade && Date.now() - lastSentTrade.sentAt < 12000) {
+            for (const obj of socketDealObjects(packet.payload)) {
+              const asset = obj.asset || obj.symbol;
+              const amount = Number(obj.amount ?? obj.bet);
+              const openedAt = toMilliseconds(obj.open_time ?? obj.openTime);
+              const closesAt = toMilliseconds(obj.close_time ?? obj.closeTime ?? obj.expired);
+              if (normalizeAsset(asset) !== normalizeAsset(lastSentTrade.pair) || Math.abs(amount - lastSentTrade.stake) > 0.01 || !Number.isFinite(amount) || !Number.isFinite(openedAt) || Math.abs(openedAt - lastSentTrade.sentAt) > 12000) continue;
+              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_OPEN', requestId: lastSentTrade.requestId, pair: asset, stake: amount, orderId: obj.id ?? obj.order_id ?? obj.deal_id, closesAt }, '*');
+            }
+          }
+          if (packet && /^(successcloseOrder|closeOrder|closedOrder|updateClosedDeals)$/i.test(packet.name)) {
+            for (const obj of socketDealObjects(packet.payload)) {
+              if (typeof obj.profit !== 'number' || !Number.isFinite(obj.profit)) continue;
+              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_RESULT', orderId: obj.id ?? obj.order_id ?? obj.deal_id, net: obj.profit }, '*');
+            }
+          }
           // Check for openOrder / deal creation response from server
-          if (data.includes("openOrder") || data.includes("successopenOrder") || data.includes('"open_time"') || data.includes('"close_time"')) {
+          if (!packet && (data.includes("openOrder") || data.includes("successopenOrder"))) {
             try {
               const jsonMatch = data.match(/(\{[\s\S]*\})/);
               if (jsonMatch) {
@@ -64,6 +103,9 @@
                       type: "DEAL_BADGE_TIMER",
                       remainingSec: realSec,
                       badgeText: `WS ${realSec}s`,
+                      pair: obj.asset,
+                      stake: obj.amount,
+                      orderId: obj.id,
                     },
                     "*"
                   );
@@ -214,6 +256,10 @@
           const match = data.match(/^(\d+\[\s*"openOrder"\s*,\s*)(\{[\s\S]*\})(\s*\])$/);
           if (match) {
             const orderObj = JSON.parse(match[2]);
+            if (pendingTradeCommand && Date.now() - pendingTradeCommand.sentAt < 3000) {
+              lastSentTrade = { ...pendingTradeCommand, pair: orderObj.asset, stake: Number(orderObj.amount ?? orderObj.bet), sentAt: Date.now() };
+              pendingTradeCommand = null;
+            }
             // Если выбран OTC актив или секундный таймер 15s/30s/1m/2m, принудительно выставляем точное время в секундах и тип опциона 100:
             if (targetSec <= 120) {
               orderObj.time = targetSec;
@@ -266,6 +312,8 @@
                 type: "DEAL_BADGE_TIMER",
                 remainingSec: totalSec,
                 badgeText: m[0],
+                pair: text.match(/[A-Z]{3}\s*\/\s*[A-Z]{3}(?:\s+OTC)?/i)?.[0],
+                stake: text.match(/\$\s*(\d+(?:[.,]\d+)?)/)?.[1]?.replace(',', '.'),
               },
               "*"
             );
@@ -1247,7 +1295,7 @@
     if (now - lastHookTradeClickTime < 3000) {
       console.warn(`[WinkyHook] 🛑 Блокировка повторного клика! (${now - lastHookTradeClickTime}ms < 3000ms)`);
       window.postMessage(
-        { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: "debounce_blocked" },
+        { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", requestId: cmd.requestId, ok: false, clicked: false, error: "debounce_blocked" },
         "*"
       );
       return;
@@ -1286,13 +1334,14 @@
       if (!btn) {
         console.error(`[WinkyHook] ❌ Кнопка ${direction} не найдена в DOM!`);
         window.postMessage(
-          { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", ok: false, error: "button_not_found" },
+          { source: "WINKY_HOOK", type: "WINKY_RESP_CLICK_TRADE", requestId: cmd.requestId, ok: false, clicked: false, error: "button_not_found" },
           "*"
         );
         return;
       }
 
       // 3. Вызываем одиночный строгий клик по кнопке сделки
+      pendingTradeCommand = { requestId: cmd.requestId, sentAt: Date.now() };
       btn.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, cancelable: true, view: window }));
       btn.dispatchEvent(new MouseEvent("mouseup", { bubbles: true, cancelable: true, view: window }));
       btn.click();
@@ -1302,6 +1351,7 @@
         {
           source: "WINKY_HOOK",
           type: "WINKY_RESP_CLICK_TRADE",
+          requestId: cmd.requestId,
           ok: true,
           clicked: true,
           direction: direction,

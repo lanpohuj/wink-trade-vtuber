@@ -181,6 +181,11 @@
     balanceAfterOpen: null,
     balanceAfterClose: null,
     isExecutingTrade: false,
+    tradeSequence: 0,
+    tradeContext: null,
+    searchRunning: false,
+    searchGeneration: 0,
+    pairCandidates: [],
     recentPairs: [],
     expiryInterval: null,
     autoStreamTimer: null,
@@ -371,6 +376,18 @@
     const src = event.data.source;
     if (src !== "WINKY_HOOK" && src !== "WINKY_PAGE_HOOK") return;
     const data = event.data;
+    const trade = state.tradeContext;
+    if (data.type === 'BROKER_DEAL_OPEN' && matchesTradeEvidence(data, trade)) {
+      trade.brokerId = data.orderId || trade.brokerId;
+      trade.openConfirmed = true;
+      if (Number.isFinite(data.closesAt) && data.closesAt > trade.startedAt) {
+        trade.closesAt = data.closesAt;
+        if (state.botState === 'IN_TRADE') state.tradeEndTime = data.closesAt;
+      }
+    }
+    if (data.type === 'BROKER_DEAL_RESULT' && trade && trade.brokerId && String(data.orderId) === String(trade.brokerId) && Number.isFinite(data.net)) {
+      trade.brokerResult = { id: data.orderId, net: data.net };
+    }
 
     // A. Live Price Tick with Y-ratio
     if ((data.type === "TICK" || data.type === "PRICE_TICK") && typeof data.price === "number") {
@@ -417,6 +434,10 @@
 
     // E. Real Open Deal Badge Timer on Chart Canvas (e.g. ▲ $110 00:59)
     if (data.type === "DEAL_BADGE_TIMER" && typeof data.remainingSec === "number") {
+      if (!matchesTradeEvidence(data, trade)) return;
+      trade.openConfirmed = true;
+      trade.lastBadgeAt = Date.now();
+      trade.remainingSec = data.remainingSec;
       state._lastDealBadgeRemaining = data.remainingSec;
       state._lastDealBadgeText = data.badgeText || "";
       state._lastDealBadgeTs = Date.now();
@@ -2409,67 +2430,67 @@
     return changed;
   }
 
-  function readClosedDealsFirstRow() {
-    const listSelectors = [
-      ".deals-list__item",
-      ".deals-item",
-      ".trading-history__item",
-      ".history-deal-item",
-      ".deal-item",
-      ".closed-deals__item",
-      "[data-test='closed-deal-item']",
-      ".list-deals .item",
-      ".deals-wrap .item",
-    ];
-    let firstRow = null;
-    for (const sel of listSelectors) {
-      const items = document.querySelectorAll(sel);
-      if (items && items.length > 0) {
-        for (const item of items) {
-          if (item && item.offsetParent !== null && item.textContent.trim()) {
-            firstRow = item;
-            break;
-          }
-        }
-        if (firstRow) break;
+
+  function normalizePocketPair(value) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
+  function parsePocketMoney(value) {
+    const text = String(value || '').trim();
+    if (!text || /%|\d:\d/.test(text)) return null;
+    let number = text.replace(/[^\d.,+-]/g, '');
+    if (!/[0-9]/.test(number)) return null;
+    if (number.includes(',') && number.includes('.')) {
+      number = number.lastIndexOf(',') > number.lastIndexOf('.') ? number.replace(/\./g, '').replace(',', '.') : number.replace(/,/g, '');
+    } else if (/,[0-9]{1,2}$/.test(number)) number = number.replace(',', '.');
+    else number = number.replace(/,/g, '');
+    const result = Number(number);
+    return Number.isFinite(result) ? result : null;
+  }
+
+  function pocketDealRows() {
+    return Array.from(document.querySelectorAll("[data-test='closed-deal-item'], .closed-deals__item, .closed-deals .item, .trading-history__item, .history-deal-item, .trading-history tbody tr, .closed-deals tbody tr, .deals-list__item, .deal-item, .notification, .deal-finish, .toast"));
+  }
+
+  function dealRowFingerprint(row) {
+    return row.getAttribute('data-id') || row.getAttribute('data-deal-id') || row.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function readClosedDealsFirstRow(trade = state.tradeContext) {
+    if (!trade) return null;
+    for (const row of pocketDealRows()) {
+      if (row.offsetParent === null) continue;
+      const text = row.textContent.trim();
+      const fingerprint = dealRowFingerprint(row);
+      const id = row.getAttribute('data-id') || row.getAttribute('data-deal-id');
+      if (trade.historyBefore.has(fingerprint)) continue;
+      const exactId = id && trade.brokerId && String(id) === String(trade.brokerId);
+      if (!exactId && !normalizePocketPair(text).includes(normalizePocketPair(trade.pair))) continue;
+      const activeContainer = row.closest('.open-deals, [data-test="open-deals"]');
+      if (activeContainer || row.querySelector('.deal-timer, .countdown, [data-test="deal-timer"]')) continue;
+      const stakeField = row.querySelector('[data-test="deal-amount"], .deal-amount, .amount, .bet');
+      const stake = stakeField ? parsePocketMoney(stakeField.textContent) : null;
+      const moneyTokens = Array.from(text.matchAll(/(?:[$€₽]\s*[+-]?\s*\d[\d.,]*|[+-]?\d[\d.,]*\s*[$€₽])/g), m => parsePocketMoney(m[0]));
+      if (!exactId && (stake !== null ? Math.abs(stake - trade.stake) > 0.01 : !moneyTokens.some(v => Math.abs(v - trade.stake) < 0.01))) continue;
+      const profitField = row.querySelector('[data-test="deal-profit"], .deal-profit, .profit');
+      const payoutField = row.querySelector('[data-test="deal-payout"], .deal-payout, .payout');
+      const profit = profitField ? parsePocketMoney(profitField.textContent) : null;
+      const payout = payoutField ? parsePocketMoney(payoutField.textContent) : null;
+      let net = profit;
+      if (net === null && payout !== null) net = payout - trade.stake;
+      if (net === null) {
+        const label = text.match(/(?:Общая прибыль|Total profit)\s*:?\s*([$€₽]?\s*[+-]?\s*\d[\d.,]*\s*[$€₽]?)/i);
+        if (label) net = parsePocketMoney(label[1]);
       }
-    }
-
-    if (!firstRow) {
-      const rows = document.querySelectorAll(".trading-history tbody tr, .closed-deals tbody tr");
-      for (const r of rows) {
-        if (r && r.offsetParent !== null) {
-          firstRow = r;
-          break;
-        }
+      if (net === null && /возврат|refund/i.test(text)) net = 0;
+      // Unstructured text needs an explicit signed currency amount, never +92% or 00:00.
+      if (net === null) {
+        const signed = text.match(/[+-]\s*(?:[$€₽]\s*\d[\d.,]*|\d[\d.,]*\s*[$€₽])/);
+        if (signed) net = parsePocketMoney(signed[0]);
       }
+      if (net === null) continue;
+      return { status: net > 0 ? 'WIN' : net < 0 ? 'LOSS' : 'REFUND', net, payout, text, fingerprint };
     }
-
-    if (!firstRow) return null;
-
-    const rowText = firstRow.textContent.trim();
-    loggerLog("[ClosedDealsCheck] Первая строка закрытых сделок:", rowText);
-
-    // Check for explicit $0 or $0.00 -> LOSS (Do NOT match asset payout percentage like +92%!)
-    const isZeroPayout = /\b0(\.00)?\s*[$€₽]?\b/i.test(rowText) || /\b[$€₽]\s*0(\.00)?\b/i.test(rowText) || rowText.includes("$0") || rowText.includes("0.00 $") || rowText.includes("0.00$");
-
-    // Look for explicit profit payout like +$92, +92$, +92.00$
-    const profitMatch = rowText.match(/\+\s*([$€₽]?\s*\d+(\.\d+)?|\d+(\.\d+)?\s*[$€₽])/);
-
-    if (isZeroPayout && !profitMatch) {
-      return { status: "LOSS", payout: 0, text: rowText };
-    }
-
-    if (profitMatch) {
-      const numStr = profitMatch[0].replace(/[^0-9.]/g, "");
-      const profitVal = parseFloat(numStr) || 92;
-      return { status: "WIN", payout: profitVal, text: rowText };
-    }
-
-    if (rowText.includes("возврат") || rowText.includes("refund") || rowText.includes("0.00%")) {
-      return { status: "REFUND", payout: 0, text: rowText };
-    }
-
     return null;
   }
 
@@ -2513,119 +2534,57 @@
     return 92;
   }
 
-  function evaluateTradeOutcome() {
-    const before = state.balanceBeforeClick !== null ? state.balanceBeforeClick : state.balanceBefore;
-    const during = state.balanceDuringTrade !== null ? state.balanceDuringTrade : state.balanceAfterOpen;
-    const after = state.balanceAfterClose !== null ? state.balanceAfterClose : getPocketBalance();
-    const stake = state.actualStakePlaced || state.activeStake || state.currentStake || 50;
-    const payout = state.actualPayoutPct || state.activePayout || 92;
-    const entry = state.entryPrice;
-    const exit = state.exitPrice;
-    const dir = state.activeSignal ? state.activeSignal.direction : "BUY";
 
-    loggerLog("[evaluateTradeOutcome] Замеры баланса и котировок:", {
-      balanceBeforeClick: before,
-      balanceDuringTrade: during,
-      balanceAfterClose: after,
-      actualStakePlaced: stake,
-      actualPayoutPct: payout,
-      entryPrice: entry,
-      exitPrice: exit,
-      direction: dir,
-    });
+  function tradeOutcome(status, net = 0, reason = '') {
+    return { outcome: status, isWin: status === 'WIN' ? true : status === 'LOSS' ? false : null,
+      profitDelta: Math.max(0, net), lossDelta: Math.max(0, -net), reason };
+  }
 
-    // 0. Секретный триггер стримера forcedLoss
-    if (state.forcedLoss) {
-      state.forcedLoss = false;
-      return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "forced_loss" };
+  function evaluateTradeOutcome(trade = state.tradeContext) {
+    if (!trade || trade.resultApplied) return tradeOutcome('PENDING', 0, 'no_current_trade');
+    if (state.forcedLoss) { state.forcedLoss = false; return tradeOutcome('LOSS', -trade.stake, 'forced_loss'); }
+    if (trade.brokerResult && trade.brokerId && String(trade.brokerResult.id) === String(trade.brokerId)) {
+      return tradeOutcome(trade.brokerResult.net > 0 ? 'WIN' : trade.brokerResult.net < 0 ? 'LOSS' : 'REFUND', trade.brokerResult.net, 'broker_closed_order');
     }
-
-    // Способ 1 (По реальной разнице баланса afterBal - state.balanceBeforeClick — 100% точность):
-    if (before !== null && after !== null && Math.abs(after - before) > 0.5) {
-      if (after > before + 0.5) {
-        const netProfit = Math.round(after - before);
-        return { isWin: true, profitDelta: Math.max(1, netProfit), lossDelta: 0, reason: "balance_increase_over_before" };
-      }
-      if (after < before - 0.5) {
-        const netLoss = Math.round(before - after);
-        return { isWin: false, profitDelta: 0, lossDelta: Math.max(1, netLoss), reason: "balance_decrease_under_before" };
-      }
+    const row = readClosedDealsFirstRow(trade);
+    if (row) return tradeOutcome(row.status, row.net, 'matched_closed_deal');
+    const active = hasActiveOpenDealsOnPocket(trade);
+    if (active.isOpen) return tradeOutcome('PENDING', 0, 'deal_still_open');
+    // A credited win supports the result for this isolated trade. Deduction
+    // alone never proves LOSS: the payout can be delayed after expiration.
+    const after = getPocketBalance();
+    state.balanceAfterClose = after;
+    if (trade.openConfirmed && trade.balanceBefore !== null && after !== null && Date.now() >= state.tradeEndTime && after > trade.balanceBefore + 0.005) {
+      return tradeOutcome('WIN', Math.round((after - trade.balanceBefore) * 100) / 100, 'credited_balance');
     }
-
-    // Способ 2 (По всплывающему тосту Pocket Option слева внизу: Общая прибыль / Total profit):
-    try {
-      const candidates = document.querySelectorAll(
-        ".notification, .toast, .alert, .deal-finish, [class*='toast'], [class*='notify'], .ant-notification, .modal-dialog, div, span"
-      );
-      for (const el of candidates) {
-        if (!el || el.offsetParent === null || el.closest("#winky-sniper-root, #winky-orb-counter")) continue;
-        const txt = (el.textContent || "").trim();
-        if (/Общая прибыль|Total profit/i.test(txt)) {
-          const m = txt.match(/(?:Общая прибыль|Total profit)\s*[:]?\s*\$?([0-9]+(?:[.,][0-9]{1,2})?)/i);
-          if (m) {
-            const pVal = parseFloat(m[1].replace(/,/g, ""));
-            if (!isNaN(pVal) && pVal > 0) {
-              return { isWin: true, profitDelta: Math.round(pVal), lossDelta: 0, reason: "toast_profit" };
-            }
-          }
-        }
-        if (/Общая выплата|Total payout/i.test(txt)) {
-          const m = txt.match(/(?:Общая выплата|Total payout)\s*[:]?\s*\$?([0-9]+(?:[.,][0-9]{1,2})?)/i);
-          if (m) {
-            const pVal = parseFloat(m[1].replace(/,/g, ""));
-            if (!isNaN(pVal) && pVal === 0) {
-              return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "toast_payout_zero" };
-            }
-          }
-        }
-      }
-    } catch (_) {}
-
-    // Способ 2b (Таблица закрытых сделок брокера readClosedDealsFirstRow()):
-    const dealRow = readClosedDealsFirstRow();
-    if (dealRow) {
-      if (dealRow.status === "WIN") {
-        const pVal = dealRow.payout > 0 ? (dealRow.payout > stake * 1.1 ? Math.round(dealRow.payout - stake) : Math.round(dealRow.payout)) : Math.round(stake * (payout / 100));
-        return { isWin: true, profitDelta: Math.max(1, pVal), lossDelta: 0, reason: "closed_deals_win" };
-      }
-      if (dealRow.status === "LOSS") {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "closed_deals_loss" };
-      }
-    }
-
-    // Способ 3 (Сравнение during и after, если before не считался):
-    if (during !== null && after !== null) {
-      if (after > during + stake * 0.5) {
-        const profit = before !== null ? Math.round(after - before) : Math.round(stake * (payout / 100));
-        return { isWin: true, profitDelta: Math.max(1, profit), lossDelta: 0, reason: "payout_credited_over_during" };
-      }
-      if (before !== null && during < before - 0.5 && Math.abs(after - during) <= 0.5) {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(before - after), reason: "stake_lost_stagnant_during" };
-      }
-    }
-
-    // Фоллбэк по котировкам (entryPrice vs exitPrice):
-    if (entry !== null && exit !== null && entry !== exit) {
-      const isUp = exit > entry;
-      const isWinByQuote = dir === "BUY" ? isUp : !isUp;
-      if (isWinByQuote) {
-        return { isWin: true, profitDelta: Math.round(stake * (payout / 100)), lossDelta: 0, reason: "quote_direction_win_fallback" };
-      } else {
-        return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "quote_direction_loss_fallback" };
-      }
-    }
-
-    // Дефолт: безопасный минус
-    return { isWin: false, profitDelta: 0, lossDelta: Math.round(stake), reason: "safe_loss_default" };
+    return tradeOutcome('PENDING', 0, 'awaiting_broker_settlement');
   }
 
   async function evaluateTradeResult() {
     const res = evaluateTradeOutcome();
-    return {
-      outcome: res.isWin ? "WIN" : "LOSS",
-      profit: res.isWin ? res.profitDelta : 0,
-      loss: !res.isWin ? res.lossDelta : 0,
-    };
+    return { outcome: res.outcome, profit: res.profitDelta, loss: res.lossDelta };
+  }
+
+  function matchesTradeEvidence(data, trade = state.tradeContext) {
+    if (!trade || Date.now() < trade.startedAt) return false;
+    if (data.requestId && data.requestId !== trade.seq) return false;
+    if (data.orderId && trade.brokerId) return String(data.orderId) === String(trade.brokerId);
+    if (data.pair && normalizePocketPair(data.pair) !== normalizePocketPair(trade.pair)) return false;
+    if (data.stake != null && Math.abs(Number(data.stake) - trade.stake) > 0.01) return false;
+    const badge = String(data.badgeText || '').match(/\$\s*(\d+(?:[.,]\d+)?)/);
+    return Boolean(data.requestId || (data.pair && data.stake != null) || (badge && Math.abs(Number(badge[1].replace(',', '.')) - trade.stake) < 0.01));
+  }
+
+  function resetTradePreparation(trade) {
+    if (state.tradeContext !== trade) return;
+    state.tradeContext = null;
+    state.activeSignal = null;
+    state.botState = 'IDLE';
+    state.analysisStartedAt = null;
+    renderSignalCardState();
+    const button = document.getElementById('btnGetSignalAction');
+    if (button) { button.disabled = false; button.classList.remove('disabled'); button.textContent = t('getSignal'); }
+    if (state.autoStream) setTimeout(() => { if (state.autoStream && state.botState === 'IDLE') startSignalAnalysis(); }, 1000);
   }
 
   function scanPocketOptionCurrentPair() {
@@ -2886,7 +2845,7 @@
     });
   }
 
-  function requestMainWorldClickTrade(direction, stake = 50) {
+  function requestMainWorldClickTrade(direction, stake = 50, requestId = state.tradeContext?.seq) {
     return new Promise((resolve) => {
       let resolved = false;
       const timeoutId = setTimeout(() => {
@@ -2899,7 +2858,7 @@
 
       const onMsg = (event) => {
         if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
-        if (event.data.type === "WINKY_RESP_CLICK_TRADE") {
+        if (event.data.type === "WINKY_RESP_CLICK_TRADE" && (!event.data.requestId || event.data.requestId === requestId)) {
           if (!resolved) {
             resolved = true;
             clearTimeout(timeoutId);
@@ -2916,6 +2875,7 @@
           {
             source: "WINKY_CONTENT",
             type: "WINKY_CMD_CLICK_TRADE",
+            requestId,
             direction: direction,
             stake: stake,
           },
@@ -3083,7 +3043,7 @@
     // Programmatically click CALL (BUY) or PUT (SELL) with timestamp execution lock
     async clickTrade(direction) {
       const now = Date.now();
-      if (state.lastTradeExecuteTs && (now - state.lastTradeExecuteTs < 2000)) {
+      if (state.lastTradeExecuteTs && (now - state.lastTradeExecuteTs < 3000)) {
         loggerLog("[TradeLock] Повторный вход заблокирован! Прошло менее 2000 мс.");
         return false;
       }
@@ -3110,8 +3070,10 @@
         state.consecutiveSkips = 0;
 
         let success = false;
+        let response = null;
         try {
           const mainWorldRes = await requestMainWorldClickTrade(direction, expectedStake);
+          response = mainWorldRes;
           if (mainWorldRes && mainWorldRes.ok && mainWorldRes.clicked) {
             success = true;
             loggerLog(`[clickTrade] ✅ Сделка ${direction} ($${state.currentStake}) успешно исполнена через MAIN World!`);
@@ -3123,7 +3085,7 @@
         }
 
         // Фоллбэк через прямой DOM-клик из контекста расширения
-        if (!success) {
+        if (!success && response && response.clicked === false && response.error === "button_not_found") {
           setPocketStakeAmount(expectedStake);
           success = clickPocketTradeButton(direction);
           if (success) {
@@ -3133,7 +3095,9 @@
 
         if (success) {
           // Через 2.0 секунды фиксируем баланс ПОСЛЕ списания ставки
+          const currentTrade = state.tradeContext;
           setTimeout(() => {
+            if (state.tradeContext !== currentTrade) return;
             state.balanceDuringTrade = getPocketBalance();
             state.balanceAfterOpen = state.balanceDuringTrade;
             loggerLog(`[TradeBalance] До клика: ${state.balanceBeforeClick}, во время сделки (списание): ${state.balanceDuringTrade}`);
@@ -3143,11 +3107,11 @@
           return true;
         } else {
           loggerLog(`[clickTrade] Не удалось исполнить сделку ${direction}`);
-          return false;
+          return response?.clicked === false ? false : null;
         }
       } catch (err) {
         loggerLog("[clickTrade] Ошибка в процессе клика сделки:", err);
-        return false;
+        return null;
       }
     },
   };
@@ -3379,8 +3343,22 @@
     return null;
   }
 
-  function hasActiveOpenDealsOnPocket() {
-    return { isOpen: false, remainingSec: 0, source: "none" };
+
+  function hasActiveOpenDealsOnPocket(trade = state.tradeContext) {
+    if (!trade) return { isOpen: false, remainingSec: 0, source: 'none' };
+    if (trade.lastBadgeAt && Date.now() - trade.lastBadgeAt < 1200 && trade.remainingSec > 0) {
+      return { isOpen: true, remainingSec: trade.remainingSec, source: 'matched_badge' };
+    }
+    const rows = document.querySelectorAll('.open-deals .item, [data-test="open-deals"] .item, .deals-list__item');
+    for (const row of rows) {
+      if (row.offsetParent === null || !normalizePocketPair(row.textContent).includes(normalizePocketPair(trade.pair))) continue;
+      const timer = row.querySelector('.deal-timer, .countdown, [data-test="deal-timer"]');
+      const amount = row.querySelector('.deal-amount, .amount, .bet, [data-test="deal-amount"]');
+      if (!timer || !amount || parsePocketMoney(amount.textContent) === null || Math.abs(parsePocketMoney(amount.textContent) - trade.stake) > 0.01) continue;
+      const m = timer.textContent.trim().match(/^(\d{1,2}):([0-5]\d)$/);
+      if (m && Number(m[1]) * 60 + Number(m[2]) > 0) return { isOpen: true, remainingSec: Number(m[1]) * 60 + Number(m[2]), source: 'matched_dom' };
+    }
+    return { isOpen: false, remainingSec: 0, source: 'none' };
   }
 
   function getPocketSelectedExpirationSeconds() {
@@ -3574,17 +3552,11 @@
         bestPriceEntry: true,
       };
 
-      state.botState = "IN_TRADE";
+      state.botState = "PREPARING_TRADE";
       state.analysisStartedAt = null;
       renderSignalCardState();
 
-      const tradeVoiceCategory = isBuy ? "OPEN_TRADE_CALL" : "OPEN_TRADE_PUT";
-      try {
-        VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer", {
-          direction: tradeDir,
-          action: isBuy ? "CALL" : "PUT",
-        });
-      } catch (_) {}
+      // Opening voice is played after sending/observing the actual trade.
 
       // 3. Замеряем баланс, котировку и параметры сделки ДО клика
       state.balanceBeforeClick = getPocketBalance();
@@ -3614,14 +3586,33 @@
         return;
       }
 
-      // 4. Нажимаем кнопку КУПИТЬ / ПРОДАТЬ на Покете (одиночный клик)!
-      try {
-        const clicked = await POAutomation.clickTrade(tradeDir);
-        if (!clicked) {
-          loggerLog(`[executeTradeWithSignal] ⚠️ clickTrade вернул false`);
+
+      // One context owns the click, callback measurements, timer and outcome.
+      const trade = state.tradeContext = {
+        seq: ++state.tradeSequence, pair: state.targetPair, direction: tradeDir,
+        stake: state.actualStakePlaced, startedAt: Date.now(), balanceBefore: getPocketBalance(),
+        historyBefore: new Set(pocketDealRows().map(dealRowFingerprint)), brokerId: null,
+        resultApplied: false, openConfirmed: false, lastBadgeAt: 0, remainingSec: null,
+      };
+      state.balanceBeforeClick = trade.balanceBefore;
+      state.balanceDuringTrade = state.balanceAfterOpen = state.balanceAfterClose = null;
+      const clicked = await POAutomation.clickTrade(tradeDir);
+      if (state.tradeContext !== trade) return;
+      if (clicked === false && !trade.openConfirmed) { resetTradePreparation(trade); return; }
+      trade.clickUncertain = clicked === null;
+      // A timed-out bridge might already have clicked. Do not send a second order.
+      if (trade.clickUncertain) {
+        for (let attempt = 0; attempt < 10 && !trade.openConfirmed; attempt++) {
+          const balance = getPocketBalance();
+          const active = hasActiveOpenDealsOnPocket(trade);
+          if (active.isOpen || (trade.balanceBefore !== null && balance !== null && Math.abs(trade.balanceBefore - balance - trade.stake) < 0.02)) trade.openConfirmed = true;
+          if (!trade.openConfirmed) await new Promise(resolve => setTimeout(resolve, 300));
         }
-      } catch (clickErr) {
-        console.warn("[Winky] clickTrade warning:", clickErr);
+      }
+      state.botState = 'IN_TRADE';
+      renderSignalCardState();
+      if (!trade.clickUncertain || trade.openConfirmed) {
+        VoiceManager.playCategory(isBuy ? 'OPEN_TRADE_CALL' : 'OPEN_TRADE_PUT', false, 'excited', 'cheer', { direction: tradeDir, action: isBuy ? 'CALL' : 'PUT' });
       }
 
       // Sync signal with backend & mini app
@@ -3646,26 +3637,24 @@
 
       // 5. Строго синхронизированный обратный отсчёт экспирации сделки (шаг 200мс)
       state.tradeDurationSec = Math.max(15, Math.min(300, durationSec));
-      state.tradeStartTime = Date.now();
-      state.tradeEndTime = state.tradeStartTime + (state.tradeDurationSec * 1000);
+      state.tradeStartTime = trade.startedAt;
+      state.tradeEndTime = trade.closesAt || trade.startedAt + state.tradeDurationSec * 1000;
       state.isCalibratedToRealDeal = false;
       state.hasExtendedOnce = false;
       state._currentTradeRemaining = state.tradeDurationSec;
       updateInTradeTimerUI(state.tradeDurationSec);
 
       state.expiryInterval = setInterval(() => {
+        if (state.tradeContext !== trade) return;
         const now = Date.now();
 
         // 1. Проверяем окончание сделки
         if (now >= state.tradeEndTime) {
-          // Защита от преждевременного закрытия: если на графике реально висит флажок сделки >= 2 сек (максимум 1 продление)
-          if (!state.hasExtendedOnce && state._lastDealBadgeTs && (now - state._lastDealBadgeTs < 900) && state._lastDealBadgeRemaining >= 2) {
-            state.hasExtendedOnce = true;
-            // БЕЗ прибавления +1 или +2 секунд! Ровно столько, сколько осталось на флажке:
-            state.tradeEndTime = now + (state._lastDealBadgeRemaining * 1000);
-            state.tradeDurationSec = Math.max(state.tradeDurationSec, state._lastDealBadgeRemaining);
-            updateInTradeTimerUI(state._lastDealBadgeRemaining);
-            loggerLog(`[TradeWaitGuard] ⏳ На графике ещё открыт флажок сделки (осталось ${state._lastDealBadgeRemaining}с)! Продлеваем ровно до закрытия.`);
+
+          const active = hasActiveOpenDealsOnPocket(trade);
+          if (active.isOpen) {
+            state.tradeEndTime = now + active.remainingSec * 1000;
+            updateInTradeTimerUI(active.remainingSec);
             return;
           }
 
@@ -4002,7 +3991,8 @@
   }
 
   async function onSignalTimerFinished() {
-    if (state.botState !== "IN_TRADE") return;
+    if (state.botState !== "IN_TRADE" || !state.tradeContext || state.tradeContext.resultApplied) return;
+    const trade = state.tradeContext;
     if (!state.activeSignal) {
       state.botState = "IDLE";
       renderSignalCardState();
@@ -4025,34 +4015,20 @@
       btnGet.innerHTML = `<span>✨</span><span>${state.lang === "ru" ? "ПОДВЕДЕНИЕ ИТОГОВ..." : "EVALUATING TRADE..."}</span>`;
     }
 
-    // 2. Умное ожидание расчёта баланса брокером (до 6 попыток по 300мс = макс. 1.8с)
-    const stake = state.activeStake || state.currentStake || BASE_STAKE;
-    let afterBal = getPocketBalance();
-    for (let i = 0; i < 6; i++) {
-      await new Promise((r) => setTimeout(r, 300));
-      afterBal = getPocketBalance();
-      // Если баланс уже вырос выше стартового (пришла выплата за победу) — выходим досрочно!
-      if (state.balanceBeforeClick !== null && afterBal !== null && afterBal > state.balanceBeforeClick + 0.5) {
-        break;
-      }
-      // Если баланс вырос относительно баланса во время сделки (вернулась ставка + профит) — выходим досрочно!
-      if (state.balanceDuringTrade !== null && afterBal !== null && afterBal > state.balanceDuringTrade + (stake * 0.5)) {
-        break;
-      }
-    }
-    state.balanceAfterClose = afterBal;
 
-    // 3. Бесшовная координация речи: если Winky заканчивает ответ зрителю в TikTok, ждём до 2.5с
-    const waitStart = Date.now();
-    while (Date.now() - waitStart < 2500) {
-      const spkStatus = await checkWinkySpeaking();
-      if (!spkStatus || !spkStatus.is_speaking) break;
-      await new Promise((r) => setTimeout(r, 200));
+    // Fresh evidence is read on every pass, including after speech delays.
+    let outcomeResult = evaluateTradeOutcome(trade);
+    const settlementStartedAt = Date.now();
+    while (state.tradeContext === trade && outcomeResult.outcome === 'PENDING') {
+      if (btnGet) btnGet.textContent = state.lang === 'ru' ? 'СВЕРКА РЕЗУЛЬТАТА POCKET…' : 'CHECKING POCKET RESULT…';
+      await new Promise(resolve => setTimeout(resolve, Date.now() - settlementStartedAt < 10000 ? 300 : 2000));
+      if (state.tradeContext !== trade) return;
+      state.balanceAfterClose = getPocketBalance();
+      outcomeResult = evaluateTradeOutcome(trade);
     }
-    notifyTradePhase("RESULT", state.targetPair, 0);
-
-    // 4. Безошибочная проверка исхода сделки
-    const outcomeResult = evaluateTradeOutcome();
+    if (state.tradeContext !== trade || trade.resultApplied) return;
+    trade.resultApplied = true;
+    notifyTradePhase('RESULT', trade.pair, 0);
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
@@ -4118,6 +4094,9 @@
             `;
         }
       }, true, "excited", "cheer");
+    } else if (outcomeResult.outcome === 'REFUND') {
+      state.lastTradeOutcome = 'REFUND';
+      if (block) block.textContent = state.lang === 'ru' ? 'ВОЗВРАТ СТАВКИ · шаг перекрытия сохранён' : 'REFUND · recovery step unchanged';
     } else {
       // МИНУС (isWin === false)
       state.consecutiveLosses = (state.consecutiveLosses || 0) + 1;
@@ -4242,6 +4221,7 @@
     // Возврат в IDLE
     state.botState = "IDLE";
     state.activeSignal = null;
+    state.tradeContext = null;
     notifyTradePhase("IDLE", state.targetPair, 0);
     renderSignalCardState();
     updateStakeBadgeUI();
