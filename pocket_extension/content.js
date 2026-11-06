@@ -623,6 +623,7 @@
         if (cleanAsset !== cleanTarget) {
           return; // different pair
         }
+        if(normalizePocketPair(this.pair)!==cleanTarget) this.reset(state.targetPair);
       }
       const map = new Map();
       for (const t of this.ticks) {
@@ -814,7 +815,8 @@
 
   function marketFrames(scan=null) {
     const frames={};
-    if(scan?.visualCandles?.length && Date.now()>=state.visualReadyAfter && chartPeriodSeconds()) {
+    const signature=scan?.visualCandles?.map(c=>[c.open,c.close,c.high,c.low,c.xCenter].join(',')).join(';');
+    if(scan?.visualCandles?.length && signature!==state.visualBaseline && Date.now()>=state.visualReadyAfter && chartPeriodSeconds()) {
       rememberMarketFrame(chartPeriodSeconds(),scan.visualCandles,'pixels');
     }
     const pair=normalizePocketPair(state.targetPair);
@@ -823,7 +825,16 @@
       const saved=Array.from(state.marketFrames.values()).filter(f=>normalizePocketPair(f.pair)===pair && f.period===period &&
         (f.source!=='pixels' || Date.now()-f.receivedAt<30000));
       const broker=saved.find(f=>f.source==='broker');
-      if(broker) bars=Array.from(new Map([...broker.bars,...bars].map(c=>[c.time,c])).values()).sort((a,b)=>a.time-b.time);
+      if(broker) {
+        const merged=new Map(broker.bars.map(c=>[c.time,c]));
+        for(const tickBar of bars) {
+          const original=merged.get(tickBar.time);
+          if(!original) merged.set(tickBar.time,tickBar);
+          else if(!tickBar.complete) merged.set(tickBar.time,candleGeometry({...original,close:tickBar.close,
+            high:Math.max(original.high,tickBar.high),low:Math.min(original.low,tickBar.low),complete:false,incomplete:false}));
+        }
+        bars=Array.from(merged.values()).sort((a,b)=>a.time-b.time);
+      }
       if(bars.filter(c=>c.complete && !c.incomplete).length<20) {
         const visual=saved.find(f=>f.source==='pixels');
         if(visual?.bars.length>=21) bars=visual.bars;
@@ -834,6 +845,14 @@
     // bar timestamps are estimates of position and must not invent M2/S30.
     if(frames[30].filter(c=>c.complete && !c.incomplete).length<20 && frames[15].every(c=>c.source!=='pixels')) frames[30]=aggregateCandles(frames[15],2);
     if(frames[120].filter(c=>c.complete && !c.incomplete).length<20 && frames[60].every(c=>c.source!=='pixels')) frames[120]=aggregateCandles(frames[60],2);
+    for(const period of [15,30,60,120]) {
+      const bars=frames[period];let start=0;
+      for(let i=0;i<bars.length;i++) {
+        if(bars[i].complete && bars[i].incomplete) start=i+1;
+        if(i>0 && bars[i].time-bars[i-1].time!==period*1000) start=i;
+      }
+      frames[period]=bars.slice(start);
+    }
     return frames;
   }
 
@@ -1010,7 +1029,67 @@
     },
 
     // 7. Smart Horizon Multi-Timeframe Analysis Engine (15s, 30s, 1m, 2m)
+    frameContext(candles) {
+      const closed=(candles || []).filter(c=>c.complete===true && !c.incomplete);
+      if(closed.length<21) return null;
+      const closes=closed.map(c=>c.close), last=closes.at(-1);
+      const ema9=this.computeEMA(closes,9).at(-1), ema21series=this.computeEMA(closes,21), ema21=ema21series.at(-1);
+      const ema50Ready=closes.length>=50, ema50=ema50Ready?this.computeEMA(closes,50).at(-1):null;
+      const slope=ema21-ema21series[Math.max(0,ema21series.length-6)], atr=this.computeATR(closed,14);
+      const direction=ema9>ema21 && slope>0?'BUY':ema9<ema21 && slope<0?'SELL':null;
+      const strong=Boolean(direction && ema50Ready && (direction==='BUY'?ema21>ema50:ema21<ema50) && Math.abs(ema9-ema21)>.25*atr);
+      return {direction,strong,ema50Ready,atr,last,closedCount:closed.length};
+    },
+
     analyze(candles, currentPrice, scan = null) {
+      const frames=scan?.timeframes || {[candles?.[0]?.candlePeriodSec]:candles || []};
+      const requirements=[{period:15,expiry:'15s',context:60,extra:null},{period:15,expiry:'30s',context:60,extra:30},
+        {period:30,expiry:'1m',context:60,extra:null},{period:60,expiry:'2m',context:120,extra:null}];
+      const candidates=[],rejected=[];
+      for(const spec of requirements) {
+        const bars=frames[spec.period] || [], contextBars=frames[spec.context] || [], context=this.frameContext(contextBars);
+        if(!context || bars.filter(c=>c.complete && !c.incomplete).length<20 ||
+          (spec.extra && (frames[spec.extra] || []).filter(c=>c.complete && !c.incomplete).length<20)) {
+          rejected.push({expiry:spec.expiry,reason:'NOT_ENOUGH_CANDLES'});continue;
+        }
+        if(bars.some(c=>normalizePocketPair(c.pair)!==normalizePocketPair(state.targetPair))) {
+          rejected.push({expiry:spec.expiry,reason:'INCOMPATIBLE_CANDLES'});continue;
+        }
+        const latest=bars.at(-1), latestContext=contextBars.filter(c=>c.complete && !c.incomplete).at(-1);
+        if(!latest || latest.complete || latest.incomplete || !latestContext ||
+          marketNow()-(latestContext.time+spec.context*1000)>spec.context*1500) {
+          rejected.push({expiry:spec.expiry,reason:'STALE_CANDLES'});continue;
+        }
+        // Price OHLC from ticks and broker history share units. Pixel geometry
+        // is kept within its own frame, never merged into a quote series.
+        const own=bars.map(c=>({...c,origin:c.source,source:c.source==='pixels'?'pixels':'quotes'}));
+        const result=this.analyzeFrame(own,latest.close,scan,{expiry:spec.expiry});
+        if(!result.shouldTrade) {rejected.push({expiry:spec.expiry,reason:result.vetoReason});continue;}
+        if(context.strong && context.direction!==result.direction) {
+          rejected.push({expiry:spec.expiry,reason:'OPPOSING_HIGHER_TREND'});continue;
+        }
+        if(spec.extra) {
+          const extra=this.frameContext(frames[spec.extra]);
+          if(extra?.strong && extra.direction!==result.direction) {rejected.push({expiry:spec.expiry,reason:'OPPOSING_HIGHER_TREND'});continue;}
+        }
+        const periods=Array.from(new Set([spec.period,spec.context,...(spec.extra?[spec.extra]:[])]));
+        result.timeframesUsed=periods;
+        result.dataSources=periods.map(period=>({period,source:frames[period]?.at(-1)?.source,closed:(frames[period]||[]).filter(c=>c.complete && !c.incomplete).length}));
+        result.contextDirection=context.direction;result.contextStrong=context.strong;result.ema50Ready=context.ema50Ready;
+        result.entrySource=latest.source;result.entryPeriodSec=spec.period;
+        result.explanationRu += ' · '+periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ');
+        result.confluence=evaluate5FactorConfluence(scan,result,readTradersSentiment());
+        candidates.push(result);
+      }
+      candidates.sort((a,b)=>b.confluence.score-a.confluence.score || b.confidence-a.confidence);
+      if(candidates.length) return {...candidates[0],scenarios:candidates,rejected};
+      const hard=rejected.some(r=>['HIGH_RISK_MARKET','OPPOSING_HIGHER_TREND'].includes(r.reason));
+      return {valid:!rejected.every(r=>r.reason==='NOT_ENOUGH_CANDLES'),shouldTrade:false,direction:null,confidence:0,
+        vetoReason:hard?'HIGH_RISK_MARKET':rejected.find(r=>r.reason!=='NOT_ENOUGH_CANDLES')?.reason || 'NOT_ENOUGH_CANDLES',
+        hardVeto:hard,rejected,explanationRu:hard?'Направление или уровень не допускают вход':'Ожидаем подтверждённые данные нужных интервалов',explanationEn:'Waiting for valid multi-timeframe setup'};
+    },
+
+    analyzeFrame(candles, currentPrice, scan = null, options = {}) {
       if (!candles || candles.length < 8) {
         return {
           valid: false,
@@ -1031,28 +1110,18 @@
       }
       // Keep the legacy variable name internally; period is explicit and never inferred as S15.
       const candlesS15 = candles;
-      let candlesS30 = [];
-      let candlesM1 = [];
-      let candlesM2 = [];
-
-      if (baseSource === 'ticks' && LiveTickBuffer.ticks.length >= 20) {
-        candlesS30 = LiveTickBuffer.buildCandles(30, 45);
-        candlesM1 = LiveTickBuffer.buildCandles(60, 45);
-        candlesM2 = LiveTickBuffer.buildCandles(120, 45);
-      }
-      if (candlesS30.length < 8 && basePeriod <= 30) candlesS30 = aggregateCandles(candlesS15, 30/basePeriod);
-      if (candlesM1.length < 8 && basePeriod <= 60) candlesM1 = aggregateCandles(candlesS15, 60/basePeriod);
-      if (candlesM2.length < 8 && basePeriod <= 120) candlesM2 = aggregateCandles(candlesS15, 120/basePeriod);
-
-      const closes = candlesS15.map((c) => Number(c.close));
+      const indicatorBars=candlesS15.filter(c=>c.complete && !c.incomplete);
+      if(indicatorBars.length<20) return {shouldTrade:false,vetoReason:'NOT_ENOUGH_CANDLES'};
+      const closes = indicatorBars.map((c) => Number(c.close));
       const n = candlesS15.length;
-      const curPrice = closes[n - 1];
-      const atr = this.computeATR(candlesS15, 14);
+      const curPrice = Number(candlesS15.at(-1).close);
+      const atr = this.computeATR(indicatorBars, 14);
 
       // Скользящие средние (EMA 9, 21, 50)
       const ema9Arr = this.computeEMA(closes, 9);
       const ema21Arr = this.computeEMA(closes, 21);
-      const ema50Arr = this.computeEMA(closes, Math.min(50, closes.length));
+      const ema50Ready=closes.length>=50;
+      const ema50Arr = ema50Ready ? this.computeEMA(closes,50) : [];
 
       const ema9 = ema9Arr[ema9Arr.length - 1];
       const ema21 = ema21Arr[ema21Arr.length - 1];
@@ -1061,19 +1130,21 @@
       const emaSlope = ema21 - ema21Prev;
 
       // Трендовый наклон и динамика
-      const recentSlope10 = closes[n - 1] - closes[Math.max(0, n - 10)];
-      const recentSlope8 = closes[n - 1] - closes[Math.max(0, n - 8)];
+      const recentSlope10 = closes.at(-1) - closes[Math.max(0, closes.length - 10)];
+      const recentSlope8 = closes.at(-1) - closes[Math.max(0, closes.length - 8)];
 
       let trendRegime = "RANGING";
-      if (ema9 > ema21 && ema21 > ema50 && emaSlope > 0) trendRegime = "STRONG_UPTREND";
-      else if (ema9 < ema21 && ema21 < ema50 && emaSlope < 0) trendRegime = "STRONG_DOWNTREND";
+      if (ema50Ready && ema9 > ema21 && ema21 > ema50 && emaSlope > 0) trendRegime = "STRONG_UPTREND";
+      else if (ema50Ready && ema9 < ema21 && ema21 < ema50 && emaSlope < 0) trendRegime = "STRONG_DOWNTREND";
       else if (Math.abs(ema9 - ema21) < 0.25 * atr) trendRegime = "FLAT";
+      else if(ema9>ema21 && emaSlope>0) trendRegime="UPTREND";
+      else if(ema9<ema21 && emaSlope<0) trendRegime="DOWNTREND";
 
       // Bollinger Bands & RSI & Stoch
       const bb = this.computeBollinger(closes, 20, 2.0);
       const rsiData = this.computeWilderRSI(closes, 14);
       const rsi = rsiData.current;
-      const stoch = this.computeStochastic(candlesS15, 14, 3, 3);
+      const stoch = this.computeStochastic(indicatorBars, 14, 3, 3);
 
       // Micro tick metrics (включая delta3s и delta5s)
       const micro = (typeof LiveTickBuffer !== "undefined")
@@ -1110,27 +1181,26 @@
       const posInChartRange = (curPrice - lowAll) / totalSpanAll;
 
       // Локальные экстремумы последних 15 свечей и запас хода до структуры
-      const last15 = candlesS15.slice(-15);
+      const last15 = indicatorBars.slice(-15);
       const recentHigh15 = Math.max(...last15.map((c) => c.high));
       const recentLow15 = Math.min(...last15.map((c) => c.low));
       const roomToHigh15 = recentHigh15 - curPrice;
       const roomToLow15 = curPrice - recentLow15;
 
       // Уровни П/С и запас хода (35 свечей)
-      const window35 = candlesS15.slice(-35);
+      const window35 = indicatorBars.slice(-35);
       const resistanceLevel = Math.max(...window35.map((c) => c.high));
       const supportLevel = Math.min(...window35.map((c) => c.low));
       const roomUpATR = (resistanceLevel - curPrice) / Math.max(Number.EPSILON, atr);
       const roomDownATR = (curPrice - supportLevel) / Math.max(Number.EPSILON, atr);
 
-      // Лимит сканирования пар: MAX_PAIR_SCANS = 7
-      const isScanAllowedToSkip = !state.allowDominantEntry;
+
 
       // =============================================================
       // ФИКС ОШИБКИ А: Absolute Macro Trend Lock
       // =============================================================
-      const trendUpMacro = (ema9 > ema21 && ema21 > ema50 && emaSlope > 0);
-      const trendDownMacro = (ema9 < ema21 && ema21 < ema50 && emaSlope < 0);
+      const trendUpMacro = (ema9 > ema21 && (!ema50Ready || ema21 > ema50) && emaSlope > 0);
+      const trendDownMacro = (ema9 < ema21 && (!ema50Ready || ema21 < ema50) && emaSlope < 0);
       const isMacroBull = trendUpMacro || (recentSlope10 > 0.6 * atr);
       const isMacroBear = trendDownMacro || (recentSlope10 < -0.6 * atr);
 
@@ -1260,7 +1330,7 @@
         let scoreBuy30 = 0;
         let scoreSell30 = 0;
 
-        if (!strictVetoBuy && (ema9 > ema21 || trendRegime === "STRONG_UPTREND")) {
+        if (!strictVetoBuy && !isStreakExhausted && (ema9 > ema21 || trendRegime === "STRONG_UPTREND")) {
           const hasPullback = (cPrev1 && cPrev1.isRed) || last5.some((c) => c.isRed);
           if (
             c0.isGreen &&
@@ -1278,7 +1348,7 @@
           }
         }
 
-        if (!strictVetoSell && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND")) {
+        if (!strictVetoSell && !isStreakExhausted && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND")) {
           const hasPullback = (cPrev1 && cPrev1.isGreen) || last5.some((c) => c.isGreen);
           if (
             c0.isRed &&
@@ -1402,7 +1472,7 @@
         let scoreSell2m = 0;
 
         // Покупка 2m: строго запрещена при медвежьем макро-тренде
-        if (!strictVetoBuy && !isMacroBear && posInChartRange <= 0.35 && greenCount5 >= 3 && c0.isGreen && roomToHigh15 >= 0.50 * atr) {
+        if (!strictVetoBuy && !isStreakExhausted && !isMacroBear && posInChartRange <= 0.35 && greenCount5 >= 3 && c0.isGreen && roomToHigh15 >= 0.50 * atr) {
           canBuy2m = true;
           scoreBuy2m = 86;
           if (roomUpATR >= 1.2) scoreBuy2m += 5;
@@ -1410,7 +1480,7 @@
         }
 
         // Продажа 2m: СТРОГО ЗАПРЕЩЕНА при бычьем макро-тренде (устраняет ошибку LBP/USD OTC!)
-        if (!strictVetoSell && !isMacroBull && posInChartRange >= 0.65 && redCount5 >= 3 && c0.isRed && roomToLow15 >= 0.50 * atr) {
+        if (!strictVetoSell && !isStreakExhausted && !isMacroBull && posInChartRange >= 0.65 && redCount5 >= 3 && c0.isRed && roomToLow15 >= 0.50 * atr) {
           canSell2m = true;
           scoreSell2m = 86;
           if (roomDownATR >= 1.2) scoreSell2m += 5;
@@ -1450,7 +1520,7 @@
 
       // Выбор лучшего сценария по максимальному баллу
       scenarios.sort((a, b) => b.score - a.score);
-      const best = scenarios.find(s => parseDurationSeconds(s.expiry) >= basePeriod &&
+      const best = scenarios.find(s => (!options.expiry || s.expiry===options.expiry) && parseDurationSeconds(s.expiry) >= basePeriod &&
         (s.direction === 'BUY' ? !isMacroBear && !c0.isRed : !isMacroBull && !c0.isGreen));
 
       if (best && best.score >= 84) {
@@ -1460,7 +1530,8 @@
           valid: true,
           shouldTrade: true,
           direction: safeDir,
-          confidence: Math.min(97, Math.round(best.score + 5)),
+          confidence: best.score,
+          ema50Ready,
           setup: best.setup,
           recommendedExpiry: best.expiry,
           factors: best.factors,
@@ -1477,71 +1548,9 @@
         };
       }
 
-      if (isScanAllowedToSkip) {
-        return {
-          valid: true,
-          shouldTrade: false,
-          vetoReason: "LOW_CONFLUENCE_WAIT",
-          confidence: 50,
-          direction: waveSlope5 > 0 ? 'BUY' : waveSlope5 < 0 ? 'SELL' : null,
-          atr,rsi,pctB:bb.pctB,trendRegime,
-          hardVeto: strictVetoBuy && strictVetoSell,
-          sr: {distToRes:roomUpATR,distToSup:roomDownATR},
-          recommendedExpiry: "30s",
-          explanationRu: isRu ? "Сетап не подтверждён фильтрами — переключаем пару на чистый тренд" : "Setup unconfirmed by filters — switching pair",
-          explanationEn: "Setup unconfirmed by filters — switching pair",
-        };
-      }
-
-      // Дошли до лимита сканирования (7 пар): СТРОГО СОБЛЮДАЕМ Absolute Macro Trend Lock, MA Alignment, Climax Guard и Room to Structure!
-      let forcedDir = waveSlope5 > 0 || greenBodySum5 > redBodySum5 ? "BUY" : "SELL";
-      if (strictVetoBuy) forcedDir = "SELL";
-      if (strictVetoSell) forcedDir = "BUY";
-
-      // Если и BUY, и SELL заблокированы защитами — отменяем вход для защиты депозита!
-      if ((forcedDir === "BUY" && (strictVetoBuy || c0.isRed)) || (forcedDir === "SELL" && (strictVetoSell || c0.isGreen))) {
-        return {
-          valid: true,
-          shouldTrade: false,
-          vetoReason: "HIGH_RISK_MARKET",
-          confidence: 45,
-          recommendedExpiry: "30s",
-          explanationRu: isRu ? "Рынок в зоне экстремального риска — вход отклонён для защиты баланса" : "Extreme market risk — trade blocked for capital protection",
-          explanationEn: "Extreme market risk — trade blocked for capital protection",
-        };
-      }
-
-      const forcedExpiry = basePeriod >= 60 ? '2m' : basePeriod === 30 ? '30s' : (c0.body >= 0.70 * atr) ? "15s" : "30s";
-      const forcedSetup = (forcedExpiry === "15s") ? "SNIPER_BREAKOUT_15S" : "TREND_PULLBACK_30S";
-
-      const forcedFactors = [
-        isRu ? `Согласованный вход по трендовой волне (${forcedDir})` : `Aligned entry with trend wave (${forcedDir})`,
-        isRu ? `Защищённый горизонт экспирации: ${forcedExpiry}` : `Protected horizon: ${forcedExpiry}`,
-      ];
-
-      return {
-        valid: true,
-        shouldTrade: true,
-        direction: forcedDir,
-        confidence: 86,
-        setup: forcedSetup,
-        recommendedExpiry: forcedExpiry,
-        factors: forcedFactors,
-        atr: atr,
-        rsi: rsi,
-        pctB: bb.pctB,
-        trendRegime: trendRegime,
-        sr: { resistance: resistanceLevel, support: supportLevel, distToRes: roomUpATR, distToSup: roomDownATR },
-        volatilityRatio: c0.body / Math.max(Number.EPSILON, atr),
-        line1: isRu
-          ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено правой волной." : "📌 Нисходящая структура: давление продавцов подтверждено правой волной.")
-          : (forcedDir === "BUY" ? "📌 Upward flow confirmed by right wave momentum." : "📌 Downward flow confirmed by right wave momentum."),
-        line2: isRu
-          ? `🎯 Снайперский вход ${forcedDir === "BUY" ? "ВВЕРХ" : "ВНИЗ"} (${forcedExpiry}) по волне.`
-          : `🎯 Sniper entry ${forcedDir === "BUY" ? "UP" : "DOWN"} (${forcedExpiry}) with wave.`,
-        explanationRu: forcedFactors.join(" · "),
-        explanationEn: forcedFactors.join(" · "),
-      };
+      return {valid:true,shouldTrade:false,vetoReason:strictVetoBuy && strictVetoSell?'HIGH_RISK_MARKET':'LOW_CONFLUENCE_WAIT',
+        hardVeto:strictVetoBuy && strictVetoSell,direction:null,confidence:0,atr,rsi,pctB:bb.pctB,trendRegime,
+        sr:{distToRes:roomUpATR,distToSup:roomDownATR},explanationRu:'Нет подтверждённого сетапа',explanationEn:'No confirmed setup'};
     },
   };
 
@@ -1550,6 +1559,7 @@
   const ChartAnalyzer = {
     onNewPriceTick(price, timestamp = Date.now(), yRatio = null, metadata = {}) {
       if (!price || isNaN(price) || price <= 0) return;
+      if(metadata.source_type==='ws' && state.lastRealQuote?.pair===state.targetPair && timestamp<state.lastRealQuote.timestamp) return;
       state.lastHookTickTime = metadata.receivedAt || Date.now();
       state.priceTicks.push(price);
       if (state.priceTicks.length > 120) state.priceTicks.shift();
@@ -1559,6 +1569,8 @@
         LiveTickBuffer.addTick(price, timestamp);
         state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
       }
+
+      if(metadata.source_type==='canvas' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol)===normalizePocketPair(state.targetPair)) state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
 
       if (typeof yRatio === "number" && !isNaN(yRatio)) {
         state.lastPriceYRatio = yRatio;
@@ -1728,18 +1740,9 @@
       }
 
 
-      let activeCandles = [];
-      const liveS15 = LiveTickBuffer.buildCandles(15, 45);
-      if (liveS15.length >= 8 && Date.now() - LiveTickBuffer.ticks.at(-1).ts < 5000) activeCandles = liveS15;
-      const visualPeriod = chartPeriodSeconds();
-      if (activeCandles.length < 8 && visualPeriod && visualPeriod <= 120) {
-        const visual = scan?.visualCandles?.length >= 8 ? scan.visualCandles : state.candles.filter(c=>c.source==='pixels');
-        activeCandles = (visual || []).filter(c => (!c.source || c.source==='pixels') && (!c.pair || normalizePocketPair(c.pair) === normalizePocketPair(state.targetPair)))
-          .map(c => ({...c,source:'pixels',pair:state.targetPair,candlePeriodSec:visualPeriod}));
-      }
-
-      const curPrice = activeCandles.length > 0 ? Number(activeCandles[activeCandles.length - 1].close) : 1.0;
-      const pro = ProTraderEngine.analyze(activeCandles, curPrice, scan);
+      const frames=marketFrames(scan);
+      const activeCandles=frames[15]?.length?frames[15]:frames[60] || [];
+      const pro = ProTraderEngine.analyze(activeCandles, activeCandles.at(-1)?.close, {...scan,timeframes:frames});
 
       const isUp = pro.direction === "BUY";
 
@@ -1767,6 +1770,7 @@
       }
 
       return {
+        ...pro,
         direction: pro.direction,
         accuracy: pro.confidence,
         confidence: pro.confidence,
@@ -2129,7 +2133,7 @@
     const isBuy = String(analysis?.direction || "BUY").toUpperCase() === "BUY";
     const shouldTrade = Boolean(analysis?.shouldTrade);
     const conf = analysis?.confidence || 75;
-    const rsi = analysis?.rsi || 50;
+    const rsi = analysis?.rsi ?? 50;
     const pctB = analysis?.pctB !== undefined ? analysis.pctB : 0.5;
     const setup = analysis?.setup || "PRICE_ACTION";
     const veto = analysis?.vetoReason;
@@ -2146,6 +2150,10 @@
       f1Score = !isBuy ? 1.0 : 0.5;
       f1Pass = !isBuy;
       f1Detail = isRu ? "EMA 9<21<50: Устойчивый нисходящий тренд" : "EMA 9<21<50: Confirmed bearish trend";
+    } else if (analysis?.trendRegime==='UPTREND' || analysis?.trendRegime==='DOWNTREND') {
+      f1Pass=(analysis.trendRegime==='UPTREND')===isBuy;
+      f1Score=f1Pass ? .8 : 0;
+      f1Detail=isRu?'EMA 9/21: направление тренда (EMA50 ещё не готова)':'EMA 9/21 trend (EMA50 unavailable)';
     } else {
       f1Score = 0.7;
       f1Pass = !veto;
@@ -2162,13 +2170,13 @@
     } else if (setup === "PINBAR") {
       f2Score = 1.0;
       f2Detail = isRu ? `Пинбар с отторжением тени` : `Pinbar with rejection shadow`;
-    } else if (setup === "TREND_PULLBACK") {
+    } else if (setup === "TREND_PULLBACK" || setup === "TREND_PULLBACK_30S") {
       f2Score = 1.0;
       f2Detail = isRu ? `Откат к средним и возобновление импульса` : `Pullback to EMAs and continuation`;
-    } else if (setup === "BOLLINGER_REVERSAL") {
+    } else if (setup === "BOLLINGER_REVERSAL" || setup === "LEVEL_REVERSAL_1M") {
       f2Score = 1.0;
       f2Detail = isRu ? `Отскок от границы Боллинджера (%B: ${pctB})` : `Reversal off Bollinger (%B: ${pctB})`;
-    } else if (setup === "MOMENTUM_BREAKOUT") {
+    } else if (["MOMENTUM_BREAKOUT","SNIPER_BREAKOUT_15S","STRUCTURAL_WAVE_2M"].includes(setup)) {
       f2Score = 1.0;
       f2Detail = isRu ? `Импульсный пробой диапазона` : `Momentum range breakout`;
     } else {
@@ -2187,8 +2195,9 @@
       f3Detail = isRu ? `Отказ: цена упёрлась в уровень S/R` : `Reject: price hit direct S/R barrier`;
     } else if (analysis?.sr) {
       const dist = isBuy ? analysis.sr.distToRes : analysis.sr.distToSup;
-      f3Score = 1.0;
-      f3Detail = isRu ? `Запас хода до уровня: ${dist} ATR` : `Room to key level: ${dist} ATR`;
+      f3Score = Number.isFinite(dist) ? (dist>=1 ? 1 : dist>=.45 ? .5 : 0) : 0;
+      f3Pass=Number.isFinite(dist) && dist>=.45;
+      f3Detail = Number.isFinite(dist) ? (isRu ? `Запас хода до уровня: ${dist.toFixed(2)} ATR` : `Room to key level: ${dist.toFixed(2)} ATR`) : (isRu ? "Уровни не определены" : "Levels unavailable");
     } else {
       f3Score = 0.8;
       f3Detail = isRu ? `Зона уровней свободна` : `Clear level trajectory`;
@@ -2235,12 +2244,14 @@
       f5Detail = isRu ? `Шкала Покета: паритет (${sentVal}%)` : `Pocket sentiment: balanced (${sentVal}%)`;
     }
 
-    let totalScore = 0;
-    if (shouldTrade) {
-      totalScore = Math.min(5.0, Math.max(4.2, parseFloat((4.0 + (conf - 85) * 0.08).toFixed(1))));
-    } else {
-      totalScore = Math.min(3.8, Math.max(2.1, parseFloat((conf / 25).toFixed(1))));
-    }
+    // No data is not positive confirmation. Display, ranking and execution
+    // use this same sum; confidence no longer manufactures a 4.2..5.0 score.
+    if(!analysis?.trendRegime) {f1Score=0;f1Pass=false;f1Detail=isRu?'Тренд не подтверждён':'Trend unavailable';}
+    if(!analysis?.setup) {f2Score=0;f2Pass=false;}
+    if(!analysis?.sr) {f3Score=0;f3Pass=false;f3Detail=isRu?'Уровни не определены':'Levels unavailable';}
+    if(!Number.isFinite(analysis?.rsi) || !Number.isFinite(analysis?.pctB)) {f4Score=0;f4Pass=false;f4Detail=isRu?'Осцилляторы не готовы':'Oscillators unavailable';}
+    if(!sentiment?.observed) {f5Score=0;f5Pass=false;f5Detail=isRu?'Шкала Pocket недоступна':'Pocket sentiment unavailable';}
+    const totalScore=Math.round((f1Score+f2Score+f3Score+f4Score+f5Score)*100)/100;
 
     const isStrong = shouldTrade && totalScore >= 4.0;
 
@@ -2754,6 +2765,7 @@
 
   function requestMainWorldSwitchPair(targetPairName) {
     return new Promise((resolve) => {
+      state.visualBaseline=scanCanvasStructure().visualCandles.map(c=>[c.open,c.close,c.high,c.low,c.xCenter].join(',')).join(';');
       const requestId=++state.hookRequestSequence;
       let resolved = false;
       const timeoutId = setTimeout(() => {
@@ -2808,6 +2820,10 @@
 
   function requestMainWorldEnsureChartTimeframe(targetTf = "S15") {
     return new Promise((resolve) => {
+      if(chartPeriodSeconds(targetTf)!==chartPeriodSeconds()) {
+        state.visualBaseline=scanCanvasStructure().visualCandles.map(c=>[c.open,c.close,c.high,c.low,c.xCenter].join(',')).join(';');
+        state.visualReadyAfter=Date.now()+150;
+      }
       const requestId=++state.hookRequestSequence;
       let resolved = false;
       const timeoutId = setTimeout(() => {
@@ -3456,46 +3472,56 @@
     return parseDurationSeconds(strategyTf || "30s") || 30;
   }
 
-  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false) {
-    const block = document.getElementById("botDirectionBlock");
-    if (!block) return;
-    const isRu = (state.lang === "ru");
-    block.className = "winky-direction-block winky-signal-display analysing";
-    const segsHtml = [0, 1, 2, 3].map((segIdx) => {
-      if (segIdx < stepIndex) return '<div class="winky-scan-seg done"></div>';
-      if (segIdx === stepIndex) return `<div class="winky-scan-seg ${isConfirmed ? 'done' : 'active'}"></div>`;
-      return '<div class="winky-scan-seg"></div>';
-    }).join("");
-    const isFinal = (stepIndex >= totalSteps - 1);
-    const scoreBadgeText = isFinal && scoreStr ? `★ ${scoreStr}` : (isRu ? `ШАГ ${stepIndex + 1} / ${totalSteps}` : `STEP ${stepIndex + 1} / ${totalSteps}`);
-    const numPrefix = String(stepIndex + 1).padStart(2, "0");
-    const formattedTitle = stepTitle.startsWith("0") ? stepTitle : `${numPrefix} · ${stepTitle}`;
-
-    block.innerHTML = `
-      <div class="winky-scan-top">
-        <div class="winky-scan-title">
-          <span class="winky-scan-brain-icon">🧠</span>
-          <span>${isRu ? "АНАЛИЗ ГРАФИКА" : "CHART VISION"}</span>
-        </div>
-        <div class="winky-scan-score-badge ${isFinal ? 'glow' : ''}">${scoreBadgeText}</div>
-      </div>
-      <div class="winky-scan-segments">${segsHtml}</div>
-      <div class="winky-flip-stage">
-        <div class="winky-flip-card ${isConfirmed ? 'done-step' : ''}" id="winkyActiveFlipCard">
-          <div class="winky-flip-header">
-            <span class="winky-flip-step-name">${formattedTitle}</span>
-            <span class="winky-flip-status confirmed">✓ OK</span>
-          </div>
-          <div class="winky-flip-desc">${stepDesc}</div>
-        </div>
-      </div>
-    `;
-
-    const accEl = document.getElementById("metricAccuracyVal");
-    if (accEl) {
-      const estAcc = Math.round(Math.min(97, 88 + (stepIndex + 1) * 2));
-      accEl.textContent = `${estAcc}%`;
+  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null) {
+    const block=document.getElementById('botDirectionBlock');
+    if(!block) return;
+    const ru=state.lang==='ru', key=state.targetPair+'|'+stepIndex;
+    if(!block.querySelector('[data-analysis-card]')) {
+      block.className='winky-direction-block winky-signal-display analysing';
+      block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title">🧠 <span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
+        <div class="winky-scan-segments">${[0,1,2,3].map(()=>'<div class="winky-scan-seg"></div>').join('')}</div>
+        <div class="winky-analysis-meta" data-analysis-meta></div><div class="winky-flip-stage"><div class="winky-flip-card" data-analysis-card>
+        <div class="winky-flip-header"><span class="winky-flip-step-name" data-analysis-title></span><span class="winky-flip-status" data-analysis-status></span></div>
+        <div class="winky-flip-desc" data-analysis-detail></div></div></div>`;
     }
+    const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
+    const status=phase || (isConfirmed?'confirmed':'checking');
+    const statusText={checking:ru?'Проверяем':'Checking',confirmed:ru?'Подтверждено':'Confirmed',rejected:ru?'Не подтверждено':'Not confirmed',loading:ru?'Загрузка':'Loading'};
+    put('[data-analysis-heading]',ru?'АНАЛИЗ ГРАФИКА':'CHART ANALYSIS');
+    put('[data-analysis-score]','★ '+Number(scoreStr||0).toFixed(1)+' / 5');
+    const periods=state.analysisCache?.analysis?.timeframesUsed || [];
+    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(5,state.searchPairIndex || 1)}/5 · ${state.actualChartTf || '—'} · ${periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ')}`);
+    put('[data-analysis-title]',stepTitle);
+    put('[data-analysis-detail]',stepDesc);
+    put('[data-analysis-status]',statusText[status] || statusText.checking);
+    const statusEl=block.querySelector('[data-analysis-status]');if(statusEl)statusEl.className='winky-flip-status '+status;
+    const segments=block.querySelectorAll('.winky-scan-seg');
+    segments.forEach((el,i)=>{el.className='winky-scan-seg '+(i<stepIndex || (i===stepIndex && isConfirmed)?'done':i===stepIndex?'active':'');});
+    const card=block.querySelector('[data-analysis-card]');
+    if(state.analysisRenderKey!==key && card) {card.classList.remove('winky-stage-transition');void card.offsetWidth;card.classList.add('winky-stage-transition');}
+    state.analysisRenderKey=key;
+    const acc=document.getElementById('metricAccuracyVal');
+    if(acc) {acc.textContent=Math.round(Number(scoreStr || 0)/5*100)+'%';acc.title=ru?'Совпадение условий стратегии':'Strategy conditions matched';}
+  }
+
+  function journalDecision(event, sample=null, detail='') {
+    state.decisionJournal.push({event,at:Date.now(),pair:state.targetPair,score:sample?.confluence?.score ?? null,
+      direction:sample?.analysis?.direction || null,setup:sample?.analysis?.setup || null,expiry:sample?.analysis?.recommendedExpiry || null,
+      periods:sample?.analysis?.timeframesUsed || [],sources:sample?.analysis?.dataSources || [],veto:sample?.analysis?.vetoReason || null,detail});
+    if(state.decisionJournal.length>100) state.decisionJournal.shift();
+  }
+
+  function quoteIsFresh() {
+    const q=state.lastRealQuote;
+    return Boolean(q && normalizePocketPair(q.pair)===normalizePocketPair(state.targetPair) && Date.now()-q.receivedAt<3500);
+  }
+
+  function marketReason(analysis) {
+    const ru=state.lang==='ru';
+    const reasons={HIGH_RISK_MARKET:ru?'Тренд или уровень запрещает вход':'Trend or level blocks entry',OPPOSING_HIGHER_TREND:ru?'Старший тренд направлен против входа':'Opposing higher timeframe',
+      NOT_ENOUGH_CANDLES:ru?'Не хватает подтверждённых свечей':'Insufficient confirmed candles',STALE_CANDLES:ru?'Обновляем устаревшие свечи':'Refreshing stale candles',
+      INCOMPATIBLE_CANDLES:ru?'Ожидаем данные выбранной пары':'Waiting for selected pair data',LOW_CONFLUENCE_WAIT:ru?'Сетап не подтверждён':'Setup not confirmed'};
+    return reasons[analysis?.vetoReason] || analysis?.line1 || (ru?'Ожидаем точку входа':'Waiting for entry');
   }
 
   async function waitForOptimalMicroEntry(tradeDir, atr) {
@@ -3570,7 +3596,7 @@
               ? 120
               : (strategyTf === "1m" || strategyTf === "60s" ? 60 : 30));
         const expRes = await requestMainWorldSetExpiry(strategyTf);
-        if (expRes && expRes.ok && expRes.confirmed && expRes.observedSec >= 5 && expRes.observedSec <= 150) {
+      if (expRes && expRes.ok && expRes.confirmed && expRes.observedSec >= 5 && expRes.observedSec <= 150) {
           realPocketSec = expRes.observedSec;
         } else {
           realPocketSec = targetExpSec;
@@ -3610,7 +3636,7 @@
         flags: state.targetFlags,
         payout: state.targetPayout,
         direction: tradeDir,
-        accuracy: Math.round(Math.min(97, 88 + (confluence?.score || 4.7) * 1.8)),
+        accuracy: Math.round((confluence?.score || 0)/5*100),
         confluence: confluence?.score || 4.7,
         duration: resolvedTf,
         line1: analysis?.line1 || "",
@@ -3636,7 +3662,7 @@
       state.activePayout = state.actualPayoutPct;
 
       // 3.5. Оптимальный микро-тайминг входа (до 2.0с)
-      const microEntry = await waitForOptimalMicroEntry(tradeDir, analysis?.atr || 0.0005);
+      const microEntry = analysis?.entrySource==='pixels' ? {ok:true,price:getCurrentChartPrice()} : await waitForOptimalMicroEntry(tradeDir, analysis?.atr || 0.0005);
       if (!microEntry.ok) {
         loggerLog(`[executeTradeWithSignal] 🛑 Вход отменён по микро-таймингу: ${microEntry.reason}. Сброс в IDLE.`);
         state.botState = "IDLE";
@@ -3658,8 +3684,8 @@
       if (state.searchRunning) {
         if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
         const currentPair=scanPocketOptionCurrentPair();
-        const fresh=samplePairAnalysis();
-        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
+        const fresh=await freshPairAnalysis();
+        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || 4) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
           resetTradePreparation(null); return;
         }
       }
@@ -3779,128 +3805,138 @@
   }
 
   function rankPairCandidate(candidate) {
-    const a=candidate.analysis || {}, factors=candidate.confluence?.factors || [];
+    const a=candidate.analysis || {};
     const observed=[Boolean(a.trendRegime),Boolean(a.setup),Boolean(a.sr),Number.isFinite(a.rsi),Boolean(candidate.sentiment?.observed)];
-    return factors.reduce((sum,f,i)=>sum+(observed[i] && Number.isFinite(f.score) ? f.score : 0),0);
+    return (candidate.confluence?.factors || []).reduce((sum,f,i)=>sum+(observed[i] && Number.isFinite(f.score)?Math.max(0,Math.min(1,f.score)):0),0);
   }
 
-  function bestPairCandidate(candidates) {
-    return candidates.slice().sort((a,b)=>rankPairCandidate(b)-rankPairCandidate(a) || b.payout-a.payout || b.observedAt-a.observedAt)[0] || null;
+  function sortedPairCandidates(candidates) {
+    return candidates.slice().sort((a,b)=>rankPairCandidate(b)-rankPairCandidate(a) || b.payout-a.payout || b.observedAt-a.observedAt);
   }
 
-  function canEnterAnalysis(analysis, confluence) {
-    return Boolean(analysis?.shouldTrade && !analysis.hardVeto && !['HIGH_RISK_MARKET','INCOMPATIBLE_CANDLES','NOT_ENOUGH_CANDLES'].includes(analysis.vetoReason) &&
-      ['BUY','SELL'].includes(analysis.direction) && (analysis.confidence>=84 || confluence?.score>=4));
+  function bestPairCandidate(candidates) { return sortedPairCandidates(candidates)[0] || null; }
+
+  function canEnterAnalysis(analysis, confluence, threshold=4) {
+    return Boolean(analysis?.shouldTrade && !analysis.hardVeto && !['HIGH_RISK_MARKET','OPPOSING_HIGHER_TREND','INCOMPATIBLE_CANDLES','NOT_ENOUGH_CANDLES','STALE_CANDLES'].includes(analysis.vetoReason) &&
+      ['BUY','SELL'].includes(analysis.direction) && Number.isFinite(confluence?.score) && confluence.score>=threshold && quoteIsFresh());
   }
 
-  function samplePairAnalysis() {
+  function samplePairAnalysis(force=false) {
     const cached=state.analysisCache;
-    if(cached && cached.pair===state.targetPair && Date.now()-cached.observedAt<250) return cached;
+    if(!force && cached && cached.pair===state.targetPair && Date.now()-cached.observedAt<250) return cached;
     ChartAnalyzer.pollPrice();
     const scan=scanCanvasStructure();
     const analysis=ChartAnalyzer.analyzeMarket(scan);
     const sentiment=readTradersSentiment();
-    const confluence=evaluate5FactorConfluence(scan,analysis,sentiment);
+    const confluence=analysis.confluence || evaluate5FactorConfluence(scan,analysis,sentiment);
     return state.analysisCache={pair:state.targetPair,analysis,scan,sentiment,confluence,
       payout:parseFloat(state.targetPayout)||0,observedAt:Date.now()};
   }
 
-  async function waitPocketPairReady(pair) {
+  async function freshPairAnalysis() {
+    const delay=state.analysisCache ? 250-(Date.now()-state.analysisCache.observedAt) : 0;
+    if(delay>0) await new Promise(resolve=>setTimeout(resolve,delay));
+    return samplePairAnalysis(true);
+  }
+
+  async function waitPocketPairReady(pair, period=chartPeriodSeconds()) {
     const deadline=Date.now()+3200;
     while(Date.now()<deadline) {
       const current=scanPocketOptionCurrentPair();
-      const scan=scanCanvasStructure();
-      if(normalizePocketPair(current)===normalizePocketPair(pair) &&
-        ((scan.visualCandles?.length||0)>=8 || LiveTickBuffer.buildCandles(15,45).length>=8)) return true;
+      const frames=marketFrames(scanCanvasStructure());
+      if(normalizePocketPair(current)===normalizePocketPair(pair) && quoteIsFresh() &&
+        (frames[period] || []).filter(c=>c.complete && !c.incomplete).length>=20) return true;
       await new Promise(resolve=>setTimeout(resolve,150));
     }
     return false;
+  }
+
+  async function showPairInterval(pair, tf) {
+    const response=await requestMainWorldEnsureChartTimeframe(tf);
+    if(response?.activeTf) state.actualChartTf=response.activeTf;
+    state.analysisCache=null;
+    return waitPocketPairReady(pair,chartPeriodSeconds(tf));
   }
 
   async function startSignalAnalysis() {
     if(state.botState!=='IDLE' || state.searchRunning || state.tradeContext) return;
     state.searchRunning=true;
     const generation=++state.searchGeneration;
-    state.botState='ANALYZING_PAIR';
-    state.analysisStartedAt=Date.now();
-    state.searchSeen=[];
-    state.pairCandidates=[];
-    const button=document.getElementById('btnGetSignalAction');
-    const steps=['МАКРО-ТРЕНД','СВЕЧНОЙ ИМПУЛЬС','УРОВНИ ГРАФИКА','ТОЧКА ВХОДА'];
+    state.botState='ANALYZING_PAIR';state.analysisStartedAt=Date.now();
+    state.searchSeen=[];state.pairCandidates=[];
+    const button=document.getElementById('btnGetSignalAction'),ru=state.lang==='ru';
+    const steps=ru?['01 · ТРЕНД M1','02 · СТРУКТУРА','03 · УРОВНИ S15','04 · ТОЧКА ВХОДА']:['01 · M1 TREND','02 · STRUCTURE','03 · S15 LEVELS','04 · ENTRY'];
     let chosen=null;
+    const alive=()=>generation===state.searchGeneration && !state.tradeContext;
+    const render=(step,sample,status)=>{
+      const factor=step<3?sample?.confluence?.factors?.[step]:null;
+      if(status==='checking' && factor) status=factor.pass?'confirmed':'rejected';
+      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),String(sample?.confluence?.score || 0),status==='confirmed',status);
+    };
     try {
-      if(button) {button.disabled=true;button.classList.add('disabled');}
+      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=ru?'АНАЛИЗ ПАР · 1/5':'SCANNING PAIRS · 1/5';}
       notifyTradePhase('ANALYZING',state.targetPair,0);
-      // Keep the existing switcher; failure is not a forged S15 or a global stop.
-      const tf=await requestMainWorldEnsureChartTimeframe('S15');
-      if(tf?.activeTf) state.actualChartTf=tf.activeTf;
       if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
-
-      for(let attempt=0;attempt<5 && generation===state.searchGeneration;attempt++) {
-        const pair=state.targetPair;
-        const key=normalizePocketPair(pair);
+      for(let attempt=0;attempt<10 && state.pairCandidates.length<5 && alive();attempt++) {
+        const pair=state.targetPair,key=normalizePocketPair(pair);
         if(state.searchSeen.includes(key)) break;
-        state.searchSeen.push(key);
-        await waitPocketPairReady(pair);
+        state.searchSeen.push(key);state.searchPairIndex=state.pairCandidates.length+1;
+        let sample=null,ready=false,anyReady=false;
         state.botState='ANALYZING_PAIR';
-        state.allowDominantEntry=false;
-        let sample=null;
-        // Four existing visual steps; the live calculation is independent of
-        // their animation delays, and a ready setup finishes them immediately.
-        for(let step=0;step<4;step++) {
+        for(let step=0;step<4 && alive();step++) {
           state.analysisStartedAt=Date.now();
-          sample=samplePairAnalysis();
-          const factor=sample.confluence?.factors?.[step];
-          renderAnalysisStep(step,4,String(step+1).padStart(2,'0')+' · '+steps[step],factor?.detail || sample.analysis?.line1 || 'Ожидание графика',String(sample.confluence?.score||0),false);
-          if(canEnterAnalysis(sample.analysis,sample.confluence)) {chosen=sample;break;}
-          if(step<3) await new Promise(resolve=>setTimeout(resolve,250));
-        }
-        if(sample) state.pairCandidates.push(sample);
-        if(chosen) break;
-        if(attempt===4) break;
-        state.botState='SWITCHING_PAIR';
-        const switched=await switchPocketPair(null);
-        if(!switched || normalizePocketPair(state.targetPair)===key) break;
-      }
-
-      if(!chosen) {
-        const best=bestPairCandidate(state.pairCandidates);
-        if(best) {
-          const atBest=normalizePocketPair(best.pair)===normalizePocketPair(state.targetPair) || await switchPocketPair(best.pair);
-          if(atBest) {
-            await waitPocketPairReady(best.pair);
-            state.botState='ANALYZING_PAIR';
-            state.allowDominantEntry=true;
-            const deadline=Date.now()+10000;
-            while(Date.now()<deadline && generation===state.searchGeneration) {
-              state.analysisStartedAt=Date.now();
-              const fresh=samplePairAnalysis();
-              renderAnalysisStep(3,4,'04 · ТОЧКА ВХОДА',fresh.analysis?.line1 || 'Наблюдение лучшей пары',String(fresh.confluence?.score||0),false);
-              if(canEnterAnalysis(fresh.analysis,fresh.confluence)) {chosen=fresh;break;}
-              await new Promise(resolve=>setTimeout(resolve,250));
-            }
+          if(step===0 || step===2) {
+            render(step,sample,'loading');
+            ready=await showPairInterval(pair,step===0?'M1':'S15');
+            anyReady=anyReady || ready;
+            if(!alive()) break;
+            // A missing S15 does not disable a valid M1/M2 scenario. The
+            // engine independently rejects scenarios with missing data.
+            if(!ready && step===0) {journalDecision('pair_data_timeout',null,'M1');break;}
           }
+          const until=Date.now()+650;
+          do {
+            sample=samplePairAnalysis();
+            render(step,sample,sample.analysis.shouldTrade?'confirmed':'checking');
+            if(canEnterAnalysis(sample.analysis,sample.confluence,4)) {chosen=sample;break;}
+            if(Date.now()>=until || !alive()) break;
+            await new Promise(resolve=>setTimeout(resolve,Math.min(250,until-Date.now())));
+          } while(alive());
+          if(chosen) break;
         }
+        if(!alive()) break;
+        if(sample && anyReady) {state.pairCandidates.push(sample);state.pairVisits.set(key,Date.now());journalDecision(chosen?'early_entry':'pair_checked',sample);}
+        if(chosen || state.pairCandidates.length>=5) break;
+        render(3,sample,'rejected');
+        VoiceManager.playCategory('flat_skip',false,'thinking');
+        state.botState='SWITCHING_PAIR';
+        if(!await switchPocketPair(null) || normalizePocketPair(state.targetPair)===key) break;
       }
-      if(chosen && generation===state.searchGeneration) {
-        // Final fresh read: never execute the cached direction after returning.
-        const fresh=samplePairAnalysis();
-        if(canEnterAnalysis(fresh.analysis,fresh.confluence)) {
-          fresh.analysis.searchGeneration=generation;
-          for(let i=0;i<4;i++) renderAnalysisStep(i,4,String(i+1).padStart(2,'0')+' · '+steps[i],fresh.confluence?.factors?.[i]?.detail || fresh.analysis.line1,String(fresh.confluence?.score||0),true);
-          await executeTradeWithSignal(fresh.analysis,fresh.confluence,fresh.scan);
-        }
+      const ranked=chosen?[chosen]:sortedPairCandidates(state.pairCandidates).filter(c=>canEnterAnalysis(c.analysis,c.confluence,3.5));
+      for(const candidate of ranked) {
+        if(!alive()) break;
+        const pair=candidate.pair;
+        if(normalizePocketPair(pair)!==normalizePocketPair(state.targetPair) && !await switchPocketPair(pair)) {journalDecision('return_failed',candidate);continue;}
+        state.botState='ANALYZING_PAIR';
+        const frames=marketFrames();
+        if(!ProTraderEngine.frameContext(frames[60])) await showPairInterval(pair,'M1');
+        await showPairInterval(pair,'S15');
+        if(!alive()) break;
+        const fresh=await freshPairAnalysis(),threshold=chosen?4:3.5;
+        if(!canEnterAnalysis(fresh.analysis,fresh.confluence,threshold)) {journalDecision('entry_cancelled',fresh,'signal_changed_on_return');continue;}
+        fresh.analysis.searchGeneration=generation;fresh.analysis.entryThreshold=threshold;
+        journalDecision('entry_confirmed',fresh);
+        render(3,fresh,'confirmed');
+        await executeTradeWithSignal(fresh.analysis,fresh.confluence,fresh.scan);
+        if(state.tradeContext) break;
+        journalDecision('entry_cancelled',fresh,'pre_click_recheck');
       }
-    } catch(error) {
-      loggerLog('[LivePairSearch] Ошибка поиска:',error);
-    } finally {
-      state.allowDominantEntry=false;
-      state.searchRunning=false;
-      state.analysisStartedAt=null;
+    } catch(error) {loggerLog('[LivePairSearch]',error);journalDecision('search_error',null,String(error));}
+    finally {
+      state.searchRunning=false;state.analysisStartedAt=null;
       if(!state.tradeContext && !['IN_TRADE','TRADE_RESULT','COOLDOWN'].includes(state.botState)) {
         state.botState='IDLE';
-        renderSignalCardState();
-        if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=t('getSignal');}
+        if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=state.autoStream?(ru?'НОВЫЙ КРУГ ПОИСКА…':'NEXT SCAN…'):t('getSignal');}
         if(state.autoStream) setTimeout(()=>{if(state.autoStream && state.botState==='IDLE')startSignalAnalysis();},1000);
       }
     }
@@ -4552,6 +4588,9 @@
     // 3. Селектор пары в боте
     const selectPair = document.getElementById("selectBotPair");
     if (selectPair && selectPair.value !== state.targetPair) {
+      if(!Array.from(selectPair.options || []).some(option=>option.value===state.targetPair)) {
+        const option=document.createElement('option');option.value=state.targetPair;option.textContent=`${state.targetFlags} ${state.targetPair} (${state.targetPayout})`;selectPair.appendChild(option);
+      }
       selectPair.value = state.targetPair;
     }
 
@@ -4640,6 +4679,7 @@
     const block = document.getElementById("botDirectionBlock");
     const accEl = document.getElementById("metricAccuracyVal");
     if (!block) return;
+    if(state.searchRunning && ["IDLE","SWITCHING_PAIR"].includes(state.botState)) return;
 
     // Во время активного анализа или подготовки к снайперскому входу НИКОГДА не затираем разметку!
     if (state.botState === "ANALYZING" || state.botState === "ANALYZING_PAIR" || state.botState === "PREPARING_TRADE") {

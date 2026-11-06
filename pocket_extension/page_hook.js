@@ -444,6 +444,9 @@
                   y: y,
                   yRatio: yRatio,
                   source_type: "canvas",
+                  rawSymbol: window.__winkyCurrentAsset,
+                  generation: marketContext.generation,
+                  receivedAt: Date.now(),
                   timestamp: Date.now(),
                 },
                 "*"
@@ -678,7 +681,7 @@
     const pairBtn = findPairBtn();
     if (!pairBtn) {
       window.postMessage(
-        { source: "WINKY_HOOK", type: "WINKY_RESP_SWITCH_PAIR", ok: false, error: "Pair button not found" },
+        { source: "WINKY_HOOK", type: "WINKY_RESP_SWITCH_PAIR", requestId: cmd.requestId, ok: false, error: "Pair button not found" },
         "*"
       );
       return;
@@ -771,21 +774,7 @@
 
       pairVisitedAt.set(chosen.normName,Date.now());
       const el = chosen.element;
-      const rect = el.getBoundingClientRect();
-      const evtOpts = {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: rect.x + (rect.width > 0 ? rect.width / 2 : 10),
-        clientY: rect.y + (rect.height > 0 ? rect.height / 2 : 10),
-      };
-      el.dispatchEvent(new MouseEvent("mousedown", evtOpts));
-      el.dispatchEvent(new MouseEvent("mouseup", evtOpts));
-      el.dispatchEvent(new MouseEvent("click", evtOpts));
-      try { el.click(); } catch (_) {}
-      if (chosen.rawRow && chosen.rawRow !== el) {
-        try { chosen.rawRow.click(); } catch (_) {}
-      }
+      realClick(el);
 
       await sleep(180);
       await forceClosePopup();

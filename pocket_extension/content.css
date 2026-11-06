@@ -580,7 +580,7 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
-  animation: winkySmoothStep 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .winky-flip-card::after {
@@ -598,6 +598,11 @@
   border-color: rgba(0, 245, 160, 0.55);
   box-shadow: 0 0 14px rgba(0, 245, 160, 0.25), inset 0 0 12px rgba(0, 245, 160, 0.08);
 }
+
+.winky-flip-card.winky-stage-transition { animation: winkySmoothStep 200ms ease-out; }
+.winky-analysis-meta { min-height: 18px; font-size: 11px; color: #9eb5b5; margin: 4px 0 6px; }
+.winky-flip-status.checking, .winky-flip-status.loading { color: #8bd5df; border-color: #397b88; }
+.winky-flip-status.rejected { color: #ffc66d; border-color: #8a692f; }
 
 .winky-flip-card.step-out {
   animation: winkySmoothStepOut 0.12s ease-in forwards;

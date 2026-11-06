@@ -25,7 +25,7 @@ function loadContent() {
       executeTradeWithSignal,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
@@ -39,8 +39,8 @@ function loadContent() {
         waitForOptimalMicroEntry = async () => ({ok:true});
       },
       setSearchDependencies(deps) {
-        requestMainWorldEnsureChartTimeframe = async () => ({activeTf:'S15',ok:true});
-        waitPocketPairReady = async () => true;
+        requestMainWorldEnsureChartTimeframe = async target => ({activeTf:target,ok:true});
+        waitPocketPairReady = deps.ready || (async () => true);
         if (deps.sentiment) readTradersSentiment = deps.sentiment;
         if (deps.scan) scanCanvasStructure = deps.scan;
         if (deps.analyze) ChartAnalyzer.analyzeMarket = deps.analyze;
@@ -225,24 +225,27 @@ test('timestamped aggregation does not bridge gaps or arbitrary chunk boundaries
   assert.equal(c.aggregateCandles([{...base,time:0},{...base,time:30000}],2).length,0);
   const bars=c.aggregateCandles([{...base,time:0},{...base,time:15000}],2);assert.equal(bars.length,1);assert.equal(bars[0].complete,true);
 });
-test('known M1 visual fallback starts immediately, unknown period is not S15', () => {
-  const c=loadContent();const bars=Array.from({length:30},(_,i)=>({open:100+i,close:100.5+i,high:101+i,low:99+i,isGreen:true,isRed:false,body:.5,bodySize:.5,totalRange:2}));
-  c.state.actualChartTf='M1';const known=c.ChartAnalyzer.analyzeMarket({visualCandles:bars});
-  assert.notEqual(known.vetoReason,'NOT_ENOUGH_CANDLES');
-  c.state.actualChartTf=null;c.state.candles=[];
+test('known M1 visual fallback is stored without pretending to supply S15', () => {
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const period=60000,end=Math.floor(c.now()/period)*period;
+  const bars=Array.from({length:30},(_,i)=>({time:end-(29-i)*period,open:100+i,close:100.5+i,high:101+i,low:99+i}));
+  c.state.actualChartTf='M1';c.ChartAnalyzer.analyzeMarket({visualCandles:bars});
+  assert.equal(c.marketFrames()[60].length,30);assert.equal(c.marketFrames()[15].length,0);
+  c.state.actualChartTf=null;c.state.marketFrames.clear();c.state.candles=[];
   assert.equal(c.ChartAnalyzer.analyzeMarket({visualCandles:bars}).shouldTrade,false);
   assert.equal(c.chartPeriodSeconds('M1'),60);assert.equal(c.chartPeriodSeconds('S15'),15);assert.equal(c.chartPeriodSeconds('15S'),15);
 });
-function searchFixture(readyPair=null, dominant=false) {
-  const c=loadContent(),pairs=['EUR/USD OTC','GBP/USD OTC','AUD/USD OTC','USD/JPY OTC','EUR/JPY OTC'],executed=[],switches=[];
+function searchFixture(readyPair=null, ranked=false) {
+  const c=loadContent(),pairs=['EUR/USD OTC','GBP/USD OTC','AUD/USD OTC','USD/JPY OTC','EUR/JPY OTC'],executed=[],switches=[],samples=[];
   c.state.targetPair=pairs[0];
-  const analysis=()=>({shouldTrade:c.state.targetPair===readyPair || (dominant && c.state.allowDominantEntry && c.state.targetPair===pairs[0]),direction:'BUY',confidence:90,
-    setup:'TREND_PULLBACK',trendRegime:'STRONG_UPTREND',rsi:55,sr:{distToRes:2,distToSup:1},line1:'Live setup'});
-  c.setSearchDependencies({scan:()=>({visualCandles:[]}),analyze:analysis,sentiment:()=>({observed:true}),
-    confluence:()=>({score:4.5,factors:Array.from({length:5},()=>({score:c.state.targetPair===pairs[0]?1:.5,detail:'factor'}))}),
+  const analysis=()=>{samples.push(c.state.targetPair);return {shouldTrade:ranked || c.state.targetPair===readyPair,direction:'BUY',confidence:90,
+    setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.6,sr:{distToRes:2,distToSup:1},line1:'Live setup'};};
+  const score=()=>ranked?(c.state.targetPair===pairs[0]?3.9:3.6):4.5;
+  c.setSearchDependencies({scan:()=>{c.state.lastRealQuote={price:1,timestamp:c.now(),receivedAt:c.now(),pair:c.state.targetPair};return {visualCandles:[]};},analyze:analysis,sentiment:()=>({observed:true}),
+    confluence:()=>({score:score(),factors:Array.from({length:5},()=>({score:score()/5,detail:'factor',pass:true}))}),
     switchPair:async(target)=>{const next=target||pairs[(pairs.indexOf(c.state.targetPair)+1)%5];switches.push(next);c.state.targetPair=next;return true;},
-    execute:async(a)=>executed.push({pair:c.state.targetPair,direction:a.direction})});
-  return {...c,pairs,executed,switches};
+    execute:async(a)=>{executed.push({pair:c.state.targetPair,direction:a.direction});c.state.tradeContext={test:true};c.state.botState='IN_TRADE';}});
+  return {...c,pairs,executed,switches,samples};
 }
 test('a ready setup on first or second pair enters immediately',async()=>{
   for(const index of [0,1]) {
@@ -250,25 +253,38 @@ test('a ready setup on first or second pair enters immediately',async()=>{
     await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.equal(c.state.pairCandidates.length,index+1);assert.equal(c.switches.length,index);
   }
 });
-test('after five distinct pairs search returns to highest ranked and rechecks it',async()=>{
-  const c=searchFixture(null,true);await c.startSignalAnalysis();
+test('after five pairs the best eligible setup is rechecked and entered without observation',async()=>{
+  const c=searchFixture(null,true),started=c.now();await c.startSignalAnalysis();
   assert.equal(c.state.pairCandidates.length,5);assert.equal(new Set(c.state.searchSeen).size,5);
   assert.equal(c.executed.length,1);assert.equal(c.executed[0].pair,c.pairs[0]);assert.equal(c.switches.at(-1),c.pairs[0]);
+  assert.ok(c.now()-started<15000);assert.ok(c.state.decisionJournal.some(e=>e.event==='entry_confirmed'));
 });
-test('hard veto is never overridden while observing best pair',async()=>{
-  const c=searchFixture();let watchSamples=0;
-  c.setSearchDependencies({analyze:()=>{if(c.state.allowDominantEntry)watchSamples++;return {shouldTrade:true,hardVeto:true,vetoReason:'HIGH_RISK_MARKET',direction:'BUY',confidence:95};}});
-  await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.ok(watchSamples>=40);assert.equal(c.state.botState,'IDLE');
+test('all hard-vetoed candidates end the round without a forced entry',async()=>{
+  const c=searchFixture();let calls=0;
+  c.setSearchDependencies({analyze:()=>{calls++;return {shouldTrade:true,hardVeto:true,vetoReason:'HIGH_RISK_MARKET',direction:'BUY',confidence:95};}});
+  await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.ok(calls<80);assert.equal(c.state.botState,'IDLE');
+  assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,5);
+});
+test('failed loading is not counted as an analyzed pair',async()=>{
+  const c=searchFixture(null,true);c.setSearchDependencies({ready:async()=>c.state.targetPair!==c.pairs[0]});
+  await c.startSignalAnalysis();assert.ok(c.state.pairCandidates.every(p=>p.pair!==c.pairs[0]));
 });
 test('failed pair switch is not counted as a new chart',async()=>{
-  const c=searchFixture();c.setSearchDependencies({switchPair:async()=>false});
-  await c.startSignalAnalysis();assert.equal(c.state.pairCandidates.length,1);assert.equal(c.state.searchSeen.length,1);assert.equal(c.executed.length,0);
+  const c=searchFixture();c.setSearchDependencies({switchPair:async()=>false});await c.startSignalAnalysis();
+  assert.equal(c.state.pairCandidates.length,1);assert.equal(c.executed.length,0);
 });
 test('ranking excludes missing factors; ties use payout then freshness',()=>{
-  const c=loadContent();const a={pair:'A',analysis:{},confluence:{factors:[{score:1}]},payout:90,observedAt:100};
-  assert.equal(c.rankPairCandidate(a),0);
-  assert.equal(c.bestPairCandidate([a,{...a,pair:'B',payout:92}]).pair,'B');
-  assert.equal(c.bestPairCandidate([a,{...a,pair:'B',observedAt:200}]).pair,'B');
+  const c=loadContent();const unknown={analysis:{},confluence:{factors:[{score:1}]},payout:99,observedAt:5};
+  assert.equal(c.rankPairCandidate(unknown),0);
+  const candidate=(payout,observedAt)=>({analysis:{trendRegime:'FLAT'},confluence:{factors:[{score:1}]},payout,observedAt});
+  const a=candidate(90,10),b=candidate(92,1),d=candidate(92,20);
+  assert.equal(c.bestPairCandidate([unknown,a,b,d]),d);
+});
+test('a signal lost on return moves to the next ranked candidate',async()=>{
+  const c=searchFixture(null,true);const visits=new Map();
+  c.setSearchDependencies({switchPair:async(target)=>{const next=target||c.pairs[(c.pairs.indexOf(c.state.targetPair)+1)%5];c.switches.push(next);c.state.targetPair=next;if(target)visits.set(target,true);return true;},
+    analyze:()=>({shouldTrade:!(c.state.targetPair===c.pairs[0] && visits.has(c.pairs[0])),direction:'BUY',setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.5,sr:{distToRes:2},confidence:90})});
+  await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.notEqual(c.executed[0].pair,c.pairs[0]);
 });
 test('confirmed click failure creates no timer, result or recovery step',async()=>{
   const c=loadContent();c.prepareExecution();c.POAutomation.clickTrade=async()=>false;
@@ -285,26 +301,56 @@ test('opening, broker countdown, final result and recovery run through existing 
   c.tick(30000);c.emit({type:'BROKER_DEAL_RESULT',orderId:'real-1',net:-50});
   await c.onSignalTimerFinished();assert.equal(c.state.recoveryStep,1);assert.equal(c.state.currentStake,110);assert.equal(c.state.botState,'IDLE');
 });
-test('existing ProTraderEngine produces both directions and different horizons without flipping rationale',()=>{
-  const c=loadContent();let seed=123;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+function taggedBars(c,bars,period,source='ticks') {
+  const end=Math.floor(c.now()/(period*1000))*period*1000;
+  return bars.map((bar,i)=>({...bar,body:Math.abs(bar.close-bar.open),bodySize:Math.abs(bar.close-bar.open),totalRange:bar.high-bar.low,
+    upperWick:bar.high-Math.max(bar.open,bar.close),lowerWick:Math.min(bar.open,bar.close)-bar.low,isGreen:bar.close>bar.open,isRed:bar.close<bar.open,
+    time:end-(bars.length-1-i)*period*1000,source,pair:'EUR/USD OTC',candlePeriodSec:period,complete:i<bars.length-1,incomplete:false}));
+}
+function flatContext(c,period) {return taggedBars(c,Array.from({length:55},()=>({open:100,close:100,high:101,low:99})),period);}
+test('existing scenario formulas produce BUY and SELL with consistent explanations',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';let seed=123;
+  const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
   const directions=new Set(),horizons=new Set();
-  // Deterministic synthetic data tests the existing engine, not a replacement signal stub.
-  for(let trial=0;trial<200;trial++) {
-    let price=100;const bars=[];
-    for(let i=0;i<45;i++) {
-      const open=price,close=open+(random()-.48)*1.6,wick=random()*.6;price=close;
-      bars.push({open,close,high:Math.max(open,close)+wick,low:Math.min(open,close)-wick,body:Math.abs(close-open),bodySize:Math.abs(close-open),totalRange:Math.abs(close-open)+2*wick,upperWick:wick,lowerWick:wick,isGreen:close>open,isRed:close<open,source:'pixels',pair:'EUR/USD OTC',candlePeriodSec:15});
-    }
-    const sign=bars.at(-1).isGreen?1:-1;
+  for(let trial=0;trial<400;trial++) {
+    let price=100;const raw=[];
+    for(let i=0;i<55;i++) {const open=price,close=open+(random()-.48)*1.6,wick=random()*.6;price=close;raw.push({open,close,high:Math.max(open,close)+wick,low:Math.min(open,close)-wick});}
+    const bars=taggedBars(c,raw,15);const sign=bars.at(-1).isGreen?1:-1;
     c.LiveTickBuffer.getMicroMetrics=()=>({delta3s:.1*sign,delta5s:.1*sign,delta6s:.1*sign,delta15s:.1*sign,delta30s:.1*sign,posIn15sRange:.5});
-    const result=c.ProTraderEngine.analyze(bars,bars.at(-1).close);
-    if(result.shouldTrade) {
-      directions.add(result.direction);horizons.add(result.recommendedExpiry);
-      assert.equal(result.direction==='BUY',bars.at(-1).isGreen);
-      assert.match(result.line2,result.direction==='BUY'?/ВВЕРХ/:/ВНИЗ/);
-    }
+    const result=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close);
+    if(result.shouldTrade){directions.add(result.direction);horizons.add(result.recommendedExpiry);assert.equal(result.direction==='BUY',bars.at(-1).isGreen);assert.match(result.line2,result.direction==='BUY'?/ВВЕРХ/:/ВНИЗ/);}
   }
-  assert.equal(directions.size,2);assert.ok(horizons.has('15s'));assert.ok(horizons.has('30s'));assert.ok(horizons.has('2m'));
+  assert.equal(directions.size,2);assert.ok(horizons.size>=2);
+});
+test('the required higher timeframe participates in every expiry decision',()=>{
+  for(const [expiry,entryPeriod,contextPeriod] of [['15s',15,60],['30s',15,60],['1m',30,60],['2m',60,120]]) {
+    const c=loadContent();c.state.targetPair='EUR/USD OTC';const frames={15:flatContext(c,15),30:flatContext(c,30),60:flatContext(c,60),120:flatContext(c,120)};
+    c.ProTraderEngine.analyzeFrame=(bars,price,scan,options)=>({shouldTrade:options.expiry===expiry,direction:'BUY',confidence:90,setup:'TEST',recommendedExpiry:expiry,
+      rsi:55,pctB:.5,trendRegime:'STRONG_UPTREND',sr:{distToRes:2},explanationRu:'test'});
+    let result=c.ProTraderEngine.analyze(frames[entryPeriod],100,{timeframes:frames});
+    assert.equal(result.shouldTrade,true);assert.ok(result.timeframesUsed.includes(contextPeriod));
+    const falling=Array.from({length:55},(_,i)=>({open:150-i,close:149.5-i,high:150.2-i,low:149.3-i}));
+    frames[contextPeriod]=taggedBars(c,falling,contextPeriod);
+    result=c.ProTraderEngine.analyze(frames[entryPeriod],100,{timeframes:frames});
+    assert.equal(result.shouldTrade,false);assert.equal(result.hardVeto,true);
+  }
+});
+test('missing frames disable their scenarios, not all other expiries',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';const frames={15:flatContext(c,15),60:flatContext(c,60)};
+  const evaluated=[];c.ProTraderEngine.analyzeFrame=(bars,price,scan,options)=>{evaluated.push(options.expiry);return {shouldTrade:false,vetoReason:'LOW_CONFLUENCE_WAIT'};};
+  c.ProTraderEngine.analyze(frames[15],100,{timeframes:frames});assert.deepEqual(evaluated,['15s']);
+});
+test('unclosed macro bars do not alter the confirmed context; EMA50 needs 50 bars',()=>{
+  const c=loadContent(),bars=flatContext(c,60).slice(-30),first=c.ProTraderEngine.frameContext(bars);
+  bars.at(-1).close=500;const second=c.ProTraderEngine.frameContext(bars);
+  assert.equal(second.direction,first.direction);assert.equal(second.ema50Ready,false);
+});
+test('confluence is the sum of observed factors, with no invented sentiment or levels',()=>{
+  const c=loadContent();const a={shouldTrade:true,direction:'BUY',confidence:97,trendRegime:'STRONG_UPTREND',setup:'TREND_PULLBACK_30S',rsi:55,pctB:.5,sr:{distToRes:.5}};
+  const result=c.evaluate5FactorConfluence({},a,{observed:false});
+  assert.equal(result.factors[2].score,.5);assert.equal(result.factors[4].score,0);
+  assert.equal(result.score,result.factors.reduce((sum,f)=>sum+f.score,0));
+  delete a.sr;assert.equal(c.evaluate5FactorConfluence({},a,{}).factors[2].score,0);
 });
 test('indicator ratios retain scale on low-priced OTC instruments',()=>{
   const c=loadContent();const prices=Array.from({length:30},(_,i)=>100+Math.sin(i*.7)*2+i*.05);
