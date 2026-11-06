@@ -144,3 +144,37 @@ test('M1 target is selected and verified instead of always selecting S15',async(
   await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:10});
   const response=h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME');assert.equal(response.ok,true);assert.equal(response.activeTf,'M1');assert.equal(response.requestId,10);
 });
+
+test('anonymous history is accepted only for one pending native request',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.receive('42'+JSON.stringify(['history',{data:[{time:1700000000,open:1,high:1.2,low:.9,close:1.1}]}]));
+  const history=h.messages.find(m=>m.type==='WS_CANDLES_HISTORY');
+  assert.equal(history.asset,'EURUSD_otc');assert.equal(history.periodSec,60);
+  const other=loadHook(),ambiguous=new other.Socket('wss://test');
+  ambiguous.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  ambiguous.send('42["changeSymbol",{"asset":"GBPUSD_otc","period":15}]');
+  ambiguous.receive('42["history",{"data":[[1700000000,1.1]]}]');
+  assert.equal(other.messages.some(m=>m.type==='WS_HISTORY_TICKS'),false);
+});
+test('binary attachment consumption preserves a newer pending request',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.receive('451-["history",{"_placeholder":true,"num":0}]');
+  socket.send('42["changeSymbol",{"asset":"GBPUSD_otc","period":15}]');
+  socket.receive(new TextEncoder().encode(JSON.stringify({asset:'EURUSD_otc',period:60,data:[[1700000000,1.1]]})).buffer);
+  assert.equal(socket.__winkyHistoryRequests.length,1);assert.equal(socket.__winkyHistoryRequests[0].asset,'GBPUSD_otc');
+  socket.receive('42["history",{"data":[[1700000001,1.2]]}]');
+  assert.equal(h.messages.filter(m=>m.type==='WS_HISTORY_TICKS').at(-1).asset,'GBPUSD_otc');
+});
+test('a visible nested M1 label in a chart toolbar is detected with the asset menu open',()=>{
+  const h=loadHook();
+  const rect={left:300,top:90,right:330,width:30,height:30};
+  const button={offsetParent:{},textContent:'candlesM1',closest:()=>null,querySelectorAll:()=>[label]};
+  const label={offsetParent:{},textContent:'M1',getBoundingClientRect:()=>rect,closest:()=>button};
+  h.document.querySelector=()=>({getBoundingClientRect:()=>({left:60,right:1400,top:65})});
+  h.document.querySelectorAll=selector=>selector.includes('.current-timeframe')?[]:selector.includes('.top-left-block')?[button,label]:[];
+  // No semantic class is required, but the label must belong to a toolbar control above the chart.
+  button.closest=selector=>selector==='button,a,[role="button"]'?button:null;
+  assert.equal(h.getActualChartTimeframeBadge().badge,'M1');
+});

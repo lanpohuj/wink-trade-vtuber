@@ -448,3 +448,24 @@ test('an obsolete settlement callback cannot apply to a replacement trade',async
   assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.deepEqual(phases,[]);
 });
 module.exports={loadContent,row};
+
+test('optional generation is accepted for an identified pair, explicit obsolete generation is rejected',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  c.state.dataContexts.set('eurusdotc',{generation:4});
+  assert.equal(c.acceptMarketEvidence({},'EURUSD_otc'),true);
+  assert.equal(c.acceptMarketEvidence({generation:3},'EURUSD_otc'),false);
+  assert.equal(c.acceptMarketEvidence({},null),false);
+  assert.equal(c.acceptMarketEvidence({},'GBPUSD_otc'),false);
+});
+test('current partial S30 and M2 are forming, missing closed children are not fabricated',()=>{
+  const c=loadContent();
+  for(const period of [15,60]) {
+    const bucket=Math.floor(c.now()/(period*2000))*period*2000;
+    const child={open:.0000123,close:.0000124,high:.0000125,low:.0000122,time:bucket,
+      candlePeriodSec:period,pair:'EUR/USD OTC',source:'broker',complete:false,incomplete:false};
+    const bars=c.aggregateCandles([child],2);
+    assert.equal(bars.length,1);assert.equal(bars[0].complete,false);assert.equal(bars[0].forming,true);assert.equal(bars[0].incomplete,false);
+    assert.equal(bars[0].close,child.close);
+    assert.equal(c.aggregateCandles([{...child,time:bucket-period*2000,complete:true}],2).length,0);
+  }
+});

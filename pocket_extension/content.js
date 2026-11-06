@@ -384,6 +384,8 @@
     if (src !== "WINKY_HOOK" && src !== "WINKY_PAGE_HOOK") return;
     const data = event.data;
     const trade = state.tradeContext;
+    if(data.type==='WINKY_RESP_MARKET_STATUS') state.hookStatus={...data,receivedAt:Date.now()};
+    if(data.type==='WINKY_RESP_REQUEST_HISTORY') state.historyRequestStatus={...data,receivedAt:Date.now()};
     if (data.type === 'MARKET_CONTEXT' && data.asset) {
       state.dataContexts.set(normalizePocketPair(data.asset), data);
       if (normalizePocketPair(data.asset) === normalizePocketPair(state.targetPair)) {
@@ -761,8 +763,9 @@
           source: 'ticks',
           pair: this.pair || state.targetPair,
           complete: k + bucketMs <= marketNow(),
-          incomplete: prices.length < 2 || (k===sortedKeys[0] && samples[0].ts>k+2000) ||
-            samples.some((t,i)=>i>0 && t.ts-samples[i-1].ts>Math.max(5000,bucketMs/3)),
+          forming: k + bucketMs > marketNow(),
+          incomplete: k + bucketMs <= marketNow() && (prices.length < 2 || (k===sortedKeys[0] && samples[0].ts>k+2000) ||
+            samples.some((t,i)=>i>0 && t.ts-samples[i-1].ts>Math.max(5000,bucketMs/3))),
         });
       }
       return candles.slice(-maxBars);
@@ -791,7 +794,7 @@
   function acceptMarketEvidence(data, pair) {
     if (!pair || normalizePocketPair(pair)!==normalizePocketPair(state.targetPair)) return false;
     const context=state.dataContexts.get(normalizePocketPair(pair));
-    return !context || data.generation===context.generation;
+    return !context || data.generation == null || data.generation===context.generation;
   }
 
   function candleGeometry(c) {
@@ -860,25 +863,39 @@
   function aggregateCandles(candles, groupSize) {
     if (!candles?.length) return [];
     if (groupSize <= 1) return candles.slice();
-    const result = [];
-    const timestamped=candles.every(c=>Number.isFinite(c.time));
-    const groups=new Map();
-    candles.forEach((c,i)=>{const key=timestamped ? Math.floor(c.time/(c.candlePeriodSec*groupSize*1000)) : Math.floor(i/groupSize);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(c);});
-    for (const slice of groups.values()) {
-      if(slice.length!==groupSize) continue;
-      const first = slice[0], last = slice[slice.length-1];
-      if(timestamped && slice.some((c,i)=>c.time!==first.time+i*first.candlePeriodSec*1000)) continue;
-      if (slice.some(c => c.source !== first.source || c.pair !== first.pair || c.candlePeriodSec !== first.candlePeriodSec)) continue;
-      const open=first.open,close=last.close,high=Math.max(...slice.map(c=>c.high)),low=Math.min(...slice.map(c=>c.low));
-      const body=Math.abs(close-open),range=high-low;
-      result.push({open,close,high,low,body,bodySize:body,totalRange:range,
-        upperWick:Math.max(0,high-Math.max(open,close)),lowerWick:Math.max(0,Math.min(open,close)-low),
-        isGreen:close>open,isRed:close<open,time:first.time, source:first.source,pair:first.pair,
-        candlePeriodSec:first.candlePeriodSec ? first.candlePeriodSec*groupSize : null,
-        estimatedTime:slice.some(c=>c.estimatedTime===true),
-        complete:slice.every(c=>c.complete===true),incomplete:slice.some(c=>c.incomplete===true) });
+    const groups=new Map(),result=[],timestamped=candles.every(c=>Number.isFinite(c.time));
+    candles.forEach((c,i)=>{const key=timestamped?Math.floor(c.time/(c.candlePeriodSec*groupSize*1000)):Math.floor(i/groupSize);
+      if(!groups.has(key))groups.set(key,[]);groups.get(key).push(c);});
+    for(const slice of groups.values()) {
+      const first=slice[0],last=slice.at(-1),period=first.candlePeriodSec*groupSize;
+      if(slice.some((c,i)=>c.pair!==first.pair || c.source!==first.source || c.candlePeriodSec!==first.candlePeriodSec ||
+        (timestamped && i>0 && c.time-slice[i-1].time!==first.candlePeriodSec*1000))) continue;
+      const bucket=timestamped?Math.floor(first.time/(period*1000))*period*1000:first.time;
+      const forming=timestamped && bucket<=marketNow() && bucket+period*1000>marketNow();
+      // A partial CURRENT bucket is forming; a missing closed child is corrupt history.
+      if(slice.length!==groupSize && !forming) continue;
+      if(timestamped && first.time!==bucket) continue;
+      result.push(candleGeometry({...first,open:first.open,close:last.close,high:Math.max(...slice.map(c=>c.high)),low:Math.min(...slice.map(c=>c.low)),
+        time:bucket,candlePeriodSec:period,estimatedTime:slice.some(c=>c.estimatedTime===true),forming,
+        complete:!forming && slice.length===groupSize && slice.every(c=>c.complete===true),
+        incomplete:slice.some(c=>c.incomplete===true)}));
     }
     return result;
+  }
+
+  function marketDataSummary(frames=marketFrames()) {
+    return [15,30,60,120].map(period=>{const bars=frames[period] || [],last=bars.at(-1);
+      return {period,count:bars.length,closed:bars.filter(c=>c.complete && !c.incomplete).length,source:last?.source || null,
+        forming:Boolean(last && !last.complete),ageMs:last?Math.max(0,marketNow()-last.time-period*1000):null};});
+  }
+
+  function requestMarketRecovery(pair,period) {
+    const key=normalizePocketPair(pair)+'|'+period;
+    state.historyRecoveryAt=state.historyRecoveryAt || new Map();
+    if(Date.now()-(state.historyRecoveryAt.get(key) || 0)<3000) return;
+    state.historyRecoveryAt.set(key,Date.now());
+    window.postMessage({source:'WINKY_CONTENT',type:'WINKY_CMD_GET_MARKET_STATUS',requestId:++state.hookRequestSequence},'*');
+    window.postMessage({source:'WINKY_CONTENT',type:'WINKY_CMD_REQUEST_HISTORY',pair,periodSec:period,count:200,requestId:++state.hookRequestSequence},'*');
   }
 
   const ProTraderEngine = {
@@ -1703,7 +1720,7 @@
       };
     },
 
-    analyzeMarket(scan = null) {
+    analyzeMarket(scan = null, selection = {}) {
       const ticks = state.priceTicks;
 
       // If we have visual candles from canvas scan, adopt them
@@ -1744,7 +1761,7 @@
 
       const frames=marketFrames(scan);
       const activeCandles=frames[15]?.length?frames[15]:frames[60] || [];
-      const pro = ProTraderEngine.analyze(activeCandles, activeCandles.at(-1)?.close, {...scan,timeframes:frames});
+      const pro = ProTraderEngine.analyze(activeCandles, activeCandles.at(-1)?.close, {...scan,timeframes:frames,...selection});
 
       const isUp = pro.direction === "BUY";
 
@@ -3520,7 +3537,7 @@
     return Boolean(q && normalizePocketPair(q.pair)===normalizePocketPair(state.targetPair) && Date.now()-q.receivedAt<3500);
   }
 
-  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:'2.3.0',pair:state.targetPair,
+  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:'2.3.1',pair:state.targetPair,hook:state.hookStatus || null,historyRequest:state.historyRequestStatus || null,frames:marketDataSummary(),
     chartTf:state.actualChartTf || null,quoteFresh:quoteIsFresh(),searchRunning:state.searchRunning,
     decisions:state.decisionJournal}));
 
@@ -3691,7 +3708,7 @@
 
       if (state.searchRunning) {
         if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
-        const fresh=await freshPairAnalysis();
+        const fresh=await freshPairAnalysis({preferredScenarioKey:analysis.scenarioKey,entryThreshold:analysis.entryThreshold || 4});
         const currentPair=scanPocketOptionCurrentPair();
         if (analysis.searchGeneration!==state.searchGeneration || normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || 4) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
           resetTradePreparation(null); return;
@@ -3830,7 +3847,7 @@
       ['BUY','SELL'].includes(analysis.direction) && Number.isFinite(confluence?.score) && confluence.score>=threshold && (!requireFreshQuote || quoteIsFresh()));
   }
 
-  function samplePairAnalysis(force=false) {
+  function samplePairAnalysis(force=false,selection={}) {
     const cached=state.analysisCache;
     if(!force && cached && cached.pair===state.targetPair && Date.now()-cached.observedAt<250) return cached;
     if(!force && state.lastAnalysisCalculatedAt && Date.now()-state.lastAnalysisCalculatedAt<250) {
@@ -3839,17 +3856,17 @@
     state.lastAnalysisCalculatedAt=Date.now();
     ChartAnalyzer.pollPrice();
     const scan=scanCanvasStructure();
-    const analysis=ChartAnalyzer.analyzeMarket(scan);
+    const analysis=ChartAnalyzer.analyzeMarket(scan,selection);
     const sentiment=readTradersSentiment();
     const confluence=analysis.confluence || evaluate5FactorConfluence(scan,analysis,sentiment);
     return state.analysisCache={pair:state.targetPair,analysis,scan,sentiment,confluence,
       payout:parseFloat(state.targetPayout)||0,observedAt:Date.now()};
   }
 
-  async function freshPairAnalysis() {
+  async function freshPairAnalysis(selection={}) {
     const delay=state.lastAnalysisCalculatedAt ? 250-(Date.now()-state.lastAnalysisCalculatedAt) : 0;
     if(delay>0) await new Promise(resolve=>setTimeout(resolve,delay));
-    return samplePairAnalysis(true);
+    return samplePairAnalysis(true,selection);
   }
 
   async function waitPocketPairReady(pair, period=chartPeriodSeconds()) {

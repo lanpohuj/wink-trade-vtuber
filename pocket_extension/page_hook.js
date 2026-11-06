@@ -9,6 +9,8 @@
   // Prevent double injection
   if (window.__WINKY_PAGE_HOOK_LOADED__) return;
   window.__WINKY_PAGE_HOOK_LOADED__ = true;
+  const HOOK_VERSION="2.3.1";
+  let lastHistoryTransport=null;
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
@@ -37,18 +39,29 @@
   function normalizeChartTf(value) {
     const text = String(value || '').trim().toUpperCase().replace(/\s/g, '');
     const reversed = text.match(/^(\d+)(S|M|H)$/);
-    return reversed ? reversed[2] + reversed[1] : text;
+    if(reversed) return reversed[2]+reversed[1];
+    const localized=text.match(/^(\d+)(С|СЕК\.?|SEC\.?|SECONDS?|МИН\.?|MIN\.?|MINUTES?)$/);
+    if(localized) return (/МИН|MIN/.test(localized[2])?'M':'S')+localized[1];
+    return text;
   }
   const tfSeconds = value => { const m=normalizeChartTf(value).match(/^(S|M|H)(\d+)$/); return m ? Number(m[2])*({S:1,M:60,H:3600}[m[1]]) : null; };
-  function publishMarketData(packet, context) {
+  function publishMarketData(packet, context, pending=[]) {
     const receivedAt = Date.now();
-    const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history)$/i.test(packet.name);
+    const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history|loadHistoryPeriod|successLoadHistoryPeriod)$/i.test(packet.name);
     if (history) {
       const payload = packet.payload;
       const raw = Array.isArray(payload) ? payload : payload?.data || payload?.history || payload?.candles || payload?.ticks;
       if (!Array.isArray(raw)) return;
       const groups = new Map();
-      const periodSec = Number(payload?.period ?? payload?.timeframe ?? context.periodSec);
+      const nativePeriod=payload?.period ?? payload?.timeframe;
+      let periodSec = Number(nativePeriod) || tfSeconds(nativePeriod) || null;
+      const explicitAsset=payload?.asset || payload?.symbol;
+      const identityCandidates=pending.filter(r=>(!explicitAsset || normalizeAsset(r.asset)===normalizeAsset(explicitAsset)) &&
+        (!nativePeriod || r.periodSec===periodSec));
+      if(identityCandidates.length>1) return; // A delayed history must not cross generations.
+      const bound=identityCandidates.length===1 ? identityCandidates[0] : null;
+      if(!nativePeriod && bound) periodSec=bound.periodSec;
+      const anonymousAsset=!explicitAsset && bound && bound.generation===context.generation ? bound.asset : null;
       const groupFor = asset => {
         if (!asset) return null; // Never label an anonymous delayed history with the current pair.
         const key=normalizeAsset(asset);
@@ -56,7 +69,7 @@
         return groups.get(key);
       };
       for (const item of raw) {
-        let asset=payload?.asset || payload?.symbol, timestamp, price;
+        let asset=explicitAsset || anonymousAsset, timestamp, price;
         if (Array.isArray(item)) {
           if (item.length===3 && typeof item[0]==='string') [asset,timestamp,price]=item;
           else if (item.length===2) [timestamp,price]=item;
@@ -74,7 +87,9 @@
         if(group && Number.isFinite(ts) && Number.isFinite(Number(price)) && Number(price)>0) group.ticks.push({price:Number(price),ts});
       }
       for(const group of groups.values()) {
-        const generation=normalizeAsset(group.asset)===normalizeAsset(context.asset) ? context.generation : null;
+        const generation=bound && normalizeAsset(bound.asset)===normalizeAsset(group.asset) ? bound.generation :
+          (normalizeAsset(group.asset)===normalizeAsset(context.asset) ? context.generation : null);
+        if(bound) {const index=pending.indexOf(bound);if(index>=0)pending.splice(index,1);}
         if(group.ticks.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_HISTORY_TICKS',asset:group.asset,ticks:group.ticks.slice(-5000),generation,receivedAt},'*');
         if(group.candles.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_CANDLES_HISTORY',asset:group.asset,candles:group.candles,periodSec,generation,receivedAt},'*');
       }
@@ -107,6 +122,8 @@
     const ws = new OriginalWebSocket(...args);
     let attachmentName = null;
     let attachmentContext = null;
+    let attachmentRequests = null;
+    ws.__winkyHistoryRequests=[];
 
     const handleMessage = (data) => {
       try {
@@ -124,12 +141,14 @@
         }
 
         if (typeof data === "string") {
-          if (/^45\d*-/.test(data)) { attachmentName = readSocketPacket(data)?.name || null; attachmentContext={...marketContext}; return; }
+          if (/^45\d*-/.test(data)) { attachmentName = readSocketPacket(data)?.name || null; attachmentContext={...marketContext}; attachmentRequests=ws.__winkyHistoryRequests.slice(); return; }
           let packetContext={...marketContext};
+          let packetRequests=ws.__winkyHistoryRequests;
           if (attachmentName) {
             const name = attachmentName;
             packetContext=attachmentContext || packetContext;
-            attachmentName = null; attachmentContext=null;
+            packetRequests=attachmentRequests || packetRequests;
+            attachmentName = null; attachmentContext=null; attachmentRequests=null;
             try { data = '42' + JSON.stringify([name, JSON.parse(data)]); } catch (_) { return; }
           }
           const packet = readSocketPacket(data);
@@ -192,7 +211,14 @@
             } catch (_) {}
           }
 
-          if(packet) publishMarketData(packet,packetContext);
+          if(packet) {
+            const before=packetRequests.slice();
+            publishMarketData(packet,packetContext,packetRequests);
+            if(packetRequests!==ws.__winkyHistoryRequests) {
+              const consumed=new Set(before.filter(r=>!packetRequests.includes(r)));
+              ws.__winkyHistoryRequests=ws.__winkyHistoryRequests.filter(r=>!consumed.has(r));
+            }
+          }
           else {
             // Some feeds send the tuple array directly, without a Socket.IO
             // event envelope. Keep the legacy real-tick fallback for it.
@@ -234,6 +260,17 @@
   OriginalWebSocket.prototype.send = function (data) {
     try {
       const targetSec = window.__winkyTargetExpirySec || 30;
+      if(typeof data==='string') {
+        const packet=readSocketPacket(data), body=packet?.payload;
+        if(packet && /^(loadHistoryPeriod|load_history|loadHistory|history)$/i.test(packet.name) && body && !Array.isArray(body) && (body.asset || body.symbol)) {
+          const asset=body.asset || body.symbol, periodSec=Number(body.period)||tfSeconds(body.timeframe);
+          if([15,30,60,120].includes(periodSec)) {
+            lastHistoryTransport={socket:this,event:packet.name,payload:{...body},asset,periodSec,observedAt:Date.now()};
+            const pending=this.__winkyHistoryRequests || (this.__winkyHistoryRequests=[]);
+            if(!pending.some(r=>r.asset===asset && r.periodSec===periodSec && r.generation===marketContext.generation))pending.push({...marketContext,asset,periodSec});
+          }
+        }
+      }
       if (typeof data === "string") {
         if (data.includes("changeSymbol")) {
           const matchSym = data.match(/42\[\s*"changeSymbol"\s*,\s*(\{[\s\S]*\})\s*\]/);
@@ -242,7 +279,10 @@
               const symObj = JSON.parse(matchSym[1]);
               if (symObj && symObj.asset) {
                 window.__winkyCurrentAsset = symObj.asset;
-                marketContext={asset:symObj.asset,generation:marketContext.generation+1,periodSec:Number(symObj.period)||null,changedAt:Date.now()};
+                marketContext={asset:symObj.asset,generation:marketContext.generation+1,periodSec:Number(symObj.period)||tfSeconds(symObj.timeframe)||null,changedAt:Date.now()};
+                this.__winkyHistoryRequests=this.__winkyHistoryRequests || [];
+                this.__winkyHistoryRequests.push({...marketContext});
+                if(this.__winkyHistoryRequests.length>20) this.__winkyHistoryRequests.shift();
                 canvasCandleBars=[];
                 window.postMessage({source:'WINKY_HOOK',type:'MARKET_CONTEXT',...marketContext},'*');
                 console.log("[WinkyHook] 🔀 Intercepted changeSymbol asset:", symObj.asset);
@@ -591,7 +631,22 @@
   window.addEventListener("message", async (event) => {
     if (event.source !== window || !event.data || event.data.source !== "WINKY_CONTENT") return;
     const data = event.data;
-    if (data.type === "WINKY_CMD_SWITCH_PAIR") {
+    if(data.type==='WINKY_CMD_GET_MARKET_STATUS') {
+      const observed=getActualChartTimeframeBadge();
+      window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_MARKET_STATUS',requestId:data.requestId,version:HOOK_VERSION,
+        asset:marketContext.asset,generation:marketContext.generation,periodSec:marketContext.periodSec,chartTf:observed.badge,assetMenuOpen:Boolean(visibleAssetMenu())},'*');
+    } else if(data.type==='WINKY_CMD_REQUEST_HISTORY') {
+      let requested=false,error='native_history_request_not_observed';
+      const t=lastHistoryTransport;
+      if(t && normalizeAsset(t.asset)===normalizeAsset(data.pair) && t.periodSec===data.periodSec &&
+        normalizeAsset(marketContext.asset)===normalizeAsset(data.pair) && Date.now()-t.observedAt<30000 &&
+        Date.now()-(t.lastReplayAt || 0)>3000) {
+        const body={...t.payload};
+        for(const field of ['count','limit'])if(Number.isFinite(body[field]))body[field]=Math.min(200,Math.max(60,body[field]));
+        t.socket.send('42'+JSON.stringify([t.event,body]));t.lastReplayAt=Date.now();requested=true;error=null;
+      }
+      window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_REQUEST_HISTORY',requestId:data.requestId,requested,error},'*');
+    } else if (data.type === "WINKY_CMD_SWITCH_PAIR") {
       await handleMainWorldSwitchPair(data);
     } else if (data.type === "WINKY_CMD_SET_EXPIRY") {
       await handleMainWorldSetExpiry(data);
@@ -629,38 +684,8 @@
       return document.querySelector("h1, .symbol, .pair");
     };
 
-    const isPopupOpen = () => {
-      const modal = document.querySelector(".drop-down-modal-wrap, .currencies-block .drop-down-modal, .alist, .assets-block, .symbols-modal, .modal-window--assets, .alist__list");
-      if (!modal) return false;
-      const rect = modal.getBoundingClientRect();
-      return modal.offsetParent !== null && rect.width > 40 && rect.height > 40;
-    };
-
-    const forceClosePopup = async () => {
-      if (!isPopupOpen()) return;
-      console.log("[WinkyHook] 🚪 Принудительно закрываем всплывающее меню валют...");
-      const pBtn = findPairBtn();
-      if (pBtn) {
-        try { pBtn.click(); } catch (_) {}
-      }
-      const canvasEl = document.querySelector(".chart-container canvas, #chart-canvas, .chart-canvas, canvas");
-      if (canvasEl) {
-        const cRect = canvasEl.getBoundingClientRect();
-        const clickX = cRect.x + (cRect.width > 0 ? cRect.width * 0.75 : 300);
-        const clickY = cRect.y + (cRect.height > 0 ? cRect.height * 0.5 : 200);
-        const cOpts = { bubbles: true, cancelable: true, view: window, clientX: clickX, clientY: clickY };
-        canvasEl.dispatchEvent(new MouseEvent("mousedown", cOpts));
-        canvasEl.dispatchEvent(new MouseEvent("mouseup", cOpts));
-        canvasEl.dispatchEvent(new MouseEvent("click", cOpts));
-      }
-      try {
-        const escDown = new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
-        const escUp = new KeyboardEvent("keyup", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true });
-        document.dispatchEvent(escDown);
-        document.dispatchEvent(escUp);
-      } catch (_) {}
-      await sleep(250);
-    };
+    const isPopupOpen = () => Boolean(visibleAssetMenu());
+    const forceClosePopup = () => closeAssetMenu(findPairBtn());
 
     // Extract actual currently open pair from PO page
     let actualCurrentPair = "";
@@ -824,115 +849,46 @@
     }
   }
 
-  function findChartTfToolbarButton() {
-    const tfRegex = /^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1|5s|10s|15s|30s|1m|2m|5\s*сек\.?|15\s*сек\.?|30\s*сек\.?|1\s*мин\.?)$/i;
-    const specificSelectors = [
-      ".current-timeframe",
-      ".chart-timeframe",
-      ".chart-panel__button--timeframe",
-      "[data-test*='timeframe']",
-      ".top-left-block .items-list a",
-      ".top-left-block a",
-      ".top-left-block button",
-      ".block--chart-type",
-      ".chart-type-block",
-      ".items-link--chart-type",
-    ];
+  function visibleAssetMenu() {
+    return Array.from(document.querySelectorAll('.drop-down-modal-wrap, .alist, .assets-block, .symbols-modal, .modal-window--assets'))
+      .find(el=>el.offsetParent!==null && el.getBoundingClientRect().width>40 && el.getBoundingClientRect().height>40 && el.querySelector('.alist__link, .alist__item, .assets-block__item')) || null;
+  }
 
-    for (const sel of specificSelectors) {
-      const els = document.querySelectorAll(sel);
-      for (const el of els) {
-        if (!el || el.offsetParent === null) continue;
-        const rect = el.getBoundingClientRect();
-        if (rect.left < 480 && rect.top < 140) {
-          const txt = (el.textContent || "").trim();
-          if (tfRegex.test(txt) || /15\s*(s|sec|сек|с)/i.test(txt)) {
-            return { el, text: txt };
-          }
-        }
-      }
+  async function closeAssetMenu(button=null) {
+    const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    if(!visibleAssetMenu()) return true;
+    document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true}));await sleep(60);
+    if(visibleAssetMenu()) {const header=button || document.querySelector('.currencies-block__in, .current-symbol');if(header)realClick(header);await sleep(60);}
+    if(visibleAssetMenu()) {
+      const canvas=document.querySelector('.chart-container canvas, #chart-canvas, canvas');
+      if(canvas)realClick(canvas);await sleep(60);
     }
-
-    const allTopLeft = document.querySelectorAll("header a, header button, .top-left a, .top-left button, .chart-panel a, .chart-panel button, .items-list a, .items-list button, div[role='button']");
-    for (const el of allTopLeft) {
-      if (!el || el.offsetParent === null) continue;
-      const rect = el.getBoundingClientRect();
-      if (rect.left >= 80 && rect.left <= 450 && rect.top <= 120 && rect.width >= 15 && rect.height >= 15) {
-        const txt = (el.textContent || "").trim();
-        if (tfRegex.test(txt)) {
-          return { el, text: txt };
-        }
-      }
-    }
-    return null;
+    return !visibleAssetMenu();
   }
 
   function getActualChartTimeframeBadge() {
-    let badge = null;
-    let btn = null;
-
-    const found = findChartTfToolbarButton();
-    if (found) {
-      btn = found.el;
-      const txt = found.text;
-      const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M15|M30|H1|H4|D1|5s|15s|30s|1m)$/i);
-      if (m) {
-        badge = m[1].toUpperCase();
-      } else if (/15\s*(s|sec|сек|с)/i.test(txt) && !/15\s*м/i.test(txt)) {
-        badge = "S15";
-      } else if (/1\s*(m|min|мин)/i.test(txt)) {
-        badge = "M1";
+    const selectors='.current-timeframe, .chart-timeframe, .chart-panel__button--timeframe, [data-test*="timeframe"], .block--chart-type, .chart-type-block, .items-link--chart-type';
+    const semantic=Array.from(document.querySelectorAll(selectors));
+    const canvas=document.querySelector('.chart-container canvas, #chart-canvas, canvas');
+    const chart=canvas?.getBoundingClientRect();
+    const candidates=semantic.concat(Array.from(document.querySelectorAll('.top-left-block a, .top-left-block button, .chart-panel button, .chart-panel a, span')));
+    for(const element of candidates) {
+      if(!element || element.offsetParent===null || element.closest?.('#winky-sniper-root, #winky-orb-counter, .winky-widget, .alist, .assets-block, .deals-list, .block--expiration-inputs')) continue;
+      const children=Array.from(element.querySelectorAll?.('span, [data-period], [data-timeframe]') || []);
+      for(const label of [element,...children]) {
+        const badge=normalizeChartTf(label.textContent);
+        if(!/^(S5|S10|S15|S30|M1|M2|M3|M5|M10|M15|M30|H1|H4|D1)$/.test(badge))continue;
+        const rect=label.getBoundingClientRect();
+        const known=semantic.includes(element);
+        if(!known && (!chart || rect.top<chart.top-70 || rect.top>chart.top+90 || rect.left<chart.left || rect.left>chart.right))continue;
+        const btn=semantic.includes(element)?element:(label.closest?.('button,a,[role="button"]') || element.closest?.('button,a,[role="button"]'));
+        if(!btn || btn.closest?.('.currencies-block, .alist, .assets-block'))continue;
+        window.__winkyActualChartTf=badge;
+        window.postMessage({source:'WINKY_HOOK',type:'CHART_TF_STATUS',tf:badge,generation:marketContext.generation},'*');
+        return {badge,btn};
       }
     }
-
-    if (!badge) {
-      const tfButtonsSelectors = [
-        ".current-timeframe",
-        ".chart-timeframe",
-        ".block--chart-type",
-        ".chart-type-block",
-        "[class*='chart-type']",
-        "[data-test*='timeframe']",
-        ".top-left-block .items-list a",
-        ".top-left-block a",
-        ".top-left-block button",
-        ".chart-panel__button--timeframe",
-        ".items-link--chart-type",
-      ];
-      for (const sel of tfButtonsSelectors) {
-        const els = document.querySelectorAll(sel);
-        for (const el of els) {
-          if (!el || el.offsetParent === null) continue;
-          const txt = (el.textContent || "").trim();
-          const m = txt.match(/^(S5|S10|S15|S30|M1|M2|M3|M5|M15|M30|H1|H4|D1|5s|15s|30s|1m)$/i);
-          if (m) {
-            badge = m[1].toUpperCase();
-            if (!btn) btn = el;
-            break;
-          }
-          if (/15\s*(s|sec|сек|с)/i.test(txt) && !/15\s*м/i.test(txt)) {
-            badge = "S15";
-            if (!btn) btn = el;
-            break;
-          }
-          if (!btn && (el.classList.contains("chart-type-block") || el.classList.contains("block--chart-type"))) {
-            btn = el;
-          }
-        }
-        if (badge) break;
-      }
-    }
-
-    if (badge) {
-      badge=normalizeChartTf(badge);
-      window.__winkyActualChartTf = badge;
-      try {
-        window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: badge }, "*");
-        window.postMessage({ source: "WINKY_HOOK", type: "CHART_TF_STATUS", tf: badge }, "*");
-      } catch (_) {}
-    }
-
-    return { badge, btn };
+    return {badge:null,btn:null};
   }
 
   async function handleMainWorldEnsureChartTimeframe(targetTf = 'S15', command = {}) {
@@ -945,13 +901,14 @@
       return ok && observed===target;
     };
     if(!['M1','S15'].includes(target)) return reply(false,'unsupported_timeframe');
+    await closeAssetMenu();
     const current=getActualChartTimeframeBadge();
     if(current.badge===target) return reply(true);
     if(window.__winkyTfSwitchBusy) return reply(false,'timeframe_busy');
     const attempts=window.__winkyTfAttempts || (window.__winkyTfAttempts={});
     if(Date.now()-(attempts[target]||0)<250) return reply(false,'timeframe_cooldown');
     attempts[target]=Date.now();
-    const button=current.btn || document.querySelector('.chart-type-block, .block--chart-type, .current-timeframe, .chart-timeframe');
+    const button=current.btn;
     if(!button) return reply(false,'timeframe_button_missing');
     window.__winkyTfSwitchBusy=true;
     try {
@@ -978,6 +935,7 @@
     finally {
       window.__winkyTfSwitchBusy=false;
       document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true}));
+      await closeAssetMenu();
     }
   }
 
