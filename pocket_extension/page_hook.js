@@ -759,7 +759,7 @@
       chosen = candidates.find((c) => c.normName.includes(normTarget));
     }
 
-    if (!chosen && candidates.length > 0) {
+    if (!targetPair && !chosen && candidates.length > 0) {
       // Safety filter for OTC only
       const otcOnly = candidates.filter((c) => c.name.toUpperCase().includes("OTC") || c.normName.includes("otc"));
       const candPool = otcOnly.length > 0 ? otcOnly : candidates;
@@ -1156,12 +1156,8 @@
           ".block--expiration-inputs .switch-state-block__item:not(.active), " +
           ".block--expiration-inputs .switch-state-block a, " +
           ".block--expiration-inputs .switch-state-block, " +
-          ".switch-state-block__item:not(.active), " +
-          ".switch-state-block a, " +
-          ".switch-state-block, " +
           ".expiration-switch, " +
-          "[class*='switch-state'], " +
-          ".trading-panel [class*='switch']"
+          ".expiration-block [class*='switch-state']"
         ));
         for (const el of switchTargets) {
           if (el === timeInp || el.closest(".btn-plus") || el.closest(".btn-minus")) continue;

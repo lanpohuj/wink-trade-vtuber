@@ -446,8 +446,8 @@
         const localRem = Math.floor((state.tradeEndTime - now) / 1000);
 
         // 1. Первичная калибровка таймфрейма (в первые 10 секунд после клика)
-        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 10000) && remSec >= 5) {
-          if (remSec >= 40 || remSec > localRem + 3) {
+        if (!state.isCalibratedToRealDeal && (now - state.tradeStartTime < 10000) && remSec >= 0) {
+          if (remSec >= 0) {
             state.isCalibratedToRealDeal = true;
             const calibratedTf = secToTfLabel(remSec);
 
@@ -579,7 +579,7 @@
         }
       }
     } catch (_) {}
-    return { bullish, bearish };
+    return { bullish, bearish, observed: Boolean(document.querySelector('.sentiment-call, .sentiment__call, .chart-sentiment-bull, .trading-panel .sentiment-up')) };
   }
 
   /* ==================== 1b. LiveTickBuffer & ProTraderEngine ==================== */
@@ -1412,7 +1412,7 @@
       if (strictVetoSell) forcedDir = "BUY";
 
       // Если и BUY, и SELL заблокированы защитами — отменяем вход для защиты депозита!
-      if ((forcedDir === "BUY" && strictVetoBuy) || (forcedDir === "SELL" && strictVetoSell)) {
+      if ((forcedDir === "BUY" && (strictVetoBuy || c0.isRed)) || (forcedDir === "SELL" && (strictVetoSell || c0.isGreen))) {
         return {
           valid: true,
           shouldTrade: false,
@@ -1497,6 +1497,7 @@
         if (now - state.currentCandle.startTime >= 5000) {
           const c = state.currentCandle;
           const candle = {
+            source: 'ticks', pair: state.targetPair, candlePeriodSec: 5,
             open: c.open,
             high: c.high,
             low: c.low,
@@ -1642,8 +1643,8 @@
       if (liveS15.length >= 8 && Date.now() - LiveTickBuffer.ticks.at(-1).ts < 5000) activeCandles = liveS15;
       const visualPeriod = chartPeriodSeconds();
       if (activeCandles.length < 8 && visualPeriod && visualPeriod <= 120) {
-        const visual = scan?.visualCandles?.length >= 8 ? scan.visualCandles : state.candles;
-        activeCandles = (visual || []).filter(c => !c.pair || normalizePocketPair(c.pair) === normalizePocketPair(state.targetPair))
+        const visual = scan?.visualCandles?.length >= 8 ? scan.visualCandles : state.candles.filter(c=>c.source==='pixels');
+        activeCandles = (visual || []).filter(c => (!c.source || c.source==='pixels') && (!c.pair || normalizePocketPair(c.pair) === normalizePocketPair(state.targetPair)))
           .map(c => ({...c,source:'pixels',pair:state.targetPair,candlePeriodSec:visualPeriod}));
       }
 
@@ -2288,12 +2289,8 @@
       const el = document.querySelector(sel);
       if (el && el.textContent) {
         // Оставляем только цифры, точку и запятую
-        const raw = el.textContent.replace(/[^\d.,]/g, "").trim();
-        if (!raw) continue;
-        // В форматах типа "48,016" или "48,016.50" запятая — это разделитель тысяч!
-        const normalized = raw.replace(/,/g, "");
-        const val = parseFloat(normalized);
-        if (!Number.isNaN(val) && val >= 0) {
+        const val = parsePocketMoney(el.textContent);
+        if (val !== null && val >= 0) {
           return val;
         }
       }
@@ -2687,7 +2684,7 @@
             type: "WINKY_CMD_SWITCH_PAIR",
             targetPair: targetPairName,
             currentPair: actualCurrentPair,
-            recentPairs: state.recentPairs,
+            recentPairs: state.recentPairs.concat(state.searchSeen || []),
             minPayout: 88,
           },
           "*"
@@ -3542,6 +3539,14 @@
       }
 
 
+      if (state.searchRunning) {
+        if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
+        const currentPair=scanPocketOptionCurrentPair();
+        const fresh=samplePairAnalysis();
+        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || !canEnterAnalysis(fresh.analysis,fresh.confluence) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf) {
+          resetTradePreparation(null); return;
+        }
+      }
       // One context owns the click, callback measurements, timer and outcome.
       const trade = state.tradeContext = {
         seq: ++state.tradeSequence, pair: state.targetPair, direction: tradeDir,
@@ -3632,6 +3637,12 @@
     } catch (err) {
       loggerLog("[executeTradeWithSignal] ⚠️ Error during execution:", err);
       console.error("[Winky] Execute trade error:", err);
+      if (state.tradeContext) {
+        state.botState='IN_TRADE';
+        state.tradeEndTime=state.tradeContext.closesAt || state.tradeContext.startedAt + state.tradeDurationSec*1000;
+        onSignalTimerFinished();
+        return;
+      }
       state.botState = "IDLE";
       state.analysisStartedAt = null;
       renderSignalCardState();
@@ -3651,296 +3662,130 @@
     }
   }
 
+  function rankPairCandidate(candidate) {
+    const a=candidate.analysis || {}, factors=candidate.confluence?.factors || [];
+    const observed=[Boolean(a.trendRegime),Boolean(a.setup),Boolean(a.sr),Number.isFinite(a.rsi),Boolean(candidate.sentiment?.observed)];
+    return factors.reduce((sum,f,i)=>sum+(observed[i] && Number.isFinite(f.score) ? f.score : 0),0);
+  }
+
+  function bestPairCandidate(candidates) {
+    return candidates.slice().sort((a,b)=>rankPairCandidate(b)-rankPairCandidate(a) || b.payout-a.payout || b.observedAt-a.observedAt)[0] || null;
+  }
+
+  function canEnterAnalysis(analysis, confluence) {
+    return Boolean(analysis?.shouldTrade && !analysis.hardVeto && !['HIGH_RISK_MARKET','INCOMPATIBLE_CANDLES','NOT_ENOUGH_CANDLES'].includes(analysis.vetoReason) &&
+      ['BUY','SELL'].includes(analysis.direction) && (analysis.confidence>=84 || confluence?.score>=4));
+  }
+
+  function samplePairAnalysis() {
+    const cached=state.analysisCache;
+    if(cached && cached.pair===state.targetPair && Date.now()-cached.observedAt<250) return cached;
+    ChartAnalyzer.pollPrice();
+    const scan=scanCanvasStructure();
+    const analysis=ChartAnalyzer.analyzeMarket(scan);
+    const sentiment=readTradersSentiment();
+    const confluence=evaluate5FactorConfluence(scan,analysis,sentiment);
+    return state.analysisCache={pair:state.targetPair,analysis,scan,sentiment,confluence,
+      payout:parseFloat(state.targetPayout)||0,observedAt:Date.now()};
+  }
+
+  async function waitPocketPairReady(pair) {
+    const deadline=Date.now()+3200;
+    while(Date.now()<deadline) {
+      const current=scanPocketOptionCurrentPair();
+      const scan=scanCanvasStructure();
+      if(normalizePocketPair(current)===normalizePocketPair(pair) &&
+        ((scan.visualCandles?.length||0)>=8 || LiveTickBuffer.buildCandles(15,45).length>=8)) return true;
+      await new Promise(resolve=>setTimeout(resolve,150));
+    }
+    return false;
+  }
+
   async function startSignalAnalysis() {
-    if (state.botState !== "IDLE") return;
-    state.analysisStartedAt = Date.now();
-    notifyTradePhase("ANALYZING", state.targetPair, 0);
-
-    if (state.expiryInterval) {
-      clearInterval(state.expiryInterval);
-      state.expiryInterval = null;
-    }
-
-    const btnGet = document.getElementById("btnGetSignalAction");
-
-    // 0. Гарантируем 15-секундный таймфрейм свечей графика Pocket Option
+    if(state.botState!=='IDLE' || state.searchRunning || state.tradeContext) return;
+    state.searchRunning=true;
+    const generation=++state.searchGeneration;
+    state.botState='ANALYZING_PAIR';
+    state.analysisStartedAt=Date.now();
+    state.searchSeen=[];
+    state.pairCandidates=[];
+    const button=document.getElementById('btnGetSignalAction');
+    const steps=['МАКРО-ТРЕНД','СВЕЧНОЙ ИМПУЛЬС','УРОВНИ ГРАФИКА','ТОЧКА ВХОДА'];
+    let chosen=null;
     try {
-      await requestMainWorldEnsureChartTimeframe("S15");
-    } catch (_) {}
+      if(button) {button.disabled=true;button.classList.add('disabled');}
+      notifyTradePhase('ANALYZING',state.targetPair,0);
+      // Keep the existing switcher; failure is not a forged S15 or a global stop.
+      const tf=await requestMainWorldEnsureChartTimeframe('S15');
+      if(tf?.activeTf) state.actualChartTf=tf.activeTf;
+      if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
 
-    // 0.1 Ротация пар: после любого минуса или после 2 сделок на одной паре
-    if (state.lastTradeOutcome === "LOSS" || state.consecutiveLosses >= 1) {
-      loggerLog("[startSignalAnalysis] 🔄 Предыдущая сделка закрылась в минус! Немедленная смена пары перед анализом...");
-      state.lastTradeOutcome = null;
-      state.tradesOnSamePair = 0;
-      if (state.targetPair) {
-        if (!Array.isArray(state.recentPairs)) state.recentPairs = [];
-        state.recentPairs.push(state.targetPair);
-      }
-      await switchPocketPair(null);
-      await new Promise((r) => setTimeout(r, 3200));
-      if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
-    } else if (state.tradesOnSamePair >= 2) {
-      loggerLog(`[startSignalAnalysis] 🔄 Проведено 2 сделки подряд на паре ${state.targetPair}! Плановая смена пары...`);
-      state.tradesOnSamePair = 0;
-      if (state.targetPair) {
-        if (!Array.isArray(state.recentPairs)) state.recentPairs = [];
-        state.recentPairs.push(state.targetPair);
-      }
-      await switchPocketPair(null);
-      await new Promise((r) => setTimeout(r, 3200));
-      if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
-    }
-
-    // 1. Устанавливаем актуальную ставку по мани-менеджменту ($50 -> $110 -> $242)
-    const activeExpectedStake = getExpectedStake(state.recoveryStep);
-    state.currentStake = activeExpectedStake;
-    setPocketStakeAmount(activeExpectedStake);
-    updateStakeBadgeUI();
-
-    // 2. Состояние: АНАЛИЗ ГРАФИКА (0ms UI)
-    triggerStateWithVoice("ANALYZING_PAIR", null, () => {
-      if (btnGet) {
-        btnGet.disabled = true;
-        btnGet.classList.add("disabled");
-        btnGet.innerHTML = `<span>🧠</span><span>${state.lang === "ru" ? "ГЛУБОКИЙ АНАЛИЗ..." : "DEEP CHART VISION..."}</span>`;
-      }
-    }, false);
-
-    try {
-      const isRu = (state.lang === "ru");
-      const scanSteps = [
-        {
-          num: "01",
-          nameRu: "МАКРО-ТРЕНД",
-          nameEn: "MACRO TREND",
-          factorIdx: 0,
-          descRu: "Сканирование структуры свечей и старшего тренда",
-          descEn: "Scanning higher timeframe & candle momentum",
-          scanMs: 400,
-          confirmMs: 200,
-        },
-        {
-          num: "02",
-          nameRu: "СВЕЧНОЙ ИМПУЛЬС",
-          nameEn: "CANDLE MOMENTUM",
-          factorIdx: 1,
-          descRu: "Анализ объёма тела свечей и теней",
-          descEn: "Analyzing candle body volume & shadow rejection",
-          scanMs: 400,
-          confirmMs: 200,
-        },
-        {
-          num: "03",
-          nameRu: "УРОВНИ ГРАФИКА",
-          nameEn: "S/R LEVELS",
-          factorIdx: 2,
-          descRu: "Поиск сильных зон спроса и предложения",
-          descEn: "Locating institutional supply & demand zones",
-          scanMs: 400,
-          confirmMs: 200,
-        },
-        {
-          num: "04",
-          nameRu: "ТОЧКА ВХОДА",
-          nameEn: "ENTRY POINT",
-          factorIdx: 3,
-          descRu: "RSI осциллятор и расчёт перевеса объёма",
-          descEn: "RSI oscillator & volume delta confluence",
-          scanMs: 400,
-          confirmMs: 220,
-        },
-      ];
-
-      let confluence = null;
-      let analysis = null;
-      let scan = null;
-      let sentiment = null;
-
-      for (let i = 0; i < scanSteps.length; i++) {
-        const stepDef = scanSteps[i];
-
-        try { ChartAnalyzer.pollPrice(); } catch (_) {}
-        try { scan = scanCanvasStructure(); } catch (_) {}
-        try { analysis = ChartAnalyzer.analyzeMarket(scan); } catch (_) {}
-        try { sentiment = readTradersSentiment(); } catch (_) {}
-        try { confluence = evaluate5FactorConfluence(scan, analysis, sentiment); } catch (_) {}
-
-        // Real-time Expiration sync into HUD during steps 1..4:
-        if (analysis) {
-          const liveStrategyTf = selectStrategyExpiration(analysis, scan) || "1m";
-          updateExpiryHUD(liveStrategyTf);
+      for(let attempt=0;attempt<5 && generation===state.searchGeneration;attempt++) {
+        const pair=state.targetPair;
+        const key=normalizePocketPair(pair);
+        if(state.searchSeen.includes(key)) break;
+        state.searchSeen.push(key);
+        await waitPocketPairReady(pair);
+        state.botState='ANALYZING_PAIR';
+        state.allowDominantEntry=false;
+        let sample=null;
+        // Four existing visual steps; the live calculation is independent of
+        // their animation delays, and a ready setup finishes them immediately.
+        for(let step=0;step<4;step++) {
+          state.analysisStartedAt=Date.now();
+          sample=samplePairAnalysis();
+          const factor=sample.confluence?.factors?.[step];
+          renderAnalysisStep(step,4,String(step+1).padStart(2,'0')+' · '+steps[step],factor?.detail || sample.analysis?.line1 || 'Ожидание графика',String(sample.confluence?.score||0),false);
+          if(canEnterAnalysis(sample.analysis,sample.confluence)) {chosen=sample;break;}
+          if(step<3) await new Promise(resolve=>setTimeout(resolve,250));
         }
-
-        if (!confluence || !confluence.factors || confluence.factors.length === 0) {
-          confluence = {
-            score: 4.8,
-            isStrong: true,
-            factors: [
-              { name: "Trend", detail: isRu ? "Глобальный тренд устойчив" : "Global trend intact" },
-              { name: "Momentum", detail: isRu ? "Импульс покупателей подтверждён" : "Bullish momentum confirmed" },
-              { name: "Levels", detail: isRu ? "Отскок от ключевого уровня" : "Bounce from key S/R level" },
-              { name: "RSI", detail: isRu ? "RSI в рабочей зоне продолжения" : "RSI in prime continuation zone" },
-              { name: "Sentiment", detail: isRu ? "Стакан Pocket: 94% объёма" : "Pocket sentiment: 94% volume" },
-            ],
-          };
-        }
-
-        const factor = confluence.factors[stepDef.factorIdx] || confluence.factors[0];
-        const stepName = isRu ? `${stepDef.num} · ${stepDef.nameRu}` : `${stepDef.num} · ${stepDef.nameEn}`;
-        let stepDetail = factor.detail || (isRu ? stepDef.descRu : stepDef.descEn);
-
-        if (i === 3) {
-          const factorRsi = confluence.factors[3];
-          const factorSent = confluence.factors[4];
-          if (factorRsi && factorSent) {
-            stepDetail = `${factorRsi.detail}. ${factorSent.detail}.`;
-          }
-        }
-
-        const scoreStr = confluence.score ? confluence.score.toFixed(1) : "4.8";
-
-        // Phase 1: active scan step with 150ms live tick polling
-        renderAnalysisStep(i, scanSteps.length, stepName, stepDetail, scoreStr, false);
-        const pInt = setInterval(() => {
-          try { ChartAnalyzer.pollPrice(); } catch (_) {}
-        }, 150);
-        await new Promise((r) => setTimeout(r, stepDef.scanMs));
-        clearInterval(pInt);
-
-        // Phase 2: confirmed checkmark
-        const cardEl = document.getElementById("winkyActiveFlipCard");
-        if (cardEl) cardEl.classList.add("done-step");
-        const segsEl = document.querySelector("#botDirectionBlock .winky-scan-segments");
-        if (segsEl) {
-          segsEl.innerHTML = [0, 1, 2, 3].map((segIdx) => {
-            if (segIdx <= i) return '<div class="winky-scan-seg done"></div>';
-            return '<div class="winky-scan-seg"></div>';
-          }).join("");
-        }
-        await new Promise((r) => setTimeout(r, stepDef.confirmMs));
-
-        // Phase 3: step-out transition
-        if (i < scanSteps.length - 1 && cardEl) {
-          cardEl.classList.add("step-out");
-          await new Promise((r) => setTimeout(r, 100));
-        }
+        if(sample) state.pairCandidates.push(sample);
+        if(chosen) break;
+        if(attempt===4) break;
+        state.botState='SWITCHING_PAIR';
+        const switched=await switchPocketPair(null);
+        if(!switched || normalizePocketPair(state.targetPair)===key) break;
       }
 
-      // Re-evaluate with accumulated fresh live ticks from all steps
-      try { ChartAnalyzer.pollPrice(); } catch (_) {}
-      try { scan = scanCanvasStructure(); } catch (_) {}
-      try { analysis = ChartAnalyzer.analyzeMarket(scan); } catch (_) {}
-      try { sentiment = readTradersSentiment(); } catch (_) {}
-      try { confluence = evaluate5FactorConfluence(scan, analysis, sentiment); } catch (_) {}
-
-      // Safe fallback guarantees
-      if (!scan) scan = { trend: "UP", structure: "BULLISH", keyLevels: [] };
-      if (!analysis) analysis = { direction: "BUY", line1: isRu ? "Сильный восходящий импульс" : "Strong bullish momentum", line2: isRu ? "Входим вверх по тренду" : "Entering call with trend" };
-      if (!confluence) confluence = { score: 4.8, isStrong: true };
-
-      // -----------------------------------------------------------------
-      // "BEST PAIR OUT OF 7 CHECKS" RULE (Anti-infinite loop protection)
-      // -----------------------------------------------------------------
-      const MAX_PAIR_SCANS = 7;
-      state.pairScanCount = typeof state.pairScanCount === "number" ? state.pairScanCount : 0;
-
-      // 1. If clean setup found (shouldTrade === true & score >= 4.0 / conf >= 84%) -> ENTER IMMEDIATELY!
-      if (analysis.shouldTrade && (analysis.confidence >= 84 || confluence.score >= 4.0)) {
-        state.pairScanCount = 0;
-        loggerLog(`[ProTraderEngine] ✅ Идеальный сетап найден («${analysis.setup}» · ${analysis.direction} · ${analysis.confidence}% · Оценка ${confluence.score}/5.0)! Входим в сделку!`);
-      } else {
-        // 2. Pair is weak / flat: check if we haven't exceeded MAX_PAIR_SCANS skips
-        if (state.pairScanCount < MAX_PAIR_SCANS - 1) {
-          state.pairScanCount += 1;
-          const rejectReason = analysis.line1 || (isRu ? "Флэт или низкая сила сетапа (< 84%)" : "Choppy flat or low setup strength (< 84%)");
-          loggerLog(`[ProTraderEngine] 🛡️ Пара отбракована (проверка №${state.pairScanCount} из ${MAX_PAIR_SCANS}). Причина: ${rejectReason}`);
-
-          const nowTs = Date.now();
-          const shouldVoice = (nowTs - state.lastPairSkipVoiceTs >= 60000);
-          const skipVoiceCategory = shouldVoice ? "flat_skip" : null;
-
-          const block = document.getElementById("botDirectionBlock");
-          // NON-BLOCKING voice: isBlocking = false so UI never hangs!
-          await triggerStateWithVoice("ANALYZING_PAIR", skipVoiceCategory, () => {
-            if (block) {
-              block.className = "winky-direction-block active";
-              block.innerHTML = `
-                <div class="signal-dir-large" style="font-size:15px; color:#FFAA00;">
-                  🛡️ ${isRu ? "ВХОД ПРОПУЩЕН · ФИЛЬТР РЫНКА" : "ENTRY SKIPPED · MARKET SHIELD"}
-                </div>
-                <div class="signal-ta-lines">
-                  <div class="signal-ta-line" style="color:#FFAA00;">
-                    ⚠️ ${rejectReason}
-                  </div>
-                  <div class="signal-ta-line" style="color:#00D9F5;">
-                    ${isRu
-                      ? `🔄 Переключаемся на пару #${state.pairScanCount + 1} из ${MAX_PAIR_SCANS} (+92%)...`
-                      : `🔄 Switching to pair #${state.pairScanCount + 1} of ${MAX_PAIR_SCANS} (+92%)...`}
-                  </div>
-                </div>
-              `;
+      if(!chosen) {
+        const best=bestPairCandidate(state.pairCandidates);
+        if(best) {
+          const atBest=normalizePocketPair(best.pair)===normalizePocketPair(state.targetPair) || await switchPocketPair(best.pair);
+          if(atBest) {
+            await waitPocketPairReady(best.pair);
+            state.botState='ANALYZING_PAIR';
+            state.allowDominantEntry=true;
+            const deadline=Date.now()+10000;
+            while(Date.now()<deadline && generation===state.searchGeneration) {
+              state.analysisStartedAt=Date.now();
+              const fresh=samplePairAnalysis();
+              renderAnalysisStep(3,4,'04 · ТОЧКА ВХОДА',fresh.analysis?.line1 || 'Наблюдение лучшей пары',String(fresh.confluence?.score||0),false);
+              if(canEnterAnalysis(fresh.analysis,fresh.confluence)) {chosen=fresh;break;}
+              await new Promise(resolve=>setTimeout(resolve,250));
             }
-          }, false, "thinking", "tilt_head");
-
-          if (shouldVoice) {
-            state.lastPairSkipVoiceTs = Date.now();
           }
-
-          await new Promise((r) => setTimeout(r, 400));
-
-          await triggerStateWithVoice("SWITCHING_PAIR", null, () => {
-            renderSignalCardState();
-          }, false, "thinking", "tilt_head");
-
-          await POAutomation.switchCurrencyPair();
-          await new Promise((r) => setTimeout(r, 3200)); // Пауза 3.2с для полной отрисовки графика на S15
-
-          state.botState = "IDLE";
-          state.analysisStartedAt = null;
-          renderSignalCardState();
-          updateStakeBadgeUI();
-
-          if (btnGet) {
-            btnGet.disabled = false;
-            btnGet.classList.remove("disabled");
-            btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
-          }
-
-          setTimeout(() => {
-            if (state.autoStream && state.botState === "IDLE") startSignalAnalysis();
-          }, 1000);
-          return;
-        } else {
-          // 3. We scanned 7 pairs! Take the best scenario from ProTraderEngine strictly respecting Protections 1, 2, 3!
-          loggerLog(`[ProTraderEngine] ⚡ Проверено ${MAX_PAIR_SCANS} пар подряд! Входим по согласованной правой волне!`);
-          state.pairScanCount = 0;
-          analysis.shouldTrade = true;
         }
       }
-
-      state.consecutiveSkips = 0;
-
-      // Execute Trade
-      await executeTradeWithSignal(analysis, confluence, scan);
-
-    } catch (err) {
-      loggerLog("[startSignalAnalysis] ⚠️ Error during analysis:", err);
-      console.error("[Winky] Analysis error:", err);
-      state.botState = "IDLE";
-      state.analysisStartedAt = null;
-      renderSignalCardState();
-      if (btnGet) {
-        btnGet.disabled = false;
-        btnGet.classList.remove("disabled");
-        btnGet.innerHTML = `<span>⚡</span><span>${t("getSignal")}</span>`;
+      if(chosen && generation===state.searchGeneration) {
+        // Final fresh read: never execute the cached direction after returning.
+        const fresh=samplePairAnalysis();
+        if(canEnterAnalysis(fresh.analysis,fresh.confluence)) {
+          fresh.analysis.searchGeneration=generation;
+          for(let i=0;i<4;i++) renderAnalysisStep(i,4,String(i+1).padStart(2,'0')+' · '+steps[i],fresh.confluence?.factors?.[i]?.detail || fresh.analysis.line1,String(fresh.confluence?.score||0),true);
+          await executeTradeWithSignal(fresh.analysis,fresh.confluence,fresh.scan);
+        }
       }
-      if (state.autoStream) {
-        setTimeout(() => {
-          if (state.autoStream && state.botState === "IDLE") {
-            startSignalAnalysis();
-          }
-        }, 2000);
+    } catch(error) {
+      loggerLog('[LivePairSearch] Ошибка поиска:',error);
+    } finally {
+      state.allowDominantEntry=false;
+      state.searchRunning=false;
+      state.analysisStartedAt=null;
+      if(!state.tradeContext && !['IN_TRADE','TRADE_RESULT','COOLDOWN'].includes(state.botState)) {
+        state.botState='IDLE';
+        renderSignalCardState();
+        if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=t('getSignal');}
+        if(state.autoStream) setTimeout(()=>{if(state.autoStream && state.botState==='IDLE')startSignalAnalysis();},1000);
       }
     }
   }
@@ -4480,6 +4325,7 @@
   }
 
   function checkAnalysisWatchdog() {
+      if (state.searchRunning || state.tradeContext) return;
     if ((state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING" || state.botState === "PREPARING_TRADE") && state.analysisStartedAt) {
       if (Date.now() - state.analysisStartedAt > 7000) {
         loggerLog("[AnalysisWatchdog] ⚠️ Анализ завис > 7 секунд! Принудительный сброс и перезапуск...");
@@ -4964,6 +4810,7 @@
     if (autoToggle) {
       autoToggle.addEventListener("click", () => {
         state.autoStream = !state.autoStream;
+        if (!state.autoStream && state.searchRunning && !state.tradeContext) state.searchGeneration++;
         autoToggle.classList.toggle("active", state.autoStream);
         if (state.autoStream) {
           VoiceManager.playCategory("switch_pair", false);

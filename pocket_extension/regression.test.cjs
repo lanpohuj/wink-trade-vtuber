@@ -15,18 +15,27 @@ function loadContent() {
     localStorage: { getItem:k=>storage.get(k)||null, setItem:(k,v)=>storage.set(k,v) },
     Date: class extends Date { static now() { return now; } },
     setInterval: () => 1, clearInterval() {},
-    setTimeout: fn => { queueMicrotask(fn); return 1; }, clearTimeout() {},
+    setTimeout: (fn,ms=0) => { queueMicrotask(()=>{now+=ms;fn();}); return 1; }, clearTimeout() {},
   };
   let source = fs.readFileSync(path.join(__dirname, 'content.js'), 'utf8');
   source = source.replace('  // Ensure DOM ready', `
     globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome,
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
+      executeTradeWithSignal,
+      rankPairCandidate, bestPairCandidate, canEnterAnalysis,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
       setDirectClick(fn) { clickPocketTradeButton = fn; },
+      prepareExecution() {
+        requestMainWorldSetExpiry = async () => ({ok:true,confirmed:true,observedSec:30});
+        waitForOptimalMicroEntry = async () => ({ok:true});
+      },
       setSearchDependencies(deps) {
+        requestMainWorldEnsureChartTimeframe = async () => ({activeTf:'S15',ok:true});
+        waitPocketPairReady = async () => true;
+        if (deps.sentiment) readTradersSentiment = deps.sentiment;
         if (deps.scan) scanCanvasStructure = deps.scan;
         if (deps.analyze) ChartAnalyzer.analyzeMarket = deps.analyze;
         if (deps.confluence) evaluate5FactorConfluence = deps.confluence;
@@ -137,5 +146,57 @@ test('known M1 visual fallback starts immediately, unknown period is not S15', (
   c.state.actualChartTf=null;c.state.candles=[];
   assert.equal(c.ChartAnalyzer.analyzeMarket({visualCandles:bars}).shouldTrade,false);
   assert.equal(c.chartPeriodSeconds('M1'),60);assert.equal(c.chartPeriodSeconds('S15'),15);assert.equal(c.chartPeriodSeconds('15S'),15);
+});
+function searchFixture(readyPair=null, dominant=false) {
+  const c=loadContent(),pairs=['EUR/USD OTC','GBP/USD OTC','AUD/USD OTC','USD/JPY OTC','EUR/JPY OTC'],executed=[],switches=[];
+  c.state.targetPair=pairs[0];
+  const analysis=()=>({shouldTrade:c.state.targetPair===readyPair || (dominant && c.state.allowDominantEntry && c.state.targetPair===pairs[0]),direction:'BUY',confidence:90,
+    setup:'TREND_PULLBACK',trendRegime:'STRONG_UPTREND',rsi:55,sr:{distToRes:2,distToSup:1},line1:'Live setup'});
+  c.setSearchDependencies({scan:()=>({visualCandles:[]}),analyze:analysis,sentiment:()=>({observed:true}),
+    confluence:()=>({score:4.5,factors:Array.from({length:5},()=>({score:c.state.targetPair===pairs[0]?1:.5,detail:'factor'}))}),
+    switchPair:async(target)=>{const next=target||pairs[(pairs.indexOf(c.state.targetPair)+1)%5];switches.push(next);c.state.targetPair=next;return true;},
+    execute:async(a)=>executed.push({pair:c.state.targetPair,direction:a.direction})});
+  return {...c,pairs,executed,switches};
+}
+test('a ready setup on first or second pair enters immediately',async()=>{
+  for(const index of [0,1]) {
+    const c=searchFixture(['EUR/USD OTC','GBP/USD OTC'][index]);
+    await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.equal(c.state.pairCandidates.length,index+1);assert.equal(c.switches.length,index);
+  }
+});
+test('after five distinct pairs search returns to highest ranked and rechecks it',async()=>{
+  const c=searchFixture(null,true);await c.startSignalAnalysis();
+  assert.equal(c.state.pairCandidates.length,5);assert.equal(new Set(c.state.searchSeen).size,5);
+  assert.equal(c.executed.length,1);assert.equal(c.executed[0].pair,c.pairs[0]);assert.equal(c.switches.at(-1),c.pairs[0]);
+});
+test('hard veto is never overridden while observing best pair',async()=>{
+  const c=searchFixture();let watchSamples=0;
+  c.setSearchDependencies({analyze:()=>{if(c.state.allowDominantEntry)watchSamples++;return {shouldTrade:true,hardVeto:true,vetoReason:'HIGH_RISK_MARKET',direction:'BUY',confidence:95};}});
+  await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.ok(watchSamples>=40);assert.equal(c.state.botState,'IDLE');
+});
+test('failed pair switch is not counted as a new chart',async()=>{
+  const c=searchFixture();c.setSearchDependencies({switchPair:async()=>false});
+  await c.startSignalAnalysis();assert.equal(c.state.pairCandidates.length,1);assert.equal(c.state.searchSeen.length,1);assert.equal(c.executed.length,0);
+});
+test('ranking excludes missing factors; ties use payout then freshness',()=>{
+  const c=loadContent();const a={pair:'A',analysis:{},confluence:{factors:[{score:1}]},payout:90,observedAt:100};
+  assert.equal(c.rankPairCandidate(a),0);
+  assert.equal(c.bestPairCandidate([a,{...a,pair:'B',payout:92}]).pair,'B');
+  assert.equal(c.bestPairCandidate([a,{...a,pair:'B',observedAt:200}]).pair,'B');
+});
+test('confirmed click failure creates no timer, result or recovery step',async()=>{
+  const c=loadContent();c.prepareExecution();c.POAutomation.clickTrade=async()=>false;
+  const wins=c.state.scoreWins,losses=c.state.scoreLosses;
+  await c.executeTradeWithSignal({direction:'BUY',recommendedExpiry:'30s'},{score:4.5},{});
+  assert.equal(c.state.tradeContext,null);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.expiryInterval,null);
+  assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.equal(c.state.recoveryStep,0);
+});
+test('opening, broker countdown, final result and recovery run through existing cycle',async()=>{
+  const c=loadContent();c.prepareExecution();c.state.targetPair='EUR/USD OTC';
+  c.POAutomation.clickTrade=async()=>{c.emit({type:'BROKER_DEAL_OPEN',requestId:c.state.tradeContext.seq,pair:'EURUSD_otc',stake:50,orderId:'real-1',closesAt:1700000030000});return true;};
+  await c.executeTradeWithSignal({direction:'SELL',recommendedExpiry:'30s'},{score:4.5},{});
+  assert.equal(c.state.botState,'IN_TRADE');assert.equal(c.state.tradeEndTime,1700000030000);assert.equal(c.state.tradeContext.brokerId,'real-1');
+  c.tick(30000);c.emit({type:'BROKER_DEAL_RESULT',orderId:'real-1',net:-50});
+  await c.onSignalTimerFinished();assert.equal(c.state.recoveryStep,1);assert.equal(c.state.currentStake,110);assert.equal(c.state.botState,'IDLE');
 });
 module.exports={loadContent,row};
