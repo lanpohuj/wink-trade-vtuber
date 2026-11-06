@@ -2039,17 +2039,32 @@ class SpeechController:
             self._emit_status()
             logger.info("⚡ [0.05s Hit Deck] speak_stream_category [%s]: «%s» (%s)", category, selected_phrase[:40], cached_file.name)
         else:
-            # Страховочный поиск любого готового .mp3 файла для текущего слота голоса
-            logger.warning("speak_stream_category: фразы категории [%s] ещё не закэшированы, ищу резервный .mp3...", category)
-            slot, service_key, voice_id = ("ru", DEFAULT_RU_SERVICE, DEFAULT_RU_VOICE_ID) if actual_lang == "ru" else ("en", DEFAULT_EN_SERVICE, DEFAULT_EN_VOICE_ID)
-            if hasattr(self.engine, "get_voice_dir"):
-                voice_dir = self.engine.get_voice_dir(service_key, voice_id)
-            else:
-                voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
+            # Страховочный поиск: сначала проверяем готовую папку ассетов Lumean для данной категории
+            cached_file = None
+            lumean_cat_dir = PROJECT_ROOT / "assets" / "voices" / "lumean" / category
+            if not lumean_cat_dir.is_dir():
+                for d in (PROJECT_ROOT / "assets" / "voices" / "lumean").glob("*"):
+                    if d.is_dir() and d.name.lower() == category.lower():
+                        lumean_cat_dir = d
+                        break
+            if lumean_cat_dir.is_dir():
+                ready_lumean = [f for f in lumean_cat_dir.glob("*.mp3") if f.stat().st_size > 1024]
+                if ready_lumean:
+                    cached_file = random.choice(ready_lumean)
 
-            ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
-            if ready_files:
-                cached_file = random.choice(ready_files)
+            if not cached_file:
+                logger.warning("speak_stream_category: фразы категории [%s] ещё не закэшированы, ищу резервный .mp3...", category)
+                slot, service_key, voice_id = ("ru", DEFAULT_RU_SERVICE, DEFAULT_RU_VOICE_ID) if actual_lang == "ru" else ("en", DEFAULT_EN_SERVICE, DEFAULT_EN_VOICE_ID)
+                if hasattr(self.engine, "get_voice_dir"):
+                    voice_dir = self.engine.get_voice_dir(service_key, voice_id)
+                else:
+                    voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
+
+                ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
+                if ready_files:
+                    cached_file = random.choice(ready_files)
+
+            if cached_file:
                 item = SpeechItem(
                     text=f"[{category}]",
                     lang=actual_lang,
@@ -2065,7 +2080,7 @@ class SpeechController:
                     self._playback_queue.append(item)
                 self._wake.set()
                 self._emit_status()
-                logger.info("⚡ [0.05s Fallback] speak_stream_category [%s]: взят готовый %s", category, cached_file.name)
+                logger.info("⚡ [0.05s Hit Lumean/Fallback] speak_stream_category [%s]: взят готовый %s", category, cached_file.name)
             else:
                 # Если папка совсем пустая — отправляем первую фразу в стандартный синтез
                 self.speak(phrases[0], lang=actual_lang, emotion=emotion, action=action, source=f"stream_bank_{category}")

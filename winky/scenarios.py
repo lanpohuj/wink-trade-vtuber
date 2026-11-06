@@ -370,6 +370,20 @@ STREAM_VOICE_BANK: dict[str, dict[str, tuple[str, ...]]] = {
             "Откат полностью выкуплен, тренд продолжает давить наверх. Смело заходим вверх на тридцать секунд!",
             "Именно таких откатов мы и ждём в сильном тренде, чтобы зайти по самой выгодной цене. Открываю сделку вверх!",
         ),
+        "open_trade_call": (
+            "Захожу ВВЕРХ на повышение! Отличная поддержка снизу и разворотный паттерн по тренду!",
+            "Открываю сделку КУПИТЬ, идём ВВЕРХ! Покупатели перехватывают инициативу!",
+            "Нажимаю ВВЕРХ! Здесь читается чистый бычий импульс, сделка в работе!",
+            "Сделка открыта на покупку — ВВЕРХ! Все факторы за рост, сопровождаем движение!",
+            "Влетаем ВВЕРХ! Отличный вход на откате к уровню поддержки, ждём зелёную свечу!",
+        ),
+        "open_trade_put": (
+            "Захожу ВНИЗ на понижение! Цена упёрлась в мощный потолок сопротивления, ждём откат вниз!",
+            "Открываю сделку ПРОДАТЬ, идём ВНИЗ! Медвежий импульс подтверждён по всем факторам!",
+            "Берём сделку на ПОНИЖЕНИЕ! Отличный сигнал от верхнего уровня сопротивления!",
+            "Нажимаю ВНИЗ! Вижу затухание роста у зоны сопротивления, сделка открыта!",
+            "Сделка в работе, прогноз — ВНИЗ! Продавцы активно давят цену от максимума!",
+        ),
         "sell_bounce": (
             "Смотрите, цена ударилась прямо в потолок и покупатели потеряли силу. Заходим уверенно вниз на тридцать секунд на развороте!",
             "Рынок сильно перегрелся после резкого рывка наверх — сейчас пойдёт закономерный откат. Открываю сделку вниз!",
@@ -515,6 +529,14 @@ STREAM_VOICE_BANK: dict[str, dict[str, tuple[str, ...]]] = {
             "Classic flip from support: previous resistance now acting as support floor. Taking UP!",
             "Dip fully absorbed, buyers pushing back to highs. Entering UP for thirty seconds!",
             "This is the exact pullback we wait for in a strong trend to secure the best entry price. Trade UP!",
+        ),
+        "open_trade_call": (
+            "Entering UP for the trade! Buyers are taking over, strong bullish bounce!",
+            "Opening BUY order! Momentum confirmed, riding the upward continuation!",
+        ),
+        "open_trade_put": (
+            "Entering DOWN for the trade! Rejection at resistance ceiling, sellers in control!",
+            "Opening SELL order! Downward momentum confirmed, riding the drop!",
         ),
         "sell_bounce": (
             "Price rejected right off the ceiling and buyers ran out of steam. Entering DOWN for thirty seconds on the reversal!",

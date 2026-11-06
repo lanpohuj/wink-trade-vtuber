@@ -179,7 +179,8 @@ class WinkyAPI:
             self._controller.speak(phrase.strip(), lang=lang, emotion="excited", source="signal_announcement")
             return
 
-        is_buy = str(direction).upper() == "BUY"
+        raw_dir = str(direction or "").upper().strip()
+        is_buy = raw_dir in ("BUY", "CALL", "UP", "ВЫШЕ", "ВВЕРХ", "LONG")
         clean_dur = duration or "30s"
         clean_model = model.split(" ")[0] if model else "Claude"
 
@@ -344,19 +345,20 @@ class WinkyAPI:
         ttl_sec = float(payload.get("ttl_sec", 40.0))
 
         # Если текста нет напрямую, но передан сигнал (direction, pair, duration)
-        if not text and payload.get("direction"):
-            direction = str(payload.get("direction", "BUY")).upper()
+        raw_dir = str(payload.get("direction") or payload.get("action") or "").upper().strip()
+        if not text and raw_dir:
+            is_buy = raw_dir in ("BUY", "CALL", "UP", "ВЫШЕ", "ВВЕРХ", "LONG")
             pair = payload.get("pair", "EUR/USD OTC")
             duration = payload.get("duration", "30s")
             clean_dur = duration or "30s"
             if lang == "en":
-                if direction == "BUY":
+                if is_buy:
                     text = f"Bullish bounce confirmed on {pair}! Entering UP for {clean_dur}, buyers taking over!"
                 else:
                     text = f"Resistance hit on {pair}! Selling pressure confirmed, taking SELL for {clean_dur}!"
             else:
                 clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
-                if direction == "BUY":
+                if is_buy:
                     text = f"Вижу уверенный отскок от поддержки по {clean_pair_ru}! Берём сделку ВВЕРХ на {clean_dur} по основному тренду!"
                 else:
                     text = f"На графике {clean_pair_ru} цена упёрлась в потолок сопротивления! Заходим ВНИЗ на {clean_dur} на уверенном откате!"
@@ -406,6 +408,14 @@ class WinkyAPI:
             payload = {}
 
         category = str(payload.get("category", "")).strip()
+        raw_dir = str(payload.get("direction") or payload.get("action") or payload.get("trade_dir") or "").upper().strip()
+        if raw_dir:
+            is_buy = raw_dir in ("BUY", "CALL", "UP", "ВЫШЕ", "ВВЕРХ", "LONG")
+            if is_buy and category == "OPEN_TRADE_PUT":
+                category = "OPEN_TRADE_CALL"
+            elif not is_buy and category == "OPEN_TRADE_CALL":
+                category = "OPEN_TRADE_PUT"
+
         file_id = str(payload.get("file_id", "")).strip()
         file_path = str(payload.get("file_path", "")).strip()
         priority = bool(payload.get("priority", False)) or category in ("TRADE_WIN", "TRADE_LOSS", "OPEN_TRADE_CALL", "OPEN_TRADE_PUT")
@@ -430,16 +440,30 @@ class WinkyAPI:
                 try:
                     man = json.loads(manifest_file.read_text(encoding="utf-8"))
                     items = man.get("categories", {}).get(category, [])
-                    for it in items:
-                        if it.get("id") == file_id or it.get("file") == file_path:
-                            f = PROJECT_ROOT / "assets" / "voices" / "lumean" / it.get("file", "")
+                    if items:
+                        selected_it = None
+                        if file_id or file_path:
+                            for it in items:
+                                if it.get("id") == file_id or it.get("file") == file_path:
+                                    selected_it = it
+                                    break
+                        if not selected_it:
+                            selected_it = random.choice(items)
+                        if selected_it:
+                            f = PROJECT_ROOT / "assets" / "voices" / "lumean" / selected_it.get("file", "")
                             if f.exists():
                                 media_file = f
                                 if not text:
-                                    text = it.get("text", "")
-                                break
+                                    text = selected_it.get("text", "")
                 except Exception:
                     pass
+
+        if not media_file or not media_file.exists():
+            cat_dir = PROJECT_ROOT / "assets" / "voices" / "lumean" / category
+            if cat_dir.is_dir():
+                ready_files = [f for f in cat_dir.glob("*.mp3") if f.stat().st_size > 1024]
+                if ready_files:
+                    media_file = random.choice(ready_files)
 
         if not media_file or not media_file.exists():
             logger.warning("play_voice: файл %s не найден на диске", file_path or f"{category}/{file_id}.mp3")

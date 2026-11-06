@@ -12,6 +12,15 @@
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
+  // 0. Hook HTMLCanvasElement.prototype.getContext to force preserveDrawingBuffer for WebGL
+  const origGetContext = HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+    if (type === "webgl" || type === "webgl2" || type === "experimental-webgl") {
+      attrs = Object.assign({}, attrs || {}, { preserveDrawingBuffer: true });
+    }
+    return origGetContext.call(this, type, attrs);
+  };
+
   // 1. Hook WebSocket traffic for real ticks and deal synchronization
   const OriginalWebSocket = window.WebSocket;
   window.WebSocket = function (...args) {
@@ -65,8 +74,8 @@
 
           // Check for quote array format e.g. [["EURUSD_otc", 1730516172, 1.08542]] or JSON with price
           if (data.includes("_otc") || data.includes("updateStream") || (data.includes("[") && data.includes("]"))) {
-            // Regex to find symbol and numeric price e.g. ["AEDCNY_otc", 1730516172, 1.88610]
-            const match = data.match(/\[\s*"([A-Za-z0-9_]+)"\s*,\s*\d+\s*,\s*([0-9.]+)\s*\]/);
+            // Regex to find symbol and numeric price e.g. ["AEDCNY_otc", 1730516172.382, 1.88610]
+            const match = data.match(/\[\s*"([A-Za-z0-9_]+)"\s*,\s*[0-9.]+\s*,\s*([0-9.]+)\s*\]/);
             if (match) {
               const rawSymbol = match[1];
               const price = parseFloat(match[2]);
@@ -741,13 +750,14 @@
     try {
       closePocketCalculatorIfOpen();
 
-      // 1. Парсинг целевого времени в секундах (СТРОГО 15s или 30s!)
+      // 1. Парсинг целевого времени в секундах (15s, 30s или 1m!)
       let targetSec = 30;
       if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") targetSec = 15;
       else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
+      else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00" || targetDurationStr === "1 min") targetSec = 60;
       else targetSec = 30;
 
-      window.__winkyTargetExpirySec = targetSec; // 15 или 30
+      window.__winkyTargetExpirySec = targetSec; // 15, 30 или 60
 
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
@@ -814,7 +824,8 @@
         const pTxt = (p.textContent || "").trim();
         if (
           (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
-          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30"))
+          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
+          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00" || pTxt === "1m" || pTxt === "1M"))
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
@@ -856,10 +867,11 @@
 
       closePocketCalculatorIfOpen();
 
-      // 6. Честное считывание реального времени (15s или 30s)
+      // 6. Честное считывание реального времени (15s, 30s или 1m)
       let actualSec = readCurrentExpirySec();
-      let label = (targetSec === 15) ? "15s" : "30s";
-      if (actualSec <= 20) { actualSec = 15; label = "15s"; }
+      let label = "30s";
+      if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
+      else if (actualSec >= 50 || targetSec === 60) { actualSec = 60; label = "1m"; }
       else { actualSec = 30; label = "30s"; }
 
       console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);

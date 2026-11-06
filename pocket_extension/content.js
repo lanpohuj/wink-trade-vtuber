@@ -323,12 +323,18 @@
 
   /* ==================== Trade Phase & Stream Director Bridge ==================== */
 
-  async function notifyTradePhase(phase, pair = "", remainingSec = 0) {
+  async function notifyTradePhase(phase, pair = "", remainingSec = 0, extra = {}) {
     try {
+      const dir = extra.direction || state.activeSignal?.direction || "";
+      const act = extra.action || (dir === "BUY" ? "CALL" : (dir === "SELL" ? "PUT" : ""));
       const res = await sendProxyMessage("/api/winky/trade_phase", "POST", {
         phase: phase,
         pair: pair || state.targetPair,
         remaining_sec: Math.max(0, Math.round(remainingSec || 0)),
+        direction: dir,
+        action: act,
+        duration: extra.duration || state.activeSignal?.duration || state.selectedTimeframe || "30s",
+        ...extra,
       });
       if (res && res.data) {
         const data = res.data;
@@ -819,15 +825,38 @@
       }
 
       // -------------------------------------------------------------
-      // 3 Sniper Setups (ТОЛЬКО 15s и 30s)
+      // Real Power Balance (last 6 candles) & Tick Momentum
       // -------------------------------------------------------------
-      // Setup 1: SNIPER_IMPULSE (15s) ~50%
+      const recent6 = candles.slice(-6);
+      const redBodySum6 = recent6.filter((c) => c.isRed).reduce((s, c) => s + (c.bodySize || 0), 0);
+      const greenBodySum6 = recent6.filter((c) => c.isGreen).reduce((s, c) => s + (c.bodySize || 0), 0);
+      const priceSlope5 = closes[n - 1] - closes[Math.max(0, n - 6)];
+
+      const ticks = state.priceTicks || [];
+      const tickSlope = ticks.length >= 8 ? (ticks[ticks.length - 1] - ticks[ticks.length - 8]) : 0;
+
+      // Local peak drop / bottom bounce on last 10 candles
+      const candles10 = candles.slice(-10);
+      const maxHigh10 = Math.max(...candles10.map((c) => c.high));
+      const minLow10 = Math.min(...candles10.map((c) => c.low));
+      const localPeakDrop = (maxHigh10 - closes[n - 1] > 1.2 * atr) && (priceSlope5 < 0);
+      const localBottomBounce = (closes[n - 1] - minLow10 > 1.2 * atr) && (priceSlope5 > 0);
+
+      // Dominant direction
+      const isBearishDominant = (c0.isRed && (priceSlope5 < 0 || redBodySum6 > greenBodySum6 || ema9 < ema21)) || (localPeakDrop && redBodySum6 > greenBodySum6 * 1.2);
+      const isBullishDominant = (c0.isGreen && (priceSlope5 > 0 || greenBodySum6 > redBodySum6 || ema9 > ema21)) || (localBottomBounce && greenBodySum6 > redBodySum6 * 1.2);
+      const realDirection = isBearishDominant ? "SELL" : (isBullishDominant ? "BUY" : (priceSlope5 < 0 || redBodySum6 > greenBodySum6 ? "SELL" : "BUY"));
+
+      // -------------------------------------------------------------
+      // 3 Sniper Setups (15s, 30s, 1m)
+      // -------------------------------------------------------------
+      // Setup 1: SNIPER_IMPULSE (15s) ~45%
       let isSetup1 = false;
       let setup1Dir = null;
-      if (c0.isGreen && cPrev1 && cPrev1.isGreen && consecutiveGreens < 4 && ema9 >= ema21 && body0 >= 0.45 * atr) {
+      if (c0.isGreen && cPrev1 && cPrev1.isGreen && consecutiveGreens < 4 && ema9 >= ema21 && body0 >= 0.55 * atr && tickSlope >= 0) {
         isSetup1 = true;
         setup1Dir = "BUY";
-      } else if (c0.isRed && cPrev1 && cPrev1.isRed && consecutiveReds < 4 && ema9 <= ema21 && body0 >= 0.45 * atr) {
+      } else if (c0.isRed && cPrev1 && cPrev1.isRed && consecutiveReds < 4 && ema9 <= ema21 && body0 >= 0.55 * atr && tickSlope <= 0) {
         isSetup1 = true;
         setup1Dir = "SELL";
       }
@@ -835,22 +864,22 @@
       // Setup 2: TREND_PULLBACK (30s) ~40%
       let isSetup2 = false;
       let setup2Dir = null;
-      let setup2Exp = (body0 >= 0.75 * atr) ? "15s" : "30s";
-      if (c0.isGreen && cPrev1 && cPrev1.isRed && (ema9 > ema21 || closes[n - 1] > closes[Math.max(0, n - 6)]) && body0 >= 0.4 * atr) {
+      let setup2Exp = "30s";
+      if (c0.isGreen && cPrev1 && cPrev1.isRed && (ema9 > ema21 || priceSlope5 > 0) && body0 >= 0.4 * atr) {
         isSetup2 = true;
         setup2Dir = "BUY";
-      } else if (c0.isRed && cPrev1 && cPrev1.isGreen && (ema9 < ema21 || closes[n - 1] < closes[Math.max(0, n - 6)]) && body0 >= 0.4 * atr) {
+      } else if (c0.isRed && cPrev1 && cPrev1.isGreen && (ema9 < ema21 || priceSlope5 < 0) && body0 >= 0.4 * atr) {
         isSetup2 = true;
         setup2Dir = "SELL";
       }
 
-      // Setup 3: CONFIRMED_REVERSAL (30s) ~10% (СТРОГО С ПОДТВЕРЖДАЮЩЕЙ СВЕЧОЙ)
+      // Setup 3: CONFIRMED_REVERSAL (1m) ~15% (СТРОГО У БОЛЛИНДЖЕРА / RSI)
       let isSetup3 = false;
       let setup3Dir = null;
-      if (c0.isGreen && cPrev1 && cPrev1.isRed && (bb.pctB <= 0.18 || rsi <= 35) && body0 >= 0.5 * bodyPrev1 && body0 >= 0.45 * atr) {
+      if (c0.isGreen && cPrev1 && cPrev1.isRed && (bb.pctB <= 0.18 || rsi <= 35 || localBottomBounce) && body0 >= 0.5 * bodyPrev1 && body0 >= 0.45 * atr) {
         isSetup3 = true;
         setup3Dir = "BUY";
-      } else if (c0.isRed && cPrev1 && cPrev1.isGreen && (bb.pctB >= 0.82 || rsi >= 65) && body0 >= 0.5 * bodyPrev1 && body0 >= 0.45 * atr) {
+      } else if (c0.isRed && cPrev1 && cPrev1.isGreen && (bb.pctB >= 0.82 || rsi >= 65 || localPeakDrop) && body0 >= 0.5 * bodyPrev1 && body0 >= 0.45 * atr) {
         isSetup3 = true;
         setup3Dir = "SELL";
       }
@@ -891,32 +920,58 @@
         chosenSetup = "SNIPER_IMPULSE";
         chosenDir = setup1Dir;
         chosenExpiry = "15s";
-        chosenConf = 91;
-        chosenFactors.push(`Снайперский импульс ${setup1Dir}`);
-        chosenFactors.push(`EMA9 ${setup1Dir === "BUY" ? ">" : "<"} EMA21`);
-        chosenFactors.push(`RSI ${rsi} в зоне импульса`);
+        chosenConf = 92;
+        chosenFactors.push(isRu ? `Снайперский импульс ${setup1Dir}` : `Sniper impulse ${setup1Dir}`);
+        chosenFactors.push(isRu ? `EMA9 ${setup1Dir === "BUY" ? ">=" : "<="} EMA21` : `EMA9 ${setup1Dir === "BUY" ? ">=" : "<="} EMA21`);
+        chosenFactors.push(isRu ? `Ускорение тиков в сторону пробоя` : `Tick acceleration with breakout`);
       } else if (isSetup2) {
         chosenSetup = "TREND_PULLBACK";
         chosenDir = setup2Dir;
-        chosenExpiry = setup2Exp;
+        chosenExpiry = "30s";
         chosenConf = 89;
-        chosenFactors.push(`Откат по тренду ${setup2Dir}`);
-        chosenFactors.push(`Завершение коррекции к EMA`);
+        chosenFactors.push(isRu ? `Откат по тренду ${setup2Dir}` : `Trend pullback ${setup2Dir}`);
+        chosenFactors.push(isRu ? `Завершение коррекции к уровню` : `Correction completed to S/R`);
       } else if (isSetup3) {
         chosenSetup = "CONFIRMED_REVERSAL";
         chosenDir = setup3Dir;
-        chosenExpiry = "30s";
+        chosenExpiry = "1m"; // 60s
         chosenConf = 88;
-        chosenFactors.push(`Разворотная подтверждённая свеча ${setup3Dir}`);
-        chosenFactors.push(setup3Dir === "BUY" ? `Отскок от зоны поддержки (%B: ${bb.pctB})` : `Отбой от зоны сопротивления (%B: ${bb.pctB})`);
+        chosenFactors.push(isRu ? `Подтверждённый разворот ${setup3Dir} (1m)` : `Confirmed reversal ${setup3Dir} (1m)`);
+        chosenFactors.push(setup3Dir === "BUY"
+          ? (isRu ? `Отскок от зоны поддержки (%B: ${bb.pctB.toFixed(2)})` : `Bounce from support (%B: ${bb.pctB.toFixed(2)})`)
+          : (isRu ? `Отбой от зоны сопротивления (%B: ${bb.pctB.toFixed(2)})` : `Rejection from resistance (%B: ${bb.pctB.toFixed(2)})`));
       } else {
-        // Fallback: strictly align with current candle color and obey iron rule!
-        const fallbackDir = c0.isRed ? "SELL" : "BUY";
-        chosenDir = fallbackDir;
+        // Fallback: If no clean setup, do NOT trade unless forced on 3rd pair!
+        const isForced = (typeof state.pairScanCount === "number" && state.pairScanCount >= 2);
+        if (!isForced) {
+          return {
+            valid: true,
+            shouldTrade: false,
+            direction: realDirection,
+            confidence: 50,
+            setup: "MARKET_FILTER_WAIT",
+            recommendedExpiry: "30s",
+            factors: [isRu ? "Паттерн не подтверждён фильтрами" : "Pattern not confirmed by filters"],
+            atr: atr,
+            rsi: rsi,
+            pctB: bb.pctB,
+            explanationRu: isRu ? "Сетап не подтверждён — переключаем пару на чистый тренд" : "Setup unconfirmed — switching pair",
+            explanationEn: "Setup unconfirmed — switching pair for clean trend",
+          };
+        }
+
+        // Forced trade on 3rd pair: strictly align with realDirection
+        chosenDir = realDirection;
         chosenSetup = "SNIPER_IMPULSE";
-        chosenExpiry = (body0 >= 0.75 * atr) ? "15s" : "30s";
-        chosenConf = 82;
-        chosenFactors.push(`Движение по направлению свечи: ${chosenDir}`);
+        chosenExpiry = (body0 >= 0.65 * atr) ? "15s" : "30s";
+        chosenConf = 84;
+        if (chosenDir === "SELL") {
+          chosenFactors.push(isRu ? "Нисходящая структура: давление продавцов подтверждено свечным импульсом." : "Downward structure: selling pressure confirmed by candle momentum.");
+          chosenFactors.push(isRu ? "Снайперский вход ВНИЗ по движению тренда." : "Sniper entry DOWN with trend movement.");
+        } else {
+          chosenFactors.push(isRu ? "Восходящая структура: давление покупателей подтверждено свечным импульсом." : "Upward structure: buying pressure confirmed by candle momentum.");
+          chosenFactors.push(isRu ? "Снайперский вход ВВЕРХ по движению тренда." : "Sniper entry UP with trend movement.");
+        }
       }
 
       // ЖЕЛЕЗНЫЙ ЗАМОК: Принудительная проверка на случай любых сбоев логики!
@@ -950,7 +1005,7 @@
         };
       }
 
-      const shouldTrade = Boolean((isSetup1 || isSetup2 || isSetup3) && !isDeadFlat);
+      const shouldTrade = Boolean((isSetup1 || isSetup2 || isSetup3 || (state.pairScanCount >= 2)) && !isDeadFlat);
 
       return {
         valid: true,
@@ -1112,9 +1167,6 @@
 
     analyzeMarket(scan = null) {
       const ticks = state.priceTicks;
-      if (ticks.length < 10) {
-        for (let i = 0; i < 15; i++) this.pollPrice();
-      }
 
       // If we have visual candles from canvas scan, adopt them
       if (scan && scan.visualCandles && scan.visualCandles.length >= 8) {
@@ -1131,16 +1183,19 @@
             const close = slice[slice.length - 1];
             const high = Math.max(...slice);
             const low = Math.min(...slice);
+            const prevClose = state.candles.length > 0 ? state.candles[state.candles.length - 1].close : open;
+            const isGreen = close > open || (close === open && close >= prevClose);
+            const isRed = !isGreen;
             state.candles.push({
               open,
               high,
               low,
               close,
               time: Date.now() - (ticks.length - i) * 500,
-              isGreen: close > open,
-              isRed: close < open,
-              bodySize: Math.abs(close - open),
-              totalRange: Math.max(0.000001, high - low),
+              isGreen,
+              isRed,
+              bodySize: Math.max(0.00001, Math.abs(close - open)),
+              totalRange: Math.max(0.00001, high - low),
             });
           }
         }
@@ -1284,9 +1339,9 @@
           let totalRed = 0;
           let sampledPoints = 0;
 
-          // Working candle area: scan up to 64% of canvas width (live candle is at ~52%..55%)
-          const xStart = Math.floor(w * 0.04);
-          const xEnd = Math.floor(w * 0.64);
+          // Working candle area: scan up to 56% of canvas width (live candle is at ~52%..55%)
+          const xStart = Math.floor(w * 0.05);
+          const xEnd = Math.floor(w * 0.56);
           const yStart = Math.floor(h * 0.12);
           const yEnd = Math.floor(h * 0.86);
 
@@ -1309,8 +1364,8 @@
                 const a = data[idx + 3];
 
                 if (a > 60) {
-                  const isGreenPixel = (g > r + 20 && g > b + 12 && g > 65);
-                  const isRedPixel = (r > g + 20 && r > b + 12 && r > 65);
+                  const isGreenPixel = (g >= 135 && g > r + 45 && g > b + 25);
+                  const isRedPixel = (r >= 150 && r > g + 45 && r > b + 35);
 
                   if (isGreenPixel) {
                     greenY.push(y);
@@ -2535,7 +2590,7 @@
   /* ==================== 4. Instant 0.05s Voice Engine (STREAM_VOICE_BANK) ==================== */
 
   const VoiceManager = {
-    playCategory(category, isBlocking = false, emotion = "happy", action = null) {
+    playCategory(category, isBlocking = false, emotion = "happy", action = null, extra = {}) {
       if (!category) return Promise.resolve(true);
 
       // Кулдаун 60 секунд на озвучку смены пары / пропуска рынка (чтобы не спамила при переборе пар)
@@ -2550,12 +2605,18 @@
       }
 
       loggerLog(`VoiceManager: Мгновенный запрос категории [${category}] (${state.lang})`);
-      sendProxyMessage("/api/winky/speak_stream_category", "POST", {
+      const payload = {
         category: category,
         lang: state.lang || "ru",
         emotion: emotion,
         action: action,
-      });
+        direction: extra.direction || state.activeSignal?.direction || "",
+        trade_dir: extra.direction || state.activeSignal?.direction || "",
+        trade_action: extra.action || (extra.direction === "BUY" ? "CALL" : (extra.direction === "SELL" ? "PUT" : "")),
+        ...extra,
+      };
+      sendProxyMessage("/api/winky/speak_stream_category", "POST", payload);
+      sendProxyMessage("/api/winky/play_voice", "POST", payload);
 
       if (isBlocking) {
         const waitMs = (category === "trade_win" || category.startsWith("trade_loss")) ? 4000 : 3200;
@@ -2613,7 +2674,11 @@
     const isRu = (state.lang === "ru");
 
     if (analysis.recommendedExpiry) {
-      const chosen = (analysis.recommendedExpiry === "15s") ? "15s" : "30s";
+      let chosen = "30s";
+      if (analysis.recommendedExpiry === "15s") chosen = "15s";
+      else if (analysis.recommendedExpiry === "1m" || analysis.recommendedExpiry === "60s") chosen = "1m";
+      else chosen = "30s";
+
       loggerLog(`[selectStrategyExpiration] 🎯 Рекомендация стратегии (${analysis.setup || "SNIPER"}) -> Выбрано ${chosen}`);
       state.expirationReason = isRu ? `Снайперский выбор (${chosen})` : `Sniper choice (${chosen})`;
       return chosen;
@@ -2624,8 +2689,8 @@
     const bodyRatio = typeof analysis.bodyRatio === "number" ? analysis.bodyRatio : 1.0;
 
     // 1. Momentum breakout / Sniper impulse: 15s or 30s
-    if (setup === "SNIPER_IMPULSE" || setup === "MOMENTUM_BREAKOUT" || bodyRatio >= 1.05) {
-      const chosen = (vol >= 1.3 || bodyRatio >= 1.3) ? "15s" : "30s";
+    if (setup === "SNIPER_IMPULSE" || setup === "MOMENTUM_BREAKOUT") {
+      const chosen = "15s";
       loggerLog(`[selectStrategyExpiration] 🎯 Быстрый импульс (setup=${setup}) -> Выбрано ${chosen}`);
       state.expirationReason = isRu ? `Быстрый импульс (${chosen})` : `Fast momentum (${chosen})`;
       return chosen;
@@ -2639,9 +2704,9 @@
       return chosen;
     }
 
-    // 3. Confirmed reversal: strictly 30s (NEVER 1m!)
+    // 3. Confirmed reversal: 1m (60s)
     if (setup === "CONFIRMED_REVERSAL" || setup === "BOLLINGER_EXTREME" || setup === "LEVEL_REVERSAL") {
-      const chosen = "30s";
+      const chosen = "1m";
       loggerLog(`[selectStrategyExpiration] 🎯 Подтверждённый разворот -> Выбрано ${chosen}`);
       state.expirationReason = isRu ? `Подтверждённый разворот (${chosen})` : `Confirmed reversal (${chosen})`;
       return chosen;
@@ -2840,24 +2905,32 @@
         }
         // Сбрасываем старое значение таймера с графика, чтобы оно не блокировало новую экспирацию
         state._lastChartExpSec = 0;
+        const targetExpSec = (strategyTf === "15s") ? 15 : (strategyTf === "1m" || strategyTf === "60s" ? 60 : 30);
         const expRes = await requestMainWorldSetExpiry(strategyTf);
-        if (expRes && expRes.ok && expRes.actualSec >= 5 && expRes.actualSec <= 40) {
+        if (expRes && expRes.ok && expRes.actualSec >= 5 && expRes.actualSec <= 90) {
           realPocketSec = expRes.actualSec;
         } else {
-          realPocketSec = (strategyTf === "15s") ? 15 : 30;
+          realPocketSec = targetExpSec;
         }
         const domExpSec = getPocketSelectedExpirationSeconds();
-        if (domExpSec >= 5 && domExpSec <= 40) {
+        if (domExpSec >= 5 && domExpSec <= 90) {
           realPocketSec = domExpSec;
         }
       } catch (e) {
         console.warn("[Winky] Expiry setup warning:", e);
-        realPocketSec = (strategyTf === "15s") ? 15 : 30;
+        realPocketSec = (strategyTf === "15s") ? 15 : (strategyTf === "1m" || strategyTf === "60s" ? 60 : 30);
       }
 
-      let resolvedTf = (realPocketSec <= 20 || strategyTf === "15s") ? "15s" : "30s";
+      let resolvedTf = "30s";
+      if (strategyTf === "15s" || realPocketSec <= 20) {
+        resolvedTf = "15s";
+      } else if (strategyTf === "1m" || strategyTf === "60s" || realPocketSec >= 50) {
+        resolvedTf = "1m";
+      } else {
+        resolvedTf = "30s";
+      }
       state.selectedTimeframe = resolvedTf;
-      let durationSec = (resolvedTf === "15s") ? 15 : 30;
+      let durationSec = (resolvedTf === "15s") ? 15 : (resolvedTf === "1m" ? 60 : 30);
       state.tradeDurationSec = durationSec;
 
       // Обновляем синхронно все плашки времени в интерфейсе
@@ -2882,9 +2955,12 @@
       state.analysisStartedAt = null;
       renderSignalCardState();
 
-      const tradeVoiceCategory = analysis?.category || (isBuy ? "buy_trend" : "sell_trend");
+      const tradeVoiceCategory = isBuy ? "OPEN_TRADE_CALL" : "OPEN_TRADE_PUT";
       try {
-        VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer");
+        VoiceManager.playCategory(tradeVoiceCategory, false, "excited", "cheer", {
+          direction: tradeDir,
+          action: isBuy ? "CALL" : "PUT",
+        });
       } catch (_) {}
 
       // 3. Замеряем баланс, котировку и параметры сделки ДО клика
@@ -3123,9 +3199,13 @@
 
         const scoreStr = confluence.score ? confluence.score.toFixed(1) : "4.8";
 
-        // Phase 1: active scan step
+        // Phase 1: active scan step with 150ms live tick polling
         renderAnalysisStep(i, scanSteps.length, stepName, stepDetail, scoreStr, false);
+        const pInt = setInterval(() => {
+          try { ChartAnalyzer.pollPrice(); } catch (_) {}
+        }, 150);
         await new Promise((r) => setTimeout(r, stepDef.scanMs));
+        clearInterval(pInt);
 
         // Phase 2: confirmed checkmark
         const cardEl = document.getElementById("winkyActiveFlipCard");
@@ -3145,6 +3225,13 @@
           await new Promise((r) => setTimeout(r, 100));
         }
       }
+
+      // Re-evaluate with accumulated fresh live ticks from all steps
+      try { ChartAnalyzer.pollPrice(); } catch (_) {}
+      try { scan = scanCanvasStructure(); } catch (_) {}
+      try { analysis = ChartAnalyzer.analyzeMarket(scan); } catch (_) {}
+      try { sentiment = readTradersSentiment(); } catch (_) {}
+      try { confluence = evaluate5FactorConfluence(scan, analysis, sentiment); } catch (_) {}
 
       // Safe fallback guarantees
       if (!scan) scan = { trend: "UP", structure: "BULLISH", keyLevels: [] };
@@ -3228,7 +3315,7 @@
 
           const activeCandles = (scan && scan.visualCandles && scan.visualCandles.length > 0) ? scan.visualCandles : (state.candles || []);
           const lastCandle = activeCandles.length > 0 ? activeCandles[activeCandles.length - 1] : null;
-          let forcedDir = "BUY";
+          let forcedDir = analysis.direction || "BUY";
           if (lastCandle) {
             forcedDir = lastCandle.isRed ? "SELL" : "BUY";
           } else {
@@ -3241,11 +3328,11 @@
           analysis.setup = "SNIPER_IMPULSE";
           analysis.recommendedExpiry = (lastCandle && lastCandle.bodySize >= 0.75 * (analysis.atr || 1.0)) ? "15s" : "30s";
           analysis.line1 = isRu
-            ? (forcedDir === "BUY" ? "📌 Доминирующий бычий тренд подтверждён свечной структурой." : "📌 Доминирующий медвежий тренд подтверждён свечной структурой.")
-            : (forcedDir === "BUY" ? "📌 Dominant bullish momentum confirmed by candles." : "📌 Dominant bearish momentum confirmed by candles.");
+            ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено свечным импульсом." : "📌 Нисходящая структура: давление продавцов подтверждено свечным импульсом.")
+            : (forcedDir === "BUY" ? "📌 Upward structure: buying pressure confirmed by candle momentum." : "📌 Downward structure: selling pressure confirmed by candle momentum.");
           analysis.line2 = isRu
-            ? (forcedDir === "BUY" ? "🎯 Снайперский вход ВВЕРХ по цвету импульсной свечи." : "🎯 Снайперский вход ВНИЗ по цвету импульсной свечи.")
-            : (forcedDir === "BUY" ? "🎯 Sniper entry UP with candle momentum." : "🎯 Sniper entry DOWN with candle momentum.");
+            ? (forcedDir === "BUY" ? "🎯 Снайперский вход ВВЕРХ по движению тренда." : "🎯 Снайперский вход ВНИЗ по движению тренда.")
+            : (forcedDir === "BUY" ? "🎯 Sniper entry UP with trend movement." : "🎯 Sniper entry DOWN with trend movement.");
 
           confluence.score = Math.max(4.3, confluence.score || 4.3);
           confluence.isStrong = true;
