@@ -11,6 +11,7 @@
   window.__WINKY_PAGE_HOOK_LOADED__ = true;
   const HOOK_VERSION="2.3.1";
   let lastHistoryTransport=null;
+  const historyReplayAt=new Map();
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
@@ -58,7 +59,7 @@
       const explicitAsset=payload?.asset || payload?.symbol;
       const identityCandidates=pending.filter(r=>(!explicitAsset || normalizeAsset(r.asset)===normalizeAsset(explicitAsset)) &&
         (!nativePeriod || r.periodSec===periodSec));
-      if(identityCandidates.length>1) return; // A delayed history must not cross generations.
+      if(identityCandidates.length>1 && raw.some(item=>!(Array.isArray(item) && typeof item[0]==='string') && !(item?.asset || item?.symbol))) return; // Anonymous history must not cross generations.
       const bound=identityCandidates.length===1 ? identityCandidates[0] : null;
       if(!nativePeriod && bound) periodSec=bound.periodSec;
       const anonymousAsset=!explicitAsset && bound && bound.generation===context.generation ? bound.asset : null;
@@ -87,9 +88,12 @@
         if(group && Number.isFinite(ts) && Number.isFinite(Number(price)) && Number(price)>0) group.ticks.push({price:Number(price),ts});
       }
       for(const group of groups.values()) {
-        const generation=bound && normalizeAsset(bound.asset)===normalizeAsset(group.asset) ? bound.generation :
+        const matching=identityCandidates.filter(r=>normalizeAsset(r.asset)===normalizeAsset(group.asset));
+        if(matching.length>1) continue;
+        const matched=matching[0] || bound;
+        const generation=matched && normalizeAsset(matched.asset)===normalizeAsset(group.asset) ? matched.generation :
           (normalizeAsset(group.asset)===normalizeAsset(context.asset) ? context.generation : null);
-        if(bound) {const index=pending.indexOf(bound);if(index>=0)pending.splice(index,1);}
+        if(matched) {const index=pending.indexOf(matched);if(index>=0)pending.splice(index,1);}
         if(group.ticks.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_HISTORY_TICKS',asset:group.asset,ticks:group.ticks.slice(-5000),generation,receivedAt},'*');
         if(group.candles.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_CANDLES_HISTORY',asset:group.asset,candles:group.candles,periodSec,generation,receivedAt},'*');
       }
@@ -263,7 +267,7 @@
       if(typeof data==='string') {
         const packet=readSocketPacket(data), body=packet?.payload;
         if(packet && /^(loadHistoryPeriod|load_history|loadHistory|history)$/i.test(packet.name) && body && !Array.isArray(body) && (body.asset || body.symbol)) {
-          const asset=body.asset || body.symbol, periodSec=Number(body.period)||tfSeconds(body.timeframe);
+          const asset=body.asset || body.symbol, periodSec=Number(body.period)||tfSeconds(body.period ?? body.timeframe);
           if([15,30,60,120].includes(periodSec)) {
             lastHistoryTransport={socket:this,event:packet.name,payload:{...body},asset,periodSec,observedAt:Date.now()};
             const pending=this.__winkyHistoryRequests || (this.__winkyHistoryRequests=[]);
@@ -279,8 +283,9 @@
               const symObj = JSON.parse(matchSym[1]);
               if (symObj && symObj.asset) {
                 window.__winkyCurrentAsset = symObj.asset;
-                marketContext={asset:symObj.asset,generation:marketContext.generation+1,periodSec:Number(symObj.period)||tfSeconds(symObj.timeframe)||null,changedAt:Date.now()};
+                marketContext={asset:symObj.asset,generation:marketContext.generation+(normalizeAsset(symObj.asset)!==normalizeAsset(marketContext.asset)?1:0),periodSec:Number(symObj.period)||tfSeconds(symObj.period ?? symObj.timeframe)||null,changedAt:Date.now()};
                 this.__winkyHistoryRequests=this.__winkyHistoryRequests || [];
+                this.__winkyHistoryRequests=this.__winkyHistoryRequests.filter(r=>!(r.generation===marketContext.generation && normalizeAsset(r.asset)===normalizeAsset(marketContext.asset) && r.periodSec===marketContext.periodSec));
                 this.__winkyHistoryRequests.push({...marketContext});
                 if(this.__winkyHistoryRequests.length>20) this.__winkyHistoryRequests.shift();
                 canvasCandleBars=[];
@@ -637,13 +642,17 @@
         asset:marketContext.asset,generation:marketContext.generation,periodSec:marketContext.periodSec,chartTf:observed.badge,assetMenuOpen:Boolean(visibleAssetMenu())},'*');
     } else if(data.type==='WINKY_CMD_REQUEST_HISTORY') {
       let requested=false,error='native_history_request_not_observed';
-      const t=lastHistoryTransport;
+      const t=lastHistoryTransport,key=normalizeAsset(data.pair)+'|'+data.periodSec;
       if(t && normalizeAsset(t.asset)===normalizeAsset(data.pair) && t.periodSec===data.periodSec &&
         normalizeAsset(marketContext.asset)===normalizeAsset(data.pair) && Date.now()-t.observedAt<30000 &&
-        Date.now()-(t.lastReplayAt || 0)>3000) {
+        Date.now()-(historyReplayAt.get(key) || 0)>3000) {
         const body={...t.payload};
-        for(const field of ['count','limit'])if(Number.isFinite(body[field]))body[field]=Math.min(200,Math.max(60,body[field]));
-        t.socket.send('42'+JSON.stringify([t.event,body]));t.lastReplayAt=Date.now();requested=true;error=null;
+        for(const field of ['count','limit'])if(Number.isFinite(body[field]))body[field]=200;
+        try {
+          historyReplayAt.set(key,Date.now());
+          if(historyReplayAt.size>20)historyReplayAt.delete(historyReplayAt.keys().next().value);
+          t.socket.send('42'+JSON.stringify([t.event,body]));requested=true;error=null;
+        } catch(_) {error='history_transport_unavailable';}
       }
       window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_REQUEST_HISTORY',requestId:data.requestId,requested,error},'*');
     } else if (data.type === "WINKY_CMD_SWITCH_PAIR") {
@@ -809,13 +818,19 @@
       realClick(el);
 
       await sleep(180);
-      await forceClosePopup();
+      const menuClosed=await forceClosePopup();
+      let pairObserved=false;
+      for(let i=0;i<8;i++) {
+        if(normalizeAsset(findPairBtn()?.textContent).includes(chosen.normName)) {pairObserved=true;break;}
+        await sleep(80);
+      }
 
       window.postMessage(
         {
           source: "WINKY_HOOK",
           type: "WINKY_RESP_SWITCH_PAIR",
-          ok: true,
+          ok: pairObserved && menuClosed,
+          error:!pairObserved?'pair_not_observed':!menuClosed?'asset_menu_not_closed':null,
           newPair: chosen.name,
           payout: chosen.payout,
           requestId: cmd.requestId,
@@ -881,7 +896,8 @@
         const rect=label.getBoundingClientRect();
         const known=semantic.includes(element);
         if(!known && (!chart || rect.top<chart.top-70 || rect.top>chart.top+90 || rect.left<chart.left || rect.left>chart.right))continue;
-        const btn=semantic.includes(element)?element:(label.closest?.('button,a,[role="button"]') || element.closest?.('button,a,[role="button"]'));
+        const btn=label.closest?.('button,a,[role="button"]') || element.closest?.('button,a,[role="button"]') ||
+          (semantic.includes(element)?(element.querySelector?.('button,a,[role="button"]') || element):null);
         if(!btn || btn.closest?.('.currencies-block, .alist, .assets-block'))continue;
         window.__winkyActualChartTf=badge;
         window.postMessage({source:'WINKY_HOOK',type:'CHART_TF_STATUS',tf:badge,generation:marketContext.generation},'*');
@@ -913,7 +929,7 @@
     window.__winkyTfSwitchBusy=true;
     try {
       realClick(button); await sleep(180);
-      const popup=document.querySelector('.drop-down-modal-wrap, .popover, .chart-block, .drop-down-modal');
+      const popup=Array.from(document.querySelectorAll('.drop-down-modal-wrap, .popover, .chart-block, .drop-down-modal')).find(el=>el.offsetParent!==null && el.getBoundingClientRect().width>40);
       for(const tab of popup?.querySelectorAll('a, button, [role="tab"], .tabs__item') || []) {
         if(/^(интервалы|timeframes|таймфреймы|intervals)$/i.test((tab.textContent||'').trim()) && !tab.classList.contains('active')) {realClick(tab);await sleep(120);break;}
       }
@@ -923,7 +939,9 @@
       for(const item of items) {
         if(!item || item.offsetParent===null || item.children.length>2) continue;
         const rect=item.getBoundingClientRect();
-        if(rect.left>550 || rect.top<60 || rect.top>520) continue;
+        const anchor=button.getBoundingClientRect();
+        if(item.closest?.('#winky-sniper-root, #winky-orb-counter, .alist, .assets-block, .block--expiration-inputs')) continue;
+        if(!popup?.contains?.(item) && (rect.left<anchor.left-100 || rect.left>anchor.left+700 || rect.top<anchor.top || rect.top>anchor.top+500)) continue;
         const attr=item.getAttribute('data-period') || item.getAttribute('data-tf') || item.getAttribute('data-timeframe');
         if(Number(attr)===period || normalizeChartTf(item.textContent)===target ||
           (target==='S15' && /^15\s*(sec|сек\.?|с\.?)$/i.test(item.textContent.trim()))) {selected=item;break;}

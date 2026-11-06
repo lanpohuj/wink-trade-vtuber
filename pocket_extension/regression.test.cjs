@@ -35,6 +35,7 @@ function loadContent() {
       setVoicePlayer(fn) { VoiceManager.playCategory = fn; },
       setNextAnalysis(fn) { startSignalAnalysis = fn; },
       setFinalAnalysis(fn) { freshPairAnalysis = fn; },
+      setTfBridge(fn) { requestMainWorldEnsureChartTimeframe=fn; },
       prepareExecution() {
         requestMainWorldSetExpiry = async () => ({ok:true,confirmed:true,observedSec:30});
         waitForOptimalMicroEntry = async () => ({ok:true});
@@ -273,7 +274,9 @@ test('all hard-vetoed candidates end the round without a forced entry',async()=>
   assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,5);
 });
 test('failed loading is not counted as an analyzed pair',async()=>{
-  const c=searchFixture(null,true);c.setSearchDependencies({ready:async()=>c.state.targetPair!==c.pairs[0]});
+  const c=searchFixture(null,true);c.setSearchDependencies({ready:async()=>c.state.targetPair!==c.pairs[0],
+    analyze:()=>c.state.targetPair===c.pairs[0]?{valid:false,shouldTrade:false,dataStatus:'NO_DATA',vetoReason:'NOT_ENOUGH_CANDLES'}:
+      {valid:true,shouldTrade:true,direction:'BUY',recommendedExpiry:'30s',trendRegime:'UPTREND'}});
   await c.startSignalAnalysis();assert.ok(c.state.pairCandidates.every(p=>p.pair!==c.pairs[0]));
 });
 test('failed pair switch is not counted as a new chart',async()=>{
@@ -322,6 +325,8 @@ test('rendering live updates preserves the card node and does not inflate accura
   c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected');
   assert.equal(mounts,1);assert.equal(nodes.get('[data-analysis-card]'),card);assert.equal(transitions,2);assert.equal(accuracy.textContent,'50%');
   assert.equal(nodes.get('[data-analysis-status]').textContent,'Не подтверждено');
+  c.renderAnalysisStep(0,4,'Данные','M1: 0 закрытых',null,false,'loading');
+  assert.equal(accuracy.textContent,'—');assert.equal(nodes.get('[data-analysis-score]').textContent,'— / 5');assert.equal(mounts,1);
 });
 test('confirmed click failure creates no timer, result or recovery step',async()=>{
   const c=loadContent();c.prepareExecution();c.POAutomation.clickTrade=async()=>false;
@@ -360,7 +365,7 @@ test('existing scenario formulas produce BUY and SELL with consistent explanatio
     let price=100;const raw=[];
     for(let i=0;i<55;i++) {const open=price,close=open+(random()-.48)*1.6,wick=random()*.6;price=close;raw.push({open,close,high:Math.max(open,close)+wick,low:Math.min(open,close)-wick});}
     const bars=taggedBars(c,raw,15);const sign=bars.at(-1).isGreen?1:-1;
-    c.LiveTickBuffer.getMicroMetrics=()=>({delta3s:.1*sign,delta5s:.1*sign,delta6s:.1*sign,delta15s:.1*sign,delta30s:.1*sign,posIn15sRange:.5});
+    c.LiveTickBuffer.getMicroMetrics=()=>({delta3s:.1*sign,delta5s:.1*sign,delta6s:.1*sign,delta15s:.1*sign,delta30s:.1*sign,observedWindowSec:5,samples5s:6,posIn15sRange:.5});
     const result=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close);
     if(result.shouldTrade){directions.add(result.direction);horizons.add(result.recommendedExpiry);assert.equal(result.direction==='BUY',bars.at(-1).isGreen);assert.match(result.line2,result.direction==='BUY'?/ВВЕРХ/:/ВНИЗ/);}
   }
@@ -468,4 +473,140 @@ test('current partial S30 and M2 are forming, missing closed children are not fa
     assert.equal(bars[0].close,child.close);
     assert.equal(c.aggregateCandles([{...child,time:bucket-period*2000,complete:true}],2).length,0);
   }
+});
+
+function scenarioFixture(family,buy=true) {
+ let bars=Array.from({length:55},(_,i)=>({open:100+Math.sin(i)*.25,close:100+Math.sin(i+1)*.25,high:100.7,low:99.3}));
+ if(family==='TREND_PULLBACK') {
+  bars=Array.from({length:55},(_,i)=>({open:100+i*.1,close:100+i*.1+.1,high:100+i*.1+.5,low:100+i*.1-.5}));
+  bars[52]={open:105.1,close:105.3,high:106.5,low:104.9};
+  bars[53]={open:105.3,close:104.8,high:105.4,low:104.4};
+  bars[54]={open:104.8,close:105.15,high:105.2,low:104.75};
+ } else if(family==='BREAKOUT_RETEST') {
+  bars[52]={open:100.5,close:101.1,high:101.2,low:100.4};
+  bars[53]={open:101.1,close:100.95,high:101.2,low:100.6};
+  bars[54]={open:100.95,close:101.35,high:101.4,low:100.9};
+ } else {
+  bars=Array.from({length:55},(_,i)=>{const open=100+Math.sin(i*.8),close=100+Math.sin((i+1)*.8);return {open,close,high:Math.max(open,close)+.2,low:Math.min(open,close)-.2};});
+  if(family==='RANGE_REJECTION') {
+   bars[53]={open:99.4,close:99.3,high:99.6,low:98.8};
+   bars[54]={open:99.3,close:99.65,high:99.7,low:99.2};
+  } else {
+   bars[53]={open:99.2,close:99,high:99.1,low:98.5};bars[53].high=99.25;
+   bars[54]={open:99,close:99.4,high:99.45,low:98.95};
+  }
+ }
+ if(!buy) bars=bars.map(b=>({open:200-b.open,close:200-b.close,high:200-b.low,low:200-b.high}));
+ return bars;
+}
+for(const family of ['TREND_PULLBACK','BREAKOUT_RETEST','RANGE_REJECTION','LOCAL_REVERSAL']) {
+  test(family+': confirmed, forming and opposed cases work symmetrically on every horizon',()=>{
+    for(const buy of [true,false]) for(const expiry of ['15s','30s','1m','2m']) {
+      const c=loadContent();c.state.targetPair='EUR/USD OTC';
+      c.LiveTickBuffer.getMicroMetrics=()=>({observedWindowSec:5,samples5s:6,delta3s:buy?.1:-.1,delta5s:buy?.2:-.2});
+      const bars=taggedBars(c,scenarioFixture(family,buy),15);
+      const result=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry});
+      const scenario=result.scenarios?.find(a=>a.family===family);
+      assert.ok(scenario,`${family} ${buy} ${expiry}: ${JSON.stringify(result.rejected)}`);
+      assert.equal(scenario.direction,buy?'BUY':'SELL');assert.equal(scenario.recommendedExpiry,expiry);
+      assert.match(scenario.line2,buy?/ВВЕРХ/:/ВНИЗ/);
+      const forming=bars.slice(0,-1).concat({...bars.at(-1),close:bars.at(-1).open});
+      assert.equal(c.ProTraderEngine.analyzeFrame(forming,forming.at(-1).close,null,{expiry}).shouldTrade,false);
+      const opposed=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry,context:{strong:true,direction:buy?'SELL':'BUY'}});
+      assert.equal(opposed.shouldTrade,false);assert.ok(opposed.rejected.some(r=>r.family===family && r.reason==='OPPOSING_HIGHER_TREND'));
+    }
+  });
+}
+test('breakout retest promotes old resistance to support without inventing an opposite target',()=>{
+  const c=loadContent();c.LiveTickBuffer.getMicroMetrics=()=>({observedWindowSec:5,samples5s:6,delta3s:.1,delta5s:.2});
+  const bars=taggedBars(c,scenarioFixture('BREAKOUT_RETEST'),15);
+  const r=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry:'30s'}).scenarios.find(s=>s.family==='BREAKOUT_RETEST');
+  assert.equal(r.sr.support,100.7);assert.equal(r.sr.roomKnown,false);assert.equal(r.sr.resistance,null);
+  assert.equal(c.evaluate5FactorConfluence({},r,{}).factors[2].score,.5);
+  const failed=bars.map(b=>({...b}));failed.at(-2).close=100.4;
+  const result=c.ProTraderEngine.analyzeFrame(failed,failed.at(-1).close,null,{expiry:'30s'});
+  assert.equal(result.scenarios?.some(s=>s.family==='BREAKOUT_RETEST') || false,false);
+});
+test('numeric M1/M2 select an independent long entry with no S15 and unknown visual interval',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';c.state.actualChartTf=null;
+  const m1=taggedBars(c,scenarioFixture('RANGE_REJECTION'),60),m2=flatContext(c,120);
+  const r=c.ProTraderEngine.analyze(m1,m1.at(-1).close,{timeframes:{60:m1,120:m2}});
+  assert.equal(r.shouldTrade,true);assert.ok(['1m','2m'].includes(r.recommendedExpiry));
+  assert.equal(r.entryPeriodSec,60);assert.equal(r.dataStatus,'ENTRY_CONFIRMED');
+  assert.ok(r.rejected.some(s=>s.expiry==='15s' && s.reason==='NOT_ENOUGH_CANDLES'));
+});
+test('failed 3-second impulse disables short entries while the same long setup remains valid',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';c.LiveTickBuffer.getMicroMetrics=()=>({observedWindowSec:5,samples5s:6,delta3s:-.1,delta5s:-.2});
+  const frames={15:taggedBars(c,scenarioFixture('RANGE_REJECTION'),15),30:taggedBars(c,scenarioFixture('RANGE_REJECTION'),30),60:flatContext(c,60),120:flatContext(c,120)};
+  const r=c.ProTraderEngine.analyze(frames[15],100,{timeframes:frames});
+  assert.equal(r.shouldTrade,true);assert.equal(r.recommendedExpiry,'1m');
+  assert.ok(!r.scenarios.some(s=>['15s','30s'].includes(s.recommendedExpiry)));
+});
+test('short-first choice is threshold aware; ties choose 15s or 1m; pinned valid scenarios survive rank changes',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const frames=Object.fromEntries([15,30,60,120].map(p=>[p,flatContext(c,p)]));
+  let scores={'15s':4.1,'30s':4.1,'1m':4.8,'2m':4.9};
+  c.ProTraderEngine.analyzeFrame=(bars,price,scan,opt)=>({shouldTrade:true,direction:'BUY',recommendedExpiry:opt.expiry,family:'TEST',setup:'TEST',explanationRu:'test',score:scores[opt.expiry]});
+  c.setSearchDependencies({confluence:(scan,a)=>({score:a.score,factors:[]})});
+  const analyze=selection=>c.ProTraderEngine.analyze([],0,{timeframes:frames,...selection});
+  let r=analyze();assert.equal(r.recommendedExpiry,'15s');
+  const pinned=r.scenarioKey;scores={'15s':4.1,'30s':4.8,'1m':4.9,'2m':5};
+  assert.equal(analyze().recommendedExpiry,'30s');assert.equal(analyze({preferredScenarioKey:pinned}).recommendedExpiry,'15s');
+  scores={'15s':3.8,'30s':3.9,'1m':4.1,'2m':4.1};assert.equal(analyze().recommendedExpiry,'1m');
+  scores={'15s':3.4,'30s':3.3,'1m':3.4,'2m':3.4};assert.equal(analyze().shouldTrade,false);
+  assert.equal(analyze({preferredScenarioKey:pinned}).vetoReason,'SCENARIO_INVALIDATED');
+});
+test('unknown-period visible candles report NO_DATA, never a zero-quality market',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';c.state.actualChartTf=null;
+  const bars=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60,'pixels');
+  const r=c.ChartAnalyzer.analyzeMarket({visualCandles:bars});
+  assert.equal(r.dataStatus,'NO_DATA');assert.equal(r.shouldTrade,false);assert.equal(r.hardVeto,false);
+  assert.match(r.explanationRu,/M1: 0/);assert.equal(r.accuracy,null);
+});
+test('pixel frames never use quote micro deltas to validate short impulses',()=>{
+  const c=loadContent();c.LiveTickBuffer.getMicroMetrics=()=>({observedWindowSec:5,samples5s:6,delta3s:100,delta5s:200});
+  const bars=taggedBars(c,scenarioFixture('TREND_PULLBACK'),15,'pixels');
+  assert.equal(c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry:'15s'}).shouldTrade,false);
+  assert.equal(c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry:'1m'}).shouldTrade,true);
+});
+test('future observations cannot establish a pattern; current bars do not change closed indicators',()=>{
+  const c=loadContent();const bars=taggedBars(c,scenarioFixture('LOCAL_REVERSAL'),60);
+  const first=c.ProTraderEngine.analyzeFrame(bars,bars.at(-1).close,null,{expiry:'1m'});
+  const modified=bars.map(b=>({...b}));modified.at(-1).close+=.1;
+  const second=c.ProTraderEngine.analyzeFrame(modified,modified.at(-1).close,null,{expiry:'1m'});
+  assert.equal(first.rsi,second.rsi);assert.equal(first.pctB,second.pctB);
+  modified.push({...modified.at(-1),time:c.now()+60000});
+  assert.equal(c.ProTraderEngine.analyzeFrame(modified,0,null,{expiry:'1m'}).shouldTrade,false);
+});
+
+test('one live quote creates a forming candle but old sparse ticks do not prove a short impulse',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',timestamp:c.now(),price:1});
+  assert.equal(c.LiveTickBuffer.buildCandles(30).at(-1).complete,false);
+  assert.equal(c.LiveTickBuffer.buildCandles(30).at(-1).incomplete,false);
+  c.LiveTickBuffer.ticks.unshift({ts:c.now()-600000,price:.9});
+  assert.equal(c.LiveTickBuffer.getMicroMetrics().observedWindowSec,0);
+});
+test('the numeric history adapter enters a long setup without requesting S15',async()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';const switches=[];
+  c.emit({type:'MARKET_CONTEXT',asset:'EURUSD_otc',generation:1});
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'EURUSD_otc',periodSec:60,candles:taggedBars(c,scenarioFixture('RANGE_REJECTION'),60)});
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'EURUSD_otc',periodSec:120,candles:flatContext(c,120)});
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',price:99.65,timestamp:c.now(),generation:1});
+  let placed=null;
+  c.setSearchDependencies({scan:()=>({visualCandles:[]}),sentiment:()=>({observed:true,bullish:60,bearish:40}),
+    execute:async(a)=>{placed=a;c.state.tradeContext={test:true};c.state.botState='IN_TRADE';}});
+  c.setTfBridge(async tf=>{switches.push(tf);return {ok:false};});
+  await c.startSignalAnalysis();
+  assert.ok(placed);assert.equal(placed.recommendedExpiry,'2m');assert.equal(placed.family,'RANGE_REJECTION');
+  assert.equal(switches.includes('S15'),false);assert.ok(placed.scenarioKey);
+});
+
+test('pre-click recheck cancels a different family even when direction and expiry still match',async()=>{
+  const c=loadContent();c.prepareExecution();c.state.targetPair='EUR/USD OTC';c.document.title='EUR/USD OTC';c.state.searchGeneration=1;c.state.searchRunning=true;
+  let clicks=0,selection=null;c.POAutomation.clickTrade=async()=>{clicks++;return true;};
+  c.state.lastRealQuote={pair:c.state.targetPair,price:1,timestamp:c.now(),receivedAt:c.now()};
+  c.setFinalAnalysis(async options=>{selection=options;return {analysis:{shouldTrade:true,direction:'BUY',recommendedExpiry:'30s',scenarioKey:'other-family'},confluence:{score:5},scan:{}};});
+  await c.executeTradeWithSignal({direction:'BUY',recommendedExpiry:'30s',searchGeneration:1,scenarioKey:'selected-family'},{score:5},{});
+  assert.equal(selection.preferredScenarioKey,'selected-family');assert.equal(clicks,0);assert.equal(c.state.tradeContext,null);
 });

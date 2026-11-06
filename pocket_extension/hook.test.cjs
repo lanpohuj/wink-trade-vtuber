@@ -5,11 +5,11 @@ const vm = require('node:vm');
 
 function loadHook() {
   let now=1700000000000;
-  const messages=[],intervals=[];
+  const messages=[],intervals=[],commands=[];
   class Socket { constructor(){this.handlers={};} addEventListener(event,fn){this.handlers[event]=fn;} send(data){this.sent=data;} receive(data){this.handlers.message({data});} }
   class Canvas {} Canvas.prototype.getContext=()=>null;
   class Context {} Context.prototype.fillText=()=>{};Context.prototype.fillRect=()=>{};
-  const window={WebSocket:Socket,postMessage:m=>messages.push(m),addEventListener(){}};
+  const window={WebSocket:Socket,postMessage:m=>messages.push(m),addEventListener(event,fn){if(event==='message')commands.push(fn);}};
   const document={querySelectorAll:()=>[],querySelector:()=>null,dispatchEvent(){}};
   const sandbox={window,document,HTMLCanvasElement:Canvas,CanvasRenderingContext2D:Context,
     console:{log(){},warn(){},error(){}},TextDecoder,TextEncoder,ArrayBuffer,Uint8Array,Blob,
@@ -20,9 +20,10 @@ function loadHook() {
   Object.defineProperty(sandbox.HTMLInputElement.prototype,'value',{set(value){this._value=value;},get(){return this._value;}});
   let source=fs.readFileSync(__dirname+'/page_hook.js','utf8');
   const at=source.lastIndexOf('})();');
-  source=source.slice(0,at)+`globalThis.testing={handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
+  source=source.slice(0,at)+`globalThis.testing={handleMainWorldSwitchPair,closeAssetMenu,handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
   vm.runInNewContext(source,sandbox);
   return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now,
+    async command(data){for(const fn of commands)await fn({source:window,data:{source:'WINKY_CONTENT',...data}});},
     runIntervals(ms){for(const interval of intervals)if(interval.ms===ms)interval.fn();}};
 }
 
@@ -131,7 +132,7 @@ test('M1 candle badge is read independently from a bottom H2 history control',()
 test('timeframe menu receives one opening click and S15 must be observed',async()=>{
   const h=loadHook();let menuClicks=0,itemClicks=0;
   const toolbar={textContent:'M1',offsetParent:{},classList:{contains:()=>false},getBoundingClientRect:()=>({left:100,top:60,width:30,height:25}),dispatchEvent(){},click(){menuClicks++;}};
-  const item={textContent:'S15',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(){return this;},click(){itemClicks++;toolbar.textContent='S15';}};
+  const item={textContent:'S15',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(selector){return selector==='a,li,button,[role="button"]'?this:null;},click(){itemClicks++;toolbar.textContent='S15';}};
   h.document.querySelectorAll=selector=>selector.startsWith('[data-period=')?[item]:[toolbar];
   await h.handleMainWorldEnsureChartTimeframe('S15');
   assert.equal(menuClicks,1);assert.equal(itemClicks,1);
@@ -139,7 +140,7 @@ test('timeframe menu receives one opening click and S15 must be observed',async(
 });
 test('M1 target is selected and verified instead of always selecting S15',async()=>{
   const h=loadHook();const toolbar={textContent:'S15',offsetParent:{},children:[],classList:{contains:()=>false},getBoundingClientRect:()=>({left:100,top:60,width:30,height:25}),dispatchEvent(){},click(){}};
-  const item={textContent:'M1',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(){return this;},click(){toolbar.textContent='M1';}};
+  const item={textContent:'M1',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(selector){return selector==='a,li,button,[role="button"]'?this:null;},click(){toolbar.textContent='M1';}};
   h.document.querySelectorAll=selector=>selector.startsWith('[data-period=')?[item]:[toolbar];
   await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:10});
   const response=h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME');assert.equal(response.ok,true);assert.equal(response.activeTf,'M1');assert.equal(response.requestId,10);
@@ -177,4 +178,52 @@ test('a visible nested M1 label in a chart toolbar is detected with the asset me
   // No semantic class is required, but the label must belong to a toolbar control above the chart.
   button.closest=selector=>selector==='button,a,[role="button"]'?button:null;
   assert.equal(h.getActualChartTimeframeBadge().badge,'M1');
+});
+
+test('history recovery reuses only an observed native request, caps at 200 and rate-limits replay',async()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:1,pair:'EUR/USD OTC',periodSec:60});
+  assert.equal(h.messages.at(-1).requested,false);
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.send('42["loadHistoryPeriod",{"asset":"EURUSD_otc","period":60,"time":1700000000,"offset":0,"count":50}]');
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:2,pair:'EUR/USD OTC',periodSec:60});
+  assert.equal(h.messages.at(-1).requested,true);
+  const replay=JSON.parse(socket.sent.slice(2));assert.equal(replay[0],'loadHistoryPeriod');assert.equal(replay[1].count,200);assert.equal(replay[1].time,1700000000);
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:3,pair:'EUR/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:4,pair:'GBP/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
+  await h.command({type:'WINKY_CMD_GET_MARKET_STATUS',requestId:5});
+  assert.equal(h.messages.at(-1).version,'2.3.1');assert.equal(h.messages.at(-1).requestId,5);
+});
+test('timeframe changes within a pair preserve history identity; returning from another pair creates a new generation',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":15}]');
+  let contexts=h.messages.filter(m=>m.type==='MARKET_CONTEXT');assert.equal(contexts[0].generation,contexts[1].generation);
+  socket.send('42["changeSymbol",{"asset":"GBPUSD_otc","period":15}]');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  contexts=h.messages.filter(m=>m.type==='MARKET_CONTEXT');assert.ok(contexts.at(-1).generation>contexts[0].generation);
+});
+test('asset menu closure finds a visible menu even if the first modal is hidden',async()=>{
+  const h=loadHook();let opened=true,clicks=0;
+  const hidden={offsetParent:null};
+  const menu={get offsetParent(){return opened?{}:null;},getBoundingClientRect:()=>({width:600,height:500}),querySelector:()=>({})};
+  const header={dispatchEvent(){},click(){clicks++;opened=false;}};
+  h.document.querySelectorAll=selector=>selector.includes('.symbols-modal')?[hidden,menu]:[];
+  h.document.querySelector=()=>header;
+  assert.equal(await h.closeAssetMenu(),true);assert.equal(clicks,1);
+});
+test('timeframe menu selection follows the toolbar at wide and zoomed positions',async()=>{
+  const h=loadHook();const toolbar={textContent:'M1',offsetParent:{},getBoundingClientRect:()=>({left:750,top:100,width:30,height:25}),dispatchEvent(){},click(){}};
+  const item={textContent:'S15',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:760,top:150,width:30,height:25}),dispatchEvent(){},closest:()=>null,click(){toolbar.textContent='S15';}};
+  h.document.querySelectorAll=selector=>selector.startsWith('[data-period=')?[item]:selector.includes('.current-timeframe')?[toolbar]:[];
+  await h.handleMainWorldEnsureChartTimeframe('S15');assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
+});
+
+test('self-identified history ticks from multiple assets are not treated as ambiguous anonymous data',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.send('42["changeSymbol",{"asset":"GBPUSD_otc","period":15}]');
+  socket.receive('42["history",[["EURUSD_otc",1700000000.1,1.1],["GBPUSD_otc",1700000000.2,1.2]]]');
+  const histories=h.messages.filter(m=>m.type==='WS_HISTORY_TICKS');assert.equal(histories.length,2);
+  assert.equal(histories[0].generation,1);assert.equal(histories[1].generation,2);
 });
