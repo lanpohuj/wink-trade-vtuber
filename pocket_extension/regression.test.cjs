@@ -23,6 +23,7 @@ function loadContent() {
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
       executeTradeWithSignal,
+      updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
@@ -198,5 +199,41 @@ test('opening, broker countdown, final result and recovery run through existing 
   assert.equal(c.state.botState,'IN_TRADE');assert.equal(c.state.tradeEndTime,1700000030000);assert.equal(c.state.tradeContext.brokerId,'real-1');
   c.tick(30000);c.emit({type:'BROKER_DEAL_RESULT',orderId:'real-1',net:-50});
   await c.onSignalTimerFinished();assert.equal(c.state.recoveryStep,1);assert.equal(c.state.currentStake,110);assert.equal(c.state.botState,'IDLE');
+});
+test('existing ProTraderEngine produces both directions and different horizons without flipping rationale',()=>{
+  const c=loadContent();let seed=123;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+  const directions=new Set(),horizons=new Set();
+  // Deterministic synthetic data tests the existing engine, not a replacement signal stub.
+  for(let trial=0;trial<200;trial++) {
+    let price=100;const bars=[];
+    for(let i=0;i<45;i++) {
+      const open=price,close=open+(random()-.48)*1.6,wick=random()*.6;price=close;
+      bars.push({open,close,high:Math.max(open,close)+wick,low:Math.min(open,close)-wick,body:Math.abs(close-open),bodySize:Math.abs(close-open),totalRange:Math.abs(close-open)+2*wick,upperWick:wick,lowerWick:wick,isGreen:close>open,isRed:close<open,source:'pixels',pair:'EUR/USD OTC',candlePeriodSec:15});
+    }
+    const sign=bars.at(-1).isGreen?1:-1;
+    c.LiveTickBuffer.getMicroMetrics=()=>({delta3s:.1*sign,delta5s:.1*sign,delta6s:.1*sign,delta15s:.1*sign,delta30s:.1*sign,posIn15sRange:.5});
+    const result=c.ProTraderEngine.analyze(bars,bars.at(-1).close);
+    if(result.shouldTrade) {
+      directions.add(result.direction);horizons.add(result.recommendedExpiry);
+      assert.equal(result.direction==='BUY',bars.at(-1).isGreen);
+      assert.match(result.line2,result.direction==='BUY'?/ВВЕРХ/:/ВНИЗ/);
+    }
+  }
+  assert.equal(directions.size,2);assert.ok(horizons.has('15s'));assert.ok(horizons.has('30s'));assert.ok(horizons.has('2m'));
+});
+test('indicator ratios retain scale on low-priced OTC instruments',()=>{
+  const c=loadContent();const prices=Array.from({length:30},(_,i)=>100+Math.sin(i*.7)*2+i*.05);
+  const normal=c.ProTraderEngine.computeBollinger(prices),small=c.ProTraderEngine.computeBollinger(prices.map(p=>p*1e-7));
+  assert.equal(normal.pctB,small.pctB);
+});
+test('confirmed net profit is accumulated to cents without resetting old statistics',()=>{
+  const c=loadContent();c.state.scoreProfit=1420;
+  c.updateScoreOnTradeClose(false,0,50);c.updateScoreOnTradeClose(false,0,110);c.updateScoreOnTradeClose(true,222.64,0);
+  assert.equal(c.state.scoreProfit,1482.64);assert.ok(c.storage.has('winky_live_stats_v5'));assert.ok(c.storage.has('winky_score_v3'));
+});
+test('automatic settlement retries through a delayed payout without advancing recovery',async()=>{
+  const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};
+  let checks=0;c.setBalanceReader(()=>{checks++;return checks<8?950:1046;});
+  await c.onSignalTimerFinished();assert.ok(checks>=8);assert.equal(t.resultApplied,true);assert.equal(c.state.recoveryStep,0);assert.equal(c.state.lastTradeOutcome,'WIN');
 });
 module.exports={loadContent,row};

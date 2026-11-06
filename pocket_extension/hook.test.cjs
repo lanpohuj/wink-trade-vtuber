@@ -61,7 +61,7 @@ test('optional open confirmation and binary close result preserve trade ID',asyn
   socket.receive('42'+JSON.stringify(['successopenOrder',opened]));
   assert.equal(h.messages.find(m=>m.type==='BROKER_DEAL_OPEN').orderId,'deal-3');
   socket.receive('451-["successcloseOrder",{"_placeholder":true,"num":0}]');
-  socket.receive(new TextEncoder().encode(JSON.stringify({deals:[{...opened,profit:46}]})).buffer);
+  socket.receive(new TextEncoder().encode(JSON.stringify({deals:[{...opened,net_profit:46}]})).buffer);
   assert.equal(h.messages.find(m=>m.type==='BROKER_DEAL_RESULT').net,46);
 });
 test('fractional timestamps and canvas preservation remain supported',()=>{
@@ -74,4 +74,13 @@ test('M1 candle badge is read independently from a bottom H2 history control',()
   const m1=make('M1',60),h2=make('H2',700);
   h.document.querySelectorAll=selector=>selector.includes('.chart-type-block')?[m1]:[h2];
   assert.equal(h.getActualChartTimeframeBadge().badge,'M1');
+});
+test('timeframe menu receives one opening click and S15 must be observed',async()=>{
+  const h=loadHook();let menuClicks=0,itemClicks=0;
+  const toolbar={textContent:'M1',offsetParent:{},classList:{contains:()=>false},getBoundingClientRect:()=>({left:100,top:60,width:30,height:25}),dispatchEvent(){},click(){menuClicks++;}};
+  const item={textContent:'S15',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(){return this;},click(){itemClicks++;toolbar.textContent='S15';}};
+  h.document.querySelectorAll=selector=>selector.startsWith('[data-period=')?[item]:[toolbar];
+  await h.handleMainWorldEnsureChartTimeframe('S15');
+  assert.equal(menuClicks,1);assert.equal(itemClicks,1);
+  assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
 });

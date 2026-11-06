@@ -560,7 +560,7 @@
           const v1 = parseInt(matches[0], 10);
           const v2 = parseInt(matches[1], 10);
           if (v1 + v2 === 100 || (v1 >= 0 && v2 >= 0)) {
-            return { bullish: v1, bearish: v2 };
+            return { bullish: v1, bearish: v2, observed: true };
           }
         }
       }
@@ -592,15 +592,15 @@
       let numericTs = Number(ts);
       if (numericTs < 1e11) numericTs = numericTs * 1000;
       this.ticks.push({ price: Number(price), ts: numericTs });
-      if (this.ticks.length > 1000) {
-        this.ticks.splice(0, this.ticks.length - 1000);
+      if (this.ticks.length > 5000) {
+        this.ticks.splice(0, this.ticks.length - 5000);
       }
     },
     loadHistoryTicks(ticksArray, asset = null) {
       if (!Array.isArray(ticksArray) || ticksArray.length === 0) return;
       if (asset && state.targetPair) {
-        const cleanAsset = String(asset).replace(/[^a-zA-Z]/g, "").toLowerCase();
-        const cleanTarget = String(state.targetPair).replace(/[^a-zA-Z]/g, "").toLowerCase();
+        const cleanAsset = normalizePocketPair(asset);
+        const cleanTarget = normalizePocketPair(state.targetPair);
         if (cleanAsset !== cleanTarget) {
           return; // different pair
         }
@@ -619,7 +619,7 @@
       const merged = Array.from(map.entries())
         .map(([ts, price]) => ({ ts, price }))
         .sort((a, b) => a.ts - b.ts);
-      this.ticks = merged.slice(-1000);
+      this.ticks = merged.slice(-5000);
       console.log(`[LiveTickBuffer] 📊 Loaded ${this.ticks.length} total ticks (merged ${ticksArray.length} new)`);
     },
     reset(newPair = null) {
@@ -848,7 +848,7 @@
       const upper = mean + multiplier * sd;
       const lower = mean - multiplier * sd;
       const curPrice = closes[closes.length - 1];
-      const span = Math.max(0.000001, upper - lower);
+      const span = Math.max(Number.EPSILON, upper - lower);
       const rawPctB = (curPrice - lower) / span;
       const pctB = Math.max(0.0, Math.min(1.0, rawPctB));
       return {
@@ -869,7 +869,7 @@
         const curClose = window[window.length - 1].close;
         const lowestLow = Math.min(...window.map((c) => c.low));
         const highestHigh = Math.max(...window.map((c) => c.high));
-        const range = Math.max(0.000001, highestHigh - lowestLow);
+        const range = Math.max(Number.EPSILON, highestHigh - lowestLow);
         rawK.push(((curClose - lowestLow) / range) * 100);
       }
       const smoothK = [];
@@ -1019,7 +1019,7 @@
       // Положение цены в видимом диапазоне графика (posInChartRange 0.0 .. 1.0)
       const highAll = Math.max(...candlesS15.map((c) => c.high));
       const lowAll = Math.min(...candlesS15.map((c) => c.low));
-      const totalSpanAll = Math.max(0.000001, highAll - lowAll);
+      const totalSpanAll = Math.max(Number.EPSILON, highAll - lowAll);
       const posInChartRange = (curPrice - lowAll) / totalSpanAll;
 
       // Локальные экстремумы последних 15 свечей и запас хода до структуры
@@ -1033,8 +1033,8 @@
       const window35 = candlesS15.slice(-35);
       const resistanceLevel = Math.max(...window35.map((c) => c.high));
       const supportLevel = Math.min(...window35.map((c) => c.low));
-      const roomUpATR = (resistanceLevel - curPrice) / Math.max(0.000001, atr);
-      const roomDownATR = (curPrice - supportLevel) / Math.max(0.000001, atr);
+      const roomUpATR = (resistanceLevel - curPrice) / Math.max(Number.EPSILON, atr);
+      const roomDownATR = (curPrice - supportLevel) / Math.max(Number.EPSILON, atr);
 
       // Лимит сканирования пар: MAX_PAIR_SCANS = 7
       const isScanAllowedToSkip = !state.allowDominantEntry;
@@ -1382,7 +1382,7 @@
           pctB: bb.pctB,
           trendRegime: trendRegime,
           sr: { resistance: resistanceLevel, support: supportLevel, distToRes: roomUpATR, distToSup: roomDownATR },
-          volatilityRatio: c0.body / Math.max(0.000001, atr),
+          volatilityRatio: c0.body / Math.max(Number.EPSILON, atr),
           line1: best.line1,
           line2: best.line2,
           explanationRu: best.factors.join(" · "),
@@ -1445,7 +1445,7 @@
         pctB: bb.pctB,
         trendRegime: trendRegime,
         sr: { resistance: resistanceLevel, support: supportLevel, distToRes: roomUpATR, distToSup: roomDownATR },
-        volatilityRatio: c0.body / Math.max(0.000001, atr),
+        volatilityRatio: c0.body / Math.max(Number.EPSILON, atr),
         line1: isRu
           ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено правой волной." : "📌 Нисходящая структура: давление продавцов подтверждено правой волной.")
           : (forcedDir === "BUY" ? "📌 Upward flow confirmed by right wave momentum." : "📌 Downward flow confirmed by right wave momentum."),
@@ -1506,7 +1506,7 @@
             isGreen: c.close > c.open,
             isRed: c.close < c.open,
             bodySize: Math.abs(c.close - c.open),
-            totalRange: Math.max(0.000001, c.high - c.low),
+            totalRange: Math.max(Number.EPSILON, c.high - c.low),
           };
           state.candles.push(candle);
           if (state.candles.length > 30) state.candles.shift();
@@ -1622,6 +1622,7 @@
           confidence: 95,
           category: fBuy ? "buy_trend" : "sell_trend",
           setup: "MOMENTUM_BREAKOUT",
+          isStreamerOverride: true,
           shouldTrade: true,
           vetoReason: null,
           factors: [fBuy ? "Стримерский форсированный вход BUY" : "Стримерский форсированный вход SELL"],
@@ -3223,7 +3224,7 @@
     if (metricTf) metricTf.textContent = label;
 
     const orbMeta = document.getElementById("winkyOrbTime") || document.getElementById("winkyOrbMeta");
-    if (orbMeta) orbMeta.textContent = `Таймф: S15/M1  Время: ${label}`;
+    if (orbMeta) orbMeta.textContent = `Таймф: ${state.actualChartTf || "—"}  Время: ${label}`;
 
     const sigExpiry = document.getElementById("sigExpiry");
     if (sigExpiry) sigExpiry.textContent = label;
@@ -3543,7 +3544,7 @@
         if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
         const currentPair=scanPocketOptionCurrentPair();
         const fresh=samplePairAnalysis();
-        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || !canEnterAnalysis(fresh.analysis,fresh.confluence) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf) {
+        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
           resetTradePreparation(null); return;
         }
       }
@@ -4383,7 +4384,7 @@
     // 2. Строка таймфрейма внутри круга
     const orbTimeEl = document.getElementById("winkyOrbTime");
     if (orbTimeEl) {
-      orbTimeEl.textContent = `Таймф: S15/M1  Время: ${state.selectedTimeframe}`;
+      orbTimeEl.textContent = `Таймф: ${state.actualChartTf || "—"}  Время: ${state.selectedTimeframe}`;
     }
 
     // 3. Селектор пары в боте
@@ -4418,7 +4419,7 @@
       <!-- 2. Центральный медальон 196x196px с живым замкнутым неоновым кольцом 360° -->
       <div class="winky-orb-dial" id="winkyOrbMedallion">
         <div class="winky-orb-brand">WINK TRADE</div>
-        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: S15/M1  Время: ${state.selectedTimeframe}</div>
+        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: ${state.actualChartTf || "—"}  Время: ${state.selectedTimeframe}</div>
         <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
         <div class="winky-orb-wl-row">
           <div class="winky-orb-col wins">
@@ -4631,18 +4632,18 @@
       state.scoreWins = (Number(state.scoreWins) || 0) + 1;
       state.liveWins = state.scoreWins;
       const addAmount = (typeof profitDelta === "number" && profitDelta > 0)
-        ? Math.round(profitDelta)
+        ? profitDelta
         : Math.round((state.actualStakePlaced || state.currentStake || 50) * ((state.actualPayoutPct || 92) / 100));
-      state.scoreProfit = Math.round((Number(state.scoreProfit) || 0) + addAmount);
+      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) + addAmount) * 100) / 100;
       state.sessionProfit = state.scoreProfit;
     } else {
       state.scoreLosses = (Number(state.scoreLosses) || 0) + 1;
       state.liveLosses = state.scoreLosses;
       const subAmount = (typeof lossDelta === "number" && lossDelta > 0)
-        ? Math.round(lossDelta)
+        ? lossDelta
         : Math.round(state.actualStakePlaced || state.currentStake || 50);
       // ОБЯЗАТЕЛЬНО ВЫЧИТАЕМ УБЫТОК ИЗ ТЕКУЩЕГО ПРОФИТА!
-      state.scoreProfit = Math.round((Number(state.scoreProfit) || 0) - subAmount);
+      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) - subAmount) * 100) / 100;
       state.sessionProfit = state.scoreProfit;
     }
 

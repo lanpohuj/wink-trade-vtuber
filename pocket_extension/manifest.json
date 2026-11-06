@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Winky AI — Pocket Option Trading Bot",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "In-DOM Classic Trading Bot (Signals & AI Chat), live score HUD, and LumeanTTS voice for Pocket Option.",
   "permissions": [
     "storage"

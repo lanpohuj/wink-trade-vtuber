@@ -77,8 +77,13 @@
           }
           if (packet && /^(successcloseOrder|closeOrder|closedOrder|updateClosedDeals)$/i.test(packet.name)) {
             for (const obj of socketDealObjects(packet.payload)) {
-              if (typeof obj.profit !== 'number' || !Number.isFinite(obj.profit)) continue;
-              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_RESULT', orderId: obj.id ?? obj.order_id ?? obj.deal_id, net: obj.profit }, '*');
+              // Unlabelled profit may mean gross payout, not net P/L. Zero
+              // alone cannot distinguish a refund from a lost stake.
+              let net = typeof obj.net_profit === 'number' ? obj.net_profit : null;
+              if (net === null && typeof obj.profit === 'number' && obj.profit < 0) net = obj.profit;
+              if (net === null && typeof obj.payout === 'number' && typeof obj.amount === 'number') net = obj.payout - obj.amount;
+              if (!Number.isFinite(net)) continue;
+              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_RESULT', orderId: obj.id ?? obj.order_id ?? obj.deal_id, net }, '*');
             }
           }
           // Check for openOrder / deal creation response from server
@@ -844,7 +849,7 @@
 
   function realClick(el) {
     if (!el) return;
-    ["pointerdown", "mousedown", "mouseup", "click"].forEach((evtName) => {
+    ["pointerdown", "mousedown", "mouseup"].forEach((evtName) => {
       try {
         el.dispatchEvent(new MouseEvent(evtName, { view: window, bubbles: true, cancelable: true, buttons: 1 }));
       } catch (_) {}
@@ -1037,11 +1042,8 @@
 
     if (s15Item) {
       console.log(`[WinkyHook] 🎯 Кликнули realClick по таймфрейму S15 («${s15Item.textContent.trim()}»)!`);
-      realClick(s15Item);
       const parentClickable = s15Item.closest("a, li, button, [role='button']");
-      if (parentClickable && parentClickable !== s15Item) {
-        realClick(parentClickable);
-      }
+      realClick(parentClickable || s15Item);
       await sleep(150);
     } else {
       console.warn(`[WinkyHook] ⚠️ Кнопка S15 / 15 сек не найдена в открытом меню таймфреймов`);
