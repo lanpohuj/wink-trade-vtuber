@@ -25,7 +25,7 @@ function loadContent() {
       executeTradeWithSignal,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh, readTradersSentiment,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
@@ -34,6 +34,7 @@ function loadContent() {
       setSpeakingReader(fn) { checkWinkySpeaking = fn; },
       setVoicePlayer(fn) { VoiceManager.playCategory = fn; },
       setNextAnalysis(fn) { startSignalAnalysis = fn; },
+      setFinalAnalysis(fn) { freshPairAnalysis = fn; },
       prepareExecution() {
         requestMainWorldSetExpiry = async () => ({ok:true,confirmed:true,observedSec:30});
         waitForOptimalMicroEntry = async () => ({ok:true});
@@ -205,6 +206,12 @@ test('tick buffer receives one WS sample, ignores foreign pair and synthetic pol
   c.ChartAnalyzer.onNewPriceTick(1.2,1700000000200);
   assert.equal(c.LiveTickBuffer.ticks.length,1);
 });
+test('the first live tick preserves history already loaded for the current asset',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  c.emit({type:'WS_HISTORY_TICKS',asset:'EURUSD_otc',ticks:[{ts:c.now()-2000,price:1},{ts:c.now()-1000,price:1.1}]});
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',timestamp:c.now(),price:1.2});
+  assert.equal(c.LiveTickBuffer.ticks.length,3);assert.equal(c.LiveTickBuffer.pair,'EUR/USD OTC');
+});
 test('delayed generation and anonymous history cannot populate the current pair',()=>{
   const c=loadContent();c.state.targetPair='EUR/USD OTC';
   c.emit({type:'MARKET_CONTEXT',asset:'EURUSD_otc',generation:2});
@@ -286,12 +293,49 @@ test('a signal lost on return moves to the next ranked candidate',async()=>{
     analyze:()=>({shouldTrade:!(c.state.targetPair===c.pairs[0] && visits.has(c.pairs[0])),direction:'BUY',setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.5,sr:{distToRes:2},confidence:90})});
   await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.notEqual(c.executed[0].pair,c.pairs[0]);
 });
+test('quote freshness and identity remain mandatory even for the best score',()=>{
+  const c=loadContent(),a={shouldTrade:true,direction:'BUY'},f={score:5};
+  assert.equal(c.canEnterAnalysis(a,f,3.5),false);
+  c.state.lastRealQuote={pair:c.state.targetPair,receivedAt:c.now(),timestamp:c.now(),price:1};assert.equal(c.canEnterAnalysis(a,f),true);
+  c.tick(3500);assert.equal(c.canEnterAnalysis(a,f),false);
+  c.state.lastRealQuote.receivedAt=c.now();c.state.lastRealQuote.pair='other';assert.equal(c.canEnterAnalysis(a,f),false);
+});
+test('analysis remains limited to one calculation per 250ms across chart switches',async()=>{
+  const c=searchFixture('EUR/USD OTC'),times=[];
+  c.setSearchDependencies({analyze:()=>{times.push(c.now());return {shouldTrade:true,direction:'BUY',setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.5,sr:{distToRes:2}};}});
+  await c.startSignalAnalysis();assert.ok(times.length>=2);for(let i=1;i<times.length;i++)assert.ok(times[i]-times[i-1]>=250);
+});
+test('switching off or cancelling a search generation prevents a delayed entry',async()=>{
+  const c=searchFixture('EUR/USD OTC');
+  c.setSearchDependencies({ready:async()=>{c.state.searchGeneration++;return true;}});
+  await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.equal(c.state.searchRunning,false);
+});
+test('rendering live updates preserves the card node and does not inflate accuracy',()=>{
+  const c=loadContent(),nodes=new Map(),segments=Array.from({length:4},()=>({className:''}));let mounts=0,transitions=0;
+  const card={classList:{remove(){},add(){transitions++;}},offsetWidth:300};
+  const block={className:'',set innerHTML(value){mounts++;nodes.set('[data-analysis-card]',card);},
+    querySelector(selector){if(selector==='[data-analysis-card]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);},
+    querySelectorAll(){return segments;}};
+  const accuracy={textContent:'',title:''};c.document.getElementById=id=>id==='botDirectionBlock'?block:id==='metricAccuracyVal'?accuracy:null;
+  for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','Данные обновляются','2.5',false);
+  assert.equal(mounts,1);assert.equal(transitions,1);assert.equal(accuracy.textContent,'50%');
+  c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected');
+  assert.equal(mounts,1);assert.equal(nodes.get('[data-analysis-card]'),card);assert.equal(transitions,2);assert.equal(accuracy.textContent,'50%');
+  assert.equal(nodes.get('[data-analysis-status]').textContent,'Не подтверждено');
+});
 test('confirmed click failure creates no timer, result or recovery step',async()=>{
   const c=loadContent();c.prepareExecution();c.POAutomation.clickTrade=async()=>false;
   const wins=c.state.scoreWins,losses=c.state.scoreLosses;
   await c.executeTradeWithSignal({direction:'BUY',recommendedExpiry:'30s'},{score:4.5},{});
   assert.equal(c.state.tradeContext,null);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.expiryInterval,null);
   assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.equal(c.state.recoveryStep,0);
+});
+test('cancelling during the final asynchronous recheck prevents the click',async()=>{
+  const c=loadContent();c.prepareExecution();c.state.targetPair='EUR/USD OTC';c.document.title='EUR/USD OTC';c.state.searchGeneration=1;c.state.searchRunning=true;
+  let clicks=0;c.POAutomation.clickTrade=async()=>{clicks++;return true;};
+  c.setFinalAnalysis(async()=>{c.state.searchGeneration++;return {analysis:{shouldTrade:true,direction:'BUY',recommendedExpiry:'30s'},confluence:{score:5},scan:{}};});
+  await c.executeTradeWithSignal({direction:'BUY',recommendedExpiry:'30s',searchGeneration:1},{score:5},{});
+  assert.equal(clicks,0);assert.equal(c.state.tradeContext,null);assert.equal(c.state.botState,'IDLE');
 });
 test('opening, broker countdown, final result and recovery run through existing cycle',async()=>{
   const c=loadContent();c.prepareExecution();c.state.targetPair='EUR/USD OTC';
@@ -351,6 +395,12 @@ test('confluence is the sum of observed factors, with no invented sentiment or l
   assert.equal(result.factors[2].score,.5);assert.equal(result.factors[4].score,0);
   assert.equal(result.score,result.factors.reduce((sum,f)=>sum+f.score,0));
   delete a.sr;assert.equal(c.evaluate5FactorConfluence({},a,{}).factors[2].score,0);
+});
+test('only a valid Pocket sentiment split counts as observed evidence',()=>{
+  const c=loadContent();let up=60,down=40;
+  c.document.querySelector=selector=>selector.includes('.sentiment-call')?{textContent:up+'%'}:selector.includes('.sentiment-put')?{textContent:down+'%'}:null;
+  assert.equal(c.readTradersSentiment().observed,true);
+  up=92;down=90;assert.equal(c.readTradersSentiment().observed,false);
 });
 test('indicator ratios retain scale on low-priced OTC instruments',()=>{
   const c=loadContent();const prices=Array.from({length:30},(_,i)=>100+Math.sin(i*.7)*2+i*.05);

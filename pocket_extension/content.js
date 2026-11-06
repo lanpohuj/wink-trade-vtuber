@@ -394,6 +394,7 @@
     if (data.type === 'BROKER_DEAL_OPEN' && matchesTradeEvidence(data, trade)) {
       trade.brokerId = data.orderId || trade.brokerId;
       trade.openConfirmed = true;
+      journalDecision('broker_opened');
       if (Number.isFinite(data.closesAt) && data.closesAt > trade.startedAt) {
         trade.closesAt = data.closesAt;
         if (state.botState === 'IN_TRADE') state.tradeEndTime = data.closesAt;
@@ -550,7 +551,7 @@
         const cVal = parseInt(callEl.textContent.replace(/[^0-9]/g, ""), 10);
         const pVal = parseInt(putEl.textContent.replace(/[^0-9]/g, ""), 10);
         if (!isNaN(cVal) && !isNaN(pVal) && cVal + pVal > 0) {
-          return { bullish: cVal, bearish: pVal };
+          return { bullish: cVal, bearish: pVal, observed: cVal>=0 && pVal>=0 && cVal<=100 && pVal<=100 && Math.abs(cVal+pVal-100)<=2 };
         }
       }
 
@@ -565,7 +566,7 @@
           const gNum = parseInt(gText.replace(/[^0-9]/g, ""), 10);
           const rNum = parseInt(rText.replace(/[^0-9]/g, ""), 10);
           if (!isNaN(gNum) && !isNaN(rNum)) {
-            return { bullish: gNum, bearish: rNum };
+            return { bullish: gNum, bearish: rNum, observed: gNum>=0 && rNum>=0 && gNum<=100 && rNum<=100 && Math.abs(gNum+rNum-100)<=2 };
           }
         }
       }
@@ -577,7 +578,7 @@
         if (matches && matches.length >= 2) {
           const v1 = parseInt(matches[0], 10);
           const v2 = parseInt(matches[1], 10);
-          if (v1 + v2 === 100 || (v1 >= 0 && v2 >= 0)) {
+          if (v1<=100 && v2<=100 && Math.abs(v1+v2-100)<=2) {
             return { bullish: v1, bearish: v2, observed: true };
           }
         }
@@ -591,13 +592,13 @@
           if (m) {
             const p = parseInt(m[1], 10);
             if (p >= 55) {
-              return { bullish: 100 - p, bearish: p };
+              return { bullish: 100 - p, bearish: p, observed: false };
             }
           }
         }
       }
     } catch (_) {}
-    return { bullish, bearish, observed: Boolean(document.querySelector('.sentiment-call, .sentiment__call, .chart-sentiment-bull, .trading-panel .sentiment-up')) };
+    return { bullish, bearish, observed: false };
   }
 
   /* ==================== 1b. LiveTickBuffer & ProTraderEngine ==================== */
@@ -605,7 +606,7 @@
   const LiveTickBuffer = {
     pair: null,
     archives: new Map(),
-    ticks: [], // { price, ts } max 1000
+    ticks: [], // { price, ts } max 5000 per cached pair
     addTick(price, ts = Date.now()) {
       if (!price || isNaN(price) || price <= 0) return;
       let numericTs = Number(ts);
@@ -841,10 +842,10 @@
       }
       frames[period]=(bars || []).map(c=>({...c,complete:Number.isFinite(c.time) ? c.time+period*1000<=marketNow() : c.complete}));
     }
-    // Only timestamped price candles may be aggregated across periods. Pixel
-    // bar timestamps are estimates of position and must not invent M2/S30.
-    if(frames[30].filter(c=>c.complete && !c.incomplete).length<20 && frames[15].every(c=>c.source!=='pixels')) frames[30]=aggregateCandles(frames[15],2);
-    if(frames[120].filter(c=>c.complete && !c.incomplete).length<20 && frames[60].every(c=>c.source!=='pixels')) frames[120]=aggregateCandles(frames[60],2);
+    // The visual fallback may aggregate adjacent bars of a confirmed chart
+    // period. Keep its estimated times and pixel units explicit throughout.
+    if(frames[30].filter(c=>c.complete && !c.incomplete).length<20) frames[30]=aggregateCandles(frames[15],2);
+    if(frames[120].filter(c=>c.complete && !c.incomplete).length<20) frames[120]=aggregateCandles(frames[60],2);
     for(const period of [15,30,60,120]) {
       const bars=frames[period];let start=0;
       for(let i=0;i<bars.length;i++) {
@@ -874,6 +875,7 @@
         upperWick:Math.max(0,high-Math.max(open,close)),lowerWick:Math.max(0,Math.min(open,close)-low),
         isGreen:close>open,isRed:close<open,time:first.time, source:first.source,pair:first.pair,
         candlePeriodSec:first.candlePeriodSec ? first.candlePeriodSec*groupSize : null,
+        estimatedTime:slice.some(c=>c.estimatedTime===true),
         complete:slice.every(c=>c.complete===true),incomplete:slice.some(c=>c.incomplete===true) });
     }
     return result;
@@ -2654,6 +2656,7 @@
 
   function scanPocketOptionCurrentPair() {
     const pairSelectors = [
+      ".currencies-block__in",
       ".current-symbol",
       ".pair-number-wrap",
       ".symbols-list__item--active",
@@ -3506,6 +3509,7 @@
 
   function journalDecision(event, sample=null, detail='') {
     state.decisionJournal.push({event,at:Date.now(),pair:state.targetPair,score:sample?.confluence?.score ?? null,
+      tradeSeq:state.tradeContext?.seq || null,stake:state.tradeContext?.stake ?? null,
       direction:sample?.analysis?.direction || null,setup:sample?.analysis?.setup || null,expiry:sample?.analysis?.recommendedExpiry || null,
       periods:sample?.analysis?.timeframesUsed || [],sources:sample?.analysis?.dataSources || [],veto:sample?.analysis?.vetoReason || null,detail});
     if(state.decisionJournal.length>100) state.decisionJournal.shift();
@@ -3515,6 +3519,10 @@
     const q=state.lastRealQuote;
     return Boolean(q && normalizePocketPair(q.pair)===normalizePocketPair(state.targetPair) && Date.now()-q.receivedAt<3500);
   }
+
+  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:'2.3.0',pair:state.targetPair,
+    chartTf:state.actualChartTf || null,quoteFresh:quoteIsFresh(),searchRunning:state.searchRunning,
+    decisions:state.decisionJournal}));
 
   function marketReason(analysis) {
     const ru=state.lang==='ru';
@@ -3683,9 +3691,9 @@
 
       if (state.searchRunning) {
         if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
-        const currentPair=scanPocketOptionCurrentPair();
         const fresh=await freshPairAnalysis();
-        if (normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || 4) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
+        const currentPair=scanPocketOptionCurrentPair();
+        if (analysis.searchGeneration!==state.searchGeneration || normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || 4) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
           resetTradePreparation(null); return;
         }
       }
@@ -3702,6 +3710,7 @@
       if (state.tradeContext !== trade) return;
       if (clicked === false && !trade.openConfirmed) { resetTradePreparation(trade); return; }
       trade.clickUncertain = clicked === null;
+      journalDecision(trade.clickUncertain?'opening_uncertain':'order_sent',{analysis,confluence},state.selectedTimeframe);
       // A timed-out bridge might already have clicked. Do not send a second order.
       if (trade.clickUncertain) {
         for (let attempt = 0; attempt < 10 && !trade.openConfirmed; attempt++) {
@@ -3807,7 +3816,7 @@
   function rankPairCandidate(candidate) {
     const a=candidate.analysis || {};
     const observed=[Boolean(a.trendRegime),Boolean(a.setup),Boolean(a.sr),Number.isFinite(a.rsi),Boolean(candidate.sentiment?.observed)];
-    return (candidate.confluence?.factors || []).reduce((sum,f,i)=>sum+(observed[i] && Number.isFinite(f.score)?Math.max(0,Math.min(1,f.score)):0),0);
+    return Math.round((candidate.confluence?.factors || []).reduce((sum,f,i)=>sum+(observed[i] && Number.isFinite(f.score)?Math.max(0,Math.min(1,f.score)):0),0)*100)/100;
   }
 
   function sortedPairCandidates(candidates) {
@@ -3816,14 +3825,18 @@
 
   function bestPairCandidate(candidates) { return sortedPairCandidates(candidates)[0] || null; }
 
-  function canEnterAnalysis(analysis, confluence, threshold=4) {
+  function canEnterAnalysis(analysis, confluence, threshold=4, requireFreshQuote=true) {
     return Boolean(analysis?.shouldTrade && !analysis.hardVeto && !['HIGH_RISK_MARKET','OPPOSING_HIGHER_TREND','INCOMPATIBLE_CANDLES','NOT_ENOUGH_CANDLES','STALE_CANDLES'].includes(analysis.vetoReason) &&
-      ['BUY','SELL'].includes(analysis.direction) && Number.isFinite(confluence?.score) && confluence.score>=threshold && quoteIsFresh());
+      ['BUY','SELL'].includes(analysis.direction) && Number.isFinite(confluence?.score) && confluence.score>=threshold && (!requireFreshQuote || quoteIsFresh()));
   }
 
   function samplePairAnalysis(force=false) {
     const cached=state.analysisCache;
     if(!force && cached && cached.pair===state.targetPair && Date.now()-cached.observedAt<250) return cached;
+    if(!force && state.lastAnalysisCalculatedAt && Date.now()-state.lastAnalysisCalculatedAt<250) {
+      return {pair:state.targetPair,analysis:{shouldTrade:false,vetoReason:'ANALYSIS_THROTTLED'},confluence:{score:0,factors:[]},observedAt:Date.now(),payout:parseFloat(state.targetPayout)||0};
+    }
+    state.lastAnalysisCalculatedAt=Date.now();
     ChartAnalyzer.pollPrice();
     const scan=scanCanvasStructure();
     const analysis=ChartAnalyzer.analyzeMarket(scan);
@@ -3834,7 +3847,7 @@
   }
 
   async function freshPairAnalysis() {
-    const delay=state.analysisCache ? 250-(Date.now()-state.analysisCache.observedAt) : 0;
+    const delay=state.lastAnalysisCalculatedAt ? 250-(Date.now()-state.lastAnalysisCalculatedAt) : 0;
     if(delay>0) await new Promise(resolve=>setTimeout(resolve,delay));
     return samplePairAnalysis(true);
   }
@@ -3854,6 +3867,7 @@
   async function showPairInterval(pair, tf) {
     const response=await requestMainWorldEnsureChartTimeframe(tf);
     if(response?.activeTf) state.actualChartTf=response.activeTf;
+    if(!response?.ok) journalDecision('timeframe_unconfirmed',null,tf+': '+(response?.error || 'not_observed'));
     state.analysisCache=null;
     return waitPocketPairReady(pair,chartPeriodSeconds(tf));
   }
@@ -3881,6 +3895,7 @@
         const pair=state.targetPair,key=normalizePocketPair(pair);
         if(state.searchSeen.includes(key)) break;
         state.searchSeen.push(key);state.searchPairIndex=state.pairCandidates.length+1;
+        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/5';
         let sample=null,ready=false,anyReady=false;
         state.botState='ANALYZING_PAIR';
         for(let step=0;step<4 && alive();step++) {
@@ -3912,7 +3927,7 @@
         state.botState='SWITCHING_PAIR';
         if(!await switchPocketPair(null) || normalizePocketPair(state.targetPair)===key) break;
       }
-      const ranked=chosen?[chosen]:sortedPairCandidates(state.pairCandidates).filter(c=>canEnterAnalysis(c.analysis,c.confluence,3.5));
+      const ranked=chosen?[chosen]:sortedPairCandidates(state.pairCandidates).filter(c=>canEnterAnalysis(c.analysis,c.confluence,3.5,false));
       for(const candidate of ranked) {
         if(!alive()) break;
         const pair=candidate.pair;
@@ -4019,6 +4034,7 @@
     if (outcomeResult.outcome === 'PENDING') outcomeResult = tradeOutcome('UNKNOWN', 0, 'settlement_evidence_unavailable');
     if (state.tradeContext !== trade || trade.resultApplied) return;
     trade.resultApplied = true;
+    journalDecision('trade_result',null,outcomeResult.outcome+': '+outcomeResult.reason);
     notifyTradePhase('RESULT', trade.pair, 0);
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;

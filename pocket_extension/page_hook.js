@@ -29,6 +29,11 @@
   const toMilliseconds = value => Number(value) < 1e11 ? Number(value) * 1000 : Number(value);
   let marketContext = { asset: null, generation: 0, periodSec: null, changedAt: 0 };
   const pairVisitedAt = new Map();
+  function selectPairCandidate(candidates, excludedPairs=[]) {
+    const excluded=new Set(excludedPairs.map(normalizeAsset));
+    return Array.from(new Map(candidates.map(c=>[c.normName,c])).values()).filter(c=>!excluded.has(c.normName))
+      .sort((a,b)=>b.payout-a.payout || (pairVisitedAt.get(a.normName)||0)-(pairVisitedAt.get(b.normName)||0) || a.normName.localeCompare(b.normName))[0] || null;
+  }
   function normalizeChartTf(value) {
     const text = String(value || '').trim().toUpperCase().replace(/\s/g, '');
     const reversed = text.match(/^(\d+)(S|M|H)$/);
@@ -188,6 +193,11 @@
           }
 
           if(packet) publishMarketData(packet,packetContext);
+          else {
+            // Some feeds send the tuple array directly, without a Socket.IO
+            // event envelope. Keep the legacy real-tick fallback for it.
+            try {const tuples=JSON.parse(data);if(Array.isArray(tuples))publishMarketData({name:'updateStream',payload:tuples},packetContext);} catch(_) {}
+          }
         }
       } catch (_) {}
     };
@@ -758,10 +768,7 @@
     }
 
     if (!targetPair && !chosen && candidates.length > 0) {
-      const excluded=new Set((cmd.excludePairs || []).map(normalizeAsset));
-      const unique=Array.from(new Map(candidates.map(c=>[c.normName,c])).values());
-      chosen=unique.filter(c=>!excluded.has(c.normName)).sort((a,b)=>b.payout-a.payout ||
-        (pairVisitedAt.get(a.normName)||0)-(pairVisitedAt.get(b.normName)||0) || a.normName.localeCompare(b.normName))[0];
+      chosen=selectPairCandidate(candidates,cmd.excludePairs || []);
     }
 
     if (chosen && chosen.element) {

@@ -20,7 +20,7 @@ function loadHook() {
   Object.defineProperty(sandbox.HTMLInputElement.prototype,'value',{set(value){this._value=value;},get(){return this._value;}});
   let source=fs.readFileSync(__dirname+'/page_hook.js','utf8');
   const at=source.lastIndexOf('})();');
-  source=source.slice(0,at)+`globalThis.testing={handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe};`+source.slice(at);
+  source=source.slice(0,at)+`globalThis.testing={handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
   vm.runInNewContext(source,sandbox);
   return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now,
     runIntervals(ms){for(const interval of intervals)if(interval.ms===ms)interval.fn();}};
@@ -96,6 +96,19 @@ test('every tick in a multi-asset packet preserves fractional broker time',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');
   socket.receive('42["updateStream",[["GBPUSD_otc",1700000000.125,1.2],["EURUSD_otc",1700000000.382,1.1]]]');
   const ticks=h.messages.filter(m=>m.type==='TICK');assert.equal(ticks.length,2);assert.equal(ticks[1].timestamp,1700000000382);assert.equal(ticks[1].receivedAt,h.now());
+});
+test('raw tuple feeds retain the legacy live price path without inventing history identity',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.receive('[["EURUSD_otc",1700000000.25,1.051],["GBPUSD_otc",1700000000.5,1.251]]');
+  const ticks=h.messages.filter(m=>m.type==='TICK');assert.equal(ticks.length,2);assert.equal(ticks[0].timestamp,1700000000250);
+});
+test('pair selection is deterministic, ranks payout before age and excludes this round',()=>{
+  const h=loadHook(),a={normName:'eurusdotc',payout:92},b={normName:'gbpusdotc',payout:92},d={normName:'audusdotc',payout:90};
+  h.pairVisitedAt.set(a.normName,100);h.pairVisitedAt.set(b.normName,20);
+  assert.equal(h.selectPairCandidate([a,b,d]),b);
+  assert.equal(h.selectPairCandidate([a,b,d],['GBP/USD OTC']),a);
+  assert.equal(h.selectPairCandidate([a,b,d],['GBP/USD OTC','EUR/USD OTC']),d);
+  assert.equal(h.selectPairCandidate([a,a],[a.normName]),null);
 });
 test('binary history retains its original context across a later symbol request',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');
