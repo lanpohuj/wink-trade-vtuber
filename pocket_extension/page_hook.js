@@ -462,6 +462,8 @@
       await handleMainWorldSetExpiry(data);
     } else if (data.type === "WINKY_CMD_CLICK_TRADE") {
       await handleMainWorldClickTrade(data);
+    } else if (data.type === "WINKY_CMD_SET_CHART_TIMEFRAME") {
+      await handleMainWorldEnsureChartTimeframe(data.targetTf || "S15");
     }
   });
 
@@ -635,9 +637,13 @@
       const otcOnly = candidates.filter((c) => c.name.toUpperCase().includes("OTC") || c.normName.includes("otc"));
       const candPool = otcOnly.length > 0 ? otcOnly : candidates;
 
-      // Filter out recent pairs
+      // Filter out recent pairs & visited pairs memory (last 6 pairs)
+      window.__winkyVisitedPairs = window.__winkyVisitedPairs || [];
+      const visitedLast6 = window.__winkyVisitedPairs.slice(-6).map((p) => p.toLowerCase().replace(/[^a-z0-9]/g, ""));
       const nonRecent = candPool.filter(
-        (c) => !recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === c.normName)
+        (c) =>
+          !recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === c.normName) &&
+          !visitedLast6.includes(c.normName)
       );
       const pool = nonRecent.length > 0 ? nonRecent : candPool;
       pool.sort((a, b) => b.payout - a.payout);
@@ -652,6 +658,12 @@
 
     if (chosen && chosen.element) {
       console.log(`[WinkyHook] 🎯 Кликаем по новой паре: ${chosen.name} (+${chosen.payout}%)`);
+
+      // Save to visited pairs memory
+      window.__winkyVisitedPairs = window.__winkyVisitedPairs || [];
+      window.__winkyVisitedPairs.push(chosen.name);
+      if (window.__winkyVisitedPairs.length > 12) window.__winkyVisitedPairs.shift();
+
       const el = chosen.element;
       const rect = el.getBoundingClientRect();
       const evtOpts = {
@@ -671,6 +683,13 @@
 
       await sleep(180);
       await forceClosePopup();
+
+      // Automatically ensure chart timeframe is set to S15 (15 seconds)
+      try {
+        await handleMainWorldEnsureChartTimeframe("S15");
+      } catch (tfErr) {
+        console.warn("[WinkyHook] Non-critical error ensuring S15 timeframe:", tfErr);
+      }
 
       window.postMessage(
         {
@@ -694,6 +713,102 @@
         "*"
       );
     }
+  }
+
+  async function handleMainWorldEnsureChartTimeframe(targetTf = "S15") {
+    console.log(`[WinkyHook] ⏱️ Проверка таймфрейма графика свечей Pocket Option (цель: ${targetTf})...`);
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    const tfButtonsSelectors = [
+      ".current-timeframe",
+      ".chart-timeframe",
+      ".block--chart-type",
+      ".chart-type-block",
+      "[data-test*='timeframe']",
+      ".top-left-block .items-list a",
+      ".top-left-block a",
+      ".top-left-block button",
+      ".chart-panel__button--timeframe",
+    ];
+
+    let currentTfBadge = null;
+    let tfMenuBtn = null;
+
+    for (const sel of tfButtonsSelectors) {
+      const els = document.querySelectorAll(sel);
+      for (const el of els) {
+        if (!el || el.offsetParent === null) continue;
+        const txt = el.textContent.trim().toUpperCase();
+        if (/^(S5|S10|S15|S30|M1|M2|M3|M5|M15|M30|H1|H4|D1)$/i.test(txt) || txt.includes("15S") || txt.includes("S15") || txt.includes("M1")) {
+          currentTfBadge = txt;
+          tfMenuBtn = el;
+          break;
+        }
+        if (el.classList.contains("chart-type-block") || el.classList.contains("block--chart-type")) {
+          tfMenuBtn = el;
+        }
+      }
+      if (currentTfBadge) break;
+    }
+
+    if (currentTfBadge && (currentTfBadge.includes("S15") || currentTfBadge === "15S" || currentTfBadge === "15С")) {
+      console.log(`[WinkyHook] ✅ График уже работает на 15-секундных свечах (${currentTfBadge})`);
+      window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: true, activeTf: "S15" }, "*");
+      return true;
+    }
+
+    // Need to open timeframe selector menu
+    if (!tfMenuBtn) {
+      tfMenuBtn = document.querySelector(".chart-type-block, .block--chart-type, [data-test*='chart-type'], .top-left-block a");
+    }
+
+    if (tfMenuBtn) {
+      console.log(`[WinkyHook] 🔄 Открываем меню таймфреймов графика...`);
+      tfMenuBtn.click();
+      await sleep(180);
+
+      // Search popup for S15 option
+      const popupItems = document.querySelectorAll(
+        ".drop-down-modal__item, .timeframe-item, .timeframe-list button, .timeframe-list a, .modal-window a, [data-timeframe], .alist__item"
+      );
+      let s15Item = null;
+
+      for (const it of popupItems) {
+        if (!it || it.offsetParent === null) continue;
+        const t = (it.textContent || "").trim().toUpperCase();
+        if (t === "S15" || t === "15S" || t === "15 SEC" || t === "15С" || t === "15 СЕК") {
+          s15Item = it;
+          break;
+        }
+      }
+
+      if (s15Item) {
+        console.log(`[WinkyHook] 🎯 Кликнули по таймфрейму S15 (15 секунд)!`);
+        s15Item.click();
+        await sleep(120);
+      } else {
+        console.warn(`[WinkyHook] ⚠️ Кнопка S15 не найдена в открытом меню таймфреймов`);
+      }
+
+      // Close popup if open
+      const canvasEl = document.querySelector(".chart-container canvas, #chart-canvas, canvas");
+      if (canvasEl) {
+        try {
+          canvasEl.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+        } catch (_) {}
+      }
+      try {
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true }));
+        document.dispatchEvent(new KeyboardEvent("keyup", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true }));
+      } catch (_) {}
+      await sleep(150);
+
+      window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: true, activeTf: "S15" }, "*");
+      return true;
+    }
+
+    console.warn(`[WinkyHook] ⚠️ Кнопка меню таймфреймов графика не найдена в DOM`);
+    return false;
   }
 
   function closePocketCalculatorIfOpen() {

@@ -625,6 +625,49 @@
     },
   };
 
+  function aggregateCandles(candles, groupSize) {
+    if (!candles || candles.length === 0) return [];
+    if (groupSize <= 1) return candles.slice();
+
+    const result = [];
+    const n = candles.length;
+    for (let end = n; end > 0; end -= groupSize) {
+      const start = Math.max(0, end - groupSize);
+      const slice = candles.slice(start, end);
+      if (slice.length === 0) continue;
+
+      const first = slice[0];
+      const last = slice[slice.length - 1];
+      const open = first.open;
+      const close = last.close;
+      const high = Math.max(...slice.map((c) => c.high));
+      const low = Math.min(...slice.map((c) => c.low));
+      const isGreen = close >= open;
+      const isRed = !isGreen;
+      const body = Math.max(0.5, Math.abs(close - open));
+      const range = Math.max(1.0, high - low);
+      const upperWick = Math.max(0, high - Math.max(open, close));
+      const lowerWick = Math.max(0, Math.min(open, close) - low);
+
+      result.unshift({
+        open: parseFloat(open.toFixed(2)),
+        high: parseFloat(high.toFixed(2)),
+        low: parseFloat(low.toFixed(2)),
+        close: parseFloat(close.toFixed(2)),
+        body: parseFloat(body.toFixed(2)),
+        bodySize: parseFloat(body.toFixed(2)),
+        totalRange: parseFloat(range.toFixed(2)),
+        upperWick: parseFloat(upperWick.toFixed(2)),
+        lowerWick: parseFloat(lowerWick.toFixed(2)),
+        isGreen,
+        isRed,
+        time: last.time,
+      });
+    }
+
+    return result;
+  }
+
   const ProTraderEngine = {
     // 1. Exponential Moving Average series
     computeEMA(values, period) {
@@ -788,12 +831,18 @@
       }
 
       const isRu = (state.lang === "ru");
-      const closes = candles.map((c) => Number(c.close));
-      const n = candles.length;
-      const curPrice = closes[n - 1];
-      const atr = this.computeATR(candles, 14);
 
-      // 1. Moving Averages Ribbon (9, 21, 50) and Slope
+      // Базовые 15-секундные свечи и их мульти-таймфрейм агрегаты
+      const candlesS15 = candles;
+      const candlesS30 = aggregateCandles(candlesS15, 2);
+      const candlesM1 = aggregateCandles(candlesS15, 4);
+
+      const closes = candlesS15.map((c) => Number(c.close));
+      const n = candlesS15.length;
+      const curPrice = closes[n - 1];
+      const atr = this.computeATR(candlesS15, 14);
+
+      // Скользящие средние (EMA 9, 21, 50)
       const ema9Arr = this.computeEMA(closes, 9);
       const ema21Arr = this.computeEMA(closes, 21);
       const ema50Arr = this.computeEMA(closes, Math.min(50, closes.length));
@@ -809,116 +858,109 @@
       else if (ema9 < ema21 && ema21 < ema50 && emaSlope < 0) trendRegime = "STRONG_DOWNTREND";
       else if (Math.abs(ema9 - ema21) < 0.25 * atr) trendRegime = "FLAT";
 
-      // 2. Bollinger & RSI & Stoch
+      // Bollinger Bands & RSI & Stoch
       const bb = this.computeBollinger(closes, 20, 2.0);
       const rsiData = this.computeWilderRSI(closes, 14);
       const rsi = rsiData.current;
-      const stoch = this.computeStochastic(candles, 14, 3, 3);
+      const stoch = this.computeStochastic(candlesS15, 14, 3, 3);
 
-      // 3. Live micro tick metrics
+      // Micro tick metrics
       const micro = (typeof LiveTickBuffer !== "undefined")
         ? LiveTickBuffer.getMicroMetrics()
         : { delta3s: 0, delta6s: 0, delta15s: 0, delta30s: 0, tickImbalance: 0, posIn15sRange: 0.5 };
 
-      // 4. Candle geometry & metrics
-      const c0 = candles[n - 1];
-      const cPrev1 = n >= 2 ? candles[n - 2] : null;
+      // Последняя живая свеча c0
+      const c0 = candlesS15[n - 1];
+      const cPrev1 = n >= 2 ? candlesS15[n - 2] : null;
 
-      const body0 = Math.abs(c0.close - c0.open);
-      const upperWick0 = c0.high - Math.max(c0.open, c0.close);
-      const lowerWick0 = Math.min(c0.open, c0.close) - c0.low;
-      const c0Extension = body0 / Math.max(0.000001, atr);
+      // Анализ последних 5 свечей у вертикальной белой линии цены
+      const last5 = candlesS15.slice(-5);
+      const greenCount5 = last5.filter((c) => c.isGreen).length;
+      const redCount5 = last5.filter((c) => c.isRed).length;
+      const greenBodySum5 = last5.filter((c) => c.isGreen).reduce((s, c) => s + (c.body || c.bodySize || 0), 0);
+      const redBodySum5 = last5.filter((c) => c.isRed).reduce((s, c) => s + (c.body || c.bodySize || 0), 0);
+      const waveSlope5 = last5.length >= 2 ? (last5[last5.length - 1].close - last5[0].open) : 0;
 
-      let consecutiveReds = 0;
+      // Серия свечей одного цвета подряд (sameColorStreak)
+      let sameColorStreak = 0;
       for (let i = n - 1; i >= 0; i--) {
-        if (candles[i].isRed) consecutiveReds++;
+        if (candlesS15[i].isGreen === c0.isGreen) sameColorStreak++;
         else break;
       }
-      let consecutiveGreens = 0;
-      for (let i = n - 1; i >= 0; i--) {
-        if (candles[i].isGreen) consecutiveGreens++;
-        else break;
-      }
 
-      // Chop & Flips detection on last 12 candles
-      const last12 = candles.slice(-12);
-      let colorFlips = 0;
-      for (let i = 1; i < last12.length; i++) {
-        if (last12[i].isGreen !== last12[i - 1].isGreen) colorFlips++;
-      }
-      let avgWickRatio = 0;
-      for (const c of last12) {
-        const cSpan = Math.max(0.000001, c.high - c.low);
-        const w = (c.high - Math.max(c.open, c.close)) + (Math.min(c.open, c.close) - c.low);
-        avgWickRatio += w / cSpan;
-      }
-      avgWickRatio = avgWickRatio / last12.length;
+      // Положение цены в видимом диапазоне графика (posInChartRange 0.0 .. 1.0)
+      const highAll = Math.max(...candlesS15.map((c) => c.high));
+      const lowAll = Math.min(...candlesS15.map((c) => c.low));
+      const totalSpanAll = Math.max(0.000001, highAll - lowAll);
+      const posInChartRange = (curPrice - lowAll) / totalSpanAll;
 
-      // ШАГ 1: Жёсткий фильтр «пилы» (боковика/шума)
-      const isChoppy = (colorFlips >= 5 || avgWickRatio > 0.65);
-      const isScanAllowedToSkip = (typeof state.pairScanCount !== "number" || state.pairScanCount < 2);
-
-      if (isChoppy && isScanAllowedToSkip) {
-        return {
-          valid: true,
-          shouldTrade: false,
-          vetoReason: "CHOPPY_MARKET",
-          confidence: 50,
-          recommendedExpiry: "30s",
-          explanationRu: `Рыночный шум и пила (${colorFlips} чередований цветов, тени ${(avgWickRatio * 100).toFixed(0)}%) — сменяем пару на чистый тренд`,
-          explanationEn: `Choppy market (${colorFlips} color flips, ${(avgWickRatio * 100).toFixed(0)}% wicks) — switching pair`,
-        };
-      }
-
-      // ШАГ 2: Защита от истощения затяжного импульса (5+ свечей одного цвета подряд)
-      if ((consecutiveReds >= 5 || consecutiveGreens >= 5) && isScanAllowedToSkip) {
-        return {
-          valid: true,
-          shouldTrade: false,
-          vetoReason: "EXHAUSTION_WAIT_REVERSAL",
-          confidence: 48,
-          recommendedExpiry: "1m",
-          explanationRu: `Истощение затяжного импульса (${Math.max(consecutiveReds, consecutiveGreens)} свечей подряд) — ждём разворот или смену пары`,
-          explanationEn: `Momentum exhaustion (${Math.max(consecutiveReds, consecutiveGreens)} consecutive bars) — waiting for reversal`,
-        };
-      }
-
-      // ШАГ 3: Уровни П/С и запас хода (35 свечей)
-      const window35 = candles.slice(-35);
+      // Уровни П/С и запас хода (35 свечей)
+      const window35 = candlesS15.slice(-35);
       const resistanceLevel = Math.max(...window35.map((c) => c.high));
       const supportLevel = Math.min(...window35.map((c) => c.low));
       const roomUpATR = (resistanceLevel - curPrice) / Math.max(0.000001, atr);
       const roomDownATR = (curPrice - supportLevel) / Math.max(0.000001, atr);
 
-      // ШАГ 4: 4 независимых сценария с расчётом баллов
+      // Лимит сканирования пар: MAX_PAIR_SCANS = 7
+      const MAX_PAIR_SCANS = 7;
+      const isScanAllowedToSkip = (typeof state.pairScanCount !== "number" || state.pairScanCount < MAX_PAIR_SCANS - 1);
+
+      // -------------------------------------------------------------
+      // ЗАЩИТА №1: Запрет входа против активной V-образной волны
+      // -------------------------------------------------------------
+      let vetoSellWave = false;
+      let vetoBuyWave = false;
+      if (greenCount5 >= 3 && greenBodySum5 > redBodySum5 * 1.35 && waveSlope5 > atr * 0.8) {
+        vetoSellWave = true;
+      }
+      if (redCount5 >= 3 && redBodySum5 > greenBodySum5 * 1.35 && waveSlope5 < -atr * 0.8) {
+        vetoBuyWave = true;
+      }
+
+      // -------------------------------------------------------------
+      // ЗАЩИТА №2: Запрет входа на 3-й+ свече подряд и контртрендовой коррекции
+      // -------------------------------------------------------------
+      const isStreakExhausted = (sameColorStreak >= 3);
+      const isCounterTrendPullbackBuy = (trendRegime === "STRONG_DOWNTREND" || ema21 < ema50) && (posInChartRange < 0.55) && c0.isGreen;
+      const isCounterTrendPullbackSell = (trendRegime === "STRONG_UPTREND" || ema9 > ema21) && (posInChartRange > 0.45) && c0.isRed;
+
+      // -------------------------------------------------------------
+      // ЗАЩИТА №3: Запрет продажи на самом дне и покупки на вершине
+      // -------------------------------------------------------------
+      const isExtremeBottom = (posInChartRange <= 0.16);
+      const isExtremeTop = (posInChartRange >= 0.84);
+
+      // -------------------------------------------------------------
+      // ЗАЩИТА №4: Оценка 4 горизонтов
+      // -------------------------------------------------------------
       const scenarios = [];
 
-      // 4.1. SNIPER_BREAKOUT_15S (15 секунд)
+      // 1. 15s (SNIPER_BREAKOUT_15S, бейдж S15 - ТОЧКА ВХОДА!)
       {
         let canBuy15 = false;
         let canSell15 = false;
         let scoreBuy15 = 0;
         let scoreSell15 = 0;
 
-        // Anti-exhaustion: c0Extension must not exceed 1.15 for 15s entry!
-        if (c0.isGreen && c0Extension >= 0.35 && c0Extension <= 1.15 && roomUpATR >= 0.45 && upperWick0 < 0.65 * body0) {
-          if (micro.delta3s >= 0 || micro.tickImbalance >= -0.1) {
-            canBuy15 = true;
-            scoreBuy15 = 75;
-            if (ema9 >= ema21) scoreBuy15 += 8;
-            if (cPrev1 && cPrev1.isGreen) scoreBuy15 += 7;
-            if (micro.tickImbalance > 0.2) scoreBuy15 += 6;
-            if (roomUpATR >= 0.8) scoreBuy15 += 4;
+        if (!isStreakExhausted && !isCounterTrendPullbackBuy && !vetoBuyWave) {
+          if (c0.isGreen && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr && (c0.upperWick || 0) <= c0.body * 0.30 && roomUpATR >= 0.9) {
+            if (waveSlope5 > 0 && ema9 >= ema21) {
+              canBuy15 = true;
+              scoreBuy15 = 82;
+              if (cPrev1 && cPrev1.isGreen) scoreBuy15 += 6;
+              if (micro.delta3s >= 0) scoreBuy15 += 4;
+            }
           }
         }
-        if (c0.isRed && c0Extension >= 0.35 && c0Extension <= 1.15 && roomDownATR >= 0.45 && lowerWick0 < 0.65 * body0) {
-          if (micro.delta3s <= 0 || micro.tickImbalance <= 0.1) {
-            canSell15 = true;
-            scoreSell15 = 75;
-            if (ema9 <= ema21) scoreSell15 += 8;
-            if (cPrev1 && cPrev1.isRed) scoreSell15 += 7;
-            if (micro.tickImbalance < -0.2) scoreSell15 += 6;
-            if (roomDownATR >= 0.8) scoreSell15 += 4;
+
+        if (!isStreakExhausted && !isCounterTrendPullbackSell && !vetoSellWave) {
+          if (c0.isRed && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr && (c0.lowerWick || 0) <= c0.body * 0.30 && roomDownATR >= 0.9) {
+            if (waveSlope5 < 0 && ema9 <= ema21) {
+              canSell15 = true;
+              scoreSell15 = 82;
+              if (cPrev1 && cPrev1.isRed) scoreSell15 += 6;
+              if (micro.delta3s <= 0) scoreSell15 += 4;
+            }
           }
         }
 
@@ -929,12 +971,12 @@
             expiry: "15s",
             score: scoreBuy15,
             factors: [
-              isRu ? "Свежий снайперский импульс ВВЕРХ (тело 0.4–1.1 ATR)" : "Fresh sniper breakout UP (body 0.4–1.1 ATR)",
+              isRu ? "Свежий импульс ВВЕРХ (1–2 свеча S15)" : "Fresh impulse UP (1-2 bar S15)",
               isRu ? `Запас хода до сопротивления: ${roomUpATR.toFixed(1)} ATR` : `Room to resistance: ${roomUpATR.toFixed(1)} ATR`,
-              isRu ? `Микро-ускорение тиков (imbalance: ${(micro.tickImbalance * 100).toFixed(0)}%)` : `Micro-tick acceleration (imbalance: ${(micro.tickImbalance * 100).toFixed(0)}%)`,
+              isRu ? `Короткая встречная тень (${((c0.upperWick || 0) / Math.max(0.01, c0.body) * 100).toFixed(0)}% тела)` : `Tiny upper wick`,
             ],
-            line1: isRu ? "📌 Снайперский пробой 15s: свежий бычий импульс без перекупленности." : "📌 Sniper breakout 15s: fresh bullish momentum without exhaustion.",
-            line2: isRu ? "🎯 Вход ВВЕРХ (15с): опережающий вход в продолжение волны." : "🎯 Trade UP (15s): momentum continuation entry.",
+            line1: isRu ? "📌 Снайперский импульс 15s: свежий разгон покупателей." : "📌 Sniper breakout 15s: fresh buying flow.",
+            line2: isRu ? "🎯 Вход ВВЕРХ (15с): опережающий вход в продолжение волны." : "🎯 Trade UP (15s): momentum continuation.",
           });
         } else if (canSell15) {
           scenarios.push({
@@ -943,39 +985,40 @@
             expiry: "15s",
             score: scoreSell15,
             factors: [
-              isRu ? "Свежий снайперский импульс ВНИЗ (тело 0.4–1.1 ATR)" : "Fresh sniper breakdown DOWN (body 0.4–1.1 ATR)",
+              isRu ? "Свежий импульс ВНИЗ (1–2 свеча S15)" : "Fresh impulse DOWN (1-2 bar S15)",
               isRu ? `Запас хода до поддержки: ${roomDownATR.toFixed(1)} ATR` : `Room to support: ${roomDownATR.toFixed(1)} ATR`,
-              isRu ? `Микро-давление тиков продавцов (imbalance: ${(micro.tickImbalance * 100).toFixed(0)}%)` : `Micro-tick selling pressure (imbalance: ${(micro.tickImbalance * 100).toFixed(0)}%)`,
+              isRu ? `Короткая встречная тень (${((c0.lowerWick || 0) / Math.max(0.01, c0.body) * 100).toFixed(0)}% тела)` : `Tiny lower wick`,
             ],
-            line1: isRu ? "📌 Снайперский пробой 15s: свежий медвежий импульс без перепроданности." : "📌 Sniper breakdown 15s: fresh bearish momentum without exhaustion.",
-            line2: isRu ? "🎯 Вход ВНИЗ (15с): опережающий вход в продолжение волны." : "🎯 Trade DOWN (15s): momentum continuation entry.",
+            line1: isRu ? "📌 Снайперский пробой 15s: свежий напор продавцов." : "📌 Sniper breakdown 15s: fresh selling flow.",
+            line2: isRu ? "🎯 Вход ВНИЗ (15с): опережающий вход в продолжение волны." : "🎯 Trade DOWN (15s): momentum continuation.",
           });
         }
       }
 
-      // 4.2. TREND_PULLBACK_30S (30 секунд)
+      // 2. 30s (TREND_PULLBACK_30S, бейдж S30 - ТОЧКА ВХОДА!)
       {
         let canBuy30 = false;
         let canSell30 = false;
         let scoreBuy30 = 0;
         let scoreSell30 = 0;
 
-        if (c0.isGreen && (ema9 > ema21 || trendRegime === "STRONG_UPTREND") && roomUpATR >= 0.4) {
-          if ((cPrev1 && cPrev1.isRed) || curPrice > ema9) {
+        if (!vetoBuyWave && (ema9 > ema21 || trendRegime === "STRONG_UPTREND") && roomUpATR >= 0.5) {
+          const hasPullback = (cPrev1 && cPrev1.isRed) || (last5.some((c) => c.isRed));
+          if (c0.isGreen && hasPullback && c0.body >= 0.35 * atr) {
             canBuy30 = true;
-            scoreBuy30 = 76;
-            if (cPrev1 && cPrev1.isRed) scoreBuy30 += 8;
-            if (c0Extension <= 1.1) scoreBuy30 += 6;
-            if (micro.delta6s > 0) scoreBuy30 += 6;
+            scoreBuy30 = 83;
+            if (cPrev1 && cPrev1.isRed) scoreBuy30 += 6;
+            if (micro.delta6s > 0) scoreBuy30 += 4;
           }
         }
-        if (c0.isRed && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND") && roomDownATR >= 0.4) {
-          if ((cPrev1 && cPrev1.isGreen) || curPrice < ema9) {
+
+        if (!vetoSellWave && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND") && roomDownATR >= 0.5) {
+          const hasPullback = (cPrev1 && cPrev1.isGreen) || (last5.some((c) => c.isGreen));
+          if (c0.isRed && hasPullback && c0.body >= 0.35 * atr) {
             canSell30 = true;
-            scoreSell30 = 76;
-            if (cPrev1 && cPrev1.isGreen) scoreSell30 += 8;
-            if (c0Extension <= 1.1) scoreSell30 += 6;
-            if (micro.delta6s < 0) scoreSell30 += 6;
+            scoreSell30 = 83;
+            if (cPrev1 && cPrev1.isGreen) scoreSell30 += 6;
+            if (micro.delta6s < 0) scoreSell30 += 4;
           }
         }
 
@@ -986,12 +1029,12 @@
             expiry: "30s",
             score: scoreBuy30,
             factors: [
-              isRu ? "Откат по бычьему тренду завершён (EMA9 > EMA21)" : "Bullish trend pullback completed (EMA9 > EMA21)",
-              isRu ? "Возобновление покупок на текущей свече" : "Buying pressure resumed on current bar",
-              isRu ? `Запас хода до потолка: ${roomUpATR.toFixed(1)} ATR` : `Room to ceiling: ${roomUpATR.toFixed(1)} ATR`,
+              isRu ? "Откат по бычьему тренду поглощён (S15 + S30)" : "Bullish trend pullback absorbed",
+              isRu ? `Свеча возобновления тренда (${c0.body.toFixed(2)} px)` : `Trend resumption candle`,
+              isRu ? `Запас хода: ${roomUpATR.toFixed(1)} ATR` : `Room: ${roomUpATR.toFixed(1)} ATR`,
             ],
-            line1: isRu ? "📌 Откат по тренду 30s: коррекция к скользящей средней поглощена." : "📌 Trend pullback 30s: correction to moving average absorbed.",
-            line2: isRu ? "🎯 Вход ВВЕРХ (30с): возобновление доминирующего восходящего тренда." : "🎯 Trade UP (30s): dominant uptrend resumption.",
+            line1: isRu ? "📌 Откат по тренду 30s: коррекция завершена, тренд продолжен." : "📌 Trend pullback 30s: correction absorbed.",
+            line2: isRu ? "🎯 Вход ВВЕРХ (30с): продолжение доминирующего тренда." : "🎯 Trade UP (30s): dominant trend continuation.",
           });
         } else if (canSell30) {
           scenarios.push({
@@ -1000,39 +1043,48 @@
             expiry: "30s",
             score: scoreSell30,
             factors: [
-              isRu ? "Откат по медвежьему тренду завершён (EMA9 < EMA21)" : "Bearish trend pullback completed (EMA9 < EMA21)",
-              isRu ? "Возобновление продаж на текущей свече" : "Selling pressure resumed on current bar",
-              isRu ? `Запас хода до пола: ${roomDownATR.toFixed(1)} ATR` : `Room to floor: ${roomDownATR.toFixed(1)} ATR`,
+              isRu ? "Откат по медвежьему тренду поглощён (S15 + S30)" : "Bearish trend pullback absorbed",
+              isRu ? `Свеча возобновления тренда (${c0.body.toFixed(2)} px)` : `Trend resumption candle`,
+              isRu ? `Запас хода: ${roomDownATR.toFixed(1)} ATR` : `Room: ${roomDownATR.toFixed(1)} ATR`,
             ],
-            line1: isRu ? "📌 Откат по тренду 30s: коррекция к скользящей средней поглощена." : "📌 Trend pullback 30s: correction to moving average absorbed.",
-            line2: isRu ? "🎯 Вход ВНИЗ (30с): возобновление доминирующего нисходящего тренда." : "🎯 Trade DOWN (30s): dominant downtrend resumption.",
+            line1: isRu ? "📌 Откат по тренду 30s: коррекция завершена, тренд продолжен." : "📌 Trend pullback 30s: correction absorbed.",
+            line2: isRu ? "🎯 Вход ВНИЗ (30с): продолжение доминирующего тренда." : "🎯 Trade DOWN (30s): dominant trend continuation.",
           });
         }
       }
 
-      // 4.3. LEVEL_REVERSAL_1M (60 секунд, 1m)
+      // 3. 1m (LEVEL_REVERSAL_1M, бейдж M1 - ТОЧКА ВХОДА!)
       {
         let canBuy1m = false;
         let canSell1m = false;
         let scoreBuy1m = 0;
         let scoreSell1m = 0;
 
-        const isNearFloor = (roomDownATR < 0.25 || bb.pctB <= 0.16 || rsi <= 32);
-        const isNearCeiling = (roomUpATR < 0.25 || bb.pctB >= 0.84 || rsi >= 68);
+        const isNearFloor = (roomDownATR < 0.30 || bb.pctB <= 0.22 || rsi <= 35);
+        const isNearCeiling = (roomUpATR < 0.30 || bb.pctB >= 0.78 || rsi >= 65);
 
-        if (c0.isGreen && isNearFloor) {
-          canBuy1m = true;
-          scoreBuy1m = 77;
-          if (lowerWick0 > 0.6 * body0) scoreBuy1m += 8;
-          if (bb.pctB <= 0.12) scoreBuy1m += 6;
-          if (rsi <= 30) scoreBuy1m += 5;
+        if (!vetoBuyWave && isNearFloor && !isExtremeTop) {
+          const hasLowerWick = (c0.lowerWick || 0) >= c0.body * 0.55 || (cPrev1 && (cPrev1.lowerWick || 0) >= cPrev1.body * 0.55);
+          const hasColorChange = c0.isGreen && (cPrev1 && cPrev1.isRed) && c0.body >= 0.30 * atr;
+          if (hasLowerWick || hasColorChange) {
+            canBuy1m = true;
+            scoreBuy1m = 84;
+            if (hasLowerWick) scoreBuy1m += 5;
+            if (bb.pctB <= 0.15) scoreBuy1m += 4;
+            if (rsi <= 32) scoreBuy1m += 3;
+          }
         }
-        if (c0.isRed && isNearCeiling) {
-          canSell1m = true;
-          scoreSell1m = 77;
-          if (upperWick0 > 0.6 * body0) scoreSell1m += 8;
-          if (bb.pctB >= 0.88) scoreSell1m += 6;
-          if (rsi >= 70) scoreSell1m += 5;
+
+        if (!vetoSellWave && isNearCeiling && !isExtremeBottom) {
+          const hasUpperWick = (c0.upperWick || 0) >= c0.body * 0.55 || (cPrev1 && (cPrev1.upperWick || 0) >= cPrev1.body * 0.55);
+          const hasColorChange = c0.isRed && (cPrev1 && cPrev1.isGreen) && c0.body >= 0.30 * atr;
+          if (hasUpperWick || hasColorChange) {
+            canSell1m = true;
+            scoreSell1m = 84;
+            if (hasUpperWick) scoreSell1m += 5;
+            if (bb.pctB >= 0.85) scoreSell1m += 4;
+            if (rsi >= 68) scoreSell1m += 3;
+          }
         }
 
         if (canBuy1m && scoreBuy1m >= scoreSell1m) {
@@ -1043,9 +1095,10 @@
             score: scoreBuy1m,
             factors: [
               isRu ? `Отскок от зоны поддержки (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})` : `Reversal bounce from support (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})`,
-              isRu ? "Разворотная структура: достаточный интервал 60с для отката" : "Reversal structure: 60s window for full mean reversion",
+              isRu ? `Подтверждение разворотной тенью (${(c0.lowerWick || 0).toFixed(1)} px)` : `Reversal pin-bar shadow confirmed`,
+              isRu ? "Окно 60с для полноценного возврата к средней" : "60s mean reversion window",
             ],
-            line1: isRu ? "📌 Разворот от уровня 1m: подтверждённый отскок от экстремальной зоны." : "📌 Level reversal 1m: confirmed bounce from extreme boundary.",
+            line1: isRu ? "📌 Разворот от уровня 1m: отскок от зоны поддержки с тенью отказа." : "📌 Level reversal 1m: bounce from support with rejection wick.",
             line2: isRu ? "🎯 Вход ВВЕРХ (1м): отскок к средним значениям графика." : "🎯 Trade UP (1m): mean reversion bounce.",
           });
         } else if (canSell1m) {
@@ -1055,35 +1108,35 @@
             expiry: "1m",
             score: scoreSell1m,
             factors: [
-              isRu ? `Отбой от зоны сопротивления (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})` : `Reversal rejection from resistance (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})`,
-              isRu ? "Разворотная структура: достаточный интервал 60с для отката" : "Reversal structure: 60s window for full mean reversion",
+              isRu ? `Отбой от зоны сопротивления (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})` : `Rejection from resistance (%B: ${bb.pctB.toFixed(2)}, RSI: ${rsi})`,
+              isRu ? `Подтверждение разворотной тенью (${(c0.upperWick || 0).toFixed(1)} px)` : `Reversal pin-bar shadow confirmed`,
+              isRu ? "Окно 60с для полноценного возврата к средней" : "60s mean reversion window",
             ],
-            line1: isRu ? "📌 Разворот от уровня 1m: подтверждённый отбой от экстремальной зоны." : "📌 Level reversal 1m: confirmed rejection from extreme boundary.",
+            line1: isRu ? "📌 Разворот от уровня 1m: отбой от сопротивления с тенью отказа." : "📌 Level reversal 1m: rejection from resistance with shadow.",
             line2: isRu ? "🎯 Вход ВНИЗ (1м): откат к средним значениям графика." : "🎯 Trade DOWN (1m): mean reversion bounce.",
           });
         }
       }
 
-      // 4.4. STRUCTURAL_WAVE_2M (120 секунд, 2m)
+      // 4. 2m (STRUCTURAL_WAVE_2M, бейдж M2 - ТОЧКА ВХОДА!)
       {
         let canBuy2m = false;
         let canSell2m = false;
         let scoreBuy2m = 0;
         let scoreSell2m = 0;
 
-        if (trendRegime === "STRONG_UPTREND" && ema9 > ema21 && ema21 > ema50 && roomUpATR >= 0.8 && c0.isGreen) {
+        if (!vetoBuyWave && posInChartRange <= 0.28 && greenCount5 >= 3 && c0.isGreen) {
           canBuy2m = true;
-          scoreBuy2m = 78;
-          if (consecutiveGreens >= 2 && consecutiveGreens <= 4) scoreBuy2m += 7;
-          if (micro.delta15s > 0) scoreBuy2m += 6;
-          if (bb.pctB >= 0.50 && bb.pctB <= 0.85) scoreBuy2m += 5;
+          scoreBuy2m = 85;
+          if (roomUpATR >= 1.2) scoreBuy2m += 6;
+          if (micro.delta15s > 0) scoreBuy2m += 4;
         }
-        if (trendRegime === "STRONG_DOWNTREND" && ema9 < ema21 && ema21 < ema50 && roomDownATR >= 0.8 && c0.isRed) {
+
+        if (!vetoSellWave && posInChartRange >= 0.72 && redCount5 >= 3 && c0.isRed) {
           canSell2m = true;
-          scoreSell2m = 78;
-          if (consecutiveReds >= 2 && consecutiveReds <= 4) scoreSell2m += 7;
-          if (micro.delta15s < 0) scoreSell2m += 6;
-          if (bb.pctB <= 0.50 && bb.pctB >= 0.15) scoreSell2m += 5;
+          scoreSell2m = 85;
+          if (roomDownATR >= 1.2) scoreSell2m += 6;
+          if (micro.delta15s < 0) scoreSell2m += 4;
         }
 
         if (canBuy2m && scoreBuy2m >= scoreSell2m) {
@@ -1093,11 +1146,11 @@
             expiry: "2m",
             score: scoreBuy2m,
             factors: [
-              isRu ? "Устойчивая трендовая волна (EMA 9/21/50 выстроены вверх)" : "Solid structural trend wave (EMA 9/21/50 aligned UP)",
-              isRu ? `Свободный запас хода: ${roomUpATR.toFixed(1)} ATR без препятствий` : `Wide room: ${roomUpATR.toFixed(1)} ATR with no obstacles`,
-              isRu ? "Экспирация 2m сглаживает локальные микро-шумы графика" : "2m expiration absorbs all local micro noise",
+              isRu ? `Крупный разворот со дна графика (${(posInChartRange * 100).toFixed(0)}% диапазона)` : `Major structural bounce from chart floor`,
+              isRu ? `Потенциал возврата к EMA21: ${roomUpATR.toFixed(1)} ATR` : `Room to EMA21: ${roomUpATR.toFixed(1)} ATR`,
+              isRu ? "2m поглощает микро-шумы 15-секундных свечей" : "2m absorbs micro fluctuations",
             ],
-            line1: isRu ? "📌 Трендовая волна 2m: институциональное восходящее движение." : "📌 Structural wave 2m: institutional uptrend flow.",
+            line1: isRu ? "📌 Трендовая волна 2m: институциональный разворот от дна." : "📌 Structural wave 2m: institutional bounce from bottom.",
             line2: isRu ? "🎯 Вход ВВЕРХ (2м): надёжная позиция по ходу старшей волны." : "🎯 Trade UP (2m): solid position along higher-timeframe wave.",
           });
         } else if (canSell2m) {
@@ -1107,33 +1160,30 @@
             expiry: "2m",
             score: scoreSell2m,
             factors: [
-              isRu ? "Устойчивая трендовая волна (EMA 9/21/50 выстроены вниз)" : "Solid structural trend wave (EMA 9/21/50 aligned DOWN)",
-              isRu ? `Свободный запас хода: ${roomDownATR.toFixed(1)} ATR без препятствий` : `Wide room: ${roomDownATR.toFixed(1)} ATR with no obstacles`,
-              isRu ? "Экспирация 2m сглаживает локальные микро-шумы графика" : "2m expiration absorbs all local micro noise",
+              isRu ? `Крупный разворот с вершины графика (${(posInChartRange * 100).toFixed(0)}% диапазона)` : `Major structural rejection from chart ceiling`,
+              isRu ? `Потенциал возврата к EMA21: ${roomDownATR.toFixed(1)} ATR` : `Room to EMA21: ${roomDownATR.toFixed(1)} ATR`,
+              isRu ? "2m поглощает микро-шумы 15-секундных свечей" : "2m absorbs micro fluctuations",
             ],
-            line1: isRu ? "📌 Трендовая волна 2m: институциональное нисходящее движение." : "📌 Structural wave 2m: institutional downtrend flow.",
+            line1: isRu ? "📌 Трендовая волна 2m: институциональный отбой от вершины." : "📌 Structural wave 2m: institutional rejection from peak.",
             line2: isRu ? "🎯 Вход ВНИЗ (2м): надёжная позиция по ходу старшей волны." : "🎯 Trade DOWN (2m): solid position along higher-timeframe wave.",
           });
         }
       }
 
-      // 5. Выбор лучшего сценария по максимальному баллу
+      // Выбор лучшего сценария по максимальному баллу
       scenarios.sort((a, b) => b.score - a.score);
       const best = scenarios.length > 0 ? scenarios[0] : null;
 
-      // 6. Проверка порога уверенности (score >= 78)
-      if (best && best.score >= 78) {
+      if (best && best.score >= 80) {
         let safeDir = best.direction;
-        if (c0.isRed && safeDir === "BUY") safeDir = "SELL";
-        if (c0.isGreen && safeDir === "SELL") safeDir = "BUY";
-
-        const confidencePct = Math.min(97, Math.round(best.score + 5));
+        if (c0.isRed && safeDir === "BUY" && !best.setup.includes("REVERSAL")) safeDir = "SELL";
+        if (c0.isGreen && safeDir === "SELL" && !best.setup.includes("REVERSAL")) safeDir = "BUY";
 
         return {
           valid: true,
           shouldTrade: true,
           direction: safeDir,
-          confidence: confidencePct,
+          confidence: Math.min(97, Math.round(best.score + 5)),
           setup: best.setup,
           recommendedExpiry: best.expiry,
           factors: best.factors,
@@ -1142,7 +1192,7 @@
           pctB: bb.pctB,
           trendRegime: trendRegime,
           sr: { resistance: resistanceLevel, support: supportLevel, distToRes: roomUpATR, distToSup: roomDownATR },
-          volatilityRatio: c0Extension,
+          volatilityRatio: c0.body / Math.max(0.000001, atr),
           line1: best.line1,
           line2: best.line2,
           explanationRu: best.factors.join(" · "),
@@ -1150,7 +1200,6 @@
         };
       }
 
-      // Если ни один сценарий не набрал 78 баллов:
       if (isScanAllowedToSkip) {
         return {
           valid: true,
@@ -1163,27 +1212,19 @@
         };
       }
 
-      // Мы на 3-й паре (pairScanCount >= 2): умный выбор без слепого падения в 15s!
-      let forcedDir = c0.isRed ? "SELL" : "BUY";
-      let forcedExpiry = "30s";
-      let forcedSetup = "TREND_PULLBACK_30S";
+      // Дошли до лимита сканирования (7 пар): выбираем лучший сценарий СТРОГО без нарушения защит №1, №2, №3!
+      let forcedDir = waveSlope5 > 0 || greenBodySum5 > redBodySum5 ? "BUY" : "SELL";
+      if (vetoBuyWave) forcedDir = "SELL";
+      if (vetoSellWave) forcedDir = "BUY";
+      if (isExtremeBottom) forcedDir = "BUY";
+      if (isExtremeTop) forcedDir = "SELL";
 
-      // Если свеча сильно перерастянута (c0Extension > 0.95) или рынок штормит:
-      // Вход на 15s опасен! Выбираем 1m или 2m!
-      if (c0Extension > 0.95 || isChoppy) {
-        forcedExpiry = (trendRegime === "STRONG_UPTREND" || trendRegime === "STRONG_DOWNTREND") ? "2m" : "1m";
-        forcedSetup = (forcedExpiry === "2m") ? "STRUCTURAL_WAVE_2M" : "LEVEL_REVERSAL_1M";
-      } else if (c0Extension >= 0.40 && c0Extension <= 0.85 && Math.abs(micro.tickImbalance) > 0.2) {
-        forcedExpiry = "15s";
-        forcedSetup = "SNIPER_BREAKOUT_15S";
-      } else {
-        forcedExpiry = "30s";
-        forcedSetup = "TREND_PULLBACK_30S";
-      }
+      const forcedExpiry = (c0.body >= 0.75 * atr) ? "15s" : "30s";
+      const forcedSetup = (forcedExpiry === "15s") ? "SNIPER_BREAKOUT_15S" : "TREND_PULLBACK_30S";
 
       const forcedFactors = [
-        isRu ? `3-я пара: согласованный вход по направлению свечи (${forcedDir})` : `3rd pair: aligned entry along candle flow (${forcedDir})`,
-        isRu ? `Защищённый горизонт экспирации: ${forcedExpiry}` : `Protected horizon expiry: ${forcedExpiry}`,
+        isRu ? `Согласованный вход по фактической правой волне (${forcedDir})` : `Aligned entry with live right wave (${forcedDir})`,
+        isRu ? `Защищённый горизонт экспирации: ${forcedExpiry}` : `Protected horizon: ${forcedExpiry}`,
       ];
 
       return {
@@ -1199,13 +1240,13 @@
         pctB: bb.pctB,
         trendRegime: trendRegime,
         sr: { resistance: resistanceLevel, support: supportLevel, distToRes: roomUpATR, distToSup: roomDownATR },
-        volatilityRatio: c0Extension,
+        volatilityRatio: c0.body / Math.max(0.000001, atr),
         line1: isRu
-          ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено свечным импульсом." : "📌 Нисходящая структура: давление продавцов подтверждено свечным импульсом.")
-          : (forcedDir === "BUY" ? "📌 Upward structure: buying pressure confirmed by candle momentum." : "📌 Downward structure: selling pressure confirmed by candle momentum."),
+          ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено правой волной." : "📌 Нисходящая структура: давление продавцов подтверждено правой волной.")
+          : (forcedDir === "BUY" ? "📌 Upward flow confirmed by right wave momentum." : "📌 Downward flow confirmed by right wave momentum."),
         line2: isRu
-          ? `🎯 Снайперский вход ${forcedDir === "BUY" ? "ВВЕРХ" : "ВНИЗ"} (${forcedExpiry}) по тренду.`
-          : `🎯 Sniper entry ${forcedDir === "BUY" ? "UP" : "DOWN"} (${forcedExpiry}) with trend.`,
+          ? `🎯 Снайперский вход ${forcedDir === "BUY" ? "ВВЕРХ" : "ВНИЗ"} (${forcedExpiry}) по волне.`
+          : `🎯 Sniper entry ${forcedDir === "BUY" ? "UP" : "DOWN"} (${forcedExpiry}) with wave.`,
         explanationRu: forcedFactors.join(" · "),
         explanationEn: forcedFactors.join(" · "),
       };
@@ -1497,7 +1538,7 @@
 
       if (targetCanvas) {
         canvasFound = true;
-        // CREATE OFFSCREEN 2D CANVAS: 420x200 to capture 28 real OHLC candles
+        // CREATE OFFSCREEN 2D CANVAS: 420x200 to capture full chart width up to x=90%
         const off = document.createElement("canvas");
         const w = 420;
         const h = 200;
@@ -1512,129 +1553,210 @@
 
           let yMin = h;
           let yMax = 0;
-          let leftYSum = 0;
-          let leftYCount = 0;
-          let rightYSum = 0;
-          let rightYCount = 0;
           let totalGreen = 0;
           let totalRed = 0;
           let sampledPoints = 0;
 
-          // Working candle area: scan up to 56% of canvas width (live candle is at ~52%..55%)
-          const xStart = Math.floor(w * 0.05);
-          const xEnd = Math.floor(w * 0.56);
-          const yStart = Math.floor(h * 0.12);
-          const yEnd = Math.floor(h * 0.86);
+          // Scanning full candle area: up to 90% of canvas width (live candle is at ~82%..87%)
+          const startX = Math.floor(w * 0.04);
+          const endX = Math.floor(w * 0.90);
+          const startY = Math.floor(h * 0.08);
+          const endY = Math.floor(h * 0.90);
 
-          const numCols = 60;
-          const colWidth = (xEnd - xStart) / numCols;
+          // 1. Column-by-column scan to extract candle pixel profiles
+          const columns = [];
+          for (let x = startX; x < endX; x++) {
+            const greenYs = [];
+            const redYs = [];
 
-          for (let k = 0; k < numCols; k++) {
-            const colX1 = Math.floor(xStart + k * colWidth);
-            const colX2 = Math.floor(xStart + (k + 1) * colWidth);
-
-            const greenY = [];
-            const redY = [];
-
-            for (let x = colX1; x < colX2; x++) {
-              for (let y = yStart; y < yEnd; y++) {
-                const idx = (y * w + x) * 4;
+            for (let y = startY; y < endY; y++) {
+              const idx = (y * w + x) * 4;
+              const a = data[idx + 3];
+              if (a > 60) {
                 const r = data[idx];
                 const g = data[idx + 1];
                 const b = data[idx + 2];
-                const a = data[idx + 3];
 
-                if (a > 60) {
-                  const isGreenPixel = (g >= 135 && g > r + 45 && g > b + 25);
-                  const isRedPixel = (r >= 150 && r > g + 45 && r > b + 35);
+                const isGreen = (g >= 135 && g > r + 45 && g > b + 25);
+                const isRed = (r >= 150 && r > g + 45 && r > b + 35);
 
-                  if (isGreenPixel) {
-                    greenY.push(y);
-                    totalGreen++;
-                    if (y < yMin) yMin = y;
-                    if (y > yMax) yMax = y;
-                  } else if (isRedPixel) {
-                    redY.push(y);
-                    totalRed++;
-                    if (y < yMin) yMin = y;
-                    if (y > yMax) yMax = y;
-                  }
+                if (isGreen) {
+                  greenYs.push(y);
+                  totalGreen++;
+                  if (y < yMin) yMin = y;
+                  if (y > yMax) yMax = y;
+                } else if (isRed) {
+                  redYs.push(y);
+                  totalRed++;
+                  if (y < yMin) yMin = y;
+                  if (y > yMax) yMax = y;
                 }
               }
             }
 
-            const slotTotal = greenY.length + redY.length;
-            sampledPoints += slotTotal;
+            const total = greenYs.length + redYs.length;
+            sampledPoints += total;
 
-            // CRITICAL: Skip columns without candles! NEVER create fake candles in empty space!
-            if (slotTotal < 3) {
-              continue;
-            }
-
-            const isGreen = greenY.length > redY.length; // strictly >
-            const isRed = !isGreen;
-            const ySorted = (isGreen ? greenY : redY).sort((a, b) => a - b);
-
-            const highPrice = 1000 - ySorted[0];
-            const lowPrice = 1000 - ySorted[ySorted.length - 1];
-            const p20Idx = Math.min(ySorted.length - 1, Math.floor(ySorted.length * 0.2));
-            const p80Idx = Math.min(ySorted.length - 1, Math.floor(ySorted.length * 0.8));
-            const bodyTopPrice = 1000 - ySorted[p20Idx];
-            const bodyBotPrice = 1000 - ySorted[p80Idx];
-
-            const open = isGreen ? bodyBotPrice : bodyTopPrice;
-            const close = isGreen ? bodyTopPrice : bodyBotPrice;
-            const bodySize = Math.max(1.0, Math.abs(close - open));
-            const totalRange = Math.max(1.5, highPrice - lowPrice);
-
-            // Merge with previous candle if this column is part of the same wide candle
-            if (visualCandles.length > 0) {
-              const prev = visualCandles[visualCandles.length - 1];
-              if (
-                prev.isGreen === isGreen &&
-                Math.abs(bodyTopPrice - (prev._bodyTop || bodyTopPrice)) <= 2.5 &&
-                Math.abs(bodyBotPrice - (prev._bodyBot || bodyBotPrice)) <= 2.5
-              ) {
-                prev.high = parseFloat(Math.max(prev.high, highPrice).toFixed(2));
-                prev.low = parseFloat(Math.min(prev.low, lowPrice).toFixed(2));
-                prev.totalRange = parseFloat(Math.max(1.5, prev.high - prev.low).toFixed(2));
-                continue;
-              }
-            }
-
-            const cObj = {
-              open: parseFloat(open.toFixed(2)),
-              high: parseFloat(highPrice.toFixed(2)),
-              low: parseFloat(lowPrice.toFixed(2)),
-              close: parseFloat(close.toFixed(2)),
-              isGreen: isGreen,
-              isRed: isRed,
-              bodySize: parseFloat(bodySize.toFixed(2)),
-              totalRange: parseFloat(totalRange.toFixed(2)),
-              time: Date.now() - (numCols - k) * 3000,
-              _bodyTop: bodyTopPrice,
-              _bodyBot: bodyBotPrice,
-            };
-            visualCandles.push(cObj);
-
-            const slotAvgY = ySorted.reduce((a, b) => a + b, 0) / ySorted.length;
-            if (k < numCols / 2) {
-              leftYSum += slotAvgY;
-              leftYCount++;
+            if (total < 2) {
+              columns.push({ x, type: "EMPTY" });
             } else {
-              rightYSum += slotAvgY;
-              rightYCount++;
+              const isGreen = greenYs.length >= redYs.length;
+              const ys = (isGreen ? greenYs : redYs).sort((a, b) => a - b);
+              columns.push({
+                x,
+                type: "CANDLE",
+                isGreen,
+                ys,
+                minY: ys[0],
+                maxY: ys[ys.length - 1],
+                pixelCount: ys.length,
+              });
             }
           }
 
-          if (sampledPoints >= 10 && yMax > yMin && (yMax - yMin) >= 10) {
-            const chartHeight = yMax - yMin;
-            const rightAvgY = rightYCount > 0 ? (rightYSum / rightYCount) : (h / 2);
-            const leftAvgY = leftYCount > 0 ? (leftYSum / leftYCount) : rightAvgY;
+          // 2. Group adjacent non-empty columns of identical color into candle clusters
+          const rawClusters = [];
+          let currentCluster = null;
 
-            pricePositionPercent = Math.max(5, Math.min(95, Math.round(((yMax - rightAvgY) / chartHeight) * 100)));
-            const diff = leftAvgY - rightAvgY;
-            slopeNorm = diff / chartHeight;
+          for (const col of columns) {
+            if (col.type === "EMPTY") {
+              if (currentCluster) {
+                rawClusters.push(currentCluster);
+                currentCluster = null;
+              }
+            } else {
+              if (!currentCluster) {
+                currentCluster = {
+                  isGreen: col.isGreen,
+                  cols: [col],
+                };
+              } else if (currentCluster.isGreen === col.isGreen) {
+                currentCluster.cols.push(col);
+              } else {
+                rawClusters.push(currentCluster);
+                currentCluster = {
+                  isGreen: col.isGreen,
+                  cols: [col],
+                };
+              }
+            }
+          }
+          if (currentCluster) {
+            rawClusters.push(currentCluster);
+          }
+
+          // 3. Median candle width calculation
+          const validWidths = rawClusters
+            .map((c) => c.cols.length)
+            .filter((wLen) => wLen >= 2 && wLen <= 14)
+            .sort((a, b) => a - b);
+          const medianCandleWidth = validWidths.length > 0
+            ? validWidths[Math.floor(validWidths.length / 2)]
+            : 6;
+
+          // 4. Split overly wide clusters (> 14px merged candles)
+          const splitClusters = [];
+          for (const clust of rawClusters) {
+            const wLen = clust.cols.length;
+            if (wLen > 14) {
+              const step = Math.max(4, Math.round(medianCandleWidth));
+              for (let i = 0; i < wLen; i += step) {
+                const subCols = clust.cols.slice(i, i + step);
+                if (subCols.length >= 2) {
+                  splitClusters.push({ isGreen: clust.isGreen, cols: subCols });
+                }
+              }
+            } else {
+              splitClusters.push(clust);
+            }
+          }
+
+          // 5. Build candle objects with separate body and wicks + Y-axis inversion (price = h - y)
+          for (let ci = 0; ci < splitClusters.length; ci++) {
+            const cluster = splitClusters[ci];
+            const cols = cluster.cols;
+            const colCount = cols.length;
+
+            const allYs = [];
+            for (const c of cols) allYs.push(...c.ys);
+            if (allYs.length < 4) continue;
+
+            const highY = Math.min(...allYs);
+            const lowY = Math.max(...allYs);
+            if (lowY - highY < 2) continue;
+
+            let bodyTopY = highY;
+            let bodyBottomY = lowY;
+
+            if (colCount >= 3) {
+              const minColsForBody = Math.max(2, Math.ceil(colCount * 0.5));
+              const rowsWithBody = [];
+
+              for (let y = highY; y <= lowY; y++) {
+                let colsWithY = 0;
+                for (const c of cols) {
+                  if (c.ys.includes(y)) colsWithY++;
+                }
+                if (colsWithY >= minColsForBody) {
+                  rowsWithBody.push(y);
+                }
+              }
+
+              if (rowsWithBody.length >= 2) {
+                bodyTopY = rowsWithBody[0];
+                bodyBottomY = rowsWithBody[rowsWithBody.length - 1];
+              } else {
+                bodyTopY = bodyBottomY = Math.round((highY + lowY) / 2);
+              }
+            } else {
+              bodyTopY = highY + Math.round((lowY - highY) * 0.25);
+              bodyBottomY = lowY - Math.round((lowY - highY) * 0.25);
+            }
+
+            // Invert Y: y=0 is top of screen (high price), y=h is bottom (low price)
+            const high = h - highY;
+            const low = h - lowY;
+            const bodyHigh = h - bodyTopY;
+            const bodyLow = h - bodyBottomY;
+
+            const open = cluster.isGreen ? bodyLow : bodyHigh;
+            const close = cluster.isGreen ? bodyHigh : bodyLow;
+            const body = Math.max(0.5, Math.abs(close - open));
+            const range = Math.max(1.0, high - low);
+            const upperWick = Math.max(0, high - Math.max(open, close));
+            const lowerWick = Math.max(0, Math.min(open, close) - low);
+
+            const xCenter = (cols[0].x + cols[cols.length - 1].x) / 2;
+
+            visualCandles.push({
+              open: parseFloat(open.toFixed(2)),
+              high: parseFloat(high.toFixed(2)),
+              low: parseFloat(low.toFixed(2)),
+              close: parseFloat(close.toFixed(2)),
+              body: parseFloat(body.toFixed(2)),
+              bodySize: parseFloat(body.toFixed(2)),
+              totalRange: parseFloat(range.toFixed(2)),
+              upperWick: parseFloat(upperWick.toFixed(2)),
+              lowerWick: parseFloat(lowerWick.toFixed(2)),
+              isGreen: cluster.isGreen,
+              isRed: !cluster.isGreen,
+              xCenter: Math.round(xCenter),
+              colCount,
+              time: Date.now() - (splitClusters.length - ci) * 15000,
+            });
+          }
+
+          if (visualCandles.length >= 4) {
+            const firstC = visualCandles.slice(0, Math.min(6, visualCandles.length));
+            const lastC = visualCandles.slice(-6);
+            const leftAvgPrice = firstC.reduce((s, c) => s + c.close, 0) / firstC.length;
+            const rightAvgPrice = lastC.reduce((s, c) => s + c.close, 0) / lastC.length;
+            const minAll = Math.min(...visualCandles.map((c) => c.low));
+            const maxAll = Math.max(...visualCandles.map((c) => c.high));
+            const chartHeight = Math.max(1.0, maxAll - minAll);
+
+            pricePositionPercent = Math.max(5, Math.min(95, Math.round(((rightAvgPrice - minAll) / chartHeight) * 100)));
+            slopeNorm = (rightAvgPrice - leftAvgPrice) / chartHeight;
 
             if (slopeNorm > 0.05 || (totalGreen > totalRed * 1.25)) {
               macroTrend = "UPTREND";
@@ -2457,6 +2579,51 @@
     });
   }
 
+  function requestMainWorldEnsureChartTimeframe(targetTf = "S15") {
+    return new Promise((resolve) => {
+      let resolved = false;
+      const timeoutId = setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "timeout_2500ms" });
+        }
+      }, 2500);
+
+      const onMsg = (event) => {
+        if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+        if (event.data.type === "WINKY_RESP_CHART_TIMEFRAME") {
+          if (!resolved) {
+            resolved = true;
+            clearTimeout(timeoutId);
+            window.removeEventListener("message", onMsg);
+            resolve(event.data);
+          }
+        }
+      };
+
+      window.addEventListener("message", onMsg);
+
+      try {
+        window.postMessage(
+          {
+            source: "WINKY_CONTENT",
+            type: "WINKY_CMD_SET_CHART_TIMEFRAME",
+            targetTf: targetTf,
+          },
+          "*"
+        );
+      } catch (_) {
+        if (!resolved) {
+          resolved = true;
+          clearTimeout(timeoutId);
+          window.removeEventListener("message", onMsg);
+          resolve({ ok: false, error: "postMessage_error" });
+        }
+      }
+    });
+  }
+
   function requestMainWorldSetExpiry(targetDurationStr) {
     return new Promise((resolve) => {
       let resolved = false;
@@ -2923,7 +3090,7 @@
     if (metricTf) metricTf.textContent = label;
 
     const orbMeta = document.getElementById("winkyOrbTime") || document.getElementById("winkyOrbMeta");
-    if (orbMeta) orbMeta.textContent = `Таймф: M1  Время: ${label}`;
+    if (orbMeta) orbMeta.textContent = `Таймф: S15/M1  Время: ${label}`;
 
     const sigExpiry = document.getElementById("sigExpiry");
     if (sigExpiry) sigExpiry.textContent = label;
@@ -3335,7 +3502,12 @@
 
     const btnGet = document.getElementById("btnGetSignalAction");
 
-    // 0. Ротация пар: после любого минуса или после 2 сделок на одной паре
+    // 0. Гарантируем 15-секундный таймфрейм свечей графика Pocket Option
+    try {
+      await requestMainWorldEnsureChartTimeframe("S15");
+    } catch (_) {}
+
+    // 0.1 Ротация пар: после любого минуса или после 2 сделок на одной паре
     if (state.lastTradeOutcome === "LOSS" || state.consecutiveLosses >= 1) {
       loggerLog("[startSignalAnalysis] 🔄 Предыдущая сделка закрылась в минус! Немедленная смена пары перед анализом...");
       state.lastTradeOutcome = null;
@@ -3345,7 +3517,7 @@
         state.recentPairs.push(state.targetPair);
       }
       await switchPocketPair(null);
-      await new Promise((r) => setTimeout(r, 2600));
+      await new Promise((r) => setTimeout(r, 3200));
       if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
     } else if (state.tradesOnSamePair >= 2) {
       loggerLog(`[startSignalAnalysis] 🔄 Проведено 2 сделки подряд на паре ${state.targetPair}! Плановая смена пары...`);
@@ -3355,7 +3527,7 @@
         state.recentPairs.push(state.targetPair);
       }
       await switchPocketPair(null);
-      await new Promise((r) => setTimeout(r, 2600));
+      await new Promise((r) => setTimeout(r, 3200));
       if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
     }
 
@@ -3507,8 +3679,9 @@
       if (!confluence) confluence = { score: 4.8, isStrong: true };
 
       // -----------------------------------------------------------------
-      // "BEST PAIR OUT OF 3 CHECKS" RULE (Anti-infinite loop protection)
+      // "BEST PAIR OUT OF 7 CHECKS" RULE (Anti-infinite loop protection)
       // -----------------------------------------------------------------
+      const MAX_PAIR_SCANS = 7;
       state.pairScanCount = typeof state.pairScanCount === "number" ? state.pairScanCount : 0;
 
       // 1. If clean setup found (shouldTrade === true & score >= 4.0 / conf >= 84%) -> ENTER IMMEDIATELY!
@@ -3516,11 +3689,11 @@
         state.pairScanCount = 0;
         loggerLog(`[ProTraderEngine] ✅ Идеальный сетап найден («${analysis.setup}» · ${analysis.direction} · ${analysis.confidence}% · Оценка ${confluence.score}/5.0)! Входим в сделку!`);
       } else {
-        // 2. Pair is weak / flat: check if we haven't exceeded 2 skips
-        if (state.pairScanCount < 2) {
+        // 2. Pair is weak / flat: check if we haven't exceeded MAX_PAIR_SCANS skips
+        if (state.pairScanCount < MAX_PAIR_SCANS - 1) {
           state.pairScanCount += 1;
           const rejectReason = analysis.line1 || (isRu ? "Флэт или низкая сила сетапа (< 84%)" : "Choppy flat or low setup strength (< 84%)");
-          loggerLog(`[ProTraderEngine] 🛡️ Пара отбракована (проверка №${state.pairScanCount} из 3). Причина: ${rejectReason}`);
+          loggerLog(`[ProTraderEngine] 🛡️ Пара отбракована (проверка №${state.pairScanCount} из ${MAX_PAIR_SCANS}). Причина: ${rejectReason}`);
 
           const nowTs = Date.now();
           const shouldVoice = (nowTs - state.lastPairSkipVoiceTs >= 60000);
@@ -3541,8 +3714,8 @@
                   </div>
                   <div class="signal-ta-line" style="color:#00D9F5;">
                     ${isRu
-                      ? `🔄 Переключаемся на пару #${state.pairScanCount + 1} (+92%)...`
-                      : `🔄 Switching to pair #${state.pairScanCount + 1} (+92%)...`}
+                      ? `🔄 Переключаемся на пару #${state.pairScanCount + 1} из ${MAX_PAIR_SCANS} (+92%)...`
+                      : `🔄 Switching to pair #${state.pairScanCount + 1} of ${MAX_PAIR_SCANS} (+92%)...`}
                   </div>
                 </div>
               `;
@@ -3560,6 +3733,7 @@
           }, false, "thinking", "tilt_head");
 
           await POAutomation.switchCurrencyPair();
+          await new Promise((r) => setTimeout(r, 3200)); // Пауза 3.2с для полной отрисовки графика на S15
 
           state.botState = "IDLE";
           state.analysisStartedAt = null;
@@ -3577,33 +3751,10 @@
           }, 1000);
           return;
         } else {
-          // 3. We are on the 3rd pair! Further switching is FORBIDDEN!
-          loggerLog(`[ProTraderEngine] ⚡ Проверено 3 пары подряд! Включаем правило входа по доминирующему импульсу текущей пары!`);
+          // 3. We scanned 7 pairs! Take the best scenario from ProTraderEngine strictly respecting Protections 1, 2, 3!
+          loggerLog(`[ProTraderEngine] ⚡ Проверено ${MAX_PAIR_SCANS} пар подряд! Входим по согласованной правой волне!`);
           state.pairScanCount = 0;
-
-          const activeCandles = (scan && scan.visualCandles && scan.visualCandles.length > 0) ? scan.visualCandles : (state.candles || []);
-          const lastCandle = activeCandles.length > 0 ? activeCandles[activeCandles.length - 1] : null;
-          let forcedDir = analysis.direction || "BUY";
-          if (lastCandle) {
-            forcedDir = lastCandle.isRed ? "SELL" : "BUY";
-          } else {
-            const domIsUp = (analysis.trendRegime === "STRONG_UPTREND" || (scan && scan.slopeNorm > 0) || (scan && scan.dominantColor === "GREEN") || (sentiment && sentiment.bullish >= 50));
-            forcedDir = domIsUp ? "BUY" : "SELL";
-          }
-          analysis.direction = forcedDir;
           analysis.shouldTrade = true;
-          analysis.confidence = Math.max(86, analysis.confidence || 86);
-          analysis.setup = "SNIPER_IMPULSE";
-          analysis.recommendedExpiry = (lastCandle && lastCandle.bodySize >= 0.75 * (analysis.atr || 1.0)) ? "15s" : "30s";
-          analysis.line1 = isRu
-            ? (forcedDir === "BUY" ? "📌 Восходящая структура: давление покупателей подтверждено свечным импульсом." : "📌 Нисходящая структура: давление продавцов подтверждено свечным импульсом.")
-            : (forcedDir === "BUY" ? "📌 Upward structure: buying pressure confirmed by candle momentum." : "📌 Downward structure: selling pressure confirmed by candle momentum.");
-          analysis.line2 = isRu
-            ? (forcedDir === "BUY" ? "🎯 Снайперский вход ВВЕРХ по движению тренда." : "🎯 Снайперский вход ВНИЗ по движению тренда.")
-            : (forcedDir === "BUY" ? "🎯 Sniper entry UP with trend movement." : "🎯 Sniper entry DOWN with trend movement.");
-
-          confluence.score = Math.max(4.3, confluence.score || 4.3);
-          confluence.isStrong = true;
         }
       }
 
@@ -3788,7 +3939,7 @@
           state.recentPairs.push(state.targetPair);
         }
         await switchPocketPair(null);
-        await new Promise((r) => setTimeout(r, 2600));
+        await new Promise((r) => setTimeout(r, 3200));
         if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
       } else if (state.recoveryStep === 1) {
         state.recoveryStep = 2;
@@ -3820,7 +3971,7 @@
           state.recentPairs.push(state.targetPair);
         }
         await switchPocketPair(null);
-        await new Promise((r) => setTimeout(r, 2600));
+        await new Promise((r) => setTimeout(r, 3200));
         if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
       } else {
         // Защита депозита после 2-го шага
@@ -3852,7 +4003,7 @@
           state.recentPairs.push(state.targetPair);
         }
         await switchPocketPair(null);
-        await new Promise((r) => setTimeout(r, 2600));
+        await new Promise((r) => setTimeout(r, 3200));
         if (typeof LiveTickBuffer !== "undefined") LiveTickBuffer.reset(state.targetPair);
       }
     }
@@ -4229,7 +4380,7 @@
     // 2. Строка таймфрейма внутри круга
     const orbTimeEl = document.getElementById("winkyOrbTime");
     if (orbTimeEl) {
-      orbTimeEl.textContent = `Таймф: M1  Время: ${state.selectedTimeframe}`;
+      orbTimeEl.textContent = `Таймф: S15/M1  Время: ${state.selectedTimeframe}`;
     }
 
     // 3. Селектор пары в боте
@@ -4264,7 +4415,7 @@
       <!-- 2. Центральный медальон 196x196px с живым замкнутым неоновым кольцом 360° -->
       <div class="winky-orb-dial" id="winkyOrbMedallion">
         <div class="winky-orb-brand">WINK TRADE</div>
-        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: M1  Время: ${state.selectedTimeframe}</div>
+        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: S15/M1  Время: ${state.selectedTimeframe}</div>
         <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
         <div class="winky-orb-wl-row">
           <div class="winky-orb-col wins">
@@ -4417,6 +4568,7 @@
       let headerPrefix = "S30";
       if (dur === "15S" || (sig.durationSec > 0 && sig.durationSec <= 20)) headerPrefix = "S15";
       else if (dur === "30S" || (sig.durationSec > 20 && sig.durationSec <= 44)) headerPrefix = "S30";
+      else if (dur === "2M" || sig.durationSec >= 90) headerPrefix = "M2";
       else if (dur === "1M" || sig.durationSec >= 45) headerPrefix = "M1";
       else headerPrefix = "S30";
 
