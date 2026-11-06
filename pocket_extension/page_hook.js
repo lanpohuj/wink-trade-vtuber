@@ -134,8 +134,8 @@
         const match = data.match(/^(\d+\[\s*"openOrder"\s*,\s*)(\{[\s\S]*\})(\s*\])$/);
         if (match) {
           const orderObj = JSON.parse(match[2]);
-          // Если выбран OTC актив или секундный таймер 15s/30s, принудительно выставляем точное время в секундах и тип опциона 100:
-          if (targetSec <= 60) {
+          // Если выбран OTC актив или секундный таймер 15s/30s/1m/2m, принудительно выставляем точное время в секундах и тип опциона 100:
+          if (targetSec <= 120) {
             orderObj.time = targetSec;
             if (String(orderObj.asset || "").toLowerCase().includes("otc") || orderObj.optionType === 100) {
               orderObj.optionType = 100;
@@ -750,14 +750,15 @@
     try {
       closePocketCalculatorIfOpen();
 
-      // 1. Парсинг целевого времени в секундах (15s, 30s или 1m!)
+      // 1. Парсинг целевого времени в секундах (15s, 30s, 1m или 2m!)
       let targetSec = 30;
       if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") targetSec = 15;
       else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
       else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00" || targetDurationStr === "1 min") targetSec = 60;
+      else if (targetDurationStr === "2m" || targetDurationStr === "120s" || targetDurationStr === "00:02:00" || targetDurationStr === "2 min") targetSec = 120;
       else targetSec = 30;
 
-      window.__winkyTargetExpirySec = targetSec; // 15, 30 или 60
+      window.__winkyTargetExpirySec = targetSec; // 15, 30, 60 или 120
 
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
@@ -817,7 +818,7 @@
         return targetSec;
       };
 
-      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1)
+      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2)
       const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
       for (const p of pills) {
         if (!p || p.offsetParent === null) continue;
@@ -825,7 +826,8 @@
         if (
           (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
           (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
-          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00" || pTxt === "1m" || pTxt === "1M"))
+          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00" || pTxt === "1m" || pTxt === "1M")) ||
+          (targetSec === 120 && (pTxt === "M2" || pTxt === "02:00" || pTxt === "2m" || pTxt === "2M"))
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
@@ -842,7 +844,7 @@
       let prevSec = null;
       let stagnationCount = 0;
 
-      for (let step = 0; step < 8; step++) {
+      for (let step = 0; step < 12; step++) {
         curSec = readCurrentExpirySec();
         if (Math.abs(curSec - targetSec) <= 4) break;
 
@@ -867,11 +869,12 @@
 
       closePocketCalculatorIfOpen();
 
-      // 6. Честное считывание реального времени (15s, 30s или 1m)
+      // 6. Честное считывание реального времени (15s, 30s, 1m или 2m)
       let actualSec = readCurrentExpirySec();
       let label = "30s";
       if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
-      else if (actualSec >= 50 || targetSec === 60) { actualSec = 60; label = "1m"; }
+      else if (actualSec >= 90 || targetSec === 120) { actualSec = 120; label = "2m"; }
+      else if (actualSec >= 45 || targetSec === 60) { actualSec = 60; label = "1m"; }
       else { actualSec = 30; label = "30s"; }
 
       console.log(`[WinkyHook] ⏱️ Реальное установленное время экспирации в Покете: ${actualSec}с (${label})`);
