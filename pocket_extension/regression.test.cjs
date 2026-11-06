@@ -25,6 +25,7 @@ function loadContent() {
       executeTradeWithSignal,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
@@ -203,6 +204,26 @@ test('tick buffer receives one WS sample, ignores foreign pair and synthetic pol
   c.emit({type:'TICK',source_type:'ws',rawSymbol:'GBPUSD_otc',price:2,timestamp:1700000000100});
   c.ChartAnalyzer.onNewPriceTick(1.2,1700000000200);
   assert.equal(c.LiveTickBuffer.ticks.length,1);
+});
+test('delayed generation and anonymous history cannot populate the current pair',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  c.emit({type:'MARKET_CONTEXT',asset:'EURUSD_otc',generation:2});
+  const ticks=[{ts:c.now()-15000,price:1},{ts:c.now()-14000,price:1.1}];
+  c.emit({type:'WS_HISTORY_TICKS',asset:'EURUSD_otc',generation:1,ticks});
+  c.emit({type:'WS_HISTORY_TICKS',generation:2,ticks});
+  assert.equal(c.LiveTickBuffer.ticks.length,0);
+  c.emit({type:'WS_HISTORY_TICKS',asset:'EURUSD_otc',generation:2,ticks});assert.equal(c.LiveTickBuffer.ticks.length,2);
+});
+test('broker OHLC history keeps its actual period and unfinished status',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';const time=Math.floor(c.now()/60000)*60000;
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'EURUSD_otc',periodSec:60,candles:[{time,open:.00001,close:.000011,high:.000012,low:.000009}]});
+  const bars=c.marketFrames()[60];assert.equal(bars.length,1);assert.equal(bars[0].complete,false);assert.equal(bars[0].candlePeriodSec,60);assert.equal(bars[0].source,'broker');
+});
+test('timestamped aggregation does not bridge gaps or arbitrary chunk boundaries',()=>{
+  const c=loadContent(),base={open:1,close:1.1,high:1.2,low:.9,candlePeriodSec:15,source:'ticks',pair:'EUR/USD OTC',complete:true};
+  assert.equal(c.aggregateCandles([{...base,time:15000},{...base,time:30000}],2).length,0);
+  assert.equal(c.aggregateCandles([{...base,time:0},{...base,time:30000}],2).length,0);
+  const bars=c.aggregateCandles([{...base,time:0},{...base,time:15000}],2);assert.equal(bars.length,1);assert.equal(bars[0].complete,true);
 });
 test('known M1 visual fallback starts immediately, unknown period is not S15', () => {
   const c=loadContent();const bars=Array.from({length:30},(_,i)=>({open:100+i,close:100.5+i,high:101+i,low:99+i,isGreen:true,isRed:false,body:.5,bodySize:.5,totalRange:2}));

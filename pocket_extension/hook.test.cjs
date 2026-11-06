@@ -92,6 +92,23 @@ test('fractional timestamps and canvas preservation remain supported',()=>{
   socket.receive('42["updateStream",[["EURUSD_otc",1700000000.382,1.052345]]]');
   assert.equal(h.messages.find(m=>m.type==='TICK').price,1.052345);
 });
+test('every tick in a multi-asset packet preserves fractional broker time',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.receive('42["updateStream",[["GBPUSD_otc",1700000000.125,1.2],["EURUSD_otc",1700000000.382,1.1]]]');
+  const ticks=h.messages.filter(m=>m.type==='TICK');assert.equal(ticks.length,2);assert.equal(ticks[1].timestamp,1700000000382);assert.equal(ticks[1].receivedAt,h.now());
+});
+test('binary history retains its original context across a later symbol request',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.receive('451-["history",{"_placeholder":true,"num":0}]');
+  socket.send('42["changeSymbol",{"asset":"GBPUSD_otc","period":15}]');
+  socket.receive(new TextEncoder().encode(JSON.stringify({asset:'EURUSD_otc',data:[[1700000000,1.1]]})).buffer);
+  const history=h.messages.find(m=>m.type==='WS_HISTORY_TICKS');assert.equal(history.asset,'EURUSD_otc');assert.equal(history.generation,1);
+});
+test('timeframe failure responds with the request ID rather than forcing a timeout',async()=>{
+  const h=loadHook();await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:99});
+  const response=h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME');assert.equal(response.requestId,99);assert.equal(response.ok,false);assert.equal(response.error,'timeframe_button_missing');
+});
 test('M1 candle badge is read independently from a bottom H2 history control',()=>{
   const h=loadHook();const make=(text,top)=>({textContent:text,offsetParent:{},getBoundingClientRect:()=>({left:100,top,width:30,height:25}),classList:{contains:()=>false}});
   const m1=make('M1',60),h2=make('H2',700);
@@ -106,4 +123,11 @@ test('timeframe menu receives one opening click and S15 must be observed',async(
   await h.handleMainWorldEnsureChartTimeframe('S15');
   assert.equal(menuClicks,1);assert.equal(itemClicks,1);
   assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
+});
+test('M1 target is selected and verified instead of always selecting S15',async()=>{
+  const h=loadHook();const toolbar={textContent:'S15',offsetParent:{},children:[],classList:{contains:()=>false},getBoundingClientRect:()=>({left:100,top:60,width:30,height:25}),dispatchEvent(){},click(){}};
+  const item={textContent:'M1',offsetParent:{},children:[],getAttribute:()=>null,getBoundingClientRect:()=>({left:100,top:100,width:30,height:25}),dispatchEvent(){},closest(){return this;},click(){toolbar.textContent='M1';}};
+  h.document.querySelectorAll=selector=>selector.startsWith('[data-period=')?[item]:[toolbar];
+  await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:10});
+  const response=h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME');assert.equal(response.ok,true);assert.equal(response.activeTf,'M1');assert.equal(response.requestId,10);
 });

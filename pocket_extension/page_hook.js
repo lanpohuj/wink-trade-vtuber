@@ -27,6 +27,65 @@
   let lastSentTrade = null;
   const normalizeAsset = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   const toMilliseconds = value => Number(value) < 1e11 ? Number(value) * 1000 : Number(value);
+  let marketContext = { asset: null, generation: 0, periodSec: null, changedAt: 0 };
+  const pairVisitedAt = new Map();
+  function normalizeChartTf(value) {
+    const text = String(value || '').trim().toUpperCase().replace(/\s/g, '');
+    const reversed = text.match(/^(\d+)(S|M|H)$/);
+    return reversed ? reversed[2] + reversed[1] : text;
+  }
+  const tfSeconds = value => { const m=normalizeChartTf(value).match(/^(S|M|H)(\d+)$/); return m ? Number(m[2])*({S:1,M:60,H:3600}[m[1]]) : null; };
+  function publishMarketData(packet, context) {
+    const receivedAt = Date.now();
+    const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history)$/i.test(packet.name);
+    if (history) {
+      const payload = packet.payload;
+      const raw = Array.isArray(payload) ? payload : payload?.data || payload?.history || payload?.candles || payload?.ticks;
+      if (!Array.isArray(raw)) return;
+      const groups = new Map();
+      const periodSec = Number(payload?.period ?? payload?.timeframe ?? context.periodSec);
+      const groupFor = asset => {
+        if (!asset) return null; // Never label an anonymous delayed history with the current pair.
+        const key=normalizeAsset(asset);
+        if (!groups.has(key)) groups.set(key,{asset,ticks:[],candles:[]});
+        return groups.get(key);
+      };
+      for (const item of raw) {
+        let asset=payload?.asset || payload?.symbol, timestamp, price;
+        if (Array.isArray(item)) {
+          if (item.length===3 && typeof item[0]==='string') [asset,timestamp,price]=item;
+          else if (item.length===2) [timestamp,price]=item;
+        } else if (item && typeof item==='object') {
+          asset=item.asset || item.symbol || asset;
+          timestamp=item.time ?? item.timestamp ?? item.ts;
+          price=item.price;
+          if (['open','high','low','close'].every(k=>Number.isFinite(Number(item[k]))) && Number.isFinite(periodSec) && periodSec>0) {
+            const group=groupFor(asset), time=toMilliseconds(timestamp);
+            if(group && Number.isFinite(time)) group.candles.push({open:Number(item.open),high:Number(item.high),low:Number(item.low),close:Number(item.close),time});
+            continue;
+          }
+        }
+        const group=groupFor(asset), ts=toMilliseconds(timestamp);
+        if(group && Number.isFinite(ts) && Number.isFinite(Number(price)) && Number(price)>0) group.ticks.push({price:Number(price),ts});
+      }
+      for(const group of groups.values()) {
+        const generation=normalizeAsset(group.asset)===normalizeAsset(context.asset) ? context.generation : null;
+        if(group.ticks.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_HISTORY_TICKS',asset:group.asset,ticks:group.ticks.slice(-5000),generation,receivedAt},'*');
+        if(group.candles.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_CANDLES_HISTORY',asset:group.asset,candles:group.candles,periodSec,generation,receivedAt},'*');
+      }
+      return;
+    }
+    if(!/^(updateStream|stream|ticks|quote|quotes)$/i.test(packet.name)) return;
+    const visit = value => {
+      if(!Array.isArray(value)) { if(value && typeof value==='object') Object.values(value).forEach(visit); return; }
+      if(value.length===3 && typeof value[0]==='string' && Number.isFinite(Number(value[1])) && Number.isFinite(Number(value[2]))) {
+        const [rawSymbol,ts,p]=value, price=Number(p), timestamp=toMilliseconds(ts);
+        if(price>0) window.postMessage({source:'WINKY_HOOK',type:'TICK',price,rawSymbol,source_type:'ws',timestamp,receivedAt,
+          generation:normalizeAsset(rawSymbol)===normalizeAsset(context.asset)?context.generation:null},'*');
+      } else value.forEach(visit);
+    };
+    visit(packet.payload);
+  }
   function readSocketPacket(text) {
     try {
       const body = JSON.parse(text.slice(text.indexOf('[')));
@@ -42,6 +101,7 @@
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
     let attachmentName = null;
+    let attachmentContext = null;
 
     const handleMessage = (data) => {
       try {
@@ -59,10 +119,12 @@
         }
 
         if (typeof data === "string") {
-          if (/^45\d*-/.test(data)) { attachmentName = readSocketPacket(data)?.name || null; return; }
+          if (/^45\d*-/.test(data)) { attachmentName = readSocketPacket(data)?.name || null; attachmentContext={...marketContext}; return; }
+          let packetContext={...marketContext};
           if (attachmentName) {
             const name = attachmentName;
-            attachmentName = null;
+            packetContext=attachmentContext || packetContext;
+            attachmentName = null; attachmentContext=null;
             try { data = '42' + JSON.stringify([name, JSON.parse(data)]); } catch (_) { return; }
           }
           const packet = readSocketPacket(data);
@@ -125,92 +187,7 @@
             } catch (_) {}
           }
 
-          // Check for WebSocket server history packets: updateHistoryNewFast, updateHistoryNew, history, candles, load_history
-          if (
-            data.includes('"updateHistoryNewFast"') ||
-            data.includes('"updateHistoryNew"') ||
-            data.includes('"history"') ||
-            data.includes('"candles"') ||
-            data.includes('"load_history"')
-          ) {
-            try {
-              const matchPayload = data.match(/^42\[\s*"([a-zA-Z0-9_]+)"\s*,\s*([\s\S]*)\s*\]$/);
-              if (matchPayload) {
-                const payload = JSON.parse(matchPayload[2]);
-                let rawTicks = null;
-                let asset = window.__winkyCurrentAsset || null;
-                if (Array.isArray(payload)) {
-                  rawTicks = payload;
-                } else if (payload && typeof payload === "object") {
-                  if (payload.asset) asset = payload.asset;
-                  if (Array.isArray(payload.data)) rawTicks = payload.data;
-                  else if (Array.isArray(payload.history)) rawTicks = payload.history;
-                  else if (Array.isArray(payload.candles)) rawTicks = payload.candles;
-                  else if (Array.isArray(payload.ticks)) rawTicks = payload.ticks;
-                }
-
-                if (Array.isArray(rawTicks) && rawTicks.length > 0) {
-                  const extractedTicks = [];
-                  for (const item of rawTicks) {
-                    let p, t;
-                    if (Array.isArray(item)) {
-                      if (item.length === 2) {
-                        t = item[0];
-                        p = item[1];
-                      } else if (item.length === 3 && typeof item[0] === "string") {
-                        asset = item[0];
-                        t = item[1];
-                        p = item[2];
-                      } // OHLC arrays must not be relabelled as tick history.
-                    } else if (item && typeof item === "object") {
-                      t = item.time || item.timestamp || item.ts;
-                      p = item.price;
-                    }
-                    if (typeof p === "number" && !isNaN(p) && p > 0) {
-                      if (typeof t === "number" && t < 1e11) t = t * 1000;
-                      extractedTicks.push({ price: p, ts: Number(t || Date.now()) });
-                    }
-                  }
-
-                  if (extractedTicks.length > 0) {
-                    console.log(`[WinkyHook] 📈 Received ${extractedTicks.length} history ticks for ${asset || "asset"}`);
-                    window.postMessage(
-                      {
-                        source: "WINKY_PAGE_HOOK",
-                        type: "WS_HISTORY_TICKS",
-                        asset: asset,
-                        ticks: extractedTicks.slice(-1000),
-                      },
-                      "*"
-                    );
-                  }
-                }
-              }
-            } catch (_) {}
-          }
-
-          // Check for quote array format e.g. [["EURUSD_otc", 1730516172, 1.08542]] or JSON with price
-          if (data.includes("_otc") || data.includes("updateStream") || (data.includes("[") && data.includes("]"))) {
-            // Regex to find symbol and numeric price e.g. ["AEDCNY_otc", 1730516172.382, 1.88610]
-            const match = data.match(/\[\s*"([A-Za-z0-9_]+)"\s*,\s*[0-9.]+\s*,\s*([0-9.]+)\s*\]/);
-            if (match) {
-              const rawSymbol = match[1];
-              const price = parseFloat(match[2]);
-              if (!isNaN(price) && price > 0) {
-                window.postMessage(
-                  {
-                    source: "WINKY_HOOK",
-                    type: "TICK",
-                    price: price,
-                    rawSymbol: rawSymbol,
-                    source_type: "ws",
-                    timestamp: Date.now(),
-                  },
-                  "*"
-                );
-              }
-            }
-          }
+          if(packet) publishMarketData(packet,packetContext);
         }
       } catch (_) {}
     };
@@ -255,6 +232,9 @@
               const symObj = JSON.parse(matchSym[1]);
               if (symObj && symObj.asset) {
                 window.__winkyCurrentAsset = symObj.asset;
+                marketContext={asset:symObj.asset,generation:marketContext.generation+1,periodSec:Number(symObj.period)||null,changedAt:Date.now()};
+                canvasCandleBars=[];
+                window.postMessage({source:'WINKY_HOOK',type:'MARKET_CONTEXT',...marketContext},'*');
                 console.log("[WinkyHook] 🔀 Intercepted changeSymbol asset:", symObj.asset);
               }
             } catch (_) {}
@@ -556,6 +536,9 @@
         source: "WINKY_HOOK",
         type: "CANVAS_CANDLES_SNAPSHOT",
         pair: window.__winkyCurrentAsset || null,
+        generation: marketContext.generation,
+        periodSec: tfSeconds(window.__winkyActualChartTf),
+        receivedAt: Date.now(),
         candles: canvasCandles,
         timestamp: now,
       },
@@ -602,7 +585,7 @@
     } else if (data.type === "WINKY_CMD_CLICK_TRADE") {
       await handleMainWorldClickTrade(data);
     } else if (data.type === "WINKY_CMD_SET_CHART_TIMEFRAME") {
-      await handleMainWorldEnsureChartTimeframe(data.targetTf || "S15");
+      await handleMainWorldEnsureChartTimeframe(data.targetTf || "S15", data);
     }
   });
 
@@ -772,27 +755,10 @@
     }
 
     if (!targetPair && !chosen && candidates.length > 0) {
-      // Safety filter for OTC only
-      const otcOnly = candidates.filter((c) => c.name.toUpperCase().includes("OTC") || c.normName.includes("otc"));
-      const candPool = otcOnly.length > 0 ? otcOnly : candidates;
-
-      // Filter out recent pairs & visited pairs memory (last 6 pairs)
-      window.__winkyVisitedPairs = window.__winkyVisitedPairs || [];
-      const visitedLast6 = window.__winkyVisitedPairs.slice(-6).map((p) => p.toLowerCase().replace(/[^a-z0-9]/g, ""));
-      const nonRecent = candPool.filter(
-        (c) =>
-          !recentPairs.some((rp) => rp.toLowerCase().replace(/[^a-z0-9]/g, "") === c.normName) &&
-          !visitedLast6.includes(c.normName)
-      );
-      const pool = nonRecent.length > 0 ? nonRecent : candPool;
-      pool.sort((a, b) => b.payout - a.payout);
-      const topPayout = pool[0].payout;
-      const topTier = pool.filter((c) => c.payout === topPayout);
-      // Prioritize standard pairs supporting fast OTC seconds (15s/30s)
-      const preferred = ["eurusd", "gbpusd", "audcad", "eurjpy", "chfjpy", "audchf", "usdjpy", "cadjpy", "gbpjpy", "eurgbp"];
-      const preferredInTier = topTier.filter((c) => preferred.some((p) => c.normName.includes(p)));
-      const finalPool = preferredInTier.length > 0 ? preferredInTier : topTier;
-      chosen = finalPool[Math.floor(Math.random() * finalPool.length)];
+      const excluded=new Set((cmd.excludePairs || []).map(normalizeAsset));
+      const unique=Array.from(new Map(candidates.map(c=>[c.normName,c])).values());
+      chosen=unique.filter(c=>!excluded.has(c.normName)).sort((a,b)=>b.payout-a.payout ||
+        (pairVisitedAt.get(a.normName)||0)-(pairVisitedAt.get(b.normName)||0) || a.normName.localeCompare(b.normName))[0];
     }
 
     if (chosen && chosen.element) {
@@ -803,6 +769,7 @@
       window.__winkyVisitedPairs.push(chosen.name);
       if (window.__winkyVisitedPairs.length > 12) window.__winkyVisitedPairs.shift();
 
+      pairVisitedAt.set(chosen.normName,Date.now());
       const el = chosen.element;
       const rect = el.getBoundingClientRect();
       const evtOpts = {
@@ -823,13 +790,6 @@
       await sleep(180);
       await forceClosePopup();
 
-      // Automatically ensure chart timeframe is set to S15 (15 seconds)
-      try {
-        await handleMainWorldEnsureChartTimeframe("S15");
-      } catch (tfErr) {
-        console.warn("[WinkyHook] Non-critical error ensuring S15 timeframe:", tfErr);
-      }
-
       window.postMessage(
         {
           source: "WINKY_HOOK",
@@ -837,6 +797,8 @@
           ok: true,
           newPair: chosen.name,
           payout: chosen.payout,
+          requestId: cmd.requestId,
+          generation: marketContext.generation,
         },
         "*"
       );
@@ -966,6 +928,7 @@
     }
 
     if (badge) {
+      badge=normalizeChartTf(badge);
       window.__winkyActualChartTf = badge;
       try {
         window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: badge }, "*");
@@ -976,110 +939,50 @@
     return { badge, btn };
   }
 
-  async function handleMainWorldEnsureChartTimeframe(targetTf = "S15") {
-    console.log(`[WinkyHook] ⏱️ Проверка таймфрейма графика свечей Pocket Option (цель: ${targetTf})...`);
-    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-    const { badge: currentTfBadge, btn: tfMenuBtn } = getActualChartTimeframeBadge();
-
-    if (currentTfBadge && (currentTfBadge.includes("S15") || currentTfBadge === "15S" || currentTfBadge === "15С" || currentTfBadge === "15")) {
-      console.log(`[WinkyHook] ✅ График уже работает на 15-секундных свечах (${currentTfBadge})`);
-      window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: true, activeTf: "S15" }, "*");
-      window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: "S15" }, "*");
-      return true;
-    }
-
-    // Anti-spam: не дёргать меню интервалов чаще чем 1 раз в 10 секунд
-    const now = Date.now();
-    window.__winkyLastTfAttemptTs = window.__winkyLastTfAttemptTs || 0;
-    if (now - window.__winkyLastTfAttemptTs < 10000) {
-      console.log(`[WinkyHook] ⏳ Анти-спам таймфрейма: повторная попытка через ${(10 - (now - window.__winkyLastTfAttemptTs)/1000).toFixed(1)}с`);
-      return false;
-    }
-    window.__winkyLastTfAttemptTs = now;
-
-    const chartBtn = tfMenuBtn || document.querySelector(".chart-type-block, .block--chart-type, [data-test*='chart-type'], .top-left-block a, .current-timeframe, .chart-timeframe, .items-link--chart-type");
-    if (!chartBtn) {
-      console.warn(`[WinkyHook] ⚠️ Кнопка меню таймфреймов графика не найдена в DOM`);
-      return false;
-    }
-
-    console.log(`[WinkyHook] 🔄 Открываем меню таймфреймов графика через realClick...`);
-    realClick(chartBtn);
-    await sleep(250);
-
-    // Проверяем, виден ли в открытом попапе список интервалов.
-    // Если открылась вкладка «Тип графика» без интервалов — находим вкладку «Интервалы» / «Timeframes»
-    const popup = document.querySelector(".drop-down-modal-wrap, .popover, .chart-block, [class*='modal'], [class*='dropdown'], .drop-down-modal");
-    if (popup) {
-      const tabs = popup.querySelectorAll("a, button, li, .tab, .tabs__item, div[role='tab'], div");
-      for (const tab of tabs) {
-        const txt = (tab.textContent || "").trim().toLowerCase();
-        if ((txt.includes("интервал") || txt.includes("timeframe") || txt.includes("таймфрейм") || txt.includes("frames")) && !tab.classList.contains("active")) {
-          realClick(tab);
-          await sleep(200);
-          break;
-        }
-      }
-    }
-
-    // Ищем элемент интервала 15 сек по [data-period="15"] или тексту /^(S15|15\s*s|15\s*sec\.?|15\s*сек\.?|15\s*с\.?)$/i
-    // в области rect.left <= 550 && rect.top >= 60 && rect.top <= 520
-    const popupItems = document.querySelectorAll(
-      "[data-period='15'], .drop-down-modal__item, .timeframe-item, .timeframe-list button, .timeframe-list a, .modal-window a, [data-timeframe], .alist__item, li, button, a, [data-period], [data-value], [data-tf], span"
-    );
-
-    let s15Item = null;
-    const s15Regex = /^(s\s*15|15\s*(s|sec|сек\.?|с\.?))$/i;
-
-    for (const it of popupItems) {
-      if (!it || it.offsetParent === null) continue;
-      const rect = it.getBoundingClientRect();
-      if (rect.left > 550 || rect.top < 60 || rect.top > 520) continue;
-      if (it.children.length > 2) continue; // самый вложенный элемент с надписью
-      const t = (it.textContent || "").trim();
-      if (/15\s*(м|m|min)/i.test(t)) continue; // исключаем минуты
-
-      const pAttr = it.getAttribute("data-period") || it.getAttribute("data-value") || it.getAttribute("data-tf") || "";
-      if (pAttr === "15" || s15Regex.test(t)) {
-        s15Item = it;
-        break;
-      }
-    }
-
-    if (s15Item) {
-      console.log(`[WinkyHook] 🎯 Кликнули realClick по таймфрейму S15 («${s15Item.textContent.trim()}»)!`);
-      const parentClickable = s15Item.closest("a, li, button, [role='button']");
-      realClick(parentClickable || s15Item);
-      await sleep(150);
-    } else {
-      console.warn(`[WinkyHook] ⚠️ Кнопка S15 / 15 сек не найдена в открытом меню таймфреймов`);
-    }
-
-    // Закрываем попап через Escape и клик по canvas (БЕЗ повторного клика по chartBtn!)
+  async function handleMainWorldEnsureChartTimeframe(targetTf = 'S15', command = {}) {
+    const target=normalizeChartTf(targetTf), sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    const reply=(ok,error=null)=>{
+      const observed=getActualChartTimeframeBadge().badge;
+      window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_CHART_TIMEFRAME',ok:ok && observed===target,
+        activeTf:observed,requestedTf:target,requestId:command.requestId,generation:marketContext.generation,
+        pair:marketContext.asset,error},'*');
+      return ok && observed===target;
+    };
+    if(!['M1','S15'].includes(target)) return reply(false,'unsupported_timeframe');
+    const current=getActualChartTimeframeBadge();
+    if(current.badge===target) return reply(true);
+    if(window.__winkyTfSwitchBusy) return reply(false,'timeframe_busy');
+    const attempts=window.__winkyTfAttempts || (window.__winkyTfAttempts={});
+    if(Date.now()-(attempts[target]||0)<250) return reply(false,'timeframe_cooldown');
+    attempts[target]=Date.now();
+    const button=current.btn || document.querySelector('.chart-type-block, .block--chart-type, .current-timeframe, .chart-timeframe');
+    if(!button) return reply(false,'timeframe_button_missing');
+    window.__winkyTfSwitchBusy=true;
     try {
-      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true }));
-      document.dispatchEvent(new KeyboardEvent("keyup", { key: "Escape", code: "Escape", keyCode: 27, which: 27, bubbles: true }));
-    } catch (_) {}
-
-    await sleep(120);
-    const canvasEl = document.querySelector(".chart-container canvas, #chart-canvas, canvas");
-    if (canvasEl) {
-      try {
-        const rect = canvasEl.getBoundingClientRect();
-        const clientX = rect.left + Math.min(450, rect.width * 0.45);
-        const clientY = rect.top + Math.min(260, rect.height * 0.5);
-        canvasEl.dispatchEvent(new MouseEvent("click", { view: window, bubbles: true, cancelable: true, clientX, clientY }));
-      } catch (_) {}
+      realClick(button); await sleep(180);
+      const popup=document.querySelector('.drop-down-modal-wrap, .popover, .chart-block, .drop-down-modal');
+      for(const tab of popup?.querySelectorAll('a, button, [role="tab"], .tabs__item') || []) {
+        if(/^(интервалы|timeframes|таймфреймы|intervals)$/i.test((tab.textContent||'').trim()) && !tab.classList.contains('active')) {realClick(tab);await sleep(120);break;}
+      }
+      const period=tfSeconds(target);
+      const items=document.querySelectorAll(`[data-period='${period}'], .timeframe-item, .timeframe-list button, .timeframe-list a, [data-timeframe], [data-period], [data-tf], .drop-down-modal__item, span`);
+      let selected=null;
+      for(const item of items) {
+        if(!item || item.offsetParent===null || item.children.length>2) continue;
+        const rect=item.getBoundingClientRect();
+        if(rect.left>550 || rect.top<60 || rect.top>520) continue;
+        const attr=item.getAttribute('data-period') || item.getAttribute('data-tf') || item.getAttribute('data-timeframe');
+        if(Number(attr)===period || normalizeChartTf(item.textContent)===target ||
+          (target==='S15' && /^15\s*(sec|сек\.?|с\.?)$/i.test(item.textContent.trim()))) {selected=item;break;}
+      }
+      if(selected) realClick(selected.closest('a,li,button,[role="button"]') || selected);
+      for(let i=0;i<6 && getActualChartTimeframeBadge().badge!==target;i++) await sleep(80);
+      return reply(Boolean(selected),selected?null:'timeframe_item_missing');
+    } catch(error) { return reply(false,'timeframe_switch_failed'); }
+    finally {
+      window.__winkyTfSwitchBusy=false;
+      document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true}));
     }
-
-    await sleep(180);
-    const updated = getActualChartTimeframeBadge();
-    const finalTf = updated.badge || null;
-    const confirmed = finalTf === 'S15' || finalTf === '15S';
-    window.postMessage({ source: "WINKY_HOOK", type: "WINKY_RESP_CHART_TIMEFRAME", ok: confirmed, activeTf: finalTf }, "*");
-    if (finalTf) window.postMessage({ source: "WINKY_PAGE_HOOK", type: "CHART_TF_STATUS", tf: finalTf }, "*");
-    return confirmed;
   }
 
   function closePocketCalculatorIfOpen() {
