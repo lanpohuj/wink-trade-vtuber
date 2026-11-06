@@ -367,7 +367,9 @@
   /* ==================== 1. Live Hook Listener & Sentiment ==================== */
 
   window.addEventListener("message", (event) => {
-    if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+    if (event.source !== window || !event.data) return;
+    const src = event.data.source;
+    if (src !== "WINKY_HOOK" && src !== "WINKY_PAGE_HOOK") return;
     const data = event.data;
 
     // A. Live Price Tick with Y-ratio
@@ -375,6 +377,22 @@
       ChartAnalyzer.onNewPriceTick(data.price, data.timestamp || Date.now(), data.yRatio);
       if (typeof LiveTickBuffer !== "undefined") {
         LiveTickBuffer.addTick(data.price, data.timestamp || Date.now());
+      }
+    }
+
+    // A2. WebSocket Server History Ticks (up to 1000 points)
+    if (data.type === "WS_HISTORY_TICKS" && Array.isArray(data.ticks) && data.ticks.length > 0) {
+      if (typeof LiveTickBuffer !== "undefined") {
+        LiveTickBuffer.loadHistoryTicks(data.ticks, data.asset);
+      }
+    }
+
+    // A3. Actual Chart Timeframe Status from page_hook
+    if (data.type === "CHART_TF_STATUS" && data.tf) {
+      state.actualChartTf = data.tf;
+      const orbEl = document.getElementById("winkyOrbTime") || document.querySelector(".winky-orb-val");
+      if (orbEl) {
+        orbEl.textContent = `Таймфрейм: ${data.tf}`;
       }
     }
 
@@ -547,13 +565,41 @@
 
   const LiveTickBuffer = {
     pair: null,
-    ticks: [], // { price, ts } max 300
+    ticks: [], // { price, ts } max 1000
     addTick(price, ts = Date.now()) {
       if (!price || isNaN(price) || price <= 0) return;
-      this.ticks.push({ price: Number(price), ts: Number(ts) });
-      if (this.ticks.length > 300) {
-        this.ticks.splice(0, this.ticks.length - 300);
+      let numericTs = Number(ts);
+      if (numericTs < 1e11) numericTs = numericTs * 1000;
+      this.ticks.push({ price: Number(price), ts: numericTs });
+      if (this.ticks.length > 1000) {
+        this.ticks.splice(0, this.ticks.length - 1000);
       }
+    },
+    loadHistoryTicks(ticksArray, asset = null) {
+      if (!Array.isArray(ticksArray) || ticksArray.length === 0) return;
+      if (asset && state.targetPair) {
+        const cleanAsset = String(asset).replace(/[^a-zA-Z]/g, "").toLowerCase();
+        const cleanTarget = String(state.targetPair).replace(/[^a-zA-Z]/g, "").toLowerCase();
+        if (cleanAsset.length >= 4 && cleanTarget.length >= 4 && !cleanTarget.includes(cleanAsset.slice(0, 4)) && !cleanAsset.includes(cleanTarget.slice(0, 4))) {
+          return; // different pair
+        }
+      }
+      const map = new Map();
+      for (const t of this.ticks) {
+        map.set(t.ts, t.price);
+      }
+      for (const t of ticksArray) {
+        if (t && typeof t.price === "number" && !isNaN(t.price) && t.price > 0) {
+          let ts = Number(t.ts || Date.now());
+          if (ts < 1e11) ts = ts * 1000;
+          map.set(ts, Number(t.price));
+        }
+      }
+      const merged = Array.from(map.entries())
+        .map(([ts, price]) => ({ ts, price }))
+        .sort((a, b) => a.ts - b.ts);
+      this.ticks = merged.slice(-1000);
+      console.log(`[LiveTickBuffer] 📊 Loaded ${this.ticks.length} total ticks (merged ${ticksArray.length} new)`);
     },
     reset(newPair = null) {
       this.pair = newPair;
@@ -565,6 +611,7 @@
       if (n === 0) {
         return {
           delta3s: 0,
+          delta5s: 0,
           delta6s: 0,
           delta15s: 0,
           delta30s: 0,
@@ -582,11 +629,13 @@
         return this.ticks[0].price;
       };
       const p3 = findPriceAtSec(3);
+      const p5 = findPriceAtSec(5);
       const p6 = findPriceAtSec(6);
       const p15 = findPriceAtSec(15);
       const p30 = findPriceAtSec(30);
 
       const delta3s = curPrice - p3;
+      const delta5s = curPrice - p5;
       const delta6s = curPrice - p6;
       const delta15s = curPrice - p15;
       const delta30s = curPrice - p30;
@@ -615,6 +664,7 @@
 
       return {
         delta3s,
+        delta5s,
         delta6s,
         delta15s,
         delta30s,
@@ -622,6 +672,56 @@
         posIn15sRange,
         ticksCount: n,
       };
+    },
+    buildCandles(periodSec = 15, maxBars = 45) {
+      if (!this.ticks || this.ticks.length < 4) return [];
+      const bucketMs = periodSec * 1000;
+      const buckets = new Map();
+      for (const t of this.ticks) {
+        const bKey = Math.floor(t.ts / bucketMs) * bucketMs;
+        if (!buckets.has(bKey)) {
+          buckets.set(bKey, []);
+        }
+        buckets.get(bKey).push(t.price);
+      }
+      const sortedKeys = Array.from(buckets.keys()).sort((a, b) => a - b);
+      const candles = [];
+      for (const k of sortedKeys) {
+        const prices = buckets.get(k);
+        if (!prices || prices.length === 0) continue;
+        const open = prices[0];
+        const close = prices[prices.length - 1];
+        const high = Math.max(...prices);
+        const low = Math.min(...prices);
+        const isGreen = close >= open;
+        const isRed = !isGreen;
+        const body = Math.max(0.00001, Math.abs(close - open));
+        const range = Math.max(0.00001, high - low);
+        const upperWick = Math.max(0, high - Math.max(open, close));
+        const lowerWick = Math.max(0, Math.min(open, close) - low);
+        candles.push({
+          open,
+          high,
+          low,
+          close,
+          body,
+          bodySize: body,
+          totalRange: range,
+          upperWick,
+          lowerWick,
+          isGreen,
+          isRed,
+          time: k,
+          candlePeriodSec: periodSec,
+        });
+      }
+      return candles.slice(-maxBars);
+    },
+    getCandleAgeSec(periodSec = 15) {
+      return Math.floor((Date.now() / 1000) % periodSec);
+    },
+    getActualChartTfDisplay() {
+      return state.actualChartTf || "S15";
     },
   };
 
@@ -832,10 +932,20 @@
 
       const isRu = (state.lang === "ru");
 
-      // Базовые 15-секундные свечи и их мульти-таймфрейм агрегаты
+      // Базовые 15-секундные свечи и их мульти-таймфрейм агрегаты / исторические тики
       const candlesS15 = candles;
-      const candlesS30 = aggregateCandles(candlesS15, 2);
-      const candlesM1 = aggregateCandles(candlesS15, 4);
+      let candlesS30 = [];
+      let candlesM1 = [];
+      let candlesM2 = [];
+
+      if (typeof LiveTickBuffer !== "undefined" && LiveTickBuffer.ticks.length >= 20) {
+        candlesS30 = LiveTickBuffer.buildCandles(30, 45);
+        candlesM1 = LiveTickBuffer.buildCandles(60, 45);
+        candlesM2 = LiveTickBuffer.buildCandles(120, 45);
+      }
+      if (candlesS30.length < 8) candlesS30 = aggregateCandles(candlesS15, 2);
+      if (candlesM1.length < 8) candlesM1 = aggregateCandles(candlesS15, 4);
+      if (candlesM2.length < 8) candlesM2 = aggregateCandles(candlesS15, 8);
 
       const closes = candlesS15.map((c) => Number(c.close));
       const n = candlesS15.length;
@@ -853,6 +963,10 @@
       const ema21Prev = ema21Arr.length >= 6 ? ema21Arr[ema21Arr.length - 6] : ema21;
       const emaSlope = ema21 - ema21Prev;
 
+      // Трендовый наклон и динамика
+      const recentSlope10 = closes[n - 1] - closes[Math.max(0, n - 10)];
+      const recentSlope8 = closes[n - 1] - closes[Math.max(0, n - 8)];
+
       let trendRegime = "RANGING";
       if (ema9 > ema21 && ema21 > ema50 && emaSlope > 0) trendRegime = "STRONG_UPTREND";
       else if (ema9 < ema21 && ema21 < ema50 && emaSlope < 0) trendRegime = "STRONG_DOWNTREND";
@@ -864,16 +978,20 @@
       const rsi = rsiData.current;
       const stoch = this.computeStochastic(candlesS15, 14, 3, 3);
 
-      // Micro tick metrics
+      // Micro tick metrics (включая delta3s и delta5s)
       const micro = (typeof LiveTickBuffer !== "undefined")
         ? LiveTickBuffer.getMicroMetrics()
-        : { delta3s: 0, delta6s: 0, delta15s: 0, delta30s: 0, tickImbalance: 0, posIn15sRange: 0.5 };
+        : { delta3s: 0, delta5s: 0, delta6s: 0, delta15s: 0, delta30s: 0, tickImbalance: 0, posIn15sRange: 0.5 };
 
-      // Последняя живая свеча c0
+      // Последняя живая свеча c0 и предыдущие
       const c0 = candlesS15[n - 1];
       const cPrev1 = n >= 2 ? candlesS15[n - 2] : null;
 
-      // Анализ последних 5 свечей у вертикальной белой линии цены
+      // Анализ последних 4 и 5 свечей
+      const last4 = candlesS15.slice(-4);
+      const redCountLast4 = last4.filter((c) => c.isRed).length;
+      const greenCountLast4 = last4.filter((c) => c.isGreen).length;
+
       const last5 = candlesS15.slice(-5);
       const greenCount5 = last5.filter((c) => c.isGreen).length;
       const redCount5 = last5.filter((c) => c.isRed).length;
@@ -894,6 +1012,13 @@
       const totalSpanAll = Math.max(0.000001, highAll - lowAll);
       const posInChartRange = (curPrice - lowAll) / totalSpanAll;
 
+      // Локальные экстремумы последних 15 свечей и запас хода до структуры
+      const last15 = candlesS15.slice(-15);
+      const recentHigh15 = Math.max(...last15.map((c) => c.high));
+      const recentLow15 = Math.min(...last15.map((c) => c.low));
+      const roomToHigh15 = recentHigh15 - curPrice;
+      const roomToLow15 = curPrice - recentLow15;
+
       // Уровни П/С и запас хода (35 свечей)
       const window35 = candlesS15.slice(-35);
       const resistanceLevel = Math.max(...window35.map((c) => c.high));
@@ -905,34 +1030,59 @@
       const MAX_PAIR_SCANS = 7;
       const isScanAllowedToSkip = (typeof state.pairScanCount !== "number" || state.pairScanCount < MAX_PAIR_SCANS - 1);
 
-      // -------------------------------------------------------------
-      // ЗАЩИТА №1: Запрет входа против активной V-образной волны
-      // -------------------------------------------------------------
-      let vetoSellWave = false;
-      let vetoBuyWave = false;
-      if (greenCount5 >= 3 && greenBodySum5 > redBodySum5 * 1.35 && waveSlope5 > atr * 0.8) {
-        vetoSellWave = true;
+      // =============================================================
+      // ФИКС ОШИБКИ А: Absolute Macro Trend Lock
+      // =============================================================
+      const trendUpMacro = (ema9 > ema21 && ema21 > ema50 && emaSlope > 0);
+      const trendDownMacro = (ema9 < ema21 && ema21 < ema50 && emaSlope < 0);
+      const isMacroBull = trendUpMacro || (recentSlope10 > 0.6 * atr);
+      const isMacroBear = trendDownMacro || (recentSlope10 < -0.6 * atr);
+
+      // =============================================================
+      // ФИКС ОШИБКИ B: Fast/Medium MA Alignment + 3-of-4 Rule
+      // =============================================================
+      let vetoBuyMA = false;
+      let vetoSellMA = false;
+
+      if (ema9 < ema21 || curPrice < ema9 || recentSlope8 <= 0 || redCountLast4 >= 3) {
+        vetoBuyMA = true;
       }
-      if (redCount5 >= 3 && redBodySum5 > greenBodySum5 * 1.35 && waveSlope5 < -atr * 0.8) {
-        vetoBuyWave = true;
+      if (ema9 > ema21 || curPrice > ema9 || recentSlope8 >= 0 || greenCountLast4 >= 3) {
+        vetoSellMA = true;
       }
 
-      // -------------------------------------------------------------
-      // ЗАЩИТА №2: Запрет входа на 3-й+ свече подряд и контртрендовой коррекции
-      // -------------------------------------------------------------
+      // =============================================================
+      // ФИКС ОШИБКИ C: Anti-Spike / Climax Guard + Room to Structure
+      // =============================================================
+      const c0IsSpike = c0.body > 0.85 * atr;
+      const cPrevIsSpike = cPrev1 ? (cPrev1.body > 1.10 * atr) : false;
+
+      let vetoBuyClimax = false;
+      let vetoSellClimax = false;
+
+      if (c0IsSpike || cPrevIsSpike) {
+        if (c0.isGreen || (cPrev1 && cPrev1.isGreen)) vetoBuyClimax = true;
+        if (c0.isRed || (cPrev1 && cPrev1.isRed)) vetoSellClimax = true;
+      }
+
+      // Запас хода до локального хая/лоя 15 свечей (минимум 0.45 ATR)
+      let vetoBuyRoom = false;
+      let vetoSellRoom = false;
+      if (roomToHigh15 < 0.45 * atr) vetoBuyRoom = true;
+      if (roomToLow15 < 0.45 * atr) vetoSellRoom = true;
+
+      // Защита от истощения серии
       const isStreakExhausted = (sameColorStreak >= 3);
-      const isCounterTrendPullbackBuy = (trendRegime === "STRONG_DOWNTREND" || ema21 < ema50) && (posInChartRange < 0.55) && c0.isGreen;
-      const isCounterTrendPullbackSell = (trendRegime === "STRONG_UPTREND" || ema9 > ema21) && (posInChartRange > 0.45) && c0.isRed;
-
-      // -------------------------------------------------------------
-      // ЗАЩИТА №3: Запрет продажи на самом дне и покупки на вершине
-      // -------------------------------------------------------------
       const isExtremeBottom = (posInChartRange <= 0.16);
       const isExtremeTop = (posInChartRange >= 0.84);
 
-      // -------------------------------------------------------------
-      // ЗАЩИТА №4: Оценка 4 горизонтов
-      // -------------------------------------------------------------
+      // Сводные вето для покупок и продаж
+      const strictVetoBuy = isMacroBear || vetoBuyMA || vetoBuyClimax || vetoBuyRoom;
+      const strictVetoSell = isMacroBull || vetoSellMA || vetoSellClimax || vetoSellRoom;
+
+      // =============================================================
+      // ОЦЕНКА 4 ГОРИЗОНТОВ ЭКСПИРАЦИИ
+      // =============================================================
       const scenarios = [];
 
       // 1. 15s (SNIPER_BREAKOUT_15S, бейдж S15 - ТОЧКА ВХОДА!)
@@ -942,25 +1092,37 @@
         let scoreBuy15 = 0;
         let scoreSell15 = 0;
 
-        if (!isStreakExhausted && !isCounterTrendPullbackBuy && !vetoBuyWave) {
-          if (c0.isGreen && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr && (c0.upperWick || 0) <= c0.body * 0.30 && roomUpATR >= 0.9) {
-            if (waveSlope5 > 0 && ema9 >= ema21) {
-              canBuy15 = true;
-              scoreBuy15 = 82;
-              if (cPrev1 && cPrev1.isGreen) scoreBuy15 += 6;
-              if (micro.delta3s >= 0) scoreBuy15 += 4;
-            }
+        if (!strictVetoBuy && !isStreakExhausted) {
+          if (
+            c0.isGreen &&
+            c0.body >= 0.20 * atr &&
+            c0.body <= 0.80 * atr &&
+            (c0.upperWick || 0) <= c0.body * 0.35 &&
+            micro.delta3s >= 0 &&
+            (micro.delta5s !== undefined ? micro.delta5s > 0 : micro.delta6s > 0)
+          ) {
+            canBuy15 = true;
+            scoreBuy15 = 84;
+            if (cPrev1 && cPrev1.isGreen) scoreBuy15 += 5;
+            if (micro.delta3s > 0) scoreBuy15 += 4;
+            if (roomToHigh15 >= 0.70 * atr) scoreBuy15 += 3;
           }
         }
 
-        if (!isStreakExhausted && !isCounterTrendPullbackSell && !vetoSellWave) {
-          if (c0.isRed && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr && (c0.lowerWick || 0) <= c0.body * 0.30 && roomDownATR >= 0.9) {
-            if (waveSlope5 < 0 && ema9 <= ema21) {
-              canSell15 = true;
-              scoreSell15 = 82;
-              if (cPrev1 && cPrev1.isRed) scoreSell15 += 6;
-              if (micro.delta3s <= 0) scoreSell15 += 4;
-            }
+        if (!strictVetoSell && !isStreakExhausted) {
+          if (
+            c0.isRed &&
+            c0.body >= 0.20 * atr &&
+            c0.body <= 0.80 * atr &&
+            (c0.lowerWick || 0) <= c0.body * 0.35 &&
+            micro.delta3s <= 0 &&
+            (micro.delta5s !== undefined ? micro.delta5s < 0 : micro.delta6s < 0)
+          ) {
+            canSell15 = true;
+            scoreSell15 = 84;
+            if (cPrev1 && cPrev1.isRed) scoreSell15 += 5;
+            if (micro.delta3s < 0) scoreSell15 += 4;
+            if (roomToLow15 >= 0.70 * atr) scoreSell15 += 3;
           }
         }
 
@@ -972,7 +1134,7 @@
             score: scoreBuy15,
             factors: [
               isRu ? "Свежий импульс ВВЕРХ (1–2 свеча S15)" : "Fresh impulse UP (1-2 bar S15)",
-              isRu ? `Запас хода до сопротивления: ${roomUpATR.toFixed(1)} ATR` : `Room to resistance: ${roomUpATR.toFixed(1)} ATR`,
+              isRu ? `Запас хода до локального хая: ${(roomToHigh15 / atr).toFixed(1)} ATR` : `Room to high: ${(roomToHigh15 / atr).toFixed(1)} ATR`,
               isRu ? `Короткая встречная тень (${((c0.upperWick || 0) / Math.max(0.01, c0.body) * 100).toFixed(0)}% тела)` : `Tiny upper wick`,
             ],
             line1: isRu ? "📌 Снайперский импульс 15s: свежий разгон покупателей." : "📌 Sniper breakout 15s: fresh buying flow.",
@@ -986,7 +1148,7 @@
             score: scoreSell15,
             factors: [
               isRu ? "Свежий импульс ВНИЗ (1–2 свеча S15)" : "Fresh impulse DOWN (1-2 bar S15)",
-              isRu ? `Запас хода до поддержки: ${roomDownATR.toFixed(1)} ATR` : `Room to support: ${roomDownATR.toFixed(1)} ATR`,
+              isRu ? `Запас хода до локального лоя: ${(roomToLow15 / atr).toFixed(1)} ATR` : `Room to low: ${(roomToLow15 / atr).toFixed(1)} ATR`,
               isRu ? `Короткая встречная тень (${((c0.lowerWick || 0) / Math.max(0.01, c0.body) * 100).toFixed(0)}% тела)` : `Tiny lower wick`,
             ],
             line1: isRu ? "📌 Снайперский пробой 15s: свежий напор продавцов." : "📌 Sniper breakdown 15s: fresh selling flow.",
@@ -1002,23 +1164,39 @@
         let scoreBuy30 = 0;
         let scoreSell30 = 0;
 
-        if (!vetoBuyWave && (ema9 > ema21 || trendRegime === "STRONG_UPTREND") && roomUpATR >= 0.5) {
-          const hasPullback = (cPrev1 && cPrev1.isRed) || (last5.some((c) => c.isRed));
-          if (c0.isGreen && hasPullback && c0.body >= 0.35 * atr) {
+        if (!strictVetoBuy && (ema9 > ema21 || trendRegime === "STRONG_UPTREND")) {
+          const hasPullback = (cPrev1 && cPrev1.isRed) || last5.some((c) => c.isRed);
+          if (
+            c0.isGreen &&
+            hasPullback &&
+            c0.body >= 0.25 * atr &&
+            c0.body <= 0.80 * atr &&
+            (c0.upperWick || 0) <= c0.body * 0.40 &&
+            micro.delta3s >= 0 &&
+            (micro.delta5s !== undefined ? micro.delta5s > 0 : micro.delta6s > 0)
+          ) {
             canBuy30 = true;
-            scoreBuy30 = 83;
-            if (cPrev1 && cPrev1.isRed) scoreBuy30 += 6;
-            if (micro.delta6s > 0) scoreBuy30 += 4;
+            scoreBuy30 = 85;
+            if (cPrev1 && cPrev1.isRed) scoreBuy30 += 5;
+            if (micro.delta5s > 0) scoreBuy30 += 4;
           }
         }
 
-        if (!vetoSellWave && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND") && roomDownATR >= 0.5) {
-          const hasPullback = (cPrev1 && cPrev1.isGreen) || (last5.some((c) => c.isGreen));
-          if (c0.isRed && hasPullback && c0.body >= 0.35 * atr) {
+        if (!strictVetoSell && (ema9 < ema21 || trendRegime === "STRONG_DOWNTREND")) {
+          const hasPullback = (cPrev1 && cPrev1.isGreen) || last5.some((c) => c.isGreen);
+          if (
+            c0.isRed &&
+            hasPullback &&
+            c0.body >= 0.25 * atr &&
+            c0.body <= 0.80 * atr &&
+            (c0.lowerWick || 0) <= c0.body * 0.40 &&
+            micro.delta3s <= 0 &&
+            (micro.delta5s !== undefined ? micro.delta5s < 0 : micro.delta6s < 0)
+          ) {
             canSell30 = true;
-            scoreSell30 = 83;
-            if (cPrev1 && cPrev1.isGreen) scoreSell30 += 6;
-            if (micro.delta6s < 0) scoreSell30 += 4;
+            scoreSell30 = 85;
+            if (cPrev1 && cPrev1.isGreen) scoreSell30 += 5;
+            if (micro.delta5s < 0) scoreSell30 += 4;
           }
         }
 
@@ -1031,7 +1209,7 @@
             factors: [
               isRu ? "Откат по бычьему тренду поглощён (S15 + S30)" : "Bullish trend pullback absorbed",
               isRu ? `Свеча возобновления тренда (${c0.body.toFixed(2)} px)` : `Trend resumption candle`,
-              isRu ? `Запас хода: ${roomUpATR.toFixed(1)} ATR` : `Room: ${roomUpATR.toFixed(1)} ATR`,
+              isRu ? `Запас хода: ${(roomToHigh15 / atr).toFixed(1)} ATR` : `Room: ${(roomToHigh15 / atr).toFixed(1)} ATR`,
             ],
             line1: isRu ? "📌 Откат по тренду 30s: коррекция завершена, тренд продолжен." : "📌 Trend pullback 30s: correction absorbed.",
             line2: isRu ? "🎯 Вход ВВЕРХ (30с): продолжение доминирующего тренда." : "🎯 Trade UP (30s): dominant trend continuation.",
@@ -1045,7 +1223,7 @@
             factors: [
               isRu ? "Откат по медвежьему тренду поглощён (S15 + S30)" : "Bearish trend pullback absorbed",
               isRu ? `Свеча возобновления тренда (${c0.body.toFixed(2)} px)` : `Trend resumption candle`,
-              isRu ? `Запас хода: ${roomDownATR.toFixed(1)} ATR` : `Room: ${roomDownATR.toFixed(1)} ATR`,
+              isRu ? `Запас хода: ${(roomToLow15 / atr).toFixed(1)} ATR` : `Room: ${(roomToLow15 / atr).toFixed(1)} ATR`,
             ],
             line1: isRu ? "📌 Откат по тренду 30s: коррекция завершена, тренд продолжен." : "📌 Trend pullback 30s: correction absorbed.",
             line2: isRu ? "🎯 Вход ВНИЗ (30с): продолжение доминирующего тренда." : "🎯 Trade DOWN (30s): dominant trend continuation.",
@@ -1060,13 +1238,14 @@
         let scoreBuy1m = 0;
         let scoreSell1m = 0;
 
-        const isNearFloor = (roomDownATR < 0.30 || bb.pctB <= 0.22 || rsi <= 35);
-        const isNearCeiling = (roomUpATR < 0.30 || bb.pctB >= 0.78 || rsi >= 65);
+        const isNearFloor = (roomDownATR < 0.35 || bb.pctB <= 0.25 || rsi <= 38);
+        const isNearCeiling = (roomUpATR < 0.35 || bb.pctB >= 0.75 || rsi >= 62);
 
-        if (!vetoBuyWave && isNearFloor && !isExtremeTop) {
-          const hasLowerWick = (c0.lowerWick || 0) >= c0.body * 0.55 || (cPrev1 && (cPrev1.lowerWick || 0) >= cPrev1.body * 0.55);
-          const hasColorChange = c0.isGreen && (cPrev1 && cPrev1.isRed) && c0.body >= 0.30 * atr;
-          if (hasLowerWick || hasColorChange) {
+        // Покупка 1m не должна идти против жесткого медвежьего тренда
+        if (!isMacroBear && redCountLast4 < 3 && !vetoBuyClimax && isNearFloor && !isExtremeTop) {
+          const hasLowerWick = (c0.lowerWick || 0) >= c0.body * 0.50 || (cPrev1 && (cPrev1.lowerWick || 0) >= cPrev1.body * 0.50);
+          const hasColorChange = c0.isGreen && (cPrev1 && cPrev1.isRed) && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr;
+          if ((hasLowerWick || hasColorChange) && roomToHigh15 >= 0.45 * atr && micro.delta3s >= 0) {
             canBuy1m = true;
             scoreBuy1m = 84;
             if (hasLowerWick) scoreBuy1m += 5;
@@ -1075,10 +1254,11 @@
           }
         }
 
-        if (!vetoSellWave && isNearCeiling && !isExtremeBottom) {
-          const hasUpperWick = (c0.upperWick || 0) >= c0.body * 0.55 || (cPrev1 && (cPrev1.upperWick || 0) >= cPrev1.body * 0.55);
-          const hasColorChange = c0.isRed && (cPrev1 && cPrev1.isGreen) && c0.body >= 0.30 * atr;
-          if (hasUpperWick || hasColorChange) {
+        // Продажа 1m не должна идти против жесткого бычьего тренда
+        if (!isMacroBull && greenCountLast4 < 3 && !vetoSellClimax && isNearCeiling && !isExtremeBottom) {
+          const hasUpperWick = (c0.upperWick || 0) >= c0.body * 0.50 || (cPrev1 && (cPrev1.upperWick || 0) >= cPrev1.body * 0.50);
+          const hasColorChange = c0.isRed && (cPrev1 && cPrev1.isGreen) && c0.body >= 0.25 * atr && c0.body <= 0.80 * atr;
+          if ((hasUpperWick || hasColorChange) && roomToLow15 >= 0.45 * atr && micro.delta3s <= 0) {
             canSell1m = true;
             scoreSell1m = 84;
             if (hasUpperWick) scoreSell1m += 5;
@@ -1125,17 +1305,19 @@
         let scoreBuy2m = 0;
         let scoreSell2m = 0;
 
-        if (!vetoBuyWave && posInChartRange <= 0.28 && greenCount5 >= 3 && c0.isGreen) {
+        // Покупка 2m: строго запрещена при медвежьем макро-тренде
+        if (!strictVetoBuy && !isMacroBear && posInChartRange <= 0.35 && greenCount5 >= 3 && c0.isGreen && roomToHigh15 >= 0.50 * atr) {
           canBuy2m = true;
-          scoreBuy2m = 85;
-          if (roomUpATR >= 1.2) scoreBuy2m += 6;
+          scoreBuy2m = 86;
+          if (roomUpATR >= 1.2) scoreBuy2m += 5;
           if (micro.delta15s > 0) scoreBuy2m += 4;
         }
 
-        if (!vetoSellWave && posInChartRange >= 0.72 && redCount5 >= 3 && c0.isRed) {
+        // Продажа 2m: СТРОГО ЗАПРЕЩЕНА при бычьем макро-тренде (устраняет ошибку LBP/USD OTC!)
+        if (!strictVetoSell && !isMacroBull && posInChartRange >= 0.65 && redCount5 >= 3 && c0.isRed && roomToLow15 >= 0.50 * atr) {
           canSell2m = true;
-          scoreSell2m = 85;
-          if (roomDownATR >= 1.2) scoreSell2m += 6;
+          scoreSell2m = 86;
+          if (roomDownATR >= 1.2) scoreSell2m += 5;
           if (micro.delta15s < 0) scoreSell2m += 4;
         }
 
@@ -1174,7 +1356,7 @@
       scenarios.sort((a, b) => b.score - a.score);
       const best = scenarios.length > 0 ? scenarios[0] : null;
 
-      if (best && best.score >= 80) {
+      if (best && best.score >= 84) {
         let safeDir = best.direction;
         if (c0.isRed && safeDir === "BUY" && !best.setup.includes("REVERSAL")) safeDir = "SELL";
         if (c0.isGreen && safeDir === "SELL" && !best.setup.includes("REVERSAL")) safeDir = "BUY";
@@ -1212,18 +1394,29 @@
         };
       }
 
-      // Дошли до лимита сканирования (7 пар): выбираем лучший сценарий СТРОГО без нарушения защит №1, №2, №3!
+      // Дошли до лимита сканирования (7 пар): СТРОГО СОБЛЮДАЕМ Absolute Macro Trend Lock, MA Alignment, Climax Guard и Room to Structure!
       let forcedDir = waveSlope5 > 0 || greenBodySum5 > redBodySum5 ? "BUY" : "SELL";
-      if (vetoBuyWave) forcedDir = "SELL";
-      if (vetoSellWave) forcedDir = "BUY";
-      if (isExtremeBottom) forcedDir = "BUY";
-      if (isExtremeTop) forcedDir = "SELL";
+      if (strictVetoBuy) forcedDir = "SELL";
+      if (strictVetoSell) forcedDir = "BUY";
 
-      const forcedExpiry = (c0.body >= 0.75 * atr) ? "15s" : "30s";
+      // Если и BUY, и SELL заблокированы защитами — отменяем вход для защиты депозита!
+      if ((forcedDir === "BUY" && strictVetoBuy) || (forcedDir === "SELL" && strictVetoSell)) {
+        return {
+          valid: true,
+          shouldTrade: false,
+          vetoReason: "HIGH_RISK_MARKET",
+          confidence: 45,
+          recommendedExpiry: "30s",
+          explanationRu: isRu ? "Рынок в зоне экстремального риска — вход отклонён для защиты баланса" : "Extreme market risk — trade blocked for capital protection",
+          explanationEn: "Extreme market risk — trade blocked for capital protection",
+        };
+      }
+
+      const forcedExpiry = (c0.body >= 0.70 * atr) ? "15s" : "30s";
       const forcedSetup = (forcedExpiry === "15s") ? "SNIPER_BREAKOUT_15S" : "TREND_PULLBACK_30S";
 
       const forcedFactors = [
-        isRu ? `Согласованный вход по фактической правой волне (${forcedDir})` : `Aligned entry with live right wave (${forcedDir})`,
+        isRu ? `Согласованный вход по трендовой волне (${forcedDir})` : `Aligned entry with trend wave (${forcedDir})`,
         isRu ? `Защищённый горизонт экспирации: ${forcedExpiry}` : `Protected horizon: ${forcedExpiry}`,
       ];
 
@@ -1457,9 +1650,26 @@
         };
       }
 
-      const activeCandles = (scan && scan.visualCandles && scan.visualCandles.length >= 8)
-        ? scan.visualCandles
-        : state.candles;
+      // Candle source priority:
+      // 1. LiveTickBuffer.buildCandles(15, 45) if >= 8 candles (real mathematical broker quotes)
+      // 2. scan.visualCandles if >= 8
+      // 3. state.candles
+      let activeCandles = [];
+      if (typeof LiveTickBuffer !== "undefined") {
+        const liveS15 = LiveTickBuffer.buildCandles(15, 45);
+        if (liveS15 && liveS15.length >= 8) {
+          activeCandles = liveS15;
+        }
+      }
+      if (activeCandles.length < 8 && scan && scan.visualCandles && scan.visualCandles.length >= 8) {
+        activeCandles = scan.visualCandles;
+      }
+      if (activeCandles.length < 8 && state.candles && state.candles.length >= 8) {
+        activeCandles = state.candles;
+      }
+      if (activeCandles.length < 8) {
+        activeCandles = activeCandles.length > 0 ? activeCandles : state.candles;
+      }
 
       const curPrice = activeCandles.length > 0 ? Number(activeCandles[activeCandles.length - 1].close) : 1.0;
       const pro = ProTraderEngine.analyze(activeCandles, curPrice, scan);
@@ -2564,7 +2774,7 @@
             targetPair: targetPairName,
             currentPair: actualCurrentPair,
             recentPairs: state.recentPairs,
-            minPayout: 80,
+            minPayout: 88,
           },
           "*"
         );
@@ -2591,12 +2801,19 @@
       }, 2500);
 
       const onMsg = (event) => {
-        if (event.source !== window || !event.data || event.data.source !== "WINKY_HOOK") return;
+        if (event.source !== window || !event.data || (event.data.source !== "WINKY_HOOK" && event.data.source !== "WINKY_PAGE_HOOK")) return;
         if (event.data.type === "WINKY_RESP_CHART_TIMEFRAME") {
           if (!resolved) {
             resolved = true;
             clearTimeout(timeoutId);
             window.removeEventListener("message", onMsg);
+            if (event.data.activeTf) {
+              state.actualChartTf = event.data.activeTf;
+              const orbEl = document.getElementById("winkyOrbTime") || document.querySelector(".winky-orb-val");
+              if (orbEl) {
+                orbEl.textContent = `Таймфрейм: ${event.data.activeTf}`;
+              }
+            }
             resolve(event.data);
           }
         }
