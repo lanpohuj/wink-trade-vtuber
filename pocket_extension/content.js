@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  const CONTENT_VERSION="2.3.2";
+  const CONTENT_VERSION="2.3.2", DATA_REVISION='history-r6';
   if (window.__WINKY_NEKO_INJECTED__) return;
   window.__WINKY_NEKO_INJECTED__ = true;
 
@@ -2092,6 +2092,11 @@
   }
 
   function getPocketBalance() {
+    // Pocket animates the header through intermediate balances after payout.
+    // Its current-account copy is explicitly no-animation and updates at once.
+    const settled=document.querySelector('.balance-item--current .no-animation');
+    const settledValue=settled && parsePocketMoney(settled.textContent);
+    if(Number.isFinite(settledValue) && settledValue>=0)return settledValue;
     const balanceSelectors = [
       ".balance-info-block__balance",
       ".js-hd-balance",
@@ -3239,7 +3244,7 @@
     return Boolean(q && normalizePocketPair(q.pair)===normalizePocketPair(state.targetPair) && Date.now()-q.receivedAt<3500);
   }
 
-  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:CONTENT_VERSION,pair:state.targetPair,hook:state.hookStatus || null,historyRequest:state.historyRequestStatus || null,frames:marketDataSummary(),
+  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:CONTENT_VERSION,revision:DATA_REVISION,pair:state.targetPair,hook:state.hookStatus || null,historyRequest:state.historyRequestStatus || null,frames:marketDataSummary(),
     brokerClock:state.brokerClock || null,brokerNow:marketNow(),quoteSource:state.lastRealQuote?.source || null,chartTf:state.actualChartTf || null,quoteFresh:quoteIsFresh(),searchRunning:state.searchRunning,
     decisions:state.decisionJournal}));
 

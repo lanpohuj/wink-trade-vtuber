@@ -20,7 +20,7 @@ function loadContent() {
   };
   let source = fs.readFileSync(path.join(__dirname, 'content.js'), 'utf8');
   source = source.replace('  // Ensure DOM ready', `
-    globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome,
+    globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance,
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
       executeTradeWithSignal,
@@ -728,4 +728,16 @@ test('captured Pocket market-watch labels provide the observed fifth factor',()=
   assert.deepEqual({...c.readTradersSentiment()},{bullish:25,bearish:75,observed:true});
   panel.querySelector=()=>null;
   assert.equal(c.readTradersSentiment().observed,false);
+});
+
+test('Pocket no-animation current-account balance avoids an intermediate payout profit',()=>{
+  const c=loadContent();let settled='45,868.12',header='45,853.84';
+  c.document.querySelector=selector=>selector==='.balance-item--current .no-animation'?{textContent:settled}:
+    selector==='.balance-info-block__balance'?{textContent:header}:null;
+  c.setBalanceReader(c.getDomBalance);
+  const trade=c.trade();trade.balanceBefore=45822.12;
+  const result=c.evaluateTradeOutcome(trade);
+  assert.equal(result.outcome,'WIN');assert.equal(result.profitDelta,46);
+  settled='45,772.12';assert.equal(c.getDomBalance(),45772.12);
+  settled='*******';assert.equal(c.getDomBalance(),45853.84);
 });

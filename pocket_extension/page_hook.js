@@ -9,7 +9,8 @@
   // Prevent double injection
   if (window.__WINKY_PAGE_HOOK_LOADED__) return;
   window.__WINKY_PAGE_HOOK_LOADED__ = true;
-  const HOOK_VERSION="2.3.2";
+  const HOOK_VERSION="2.3.2", DATA_REVISION='history-r6';
+  let lastChartControl=null;
   let lastHistoryTransport=null;
   const historyReplayAt=new Map();
   const historyWindows=new Map(),historyRecoveries=new Map();
@@ -66,7 +67,7 @@
     if(!document.documentElement || !document.createElement || !document.getElementById)return;
     let el=document.getElementById('winky-hook-diagnostics');
     if(!el) {el=document.createElement('script');el.id='winky-hook-diagnostics';el.type='application/json';document.documentElement.appendChild(el);}
-    el.textContent=JSON.stringify({version:HOOK_VERSION,context:marketContext,chartTf:window.__winkyActualChartTf || null,trace:marketTrace});
+    el.textContent=JSON.stringify({version:HOOK_VERSION,revision:DATA_REVISION,context:marketContext,chartTf:window.__winkyActualChartTf || null,chartControl:lastChartControl,trace:marketTrace});
   }
   function rememberHistoryWindow(group,periodSec) {
     if(![15,30,60,120].includes(periodSec))return;
@@ -999,10 +1000,14 @@
     // Changing the interval can replace Pocket's toolbar anchor. Reacquire
     // the observed control rather than clicking the detached previous node.
     const currentButton=getActualChartTimeframeBadge().btn || button;
+    lastChartControl={anchorClass:currentButton?.className || null,connected:currentButton?.isConnected ?? null,
+      before:visibleChartMenu()?.parentElement?.className || null,startedAt:Date.now()};
     if(currentButton)realClick(currentButton);
     // Pocket removes its modal after the exit transition. Do not report a
     // failure at 100 ms or click again while the first close is still running.
     for(let i=0;i<8 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));
+    lastChartControl.closed=!visibleChartMenu();lastChartControl.elapsedMs=Date.now()-lastChartControl.startedAt;
+    lastChartControl.after=visibleChartMenu()?.parentElement?.className || null;
     return !visibleChartMenu();
   }
 
