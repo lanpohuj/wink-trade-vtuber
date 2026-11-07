@@ -3,29 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-function loadHook() {
-  let now=1700000000000;
-  const messages=[],intervals=[],commands=[];
-  class Socket { constructor(){this.handlers={};} addEventListener(event,fn){this.handlers[event]=fn;} send(data){this.sent=data;(this.sentMessages || (this.sentMessages=[])).push(data);} receive(data){this.handlers.message({data});} }
-  class Canvas {} Canvas.prototype.getContext=()=>null;
-  class Context {} Context.prototype.fillText=()=>{};Context.prototype.fillRect=()=>{};
-  const window={WebSocket:Socket,postMessage:m=>messages.push(m),addEventListener(event,fn){if(event==='message')commands.push(fn);}};
-  const document={querySelectorAll:()=>[],querySelector:()=>null,dispatchEvent(){}};
-  const sandbox={window,document,HTMLCanvasElement:Canvas,CanvasRenderingContext2D:Context,
-    console:{log(){},warn(){},error(){}},TextDecoder,TextEncoder,ArrayBuffer,Uint8Array,Blob,
-    Date:class extends Date{static now(){return now;}},setInterval(fn,ms){intervals.push({fn,ms});},clearInterval(){},
-    setTimeout:(fn,ms=0)=>{queueMicrotask(()=>{now+=ms;fn();});},
-    MouseEvent:class{constructor(type){this.type=type;}},KeyboardEvent:class{},
-    HTMLInputElement:class{},performance:{now:()=>now}};
-  Object.defineProperty(sandbox.HTMLInputElement.prototype,'value',{set(value){this._value=value;},get(){return this._value;}});
-  let source=fs.readFileSync(__dirname+'/page_hook.js','utf8');
-  const at=source.lastIndexOf('})();');
-  source=source.slice(0,at)+`globalThis.testing={marketTrace,handleMainWorldSwitchPair,closeAssetMenu,handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
-  vm.runInNewContext(source,sandbox);
-  return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now,
-    async command(data){for(const fn of commands)await fn({source:window,data:{source:'WINKY_CONTENT',...data}});},
-    runIntervals(ms){for(const interval of intervals)if(interval.ms===ms)interval.fn();}};
-}
+const {loadHook}=require('./test_harness.cjs');
 
 test('four expiry modes retain native outgoing time rewrite and optionType 100',async()=>{
   for(const [label,seconds] of [['15s',15],['30s',30],['1m',60],['2m',120]]) {

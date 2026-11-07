@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
+const {loadHook}=require('./test_harness.cjs');
 
 function loadContent() {
   let now = 1700000000000, balance = 1000, rows = [];
@@ -668,4 +669,23 @@ test('a forming setup retains observed indicators and factors without becoming e
   const r=c.ProTraderEngine.analyze([],0,{timeframes:frames});
   assert.equal(r.shouldTrade,false);assert.equal(r.dataStatus,'SETUP_FORMING');assert.ok(Number.isFinite(r.rsi));
   assert.ok(r.confluence.factors.some(f=>f.score>0));assert.equal(c.canEnterAnalysis(r,r.confluence,0,false),false);
+});
+
+test('native tuple history crosses both worlds and restores M1/M2 before any visual switch',()=>{
+  const fixture=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-fast-history.json','utf8'));
+  const c=loadContent(),h=loadHook(),socket=new h.Socket('wss://test');c.state.targetPair='USD/SGD OTC';
+  let forwarded=0;const forward=()=>{while(forwarded<h.messages.length)c.emit(h.messages[forwarded++]);};
+  const brokerNow=fixture.payload.history.at(-1)[0]*1000,openBucket=Math.floor(brokerNow/60000)*60000;
+  // Synthetic contiguous extension of the CAPTURED tuple shape, including the
+  // native two-hour clock offset and the recent gap supplied by real-time ticks.
+  const candles=Array.from({length:99},(_,i)=>[(openBucket-(100-i)*60000)/1000,1.3,1.3001,1.301,1.299,100]);
+  const history=Array.from({length:901},(_,i)=>[(brokerNow-(900-i)*1000)/1000,1.3002]);
+  socket.send('42'+JSON.stringify(['changeSymbol',{asset:fixture.payload.asset,period:60}]));forward();
+  socket.receive('42'+JSON.stringify([fixture.event,{asset:fixture.payload.asset,period:60,candles,history}]));forward();
+  socket.receive('42'+JSON.stringify(['updateStream',[[fixture.payload.asset,brokerNow/1000,1.3002]]]));forward();
+  c.emit({type:'PRICE_TICK',source_type:'canvas',rawSymbol:fixture.payload.asset,price:1.3002,timestamp:c.now()});
+  const frames=c.marketFrames();assert.ok(c.ProTraderEngine.frameContext(frames[60]).closedCount>=99);
+  assert.ok(c.ProTraderEngine.frameContext(frames[120]).closedCount>=49);
+  assert.equal(c.state.actualChartTf,undefined);assert.equal(c.state.lastRealQuote.source,'ws');
+  const a=c.ChartAnalyzer.analyzeMarket({visualCandles:[]});assert.notEqual(a.dataStatus,'NO_DATA');assert.equal(a.shouldTrade,false);
 });
