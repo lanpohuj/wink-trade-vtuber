@@ -547,6 +547,17 @@
     let bullish = 50;
     let bearish = 50;
     try {
+      // Captured Pocket market-watch panel: green start = BUY, red end = SELL.
+      // Both labels must belong to one visible panel and form a real percentage.
+      for(const panel of document.querySelectorAll('.market-watch-panel__content.pb')) {
+        if(panel.offsetParent===null)continue;
+        const call=panel.querySelector('.pb__number-start')?.textContent?.trim().match(/^(\d{1,3})\s*%$/);
+        const put=panel.querySelector('.pb__number-end')?.textContent?.trim().match(/^(\d{1,3})\s*%$/);
+        if(call && put) {
+          const bullish=Number(call[1]),bearish=Number(put[1]);
+          if(bullish<=100 && bearish<=100 && Math.abs(bullish+bearish-100)<=2)return {bullish,bearish,observed:true};
+        }
+      }
       // 1. Check known selectors
       const callEl = document.querySelector(".sentiment-call, .sentiment__call, .chart-sentiment-bull, .trading-panel .sentiment-up");
       const putEl = document.querySelector(".sentiment-put, .sentiment__put, .chart-sentiment-bear, .trading-panel .sentiment-down");
@@ -875,7 +886,7 @@
       const derived=period>15?cleanMarketFrame(aggregateCandles(children,2),period):[];
       const choices=[numeric,derived,visual].filter(b=>b.length);
       const ready=choices.filter(b=>frameIsReady(b,period));
-      frames[period]=ready.find(b=>b.at(-1).source!=='pixels') || ready.find(b=>b===visual) || ready[0] ||
+      frames[period]=ready.filter(b=>b.at(-1).source!=='pixels').sort((a,b)=>closedCount(b)-closedCount(a))[0] || ready.find(b=>b===visual) || ready[0] ||
         choices.sort((a,b)=>closedCount(b)-closedCount(a))[0] || [];
     }
     return frames;

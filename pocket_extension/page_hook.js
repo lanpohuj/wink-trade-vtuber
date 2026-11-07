@@ -997,7 +997,9 @@
   async function closeChartMenu(button) {
     if(!visibleChartMenu())return true;
     if(button)realClick(button);
-    await new Promise(resolve=>setTimeout(resolve,100));
+    // Pocket removes its modal after the exit transition. Do not report a
+    // failure at 100 ms or click again while the first close is still running.
+    for(let i=0;i<8 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));
     return !visibleChartMenu();
   }
 

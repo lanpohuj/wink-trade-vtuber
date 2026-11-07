@@ -1,0 +1,7 @@
+{
+  "captured": "2026-11-07, Pocket QT Demo; public market data only",
+  "html": "<div class=\"market-watch-panel__content pb tooltip2\"><span class=\"pb__number-start\">25%</span><span class=\"pb__number-end\">75%</span><div class=\"pb__start\" style=\"height: 25%;\"></div><div class=\"pb__end\" style=\"height: 75%;\"></div><div class=\"tooltip-content tooltip-status-on position-left\"><div class=\"tooltip-text\">Направление всех открытых сделок трейдеров на платформе по активу на графике</div></div></div>",
+  "startBackground": "linear-gradient(rgb(50, 172, 65), rgb(20, 70, 26))",
+  "endBackground": "linear-gradient(rgb(141, 32, 26), rgb(243, 56, 44))",
+  "meaning": {"start": "BUY", "end": "SELL"}
+}

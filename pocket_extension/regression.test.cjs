@@ -708,3 +708,24 @@ test('M2 context crosses a native OHLC to tick boundary within the same Pocket q
   assert.notEqual(a.dataStatus,'NO_DATA');
   assert.ok(a.rejected.every(r=>r.reason!=='INCOMPATIBLE_CANDLES'));
 });
+
+test('longer verified quote aggregation is preferred over a short but ready tick window',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const bars=taggedBars(c,Array.from({length:193},(_,i)=>({open:1.3+i*.00001,close:1.300005+i*.00001,high:1.300009+i*.00001,low:1.299999+i*.00001})),15,'broker');
+  c.rememberMarketFrame(15,bars,'broker');
+  c.LiveTickBuffer.reset(c.state.targetPair);
+  c.LiveTickBuffer.loadHistoryTicks(Array.from({length:901},(_,i)=>({ts:c.now()-900000+i*1000,price:1.302})),c.state.targetPair);
+  const frames=c.marketFrames();
+  assert.ok(c.ProTraderEngine.frameContext(frames[30]).closedCount>=90);
+  assert.equal(frames[30].at(-1).source,'quotes');
+});
+
+test('captured Pocket market-watch labels provide the observed fifth factor',()=>{
+  const fixture=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-sentiment.json','utf8'));
+  const c=loadContent(),panel={offsetParent:{},querySelector(selector){return {textContent:selector.includes('start')?'25%':'75%'};}};
+  c.document.querySelectorAll=selector=>selector==='.market-watch-panel__content.pb'?[panel]:[];
+  assert.match(fixture.html,/pb__number-start/);
+  assert.deepEqual({...c.readTradersSentiment()},{bullish:25,bearish:75,observed:true});
+  panel.querySelector=()=>null;
+  assert.equal(c.readTradersSentiment().observed,false);
+});

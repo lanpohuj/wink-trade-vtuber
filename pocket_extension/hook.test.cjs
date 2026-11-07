@@ -227,6 +227,18 @@ test('captured Pocket menu is scoped correctly and closes by its header, not Esc
   assert.equal(opened,false);assert.equal(itemClicks,1);
 });
 
+test('chart menu closure waits for Pocket transition without a second toggle',async()=>{
+  const h=loadHook();let closesAt=Infinity,clicks=0;
+  const toolbar={offsetParent:{},textContent:'M1',children:[],getBoundingClientRect:()=>({left:245,top:82,width:40,height:35}),
+    querySelectorAll:()=>[],closest:()=>null,dispatchEvent(){},click(){clicks++;closesAt=h.now()+240;}};
+  const menu={offsetParent:{},getBoundingClientRect:()=>({width:440,height:380})};
+  h.document.querySelectorAll=selector=>selector==='.drop-down-modal--chart-type'?(h.now()<closesAt?[menu]:[]):
+    selector.includes('.items__link--chart-type')?[toolbar]:[];
+  await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:234});
+  assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
+  assert.equal(clicks,1);assert.ok(h.now()>=closesAt);
+});
+
 test('a combined native response forwards tick history and named OHLC independently',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
   socket.receive('42'+JSON.stringify(['updateHistoryNewFast',{asset:'EURUSD_otc',period:60,
