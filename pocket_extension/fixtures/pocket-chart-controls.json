@@ -1,0 +1,7 @@
+{
+  "source": "Live demo DOM, po.financial, 2026-11-07; decorative SVG omitted",
+  "toolbar": "<a class=\"tooltip2 items__link items__link--chart-type\"><div class=\"counter animated zoomIn\"><span class=\"counter__icon\">M1</span></div><div class=\"tooltip-content\"><div class=\"tooltip-text\">Типы графика: Свечи<p>Период: M1</p></div></div></a>",
+  "menu": "<div class=\"drop-down-modal drop-down-modal--chart-type\"><div class=\"time-frames-block\"><div class=\"time-frames-block__title\">Интервал</div><ul class=\"list-links color-blue\"><li><a><span>S5</span></a></li><li><a><span>S10</span></a></li><li><a><span>S15</span></a></li><li><a><span>S30</span></a></li><li class=\"active\"><a><span>M1</span></a></li><li><a><span>M2</span></a></li><li><a><span>M3</span></a></li><li><a><span>M5</span></a></li><li><a><span>M10</span></a></li><li><a><span>M15</span></a></li><li><a><span>M30</span></a></li><li><a><span>H1</span></a></li><li><a><span>H4</span></a></li><li><a><span>D1</span></a></li></ul></div></div>",
+  "escapeClosesMenu": false,
+  "headerClickClosesMenu": true
+}

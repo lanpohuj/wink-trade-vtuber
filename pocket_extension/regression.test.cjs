@@ -650,3 +650,22 @@ test('normalization does not stitch a context across missing closed bars',()=>{
   const c=loadContent();c.state.targetPair='EUR/USD OTC';const bars=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60);bars.splice(-5,1);
   const cleaned=c.cleanMarketFrame(bars,60);assert.equal(cleaned.length,4);assert.equal(c.frameIsReady(cleaned,60),false);
 });
+
+test('canvas labels cannot rewind the broker clock when Pocket timestamps have a server offset',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';const broker=c.now()+7200000;
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',price:1.1,timestamp:broker});
+  c.emit({type:'PRICE_TICK',source_type:'canvas',rawSymbol:'EURUSD_otc',price:1.1,timestamp:c.now()});
+  assert.equal(c.state.lastRealQuote.timestamp,broker);assert.equal(c.state.lastRealQuote.source,'ws');
+  const time=Math.floor(broker/60000)*60000;
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'EURUSD_otc',periodSec:60,candles:[{time:time-60000,open:1,high:1.2,low:.9,close:1.1}]});
+  assert.ok(c.marketFrames()[60].some(b=>b.time===time-60000 && b.complete));
+});
+
+test('a forming setup retains observed indicators and factors without becoming executable',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const bars=taggedBars(c,scenarioFixture('TREND_PULLBACK'),15);bars.at(-1).close=bars.at(-1).open;
+  const frames={15:bars,30:flatContext(c,30),60:flatContext(c,60),120:flatContext(c,120)};
+  const r=c.ProTraderEngine.analyze([],0,{timeframes:frames});
+  assert.equal(r.shouldTrade,false);assert.equal(r.dataStatus,'SETUP_FORMING');assert.ok(Number.isFinite(r.rsi));
+  assert.ok(r.confluence.factors.some(f=>f.score>0));assert.equal(c.canEnterAnalysis(r,r.confluence,0,false),false);
+});

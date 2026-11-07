@@ -192,7 +192,7 @@ test('history recovery reuses only an observed native request, caps at 200 and r
   await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:3,pair:'EUR/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
   await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:4,pair:'GBP/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
   await h.command({type:'WINKY_CMD_GET_MARKET_STATUS',requestId:5});
-  assert.equal(h.messages.at(-1).version,'2.3.1');assert.equal(h.messages.at(-1).requestId,5);
+  assert.equal(h.messages.at(-1).version,'2.3.2');assert.equal(h.messages.at(-1).requestId,5);
 });
 test('timeframe changes within a pair preserve history identity; returning from another pair creates a new generation',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');
@@ -226,4 +226,33 @@ test('self-identified history ticks from multiple assets are not treated as ambi
   socket.receive('42["history",[["EURUSD_otc",1700000000.1,1.1],["GBPUSD_otc",1700000000.2,1.2]]]');
   const histories=h.messages.filter(m=>m.type==='WS_HISTORY_TICKS');assert.equal(histories.length,2);
   assert.equal(histories[0].generation,1);assert.equal(histories[1].generation,2);
+});
+
+test('captured Pocket menu is scoped correctly and closes by its header, not Escape',async()=>{
+  const fixture=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-chart-controls.json','utf8'));
+  assert.match(fixture.toolbar,/items__link--chart-type/);assert.match(fixture.menu,/time-frames-block/);
+  const h=loadHook();let opened=false,badge='M1',headerClicks=0,itemClicks=0;
+  const rect=()=>({left:245,top:82,width:40,height:35});
+  const toolbar={offsetParent:{},children:[],get textContent(){return badge;},getBoundingClientRect:rect,dispatchEvent(){},
+    closest:()=>null,querySelectorAll:()=>[],click(){opened=!opened;headerClicks++;}};
+  const labels=Array.from(fixture.menu.matchAll(/<span>([^<]+)<\/span>/g),m=>m[1]);
+  const items=labels.map(label=>({offsetParent:{},children:[],textContent:label,getAttribute:()=>null,dispatchEvent(){},
+    closest(){return this;},click(){badge=label;itemClicks++;}}));
+  const menu={offsetParent:{},getBoundingClientRect:()=>({width:400,height:380}),querySelectorAll(selector){
+    assert.equal(selector,'.time-frames-block li a');return items;}};
+  h.document.querySelectorAll=selector=>selector==='.drop-down-modal--chart-type'?(opened?[menu]:[]):
+    selector.includes('.items__link--chart-type')?[toolbar]:[];
+  await h.handleMainWorldEnsureChartTimeframe('S15',{requestId:232});
+  assert.equal(itemClicks,1);assert.equal(headerClicks,2);assert.equal(opened,false);
+  const reply=h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME');assert.equal(reply.ok,true);assert.equal(reply.activeTf,'S15');
+  opened=true;await h.handleMainWorldEnsureChartTimeframe('S15',{requestId:233});
+  assert.equal(opened,false);assert.equal(itemClicks,1);
+});
+
+test('a combined native response forwards tick history and named OHLC independently',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
+  socket.receive('42'+JSON.stringify(['updateHistoryNewFast',{asset:'EURUSD_otc',period:60,
+    history:[[1700000000.25,1.2]],candles:[{time:1699999920,open:1.1,close:1.2,high:1.25,low:1.05}]}]));
+  assert.equal(h.messages.find(m=>m.type==='WS_HISTORY_TICKS').ticks.length,1);
+  assert.equal(h.messages.find(m=>m.type==='WS_CANDLES_HISTORY').candles.length,1);
 });

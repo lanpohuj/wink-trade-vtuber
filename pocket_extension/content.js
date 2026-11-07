@@ -385,7 +385,7 @@
     if (src !== "WINKY_HOOK" && src !== "WINKY_PAGE_HOOK") return;
     const data = event.data;
     const trade = state.tradeContext;
-    if(data.type==='WINKY_RESP_MARKET_STATUS') state.hookStatus={...data,receivedAt:Date.now()};
+    if(data.type==='WINKY_RESP_MARKET_STATUS') {state.hookStatus={...data,receivedAt:Date.now()};publishDiagnostics(true);}
     if(data.type==='WINKY_RESP_REQUEST_HISTORY') state.historyRequestStatus={...data,receivedAt:Date.now()};
     if (data.type === 'MARKET_CONTEXT' && data.asset) {
       state.dataContexts.set(normalizePocketPair(data.asset), data);
@@ -792,7 +792,7 @@
   }
 
   function marketNow() {
-    const q=state.lastRealQuote;
+    const q=state.brokerClock && normalizePocketPair(state.brokerClock.pair)===normalizePocketPair(state.targetPair)?state.brokerClock:state.lastRealQuote;
     return q ? q.timestamp + Math.max(0,Date.now()-q.receivedAt) : Date.now();
   }
 
@@ -1080,7 +1080,7 @@
       const frames=scan?.timeframes || {[candles?.[0]?.candlePeriodSec]:candles || []};
       const requirements=[{period:15,expiry:'15s',context:60},{period:15,expiry:'30s',context:60,extra:30},
         {period:30,expiry:'1m',context:60},{period:60,expiry:'1m',context:120},{period:60,expiry:'2m',context:120}];
-      const candidates=[],rejected=[];
+      const candidates=[],rejected=[],observations=[];
       for(const spec of requirements) {
         const bars=frames[spec.period] || [], contextBars=frames[spec.context] || [],context=this.frameContext(contextBars);
         const periods=Array.from(new Set([spec.period,spec.context,...(spec.extra?[spec.extra]:[])]));
@@ -1097,7 +1097,12 @@
         }
         const own=bars.map(c=>({...c,origin:c.source,source:c.source==='pixels'?'pixels':'quotes'}));
         const frame=this.analyzeFrame(own,latest.close,scan,{expiry:spec.expiry,context});
-        if(!frame.shouldTrade) {reject(frame.vetoReason,frame.rejected);continue;}
+        if(!frame.shouldTrade) {
+          const observation={...frame,timeframesUsed:periods,entryPeriodSec:spec.period,contextDirection:context.direction,
+            dataSources:periods.map(period=>({period,source:frames[period]?.at(-1)?.source,closed:closedCount(frames[period])}))};
+          observation.confluence=evaluate5FactorConfluence(scan,observation,readTradersSentiment());
+          observations.push(observation);reject(frame.vetoReason,frame.rejected);continue;
+        }
         for(const raw of frame.scenarios || [frame]) {
           const result={...raw};
           const entryContext=this.frameContext(bars),extra=spec.extra?this.frameContext(frames[spec.extra]):null;
@@ -1130,7 +1135,8 @@
       const summary=marketDataSummary(frames);
       const detail=noData?summary.map(f=>(f.period<60?'S'+f.period:'M'+f.period/60)+': '+f.closed+' закрытых').join(', '):
         hard?'Старший тренд или уровень запрещает вход':'Сетап формируется: '+(rejected.find(r=>r.detail?.length)?.detail?.[0]?.reason || 'нет подтверждённого триггера');
-      return {valid:!noData,shouldTrade:false,direction:null,confidence:0,dataStatus:noData?'NO_DATA':hard?'TRADE_BLOCKED':'SETUP_FORMING',
+      const display=ranked(candidates.concat(observations))[0] || {};
+      return {...display,valid:!noData,shouldTrade:false,direction:null,confidence:0,dataStatus:noData?'NO_DATA':hard?'TRADE_BLOCKED':'SETUP_FORMING',
         vetoReason:reason,hardVeto:hard,rejected,scenarios:ranked(candidates),dataSummary:summary,explanationRu:detail,explanationEn:noData?'Waiting for confirmed candle history':'Waiting for a confirmed setup'};
     },
 
@@ -1232,7 +1238,11 @@
       }
       if(results.length) return {...results[0],scenarios:results,rejected};
       const hard=rejected.some(r=>['OPPOSING_HIGHER_TREND','INTO_WALL','CLIMAX_IMPULSE','EXHAUSTED_IMPULSE'].includes(r.reason));
-      return {valid:true,shouldTrade:false,direction:null,confidence:0,atr,rsi,pctB:bb.pctB,trendRegime,
+      const displayDirection=localDir || options.context?.direction || (price<bb.middle?'BUY':price>bb.middle?'SELL':null);
+      const above=levels.highs.filter(v=>v>price),below=levels.lows.filter(v=>v<price);
+      const res=above.length?Math.min(...above):null,sup=below.length?Math.max(...below):null;
+      return {valid:true,shouldTrade:false,direction:null,displayDirection,confidence:0,atr,rsi,pctB:bb.pctB,trendRegime,
+        sr:{resistance:res,support:sup,distToRes:res===null?null:(res-price)/atr,distToSup:sup===null?null:(price-sup)/atr},
         hardVeto:hard,vetoReason:hard?'HIGH_RISK_MARKET':'LOW_CONFLUENCE_WAIT',rejected,explanationRu:'Сетап ещё не подтверждён'};
     },
 
@@ -1251,10 +1261,11 @@
       if (metadata.source_type === 'ws' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol) === normalizePocketPair(state.targetPair)) {
         if(normalizePocketPair(LiveTickBuffer.pair)!==normalizePocketPair(state.targetPair)) LiveTickBuffer.reset(state.targetPair);
         LiveTickBuffer.addTick(price, timestamp);
-        state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
+        state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair,source:'ws'};
+        state.brokerClock={timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
       }
 
-      if(metadata.source_type==='canvas' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol)===normalizePocketPair(state.targetPair)) state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
+      if(metadata.source_type==='canvas' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol)===normalizePocketPair(state.targetPair) && !(state.lastRealQuote?.source==='ws' && quoteIsFresh())) state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
 
       if (typeof yRatio === "number" && !isNaN(yRatio)) {
         state.lastPriceYRatio = yRatio;
@@ -1814,7 +1825,7 @@
 
   function evaluate5FactorConfluence(scan, analysis, sentiment) {
     const isRu = (state.lang === "ru");
-    const isBuy = String(analysis?.direction || "BUY").toUpperCase() === "BUY";
+    const isBuy = String(analysis?.direction || analysis?.displayDirection || "BUY").toUpperCase() === "BUY";
     const shouldTrade = Boolean(analysis?.shouldTrade);
     const conf = analysis?.confidence || 75;
     const rsi = analysis?.rsi ?? 50;
@@ -3204,6 +3215,7 @@
       periods:sample?.analysis?.timeframesUsed || [],sources:sample?.analysis?.dataSources || [],veto:sample?.analysis?.vetoReason || null,status:sample?.analysis?.dataStatus || null,
       rejections:sample?.analysis?.rejected || [],frames:sample?.analysis?.dataSummary || marketDataSummary(),detail});
     if(state.decisionJournal.length>100) state.decisionJournal.shift();
+    publishDiagnostics(true);
   }
 
   function quoteIsFresh() {
@@ -3211,9 +3223,23 @@
     return Boolean(q && normalizePocketPair(q.pair)===normalizePocketPair(state.targetPair) && Date.now()-q.receivedAt<3500);
   }
 
-  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:'2.3.1',pair:state.targetPair,hook:state.hookStatus || null,historyRequest:state.historyRequestStatus || null,frames:marketDataSummary(),
-    chartTf:state.actualChartTf || null,quoteFresh:quoteIsFresh(),searchRunning:state.searchRunning,
+  window.winkyDiagnostics = () => JSON.parse(JSON.stringify({version:CONTENT_VERSION,pair:state.targetPair,hook:state.hookStatus || null,historyRequest:state.historyRequestStatus || null,frames:marketDataSummary(),
+    brokerClock:state.brokerClock || null,brokerNow:marketNow(),quoteSource:state.lastRealQuote?.source || null,chartTf:state.actualChartTf || null,quoteFresh:quoteIsFresh(),searchRunning:state.searchRunning,
     decisions:state.decisionJournal}));
+
+  function publishDiagnostics(force=false) {
+    if(!document.documentElement || !document.createElement || !document.getElementById)return;
+    if(!force && Date.now()-(state.lastDiagnosticsAt || 0)<500)return;
+    state.lastDiagnosticsAt=Date.now();
+    let el=document.getElementById('winky-diagnostics');
+    if(!el) {el=document.createElement('script');el.id='winky-diagnostics';el.type='application/json';document.documentElement.appendChild(el);}
+    const snapshot=window.winkyDiagnostics();
+    snapshot.botState=state.botState;snapshot.status=state.analysisCache?.analysis?.dataStatus || null;
+    snapshot.lastAnalysis=state.analysisCache?{direction:state.analysisCache.analysis.direction,expiry:state.analysisCache.analysis.recommendedExpiry,
+      scenario:state.analysisCache.analysis.scenarioKey || null,score:state.analysisCache.confluence?.score,rejections:state.analysisCache.analysis.rejected}:null;
+    el.textContent=JSON.stringify(snapshot);
+  }
+  setInterval(()=>publishDiagnostics(),1000);
 
   function marketReason(analysis) {
     const ru=state.lang==='ru';

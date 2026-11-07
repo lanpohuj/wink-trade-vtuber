@@ -9,7 +9,7 @@
   // Prevent double injection
   if (window.__WINKY_PAGE_HOOK_LOADED__) return;
   window.__WINKY_PAGE_HOOK_LOADED__ = true;
-  const HOOK_VERSION="2.3.1";
+  const HOOK_VERSION="2.3.2";
   let lastHistoryTransport=null;
   const historyReplayAt=new Map();
 
@@ -46,12 +46,33 @@
     return text;
   }
   const tfSeconds = value => { const m=normalizeChartTf(value).match(/^(S|M|H)(\d+)$/); return m ? Number(m[2])*({S:1,M:60,H:3600}[m[1]]) : null; };
+  const marketTrace=[];
+  function traceHistory(kind,name,payload) {
+    const raw=Array.isArray(payload)?payload:payload?.data || payload?.history || payload?.candles || payload?.ticks;
+    const safeItem=item=>Array.isArray(item)?item.filter(v=>typeof v==='number' || (typeof v==='string' && /^[A-Z0-9_]{3,30}$/i.test(v))).slice(0,7):
+      item && typeof item==='object'?Object.fromEntries(['asset','symbol','time','timestamp','ts','price','open','high','low','close'].filter(k=>
+        ['asset','symbol'].includes(k)?typeof item[k]==='string' && /^[A-Z0-9_]{3,30}$/i.test(item[k]):Number.isFinite(Number(item[k])) && item[k]!==null).map(k=>[k,item[k]])):null;
+    const record={kind,name,at:Date.now(),keys:payload && typeof payload==='object'?Object.keys(payload).slice(0,15):[],
+      asset:payload?.asset || payload?.symbol || null,period:payload?.period ?? payload?.timeframe ?? null,
+      fields:Object.fromEntries(['time','offset','count','limit'].filter(k=>Number.isFinite(payload?.[k])).map(k=>[k,payload[k]])),
+      collections:Object.fromEntries(['history','candles','data','ticks'].filter(k=>Array.isArray(payload?.[k])).map(k=>[k,{count:payload[k].length,samples:[...payload[k].slice(0,2),...(payload[k].length>2?[payload[k].at(-1)]:[])].map(safeItem)}])),
+      count:Array.isArray(raw)?raw.length:null,samples:Array.isArray(raw)?[...raw.slice(0,2),...(raw.length>2?[raw.at(-1)]:[])].map(safeItem):[]};
+    marketTrace.push(record);if(marketTrace.length>60)marketTrace.shift();
+    publishHookDiagnostics();
+  }
+  function publishHookDiagnostics() {
+    if(!document.documentElement || !document.createElement || !document.getElementById)return;
+    let el=document.getElementById('winky-hook-diagnostics');
+    if(!el) {el=document.createElement('script');el.id='winky-hook-diagnostics';el.type='application/json';document.documentElement.appendChild(el);}
+    el.textContent=JSON.stringify({version:HOOK_VERSION,context:marketContext,chartTf:window.__winkyActualChartTf || null,trace:marketTrace});
+  }
   function publishMarketData(packet, context, pending=[]) {
     const receivedAt = Date.now();
     const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history|loadHistoryPeriod|successLoadHistoryPeriod)$/i.test(packet.name);
     if (history) {
+      traceHistory('response',packet.name,packet.payload);
       const payload = packet.payload;
-      const raw = Array.isArray(payload) ? payload : payload?.data || payload?.history || payload?.candles || payload?.ticks;
+      const raw = Array.isArray(payload) ? payload : ['data','history','candles','ticks'].flatMap(k=>Array.isArray(payload?.[k])?payload[k]:[]);
       if (!Array.isArray(raw)) return;
       const groups = new Map();
       const nativePeriod=payload?.period ?? payload?.timeframe;
@@ -269,6 +290,7 @@
         if(packet && /^(loadHistoryPeriod|load_history|loadHistory|history)$/i.test(packet.name) && body && !Array.isArray(body) && (body.asset || body.symbol)) {
           const asset=body.asset || body.symbol, periodSec=Number(body.period)||tfSeconds(body.period ?? body.timeframe);
           if([15,30,60,120].includes(periodSec)) {
+            traceHistory('request',packet.name,body);
             lastHistoryTransport={socket:this,event:packet.name,payload:{...body},asset,periodSec,observedAt:Date.now()};
             const pending=this.__winkyHistoryRequests || (this.__winkyHistoryRequests=[]);
             if(!pending.some(r=>r.asset===asset && r.periodSec===periodSec && r.generation===marketContext.generation))pending.push({...marketContext,asset,periodSec});
@@ -282,6 +304,7 @@
             try {
               const symObj = JSON.parse(matchSym[1]);
               if (symObj && symObj.asset) {
+                traceHistory('request','changeSymbol',symObj);
                 window.__winkyCurrentAsset = symObj.asset;
                 marketContext={asset:symObj.asset,generation:marketContext.generation+(normalizeAsset(symObj.asset)!==normalizeAsset(marketContext.asset)?1:0),periodSec:Number(symObj.period)||tfSeconds(symObj.period ?? symObj.timeframe)||null,changedAt:Date.now()};
                 this.__winkyHistoryRequests=this.__winkyHistoryRequests || [];
@@ -638,6 +661,7 @@
     const data = event.data;
     if(data.type==='WINKY_CMD_GET_MARKET_STATUS') {
       const observed=getActualChartTimeframeBadge();
+      publishHookDiagnostics();
       window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_MARKET_STATUS',requestId:data.requestId,version:HOOK_VERSION,
         asset:marketContext.asset,generation:marketContext.generation,periodSec:marketContext.periodSec,chartTf:observed.badge,assetMenuOpen:Boolean(visibleAssetMenu())},'*');
     } else if(data.type==='WINKY_CMD_REQUEST_HISTORY') {
@@ -882,7 +906,7 @@
   }
 
   function getActualChartTimeframeBadge() {
-    const selectors='.current-timeframe, .chart-timeframe, .chart-panel__button--timeframe, [data-test*="timeframe"], .block--chart-type, .chart-type-block, .items-link--chart-type';
+    const selectors='.current-timeframe, .chart-timeframe, .chart-panel__button--timeframe, [data-test*="timeframe"], .block--chart-type, .chart-type-block, .items-link--chart-type, .items__link--chart-type';
     const semantic=Array.from(document.querySelectorAll(selectors));
     const canvas=document.querySelector('.chart-container canvas, #chart-canvas, canvas');
     const chart=canvas?.getBoundingClientRect();
@@ -907,54 +931,60 @@
     return {badge:null,btn:null};
   }
 
+  function visibleChartMenu() {
+    return Array.from(document.querySelectorAll('.drop-down-modal--chart-type')).find(el=>el.offsetParent!==null && el.getBoundingClientRect().width>40) || null;
+  }
+  async function closeChartMenu(button) {
+    if(!visibleChartMenu())return true;
+    if(button)realClick(button);
+    await new Promise(resolve=>setTimeout(resolve,100));
+    return !visibleChartMenu();
+  }
+
   async function handleMainWorldEnsureChartTimeframe(targetTf = 'S15', command = {}) {
-    const target=normalizeChartTf(targetTf), sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    const target=normalizeChartTf(targetTf),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
     const reply=(ok,error=null)=>{
       const observed=getActualChartTimeframeBadge().badge;
+      publishHookDiagnostics();
       window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_CHART_TIMEFRAME',ok:ok && observed===target,
-        activeTf:observed,requestedTf:target,requestId:command.requestId,generation:marketContext.generation,
-        pair:marketContext.asset,error},'*');
+        activeTf:observed,requestedTf:target,requestId:command.requestId,generation:marketContext.generation,pair:marketContext.asset,error},'*');
       return ok && observed===target;
     };
-    if(!['M1','S15'].includes(target)) return reply(false,'unsupported_timeframe');
+    if(!['M1','S15'].includes(target))return reply(false,'unsupported_timeframe');
     await closeAssetMenu();
-    const current=getActualChartTimeframeBadge();
-    if(current.badge===target) return reply(true);
-    if(window.__winkyTfSwitchBusy) return reply(false,'timeframe_busy');
+    const current=getActualChartTimeframeBadge(),button=current.btn;
+    if(current.badge===target) {const closed=await closeChartMenu(button);return reply(closed,closed?null:'chart_menu_not_closed');}
+    if(window.__winkyTfSwitchBusy)return reply(false,'timeframe_busy');
     const attempts=window.__winkyTfAttempts || (window.__winkyTfAttempts={});
-    if(Date.now()-(attempts[target]||0)<250) return reply(false,'timeframe_cooldown');
+    if(Date.now()-(attempts[target] || 0)<250)return reply(false,'timeframe_cooldown');
     attempts[target]=Date.now();
-    const button=current.btn;
-    if(!button) return reply(false,'timeframe_button_missing');
+    if(!button)return reply(false,'timeframe_button_missing');
     window.__winkyTfSwitchBusy=true;
+    let selected=null,confirmed=false,error=null,closed=false;
     try {
-      realClick(button); await sleep(180);
-      const popup=Array.from(document.querySelectorAll('.drop-down-modal-wrap, .popover, .chart-block, .drop-down-modal')).find(el=>el.offsetParent!==null && el.getBoundingClientRect().width>40);
-      for(const tab of popup?.querySelectorAll('a, button, [role="tab"], .tabs__item') || []) {
-        if(/^(интервалы|timeframes|таймфреймы|intervals)$/i.test((tab.textContent||'').trim()) && !tab.classList.contains('active')) {realClick(tab);await sleep(120);break;}
-      }
-      const period=tfSeconds(target);
-      const items=document.querySelectorAll(`[data-period='${period}'], .timeframe-item, .timeframe-list button, .timeframe-list a, [data-timeframe], [data-period], [data-tf], .drop-down-modal__item, span`);
-      let selected=null;
+      if(!visibleChartMenu()) {realClick(button);await sleep(180);}
+      const popup=visibleChartMenu();
+      const items=popup?popup.querySelectorAll('.time-frames-block li a'):
+        document.querySelectorAll(`[data-period='${tfSeconds(target)}'], .timeframe-item, .timeframe-list button, .timeframe-list a, [data-timeframe], [data-period], [data-tf], .drop-down-modal__item, span`);
       for(const item of items) {
-        if(!item || item.offsetParent===null || item.children.length>2) continue;
-        const rect=item.getBoundingClientRect();
-        const anchor=button.getBoundingClientRect();
-        if(item.closest?.('#winky-sniper-root, #winky-orb-counter, .alist, .assets-block, .block--expiration-inputs')) continue;
-        if(!popup?.contains?.(item) && (rect.left<anchor.left-100 || rect.left>anchor.left+700 || rect.top<anchor.top || rect.top>anchor.top+500)) continue;
+        if(item.offsetParent===null || item.children.length>2)continue;
+        if(!popup) {
+          const r=item.getBoundingClientRect(),anchor=button.getBoundingClientRect();
+          if(item.closest?.('#winky-bot-root, #winky-orb-counter, .alist, .assets-block, .block--expiration-inputs'))continue;
+          if(r.left<anchor.left-100 || r.left>anchor.left+700 || r.top<=anchor.top || r.top>anchor.top+500)continue;
+        }
         const attr=item.getAttribute('data-period') || item.getAttribute('data-tf') || item.getAttribute('data-timeframe');
-        if(Number(attr)===period || normalizeChartTf(item.textContent)===target ||
-          (target==='S15' && /^15\s*(sec|сек\.?|с\.?)$/i.test(item.textContent.trim()))) {selected=item;break;}
+        if(Number(attr)===tfSeconds(target) || normalizeChartTf(item.textContent)===target) {selected=item;break;}
       }
-      if(selected) realClick(selected.closest('a,li,button,[role="button"]') || selected);
-      for(let i=0;i<6 && getActualChartTimeframeBadge().badge!==target;i++) await sleep(80);
-      return reply(Boolean(selected),selected?null:'timeframe_item_missing');
-    } catch(error) { return reply(false,'timeframe_switch_failed'); }
+      if(selected)realClick(selected.closest('a,li,button,[role="button"]') || selected);
+      for(let i=0;i<8;i++) {if(getActualChartTimeframeBadge().badge===target) {confirmed=true;break;}await sleep(80);}
+      if(!selected)error='timeframe_item_missing';else if(!confirmed)error='timeframe_not_observed';
+    } catch(_) {error='timeframe_switch_failed';}
     finally {
-      window.__winkyTfSwitchBusy=false;
-      document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true}));
-      await closeAssetMenu();
+      closed=await closeChartMenu(button);
+      await closeAssetMenu();window.__winkyTfSwitchBusy=false;
     }
+    return reply(confirmed && closed,error || (!closed?'chart_menu_not_closed':null));
   }
 
   function closePocketCalculatorIfOpen() {
