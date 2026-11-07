@@ -644,7 +644,7 @@ test('contiguous S15 history supplies S30, M1 and M2 without future bars',()=>{
   c.rememberMarketFrame(15,bars,'broker');const frames=c.marketFrames();
   for(const period of [30,60,120]) {
     assert.ok(c.ProTraderEngine.frameContext(frames[period]),period);assert.equal(frames[period].at(-1).complete,false);
-    assert.ok(frames[period].every(b=>b.time<=c.now() && b.source==='broker' && b.candlePeriodSec===period));
+    assert.ok(frames[period].every(b=>b.time<=c.now() && b.source==='quotes' && b.origin==='broker' && b.candlePeriodSec===period));
   }
 });
 test('normalization does not stitch a context across missing closed bars',()=>{
@@ -688,4 +688,23 @@ test('native tuple history crosses both worlds and restores M1/M2 before any vis
   assert.ok(c.ProTraderEngine.frameContext(frames[120]).closedCount>=49);
   assert.equal(c.state.actualChartTf,undefined);assert.equal(c.state.lastRealQuote.source,'ws');
   const a=c.ChartAnalyzer.analyzeMarket({visualCandles:[]});assert.notEqual(a.dataStatus,'NO_DATA');assert.equal(a.shouldTrade,false);
+});
+
+test('M2 context crosses a native OHLC to tick boundary within the same Pocket quote feed',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const now=Math.floor(c.now()/120000)*120000+30000;
+  c.emit({type:'TICK',source_type:'ws',rawSymbol:'EURUSD_otc',price:1.3,timestamp:now});
+  // Last native M1 is the FIRST half of a closed M2 bucket; its second half
+  // and the forming bucket come from the same broker's ticks.
+  const candles=Array.from({length:99},(_,i)=>({time:now-30000-(100-i)*60000,open:1.3,close:1.3001,high:1.301,low:1.299}));
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'EURUSD_otc',periodSec:60,candles});
+  c.emit({type:'WS_HISTORY_TICKS',asset:'EURUSD_otc',ticks:Array.from({length:121},(_,i)=>({ts:now-120000+i*1000,price:1.3002}))});
+  const frames=c.marketFrames();
+  assert.ok(c.ProTraderEngine.frameContext(frames[120])?.closedCount>=49);
+  assert.equal(frames[120].at(-1).complete,false);
+  assert.ok(frames[120].every(b=>b.source!=='pixels'));
+  assert.equal(new Set(frames[60].map(b=>b.pair)).size,1);
+  const a=c.ChartAnalyzer.analyzeMarket({visualCandles:[]});
+  assert.notEqual(a.dataStatus,'NO_DATA');
+  assert.ok(a.rejected.every(r=>r.reason!=='INCOMPATIBLE_CANDLES'));
 });

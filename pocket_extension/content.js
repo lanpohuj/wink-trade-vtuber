@@ -830,7 +830,7 @@
     const now=marketNow(),key=normalizePocketPair(pair),step=period*1000;
     const sorted=Array.from(new Map((bars || []).filter(c=>normalizePocketPair(c.pair)===key &&
       c.candlePeriodSec===period && [c.time,c.open,c.high,c.low,c.close].every(Number.isFinite) && c.time<=now &&
-      c.high>=Math.max(c.open,c.close) && c.low<=Math.min(c.open,c.close)).map(c=>[c.time,candleGeometry({...c,complete:c.time+step<=now})])).values()).sort((a,b)=>a.time-b.time);
+      c.high>=Math.max(c.open,c.close) && c.low<=Math.min(c.open,c.close)).map(c=>[c.time,candleGeometry({...c,pair:key,complete:c.time+step<=now})])).values()).sort((a,b)=>a.time-b.time);
     let start=0;
     for(let i=0;i<sorted.length;i++) {
       if(sorted[i].complete && sorted[i].incomplete)start=i+1;
@@ -867,7 +867,12 @@
       // series must not erase a healthy, confirmed visual fallback.
       const numeric=cleanMarketFrame(Array.from(merged.values()),period);
       const visual=cleanMarketFrame(saved.find(f=>f.source==='pixels')?.bars,period);
-      const derived=period>15?cleanMarketFrame(aggregateCandles(frames[period/2],2),period):[];
+      // Native OHLC and tick-built bars share Pocket quote units. Normalize
+      // that feed identity before aggregation, just as analyze() does; keep
+      // the original adapter and pixel data separate. Otherwise an odd native
+      // history boundary drops a whole M2 bucket and erases its older context.
+      const children=(frames[period/2] || []).map(c=>({...c,origin:c.origin || c.source,source:c.source==='pixels'?'pixels':'quotes'}));
+      const derived=period>15?cleanMarketFrame(aggregateCandles(children,2),period):[];
       const choices=[numeric,derived,visual].filter(b=>b.length);
       const ready=choices.filter(b=>frameIsReady(b,period));
       frames[period]=ready.find(b=>b.at(-1).source!=='pixels') || ready.find(b=>b===visual) || ready[0] ||
