@@ -239,6 +239,20 @@ test('chart menu closure waits for Pocket transition without a second toggle',as
   assert.equal(clicks,1);assert.ok(h.now()>=closesAt);
 });
 
+test('chart menu closes using the new toolbar node after Pocket rerenders the interval',async()=>{
+  const h=loadHook();let opened=false,badge='M1',replaced=false,closes=0;
+  const makeToolbar=old=>({offsetParent:{},children:[],get textContent(){return badge;},getBoundingClientRect:()=>({left:245,top:82,width:40,height:35}),
+    querySelectorAll:()=>[],closest:()=>null,dispatchEvent(){},click(){if(old && replaced)return;opened=!opened;if(!opened)closes++;}});
+  const original=makeToolbar(true),replacement=makeToolbar(false);
+  const item={offsetParent:{},children:[],textContent:'S15',getAttribute:()=>null,closest(){return this;},dispatchEvent(){},click(){badge='S15';replaced=true;}};
+  const menu={offsetParent:{},getBoundingClientRect:()=>({width:440,height:380}),querySelectorAll:()=>[item]};
+  h.document.querySelectorAll=selector=>selector==='.drop-down-modal--chart-type'?(opened?[menu]:[]):
+    selector.includes('.items__link--chart-type')?[replaced?replacement:original]:[];
+  await h.handleMainWorldEnsureChartTimeframe('S15',{requestId:235});
+  assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
+  assert.equal(opened,false);assert.equal(closes,1);
+});
+
 test('a combined native response forwards tick history and named OHLC independently',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');socket.send('42["changeSymbol",{"asset":"EURUSD_otc","period":60}]');
   socket.receive('42'+JSON.stringify(['updateHistoryNewFast',{asset:'EURUSD_otc',period:60,

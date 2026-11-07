@@ -996,7 +996,10 @@
   }
   async function closeChartMenu(button) {
     if(!visibleChartMenu())return true;
-    if(button)realClick(button);
+    // Changing the interval can replace Pocket's toolbar anchor. Reacquire
+    // the observed control rather than clicking the detached previous node.
+    const currentButton=getActualChartTimeframeBadge().btn || button;
+    if(currentButton)realClick(currentButton);
     // Pocket removes its modal after the exit transition. Do not report a
     // failure at 100 ms or click again while the first close is still running.
     for(let i=0;i<8 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));
