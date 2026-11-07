@@ -25,7 +25,7 @@ function loadContent() {
       executeTradeWithSignal,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh, readTradersSentiment,
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
@@ -609,4 +609,44 @@ test('pre-click recheck cancels a different family even when direction and expir
   c.setFinalAnalysis(async options=>{selection=options;return {analysis:{shouldTrade:true,direction:'BUY',recommendedExpiry:'30s',scenarioKey:'other-family'},confluence:{score:5},scan:{}};});
   await c.executeTradeWithSignal({direction:'BUY',recommendedExpiry:'30s',searchGeneration:1,scenarioKey:'selected-family'},{score:5},{});
   assert.equal(selection.preferredScenarioKey,'selected-family');assert.equal(clicks,0);assert.equal(c.state.tradeContext,null);
+});
+
+test('broken numeric tail cannot displace 54 healthy closed visual M1 candles',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';c.state.actualChartTf='M1';
+  const visual=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60,'pixels');
+  const broken=visual.slice(-23,-1).map(b=>({...b,source:'broker'}));broken.at(-1).incomplete=true;
+  c.rememberMarketFrame(60,broken,'broker');c.rememberMarketFrame(60,visual,'pixels');
+  const frames=c.marketFrames();assert.equal(frames[60].length,55);assert.equal(frames[60].at(-1).source,'pixels');
+  assert.equal(c.ProTraderEngine.frameContext(frames[60]).closedCount,54);
+});
+test('readiness uses 21 closed context candles and 20 closed entry candles',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const m1=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60).slice(-21);
+  assert.equal(c.frameIsReady(m1,60),false);assert.equal(c.ProTraderEngine.frameContext(m1),null);
+  const enough=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60).slice(-22);
+  assert.equal(c.frameIsReady(enough,60),true);assert.ok(c.ProTraderEngine.frameContext(enough));
+  const s15=taggedBars(c,scenarioFixture('TREND_PULLBACK'),15).slice(-21);assert.equal(c.frameIsReady(s15,15),true);
+});
+test('identified delayed history is cached for its own pair without changing active quotes or pair',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';c.emit({type:'MARKET_CONTEXT',asset:'GBPUSD_otc',generation:2});
+  const gbp=taggedBars(c,scenarioFixture('RANGE_REJECTION'),60).map(b=>({...b,pair:'GBP/USD OTC'}));
+  c.emit({type:'WS_CANDLES_HISTORY',asset:'GBPUSD_otc',periodSec:60,generation:2,candles:gbp});
+  c.emit({type:'WS_HISTORY_TICKS',asset:'GBPUSD_otc',generation:2,ticks:[{ts:c.now()-1000,price:1.1},{ts:c.now(),price:1.2}]});
+  assert.equal(c.state.targetPair,'EUR/USD OTC');assert.equal(c.state.lastRealQuote,null);assert.equal(c.LiveTickBuffer.ticks.length,0);
+  assert.equal(c.marketFrames()[60].length,0);assert.equal(c.LiveTickBuffer.archives.get('gbpusdotc').length,2);
+  c.state.targetPair='GBP/USD OTC';c.LiveTickBuffer.reset(c.state.targetPair);
+  assert.equal(c.marketFrames()[60].length,55);assert.equal(c.LiveTickBuffer.ticks.length,2);
+});
+test('contiguous S15 history supplies S30, M1 and M2 without future bars',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const bars=taggedBars(c,Array.from({length:193},(_,i)=>({open:1+i*.00001,close:1.000005+i*.00001,high:1.000009+i*.00001,low:.999999+i*.00001})),15,'broker');
+  c.rememberMarketFrame(15,bars,'broker');const frames=c.marketFrames();
+  for(const period of [30,60,120]) {
+    assert.ok(c.ProTraderEngine.frameContext(frames[period]),period);assert.equal(frames[period].at(-1).complete,false);
+    assert.ok(frames[period].every(b=>b.time<=c.now() && b.source==='broker' && b.candlePeriodSec===period));
+  }
+});
+test('normalization does not stitch a context across missing closed bars',()=>{
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';const bars=taggedBars(c,scenarioFixture('TREND_PULLBACK'),60);bars.splice(-5,1);
+  const cleaned=c.cleanMarketFrame(bars,60);assert.equal(cleaned.length,4);assert.equal(c.frameIsReady(cleaned,60),false);
 });

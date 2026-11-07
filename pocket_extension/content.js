@@ -9,6 +9,7 @@
 (function () {
   "use strict";
 
+  const CONTENT_VERSION="2.3.2";
   if (window.__WINKY_NEKO_INJECTED__) return;
   window.__WINKY_NEKO_INJECTED__ = true;
 
@@ -416,11 +417,11 @@
     // A2. WebSocket Server History Ticks (up to 1000 points)
     if (data.type === "WS_HISTORY_TICKS" && Array.isArray(data.ticks) && data.ticks.length > 0) {
       if (typeof LiveTickBuffer !== "undefined") {
-        if (acceptMarketEvidence(data, data.asset)) LiveTickBuffer.loadHistoryTicks(data.ticks, data.asset);
+        if (acceptMarketEvidence(data, data.asset, true)) LiveTickBuffer.loadHistoryTicks(data.ticks, data.asset);
       }
     }
-    if (data.type === 'WS_CANDLES_HISTORY' && acceptMarketEvidence(data, data.asset)) {
-      rememberMarketFrame(data.periodSec, data.candles, 'broker', data.receivedAt);
+    if (data.type === 'WS_CANDLES_HISTORY' && acceptMarketEvidence(data, data.asset, true)) {
+      rememberMarketFrame(data.periodSec, data.candles, 'broker', data.receivedAt, data.asset);
     }
 
     // A3. Actual Chart Timeframe Status from page_hook
@@ -620,16 +621,11 @@
     },
     loadHistoryTicks(ticksArray, asset = null) {
       if (!Array.isArray(ticksArray) || ticksArray.length === 0) return;
-      if (asset && state.targetPair) {
-        const cleanAsset = normalizePocketPair(asset);
-        const cleanTarget = normalizePocketPair(state.targetPair);
-        if (cleanAsset !== cleanTarget) {
-          return; // different pair
-        }
-        if(normalizePocketPair(this.pair)!==cleanTarget) this.reset(state.targetPair);
-      }
+      const target=normalizePocketPair(state.targetPair),key=normalizePocketPair(asset || state.targetPair);
+      const foreign=key!==target;
+      if(!foreign && normalizePocketPair(this.pair)!==target) this.reset(state.targetPair);
       const map = new Map();
-      for (const t of this.ticks) {
+      for (const t of (foreign?this.archives.get(key) || []:this.ticks)) {
         map.set(t.ts, t.price);
       }
       for (const t of ticksArray) {
@@ -642,6 +638,11 @@
       const merged = Array.from(map.entries())
         .map(([ts, price]) => ({ ts, price }))
         .sort((a, b) => a.ts - b.ts);
+      if(foreign) {
+        this.archives.set(key,merged.slice(-5000));
+        if(this.archives.size>12)this.archives.delete(this.archives.keys().next().value);
+        return;
+      }
       this.ticks = merged.slice(-5000);
       console.log(`[LiveTickBuffer] 📊 Loaded ${this.ticks.length} total ticks (merged ${ticksArray.length} new)`);
     },
@@ -795,8 +796,8 @@
     return q ? q.timestamp + Math.max(0,Date.now()-q.receivedAt) : Date.now();
   }
 
-  function acceptMarketEvidence(data, pair) {
-    if (!pair || normalizePocketPair(pair)!==normalizePocketPair(state.targetPair)) return false;
+  function acceptMarketEvidence(data, pair, history=false) {
+    if (!pair || (!history && normalizePocketPair(pair)!==normalizePocketPair(state.targetPair))) return false;
     const context=state.dataContexts.get(normalizePocketPair(pair));
     return !context || data.generation == null || data.generation===context.generation;
   }
@@ -808,17 +809,39 @@
       upperWick:Math.max(0,high-Math.max(open,close)),lowerWick:Math.max(0,Math.min(open,close)-low),isGreen:close>open,isRed:close<open};
   }
 
-  function rememberMarketFrame(period, candles, source, receivedAt=Date.now()) {
+  function rememberMarketFrame(period, candles, source, receivedAt=Date.now(), pair=state.targetPair) {
     if (![15,30,60,120].includes(period) || !Array.isArray(candles)) return;
     const bars=candles.filter(c=>[c.open,c.close,c.high,c.low,c.time].every(Number.isFinite) && c.high>=Math.max(c.open,c.close) && c.low<=Math.min(c.open,c.close))
-      .map(c=>candleGeometry({...c,candlePeriodSec:period,source,pair:state.targetPair,
+      .map(c=>candleGeometry({...c,candlePeriodSec:period,source,pair,
         complete:c.time+period*1000<=marketNow(),incomplete:Boolean(c.incomplete)})).sort((a,b)=>a.time-b.time);
     if (!bars.length) return;
-    const key=normalizePocketPair(state.targetPair)+'|'+period+'|'+source;
+    const key=normalizePocketPair(pair)+'|'+period+'|'+source;
     const previous=state.marketFrames.get(key);
     const merged=source==='pixels' ? bars : Array.from(new Map([...(previous?.bars || []),...bars].map(c=>[c.time,c])).values()).sort((a,b)=>a.time-b.time);
-    state.marketFrames.set(key,{bars:merged.slice(-200),receivedAt,period,source,pair:state.targetPair});
+    state.marketFrames.set(key,{bars:merged.slice(-200),receivedAt,period,source,pair});
     if(state.marketFrames.size>100) state.marketFrames.delete(state.marketFrames.keys().next().value);
+  }
+
+  const ENTRY_CLOSED_MIN=20, CONTEXT_CLOSED_MIN=21;
+  const closedCount=bars=>(bars || []).filter(c=>c.complete && !c.incomplete).length;
+  const frameMinimum=period=>period===15?ENTRY_CLOSED_MIN:CONTEXT_CLOSED_MIN;
+
+  function cleanMarketFrame(bars,period,pair=state.targetPair) {
+    const now=marketNow(),key=normalizePocketPair(pair),step=period*1000;
+    const sorted=Array.from(new Map((bars || []).filter(c=>normalizePocketPair(c.pair)===key &&
+      c.candlePeriodSec===period && [c.time,c.open,c.high,c.low,c.close].every(Number.isFinite) && c.time<=now &&
+      c.high>=Math.max(c.open,c.close) && c.low<=Math.min(c.open,c.close)).map(c=>[c.time,candleGeometry({...c,complete:c.time+step<=now})])).values()).sort((a,b)=>a.time-b.time);
+    let start=0;
+    for(let i=0;i<sorted.length;i++) {
+      if(sorted[i].complete && sorted[i].incomplete)start=i+1;
+      if(i>0 && (sorted[i].time-sorted[i-1].time!==step || (sorted[i].source==='pixels')!==(sorted[i-1].source==='pixels')))start=i;
+    }
+    return sorted.slice(start).slice(-200);
+  }
+
+  function frameIsReady(bars,period,min=frameMinimum(period)) {
+    const last=bars?.at(-1);
+    return Boolean(last && closedCount(bars)>=min && marketNow()-(last.time+period*1000)<period*1500);
   }
 
   function marketFrames(scan=null) {
@@ -829,37 +852,26 @@
     }
     const pair=normalizePocketPair(state.targetPair);
     for(const period of [15,30,60,120]) {
-      let bars=LiveTickBuffer.buildCandles(period,100);
+      const ticks=LiveTickBuffer.buildCandles(period,200);
       const saved=Array.from(state.marketFrames.values()).filter(f=>normalizePocketPair(f.pair)===pair && f.period===period &&
         (f.source!=='pixels' || Date.now()-f.receivedAt<30000));
       const broker=saved.find(f=>f.source==='broker');
-      if(broker) {
-        const merged=new Map(broker.bars.map(c=>[c.time,c]));
-        for(const tickBar of bars) {
-          const original=merged.get(tickBar.time);
-          if(!original) merged.set(tickBar.time,tickBar);
-          else if(!tickBar.complete) merged.set(tickBar.time,candleGeometry({...original,close:tickBar.close,
-            high:Math.max(original.high,tickBar.high),low:Math.min(original.low,tickBar.low),complete:false,incomplete:false}));
-        }
-        bars=Array.from(merged.values()).sort((a,b)=>a.time-b.time);
+      const merged=new Map((broker?.bars || []).map(c=>[c.time,c]));
+      for(const bar of ticks) {
+        const original=merged.get(bar.time);
+        if(!original)merged.set(bar.time,bar);
+        else if(!bar.complete)merged.set(bar.time,candleGeometry({...original,close:bar.close,high:Math.max(original.high,bar.high),
+          low:Math.min(original.low,bar.low),complete:false,incomplete:false}));
       }
-      if(bars.filter(c=>c.complete && !c.incomplete).length<20) {
-        const visual=saved.find(f=>f.source==='pixels');
-        if(visual?.bars.length>=21) bars=visual.bars;
-      }
-      frames[period]=(bars || []).map(c=>({...c,complete:Number.isFinite(c.time) ? c.time+period*1000<=marketNow() : c.complete}));
-    }
-    // The visual fallback may aggregate adjacent bars of a confirmed chart
-    // period. Keep its estimated times and pixel units explicit throughout.
-    if(frames[30].filter(c=>c.complete && !c.incomplete).length<20) frames[30]=aggregateCandles(frames[15],2);
-    if(frames[120].filter(c=>c.complete && !c.incomplete).length<20) frames[120]=aggregateCandles(frames[60],2);
-    for(const period of [15,30,60,120]) {
-      const bars=frames[period];let start=0;
-      for(let i=0;i<bars.length;i++) {
-        if(bars[i].complete && bars[i].incomplete) start=i+1;
-        if(i>0 && bars[i].time-bars[i-1].time!==period*1000) start=i;
-      }
-      frames[period]=bars.slice(start);
+      // Validate contiguous tails BEFORE preferring a source. A broken quote
+      // series must not erase a healthy, confirmed visual fallback.
+      const numeric=cleanMarketFrame(Array.from(merged.values()),period);
+      const visual=cleanMarketFrame(saved.find(f=>f.source==='pixels')?.bars,period);
+      const derived=period>15?cleanMarketFrame(aggregateCandles(frames[period/2],2),period):[];
+      const choices=[numeric,derived,visual].filter(b=>b.length);
+      const ready=choices.filter(b=>frameIsReady(b,period));
+      frames[period]=ready.find(b=>b.at(-1).source!=='pixels') || ready.find(b=>b===visual) || ready[0] ||
+        choices.sort((a,b)=>closedCount(b)-closedCount(a))[0] || [];
     }
     return frames;
   }
@@ -1054,7 +1066,7 @@
     // 7. Smart Horizon Multi-Timeframe Analysis Engine (15s, 30s, 1m, 2m)
     frameContext(candles) {
       const closed=(candles || []).filter(c=>c.complete===true && !c.incomplete);
-      if(closed.length<21) return null;
+      if(closed.length<CONTEXT_CLOSED_MIN) return null;
       const closes=closed.map(c=>c.close), last=closes.at(-1);
       const ema9=this.computeEMA(closes,9).at(-1), ema21series=this.computeEMA(closes,21), ema21=ema21series.at(-1);
       const ema50Ready=closes.length>=50, ema50=ema50Ready?this.computeEMA(closes,50).at(-1):null;
@@ -1073,7 +1085,7 @@
         const bars=frames[spec.period] || [], contextBars=frames[spec.context] || [],context=this.frameContext(contextBars);
         const periods=Array.from(new Set([spec.period,spec.context,...(spec.extra?[spec.extra]:[])]));
         const reject=(reason,detail=null)=>rejected.push({expiry:spec.expiry,period:spec.period,reason,detail});
-        if(!context || bars.filter(c=>c.complete && !c.incomplete).length<20 ||
+        if(!context || closedCount(bars)<ENTRY_CLOSED_MIN ||
           (spec.extra && !this.frameContext(frames[spec.extra]))) {reject('NOT_ENOUGH_CANDLES',periods);continue;}
         if(periods.some(p=>(frames[p] || []).some(c=>normalizePocketPair(c.pair)!==normalizePocketPair(state.targetPair)))) {
           reject('INCOMPATIBLE_CANDLES');continue;
@@ -1131,7 +1143,7 @@
       if(![15,30,60,120].includes(period) || candles.some(c=>c.candlePeriodSec!==period || c.source!==source || c.pair!==candles[0].pair ||
         ![c.open,c.close,c.high,c.low,c.time].every(Number.isFinite) || c.time>marketNow())) return reject('INCOMPATIBLE_CANDLES');
       const closed=candles.filter(c=>c.complete && !c.incomplete),c0=candleGeometry(candles.at(-1));
-      if(closed.length<20) return reject('NOT_ENOUGH_CANDLES');
+      if(closed.length<ENTRY_CLOSED_MIN) return reject('NOT_ENOUGH_CANDLES');
       if(c0.complete || c0.incomplete) return reject('STALE_CANDLES');
       const prev=candleGeometry(closed.at(-1)),closes=closed.map(c=>c.close),price=c0.close,atr=this.computeATR(closed,14);
       const ema9=this.computeEMA(closes,9).at(-1),ema21s=this.computeEMA(closes,21),ema21=ema21s.at(-1),emaSlope=ema21-ema21s.at(-6);
@@ -3541,7 +3553,7 @@
       const frames=marketFrames(scanCanvasStructure());
       if(normalizePocketPair(current)===normalizePocketPair(pair) && quoteIsFresh() &&
         (period===null ? [15,30,60].some(p=>ProTraderEngine.frameContext(frames[p])) :
-          (frames[period] || []).filter(c=>c.complete && !c.incomplete).length>=20)) return true;
+          frameIsReady(frames[period],period))) return true;
       await new Promise(resolve=>setTimeout(resolve,150));
     }
     return false;
@@ -3614,7 +3626,7 @@
           if(chosen) break;
         }
         if(!alive()) break;
-        if(sample && anyReady) {state.pairCandidates.push(sample);state.pairVisits.set(key,Date.now());journalDecision(chosen?'early_entry':'pair_checked',sample);}
+        if(sample && anyReady && sample.analysis.dataStatus!=='NO_DATA') {state.pairCandidates.push(sample);state.pairVisits.set(key,Date.now());journalDecision(chosen?'early_entry':'pair_checked',sample);}
         if(chosen || state.pairCandidates.length>=5) break;
         render(3,sample,'rejected');
         VoiceManager.playCategory('flat_skip',false,'thinking');
