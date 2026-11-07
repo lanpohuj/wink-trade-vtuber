@@ -12,6 +12,8 @@
   const HOOK_VERSION="2.3.2";
   let lastHistoryTransport=null;
   const historyReplayAt=new Map();
+  const historyWindows=new Map(),historyRecoveries=new Map();
+  let extensionHistorySend=false,marketSocket=null,historyRequestIndex=Math.floor(Date.now()/10);
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
@@ -54,7 +56,7 @@
         ['asset','symbol'].includes(k)?typeof item[k]==='string' && /^[A-Z0-9_]{3,30}$/i.test(item[k]):Number.isFinite(Number(item[k])) && item[k]!==null).map(k=>[k,item[k]])):null;
     const record={kind,name,at:Date.now(),keys:payload && typeof payload==='object'?Object.keys(payload).slice(0,15):[],
       asset:payload?.asset || payload?.symbol || null,period:payload?.period ?? payload?.timeframe ?? null,
-      fields:Object.fromEntries(['time','offset','count','limit'].filter(k=>Number.isFinite(payload?.[k])).map(k=>[k,payload[k]])),
+      fields:Object.fromEntries(['time','index','offset','count','limit'].filter(k=>Number.isFinite(payload?.[k])).map(k=>[k,payload[k]])),
       collections:Object.fromEntries(['history','candles','data','ticks'].filter(k=>Array.isArray(payload?.[k])).map(k=>[k,{count:payload[k].length,samples:[...payload[k].slice(0,2),...(payload[k].length>2?[payload[k].at(-1)]:[])].map(safeItem)}])),
       count:Array.isArray(raw)?raw.length:null,samples:Array.isArray(raw)?[...raw.slice(0,2),...(raw.length>2?[raw.at(-1)]:[])].map(safeItem):[]};
     marketTrace.push(record);if(marketTrace.length>60)marketTrace.shift();
@@ -66,9 +68,44 @@
     if(!el) {el=document.createElement('script');el.id='winky-hook-diagnostics';el.type='application/json';document.documentElement.appendChild(el);}
     el.textContent=JSON.stringify({version:HOOK_VERSION,context:marketContext,chartTf:window.__winkyActualChartTf || null,trace:marketTrace});
   }
+  function rememberHistoryWindow(group,periodSec) {
+    if(![15,30,60,120].includes(periodSec))return;
+    const key=normalizeAsset(group.asset)+'|'+periodSec;
+    const w=historyWindows.get(key) || {times:new Set(),oldest:Infinity,lastResponseAt:0};
+    const times=group.candles.map(c=>c.time).concat(group.ticks.map(t=>t.ts));
+    for(const c of group.candles)w.times.add(c.time);
+    if(times.length)w.oldest=times.reduce((oldest,time)=>Math.min(oldest,time),w.oldest);
+    w.lastResponseAt=Date.now();historyWindows.set(key,w);
+    if(w.times.size>200)w.times=new Set(Array.from(w.times).sort((a,b)=>a-b).slice(-200));
+    if(historyWindows.size>100)historyWindows.delete(historyWindows.keys().next().value);
+    const recovery=historyRecoveries.get(key);
+    if(recovery && recovery.waiting) {
+      recovery.waiting=false;
+      if(w.times.size<200 && recovery.pages<3 && w.oldest<recovery.lastOldest) {
+        recovery.lastOldest=w.oldest;setTimeout(()=>sendHistoryPage(key),300);
+      } else historyRecoveries.delete(key);
+    }
+  }
+  function sendHistoryPage(key) {
+    const r=historyRecoveries.get(key),t=lastHistoryTransport,w=historyWindows.get(key);
+    if(!r || !t || r.pages>=3 || normalizeAsset(marketContext.asset)!==normalizeAsset(r.pair)) {historyRecoveries.delete(key);return false;}
+    const body={...t.payload,asset:marketContext.asset,period:r.period};
+    if(Number.isFinite(body.index))body.index=++historyRequestIndex;
+    if(Number.isFinite(body.offset) && body.offset>0)body.offset=Math.min(body.offset,200*r.period);
+    // time/offset are the fields observed in Pocket's native loadHistoryPeriod.
+    // Keep its opaque index and window size; only move the end bound backwards.
+    if(!Number.isFinite(body.time)) {historyRecoveries.delete(key);return false;}
+    if(Number.isFinite(w?.oldest))body.time=Math.floor(w.oldest/1000)-r.period;
+    for(const field of ['count','limit'])if(Number.isFinite(body[field]))body[field]=200;
+    if(r.cursors.has(body.time)) {historyRecoveries.delete(key);return false;}
+    r.cursors.add(body.time);r.pages++;r.waiting=true;
+    try {extensionHistorySend=true;t.socket.send('42'+JSON.stringify([t.event,body]));return true;}
+    catch(_) {historyRecoveries.delete(key);return false;}
+    finally {extensionHistorySend=false;}
+  }
   function publishMarketData(packet, context, pending=[]) {
     const receivedAt = Date.now();
-    const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history|loadHistoryPeriod|successLoadHistoryPeriod)$/i.test(packet.name);
+    const history = /^(updateHistoryNewFast|updateHistoryNew|history|candles|load_history|loadHistoryPeriod|loadHistoryPeriodFast|successLoadHistoryPeriod)$/i.test(packet.name);
     if (history) {
       traceHistory('response',packet.name,packet.payload);
       const payload = packet.payload;
@@ -94,12 +131,18 @@
         let asset=explicitAsset || anonymousAsset, timestamp, price;
         if (Array.isArray(item)) {
           if (item.length===3 && typeof item[0]==='string') [asset,timestamp,price]=item;
-          else if (item.length===2) [timestamp,price]=item;
+          else if(item.length>=5 && Number.isFinite(periodSec) && periodSec>0 && item.slice(0,5).every(v=>Number.isFinite(Number(v)))) {
+            // Captured updateHistoryNewFast candle tuple: time, open, close, high, low, volume.
+            const [time,open,close,high,low]=item.map(Number),group=groupFor(asset);
+            if(group && open>0 && close>0 && high>=Math.max(open,close) && low<=Math.min(open,close))
+              group.candles.push({time:toMilliseconds(time),open,close,high,low});
+            continue;
+          } else if (item.length===2) [timestamp,price]=item;
         } else if (item && typeof item==='object') {
           asset=item.asset || item.symbol || asset;
           timestamp=item.time ?? item.timestamp ?? item.ts;
           price=item.price;
-          if (['open','high','low','close'].every(k=>Number.isFinite(Number(item[k]))) && Number.isFinite(periodSec) && periodSec>0) {
+          if (['open','high','low','close'].every(k=>Number.isFinite(Number(item[k])) && Number(item[k])>0) && Number.isFinite(periodSec) && periodSec>0) {
             const group=groupFor(asset), time=toMilliseconds(timestamp);
             if(group && Number.isFinite(time)) group.candles.push({open:Number(item.open),high:Number(item.high),low:Number(item.low),close:Number(item.close),time});
             continue;
@@ -115,6 +158,7 @@
         const generation=matched && normalizeAsset(matched.asset)===normalizeAsset(group.asset) ? matched.generation :
           (normalizeAsset(group.asset)===normalizeAsset(context.asset) ? context.generation : null);
         if(matched) {const index=pending.indexOf(matched);if(index>=0)pending.splice(index,1);}
+        rememberHistoryWindow(group,periodSec);
         if(group.ticks.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_HISTORY_TICKS',asset:group.asset,ticks:group.ticks.slice(-5000),generation,receivedAt},'*');
         if(group.candles.length) window.postMessage({source:'WINKY_PAGE_HOOK',type:'WS_CANDLES_HISTORY',asset:group.asset,candles:group.candles,periodSec,generation,receivedAt},'*');
       }
@@ -290,8 +334,8 @@
         if(packet && /^(loadHistoryPeriod|load_history|loadHistory|history)$/i.test(packet.name) && body && !Array.isArray(body) && (body.asset || body.symbol)) {
           const asset=body.asset || body.symbol, periodSec=Number(body.period)||tfSeconds(body.period ?? body.timeframe);
           if([15,30,60,120].includes(periodSec)) {
-            traceHistory('request',packet.name,body);
-            lastHistoryTransport={socket:this,event:packet.name,payload:{...body},asset,periodSec,observedAt:Date.now()};
+            traceHistory(extensionHistorySend?'request_extension':'request',packet.name,body);
+            if(!extensionHistorySend)lastHistoryTransport={socket:this,event:packet.name,payload:{...body},asset,periodSec,observedAt:Date.now()};
             const pending=this.__winkyHistoryRequests || (this.__winkyHistoryRequests=[]);
             if(!pending.some(r=>r.asset===asset && r.periodSec===periodSec && r.generation===marketContext.generation))pending.push({...marketContext,asset,periodSec});
           }
@@ -305,6 +349,7 @@
               const symObj = JSON.parse(matchSym[1]);
               if (symObj && symObj.asset) {
                 traceHistory('request','changeSymbol',symObj);
+                marketSocket=this;
                 window.__winkyCurrentAsset = symObj.asset;
                 marketContext={asset:symObj.asset,generation:marketContext.generation+(normalizeAsset(symObj.asset)!==normalizeAsset(marketContext.asset)?1:0),periodSec:Number(symObj.period)||tfSeconds(symObj.period ?? symObj.timeframe)||null,changedAt:Date.now()};
                 this.__winkyHistoryRequests=this.__winkyHistoryRequests || [];
@@ -666,19 +711,34 @@
         asset:marketContext.asset,generation:marketContext.generation,periodSec:marketContext.periodSec,chartTf:observed.badge,assetMenuOpen:Boolean(visibleAssetMenu())},'*');
     } else if(data.type==='WINKY_CMD_REQUEST_HISTORY') {
       let requested=false,error='native_history_request_not_observed';
-      const t=lastHistoryTransport,key=normalizeAsset(data.pair)+'|'+data.periodSec;
-      if(t && normalizeAsset(t.asset)===normalizeAsset(data.pair) && t.periodSec===data.periodSec &&
-        normalizeAsset(marketContext.asset)===normalizeAsset(data.pair) && Date.now()-t.observedAt<30000 &&
-        Date.now()-(historyReplayAt.get(key) || 0)>3000) {
-        const body={...t.payload};
-        for(const field of ['count','limit'])if(Number.isFinite(body[field]))body[field]=200;
-        try {
-          historyReplayAt.set(key,Date.now());
-          if(historyReplayAt.size>20)historyReplayAt.delete(historyReplayAt.keys().next().value);
-          t.socket.send('42'+JSON.stringify([t.event,body]));requested=true;error=null;
-        } catch(_) {error='history_transport_unavailable';}
+      const key=normalizeAsset(data.pair)+'|'+data.periodSec,w=historyWindows.get(key);
+      // Bootstrap from the native schema captured in fixtures/pocket-native-history.json.
+      // A server-native history bound is mandatory; never substitute local wall time.
+      if(!lastHistoryTransport && marketSocket && Number.isFinite(w?.oldest) && normalizeAsset(marketContext.asset)===normalizeAsset(data.pair)) {
+        lastHistoryTransport={socket:marketSocket,event:'loadHistoryPeriod',asset:marketContext.asset,periodSec:data.periodSec,
+          payload:{asset:marketContext.asset,index:++historyRequestIndex,time:Math.floor(w.oldest/1000)-data.periodSec,offset:200*data.periodSec,period:data.periodSec},observedAt:Date.now()};
       }
-      window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_REQUEST_HISTORY',requestId:data.requestId,requested,error},'*');
+      const t=lastHistoryTransport;
+      if(historyRecoveries.has(key) && Date.now()-historyRecoveries.get(key).startedAt>10000)historyRecoveries.delete(key);
+      if((w?.times.size || 0)>=200)error=null;
+      else if(historyRecoveries.has(key))error='history_response_pending';
+      else if(t && [15,30,60,120].includes(data.periodSec) && normalizeAsset(marketContext.asset)===normalizeAsset(data.pair) &&
+        Date.now()-(historyReplayAt.get(key) || 0)>3000) {
+        historyReplayAt.set(key,Date.now());
+        if(historyReplayAt.size>20)historyReplayAt.delete(historyReplayAt.keys().next().value);
+        // Templates with an explicit count are also retained for older Pocket clients.
+        if(!Number.isFinite(t.payload.time) && ['count','limit'].some(k=>Number.isFinite(t.payload[k]))) {
+          const body={...t.payload,asset:marketContext.asset,period:data.periodSec};
+          for(const f of ['count','limit'])if(Number.isFinite(body[f]))body[f]=200;
+          try {extensionHistorySend=true;t.socket.send('42'+JSON.stringify([t.event,body]));requested=true;error=null;}
+          catch(_) {error='history_transport_unavailable';}finally {extensionHistorySend=false;}
+        } else {
+          historyRecoveries.set(key,{pair:data.pair,period:data.periodSec,pages:0,cursors:new Set(),lastOldest:Infinity,waiting:false,startedAt:Date.now()});
+          requested=sendHistoryPage(key);error=requested?null:'history_transport_unavailable';
+        }
+      }
+      window.postMessage({source:'WINKY_HOOK',type:'WINKY_RESP_REQUEST_HISTORY',requestId:data.requestId,requested,
+        satisfied:(w?.times.size || 0)>=200,available:w?.times.size || 0,error},'*');
     } else if (data.type === "WINKY_CMD_SWITCH_PAIR") {
       await handleMainWorldSwitchPair(data);
     } else if (data.type === "WINKY_CMD_SET_EXPIRY") {

@@ -1,0 +1,14 @@
+{
+  "source": "Captured live po.financial demo, 2026-11-07; samples only, no auth fields",
+  "event": "updateHistoryNewFast",
+  "capturedCounts": {"history":1633,"candles":99},
+  "payload": {
+    "asset":"USDSGD_otc","period":60,
+    "history":[[1794044773.162,1.29812],[1794044773.682,1.29817],[1794045553.443,1.30914]],
+    "candles":[[1794045420,1.30883,1.30954,1.30995,1.30874,101],[1794045360,1.30929,1.30876,1.30994,1.30852,102],[1794039540,1.28565,1.28523,1.2858,1.28399,97]]
+  },
+  "olderRequest":{"asset":"USDSGD_otc","index":179404562033,"time":1794039540,"offset":9000,"period":60},
+  "olderResponseEvent":"loadHistoryPeriodFast",
+  "olderResponseCount":150,
+  "olderResponseSamples":[{"time":1794030600,"open":1.28801,"high":1.289,"low":1.28706,"close":1.28883},{"time":1794030660,"open":1.28883,"high":1.28966,"low":1.28871,"close":1.2893},{"time":1794039540,"open":1.28565,"high":1.2858,"low":1.28399,"close":1.28523}]
+}

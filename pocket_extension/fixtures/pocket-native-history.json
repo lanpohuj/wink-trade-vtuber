@@ -1,0 +1,10 @@
+{
+  "source": "Captured from live po.financial demo with native chart history navigation, 2026-11-07",
+  "requestEvent": "loadHistoryPeriod",
+  "request": {"asset":"USDSGD_otc","time":1794039240,"offset":9000,"period":60},
+  "omittedRequestFields": ["index"],
+  "initialResponseEvent": "updateHistoryNewFast",
+  "initialResponseKeys": ["asset","period","history","candles"],
+  "initialTickSamples": [[1794044356.26,1.2993],[1794044356.861,1.29939],[1794045041.762,1.30194]],
+  "note": "Only whitelisted market fields were captured. This is a request and response-shape fixture, not a full OHLC response."
+}

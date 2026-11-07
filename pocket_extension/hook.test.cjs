@@ -6,7 +6,7 @@ const vm = require('node:vm');
 function loadHook() {
   let now=1700000000000;
   const messages=[],intervals=[],commands=[];
-  class Socket { constructor(){this.handlers={};} addEventListener(event,fn){this.handlers[event]=fn;} send(data){this.sent=data;} receive(data){this.handlers.message({data});} }
+  class Socket { constructor(){this.handlers={};} addEventListener(event,fn){this.handlers[event]=fn;} send(data){this.sent=data;(this.sentMessages || (this.sentMessages=[])).push(data);} receive(data){this.handlers.message({data});} }
   class Canvas {} Canvas.prototype.getContext=()=>null;
   class Context {} Context.prototype.fillText=()=>{};Context.prototype.fillRect=()=>{};
   const window={WebSocket:Socket,postMessage:m=>messages.push(m),addEventListener(event,fn){if(event==='message')commands.push(fn);}};
@@ -20,7 +20,7 @@ function loadHook() {
   Object.defineProperty(sandbox.HTMLInputElement.prototype,'value',{set(value){this._value=value;},get(){return this._value;}});
   let source=fs.readFileSync(__dirname+'/page_hook.js','utf8');
   const at=source.lastIndexOf('})();');
-  source=source.slice(0,at)+`globalThis.testing={handleMainWorldSwitchPair,closeAssetMenu,handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
+  source=source.slice(0,at)+`globalThis.testing={marketTrace,handleMainWorldSwitchPair,closeAssetMenu,handleMainWorldSetExpiry,handleMainWorldClickTrade,getActualChartTimeframeBadge,handleMainWorldEnsureChartTimeframe,selectPairCandidate,pairVisitedAt};`+source.slice(at);
   vm.runInNewContext(source,sandbox);
   return {...sandbox.testing,window,document,messages,Socket:window.WebSocket,now:()=>now,
     async command(data){for(const fn of commands)await fn({source:window,data:{source:'WINKY_CONTENT',...data}});},
@@ -255,4 +255,50 @@ test('a combined native response forwards tick history and named OHLC independen
     history:[[1700000000.25,1.2]],candles:[{time:1699999920,open:1.1,close:1.2,high:1.25,low:1.05}]}]));
   assert.equal(h.messages.find(m=>m.type==='WS_HISTORY_TICKS').ticks.length,1);
   assert.equal(h.messages.find(m=>m.type==='WS_CANDLES_HISTORY').candles.length,1);
+});
+
+test('captured native history window moves backwards and stops after 200 unique candles',async()=>{
+  const native=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-native-history.json','utf8'));
+  const h=loadHook(),socket=new h.Socket('wss://test'),asset=native.request.asset,period=native.request.period;
+  socket.send('42'+JSON.stringify(['changeSymbol',{asset,period}]));
+  socket.send('42'+JSON.stringify([native.requestEvent,native.request]));
+  const bars=(start,count)=>Array.from({length:count},(_,i)=>({time:start+i*period,open:1,high:1.2,low:.9,close:1.1}));
+  const initial=bars(1699993980,100);
+  socket.receive('42'+JSON.stringify(['loadHistoryPeriodFast',{asset,period,data:initial}]));
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',pair:asset,periodSec:period,requestId:1});
+  const older=JSON.parse(socket.sent.slice(2));assert.equal(older[0],native.requestEvent);
+  assert.equal(older[1].time,initial[0].time-period);assert.equal(older[1].offset,9000);
+  const sentBefore=socket.sentMessages.length;
+  socket.receive('42'+JSON.stringify(['loadHistoryPeriodFast',{asset,period,data:bars(initial[0].time-100*period,100)}]));
+  await new Promise(resolve=>queueMicrotask(resolve));
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',pair:asset,periodSec:period,requestId:2});
+  assert.equal(h.messages.at(-1).satisfied,true);assert.equal(socket.sentMessages.length,sentBefore);
+  assert.equal(h.messages.filter(m=>m.type==='WS_CANDLES_HISTORY').length,2);
+});
+test('market diagnostics never retain auth packets or arbitrary nested values',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42["auth",{"session":"DO_NOT_STORE_SECRET","uid":123}]');
+  socket.receive('42["auth",{"session":"DO_NOT_STORE_SECRET"}]');
+  socket.receive('42["history",{"asset":"EURUSD_otc","period":60,"data":[{"time":1700000000,"price":{"token":"DO_NOT_STORE_SECRET"}}]}]');
+  assert.equal(JSON.stringify(h.marketTrace).includes('DO_NOT_STORE_SECRET'),false);
+});
+
+test('captured fast-history tuples preserve open/close/high/low and native broker time',()=>{
+  const fixture=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-fast-history.json','utf8'));
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42'+JSON.stringify(['changeSymbol',{asset:fixture.payload.asset,period:60}]));
+  socket.receive('42'+JSON.stringify([fixture.event,fixture.payload]));
+  const history=h.messages.find(m=>m.type==='WS_CANDLES_HISTORY');assert.equal(history.candles.length,3);
+  assert.deepEqual({...history.candles[0]},{time:1794045420000,open:1.30883,close:1.30954,high:1.30995,low:1.30874});
+  assert.equal(h.messages.find(m=>m.type==='WS_HISTORY_TICKS').ticks.length,3);
+});
+test('captured history schema can request older bars without a manual chart pan',async()=>{
+  const fixture=JSON.parse(fs.readFileSync(__dirname+'/fixtures/pocket-fast-history.json','utf8'));
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  socket.send('42'+JSON.stringify(['changeSymbol',{asset:fixture.payload.asset,period:60}]));
+  socket.receive('42'+JSON.stringify([fixture.event,fixture.payload]));
+  await h.command({type:'WINKY_CMD_REQUEST_HISTORY',pair:fixture.payload.asset,periodSec:60,requestId:232});
+  const sent=JSON.parse(socket.sent.slice(2));assert.equal(sent[0],'loadHistoryPeriod');
+  assert.equal(sent[1].time,1794039540-60);assert.equal(sent[1].offset,200*60);assert.equal(sent[1].period,60);
+  assert.ok(Number.isFinite(sent[1].index));assert.equal(h.messages.at(-1).requested,true);
 });
