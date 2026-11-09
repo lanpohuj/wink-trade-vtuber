@@ -49,6 +49,16 @@ def priority(category: str) -> int:
         return 1
     return 4 if category in ('STREAM_INSIGHT', 'CHAT_ACK') else 2
 
+def recording_reviewed(manifest: dict, item: dict) -> bool:
+    if item.get('auditory_verified') is True:
+        return True
+    return (manifest.get('review_method') == 'owner_sampled'
+            and manifest.get('review_accepted') is True
+            and item.get('review_method') == 'owner_sampled'
+            and item.get('review_accepted') is True
+            and item.get('automatic_qc_passed') is True
+            and item.get('text_version', 1) <= 1)
+
 class VoiceBank:
     def __init__(self, root: Path | None = None, history_path: Path | None = None):
         self.root = root or active_root()
@@ -73,7 +83,7 @@ class VoiceBank:
                 records = manifest.get('categories', {}).get(required, [])
                 for language in ('ru', 'en'):
                     bank = [r for r in records if r.get('lang') == language]
-                    if len(bank) != count or any(not r.get('auditory_verified') or r.get('status') != 'ready' or not (self.root / r.get('file', '')).is_file() for r in bank):
+                    if len(bank) != count or any(not recording_reviewed(manifest, r) or r.get('status') != 'ready' or not (self.root / r.get('file', '')).is_file() for r in bank):
                         return []
         category = category_name(event.get('category'))
         lang = event.get('lang', 'ru')
@@ -86,7 +96,7 @@ class VoiceBank:
         for original in items:
             item = dict(original)
             item.update(eligibility.get(item.get("id"), {}))
-            if str(manifest.get('version', '')).startswith('3') and not item.get('auditory_verified', False):
+            if str(manifest.get('version', '')).startswith('3') and not recording_reviewed(manifest, item):
                 continue
             if item.get('lang', 'ru') != lang or item.get('status', 'ready') != 'ready':
                 continue

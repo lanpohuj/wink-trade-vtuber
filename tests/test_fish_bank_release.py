@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from tools import activate_fish_bank as release
-from winky.voice_bank import CATEGORY_COUNTS
+from winky.voice_bank import CATEGORY_COUNTS, recording_reviewed
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -62,6 +62,23 @@ class BankReleaseTests(unittest.TestCase):
                 release.activate(approval)
             self.assertTrue(json.loads(path.read_text())['activated'])
             self.assertEqual(json.loads((bank.parent / 'active-bank.json').read_text()), {'path': 'fish_v3'})
+            # Sampled acceptance still requires every corrected recording;
+            # it never claims that the other 239 files were heard.
+            corrected = next(iter(categories.values()))[0]
+            corrected['text_version'] = 2
+            path.write_text(json.dumps(dict(version='3.0', activated=False, categories=categories)))
+            approval.write_text(json.dumps(dict(method='owner_sampled', voice_samples_accepted=True, records=[])))
+            with patch.object(release, 'ROOT', root):
+                with self.assertRaisesRegex(ValueError, 'Unreviewed'):
+                    release.activate(approval)
+                approval.write_text(json.dumps(dict(method='owner_sampled', voice_samples_accepted=True, records=[approvals[0]])))
+                release.activate(approval)
+            accepted = json.loads(path.read_text())
+            rows = [r for rr in accepted['categories'].values() for r in rr]
+            self.assertEqual(sum(r['auditory_verified'] for r in rows), 1)
+            self.assertTrue(all(recording_reviewed(accepted, r) for r in rows))
+            rows[0]['auditory_verified'] = False
+            self.assertFalse(recording_reviewed(accepted, rows[0]))
 
     def test_samples_are_not_whole_bank_acceptance(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -73,4 +90,7 @@ class BankReleaseTests(unittest.TestCase):
             approval.write_text(json.dumps(dict(method='samples_only', records=[])))
             with patch.object(release, 'ROOT', root):
                 with self.assertRaisesRegex(ValueError, 'Listening acceptance'):
+                    release.activate(approval)
+                approval.write_text(json.dumps(dict(method='owner_sampled', records=[])))
+                with self.assertRaisesRegex(ValueError, 'Voice sample acceptance'):
                     release.activate(approval)

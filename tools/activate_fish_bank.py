@@ -12,8 +12,12 @@ def activate(approval):
     path = bank / "manifest.json"
     manifest = json.loads(path.read_text())
     approved = json.loads(approval.read_text())
-    if approved.get("method") != "owner_listening":
+    method = approved.get("method")
+    sampled = method == "owner_sampled"
+    if method not in ("owner_listening", "owner_sampled"):
         raise ValueError("Listening acceptance required")
+    if sampled and approved.get("voice_samples_accepted") is not True:
+        raise ValueError("Voice sample acceptance required")
     records = [r for rows in manifest["categories"].values() for r in rows]
     if len(records) != 240 or len({r["id"] for r in records}) != 240:
         raise ValueError("Expected 240 unique recordings")
@@ -31,15 +35,21 @@ def activate(approval):
             if not media.is_relative_to(bank.resolve()):
                 raise ValueError("Recording outside bank")
             actual = hashlib.sha256(media.read_bytes()).hexdigest()
+            needs_listening = not sampled or row.get("text_version", 1) > 1
             if (
-                accepted.get("accepted") is not True
-                or accepted.get("sha256") != actual
+                (needs_listening and (accepted.get("accepted") is not True
+                or accepted.get("sha256") != actual))
+                or accepted.get("accepted") is False
                 or actual != row["sha256"]
             ):
                 raise ValueError("Unreviewed or changed audio: " + row["id"])
             row.update(
-                status="ready", auditory_verified=True, review_method="owner_listening"
+                status="ready", auditory_verified=accepted.get("accepted") is True
+                and accepted.get("sha256") == actual,
+                review_accepted=True, review_method=method
             )
+    manifest["review_method"] = method
+    manifest["review_accepted"] = True
     manifest["activated"] = True
     tmp = path.with_suffix(".tmp")
     tmp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
