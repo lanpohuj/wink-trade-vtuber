@@ -1008,6 +1008,11 @@
     // Pocket removes its modal after the exit transition. Do not report a
     // failure at 100 ms or click again while the first close is still running.
     for(let i=0;i<8 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));
+    if(visibleChartMenu()) {
+      const canvas=document.querySelector('.chart-container canvas, #chart-canvas, canvas');
+      if(canvas)realClick(canvas);
+      for(let i=0;i<6 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));
+    }
     lastChartControl.closed=!visibleChartMenu();lastChartControl.elapsedMs=Date.now()-lastChartControl.startedAt;
     lastChartControl.after=visibleChartMenu()?.parentElement?.className || null;
     return !visibleChartMenu();
