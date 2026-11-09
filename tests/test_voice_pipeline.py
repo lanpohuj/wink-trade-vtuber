@@ -249,6 +249,29 @@ class ProviderAndCompatibilityTests(unittest.TestCase):
         self.assertTrue(all(check_phrase(r['text'])[0] for r in records))
 
 
+    def test_lumean_success_keeps_template_order_storage_download_protocol(self):
+        from winky.tts import LumeanTTS
+        from config import settings
+        with tempfile.TemporaryDirectory() as tmp:
+            engine=LumeanTTS();target=Path(tmp)/'sample.mp3'
+            engine.get_tuning=Mock(return_value={'template_id':'venti-template','breathing_pauses':False})
+            engine.get_voice_dir=Mock(return_value=Path(tmp));engine.get_cache_path=Mock(return_value=target)
+            def reply(data=None,content=b''):
+                result=Mock();result.status_code=200;result.json.return_value={'data':data or {}};result.content=content;return result
+            def post(url,**kwargs):
+                if url.endswith('/orders'):
+                    self.assertEqual(kwargs['json']['template_id'],'venti-template')
+                    self.assertIn('input_text',kwargs['json']);return reply({'id':'order'})
+                self.assertTrue(url.endswith('/storage/url'))
+                self.assertEqual(kwargs['json'],{'path':'storage/sample.mp3','download':True})
+                return reply({'url':'https://example.test/sample.mp3'})
+            def get(url,**kwargs):
+                return reply({'status':'completed','result':{'files':['storage/sample.mp3']}}) if '/orders/' in url else reply(content=b'a'*5000)
+            with patch.object(engine._client,'post',side_effect=post),patch.object(engine._client,'get',side_effect=get),patch.object(settings,'LUMEAN_API_KEY','test'),patch('winky.tts.time.sleep'),patch('winky.tts.compute_rms_chunks',return_value=[.1]):
+                self.assertEqual(engine.synthesize('Hello chat!','en'),target)
+                self.assertEqual(target.stat().st_size,5000)
+            engine._client.close()
+
     def test_lumean_failure_never_returns_random_cache_or_repeats_paid_create(self):
         import httpx
         from winky.tts import LumeanTTS, TTSError
