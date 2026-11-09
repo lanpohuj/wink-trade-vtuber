@@ -1,0 +1,24 @@
+{
+  "kind": "local_audio_pipeline_acceptance",
+  "pocket_trade_cycle_verified": false,
+  "live_tiktok_verified": false,
+  "auditory_library_review_complete": false,
+  "unchanged_original_mp3": 52,
+  "duplicate_event_suppressed": true,
+  "max_simultaneous_afplay": 1,
+  "ended_idle": true,
+  "clips": [
+    {
+      "file": "pause_03.mp3",
+      "observed_start_sec": 0.13,
+      "observed_last_sec": 5.71
+    },
+    {
+      "file": "pause_02.mp3",
+      "observed_start_sec": 6.38,
+      "observed_last_sec": 13.19
+    }
+  ],
+  "chrome_local_access_approved_by_owner": true,
+  "chrome_local_ping_confirmed": true
+}

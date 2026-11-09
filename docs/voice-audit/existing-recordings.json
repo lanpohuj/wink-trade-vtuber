@@ -1,0 +1,2484 @@
+{
+  "schema_version": 1,
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "start_01",
+      "category": "START_STREAM_READY",
+      "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
+      "file": "START_STREAM_READY/start_01.mp3",
+      "duration": 6.87,
+      "size": 110444,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.844,
+        "rms": 0.14187,
+        "peak": 0.53102,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.124,
+        "sha256": "61a6b08c2016a0c3d782b78e3cb4d875dfde2a5e43fdf401cbc90a92a6ba287b"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Всем привет на стриме!",
+          "no_speech_prob": 0.10682761669158936
+        },
+        {
+          "start": 2.0,
+          "end": 3.0,
+          "text": " Винки на связи!",
+          "no_speech_prob": 0.10682761669158936
+        },
+        {
+          "start": 3.0,
+          "end": 7.0,
+          "text": " Включаем турбо-режим и начинаем искать идеальные точки входа.",
+          "no_speech_prob": 0.10682761669158936
+        }
+      ],
+      "transcript": "Всем привет на стриме! Винки на связи! Включаем турбо-режим и начинаем искать идеальные точки входа.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "start_02",
+      "category": "START_STREAM_READY",
+      "text": "Так, терминал готов, индикаторы заряжены! Давайте посмотрим, где сейчас можно забрать уверенный профит.",
+      "file": "START_STREAM_READY/start_02.mp3",
+      "duration": 6.87,
+      "size": 110444,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Unverified financial promise: уверенный профит"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.844,
+        "rms": 0.14197,
+        "peak": 0.49909,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.184,
+        "sha256": "093f686315be590e632f0fef140e05879ce2e71f52faa35239f1032ebee6f6b8"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.2800000000000002,
+          "text": " Так, терминал готов! Индикаторы заряжены!",
+          "no_speech_prob": 0.05009039118885994
+        },
+        {
+          "start": 3.2800000000000002,
+          "end": 6.8,
+          "text": " Давайте посмотрим, где сейчас можно забрать уверенный профит.",
+          "no_speech_prob": 0.05009039118885994
+        }
+      ],
+      "transcript": "Так, терминал готов! Индикаторы заряжены! Давайте посмотрим, где сейчас можно забрать уверенный профит.",
+      "text_similarity": 1.0,
+      "decision": "replace",
+      "reason": "Unverified financial promise: уверенный профит",
+      "conditions": {}
+    },
+    {
+      "id": "start_03",
+      "category": "START_STREAM_READY",
+      "text": "Начинаем новый торговый цикл! Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
+      "file": "START_STREAM_READY/start_03.mp3",
+      "duration": 5.98,
+      "size": 96233,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.956,
+        "rms": 0.14834,
+        "peak": 0.50534,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.116,
+        "sha256": "c16c77f37023b6312fb886e1726d588cf18a94a6c575843db695aab3553613ab"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Начинаем новый торговый цикл.",
+          "no_speech_prob": 0.2535244822502136
+        },
+        {
+          "start": 2.0,
+          "end": 6.0,
+          "text": " Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
+          "no_speech_prob": 0.2535244822502136
+        }
+      ],
+      "transcript": "Начинаем новый торговый цикл. Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "start_04",
+      "category": "START_STREAM_READY",
+      "text": "Окей, я готова к анализу графика! Запускаю сканер уровней, объемов и тренда.",
+      "file": "START_STREAM_READY/start_04.mp3",
+      "duration": 5.93,
+      "size": 95397,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Claims volume scanning unsupported by the current engine"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.904,
+        "rms": 0.15199,
+        "peak": 0.51738,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.144,
+        "sha256": "c0a3abac7f6019ab652f48d9c9e23890cb16357e67c16b36a4d55599818ce9d4"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.84,
+          "text": " Окей, я готова канализу графика, запускаю сканер уровней, объемов и тренда.",
+          "no_speech_prob": 0.055192891508340836
+        }
+      ],
+      "transcript": "Окей, я готова канализу графика, запускаю сканер уровней, объемов и тренда.",
+      "text_similarity": 1.0,
+      "decision": "replace",
+      "reason": "Claims volume scanning unsupported by the current engine",
+      "conditions": {}
+    },
+    {
+      "id": "analyze_01",
+      "category": "ANALYZING_CHART",
+      "text": "Секундочку, анализирую график... Смотрю на RSI, скользящие средние и реакцию цены у ключевых уровней.",
+      "file": "ANALYZING_CHART/analyze_01.mp3",
+      "duration": 8.59,
+      "size": 138029,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.568,
+        "rms": 0.15006,
+        "peak": 0.6171,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.148,
+        "sha256": "3e1de71d871215dd9e93f6ba263a98affa42f59b608c1a38f2c0ff7826e88828"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 8.4,
+          "text": " Секундочку, анализирую график. Смотрю на Росай, скользящие средние и реакцию цены у ключевых уровней.",
+          "no_speech_prob": 0.05155029520392418
+        }
+      ],
+      "transcript": "Секундочку, анализирую график. Смотрю на Росай, скользящие средние и реакцию цены у ключевых уровней.",
+      "text_similarity": 0.952,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "indicators_ready": true
+      }
+    },
+    {
+      "id": "analyze_02",
+      "category": "ANALYZING_CHART",
+      "text": "Так, давайте разберем текущую картину... Проверяю силу тренда, импульсы свечей и зоны перекупленности.",
+      "file": "ANALYZING_CHART/analyze_02.mp3",
+      "duration": 7.52,
+      "size": 120893,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.497,
+        "rms": 0.14529,
+        "peak": 0.52928,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.14,
+        "trailing_silence": 0.177,
+        "sha256": "b19299815c779945262f8025a84b8e9e3c120a2f406277f04399dac31c5e6875"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 7.4,
+          "text": " Так, давайте разберем текущую картину, проверяю силу тренда, импульсы свечей и зоны перекупленности.",
+          "no_speech_prob": 0.040706973522901535
+        }
+      ],
+      "transcript": "Так, давайте разберем текущую картину, проверяю силу тренда, импульсы свечей и зоны перекупленности.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "indicators_ready": true
+      }
+    },
+    {
+      "id": "analyze_03",
+      "category": "ANALYZING_CHART",
+      "text": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+      "file": "ANALYZING_CHART/analyze_03.mp3",
+      "duration": 6.82,
+      "size": 109608,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.792,
+        "rms": 0.13314,
+        "peak": 0.56849,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.172,
+        "sha256": "62f739d2bc92d9ab8370815e78385b04dcf88474ea7ad6795c8eb74d03edc8f9"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.5600000000000005,
+          "text": " Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+          "no_speech_prob": 0.0464664027094841
+        }
+      ],
+      "transcript": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "analyze_04",
+      "category": "ANALYZING_CHART",
+      "text": "Внимательно смотрю на свечи и индикаторы... Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+      "file": "ANALYZING_CHART/analyze_04.mp3",
+      "duration": 6.17,
+      "size": 99159,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.139,
+        "rms": 0.13772,
+        "peak": 0.51339,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.139,
+        "sha256": "c826d473f3a5f7ea4c574ed8db00ac44b26dca10e404a3131a3ce72588a2c4d5"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.6,
+          "text": " Внимательно смотрю на свечи и индикаторы.",
+          "no_speech_prob": 0.1768929809331894
+        },
+        {
+          "start": 2.6,
+          "end": 6.1000000000000005,
+          "text": " Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+          "no_speech_prob": 0.1768929809331894
+        }
+      ],
+      "transcript": "Внимательно смотрю на свечи и индикаторы. Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "analyze_05",
+      "category": "ANALYZING_CHART",
+      "text": "Провожу технический анализ графика: сверяю EMA, динамику RSI и ближайшие уровни поддержки и сопротивления.",
+      "file": "ANALYZING_CHART/analyze_05.mp3",
+      "duration": 8.18,
+      "size": 131342,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.15,
+        "rms": 0.14694,
+        "peak": 0.55786,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.21,
+        "sha256": "989631395f612e4842e1f111954af1c619ee930663f60fd009aa257ba2153ab7"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.5600000000000005,
+          "text": " Провожу технический анализ графика, сверяю и мы, динамику",
+          "no_speech_prob": 0.2438984513282776
+        },
+        {
+          "start": 4.5600000000000005,
+          "end": 7.92,
+          "text": " RSI и ближайшие уровни поддержки и сопротивления.",
+          "no_speech_prob": 0.2438984513282776
+        }
+      ],
+      "transcript": "Провожу технический анализ графика, сверяю и мы, динамику RSI и ближайшие уровни поддержки и сопротивления.",
+      "text_similarity": 0.967,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "indicators_ready": true
+      }
+    },
+    {
+      "id": "analyze_06",
+      "category": "ANALYZING_CHART",
+      "text": "Хм, интересное движение на графике... Сейчас нейросеть просчитает точность сигнала на этой паре.",
+      "file": "ANALYZING_CHART/analyze_06.mp3",
+      "duration": 6.27,
+      "size": 100831,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Claims a neural network calculates accuracy; current engine is rule based"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.243,
+        "rms": 0.14202,
+        "peak": 0.51784,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.163,
+        "sha256": "01c9deac806555f4296e33c6cd0d375a7109dcea698e88160cc202423cd310a2"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.8000000000000003,
+          "text": " Хмм, интересное движение на графике.",
+          "no_speech_prob": 0.03560394421219826
+        },
+        {
+          "start": 2.8000000000000003,
+          "end": 6.16,
+          "text": " Сейчас нейросеть просчитает точные сигналы на этой паре.",
+          "no_speech_prob": 0.03560394421219826
+        }
+      ],
+      "transcript": "Хмм, интересное движение на графике. Сейчас нейросеть просчитает точные сигналы на этой паре.",
+      "text_similarity": 0.943,
+      "decision": "replace",
+      "reason": "Claims a neural network calculates accuracy; current engine is rule based",
+      "conditions": {}
+    },
+    {
+      "id": "switch_01",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "Не-а, на этой паре сейчас слишком слабый сигнал и рваное движение. Рисковать не будем, переключаю на другую валютную пару!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_01.mp3",
+      "duration": 8.23,
+      "size": 132178,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.202,
+        "rms": 0.14405,
+        "peak": 0.52868,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.182,
+        "sha256": "135d25159e1604be85927c56152896f2f5d108a7defb0b4402565f83afaa71a8"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 1.0,
+          "text": " Неа!",
+          "no_speech_prob": 0.05416484177112579
+        },
+        {
+          "start": 1.0,
+          "end": 5.0,
+          "text": " На этой паре сейчас слишком слабый сигнал и рваные движения.",
+          "no_speech_prob": 0.05416484177112579
+        },
+        {
+          "start": 5.0,
+          "end": 8.0,
+          "text": " Рисковать не будем, переключаю на другую валютную пару.",
+          "no_speech_prob": 0.05416484177112579
+        }
+      ],
+      "transcript": "Неа! На этой паре сейчас слишком слабый сигнал и рваные движения. Рисковать не будем, переключаю на другую валютную пару.",
+      "text_similarity": 0.98,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "skip_reason": "WEAK_AND_CHOPPY"
+      }
+    },
+    {
+      "id": "switch_02",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "Здесь рынок сейчас капризный и точка входа размытая. Давайте сменим валютную пару и найдем куда более четкий график!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_02.mp3",
+      "duration": 7.11,
+      "size": 114205,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.079,
+        "rms": 0.14349,
+        "peak": 0.57449,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.159,
+        "sha256": "336fe0b60ab7ab68e1452a11408641767b297cfad4d7e0072224b3b8191499be"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Здесь рынок сейчас капризно и точка входа размытое.",
+          "no_speech_prob": 0.14524100720882416
+        },
+        {
+          "start": 3.0,
+          "end": 7.0,
+          "text": " Давайте сменим валютную пару и найдем куда более четкий график.",
+          "no_speech_prob": 0.14524100720882416
+        }
+      ],
+      "transcript": "Здесь рынок сейчас капризно и точка входа размытое. Давайте сменим валютную пару и найдем куда более четкий график.",
+      "text_similarity": 0.964,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "skip_reason": "UNCONFIRMED_ENTRY"
+      }
+    },
+    {
+      "id": "switch_03",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "Индикаторы на этой паре дают противоречивую картину. Переключаю актив, нам нужны только надежные сетапы с высоким процентом!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_03.mp3",
+      "duration": 7.6,
+      "size": 122147,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.575,
+        "rms": 0.13911,
+        "peak": 0.57972,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.175,
+        "sha256": "d673d92538c03463a3ff76517ba58fdb88691897fe2081e2f07802436c666e58"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.02,
+          "text": " Индикаторы на этой паре дают противоречивую картину.",
+          "no_speech_prob": 0.044055305421352386
+        },
+        {
+          "start": 3.02,
+          "end": 4.5200000000000005,
+          "text": " Переключаю актив.",
+          "no_speech_prob": 0.044055305421352386
+        },
+        {
+          "start": 4.5200000000000005,
+          "end": 7.5200000000000005,
+          "text": " Нам нужны только надежные сетапы с высоким процентом.",
+          "no_speech_prob": 0.044055305421352386
+        }
+      ],
+      "transcript": "Индикаторы на этой паре дают противоречивую картину. Переключаю актив. Нам нужны только надежные сетапы с высоким процентом.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "skip_reason": "INDICATOR_CONFLICT"
+      }
+    },
+    {
+      "id": "switch_04",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "Так, тут сейчас флэт и слабая волатильность, ловить нечего. Меняю валютную пару, посмотрим другой актив!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_04.mp3",
+      "duration": 7.18,
+      "size": 115459,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.158,
+        "rms": 0.14825,
+        "peak": 0.57269,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.14,
+        "trailing_silence": 0.178,
+        "sha256": "414ecd20023fdf7091536f87fa71a80116dafb3704663dfff387907042b8ed45"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "text": " Так, тут сейчас флэд и слабая волатильность, ловить нечего.",
+          "no_speech_prob": 0.016725676134228706
+        },
+        {
+          "start": 4.2,
+          "end": 7.12,
+          "text": " Меняю валютную пару, посмотрим другой актив.",
+          "no_speech_prob": 0.016725676134228706
+        }
+      ],
+      "transcript": "Так, тут сейчас флэд и слабая волатильность, ловить нечего. Меняю валютную пару, посмотрим другой актив.",
+      "text_similarity": 0.988,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "market_regime": "LOW_VOL_RANGE"
+      }
+    },
+    {
+      "id": "switch_05",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "На этом графике вероятность ниже нашей планки. Без сожалений переключаемся на следующую валютную пару!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_05.mp3",
+      "duration": 6.32,
+      "size": 101667,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Calls a confluence score a measured probability"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.295,
+        "rms": 0.1415,
+        "peak": 0.55039,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.175,
+        "sha256": "f93b04a669f25cc3fcba2771d02041d514f5184906345cbee116583296e4bdea"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " На этом графике вероятность ниже нашей планки.",
+          "no_speech_prob": 0.0900108739733696
+        },
+        {
+          "start": 3.0,
+          "end": 6.2,
+          "text": " Без сожалению, переключаемся на следующую валютную пару.",
+          "no_speech_prob": 0.0900108739733696
+        }
+      ],
+      "transcript": "На этом графике вероятность ниже нашей планки. Без сожалению, переключаемся на следующую валютную пару.",
+      "text_similarity": 0.989,
+      "decision": "replace",
+      "reason": "Calls a confluence score a measured probability",
+      "conditions": {}
+    },
+    {
+      "id": "switch_06",
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "text": "Ой, ну тут совсем скучная картина по индикаторам. Давайте переключим пару и поищем красивое трендовое движение!",
+      "file": "WEAK_SIGNAL_SWITCH_PAIR/switch_06.mp3",
+      "duration": 7.6,
+      "size": 122147,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.575,
+        "rms": 0.14253,
+        "peak": 0.56432,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.135,
+        "sha256": "d6600de9fec98435b9e61ee8d26b1e7ebfe130464a2669306fbde1ecd597f83c"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.38,
+          "text": " Ай, ну тут совсем скучная картина по индикаторам.",
+          "no_speech_prob": 0.03625142201781273
+        },
+        {
+          "start": 3.68,
+          "end": 7.5,
+          "text": " Давайте переключим пару и поищем красивое трендовое движение.",
+          "no_speech_prob": 0.03625142201781273
+        }
+      ],
+      "transcript": "Ай, ну тут совсем скучная картина по индикаторам. Давайте переключим пару и поищем красивое трендовое движение.",
+      "text_similarity": 0.989,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "indicators_ready": true
+      }
+    },
+    {
+      "id": "switched_01",
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "text": "Отлично, переключились на новую пару с высокой доходностью! Сейчас быстро проанализирую этот график.",
+      "file": "PAIR_SWITCHED_NEW_SCAN/switched_01.mp3",
+      "duration": 5.85,
+      "size": 94143,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.825,
+        "rms": 0.13501,
+        "peak": 0.5361,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.185,
+        "sha256": "c736f90d9f32585324f5dc10d86df6ab2273438a2a5e9c00a18fcd5ba9da3243"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.4,
+          "text": " Отлично! Переключились на новую пару с высокой доходностью!",
+          "no_speech_prob": 0.010556185618042946
+        },
+        {
+          "start": 3.4,
+          "end": 5.8,
+          "text": " Сейчас быстро проанализирую этот график.",
+          "no_speech_prob": 0.010556185618042946
+        }
+      ],
+      "transcript": "Отлично! Переключились на новую пару с высокой доходностью! Сейчас быстро проанализирую этот график.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "high_payout_confirmed": true
+      }
+    },
+    {
+      "id": "switched_02",
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "text": "Вот, совсем другое дело! Новая валютная пара открыта, запускаю сканирование уровней и RSI.",
+      "file": "PAIR_SWITCHED_NEW_SCAN/switched_02.mp3",
+      "duration": 7.18,
+      "size": 115459,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.158,
+        "rms": 0.14766,
+        "peak": 0.51457,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.158,
+        "sha256": "ae22fe3cae53fd1f7b9bd6e61469619dce46260c41ceb1db3890a2b40f507bc6"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.5,
+          "text": " Вот! Совсем другое дело!",
+          "no_speech_prob": 0.025126876309514046
+        },
+        {
+          "start": 2.5,
+          "end": 4.5,
+          "text": " Новая валютная пара открыта.",
+          "no_speech_prob": 0.025126876309514046
+        },
+        {
+          "start": 4.5,
+          "end": 7.0,
+          "text": " Запускаю сканирование уровней и РСАИ.",
+          "no_speech_prob": 0.025126876309514046
+        }
+      ],
+      "transcript": "Вот! Совсем другое дело! Новая валютная пара открыта. Запускаю сканирование уровней и РСАИ.",
+      "text_similarity": 0.953,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "indicators_ready": true
+      }
+    },
+    {
+      "id": "switched_03",
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
+      "file": "PAIR_SWITCHED_NEW_SCAN/switched_03.mp3",
+      "duration": 5.9,
+      "size": 94979,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.878,
+        "rms": 0.14642,
+        "peak": 0.53603,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.198,
+        "sha256": "c2de777ab8e3009220bdfc0b2d0bb4454206c459ebf785ff25fe016b1fe878e5"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.5200000000000005,
+          "text": " перешли на свежий актив. Давайте посмотрим какую картину нам рисуют свечи на этом графике.",
+          "no_speech_prob": 0.09616590291261673
+        }
+      ],
+      "transcript": "перешли на свежий актив. Давайте посмотрим какую картину нам рисуют свечи на этом графике.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "switched_04",
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "text": "Пара успешно изменена! Начинаю анализ индикаторов на новом графике.",
+      "file": "PAIR_SWITCHED_NEW_SCAN/switched_04.mp3",
+      "duration": 4.78,
+      "size": 77007,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.754,
+        "rms": 0.14199,
+        "peak": 0.48766,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.194,
+        "sha256": "5d3b19a70ea1088514c474661672a98eab87065fc78a30a88b053569396d5c40"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.64,
+          "text": " Пара успешно изменена, начиная анализ индикаторов на новом графике.",
+          "no_speech_prob": 0.17828424274921417
+        }
+      ],
+      "transcript": "Пара успешно изменена, начиная анализ индикаторов на новом графике.",
+      "text_similarity": 0.982,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "prep_01",
+      "category": "PREPARE_ENTRY",
+      "text": "Ого, вижу отличную формацию! Готовлю точку входа, сейчас зайдем на самом выгодном импульсе!",
+      "file": "PREPARE_ENTRY/prep_01.mp3",
+      "duration": 7.0,
+      "size": 112534,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Claims the most advantageous impulse before an order exists"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.975,
+        "rms": 0.15182,
+        "peak": 0.54457,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.175,
+        "sha256": "4f5554b966b27c9fe4ab3b4ca6ace4fdf1f8cbbd0b01682b83d093b151a002fa"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.82,
+          "text": " Ого! Вижу отличную информацию!",
+          "no_speech_prob": 0.04773779958486557
+        },
+        {
+          "start": 2.82,
+          "end": 4.5,
+          "text": " Готовлю точку входа.",
+          "no_speech_prob": 0.04773779958486557
+        },
+        {
+          "start": 4.5,
+          "end": 6.9,
+          "text": " Сейчас зайдём на самом выгодном импульсе.",
+          "no_speech_prob": 0.04773779958486557
+        }
+      ],
+      "transcript": "Ого! Вижу отличную информацию! Готовлю точку входа. Сейчас зайдём на самом выгодном импульсе.",
+      "text_similarity": 0.987,
+      "decision": "replace",
+      "reason": "Claims the most advantageous impulse before an order exists",
+      "conditions": {}
+    },
+    {
+      "id": "prep_02",
+      "category": "PREPARE_ENTRY",
+      "text": "Есть контакт! Сигнал подтвержден по всем индикаторам, приготовьтесь — сейчас будем открывать сделку!",
+      "file": "PREPARE_ENTRY/prep_02.mp3",
+      "duration": 6.35,
+      "size": 102085,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.322,
+        "rms": 0.14415,
+        "peak": 0.54948,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.162,
+        "sha256": "3d3dbf33c7004080e526ac7e9aa0d2949b2eb8d32c185ec74207665456354160"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.24,
+          "text": " Есть контакт. Сигнал подтвержден по всем индикаторам. Приготовьтесь, сейчас будем открывать сделку.",
+          "no_speech_prob": 0.10364051908254623
+        }
+      ],
+      "transcript": "Есть контакт. Сигнал подтвержден по всем индикаторам. Приготовьтесь, сейчас будем открывать сделку.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "all_indicators_confirmed": true
+      }
+    },
+    {
+      "id": "prep_03",
+      "category": "PREPARE_ENTRY",
+      "text": "Красота! Уровень держит, RSI дает четкий разворотный сигнал. Выставляю параметры и захожу в сделку!",
+      "file": "PREPARE_ENTRY/prep_03.mp3",
+      "duration": 7.58,
+      "size": 121729,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.549,
+        "rms": 0.14193,
+        "peak": 0.59638,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.189,
+        "sha256": "1abb43e86927ddede87b0a6dbe584eca5d70ed9265cb236e2c4b3c1c48ebe1a4"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 1.0,
+          "text": " Красота!",
+          "no_speech_prob": 0.054283272475004196
+        },
+        {
+          "start": 1.32,
+          "end": 4.62,
+          "text": " Уровень держит! Рысай дает четкий разворотный сигнал!",
+          "no_speech_prob": 0.054283272475004196
+        },
+        {
+          "start": 4.8,
+          "end": 7.42,
+          "text": " Выставляю параметры и захожу в сделку!",
+          "no_speech_prob": 0.054283272475004196
+        }
+      ],
+      "transcript": "Красота! Уровень держит! Рысай дает четкий разворотный сигнал! Выставляю параметры и захожу в сделку!",
+      "text_similarity": 0.952,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "rsi_level_reversal_confirmed": true
+      }
+    },
+    {
+      "id": "prep_04",
+      "category": "PREPARE_ENTRY",
+      "text": "Нашла сильный сетап с высокой точностью! Буквально пара секунд — фиксируем точку входа!",
+      "file": "PREPARE_ENTRY/prep_04.mp3",
+      "duration": 6.56,
+      "size": 105428,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.531,
+        "rms": 0.13911,
+        "peak": 0.57448,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.151,
+        "sha256": "8ecb90e3aae01f463a35f9d9cd7ae8ce653c23a1f39bbafe194028c4f6f7820f"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.18,
+          "text": " Нашла сильный сетап с высокой точностью!",
+          "no_speech_prob": 0.014463776722550392
+        },
+        {
+          "start": 3.18,
+          "end": 6.46,
+          "text": " Буквально пара секунд фиксируем точку входа!",
+          "no_speech_prob": 0.014463776722550392
+        }
+      ],
+      "transcript": "Нашла сильный сетап с высокой точностью! Буквально пара секунд фиксируем точку входа!",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "call_01",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Захожу ВВЕРХ на повышение! Цена уперлась в сильный нижний уровень, продавцы выдохлись — ждем уверенный отскок наверх!",
+      "file": "OPEN_TRADE_CALL/call_01.mp3",
+      "duration": 7.39,
+      "size": 118803,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "call_02",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Открываю сделку КУПИТЬ, идем ВВЕРХ! Индикатор RSI в зоне перепроданности, а покупатели уже перехватывают инициативу!",
+      "file": "OPEN_TRADE_CALL/call_02.mp3",
+      "duration": 7.99,
+      "size": 128416,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.967,
+        "rms": 0.15068,
+        "peak": 0.55487,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.167,
+        "sha256": "c96cc9c42da9601fd6ef11f9de215c37e5305e4c0746653b89088af3fbf0da30"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.32,
+          "text": " Открываю сделку, купить, идём вверх!",
+          "no_speech_prob": 0.08023067563772202
+        },
+        {
+          "start": 2.64,
+          "end": 5.0,
+          "text": " Индикатор Расаев в зоне перепроданности!",
+          "no_speech_prob": 0.08023067563772202
+        },
+        {
+          "start": 5.28,
+          "end": 7.88,
+          "text": " А покупатели уже перехватывают инициативу!",
+          "no_speech_prob": 0.08023067563772202
+        }
+      ],
+      "transcript": "Открываю сделку, купить, идём вверх! Индикатор Расаев в зоне перепроданности! А покупатели уже перехватывают инициативу!",
+      "text_similarity": 0.955,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "BUY",
+        "rsi_oversold_confirmed": true
+      }
+    },
+    {
+      "id": "call_03",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Берем сделку на ПОВЫШЕНИЕ на тридцать секунд! Отличная поддержка снизу и разворотный паттерн по тренду!",
+      "file": "OPEN_TRADE_CALL/call_03.mp3",
+      "duration": 8.91,
+      "size": 143045,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "call_04",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Нажимаю ВВЕРХ! Здесь читается чистый бычий импульс от локального минимума, сделка в работе!",
+      "file": "OPEN_TRADE_CALL/call_04.mp3",
+      "duration": 6.56,
+      "size": 105428,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.531,
+        "rms": 0.14296,
+        "peak": 0.48544,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.171,
+        "sha256": "195a5cf2ed6880b533335775885ff6311bebbb02d4a2f134b44f0c313256e435"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.4,
+          "text": " Нажимаю вверх, здесь читается чистый бычий импульс от локального минимума сделка в работе.",
+          "no_speech_prob": 0.03685853257775307
+        }
+      ],
+      "transcript": "Нажимаю вверх, здесь читается чистый бычий импульс от локального минимума сделка в работе.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "BUY",
+        "local_bottom_impulse_confirmed": true
+      }
+    },
+    {
+      "id": "call_05",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Сделка открыта на покупку — ВВЕРХ! Все факторы за рост, теперь сопровождаем движение!",
+      "file": "OPEN_TRADE_CALL/call_05.mp3",
+      "duration": 5.67,
+      "size": 91218,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "call_06",
+      "category": "OPEN_TRADE_CALL",
+      "text": "Влетаем ВВЕРХ! Отличный вход на откате к уровню поддержки, ждем зеленую свечу!",
+      "file": "OPEN_TRADE_CALL/call_06.mp3",
+      "duration": 5.67,
+      "size": 91218,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.642,
+        "rms": 0.13908,
+        "peak": 0.56641,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.162,
+        "sha256": "33b29bb370df69fa49f0f8a76394dcc640188a93faa577bf65bb8f6585345f44"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.5600000000000005,
+          "text": " Влетаем выверх. Отличный вход на откате к уровню поддержки. Ждём зелёную свечу.",
+          "no_speech_prob": 0.09471867978572845
+        }
+      ],
+      "transcript": "Влетаем выверх. Отличный вход на откате к уровню поддержки. Ждём зелёную свечу.",
+      "text_similarity": 0.992,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "BUY",
+        "support_pullback_confirmed": true
+      }
+    },
+    {
+      "id": "put_01",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Захожу ВНИЗ на понижение! Цена уперлась в мощный потолок сопротивления, покупатели выдохлись — ждем откат вниз!",
+      "file": "OPEN_TRADE_PUT/put_01.mp3",
+      "duration": 7.52,
+      "size": 120893,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "put_02",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Открываю сделку ПРОДАТЬ, идем ВНИЗ! По RSI сильная перекупленность, самое время забрать движение на коррекции!",
+      "file": "OPEN_TRADE_PUT/put_02.mp3",
+      "duration": 7.65,
+      "size": 122983,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "put_03",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Берем сделку на ПОНИЖЕНИЕ на тридцать секунд! Отличный медвежий сигнал от верхнего уровня!",
+      "file": "OPEN_TRADE_PUT/put_03.mp3",
+      "duration": 6.97,
+      "size": 112116,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.949,
+        "rms": 0.14587,
+        "peak": 0.58578,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.189,
+        "sha256": "4ea976f6e1dd457388d04276e8e60bc020bd6b6f0d2109752ee12e54bc8a6557"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.9,
+          "text": " Берём сделку на понижение на 30 секунд!",
+          "no_speech_prob": 0.05085800215601921
+        },
+        {
+          "start": 4.0,
+          "end": 6.8,
+          "text": " Отличный медвежий сигнал от верхнего уровня!",
+          "no_speech_prob": 0.05085800215601921
+        }
+      ],
+      "transcript": "Берём сделку на понижение на 30 секунд! Отличный медвежий сигнал от верхнего уровня!",
+      "text_similarity": 0.932,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "SELL",
+        "expiry": "30s",
+        "upper_level_rejection_confirmed": true
+      }
+    },
+    {
+      "id": "put_04",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Нажимаю ВНИЗ! Вижу затухание роста у сильной зоны сопротивления, сделка открыта!",
+      "file": "OPEN_TRADE_PUT/put_04.mp3",
+      "duration": 6.22,
+      "size": 99995,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.191,
+        "rms": 0.13551,
+        "peak": 0.5274,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.171,
+        "sha256": "cda02ef5a9ca74018dfd72f8ce65b2b6cd8fb5296573c925d565408677a28322"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.12,
+          "text": " Нажимаю вниз, вижу затухание роста, усильные зоны сопротивления, сделка открыта.",
+          "no_speech_prob": 0.2375423014163971
+        }
+      ],
+      "transcript": "Нажимаю вниз, вижу затухание роста, усильные зоны сопротивления, сделка открыта.",
+      "text_similarity": 0.97,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "SELL",
+        "resistance_fade_confirmed": true
+      }
+    },
+    {
+      "id": "put_05",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Сделка в работе, прогноз — ВНИЗ! Продавцы активно давят цену от максимума, следим за графиком!",
+      "file": "OPEN_TRADE_PUT/put_05.mp3",
+      "duration": 5.75,
+      "size": 92472,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.721,
+        "rms": 0.1481,
+        "peak": 0.57548,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.101,
+        "sha256": "8d17839e9cd40e2bec4bd5a39b89998520ac7920a4cd318cd90e5e69ee5b3731"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.5,
+          "text": " Сделка в работе прогноз вниз, продавцы активно давят цену от максимума. Следим за графиком.",
+          "no_speech_prob": 0.12013207376003265
+        }
+      ],
+      "transcript": "Сделка в работе прогноз вниз, продавцы активно давят цену от максимума. Следим за графиком.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "direction": "SELL",
+        "top_selling_pressure_confirmed": true
+      }
+    },
+    {
+      "id": "put_06",
+      "category": "OPEN_TRADE_PUT",
+      "text": "Заходим на продажу — ВНИЗ! Идеальная точка входа на развороте от вершины!",
+      "file": "OPEN_TRADE_PUT/put_06.mp3",
+      "duration": 4.78,
+      "size": 77007,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "decision": "missing",
+      "reason": "File absent before voice repair",
+      "metrics": {}
+    },
+    {
+      "id": "wait_01",
+      "category": "IN_TRADE_WAITING",
+      "text": "Половина времени сделки позади! Внимательно следим за каждым тиком, точка входа держится отлично!",
+      "file": "IN_TRADE_WAITING/wait_01.mp3",
+      "duration": 6.56,
+      "size": 105428,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.531,
+        "rms": 0.13881,
+        "peak": 0.51941,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.14,
+        "trailing_silence": 0.171,
+        "sha256": "03d9a50b5e31ea35a5c1ccb1394d61b82965c5dab036ad30a835edbc2800d3cc"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Половина времени сделки позади.",
+          "no_speech_prob": 0.08810736984014511
+        },
+        {
+          "start": 2.0,
+          "end": 6.0,
+          "text": " Внимательно, следим за каждым тиком, точка входа держится отлично.",
+          "no_speech_prob": 0.08810736984014511
+        }
+      ],
+      "transcript": "Половина времени сделки позади. Внимательно, следим за каждым тиком, точка входа держится отлично.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "halfway_favorable_confirmed": true
+      }
+    },
+    {
+      "id": "wait_02",
+      "category": "IN_TRADE_WAITING",
+      "text": "Осталось около пятнадцати секунд до закрытия. Дышим ровно и смотрим, как отрабатывает наш прогноз!",
+      "file": "IN_TRADE_WAITING/wait_02.mp3",
+      "duration": 6.35,
+      "size": 102085,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.322,
+        "rms": 0.1515,
+        "peak": 0.54272,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.162,
+        "sha256": "721bacd6b722a15bf0d960d1fd6bb95f4ac9ad51a99c3e1ee6cfe593b8605e30"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Осталось около 15 секунд до закрытия.",
+          "no_speech_prob": 0.034947752952575684
+        },
+        {
+          "start": 3.0,
+          "end": 6.24,
+          "text": " Дышим ровно и смотрим, как отрабатывает наш прогноз.",
+          "no_speech_prob": 0.034947752952575684
+        }
+      ],
+      "transcript": "Осталось около 15 секунд до закрытия. Дышим ровно и смотрим, как отрабатывает наш прогноз.",
+      "text_similarity": 0.923,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "remaining_sec": 15
+      }
+    },
+    {
+      "id": "wait_03",
+      "category": "IN_TRADE_WAITING",
+      "text": "Сделка в самом разгаре! График показывает хорошую реакцию, ждем финальной фиксации таймера!",
+      "file": "IN_TRADE_WAITING/wait_03.mp3",
+      "duration": 5.93,
+      "size": 95397,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.904,
+        "rms": 0.15447,
+        "peak": 0.5557,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.144,
+        "sha256": "f05ccf0e32638a17a06e5aa71ad01f0b1e2203571d48f52dae97d0818922f523"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Сделка в самом разгаре!",
+          "no_speech_prob": 0.11739416420459747
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Ну график показывает хорошую реакцию!",
+          "no_speech_prob": 0.11739416420459747
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Ждём финальной фиксации таймера!",
+          "no_speech_prob": 0.11739416420459747
+        }
+      ],
+      "transcript": "Сделка в самом разгаре! Ну график показывает хорошую реакцию! Ждём финальной фиксации таймера!",
+      "text_similarity": 0.987,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "favorable_reaction_confirmed": true
+      }
+    },
+    {
+      "id": "wait_04",
+      "category": "IN_TRADE_WAITING",
+      "text": "Сопровождаем сделку, до экспирации совсем немного времени! Держим кулачки!",
+      "file": "IN_TRADE_WAITING/wait_04.mp3",
+      "duration": 4.78,
+      "size": 77007,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.754,
+        "rms": 0.13913,
+        "peak": 0.54536,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.174,
+        "sha256": "1d4e6ca2d29adbd0d23a7754c602cb95fdd4a93f3dd09316d5dc350fedc6c87c"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " сопровождаем сделку до экспирации совсем немного времени держим кулачки",
+          "no_speech_prob": 0.05819731205701828
+        }
+      ],
+      "transcript": "сопровождаем сделку до экспирации совсем немного времени держим кулачки",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "near_expiry_confirmed": true
+      }
+    },
+    {
+      "id": "wait_05",
+      "category": "IN_TRADE_WAITING",
+      "text": "Смотрим на закрытие свечи, остаются считанные секунды до результата!",
+      "file": "IN_TRADE_WAITING/wait_05.mp3",
+      "duration": 4.31,
+      "size": 69484,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.14172,
+        "peak": 0.49709,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.144,
+        "sha256": "f2046263fe5767cbe7a148dfc4d74ab467102ddafaa9dbc08744501fda76f833"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Смотрим на закрытие свечи.",
+          "no_speech_prob": 0.04028895124793053
+        },
+        {
+          "start": 2.0,
+          "end": 4.12,
+          "text": " Остаются считанные секунды до результата.",
+          "no_speech_prob": 0.04028895124793053
+        }
+      ],
+      "transcript": "Смотрим на закрытие свечи. Остаются считанные секунды до результата.",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "candle_close_near_expiry_confirmed": true
+      }
+    },
+    {
+      "id": "win_01",
+      "category": "TRADE_WIN",
+      "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
+      "file": "TRADE_WIN/win_01.mp3",
+      "duration": 8.12,
+      "size": 130506,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.098,
+        "rms": 0.14826,
+        "peak": 0.56619,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.198,
+        "sha256": "e57f1fd15be1dac8a7a3a535f12ad25fa6ab65d0b1a24245ade45deac0385553"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "text": " Да! Плюс в копилку. Точка входа отработала просто идеально.",
+          "no_speech_prob": 0.06075480580329895
+        },
+        {
+          "start": 5.2,
+          "end": 8.0,
+          "text": " Забираем чистый профит по сигналу Винки.",
+          "no_speech_prob": 0.06075480580329895
+        }
+      ],
+      "transcript": "Да! Плюс в копилку. Точка входа отработала просто идеально. Забираем чистый профит по сигналу Винки.",
+      "text_similarity": 0.994,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "win_02",
+      "category": "TRADE_WIN",
+      "text": "Ес! Уверенный плюс! Как по учебнику — уровень отработал на все сто процентов, поздравляю всех с профитом!",
+      "file": "TRADE_WIN/win_02.mp3",
+      "duration": 6.77,
+      "size": 108772,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Claims a level worked 100 percent and assumes viewer outcomes"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.74,
+        "rms": 0.13813,
+        "peak": 0.56136,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.16,
+        "sha256": "f4a823e4867643fe6901e922bab5669250cf35bb5f3e163db7a78239fbbde0a8"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Эйес, уверенный плюс!",
+          "no_speech_prob": 0.11874344199895859
+        },
+        {
+          "start": 2.14,
+          "end": 6.62,
+          "text": " Как по учебнику, уровень отработал на все сто процентов, поздравляю всех с профитом!",
+          "no_speech_prob": 0.11874344199895859
+        }
+      ],
+      "transcript": "Эйес, уверенный плюс! Как по учебнику, уровень отработал на все сто процентов, поздравляю всех с профитом!",
+      "text_similarity": 0.988,
+      "decision": "replace",
+      "reason": "Claims a level worked 100 percent and assumes viewer outcomes",
+      "conditions": {}
+    },
+    {
+      "id": "win_03",
+      "category": "TRADE_WIN",
+      "text": "Красота-а! Очередная победа в нашу статистику! Люблю, когда технический анализ дает такой четкий результат!",
+      "file": "TRADE_WIN/win_03.mp3",
+      "duration": 7.71,
+      "size": 123818,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.68,
+        "rms": 0.14319,
+        "peak": 0.58382,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.14,
+        "sha256": "28b53ea0aeeb2870d9b9f37d7aab7e548b676b9cd708fa6242ac305fb496d1eb"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.68,
+          "text": " Красота! Очередная победа в нашу статистику!",
+          "no_speech_prob": 0.08120106160640717
+        },
+        {
+          "start": 4.0,
+          "end": 7.62,
+          "text": " Люблю, когда технический анализ даёт такой чёткий результат!",
+          "no_speech_prob": 0.08120106160640717
+        }
+      ],
+      "transcript": "Красота! Очередная победа в нашу статистику! Люблю, когда технический анализ даёт такой чёткий результат!",
+      "text_similarity": 0.994,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "win_04",
+      "category": "TRADE_WIN",
+      "text": "Шикарное закрытие в плюс! Профит уже на балансе, наша серия побед продолжается!",
+      "file": "TRADE_WIN/win_04.mp3",
+      "duration": 5.93,
+      "size": 95397,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.904,
+        "rms": 0.13904,
+        "peak": 0.54285,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.144,
+        "sha256": "46a4bbcd4a0284258691b5223ba1d4500f5ee0e815d86e36d0b9e73ba86472ec"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.12,
+          "text": " Шикарное закрытие в плюс!",
+          "no_speech_prob": 0.13284488022327423
+        },
+        {
+          "start": 2.42,
+          "end": 5.84,
+          "text": " Профит уже на балансе! Наша серия побед продолжается!",
+          "no_speech_prob": 0.13284488022327423
+        }
+      ],
+      "transcript": "Шикарное закрытие в плюс! Профит уже на балансе! Наша серия побед продолжается!",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "winning_streak_confirmed": true
+      }
+    },
+    {
+      "id": "win_05",
+      "category": "TRADE_WIN",
+      "text": "Изи плюс в копилочку! Сделка зашла уверенно, нейросеть прочитала это движение как открытую книгу!",
+      "file": "TRADE_WIN/win_05.mp3",
+      "duration": 6.35,
+      "size": 102085,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Claims neural-network chart prediction"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.322,
+        "rms": 0.14367,
+        "peak": 0.58355,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.142,
+        "sha256": "bf50c5a65131e85dc6f0977f85095f23f53ea3fa39ddb4200bf01d6342f55e23"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.24,
+          "text": " Если плюс в копилочку. Сделка зашла уверенно, нейросеть прочитала это движение как открытую книгу.",
+          "no_speech_prob": 0.10155614465475082
+        }
+      ],
+      "transcript": "Если плюс в копилочку. Сделка зашла уверенно, нейросеть прочитала это движение как открытую книгу.",
+      "text_similarity": 0.969,
+      "decision": "replace",
+      "reason": "Claims neural-network chart prediction",
+      "conditions": {}
+    },
+    {
+      "id": "win_06",
+      "category": "TRADE_WIN",
+      "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
+      "file": "TRADE_WIN/win_06.mp3",
+      "duration": 6.45,
+      "size": 103756,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.426,
+        "rms": 0.14489,
+        "peak": 0.55978,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.146,
+        "sha256": "0b976893e6dd6239f227d04d0816f06e08ca4c2ac42f66348710d2ab84acaff0"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 2.1,
+          "text": " Ура! Забираем профит!",
+          "no_speech_prob": 0.13572467863559723
+        },
+        {
+          "start": 2.4,
+          "end": 3.72,
+          "text": " Отличная сделка!",
+          "no_speech_prob": 0.13572467863559723
+        },
+        {
+          "start": 3.84,
+          "end": 6.34,
+          "text": " Баланс растет, работаем дальше в том же духе!",
+          "no_speech_prob": 0.13572467863559723
+        }
+      ],
+      "transcript": "Ура! Забираем профит! Отличная сделка! Баланс растет, работаем дальше в том же духе!",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "loss_01",
+      "category": "TRADE_LOSS",
+      "text": "Эх, на последней секунде рынок дал резкий микро-импульс против нас, закрылись в минус. Ничего страшного, это рынок — сейчас спокойно перекроем!",
+      "file": "TRADE_LOSS/loss_01.mp3",
+      "duration": 9.8,
+      "size": 157255,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Invents a last-second reason and promises to recover losses"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 9.77,
+        "rms": 0.14193,
+        "peak": 0.48599,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.17,
+        "sha256": "e7d562ad6162897e325a9ae846e09685b3ae4e296077fafc39cfefca31a21b65"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " На последней секунде рынок дал резкий микроэмпульс против нас.",
+          "no_speech_prob": 0.03873533755540848
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Закрылись в минус.",
+          "no_speech_prob": 0.03873533755540848
+        },
+        {
+          "start": 6.0,
+          "end": 10.0,
+          "text": " Ничего страшного, это рынок сейчас спокойно перекроем.",
+          "no_speech_prob": 0.03873533755540848
+        }
+      ],
+      "transcript": "На последней секунде рынок дал резкий микроэмпульс против нас. Закрылись в минус. Ничего страшного, это рынок сейчас спокойно перекроем.",
+      "text_similarity": 0.983,
+      "decision": "replace",
+      "reason": "Invents a last-second reason and promises to recover losses",
+      "conditions": {}
+    },
+    {
+      "id": "loss_02",
+      "category": "TRADE_LOSS",
+      "text": "Так, эта сделка ушла в минус, OTC-график решил покапризничать. Сохраняем холодную голову и дисциплину, ищем следующий верный вход!",
+      "file": "TRADE_LOSS/loss_02.mp3",
+      "duration": 9.38,
+      "size": 150568,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 9.352,
+        "rms": 0.14747,
+        "peak": 0.56495,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.152,
+        "sha256": "9037714e3b28ac84fe54ab58f963ce4beadaa4fff8231e659a97e64c4fc75180"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 4.86,
+          "text": " Так, эта сделка ушла в минус, вот оси график решил покопризничать.",
+          "no_speech_prob": 0.029161736369132996
+        },
+        {
+          "start": 4.86,
+          "end": 9.36,
+          "text": " Сохраняем холодную голову и дисциплину, ищем следующий верный вход.",
+          "no_speech_prob": 0.029161736369132996
+        }
+      ],
+      "transcript": "Так, эта сделка ушла в минус, вот оси график решил покопризничать. Сохраняем холодную голову и дисциплину, ищем следующий верный вход.",
+      "text_similarity": 0.949,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "otc_loss_confirmed": true
+      }
+    },
+    {
+      "id": "loss_03",
+      "category": "TRADE_LOSS",
+      "text": "Обидный прокол уровня под самое закрытие таймера. Без паники! У нас отличный общий винрейт, сейчас найдем сильный сетап и отработаем!",
+      "file": "TRADE_LOSS/loss_03.mp3",
+      "duration": 9.33,
+      "size": 149732,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        },
+        {
+          "at": 0,
+          "issue": "Invents a cause and claims an excellent overall win rate"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 9.3,
+        "rms": 0.13773,
+        "peak": 0.51026,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.14,
+        "sha256": "d20365ed90d3e0d6ca112ab245f11f603de9a2fad98a66354ff5bbb799ddab80"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.22,
+          "text": " Обидны прокол уровня под самое закрытие таймера.",
+          "no_speech_prob": 0.052181534469127655
+        },
+        {
+          "start": 3.22,
+          "end": 4.62,
+          "text": " Без паники!",
+          "no_speech_prob": 0.052181534469127655
+        },
+        {
+          "start": 4.62,
+          "end": 6.54,
+          "text": " У нас отличный общий винрейт.",
+          "no_speech_prob": 0.052181534469127655
+        },
+        {
+          "start": 6.54,
+          "end": 9.26,
+          "text": " Сейчас найдем сильный сетап и отработаем.",
+          "no_speech_prob": 0.052181534469127655
+        }
+      ],
+      "transcript": "Обидны прокол уровня под самое закрытие таймера. Без паники! У нас отличный общий винрейт. Сейчас найдем сильный сетап и отработаем.",
+      "text_similarity": 0.995,
+      "decision": "replace",
+      "reason": "Invents a cause and claims an excellent overall win rate",
+      "conditions": {}
+    },
+    {
+      "id": "loss_04",
+      "category": "TRADE_LOSS",
+      "text": "В этот раз минус — рынок устроил ложный вынос. Делаем выводы, не тильтуем и готовимся к следующей точной сделке!",
+      "file": "TRADE_LOSS/loss_04.mp3",
+      "duration": 6.77,
+      "size": 108772,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.74,
+        "rms": 0.14291,
+        "peak": 0.50698,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.14,
+        "sha256": "550f20ecb2acf2f69016de9d65ef76f120afc85b0ccc7501f9937aeb48493266"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " В этот раз минус. Рынок устроил ложный вынос.",
+          "no_speech_prob": 0.050167232751846313
+        },
+        {
+          "start": 3.0,
+          "end": 6.7,
+          "text": " Делаем выводы, не тельтуем, и мы готовимся к следующей точной сделке.",
+          "no_speech_prob": 0.050167232751846313
+        }
+      ],
+      "transcript": "В этот раз минус. Рынок устроил ложный вынос. Делаем выводы, не тельтуем, и мы готовимся к следующей точной сделке.",
+      "text_similarity": 0.978,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "false_breakout_confirmed": true
+      }
+    },
+    {
+      "id": "loss_05",
+      "category": "TRADE_LOSS",
+      "text": "Сделка закрылась в минус. В трейдинге главное — дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа!",
+      "file": "TRADE_LOSS/loss_05.mp3",
+      "duration": 8.49,
+      "size": 136357,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.464,
+        "rms": 0.13171,
+        "peak": 0.55734,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.184,
+        "sha256": "a810193937d787d87f37b45f15f6b52c4035aeba637ea36957a2a01b6aa848eb"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 8.36,
+          "text": " Сделка закрылась в минус. В трейдинге главная дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа.",
+          "no_speech_prob": 0.0674014613032341
+        }
+      ],
+      "transcript": "Сделка закрылась в минус. В трейдинге главная дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа.",
+      "text_similarity": 0.981,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "refund_01",
+      "category": "TRADE_REFUND",
+      "text": "Ого, закрылись ровно в точку входа — возврат! Деньги полностью вернулись на баланс, ни цента не потеряли!",
+      "file": "TRADE_REFUND/refund_01.mp3",
+      "duration": 7.47,
+      "size": 120057,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.445,
+        "rms": 0.14894,
+        "peak": 0.5419,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.185,
+        "sha256": "b3fcb3af5403594882a4315fcc93eecfd68e6a7a4fc196be6ae3308fbdd51b10"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Ого! Закрылись ровно в точку входа! Возврат!",
+          "no_speech_prob": 0.045514386147260666
+        },
+        {
+          "start": 3.84,
+          "end": 5.78,
+          "text": " Деньги полностью вернулись на баланс!",
+          "no_speech_prob": 0.045514386147260666
+        },
+        {
+          "start": 5.98,
+          "end": 7.34,
+          "text": " Ни цента не потеряли!",
+          "no_speech_prob": 0.045514386147260666
+        }
+      ],
+      "transcript": "Ого! Закрылись ровно в точку входа! Возврат! Деньги полностью вернулись на баланс! Ни цента не потеряли!",
+      "text_similarity": 1.0,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "same_price_refund_confirmed": true
+      }
+    },
+    {
+      "id": "refund_02",
+      "category": "TRADE_REFUND",
+      "text": "Нулевое закрытие, сделка рассчитана возвратом. Баланс на месте, сейчас перезайдем на более сильном движении!",
+      "file": "TRADE_REFUND/refund_02.mp3",
+      "duration": 7.11,
+      "size": 114205,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.079,
+        "rms": 0.14717,
+        "peak": 0.51874,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.139,
+        "sha256": "7eabf0b2a725c88f0541066f8b4726fa80dde3e72145f5403a735be8c5d2a4d9"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.8,
+          "text": " нулевое закрытие сделка рассчитана возвратом баланс на месте сейчас перезадем на более сильном движении",
+          "no_speech_prob": 0.13217206299304962
+        }
+      ],
+      "transcript": "нулевое закрытие сделка рассчитана возвратом баланс на месте сейчас перезадем на более сильном движении",
+      "text_similarity": 0.994,
+      "decision": "restrict",
+      "reason": "Only eligible when the event proves every stated technical fact; long recordings need a suitable gap.",
+      "conditions": {
+        "next_entry_ready": true
+      }
+    },
+    {
+      "id": "pause_01",
+      "category": "PAUSE_BETWEEN_TRADES",
+      "text": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+      "file": "PAUSE_BETWEEN_TRADES/pause_01.mp3",
+      "duration": 6.74,
+      "size": 108354,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.713,
+        "rms": 0.13493,
+        "peak": 0.53267,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.133,
+        "sha256": "79c48768c9a15d839a599267389b5beb7da7483aee8ef977b6a3cb7770efc36b"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.5200000000000005,
+          "text": " Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+          "no_speech_prob": 0.054143041372299194
+        }
+      ],
+      "transcript": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "pause_02",
+      "category": "PAUSE_BETWEEN_TRADES",
+      "text": "Небольшая передышка по тайм-менеджменту! В трейдинге важно не спешить и входить только по лучшим сигналам.",
+      "file": "PAUSE_BETWEEN_TRADES/pause_02.mp3",
+      "duration": 6.56,
+      "size": 105428,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.531,
+        "rms": 0.14398,
+        "peak": 0.52072,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.171,
+        "sha256": "47aea63f1536601ed3f32f3fa5bf614d00104d4afa55831fde3cfcf9ac741529"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Небольшая передышка по тайм-менеджменту.",
+          "no_speech_prob": 0.09783465415239334
+        },
+        {
+          "start": 3.0,
+          "end": 6.4,
+          "text": " В трейдинге важно не спешить и входить только по лучшим сигналам.",
+          "no_speech_prob": 0.09783465415239334
+        }
+      ],
+      "transcript": "Небольшая передышка по тайм-менеджменту. В трейдинге важно не спешить и входить только по лучшим сигналам.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "pause_03",
+      "category": "PAUSE_BETWEEN_TRADES",
+      "text": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+      "file": "PAUSE_BETWEEN_TRADES/pause_03.mp3",
+      "duration": 5.33,
+      "size": 85784,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.303,
+        "rms": 0.15025,
+        "peak": 0.54887,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.143,
+        "sha256": "5bf0d0a2080d96a2aafcb7801fe5969f7cfd738cc77f16241dca3db38584c3b1"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "text": " Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+          "no_speech_prob": 0.05256913602352142
+        }
+      ],
+      "transcript": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    },
+    {
+      "id": "pause_04",
+      "category": "PAUSE_BETWEEN_TRADES",
+      "text": "Короткая пауза между сделками — обновляю данные по волатильности и готовлю сканер к новому циклу!",
+      "file": "PAUSE_BETWEEN_TRADES/pause_04.mp3",
+      "duration": 6.27,
+      "size": 100831,
+      "language": "ru",
+      "listening_verified": false,
+      "review_notes": [
+        {
+          "at": 5,
+          "issue": "Longer than preferred live commentary window; restrict to a suitable gap"
+        }
+      ],
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.243,
+        "rms": 0.14602,
+        "peak": 0.51396,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.143,
+        "sha256": "d5d558431c78c67de13223713733526a723603fcc552c84aed33f660561955ce"
+      },
+      "asr_segments": [
+        {
+          "start": 0.0,
+          "end": 6.0,
+          "text": " Короткая пауза между сделками обновляю данные по волатильности и готовлю сканер к новому циклу.",
+          "no_speech_prob": 0.027848713099956512
+        }
+      ],
+      "transcript": "Короткая пауза между сделками обновляю данные по волатильности и готовлю сканер к новому циклу.",
+      "text_similarity": 1.0,
+      "decision": "keep",
+      "reason": "Semantically suitable; preserve original bytes. Listening approval remains pending.",
+      "conditions": {}
+    }
+  ]
+}

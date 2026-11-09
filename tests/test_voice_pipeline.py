@@ -27,6 +27,14 @@ class VoicePipelineTests(unittest.TestCase):
         self.controller._synth_pool.shutdown(wait=False, cancel_futures=True)
         self.tmp.cleanup()
 
+    def test_incomplete_new_library_cannot_be_activated(self):
+        manifest=json.loads((self.root/'manifest.json').read_text())
+        manifest.update(version='3.0',activated=True)
+        for item in manifest['categories']['TRADE_WIN']:
+            item.update(auditory_verified=True,status='ready')
+        (self.root/'manifest.json').write_text(json.dumps(manifest))
+        self.assertIsNone(self.bank.reserve({'category':'TRADE_WIN','lang':'ru'}))
+
     def test_event_is_queued_once_without_interrupt(self):
         self.controller.stop_current = Mock()
         event = {'event_id': 's:1:result', 'category': 'trade_win', 'lang': 'ru'}
@@ -34,6 +42,12 @@ class VoicePipelineTests(unittest.TestCase):
         self.assertTrue(self.controller.enqueue_voice_event(event)['duplicate'])
         self.assertEqual(len(self.controller._playback_queue), 1)
         self.controller.stop_current.assert_not_called()
+
+    def test_legacy_double_route_without_id_is_deduplicated(self):
+        first=self.controller.enqueue_voice_event({'category':'trade_win','lang':'ru'})
+        second=self.controller.enqueue_voice_event({'category':'trade_win','lang':'ru'})
+        self.assertTrue(first['ok']);self.assertTrue(second['duplicate'])
+        self.assertEqual(len(self.controller._playback_queue),1)
 
     def test_unready_chat_does_not_block_ready_result(self):
         chat = SpeechItem(text='Привет!', lang='ru', priority=3)
@@ -170,14 +184,36 @@ class ChatPreparationTests(unittest.TestCase):
             self.director.enqueue_chat_comment('Аня','Привет!')
             self.director.enqueue_chat_comment('Боря','привет!')
             self.assertEqual(submit.call_count,1)
-    def test_twenty_second_preparation_finishes_without_occupying_speech_queue(self):
+    def test_20_40_89_second_preparation_does_not_occupy_speech_queue(self):
         from winky.director import ChatItem
-        item=ChatItem('Аня','Привет!',created_at=100)
-        self.director._brain.reply.return_value='Привет! Как настроение?'
-        self.director._tts.engine.synthesize.return_value=Path('/tmp/reply.mp3')
-        with patch('winky.director.time.time',side_effect=[100,120]): self.director._pre_synthesize(item)
-        self.assertTrue(item.ready)
-        self.director._tts.speak_chat_item.assert_not_called()
+        for elapsed in (20,40,89):
+            item=ChatItem('Аня','Привет!',created_at=100)
+            self.director._brain.reply.return_value='Привет! Как настроение?'
+            self.director._tts.engine.synthesize.return_value=Path('/tmp/reply.mp3')
+            with patch('winky.director.time.time',side_effect=[100,100+elapsed]): self.director._pre_synthesize(item)
+            self.assertTrue(item.ready)
+            self.director._tts.speak_chat_item.assert_not_called()
+
+    def test_no_more_than_two_chat_preparations_run_together(self):
+        import threading
+        gate=threading.Event();two_started=threading.Event();lock=threading.Lock()
+        counts={'active':0,'peak':0,'total':0}
+        def prepare(item):
+            with lock:
+                counts['active']+=1;counts['total']+=1
+                counts['peak']=max(counts['peak'],counts['active'])
+                if counts['active']==2:two_started.set()
+            gate.wait(2)
+            with lock:counts['active']-=1
+        with patch.object(self.director,'_pre_synthesize',side_effect=prepare):
+            try:
+                for i in range(6):self.director.enqueue_chat_comment(str(i),'Привет '+str(i))
+                self.assertTrue(two_started.wait(1))
+                self.assertEqual(counts['peak'],2)
+            finally:
+                gate.set();self.director._chat_workers.shutdown(wait=True)
+        self.assertEqual(counts['total'],6)
+
     def test_late_network_result_is_not_requeued(self):
         from winky.director import ChatItem
         item=ChatItem('Аня','Привет!',created_at=100)
@@ -201,6 +237,18 @@ class ChatPreparationTests(unittest.TestCase):
         self.assertEqual(sanitize_for_tiktok('Я гарантирую прибыль!'),'')
 
 class ProviderAndCompatibilityTests(unittest.TestCase):
+    def test_240_scripts_have_exact_language_category_counts_and_pass_content_checks(self):
+        from winky.voice_bank import CATEGORY_COUNTS
+        from winky.censor import check_phrase
+        records=json.loads((Path(__file__).resolve().parents[1]/'docs/voice-audit/catalog-240.json').read_text())['records']
+        self.assertEqual(len(records),240)
+        self.assertEqual(len({r['id'] for r in records}),240)
+        for language in ('ru','en'):
+            for category,count in CATEGORY_COUNTS.items():
+                self.assertEqual(sum(r['lang']==language and r['category']==category for r in records),count)
+        self.assertTrue(all(check_phrase(r['text'])[0] for r in records))
+
+
     def test_lumean_failure_never_returns_random_cache_or_repeats_paid_create(self):
         import httpx
         from winky.tts import LumeanTTS, TTSError

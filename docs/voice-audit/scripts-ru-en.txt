@@ -1,0 +1,134 @@
+[START_STREAM_READY]
+Привет-привет! Винки на связи, ушки наготове!|Hey, hey! Winky here, ears at the ready!
+Чатик, привет! Устраиваемся и смотрим на график.|Hi, chat! Get comfy and watch the chart with me.
+Мяу-привет! Начинаем наш разбор, без спешки.|Meow, hello! Let's start our chart session, nice and easy.
+Винки тут! Свечки уже ждут нашего внимания.|Winky's here! Those candles have our attention.
+Привет, котики! Сегодня снова наблюдаем и проверяем.|Hi, cuties! Another day of watching and checking.
+Рада вас видеть! Включаю внимательные ушки.|Lovely to see you! My listening ears are on.
+[ANALYZING_CHART]
+Смотрю на движение. Свечки, рассказывайте!|Watching the move. Candles, tell me your story!
+Сейчас проверю общую картину, котики.|Let me check the bigger picture, cuties.
+Сравниваю интервалы. Спешить пока некуда.|Comparing timeframes. No need to rush just yet.
+Сначала направление, потом детали. Всё по порядку.|Direction first, then the details. One step at a time.
+Наблюдаю за ценой. Ушки на макушке!|Watching the price. Ears up, everyone!
+Посмотрим, как складывается этот участок графика.|Let's see how this part of the chart develops.
+Свечки двигаются, а я сверяю условия.|The candles are moving; I'm checking our conditions.
+Минутку внимания графику, чатик.|A little chart time, chat.
+Проверяю, согласуются ли наши признаки.|Checking whether our conditions agree.
+Не гадаю по одной свече, смотрю шире.|One candle isn't the whole story. Let's look wider.
+Сейчас разберём движение по шагам.|Let's break this move down, step by step.
+Чатик, смотрим внимательно. Картина ещё складывается.|Watch closely, chat. The picture is still developing.
+[WEAK_SIGNAL_SWITCH_PAIR]
+Здесь вход не подтвердился. Смотрим дальше.|No confirmed entry here. Let's keep looking.
+Эту пару пропускаю. Нужны подходящие условия.|Skipping this pair. We need suitable conditions.
+Пока не складывается. Перехожу к следующей.|It hasn't come together yet. On to the next pair.
+Не каждый график обязан давать вход, котики.|Not every chart needs an entry, cuties.
+Условия не сошлись. Без спешки идём дальше.|The conditions don't align. Moving on calmly.
+Здесь остаюсь без сделки. Проверю другой график.|No trade here. I'll check another chart.
+Эту точку не беру. Ищем дальше.|Passing on this entry. Let's keep searching.
+Для входа пока недостаточно. Пара следующая!|Not enough for an entry yet. Next pair!
+На этой паре подтверждения нет. Переключаюсь.|No confirmation on this pair. Switching over.
+Котики, пропуск тоже часть правил.|Cuties, skipping is part of the rules too.
+[PAIR_SWITCHED_NEW_SCAN]
+Новая пара на экране. Начинаю проверку.|New pair on screen. Starting the checks.
+Переключились! Теперь внимательно смотрю сюда.|We've switched! My attention is on this chart now.
+Другой график, новая проверка. Поехали!|Another chart, another check. Here we go!
+Пара сменилась. Старые выводы оставляем позади.|The pair has changed. Fresh checks from here.
+Котики, смотрим новый график вместе.|Cuties, let's look at this new chart together.
+Новый участок работы для моих ушек!|A fresh chart for these curious ears!
+Открыта другая пара. Проверяю её условия.|Another pair is open. Checking its conditions.
+Вот наш следующий график. Начинаем с начала.|Here's our next chart. Let's start fresh.
+[PREPARE_ENTRY]
+Проверка перед входом. Сейчас важны детали.|Checking before entry. The details matter now.
+Сверяю параметры ещё раз, котики.|One more parameter check, cuties.
+Подготовка идёт. Подтверждение всё ещё нужно.|Getting ready. Confirmation still matters.
+Смотрю, сохраняются ли условия для входа.|Checking whether the entry conditions still hold.
+Последняя проверка. Свечки, без сюрпризов!|One last check. Candles, behave yourselves!
+Параметры сверяю с текущим графиком.|Matching the parameters to the current chart.
+[OPEN_TRADE_CALL]
+Сделка вверх открыта. Теперь наблюдаем!|The upward trade is open. Let's watch!
+Вход вверх подтверждён, котики.|Upward entry confirmed, cuties.
+Мы в сделке вверх. Ушки на график!|We're in an upward trade. Eyes on the chart!
+Покупка открыта. Следим за движением.|The buy is open. Watching the move.
+Вверх открылись. Результат узнаем после закрытия.|Upward trade opened. We'll know the result at settlement.
+Сделка на повышение уже в работе.|The upward trade is now active.
+Есть открытие вверх. Смотрим спокойно.|Upward opening confirmed. Watching calmly.
+Вход на повышение состоялся. Наблюдаю.|The upward entry went through. I'm watching.
+Направление вверх, сделка активна.|Direction up, trade active.
+Котики, вверх уже открыто. Следим вместе.|Cuties, the upward trade is open. Let's watch together.
+Покупка в работе. Не спешим с выводами.|The buy is active. Let's wait before drawing conclusions.
+Открытие вверх подтверждено платформой.|The platform confirmed the upward opening.
+[OPEN_TRADE_PUT]
+Сделка вниз открыта. Теперь наблюдаем!|The downward trade is open. Let's watch!
+Вход вниз подтверждён, котики.|Downward entry confirmed, cuties.
+Мы в сделке вниз. Ушки на график!|We're in a downward trade. Eyes on the chart!
+Продажа открыта. Следим за движением.|The sell is open. Watching the move.
+Вниз открылись. Результат узнаем после закрытия.|Downward trade opened. We'll know the result at settlement.
+Сделка на понижение уже в работе.|The downward trade is now active.
+Есть открытие вниз. Смотрим спокойно.|Downward opening confirmed. Watching calmly.
+Вход на понижение состоялся. Наблюдаю.|The downward entry went through. I'm watching.
+Направление вниз, сделка активна.|Direction down, trade active.
+Котики, вниз уже открыто. Следим вместе.|Cuties, the downward trade is open. Let's watch together.
+Продажа в работе. Не спешим с выводами.|The sell is active. Let's wait before drawing conclusions.
+Открытие вниз подтверждено платформой.|The platform confirmed the downward opening.
+[IN_TRADE_WAITING]
+Сделка ещё идёт. Наблюдаем спокойно.|The trade is still active. Watching calmly.
+Котики, пока ждём закрытия.|Cuties, we're waiting for settlement.
+Смотрим на движение, итог ещё впереди.|Watching the move. The result is still ahead.
+Сделка в работе. С выводами не торопимся.|The trade is active. No early conclusions.
+Ушки держу на графике, жду расчёта.|Keeping my ears on the chart, waiting for settlement.
+Пока просто наблюдаем. Результат проверим отдельно.|Just watching for now. We'll check the result separately.
+Свечки двигаются, сделка продолжается.|The candles are moving; the trade continues.
+Следим вместе, котики. Закрытия ещё ждём.|Watching together, cuties. Settlement is still ahead.
+Итог не объявляю заранее. Наблюдаю.|No early result announcements. I'm watching.
+Ждём фактического результата, без догадок.|Waiting for the actual result, without guessing.
+[TRADE_WIN]
+Закрывшаяся сделка в плюс! Мяу, принято!|The closed trade finished positive! Meow, noted!
+По завершённой сделке подтверждён плюс, котики.|A positive result is confirmed for the closed trade, cuties.
+Есть подтверждённый плюс по прошлой сделке!|A positive result is confirmed for the last trade!
+Завершённая сделка дала плюс. Записываем!|The completed trade finished positive. Logging it!
+Расчёт подтвердил плюс по закрытой сделке.|Settlement confirmed a positive result for the closed trade.
+Котики, последняя закрытая сделка в плюс!|Cuties, the last closed trade finished positive!
+Плюс подтверждён. Эту сделку внесли в статистику.|Positive result confirmed. That trade is in the record.
+Зафиксирован плюс по завершённой сделке. Мяу!|A positive result is recorded for the completed trade. Meow!
+Результат закрытой сделки положительный. Отмечаем!|The closed trade has a positive result. Noted!
+Получили плюс по завершённой сделке. Сверено!|The completed trade finished positive. Checked!
+Прошлая сделка закрылась в плюс. Ушки радуются!|The last trade closed positive. Happy ears!
+Подтверждение пришло: закрытая сделка в плюс!|Confirmation is here: the closed trade finished positive!
+[TRADE_LOSS]
+Закрывшаяся сделка в минус. Спокойно фиксируем.|The closed trade finished negative. Recording it calmly.
+По завершённой сделке подтверждён минус, котики.|A negative result is confirmed for the closed trade, cuties.
+Последняя закрытая сделка дала минус. Записано.|The last closed trade finished negative. Recorded.
+Результат завершённой сделки отрицательный. Сверено.|The completed trade has a negative result. Checked.
+Есть минус по закрытой сделке. Без суеты.|A negative result on the closed trade. Staying calm.
+Расчёт подтвердил минус по прошлой сделке.|Settlement confirmed a negative result for the last trade.
+Эта закрытая сделка в минус. Не спорим с итогом.|That closed trade finished negative. We accept the result.
+Минус подтверждён. В статистике честный результат.|Negative result confirmed. Keeping the record honest.
+По завершённой сделке минус. Правила сохраняем.|A negative result for the completed trade. Keeping our rules.
+Котики, прошлое закрытие в минус. Фиксируем факт.|Cuties, the last trade closed negative. Recording the fact.
+[TRADE_REFUND]
+Закрытая сделка рассчитана возвратом. Отмечаю.|The closed trade settled as a refund. Noted.
+Возврат по завершённой сделке подтверждён.|Refund confirmed for the completed trade.
+По прошлой сделке возврат. Шаг сохраняется.|A refund on the last trade. The step stays unchanged.
+Котики, завершённая сделка с возвратом.|Cuties, the completed trade settled as a refund.
+Расчёт показал возврат. Записываем отдельно.|Settlement shows a refund. Recording it separately.
+Подтверждён возврат по закрытой сделке. Мяу, принято.|Refund confirmed for the closed trade. Meow, noted.
+[PAUSE_BETWEEN_TRADES]
+Небольшая передышка, котики. Ушки отдыхают.|A little breather, cuties. Resting these ears.
+Короткая пауза. Спешка нам не помощница.|A short pause. Rushing won't help.
+Секундочка тишины тоже бывает кстати.|A quiet moment can be lovely too.
+Переводим дыхание и остаёмся внимательными.|Taking a breath and staying attentive.
+Котики, спокойно отдыхаем между проверками.|Cuties, a calm breather between checks.
+Небольшая пауза, я остаюсь рядом.|A little pause. I'm still right here.
+[CHAT_ACK]
+Чатик, вижу ваши сообщения. Ушки слушают!|Chat, I see your messages. These ears are listening!
+Котики, читаю вас между проверками графика.|Cuties, I'm reading along between chart checks.
+Спасибо за сообщения! Чатик у меня на виду.|Thanks for your messages! I'm keeping an eye on chat.
+Вы тут, и мне уютнее. Привет, чатик!|It's cozier with you here. Hello, chat!
+[STREAM_INSIGHT]
+Одна свеча не расскажет всю историю графика.|One candle won't tell the chart's whole story.
+Интервал свечи и время сделки — разные вещи.|Candle timeframe and trade duration are different things.
+Совпадение условий не обещает результат, котики.|Matching conditions don't promise an outcome, cuties.
+Пропуск тоже решение. Не каждому движению нужен вход.|Skipping is a decision too. Not every move needs a trade.
+Сначала проверяем данные, потом делаем выводы.|Check the data first, then draw conclusions.
+Закрытая свеча и живая ведут себя по-разному.|A closed candle and a live candle behave differently.

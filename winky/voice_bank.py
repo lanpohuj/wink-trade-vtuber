@@ -19,6 +19,14 @@ ALIASES = {
     'pause': 'PAUSE_BETWEEN_TRADES', 'ask_chat': 'CHAT_ACK', 'stream_insight': 'STREAM_INSIGHT',
 }
 
+CATEGORY_COUNTS = {
+    'START_STREAM_READY': 6, 'ANALYZING_CHART': 12, 'WEAK_SIGNAL_SWITCH_PAIR': 10,
+    'PAIR_SWITCHED_NEW_SCAN': 8, 'PREPARE_ENTRY': 6, 'OPEN_TRADE_CALL': 12,
+    'OPEN_TRADE_PUT': 12, 'IN_TRADE_WAITING': 10, 'TRADE_WIN': 12,
+    'TRADE_LOSS': 10, 'TRADE_REFUND': 6, 'PAUSE_BETWEEN_TRADES': 6,
+    'CHAT_ACK': 4, 'STREAM_INSIGHT': 6,
+}
+
 def category_name(value: str) -> str:
     value = str(value or '').strip()
     if value.lower().startswith('trade_loss'):
@@ -49,6 +57,15 @@ class VoiceBank:
             manifest = json.loads((self.root / 'manifest.json').read_text())
         except (OSError, ValueError):
             return []
+        if str(manifest.get('version', '')).startswith('3'):
+            if manifest.get('activated') is not True:
+                return []
+            for required, count in CATEGORY_COUNTS.items():
+                records = manifest.get('categories', {}).get(required, [])
+                for language in ('ru', 'en'):
+                    bank = [r for r in records if r.get('lang') == language]
+                    if len(bank) != count or any(not r.get('auditory_verified') or r.get('status') != 'ready' or not (self.root / r.get('file', '')).is_file() for r in bank):
+                        return []
         category = category_name(event.get('category'))
         lang = event.get('lang', 'ru')
         items = manifest.get('categories', {}).get(category, [])
