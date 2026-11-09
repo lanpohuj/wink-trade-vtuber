@@ -226,6 +226,9 @@ class TTSError(RuntimeError):
     """Синтез не удался."""
 
 
+from winky.fish_tts import FishAudioTTS
+
+
 class DummyTTS:
     """Безопасная заглушка: логирует ошибки и исключает воспроизведение системных/браузерных голосов."""
 
@@ -1351,12 +1354,10 @@ class ElevenLabsTTS:
             raise TTSError(f"ElevenLabs error: {exc}") from exc
 
 
-def build_engine() -> LumeanTTS | ElevenLabsTTS | DummyTTS:
+def build_engine() -> FishAudioTTS | DummyTTS:
     """Выбор движка: Lumean -> ElevenLabs -> Dummy (без голоса Chrome/Ava)."""
-    if settings.LUMEAN_API_KEY:
-        return LumeanTTS()
-    if settings.ELEVENLABS_API_KEY and settings.ELEVENLABS_VOICE_ID:
-        return ElevenLabsTTS()
+    if settings.FISHAUDIO_API_KEY:
+        return FishAudioTTS()
     return DummyTTS()
 
 
@@ -1555,7 +1556,7 @@ class SpeechController:
     # ---------- публичное API (вызывается из js_api и таймеров) ----------
 
     def update_lumean_settings(self, template_id: str = "", voice_id: str = "", service_key: str = "", voice_name: str = "", lang_slot: str = "ru") -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             if template_id:
                 self.engine.set_template_id(template_id)
             if voice_id or service_key or voice_name:
@@ -1569,38 +1570,38 @@ class SpeechController:
         return {}
 
     def set_lumean_voice(self, lang_slot: str, service_key: str, voice_id: str, voice_name: str = "") -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             self.engine.set_voice(lang_slot, service_key, voice_id, voice_name)
             return self.engine.get_settings()
         return {}
 
     def get_voice_tuning(self, lang_slot: str) -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.get_tuning(lang_slot)
         return {}
 
     def list_user_templates(self) -> list[dict]:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.list_user_templates()
         return []
 
     def apply_template_to_slot(self, lang_slot: str, template_id: str) -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.apply_template_to_slot(lang_slot, template_id)
         return {}
 
     def save_voice_tuning(self, lang_slot: str, tuning_data: dict) -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.save_voice_tuning(lang_slot, tuning_data)
         return {}
 
     def apply_live_preset(self, lang_slot: str) -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.apply_live_preset(lang_slot)
         return {}
 
     def clear_voice_cache(self, lang_slot: str = "all") -> int:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.clear_voice_cache(lang_slot)
         return 0
 
@@ -1608,7 +1609,7 @@ class SpeechController:
         """Синтезирует короткую выразительную тестовую фразу напрямую через Lumean (без старого кэша)."""
         self.stop_current()
         slot = "ru" if (lang_slot or "ru").lower() == "ru" else "en"
-        if tuning_data and isinstance(self.engine, LumeanTTS):
+        if tuning_data and isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             curr = self.engine.get_tuning(slot)
             changed = any(tuning_data.get(k) != curr.get(k) for k in ("speed", "model_id", "latency", "temperature", "stability", "similarity_boost", "style", "normalize_volume", "breathing_pauses") if k in tuning_data)
             if changed:
@@ -1645,7 +1646,7 @@ class SpeechController:
         return True
 
     def get_lumean_settings(self) -> dict:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.get_settings()
         return {
             "ru": {
@@ -1672,12 +1673,12 @@ class SpeechController:
         gender: str = "",
         page: int = 1,
     ) -> list[dict]:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.search_voices(catalog, query, language, gender, page)
         return []
 
     def preview_voice_sample(self, service_key: str, voice_id: str) -> str:
-        if isinstance(self.engine, LumeanTTS):
+        if isinstance(self.engine, (LumeanTTS, FishAudioTTS)):
             return self.engine.preview_voice_sample(service_key, voice_id)
         return ""
 

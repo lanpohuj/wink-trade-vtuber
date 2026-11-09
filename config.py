@@ -127,6 +127,11 @@ class Settings(BaseSettings):
     TEASER_MAX_COUNT: int = Field(default=7, description="Максимум тизеров одному пользователю")
 
     # --- VTuber-агент Winky ---
+    FISHAUDIO_API_KEY: str = Field(default="", repr=False)
+    FISHAUDIO_RU_VOICE_ID: str = "1db1618b6eaf4571ac7db70e20eb6727"
+    FISHAUDIO_EN_VOICE_ID: str = "e34c486929524d41b88646b4ac2f382f"
+    FISHAUDIO_BUDGET_USD: float = Field(default=2.0, ge=0, allow_inf_nan=False)
+
     LUMEAN_API_KEY: str = Field(
         default="",
         description="API-ключ Lumean (X-API-KEY): качественная озвучка Fish Audio/ElevenLabs/Cartesia с оплатой в РФ",

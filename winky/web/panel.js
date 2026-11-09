@@ -128,7 +128,7 @@ function showVoiceStatusHint(text) {
 }
 
 function updateActiveVoiceDisplay(slot, serviceKey, voiceId, voiceName) {
-  const p = PROVIDER_INFO[serviceKey] || { icon: "🎙️", name: serviceKey || "Lumean" };
+  const p = PROVIDER_INFO[serviceKey] || { icon: "🎙️", name: serviceKey || "Fish Audio" };
   const isRu = (slot || "ru").toLowerCase() === "ru";
   if (isRu) {
     currentActiveRu = { service: serviceKey, id: voiceId, name: voiceName };
@@ -619,7 +619,7 @@ manualSaveEnBtn?.addEventListener("click", async () => {
   }
 });
 
-/* ==================== Студия тонкой настройки живости голоса Lumean ==================== */
+/* ==================== Студия тонкой настройки живости голоса Fish Audio ==================== */
 
 function selectTuningSlot(slot) {
   activeTuningSlot = slot;
@@ -645,9 +645,9 @@ function renderTuningUI(slot) {
     if (serviceKey === "fishaudio") {
       const models = [
         { id: "s2.1-pro", label: "s2.1-pro (Флагман, макс. живость)" },
-        { id: "s2-pro", label: "s2-pro (Быстрая)" },
-        { id: "s1", label: "s1 (Базовая)" },
-        { id: "drama-3", label: "drama-3 (Эмоциональная)" },
+
+
+
       ];
       for (const m of models) {
         const opt = document.createElement("option");
@@ -818,10 +818,10 @@ applyLivePresetBtn?.addEventListener("click", async () => {
   }
 });
 
-// Сохранить в Lumean
+// Сохранить в Fish Audio
 saveTuningBtn?.addEventListener("click", async () => {
   saveTuningBtn.disabled = true;
-  saveTuningBtn.textContent = "⏳ Сохранение в Lumean...";
+  saveTuningBtn.textContent = "⏳ Сохранение в Fish Audio...";
   try {
     const payload = collectTuningForm();
     const res = await api()?.save_voice_tuning(activeTuningSlot, payload);
@@ -829,13 +829,13 @@ saveTuningBtn?.addEventListener("click", async () => {
       currentTuningData[activeTuningSlot] = res.tuning;
     }
     renderTuningUI(activeTuningSlot);
-    showVoiceStatusHint(`Настройки живости для ${activeTuningSlot.toUpperCase()} успешно сохранены в Lumean!`);
+    showVoiceStatusHint(`Настройки живости для ${activeTuningSlot.toUpperCase()} успешно сохранены в Fish Audio!`);
   } catch (err) {
     console.error("Save voice tuning error:", err);
     showVoiceStatusHint("Ошибка сохранения настроек живости");
   } finally {
     saveTuningBtn.disabled = false;
-    saveTuningBtn.textContent = "💾 Сохранить в Lumean";
+    saveTuningBtn.textContent = "💾 Сохранить в Fish Audio";
   }
 });
 

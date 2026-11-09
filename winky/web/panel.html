@@ -180,7 +180,7 @@
 
   <section class="block voice-library-block">
     <div class="block-title">
-      ГОЛОСА WINKY (LUMEAN API)
+      ГОЛОСА WINKY (FISH AUDIO API)
     </div>
 
     <!-- 1. Два активных голоса: RU и EN -->
@@ -212,15 +212,15 @@
       </div>
     </div>
 
-    <!-- 2. Тонкая настройка живости голоса (Студия Lumean) -->
+    <!-- 2. Тонкая настройка живости голоса (Студия Fish Audio) -->
     <details open class="tuning-studio-details">
       <summary class="tuning-summary">
-        <span>🎛 Тонкая настройка живости голоса (Студия Lumean)</span>
+        <span>🎛 Тонкая настройка живости голоса (Студия Fish Audio)</span>
       </summary>
 
       <div class="tuning-studio-body">
         <div class="preset-action-row">
-          <button class="primary preset-hero-btn" id="applyLivePresetBtn" title="Выставить оптимальные параметры пресета 'Живая стримерша' и сохранить в шаблон Lumean">
+          <button class="primary preset-hero-btn" id="applyLivePresetBtn" title="Выставить оптимальные параметры пресета 'Живая стримерша' и сохранить в шаблон Fish Audio">
             ✨ Сделать голос максимально живым (Авто-настройка)
           </button>
         </div>
@@ -273,9 +273,9 @@
         <div class="setting-row-buttons">
           <span style="font-size: 11.5px; color: var(--dim);">Частота звука:</span>
           <div class="sample-rate-pills">
-            <button type="button" class="pill-btn" data-srate="22050">22 kHz</button>
+            <button type="button" class="pill-btn" data-srate="32000">32 kHz</button>
             <button type="button" class="pill-btn active" data-srate="44100">44.1 kHz</button>
-            <button type="button" class="pill-btn" data-srate="48000">48 kHz</button>
+
           </div>
         </div>
 
@@ -289,23 +289,23 @@
             <span>Нормализация громкости (Loudnorm)</span>
           </label>
           <label class="check-row">
-            <input type="checkbox" id="tuneBreathingPauses" checked>
-            <span>Живые дыхательные микро-паузы</span>
+            <input hidden disabled type="checkbox" id="tuneBreathingPauses">
+            <span>Паузы задаются в тексте</span>
           </label>
         </div>
 
         <div class="row" style="margin-top: 6px; gap: 6px;">
-          <button class="primary" id="saveTuningBtn" style="flex: 1.5;">💾 Сохранить в Lumean</button>
+          <button class="primary" id="saveTuningBtn" style="flex: 1.5;">💾 Сохранить в Fish Audio</button>
           <button class="small-btn test-tuned-btn" id="testTunedBtn" style="flex: 1.5;" title="Синтезировать в обход кэша и прослушать">🎙 Тест (без кэша)</button>
         </div>
         <div class="row" style="margin-top: 4px;">
-          <button class="small-btn rewarm-tuned-btn" id="rewarmTunedBtn" style="flex: 1;" title="Очистить старые кэш-файлы и переозвучить весь каталог с новыми настройками">🔄 Переозвучить кэш с новыми настройками</button>
+          <button class="small-btn rewarm-tuned-btn" hidden id="rewarmTunedBtn" style="flex: 1;" title="Очистить старые кэш-файлы и переозвучить весь каталог с новыми настройками">🔄 Переозвучить кэш с новыми настройками</button>
         </div>
       </div>
     </details>
 
     <!-- Индикатор прогрева кэша голоса + кнопка полного прогрева -->
-    <div class="voice-warmup-container" id="voiceWarmupContainer">
+    <div hidden class="voice-warmup-container" id="voiceWarmupContainer">
       <div class="voice-warmup-status">
         <span id="warmupStatusText">⚡ Прогрев голосов...</span>
         <span id="warmupPercentText">0%</span>
@@ -322,10 +322,6 @@
     <div class="catalog-tabs-row">
       <select id="catalogSelect" class="catalog-select">
         <option value="fishaudio">🐟 Fish Audio (Каталог + Клоны)</option>
-        <option value="elevenlabs">🔥 ElevenLabs Voice Library</option>
-        <option value="my_library">⭐ Моя библиотека Lumean</option>
-        <option value="lumvoice">💎 LumVoice Public</option>
-        <option value="cartesia">⚡ Cartesia</option>
       </select>
     </div>
 
@@ -351,13 +347,10 @@
 
     <!-- 4. Ручной ввод Voice ID -->
     <details class="manual-voice-details">
-      <summary class="hint" style="cursor: pointer; user-select: none; margin: 4px 0;">✏️ Ручной ввод Voice ID с сайта lumean.app</summary>
+      <summary class="hint" style="cursor: pointer; user-select: none; margin: 4px 0;">✏️ Ручной ввод Voice ID с сайта fish.audio</summary>
       <div class="row" style="margin-top: 6px; gap: 6px;">
         <select id="manualProviderSelect" style="flex: 1;">
           <option value="fishaudio">Fish Audio</option>
-          <option value="elevenlabs">ElevenLabs</option>
-          <option value="lumvoice">LumVoice</option>
-          <option value="cartesia">Cartesia</option>
         </select>
         <input id="manualVoiceId" placeholder="Voice ID (напр. 1db1618b...)" spellcheck="false" style="flex: 2;">
       </div>
@@ -366,7 +359,7 @@
         <button id="manualSaveEnBtn" class="small-btn" style="flex: 1;">🇬🇧 Сохранить на EN</button>
       </div>
       <div class="row" style="margin-top: 4px;">
-        <input id="manualTemplateId" placeholder="Template ID (опционально, если есть свой)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">
+        <input hidden disabled id="manualTemplateId" placeholder="Template ID (опционально, если есть свой)" spellcheck="false" style="font-size: 11px; opacity: 0.7;">
       </div>
     </details>
     <div id="voiceStatusHint" class="hint" style="margin-top:2px; color:#4ade80;" hidden>Голос применён во всём приложении</div>

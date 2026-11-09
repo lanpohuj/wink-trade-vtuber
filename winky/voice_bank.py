@@ -7,7 +7,16 @@ import re
 import threading
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / 'assets/voices/lumean'
+VOICE_ROOT = Path(__file__).resolve().parent.parent / 'assets/voices'
+ROOT = VOICE_ROOT / 'lumean'
+
+def active_root():
+    try:
+        pointer=json.loads((VOICE_ROOT / 'active-bank.json').read_text())
+        selected=(VOICE_ROOT / pointer['path']).resolve()
+        if selected.is_relative_to(VOICE_ROOT.resolve()) and (selected / 'manifest.json').is_file():return selected
+    except (OSError,ValueError,KeyError):pass
+    return ROOT
 ALIASES = {
     'start_stream': 'START_STREAM_READY', 'stream_ready': 'START_STREAM_READY',
     'analyzing': 'ANALYZING_CHART', 'analyzing_chart': 'ANALYZING_CHART',
@@ -41,8 +50,8 @@ def priority(category: str) -> int:
     return 4 if category in ('STREAM_INSIGHT', 'CHAT_ACK') else 2
 
 class VoiceBank:
-    def __init__(self, root: Path = ROOT, history_path: Path | None = None):
-        self.root = root
+    def __init__(self, root: Path | None = None, history_path: Path | None = None):
+        self.root = root or active_root()
         self.history_path = history_path or Path.home() / '.winky_voice_decks.json'
         self.lock = threading.RLock()
         try:
