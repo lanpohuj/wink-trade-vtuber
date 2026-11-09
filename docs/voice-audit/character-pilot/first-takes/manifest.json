@@ -1,0 +1,76 @@
+[
+  {
+    "id": "ru_greeting",
+    "lang": "ru",
+    "request": {
+      "text": "[bright and playful] Чатик, ушки на макушке! Винки уже у графика — начинаем!",
+      "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "language": "ru",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "duration": 4.466875,
+    "auditory_verified": false,
+    "accepted": false,
+    "transcript": "Чатик! Кушки на макушки! Винки уже у графика. Начинаем!",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 4.467,
+      "rms": 0.0886,
+      "peak": 0.36622,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.18,
+      "trailing_silence": 0.107,
+      "sha256": "b6c5486b47595b889fa7965b359382a1a6f381f6ba4b12a5a062b7bb5e903cb5"
+    },
+    "file": "ru_greeting.mp3",
+    "review_status": "pronunciation_review_needed"
+  },
+  {
+    "id": "ru_loss",
+    "lang": "ru",
+    "request": {
+      "text": "[lighthearted and reassuring] Эх, эта не зашла. Ушки не вешаем — дальше по плану!",
+      "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "language": "ru",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "duration": 3.552562,
+    "auditory_verified": false,
+    "accepted": false,
+    "transcript": "Это не зашла! Ушки не вешаем! Дальше по плану!",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 3.553,
+      "rms": 0.06936,
+      "peak": 0.29514,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.2,
+      "trailing_silence": 0.093,
+      "sha256": "fe8c1c3df694b2246a215e330e52fdb30114d64316ad4c8d3c501305d93e47ce"
+    },
+    "file": "ru_loss.mp3",
+    "review_status": "pronunciation_review_needed"
+  }
+]

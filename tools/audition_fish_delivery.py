@@ -1,6 +1,7 @@
 """Generate only small, unapproved delivery comparisons, never bank replacements."""
 import json
 import shutil
+import argparse
 from pathlib import Path
 
 from winky.fish_tts import FishAudioTTS
@@ -17,13 +18,18 @@ CASES = [
 ]
 
 
-def generate():
-    dest = ROOT / 'voice_cache/fish_delivery_auditions'
+def generate(catalog=None, output=None):
+    cases = CASES
+    if catalog:
+        source = json.loads(catalog.read_text())
+        cases = [(r['id'], r['lang'], r['tts_text'], source['tuning'])
+                 for r in source['records']]
+    dest = output or ROOT / 'voice_cache/fish_delivery_auditions'
     dest.mkdir(parents=True, exist_ok=True)
     engine = FishAudioTTS()
     rows = []
     try:
-        for ident, lang, text, tuning in CASES:
+        for ident, lang, text, tuning in cases:
             # Local comparison only: do not save tuning into runtime settings.
             engine.tuning[lang] = tuning.copy()
             source = engine.synthesize(text, lang)
@@ -39,4 +45,8 @@ def generate():
 
 
 if __name__ == '__main__':
-    generate()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--catalog', type=Path)
+    parser.add_argument('--output', type=Path)
+    args = parser.parse_args()
+    generate(args.catalog, args.output)
