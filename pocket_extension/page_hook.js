@@ -1002,7 +1002,9 @@
     const currentButton=getActualChartTimeframeBadge().btn || button;
     lastChartControl={anchorClass:currentButton?.className || null,connected:currentButton?.isConnected ?? null,
       before:visibleChartMenu()?.parentElement?.className || null,startedAt:Date.now()};
-    if(currentButton)realClick(currentButton);
+    // A synthetic mousedown can trigger Pocket's outside-menu dismissal,
+    // then the following click reopens it. Close with exactly one click.
+    if(currentButton && typeof currentButton.click==='function')currentButton.click();
     // Pocket removes its modal after the exit transition. Do not report a
     // failure at 100 ms or click again while the first close is still running.
     for(let i=0;i<8 && visibleChartMenu();i++)await new Promise(resolve=>setTimeout(resolve,60));

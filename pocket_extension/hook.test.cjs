@@ -239,6 +239,17 @@ test('chart menu closure waits for Pocket transition without a second toggle',as
   assert.equal(clicks,1);assert.ok(h.now()>=closesAt);
 });
 
+test('closing a chart popup does not dismiss on mousedown and reopen on click',async()=>{
+  const h=loadHook();let opened=true,clicks=0;
+  const toolbar={offsetParent:{},children:[],textContent:'M1',getBoundingClientRect:()=>({left:245,top:82,width:40,height:35}),
+    querySelectorAll:()=>[],closest:()=>null,dispatchEvent(e){if(e.type==='mousedown')opened=false;},click(){opened=!opened;clicks++;}};
+  const menu={offsetParent:{},getBoundingClientRect:()=>({width:440,height:380})};
+  h.document.querySelectorAll=s=>s==='.drop-down-modal--chart-type'?(opened?[menu]:[]):s.includes('.items__link--chart-type')?[toolbar]:[];
+  await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:236});
+  assert.equal(opened,false);assert.equal(clicks,1);
+  assert.equal(h.messages.find(m=>m.type==='WINKY_RESP_CHART_TIMEFRAME').ok,true);
+});
+
 test('chart menu closes using the new toolbar node after Pocket rerenders the interval',async()=>{
   const h=loadHook();let opened=false,badge='M1',replaced=false,closes=0;
   const makeToolbar=old=>({offsetParent:{},children:[],get textContent(){return badge;},getBoundingClientRect:()=>({left:245,top:82,width:40,height:35}),
