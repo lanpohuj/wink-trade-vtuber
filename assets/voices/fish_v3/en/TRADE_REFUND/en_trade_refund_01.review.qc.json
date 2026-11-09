@@ -1,0 +1,67 @@
+{
+  "id": "en_trade_refund_01",
+  "expected": "The closed trade settled as a refund. Noted.",
+  "transcript": "The closed trade settled as a refund, noted.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.0827,
+    "peak": 0.41958,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.104,
+    "sha256": "626f16543a9f9c035fd25e24c0f52f315b93981edef1c5055e17858cd8edb4fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " The closed trade settled as a refund, noted.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " closed",
+          "start": 0.26,
+          "end": 0.54
+        },
+        {
+          "word": " trade",
+          "start": 0.54,
+          "end": 0.92
+        },
+        {
+          "word": " settled",
+          "start": 0.92,
+          "end": 1.32
+        },
+        {
+          "word": " as",
+          "start": 1.32,
+          "end": 1.5
+        },
+        {
+          "word": " a",
+          "start": 1.5,
+          "end": 1.64
+        },
+        {
+          "word": " refund,",
+          "start": 1.64,
+          "end": 1.9
+        },
+        {
+          "word": " noted.",
+          "start": 2.38,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

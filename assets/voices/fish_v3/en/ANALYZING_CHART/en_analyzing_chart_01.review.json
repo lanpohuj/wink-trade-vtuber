@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_01",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Watching the move. Candles, tell me your story!",
+  "text_version": 1,
+  "text_sha256": "c9887fe0e7a80b056c0198adccd7d537082d628f0f08275a6f135655a65548aa",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "92fd18b184cf8af4571596ea887fd597e0202878306a56a109a1429a1e201888",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_01.mp3.rms2.json"
+}

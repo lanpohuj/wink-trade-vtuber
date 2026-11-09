@@ -1,0 +1,62 @@
+{
+  "id": "en_pause_between_trades_01",
+  "expected": "A little breather, cuties. Resting these ears.",
+  "transcript": "A little breather, cuties, resting these ears.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07616,
+    "peak": 0.35322,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.13,
+    "sha256": "6bf98ba8e836049176e408be6de55c0db478f4e17a4519e20e839718d6edba12"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " A little breather, cuties, resting these ears.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.3
+        },
+        {
+          "word": " little",
+          "start": 0.3,
+          "end": 0.48
+        },
+        {
+          "word": " breather,",
+          "start": 0.48,
+          "end": 1.06
+        },
+        {
+          "word": " cuties,",
+          "start": 1.1,
+          "end": 1.66
+        },
+        {
+          "word": " resting",
+          "start": 1.98,
+          "end": 2.4
+        },
+        {
+          "word": " these",
+          "start": 2.4,
+          "end": 2.64
+        },
+        {
+          "word": " ears.",
+          "start": 2.64,
+          "end": 3.0
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

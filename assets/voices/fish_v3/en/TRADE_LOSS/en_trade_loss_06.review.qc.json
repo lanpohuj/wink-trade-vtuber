@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_loss_06",
+  "expected": "Settlement confirmed a negative result for the last trade.",
+  "transcript": "Settlement confirmed a negative result for the last trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08135,
+    "peak": 0.40183,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.32,
+    "trailing_silence": 0.21,
+    "sha256": "d134639cb97a1bc406de6a8b6c5a4da28ad7740bcb44cf0e4a745df5e2a30774"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Settlement confirmed a negative result for the last trade.",
+      "words": [
+        {
+          "word": " Settlement",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " confirmed",
+          "start": 0.6,
+          "end": 0.98
+        },
+        {
+          "word": " a",
+          "start": 0.98,
+          "end": 1.22
+        },
+        {
+          "word": " negative",
+          "start": 1.22,
+          "end": 1.54
+        },
+        {
+          "word": " result",
+          "start": 1.54,
+          "end": 1.98
+        },
+        {
+          "word": " for",
+          "start": 1.98,
+          "end": 2.18
+        },
+        {
+          "word": " the",
+          "start": 2.18,
+          "end": 2.3
+        },
+        {
+          "word": " last",
+          "start": 2.3,
+          "end": 2.58
+        },
+        {
+          "word": " trade.",
+          "start": 2.58,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,57 @@
+{
+  "id": "en_in_trade_waiting_09",
+  "expected": "No early result announcements. I'm watching.",
+  "transcript": "No early result announcements. I'm watching.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07532,
+    "peak": 0.34708,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.156,
+    "sha256": "d8317e51a7960eee6493b125b15838b79d4aee26d4059049a521216c3d89e6d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " No early result announcements. I'm watching.",
+      "words": [
+        {
+          "word": " No",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " early",
+          "start": 0.36,
+          "end": 0.68
+        },
+        {
+          "word": " result",
+          "start": 0.68,
+          "end": 0.98
+        },
+        {
+          "word": " announcements.",
+          "start": 0.98,
+          "end": 1.6
+        },
+        {
+          "word": " I'm",
+          "start": 2.0,
+          "end": 2.36
+        },
+        {
+          "word": " watching.",
+          "start": 2.36,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

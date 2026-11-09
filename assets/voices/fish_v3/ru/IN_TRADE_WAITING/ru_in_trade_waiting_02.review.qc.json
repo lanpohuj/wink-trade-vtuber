@@ -1,0 +1,47 @@
+{
+  "id": "ru_in_trade_waiting_02",
+  "expected": "Котики, пока ждём закрытия.",
+  "transcript": "Котики, пока ждём закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 1.959,
+    "rms": 0.08949,
+    "peak": 0.39479,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.079,
+    "sha256": "0138f5f4dd640fcbccf927ca04aca8aaaef2de2ef4f5c58b567fa3e5a28d616d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.84,
+      "text": " Котики, пока ждём закрытия.",
+      "words": [
+        {
+          "word": " Котики,",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " пока",
+          "start": 0.78,
+          "end": 0.9
+        },
+        {
+          "word": " ждём",
+          "start": 0.9,
+          "end": 1.22
+        },
+        {
+          "word": " закрытия.",
+          "start": 1.22,
+          "end": 1.84
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

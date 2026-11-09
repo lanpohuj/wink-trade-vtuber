@@ -1,0 +1,62 @@
+{
+  "id": "ru_weak_signal_switch_pair_04",
+  "expected": "Не каждый график обязан давать вход, котики.",
+  "transcript": "Не каждый график обязан давать вход. Котики.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.0702,
+    "peak": 0.28122,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "51e2fd30f750fffdfe918caca74564e73e1691aaf20b1ac63feb6bc6ab93e2fd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.84,
+      "text": " Не каждый график обязан давать вход. Котики.",
+      "words": [
+        {
+          "word": " Не",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " каждый",
+          "start": 0.38,
+          "end": 0.62
+        },
+        {
+          "word": " график",
+          "start": 0.62,
+          "end": 1.16
+        },
+        {
+          "word": " обязан",
+          "start": 1.16,
+          "end": 1.58
+        },
+        {
+          "word": " давать",
+          "start": 1.58,
+          "end": 1.86
+        },
+        {
+          "word": " вход.",
+          "start": 1.86,
+          "end": 2.04
+        },
+        {
+          "word": " Котики.",
+          "start": 2.4,
+          "end": 2.84
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

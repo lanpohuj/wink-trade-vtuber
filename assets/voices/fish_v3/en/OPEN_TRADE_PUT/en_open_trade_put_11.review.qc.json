@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_put_11",
+  "expected": "The sell is active. Let's wait before drawing conclusions.",
+  "transcript": "The cell is active. Let's wait before drawing conclusions.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.07973,
+    "peak": 0.49515,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.14,
+    "sha256": "c135c1ae58d249f4353a40b21367373ec58ac208860b987f30f487fb14dfe823"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " The cell is active. Let's wait before drawing conclusions.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.3
+        },
+        {
+          "word": " cell",
+          "start": 0.3,
+          "end": 0.62
+        },
+        {
+          "word": " is",
+          "start": 0.62,
+          "end": 0.82
+        },
+        {
+          "word": " active.",
+          "start": 0.82,
+          "end": 1.16
+        },
+        {
+          "word": " Let's",
+          "start": 1.62,
+          "end": 2.0
+        },
+        {
+          "word": " wait",
+          "start": 2.0,
+          "end": 2.18
+        },
+        {
+          "word": " before",
+          "start": 2.18,
+          "end": 2.46
+        },
+        {
+          "word": " drawing",
+          "start": 2.46,
+          "end": 2.82
+        },
+        {
+          "word": " conclusions.",
+          "start": 2.82,
+          "end": 3.2
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

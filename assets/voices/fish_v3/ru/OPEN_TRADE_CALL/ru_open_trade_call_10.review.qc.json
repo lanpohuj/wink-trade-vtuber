@@ -1,0 +1,57 @@
+{
+  "id": "ru_open_trade_call_10",
+  "expected": "Котики, вверх уже открыто. Следим вместе.",
+  "transcript": "Котики, вверх уже открыто, следим вместе.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.631,
+    "rms": 0.0818,
+    "peak": 0.34899,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.091,
+    "sha256": "60b1ce4035e4eada31614b74974e3be6037af05ee8d952473913c8a23cef8fca"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Котики, вверх уже открыто, следим вместе.",
+      "words": [
+        {
+          "word": " Котики,",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " вверх",
+          "start": 1.14,
+          "end": 1.44
+        },
+        {
+          "word": " уже",
+          "start": 1.44,
+          "end": 1.58
+        },
+        {
+          "word": " открыто,",
+          "start": 1.58,
+          "end": 2.14
+        },
+        {
+          "word": " следим",
+          "start": 2.54,
+          "end": 3.0
+        },
+        {
+          "word": " вместе.",
+          "start": 3.0,
+          "end": 3.36
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

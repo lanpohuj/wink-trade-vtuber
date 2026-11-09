@@ -1,0 +1,25 @@
+{
+  "id": "ru_trade_win_02",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Красота-а! Очередная победа в нашу статистику! Люблю, когда технический анализ дает такой четкий результат!",
+  "text_version": 1,
+  "text_sha256": "7ee9a32422f77730b697b303264ed70eb8389704112a4daa35aa7973e64ceeeb",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "win_03",
+    "file": "TRADE_WIN/win_03.mp3",
+    "sha256": "28b53ea0aeeb2870d9b9f37d7aab7e548b676b9cd708fa6242ac305fb496d1eb",
+    "text": "Красота-а! Очередная победа в нашу статистику! Люблю, когда технический анализ дает такой четкий результат!",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/TRADE_WIN/ru_trade_win_02.mp3",
+  "auditory_verified": false,
+  "duration": 7.706122,
+  "sha256": "28b53ea0aeeb2870d9b9f37d7aab7e548b676b9cd708fa6242ac305fb496d1eb",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_02.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_07",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Есть открытие вниз. Смотрим спокойно.",
+  "text_version": 1,
+  "text_sha256": "acb55e545da1ac0e92a01bd02dc3139dc1784012bbbb2ceaf5d84b25c78c21e6",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_07.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "ea1294e18ca9234d73530191076d6d935247afd781ccf8d3c77539d83381935f",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_07.mp3.rms2.json"
+}

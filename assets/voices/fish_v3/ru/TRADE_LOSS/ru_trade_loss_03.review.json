@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_03",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Последняя закрытая сделка дала минус. Записано.",
+  "text_version": 1,
+  "text_sha256": "241fe193dc5b9fc310af2a67c3409eb8a3118bdb60c56b9e5077fc1741735660",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "48fd3d0073fe7d54f42c6dbcc3d8c547f84bc6948e94a576fde953d279250350",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_03.mp3.rms2.json"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "en_analyzing_chart_03",
+  "expected": "Comparing timeframes. No need to rush just yet.",
+  "transcript": "Comparing timeframes, no need to rush just yet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.06917,
+    "peak": 0.35365,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.203,
+    "sha256": "56546cef8923d801fd6ba0af2c3e220cc5706c3120f07eabc115baef3a3040ae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.34,
+      "text": " Comparing timeframes, no need to rush just yet.",
+      "words": [
+        {
+          "word": " Comparing",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " timeframes,",
+          "start": 0.66,
+          "end": 1.44
+        },
+        {
+          "word": " no",
+          "start": 1.96,
+          "end": 2.2
+        },
+        {
+          "word": " need",
+          "start": 2.2,
+          "end": 2.42
+        },
+        {
+          "word": " to",
+          "start": 2.42,
+          "end": 2.62
+        },
+        {
+          "word": " rush",
+          "start": 2.62,
+          "end": 2.82
+        },
+        {
+          "word": " just",
+          "start": 2.82,
+          "end": 3.06
+        },
+        {
+          "word": " yet.",
+          "start": 3.06,
+          "end": 3.34
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

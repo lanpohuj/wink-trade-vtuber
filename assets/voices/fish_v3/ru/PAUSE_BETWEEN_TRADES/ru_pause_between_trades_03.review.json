@@ -1,0 +1,25 @@
+{
+  "id": "ru_pause_between_trades_03",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+  "text_version": 1,
+  "text_sha256": "c57e79bffa6dbc38838709e16ab8189917ffa7b0a7f304e346273ffbd49a18a1",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "pause_03",
+    "file": "PAUSE_BETWEEN_TRADES/pause_03.mp3",
+    "sha256": "5bf0d0a2080d96a2aafcb7801fe5969f7cfd738cc77f16241dca3db38584c3b1",
+    "text": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_03.mp3",
+  "auditory_verified": false,
+  "duration": 5.32898,
+  "sha256": "5bf0d0a2080d96a2aafcb7801fe5969f7cfd738cc77f16241dca3db38584c3b1",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_03.mp3.rms2.json"
+}

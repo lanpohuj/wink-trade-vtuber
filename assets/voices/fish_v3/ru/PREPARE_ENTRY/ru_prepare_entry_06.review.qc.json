@@ -1,0 +1,52 @@
+{
+  "id": "ru_prepare_entry_06",
+  "expected": "Параметры сверяю с текущим графиком.",
+  "transcript": "Параметры сверяю с текущим графиком.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.22,
+    "rms": 0.08765,
+    "peak": 0.37452,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "7f89b2e974dae017d4458a666fad48903bcd0064f27a34daee0a233b88d848da"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.98,
+      "text": " Параметры сверяю с текущим графиком.",
+      "words": [
+        {
+          "word": " Параметры",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " сверяю",
+          "start": 0.66,
+          "end": 1.06
+        },
+        {
+          "word": " с",
+          "start": 1.06,
+          "end": 1.16
+        },
+        {
+          "word": " текущим",
+          "start": 1.16,
+          "end": 1.54
+        },
+        {
+          "word": " графиком.",
+          "start": 1.54,
+          "end": 1.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

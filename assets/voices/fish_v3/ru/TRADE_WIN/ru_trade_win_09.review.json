@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_09",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Результат закрытой сделки положительный. Отмечаем!",
+  "text_version": 1,
+  "text_sha256": "8ab88e3d0b47946f3e6949e73414a89df4972f9299d065ce293764ca28870b5c",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_09.mp3",
+  "auditory_verified": false,
+  "duration": 3.683187,
+  "sha256": "f0bbcf01c9e388854e3cf3a0112181e7a52172457fb7ca9aae66879f50162753",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_09.mp3.rms2.json"
+}

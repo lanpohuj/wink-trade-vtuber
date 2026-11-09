@@ -1,0 +1,62 @@
+{
+  "id": "en_stream_insight_03",
+  "expected": "Matching conditions don't promise an outcome, cuties.",
+  "transcript": "Matching conditions don't promise an outcome, cuties.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.08269,
+    "peak": 0.34292,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.278,
+    "sha256": "8feee10599674521fb6988e8d9d802d7e6d4df35bab5822a272c94f8af20792e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Matching conditions don't promise an outcome, cuties.",
+      "words": [
+        {
+          "word": " Matching",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " conditions",
+          "start": 0.6,
+          "end": 1.04
+        },
+        {
+          "word": " don't",
+          "start": 1.04,
+          "end": 1.48
+        },
+        {
+          "word": " promise",
+          "start": 1.48,
+          "end": 1.8
+        },
+        {
+          "word": " an",
+          "start": 1.8,
+          "end": 1.98
+        },
+        {
+          "word": " outcome,",
+          "start": 1.98,
+          "end": 2.24
+        },
+        {
+          "word": " cuties.",
+          "start": 2.5,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

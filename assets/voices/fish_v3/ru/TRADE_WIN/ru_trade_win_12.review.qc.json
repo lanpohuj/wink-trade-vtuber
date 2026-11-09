@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_win_12",
+  "expected": "Подтверждение пришло: закрытая сделка в плюс!",
+  "transcript": "Подтверждение пришло! Закрытое сделка в плюс!",
+  "similarity": 0.947,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.0913,
+    "peak": 0.38225,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.14,
+    "sha256": "862f5aa32283482bbc8a89326022b0ba651fabe91a4ad02c198a76a2522a0f42"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Подтверждение пришло! Закрытое сделка в плюс!",
+      "words": [
+        {
+          "word": " Подтверждение",
+          "start": 0.0,
+          "end": 0.94
+        },
+        {
+          "word": " пришло!",
+          "start": 0.94,
+          "end": 1.52
+        },
+        {
+          "word": " Закрытое",
+          "start": 1.76,
+          "end": 2.4
+        },
+        {
+          "word": " сделка",
+          "start": 2.4,
+          "end": 2.82
+        },
+        {
+          "word": " в",
+          "start": 2.82,
+          "end": 2.9
+        },
+        {
+          "word": " плюс!",
+          "start": 2.9,
+          "end": 3.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

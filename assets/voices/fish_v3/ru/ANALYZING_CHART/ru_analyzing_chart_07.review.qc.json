@@ -1,0 +1,57 @@
+{
+  "id": "ru_analyzing_chart_07",
+  "expected": "Свечки двигаются, а я сверяю условия.",
+  "transcript": "Свечки двигаются, а я сверяю условия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.08493,
+    "peak": 0.37088,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.084,
+    "sha256": "1d99d94c48010076cab8994d77ebd772a40fb735a5b4451e786096680c20f927"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.52,
+      "text": " Свечки двигаются, а я сверяю условия.",
+      "words": [
+        {
+          "word": " Свечки",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " двигаются,",
+          "start": 0.68,
+          "end": 1.22
+        },
+        {
+          "word": " а",
+          "start": 1.44,
+          "end": 1.52
+        },
+        {
+          "word": " я",
+          "start": 1.52,
+          "end": 1.64
+        },
+        {
+          "word": " сверяю",
+          "start": 1.64,
+          "end": 2.02
+        },
+        {
+          "word": " условия.",
+          "start": 2.02,
+          "end": 2.52
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

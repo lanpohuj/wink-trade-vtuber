@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_04",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Не каждый график обязан давать вход, котики.",
+  "text_version": 1,
+  "text_sha256": "fed19eff95426438e513f77fd596f55a8817fab05a12885801e94af4eabaab8e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "51e2fd30f750fffdfe918caca74564e73e1691aaf20b1ac63feb6bc6ab93e2fd",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_04.mp3.rms2.json"
+}

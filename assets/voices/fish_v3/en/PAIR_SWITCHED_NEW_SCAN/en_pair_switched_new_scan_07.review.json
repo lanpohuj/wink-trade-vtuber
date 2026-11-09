@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_07",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "Another pair is open. Checking its conditions.",
+  "text_version": 1,
+  "text_sha256": "c1dee284c1822161805ea72df86d066c793db2a595e6b5a4fc040f7e187d2a12",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "69af7c655e238e5668944a6c4e105f75a1078e02ff703f6f7727a3cef25c9324",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_07.mp3.rms2.json"
+}

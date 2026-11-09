@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_11",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "The buy is active. Let's wait before drawing conclusions.",
+  "text_version": 1,
+  "text_sha256": "daae8c4c7ded5f995459aed406cd301f644a7d4e550f3e7a19b1ffffc18b421a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_11.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "2a9d8ae237353d79240b2f36ead20ff46b861b57dd92ca0ba54e23f587234fdd",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_11.mp3.rms2.json"
+}

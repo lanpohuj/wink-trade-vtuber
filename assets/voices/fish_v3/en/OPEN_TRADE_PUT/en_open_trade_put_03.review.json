@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_03",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "We're in a downward trade. Eyes on the chart!",
+  "text_version": 1,
+  "text_sha256": "03ba38214b43a8de93d67aa29861e964ca7b47c992b309bdb239ddc109e19588",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "16e3d9baa1be1220c167072cc692fff52883cfd8e0bc3d0008e6f3fe4a07eb66",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_03.mp3.rms2.json"
+}

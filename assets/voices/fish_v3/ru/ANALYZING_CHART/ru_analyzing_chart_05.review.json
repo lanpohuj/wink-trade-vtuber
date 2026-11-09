@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_05",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Наблюдаю за ценой. Ушки на макушке!",
+  "text_version": 1,
+  "text_sha256": "0ec09e61ce3a56805a96bdb122a91d0313f67d0522a4d1f12c88e8bd0b438d32",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "76e5b3c2107aa60c132d70290e95139edcb81f69cdce829fe217d4bc94bc694d",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_05.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_11",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Покупка в работе. Не спешим с выводами.",
+  "text_version": 1,
+  "text_sha256": "f17a609655941f2b7d81958158f7127fae467ccb4572ea87e663676c2ee9da89",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_11.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "c9859477de0a65f60b184563fb1932ae7ee64a2f1ab3c26c2dc7d85484fd81a8",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_11.mp3.rms2.json"
+}

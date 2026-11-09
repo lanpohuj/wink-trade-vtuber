@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_07",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Есть открытие вверх. Смотрим спокойно.",
+  "text_version": 1,
+  "text_sha256": "e7591c1707fd23f917ddcfcae9796e6027aae8dc044b583a38d8d4aa1580c80f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "2096d16355eb6c8114b0793de7333e808fefaf6891957913cbd26d75a13f1f3b",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_07.mp3.rms2.json"
+}

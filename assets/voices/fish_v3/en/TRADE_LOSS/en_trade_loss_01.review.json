@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_01",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "The closed trade finished negative. Recording it calmly.",
+  "text_version": 1,
+  "text_sha256": "cd1460471dc765622eea46c11926ff8806fbfa1c036d68f7f8faea51b0797308",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "15d8bf235eb15be7feeb33ffefe54497d6df3015d61b0e89428de0489e3379b0",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_01.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_06",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "Refund confirmed for the closed trade. Meow, noted.",
+  "text_version": 1,
+  "text_sha256": "aa0c25532c7020f46cea2935daf7636b6143c0b5bab27c034b83c8cc68adfae7",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_06.mp3",
+  "auditory_verified": false,
+  "duration": 4.362375,
+  "sha256": "4a84ee20fffa6a515e00f37dd0957b9f4f7ca8d732de29ccc9656c876b8c6ffb",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_06.mp3.rms2.json"
+}

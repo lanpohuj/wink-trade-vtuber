@@ -1,0 +1,47 @@
+{
+  "id": "ru_in_trade_waiting_07",
+  "expected": "Свечки двигаются, сделка продолжается.",
+  "transcript": "Свечки двигаются, сделка продолжается.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.07905,
+    "peak": 0.38781,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.144,
+    "sha256": "4914da795622b399a73880c6d2aa1ff96833e630c13640b9bbe10080e9d63c28"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.42,
+      "text": " Свечки двигаются, сделка продолжается.",
+      "words": [
+        {
+          "word": " Свечки",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " двигаются,",
+          "start": 0.66,
+          "end": 1.22
+        },
+        {
+          "word": " сделка",
+          "start": 1.26,
+          "end": 1.66
+        },
+        {
+          "word": " продолжается.",
+          "start": 1.66,
+          "end": 2.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

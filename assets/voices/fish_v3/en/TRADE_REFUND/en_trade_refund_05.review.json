@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_05",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "Settlement shows a refund. Recording it separately.",
+  "text_version": 1,
+  "text_sha256": "8daddddf36ffa2d0108c9c55f4dd380cbb009470eb8974596f46d2d64952a15d",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "144a74a41e088b65b1dc49cdd0739347b22e1dc023cde802f8c896d6a2c81892",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_05.mp3.rms2.json"
+}

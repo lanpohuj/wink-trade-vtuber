@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_win_08",
+  "expected": "Зафиксирован плюс по завершённой сделке. Мяу!",
+  "transcript": "Зафиксирован плюс позавершённые сделки, мяу!",
+  "similarity": 0.921,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.09202,
+    "peak": 0.40083,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.076,
+    "sha256": "67e43b68995855737751cc952cdfa99c9b9e74b5cf27b0b1f1a5e3314292ff5b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Зафиксирован плюс позавершённые сделки, мяу!",
+      "words": [
+        {
+          "word": " Зафиксирован",
+          "start": 0.0,
+          "end": 1.04
+        },
+        {
+          "word": " плюс",
+          "start": 1.04,
+          "end": 1.28
+        },
+        {
+          "word": " позавершённые",
+          "start": 1.28,
+          "end": 2.02
+        },
+        {
+          "word": " сделки,",
+          "start": 2.02,
+          "end": 2.46
+        },
+        {
+          "word": " мяу!",
+          "start": 2.54,
+          "end": 2.94
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_05",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Ушки держу на графике, жду расчёта.",
+  "text_version": 1,
+  "text_sha256": "f4f620d4d401dea91e372787234a6ec7a52394a2ebcfd66f028861a2b98a05b7",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_05.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "5557fae011a168f513cd74b6d5acf51eb3453c0b983b360e87a59e4dbe33c421",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_05.mp3.rms2.json"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_call_11",
+  "expected": "The buy is active. Let's wait before drawing conclusions.",
+  "transcript": "The buy is active. Let's wait before drawing conclusions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07858,
+    "peak": 0.44958,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.194,
+    "sha256": "2a9d8ae237353d79240b2f36ead20ff46b861b57dd92ca0ba54e23f587234fdd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " The buy is active. Let's wait before drawing conclusions.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.32
+        },
+        {
+          "word": " buy",
+          "start": 0.32,
+          "end": 0.56
+        },
+        {
+          "word": " is",
+          "start": 0.56,
+          "end": 0.74
+        },
+        {
+          "word": " active.",
+          "start": 0.74,
+          "end": 1.08
+        },
+        {
+          "word": " Let's",
+          "start": 1.64,
+          "end": 1.96
+        },
+        {
+          "word": " wait",
+          "start": 1.96,
+          "end": 2.16
+        },
+        {
+          "word": " before",
+          "start": 2.16,
+          "end": 2.42
+        },
+        {
+          "word": " drawing",
+          "start": 2.42,
+          "end": 2.76
+        },
+        {
+          "word": " conclusions.",
+          "start": 2.76,
+          "end": 3.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ru_in_trade_waiting_10",
+  "expected": "Ждём фактического результата, без догадок.",
+  "transcript": "Ждём фактического результата. Без догадок.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.08293,
+    "peak": 0.35128,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.084,
+    "sha256": "a55f39fb1f25fdcbe70a7bc252b0ce273f8d4fb021b91c062786469428f774e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Ждём фактического результата. Без догадок.",
+      "words": [
+        {
+          "word": " Ждём",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " фактического",
+          "start": 0.52,
+          "end": 1.18
+        },
+        {
+          "word": " результата.",
+          "start": 1.18,
+          "end": 1.82
+        },
+        {
+          "word": " Без",
+          "start": 2.08,
+          "end": 2.38
+        },
+        {
+          "word": " догадок.",
+          "start": 2.38,
+          "end": 2.88
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

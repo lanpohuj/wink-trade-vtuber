@@ -1,0 +1,18 @@
+{
+  "id": "ru_start_stream_ready_05",
+  "category": "START_STREAM_READY",
+  "lang": "ru",
+  "text": "Привет, котики! Сегодня снова наблюдаем и проверяем.",
+  "text_version": 1,
+  "text_sha256": "bbc870010252b51c57460284ef1f922fda5d654aed3ca00e3ddbcdac241f3a73",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/START_STREAM_READY/ru_start_stream_ready_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.839938,
+  "sha256": "e40ef7f7c9aa09d6d8859f2bfe309aa9d1b49ada6a008a0b8b4587b46a6590b6",
+  "rms_file": "ru/START_STREAM_READY/ru_start_stream_ready_05.mp3.rms2.json"
+}

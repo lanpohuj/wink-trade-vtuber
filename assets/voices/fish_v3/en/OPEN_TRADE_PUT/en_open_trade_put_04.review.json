@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_04",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The sell is open. Watching the move.",
+  "text_version": 1,
+  "text_sha256": "d510715fc98a79a84245317222b3106f65c886048ad82fb24ab2f1cf27d3f14e",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_04.mp3",
+  "auditory_verified": false,
+  "duration": 2.74275,
+  "sha256": "314f08de0015a54e10e4524f30dea383c9d6c0cf16a95ddf01a1b028a0b8c187",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_04.mp3.rms2.json"
+}

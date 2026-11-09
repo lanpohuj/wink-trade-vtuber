@@ -1,0 +1,57 @@
+{
+  "id": "ru_open_trade_call_06",
+  "expected": "Сделка на повышение уже в работе.",
+  "transcript": "Сделка на повышение уже в работе!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.273,
+    "rms": 0.0978,
+    "peak": 0.38144,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.113,
+    "sha256": "07029b26daa397983b3c39a547a58092ea9e47579c23b21c56c83c225eaab44e"
+  },
+  "segments": [
+    {
+      "start": 0.3600000000000002,
+      "end": 2.12,
+      "text": " Сделка на повышение уже в работе!",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.3600000000000002,
+          "end": 0.68
+        },
+        {
+          "word": " на",
+          "start": 0.68,
+          "end": 0.76
+        },
+        {
+          "word": " повышение",
+          "start": 0.76,
+          "end": 1.32
+        },
+        {
+          "word": " уже",
+          "start": 1.32,
+          "end": 1.48
+        },
+        {
+          "word": " в",
+          "start": 1.48,
+          "end": 1.6
+        },
+        {
+          "word": " работе!",
+          "start": 1.6,
+          "end": 2.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

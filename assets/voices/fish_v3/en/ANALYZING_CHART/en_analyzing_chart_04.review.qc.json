@@ -1,0 +1,77 @@
+{
+  "id": "en_analyzing_chart_04",
+  "expected": "Direction first, then the details. One step at a time.",
+  "transcript": "Direction first, then the details, one step at a time.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08117,
+    "peak": 0.46944,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.144,
+    "sha256": "f6d7742d65b17603d18ce09dbef736a4e5f093364b3fd6d3b7b9c6495845bd24"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.66,
+      "text": " Direction first, then the details, one step at a time.",
+      "words": [
+        {
+          "word": " Direction",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " first,",
+          "start": 0.64,
+          "end": 0.96
+        },
+        {
+          "word": " then",
+          "start": 1.4,
+          "end": 1.58
+        },
+        {
+          "word": " the",
+          "start": 1.58,
+          "end": 1.72
+        },
+        {
+          "word": " details,",
+          "start": 1.72,
+          "end": 2.14
+        },
+        {
+          "word": " one",
+          "start": 2.48,
+          "end": 2.76
+        },
+        {
+          "word": " step",
+          "start": 2.76,
+          "end": 3.08
+        },
+        {
+          "word": " at",
+          "start": 3.08,
+          "end": 3.28
+        },
+        {
+          "word": " a",
+          "start": 3.28,
+          "end": 3.36
+        },
+        {
+          "word": " time.",
+          "start": 3.36,
+          "end": 3.66
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

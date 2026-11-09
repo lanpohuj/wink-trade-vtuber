@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_06",
+  "expected": "No trade here. I'll check another chart.",
+  "transcript": "No trade here. I'll check another chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.717,
+    "rms": 0.07302,
+    "peak": 0.3558,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.297,
+    "sha256": "3fb79d0689764ca9eb2ec3bf59f15e14f98662fbdc61c0d42790f140c35ee6d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.26,
+      "text": " No trade here. I'll check another chart.",
+      "words": [
+        {
+          "word": " No",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "word": " trade",
+          "start": 0.34,
+          "end": 0.68
+        },
+        {
+          "word": " here.",
+          "start": 0.68,
+          "end": 0.96
+        },
+        {
+          "word": " I'll",
+          "start": 1.34,
+          "end": 1.48
+        },
+        {
+          "word": " check",
+          "start": 1.48,
+          "end": 1.66
+        },
+        {
+          "word": " another",
+          "start": 1.66,
+          "end": 1.92
+        },
+        {
+          "word": " chart.",
+          "start": 1.92,
+          "end": 2.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

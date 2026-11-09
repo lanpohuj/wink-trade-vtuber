@@ -1,0 +1,57 @@
+{
+  "id": "en_open_trade_put_12",
+  "expected": "The platform confirmed the downward opening.",
+  "transcript": "The platform confirmed the downward opening.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.612,
+    "rms": 0.08598,
+    "peak": 0.40754,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "ebf14334c4ca3fd9df48b7a7888dfa6fc4b7733404b8bbe322a98a382ffc3079"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.26,
+      "text": " The platform confirmed the downward opening.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " platform",
+          "start": 0.28,
+          "end": 0.76
+        },
+        {
+          "word": " confirmed",
+          "start": 0.76,
+          "end": 1.34
+        },
+        {
+          "word": " the",
+          "start": 1.34,
+          "end": 1.54
+        },
+        {
+          "word": " downward",
+          "start": 1.54,
+          "end": 1.82
+        },
+        {
+          "word": " opening.",
+          "start": 1.82,
+          "end": 2.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

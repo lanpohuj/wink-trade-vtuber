@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_refund_05",
+  "category": "TRADE_REFUND",
+  "lang": "ru",
+  "text": "Расчёт показал возврат. Записываем отдельно.",
+  "text_version": 1,
+  "text_sha256": "d85378e988a17affcccc56c6d6366a26aa586041521a054999b588bb27e3a9c5",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_REFUND/ru_trade_refund_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "2a000000b0e897f6dee72b18bcb7bfa1862c8992f0ad6276f3ea5f98a517ddd5",
+  "rms_file": "ru/TRADE_REFUND/ru_trade_refund_05.mp3.rms2.json"
+}

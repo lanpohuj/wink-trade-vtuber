@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_02",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Let me check the bigger picture, cuties.",
+  "text_version": 1,
+  "text_sha256": "8f1f22704bcce9cd51d21d95add712037707d4413f1141646e848b294e06991b",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.481562,
+  "sha256": "9a0548f184f248c99f7f0a3d3d2be1d71bad26b89fca7823b7632f87032ed8a7",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_02.mp3.rms2.json"
+}

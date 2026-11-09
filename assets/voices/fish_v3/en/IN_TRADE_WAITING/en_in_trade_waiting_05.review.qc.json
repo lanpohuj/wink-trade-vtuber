@@ -1,0 +1,72 @@
+{
+  "id": "en_in_trade_waiting_05",
+  "expected": "Keeping my ears on the chart, waiting for settlement.",
+  "transcript": "Keeping my ears on the chart, waiting for settlement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08046,
+    "peak": 0.31056,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.133,
+    "sha256": "afc3e38a94ff46e4dc3372b1de50cbd9e1657da72a9fa459668a880f73417e66"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Keeping my ears on the chart, waiting for settlement.",
+      "words": [
+        {
+          "word": " Keeping",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " my",
+          "start": 0.36,
+          "end": 0.6
+        },
+        {
+          "word": " ears",
+          "start": 0.6,
+          "end": 0.78
+        },
+        {
+          "word": " on",
+          "start": 0.78,
+          "end": 0.96
+        },
+        {
+          "word": " the",
+          "start": 0.96,
+          "end": 1.06
+        },
+        {
+          "word": " chart,",
+          "start": 1.06,
+          "end": 1.34
+        },
+        {
+          "word": " waiting",
+          "start": 1.66,
+          "end": 1.94
+        },
+        {
+          "word": " for",
+          "start": 1.94,
+          "end": 2.16
+        },
+        {
+          "word": " settlement.",
+          "start": 2.16,
+          "end": 2.5
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

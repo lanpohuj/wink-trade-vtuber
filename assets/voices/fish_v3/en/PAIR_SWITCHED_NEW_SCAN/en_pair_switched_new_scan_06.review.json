@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_06",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "A fresh chart for these curious ears!",
+  "text_version": 1,
+  "text_sha256": "8a34a612fa0a33680f662e4893ebcfd10f1e4fde197528bddcea654828b05d7a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.586063,
+  "sha256": "08b5108ed54c0e79ada3871fb11eff333e7335158d3b1b26cddddaf6a2fc196c",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_06.mp3.rms2.json"
+}

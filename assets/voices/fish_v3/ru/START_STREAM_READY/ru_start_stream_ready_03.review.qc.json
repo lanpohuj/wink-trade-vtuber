@@ -1,0 +1,62 @@
+{
+  "id": "ru_start_stream_ready_03",
+  "expected": "Мяу-привет! Начинаем наш разбор, без спешки.",
+  "transcript": "Меу, привет! Начинаем наш разбор без спешки!",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.06627,
+    "peak": 0.33196,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "823f62a3c3263f8c248a651c5cf2056518278fbd353c2f243e7a60b4ef47b12c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.18,
+      "text": " Меу, привет! Начинаем наш разбор без спешки!",
+      "words": [
+        {
+          "word": " Меу,",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " привет!",
+          "start": 0.84,
+          "end": 1.18
+        },
+        {
+          "word": " Начинаем",
+          "start": 1.78,
+          "end": 2.48
+        },
+        {
+          "word": " наш",
+          "start": 2.48,
+          "end": 2.64
+        },
+        {
+          "word": " разбор",
+          "start": 2.64,
+          "end": 3.18
+        },
+        {
+          "word": " без",
+          "start": 3.18,
+          "end": 3.56
+        },
+        {
+          "word": " спешки!",
+          "start": 3.56,
+          "end": 4.18
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

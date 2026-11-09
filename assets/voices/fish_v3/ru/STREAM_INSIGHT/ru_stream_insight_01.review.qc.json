@@ -1,0 +1,57 @@
+{
+  "id": "ru_stream_insight_01",
+  "expected": "Одна свеча не расскажет всю историю графика.",
+  "transcript": "Одно освещание расскажет всю историю графика.",
+  "similarity": 0.921,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0808,
+    "peak": 0.37793,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.134,
+    "sha256": "bd5f3f1f2016b17569cdbcc8eb443eff657dc852b6cdbc7dd4e4b8c75c2ed5e6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Одно освещание расскажет всю историю графика.",
+      "words": [
+        {
+          "word": " Одно",
+          "start": 0.0,
+          "end": 0.5
+        },
+        {
+          "word": " освещание",
+          "start": 0.5,
+          "end": 0.98
+        },
+        {
+          "word": " расскажет",
+          "start": 0.98,
+          "end": 1.46
+        },
+        {
+          "word": " всю",
+          "start": 1.46,
+          "end": 1.6
+        },
+        {
+          "word": " историю",
+          "start": 1.6,
+          "end": 2.14
+        },
+        {
+          "word": " графика.",
+          "start": 2.14,
+          "end": 2.64
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

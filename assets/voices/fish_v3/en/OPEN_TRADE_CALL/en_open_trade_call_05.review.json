@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_05",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Upward trade opened. We'll know the result at settlement.",
+  "text_version": 1,
+  "text_sha256": "e0baee60f7087dec8c3b8dc9288345796837b25e969ee99ec0d431a8a4d21648",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.578688,
+  "sha256": "b10a37167411ed3f0af7f1a59d41d1ee458c5e61d71b33f2bbd68e648b2497ba",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_05.mp3.rms2.json"
+}

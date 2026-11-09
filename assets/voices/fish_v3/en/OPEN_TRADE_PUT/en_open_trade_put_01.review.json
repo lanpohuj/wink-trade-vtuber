@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_01",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The downward trade is open. Let's watch!",
+  "text_version": 1,
+  "text_sha256": "82b4c2c1ad4fe339e6b4e98b025c162373ffffcde2df63aac95d0ec598df3345",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_01.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "968d4317120491b23cec79bdc0a3a8b904978ddb640bd39035dab09ea84bb9a7",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_01.mp3.rms2.json"
+}

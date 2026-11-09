@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_03",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "We're in an upward trade. Eyes on the chart!",
+  "text_version": 1,
+  "text_sha256": "ee158432be81300302b4e95b33d6fd87366e7baddf77768d3a1a809f000e6abe",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "ff43cf7fd2a7a87054b3b19989c66c22710db332b11f2245e938672f276d39dc",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_03.mp3.rms2.json"
+}

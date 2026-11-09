@@ -1,0 +1,18 @@
+{
+  "id": "en_chat_ack_03",
+  "category": "CHAT_ACK",
+  "lang": "en",
+  "text": "Thanks for your messages! I'm keeping an eye on chat.",
+  "text_version": 1,
+  "text_sha256": "e4259459208b166fd46c4c041aa84e8552612a017d450cce8246f54467e4b884",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/CHAT_ACK/en_chat_ack_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "3e37f809fb4bf4f24748d09259a759d0199f18c30e6675828c12400e96b1b0dc",
+  "rms_file": "en/CHAT_ACK/en_chat_ack_03.mp3.rms2.json"
+}

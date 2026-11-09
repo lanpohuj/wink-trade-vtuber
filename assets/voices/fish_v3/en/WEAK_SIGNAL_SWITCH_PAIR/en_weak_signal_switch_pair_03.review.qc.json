@@ -1,0 +1,77 @@
+{
+  "id": "en_weak_signal_switch_pair_03",
+  "expected": "It hasn't come together yet. On to the next pair.",
+  "transcript": "It hasn't come together yet, on to the next pair!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08036,
+    "peak": 0.44896,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.073,
+    "sha256": "faba22a7a11f7edc4e487f3fe335077dce6ce84404399e3a798a6b262f5c150a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " It hasn't come together yet, on to the next pair!",
+      "words": [
+        {
+          "word": " It",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " hasn't",
+          "start": 0.26,
+          "end": 0.6
+        },
+        {
+          "word": " come",
+          "start": 0.6,
+          "end": 0.74
+        },
+        {
+          "word": " together",
+          "start": 0.74,
+          "end": 1.08
+        },
+        {
+          "word": " yet,",
+          "start": 1.08,
+          "end": 1.38
+        },
+        {
+          "word": " on",
+          "start": 1.76,
+          "end": 1.98
+        },
+        {
+          "word": " to",
+          "start": 1.98,
+          "end": 2.12
+        },
+        {
+          "word": " the",
+          "start": 2.12,
+          "end": 2.2
+        },
+        {
+          "word": " next",
+          "start": 2.2,
+          "end": 2.38
+        },
+        {
+          "word": " pair!",
+          "start": 2.38,
+          "end": 2.64
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

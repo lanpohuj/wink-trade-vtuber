@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_08",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Зафиксирован плюс по завершённой сделке. Мяу!",
+  "text_version": 1,
+  "text_sha256": "6f87d9180b58de35e2d997b87e02a1fd5dadc2d91bd086478b148dc7038543ca",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "67e43b68995855737751cc952cdfa99c9b9e74b5cf27b0b1f1a5e3314292ff5b",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_08.mp3.rms2.json"
+}

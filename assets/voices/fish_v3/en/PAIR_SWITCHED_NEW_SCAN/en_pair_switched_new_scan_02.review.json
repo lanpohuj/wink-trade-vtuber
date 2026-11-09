@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_02",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "We've switched! My attention is on this chart now.",
+  "text_version": 1,
+  "text_sha256": "675e76cdd7f84c0de8145125bbd4c180bbb880d71ad0828301910e9c66721c09",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "ccdf2c1e0008b37a7b1659644ee257300826bd050845f882ae6723f2aeeca250",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_02.mp3.rms2.json"
+}

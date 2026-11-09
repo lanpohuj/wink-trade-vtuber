@@ -1,0 +1,62 @@
+{
+  "id": "en_pair_switched_new_scan_01",
+  "expected": "New pair on screen. Starting the checks.",
+  "transcript": "New pair on screen, starting the checks.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.06587,
+    "peak": 0.40355,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.116,
+    "sha256": "0dc9c48a431aba1d61054e1c5ebd21fa187865952defbd805ca25c632e3ddca1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " New pair on screen, starting the checks.",
+      "words": [
+        {
+          "word": " New",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " pair",
+          "start": 0.44,
+          "end": 0.74
+        },
+        {
+          "word": " on",
+          "start": 0.74,
+          "end": 0.96
+        },
+        {
+          "word": " screen,",
+          "start": 0.96,
+          "end": 1.38
+        },
+        {
+          "word": " starting",
+          "start": 1.8,
+          "end": 2.2
+        },
+        {
+          "word": " the",
+          "start": 2.2,
+          "end": 2.42
+        },
+        {
+          "word": " checks.",
+          "start": 2.42,
+          "end": 2.7
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_call_03",
+  "expected": "We're in an upward trade. Eyes on the chart!",
+  "transcript": "We're in an upward trade. Eyes on the chart!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07992,
+    "peak": 0.48037,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.156,
+    "sha256": "ff43cf7fd2a7a87054b3b19989c66c22710db332b11f2245e938672f276d39dc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.62,
+      "text": " We're in an upward trade. Eyes on the chart!",
+      "words": [
+        {
+          "word": " We're",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " in",
+          "start": 0.38,
+          "end": 0.48
+        },
+        {
+          "word": " an",
+          "start": 0.48,
+          "end": 0.6
+        },
+        {
+          "word": " upward",
+          "start": 0.6,
+          "end": 0.9
+        },
+        {
+          "word": " trade.",
+          "start": 0.9,
+          "end": 1.36
+        },
+        {
+          "word": " Eyes",
+          "start": 1.78,
+          "end": 2.02
+        },
+        {
+          "word": " on",
+          "start": 2.02,
+          "end": 2.24
+        },
+        {
+          "word": " the",
+          "start": 2.24,
+          "end": 2.34
+        },
+        {
+          "word": " chart!",
+          "start": 2.34,
+          "end": 2.62
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

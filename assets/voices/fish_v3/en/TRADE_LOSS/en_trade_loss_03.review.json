@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_03",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "The last closed trade finished negative. Recorded.",
+  "text_version": 1,
+  "text_sha256": "aada99daad189711631758e32482495de91b7704a9526a9a7a1a5e6e8d3efe3f",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "982e5c20cf981eab95991a70d6fe898c8a377ba6fb6dab8b6bda472d1fce20f1",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_03.mp3.rms2.json"
+}

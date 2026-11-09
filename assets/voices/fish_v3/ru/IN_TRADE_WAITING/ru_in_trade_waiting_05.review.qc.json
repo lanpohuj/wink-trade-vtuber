@@ -1,0 +1,57 @@
+{
+  "id": "ru_in_trade_waiting_05",
+  "expected": "Ушки держу на графике, жду расчёта.",
+  "transcript": "Оушки держу на графике. Жду расчета.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.07972,
+    "peak": 0.31964,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.113,
+    "sha256": "5557fae011a168f513cd74b6d5acf51eb3453c0b983b360e87a59e4dbe33c421"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " Оушки держу на графике. Жду расчета.",
+      "words": [
+        {
+          "word": " Оушки",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " держу",
+          "start": 0.56,
+          "end": 0.88
+        },
+        {
+          "word": " на",
+          "start": 0.88,
+          "end": 1.0
+        },
+        {
+          "word": " графике.",
+          "start": 1.0,
+          "end": 1.54
+        },
+        {
+          "word": " Жду",
+          "start": 1.84,
+          "end": 2.08
+        },
+        {
+          "word": " расчета.",
+          "start": 2.08,
+          "end": 2.6
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

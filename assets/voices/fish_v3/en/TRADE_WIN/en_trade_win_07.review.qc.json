@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_win_07",
+  "expected": "Positive result confirmed. That trade is in the record.",
+  "transcript": "Positive result confirmed. That trade is in the record.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.08325,
+    "peak": 0.3952,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.2,
+    "sha256": "d22e698cfd4825e3c6ffe81e998993f6d0967bf1d881e931b295e74866e6e081"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.08,
+      "text": " Positive result confirmed. That trade is in the record.",
+      "words": [
+        {
+          "word": " Positive",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " result",
+          "start": 0.52,
+          "end": 0.88
+        },
+        {
+          "word": " confirmed.",
+          "start": 0.88,
+          "end": 1.4
+        },
+        {
+          "word": " That",
+          "start": 1.92,
+          "end": 2.1
+        },
+        {
+          "word": " trade",
+          "start": 2.1,
+          "end": 2.44
+        },
+        {
+          "word": " is",
+          "start": 2.44,
+          "end": 2.62
+        },
+        {
+          "word": " in",
+          "start": 2.62,
+          "end": 2.74
+        },
+        {
+          "word": " the",
+          "start": 2.74,
+          "end": 2.82
+        },
+        {
+          "word": " record.",
+          "start": 2.82,
+          "end": 3.08
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

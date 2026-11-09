@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_09",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Direction up, trade active.",
+  "text_version": 1,
+  "text_sha256": "76fa25829e37435e17bd83f28573b05f5f987f9d98b1cd660627ea73ce3455bf",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.141938,
+  "sha256": "415c850f1607cc33f0bf21e08da184583e1002b939d984f81b65e39a8936ab7b",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_09.mp3.rms2.json"
+}

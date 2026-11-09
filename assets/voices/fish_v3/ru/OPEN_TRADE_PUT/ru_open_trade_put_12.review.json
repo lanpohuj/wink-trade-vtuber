@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_12",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открытие вниз подтверждено платформой.",
+  "text_version": 1,
+  "text_sha256": "ba51356c3b31bcdf997450a4003f03dbbfa6f1e75795ba53e9ec94b27bfdb6a8",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_12.mp3",
+  "auditory_verified": false,
+  "duration": 2.533812,
+  "sha256": "f2e0fd54fe300f23cd159b6e01925ebc6d5e451a1a34bd082cf29b81780dc83e",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_12.mp3.rms2.json"
+}

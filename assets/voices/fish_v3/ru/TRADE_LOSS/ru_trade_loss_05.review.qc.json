@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_loss_05",
+  "expected": "Есть минус по закрытой сделке. Без суеты.",
+  "transcript": "Есть минус по закрытой сделке. Бессуеты.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.07291,
+    "peak": 0.31459,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.128,
+    "sha256": "43c7ebea8ecd25c19a9380ffe9099213699dd17baf75e193bc4c0a5b6a1daded"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.24,
+      "text": " Есть минус по закрытой сделке. Бессуеты.",
+      "words": [
+        {
+          "word": " Есть",
+          "start": 0.0,
+          "end": 0.5
+        },
+        {
+          "word": " минус",
+          "start": 0.5,
+          "end": 0.96
+        },
+        {
+          "word": " по",
+          "start": 0.96,
+          "end": 1.08
+        },
+        {
+          "word": " закрытой",
+          "start": 1.08,
+          "end": 1.52
+        },
+        {
+          "word": " сделке.",
+          "start": 1.52,
+          "end": 2.04
+        },
+        {
+          "word": " Бессуеты.",
+          "start": 2.4,
+          "end": 3.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_06",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Сделка на понижение уже в работе.",
+  "text_version": 1,
+  "text_sha256": "2f294ac7bd6b48d5673d906ee373b1cfa190716d4149e52eb49b1c31dc017509",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.324812,
+  "sha256": "71ef00edb73d105565d1c84ad69084816fe0456db04342475305955d16817d56",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_06.mp3.rms2.json"
+}

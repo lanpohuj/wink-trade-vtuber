@@ -1,0 +1,67 @@
+{
+  "id": "en_trade_loss_01",
+  "expected": "The closed trade finished negative. Recording it calmly.",
+  "transcript": "The closed trade finished negative, recording it calmly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08114,
+    "peak": 0.45959,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.234,
+    "sha256": "15d8bf235eb15be7feeb33ffefe54497d6df3015d61b0e89428de0489e3379b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": " The closed trade finished negative, recording it calmly.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " closed",
+          "start": 0.26,
+          "end": 0.56
+        },
+        {
+          "word": " trade",
+          "start": 0.56,
+          "end": 0.98
+        },
+        {
+          "word": " finished",
+          "start": 0.98,
+          "end": 1.36
+        },
+        {
+          "word": " negative,",
+          "start": 1.36,
+          "end": 1.82
+        },
+        {
+          "word": " recording",
+          "start": 2.34,
+          "end": 2.82
+        },
+        {
+          "word": " it",
+          "start": 2.82,
+          "end": 3.0
+        },
+        {
+          "word": " calmly.",
+          "start": 3.0,
+          "end": 3.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

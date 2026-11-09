@@ -107,6 +107,17 @@ while True:
 rows = []
 for path in sorted(bank.glob("*/*/*.review.qc.json")):
     rows.append(json.loads(path.read_text()))
+manifest_path = bank / "manifest.json"
+manifest = json.loads(manifest_path.read_text())
+by_id = {row["id"]: row for row in rows}
+for records in manifest["categories"].values():
+    for record in records:
+        qc = by_id[record["id"]]
+        if qc["metrics"]["sha256"] != record["sha256"]:
+            raise ValueError("QC belongs to different audio: " + record["id"])
+        record["transcript"] = qc["transcript"]
+        record["automatic_qc_passed"] = not qc["issues"]
+manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
 (ROOT / "docs/voice-audit/fish-qc.json").write_text(
     json.dumps(
         {"auditory_review_complete": False, "records": rows},
@@ -115,6 +126,10 @@ for path in sorted(bank.glob("*/*/*.review.qc.json")):
     )
     + "\n"
 )
+(bank / "qc.json").write_text(json.dumps({"records": [
+    {key: row[key] for key in ("id", "transcript", "issues")} for row in rows
+]}, ensure_ascii=False, indent=2) + "\n")
+
 print(
     "QC complete",
     len(rows),

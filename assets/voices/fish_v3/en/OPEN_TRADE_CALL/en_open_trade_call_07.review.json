@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_07",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Upward opening confirmed. Watching calmly.",
+  "text_version": 1,
+  "text_sha256": "fe1b81f1e43ae1fbd320845b9589f0c7ad7c5e7e504d0022971287b3461c93a6",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.421937,
+  "sha256": "ad4e9efb05400d9645eb8802b4b0c469b07b459f475926dbb28b1039751728b4",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_07.mp3.rms2.json"
+}

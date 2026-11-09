@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_03",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Сравниваю интервалы. Спешить пока некуда.",
+  "text_version": 1,
+  "text_sha256": "f09529eb21ded844d9898b81e53ee3daa76c50c37d64e18b793be7a28a9f2557",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "20da00656113f82f973f4259526830985e66de024ae2f49012a10dd48d54b85d",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_03.mp3.rms2.json"
+}

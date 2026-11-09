@@ -1,0 +1,62 @@
+{
+  "id": "en_prepare_entry_04",
+  "expected": "Checking whether the entry conditions still hold.",
+  "transcript": "Checking whether the entry conditions still hold.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.717,
+    "rms": 0.08208,
+    "peak": 0.41541,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.197,
+    "sha256": "5d19ec04b6766789dfd62eea6c90404ce0347fc033e582af769570a64730d8d0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.26,
+      "text": " Checking whether the entry conditions still hold.",
+      "words": [
+        {
+          "word": " Checking",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " whether",
+          "start": 0.52,
+          "end": 0.68
+        },
+        {
+          "word": " the",
+          "start": 0.68,
+          "end": 0.92
+        },
+        {
+          "word": " entry",
+          "start": 0.92,
+          "end": 1.14
+        },
+        {
+          "word": " conditions",
+          "start": 1.14,
+          "end": 1.6
+        },
+        {
+          "word": " still",
+          "start": 1.6,
+          "end": 1.94
+        },
+        {
+          "word": " hold.",
+          "start": 1.94,
+          "end": 2.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

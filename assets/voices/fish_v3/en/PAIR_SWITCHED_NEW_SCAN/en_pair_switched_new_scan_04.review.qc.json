@@ -1,0 +1,67 @@
+{
+  "id": "en_pair_switched_new_scan_04",
+  "expected": "The pair has changed. Fresh checks from here.",
+  "transcript": "The pair has changed! Fresh checks from here!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.08332,
+    "peak": 0.42462,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.113,
+    "sha256": "fd6604edbb083864d78f6dda7db24fc1cd1d5150b80a83f85a84291621dc03e9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.14,
+      "text": " The pair has changed! Fresh checks from here!",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " pair",
+          "start": 0.28,
+          "end": 0.58
+        },
+        {
+          "word": " has",
+          "start": 0.58,
+          "end": 0.84
+        },
+        {
+          "word": " changed!",
+          "start": 0.84,
+          "end": 1.4
+        },
+        {
+          "word": " Fresh",
+          "start": 1.88,
+          "end": 2.24
+        },
+        {
+          "word": " checks",
+          "start": 2.24,
+          "end": 2.64
+        },
+        {
+          "word": " from",
+          "start": 2.64,
+          "end": 2.92
+        },
+        {
+          "word": " here!",
+          "start": 2.92,
+          "end": 3.14
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

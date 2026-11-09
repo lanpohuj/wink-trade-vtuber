@@ -1,0 +1,57 @@
+{
+  "id": "en_pause_between_trades_04",
+  "expected": "Taking a breath and staying attentive.",
+  "transcript": "Taking a breath and staying attentive",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.22,
+    "rms": 0.07708,
+    "peak": 0.40278,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.2,
+    "sha256": "9dec8c97aac00b69972821025401b131a391cf6a0344b36a2e4e0838e78024af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Taking a breath and staying attentive",
+      "words": [
+        {
+          "word": " Taking",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " a",
+          "start": 0.44,
+          "end": 0.6
+        },
+        {
+          "word": " breath",
+          "start": 0.6,
+          "end": 0.82
+        },
+        {
+          "word": " and",
+          "start": 0.82,
+          "end": 1.06
+        },
+        {
+          "word": " staying",
+          "start": 1.06,
+          "end": 1.36
+        },
+        {
+          "word": " attentive",
+          "start": 1.36,
+          "end": 1.8
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_04",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Продажа открыта. Следим за движением.",
+  "text_version": 1,
+  "text_sha256": "3a9608e5dc730a57bc512b478f0da6e47faffa238ae4d737d46a6674b3d31207",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_04.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "9813d24ac5211c960b3826fb2e3190dc056b83002446a403620f45a8325c0186",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_04.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_01",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "New pair on screen. Starting the checks.",
+  "text_version": 1,
+  "text_sha256": "fb966e1450a57575fbc5df5731188a5ba0132a64d1d53e35a6ecad1beb77e57f",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "0dc9c48a431aba1d61054e1c5ebd21fa187865952defbd805ca25c632e3ddca1",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_01.mp3.rms2.json"
+}

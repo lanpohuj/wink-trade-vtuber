@@ -1,0 +1,64 @@
+{
+  "id": "ru_trade_win_11",
+  "expected": "Прошлая сделка закрылась в плюс. Ушки радуются!",
+  "transcript": "Прошлая сделка закрылась плюс! Ушки радуются!",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.07367,
+    "peak": 0.33182,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.142,
+    "sha256": "9c839f6ef568023bc87d476506c5b90e2cc4dcea23949f4e9c55a881bc46d4f0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Прошлая сделка закрылась плюс!",
+      "words": [
+        {
+          "word": " Прошлая",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " сделка",
+          "start": 0.64,
+          "end": 1.0
+        },
+        {
+          "word": " закрылась",
+          "start": 1.0,
+          "end": 1.5
+        },
+        {
+          "word": " плюс!",
+          "start": 1.5,
+          "end": 1.7
+        }
+      ]
+    },
+    {
+      "start": 2.1,
+      "end": 3.24,
+      "text": " Ушки радуются!",
+      "words": [
+        {
+          "word": " Ушки",
+          "start": 2.1,
+          "end": 2.56
+        },
+        {
+          "word": " радуются!",
+          "start": 2.56,
+          "end": 3.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

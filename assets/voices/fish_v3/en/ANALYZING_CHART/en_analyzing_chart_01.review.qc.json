@@ -1,0 +1,67 @@
+{
+  "id": "en_analyzing_chart_01",
+  "expected": "Watching the move. Candles, tell me your story!",
+  "transcript": "Watching the move. Candles, tell me your story!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07117,
+    "peak": 0.36075,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.254,
+    "sha256": "92fd18b184cf8af4571596ea887fd597e0202878306a56a109a1429a1e201888"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": " Watching the move. Candles, tell me your story!",
+      "words": [
+        {
+          "word": " Watching",
+          "start": 0.0,
+          "end": 0.5
+        },
+        {
+          "word": " the",
+          "start": 0.5,
+          "end": 0.74
+        },
+        {
+          "word": " move.",
+          "start": 0.74,
+          "end": 1.04
+        },
+        {
+          "word": " Candles,",
+          "start": 1.62,
+          "end": 2.22
+        },
+        {
+          "word": " tell",
+          "start": 2.5,
+          "end": 2.66
+        },
+        {
+          "word": " me",
+          "start": 2.66,
+          "end": 2.8
+        },
+        {
+          "word": " your",
+          "start": 2.8,
+          "end": 2.96
+        },
+        {
+          "word": " story!",
+          "start": 2.96,
+          "end": 3.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

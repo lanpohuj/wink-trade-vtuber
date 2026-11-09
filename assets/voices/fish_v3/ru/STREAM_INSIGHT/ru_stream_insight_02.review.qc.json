@@ -1,0 +1,67 @@
+{
+  "id": "ru_stream_insight_02",
+  "expected": "Интервал свечи и время сделки — разные вещи.",
+  "transcript": "Интервал, свечи и время сделки – разные вещи.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.08067,
+    "peak": 0.4508,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.118,
+    "sha256": "adc20464e087d691e27603826d30cd8fa102fa49f744eaa509ab0634b9d56f56"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.04,
+      "text": " Интервал, свечи и время сделки – разные вещи.",
+      "words": [
+        {
+          "word": " Интервал,",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " свечи",
+          "start": 0.78,
+          "end": 1.18
+        },
+        {
+          "word": " и",
+          "start": 1.18,
+          "end": 1.22
+        },
+        {
+          "word": " время",
+          "start": 1.22,
+          "end": 1.44
+        },
+        {
+          "word": " сделки",
+          "start": 1.44,
+          "end": 2.0
+        },
+        {
+          "word": " –",
+          "start": 2.0,
+          "end": 2.26
+        },
+        {
+          "word": " разные",
+          "start": 2.26,
+          "end": 2.52
+        },
+        {
+          "word": " вещи.",
+          "start": 2.52,
+          "end": 3.04
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

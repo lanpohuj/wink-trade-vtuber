@@ -1,0 +1,25 @@
+{
+  "id": "ru_analyzing_chart_02",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Внимательно смотрю на свечи и индикаторы... Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+  "text_version": 1,
+  "text_sha256": "601bef0fc942581b3ae8c81f71142fc80c02ea2daaac129e60f04bc0d921f242",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "analyze_04",
+    "file": "ANALYZING_CHART/analyze_04.mp3",
+    "sha256": "c826d473f3a5f7ea4c574ed8db00ac44b26dca10e404a3131a3ce72588a2c4d5",
+    "text": "Внимательно смотрю на свечи и индикаторы... Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_02.mp3",
+  "auditory_verified": false,
+  "duration": 6.164898,
+  "sha256": "c826d473f3a5f7ea4c574ed8db00ac44b26dca10e404a3131a3ce72588a2c4d5",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_02.mp3.rms2.json"
+}

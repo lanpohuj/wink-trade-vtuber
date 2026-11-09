@@ -1,0 +1,62 @@
+{
+  "id": "ru_trade_win_07",
+  "expected": "Плюс подтверждён. Эту сделку внесли в статистику.",
+  "transcript": "Плюс подтверждён. Эту сделку внесли в статистику.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.07987,
+    "peak": 0.34122,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.122,
+    "sha256": "12b08c27887341f2430b612c79c8f0f21a6f84917daa9363414cc0728763c084"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.18,
+      "text": " Плюс подтверждён. Эту сделку внесли в статистику.",
+      "words": [
+        {
+          "word": " Плюс",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " подтверждён.",
+          "start": 0.42,
+          "end": 1.18
+        },
+        {
+          "word": " Эту",
+          "start": 1.54,
+          "end": 1.8
+        },
+        {
+          "word": " сделку",
+          "start": 1.8,
+          "end": 2.18
+        },
+        {
+          "word": " внесли",
+          "start": 2.18,
+          "end": 2.54
+        },
+        {
+          "word": " в",
+          "start": 2.54,
+          "end": 2.6
+        },
+        {
+          "word": " статистику.",
+          "start": 2.6,
+          "end": 3.18
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

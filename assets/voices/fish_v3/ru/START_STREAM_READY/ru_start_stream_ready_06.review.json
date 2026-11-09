@@ -1,0 +1,18 @@
+{
+  "id": "ru_start_stream_ready_06",
+  "category": "START_STREAM_READY",
+  "lang": "ru",
+  "text": "Рада вас видеть! Включаю внимательные ушки.",
+  "text_version": 1,
+  "text_sha256": "9743bf746e151db668c322f8af9dfffbd454aea7985d7f79e76acba54561c0d0",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/START_STREAM_READY/ru_start_stream_ready_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.448062,
+  "sha256": "c401d7af0025150bae164c1b860d7dbcea42c9af4b5b94f3cdd28a284aa9fc73",
+  "rms_file": "ru/START_STREAM_READY/ru_start_stream_ready_06.mp3.rms2.json"
+}

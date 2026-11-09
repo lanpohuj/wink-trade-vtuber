@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_11",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Продажа в работе. Не спешим с выводами.",
+  "text_version": 1,
+  "text_sha256": "2fbb250da809e1cb5a8b20a673e0adf31bcafdb42296e82fe3a671c6f478dd25",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_11.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "d6fba495f9c501b3e985bad04af3493990232ae8897369072e79a66d243b410c",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_11.mp3.rms2.json"
+}

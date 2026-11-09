@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_07",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "The candles are moving; the trade continues.",
+  "text_version": 1,
+  "text_sha256": "d781a421a7b88e022d5a924e4c9e5df313af0d2266a271606529c4dff29f961d",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "e574725d0d480d9fa4b2008ec45171f57b22774ed3c6272b60af0d27f85ad220",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_07.mp3.rms2.json"
+}

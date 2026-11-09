@@ -1,0 +1,57 @@
+{
+  "id": "ru_analyzing_chart_12",
+  "expected": "Чатик, смотрим внимательно. Картина ещё складывается.",
+  "transcript": "Чатик, смотрим внимательно, картина еще складывается.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.08749,
+    "peak": 0.38741,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "cf2dd1578fb4194ad1a86dc89dcb610ea13dad8d0ab1134d5886793092c6e666"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Чатик, смотрим внимательно, картина еще складывается.",
+      "words": [
+        {
+          "word": " Чатик,",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " смотрим",
+          "start": 0.84,
+          "end": 1.24
+        },
+        {
+          "word": " внимательно,",
+          "start": 1.24,
+          "end": 1.78
+        },
+        {
+          "word": " картина",
+          "start": 2.04,
+          "end": 2.52
+        },
+        {
+          "word": " еще",
+          "start": 2.52,
+          "end": 2.66
+        },
+        {
+          "word": " складывается.",
+          "start": 2.66,
+          "end": 3.36
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_02",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Upward entry confirmed, cuties.",
+  "text_version": 1,
+  "text_sha256": "98f4db7b9ecfe835475b1e8f2044cd1eb346022c7e82d4764f78af3b96dfb6aa",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.403188,
+  "sha256": "584368759a4fbdd52ca50cab3ef703fccb3663bf8437fdc4b7d585908059eaa4",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_02.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_08",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The downward entry went through. I'm watching.",
+  "text_version": 1,
+  "text_sha256": "f6f3b3ded48d89e963cd97ae77f624e6205d0c99be1d4c4695a3e09add425748",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "4703a0f31ddca98f360b4c0d0cd2438453e3aa0a66b47a194b7d0b6fc74ddb6f",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_08.mp3.rms2.json"
+}

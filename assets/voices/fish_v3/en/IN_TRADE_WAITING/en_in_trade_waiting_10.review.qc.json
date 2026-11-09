@@ -1,0 +1,62 @@
+{
+  "id": "en_in_trade_waiting_10",
+  "expected": "Waiting for the actual result, without guessing.",
+  "transcript": "Waiting for the actual result, without guessing!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07841,
+    "peak": 0.35661,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.31,
+    "sha256": "b4c80e7847952fb770750fed288c6c1b095b3b17176e6c343a61e19c7cac4879"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8,
+      "text": " Waiting for the actual result, without guessing!",
+      "words": [
+        {
+          "word": " Waiting",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " for",
+          "start": 0.48,
+          "end": 0.74
+        },
+        {
+          "word": " the",
+          "start": 0.74,
+          "end": 0.9
+        },
+        {
+          "word": " actual",
+          "start": 0.9,
+          "end": 1.24
+        },
+        {
+          "word": " result,",
+          "start": 1.24,
+          "end": 1.88
+        },
+        {
+          "word": " without",
+          "start": 2.02,
+          "end": 2.38
+        },
+        {
+          "word": " guessing!",
+          "start": 2.38,
+          "end": 2.8
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

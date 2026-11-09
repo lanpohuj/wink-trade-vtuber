@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_04",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "Not every chart needs an entry, cuties.",
+  "text_version": 1,
+  "text_sha256": "8b6fa690543f0942664b74bdf939f5e11fe1dfac43dad6e35cfc0e836a237199",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_04.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "c661168a5e7b0d273255b6664b5792c613307d5bd564f17f3968553c34b815fa",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_04.mp3.rms2.json"
+}

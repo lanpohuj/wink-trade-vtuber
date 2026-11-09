@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_win_05",
+  "expected": "Settlement confirmed a positive result for the closed trade.",
+  "transcript": "Settlement confirmed a positive result for the closed trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.08342,
+    "peak": 0.4175,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.282,
+    "sha256": "0d541c3de427cdc7a0600c8743b6128d4d0b6b49a98f3804ec3402f5e0564520"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.02,
+      "text": " Settlement confirmed a positive result for the closed trade.",
+      "words": [
+        {
+          "word": " Settlement",
+          "start": 0.0,
+          "end": 0.58
+        },
+        {
+          "word": " confirmed",
+          "start": 0.58,
+          "end": 1.0
+        },
+        {
+          "word": " a",
+          "start": 1.0,
+          "end": 1.26
+        },
+        {
+          "word": " positive",
+          "start": 1.26,
+          "end": 1.62
+        },
+        {
+          "word": " result",
+          "start": 1.62,
+          "end": 2.06
+        },
+        {
+          "word": " for",
+          "start": 2.06,
+          "end": 2.26
+        },
+        {
+          "word": " the",
+          "start": 2.26,
+          "end": 2.36
+        },
+        {
+          "word": " closed",
+          "start": 2.36,
+          "end": 2.62
+        },
+        {
+          "word": " trade.",
+          "start": 2.62,
+          "end": 3.02
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

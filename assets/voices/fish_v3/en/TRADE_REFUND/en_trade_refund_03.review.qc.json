@@ -1,0 +1,77 @@
+{
+  "id": "en_trade_refund_03",
+  "expected": "A refund on the last trade. The step stays unchanged.",
+  "transcript": "A refund on the last trade. The step stays unchanged.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.07927,
+    "peak": 0.35002,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "2b87f404349d15f1d9c02cf6d70b7f04c2b050aa235bc63d6e2def3a1c86025f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.32,
+      "text": " A refund on the last trade. The step stays unchanged.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " refund",
+          "start": 0.28,
+          "end": 0.62
+        },
+        {
+          "word": " on",
+          "start": 0.62,
+          "end": 0.9
+        },
+        {
+          "word": " the",
+          "start": 0.9,
+          "end": 1.02
+        },
+        {
+          "word": " last",
+          "start": 1.02,
+          "end": 1.28
+        },
+        {
+          "word": " trade.",
+          "start": 1.28,
+          "end": 1.62
+        },
+        {
+          "word": " The",
+          "start": 2.1,
+          "end": 2.26
+        },
+        {
+          "word": " step",
+          "start": 2.26,
+          "end": 2.58
+        },
+        {
+          "word": " stays",
+          "start": 2.58,
+          "end": 2.9
+        },
+        {
+          "word": " unchanged.",
+          "start": 2.9,
+          "end": 3.32
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

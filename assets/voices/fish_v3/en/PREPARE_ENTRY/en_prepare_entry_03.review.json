@@ -1,0 +1,18 @@
+{
+  "id": "en_prepare_entry_03",
+  "category": "PREPARE_ENTRY",
+  "lang": "en",
+  "text": "Getting ready. Confirmation still matters.",
+  "text_version": 1,
+  "text_sha256": "1a4b10b66b4d357038620042646b399441a9a4dfb3e27ab5992e2ab989f2ae18",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PREPARE_ENTRY/en_prepare_entry_03.mp3",
+  "auditory_verified": false,
+  "duration": 2.977875,
+  "sha256": "4197a99c575e1a8fe53835e2531e21f8415b3eac0a9f3cbdd39c3579c0132fb5",
+  "rms_file": "en/PREPARE_ENTRY/en_prepare_entry_03.mp3.rms2.json"
+}

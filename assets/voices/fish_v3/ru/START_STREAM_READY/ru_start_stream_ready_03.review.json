@@ -1,0 +1,18 @@
+{
+  "id": "ru_start_stream_ready_03",
+  "category": "START_STREAM_READY",
+  "lang": "ru",
+  "text": "Мяу-привет! Начинаем наш разбор, без спешки.",
+  "text_version": 1,
+  "text_sha256": "4a42797c1a702e7f05d6f6c74ccc28a02945bbfefd91e820659952a97a9f8ad8",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/START_STREAM_READY/ru_start_stream_ready_03.mp3",
+  "auditory_verified": false,
+  "duration": 4.362375,
+  "sha256": "823f62a3c3263f8c248a651c5cf2056518278fbd353c2f243e7a60b4ef47b12c",
+  "rms_file": "ru/START_STREAM_READY/ru_start_stream_ready_03.mp3.rms2.json"
+}

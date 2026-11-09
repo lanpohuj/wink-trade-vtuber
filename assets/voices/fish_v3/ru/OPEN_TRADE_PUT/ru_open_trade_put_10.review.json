@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_10",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Котики, вниз уже открыто. Следим вместе.",
+  "text_version": 1,
+  "text_sha256": "ba9a5d27a52ce782b014476e615e599f17d977861f579e5f3e9e6f67d7e6f095",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.761563,
+  "sha256": "c00378cbbfef89717299f1223e59159580142114748f7ddb792caa9f656dd434",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_10.mp3.rms2.json"
+}

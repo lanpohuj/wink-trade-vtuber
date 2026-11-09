@@ -1,0 +1,67 @@
+{
+  "id": "en_trade_win_12",
+  "expected": "Confirmation is here: the closed trade finished positive!",
+  "transcript": "Confirmation is here. The closed trade finished positive.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07897,
+    "peak": 0.41987,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.181,
+    "sha256": "17364a29f1e8b544748d2fdcf24ec4b38c2255856ec743c0a7b8bdb86dd374b4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.62,
+      "text": " Confirmation is here. The closed trade finished positive.",
+      "words": [
+        {
+          "word": " Confirmation",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " is",
+          "start": 0.82,
+          "end": 1.02
+        },
+        {
+          "word": " here.",
+          "start": 1.02,
+          "end": 1.24
+        },
+        {
+          "word": " The",
+          "start": 1.78,
+          "end": 1.82
+        },
+        {
+          "word": " closed",
+          "start": 1.82,
+          "end": 2.14
+        },
+        {
+          "word": " trade",
+          "start": 2.14,
+          "end": 2.62
+        },
+        {
+          "word": " finished",
+          "start": 2.62,
+          "end": 3.06
+        },
+        {
+          "word": " positive.",
+          "start": 3.06,
+          "end": 3.62
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

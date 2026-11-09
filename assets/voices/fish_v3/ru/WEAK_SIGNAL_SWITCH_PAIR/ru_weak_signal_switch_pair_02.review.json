@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_02",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Эту пару пропускаю. Нужны подходящие условия.",
+  "text_version": 1,
+  "text_sha256": "757cd4699c765405f535a2d3d5f3556e1eb1d53a0bc25350297d420bfaed41c3",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.683187,
+  "sha256": "1f5a11ee925e6a873082c0328986060d509b6bfc5a377d44cc68177cb7ff136b",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_02.mp3.rms2.json"
+}

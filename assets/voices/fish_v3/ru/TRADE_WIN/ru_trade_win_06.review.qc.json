@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_win_06",
+  "expected": "Котики, последняя закрытая сделка в плюс!",
+  "transcript": "котики последняя закрытая сделка в плюс",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.07628,
+    "peak": 0.31117,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.193,
+    "sha256": "12b2d01410fc8a67a7880be72de2a74b3270510a405d8ce3f97fea67bb66b6ba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " котики последняя закрытая сделка в плюс",
+      "words": [
+        {
+          "word": " котики",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " последняя",
+          "start": 0.68,
+          "end": 1.32
+        },
+        {
+          "word": " закрытая",
+          "start": 1.32,
+          "end": 1.82
+        },
+        {
+          "word": " сделка",
+          "start": 1.82,
+          "end": 2.26
+        },
+        {
+          "word": " в",
+          "start": 2.26,
+          "end": 2.32
+        },
+        {
+          "word": " плюс",
+          "start": 2.32,
+          "end": 2.5
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

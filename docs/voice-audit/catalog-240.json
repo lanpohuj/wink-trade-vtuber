@@ -7,11 +7,11 @@
       "id": "ru_start_stream_ready_01",
       "category": "START_STREAM_READY",
       "lang": "ru",
-      "text": "Привет-привет! Винки на связи, ушки наготове!",
+      "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
       "text_version": 1,
-      "text_sha256": "414c9031aee25e723a7879ada25d7ef99e4ae7ca854a033a6a64d1711a7e78f2",
+      "text_sha256": "1fc5ceea2e74767300ceee6414797ba112fa215fc5ce6a912e3aa9c2eff3f05f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -30,7 +30,7 @@
       "text_version": 1,
       "text_sha256": "13a2d13750b38905e8e9344d80c777dbe57e69d87f6552f4321cf391a58230f9",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -38,11 +38,11 @@
       "id": "ru_start_stream_ready_02",
       "category": "START_STREAM_READY",
       "lang": "ru",
-      "text": "Чатик, привет! Устраиваемся и смотрим на график.",
+      "text": "Начинаем новый торговый цикл! Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
       "text_version": 1,
-      "text_sha256": "577da19622fdd494603b0267d30887526e9a51ffc602b0357a91840016401dab",
+      "text_sha256": "555f1702d101895868abfa1059c82478c0b1718c34bb4904f367022885976637",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -61,7 +61,7 @@
       "text_version": 1,
       "text_sha256": "4ceb203fe71645f33a97434429e660118cda2192a8207d0509c02e70217221fe",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -73,7 +73,7 @@
       "text_version": 1,
       "text_sha256": "4a42797c1a702e7f05d6f6c74ccc28a02945bbfefd91e820659952a97a9f8ad8",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -85,7 +85,7 @@
       "text_version": 1,
       "text_sha256": "310e58ba8217058ccd1b4beacea7391bd8157e5404324a240945b5718ed45b12",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -97,7 +97,7 @@
       "text_version": 1,
       "text_sha256": "595e0f617cded6ec2cadd58e2b4a1b3ad65dfad57a2fc8f7cff910df0041bb95",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -109,7 +109,7 @@
       "text_version": 1,
       "text_sha256": "ae06eec2cf860bdb441c3f7794ebd174eb4c90a382f487b7c25ece5af83b542c",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -121,7 +121,7 @@
       "text_version": 1,
       "text_sha256": "bbc870010252b51c57460284ef1f922fda5d654aed3ca00e3ddbcdac241f3a73",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -133,7 +133,7 @@
       "text_version": 1,
       "text_sha256": "bad852c8c31b6e3e1216daa22dff0039c563bcf3645c75be8dedd17dd481770a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -145,7 +145,7 @@
       "text_version": 1,
       "text_sha256": "9743bf746e151db668c322f8af9dfffbd454aea7985d7f79e76acba54561c0d0",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -157,7 +157,7 @@
       "text_version": 1,
       "text_sha256": "5cf5926a9e82ebc7127a734a9768d22b44bf4a76b89dd8bf3f5f693216b5d4fd",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -165,11 +165,11 @@
       "id": "ru_analyzing_chart_01",
       "category": "ANALYZING_CHART",
       "lang": "ru",
-      "text": "Смотрю на движение. Свечки, рассказывайте!",
+      "text": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
       "text_version": 1,
-      "text_sha256": "59d67f6123e25a30a5b0e4b63e57093c84483374c107f836b9979438f55133fe",
+      "text_sha256": "96dc6684e6a4a988219c4e35dfd5e234210f1496e423920dc887692bdc364dcf",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -188,7 +188,7 @@
       "text_version": 1,
       "text_sha256": "c9887fe0e7a80b056c0198adccd7d537082d628f0f08275a6f135655a65548aa",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -196,11 +196,11 @@
       "id": "ru_analyzing_chart_02",
       "category": "ANALYZING_CHART",
       "lang": "ru",
-      "text": "Сейчас проверю общую картину, котики.",
+      "text": "Внимательно смотрю на свечи и индикаторы... Ищу точку, где покупатели или продавцы начинают выдыхаться.",
       "text_version": 1,
-      "text_sha256": "72a061f866d93052fd94d77999f338f400e79164a8e720c4bda04f09d478386f",
+      "text_sha256": "601bef0fc942581b3ae8c81f71142fc80c02ea2daaac129e60f04bc0d921f242",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -219,7 +219,7 @@
       "text_version": 1,
       "text_sha256": "8f1f22704bcce9cd51d21d95add712037707d4413f1141646e848b294e06991b",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -231,7 +231,7 @@
       "text_version": 1,
       "text_sha256": "f09529eb21ded844d9898b81e53ee3daa76c50c37d64e18b793be7a28a9f2557",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -243,7 +243,7 @@
       "text_version": 1,
       "text_sha256": "4648235a7d4295ac11ad5a4ade65e9ca7e05c076421a343c3cd81cd55d6f1c43",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -255,7 +255,7 @@
       "text_version": 1,
       "text_sha256": "240ed0ba65455f1794b2e7c368afb7a82f8e40f9d365c858b8419edf62908379",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -267,7 +267,7 @@
       "text_version": 1,
       "text_sha256": "5f0dc1ded6508656c65f5df82174fcb7955a0ab6e01e0a393cbb67f4ccac6229",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -279,7 +279,7 @@
       "text_version": 1,
       "text_sha256": "0ec09e61ce3a56805a96bdb122a91d0313f67d0522a4d1f12c88e8bd0b438d32",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -291,7 +291,7 @@
       "text_version": 1,
       "text_sha256": "f9049bf37769d84660e02a15bfaf6c19163079e94ed90ed9ca7c592cd186739d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -303,7 +303,7 @@
       "text_version": 1,
       "text_sha256": "c737ec1361a6368a097d7862d677f659653be89590c9ae142046c89fe5d59c80",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -315,7 +315,7 @@
       "text_version": 1,
       "text_sha256": "2fd0b68e31f1dc1509824f0a6f8167f014dce772b7da96a5a5c5703f09bcbdbf",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -327,7 +327,7 @@
       "text_version": 1,
       "text_sha256": "4584a1c2b628285b5ca72e2bad0b192072f1cf921fed84c38160ca638045b7bf",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -339,7 +339,7 @@
       "text_version": 1,
       "text_sha256": "2be9a567bda7b95656071ee06c15885e0f7f891cb73c69f3e32d28d0860cbed3",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -351,7 +351,7 @@
       "text_version": 1,
       "text_sha256": "7551821adfdc4dd699913f02afd6a366058bbdbfeefaf8dbad188d05448bc99e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -363,7 +363,7 @@
       "text_version": 1,
       "text_sha256": "e682ed92489b44c412ac79fd4ff8d22b2729f517b385aa711b2ed05c10783b10",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -375,7 +375,7 @@
       "text_version": 1,
       "text_sha256": "79dc606790ec617e6180eae2f2b5fca74301a057e4e8178639957b6f5add9d55",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -387,7 +387,7 @@
       "text_version": 1,
       "text_sha256": "caca0fa0f055f3e2d88f92e7b7a6f523f92483c2016a57c154e35220385c4680",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -399,7 +399,7 @@
       "text_version": 1,
       "text_sha256": "1265f4ec1e896986ccfe40b185d1262eb3c9ce8c024503083d54e063bc03b88a",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -411,7 +411,7 @@
       "text_version": 1,
       "text_sha256": "9f36f3607bdea40371c76724eb8a7a41e5d286c4c73328630edd030844eead71",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -423,7 +423,7 @@
       "text_version": 1,
       "text_sha256": "bcb53dadb9304179de45882841d43864f83d15ee8d95c0252b8fc1dbd6b0af69",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -435,7 +435,7 @@
       "text_version": 1,
       "text_sha256": "014fe112e7faef138c21ad538eaaefbdf9e6ab08c1db38b6a02b2086bb05b4a5",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -447,7 +447,7 @@
       "text_version": 1,
       "text_sha256": "e3c837fbe17b233426d7c59e8e4fd8794c58a6a3db5eb4541af4ca7fd97406f5",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -459,7 +459,7 @@
       "text_version": 1,
       "text_sha256": "b4788e0e72726309c359aa00f297c552df99b37d07738788763d8ad01a76aba9",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -471,7 +471,7 @@
       "text_version": 1,
       "text_sha256": "e744c174ec0f65ed8ce90967d528c9fb0ffeb20ded2ec7573cf88845994a1ab3",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -483,7 +483,7 @@
       "text_version": 1,
       "text_sha256": "487cd12a8781abc4bbca769a1b2904e161b074bebff42d593119188ede03805a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -495,7 +495,7 @@
       "text_version": 1,
       "text_sha256": "757cd4699c765405f535a2d3d5f3556e1eb1d53a0bc25350297d420bfaed41c3",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -507,7 +507,7 @@
       "text_version": 1,
       "text_sha256": "fdb0607973cf7db9079e03595e4a933403b157056c4ebfa37d6f323c5ac4aa07",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -519,7 +519,7 @@
       "text_version": 1,
       "text_sha256": "3d232bff251485a388027bf70376a89c0426cbb36e501dbc7dda6c515821cb7b",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -531,7 +531,7 @@
       "text_version": 1,
       "text_sha256": "4e6187094baab71b45f19e3fba2f788323f50524324cc29b6f99829a62cec28e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -543,7 +543,7 @@
       "text_version": 1,
       "text_sha256": "fed19eff95426438e513f77fd596f55a8817fab05a12885801e94af4eabaab8e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -555,7 +555,7 @@
       "text_version": 1,
       "text_sha256": "8b6fa690543f0942664b74bdf939f5e11fe1dfac43dad6e35cfc0e836a237199",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -567,7 +567,7 @@
       "text_version": 1,
       "text_sha256": "a2e9f914ccd6371e66ebacca33f3fe21437f306c1766645a6ed970ed2cad63b4",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -579,7 +579,7 @@
       "text_version": 1,
       "text_sha256": "a2986f1472f975b8142c3c802174360e20f93318ac46c5a5e002d5aede1a828e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -591,7 +591,7 @@
       "text_version": 1,
       "text_sha256": "1701c42a4a82c42f738cfbad0dc6b764e436fb95054e5f2299c3f5f124b872d0",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -603,7 +603,7 @@
       "text_version": 1,
       "text_sha256": "5b2e996b7db5f9ed9e93f6abaacd232a68cdd359c5550e33ad27d1ff2572d1a6",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -615,7 +615,7 @@
       "text_version": 1,
       "text_sha256": "23dfd394f8d8d0e11cbc5a87567839586773c15a7732464bb0d5c2173276fb0e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -627,7 +627,7 @@
       "text_version": 1,
       "text_sha256": "bbe175f1dcb8cd67ffc1e8dbf9a37176dd59f1738ce8d250429f5e1f06f554df",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -639,7 +639,7 @@
       "text_version": 1,
       "text_sha256": "91f56c418aa6984952f5d8ed189dd7093e9dfe8acf3759f8293faef574d02f20",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -651,7 +651,7 @@
       "text_version": 1,
       "text_sha256": "5540d087768c5163b7b3034f9dadcd1e7dc4eb9e789045ce335cc527b328b9b3",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -663,7 +663,7 @@
       "text_version": 1,
       "text_sha256": "f2889b2c9ee5c31ba67ec808b0501a5ad86f98d70172f49ef977c6130b1bbe32",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -675,7 +675,7 @@
       "text_version": 1,
       "text_sha256": "05ec8327ef4fd17f142eeaae7bae3b0731a5c140180f72f8673870daf7c08c45",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -687,7 +687,7 @@
       "text_version": 1,
       "text_sha256": "325d7ca466bb7084032cdb727312633846323c2a272b9488714cd8afa57436bb",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -699,7 +699,7 @@
       "text_version": 1,
       "text_sha256": "4eaa697faa97d4d5d440557a309bd906583bfa2a90ae3b0c02453d86ecfeb299",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -707,11 +707,11 @@
       "id": "ru_pair_switched_new_scan_01",
       "category": "PAIR_SWITCHED_NEW_SCAN",
       "lang": "ru",
-      "text": "Новая пара на экране. Начинаю проверку.",
+      "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
       "text_version": 1,
-      "text_sha256": "418e228e8d8f30a01be9a37080beba86fcbfdca520953bf7bdcda60f4f0e7526",
+      "text_sha256": "39e8d3e49a97d22332f1e72e78163b2f2a64751ab91d2780758e7cfb8b6d3ae8",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -730,7 +730,7 @@
       "text_version": 1,
       "text_sha256": "fb966e1450a57575fbc5df5731188a5ba0132a64d1d53e35a6ecad1beb77e57f",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -738,11 +738,11 @@
       "id": "ru_pair_switched_new_scan_02",
       "category": "PAIR_SWITCHED_NEW_SCAN",
       "lang": "ru",
-      "text": "Переключились! Теперь внимательно смотрю сюда.",
+      "text": "Пара успешно изменена! Начинаю анализ индикаторов на новом графике.",
       "text_version": 1,
-      "text_sha256": "c6844606d256e2f482d7a4c514d3f4af0a78884866795b850af1a3e705dd0baa",
+      "text_sha256": "1e56e56ea782e320c3df5c6d3d7788cb94fe25b9d3b2b78958d6331bb654f3b3",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -761,7 +761,7 @@
       "text_version": 1,
       "text_sha256": "675e76cdd7f84c0de8145125bbd4c180bbb880d71ad0828301910e9c66721c09",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -773,7 +773,7 @@
       "text_version": 1,
       "text_sha256": "ae610c7f64d6057bdb254015b4cd2cb2a08538563b7adf80f5fc65d8fdb3ac50",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -785,7 +785,7 @@
       "text_version": 1,
       "text_sha256": "2fd6a3bac6d1590dcd1e9b8290b94b6b048378e070c8b7081cad858bfbca04d8",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -797,7 +797,7 @@
       "text_version": 1,
       "text_sha256": "2237bc172a6a8398ae6fc00939131f9dc03dbb5d245599b379c0998c37c865fe",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -809,7 +809,7 @@
       "text_version": 1,
       "text_sha256": "c268674f8763279cae067510170a940c858766d00655b8ce660d84cf2521d465",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -821,7 +821,7 @@
       "text_version": 1,
       "text_sha256": "155fdddec1691d73bfc9d7e20c709560866e2bf677d0c1925d15ffb7389ab00e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -833,7 +833,7 @@
       "text_version": 1,
       "text_sha256": "250794900bc1fba85e0b3ba1ba20eabf581c6f6a27525d66cde41252090c5506",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -845,7 +845,7 @@
       "text_version": 1,
       "text_sha256": "8e3010cf9cf2140cac6bd0c494e08f0a96a9078faca279cc08eb2f4ed692c503",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -857,7 +857,7 @@
       "text_version": 1,
       "text_sha256": "8a34a612fa0a33680f662e4893ebcfd10f1e4fde197528bddcea654828b05d7a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -869,7 +869,7 @@
       "text_version": 1,
       "text_sha256": "5fb87d6213dfd2ce4f57b86485e9f793f2c623939854a6e5b242fe3049d470c0",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -881,7 +881,7 @@
       "text_version": 1,
       "text_sha256": "c1dee284c1822161805ea72df86d066c793db2a595e6b5a4fc040f7e187d2a12",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -893,7 +893,7 @@
       "text_version": 1,
       "text_sha256": "d0aade82b37321fa5612067f90f5dfe34c2a4712d3c20ae0a6d1e5634896edc1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -905,7 +905,7 @@
       "text_version": 1,
       "text_sha256": "66873e5fd0dce942a205106e7bec26376cae9976583065a92ff9a3c6fa468b4a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -913,11 +913,11 @@
       "id": "ru_prepare_entry_01",
       "category": "PREPARE_ENTRY",
       "lang": "ru",
-      "text": "Проверка перед входом. Сейчас важны детали.",
+      "text": "Нашла сильный сетап с высокой точностью! Буквально пара секунд — фиксируем точку входа!",
       "text_version": 1,
-      "text_sha256": "06a4e129b7a9a0e47fa5e82c051a4bc5e2a5a775ab445a8642665a7dd9c6b2b2",
+      "text_sha256": "347bac779dd45a5132fb0a0ab5c75356ce84194c5d0e5a1aa21ad2645c3df876",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -936,7 +936,7 @@
       "text_version": 1,
       "text_sha256": "50cb13ec1054c949c51a54efb637384f82533f0c76f246e29a27e543ea3d01bc",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -948,7 +948,7 @@
       "text_version": 1,
       "text_sha256": "38226a3a9c371e987de12d6bfe2d73c756b67bb2bb199e9a6a826af9d892fb14",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -960,7 +960,7 @@
       "text_version": 1,
       "text_sha256": "0a968136b53b006b1c344f779fab9b5ebe0d87c705abf413c7baa8876e938ffa",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -972,7 +972,7 @@
       "text_version": 1,
       "text_sha256": "968fd05e7e121e33ee5b59c843d36f43c54c3e5776c1796f61be03c7617cbf75",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -984,7 +984,7 @@
       "text_version": 1,
       "text_sha256": "1a4b10b66b4d357038620042646b399441a9a4dfb3e27ab5992e2ab989f2ae18",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -996,7 +996,7 @@
       "text_version": 1,
       "text_sha256": "528c7ea410f85e7dd1ba7a4b33e6d8d55a0ae4175199c103cf19e8983c8f3ff1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1008,7 +1008,7 @@
       "text_version": 1,
       "text_sha256": "2f6403f79fca44eccb9cb141f207d8ae55406edaa2e717f981d13c78f48d29db",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1020,7 +1020,7 @@
       "text_version": 1,
       "text_sha256": "490e57e4420f8d5235449abc7753cd8325940134cbb6c269f0b31a7dbb8f771a",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1032,7 +1032,7 @@
       "text_version": 1,
       "text_sha256": "87921370938769f9054480332e258b658748d2de7bcf43f729fac537387ae1b7",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1044,7 +1044,7 @@
       "text_version": 1,
       "text_sha256": "fa6e935ace70d947d435c8f8c1413f9f741e6f4a0585a44a92055cc320a5a996",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1056,7 +1056,7 @@
       "text_version": 1,
       "text_sha256": "bf256d95c24c5a88cf0a907acaeac602d696734559ef9709caddb2db94033af9",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1068,7 +1068,7 @@
       "text_version": 1,
       "text_sha256": "43e1194957c74c34051d3c2299013cd0ea99d46f8a9a28411d03b32e3be822e3",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1082,7 +1082,7 @@
       "text_version": 1,
       "text_sha256": "c503dace2c0e7b5015418e686ad0522daa89f047e6c8fff38175ad33156861e6",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1096,7 +1096,7 @@
       "text_version": 1,
       "text_sha256": "0192f2546216f313787095114856ea5ecb3b5eaaecc6e5eeba30c74fe2f82a78",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1110,7 +1110,7 @@
       "text_version": 1,
       "text_sha256": "98f4db7b9ecfe835475b1e8f2044cd1eb346022c7e82d4764f78af3b96dfb6aa",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1124,7 +1124,7 @@
       "text_version": 1,
       "text_sha256": "d8d2643f6f24302beeb1d8afb08bd8aba5ae9a851c4c45ab830f565aea4c8a0f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1138,7 +1138,7 @@
       "text_version": 1,
       "text_sha256": "ee158432be81300302b4e95b33d6fd87366e7baddf77768d3a1a809f000e6abe",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1152,7 +1152,7 @@
       "text_version": 1,
       "text_sha256": "48d3c202e31ee9ef0bd89346871705fcd1e5ea21828e810a2d2634fd6eb52683",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1166,7 +1166,7 @@
       "text_version": 1,
       "text_sha256": "c3682620afe6c201dd367ee1b647d12688734dc8226cb731d50b6bb67a4c42cf",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1180,7 +1180,7 @@
       "text_version": 1,
       "text_sha256": "53ecbe8946e4f6eec3e07142e01d40625ab4ad2f6fda416f6453deba1a72e21a",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1194,7 +1194,7 @@
       "text_version": 1,
       "text_sha256": "e0baee60f7087dec8c3b8dc9288345796837b25e969ee99ec0d431a8a4d21648",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1208,7 +1208,7 @@
       "text_version": 1,
       "text_sha256": "06e9605330af0f99f7cadd31ab93af6f489463ddfe8e92ee61c6dcf5e067a70e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1222,7 +1222,7 @@
       "text_version": 1,
       "text_sha256": "856de077381e288edb7fadef7f935c6970681248552003539795b03132ce8d14",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1236,7 +1236,7 @@
       "text_version": 1,
       "text_sha256": "e7591c1707fd23f917ddcfcae9796e6027aae8dc044b583a38d8d4aa1580c80f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1250,7 +1250,7 @@
       "text_version": 1,
       "text_sha256": "fe1b81f1e43ae1fbd320845b9589f0c7ad7c5e7e504d0022971287b3461c93a6",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1264,7 +1264,7 @@
       "text_version": 1,
       "text_sha256": "3f7f7803234762c923016b5699581a7828550198eb3972803094af80839d904f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1278,7 +1278,7 @@
       "text_version": 1,
       "text_sha256": "5858d52e8a149693b040b9f29469ec6a7e21cc789de4de33b44d74a0f682adac",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1292,7 +1292,7 @@
       "text_version": 1,
       "text_sha256": "9191acf2a65ffefbd85cd319133c4217560a0bc0fc79e5f48526066465082f6f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1306,7 +1306,7 @@
       "text_version": 1,
       "text_sha256": "76fa25829e37435e17bd83f28573b05f5f987f9d98b1cd660627ea73ce3455bf",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1320,7 +1320,7 @@
       "text_version": 1,
       "text_sha256": "f1bba8ee2c068bb73874157fa344dbf72270b60a2fff30c071de96ad5f07290e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1334,7 +1334,7 @@
       "text_version": 1,
       "text_sha256": "b49efe1fd65883e9d6b679c939201ec85d236cf2fd45af07f0b71f7936c63bbc",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1348,7 +1348,7 @@
       "text_version": 1,
       "text_sha256": "f17a609655941f2b7d81958158f7127fae467ccb4572ea87e663676c2ee9da89",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1362,7 +1362,7 @@
       "text_version": 1,
       "text_sha256": "daae8c4c7ded5f995459aed406cd301f644a7d4e550f3e7a19b1ffffc18b421a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1376,7 +1376,7 @@
       "text_version": 1,
       "text_sha256": "d70c060e792bd4ed90993a832e0f4173582b224a44d0c8a924478c9e8740bb76",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1390,7 +1390,7 @@
       "text_version": 1,
       "text_sha256": "a27983d3280494c1967645c8a5569efef88b7ed9be7b474259baa2e779d929c6",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "BUY"
@@ -1404,7 +1404,7 @@
       "text_version": 1,
       "text_sha256": "7527889c2b215f851f86ff93e7e74b09e4daf57884223e10c01c89adc3e1d8c1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1418,7 +1418,7 @@
       "text_version": 1,
       "text_sha256": "82b4c2c1ad4fe339e6b4e98b025c162373ffffcde2df63aac95d0ec598df3345",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1432,7 +1432,7 @@
       "text_version": 1,
       "text_sha256": "d43b9ced6707f0bd48374bf53030cee9cf8f302de5cfc8e74ca46bf1c01ce496",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1446,7 +1446,7 @@
       "text_version": 1,
       "text_sha256": "315d923c333beb30e77c5114dec9dbeb028e8ade4e7d025e514638a1a6e97d55",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1460,7 +1460,7 @@
       "text_version": 1,
       "text_sha256": "3280f3ea0ad9610d855563290809b187c7c42c7f59defa357ae12894bf2c55e6",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1474,7 +1474,7 @@
       "text_version": 1,
       "text_sha256": "03ba38214b43a8de93d67aa29861e964ca7b47c992b309bdb239ddc109e19588",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1488,7 +1488,7 @@
       "text_version": 1,
       "text_sha256": "3a9608e5dc730a57bc512b478f0da6e47faffa238ae4d737d46a6674b3d31207",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1502,7 +1502,7 @@
       "text_version": 1,
       "text_sha256": "d510715fc98a79a84245317222b3106f65c886048ad82fb24ab2f1cf27d3f14e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1516,7 +1516,7 @@
       "text_version": 1,
       "text_sha256": "9392a8be8d21b03c1a21a20870f9d795f0208b3b9d3c40011a46058d6edb4e30",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1530,7 +1530,7 @@
       "text_version": 1,
       "text_sha256": "d9b5ad9adce01638b94711c9c6911e370f664c7238a0a2aa1fc833b68689a83f",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1544,7 +1544,7 @@
       "text_version": 1,
       "text_sha256": "2f294ac7bd6b48d5673d906ee373b1cfa190716d4149e52eb49b1c31dc017509",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1558,7 +1558,7 @@
       "text_version": 1,
       "text_sha256": "efd83dfb45a2b6bcfc7caf1405fb98a49c2da044577c6a876714dd3452517904",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1572,7 +1572,7 @@
       "text_version": 1,
       "text_sha256": "acb55e545da1ac0e92a01bd02dc3139dc1784012bbbb2ceaf5d84b25c78c21e6",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1586,7 +1586,7 @@
       "text_version": 1,
       "text_sha256": "0999fedd891f8f87e6676d44ea4f9f22b42c1a4ddc3fd061852fea390aeb87be",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1600,7 +1600,7 @@
       "text_version": 1,
       "text_sha256": "ba681dbae9a72f3e733b2c98e39aa279c1ebbc0a825586620338e3bb7ba6765c",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1614,7 +1614,7 @@
       "text_version": 1,
       "text_sha256": "f6f3b3ded48d89e963cd97ae77f624e6205d0c99be1d4c4695a3e09add425748",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1628,7 +1628,7 @@
       "text_version": 1,
       "text_sha256": "b839acc2b5b83e69def66cfecb03da23bc56fc10fc00c2105463838b6e44a2fe",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1642,7 +1642,7 @@
       "text_version": 1,
       "text_sha256": "8d319834bc1abc13b902e62e6ee316bed4097fa7c0be22a27b6359a285b189b5",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1656,7 +1656,7 @@
       "text_version": 1,
       "text_sha256": "ba9a5d27a52ce782b014476e615e599f17d977861f579e5f3e9e6f67d7e6f095",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1670,7 +1670,7 @@
       "text_version": 1,
       "text_sha256": "4e4a987d425982924def7e0d0318d9ed4778f70a451090d8a45b2ba94728f142",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1684,7 +1684,7 @@
       "text_version": 1,
       "text_sha256": "2fbb250da809e1cb5a8b20a673e0adf31bcafdb42296e82fe3a671c6f478dd25",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1698,7 +1698,7 @@
       "text_version": 1,
       "text_sha256": "d6dceb6655f8d280481bf1ba7e9b6c06d9db40d17fc5b1b52aec90939e0e87a8",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1712,7 +1712,7 @@
       "text_version": 1,
       "text_sha256": "ba51356c3b31bcdf997450a4003f03dbbfa6f1e75795ba53e9ec94b27bfdb6a8",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1726,7 +1726,7 @@
       "text_version": 1,
       "text_sha256": "aab662e3f1ac0508b9b99902cdd26f1247ee5709b40902c7979048270c47f818",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {
         "direction": "SELL"
@@ -1740,7 +1740,7 @@
       "text_version": 1,
       "text_sha256": "b306b44b6a24867148197c147cce2ca7648a7b28b828144bbec9dde9ed00e546",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1752,7 +1752,7 @@
       "text_version": 1,
       "text_sha256": "b17bdebf21b14acb2b8dbd42a14f369b19f143d707138af3f12079cc29ecd593",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1764,7 +1764,7 @@
       "text_version": 1,
       "text_sha256": "ad19ed40c60b5e2125bde3346f3301bf12ebcd618fbacc1e44cc88028a899018",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1776,7 +1776,7 @@
       "text_version": 1,
       "text_sha256": "bb183b87d46da0f787e9d7b639b90299909976f5659075d6656c18565c4103b2",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1788,7 +1788,7 @@
       "text_version": 1,
       "text_sha256": "349aec918a0404e74ff0cd5f634ed1faab922b9a4b3227cb526fa334cc1e1793",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1800,7 +1800,7 @@
       "text_version": 1,
       "text_sha256": "9a8ab4cc55a509634cb20e1a1be80372f23778915f0f9c9f6a8eefa371e586b0",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1812,7 +1812,7 @@
       "text_version": 1,
       "text_sha256": "2491ce729312b1625dc5b0a09391f767991fb9fdd7fd7bc0cbab112e05d545e9",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1824,7 +1824,7 @@
       "text_version": 1,
       "text_sha256": "f37cef906db916e53f4b591a2317187dbb507d10e7f8771b1156aff804ea2e79",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1836,7 +1836,7 @@
       "text_version": 1,
       "text_sha256": "f4f620d4d401dea91e372787234a6ec7a52394a2ebcfd66f028861a2b98a05b7",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1848,7 +1848,7 @@
       "text_version": 1,
       "text_sha256": "4ddb3902280e56107c19eb31b35a421445cd7f2f96504f1425c8d3d888391188",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1860,7 +1860,7 @@
       "text_version": 1,
       "text_sha256": "90a03f3ec612ffcd7b626583c50299500680f932f657def7914433cf12414b39",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1872,7 +1872,7 @@
       "text_version": 1,
       "text_sha256": "ca9cd62a4be19208fa9bd80d9ef63f979d6d71f8d96b47c29d6d913f2dd8817e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1884,7 +1884,7 @@
       "text_version": 1,
       "text_sha256": "b5cd796baf30b8d19c572e47bfb273e08fab9a7ca8b8337480897652c2f0594f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1896,7 +1896,7 @@
       "text_version": 1,
       "text_sha256": "d781a421a7b88e022d5a924e4c9e5df313af0d2266a271606529c4dff29f961d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1908,7 +1908,7 @@
       "text_version": 1,
       "text_sha256": "78229fe3375e8262c5ed4fd734bcb16e747b67022e80bb52ed92c777c8bb7e8d",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1920,7 +1920,7 @@
       "text_version": 1,
       "text_sha256": "a45e89789f9ac5c76904a7ada4d7fbc9c37c43690a2fd88ea43eb4e7a2c658d4",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1932,7 +1932,7 @@
       "text_version": 1,
       "text_sha256": "26ae910f57505016bbcd063a6261adf55c553c687e783a17ab0ad270ca61cc14",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1944,7 +1944,7 @@
       "text_version": 1,
       "text_sha256": "b24d5741c273c5e6402763552f42136f8f82d9b21ade44e4f6751120c9acea12",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1956,7 +1956,7 @@
       "text_version": 1,
       "text_sha256": "0162f1482fe488450fca82745dc119017ddc76b1e852d6f4f56d14842c65a005",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1968,7 +1968,7 @@
       "text_version": 1,
       "text_sha256": "01d6b528213abaacf6f49538eb7540cde40c32efceef21766d7bec7f31621a4a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -1976,20 +1976,13 @@
       "id": "ru_trade_win_01",
       "category": "TRADE_WIN",
       "lang": "ru",
-      "text": "Закрывшаяся сделка в плюс! Мяу, принято!",
-      "text_version": 1,
-      "text_sha256": "6b09fc2ffeed15271c60a4af47b6e3180bd43b2a51cbe794a25b3ec2401bba31",
+      "text": "Прошлая сделка закрылась в плюс. Мяу, принято!",
+      "text_version": 2,
+      "text_sha256": "4472419bbda62e9b2893dfcd013d4de93f5f18b003ced430c5e758e52c3ffb76",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
-      "conditions": {},
-      "reuse_candidate": {
-        "id": "win_01",
-        "file": "TRADE_WIN/win_01.mp3",
-        "sha256": "e57f1fd15be1dac8a7a3a535f12ad25fa6ab65d0b1a24245ade45deac0385553",
-        "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
-        "requires_listening_approval": true
-      }
+      "conditions": {}
     },
     {
       "id": "en_trade_win_01",
@@ -1999,7 +1992,7 @@
       "text_version": 1,
       "text_sha256": "d3e09cf97d574384e3db14dbb16c15a9f765e3fcd6e3fbfa949081f7ae80b69a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2007,11 +2000,11 @@
       "id": "ru_trade_win_02",
       "category": "TRADE_WIN",
       "lang": "ru",
-      "text": "По завершённой сделке подтверждён плюс, котики.",
+      "text": "Красота-а! Очередная победа в нашу статистику! Люблю, когда технический анализ дает такой четкий результат!",
       "text_version": 1,
-      "text_sha256": "02cd2373accb017ef098e9fea54b52dce13fd4baff0680164d153c7372dcc1b8",
+      "text_sha256": "7ee9a32422f77730b697b303264ed70eb8389704112a4daa35aa7973e64ceeeb",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2030,7 +2023,7 @@
       "text_version": 1,
       "text_sha256": "7f35b366cc73fd086bd26023158c3c098b440f986be50378fde9c045d4462228",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2038,11 +2031,11 @@
       "id": "ru_trade_win_03",
       "category": "TRADE_WIN",
       "lang": "ru",
-      "text": "Есть подтверждённый плюс по прошлой сделке!",
+      "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
       "text_version": 1,
-      "text_sha256": "4fdcb53cf234e48bea25571de3570cbed77d62e3dc9afd7e6c1d1271720df468",
+      "text_sha256": "de07c5fbe22518a32e83e61e6731c4c175b4308fecc1e53b76aeb7e55c32d73b",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2061,7 +2054,7 @@
       "text_version": 1,
       "text_sha256": "6e4574b7028caa1e488debe2a9e134baeb122da36f091236474f3aa727d0fb0f",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2073,7 +2066,7 @@
       "text_version": 1,
       "text_sha256": "3dff8225110f95680597b6cebdd5ec2044d7d7f5d71888cbe28846aa12eb911f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2085,7 +2078,7 @@
       "text_version": 1,
       "text_sha256": "cb9c419f097bbaa9bf4c710f6711a994a76676550ff7954bad761fcb124af031",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2097,7 +2090,7 @@
       "text_version": 1,
       "text_sha256": "482f5f3de2b3370c2c080de5d7e2f2422c04c0ec02535820930ef230bc02da7d",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2109,7 +2102,7 @@
       "text_version": 1,
       "text_sha256": "dd02e87c771b7b16929d7a4e4715ba61f18bd52da27f6c72bb4557f83832c544",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2121,7 +2114,7 @@
       "text_version": 1,
       "text_sha256": "f3c3c51eebb8864ba0644841ef486e7998ac71185767e1b95e0c766fefe98711",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2133,7 +2126,7 @@
       "text_version": 1,
       "text_sha256": "53034b3f87ce6785ec20e920ea1286a8ae7aa780a37ab688283e4a7431784f9d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2145,7 +2138,7 @@
       "text_version": 1,
       "text_sha256": "7eb68ef2d688be4d1e67ee1ddecd4eb892882a1a9dcada984f0a1b80419b85c6",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2157,7 +2150,7 @@
       "text_version": 1,
       "text_sha256": "c649387aa798756e8a3f5b53757caa6f0afc27ad18a9102c4bab322fa08c8a59",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2169,7 +2162,7 @@
       "text_version": 1,
       "text_sha256": "6f87d9180b58de35e2d997b87e02a1fd5dadc2d91bd086478b148dc7038543ca",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2177,11 +2170,11 @@
       "id": "en_trade_win_08",
       "category": "TRADE_WIN",
       "lang": "en",
-      "text": "A positive result is recorded for the completed trade. Meow!",
-      "text_version": 1,
-      "text_sha256": "bbf19572813d4cc0e62393514c7c100ea6c61253a832d2151f13ddb846fd2e47",
+      "text": "That closed trade finished positive. Meow!",
+      "text_version": 2,
+      "text_sha256": "730c162a81b994541657a2dc489937aece3694f76653a2895756b4e96585a872",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2193,7 +2186,7 @@
       "text_version": 1,
       "text_sha256": "8ab88e3d0b47946f3e6949e73414a89df4972f9299d065ce293764ca28870b5c",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2205,7 +2198,7 @@
       "text_version": 1,
       "text_sha256": "ebd55a1906eed19fc5d6e8b6e22302d7d669878579a611caee4b195da5385e8f",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2217,7 +2210,7 @@
       "text_version": 1,
       "text_sha256": "5c49cb55060ee150f29102fb0446667b4be0606beb16b3b4dc0080432d5300c2",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2229,7 +2222,7 @@
       "text_version": 1,
       "text_sha256": "8f955358e452284faa98ac542fcaae9a3b53f83e4b90e5d47fca2eca85e29d6a",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2241,7 +2234,7 @@
       "text_version": 1,
       "text_sha256": "cd5aa0b60987eb896d5bd89a60c9c1e29d2e03edd060933a3e72da2033b1949c",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2253,7 +2246,7 @@
       "text_version": 1,
       "text_sha256": "1338ef3df75794fba2397b17d03a38f67b18554a7dcd31e1d44094488448946b",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2265,7 +2258,7 @@
       "text_version": 1,
       "text_sha256": "70d90e2c792315ce5809daf710767c457aad200edd0e9d1be34b56e33124b669",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2277,7 +2270,7 @@
       "text_version": 1,
       "text_sha256": "30adfd121321f8e840c35541f795282ad50a0f285725035a620302b9b7d4511d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2285,20 +2278,13 @@
       "id": "ru_trade_loss_01",
       "category": "TRADE_LOSS",
       "lang": "ru",
-      "text": "Закрывшаяся сделка в минус. Спокойно фиксируем.",
-      "text_version": 1,
-      "text_sha256": "75268f891d825c8b7d57a8f8afec5a7a5a25d85f70058bf6388c82018aa1d351",
+      "text": "Прошлая сделка закрылась в минус. Фиксируем.",
+      "text_version": 2,
+      "text_sha256": "ce70ad6db8954001e37404775a68f3c7ebffea526d83e414e97ab11ae7a6e08b",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
-      "conditions": {},
-      "reuse_candidate": {
-        "id": "loss_05",
-        "file": "TRADE_LOSS/loss_05.mp3",
-        "sha256": "a810193937d787d87f37b45f15f6b52c4035aeba637ea36957a2a01b6aa848eb",
-        "text": "Сделка закрылась в минус. В трейдинге главное — дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа!",
-        "requires_listening_approval": true
-      }
+      "conditions": {}
     },
     {
       "id": "en_trade_loss_01",
@@ -2308,7 +2294,7 @@
       "text_version": 1,
       "text_sha256": "cd1460471dc765622eea46c11926ff8806fbfa1c036d68f7f8faea51b0797308",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2320,7 +2306,7 @@
       "text_version": 1,
       "text_sha256": "9636a42d7e07384e02e9af10d3c39d93aafc44d7452608f5d1b141b6f36a7e7d",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2332,7 +2318,7 @@
       "text_version": 1,
       "text_sha256": "55b4f6fd9350bbfea059398c19523a7b3de7bdc969fd092abc9fa16647013a49",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2344,7 +2330,7 @@
       "text_version": 1,
       "text_sha256": "241fe193dc5b9fc310af2a67c3409eb8a3118bdb60c56b9e5077fc1741735660",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2356,7 +2342,7 @@
       "text_version": 1,
       "text_sha256": "aada99daad189711631758e32482495de91b7704a9526a9a7a1a5e6e8d3efe3f",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2368,7 +2354,7 @@
       "text_version": 1,
       "text_sha256": "75807f8e956cead988c0634aaf5886d3de603d3a33ca3d0c0b54c20e6d54e3ea",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2380,7 +2366,7 @@
       "text_version": 1,
       "text_sha256": "8082d02eb934da98fc61b76785011f5c0d91e364a6b24b3efc979ca2c4de23bc",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2392,7 +2378,7 @@
       "text_version": 1,
       "text_sha256": "c0d67ee6364ae1ba9313b8853081d2c560da873a83c796f3049ea1028681a7f4",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2404,7 +2390,7 @@
       "text_version": 1,
       "text_sha256": "a984945adf5dd34a3d88a0ad32cd4dce80c10574b66945ed29da1e60dc3cf6ad",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2416,7 +2402,7 @@
       "text_version": 1,
       "text_sha256": "1b486bc56d8719f0a7d2dd84842611fcb96d1c120a99150fb668e6cbe5d6efd4",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2428,7 +2414,7 @@
       "text_version": 1,
       "text_sha256": "7033735bc03dc8db40f456beb3cb4346207272f515cd5ba1d7d2c7c7a39d8e52",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2440,7 +2426,7 @@
       "text_version": 1,
       "text_sha256": "1a2fbd9e73f57b73849fb1b501a54d82a9b36ec877ab2735df2572c10fa6a6d1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2452,7 +2438,7 @@
       "text_version": 1,
       "text_sha256": "93ab03f3e3e566c38665bb98205fab9f18bedcba747bee409f6273c3f49f10c6",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2464,7 +2450,7 @@
       "text_version": 1,
       "text_sha256": "42cc298361195352fbadc6e2ee7f536b1b6a218a2edee7731dfba3eea721e730",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2476,7 +2462,7 @@
       "text_version": 1,
       "text_sha256": "1ecd21a2dbeee6f455c409d6c8c32ce06bd473b8422f272df81ee2180663aa36",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2484,11 +2470,11 @@
       "id": "ru_trade_loss_09",
       "category": "TRADE_LOSS",
       "lang": "ru",
-      "text": "По завершённой сделке минус. Правила сохраняем.",
-      "text_version": 1,
-      "text_sha256": "2627a9997fa9908912c37f2b2dcc02786417c34b9640c7a5b60deadb179d47ab",
+      "text": "Эта сделка закрылась в минус. Идём по правилам.",
+      "text_version": 2,
+      "text_sha256": "50f41d94f11e5041dcddc21319a036e068604a3cb1ea0e5eddb994e63239d379",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2500,7 +2486,7 @@
       "text_version": 1,
       "text_sha256": "ac284572735807e9cf49665dd6cd1154257d6d8d3411e374e81f273fc94a6730",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2512,7 +2498,7 @@
       "text_version": 1,
       "text_sha256": "7badf4df77121f1f1c8dcc387104f166b8c7f196d04192e3b33e1fe8c11a6e7b",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2524,7 +2510,7 @@
       "text_version": 1,
       "text_sha256": "bbb94e4652c6d76da160addb6915aba2ca8502139cb50875067bb4ed8d884e0e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2536,7 +2522,7 @@
       "text_version": 1,
       "text_sha256": "4af88f7479a071220a90eccf87d2f0f96b7844357f1b2f5111a744f8cef7b7a0",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2548,7 +2534,7 @@
       "text_version": 1,
       "text_sha256": "dacf74b8a798e1b7da99c3dea56ef935810baa31bb34e4cf8601d86d138002eb",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2560,7 +2546,7 @@
       "text_version": 1,
       "text_sha256": "775c204411c1616f442684ceba53ed046616994776ecc02f377152a2ed138d20",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2572,7 +2558,7 @@
       "text_version": 1,
       "text_sha256": "4f2cf4a55667964331e40d9d13331a5e42bd0eec01302ec734dc42f987c63a17",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2584,7 +2570,7 @@
       "text_version": 1,
       "text_sha256": "a66351bc82f1a4cc98b145c0b22808884a553dd377cea97f715350cdcc0ccfb7",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2596,7 +2582,7 @@
       "text_version": 1,
       "text_sha256": "24b2dabe814021484b8f41063b9d8e7ed92ed917904309500ca0e8d3362bea12",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2608,7 +2594,7 @@
       "text_version": 1,
       "text_sha256": "385a2835e7c12dc04ee6845a0ab7165f4dc61925814899837b448c8dd327008f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2620,7 +2606,7 @@
       "text_version": 1,
       "text_sha256": "557688d4ca03d356a07dfb6281a8fda1df6d2c63a252ca1592ef68ba794f0d12",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2632,7 +2618,7 @@
       "text_version": 1,
       "text_sha256": "d85378e988a17affcccc56c6d6366a26aa586041521a054999b588bb27e3a9c5",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2644,7 +2630,7 @@
       "text_version": 1,
       "text_sha256": "8daddddf36ffa2d0108c9c55f4dd380cbb009470eb8974596f46d2d64952a15d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2656,7 +2642,7 @@
       "text_version": 1,
       "text_sha256": "f660ddd51bf2acc4fdd603a09485a900671478e4e87f237b9a23826322132d03",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2668,7 +2654,7 @@
       "text_version": 1,
       "text_sha256": "aa0c25532c7020f46cea2935daf7636b6143c0b5bab27c034b83c8cc68adfae7",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2676,11 +2662,11 @@
       "id": "ru_pause_between_trades_01",
       "category": "PAUSE_BETWEEN_TRADES",
       "lang": "ru",
-      "text": "Небольшая передышка, котики. Ушки отдыхают.",
+      "text": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
       "text_version": 1,
-      "text_sha256": "a549804e4f581e5b836ea64d587edcff2cd9a75012c992a9eaffe1ac030b2d73",
+      "text_sha256": "7d76c1da70838f7cb9cf760af133c954ebcfeecaba641be88b3f59ec49287be8",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2699,7 +2685,7 @@
       "text_version": 1,
       "text_sha256": "5ff98f5ad889621d5d740ce4f7840016de4991eccefcd2e2a42a40720aaff235",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2707,11 +2693,11 @@
       "id": "ru_pause_between_trades_02",
       "category": "PAUSE_BETWEEN_TRADES",
       "lang": "ru",
-      "text": "Короткая пауза. Спешка нам не помощница.",
+      "text": "Небольшая передышка по тайм-менеджменту! В трейдинге важно не спешить и входить только по лучшим сигналам.",
       "text_version": 1,
-      "text_sha256": "c42035684183a599067142edeca7fc180fac101c18ca4bdbe052b6b8a6de1160",
+      "text_sha256": "9155fa36474eaf6597fe5d76e6947e817fe9338ddc5a2bd9e67d387de940d3e8",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2730,7 +2716,7 @@
       "text_version": 1,
       "text_sha256": "05c676b7cec9e9d7ca288f8056129eef642608c2981bfd666667c70ef6570eff",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2738,11 +2724,11 @@
       "id": "ru_pause_between_trades_03",
       "category": "PAUSE_BETWEEN_TRADES",
       "lang": "ru",
-      "text": "Секундочка тишины тоже бывает кстати.",
+      "text": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
       "text_version": 1,
-      "text_sha256": "8594199a403f7d1b193f9510db2873ce47218e45e15c80eb62daf170be714e70",
+      "text_sha256": "c57e79bffa6dbc38838709e16ab8189917ffa7b0a7f304e346273ffbd49a18a1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2761,7 +2747,7 @@
       "text_version": 1,
       "text_sha256": "e9b87ec3da10971e8b7c1aa94f2cd0d48da0914d0ec78e63abcfa0606b54339e",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2769,11 +2755,11 @@
       "id": "ru_pause_between_trades_04",
       "category": "PAUSE_BETWEEN_TRADES",
       "lang": "ru",
-      "text": "Переводим дыхание и остаёмся внимательными.",
+      "text": "Короткая пауза между сделками — обновляю данные по волатильности и готовлю сканер к новому циклу!",
       "text_version": 1,
-      "text_sha256": "440ad8969dc8ea999bd171a31d5dbfd3c1b059db2ab9fd07983d03408fc604b6",
+      "text_sha256": "0896032c209eb297832ed8bc322722981e2df0eb31e543e8009e4111b926d215",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {},
       "reuse_candidate": {
@@ -2792,7 +2778,7 @@
       "text_version": 1,
       "text_sha256": "2ba66b23af340b2d345a74507990bce07820fa46545ed3a2080d7da4c6074020",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2804,7 +2790,7 @@
       "text_version": 1,
       "text_sha256": "50a5820ab9dfc26dc3df2992ad00190b99f3c53f5eefbb99660ed14579bc0de0",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2816,7 +2802,7 @@
       "text_version": 1,
       "text_sha256": "a9fe6c7acbf36c6c49f19799b85462e81d77163aaa8b01545941e87554bc5273",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2828,7 +2814,7 @@
       "text_version": 1,
       "text_sha256": "fc14d087da0127bb41d435c1b86c56f40fe7cafbfb2642af316b6e2d513ccde2",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2840,7 +2826,7 @@
       "text_version": 1,
       "text_sha256": "cc42ba7eb4569bb601452d6bfbd767d33d986cdee291e79465f3e9593008ab9d",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2848,11 +2834,11 @@
       "id": "ru_chat_ack_01",
       "category": "CHAT_ACK",
       "lang": "ru",
-      "text": "Чатик, вижу ваши сообщения. Ушки слушают!",
-      "text_version": 1,
-      "text_sha256": "03be09812759c611d583844e82671cfbfc232f4ac25daa9991f89273637b90a3",
+      "text": "Я читаю сообщения в чате!",
+      "text_version": 2,
+      "text_sha256": "90c09591839a4b74fdb89abb23e2b67d57b0f090287c998df06a39335f1fa7f5",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2864,7 +2850,7 @@
       "text_version": 1,
       "text_sha256": "92f6352398c7166e7948fb0f22f96203f1fae51f265460ec27ce9fde3b6b4020",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2876,7 +2862,7 @@
       "text_version": 1,
       "text_sha256": "1314829371effb9e2c05a13eee712e3dc7d02abbd4dd822d6feecf51b905c7c6",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2888,7 +2874,7 @@
       "text_version": 1,
       "text_sha256": "0715c25f3f91a336b91bc0eafbbb333cd2f39285fbf974f50c8c369c127117dc",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2900,7 +2886,7 @@
       "text_version": 1,
       "text_sha256": "66b4fd4344eeda60abf2e135321bae8145cde77c809cf86320f321e162f0836f",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2912,7 +2898,7 @@
       "text_version": 1,
       "text_sha256": "e4259459208b166fd46c4c041aa84e8552612a017d450cce8246f54467e4b884",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2924,7 +2910,7 @@
       "text_version": 1,
       "text_sha256": "6761c837032106a32875acf7fb253e2377b17b0be35c8dbffab02d0d7dc39341",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2936,7 +2922,7 @@
       "text_version": 1,
       "text_sha256": "11b2317ac885db74483a0f575c553a40b99c057ea66a24a342082e5519c4eb53",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2948,7 +2934,7 @@
       "text_version": 1,
       "text_sha256": "b47f58ce37c94862faa8d8310195d657fce59dd5770157bc54519ae5d67abb9c",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2960,7 +2946,7 @@
       "text_version": 1,
       "text_sha256": "01b953b1cc99e2ea761bdb41c81cb9636c0ab16f5df920cb8f93fe1f71e017c1",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2972,7 +2958,7 @@
       "text_version": 1,
       "text_sha256": "87722c2db888dc2425272f507c41b7d50c487dd831f5ce7f46d31ffb07a6555e",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2984,7 +2970,7 @@
       "text_version": 1,
       "text_sha256": "682f5516a44b273351960e1f34fa68b4272388e4789997c1bb13aa2f8ad96549",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -2996,7 +2982,7 @@
       "text_version": 1,
       "text_sha256": "51f0af37421f0d5b66dc7894e16ac76b52ac04ce7f20e14c348343c142fbad6b",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3008,7 +2994,7 @@
       "text_version": 1,
       "text_sha256": "70a9772391316bf2bccd297e5797689828d3c88bbf43d61320632665b5c00e16",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3020,7 +3006,7 @@
       "text_version": 1,
       "text_sha256": "87fdcbf43e827202bb2d943a127a2b9f013a40fae014790cb0aaa7e71053d43c",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3032,7 +3018,7 @@
       "text_version": 1,
       "text_sha256": "3533e102eed31ef47dcd32574ff9287d52c70833a27ef0e66ae655c36a0e98b8",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3044,7 +3030,7 @@
       "text_version": 1,
       "text_sha256": "dbfcbf0769cbade7ddac4bc618eaee4a4c84680cbf2a98b8c7abe32c76c13f12",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3056,7 +3042,7 @@
       "text_version": 1,
       "text_sha256": "e72892c2a50754dd72843a4533ac1770827671c7f63b6ee7f6e378aabbf076cd",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3068,7 +3054,7 @@
       "text_version": 1,
       "text_sha256": "7273839b3f5f3f6487563f6b58d970d2544c763cafab7ef02dd8b4891031aff1",
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     },
@@ -3080,7 +3066,7 @@
       "text_version": 1,
       "text_sha256": "368bff06fe18df3abb2e9541ba443c4814b0c11d79d35301c487baac29dbb3c5",
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
-      "provider": "lumean/fishaudio",
+      "provider": "fish_direct",
       "status": "script_ready_audio_pending",
       "conditions": {}
     }

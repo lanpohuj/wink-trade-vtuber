@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_03",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Мы в сделке вверх. Ушки на график!",
+  "text_version": 1,
+  "text_sha256": "d8d2643f6f24302beeb1d8afb08bd8aba5ae9a851c4c45ab830f565aea4c8a0f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "06bf408886537e330495f39326dcb4ea28d9573193f01aba78640d9368294f45",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_03.mp3.rms2.json"
+}

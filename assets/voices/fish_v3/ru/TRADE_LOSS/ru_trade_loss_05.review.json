@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_05",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Есть минус по закрытой сделке. Без суеты.",
+  "text_version": 1,
+  "text_sha256": "c0d67ee6364ae1ba9313b8853081d2c560da873a83c796f3049ea1028681a7f4",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.448062,
+  "sha256": "43c7ebea8ecd25c19a9380ffe9099213699dd17baf75e193bc4c0a5b6a1daded",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_05.mp3.rms2.json"
+}

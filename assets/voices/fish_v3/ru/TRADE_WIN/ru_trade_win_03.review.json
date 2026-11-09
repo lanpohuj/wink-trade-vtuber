@@ -1,0 +1,25 @@
+{
+  "id": "ru_trade_win_03",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
+  "text_version": 1,
+  "text_sha256": "de07c5fbe22518a32e83e61e6731c4c175b4308fecc1e53b76aeb7e55c32d73b",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "win_06",
+    "file": "TRADE_WIN/win_06.mp3",
+    "sha256": "0b976893e6dd6239f227d04d0816f06e08ca4c2ac42f66348710d2ab84acaff0",
+    "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/TRADE_WIN/ru_trade_win_03.mp3",
+  "auditory_verified": false,
+  "duration": 6.452245,
+  "sha256": "0b976893e6dd6239f227d04d0816f06e08ca4c2ac42f66348710d2ab84acaff0",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_03.mp3.rms2.json"
+}

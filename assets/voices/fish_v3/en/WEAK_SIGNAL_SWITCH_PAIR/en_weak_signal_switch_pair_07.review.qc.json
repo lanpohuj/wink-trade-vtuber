@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_07",
+  "expected": "Passing on this entry. Let's keep searching.",
+  "transcript": "Passing on this entry. Let's keep searching",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.847,
+    "rms": 0.0758,
+    "peak": 0.39061,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "655a3f8bd9e864fcb3e2e1f4844116c74cc2987cc03e4b9dc43436434523bf88"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.46,
+      "text": " Passing on this entry. Let's keep searching",
+      "words": [
+        {
+          "word": " Passing",
+          "start": 0.0,
+          "end": 0.54
+        },
+        {
+          "word": " on",
+          "start": 0.54,
+          "end": 0.68
+        },
+        {
+          "word": " this",
+          "start": 0.68,
+          "end": 0.88
+        },
+        {
+          "word": " entry.",
+          "start": 0.88,
+          "end": 1.2
+        },
+        {
+          "word": " Let's",
+          "start": 1.54,
+          "end": 1.94
+        },
+        {
+          "word": " keep",
+          "start": 1.94,
+          "end": 2.08
+        },
+        {
+          "word": " searching",
+          "start": 2.08,
+          "end": 2.46
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

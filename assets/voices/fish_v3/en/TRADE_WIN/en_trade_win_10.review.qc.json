@@ -1,0 +1,57 @@
+{
+  "id": "en_trade_win_10",
+  "expected": "The completed trade finished positive. Checked!",
+  "transcript": "The completed trade finished positive, checked!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.06711,
+    "peak": 0.46206,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.11,
+    "sha256": "a66058904c125d833bc92b023407b3e2bdf5593fd6078201f85be6e58263ca16"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.86,
+      "text": " The completed trade finished positive, checked!",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " completed",
+          "start": 0.26,
+          "end": 0.72
+        },
+        {
+          "word": " trade",
+          "start": 0.72,
+          "end": 1.16
+        },
+        {
+          "word": " finished",
+          "start": 1.16,
+          "end": 1.54
+        },
+        {
+          "word": " positive,",
+          "start": 1.54,
+          "end": 2.14
+        },
+        {
+          "word": " checked!",
+          "start": 2.54,
+          "end": 2.86
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

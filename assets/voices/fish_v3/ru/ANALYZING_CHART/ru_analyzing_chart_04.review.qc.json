@@ -1,0 +1,62 @@
+{
+  "id": "ru_analyzing_chart_04",
+  "expected": "Сначала направление, потом детали. Всё по порядку.",
+  "transcript": "Сначала направление, потом детали. Все по порядку.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.08272,
+    "peak": 0.44787,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.139,
+    "sha256": "cec2f38cf8156716ceeae7a4591ad72945f672d0d50003e633db07811f11aae9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Сначала направление, потом детали. Все по порядку.",
+      "words": [
+        {
+          "word": " Сначала",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " направление,",
+          "start": 0.6,
+          "end": 1.26
+        },
+        {
+          "word": " потом",
+          "start": 1.58,
+          "end": 1.74
+        },
+        {
+          "word": " детали.",
+          "start": 1.74,
+          "end": 2.24
+        },
+        {
+          "word": " Все",
+          "start": 2.62,
+          "end": 2.78
+        },
+        {
+          "word": " по",
+          "start": 2.78,
+          "end": 2.96
+        },
+        {
+          "word": " порядку.",
+          "start": 2.96,
+          "end": 3.4
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

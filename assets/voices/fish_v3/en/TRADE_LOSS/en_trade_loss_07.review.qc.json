@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_loss_07",
+  "expected": "That closed trade finished negative. We accept the result.",
+  "transcript": "That closed trade finished negative. We accept the result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07735,
+    "peak": 0.35534,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.134,
+    "sha256": "5e8d6ac4e07174a3b1907efcd87169cc7e73bb00c113011fccae0e1cdb18a275"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.42,
+      "text": " That closed trade finished negative. We accept the result.",
+      "words": [
+        {
+          "word": " That",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " closed",
+          "start": 0.36,
+          "end": 0.64
+        },
+        {
+          "word": " trade",
+          "start": 0.64,
+          "end": 1.04
+        },
+        {
+          "word": " finished",
+          "start": 1.04,
+          "end": 1.42
+        },
+        {
+          "word": " negative.",
+          "start": 1.42,
+          "end": 1.92
+        },
+        {
+          "word": " We",
+          "start": 2.36,
+          "end": 2.6
+        },
+        {
+          "word": " accept",
+          "start": 2.6,
+          "end": 2.96
+        },
+        {
+          "word": " the",
+          "start": 2.96,
+          "end": 3.14
+        },
+        {
+          "word": " result.",
+          "start": 3.14,
+          "end": 3.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

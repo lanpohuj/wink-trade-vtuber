@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_win_04",
+  "expected": "The completed trade finished positive. Logging it!",
+  "transcript": "The completed trade finished positive, logging it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.07358,
+    "peak": 0.35803,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.193,
+    "sha256": "3bee17f2b1add919906cb21057732290fecdd79af4c6947e26d6f5128e338923"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.24,
+      "text": " The completed trade finished positive, logging it.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.3
+        },
+        {
+          "word": " completed",
+          "start": 0.3,
+          "end": 0.74
+        },
+        {
+          "word": " trade",
+          "start": 0.74,
+          "end": 1.2
+        },
+        {
+          "word": " finished",
+          "start": 1.2,
+          "end": 1.62
+        },
+        {
+          "word": " positive,",
+          "start": 1.62,
+          "end": 2.22
+        },
+        {
+          "word": " logging",
+          "start": 2.58,
+          "end": 2.96
+        },
+        {
+          "word": " it.",
+          "start": 2.96,
+          "end": 3.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

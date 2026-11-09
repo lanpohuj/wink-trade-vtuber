@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_01",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Сделка вверх открыта. Теперь наблюдаем!",
+  "text_version": 1,
+  "text_sha256": "43e1194957c74c34051d3c2299013cd0ea99d46f8a9a28411d03b32e3be822e3",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "8a49a784ffb4d9e043c85cb9e4c21861301c2fee1613b553f1af2ceeb20014c5",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_01.mp3.rms2.json"
+}

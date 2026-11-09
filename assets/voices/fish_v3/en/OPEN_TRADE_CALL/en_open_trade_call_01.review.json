@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_01",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "The upward trade is open. Let's watch!",
+  "text_version": 1,
+  "text_sha256": "c503dace2c0e7b5015418e686ad0522daa89f047e6c8fff38175ad33156861e6",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "f1b32415d8418bc9ec898638991f11a4b243fa87dabd77e583aa091eb662ed62",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_01.mp3.rms2.json"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_call_07",
+  "expected": "Есть открытие вверх. Смотрим спокойно.",
+  "transcript": "Есть открытие вверх. Смотрим спокойно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.07721,
+    "peak": 0.33798,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "2096d16355eb6c8114b0793de7333e808fefaf6891957913cbd26d75a13f1f3b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " Есть открытие вверх. Смотрим спокойно.",
+      "words": [
+        {
+          "word": " Есть",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " открытие",
+          "start": 0.46,
+          "end": 1.14
+        },
+        {
+          "word": " вверх.",
+          "start": 1.14,
+          "end": 1.74
+        },
+        {
+          "word": " Смотрим",
+          "start": 1.78,
+          "end": 2.36
+        },
+        {
+          "word": " спокойно.",
+          "start": 2.36,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

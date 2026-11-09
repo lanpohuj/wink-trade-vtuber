@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_refund_01",
+  "expected": "Закрытая сделка рассчитана возвратом. Отмечаю.",
+  "transcript": "Закрытая сделка рассчитана возвратом. Отмечаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08221,
+    "peak": 0.34216,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.105,
+    "sha256": "157cf98360791fb90498ea8526837fbac75511c22bd2ca78db7a96ef2b756ef9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Закрытая сделка рассчитана возвратом. Отмечаю.",
+      "words": [
+        {
+          "word": " Закрытая",
+          "start": 0.0,
+          "end": 0.88
+        },
+        {
+          "word": " сделка",
+          "start": 0.88,
+          "end": 1.32
+        },
+        {
+          "word": " рассчитана",
+          "start": 1.32,
+          "end": 1.8
+        },
+        {
+          "word": " возвратом.",
+          "start": 1.8,
+          "end": 2.44
+        },
+        {
+          "word": " Отмечаю.",
+          "start": 2.9,
+          "end": 3.72
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

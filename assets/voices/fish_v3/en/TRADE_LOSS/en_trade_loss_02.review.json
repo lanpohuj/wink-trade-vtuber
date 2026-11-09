@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_02",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "A negative result is confirmed for the closed trade, cuties.",
+  "text_version": 1,
+  "text_sha256": "55b4f6fd9350bbfea059398c19523a7b3de7bdc969fd092abc9fa16647013a49",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.630937,
+  "sha256": "8174ed5211ebd5d0887910eb2b091b9f3045cf87a5141863e541339f9ee4a4bb",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_02.mp3.rms2.json"
+}

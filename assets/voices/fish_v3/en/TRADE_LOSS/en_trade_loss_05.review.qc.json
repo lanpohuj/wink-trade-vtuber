@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_loss_05",
+  "expected": "A negative result on the closed trade. Staying calm.",
+  "transcript": "A negative result on the closed trade. Staying calm.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.07202,
+    "peak": 0.32926,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.22,
+    "sha256": "4c6f028de878af4e2600e74aee4f41d7203bec68b329fb2b38f12e09d869a9a8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " A negative result on the closed trade. Staying calm.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " negative",
+          "start": 0.28,
+          "end": 0.58
+        },
+        {
+          "word": " result",
+          "start": 0.58,
+          "end": 1.0
+        },
+        {
+          "word": " on",
+          "start": 1.0,
+          "end": 1.22
+        },
+        {
+          "word": " the",
+          "start": 1.22,
+          "end": 1.34
+        },
+        {
+          "word": " closed",
+          "start": 1.34,
+          "end": 1.62
+        },
+        {
+          "word": " trade.",
+          "start": 1.62,
+          "end": 2.06
+        },
+        {
+          "word": " Staying",
+          "start": 2.54,
+          "end": 3.1
+        },
+        {
+          "word": " calm.",
+          "start": 3.1,
+          "end": 3.4
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

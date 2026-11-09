@@ -1,0 +1,18 @@
+{
+  "id": "ru_prepare_entry_03",
+  "category": "PREPARE_ENTRY",
+  "lang": "ru",
+  "text": "Подготовка идёт. Подтверждение всё ещё нужно.",
+  "text_version": 1,
+  "text_sha256": "968fd05e7e121e33ee5b59c843d36f43c54c3e5776c1796f61be03c7617cbf75",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PREPARE_ENTRY/ru_prepare_entry_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.421937,
+  "sha256": "3e380af0edbeb089b2503ef375d2184dcd08b9bcf81bdff1b4f3c262a5b0addc",
+  "rms_file": "ru/PREPARE_ENTRY/ru_prepare_entry_03.mp3.rms2.json"
+}

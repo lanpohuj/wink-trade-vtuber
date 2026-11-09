@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_05",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "Settlement confirmed a positive result for the closed trade.",
+  "text_version": 1,
+  "text_sha256": "dd02e87c771b7b16929d7a4e4715ba61f18bd52da27f6c72bb4557f83832c544",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.421937,
+  "sha256": "0d541c3de427cdc7a0600c8743b6128d4d0b6b49a98f3804ec3402f5e0564520",
+  "rms_file": "en/TRADE_WIN/en_trade_win_05.mp3.rms2.json"
+}

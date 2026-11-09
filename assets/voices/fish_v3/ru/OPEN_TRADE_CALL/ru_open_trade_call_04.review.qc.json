@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_call_04",
+  "expected": "Покупка открыта. Следим за движением.",
+  "transcript": "Покупка открыта? Следим за движением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08562,
+    "peak": 0.36191,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.074,
+    "sha256": "eedbdd21fcd9ecdd51b18ea8981fe67ce2d5866e2a947d71fe80cb213bac0f60"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.78,
+      "text": " Покупка открыта? Следим за движением.",
+      "words": [
+        {
+          "word": " Покупка",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " открыта?",
+          "start": 0.68,
+          "end": 1.22
+        },
+        {
+          "word": " Следим",
+          "start": 1.54,
+          "end": 2.06
+        },
+        {
+          "word": " за",
+          "start": 2.06,
+          "end": 2.16
+        },
+        {
+          "word": " движением.",
+          "start": 2.16,
+          "end": 2.78
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_prepare_entry_01",
+  "category": "PREPARE_ENTRY",
+  "lang": "en",
+  "text": "Checking before entry. The details matter now.",
+  "text_version": 1,
+  "text_sha256": "50cb13ec1054c949c51a54efb637384f82533f0c76f246e29a27e543ea3d01bc",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PREPARE_ENTRY/en_prepare_entry_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "d926a46a78d1fe576d260e82674e7a141b0133de5db64e837cd47f404336df9f",
+  "rms_file": "en/PREPARE_ENTRY/en_prepare_entry_01.mp3.rms2.json"
+}

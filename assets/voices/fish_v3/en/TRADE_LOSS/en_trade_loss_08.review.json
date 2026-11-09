@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_08",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "Negative result confirmed. Keeping the record honest.",
+  "text_version": 1,
+  "text_sha256": "1ecd21a2dbeee6f455c409d6c8c32ce06bd473b8422f272df81ee2180663aa36",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "824bf4b543ff7cc5ba682087884f8ba16e22bcc14635b5e96976348c87b972e3",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_08.mp3.rms2.json"
+}

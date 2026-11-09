@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_04",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Покупка открыта. Следим за движением.",
+  "text_version": 1,
+  "text_sha256": "48d3c202e31ee9ef0bd89346871705fcd1e5ea21828e810a2d2634fd6eb52683",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "eedbdd21fcd9ecdd51b18ea8981fe67ce2d5866e2a947d71fe80cb213bac0f60",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_04.mp3.rms2.json"
+}

@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_put_10",
+  "expected": "Cuties, the downward trade is open. Let's watch together.",
+  "transcript": "Cuties, the downward trade is open. Let's watch together!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0762,
+    "peak": 0.38773,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.154,
+    "sha256": "f8aa0ce5a4f49103d2ae378605081bd511f556078d80db253ccfc508715f7edb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.38,
+      "text": " Cuties, the downward trade is open. Let's watch together!",
+      "words": [
+        {
+          "word": " Cuties,",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " the",
+          "start": 0.96,
+          "end": 1.04
+        },
+        {
+          "word": " downward",
+          "start": 1.04,
+          "end": 1.36
+        },
+        {
+          "word": " trade",
+          "start": 1.36,
+          "end": 1.74
+        },
+        {
+          "word": " is",
+          "start": 1.74,
+          "end": 1.92
+        },
+        {
+          "word": " open.",
+          "start": 1.92,
+          "end": 2.16
+        },
+        {
+          "word": " Let's",
+          "start": 2.56,
+          "end": 2.84
+        },
+        {
+          "word": " watch",
+          "start": 2.84,
+          "end": 3.06
+        },
+        {
+          "word": " together!",
+          "start": 3.06,
+          "end": 3.38
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

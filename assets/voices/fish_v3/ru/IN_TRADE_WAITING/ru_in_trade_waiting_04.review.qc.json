@@ -1,0 +1,62 @@
+{
+  "id": "ru_in_trade_waiting_04",
+  "expected": "Сделка в работе. С выводами не торопимся.",
+  "transcript": "Сделка в работе с выводами не торопимся.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.978,
+    "rms": 0.0814,
+    "peak": 0.32886,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "103535cce192b70a7fdc900914624e87699b5bcdc125a0c2b8c898d273d9ba78"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Сделка в работе с выводами не торопимся.",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " в",
+          "start": 0.66,
+          "end": 0.74
+        },
+        {
+          "word": " работе",
+          "start": 0.74,
+          "end": 1.26
+        },
+        {
+          "word": " с",
+          "start": 1.26,
+          "end": 1.72
+        },
+        {
+          "word": " выводами",
+          "start": 1.72,
+          "end": 2.14
+        },
+        {
+          "word": " не",
+          "start": 2.14,
+          "end": 2.28
+        },
+        {
+          "word": " торопимся.",
+          "start": 2.28,
+          "end": 2.7
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_10",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Получили плюс по завершённой сделке. Сверено!",
+  "text_version": 1,
+  "text_sha256": "5c49cb55060ee150f29102fb0446667b4be0606beb16b3b4dc0080432d5300c2",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.448062,
+  "sha256": "8043705cb95b8f4d29211091db6ab14b2a4562cc14fd57d5af12686f169a5313",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_10.mp3.rms2.json"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "ru_weak_signal_switch_pair_03",
+  "expected": "Пока не складывается. Перехожу к следующей.",
+  "transcript": "Пока не складывается, ты рехожу к следующей.",
+  "similarity": 0.944,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.926,
+    "rms": 0.08445,
+    "peak": 0.40809,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.086,
+    "sha256": "ee0bd53fad408fa735f36254103e5d7d893e6c9b54bed23d1319fd877dea7939"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.76,
+      "text": " Пока не складывается, ты рехожу к следующей.",
+      "words": [
+        {
+          "word": " Пока",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " не",
+          "start": 0.38,
+          "end": 0.56
+        },
+        {
+          "word": " складывается,",
+          "start": 0.56,
+          "end": 1.26
+        },
+        {
+          "word": " ты",
+          "start": 1.64,
+          "end": 1.78
+        },
+        {
+          "word": " рехожу",
+          "start": 1.78,
+          "end": 2.1
+        },
+        {
+          "word": " к",
+          "start": 2.1,
+          "end": 2.18
+        },
+        {
+          "word": " следующей.",
+          "start": 2.18,
+          "end": 2.76
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

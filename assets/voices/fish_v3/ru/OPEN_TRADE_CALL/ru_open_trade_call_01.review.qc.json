@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_call_01",
+  "expected": "Сделка вверх открыта. Теперь наблюдаем!",
+  "transcript": "Сделка вверх открыта. Теперь наблюдаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.08621,
+    "peak": 0.41575,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "8a49a784ffb4d9e043c85cb9e4c21861301c2fee1613b553f1af2ceeb20014c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8,
+      "text": " Сделка вверх открыта. Теперь наблюдаем.",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " вверх",
+          "start": 0.62,
+          "end": 0.9
+        },
+        {
+          "word": " открыта.",
+          "start": 0.9,
+          "end": 1.34
+        },
+        {
+          "word": " Теперь",
+          "start": 1.78,
+          "end": 2.08
+        },
+        {
+          "word": " наблюдаем.",
+          "start": 2.08,
+          "end": 2.8
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

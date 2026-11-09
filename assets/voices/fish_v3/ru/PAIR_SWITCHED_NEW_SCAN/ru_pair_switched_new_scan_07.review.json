@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_07",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Открыта другая пара. Проверяю её условия.",
+  "text_version": 1,
+  "text_sha256": "5fb87d6213dfd2ce4f57b86485e9f793f2c623939854a6e5b242fe3049d470c0",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "e97d91f72c1c2a2eb4cbd8b79876cc2c27b364eb3eb34fb19c351dac9970ab01",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_07.mp3.rms2.json"
+}

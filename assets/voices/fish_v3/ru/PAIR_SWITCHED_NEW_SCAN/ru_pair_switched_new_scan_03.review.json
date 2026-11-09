@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_03",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Другой график, новая проверка. Поехали!",
+  "text_version": 1,
+  "text_sha256": "ae610c7f64d6057bdb254015b4cd2cb2a08538563b7adf80f5fc65d8fdb3ac50",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "9983e4059ac098c168c5d2f4c4aca4ba7db62d6ce107e68ee0b0ddee51dc6ac1",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_03.mp3.rms2.json"
+}

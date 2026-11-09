@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_12",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Открытие вверх подтверждено платформой.",
+  "text_version": 1,
+  "text_sha256": "d70c060e792bd4ed90993a832e0f4173582b224a44d0c8a924478c9e8740bb76",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_12.mp3",
+  "auditory_verified": false,
+  "duration": 2.403188,
+  "sha256": "a77c8e8aeb74627bcc1ce3524d41edf9ecd5ea9cf452c1f97945b55891c017fe",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_12.mp3.rms2.json"
+}

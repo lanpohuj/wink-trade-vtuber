@@ -1,0 +1,57 @@
+{
+  "id": "ru_weak_signal_switch_pair_08",
+  "expected": "Для входа пока недостаточно. Пара следующая!",
+  "transcript": "Для входа пока недостаточно, пара следующие.",
+  "similarity": 0.946,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07707,
+    "peak": 0.36169,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.08,
+    "sha256": "5a83cfb96ffc966603422b026091ac721000adf8544a2485a5d0615138f6a35d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.32,
+      "text": " Для входа пока недостаточно, пара следующие.",
+      "words": [
+        {
+          "word": " Для",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " входа",
+          "start": 0.44,
+          "end": 0.84
+        },
+        {
+          "word": " пока",
+          "start": 0.84,
+          "end": 1.04
+        },
+        {
+          "word": " недостаточно,",
+          "start": 1.04,
+          "end": 1.82
+        },
+        {
+          "word": " пара",
+          "start": 2.26,
+          "end": 2.62
+        },
+        {
+          "word": " следующие.",
+          "start": 2.62,
+          "end": 3.32
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

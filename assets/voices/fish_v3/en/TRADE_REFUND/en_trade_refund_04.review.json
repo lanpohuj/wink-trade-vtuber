@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_04",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "Cuties, the completed trade settled as a refund.",
+  "text_version": 1,
+  "text_sha256": "557688d4ca03d356a07dfb6281a8fda1df6d2c63a252ca1592ef68ba794f0d12",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.448062,
+  "sha256": "241404d38638a83e5173884750283d448f1c2dff2c22ecc10c671de9f6263f9d",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_04.mp3.rms2.json"
+}

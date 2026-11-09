@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_05",
+  "expected": "The conditions don't align. Moving on calmly.",
+  "transcript": "The conditions don't align. Moving on calmly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.0805,
+    "peak": 0.39026,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.25,
+    "sha256": "faa29c634156587c16096e73038d72981980b7973174bcd3e699264b8b02b89a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " The conditions don't align. Moving on calmly.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.24
+        },
+        {
+          "word": " conditions",
+          "start": 0.24,
+          "end": 0.7
+        },
+        {
+          "word": " don't",
+          "start": 0.7,
+          "end": 1.06
+        },
+        {
+          "word": " align.",
+          "start": 1.06,
+          "end": 1.38
+        },
+        {
+          "word": " Moving",
+          "start": 1.88,
+          "end": 2.2
+        },
+        {
+          "word": " on",
+          "start": 2.2,
+          "end": 2.48
+        },
+        {
+          "word": " calmly.",
+          "start": 2.48,
+          "end": 2.88
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

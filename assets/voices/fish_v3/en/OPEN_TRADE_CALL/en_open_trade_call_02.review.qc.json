@@ -1,0 +1,47 @@
+{
+  "id": "en_open_trade_call_02",
+  "expected": "Upward entry confirmed, cuties.",
+  "transcript": "Upward entry confirmed, cuties.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.403,
+    "rms": 0.08452,
+    "peak": 0.50061,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.123,
+    "sha256": "584368759a4fbdd52ca50cab3ef703fccb3663bf8437fdc4b7d585908059eaa4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Upward entry confirmed, cuties.",
+      "words": [
+        {
+          "word": " Upward",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " entry",
+          "start": 0.56,
+          "end": 0.94
+        },
+        {
+          "word": " confirmed,",
+          "start": 0.94,
+          "end": 1.48
+        },
+        {
+          "word": " cuties.",
+          "start": 1.68,
+          "end": 2.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

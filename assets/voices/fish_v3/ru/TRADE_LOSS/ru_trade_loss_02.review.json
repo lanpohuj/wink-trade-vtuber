@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_02",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "По завершённой сделке подтверждён минус, котики.",
+  "text_version": 1,
+  "text_sha256": "9636a42d7e07384e02e9af10d3c39d93aafc44d7452608f5d1b141b6f36a7e7d",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "52f323a9904a8c21d63c20e5ab4750053952ad0fc07930dd10632c6f5f81eede",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_02.mp3.rms2.json"
+}

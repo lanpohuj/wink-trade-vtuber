@@ -1,0 +1,62 @@
+{
+  "id": "en_pair_switched_new_scan_03",
+  "expected": "Another chart, another check. Here we go!",
+  "transcript": "Another chart another check here we go",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.07801,
+    "peak": 0.36688,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "ea91a2885527be50349afa62481c39a4967c5461a6259a3f198615168986ee0d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.74,
+      "text": " Another chart another check here we go",
+      "words": [
+        {
+          "word": " Another",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " chart",
+          "start": 0.44,
+          "end": 0.84
+        },
+        {
+          "word": " another",
+          "start": 0.84,
+          "end": 1.3
+        },
+        {
+          "word": " check",
+          "start": 1.3,
+          "end": 1.78
+        },
+        {
+          "word": " here",
+          "start": 1.78,
+          "end": 2.36
+        },
+        {
+          "word": " we",
+          "start": 2.36,
+          "end": 2.5
+        },
+        {
+          "word": " go",
+          "start": 2.5,
+          "end": 2.74
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

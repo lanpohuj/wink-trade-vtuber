@@ -1,0 +1,67 @@
+{
+  "id": "en_stream_insight_01",
+  "expected": "One candle won't tell the chart's whole story.",
+  "transcript": "One candle won't tell the chart's whole story.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.743,
+    "rms": 0.0797,
+    "peak": 0.40457,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.243,
+    "sha256": "4bb4d7595997df763d80a1e5087601479050e7ff35745ac5f0c4888858c31acf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " One candle won't tell the chart's whole story.",
+      "words": [
+        {
+          "word": " One",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " candle",
+          "start": 0.38,
+          "end": 0.76
+        },
+        {
+          "word": " won't",
+          "start": 0.76,
+          "end": 1.08
+        },
+        {
+          "word": " tell",
+          "start": 1.08,
+          "end": 1.22
+        },
+        {
+          "word": " the",
+          "start": 1.22,
+          "end": 1.36
+        },
+        {
+          "word": " chart's",
+          "start": 1.36,
+          "end": 1.74
+        },
+        {
+          "word": " whole",
+          "start": 1.74,
+          "end": 1.88
+        },
+        {
+          "word": " story.",
+          "start": 1.88,
+          "end": 2.32
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

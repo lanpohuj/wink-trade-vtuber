@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_12",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Watch closely, chat. The picture is still developing.",
+  "text_version": 1,
+  "text_sha256": "b4788e0e72726309c359aa00f297c552df99b37d07738788763d8ad01a76aba9",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_12.mp3",
+  "auditory_verified": false,
+  "duration": 3.578688,
+  "sha256": "97f9283c12c52f00c72b8ef958bf1af9a5d2b834933fcc7abed61cf609b02119",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_12.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_start_stream_ready_05",
+  "category": "START_STREAM_READY",
+  "lang": "en",
+  "text": "Hi, cuties! Another day of watching and checking.",
+  "text_version": 1,
+  "text_sha256": "bad852c8c31b6e3e1216daa22dff0039c563bcf3645c75be8dedd17dd481770a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/START_STREAM_READY/en_start_stream_ready_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "72add8ef55ad0bd56cb68de1718f3e5a0d5f3909282bd0e47fcff7fea1df4cd1",
+  "rms_file": "en/START_STREAM_READY/en_start_stream_ready_05.mp3.rms2.json"
+}

@@ -1,0 +1,67 @@
+{
+  "id": "en_stream_insight_02",
+  "expected": "Candle timeframe and trade duration are different things.",
+  "transcript": "Candle, timeframe, and trade duration are different things.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.0793,
+    "peak": 0.36001,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.26,
+    "sha256": "dbe85ee239f411c23ee219a8b63421fcf5c2e4f582d9d73a71123647aa3822c2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Candle, timeframe, and trade duration are different things.",
+      "words": [
+        {
+          "word": " Candle,",
+          "start": 0.0,
+          "end": 0.54
+        },
+        {
+          "word": " timeframe,",
+          "start": 0.6,
+          "end": 0.98
+        },
+        {
+          "word": " and",
+          "start": 1.26,
+          "end": 1.3
+        },
+        {
+          "word": " trade",
+          "start": 1.3,
+          "end": 1.6
+        },
+        {
+          "word": " duration",
+          "start": 1.6,
+          "end": 2.02
+        },
+        {
+          "word": " are",
+          "start": 2.02,
+          "end": 2.22
+        },
+        {
+          "word": " different",
+          "start": 2.22,
+          "end": 2.54
+        },
+        {
+          "word": " things.",
+          "start": 2.54,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

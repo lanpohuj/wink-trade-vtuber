@@ -1,0 +1,67 @@
+{
+  "id": "en_analyzing_chart_12",
+  "expected": "Watch closely, chat. The picture is still developing.",
+  "transcript": "Watch closely, chat. The picture is still developing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.07404,
+    "peak": 0.39154,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "97f9283c12c52f00c72b8ef958bf1af9a5d2b834933fcc7abed61cf609b02119"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.22,
+      "text": " Watch closely, chat. The picture is still developing.",
+      "words": [
+        {
+          "word": " Watch",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " closely,",
+          "start": 0.48,
+          "end": 1.02
+        },
+        {
+          "word": " chat.",
+          "start": 1.22,
+          "end": 1.46
+        },
+        {
+          "word": " The",
+          "start": 1.94,
+          "end": 2.04
+        },
+        {
+          "word": " picture",
+          "start": 2.04,
+          "end": 2.28
+        },
+        {
+          "word": " is",
+          "start": 2.28,
+          "end": 2.52
+        },
+        {
+          "word": " still",
+          "start": 2.52,
+          "end": 2.72
+        },
+        {
+          "word": " developing.",
+          "start": 2.72,
+          "end": 3.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

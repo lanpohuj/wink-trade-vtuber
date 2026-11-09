@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_10",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Cuties, the downward trade is open. Let's watch together.",
+  "text_version": 1,
+  "text_sha256": "4e4a987d425982924def7e0d0318d9ed4778f70a451090d8a45b2ba94728f142",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "f8aa0ce5a4f49103d2ae378605081bd511f556078d80db253ccfc508715f7edb",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_10.mp3.rms2.json"
+}

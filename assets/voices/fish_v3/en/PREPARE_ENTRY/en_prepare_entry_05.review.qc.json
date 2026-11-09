@@ -1,0 +1,57 @@
+{
+  "id": "en_prepare_entry_05",
+  "expected": "One last check. Candles, behave yourselves!",
+  "transcript": "One last check. Candles, behave yourselves!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.07101,
+    "peak": 0.367,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.176,
+    "sha256": "0c6c07bf05abd269c6a65b6f9f107fa0bf64addab5343e54cf45c9b61d495387"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.28,
+      "text": " One last check. Candles, behave yourselves!",
+      "words": [
+        {
+          "word": " One",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " last",
+          "start": 0.36,
+          "end": 0.66
+        },
+        {
+          "word": " check.",
+          "start": 0.66,
+          "end": 1.0
+        },
+        {
+          "word": " Candles,",
+          "start": 1.54,
+          "end": 2.22
+        },
+        {
+          "word": " behave",
+          "start": 2.42,
+          "end": 2.72
+        },
+        {
+          "word": " yourselves!",
+          "start": 2.72,
+          "end": 3.28
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,77 @@
+{
+  "id": "en_chat_ack_03",
+  "expected": "Thanks for your messages! I'm keeping an eye on chat.",
+  "transcript": "Thanks for your messages. I'm keeping an eye on chat",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08413,
+    "peak": 0.42427,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.227,
+    "sha256": "3e37f809fb4bf4f24748d09259a759d0199f18c30e6675828c12400e96b1b0dc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.76,
+      "text": " Thanks for your messages. I'm keeping an eye on chat",
+      "words": [
+        {
+          "word": " Thanks",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " for",
+          "start": 0.44,
+          "end": 0.64
+        },
+        {
+          "word": " your",
+          "start": 0.64,
+          "end": 0.74
+        },
+        {
+          "word": " messages.",
+          "start": 0.74,
+          "end": 1.16
+        },
+        {
+          "word": " I'm",
+          "start": 1.5,
+          "end": 1.76
+        },
+        {
+          "word": " keeping",
+          "start": 1.76,
+          "end": 1.98
+        },
+        {
+          "word": " an",
+          "start": 1.98,
+          "end": 2.2
+        },
+        {
+          "word": " eye",
+          "start": 2.2,
+          "end": 2.32
+        },
+        {
+          "word": " on",
+          "start": 2.32,
+          "end": 2.48
+        },
+        {
+          "word": " chat",
+          "start": 2.48,
+          "end": 2.76
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

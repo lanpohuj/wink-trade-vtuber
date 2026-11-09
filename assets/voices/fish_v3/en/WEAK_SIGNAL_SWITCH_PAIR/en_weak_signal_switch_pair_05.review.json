@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_05",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "The conditions don't align. Moving on calmly.",
+  "text_version": 1,
+  "text_sha256": "a2986f1472f975b8142c3c802174360e20f93318ac46c5a5e002d5aede1a828e",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "faa29c634156587c16096e73038d72981980b7973174bcd3e699264b8b02b89a",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_05.mp3.rms2.json"
+}

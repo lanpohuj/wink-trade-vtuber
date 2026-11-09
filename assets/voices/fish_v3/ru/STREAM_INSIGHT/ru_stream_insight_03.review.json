@@ -1,0 +1,18 @@
+{
+  "id": "ru_stream_insight_03",
+  "category": "STREAM_INSIGHT",
+  "lang": "ru",
+  "text": "Совпадение условий не обещает результат, котики.",
+  "text_version": 1,
+  "text_sha256": "51f0af37421f0d5b66dc7894e16ac76b52ac04ce7f20e14c348343c142fbad6b",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/STREAM_INSIGHT/ru_stream_insight_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.1085,
+  "sha256": "e171e271cef1a31642c54fa9b3ae5767b6b36dfdc87ed57ee968fe522747434c",
+  "rms_file": "ru/STREAM_INSIGHT/ru_stream_insight_03.mp3.rms2.json"
+}

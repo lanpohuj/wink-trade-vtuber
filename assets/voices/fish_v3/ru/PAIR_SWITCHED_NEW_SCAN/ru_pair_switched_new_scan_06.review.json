@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_06",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Новый участок работы для моих ушек!",
+  "text_version": 1,
+  "text_sha256": "8e3010cf9cf2140cac6bd0c494e08f0a96a9078faca279cc08eb2f4ed692c503",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.403188,
+  "sha256": "b36fd6848d4c6798d4a732cefa118eda4905653e4cbe60fb63240943f9acc3a7",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_06.mp3.rms2.json"
+}

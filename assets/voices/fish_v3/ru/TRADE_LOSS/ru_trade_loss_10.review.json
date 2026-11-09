@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_10",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Котики, прошлое закрытие в минус. Фиксируем факт.",
+  "text_version": 1,
+  "text_sha256": "7badf4df77121f1f1c8dcc387104f166b8c7f196d04192e3b33e1fe8c11a6e7b",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.578688,
+  "sha256": "4537c4f13f3c82343e9a17ee248760f81a6409e9df56c1b721dcb4bb967356d7",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_10.mp3.rms2.json"
+}

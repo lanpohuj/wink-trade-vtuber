@@ -1,0 +1,59 @@
+{
+  "id": "ru_in_trade_waiting_01",
+  "expected": "Сделка ещё идёт. Наблюдаем спокойно.",
+  "transcript": "Сделка ещё идёт. Наблюдаем спокойно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08812,
+    "peak": 0.37325,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.11,
+    "sha256": "47f05a88dc32762567fbb92155525e6ee6a84d38e1b211f3e2cdd25ce75c9780"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.52,
+      "text": " Сделка ещё идёт.",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.0,
+          "end": 0.78
+        },
+        {
+          "word": " ещё",
+          "start": 0.78,
+          "end": 1.0
+        },
+        {
+          "word": " идёт.",
+          "start": 1.0,
+          "end": 1.52
+        }
+      ]
+    },
+    {
+      "start": 1.92,
+      "end": 3.2,
+      "text": " Наблюдаем спокойно.",
+      "words": [
+        {
+          "word": " Наблюдаем",
+          "start": 1.92,
+          "end": 2.58
+        },
+        {
+          "word": " спокойно.",
+          "start": 2.58,
+          "end": 3.2
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

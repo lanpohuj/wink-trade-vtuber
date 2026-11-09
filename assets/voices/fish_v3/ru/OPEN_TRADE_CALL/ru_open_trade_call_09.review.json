@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_09",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Направление вверх, сделка активна.",
+  "text_version": 1,
+  "text_sha256": "9191acf2a65ffefbd85cd319133c4217560a0bc0fc79e5f48526066465082f6f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "9aa5e5c5742080dc736822424e6c0566252f1133b2dcfceb27fe6a58101c8652",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_09.mp3.rms2.json"
+}

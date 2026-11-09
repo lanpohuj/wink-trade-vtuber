@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_07",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Эту точку не беру. Ищем дальше.",
+  "text_version": 1,
+  "text_sha256": "23dfd394f8d8d0e11cbc5a87567839586773c15a7732464bb0d5c2173276fb0e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_07.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "82c58fbbfd6f8b8f772f8e7acce1ad0f493a7e4d1caf96544e2993a4388646d5",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_07.mp3.rms2.json"
+}

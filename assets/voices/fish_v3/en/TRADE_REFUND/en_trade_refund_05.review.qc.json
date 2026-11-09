@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_refund_05",
+  "expected": "Settlement shows a refund. Recording it separately.",
+  "transcript": "Settlement shows a refund, recording it separately.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07866,
+    "peak": 0.41019,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.09,
+    "sha256": "144a74a41e088b65b1dc49cdd0739347b22e1dc023cde802f8c896d6a2c81892"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Settlement shows a refund, recording it separately.",
+      "words": [
+        {
+          "word": " Settlement",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " shows",
+          "start": 0.6,
+          "end": 0.88
+        },
+        {
+          "word": " a",
+          "start": 0.88,
+          "end": 1.12
+        },
+        {
+          "word": " refund,",
+          "start": 1.12,
+          "end": 1.4
+        },
+        {
+          "word": " recording",
+          "start": 1.92,
+          "end": 2.34
+        },
+        {
+          "word": " it",
+          "start": 2.34,
+          "end": 2.54
+        },
+        {
+          "word": " separately.",
+          "start": 2.54,
+          "end": 2.94
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

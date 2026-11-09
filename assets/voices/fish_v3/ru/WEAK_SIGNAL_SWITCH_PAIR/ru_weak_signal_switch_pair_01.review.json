@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_01",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Здесь вход не подтвердился. Смотрим дальше.",
+  "text_version": 1,
+  "text_sha256": "e744c174ec0f65ed8ce90967d528c9fb0ffeb20ded2ec7573cf88845994a1ab3",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "05b8d44ba08bf96389c691c655514763822c0cc71953ec359b53fb74765acf85",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_01.mp3.rms2.json"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "ru_weak_signal_switch_pair_06",
+  "expected": "Здесь остаюсь без сделки. Проверю другой график.",
+  "transcript": "Здесь остаюсь без делки. Проверю другой график.",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.109,
+    "rms": 0.07631,
+    "peak": 0.33392,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.089,
+    "sha256": "824f66db16fdbbc1b46a67fd996ef888013618ce565b9404dcfe9f2239e9fadc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.96,
+      "text": " Здесь остаюсь без делки. Проверю другой график.",
+      "words": [
+        {
+          "word": " Здесь",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " остаюсь",
+          "start": 0.44,
+          "end": 0.84
+        },
+        {
+          "word": " без",
+          "start": 0.84,
+          "end": 1.02
+        },
+        {
+          "word": " делки.",
+          "start": 1.02,
+          "end": 1.48
+        },
+        {
+          "word": " Проверю",
+          "start": 1.86,
+          "end": 2.3
+        },
+        {
+          "word": " другой",
+          "start": 2.3,
+          "end": 2.42
+        },
+        {
+          "word": " график.",
+          "start": 2.42,
+          "end": 2.96
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

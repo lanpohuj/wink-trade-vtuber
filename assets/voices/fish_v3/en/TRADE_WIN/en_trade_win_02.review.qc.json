@@ -1,0 +1,77 @@
+{
+  "id": "en_trade_win_02",
+  "expected": "A positive result is confirmed for the closed trade, cuties.",
+  "transcript": "A positive result is confirmed for the closed trade, cuties.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.08393,
+    "peak": 0.42788,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.323,
+    "sha256": "a538cbfdca7369d606e660c5e57ecac209f99d09f68c62ac1ce67db690a4fdaa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.26,
+      "text": " A positive result is confirmed for the closed trade, cuties.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " positive",
+          "start": 0.26,
+          "end": 0.66
+        },
+        {
+          "word": " result",
+          "start": 0.66,
+          "end": 1.06
+        },
+        {
+          "word": " is",
+          "start": 1.06,
+          "end": 1.2
+        },
+        {
+          "word": " confirmed",
+          "start": 1.2,
+          "end": 1.6
+        },
+        {
+          "word": " for",
+          "start": 1.6,
+          "end": 1.86
+        },
+        {
+          "word": " the",
+          "start": 1.86,
+          "end": 1.96
+        },
+        {
+          "word": " closed",
+          "start": 1.96,
+          "end": 2.24
+        },
+        {
+          "word": " trade,",
+          "start": 2.24,
+          "end": 2.66
+        },
+        {
+          "word": " cuties.",
+          "start": 2.8,
+          "end": 3.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

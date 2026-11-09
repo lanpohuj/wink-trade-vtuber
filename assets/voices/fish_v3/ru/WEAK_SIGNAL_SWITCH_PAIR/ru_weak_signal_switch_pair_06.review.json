@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_06",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Здесь остаюсь без сделки. Проверю другой график.",
+  "text_version": 1,
+  "text_sha256": "1701c42a4a82c42f738cfbad0dc6b764e436fb95054e5f2299c3f5f124b872d0",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.1085,
+  "sha256": "824f66db16fdbbc1b46a67fd996ef888013618ce565b9404dcfe9f2239e9fadc",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_06.mp3.rms2.json"
+}

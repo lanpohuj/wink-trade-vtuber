@@ -1,0 +1,57 @@
+{
+  "id": "en_open_trade_call_06",
+  "expected": "The upward trade is now active.",
+  "transcript": "The upward trade is now active.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.351,
+    "rms": 0.0806,
+    "peak": 0.3798,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.251,
+    "sha256": "27361c6e235ae1c7277ae6792367c7b25d9b0d27f715a82176136bdfcb3aa124"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.92,
+      "text": " The upward trade is now active.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " upward",
+          "start": 0.28,
+          "end": 0.62
+        },
+        {
+          "word": " trade",
+          "start": 0.62,
+          "end": 1.08
+        },
+        {
+          "word": " is",
+          "start": 1.08,
+          "end": 1.3
+        },
+        {
+          "word": " now",
+          "start": 1.3,
+          "end": 1.54
+        },
+        {
+          "word": " active.",
+          "start": 1.54,
+          "end": 1.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

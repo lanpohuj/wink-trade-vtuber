@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_05",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Вверх открылись. Результат узнаем после закрытия.",
+  "text_version": 1,
+  "text_sha256": "53ecbe8946e4f6eec3e07142e01d40625ab4ad2f6fda416f6453deba1a72e21a",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.578688,
+  "sha256": "9aab5cb7ca26451a337fcdf5674fb461a8f3ef106b78578a5b3dc463634ab037",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_05.mp3.rms2.json"
+}

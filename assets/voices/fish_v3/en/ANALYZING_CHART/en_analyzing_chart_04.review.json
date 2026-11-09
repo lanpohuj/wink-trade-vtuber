@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_04",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Direction first, then the details. One step at a time.",
+  "text_version": 1,
+  "text_sha256": "5f0dc1ded6508656c65f5df82174fcb7955a0ab6e01e0a393cbb67f4ccac6229",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.944375,
+  "sha256": "f6d7742d65b17603d18ce09dbef736a4e5f093364b3fd6d3b7b9c6495845bd24",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_04.mp3.rms2.json"
+}

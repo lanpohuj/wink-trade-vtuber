@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_10",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Cuties, the upward trade is open. Let's watch together.",
+  "text_version": 1,
+  "text_sha256": "b49efe1fd65883e9d6b679c939201ec85d236cf2fd45af07f0b71f7936c63bbc",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.683187,
+  "sha256": "52147adb9e51778499f6c81dc25e1d5860ffddbb0a76b0fbc84cac7882181c25",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_10.mp3.rms2.json"
+}

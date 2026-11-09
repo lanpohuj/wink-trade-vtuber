@@ -1,0 +1,57 @@
+{
+  "id": "ru_open_trade_put_06",
+  "expected": "Сделка на понижение уже в работе.",
+  "transcript": "Сделка на понижение уже в работе.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.325,
+    "rms": 0.09628,
+    "peak": 0.3312,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.105,
+    "sha256": "71ef00edb73d105565d1c84ad69084816fe0456db04342475305955d16817d56"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.18,
+      "text": " Сделка на понижение уже в работе.",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " на",
+          "start": 0.64,
+          "end": 0.74
+        },
+        {
+          "word": " понижение",
+          "start": 0.74,
+          "end": 1.32
+        },
+        {
+          "word": " уже",
+          "start": 1.32,
+          "end": 1.52
+        },
+        {
+          "word": " в",
+          "start": 1.52,
+          "end": 1.68
+        },
+        {
+          "word": " работе.",
+          "start": 1.68,
+          "end": 2.18
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

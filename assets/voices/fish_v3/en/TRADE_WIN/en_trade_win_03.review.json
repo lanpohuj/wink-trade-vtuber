@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_03",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "A positive result is confirmed for the last trade!",
+  "text_version": 1,
+  "text_sha256": "6e4574b7028caa1e488debe2a9e134baeb122da36f091236474f3aa727d0fb0f",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.1085,
+  "sha256": "77a5b5e77401793c4ba99fb65fa3e23819b9523c075ee4504b36fccffa60b6e1",
+  "rms_file": "en/TRADE_WIN/en_trade_win_03.mp3.rms2.json"
+}

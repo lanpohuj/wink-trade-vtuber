@@ -1,0 +1,47 @@
+{
+  "id": "ru_open_trade_put_02",
+  "expected": "Вход вниз подтверждён, котики.",
+  "transcript": "Вход вниз подтверждён котики.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.08902,
+    "peak": 0.37019,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "a02143053d6b90e7b607809f2bb38f65f1805f70bce14b318faecb678c2f8211"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.18,
+      "text": " Вход вниз подтверждён котики.",
+      "words": [
+        {
+          "word": " Вход",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " вниз",
+          "start": 0.52,
+          "end": 0.82
+        },
+        {
+          "word": " подтверждён",
+          "start": 0.82,
+          "end": 1.6
+        },
+        {
+          "word": " котики.",
+          "start": 1.6,
+          "end": 2.18
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

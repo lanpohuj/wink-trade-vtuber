@@ -1,0 +1,47 @@
+{
+  "id": "ru_open_trade_call_12",
+  "expected": "Открытие вверх подтверждено платформой.",
+  "transcript": "Открытие вверх подтверждено платформой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.403,
+    "rms": 0.0933,
+    "peak": 0.4214,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.123,
+    "sha256": "a77c8e8aeb74627bcc1ce3524d41edf9ecd5ea9cf452c1f97945b55891c017fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.22,
+      "text": " Открытие вверх подтверждено платформой.",
+      "words": [
+        {
+          "word": " Открытие",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " вверх",
+          "start": 0.82,
+          "end": 1.08
+        },
+        {
+          "word": " подтверждено",
+          "start": 1.08,
+          "end": 1.58
+        },
+        {
+          "word": " платформой.",
+          "start": 1.58,
+          "end": 2.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

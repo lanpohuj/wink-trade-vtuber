@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_refund_06",
+  "category": "TRADE_REFUND",
+  "lang": "ru",
+  "text": "Подтверждён возврат по закрытой сделке. Мяу, принято.",
+  "text_version": 1,
+  "text_sha256": "f660ddd51bf2acc4fdd603a09485a900671478e4e87f237b9a23826322132d03",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_REFUND/ru_trade_refund_06.mp3",
+  "auditory_verified": false,
+  "duration": 4.284,
+  "sha256": "fea3d84bb485e7b74f7423afed91b3a73d92c6c2158c782127f2f1b2700e83a4",
+  "rms_file": "ru/TRADE_REFUND/ru_trade_refund_06.mp3.rms2.json"
+}

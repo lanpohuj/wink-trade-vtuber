@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_05",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "Keeping my ears on the chart, waiting for settlement.",
+  "text_version": 1,
+  "text_sha256": "4ddb3902280e56107c19eb31b35a421445cd7f2f96504f1425c8d3d888391188",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_05.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "afc3e38a94ff46e4dc3372b1de50cbd9e1657da72a9fa459668a880f73417e66",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_05.mp3.rms2.json"
+}

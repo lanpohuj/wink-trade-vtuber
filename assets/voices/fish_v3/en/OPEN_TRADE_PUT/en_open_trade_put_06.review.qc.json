@@ -1,0 +1,57 @@
+{
+  "id": "en_open_trade_put_06",
+  "expected": "The downward trade is now active.",
+  "transcript": "The downward trade is now active.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.273,
+    "rms": 0.08348,
+    "peak": 0.42273,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.293,
+    "sha256": "40b04ef521a16f04a834f883bcf54494354f9a2406d2e136bdc8974687f9f7a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " The downward trade is now active.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " downward",
+          "start": 0.28,
+          "end": 0.64
+        },
+        {
+          "word": " trade",
+          "start": 0.64,
+          "end": 1.08
+        },
+        {
+          "word": " is",
+          "start": 1.08,
+          "end": 1.26
+        },
+        {
+          "word": " now",
+          "start": 1.26,
+          "end": 1.44
+        },
+        {
+          "word": " active.",
+          "start": 1.44,
+          "end": 1.8
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

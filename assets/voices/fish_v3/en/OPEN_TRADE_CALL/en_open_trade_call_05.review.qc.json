@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_call_05",
+  "expected": "Upward trade opened. We'll know the result at settlement.",
+  "transcript": "Upward trade opened. We'll know the result at settlement",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.07502,
+    "peak": 0.39403,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.099,
+    "sha256": "b10a37167411ed3f0af7f1a59d41d1ee458c5e61d71b33f2bbd68e648b2497ba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.22,
+      "text": " Upward trade opened. We'll know the result at settlement",
+      "words": [
+        {
+          "word": " Upward",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " trade",
+          "start": 0.52,
+          "end": 0.8
+        },
+        {
+          "word": " opened.",
+          "start": 0.8,
+          "end": 1.26
+        },
+        {
+          "word": " We'll",
+          "start": 1.64,
+          "end": 2.04
+        },
+        {
+          "word": " know",
+          "start": 2.04,
+          "end": 2.24
+        },
+        {
+          "word": " the",
+          "start": 2.24,
+          "end": 2.4
+        },
+        {
+          "word": " result",
+          "start": 2.4,
+          "end": 2.7
+        },
+        {
+          "word": " at",
+          "start": 2.7,
+          "end": 2.88
+        },
+        {
+          "word": " settlement",
+          "start": 2.88,
+          "end": 3.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_09",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "The closed trade has a positive result. Noted!",
+  "text_version": 1,
+  "text_sha256": "ebd55a1906eed19fc5d6e8b6e22302d7d669878579a611caee4b195da5385e8f",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_09.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "3f8c17e61ff580c92ce46bf2c9f0859cd1b6945c159061ffca720ee1ea8e2be5",
+  "rms_file": "en/TRADE_WIN/en_trade_win_09.mp3.rms2.json"
+}

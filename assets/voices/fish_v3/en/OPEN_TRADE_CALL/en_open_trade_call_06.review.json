@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_06",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "The upward trade is now active.",
+  "text_version": 1,
+  "text_sha256": "856de077381e288edb7fadef7f935c6970681248552003539795b03132ce8d14",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.350938,
+  "sha256": "27361c6e235ae1c7277ae6792367c7b25d9b0d27f715a82176136bdfcb3aa124",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_06.mp3.rms2.json"
+}

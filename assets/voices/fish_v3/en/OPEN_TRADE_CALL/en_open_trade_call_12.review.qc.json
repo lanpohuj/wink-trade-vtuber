@@ -1,0 +1,57 @@
+{
+  "id": "en_open_trade_call_12",
+  "expected": "The platform confirmed the upward opening.",
+  "transcript": "The platform confirmed the upward opening.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.612,
+    "rms": 0.08452,
+    "peak": 0.46306,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.192,
+    "sha256": "9a5da287bb70ffc461de30da747022510c78ea1c1ec80b1675e466336dfaf400"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " The platform confirmed the upward opening.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " platform",
+          "start": 0.26,
+          "end": 0.68
+        },
+        {
+          "word": " confirmed",
+          "start": 0.68,
+          "end": 1.24
+        },
+        {
+          "word": " the",
+          "start": 1.24,
+          "end": 1.5
+        },
+        {
+          "word": " upward",
+          "start": 1.5,
+          "end": 1.78
+        },
+        {
+          "word": " opening.",
+          "start": 1.78,
+          "end": 2.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

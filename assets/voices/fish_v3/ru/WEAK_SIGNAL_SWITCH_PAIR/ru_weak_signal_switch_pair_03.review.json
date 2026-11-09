@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_03",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Пока не складывается. Перехожу к следующей.",
+  "text_version": 1,
+  "text_sha256": "3d232bff251485a388027bf70376a89c0426cbb36e501dbc7dda6c515821cb7b",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_03.mp3",
+  "auditory_verified": false,
+  "duration": 2.925625,
+  "sha256": "ee0bd53fad408fa735f36254103e5d7d893e6c9b54bed23d1319fd877dea7939",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_03.mp3.rms2.json"
+}

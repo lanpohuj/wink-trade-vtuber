@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_04",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Пара сменилась. Старые выводы оставляем позади.",
+  "text_version": 1,
+  "text_sha256": "2237bc172a6a8398ae6fc00939131f9dc03dbb5d245599b379c0998c37c865fe",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.552562,
+  "sha256": "da30548bc6047bca30c884e9471cb9b92d22786b90abce3da2431de6cfd8c627",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_04.mp3.rms2.json"
+}

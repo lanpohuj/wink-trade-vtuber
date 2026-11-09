@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_04",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Сделка в работе. С выводами не торопимся.",
+  "text_version": 1,
+  "text_sha256": "2491ce729312b1625dc5b0a09391f767991fb9fdd7fd7bc0cbab112e05d545e9",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_04.mp3",
+  "auditory_verified": false,
+  "duration": 2.977875,
+  "sha256": "103535cce192b70a7fdc900914624e87699b5bcdc125a0c2b8c898d273d9ba78",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_04.mp3.rms2.json"
+}

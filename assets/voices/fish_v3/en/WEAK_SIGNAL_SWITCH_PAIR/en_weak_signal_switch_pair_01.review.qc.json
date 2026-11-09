@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_01",
+  "expected": "No confirmed entry here. Let's keep looking.",
+  "transcript": "No confirmed entry here. Let's keep looking.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07378,
+    "peak": 0.48572,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.116,
+    "sha256": "3fc80654490dd47c74cc6ce6fd0835c6fe3df8cdd3adbcf2fdbef156b52f2577"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " No confirmed entry here. Let's keep looking.",
+      "words": [
+        {
+          "word": " No",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " confirmed",
+          "start": 0.42,
+          "end": 0.82
+        },
+        {
+          "word": " entry",
+          "start": 0.82,
+          "end": 1.28
+        },
+        {
+          "word": " here.",
+          "start": 1.28,
+          "end": 1.52
+        },
+        {
+          "word": " Let's",
+          "start": 1.92,
+          "end": 2.22
+        },
+        {
+          "word": " keep",
+          "start": 2.22,
+          "end": 2.38
+        },
+        {
+          "word": " looking.",
+          "start": 2.38,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

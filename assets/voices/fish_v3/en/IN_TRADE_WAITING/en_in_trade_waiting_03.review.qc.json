@@ -1,0 +1,67 @@
+{
+  "id": "en_in_trade_waiting_03",
+  "expected": "Watching the move. The result is still ahead.",
+  "transcript": "Watching the move, the result is still ahead.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07229,
+    "peak": 0.33124,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.136,
+    "sha256": "1a183140615518c69c786f6c8e413a0746bf5be75d9745361ee4d469e52677aa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " Watching the move, the result is still ahead.",
+      "words": [
+        {
+          "word": " Watching",
+          "start": 0.0,
+          "end": 0.5
+        },
+        {
+          "word": " the",
+          "start": 0.5,
+          "end": 0.74
+        },
+        {
+          "word": " move,",
+          "start": 0.74,
+          "end": 1.0
+        },
+        {
+          "word": " the",
+          "start": 1.44,
+          "end": 1.62
+        },
+        {
+          "word": " result",
+          "start": 1.62,
+          "end": 1.98
+        },
+        {
+          "word": " is",
+          "start": 1.98,
+          "end": 2.18
+        },
+        {
+          "word": " still",
+          "start": 2.18,
+          "end": 2.4
+        },
+        {
+          "word": " ahead.",
+          "start": 2.4,
+          "end": 2.66
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

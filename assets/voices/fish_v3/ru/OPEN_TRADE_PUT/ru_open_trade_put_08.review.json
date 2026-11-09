@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_08",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Вход на понижение состоялся. Наблюдаю.",
+  "text_version": 1,
+  "text_sha256": "ba681dbae9a72f3e733b2c98e39aa279c1ebbc0a825586620338e3bb7ba6765c",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.1085,
+  "sha256": "1166df103fcf9b900392ad8a3aee30d05ac2a0257647717a99ab0b148c21bb6f",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_08.mp3.rms2.json"
+}

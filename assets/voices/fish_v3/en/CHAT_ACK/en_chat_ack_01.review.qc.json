@@ -1,0 +1,72 @@
+{
+  "id": "en_chat_ack_01",
+  "expected": "Chat, I see your messages. These ears are listening!",
+  "transcript": "Chat, I see your messages. These ears are listening!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07687,
+    "peak": 0.44278,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.254,
+    "sha256": "83ceddafaac2b4dab3d4174a682ab83bff03f7b00e7fbae9a8fab289c3afe1c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.28,
+      "text": " Chat, I see your messages. These ears are listening!",
+      "words": [
+        {
+          "word": " Chat,",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " I",
+          "start": 0.82,
+          "end": 0.98
+        },
+        {
+          "word": " see",
+          "start": 0.98,
+          "end": 1.2
+        },
+        {
+          "word": " your",
+          "start": 1.2,
+          "end": 1.32
+        },
+        {
+          "word": " messages.",
+          "start": 1.32,
+          "end": 1.7
+        },
+        {
+          "word": " These",
+          "start": 2.18,
+          "end": 2.36
+        },
+        {
+          "word": " ears",
+          "start": 2.36,
+          "end": 2.7
+        },
+        {
+          "word": " are",
+          "start": 2.7,
+          "end": 2.9
+        },
+        {
+          "word": " listening!",
+          "start": 2.9,
+          "end": 3.28
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

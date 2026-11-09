@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_05",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Вниз открылись. Результат узнаем после закрытия.",
+  "text_version": 1,
+  "text_sha256": "9392a8be8d21b03c1a21a20870f9d795f0208b3b9d3c40011a46058d6edb4e30",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "91c720067705ec9a660b44e658719e64ce412d950f4675a1ef351cc5b1910d9e",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_05.mp3.rms2.json"
+}

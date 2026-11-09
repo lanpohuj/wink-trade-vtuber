@@ -1,0 +1,25 @@
+{
+  "id": "ru_pair_switched_new_scan_02",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Пара успешно изменена! Начинаю анализ индикаторов на новом графике.",
+  "text_version": 1,
+  "text_sha256": "1e56e56ea782e320c3df5c6d3d7788cb94fe25b9d3b2b78958d6331bb654f3b3",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "switched_04",
+    "file": "PAIR_SWITCHED_NEW_SCAN/switched_04.mp3",
+    "sha256": "5d3b19a70ea1088514c474661672a98eab87065fc78a30a88b053569396d5c40",
+    "text": "Пара успешно изменена! Начинаю анализ индикаторов на новом графике.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_02.mp3",
+  "auditory_verified": false,
+  "duration": 4.780408,
+  "sha256": "5d3b19a70ea1088514c474661672a98eab87065fc78a30a88b053569396d5c40",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_02.mp3.rms2.json"
+}

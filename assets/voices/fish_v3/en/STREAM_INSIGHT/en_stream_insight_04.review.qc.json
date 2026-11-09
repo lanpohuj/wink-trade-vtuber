@@ -1,0 +1,82 @@
+{
+  "id": "en_stream_insight_04",
+  "expected": "Skipping is a decision too. Not every move needs a trade.",
+  "transcript": "Skipping is a decision too. Not every move needs a trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08507,
+    "peak": 0.56121,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.254,
+    "sha256": "0960ddb61bae766bb05ade829f35ae023d6649d3379db738071be2f0af5b172e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.42,
+      "text": " Skipping is a decision too. Not every move needs a trade.",
+      "words": [
+        {
+          "word": " Skipping",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " is",
+          "start": 0.66,
+          "end": 0.82
+        },
+        {
+          "word": " a",
+          "start": 0.82,
+          "end": 0.92
+        },
+        {
+          "word": " decision",
+          "start": 0.92,
+          "end": 1.24
+        },
+        {
+          "word": " too.",
+          "start": 1.24,
+          "end": 1.6
+        },
+        {
+          "word": " Not",
+          "start": 2.12,
+          "end": 2.3
+        },
+        {
+          "word": " every",
+          "start": 2.3,
+          "end": 2.54
+        },
+        {
+          "word": " move",
+          "start": 2.54,
+          "end": 2.78
+        },
+        {
+          "word": " needs",
+          "start": 2.78,
+          "end": 3.04
+        },
+        {
+          "word": " a",
+          "start": 3.04,
+          "end": 3.16
+        },
+        {
+          "word": " trade.",
+          "start": 3.16,
+          "end": 3.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

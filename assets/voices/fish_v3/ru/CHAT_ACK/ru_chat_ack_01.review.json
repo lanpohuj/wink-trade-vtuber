@@ -1,0 +1,18 @@
+{
+  "id": "ru_chat_ack_01",
+  "category": "CHAT_ACK",
+  "lang": "ru",
+  "text": "Я читаю сообщения в чате!",
+  "text_version": 2,
+  "text_sha256": "90c09591839a4b74fdb89abb23e2b67d57b0f090287c998df06a39335f1fa7f5",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/CHAT_ACK/ru_chat_ack_01.mp3",
+  "auditory_verified": false,
+  "duration": 2.141938,
+  "sha256": "4504740c7ae9446911246228063c49f2b5c0ced4e075b6e313a2c8e1f55a328f",
+  "rms_file": "ru/CHAT_ACK/ru_chat_ack_01.mp3.rms2.json"
+}

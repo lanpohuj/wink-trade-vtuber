@@ -1,0 +1,1204 @@
+{
+  "records": [
+    {
+      "id": "en_analyzing_chart_01",
+      "transcript": "Watching the move. Candles, tell me your story!",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_02",
+      "transcript": "Let me check the bigger picture cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_03",
+      "transcript": "Comparing timeframes, no need to rush just yet.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_04",
+      "transcript": "Direction first, then the details, one step at a time.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_05",
+      "transcript": "Watching the price. Ears up, everyone!",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_06",
+      "transcript": "Let's see how this part of the chart develops.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_07",
+      "transcript": "The candles are moving! I'm checking our conditions!",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_08",
+      "transcript": "Little chart time chat",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_09",
+      "transcript": "Checking whether our conditions agree.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_10",
+      "transcript": "One candle isn't the whole story. Let's look wider.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_11",
+      "transcript": "Let's break this move down, step by step.",
+      "issues": []
+    },
+    {
+      "id": "en_analyzing_chart_12",
+      "transcript": "Watch closely, chat. The picture is still developing.",
+      "issues": []
+    },
+    {
+      "id": "en_chat_ack_01",
+      "transcript": "Chat, I see your messages. These ears are listening!",
+      "issues": []
+    },
+    {
+      "id": "en_chat_ack_02",
+      "transcript": "Cuties, I'm reading along between chart checks.",
+      "issues": []
+    },
+    {
+      "id": "en_chat_ack_03",
+      "transcript": "Thanks for your messages. I'm keeping an eye on chat",
+      "issues": []
+    },
+    {
+      "id": "en_chat_ack_04",
+      "transcript": "It's cozier with you here. Hello, chat?",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_01",
+      "transcript": "The trade is still active, watching calmly.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_02",
+      "transcript": "Cuties, we're waiting for settlement!",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_03",
+      "transcript": "Watching the move, the result is still ahead.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_04",
+      "transcript": "The trade is active. No early conclusions.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_05",
+      "transcript": "Keeping my ears on the chart, waiting for settlement.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_06",
+      "transcript": "Just watching for now. We'll check the results separately.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_07",
+      "transcript": "The candles are moving. The trade continues.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_08",
+      "transcript": "Watching together, cuties. Settlement is still ahead.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_09",
+      "transcript": "No early result announcements. I'm watching.",
+      "issues": []
+    },
+    {
+      "id": "en_in_trade_waiting_10",
+      "transcript": "Waiting for the actual result, without guessing!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_01",
+      "transcript": "The upward trade is open. Let's watch!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_02",
+      "transcript": "Upward entry confirmed, cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_03",
+      "transcript": "We're in an upward trade. Eyes on the chart!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_04",
+      "transcript": "The buy is open. Watching the move.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_05",
+      "transcript": "Upward trade opened. We'll know the result at settlement",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_06",
+      "transcript": "The upward trade is now active.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_07",
+      "transcript": "Hubboard opening confirmed watching calmly",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_08",
+      "transcript": "The upward entry went through. I'm watching.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_09",
+      "transcript": "Direction up. Trade active.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_10",
+      "transcript": "Cuties! The upward trade is open! Let's watch together!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_11",
+      "transcript": "The buy is active. Let's wait before drawing conclusions.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_call_12",
+      "transcript": "The platform confirmed the upward opening.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_01",
+      "transcript": "The downward trade is open. Let's watch!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_02",
+      "transcript": "Downward entry confirmed, cuties!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_03",
+      "transcript": "We're in a downward trade. Eyes on the chart!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_04",
+      "transcript": "The cell is open, watching the move.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_05",
+      "transcript": "Downward trade opened. We'll know the result at settlement.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_06",
+      "transcript": "The downward trade is now active.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_07",
+      "transcript": "Downward opening confirmed, watching calmly.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_08",
+      "transcript": "The downward entry went through. I'm watching.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_09",
+      "transcript": "Direction down. Trade active.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_10",
+      "transcript": "Cuties, the downward trade is open. Let's watch together!",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_11",
+      "transcript": "The cell is active. Let's wait before drawing conclusions.",
+      "issues": []
+    },
+    {
+      "id": "en_open_trade_put_12",
+      "transcript": "The platform confirmed the downward opening.",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_01",
+      "transcript": "New pair on screen, starting the checks.",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_02",
+      "transcript": "We've switched! My attention is on this chart now!",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_03",
+      "transcript": "Another chart another check here we go",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_04",
+      "transcript": "The pair has changed! Fresh checks from here!",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_05",
+      "transcript": "Cuties, let's look at this new chart together.",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_06",
+      "transcript": "A fresh chart for these curious ears!",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_07",
+      "transcript": "Another pair is open checking its conditions",
+      "issues": []
+    },
+    {
+      "id": "en_pair_switched_new_scan_08",
+      "transcript": "Here's our next chart. Let's start fresh.",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_01",
+      "transcript": "A little breather, cuties, resting these ears.",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_02",
+      "transcript": "A short pause. Rushing won't help.",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_03",
+      "transcript": "A quiet moment can be lovely too.",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_04",
+      "transcript": "Taking a breath and staying attentive",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_05",
+      "transcript": "Cuties, a calm breather between checks.",
+      "issues": []
+    },
+    {
+      "id": "en_pause_between_trades_06",
+      "transcript": "A little pause. I'm still right here.",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_01",
+      "transcript": "Checking before entry. The details matter now.",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_02",
+      "transcript": "One more parameter check, cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_03",
+      "transcript": "Getting ready. Confirmation still matters.",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_04",
+      "transcript": "Checking whether the entry conditions still hold.",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_05",
+      "transcript": "One last check. Candles, behave yourselves!",
+      "issues": []
+    },
+    {
+      "id": "en_prepare_entry_06",
+      "transcript": "Matching the parameters to the current chart.",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_01",
+      "transcript": "Hey, hey! Winky here! Ears at the ready!",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_02",
+      "transcript": "Hi, chat. Get comfy and watch the chart with me.",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_03",
+      "transcript": "Meow! Hello! Let's start our chart session nice and easy!",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_04",
+      "transcript": "Winky's here! Those candles have our attention!",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_05",
+      "transcript": "Hi, cuties! Another day of watching and checking!",
+      "issues": []
+    },
+    {
+      "id": "en_start_stream_ready_06",
+      "transcript": "Lovely to see you! My listening ears are on!",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_01",
+      "transcript": "One candle won't tell the chart's whole story.",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_02",
+      "transcript": "Candle, timeframe, and trade duration are different things.",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_03",
+      "transcript": "Matching conditions don't promise an outcome, cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_04",
+      "transcript": "Skipping is a decision too. Not every move needs a trade.",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_05",
+      "transcript": "Check the data first, then draw conclusions.",
+      "issues": []
+    },
+    {
+      "id": "en_stream_insight_06",
+      "transcript": "A closed candle and a live candle behave differently.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_01",
+      "transcript": "The closed trade finished negative, recording it calmly.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_02",
+      "transcript": "A negative result is confirmed for the closed trade cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_03",
+      "transcript": "The last closed trade finished negative, recorded.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_04",
+      "transcript": "The completed trade has a negative result. Checked!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_05",
+      "transcript": "A negative result on the closed trade. Staying calm.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_06",
+      "transcript": "Settlement confirmed a negative result for the last trade.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_07",
+      "transcript": "That closed trade finished negative. We accept the result.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_08",
+      "transcript": "Negative result confirmed. Keeping the record honest.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_09",
+      "transcript": "A negative result for the completed trade, keeping our rules.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_loss_10",
+      "transcript": "Cuties the last trade closed negative recording the fact",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_01",
+      "transcript": "The closed trade settled as a refund, noted.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_02",
+      "transcript": "Refund confirmed for the completed trade.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_03",
+      "transcript": "A refund on the last trade. The step stays unchanged.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_04",
+      "transcript": "Cuties! The completed trade settled as a refund!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_05",
+      "transcript": "Settlement shows a refund, recording it separately.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_refund_06",
+      "transcript": "Refund confirmed for the closed trade. Meow, noted.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_01",
+      "transcript": "The closed trade finished positive. Meow, noted.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_02",
+      "transcript": "A positive result is confirmed for the closed trade, cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_03",
+      "transcript": "A positive result is confirmed for the last trade.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_04",
+      "transcript": "The completed trade finished positive, logging it.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_05",
+      "transcript": "Settlement confirmed a positive result for the closed trade.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_06",
+      "transcript": "Cuties! The last closed trade finished positive!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_07",
+      "transcript": "Positive result confirmed. That trade is in the record.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_08",
+      "transcript": "That close trade finished positive. Meow!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_09",
+      "transcript": "The closed trade has a positive result, noted.",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_10",
+      "transcript": "The completed trade finished positive, checked!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_11",
+      "transcript": "The last trade closed positive. Happy Ears!",
+      "issues": []
+    },
+    {
+      "id": "en_trade_win_12",
+      "transcript": "Confirmation is here. The closed trade finished positive.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_01",
+      "transcript": "No confirmed entry here. Let's keep looking.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_02",
+      "transcript": "Skipping this pair, we need suitable conditions.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_03",
+      "transcript": "It hasn't come together yet, on to the next pair!",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_04",
+      "transcript": "Not every chart needs an entry, cuties.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_05",
+      "transcript": "The conditions don't align. Moving on calmly.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_06",
+      "transcript": "No trade here. I'll check another chart.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_07",
+      "transcript": "Passing on this entry. Let's keep searching",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_08",
+      "transcript": "Not enough for an entry yet. Next pair!",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_09",
+      "transcript": "No confirmation on this pair. Switching over.",
+      "issues": []
+    },
+    {
+      "id": "en_weak_signal_switch_pair_10",
+      "transcript": "Cuties! Skipping is part of the rules, too!",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_01",
+      "transcript": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_02",
+      "transcript": "Внимательно смотрю на свечи и индикаторы. Ищу точку, где покупатели или продавцы начинают выдыхаться.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_03",
+      "transcript": "Стравниваю интервалы. Спешить пока некуда.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_04",
+      "transcript": "Сначала направление, потом детали. Все по порядку.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_05",
+      "transcript": "Наблюдаю за ценой. Ушки на макушке!",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_06",
+      "transcript": "Посмотрим, как складывается этот участок графика.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_07",
+      "transcript": "Свечки двигаются, а я сверяю условия.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_08",
+      "transcript": "Минутку внимания, графику! Чатик?",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_09",
+      "transcript": "Проверяю, согласуются ли наши признаки.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_10",
+      "transcript": "Не гадаю по одной свече, смотрю шире.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_11",
+      "transcript": "Сейчас разберём движение по шагам.",
+      "issues": []
+    },
+    {
+      "id": "ru_analyzing_chart_12",
+      "transcript": "Чатик, смотрим внимательно, картина еще складывается.",
+      "issues": []
+    },
+    {
+      "id": "ru_chat_ack_01",
+      "transcript": "Я читаю сообщение в чате!",
+      "issues": []
+    },
+    {
+      "id": "ru_chat_ack_02",
+      "transcript": "Котики! Читаю вас между проверками графика!",
+      "issues": []
+    },
+    {
+      "id": "ru_chat_ack_03",
+      "transcript": "Спасибо за сообщение! Чатик у меня на виду!",
+      "issues": []
+    },
+    {
+      "id": "ru_chat_ack_04",
+      "transcript": "Вы тут! И мне уютнее! Привет, Чатик!",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_01",
+      "transcript": "Сделка ещё идёт. Наблюдаем спокойно.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_02",
+      "transcript": "Котики, пока ждём закрытия.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_03",
+      "transcript": "Смотрим на движение, итог ещё впереди.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_04",
+      "transcript": "Сделка в работе с выводами не торопимся.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_05",
+      "transcript": "Оушки держу на графике. Жду расчета.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_06",
+      "transcript": "Пока просто наблюдаем. Результат проверим отдельно.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_07",
+      "transcript": "Свечки двигаются, сделка продолжается.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_08",
+      "transcript": "Последим вместе котики. Закрытие ещё ждём.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_09",
+      "transcript": "Итог не объявляю заранее, наблюдаю.",
+      "issues": []
+    },
+    {
+      "id": "ru_in_trade_waiting_10",
+      "transcript": "Ждём фактического результата. Без догадок.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_01",
+      "transcript": "Сделка вверх открыта. Теперь наблюдаем.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_02",
+      "transcript": "Вход вверх подтверждён котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_03",
+      "transcript": "Мы в сделке вверх! Ушки на график!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_04",
+      "transcript": "Покупка открыта? Следим за движением.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_05",
+      "transcript": "Вверх открылись. Результат узнаем после закрытия.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_06",
+      "transcript": "Сделка на повышение уже в работе!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_07",
+      "transcript": "Есть открытие вверх. Смотрим спокойно.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_08",
+      "transcript": "Вход на повышение состоялся. Наблюдаю.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_09",
+      "transcript": "направление вверх, сделка активна",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_10",
+      "transcript": "Котики, вверх уже открыто, следим вместе.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_11",
+      "transcript": "Покупка в работе! Не спешим с выводами!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_call_12",
+      "transcript": "Открытие вверх подтверждено платформой.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_01",
+      "transcript": "Сделка вниз открыта. Теперь наблюдаем.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_02",
+      "transcript": "Вход вниз подтверждён котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_03",
+      "transcript": "Мы в сделке вниз! Ушки на график!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_04",
+      "transcript": "Продажа открыта. Следим за движением.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_05",
+      "transcript": "Вниз открылись. Результат узнаем после закрытия.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_06",
+      "transcript": "Сделка на понижение уже в работе.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_07",
+      "transcript": "Есть открытие вниз! Смотрим спокойно!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_08",
+      "transcript": "Вход на понижение состоялся. Наблюдаю.",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_09",
+      "transcript": "направление вниз, сделка активна",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_10",
+      "transcript": "Хотики! Вниз уже открыто! Следим вместе!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_11",
+      "transcript": "Продажа в работе! Не спешим с выводами!",
+      "issues": []
+    },
+    {
+      "id": "ru_open_trade_put_12",
+      "transcript": "Открытие вниз подтверждено платформой.",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_01",
+      "transcript": "перешли на свежий актив. Давайте посмотрим какую картину нам рисуют свечи на этом графике.",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_02",
+      "transcript": "Пара успешно изменена, начиная анализ индикаторов на новом графике.",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_03",
+      "transcript": "Другой график — новая проверка. Поехали!",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_04",
+      "transcript": "Пара сменилась. Старые выводы оставляем позади.",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_05",
+      "transcript": "Котики, смотрим новый график вместе!",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_06",
+      "transcript": "Новый участок работы для моих ушек!",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_07",
+      "transcript": "Открыта другая пара. Проверяю ее условия.",
+      "issues": []
+    },
+    {
+      "id": "ru_pair_switched_new_scan_08",
+      "transcript": "Вот наш следующий график. Начинаем сначала.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_01",
+      "transcript": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_02",
+      "transcript": "Небольшая передышка по тайм-менеджменту. В трейдинге важно не спешить и входить только по лучшим сигналам.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_03",
+      "transcript": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_04",
+      "transcript": "Короткая пауза между сделками обновляю данные по волатильности и готовлю сканер к новому циклу.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_05",
+      "transcript": "Котики, спокойно отдыхаем между проверками.",
+      "issues": []
+    },
+    {
+      "id": "ru_pause_between_trades_06",
+      "transcript": "Небольшая пауза, я остаюсь рядом.",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_01",
+      "transcript": "Нашла сильный сетап с высокой точностью! Буквально пара секунд фиксируем точку входа!",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_02",
+      "transcript": "Сверяю параметры еще раз. Котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_03",
+      "transcript": "Подготовка идет, подтверждение все еще нужно.",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_04",
+      "transcript": "Смотрю, сохраняются ли условия для входа?",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_05",
+      "transcript": "Последняя проверка. Свечки без сюрпризов.",
+      "issues": []
+    },
+    {
+      "id": "ru_prepare_entry_06",
+      "transcript": "Параметры сверяю с текущим графиком.",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_01",
+      "transcript": "Всем привет на стриме! Винки на связи! Включаем турбо-режим и начинаем искать идеальные точки входа.",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_02",
+      "transcript": "Начинаем новый торговый цикл. Сейчас внимательно просканирую рынок и найду для нас лучший сигнал.",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_03",
+      "transcript": "Меу, привет! Начинаем наш разбор без спешки!",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_04",
+      "transcript": "Винки тут! Свечки уже ждут нашего внимания!",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_05",
+      "transcript": "Привет котики! Сегодня снова наблюдаем и проверяем!",
+      "issues": []
+    },
+    {
+      "id": "ru_start_stream_ready_06",
+      "transcript": "рада вас видеть включаю внимательные ушки",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_01",
+      "transcript": "Одно освещание расскажет всю историю графика.",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_02",
+      "transcript": "Интервал, свечи и время сделки – разные вещи.",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_03",
+      "transcript": "Совпадение условий не обещает результат, котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_04",
+      "transcript": "Пропуск тоже решения. Не каждому движению нужен вход.",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_05",
+      "transcript": "Сначала проверяем данные, потом делаем выводы.",
+      "issues": []
+    },
+    {
+      "id": "ru_stream_insight_06",
+      "transcript": "Закрытые свеча и живая ведут себя по-разному.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_01",
+      "transcript": "Прошлая сделка закрылась в минус, фиксируем!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_02",
+      "transcript": "Позавершённые сделки подтверждён минус. Котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_03",
+      "transcript": "Последняя закрытая сделка дала минус. Записано.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_04",
+      "transcript": "Результат завершенной сделки отрицательный. Сверина.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_05",
+      "transcript": "Есть минус по закрытой сделке. Бессуеты.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_06",
+      "transcript": "Расчет подтвердил минус по прошлой сделке.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_07",
+      "transcript": "Это закрытая сделка в минус. Не спорим с итогом.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_08",
+      "transcript": "Минус подтвержден. У статистики честный результат.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_09",
+      "transcript": "Эта сделка закрылась в минус. Идём по правилам.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_loss_10",
+      "transcript": "Хотики прошлое закрытие в минус. Фиксируем факт.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_01",
+      "transcript": "Закрытая сделка рассчитана возвратом. Отмечаю.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_02",
+      "transcript": "Возврат по завершенной сделке подтвержден.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_03",
+      "transcript": "По прошлой сделке возврат. Шаг сохраняется.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_04",
+      "transcript": "Котики! Завершенная сделка с возвратом!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_05",
+      "transcript": "Расчёт показал возврат. Записываем отдельно.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_refund_06",
+      "transcript": "Подтвержден возврат по закрытой сделке. Мяу! Принято!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_01",
+      "transcript": "Прошлая сделка закрылась в плюс. Мяу! Принято!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_02",
+      "transcript": "Красота! Очередная победа в нашу статистику! Люблю, когда технический анализ даёт такой чёткий результат!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_03",
+      "transcript": "Ура! Забираем профит! Отличная сделка! Баланс растет, работаем дальше в том же духе!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_04",
+      "transcript": "Завершённая сделка дала плюс, записываем!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_05",
+      "transcript": "расчет подтвердил плюс по закрытой сделке",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_06",
+      "transcript": "котики последняя закрытая сделка в плюс",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_07",
+      "transcript": "Плюс подтверждён. Эту сделку внесли в статистику.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_08",
+      "transcript": "Зафиксирован плюс позавершённые сделки, мяу!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_09",
+      "transcript": "Результат закрытой сделки положительный. Отмечаем.",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_10",
+      "transcript": "Получили плюс по завершенной сделке. Сверена!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_11",
+      "transcript": "Прошлая сделка закрылась плюс! Ушки радуются!",
+      "issues": []
+    },
+    {
+      "id": "ru_trade_win_12",
+      "transcript": "Подтверждение пришло! Закрытое сделка в плюс!",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_01",
+      "transcript": "Здесь вход не подтвердился. Смотрим дальше.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_02",
+      "transcript": "Эту пару пропускаю. Нужны подходящие условия.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_03",
+      "transcript": "Пока не складывается, ты рехожу к следующей.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_04",
+      "transcript": "Не каждый график обязан давать вход. Котики.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_05",
+      "transcript": "Условия не сошлись? Без спешки идём дальше.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_06",
+      "transcript": "Здесь остаюсь без делки. Проверю другой график.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_07",
+      "transcript": "Эту точку не беру. Ищем дальше.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_08",
+      "transcript": "Для входа пока недостаточно, пара следующие.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_09",
+      "transcript": "На этой паре подтверждения нет. Переключаюсь.",
+      "issues": []
+    },
+    {
+      "id": "ru_weak_signal_switch_pair_10",
+      "transcript": "Котики, пропуск тоже часть правил.",
+      "issues": []
+    }
+  ]
+}

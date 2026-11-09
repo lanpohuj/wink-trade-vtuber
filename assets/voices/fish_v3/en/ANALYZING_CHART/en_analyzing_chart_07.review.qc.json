@@ -1,0 +1,67 @@
+{
+  "id": "en_analyzing_chart_07",
+  "expected": "The candles are moving; I'm checking our conditions.",
+  "transcript": "The candles are moving! I'm checking our conditions!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07924,
+    "peak": 0.3903,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.318,
+    "sha256": "53c8a8c2b5727a4904d1dafbe9ce2dcb77e76df58d52032a3a6e28acd4029fe0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " The candles are moving! I'm checking our conditions!",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " candles",
+          "start": 0.28,
+          "end": 0.66
+        },
+        {
+          "word": " are",
+          "start": 0.66,
+          "end": 0.9
+        },
+        {
+          "word": " moving!",
+          "start": 0.9,
+          "end": 1.26
+        },
+        {
+          "word": " I'm",
+          "start": 1.7,
+          "end": 1.84
+        },
+        {
+          "word": " checking",
+          "start": 1.84,
+          "end": 2.08
+        },
+        {
+          "word": " our",
+          "start": 2.08,
+          "end": 2.28
+        },
+        {
+          "word": " conditions!",
+          "start": 2.28,
+          "end": 2.7
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

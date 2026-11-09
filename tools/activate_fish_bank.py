@@ -14,6 +14,9 @@ def activate(approval):
     approved = json.loads(approval.read_text())
     if approved.get("method") != "owner_listening":
         raise ValueError("Listening acceptance required")
+    records = [r for rows in manifest["categories"].values() for r in rows]
+    if len(records) != 240 or len({r["id"] for r in records}) != 240:
+        raise ValueError("Expected 240 unique recordings")
     byid = {r["id"]: r for r in approved["records"]}
     for category, count in CATEGORY_COUNTS.items():
         rows = manifest["categories"].get(category, [])
@@ -21,8 +24,13 @@ def activate(approval):
             if sum(r["lang"] == lang for r in rows) != count:
                 raise ValueError("Incomplete bank")
         for row in rows:
+            if row.get("automatic_qc_passed") is not True:
+                raise ValueError("Automatic QC required: " + row["id"])
             accepted = byid.get(row["id"], {})
-            actual = hashlib.sha256((bank / row["file"]).read_bytes()).hexdigest()
+            media = (bank / row["file"]).resolve()
+            if not media.is_relative_to(bank.resolve()):
+                raise ValueError("Recording outside bank")
+            actual = hashlib.sha256(media.read_bytes()).hexdigest()
             if (
                 accepted.get("accepted") is not True
                 or accepted.get("sha256") != actual

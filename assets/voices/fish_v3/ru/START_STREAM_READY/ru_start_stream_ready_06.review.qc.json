@@ -1,0 +1,57 @@
+{
+  "id": "ru_start_stream_ready_06",
+  "expected": "Рада вас видеть! Включаю внимательные ушки.",
+  "transcript": "рада вас видеть включаю внимательные ушки",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.08553,
+    "peak": 0.35313,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "c401d7af0025150bae164c1b860d7dbcea42c9af4b5b94f3cdd28a284aa9fc73"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.24,
+      "text": " рада вас видеть включаю внимательные ушки",
+      "words": [
+        {
+          "word": " рада",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " вас",
+          "start": 0.6,
+          "end": 0.74
+        },
+        {
+          "word": " видеть",
+          "start": 0.74,
+          "end": 1.32
+        },
+        {
+          "word": " включаю",
+          "start": 1.32,
+          "end": 2.16
+        },
+        {
+          "word": " внимательные",
+          "start": 2.16,
+          "end": 2.82
+        },
+        {
+          "word": " ушки",
+          "start": 2.82,
+          "end": 3.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

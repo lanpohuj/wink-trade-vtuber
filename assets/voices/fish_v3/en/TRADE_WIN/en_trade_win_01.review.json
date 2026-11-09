@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_01",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "The closed trade finished positive! Meow, noted!",
+  "text_version": 1,
+  "text_sha256": "d3e09cf97d574384e3db14dbb16c15a9f765e3fcd6e3fbfa949081f7ae80b69a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_01.mp3",
+  "auditory_verified": false,
+  "duration": 4.02275,
+  "sha256": "bf85585e9d2c6b5c7483493ed27316d8dba401064043fdb046c43eb42c3e8aee",
+  "rms_file": "en/TRADE_WIN/en_trade_win_01.mp3.rms2.json"
+}

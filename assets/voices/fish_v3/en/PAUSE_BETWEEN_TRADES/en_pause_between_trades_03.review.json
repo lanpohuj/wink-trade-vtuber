@@ -1,0 +1,18 @@
+{
+  "id": "en_pause_between_trades_03",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "en",
+  "text": "A quiet moment can be lovely too.",
+  "text_version": 1,
+  "text_sha256": "e9b87ec3da10971e8b7c1aa94f2cd0d48da0914d0ec78e63abcfa0606b54339e",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_03.mp3",
+  "auditory_verified": false,
+  "duration": 2.350938,
+  "sha256": "6ed325b761f2f1ea2371365328f11cacff2d364f1532ec509704484963bce43a",
+  "rms_file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_03.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_06",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Сделка на повышение уже в работе.",
+  "text_version": 1,
+  "text_sha256": "06e9605330af0f99f7cadd31ab93af6f489463ddfe8e92ee61c6dcf5e067a70e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.272562,
+  "sha256": "07029b26daa397983b3c39a547a58092ea9e47579c23b21c56c83c225eaab44e",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_06.mp3.rms2.json"
+}

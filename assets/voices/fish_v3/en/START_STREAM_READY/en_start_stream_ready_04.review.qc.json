@@ -1,0 +1,62 @@
+{
+  "id": "en_start_stream_ready_04",
+  "expected": "Winky's here! Those candles have our attention.",
+  "transcript": "Winky's here! Those candles have our attention!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08712,
+    "peak": 0.43172,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "0f3ccdf86a34aa6476505c79e4075024786fa67cf37357f039a18b87518a0f83"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.76,
+      "text": " Winky's here! Those candles have our attention!",
+      "words": [
+        {
+          "word": " Winky's",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " here!",
+          "start": 0.68,
+          "end": 0.88
+        },
+        {
+          "word": " Those",
+          "start": 1.4,
+          "end": 1.6
+        },
+        {
+          "word": " candles",
+          "start": 1.6,
+          "end": 1.96
+        },
+        {
+          "word": " have",
+          "start": 1.96,
+          "end": 2.26
+        },
+        {
+          "word": " our",
+          "start": 2.26,
+          "end": 2.4
+        },
+        {
+          "word": " attention!",
+          "start": 2.4,
+          "end": 2.76
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

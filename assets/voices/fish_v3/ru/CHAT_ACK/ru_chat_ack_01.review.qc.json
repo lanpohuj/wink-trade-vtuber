@@ -1,0 +1,52 @@
+{
+  "id": "ru_chat_ack_01",
+  "expected": "Я читаю сообщения в чате!",
+  "transcript": "Я читаю сообщение в чате!",
+  "similarity": 0.95,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.142,
+    "rms": 0.07139,
+    "peak": 0.32765,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "4504740c7ae9446911246228063c49f2b5c0ced4e075b6e313a2c8e1f55a328f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.9,
+      "text": " Я читаю сообщение в чате!",
+      "words": [
+        {
+          "word": " Я",
+          "start": 0.0,
+          "end": 0.4
+        },
+        {
+          "word": " читаю",
+          "start": 0.4,
+          "end": 0.8
+        },
+        {
+          "word": " сообщение",
+          "start": 0.8,
+          "end": 1.38
+        },
+        {
+          "word": " в",
+          "start": 1.38,
+          "end": 1.54
+        },
+        {
+          "word": " чате!",
+          "start": 1.54,
+          "end": 1.9
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

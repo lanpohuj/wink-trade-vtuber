@@ -1,0 +1,18 @@
+{
+  "id": "en_pause_between_trades_02",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "en",
+  "text": "A short pause. Rushing won't help.",
+  "text_version": 1,
+  "text_sha256": "05c676b7cec9e9d7ca288f8056129eef642608c2981bfd666667c70ef6570eff",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.481562,
+  "sha256": "eb820fdeb686a43d4aedccba3fb2033c24090e669b16eee465440a57a65c8025",
+  "rms_file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_02.mp3.rms2.json"
+}

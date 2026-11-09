@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_12",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The platform confirmed the downward opening.",
+  "text_version": 1,
+  "text_sha256": "aab662e3f1ac0508b9b99902cdd26f1247ee5709b40902c7979048270c47f818",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_12.mp3",
+  "auditory_verified": false,
+  "duration": 2.612125,
+  "sha256": "ebf14334c4ca3fd9df48b7a7888dfa6fc4b7733404b8bbe322a98a382ffc3079",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_12.mp3.rms2.json"
+}

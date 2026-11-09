@@ -1,0 +1,18 @@
+{
+  "id": "ru_prepare_entry_04",
+  "category": "PREPARE_ENTRY",
+  "lang": "ru",
+  "text": "Смотрю, сохраняются ли условия для входа.",
+  "text_version": 1,
+  "text_sha256": "528c7ea410f85e7dd1ba7a4b33e6d8d55a0ae4175199c103cf19e8983c8f3ff1",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PREPARE_ENTRY/ru_prepare_entry_04.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "89d087dbf71ca4616e9ff1510e4364469a19e1f3d0915ca70d062d05ca110d3d",
+  "rms_file": "ru/PREPARE_ENTRY/ru_prepare_entry_04.mp3.rms2.json"
+}

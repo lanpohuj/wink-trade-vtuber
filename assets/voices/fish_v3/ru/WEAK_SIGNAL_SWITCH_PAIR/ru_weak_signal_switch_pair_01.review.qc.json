@@ -1,0 +1,57 @@
+{
+  "id": "ru_weak_signal_switch_pair_01",
+  "expected": "Здесь вход не подтвердился. Смотрим дальше.",
+  "transcript": "Здесь вход не подтвердился. Смотрим дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.07897,
+    "peak": 0.40173,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.084,
+    "sha256": "05b8d44ba08bf96389c691c655514763822c0cc71953ec359b53fb74765acf85"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Здесь вход не подтвердился. Смотрим дальше.",
+      "words": [
+        {
+          "word": " Здесь",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " вход",
+          "start": 0.48,
+          "end": 0.78
+        },
+        {
+          "word": " не",
+          "start": 0.78,
+          "end": 0.94
+        },
+        {
+          "word": " подтвердился.",
+          "start": 0.94,
+          "end": 1.64
+        },
+        {
+          "word": " Смотрим",
+          "start": 2.0,
+          "end": 2.48
+        },
+        {
+          "word": " дальше.",
+          "start": 2.48,
+          "end": 2.7
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

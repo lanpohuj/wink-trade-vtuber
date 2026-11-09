@@ -1,0 +1,72 @@
+{
+  "id": "en_stream_insight_06",
+  "expected": "A closed candle and a live candle behave differently.",
+  "transcript": "A closed candle and a live candle behave differently.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.978,
+    "rms": 0.0786,
+    "peak": 0.34709,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.158,
+    "sha256": "0093874bbda73882b00bdfed2d9f7dd450775bed21137075b003dbaf89952464"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.52,
+      "text": " A closed candle and a live candle behave differently.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " closed",
+          "start": 0.28,
+          "end": 0.58
+        },
+        {
+          "word": " candle",
+          "start": 0.58,
+          "end": 1.04
+        },
+        {
+          "word": " and",
+          "start": 1.04,
+          "end": 1.22
+        },
+        {
+          "word": " a",
+          "start": 1.22,
+          "end": 1.34
+        },
+        {
+          "word": " live",
+          "start": 1.34,
+          "end": 1.54
+        },
+        {
+          "word": " candle",
+          "start": 1.54,
+          "end": 1.86
+        },
+        {
+          "word": " behave",
+          "start": 1.86,
+          "end": 2.12
+        },
+        {
+          "word": " differently.",
+          "start": 2.12,
+          "end": 2.52
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

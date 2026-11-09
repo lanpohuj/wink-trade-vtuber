@@ -1,0 +1,52 @@
+{
+  "id": "en_in_trade_waiting_02",
+  "expected": "Cuties, we're waiting for settlement.",
+  "transcript": "Cuties, we're waiting for settlement!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.07572,
+    "peak": 0.45279,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.195,
+    "sha256": "6c9aa92e4781f0446767c5294845c3e8d3ada31c930447ef9a83f6f61bf74e9e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.88,
+      "text": " Cuties, we're waiting for settlement!",
+      "words": [
+        {
+          "word": " Cuties,",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " we're",
+          "start": 0.8,
+          "end": 1.06
+        },
+        {
+          "word": " waiting",
+          "start": 1.06,
+          "end": 1.3
+        },
+        {
+          "word": " for",
+          "start": 1.3,
+          "end": 1.5
+        },
+        {
+          "word": " settlement!",
+          "start": 1.5,
+          "end": 1.88
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

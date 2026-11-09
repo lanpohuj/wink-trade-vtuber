@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_01",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Прошлая сделка закрылась в минус. Фиксируем.",
+  "text_version": 2,
+  "text_sha256": "ce70ad6db8954001e37404775a68f3c7ebffea526d83e414e97ab11ae7a6e08b",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "01dc874f1aacd0ef72ecc9d07f77149e22081dcd73f71ae868d64ea0d6f42419",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_01.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_stream_insight_05",
+  "category": "STREAM_INSIGHT",
+  "lang": "ru",
+  "text": "Сначала проверяем данные, потом делаем выводы.",
+  "text_version": 1,
+  "text_sha256": "dbfcbf0769cbade7ddac4bc618eaee4a4c84680cbf2a98b8c7abe32c76c13f12",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/STREAM_INSIGHT/ru_stream_insight_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "5dffd3ddb7026101ab5a1f26298f0e89e85f79863632c602680701f485bef99c",
+  "rms_file": "ru/STREAM_INSIGHT/ru_stream_insight_05.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_prepare_entry_05",
+  "category": "PREPARE_ENTRY",
+  "lang": "en",
+  "text": "One last check. Candles, behave yourselves!",
+  "text_version": 1,
+  "text_sha256": "87921370938769f9054480332e258b658748d2de7bcf43f729fac537387ae1b7",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PREPARE_ENTRY/en_prepare_entry_05.mp3",
+  "auditory_verified": false,
+  "duration": 4.33625,
+  "sha256": "0c6c07bf05abd269c6a65b6f9f107fa0bf64addab5343e54cf45c9b61d495387",
+  "rms_file": "en/PREPARE_ENTRY/en_prepare_entry_05.mp3.rms2.json"
+}

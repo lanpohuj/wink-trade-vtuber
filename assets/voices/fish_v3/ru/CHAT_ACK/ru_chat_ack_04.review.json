@@ -1,0 +1,18 @@
+{
+  "id": "ru_chat_ack_04",
+  "category": "CHAT_ACK",
+  "lang": "ru",
+  "text": "Вы тут, и мне уютнее. Привет, чатик!",
+  "text_version": 1,
+  "text_sha256": "6761c837032106a32875acf7fb253e2377b17b0be35c8dbffab02d0d7dc39341",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/CHAT_ACK/ru_chat_ack_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.630937,
+  "sha256": "58568dea449ae6c4f97db63536ddcad84733640bb015ad2f9aaf2a63cc6c09e1",
+  "rms_file": "ru/CHAT_ACK/ru_chat_ack_04.mp3.rms2.json"
+}

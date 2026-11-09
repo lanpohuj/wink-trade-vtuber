@@ -1,0 +1,57 @@
+{
+  "id": "ru_in_trade_waiting_06",
+  "expected": "Пока просто наблюдаем. Результат проверим отдельно.",
+  "transcript": "Пока просто наблюдаем. Результат проверим отдельно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.0891,
+    "peak": 0.42105,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "6681834ef68da5cc53d29d9490833d6461fb787c8f4a42c2299f428ecab9624b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.42,
+      "text": " Пока просто наблюдаем. Результат проверим отдельно.",
+      "words": [
+        {
+          "word": " Пока",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " просто",
+          "start": 0.42,
+          "end": 0.82
+        },
+        {
+          "word": " наблюдаем.",
+          "start": 0.82,
+          "end": 1.48
+        },
+        {
+          "word": " Результат",
+          "start": 1.78,
+          "end": 2.46
+        },
+        {
+          "word": " проверим",
+          "start": 2.46,
+          "end": 2.94
+        },
+        {
+          "word": " отдельно.",
+          "start": 2.94,
+          "end": 3.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

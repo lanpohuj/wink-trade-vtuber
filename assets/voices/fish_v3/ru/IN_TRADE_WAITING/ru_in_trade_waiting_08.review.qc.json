@@ -1,0 +1,64 @@
+{
+  "id": "ru_in_trade_waiting_08",
+  "expected": "Следим вместе, котики. Закрытия ещё ждём.",
+  "transcript": "Последим вместе котики. Закрытие ещё ждём.",
+  "similarity": 0.941,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.09046,
+    "peak": 0.45135,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.09,
+    "sha256": "e5023cb65feaec4ba2cd3d1640848e9bb7f58a8b45ab0c029e27b0741e5567cd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Последим вместе котики.",
+      "words": [
+        {
+          "word": " Последим",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " вместе",
+          "start": 0.64,
+          "end": 0.94
+        },
+        {
+          "word": " котики.",
+          "start": 0.94,
+          "end": 1.6
+        }
+      ]
+    },
+    {
+      "start": 2.1,
+      "end": 3.16,
+      "text": " Закрытие ещё ждём.",
+      "words": [
+        {
+          "word": " Закрытие",
+          "start": 2.1,
+          "end": 2.76
+        },
+        {
+          "word": " ещё",
+          "start": 2.76,
+          "end": 2.86
+        },
+        {
+          "word": " ждём.",
+          "start": 2.86,
+          "end": 3.16
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ru_pause_between_trades_02",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Небольшая передышка по тайм-менеджменту! В трейдинге важно не спешить и входить только по лучшим сигналам.",
+  "text_version": 1,
+  "text_sha256": "9155fa36474eaf6597fe5d76e6947e817fe9338ddc5a2bd9e67d387de940d3e8",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "pause_02",
+    "file": "PAUSE_BETWEEN_TRADES/pause_02.mp3",
+    "sha256": "47aea63f1536601ed3f32f3fa5bf614d00104d4afa55831fde3cfcf9ac741529",
+    "text": "Небольшая передышка по тайм-менеджменту! В трейдинге важно не спешить и входить только по лучшим сигналам.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_02.mp3",
+  "auditory_verified": false,
+  "duration": 6.556735,
+  "sha256": "47aea63f1536601ed3f32f3fa5bf614d00104d4afa55831fde3cfcf9ac741529",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_02.mp3.rms2.json"
+}

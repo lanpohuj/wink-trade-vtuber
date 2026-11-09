@@ -1,0 +1,59 @@
+{
+  "id": "ru_trade_loss_02",
+  "expected": "По завершённой сделке подтверждён минус, котики.",
+  "transcript": "Позавершённые сделки подтверждён минус. Котики.",
+  "similarity": 0.927,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.08935,
+    "peak": 0.44804,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "52f323a9904a8c21d63c20e5ab4750053952ad0fc07930dd10632c6f5f81eede"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.36,
+      "text": " Позавершённые сделки подтверждён минус.",
+      "words": [
+        {
+          "word": " Позавершённые",
+          "start": 0.0,
+          "end": 0.84
+        },
+        {
+          "word": " сделки",
+          "start": 0.84,
+          "end": 1.24
+        },
+        {
+          "word": " подтверждён",
+          "start": 1.24,
+          "end": 1.9
+        },
+        {
+          "word": " минус.",
+          "start": 1.9,
+          "end": 2.36
+        }
+      ]
+    },
+    {
+      "start": 2.76,
+      "end": 3.22,
+      "text": " Котики.",
+      "words": [
+        {
+          "word": " Котики.",
+          "start": 2.76,
+          "end": 3.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

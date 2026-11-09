@@ -1,0 +1,18 @@
+{
+  "id": "en_start_stream_ready_06",
+  "category": "START_STREAM_READY",
+  "lang": "en",
+  "text": "Lovely to see you! My listening ears are on.",
+  "text_version": 1,
+  "text_sha256": "5cf5926a9e82ebc7127a734a9768d22b44bf4a76b89dd8bf3f5f693216b5d4fd",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/START_STREAM_READY/en_start_stream_ready_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "e4a9a72322a692b1b64951ef6fb865548450f11288839b343d86adb5c9ead672",
+  "rms_file": "en/START_STREAM_READY/en_start_stream_ready_06.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_chat_ack_01",
+  "category": "CHAT_ACK",
+  "lang": "en",
+  "text": "Chat, I see your messages. These ears are listening!",
+  "text_version": 1,
+  "text_sha256": "92f6352398c7166e7948fb0f22f96203f1fae51f265460ec27ce9fde3b6b4020",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/CHAT_ACK/en_chat_ack_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "83ceddafaac2b4dab3d4174a682ab83bff03f7b00e7fbae9a8fab289c3afe1c9",
+  "rms_file": "en/CHAT_ACK/en_chat_ack_01.mp3.rms2.json"
+}

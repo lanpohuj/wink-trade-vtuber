@@ -1,0 +1,18 @@
+{
+  "id": "ru_stream_insight_01",
+  "category": "STREAM_INSIGHT",
+  "lang": "ru",
+  "text": "Одна свеча не расскажет всю историю графика.",
+  "text_version": 1,
+  "text_sha256": "b47f58ce37c94862faa8d8310195d657fce59dd5770157bc54519ae5d67abb9c",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/STREAM_INSIGHT/ru_stream_insight_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "bd5f3f1f2016b17569cdbcc8eb443eff657dc852b6cdbc7dd4e4b8c75c2ed5e6",
+  "rms_file": "ru/STREAM_INSIGHT/ru_stream_insight_01.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_stream_insight_04",
+  "category": "STREAM_INSIGHT",
+  "lang": "en",
+  "text": "Skipping is a decision too. Not every move needs a trade.",
+  "text_version": 1,
+  "text_sha256": "3533e102eed31ef47dcd32574ff9287d52c70833a27ef0e66ae655c36a0e98b8",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/STREAM_INSIGHT/en_stream_insight_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "0960ddb61bae766bb05ade829f35ae023d6649d3379db738071be2f0af5b172e",
+  "rms_file": "en/STREAM_INSIGHT/en_stream_insight_04.mp3.rms2.json"
+}

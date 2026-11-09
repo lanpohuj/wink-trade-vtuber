@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_08",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Вот наш следующий график. Начинаем с начала.",
+  "text_version": 1,
+  "text_sha256": "d0aade82b37321fa5612067f90f5dfe34c2a4712d3c20ae0a6d1e5634896edc1",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "110e29b2709f3bd97001a9e576b826a898414d95297ef9af1051a1f9c20212de",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_08.mp3.rms2.json"
+}

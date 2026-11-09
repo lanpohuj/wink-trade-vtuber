@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_11",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The sell is active. Let's wait before drawing conclusions.",
+  "text_version": 1,
+  "text_sha256": "d6dceb6655f8d280481bf1ba7e9b6c06d9db40d17fc5b1b52aec90939e0e87a8",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_11.mp3",
+  "auditory_verified": false,
+  "duration": 3.839938,
+  "sha256": "c135c1ae58d249f4353a40b21367373ec58ac208860b987f30f487fb14dfe823",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_11.mp3.rms2.json"
+}

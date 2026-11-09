@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_09",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Направление вниз, сделка активна.",
+  "text_version": 1,
+  "text_sha256": "b839acc2b5b83e69def66cfecb03da23bc56fc10fc00c2105463838b6e44a2fe",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "4da42eda03a37f3c6e5cfdb30c198808e8153d32feca86c4aab4d49dde4dc020",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_09.mp3.rms2.json"
+}

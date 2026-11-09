@@ -1,0 +1,69 @@
+{
+  "id": "ru_trade_refund_06",
+  "expected": "Подтверждён возврат по закрытой сделке. Мяу, принято.",
+  "transcript": "Подтвержден возврат по закрытой сделке. Мяу! Принято!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08572,
+    "peak": 0.43961,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.104,
+    "sha256": "fea3d84bb485e7b74f7423afed91b3a73d92c6c2158c782127f2f1b2700e83a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.3,
+      "text": " Подтвержден возврат по закрытой сделке.",
+      "words": [
+        {
+          "word": " Подтвержден",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " возврат",
+          "start": 0.82,
+          "end": 1.24
+        },
+        {
+          "word": " по",
+          "start": 1.24,
+          "end": 1.38
+        },
+        {
+          "word": " закрытой",
+          "start": 1.38,
+          "end": 1.8
+        },
+        {
+          "word": " сделке.",
+          "start": 1.8,
+          "end": 2.3
+        }
+      ]
+    },
+    {
+      "start": 2.66,
+      "end": 4.08,
+      "text": " Мяу! Принято!",
+      "words": [
+        {
+          "word": " Мяу!",
+          "start": 2.66,
+          "end": 3.28
+        },
+        {
+          "word": " Принято!",
+          "start": 3.48,
+          "end": 4.08
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

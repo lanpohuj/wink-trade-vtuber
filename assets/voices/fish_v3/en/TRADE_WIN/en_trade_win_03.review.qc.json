@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_win_03",
+  "expected": "A positive result is confirmed for the last trade!",
+  "transcript": "A positive result is confirmed for the last trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.109,
+    "rms": 0.08856,
+    "peak": 0.38045,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "77a5b5e77401793c4ba99fb65fa3e23819b9523c075ee4504b36fccffa60b6e1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " A positive result is confirmed for the last trade.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " positive",
+          "start": 0.28,
+          "end": 0.68
+        },
+        {
+          "word": " result",
+          "start": 0.68,
+          "end": 1.1
+        },
+        {
+          "word": " is",
+          "start": 1.1,
+          "end": 1.32
+        },
+        {
+          "word": " confirmed",
+          "start": 1.32,
+          "end": 1.72
+        },
+        {
+          "word": " for",
+          "start": 1.72,
+          "end": 1.96
+        },
+        {
+          "word": " the",
+          "start": 1.96,
+          "end": 2.08
+        },
+        {
+          "word": " last",
+          "start": 2.08,
+          "end": 2.34
+        },
+        {
+          "word": " trade.",
+          "start": 2.34,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

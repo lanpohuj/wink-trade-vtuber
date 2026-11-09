@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_03",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Мы в сделке вниз. Ушки на график!",
+  "text_version": 1,
+  "text_sha256": "3280f3ea0ad9610d855563290809b187c7c42c7f59defa357ae12894bf2c55e6",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_03.mp3",
+  "auditory_verified": false,
+  "duration": 2.716625,
+  "sha256": "ff7fcd62369cd13c90ca772d20a645f715087df0983540296527f6a2d6806275",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_03.mp3.rms2.json"
+}

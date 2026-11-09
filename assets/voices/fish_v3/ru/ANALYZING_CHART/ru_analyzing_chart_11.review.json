@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_11",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Сейчас разберём движение по шагам.",
+  "text_version": 1,
+  "text_sha256": "bcb53dadb9304179de45882841d43864f83d15ee8d95c0252b8fc1dbd6b0af69",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_11.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "56be925b8c06c87cd12ac5eb4c2e527e8b34d8aebd7d40017c7b16b79f012b7a",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_11.mp3.rms2.json"
+}

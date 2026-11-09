@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_refund_03",
+  "expected": "По прошлой сделке возврат. Шаг сохраняется.",
+  "transcript": "По прошлой сделке возврат. Шаг сохраняется.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.08647,
+    "peak": 0.45553,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "766cfd69c708bc3561533316e0e9b602ec295b77dd9d18bb256ae4a477282bc9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " По прошлой сделке возврат. Шаг сохраняется.",
+      "words": [
+        {
+          "word": " По",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " прошлой",
+          "start": 0.28,
+          "end": 0.72
+        },
+        {
+          "word": " сделке",
+          "start": 0.72,
+          "end": 1.1
+        },
+        {
+          "word": " возврат.",
+          "start": 1.1,
+          "end": 1.58
+        },
+        {
+          "word": " Шаг",
+          "start": 1.9,
+          "end": 2.22
+        },
+        {
+          "word": " сохраняется.",
+          "start": 2.22,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

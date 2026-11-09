@@ -1,0 +1,67 @@
+{
+  "id": "en_analyzing_chart_11",
+  "expected": "Let's break this move down, step by step.",
+  "transcript": "Let's break this move down, step by step.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07795,
+    "peak": 0.46573,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.147,
+    "sha256": "3c02a49c9f30aad832c833784f69c8f52cfdc45090b8ba776be1776e73115a28"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.86,
+      "text": " Let's break this move down, step by step.",
+      "words": [
+        {
+          "word": " Let's",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " break",
+          "start": 0.46,
+          "end": 0.68
+        },
+        {
+          "word": " this",
+          "start": 0.68,
+          "end": 0.94
+        },
+        {
+          "word": " move",
+          "start": 0.94,
+          "end": 1.22
+        },
+        {
+          "word": " down,",
+          "start": 1.22,
+          "end": 1.6
+        },
+        {
+          "word": " step",
+          "start": 1.98,
+          "end": 2.3
+        },
+        {
+          "word": " by",
+          "start": 2.3,
+          "end": 2.52
+        },
+        {
+          "word": " step.",
+          "start": 2.52,
+          "end": 2.86
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

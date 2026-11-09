@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_09",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Checking whether our conditions agree.",
+  "text_version": 1,
+  "text_sha256": "caca0fa0f055f3e2d88f92e7b7a6f523f92483c2016a57c154e35220385c4680",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.141938,
+  "sha256": "891036d51052378bbeb1b42c09dbd7ce215a6d6a04bc8dddbe6f0545dba00dba",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_09.mp3.rms2.json"
+}

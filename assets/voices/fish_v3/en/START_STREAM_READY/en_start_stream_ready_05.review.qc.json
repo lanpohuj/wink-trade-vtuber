@@ -1,0 +1,67 @@
+{
+  "id": "en_start_stream_ready_05",
+  "expected": "Hi, cuties! Another day of watching and checking.",
+  "transcript": "Hi, cuties! Another day of watching and checking!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08637,
+    "peak": 0.4141,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.13,
+    "sha256": "72add8ef55ad0bd56cb68de1718f3e5a0d5f3909282bd0e47fcff7fea1df4cd1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Hi, cuties! Another day of watching and checking!",
+      "words": [
+        {
+          "word": " Hi,",
+          "start": 0.0,
+          "end": 0.44
+        },
+        {
+          "word": " cuties!",
+          "start": 0.58,
+          "end": 1.1
+        },
+        {
+          "word": " Another",
+          "start": 1.4,
+          "end": 1.64
+        },
+        {
+          "word": " day",
+          "start": 1.64,
+          "end": 1.96
+        },
+        {
+          "word": " of",
+          "start": 1.96,
+          "end": 2.1
+        },
+        {
+          "word": " watching",
+          "start": 2.1,
+          "end": 2.42
+        },
+        {
+          "word": " and",
+          "start": 2.42,
+          "end": 2.62
+        },
+        {
+          "word": " checking!",
+          "start": 2.62,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_07",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Эта закрытая сделка в минус. Не спорим с итогом.",
+  "text_version": 1,
+  "text_sha256": "1a2fbd9e73f57b73849fb1b501a54d82a9b36ec877ab2735df2572c10fa6a6d1",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.630937,
+  "sha256": "468eb45697acdc2d968e70ac65625c56610534242fb03c8eb4fa4db966f98235",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_07.mp3.rms2.json"
+}

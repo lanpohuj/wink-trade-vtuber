@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_08",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Минус подтверждён. В статистике честный результат.",
+  "text_version": 1,
+  "text_sha256": "42cc298361195352fbadc6e2ee7f536b1b6a218a2edee7731dfba3eea721e730",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.291313,
+  "sha256": "6981f0d1d3a6f229919e117f9e362304629ca837c07e20a00f4f2ef300a9bb9a",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_08.mp3.rms2.json"
+}

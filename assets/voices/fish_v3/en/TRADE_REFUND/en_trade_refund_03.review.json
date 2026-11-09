@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_03",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "A refund on the last trade. The step stays unchanged.",
+  "text_version": 1,
+  "text_sha256": "24b2dabe814021484b8f41063b9d8e7ed92ed917904309500ca0e8d3362bea12",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.892125,
+  "sha256": "2b87f404349d15f1d9c02cf6d70b7f04c2b050aa235bc63d6e2def3a1c86025f",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_03.mp3.rms2.json"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ru_pair_switched_new_scan_01",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
+  "text_version": 1,
+  "text_sha256": "39e8d3e49a97d22332f1e72e78163b2f2a64751ab91d2780758e7cfb8b6d3ae8",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "switched_03",
+    "file": "PAIR_SWITCHED_NEW_SCAN/switched_03.mp3",
+    "sha256": "c2de777ab8e3009220bdfc0b2d0bb4454206c459ebf785ff25fe016b1fe878e5",
+    "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_01.mp3",
+  "auditory_verified": false,
+  "duration": 5.903673,
+  "sha256": "c2de777ab8e3009220bdfc0b2d0bb4454206c459ebf785ff25fe016b1fe878e5",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_01.mp3.rms2.json"
+}

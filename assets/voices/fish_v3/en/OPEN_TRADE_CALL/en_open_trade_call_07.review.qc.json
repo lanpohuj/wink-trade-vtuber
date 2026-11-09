@@ -1,0 +1,52 @@
+{
+  "id": "en_open_trade_call_07",
+  "expected": "Upward opening confirmed. Watching calmly.",
+  "transcript": "Hubboard opening confirmed watching calmly",
+  "similarity": 0.919,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.07474,
+    "peak": 0.4045,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.242,
+    "sha256": "ad4e9efb05400d9645eb8802b4b0c469b07b459f475926dbb28b1039751728b4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " Hubboard opening confirmed watching calmly",
+      "words": [
+        {
+          "word": " Hubboard",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " opening",
+          "start": 0.52,
+          "end": 0.96
+        },
+        {
+          "word": " confirmed",
+          "start": 0.96,
+          "end": 1.5
+        },
+        {
+          "word": " watching",
+          "start": 1.5,
+          "end": 2.44
+        },
+        {
+          "word": " calmly",
+          "start": 2.44,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

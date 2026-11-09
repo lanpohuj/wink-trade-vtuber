@@ -1,0 +1,47 @@
+{
+  "id": "en_open_trade_call_09",
+  "expected": "Direction up, trade active.",
+  "transcript": "Direction up. Trade active.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.142,
+    "rms": 0.07002,
+    "peak": 0.42103,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.182,
+    "sha256": "415c850f1607cc33f0bf21e08da184583e1002b939d984f81b65e39a8936ab7b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.74,
+      "text": " Direction up. Trade active.",
+      "words": [
+        {
+          "word": " Direction",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " up.",
+          "start": 0.6,
+          "end": 0.84
+        },
+        {
+          "word": " Trade",
+          "start": 1.22,
+          "end": 1.36
+        },
+        {
+          "word": " active.",
+          "start": 1.36,
+          "end": 1.74
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

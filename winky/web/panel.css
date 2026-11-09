@@ -1109,3 +1109,6 @@ input:focus {
   background: rgba(234, 179, 8, 0.25);
 }
 
+
+/* Hidden controls must stay hidden even when their layout uses flex. */
+[hidden] { display: none !important; }

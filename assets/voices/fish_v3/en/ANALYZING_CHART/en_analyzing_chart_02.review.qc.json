@@ -1,0 +1,62 @@
+{
+  "id": "en_analyzing_chart_02",
+  "expected": "Let me check the bigger picture, cuties.",
+  "transcript": "Let me check the bigger picture cuties.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.482,
+    "rms": 0.06568,
+    "peak": 0.329,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.222,
+    "sha256": "9a0548f184f248c99f7f0a3d3d2be1d71bad26b89fca7823b7632f87032ed8a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Let me check the bigger picture cuties.",
+      "words": [
+        {
+          "word": " Let",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "word": " me",
+          "start": 0.34,
+          "end": 0.46
+        },
+        {
+          "word": " check",
+          "start": 0.46,
+          "end": 0.72
+        },
+        {
+          "word": " the",
+          "start": 0.72,
+          "end": 0.9
+        },
+        {
+          "word": " bigger",
+          "start": 0.9,
+          "end": 1.18
+        },
+        {
+          "word": " picture",
+          "start": 1.18,
+          "end": 1.56
+        },
+        {
+          "word": " cuties.",
+          "start": 1.56,
+          "end": 2.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

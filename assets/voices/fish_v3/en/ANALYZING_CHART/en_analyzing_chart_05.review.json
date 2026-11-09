@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_05",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Watching the price. Ears up, everyone!",
+  "text_version": 1,
+  "text_sha256": "f9049bf37769d84660e02a15bfaf6c19163079e94ed90ed9ca7c592cd186739d",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "15dccb3de0a6ec81c1e10b3b757d3a4edaf88b78c03e456a82872af4707a86d2",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_05.mp3.rms2.json"
+}

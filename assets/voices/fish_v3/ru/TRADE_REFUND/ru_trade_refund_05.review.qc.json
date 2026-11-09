@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_refund_05",
+  "expected": "Расчёт показал возврат. Записываем отдельно.",
+  "transcript": "Расчёт показал возврат. Записываем отдельно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08807,
+    "peak": 0.40944,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.11,
+    "sha256": "2a000000b0e897f6dee72b18bcb7bfa1862c8992f0ad6276f3ea5f98a517ddd5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " Расчёт показал возврат. Записываем отдельно.",
+      "words": [
+        {
+          "word": " Расчёт",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " показал",
+          "start": 0.6,
+          "end": 1.06
+        },
+        {
+          "word": " возврат.",
+          "start": 1.06,
+          "end": 1.56
+        },
+        {
+          "word": " Записываем",
+          "start": 1.96,
+          "end": 2.66
+        },
+        {
+          "word": " отдельно.",
+          "start": 2.66,
+          "end": 3.2
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ru_analyzing_chart_01",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+  "text_version": 1,
+  "text_sha256": "96dc6684e6a4a988219c4e35dfd5e234210f1496e423920dc887692bdc364dcf",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "analyze_03",
+    "file": "ANALYZING_CHART/analyze_03.mp3",
+    "sha256": "62f739d2bc92d9ab8370815e78385b04dcf88474ea7ad6795c8eb74d03edc8f9",
+    "text": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_01.mp3",
+  "auditory_verified": false,
+  "duration": 6.817959,
+  "sha256": "62f739d2bc92d9ab8370815e78385b04dcf88474ea7ad6795c8eb74d03edc8f9",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_01.mp3.rms2.json"
+}

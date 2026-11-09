@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_06",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Расчёт подтвердил минус по прошлой сделке.",
+  "text_version": 1,
+  "text_sha256": "1b486bc56d8719f0a7d2dd84842611fcb96d1c120a99150fb668e6cbe5d6efd4",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.533812,
+  "sha256": "d5e422cb9d6d53c5f241df0fceec27daa413089396aa5f5037908eb6af93379b",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_06.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_12",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Подтверждение пришло: закрытая сделка в плюс!",
+  "text_version": 1,
+  "text_sha256": "70d90e2c792315ce5809daf710767c457aad200edd0e9d1be34b56e33124b669",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_12.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "862f5aa32283482bbc8a89326022b0ba651fabe91a4ad02c198a76a2522a0f42",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_12.mp3.rms2.json"
+}

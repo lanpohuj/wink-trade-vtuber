@@ -1,0 +1,67 @@
+{
+  "id": "ru_trade_loss_09",
+  "expected": "Эта сделка закрылась в минус. Идём по правилам.",
+  "transcript": "Эта сделка закрылась в минус. Идём по правилам.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.08687,
+    "peak": 0.35411,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "418d46e98f51a84d15ebac0a56f8fc1ea7cc0f9222e24e437abbb1d30486a41e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.26,
+      "text": " Эта сделка закрылась в минус. Идём по правилам.",
+      "words": [
+        {
+          "word": " Эта",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " сделка",
+          "start": 0.46,
+          "end": 0.84
+        },
+        {
+          "word": " закрылась",
+          "start": 0.84,
+          "end": 1.34
+        },
+        {
+          "word": " в",
+          "start": 1.34,
+          "end": 1.46
+        },
+        {
+          "word": " минус.",
+          "start": 1.46,
+          "end": 1.82
+        },
+        {
+          "word": " Идём",
+          "start": 2.32,
+          "end": 2.58
+        },
+        {
+          "word": " по",
+          "start": 2.58,
+          "end": 2.72
+        },
+        {
+          "word": " правилам.",
+          "start": 2.72,
+          "end": 3.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

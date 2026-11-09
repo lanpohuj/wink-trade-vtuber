@@ -1,0 +1,25 @@
+{
+  "id": "ru_pause_between_trades_04",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Короткая пауза между сделками — обновляю данные по волатильности и готовлю сканер к новому циклу!",
+  "text_version": 1,
+  "text_sha256": "0896032c209eb297832ed8bc322722981e2df0eb31e543e8009e4111b926d215",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "pause_04",
+    "file": "PAUSE_BETWEEN_TRADES/pause_04.mp3",
+    "sha256": "d5d558431c78c67de13223713733526a723603fcc552c84aed33f660561955ce",
+    "text": "Короткая пауза между сделками — обновляю данные по волатильности и готовлю сканер к новому циклу!",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_04.mp3",
+  "auditory_verified": false,
+  "duration": 6.269388,
+  "sha256": "d5d558431c78c67de13223713733526a723603fcc552c84aed33f660561955ce",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_04.mp3.rms2.json"
+}

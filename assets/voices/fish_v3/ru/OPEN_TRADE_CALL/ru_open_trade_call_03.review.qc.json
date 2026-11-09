@@ -1,0 +1,69 @@
+{
+  "id": "ru_open_trade_call_03",
+  "expected": "Мы в сделке вверх. Ушки на график!",
+  "transcript": "Мы в сделке вверх! Ушки на график!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.07564,
+    "peak": 0.34543,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.104,
+    "sha256": "06bf408886537e330495f39326dcb4ea28d9573193f01aba78640d9368294f45"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.74,
+      "text": " Мы в сделке вверх!",
+      "words": [
+        {
+          "word": " Мы",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " в",
+          "start": 0.36,
+          "end": 0.46
+        },
+        {
+          "word": " сделке",
+          "start": 0.46,
+          "end": 0.94
+        },
+        {
+          "word": " вверх!",
+          "start": 0.94,
+          "end": 1.74
+        }
+      ]
+    },
+    {
+      "start": 1.76,
+      "end": 2.84,
+      "text": " Ушки на график!",
+      "words": [
+        {
+          "word": " Ушки",
+          "start": 1.76,
+          "end": 2.22
+        },
+        {
+          "word": " на",
+          "start": 2.22,
+          "end": 2.34
+        },
+        {
+          "word": " график!",
+          "start": 2.34,
+          "end": 2.84
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

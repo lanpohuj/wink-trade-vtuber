@@ -1,0 +1,62 @@
+{
+  "id": "ru_open_trade_call_11",
+  "expected": "Покупка в работе. Не спешим с выводами.",
+  "transcript": "Покупка в работе! Не спешим с выводами!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.08095,
+    "peak": 0.31096,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.121,
+    "sha256": "c9859477de0a65f60b184563fb1932ae7ee64a2f1ab3c26c2dc7d85484fd81a8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Покупка в работе! Не спешим с выводами!",
+      "words": [
+        {
+          "word": " Покупка",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " в",
+          "start": 0.82,
+          "end": 0.88
+        },
+        {
+          "word": " работе!",
+          "start": 0.88,
+          "end": 1.48
+        },
+        {
+          "word": " Не",
+          "start": 1.7,
+          "end": 1.92
+        },
+        {
+          "word": " спешим",
+          "start": 1.92,
+          "end": 2.34
+        },
+        {
+          "word": " с",
+          "start": 2.34,
+          "end": 2.44
+        },
+        {
+          "word": " выводами!",
+          "start": 2.44,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

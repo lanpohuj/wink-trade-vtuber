@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_loss_06",
+  "expected": "Расчёт подтвердил минус по прошлой сделке.",
+  "transcript": "Расчет подтвердил минус по прошлой сделке.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.534,
+    "rms": 0.09219,
+    "peak": 0.44135,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.094,
+    "sha256": "d5e422cb9d6d53c5f241df0fceec27daa413089396aa5f5037908eb6af93379b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.34,
+      "text": " Расчет подтвердил минус по прошлой сделке.",
+      "words": [
+        {
+          "word": " Расчет",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " подтвердил",
+          "start": 0.56,
+          "end": 1.1
+        },
+        {
+          "word": " минус",
+          "start": 1.1,
+          "end": 1.4
+        },
+        {
+          "word": " по",
+          "start": 1.4,
+          "end": 1.54
+        },
+        {
+          "word": " прошлой",
+          "start": 1.54,
+          "end": 1.92
+        },
+        {
+          "word": " сделке.",
+          "start": 1.92,
+          "end": 2.34
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

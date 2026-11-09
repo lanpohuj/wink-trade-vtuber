@@ -1,0 +1,52 @@
+{
+  "id": "en_prepare_entry_03",
+  "expected": "Getting ready. Confirmation still matters.",
+  "transcript": "Getting ready. Confirmation still matters.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.978,
+    "rms": 0.07767,
+    "peak": 0.35532,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.278,
+    "sha256": "4197a99c575e1a8fe53835e2531e21f8415b3eac0a9f3cbdd39c3579c0132fb5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Getting ready. Confirmation still matters.",
+      "words": [
+        {
+          "word": " Getting",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " ready.",
+          "start": 0.42,
+          "end": 0.72
+        },
+        {
+          "word": " Confirmation",
+          "start": 1.28,
+          "end": 1.86
+        },
+        {
+          "word": " still",
+          "start": 1.86,
+          "end": 2.12
+        },
+        {
+          "word": " matters.",
+          "start": 2.12,
+          "end": 2.44
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

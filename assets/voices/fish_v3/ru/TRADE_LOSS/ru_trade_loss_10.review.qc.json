@@ -1,0 +1,69 @@
+{
+  "id": "ru_trade_loss_10",
+  "expected": "Котики, прошлое закрытие в минус. Фиксируем факт.",
+  "transcript": "Хотики прошлое закрытие в минус. Фиксируем факт.",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.0889,
+    "peak": 0.43986,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "4537c4f13f3c82343e9a17ee248760f81a6409e9df56c1b721dcb4bb967356d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.14,
+      "text": " Хотики прошлое закрытие в минус.",
+      "words": [
+        {
+          "word": " Хотики",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " прошлое",
+          "start": 0.6,
+          "end": 1.12
+        },
+        {
+          "word": " закрытие",
+          "start": 1.12,
+          "end": 1.64
+        },
+        {
+          "word": " в",
+          "start": 1.64,
+          "end": 1.72
+        },
+        {
+          "word": " минус.",
+          "start": 1.72,
+          "end": 2.14
+        }
+      ]
+    },
+    {
+      "start": 2.4,
+      "end": 3.44,
+      "text": " Фиксируем факт.",
+      "words": [
+        {
+          "word": " Фиксируем",
+          "start": 2.4,
+          "end": 3.06
+        },
+        {
+          "word": " факт.",
+          "start": 3.06,
+          "end": 3.44
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

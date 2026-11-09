@@ -1,0 +1,18 @@
+{
+  "id": "ru_pause_between_trades_05",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Котики, спокойно отдыхаем между проверками.",
+  "text_version": 1,
+  "text_sha256": "50a5820ab9dfc26dc3df2992ad00190b99f3c53f5eefbb99660ed14579bc0de0",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_05.mp3",
+  "auditory_verified": false,
+  "duration": 2.716625,
+  "sha256": "dddcf60ddca01ba12ba105be2876585971bc413fdb0751b23da91bde4d6ea4b1",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_05.mp3.rms2.json"
+}

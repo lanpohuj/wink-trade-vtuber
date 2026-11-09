@@ -1,0 +1,67 @@
+{
+  "id": "en_weak_signal_switch_pair_10",
+  "expected": "Cuties, skipping is part of the rules too.",
+  "transcript": "Cuties! Skipping is part of the rules, too!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07708,
+    "peak": 0.3491,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.298,
+    "sha256": "a50dfd26d8c96102e3f6b343829d786a291ff2afa586f49b60ec37608f8e846e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.76,
+      "text": " Cuties! Skipping is part of the rules, too!",
+      "words": [
+        {
+          "word": " Cuties!",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " Skipping",
+          "start": 1.1,
+          "end": 1.5
+        },
+        {
+          "word": " is",
+          "start": 1.5,
+          "end": 1.66
+        },
+        {
+          "word": " part",
+          "start": 1.66,
+          "end": 1.86
+        },
+        {
+          "word": " of",
+          "start": 1.86,
+          "end": 2.0
+        },
+        {
+          "word": " the",
+          "start": 2.0,
+          "end": 2.1
+        },
+        {
+          "word": " rules,",
+          "start": 2.1,
+          "end": 2.4
+        },
+        {
+          "word": " too!",
+          "start": 2.54,
+          "end": 2.76
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

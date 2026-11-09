@@ -1,0 +1,57 @@
+{
+  "id": "ru_weak_signal_switch_pair_02",
+  "expected": "Эту пару пропускаю. Нужны подходящие условия.",
+  "transcript": "Эту пару пропускаю. Нужны подходящие условия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.07964,
+    "peak": 0.35211,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.103,
+    "sha256": "1f5a11ee925e6a873082c0328986060d509b6bfc5a377d44cc68177cb7ff136b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.52,
+      "text": " Эту пару пропускаю. Нужны подходящие условия.",
+      "words": [
+        {
+          "word": " Эту",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " пару",
+          "start": 0.48,
+          "end": 0.74
+        },
+        {
+          "word": " пропускаю.",
+          "start": 0.74,
+          "end": 1.54
+        },
+        {
+          "word": " Нужны",
+          "start": 1.96,
+          "end": 2.4
+        },
+        {
+          "word": " подходящие",
+          "start": 2.4,
+          "end": 3.02
+        },
+        {
+          "word": " условия.",
+          "start": 3.02,
+          "end": 3.52
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

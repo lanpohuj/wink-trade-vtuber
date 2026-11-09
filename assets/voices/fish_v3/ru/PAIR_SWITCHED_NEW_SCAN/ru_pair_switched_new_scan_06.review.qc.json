@@ -1,0 +1,57 @@
+{
+  "id": "ru_pair_switched_new_scan_06",
+  "expected": "Новый участок работы для моих ушек!",
+  "transcript": "Новый участок работы для моих ушек!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.403,
+    "rms": 0.07801,
+    "peak": 0.32247,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.103,
+    "sha256": "b36fd6848d4c6798d4a732cefa118eda4905653e4cbe60fb63240943f9acc3a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.26,
+      "text": " Новый участок работы для моих ушек!",
+      "words": [
+        {
+          "word": " Новый",
+          "start": 0.0,
+          "end": 0.58
+        },
+        {
+          "word": " участок",
+          "start": 0.58,
+          "end": 1.08
+        },
+        {
+          "word": " работы",
+          "start": 1.08,
+          "end": 1.36
+        },
+        {
+          "word": " для",
+          "start": 1.36,
+          "end": 1.58
+        },
+        {
+          "word": " моих",
+          "start": 1.58,
+          "end": 1.9
+        },
+        {
+          "word": " ушек!",
+          "start": 1.9,
+          "end": 2.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

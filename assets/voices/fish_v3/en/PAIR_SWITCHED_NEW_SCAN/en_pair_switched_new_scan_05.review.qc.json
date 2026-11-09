@@ -1,0 +1,67 @@
+{
+  "id": "en_pair_switched_new_scan_05",
+  "expected": "Cuties, let's look at this new chart together.",
+  "transcript": "Cuties, let's look at this new chart together.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08149,
+    "peak": 0.39914,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.153,
+    "sha256": "10d2c340291697cbe0a952ea7403c317521b58c094dcdeade1c643f76be0c821"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Cuties, let's look at this new chart together.",
+      "words": [
+        {
+          "word": " Cuties,",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " let's",
+          "start": 0.98,
+          "end": 1.26
+        },
+        {
+          "word": " look",
+          "start": 1.26,
+          "end": 1.4
+        },
+        {
+          "word": " at",
+          "start": 1.4,
+          "end": 1.52
+        },
+        {
+          "word": " this",
+          "start": 1.52,
+          "end": 1.66
+        },
+        {
+          "word": " new",
+          "start": 1.66,
+          "end": 1.88
+        },
+        {
+          "word": " chart",
+          "start": 1.88,
+          "end": 2.18
+        },
+        {
+          "word": " together.",
+          "start": 2.18,
+          "end": 2.5
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_06",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "Settlement confirmed a negative result for the last trade.",
+  "text_version": 1,
+  "text_sha256": "7033735bc03dc8db40f456beb3cb4346207272f515cd5ba1d7d2c7c7a39d8e52",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "d134639cb97a1bc406de6a8b6c5a4da28ad7740bcb44cf0e4a745df5e2a30774",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_06.mp3.rms2.json"
+}

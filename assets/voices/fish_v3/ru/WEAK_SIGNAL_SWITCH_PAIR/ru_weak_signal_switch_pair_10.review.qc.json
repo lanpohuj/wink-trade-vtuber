@@ -1,0 +1,52 @@
+{
+  "id": "ru_weak_signal_switch_pair_10",
+  "expected": "Котики, пропуск тоже часть правил.",
+  "transcript": "Котики, пропуск тоже часть правил.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.273,
+    "rms": 0.07419,
+    "peak": 0.36479,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.093,
+    "sha256": "c52ce7fea679239eff78afc893b83c2159631f429a9f53afa7e6622b420af01d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Котики, пропуск тоже часть правил.",
+      "words": [
+        {
+          "word": " Котики,",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " пропуск",
+          "start": 0.74,
+          "end": 1.08
+        },
+        {
+          "word": " тоже",
+          "start": 1.08,
+          "end": 1.28
+        },
+        {
+          "word": " часть",
+          "start": 1.28,
+          "end": 1.54
+        },
+        {
+          "word": " правил.",
+          "start": 1.54,
+          "end": 2.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

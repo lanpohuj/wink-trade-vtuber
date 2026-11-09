@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_refund_04",
+  "expected": "Котики, завершённая сделка с возвратом.",
+  "transcript": "Котики! Завершенная сделка с возвратом!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07418,
+    "peak": 0.34859,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "bffec535a5e21dc9a03456dddd8aa12733c3a8ac0519414035fb6d0d4100905c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " Котики! Завершенная сделка с возвратом!",
+      "words": [
+        {
+          "word": " Котики!",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " Завершенная",
+          "start": 1.12,
+          "end": 1.86
+        },
+        {
+          "word": " сделка",
+          "start": 1.86,
+          "end": 2.34
+        },
+        {
+          "word": " с",
+          "start": 2.34,
+          "end": 2.42
+        },
+        {
+          "word": " возвратом!",
+          "start": 2.42,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

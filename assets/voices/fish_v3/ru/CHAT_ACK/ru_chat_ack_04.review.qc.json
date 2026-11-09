@@ -1,0 +1,62 @@
+{
+  "id": "ru_chat_ack_04",
+  "expected": "Вы тут, и мне уютнее. Привет, чатик!",
+  "transcript": "Вы тут! И мне уютнее! Привет, Чатик!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.631,
+    "rms": 0.0773,
+    "peak": 0.31174,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.131,
+    "sha256": "58568dea449ae6c4f97db63536ddcad84733640bb015ad2f9aaf2a63cc6c09e1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.46,
+      "text": " Вы тут! И мне уютнее! Привет, Чатик!",
+      "words": [
+        {
+          "word": " Вы",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " тут!",
+          "start": 0.38,
+          "end": 0.64
+        },
+        {
+          "word": " И",
+          "start": 0.94,
+          "end": 1.24
+        },
+        {
+          "word": " мне",
+          "start": 1.24,
+          "end": 1.42
+        },
+        {
+          "word": " уютнее!",
+          "start": 1.42,
+          "end": 2.04
+        },
+        {
+          "word": " Привет,",
+          "start": 2.54,
+          "end": 2.9
+        },
+        {
+          "word": " Чатик!",
+          "start": 3.1,
+          "end": 3.46
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

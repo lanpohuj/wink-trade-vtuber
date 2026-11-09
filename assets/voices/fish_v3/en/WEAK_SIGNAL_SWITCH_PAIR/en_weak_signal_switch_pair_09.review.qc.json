@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_09",
+  "expected": "No confirmation on this pair. Switching over.",
+  "transcript": "No confirmation on this pair. Switching over.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07687,
+    "peak": 0.34803,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.21,
+    "sha256": "a662cbad0e83fafef9be0fe184a6d5ecf7ae80c879a69c94c0191270deb9e425"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " No confirmation on this pair. Switching over.",
+      "words": [
+        {
+          "word": " No",
+          "start": 0.0,
+          "end": 0.4
+        },
+        {
+          "word": " confirmation",
+          "start": 0.4,
+          "end": 0.94
+        },
+        {
+          "word": " on",
+          "start": 0.94,
+          "end": 1.34
+        },
+        {
+          "word": " this",
+          "start": 1.34,
+          "end": 1.54
+        },
+        {
+          "word": " pair.",
+          "start": 1.54,
+          "end": 1.84
+        },
+        {
+          "word": " Switching",
+          "start": 2.26,
+          "end": 2.76
+        },
+        {
+          "word": " over.",
+          "start": 2.76,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

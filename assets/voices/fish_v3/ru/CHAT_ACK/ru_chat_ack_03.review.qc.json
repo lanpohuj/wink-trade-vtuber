@@ -1,0 +1,67 @@
+{
+  "id": "ru_chat_ack_03",
+  "expected": "Спасибо за сообщения! Чатик у меня на виду.",
+  "transcript": "Спасибо за сообщение! Чатик у меня на виду!",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.08922,
+    "peak": 0.39378,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.133,
+    "sha256": "51f1416666fb7342a772d0d47c4e64e649f2694ae67c363dd03be884eb9f0f96"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Спасибо за сообщение! Чатик у меня на виду!",
+      "words": [
+        {
+          "word": " Спасибо",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " за",
+          "start": 0.68,
+          "end": 0.92
+        },
+        {
+          "word": " сообщение!",
+          "start": 0.92,
+          "end": 1.62
+        },
+        {
+          "word": " Чатик",
+          "start": 1.98,
+          "end": 2.48
+        },
+        {
+          "word": " у",
+          "start": 2.48,
+          "end": 2.58
+        },
+        {
+          "word": " меня",
+          "start": 2.58,
+          "end": 2.76
+        },
+        {
+          "word": " на",
+          "start": 2.76,
+          "end": 2.96
+        },
+        {
+          "word": " виду!",
+          "start": 2.96,
+          "end": 3.36
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

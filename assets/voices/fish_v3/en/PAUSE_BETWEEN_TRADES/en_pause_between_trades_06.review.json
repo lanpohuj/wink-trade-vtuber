@@ -1,0 +1,18 @@
+{
+  "id": "en_pause_between_trades_06",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "en",
+  "text": "A little pause. I'm still right here.",
+  "text_version": 1,
+  "text_sha256": "cc42ba7eb4569bb601452d6bfbd767d33d986cdee291e79465f3e9593008ab9d",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.586063,
+  "sha256": "3e9aeea1780de9dd1271d621c068bc65d7fcdff224b281b1028aa25f39e46b36",
+  "rms_file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_06.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_02",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Вход вверх подтверждён, котики.",
+  "text_version": 1,
+  "text_sha256": "0192f2546216f313787095114856ea5ecb3b5eaaecc6e5eeba30c74fe2f82a78",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.011312,
+  "sha256": "026a69948d1a5400135e27659ca8e2794d6d7e703385070ef91c85c8bfb36cb2",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_02.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_01",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "No confirmed entry here. Let's keep looking.",
+  "text_version": 1,
+  "text_sha256": "487cd12a8781abc4bbca769a1b2904e161b074bebff42d593119188ede03805a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "3fc80654490dd47c74cc6ce6fd0835c6fe3df8cdd3adbcf2fdbef156b52f2577",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_01.mp3.rms2.json"
+}

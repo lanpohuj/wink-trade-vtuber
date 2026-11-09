@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_call_10",
+  "expected": "Cuties, the upward trade is open. Let's watch together.",
+  "transcript": "Cuties! The upward trade is open! Let's watch together!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.07738,
+    "peak": 0.39883,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.123,
+    "sha256": "52147adb9e51778499f6c81dc25e1d5860ffddbb0a76b0fbc84cac7882181c25"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.26,
+      "text": " Cuties! The upward trade is open! Let's watch together!",
+      "words": [
+        {
+          "word": " Cuties!",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " The",
+          "start": 0.96,
+          "end": 1.08
+        },
+        {
+          "word": " upward",
+          "start": 1.08,
+          "end": 1.28
+        },
+        {
+          "word": " trade",
+          "start": 1.28,
+          "end": 1.66
+        },
+        {
+          "word": " is",
+          "start": 1.66,
+          "end": 1.86
+        },
+        {
+          "word": " open!",
+          "start": 1.86,
+          "end": 2.1
+        },
+        {
+          "word": " Let's",
+          "start": 2.5,
+          "end": 2.74
+        },
+        {
+          "word": " watch",
+          "start": 2.74,
+          "end": 2.9
+        },
+        {
+          "word": " together!",
+          "start": 2.9,
+          "end": 3.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

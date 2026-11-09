@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_08",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Следим вместе, котики. Закрытия ещё ждём.",
+  "text_version": 1,
+  "text_sha256": "78229fe3375e8262c5ed4fd734bcb16e747b67022e80bb52ed92c777c8bb7e8d",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "e5023cb65feaec4ba2cd3d1640848e9bb7f58a8b45ab0c029e27b0741e5567cd",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_08.mp3.rms2.json"
+}

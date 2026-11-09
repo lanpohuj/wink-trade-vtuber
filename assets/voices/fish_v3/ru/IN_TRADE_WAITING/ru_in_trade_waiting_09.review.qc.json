@@ -1,0 +1,52 @@
+{
+  "id": "ru_in_trade_waiting_09",
+  "expected": "Итог не объявляю заранее. Наблюдаю.",
+  "transcript": "Итог не объявляю заранее, наблюдаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.743,
+    "rms": 0.09502,
+    "peak": 0.34453,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.083,
+    "sha256": "cc7854195ac7a07ab8e33422733b16ba137bcea9126712b8a60f7dcac0cf40d6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Итог не объявляю заранее, наблюдаю.",
+      "words": [
+        {
+          "word": " Итог",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " не",
+          "start": 0.52,
+          "end": 0.66
+        },
+        {
+          "word": " объявляю",
+          "start": 0.66,
+          "end": 1.12
+        },
+        {
+          "word": " заранее,",
+          "start": 1.12,
+          "end": 1.66
+        },
+        {
+          "word": " наблюдаю.",
+          "start": 1.92,
+          "end": 2.56
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

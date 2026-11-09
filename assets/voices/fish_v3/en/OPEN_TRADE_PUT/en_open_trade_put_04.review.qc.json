@@ -1,0 +1,62 @@
+{
+  "id": "en_open_trade_put_04",
+  "expected": "The sell is open. Watching the move.",
+  "transcript": "The cell is open, watching the move.",
+  "similarity": 0.964,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.743,
+    "rms": 0.07965,
+    "peak": 0.53044,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.223,
+    "sha256": "314f08de0015a54e10e4524f30dea383c9d6c0cf16a95ddf01a1b028a0b8c187"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.3,
+      "text": " The cell is open, watching the move.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " cell",
+          "start": 0.28,
+          "end": 0.6
+        },
+        {
+          "word": " is",
+          "start": 0.6,
+          "end": 0.76
+        },
+        {
+          "word": " open,",
+          "start": 0.76,
+          "end": 1.06
+        },
+        {
+          "word": " watching",
+          "start": 1.5,
+          "end": 1.84
+        },
+        {
+          "word": " the",
+          "start": 1.84,
+          "end": 2.08
+        },
+        {
+          "word": " move.",
+          "start": 2.08,
+          "end": 2.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

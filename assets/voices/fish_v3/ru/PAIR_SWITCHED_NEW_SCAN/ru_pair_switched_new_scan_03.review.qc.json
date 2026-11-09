@@ -1,0 +1,57 @@
+{
+  "id": "ru_pair_switched_new_scan_03",
+  "expected": "Другой график, новая проверка. Поехали!",
+  "transcript": "Другой график — новая проверка. Поехали!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.09053,
+    "peak": 0.38398,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.084,
+    "sha256": "9983e4059ac098c168c5d2f4c4aca4ba7db62d6ce107e68ee0b0ddee51dc6ac1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8,
+      "text": " Другой график — новая проверка. Поехали!",
+      "words": [
+        {
+          "word": " Другой",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " график",
+          "start": 0.6,
+          "end": 1.02
+        },
+        {
+          "word": " —",
+          "start": 1.02,
+          "end": 1.08
+        },
+        {
+          "word": " новая",
+          "start": 1.08,
+          "end": 1.34
+        },
+        {
+          "word": " проверка.",
+          "start": 1.34,
+          "end": 1.88
+        },
+        {
+          "word": " Поехали!",
+          "start": 2.22,
+          "end": 2.8
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

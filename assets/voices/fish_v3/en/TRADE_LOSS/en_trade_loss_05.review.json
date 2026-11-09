@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_05",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "A negative result on the closed trade. Staying calm.",
+  "text_version": 1,
+  "text_sha256": "a984945adf5dd34a3d88a0ad32cd4dce80c10574b66945ed29da1e60dc3cf6ad",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.839938,
+  "sha256": "4c6f028de878af4e2600e74aee4f41d7203bec68b329fb2b38f12e09d869a9a8",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_05.mp3.rms2.json"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "ru_open_trade_call_05",
+  "expected": "Вверх открылись. Результат узнаем после закрытия.",
+  "transcript": "Вверх открылись. Результат узнаем после закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.08003,
+    "peak": 0.42101,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.079,
+    "sha256": "9aab5cb7ca26451a337fcdf5674fb461a8f3ef106b78578a5b3dc463634ab037"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Вверх открылись. Результат узнаем после закрытия.",
+      "words": [
+        {
+          "word": " Вверх",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " открылись.",
+          "start": 0.6,
+          "end": 1.18
+        },
+        {
+          "word": " Результат",
+          "start": 1.5,
+          "end": 2.04
+        },
+        {
+          "word": " узнаем",
+          "start": 2.04,
+          "end": 2.5
+        },
+        {
+          "word": " после",
+          "start": 2.5,
+          "end": 2.76
+        },
+        {
+          "word": " закрытия.",
+          "start": 2.76,
+          "end": 3.44
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

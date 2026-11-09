@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_01",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Сделка ещё идёт. Наблюдаем спокойно.",
+  "text_version": 1,
+  "text_sha256": "b306b44b6a24867148197c147cce2ca7648a7b28b828144bbec9dde9ed00e546",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "47f05a88dc32762567fbb92155525e6ee6a84d38e1b211f3e2cdd25ce75c9780",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_01.mp3.rms2.json"
+}

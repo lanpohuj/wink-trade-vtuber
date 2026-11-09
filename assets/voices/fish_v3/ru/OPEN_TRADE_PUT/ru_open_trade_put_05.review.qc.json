@@ -1,0 +1,57 @@
+{
+  "id": "ru_open_trade_put_05",
+  "expected": "Вниз открылись. Результат узнаем после закрытия.",
+  "transcript": "Вниз открылись. Результат узнаем после закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.08239,
+    "peak": 0.32423,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.078,
+    "sha256": "91c720067705ec9a660b44e658719e64ce412d950f4675a1ef351cc5b1910d9e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.18,
+      "text": " Вниз открылись. Результат узнаем после закрытия.",
+      "words": [
+        {
+          "word": " Вниз",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " открылись.",
+          "start": 0.46,
+          "end": 1.1
+        },
+        {
+          "word": " Результат",
+          "start": 1.34,
+          "end": 1.88
+        },
+        {
+          "word": " узнаем",
+          "start": 1.88,
+          "end": 2.28
+        },
+        {
+          "word": " после",
+          "start": 2.28,
+          "end": 2.54
+        },
+        {
+          "word": " закрытия.",
+          "start": 2.54,
+          "end": 3.18
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

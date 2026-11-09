@@ -1,0 +1,57 @@
+{
+  "id": "en_trade_refund_02",
+  "expected": "Refund confirmed for the completed trade.",
+  "transcript": "Refund confirmed for the completed trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.586,
+    "rms": 0.08463,
+    "peak": 0.44139,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.166,
+    "sha256": "4048244ce4a5857f65ecfb064357cafdebce60a5eadd60dd9ecf690481461b0b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " Refund confirmed for the completed trade.",
+      "words": [
+        {
+          "word": " Refund",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " confirmed",
+          "start": 0.62,
+          "end": 1.12
+        },
+        {
+          "word": " for",
+          "start": 1.12,
+          "end": 1.38
+        },
+        {
+          "word": " the",
+          "start": 1.38,
+          "end": 1.5
+        },
+        {
+          "word": " completed",
+          "start": 1.5,
+          "end": 1.88
+        },
+        {
+          "word": " trade.",
+          "start": 1.88,
+          "end": 2.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

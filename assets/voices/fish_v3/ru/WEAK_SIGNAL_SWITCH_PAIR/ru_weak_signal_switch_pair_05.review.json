@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_05",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Условия не сошлись. Без спешки идём дальше.",
+  "text_version": 1,
+  "text_sha256": "a2e9f914ccd6371e66ebacca33f3fe21437f306c1766645a6ed970ed2cad63b4",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "8540379f95885259f19342c636a9ef5cc682ab70c5e83e85d7ed459ce0e4527d",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_05.mp3.rms2.json"
+}

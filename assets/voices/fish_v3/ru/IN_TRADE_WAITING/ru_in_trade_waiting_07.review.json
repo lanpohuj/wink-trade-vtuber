@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_07",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Свечки двигаются, сделка продолжается.",
+  "text_version": 1,
+  "text_sha256": "b5cd796baf30b8d19c572e47bfb273e08fab9a7ca8b8337480897652c2f0594f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_07.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "4914da795622b399a73880c6d2aa1ff96833e630c13640b9bbe10080e9d63c28",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_07.mp3.rms2.json"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ru_analyzing_chart_05",
+  "expected": "Наблюдаю за ценой. Ушки на макушке!",
+  "transcript": "Наблюдаю за ценой. Ушки на макушке!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07554,
+    "peak": 0.31327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.147,
+    "sha256": "76e5b3c2107aa60c132d70290e95139edcb81f69cdce829fe217d4bc94bc694d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.48,
+      "text": " Наблюдаю за ценой.",
+      "words": [
+        {
+          "word": " Наблюдаю",
+          "start": 0.0,
+          "end": 0.84
+        },
+        {
+          "word": " за",
+          "start": 0.84,
+          "end": 0.94
+        },
+        {
+          "word": " ценой.",
+          "start": 0.94,
+          "end": 1.48
+        }
+      ]
+    },
+    {
+      "start": 1.8,
+      "end": 2.98,
+      "text": " Ушки на макушке!",
+      "words": [
+        {
+          "word": " Ушки",
+          "start": 1.8,
+          "end": 2.32
+        },
+        {
+          "word": " на",
+          "start": 2.32,
+          "end": 2.42
+        },
+        {
+          "word": " макушке!",
+          "start": 2.42,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ru_pair_switched_new_scan_05",
+  "expected": "Котики, смотрим новый график вместе.",
+  "transcript": "Котики, смотрим новый график вместе!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07666,
+    "peak": 0.36488,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "c7e59b5dbdd5ab38249c003025b1bd5d972fb5666d5a8766bbe72081190d7592"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.74,
+      "text": " Котики, смотрим новый график вместе!",
+      "words": [
+        {
+          "word": " Котики,",
+          "start": 0.0,
+          "end": 0.72
+        },
+        {
+          "word": " смотрим",
+          "start": 1.12,
+          "end": 1.92
+        },
+        {
+          "word": " новый",
+          "start": 1.92,
+          "end": 2.12
+        },
+        {
+          "word": " график",
+          "start": 2.12,
+          "end": 2.54
+        },
+        {
+          "word": " вместе!",
+          "start": 2.54,
+          "end": 2.74
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

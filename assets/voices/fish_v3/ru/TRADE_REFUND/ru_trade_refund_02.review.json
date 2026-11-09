@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_refund_02",
+  "category": "TRADE_REFUND",
+  "lang": "ru",
+  "text": "Возврат по завершённой сделке подтверждён.",
+  "text_version": 1,
+  "text_sha256": "775c204411c1616f442684ceba53ed046616994776ecc02f377152a2ed138d20",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_REFUND/ru_trade_refund_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "51d06d41d1b4c46a44a954079f040324e57353af196602f8cbe083ceeeb4d37d",
+  "rms_file": "ru/TRADE_REFUND/ru_trade_refund_02.mp3.rms2.json"
+}

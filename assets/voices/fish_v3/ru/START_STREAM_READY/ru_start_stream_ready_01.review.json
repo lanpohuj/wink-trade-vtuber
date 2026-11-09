@@ -1,0 +1,25 @@
+{
+  "id": "ru_start_stream_ready_01",
+  "category": "START_STREAM_READY",
+  "lang": "ru",
+  "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
+  "text_version": 1,
+  "text_sha256": "1fc5ceea2e74767300ceee6414797ba112fa215fc5ce6a912e3aa9c2eff3f05f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "start_01",
+    "file": "START_STREAM_READY/start_01.mp3",
+    "sha256": "61a6b08c2016a0c3d782b78e3cb4d875dfde2a5e43fdf401cbc90a92a6ba287b",
+    "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/START_STREAM_READY/ru_start_stream_ready_01.mp3",
+  "auditory_verified": false,
+  "duration": 6.870204,
+  "sha256": "61a6b08c2016a0c3d782b78e3cb4d875dfde2a5e43fdf401cbc90a92a6ba287b",
+  "rms_file": "ru/START_STREAM_READY/ru_start_stream_ready_01.mp3.rms2.json"
+}

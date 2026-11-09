@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_put_05",
+  "expected": "Downward trade opened. We'll know the result at settlement.",
+  "transcript": "Downward trade opened. We'll know the result at settlement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.07536,
+    "peak": 0.36359,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.253,
+    "sha256": "cab666845f5e1aaad2cad4f95e0f713e7818556b7a495f39c8934f78ba584610"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.06,
+      "text": " Downward trade opened. We'll know the result at settlement.",
+      "words": [
+        {
+          "word": " Downward",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " trade",
+          "start": 0.62,
+          "end": 0.88
+        },
+        {
+          "word": " opened.",
+          "start": 0.88,
+          "end": 1.26
+        },
+        {
+          "word": " We'll",
+          "start": 1.66,
+          "end": 1.92
+        },
+        {
+          "word": " know",
+          "start": 1.92,
+          "end": 2.08
+        },
+        {
+          "word": " the",
+          "start": 2.08,
+          "end": 2.22
+        },
+        {
+          "word": " result",
+          "start": 2.22,
+          "end": 2.54
+        },
+        {
+          "word": " at",
+          "start": 2.54,
+          "end": 2.7
+        },
+        {
+          "word": " settlement.",
+          "start": 2.7,
+          "end": 3.06
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

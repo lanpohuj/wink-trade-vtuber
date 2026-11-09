@@ -1,0 +1,67 @@
+{
+  "id": "en_trade_refund_04",
+  "expected": "Cuties, the completed trade settled as a refund.",
+  "transcript": "Cuties! The completed trade settled as a refund!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.08203,
+    "peak": 0.39557,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.168,
+    "sha256": "241404d38638a83e5173884750283d448f1c2dff2c22ecc10c671de9f6263f9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.96,
+      "text": " Cuties! The completed trade settled as a refund!",
+      "words": [
+        {
+          "word": " Cuties!",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " The",
+          "start": 1.14,
+          "end": 1.28
+        },
+        {
+          "word": " completed",
+          "start": 1.28,
+          "end": 1.66
+        },
+        {
+          "word": " trade",
+          "start": 1.66,
+          "end": 2.02
+        },
+        {
+          "word": " settled",
+          "start": 2.02,
+          "end": 2.42
+        },
+        {
+          "word": " as",
+          "start": 2.42,
+          "end": 2.6
+        },
+        {
+          "word": " a",
+          "start": 2.6,
+          "end": 2.72
+        },
+        {
+          "word": " refund!",
+          "start": 2.72,
+          "end": 2.96
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

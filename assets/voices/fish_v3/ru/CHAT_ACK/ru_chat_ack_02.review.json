@@ -1,0 +1,18 @@
+{
+  "id": "ru_chat_ack_02",
+  "category": "CHAT_ACK",
+  "lang": "ru",
+  "text": "Котики, читаю вас между проверками графика.",
+  "text_version": 1,
+  "text_sha256": "1314829371effb9e2c05a13eee712e3dc7d02abbd4dd822d6feecf51b905c7c6",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/CHAT_ACK/ru_chat_ack_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "26c54d1850734807c90d6356f383e19dbed45003f9dbb3423e23feeb5b91fba9",
+  "rms_file": "ru/CHAT_ACK/ru_chat_ack_02.mp3.rms2.json"
+}

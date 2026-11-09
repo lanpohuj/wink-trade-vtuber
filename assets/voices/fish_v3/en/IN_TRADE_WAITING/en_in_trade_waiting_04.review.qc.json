@@ -1,0 +1,62 @@
+{
+  "id": "en_in_trade_waiting_04",
+  "expected": "The trade is active. No early conclusions.",
+  "transcript": "The trade is active. No early conclusions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07601,
+    "peak": 0.42711,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "cb976804c10967d2ae7d8878382d5d421130bc75dcc319fb1b04019d02059bba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.78,
+      "text": " The trade is active. No early conclusions.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " trade",
+          "start": 0.28,
+          "end": 0.6
+        },
+        {
+          "word": " is",
+          "start": 0.6,
+          "end": 0.8
+        },
+        {
+          "word": " active.",
+          "start": 0.8,
+          "end": 1.22
+        },
+        {
+          "word": " No",
+          "start": 1.74,
+          "end": 1.88
+        },
+        {
+          "word": " early",
+          "start": 1.88,
+          "end": 2.24
+        },
+        {
+          "word": " conclusions.",
+          "start": 2.24,
+          "end": 2.78
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

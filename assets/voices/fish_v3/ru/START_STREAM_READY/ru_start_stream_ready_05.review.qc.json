@@ -1,0 +1,62 @@
+{
+  "id": "ru_start_stream_ready_05",
+  "expected": "Привет, котики! Сегодня снова наблюдаем и проверяем.",
+  "transcript": "Привет котики! Сегодня снова наблюдаем и проверяем!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.09112,
+    "peak": 0.44009,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.08,
+    "sha256": "e40ef7f7c9aa09d6d8859f2bfe309aa9d1b49ada6a008a0b8b4587b46a6590b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Привет котики! Сегодня снова наблюдаем и проверяем!",
+      "words": [
+        {
+          "word": " Привет",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " котики!",
+          "start": 0.48,
+          "end": 1.08
+        },
+        {
+          "word": " Сегодня",
+          "start": 1.54,
+          "end": 1.9
+        },
+        {
+          "word": " снова",
+          "start": 1.9,
+          "end": 2.24
+        },
+        {
+          "word": " наблюдаем",
+          "start": 2.24,
+          "end": 2.86
+        },
+        {
+          "word": " и",
+          "start": 2.86,
+          "end": 3.02
+        },
+        {
+          "word": " проверяем!",
+          "start": 3.02,
+          "end": 3.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

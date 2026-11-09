@@ -1,0 +1,62 @@
+{
+  "id": "en_prepare_entry_06",
+  "expected": "Matching the parameters to the current chart.",
+  "transcript": "Matching the parameters to the current chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.0816,
+    "peak": 0.41581,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.275,
+    "sha256": "f769cc52e9b16935ceafda000d5b0f054f7afe2816fd5789cd5dfabc619e260b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.98,
+      "text": " Matching the parameters to the current chart.",
+      "words": [
+        {
+          "word": " Matching",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " the",
+          "start": 0.56,
+          "end": 0.64
+        },
+        {
+          "word": " parameters",
+          "start": 0.64,
+          "end": 1.04
+        },
+        {
+          "word": " to",
+          "start": 1.04,
+          "end": 1.32
+        },
+        {
+          "word": " the",
+          "start": 1.32,
+          "end": 1.42
+        },
+        {
+          "word": " current",
+          "start": 1.42,
+          "end": 1.68
+        },
+        {
+          "word": " chart.",
+          "start": 1.68,
+          "end": 1.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

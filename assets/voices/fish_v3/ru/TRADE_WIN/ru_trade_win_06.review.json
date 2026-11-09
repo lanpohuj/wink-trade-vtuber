@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_06",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Котики, последняя закрытая сделка в плюс!",
+  "text_version": 1,
+  "text_sha256": "f3c3c51eebb8864ba0644841ef486e7998ac71185767e1b95e0c766fefe98711",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "12b2d01410fc8a67a7880be72de2a74b3270510a405d8ce3f97fea67bb66b6ba",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_06.mp3.rms2.json"
+}

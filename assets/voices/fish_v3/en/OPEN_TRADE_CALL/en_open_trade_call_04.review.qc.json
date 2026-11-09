@@ -1,0 +1,62 @@
+{
+  "id": "en_open_trade_call_04",
+  "expected": "The buy is open. Watching the move.",
+  "transcript": "The buy is open. Watching the move.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07829,
+    "peak": 0.53282,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.087,
+    "sha256": "9e67e56c9a59004713e5388af7357aaea6b66d31676aaf3946bf38ae6792c204"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.34,
+      "text": " The buy is open. Watching the move.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.32
+        },
+        {
+          "word": " buy",
+          "start": 0.32,
+          "end": 0.58
+        },
+        {
+          "word": " is",
+          "start": 0.58,
+          "end": 0.8
+        },
+        {
+          "word": " open.",
+          "start": 0.8,
+          "end": 1.06
+        },
+        {
+          "word": " Watching",
+          "start": 1.46,
+          "end": 1.8
+        },
+        {
+          "word": " the",
+          "start": 1.8,
+          "end": 2.02
+        },
+        {
+          "word": " move.",
+          "start": 2.02,
+          "end": 2.34
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_08",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "The upward entry went through. I'm watching.",
+  "text_version": 1,
+  "text_sha256": "5858d52e8a149693b040b9f29469ec6a7e21cc789de4de33b44d74a0f682adac",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.291313,
+  "sha256": "0bd334b39af17138eb28d5d2bf332acb38b1cc6eebc087b75ac93f769db7ca4b",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_08.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_09",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Итог не объявляю заранее. Наблюдаю.",
+  "text_version": 1,
+  "text_sha256": "26ae910f57505016bbcd063a6261adf55c553c687e783a17ab0ad270ca61cc14",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.74275,
+  "sha256": "cc7854195ac7a07ab8e33422733b16ba137bcea9126712b8a60f7dcac0cf40d6",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_09.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_02",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "Refund confirmed for the completed trade.",
+  "text_version": 1,
+  "text_sha256": "4f2cf4a55667964331e40d9d13331a5e42bd0eec01302ec734dc42f987c63a17",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.586063,
+  "sha256": "4048244ce4a5857f65ecfb064357cafdebce60a5eadd60dd9ecf690481461b0b",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_02.mp3.rms2.json"
+}

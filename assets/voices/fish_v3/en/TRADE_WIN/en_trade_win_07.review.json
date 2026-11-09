@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_07",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "Positive result confirmed. That trade is in the record.",
+  "text_version": 1,
+  "text_sha256": "c649387aa798756e8a3f5b53757caa6f0afc27ad18a9102c4bab322fa08c8a59",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "d22e698cfd4825e3c6ffe81e998993f6d0967bf1d881e931b295e74866e6e081",
+  "rms_file": "en/TRADE_WIN/en_trade_win_07.mp3.rms2.json"
+}

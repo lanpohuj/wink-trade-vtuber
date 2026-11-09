@@ -1,0 +1,52 @@
+{
+  "id": "ru_analyzing_chart_09",
+  "expected": "Проверяю, согласуются ли наши признаки.",
+  "transcript": "Проверяю, согласуются ли наши признаки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.586,
+    "rms": 0.09167,
+    "peak": 0.39684,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.146,
+    "sha256": "2e491a8b4fe5694d53771f49d11ccd747069526cfe7793ec377c361a889d1a65"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.38,
+      "text": " Проверяю, согласуются ли наши признаки.",
+      "words": [
+        {
+          "word": " Проверяю,",
+          "start": 0.0,
+          "end": 0.74
+        },
+        {
+          "word": " согласуются",
+          "start": 0.8,
+          "end": 1.44
+        },
+        {
+          "word": " ли",
+          "start": 1.44,
+          "end": 1.5
+        },
+        {
+          "word": " наши",
+          "start": 1.5,
+          "end": 1.72
+        },
+        {
+          "word": " признаки.",
+          "start": 1.72,
+          "end": 2.38
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "en_open_trade_put_02",
+  "expected": "Downward entry confirmed, cuties.",
+  "transcript": "Downward entry confirmed, cuties!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.08173,
+    "peak": 0.37347,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.275,
+    "sha256": "24b41e26b82e1ae8d790fb721ea03e0034d777b11f33eec780a946ab0588ca36"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.16,
+      "text": " Downward entry confirmed, cuties!",
+      "words": [
+        {
+          "word": " Downward",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " entry",
+          "start": 0.6,
+          "end": 0.9
+        },
+        {
+          "word": " confirmed,",
+          "start": 0.9,
+          "end": 1.42
+        },
+        {
+          "word": " cuties!",
+          "start": 1.7,
+          "end": 2.16
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

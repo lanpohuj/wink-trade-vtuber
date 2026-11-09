@@ -1,0 +1,72 @@
+{
+  "id": "en_start_stream_ready_06",
+  "expected": "Lovely to see you! My listening ears are on.",
+  "transcript": "Lovely to see you! My listening ears are on!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.08345,
+    "peak": 0.39931,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.178,
+    "sha256": "e4a9a72322a692b1b64951ef6fb865548450f11288839b343d86adb5c9ead672"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Lovely to see you! My listening ears are on!",
+      "words": [
+        {
+          "word": " Lovely",
+          "start": 0.0,
+          "end": 0.54
+        },
+        {
+          "word": " to",
+          "start": 0.54,
+          "end": 0.76
+        },
+        {
+          "word": " see",
+          "start": 0.76,
+          "end": 1.08
+        },
+        {
+          "word": " you!",
+          "start": 1.08,
+          "end": 1.28
+        },
+        {
+          "word": " My",
+          "start": 1.6,
+          "end": 1.84
+        },
+        {
+          "word": " listening",
+          "start": 1.84,
+          "end": 2.2
+        },
+        {
+          "word": " ears",
+          "start": 2.2,
+          "end": 2.52
+        },
+        {
+          "word": " are",
+          "start": 2.52,
+          "end": 2.72
+        },
+        {
+          "word": " on!",
+          "start": 2.72,
+          "end": 2.94
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

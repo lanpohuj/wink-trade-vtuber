@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_05",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "Cuties, let's look at this new chart together.",
+  "text_version": 1,
+  "text_sha256": "250794900bc1fba85e0b3ba1ba20eabf581c6f6a27525d66cde41252090c5506",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_05.mp3",
+  "auditory_verified": false,
+  "duration": 2.873375,
+  "sha256": "10d2c340291697cbe0a952ea7403c317521b58c094dcdeade1c643f76be0c821",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_05.mp3.rms2.json"
+}

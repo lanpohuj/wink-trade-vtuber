@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_win_11",
+  "expected": "The last trade closed positive. Happy ears!",
+  "transcript": "The last trade closed positive. Happy Ears!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07137,
+    "peak": 0.33012,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.138,
+    "sha256": "5e11f85a658876f271701b9ffbcaa47d3b276947b1bcb4d1166abb2aabc16c6c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " The last trade closed positive. Happy Ears!",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " last",
+          "start": 0.26,
+          "end": 0.56
+        },
+        {
+          "word": " trade",
+          "start": 0.56,
+          "end": 0.88
+        },
+        {
+          "word": " closed",
+          "start": 0.88,
+          "end": 1.22
+        },
+        {
+          "word": " positive.",
+          "start": 1.22,
+          "end": 1.8
+        },
+        {
+          "word": " Happy",
+          "start": 2.24,
+          "end": 2.54
+        },
+        {
+          "word": " Ears!",
+          "start": 2.54,
+          "end": 3.0
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

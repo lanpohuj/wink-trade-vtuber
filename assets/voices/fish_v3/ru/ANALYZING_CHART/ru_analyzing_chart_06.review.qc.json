@@ -1,0 +1,57 @@
+{
+  "id": "ru_analyzing_chart_06",
+  "expected": "Посмотрим, как складывается этот участок графика.",
+  "transcript": "Посмотрим, как складывается этот участок графика.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.08367,
+    "peak": 0.37362,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.141,
+    "sha256": "dbd1b5a7b29f0dec949190ee439e14979fd3e9c38205625726d72d0165bbc40b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Посмотрим, как складывается этот участок графика.",
+      "words": [
+        {
+          "word": " Посмотрим,",
+          "start": 0.0,
+          "end": 0.92
+        },
+        {
+          "word": " как",
+          "start": 0.92,
+          "end": 1.06
+        },
+        {
+          "word": " складывается",
+          "start": 1.06,
+          "end": 1.76
+        },
+        {
+          "word": " этот",
+          "start": 1.76,
+          "end": 1.96
+        },
+        {
+          "word": " участок",
+          "start": 1.96,
+          "end": 2.46
+        },
+        {
+          "word": " графика.",
+          "start": 2.46,
+          "end": 2.94
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

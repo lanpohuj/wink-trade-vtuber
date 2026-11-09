@@ -1,0 +1,62 @@
+{
+  "id": "ru_weak_signal_switch_pair_05",
+  "expected": "Условия не сошлись. Без спешки идём дальше.",
+  "transcript": "Условия не сошлись? Без спешки идём дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08454,
+    "peak": 0.37325,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.127,
+    "sha256": "8540379f95885259f19342c636a9ef5cc682ab70c5e83e85d7ed459ce0e4527d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Условия не сошлись? Без спешки идём дальше.",
+      "words": [
+        {
+          "word": " Условия",
+          "start": 0.0,
+          "end": 0.74
+        },
+        {
+          "word": " не",
+          "start": 0.74,
+          "end": 0.86
+        },
+        {
+          "word": " сошлись?",
+          "start": 0.86,
+          "end": 1.34
+        },
+        {
+          "word": " Без",
+          "start": 1.68,
+          "end": 2.02
+        },
+        {
+          "word": " спешки",
+          "start": 2.02,
+          "end": 2.38
+        },
+        {
+          "word": " идём",
+          "start": 2.38,
+          "end": 2.62
+        },
+        {
+          "word": " дальше.",
+          "start": 2.62,
+          "end": 2.88
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,62 @@
+{
+  "id": "en_pause_between_trades_06",
+  "expected": "A little pause. I'm still right here.",
+  "transcript": "A little pause. I'm still right here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.586,
+    "rms": 0.07278,
+    "peak": 0.36846,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.206,
+    "sha256": "3e9aeea1780de9dd1271d621c068bc65d7fcdff224b281b1028aa25f39e46b36"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " A little pause. I'm still right here.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " little",
+          "start": 0.26,
+          "end": 0.42
+        },
+        {
+          "word": " pause.",
+          "start": 0.42,
+          "end": 0.8
+        },
+        {
+          "word": " I'm",
+          "start": 1.3,
+          "end": 1.52
+        },
+        {
+          "word": " still",
+          "start": 1.52,
+          "end": 1.72
+        },
+        {
+          "word": " right",
+          "start": 1.72,
+          "end": 1.96
+        },
+        {
+          "word": " here.",
+          "start": 1.96,
+          "end": 2.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

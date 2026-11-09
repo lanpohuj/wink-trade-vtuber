@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_put_07",
+  "expected": "Есть открытие вниз. Смотрим спокойно.",
+  "transcript": "Есть открытие вниз! Смотрим спокойно!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08063,
+    "peak": 0.33612,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.073,
+    "sha256": "ea1294e18ca9234d73530191076d6d935247afd781ccf8d3c77539d83381935f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Есть открытие вниз! Смотрим спокойно!",
+      "words": [
+        {
+          "word": " Есть",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " открытие",
+          "start": 0.46,
+          "end": 1.06
+        },
+        {
+          "word": " вниз!",
+          "start": 1.06,
+          "end": 1.26
+        },
+        {
+          "word": " Смотрим",
+          "start": 1.64,
+          "end": 2.16
+        },
+        {
+          "word": " спокойно!",
+          "start": 2.16,
+          "end": 2.72
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

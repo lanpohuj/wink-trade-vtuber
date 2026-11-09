@@ -1,0 +1,62 @@
+{
+  "id": "en_pair_switched_new_scan_07",
+  "expected": "Another pair is open. Checking its conditions.",
+  "transcript": "Another pair is open checking its conditions",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.07373,
+    "peak": 0.36625,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.321,
+    "sha256": "69af7c655e238e5668944a6c4e105f75a1078e02ff703f6f7727a3cef25c9324"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Another pair is open checking its conditions",
+      "words": [
+        {
+          "word": " Another",
+          "start": 0.0,
+          "end": 0.46
+        },
+        {
+          "word": " pair",
+          "start": 0.46,
+          "end": 0.76
+        },
+        {
+          "word": " is",
+          "start": 0.76,
+          "end": 0.96
+        },
+        {
+          "word": " open",
+          "start": 0.96,
+          "end": 1.18
+        },
+        {
+          "word": " checking",
+          "start": 1.18,
+          "end": 1.92
+        },
+        {
+          "word": " its",
+          "start": 1.92,
+          "end": 2.18
+        },
+        {
+          "word": " conditions",
+          "start": 2.18,
+          "end": 2.64
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

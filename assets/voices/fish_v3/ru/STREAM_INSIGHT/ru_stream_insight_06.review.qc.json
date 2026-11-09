@@ -1,0 +1,67 @@
+{
+  "id": "ru_stream_insight_06",
+  "expected": "Закрытая свеча и живая ведут себя по-разному.",
+  "transcript": "Закрытые свеча и живая ведут себя по-разному.",
+  "similarity": 0.946,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.09674,
+    "peak": 0.39166,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.096,
+    "sha256": "52ff16f5992e7a9420bb6822f4d569dfcf2825b587373acc03d34aef5e67da7b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.86,
+      "text": " Закрытые свеча и живая ведут себя по-разному.",
+      "words": [
+        {
+          "word": " Закрытые",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " свеча",
+          "start": 0.76,
+          "end": 1.26
+        },
+        {
+          "word": " и",
+          "start": 1.26,
+          "end": 1.46
+        },
+        {
+          "word": " живая",
+          "start": 1.46,
+          "end": 1.78
+        },
+        {
+          "word": " ведут",
+          "start": 1.78,
+          "end": 2.02
+        },
+        {
+          "word": " себя",
+          "start": 2.02,
+          "end": 2.24
+        },
+        {
+          "word": " по",
+          "start": 2.24,
+          "end": 2.44
+        },
+        {
+          "word": "-разному.",
+          "start": 2.44,
+          "end": 2.86
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

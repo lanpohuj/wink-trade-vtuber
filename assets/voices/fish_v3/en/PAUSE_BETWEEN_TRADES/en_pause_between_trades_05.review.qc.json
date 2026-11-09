@@ -1,0 +1,57 @@
+{
+  "id": "en_pause_between_trades_05",
+  "expected": "Cuties, a calm breather between checks.",
+  "transcript": "Cuties, a calm breather between checks.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.0682,
+    "peak": 0.39576,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "79ae6adf0995ac8131e3c96bc8e2c9e0db7b7e44172b936ae8444ecc2bd5fd79"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.84,
+      "text": " Cuties, a calm breather between checks.",
+      "words": [
+        {
+          "word": " Cuties,",
+          "start": 0.0,
+          "end": 0.86
+        },
+        {
+          "word": " a",
+          "start": 1.24,
+          "end": 1.38
+        },
+        {
+          "word": " calm",
+          "start": 1.38,
+          "end": 1.7
+        },
+        {
+          "word": " breather",
+          "start": 1.7,
+          "end": 2.2
+        },
+        {
+          "word": " between",
+          "start": 2.2,
+          "end": 2.44
+        },
+        {
+          "word": " checks.",
+          "start": 2.44,
+          "end": 2.84
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

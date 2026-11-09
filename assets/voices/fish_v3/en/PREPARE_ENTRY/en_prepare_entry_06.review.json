@@ -1,0 +1,18 @@
+{
+  "id": "en_prepare_entry_06",
+  "category": "PREPARE_ENTRY",
+  "lang": "en",
+  "text": "Matching the parameters to the current chart.",
+  "text_version": 1,
+  "text_sha256": "bf256d95c24c5a88cf0a907acaeac602d696734559ef9709caddb2db94033af9",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PREPARE_ENTRY/en_prepare_entry_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "f769cc52e9b16935ceafda000d5b0f054f7afe2816fd5789cd5dfabc619e260b",
+  "rms_file": "en/PREPARE_ENTRY/en_prepare_entry_06.mp3.rms2.json"
+}

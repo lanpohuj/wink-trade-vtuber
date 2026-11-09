@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_09",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "No confirmation on this pair. Switching over.",
+  "text_version": 1,
+  "text_sha256": "05ec8327ef4fd17f142eeaae7bae3b0731a5c140180f72f8673870daf7c08c45",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_09.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "a662cbad0e83fafef9be0fe184a6d5ecf7ae80c879a69c94c0191270deb9e425",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_09.mp3.rms2.json"
+}

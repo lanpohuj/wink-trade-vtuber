@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_10",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "Котики, пропуск тоже часть правил.",
+  "text_version": 1,
+  "text_sha256": "325d7ca466bb7084032cdb727312633846323c2a272b9488714cd8afa57436bb",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_10.mp3",
+  "auditory_verified": false,
+  "duration": 2.272562,
+  "sha256": "c52ce7fea679239eff78afc893b83c2159631f429a9f53afa7e6622b420af01d",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_10.mp3.rms2.json"
+}

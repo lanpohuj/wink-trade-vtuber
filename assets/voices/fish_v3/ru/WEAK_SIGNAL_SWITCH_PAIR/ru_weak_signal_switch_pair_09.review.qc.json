@@ -1,0 +1,64 @@
+{
+  "id": "ru_weak_signal_switch_pair_09",
+  "expected": "На этой паре подтверждения нет. Переключаюсь.",
+  "transcript": "На этой паре подтверждения нет. Переключаюсь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.0762,
+    "peak": 0.33087,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.067,
+    "sha256": "096d2f8a125780ed002540815518b11793f16a9edac2557d036743c00410fd7a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.74,
+      "text": " На этой паре подтверждения нет.",
+      "words": [
+        {
+          "word": " На",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " этой",
+          "start": 0.38,
+          "end": 0.56
+        },
+        {
+          "word": " паре",
+          "start": 0.56,
+          "end": 0.9
+        },
+        {
+          "word": " подтверждения",
+          "start": 0.9,
+          "end": 1.46
+        },
+        {
+          "word": " нет.",
+          "start": 1.46,
+          "end": 1.74
+        }
+      ]
+    },
+    {
+      "start": 2.26,
+      "end": 2.98,
+      "text": " Переключаюсь.",
+      "words": [
+        {
+          "word": " Переключаюсь.",
+          "start": 2.26,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

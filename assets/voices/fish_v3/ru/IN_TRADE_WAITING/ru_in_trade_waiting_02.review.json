@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_02",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Котики, пока ждём закрытия.",
+  "text_version": 1,
+  "text_sha256": "ad19ed40c60b5e2125bde3346f3301bf12ebcd618fbacc1e44cc88028a899018",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_02.mp3",
+  "auditory_verified": false,
+  "duration": 1.959125,
+  "sha256": "0138f5f4dd640fcbccf927ca04aca8aaaef2de2ef4f5c58b567fa3e5a28d616d",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_02.mp3.rms2.json"
+}

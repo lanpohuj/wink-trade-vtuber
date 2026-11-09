@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_10",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "Cuties, the last trade closed negative. Recording the fact.",
+  "text_version": 1,
+  "text_sha256": "bbb94e4652c6d76da160addb6915aba2ca8502139cb50875067bb4ed8d884e0e",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_10.mp3",
+  "auditory_verified": false,
+  "duration": 4.362375,
+  "sha256": "d1ae3fa48beb752d04fe23b17f48b4968d0d2fe779aca086d0d3a5f9778dfd06",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_10.mp3.rms2.json"
+}

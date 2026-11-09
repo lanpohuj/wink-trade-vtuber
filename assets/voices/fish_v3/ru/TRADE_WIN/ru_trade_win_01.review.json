@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_01",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Прошлая сделка закрылась в плюс. Мяу, принято!",
+  "text_version": 2,
+  "text_sha256": "4472419bbda62e9b2893dfcd013d4de93f5f18b003ced430c5e758e52c3ffb76",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.892125,
+  "sha256": "c89ac997d69ae5c2d12c4cadf4335a940116b34651764a6c082cd8eb2d60b46f",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_01.mp3.rms2.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_11",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Let's break this move down, step by step.",
+  "text_version": 1,
+  "text_sha256": "014fe112e7faef138c21ad538eaaefbdf9e6ab08c1db38b6a02b2086bb05b4a5",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_11.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "3c02a49c9f30aad832c833784f69c8f52cfdc45090b8ba776be1776e73115a28",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_11.mp3.rms2.json"
+}

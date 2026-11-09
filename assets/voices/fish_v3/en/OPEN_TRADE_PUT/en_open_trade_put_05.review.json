@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_05",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Downward trade opened. We'll know the result at settlement.",
+  "text_version": 1,
+  "text_sha256": "d9b5ad9adce01638b94711c9c6911e370f664c7238a0a2aa1fc833b68689a83f",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.552562,
+  "sha256": "cab666845f5e1aaad2cad4f95e0f713e7818556b7a495f39c8934f78ba584610",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_05.mp3.rms2.json"
+}

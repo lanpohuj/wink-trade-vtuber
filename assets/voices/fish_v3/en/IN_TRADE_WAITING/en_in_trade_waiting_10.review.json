@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_10",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "Waiting for the actual result, without guessing.",
+  "text_version": 1,
+  "text_sha256": "01d6b528213abaacf6f49538eb7540cde40c32efceef21766d7bec7f31621a4a",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "b4c80e7847952fb770750fed288c6c1b095b3b17176e6c343a61e19c7cac4879",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_10.mp3.rms2.json"
+}

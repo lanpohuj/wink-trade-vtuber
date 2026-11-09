@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_04",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "The completed trade finished positive. Logging it!",
+  "text_version": 1,
+  "text_sha256": "cb9c419f097bbaa9bf4c710f6711a994a76676550ff7954bad761fcb124af031",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.552562,
+  "sha256": "3bee17f2b1add919906cb21057732290fecdd79af4c6947e26d6f5128e338923",
+  "rms_file": "en/TRADE_WIN/en_trade_win_04.mp3.rms2.json"
+}

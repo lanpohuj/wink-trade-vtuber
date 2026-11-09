@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_02",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "Skipping this pair. We need suitable conditions.",
+  "text_version": 1,
+  "text_sha256": "fdb0607973cf7db9079e03595e4a933403b157056c4ebfa37d6f323c5ac4aa07",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "b47524fef5f563ef2e3b06242428104a137a093ed2ad1a1300f7ccb43f427303",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_02.mp3.rms2.json"
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ru_pair_switched_new_scan_07",
+  "expected": "Открыта другая пара. Проверяю её условия.",
+  "transcript": "Открыта другая пара. Проверяю ее условия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.0941,
+    "peak": 0.38904,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "e97d91f72c1c2a2eb4cbd8b79876cc2c27b364eb3eb34fb19c351dac9970ab01"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.56,
+      "text": " Открыта другая пара.",
+      "words": [
+        {
+          "word": " Открыта",
+          "start": 0.0,
+          "end": 0.68
+        },
+        {
+          "word": " другая",
+          "start": 0.68,
+          "end": 1.08
+        },
+        {
+          "word": " пара.",
+          "start": 1.08,
+          "end": 1.56
+        }
+      ]
+    },
+    {
+      "start": 1.82,
+      "end": 3.14,
+      "text": " Проверяю ее условия.",
+      "words": [
+        {
+          "word": " Проверяю",
+          "start": 1.82,
+          "end": 2.44
+        },
+        {
+          "word": " ее",
+          "start": 2.44,
+          "end": 2.62
+        },
+        {
+          "word": " условия.",
+          "start": 2.62,
+          "end": 3.14
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,77 @@
+{
+  "id": "en_trade_loss_09",
+  "expected": "A negative result for the completed trade. Keeping our rules.",
+  "transcript": "A negative result for the completed trade, keeping our rules.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.0639,
+    "peak": 0.28968,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "81e93b65fee2804270486ec16bb1bbff8df68468c33dfad5e82e88296a047dad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.48,
+      "text": " A negative result for the completed trade, keeping our rules.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " negative",
+          "start": 0.26,
+          "end": 0.54
+        },
+        {
+          "word": " result",
+          "start": 0.54,
+          "end": 0.96
+        },
+        {
+          "word": " for",
+          "start": 0.96,
+          "end": 1.18
+        },
+        {
+          "word": " the",
+          "start": 1.18,
+          "end": 1.26
+        },
+        {
+          "word": " completed",
+          "start": 1.26,
+          "end": 1.68
+        },
+        {
+          "word": " trade,",
+          "start": 1.68,
+          "end": 2.14
+        },
+        {
+          "word": " keeping",
+          "start": 2.56,
+          "end": 2.9
+        },
+        {
+          "word": " our",
+          "start": 2.9,
+          "end": 3.14
+        },
+        {
+          "word": " rules.",
+          "start": 3.14,
+          "end": 3.48
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

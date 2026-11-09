@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_loss_04",
+  "category": "TRADE_LOSS",
+  "lang": "ru",
+  "text": "Результат завершённой сделки отрицательный. Сверено.",
+  "text_version": 1,
+  "text_sha256": "75807f8e956cead988c0634aaf5886d3de603d3a33ca3d0c0b54c20e6d54e3ea",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_LOSS/ru_trade_loss_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.683187,
+  "sha256": "773149ee973591393f3280b8b7c157d9a45aaf72ee045c381ead0959cd8e7ad3",
+  "rms_file": "ru/TRADE_LOSS/ru_trade_loss_04.mp3.rms2.json"
+}

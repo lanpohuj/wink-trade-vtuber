@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_loss_09",
+  "category": "TRADE_LOSS",
+  "lang": "en",
+  "text": "A negative result for the completed trade. Keeping our rules.",
+  "text_version": 1,
+  "text_sha256": "ac284572735807e9cf49665dd6cd1154257d6d8d3411e374e81f273fc94a6730",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_LOSS/en_trade_loss_09.mp3",
+  "auditory_verified": false,
+  "duration": 3.944375,
+  "sha256": "81e93b65fee2804270486ec16bb1bbff8df68468c33dfad5e82e88296a047dad",
+  "rms_file": "en/TRADE_LOSS/en_trade_loss_09.mp3.rms2.json"
+}

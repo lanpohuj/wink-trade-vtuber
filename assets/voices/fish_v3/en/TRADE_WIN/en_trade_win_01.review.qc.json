@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_win_01",
+  "expected": "The closed trade finished positive! Meow, noted!",
+  "transcript": "The closed trade finished positive. Meow, noted.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.023,
+    "rms": 0.08106,
+    "peak": 0.4778,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.183,
+    "sha256": "bf85585e9d2c6b5c7483493ed27316d8dba401064043fdb046c43eb42c3e8aee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.62,
+      "text": " The closed trade finished positive. Meow, noted.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " closed",
+          "start": 0.26,
+          "end": 0.56
+        },
+        {
+          "word": " trade",
+          "start": 0.56,
+          "end": 1.04
+        },
+        {
+          "word": " finished",
+          "start": 1.04,
+          "end": 1.44
+        },
+        {
+          "word": " positive.",
+          "start": 1.44,
+          "end": 2.06
+        },
+        {
+          "word": " Meow,",
+          "start": 2.62,
+          "end": 2.96
+        },
+        {
+          "word": " noted.",
+          "start": 3.3,
+          "end": 3.62
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

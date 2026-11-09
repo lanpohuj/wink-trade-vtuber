@@ -1,0 +1,62 @@
+{
+  "id": "en_chat_ack_02",
+  "expected": "Cuties, I'm reading along between chart checks.",
+  "transcript": "Cuties, I'm reading along between chart checks.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07636,
+    "peak": 0.38465,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.038,
+    "sha256": "4f1c19677dce4ecd232476dbbc3ed28875ec754cb8e963063e2d869f83086e58"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Cuties, I'm reading along between chart checks.",
+      "words": [
+        {
+          "word": " Cuties,",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " I'm",
+          "start": 1.24,
+          "end": 1.42
+        },
+        {
+          "word": " reading",
+          "start": 1.42,
+          "end": 1.6
+        },
+        {
+          "word": " along",
+          "start": 1.6,
+          "end": 1.96
+        },
+        {
+          "word": " between",
+          "start": 1.96,
+          "end": 2.24
+        },
+        {
+          "word": " chart",
+          "start": 2.24,
+          "end": 2.64
+        },
+        {
+          "word": " checks.",
+          "start": 2.64,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_02",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Вход вниз подтверждён, котики.",
+  "text_version": 1,
+  "text_sha256": "d43b9ced6707f0bd48374bf53030cee9cf8f302de5cfc8e74ca46bf1c01ce496",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "a02143053d6b90e7b607809f2bb38f65f1805f70bce14b318faecb678c2f8211",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_02.mp3.rms2.json"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "en_prepare_entry_01",
+  "expected": "Checking before entry. The details matter now.",
+  "transcript": "Checking before entry. The details matter now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07814,
+    "peak": 0.36107,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.076,
+    "sha256": "d926a46a78d1fe576d260e82674e7a141b0133de5db64e837cd47f404336df9f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.82,
+      "text": " Checking before entry. The details matter now.",
+      "words": [
+        {
+          "word": " Checking",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " before",
+          "start": 0.52,
+          "end": 0.72
+        },
+        {
+          "word": " entry.",
+          "start": 0.72,
+          "end": 1.16
+        },
+        {
+          "word": " The",
+          "start": 1.62,
+          "end": 1.8
+        },
+        {
+          "word": " details",
+          "start": 1.8,
+          "end": 2.16
+        },
+        {
+          "word": " matter",
+          "start": 2.16,
+          "end": 2.54
+        },
+        {
+          "word": " now.",
+          "start": 2.54,
+          "end": 2.82
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

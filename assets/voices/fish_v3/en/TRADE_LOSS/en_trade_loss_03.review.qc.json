@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_loss_03",
+  "expected": "The last closed trade finished negative. Recorded.",
+  "transcript": "The last closed trade finished negative, recorded.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07554,
+    "peak": 0.42625,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.167,
+    "sha256": "982e5c20cf981eab95991a70d6fe898c8a377ba6fb6dab8b6bda472d1fce20f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.78,
+      "text": " The last closed trade finished negative, recorded.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " last",
+          "start": 0.26,
+          "end": 0.56
+        },
+        {
+          "word": " closed",
+          "start": 0.56,
+          "end": 0.82
+        },
+        {
+          "word": " trade",
+          "start": 0.82,
+          "end": 1.24
+        },
+        {
+          "word": " finished",
+          "start": 1.24,
+          "end": 1.58
+        },
+        {
+          "word": " negative,",
+          "start": 1.58,
+          "end": 2.04
+        },
+        {
+          "word": " recorded.",
+          "start": 2.44,
+          "end": 2.78
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

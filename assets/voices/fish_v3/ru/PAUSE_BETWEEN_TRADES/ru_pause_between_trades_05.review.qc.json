@@ -1,0 +1,52 @@
+{
+  "id": "ru_pause_between_trades_05",
+  "expected": "Котики, спокойно отдыхаем между проверками.",
+  "transcript": "Котики, спокойно отдыхаем между проверками.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.717,
+    "rms": 0.0917,
+    "peak": 0.39897,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.097,
+    "sha256": "dddcf60ddca01ba12ba105be2876585971bc413fdb0751b23da91bde4d6ea4b1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.42,
+      "text": " Котики, спокойно отдыхаем между проверками.",
+      "words": [
+        {
+          "word": " Котики,",
+          "start": 0.0,
+          "end": 0.6
+        },
+        {
+          "word": " спокойно",
+          "start": 0.74,
+          "end": 1.16
+        },
+        {
+          "word": " отдыхаем",
+          "start": 1.16,
+          "end": 1.64
+        },
+        {
+          "word": " между",
+          "start": 1.64,
+          "end": 1.82
+        },
+        {
+          "word": " проверками.",
+          "start": 1.82,
+          "end": 2.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

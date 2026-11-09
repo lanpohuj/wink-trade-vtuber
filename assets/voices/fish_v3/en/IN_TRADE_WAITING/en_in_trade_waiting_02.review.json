@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_02",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "Cuties, we're waiting for settlement.",
+  "text_version": 1,
+  "text_sha256": "bb183b87d46da0f787e9d7b639b90299909976f5659075d6656c18565c4103b2",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "6c9aa92e4781f0446767c5294845c3e8d3ada31c930447ef9a83f6f61bf74e9e",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_02.mp3.rms2.json"
+}

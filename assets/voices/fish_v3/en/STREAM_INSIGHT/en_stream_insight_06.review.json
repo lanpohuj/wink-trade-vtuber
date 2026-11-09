@@ -1,0 +1,18 @@
+{
+  "id": "en_stream_insight_06",
+  "category": "STREAM_INSIGHT",
+  "lang": "en",
+  "text": "A closed candle and a live candle behave differently.",
+  "text_version": 1,
+  "text_sha256": "368bff06fe18df3abb2e9541ba443c4814b0c11d79d35301c487baac29dbb3c5",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/STREAM_INSIGHT/en_stream_insight_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.977875,
+  "sha256": "0093874bbda73882b00bdfed2d9f7dd450775bed21137075b003dbaf89952464",
+  "rms_file": "en/STREAM_INSIGHT/en_stream_insight_06.mp3.rms2.json"
+}

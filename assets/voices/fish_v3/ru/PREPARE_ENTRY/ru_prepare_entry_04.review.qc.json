@@ -1,0 +1,57 @@
+{
+  "id": "ru_prepare_entry_04",
+  "expected": "Смотрю, сохраняются ли условия для входа.",
+  "transcript": "Смотрю, сохраняются ли условия для входа?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.07388,
+    "peak": 0.31229,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.104,
+    "sha256": "89d087dbf71ca4616e9ff1510e4364469a19e1f3d0915ca70d062d05ca110d3d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.52,
+      "text": " Смотрю, сохраняются ли условия для входа?",
+      "words": [
+        {
+          "word": " Смотрю,",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " сохраняются",
+          "start": 0.82,
+          "end": 1.44
+        },
+        {
+          "word": " ли",
+          "start": 1.44,
+          "end": 1.56
+        },
+        {
+          "word": " условия",
+          "start": 1.56,
+          "end": 2.0
+        },
+        {
+          "word": " для",
+          "start": 2.0,
+          "end": 2.12
+        },
+        {
+          "word": " входа?",
+          "start": 2.12,
+          "end": 2.52
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

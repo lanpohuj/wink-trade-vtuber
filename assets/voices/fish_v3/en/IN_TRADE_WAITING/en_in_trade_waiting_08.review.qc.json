@@ -1,0 +1,62 @@
+{
+  "id": "en_in_trade_waiting_08",
+  "expected": "Watching together, cuties. Settlement is still ahead.",
+  "transcript": "Watching together, cuties. Settlement is still ahead.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07544,
+    "peak": 0.37067,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "e8b6a7e79444fd8450df180e457679e2ee99c91f30fcafff265d70c0e27a0446"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.16,
+      "text": " Watching together, cuties. Settlement is still ahead.",
+      "words": [
+        {
+          "word": " Watching",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " together,",
+          "start": 0.52,
+          "end": 0.9
+        },
+        {
+          "word": " cuties.",
+          "start": 1.02,
+          "end": 1.56
+        },
+        {
+          "word": " Settlement",
+          "start": 1.9,
+          "end": 2.44
+        },
+        {
+          "word": " is",
+          "start": 2.44,
+          "end": 2.64
+        },
+        {
+          "word": " still",
+          "start": 2.64,
+          "end": 2.86
+        },
+        {
+          "word": " ahead.",
+          "start": 2.86,
+          "end": 3.16
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

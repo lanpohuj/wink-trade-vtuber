@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_win_09",
+  "expected": "Результат закрытой сделки положительный. Отмечаем!",
+  "transcript": "Результат закрытой сделки положительный. Отмечаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.07891,
+    "peak": 0.32323,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.083,
+    "sha256": "f0bbcf01c9e388854e3cf3a0112181e7a52172457fb7ca9aae66879f50162753"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Результат закрытой сделки положительный. Отмечаем.",
+      "words": [
+        {
+          "word": " Результат",
+          "start": 0.0,
+          "end": 0.72
+        },
+        {
+          "word": " закрытой",
+          "start": 0.72,
+          "end": 1.2
+        },
+        {
+          "word": " сделки",
+          "start": 1.2,
+          "end": 1.56
+        },
+        {
+          "word": " положительный.",
+          "start": 1.56,
+          "end": 2.34
+        },
+        {
+          "word": " Отмечаем.",
+          "start": 2.64,
+          "end": 3.5
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

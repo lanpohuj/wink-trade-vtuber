@@ -1,0 +1,52 @@
+{
+  "id": "ru_trade_refund_02",
+  "expected": "Возврат по завершённой сделке подтверждён.",
+  "transcript": "Возврат по завершенной сделке подтвержден.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.08792,
+    "peak": 0.33492,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.064,
+    "sha256": "51d06d41d1b4c46a44a954079f040324e57353af196602f8cbe083ceeeb4d37d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.48,
+      "text": " Возврат по завершенной сделке подтвержден.",
+      "words": [
+        {
+          "word": " Возврат",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " по",
+          "start": 0.66,
+          "end": 0.82
+        },
+        {
+          "word": " завершенной",
+          "start": 0.82,
+          "end": 1.32
+        },
+        {
+          "word": " сделке",
+          "start": 1.32,
+          "end": 1.76
+        },
+        {
+          "word": " подтвержден.",
+          "start": 1.76,
+          "end": 2.48
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

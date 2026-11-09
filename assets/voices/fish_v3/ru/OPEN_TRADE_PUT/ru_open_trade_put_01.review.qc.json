@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_put_01",
+  "expected": "Сделка вниз открыта. Теперь наблюдаем!",
+  "transcript": "Сделка вниз открыта. Теперь наблюдаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.08863,
+    "peak": 0.35557,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.116,
+    "sha256": "d39ba41be205d67ffe47df23adf288d419aa496d708749e3244afd48cad72967"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.86,
+      "text": " Сделка вниз открыта. Теперь наблюдаем.",
+      "words": [
+        {
+          "word": " Сделка",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " вниз",
+          "start": 0.64,
+          "end": 0.8
+        },
+        {
+          "word": " открыта.",
+          "start": 0.8,
+          "end": 1.46
+        },
+        {
+          "word": " Теперь",
+          "start": 1.86,
+          "end": 2.12
+        },
+        {
+          "word": " наблюдаем.",
+          "start": 2.12,
+          "end": 2.86
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

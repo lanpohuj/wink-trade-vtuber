@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_loss_01",
+  "expected": "Прошлая сделка закрылась в минус. Фиксируем.",
+  "transcript": "Прошлая сделка закрылась в минус, фиксируем!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.08334,
+    "peak": 0.3664,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "01dc874f1aacd0ef72ecc9d07f77149e22081dcd73f71ae868d64ea0d6f42419"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": " Прошлая сделка закрылась в минус, фиксируем!",
+      "words": [
+        {
+          "word": " Прошлая",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " сделка",
+          "start": 0.64,
+          "end": 1.04
+        },
+        {
+          "word": " закрылась",
+          "start": 1.04,
+          "end": 1.56
+        },
+        {
+          "word": " в",
+          "start": 1.56,
+          "end": 1.64
+        },
+        {
+          "word": " минус,",
+          "start": 1.64,
+          "end": 2.1
+        },
+        {
+          "word": " фиксируем!",
+          "start": 2.48,
+          "end": 3.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

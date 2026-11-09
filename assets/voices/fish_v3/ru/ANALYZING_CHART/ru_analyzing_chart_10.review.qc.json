@@ -1,0 +1,62 @@
+{
+  "id": "ru_analyzing_chart_10",
+  "expected": "Не гадаю по одной свече, смотрю шире.",
+  "transcript": "Не гадаю по одной свече, смотрю шире.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.534,
+    "rms": 0.0738,
+    "peak": 0.25887,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.134,
+    "sha256": "7c1f2f641c63134f4698c5307c7053a6172661d2b4b8301cb50afed41be1e687"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.36,
+      "text": " Не гадаю по одной свече, смотрю шире.",
+      "words": [
+        {
+          "word": " Не",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " гадаю",
+          "start": 0.38,
+          "end": 0.78
+        },
+        {
+          "word": " по",
+          "start": 0.78,
+          "end": 0.92
+        },
+        {
+          "word": " одной",
+          "start": 0.92,
+          "end": 1.12
+        },
+        {
+          "word": " свече,",
+          "start": 1.12,
+          "end": 1.6
+        },
+        {
+          "word": " смотрю",
+          "start": 1.64,
+          "end": 1.96
+        },
+        {
+          "word": " шире.",
+          "start": 1.96,
+          "end": 2.36
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

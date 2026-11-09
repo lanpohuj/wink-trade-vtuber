@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_04",
+  "expected": "Not every chart needs an entry, cuties.",
+  "transcript": "Not every chart needs an entry, cuties.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.07993,
+    "peak": 0.33609,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.235,
+    "sha256": "c661168a5e7b0d273255b6664b5792c613307d5bd564f17f3968553c34b815fa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.08,
+      "text": " Not every chart needs an entry, cuties.",
+      "words": [
+        {
+          "word": " Not",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "word": " every",
+          "start": 0.34,
+          "end": 0.62
+        },
+        {
+          "word": " chart",
+          "start": 0.62,
+          "end": 0.88
+        },
+        {
+          "word": " needs",
+          "start": 0.88,
+          "end": 1.12
+        },
+        {
+          "word": " an",
+          "start": 1.12,
+          "end": 1.3
+        },
+        {
+          "word": " entry,",
+          "start": 1.3,
+          "end": 1.56
+        },
+        {
+          "word": " cuties.",
+          "start": 1.68,
+          "end": 2.08
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

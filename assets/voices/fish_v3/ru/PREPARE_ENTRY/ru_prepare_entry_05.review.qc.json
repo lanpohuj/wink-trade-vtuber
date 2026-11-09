@@ -1,0 +1,52 @@
+{
+  "id": "ru_prepare_entry_05",
+  "expected": "Последняя проверка. Свечки, без сюрпризов!",
+  "transcript": "Последняя проверка. Свечки без сюрпризов.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.08761,
+    "peak": 0.3973,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.142,
+    "sha256": "48faf39d3e469acbb57e62392429affcf7ae65128b19a437f389104a0421c59f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": " Последняя проверка. Свечки без сюрпризов.",
+      "words": [
+        {
+          "word": " Последняя",
+          "start": 0.0,
+          "end": 0.74
+        },
+        {
+          "word": " проверка.",
+          "start": 0.74,
+          "end": 1.42
+        },
+        {
+          "word": " Свечки",
+          "start": 1.76,
+          "end": 2.4
+        },
+        {
+          "word": " без",
+          "start": 2.4,
+          "end": 2.56
+        },
+        {
+          "word": " сюрпризов.",
+          "start": 2.56,
+          "end": 3.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

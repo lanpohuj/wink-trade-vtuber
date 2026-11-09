@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_win_06",
+  "expected": "Cuties, the last closed trade finished positive!",
+  "transcript": "Cuties! The last closed trade finished positive!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07347,
+    "peak": 0.35417,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.16,
+    "sha256": "99be85cb8b52f02f3d8cac47d9f9906bc64475cf16d3ac6f14d13dd202083c11"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.02,
+      "text": " Cuties! The last closed trade finished positive!",
+      "words": [
+        {
+          "word": " Cuties!",
+          "start": 0.0,
+          "end": 0.74
+        },
+        {
+          "word": " The",
+          "start": 1.04,
+          "end": 1.2
+        },
+        {
+          "word": " last",
+          "start": 1.2,
+          "end": 1.44
+        },
+        {
+          "word": " closed",
+          "start": 1.44,
+          "end": 1.68
+        },
+        {
+          "word": " trade",
+          "start": 1.68,
+          "end": 2.1
+        },
+        {
+          "word": " finished",
+          "start": 2.1,
+          "end": 2.52
+        },
+        {
+          "word": " positive!",
+          "start": 2.52,
+          "end": 3.02
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

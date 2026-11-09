@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_10",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Котики, вверх уже открыто. Следим вместе.",
+  "text_version": 1,
+  "text_sha256": "f1bba8ee2c068bb73874157fa344dbf72270b60a2fff30c071de96ad5f07290e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_10.mp3",
+  "auditory_verified": false,
+  "duration": 3.630937,
+  "sha256": "60b1ce4035e4eada31614b74974e3be6037af05ee8d952473913c8a23cef8fca",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_10.mp3.rms2.json"
+}

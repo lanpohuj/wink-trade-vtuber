@@ -1,0 +1,57 @@
+{
+  "id": "ru_prepare_entry_03",
+  "expected": "Подготовка идёт. Подтверждение всё ещё нужно.",
+  "transcript": "Подготовка идет, подтверждение все еще нужно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.08985,
+    "peak": 0.38519,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "3e380af0edbeb089b2503ef375d2184dcd08b9bcf81bdff1b4f3c262a5b0addc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Подготовка идет, подтверждение все еще нужно.",
+      "words": [
+        {
+          "word": " Подготовка",
+          "start": 0.0,
+          "end": 0.84
+        },
+        {
+          "word": " идет,",
+          "start": 0.84,
+          "end": 1.1
+        },
+        {
+          "word": " подтверждение",
+          "start": 1.6,
+          "end": 2.32
+        },
+        {
+          "word": " все",
+          "start": 2.32,
+          "end": 2.56
+        },
+        {
+          "word": " еще",
+          "start": 2.56,
+          "end": 2.78
+        },
+        {
+          "word": " нужно.",
+          "start": 2.78,
+          "end": 3.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

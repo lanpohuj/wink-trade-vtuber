@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_01",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "The trade is still active. Watching calmly.",
+  "text_version": 1,
+  "text_sha256": "b17bdebf21b14acb2b8dbd42a14f369b19f143d707138af3f12079cc29ecd593",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "5d3a207e5c856b8c091b745667c72b34f7111aa627fb7d923ea5e3d532c6de8f",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_01.mp3.rms2.json"
+}

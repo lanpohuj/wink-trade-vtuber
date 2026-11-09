@@ -1,0 +1,52 @@
+{
+  "id": "ru_analyzing_chart_11",
+  "expected": "Сейчас разберём движение по шагам.",
+  "transcript": "Сейчас разберём движение по шагам.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.1001,
+    "peak": 0.40616,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.115,
+    "sha256": "56be925b8c06c87cd12ac5eb4c2e527e8b34d8aebd7d40017c7b16b79f012b7a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.22,
+      "text": " Сейчас разберём движение по шагам.",
+      "words": [
+        {
+          "word": " Сейчас",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " разберём",
+          "start": 0.52,
+          "end": 1.14
+        },
+        {
+          "word": " движение",
+          "start": 1.14,
+          "end": 1.62
+        },
+        {
+          "word": " по",
+          "start": 1.62,
+          "end": 1.78
+        },
+        {
+          "word": " шагам.",
+          "start": 1.78,
+          "end": 2.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

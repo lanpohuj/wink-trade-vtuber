@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_03",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Comparing timeframes. No need to rush just yet.",
+  "text_version": 1,
+  "text_sha256": "4648235a7d4295ac11ad5a4ade65e9ca7e05c076421a343c3cd81cd55d6f1c43",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.683187,
+  "sha256": "56546cef8923d801fd6ba0af2c3e220cc5706c3120f07eabc115baef3a3040ae",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_03.mp3.rms2.json"
+}

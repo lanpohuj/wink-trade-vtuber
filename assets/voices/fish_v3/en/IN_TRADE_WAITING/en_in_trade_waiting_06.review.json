@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_06",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "Just watching for now. We'll check the result separately.",
+  "text_version": 1,
+  "text_sha256": "ca9cd62a4be19208fa9bd80d9ef63f979d6d71f8d96b47c29d6d913f2dd8817e",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.813812,
+  "sha256": "a6ec2bb166456ad789f83268475de61d2629252a5422319c355af241b81d2e62",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_06.mp3.rms2.json"
+}

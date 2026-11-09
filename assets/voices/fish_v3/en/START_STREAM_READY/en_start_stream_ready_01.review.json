@@ -1,0 +1,18 @@
+{
+  "id": "en_start_stream_ready_01",
+  "category": "START_STREAM_READY",
+  "lang": "en",
+  "text": "Hey, hey! Winky here, ears at the ready!",
+  "text_version": 1,
+  "text_sha256": "13a2d13750b38905e8e9344d80c777dbe57e69d87f6552f4321cf391a58230f9",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/START_STREAM_READY/en_start_stream_ready_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "06d6d23aba13aae5774e406d573c629469fc20193d7625f170780f72aa1a3421",
+  "rms_file": "en/START_STREAM_READY/en_start_stream_ready_01.mp3.rms2.json"
+}

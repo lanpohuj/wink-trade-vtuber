@@ -1,0 +1,18 @@
+{
+  "id": "en_pair_switched_new_scan_03",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "en",
+  "text": "Another chart, another check. Here we go!",
+  "text_version": 1,
+  "text_sha256": "2fd6a3bac6d1590dcd1e9b8290b94b6b048378e070c8b7081cad858bfbca04d8",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "ea91a2885527be50349afa62481c39a4967c5461a6259a3f198615168986ee0d",
+  "rms_file": "en/PAIR_SWITCHED_NEW_SCAN/en_pair_switched_new_scan_03.mp3.rms2.json"
+}

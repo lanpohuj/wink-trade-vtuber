@@ -1,0 +1,77 @@
+{
+  "id": "en_start_stream_ready_02",
+  "expected": "Hi, chat! Get comfy and watch the chart with me.",
+  "transcript": "Hi, chat. Get comfy and watch the chart with me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08301,
+    "peak": 0.40207,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.13,
+    "sha256": "4de37be5b7097507540113caaa51627818e91a2d2fe90697d4c4d72256479b6e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Hi, chat. Get comfy and watch the chart with me.",
+      "words": [
+        {
+          "word": " Hi,",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " chat.",
+          "start": 0.54,
+          "end": 0.72
+        },
+        {
+          "word": " Get",
+          "start": 1.36,
+          "end": 1.5
+        },
+        {
+          "word": " comfy",
+          "start": 1.5,
+          "end": 1.88
+        },
+        {
+          "word": " and",
+          "start": 1.88,
+          "end": 2.08
+        },
+        {
+          "word": " watch",
+          "start": 2.08,
+          "end": 2.3
+        },
+        {
+          "word": " the",
+          "start": 2.3,
+          "end": 2.48
+        },
+        {
+          "word": " chart",
+          "start": 2.48,
+          "end": 2.74
+        },
+        {
+          "word": " with",
+          "start": 2.74,
+          "end": 2.96
+        },
+        {
+          "word": " me.",
+          "start": 2.96,
+          "end": 3.12
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

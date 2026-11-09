@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_refund_01",
+  "category": "TRADE_REFUND",
+  "lang": "ru",
+  "text": "Закрытая сделка рассчитана возвратом. Отмечаю.",
+  "text_version": 1,
+  "text_sha256": "4af88f7479a071220a90eccf87d2f0f96b7844357f1b2f5111a744f8cef7b7a0",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_REFUND/ru_trade_refund_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.944375,
+  "sha256": "157cf98360791fb90498ea8526837fbac75511c22bd2ca78db7a96ef2b756ef9",
+  "rms_file": "ru/TRADE_REFUND/ru_trade_refund_01.mp3.rms2.json"
+}

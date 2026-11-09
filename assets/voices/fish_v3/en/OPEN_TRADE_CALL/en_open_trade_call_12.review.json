@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_call_12",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "The platform confirmed the upward opening.",
+  "text_version": 1,
+  "text_sha256": "a27983d3280494c1967645c8a5569efef88b7ed9be7b474259baa2e779d929c6",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_CALL/en_open_trade_call_12.mp3",
+  "auditory_verified": false,
+  "duration": 2.612125,
+  "sha256": "9a5da287bb70ffc461de30da747022510c78ea1c1ec80b1675e466336dfaf400",
+  "rms_file": "en/OPEN_TRADE_CALL/en_open_trade_call_12.mp3.rms2.json"
+}

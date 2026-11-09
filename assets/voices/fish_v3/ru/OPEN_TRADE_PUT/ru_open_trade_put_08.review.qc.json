@@ -1,0 +1,52 @@
+{
+  "id": "ru_open_trade_put_08",
+  "expected": "Вход на понижение состоялся. Наблюдаю.",
+  "transcript": "Вход на понижение состоялся. Наблюдаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.109,
+    "rms": 0.08878,
+    "peak": 0.48766,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "1166df103fcf9b900392ad8a3aee30d05ac2a0257647717a99ab0b148c21bb6f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Вход на понижение состоялся. Наблюдаю.",
+      "words": [
+        {
+          "word": " Вход",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " на",
+          "start": 0.42,
+          "end": 0.56
+        },
+        {
+          "word": " понижение",
+          "start": 0.56,
+          "end": 1.12
+        },
+        {
+          "word": " состоялся.",
+          "start": 1.12,
+          "end": 1.92
+        },
+        {
+          "word": " Наблюдаю.",
+          "start": 2.16,
+          "end": 2.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,62 @@
+{
+  "id": "en_stream_insight_05",
+  "expected": "Check the data first, then draw conclusions.",
+  "transcript": "Check the data first, then draw conclusions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.07586,
+    "peak": 0.41938,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.284,
+    "sha256": "9816a983eb874187cbbf1588d695746ea71f3a2379b93be0c77685ede6d074c6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.42,
+      "text": " Check the data first, then draw conclusions.",
+      "words": [
+        {
+          "word": " Check",
+          "start": 0.0,
+          "end": 0.34
+        },
+        {
+          "word": " the",
+          "start": 0.34,
+          "end": 0.52
+        },
+        {
+          "word": " data",
+          "start": 0.52,
+          "end": 0.74
+        },
+        {
+          "word": " first,",
+          "start": 0.74,
+          "end": 1.06
+        },
+        {
+          "word": " then",
+          "start": 1.5,
+          "end": 1.7
+        },
+        {
+          "word": " draw",
+          "start": 1.7,
+          "end": 1.96
+        },
+        {
+          "word": " conclusions.",
+          "start": 1.96,
+          "end": 2.42
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

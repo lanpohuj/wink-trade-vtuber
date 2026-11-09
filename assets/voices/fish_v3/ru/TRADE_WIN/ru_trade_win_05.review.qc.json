@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_win_05",
+  "expected": "Расчёт подтвердил плюс по закрытой сделке.",
+  "transcript": "расчет подтвердил плюс по закрытой сделке",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.08607,
+    "peak": 0.36279,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "55d9f958d25b8b1c0e66a228f652706b9383016c56ecd66dd080001774d7d710"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " расчет подтвердил плюс по закрытой сделке",
+      "words": [
+        {
+          "word": " расчет",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " подтвердил",
+          "start": 0.62,
+          "end": 1.18
+        },
+        {
+          "word": " плюс",
+          "start": 1.18,
+          "end": 1.38
+        },
+        {
+          "word": " по",
+          "start": 1.38,
+          "end": 1.58
+        },
+        {
+          "word": " закрытой",
+          "start": 1.58,
+          "end": 2.0
+        },
+        {
+          "word": " сделке",
+          "start": 2.0,
+          "end": 2.44
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

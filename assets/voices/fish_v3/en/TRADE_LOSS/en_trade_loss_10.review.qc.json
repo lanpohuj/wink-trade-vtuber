@@ -1,0 +1,72 @@
+{
+  "id": "en_trade_loss_10",
+  "expected": "Cuties, the last trade closed negative. Recording the fact.",
+  "transcript": "Cuties the last trade closed negative recording the fact",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08124,
+    "peak": 0.46447,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.222,
+    "sha256": "d1ae3fa48beb752d04fe23b17f48b4968d0d2fe779aca086d0d3a5f9778dfd06"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.92,
+      "text": " Cuties the last trade closed negative recording the fact",
+      "words": [
+        {
+          "word": " Cuties",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " the",
+          "start": 0.66,
+          "end": 1.14
+        },
+        {
+          "word": " last",
+          "start": 1.14,
+          "end": 1.42
+        },
+        {
+          "word": " trade",
+          "start": 1.42,
+          "end": 1.74
+        },
+        {
+          "word": " closed",
+          "start": 1.74,
+          "end": 2.08
+        },
+        {
+          "word": " negative",
+          "start": 2.08,
+          "end": 2.56
+        },
+        {
+          "word": " recording",
+          "start": 2.56,
+          "end": 3.46
+        },
+        {
+          "word": " the",
+          "start": 3.46,
+          "end": 3.68
+        },
+        {
+          "word": " fact",
+          "start": 3.68,
+          "end": 3.92
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

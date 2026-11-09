@@ -1,0 +1,52 @@
+{
+  "id": "ru_pause_between_trades_06",
+  "expected": "Небольшая пауза, я остаюсь рядом.",
+  "transcript": "Небольшая пауза, я остаюсь рядом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.717,
+    "rms": 0.07796,
+    "peak": 0.31289,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.137,
+    "sha256": "a10e90649c4780572d5bb2617f379f03583d27b780db644dc0d7de662ab8bf8f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.34,
+      "text": " Небольшая пауза, я остаюсь рядом.",
+      "words": [
+        {
+          "word": " Небольшая",
+          "start": 0.0,
+          "end": 0.76
+        },
+        {
+          "word": " пауза,",
+          "start": 0.76,
+          "end": 1.32
+        },
+        {
+          "word": " я",
+          "start": 1.5,
+          "end": 1.72
+        },
+        {
+          "word": " остаюсь",
+          "start": 1.72,
+          "end": 2.06
+        },
+        {
+          "word": " рядом.",
+          "start": 2.06,
+          "end": 2.34
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

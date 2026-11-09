@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_win_05",
+  "category": "TRADE_WIN",
+  "lang": "ru",
+  "text": "Расчёт подтвердил плюс по закрытой сделке.",
+  "text_version": 1,
+  "text_sha256": "482f5f3de2b3370c2c080de5d7e2f2422c04c0ec02535820930ef230bc02da7d",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_WIN/ru_trade_win_05.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "55d9f958d25b8b1c0e66a228f652706b9383016c56ecd66dd080001774d7d710",
+  "rms_file": "ru/TRADE_WIN/ru_trade_win_05.mp3.rms2.json"
+}

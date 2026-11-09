@@ -1,0 +1,18 @@
+{
+  "id": "ru_trade_refund_04",
+  "category": "TRADE_REFUND",
+  "lang": "ru",
+  "text": "Котики, завершённая сделка с возвратом.",
+  "text_version": 1,
+  "text_sha256": "385a2835e7c12dc04ee6845a0ab7165f4dc61925814899837b448c8dd327008f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/TRADE_REFUND/ru_trade_refund_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "bffec535a5e21dc9a03456dddd8aa12733c3a8ac0519414035fb6d0d4100905c",
+  "rms_file": "ru/TRADE_REFUND/ru_trade_refund_04.mp3.rms2.json"
+}

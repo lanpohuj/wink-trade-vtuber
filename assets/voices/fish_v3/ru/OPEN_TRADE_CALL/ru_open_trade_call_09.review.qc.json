@@ -1,0 +1,47 @@
+{
+  "id": "ru_open_trade_call_09",
+  "expected": "Направление вверх, сделка активна.",
+  "transcript": "направление вверх, сделка активна",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.664,
+    "rms": 0.08766,
+    "peak": 0.31095,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "9aa5e5c5742080dc736822424e6c0566252f1133b2dcfceb27fe6a58101c8652"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.48,
+      "text": " направление вверх, сделка активна",
+      "words": [
+        {
+          "word": " направление",
+          "start": 0.0,
+          "end": 0.84
+        },
+        {
+          "word": " вверх,",
+          "start": 0.84,
+          "end": 1.5
+        },
+        {
+          "word": " сделка",
+          "start": 1.5,
+          "end": 1.98
+        },
+        {
+          "word": " активна",
+          "start": 1.98,
+          "end": 2.48
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

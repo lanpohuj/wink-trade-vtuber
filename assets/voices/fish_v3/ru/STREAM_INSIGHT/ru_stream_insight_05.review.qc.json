@@ -1,0 +1,57 @@
+{
+  "id": "ru_stream_insight_05",
+  "expected": "Сначала проверяем данные, потом делаем выводы.",
+  "transcript": "Сначала проверяем данные, потом делаем выводы.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.09073,
+    "peak": 0.36893,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "5dffd3ddb7026101ab5a1f26298f0e89e85f79863632c602680701f485bef99c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " Сначала проверяем данные, потом делаем выводы.",
+      "words": [
+        {
+          "word": " Сначала",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " проверяем",
+          "start": 0.62,
+          "end": 1.2
+        },
+        {
+          "word": " данные,",
+          "start": 1.2,
+          "end": 1.66
+        },
+        {
+          "word": " потом",
+          "start": 1.92,
+          "end": 2.14
+        },
+        {
+          "word": " делаем",
+          "start": 2.14,
+          "end": 2.54
+        },
+        {
+          "word": " выводы.",
+          "start": 2.54,
+          "end": 2.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

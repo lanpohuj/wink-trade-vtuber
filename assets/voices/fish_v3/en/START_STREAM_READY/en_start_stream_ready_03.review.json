@@ -1,0 +1,18 @@
+{
+  "id": "en_start_stream_ready_03",
+  "category": "START_STREAM_READY",
+  "lang": "en",
+  "text": "Meow, hello! Let's start our chart session, nice and easy.",
+  "text_version": 1,
+  "text_sha256": "310e58ba8217058ccd1b4beacea7391bd8157e5404324a240945b5718ed45b12",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/START_STREAM_READY/en_start_stream_ready_03.mp3",
+  "auditory_verified": false,
+  "duration": 4.597437,
+  "sha256": "1ed524607633772bbf522f56b34b4f21132245cc2cca800a98f3d5dff7a5685f",
+  "rms_file": "en/START_STREAM_READY/en_start_stream_ready_03.mp3.rms2.json"
+}

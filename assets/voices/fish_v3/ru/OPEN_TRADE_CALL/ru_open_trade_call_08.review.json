@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_call_08",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Вход на повышение состоялся. Наблюдаю.",
+  "text_version": 1,
+  "text_sha256": "3f7f7803234762c923016b5699581a7828550198eb3972803094af80839d904f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "BUY"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_08.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "0044d85ebbf1c85bfe15639f81fc6d1b40c6e58ea5c76db641e3d8338551d038",
+  "rms_file": "ru/OPEN_TRADE_CALL/ru_open_trade_call_08.mp3.rms2.json"
+}

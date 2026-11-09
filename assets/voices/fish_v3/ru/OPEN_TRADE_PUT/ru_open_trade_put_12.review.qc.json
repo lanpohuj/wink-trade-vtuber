@@ -1,0 +1,47 @@
+{
+  "id": "ru_open_trade_put_12",
+  "expected": "Открытие вниз подтверждено платформой.",
+  "transcript": "Открытие вниз подтверждено платформой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.534,
+    "rms": 0.08423,
+    "peak": 0.41425,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.094,
+    "sha256": "f2e0fd54fe300f23cd159b6e01925ebc6d5e451a1a34bd082cf29b81780dc83e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.36,
+      "text": " Открытие вниз подтверждено платформой.",
+      "words": [
+        {
+          "word": " Открытие",
+          "start": 0.0,
+          "end": 0.82
+        },
+        {
+          "word": " вниз",
+          "start": 0.82,
+          "end": 1.02
+        },
+        {
+          "word": " подтверждено",
+          "start": 1.02,
+          "end": 1.7
+        },
+        {
+          "word": " платформой.",
+          "start": 1.7,
+          "end": 2.36
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

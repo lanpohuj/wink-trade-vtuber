@@ -1,0 +1,18 @@
+{
+  "id": "en_stream_insight_02",
+  "category": "STREAM_INSIGHT",
+  "lang": "en",
+  "text": "Candle timeframe and trade duration are different things.",
+  "text_version": 1,
+  "text_sha256": "682f5516a44b273351960e1f34fa68b4272388e4789997c1bb13aa2f8ad96549",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/STREAM_INSIGHT/en_stream_insight_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "dbe85ee239f411c23ee219a8b63421fcf5c2e4f582d9d73a71123647aa3822c2",
+  "rms_file": "en/STREAM_INSIGHT/en_stream_insight_02.mp3.rms2.json"
+}

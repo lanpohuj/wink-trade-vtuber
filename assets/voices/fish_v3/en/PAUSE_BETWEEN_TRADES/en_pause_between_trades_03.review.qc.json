@@ -1,0 +1,62 @@
+{
+  "id": "en_pause_between_trades_03",
+  "expected": "A quiet moment can be lovely too.",
+  "transcript": "A quiet moment can be lovely too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.351,
+    "rms": 0.07893,
+    "peak": 0.46615,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.151,
+    "sha256": "6ed325b761f2f1ea2371365328f11cacff2d364f1532ec509704484963bce43a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.02,
+      "text": " A quiet moment can be lovely too.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " quiet",
+          "start": 0.26,
+          "end": 0.62
+        },
+        {
+          "word": " moment",
+          "start": 0.62,
+          "end": 0.98
+        },
+        {
+          "word": " can",
+          "start": 0.98,
+          "end": 1.24
+        },
+        {
+          "word": " be",
+          "start": 1.24,
+          "end": 1.38
+        },
+        {
+          "word": " lovely",
+          "start": 1.38,
+          "end": 1.68
+        },
+        {
+          "word": " too.",
+          "start": 1.68,
+          "end": 2.02
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

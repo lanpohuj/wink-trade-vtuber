@@ -1,0 +1,67 @@
+{
+  "id": "en_trade_win_09",
+  "expected": "The closed trade has a positive result. Noted!",
+  "transcript": "The closed trade has a positive result, noted.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.08132,
+    "peak": 0.41142,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.116,
+    "sha256": "3f8c17e61ff580c92ce46bf2c9f0859cd1b6945c159061ffca720ee1ea8e2be5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " The closed trade has a positive result, noted.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.3
+        },
+        {
+          "word": " closed",
+          "start": 0.3,
+          "end": 0.6
+        },
+        {
+          "word": " trade",
+          "start": 0.6,
+          "end": 0.96
+        },
+        {
+          "word": " has",
+          "start": 0.96,
+          "end": 1.16
+        },
+        {
+          "word": " a",
+          "start": 1.16,
+          "end": 1.26
+        },
+        {
+          "word": " positive",
+          "start": 1.26,
+          "end": 1.58
+        },
+        {
+          "word": " result,",
+          "start": 1.58,
+          "end": 2.04
+        },
+        {
+          "word": " noted.",
+          "start": 2.42,
+          "end": 2.72
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

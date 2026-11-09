@@ -1,0 +1,57 @@
+{
+  "id": "en_pause_between_trades_02",
+  "expected": "A short pause. Rushing won't help.",
+  "transcript": "A short pause. Rushing won't help.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.482,
+    "rms": 0.0903,
+    "peak": 0.58705,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "eb820fdeb686a43d4aedccba3fb2033c24090e669b16eee465440a57a65c8025"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " A short pause. Rushing won't help.",
+      "words": [
+        {
+          "word": " A",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " short",
+          "start": 0.26,
+          "end": 0.54
+        },
+        {
+          "word": " pause.",
+          "start": 0.54,
+          "end": 0.88
+        },
+        {
+          "word": " Rushing",
+          "start": 1.38,
+          "end": 1.74
+        },
+        {
+          "word": " won't",
+          "start": 1.74,
+          "end": 2.02
+        },
+        {
+          "word": " help.",
+          "start": 2.02,
+          "end": 2.2
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

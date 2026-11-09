@@ -1,0 +1,18 @@
+{
+  "id": "en_weak_signal_switch_pair_06",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "en",
+  "text": "No trade here. I'll check another chart.",
+  "text_version": 1,
+  "text_sha256": "5b2e996b7db5f9ed9e93f6abaacd232a68cdd359c5550e33ad27d1ff2572d1a6",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.716625,
+  "sha256": "3fb79d0689764ca9eb2ec3bf59f15e14f98662fbdc61c0d42790f140c35ee6d5",
+  "rms_file": "en/WEAK_SIGNAL_SWITCH_PAIR/en_weak_signal_switch_pair_06.mp3.rms2.json"
+}

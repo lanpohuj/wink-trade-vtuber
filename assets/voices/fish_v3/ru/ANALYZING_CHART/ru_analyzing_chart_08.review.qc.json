@@ -1,0 +1,47 @@
+{
+  "id": "ru_analyzing_chart_08",
+  "expected": "Минутку внимания графику, чатик.",
+  "transcript": "Минутку внимания, графику! Чатик?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.455,
+    "rms": 0.06854,
+    "peak": 0.3141,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.115,
+    "sha256": "7487d4d16186649f2774f8841ec739cc4cc4627bd1e8ead07cbdc38469f3fd8f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.28,
+      "text": " Минутку внимания, графику! Чатик?",
+      "words": [
+        {
+          "word": " Минутку",
+          "start": 0.0,
+          "end": 0.66
+        },
+        {
+          "word": " внимания,",
+          "start": 0.66,
+          "end": 1.08
+        },
+        {
+          "word": " графику!",
+          "start": 1.14,
+          "end": 1.58
+        },
+        {
+          "word": " Чатик?",
+          "start": 1.86,
+          "end": 2.28
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

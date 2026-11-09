@@ -1,0 +1,52 @@
+{
+  "id": "ru_analyzing_chart_03",
+  "expected": "Сравниваю интервалы. Спешить пока некуда.",
+  "transcript": "Стравниваю интервалы. Спешить пока некуда.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08479,
+    "peak": 0.39858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "20da00656113f82f973f4259526830985e66de024ae2f49012a10dd48d54b85d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Стравниваю интервалы. Спешить пока некуда.",
+      "words": [
+        {
+          "word": " Стравниваю",
+          "start": 0.0,
+          "end": 0.74
+        },
+        {
+          "word": " интервалы.",
+          "start": 0.74,
+          "end": 1.26
+        },
+        {
+          "word": " Спешить",
+          "start": 1.68,
+          "end": 2.32
+        },
+        {
+          "word": " пока",
+          "start": 2.32,
+          "end": 2.5
+        },
+        {
+          "word": " некуда.",
+          "start": 2.5,
+          "end": 2.94
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

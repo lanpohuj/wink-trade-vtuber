@@ -1,0 +1,18 @@
+{
+  "id": "en_pause_between_trades_01",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "en",
+  "text": "A little breather, cuties. Resting these ears.",
+  "text_version": 1,
+  "text_sha256": "5ff98f5ad889621d5d740ce4f7840016de4991eccefcd2e2a42a40720aaff235",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "6bf98ba8e836049176e408be6de55c0db478f4e17a4519e20e839718d6edba12",
+  "rms_file": "en/PAUSE_BETWEEN_TRADES/en_pause_between_trades_01.mp3.rms2.json"
+}

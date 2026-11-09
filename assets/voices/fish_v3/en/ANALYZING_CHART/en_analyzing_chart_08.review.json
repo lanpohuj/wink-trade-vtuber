@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_08",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "A little chart time, chat.",
+  "text_version": 1,
+  "text_sha256": "e682ed92489b44c412ac79fd4ff8d22b2729f517b385aa711b2ed05c10783b10",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_08.mp3",
+  "auditory_verified": false,
+  "duration": 1.8285,
+  "sha256": "f423fd36fa4825e62c8e03b8cfc34f83fb7decb426b4fb5b5a00f705de70caab",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_08.mp3.rms2.json"
+}

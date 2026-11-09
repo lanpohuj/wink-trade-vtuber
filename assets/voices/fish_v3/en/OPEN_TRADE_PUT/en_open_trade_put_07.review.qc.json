@@ -1,0 +1,52 @@
+{
+  "id": "en_open_trade_put_07",
+  "expected": "Downward opening confirmed. Watching calmly.",
+  "transcript": "Downward opening confirmed, watching calmly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.07713,
+    "peak": 0.42832,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.333,
+    "sha256": "96bcfcb495f17337474dd5a6e3ab4065fdcda5140e193ba10486e56dade491c8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.02,
+      "text": " Downward opening confirmed, watching calmly.",
+      "words": [
+        {
+          "word": " Downward",
+          "start": 0.0,
+          "end": 0.64
+        },
+        {
+          "word": " opening",
+          "start": 0.64,
+          "end": 0.98
+        },
+        {
+          "word": " confirmed,",
+          "start": 0.98,
+          "end": 1.44
+        },
+        {
+          "word": " watching",
+          "start": 2.0,
+          "end": 2.56
+        },
+        {
+          "word": " calmly.",
+          "start": 2.56,
+          "end": 3.02
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_stream_insight_04",
+  "category": "STREAM_INSIGHT",
+  "lang": "ru",
+  "text": "Пропуск тоже решение. Не каждому движению нужен вход.",
+  "text_version": 1,
+  "text_sha256": "87fdcbf43e827202bb2d943a127a2b9f013a40fae014790cb0aaa7e71053d43c",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/STREAM_INSIGHT/ru_stream_insight_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.630937,
+  "sha256": "d43ede5f35ee50fe17cf40414cc752676820975be843c5d080552ae44105d30d",
+  "rms_file": "ru/STREAM_INSIGHT/ru_stream_insight_04.mp3.rms2.json"
+}

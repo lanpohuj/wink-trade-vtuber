@@ -1,0 +1,18 @@
+{
+  "id": "ru_pause_between_trades_06",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Небольшая пауза, я остаюсь рядом.",
+  "text_version": 1,
+  "text_sha256": "fc14d087da0127bb41d435c1b86c56f40fe7cafbfb2642af316b6e2d513ccde2",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.716625,
+  "sha256": "a10e90649c4780572d5bb2617f379f03583d27b780db644dc0d7de662ab8bf8f",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_06.mp3.rms2.json"
+}

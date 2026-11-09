@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_06",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "The downward trade is now active.",
+  "text_version": 1,
+  "text_sha256": "efd83dfb45a2b6bcfc7caf1405fb98a49c2da044577c6a876714dd3452517904",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.272562,
+  "sha256": "40b04ef521a16f04a834f883bcf54494354f9a2406d2e136bdc8974687f9f7a2",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_06.mp3.rms2.json"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "en_chat_ack_04",
+  "expected": "It's cozier with you here. Hello, chat!",
+  "transcript": "It's cozier with you here. Hello, chat?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08177,
+    "peak": 0.55773,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.287,
+    "sha256": "e5c5d8ae5209ca822aa936d2bea017ac5835b43464407a22905b4a038ef2dcc6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " It's cozier with you here. Hello, chat?",
+      "words": [
+        {
+          "word": " It's",
+          "start": 0.0,
+          "end": 0.36
+        },
+        {
+          "word": " cozier",
+          "start": 0.36,
+          "end": 0.78
+        },
+        {
+          "word": " with",
+          "start": 0.78,
+          "end": 1.04
+        },
+        {
+          "word": " you",
+          "start": 1.04,
+          "end": 1.18
+        },
+        {
+          "word": " here.",
+          "start": 1.18,
+          "end": 1.44
+        },
+        {
+          "word": " Hello,",
+          "start": 1.9,
+          "end": 2.3
+        },
+        {
+          "word": " chat?",
+          "start": 2.48,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ru_chat_ack_03",
+  "category": "CHAT_ACK",
+  "lang": "ru",
+  "text": "Спасибо за сообщения! Чатик у меня на виду.",
+  "text_version": 1,
+  "text_sha256": "66b4fd4344eeda60abf2e135321bae8145cde77c809cf86320f321e162f0836f",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/CHAT_ACK/ru_chat_ack_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.552562,
+  "sha256": "51f1416666fb7342a772d0d47c4e64e649f2694ae67c363dd03be884eb9f0f96",
+  "rms_file": "ru/CHAT_ACK/ru_chat_ack_03.mp3.rms2.json"
+}

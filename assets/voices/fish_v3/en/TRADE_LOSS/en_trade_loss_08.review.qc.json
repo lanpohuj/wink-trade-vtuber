@@ -1,0 +1,62 @@
+{
+  "id": "en_trade_loss_08",
+  "expected": "Negative result confirmed. Keeping the record honest.",
+  "transcript": "Negative result confirmed. Keeping the record honest.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07293,
+    "peak": 0.34711,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.26,
+    "sha256": "824bf4b543ff7cc5ba682087884f8ba16e22bcc14635b5e96976348c87b972e3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.02,
+      "text": " Negative result confirmed. Keeping the record honest.",
+      "words": [
+        {
+          "word": " Negative",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " result",
+          "start": 0.56,
+          "end": 0.9
+        },
+        {
+          "word": " confirmed.",
+          "start": 0.9,
+          "end": 1.44
+        },
+        {
+          "word": " Keeping",
+          "start": 1.92,
+          "end": 2.18
+        },
+        {
+          "word": " the",
+          "start": 2.18,
+          "end": 2.4
+        },
+        {
+          "word": " record",
+          "start": 2.4,
+          "end": 2.62
+        },
+        {
+          "word": " honest.",
+          "start": 2.62,
+          "end": 3.02
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

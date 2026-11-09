@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_06",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "Let's see how this part of the chart develops.",
+  "text_version": 1,
+  "text_sha256": "2fd0b68e31f1dc1509824f0a6f8167f014dce772b7da96a5a5c5703f09bcbdbf",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.403188,
+  "sha256": "284d7bf3baf67af36a11ce66fbed77bd643f2e3ecbe9bccfae3600fb149a1a9d",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_06.mp3.rms2.json"
+}

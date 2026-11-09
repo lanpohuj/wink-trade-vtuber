@@ -1,0 +1,18 @@
+{
+  "id": "ru_pair_switched_new_scan_05",
+  "category": "PAIR_SWITCHED_NEW_SCAN",
+  "lang": "ru",
+  "text": "Котики, смотрим новый график вместе.",
+  "text_version": 1,
+  "text_sha256": "155fdddec1691d73bfc9d7e20c709560866e2bf677d0c1925d15ffb7389ab00e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_05.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "c7e59b5dbdd5ab38249c003025b1bd5d972fb5666d5a8766bbe72081190d7592",
+  "rms_file": "ru/PAIR_SWITCHED_NEW_SCAN/ru_pair_switched_new_scan_05.mp3.rms2.json"
+}

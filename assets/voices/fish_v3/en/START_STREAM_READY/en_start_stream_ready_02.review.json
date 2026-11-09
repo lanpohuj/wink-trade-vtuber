@@ -1,0 +1,18 @@
+{
+  "id": "en_start_stream_ready_02",
+  "category": "START_STREAM_READY",
+  "lang": "en",
+  "text": "Hi, chat! Get comfy and watch the chart with me.",
+  "text_version": 1,
+  "text_sha256": "4ceb203fe71645f33a97434429e660118cda2192a8207d0509c02e70217221fe",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/START_STREAM_READY/en_start_stream_ready_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.369687,
+  "sha256": "4de37be5b7097507540113caaa51627818e91a2d2fe90697d4c4d72256479b6e",
+  "rms_file": "en/START_STREAM_READY/en_start_stream_ready_02.mp3.rms2.json"
+}

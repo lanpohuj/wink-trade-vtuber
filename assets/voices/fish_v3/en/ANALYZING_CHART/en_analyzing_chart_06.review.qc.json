@@ -1,0 +1,72 @@
+{
+  "id": "en_analyzing_chart_06",
+  "expected": "Let's see how this part of the chart develops.",
+  "transcript": "Let's see how this part of the chart develops.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.403,
+    "rms": 0.07925,
+    "peak": 0.44169,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.103,
+    "sha256": "284d7bf3baf67af36a11ce66fbed77bd643f2e3ecbe9bccfae3600fb149a1a9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.98,
+      "text": " Let's see how this part of the chart develops.",
+      "words": [
+        {
+          "word": " Let's",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " see",
+          "start": 0.48,
+          "end": 0.6
+        },
+        {
+          "word": " how",
+          "start": 0.6,
+          "end": 0.76
+        },
+        {
+          "word": " this",
+          "start": 0.76,
+          "end": 0.96
+        },
+        {
+          "word": " part",
+          "start": 0.96,
+          "end": 1.2
+        },
+        {
+          "word": " of",
+          "start": 1.2,
+          "end": 1.3
+        },
+        {
+          "word": " the",
+          "start": 1.3,
+          "end": 1.4
+        },
+        {
+          "word": " chart",
+          "start": 1.4,
+          "end": 1.62
+        },
+        {
+          "word": " develops.",
+          "start": 1.62,
+          "end": 1.98
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

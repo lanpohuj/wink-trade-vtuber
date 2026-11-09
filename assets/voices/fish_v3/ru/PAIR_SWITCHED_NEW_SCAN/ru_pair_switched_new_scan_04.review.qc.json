@@ -1,0 +1,57 @@
+{
+  "id": "ru_pair_switched_new_scan_04",
+  "expected": "Пара сменилась. Старые выводы оставляем позади.",
+  "transcript": "Пара сменилась. Старые выводы оставляем позади.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.09025,
+    "peak": 0.40749,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.093,
+    "sha256": "da30548bc6047bca30c884e9471cb9b92d22786b90abce3da2431de6cfd8c627"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.28,
+      "text": " Пара сменилась. Старые выводы оставляем позади.",
+      "words": [
+        {
+          "word": " Пара",
+          "start": 0.0,
+          "end": 0.48
+        },
+        {
+          "word": " сменилась.",
+          "start": 0.48,
+          "end": 1.12
+        },
+        {
+          "word": " Старые",
+          "start": 1.46,
+          "end": 2.0
+        },
+        {
+          "word": " выводы",
+          "start": 2.0,
+          "end": 2.38
+        },
+        {
+          "word": " оставляем",
+          "start": 2.38,
+          "end": 2.9
+        },
+        {
+          "word": " позади.",
+          "start": 2.9,
+          "end": 3.28
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

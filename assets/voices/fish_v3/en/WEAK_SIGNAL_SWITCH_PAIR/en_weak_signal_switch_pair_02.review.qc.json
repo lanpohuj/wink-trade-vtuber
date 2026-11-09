@@ -1,0 +1,62 @@
+{
+  "id": "en_weak_signal_switch_pair_02",
+  "expected": "Skipping this pair. We need suitable conditions.",
+  "transcript": "Skipping this pair, we need suitable conditions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.06851,
+    "peak": 0.34632,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.167,
+    "sha256": "b47524fef5f563ef2e3b06242428104a137a093ed2ad1a1300f7ccb43f427303"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " Skipping this pair, we need suitable conditions.",
+      "words": [
+        {
+          "word": " Skipping",
+          "start": 0.0,
+          "end": 0.56
+        },
+        {
+          "word": " this",
+          "start": 0.56,
+          "end": 0.76
+        },
+        {
+          "word": " pair,",
+          "start": 0.76,
+          "end": 1.02
+        },
+        {
+          "word": " we",
+          "start": 1.54,
+          "end": 1.66
+        },
+        {
+          "word": " need",
+          "start": 1.66,
+          "end": 1.84
+        },
+        {
+          "word": " suitable",
+          "start": 1.84,
+          "end": 2.18
+        },
+        {
+          "word": " conditions.",
+          "start": 2.18,
+          "end": 2.68
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

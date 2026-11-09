@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_loss_03",
+  "expected": "Последняя закрытая сделка дала минус. Записано.",
+  "transcript": "Последняя закрытая сделка дала минус. Записано.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.08908,
+    "peak": 0.43646,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "48fd3d0073fe7d54f42c6dbcc3d8c547f84bc6948e94a576fde953d279250350"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3,
+      "text": " Последняя закрытая сделка дала минус. Записано.",
+      "words": [
+        {
+          "word": " Последняя",
+          "start": 0.0,
+          "end": 0.72
+        },
+        {
+          "word": " закрытая",
+          "start": 0.72,
+          "end": 1.22
+        },
+        {
+          "word": " сделка",
+          "start": 1.22,
+          "end": 1.62
+        },
+        {
+          "word": " дала",
+          "start": 1.62,
+          "end": 1.82
+        },
+        {
+          "word": " минус.",
+          "start": 1.82,
+          "end": 2.3
+        },
+        {
+          "word": " Записано.",
+          "start": 2.46,
+          "end": 3.3
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

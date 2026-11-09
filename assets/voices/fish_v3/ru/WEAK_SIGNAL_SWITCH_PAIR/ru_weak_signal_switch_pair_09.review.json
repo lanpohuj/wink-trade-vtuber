@@ -1,0 +1,18 @@
+{
+  "id": "ru_weak_signal_switch_pair_09",
+  "category": "WEAK_SIGNAL_SWITCH_PAIR",
+  "lang": "ru",
+  "text": "На этой паре подтверждения нет. Переключаюсь.",
+  "text_version": 1,
+  "text_sha256": "f2889b2c9ee5c31ba67ec808b0501a5ad86f98d70172f49ef977c6130b1bbe32",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_09.mp3",
+  "auditory_verified": false,
+  "duration": 3.186875,
+  "sha256": "096d2f8a125780ed002540815518b11793f16a9edac2557d036743c00410fd7a",
+  "rms_file": "ru/WEAK_SIGNAL_SWITCH_PAIR/ru_weak_signal_switch_pair_09.mp3.rms2.json"
+}

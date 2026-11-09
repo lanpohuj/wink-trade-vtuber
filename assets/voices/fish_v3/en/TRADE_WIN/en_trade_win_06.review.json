@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_win_06",
+  "category": "TRADE_WIN",
+  "lang": "en",
+  "text": "Cuties, the last closed trade finished positive!",
+  "text_version": 1,
+  "text_sha256": "53034b3f87ce6785ec20e920ea1286a8ae7aa780a37ab688283e4a7431784f9d",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_WIN/en_trade_win_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.500313,
+  "sha256": "99be85cb8b52f02f3d8cac47d9f9906bc64475cf16d3ac6f14d13dd202083c11",
+  "rms_file": "en/TRADE_WIN/en_trade_win_06.mp3.rms2.json"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_02",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Downward entry confirmed, cuties.",
+  "text_version": 1,
+  "text_sha256": "315d923c333beb30e77c5114dec9dbeb028e8ade4e7d025e514638a1a6e97d55",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_02.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "24b41e26b82e1ae8d790fb721ea03e0034d777b11f33eec780a946ab0588ca36",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_02.mp3.rms2.json"
+}

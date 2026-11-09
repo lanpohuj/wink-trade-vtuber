@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_07",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Свечки двигаются, а я сверяю условия.",
+  "text_version": 1,
+  "text_sha256": "4584a1c2b628285b5ca72e2bad0b192072f1cf921fed84c38160ca638045b7bf",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_07.mp3",
+  "auditory_verified": false,
+  "duration": 2.664375,
+  "sha256": "1d99d94c48010076cab8994d77ebd772a40fb735a5b4451e786096680c20f927",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_07.mp3.rms2.json"
+}

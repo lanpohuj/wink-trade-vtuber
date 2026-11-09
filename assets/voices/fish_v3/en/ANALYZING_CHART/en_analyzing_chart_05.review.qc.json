@@ -1,0 +1,57 @@
+{
+  "id": "en_analyzing_chart_05",
+  "expected": "Watching the price. Ears up, everyone!",
+  "transcript": "Watching the price. Ears up, everyone!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.07594,
+    "peak": 0.33278,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.156,
+    "sha256": "15dccb3de0a6ec81c1e10b3b757d3a4edaf88b78c03e456a82872af4707a86d2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Watching the price. Ears up, everyone!",
+      "words": [
+        {
+          "word": " Watching",
+          "start": 0.0,
+          "end": 0.52
+        },
+        {
+          "word": " the",
+          "start": 0.52,
+          "end": 0.72
+        },
+        {
+          "word": " price.",
+          "start": 0.72,
+          "end": 1.08
+        },
+        {
+          "word": " Ears",
+          "start": 1.64,
+          "end": 2.04
+        },
+        {
+          "word": " up,",
+          "start": 2.04,
+          "end": 2.32
+        },
+        {
+          "word": " everyone!",
+          "start": 2.36,
+          "end": 2.64
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

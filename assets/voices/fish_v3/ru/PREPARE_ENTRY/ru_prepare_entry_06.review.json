@@ -1,0 +1,18 @@
+{
+  "id": "ru_prepare_entry_06",
+  "category": "PREPARE_ENTRY",
+  "lang": "ru",
+  "text": "Параметры сверяю с текущим графиком.",
+  "text_version": 1,
+  "text_sha256": "fa6e935ace70d947d435c8f8c1413f9f741e6f4a0585a44a92055cc320a5a996",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/PREPARE_ENTRY/ru_prepare_entry_06.mp3",
+  "auditory_verified": false,
+  "duration": 2.220312,
+  "sha256": "7f89b2e974dae017d4458a666fad48903bcd0064f27a34daee0a233b88d848da",
+  "rms_file": "ru/PREPARE_ENTRY/ru_prepare_entry_06.mp3.rms2.json"
+}

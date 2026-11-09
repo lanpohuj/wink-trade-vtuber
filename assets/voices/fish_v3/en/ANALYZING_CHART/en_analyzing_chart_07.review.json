@@ -1,0 +1,18 @@
+{
+  "id": "en_analyzing_chart_07",
+  "category": "ANALYZING_CHART",
+  "lang": "en",
+  "text": "The candles are moving; I'm checking our conditions.",
+  "text_version": 1,
+  "text_sha256": "2be9a567bda7b95656071ee06c15885e0f7f891cb73c69f3e32d28d0860cbed3",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/ANALYZING_CHART/en_analyzing_chart_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "53c8a8c2b5727a4904d1dafbe9ce2dcb77e76df58d52032a3a6e28acd4029fe0",
+  "rms_file": "en/ANALYZING_CHART/en_analyzing_chart_07.mp3.rms2.json"
+}

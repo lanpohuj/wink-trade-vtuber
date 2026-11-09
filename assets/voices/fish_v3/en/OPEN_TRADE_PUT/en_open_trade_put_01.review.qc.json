@@ -1,0 +1,62 @@
+{
+  "id": "en_open_trade_put_01",
+  "expected": "The downward trade is open. Let's watch!",
+  "transcript": "The downward trade is open. Let's watch!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08107,
+    "peak": 0.40743,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.133,
+    "sha256": "968d4317120491b23cec79bdc0a3a8b904978ddb640bd39035dab09ea84bb9a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.46,
+      "text": " The downward trade is open. Let's watch!",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.28
+        },
+        {
+          "word": " downward",
+          "start": 0.28,
+          "end": 0.68
+        },
+        {
+          "word": " trade",
+          "start": 0.68,
+          "end": 1.08
+        },
+        {
+          "word": " is",
+          "start": 1.08,
+          "end": 1.26
+        },
+        {
+          "word": " open.",
+          "start": 1.26,
+          "end": 1.54
+        },
+        {
+          "word": " Let's",
+          "start": 1.98,
+          "end": 2.24
+        },
+        {
+          "word": " watch!",
+          "start": 2.24,
+          "end": 2.46
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

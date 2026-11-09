@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_09",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Direction down, trade active.",
+  "text_version": 1,
+  "text_sha256": "8d319834bc1abc13b902e62e6ee316bed4097fa7c0be22a27b6359a285b189b5",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_09.mp3",
+  "auditory_verified": false,
+  "duration": 2.455437,
+  "sha256": "1035a56e0c5d6af230ced63ec705dd29b06cd46f3d01347a7f399fa0f0160ec5",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_09.mp3.rms2.json"
+}

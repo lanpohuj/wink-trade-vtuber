@@ -1,0 +1,69 @@
+{
+  "id": "ru_start_stream_ready_04",
+  "expected": "Винки тут! Свечки уже ждут нашего внимания.",
+  "transcript": "Винки тут! Свечки уже ждут нашего внимания!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08377,
+    "peak": 0.40229,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.081,
+    "sha256": "4756489ee0a93196fef54de919ec97e723b0ae1711ca647031bb5e81fee6d234"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 0.94,
+      "text": " Винки тут!",
+      "words": [
+        {
+          "word": " Винки",
+          "start": 0.0,
+          "end": 0.7
+        },
+        {
+          "word": " тут!",
+          "start": 0.7,
+          "end": 0.94
+        }
+      ]
+    },
+    {
+      "start": 1.96,
+      "end": 3.86,
+      "text": " Свечки уже ждут нашего внимания!",
+      "words": [
+        {
+          "word": " Свечки",
+          "start": 1.96,
+          "end": 2.44
+        },
+        {
+          "word": " уже",
+          "start": 2.44,
+          "end": 2.58
+        },
+        {
+          "word": " ждут",
+          "start": 2.58,
+          "end": 2.9
+        },
+        {
+          "word": " нашего",
+          "start": 2.9,
+          "end": 3.12
+        },
+        {
+          "word": " внимания!",
+          "start": 3.12,
+          "end": 3.86
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

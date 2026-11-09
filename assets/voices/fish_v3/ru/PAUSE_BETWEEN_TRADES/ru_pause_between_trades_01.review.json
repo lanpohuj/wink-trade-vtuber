@@ -1,0 +1,25 @@
+{
+  "id": "ru_pause_between_trades_01",
+  "category": "PAUSE_BETWEEN_TRADES",
+  "lang": "ru",
+  "text": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+  "text_version": 1,
+  "text_sha256": "7d76c1da70838f7cb9cf760af133c954ebcfeecaba641be88b3f59ec49287be8",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "reuse_candidate": {
+    "id": "pause_01",
+    "file": "PAUSE_BETWEEN_TRADES/pause_01.mp3",
+    "sha256": "79c48768c9a15d839a599267389b5beb7da7483aee8ef977b6a3cb7770efc36b",
+    "text": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход.",
+    "requires_listening_approval": true
+  },
+  "source_provider": "lumean_preserved",
+  "file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_01.mp3",
+  "auditory_verified": false,
+  "duration": 6.739592,
+  "sha256": "79c48768c9a15d839a599267389b5beb7da7483aee8ef977b6a3cb7770efc36b",
+  "rms_file": "ru/PAUSE_BETWEEN_TRADES/ru_pause_between_trades_01.mp3.rms2.json"
+}

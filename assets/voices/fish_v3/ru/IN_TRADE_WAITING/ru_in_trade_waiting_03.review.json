@@ -1,0 +1,18 @@
+{
+  "id": "ru_in_trade_waiting_03",
+  "category": "IN_TRADE_WAITING",
+  "lang": "ru",
+  "text": "Смотрим на движение, итог ещё впереди.",
+  "text_version": 1,
+  "text_sha256": "349aec918a0404e74ff0cd5f634ed1faab922b9a4b3227cb526fa334cc1e1793",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_03.mp3",
+  "auditory_verified": false,
+  "duration": 2.272562,
+  "sha256": "5ffc049778bb7857eece988b77b51d87da8e959fb9d1116766647681e3d21f60",
+  "rms_file": "ru/IN_TRADE_WAITING/ru_in_trade_waiting_03.mp3.rms2.json"
+}

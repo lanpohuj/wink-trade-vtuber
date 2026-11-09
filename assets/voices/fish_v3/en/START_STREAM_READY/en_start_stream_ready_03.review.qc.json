@@ -1,0 +1,77 @@
+{
+  "id": "en_start_stream_ready_03",
+  "expected": "Meow, hello! Let's start our chart session, nice and easy.",
+  "transcript": "Meow! Hello! Let's start our chart session nice and easy!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.0831,
+    "peak": 0.38563,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.118,
+    "sha256": "1ed524607633772bbf522f56b34b4f21132245cc2cca800a98f3d5dff7a5685f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Meow! Hello! Let's start our chart session nice and easy!",
+      "words": [
+        {
+          "word": " Meow!",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " Hello!",
+          "start": 0.94,
+          "end": 1.26
+        },
+        {
+          "word": " Let's",
+          "start": 1.88,
+          "end": 2.28
+        },
+        {
+          "word": " start",
+          "start": 2.28,
+          "end": 2.48
+        },
+        {
+          "word": " our",
+          "start": 2.48,
+          "end": 2.64
+        },
+        {
+          "word": " chart",
+          "start": 2.64,
+          "end": 2.92
+        },
+        {
+          "word": " session",
+          "start": 2.92,
+          "end": 3.3
+        },
+        {
+          "word": " nice",
+          "start": 3.3,
+          "end": 3.74
+        },
+        {
+          "word": " and",
+          "start": 3.74,
+          "end": 4.0
+        },
+        {
+          "word": " easy!",
+          "start": 4.0,
+          "end": 4.24
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

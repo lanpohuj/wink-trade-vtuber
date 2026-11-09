@@ -1,0 +1,20 @@
+{
+  "id": "en_open_trade_put_07",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Downward opening confirmed. Watching calmly.",
+  "text_version": 1,
+  "text_sha256": "0999fedd891f8f87e6676d44ea4f9f22b42c1a4ddc3fd061852fea390aeb87be",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "en/OPEN_TRADE_PUT/en_open_trade_put_07.mp3",
+  "auditory_verified": false,
+  "duration": 3.552562,
+  "sha256": "96bcfcb495f17337474dd5a6e3ab4065fdcda5140e193ba10486e56dade491c8",
+  "rms_file": "en/OPEN_TRADE_PUT/en_open_trade_put_07.mp3.rms2.json"
+}

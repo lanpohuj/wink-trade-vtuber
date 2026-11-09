@@ -1,0 +1,47 @@
+{
+  "id": "ru_open_trade_put_09",
+  "expected": "Направление вниз, сделка активна.",
+  "transcript": "направление вниз, сделка активна",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.873,
+    "rms": 0.08143,
+    "peak": 0.27895,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.073,
+    "sha256": "4da42eda03a37f3c6e5cfdb30c198808e8153d32feca86c4aab4d49dde4dc020"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " направление вниз, сделка активна",
+      "words": [
+        {
+          "word": " направление",
+          "start": 0.0,
+          "end": 0.92
+        },
+        {
+          "word": " вниз,",
+          "start": 0.92,
+          "end": 1.2
+        },
+        {
+          "word": " сделка",
+          "start": 1.64,
+          "end": 2.18
+        },
+        {
+          "word": " активна",
+          "start": 2.18,
+          "end": 2.72
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,72 @@
+{
+  "id": "en_open_trade_put_03",
+  "expected": "We're in a downward trade. Eyes on the chart!",
+  "transcript": "We're in a downward trade. Eyes on the chart!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.08104,
+    "peak": 0.44866,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.278,
+    "sha256": "16e3d9baa1be1220c167072cc692fff52883cfd8e0bc3d0008e6f3fe4a07eb66"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.84,
+      "text": " We're in a downward trade. Eyes on the chart!",
+      "words": [
+        {
+          "word": " We're",
+          "start": 0.0,
+          "end": 0.38
+        },
+        {
+          "word": " in",
+          "start": 0.38,
+          "end": 0.48
+        },
+        {
+          "word": " a",
+          "start": 0.48,
+          "end": 0.58
+        },
+        {
+          "word": " downward",
+          "start": 0.58,
+          "end": 0.94
+        },
+        {
+          "word": " trade.",
+          "start": 0.94,
+          "end": 1.44
+        },
+        {
+          "word": " Eyes",
+          "start": 1.86,
+          "end": 2.22
+        },
+        {
+          "word": " on",
+          "start": 2.22,
+          "end": 2.44
+        },
+        {
+          "word": " the",
+          "start": 2.44,
+          "end": 2.54
+        },
+        {
+          "word": " chart!",
+          "start": 2.54,
+          "end": 2.84
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

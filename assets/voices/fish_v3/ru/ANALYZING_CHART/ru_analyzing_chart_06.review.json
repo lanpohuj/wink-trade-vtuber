@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_06",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Посмотрим, как складывается этот участок графика.",
+  "text_version": 1,
+  "text_sha256": "c737ec1361a6368a097d7862d677f659653be89590c9ae142046c89fe5d59c80",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_06.mp3",
+  "auditory_verified": false,
+  "duration": 3.16075,
+  "sha256": "dbd1b5a7b29f0dec949190ee439e14979fd3e9c38205625726d72d0165bbc40b",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_06.mp3.rms2.json"
+}

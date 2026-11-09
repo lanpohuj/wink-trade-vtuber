@@ -1,0 +1,52 @@
+{
+  "id": "ru_prepare_entry_02",
+  "expected": "Сверяю параметры ещё раз, котики.",
+  "transcript": "Сверяю параметры еще раз. Котики.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 2.403,
+    "rms": 0.0902,
+    "peak": 0.37104,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.123,
+    "sha256": "0c357b9db884753ff9bcb502ca600400ed11d996b951b123f4d7bd140eb2a0d4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.14,
+      "text": " Сверяю параметры еще раз. Котики.",
+      "words": [
+        {
+          "word": " Сверяю",
+          "start": 0.0,
+          "end": 0.62
+        },
+        {
+          "word": " параметры",
+          "start": 0.62,
+          "end": 1.14
+        },
+        {
+          "word": " еще",
+          "start": 1.14,
+          "end": 1.32
+        },
+        {
+          "word": " раз.",
+          "start": 1.32,
+          "end": 1.6
+        },
+        {
+          "word": " Котики.",
+          "start": 1.78,
+          "end": 2.14
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

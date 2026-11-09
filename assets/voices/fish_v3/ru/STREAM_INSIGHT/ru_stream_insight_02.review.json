@@ -1,0 +1,18 @@
+{
+  "id": "ru_stream_insight_02",
+  "category": "STREAM_INSIGHT",
+  "lang": "ru",
+  "text": "Интервал свечи и время сделки — разные вещи.",
+  "text_version": 1,
+  "text_sha256": "87722c2db888dc2425272f507c41b7d50c487dd831f5ce7f46d31ffb07a6555e",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/STREAM_INSIGHT/ru_stream_insight_02.mp3",
+  "auditory_verified": false,
+  "duration": 3.317438,
+  "sha256": "adc20464e087d691e27603826d30cd8fa102fa49f744eaa509ab0634b9d56f56",
+  "rms_file": "ru/STREAM_INSIGHT/ru_stream_insight_02.mp3.rms2.json"
+}

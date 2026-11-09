@@ -1,0 +1,18 @@
+{
+  "id": "ru_analyzing_chart_04",
+  "category": "ANALYZING_CHART",
+  "lang": "ru",
+  "text": "Сначала направление, потом детали. Всё по порядку.",
+  "text_version": 1,
+  "text_sha256": "240ed0ba65455f1794b2e7c368afb7a82f8e40f9d365c858b8419edf62908379",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/ANALYZING_CHART/ru_analyzing_chart_04.mp3",
+  "auditory_verified": false,
+  "duration": 3.578688,
+  "sha256": "cec2f38cf8156716ceeae7a4591ad72945f672d0d50003e633db07811f11aae9",
+  "rms_file": "ru/ANALYZING_CHART/ru_analyzing_chart_04.mp3.rms2.json"
+}

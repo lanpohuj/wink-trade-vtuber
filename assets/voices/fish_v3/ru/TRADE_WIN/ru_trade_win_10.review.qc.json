@@ -1,0 +1,57 @@
+{
+  "id": "ru_trade_win_10",
+  "expected": "Получили плюс по завершённой сделке. Сверено!",
+  "transcript": "Получили плюс по завершенной сделке. Сверена!",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.08029,
+    "peak": 0.33517,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "8043705cb95b8f4d29211091db6ab14b2a4562cc14fd57d5af12686f169a5313"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.26,
+      "text": " Получили плюс по завершенной сделке. Сверена!",
+      "words": [
+        {
+          "word": " Получили",
+          "start": 0.0,
+          "end": 0.7
+        },
+        {
+          "word": " плюс",
+          "start": 0.7,
+          "end": 0.92
+        },
+        {
+          "word": " по",
+          "start": 0.92,
+          "end": 1.16
+        },
+        {
+          "word": " завершенной",
+          "start": 1.16,
+          "end": 1.66
+        },
+        {
+          "word": " сделке.",
+          "start": 1.66,
+          "end": 2.16
+        },
+        {
+          "word": " Сверена!",
+          "start": 2.52,
+          "end": 3.26
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

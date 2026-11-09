@@ -1,0 +1,62 @@
+{
+  "id": "en_in_trade_waiting_07",
+  "expected": "The candles are moving; the trade continues.",
+  "transcript": "The candles are moving. The trade continues.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.0776,
+    "peak": 0.36679,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.236,
+    "sha256": "e574725d0d480d9fa4b2008ec45171f57b22774ed3c6272b60af0d27f85ad220"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.52,
+      "text": " The candles are moving. The trade continues.",
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.26
+        },
+        {
+          "word": " candles",
+          "start": 0.26,
+          "end": 0.58
+        },
+        {
+          "word": " are",
+          "start": 0.58,
+          "end": 0.82
+        },
+        {
+          "word": " moving.",
+          "start": 0.82,
+          "end": 1.14
+        },
+        {
+          "word": " The",
+          "start": 1.58,
+          "end": 1.68
+        },
+        {
+          "word": " trade",
+          "start": 1.68,
+          "end": 1.98
+        },
+        {
+          "word": " continues.",
+          "start": 1.98,
+          "end": 2.52
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

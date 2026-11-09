@@ -1,0 +1,18 @@
+{
+  "id": "en_trade_refund_01",
+  "category": "TRADE_REFUND",
+  "lang": "en",
+  "text": "The closed trade settled as a refund. Noted.",
+  "text_version": 1,
+  "text_sha256": "dacf74b8a798e1b7da99c3dea56ef935810baa31bb34e4cf8601d86d138002eb",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/TRADE_REFUND/en_trade_refund_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.004,
+  "sha256": "626f16543a9f9c035fd25e24c0f52f315b93981edef1c5055e17858cd8edb4fe",
+  "rms_file": "en/TRADE_REFUND/en_trade_refund_01.mp3.rms2.json"
+}

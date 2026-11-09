@@ -1,0 +1,72 @@
+{
+  "id": "en_in_trade_waiting_06",
+  "expected": "Just watching for now. We'll check the result separately.",
+  "transcript": "Just watching for now. We'll check the results separately.",
+  "similarity": 0.989,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07986,
+    "peak": 0.48642,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.294,
+    "sha256": "a6ec2bb166456ad789f83268475de61d2629252a5422319c355af241b81d2e62"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.22,
+      "text": " Just watching for now. We'll check the results separately.",
+      "words": [
+        {
+          "word": " Just",
+          "start": 0.0,
+          "end": 0.42
+        },
+        {
+          "word": " watching",
+          "start": 0.42,
+          "end": 0.86
+        },
+        {
+          "word": " for",
+          "start": 0.86,
+          "end": 1.14
+        },
+        {
+          "word": " now.",
+          "start": 1.14,
+          "end": 1.4
+        },
+        {
+          "word": " We'll",
+          "start": 1.78,
+          "end": 2.06
+        },
+        {
+          "word": " check",
+          "start": 2.06,
+          "end": 2.26
+        },
+        {
+          "word": " the",
+          "start": 2.26,
+          "end": 2.46
+        },
+        {
+          "word": " results",
+          "start": 2.46,
+          "end": 2.8
+        },
+        {
+          "word": " separately.",
+          "start": 2.8,
+          "end": 3.22
+        }
+      ]
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

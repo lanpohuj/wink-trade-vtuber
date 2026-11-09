@@ -1,0 +1,20 @@
+{
+  "id": "ru_open_trade_put_01",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Сделка вниз открыта. Теперь наблюдаем!",
+  "text_version": 1,
+  "text_sha256": "7527889c2b215f851f86ff93e7e74b09e4daf57884223e10c01c89adc3e1d8c1",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {
+    "direction": "SELL"
+  },
+  "source_provider": "fish_direct",
+  "file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_01.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "d39ba41be205d67ffe47df23adf288d419aa496d708749e3244afd48cad72967",
+  "rms_file": "ru/OPEN_TRADE_PUT/ru_open_trade_put_01.mp3.rms2.json"
+}

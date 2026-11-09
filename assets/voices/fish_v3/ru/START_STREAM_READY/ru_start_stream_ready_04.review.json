@@ -1,0 +1,18 @@
+{
+  "id": "ru_start_stream_ready_04",
+  "category": "START_STREAM_READY",
+  "lang": "ru",
+  "text": "Винки тут! Свечки уже ждут нашего внимания.",
+  "text_version": 1,
+  "text_sha256": "595e0f617cded6ec2cadd58e2b4a1b3ad65dfad57a2fc8f7cff910df0041bb95",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "ru/START_STREAM_READY/ru_start_stream_ready_04.mp3",
+  "auditory_verified": false,
+  "duration": 4.101125,
+  "sha256": "4756489ee0a93196fef54de919ec97e723b0ae1711ca647031bb5e81fee6d234",
+  "rms_file": "ru/START_STREAM_READY/ru_start_stream_ready_04.mp3.rms2.json"
+}

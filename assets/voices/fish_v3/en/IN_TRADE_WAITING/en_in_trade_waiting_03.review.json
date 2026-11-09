@@ -1,0 +1,18 @@
+{
+  "id": "en_in_trade_waiting_03",
+  "category": "IN_TRADE_WAITING",
+  "lang": "en",
+  "text": "Watching the move. The result is still ahead.",
+  "text_version": 1,
+  "text_sha256": "9a8ab4cc55a509634cb20e1a1be80372f23778915f0f9c9f6a8eefa371e586b0",
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "provider": "fish_direct",
+  "status": "review_pending",
+  "conditions": {},
+  "source_provider": "fish_direct",
+  "file": "en/IN_TRADE_WAITING/en_in_trade_waiting_03.mp3",
+  "auditory_verified": false,
+  "duration": 3.05625,
+  "sha256": "1a183140615518c69c786f6c8e413a0746bf5be75d9745361ee4d469e52677aa",
+  "rms_file": "en/IN_TRADE_WAITING/en_in_trade_waiting_03.mp3.rms2.json"
+}
