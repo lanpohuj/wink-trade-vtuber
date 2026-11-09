@@ -1,0 +1,54 @@
+{
+  "channel": "slava_trade1",
+  "states": [
+    {
+      "state": "connecting",
+      "reason": "",
+      "at_sec": 0.04
+    },
+    {
+      "state": "connecting",
+      "reason": "",
+      "at_sec": 0.68
+    },
+    {
+      "state": "connected",
+      "reason": "",
+      "at_sec": 4.1
+    },
+    {
+      "state": "off",
+      "reason": "",
+      "at_sec": 8.01
+    },
+    {
+      "state": "off",
+      "reason": "",
+      "at_sec": 8.08
+    }
+  ],
+  "received_event_counts": {
+    "comments": 12,
+    "joins": 3,
+    "gifts": 0,
+    "follows": 0,
+    "likes": 3
+  },
+  "comment_event_times_sec": [
+    4.1,
+    4.1,
+    4.1,
+    4.1,
+    4.1,
+    4.1,
+    4.13,
+    4.13,
+    4.13,
+    4.13,
+    4.13,
+    4.13
+  ],
+  "connector_thread_stopped": true,
+  "messages_sent_to_tiktok": 0,
+  "voice_reply_verified": false
+}

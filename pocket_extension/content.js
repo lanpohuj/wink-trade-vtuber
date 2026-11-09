@@ -2980,7 +2980,8 @@
   };
 
   function announceObservedOpening(trade) {
-    if (!trade || !trade.openConfirmed || trade.voiceAnnounced || state.botState !== 'IN_TRADE' || trade.resultApplied) return;
+    if (!trade || !(trade.openConfirmed || trade.debitObserved) || trade.voiceAnnounced || state.botState !== 'IN_TRADE' || trade.resultApplied) return;
+    if (state.tradeEndTime && Date.now() >= state.tradeEndTime) return;
     trade.voiceAnnounced = true;
     const remaining = Math.max(0, Math.round(((state.tradeEndTime || Date.now()) - Date.now()) / 1000));
     notifyTradePhase('IN_TRADE', trade.pair, remaining).then(() => {

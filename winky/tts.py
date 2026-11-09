@@ -2081,6 +2081,8 @@ class SpeechController:
         current = stream_director.context
         if event.get('session_id') and current.get('session_id') and event['session_id'] != current['session_id']:
             return False
+        if item.priority == 1 and current.get('remaining_sec') is not None and float(current['remaining_sec']) - (time.time() - stream_director._last_phase_update) <= 0:
+            return False
         if item.priority == 1 and event.get('direction') and current.get('direction') and event['direction'] != current['direction']:
             return False
         if item.priority == 1 and event.get('expiry') and current.get('duration') and event['expiry'] != current['duration']:

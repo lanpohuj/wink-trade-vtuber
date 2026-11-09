@@ -296,5 +296,35 @@ class ProviderAndCompatibilityTests(unittest.TestCase):
         asyncio.run(check())
 
 
+class TikTokShutdownTests(unittest.TestCase):
+    def test_websocket_and_background_tasks_finish_before_loop_closes(self):
+        import asyncio
+        from winky.tiktok import TikTokConnector
+        flags={'cancelled':False,'closed':False}
+        connector=TikTokConnector('test',Mock(),Mock(),Mock(),Mock())
+        class Client:
+            @property
+            def web(self):
+                return self
+            async def disconnect(self):
+                await asyncio.sleep(0)
+            async def close(self):
+                await asyncio.sleep(0)
+                flags['closed']=True
+        async def background():
+            try:
+                await asyncio.sleep(60)
+            finally:
+                flags['cancelled']=True
+        async def run():
+            connector._client=Client()
+            asyncio.create_task(background())
+            await asyncio.sleep(0)
+        connector._run_async=run
+        connector._run()
+        self.assertTrue(flags['closed']);self.assertTrue(flags['cancelled'])
+        self.assertIsNone(connector._loop)
+
+
 if __name__ == "__main__":
     unittest.main()

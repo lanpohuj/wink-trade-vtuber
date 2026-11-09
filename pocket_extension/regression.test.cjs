@@ -23,7 +23,7 @@ function loadContent() {
     globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance,
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
-      executeTradeWithSignal,
+      executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, canEnterAnalysis,
       marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh, readTradersSentiment,
@@ -740,4 +740,14 @@ test('Pocket no-animation current-account balance avoids an intermediate payout 
   assert.equal(result.outcome,'WIN');assert.equal(result.profitDelta,46);
   settled='45,772.12';assert.equal(c.getDomBalance(),45772.12);
   settled='*******';assert.equal(c.getDomBalance(),45853.84);
+});
+
+test('opening speech waits for observed order or stake debit and is queued only once',async()=>{
+  const c=loadContent(),trade=c.trade(),calls=[];
+  trade.openConfirmed=false;c.state.botState='IN_TRADE';c.state.tradeEndTime=c.now()+30000;
+  c.setPhaseNotifier(async()=>({ok:true}));c.setVoicePlayer((...args)=>calls.push(args));
+  c.announceObservedOpening(trade);await Promise.resolve();assert.equal(calls.length,0);
+  trade.debitObserved=true;c.announceObservedOpening(trade);c.announceObservedOpening(trade);
+  await Promise.resolve();assert.equal(calls.length,1);assert.equal(calls[0][0],'OPEN_TRADE_CALL');
+  assert.equal(calls[0][4].open_observed,true);
 });

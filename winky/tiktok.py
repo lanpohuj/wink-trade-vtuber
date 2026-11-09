@@ -109,6 +109,7 @@ class TikTokConnector:
         self._loop: asyncio.AbstractEventLoop | None = None
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None
+        self._disconnect_future = None
         self._status = "off"
         self._status_detail = "выключен"
 
@@ -139,7 +140,7 @@ class TikTokConnector:
         client = self._client
         if loop and client and loop.is_running():
             try:
-                asyncio.run_coroutine_threadsafe(client.disconnect(), loop)
+                self._disconnect_future = asyncio.run_coroutine_threadsafe(client.disconnect(), loop)
             except Exception:
                 pass
         self._emit_status("off", "выключен")
@@ -159,10 +160,35 @@ class TikTokConnector:
         try:
             loop.run_until_complete(self._run_async())
         finally:
+            # disconnect() can still be closing the WebSocket after connect()
+            # returns. Drain it before destroying its event loop.
+            async def cleanup() -> None:
+                try:
+                    if self._disconnect_future is not None:
+                        await asyncio.wait_for(asyncio.wrap_future(self._disconnect_future), timeout=3)
+                    elif self._client is not None:
+                        await asyncio.wait_for(self._client.disconnect(), timeout=3)
+                except (Exception, asyncio.CancelledError):
+                    pass
+                if self._client is not None:
+                    try:
+                        # TikTokLive 7 close() nests run_until_complete; use its
+                        # public web client and drain our own loop below.
+                        await asyncio.wait_for(self._client.web.close(), timeout=3)
+                    except (Exception, asyncio.CancelledError):
+                        pass
+                pending = [task for task in asyncio.all_tasks() if task is not asyncio.current_task()]
+                for task in pending:
+                    task.cancel()
+                if pending:
+                    await asyncio.gather(*pending, return_exceptions=True)
             try:
+                loop.run_until_complete(cleanup())
+                loop.run_until_complete(loop.shutdown_asyncgens())
+            finally:
                 loop.close()
-            except Exception:
-                pass
+                self._loop = None
+                self._client = None
 
     async def _run_async(self) -> None:
         while not self._stop.is_set():
