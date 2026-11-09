@@ -255,7 +255,7 @@ test('chart canvas dismisses a popup when its header ignores a scripted close',a
   const toolbar={offsetParent:{},children:[],textContent:'M1',getBoundingClientRect:()=>({left:245,top:82,width:40,height:35}),
     querySelectorAll:()=>[],closest:()=>null,dispatchEvent(){},click(){}};
   const menu={offsetParent:{},getBoundingClientRect:()=>({width:440,height:380})};
-  const canvas={dispatchEvent(){},click(){opened=false;canvasClicks++;}};
+  const canvas={getBoundingClientRect:()=>({left:50,top:60,right:1300,bottom:900}),dispatchEvent(){},click(){opened=false;canvasClicks++;}};
   h.document.querySelector=s=>s.includes('canvas')?canvas:null;
   h.document.querySelectorAll=s=>s==='.drop-down-modal--chart-type'?(opened?[menu]:[]):s.includes('.items__link--chart-type')?[toolbar]:[];
   await h.handleMainWorldEnsureChartTimeframe('M1',{requestId:237});
