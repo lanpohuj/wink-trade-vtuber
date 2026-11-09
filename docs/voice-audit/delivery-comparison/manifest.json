@@ -1,0 +1,153 @@
+{
+  "comparison_not_release": true,
+  "records": [
+    {
+      "id": "ru_A",
+      "lang": "ru",
+      "request": {
+        "text": "[happy] Прошлая сделка закрылась в плюс. Мяу, принято!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 3.578688,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "Прошлая сделка закрылась в плюс. Мяу, принято!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.579,
+        "rms": 0.08643,
+        "peak": 0.37302,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.099,
+        "sha256": "f9441271e46978005f89e1df75bdbb55fbcc08ee4f64ba810d02331b922d5c00"
+      },
+      "file": "ru_A.mp3",
+      "owner_accepted": false
+    },
+    {
+      "id": "ru_B",
+      "lang": "ru",
+      "request": {
+        "text": "[warm and playful] О, сделка в плюс! Мур, записала.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 4.101125,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "О, сделка в плюс! Мур записала!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.07136,
+        "peak": 0.26985,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.181,
+        "sha256": "2a0c23ce550186d677d78022ba07f43d6241f2b7491236fb7132c42bb33397c6"
+      },
+      "file": "ru_B.mp3",
+      "owner_accepted": false
+    },
+    {
+      "id": "en_A",
+      "lang": "en",
+      "request": {
+        "text": "[happy] That closed trade finished positive. Meow!",
+        "reference_id": "e34c486929524d41b88646b4ac2f382f",
+        "language": "en",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.7,
+        "top_p": 0.7,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 3.369687,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "That closed trade finished positive. Meow!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07348,
+        "peak": 0.40328,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.13,
+        "sha256": "f1f33d9d398c381ae101504739b2acc0738dc38ce66030332ec44c26421a8b7f"
+      },
+      "file": "en_A.mp3",
+      "owner_accepted": false
+    },
+    {
+      "id": "en_B",
+      "lang": "en",
+      "request": {
+        "text": "[warm and playful] Nice, that one's a win! Meow, noted.",
+        "reference_id": "e34c486929524d41b88646b4ac2f382f",
+        "language": "en",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 3.787688,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "Nice! That one's a win! Meow, noted.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.788,
+        "rms": 0.07192,
+        "peak": 0.33745,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.288,
+        "sha256": "385aafeac95815b9392844b4f1188092360c4f666854ed785b8955a6d8679afe"
+      },
+      "file": "en_B.mp3",
+      "owner_accepted": false
+    }
+  ]
+}

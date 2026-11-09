@@ -12,6 +12,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class BankReleaseTests(unittest.TestCase):
+    def test_owner_rejection_blocks_activation_despite_automatic_qc(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bank = root / 'assets/voices/fish_v3'
+            bank.mkdir(parents=True)
+            (bank / 'manifest.json').write_text(json.dumps(dict(acceptance_status='rejected_delivery')))
+            with patch.object(release, 'ROOT', root):
+                with self.assertRaisesRegex(ValueError, 'rejected by owner'):
+                    release.activate(root / 'unused.json')
+
     def test_staged_library_has_complete_verified_files_and_matching_qc(self):
         bank = ROOT / 'assets/voices/fish_v3'
         manifest = json.loads((bank / 'manifest.json').read_text())

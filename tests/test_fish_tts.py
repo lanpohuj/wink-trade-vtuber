@@ -78,9 +78,17 @@ class FishTests(unittest.TestCase):
 
     def test_cache_identity_separates_voices_and_tuning(self):
         a = self.engine.get_cache_path("Hello", "en")
+        self.assertNotEqual(a, self.engine.get_cache_path("HELLO", "en"))
+        self.assertNotEqual(a, self.engine.get_cache_path("[happy] Hello", "en"))
         self.engine.tuning["en"] = {"speed": 1.2}
         self.assertNotEqual(a, self.engine.get_cache_path("Hello", "en"))
         self.assertNotEqual(a, self.engine.get_cache_path("Hello", "ru"))
+
+    def test_live_preset_preserves_previous_streamer_parameters(self):
+        self.engine.apply_live_preset('ru')
+        tuning = self.engine.get_tuning('ru')
+        self.assertEqual((tuning['temperature'], tuning['top_p']), (0.82, 0.85))
+        self.assertEqual(tuning['latency'], 'balanced')
 
     def test_explicit_fish_selection_does_not_fall_back_to_lumean(self):
         from winky.tts import build_engine, DummyTTS

@@ -589,7 +589,7 @@
         "text_sha256": "90c09591839a4b74fdb89abb23e2b67d57b0f090287c998df06a39335f1fa7f5",
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "provider": "fish_direct",
-        "status": "review_pending",
+        "status": "rejected_by_owner",
         "conditions": {},
         "source_provider": "fish_direct",
         "file": "ru/CHAT_ACK/ru_chat_ack_01.mp3",
@@ -598,7 +598,9 @@
         "sha256": "4504740c7ae9446911246228063c49f2b5c0ced4e075b6e313a2c8e1f55a328f",
         "rms_file": "ru/CHAT_ACK/ru_chat_ack_01.mp3.rms2.json",
         "transcript": "Я читаю сообщение в чате!",
-        "automatic_qc_passed": true
+        "automatic_qc_passed": true,
+        "review_accepted": false,
+        "owner_review": "Не подходят интонации; синтетическая подача. Отклонено владельцем 09.11.2026."
       },
       {
         "id": "ru_chat_ack_02",
@@ -3686,7 +3688,7 @@
         "text_sha256": "ce70ad6db8954001e37404775a68f3c7ebffea526d83e414e97ab11ae7a6e08b",
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "provider": "fish_direct",
-        "status": "review_pending",
+        "status": "rejected_by_owner",
         "conditions": {},
         "source_provider": "fish_direct",
         "file": "ru/TRADE_LOSS/ru_trade_loss_01.mp3",
@@ -3695,7 +3697,9 @@
         "sha256": "01dc874f1aacd0ef72ecc9d07f77149e22081dcd73f71ae868d64ea0d6f42419",
         "rms_file": "ru/TRADE_LOSS/ru_trade_loss_01.mp3.rms2.json",
         "transcript": "Прошлая сделка закрылась в минус, фиксируем!",
-        "automatic_qc_passed": true
+        "automatic_qc_passed": true,
+        "review_accepted": false,
+        "owner_review": "Не подходят интонации; синтетическая подача. Отклонено владельцем 09.11.2026."
       },
       {
         "id": "ru_trade_loss_02",
@@ -3846,7 +3850,7 @@
         "text_sha256": "50f41d94f11e5041dcddc21319a036e068604a3cb1ea0e5eddb994e63239d379",
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "provider": "fish_direct",
-        "status": "review_pending",
+        "status": "rejected_by_owner",
         "conditions": {},
         "source_provider": "fish_direct",
         "file": "ru/TRADE_LOSS/ru_trade_loss_09.mp3",
@@ -3855,7 +3859,9 @@
         "sha256": "418d46e98f51a84d15ebac0a56f8fc1ea7cc0f9222e24e437abbb1d30486a41e",
         "rms_file": "ru/TRADE_LOSS/ru_trade_loss_09.mp3.rms2.json",
         "transcript": "Эта сделка закрылась в минус. Идём по правилам.",
-        "automatic_qc_passed": true
+        "automatic_qc_passed": true,
+        "review_accepted": false,
+        "owner_review": "Не подходят интонации; синтетическая подача. Отклонено владельцем 09.11.2026."
       },
       {
         "id": "ru_trade_loss_10",
@@ -4270,7 +4276,7 @@
         "text_sha256": "730c162a81b994541657a2dc489937aece3694f76653a2895756b4e96585a872",
         "voice_id": "e34c486929524d41b88646b4ac2f382f",
         "provider": "fish_direct",
-        "status": "review_pending",
+        "status": "rejected_by_owner",
         "conditions": {},
         "source_provider": "fish_direct",
         "file": "en/TRADE_WIN/en_trade_win_08.mp3",
@@ -4279,7 +4285,9 @@
         "sha256": "17c0ffdf5e8a05056c6cdbf61f8149dc05e919cbd2157862e6c953acc595a4e9",
         "rms_file": "en/TRADE_WIN/en_trade_win_08.mp3.rms2.json",
         "transcript": "That close trade finished positive. Meow!",
-        "automatic_qc_passed": true
+        "automatic_qc_passed": true,
+        "review_accepted": false,
+        "owner_review": "Не подходят интонации; синтетическая подача. Отклонено владельцем 09.11.2026."
       },
       {
         "id": "en_trade_win_09",
@@ -4370,7 +4378,7 @@
         "text_sha256": "4472419bbda62e9b2893dfcd013d4de93f5f18b003ced430c5e758e52c3ffb76",
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "provider": "fish_direct",
-        "status": "review_pending",
+        "status": "rejected_by_owner",
         "conditions": {},
         "source_provider": "fish_direct",
         "file": "ru/TRADE_WIN/ru_trade_win_01.mp3",
@@ -4379,7 +4387,9 @@
         "sha256": "c89ac997d69ae5c2d12c4cadf4335a940116b34651764a6c082cd8eb2d60b46f",
         "rms_file": "ru/TRADE_WIN/ru_trade_win_01.mp3.rms2.json",
         "transcript": "Прошлая сделка закрылась в плюс. Мяу! Принято!",
-        "automatic_qc_passed": true
+        "automatic_qc_passed": true,
+        "review_accepted": false,
+        "owner_review": "Не подходят интонации; синтетическая подача. Отклонено владельцем 09.11.2026."
       },
       {
         "id": "ru_trade_win_02",
@@ -5018,5 +5028,6 @@
         "automatic_qc_passed": true
       }
     ]
-  }
+  },
+  "acceptance_status": "rejected_delivery"
 }

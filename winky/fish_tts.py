@@ -178,13 +178,16 @@ class FishAudioTTS:
         }
 
     def get_cache_path(self, text, lang="ru"):
-        from winky.tts import normalize_cache_text
+        # Case and inline delivery cues can change prosody. Hash exactly the
+        # request that is sent, rather than reusing a lower-cased recording.
+        payload = self.payload(text, lang)
+        return self._path_for_payload(payload, lang)
 
-        payload = self.payload(normalize_cache_text(text), lang)
+    def _path_for_payload(self, payload, lang):
         key = hashlib.sha256(
             json.dumps(payload, sort_keys=True, ensure_ascii=False).encode()
         ).hexdigest()[:24]
-        return self.root / (lang + "_" + self.voices[lang]) / f"{key}.mp3"
+        return self.root / (lang + "_" + payload["reference_id"]) / f"{key}.mp3"
 
     def is_cached(self, text, lang="ru"):
         p = self.get_cache_path(text, lang)
@@ -215,12 +218,13 @@ class FishAudioTTS:
             raise TTSError("Unsafe or empty speech")
         if lang not in ("ru", "en"):
             raise TTSError("Unsupported language")
-        target = self.get_cache_path(text, lang)
+        request_payload = self.payload(text, lang)
+        target = self._path_for_payload(request_payload, lang)
         target.parent.mkdir(parents=True, exist_ok=True)
         with self._lock:
             file_lock = self._file_locks.setdefault(str(target), threading.Lock())
         with file_lock:
-            if not bypass_cache and self.is_cached(text, lang):
+            if not bypass_cache and target.is_file() and target.stat().st_size > 1024:
                 return target
             if not settings.FISHAUDIO_API_KEY:
                 raise TTSError("FISHAUDIO_API_KEY missing")
@@ -232,7 +236,7 @@ class FishAudioTTS:
                     "POST",
                     self.BASE_URL + "/v1/tts",
                     headers=self._headers(),
-                    json=self.payload(text, lang),
+                    json=request_payload,
                 ) as response:
                     if response.status_code != 200:
                         self._budget(cost, refund=True)
@@ -269,9 +273,10 @@ class FishAudioTTS:
                         {
                             "provider": "fish_direct",
                             "model": "s2.1-pro",
-                            "voice_id": self.voices[lang],
+                            "voice_id": request_payload["reference_id"],
                             "lang": lang,
                             "text": text,
+                            "request_payload": request_payload,
                             "estimated_usd": cost,
                         },
                         ensure_ascii=False,
@@ -287,7 +292,7 @@ class FishAudioTTS:
 
     def apply_live_preset(self, slot):
         return self.save_voice_tuning(
-            slot, {"speed": 1.06, "temperature": 0.7, "top_p": 0.7, "latency": "normal"}
+            slot, {"speed": 1.06, "temperature": 0.82, "top_p": 0.85, "latency": "balanced"}
         )
 
     def list_user_templates(self):

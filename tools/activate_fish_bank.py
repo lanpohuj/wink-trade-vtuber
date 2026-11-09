@@ -11,6 +11,8 @@ def activate(approval):
     bank = ROOT / "assets/voices/fish_v3"
     path = bank / "manifest.json"
     manifest = json.loads(path.read_text())
+    if manifest.get("acceptance_status") == "rejected_delivery":
+        raise ValueError("Bank delivery rejected by owner; new review required")
     approved = json.loads(approval.read_text())
     method = approved.get("method")
     sampled = method == "owner_sampled"
