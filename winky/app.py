@@ -407,128 +407,11 @@ class WinkyAPI:
         if not isinstance(payload, dict):
             payload = {}
 
-        category = str(payload.get("category", "")).strip()
-        raw_dir = str(payload.get("direction") or payload.get("action") or payload.get("trade_dir") or "").upper().strip()
-        if raw_dir:
-            is_buy = raw_dir in ("BUY", "CALL", "UP", "ВЫШЕ", "ВВЕРХ", "LONG")
-            if is_buy and category == "OPEN_TRADE_PUT":
-                category = "OPEN_TRADE_CALL"
-            elif not is_buy and category == "OPEN_TRADE_CALL":
-                category = "OPEN_TRADE_PUT"
-
-        file_id = str(payload.get("file_id", "")).strip()
-        file_path = str(payload.get("file_path", "")).strip()
-        priority = bool(payload.get("priority", False)) or category in ("TRADE_WIN", "TRADE_LOSS", "OPEN_TRADE_CALL", "OPEN_TRADE_PUT")
-        action = payload.get("action")
-        emotion = payload.get("emotion") or "happy"
-        text = payload.get("text", "")
-
-        # Если приоритетное событие (сделка, победа, убыток) — мгновенно прерываем текущую фоновую речь
-        if priority:
-            self._controller.stop_current()
-
-        media_file = None
-        if file_path:
-            media_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / file_path
-        elif category and file_id:
-            media_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / category / f"{file_id}.mp3"
-
-        if not media_file or not media_file.exists():
-            # Попробуем найти в манифесте
-            manifest_file = PROJECT_ROOT / "assets" / "voices" / "lumean" / "manifest.json"
-            if manifest_file.exists():
-                try:
-                    man = json.loads(manifest_file.read_text(encoding="utf-8"))
-                    items = man.get("categories", {}).get(category, [])
-                    if items:
-                        selected_it = None
-                        if file_id or file_path:
-                            for it in items:
-                                if it.get("id") == file_id or it.get("file") == file_path:
-                                    selected_it = it
-                                    break
-                        if not selected_it:
-                            selected_it = random.choice(items)
-                        if selected_it:
-                            f = PROJECT_ROOT / "assets" / "voices" / "lumean" / selected_it.get("file", "")
-                            if f.exists():
-                                media_file = f
-                                if not text:
-                                    text = selected_it.get("text", "")
-                except Exception:
-                    pass
-
-        if not media_file or not media_file.exists():
-            cat_dir = PROJECT_ROOT / "assets" / "voices" / "lumean" / category
-            if cat_dir.is_dir():
-                ready_files = [f for f in cat_dir.glob("*.mp3") if f.stat().st_size > 1024]
-                if ready_files:
-                    media_file = random.choice(ready_files)
-
-        if not media_file or not media_file.exists():
-            logger.warning("play_voice: файл %s не найден на диске", file_path or f"{category}/{file_id}.mp3")
-            return {"ok": False, "error": "file_not_found"}
-
-        # Рассчитываем точную длительность
-        try:
-            from scripts.generate_lumean_voices import get_audio_duration_afinfo
-            duration = get_audio_duration_afinfo(media_file)
-        except Exception:
-            duration = max(1.5, media_file.stat().st_size / 16000.0)
-
-        # Триггерим жест и эмоцию аватара
-        if action:
-            self.trigger_action(action, duration)
-        if emotion:
-            self._avatar_js(f"window.winkySetEmotion && window.winkySetEmotion('{emotion}')")
-
-        # Создаем SpeechItem для воспроизведения через afplay + lipsync
-        item = SpeechItem(
-            text=text or f"[{category}] {file_id}",
-            lang="ru",
-            emotion=emotion,
-            action=action,
-            action_duration=duration,
-            media_path=media_file,
-            rms_chunks=compute_rms_chunks(media_file),
-            source=f"bank_{category}",
-        )
-        item.ready_event.set()
-
-        # Добавляем в очередь воспроизведения
-        with self._controller._lock:
-            if priority:
-                self._controller._playback_queue.appendleft(item)
-            else:
-                self._controller._playback_queue.append(item)
-
-        self._controller._wake.set()
-        self._controller._emit_status()
-        logger.info("play_voice: реплика %s/%s запущена (длительность %.2fс)", category, file_id, duration)
-        return {"ok": True, "file_id": file_id, "duration_sec": duration}
+        return self._controller.enqueue_voice_event(payload)
 
     def speak_stream_category(self, payload: Any = None) -> dict:
-        """API мгновенного (0.05с) воспроизведения реплики стрима по фиксированной категории."""
-        if isinstance(payload, str):
-            try:
-                payload = json.loads(payload)
-            except Exception:
-                payload = {}
-        if not isinstance(payload, dict):
-            payload = {}
-
-        category = str(payload.get("category", "")).strip()
-        lang = str(payload.get("lang", "ru")).strip()
-        emotion = str(payload.get("emotion", "happy")).strip()
-        action = payload.get("action")
-
-        ok = self._controller.speak_stream_category(
-            category=category,
-            lang=lang,
-            emotion=emotion,
-            action=action,
-        )
-        return {"ok": ok, "category": category}
+        """Compatibility alias: all recorded speech has one owner and queue."""
+        return self.play_voice(payload)
 
     # ---------- окна подключаются после создания ----------
 
@@ -818,7 +701,9 @@ class WinkyAPI:
         self.warmup_voice_cache(lang_slot="all", full=True)
 
     def precache_phrases(self) -> None:
-        self.warmup_voice_cache(lang_slot="all", full=False)
+        # Prepared banks are audited offline. Startup never buys a second,
+        # unrelated library or regenerates recordings without review.
+        logger.info("Recorded voice bank loaded; automatic paid warmup disabled")
 
     def set_avatar_scale(self, scale: float) -> None:
         self._avatar_js(f"window.winkySetScale && window.winkySetScale({float(scale)})")
@@ -1332,7 +1217,15 @@ def main() -> None:
         threading.Timer(2.5, _smoke_speak).start()
         threading.Timer(seconds, _smoke_close).start()
 
-    webview.start(background)
+    try:
+        webview.start(background)
+    finally:
+        stream_director.stop()
+        controller.clear_queue_and_stop()
+        controller._synth_pool.shutdown(wait=False, cancel_futures=True)
+        client = getattr(controller.engine, '_client', None)
+        if client:
+            client.close()
 
 
 if __name__ == "__main__":

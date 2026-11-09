@@ -1,19 +1,16 @@
 """Режиссёр Стрима (StreamDirector) для Winky VTuber.
 
 Координирует фазы торговли на Pocket Option и живое общение с TikTok-чатом:
-1. Во время фаз ANALYZING и RESULT приоритет имеет торговая речь (анализ графика,
-   вход в сделку, результат). Комментарии зрителей не теряются, а попадают в очередь
-   chat_queue с упреждающим фоновым синтезом аудио (Pre-Synthesis).
-2. Во время 30-секундного ожидания открытой сделки (IN_TRADE при remaining_sec >= 4)
-   или в покое (IDLE), Winky автоматически берет готовые ответы из chat_queue
-   и воспроизводит их мгновенно без 15-секундных пауз!
-3. Гарантирует, что ни одна фраза не обрывается на середине: Pocket Option ожидает
-   завершения речи (is_speaking) перед объявлением результатов.
+Готовые торговые записи и ответы зрителям передаются одному SpeechController.
+Подготовка двух ответов в фоне не блокирует готовую речь; текущая фраза
+договаривается, а торговля продолжает работать независимо от аудио.
 """
 
 from __future__ import annotations
 
 import logging
+import concurrent.futures
+import re
 import threading
 import time
 from collections import deque
@@ -38,6 +35,7 @@ class ChatItem:
     ready: bool = False
     failed: bool = False
     played: bool = False
+    dispatched: bool = False
 
 
 class StreamDirector:
@@ -56,11 +54,13 @@ class StreamDirector:
         self._on_feed = on_feed
 
         self._trade_phase: str = "IDLE"  # IDLE | ANALYZING | IN_TRADE | RESULT
+        self.context: dict = {}
         self._remaining_sec: int = 0
         self._current_pair: str = "AED/CNY OTC"
         self._last_phase_update: float = time.time()
 
         self._chat_queue: deque[ChatItem] = deque(maxlen=6)
+        self._chat_workers = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-chat")
         self._event_log: deque[dict] = deque(maxlen=8)
         self._last_chat_speak_time: float = 0.0
 
@@ -71,6 +71,8 @@ class StreamDirector:
     def start(self) -> None:
         if self._thread and self._thread.is_alive():
             return
+        if self._chat_workers._shutdown:
+            self._chat_workers = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-chat")
         self._stop_event.clear()
         self._thread = threading.Thread(target=self._run, name="winky-stream-director", daemon=True)
         self._thread.start()
@@ -78,6 +80,11 @@ class StreamDirector:
 
     def stop(self) -> None:
         self._stop_event.set()
+        with self._lock:
+            for item in self._chat_queue:
+                item.failed = True
+            self._chat_queue.clear()
+        self._chat_workers.shutdown(wait=False, cancel_futures=True)
 
     def set_brain(self, brain: Any) -> None:
         self._brain = brain
@@ -90,9 +97,20 @@ class StreamDirector:
 
     # ---------- Фазы Pocket Option ----------
 
-    def update_trade_phase(self, phase: str, pair: str = "", remaining_sec: int = 0) -> dict:
+    def update_trade_phase(self, phase: str, pair: str = "", remaining_sec: int = 0, context: dict | None = None) -> dict:
         """Обновляет текущую фазу торговли из Pocket Option."""
         with self._lock:
+            incoming = dict(context or {})
+            try:
+                incoming['created_at'] = float(incoming.get('created_at', time.time() * 1000))
+                remaining_sec = max(0, int(remaining_sec))
+            except (TypeError, ValueError, OverflowError):
+                return {'ok': False, 'error': 'invalid_phase_context'}
+            if str(phase).upper() not in ('IDLE', 'ANALYZING', 'IN_TRADE', 'RESULT', 'COOLDOWN'):
+                return {'ok': False, 'error': 'invalid_phase'}
+            if incoming['created_at'] < self.context.get('created_at', 0):
+                return {'ok': True, 'stale': True}
+            self.context = dict(incoming)
             old_phase = self._trade_phase
             self._trade_phase = phase.upper()
             if pair:
@@ -144,8 +162,13 @@ class StreamDirector:
         reply_text: str = "",
     ) -> None:
         """Добавляет входящий комментарий зрителя в очередь с немедленным фоновым пре-синтезом."""
-        clean_user = user.strip() or "Зритель"
+        from winky.censor import check_phrase
+        clean_user = re.sub(r"[^\w -]", "", user, flags=re.UNICODE).strip()[:32] or "Зритель"
+        if not check_phrase(clean_user)[0]:
+            clean_user = "Зритель" if lang == "ru" else "Viewer"
         clean_text = text.strip()
+        if not check_phrase(clean_text)[0]:
+            return
         if not clean_text:
             return
 
@@ -158,6 +181,11 @@ class StreamDirector:
         )
 
         with self._lock:
+            for queued in list(self._chat_queue):
+                if time.time() - queued.created_at > 90 or queued.failed or queued.played:
+                    self._chat_queue.remove(queued)
+            if len(self._chat_queue) >= 6 or any(q.user == clean_user or q.text.casefold() == clean_text.casefold() for q in self._chat_queue):
+                return
             self._chat_queue.append(item)
 
         self._log_event({
@@ -169,11 +197,14 @@ class StreamDirector:
         })
 
         # Запускаем фоновый пре-синтез (текст ответа + .mp3 файл)
-        threading.Thread(target=self._pre_synthesize, args=(item,), daemon=True, name="presynth-chat").start()
+        self._chat_workers.submit(self._pre_synthesize, item)
 
     def _pre_synthesize(self, item: ChatItem) -> None:
         """В фоне генерирует ответ и синтезирует .mp3 файл до начала воспроизведения."""
         try:
+            if item.failed or time.time() - item.created_at > 90:
+                item.failed = True
+                return
             reply_text = item.reply_text
             if not reply_text:
                 if self._brain and hasattr(self._brain, "reply"):
@@ -191,10 +222,17 @@ class StreamDirector:
                 ok, reason = check_phrase(reply_text)
                 if not ok:
                     logger.warning("Ответ чату отфильтрован цензурой (%s): «%s»", reason, reply_text)
-                    reply_text = f"Ой, {item.user}, давай лучше ловить сигналы на графике!" if item.lang == "ru" else f"Hey {item.user}, let's focus on the chart signals!"
+                    item.failed = True
+                    return
             except Exception as e:
                 logger.warning("Ошибка check_phrase: %s", e)
 
+            # One complete short answer; never cut an already generated MP3.
+            sentences = re.split(r"(?<=[.!?])\s+", reply_text.strip())
+            reply_text = sentences[0] if len(reply_text) > 130 else reply_text
+            if len(reply_text) > 160:
+                item.failed = True
+                return
             item.reply_text = reply_text
 
             # Извлекаем эмоцию из тега [happy], [blush], [wink]
@@ -216,11 +254,15 @@ class StreamDirector:
 
                 if hasattr(engine, "synthesize"):
                     media = engine.synthesize(clean_for_audio, item.lang)
+                    if item.failed or time.time() - item.created_at > 90:
+                        item.failed = True
+                        return
                     item.media_path = media
                     item.ready = True
                     logger.info("Пре-синтез для зрителя %s готов: «%s» (%s)", item.user, reply_text[:35], media.name)
                     return
 
+            item.failed = True
             item.ready = True
         except Exception as exc:
             logger.warning("Ошибка пре-синтеза для %s: %s", item.user, exc)
@@ -259,20 +301,29 @@ class StreamDirector:
             item_to_play: ChatItem | None = None
             with self._lock:
                 for item in list(self._chat_queue):
-                    if item.ready and not item.played:
-                        item_to_play = item
-                        item.played = True
+                    if time.time() - item.created_at > 90 or item.failed or item.played:
                         self._chat_queue.remove(item)
+                        continue
+                    if item.ready and not item.played and not item.dispatched:
+                        item_to_play = item
+                        item.dispatched = True
                         break
 
             if item_to_play:
-                self._dispatch_chat_item(item_to_play)
+                from winky.tts import media_duration_seconds
+                duration = media_duration_seconds(item_to_play.media_path) if item_to_play.media_path else 9
+                if duration > 8:
+                    item_to_play.failed = True
+                elif phase == "IN_TRADE" and duration + 2 > rem:
+                    item_to_play.dispatched = False
+                else:
+                    self._dispatch_chat_item(item_to_play)
             elif phase == "IN_TRADE" and rem >= 10:
                 # Полезные фишки стратегии и вовлечение зрителей (stream_insight) раз в 90–120с, если в чате тихо
                 if now - getattr(self, "_last_insight_time", 0.0) >= 95.0:
                     self._last_insight_time = now
                     if self._tts and hasattr(self._tts, "speak_stream_category"):
-                        self._tts.speak_stream_category("stream_insight", lang="ru", emotion="happy")
+                        self._tts.speak_stream_category("stream_insight", lang=self.context.get("lang", "ru"), emotion="happy")
 
     def _dispatch_chat_item(self, item: ChatItem) -> None:
         """Передаёт подготовленную реплику чата в SpeechController."""
@@ -297,7 +348,8 @@ class StreamDirector:
                 pass
 
         if hasattr(self._tts, "speak_chat_item"):
-            self._tts.speak_chat_item(item)
+            if not self._tts.speak_chat_item(item):
+                item.dispatched = False
         elif hasattr(self._tts, "speak"):
             self._tts.speak(
                 item.reply_text,

@@ -129,11 +129,11 @@ test('a closed history row with a duration cannot keep the trade active',async()
   c.document.querySelectorAll=()=>[history];c.setBalance(1046);
   await c.onSignalTimerFinished();assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.botState,'IDLE');assert.equal(t.resultApplied,true);
 });
-test('Winky speech wait is bounded and the balance is refreshed after it', async () => {
+test('Winky speech never delays settlement or the next cycle', async () => {
   const c=loadContent(),t=c.trade();c.state.botState='IN_TRADE';c.state.activeSignal={direction:'BUY'};c.setBalance(1046);
   let checks=0;c.setSpeakingReader(async()=>{checks++;c.setBalance(1047);return {is_speaking:true};});
-  await c.onSignalTimerFinished();assert.ok(checks>0 && checks<20);assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.lastTrade.reason,'credited_balance');
-  assert.equal(c.state.scoreProfit,1467);assert.equal(c.state.botState,'IDLE');assert.equal(t.resultApplied,true);
+  await c.onSignalTimerFinished();assert.equal(checks,0);assert.equal(c.state.lastTradeOutcome,'WIN');assert.equal(c.state.lastTrade.reason,'credited_balance');
+  assert.equal(c.state.scoreProfit,1466);assert.equal(c.state.botState,'IDLE');assert.equal(t.resultApplied,true);
 });
 test('a nonresponding Winky bridge does not block score or the next cycle', async () => {
   const c=loadContent(),t=c.trade();t.brokerResult={id:'id-1',net:46};

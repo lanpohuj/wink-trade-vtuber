@@ -1,0 +1,355 @@
+{
+  "start_01": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Всем привет на стриме! Винки на связи! Включаем турбо-режим и начинаем искать идеальные точки входа."
+  },
+  "start_02": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Так, терминал готов! Индикаторы заряжены! Давайте посмотрим, где сейчас можно забрать уверенный профит."
+  },
+  "start_03": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Начинаем новый торговый цикл. Сейчас внимательно просканирую рынок и найду для нас лучший сигнал."
+  },
+  "start_04": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Окей, я готова канализу графика, запускаю сканер уровней, объемов и тренда."
+  },
+  "analyze_01": {
+    "status": "ready",
+    "conditions": {
+      "indicators_ready": true
+    },
+    "transcript": "Секундочку, анализирую график. Смотрю на Росай, скользящие средние и реакцию цены у ключевых уровней."
+  },
+  "analyze_02": {
+    "status": "ready",
+    "conditions": {
+      "indicators_ready": true
+    },
+    "transcript": "Так, давайте разберем текущую картину, проверяю силу тренда, импульсы свечей и зоны перекупленности."
+  },
+  "analyze_03": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Сканирую текущую валютную пару. Мне нужно убедиться, что здесь есть чистый сетап с высокой вероятностью отработки."
+  },
+  "analyze_04": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Внимательно смотрю на свечи и индикаторы. Ищу точку, где покупатели или продавцы начинают выдыхаться."
+  },
+  "analyze_05": {
+    "status": "ready",
+    "conditions": {
+      "indicators_ready": true
+    },
+    "transcript": "Провожу технический анализ графика, сверяю и мы, динамику RSI и ближайшие уровни поддержки и сопротивления."
+  },
+  "analyze_06": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Хмм, интересное движение на графике. Сейчас нейросеть просчитает точные сигналы на этой паре."
+  },
+  "switch_01": {
+    "status": "ready",
+    "conditions": {
+      "skip_reason": "WEAK_AND_CHOPPY"
+    },
+    "transcript": "Неа! На этой паре сейчас слишком слабый сигнал и рваные движения. Рисковать не будем, переключаю на другую валютную пару."
+  },
+  "switch_02": {
+    "status": "ready",
+    "conditions": {
+      "skip_reason": "UNCONFIRMED_ENTRY"
+    },
+    "transcript": "Здесь рынок сейчас капризно и точка входа размытое. Давайте сменим валютную пару и найдем куда более четкий график."
+  },
+  "switch_03": {
+    "status": "ready",
+    "conditions": {
+      "skip_reason": "INDICATOR_CONFLICT"
+    },
+    "transcript": "Индикаторы на этой паре дают противоречивую картину. Переключаю актив. Нам нужны только надежные сетапы с высоким процентом."
+  },
+  "switch_04": {
+    "status": "ready",
+    "conditions": {
+      "market_regime": "LOW_VOL_RANGE"
+    },
+    "transcript": "Так, тут сейчас флэд и слабая волатильность, ловить нечего. Меняю валютную пару, посмотрим другой актив."
+  },
+  "switch_05": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "На этом графике вероятность ниже нашей планки. Без сожалению, переключаемся на следующую валютную пару."
+  },
+  "switch_06": {
+    "status": "ready",
+    "conditions": {
+      "indicators_ready": true
+    },
+    "transcript": "Ай, ну тут совсем скучная картина по индикаторам. Давайте переключим пару и поищем красивое трендовое движение."
+  },
+  "switched_01": {
+    "status": "ready",
+    "conditions": {
+      "high_payout_confirmed": true
+    },
+    "transcript": "Отлично! Переключились на новую пару с высокой доходностью! Сейчас быстро проанализирую этот график."
+  },
+  "switched_02": {
+    "status": "ready",
+    "conditions": {
+      "indicators_ready": true
+    },
+    "transcript": "Вот! Совсем другое дело! Новая валютная пара открыта. Запускаю сканирование уровней и РСАИ."
+  },
+  "switched_03": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "перешли на свежий актив. Давайте посмотрим какую картину нам рисуют свечи на этом графике."
+  },
+  "switched_04": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Пара успешно изменена, начиная анализ индикаторов на новом графике."
+  },
+  "prep_01": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Ого! Вижу отличную информацию! Готовлю точку входа. Сейчас зайдём на самом выгодном импульсе."
+  },
+  "prep_02": {
+    "status": "ready",
+    "conditions": {
+      "all_indicators_confirmed": true
+    },
+    "transcript": "Есть контакт. Сигнал подтвержден по всем индикаторам. Приготовьтесь, сейчас будем открывать сделку."
+  },
+  "prep_03": {
+    "status": "ready",
+    "conditions": {
+      "rsi_level_reversal_confirmed": true
+    },
+    "transcript": "Красота! Уровень держит! Рысай дает четкий разворотный сигнал! Выставляю параметры и захожу в сделку!"
+  },
+  "prep_04": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Нашла сильный сетап с высокой точностью! Буквально пара секунд фиксируем точку входа!"
+  },
+  "call_01": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "call_02": {
+    "status": "ready",
+    "conditions": {
+      "direction": "BUY",
+      "rsi_oversold_confirmed": true
+    },
+    "transcript": "Открываю сделку, купить, идём вверх! Индикатор Расаев в зоне перепроданности! А покупатели уже перехватывают инициативу!"
+  },
+  "call_03": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "call_04": {
+    "status": "ready",
+    "conditions": {
+      "direction": "BUY",
+      "local_bottom_impulse_confirmed": true
+    },
+    "transcript": "Нажимаю вверх, здесь читается чистый бычий импульс от локального минимума сделка в работе."
+  },
+  "call_05": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "call_06": {
+    "status": "ready",
+    "conditions": {
+      "direction": "BUY",
+      "support_pullback_confirmed": true
+    },
+    "transcript": "Влетаем выверх. Отличный вход на откате к уровню поддержки. Ждём зелёную свечу."
+  },
+  "put_01": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "put_02": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "put_03": {
+    "status": "ready",
+    "conditions": {
+      "direction": "SELL",
+      "expiry": "30s",
+      "upper_level_rejection_confirmed": true
+    },
+    "transcript": "Берём сделку на понижение на 30 секунд! Отличный медвежий сигнал от верхнего уровня!"
+  },
+  "put_04": {
+    "status": "ready",
+    "conditions": {
+      "direction": "SELL",
+      "resistance_fade_confirmed": true
+    },
+    "transcript": "Нажимаю вниз, вижу затухание роста, усильные зоны сопротивления, сделка открыта."
+  },
+  "put_05": {
+    "status": "ready",
+    "conditions": {
+      "direction": "SELL",
+      "top_selling_pressure_confirmed": true
+    },
+    "transcript": "Сделка в работе прогноз вниз, продавцы активно давят цену от максимума. Следим за графиком."
+  },
+  "put_06": {
+    "status": "missing",
+    "conditions": {},
+    "transcript": ""
+  },
+  "wait_01": {
+    "status": "ready",
+    "conditions": {
+      "halfway_favorable_confirmed": true
+    },
+    "transcript": "Половина времени сделки позади. Внимательно, следим за каждым тиком, точка входа держится отлично."
+  },
+  "wait_02": {
+    "status": "ready",
+    "conditions": {
+      "remaining_sec": 15
+    },
+    "transcript": "Осталось около 15 секунд до закрытия. Дышим ровно и смотрим, как отрабатывает наш прогноз."
+  },
+  "wait_03": {
+    "status": "ready",
+    "conditions": {
+      "favorable_reaction_confirmed": true
+    },
+    "transcript": "Сделка в самом разгаре! Ну график показывает хорошую реакцию! Ждём финальной фиксации таймера!"
+  },
+  "wait_04": {
+    "status": "ready",
+    "conditions": {
+      "near_expiry_confirmed": true
+    },
+    "transcript": "сопровождаем сделку до экспирации совсем немного времени держим кулачки"
+  },
+  "wait_05": {
+    "status": "ready",
+    "conditions": {
+      "candle_close_near_expiry_confirmed": true
+    },
+    "transcript": "Смотрим на закрытие свечи. Остаются считанные секунды до результата."
+  },
+  "win_01": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Да! Плюс в копилку. Точка входа отработала просто идеально. Забираем чистый профит по сигналу Винки."
+  },
+  "win_02": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Эйес, уверенный плюс! Как по учебнику, уровень отработал на все сто процентов, поздравляю всех с профитом!"
+  },
+  "win_03": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Красота! Очередная победа в нашу статистику! Люблю, когда технический анализ даёт такой чёткий результат!"
+  },
+  "win_04": {
+    "status": "ready",
+    "conditions": {
+      "winning_streak_confirmed": true
+    },
+    "transcript": "Шикарное закрытие в плюс! Профит уже на балансе! Наша серия побед продолжается!"
+  },
+  "win_05": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Если плюс в копилочку. Сделка зашла уверенно, нейросеть прочитала это движение как открытую книгу."
+  },
+  "win_06": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Ура! Забираем профит! Отличная сделка! Баланс растет, работаем дальше в том же духе!"
+  },
+  "loss_01": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "На последней секунде рынок дал резкий микроэмпульс против нас. Закрылись в минус. Ничего страшного, это рынок сейчас спокойно перекроем."
+  },
+  "loss_02": {
+    "status": "ready",
+    "conditions": {
+      "otc_loss_confirmed": true
+    },
+    "transcript": "Так, эта сделка ушла в минус, вот оси график решил покопризничать. Сохраняем холодную голову и дисциплину, ищем следующий верный вход."
+  },
+  "loss_03": {
+    "status": "excluded",
+    "conditions": {},
+    "transcript": "Обидны прокол уровня под самое закрытие таймера. Без паники! У нас отличный общий винрейт. Сейчас найдем сильный сетап и отработаем."
+  },
+  "loss_04": {
+    "status": "ready",
+    "conditions": {
+      "false_breakout_confirmed": true
+    },
+    "transcript": "В этот раз минус. Рынок устроил ложный вынос. Делаем выводы, не тельтуем, и мы готовимся к следующей точной сделке."
+  },
+  "loss_05": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Сделка закрылась в минус. В трейдинге главная дистанция и контроль рисков, так что спокойно переходим к поиску новой точки входа."
+  },
+  "refund_01": {
+    "status": "ready",
+    "conditions": {
+      "same_price_refund_confirmed": true
+    },
+    "transcript": "Ого! Закрылись ровно в точку входа! Возврат! Деньги полностью вернулись на баланс! Ни цента не потеряли!"
+  },
+  "refund_02": {
+    "status": "ready",
+    "conditions": {
+      "next_entry_ready": true
+    },
+    "transcript": "нулевое закрытие сделка рассчитана возвратом баланс на месте сейчас перезадем на более сильном движении"
+  },
+  "pause_01": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Делаем короткую паузу между сделками, дадим графику сформировать новые свечи и спокойно подготовим следующий вход."
+  },
+  "pause_02": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Небольшая передышка по тайм-менеджменту. В трейдинге важно не спешить и входить только по лучшим сигналам."
+  },
+  "pause_03": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Фиксируем результат и берем пару секунд паузы перед новым сканированием рынка."
+  },
+  "pause_04": {
+    "status": "ready",
+    "conditions": {},
+    "transcript": "Короткая пауза между сделками обновляю данные по волатильности и готовлю сканер к новому циклу."
+  }
+}

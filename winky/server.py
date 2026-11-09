@@ -269,7 +269,7 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             phase = payload.get("phase", "IDLE")
             pair = payload.get("pair", "")
             remaining = payload.get("remaining_sec", 0)
-            res = stream_director.update_trade_phase(phase, pair, remaining)
+            res = stream_director.update_trade_phase(phase, pair, remaining, context=payload)
             if _chat_requested_pairs:
                 res["next_requested_pair"] = _chat_requested_pairs[0]["pair"]
                 res["requested_by"] = _chat_requested_pairs[0]["user"]

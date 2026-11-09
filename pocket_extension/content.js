@@ -341,6 +341,10 @@
       const dir = extra.direction || state.activeSignal?.direction || "";
       const act = extra.action || (dir === "BUY" ? "CALL" : (dir === "SELL" ? "PUT" : ""));
       const res = await sendProxyMessage("/api/winky/trade_phase", "POST", {
+        session_id: voiceSessionId,
+        trade_seq: state.tradeContext?.seq || state.tradeSequence,
+        lang: state.lang || "ru",
+        created_at: Date.now(),
         phase: phase,
         pair: pair || state.targetPair,
         remaining_sec: Math.max(0, Math.round(remainingSec || 0)),
@@ -398,6 +402,7 @@
       trade.brokerId = data.orderId || trade.brokerId;
       trade.openConfirmed = true;
       journalDecision('broker_opened');
+      announceObservedOpening(trade);
       if (Number.isFinite(data.closesAt) && data.closesAt > trade.startedAt) {
         trade.closesAt = data.closesAt;
         if (state.botState === 'IN_TRADE') state.tradeEndTime = data.closesAt;
@@ -456,6 +461,7 @@
     if (data.type === "DEAL_BADGE_TIMER" && typeof data.remainingSec === "number") {
       if (!matchesTradeEvidence(data, trade)) return;
       trade.openConfirmed = true;
+      announceObservedOpening(trade);
       trade.lastBadgeAt = Date.now();
       trade.remainingSec = data.remainingSec;
       state._lastDealBadgeRemaining = data.remainingSec;
@@ -536,6 +542,7 @@
       bAction.innerHTML = `<span>${state.lang === "ru" ? `СДЕЛКА АКТИВНА · ${formatted}` : `TRADE ACTIVE · ${formatted}`}</span>`;
     }
 
+    announceObservedOpening(state.tradeContext);
     notifyTradePhase("IN_TRADE", state.targetPair, remaining);
   }
 
@@ -2925,6 +2932,8 @@
 
   /* ==================== 4. Instant 0.05s Voice Engine (STREAM_VOICE_BANK) ==================== */
 
+  const voiceSessionId = "voice-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+  let voiceEventSequence = 0;
   const VoiceManager = {
     playCategory(category, isBlocking = false, emotion = "happy", action = null, extra = {}) {
       if (!category) return Promise.resolve(true);
@@ -2943,6 +2952,17 @@
       loggerLog(`VoiceManager: Мгновенный запрос категории [${category}] (${state.lang})`);
       const payload = {
         category: category,
+        event_id: /^(trade_(win|loss|refund)|OPEN_TRADE_)/i.test(category)
+          ? voiceSessionId + ":" + (state.tradeContext?.seq || state.tradeSequence) + ":" + (/^OPEN_/i.test(category) ? "open" : "result")
+          : voiceSessionId + ":" + (++voiceEventSequence),
+        session_id: voiceSessionId,
+        trade_seq: state.tradeContext?.seq || state.tradeSequence,
+        pair: state.targetPair,
+        expiry: state.activeSignal?.duration || state.selectedTimeframe,
+        setup: state.analysisCache?.analysis?.family || state.analysisCache?.analysis?.setup || "",
+        score: state.activeSignal?.confluence ?? null,
+        phase: state.botState,
+        created_at: Date.now(),
         lang: state.lang || "ru",
         emotion: emotion,
         action: action,
@@ -2952,15 +2972,25 @@
         ...extra,
       };
       sendProxyMessage("/api/winky/speak_stream_category", "POST", payload);
-      sendProxyMessage("/api/winky/play_voice", "POST", payload);
+      // Compatibility endpoints share one queue; send each event once.
 
-      if (isBlocking) {
-        const waitMs = (category === "trade_win" || category.startsWith("trade_loss")) ? 4000 : 3200;
-        return new Promise((r) => setTimeout(r, waitMs));
-      }
+      // Speech owns its queue; animation and trading never wait for audio.
       return Promise.resolve(true);
     },
   };
+
+  function announceObservedOpening(trade) {
+    if (!trade || !trade.openConfirmed || trade.voiceAnnounced || state.botState !== 'IN_TRADE' || trade.resultApplied) return;
+    trade.voiceAnnounced = true;
+    const remaining = Math.max(0, Math.round(((state.tradeEndTime || Date.now()) - Date.now()) / 1000));
+    notifyTradePhase('IN_TRADE', trade.pair, remaining).then(() => {
+      if (state.tradeContext !== trade || trade.resultApplied || state.botState !== 'IN_TRADE') return;
+      VoiceManager.playCategory(trade.direction === 'BUY' ? 'OPEN_TRADE_CALL' : 'OPEN_TRADE_PUT', false, 'excited', 'cheer', {
+        direction: trade.direction, open_observed: true,
+        action: trade.direction === 'BUY' ? 'CALL' : 'PUT',
+      });
+    });
+  }
 
   // Immediate 0ms UI update with synchronized Lumean speech
   async function triggerStateWithVoice(stateKey, category, uiUpdateFn, isBlocking = false, emotion = "happy", action = null) {
@@ -3462,9 +3492,7 @@
       }
       state.botState = 'IN_TRADE';
       renderSignalCardState();
-      if (!trade.clickUncertain || trade.openConfirmed) {
-        VoiceManager.playCategory(isBuy ? 'OPEN_TRADE_CALL' : 'OPEN_TRADE_PUT', false, 'excited', 'cheer', { direction: tradeDir, action: isBuy ? 'CALL' : 'PUT' });
-      }
+      announceObservedOpening(trade);
 
       // Sync signal with backend & mini app
       sendSyncSignalToProd({
@@ -3769,20 +3797,7 @@
     // active countdown instead of classifying or opening another order.
     if (outcomeResult.outcome === 'PENDING' && resumeActiveTrade()) return;
 
-    // As in e377527, allow Winky to finish her current phrase (max 2.5s).
-    // A stalled local HTTP bridge must not stall the trading cycle either.
-    const speechWaitStartedAt = Date.now();
-    while (Date.now() - speechWaitStartedAt < 2500) {
-      let timeout;
-      const status = await Promise.race([
-        checkWinkySpeaking(),
-        new Promise(resolve => { timeout = setTimeout(() => resolve(null), Math.min(600, 2500 - (Date.now() - speechWaitStartedAt))); }),
-      ]);
-      clearTimeout(timeout);
-      if (state.tradeContext !== trade) return;
-      if (!status?.is_speaking) break;
-      await new Promise(resolve => setTimeout(resolve, Math.min(200, Math.max(0, 2500 - (Date.now() - speechWaitStartedAt)))));
-    }
+    // Audio finishes independently; settlement evidence is refreshed below.
     trade.balanceFallbackReady = Date.now() - settlementStartedAt >= 10000;
     outcomeResult = evaluateTradeOutcome(trade);
     if (outcomeResult.outcome === 'PENDING' && resumeActiveTrade()) return;
@@ -3860,6 +3875,7 @@
       }, true, "excited", "cheer");
     } else if (outcomeResult.outcome === 'REFUND') {
       state.lastTradeOutcome = 'REFUND';
+      VoiceManager.playCategory('trade_refund', false, 'happy');
       if (block) block.textContent = state.lang === 'ru' ? 'ВОЗВРАТ СТАВКИ · шаг перекрытия сохранён' : 'REFUND · recovery step unchanged';
     } else if (outcomeResult.outcome === 'UNKNOWN') {
       state.lastTradeOutcome = 'UNKNOWN';

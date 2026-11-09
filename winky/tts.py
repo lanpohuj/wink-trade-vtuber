@@ -87,8 +87,8 @@ DEFAULT_RU_VOICE_ID = "1db1618b6eaf4571ac7db70e20eb6727"
 DEFAULT_RU_VOICE_NAME = "Марин китагава"
 
 DEFAULT_EN_SERVICE = "fishaudio"
-DEFAULT_EN_VOICE_ID = "e34c486929524d41b88646b4ac2f382f"
-DEFAULT_EN_VOICE_NAME = "Venti"
+DEFAULT_EN_VOICE_ID = DEFAULT_RU_VOICE_ID
+DEFAULT_EN_VOICE_NAME = DEFAULT_RU_VOICE_NAME
 
 
 def detect_lang(text: str) -> str:
@@ -298,6 +298,8 @@ class LumeanTTS:
         self._en_service: str = (settings.LUMEAN_EN_SERVICE or DEFAULT_EN_SERVICE).strip().lower()
         self._en_voice_id: str = (settings.LUMEAN_EN_VOICE_ID or DEFAULT_EN_VOICE_ID).strip()
         self._en_voice_name: str = (settings.LUMEAN_EN_VOICE_NAME or DEFAULT_EN_VOICE_NAME).strip()
+        if self._en_voice_id == DEFAULT_RU_VOICE_ID and self._en_voice_name == self._en_voice_id:
+            self._en_voice_name = DEFAULT_RU_VOICE_NAME
 
         self._template_id: str | None = (settings.LUMEAN_TEMPLATE_ID or "").strip() or None
 
@@ -442,12 +444,16 @@ class LumeanTTS:
         clean_service = (service_key or DEFAULT_RU_SERVICE).strip().lower()
         clean_voice = (voice_id or "").strip()
         clean_name = (voice_name or clean_voice).strip()
+        if clean_voice == DEFAULT_RU_VOICE_ID and clean_name == clean_voice:
+            clean_name = DEFAULT_RU_VOICE_NAME
 
         if slot == "ru":
             changed = (clean_service != self._ru_service or clean_voice != self._ru_voice_id)
             self._ru_service = clean_service
             self._ru_voice_id = clean_voice
             self._ru_voice_name = clean_name
+            if changed:
+                self._ru_tuning.pop("template_id", None)
             self._ru_tuning["service_key"] = clean_service
             self._ru_tuning["voice_id"] = clean_voice
             self._ru_tuning["voice_name"] = clean_name
@@ -463,6 +469,8 @@ class LumeanTTS:
             self._en_service = clean_service
             self._en_voice_id = clean_voice
             self._en_voice_name = clean_name
+            if changed:
+                self._en_tuning.pop("template_id", None)
             self._en_tuning["service_key"] = clean_service
             self._en_tuning["voice_id"] = clean_voice
             self._en_tuning["voice_name"] = clean_name
@@ -961,7 +969,7 @@ class LumeanTTS:
         logger.info("Cache MISS (bypass=%s) in voice_cache/%s -> запрос в Lumean API («%s»)...", bypass_cache, voice_dir.name, clean_text[:30])
 
         last_exc: Exception | None = None
-        for attempt in range(1, 3):
+        for attempt in range(1, 2):
             try:
                 tuning = self.get_tuning(slot)
                 slot_key = self._slot_key(slot, service_key, voice_id)
@@ -1013,7 +1021,7 @@ class LumeanTTS:
                 start_poll = time.monotonic()
                 file_path: str | None = None
                 poll_count = 0
-                while time.monotonic() - start_poll < 90.0:
+                while time.monotonic() - start_poll < 120.0:
                     poll_count += 1
                     try:
                         status_resp = self._client.get(
@@ -1038,7 +1046,7 @@ class LumeanTTS:
                     time.sleep(sleep_sec)
 
                 if not file_path:
-                    raise TTSError(f"Lumean таймаут >90с заказа {order_id}")
+                    raise TTSError(f"Lumean таймаут >120с заказа {order_id}")
 
                 # Шаг В: Получение подписанной ссылки на скачивание (таймаут 20с)
                 url_resp = self._client.post(
@@ -1071,14 +1079,8 @@ class LumeanTTS:
                 time.sleep(1.0)
 
         # Категорический отказ от отката на EdgeTTS / системный голос Chrome!
-        logger.error("Lumean TTS не смог синтезировать «%s» после 2 попыток: %s", clean_text[:30], last_exc)
-        # Резервный поиск любого готового .mp3 файла в voice_cache для текущего слота голоса
-        ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
-        if ready_files:
-            fallback_audio = random.choice(ready_files)
-            logger.warning("Сетевой сбой Lumean: взят готовый файл слота %s из voice_cache: %s", voice_dir.name, fallback_audio.name)
-            return fallback_audio
-        raise TTSError(f"Lumean synthesis failed after retries: {last_exc}") from last_exc
+        logger.error("Lumean TTS не смог синтезировать «%s» без повторного платного заказа: %s", clean_text[:30], last_exc)
+        raise TTSError(f"Lumean synthesis failed: {last_exc}") from last_exc
 
     def search_voices(
         self,
@@ -1435,6 +1437,17 @@ def wav_duration_seconds(path: Path) -> float:
         return 3.0
 
 
+def media_duration_seconds(path: Path) -> float:
+    try:
+        result = subprocess.run(['/usr/bin/afinfo', str(path)], capture_output=True, text=True, timeout=5)
+        found = re.search(r'estimated duration:\s*([0-9.]+)', result.stdout)
+        if found:
+            return float(found.group(1))
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return 999.0
+
+
 @dataclass
 class SpeechItem:
     """Фраза в конвейере озвучки с защитой от рассинхрона (TTL & State Guard)."""
@@ -1454,6 +1467,10 @@ class SpeechItem:
     max_age_sec: float = 35.0
     expected_pair: str = ""
     expected_state: str = ""
+    priority: int = 2
+    event: dict = field(default_factory=dict)
+    bank_id: str = ""
+    chat_item: object | None = None
 
 
 # Алиас для обратной совместимости
@@ -1517,6 +1534,9 @@ class SpeechController:
     engine: ElevenLabsTTS | LumeanTTS | EdgeTTS = field(default_factory=build_engine)
 
     def __post_init__(self) -> None:
+        from winky.voice_bank import VoiceBank
+        self.voice_bank = VoiceBank()
+        self._voice_events: dict[str, float] = {}
         self._playback_queue: deque[SpeechItem] = deque()
         self._prefetched_items: dict[str, SpeechItem] = {}
         self._category_decks: dict[tuple[str, str], SmartCategoryDeck] = {}
@@ -1869,6 +1889,11 @@ class SpeechController:
     def clear_queue_and_stop(self) -> None:
         """Очищает очередь и останавливает текущее воспроизведение."""
         with self._lock:
+            for item in self._playback_queue:
+                if item.chat_item:
+                    item.chat_item.failed = True
+                if item.bank_id:
+                    self.voice_bank.release(item.bank_id, item.event)
             self._playback_queue.clear()
         proc = self._afplay_proc
         if proc and proc.poll() is None:
@@ -1947,6 +1972,7 @@ class SpeechController:
             media_path=media,
             rms_chunks=compute_rms_chunks(media) if media and media.exists() else None,
             source=f"chat_reply_{getattr(chat_item, 'user', 'viewer')}",
+            priority=3, max_age_sec=90, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
         )
         if media and media.exists():
             item.ready_event.set()
@@ -1960,152 +1986,147 @@ class SpeechController:
         self._emit_status()
         return True
 
-    def speak_stream_category(
-        self,
-        category: str,
-        lang: str = "ru",
-        emotion: str = "happy",
-        action: str | None = None,
-        priority: bool = False,
-    ) -> bool:
-        """Мгновенно (за 0.05 сек) воспроизводит готовую фразу категории из STREAM_VOICE_BANK.
-
-        1. Считывает фразы STREAM_VOICE_BANK[lang][category], которые УЖЕ лежат в voice_cache/.
-        2. Если есть готовые — мгновенно берет одну и передаёт в очередь воспроизведения (0.05с).
-        3. В тихом фоновом потоке (не блокируя речь) догенерирует 1 недостающую фразу этой категории через Lumean.
-        4. Если готовых нет — берет любой валидный .mp3 файл слота голоса из voice_cache/ (без EdgeTTS/say!).
-        """
-        # Жёсткий кулдаун 60 секунд на озвучку смены пары / пропуска рынка (чтобы не спамила при поиске точки входа)
-        cat_lower = (category or "").lower()
-        if cat_lower in ("flat_skip", "switch_pair"):
-            now_ts = time.time()
-            last_ts = getattr(self, "_last_pair_skip_ts", 0.0)
-            if now_ts - last_ts < 60.0:
-                logger.info("⏳ [Cooldown 60s] speak_stream_category [%s] пропущен (прошло %.1f с < 60 с)", category, now_ts - last_ts)
-                return False
-            self._last_pair_skip_ts = now_ts
-
-        from winky.scenarios import STREAM_VOICE_BANK
-
-        actual_lang = "ru" if (lang or "ru").lower() == "ru" else "en"
-        phrases_map = STREAM_VOICE_BANK.get(actual_lang, {})
-        phrases = phrases_map.get(category)
-        if not phrases:
-            for k, v in phrases_map.items():
-                if k.lower() == category.lower():
-                    phrases = v
-                    break
-
-        if not phrases:
-            logger.warning("speak_stream_category: категория «%s» не найдена в STREAM_VOICE_BANK[%s]", category, actual_lang)
-            return False
-
-        # Фразы воспроизводятся последовательно без обрывов звучащей речи
-        # (приоритет обеспечивается планированием StreamDirector)
-
-        # 1. Проверяем, какие фразы уже закэшированы в voice_cache/
-        cached_phrases: list[str] = []
-        missing_phrases: list[str] = []
-        for p in phrases:
-            if hasattr(self.engine, "is_cached") and self.engine.is_cached(p, lang=actual_lang):
-                cached_phrases.append(p)
+    def enqueue_voice_event(self, payload: dict) -> dict:
+        from winky.voice_bank import category_name, priority
+        event = dict(payload)
+        event['category'] = category_name(event.get('category'))
+        event['lang'] = 'en' if event.get('lang') == 'en' else 'ru'
+        raw_direction = str(event.get('direction') or event.get('trade_dir') or event.get('trade_action') or '').upper()
+        if event['category'] in ('OPEN_TRADE_CALL', 'OPEN_TRADE_PUT'):
+            if raw_direction in ('BUY','CALL','UP','ВВЕРХ','ВЫШЕ','LONG'):
+                event['category'], event['direction'] = 'OPEN_TRADE_CALL', 'BUY'
+            elif raw_direction in ('SELL','PUT','DOWN','ВНИЗ','НИЖЕ','SHORT'):
+                event['category'], event['direction'] = 'OPEN_TRADE_PUT', 'SELL'
             else:
-                missing_phrases.append(p)
-
-        # 2. Мгновенная выдача (0.05с) через Умную колоду без повторов
-        if cached_phrases:
-            deck_key = (actual_lang, category)
+                return {'ok': False, 'error': 'opening_direction_unconfirmed'}
+        if event.get('action') in ('CALL', 'PUT', 'BUY', 'SELL'):
+            event['action'] = 'cheer'
+        event_id = str(event.get('event_id') or '')
+        if not event_id:
+            # Older extensions call two compatibility routes without an ID.
+            signature = json.dumps([event['category'], event['lang'], event.get('pair'), event.get('direction'), event.get('trade_seq')], ensure_ascii=False)
             with self._lock:
-                if deck_key not in self._category_decks:
-                    self._category_decks[deck_key] = SmartCategoryDeck(category, actual_lang)
-                deck = self._category_decks[deck_key]
-
-            selected_phrase = deck.get_next(cached_phrases) or random.choice(cached_phrases)
-            cached_file = self.engine.get_cache_path(selected_phrase, lang=actual_lang)
-            item = SpeechItem(
-                text=selected_phrase,
-                lang=actual_lang,
-                emotion=emotion,
-                action=action,
-                action_duration=3.5,
-                media_path=cached_file,
-                rms_chunks=compute_rms_chunks(cached_file),
-                source=f"stream_bank_{category}",
-            )
-            item.ready_event.set()
-            with self._lock:
-                self._playback_queue.append(item)
-            self._wake.set()
+                previous = getattr(self, '_legacy_voice_events', {}).get(signature, 0)
+                if time.time() - previous < 1.5:
+                    return {'ok': True, 'duplicate': True}
+                self._legacy_voice_events = {k:v for k,v in getattr(self, '_legacy_voice_events', {}).items() if time.time()-v < 2}
+                self._legacy_voice_events[signature] = time.time()
+        try:
+            created = float(event.get('created_at') or time.time())
+        except (ValueError, TypeError):
+            return {'ok': False, 'error': 'invalid_event_time'}
+        if not math.isfinite(created):
+            return {'ok': False, 'error': 'invalid_event_time'}
+        if created > 1e11:
+            created /= 1000
+        created = min(created, time.time())
+        if event['category'] == 'CHAT_ACK' and time.time() - getattr(self, '_last_ack_at', 0) < 60:
+            return {'ok': False, 'error': 'ack_cooldown'}
+        with self._lock:
+            if event_id and event_id in self._voice_events:
+                return {'ok': True, 'duplicate': True}
+        event_ttl = 86400 if priority(event['category']) == 0 else 15
+        try:
+            event_ttl = min(event_ttl, max(0, float(event.get('ttl_sec', event_ttl))))
+        except (ValueError, TypeError):
+            return {'ok': False, 'error': 'invalid_event_ttl'}
+        if time.time() - created > event_ttl:
+            return {'ok': False, 'error': 'expired_event'}
+        selected = self.voice_bank.reserve(event)
+        if selected is None:
+            self._last_blocked = f"no_eligible_recording: {event['category']} ({event['lang']})"
+            logger.warning(self._last_blocked)
             self._emit_status()
-            logger.info("⚡ [0.05s Hit Deck] speak_stream_category [%s]: «%s» (%s)", category, selected_phrase[:40], cached_file.name)
-        else:
-            # Страховочный поиск: сначала проверяем готовую папку ассетов Lumean для данной категории
-            cached_file = None
-            lumean_cat_dir = PROJECT_ROOT / "assets" / "voices" / "lumean" / category
-            if not lumean_cat_dir.is_dir():
-                for d in (PROJECT_ROOT / "assets" / "voices" / "lumean").glob("*"):
-                    if d.is_dir() and d.name.lower() == category.lower():
-                        lumean_cat_dir = d
-                        break
-            if lumean_cat_dir.is_dir():
-                ready_lumean = [f for f in lumean_cat_dir.glob("*.mp3") if f.stat().st_size > 1024]
-                if ready_lumean:
-                    cached_file = random.choice(ready_lumean)
+            return {'ok': False, 'error': 'no_eligible_recording'}
+        item = SpeechItem(text=selected['text'], lang=event['lang'],
+            emotion=event.get('emotion', 'happy'), action=event.get('action'),
+            media_path=selected['path'], source='bank_' + event['category'],
+            priority=priority(event['category']), event=event, bank_id=selected['id'],
+            created_at=created, max_age_sec=event_ttl)
+        item.ready_event.set()
+        with self._lock:
+            if event_id and event_id in self._voice_events:
+                self.voice_bank.release(item.bank_id, event)
+                return {'ok': True, 'duplicate': True}
+            if event_id:
+                self._voice_events[event_id] = time.time()
+                while len(self._voice_events) > 2048:
+                    self._voice_events.pop(next(iter(self._voice_events)))
+            self._playback_queue.append(item)
+            if event['category'] == 'CHAT_ACK':
+                self._last_ack_at = time.time()
+        self._wake.set()
+        self._emit_status()
+        return {'ok': True, 'file_id': selected['id'], 'queued': True}
 
-            if not cached_file:
-                logger.warning("speak_stream_category: фразы категории [%s] ещё не закэшированы, ищу резервный .mp3...", category)
-                slot, service_key, voice_id = ("ru", DEFAULT_RU_SERVICE, DEFAULT_RU_VOICE_ID) if actual_lang == "ru" else ("en", DEFAULT_EN_SERVICE, DEFAULT_EN_VOICE_ID)
-                if hasattr(self.engine, "get_voice_dir"):
-                    voice_dir = self.engine.get_voice_dir(service_key, voice_id)
-                else:
-                    voice_dir = VOICE_CACHE_DIR / f"{service_key}_{voice_id[:12]}"
+    def speak_stream_category(self, category: str, lang: str = 'ru', emotion: str = 'happy',
+                              action: str | None = None, priority: bool = False) -> bool:
+        return bool(self.enqueue_voice_event({'category': category, 'lang': lang,
+            'emotion': emotion, 'action': action}).get('ok'))
 
-                ready_files = [f for f in voice_dir.glob("*.mp3") if f.stat().st_size > 1024]
-                if ready_files:
-                    cached_file = random.choice(ready_files)
-
-            if cached_file:
-                item = SpeechItem(
-                    text=f"[{category}]",
-                    lang=actual_lang,
-                    emotion=emotion,
-                    action=action,
-                    action_duration=3.5,
-                    media_path=cached_file,
-                    rms_chunks=compute_rms_chunks(cached_file),
-                    source=f"stream_bank_{category}",
-                )
-                item.ready_event.set()
-                with self._lock:
-                    self._playback_queue.append(item)
-                self._wake.set()
-                self._emit_status()
-                logger.info("⚡ [0.05s Hit Lumean/Fallback] speak_stream_category [%s]: взят готовый %s", category, cached_file.name)
-            else:
-                # Если папка совсем пустая — отправляем первую фразу в стандартный синтез
-                self.speak(phrases[0], lang=actual_lang, emotion=emotion, action=action, source=f"stream_bank_{category}")
-
-        # 3. Тихий фоновый синтез 1 недостающей фразы (не блокируя очередь)
-        if missing_phrases and settings.LUMEAN_API_KEY:
-            to_synth = missing_phrases[0]
-            def _background_warmup():
-                try:
-                    time.sleep(2.0)
-                    if hasattr(self.engine, "synthesize"):
-                        self.engine.synthesize(to_synth, lang=actual_lang)
-                        logger.info("Фоновый прогрев фразы [%s]: «%s» выполнен", category, to_synth[:30])
-                except Exception as e:
-                    logger.debug("Ошибка фонового прогрева фразы [%s]: %s", category, e)
-
-            threading.Thread(target=_background_warmup, daemon=True, name=f"warmup-{category}").start()
-
+    def _item_valid(self, item: SpeechItem) -> bool:
+        if item.failed or time.time() - item.created_at > item.max_age_sec:
+            return False
+        if not check_phrase(item.text)[0]:
+            return False
+        from winky.director import stream_director
+        phase = stream_director.trade_phase
+        if item.priority == 3:
+            return True  # Duration/window admission is checked at actual playback.
+        if not item.event:
+            return True
+        event = item.event
+        if item.priority == 0:
+            return True
+        current = stream_director.context
+        if event.get('session_id') and current.get('session_id') and event['session_id'] != current['session_id']:
+            return False
+        if item.priority == 1 and event.get('direction') and current.get('direction') and event['direction'] != current['direction']:
+            return False
+        if item.priority == 1 and event.get('expiry') and current.get('duration') and event['expiry'] != current['duration']:
+            return False
+        if item.priority == 1 and event.get('trade_seq') is not None and current.get('trade_seq') is not None and event['trade_seq'] != current['trade_seq']:
+            return False
+        normalize = lambda p: re.sub(r'[^a-z0-9]', '', str(p).lower())
+        if event.get('pair') and normalize(event['pair']) != normalize(stream_director._current_pair):
+            return False
+        if item.priority == 1 and (phase != 'IN_TRADE' or event.get('open_observed') is not True):
+            return False
+        if event['category'] == 'IN_TRADE_WAITING':
+            return phase == 'IN_TRADE'
+        if item.priority == 2 and phase in ('IN_TRADE', 'RESULT'):
+            return False
         return True
+
+    def _fits_window(self, item: SpeechItem) -> bool:
+        if item.priority not in (3, 4) and item.event.get("category") != "IN_TRADE_WAITING":
+            return True
+        from winky.director import stream_director
+        phase = stream_director.trade_phase
+        if phase == 'IDLE':
+            return True
+        if phase != 'IN_TRADE' or not item.media_path:
+            return False
+        remaining = max(0, stream_director.remaining_sec - (time.time() - stream_director._last_phase_update))
+        return media_duration_seconds(item.media_path) + 2 <= remaining
 
     # ---------- воркер воспроизведения ----------
 
     def _next_item(self) -> SpeechItem | None:
         with self._lock:
-            return self._playback_queue.popleft() if self._playback_queue else None
+            for item in list(self._playback_queue):
+                if not self._item_valid(item):
+                    self._playback_queue.remove(item)
+                    if item.chat_item:
+                        item.chat_item.failed = True
+                    if item.bank_id:
+                        self.voice_bank.release(item.bank_id, item.event)
+            ready = [i for i in self._playback_queue if i.ready_event.is_set() and self._fits_window(i)]
+            if not ready:
+                return None
+            selected = min(ready, key=lambda i: (i.priority, i.created_at))
+            self._playback_queue.remove(selected)
+            return selected
 
     def _run(self) -> None:
         while True:
@@ -2121,40 +2142,25 @@ class SpeechController:
             self._process_item(item)
 
     def _process_item(self, item: SpeechItem) -> None:
-        # Проверяем начальный возраст фразы (TTL Guard)
-        age = time.time() - item.created_at
-        if age > item.max_age_sec:
-            logger.warning("Фраза устарела до начала ожидания (возраст %.1fс > %.1fс): «%s», отмена", age, item.max_age_sec, item.text[:30])
-            self._emit_status_impl()
+        if not self._item_valid(item):
+            if item.bank_id:
+                self.voice_bank.release(item.bank_id, item.event)
             return
-
-        # Ждём завершения синтеза аудио (до 45с)
-        ready = item.ready_event.wait(timeout=45.0)
-        if not ready or item.failed or not item.media_path or not item.media_path.exists():
-            logger.warning("Аудио не готово или ошибка синтеза для «%s»", item.text[:30])
-            self._emit_status_impl()
+        if not item.ready_event.is_set() or item.failed or not item.media_path or not item.media_path.exists():
+            if item.chat_item:
+                item.chat_item.failed = True
+            if item.bank_id:
+                self.voice_bank.release(item.bank_id, item.event)
             return
-
-        # Повторная проверка возраста фразы после ожидания синтеза
-        age_after = time.time() - item.created_at
-        if age_after > (item.max_age_sec + 15.0):
-            logger.warning("Фраза устарела после синтеза (возраст %.1fс): «%s», отмена", age_after, item.text[:30])
-            self._emit_status_impl()
+        if not self._fits_window(item):
+            with self._lock:
+                self._playback_queue.appendleft(item)
             return
-
-        # Триггерим действие и эмоцию СТРОГО в момент фактического старта воспроизведения фразы
-        if item.action:
-            try:
-                self.on_action(item.action, item.action_duration)
-            except Exception as e:
-                logger.debug("on_action error: %s", e)
-        if item.emotion:
-            try:
-                self.on_emotion(item.emotion)
-            except Exception as e:
-                logger.debug("on_emotion error: %s", e)
-
-        self._play_media(item.media_path, item.text, item.emotion, item.lang, item.rms_chunks)
+        if item.priority == 3 and media_duration_seconds(item.media_path) > 8:
+            if item.chat_item:
+                item.chat_item.failed = True
+            return
+        self._play_media(item.media_path, item.text, item.emotion, item.lang, item.rms_chunks, item=item)
 
     def _play_media(
         self,
@@ -2163,6 +2169,7 @@ class SpeechController:
         emotion: str,
         lang: str,
         precomputed_rms: list[float] | None = None,
+        item: SpeechItem | None = None,
     ) -> None:
         try:
             rel = media.relative_to(VOICE_CACHE_DIR).as_posix()
@@ -2172,7 +2179,10 @@ class SpeechController:
                 rel_path = media.relative_to(MEDIA_DIR.parent).as_posix()
                 media_url = f"/{rel_path}"
             except ValueError:
-                media_url = f"/media/{media.name}"
+                try:
+                    media_url = '/assets/' + media.relative_to(PROJECT_ROOT / 'assets').as_posix()
+                except ValueError:
+                    media_url = f"/media/{media.name}"
 
         rms_chunks = precomputed_rms if precomputed_rms is not None else compute_rms_chunks(media, chunk_ms=50)
         duration = len(rms_chunks) * 0.05 if rms_chunks else max(2.5, wav_duration_seconds(media))
@@ -2182,11 +2192,6 @@ class SpeechController:
         self._emit_status_impl()
 
         self._finished.clear()
-        try:
-            self.on_speak(media_url, emotion, self._volume, lang)
-        except Exception:  # noqa: BLE001 — окно могло закрыться
-            logger.exception("Не удалось отправить фразу в окно аватара")
-
         # Воспроизведение на macOS через afplay с потоковой передачей RMS-громкости для Lip-Sync
         try:
             afplay_proc = subprocess.Popen(
@@ -2195,17 +2200,37 @@ class SpeechController:
                 stderr=subprocess.DEVNULL,
             )
             self._afplay_proc = afplay_proc
+            if item:
+                if item.chat_item:
+                    item.chat_item.played = True
+                if item.bank_id:
+                    self.voice_bank.release(item.bank_id, item.event, played=True)
+                try:
+                    if item.action:
+                        self.on_action(item.action, item.action_duration)
+                    self.on_emotion(item.emotion)
+                except Exception:
+                    logger.exception("Avatar emotion callback failed")
+            try:
+                self.on_speak(media_url, emotion, self._volume, lang)
+            except Exception:
+                logger.exception("Avatar speech callback failed")
+            logger.info("voice_start source=%s event=%s", item.source if item else 'manual', item.event.get('event_id', '') if item else '')
             start_play = time.monotonic()
             last_idx = -1
             chunk_sec = 0.05
             while afplay_proc.poll() is None:
-                if self._paused:
+                if time.monotonic() - start_play > duration + 5:
+                    afplay_proc.kill()
                     break
                 elapsed = time.monotonic() - start_play
                 idx = int(elapsed / chunk_sec)
                 if 0 <= idx < len(rms_chunks) and idx != last_idx:
                     last_idx = idx
-                    self.on_rms(rms_chunks[idx])
+                    try:
+                        self.on_rms(rms_chunks[idx])
+                    except Exception:
+                        pass
                 elif idx >= len(rms_chunks) and last_idx != -2:
                     last_idx = -2
                     self.on_rms(0.0)
@@ -2216,15 +2241,27 @@ class SpeechController:
             except subprocess.TimeoutExpired:
                 afplay_proc.kill()
         except Exception as exc:
+            proc = self._afplay_proc
+            if proc is not None and proc.poll() is None:
+                proc.kill()
+                proc.wait(timeout=2)
+            if item and item.chat_item:
+                item.chat_item.failed = True
             logger.error("Ошибка воспроизведения afplay: %s", exc)
         finally:
+            if item and item.bank_id:
+                self.voice_bank.release(item.bank_id, item.event)
+            logger.info("voice_end event=%s", item.event.get("event_id", "") if item else "")
             self._afplay_proc = None
-            self.on_rms(0.0)
+            try:
+                self.on_rms(0.0)
+            except Exception:
+                pass
             self._finished.set()
             self._speaking = False
             self._current_text = ""
             # Не удаляем файлы из voice_cache/ и cache/
-            if "voice_cache" not in str(media) and "cache" not in str(media):
+            if media.resolve().is_relative_to(MEDIA_DIR.resolve()) and "cache" not in media.parts:
                 try:
                     media.unlink(missing_ok=True)
                 except OSError:

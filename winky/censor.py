@@ -56,6 +56,10 @@ def check_phrase(text: str) -> tuple[bool, str]:
         if word in haystack:
             return False, f"стоп-слово: {word!r}"
 
+    for pattern, reason in _CONTEXT_RULES:
+        if re.search(pattern, haystack, re.I):
+            return False, reason
+
     for topic in banned_topics():
         if topic and topic in haystack:
             return False, f"запрещённая тема: {topic!r}"
@@ -78,73 +82,19 @@ def strip_emoji_control(text: str) -> str:
     return re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", "", text).strip()
 
 
-# ============================================================================
-# TikTok Live Anti-Ban Sanitizer: замена запрещённых финансовых слов-триггеров
-# ============================================================================
-
-_TIKTOK_REPLACEMENTS = (
-    # Pocket Option / брокер
-    (re.compile(r"\bpocket\s*option\b", re.IGNORECASE), "платформа", "the platform"),
-    (re.compile(r"\bпокет\s*опш[еи]?н?\b", re.IGNORECASE), "платформа", "the platform"),
-    (re.compile(r"\bпокет[а-я]*\b", re.IGNORECASE), "платформа", "the platform"),
-    (re.compile(r"\bброкер[а-я]*\b", re.IGNORECASE), "платформа", "the platform"),
-    (re.compile(r"\bbroker[s]?\b", re.IGNORECASE), "платформа", "platform"),
-
-    # Депозит
-    (re.compile(r"\bдепозит[а-я]*\b", re.IGNORECASE), "пополнение баланса", "balance top-up"),
-    (re.compile(r"\bdeposit[s]?\b", re.IGNORECASE), "пополнение баланса", "balance top-up"),
-
-    # Сигнал
-    (re.compile(r"\bсигнал[а-я]*\b", re.IGNORECASE), "подсказка алгоритма", "chart hint"),
-    (re.compile(r"\bsignal[s]?\b", re.IGNORECASE), "подсказка алгоритма", "chart hint"),
-
-    # Опционы, бинарки, ставки
-    (re.compile(r"\bбинарн[а-я]*\s+опцион[а-я]*\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bбинарк[а-я]*\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bопцион[а-я]*\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bbinary\s+options?\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bставки\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bставк[а-я]*\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bbet(s|ting)?\b", re.IGNORECASE), "разбор графика", "chart session"),
-    (re.compile(r"\bgambl(e|ing)?\b", re.IGNORECASE), "разбор сессии", "session"),
-
-    # Прибыль, заработок, деньги, профит
-    (re.compile(r"\bзаработ[а-я]*\b", re.IGNORECASE), "результат", "result"),
-    (re.compile(r"\bприбыль[а-я]*\b", re.IGNORECASE), "результат", "result"),
-    (re.compile(r"\bпрофит[а-я]*\b", re.IGNORECASE), "результат", "result"),
-    (re.compile(r"\bденьг[а-я]*\b", re.IGNORECASE), "баланс", "balance"),
-    (re.compile(r"\bprofit[s]?\b", re.IGNORECASE), "результат", "result"),
-    (re.compile(r"\bearn(ing[s]?)?\b", re.IGNORECASE), "результат", "result"),
-    (re.compile(r"\bmoney\b", re.IGNORECASE), "баланс", "balance"),
-
-    # Казино
-    (re.compile(r"\bказино\b", re.IGNORECASE), "платформа", "platform"),
-    (re.compile(r"\bcasino\b", re.IGNORECASE), "платформа", "platform"),
-
-    # Гарантия / 100%
-    (re.compile(r"\bгаранти[а-я]*\b", re.IGNORECASE), "уверенность", "confidence"),
-    (re.compile(r"\bguarante[ed]*\b", re.IGNORECASE), "уверенность", "confidence"),
-    (re.compile(r"\b100\s*%\b", re.IGNORECASE), "отличный", "great"),
+# Whole-phrase screening. Ordinary financial terms remain truthful; replacing
+# them with euphemisms does not make misleading speech acceptable.
+_CONTEXT_RULES = (
+    (r"(?:точно|уверенн\w*|гарантирован\w*|обязательно).{0,25}(?:профит|выигр|заработ|прибыл)|(?:sure|certain|guaranteed).{0,20}(?:profit|win|return)", "financial_promise"),
+    (r"(?:внеси|пополни|пополняй|закинь).{0,25}(?:депозит|баланс|деньг)|(?:deposit|top up).{0,20}(?:now|hurry|quick)", "deposit_pressure"),
+    (r"отыгра|верн[её]м.{0,15}(?:потер|сво[её])|забер[её]м сво[её]|(?:win|earn).{0,10}(?:it |your money )?back|chase.{0,10}loss", "loss_chasing"),
+    (r"[\w.+-]+@[\w.-]+\.[a-z]{2,}|(?:\+?\d[ ()-]*){10,}|\b(?:\d[ -]*){13,19}\b", "personal_data"),
+    (r"\b(?:идиот|дебил|тупица|сука|блядь|fuck|bitch|retard)\w*\b", "abuse"),
+    (r"(?:как|how to).{0,25}(?:убить|самоубий|сделать бомб|kill|suicide|make a bomb)", "dangerous_instruction"),
 )
 
 
 def sanitize_for_tiktok(text: str, lang: str = "ru") -> str:
-    """Автоматически заменяет опасные слова-триггеры TikTok Live на безопасные синонимы с сохранением регистра."""
-    if not text:
-        return ""
-    result = text
-    is_en = (lang == "en") or not any("а" <= ch.lower() <= "я" for ch in text)
-
-    for pattern, repl_ru, repl_en in _TIKTOK_REPLACEMENTS:
-        repl = repl_en if is_en else repl_ru
-
-        def _sub(m: re.Match) -> str:
-            orig = m.group(0)
-            if orig.isupper():
-                return repl.upper()
-            if orig and orig[0].isupper():
-                return repl[:1].upper() + repl[1:]
-            return repl.lower()
-
-        result = pattern.sub(_sub, result)
-    return result
+    """Compatibility entry: accept or reject a whole phrase, never hide its meaning."""
+    clean = strip_emoji_control(text or "")
+    return clean if check_phrase(clean)[0] else ""
