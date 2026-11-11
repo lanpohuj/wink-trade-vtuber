@@ -1,0 +1,75 @@
+{
+  "base_commit": "5fff894",
+  "video_duration_sec": 24.465,
+  "video_audio_max_db": -91,
+  "restored_pair_limit": 5,
+  "entry_thresholds": {
+    "early": 4.0,
+    "ranked": 3.5
+  },
+  "demo": {
+    "pair": "NGN/USD OTC",
+    "direction": "SELL",
+    "stake": 50,
+    "expiry_sec": 15,
+    "entry_score": 4.3,
+    "outcome": "LOSS",
+    "loss": 50,
+    "next_stake": 110,
+    "broker_open_observed": true,
+    "balance_before": 45982.7,
+    "balance_after": 45932.7,
+    "score_loss_before": 2,
+    "score_loss_after": 3
+  },
+  "voice_starts": [
+    {
+      "category": "OPEN_TRADE_PUT",
+      "file_id": "streamer2_ru_open_trade_put_02",
+      "time": 1794392617.873132
+    },
+    {
+      "category": "TRADE_LOSS",
+      "file_id": "streamer2_ru_trade_loss_09",
+      "time": 1794392632.375998
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "file_id": "streamer2_ru_narrate_result_01",
+      "time": 1794392640.607567
+    },
+    {
+      "category": "NARRATE_PAIR",
+      "file_id": "streamer2_ru_narrate_pair_03",
+      "time": 1794392655.465369
+    }
+  ],
+  "final_state": {
+    "phase": "IDLE",
+    "remaining_sec": 0,
+    "is_speaking": false,
+    "queue_len": 0,
+    "commentary": {
+      "auto_stream": false,
+      "lang": "ru",
+      "setup": null,
+      "setup_confirmed": false,
+      "trade_seq": 1,
+      "data_status": "NO_DATA",
+      "entry_observed_at": null,
+      "next_stake": 110,
+      "last_result": {
+        "seq": 1,
+        "outcome": "LOSS",
+        "closed_at": 1794392632306,
+        "previous_step": 0,
+        "near_loss_verified": false
+      },
+      "heartbeat_age_sec": 0.56
+    }
+  },
+  "checks": {
+    "node": 116,
+    "python_http": 68
+  }
+}
