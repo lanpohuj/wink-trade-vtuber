@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_04",
+  "sha256": "61f8c0cdc2af2375b18a9bfae59df09eda35b2c662f991c20e0731fa19dcf1d1",
+  "expected": "Движение может меняться. Результат проверим после закрытия.",
+  "transcript": "Движение может меняться. Результат проверим после закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.0799,
+    "peak": 0.40121,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.126,
+    "sha256": "61f8c0cdc2af2375b18a9bfae59df09eda35b2c662f991c20e0731fa19dcf1d1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Движение может меняться. Результат проверим после закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

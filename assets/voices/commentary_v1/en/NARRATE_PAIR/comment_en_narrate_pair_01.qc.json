@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_01",
+  "sha256": "130850ec7791e4df3fe8f27531df690855d71745a1baa9ab623bbaa48ee21426",
+  "expected": "Next chart. Let us see if this one is clearer.",
+  "transcript": "Next chart. Let us see if this one is clearer",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.06647,
+    "peak": 0.35277,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.087,
+    "sha256": "130850ec7791e4df3fe8f27531df690855d71745a1baa9ab623bbaa48ee21426"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Next chart. Let us see if this one is clearer"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

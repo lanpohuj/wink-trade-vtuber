@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_03",
+  "sha256": "43437b888809e80df2562bfb42ebda597b5f25b9a01c305f4c35f30780e1adee",
+  "expected": "Next stake is one hundred ten. A planned recovery step, not a promised win.",
+  "transcript": "The next stake is 110. A planned recovery step, not a promised win.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07558,
+    "peak": 0.39134,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "43437b888809e80df2562bfb42ebda597b5f25b9a01c305f4c35f30780e1adee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " The next stake is 110. A planned recovery step, not a promised win."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

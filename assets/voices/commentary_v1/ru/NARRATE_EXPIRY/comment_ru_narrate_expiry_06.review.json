@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_06",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Это минутная сделка. Не оцениваем её по одному короткому тику.",
+  "tts_text": "[bright and conversational] Это минутная сделка. Не оцениваем её по одному короткому тику.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6e5eefc30b1efb7bee6c6ef5283dcf608849455f572c7af6bfd6b224dd56f7f0",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_06.mp3",
+  "duration": 4.205625,
+  "sha256": "ac8b0483768776f0449b41195a939ca5398ff3fbbba70fda3c77dd7b29be8152",
+  "request_payload": {
+    "text": "[bright and conversational] Это минутная сделка. Не оцениваем её по одному короткому тику.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

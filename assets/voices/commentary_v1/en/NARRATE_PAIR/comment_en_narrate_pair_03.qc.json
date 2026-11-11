@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_03",
+  "sha256": "7a28c4c0b03e194d4f1100f86f62283acf21de0761feda3dc6795cd39a6600aa",
+  "expected": "Comparing another option. We do not have to take the first pair.",
+  "transcript": "Comparing another option, we do not have to take the first pair.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07736,
+    "peak": 0.41209,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.204,
+    "sha256": "7a28c4c0b03e194d4f1100f86f62283acf21de0761feda3dc6795cd39a6600aa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Comparing another option, we do not have to take the first pair."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

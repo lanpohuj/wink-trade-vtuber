@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_08",
+  "sha256": "79b169172f9219a344440f9377ed8df53afb8a8905cef9cfe2ffc6de8b7815a2",
+  "expected": "Still watching. The counter changes only after the result is checked.",
+  "transcript": "Still watching? The counter changes only after the result is checked.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.08243,
+    "peak": 0.41764,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.3,
+    "trailing_silence": 0.296,
+    "sha256": "79b169172f9219a344440f9377ed8df53afb8a8905cef9cfe2ffc6de8b7815a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Still watching? The counter changes only after the result is checked."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

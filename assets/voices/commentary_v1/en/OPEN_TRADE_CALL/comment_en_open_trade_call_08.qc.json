@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_08",
+  "sha256": "a968da948df4ebb80884561977a546727d43fcaecc38af15cad3f237a2ab34fa",
+  "expected": "Opened up: the local reversal gained confirmation.",
+  "transcript": "Opened up the local reversal gained confirmation",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.07907,
+    "peak": 0.37605,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.218,
+    "sha256": "a968da948df4ebb80884561977a546727d43fcaecc38af15cad3f237a2ab34fa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.98,
+      "text": " Opened up the local reversal gained confirmation"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

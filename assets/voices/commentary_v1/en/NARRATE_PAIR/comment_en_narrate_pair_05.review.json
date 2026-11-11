@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_05",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "Let us try another chart. Sometimes the right move is to keep looking.",
+  "tts_text": "[bright and conversational] Let us try another chart. Sometimes the right move is to keep looking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7e548a5e06f72b71cdcd7eb4b89bc9c49fe019bf57aca1f577404aefb82ce364",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_05.mp3",
+  "duration": 4.414625,
+  "sha256": "465138cd7029be12f3890190579ab17aeabe2cc7aff5d73cb19a18cd6aa1aed8",
+  "request_payload": {
+    "text": "[bright and conversational] Let us try another chart. Sometimes the right move is to keep looking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

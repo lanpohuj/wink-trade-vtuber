@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_03",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "A thirty-second window here. Watching the confirmed move continue.",
+  "tts_text": "[bright and conversational] A thirty-second window here. Watching the confirmed move continue.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a6edda03b3a0edde21577cc368c5555232ee5fb5f6d2e17a2f433f00ce7b67b6",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_03.mp3",
+  "duration": 4.284,
+  "sha256": "c0f6cd719e13f4bcaf94210f0eb5b58fe585aac5748e63f7646204df44ecf989",
+  "request_payload": {
+    "text": "[bright and conversational] A thirty-second window here. Watching the confirmed move continue.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

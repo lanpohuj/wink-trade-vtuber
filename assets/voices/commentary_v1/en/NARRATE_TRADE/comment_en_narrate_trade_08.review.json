@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_08",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "Still watching. The counter changes only after the result is checked.",
+  "tts_text": "[bright and conversational] Still watching. The counter changes only after the result is checked.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "98fdf57fa249a00364b46540b299c0993a593eba2d0ecd1b1844976434ec95a1",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_08.mp3",
+  "duration": 4.33625,
+  "sha256": "79b169172f9219a344440f9377ed8df53afb8a8905cef9cfe2ffc6de8b7815a2",
+  "request_payload": {
+    "text": "[bright and conversational] Still watching. The counter changes only after the result is checked.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_scan_02",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Watching who is driving price. No rush to pick a direction.",
+  "tts_text": "[bright and conversational] Watching who is driving price. No rush to pick a direction.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "02ff6b5e3aa890a048e556fe7616d1039eade4e616497b4fbbc436412558e8c5",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_02.mp3",
+  "duration": 3.709312,
+  "sha256": "e396853933b00b8ff9534e3f1450d08ee443f06c2a36c4032b2a1106310cd337",
+  "request_payload": {
+    "text": "[bright and conversational] Watching who is driving price. No rush to pick a direction.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

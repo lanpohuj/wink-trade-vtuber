@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_volatility_01",
+  "sha256": "fa134bf79b0392a87e84f6736696fed5bbbcd51d9372baa3ec868e18b14bde28",
+  "expected": "The moves are sharper than usual. This is a time to be patient.",
+  "transcript": "The moves are sharper than usual. This is a time to be patient.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.07336,
+    "peak": 0.35889,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.146,
+    "sha256": "fa134bf79b0392a87e84f6736696fed5bbbcd51d9372baa3ec868e18b14bde28"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The moves are sharper than usual. This is a time to be patient."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

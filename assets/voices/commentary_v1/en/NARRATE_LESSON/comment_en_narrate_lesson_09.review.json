@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_09",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "Recovery changes the stake size. The next trade can still lose.",
+  "tts_text": "[curious and conversational] Recovery changes the stake size. The next trade can still lose.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c7211de020e8eae6ed3db6b61cc0e50a3bfa6ac7fbcc9eda2934bcc64c17c038",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_09.mp3",
+  "duration": 4.414625,
+  "sha256": "5ff1f7c83f1e033ebef51e6711ee61c6221ae145a967efdbbed9a1e0552a055a",
+  "request_payload": {
+    "text": "[curious and conversational] Recovery changes the stake size. The next trade can still lose.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

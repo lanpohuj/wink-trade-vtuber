@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_06",
+  "sha256": "3e1960f496a5f50da45766f5d48a1afeeb1da1a0ac1ba4a8e4b18e334138c831",
+  "expected": "Checking timeframes. I want to see the bigger picture.",
+  "transcript": "Checking timeframes. I want to see the bigger picture.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07979,
+    "peak": 0.39391,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.19,
+    "sha256": "3e1960f496a5f50da45766f5d48a1afeeb1da1a0ac1ba4a8e4b18e334138c831"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " Checking timeframes. I want to see the bigger picture."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

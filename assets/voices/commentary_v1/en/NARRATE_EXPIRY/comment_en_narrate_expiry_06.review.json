@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_06",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "This is a one-minute trade. One quick tick does not tell its story.",
+  "tts_text": "[bright and conversational] This is a one-minute trade. One quick tick does not tell its story.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "698701657b50cbb0eb3756ebb7f31b7a4d07156546c4f771b8c7eaa20263fb8d",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_06.mp3",
+  "duration": 4.466875,
+  "sha256": "2b18fa5a8751f4f05c20f0e52e4395a2d1def17a89dc5b18cab7e490fe087a1f",
+  "request_payload": {
+    "text": "[bright and conversational] This is a one-minute trade. One quick tick does not tell its story.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

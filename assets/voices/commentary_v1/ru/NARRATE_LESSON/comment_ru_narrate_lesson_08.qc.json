@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_08",
+  "sha256": "33abb06750369eab4fb64ce34281905c03699678f60ae0708b8ff603c1f44b83",
+  "expected": "Старший интервал помогает не потерять контекст короткого движения.",
+  "transcript": "Старший интервал помогает не потерять контекст короткого движения.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.09574,
+    "peak": 0.49159,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "33abb06750369eab4fb64ce34281905c03699678f60ae0708b8ff603c1f44b83"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Старший интервал помогает не потерять контекст короткого движения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_put_01",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Opened down: the move resumed after a pullback.",
+  "tts_text": "[confident and lively] Opened down: the move resumed after a pullback.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7d8b43ef3992df01dcacddd172ae111ced9cb11743dbbc31e84499189eca330a",
+  "file": "en/OPEN_TRADE_PUT/comment_en_open_trade_put_01.mp3",
+  "duration": 3.369687,
+  "sha256": "95ac96482ee5f14505aeefa260fc8a2b2f734c36e63f70427db1f95a4d778650",
+  "request_payload": {
+    "text": "[confident and lively] Opened down: the move resumed after a pullback.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

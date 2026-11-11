@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_07",
+  "sha256": "9df2550aa9fb681151d9d8979522b60ba8f8b78b0f623320986ae2d9452b848b",
+  "expected": "Not every chart owes us a trade. Skipping is part of the strategy.",
+  "transcript": "Not every chart owes us a trade. Skipping is part of the strategy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.07088,
+    "peak": 0.33577,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.144,
+    "sha256": "9df2550aa9fb681151d9d8979522b60ba8f8b78b0f623320986ae2d9452b848b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.2,
+      "text": " Not every chart owes us a trade. Skipping is part of the strategy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

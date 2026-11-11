@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_put_03",
+  "sha256": "c2d39bf55cde47d4f4bb386d339464cda34835641fa76029b5a917b6a9ccabd5",
+  "expected": "Opened down: the broken level held on the retest.",
+  "transcript": "Open down the broken level held on the retest",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07595,
+    "peak": 0.37711,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.17,
+    "sha256": "c2d39bf55cde47d4f4bb386d339464cda34835641fa76029b5a917b6a9ccabd5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Open down the broken level held on the retest"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

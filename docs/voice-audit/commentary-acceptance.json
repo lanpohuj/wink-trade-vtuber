@@ -1,0 +1,27 @@
+{
+  "method": "owner_sampled",
+  "voice_samples_accepted": true,
+  "records": [
+    {
+      "id": "comment_ru_narrate_lesson_04",
+      "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae",
+      "accepted": true
+    },
+    {
+      "id": "comment_ru_narrate_engage_05",
+      "sha256": "8ced2a8d00662cd98681c505cc806236a534b3496caa1c17f606bb3f644e43c5",
+      "text_sha256": "bd5ea2df2d532519d5b1114a8457b55f04cf34f7167a48d9486d2dc050d907ea",
+      "accepted": true,
+      "listened": false,
+      "owner_requested_revision": true,
+      "basis": "Owner requested this exact final wording after reviewing the preceding delivery; no claim of listening to this file."
+    }
+  ],
+  "rejections": [
+    {
+      "id": "comment_ru_narrate_engage_05",
+      "sha256": "4866cf38817928ee6d8fd1a541add0c75adca8a8970fc749739cbf2f807d70fa",
+      "reason": "Owner rejected empty comment bait; delivery not rejected"
+    }
+  ]
+}

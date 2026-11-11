@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_04",
+  "sha256": "7a54df95177645ebeba362019e9462bda4ed6d833b4e6ec78d6705f6b67b7976",
+  "expected": "Opened up: a confirmed retest followed the breakout.",
+  "transcript": "opened up a confirmed retest followed the breakout",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07525,
+    "peak": 0.38943,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.26,
+    "sha256": "7a54df95177645ebeba362019e9462bda4ed6d833b4e6ec78d6705f6b67b7976"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " opened up a confirmed retest followed the breakout"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

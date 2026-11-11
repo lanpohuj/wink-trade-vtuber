@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_volatility_04",
+  "sha256": "aa1b825d3af762f0697bb258eee03fb16bbf2e9f4b075654af1cbdce304a8394",
+  "expected": "Candles are stretching more than usual. Structure matters more than excitement.",
+  "transcript": "Candles are stretching more than usual. Structure matters more than excitement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07517,
+    "peak": 0.38973,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.362,
+    "sha256": "aa1b825d3af762f0697bb258eee03fb16bbf2e9f4b075654af1cbdce304a8394"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Candles are stretching more than usual. Structure matters more than excitement."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

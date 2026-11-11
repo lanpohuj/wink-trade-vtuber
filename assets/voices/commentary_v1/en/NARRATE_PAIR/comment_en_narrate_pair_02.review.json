@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_02",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "New pair, fresh checks. The last chart tells us nothing here.",
+  "tts_text": "[bright and conversational] New pair, fresh checks. The last chart tells us nothing here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d83daaab0c9811900715f34f2e55b386f71ec8779f38faf85800d7aa5b613fe5",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_02.mp3",
+  "duration": 4.414625,
+  "sha256": "d49ee6bba2659c30386f6df502279d2655a67ef671707d94bb63b6446f43c0f0",
+  "request_payload": {
+    "text": "[bright and conversational] New pair, fresh checks. The last chart tells us nothing here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

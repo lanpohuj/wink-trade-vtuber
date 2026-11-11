@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_pair_03",
+  "category": "NARRATE_PAIR",
+  "lang": "ru",
+  "text": "Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+  "tts_text": "[bright and conversational] Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5af11ee4202bf4c899cbc51cc05ba9d8e44ec2e32c16a48099a38ee2b23a8568",
+  "file": "ru/NARRATE_PAIR/comment_ru_narrate_pair_03.mp3",
+  "duration": 4.545187,
+  "sha256": "2992e600cf90fb52278cfe4059b5753710c46aabefecb1559c77c500e4955304",
+  "request_payload": {
+    "text": "[bright and conversational] Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

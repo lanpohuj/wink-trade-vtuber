@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_pair_06",
+  "sha256": "d6725997e2afd63188a09a0fe1d075759a3fe3cd66670c799f419e4017dbf5a2",
+  "expected": "Здесь начинаю проверку заново: направление, структура и подтверждение.",
+  "transcript": "Здесь начинаю проверку заново, направление, структура и подтверждение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.09449,
+    "peak": 0.39524,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "d6725997e2afd63188a09a0fe1d075759a3fe3cd66670c799f419e4017dbf5a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Здесь начинаю проверку заново, направление, структура и подтверждение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

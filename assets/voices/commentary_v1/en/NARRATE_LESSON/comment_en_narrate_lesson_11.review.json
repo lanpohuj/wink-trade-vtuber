@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_11",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "A good entry has a reason before the result, not just afterward.",
+  "tts_text": "[curious and conversational] A good entry has a reason before the result, not just afterward.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1cb7199d2f530c02e8910f63778af6f1b9ca3535c7b48bd99938dc437be72ecf",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_11.mp3",
+  "duration": 3.892125,
+  "sha256": "c8fc79843eb19fb764daea96f7215e4d33aa488d7630d7304bb7fae2c82989fc",
+  "request_payload": {
+    "text": "[curious and conversational] A good entry has a reason before the result, not just afterward.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

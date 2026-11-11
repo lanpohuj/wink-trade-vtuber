@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_06",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "A pullback and a reversal are different stories. Structure comes first.",
+  "tts_text": "[curious and conversational] A pullback and a reversal are different stories. Structure comes first.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "37a69b771d706038cb1451d3e96508a97b4fc78ee58ffff68ddc3491c61eeb29",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_06.mp3",
+  "duration": 4.858688,
+  "sha256": "e106058ac4e0a6fbef1d41f87d054b8113db610fbea1225e3f251dce9df35ae7",
+  "request_payload": {
+    "text": "[curious and conversational] A pullback and a reversal are different stories. Structure comes first.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

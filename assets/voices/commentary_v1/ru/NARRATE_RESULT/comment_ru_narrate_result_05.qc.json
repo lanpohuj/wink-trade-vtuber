@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_result_05",
+  "sha256": "7931f16398b6f9985306bfb7dcc1a8537ed18c560192acb786f2877133fe306b",
+  "expected": "Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+  "transcript": "Следующая ставка 242. Это второй шаг перекрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08558,
+    "peak": 0.4115,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.086,
+    "sha256": "7931f16398b6f9985306bfb7dcc1a8537ed18c560192acb786f2877133fe306b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Следующая ставка 242. Это второй шаг перекрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_02",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "That trade did not work out. Let us take the next step calmly.",
+  "tts_text": "[lighthearted and reassuring] That trade did not work out. Let us take the next step calmly.",
+  "conditions": {
+    "result_kind": "LOSS_GENERIC"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f5656e6a03eae530ec382c96d933f1e814bfa631cfa76c436c4fb53b3b67cf52",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_02.mp3",
+  "duration": 3.944375,
+  "sha256": "0eb8ee7dc24e91bf3837510aad2a1ba578e8272d1ed3df1b86b13c5eb242ba8d",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] That trade did not work out. Let us take the next step calmly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

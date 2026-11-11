@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_03",
+  "sha256": "4c1eba03bd10c3f7d066e79bd89a1fe70ab242b1fcfe3857a13e13da8a21d096",
+  "expected": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+  "transcript": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.0838,
+    "peak": 0.44399,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.135,
+    "sha256": "4c1eba03bd10c3f7d066e79bd89a1fe70ab242b1fcfe3857a13e13da8a21d096"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " If anything in the breakdown is unclear, ask. I will keep it simple."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

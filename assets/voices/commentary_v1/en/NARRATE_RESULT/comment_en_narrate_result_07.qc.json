@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_07",
+  "sha256": "3c576254c93e6a242cb1cc8d5db0355dfc18dd8dbacf27d969af7370735e22dc",
+  "expected": "The recovery limit is reached. Returning to the base stake of fifty.",
+  "transcript": "The recovery limit is reached. Returning to the base stake of 50.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.07129,
+    "peak": 0.37565,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.304,
+    "sha256": "3c576254c93e6a242cb1cc8d5db0355dfc18dd8dbacf27d969af7370735e22dc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " The recovery limit is reached. Returning to the base stake of 50."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

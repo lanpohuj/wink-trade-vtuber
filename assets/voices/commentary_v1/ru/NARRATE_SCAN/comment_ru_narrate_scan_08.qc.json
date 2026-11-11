@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_scan_08",
+  "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72",
+  "expected": "Разбираем спокойно. Движение есть не всегда значит пора входить.",
+  "transcript": "Разбираем спокойно. Движение есть не всегда, значит, пора входить.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08735,
+    "peak": 0.33206,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.095,
+    "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.84,
+      "text": " Разбираем спокойно."
+    },
+    {
+      "start": 1.84,
+      "end": 4.34,
+      "text": " Движение есть не всегда, значит, пора входить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

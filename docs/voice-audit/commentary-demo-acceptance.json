@@ -1,0 +1,256 @@
+{
+  "date": "2026-11-11",
+  "environment": "Pocket QT Demo, Chrome Bel; local Winky and extension 2.3.3",
+  "trades": [
+    {
+      "seq": 1,
+      "pair": "EUR/USD OTC",
+      "direction": "SELL",
+      "stake": 50,
+      "expiry_sec": 60,
+      "setup": "TREND_PULLBACK",
+      "result": {
+        "seq": 1,
+        "outcome": "WIN",
+        "closed_at": 1794372370818,
+        "previous_step": 0,
+        "near_loss_verified": false
+      },
+      "net_profit": 46
+    },
+    {
+      "seq": 2,
+      "pair": "AUD/CHF OTC",
+      "direction": "BUY",
+      "stake": 50,
+      "expiry_sec": 60,
+      "setup": "TREND_PULLBACK",
+      "result": {
+        "seq": 2,
+        "outcome": "WIN",
+        "closed_at": 1794372447937,
+        "previous_step": 0,
+        "near_loss_verified": false
+      },
+      "net_profit": 46
+    }
+  ],
+  "score_observed": {
+    "before": {
+      "wins": 32,
+      "losses": 4,
+      "profit": 1614.4
+    },
+    "after": {
+      "wins": 34,
+      "losses": 4,
+      "profit": 1706.4
+    },
+    "manually_modified": false
+  },
+  "final_state": {
+    "phase": "IDLE",
+    "is_speaking": false,
+    "queue_len": 0,
+    "commentary": {
+      "auto_stream": false,
+      "lang": "ru",
+      "setup": null,
+      "setup_confirmed": false,
+      "trade_seq": 2,
+      "data_status": "TRADE_BLOCKED",
+      "entry_observed_at": null,
+      "next_stake": 50,
+      "last_result": {
+        "seq": 2,
+        "outcome": "WIN",
+        "closed_at": 1794372447937,
+        "previous_step": 0,
+        "near_loss_verified": false
+      },
+      "heartbeat_age_sec": 0.74
+    }
+  },
+  "voice_starts": [
+    {
+      "type": "voice_start",
+      "category": null,
+      "file_id": "",
+      "text": "[blush] Обожаю эту музыку на фоне! Кому тоже заходит стрим-вайб — накидайте тапов по экранчику! 🥰",
+      "source": "stream_warmup",
+      "pair": null,
+      "trade_seq": null,
+      "time": 1794372184.139555
+    },
+    {
+      "type": "voice_start",
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "file_id": "switched_03",
+      "text": "Перешли на свежий актив! Давайте посмотрим, какую картину нам рисуют свечи на этом графике.",
+      "source": "bank_PAIR_SWITCHED_NEW_SCAN",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 0,
+      "time": 1794372300.695856
+    },
+    {
+      "type": "voice_start",
+      "category": "OPEN_TRADE_PUT",
+      "file_id": "comment_ru_open_trade_put_02",
+      "text": "Открыла вниз: откат завершился, движение получило подтверждение.",
+      "source": "bank_OPEN_TRADE_PUT",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372311.103658
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_EXPIRY",
+      "file_id": "comment_ru_narrate_expiry_05",
+      "text": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+      "source": "bank_NARRATE_EXPIRY",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372322.358025
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_TRADE",
+      "file_id": "comment_ru_narrate_trade_02",
+      "text": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+      "source": "bank_NARRATE_TRADE",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372333.0384252
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_LESSON",
+      "file_id": "comment_ru_narrate_lesson_06",
+      "text": "Откат и разворот — разные истории. Сначала смотрим структуру.",
+      "source": "bank_NARRATE_LESSON",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372344.76099
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_TRADE",
+      "file_id": "comment_ru_narrate_trade_03",
+      "text": "Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+      "source": "bank_NARRATE_TRADE",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372356.743804
+    },
+    {
+      "type": "voice_start",
+      "category": null,
+      "file_id": "",
+      "text": "[excited] Чат, активнее! Давайте добьем следующую красивую цифру лайков прямо сейчас! Вы лучшие!",
+      "source": "stream_warmup",
+      "pair": null,
+      "trade_seq": null,
+      "time": 1794372364.633204
+    },
+    {
+      "type": "voice_start",
+      "category": "TRADE_WIN",
+      "file_id": "win_06",
+      "text": "Ура, забираем профит! Отличная сделка, баланс растет — работаем дальше в том же духе!",
+      "source": "bank_TRADE_WIN",
+      "pair": "EUR/USD OTC",
+      "trade_seq": 1,
+      "time": 1794372371.9390001
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_PAIR",
+      "file_id": "comment_ru_narrate_pair_05",
+      "text": "Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+      "source": "bank_NARRATE_PAIR",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 1,
+      "time": 1794372385.6024902
+    },
+    {
+      "type": "voice_start",
+      "category": "OPEN_TRADE_CALL",
+      "file_id": "comment_ru_open_trade_call_01",
+      "text": "Открыла вверх: после отката движение возобновилось.",
+      "source": "bank_OPEN_TRADE_CALL",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372391.1288629
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_EXPIRY",
+      "file_id": "comment_ru_narrate_expiry_06",
+      "text": "Это минутная сделка. Не оцениваем её по одному короткому тику.",
+      "source": "bank_NARRATE_EXPIRY",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372400.4997818
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_TRADE",
+      "file_id": "comment_ru_narrate_trade_01",
+      "text": "Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+      "source": "bank_NARRATE_TRADE",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372411.728225
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_LESSON",
+      "file_id": "comment_ru_narrate_lesson_01",
+      "text": "Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+      "source": "bank_NARRATE_LESSON",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372423.6898508
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_TRADE",
+      "file_id": "comment_ru_narrate_trade_08",
+      "text": "Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+      "source": "bank_NARRATE_TRADE",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372432.6036391
+    },
+    {
+      "type": "voice_start",
+      "category": "TRADE_WIN",
+      "file_id": "win_01",
+      "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
+      "source": "bank_TRADE_WIN",
+      "pair": "AUD/CHF OTC",
+      "trade_seq": 2,
+      "time": 1794372447.987711
+    },
+    {
+      "type": "voice_start",
+      "category": "NARRATE_PAIR",
+      "file_id": "comment_ru_narrate_pair_06",
+      "text": "Здесь начинаю проверку заново: направление, структура и подтверждение.",
+      "source": "bank_NARRATE_PAIR",
+      "pair": "EUR/GBP OTC",
+      "trade_seq": 2,
+      "time": 1794372462.77004
+    }
+  ],
+  "recording": {
+    "created": false,
+    "reason": "AVFoundation and screencapture hung without creating a video; QuickTime Open dialog did not respond. No recording claimed."
+  },
+  "limits": [
+    "No live LOSS/REFUND or near-loss/volatility case in these two cycles; covered by offline regressions",
+    "No live TikTok chat in this acceptance",
+    "Playback process starts are logged; agent audio perception unavailable",
+    "Final exact owner-requested wording passed ASR/QC, not marked as listened"
+  ]
+}

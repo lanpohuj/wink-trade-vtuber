@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_03",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+  "tts_text": "[friendly and playful] Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f82ee3a550a144e2988b7dc637694a0023f7cfc81b179d1899ced3f3db6ba46b",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_03.mp3",
+  "duration": 4.101125,
+  "sha256": "f396d666c8f8db8f0e7a352c6792e9a11b6511a82323aa71fba5e4f768f97e06",
+  "request_payload": {
+    "text": "[friendly and playful] Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

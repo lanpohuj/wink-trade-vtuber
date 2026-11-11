@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_scan_06",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Checking timeframes. I want to see the bigger picture.",
+  "tts_text": "[bright and conversational] Checking timeframes. I want to see the bigger picture.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0b9b049d8bc50604ba7ff38b2472fe9b2e35713eed46e85a5aa2f1781c485bce",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_06.mp3",
+  "duration": 3.369687,
+  "sha256": "3e1960f496a5f50da45766f5d48a1afeeb1da1a0ac1ba4a8e4b18e334138c831",
+  "request_payload": {
+    "text": "[bright and conversational] Checking timeframes. I want to see the bigger picture.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

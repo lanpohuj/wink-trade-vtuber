@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_04",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "The close is interesting, but so is why the entry appeared at all.",
+  "tts_text": "[friendly and playful] The close is interesting, but so is why the entry appeared at all.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a6714aaff033d52856eeefebf08990f24e0b8320f56f1a7ef4f87d28d7d3e81d",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_04.mp3",
+  "duration": 3.813812,
+  "sha256": "6c670572bbb9bafe9893f941b051cadbd4c0d574c466278700f5c70e89832d55",
+  "request_payload": {
+    "text": "[friendly and playful] The close is interesting, but so is why the entry appeared at all.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

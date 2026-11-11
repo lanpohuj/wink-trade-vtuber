@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_03",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "After a breakout, the retest matters. The break alone is not the setup.",
+  "tts_text": "[curious and conversational] After a breakout, the retest matters. The break alone is not the setup.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "84b963d4ae4434943f423dc2334e2dc363e8a4b431bf505296946321bfb59a1c",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_03.mp3",
+  "duration": 5.041563,
+  "sha256": "c332d210b8d95938f34fe2ff62ecd52257aead9b98ab41dbb61e2a46434b8c24",
+  "request_payload": {
+    "text": "[curious and conversational] After a breakout, the retest matters. The break alone is not the setup.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

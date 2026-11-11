@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_02",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: откат завершился, движение получило подтверждение.",
+  "tts_text": "[confident and lively] Открыла вниз: откат завершился, движение получило подтверждение.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5b53771b568becd2b9b145150ff322cb4e878afe11c0b8172e7d019b61fbb2b1",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_02.mp3",
+  "duration": 3.944375,
+  "sha256": "e27c966cdb71a40f087f55b06c2931df809a01cda85bcb287c3fadb762529d29",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: откат завершился, движение получило подтверждение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

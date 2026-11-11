@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_01",
+  "sha256": "d65de80d83137eb0955503a46971cc71434f11772cf4cfaf7ddddee58a0f8561",
+  "expected": "That loss is recorded. We do not hide it; we follow the rules.",
+  "transcript": "That loss is recorded. We do not hide it. We follow the rules.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07656,
+    "peak": 0.41249,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.222,
+    "sha256": "d65de80d83137eb0955503a46971cc71434f11772cf4cfaf7ddddee58a0f8561"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " That loss is recorded. We do not hide it. We follow the rules."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

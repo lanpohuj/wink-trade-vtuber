@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_06",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Перекрытие перешло на второй шаг: двести сорок два.",
+  "tts_text": "[lighthearted and reassuring] Перекрытие перешло на второй шаг: двести сорок два.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9b78fea702e4fa8c2e0813c01cfe1cd5e6b17e3ec1b3f1235bed85b069a48848",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_06.mp3",
+  "duration": 3.317438,
+  "sha256": "498e730a3456f46244364267be8265546c815ff4df966bea58b193625119fc41",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Перекрытие перешло на второй шаг: двести сорок два.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

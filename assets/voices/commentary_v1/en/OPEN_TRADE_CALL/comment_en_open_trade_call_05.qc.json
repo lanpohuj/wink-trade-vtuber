@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_05",
+  "sha256": "1051e1ae5604295fcb2d22e115c5c678f878f49bd932daa9edfb5098f1900412",
+  "expected": "Opened up: price reacted at the edge of the range.",
+  "transcript": "Opened up price reacted at the edge of the range",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.07661,
+    "peak": 0.41538,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.23,
+    "sha256": "1051e1ae5604295fcb2d22e115c5c678f878f49bd932daa9edfb5098f1900412"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Opened up price reacted at the edge of the range"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

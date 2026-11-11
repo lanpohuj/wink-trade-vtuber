@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_result_07",
+  "sha256": "eed500a5e1bb309181caf264acb2afbca09bde4d8efbdf234193dec8ca351fb2",
+  "expected": "Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+  "transcript": "лимит перекрытий достигнут возвращаем базовые 50",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.0765,
+    "peak": 0.40618,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.124,
+    "sha256": "eed500a5e1bb309181caf264acb2afbca09bde4d8efbdf234193dec8ca351fb2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " лимит перекрытий достигнут возвращаем базовые 50"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

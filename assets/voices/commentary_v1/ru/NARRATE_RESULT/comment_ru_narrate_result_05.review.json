@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_05",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+  "tts_text": "[lighthearted and reassuring] Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fde8e28a05aa8161df1d2ae8c3769a376fd4c7ccd1f0dd504b9a31e6d2471c1c",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_05.mp3",
+  "duration": 4.205625,
+  "sha256": "7931f16398b6f9985306bfb7dcc1a8537ed18c560192acb786f2877133fe306b",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

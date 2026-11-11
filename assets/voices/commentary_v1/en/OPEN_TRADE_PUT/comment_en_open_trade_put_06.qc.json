@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_put_06",
+  "sha256": "74dbe568a2d439abace743447ef28e9633713c1e4aeee3127682611455e685a0",
+  "expected": "Opened down: the range boundary gave confirmation.",
+  "transcript": "Opened down the range boundary gave confirmation",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07211,
+    "peak": 0.34567,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.187,
+    "sha256": "74dbe568a2d439abace743447ef28e9633713c1e4aeee3127682611455e685a0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " Opened down the range boundary gave confirmation"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

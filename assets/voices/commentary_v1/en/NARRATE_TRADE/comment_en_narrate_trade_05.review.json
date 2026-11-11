@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_05",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "The trade is on screen. I am following it through to the close.",
+  "tts_text": "[bright and conversational] The trade is on screen. I am following it through to the close.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b1ff9b0326843307d81523f9f930acab73d91be10e88f396670d9d587b1a87fa",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_05.mp3",
+  "duration": 3.944375,
+  "sha256": "cbe02af5736d5c6f8f32e268f9b06ddf581993990fef75a5b78231963aa0aa18",
+  "request_payload": {
+    "text": "[bright and conversational] The trade is on screen. I am following it through to the close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

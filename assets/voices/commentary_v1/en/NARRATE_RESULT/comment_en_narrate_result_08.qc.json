@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_08",
+  "sha256": "0051e77a8af965fda595ae2aab7125783d6e5dcb3cbc3e51c678102e8a4f98a7",
+  "expected": "The recovery cycle is complete. The base stake is fifty again.",
+  "transcript": "The recovery cycle is complete. The base stake is 50 again.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08455,
+    "peak": 0.48977,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "0051e77a8af965fda595ae2aab7125783d6e5dcb3cbc3e51c678102e8a4f98a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The recovery cycle is complete. The base stake is 50 again."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_06",
+  "sha256": "16caef16ede6f5855def08afeafe9d9dbbc934b82e1c0d65f9128aee8281cc49",
+  "expected": "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+  "transcript": "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.07018,
+    "peak": 0.32663,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.13,
+    "sha256": "16caef16ede6f5855def08afeafe9d9dbbc934b82e1c0d65f9128aee8281cc49"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

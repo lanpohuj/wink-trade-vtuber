@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_05",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Короткая экспирация требует своего подтверждения, длинная — своего.",
+  "tts_text": "[curious and conversational] Короткая экспирация требует своего подтверждения, длинная — своего.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "07b78257b5392717b626d9af46e2c42b6166e57d74308da6c232abf36f2fe306",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_05.mp3",
+  "duration": 4.545187,
+  "sha256": "376e1668cd102c59be808f9b791689e3c7fd151cfd5b271aca3f4d28415c1b30",
+  "request_payload": {
+    "text": "[curious and conversational] Короткая экспирация требует своего подтверждения, длинная — своего.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

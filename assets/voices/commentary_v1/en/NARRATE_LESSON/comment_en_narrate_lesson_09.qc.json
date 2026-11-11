@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_09",
+  "sha256": "5ff1f7c83f1e033ebef51e6711ee61c6221ae145a967efdbbed9a1e0552a055a",
+  "expected": "Recovery changes the stake size. The next trade can still lose.",
+  "transcript": "Recovery changes the stake size. The next trade can still lose.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.0873,
+    "peak": 0.92722,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.215,
+    "sha256": "5ff1f7c83f1e033ebef51e6711ee61c6221ae145a967efdbbed9a1e0552a055a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Recovery changes the stake size. The next trade can still lose."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

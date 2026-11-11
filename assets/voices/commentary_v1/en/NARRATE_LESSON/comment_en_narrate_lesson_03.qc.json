@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_03",
+  "sha256": "c332d210b8d95938f34fe2ff62ecd52257aead9b98ab41dbb61e2a46434b8c24",
+  "expected": "After a breakout, the retest matters. The break alone is not the setup.",
+  "transcript": "After a breakout the retest matters the break alone is not the setup",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07875,
+    "peak": 0.37778,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.282,
+    "sha256": "c332d210b8d95938f34fe2ff62ecd52257aead9b98ab41dbb61e2a46434b8c24"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.66,
+      "text": " After a breakout the retest matters the break alone is not the setup"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

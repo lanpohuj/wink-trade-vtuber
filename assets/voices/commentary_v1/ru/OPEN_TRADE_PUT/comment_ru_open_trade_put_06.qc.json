@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_put_06",
+  "sha256": "76f37b7c24d701e63cddbfab00142337d83a2ccb2ae54fb6f69c7517aabe3e6e",
+  "expected": "Открыла вниз: от границы диапазона получено подтверждение.",
+  "transcript": "Открыла вниз! От границы диапазона получено подтверждение!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.08845,
+    "peak": 0.39733,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "76f37b7c24d701e63cddbfab00142337d83a2ccb2ae54fb6f69c7517aabe3e6e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Открыла вниз! От границы диапазона получено подтверждение!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

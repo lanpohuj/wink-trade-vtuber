@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_04",
+  "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae",
+  "expected": "Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+  "transcript": "Смотрю на реакцию цены у уровня. Ления сама по себе ничего не решает.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.09046,
+    "peak": 0.36089,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.11,
+    "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Смотрю на реакцию цены у уровня. Ления сама по себе ничего не решает."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

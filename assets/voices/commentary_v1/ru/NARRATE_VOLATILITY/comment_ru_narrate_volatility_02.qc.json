@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_volatility_02",
+  "sha256": "52922a4caa370de04b83cdea54042d365884fa33d7b084f44d9036266bee1583",
+  "expected": "Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+  "transcript": "В разумах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07688,
+    "peak": 0.34763,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "52922a4caa370de04b83cdea54042d365884fa33d7b084f44d9036266bee1583"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " В разумах свечей сейчас вырос. Не путаем активность с хорошим входом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

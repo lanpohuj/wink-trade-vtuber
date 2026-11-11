@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_result_09",
+  "sha256": "3e93a4787a763669472271bb0a75b0580cba64e4ab1090dc2501ee2355151a07",
+  "expected": "Было близко к плюсу, но срезало на закрытии. По факту — минус.",
+  "transcript": "Было близко к плюсу, но срезало на закрытие. По факту, минус.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.0724,
+    "peak": 0.31306,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.089,
+    "sha256": "3e93a4787a763669472271bb0a75b0580cba64e4ab1090dc2501ee2355151a07"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Было близко к плюсу, но срезало на закрытие."
+    },
+    {
+      "start": 3.5,
+      "end": 5.5,
+      "text": " По факту, минус."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

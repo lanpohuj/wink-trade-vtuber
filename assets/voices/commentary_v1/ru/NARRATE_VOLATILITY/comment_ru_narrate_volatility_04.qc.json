@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_volatility_04",
+  "sha256": "32087d7dbad1e119a351e886107c8104035ed4b1178632ede08a4176866e8647",
+  "expected": "Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+  "transcript": "Свечи размахнулись сильнее обычного. Смотри на структуру, не на азарт.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09275,
+    "peak": 0.39043,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "32087d7dbad1e119a351e886107c8104035ed4b1178632ede08a4176866e8647"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Свечи размахнулись сильнее обычного. Смотри на структуру, не на азарт."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

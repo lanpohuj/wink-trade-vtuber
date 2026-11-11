@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_07",
+  "sha256": "294809432ec27045dcad1f3adc8a4ae8f66749efa8de41f7760628cd06bd7220",
+  "expected": "Looking for entry confirmation. An interesting move still needs a setup.",
+  "transcript": "Looking for entry confirmation. An interesting move still needs a setup.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08172,
+    "peak": 0.37894,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.259,
+    "sha256": "294809432ec27045dcad1f3adc8a4ae8f66749efa8de41f7760628cd06bd7220"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Looking for entry confirmation. An interesting move still needs a setup."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

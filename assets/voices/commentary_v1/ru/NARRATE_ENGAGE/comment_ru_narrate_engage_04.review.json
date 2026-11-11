@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_04",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+  "tts_text": "[friendly and playful] Здесь интересно не только закрытие, но и почему вообще появился вход.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c22ca06fed391bc015c677dbbdd6cb995d3ca07c25570eb386f8a3043a86fc50",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_04.mp3",
+  "duration": 3.813812,
+  "sha256": "452a392512d08ecdfb4495c8a676a3a11738292b3aae932f4157b94cb0eaee63",
+  "request_payload": {
+    "text": "[friendly and playful] Здесь интересно не только закрытие, но и почему вообще появился вход.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_scan_04",
+  "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856",
+  "expected": "Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+  "transcript": "Сейчас разбираю структуру. Главное не перепутать им пульсоткатом.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08862,
+    "peak": 0.4821,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Сейчас разбираю структуру. Главное не перепутать им пульсоткатом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

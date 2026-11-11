@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_07",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "Two minutes here: the higher timeframe structure is the context.",
+  "tts_text": "[bright and conversational] Two minutes here: the higher timeframe structure is the context.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1130d779d1f7edb5c45829822445610f1a6480147a95c6c04121fac020a054cd",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_07.mp3",
+  "duration": 3.9705,
+  "sha256": "2e867cac324ea6fef9e3642317e7fd8a46b12b2cac65e02745902d5e49e216de",
+  "request_payload": {
+    "text": "[bright and conversational] Two minutes here: the higher timeframe structure is the context.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

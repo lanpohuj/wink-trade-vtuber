@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_pair_02",
+  "category": "NARRATE_PAIR",
+  "lang": "ru",
+  "text": "Новая пара — новая проверка. Старые выводы сюда не переносим.",
+  "tts_text": "[bright and conversational] Новая пара — новая проверка. Старые выводы сюда не переносим.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d4c72caaea261d3cfaa391cfed43c99b51719142e6dbbbb7d1149b6fc7d0f5b6",
+  "file": "ru/NARRATE_PAIR/comment_ru_narrate_pair_02.mp3",
+  "duration": 4.728063,
+  "sha256": "4d8ad99602afdfd395d9d9633e437ef603059d372724075ac3da40d53a362ad9",
+  "request_payload": {
+    "text": "[bright and conversational] Новая пара — новая проверка. Старые выводы сюда не переносим.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

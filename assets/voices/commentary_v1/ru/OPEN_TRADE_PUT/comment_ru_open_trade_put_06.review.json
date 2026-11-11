@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_06",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: от границы диапазона получено подтверждение.",
+  "tts_text": "[confident and lively] Открыла вниз: от границы диапазона получено подтверждение.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "80fd482ec0f241d5b9a017ab2d626c0dcb086ad3e02e267083927c9fc4b8a7e2",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_06.mp3",
+  "duration": 3.709312,
+  "sha256": "76f37b7c24d701e63cddbfab00142337d83a2ccb2ae54fb6f69c7517aabe3e6e",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: от границы диапазона получено подтверждение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

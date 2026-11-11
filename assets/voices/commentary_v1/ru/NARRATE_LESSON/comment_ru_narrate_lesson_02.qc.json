@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_lesson_02",
+  "sha256": "b7697cb2d8995a16a78a19cbd9d212084eecb46cd479972539270eb8b52f4231",
+  "expected": "Сильная свеча не повод догонять цену. У движения бывает предел.",
+  "transcript": "Сильное свеча не повод догонять цену. У движения бывает предел.",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08665,
+    "peak": 0.41957,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.135,
+    "sha256": "b7697cb2d8995a16a78a19cbd9d212084eecb46cd479972539270eb8b52f4231"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Сильное свеча не повод догонять цену."
+    },
+    {
+      "start": 2.5,
+      "end": 4.0,
+      "text": " У движения бывает предел."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

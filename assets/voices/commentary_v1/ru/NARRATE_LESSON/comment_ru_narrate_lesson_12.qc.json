@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_12",
+  "sha256": "ec482ac81454e4d005c4c8f992855b20f20d69b2659a89e3ce584bd02a475394",
+  "expected": "Возле встречного уровня цене может не хватить места для движения.",
+  "transcript": "Возле встречного уровня цене может не хватить места для движения.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.09123,
+    "peak": 0.3243,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.083,
+    "sha256": "ec482ac81454e4d005c4c8f992855b20f20d69b2659a89e3ce584bd02a475394"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Возле встречного уровня цене может не хватить места для движения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

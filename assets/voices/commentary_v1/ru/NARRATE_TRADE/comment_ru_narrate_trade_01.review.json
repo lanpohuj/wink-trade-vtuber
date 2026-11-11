@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_01",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+  "tts_text": "[bright and conversational] Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d37927ef4703a4f551a2c77e3c10a1738c077ed7ce2783a24cbdd8618cdea06d",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_01.mp3",
+  "duration": 4.23175,
+  "sha256": "8e3696e773c0fe79d3a606509ddc1e8b86ddb387ce65988d85c614106551cef3",
+  "request_payload": {
+    "text": "[bright and conversational] Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

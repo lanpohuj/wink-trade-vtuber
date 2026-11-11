@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_07",
+  "sha256": "2e867cac324ea6fef9e3642317e7fd8a46b12b2cac65e02745902d5e49e216de",
+  "expected": "Two minutes here: the higher timeframe structure is the context.",
+  "transcript": "Two minutes here, the higher timeframe structure is the context.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.07425,
+    "peak": 0.41327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.191,
+    "sha256": "2e867cac324ea6fef9e3642317e7fd8a46b12b2cac65e02745902d5e49e216de"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Two minutes here, the higher timeframe structure is the context."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "comment_en_narrate_engage_08",
+  "sha256": "8604a909a67b4df81302491ee5de3862faf0c872f0e83d704b962e948359c3a3",
+  "expected": "Let us keep watching together. Questions about the strategy are welcome.",
+  "transcript": "Let us keep watching together. Questions about the strategy are welcome.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08614,
+    "peak": 0.40071,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "8604a909a67b4df81302491ee5de3862faf0c872f0e83d704b962e948359c3a3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Let us keep watching together."
+    },
+    {
+      "start": 2.0,
+      "end": 4.3,
+      "text": " Questions about the strategy are welcome."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_01",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "Next chart. Let us see if this one is clearer.",
+  "tts_text": "[bright and conversational] Next chart. Let us see if this one is clearer.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b3cd4138b7739023cd54b03c39a7050a880d24e3fcfde54ca2d319b6aa10d7d4",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_01.mp3",
+  "duration": 3.186875,
+  "sha256": "130850ec7791e4df3fe8f27531df690855d71745a1baa9ab623bbaa48ee21426",
+  "request_payload": {
+    "text": "[bright and conversational] Next chart. Let us see if this one is clearer.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

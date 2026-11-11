@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_call_08",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Opened up: the local reversal gained confirmation.",
+  "tts_text": "[confident and lively] Opened up: the local reversal gained confirmation.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "390292c23331137b1e405da4611202d9bb6592154378add216e598a395e332fa",
+  "file": "en/OPEN_TRADE_CALL/comment_en_open_trade_call_08.mp3",
+  "duration": 3.317438,
+  "sha256": "a968da948df4ebb80884561977a546727d43fcaecc38af15cad3f237a2ab34fa",
+  "request_payload": {
+    "text": "[confident and lively] Opened up: the local reversal gained confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

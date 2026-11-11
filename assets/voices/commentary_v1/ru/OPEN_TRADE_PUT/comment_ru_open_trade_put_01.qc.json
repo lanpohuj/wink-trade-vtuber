@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_put_01",
+  "sha256": "1ce043adab958430b4f7247505c593650afd2f0ae93edea574809b5dc570b273",
+  "expected": "Открыла вниз: после отката движение возобновилось.",
+  "transcript": "Открыла вниз. После отката движения возобновилась.",
+  "similarity": 0.953,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.09179,
+    "peak": 0.43754,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.058,
+    "sha256": "1ce043adab958430b4f7247505c593650afd2f0ae93edea574809b5dc570b273"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " Открыла вниз. После отката движения возобновилась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

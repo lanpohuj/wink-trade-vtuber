@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_pair_02",
+  "sha256": "4d8ad99602afdfd395d9d9633e437ef603059d372724075ac3da40d53a362ad9",
+  "expected": "Новая пара — новая проверка. Старые выводы сюда не переносим.",
+  "transcript": "Новая пара! Новая проверка! Старые выводы сюда не переносим!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07234,
+    "peak": 0.35887,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "4d8ad99602afdfd395d9d9633e437ef603059d372724075ac3da40d53a362ad9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Новая пара! Новая проверка!"
+    },
+    {
+      "start": 2.56,
+      "end": 4.64,
+      "text": " Старые выводы сюда не переносим!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

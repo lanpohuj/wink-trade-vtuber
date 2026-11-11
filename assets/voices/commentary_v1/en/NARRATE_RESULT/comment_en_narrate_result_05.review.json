@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_05",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "Next stake is two hundred forty-two. This is the second recovery step.",
+  "tts_text": "[lighthearted and reassuring] Next stake is two hundred forty-two. This is the second recovery step.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3315733347cf1ff540ea20e11b1a61f7059b59d9513fbeea4b38f0bfba61b293",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_05.mp3",
+  "duration": 4.414625,
+  "sha256": "24f62d449d5c4c7b312b27bcb271b35e53291a87ac958e3e1e941d9b4e8a6aa3",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Next stake is two hundred forty-two. This is the second recovery step.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_lesson_09",
+  "sha256": "c2e101e6f1cc3e1fafff4a4533b2520041799e352f3bb91bf38e1e211d5a6ca0",
+  "expected": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+  "transcript": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.09212,
+    "peak": 0.42226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.09,
+    "sha256": "c2e101e6f1cc3e1fafff4a4533b2520041799e352f3bb91bf38e1e211d5a6ca0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Перекрытие меняет размер ставки."
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 4.78,
+      "text": " Следующая сделка тоже может дать минус."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

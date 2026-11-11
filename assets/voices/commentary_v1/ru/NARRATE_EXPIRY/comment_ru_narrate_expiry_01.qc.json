@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_01",
+  "sha256": "6c38301ec99538c124c3b1470d6926924abf19807d6c25e56753ecf303bf22c9",
+  "expected": "Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+  "transcript": "Выбрала 15 секунд. Здесь важен короткий подтвержденный импульс.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07847,
+    "peak": 0.36904,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.135,
+    "sha256": "6c38301ec99538c124c3b1470d6926924abf19807d6c25e56753ecf303bf22c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Выбрала 15 секунд. Здесь важен короткий подтвержденный импульс."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

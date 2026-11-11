@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_01",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+  "tts_text": "[bright and conversational] Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "781d6c476dc14ed76f3564b6d0db2283c16cc42e2c6085cc6f2b31ee2da60853",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_01.mp3",
+  "duration": 4.414625,
+  "sha256": "6c38301ec99538c124c3b1470d6926924abf19807d6c25e56753ecf303bf22c9",
+  "request_payload": {
+    "text": "[bright and conversational] Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

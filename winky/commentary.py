@@ -26,10 +26,21 @@ def narration_valid(event, context, phase, received_at, now=None):
         "lang"
     ) != context.get("lang", "ru"):
         return False
+    if event.get("category") == "NARRATE_VOLATILITY":
+        if (
+            context.get("high_volatility") is not True
+            or not 0 <= now - seconds(event.get("market_observed_at")) <= 3
+        ):
+            return False
     scope = event.get("commentary_scope")
     if scope == "search":
-        return phase == "ANALYZING" and event.get("search_generation") == context.get(
-            "search_generation"
+        return (
+            phase == "ANALYZING"
+            and event.get("search_generation") == context.get("search_generation")
+            and (
+                event.get("category") == "NARRATE_SCAN"
+                or event.get("pair") == context.get("pair")
+            )
         )
     if scope == "trade":
         return (

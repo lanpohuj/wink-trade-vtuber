@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_06",
+  "sha256": "2b18fa5a8751f4f05c20f0e52e4395a2d1def17a89dc5b18cab7e490fe087a1f",
+  "expected": "This is a one-minute trade. One quick tick does not tell its story.",
+  "transcript": "This is a one-minute trade. One quick tick does not tell its story.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.07916,
+    "peak": 0.41249,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.167,
+    "sha256": "2b18fa5a8751f4f05c20f0e52e4395a2d1def17a89dc5b18cab7e490fe087a1f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " This is a one-minute trade. One quick tick does not tell its story."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

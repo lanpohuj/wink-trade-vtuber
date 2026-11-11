@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_volatility_03",
+  "sha256": "12be427bfe33583ddb3f47235b84de4e158841d1a4b7344544788297030ca54b",
+  "expected": "The chart is getting choppy. We are checking confirmation carefully.",
+  "transcript": "The chart is getting choppy. We are checking confirmation carefully.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08775,
+    "peak": 0.65312,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.155,
+    "sha256": "12be427bfe33583ddb3f47235b84de4e158841d1a4b7344544788297030ca54b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The chart is getting choppy. We are checking confirmation carefully."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

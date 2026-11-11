@@ -1930,24 +1930,24 @@
       "id": "comment_ru_narrate_engage_05",
       "category": "NARRATE_ENGAGE",
       "lang": "ru",
-      "text": "Чатик, бывало у вас: одна свеча — и график уже выглядит иначе?",
-      "tts_text": "[friendly and playful] Чатик, бывало у вас: одна свеча — и график уже выглядит иначе?",
+      "text": "Для входа я сверяю несколько интервалов: так понятнее, куда пойдёт график.",
+      "tts_text": "[friendly and playful] Для входа я сверяю несколько интервалов: так понятнее, куда пойдёт график.",
       "conditions": {},
       "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
       "text_version": 1,
-      "text_sha256": "1a54f94d547b6dca8fed211cf648115702144c7ec2db588dc7287798f744b9d7",
+      "text_sha256": "bd5ea2df2d532519d5b1114a8457b55f04cf34f7167a48d9486d2dc050d907ea",
       "requires_listening": true
     },
     {
       "id": "comment_en_narrate_engage_05",
       "category": "NARRATE_ENGAGE",
       "lang": "en",
-      "text": "Ever noticed how one candle can change your first impression of a chart?",
-      "tts_text": "[friendly and playful] Ever noticed how one candle can change your first impression of a chart?",
+      "text": "I check several timeframes before an entry to understand the context.",
+      "tts_text": "[friendly and playful] I check several timeframes before an entry to understand the context.",
       "conditions": {},
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
       "text_version": 1,
-      "text_sha256": "037fafad43d6bfbfacf5cbf12c004a038bf7fb79a35ec3b963fadfd14f2bddc5"
+      "text_sha256": "8e94c01e20a21d969a8eed1b509f077bc5ce54760e1efae1b2124ffa8cf1945b"
     },
     {
       "id": "comment_ru_narrate_engage_06",

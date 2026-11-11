@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_scan_01",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Comparing charts. I want a clear setup, not just movement.",
+  "tts_text": "[bright and conversational] Comparing charts. I want a clear setup, not just movement.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "09fdf43fd4a58515c7fe8a6e937097c048982421a38143e4fa08756e3cf0fd6c",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_01.mp3",
+  "duration": 3.9705,
+  "sha256": "6fc13b91770bcaac896182b1c9fe17e4281d062ecd8b54903c351571a0390d32",
+  "request_payload": {
+    "text": "[bright and conversational] Comparing charts. I want a clear setup, not just movement.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

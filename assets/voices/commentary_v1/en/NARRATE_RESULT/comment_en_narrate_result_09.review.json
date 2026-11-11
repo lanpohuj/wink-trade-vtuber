@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_09",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "It was close to positive, but slipped at the close. The result is a loss.",
+  "tts_text": "[lighthearted and reassuring] It was close to positive, but slipped at the close. The result is a loss.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f634be940bfafbe6a1b0bf9428ea6d02ba545207d7f3eca8fb9a5f64eaf32d1b",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_09.mp3",
+  "duration": 4.675813,
+  "sha256": "d55abe511acaa8b5dc81dcd616b652b3cd57da761aa9ce87e1e92cc371840462",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] It was close to positive, but slipped at the close. The result is a loss.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

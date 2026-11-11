@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_scan_02",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+  "tts_text": "[bright and conversational] Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ad1b11cff5c7a543a7d44b22e01c226bc73e8f3d466e52f7334e9d6d961a9c43",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_02.mp3",
+  "duration": 3.9705,
+  "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9",
+  "request_payload": {
+    "text": "[bright and conversational] Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

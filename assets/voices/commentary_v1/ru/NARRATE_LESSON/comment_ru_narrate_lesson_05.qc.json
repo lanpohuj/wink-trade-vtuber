@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_05",
+  "sha256": "376e1668cd102c59be808f9b791689e3c7fd151cfd5b271aca3f4d28415c1b30",
+  "expected": "Короткая экспирация требует своего подтверждения, длинная — своего.",
+  "transcript": "короткая экспирация требует своего подтверждения длинное своего",
+  "similarity": 0.965,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07561,
+    "peak": 0.33813,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.125,
+    "sha256": "376e1668cd102c59be808f9b791689e3c7fd151cfd5b271aca3f4d28415c1b30"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.22,
+      "text": " короткая экспирация требует своего подтверждения длинное своего"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_scan_05",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Подгружаются данные графика. Пока ничего не додумываю.",
+  "tts_text": "[bright and conversational] Подгружаются данные графика. Пока ничего не додумываю.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "92f9969a517831010c487f1e775b7304689608fab742ab412d3bc2c6df6f4f76",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_05.mp3",
+  "duration": 3.578688,
+  "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e",
+  "request_payload": {
+    "text": "[bright and conversational] Подгружаются данные графика. Пока ничего не додумываю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

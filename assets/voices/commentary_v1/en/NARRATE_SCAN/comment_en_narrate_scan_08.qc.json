@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_08",
+  "sha256": "b5d64b43ccf0c758667f4b7c23bed309e33657d0b9578a73108e9a41d7a55796",
+  "expected": "Taking a careful look. Movement does not always mean an entry.",
+  "transcript": "Taking a careful look movement does not always mean an entry",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07824,
+    "peak": 0.3242,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.221,
+    "sha256": "b5d64b43ccf0c758667f4b7c23bed309e33657d0b9578a73108e9a41d7a55796"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7800000000000002,
+      "text": " Taking a careful look movement does not always mean an entry"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

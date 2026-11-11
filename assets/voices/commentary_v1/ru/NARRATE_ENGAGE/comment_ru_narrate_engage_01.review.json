@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_01",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+  "tts_text": "[friendly and playful] Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "214ccedb87fc6b94f1da4b0514fbe02d22b9a070afa2500e9ff70ac0b56bcdd0",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_01.mp3",
+  "duration": 3.630937,
+  "sha256": "e1d85dceb8d716bafeefae1e2067c4a0928ee7bbbd5770b0934a4db964f5ca0e",
+  "request_payload": {
+    "text": "[friendly and playful] Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

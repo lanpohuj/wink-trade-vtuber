@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_04",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Движение может меняться. Результат проверим после закрытия.",
+  "tts_text": "[bright and conversational] Движение может меняться. Результат проверим после закрытия.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "492086a4652ab51dc8974cb54e817a40b81071136205305445775a100692be29",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_04.mp3",
+  "duration": 4.205625,
+  "sha256": "61f8c0cdc2af2375b18a9bfae59df09eda35b2c662f991c20e0731fa19dcf1d1",
+  "request_payload": {
+    "text": "[bright and conversational] Движение может меняться. Результат проверим после закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

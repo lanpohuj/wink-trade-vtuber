@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_02",
+  "sha256": "e396853933b00b8ff9534e3f1450d08ee443f06c2a36c4032b2a1106310cd337",
+  "expected": "Watching who is driving price. No rush to pick a direction.",
+  "transcript": "Watching who is driving price. No rush to pick a direction.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.07746,
+    "peak": 0.35976,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.229,
+    "sha256": "e396853933b00b8ff9534e3f1450d08ee443f06c2a36c4032b2a1106310cd337"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Watching who is driving price. No rush to pick a direction."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_02",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+  "tts_text": "[bright and conversational] Следим за движением. Пока сделка открыта, результат не объявляю.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "393c62271c6b9c823ae93fc9a0cccada700dbfdca1378909dba60d1bbef412e6",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_02.mp3",
+  "duration": 4.153375,
+  "sha256": "ddaa21803db893090fc280ec3087468f02c299ec4d7100276d8cde7fb4af0a59",
+  "request_payload": {
+    "text": "[bright and conversational] Следим за движением. Пока сделка открыта, результат не объявляю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

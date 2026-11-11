@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_08",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Старший интервал помогает не потерять контекст короткого движения.",
+  "tts_text": "[curious and conversational] Старший интервал помогает не потерять контекст короткого движения.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ae7be3896807f487d9afa29a9d8acdfc1bb4b29eb8b0bbd80136c1ddffc2d1f9",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_08.mp3",
+  "duration": 3.448062,
+  "sha256": "33abb06750369eab4fb64ce34281905c03699678f60ae0708b8ff603c1f44b83",
+  "request_payload": {
+    "text": "[curious and conversational] Старший интервал помогает не потерять контекст короткого движения.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

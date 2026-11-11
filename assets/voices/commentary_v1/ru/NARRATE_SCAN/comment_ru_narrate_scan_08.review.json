@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_scan_08",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Разбираем спокойно. Движение есть не всегда значит пора входить.",
+  "tts_text": "[bright and conversational] Разбираем спокойно. Движение есть не всегда значит пора входить.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "894452641ae6fb868508e42b241cf246f0d8c12f8181aef53aadb7bd8bb60362",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_08.mp3",
+  "duration": 4.414625,
+  "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72",
+  "request_payload": {
+    "text": "[bright and conversational] Разбираем спокойно. Движение есть не всегда значит пора входить.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

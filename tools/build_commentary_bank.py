@@ -12,8 +12,21 @@ BANK = ROOT / "assets/voices/commentary_v1"
 CATALOG = ROOT / "docs/voice-audit/commentary-160.json"
 
 
-def generate():
+def generate(only_ids=None):
     rows = json.loads(CATALOG.read_text())["records"]
+    manifest_path = BANK / "manifest.json"
+    existing = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    previous_rows = {
+        r["id"]: r for group in existing.get("categories", {}).values() for r in group
+    }
+    if existing.get("activated") and not only_ids:
+        raise ValueError("Active bank: use --only-id for a deferred recording")
+    if only_ids:
+        if not set(only_ids).issubset({r["id"] for r in rows}):
+            raise ValueError("Unknown recording")
+        rows = [r for r in rows if r["id"] in only_ids]
+        if any(previous_rows.get(r["id"], {}).get("status") == "ready" for r in rows):
+            raise ValueError("Do not overwrite a ready recording in place")
     for row in rows:
         if not check_phrase(row["text"])[0]:
             raise ValueError("Unsafe catalog text: " + row["id"])
@@ -72,23 +85,30 @@ def generate():
     finally:
         engine._client.close()
         categories = {}
+        if only_ids:
+            previous_rows.update({r["id"]: r for r in result})
+            for row in previous_rows.values():
+                categories.setdefault(row["category"], []).append(row)
         # Include previous successful attempts when resuming a partial run.
-        for path in sorted(BANK.glob("*/*/*.review.json")):
+        for path in [] if only_ids else sorted(BANK.glob("*/*/*.review.json")):
             row = json.loads(path.read_text())
             categories.setdefault(row["category"], []).append(row)
-        (BANK / "manifest.json").write_text(
+        metadata = (
+            existing
+            if only_ids
+            else {"version": "1.0", "bank_type": "commentary_v1", "activated": False}
+        )
+        metadata["categories"] = categories
+        temp = BANK / "manifest.tmp"
+        temp.write_text(
             json.dumps(
-                {
-                    "version": "1.0",
-                    "bank_type": "commentary_v1",
-                    "activated": False,
-                    "categories": categories,
-                },
+                metadata,
                 ensure_ascii=False,
                 indent=2,
             )
             + "\n"
         )
+        temp.replace(manifest_path)
 
 
 def normalize(text, lang="ru"):
@@ -134,6 +154,9 @@ def qc():
             if row["text_sha256"] != source[row["id"]]["text_sha256"]:
                 raise ValueError("Catalog text changed; regenerate " + row["id"])
             row["conditions"] = source[row["id"]]["conditions"]
+            row["requires_listening"] = source[row["id"]].get(
+                "requires_listening", False
+            )
             path = BANK / row["file"]
             saved = path.with_suffix(".qc.json")
             if (
@@ -239,9 +262,12 @@ def qc():
         )
         + "\n"
     )
+    (BANK / "qc.json").write_text(
+        json.dumps({"records": reports}, ensure_ascii=False, indent=2) + "\n"
+    )
 
 
-def activate(approval_path):
+def activate(approval_path, allow_partial=False):
     manifest = json.loads((BANK / "manifest.json").read_text())
     approval = json.loads(approval_path.read_text())
     if (
@@ -263,9 +289,17 @@ def activate(approval_path):
         ):
             raise ValueError("Changed audio")
         heard = reviewed.get(row["id"], {})
-        if catalog_rows[row["id"]].get("requires_listening") and not (
-            heard.get("accepted") is True and heard.get("sha256") == row["sha256"]
-        ):
+        requested_revision = (
+            heard.get("owner_requested_revision") is True
+            and heard.get("text_sha256") == row["text_sha256"]
+            and row.get("automatic_qc_passed") is True
+        )
+        needs_listening = catalog_rows[row["id"]].get("requires_listening") and not (
+            heard.get("accepted") is True
+            and heard.get("sha256") == row["sha256"]
+            and (heard.get("listened") is not False or requested_revision)
+        )
+        if needs_listening and not allow_partial:
             raise ValueError("Corrected recording needs listening: " + row["id"])
         report = json.loads(path.with_suffix(".qc.json").read_text())
         if report.get("sha256") != row["sha256"] or any(
@@ -278,16 +312,47 @@ def activate(approval_path):
             raise ValueError("Flagged recording needs listening: " + row["id"])
         if heard.get("accepted") is False:
             raise ValueError("Rejected recording")
+        if needs_listening:
+            row.update(
+                status="review_pending", review_accepted=False, auditory_verified=False
+            )
+            continue
         row.update(
             status="ready",
             review_method="owner_sampled",
             review_accepted=True,
             auditory_verified=heard.get("accepted") is True
-            and heard.get("sha256") == row["sha256"],
+            and heard.get("sha256") == row["sha256"]
+            and heard.get("listened") is not False,
+            review_basis="owner_requested_text_revision"
+            if requested_revision
+            else "owner_sampled",
             qc_override_accepted=bool(report["issues"])
             and heard.get("accepted") is True,
         )
-    manifest.update(activated=True, review_method="owner_sampled", review_accepted=True)
+
+    def coverage(row):
+        detailed = row["category"].startswith("OPEN_") or row["category"] in (
+            "NARRATE_EXPIRY",
+            "NARRATE_RESULT",
+        )
+        return (
+            row["category"],
+            row["lang"],
+            json.dumps(row["conditions"], sort_keys=True) if detailed else "",
+        )
+
+    required = {coverage(row) for row in catalog_rows.values()}
+    if not required.issubset(
+        {coverage(row) for row in rows if row["status"] == "ready"}
+    ):
+        raise ValueError("Required commentary coverage missing")
+    manifest.update(
+        activated=True,
+        review_method="owner_sampled",
+        review_accepted=True,
+        active_count=sum(row["status"] == "ready" for row in rows),
+    )
     temp = BANK / "manifest.tmp"
     temp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     temp.replace(BANK / "manifest.json")
@@ -297,8 +362,16 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("command", choices=["generate", "qc", "activate"])
     p.add_argument("--approval", type=Path)
+    p.add_argument("--only-id", action="append")
+    p.add_argument(
+        "--allow-partial",
+        action="store_true",
+        help="Keep unreviewed variants out; require every functional context",
+    )
     args = p.parse_args()
     if args.command == "activate":
-        activate(args.approval)
+        activate(args.approval, allow_partial=args.allow_partial)
+    elif args.command == "generate":
+        generate(args.only_id)
     else:
         globals()[args.command]()

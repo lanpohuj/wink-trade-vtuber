@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_01",
+  "sha256": "021cd19433beb9482b55035e7ed695782b771a34d20f341a62cc3a824187dff2",
+  "expected": "The trend gives context; the entry needs its own confirmation.",
+  "transcript": "The trend gives context. The entry needs its own confirmation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08082,
+    "peak": 0.55141,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.195,
+    "sha256": "021cd19433beb9482b55035e7ed695782b771a34d20f341a62cc3a824187dff2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The trend gives context. The entry needs its own confirmation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

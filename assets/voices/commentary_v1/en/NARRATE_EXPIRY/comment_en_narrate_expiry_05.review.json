@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_05",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "I chose one minute. This setup needs a longer window.",
+  "tts_text": "[bright and conversational] I chose one minute. This setup needs a longer window.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8e9ab1609958c651d4df6f868a0cad501fe6bf1bdca74554637a6dbd2ce266ff",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_05.mp3",
+  "duration": 3.813812,
+  "sha256": "97ea3e19fa358db0d533e4c32ac458e350f7563aad3d87b4f104914020ce6d69",
+  "request_payload": {
+    "text": "[bright and conversational] I chose one minute. This setup needs a longer window.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

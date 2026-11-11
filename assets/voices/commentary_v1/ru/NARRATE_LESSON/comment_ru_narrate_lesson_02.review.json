@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_02",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Сильная свеча не повод догонять цену. У движения бывает предел.",
+  "tts_text": "[curious and conversational] Сильная свеча не повод догонять цену. У движения бывает предел.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "16db39d418e032186619d580831ab32af390ff9b7b6ccfa3c6e9641b6154ca9c",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_02.mp3",
+  "duration": 4.075,
+  "sha256": "b7697cb2d8995a16a78a19cbd9d212084eecb46cd479972539270eb8b52f4231",
+  "request_payload": {
+    "text": "[curious and conversational] Сильная свеча не повод догонять цену. У движения бывает предел.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_04",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+  "tts_text": "[confident and lively] Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4e5731640be5af8d9bb8a46fb55108085547c8ce4587ec2865cea97880b1f3d6",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_04.mp3",
+  "duration": 4.101125,
+  "sha256": "7722c8987a6a7da290a4ae241a2edc0ebc7a6e8c44209eeb7b818baa0d41c0aa",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

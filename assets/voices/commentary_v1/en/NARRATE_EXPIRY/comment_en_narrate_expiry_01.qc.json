@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_01",
+  "sha256": "600f33af0deb1e4cb6624a538a40c804939b732c9a39d3f1743771b390c612d7",
+  "expected": "Fifteen seconds here: the confirmed short impulse matters.",
+  "transcript": "Fifteen seconds here. The confirmed short impulse matters.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07625,
+    "peak": 0.50461,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.221,
+    "sha256": "600f33af0deb1e4cb6624a538a40c804939b732c9a39d3f1743771b390c612d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Fifteen seconds here. The confirmed short impulse matters."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

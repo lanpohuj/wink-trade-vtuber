@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_call_07",
+  "sha256": "5c994864ee350c5204f3712f622a3f81dc03114ea5bdf284c8cc21d3bea6103d",
+  "expected": "Открыла вверх: реакция на уровень изменила локальную структуру.",
+  "transcript": "Открыла верх. Реакция на уровень изменила локальную структуру.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.09204,
+    "peak": 0.43339,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.094,
+    "sha256": "5c994864ee350c5204f3712f622a3f81dc03114ea5bdf284c8cc21d3bea6103d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Открыла верх. Реакция на уровень изменила локальную структуру."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

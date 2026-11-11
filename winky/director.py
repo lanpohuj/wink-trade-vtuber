@@ -116,8 +116,13 @@ class StreamDirector:
                 return {'ok': False, 'error': 'invalid_phase_context'}
             if str(phase).upper() not in ('IDLE', 'ANALYZING', 'IN_TRADE', 'RESULT', 'COOLDOWN'):
                 return {'ok': False, 'error': 'invalid_phase'}
+            if incoming.get('auto_stream') is True:
+                from winky.commentary import seconds
+                if time.time() - seconds(incoming['created_at']) > 3:
+                    return {'ok': True, 'stale': True}
             if incoming['created_at'] < self.context.get('created_at', 0):
                 return {'ok': True, 'stale': True}
+            incoming.update(pair=pair or self._current_pair, remaining_sec=remaining_sec)
             self.context = dict(incoming)
             old_phase = self._trade_phase
             self._trade_phase = phase.upper()
@@ -286,11 +291,12 @@ class StreamDirector:
     def note_commentary_started(self, event: dict) -> None:
         with self._lock:
             self._commentary_used[event['commentary_fact_key']] = time.time()
-        self._log_event({'type': 'commentary_start', 'category': event['category'],
-                         'event_id': event['event_id'], 'file_id': event.get('file_id'),
-                         'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'time': time.time()})
 
     def note_voice_started(self, event: dict) -> None:
+        self._log_event({'type': 'voice_start', 'category': event.get('category'),
+                         'event_id': event.get('event_id'), 'file_id': event.get('file_id'),
+                         'text': event.get('text'), 'source': event.get('voice_source'),
+                         'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'time': time.time()})
         if event.get('category') in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
             self._announced_result = (event.get('session_id'), event.get('trade_seq'))
 
@@ -395,7 +401,7 @@ class StreamDirector:
             "type": "chat_reply",
             "user": item.user,
             "text": item.reply_text,
-            "status": "speaking",
+            "status": "queued_for_playback",
             "time": time.time(),
         })
 

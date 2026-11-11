@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_lesson_03",
+  "sha256": "e4b61f74874bed5decf0c0d6054eef1d66c8b7c8d5f08f99fe5c6352c572e694",
+  "expected": "После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+  "transcript": "После пробоя важен возврат к уровню. Сам пробой еще не весь сетап.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.09045,
+    "peak": 0.4329,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.185,
+    "sha256": "e4b61f74874bed5decf0c0d6054eef1d66c8b7c8d5f08f99fe5c6352c572e694"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " После пробоя важен возврат к уровню."
+    },
+    {
+      "start": 2.6,
+      "end": 4.6000000000000005,
+      "text": " Сам пробой еще не весь сетап."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

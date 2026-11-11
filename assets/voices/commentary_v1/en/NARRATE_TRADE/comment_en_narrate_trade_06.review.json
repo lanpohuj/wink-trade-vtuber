@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_06",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "Watching it through calmly. One quick move is not the final result.",
+  "tts_text": "[bright and conversational] Watching it through calmly. One quick move is not the final result.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "60cb480460a065492e69a175e734ddadb9beb21d76082d287eedc7c966890954",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_06.mp3",
+  "duration": 4.545187,
+  "sha256": "5e0706428daa22fad711aa10c773c5f42955c4c6a51956d074ef707a65037e54",
+  "request_payload": {
+    "text": "[bright and conversational] Watching it through calmly. One quick move is not the final result.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

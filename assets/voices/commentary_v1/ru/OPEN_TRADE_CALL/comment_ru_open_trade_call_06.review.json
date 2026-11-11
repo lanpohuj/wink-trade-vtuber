@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_call_06",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Открыла вверх: от границы диапазона получено подтверждение.",
+  "tts_text": "[confident and lively] Открыла вверх: от границы диапазона получено подтверждение.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "33a054d26d0e47c0b02dc24934f94008b2460a74b7956d1299e0ca3259859164",
+  "file": "ru/OPEN_TRADE_CALL/comment_ru_open_trade_call_06.mp3",
+  "duration": 3.892125,
+  "sha256": "203a240dc5ab7ab22d557411be96c1ccdcc215986fc729df33f6686282e12d1f",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вверх: от границы диапазона получено подтверждение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

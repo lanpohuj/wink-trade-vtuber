@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_put_03",
+  "sha256": "77641ae0b3cb5cd64e608987570672b044bb0479b2e441ef2b9cb3abe31536c8",
+  "expected": "Открыла вниз: пробитый уровень удержался после возврата.",
+  "transcript": "Открыла вниз. Пробитый уровень удержался после возврата.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.08723,
+    "peak": 0.4242,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.102,
+    "sha256": "77641ae0b3cb5cd64e608987570672b044bb0479b2e441ef2b9cb3abe31536c8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Открыла вниз. Пробитый уровень удержался после возврата."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

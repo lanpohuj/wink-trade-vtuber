@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_02",
+  "sha256": "29b16388fc14e89d17ef9fb4daf97d1c8688bc3b4aa35f67f0c7f3cfb66c37b5",
+  "expected": "Who enjoys a calm chart breakdown? I think we will get along.",
+  "transcript": "Who enjoys a calm chart breakdown? I think we will get along.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07667,
+    "peak": 0.38413,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.301,
+    "sha256": "29b16388fc14e89d17ef9fb4daf97d1c8688bc3b4aa35f67f0c7f3cfb66c37b5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Who enjoys a calm chart breakdown? I think we will get along."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

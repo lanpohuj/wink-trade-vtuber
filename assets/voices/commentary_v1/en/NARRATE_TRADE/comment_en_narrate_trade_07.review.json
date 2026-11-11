@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_07",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "No conclusions before the close. Patience matters here.",
+  "tts_text": "[bright and conversational] No conclusions before the close. Patience matters here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1fb95e88ef80a19c568682d4c7575b3eecbf28bc2c2018239d8310af5ea5eb42",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_07.mp3",
+  "duration": 4.101125,
+  "sha256": "80b6239715df70b9bcc0f64b43b63f0156b4e5516e902324096f05bc2f71302f",
+  "request_payload": {
+    "text": "[bright and conversational] No conclusions before the close. Patience matters here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

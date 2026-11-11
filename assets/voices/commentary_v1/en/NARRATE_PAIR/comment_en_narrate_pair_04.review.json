@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_04",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "Still looking. The setup matters more than how many charts we scan.",
+  "tts_text": "[bright and conversational] Still looking. The setup matters more than how many charts we scan.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ad46fa8143a17d06a56600ba9316e66fbc0cc32d68f0ca91c34c5b92370ee55",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_04.mp3",
+  "duration": 4.101125,
+  "sha256": "bf90e77d481bc7aeaef1d9fd7515dd015dd899213493852960dbbf5e60557fa6",
+  "request_payload": {
+    "text": "[bright and conversational] Still looking. The setup matters more than how many charts we scan.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

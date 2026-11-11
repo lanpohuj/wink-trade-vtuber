@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_01",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "Chat, do you usually look at the trend first, or the levels?",
+  "tts_text": "[friendly and playful] Chat, do you usually look at the trend first, or the levels?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6ea0cb0db344fb79a72c3c956cca8d5f36cd3d43422f4cfb670dde7e125ac060",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_01.mp3",
+  "duration": 3.813812,
+  "sha256": "1337db00990047772ac517b509a7bdb97e19f63ca5a9493a33266310b6172522",
+  "request_payload": {
+    "text": "[friendly and playful] Chat, do you usually look at the trend first, or the levels?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

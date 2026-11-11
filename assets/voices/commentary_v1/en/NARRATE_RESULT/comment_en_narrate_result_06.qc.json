@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_06",
+  "sha256": "fc7a498b2e26269c517d747d4b88d6369b68b9fc5351b3ad6dfd47349e88054f",
+  "expected": "Recovery is on its second step: two hundred forty-two.",
+  "transcript": "Recovery is on its second step, 242!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.08049,
+    "peak": 0.47735,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.12,
+    "sha256": "fc7a498b2e26269c517d747d4b88d6369b68b9fc5351b3ad6dfd47349e88054f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Recovery is on its second step, 242!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

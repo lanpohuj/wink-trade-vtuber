@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_pair_06",
+  "category": "NARRATE_PAIR",
+  "lang": "ru",
+  "text": "Здесь начинаю проверку заново: направление, структура и подтверждение.",
+  "tts_text": "[bright and conversational] Здесь начинаю проверку заново: направление, структура и подтверждение.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "819c906b97c1056dbe389064fd8ce515fb9f7ffa0589ca1e8bdb104a68d66102",
+  "file": "ru/NARRATE_PAIR/comment_ru_narrate_pair_06.mp3",
+  "duration": 4.675813,
+  "sha256": "d6725997e2afd63188a09a0fe1d075759a3fe3cd66670c799f419e4017dbf5a2",
+  "request_payload": {
+    "text": "[bright and conversational] Здесь начинаю проверку заново: направление, структура и подтверждение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

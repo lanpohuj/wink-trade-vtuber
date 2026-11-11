@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_call_04",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Opened up: a confirmed retest followed the breakout.",
+  "tts_text": "[confident and lively] Opened up: a confirmed retest followed the breakout.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2f9519e514dd98d22cf36fd91a051dde076e8e7585563edaf36dfd9860bb7498",
+  "file": "en/OPEN_TRADE_CALL/comment_en_open_trade_call_04.mp3",
+  "duration": 3.500313,
+  "sha256": "7a54df95177645ebeba362019e9462bda4ed6d833b4e6ec78d6705f6b67b7976",
+  "request_payload": {
+    "text": "[confident and lively] Opened up: a confirmed retest followed the breakout.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_trade_01",
+  "sha256": "8e3696e773c0fe79d3a606509ddc1e8b86ddb387ce65988d85c614106551cef3",
+  "expected": "Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+  "transcript": "Сделка ещё идёт! Итог за нас определит закрытие, не эмоции!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08673,
+    "peak": 0.3637,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "8e3696e773c0fe79d3a606509ddc1e8b86ddb387ce65988d85c614106551cef3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Сделка ещё идёт!"
+    },
+    {
+      "start": 1.6,
+      "end": 4.1,
+      "text": " Итог за нас определит закрытие, не эмоции!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

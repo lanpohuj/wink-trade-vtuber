@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_04",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "A level matters because of the reaction, not because of a pretty line.",
+  "tts_text": "[curious and conversational] A level matters because of the reaction, not because of a pretty line.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "39c0a7f4f8b84f220c4d29d61876dc911010289978f5846010aacceeea982960",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_04.mp3",
+  "duration": 4.101125,
+  "sha256": "dc95767de6f5f4cfc000e7e99c87a23059dc4ddeeeb34f019a4035dfdf6671da",
+  "request_payload": {
+    "text": "[curious and conversational] A level matters because of the reaction, not because of a pretty line.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

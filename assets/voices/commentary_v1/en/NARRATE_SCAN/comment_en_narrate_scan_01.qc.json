@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_01",
+  "sha256": "6fc13b91770bcaac896182b1c9fe17e4281d062ecd8b54903c351571a0390d32",
+  "expected": "Comparing charts. I want a clear setup, not just movement.",
+  "transcript": "Comparing charts, I want a clear setup, not just movement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08122,
+    "peak": 0.4347,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.171,
+    "sha256": "6fc13b91770bcaac896182b1c9fe17e4281d062ecd8b54903c351571a0390d32"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Comparing charts, I want a clear setup, not just movement."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

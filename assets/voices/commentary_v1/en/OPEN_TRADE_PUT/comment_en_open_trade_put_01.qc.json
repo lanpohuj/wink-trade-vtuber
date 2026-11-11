@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_put_01",
+  "sha256": "95ac96482ee5f14505aeefa260fc8a2b2f734c36e63f70427db1f95a4d778650",
+  "expected": "Opened down: the move resumed after a pullback.",
+  "transcript": "Open down the move resumed after a pullback",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.0842,
+    "peak": 0.36785,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.29,
+    "sha256": "95ac96482ee5f14505aeefa260fc8a2b2f734c36e63f70427db1f95a4d778650"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Open down the move resumed after a pullback"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

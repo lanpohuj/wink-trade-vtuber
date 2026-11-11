@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_01",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+  "tts_text": "[curious and conversational] Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "56b5c731fb68184009e0e84f87c42309b85617725405308b5f6ce79bd85e95b2",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_01.mp3",
+  "duration": 3.709312,
+  "sha256": "155a681fbd0e63d411f29538ab9a971d3964294899fab3db452963303da287f0",
+  "request_payload": {
+    "text": "[curious and conversational] Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

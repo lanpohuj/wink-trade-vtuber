@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_06",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "I like sharing the reasoning with you, not just showing a button.",
+  "tts_text": "[friendly and playful] I like sharing the reasoning with you, not just showing a button.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9f0797ec1fad1ae2ffa6794b500fc8bed7cd331c2cfdedd1f5014b80b6c13473",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_06.mp3",
+  "duration": 4.075,
+  "sha256": "25dd1a32c8ce0eccac6ceba4eb35f32101299ce5bcaa89ebd197fa5f987ef19f",
+  "request_payload": {
+    "text": "[friendly and playful] I like sharing the reasoning with you, not just showing a button.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

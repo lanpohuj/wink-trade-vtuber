@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_01",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+  "tts_text": "[lighthearted and reassuring] Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+  "conditions": {
+    "result_kind": "LOSS_GENERIC"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a82dac62b3c56d5ef8b0372df4e5fed5662f9293707a4bc7f20accbb720a4607",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_01.mp3",
+  "duration": 4.414625,
+  "sha256": "0fb58a207222a3d32dc977ad4dc530984d80174693b2a5fc727ce7b9540bcf1d",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

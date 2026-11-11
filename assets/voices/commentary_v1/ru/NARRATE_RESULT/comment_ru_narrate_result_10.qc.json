@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_result_10",
+  "sha256": "aeca5aed6faec05c14f61eb4346b084675e1650c5e625e5de6ae254a225d5b3f",
+  "expected": "На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+  "transcript": "На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.09964,
+    "peak": 0.74584,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "aeca5aed6faec05c14f61eb4346b084675e1650c5e625e5de6ae254a225d5b3f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " На последних секундах движение изменилось."
+    },
+    {
+      "start": 2.56,
+      "end": 4.5600000000000005,
+      "text": " Закрытие чуть ниже порога плюса."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

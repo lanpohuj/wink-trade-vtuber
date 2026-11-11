@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_result_01",
+  "sha256": "0fb58a207222a3d32dc977ad4dc530984d80174693b2a5fc727ce7b9540bcf1d",
+  "expected": "Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+  "transcript": "Минус зафиксирован. Этот результат не прячем. Продолжаем по правилам.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.0865,
+    "peak": 0.336,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "0fb58a207222a3d32dc977ad4dc530984d80174693b2a5fc727ce7b9540bcf1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Минус зафиксирован. Этот результат не прячем. Продолжаем по правилам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

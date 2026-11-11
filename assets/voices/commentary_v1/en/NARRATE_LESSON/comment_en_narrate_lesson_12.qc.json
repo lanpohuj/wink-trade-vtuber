@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_12",
+  "sha256": "ea150a5f1e8df90894c5cb155668a7a6bcb4e4a6f7eb264331eb6328b1d76eab",
+  "expected": "Near an opposing level, price may not have enough room to move.",
+  "transcript": "Near an opposing level, price may not have enough room to move.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0728,
+    "peak": 0.34879,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.294,
+    "sha256": "ea150a5f1e8df90894c5cb155668a7a6bcb4e4a6f7eb264331eb6328b1d76eab"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Near an opposing level, price may not have enough room to move."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

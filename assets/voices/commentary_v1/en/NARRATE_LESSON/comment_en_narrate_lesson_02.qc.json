@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_02",
+  "sha256": "5d9d9d94874319e1c04789454686e94a363903fdc9c55da1514ba19edb016fc6",
+  "expected": "A strong candle is not a reason to chase price. A move can run out.",
+  "transcript": "A strong candle is not a reason to chase price. A move can run out.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.09151,
+    "peak": 0.66435,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.156,
+    "sha256": "5d9d9d94874319e1c04789454686e94a363903fdc9c55da1514ba19edb016fc6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " A strong candle is not a reason to chase price. A move can run out."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

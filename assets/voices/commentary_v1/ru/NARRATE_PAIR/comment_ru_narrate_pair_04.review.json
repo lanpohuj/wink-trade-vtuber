@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_pair_04",
+  "category": "NARRATE_PAIR",
+  "lang": "ru",
+  "text": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+  "tts_text": "[bright and conversational] Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f2bcc5eb0c399161245730a65b25f7e31bf3908a4d303d4f43ea2452796eeffc",
+  "file": "ru/NARRATE_PAIR/comment_ru_narrate_pair_04.mp3",
+  "duration": 4.806438,
+  "sha256": "8b4544bf7a1e23c99e3999d049154399f30628b633a1095ea3d711d863df03f3",
+  "request_payload": {
+    "text": "[bright and conversational] Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_01",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: после отката движение возобновилось.",
+  "tts_text": "[confident and lively] Открыла вниз: после отката движение возобновилось.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "afa0420e96aea7c2b4ed55a7444a5399b23c00e614b299f17edd48c98fa3339b",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_01.mp3",
+  "duration": 3.317438,
+  "sha256": "1ce043adab958430b4f7247505c593650afd2f0ae93edea574809b5dc570b273",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: после отката движение возобновилось.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

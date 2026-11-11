@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_03",
+  "sha256": "f396d666c8f8db8f0e7a352c6792e9a11b6511a82323aa71fba5e4f768f97e06",
+  "expected": "Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+  "transcript": "Если что-то в разборе, непонятно, пишите. Объясню простыми словами.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08533,
+    "peak": 0.38234,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.101,
+    "sha256": "f396d666c8f8db8f0e7a352c6792e9a11b6511a82323aa71fba5e4f768f97e06"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Если что-то в разборе, непонятно, пишите. Объясню простыми словами."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

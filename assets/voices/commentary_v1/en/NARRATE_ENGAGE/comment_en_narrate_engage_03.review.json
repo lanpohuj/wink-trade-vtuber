@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_03",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+  "tts_text": "[friendly and playful] If anything in the breakdown is unclear, ask. I will keep it simple.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2efd081c557b09cd04a57656b639e3537b26192975387a5eee4a26a59a114585",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_03.mp3",
+  "duration": 4.075,
+  "sha256": "4c1eba03bd10c3f7d066e79bd89a1fe70ab242b1fcfe3857a13e13da8a21d096",
+  "request_payload": {
+    "text": "[friendly and playful] If anything in the breakdown is unclear, ask. I will keep it simple.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

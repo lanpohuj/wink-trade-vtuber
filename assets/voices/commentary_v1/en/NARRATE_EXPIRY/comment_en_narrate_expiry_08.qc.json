@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_08",
+  "sha256": "8bd686d1b7567d0eec5687aba23b26fdc3522166d4df297919627b33da10e86b",
+  "expected": "We chose a two-minute window, so we follow the structure of the move.",
+  "transcript": "We chose a two-minute window so we follow the structure of the move.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.07492,
+    "peak": 0.33525,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.255,
+    "sha256": "8bd686d1b7567d0eec5687aba23b26fdc3522166d4df297919627b33da10e86b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " We chose a two-minute window so we follow the structure of the move."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

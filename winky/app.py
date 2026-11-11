@@ -933,6 +933,16 @@ class WinkyAPI:
             self._chat_router.handle_like(user, count=count)
 
     def maybe_say_cta(self) -> None:
+        # Pocket narration owns idle windows while its bridge is connected.
+        # Do not add unrelated warmups or synthesize extra automatic speech.
+        from winky.director import stream_director
+        from winky.commentary import context_valid
+        from time import time as wall_time
+        if context_valid(stream_director.context, stream_director._last_phase_update) or (
+            'auto_stream' in stream_director.context
+            and wall_time() - stream_director._last_phase_update <= 3
+        ):
+            return
         if not self._cta_enabled or self._controller.paused or self._controller.speaking:
             return
         if self._controller.queue_size() > 0:

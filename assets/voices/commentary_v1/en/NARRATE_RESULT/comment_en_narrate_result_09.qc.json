@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_09",
+  "sha256": "d55abe511acaa8b5dc81dcd616b652b3cd57da761aa9ce87e1e92cc371840462",
+  "expected": "It was close to positive, but slipped at the close. The result is a loss.",
+  "transcript": "and was close to positive but slipped at the close. The result is a loss.",
+  "similarity": 0.956,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08099,
+    "peak": 0.42435,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.256,
+    "sha256": "d55abe511acaa8b5dc81dcd616b652b3cd57da761aa9ce87e1e92cc371840462"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " and was close to positive but slipped at the close. The result is a loss."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_04",
+  "sha256": "8594199a832631b2dbe0fb0ffb2c5e401a456f3c5ad6f2b88f28cb85589bbc7f",
+  "expected": "Thirty seconds fits this setup; it is not a default choice.",
+  "transcript": "30 seconds fits this setup. It is not a default choice",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08501,
+    "peak": 0.45674,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.151,
+    "sha256": "8594199a832631b2dbe0fb0ffb2c5e401a456f3c5ad6f2b88f28cb85589bbc7f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " 30 seconds fits this setup. It is not a default choice"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

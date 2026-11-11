@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_05",
+  "sha256": "55e9b11ab7725747caf193a44de9c8242208b6015ec9151198961c1dc14ab956",
+  "expected": "Short and long expiries need their own kinds of confirmation.",
+  "transcript": "Short and long expires need their own kinds of confirmation.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.08367,
+    "peak": 0.42236,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.179,
+    "sha256": "55e9b11ab7725747caf193a44de9c8242208b6015ec9151198961c1dc14ab956"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Short and long expires need their own kinds of confirmation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

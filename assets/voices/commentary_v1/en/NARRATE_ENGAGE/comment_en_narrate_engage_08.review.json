@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_08",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "Let us keep watching together. Questions about the strategy are welcome.",
+  "tts_text": "[friendly and playful] Let us keep watching together. Questions about the strategy are welcome.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3d9bf38bc8c8b41727376df6ab0897b2e682f188ca0ade34f1993d85593df226",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_08.mp3",
+  "duration": 4.362375,
+  "sha256": "8604a909a67b4df81302491ee5de3862faf0c872f0e83d704b962e948359c3a3",
+  "request_payload": {
+    "text": "[friendly and playful] Let us keep watching together. Questions about the strategy are welcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

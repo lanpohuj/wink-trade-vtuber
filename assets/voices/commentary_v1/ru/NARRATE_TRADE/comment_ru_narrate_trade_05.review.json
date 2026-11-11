@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_05",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Сделка на экране, я слежу за её завершением.",
+  "tts_text": "[bright and conversational] Сделка на экране, я слежу за её завершением.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "175fa7c4a5d9d9dac5ec8137513f7aeeb0d538f9e2f6b430672c41089a5a5f08",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_05.mp3",
+  "duration": 3.1085,
+  "sha256": "661d8af852812999e45c077e5b139b3a3941b9eafd4c51c9006a98a7e9325b65",
+  "request_payload": {
+    "text": "[bright and conversational] Сделка на экране, я слежу за её завершением.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

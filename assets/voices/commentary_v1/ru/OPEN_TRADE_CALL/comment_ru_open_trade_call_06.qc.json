@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_call_06",
+  "sha256": "203a240dc5ab7ab22d557411be96c1ccdcc215986fc729df33f6686282e12d1f",
+  "expected": "Открыла вверх: от границы диапазона получено подтверждение.",
+  "transcript": "Открыла вверх. От границы диапазона получено подтверждение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.09533,
+    "peak": 0.37584,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "203a240dc5ab7ab22d557411be96c1ccdcc215986fc729df33f6686282e12d1f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Открыла вверх. От границы диапазона получено подтверждение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

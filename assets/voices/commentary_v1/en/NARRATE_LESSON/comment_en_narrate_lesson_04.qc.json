@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_04",
+  "sha256": "dc95767de6f5f4cfc000e7e99c87a23059dc4ddeeeb34f019a4035dfdf6671da",
+  "expected": "A level matters because of the reaction, not because of a pretty line.",
+  "transcript": "A level matters because of the reaction, not because of a pretty line.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08798,
+    "peak": 0.5726,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.221,
+    "sha256": "dc95767de6f5f4cfc000e7e99c87a23059dc4ddeeeb34f019a4035dfdf6671da"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A level matters because of the reaction, not because of a pretty line."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

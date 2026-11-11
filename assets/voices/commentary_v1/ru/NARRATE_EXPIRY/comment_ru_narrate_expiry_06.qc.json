@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_06",
+  "sha256": "ac8b0483768776f0449b41195a939ca5398ff3fbbba70fda3c77dd7b29be8152",
+  "expected": "Это минутная сделка. Не оцениваем её по одному короткому тику.",
+  "transcript": "Это минутная сделка! Не оцениваем ее по одному короткому тику!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08726,
+    "peak": 0.33476,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.126,
+    "sha256": "ac8b0483768776f0449b41195a939ca5398ff3fbbba70fda3c77dd7b29be8152"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Это минутная сделка! Не оцениваем ее по одному короткому тику!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

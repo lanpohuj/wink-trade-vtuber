@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_10",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Результат одной сделки не доказывает качество всей стратегии.",
+  "tts_text": "[curious and conversational] Результат одной сделки не доказывает качество всей стратегии.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0cbe3879ac5f6db5d6c851d8cbd5b9b9300b1f5aa29fdeedab0859bf88b4f03c",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_10.mp3",
+  "duration": 3.448062,
+  "sha256": "28cb1b32b8a2e4768c601350c3c8030d47c4de6f2ae15533b66892265878474e",
+  "request_payload": {
+    "text": "[curious and conversational] Результат одной сделки не доказывает качество всей стратегии.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_scan_02",
+  "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9",
+  "expected": "Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+  "transcript": "Смотрю, кто сейчас ведет цену. С направлением спешить не будем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.07446,
+    "peak": 0.33312,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.091,
+    "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Смотрю, кто сейчас ведет цену. С направлением спешить не будем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

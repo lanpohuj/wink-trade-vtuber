@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_01",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "Fifteen seconds here: the confirmed short impulse matters.",
+  "tts_text": "[bright and conversational] Fifteen seconds here: the confirmed short impulse matters.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "364becae340f85225432500db53bb73dc9db0f445ebb334021f379865b3c0491",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_01.mp3",
+  "duration": 4.101125,
+  "sha256": "600f33af0deb1e4cb6624a538a40c804939b732c9a39d3f1743771b390c612d7",
+  "request_payload": {
+    "text": "[bright and conversational] Fifteen seconds here: the confirmed short impulse matters.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

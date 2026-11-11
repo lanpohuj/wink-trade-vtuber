@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_scan_01",
+  "sha256": "34622e38574790d7fc26d3ac8fd89e5cf2f656e2984f3ae397b84fcf8f1a166a",
+  "expected": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+  "transcript": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.0948,
+    "peak": 0.45653,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "34622e38574790d7fc26d3ac8fd89e5cf2f656e2984f3ae397b84fcf8f1a166a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Сравниваю графики. Мне нужен понятный сценарий, а не просто движение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

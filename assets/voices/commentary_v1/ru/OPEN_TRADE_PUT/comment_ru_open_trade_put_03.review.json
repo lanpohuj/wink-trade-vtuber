@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_03",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: пробитый уровень удержался после возврата.",
+  "tts_text": "[confident and lively] Открыла вниз: пробитый уровень удержался после возврата.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c79c72269781cef2287185e99619a9bedacef9a6a878d034cf1f39afe683187d",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_03.mp3",
+  "duration": 3.761563,
+  "sha256": "77641ae0b3cb5cd64e608987570672b044bb0479b2e441ef2b9cb3abe31536c8",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: пробитый уровень удержался после возврата.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_06",
+  "sha256": "5e0706428daa22fad711aa10c773c5f42955c4c6a51956d074ef707a65037e54",
+  "expected": "Watching it through calmly. One quick move is not the final result.",
+  "transcript": "Watching it through calmly, one quick move is not the final result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08065,
+    "peak": 0.41977,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.245,
+    "sha256": "5e0706428daa22fad711aa10c773c5f42955c4c6a51956d074ef707a65037e54"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.44,
+      "text": " Watching it through calmly, one quick move is not the final result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

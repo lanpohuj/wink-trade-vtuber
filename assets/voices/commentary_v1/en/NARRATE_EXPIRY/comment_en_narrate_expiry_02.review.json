@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_02",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "This is a fifteen-second window, not a call on the whole trend.",
+  "tts_text": "[bright and conversational] This is a fifteen-second window, not a call on the whole trend.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2a91344e0b8cd694d5a059b480c9cb9a2e1d62ef462a6c31a4ce8341990a0d86",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_02.mp3",
+  "duration": 4.205625,
+  "sha256": "a12440d2ab7130804b69ff134b4f61966bb6f8f0d3b3e3b80191553a05b72770",
+  "request_payload": {
+    "text": "[bright and conversational] This is a fifteen-second window, not a call on the whole trend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

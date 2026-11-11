@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_03",
+  "sha256": "5c95358a46b847205387dd30a93abf9b03eb083aa23ad20da4fe314b822c2d89",
+  "expected": "Just observing now. We are not stacking another trade on top.",
+  "transcript": "Just observing now. We are not stacking another trade on top",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08059,
+    "peak": 0.33799,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.366,
+    "sha256": "5c95358a46b847205387dd30a93abf9b03eb083aa23ad20da4fe314b822c2d89"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.74,
+      "text": " Just observing now. We are not stacking another trade on top"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

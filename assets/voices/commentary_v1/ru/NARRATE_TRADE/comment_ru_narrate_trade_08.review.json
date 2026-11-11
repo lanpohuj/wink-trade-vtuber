@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_08",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+  "tts_text": "[bright and conversational] Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "aa8fdb68d72939b82f47718c69c2ef2eb803e70437bc8f8cecbbe7e8c13d4790",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_08.mp3",
+  "duration": 4.075,
+  "sha256": "1bf79d1821de8f1aa9f6774d8600e5476429bc9e995c72e1047e04de657fd4b5",
+  "request_payload": {
+    "text": "[bright and conversational] Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

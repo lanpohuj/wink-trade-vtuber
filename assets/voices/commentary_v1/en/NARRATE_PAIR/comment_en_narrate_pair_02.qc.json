@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_02",
+  "sha256": "d49ee6bba2659c30386f6df502279d2655a67ef671707d94bb63b6446f43c0f0",
+  "expected": "New pair, fresh checks. The last chart tells us nothing here.",
+  "transcript": "New pair? Fresh checks. The last chart tells us nothing here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08125,
+    "peak": 0.56322,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.155,
+    "sha256": "d49ee6bba2659c30386f6df502279d2655a67ef671707d94bb63b6446f43c0f0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.34,
+      "text": " New pair? Fresh checks. The last chart tells us nothing here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

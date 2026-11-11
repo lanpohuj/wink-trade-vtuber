@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_volatility_02",
+  "category": "NARRATE_VOLATILITY",
+  "lang": "ru",
+  "text": "Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+  "tts_text": "[focused] Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b403be74dc386c501b12078a4a729d07a494ac57eb71aba3823dc7a40c20f7a4",
+  "file": "ru/NARRATE_VOLATILITY/comment_ru_narrate_volatility_02.mp3",
+  "duration": 3.944375,
+  "sha256": "52922a4caa370de04b83cdea54042d365884fa33d7b084f44d9036266bee1583",
+  "request_payload": {
+    "text": "[focused] Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_05",
+  "sha256": "84bd139913e592ad69a11f1306926f46af19a7f4de4be8d29d8bfc5c431aef77",
+  "expected": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+  "transcript": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.09018,
+    "peak": 0.43067,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.093,
+    "sha256": "84bd139913e592ad69a11f1306926f46af19a7f4de4be8d29d8bfc5c431aef77"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Выбрала минуту. Этому сценарию нужно более длинное окно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

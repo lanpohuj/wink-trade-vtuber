@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_05",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "Short and long expiries need their own kinds of confirmation.",
+  "tts_text": "[curious and conversational] Short and long expiries need their own kinds of confirmation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "812d07f5674959cf4abf26e86d642ed16ca5a13b0ea6dfabf70c5aee68546f5c",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_05.mp3",
+  "duration": 3.578688,
+  "sha256": "55e9b11ab7725747caf193a44de9c8242208b6015ec9151198961c1dc14ab956",
+  "request_payload": {
+    "text": "[curious and conversational] Short and long expiries need their own kinds of confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

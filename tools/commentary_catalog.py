@@ -399,8 +399,8 @@ def catalog():
                 "The close is interesting, but so is why the entry appeared at all.",
             ),
             (
-                "Чатик, бывало у вас: одна свеча — и график уже выглядит иначе?",
-                "Ever noticed how one candle can change your first impression of a chart?",
+                "Для входа я сверяю несколько интервалов: так понятнее, куда пойдёт график.",
+                "I check several timeframes before an entry to understand the context.",
             ),
             (
                 "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",

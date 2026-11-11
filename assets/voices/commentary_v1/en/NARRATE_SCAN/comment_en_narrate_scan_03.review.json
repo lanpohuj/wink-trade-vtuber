@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_scan_03",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Checking confirmation. One pretty candle is not the whole story.",
+  "tts_text": "[bright and conversational] Checking confirmation. One pretty candle is not the whole story.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3152c14a2ec9335206c402570b642bb184e5ae5ff15545565c6ee64b32e8b15d",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_03.mp3",
+  "duration": 4.23175,
+  "sha256": "6ebc385bc45c6aa8a116a2b8bc4623d5e70b64d2720b7af9587194cce75ba2e0",
+  "request_payload": {
+    "text": "[bright and conversational] Checking confirmation. One pretty candle is not the whole story.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

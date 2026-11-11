@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_07",
+  "sha256": "416647cee0ca1a57f4d4420588cb30b785e5f7d4a15991fac72ddec9115dcf92",
+  "expected": "Opened up: the level reaction changed local structure.",
+  "transcript": "Opened up the level reaction changed local structure",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07653,
+    "peak": 0.40507,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.294,
+    "sha256": "416647cee0ca1a57f4d4420588cb30b785e5f7d4a15991fac72ddec9115dcf92"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Opened up the level reaction changed local structure"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

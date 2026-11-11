@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_pair_03",
+  "sha256": "2992e600cf90fb52278cfe4059b5753710c46aabefecb1559c77c500e4955304",
+  "expected": "Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+  "transcript": "Сравниваю еще один вариант. Выбор не сводится к первой попавшейся паре.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08674,
+    "peak": 0.39342,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "2992e600cf90fb52278cfe4059b5753710c46aabefecb1559c77c500e4955304"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.1,
+      "text": " Сравниваю еще один вариант."
+    },
+    {
+      "start": 2.1,
+      "end": 4.6000000000000005,
+      "text": " Выбор не сводится к первой попавшейся паре."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

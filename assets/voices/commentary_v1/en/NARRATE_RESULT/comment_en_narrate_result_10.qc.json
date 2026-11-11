@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_10",
+  "sha256": "0cfdc1e12a16a7550c2f259a002ee5e80001bb5a0d9d3f9cf209f4b272200ea4",
+  "expected": "The move changed in the final seconds. It closed just short of positive.",
+  "transcript": "And the move changed in the final seconds. It closed just short of positive.",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.06659,
+    "peak": 0.33459,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.285,
+    "sha256": "0cfdc1e12a16a7550c2f259a002ee5e80001bb5a0d9d3f9cf209f4b272200ea4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " And the move changed in the final seconds. It closed just short of positive."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

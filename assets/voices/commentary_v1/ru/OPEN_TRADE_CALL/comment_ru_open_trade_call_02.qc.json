@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_call_02",
+  "sha256": "8935d7f89d1d77c9c7646d0cc82eab23d713a62afa1b6f6fa24dd221e0a81d94",
+  "expected": "Открыла вверх: откат завершился, движение получило подтверждение.",
+  "transcript": "Открыла вверх, откат завершился, движение получило подтверждение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08969,
+    "peak": 0.48074,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.115,
+    "sha256": "8935d7f89d1d77c9c7646d0cc82eab23d713a62afa1b6f6fa24dd221e0a81d94"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Открыла вверх, откат завершился, движение получило подтверждение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

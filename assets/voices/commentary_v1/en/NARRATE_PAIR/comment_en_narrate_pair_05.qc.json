@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_05",
+  "sha256": "465138cd7029be12f3890190579ab17aeabe2cc7aff5d73cb19a18cd6aa1aed8",
+  "expected": "Let us try another chart. Sometimes the right move is to keep looking.",
+  "transcript": "Let us try another chart. Sometimes the right move is to keep looking.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08127,
+    "peak": 0.36704,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.215,
+    "sha256": "465138cd7029be12f3890190579ab17aeabe2cc7aff5d73cb19a18cd6aa1aed8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Let us try another chart. Sometimes the right move is to keep looking."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

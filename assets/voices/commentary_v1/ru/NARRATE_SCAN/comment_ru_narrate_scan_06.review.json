@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_scan_06",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Сверяю интервалы. Хочу видеть картину целиком.",
+  "tts_text": "[bright and conversational] Сверяю интервалы. Хочу видеть картину целиком.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7c32eeb7fd2ea6b4495c150c499e37b75e0bcba46ee6df7832357efb07e34d98",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_06.mp3",
+  "duration": 3.630937,
+  "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165",
+  "request_payload": {
+    "text": "[bright and conversational] Сверяю интервалы. Хочу видеть картину целиком.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

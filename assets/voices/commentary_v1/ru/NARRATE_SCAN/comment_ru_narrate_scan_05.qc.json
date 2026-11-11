@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_scan_05",
+  "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e",
+  "expected": "Подгружаются данные графика. Пока ничего не додумываю.",
+  "transcript": "Подгружаются данные графика, пока ничего не додумываю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.09014,
+    "peak": 0.4063,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Подгружаются данные графика, пока ничего не додумываю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

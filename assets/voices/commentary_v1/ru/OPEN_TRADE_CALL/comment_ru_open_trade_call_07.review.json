@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_call_07",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Открыла вверх: реакция на уровень изменила локальную структуру.",
+  "tts_text": "[confident and lively] Открыла вверх: реакция на уровень изменила локальную структуру.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "914ebf45fff3ae445de671bec6353f4ea80dbb18db0453d58d70658a4058fd1b",
+  "file": "ru/OPEN_TRADE_CALL/comment_ru_open_trade_call_07.mp3",
+  "duration": 3.813812,
+  "sha256": "5c994864ee350c5204f3712f622a3f81dc03114ea5bdf284c8cc21d3bea6103d",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вверх: реакция на уровень изменила локальную структуру.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

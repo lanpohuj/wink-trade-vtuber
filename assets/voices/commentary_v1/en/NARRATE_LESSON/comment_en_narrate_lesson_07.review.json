@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_07",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "Not every chart owes us a trade. Skipping is part of the strategy.",
+  "tts_text": "[curious and conversational] Not every chart owes us a trade. Skipping is part of the strategy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "506098677b4819d6b821e3fd620f85a56f643ee652f7709a3f2c1bd79848a767",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_07.mp3",
+  "duration": 4.284,
+  "sha256": "9df2550aa9fb681151d9d8979522b60ba8f8b78b0f623320986ae2d9452b848b",
+  "request_payload": {
+    "text": "[curious and conversational] Not every chart owes us a trade. Skipping is part of the strategy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

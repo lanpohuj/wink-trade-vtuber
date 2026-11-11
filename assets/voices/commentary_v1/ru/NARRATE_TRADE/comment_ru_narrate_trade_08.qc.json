@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_08",
+  "sha256": "1bf79d1821de8f1aa9f6774d8600e5476429bc9e995c72e1047e04de657fd4b5",
+  "expected": "Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+  "transcript": "Продолжаем наблюдать, счетчик изменится только после проверки результата.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.09196,
+    "peak": 0.40993,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "1bf79d1821de8f1aa9f6774d8600e5476429bc9e995c72e1047e04de657fd4b5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Продолжаем наблюдать, счетчик изменится только после проверки результата."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

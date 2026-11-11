@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_scan_05",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Chart data is loading. I will not fill the gaps with guesses.",
+  "tts_text": "[bright and conversational] Chart data is loading. I will not fill the gaps with guesses.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fd669e6a9b91ee2797c04e0377283e1a829f49fdc196ef5d79ba708b12d2b70c",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_05.mp3",
+  "duration": 3.892125,
+  "sha256": "21737d63d9368a0b09342cdd017d7d520c5d77203e6d8a6ef2eff794d0b877ae",
+  "request_payload": {
+    "text": "[bright and conversational] Chart data is loading. I will not fill the gaps with guesses.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

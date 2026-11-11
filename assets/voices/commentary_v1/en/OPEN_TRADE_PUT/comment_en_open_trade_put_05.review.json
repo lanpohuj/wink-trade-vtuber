@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_put_05",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Opened down: price reacted at the edge of the range.",
+  "tts_text": "[confident and lively] Opened down: price reacted at the edge of the range.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5687ae159bf7ae846016bccc10ad882b59eff2e47320002ed496396e307d9f62",
+  "file": "en/OPEN_TRADE_PUT/comment_en_open_trade_put_05.mp3",
+  "duration": 3.239125,
+  "sha256": "a8150e50ab2765435bfe82a8b11a2b009960182ee6c2b3038def57aef4dd31de",
+  "request_payload": {
+    "text": "[confident and lively] Opened down: price reacted at the edge of the range.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

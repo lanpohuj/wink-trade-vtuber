@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_01",
+  "sha256": "e1d85dceb8d716bafeefae1e2067c4a0928ee7bbbd5770b0934a4db964f5ca0e",
+  "expected": "Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+  "transcript": "Чатик, вы обычно смотрите сначала на тренд или на уровне?",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.631,
+    "rms": 0.08642,
+    "peak": 0.42602,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.091,
+    "sha256": "e1d85dceb8d716bafeefae1e2067c4a0928ee7bbbd5770b0934a4db964f5ca0e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Чатик, вы обычно смотрите сначала на тренд или на уровне?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

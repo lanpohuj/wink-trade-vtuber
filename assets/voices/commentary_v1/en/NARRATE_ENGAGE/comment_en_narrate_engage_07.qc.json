@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_07",
+  "sha256": "d5c613e6dea2cdac5bb5d30838dd3c24b0414395f110581760f4b2d773e42f1f",
+  "expected": "Which part interests you more: the structure, or the entry timing?",
+  "transcript": "Which part interests you more? The structure or the entry timing?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.023,
+    "rms": 0.08028,
+    "peak": 0.46728,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.103,
+    "sha256": "d5c613e6dea2cdac5bb5d30838dd3c24b0414395f110581760f4b2d773e42f1f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Which part interests you more? The structure or the entry timing?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -2126,7 +2126,7 @@ class SpeechController:
         phase = stream_director.trade_phase
         if item.event.get('commentary') and phase in ('ANALYZING', 'COOLDOWN', 'RESULT'):
             return True
-        if phase == 'IDLE':
+        if phase == 'IDLE' or (item.priority == 3 and phase in ('ANALYZING', 'COOLDOWN')):
             return True
         if phase != 'IN_TRADE' or not item.media_path:
             return False
@@ -2229,7 +2229,8 @@ class SpeechController:
                 if item.bank_id:
                     self.voice_bank.release(item.bank_id, item.event, played=True)
                 from winky.director import stream_director
-                stream_director.note_voice_started(item.event)
+                stream_director.note_voice_started({**item.event, 'file_id': item.bank_id,
+                                                    'text': item.text, 'voice_source': item.source})
                 if item.event.get('commentary'):
                     stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
                 try:

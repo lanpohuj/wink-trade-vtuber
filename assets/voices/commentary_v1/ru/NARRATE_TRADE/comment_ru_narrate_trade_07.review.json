@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_07",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "До закрытия не делаем выводов. Здесь важно терпение.",
+  "tts_text": "[bright and conversational] До закрытия не делаем выводов. Здесь важно терпение.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "af6ab7b49ea7e0c8d66df67532fc75d759dd9290f0f429a3c228b98a760e2ca0",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_07.mp3",
+  "duration": 3.761563,
+  "sha256": "c6ccdb353c32860812835b91fb874f766510a86119a8aa7bd2f9d47a16d7ba77",
+  "request_payload": {
+    "text": "[bright and conversational] До закрытия не делаем выводов. Здесь важно терпение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

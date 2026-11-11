@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_03",
+  "sha256": "f64a07aaf4280b3242a97de2862008cb65e4b611d68c6eafff810474a9ec660f",
+  "expected": "Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+  "transcript": "Здесь окно в 30 секунд. Смотрим предложение подтвержденного движения.",
+  "similarity": 0.949,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08689,
+    "peak": 0.37625,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.09,
+    "sha256": "f64a07aaf4280b3242a97de2862008cb65e4b611d68c6eafff810474a9ec660f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Здесь окно в 30 секунд. Смотрим предложение подтвержденного движения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

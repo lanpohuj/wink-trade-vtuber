@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_trade_03",
+  "category": "NARRATE_TRADE",
+  "lang": "ru",
+  "text": "Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+  "tts_text": "[bright and conversational] Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "aceb00335cbf1ae96463c47da58226407899e261fd623a492e637c0d6fee7898",
+  "file": "ru/NARRATE_TRADE/comment_ru_narrate_trade_03.mp3",
+  "duration": 4.23175,
+  "sha256": "4d421e00fb165cccd0f9a68be69dcd6a7e9fc96be175c3aef01e47b6f0a6ada2",
+  "request_payload": {
+    "text": "[bright and conversational] Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

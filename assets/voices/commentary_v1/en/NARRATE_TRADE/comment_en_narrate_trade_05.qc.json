@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_05",
+  "sha256": "cbe02af5736d5c6f8f32e268f9b06ddf581993990fef75a5b78231963aa0aa18",
+  "expected": "The trade is on screen. I am following it through to the close.",
+  "transcript": "The trade is on screen. I am following it through to the close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.0855,
+    "peak": 0.726,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "cbe02af5736d5c6f8f32e268f9b06ddf581993990fef75a5b78231963aa0aa18"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The trade is on screen. I am following it through to the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

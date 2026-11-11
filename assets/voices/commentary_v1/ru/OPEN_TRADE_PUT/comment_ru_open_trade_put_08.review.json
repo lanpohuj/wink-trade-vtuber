@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_put_08",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "ru",
+  "text": "Открыла вниз: локальный разворот получил подтверждение.",
+  "tts_text": "[confident and lively] Открыла вниз: локальный разворот получил подтверждение.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "47a34f8f4303d7d51beba6cc886a2767c5421e723b67c7d58d3cc843934155c1",
+  "file": "ru/OPEN_TRADE_PUT/comment_ru_open_trade_put_08.mp3",
+  "duration": 3.761563,
+  "sha256": "48f47c6b38b92db20b3e572d1ac68b0b60e66e12a2b7c14ba7cabaf7910b1373",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вниз: локальный разворот получил подтверждение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

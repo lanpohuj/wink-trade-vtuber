@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_04",
+  "sha256": "029d829251e0845dfc74d1cec067f17c74713d002eccb743f6ed05a857141ddd",
+  "expected": "Reading the structure. An impulse and a pullback are different things.",
+  "transcript": "Reading the structure an impulse and a pullback are different things",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07494,
+    "peak": 0.38015,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "029d829251e0845dfc74d1cec067f17c74713d002eccb743f6ed05a857141ddd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Reading the structure an impulse and a pullback are different things"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

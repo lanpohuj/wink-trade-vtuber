@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_07",
+  "sha256": "bd4ec2a24cd142fe6bbada431df76e2941280324baefe47c9e28483f21959075",
+  "expected": "Здесь две минуты: ориентир — структура старшего интервала.",
+  "transcript": "Здесь две минуты. Ориентир. Структура старшего интервала.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.07677,
+    "peak": 0.3561,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "bd4ec2a24cd142fe6bbada431df76e2941280324baefe47c9e28483f21959075"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Здесь две минуты. Ориентир. Структура старшего интервала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

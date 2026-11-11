@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_03",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "Comparing another option. We do not have to take the first pair.",
+  "tts_text": "[bright and conversational] Comparing another option. We do not have to take the first pair.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "11b8a8011d20454157d865b3548143cbc7ada67c65a0e18d48f7c43d76079748",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_03.mp3",
+  "duration": 3.944375,
+  "sha256": "7a28c4c0b03e194d4f1100f86f62283acf21de0761feda3dc6795cd39a6600aa",
+  "request_payload": {
+    "text": "[bright and conversational] Comparing another option. We do not have to take the first pair.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

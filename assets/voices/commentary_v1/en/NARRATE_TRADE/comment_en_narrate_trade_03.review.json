@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_03",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "Just observing now. We are not stacking another trade on top.",
+  "tts_text": "[bright and conversational] Just observing now. We are not stacking another trade on top.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8390a6369c43488d94f8ddfd92e476ecebf4efae31251cf475ac0f1fd2423c59",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_03.mp3",
+  "duration": 4.205625,
+  "sha256": "5c95358a46b847205387dd30a93abf9b03eb083aa23ad20da4fe314b822c2d89",
+  "request_payload": {
+    "text": "[bright and conversational] Just observing now. We are not stacking another trade on top.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

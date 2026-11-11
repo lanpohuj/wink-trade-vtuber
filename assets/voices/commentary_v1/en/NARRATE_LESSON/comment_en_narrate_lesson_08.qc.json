@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_08",
+  "sha256": "5f521687063e693c91867d446ff9a4a46e05a1f4b18aee8eecd08f7192daab62",
+  "expected": "The higher timeframe keeps a short move in context.",
+  "transcript": "The higher time frame keeps a short move in context.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08009,
+    "peak": 0.38838,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.19,
+    "sha256": "5f521687063e693c91867d446ff9a4a46e05a1f4b18aee8eecd08f7192daab62"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " The higher time frame keeps a short move in context."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

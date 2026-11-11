@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_04",
+  "sha256": "8fe234f3ff29950b8e942cad91d351d1634eaa7b08a512debdb71813231f4beb",
+  "expected": "The move can change. We check the result after the close.",
+  "transcript": "The move can change. We check the result after the close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.07739,
+    "peak": 0.35614,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.203,
+    "sha256": "8fe234f3ff29950b8e942cad91d351d1634eaa7b08a512debdb71813231f4beb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " The move can change. We check the result after the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

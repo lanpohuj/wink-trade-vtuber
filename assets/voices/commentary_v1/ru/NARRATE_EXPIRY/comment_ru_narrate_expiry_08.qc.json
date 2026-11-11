@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_08",
+  "sha256": "297618038849e9b995e3227b16d2217384015a9aaf16932ea280ed4a12332edf",
+  "expected": "Выбрано двухминутное окно, поэтому следим за структурой движения.",
+  "transcript": "Выбрана двухминутное окно. Поэтому следим за структурой движения.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08957,
+    "peak": 0.37343,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.121,
+    "sha256": "297618038849e9b995e3227b16d2217384015a9aaf16932ea280ed4a12332edf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Выбрана двухминутное окно. Поэтому следим за структурой движения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "comment_ru_narrate_lesson_04",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+  "tts_text": "[curious and conversational] Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ecaaf1678a27ae2e6f6a6d5ca5749c02e06e82d6887edbb0d3aeb7e56cd0c5e8",
+  "requires_listening": true,
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_04.mp3",
+  "duration": 4.649687,
+  "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae",
+  "request_payload": {
+    "text": "[curious and conversational] Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

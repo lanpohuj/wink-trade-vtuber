@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_02",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+  "tts_text": "[lighthearted and reassuring] Сделка не зашла. Спокойно разбираем следующий шаг.",
+  "conditions": {
+    "result_kind": "LOSS_GENERIC"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c80d70b1eaed7a6530ec0e253675d2ac42257932a330bcffff7b658d993e38f8",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_02.mp3",
+  "duration": 3.578688,
+  "sha256": "0563c253c4b567518c21a55aaf9f83771dc873f3d4da68faa6811ccfeed9d9d0",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Сделка не зашла. Спокойно разбираем следующий шаг.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

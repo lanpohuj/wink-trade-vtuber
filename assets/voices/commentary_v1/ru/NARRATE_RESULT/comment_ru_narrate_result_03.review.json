@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_03",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+  "tts_text": "[lighthearted and reassuring] Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "207139e281e14cd9cde69d5f891aecc85a95287657edd8d178f8d6be98ca8776",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_03.mp3",
+  "duration": 5.4595,
+  "sha256": "fd7cb5563973b8ec020239e4e78db93c15c410204d11131b333beae47a273d01",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

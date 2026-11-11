@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_10",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "One trade result does not prove the quality of a whole strategy.",
+  "tts_text": "[curious and conversational] One trade result does not prove the quality of a whole strategy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b4b8595f9f4f0bdff1324928ab66272612bb51fd6585a5db3a27070f4d4f0639",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_10.mp3",
+  "duration": 4.153375,
+  "sha256": "2b51f6c7786e309c7d76b27d60e31bddf0df8dd0491082b17526d730104eec14",
+  "request_payload": {
+    "text": "[curious and conversational] One trade result does not prove the quality of a whole strategy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

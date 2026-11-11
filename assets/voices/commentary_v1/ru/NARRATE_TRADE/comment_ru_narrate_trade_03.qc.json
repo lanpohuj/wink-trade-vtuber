@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_03",
+  "sha256": "4d421e00fb165cccd0f9a68be69dcd6a7e9fc96be175c3aef01e47b6f0a6ada2",
+  "expected": "Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+  "transcript": "Сейчас просто наблюдаем новую сделку поверх этой и не открываем",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.0983,
+    "peak": 0.65744,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "4d421e00fb165cccd0f9a68be69dcd6a7e9fc96be175c3aef01e47b6f0a6ada2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Сейчас просто наблюдаем новую сделку поверх этой и не открываем"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

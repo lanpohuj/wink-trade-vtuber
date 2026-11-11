@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_06",
+  "sha256": "d732267e6f87dac260507110b864b2b7cae0e4870dbee5f0e54e2936c770070a",
+  "expected": "Спокойно досматриваем. Один рывок ещё не определяет исход.",
+  "transcript": "Спокойно досматриваем. Один рыбок еще не определяет исход.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0906,
+    "peak": 0.42229,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.094,
+    "sha256": "d732267e6f87dac260507110b864b2b7cae0e4870dbee5f0e54e2936c770070a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Спокойно досматриваем. Один рыбок еще не определяет исход."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_pair_01",
+  "sha256": "85077dc8fba6c16ecbb53507f4583a3f86e3fdd0da8423ff15e87a1eb0f66d5f",
+  "expected": "Следующий график. Посмотрим, будет ли здесь понятнее.",
+  "transcript": "Следующий график. Посмотрим, будет ли здесь понятнее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.08645,
+    "peak": 0.42724,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "85077dc8fba6c16ecbb53507f4583a3f86e3fdd0da8423ff15e87a1eb0f66d5f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Следующий график. Посмотрим, будет ли здесь понятнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

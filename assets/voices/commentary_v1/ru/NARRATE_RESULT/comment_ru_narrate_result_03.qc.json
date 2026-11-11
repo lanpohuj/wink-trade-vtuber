@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_result_03",
+  "sha256": "fd7cb5563973b8ec020239e4e78db93c15c410204d11131b333beae47a273d01",
+  "expected": "Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+  "transcript": "Следующая ставка 110. Перекрытие по плану без обещания результата.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08931,
+    "peak": 0.5348,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.08,
+    "sha256": "fd7cb5563973b8ec020239e4e78db93c15c410204d11131b333beae47a273d01"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Следующая ставка 110."
+    },
+    {
+      "start": 2.5,
+      "end": 5.5,
+      "text": " Перекрытие по плану без обещания результата."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

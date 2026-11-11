@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_11",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "У хорошего входа есть объяснение до результата, не только после.",
+  "tts_text": "[curious and conversational] У хорошего входа есть объяснение до результата, не только после.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "13dd44e69ca9b2f9b0c0a49cd5eb63f583c761b451bb0652a2ff436aaa521f8a",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_11.mp3",
+  "duration": 3.709312,
+  "sha256": "d7619008378a487ae6302e809cab784db3dcfe8dbb93a03acd364288e1e7254c",
+  "request_payload": {
+    "text": "[curious and conversational] У хорошего входа есть объяснение до результата, не только после.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_11",
+  "sha256": "c8fc79843eb19fb764daea96f7215e4d33aa488d7630d7304bb7fae2c82989fc",
+  "expected": "A good entry has a reason before the result, not just afterward.",
+  "transcript": "A good entry has a reason before the result, not just afterward.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.08136,
+    "peak": 0.415,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "c8fc79843eb19fb764daea96f7215e4d33aa488d7630d7304bb7fae2c82989fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A good entry has a reason before the result, not just afterward."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

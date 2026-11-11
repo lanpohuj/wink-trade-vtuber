@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_07",
+  "sha256": "c6ccdb353c32860812835b91fb874f766510a86119a8aa7bd2f9d47a16d7ba77",
+  "expected": "До закрытия не делаем выводов. Здесь важно терпение.",
+  "transcript": "Да закрытие не делаем выводов! Здесь важно терпение!",
+  "similarity": 0.953,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.08239,
+    "peak": 0.3107,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.122,
+    "sha256": "c6ccdb353c32860812835b91fb874f766510a86119a8aa7bd2f9d47a16d7ba77"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Да закрытие не делаем выводов! Здесь важно терпение!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

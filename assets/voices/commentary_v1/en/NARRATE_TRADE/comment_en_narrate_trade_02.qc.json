@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_02",
+  "sha256": "d42d7d83e0bc70cbcd85825fd14d5b927b70d8fddb425f39a4f71cdff4785ff1",
+  "expected": "Watching the move. No result announcement while the trade is open.",
+  "transcript": "Watching the move. No result announcement while the trade is open.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08157,
+    "peak": 0.38393,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.244,
+    "sha256": "d42d7d83e0bc70cbcd85825fd14d5b927b70d8fddb425f39a4f71cdff4785ff1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Watching the move. No result announcement while the trade is open."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

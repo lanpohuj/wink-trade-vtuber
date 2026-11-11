@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_scan_08",
+  "category": "NARRATE_SCAN",
+  "lang": "en",
+  "text": "Taking a careful look. Movement does not always mean an entry.",
+  "tts_text": "[bright and conversational] Taking a careful look. Movement does not always mean an entry.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4385054b8d6804e145ff2cb4e26172f9d274709a7b549d98bcac53457ef30a7f",
+  "file": "en/NARRATE_SCAN/comment_en_narrate_scan_08.mp3",
+  "duration": 4.101125,
+  "sha256": "b5d64b43ccf0c758667f4b7c23bed309e33657d0b9578a73108e9a41d7a55796",
+  "request_payload": {
+    "text": "[bright and conversational] Taking a careful look. Movement does not always mean an entry.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

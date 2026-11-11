@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_07",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Какая часть разбора вам интереснее: структура или момент входа?",
+  "tts_text": "[friendly and playful] Какая часть разбора вам интереснее: структура или момент входа?",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a043d1fea00ad6b9adee7d3dc77cad542f96c176000d10fbbe790cd01315f276",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_07.mp3",
+  "duration": 4.362375,
+  "sha256": "83a91a81e9d1cccfc1025f9a36ae54d329873f5a65f396a80a60f07f86423a3a",
+  "request_payload": {
+    "text": "[friendly and playful] Какая часть разбора вам интереснее: структура или момент входа?",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

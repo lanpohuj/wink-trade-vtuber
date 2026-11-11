@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_07",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "The recovery limit is reached. Returning to the base stake of fifty.",
+  "tts_text": "[lighthearted and reassuring] The recovery limit is reached. Returning to the base stake of fifty.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cfce0c30f32ab6684df5caa9884f51254af9388109e32998cde223192e7c9835",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_07.mp3",
+  "duration": 4.284,
+  "sha256": "3c576254c93e6a242cb1cc8d5db0355dfc18dd8dbacf27d969af7370735e22dc",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] The recovery limit is reached. Returning to the base stake of fifty.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_01",
+  "sha256": "155a681fbd0e63d411f29538ab9a971d3964294899fab3db452963303da287f0",
+  "expected": "Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+  "transcript": "Трен задаёт контекст, а точку входа подтверждаем отдельно.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.08129,
+    "peak": 0.47614,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "155a681fbd0e63d411f29538ab9a971d3964294899fab3db452963303da287f0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Трен задаёт контекст, а точку входа подтверждаем отдельно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_lesson_10",
+  "sha256": "2b51f6c7786e309c7d76b27d60e31bddf0df8dd0491082b17526d730104eec14",
+  "expected": "One trade result does not prove the quality of a whole strategy.",
+  "transcript": "One trade result does not prove the quality of a whole strategy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08532,
+    "peak": 0.486,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.274,
+    "sha256": "2b51f6c7786e309c7d76b27d60e31bddf0df8dd0491082b17526d730104eec14"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " One trade result does not prove the quality of a whole strategy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

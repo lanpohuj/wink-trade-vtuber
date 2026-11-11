@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_scan_03",
+  "sha256": "05e0410b43bf6856bd42fbd223a296661d89ed968b233430b6b20fc9841b6ace",
+  "expected": "Проверяю подтверждения. Красивая свеча ещё не вся история.",
+  "transcript": "Проверяю подтверждение. Красивое свеча еще не вся история.",
+  "similarity": 0.939,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08735,
+    "peak": 0.39417,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.092,
+    "sha256": "05e0410b43bf6856bd42fbd223a296661d89ed968b233430b6b20fc9841b6ace"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Проверяю подтверждение."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Красивое свеча еще не вся история."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

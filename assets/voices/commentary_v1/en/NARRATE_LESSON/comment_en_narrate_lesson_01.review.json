@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_01",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "The trend gives context; the entry needs its own confirmation.",
+  "tts_text": "[curious and conversational] The trend gives context; the entry needs its own confirmation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a4befaff1cef5ebe4b1f3b899dce7941d949f4dc80f8c763090ab235d25980d7",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_01.mp3",
+  "duration": 4.075,
+  "sha256": "021cd19433beb9482b55035e7ed695782b771a34d20f341a62cc3a824187dff2",
+  "request_payload": {
+    "text": "[curious and conversational] The trend gives context; the entry needs its own confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_04",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Тридцать секунд выбраны под этот сетап, а не по привычке.",
+  "tts_text": "[bright and conversational] Тридцать секунд выбраны под этот сетап, а не по привычке.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "cd41c5fffcb167e8017c9ea2f3e68cbaf98de0a76c756e1cfd7fb065b1ff8429",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_04.mp3",
+  "duration": 4.23175,
+  "sha256": "908e939d6f8ea250c0ef9de3a9111e849d5bcc31872e3a20d6a68c027b437e8d",
+  "request_payload": {
+    "text": "[bright and conversational] Тридцать секунд выбраны под этот сетап, а не по привычке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

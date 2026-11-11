@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_result_04",
+  "sha256": "8569209858c373915dea6be40131898b7fbb4b5de82acc3757ded56aabf89fa3",
+  "expected": "Включён первый шаг перекрытия: ставка сто десять.",
+  "transcript": "Включен первый шаг перекрытия. Вставка 110.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08258,
+    "peak": 0.47312,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "8569209858c373915dea6be40131898b7fbb4b5de82acc3757ded56aabf89fa3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Включен первый шаг перекрытия."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Вставка 110."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

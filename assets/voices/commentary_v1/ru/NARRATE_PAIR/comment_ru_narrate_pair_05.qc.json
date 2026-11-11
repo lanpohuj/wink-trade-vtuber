@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_pair_05",
+  "sha256": "302833b782c8228451c66971e9d0fba5adfff3fea988a27729ea404896ac6ee2",
+  "expected": "Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+  "transcript": "Посмотрим другой график. Иногда лучший ход поискать дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08321,
+    "peak": 0.36522,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.093,
+    "sha256": "302833b782c8228451c66971e9d0fba5adfff3fea988a27729ea404896ac6ee2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Посмотрим другой график. Иногда лучший ход поискать дальше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

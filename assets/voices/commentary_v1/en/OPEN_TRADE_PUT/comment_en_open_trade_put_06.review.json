@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_put_06",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Opened down: the range boundary gave confirmation.",
+  "tts_text": "[confident and lively] Opened down: the range boundary gave confirmation.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1db79a909c0227915c9f28564ba44ac541b60fd96845cf26aa9421e4922e624c",
+  "file": "en/OPEN_TRADE_PUT/comment_en_open_trade_put_06.mp3",
+  "duration": 3.186875,
+  "sha256": "74dbe568a2d439abace743447ef28e9633713c1e4aeee3127682611455e685a0",
+  "request_payload": {
+    "text": "[confident and lively] Opened down: the range boundary gave confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_volatility_02",
+  "sha256": "2867cfb626b18dcb9df60b966e0f360509a7072675b5cf466dd7e1e8c1c0564f",
+  "expected": "Candle ranges have grown. More action does not mean a better entry.",
+  "transcript": "Candle ranges have grown. More action does not mean a better entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08527,
+    "peak": 0.36945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "2867cfb626b18dcb9df60b966e0f360509a7072675b5cf466dd7e1e8c1c0564f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Candle ranges have grown. More action does not mean a better entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

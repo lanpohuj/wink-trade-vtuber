@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_07",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+  "tts_text": "[curious and conversational] Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5f75e08b13a49ea80cbb1aa4b3858473f17efa2700ff792bf7a69411e266d8f9",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_07.mp3",
+  "duration": 4.858688,
+  "sha256": "9fb90c663d4a450b1301c91cfec51d18271870d54bfea887d6af9233717b1db5",
+  "request_payload": {
+    "text": "[curious and conversational] Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

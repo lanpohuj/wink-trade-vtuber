@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_volatility_03",
+  "category": "NARRATE_VOLATILITY",
+  "lang": "en",
+  "text": "The chart is getting choppy. We are checking confirmation carefully.",
+  "tts_text": "[focused] The chart is getting choppy. We are checking confirmation carefully.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "efc8e0bb87fb5f7d55093742687ef6d404f4e4fe4e7c2b0ec8bd2e4614e7befa",
+  "file": "en/NARRATE_VOLATILITY/comment_en_narrate_volatility_03.mp3",
+  "duration": 4.075,
+  "sha256": "12be427bfe33583ddb3f47235b84de4e158841d1a4b7344544788297030ca54b",
+  "request_payload": {
+    "text": "[focused] The chart is getting choppy. We are checking confirmation carefully.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

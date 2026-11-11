@@ -1,0 +1,61 @@
+{
+  "reason": "ASR pronunciation review, not a claim of auditory assessment",
+  "records": [
+    {
+      "id": "comment_ru_narrate_engage_05",
+      "sha256": "ed2ace6860f8e424175b8cebdfbae29a44b317651d5c25ce236cfb4a2efc671c",
+      "expected": "Замечали, как одна свеча меняет первое впечатление о графике?",
+      "transcript": "Замечали, как односвеча менять первые впечатления графики?",
+      "similarity": 0.891,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.09387,
+        "peak": 0.44094,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.109,
+        "sha256": "ed2ace6860f8e424175b8cebdfbae29a44b317651d5c25ce236cfb4a2efc671c"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Замечали, как односвеча менять первые впечатления графики?"
+        }
+      ],
+      "issues": [
+        "transcript_mismatch"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_04",
+      "sha256": "2934b87e1a3cae353a815832a320c59ee3fc5dee8d012961419bb3955b3c8aab",
+      "expected": "Уровень интересен реакцией цены, а не красивой линией на экране.",
+      "transcript": "Уровень интересен реакции цены. Они красивые линии на экране.",
+      "similarity": 0.865,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08685,
+        "peak": 0.34622,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.092,
+        "sha256": "2934b87e1a3cae353a815832a320c59ee3fc5dee8d012961419bb3955b3c8aab"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Уровень интересен реакции цены. Они красивые линии на экране."
+        }
+      ],
+      "issues": [
+        "transcript_mismatch"
+      ],
+      "auditory_verified": false
+    }
+  ]
+}

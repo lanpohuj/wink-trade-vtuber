@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_lesson_12",
+  "category": "NARRATE_LESSON",
+  "lang": "en",
+  "text": "Near an opposing level, price may not have enough room to move.",
+  "tts_text": "[curious and conversational] Near an opposing level, price may not have enough room to move.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "50ef23e28200f2c384fe3f7d4db8571350a42d761dc6e311e5e9b59950ac830a",
+  "file": "en/NARRATE_LESSON/comment_en_narrate_lesson_12.mp3",
+  "duration": 3.813812,
+  "sha256": "ea150a5f1e8df90894c5cb155668a7a6bcb4e4a6f7eb264331eb6328b1d76eab",
+  "request_payload": {
+    "text": "[curious and conversational] Near an opposing level, price may not have enough room to move.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

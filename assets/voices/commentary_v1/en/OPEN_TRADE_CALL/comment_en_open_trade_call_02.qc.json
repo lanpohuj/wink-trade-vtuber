@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_02",
+  "sha256": "604b9247419425bd22fdacedd787852ac587a8f1c20db4ee3ea0313b1b9e04da",
+  "expected": "Opened up: the pullback ended with confirmation.",
+  "transcript": "Opened up the pullback ended with confirmation",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.0716,
+    "peak": 0.47327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.21,
+    "sha256": "604b9247419425bd22fdacedd787852ac587a8f1c20db4ee3ea0313b1b9e04da"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.08,
+      "text": " Opened up the pullback ended with confirmation"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

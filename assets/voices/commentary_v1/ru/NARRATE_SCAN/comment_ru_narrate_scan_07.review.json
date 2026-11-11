@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_scan_07",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+  "tts_text": "[bright and conversational] Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d19da3a48e38a1c5415da529ae2cd0ab3ed955fc6c520404f0d52e27c8290010",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_07.mp3",
+  "duration": 3.944375,
+  "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad",
+  "request_payload": {
+    "text": "[bright and conversational] Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

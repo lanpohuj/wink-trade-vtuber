@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_05",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "I check several timeframes before an entry to understand the context.",
+  "tts_text": "[friendly and playful] I check several timeframes before an entry to understand the context.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8e94c01e20a21d969a8eed1b509f077bc5ce54760e1efae1b2124ffa8cf1945b",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_05.mp3",
+  "duration": 4.101125,
+  "sha256": "91dbdb37cffa32a1d1478d995f0f95d98ddef8e9f9f115607a255a422c7d9754",
+  "request_payload": {
+    "text": "[friendly and playful] I check several timeframes before an entry to understand the context.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

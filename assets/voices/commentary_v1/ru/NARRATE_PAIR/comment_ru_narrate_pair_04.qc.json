@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_pair_04",
+  "sha256": "8b4544bf7a1e23c99e3999d049154399f30628b633a1095ea3d711d863df03f3",
+  "expected": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+  "transcript": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.0899,
+    "peak": 0.43402,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.127,
+    "sha256": "8b4544bf7a1e23c99e3999d049154399f30628b633a1095ea3d711d863df03f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Продолжаю поиск. Мне интересен сценарий, а не количество переключений."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

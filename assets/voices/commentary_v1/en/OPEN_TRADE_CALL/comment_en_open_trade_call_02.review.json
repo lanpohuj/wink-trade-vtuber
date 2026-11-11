@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_call_02",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Opened up: the pullback ended with confirmation.",
+  "tts_text": "[confident and lively] Opened up: the pullback ended with confirmation.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a9c8eb791643672daf15496dd2660cdb40b77086aed936a701c7e25a02317f28",
+  "file": "en/OPEN_TRADE_CALL/comment_en_open_trade_call_02.mp3",
+  "duration": 3.369687,
+  "sha256": "604b9247419425bd22fdacedd787852ac587a8f1c20db4ee3ea0313b1b9e04da",
+  "request_payload": {
+    "text": "[confident and lively] Opened up: the pullback ended with confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

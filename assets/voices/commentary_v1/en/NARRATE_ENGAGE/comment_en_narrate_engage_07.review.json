@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_07",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "Which part interests you more: the structure, or the entry timing?",
+  "tts_text": "[friendly and playful] Which part interests you more: the structure, or the entry timing?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "78d52de742c919ca0d59f042e7f66b8132f38428dae7566ac4f976475e993693",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_07.mp3",
+  "duration": 4.02275,
+  "sha256": "d5c613e6dea2cdac5bb5d30838dd3c24b0414395f110581760f4b2d773e42f1f",
+  "request_payload": {
+    "text": "[friendly and playful] Which part interests you more: the structure, or the entry timing?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

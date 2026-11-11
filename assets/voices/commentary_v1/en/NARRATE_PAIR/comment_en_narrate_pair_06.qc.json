@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_06",
+  "sha256": "e14e00badfcb4b3e3d0fe0f1913f266705d61ddf0e49c46b7263d9d87cf1a7ef",
+  "expected": "Starting fresh here: direction, structure, and confirmation.",
+  "transcript": "Starting fresh here. Direction, Structure and Confirmation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08882,
+    "peak": 0.72839,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.285,
+    "sha256": "e14e00badfcb4b3e3d0fe0f1913f266705d61ddf0e49c46b7263d9d87cf1a7ef"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Starting fresh here. Direction, Structure and Confirmation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

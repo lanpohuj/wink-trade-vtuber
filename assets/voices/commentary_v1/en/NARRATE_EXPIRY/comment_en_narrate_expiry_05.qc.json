@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_05",
+  "sha256": "97ea3e19fa358db0d533e4c32ac458e350f7563aad3d87b4f104914020ce6d69",
+  "expected": "I chose one minute. This setup needs a longer window.",
+  "transcript": "I chose one minute. This setup needs a longer window.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0853,
+    "peak": 0.38165,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.294,
+    "sha256": "97ea3e19fa358db0d533e4c32ac458e350f7563aad3d87b4f104914020ce6d69"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " I chose one minute. This setup needs a longer window."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

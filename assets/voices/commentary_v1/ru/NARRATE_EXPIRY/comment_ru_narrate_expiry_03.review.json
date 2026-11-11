@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_03",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+  "tts_text": "[bright and conversational] Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "51cdbe6dc63f4c10fcfbd994c596a6fbc5b3d0d98d9fa4813ad1ec2d337967df",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_03.mp3",
+  "duration": 4.649687,
+  "sha256": "f64a07aaf4280b3242a97de2862008cb65e4b611d68c6eafff810474a9ec660f",
+  "request_payload": {
+    "text": "[bright and conversational] Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

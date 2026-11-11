@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_engage_08",
+  "sha256": "e7f43235c5aecb6f0c8d5fc5881332346c71a9e959a3fc0110d538791f78fa57",
+  "expected": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+  "transcript": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08022,
+    "peak": 0.41101,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "e7f43235c5aecb6f0c8d5fc5881332346c71a9e959a3fc0110d538791f78fa57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " Продолжаем смотреть вместе."
+    },
+    {
+      "start": 2.2,
+      "end": 4.7,
+      "text": " Вопросы по стратегии можно задавать в чат."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

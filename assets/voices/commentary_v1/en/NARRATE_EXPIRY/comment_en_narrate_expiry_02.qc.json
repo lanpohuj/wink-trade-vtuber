@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_02",
+  "sha256": "a12440d2ab7130804b69ff134b4f61966bb6f8f0d3b3e3b80191553a05b72770",
+  "expected": "This is a fifteen-second window, not a call on the whole trend.",
+  "transcript": "This is a 15 second window, not a call on the whole trend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08338,
+    "peak": 0.45061,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.226,
+    "sha256": "a12440d2ab7130804b69ff134b4f61966bb6f8f0d3b3e3b80191553a05b72770"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " This is a 15 second window, not a call on the whole trend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

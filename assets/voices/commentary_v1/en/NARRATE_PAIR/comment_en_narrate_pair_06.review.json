@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_pair_06",
+  "category": "NARRATE_PAIR",
+  "lang": "en",
+  "text": "Starting fresh here: direction, structure, and confirmation.",
+  "tts_text": "[bright and conversational] Starting fresh here: direction, structure, and confirmation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ef2af1d8450a7b3a4c7d38c024c5c5c87381d87efe4df7d99abce1006ff1f23",
+  "file": "en/NARRATE_PAIR/comment_en_narrate_pair_06.mp3",
+  "duration": 4.545187,
+  "sha256": "e14e00badfcb4b3e3d0fe0f1913f266705d61ddf0e49c46b7263d9d87cf1a7ef",
+  "request_payload": {
+    "text": "[bright and conversational] Starting fresh here: direction, structure, and confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

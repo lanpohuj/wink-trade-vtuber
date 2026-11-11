@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_01",
+  "sha256": "29ae422b8d41f7eb479a88c498369390f69d3c34a806989c0e94f97274bc4396",
+  "expected": "The trade is still running. The close decides the result, not emotions.",
+  "transcript": "The trade is still running. The close decides the result, not emotions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08735,
+    "peak": 0.48286,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.225,
+    "sha256": "29ae422b8d41f7eb479a88c498369390f69d3c34a806989c0e94f97274bc4396"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " The trade is still running. The close decides the result, not emotions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

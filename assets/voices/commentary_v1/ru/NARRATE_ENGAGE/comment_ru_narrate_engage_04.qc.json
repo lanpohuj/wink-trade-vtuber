@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_04",
+  "sha256": "452a392512d08ecdfb4495c8a676a3a11738292b3aae932f4157b94cb0eaee63",
+  "expected": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+  "transcript": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08897,
+    "peak": 0.37966,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.154,
+    "sha256": "452a392512d08ecdfb4495c8a676a3a11738292b3aae932f4157b94cb0eaee63"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Здесь интересно не только закрытие, но и почему вообще появился вход."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_10",
+  "sha256": "28cb1b32b8a2e4768c601350c3c8030d47c4de6f2ae15533b66892265878474e",
+  "expected": "Результат одной сделки не доказывает качество всей стратегии.",
+  "transcript": "Результат одной сделки не доказывает качество всей стратегии.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.09185,
+    "peak": 0.38846,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.108,
+    "sha256": "28cb1b32b8a2e4768c601350c3c8030d47c4de6f2ae15533b66892265878474e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Результат одной сделки не доказывает качество всей стратегии."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

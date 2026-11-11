@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_04",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "The first recovery step is set: a stake of one hundred ten.",
+  "tts_text": "[lighthearted and reassuring] The first recovery step is set: a stake of one hundred ten.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "61b15c07ed818423c83101b112565ce5c4c8af222090d72ef3e44d39fda9dbe8",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_04.mp3",
+  "duration": 4.414625,
+  "sha256": "c3b1fbaa5bbb8219b6230def6c2ce94bbd934605253ae632be61542402cd0ffe",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] The first recovery step is set: a stake of one hundred ten.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

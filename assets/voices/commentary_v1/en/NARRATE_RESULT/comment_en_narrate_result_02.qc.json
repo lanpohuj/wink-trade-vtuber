@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_02",
+  "sha256": "0eb8ee7dc24e91bf3837510aad2a1ba578e8272d1ed3df1b86b13c5eb242ba8d",
+  "expected": "That trade did not work out. Let us take the next step calmly.",
+  "transcript": "That trade did not work out. Let us take the next step calmly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.0794,
+    "peak": 0.36912,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.124,
+    "sha256": "0eb8ee7dc24e91bf3837510aad2a1ba578e8272d1ed3df1b86b13c5eb242ba8d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " That trade did not work out. Let us take the next step calmly."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

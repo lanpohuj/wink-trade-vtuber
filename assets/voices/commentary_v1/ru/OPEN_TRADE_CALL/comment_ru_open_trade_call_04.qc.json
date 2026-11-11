@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_call_04",
+  "sha256": "4012bd12f9fe03305384467c535ab643aef6ada38ca9f19310d37279357f36f9",
+  "expected": "Открыла вверх: после пробоя прошёл подтверждённый ретест.",
+  "transcript": "Открыла вверх, после пробоя прошел подтвержденный ретест.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08685,
+    "peak": 0.39799,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.105,
+    "sha256": "4012bd12f9fe03305384467c535ab643aef6ada38ca9f19310d37279357f36f9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Открыла вверх, после пробоя прошел подтвержденный ретест."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

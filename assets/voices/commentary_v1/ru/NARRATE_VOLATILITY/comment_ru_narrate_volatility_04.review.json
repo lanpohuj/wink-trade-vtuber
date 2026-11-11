@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_volatility_04",
+  "category": "NARRATE_VOLATILITY",
+  "lang": "ru",
+  "text": "Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+  "tts_text": "[focused] Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "bbb7ab8d00becdc40460c9d7411650061363177c010eea9cb03851f16554b844",
+  "file": "ru/NARRATE_VOLATILITY/comment_ru_narrate_volatility_04.mp3",
+  "duration": 4.728063,
+  "sha256": "32087d7dbad1e119a351e886107c8104035ed4b1178632ede08a4176866e8647",
+  "request_payload": {
+    "text": "[focused] Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_open_trade_put_08",
+  "sha256": "48f47c6b38b92db20b3e572d1ac68b0b60e66e12a2b7c14ba7cabaf7910b1373",
+  "expected": "Открыла вниз: локальный разворот получил подтверждение.",
+  "transcript": "Открыла вниз. Локальный разворот получил подтверждение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.08998,
+    "peak": 0.45616,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "48f47c6b38b92db20b3e572d1ac68b0b60e66e12a2b7c14ba7cabaf7910b1373"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Открыла вниз. Локальный разворот получил подтверждение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

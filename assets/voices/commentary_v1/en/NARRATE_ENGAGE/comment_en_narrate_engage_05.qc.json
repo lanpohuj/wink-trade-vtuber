@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_05",
+  "sha256": "91dbdb37cffa32a1d1478d995f0f95d98ddef8e9f9f115607a255a422c7d9754",
+  "expected": "I check several timeframes before an entry to understand the context.",
+  "transcript": "I checked several timeframes before an entry to understand the context.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08757,
+    "peak": 0.45709,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.081,
+    "sha256": "91dbdb37cffa32a1d1478d995f0f95d98ddef8e9f9f115607a255a422c7d9754"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " I checked several timeframes before an entry to understand the context."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

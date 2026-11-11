@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_lesson_07",
+  "sha256": "9fb90c663d4a450b1301c91cfec51d18271870d54bfea887d6af9233717b1db5",
+  "expected": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+  "transcript": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.06803,
+    "peak": 0.3051,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.079,
+    "sha256": "9fb90c663d4a450b1301c91cfec51d18271870d54bfea887d6af9233717b1db5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Не каждый график обязан дать сделку."
+    },
+    {
+      "start": 2.5,
+      "end": 5.0,
+      "text": " Пропуск тоже часть стратегии."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

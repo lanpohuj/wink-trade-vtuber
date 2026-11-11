@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_trade_02",
+  "sha256": "ddaa21803db893090fc280ec3087468f02c299ec4d7100276d8cde7fb4af0a59",
+  "expected": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+  "transcript": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08997,
+    "peak": 0.42671,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.114,
+    "sha256": "ddaa21803db893090fc280ec3087468f02c299ec4d7100276d8cde7fb4af0a59"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Следим за движением. Пока сделка открыта, результат не объявляю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

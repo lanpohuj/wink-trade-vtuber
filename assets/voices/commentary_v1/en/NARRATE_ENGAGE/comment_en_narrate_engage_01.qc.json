@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_01",
+  "sha256": "1337db00990047772ac517b509a7bdb97e19f63ca5a9493a33266310b6172522",
+  "expected": "Chat, do you usually look at the trend first, or the levels?",
+  "transcript": "Chat do you usually look at the trend first or the levels?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07831,
+    "peak": 0.37244,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.194,
+    "sha256": "1337db00990047772ac517b509a7bdb97e19f63ca5a9493a33266310b6172522"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.48,
+      "text": " Chat do you usually look at the trend first or the levels?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

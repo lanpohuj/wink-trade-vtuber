@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_lesson_11",
+  "sha256": "d7619008378a487ae6302e809cab784db3dcfe8dbb93a03acd364288e1e7254c",
+  "expected": "У хорошего входа есть объяснение до результата, не только после.",
+  "transcript": "У хорошего входа есть объяснение до результата, не только после.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.08041,
+    "peak": 0.35186,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "d7619008378a487ae6302e809cab784db3dcfe8dbb93a03acd364288e1e7254c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " У хорошего входа есть объяснение до результата, не только после."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

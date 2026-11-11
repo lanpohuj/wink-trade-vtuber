@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_put_07",
+  "sha256": "ffd9144343cbbe5c298659d483044f1032784223c323596ca4064497ec9a3f11",
+  "expected": "Opened down: the level reaction changed local structure.",
+  "transcript": "Open down the level reaction changed local structure",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08335,
+    "peak": 0.38712,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.241,
+    "sha256": "ffd9144343cbbe5c298659d483044f1032784223c323596ca4064497ec9a3f11"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.74,
+      "text": " Open down the level reaction changed local structure"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

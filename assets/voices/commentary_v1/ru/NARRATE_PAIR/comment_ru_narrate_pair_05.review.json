@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_pair_05",
+  "category": "NARRATE_PAIR",
+  "lang": "ru",
+  "text": "Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+  "tts_text": "[bright and conversational] Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ef5cae9178629480a5f97df7bc853323bc0e86e9160815953fa74d48ee73879f",
+  "file": "ru/NARRATE_PAIR/comment_ru_narrate_pair_05.mp3",
+  "duration": 4.153375,
+  "sha256": "302833b782c8228451c66971e9d0fba5adfff3fea988a27729ea404896ac6ee2",
+  "request_payload": {
+    "text": "[bright and conversational] Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

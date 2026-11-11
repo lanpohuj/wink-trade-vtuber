@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_02",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+  "tts_text": "[bright and conversational] Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d7bf3dd777a7d32c89fc25725d6c8c2c2174c613ae16ba3d482a8bfaeb39c259",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_02.mp3",
+  "duration": 3.839938,
+  "sha256": "f2a2c92ac89b25c39978464411b9e56557177647b105db62b2685100aa0b3fe0",
+  "request_payload": {
+    "text": "[bright and conversational] Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

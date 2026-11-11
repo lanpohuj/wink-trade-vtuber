@@ -1,0 +1,4269 @@
+{
+  "records": [
+    {
+      "id": "comment_en_narrate_engage_01",
+      "sha256": "1337db00990047772ac517b509a7bdb97e19f63ca5a9493a33266310b6172522",
+      "expected": "Chat, do you usually look at the trend first, or the levels?",
+      "transcript": "Chat do you usually look at the trend first or the levels?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.07831,
+        "peak": 0.37244,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.194,
+        "sha256": "1337db00990047772ac517b509a7bdb97e19f63ca5a9493a33266310b6172522"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.48,
+          "text": " Chat do you usually look at the trend first or the levels?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_02",
+      "sha256": "29b16388fc14e89d17ef9fb4daf97d1c8688bc3b4aa35f67f0c7f3cfb66c37b5",
+      "expected": "Who enjoys a calm chart breakdown? I think we will get along.",
+      "transcript": "Who enjoys a calm chart breakdown? I think we will get along.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.07667,
+        "peak": 0.38413,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.301,
+        "sha256": "29b16388fc14e89d17ef9fb4daf97d1c8688bc3b4aa35f67f0c7f3cfb66c37b5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Who enjoys a calm chart breakdown? I think we will get along."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_03",
+      "sha256": "4c1eba03bd10c3f7d066e79bd89a1fe70ab242b1fcfe3857a13e13da8a21d096",
+      "expected": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+      "transcript": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.0838,
+        "peak": 0.44399,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.135,
+        "sha256": "4c1eba03bd10c3f7d066e79bd89a1fe70ab242b1fcfe3857a13e13da8a21d096"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " If anything in the breakdown is unclear, ask. I will keep it simple."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_04",
+      "sha256": "6c670572bbb9bafe9893f941b051cadbd4c0d574c466278700f5c70e89832d55",
+      "expected": "The close is interesting, but so is why the entry appeared at all.",
+      "transcript": "The close is interesting, but so is why the entry appeared at all.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.08561,
+        "peak": 0.48401,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.294,
+        "sha256": "6c670572bbb9bafe9893f941b051cadbd4c0d574c466278700f5c70e89832d55"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " The close is interesting, but so is why the entry appeared at all."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_05",
+      "sha256": "91dbdb37cffa32a1d1478d995f0f95d98ddef8e9f9f115607a255a422c7d9754",
+      "expected": "I check several timeframes before an entry to understand the context.",
+      "transcript": "I checked several timeframes before an entry to understand the context.",
+      "similarity": 0.983,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08757,
+        "peak": 0.45709,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.081,
+        "sha256": "91dbdb37cffa32a1d1478d995f0f95d98ddef8e9f9f115607a255a422c7d9754"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " I checked several timeframes before an entry to understand the context."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_06",
+      "sha256": "25dd1a32c8ce0eccac6ceba4eb35f32101299ce5bcaa89ebd197fa5f987ef19f",
+      "expected": "I like sharing the reasoning with you, not just showing a button.",
+      "transcript": "I like sharing the reasoning with you, not just showing a button.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.08216,
+        "peak": 0.39879,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.315,
+        "sha256": "25dd1a32c8ce0eccac6ceba4eb35f32101299ce5bcaa89ebd197fa5f987ef19f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " I like sharing the reasoning with you, not just showing a button."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_07",
+      "sha256": "d5c613e6dea2cdac5bb5d30838dd3c24b0414395f110581760f4b2d773e42f1f",
+      "expected": "Which part interests you more: the structure, or the entry timing?",
+      "transcript": "Which part interests you more? The structure or the entry timing?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.023,
+        "rms": 0.08028,
+        "peak": 0.46728,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.103,
+        "sha256": "d5c613e6dea2cdac5bb5d30838dd3c24b0414395f110581760f4b2d773e42f1f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Which part interests you more? The structure or the entry timing?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_engage_08",
+      "sha256": "8604a909a67b4df81302491ee5de3862faf0c872f0e83d704b962e948359c3a3",
+      "expected": "Let us keep watching together. Questions about the strategy are welcome.",
+      "transcript": "Let us keep watching together. Questions about the strategy are welcome.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.08614,
+        "peak": 0.40071,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.102,
+        "sha256": "8604a909a67b4df81302491ee5de3862faf0c872f0e83d704b962e948359c3a3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Let us keep watching together."
+        },
+        {
+          "start": 2.0,
+          "end": 4.3,
+          "text": " Questions about the strategy are welcome."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_01",
+      "sha256": "e1d85dceb8d716bafeefae1e2067c4a0928ee7bbbd5770b0934a4db964f5ca0e",
+      "expected": "Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+      "transcript": "Чатик, вы обычно смотрите сначала на тренд или на уровне?",
+      "similarity": 0.978,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.631,
+        "rms": 0.08642,
+        "peak": 0.42602,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.091,
+        "sha256": "e1d85dceb8d716bafeefae1e2067c4a0928ee7bbbd5770b0934a4db964f5ca0e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Чатик, вы обычно смотрите сначала на тренд или на уровне?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_02",
+      "sha256": "78764ae7feb7e4cf32da47f260335a2f0eba370d8dd78b719a33dcbf5aae2a0e",
+      "expected": "Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+      "transcript": "Кто любит разбирать графики спокойно? Кажется мы с вами сработаемся.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.023,
+        "rms": 0.08849,
+        "peak": 0.44557,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.083,
+        "sha256": "78764ae7feb7e4cf32da47f260335a2f0eba370d8dd78b719a33dcbf5aae2a0e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.12,
+          "text": " Кто любит разбирать графики спокойно?"
+        },
+        {
+          "start": 2.12,
+          "end": 4.12,
+          "text": " Кажется мы с вами сработаемся."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_03",
+      "sha256": "f396d666c8f8db8f0e7a352c6792e9a11b6511a82323aa71fba5e4f768f97e06",
+      "expected": "Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+      "transcript": "Если что-то в разборе, непонятно, пишите. Объясню простыми словами.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08533,
+        "peak": 0.38234,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.101,
+        "sha256": "f396d666c8f8db8f0e7a352c6792e9a11b6511a82323aa71fba5e4f768f97e06"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Если что-то в разборе, непонятно, пишите. Объясню простыми словами."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_04",
+      "sha256": "452a392512d08ecdfb4495c8a676a3a11738292b3aae932f4157b94cb0eaee63",
+      "expected": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+      "transcript": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.08897,
+        "peak": 0.37966,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.154,
+        "sha256": "452a392512d08ecdfb4495c8a676a3a11738292b3aae932f4157b94cb0eaee63"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Здесь интересно не только закрытие, но и почему вообще появился вход."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_05",
+      "sha256": "8ced2a8d00662cd98681c505cc806236a534b3496caa1c17f606bb3f644e43c5",
+      "expected": "Для входа я сверяю несколько интервалов: так понятнее, куда пойдёт график.",
+      "transcript": "Для входа я сверяю несколько интервалов, так понятнее, куда пойдет график.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.09033,
+        "peak": 0.49979,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.092,
+        "sha256": "8ced2a8d00662cd98681c505cc806236a534b3496caa1c17f606bb3f644e43c5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "text": " Для входа я сверяю несколько интервалов, так понятнее, куда пойдет график."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_06",
+      "sha256": "16caef16ede6f5855def08afeafe9d9dbbc934b82e1c0d65f9128aee8281cc49",
+      "expected": "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+      "transcript": "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.65,
+        "rms": 0.07018,
+        "peak": 0.32663,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.13,
+        "sha256": "16caef16ede6f5855def08afeafe9d9dbbc934b82e1c0d65f9128aee8281cc49"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.6000000000000005,
+          "text": " Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_07",
+      "sha256": "83a91a81e9d1cccfc1025f9a36ae54d329873f5a65f396a80a60f07f86423a3a",
+      "expected": "Какая часть разбора вам интереснее: структура или момент входа?",
+      "transcript": "Какая часть разбором интереснее — структура или момент входа?",
+      "similarity": 0.962,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.08877,
+        "peak": 0.44693,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.142,
+        "sha256": "83a91a81e9d1cccfc1025f9a36ae54d329873f5a65f396a80a60f07f86423a3a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Какая часть разбором интереснее — структура или момент входа?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_engage_08",
+      "sha256": "e7f43235c5aecb6f0c8d5fc5881332346c71a9e959a3fc0110d538791f78fa57",
+      "expected": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+      "transcript": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.728,
+        "rms": 0.08022,
+        "peak": 0.41101,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.088,
+        "sha256": "e7f43235c5aecb6f0c8d5fc5881332346c71a9e959a3fc0110d538791f78fa57"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.2,
+          "text": " Продолжаем смотреть вместе."
+        },
+        {
+          "start": 2.2,
+          "end": 4.7,
+          "text": " Вопросы по стратегии можно задавать в чат."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_01",
+      "sha256": "600f33af0deb1e4cb6624a538a40c804939b732c9a39d3f1743771b390c612d7",
+      "expected": "Fifteen seconds here: the confirmed short impulse matters.",
+      "transcript": "Fifteen seconds here. The confirmed short impulse matters.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.07625,
+        "peak": 0.50461,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.221,
+        "sha256": "600f33af0deb1e4cb6624a538a40c804939b732c9a39d3f1743771b390c612d7"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Fifteen seconds here. The confirmed short impulse matters."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_02",
+      "sha256": "a12440d2ab7130804b69ff134b4f61966bb6f8f0d3b3e3b80191553a05b72770",
+      "expected": "This is a fifteen-second window, not a call on the whole trend.",
+      "transcript": "This is a 15 second window, not a call on the whole trend.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.08338,
+        "peak": 0.45061,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.226,
+        "sha256": "a12440d2ab7130804b69ff134b4f61966bb6f8f0d3b3e3b80191553a05b72770"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " This is a 15 second window, not a call on the whole trend."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_03",
+      "sha256": "c0f6cd719e13f4bcaf94210f0eb5b58fe585aac5748e63f7646204df44ecf989",
+      "expected": "A thirty-second window here. Watching the confirmed move continue.",
+      "transcript": "A 30-second window here. Watching the confirmed move continue.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.08757,
+        "peak": 0.39745,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.164,
+        "sha256": "c0f6cd719e13f4bcaf94210f0eb5b58fe585aac5748e63f7646204df44ecf989"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.24,
+          "text": " A 30-second window here. Watching the confirmed move continue."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_04",
+      "sha256": "8594199a832631b2dbe0fb0ffb2c5e401a456f3c5ad6f2b88f28cb85589bbc7f",
+      "expected": "Thirty seconds fits this setup; it is not a default choice.",
+      "transcript": "30 seconds fits this setup. It is not a default choice",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.08501,
+        "peak": 0.45674,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.151,
+        "sha256": "8594199a832631b2dbe0fb0ffb2c5e401a456f3c5ad6f2b88f28cb85589bbc7f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.4,
+          "text": " 30 seconds fits this setup. It is not a default choice"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_05",
+      "sha256": "97ea3e19fa358db0d533e4c32ac458e350f7563aad3d87b4f104914020ce6d69",
+      "expected": "I chose one minute. This setup needs a longer window.",
+      "transcript": "I chose one minute. This setup needs a longer window.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.0853,
+        "peak": 0.38165,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.294,
+        "sha256": "97ea3e19fa358db0d533e4c32ac458e350f7563aad3d87b4f104914020ce6d69"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " I chose one minute. This setup needs a longer window."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_06",
+      "sha256": "2b18fa5a8751f4f05c20f0e52e4395a2d1def17a89dc5b18cab7e490fe087a1f",
+      "expected": "This is a one-minute trade. One quick tick does not tell its story.",
+      "transcript": "This is a one-minute trade. One quick tick does not tell its story.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.467,
+        "rms": 0.07916,
+        "peak": 0.41249,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.167,
+        "sha256": "2b18fa5a8751f4f05c20f0e52e4395a2d1def17a89dc5b18cab7e490fe087a1f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.4,
+          "text": " This is a one-minute trade. One quick tick does not tell its story."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_07",
+      "sha256": "2e867cac324ea6fef9e3642317e7fd8a46b12b2cac65e02745902d5e49e216de",
+      "expected": "Two minutes here: the higher timeframe structure is the context.",
+      "transcript": "Two minutes here, the higher timeframe structure is the context.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.07425,
+        "peak": 0.41327,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.191,
+        "sha256": "2e867cac324ea6fef9e3642317e7fd8a46b12b2cac65e02745902d5e49e216de"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Two minutes here, the higher timeframe structure is the context."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_expiry_08",
+      "sha256": "8bd686d1b7567d0eec5687aba23b26fdc3522166d4df297919627b33da10e86b",
+      "expected": "We chose a two-minute window, so we follow the structure of the move.",
+      "transcript": "We chose a two-minute window so we follow the structure of the move.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.07492,
+        "peak": 0.33525,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.255,
+        "sha256": "8bd686d1b7567d0eec5687aba23b26fdc3522166d4df297919627b33da10e86b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " We chose a two-minute window so we follow the structure of the move."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_01",
+      "sha256": "6c38301ec99538c124c3b1470d6926924abf19807d6c25e56753ecf303bf22c9",
+      "expected": "Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+      "transcript": "Выбрала 15 секунд. Здесь важен короткий подтвержденный импульс.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.07847,
+        "peak": 0.36904,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.135,
+        "sha256": "6c38301ec99538c124c3b1470d6926924abf19807d6c25e56753ecf303bf22c9"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Выбрала 15 секунд. Здесь важен короткий подтвержденный импульс."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_02",
+      "sha256": "f2a2c92ac89b25c39978464411b9e56557177647b105db62b2685100aa0b3fe0",
+      "expected": "Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+      "transcript": "Это короткое окно на 15 секунд, не прогноз большого тренда.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.84,
+        "rms": 0.0848,
+        "peak": 0.34873,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.08,
+        "sha256": "f2a2c92ac89b25c39978464411b9e56557177647b105db62b2685100aa0b3fe0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.8000000000000003,
+          "text": " Это короткое окно на 15 секунд, не прогноз большого тренда."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_03",
+      "sha256": "f64a07aaf4280b3242a97de2862008cb65e4b611d68c6eafff810474a9ec660f",
+      "expected": "Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+      "transcript": "Здесь окно в 30 секунд. Смотрим предложение подтвержденного движения.",
+      "similarity": 0.949,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.65,
+        "rms": 0.08689,
+        "peak": 0.37625,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.09,
+        "sha256": "f64a07aaf4280b3242a97de2862008cb65e4b611d68c6eafff810474a9ec660f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.48,
+          "text": " Здесь окно в 30 секунд. Смотрим предложение подтвержденного движения."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_04",
+      "sha256": "908e939d6f8ea250c0ef9de3a9111e849d5bcc31872e3a20d6a68c027b437e8d",
+      "expected": "Тридцать секунд выбраны под этот сетап, а не по привычке.",
+      "transcript": "30 секунд выбраны под этот сетап, а не по привычке.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08103,
+        "peak": 0.41414,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.192,
+        "sha256": "908e939d6f8ea250c0ef9de3a9111e849d5bcc31872e3a20d6a68c027b437e8d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " 30 секунд выбраны под этот сетап, а не по привычке."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_05",
+      "sha256": "84bd139913e592ad69a11f1306926f46af19a7f4de4be8d29d8bfc5c431aef77",
+      "expected": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+      "transcript": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.09018,
+        "peak": 0.43067,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.093,
+        "sha256": "84bd139913e592ad69a11f1306926f46af19a7f4de4be8d29d8bfc5c431aef77"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Выбрала минуту. Этому сценарию нужно более длинное окно."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_06",
+      "sha256": "ac8b0483768776f0449b41195a939ca5398ff3fbbba70fda3c77dd7b29be8152",
+      "expected": "Это минутная сделка. Не оцениваем её по одному короткому тику.",
+      "transcript": "Это минутная сделка! Не оцениваем ее по одному короткому тику!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.08726,
+        "peak": 0.33476,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.126,
+        "sha256": "ac8b0483768776f0449b41195a939ca5398ff3fbbba70fda3c77dd7b29be8152"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.12,
+          "text": " Это минутная сделка! Не оцениваем ее по одному короткому тику!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_07",
+      "sha256": "bd4ec2a24cd142fe6bbada431df76e2941280324baefe47c9e28483f21959075",
+      "expected": "Здесь две минуты: ориентир — структура старшего интервала.",
+      "transcript": "Здесь две минуты. Ориентир. Структура старшего интервала.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.336,
+        "rms": 0.07677,
+        "peak": 0.3561,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.096,
+        "sha256": "bd4ec2a24cd142fe6bbada431df76e2941280324baefe47c9e28483f21959075"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Здесь две минуты. Ориентир. Структура старшего интервала."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_expiry_08",
+      "sha256": "297618038849e9b995e3227b16d2217384015a9aaf16932ea280ed4a12332edf",
+      "expected": "Выбрано двухминутное окно, поэтому следим за структурой движения.",
+      "transcript": "Выбрана двухминутное окно. Поэтому следим за структурой движения.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08957,
+        "peak": 0.37343,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.121,
+        "sha256": "297618038849e9b995e3227b16d2217384015a9aaf16932ea280ed4a12332edf"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Выбрана двухминутное окно. Поэтому следим за структурой движения."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_01",
+      "sha256": "021cd19433beb9482b55035e7ed695782b771a34d20f341a62cc3a824187dff2",
+      "expected": "The trend gives context; the entry needs its own confirmation.",
+      "transcript": "The trend gives context. The entry needs its own confirmation.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.08082,
+        "peak": 0.55141,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.195,
+        "sha256": "021cd19433beb9482b55035e7ed695782b771a34d20f341a62cc3a824187dff2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " The trend gives context. The entry needs its own confirmation."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_02",
+      "sha256": "5d9d9d94874319e1c04789454686e94a363903fdc9c55da1514ba19edb016fc6",
+      "expected": "A strong candle is not a reason to chase price. A move can run out.",
+      "transcript": "A strong candle is not a reason to chase price. A move can run out.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.676,
+        "rms": 0.09151,
+        "peak": 0.66435,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.156,
+        "sha256": "5d9d9d94874319e1c04789454686e94a363903fdc9c55da1514ba19edb016fc6"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.64,
+          "text": " A strong candle is not a reason to chase price. A move can run out."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_03",
+      "sha256": "c332d210b8d95938f34fe2ff62ecd52257aead9b98ab41dbb61e2a46434b8c24",
+      "expected": "After a breakout, the retest matters. The break alone is not the setup.",
+      "transcript": "After a breakout the retest matters the break alone is not the setup",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.042,
+        "rms": 0.07875,
+        "peak": 0.37778,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.282,
+        "sha256": "c332d210b8d95938f34fe2ff62ecd52257aead9b98ab41dbb61e2a46434b8c24"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.66,
+          "text": " After a breakout the retest matters the break alone is not the setup"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_04",
+      "sha256": "dc95767de6f5f4cfc000e7e99c87a23059dc4ddeeeb34f019a4035dfdf6671da",
+      "expected": "A level matters because of the reaction, not because of a pretty line.",
+      "transcript": "A level matters because of the reaction, not because of a pretty line.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08798,
+        "peak": 0.5726,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.221,
+        "sha256": "dc95767de6f5f4cfc000e7e99c87a23059dc4ddeeeb34f019a4035dfdf6671da"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " A level matters because of the reaction, not because of a pretty line."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_05",
+      "sha256": "55e9b11ab7725747caf193a44de9c8242208b6015ec9151198961c1dc14ab956",
+      "expected": "Short and long expiries need their own kinds of confirmation.",
+      "transcript": "Short and long expires need their own kinds of confirmation.",
+      "similarity": 0.99,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.579,
+        "rms": 0.08367,
+        "peak": 0.42236,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.179,
+        "sha256": "55e9b11ab7725747caf193a44de9c8242208b6015ec9151198961c1dc14ab956"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Short and long expires need their own kinds of confirmation."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_06",
+      "sha256": "e106058ac4e0a6fbef1d41f87d054b8113db610fbea1225e3f251dce9df35ae7",
+      "expected": "A pullback and a reversal are different stories. Structure comes first.",
+      "transcript": "A pullback and a reversal are different stories. Structure comes first.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.859,
+        "rms": 0.08661,
+        "peak": 0.67039,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.119,
+        "sha256": "e106058ac4e0a6fbef1d41f87d054b8113db610fbea1225e3f251dce9df35ae7"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.8,
+          "text": " A pullback and a reversal are different stories. Structure comes first."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_07",
+      "sha256": "9df2550aa9fb681151d9d8979522b60ba8f8b78b0f623320986ae2d9452b848b",
+      "expected": "Not every chart owes us a trade. Skipping is part of the strategy.",
+      "transcript": "Not every chart owes us a trade. Skipping is part of the strategy.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.07088,
+        "peak": 0.33577,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.144,
+        "sha256": "9df2550aa9fb681151d9d8979522b60ba8f8b78b0f623320986ae2d9452b848b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "text": " Not every chart owes us a trade. Skipping is part of the strategy."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_08",
+      "sha256": "5f521687063e693c91867d446ff9a4a46e05a1f4b18aee8eecd08f7192daab62",
+      "expected": "The higher timeframe keeps a short move in context.",
+      "transcript": "The higher time frame keeps a short move in context.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.08009,
+        "peak": 0.38838,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.19,
+        "sha256": "5f521687063e693c91867d446ff9a4a46e05a1f4b18aee8eecd08f7192daab62"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.2,
+          "text": " The higher time frame keeps a short move in context."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_09",
+      "sha256": "5ff1f7c83f1e033ebef51e6711ee61c6221ae145a967efdbbed9a1e0552a055a",
+      "expected": "Recovery changes the stake size. The next trade can still lose.",
+      "transcript": "Recovery changes the stake size. The next trade can still lose.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.0873,
+        "peak": 0.92722,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.215,
+        "sha256": "5ff1f7c83f1e033ebef51e6711ee61c6221ae145a967efdbbed9a1e0552a055a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.24,
+          "text": " Recovery changes the stake size. The next trade can still lose."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_10",
+      "sha256": "2b51f6c7786e309c7d76b27d60e31bddf0df8dd0491082b17526d730104eec14",
+      "expected": "One trade result does not prove the quality of a whole strategy.",
+      "transcript": "One trade result does not prove the quality of a whole strategy.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.08532,
+        "peak": 0.486,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.274,
+        "sha256": "2b51f6c7786e309c7d76b27d60e31bddf0df8dd0491082b17526d730104eec14"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " One trade result does not prove the quality of a whole strategy."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_11",
+      "sha256": "c8fc79843eb19fb764daea96f7215e4d33aa488d7630d7304bb7fae2c82989fc",
+      "expected": "A good entry has a reason before the result, not just afterward.",
+      "transcript": "A good entry has a reason before the result, not just afterward.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.892,
+        "rms": 0.08136,
+        "peak": 0.415,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.152,
+        "sha256": "c8fc79843eb19fb764daea96f7215e4d33aa488d7630d7304bb7fae2c82989fc"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " A good entry has a reason before the result, not just afterward."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_lesson_12",
+      "sha256": "ea150a5f1e8df90894c5cb155668a7a6bcb4e4a6f7eb264331eb6328b1d76eab",
+      "expected": "Near an opposing level, price may not have enough room to move.",
+      "transcript": "Near an opposing level, price may not have enough room to move.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.0728,
+        "peak": 0.34879,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.294,
+        "sha256": "ea150a5f1e8df90894c5cb155668a7a6bcb4e4a6f7eb264331eb6328b1d76eab"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Near an opposing level, price may not have enough room to move."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_01",
+      "sha256": "155a681fbd0e63d411f29538ab9a971d3964294899fab3db452963303da287f0",
+      "expected": "Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+      "transcript": "Трен задаёт контекст, а точку входа подтверждаем отдельно.",
+      "similarity": 0.99,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.08129,
+        "peak": 0.47614,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.109,
+        "sha256": "155a681fbd0e63d411f29538ab9a971d3964294899fab3db452963303da287f0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Трен задаёт контекст, а точку входа подтверждаем отдельно."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_02",
+      "sha256": "b7697cb2d8995a16a78a19cbd9d212084eecb46cd479972539270eb8b52f4231",
+      "expected": "Сильная свеча не повод догонять цену. У движения бывает предел.",
+      "transcript": "Сильное свеча не повод догонять цену. У движения бывает предел.",
+      "similarity": 0.962,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.08665,
+        "peak": 0.41957,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.135,
+        "sha256": "b7697cb2d8995a16a78a19cbd9d212084eecb46cd479972539270eb8b52f4231"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.5,
+          "text": " Сильное свеча не повод догонять цену."
+        },
+        {
+          "start": 2.5,
+          "end": 4.0,
+          "text": " У движения бывает предел."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_03",
+      "sha256": "e4b61f74874bed5decf0c0d6054eef1d66c8b7c8d5f08f99fe5c6352c572e694",
+      "expected": "После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+      "transcript": "После пробоя важен возврат к уровню. Сам пробой еще не весь сетап.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.09045,
+        "peak": 0.4329,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.185,
+        "sha256": "e4b61f74874bed5decf0c0d6054eef1d66c8b7c8d5f08f99fe5c6352c572e694"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.6,
+          "text": " После пробоя важен возврат к уровню."
+        },
+        {
+          "start": 2.6,
+          "end": 4.6000000000000005,
+          "text": " Сам пробой еще не весь сетап."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_04",
+      "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae",
+      "expected": "Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+      "transcript": "Смотрю на реакцию цены у уровня. Ления сама по себе ничего не решает.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.65,
+        "rms": 0.09046,
+        "peak": 0.36089,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.11,
+        "sha256": "fdacc3a7b67d43839a1a0115a48f43236ba13690a56863e694c3c05890b58dae"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.48,
+          "text": " Смотрю на реакцию цены у уровня. Ления сама по себе ничего не решает."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_05",
+      "sha256": "376e1668cd102c59be808f9b791689e3c7fd151cfd5b271aca3f4d28415c1b30",
+      "expected": "Короткая экспирация требует своего подтверждения, длинная — своего.",
+      "transcript": "короткая экспирация требует своего подтверждения длинное своего",
+      "similarity": 0.965,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.07561,
+        "peak": 0.33813,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.125,
+        "sha256": "376e1668cd102c59be808f9b791689e3c7fd151cfd5b271aca3f4d28415c1b30"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.22,
+          "text": " короткая экспирация требует своего подтверждения длинное своего"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_06",
+      "sha256": "7587734c5350107e97f79452ce7c7df7fd11e2cb234e71d824c8cfb1d9c2d141",
+      "expected": "Откат и разворот — разные истории. Сначала смотрим структуру.",
+      "transcript": "Откаты разворот, разные истории. Сначала смотрим структуру.",
+      "similarity": 0.98,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08447,
+        "peak": 0.41155,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.095,
+        "sha256": "7587734c5350107e97f79452ce7c7df7fd11e2cb234e71d824c8cfb1d9c2d141"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.56,
+          "text": " Откаты разворот, разные истории."
+        },
+        {
+          "start": 2.56,
+          "end": 4.5600000000000005,
+          "text": " Сначала смотрим структуру."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_07",
+      "sha256": "9fb90c663d4a450b1301c91cfec51d18271870d54bfea887d6af9233717b1db5",
+      "expected": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+      "transcript": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.859,
+        "rms": 0.06803,
+        "peak": 0.3051,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.079,
+        "sha256": "9fb90c663d4a450b1301c91cfec51d18271870d54bfea887d6af9233717b1db5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.5,
+          "text": " Не каждый график обязан дать сделку."
+        },
+        {
+          "start": 2.5,
+          "end": 5.0,
+          "text": " Пропуск тоже часть стратегии."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_08",
+      "sha256": "33abb06750369eab4fb64ce34281905c03699678f60ae0708b8ff603c1f44b83",
+      "expected": "Старший интервал помогает не потерять контекст короткого движения.",
+      "transcript": "Старший интервал помогает не потерять контекст короткого движения.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.448,
+        "rms": 0.09574,
+        "peak": 0.49159,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.088,
+        "sha256": "33abb06750369eab4fb64ce34281905c03699678f60ae0708b8ff603c1f44b83"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Старший интервал помогает не потерять контекст короткого движения."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_09",
+      "sha256": "c2e101e6f1cc3e1fafff4a4533b2520041799e352f3bb91bf38e1e211d5a6ca0",
+      "expected": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+      "transcript": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.65,
+        "rms": 0.09212,
+        "peak": 0.42226,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.09,
+        "sha256": "c2e101e6f1cc3e1fafff4a4533b2520041799e352f3bb91bf38e1e211d5a6ca0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.2800000000000002,
+          "text": " Перекрытие меняет размер ставки."
+        },
+        {
+          "start": 2.2800000000000002,
+          "end": 4.78,
+          "text": " Следующая сделка тоже может дать минус."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_10",
+      "sha256": "28cb1b32b8a2e4768c601350c3c8030d47c4de6f2ae15533b66892265878474e",
+      "expected": "Результат одной сделки не доказывает качество всей стратегии.",
+      "transcript": "Результат одной сделки не доказывает качество всей стратегии.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.448,
+        "rms": 0.09185,
+        "peak": 0.38846,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.108,
+        "sha256": "28cb1b32b8a2e4768c601350c3c8030d47c4de6f2ae15533b66892265878474e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.36,
+          "text": " Результат одной сделки не доказывает качество всей стратегии."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_11",
+      "sha256": "d7619008378a487ae6302e809cab784db3dcfe8dbb93a03acd364288e1e7254c",
+      "expected": "У хорошего входа есть объяснение до результата, не только после.",
+      "transcript": "У хорошего входа есть объяснение до результата, не только после.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.08041,
+        "peak": 0.35186,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.089,
+        "sha256": "d7619008378a487ae6302e809cab784db3dcfe8dbb93a03acd364288e1e7254c"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.68,
+          "text": " У хорошего входа есть объяснение до результата, не только после."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_lesson_12",
+      "sha256": "ec482ac81454e4d005c4c8f992855b20f20d69b2659a89e3ce584bd02a475394",
+      "expected": "Возле встречного уровня цене может не хватить места для движения.",
+      "transcript": "Возле встречного уровня цене может не хватить места для движения.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.09123,
+        "peak": 0.3243,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.083,
+        "sha256": "ec482ac81454e4d005c4c8f992855b20f20d69b2659a89e3ce584bd02a475394"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Возле встречного уровня цене может не хватить места для движения."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_01",
+      "sha256": "130850ec7791e4df3fe8f27531df690855d71745a1baa9ab623bbaa48ee21426",
+      "expected": "Next chart. Let us see if this one is clearer.",
+      "transcript": "Next chart. Let us see if this one is clearer",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.06647,
+        "peak": 0.35277,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.087,
+        "sha256": "130850ec7791e4df3fe8f27531df690855d71745a1baa9ab623bbaa48ee21426"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Next chart. Let us see if this one is clearer"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_02",
+      "sha256": "d49ee6bba2659c30386f6df502279d2655a67ef671707d94bb63b6446f43c0f0",
+      "expected": "New pair, fresh checks. The last chart tells us nothing here.",
+      "transcript": "New pair? Fresh checks. The last chart tells us nothing here.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08125,
+        "peak": 0.56322,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.155,
+        "sha256": "d49ee6bba2659c30386f6df502279d2655a67ef671707d94bb63b6446f43c0f0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.34,
+          "text": " New pair? Fresh checks. The last chart tells us nothing here."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_03",
+      "sha256": "7a28c4c0b03e194d4f1100f86f62283acf21de0761feda3dc6795cd39a6600aa",
+      "expected": "Comparing another option. We do not have to take the first pair.",
+      "transcript": "Comparing another option, we do not have to take the first pair.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.07736,
+        "peak": 0.41209,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.204,
+        "sha256": "7a28c4c0b03e194d4f1100f86f62283acf21de0761feda3dc6795cd39a6600aa"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Comparing another option, we do not have to take the first pair."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_04",
+      "sha256": "bf90e77d481bc7aeaef1d9fd7515dd015dd899213493852960dbbf5e60557fa6",
+      "expected": "Still looking. The setup matters more than how many charts we scan.",
+      "transcript": "Still looking! The setup matters more than how many charts we scan.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08004,
+        "peak": 0.42796,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.261,
+        "sha256": "bf90e77d481bc7aeaef1d9fd7515dd015dd899213493852960dbbf5e60557fa6"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Still looking! The setup matters more than how many charts we scan."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_05",
+      "sha256": "465138cd7029be12f3890190579ab17aeabe2cc7aff5d73cb19a18cd6aa1aed8",
+      "expected": "Let us try another chart. Sometimes the right move is to keep looking.",
+      "transcript": "Let us try another chart. Sometimes the right move is to keep looking.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08127,
+        "peak": 0.36704,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.215,
+        "sha256": "465138cd7029be12f3890190579ab17aeabe2cc7aff5d73cb19a18cd6aa1aed8"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Let us try another chart. Sometimes the right move is to keep looking."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_pair_06",
+      "sha256": "e14e00badfcb4b3e3d0fe0f1913f266705d61ddf0e49c46b7263d9d87cf1a7ef",
+      "expected": "Starting fresh here: direction, structure, and confirmation.",
+      "transcript": "Starting fresh here. Direction, Structure and Confirmation.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.08882,
+        "peak": 0.72839,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.285,
+        "sha256": "e14e00badfcb4b3e3d0fe0f1913f266705d61ddf0e49c46b7263d9d87cf1a7ef"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.5,
+          "text": " Starting fresh here. Direction, Structure and Confirmation."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_01",
+      "sha256": "85077dc8fba6c16ecbb53507f4583a3f86e3fdd0da8423ff15e87a1eb0f66d5f",
+      "expected": "Следующий график. Посмотрим, будет ли здесь понятнее.",
+      "transcript": "Следующий график. Посмотрим, будет ли здесь понятнее.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.422,
+        "rms": 0.08645,
+        "peak": 0.42724,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.102,
+        "sha256": "85077dc8fba6c16ecbb53507f4583a3f86e3fdd0da8423ff15e87a1eb0f66d5f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.4,
+          "text": " Следующий график. Посмотрим, будет ли здесь понятнее."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_02",
+      "sha256": "4d8ad99602afdfd395d9d9633e437ef603059d372724075ac3da40d53a362ad9",
+      "expected": "Новая пара — новая проверка. Старые выводы сюда не переносим.",
+      "transcript": "Новая пара! Новая проверка! Старые выводы сюда не переносим!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.728,
+        "rms": 0.07234,
+        "peak": 0.35887,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.088,
+        "sha256": "4d8ad99602afdfd395d9d9633e437ef603059d372724075ac3da40d53a362ad9"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.56,
+          "text": " Новая пара! Новая проверка!"
+        },
+        {
+          "start": 2.56,
+          "end": 4.64,
+          "text": " Старые выводы сюда не переносим!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_03",
+      "sha256": "2992e600cf90fb52278cfe4059b5753710c46aabefecb1559c77c500e4955304",
+      "expected": "Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+      "transcript": "Сравниваю еще один вариант. Выбор не сводится к первой попавшейся паре.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.08674,
+        "peak": 0.39342,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.105,
+        "sha256": "2992e600cf90fb52278cfe4059b5753710c46aabefecb1559c77c500e4955304"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.1,
+          "text": " Сравниваю еще один вариант."
+        },
+        {
+          "start": 2.1,
+          "end": 4.6000000000000005,
+          "text": " Выбор не сводится к первой попавшейся паре."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_04",
+      "sha256": "8b4544bf7a1e23c99e3999d049154399f30628b633a1095ea3d711d863df03f3",
+      "expected": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+      "transcript": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.807,
+        "rms": 0.0899,
+        "peak": 0.43402,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.127,
+        "sha256": "8b4544bf7a1e23c99e3999d049154399f30628b633a1095ea3d711d863df03f3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.8,
+          "text": " Продолжаю поиск. Мне интересен сценарий, а не количество переключений."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_05",
+      "sha256": "302833b782c8228451c66971e9d0fba5adfff3fea988a27729ea404896ac6ee2",
+      "expected": "Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+      "transcript": "Посмотрим другой график. Иногда лучший ход поискать дальше.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.08321,
+        "peak": 0.36522,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.093,
+        "sha256": "302833b782c8228451c66971e9d0fba5adfff3fea988a27729ea404896ac6ee2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Посмотрим другой график. Иногда лучший ход поискать дальше."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_pair_06",
+      "sha256": "d6725997e2afd63188a09a0fe1d075759a3fe3cd66670c799f419e4017dbf5a2",
+      "expected": "Здесь начинаю проверку заново: направление, структура и подтверждение.",
+      "transcript": "Здесь начинаю проверку заново, направление, структура и подтверждение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.676,
+        "rms": 0.09449,
+        "peak": 0.39524,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.096,
+        "sha256": "d6725997e2afd63188a09a0fe1d075759a3fe3cd66670c799f419e4017dbf5a2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.64,
+          "text": " Здесь начинаю проверку заново, направление, структура и подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_01",
+      "sha256": "d65de80d83137eb0955503a46971cc71434f11772cf4cfaf7ddddee58a0f8561",
+      "expected": "That loss is recorded. We do not hide it; we follow the rules.",
+      "transcript": "That loss is recorded. We do not hide it. We follow the rules.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.07656,
+        "peak": 0.41249,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.222,
+        "sha256": "d65de80d83137eb0955503a46971cc71434f11772cf4cfaf7ddddee58a0f8561"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.24,
+          "text": " That loss is recorded. We do not hide it. We follow the rules."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_02",
+      "sha256": "0eb8ee7dc24e91bf3837510aad2a1ba578e8272d1ed3df1b86b13c5eb242ba8d",
+      "expected": "That trade did not work out. Let us take the next step calmly.",
+      "transcript": "That trade did not work out. Let us take the next step calmly.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.0794,
+        "peak": 0.36912,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.124,
+        "sha256": "0eb8ee7dc24e91bf3837510aad2a1ba578e8272d1ed3df1b86b13c5eb242ba8d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " That trade did not work out. Let us take the next step calmly."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_03",
+      "sha256": "43437b888809e80df2562bfb42ebda597b5f25b9a01c305f4c35f30780e1adee",
+      "expected": "Next stake is one hundred ten. A planned recovery step, not a promised win.",
+      "transcript": "The next stake is 110. A planned recovery step, not a promised win.",
+      "similarity": 0.97,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.042,
+        "rms": 0.07558,
+        "peak": 0.39134,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.262,
+        "sha256": "43437b888809e80df2562bfb42ebda597b5f25b9a01c305f4c35f30780e1adee"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.0,
+          "text": " The next stake is 110. A planned recovery step, not a promised win."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_04",
+      "sha256": "c3b1fbaa5bbb8219b6230def6c2ce94bbd934605253ae632be61542402cd0ffe",
+      "expected": "The first recovery step is set: a stake of one hundred ten.",
+      "transcript": "The first recovery step is set. A stake of 110.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08948,
+        "peak": 0.48343,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.255,
+        "sha256": "c3b1fbaa5bbb8219b6230def6c2ce94bbd934605253ae632be61542402cd0ffe"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.24,
+          "text": " The first recovery step is set. A stake of 110."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_05",
+      "sha256": "24f62d449d5c4c7b312b27bcb271b35e53291a87ac958e3e1e941d9b4e8a6aa3",
+      "expected": "Next stake is two hundred forty-two. This is the second recovery step.",
+      "transcript": "Next stake is 242. This is the second recovery step.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.07597,
+        "peak": 0.42756,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.195,
+        "sha256": "24f62d449d5c4c7b312b27bcb271b35e53291a87ac958e3e1e941d9b4e8a6aa3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Next stake is 242. This is the second recovery step."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_06",
+      "sha256": "fc7a498b2e26269c517d747d4b88d6369b68b9fc5351b3ad6dfd47349e88054f",
+      "expected": "Recovery is on its second step: two hundred forty-two.",
+      "transcript": "Recovery is on its second step, 242!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.84,
+        "rms": 0.08049,
+        "peak": 0.47735,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.12,
+        "sha256": "fc7a498b2e26269c517d747d4b88d6369b68b9fc5351b3ad6dfd47349e88054f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.84,
+          "text": " Recovery is on its second step, 242!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_07",
+      "sha256": "3c576254c93e6a242cb1cc8d5db0355dfc18dd8dbacf27d969af7370735e22dc",
+      "expected": "The recovery limit is reached. Returning to the base stake of fifty.",
+      "transcript": "The recovery limit is reached. Returning to the base stake of 50.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.07129,
+        "peak": 0.37565,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.304,
+        "sha256": "3c576254c93e6a242cb1cc8d5db0355dfc18dd8dbacf27d969af7370735e22dc"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " The recovery limit is reached. Returning to the base stake of 50."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_08",
+      "sha256": "0051e77a8af965fda595ae2aab7125783d6e5dcb3cbc3e51c678102e8a4f98a7",
+      "expected": "The recovery cycle is complete. The base stake is fifty again.",
+      "transcript": "The recovery cycle is complete. The base stake is 50 again.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.08455,
+        "peak": 0.48977,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.111,
+        "sha256": "0051e77a8af965fda595ae2aab7125783d6e5dcb3cbc3e51c678102e8a4f98a7"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " The recovery cycle is complete. The base stake is 50 again."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_09",
+      "sha256": "d55abe511acaa8b5dc81dcd616b652b3cd57da761aa9ce87e1e92cc371840462",
+      "expected": "It was close to positive, but slipped at the close. The result is a loss.",
+      "transcript": "and was close to positive but slipped at the close. The result is a loss.",
+      "similarity": 0.956,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.676,
+        "rms": 0.08099,
+        "peak": 0.42435,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.256,
+        "sha256": "d55abe511acaa8b5dc81dcd616b652b3cd57da761aa9ce87e1e92cc371840462"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.64,
+          "text": " and was close to positive but slipped at the close. The result is a loss."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_result_10",
+      "sha256": "0cfdc1e12a16a7550c2f259a002ee5e80001bb5a0d9d3f9cf209f4b272200ea4",
+      "expected": "The move changed in the final seconds. It closed just short of positive.",
+      "transcript": "And the move changed in the final seconds. It closed just short of positive.",
+      "similarity": 0.975,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.06659,
+        "peak": 0.33459,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.285,
+        "sha256": "0cfdc1e12a16a7550c2f259a002ee5e80001bb5a0d9d3f9cf209f4b272200ea4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.48,
+          "text": " And the move changed in the final seconds. It closed just short of positive."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_01",
+      "sha256": "0fb58a207222a3d32dc977ad4dc530984d80174693b2a5fc727ce7b9540bcf1d",
+      "expected": "Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+      "transcript": "Минус зафиксирован. Этот результат не прячем. Продолжаем по правилам.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.0865,
+        "peak": 0.336,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.115,
+        "sha256": "0fb58a207222a3d32dc977ad4dc530984d80174693b2a5fc727ce7b9540bcf1d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Минус зафиксирован. Этот результат не прячем. Продолжаем по правилам."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_02",
+      "sha256": "0563c253c4b567518c21a55aaf9f83771dc873f3d4da68faa6811ccfeed9d9d0",
+      "expected": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+      "transcript": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.579,
+        "rms": 0.07531,
+        "peak": 0.33753,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.099,
+        "sha256": "0563c253c4b567518c21a55aaf9f83771dc873f3d4da68faa6811ccfeed9d9d0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.5,
+          "text": " Сделка не зашла. Спокойно разбираем следующий шаг."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_03",
+      "sha256": "fd7cb5563973b8ec020239e4e78db93c15c410204d11131b333beae47a273d01",
+      "expected": "Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+      "transcript": "Следующая ставка 110. Перекрытие по плану без обещания результата.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.46,
+        "rms": 0.08931,
+        "peak": 0.5348,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.08,
+        "sha256": "fd7cb5563973b8ec020239e4e78db93c15c410204d11131b333beae47a273d01"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.5,
+          "text": " Следующая ставка 110."
+        },
+        {
+          "start": 2.5,
+          "end": 5.5,
+          "text": " Перекрытие по плану без обещания результата."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_04",
+      "sha256": "8569209858c373915dea6be40131898b7fbb4b5de82acc3757ded56aabf89fa3",
+      "expected": "Включён первый шаг перекрытия: ставка сто десять.",
+      "transcript": "Включен первый шаг перекрытия. Вставка 110.",
+      "similarity": 0.986,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.08258,
+        "peak": 0.47312,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.111,
+        "sha256": "8569209858c373915dea6be40131898b7fbb4b5de82acc3757ded56aabf89fa3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Включен первый шаг перекрытия."
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Вставка 110."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_05",
+      "sha256": "7931f16398b6f9985306bfb7dcc1a8537ed18c560192acb786f2877133fe306b",
+      "expected": "Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+      "transcript": "Следующая ставка 242. Это второй шаг перекрытия.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.08558,
+        "peak": 0.4115,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.086,
+        "sha256": "7931f16398b6f9985306bfb7dcc1a8537ed18c560192acb786f2877133fe306b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Следующая ставка 242. Это второй шаг перекрытия."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_06",
+      "sha256": "498e730a3456f46244364267be8265546c815ff4df966bea58b193625119fc41",
+      "expected": "Перекрытие перешло на второй шаг: двести сорок два.",
+      "transcript": "Перекрытие перешло на второй шаг — 242.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.318,
+        "rms": 0.08239,
+        "peak": 0.33842,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.118,
+        "sha256": "498e730a3456f46244364267be8265546c815ff4df966bea58b193625119fc41"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.3200000000000003,
+          "text": " Перекрытие перешло на второй шаг — 242."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_07",
+      "sha256": "eed500a5e1bb309181caf264acb2afbca09bde4d8efbdf234193dec8ca351fb2",
+      "expected": "Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+      "transcript": "лимит перекрытий достигнут возвращаем базовые 50",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.0765,
+        "peak": 0.40618,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.124,
+        "sha256": "eed500a5e1bb309181caf264acb2afbca09bde4d8efbdf234193dec8ca351fb2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " лимит перекрытий достигнут возвращаем базовые 50"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_08",
+      "sha256": "cf6fa668a1ff79a79be39a25ba7ca46756cff24ab05c0f7c5bf05ebf549c569b",
+      "expected": "Цикл перекрытий завершён. Дальше снова базовая ставка пятьдесят.",
+      "transcript": "Цикл перекрытий завершён. Дальше снова базовая ставка 50.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.519,
+        "rms": 0.08602,
+        "peak": 0.48409,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.119,
+        "sha256": "cf6fa668a1ff79a79be39a25ba7ca46756cff24ab05c0f7c5bf05ebf549c569b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.12,
+          "text": " Цикл перекрытий завершён."
+        },
+        {
+          "start": 2.12,
+          "end": 4.48,
+          "text": " Дальше снова базовая ставка 50."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_09",
+      "sha256": "3e93a4787a763669472271bb0a75b0580cba64e4ab1090dc2501ee2355151a07",
+      "expected": "Было близко к плюсу, но срезало на закрытии. По факту — минус.",
+      "transcript": "Было близко к плюсу, но срезало на закрытие. По факту, минус.",
+      "similarity": 0.979,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.329,
+        "rms": 0.0724,
+        "peak": 0.31306,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.089,
+        "sha256": "3e93a4787a763669472271bb0a75b0580cba64e4ab1090dc2501ee2355151a07"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.5,
+          "text": " Было близко к плюсу, но срезало на закрытие."
+        },
+        {
+          "start": 3.5,
+          "end": 5.5,
+          "text": " По факту, минус."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_result_10",
+      "sha256": "aeca5aed6faec05c14f61eb4346b084675e1650c5e625e5de6ae254a225d5b3f",
+      "expected": "На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+      "transcript": "На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.251,
+        "rms": 0.09964,
+        "peak": 0.74584,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.131,
+        "sha256": "aeca5aed6faec05c14f61eb4346b084675e1650c5e625e5de6ae254a225d5b3f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.56,
+          "text": " На последних секундах движение изменилось."
+        },
+        {
+          "start": 2.56,
+          "end": 4.5600000000000005,
+          "text": " Закрытие чуть ниже порога плюса."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_01",
+      "sha256": "6fc13b91770bcaac896182b1c9fe17e4281d062ecd8b54903c351571a0390d32",
+      "expected": "Comparing charts. I want a clear setup, not just movement.",
+      "transcript": "Comparing charts, I want a clear setup, not just movement.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.08122,
+        "peak": 0.4347,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.171,
+        "sha256": "6fc13b91770bcaac896182b1c9fe17e4281d062ecd8b54903c351571a0390d32"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Comparing charts, I want a clear setup, not just movement."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_02",
+      "sha256": "e396853933b00b8ff9534e3f1450d08ee443f06c2a36c4032b2a1106310cd337",
+      "expected": "Watching who is driving price. No rush to pick a direction.",
+      "transcript": "Watching who is driving price. No rush to pick a direction.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.07746,
+        "peak": 0.35976,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.229,
+        "sha256": "e396853933b00b8ff9534e3f1450d08ee443f06c2a36c4032b2a1106310cd337"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Watching who is driving price. No rush to pick a direction."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_03",
+      "sha256": "6ebc385bc45c6aa8a116a2b8bc4623d5e70b64d2720b7af9587194cce75ba2e0",
+      "expected": "Checking confirmation. One pretty candle is not the whole story.",
+      "transcript": "Checking confirmation one pretty candle is not the whole story",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08513,
+        "peak": 0.41174,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.132,
+        "sha256": "6ebc385bc45c6aa8a116a2b8bc4623d5e70b64d2720b7af9587194cce75ba2e0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.7800000000000002,
+          "text": " Checking confirmation one pretty candle is not the whole story"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_04",
+      "sha256": "029d829251e0845dfc74d1cec067f17c74713d002eccb743f6ed05a857141ddd",
+      "expected": "Reading the structure. An impulse and a pullback are different things.",
+      "transcript": "Reading the structure an impulse and a pullback are different things",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.07494,
+        "peak": 0.38015,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.152,
+        "sha256": "029d829251e0845dfc74d1cec067f17c74713d002eccb743f6ed05a857141ddd"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.72,
+          "text": " Reading the structure an impulse and a pullback are different things"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_05",
+      "sha256": "21737d63d9368a0b09342cdd017d7d520c5d77203e6d8a6ef2eff794d0b877ae",
+      "expected": "Chart data is loading. I will not fill the gaps with guesses.",
+      "transcript": "Chart data is loading. I will not fill the gaps with guesses",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.892,
+        "rms": 0.08288,
+        "peak": 0.5234,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.292,
+        "sha256": "21737d63d9368a0b09342cdd017d7d520c5d77203e6d8a6ef2eff794d0b877ae"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.56,
+          "text": " Chart data is loading. I will not fill the gaps with guesses"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_06",
+      "sha256": "3e1960f496a5f50da45766f5d48a1afeeb1da1a0ac1ba4a8e4b18e334138c831",
+      "expected": "Checking timeframes. I want to see the bigger picture.",
+      "transcript": "Checking timeframes. I want to see the bigger picture.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07979,
+        "peak": 0.39391,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.19,
+        "sha256": "3e1960f496a5f50da45766f5d48a1afeeb1da1a0ac1ba4a8e4b18e334138c831"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.2800000000000002,
+          "text": " Checking timeframes. I want to see the bigger picture."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_07",
+      "sha256": "294809432ec27045dcad1f3adc8a4ae8f66749efa8de41f7760628cd06bd7220",
+      "expected": "Looking for entry confirmation. An interesting move still needs a setup.",
+      "transcript": "Looking for entry confirmation. An interesting move still needs a setup.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.859,
+        "rms": 0.08172,
+        "peak": 0.37894,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.259,
+        "sha256": "294809432ec27045dcad1f3adc8a4ae8f66749efa8de41f7760628cd06bd7220"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.48,
+          "text": " Looking for entry confirmation. An interesting move still needs a setup."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_scan_08",
+      "sha256": "b5d64b43ccf0c758667f4b7c23bed309e33657d0b9578a73108e9a41d7a55796",
+      "expected": "Taking a careful look. Movement does not always mean an entry.",
+      "transcript": "Taking a careful look movement does not always mean an entry",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.07824,
+        "peak": 0.3242,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.221,
+        "sha256": "b5d64b43ccf0c758667f4b7c23bed309e33657d0b9578a73108e9a41d7a55796"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.7800000000000002,
+          "text": " Taking a careful look movement does not always mean an entry"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_01",
+      "sha256": "34622e38574790d7fc26d3ac8fd89e5cf2f656e2984f3ae397b84fcf8f1a166a",
+      "expected": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+      "transcript": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.598,
+        "rms": 0.0948,
+        "peak": 0.45653,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.098,
+        "sha256": "34622e38574790d7fc26d3ac8fd89e5cf2f656e2984f3ae397b84fcf8f1a166a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.5200000000000005,
+          "text": " Сравниваю графики. Мне нужен понятный сценарий, а не просто движение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_02",
+      "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9",
+      "expected": "Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+      "transcript": "Смотрю, кто сейчас ведет цену. С направлением спешить не будем.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.07446,
+        "peak": 0.33312,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.091,
+        "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Смотрю, кто сейчас ведет цену. С направлением спешить не будем."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_03",
+      "sha256": "05e0410b43bf6856bd42fbd223a296661d89ed968b233430b6b20fc9841b6ace",
+      "expected": "Проверяю подтверждения. Красивая свеча ещё не вся история.",
+      "transcript": "Проверяю подтверждение. Красивое свеча еще не вся история.",
+      "similarity": 0.939,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08735,
+        "peak": 0.39417,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.092,
+        "sha256": "05e0410b43bf6856bd42fbd223a296661d89ed968b233430b6b20fc9841b6ace"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Проверяю подтверждение."
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Красивое свеча еще не вся история."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_04",
+      "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856",
+      "expected": "Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+      "transcript": "Сейчас разбираю структуру. Главное не перепутать им пульсоткатом.",
+      "similarity": 0.991,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.08862,
+        "peak": 0.4821,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.102,
+        "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Сейчас разбираю структуру. Главное не перепутать им пульсоткатом."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_05",
+      "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e",
+      "expected": "Подгружаются данные графика. Пока ничего не додумываю.",
+      "transcript": "Подгружаются данные графика, пока ничего не додумываю.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.579,
+        "rms": 0.09014,
+        "peak": 0.4063,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.119,
+        "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.5,
+          "text": " Подгружаются данные графика, пока ничего не додумываю."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_06",
+      "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165",
+      "expected": "Сверяю интервалы. Хочу видеть картину целиком.",
+      "transcript": "Сверяю интервалы. Хочу видеть картину целиком.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.631,
+        "rms": 0.08167,
+        "peak": 0.3829,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Сверяю интервалы."
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Хочу видеть картину целиком."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_07",
+      "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad",
+      "expected": "Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+      "transcript": "Ещё подтверждение входа. Интересный момент ещё должен сложиться.",
+      "similarity": 0.964,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.09232,
+        "peak": 0.36352,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.085,
+        "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Ещё подтверждение входа."
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Интересный момент ещё должен сложиться."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_scan_08",
+      "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72",
+      "expected": "Разбираем спокойно. Движение есть не всегда значит пора входить.",
+      "transcript": "Разбираем спокойно. Движение есть не всегда, значит, пора входить.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08735,
+        "peak": 0.33206,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.095,
+        "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.84,
+          "text": " Разбираем спокойно."
+        },
+        {
+          "start": 1.84,
+          "end": 4.34,
+          "text": " Движение есть не всегда, значит, пора входить."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_01",
+      "sha256": "29ae422b8d41f7eb479a88c498369390f69d3c34a806989c0e94f97274bc4396",
+      "expected": "The trade is still running. The close decides the result, not emotions.",
+      "transcript": "The trade is still running. The close decides the result, not emotions.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.08735,
+        "peak": 0.48286,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.225,
+        "sha256": "29ae422b8d41f7eb479a88c498369390f69d3c34a806989c0e94f97274bc4396"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.4,
+          "text": " The trade is still running. The close decides the result, not emotions."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_02",
+      "sha256": "d42d7d83e0bc70cbcd85825fd14d5b927b70d8fddb425f39a4f71cdff4785ff1",
+      "expected": "Watching the move. No result announcement while the trade is open.",
+      "transcript": "Watching the move. No result announcement while the trade is open.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.284,
+        "rms": 0.08157,
+        "peak": 0.38393,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.244,
+        "sha256": "d42d7d83e0bc70cbcd85825fd14d5b927b70d8fddb425f39a4f71cdff4785ff1"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Watching the move. No result announcement while the trade is open."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_03",
+      "sha256": "5c95358a46b847205387dd30a93abf9b03eb083aa23ad20da4fe314b822c2d89",
+      "expected": "Just observing now. We are not stacking another trade on top.",
+      "transcript": "Just observing now. We are not stacking another trade on top",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.08059,
+        "peak": 0.33799,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.366,
+        "sha256": "5c95358a46b847205387dd30a93abf9b03eb083aa23ad20da4fe314b822c2d89"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.74,
+          "text": " Just observing now. We are not stacking another trade on top"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_04",
+      "sha256": "8fe234f3ff29950b8e942cad91d351d1634eaa7b08a512debdb71813231f4beb",
+      "expected": "The move can change. We check the result after the close.",
+      "transcript": "The move can change. We check the result after the close.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.07739,
+        "peak": 0.35614,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.203,
+        "sha256": "8fe234f3ff29950b8e942cad91d351d1634eaa7b08a512debdb71813231f4beb"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " The move can change. We check the result after the close."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_05",
+      "sha256": "cbe02af5736d5c6f8f32e268f9b06ddf581993990fef75a5b78231963aa0aa18",
+      "expected": "The trade is on screen. I am following it through to the close.",
+      "transcript": "The trade is on screen. I am following it through to the close.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.0855,
+        "peak": 0.726,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.264,
+        "sha256": "cbe02af5736d5c6f8f32e268f9b06ddf581993990fef75a5b78231963aa0aa18"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " The trade is on screen. I am following it through to the close."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_06",
+      "sha256": "5e0706428daa22fad711aa10c773c5f42955c4c6a51956d074ef707a65037e54",
+      "expected": "Watching it through calmly. One quick move is not the final result.",
+      "transcript": "Watching it through calmly, one quick move is not the final result.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.08065,
+        "peak": 0.41977,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.245,
+        "sha256": "5e0706428daa22fad711aa10c773c5f42955c4c6a51956d074ef707a65037e54"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.44,
+          "text": " Watching it through calmly, one quick move is not the final result."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_07",
+      "sha256": "80b6239715df70b9bcc0f64b43b63f0156b4e5516e902324096f05bc2f71302f",
+      "expected": "No conclusions before the close. Patience matters here.",
+      "transcript": "No conclusions before the close. Patience matters here.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.06693,
+        "peak": 0.26768,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.101,
+        "sha256": "80b6239715df70b9bcc0f64b43b63f0156b4e5516e902324096f05bc2f71302f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " No conclusions before the close. Patience matters here."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_trade_08",
+      "sha256": "79b169172f9219a344440f9377ed8df53afb8a8905cef9cfe2ffc6de8b7815a2",
+      "expected": "Still watching. The counter changes only after the result is checked.",
+      "transcript": "Still watching? The counter changes only after the result is checked.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.336,
+        "rms": 0.08243,
+        "peak": 0.41764,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.3,
+        "trailing_silence": 0.296,
+        "sha256": "79b169172f9219a344440f9377ed8df53afb8a8905cef9cfe2ffc6de8b7815a2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Still watching? The counter changes only after the result is checked."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_01",
+      "sha256": "8e3696e773c0fe79d3a606509ddc1e8b86ddb387ce65988d85c614106551cef3",
+      "expected": "Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+      "transcript": "Сделка ещё идёт! Итог за нас определит закрытие, не эмоции!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08673,
+        "peak": 0.3637,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.132,
+        "sha256": "8e3696e773c0fe79d3a606509ddc1e8b86ddb387ce65988d85c614106551cef3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.6,
+          "text": " Сделка ещё идёт!"
+        },
+        {
+          "start": 1.6,
+          "end": 4.1,
+          "text": " Итог за нас определит закрытие, не эмоции!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_02",
+      "sha256": "ddaa21803db893090fc280ec3087468f02c299ec4d7100276d8cde7fb4af0a59",
+      "expected": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+      "transcript": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.08997,
+        "peak": 0.42671,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.114,
+        "sha256": "ddaa21803db893090fc280ec3087468f02c299ec4d7100276d8cde7fb4af0a59"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Следим за движением. Пока сделка открыта, результат не объявляю."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_03",
+      "sha256": "4d421e00fb165cccd0f9a68be69dcd6a7e9fc96be175c3aef01e47b6f0a6ada2",
+      "expected": "Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+      "transcript": "Сейчас просто наблюдаем новую сделку поверх этой и не открываем",
+      "similarity": 0.991,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.0983,
+        "peak": 0.65744,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.092,
+        "sha256": "4d421e00fb165cccd0f9a68be69dcd6a7e9fc96be175c3aef01e47b6f0a6ada2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.08,
+          "text": " Сейчас просто наблюдаем новую сделку поверх этой и не открываем"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_04",
+      "sha256": "61f8c0cdc2af2375b18a9bfae59df09eda35b2c662f991c20e0731fa19dcf1d1",
+      "expected": "Движение может меняться. Результат проверим после закрытия.",
+      "transcript": "Движение может меняться. Результат проверим после закрытия.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.0799,
+        "peak": 0.40121,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.126,
+        "sha256": "61f8c0cdc2af2375b18a9bfae59df09eda35b2c662f991c20e0731fa19dcf1d1"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Движение может меняться. Результат проверим после закрытия."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_05",
+      "sha256": "661d8af852812999e45c077e5b139b3a3941b9eafd4c51c9006a98a7e9325b65",
+      "expected": "Сделка на экране, я слежу за её завершением.",
+      "transcript": "Сделка на экране. Я слежу за её завершением.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.109,
+        "rms": 0.0967,
+        "peak": 0.41214,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.069,
+        "sha256": "661d8af852812999e45c077e5b139b3a3941b9eafd4c51c9006a98a7e9325b65"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Сделка на экране. Я слежу за её завершением."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_06",
+      "sha256": "d732267e6f87dac260507110b864b2b7cae0e4870dbee5f0e54e2936c770070a",
+      "expected": "Спокойно досматриваем. Один рывок ещё не определяет исход.",
+      "transcript": "Спокойно досматриваем. Один рыбок еще не определяет исход.",
+      "similarity": 0.98,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.0906,
+        "peak": 0.42229,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.094,
+        "sha256": "d732267e6f87dac260507110b864b2b7cae0e4870dbee5f0e54e2936c770070a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.72,
+          "text": " Спокойно досматриваем. Один рыбок еще не определяет исход."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_07",
+      "sha256": "c6ccdb353c32860812835b91fb874f766510a86119a8aa7bd2f9d47a16d7ba77",
+      "expected": "До закрытия не делаем выводов. Здесь важно терпение.",
+      "transcript": "Да закрытие не делаем выводов! Здесь важно терпение!",
+      "similarity": 0.953,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.762,
+        "rms": 0.08239,
+        "peak": 0.3107,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.122,
+        "sha256": "c6ccdb353c32860812835b91fb874f766510a86119a8aa7bd2f9d47a16d7ba77"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.72,
+          "text": " Да закрытие не делаем выводов! Здесь важно терпение!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_trade_08",
+      "sha256": "1bf79d1821de8f1aa9f6774d8600e5476429bc9e995c72e1047e04de657fd4b5",
+      "expected": "Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+      "transcript": "Продолжаем наблюдать, счетчик изменится только после проверки результата.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.09196,
+        "peak": 0.40993,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.115,
+        "sha256": "1bf79d1821de8f1aa9f6774d8600e5476429bc9e995c72e1047e04de657fd4b5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Продолжаем наблюдать, счетчик изменится только после проверки результата."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_volatility_01",
+      "sha256": "fa134bf79b0392a87e84f6736696fed5bbbcd51d9372baa3ec868e18b14bde28",
+      "expected": "The moves are sharper than usual. This is a time to be patient.",
+      "transcript": "The moves are sharper than usual. This is a time to be patient.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.07336,
+        "peak": 0.35889,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.146,
+        "sha256": "fa134bf79b0392a87e84f6736696fed5bbbcd51d9372baa3ec868e18b14bde28"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " The moves are sharper than usual. This is a time to be patient."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_volatility_02",
+      "sha256": "2867cfb626b18dcb9df60b966e0f360509a7072675b5cf466dd7e1e8c1c0564f",
+      "expected": "Candle ranges have grown. More action does not mean a better entry.",
+      "transcript": "Candle ranges have grown. More action does not mean a better entry.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08527,
+        "peak": 0.36945,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.261,
+        "sha256": "2867cfb626b18dcb9df60b966e0f360509a7072675b5cf466dd7e1e8c1c0564f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Candle ranges have grown. More action does not mean a better entry."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_volatility_03",
+      "sha256": "12be427bfe33583ddb3f47235b84de4e158841d1a4b7344544788297030ca54b",
+      "expected": "The chart is getting choppy. We are checking confirmation carefully.",
+      "transcript": "The chart is getting choppy. We are checking confirmation carefully.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.08775,
+        "peak": 0.65312,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.155,
+        "sha256": "12be427bfe33583ddb3f47235b84de4e158841d1a4b7344544788297030ca54b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " The chart is getting choppy. We are checking confirmation carefully."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_narrate_volatility_04",
+      "sha256": "aa1b825d3af762f0697bb258eee03fb16bbf2e9f4b075654af1cbdce304a8394",
+      "expected": "Candles are stretching more than usual. Structure matters more than excitement.",
+      "transcript": "Candles are stretching more than usual. Structure matters more than excitement.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.042,
+        "rms": 0.07517,
+        "peak": 0.38973,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.362,
+        "sha256": "aa1b825d3af762f0697bb258eee03fb16bbf2e9f4b075654af1cbdce304a8394"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.0,
+          "text": " Candles are stretching more than usual. Structure matters more than excitement."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_volatility_01",
+      "sha256": "0265c62681d41ff51f92ee2c2a5bc85e2ed84478845bb5d65f3109229306921d",
+      "expected": "Движения стали резче обычного. Здесь особенно важно не спешить.",
+      "transcript": "Движения стали резче обычного. Здесь особенно важно не спешить.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.08825,
+        "peak": 0.33894,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.106,
+        "sha256": "0265c62681d41ff51f92ee2c2a5bc85e2ed84478845bb5d65f3109229306921d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.12,
+          "text": " Движения стали резче обычного. Здесь особенно важно не спешить."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_volatility_02",
+      "sha256": "52922a4caa370de04b83cdea54042d365884fa33d7b084f44d9036266bee1583",
+      "expected": "Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+      "transcript": "В разумах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.07688,
+        "peak": 0.34763,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.124,
+        "sha256": "52922a4caa370de04b83cdea54042d365884fa33d7b084f44d9036266bee1583"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " В разумах свечей сейчас вырос. Не путаем активность с хорошим входом."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_volatility_03",
+      "sha256": "2a9c66f27b0a5aaf51db79addf9c6126610d4f26cd89329d42d368047ef64a75",
+      "expected": "График сейчас заметно штормит. Проверяем подтверждения внимательнее.",
+      "transcript": "График сейчас заметно штормит. Проверяем подтверждение внимательнее.",
+      "similarity": 0.983,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.09099,
+        "peak": 0.36099,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.146,
+        "sha256": "2a9c66f27b0a5aaf51db79addf9c6126610d4f26cd89329d42d368047ef64a75"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " График сейчас заметно штормит. Проверяем подтверждение внимательнее."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_narrate_volatility_04",
+      "sha256": "32087d7dbad1e119a351e886107c8104035ed4b1178632ede08a4176866e8647",
+      "expected": "Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+      "transcript": "Свечи размахнулись сильнее обычного. Смотри на структуру, не на азарт.",
+      "similarity": 0.983,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.728,
+        "rms": 0.09275,
+        "peak": 0.39043,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.088,
+        "sha256": "32087d7dbad1e119a351e886107c8104035ed4b1178632ede08a4176866e8647"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.64,
+          "text": " Свечи размахнулись сильнее обычного. Смотри на структуру, не на азарт."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_01",
+      "sha256": "a343e7d637344ac77db448be9137e943619e66c019a935912e6ff983317c4a25",
+      "expected": "Opened up: the move resumed after a pullback.",
+      "transcript": "Opened up the move resumed after a pullback",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.07978,
+        "peak": 0.37031,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.247,
+        "sha256": "a343e7d637344ac77db448be9137e943619e66c019a935912e6ff983317c4a25"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.7800000000000002,
+          "text": " Opened up the move resumed after a pullback"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_02",
+      "sha256": "604b9247419425bd22fdacedd787852ac587a8f1c20db4ee3ea0313b1b9e04da",
+      "expected": "Opened up: the pullback ended with confirmation.",
+      "transcript": "Opened up the pullback ended with confirmation",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.0716,
+        "peak": 0.47327,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.21,
+        "sha256": "604b9247419425bd22fdacedd787852ac587a8f1c20db4ee3ea0313b1b9e04da"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.08,
+          "text": " Opened up the pullback ended with confirmation"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_03",
+      "sha256": "bf1a0915f482fd2b1911f58fd260d3c7f7b5193ea79dcf860b631c86ee7c8f43",
+      "expected": "Opened up: the broken level held on the retest.",
+      "transcript": "Opened up the broken level held on the retest",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07713,
+        "peak": 0.38823,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.09,
+        "sha256": "bf1a0915f482fd2b1911f58fd260d3c7f7b5193ea79dcf860b631c86ee7c8f43"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.94,
+          "text": " Opened up the broken level held on the retest"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_04",
+      "sha256": "7a54df95177645ebeba362019e9462bda4ed6d833b4e6ec78d6705f6b67b7976",
+      "expected": "Opened up: a confirmed retest followed the breakout.",
+      "transcript": "opened up a confirmed retest followed the breakout",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.5,
+        "rms": 0.07525,
+        "peak": 0.38943,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.26,
+        "sha256": "7a54df95177645ebeba362019e9462bda4ed6d833b4e6ec78d6705f6b67b7976"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.12,
+          "text": " opened up a confirmed retest followed the breakout"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_05",
+      "sha256": "1051e1ae5604295fcb2d22e115c5c678f878f49bd932daa9edfb5098f1900412",
+      "expected": "Opened up: price reacted at the edge of the range.",
+      "transcript": "Opened up price reacted at the edge of the range",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07661,
+        "peak": 0.41538,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.23,
+        "sha256": "1051e1ae5604295fcb2d22e115c5c678f878f49bd932daa9edfb5098f1900412"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Opened up price reacted at the edge of the range"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_06",
+      "sha256": "0ee03439cda3ee762f77e01f42a492107fea48138adb7737965226b993874077",
+      "expected": "Opened up: the range boundary gave confirmation.",
+      "transcript": "Opened up. The range boundary gave confirmation.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.161,
+        "rms": 0.08543,
+        "peak": 0.36785,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.241,
+        "sha256": "0ee03439cda3ee762f77e01f42a492107fea48138adb7737965226b993874077"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Opened up. The range boundary gave confirmation."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_07",
+      "sha256": "416647cee0ca1a57f4d4420588cb30b785e5f7d4a15991fac72ddec9115dcf92",
+      "expected": "Opened up: the level reaction changed local structure.",
+      "transcript": "Opened up the level reaction changed local structure",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.07653,
+        "peak": 0.40507,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.294,
+        "sha256": "416647cee0ca1a57f4d4420588cb30b785e5f7d4a15991fac72ddec9115dcf92"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Opened up the level reaction changed local structure"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_call_08",
+      "sha256": "a968da948df4ebb80884561977a546727d43fcaecc38af15cad3f237a2ab34fa",
+      "expected": "Opened up: the local reversal gained confirmation.",
+      "transcript": "Opened up the local reversal gained confirmation",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.318,
+        "rms": 0.07907,
+        "peak": 0.37605,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.218,
+        "sha256": "a968da948df4ebb80884561977a546727d43fcaecc38af15cad3f237a2ab34fa"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.98,
+          "text": " Opened up the local reversal gained confirmation"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_01",
+      "sha256": "b4bb767c3bd1e0502f039f75a9ee56bde1b02b6a5d3b41e8e4e61f0a4732ab3f",
+      "expected": "Открыла вверх: после отката движение возобновилось.",
+      "transcript": "Открыла вверх, после отката движения возобновилась.",
+      "similarity": 0.955,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.5,
+        "rms": 0.08594,
+        "peak": 0.49054,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.12,
+        "sha256": "b4bb767c3bd1e0502f039f75a9ee56bde1b02b6a5d3b41e8e4e61f0a4732ab3f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Открыла вверх, после отката движения возобновилась."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_02",
+      "sha256": "8935d7f89d1d77c9c7646d0cc82eab23d713a62afa1b6f6fa24dd221e0a81d94",
+      "expected": "Открыла вверх: откат завершился, движение получило подтверждение.",
+      "transcript": "Открыла вверх, откат завершился, движение получило подтверждение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08969,
+        "peak": 0.48074,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.115,
+        "sha256": "8935d7f89d1d77c9c7646d0cc82eab23d713a62afa1b6f6fa24dd221e0a81d94"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Открыла вверх, откат завершился, движение получило подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_03",
+      "sha256": "b4b2f4617e596357d3d512056b37f01d3d8347fc87619dad6ab40f8085011e4a",
+      "expected": "Открыла вверх: пробитый уровень удержался после возврата.",
+      "transcript": "Открыла вверх. Трабитый уровень удержался после возврата.",
+      "similarity": 0.959,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.08492,
+        "peak": 0.38812,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.074,
+        "sha256": "b4b2f4617e596357d3d512056b37f01d3d8347fc87619dad6ab40f8085011e4a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Открыла вверх. Трабитый уровень удержался после возврата."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_04",
+      "sha256": "4012bd12f9fe03305384467c535ab643aef6ada38ca9f19310d37279357f36f9",
+      "expected": "Открыла вверх: после пробоя прошёл подтверждённый ретест.",
+      "transcript": "Открыла вверх, после пробоя прошел подтвержденный ретест.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.08685,
+        "peak": 0.39799,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.105,
+        "sha256": "4012bd12f9fe03305384467c535ab643aef6ada38ca9f19310d37279357f36f9"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Открыла вверх, после пробоя прошел подтвержденный ретест."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_05",
+      "sha256": "1a47682bae8d234df2f0b0b9b8f5de3115ebe5bdbda1b356e31d39ea5f102522",
+      "expected": "Открыла вверх: цена отреагировала на границу диапазона.",
+      "transcript": "Открыло вверх. Цена отреагировала на границу диапазона.",
+      "similarity": 0.979,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.09089,
+        "peak": 0.42641,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.074,
+        "sha256": "1a47682bae8d234df2f0b0b9b8f5de3115ebe5bdbda1b356e31d39ea5f102522"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Открыло вверх. Цена отреагировала на границу диапазона."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_06",
+      "sha256": "203a240dc5ab7ab22d557411be96c1ccdcc215986fc729df33f6686282e12d1f",
+      "expected": "Открыла вверх: от границы диапазона получено подтверждение.",
+      "transcript": "Открыла вверх. От границы диапазона получено подтверждение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.892,
+        "rms": 0.09533,
+        "peak": 0.37584,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.092,
+        "sha256": "203a240dc5ab7ab22d557411be96c1ccdcc215986fc729df33f6686282e12d1f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.84,
+          "text": " Открыла вверх. От границы диапазона получено подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_07",
+      "sha256": "5c994864ee350c5204f3712f622a3f81dc03114ea5bdf284c8cc21d3bea6103d",
+      "expected": "Открыла вверх: реакция на уровень изменила локальную структуру.",
+      "transcript": "Открыла верх. Реакция на уровень изменила локальную структуру.",
+      "similarity": 0.991,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.814,
+        "rms": 0.09204,
+        "peak": 0.43339,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.094,
+        "sha256": "5c994864ee350c5204f3712f622a3f81dc03114ea5bdf284c8cc21d3bea6103d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Открыла верх. Реакция на уровень изменила локальную структуру."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_call_08",
+      "sha256": "971a1568a5c7ae37e295f3eb98aa81b9fc8888db704cd1527d03f35ef625c88f",
+      "expected": "Открыла вверх: локальный разворот получил подтверждение.",
+      "transcript": "Открыла вверх, локальный разворот получил подтверждение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.08026,
+        "peak": 0.45825,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.103,
+        "sha256": "971a1568a5c7ae37e295f3eb98aa81b9fc8888db704cd1527d03f35ef625c88f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " Открыла вверх, локальный разворот получил подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_01",
+      "sha256": "95ac96482ee5f14505aeefa260fc8a2b2f734c36e63f70427db1f95a4d778650",
+      "expected": "Opened down: the move resumed after a pullback.",
+      "transcript": "Open down the move resumed after a pullback",
+      "similarity": 0.973,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.0842,
+        "peak": 0.36785,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.29,
+        "sha256": "95ac96482ee5f14505aeefa260fc8a2b2f734c36e63f70427db1f95a4d778650"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.92,
+          "text": " Open down the move resumed after a pullback"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_02",
+      "sha256": "f8369541b34ffd8c273bebfabc75d2b0923454b4c02cc4c4bdc6e0fdf7f69cfd",
+      "expected": "Opened down: the pullback ended with confirmation.",
+      "transcript": "Open down the pullback ended with confirmation",
+      "similarity": 0.976,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.448,
+        "rms": 0.07494,
+        "peak": 0.38957,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.268,
+        "sha256": "f8369541b34ffd8c273bebfabc75d2b0923454b4c02cc4c4bdc6e0fdf7f69cfd"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.06,
+          "text": " Open down the pullback ended with confirmation"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_03",
+      "sha256": "c2d39bf55cde47d4f4bb386d339464cda34835641fa76029b5a917b6a9ccabd5",
+      "expected": "Opened down: the broken level held on the retest.",
+      "transcript": "Open down the broken level held on the retest",
+      "similarity": 0.974,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07595,
+        "peak": 0.37711,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.17,
+        "sha256": "c2d39bf55cde47d4f4bb386d339464cda34835641fa76029b5a917b6a9ccabd5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Open down the broken level held on the retest"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_04",
+      "sha256": "7426a7b53db9490171ade835d301fe21c3dde4546d18fa54250e8e13c9021249",
+      "expected": "Opened down: a confirmed retest followed the breakout.",
+      "transcript": "Opened down a confirmed retest followed the breakout",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.07351,
+        "peak": 0.40318,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.109,
+        "sha256": "7426a7b53db9490171ade835d301fe21c3dde4546d18fa54250e8e13c9021249"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Opened down a confirmed retest followed the breakout"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_05",
+      "sha256": "a8150e50ab2765435bfe82a8b11a2b009960182ee6c2b3038def57aef4dd31de",
+      "expected": "Opened down: price reacted at the edge of the range.",
+      "transcript": "Open down price reacted at the edge of the range",
+      "similarity": 0.975,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.239,
+        "rms": 0.08604,
+        "peak": 0.44,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.199,
+        "sha256": "a8150e50ab2765435bfe82a8b11a2b009960182ee6c2b3038def57aef4dd31de"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.8000000000000003,
+          "text": " Open down price reacted at the edge of the range"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_06",
+      "sha256": "74dbe568a2d439abace743447ef28e9633713c1e4aeee3127682611455e685a0",
+      "expected": "Opened down: the range boundary gave confirmation.",
+      "transcript": "Opened down the range boundary gave confirmation",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.07211,
+        "peak": 0.34567,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.187,
+        "sha256": "74dbe568a2d439abace743447ef28e9633713c1e4aeee3127682611455e685a0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Opened down the range boundary gave confirmation"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_07",
+      "sha256": "ffd9144343cbbe5c298659d483044f1032784223c323596ca4064497ec9a3f11",
+      "expected": "Opened down: the level reaction changed local structure.",
+      "transcript": "Open down the level reaction changed local structure",
+      "similarity": 0.978,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08335,
+        "peak": 0.38712,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.241,
+        "sha256": "ffd9144343cbbe5c298659d483044f1032784223c323596ca4064497ec9a3f11"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.74,
+          "text": " Open down the level reaction changed local structure"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_en_open_trade_put_08",
+      "sha256": "9aa9c2d5b0de12ac16214fa6ec85112d2ab8f980ac868d0034d10e1f94a0e6d7",
+      "expected": "Opened down: the local reversal gained confirmation.",
+      "transcript": "Open down the local reversal gained confirmation",
+      "similarity": 0.977,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.08224,
+        "peak": 0.36656,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.263,
+        "sha256": "9aa9c2d5b0de12ac16214fa6ec85112d2ab8f980ac868d0034d10e1f94a0e6d7"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.3000000000000003,
+          "text": " Open down the local reversal gained confirmation"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_01",
+      "sha256": "1ce043adab958430b4f7247505c593650afd2f0ae93edea574809b5dc570b273",
+      "expected": "Открыла вниз: после отката движение возобновилось.",
+      "transcript": "Открыла вниз. После отката движения возобновилась.",
+      "similarity": 0.953,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.318,
+        "rms": 0.09179,
+        "peak": 0.43754,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.058,
+        "sha256": "1ce043adab958430b4f7247505c593650afd2f0ae93edea574809b5dc570b273"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.2800000000000002,
+          "text": " Открыла вниз. После отката движения возобновилась."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_02",
+      "sha256": "e27c966cdb71a40f087f55b06c2931df809a01cda85bcb287c3fadb762529d29",
+      "expected": "Открыла вниз: откат завершился, движение получило подтверждение.",
+      "transcript": "Открыла вниз. Откад завершился, движение получило подтверждение.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.09561,
+        "peak": 0.41113,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.085,
+        "sha256": "e27c966cdb71a40f087f55b06c2931df809a01cda85bcb287c3fadb762529d29"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Открыла вниз. Откад завершился, движение получило подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_03",
+      "sha256": "77641ae0b3cb5cd64e608987570672b044bb0479b2e441ef2b9cb3abe31536c8",
+      "expected": "Открыла вниз: пробитый уровень удержался после возврата.",
+      "transcript": "Открыла вниз. Пробитый уровень удержался после возврата.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.762,
+        "rms": 0.08723,
+        "peak": 0.4242,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.102,
+        "sha256": "77641ae0b3cb5cd64e608987570672b044bb0479b2e441ef2b9cb3abe31536c8"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.72,
+          "text": " Открыла вниз. Пробитый уровень удержался после возврата."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_04",
+      "sha256": "7722c8987a6a7da290a4ae241a2edc0ebc7a6e8c44209eeb7b818baa0d41c0aa",
+      "expected": "Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+      "transcript": "Открыла вниз. После пробоя прошел подтвержденный ретест.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08458,
+        "peak": 0.43975,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.061,
+        "sha256": "7722c8987a6a7da290a4ae241a2edc0ebc7a6e8c44209eeb7b818baa0d41c0aa"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.44,
+          "text": " Открыла вниз."
+        },
+        {
+          "start": 1.44,
+          "end": 4.08,
+          "text": " После пробоя прошел подтвержденный ретест."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_05",
+      "sha256": "ba5eb1279bd3ebefdf61ff69f337329a267886aaa471a594d15bda9ed51d7e21",
+      "expected": "Открыла вниз: цена отреагировала на границу диапазона.",
+      "transcript": "Открыла вниз. Цена отреагировала на границу диапазона.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.09138,
+        "peak": 0.39722,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.124,
+        "sha256": "ba5eb1279bd3ebefdf61ff69f337329a267886aaa471a594d15bda9ed51d7e21"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Открыла вниз. Цена отреагировала на границу диапазона."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_06",
+      "sha256": "76f37b7c24d701e63cddbfab00142337d83a2ccb2ae54fb6f69c7517aabe3e6e",
+      "expected": "Открыла вниз: от границы диапазона получено подтверждение.",
+      "transcript": "Открыла вниз! От границы диапазона получено подтверждение!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.709,
+        "rms": 0.08845,
+        "peak": 0.39733,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.089,
+        "sha256": "76f37b7c24d701e63cddbfab00142337d83a2ccb2ae54fb6f69c7517aabe3e6e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.68,
+          "text": " Открыла вниз! От границы диапазона получено подтверждение!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_07",
+      "sha256": "2c11616380cf41594262c602b3f645126858533a03c2fc114527a340cef97cb2",
+      "expected": "Открыла вниз: реакция на уровень изменила локальную структуру.",
+      "transcript": "Открыла вниз, реакция на уровень изменила локальную структуру.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.08691,
+        "peak": 0.4797,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.102,
+        "sha256": "2c11616380cf41594262c602b3f645126858533a03c2fc114527a340cef97cb2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.32,
+          "text": " Открыла вниз, реакция на уровень изменила локальную структуру."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "comment_ru_open_trade_put_08",
+      "sha256": "48f47c6b38b92db20b3e572d1ac68b0b60e66e12a2b7c14ba7cabaf7910b1373",
+      "expected": "Открыла вниз: локальный разворот получил подтверждение.",
+      "transcript": "Открыла вниз. Локальный разворот получил подтверждение.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.762,
+        "rms": 0.08998,
+        "peak": 0.45616,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.102,
+        "sha256": "48f47c6b38b92db20b3e572d1ac68b0b60e66e12a2b7c14ba7cabaf7910b1373"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.72,
+          "text": " Открыла вниз. Локальный разворот получил подтверждение."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ]
+}

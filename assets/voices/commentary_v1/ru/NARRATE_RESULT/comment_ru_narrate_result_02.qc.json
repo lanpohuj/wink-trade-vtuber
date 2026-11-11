@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_result_02",
+  "sha256": "0563c253c4b567518c21a55aaf9f83771dc873f3d4da68faa6811ccfeed9d9d0",
+  "expected": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+  "transcript": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.07531,
+    "peak": 0.33753,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.099,
+    "sha256": "0563c253c4b567518c21a55aaf9f83771dc873f3d4da68faa6811ccfeed9d9d0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Сделка не зашла. Спокойно разбираем следующий шаг."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

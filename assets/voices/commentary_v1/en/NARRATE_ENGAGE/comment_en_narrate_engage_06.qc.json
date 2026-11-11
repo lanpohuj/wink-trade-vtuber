@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_engage_06",
+  "sha256": "25dd1a32c8ce0eccac6ceba4eb35f32101299ce5bcaa89ebd197fa5f987ef19f",
+  "expected": "I like sharing the reasoning with you, not just showing a button.",
+  "transcript": "I like sharing the reasoning with you, not just showing a button.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08216,
+    "peak": 0.39879,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.315,
+    "sha256": "25dd1a32c8ce0eccac6ceba4eb35f32101299ce5bcaa89ebd197fa5f987ef19f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " I like sharing the reasoning with you, not just showing a button."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_08",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+  "tts_text": "[friendly and playful] Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2cacdebb7e1ebbfdba776c8038c415ca82966e790c7445c97ebda4392ec0221c",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_08.mp3",
+  "duration": 4.728063,
+  "sha256": "e7f43235c5aecb6f0c8d5fc5881332346c71a9e959a3fc0110d538791f78fa57",
+  "request_payload": {
+    "text": "[friendly and playful] Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

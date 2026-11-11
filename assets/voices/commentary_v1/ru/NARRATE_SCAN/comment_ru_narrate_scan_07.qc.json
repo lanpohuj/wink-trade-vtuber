@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_scan_07",
+  "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad",
+  "expected": "Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+  "transcript": "Ещё подтверждение входа. Интересный момент ещё должен сложиться.",
+  "similarity": 0.964,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.09232,
+    "peak": 0.36352,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Ещё подтверждение входа."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Интересный момент ещё должен сложиться."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

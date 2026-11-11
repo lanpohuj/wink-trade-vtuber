@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_expiry_04",
+  "sha256": "908e939d6f8ea250c0ef9de3a9111e849d5bcc31872e3a20d6a68c027b437e8d",
+  "expected": "Тридцать секунд выбраны под этот сетап, а не по привычке.",
+  "transcript": "30 секунд выбраны под этот сетап, а не по привычке.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08103,
+    "peak": 0.41414,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.192,
+    "sha256": "908e939d6f8ea250c0ef9de3a9111e849d5bcc31872e3a20d6a68c027b437e8d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " 30 секунд выбраны под этот сетап, а не по привычке."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

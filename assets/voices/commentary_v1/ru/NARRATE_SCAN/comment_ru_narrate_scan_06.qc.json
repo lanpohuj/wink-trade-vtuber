@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_scan_06",
+  "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165",
+  "expected": "Сверяю интервалы. Хочу видеть картину целиком.",
+  "transcript": "Сверяю интервалы. Хочу видеть картину целиком.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.631,
+    "rms": 0.08167,
+    "peak": 0.3829,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Сверяю интервалы."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Хочу видеть картину целиком."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

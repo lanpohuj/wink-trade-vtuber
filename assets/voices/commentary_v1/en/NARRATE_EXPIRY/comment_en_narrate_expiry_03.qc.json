@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_expiry_03",
+  "sha256": "c0f6cd719e13f4bcaf94210f0eb5b58fe585aac5748e63f7646204df44ecf989",
+  "expected": "A thirty-second window here. Watching the confirmed move continue.",
+  "transcript": "A 30-second window here. Watching the confirmed move continue.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08757,
+    "peak": 0.39745,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.164,
+    "sha256": "c0f6cd719e13f4bcaf94210f0eb5b58fe585aac5748e63f7646204df44ecf989"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " A 30-second window here. Watching the confirmed move continue."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

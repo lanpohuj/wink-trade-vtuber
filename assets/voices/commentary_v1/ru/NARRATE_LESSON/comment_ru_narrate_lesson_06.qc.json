@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_lesson_06",
+  "sha256": "7587734c5350107e97f79452ce7c7df7fd11e2cb234e71d824c8cfb1d9c2d141",
+  "expected": "Откат и разворот — разные истории. Сначала смотрим структуру.",
+  "transcript": "Откаты разворот, разные истории. Сначала смотрим структуру.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08447,
+    "peak": 0.41155,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.095,
+    "sha256": "7587734c5350107e97f79452ce7c7df7fd11e2cb234e71d824c8cfb1d9c2d141"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Откаты разворот, разные истории."
+    },
+    {
+      "start": 2.56,
+      "end": 4.5600000000000005,
+      "text": " Сначала смотрим структуру."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

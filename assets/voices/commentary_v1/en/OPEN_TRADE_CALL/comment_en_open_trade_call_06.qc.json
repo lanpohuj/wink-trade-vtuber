@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_call_06",
+  "sha256": "0ee03439cda3ee762f77e01f42a492107fea48138adb7737965226b993874077",
+  "expected": "Opened up: the range boundary gave confirmation.",
+  "transcript": "Opened up. The range boundary gave confirmation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.161,
+    "rms": 0.08543,
+    "peak": 0.36785,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.241,
+    "sha256": "0ee03439cda3ee762f77e01f42a492107fea48138adb7737965226b993874077"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Opened up. The range boundary gave confirmation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

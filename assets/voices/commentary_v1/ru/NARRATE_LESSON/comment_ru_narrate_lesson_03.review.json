@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_03",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+  "tts_text": "[curious and conversational] После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "40af99b3595e8397dc00354c5de8b4c80213ed394c443d10d44110d88638c04d",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_03.mp3",
+  "duration": 4.545187,
+  "sha256": "e4b61f74874bed5decf0c0d6054eef1d66c8b7c8d5f08f99fe5c6352c572e694",
+  "request_payload": {
+    "text": "[curious and conversational] После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

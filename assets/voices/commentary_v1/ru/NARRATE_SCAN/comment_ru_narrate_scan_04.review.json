@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_scan_04",
+  "category": "NARRATE_SCAN",
+  "lang": "ru",
+  "text": "Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+  "tts_text": "[bright and conversational] Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c6564318657a3cd1ef1571e50eb086b7c91e925b305d04af9a58a1c4561b80ab",
+  "file": "ru/NARRATE_SCAN/comment_ru_narrate_scan_04.mp3",
+  "duration": 4.362375,
+  "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856",
+  "request_payload": {
+    "text": "[bright and conversational] Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "comment_ru_narrate_result_08",
+  "sha256": "cf6fa668a1ff79a79be39a25ba7ca46756cff24ab05c0f7c5bf05ebf549c569b",
+  "expected": "Цикл перекрытий завершён. Дальше снова базовая ставка пятьдесят.",
+  "transcript": "Цикл перекрытий завершён. Дальше снова базовая ставка 50.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08602,
+    "peak": 0.48409,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "cf6fa668a1ff79a79be39a25ba7ca46756cff24ab05c0f7c5bf05ebf549c569b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Цикл перекрытий завершён."
+    },
+    {
+      "start": 2.12,
+      "end": 4.48,
+      "text": " Дальше снова базовая ставка 50."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

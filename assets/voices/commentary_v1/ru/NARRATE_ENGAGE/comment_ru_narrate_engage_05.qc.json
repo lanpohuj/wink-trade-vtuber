@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_05",
+  "sha256": "8ced2a8d00662cd98681c505cc806236a534b3496caa1c17f606bb3f644e43c5",
+  "expected": "Для входа я сверяю несколько интервалов: так понятнее, куда пойдёт график.",
+  "transcript": "Для входа я сверяю несколько интервалов, так понятнее, куда пойдет график.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.09033,
+    "peak": 0.49979,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "8ced2a8d00662cd98681c505cc806236a534b3496caa1c17f606bb3f644e43c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.2,
+      "text": " Для входа я сверяю несколько интервалов, так понятнее, куда пойдет график."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_call_01",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "en",
+  "text": "Opened up: the move resumed after a pullback.",
+  "tts_text": "[confident and lively] Opened up: the move resumed after a pullback.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "409bfaa845a90a81d8e1fb93479081a3839ad082347d860351f04f8cf2d2050f",
+  "file": "en/OPEN_TRADE_CALL/comment_en_open_trade_call_01.mp3",
+  "duration": 3.186875,
+  "sha256": "a343e7d637344ac77db448be9137e943619e66c019a935912e6ff983317c4a25",
+  "request_payload": {
+    "text": "[confident and lively] Opened up: the move resumed after a pullback.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

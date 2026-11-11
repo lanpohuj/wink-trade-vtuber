@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_03",
+  "sha256": "6ebc385bc45c6aa8a116a2b8bc4623d5e70b64d2720b7af9587194cce75ba2e0",
+  "expected": "Checking confirmation. One pretty candle is not the whole story.",
+  "transcript": "Checking confirmation one pretty candle is not the whole story",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08513,
+    "peak": 0.41174,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.132,
+    "sha256": "6ebc385bc45c6aa8a116a2b8bc4623d5e70b64d2720b7af9587194cce75ba2e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7800000000000002,
+      "text": " Checking confirmation one pretty candle is not the whole story"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

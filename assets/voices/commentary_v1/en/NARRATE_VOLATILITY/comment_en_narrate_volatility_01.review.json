@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_volatility_01",
+  "category": "NARRATE_VOLATILITY",
+  "lang": "en",
+  "text": "The moves are sharper than usual. This is a time to be patient.",
+  "tts_text": "[focused] The moves are sharper than usual. This is a time to be patient.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7612e8b04fd79573dce012c3e3ac1ea9ec071a132d4f47b2c56b96d1069852aa",
+  "file": "en/NARRATE_VOLATILITY/comment_en_narrate_volatility_01.mp3",
+  "duration": 4.205625,
+  "sha256": "fa134bf79b0392a87e84f6736696fed5bbbcd51d9372baa3ec868e18b14bde28",
+  "request_payload": {
+    "text": "[focused] The moves are sharper than usual. This is a time to be patient.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

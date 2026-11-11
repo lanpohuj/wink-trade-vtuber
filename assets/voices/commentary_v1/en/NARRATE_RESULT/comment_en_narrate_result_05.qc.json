@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_result_05",
+  "sha256": "24f62d449d5c4c7b312b27bcb271b35e53291a87ac958e3e1e941d9b4e8a6aa3",
+  "expected": "Next stake is two hundred forty-two. This is the second recovery step.",
+  "transcript": "Next stake is 242. This is the second recovery step.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07597,
+    "peak": 0.42756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.195,
+    "sha256": "24f62d449d5c4c7b312b27bcb271b35e53291a87ac958e3e1e941d9b4e8a6aa3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Next stake is 242. This is the second recovery step."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

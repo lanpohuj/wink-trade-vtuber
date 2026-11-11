@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_put_03",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Opened down: the broken level held on the retest.",
+  "tts_text": "[confident and lively] Opened down: the broken level held on the retest.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "14e08aa494f5db6af1b9d58f8c79396d67d0e994c6efc991d1a82e1a84549bc1",
+  "file": "en/OPEN_TRADE_PUT/comment_en_open_trade_put_03.mp3",
+  "duration": 3.369687,
+  "sha256": "c2d39bf55cde47d4f4bb386d339464cda34835641fa76029b5a917b6a9ccabd5",
+  "request_payload": {
+    "text": "[confident and lively] Opened down: the broken level held on the retest.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

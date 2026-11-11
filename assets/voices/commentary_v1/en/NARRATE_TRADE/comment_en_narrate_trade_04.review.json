@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_04",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "The move can change. We check the result after the close.",
+  "tts_text": "[bright and conversational] The move can change. We check the result after the close.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "768e6181b634916221c7c7950271f4e5774a3645d8005aa2e72c28153b7feddc",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_04.mp3",
+  "duration": 3.683187,
+  "sha256": "8fe234f3ff29950b8e942cad91d351d1634eaa7b08a512debdb71813231f4beb",
+  "request_payload": {
+    "text": "[bright and conversational] The move can change. We check the result after the close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_07",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+  "tts_text": "[lighthearted and reassuring] Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1f3bf3373101e335d0db651de6c8bcdccc741c9b08e4ab53c85489da71b85b18",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_07.mp3",
+  "duration": 4.284,
+  "sha256": "eed500a5e1bb309181caf264acb2afbca09bde4d8efbdf234193dec8ca351fb2",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

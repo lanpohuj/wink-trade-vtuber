@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_02",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "Watching the move. No result announcement while the trade is open.",
+  "tts_text": "[bright and conversational] Watching the move. No result announcement while the trade is open.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1d6c7252f97e2bad1345f7f6fa188444985ce46c22ff5de7958f727b170fba1e",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_02.mp3",
+  "duration": 4.284,
+  "sha256": "d42d7d83e0bc70cbcd85825fd14d5b927b70d8fddb425f39a4f71cdff4785ff1",
+  "request_payload": {
+    "text": "[bright and conversational] Watching the move. No result announcement while the trade is open.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

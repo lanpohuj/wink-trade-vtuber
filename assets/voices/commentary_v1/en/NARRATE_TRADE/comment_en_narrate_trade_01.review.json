@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_trade_01",
+  "category": "NARRATE_TRADE",
+  "lang": "en",
+  "text": "The trade is still running. The close decides the result, not emotions.",
+  "tts_text": "[bright and conversational] The trade is still running. The close decides the result, not emotions.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4aa0418e0739e2dd6f596807ac42a663cdc332fa3aec367f6042fcb9212ed2f0",
+  "file": "en/NARRATE_TRADE/comment_en_narrate_trade_01.mp3",
+  "duration": 4.545187,
+  "sha256": "29ae422b8d41f7eb479a88c498369390f69d3c34a806989c0e94f97274bc4396",
+  "request_payload": {
+    "text": "[bright and conversational] The trade is still running. The close decides the result, not emotions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_expiry_08",
+  "category": "NARRATE_EXPIRY",
+  "lang": "ru",
+  "text": "Выбрано двухминутное окно, поэтому следим за структурой движения.",
+  "tts_text": "[bright and conversational] Выбрано двухминутное окно, поэтому следим за структурой движения.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5d679aa09758fb173d4ceb47eec2e44cfddc6f65a6fc5abfd8d9ac4cb4c97298",
+  "file": "ru/NARRATE_EXPIRY/comment_ru_narrate_expiry_08.mp3",
+  "duration": 4.101125,
+  "sha256": "297618038849e9b995e3227b16d2217384015a9aaf16932ea280ed4a12332edf",
+  "request_payload": {
+    "text": "[bright and conversational] Выбрано двухминутное окно, поэтому следим за структурой движения.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

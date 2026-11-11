@@ -1,0 +1,38 @@
+{
+  "id": "comment_ru_open_trade_call_05",
+  "category": "OPEN_TRADE_CALL",
+  "lang": "ru",
+  "text": "Открыла вверх: цена отреагировала на границу диапазона.",
+  "tts_text": "[confident and lively] Открыла вверх: цена отреагировала на границу диапазона.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3aa43824b19786fe673629f96754d87bdbff0e9793ed3729c7fb93523f4aca0f",
+  "file": "ru/OPEN_TRADE_CALL/comment_ru_open_trade_call_05.mp3",
+  "duration": 3.813812,
+  "sha256": "1a47682bae8d234df2f0b0b9b8f5de3115ebe5bdbda1b356e31d39ea5f102522",
+  "request_payload": {
+    "text": "[confident and lively] Открыла вверх: цена отреагировала на границу диапазона.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

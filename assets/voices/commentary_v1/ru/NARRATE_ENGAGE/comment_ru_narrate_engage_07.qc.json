@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_engage_07",
+  "sha256": "83a91a81e9d1cccfc1025f9a36ae54d329873f5a65f396a80a60f07f86423a3a",
+  "expected": "Какая часть разбора вам интереснее: структура или момент входа?",
+  "transcript": "Какая часть разбором интереснее — структура или момент входа?",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08877,
+    "peak": 0.44693,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.142,
+    "sha256": "83a91a81e9d1cccfc1025f9a36ae54d329873f5a65f396a80a60f07f86423a3a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Какая часть разбором интереснее — структура или момент входа?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

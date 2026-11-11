@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_open_trade_put_04",
+  "sha256": "7426a7b53db9490171ade835d301fe21c3dde4546d18fa54250e8e13c9021249",
+  "expected": "Opened down: a confirmed retest followed the breakout.",
+  "transcript": "Opened down a confirmed retest followed the breakout",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.07351,
+    "peak": 0.40318,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.109,
+    "sha256": "7426a7b53db9490171ade835d301fe21c3dde4546d18fa54250e8e13c9021249"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Opened down a confirmed retest followed the breakout"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

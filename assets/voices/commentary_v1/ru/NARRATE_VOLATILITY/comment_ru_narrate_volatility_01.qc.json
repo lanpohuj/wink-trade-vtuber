@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_volatility_01",
+  "sha256": "0265c62681d41ff51f92ee2c2a5bc85e2ed84478845bb5d65f3109229306921d",
+  "expected": "Движения стали резче обычного. Здесь особенно важно не спешить.",
+  "transcript": "Движения стали резче обычного. Здесь особенно важно не спешить.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08825,
+    "peak": 0.33894,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.106,
+    "sha256": "0265c62681d41ff51f92ee2c2a5bc85e2ed84478845bb5d65f3109229306921d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Движения стали резче обычного. Здесь особенно важно не спешить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

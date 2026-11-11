@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_lesson_09",
+  "category": "NARRATE_LESSON",
+  "lang": "ru",
+  "text": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+  "tts_text": "[curious and conversational] Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f531b48267406265d65c7ceb3039aa771ce6279b1f92c09178cd963ef6288f21",
+  "file": "ru/NARRATE_LESSON/comment_ru_narrate_lesson_09.mp3",
+  "duration": 4.649687,
+  "sha256": "c2e101e6f1cc3e1fafff4a4533b2520041799e352f3bb91bf38e1e211d5a6ca0",
+  "request_payload": {
+    "text": "[curious and conversational] Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

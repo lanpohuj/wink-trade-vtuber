@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_01",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "That loss is recorded. We do not hide it; we follow the rules.",
+  "tts_text": "[lighthearted and reassuring] That loss is recorded. We do not hide it; we follow the rules.",
+  "conditions": {
+    "result_kind": "LOSS_GENERIC"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1b26a9608ef6806b29f928beece7a0d6f0044d2e008d59edf3846590760e89b0",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_01.mp3",
+  "duration": 4.362375,
+  "sha256": "d65de80d83137eb0955503a46971cc71434f11772cf4cfaf7ddddee58a0f8561",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] That loss is recorded. We do not hide it; we follow the rules.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

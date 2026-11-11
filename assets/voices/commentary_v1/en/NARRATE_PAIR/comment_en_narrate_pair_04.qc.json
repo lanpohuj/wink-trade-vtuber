@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_pair_04",
+  "sha256": "bf90e77d481bc7aeaef1d9fd7515dd015dd899213493852960dbbf5e60557fa6",
+  "expected": "Still looking. The setup matters more than how many charts we scan.",
+  "transcript": "Still looking! The setup matters more than how many charts we scan.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08004,
+    "peak": 0.42796,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "bf90e77d481bc7aeaef1d9fd7515dd015dd899213493852960dbbf5e60557fa6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Still looking! The setup matters more than how many charts we scan."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

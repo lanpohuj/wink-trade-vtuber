@@ -1,0 +1,33 @@
+{
+  "id": "comment_ru_narrate_engage_02",
+  "category": "NARRATE_ENGAGE",
+  "lang": "ru",
+  "text": "Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+  "tts_text": "[friendly and playful] Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9d198723061f678cdb6d92fb477067a17a34c716ae8b16e624e027df751ab666",
+  "file": "ru/NARRATE_ENGAGE/comment_ru_narrate_engage_02.mp3",
+  "duration": 4.02275,
+  "sha256": "78764ae7feb7e4cf32da47f260335a2f0eba370d8dd78b719a33dcbf5aae2a0e",
+  "request_payload": {
+    "text": "[friendly and playful] Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_result_10",
+  "category": "NARRATE_RESULT",
+  "lang": "en",
+  "text": "The move changed in the final seconds. It closed just short of positive.",
+  "tts_text": "[lighthearted and reassuring] The move changed in the final seconds. It closed just short of positive.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "386b43887d492ecb3b4c66a8ed5bdfb2f7b2d62919d2861e235d59e5427dd1de",
+  "file": "en/NARRATE_RESULT/comment_en_narrate_result_10.mp3",
+  "duration": 4.545187,
+  "sha256": "0cfdc1e12a16a7550c2f259a002ee5e80001bb5a0d9d3f9cf209f4b272200ea4",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] The move changed in the final seconds. It closed just short of positive.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "comment_en_narrate_engage_02",
+  "category": "NARRATE_ENGAGE",
+  "lang": "en",
+  "text": "Who enjoys a calm chart breakdown? I think we will get along.",
+  "tts_text": "[friendly and playful] Who enjoys a calm chart breakdown? I think we will get along.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a83caecb558ff11d316d7303a649c24c4c8ce021c846fa92351f047727b100b3",
+  "file": "en/NARRATE_ENGAGE/comment_en_narrate_engage_02.mp3",
+  "duration": 4.101125,
+  "sha256": "29b16388fc14e89d17ef9fb4daf97d1c8688bc3b4aa35f67f0c7f3cfb66c37b5",
+  "request_payload": {
+    "text": "[friendly and playful] Who enjoys a calm chart breakdown? I think we will get along.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

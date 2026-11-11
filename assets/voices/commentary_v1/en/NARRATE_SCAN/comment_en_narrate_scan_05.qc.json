@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_scan_05",
+  "sha256": "21737d63d9368a0b09342cdd017d7d520c5d77203e6d8a6ef2eff794d0b877ae",
+  "expected": "Chart data is loading. I will not fill the gaps with guesses.",
+  "transcript": "Chart data is loading. I will not fill the gaps with guesses",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.08288,
+    "peak": 0.5234,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.292,
+    "sha256": "21737d63d9368a0b09342cdd017d7d520c5d77203e6d8a6ef2eff794d0b877ae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.56,
+      "text": " Chart data is loading. I will not fill the gaps with guesses"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

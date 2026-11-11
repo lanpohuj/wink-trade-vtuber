@@ -1,0 +1,26 @@
+{
+  "id": "comment_en_narrate_trade_07",
+  "sha256": "80b6239715df70b9bcc0f64b43b63f0156b4e5516e902324096f05bc2f71302f",
+  "expected": "No conclusions before the close. Patience matters here.",
+  "transcript": "No conclusions before the close. Patience matters here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.06693,
+    "peak": 0.26768,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.101,
+    "sha256": "80b6239715df70b9bcc0f64b43b63f0156b4e5516e902324096f05bc2f71302f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " No conclusions before the close. Patience matters here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

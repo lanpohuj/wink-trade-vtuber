@@ -1,0 +1,26 @@
+{
+  "id": "comment_ru_narrate_volatility_03",
+  "sha256": "2a9c66f27b0a5aaf51db79addf9c6126610d4f26cd89329d42d368047ef64a75",
+  "expected": "График сейчас заметно штормит. Проверяем подтверждения внимательнее.",
+  "transcript": "График сейчас заметно штормит. Проверяем подтверждение внимательнее.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.09099,
+    "peak": 0.36099,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.146,
+    "sha256": "2a9c66f27b0a5aaf51db79addf9c6126610d4f26cd89329d42d368047ef64a75"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " График сейчас заметно штормит. Проверяем подтверждение внимательнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

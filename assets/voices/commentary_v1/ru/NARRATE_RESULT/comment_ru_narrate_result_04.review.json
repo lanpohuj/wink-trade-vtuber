@@ -1,0 +1,35 @@
+{
+  "id": "comment_ru_narrate_result_04",
+  "category": "NARRATE_RESULT",
+  "lang": "ru",
+  "text": "Включён первый шаг перекрытия: ставка сто десять.",
+  "tts_text": "[lighthearted and reassuring] Включён первый шаг перекрытия: ставка сто десять.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "50c978b0a4001ab03a68f50befc00f12d0849feae5895276df19d2ea8279061d",
+  "file": "ru/NARRATE_RESULT/comment_ru_narrate_result_04.mp3",
+  "duration": 3.9705,
+  "sha256": "8569209858c373915dea6be40131898b7fbb4b5de82acc3757ded56aabf89fa3",
+  "request_payload": {
+    "text": "[lighthearted and reassuring] Включён первый шаг перекрытия: ставка сто десять.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

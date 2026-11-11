@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_04",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "Thirty seconds fits this setup; it is not a default choice.",
+  "tts_text": "[bright and conversational] Thirty seconds fits this setup; it is not a default choice.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7100ffc348c8605efe785c225d479492266684e415658bf0b611a101ceb393b6",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_04.mp3",
+  "duration": 3.9705,
+  "sha256": "8594199a832631b2dbe0fb0ffb2c5e401a456f3c5ad6f2b88f28cb85589bbc7f",
+  "request_payload": {
+    "text": "[bright and conversational] Thirty seconds fits this setup; it is not a default choice.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

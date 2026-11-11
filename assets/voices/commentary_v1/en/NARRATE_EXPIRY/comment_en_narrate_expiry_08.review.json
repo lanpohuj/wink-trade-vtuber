@@ -1,0 +1,35 @@
+{
+  "id": "comment_en_narrate_expiry_08",
+  "category": "NARRATE_EXPIRY",
+  "lang": "en",
+  "text": "We chose a two-minute window, so we follow the structure of the move.",
+  "tts_text": "[bright and conversational] We chose a two-minute window, so we follow the structure of the move.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "55f186bad6048f5f7f7caf3b23c608608e1fd1871fffc05fdeeed024e713c335",
+  "file": "en/NARRATE_EXPIRY/comment_en_narrate_expiry_08.mp3",
+  "duration": 4.075,
+  "sha256": "8bd686d1b7567d0eec5687aba23b26fdc3522166d4df297919627b33da10e86b",
+  "request_payload": {
+    "text": "[bright and conversational] We chose a two-minute window, so we follow the structure of the move.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

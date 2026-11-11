@@ -1,0 +1,38 @@
+{
+  "id": "comment_en_open_trade_put_07",
+  "category": "OPEN_TRADE_PUT",
+  "lang": "en",
+  "text": "Opened down: the level reaction changed local structure.",
+  "tts_text": "[confident and lively] Opened down: the level reaction changed local structure.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "89d09cbe1cdaa98353d4e7a84b7c00a4a5ca7fa2f11f5019d7863ae733f04f38",
+  "file": "en/OPEN_TRADE_PUT/comment_en_open_trade_put_07.mp3",
+  "duration": 4.101125,
+  "sha256": "ffd9144343cbbe5c298659d483044f1032784223c323596ca4064497ec9a3f11",
+  "request_payload": {
+    "text": "[confident and lively] Opened down: the level reaction changed local structure.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}
