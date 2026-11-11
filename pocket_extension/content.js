@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  const CONTENT_VERSION="2.3.2", DATA_REVISION='history-r6';
+  const CONTENT_VERSION="2.3.3", DATA_REVISION='history-r6';
   if (window.__WINKY_NEKO_INJECTED__) return;
   window.__WINKY_NEKO_INJECTED__ = true;
 
@@ -336,11 +336,62 @@
 
   /* ==================== Trade Phase & Stream Director Bridge ==================== */
 
+  // Read-only narration context. None of these values authorizes a trade.
+  function commentaryVolatility(bars) {
+    const tail=(bars || []).filter(c=>c.complete && !c.incomplete).slice(-23);
+    if(tail.length<23 || tail.some(c=>c.source!==tail[0].source || c.candlePeriodSec!==tail[0].candlePeriodSec)) return false;
+    const median=values=>{const a=values.slice().sort((x,y)=>x-y),n=a.length;return n%2?a[(n-1)/2]:(a[n/2-1]+a[n/2])/2;};
+    const ranges=tail.map(c=>c.high-c.low);
+    const baseline=median(ranges.slice(0,20));
+    return baseline>0 && median(ranges.slice(20))>=1.8*baseline;
+  }
+
+  function commentaryNearLoss(trade, outcome) {
+    const evidence=trade.brokerResult,entry=trade.commentaryEntry;
+    if(outcome!=='LOSS' || !evidence || !(evidence.openPrice>0) || !(evidence.closePrice>0) || !Number.isFinite(evidence.closedAt) ||
+       !entry || !['broker','ticks','quotes','ws'].includes(entry.source) || !(entry.atr>0)) return false;
+    const sign=trade.direction==='BUY'?1:-1,delta=sign*(evidence.closePrice-evidence.openPrice);
+    return delta<0 && Math.abs(delta)<=.1*entry.atr && (trade.commentaryTicks || []).some(t=>
+      t.timestamp>=evidence.closedAt-3000 && t.timestamp<=evidence.closedAt && sign*(t.price-evidence.openPrice)>0);
+  }
+
+  function commentaryContext() {
+    const trade=state.tradeContext,entry=trade?.commentaryEntry;
+    const sample=state.analysisCache?.pair===state.targetPair?state.analysisCache:null;
+    const market=state.commentaryMarket || {};
+    if(state.commentaryPair!==state.targetPair && sample && sample.analysis.dataStatus!=='NO_DATA') {
+      const prior=state.commentaryPair;state.commentaryPair=state.targetPair;state.commentaryPairChangedAt=prior?Date.now():null;
+    }
+    return {pair_changed_at:state.commentaryPairChangedAt || null,auto_stream:state.autoStream===true,search_generation:state.searchGeneration || 0,
+      data_status:sample?.analysis?.dataStatus || 'NO_DATA',
+      setup:entry?.setup || null,setup_confirmed:Boolean(entry && (trade.openConfirmed || trade.debitObserved)),
+      open_observed:Boolean(trade && !trade.resultApplied && (trade.openConfirmed || trade.debitObserved)),
+      entry_observed_at:entry?.observedAt || null,entry_factors:entry?.factors || [],
+      entry_periods:entry?.periods || [],entry_source:entry?.source || null,
+      closes_at:state.tradeEndTime || null,last_result:state.commentaryResult || null,
+      next_stake:state.currentStake,high_volatility:market.pair===state.targetPair && market.high===true,
+      market_observed_at:market.observedAt || null};
+  }
+
+  function commentaryHeartbeat() {
+    try {
+      if(state.autoStream) {
+        const bars=marketFrames()[60] || [],last=bars.filter(c=>c.complete && !c.incomplete).at(-1);
+        const key=state.targetPair+'|'+last?.time+'|'+last?.source;
+        if(last && key!==state.commentaryMarket?.key) state.commentaryMarket={key,pair:state.targetPair,high:commentaryVolatility(bars),observedAt:Date.now()};
+      }
+      const phase=state.botState==='IN_TRADE'?'IN_TRADE':state.botState==='TRADE_RESULT'?'RESULT':
+        state.botState==='COOLDOWN'?'COOLDOWN':state.searchRunning?'ANALYZING':'IDLE';
+      notifyTradePhase(phase,state.targetPair,phase==='IN_TRADE'?Math.max(0,Math.floor(((state.tradeEndTime || Date.now())-Date.now())/1000)):0);
+    } catch (_) {}
+  }
+
   async function notifyTradePhase(phase, pair = "", remainingSec = 0, extra = {}) {
     try {
       const dir = extra.direction || state.activeSignal?.direction || "";
       const act = extra.action || (dir === "BUY" ? "CALL" : (dir === "SELL" ? "PUT" : ""));
       const res = await sendProxyMessage("/api/winky/trade_phase", "POST", {
+        ...commentaryContext(),
         session_id: voiceSessionId,
         trade_seq: state.tradeContext?.seq || state.tradeSequence,
         lang: state.lang || "ru",
@@ -409,7 +460,7 @@
       }
     }
     if (data.type === 'BROKER_DEAL_RESULT' && trade && trade.brokerId && String(data.orderId) === String(trade.brokerId) && Number.isFinite(data.net)) {
-      trade.brokerResult = { id: data.orderId, net: data.net };
+      trade.brokerResult = { id: data.orderId, net: data.net, openPrice:data.openPrice, closePrice:data.closePrice, closedAt:data.closedAt };
     }
 
     // A. Live Price Tick with Y-ratio
@@ -1286,6 +1337,12 @@
         LiveTickBuffer.addTick(price, timestamp);
         state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair,source:'ws'};
         state.brokerClock={timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
+        const active=state.tradeContext;
+        if(active && !active.resultApplied && normalizePocketPair(active.pair)===normalizePocketPair(state.targetPair)) {
+          active.commentaryTicks=(active.commentaryTicks || []).filter(t=>timestamp-t.timestamp<=5000);
+          active.commentaryTicks.push({price,timestamp});
+          if(active.commentaryTicks.length>100) active.commentaryTicks.shift();
+        }
       }
 
       if(metadata.source_type==='canvas' && metadata.rawSymbol && normalizePocketPair(metadata.rawSymbol)===normalizePocketPair(state.targetPair) && !(state.lastRealQuote?.source==='ws' && quoteIsFresh())) state.lastRealQuote={price,timestamp,receivedAt:metadata.receivedAt || Date.now(),pair:state.targetPair};
@@ -2951,6 +3008,7 @@
 
       loggerLog(`VoiceManager: Мгновенный запрос категории [${category}] (${state.lang})`);
       const payload = {
+        ...commentaryContext(),
         category: category,
         event_id: /^(trade_(win|loss|refund)|OPEN_TRADE_)/i.test(category)
           ? voiceSessionId + ":" + (state.tradeContext?.seq || state.tradeSequence) + ":" + (/^OPEN_/i.test(category) ? "open" : "result")
@@ -2959,7 +3017,7 @@
         trade_seq: state.tradeContext?.seq || state.tradeSequence,
         pair: state.targetPair,
         expiry: state.activeSignal?.duration || state.selectedTimeframe,
-        setup: state.analysisCache?.analysis?.family || state.analysisCache?.analysis?.setup || "",
+        setup: state.tradeContext?.commentaryEntry?.setup || "",
         score: state.activeSignal?.confluence ?? null,
         phase: state.botState,
         created_at: Date.now(),
@@ -3474,6 +3532,9 @@
         stake: state.actualStakePlaced, startedAt: Date.now(), balanceBefore: getPocketBalance(),
         historyBefore: new Set(pocketDealRows().map(dealRowFingerprint)), brokerId: null,
         resultApplied: false, openConfirmed: false, lastBadgeAt: 0, remainingSec: null,
+        commentaryEntry:{setup:analysis.family || analysis.setup,source:analysis.entrySource,
+          atr:analysis.atr,observedAt:Date.now(),periods:(analysis.timeframesUsed || []).slice(),
+          factors:(analysis.factors || []).slice()},commentaryTicks:[],
       };
       state.balanceBeforeClick = trade.balanceBefore;
       state.balanceDuringTrade = state.balanceAfterOpen = state.balanceAfterClose = null;
@@ -3549,10 +3610,7 @@
         const remaining = Math.max(0, Math.floor((state.tradeEndTime - now) / 1000));
         updateInTradeTimerUI(remaining);
 
-        if (remaining >= 14 && remaining <= 18 && (now - state.lastInsightVoiceTs >= 90000)) {
-          state.lastInsightVoiceTs = now;
-          VoiceManager.playCategory("stream_insight", false, "happy", "nod");
-        }
+
       }, 200);
     } catch (err) {
       loggerLog("[executeTradeWithSignal] ⚠️ Error during execution:", err);
@@ -3807,6 +3865,8 @@
     trade.resultApplied = true;
     journalDecision('trade_result',null,outcomeResult.outcome+': '+outcomeResult.reason);
     notifyTradePhase('RESULT', trade.pair, 0);
+    state.commentaryResult={seq:trade.seq,outcome:outcomeResult.outcome,closed_at:Date.now(),
+      previous_step:state.recoveryStep,near_loss_verified:commentaryNearLoss(trade,outcomeResult.outcome)};
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
@@ -3905,8 +3965,8 @@
               <div class="signal-ta-lines">
                 <div class="signal-ta-line" style="color:#FFAA00;">
                   ${state.lang === "ru"
-                    ? "📌 Чуть зацепило на закрытии — меняем пару и заходим на перекрытие 1 ($110) с коэффициентом 2.2!"
-                    : "📌 Wick touched at the close — switching pair and taking recovery step 1 ($110) with 2.2 multiplier!"}
+                    ? "📌 Подтверждён минус. Меняем пару; следующий шаг перекрытия — $110 (x2.2)."
+                    : "📌 Confirmed loss. Switching pair; next recovery stake is $110 (x2.2)."}
                 </div>
               </div>
             `;
@@ -3993,6 +4053,7 @@
 
     // Пауза между сделками
     state.botState = "COOLDOWN";
+    notifyTradePhase("COOLDOWN",state.targetPair,0);
     renderSignalCardState();
     updateStakeBadgeUI();
 
@@ -5037,6 +5098,7 @@
 
     // 4. Start Clock & Unified Sync
     setInterval(updateOrbClock, 1000);
+    setInterval(commentaryHeartbeat, 1000);
     setUnifiedActivePair(state.targetPair, state.targetPayout, state.selectedTimeframe);
     updateScoreHUDUI();
 

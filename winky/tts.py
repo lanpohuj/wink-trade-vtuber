@@ -1548,6 +1548,7 @@ class SpeechController:
         self._volume = 1.0
         self._speaking = False
         self._current_text = ""
+        self.last_speech_ended_at = 0.0
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
         self._afplay_proc: subprocess.Popen | None = None
@@ -2053,6 +2054,12 @@ class SpeechController:
                 self._voice_events[event_id] = time.time()
                 while len(self._voice_events) > 2048:
                     self._voice_events.pop(next(iter(self._voice_events)))
+            if event.get('commentary') and item.priority == 4:
+                for pending in list(self._playback_queue):
+                    if pending.event.get('commentary') and pending.priority == 4:
+                        self._playback_queue.remove(pending)
+                        if pending.bank_id:
+                            self.voice_bank.release(pending.bank_id, pending.event)
             self._playback_queue.append(item)
             if event['category'] == 'CHAT_ACK':
                 self._last_ack_at = time.time()
@@ -2064,6 +2071,14 @@ class SpeechController:
                               action: str | None = None, priority: bool = False) -> bool:
         return bool(self.enqueue_voice_event({'category': category, 'lang': lang,
             'emotion': emotion, 'action': action}).get('ok'))
+
+    def narration_state(self) -> dict:
+        with self._lock:
+            return {'speaking': self._speaking, 'paused': self._paused,
+                    'ended_at': self.last_speech_ended_at,
+                    'background_pending': any(i.event.get('commentary') for i in self._playback_queue),
+                    'pending_fact_keys': [i.event.get('commentary_fact_key') for i in self._playback_queue if i.event.get('commentary')],
+                    'foreground_ready': any(i.priority < 4 and i.ready_event.is_set() for i in self._playback_queue)}
 
     def _item_valid(self, item: SpeechItem) -> bool:
         if item.failed or time.time() - item.created_at > item.max_age_sec:
@@ -2080,6 +2095,9 @@ class SpeechController:
         if item.priority == 0:
             return True
         current = stream_director.context
+        if event.get('commentary'):
+            from winky.commentary import narration_valid
+            return narration_valid(event, current, phase, stream_director._last_phase_update)
         if event.get('session_id') and current.get('session_id') and event['session_id'] != current['session_id']:
             return False
         if item.priority == 1 and current.get('remaining_sec') is not None and float(current['remaining_sec']) - (time.time() - stream_director._last_phase_update) <= 0:
@@ -2102,10 +2120,12 @@ class SpeechController:
         return True
 
     def _fits_window(self, item: SpeechItem) -> bool:
-        if item.priority not in (3, 4) and item.event.get("category") != "IN_TRADE_WAITING":
+        if item.priority not in (1, 3, 4) and item.event.get("category") != "IN_TRADE_WAITING":
             return True
         from winky.director import stream_director
         phase = stream_director.trade_phase
+        if item.event.get('commentary') and phase in ('ANALYZING', 'COOLDOWN', 'RESULT'):
+            return True
         if phase == 'IDLE':
             return True
         if phase != 'IN_TRADE' or not item.media_path:
@@ -2208,6 +2228,10 @@ class SpeechController:
                     item.chat_item.played = True
                 if item.bank_id:
                     self.voice_bank.release(item.bank_id, item.event, played=True)
+                from winky.director import stream_director
+                stream_director.note_voice_started(item.event)
+                if item.event.get('commentary'):
+                    stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
                 try:
                     if item.action:
                         self.on_action(item.action, item.action_duration)
@@ -2262,6 +2286,7 @@ class SpeechController:
                 pass
             self._finished.set()
             self._speaking = False
+            self.last_speech_ended_at = time.time()
             self._current_text = ""
             # Не удаляем файлы из voice_cache/ и cache/
             if media.resolve().is_relative_to(MEDIA_DIR.resolve()) and "cache" not in media.parts:

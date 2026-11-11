@@ -20,7 +20,7 @@ function loadContent() {
   };
   let source = fs.readFileSync(path.join(__dirname, 'content.js'), 'utf8');
   source = source.replace('  // Ensure DOM ready', `
-    globalThis.testing = { state, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance,
+    globalThis.testing = { state, commentaryContext, commentaryVolatility, commentaryNearLoss, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance,
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
       executeTradeWithSignal, announceObservedOpening,
@@ -93,9 +93,9 @@ test('legacy balance result does not require an optional broker acknowledgement'
     assert.equal(c.state.lastTradeOutcome,status);assert.equal(c.state.currentStake,nextStake);
     assert.equal(c.state.scoreWins,wins+(status==='WIN'?1:0));
     assert.equal(c.state.scoreLosses,losses+(status==='LOSS'?1:0));
-    assert.deepEqual(phases,['RESULT','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);assert.equal(next,1);
+    assert.deepEqual(phases,['RESULT','COOLDOWN','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);assert.equal(next,1);
     if(status!=='REFUND')assert.ok(voices.includes(status==='WIN'?'trade_win':'trade_loss_step1'));
-    await c.onSignalTimerFinished();assert.equal(phases.length,2);
+    await c.onSignalTimerFinished();assert.equal(phases.length,3);
   }
 });
 test('unavailable settlement evidence releases the cycle without fabricating a result', async () => {
@@ -107,7 +107,7 @@ test('unavailable settlement evidence releases the cycle without fabricating a r
   assert.equal(t.resultApplied,true);assert.equal(c.state.lastTradeOutcome,'UNKNOWN');assert.equal(c.state.lastTrade.isWin,null);
   assert.equal(c.state.recoveryStep,1);assert.equal(c.state.currentStake,110);
   assert.equal(c.state.scoreWins,wins);assert.equal(c.state.scoreLosses,losses);assert.equal(c.state.scoreProfit,profit);
-  assert.deepEqual(phases,['RESULT','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);
+  assert.deepEqual(phases,['RESULT','COOLDOWN','IDLE']);assert.equal(c.state.botState,'IDLE');assert.equal(c.state.tradeContext,null);
 });
 test('unrelated balance movement and an unobserved opening do not become a loss or refund', async () => {
   for(const [after,observed] of [[940,true],[950,false],[1000,false]]) {
@@ -750,4 +750,27 @@ test('opening speech waits for observed order or stake debit and is queued only 
   trade.debitObserved=true;c.announceObservedOpening(trade);c.announceObservedOpening(trade);
   await Promise.resolve();assert.equal(calls.length,1);assert.equal(calls[0][0],'OPEN_TRADE_CALL');
   assert.equal(calls[0][4].open_observed,true);
+});
+
+
+test('narration volatility uses 23 complete candles of one source and period',()=>{
+ const c=loadContent(); const bars=Array.from({length:23},(_,i)=>({complete:true,incomplete:false,source:'quotes',candlePeriodSec:60,high:i<20?1:2,low:0}));
+ assert.equal(c.commentaryVolatility(bars),true);
+ assert.equal(c.commentaryVolatility(bars.slice(1)),false);
+ bars[2].source='pixels';assert.equal(c.commentaryVolatility(bars),false);
+});
+test('near-loss narration requires matched closing prices and a last-three-second crossing',()=>{
+ const c=loadContent(),end=1700000000000;
+ const t={direction:'BUY',commentaryEntry:{source:'broker',atr:.2},brokerResult:{openPrice:100,closePrice:99.99,closedAt:end},commentaryTicks:[{price:100.1,timestamp:end-1000}]};
+ assert.equal(c.commentaryNearLoss(t,'LOSS'),true);
+ assert.equal(c.commentaryNearLoss(t,'REFUND'),false);
+ t.commentaryTicks[0].timestamp=end-4000;assert.equal(c.commentaryNearLoss(t,'LOSS'),false);
+ t.commentaryTicks[0].timestamp=end-1000;t.commentaryEntry.source='pixels';assert.equal(c.commentaryNearLoss(t,'LOSS'),false);
+ t.commentaryEntry.source='broker';t.brokerResult.closePrice=null;assert.equal(c.commentaryNearLoss(t,'LOSS'),false);
+});
+test('opening explanation remains attached to the observed trade, not a later analysis',()=>{
+ const c=loadContent(),t=c.trade(); t.openConfirmed=true;t.commentaryEntry={setup:'TREND_PULLBACK',source:'broker',atr:.2,observedAt:123,factors:['held'],periods:[15,60]};
+ c.state.analysisCache={pair:c.state.targetPair,analysis:{family:'LOCAL_REVERSAL'}};
+ const snapshot=c.commentaryContext();assert.equal(snapshot.setup,'TREND_PULLBACK');assert.equal(snapshot.setup_confirmed,true);assert.equal(snapshot.entry_observed_at,123);
+ t.resultApplied=true;assert.equal(c.commentaryContext().open_observed,false);
 });

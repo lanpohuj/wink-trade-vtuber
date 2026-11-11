@@ -1,0 +1,2019 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "comment_ru_narrate_scan_01",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+      "tts_text": "[bright and conversational] Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "53c73f314defde91b6c18b53997bc23363ff701925963cd38a82587966bb4c0a"
+    },
+    {
+      "id": "comment_en_narrate_scan_01",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Comparing charts. I want a clear setup, not just movement.",
+      "tts_text": "[bright and conversational] Comparing charts. I want a clear setup, not just movement.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "09fdf43fd4a58515c7fe8a6e937097c048982421a38143e4fa08756e3cf0fd6c"
+    },
+    {
+      "id": "comment_ru_narrate_scan_02",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+      "tts_text": "[bright and conversational] Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "ad1b11cff5c7a543a7d44b22e01c226bc73e8f3d466e52f7334e9d6d961a9c43"
+    },
+    {
+      "id": "comment_en_narrate_scan_02",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Watching who is driving price. No rush to pick a direction.",
+      "tts_text": "[bright and conversational] Watching who is driving price. No rush to pick a direction.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "02ff6b5e3aa890a048e556fe7616d1039eade4e616497b4fbbc436412558e8c5"
+    },
+    {
+      "id": "comment_ru_narrate_scan_03",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Проверяю подтверждения. Красивая свеча ещё не вся история.",
+      "tts_text": "[bright and conversational] Проверяю подтверждения. Красивая свеча ещё не вся история.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "02f270e23d0057e4219dbdcc58199ab305c4b1e9377b2872459f55fc92d15e46"
+    },
+    {
+      "id": "comment_en_narrate_scan_03",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Checking confirmation. One pretty candle is not the whole story.",
+      "tts_text": "[bright and conversational] Checking confirmation. One pretty candle is not the whole story.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "3152c14a2ec9335206c402570b642bb184e5ae5ff15545565c6ee64b32e8b15d"
+    },
+    {
+      "id": "comment_ru_narrate_scan_04",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+      "tts_text": "[bright and conversational] Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "c6564318657a3cd1ef1571e50eb086b7c91e925b305d04af9a58a1c4561b80ab"
+    },
+    {
+      "id": "comment_en_narrate_scan_04",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Reading the structure. An impulse and a pullback are different things.",
+      "tts_text": "[bright and conversational] Reading the structure. An impulse and a pullback are different things.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "d20ac4bd1d195f94db6102366fbfa3b8a9a172c9b8d9bd9d046f5daf6a17de58"
+    },
+    {
+      "id": "comment_ru_narrate_scan_05",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Подгружаются данные графика. Пока ничего не додумываю.",
+      "tts_text": "[bright and conversational] Подгружаются данные графика. Пока ничего не додумываю.",
+      "conditions": {
+        "data_status": "NO_DATA"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "92f9969a517831010c487f1e775b7304689608fab742ab412d3bc2c6df6f4f76"
+    },
+    {
+      "id": "comment_en_narrate_scan_05",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Chart data is loading. I will not fill the gaps with guesses.",
+      "tts_text": "[bright and conversational] Chart data is loading. I will not fill the gaps with guesses.",
+      "conditions": {
+        "data_status": "NO_DATA"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "fd669e6a9b91ee2797c04e0377283e1a829f49fdc196ef5d79ba708b12d2b70c"
+    },
+    {
+      "id": "comment_ru_narrate_scan_06",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Сверяю интервалы. Хочу видеть картину целиком.",
+      "tts_text": "[bright and conversational] Сверяю интервалы. Хочу видеть картину целиком.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "7c32eeb7fd2ea6b4495c150c499e37b75e0bcba46ee6df7832357efb07e34d98"
+    },
+    {
+      "id": "comment_en_narrate_scan_06",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Checking timeframes. I want to see the bigger picture.",
+      "tts_text": "[bright and conversational] Checking timeframes. I want to see the bigger picture.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "0b9b049d8bc50604ba7ff38b2472fe9b2e35713eed46e85a5aa2f1781c485bce"
+    },
+    {
+      "id": "comment_ru_narrate_scan_07",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+      "tts_text": "[bright and conversational] Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d19da3a48e38a1c5415da529ae2cd0ab3ed955fc6c520404f0d52e27c8290010"
+    },
+    {
+      "id": "comment_en_narrate_scan_07",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Looking for entry confirmation. An interesting move still needs a setup.",
+      "tts_text": "[bright and conversational] Looking for entry confirmation. An interesting move still needs a setup.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "4c6e63b2ba98608792cf8f2198d7c0d0c0b8d391292c4c2031b51e6fa98707b7"
+    },
+    {
+      "id": "comment_ru_narrate_scan_08",
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "text": "Разбираем спокойно. Движение есть не всегда значит пора входить.",
+      "tts_text": "[bright and conversational] Разбираем спокойно. Движение есть не всегда значит пора входить.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "894452641ae6fb868508e42b241cf246f0d8c12f8181aef53aadb7bd8bb60362"
+    },
+    {
+      "id": "comment_en_narrate_scan_08",
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "text": "Taking a careful look. Movement does not always mean an entry.",
+      "tts_text": "[bright and conversational] Taking a careful look. Movement does not always mean an entry.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "4385054b8d6804e145ff2cb4e26172f9d274709a7b549d98bcac53457ef30a7f"
+    },
+    {
+      "id": "comment_ru_narrate_pair_01",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Следующий график. Посмотрим, будет ли здесь понятнее.",
+      "tts_text": "[bright and conversational] Следующий график. Посмотрим, будет ли здесь понятнее.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "5617a82666eddfb8b6246ee7a04381ccc412520db2c9311a005a5325d633eb4f"
+    },
+    {
+      "id": "comment_en_narrate_pair_01",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "Next chart. Let us see if this one is clearer.",
+      "tts_text": "[bright and conversational] Next chart. Let us see if this one is clearer.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "b3cd4138b7739023cd54b03c39a7050a880d24e3fcfde54ca2d319b6aa10d7d4"
+    },
+    {
+      "id": "comment_ru_narrate_pair_02",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Новая пара — новая проверка. Старые выводы сюда не переносим.",
+      "tts_text": "[bright and conversational] Новая пара — новая проверка. Старые выводы сюда не переносим.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d4c72caaea261d3cfaa391cfed43c99b51719142e6dbbbb7d1149b6fc7d0f5b6"
+    },
+    {
+      "id": "comment_en_narrate_pair_02",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "New pair, fresh checks. The last chart tells us nothing here.",
+      "tts_text": "[bright and conversational] New pair, fresh checks. The last chart tells us nothing here.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "d83daaab0c9811900715f34f2e55b386f71ec8779f38faf85800d7aa5b613fe5"
+    },
+    {
+      "id": "comment_ru_narrate_pair_03",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+      "tts_text": "[bright and conversational] Сравниваю ещё один вариант. Выбор не сводится к первой попавшейся паре.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "5af11ee4202bf4c899cbc51cc05ba9d8e44ec2e32c16a48099a38ee2b23a8568"
+    },
+    {
+      "id": "comment_en_narrate_pair_03",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "Comparing another option. We do not have to take the first pair.",
+      "tts_text": "[bright and conversational] Comparing another option. We do not have to take the first pair.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "11b8a8011d20454157d865b3548143cbc7ada67c65a0e18d48f7c43d76079748"
+    },
+    {
+      "id": "comment_ru_narrate_pair_04",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+      "tts_text": "[bright and conversational] Продолжаю поиск. Мне интересен сценарий, а не количество переключений.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "f2bcc5eb0c399161245730a65b25f7e31bf3908a4d303d4f43ea2452796eeffc"
+    },
+    {
+      "id": "comment_en_narrate_pair_04",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "Still looking. The setup matters more than how many charts we scan.",
+      "tts_text": "[bright and conversational] Still looking. The setup matters more than how many charts we scan.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1ad46fa8143a17d06a56600ba9316e66fbc0cc32d68f0ca91c34c5b92370ee55"
+    },
+    {
+      "id": "comment_ru_narrate_pair_05",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+      "tts_text": "[bright and conversational] Посмотрим другой график. Иногда лучший ход — поискать дальше.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "ef5cae9178629480a5f97df7bc853323bc0e86e9160815953fa74d48ee73879f"
+    },
+    {
+      "id": "comment_en_narrate_pair_05",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "Let us try another chart. Sometimes the right move is to keep looking.",
+      "tts_text": "[bright and conversational] Let us try another chart. Sometimes the right move is to keep looking.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "7e548a5e06f72b71cdcd7eb4b89bc9c49fe019bf57aca1f577404aefb82ce364"
+    },
+    {
+      "id": "comment_ru_narrate_pair_06",
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "text": "Здесь начинаю проверку заново: направление, структура и подтверждение.",
+      "tts_text": "[bright and conversational] Здесь начинаю проверку заново: направление, структура и подтверждение.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "819c906b97c1056dbe389064fd8ce515fb9f7ffa0589ca1e8bdb104a68d66102"
+    },
+    {
+      "id": "comment_en_narrate_pair_06",
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "text": "Starting fresh here: direction, structure, and confirmation.",
+      "tts_text": "[bright and conversational] Starting fresh here: direction, structure, and confirmation.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1ef2af1d8450a7b3a4c7d38c024c5c5c87381d87efe4df7d99abce1006ff1f23"
+    },
+    {
+      "id": "comment_ru_open_trade_call_01",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: после отката движение возобновилось.",
+      "tts_text": "[confident and lively] Открыла вверх: после отката движение возобновилось.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "dfb43c1eec8f18b01ed957c09883f41f205240a89278e3a13e3955fac9740dd7"
+    },
+    {
+      "id": "comment_en_open_trade_call_01",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the move resumed after a pullback.",
+      "tts_text": "[confident and lively] Opened up: the move resumed after a pullback.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "409bfaa845a90a81d8e1fb93479081a3839ad082347d860351f04f8cf2d2050f"
+    },
+    {
+      "id": "comment_ru_open_trade_call_02",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: откат завершился, движение получило подтверждение.",
+      "tts_text": "[confident and lively] Открыла вверх: откат завершился, движение получило подтверждение.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "7bbb1e89968b884a2058491374276b064ad8de6d2e17a3191eb0a8ccabd04419"
+    },
+    {
+      "id": "comment_en_open_trade_call_02",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the pullback ended with confirmation.",
+      "tts_text": "[confident and lively] Opened up: the pullback ended with confirmation.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a9c8eb791643672daf15496dd2660cdb40b77086aed936a701c7e25a02317f28"
+    },
+    {
+      "id": "comment_ru_open_trade_put_01",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: после отката движение возобновилось.",
+      "tts_text": "[confident and lively] Открыла вниз: после отката движение возобновилось.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "afa0420e96aea7c2b4ed55a7444a5399b23c00e614b299f17edd48c98fa3339b"
+    },
+    {
+      "id": "comment_en_open_trade_put_01",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the move resumed after a pullback.",
+      "tts_text": "[confident and lively] Opened down: the move resumed after a pullback.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "7d8b43ef3992df01dcacddd172ae111ced9cb11743dbbc31e84499189eca330a"
+    },
+    {
+      "id": "comment_ru_open_trade_put_02",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: откат завершился, движение получило подтверждение.",
+      "tts_text": "[confident and lively] Открыла вниз: откат завершился, движение получило подтверждение.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "5b53771b568becd2b9b145150ff322cb4e878afe11c0b8172e7d019b61fbb2b1"
+    },
+    {
+      "id": "comment_en_open_trade_put_02",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the pullback ended with confirmation.",
+      "tts_text": "[confident and lively] Opened down: the pullback ended with confirmation.",
+      "conditions": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "39e7ed487888266c85946b8694e87372fbd89ad6e4973021a19011d6141bb566"
+    },
+    {
+      "id": "comment_ru_open_trade_call_03",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: пробитый уровень удержался после возврата.",
+      "tts_text": "[confident and lively] Открыла вверх: пробитый уровень удержался после возврата.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "9a25661049064301d305f30a4e22188a8feafc743dbb3e40186e4c69e06d3f3d"
+    },
+    {
+      "id": "comment_en_open_trade_call_03",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the broken level held on the retest.",
+      "tts_text": "[confident and lively] Opened up: the broken level held on the retest.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "3cdb925e448c9c7a4421754aedadbf27346a0037fd1ae1be4000622d6902baff"
+    },
+    {
+      "id": "comment_ru_open_trade_call_04",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: после пробоя прошёл подтверждённый ретест.",
+      "tts_text": "[confident and lively] Открыла вверх: после пробоя прошёл подтверждённый ретест.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "8d94462f0339ffb064678208b0b8cef9a6380ede3a4b85b4294605cde03cff7b"
+    },
+    {
+      "id": "comment_en_open_trade_call_04",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: a confirmed retest followed the breakout.",
+      "tts_text": "[confident and lively] Opened up: a confirmed retest followed the breakout.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "2f9519e514dd98d22cf36fd91a051dde076e8e7585563edaf36dfd9860bb7498"
+    },
+    {
+      "id": "comment_ru_open_trade_put_03",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: пробитый уровень удержался после возврата.",
+      "tts_text": "[confident and lively] Открыла вниз: пробитый уровень удержался после возврата.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "c79c72269781cef2287185e99619a9bedacef9a6a878d034cf1f39afe683187d"
+    },
+    {
+      "id": "comment_en_open_trade_put_03",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the broken level held on the retest.",
+      "tts_text": "[confident and lively] Opened down: the broken level held on the retest.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "14e08aa494f5db6af1b9d58f8c79396d67d0e994c6efc991d1a82e1a84549bc1"
+    },
+    {
+      "id": "comment_ru_open_trade_put_04",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+      "tts_text": "[confident and lively] Открыла вниз: после пробоя прошёл подтверждённый ретест.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "4e5731640be5af8d9bb8a46fb55108085547c8ce4587ec2865cea97880b1f3d6"
+    },
+    {
+      "id": "comment_en_open_trade_put_04",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: a confirmed retest followed the breakout.",
+      "tts_text": "[confident and lively] Opened down: a confirmed retest followed the breakout.",
+      "conditions": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "6de8c54a91e749b9f7180ca2370cd9b55567f96f9882f8b5f03dffd76b206ae1"
+    },
+    {
+      "id": "comment_ru_open_trade_call_05",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: цена отреагировала на границу диапазона.",
+      "tts_text": "[confident and lively] Открыла вверх: цена отреагировала на границу диапазона.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "3aa43824b19786fe673629f96754d87bdbff0e9793ed3729c7fb93523f4aca0f"
+    },
+    {
+      "id": "comment_en_open_trade_call_05",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: price reacted at the edge of the range.",
+      "tts_text": "[confident and lively] Opened up: price reacted at the edge of the range.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "b71833c23cb2e88d302417bf6814d7e97e0c75b193e1e5f81361b5c8a0e15e1f"
+    },
+    {
+      "id": "comment_ru_open_trade_call_06",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: от границы диапазона получено подтверждение.",
+      "tts_text": "[confident and lively] Открыла вверх: от границы диапазона получено подтверждение.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "33a054d26d0e47c0b02dc24934f94008b2460a74b7956d1299e0ca3259859164"
+    },
+    {
+      "id": "comment_en_open_trade_call_06",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the range boundary gave confirmation.",
+      "tts_text": "[confident and lively] Opened up: the range boundary gave confirmation.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "835eb959566e2f78312b8438da247adbc09506b9140d45403352c0e52c5a96dd"
+    },
+    {
+      "id": "comment_ru_open_trade_put_05",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: цена отреагировала на границу диапазона.",
+      "tts_text": "[confident and lively] Открыла вниз: цена отреагировала на границу диапазона.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "fb137376e472f638e44280f98f7a60aa6fbad60f2de23bdf3f7138dd25060eb8"
+    },
+    {
+      "id": "comment_en_open_trade_put_05",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: price reacted at the edge of the range.",
+      "tts_text": "[confident and lively] Opened down: price reacted at the edge of the range.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "5687ae159bf7ae846016bccc10ad882b59eff2e47320002ed496396e307d9f62"
+    },
+    {
+      "id": "comment_ru_open_trade_put_06",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: от границы диапазона получено подтверждение.",
+      "tts_text": "[confident and lively] Открыла вниз: от границы диапазона получено подтверждение.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "80fd482ec0f241d5b9a017ab2d626c0dcb086ad3e02e267083927c9fc4b8a7e2"
+    },
+    {
+      "id": "comment_en_open_trade_put_06",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the range boundary gave confirmation.",
+      "tts_text": "[confident and lively] Opened down: the range boundary gave confirmation.",
+      "conditions": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1db79a909c0227915c9f28564ba44ac541b60fd96845cf26aa9421e4922e624c"
+    },
+    {
+      "id": "comment_ru_open_trade_call_07",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: реакция на уровень изменила локальную структуру.",
+      "tts_text": "[confident and lively] Открыла вверх: реакция на уровень изменила локальную структуру.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "914ebf45fff3ae445de671bec6353f4ea80dbb18db0453d58d70658a4058fd1b"
+    },
+    {
+      "id": "comment_en_open_trade_call_07",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the level reaction changed local structure.",
+      "tts_text": "[confident and lively] Opened up: the level reaction changed local structure.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "47b191b85dfd178a6e6326f448c158685d9395946f7c563f84aa245cc8129f32"
+    },
+    {
+      "id": "comment_ru_open_trade_call_08",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "text": "Открыла вверх: локальный разворот получил подтверждение.",
+      "tts_text": "[confident and lively] Открыла вверх: локальный разворот получил подтверждение.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "67e46eae592219fdcf7d9282b0cf6ce8b3026ff6f90fcebaf7a0d13533a730d6"
+    },
+    {
+      "id": "comment_en_open_trade_call_08",
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "text": "Opened up: the local reversal gained confirmation.",
+      "tts_text": "[confident and lively] Opened up: the local reversal gained confirmation.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "390292c23331137b1e405da4611202d9bb6592154378add216e598a395e332fa"
+    },
+    {
+      "id": "comment_ru_open_trade_put_07",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: реакция на уровень изменила локальную структуру.",
+      "tts_text": "[confident and lively] Открыла вниз: реакция на уровень изменила локальную структуру.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "08c0f3d49ff46c4fb2d91e5e600ac9e082005037c5a86259725e914f28c94f41"
+    },
+    {
+      "id": "comment_en_open_trade_put_07",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the level reaction changed local structure.",
+      "tts_text": "[confident and lively] Opened down: the level reaction changed local structure.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "89d09cbe1cdaa98353d4e7a84b7c00a4a5ca7fa2f11f5019d7863ae733f04f38"
+    },
+    {
+      "id": "comment_ru_open_trade_put_08",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "text": "Открыла вниз: локальный разворот получил подтверждение.",
+      "tts_text": "[confident and lively] Открыла вниз: локальный разворот получил подтверждение.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "47a34f8f4303d7d51beba6cc886a2767c5421e723b67c7d58d3cc843934155c1"
+    },
+    {
+      "id": "comment_en_open_trade_put_08",
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "text": "Opened down: the local reversal gained confirmation.",
+      "tts_text": "[confident and lively] Opened down: the local reversal gained confirmation.",
+      "conditions": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "8403663a58fa16020a23b32de0dabad55d5ea503d4a90c156026ae4dc2a264d7"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_01",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+      "tts_text": "[bright and conversational] Выбрала пятнадцать секунд: здесь важен короткий подтверждённый импульс.",
+      "conditions": {
+        "expiry": "15s"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "781d6c476dc14ed76f3564b6d0db2283c16cc42e2c6085cc6f2b31ee2da60853"
+    },
+    {
+      "id": "comment_en_narrate_expiry_01",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "Fifteen seconds here: the confirmed short impulse matters.",
+      "tts_text": "[bright and conversational] Fifteen seconds here: the confirmed short impulse matters.",
+      "conditions": {
+        "expiry": "15s"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "364becae340f85225432500db53bb73dc9db0f445ebb334021f379865b3c0491"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_02",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+      "tts_text": "[bright and conversational] Это короткое окно на пятнадцать секунд, не прогноз большого тренда.",
+      "conditions": {
+        "expiry": "15s"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d7bf3dd777a7d32c89fc25725d6c8c2c2174c613ae16ba3d482a8bfaeb39c259"
+    },
+    {
+      "id": "comment_en_narrate_expiry_02",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "This is a fifteen-second window, not a call on the whole trend.",
+      "tts_text": "[bright and conversational] This is a fifteen-second window, not a call on the whole trend.",
+      "conditions": {
+        "expiry": "15s"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "2a91344e0b8cd694d5a059b480c9cb9a2e1d62ef462a6c31a4ce8341990a0d86"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_03",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+      "tts_text": "[bright and conversational] Здесь окно в тридцать секунд. Смотрим продолжение подтверждённого движения.",
+      "conditions": {
+        "expiry": "30s"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "51cdbe6dc63f4c10fcfbd994c596a6fbc5b3d0d98d9fa4813ad1ec2d337967df"
+    },
+    {
+      "id": "comment_en_narrate_expiry_03",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "A thirty-second window here. Watching the confirmed move continue.",
+      "tts_text": "[bright and conversational] A thirty-second window here. Watching the confirmed move continue.",
+      "conditions": {
+        "expiry": "30s"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a6edda03b3a0edde21577cc368c5555232ee5fb5f6d2e17a2f433f00ce7b67b6"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_04",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Тридцать секунд выбраны под этот сетап, а не по привычке.",
+      "tts_text": "[bright and conversational] Тридцать секунд выбраны под этот сетап, а не по привычке.",
+      "conditions": {
+        "expiry": "30s"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "cd41c5fffcb167e8017c9ea2f3e68cbaf98de0a76c756e1cfd7fb065b1ff8429"
+    },
+    {
+      "id": "comment_en_narrate_expiry_04",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "Thirty seconds fits this setup; it is not a default choice.",
+      "tts_text": "[bright and conversational] Thirty seconds fits this setup; it is not a default choice.",
+      "conditions": {
+        "expiry": "30s"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "7100ffc348c8605efe785c225d479492266684e415658bf0b611a101ceb393b6"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_05",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Выбрала минуту. Этому сценарию нужно более длинное окно.",
+      "tts_text": "[bright and conversational] Выбрала минуту. Этому сценарию нужно более длинное окно.",
+      "conditions": {
+        "expiry": "1m"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "db4813cf9e1fc361593a2678877176745cc1cb8fbbf30a8b5e79cd66ff54917f"
+    },
+    {
+      "id": "comment_en_narrate_expiry_05",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "I chose one minute. This setup needs a longer window.",
+      "tts_text": "[bright and conversational] I chose one minute. This setup needs a longer window.",
+      "conditions": {
+        "expiry": "1m"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "8e9ab1609958c651d4df6f868a0cad501fe6bf1bdca74554637a6dbd2ce266ff"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_06",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Это минутная сделка. Не оцениваем её по одному короткому тику.",
+      "tts_text": "[bright and conversational] Это минутная сделка. Не оцениваем её по одному короткому тику.",
+      "conditions": {
+        "expiry": "1m"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "6e5eefc30b1efb7bee6c6ef5283dcf608849455f572c7af6bfd6b224dd56f7f0"
+    },
+    {
+      "id": "comment_en_narrate_expiry_06",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "This is a one-minute trade. One quick tick does not tell its story.",
+      "tts_text": "[bright and conversational] This is a one-minute trade. One quick tick does not tell its story.",
+      "conditions": {
+        "expiry": "1m"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "698701657b50cbb0eb3756ebb7f31b7a4d07156546c4f771b8c7eaa20263fb8d"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_07",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Здесь две минуты: ориентир — структура старшего интервала.",
+      "tts_text": "[bright and conversational] Здесь две минуты: ориентир — структура старшего интервала.",
+      "conditions": {
+        "expiry": "2m"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "6fa818fda4fba1e3e572736faee954669ee215eb01f7a50a2fea20a259072bf9"
+    },
+    {
+      "id": "comment_en_narrate_expiry_07",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "Two minutes here: the higher timeframe structure is the context.",
+      "tts_text": "[bright and conversational] Two minutes here: the higher timeframe structure is the context.",
+      "conditions": {
+        "expiry": "2m"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1130d779d1f7edb5c45829822445610f1a6480147a95c6c04121fac020a054cd"
+    },
+    {
+      "id": "comment_ru_narrate_expiry_08",
+      "category": "NARRATE_EXPIRY",
+      "lang": "ru",
+      "text": "Выбрано двухминутное окно, поэтому следим за структурой движения.",
+      "tts_text": "[bright and conversational] Выбрано двухминутное окно, поэтому следим за структурой движения.",
+      "conditions": {
+        "expiry": "2m"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "5d679aa09758fb173d4ceb47eec2e44cfddc6f65a6fc5abfd8d9ac4cb4c97298"
+    },
+    {
+      "id": "comment_en_narrate_expiry_08",
+      "category": "NARRATE_EXPIRY",
+      "lang": "en",
+      "text": "We chose a two-minute window, so we follow the structure of the move.",
+      "tts_text": "[bright and conversational] We chose a two-minute window, so we follow the structure of the move.",
+      "conditions": {
+        "expiry": "2m"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "55f186bad6048f5f7f7caf3b23c608608e1fd1871fffc05fdeeed024e713c335"
+    },
+    {
+      "id": "comment_ru_narrate_trade_01",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+      "tts_text": "[bright and conversational] Сделка ещё идёт. Итог за нас определит закрытие, не эмоции.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d37927ef4703a4f551a2c77e3c10a1738c077ed7ce2783a24cbdd8618cdea06d"
+    },
+    {
+      "id": "comment_en_narrate_trade_01",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "The trade is still running. The close decides the result, not emotions.",
+      "tts_text": "[bright and conversational] The trade is still running. The close decides the result, not emotions.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "4aa0418e0739e2dd6f596807ac42a663cdc332fa3aec367f6042fcb9212ed2f0"
+    },
+    {
+      "id": "comment_ru_narrate_trade_02",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Следим за движением. Пока сделка открыта, результат не объявляю.",
+      "tts_text": "[bright and conversational] Следим за движением. Пока сделка открыта, результат не объявляю.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "393c62271c6b9c823ae93fc9a0cccada700dbfdca1378909dba60d1bbef412e6"
+    },
+    {
+      "id": "comment_en_narrate_trade_02",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "Watching the move. No result announcement while the trade is open.",
+      "tts_text": "[bright and conversational] Watching the move. No result announcement while the trade is open.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1d6c7252f97e2bad1345f7f6fa188444985ce46c22ff5de7958f727b170fba1e"
+    },
+    {
+      "id": "comment_ru_narrate_trade_03",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+      "tts_text": "[bright and conversational] Сейчас просто наблюдаем. Новую сделку поверх этой не открываем.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "aceb00335cbf1ae96463c47da58226407899e261fd623a492e637c0d6fee7898"
+    },
+    {
+      "id": "comment_en_narrate_trade_03",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "Just observing now. We are not stacking another trade on top.",
+      "tts_text": "[bright and conversational] Just observing now. We are not stacking another trade on top.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "8390a6369c43488d94f8ddfd92e476ecebf4efae31251cf475ac0f1fd2423c59"
+    },
+    {
+      "id": "comment_ru_narrate_trade_04",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Движение может меняться. Результат проверим после закрытия.",
+      "tts_text": "[bright and conversational] Движение может меняться. Результат проверим после закрытия.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "492086a4652ab51dc8974cb54e817a40b81071136205305445775a100692be29"
+    },
+    {
+      "id": "comment_en_narrate_trade_04",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "The move can change. We check the result after the close.",
+      "tts_text": "[bright and conversational] The move can change. We check the result after the close.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "768e6181b634916221c7c7950271f4e5774a3645d8005aa2e72c28153b7feddc"
+    },
+    {
+      "id": "comment_ru_narrate_trade_05",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Сделка на экране, я слежу за её завершением.",
+      "tts_text": "[bright and conversational] Сделка на экране, я слежу за её завершением.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "175fa7c4a5d9d9dac5ec8137513f7aeeb0d538f9e2f6b430672c41089a5a5f08"
+    },
+    {
+      "id": "comment_en_narrate_trade_05",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "The trade is on screen. I am following it through to the close.",
+      "tts_text": "[bright and conversational] The trade is on screen. I am following it through to the close.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "b1ff9b0326843307d81523f9f930acab73d91be10e88f396670d9d587b1a87fa"
+    },
+    {
+      "id": "comment_ru_narrate_trade_06",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Спокойно досматриваем. Один рывок ещё не определяет исход.",
+      "tts_text": "[bright and conversational] Спокойно досматриваем. Один рывок ещё не определяет исход.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "2c3551cde947e0cfb48c6fc1e2708ad8cc745d16859a155201c4f0627e71144c"
+    },
+    {
+      "id": "comment_en_narrate_trade_06",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "Watching it through calmly. One quick move is not the final result.",
+      "tts_text": "[bright and conversational] Watching it through calmly. One quick move is not the final result.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "60cb480460a065492e69a175e734ddadb9beb21d76082d287eedc7c966890954"
+    },
+    {
+      "id": "comment_ru_narrate_trade_07",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "До закрытия не делаем выводов. Здесь важно терпение.",
+      "tts_text": "[bright and conversational] До закрытия не делаем выводов. Здесь важно терпение.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "af6ab7b49ea7e0c8d66df67532fc75d759dd9290f0f429a3c228b98a760e2ca0"
+    },
+    {
+      "id": "comment_en_narrate_trade_07",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "No conclusions before the close. Patience matters here.",
+      "tts_text": "[bright and conversational] No conclusions before the close. Patience matters here.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1fb95e88ef80a19c568682d4c7575b3eecbf28bc2c2018239d8310af5ea5eb42"
+    },
+    {
+      "id": "comment_ru_narrate_trade_08",
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "text": "Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+      "tts_text": "[bright and conversational] Продолжаем наблюдать. Счётчик изменится только после проверки результата.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "aa8fdb68d72939b82f47718c69c2ef2eb803e70437bc8f8cecbbe7e8c13d4790"
+    },
+    {
+      "id": "comment_en_narrate_trade_08",
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "text": "Still watching. The counter changes only after the result is checked.",
+      "tts_text": "[bright and conversational] Still watching. The counter changes only after the result is checked.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "98fdf57fa249a00364b46540b299c0993a593eba2d0ecd1b1844976434ec95a1"
+    },
+    {
+      "id": "comment_ru_narrate_result_01",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+      "tts_text": "[lighthearted and reassuring] Минус зафиксирован. Этот результат не прячем, продолжаем по правилам.",
+      "conditions": {
+        "result_kind": "LOSS_GENERIC"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "a82dac62b3c56d5ef8b0372df4e5fed5662f9293707a4bc7f20accbb720a4607"
+    },
+    {
+      "id": "comment_en_narrate_result_01",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "That loss is recorded. We do not hide it; we follow the rules.",
+      "tts_text": "[lighthearted and reassuring] That loss is recorded. We do not hide it; we follow the rules.",
+      "conditions": {
+        "result_kind": "LOSS_GENERIC"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1b26a9608ef6806b29f928beece7a0d6f0044d2e008d59edf3846590760e89b0"
+    },
+    {
+      "id": "comment_ru_narrate_result_02",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Сделка не зашла. Спокойно разбираем следующий шаг.",
+      "tts_text": "[lighthearted and reassuring] Сделка не зашла. Спокойно разбираем следующий шаг.",
+      "conditions": {
+        "result_kind": "LOSS_GENERIC"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "c80d70b1eaed7a6530ec0e253675d2ac42257932a330bcffff7b658d993e38f8"
+    },
+    {
+      "id": "comment_en_narrate_result_02",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "That trade did not work out. Let us take the next step calmly.",
+      "tts_text": "[lighthearted and reassuring] That trade did not work out. Let us take the next step calmly.",
+      "conditions": {
+        "result_kind": "LOSS_GENERIC"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "f5656e6a03eae530ec382c96d933f1e814bfa631cfa76c436c4fb53b3b67cf52"
+    },
+    {
+      "id": "comment_ru_narrate_result_03",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+      "tts_text": "[lighthearted and reassuring] Следующая ставка — сто десять. Перекрытие по плану, без обещаний результата.",
+      "conditions": {
+        "result_kind": "LOSS_110"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "207139e281e14cd9cde69d5f891aecc85a95287657edd8d178f8d6be98ca8776"
+    },
+    {
+      "id": "comment_en_narrate_result_03",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "Next stake is one hundred ten. A planned recovery step, not a promised win.",
+      "tts_text": "[lighthearted and reassuring] Next stake is one hundred ten. A planned recovery step, not a promised win.",
+      "conditions": {
+        "result_kind": "LOSS_110"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "3303c02fe2da9020c5c6403bf0d9314afdac106bb6db4443a49d9601e7a4bd3c"
+    },
+    {
+      "id": "comment_ru_narrate_result_04",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Включён первый шаг перекрытия: ставка сто десять.",
+      "tts_text": "[lighthearted and reassuring] Включён первый шаг перекрытия: ставка сто десять.",
+      "conditions": {
+        "result_kind": "LOSS_110"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "50c978b0a4001ab03a68f50befc00f12d0849feae5895276df19d2ea8279061d"
+    },
+    {
+      "id": "comment_en_narrate_result_04",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "The first recovery step is set: a stake of one hundred ten.",
+      "tts_text": "[lighthearted and reassuring] The first recovery step is set: a stake of one hundred ten.",
+      "conditions": {
+        "result_kind": "LOSS_110"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "61b15c07ed818423c83101b112565ce5c4c8af222090d72ef3e44d39fda9dbe8"
+    },
+    {
+      "id": "comment_ru_narrate_result_05",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+      "tts_text": "[lighthearted and reassuring] Следующая ставка — двести сорок два. Это второй шаг перекрытия.",
+      "conditions": {
+        "result_kind": "LOSS_242"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "fde8e28a05aa8161df1d2ae8c3769a376fd4c7ccd1f0dd504b9a31e6d2471c1c"
+    },
+    {
+      "id": "comment_en_narrate_result_05",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "Next stake is two hundred forty-two. This is the second recovery step.",
+      "tts_text": "[lighthearted and reassuring] Next stake is two hundred forty-two. This is the second recovery step.",
+      "conditions": {
+        "result_kind": "LOSS_242"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "3315733347cf1ff540ea20e11b1a61f7059b59d9513fbeea4b38f0bfba61b293"
+    },
+    {
+      "id": "comment_ru_narrate_result_06",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Перекрытие перешло на второй шаг: двести сорок два.",
+      "tts_text": "[lighthearted and reassuring] Перекрытие перешло на второй шаг: двести сорок два.",
+      "conditions": {
+        "result_kind": "LOSS_242"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "9b78fea702e4fa8c2e0813c01cfe1cd5e6b17e3ec1b3f1235bed85b069a48848"
+    },
+    {
+      "id": "comment_en_narrate_result_06",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "Recovery is on its second step: two hundred forty-two.",
+      "tts_text": "[lighthearted and reassuring] Recovery is on its second step: two hundred forty-two.",
+      "conditions": {
+        "result_kind": "LOSS_242"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "dae44530c2c674e4c2eb770e6896e843cdb0f4d0587c3c950484881db1abe906"
+    },
+    {
+      "id": "comment_ru_narrate_result_07",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+      "tts_text": "[lighthearted and reassuring] Лимит перекрытий достигнут. Возвращаем базовые пятьдесят.",
+      "conditions": {
+        "result_kind": "LOSS_RESET"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "1f3bf3373101e335d0db651de6c8bcdccc741c9b08e4ab53c85489da71b85b18"
+    },
+    {
+      "id": "comment_en_narrate_result_07",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "The recovery limit is reached. Returning to the base stake of fifty.",
+      "tts_text": "[lighthearted and reassuring] The recovery limit is reached. Returning to the base stake of fifty.",
+      "conditions": {
+        "result_kind": "LOSS_RESET"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "cfce0c30f32ab6684df5caa9884f51254af9388109e32998cde223192e7c9835"
+    },
+    {
+      "id": "comment_ru_narrate_result_08",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Цикл перекрытий завершён. Дальше снова базовая ставка пятьдесят.",
+      "tts_text": "[lighthearted and reassuring] Цикл перекрытий завершён. Дальше снова базовая ставка пятьдесят.",
+      "conditions": {
+        "result_kind": "LOSS_RESET"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "a32d0388f54452df7ac265a1156667fa16b722eb72fa0470d03dd4cdc3701da9"
+    },
+    {
+      "id": "comment_en_narrate_result_08",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "The recovery cycle is complete. The base stake is fifty again.",
+      "tts_text": "[lighthearted and reassuring] The recovery cycle is complete. The base stake is fifty again.",
+      "conditions": {
+        "result_kind": "LOSS_RESET"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "dc5d7e0930cc68725cd7d33a40b771a6a640df46d4dfb75dbe6511e1e864eeb4"
+    },
+    {
+      "id": "comment_ru_narrate_result_09",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "Было близко к плюсу, но срезало на закрытии. По факту — минус.",
+      "tts_text": "[lighthearted and reassuring] Было близко к плюсу, но срезало на закрытии. По факту — минус.",
+      "conditions": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "e795a523f774a754b3737ad109f6c0aa585d13c19afd093c96d834527cdc4ef7"
+    },
+    {
+      "id": "comment_en_narrate_result_09",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "It was close to positive, but slipped at the close. The result is a loss.",
+      "tts_text": "[lighthearted and reassuring] It was close to positive, but slipped at the close. The result is a loss.",
+      "conditions": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "f634be940bfafbe6a1b0bf9428ea6d02ba545207d7f3eca8fb9a5f64eaf32d1b"
+    },
+    {
+      "id": "comment_ru_narrate_result_10",
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "text": "На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+      "tts_text": "[lighthearted and reassuring] На последних секундах движение изменилось. Закрытие чуть ниже порога плюса.",
+      "conditions": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "a0fe8bc521983dc0fbbf1685dc29c07ee61525030b3e0beca4d8b92e09011a21"
+    },
+    {
+      "id": "comment_en_narrate_result_10",
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "text": "The move changed in the final seconds. It closed just short of positive.",
+      "tts_text": "[lighthearted and reassuring] The move changed in the final seconds. It closed just short of positive.",
+      "conditions": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "386b43887d492ecb3b4c66a8ed5bdfb2f7b2d62919d2861e235d59e5427dd1de"
+    },
+    {
+      "id": "comment_ru_narrate_volatility_01",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "ru",
+      "text": "Движения стали резче обычного. Здесь особенно важно не спешить.",
+      "tts_text": "[focused] Движения стали резче обычного. Здесь особенно важно не спешить.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d000be9720e777d431e6412524ce0b73a126f5190efc30644286d95e6e898c96"
+    },
+    {
+      "id": "comment_en_narrate_volatility_01",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "en",
+      "text": "The moves are sharper than usual. This is a time to be patient.",
+      "tts_text": "[focused] The moves are sharper than usual. This is a time to be patient.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "7612e8b04fd79573dce012c3e3ac1ea9ec071a132d4f47b2c56b96d1069852aa"
+    },
+    {
+      "id": "comment_ru_narrate_volatility_02",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "ru",
+      "text": "Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+      "tts_text": "[focused] Размах свечей сейчас вырос. Не путаем активность с хорошим входом.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "b403be74dc386c501b12078a4a729d07a494ac57eb71aba3823dc7a40c20f7a4"
+    },
+    {
+      "id": "comment_en_narrate_volatility_02",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "en",
+      "text": "Candle ranges have grown. More action does not mean a better entry.",
+      "tts_text": "[focused] Candle ranges have grown. More action does not mean a better entry.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "452b8f532abb3f0041649fbaddb1d19ddccbfd085fa15b3497134933b8d91958"
+    },
+    {
+      "id": "comment_ru_narrate_volatility_03",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "ru",
+      "text": "График сейчас заметно штормит. Проверяем подтверждения внимательнее.",
+      "tts_text": "[focused] График сейчас заметно штормит. Проверяем подтверждения внимательнее.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "fa4e631e849506b0c7f5caa41fd20372b4175fe1429c277cca49662ebd1d47be"
+    },
+    {
+      "id": "comment_en_narrate_volatility_03",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "en",
+      "text": "The chart is getting choppy. We are checking confirmation carefully.",
+      "tts_text": "[focused] The chart is getting choppy. We are checking confirmation carefully.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "efc8e0bb87fb5f7d55093742687ef6d404f4e4fe4e7c2b0ec8bd2e4614e7befa"
+    },
+    {
+      "id": "comment_ru_narrate_volatility_04",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "ru",
+      "text": "Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+      "tts_text": "[focused] Свечи размахнулись сильнее обычного. Смотрю на структуру, не на азарт.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "bbb7ab8d00becdc40460c9d7411650061363177c010eea9cb03851f16554b844"
+    },
+    {
+      "id": "comment_en_narrate_volatility_04",
+      "category": "NARRATE_VOLATILITY",
+      "lang": "en",
+      "text": "Candles are stretching more than usual. Structure matters more than excitement.",
+      "tts_text": "[focused] Candles are stretching more than usual. Structure matters more than excitement.",
+      "conditions": {
+        "high_volatility": true
+      },
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a1fe5271566031630a3a2743b8a1971c7deee8a05094e77f895fec7ec7f496a6"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_01",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+      "tts_text": "[curious and conversational] Тренд задаёт контекст, а точку входа подтверждаем отдельно.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "56b5c731fb68184009e0e84f87c42309b85617725405308b5f6ce79bd85e95b2"
+    },
+    {
+      "id": "comment_en_narrate_lesson_01",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "The trend gives context; the entry needs its own confirmation.",
+      "tts_text": "[curious and conversational] The trend gives context; the entry needs its own confirmation.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a4befaff1cef5ebe4b1f3b899dce7941d949f4dc80f8c763090ab235d25980d7"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_02",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Сильная свеча не повод догонять цену. У движения бывает предел.",
+      "tts_text": "[curious and conversational] Сильная свеча не повод догонять цену. У движения бывает предел.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "16db39d418e032186619d580831ab32af390ff9b7b6ccfa3c6e9641b6154ca9c"
+    },
+    {
+      "id": "comment_en_narrate_lesson_02",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "A strong candle is not a reason to chase price. A move can run out.",
+      "tts_text": "[curious and conversational] A strong candle is not a reason to chase price. A move can run out.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "5bff3fb0fc5b1711dca247507737807c435086ecab21694b9815b40c1fcdbbf9"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_03",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+      "tts_text": "[curious and conversational] После пробоя важен возврат к уровню. Сам пробой ещё не весь сетап.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "40af99b3595e8397dc00354c5de8b4c80213ed394c443d10d44110d88638c04d"
+    },
+    {
+      "id": "comment_en_narrate_lesson_03",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "After a breakout, the retest matters. The break alone is not the setup.",
+      "tts_text": "[curious and conversational] After a breakout, the retest matters. The break alone is not the setup.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "84b963d4ae4434943f423dc2334e2dc363e8a4b431bf505296946321bfb59a1c"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_04",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+      "tts_text": "[curious and conversational] Смотрю на реакцию цены у уровня. Линия сама по себе ничего не решает.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "ecaaf1678a27ae2e6f6a6d5ca5749c02e06e82d6887edbb0d3aeb7e56cd0c5e8",
+      "requires_listening": true
+    },
+    {
+      "id": "comment_en_narrate_lesson_04",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "A level matters because of the reaction, not because of a pretty line.",
+      "tts_text": "[curious and conversational] A level matters because of the reaction, not because of a pretty line.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "39c0a7f4f8b84f220c4d29d61876dc911010289978f5846010aacceeea982960"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_05",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Короткая экспирация требует своего подтверждения, длинная — своего.",
+      "tts_text": "[curious and conversational] Короткая экспирация требует своего подтверждения, длинная — своего.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "07b78257b5392717b626d9af46e2c42b6166e57d74308da6c232abf36f2fe306"
+    },
+    {
+      "id": "comment_en_narrate_lesson_05",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "Short and long expiries need their own kinds of confirmation.",
+      "tts_text": "[curious and conversational] Short and long expiries need their own kinds of confirmation.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "812d07f5674959cf4abf26e86d642ed16ca5a13b0ea6dfabf70c5aee68546f5c"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_06",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Откат и разворот — разные истории. Сначала смотрим структуру.",
+      "tts_text": "[curious and conversational] Откат и разворот — разные истории. Сначала смотрим структуру.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "bf47e88dfef197012a02aa7cfa086185d232496c73da453d95aa7321fb1eb335"
+    },
+    {
+      "id": "comment_en_narrate_lesson_06",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "A pullback and a reversal are different stories. Structure comes first.",
+      "tts_text": "[curious and conversational] A pullback and a reversal are different stories. Structure comes first.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "37a69b771d706038cb1451d3e96508a97b4fc78ee58ffff68ddc3491c61eeb29"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_07",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+      "tts_text": "[curious and conversational] Не каждый график обязан дать сделку. Пропуск тоже часть стратегии.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "5f75e08b13a49ea80cbb1aa4b3858473f17efa2700ff792bf7a69411e266d8f9"
+    },
+    {
+      "id": "comment_en_narrate_lesson_07",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "Not every chart owes us a trade. Skipping is part of the strategy.",
+      "tts_text": "[curious and conversational] Not every chart owes us a trade. Skipping is part of the strategy.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "506098677b4819d6b821e3fd620f85a56f643ee652f7709a3f2c1bd79848a767"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_08",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Старший интервал помогает не потерять контекст короткого движения.",
+      "tts_text": "[curious and conversational] Старший интервал помогает не потерять контекст короткого движения.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "ae7be3896807f487d9afa29a9d8acdfc1bb4b29eb8b0bbd80136c1ddffc2d1f9"
+    },
+    {
+      "id": "comment_en_narrate_lesson_08",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "The higher timeframe keeps a short move in context.",
+      "tts_text": "[curious and conversational] The higher timeframe keeps a short move in context.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "c1cd51d9655fd2f679462e1a2fdc3bb579d2b2fde760002837c91fe98fe68580"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_09",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+      "tts_text": "[curious and conversational] Перекрытие меняет размер ставки. Следующая сделка тоже может дать минус.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "f531b48267406265d65c7ceb3039aa771ce6279b1f92c09178cd963ef6288f21"
+    },
+    {
+      "id": "comment_en_narrate_lesson_09",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "Recovery changes the stake size. The next trade can still lose.",
+      "tts_text": "[curious and conversational] Recovery changes the stake size. The next trade can still lose.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "c7211de020e8eae6ed3db6b61cc0e50a3bfa6ac7fbcc9eda2934bcc64c17c038"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_10",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Результат одной сделки не доказывает качество всей стратегии.",
+      "tts_text": "[curious and conversational] Результат одной сделки не доказывает качество всей стратегии.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "0cbe3879ac5f6db5d6c851d8cbd5b9b9300b1f5aa29fdeedab0859bf88b4f03c"
+    },
+    {
+      "id": "comment_en_narrate_lesson_10",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "One trade result does not prove the quality of a whole strategy.",
+      "tts_text": "[curious and conversational] One trade result does not prove the quality of a whole strategy.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "b4b8595f9f4f0bdff1324928ab66272612bb51fd6585a5db3a27070f4d4f0639"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_11",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "У хорошего входа есть объяснение до результата, не только после.",
+      "tts_text": "[curious and conversational] У хорошего входа есть объяснение до результата, не только после.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "13dd44e69ca9b2f9b0c0a49cd5eb63f583c761b451bb0652a2ff436aaa521f8a"
+    },
+    {
+      "id": "comment_en_narrate_lesson_11",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "A good entry has a reason before the result, not just afterward.",
+      "tts_text": "[curious and conversational] A good entry has a reason before the result, not just afterward.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "1cb7199d2f530c02e8910f63778af6f1b9ca3535c7b48bd99938dc437be72ecf"
+    },
+    {
+      "id": "comment_ru_narrate_lesson_12",
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "text": "Возле встречного уровня цене может не хватить места для движения.",
+      "tts_text": "[curious and conversational] Возле встречного уровня цене может не хватить места для движения.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "d91e20faa5501570449fb8190a53bc69968979fae0963e697e9b0daeba7977da"
+    },
+    {
+      "id": "comment_en_narrate_lesson_12",
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "text": "Near an opposing level, price may not have enough room to move.",
+      "tts_text": "[curious and conversational] Near an opposing level, price may not have enough room to move.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "50ef23e28200f2c384fe3f7d4db8571350a42d761dc6e311e5e9b59950ac830a"
+    },
+    {
+      "id": "comment_ru_narrate_engage_01",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+      "tts_text": "[friendly and playful] Чатик, вы обычно смотрите сначала на тренд или на уровни?",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "214ccedb87fc6b94f1da4b0514fbe02d22b9a070afa2500e9ff70ac0b56bcdd0"
+    },
+    {
+      "id": "comment_en_narrate_engage_01",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "Chat, do you usually look at the trend first, or the levels?",
+      "tts_text": "[friendly and playful] Chat, do you usually look at the trend first, or the levels?",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "6ea0cb0db344fb79a72c3c956cca8d5f36cd3d43422f4cfb670dde7e125ac060"
+    },
+    {
+      "id": "comment_ru_narrate_engage_02",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+      "tts_text": "[friendly and playful] Кто любит разбирать графики спокойно? Кажется, мы с вами сработаемся.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "9d198723061f678cdb6d92fb477067a17a34c716ae8b16e624e027df751ab666"
+    },
+    {
+      "id": "comment_en_narrate_engage_02",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "Who enjoys a calm chart breakdown? I think we will get along.",
+      "tts_text": "[friendly and playful] Who enjoys a calm chart breakdown? I think we will get along.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a83caecb558ff11d316d7303a649c24c4c8ce021c846fa92351f047727b100b3"
+    },
+    {
+      "id": "comment_ru_narrate_engage_03",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+      "tts_text": "[friendly and playful] Если что-то в разборе непонятно, пишите. Объясню простыми словами.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "f82ee3a550a144e2988b7dc637694a0023f7cfc81b179d1899ced3f3db6ba46b"
+    },
+    {
+      "id": "comment_en_narrate_engage_03",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "If anything in the breakdown is unclear, ask. I will keep it simple.",
+      "tts_text": "[friendly and playful] If anything in the breakdown is unclear, ask. I will keep it simple.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "2efd081c557b09cd04a57656b639e3537b26192975387a5eee4a26a59a114585"
+    },
+    {
+      "id": "comment_ru_narrate_engage_04",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Здесь интересно не только закрытие, но и почему вообще появился вход.",
+      "tts_text": "[friendly and playful] Здесь интересно не только закрытие, но и почему вообще появился вход.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "c22ca06fed391bc015c677dbbdd6cb995d3ca07c25570eb386f8a3043a86fc50"
+    },
+    {
+      "id": "comment_en_narrate_engage_04",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "The close is interesting, but so is why the entry appeared at all.",
+      "tts_text": "[friendly and playful] The close is interesting, but so is why the entry appeared at all.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "a6714aaff033d52856eeefebf08990f24e0b8320f56f1a7ef4f87d28d7d3e81d"
+    },
+    {
+      "id": "comment_ru_narrate_engage_05",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Чатик, бывало у вас: одна свеча — и график уже выглядит иначе?",
+      "tts_text": "[friendly and playful] Чатик, бывало у вас: одна свеча — и график уже выглядит иначе?",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "1a54f94d547b6dca8fed211cf648115702144c7ec2db588dc7287798f744b9d7",
+      "requires_listening": true
+    },
+    {
+      "id": "comment_en_narrate_engage_05",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "Ever noticed how one candle can change your first impression of a chart?",
+      "tts_text": "[friendly and playful] Ever noticed how one candle can change your first impression of a chart?",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "037fafad43d6bfbfacf5cbf12c004a038bf7fb79a35ec3b963fadfd14f2bddc5"
+    },
+    {
+      "id": "comment_ru_narrate_engage_06",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+      "tts_text": "[friendly and playful] Мне нравится разбирать ход решения вместе с вами, а не просто показывать кнопку.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "1759d676bd67b50c238aa7917b57e0d33f3d95dad768f7f8e45643863d6410d0"
+    },
+    {
+      "id": "comment_en_narrate_engage_06",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "I like sharing the reasoning with you, not just showing a button.",
+      "tts_text": "[friendly and playful] I like sharing the reasoning with you, not just showing a button.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "9f0797ec1fad1ae2ffa6794b500fc8bed7cd331c2cfdedd1f5014b80b6c13473"
+    },
+    {
+      "id": "comment_ru_narrate_engage_07",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Какая часть разбора вам интереснее: структура или момент входа?",
+      "tts_text": "[friendly and playful] Какая часть разбора вам интереснее: структура или момент входа?",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "a043d1fea00ad6b9adee7d3dc77cad542f96c176000d10fbbe790cd01315f276"
+    },
+    {
+      "id": "comment_en_narrate_engage_07",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "Which part interests you more: the structure, or the entry timing?",
+      "tts_text": "[friendly and playful] Which part interests you more: the structure, or the entry timing?",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "78d52de742c919ca0d59f042e7f66b8132f38428dae7566ac4f976475e993693"
+    },
+    {
+      "id": "comment_ru_narrate_engage_08",
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "text": "Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+      "tts_text": "[friendly and playful] Продолжаем смотреть вместе. Вопросы по стратегии можно задавать в чат.",
+      "conditions": {},
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "text_version": 1,
+      "text_sha256": "2cacdebb7e1ebbfdba776c8038c415ca82966e790c7445c97ebda4392ec0221c"
+    },
+    {
+      "id": "comment_en_narrate_engage_08",
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "text": "Let us keep watching together. Questions about the strategy are welcome.",
+      "tts_text": "[friendly and playful] Let us keep watching together. Questions about the strategy are welcome.",
+      "conditions": {},
+      "voice_id": "e34c486929524d41b88646b4ac2f382f",
+      "text_version": 1,
+      "text_sha256": "3d9bf38bc8c8b41727376df6ab0897b2e682f188ca0ade34f1993d85593df226"
+    }
+  ]
+}

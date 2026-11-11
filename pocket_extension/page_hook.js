@@ -9,7 +9,7 @@
   // Prevent double injection
   if (window.__WINKY_PAGE_HOOK_LOADED__) return;
   window.__WINKY_PAGE_HOOK_LOADED__ = true;
-  const HOOK_VERSION="2.3.2", DATA_REVISION='history-r6';
+  const HOOK_VERSION="2.3.3", DATA_REVISION='history-r6';
   let lastChartControl=null;
   let lastHistoryTransport=null;
   const historyReplayAt=new Map();
@@ -245,7 +245,10 @@
               if (net === null && typeof obj.profit === 'number' && obj.profit < 0) net = obj.profit;
               if (net === null && typeof obj.payout === 'number' && typeof obj.amount === 'number') net = obj.payout - obj.amount;
               if (!Number.isFinite(net)) continue;
-              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_RESULT', orderId: obj.id ?? obj.order_id ?? obj.deal_id, net }, '*');
+              window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_RESULT', orderId: obj.id ?? obj.order_id ?? obj.deal_id, net,
+                openPrice:typeof obj.open_price==='number'?obj.open_price:null,
+                closePrice:typeof obj.close_price==='number'?obj.close_price:null,
+                closedAt:Number.isFinite(Number(obj.close_time)) && obj.close_time!=null?toMilliseconds(obj.close_time):null }, '*');
             }
           }
           // Check for openOrder / deal creation response from server

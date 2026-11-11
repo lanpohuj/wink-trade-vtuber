@@ -43,6 +43,10 @@ def category_name(value: str) -> str:
     return ALIASES.get(value.lower(), value.upper())
 
 def priority(category: str) -> int:
+    if category == 'NARRATE_RESULT':
+        return 2
+    if category.startswith('NARRATE_'):
+        return 4
     if category in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
         return 0
     if category in ('OPEN_TRADE_CALL', 'OPEN_TRADE_PUT'):
@@ -60,8 +64,9 @@ def recording_reviewed(manifest: dict, item: dict) -> bool:
             and item.get('text_version', 1) <= 1)
 
 class VoiceBank:
-    def __init__(self, root: Path | None = None, history_path: Path | None = None):
+    def __init__(self, root: Path | None = None, history_path: Path | None = None, overlay_root: Path | None = None):
         self.root = root or active_root()
+        self.overlay_root = overlay_root or (VOICE_ROOT / 'commentary_v1' if root is None else None)
         self.history_path = history_path or Path.home() / '.winky_voice_decks.json'
         self.lock = threading.RLock()
         try:
@@ -71,9 +76,27 @@ class VoiceBank:
         self.reserved: set[str] = set()
 
     def candidates(self, event: dict) -> list[dict]:
+        if self.overlay_root:
+            try:
+                overlay = json.loads((self.overlay_root / 'manifest.json').read_text())
+                if overlay.get('activated') is True and overlay.get('bank_type') == 'commentary_v1':
+                    records = overlay.get('categories', {}).get(category_name(event.get('category')), [])
+                    # Reuse the same contextual eligibility and deck machinery;
+                    # unapproved overlay records never enter the active pool.
+                    approved = [r for r in records if recording_reviewed(overlay, r) and
+                                (r.get('automatic_qc_passed') is True or
+                                 (r.get('auditory_verified') is True and r.get('qc_override_accepted') is True))]
+                    result = self._candidates(event, self.overlay_root, {'categories': {category_name(event.get('category')): approved}})
+                    if result:
+                        return result
+            except (OSError, ValueError, KeyError):
+                pass
+        return self._candidates(event, self.root)
+
+    def _candidates(self, event: dict, root: Path, supplied: dict | None = None) -> list[dict]:
         from winky.censor import check_phrase
         try:
-            manifest = json.loads((self.root / 'manifest.json').read_text())
+            manifest = supplied if supplied is not None else json.loads((root / 'manifest.json').read_text())
         except (OSError, ValueError):
             return []
         if str(manifest.get('version', '')).startswith('3'):
@@ -83,13 +106,13 @@ class VoiceBank:
                 records = manifest.get('categories', {}).get(required, [])
                 for language in ('ru', 'en'):
                     bank = [r for r in records if r.get('lang') == language]
-                    if len(bank) != count or any(not recording_reviewed(manifest, r) or r.get('status') != 'ready' or not (self.root / r.get('file', '')).is_file() for r in bank):
+                    if len(bank) != count or any(not recording_reviewed(manifest, r) or r.get('status') != 'ready' or not (root / r.get('file', '')).is_file() for r in bank):
                         return []
         category = category_name(event.get('category'))
         lang = event.get('lang', 'ru')
         items = manifest.get('categories', {}).get(category, [])
         try:
-            eligibility = json.loads((self.root / 'legacy-eligibility.json').read_text())
+            eligibility = json.loads((root / 'legacy-eligibility.json').read_text())
         except (OSError, ValueError):
             eligibility = {}
         result = []
@@ -100,8 +123,10 @@ class VoiceBank:
                 continue
             if item.get('lang', 'ru') != lang or item.get('status', 'ready') != 'ready':
                 continue
-            media = (self.root / item.get('file', '')).resolve()
-            if not media.is_relative_to(self.root.resolve()) or not media.is_file():
+            if item.get('duration', 0) > event.get('max_duration_sec', float('inf')):
+                continue
+            media = (root / item.get('file', '')).resolve()
+            if not media.is_relative_to(root.resolve()) or not media.is_file():
                 continue
             if event.get('file_id') and item.get('id') != event['file_id']:
                 continue

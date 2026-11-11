@@ -11,6 +11,7 @@ from __future__ import annotations
 import logging
 import concurrent.futures
 import re
+import random
 import threading
 import time
 from collections import deque
@@ -61,8 +62,15 @@ class StreamDirector:
 
         self._chat_queue: deque[ChatItem] = deque(maxlen=6)
         self._chat_workers = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-chat")
-        self._event_log: deque[dict] = deque(maxlen=8)
+        self._event_log: deque[dict] = deque(maxlen=100)
         self._last_chat_speak_time: float = 0.0
+        self._commentary_used: dict[str, float] = {}
+        self._observed_speech_end = 0.0
+        self._next_commentary_at = time.time() + 4
+        self._commentary_attempt_at = 0.0
+        self._commentary_session = None
+        self._announced_result = None
+        self._important_attempt_at = 0.0
 
         self._lock = threading.Lock()
         self._stop_event = threading.Event()
@@ -272,58 +280,108 @@ class StreamDirector:
     # ---------- Диспетчер режиссуры ----------
 
     def _run(self) -> None:
-        """Основной цикл Режиссёра Стрима."""
-        while not self._stop_event.is_set():
-            time.sleep(0.25)
+        while not self._stop_event.wait(0.25):
+            self.tick()
 
-            now = time.time()
+    def note_commentary_started(self, event: dict) -> None:
+        with self._lock:
+            self._commentary_used[event['commentary_fact_key']] = time.time()
+        self._log_event({'type': 'commentary_start', 'category': event['category'],
+                         'event_id': event['event_id'], 'file_id': event.get('file_id'),
+                         'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'time': time.time()})
+
+    def note_voice_started(self, event: dict) -> None:
+        if event.get('category') in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
+            self._announced_result = (event.get('session_id'), event.get('trade_seq'))
+
+    def tick(self, now=None) -> None:
+        from winky.commentary import choices, context_valid
+        now = time.time() if now is None else now
+        with self._lock:
+            phase, context = self._trade_phase, dict(self.context)
+            age = max(0, now - self._last_phase_update)
+            if age > 20:
+                self._trade_phase = phase = 'IDLE'
+            rem = max(0, self._remaining_sec - age)
+            received_at = self._last_phase_update
+        if not self._tts:
+            return
+        state = self._tts.narration_state() if hasattr(self._tts, 'narration_state') else {}
+        if state.get('paused'):
+            return
+        if self._commentary_session != context.get('session_id'):
+            self._commentary_session = context.get('session_id')
+            self._commentary_used.clear()
+            if self._announced_result and self._announced_result[0] != self._commentary_session:
+                self._announced_result = None
+        result = context.get('last_result') or {}
+        if (context_valid(context, received_at, now) and phase != 'IN_TRADE'
+                and self._announced_result == (context.get('session_id'), result.get('seq'))
+                and now - self._important_attempt_at >= 1):
+            self._important_attempt_at = now
+            for category, key, scope, extra, cooldown in choices(context, phase, now):
+                if category != 'NARRATE_RESULT':
+                    continue
+                key = f"{context.get('session_id')}:{context.get('lang','ru')}:{key}"
+                if key in self._commentary_used or key in state.get('pending_fact_keys', []):
+                    continue
+                event = {**context, **extra, 'category': category, 'commentary': True,
+                         'commentary_scope': scope, 'commentary_fact_key': key,
+                         'event_id': f'{key}:{int(now*1000)}', 'created_at': now, 'ttl_sec': 15}
+                if self._tts.voice_bank.candidates(event):
+                    self._tts.enqueue_voice_event(event)
+                    break
+        if self.is_speaking:
+            return
+        ended_at = state.get('ended_at', 0)
+        if ended_at != self._observed_speech_end:
+            self._observed_speech_end = ended_at
+            self._next_commentary_at = ended_at + random.uniform(4, 7)
+        # Ready viewer replies outrank idle commentary even during analysis.
+        if phase in ('IDLE', 'ANALYZING', 'COOLDOWN', 'IN_TRADE') and now - self._last_chat_speak_time >= 3.8:
             with self._lock:
-                # Если сигналы от расширения не поступали более 20 сек — считаем режим IDLE
-                if now - self._last_phase_update > 20.0 and self._trade_phase != "IDLE":
-                    self._trade_phase = "IDLE"
-                phase = self._trade_phase
-                rem = self._remaining_sec
-
-            can_speak_chat = (phase == "IN_TRADE" and rem >= 4) or (phase == "IDLE")
-
-            if not can_speak_chat:
-                continue
-
-            # Проверяем, не говорит ли Winky сейчас
-            if self.is_speaking:
-                continue
-
-            # Анти-дребезг между репликами чата (минимум 3.8 сек)
-            if now - self._last_chat_speak_time < 3.8:
-                continue
-
-            # Ищем готовый элемент в очереди
-            item_to_play: ChatItem | None = None
-            with self._lock:
+                items = []
                 for item in list(self._chat_queue):
-                    if time.time() - item.created_at > 90 or item.failed or item.played:
+                    if now - item.created_at > 90 or item.failed or item.played:
                         self._chat_queue.remove(item)
-                        continue
-                    if item.ready and not item.played and not item.dispatched:
-                        item_to_play = item
-                        item.dispatched = True
-                        break
-
-            if item_to_play:
-                from winky.tts import media_duration_seconds
-                duration = media_duration_seconds(item_to_play.media_path) if item_to_play.media_path else 9
+                    elif item.ready and not item.dispatched:
+                        items.append(item)
+            from winky.tts import media_duration_seconds
+            for item in items:
+                duration = media_duration_seconds(item.media_path) if item.media_path else 9
                 if duration > 8:
-                    item_to_play.failed = True
-                elif phase == "IN_TRADE" and duration + 2 > rem:
-                    item_to_play.dispatched = False
-                else:
-                    self._dispatch_chat_item(item_to_play)
-            elif phase == "IN_TRADE" and rem >= 10:
-                # Полезные фишки стратегии и вовлечение зрителей (stream_insight) раз в 90–120с, если в чате тихо
-                if now - getattr(self, "_last_insight_time", 0.0) >= 95.0:
-                    self._last_insight_time = now
-                    if self._tts and hasattr(self._tts, "speak_stream_category"):
-                        self._tts.speak_stream_category("stream_insight", lang=self.context.get("lang", "ru"), emotion="happy")
+                    item.failed = True
+                    continue
+                if phase == 'IN_TRADE' and duration + 2 > rem:
+                    continue
+                item.dispatched = True
+                self._dispatch_chat_item(item)
+                return
+        if (not context_valid(context, received_at, now) or phase == 'RESULT'
+                or state.get('foreground_ready') or state.get('background_pending')
+                or now < self._next_commentary_at or now - self._commentary_attempt_at < 1):
+            return
+        self._commentary_attempt_at = now
+        for category, key, scope, extra, cooldown in choices(context, phase, now):
+            if category == 'NARRATE_RESULT':
+                continue  # Important follow-ups use the result-announcement guard above.
+            key = f"{context.get('session_id')}:{context.get('lang','ru')}:{key}"
+            previous = self._commentary_used.get(key)
+            if previous is not None and (cooldown == 0 or now - previous < cooldown):
+                continue
+            event = {**context, **extra, 'category': category, 'commentary': True,
+                     'commentary_scope': scope, 'commentary_fact_key': key,
+                     'event_id': f"{context.get('session_id')}:narrate:{key}:{int(now*1000)}",
+                     'created_at': now, 'ttl_sec': 8, 'emotion': 'happy'}
+            candidates = self._tts.voice_bank.candidates(event)
+            fitting = [r for r in candidates if phase != 'IN_TRADE' or r.get('duration', 99) + 2 <= rem]
+            if not fitting:
+                continue
+            # Duration admission still repeats at actual playback.
+            if phase == 'IN_TRADE':
+                event['max_duration_sec'] = rem - 2
+            if self._tts.enqueue_voice_event(event).get('ok'):
+                return
 
     def _dispatch_chat_item(self, item: ChatItem) -> None:
         """Передаёт подготовленную реплику чата в SpeechController."""
@@ -379,6 +437,10 @@ class StreamDirector:
             phase = self._trade_phase
             rem = self._remaining_sec
             pair = self._current_pair
+            commentary = {key: self.context.get(key) for key in
+                          ('auto_stream', 'lang', 'setup', 'setup_confirmed', 'trade_seq',
+                           'data_status', 'entry_observed_at', 'next_stake', 'last_result')}
+            commentary['heartbeat_age_sec'] = round(max(0, time.time() - self._last_phase_update), 2)
 
         is_speaking = self.is_speaking
         return {
@@ -387,6 +449,7 @@ class StreamDirector:
             "current_pair": pair,
             "is_speaking": is_speaking,
             "queue_len": q_len,
+            "commentary": commentary,
             "recent_events": self.get_recent_events(),
         }
 

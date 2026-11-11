@@ -170,7 +170,7 @@ test('history recovery reuses only an observed native request, caps at 200 and r
   await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:3,pair:'EUR/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
   await h.command({type:'WINKY_CMD_REQUEST_HISTORY',requestId:4,pair:'GBP/USD OTC',periodSec:60});assert.equal(h.messages.at(-1).requested,false);
   await h.command({type:'WINKY_CMD_GET_MARKET_STATUS',requestId:5});
-  assert.equal(h.messages.at(-1).version,'2.3.2');assert.equal(h.messages.at(-1).requestId,5);
+  assert.equal(h.messages.at(-1).version,'2.3.3');assert.equal(h.messages.at(-1).requestId,5);
 });
 test('timeframe changes within a pair preserve history identity; returning from another pair creates a new generation',()=>{
   const h=loadHook(),socket=new h.Socket('wss://test');
