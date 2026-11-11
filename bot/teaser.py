@@ -14,7 +14,7 @@ import random
 from datetime import datetime
 
 from aiogram import Bot
-from aiogram.exceptions import TelegramAPIError
+from aiogram.exceptions import TelegramAPIError, TelegramForbiddenError
 
 from api.signals import OTC_PAIRS, otc_signal
 from bot.keyboards import deposit_keyboard, main_menu_keyboard, teaser_keyboard
@@ -42,8 +42,13 @@ async def send_15m_followup(bot: Bot, user: User) -> bool:
             parse_mode="HTML",
         )
         return True
+    except TelegramForbiddenError:
+        logger.info("Дожим 15м: бот заблокирован пользователем tg_id=%s, отключаем рассылки", user.tg_id)
+        async with async_session_factory() as session:
+            await crud.pause_pushes(session, user.tg_id)
+        return False
     except TelegramAPIError:
-        logger.info("Дожим 15м не доставлен: tg_id=%s (бот заблокирован?)", user.tg_id)
+        logger.warning("Дожим 15м не доставлен (транзиентная ошибка): tg_id=%s", user.tg_id)
         return False
 
 
@@ -57,8 +62,13 @@ async def send_45m_followup(bot: Bot, user: User) -> bool:
             parse_mode="HTML",
         )
         return True
+    except TelegramForbiddenError:
+        logger.info("Дожим 45м: бот заблокирован пользователем tg_id=%s, отключаем рассылки", user.tg_id)
+        async with async_session_factory() as session:
+            await crud.pause_pushes(session, user.tg_id)
+        return False
     except TelegramAPIError:
-        logger.info("Дожим 45м не доставлен: tg_id=%s (бот заблокирован?)", user.tg_id)
+        logger.warning("Дожим 45м не доставлен (транзиентная ошибка): tg_id=%s", user.tg_id)
         return False
 
 
@@ -74,8 +84,13 @@ async def send_teaser(bot: Bot, user: User) -> bool:
             parse_mode="HTML",
         )
         return True
+    except TelegramForbiddenError:
+        logger.info("Тизер 19:00: бот заблокирован пользователем tg_id=%s, отключаем рассылки", user.tg_id)
+        async with async_session_factory() as session:
+            await crud.pause_pushes(session, user.tg_id)
+        return False
     except TelegramAPIError:
-        logger.info("Тизер 19:00 не доставлен: tg_id=%s (бот заблокирован?)", user.tg_id)
+        logger.warning("Тизер 19:00 не доставлен: tg_id=%s", user.tg_id)
         return False
 
 
@@ -85,27 +100,31 @@ async def process_quick_followups(bot: Bot) -> None:
     async with async_session_factory() as session:
         targets_15m = await crud.get_15m_followup_targets(session, threshold_minutes=15)
 
+    sent_15m = 0
     for user in targets_15m:
-        await send_15m_followup(bot, user)
-        async with async_session_factory() as session:
-            await crud.record_15m_followup_sent(session, user.tg_id)
+        if await send_15m_followup(bot, user):
+            async with async_session_factory() as session:
+                await crud.record_15m_followup_sent(session, user.tg_id)
+            sent_15m += 1
         await asyncio.sleep(_SEND_DELAY_SECONDS)
 
     if targets_15m:
-        logger.info("Авто-воронка: отправлен дожим 15м для %d лидов", len(targets_15m))
+        logger.info("Авто-воронка: отправлен дожим 15м для %d из %d лидов", sent_15m, len(targets_15m))
 
     # 2. Дожим 45 минут (Шаг 2 -> Депозит)
     async with async_session_factory() as session:
         targets_45m = await crud.get_45m_followup_targets(session, threshold_minutes=45)
 
+    sent_45m = 0
     for user in targets_45m:
-        await send_45m_followup(bot, user)
-        async with async_session_factory() as session:
-            await crud.record_45m_followup_sent(session, user.tg_id)
+        if await send_45m_followup(bot, user):
+            async with async_session_factory() as session:
+                await crud.record_45m_followup_sent(session, user.tg_id)
+            sent_45m += 1
         await asyncio.sleep(_SEND_DELAY_SECONDS)
 
     if targets_45m:
-        logger.info("Авто-воронка: отправлен дожим 45м для %d лидов", len(targets_45m))
+        logger.info("Авто-воронка: отправлен дожим 45м для %d из %d лидов", sent_45m, len(targets_45m))
 
 
 async def run_daily_teasers(bot: Bot) -> None:

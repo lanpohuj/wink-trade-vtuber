@@ -54,6 +54,14 @@ def _apply_light_migrations(sync_conn: Connection) -> None:
         if name not in existing:
             sync_conn.execute(text(statement))
 
+    # Миграция postback_logs: dedup_key
+    inspector = inspect(sync_conn)
+    if "postback_logs" in inspector.get_table_names():
+        pb_existing = {column["name"] for column in inspector.get_columns("postback_logs")}
+        if "dedup_key" not in pb_existing:
+            sync_conn.execute(text("ALTER TABLE postback_logs ADD COLUMN dedup_key VARCHAR(128)"))
+            sync_conn.execute(text("CREATE INDEX IF NOT EXISTS ix_postback_logs_dedup_key ON postback_logs (dedup_key)"))
+
 
 async def init_db() -> None:
     """Создаёт таблицы и докатывает лёгкие миграции. Вызывается один раз при старте."""

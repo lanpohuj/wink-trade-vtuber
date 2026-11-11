@@ -190,7 +190,9 @@ class ChatPreparationTests(unittest.TestCase):
             item=ChatItem('Аня','Привет!',created_at=100)
             self.director._brain.reply.return_value='Привет! Как настроение?'
             self.director._tts.engine.synthesize.return_value=Path('/tmp/reply.mp3')
-            with patch('winky.director.time.time',side_effect=[100,100+elapsed]): self.director._pre_synthesize(item)
+            t_calls = [100, 100+elapsed]
+            with patch('winky.director.time.time', side_effect=lambda: t_calls.pop(0) if t_calls else 100 + elapsed):
+                self.director._pre_synthesize(item)
             self.assertTrue(item.ready)
             self.director._tts.speak_chat_item.assert_not_called()
 

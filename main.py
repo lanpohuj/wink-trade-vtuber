@@ -78,7 +78,7 @@ async def lifespan(app: FastAPI):
 
         # Регистрация глобальной кнопки MenuButtonWebApp и команд бота
         try:
-            from aiogram.types import BotCommand, MenuButtonWebApp, WebAppInfo
+            from aiogram.types import BotCommand, BotCommandScopeChat, MenuButtonWebApp, WebAppInfo
 
             await bot.set_chat_menu_button(
                 menu_button=MenuButtonWebApp(
@@ -86,12 +86,27 @@ async def lifespan(app: FastAPI):
                     web_app=WebAppInfo(url=settings.webapp_url_for(0, "ru")),
                 )
             )
+            # Публичные команды для всех пользователей (без /vip)
             await bot.set_my_commands([
                 BotCommand(command="start", description="🚀 Главное меню Winky"),
                 BotCommand(command="app", description="📱 Открыть терминал WINKY AI Mini App"),
-                BotCommand(command="vip", description="💎 Активировать мой VIP / Режим Стримера"),
                 BotCommand(command="id", description="🆔 Узнать мой Telegram ID"),
             ])
+
+            # Приватные команды только для администраторов
+            admin_commands = [
+                BotCommand(command="start", description="🚀 Главное меню Winky"),
+                BotCommand(command="app", description="📱 Открыть терминал WINKY AI Mini App"),
+                BotCommand(command="vip", description="💎 Режим Стримера / Выдача VIP (/vip [tg_id])"),
+                BotCommand(command="id", description="🆔 Узнать мой Telegram ID"),
+                BotCommand(command="award", description="🎁 Начислить баллы (/award tg_id N)"),
+            ]
+            for admin_id in settings.admin_tg_ids:
+                try:
+                    await bot.set_my_commands(admin_commands, scope=BotCommandScopeChat(chat_id=admin_id))
+                except Exception:
+                    pass
+
             logging.info("Telegram MenuButtonWebApp и команды успешно зарегистрированы")
         except Exception:
             logging.exception("Не удалось настроить MenuButtonWebApp или команды бота")

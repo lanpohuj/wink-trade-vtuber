@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import json
+import math
 import random
 from collections.abc import Sequence
 from datetime import date, datetime, timedelta, timezone
@@ -44,8 +45,12 @@ async def get_user(session: AsyncSession, tg_id: int) -> User | None:
 
 async def get_user_by_trader_id(session: AsyncSession, trader_id: str) -> User | None:
     """Возвращает пользователя по ID его аккаунта на Pocket Option или ``None``."""
-    result = await session.execute(select(User).where(User.trader_id == trader_id))
-    return result.scalar_one_or_none()
+    result = await session.execute(
+        select(User)
+        .where(User.trader_id == str(trader_id).strip())
+        .order_by(User.is_registered.desc(), User.id.asc())
+    )
+    return result.scalars().first()
 
 
 async def get_or_create_user(
@@ -99,11 +104,19 @@ async def mark_registered(session: AsyncSession, tg_id: int, trader_id: str | No
     user = await get_user(session, tg_id)
     if user is None:
         return None
+    if trader_id:
+        clean_id = str(trader_id).strip()
+        conflict = await session.execute(
+            select(User)
+            .where(User.trader_id == clean_id, User.tg_id != tg_id)
+            .order_by(User.is_registered.desc(), User.id.asc())
+        )
+        if conflict.scalars().first() is not None:
+            return None
+        user.trader_id = clean_id
     user.is_registered = True
     if not user.registered_at:
         user.registered_at = utcnow()
-    if trader_id:
-        user.trader_id = str(trader_id)
     await session.commit()
     return user
 
@@ -113,31 +126,68 @@ async def add_deposit(
     amount: float,
     tg_id: int | None = None,
     trader_id: str | None = None,
-) -> User | None:
-    """Зачисляет депозит (Postback депозита) и автоматически открывает доступ.
+    dedup_key: str | None = None,
+    raw_data: dict[str, Any] | None = None,
+) -> tuple[User | None, bool]:
+    """Зачисляет депозит (Postback депозита) с валидацией, дедупликацией и порогом $10.
 
-    Пользователя можно найти по ``tg_id`` (``sub_id``) либо по ``trader_id`` —
-    если по ``tg_id`` он не найден, поиск продолжается по ``trader_id``.
-    Суммы накапливаются в ``deposit_amount``; при ``deposit_amount > 0``
-    доступ к сигналам открывается автоматически.
+    Возвращает (user, is_duplicate).
     """
+    if amount is None:
+        raise ValueError("Сумма депозита не может быть None")
+    amt_val = float(amount)
+    if not math.isfinite(amt_val) or amt_val <= 0:
+        raise ValueError("Сумма депозита должна быть положительным числом")
+
     if tg_id is None and trader_id is None:
         raise ValueError("Для зачисления депозита укажите tg_id или trader_id")
+
     user: User | None = None
     if tg_id is not None:
         user = await get_user(session, tg_id)
     if user is None and trader_id is not None:
         user = await get_user_by_trader_id(session, str(trader_id))
     if user is None:
-        return None
-    user.deposit_amount = float(user.deposit_amount or 0.0) + float(amount)
-    if user.deposit_amount > 0:
+        return None, False
+
+    # Дедупликация по dedup_key
+    if dedup_key:
+        existing_pb = await session.execute(
+            select(PostbackLog)
+            .where(PostbackLog.dedup_key == dedup_key)
+            .where(PostbackLog.status.in_((STATUS_OK, "below_min_deposit")))
+        )
+        if existing_pb.scalars().first() is not None:
+            return user, True
+
+    # Регистрация: подтверждаем только если предоставлен валидный trader_id (не занятый другим)
+    if trader_id:
+        clean_trader_id = str(trader_id).strip()
+        conflict = await session.execute(
+            select(User)
+            .where(User.trader_id == clean_trader_id, User.tg_id != user.tg_id)
+            .order_by(User.is_registered.desc(), User.id.asc())
+        )
+        if conflict.scalars().first() is None:
+            user.trader_id = clean_trader_id
+            user.is_registered = True
+            if not user.registered_at:
+                user.registered_at = utcnow()
+
+    # Зачисление депозита
+    user.deposit_amount = round((user.deposit_amount or 0.0) + amt_val, 2)
+
+    # Доступ открывается ТОЛЬКО если пользователь зарегистрирован И депозит >= MIN_DEPOSIT
+    min_dep = float(settings.MIN_DEPOSIT)
+    if user.is_registered and user.deposit_amount >= min_dep:
         user.has_access = True
-        user.is_registered = True
-        if not user.registered_at:
-            user.registered_at = utcnow()
+    elif settings.is_admin(user.tg_id):
+        user.has_access = True
+    else:
+        user.has_access = False
+
     await session.commit()
-    return user
+    return user, False
 
 
 async def grant_access(session: AsyncSession, tg_id: int) -> User | None:
@@ -268,6 +318,16 @@ async def clear_admin_queue(session: AsyncSession, admin_tg_id: int) -> int:
 # =========================================================================
 
 
+async def find_processed_postback(session: AsyncSession, dedup_key: str) -> PostbackLog | None:
+    """Ищет уже обработанный ранее постбек по dedup_key."""
+    result = await session.execute(
+        select(PostbackLog)
+        .where(PostbackLog.dedup_key == dedup_key)
+        .where(PostbackLog.status.in_((STATUS_OK, "below_min_deposit")))
+    )
+    return result.scalars().first()
+
+
 async def log_postback(
     session: AsyncSession,
     event_type: str,
@@ -276,6 +336,7 @@ async def log_postback(
     sub_id: str | None = None,
     amount: float = 0.0,
     status: str = STATUS_OK,
+    dedup_key: str | None = None,
     raw_data: dict[str, Any] | None = None,
 ) -> PostbackLog:
     """Сохраняет в журнал запись о входящем Postback-запросе.
@@ -288,6 +349,7 @@ async def log_postback(
         sub_id=sub_id,
         amount=float(amount),
         status=status,
+        dedup_key=dedup_key,
         raw_data=json.dumps(raw_data, ensure_ascii=False, default=str) if raw_data else None,
     )
     session.add(entry)
@@ -435,32 +497,73 @@ async def get_postbacks_for_trader_id(session: AsyncSession, trader_id: str) -> 
 
 async def bind_manual_trader_id(
     session: AsyncSession, tg_id: int, trader_id: str
-) -> tuple[User, bool, bool]:
-    """Привязывает trader_id к пользователю и проверяет архивные PostbackLog.
+) -> tuple[User, bool, bool, str]:
+    """Привязывает trader_id к пользователю с проверкой уникальности, защитой от захвата и порогом $10.
 
-    Возвращает (user, has_postback, had_deposit).
+    Возвращает (user, has_postback, had_deposit, status).
+    status:
+      'access_granted' - ID подтвержден, внесен депозит >= MIN_DEPOSIT ($10)
+      'registered_need_deposit' - ID подтвержден, но депозит < MIN_DEPOSIT ($10)
+      'not_found' - постбеков по этому ID в базе нет
+      'conflict_already_bound' - этот ID уже привязан к другому Telegram-пользователю
+      'conflict_sub_id_mismatch' - по этому ID зафиксирован постбек с чужим sub_id
     """
     clean_id = str(trader_id).strip()
     user = await get_or_create_user(session, tg_id)
+
+    # 1. Проверяем, не привязан ли этот trader_id к ДРУГОМУ пользователю
+    conflict_res = await session.execute(
+        select(User)
+        .where(User.trader_id == clean_id, User.tg_id != tg_id)
+        .order_by(User.is_registered.desc(), User.id.asc())
+    )
+    if conflict_res.scalars().first() is not None:
+        return user, False, False, "conflict_already_bound"
+
+    # 2. Проверяем наличие постбеков по этому trader_id
+    postbacks = await get_postbacks_for_trader_id(session, clean_id)
+    if not postbacks:
+        return user, False, False, "not_found"
+
+    # 3. Защита от угона аккаунта: проверяем, нет ли постбека с чужим sub_id
+    for p in postbacks:
+        if p.sub_id and p.sub_id.strip().isdigit() and int(p.sub_id.strip()) != tg_id:
+            return user, False, False, "conflict_sub_id_mismatch"
+
+    # 4. Проверяем наличие подтверждения регистрации или депозита
+    has_reg = any(p.event_type == EVENT_REGISTRATION for p in postbacks)
+    has_dep = any(p.event_type == EVENT_DEPOSIT and p.amount > 0 for p in postbacks)
+    if not has_reg and not has_dep:
+        return user, False, False, "not_found"
+
+    # Привязываем trader_id и подтверждаем регистрацию
     user.trader_id = clean_id
     user.is_registered = True
     if not user.registered_at:
         user.registered_at = utcnow()
 
-    # Проверяем, приходили ли постбеки по этому trader_id ранее
-    postbacks = await get_postbacks_for_trader_id(session, clean_id)
-    has_postback = len(postbacks) > 0
-    had_deposit = False
+    # 5. Дедуплицированный подсчёт депозитов
+    seen_deps: set[str] = set()
+    deposit_sum = 0.0
+    for p in postbacks:
+        if p.event_type == EVENT_DEPOSIT and p.amount > 0:
+            dedup = p.dedup_key or f"{p.event_type}:{clean_id}:{p.amount}:{p.raw_data or ''}"
+            if dedup not in seen_deps:
+                seen_deps.add(dedup)
+                deposit_sum += float(p.amount)
 
-    deposit_sum = sum(p.amount for p in postbacks if p.event_type == EVENT_DEPOSIT and p.amount > 0)
-    has_any_dep = any(p.event_type == EVENT_DEPOSIT for p in postbacks)
-    if has_any_dep:
-        had_deposit = True
-        user.deposit_amount = max(float(user.deposit_amount or 0.0), float(deposit_sum))
+    deposit_sum = round(deposit_sum, 2)
+    user.deposit_amount = max(float(user.deposit_amount or 0.0), deposit_sum)
+
+    min_dep = float(settings.MIN_DEPOSIT)
+    if user.deposit_amount >= min_dep:
         user.has_access = True
+        await session.commit()
+        return user, True, True, "access_granted"
 
+    user.has_access = False
     await session.commit()
-    return user, has_postback, had_deposit
+    return user, True, False, "registered_need_deposit"
 
 
 async def mark_demo_used(session: AsyncSession, tg_id: int) -> bool:

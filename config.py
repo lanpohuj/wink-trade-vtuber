@@ -258,6 +258,21 @@ class Settings(BaseSettings):
         """Список Telegram ID админов из строки ADMIN_TG_IDS."""
         return [int(part) for part in self.ADMIN_TG_IDS.replace(" ", "").split(",") if part]
 
+    @property
+    def admin_ids_list(self) -> list[int]:
+        """Список Telegram ID админов."""
+        return self.admin_tg_ids
+
+    @property
+    def ADMIN_IDS(self) -> set[int]:
+        """Множество Telegram ID админов из переменной ADMIN_TG_IDS."""
+        return set(self.admin_tg_ids)
+
+    @property
+    def MIN_DEPOSIT(self) -> float:
+        """Минимальный депозит для активации доступа (USD)."""
+        return float(self.MIN_DEPOSIT_USD)
+
     def is_admin(self, tg_id: int) -> bool:
         """Проверяет, входит ли пользователь в список админов/стримеров."""
         return tg_id in self.admin_tg_ids or tg_id in self._dynamic_admin_ids

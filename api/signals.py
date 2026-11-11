@@ -16,13 +16,16 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import hmac
+import json
 import logging
 import random
 import time
+import urllib.parse
 from datetime import datetime, timezone
 from typing import Literal
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Header, HTTPException, Request
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
@@ -268,6 +271,35 @@ _TA_FAILURE_COOLDOWN = 60.0
 _TA_TIMEOUT = 5.0
 
 
+def verify_webapp_init_data(init_data: str, bot_token: str) -> dict | None:
+    """Проверяет криптографическую подпись HMAC-SHA256 initData от Telegram Mini App.
+
+    Возвращает словарь данных пользователя (с полем 'id') или None при невалидной подписи.
+    """
+    if not init_data or not bot_token:
+        return None
+    try:
+        parsed = dict(urllib.parse.parse_qsl(init_data, keep_blank_values=True))
+        received_hash = parsed.pop("hash", None)
+        if not received_hash:
+            return None
+        data_check_string = "\n".join(f"{k}={v}" for k, v in sorted(parsed.items()))
+        secret_key = hmac.new(b"WebAppData", bot_token.encode("utf-8"), hashlib.sha256).digest()
+        computed_hash = hmac.new(secret_key, data_check_string.encode("utf-8"), hashlib.sha256).hexdigest()
+        if not hmac.compare_digest(computed_hash, received_hash):
+            return None
+        user_str = parsed.get("user")
+        if user_str:
+            user_dict = json.loads(user_str)
+            if isinstance(user_dict, dict) and "id" in user_dict:
+                return user_dict
+        if "id" in parsed:
+            return {"id": int(parsed["id"])}
+        return parsed
+    except Exception:
+        return None
+
+
 class SignalRequest(BaseModel):
     """Запрос Mini App или Chrome расширения: tg_id, пара и экспирация."""
 
@@ -276,6 +308,7 @@ class SignalRequest(BaseModel):
     duration: str = "30s"
     force_dir: Literal["BUY", "SELL"] | None = None
     model: str = "claude-fable-5.1"
+    init_data: str | None = None
 
 
 class SignalResponse(BaseModel):
@@ -487,7 +520,12 @@ async def _user_signal(pair: str) -> tuple[str, int]:
 
 
 @router.post("/signal", response_model=SignalResponse)
-async def get_signal(payload: SignalRequest) -> SignalResponse:
+async def get_signal(
+    payload: SignalRequest,
+    request: Request,
+    x_telegram_init_data: str | None = Header(default=None, alias="X-Telegram-Init-Data"),
+    x_internal_token: str | None = Header(default=None, alias="X-Internal-Token"),
+) -> SignalResponse:
     """Генерация торгового сигнала для Mini App. Каждый выданный сигнал пишется в ленту."""
     pair = payload.pair.strip()
     duration = payload.duration.strip().lower()
@@ -496,7 +534,31 @@ async def get_signal(payload: SignalRequest) -> SignalResponse:
     if duration not in DURATIONS:
         raise HTTPException(status_code=400, detail=f"Unknown duration: {payload.duration!r}")
 
-    is_admin = settings.is_admin(payload.tg_id) or (payload.tg_id == 0)
+    # Аутентификация:
+    # 1. Telegram WebApp HMAC-SHA256 подпись (приоритетно)
+    # 2. X-Internal-Token для авторизованного десктопного стримера/бэкенда
+    init_data = x_telegram_init_data or payload.init_data
+    internal_token = x_internal_token or request.query_params.get("token")
+
+    if init_data:
+        verified_data = verify_webapp_init_data(init_data, settings.BOT_TOKEN)
+        if verified_data is not None and "id" in verified_data:
+            payload.tg_id = int(verified_data["id"])
+        else:
+            raise HTTPException(status_code=401, detail="UNAUTHORIZED_WEBAPP: Invalid Telegram initData signature")
+    elif internal_token and settings.POSTBACK_SECRET and internal_token == settings.POSTBACK_SECRET:
+        pass
+    else:
+        raise HTTPException(
+            status_code=401,
+            detail="UNAUTHORIZED_WEBAPP: Telegram initData or internal token required",
+        )
+
+    # 0 никогда не является админом или VIP!
+    if payload.tg_id <= 0:
+        raise HTTPException(status_code=401, detail="UNAUTHORIZED_WEBAPP: Invalid user ID")
+
+    is_admin = settings.is_admin(payload.tg_id)
     is_vip = is_admin
     free_signals_left = 999 if is_admin else 0
 

@@ -16,6 +16,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import logging
 import math
 from typing import Any
@@ -82,20 +83,54 @@ def _extract_trader_id(params: dict[str, str]) -> str | None:
     return str(raw).strip()
 
 
-def _extract_amount(params: dict[str, str]) -> float:
+def _extract_amount(params: dict[str, str]) -> float | None:
     """Сумма депозита в USD: amount, sumdep, ftd_amount, payout."""
     raw = (
         params.get("amount")
         or params.get("sumdep")
         or params.get("ftd_amount")
         or params.get("payout")
-        or "0.0"
     )
+    if raw is None or str(raw).strip() == "":
+        return None
     try:
         val = float(raw)
-        return val if math.isfinite(val) and val >= 0 else 0.0
+        return val if math.isfinite(val) else None
     except (ValueError, TypeError):
-        return 0.0
+        return None
+
+
+def _extract_tx_id(params: dict[str, str]) -> str | None:
+    """Извлекает ID транзакции для дедупликации."""
+    for key in ("tx_id", "transaction_id", "deposit_id", "payment_id", "order_id", "click_id", "event_id"):
+        for p_key, p_val in params.items():
+            if p_key.lower() == key and p_val:
+                return str(p_val).strip()
+    return None
+
+
+def _build_dedup_key(
+    event: str,
+    trader_id: str | None,
+    tg_id: int | None,
+    amount: float | None,
+    params: dict[str, str],
+) -> str:
+    """Формирует детерминированный ключ дедупликации постбека."""
+    tx_id = _extract_tx_id(params)
+    target_id = trader_id or (str(tg_id) if tg_id else "")
+    if tx_id:
+        return f"{event}:{target_id}:{tx_id}"
+    cleaned = {
+        k.lower(): str(v).strip()
+        for k, v in params.items()
+        if k.lower() not in ("token", "timestamp", "time", "date", "sig", "sign", "_")
+    }
+    canonical_repr = "&".join(f"{k}={v}" for k, v in sorted(cleaned.items()))
+    amt_str = f"{float(amount or 0):.2f}"
+    payload_raw = f"{event}:{target_id}:{amt_str}:{canonical_repr}"
+    h = hashlib.sha256(payload_raw.encode("utf-8")).hexdigest()[:32]
+    return f"{event}:{target_id}:{amt_str}:{h}"
 
 
 async def _collect_params(request: Request) -> dict[str, str]:
@@ -177,6 +212,15 @@ async def _process_postback(request: Request, params: dict[str, str]) -> JSONRes
         logger.warning("Telegram-бот отключён (токен?) — постбек применён в БД, пуш не отправлен")
     raw_data = {k: v for k, v in params.items() if k.lower() != "token"}
 
+    dedup_key = _build_dedup_key(event, trader_id, tg_id, amount, params)
+
+    # Проверка дедупликации перед выполнением операций
+    async with async_session_factory() as session:
+        processed_pb = await crud.find_processed_postback(session, dedup_key)
+        if processed_pb is not None:
+            logger.info("Повторный постбек проигнорирован (dedup_key=%s)", dedup_key)
+            return JSONResponse({"status": "duplicate_ignored", "event": event}, status_code=200)
+
     # Если tg_id все еще нет — сохраняем в PostbackLog по trader_id (для ручной привязки)
     if tg_id is None:
         async with async_session_factory() as session:
@@ -185,8 +229,9 @@ async def _process_postback(request: Request, params: dict[str, str]) -> JSONRes
                 event,
                 trader_id=trader_id,
                 sub_id=None,
-                amount=amount,
+                amount=amount or 0.0,
                 status=STATUS_USER_NOT_FOUND,
+                dedup_key=dedup_key,
                 raw_data=raw_data,
             )
         logger.info(
@@ -206,8 +251,9 @@ async def _process_postback(request: Request, params: dict[str, str]) -> JSONRes
                 event,
                 trader_id=trader_id,
                 sub_id=str(tg_id),
-                amount=amount,
+                amount=amount or 0.0,
                 status=STATUS_OK if user is not None else STATUS_USER_NOT_FOUND,
+                dedup_key=dedup_key,
                 raw_data=raw_data,
             )
         if user is None:
@@ -219,24 +265,78 @@ async def _process_postback(request: Request, params: dict[str, str]) -> JSONRes
         )
 
     # Событие dep
+    if amount is None or not math.isfinite(amount) or float(amount) <= 0:
+        async with async_session_factory() as session:
+            await crud.log_postback(
+                session,
+                event,
+                trader_id=trader_id,
+                sub_id=str(tg_id),
+                amount=float(amount) if amount is not None else 0.0,
+                status="invalid_amount",
+                dedup_key=dedup_key,
+                raw_data=raw_data,
+            )
+        return JSONResponse({"status": "ignored", "reason": "invalid_amount"}, status_code=200)
+
+    was_vip = False
     async with async_session_factory() as session:
-        user = await crud.add_deposit(session, amount, tg_id=tg_id, trader_id=trader_id)
-        if user is not None and not user.has_access:
-            # Депозит всегда открывает доступ, даже если amount == 0
-            user = await crud.grant_access(session, user.tg_id)
+        existing_u = await crud.get_user(session, tg_id)
+        if existing_u is not None:
+            was_vip = bool(existing_u.has_access)
+
+    async with async_session_factory() as session:
+        user, is_duplicate = await crud.add_deposit(
+            session,
+            amount,
+            tg_id=tg_id,
+            trader_id=trader_id,
+            dedup_key=dedup_key,
+            raw_data=raw_data,
+        )
+        if is_duplicate:
+            return JSONResponse({"status": "duplicate_ignored", "event": event}, status_code=200)
+
+        if user is None:
+            await crud.log_postback(
+                session,
+                event,
+                trader_id=trader_id,
+                sub_id=str(tg_id),
+                amount=amount,
+                status=STATUS_USER_NOT_FOUND,
+                dedup_key=dedup_key,
+                raw_data=raw_data,
+            )
+            return JSONResponse({"status": "user_not_found", "event": event})
+
+        postback_status = STATUS_OK if user.has_access else "below_min_deposit"
         await crud.log_postback(
             session,
             event,
             trader_id=trader_id,
             sub_id=str(tg_id),
             amount=amount,
-            status=STATUS_OK if user is not None else STATUS_USER_NOT_FOUND,
+            status=postback_status,
+            dedup_key=dedup_key,
             raw_data=raw_data,
         )
-    if user is None:
-        return JSONResponse({"status": "user_not_found", "event": event})
-    if bot is not None:
+
+    if not user.has_access:
+        return JSONResponse(
+            {
+                "status": "below_min_deposit",
+                "event": event,
+                "tg_id": tg_id,
+                "deposit_amount": user.deposit_amount,
+                "min_deposit": settings.MIN_DEPOSIT,
+            },
+            status_code=200,
+        )
+
+    if bot is not None and not was_vip:
         await _notify_access(bot, user)
+
     return JSONResponse(
         {
             "status": "ok",

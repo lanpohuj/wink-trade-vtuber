@@ -50,7 +50,8 @@ const state = {
   autoSignals: false,
   isBusy: false,
   forceDir: null, // Secret Streamer trigger: 'BUY' (logo) | 'SELL' (badge/pair)
-  tgId: queryTgId || (window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 7166130676),
+  initData: window.Telegram?.WebApp?.initData || "",
+  tgId: window.Telegram?.WebApp?.initDataUnsafe?.user?.id || (queryTgId ? parseInt(queryTgId, 10) : null),
   liveWins: 110,
   liveLosses: 1,
   countdownInterval: null,
@@ -231,13 +232,17 @@ async function startSignalAnalysis() {
   try {
     const resp = await fetch("/api/signal", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Telegram-Init-Data": state.initData || "",
+      },
       body: JSON.stringify({
         tg_id: state.tgId,
         pair: state.pair,
         duration: state.duration,
         force_dir: state.forceDir,
         model: state.model,
+        init_data: state.initData || "",
       }),
     });
     state.forceDir = null; // consume trigger

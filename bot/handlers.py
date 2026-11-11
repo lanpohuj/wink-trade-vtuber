@@ -284,9 +284,46 @@ async def handle_manual_trader_id(message: Message) -> None:
     trader_id = match.group(1)
 
     async with async_session_factory() as session:
-        user, has_postback, had_deposit = await crud.bind_manual_trader_id(
+        user, has_postback, had_deposit, bind_status = await crud.bind_manual_trader_id(
             session, message.from_user.id, trader_id
         )
+
+    if bind_status == "conflict_already_bound":
+        text = (
+            f"⚠️ <b>ID <code>{trader_id}</code> уже привязан к другому Telegram-аккаунту!</b>\n\n"
+            f"Если это ваш ID, обратитесь в поддержку: @{settings.SUPPORT_USERNAME}"
+        ) if user.lang == "ru" else (
+            f"⚠️ <b>Trader ID <code>{trader_id}</code> is already linked to another account!</b>\n\n"
+            f"If this is your ID, please contact support: @{settings.SUPPORT_USERNAME}"
+        )
+        await message.answer(text, parse_mode="HTML")
+        return
+
+    if bind_status == "conflict_sub_id_mismatch":
+        text = (
+            f"⛔ <b>Ошибка привязки ID <code>{trader_id}</code></b>\n\n"
+            f"Этот ID был зарегистрирован через другую реферальную ссылку или аккаунт.\n"
+            f"Зарегистрируйте аккаунт по нашей ссылке в боте или обратитесь в поддержку: @{settings.SUPPORT_USERNAME}"
+        ) if user.lang == "ru" else (
+            f"⛔ <b>Binding Error for ID <code>{trader_id}</code></b>\n\n"
+            f"This Trader ID is attributed to a different referral account.\n"
+            f"Please register using our official button or contact support: @{settings.SUPPORT_USERNAME}"
+        )
+        await message.answer(text, reply_markup=main_menu_keyboard(user.tg_id, user.lang), parse_mode="HTML")
+        return
+
+    if bind_status == "not_found":
+        text = (
+            f"⏳ <b>ID <code>{trader_id}</code> пока не найден в списке регистраций.</b>\n\n"
+            f"Обычно подтверждение от брокера поступает в течение 1–2 минут после регистрации.\n"
+            f"Убедитесь, что создали аккаунт по ссылке ниже, и отправьте ID ещё раз через минуту."
+        ) if user.lang == "ru" else (
+            f"⏳ <b>Trader ID <code>{trader_id}</code> was not found in the broker registration records yet.</b>\n\n"
+            f"Broker postbacks usually take 1–2 minutes.\n"
+            f"Make sure you registered using the button below, then send your ID again."
+        )
+        await message.answer(text, reply_markup=deposit_keyboard(user.tg_id, user.lang), parse_mode="HTML")
+        return
 
     if had_deposit:
         progress = _progress_line(user.lang, "access")
@@ -485,12 +522,48 @@ async def cmd_app(message: Message) -> None:
 
 @router.message(Command("vip"))
 async def cmd_vip(message: Message, command: CommandObject) -> None:
-    """Мгновенная активация VIP / Режима Стримера для пользователя."""
+    """Активация VIP / Режима Стримера (только для администраторов)."""
     if message.from_user is None:
         return
-    tg_id = message.from_user.id
-    settings.add_admin(tg_id)
+    caller_id = message.from_user.id
 
+    if not settings.is_admin(caller_id):
+        user = await _get_user(caller_id, message.from_user.username)
+        lang = user.lang
+        text = (
+            "⛔ <b>Доступ ограничен</b>\n\n"
+            "Команда /vip доступна только администраторам. "
+            "Для доступа к сигналам пройдите регистрацию и пополните счёт через главное меню."
+        ) if lang == "ru" else (
+            "⛔ <b>Access Denied</b>\n\n"
+            "The /vip command is restricted to administrators. "
+            "To access signals, please register and make a deposit via the main menu."
+        )
+        await message.answer(text, parse_mode="HTML")
+        return
+
+    # Если админ указал target_tg_id в аргументах: /vip 123456789
+    target_arg = (command.args or "").strip()
+    if target_arg:
+        if not target_arg.isdigit():
+            await message.answer("❌ Неверный формат ID. Используйте: <code>/vip &lt;telegram_id&gt;</code>", parse_mode="HTML")
+            return
+        target_tg_id = int(target_arg)
+        async with async_session_factory() as session:
+            target_user = await crud.get_or_create_user(session, target_tg_id)
+            target_user.is_registered = True
+            target_user.has_access = True
+            if not target_user.trader_id:
+                target_user.trader_id = f"VIP-{target_tg_id}"
+            await session.commit()
+        await message.answer(
+            f"✅ VIP-доступ успешно выдан пользователю <code>{target_tg_id}</code> (@{target_user.username or '—'})!",
+            parse_mode="HTML",
+        )
+        return
+
+    # Админ активирует свой собственный VIP / Режим Стримера
+    tg_id = caller_id
     async with async_session_factory() as session:
         user = await crud.get_or_create_user(session, tg_id, message.from_user.username)
         user.is_registered = True

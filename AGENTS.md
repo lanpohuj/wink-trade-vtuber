@@ -49,6 +49,7 @@ ssh root@2.31.127.199 "cd /opt/winktrade && docker compose logs -f app --tail 50
 ssh root@2.31.127.199 "cd /opt/winktrade && docker compose restart app"   # после правки .env
 # бэкап базы: ssh ... "cd /opt/winktrade && tar czf backup-$(date +%F).tgz data/"
 ```
+*ВАЖНОЕ ПРАВИЛО*: При любых правках серверного кода агент сам выполняет `./deploy.sh` и проверяет контейнеры на сервере. Владелец не должен делать это вручную.
 Локальная разработка: `.venv` (Python 3.12, uv), запуск целиком — `.venv/bin/python main.py`
 (бот+API+Mini App на :8000), Winky отдельно — `python -m winky.app`.
 Локального `.env` нет (секреты только на сервере) — для локальных тестов переменные
@@ -444,3 +445,12 @@ DeepSeek с рейт-лимитом 8с); деплой на VPS с домено�
   не проверяются. 118 Node и 68 Python/HTTP-проверок.
 * page_hook.js не изменён; x2.2, таймеры, результат, статистика,
   библиотека 500 записей и avatar.js сохранены.
+
+
+### Обязательный авто-деплой серверных изменений (Auto-Deploy Rule) — 11.11.2026
+
+* **Автоматический деплой на прод**: При любых изменениях файлов бэкенда/сервера (`api/`, `bot/`, `database/`, `webapp/`, `main.py`, `config.py`, `Dockerfile`, `docker-compose.yml`, `requirements-server.txt`) агент **ОБЯЗАН** автоматически:
+  1. Синхронизировать/закоммитить и запушить изменения в GitHub репозиторий (`lanpohuj/wink-trade-vtuber`), если применимо.
+  2. Задеплоить изменения на удалённый VPS (`root@2.31.127.199`, `/opt/winktrade`) через `./deploy.sh` (rsync + `docker compose up -d --build`).
+  3. Проверить статус контейнеров через `docker compose ps` и логи `docker compose logs --tail 50`, а также выполнить healthcheck ключевых эндпоинтов (Mini App, API, postback).
+  Владелец — стример, не программист; он не должен запускать ручные SSH/Docker команды. Вся серверная инфраструктура обновляется, проверяется и поддерживается в рабочем состоянии агентом «под ключ».

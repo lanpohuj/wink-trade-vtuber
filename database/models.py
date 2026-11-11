@@ -172,6 +172,7 @@ class PostbackLog(Base):
     sub_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
     amount: Mapped[float] = mapped_column(Float, nullable=False, default=0.0)
     status: Mapped[str] = mapped_column(String(32), nullable=False, default=STATUS_OK)
+    dedup_key: Mapped[str | None] = mapped_column(String(128), nullable=True, index=True)
     raw_data: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=utcnow, server_default=func.now()
