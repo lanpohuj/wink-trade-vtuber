@@ -135,6 +135,8 @@
     if (raw) savedStats = { ...savedStats, ...JSON.parse(raw) };
   } catch (_) {}
 
+  const PAIR_SEARCH_LIMIT = 3;
+
   const state = {
     lang: "ru",
     activeTab: "signals", // "signals" | "chat"
@@ -3304,7 +3306,7 @@
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
     put('[data-analysis-score]',known?'★ '+Number(scoreStr).toFixed(1)+' / 5':'— / 5');
     const periods=state.analysisCache?.analysis?.timeframesUsed || [];
-    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(5,state.searchPairIndex || 1)}/5 · ${state.actualChartTf || '—'} · ${periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ')}`);
+    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT} · ${state.actualChartTf || '—'} · ${periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ')}`);
     put('[data-analysis-title]',stepTitle);
     put('[data-analysis-detail]',stepDesc);
     put('[data-analysis-status]',statusText[status] || statusText.checking);
@@ -3719,14 +3721,14 @@
       renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status);
     };
     try {
-      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=ru?'АНАЛИЗ ПАР · 1/5':'SCANNING PAIRS · 1/5';}
+      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(ru?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
       notifyTradePhase('ANALYZING',state.targetPair,0);
       if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
-      for(let attempt=0;attempt<10 && state.pairCandidates.length<5 && alive();attempt++) {
+      for(let attempt=0;attempt<10 && state.pairCandidates.length<PAIR_SEARCH_LIMIT && alive();attempt++) {
         const pair=state.targetPair,key=normalizePocketPair(pair);
         if(state.searchSeen.includes(key)) break;
         state.searchSeen.push(key);state.searchPairIndex=state.pairCandidates.length+1;
-        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/5';
+        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/'+PAIR_SEARCH_LIMIT;
         let sample=null,ready=false,anyReady=false;
         state.pairDataDeadline=Date.now()+3200;
         state.botState='ANALYZING_PAIR';
@@ -3761,7 +3763,7 @@
         }
         if(!alive()) break;
         if(sample && anyReady && sample.analysis.dataStatus!=='NO_DATA') {state.pairCandidates.push(sample);state.pairVisits.set(key,Date.now());journalDecision(chosen?'early_entry':'pair_checked',sample);}
-        if(chosen || state.pairCandidates.length>=5) break;
+        if(chosen || state.pairCandidates.length>=PAIR_SEARCH_LIMIT) break;
         render(3,sample,'rejected');
         VoiceManager.playCategory('flat_skip',false,'thinking');
         state.botState='SWITCHING_PAIR';

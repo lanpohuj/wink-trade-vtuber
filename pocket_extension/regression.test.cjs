@@ -262,17 +262,18 @@ test('a ready setup on first or second pair enters immediately',async()=>{
     await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.equal(c.state.pairCandidates.length,index+1);assert.equal(c.switches.length,index);
   }
 });
-test('after five pairs the best eligible setup is rechecked and entered without observation',async()=>{
+test('after three pairs the best eligible setup is rechecked and entered without observation',async()=>{
   const c=searchFixture(null,true),started=c.now();await c.startSignalAnalysis();
-  assert.equal(c.state.pairCandidates.length,5);assert.equal(new Set(c.state.searchSeen).size,5);
+  assert.deepEqual(Array.from(c.state.pairCandidates,p=>p.pair),c.pairs.slice(0,3));assert.equal(new Set(c.state.searchSeen).size,3);
+  assert.ok(!c.switches.includes(c.pairs[3]) && !c.switches.includes(c.pairs[4]));
   assert.equal(c.executed.length,1);assert.equal(c.executed[0].pair,c.pairs[0]);assert.equal(c.switches.at(-1),c.pairs[0]);
-  assert.ok(c.now()-started<15000);assert.ok(c.state.decisionJournal.some(e=>e.event==='entry_confirmed'));
+  assert.ok(c.now()-started<10000);assert.ok(c.state.decisionJournal.some(e=>e.event==='entry_confirmed'));
 });
 test('all hard-vetoed candidates end the round without a forced entry',async()=>{
   const c=searchFixture();let calls=0;
   c.setSearchDependencies({analyze:()=>{calls++;return {shouldTrade:true,hardVeto:true,vetoReason:'HIGH_RISK_MARKET',direction:'BUY',confidence:95};}});
   await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.ok(calls<80);assert.equal(c.state.botState,'IDLE');
-  assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,5);
+  assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,3);
 });
 test('failed loading is not counted as an analyzed pair',async()=>{
   const c=searchFixture(null,true);c.setSearchDependencies({ready:async()=>c.state.targetPair!==c.pairs[0],
