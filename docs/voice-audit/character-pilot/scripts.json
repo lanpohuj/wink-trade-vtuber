@@ -1,5 +1,5 @@
 {
-  "version": "character-pilot-1",
+  "version": "character-pilot-2",
   "activated": false,
   "purpose": "Пробы характера, не выпуск библиотеки",
   "tuning": {
@@ -13,45 +13,50 @@
       "id": "ru_greeting",
       "lang": "ru",
       "category": "START_STREAM_READY",
-      "text": "Чатик, привет! Винки у графика, а ушки уже навострила!",
-      "tts_text": "[bright and playful] Чатик, привет! Винки у графика, а ушки уже навострила!",
-      "take": 2
+      "text": "Чатик, привет! Винки на связи — посмотрим, что сегодня покажет график!",
+      "tts_text": "[bright and playful] Чатик, привет! Винки на связи — посмотрим, что сегодня покажет график!",
+      "take": 3
     },
     {
       "id": "ru_win",
       "lang": "ru",
       "category": "TRADE_WIN",
-      "text": "Мур-р, вот это закрытие! Плюс записала, чатик!",
-      "tts_text": "[delighted] Мур-р, вот это закрытие! Плюс записала, чатик!"
+      "text": "Вот это закрытие! Плюс записала, чатик — красивый момент!",
+      "tts_text": "[delighted] Вот это закрытие! Плюс записала, чатик — красивый момент!",
+      "take": 2
     },
     {
       "id": "ru_loss",
       "lang": "ru",
       "category": "TRADE_LOSS",
-      "text": "Эта сделка в минус. Ладно, ушки выше — продолжаем!",
-      "tts_text": "[lighthearted and reassuring] Эта сделка в минус. Ладно, ушки выше — продолжаем!",
-      "take": 2
+      "text": "Эта сделка в минус. Ладно, сохраняем спокойствие — продолжаем!",
+      "tts_text": "[lighthearted and reassuring] Эта сделка в минус. Ладно, сохраняем спокойствие — продолжаем!",
+      "take": 3
     },
     {
       "id": "en_greeting",
       "lang": "en",
       "category": "START_STREAM_READY",
-      "text": "Hey, chat! Ears up, Winky's on chart duty. Let's get curious!",
-      "tts_text": "[bright and playful] Hey, chat! Ears up, Winky's on chart duty. Let's get curious!"
+      "text": "Hey, chat! Winky's here. Let's see what the chart has in store!",
+      "tts_text": "[bright and playful] Hey, chat! Winky's here. Let's see what the chart has in store!",
+      "take": 2
     },
     {
       "id": "en_win",
       "lang": "en",
       "category": "TRADE_WIN",
-      "text": "Ooh, that closed with a win! One happy purr for the log.",
-      "tts_text": "[delighted] Ooh, that closed with a win! One happy purr for the log."
+      "text": "Ooh, that closed with a win! Now that's a moment worth noting!",
+      "tts_text": "[delighted] Ooh, that closed with a win! Now that's a moment worth noting!",
+      "take": 2
     },
     {
       "id": "en_loss",
       "lang": "en",
       "category": "TRADE_LOSS",
-      "text": "Aw, that one's a loss. Ears up — we're sticking to the plan.",
-      "tts_text": "[lighthearted and reassuring] Aw, that one's a loss. Ears up — we're sticking to the plan."
+      "text": "Aw, that one's a loss. Keeping a cool head — we stick to the plan.",
+      "tts_text": "[lighthearted and reassuring] Aw, that one's a loss. Keeping a cool head — we stick to the plan.",
+      "take": 2
     }
-  ]
+  ],
+  "delivery_feedback": "Owner likes delivery; remove recurring cat catchphrases, 2026-11-11"
 }

@@ -1,12 +1,13 @@
 {
   "activated": false,
   "auditory_review_complete": false,
+  "delivery_feedback": "Owner likes delivery; remove recurring cat catchphrases, 2026-11-11",
   "records": [
     {
       "id": "ru_greeting",
       "lang": "ru",
       "request": {
-        "text": "[bright and playful] Чатик, привет! Винки у графика, а ушки уже навострила!",
+        "text": "[bright and playful] Чатик, привет! Винки на связи — посмотрим, что сегодня покажет график!",
         "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "language": "ru",
         "format": "mp3",
@@ -22,35 +23,116 @@
           "normalize_loudness": true
         }
       },
-      "duration": 3.683187,
+      "duration": 4.780312,
       "auditory_verified": false,
       "accepted": false,
-      "transcript": "Чатик, привет! Винки у графика, а ушки уже новострила!",
+      "transcript": "Чатик, привет! Винки на связи посмотрим, что сегодня покажет график.",
       "metrics": {
         "decode_ok": true,
-        "duration": 3.683,
-        "rms": 0.08468,
-        "peak": 0.37143,
+        "duration": 4.78,
+        "rms": 0.08492,
+        "peak": 0.39791,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.103,
-        "sha256": "20ad07c7d975d8f79189c933e35f6e9b83cf7901b7e8ff17176a4b30cb54c9fa"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.14,
+        "sha256": "4ec7ce7219cd23955d979d25136b5553447a6308f9d53109d34e364c5790a857"
       },
       "file": "ru_greeting.mp3",
-      "script": "Чатик, привет! Винки у графика, а ушки уже навострила!",
+      "script": "Чатик, привет! Винки на связи — посмотрим, что сегодня покажет график!",
       "category": "START_STREAM_READY",
       "owner_accepted": false,
-      "sha256": "20ad07c7d975d8f79189c933e35f6e9b83cf7901b7e8ff17176a4b30cb54c9fa",
-      "review_status": "listening_required",
-      "pronunciation_review_needed": "ASR differs on a word; cannot determine pronunciation by transcript alone"
+      "sha256": "4ec7ce7219cd23955d979d25136b5553447a6308f9d53109d34e364c5790a857",
+      "review_status": "listening_required"
     },
     {
       "id": "ru_win",
       "lang": "ru",
       "request": {
-        "text": "[delighted] Мур-р, вот это закрытие! Плюс записала, чатик!",
+        "text": "[delighted] Вот это закрытие! Плюс записала, чатик — красивый момент!",
         "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 4.414625,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "Вот это закрытие! Плюс записала! Чатик, красивый момент!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.07724,
+        "peak": 0.36125,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.135,
+        "sha256": "a47552200c180cb78a319be4fae08313a8d140519d75701d5b86ff7430738498"
+      },
+      "file": "ru_win.mp3",
+      "script": "Вот это закрытие! Плюс записала, чатик — красивый момент!",
+      "category": "TRADE_WIN",
+      "owner_accepted": false,
+      "sha256": "a47552200c180cb78a319be4fae08313a8d140519d75701d5b86ff7430738498",
+      "review_status": "listening_required"
+    },
+    {
+      "id": "ru_loss",
+      "lang": "ru",
+      "request": {
+        "text": "[lighthearted and reassuring] Эта сделка в минус. Ладно, сохраняем спокойствие — продолжаем!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "duration": 4.519125,
+      "auditory_verified": false,
+      "accepted": false,
+      "transcript": "Это сделка в минус! Ну ладно, сохраняем спокойствие, продолжаем!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.519,
+        "rms": 0.08198,
+        "peak": 0.3413,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.139,
+        "sha256": "1ef73a5909503ced950de78fcd32eebfc090a8e52ef9a09bb7d8beee51e6c12e"
+      },
+      "file": "ru_loss.mp3",
+      "script": "Эта сделка в минус. Ладно, сохраняем спокойствие — продолжаем!",
+      "category": "TRADE_LOSS",
+      "owner_accepted": false,
+      "sha256": "1ef73a5909503ced950de78fcd32eebfc090a8e52ef9a09bb7d8beee51e6c12e",
+      "review_status": "listening_required"
+    },
+    {
+      "id": "en_greeting",
+      "lang": "en",
+      "request": {
+        "text": "[bright and playful] Hey, chat! Winky's here. Let's see what the chart has in store!",
+        "reference_id": "e34c486929524d41b88646b4ac2f382f",
+        "language": "en",
         "format": "mp3",
         "sample_rate": 44100,
         "mp3_bitrate": 128,
@@ -67,112 +149,29 @@
       "duration": 4.23175,
       "auditory_verified": false,
       "accepted": false,
-      "transcript": "Мур! Вот это закрытие! Плюс записала, Чатик!",
+      "transcript": "Hey chat! Winky's here! Let's see what the chart has in store!",
       "metrics": {
         "decode_ok": true,
         "duration": 4.232,
-        "rms": 0.06976,
-        "peak": 0.3366,
-        "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.052,
-        "sha256": "943eb5781c3f5ca7acc419debe31ffce1e01ea637600767378fe61d41072cb14"
-      },
-      "file": "ru_win.mp3",
-      "script": "Мур-р, вот это закрытие! Плюс записала, чатик!",
-      "category": "TRADE_WIN",
-      "owner_accepted": false,
-      "sha256": "943eb5781c3f5ca7acc419debe31ffce1e01ea637600767378fe61d41072cb14",
-      "review_status": "listening_required"
-    },
-    {
-      "id": "ru_loss",
-      "lang": "ru",
-      "request": {
-        "text": "[lighthearted and reassuring] Эта сделка в минус. Ладно, ушки выше — продолжаем!",
-        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
-        "language": "ru",
-        "format": "mp3",
-        "sample_rate": 44100,
-        "mp3_bitrate": 128,
-        "latency": "balanced",
-        "normalize": true,
-        "temperature": 0.82,
-        "top_p": 0.85,
-        "prosody": {
-          "speed": 1.06,
-          "volume": 0,
-          "normalize_loudness": true
-        }
-      },
-      "duration": 3.944375,
-      "auditory_verified": false,
-      "accepted": false,
-      "transcript": "Это сделка в минус. Ладно, ушки выше, продолжаем.",
-      "metrics": {
-        "decode_ok": true,
-        "duration": 3.945,
-        "rms": 0.07732,
-        "peak": 0.29503,
-        "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.124,
-        "sha256": "6b53108e2fc9b9cd9811dffc91e8f51953dbd612851d9196cee90c5c94ebb35e"
-      },
-      "file": "ru_loss.mp3",
-      "script": "Эта сделка в минус. Ладно, ушки выше — продолжаем!",
-      "category": "TRADE_LOSS",
-      "owner_accepted": false,
-      "sha256": "6b53108e2fc9b9cd9811dffc91e8f51953dbd612851d9196cee90c5c94ebb35e",
-      "review_status": "listening_required",
-      "pronunciation_review_needed": "ASR differs on a word; cannot determine pronunciation by transcript alone"
-    },
-    {
-      "id": "en_greeting",
-      "lang": "en",
-      "request": {
-        "text": "[bright and playful] Hey, chat! Ears up, Winky's on chart duty. Let's get curious!",
-        "reference_id": "e34c486929524d41b88646b4ac2f382f",
-        "language": "en",
-        "format": "mp3",
-        "sample_rate": 44100,
-        "mp3_bitrate": 128,
-        "latency": "balanced",
-        "normalize": true,
-        "temperature": 0.82,
-        "top_p": 0.85,
-        "prosody": {
-          "speed": 1.06,
-          "volume": 0,
-          "normalize_loudness": true
-        }
-      },
-      "duration": 5.328875,
-      "auditory_verified": false,
-      "accepted": false,
-      "transcript": "Hey! Chat! Ears up! Winky's on chart duty! Let's get curious!",
-      "metrics": {
-        "decode_ok": true,
-        "duration": 5.329,
-        "rms": 0.07668,
-        "peak": 0.43759,
+        "rms": 0.08214,
+        "peak": 0.46318,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.149,
-        "sha256": "dffcd786255efd06e834060a09f099e7280338c5a99dd019758bb11ab0aac3fc"
+        "trailing_silence": 0.172,
+        "sha256": "882729df0d9dadf22327d32c3f3e9c0787d52751797841781aef930f20f2f810"
       },
       "file": "en_greeting.mp3",
-      "script": "Hey, chat! Ears up, Winky's on chart duty. Let's get curious!",
+      "script": "Hey, chat! Winky's here. Let's see what the chart has in store!",
       "category": "START_STREAM_READY",
       "owner_accepted": false,
-      "sha256": "dffcd786255efd06e834060a09f099e7280338c5a99dd019758bb11ab0aac3fc",
+      "sha256": "882729df0d9dadf22327d32c3f3e9c0787d52751797841781aef930f20f2f810",
       "review_status": "listening_required"
     },
     {
       "id": "en_win",
       "lang": "en",
       "request": {
-        "text": "[delighted] Ooh, that closed with a win! One happy purr for the log.",
+        "text": "[delighted] Ooh, that closed with a win! Now that's a moment worth noting!",
         "reference_id": "e34c486929524d41b88646b4ac2f382f",
         "language": "en",
         "format": "mp3",
@@ -188,32 +187,32 @@
           "normalize_loudness": true
         }
       },
-      "duration": 5.172125,
+      "duration": 4.101125,
       "auditory_verified": false,
       "accepted": false,
-      "transcript": "Oh, that closed with a win! One happy purr for the log!",
+      "transcript": "Oh, that closed with a win! Now that's a moment worth noting!",
       "metrics": {
         "decode_ok": true,
-        "duration": 5.172,
-        "rms": 0.07512,
-        "peak": 0.44319,
+        "duration": 4.101,
+        "rms": 0.08329,
+        "peak": 0.34358,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.152,
-        "sha256": "c858712a7c820400297299f9ffeddbbdf5e1eb2aaaabbf7038b59c47108d96b6"
+        "trailing_silence": 0.121,
+        "sha256": "865f3d88b1452640e4b39add4a9cf59f28d4860162df3e0792185aff930321dd"
       },
       "file": "en_win.mp3",
-      "script": "Ooh, that closed with a win! One happy purr for the log.",
+      "script": "Ooh, that closed with a win! Now that's a moment worth noting!",
       "category": "TRADE_WIN",
       "owner_accepted": false,
-      "sha256": "c858712a7c820400297299f9ffeddbbdf5e1eb2aaaabbf7038b59c47108d96b6",
+      "sha256": "865f3d88b1452640e4b39add4a9cf59f28d4860162df3e0792185aff930321dd",
       "review_status": "listening_required"
     },
     {
       "id": "en_loss",
       "lang": "en",
       "request": {
-        "text": "[lighthearted and reassuring] Aw, that one's a loss. Ears up — we're sticking to the plan.",
+        "text": "[lighthearted and reassuring] Aw, that one's a loss. Keeping a cool head — we stick to the plan.",
         "reference_id": "e34c486929524d41b88646b4ac2f382f",
         "language": "en",
         "format": "mp3",
@@ -229,25 +228,25 @@
           "normalize_loudness": true
         }
       },
-      "duration": 4.545187,
+      "duration": 4.414625,
       "auditory_verified": false,
       "accepted": false,
-      "transcript": "Aw, that one's a loss. Ears up, we're sticking to the plan.",
+      "transcript": "Huh, that one's a loss. Keeping a cool head, we stick to the plan.",
       "metrics": {
         "decode_ok": true,
-        "duration": 4.545,
-        "rms": 0.07383,
-        "peak": 0.38973,
+        "duration": 4.415,
+        "rms": 0.07607,
+        "peak": 0.63672,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.225,
-        "sha256": "58930b53a712d42fb47333d398d733db2733e8382ed0e0099a92b409db03378c"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.295,
+        "sha256": "75594e281145310dfc5959a4b94e9dc786a9e897e3a467ec18f5d5e113c4a6e3"
       },
       "file": "en_loss.mp3",
-      "script": "Aw, that one's a loss. Ears up — we're sticking to the plan.",
+      "script": "Aw, that one's a loss. Keeping a cool head — we stick to the plan.",
       "category": "TRADE_LOSS",
       "owner_accepted": false,
-      "sha256": "58930b53a712d42fb47333d398d733db2733e8382ed0e0099a92b409db03378c",
+      "sha256": "75594e281145310dfc5959a4b94e9dc786a9e897e3a467ec18f5d5e113c4a6e3",
       "review_status": "listening_required"
     }
   ]
