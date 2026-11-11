@@ -330,3 +330,11 @@ test('captured history schema can request older bars without a manual chart pan'
   assert.equal(sent[1].time,1794039540-60);assert.equal(sent[1].offset,200*60);assert.equal(sent[1].period,60);
   assert.ok(Number.isFinite(sent[1].index));assert.equal(h.messages.at(-1).requested,true);
 });
+
+
+test('NGN micro-price ticks retain exact broker values without synthetic offsets',()=>{
+  const h=loadHook(),socket=new h.Socket('wss://test');
+  const prices=[0.00074160,0.00074161,0.00074159];
+  for(let i=0;i<prices.length;i++)socket.receive('42'+JSON.stringify(['updateStream',[['NGNUSD_otc',1700000000+i*.1,prices[i]]]]));
+  assert.deepEqual(h.messages.filter(m=>m.type==='TICK').map(m=>m.price),prices);
+});

@@ -135,6 +135,10 @@
     if (raw) savedStats = { ...savedStats, ...JSON.parse(raw) };
   } catch (_) {}
 
+  const PAIR_SEARCH_LIMIT = 3;
+  const EARLY_ENTRY_THRESHOLD = 3.8;
+  const RANKED_ENTRY_THRESHOLD = 3.5;
+
   const state = {
     lang: "ru",
     activeTab: "signals", // "signals" | "chat"
@@ -1199,8 +1203,8 @@
         return ranked(eligible.filter(c=>seconds(c)<=30))[0] || ranked(eligible.filter(c=>seconds(c)>=60))[0];
       };
       const pinned=scan?.preferredScenarioKey;
-      const best=pinned?candidates.find(c=>c.scenarioKey===pinned && c.confluence.score>=(scan.entryThreshold || 4)):
-        choose(scan?.entryThreshold || 4) || choose(3.5);
+      const best=pinned?candidates.find(c=>c.scenarioKey===pinned && c.confluence.score>=(scan.entryThreshold || EARLY_ENTRY_THRESHOLD)):
+        choose(scan?.entryThreshold || EARLY_ENTRY_THRESHOLD) || choose(RANKED_ENTRY_THRESHOLD);
       if(best) return {...best,dataStatus:'ENTRY_CONFIRMED',scenarios:ranked(candidates),rejected};
       const dataReasons=['NOT_ENOUGH_CANDLES','STALE_CANDLES','INCOMPATIBLE_CANDLES'];
       const noData=rejected.length===requirements.length && rejected.every(r=>dataReasons.includes(r.reason));
@@ -3304,7 +3308,7 @@
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
     put('[data-analysis-score]',known?'★ '+Number(scoreStr).toFixed(1)+' / 5':'— / 5');
     const periods=state.analysisCache?.analysis?.timeframesUsed || [];
-    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(5,state.searchPairIndex || 1)}/5 · ${state.actualChartTf || '—'} · ${periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ')}`);
+    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT} · ${state.actualChartTf || '—'} · ${periods.map(p=>p<60?'S'+p:'M'+p/60).join(' + ')}`);
     put('[data-analysis-title]',stepTitle);
     put('[data-analysis-detail]',stepDesc);
     put('[data-analysis-status]',statusText[status] || statusText.checking);
@@ -3519,10 +3523,10 @@
 
       if (state.searchRunning) {
         if (analysis.searchGeneration !== undefined && analysis.searchGeneration !== state.searchGeneration) { resetTradePreparation(null); return; }
-        const fresh=await freshPairAnalysis({preferredScenarioKey:analysis.scenarioKey,entryThreshold:analysis.entryThreshold || 4});
+        const fresh=await freshPairAnalysis({preferredScenarioKey:analysis.scenarioKey,entryThreshold:analysis.entryThreshold || EARLY_ENTRY_THRESHOLD});
         const sameScenario=!analysis.scenarioKey || fresh.analysis.scenarioKey===analysis.scenarioKey;
         const currentPair=scanPocketOptionCurrentPair();
-        if (analysis.searchGeneration!==state.searchGeneration || normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!sameScenario || !canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || 4) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
+        if (analysis.searchGeneration!==state.searchGeneration || normalizePocketPair(currentPair)!==normalizePocketPair(state.targetPair) || (!analysis.isStreamerOverride && (!sameScenario || !canEnterAnalysis(fresh.analysis,fresh.confluence,analysis.entryThreshold || EARLY_ENTRY_THRESHOLD) || fresh.analysis.direction!==tradeDir || selectStrategyExpiration(fresh.analysis,fresh.scan)!==resolvedTf))) {
           resetTradePreparation(null); return;
         }
       }
@@ -3652,7 +3656,7 @@
 
   function bestPairCandidate(candidates) { return sortedPairCandidates(candidates)[0] || null; }
 
-  function canEnterAnalysis(analysis, confluence, threshold=4, requireFreshQuote=true) {
+  function canEnterAnalysis(analysis, confluence, threshold=EARLY_ENTRY_THRESHOLD, requireFreshQuote=true) {
     return Boolean(analysis?.shouldTrade && !analysis.hardVeto && !['HIGH_RISK_MARKET','OPPOSING_HIGHER_TREND','INCOMPATIBLE_CANDLES','NOT_ENOUGH_CANDLES','STALE_CANDLES'].includes(analysis.vetoReason) &&
       ['BUY','SELL'].includes(analysis.direction) && Number.isFinite(confluence?.score) && confluence.score>=threshold && (!requireFreshQuote || quoteIsFresh()));
   }
@@ -3719,14 +3723,14 @@
       renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status);
     };
     try {
-      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=ru?'АНАЛИЗ ПАР · 1/5':'SCANNING PAIRS · 1/5';}
+      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(ru?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
       notifyTradePhase('ANALYZING',state.targetPair,0);
       if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
-      for(let attempt=0;attempt<10 && state.pairCandidates.length<5 && alive();attempt++) {
+      for(let attempt=0;attempt<10 && state.pairCandidates.length<PAIR_SEARCH_LIMIT && alive();attempt++) {
         const pair=state.targetPair,key=normalizePocketPair(pair);
         if(state.searchSeen.includes(key)) break;
         state.searchSeen.push(key);state.searchPairIndex=state.pairCandidates.length+1;
-        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/5';
+        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/'+PAIR_SEARCH_LIMIT;
         let sample=null,ready=false,anyReady=false;
         state.pairDataDeadline=Date.now()+3200;
         state.botState='ANALYZING_PAIR';
@@ -3738,7 +3742,7 @@
             // Already confirmed long data are analysed before requesting another interval.
             const available=marketFrames(scanCanvasStructure());
             sample=samplePairAnalysis();
-            if(canEnterAnalysis(sample.analysis,sample.confluence,4)) {chosen=sample;anyReady=true;break;}
+            if(canEnterAnalysis(sample.analysis,sample.confluence,EARLY_ENTRY_THRESHOLD)) {chosen=sample;anyReady=true;break;}
             const needShort=step===2 && !['1m','2m'].includes(sample.analysis.recommendedExpiry);
             ready=step===0 || needShort ? await showPairInterval(pair,step===0?'M1':'S15') :
               Boolean(ProTraderEngine.frameContext(available[60]));
@@ -3753,7 +3757,7 @@
             sample=samplePairAnalysis();
             anyReady=anyReady || sample.analysis.valid===true || sample.analysis.shouldTrade===true;
             render(step,sample,sample.analysis.dataStatus==='NO_DATA'?'loading':sample.analysis.shouldTrade?'confirmed':'checking');
-            if(canEnterAnalysis(sample.analysis,sample.confluence,4)) {chosen=sample;break;}
+            if(canEnterAnalysis(sample.analysis,sample.confluence,EARLY_ENTRY_THRESHOLD)) {chosen=sample;break;}
             if(Date.now()>=until || !alive()) break;
             await new Promise(resolve=>setTimeout(resolve,Math.min(250,until-Date.now())));
           } while(alive());
@@ -3761,13 +3765,13 @@
         }
         if(!alive()) break;
         if(sample && anyReady && sample.analysis.dataStatus!=='NO_DATA') {state.pairCandidates.push(sample);state.pairVisits.set(key,Date.now());journalDecision(chosen?'early_entry':'pair_checked',sample);}
-        if(chosen || state.pairCandidates.length>=5) break;
+        if(chosen || state.pairCandidates.length>=PAIR_SEARCH_LIMIT) break;
         render(3,sample,'rejected');
         VoiceManager.playCategory('flat_skip',false,'thinking');
         state.botState='SWITCHING_PAIR';
         if(!await switchPocketPair(null) || normalizePocketPair(state.targetPair)===key) break;
       }
-      const ranked=chosen?[chosen]:sortedPairCandidates(state.pairCandidates).filter(c=>canEnterAnalysis(c.analysis,c.confluence,3.5,false));
+      const ranked=chosen?[chosen]:sortedPairCandidates(state.pairCandidates).filter(c=>canEnterAnalysis(c.analysis,c.confluence,RANKED_ENTRY_THRESHOLD,false));
       for(const candidate of ranked) {
         if(!alive()) break;
         const pair=candidate.pair;
@@ -3778,7 +3782,7 @@
         if(!ProTraderEngine.frameContext(frames[60])) await showPairInterval(pair,'M1');
         if((candidate.analysis.entryPeriodSec || 15)<60) await showPairInterval(pair,'S15');
         if(!alive()) break;
-        const threshold=chosen?4:3.5;
+        const threshold=chosen?EARLY_ENTRY_THRESHOLD:RANKED_ENTRY_THRESHOLD;
         const fresh=await freshPairAnalysis({preferredScenarioKey:candidate.analysis.scenarioKey,entryThreshold:threshold});
         if((candidate.analysis.scenarioKey && fresh.analysis.scenarioKey!==candidate.analysis.scenarioKey) || !canEnterAnalysis(fresh.analysis,fresh.confluence,threshold)) {journalDecision('entry_cancelled',fresh,'signal_changed_on_return');continue;}
         fresh.analysis.searchGeneration=generation;fresh.analysis.entryThreshold=threshold;

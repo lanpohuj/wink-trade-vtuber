@@ -249,7 +249,7 @@ function searchFixture(readyPair=null, ranked=false) {
   c.state.targetPair=pairs[0];
   const analysis=()=>{samples.push(c.state.targetPair);return {shouldTrade:ranked || c.state.targetPair===readyPair,direction:'BUY',confidence:90,
     setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.6,sr:{distToRes:2,distToSup:1},line1:'Live setup'};};
-  const score=()=>ranked?(c.state.targetPair===pairs[0]?3.9:3.6):4.5;
+  const score=()=>ranked?(c.state.targetPair===pairs[0]?3.7:3.6):4.5;
   c.setSearchDependencies({scan:()=>{c.state.lastRealQuote={price:1,timestamp:c.now(),receivedAt:c.now(),pair:c.state.targetPair};return {visualCandles:[]};},analyze:analysis,sentiment:()=>({observed:true}),
     confluence:()=>({score:score(),factors:Array.from({length:5},()=>({score:score()/5,detail:'factor',pass:true}))}),
     switchPair:async(target)=>{const next=target||pairs[(pairs.indexOf(c.state.targetPair)+1)%5];switches.push(next);c.state.targetPair=next;return true;},
@@ -262,17 +262,18 @@ test('a ready setup on first or second pair enters immediately',async()=>{
     await c.startSignalAnalysis();assert.equal(c.executed.length,1);assert.equal(c.state.pairCandidates.length,index+1);assert.equal(c.switches.length,index);
   }
 });
-test('after five pairs the best eligible setup is rechecked and entered without observation',async()=>{
+test('after three pairs the best eligible setup is rechecked and entered without observation',async()=>{
   const c=searchFixture(null,true),started=c.now();await c.startSignalAnalysis();
-  assert.equal(c.state.pairCandidates.length,5);assert.equal(new Set(c.state.searchSeen).size,5);
+  assert.deepEqual(Array.from(c.state.pairCandidates,p=>p.pair),c.pairs.slice(0,3));assert.equal(new Set(c.state.searchSeen).size,3);
+  assert.ok(!c.switches.includes(c.pairs[3]) && !c.switches.includes(c.pairs[4]));
   assert.equal(c.executed.length,1);assert.equal(c.executed[0].pair,c.pairs[0]);assert.equal(c.switches.at(-1),c.pairs[0]);
-  assert.ok(c.now()-started<15000);assert.ok(c.state.decisionJournal.some(e=>e.event==='entry_confirmed'));
+  assert.ok(c.now()-started<10000);assert.ok(c.state.decisionJournal.some(e=>e.event==='entry_confirmed'));
 });
 test('all hard-vetoed candidates end the round without a forced entry',async()=>{
   const c=searchFixture();let calls=0;
   c.setSearchDependencies({analyze:()=>{calls++;return {shouldTrade:true,hardVeto:true,vetoReason:'HIGH_RISK_MARKET',direction:'BUY',confidence:95};}});
   await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.ok(calls<80);assert.equal(c.state.botState,'IDLE');
-  assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,5);
+  assert.equal(c.state.searchRunning,false);assert.equal(c.state.pairCandidates.length,3);
 });
 test('failed loading is not counted as an analyzed pair',async()=>{
   const c=searchFixture(null,true);c.setSearchDependencies({ready:async()=>c.state.targetPair!==c.pairs[0],
@@ -553,7 +554,8 @@ test('short-first choice is threshold aware; ties choose 15s or 1m; pinned valid
   let r=analyze();assert.equal(r.recommendedExpiry,'15s');
   const pinned=r.scenarioKey;scores={'15s':4.1,'30s':4.8,'1m':4.9,'2m':5};
   assert.equal(analyze().recommendedExpiry,'30s');assert.equal(analyze({preferredScenarioKey:pinned}).recommendedExpiry,'15s');
-  scores={'15s':3.8,'30s':3.9,'1m':4.1,'2m':4.1};assert.equal(analyze().recommendedExpiry,'1m');
+  scores={'15s':3.8,'30s':3.9,'1m':4.1,'2m':4.1};assert.equal(analyze().recommendedExpiry,'30s');
+  scores={'15s':3.7,'30s':3.7,'1m':4.1,'2m':4.1};assert.equal(analyze().recommendedExpiry,'1m');
   scores={'15s':3.4,'30s':3.3,'1m':3.4,'2m':3.4};assert.equal(analyze().shouldTrade,false);
   assert.equal(analyze({preferredScenarioKey:pinned}).vetoReason,'SCENARIO_INVALIDATED');
 });
@@ -773,4 +775,17 @@ test('opening explanation remains attached to the observed trade, not a later an
  c.state.analysisCache={pair:c.state.targetPair,analysis:{family:'LOCAL_REVERSAL'}};
  const snapshot=c.commentaryContext();assert.equal(snapshot.setup,'TREND_PULLBACK');assert.equal(snapshot.setup_confirmed,true);assert.equal(snapshot.entry_observed_at,123);
  t.resultApplied=true;assert.equal(c.commentaryContext().open_observed,false);
+});
+
+
+test('3.8 allows an early confirmed entry; 3.79 still waits and hard veto stays mandatory',async()=>{
+  const c=searchFixture('EUR/USD OTC');
+  c.setSearchDependencies({confluence:()=>({score:3.8,factors:Array.from({length:5},()=>({score:.76,pass:true,detail:'observed'}))})});
+  await c.startSignalAnalysis();
+  assert.equal(c.executed.length,1);assert.equal(c.state.pairCandidates.length,1);assert.equal(c.switches.length,0);
+  const q=loadContent();q.state.lastRealQuote={pair:q.state.targetPair,receivedAt:q.now(),timestamp:q.now(),price:1};
+  const a={shouldTrade:true,direction:'BUY'};
+  assert.equal(q.canEnterAnalysis(a,{score:3.79}),false);
+  assert.equal(q.canEnterAnalysis(a,{score:3.8}),true);
+  assert.equal(q.canEnterAnalysis({...a,hardVeto:true,vetoReason:'HIGH_RISK_MARKET'},{score:5}),false);
 });
