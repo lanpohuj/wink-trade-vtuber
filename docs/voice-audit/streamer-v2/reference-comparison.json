@@ -1,0 +1,423 @@
+{
+  "limits": "Autocorrelation and ASR are objective supporting measurements, not a listening or naturalness verdict.",
+  "records": [
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/START_STREAM_READY/start_01.mp3",
+      "text": "Всем привет на стриме! Винки на связи, включаем турбо-режим и начинаем искать идеальные точки входа!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.844,
+        "rms": 0.14187,
+        "peak": 0.53102,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.124,
+        "sha256": "61a6b08c2016a0c3d782b78e3cb4d875dfde2a5e43fdf401cbc90a92a6ba287b"
+      },
+      "words_per_sec": 2.19,
+      "auditory_verified": false,
+      "pitch_median_hz": 355.6,
+      "pitch_iqr_semitones": 2.95
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/START_STREAM_READY/start_02.mp3",
+      "text": "Так, терминал готов, индикаторы заряжены! Давайте посмотрим, где сейчас можно забрать уверенный профит.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.844,
+        "rms": 0.14197,
+        "peak": 0.49909,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.184,
+        "sha256": "093f686315be590e632f0fef140e05879ce2e71f52faa35239f1032ebee6f6b8"
+      },
+      "words_per_sec": 1.9,
+      "auditory_verified": false,
+      "pitch_median_hz": 329.9,
+      "pitch_iqr_semitones": 4.26
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/ANALYZING_CHART/analyze_01.mp3",
+      "text": "Секундочку, анализирую график... Смотрю на RSI, скользящие средние и реакцию цены у ключевых уровней.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.568,
+        "rms": 0.15006,
+        "peak": 0.6171,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.148,
+        "sha256": "3e1de71d871215dd9e93f6ba263a98affa42f59b608c1a38f2c0ff7826e88828"
+      },
+      "words_per_sec": 1.63,
+      "auditory_verified": false,
+      "pitch_median_hz": 390.2,
+      "pitch_iqr_semitones": 3.54
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/ANALYZING_CHART/analyze_02.mp3",
+      "text": "Так, давайте разберем текущую картину... Проверяю силу тренда, импульсы свечей и зоны перекупленности.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.497,
+        "rms": 0.14529,
+        "peak": 0.52928,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.14,
+        "trailing_silence": 0.177,
+        "sha256": "b19299815c779945262f8025a84b8e9e3c120a2f406277f04399dac31c5e6875"
+      },
+      "words_per_sec": 1.73,
+      "auditory_verified": false,
+      "pitch_median_hz": 340.4,
+      "pitch_iqr_semitones": 4.47
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/TRADE_WIN/win_01.mp3",
+      "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.098,
+        "rms": 0.14826,
+        "peak": 0.56619,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.198,
+        "sha256": "e57f1fd15be1dac8a7a3a535f12ad25fa6ab65d0b1a24245ade45deac0385553"
+      },
+      "words_per_sec": 1.85,
+      "auditory_verified": false,
+      "pitch_median_hz": 381.0,
+      "pitch_iqr_semitones": 3.6
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/TRADE_WIN/win_02.mp3",
+      "text": "Ес! Уверенный плюс! Как по учебнику — уровень отработал на все сто процентов, поздравляю всех с профитом!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.74,
+        "rms": 0.13813,
+        "peak": 0.56136,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.16,
+        "sha256": "f4a823e4867643fe6901e922bab5669250cf35bb5f3e163db7a78239fbbde0a8"
+      },
+      "words_per_sec": 2.52,
+      "auditory_verified": false,
+      "pitch_median_hz": 333.3,
+      "pitch_iqr_semitones": 6.81
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/TRADE_LOSS/loss_01.mp3",
+      "text": "Эх, на последней секунде рынок дал резкий микро-импульс против нас, закрылись в минус. Ничего страшного, это рынок — сейчас спокойно перекроем!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 9.77,
+        "rms": 0.14193,
+        "peak": 0.48599,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.17,
+        "sha256": "e7d562ad6162897e325a9ae846e09685b3ae4e296077fafc39cfefca31a21b65"
+      },
+      "words_per_sec": 2.15,
+      "auditory_verified": false,
+      "pitch_median_hz": 320.0,
+      "pitch_iqr_semitones": 3.47
+    },
+    {
+      "group": "legacy_owner_reference",
+      "file": "assets/voices/lumean/TRADE_LOSS/loss_02.mp3",
+      "text": "Так, эта сделка ушла в минус, OTC-график решил покапризничать. Сохраняем холодную голову и дисциплину, ищем следующий верный вход!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 9.352,
+        "rms": 0.14747,
+        "peak": 0.56495,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.06,
+        "trailing_silence": 0.152,
+        "sha256": "9037714e3b28ac84fe54ab58f963ce4beadaa4fff8231e659a97e64c4fc75180"
+      },
+      "words_per_sec": 1.92,
+      "auditory_verified": false,
+      "pitch_median_hz": 290.9,
+      "pitch_iqr_semitones": 3.1
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_01.mp3",
+      "text": "Сравниваю графики. Мне нужен понятный сценарий, а не просто движение.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.598,
+        "rms": 0.0948,
+        "peak": 0.45653,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.098,
+        "sha256": "34622e38574790d7fc26d3ac8fd89e5cf2f656e2984f3ae397b84fcf8f1a166a"
+      },
+      "words_per_sec": 2.17,
+      "auditory_verified": false,
+      "pitch_median_hz": 296.3,
+      "pitch_iqr_semitones": 2.4
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_02.mp3",
+      "text": "Смотрю, кто сейчас ведёт цену. С направлением спешить не будем.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.971,
+        "rms": 0.07446,
+        "peak": 0.33312,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.091,
+        "sha256": "b36a837dedec8f4a8f479a3cb057391bbb90e81142c565bf23ccd1e3388872b9"
+      },
+      "words_per_sec": 2.52,
+      "auditory_verified": false,
+      "pitch_median_hz": 333.3,
+      "pitch_iqr_semitones": 4.48
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_03.mp3",
+      "text": "Проверяю подтверждения. Красивая свеча ещё не вся история.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.232,
+        "rms": 0.08735,
+        "peak": 0.39417,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.092,
+        "sha256": "05e0410b43bf6856bd42fbd223a296661d89ed968b233430b6b20fc9841b6ace"
+      },
+      "words_per_sec": 1.89,
+      "auditory_verified": false,
+      "pitch_median_hz": 326.5,
+      "pitch_iqr_semitones": 2.55
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_04.mp3",
+      "text": "Сейчас разбираю структуру. Главное — не перепутать импульс с откатом.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.362,
+        "rms": 0.08862,
+        "peak": 0.4821,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.102,
+        "sha256": "37a998c97c088ebb67caf7d47c1b5293280b2149b3c651aa78e3afcde7f85856"
+      },
+      "words_per_sec": 2.29,
+      "auditory_verified": false,
+      "pitch_median_hz": 340.4,
+      "pitch_iqr_semitones": 5.7
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_05.mp3",
+      "text": "Подгружаются данные графика. Пока ничего не додумываю.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.579,
+        "rms": 0.09014,
+        "peak": 0.4063,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.119,
+        "sha256": "1f1ab62a75563730bb8a7242ef6e0319ce71843dba46d79b80db4217d62abf0e"
+      },
+      "words_per_sec": 1.96,
+      "auditory_verified": false,
+      "pitch_median_hz": 266.7,
+      "pitch_iqr_semitones": 3.73
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_06.mp3",
+      "text": "Сверяю интервалы. Хочу видеть картину целиком.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.631,
+        "rms": 0.08167,
+        "peak": 0.3829,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "40bb0fa246e682a1b24cf00be8567c4589725c94080ab6c7ead3175590dc9165"
+      },
+      "words_per_sec": 1.65,
+      "auditory_verified": false,
+      "pitch_median_hz": 326.5,
+      "pitch_iqr_semitones": 4.48
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_07.mp3",
+      "text": "Ищу подтверждение входа. Интересный момент ещё должен сложиться.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.09232,
+        "peak": 0.36352,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.085,
+        "sha256": "1b6d1375a0988139fbe1fd732aff4b1fbd40cb44a7bdb41f0a0fbd57c5972cad"
+      },
+      "words_per_sec": 2.03,
+      "auditory_verified": false,
+      "pitch_median_hz": 296.3,
+      "pitch_iqr_semitones": 3.22
+    },
+    {
+      "group": "replaced_commentary_v1",
+      "file": "assets/voices/commentary_v1/ru/NARRATE_SCAN/comment_ru_narrate_scan_08.mp3",
+      "text": "Разбираем спокойно. Движение есть не всегда значит пора входить.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.415,
+        "rms": 0.08735,
+        "peak": 0.33206,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.095,
+        "sha256": "d87d72f5cf73904dcd908617c29aa6676cfa05d3bdff9f82826751cdc002cc72"
+      },
+      "words_per_sec": 2.04,
+      "auditory_verified": false,
+      "pitch_median_hz": 301.9,
+      "pitch_iqr_semitones": 3.79
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-scan.mp3",
+      "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.034,
+        "rms": 0.07833,
+        "peak": 0.34188,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.094,
+        "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5"
+      },
+      "words_per_sec": 2.98,
+      "auditory_verified": false,
+      "pitch_median_hz": 326.5,
+      "pitch_iqr_semitones": 4.98
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-win.mp3",
+      "text": "Е-е, закрылись в плюс! Вот за такие моменты я и люблю следить за графиком. Красиво получилось!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.661,
+        "rms": 0.07513,
+        "peak": 0.30511,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.141,
+        "sha256": "e163b0d9d5acdb8cac8b32e9224ae01865c841bd1a577c7a013d9305749c16bb"
+      },
+      "words_per_sec": 2.4,
+      "auditory_verified": false,
+      "pitch_median_hz": 355.6,
+      "pitch_iqr_semitones": 4.44
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-loss.mp3",
+      "text": "Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.915,
+        "rms": 0.07683,
+        "peak": 0.4139,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.095,
+        "sha256": "0c113c5b08e4892ad49b79f86d2bd9aa4d523335f800b314d9db4f053213d7e9"
+      },
+      "words_per_sec": 1.77,
+      "auditory_verified": false,
+      "pitch_median_hz": 271.2,
+      "pitch_iqr_semitones": 2.67
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-en-scan.mp3",
+      "text": "Okay, what have we got here? Let me check the other timeframe. I want the bigger picture before I get involved.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.949,
+        "rms": 0.08193,
+        "peak": 0.40914,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.269,
+        "sha256": "3afb82f5d1490d3c67ce8d2be38fa10feb2c9ee541d28e42a41d9aa8a3203979"
+      },
+      "words_per_sec": 3.02,
+      "auditory_verified": false,
+      "pitch_median_hz": 246.2,
+      "pitch_iqr_semitones": 5.94
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-en-win.mp3",
+      "text": "There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 8.229,
+        "rms": 0.08461,
+        "peak": 0.40199,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.189,
+        "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69"
+      },
+      "words_per_sec": 2.19,
+      "auditory_verified": false,
+      "pitch_median_hz": 313.7,
+      "pitch_iqr_semitones": 6.46
+    },
+    {
+      "group": "approved_streamer_pilot",
+      "file": "docs/voice-audit/streamer-v2/pilot-en-loss.mp3",
+      "text": "Ah, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.262,
+        "rms": 0.07714,
+        "peak": 0.39202,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.162,
+        "sha256": "e19089e8abc280e64f44179340b8de84f06ca1b30f5736737782cf93e0e68191"
+      },
+      "words_per_sec": 2.75,
+      "auditory_verified": false,
+      "pitch_median_hz": 235.3,
+      "pitch_iqr_semitones": 4.04
+    }
+  ]
+}

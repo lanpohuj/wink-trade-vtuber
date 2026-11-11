@@ -1,0 +1,218 @@
+[
+  {
+    "lang": "ru",
+    "category": "scan",
+    "text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+    "file": "docs/voice-audit/streamer-v2/pilot-ru-scan.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 6.034,
+      "rms": 0.07833,
+      "peak": 0.34188,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.26,
+      "trailing_silence": 0.094,
+      "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5"
+    },
+    "request_payload": {
+      "text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "language": "ru",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Та-а-а! Что тут у нас? Сейчас верю пару интервалов. Хочу понять, где движение, а где просто суета.",
+    "similarity": 0.98
+  },
+  {
+    "lang": "ru",
+    "category": "win",
+    "text": "[happy, smiling] Е-е, закрылись в плюс! Вот за такие моменты я и люблю следить за графиком. Красиво получилось!",
+    "file": "docs/voice-audit/streamer-v2/pilot-ru-win.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 6.661,
+      "rms": 0.07513,
+      "peak": 0.30511,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.2,
+      "trailing_silence": 0.141,
+      "sha256": "e163b0d9d5acdb8cac8b32e9224ae01865c841bd1a577c7a013d9305749c16bb"
+    },
+    "request_payload": {
+      "text": "[happy, smiling] Е-е, закрылись в плюс! Вот за такие моменты я и люблю следить за графиком. Красиво получилось!",
+      "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "language": "ru",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Ее! Закрылись в плюс! Вот за такие моменты я и люблю следить за графиком! Красиво получилось!",
+    "similarity": 1.0
+  },
+  {
+    "lang": "ru",
+    "category": "loss",
+    "text": "[slightly disappointed, composed] Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+    "file": "docs/voice-audit/streamer-v2/pilot-ru-loss.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 7.915,
+      "rms": 0.07683,
+      "peak": 0.4139,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.22,
+      "trailing_silence": 0.095,
+      "sha256": "0c113c5b08e4892ad49b79f86d2bd9aa4d523335f800b314d9db4f053213d7e9"
+    },
+    "request_payload": {
+      "text": "[slightly disappointed, composed] Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+      "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "language": "ru",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Эх, тут минус, неприятно, да, сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+    "similarity": 1.0
+  },
+  {
+    "lang": "en",
+    "category": "scan",
+    "text": "[curious, conversational] Okay, what have we got here? Let me check the other timeframe. I want the bigger picture before I get involved.",
+    "file": "docs/voice-audit/streamer-v2/pilot-en-scan.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 6.949,
+      "rms": 0.08193,
+      "peak": 0.40914,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.18,
+      "trailing_silence": 0.269,
+      "sha256": "3afb82f5d1490d3c67ce8d2be38fa10feb2c9ee541d28e42a41d9aa8a3203979"
+    },
+    "request_payload": {
+      "text": "[curious, conversational] Okay, what have we got here? Let me check the other timeframe. I want the bigger picture before I get involved.",
+      "reference_id": "e34c486929524d41b88646b4ac2f382f",
+      "language": "en",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Okay? What have we got here? Let me check the other time frame. I want the bigger picture before I get involved.",
+    "similarity": 1.0
+  },
+  {
+    "lang": "en",
+    "category": "win",
+    "text": "[happy, smiling] There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+    "file": "docs/voice-audit/streamer-v2/pilot-en-win.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 8.229,
+      "rms": 0.08461,
+      "peak": 0.40199,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.18,
+      "trailing_silence": 0.189,
+      "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69"
+    },
+    "request_payload": {
+      "text": "[happy, smiling] There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+      "reference_id": "e34c486929524d41b88646b4ac2f382f",
+      "language": "en",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Hehe, there we go. That closed green. Okay, I did enjoy that one. Nice little moment for the stream, hehe.",
+    "similarity": 0.947
+  },
+  {
+    "lang": "en",
+    "category": "loss",
+    "text": "[slightly disappointed, composed] Ah, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+    "file": "docs/voice-audit/streamer-v2/pilot-en-loss.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 7.262,
+      "rms": 0.07714,
+      "peak": 0.39202,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.18,
+      "trailing_silence": 0.162,
+      "sha256": "e19089e8abc280e64f44179340b8de84f06ca1b30f5736737782cf93e0e68191"
+    },
+    "request_payload": {
+      "text": "[slightly disappointed, composed] Ah, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+      "reference_id": "e34c486929524d41b88646b4ac2f382f",
+      "language": "en",
+      "format": "mp3",
+      "sample_rate": 44100,
+      "mp3_bitrate": 128,
+      "latency": "balanced",
+      "normalize": true,
+      "temperature": 0.82,
+      "top_p": 0.85,
+      "prosody": {
+        "speed": 1.06,
+        "volume": 0,
+        "normalize_loudness": true
+      }
+    },
+    "auditory_verified": false,
+    "transcript": "Huh, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+    "similarity": 0.981
+  }
+]

@@ -17,6 +17,23 @@ def active_root():
         if selected.is_relative_to(VOICE_ROOT.resolve()) and (selected / 'manifest.json').is_file():return selected
     except (OSError,ValueError,KeyError):pass
     return ROOT
+
+def active_commentary_root():
+    """Only a completely reviewed local overlay can replace the live overlay."""
+    fallback = VOICE_ROOT / 'commentary_v1'
+    try:
+        pointer = json.loads((VOICE_ROOT / 'commentary-bank.json').read_text())
+        selected = (VOICE_ROOT / pointer['path']).resolve()
+        if not selected.is_relative_to(VOICE_ROOT.resolve()):
+            return fallback
+        manifest = json.loads((selected / 'manifest.json').read_text())
+        if (manifest.get('bank_type') == 'commentary_v1'
+                and manifest.get('activated') is True
+                and manifest.get('review_accepted') is True):
+            return selected
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    return fallback
 ALIASES = {
     'start_stream': 'START_STREAM_READY', 'stream_ready': 'START_STREAM_READY',
     'analyzing': 'ANALYZING_CHART', 'analyzing_chart': 'ANALYZING_CHART',
@@ -66,7 +83,8 @@ def recording_reviewed(manifest: dict, item: dict) -> bool:
 class VoiceBank:
     def __init__(self, root: Path | None = None, history_path: Path | None = None, overlay_root: Path | None = None):
         self.root = root or active_root()
-        self.overlay_root = overlay_root or (VOICE_ROOT / 'commentary_v1' if root is None else None)
+        self._follow_overlay = root is None and overlay_root is None
+        self.overlay_root = overlay_root or (active_commentary_root() if root is None else None)
         self.history_path = history_path or Path.home() / '.winky_voice_decks.json'
         self.lock = threading.RLock()
         try:
@@ -76,6 +94,8 @@ class VoiceBank:
         self.reserved: set[str] = set()
 
     def candidates(self, event: dict) -> list[dict]:
+        if self._follow_overlay:
+            self.overlay_root = active_commentary_root()
         if self.overlay_root:
             try:
                 overlay = json.loads((self.overlay_root / 'manifest.json').read_text())

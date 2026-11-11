@@ -1,0 +1,39 @@
+{
+  "method": "owner_sampled",
+  "voice_samples_accepted": true,
+  "accepted_at": "2026-11-11",
+  "owner_response": "RU и EN подходят — использовать эту подачу",
+  "delivery_samples": [
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-scan.mp3",
+      "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+      "accepted": true
+    },
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-win.mp3",
+      "sha256": "e163b0d9d5acdb8cac8b32e9224ae01865c841bd1a577c7a013d9305749c16bb",
+      "accepted": true
+    },
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-ru-loss.mp3",
+      "sha256": "0c113c5b08e4892ad49b79f86d2bd9aa4d523335f800b314d9db4f053213d7e9",
+      "accepted": true
+    },
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-en-scan.mp3",
+      "sha256": "3afb82f5d1490d3c67ce8d2be38fa10feb2c9ee541d28e42a41d9aa8a3203979",
+      "accepted": true
+    },
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-en-win.mp3",
+      "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69",
+      "accepted": true
+    },
+    {
+      "file": "docs/voice-audit/streamer-v2/pilot-en-loss.mp3",
+      "sha256": "e19089e8abc280e64f44179340b8de84f06ca1b30f5736737782cf93e0e68191",
+      "accepted": true
+    }
+  ],
+  "records": []
+}

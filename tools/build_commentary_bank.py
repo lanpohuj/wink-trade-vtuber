@@ -10,6 +10,8 @@ from winky.censor import check_phrase
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "assets/voices/commentary_v1"
 CATALOG = ROOT / "docs/voice-audit/commentary-160.json"
+QC_OUTPUT = ROOT / "docs/voice-audit/commentary-qc.json"
+MAX_DURATION_SEC = 7
 
 
 def generate(only_ids=None):
@@ -205,7 +207,7 @@ def qc():
                     issues.append("decode_or_silence")
                 if metrics.get("clipped_fraction", 0) > 0.001:
                     issues.append("possible_clipping")
-                if metrics.get("duration", 999) > 7:
+                if metrics.get("duration", 999) > MAX_DURATION_SEC:
                     issues.append("too_long")
                 if not check_phrase(transcript)[0]:
                     issues.append("content_review")
@@ -254,7 +256,7 @@ def qc():
     (BANK / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     )
-    (ROOT / "docs/voice-audit/commentary-qc.json").write_text(
+    QC_OUTPUT.write_text(
         json.dumps(
             {"auditory_review_complete": False, "records": reports},
             ensure_ascii=False,
@@ -279,7 +281,7 @@ def activate(approval_path, allow_partial=False):
     rows = [r for group in manifest["categories"].values() for r in group]
     catalog_rows = {r["id"]: r for r in json.loads(CATALOG.read_text())["records"]}
     expected = set(catalog_rows)
-    if len(rows) != 160 or {r["id"] for r in rows} != expected:
+    if len(rows) != len(expected) or {r["id"] for r in rows} != expected:
         raise ValueError("Incomplete bank")
     for row in rows:
         path = (BANK / row["file"]).resolve()
