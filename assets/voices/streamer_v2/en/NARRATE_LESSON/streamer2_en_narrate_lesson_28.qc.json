@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_28",
+  "sha256": "818e6eb5b6675f6e2dc2817a8295b3ca66f0b49f74e78f1d4ad4142093ae8450",
+  "expected": "I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for.",
+  "transcript": "I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08694,
+    "peak": 0.38896,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.189,
+    "sha256": "818e6eb5b6675f6e2dc2817a8295b3ca66f0b49f74e78f1d4ad4142093ae8450"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

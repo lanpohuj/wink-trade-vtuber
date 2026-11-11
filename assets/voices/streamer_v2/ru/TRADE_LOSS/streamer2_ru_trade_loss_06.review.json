@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_06",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание.",
+  "tts_text": "[gentle, steady] Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2b8916202def3e1fddb1bf32e0483d589d0d48f885a1eeeb4501880ce9ebc687",
+  "delivery": "gentle, steady",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_06.mp3",
+  "duration": 6.034187,
+  "sha256": "f3135786c880a7f80d79c539fb195c78b2fb12120fc7e38ff329980cdeba5176",
+  "request_payload": {
+    "text": "[gentle, steady] Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

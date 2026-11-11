@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_21",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Я люблю вопросы без сложных слов. Иногда «почему не сейчас?» — это целый хороший разбор.",
+  "tts_text": "[smiling, relaxed] Я люблю вопросы без сложных слов. Иногда «почему не сейчас?» — это целый хороший разбор.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3e43a858a095d3bca689d6ff6e904638a7a537fb14e7dd65d7a9656d0595656f",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_21.mp3",
+  "duration": 5.590125,
+  "sha256": "0149adcec47655708d205445d15df432c56fbedbabfe35ac8a7e73a829c26efc",
+  "request_payload": {
+    "text": "[smiling, relaxed] Я люблю вопросы без сложных слов. Иногда «почему не сейчас?» — это целый хороший разбор.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

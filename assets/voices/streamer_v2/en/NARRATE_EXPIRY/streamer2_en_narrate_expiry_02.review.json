@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_02",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "I've chosen fifteen seconds. This short stretch matters, not a guess about half an hour from now.",
+  "tts_text": "[warm, relaxed] I've chosen fifteen seconds. This short stretch matters, not a guess about half an hour from now.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6636a03803bfe1898a408e45a08e7afdbbc4fa9adccb047c289d6d099269417f",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_02.mp3",
+  "duration": 6.217062,
+  "sha256": "b91fcb074fd3d0d6b137f93a80cee5b2fd1f356d7e018c4fa21f6915093ea32d",
+  "request_payload": {
+    "text": "[warm, relaxed] I've chosen fifteen seconds. This short stretch matters, not a guess about half an hour from now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_15",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Это двухминутная сделка. Времени больше, но итог всё равно объявляем только после закрытия.",
+  "tts_text": "[confident, conversational] Это двухминутная сделка. Времени больше, но итог всё равно объявляем только после закрытия.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "eea239758e4577bf7563ab8eb763f7828bc3735309cc6ca731074719e9a0a92b",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_15.mp3",
+  "duration": 5.955813,
+  "sha256": "21bce0c0e69b93b154e3529a1328a1f9d1bcef649df7c0979467add9c06fb6f3",
+  "request_payload": {
+    "text": "[confident, conversational] Это двухминутная сделка. Времени больше, но итог всё равно объявляем только после закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

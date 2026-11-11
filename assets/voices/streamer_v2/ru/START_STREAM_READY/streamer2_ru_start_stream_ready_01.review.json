@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_start_stream_ready_01",
+  "lang": "ru",
+  "category": "START_STREAM_READY",
+  "text": "Всем привет! Винки на связи. Устраивайтесь, будем смотреть графики, разбирать входы и разговаривать по ходу.",
+  "tts_text": "[welcoming, bright] Всем привет! Винки на связи. Устраивайтесь, будем смотреть графики, разбирать входы и разговаривать по ходу.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "294ce110b5357d49e555efddb1c3d77f96964502652e63aca8cd940bd7815408",
+  "delivery": "welcoming, bright",
+  "file": "ru/START_STREAM_READY/streamer2_ru_start_stream_ready_01.mp3",
+  "duration": 6.9485,
+  "sha256": "c3c631430ef487ae1c349529db40cff5ca6513acda94441a477ef5bed3bfe481",
+  "request_payload": {
+    "text": "[welcoming, bright] Всем привет! Винки на связи. Устраивайтесь, будем смотреть графики, разбирать входы и разговаривать по ходу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_02",
+  "sha256": "5d35a5778e2f6747b89e4c5c533c567c7995749fe738289a6ddcb082a255995d",
+  "expected": "Меняю декорации! Новый график, так что прошлые выводы оставляем на прошлой паре.",
+  "transcript": "Меняю декорации! Новый график, так что прошлые выводы оставляем на прошлый паре.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08538,
+    "peak": 0.37989,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "5d35a5778e2f6747b89e4c5c533c567c7995749fe738289a6ddcb082a255995d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Меняю декорации! Новый график, так что прошлые выводы оставляем на прошлый паре."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

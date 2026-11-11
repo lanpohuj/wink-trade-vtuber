@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_09",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Мне нравится проверять идею, а не защищать её любой ценой. Даже если я уже красиво её объяснила.",
+  "tts_text": "[lightly playful] Мне нравится проверять идею, а не защищать её любой ценой. Даже если я уже красиво её объяснила.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5f49b59a8388fdf9da5c8d0fdbb4727704d5ed5f186d140ecf740781a4822f59",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_09.mp3",
+  "duration": 6.008063,
+  "sha256": "63a07a45279ffc77ffd363f3045539da09140ddd91aaf32f934effffc67a11c8",
+  "request_payload": {
+    "text": "[lightly playful] Мне нравится проверять идею, а не защищать её любой ценой. Даже если я уже красиво её объяснила.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

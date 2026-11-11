@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_18",
+  "sha256": "befb3f6e48e82e2e34b244b47c7c221dff2763f98413d6d80be7ec382849baad",
+  "expected": "Сейчас смотрю и направление, и расстояние до уровня. Просто угадать сторону мне мало.",
+  "transcript": "Сейчас смотрю и направление и расстояние до уровня. Просто угадать сторону мне мало.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.0934,
+    "peak": 0.42576,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.092,
+    "sha256": "befb3f6e48e82e2e34b244b47c7c221dff2763f98413d6d80be7ec382849baad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.32,
+      "text": " Сейчас смотрю и направление и расстояние до уровня. Просто угадать сторону мне мало."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

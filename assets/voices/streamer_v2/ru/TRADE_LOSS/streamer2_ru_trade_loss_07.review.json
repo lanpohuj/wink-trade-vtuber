@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_07",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Так, результат отрицательный. Выдохнули, чат. Следующее решение не будем принимать из обиды.",
+  "tts_text": "[slightly disappointed, composed] Так, результат отрицательный. Выдохнули, чат. Следующее решение не будем принимать из обиды.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7341247ee909e11ec14de31b38c9c11845ae81629eb58e01d37b35a7e71bb413",
+  "delivery": "slightly disappointed, composed",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_07.mp3",
+  "duration": 6.086438,
+  "sha256": "118d94ac3c24e9bcc80adf9c0dfeda813702b5061e2db5b41f903a82e595a676",
+  "request_payload": {
+    "text": "[slightly disappointed, composed] Так, результат отрицательный. Выдохнули, чат. Следующее решение не будем принимать из обиды.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

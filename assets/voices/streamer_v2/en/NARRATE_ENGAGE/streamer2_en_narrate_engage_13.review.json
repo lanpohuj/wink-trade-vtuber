@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_13",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "You can disagree with my read. Tell me what you're seeing on the chart; that's the interesting part.",
+  "tts_text": "[friendly, curious] You can disagree with my read. Tell me what you're seeing on the chart; that's the interesting part.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f891397c87eb348aacf248049c30fa527c2c52620ee4723f2ad5ce4a9c55a63e",
+  "delivery": "friendly, curious",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_13.mp3",
+  "duration": 5.328875,
+  "sha256": "c67a5ecbfb8a7dbfb8ae4b8f5a763225904f9436b2ebb882a175d68734c992f3",
+  "request_payload": {
+    "text": "[friendly, curious] You can disagree with my read. Tell me what you're seeing on the chart; that's the interesting part.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

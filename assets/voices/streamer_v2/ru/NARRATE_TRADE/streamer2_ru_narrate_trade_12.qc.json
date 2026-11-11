@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_12",
+  "sha256": "aa3d2cc4459e2d54dfcbd74d06910cf79f818b428c8a6c519e011304e3e7ce2e",
+  "expected": "Так, здесь пока без итога. Если я вдруг стану слишком торжественной, напоминайте про таймер.",
+  "transcript": "А так, здесь пока без итога, если я вдруг стану слишком торжественный, напоминайте про таймер.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08902,
+    "peak": 0.4275,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.1,
+    "sha256": "aa3d2cc4459e2d54dfcbd74d06910cf79f818b428c8a6c519e011304e3e7ce2e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " А так, здесь пока без итога, если я вдруг стану слишком торжественный, напоминайте про таймер."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

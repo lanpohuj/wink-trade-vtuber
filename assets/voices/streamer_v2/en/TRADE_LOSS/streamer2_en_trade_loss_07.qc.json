@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_07",
+  "sha256": "f00b255751c61e03ab1071b48d8e12a6d22168fff34da153b505c6e9c35a4ffe",
+  "expected": "Negative result. Take a breath, chat. The next decision doesn't need to come from frustration.",
+  "transcript": "Negative result. Take a breath, chat. The next decision doesn't need to come from frustration.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.07525,
+    "peak": 0.41206,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.297,
+    "sha256": "f00b255751c61e03ab1071b48d8e12a6d22168fff34da153b505c6e9c35a4ffe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Negative result. Take a breath, chat. The next decision doesn't need to come from frustration."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

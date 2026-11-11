@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_36",
+  "sha256": "2f2f5e4ea12376f299eb567aa658e69ecf99d9cacaa35b39456f727a4e57b816",
+  "expected": "Let's let the chart load. I'd love everything instantly too, but first I need the actual picture.",
+  "transcript": "Let's let the chart load. I'd love everything instantly too, but first I need the actual picture.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.07746,
+    "peak": 0.52766,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.311,
+    "sha256": "2f2f5e4ea12376f299eb567aa658e69ecf99d9cacaa35b39456f727a4e57b816"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.48,
+      "text": " Let's let the chart load. I'd love everything instantly too, but first I need the actual picture."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

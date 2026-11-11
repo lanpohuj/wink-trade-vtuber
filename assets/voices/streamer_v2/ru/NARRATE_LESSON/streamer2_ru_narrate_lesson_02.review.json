@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_02",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Я не выбираю время сделки по настроению. Сначала смотрю ситуацию, потом решаю, какое окно ей подходит.",
+  "tts_text": "[thoughtful, relaxed] Я не выбираю время сделки по настроению. Сначала смотрю ситуацию, потом решаю, какое окно ей подходит.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1d46a218c4cf26f5eddf890a068897b4cd1ff745d62979de585d3a49c01726cb",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_02.mp3",
+  "duration": 6.817875,
+  "sha256": "2a3b03f670e0a98c7f917f9e7f9e256f7f9e66eef45fe6adb0c62c029182381e",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Я не выбираю время сделки по настроению. Сначала смотрю ситуацию, потом решаю, какое окно ей подходит.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

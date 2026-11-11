@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_volatility_05",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Oh, the chart's got a sharper edge. There's a measured range expansion behind that, not just a feeling.",
+  "tts_text": "[alert, composed] Oh, the chart's got a sharper edge. There's a measured range expansion behind that, not just a feeling.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "05dde1ab449ab7c8d16a2672c26f32a10dc46dc991ee8972c5a7c5f782d40714",
+  "delivery": "alert, composed",
+  "file": "en/NARRATE_VOLATILITY/streamer2_en_narrate_volatility_05.mp3",
+  "duration": 6.086438,
+  "sha256": "9a26eaec7cb87a6dbc21972848218c096ecee38070bd8a7b3ef38becfa5cb80f",
+  "request_payload": {
+    "text": "[alert, composed] Oh, the chart's got a sharper edge. There's a measured range expansion behind that, not just a feeling.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

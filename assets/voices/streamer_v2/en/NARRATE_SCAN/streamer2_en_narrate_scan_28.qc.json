@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_28",
+  "sha256": "effe0df2022b1356b1e500c9d1f5e3a5eac0a4dadd16985842b888b27c2a69ff",
+  "expected": "Still looking. I'd rather say I'm checking than dramatically announce the first thing I see.",
+  "transcript": "Still looking I'd rather say I'm checking than dramatically announced the first thing I see",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.09614,
+    "peak": 0.91991,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.192,
+    "sha256": "effe0df2022b1356b1e500c9d1f5e3a5eac0a4dadd16985842b888b27c2a69ff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.68,
+      "text": " Still looking I'd rather say I'm checking than dramatically announced the first thing I see"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

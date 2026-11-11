@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_04",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Открыла вверх. Мне здесь интересен именно выход из отката: подтверждение было, сделка уже на экране.",
+  "tts_text": "[confident, lively] Открыла вверх. Мне здесь интересен именно выход из отката: подтверждение было, сделка уже на экране.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "354224a6023c4aa40b69990bfe8d9de201802c98b9359795adeaa5b6b6b015b7",
+  "delivery": "confident, lively",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_04.mp3",
+  "duration": 6.9485,
+  "sha256": "2c685f5ee936fd3fc3ab498b9d8036c026553c7e1a8bd4a2207bb6b61bef0fa9",
+  "request_payload": {
+    "text": "[confident, lively] Открыла вверх. Мне здесь интересен именно выход из отката: подтверждение было, сделка уже на экране.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

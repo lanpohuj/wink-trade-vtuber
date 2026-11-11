@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_32",
+  "sha256": "2a6ee66af67d2acc5f0eb89996f040fe0050957bca163c31714f48cfed3c00f5",
+  "expected": "Маленькая деталь, но важная: направление сделки и её время я проверяю вместе, а не по отдельности.",
+  "transcript": "Маленькая деталь, но важная. Направление сделки и ее время я проверяю вместе, а не по отдельности.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.053,
+    "rms": 0.08139,
+    "peak": 0.32922,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.093,
+    "sha256": "2a6ee66af67d2acc5f0eb89996f040fe0050957bca163c31714f48cfed3c00f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " Маленькая деталь, но важная."
+    },
+    {
+      "start": 2.66,
+      "end": 7.0,
+      "text": " Направление сделки и ее время я проверяю вместе, а не по отдельности."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

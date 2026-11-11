@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_15",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "I like that ending! Confirmed green, without calling a win five seconds too early.",
+  "tts_text": "[bright, warm] I like that ending! Confirmed green, without calling a win five seconds too early.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b59c1125e784762c4bf602a5cd586ac92c2ec0dfcf92a3f6b4b7efc99cff5b3a",
+  "delivery": "bright, warm",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_15.mp3",
+  "duration": 5.4595,
+  "sha256": "aad45ffd046046665fee5888bb3e2cc2ae4dc8498e3c9fea1e7f4d8985f46aea",
+  "request_payload": {
+    "text": "[bright, warm] I like that ending! Confirmed green, without calling a win five seconds too early.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

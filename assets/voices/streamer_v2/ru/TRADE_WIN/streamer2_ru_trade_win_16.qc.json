@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_16",
+  "sha256": "74f016fa35341f48ccc978c6334ade06ac9ce25dca2d36ebde6d9be9faa75364",
+  "expected": "Есть положительный итог! Я сейчас улыбаюсь вполне заслуженно, но дальше держим тот же темп проверки.",
+  "transcript": "Есть положительный итог! Я сейчас улыбаюсь вполне заслужено, но дальше держим тот же темп проверки.",
+  "similarity": 0.994,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.557,
+    "rms": 0.08178,
+    "peak": 0.30778,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.057,
+    "sha256": "74f016fa35341f48ccc978c6334ade06ac9ce25dca2d36ebde6d9be9faa75364"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Есть положительный итог!"
+    },
+    {
+      "start": 2.0,
+      "end": 6.5,
+      "text": " Я сейчас улыбаюсь вполне заслужено, но дальше держим тот же темп проверки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

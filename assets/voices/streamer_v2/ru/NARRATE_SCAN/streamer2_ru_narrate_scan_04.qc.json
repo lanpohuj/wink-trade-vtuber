@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_04",
+  "sha256": "abc8f8a5a8a550fa7800355b778831e6cb601acb4f3d51c4dacac53dfa09ae57",
+  "expected": "Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее.",
+  "transcript": "Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08126,
+    "peak": 0.36906,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "abc8f8a5a8a550fa7800355b778831e6cb601acb4f3d51c4dacac53dfa09ae57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

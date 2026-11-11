@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_24",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I'm checking a few things together. Anyone can tell a nice chart story; I want the conditions behind it.",
+  "tts_text": "[warm, lightly playful] I'm checking a few things together. Anyone can tell a nice chart story; I want the conditions behind it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fec9c7a5b69374fc88d26e0c4e4c20572a4d7df03cd3e4e078fb49c0930cea8b",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_24.mp3",
+  "duration": 5.955813,
+  "sha256": "047798ad0daf3d144b1f695080c6bbd01d2e2607cf9a8e4782faa048a960d62f",
+  "request_payload": {
+    "text": "[warm, lightly playful] I'm checking a few things together. Anyone can tell a nice chart story; I want the conditions behind it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

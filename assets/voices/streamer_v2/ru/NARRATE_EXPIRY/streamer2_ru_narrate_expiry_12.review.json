@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_12",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Так, минутное окно уже идёт. Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой.",
+  "tts_text": "[warm, relaxed] Так, минутное окно уже идёт. Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "18080a972ca4408afd174a501acc7819d40eb835f4fef8f53361d3736446d15a",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_12.mp3",
+  "duration": 5.433375,
+  "sha256": "741d2feb9d5df7bc627aa2a2e33ed9adc717d2ee0ce42410a160046d150bfbca",
+  "request_payload": {
+    "text": "[warm, relaxed] Так, минутное окно уже идёт. Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

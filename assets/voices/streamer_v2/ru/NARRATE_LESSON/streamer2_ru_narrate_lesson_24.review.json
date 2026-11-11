@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_24",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Прогноз и итог — разные вещи. Пока сделка идёт, я не записываю победу авансом.",
+  "tts_text": "[lightly playful] Прогноз и итог — разные вещи. Пока сделка идёт, я не записываю победу авансом.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "023c28cbc628aab19ee7bb442d561adf9d1cde257d2d8f1dd37193bf8b6b554c",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_24.mp3",
+  "duration": 5.2505,
+  "sha256": "18bcc241753e52681ab9b9d1c5b220c42952a9b5217b2fcc761589033cce0766",
+  "request_payload": {
+    "text": "[lightly playful] Прогноз и итог — разные вещи. Пока сделка идёт, я не записываю победу авансом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

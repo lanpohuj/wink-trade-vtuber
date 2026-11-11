@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_24",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Так, сделка работает по выбранному времени. Я лучше оставлю пару спокойных секунд, чем буду говорить ради слов.",
+  "tts_text": "[warm, lightly playful] Так, сделка работает по выбранному времени. Я лучше оставлю пару спокойных секунд, чем буду говорить ради слов.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d5ec3d359344b6710e893ac64da1c175d4ac95b7c6ac0feffadbcabb4855501c",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_24.mp3",
+  "duration": 6.556625,
+  "sha256": "b49ca47dc2b561d3902cdb16b77c743873e7b9380ca076b86f8088f79e894694",
+  "request_payload": {
+    "text": "[warm, lightly playful] Так, сделка работает по выбранному времени. Я лучше оставлю пару спокойных секунд, чем буду говорить ради слов.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

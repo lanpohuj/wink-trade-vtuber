@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_01",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь пятнадцать секунд. Короткая история, так что следим внимательно и не растягиваем её на большой прогноз.",
+  "tts_text": "[confident, conversational] Здесь пятнадцать секунд. Короткая история, так что следим внимательно и не растягиваем её на большой прогноз.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f65d329988b6dd260e0eab704a86d48355745796ef88668d9090db5d933910e0",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_01.mp3",
+  "duration": 6.217062,
+  "sha256": "1f49f3b82f0aae091bc9a40ed7378452699984d9f87db196fc8d25a7884323b0",
+  "request_payload": {
+    "text": "[confident, conversational] Здесь пятнадцать секунд. Короткая история, так что следим внимательно и не растягиваем её на большой прогноз.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

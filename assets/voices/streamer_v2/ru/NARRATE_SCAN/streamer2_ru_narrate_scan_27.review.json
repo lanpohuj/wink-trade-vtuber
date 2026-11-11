@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_27",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Чат, вот этот момент люблю: сначала ничего не очевидно, а потом начинаешь раскладывать детали.",
+  "tts_text": "[warm, lightly playful] Чат, вот этот момент люблю: сначала ничего не очевидно, а потом начинаешь раскладывать детали.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "af0ec053fbbbe1420ec84eef44f3c558049a161f1b712ead4ea51fd30300ead0",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_27.mp3",
+  "duration": 6.5305,
+  "sha256": "7a4629a39c64130a9a989e5906aef69b8ccd136101d05d53d32da4e62142064e",
+  "request_payload": {
+    "text": "[warm, lightly playful] Чат, вот этот момент люблю: сначала ничего не очевидно, а потом начинаешь раскладывать детали.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

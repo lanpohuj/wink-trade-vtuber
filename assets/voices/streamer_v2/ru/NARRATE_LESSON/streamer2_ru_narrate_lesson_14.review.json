@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_14",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Когда график не даёт понятной точки, пропуск — тоже решение. Да, без фанфар и красивого таймера.",
+  "tts_text": "[thoughtful, relaxed] Когда график не даёт понятной точки, пропуск — тоже решение. Да, без фанфар и красивого таймера.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f045ead742218acbb37f6d2deb0cc74c1017570b755860e88c3e98313ee11f3a",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_14.mp3",
+  "duration": 5.877438,
+  "sha256": "6275df18b4450f1dcf117002b1b2fb749678d6d22ac491fbcbec0dccf8b38494",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Когда график не даёт понятной точки, пропуск — тоже решение. Да, без фанфар и красивого таймера.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

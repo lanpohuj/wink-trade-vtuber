@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_01",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "You know what's easy to mix up? A strong move and a good entry moment. They're different things.",
+  "tts_text": "[friendly, conversational] You know what's easy to mix up? A strong move and a good entry moment. They're different things.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ec1471bd4838af50fa1e7315175c369a7d76be428a5b3de24e93ce47b84ba41c",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_01.mp3",
+  "duration": 5.642375,
+  "sha256": "aa42efa319a3223cf57a324f65a011ed1b0f572368aacbfe104a3d39d34c0269",
+  "request_payload": {
+    "text": "[friendly, conversational] You know what's easy to mix up? A strong move and a good entry moment. They're different things.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

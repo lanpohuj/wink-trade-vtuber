@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_volatility_06",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Moves are stronger than usual, judging by the candle ranges. Speed alone isn't a reason for excitement.",
+  "tts_text": "[focused, conversational] Moves are stronger than usual, judging by the candle ranges. Speed alone isn't a reason for excitement.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aff9a990f68069be2353c29c131856b05d1bbaff033db4ffb8117ff24f9abaad",
+  "delivery": "focused, conversational",
+  "file": "en/NARRATE_VOLATILITY/streamer2_en_narrate_volatility_06.mp3",
+  "duration": 6.68725,
+  "sha256": "6e048f180ee5552f5e59b1eb35fe4e3b9547c0b280b37b74eebc9369ee47864a",
+  "request_payload": {
+    "text": "[focused, conversational] Moves are stronger than usual, judging by the candle ranges. Speed alone isn't a reason for excitement.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

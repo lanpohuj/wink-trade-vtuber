@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_13",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Продолжаю смотреть эту сделку. Финальную оценку оставлю до её закрытия, так честнее.",
+  "tts_text": "[curious, conversational] Продолжаю смотреть эту сделку. Финальную оценку оставлю до её закрытия, так честнее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "713b08ddbb5f989b0b363ed5d52e17233523a4c3505271c9c4996e1ffcea5c9e",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_13.mp3",
+  "duration": 5.51175,
+  "sha256": "05bb032dcd340884663837e1fc00fd2c3575937ad60a49e434de997761feba5c",
+  "request_payload": {
+    "text": "[curious, conversational] Продолжаю смотреть эту сделку. Финальную оценку оставлю до её закрытия, так честнее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

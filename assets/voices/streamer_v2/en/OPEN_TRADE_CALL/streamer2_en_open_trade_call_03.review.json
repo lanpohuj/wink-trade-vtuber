@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_call_03",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "I'm in up, chat. The move picking up after the pullback caught my attention, not just one candle.",
+  "tts_text": "[pleased, focused] I'm in up, chat. The move picking up after the pullback caught my attention, not just one candle.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "00e1b69eb6387550735b9154225b2449a68463e28ea21ff98185fe6ba3ca64ab",
+  "delivery": "pleased, focused",
+  "file": "en/OPEN_TRADE_CALL/streamer2_en_open_trade_call_03.mp3",
+  "duration": 5.642375,
+  "sha256": "304cf4e46b6e8306a2db35a89e02b6ffa9aa285e93751f31e9e07eed6d1444df",
+  "request_payload": {
+    "text": "[pleased, focused] I'm in up, chat. The move picking up after the pullback caught my attention, not just one candle.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

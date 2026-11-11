@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_open_trade_call_14",
+  "sha256": "4b4f252825280dc5218eea82b3540d456643af15fedc05c4d1b1af37bb0f7db8",
+  "expected": "Сделка вверх открыта. Здесь смотрю отбой от края диапазона; реакция была, идею объяснила.",
+  "transcript": "Сделка вверх открыта! Здесь смотрю от боя открая диапазона! Реакция была! Идею объяснила!",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.557,
+    "rms": 0.08767,
+    "peak": 0.40647,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.077,
+    "sha256": "4b4f252825280dc5218eea82b3540d456643af15fedc05c4d1b1af37bb0f7db8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Сделка вверх открыта!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Здесь смотрю от боя открая диапазона!"
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Реакция была! Идею объяснила!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

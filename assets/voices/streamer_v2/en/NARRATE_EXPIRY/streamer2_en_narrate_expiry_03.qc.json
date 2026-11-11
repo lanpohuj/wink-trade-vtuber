@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_03",
+  "sha256": "7299e272618ad85e9fb1d3383123a19766f22875151c04de9a8021e93c92c651",
+  "expected": "Fifteen seconds for this entry. Not much room for a speech, so I'll save that for later.",
+  "transcript": "15 seconds for this entry. Not much room for a speech, so I'll save that for later.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.0862,
+    "peak": 0.49341,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "7299e272618ad85e9fb1d3383123a19766f22875151c04de9a8021e93c92c651"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " 15 seconds for this entry. Not much room for a speech, so I'll save that for later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

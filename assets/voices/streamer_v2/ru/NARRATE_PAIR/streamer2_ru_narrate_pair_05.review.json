@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_05",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту.",
+  "tts_text": "[conversational, smiling] Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b2725b5de68ac16e2c7696104990dea50ab6a5488bae7f73e912d46508ca20ba",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_05.mp3",
+  "duration": 4.728063,
+  "sha256": "71b7b88be1d6d898dd9b0e3a0b40ad3757950f86e85bae82ef2d1db2fa7c04a2",
+  "request_payload": {
+    "text": "[conversational, smiling] Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

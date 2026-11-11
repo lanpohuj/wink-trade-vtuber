@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_15",
+  "sha256": "4558b6cd11faa26e80ebdf185cededc8f035caa55cb248530cdd6f6576326749",
+  "expected": "New asset. Let's get to know the chart before making any serious commitments.",
+  "transcript": "New asset. Let's get to know the chart before making any serious commitments.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.0768,
+    "peak": 0.3724,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.285,
+    "sha256": "4558b6cd11faa26e80ebdf185cededc8f035caa55cb248530cdd6f6576326749"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " New asset. Let's get to know the chart before making any serious commitments."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

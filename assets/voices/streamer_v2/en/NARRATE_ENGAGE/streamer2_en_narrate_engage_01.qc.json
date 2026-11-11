@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_01",
+  "sha256": "fa47f4ed30b91d4d6b59717f3025d28da942cb7c74c813a91b3551ea2e89367c",
+  "expected": "If you've just joined, hey! We're reading charts as we go, so feel free to ask about anything unclear.",
+  "transcript": "If you've just joined, hey, we're reading charts as we go, so feel free to ask about anything unclear.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.08691,
+    "peak": 0.45521,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.188,
+    "sha256": "fa47f4ed30b91d4d6b59717f3025d28da942cb7c74c813a91b3551ea2e89367c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " If you've just joined, hey, we're reading charts as we go, so feel free to ask about anything unclear."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

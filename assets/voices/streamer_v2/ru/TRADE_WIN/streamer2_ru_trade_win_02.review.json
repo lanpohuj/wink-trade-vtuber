@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_02",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Есть плюс, чат! Теперь уже можно улыбаться: результат подтверждён, не просто красивая картинка в процессе.",
+  "tts_text": "[pleased, lively] Есть плюс, чат! Теперь уже можно улыбаться: результат подтверждён, не просто красивая картинка в процессе.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "00ba5f8765f15636c86262e1853aafbb413bf01101e652eb0257832164068585",
+  "delivery": "pleased, lively",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_02.mp3",
+  "duration": 7.131313,
+  "sha256": "81eccac58576f88574ce0658c8e9f10733817cd344f4ad69651dcf353414c1ae",
+  "request_payload": {
+    "text": "[pleased, lively] Есть плюс, чат! Теперь уже можно улыбаться: результат подтверждён, не просто красивая картинка в процессе.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

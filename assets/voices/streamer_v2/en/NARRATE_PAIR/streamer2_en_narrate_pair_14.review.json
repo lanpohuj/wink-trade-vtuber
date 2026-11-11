@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_14",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Starting fresh here. The previous pair doesn't get to make this one's decisions.",
+  "tts_text": "[conversational, smiling] Starting fresh here. The previous pair doesn't get to make this one's decisions.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "393adfae9469e00055a6f9e9ce43e2e3d054f2b988fe58dcf00b3f68cb6e4344",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_14.mp3",
+  "duration": 4.728063,
+  "sha256": "a6678589b99939829c35a6c8e2847001606aab51f3e698b6413ea9dcd9a37a4f",
+  "request_payload": {
+    "text": "[conversational, smiling] Starting fresh here. The previous pair doesn't get to make this one's decisions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

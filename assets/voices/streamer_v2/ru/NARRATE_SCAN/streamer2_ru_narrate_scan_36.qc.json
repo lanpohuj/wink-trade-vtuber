@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_36",
+  "sha256": "9b87b21677505b78fb397ba4560ff8a0a9c018d3c15d0563c6310bd27469d9f9",
+  "expected": "Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка.",
+  "transcript": "Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.0807,
+    "peak": 0.37828,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.107,
+    "sha256": "9b87b21677505b78fb397ba4560ff8a0a9c018d3c15d0563c6310bd27469d9f9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

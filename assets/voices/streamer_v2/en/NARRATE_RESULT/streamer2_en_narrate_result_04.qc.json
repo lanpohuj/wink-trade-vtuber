@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_04",
+  "sha256": "9d292fd2a8d5c87ed45ac2af0aa9f95bb967a345a112a4d7d386885e5c738f5a",
+  "expected": "The recovery step is one hundred and ten, chat. That's the planned step, not a reason to rush the button.",
+  "transcript": "The recovery step is 110 chat. That's the plan step, not a reason to rush the button.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.09022,
+    "peak": 0.46676,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.145,
+    "sha256": "9d292fd2a8d5c87ed45ac2af0aa9f95bb967a345a112a4d7d386885e5c738f5a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " The recovery step is 110 chat. That's the plan step, not a reason to rush the button."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

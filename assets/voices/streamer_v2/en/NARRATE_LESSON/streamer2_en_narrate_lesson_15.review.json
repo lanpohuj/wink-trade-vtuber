@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_15",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A longer trade isn't calmer just because of its name. It needs a suitable setup too.",
+  "tts_text": "[lightly playful] A longer trade isn't calmer just because of its name. It needs a suitable setup too.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "af0b4c14e247f2b901342eb99cfe527aedb0e50cab7d4f3505387bf97d466f77",
+  "delivery": "lightly playful",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_15.mp3",
+  "duration": 5.30275,
+  "sha256": "21bc9f7aab476038165eb8309b0d88a58c2b1152de357b61add301215115dde5",
+  "request_payload": {
+    "text": "[lightly playful] A longer trade isn't calmer just because of its name. It needs a suitable setup too.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

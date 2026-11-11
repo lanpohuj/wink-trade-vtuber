@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_17",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Okay, that trade closed green. Lovely, no complaints from me! Next we look at a fresh situation.",
+  "tts_text": "[pleased, lively] Okay, that trade closed green. Lovely, no complaints from me! Next we look at a fresh situation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7afe61b28ff7fee6bd041ad2d6cce4554a89623d165481a9370d10b038b53a74",
+  "delivery": "pleased, lively",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_17.mp3",
+  "duration": 7.444812,
+  "sha256": "1fdfd41a084fa265e905f3266d23a9f8565fd0cd2adc032e98fef4a90f81d25d",
+  "request_payload": {
+    "text": "[pleased, lively] Okay, that trade closed green. Lovely, no complaints from me! Next we look at a fresh situation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_04",
+  "sha256": "624aa9e87a7950b2d9c4d02a336fcf6d5b64962e75539d5b579399edbdf10c95",
+  "expected": "That closed as a refund. This chapter decided to skip both the green and the red.",
+  "transcript": "That closed as a refund, this chapter decided to skip both the green and the red.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08592,
+    "peak": 0.5201,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.147,
+    "sha256": "624aa9e87a7950b2d9c4d02a336fcf6d5b64962e75539d5b579399edbdf10c95"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " That closed as a refund, this chapter decided to skip both the green and the red."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

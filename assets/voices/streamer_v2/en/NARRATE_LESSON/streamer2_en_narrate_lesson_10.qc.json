@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_10",
+  "sha256": "8156adabf2aba9373e28b34127118eb6913bf109cddd101e8f4c44c4e3a71049",
+  "expected": "A level is somewhere to watch the reaction. Not a magic wall that has to hold price.",
+  "transcript": "A level is somewhere to watch the reaction, not a magic wall that has to hold price.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08026,
+    "peak": 0.34083,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.138,
+    "sha256": "8156adabf2aba9373e28b34127118eb6913bf109cddd101e8f4c44c4e3a71049"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " A level is somewhere to watch the reaction, not a magic wall that has to hold price."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

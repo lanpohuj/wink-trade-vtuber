@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_06",
+  "sha256": "f4e76fa4d158039014fa42f6200ae695ceaeb25be70bf6bda55cf2ffa339b6e8",
+  "expected": "Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим.",
+  "transcript": "Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08857,
+    "peak": 0.34725,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.074,
+    "sha256": "f4e76fa4d158039014fa42f6200ae695ceaeb25be70bf6bda55cf2ffa339b6e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

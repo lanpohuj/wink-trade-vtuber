@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_12",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Так, кто с нами с начала эфира, а кто только залетел? Всем привет, даже если пока смотрите молча.",
+  "tts_text": "[smiling, relaxed] Так, кто с нами с начала эфира, а кто только залетел? Всем привет, даже если пока смотрите молча.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5d0b41ef1e58aa37a1ed464856fa6bc681b9f126873fa4136c746be1c72d68cb",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_12.mp3",
+  "duration": 6.47825,
+  "sha256": "3a69e1f9445be1b766b5f951e48b6ab7ae1ecc26547e74f26963caf57d029c87",
+  "request_payload": {
+    "text": "[smiling, relaxed] Так, кто с нами с начала эфира, а кто только залетел? Всем привет, даже если пока смотрите молча.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

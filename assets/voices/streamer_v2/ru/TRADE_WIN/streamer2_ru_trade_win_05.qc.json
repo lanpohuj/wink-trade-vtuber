@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_win_05",
+  "sha256": "ea0bd8460eaa3b5a71a4041d0f380fd74057ba3fbcbee43613f73e9d96650aec",
+  "expected": "Вот теперь есть за что сказать «красиво»! Сделка закрылась в плюс, результат уже проверен.",
+  "transcript": "вот теперь есть за что сказать красиво сделка закрылась плюс результат уже проверен",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.0824,
+    "peak": 0.33598,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.101,
+    "sha256": "ea0bd8460eaa3b5a71a4041d0f380fd74057ba3fbcbee43613f73e9d96650aec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.58,
+      "text": " вот теперь есть за что сказать красиво сделка закрылась плюс результат уже проверен"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

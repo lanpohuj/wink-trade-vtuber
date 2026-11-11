@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_12",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Who's been here from the start, and who just dropped in? Hey to the quiet viewers too.",
+  "tts_text": "[smiling, relaxed] Who's been here from the start, and who just dropped in? Hey to the quiet viewers too.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7101fc160c10c6b498ebcd65f864dd8efbcc5279b144d3672a661d139a94cbe5",
+  "delivery": "smiling, relaxed",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_12.mp3",
+  "duration": 5.381125,
+  "sha256": "babb9f451f49b7f668d2d194dec5a7183d0a6848368f688e9dd6beb0ad2dbc18",
+  "request_payload": {
+    "text": "[smiling, relaxed] Who's been here from the start, and who just dropped in? Hey to the quiet viewers too.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

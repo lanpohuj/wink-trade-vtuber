@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_05",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Следующий шаг — двести сорок два. Цифра больше, но график от этого понятнее не стал: снова проверяю условия.",
+  "tts_text": "[composed, conversational] Следующий шаг — двести сорок два. Цифра больше, но график от этого понятнее не стал: снова проверяю условия.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3f4c771c0efe87f72554ecdfadb0695f8ea1ae46f60b2b079198f48586584259",
+  "delivery": "composed, conversational",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_05.mp3",
+  "duration": 6.79175,
+  "sha256": "3152a4ee6320aab4d0cbc127a2cd4dda59d0d11883d60d5cd874ecd5e2e22175",
+  "request_payload": {
+    "text": "[composed, conversational] Следующий шаг — двести сорок два. Цифра больше, но график от этого понятнее не стал: снова проверяю условия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

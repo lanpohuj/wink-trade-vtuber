@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_04",
+  "sha256": "758c07270fd50f3cf1173c022f6d3da1df59608ef4dae9afab8f644443bc1872",
+  "expected": "The fifteen-second trade is running. One specific window, no huge promises to a tiny countdown.",
+  "transcript": "The 15-second trade is running. One specific window. No huge promises to a tiny countdown.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.08366,
+    "peak": 0.49845,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "758c07270fd50f3cf1173c022f6d3da1df59608ef4dae9afab8f644443bc1872"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "text": " The 15-second trade is running. One specific window. No huge promises to a tiny countdown."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

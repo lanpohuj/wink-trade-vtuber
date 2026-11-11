@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_13",
+  "sha256": "b3f9c0cbbf69a33c60398cd4ee928749d60d8445577eef9dd82b791e23ad9262",
+  "expected": "And there's the result: green! I'm officially allowing myself a little happy moment.",
+  "transcript": "And there's the result! Green! I'm officially allowing myself a little happy moment!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.09056,
+    "peak": 0.44719,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.203,
+    "sha256": "b3f9c0cbbf69a33c60398cd4ee928749d60d8445577eef9dd82b791e23ad9262"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " And there's the result! Green! I'm officially allowing myself a little happy moment!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_10",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Переходим сюда. Только не будем сразу решать, что здесь лучше: сначала проверка.",
+  "tts_text": "[curious, conversational] Переходим сюда. Только не будем сразу решать, что здесь лучше: сначала проверка.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "bc2e4e7a3f02a22c9011d164d75d75ad63455ff3572daf31a13d6f0045fd0549",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_10.mp3",
+  "duration": 5.72075,
+  "sha256": "181865df32e002ab6fdb05d6b3326ad9368f60d3aab5c9efcc885f09e6053fa6",
+  "request_payload": {
+    "text": "[curious, conversational] Переходим сюда. Только не будем сразу решать, что здесь лучше: сначала проверка.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

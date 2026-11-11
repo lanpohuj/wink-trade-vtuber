@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_03",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "На этот вход — пятнадцать секунд. Да, времени немного, поэтому лишний монолог пока отложу.",
+  "tts_text": "[confident, conversational] На этот вход — пятнадцать секунд. Да, времени немного, поэтому лишний монолог пока отложу.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b575e086fdfd8242dfbf4835c811bcf5d71738eef06fdfe7380cb2aeb5b8aee7",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_03.mp3",
+  "duration": 6.086438,
+  "sha256": "980fc37a48422f91a4fa0ebef053fbbcb13fa1a8d0c722b549d51a89e3e68c4d",
+  "request_payload": {
+    "text": "[confident, conversational] На этот вход — пятнадцать секунд. Да, времени немного, поэтому лишний монолог пока отложу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_04",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Так, пятнадцатисекундная сделка уже идёт. Смотрим конкретное окно, без больших обещаний маленькому таймеру.",
+  "tts_text": "[warm, relaxed] Так, пятнадцатисекундная сделка уже идёт. Смотрим конкретное окно, без больших обещаний маленькому таймеру.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "70d754574f34103caa05ccb68d03adf999ee590827a596f0c7845220818c63d1",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_04.mp3",
+  "duration": 6.817875,
+  "sha256": "38c820ce0bde19e23ce22bc3ef6ca7c8b7d63853946af7e2a80ce80f71835f04",
+  "request_payload": {
+    "text": "[warm, relaxed] Так, пятнадцатисекундная сделка уже идёт. Смотрим конкретное окно, без больших обещаний маленькому таймеру.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

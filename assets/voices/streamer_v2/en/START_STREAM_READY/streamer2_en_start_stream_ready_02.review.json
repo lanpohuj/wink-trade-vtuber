@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_start_stream_ready_02",
+  "lang": "en",
+  "category": "START_STREAM_READY",
+  "text": "Right, we're here! Hey to everyone who's dropped in. Let's look at the charts and get into it without the rush.",
+  "tts_text": "[friendly, lively] Right, we're here! Hey to everyone who's dropped in. Let's look at the charts and get into it without the rush.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "130255bb30420cb39f3d1f6b3e2ab9ca2a4e1147f7b901c979e7aedf1f35d137",
+  "delivery": "friendly, lively",
+  "file": "en/START_STREAM_READY/streamer2_en_start_stream_ready_02.mp3",
+  "duration": 5.955813,
+  "sha256": "d38bd9304342476a27e398a357d013649feb773b8623932ffdffb241aff1c79b",
+  "request_payload": {
+    "text": "[friendly, lively] Right, we're here! Hey to everyone who's dropped in. Let's look at the charts and get into it without the rush.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

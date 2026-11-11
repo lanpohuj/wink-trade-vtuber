@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_04",
+  "sha256": "bbcc6324fd5ced2a8f5f137da85df3623b5c23e709ceb2b01e5b4d763a1f2c4c",
+  "expected": "Moving on, chat. This pair has its own story; let me get acquainted.",
+  "transcript": "Moving on chat. This pair has its own story. Let me get acquainted",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.07779,
+    "peak": 0.38156,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.176,
+    "sha256": "bbcc6324fd5ced2a8f5f137da85df3623b5c23e709ceb2b01e5b4d763a1f2c4c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Moving on chat. This pair has its own story. Let me get acquainted"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

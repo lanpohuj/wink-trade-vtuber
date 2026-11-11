@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_12",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "No result here yet. If I sound too triumphant, feel free to remind me about the clock.",
+  "tts_text": "[warm, lightly playful] No result here yet. If I sound too triumphant, feel free to remind me about the clock.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "78e4a4408770cb8ba3893b29ee67c0db0a33f46b4a95b3e06160c339fd999306",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_12.mp3",
+  "duration": 5.328875,
+  "sha256": "ef932898dbc96b4835fb8168aeb8f4da0b08e7d816a8d8fdd77a769e6bad4638",
+  "request_payload": {
+    "text": "[warm, lightly playful] No result here yet. If I sound too triumphant, feel free to remind me about the clock.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

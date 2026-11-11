@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_14",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Чат, закрылись хорошо — плюс! Но следующий вход всё равно будем проверять с нуля.",
+  "tts_text": "[pleased, lively] Чат, закрылись хорошо — плюс! Но следующий вход всё равно будем проверять с нуля.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d2210582098460fe001e379858b61a7e22953e338410253633009e6439c28682",
+  "delivery": "pleased, lively",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_14.mp3",
+  "duration": 5.172125,
+  "sha256": "12165167e2796360c7b24921797d7d96177093f9db5b0f36e0280fe09639223f",
+  "request_payload": {
+    "text": "[pleased, lively] Чат, закрылись хорошо — плюс! Но следующий вход всё равно будем проверять с нуля.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

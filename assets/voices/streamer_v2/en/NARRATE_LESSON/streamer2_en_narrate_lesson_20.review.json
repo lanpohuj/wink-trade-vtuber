@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_20",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "In a range, I watch the edge reaction. Just saying price is low isn't enough of an explanation.",
+  "tts_text": "[thoughtful, relaxed] In a range, I watch the edge reaction. Just saying price is low isn't enough of an explanation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "56a2cd41acd1acf145b7faedfdfb70dba199b935c65514b926b376740ad5db3c",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_20.mp3",
+  "duration": 5.877438,
+  "sha256": "371db205f790d046808afe34b1d94e7ebc941f1cf536b85a1cc20d059cef5b1a",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] In a range, I watch the edge reaction. Just saying price is low isn't enough of an explanation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

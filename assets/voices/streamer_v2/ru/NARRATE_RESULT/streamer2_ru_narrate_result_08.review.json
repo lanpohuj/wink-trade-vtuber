@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_08",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "На следующий вход ставка двести сорок два. Просто увеличение ставки не обещает нам другой исход.",
+  "tts_text": "[focused, steady] На следующий вход ставка двести сорок два. Просто увеличение ставки не обещает нам другой исход.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "597fb79d22f3da1aec5ffb622de3c8ac13eb14a76e6c89a2af74283898a09afb",
+  "delivery": "focused, steady",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_08.mp3",
+  "duration": 5.433375,
+  "sha256": "19d3820b113d19b561429af77f5abc3fa460cba7dc93d8c6943272b7f33ad818",
+  "request_payload": {
+    "text": "[focused, steady] На следующий вход ставка двести сорок два. Просто увеличение ставки не обещает нам другой исход.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_06",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим.",
+  "tts_text": "[warm, lightly playful] Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7d45cf4ab6b28f7e070fd2c28b88e35f6507f5ed6c1b5ef63daab4951aa30b9d",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_06.mp3",
+  "duration": 5.433375,
+  "sha256": "f4e76fa4d158039014fa42f6200ae695ceaeb25be70bf6bda55cf2ffa339b6e8",
+  "request_payload": {
+    "text": "[warm, lightly playful] Так, заглянем сюда. Иногда сменить график полезнее, чем спорить с предыдущим.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

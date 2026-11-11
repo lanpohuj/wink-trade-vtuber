@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_16",
+  "sha256": "a5aafb431b39539739d51a348c9cb9c3d94d0aa7756e87da8c464c785516508b",
+  "expected": "Кому удобнее коротко и по делу, а кому нравится разбор с деталями? Пытаюсь поймать ваш темп.",
+  "transcript": "Кому удобнее короткое по делу, а кому нравится разбор с деталями, пытаюсь поймать ваш темп.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.09465,
+    "peak": 0.45637,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "a5aafb431b39539739d51a348c9cb9c3d94d0aa7756e87da8c464c785516508b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Кому удобнее короткое по делу, а кому нравится разбор с деталями, пытаюсь поймать ваш темп."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

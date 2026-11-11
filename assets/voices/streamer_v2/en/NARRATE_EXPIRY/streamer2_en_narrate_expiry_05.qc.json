@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_05",
+  "sha256": "6c1d2a7ee7902fd4281323d7e6f74f6ebdf7b0368a920ec31a0f6885da4c9424",
+  "expected": "I've gone with thirty seconds. It fits this stretch, rather than being my answer to everything.",
+  "transcript": "I've gone with 30 seconds. It fits this stretch rather than being my answer to everything.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.07301,
+    "peak": 0.46005,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.15,
+    "sha256": "6c1d2a7ee7902fd4281323d7e6f74f6ebdf7b0368a920ec31a0f6885da4c9424"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " I've gone with 30 seconds. It fits this stretch rather than being my answer to everything."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

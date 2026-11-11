@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_03",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами.",
+  "tts_text": "[smiling, relaxed] Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0b07c06218c5dd751f9b9cfc2a0073fa5fca268b42527794ccbd227cb35daa48",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_03.mp3",
+  "duration": 6.217062,
+  "sha256": "c187aadd78bff67f432c7294d08b9fbbcf11effbda24f11bba0d7e76ed81fccc",
+  "request_payload": {
+    "text": "[smiling, relaxed] Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

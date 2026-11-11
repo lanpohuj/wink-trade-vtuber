@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_04",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "If you're on your phone, can you read the trade card okay? I forget how tiny things get on that screen.",
+  "tts_text": "[friendly, curious] If you're on your phone, can you read the trade card okay? I forget how tiny things get on that screen.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4616f5377dd15f0af33bf79ff3414b2203252484c46449001ec47d3f35e10ba1",
+  "delivery": "friendly, curious",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_04.mp3",
+  "duration": 5.825188,
+  "sha256": "abbb38730e4ee9d9abb22e17bfbb2c519c1c1d95e3cdab0addecfbc63d88b469",
+  "request_payload": {
+    "text": "[friendly, curious] If you're on your phone, can you read the trade card okay? I forget how tiny things get on that screen.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

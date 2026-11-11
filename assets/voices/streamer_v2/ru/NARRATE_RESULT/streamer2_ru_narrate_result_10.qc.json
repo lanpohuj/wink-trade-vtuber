@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_result_10",
+  "sha256": "81da4eff672204487fbf185446b0e581e7acf9cfd7604a60dc34d9cbd940f7de",
+  "expected": "Так, снова базовые пятьдесят. Следующий график будем разбирать отдельно, он за предыдущие не отвечает.",
+  "transcript": "Так. Снова базовая 50. Следующий график будем разбирать отдельно. Он за предыдущие не отвечает.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.08213,
+    "peak": 0.36949,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.108,
+    "sha256": "81da4eff672204487fbf185446b0e581e7acf9cfd7604a60dc34d9cbd940f7de"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " Так. Снова базовая 50. Следующий график будем разбирать отдельно. Он за предыдущие не отвечает."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

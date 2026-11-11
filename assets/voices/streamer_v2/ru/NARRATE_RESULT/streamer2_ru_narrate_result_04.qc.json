@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_result_04",
+  "sha256": "7a8b11f5d3acc47b227fd01cec4978ddcd8c15fdb2bd7fbfcd48fd7bcb1f6e9d",
+  "expected": "Перекрытие сейчас на сто десять, чат. Это следующий шаг плана, а не повод торопиться с кнопкой.",
+  "transcript": "Перекрытие сейчас на 110, Чат. Это следующий шаг плана, а не повод торопиться с кнопкой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.09,
+    "peak": 0.40431,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "7a8b11f5d3acc47b227fd01cec4978ddcd8c15fdb2bd7fbfcd48fd7bcb1f6e9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Перекрытие сейчас на 110, Чат. Это следующий шаг плана, а не повод торопиться с кнопкой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

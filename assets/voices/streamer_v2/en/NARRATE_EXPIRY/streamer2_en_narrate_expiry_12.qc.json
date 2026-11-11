@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_12",
+  "sha256": "f09f743fb5bc4a6187fe3af9d83727a8d872eb4324defc9c09424d53b11c8010",
+  "expected": "The one-minute window's running. We can take a breath and follow the whole trade.",
+  "transcript": "The one minute window's running. We can take a breath and follow the whole trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08046,
+    "peak": 0.3756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.126,
+    "sha256": "f09f743fb5bc4a6187fe3af9d83727a8d872eb4324defc9c09424d53b11c8010"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " The one minute window's running. We can take a breath and follow the whole trade."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

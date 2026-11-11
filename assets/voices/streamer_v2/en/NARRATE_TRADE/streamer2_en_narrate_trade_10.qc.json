@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_10",
+  "sha256": "a3040bd0b02f7ff2dd948a64de3d07dbc906c355b31fbb0e9b7b2a7eb125b1f4",
+  "expected": "No talking the chart into it now. The trade's open; we're watching what actually happens.",
+  "transcript": "No talking the chart into it now. The trade's open. We're watching what actually happens.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07628,
+    "peak": 0.37444,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.283,
+    "sha256": "a3040bd0b02f7ff2dd948a64de3d07dbc906c355b31fbb0e9b7b2a7eb125b1f4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " No talking the chart into it now. The trade's open. We're watching what actually happens."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

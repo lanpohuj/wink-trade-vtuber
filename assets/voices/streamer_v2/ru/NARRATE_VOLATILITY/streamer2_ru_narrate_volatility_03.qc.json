@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_volatility_03",
+  "sha256": "fcdd1428c1afba8fc7f84209b10c5570dac354dc5b261d34cf814922d3326f3d",
+  "expected": "Чат, тут движения разогнались. Не буду называть каждую резкую свечу красивой возможностью.",
+  "transcript": "Чат, тут движения разогнались. Не буду называть каждую резкую свечу красивой возможностью.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.09193,
+    "peak": 0.381,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.064,
+    "sha256": "fcdd1428c1afba8fc7f84209b10c5570dac354dc5b261d34cf814922d3326f3d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Чат, тут движения разогнались. Не буду называть каждую резкую свечу красивой возможностью."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

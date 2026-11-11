@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_engage_12",
+  "sha256": "3a69e1f9445be1b766b5f951e48b6ab7ae1ecc26547e74f26963caf57d029c87",
+  "expected": "Так, кто с нами с начала эфира, а кто только залетел? Всем привет, даже если пока смотрите молча.",
+  "transcript": "Так, кто с нами сначала эфира, а кто только залетел? Всем привет, даже если пока смотрите молча.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.478,
+    "rms": 0.08431,
+    "peak": 0.36348,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.138,
+    "sha256": "3a69e1f9445be1b766b5f951e48b6ab7ae1ecc26547e74f26963caf57d029c87"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Так, кто с нами сначала эфира, а кто только залетел?"
+    },
+    {
+      "start": 3.68,
+      "end": 6.44,
+      "text": " Всем привет, даже если пока смотрите молча."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_23",
+  "sha256": "3a5191644965255d2bfe7c6923841bc38e0893b823f82451d3bf21c1e8d9d1f9",
+  "expected": "Чат, можно честно: что труднее смотреть — ожидание входа или последние секунды сделки?",
+  "transcript": "Чат, можно честно, что труднее смотреть ожидания входа или последние секунды сделки?",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.131,
+    "rms": 0.08801,
+    "peak": 0.45409,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.091,
+    "sha256": "3a5191644965255d2bfe7c6923841bc38e0893b823f82451d3bf21c1e8d9d1f9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.04,
+      "text": " Чат, можно честно, что труднее смотреть ожидания входа или последние секунды сделки?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

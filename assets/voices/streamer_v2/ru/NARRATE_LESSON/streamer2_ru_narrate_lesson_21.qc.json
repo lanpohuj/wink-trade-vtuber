@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_21",
+  "sha256": "10a06b19ac778d3cc5f89ce1d868ff2795b8836e604e28d71bbbd08dbb2e3336",
+  "expected": "Если движение уже убежало, это не повод мчаться за ним. Я лучше проверю следующий понятный момент.",
+  "transcript": "Если движение уже убежало, это не повод мчаться за ним. Я лучше проверю следующий понятный момент.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.07404,
+    "peak": 0.30055,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.128,
+    "sha256": "10a06b19ac778d3cc5f89ce1d868ff2795b8836e604e28d71bbbd08dbb2e3336"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.9,
+      "text": " Если движение уже убежало, это не повод мчаться за ним."
+    },
+    {
+      "start": 3.9,
+      "end": 6.4,
+      "text": " Я лучше проверю следующий понятный момент."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

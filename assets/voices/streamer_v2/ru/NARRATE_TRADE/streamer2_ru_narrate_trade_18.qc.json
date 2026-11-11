@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_18",
+  "sha256": "ddfccbd4c1d8e4b047a2d9d9951f975a9e56ab11a2e7d761440f320016a346d6",
+  "expected": "Не буду сейчас озвучивать каждое колебание. Сначала посмотрим, чем всё действительно закончится.",
+  "transcript": "Не буду сейчас озвучивать каждое колебание. Сначала посмотрим, чем все действительно закончится.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07578,
+    "peak": 0.37672,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "ddfccbd4c1d8e4b047a2d9d9951f975a9e56ab11a2e7d761440f320016a346d6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Не буду сейчас озвучивать каждое колебание. Сначала посмотрим, чем все действительно закончится."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

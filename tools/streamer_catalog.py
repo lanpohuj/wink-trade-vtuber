@@ -415,6 +415,16 @@ def catalog():
 """,
         deliveries=["welcoming, bright", "friendly, lively"],
     )
+    # Owner-selected replacement for a take with an excessive generated tail.
+    for row in rows:
+        if row["id"] == "streamer2_en_narrate_trade_07":
+            row["text"] = (
+                "Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster."
+            )
+            row["delivery"] = "curious, conversational"
+            row["tts_text"] = "[curious, conversational] " + row["text"]
+            row["text_sha256"] = hashlib.sha256(row["text"].encode()).hexdigest()
+            row["requires_listening"] = True
     assert len(rows) == 500, len(rows)
     assert len({r["text"] for r in rows}) == 500
     return rows

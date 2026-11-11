@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_27",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I like this part, chat. Nothing looks obvious at first, then you start unpacking the details.",
+  "tts_text": "[warm, lightly playful] I like this part, chat. Nothing looks obvious at first, then you start unpacking the details.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e2b69bfec2e95ae4a0766ed8b3ed7772b14771f935778ea2f7531a270cfd8b21",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_27.mp3",
+  "duration": 5.773,
+  "sha256": "a0d04320f617126a434d0e54ec0695b213932caf68f409a7555196426ef3c306",
+  "request_payload": {
+    "text": "[warm, lightly playful] I like this part, chat. Nothing looks obvious at first, then you start unpacking the details.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

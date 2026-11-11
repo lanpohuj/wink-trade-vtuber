@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_31",
+  "sha256": "c226ac2541d7664caefe9fbf721efec0558a19191dd9b9ff8f597ebe6795a7db",
+  "expected": "One second, the chart's still loading. I'll wait for the data before acting clever.",
+  "transcript": "One second, the chart's still loading. I'll wait for the data before acting clever.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.0796,
+    "peak": 0.47506,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.272,
+    "sha256": "c226ac2541d7664caefe9fbf721efec0558a19191dd9b9ff8f597ebe6795a7db"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " One second, the chart's still loading. I'll wait for the data before acting clever."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

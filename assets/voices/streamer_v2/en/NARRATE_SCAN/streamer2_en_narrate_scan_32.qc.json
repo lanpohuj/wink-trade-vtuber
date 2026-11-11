@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_32",
+  "sha256": "25f7860b3d7f7c703dbcd796a0289561a07ac30c774f4a0e2bdd91700960d4bf",
+  "expected": "The history's still coming in. A confident voice won't make an empty chart useful.",
+  "transcript": "The history is still coming in. A confident voice won't make an empty chart useful.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.08238,
+    "peak": 0.40141,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.317,
+    "sha256": "25f7860b3d7f7c703dbcd796a0289561a07ac30c774f4a0e2bdd91700960d4bf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " The history is still coming in. A confident voice won't make an empty chart useful."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

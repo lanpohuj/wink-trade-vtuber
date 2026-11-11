@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_15",
+  "sha256": "f3abe775815c324d62f592278023df5ccd377f2d50bbd7954f95b2ed1b8f2588",
+  "expected": "Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьёзные отношения.",
+  "transcript": "Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьезные отношения.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08267,
+    "peak": 0.33651,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.089,
+    "sha256": "f3abe775815c324d62f592278023df5ccd377f2d50bbd7954f95b2ed1b8f2588"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьезные отношения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

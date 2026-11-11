@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_32",
+  "sha256": "6c3afcbbc7f878c2f57c221b1b67bddef3961e520d2f4a0f73800f4bfcffff46",
+  "expected": "A small but useful detail: I check direction and expiry together, not as separate guesses.",
+  "transcript": "A small but useful detail, I checked direction and expiry together, not as separate guesses.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08503,
+    "peak": 0.60939,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.229,
+    "sha256": "6c3afcbbc7f878c2f57c221b1b67bddef3961e520d2f4a0f73800f4bfcffff46"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " A small but useful detail, I checked direction and expiry together, not as separate guesses."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

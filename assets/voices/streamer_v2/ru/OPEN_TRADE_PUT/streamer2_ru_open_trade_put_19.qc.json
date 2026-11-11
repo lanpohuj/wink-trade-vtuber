@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_open_trade_put_19",
+  "sha256": "12bada43b7bbf59022dd928041f80f78fcd4dc724cdf7f7d3ef9ba04d145e66c",
+  "expected": "Есть вход вниз! Идея здесь в подтверждённом локальном развороте. Не переименовываю его в новый большой тренд.",
+  "transcript": "Есть вход вниз. Идея здесь подтверждённом в локальном развороте. Не переименовывай его в новый большой тренд.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.74,
+    "rms": 0.09032,
+    "peak": 0.35147,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "12bada43b7bbf59022dd928041f80f78fcd4dc724cdf7f7d3ef9ba04d145e66c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.2,
+      "text": " Есть вход вниз. Идея здесь подтверждённом в локальном развороте."
+    },
+    {
+      "start": 4.2,
+      "end": 6.7,
+      "text": " Не переименовывай его в новый большой тренд."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

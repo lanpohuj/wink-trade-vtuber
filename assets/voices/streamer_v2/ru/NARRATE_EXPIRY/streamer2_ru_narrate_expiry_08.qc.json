@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_expiry_08",
+  "sha256": "d8c6e538232d79ec9357b78e9d8c318ff5407cb995fb1a6682c6b3f7383772a0",
+  "expected": "Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика.",
+  "transcript": "Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.084,
+    "peak": 0.37879,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.093,
+    "sha256": "d8c6e538232d79ec9357b78e9d8c318ff5407cb995fb1a6682c6b3f7383772a0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

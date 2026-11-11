@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_13",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Вот обидный финал: прямо перед закрытием были в плюсовой зоне, но совсем небольшой сдвиг дал минус.",
+  "tts_text": "[disappointed, composed] Вот обидный финал: прямо перед закрытием были в плюсовой зоне, но совсем небольшой сдвиг дал минус.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fe880da9f1b914f23bf4cad91f36da134b5556967b1314a05521562cf719c9d2",
+  "delivery": "disappointed, composed",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_13.mp3",
+  "duration": 6.269312,
+  "sha256": "4c3e227c754d17e08519d5e0538b63de1512b94c015a4eb646a2d14f439d000a",
+  "request_payload": {
+    "text": "[disappointed, composed] Вот обидный финал: прямо перед закрытием были в плюсовой зоне, но совсем небольшой сдвиг дал минус.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

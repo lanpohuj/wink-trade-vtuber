@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_volatility_01",
+  "sha256": "1e68d2f8fcdb13c54e93db0385b23706335a5196e4c3b6e846ff7a6c60a8a5e0",
+  "expected": "Oh, the moves have got sharper now. That's not just me reacting; the recent candles are wider than usual.",
+  "transcript": "Oh, the moves have got sharper now. That's not just me reacting. The recent candles are wider than usual.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.792,
+    "rms": 0.08268,
+    "peak": 0.38018,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "1e68d2f8fcdb13c54e93db0385b23706335a5196e4c3b6e846ff7a6c60a8a5e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.72,
+      "text": " Oh, the moves have got sharper now. That's not just me reacting. The recent candles are wider than usual."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

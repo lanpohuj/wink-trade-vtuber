@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_22",
+  "sha256": "1439c5bddf210590f9b13d240a106aebea655bd2b53cae86af11ccbcf1d4933c",
+  "expected": "Let me know if anything's too small on screen. I want you seeing the idea, not just the pretty lights.",
+  "transcript": "Let me know if anything's too small on screen. I want you seeing the idea, not just the pretty lights.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08336,
+    "peak": 0.385,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.416,
+    "sha256": "1439c5bddf210590f9b13d240a106aebea655bd2b53cae86af11ccbcf1d4933c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Let me know if anything's too small on screen. I want you seeing the idea, not just the pretty lights."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

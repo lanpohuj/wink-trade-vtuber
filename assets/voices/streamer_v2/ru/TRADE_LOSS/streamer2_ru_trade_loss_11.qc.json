@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_loss_11",
+  "sha256": "3b4dd68ba16f69ead24e4299100708c37d4a66bf7891caa5b25a436762bda4f2",
+  "expected": "Зафиксировали минус. Сейчас спокойно посмотрю дальше, без обещания всё исправить одним нажатием.",
+  "transcript": "зафиксировали минус сейчас спокойно посмотрю дальше без обещания все исправить одним нажатием",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.478,
+    "rms": 0.08561,
+    "peak": 0.44625,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.098,
+    "sha256": "3b4dd68ba16f69ead24e4299100708c37d4a66bf7891caa5b25a436762bda4f2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.3,
+      "text": " зафиксировали минус сейчас спокойно посмотрю дальше без обещания все исправить одним нажатием"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

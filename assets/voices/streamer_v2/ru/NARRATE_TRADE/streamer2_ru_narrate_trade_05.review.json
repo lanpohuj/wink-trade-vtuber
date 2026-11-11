@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_05",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сделка в работе, я здесь. Новых выводов каждые полсекунды устраивать не буду.",
+  "tts_text": "[conversational, smiling] Сделка в работе, я здесь. Новых выводов каждые полсекунды устраивать не буду.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6b239ea3916b493c7353d4f0c85f09572766a3801d28bd443e0e0f2a9bc3979e",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_05.mp3",
+  "duration": 5.590125,
+  "sha256": "5837063f0ab2a7d20d77bce7d133660e2a7350c46a82d8cf4a0de56decd5a7eb",
+  "request_payload": {
+    "text": "[conversational, smiling] Сделка в работе, я здесь. Новых выводов каждые полсекунды устраивать не буду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

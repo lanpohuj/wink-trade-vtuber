@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_06",
+  "sha256": "d407e617dfabb3f8123a525cbd3f5260430c391bc8d6a9df0bba9fcecebaa203",
+  "expected": "Let's have a look here. Changing charts can be more useful than arguing with the last one.",
+  "transcript": "Let's have a look here changing charts can be more useful than arguing with the last one",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08018,
+    "peak": 0.33418,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.228,
+    "sha256": "d407e617dfabb3f8123a525cbd3f5260430c391bc8d6a9df0bba9fcecebaa203"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.72,
+      "text": " Let's have a look here changing charts can be more useful than arguing with the last one"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

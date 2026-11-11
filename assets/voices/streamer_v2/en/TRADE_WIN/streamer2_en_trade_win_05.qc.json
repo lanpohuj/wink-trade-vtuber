@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_05",
+  "sha256": "42b6c073e646c35ed370f64bab905c53606b8409b500193102f05b47c46a972d",
+  "expected": "Now there's a reason to say lovely! The trade closed green and the result's been checked.",
+  "transcript": "Now, there's a reason to say lovely. The trade closed green, and the results been checked.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.0832,
+    "peak": 0.37607,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.212,
+    "sha256": "42b6c073e646c35ed370f64bab905c53606b8409b500193102f05b47c46a972d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Now, there's a reason to say lovely. The trade closed green, and the results been checked."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

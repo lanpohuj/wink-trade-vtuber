@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_12",
+  "sha256": "610b8acb7e1dbf6a4724217c94ec26611ecd192fe5f93f73c71492bad4015c64",
+  "expected": "Yes, that closed green! Let's register it properly and get back to the charts.",
+  "transcript": "Yes! That closed green! Let's register it properly and get back to the charts!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07604,
+    "peak": 0.38105,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.16,
+    "sha256": "610b8acb7e1dbf6a4724217c94ec26611ecd192fe5f93f73c71492bad4015c64"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.34,
+      "text": " Yes! That closed green! Let's register it properly and get back to the charts!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

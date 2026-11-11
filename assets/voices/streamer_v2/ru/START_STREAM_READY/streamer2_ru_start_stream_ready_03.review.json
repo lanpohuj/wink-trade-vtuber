@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_start_stream_ready_03",
+  "lang": "ru",
+  "category": "START_STREAM_READY",
+  "text": "Привет, чатик! Рада вас видеть. Сегодня снова смотрим графики вместе: я объясняю, вы спрашиваете, разбираемся.",
+  "tts_text": "[welcoming, bright] Привет, чатик! Рада вас видеть. Сегодня снова смотрим графики вместе: я объясняю, вы спрашиваете, разбираемся.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "94229bcaaa714ffc799d78ef4fc6deba635efdef09f9de21436e6cc4d260edd9",
+  "delivery": "welcoming, bright",
+  "file": "ru/START_STREAM_READY/streamer2_ru_start_stream_ready_03.mp3",
+  "duration": 7.784375,
+  "sha256": "7dd37c3c29bbc484b1b22756d6a9d6931f248b0b3f92a0aef4733440f9a8eba9",
+  "request_payload": {
+    "text": "[welcoming, bright] Привет, чатик! Рада вас видеть. Сегодня снова смотрим графики вместе: я объясняю, вы спрашиваете, разбираемся.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

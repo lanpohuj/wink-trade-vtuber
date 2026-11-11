@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_01",
+  "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69",
+  "expected": "There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+  "transcript": "Hehe, there we go. That closed green. Okay, I did enjoy that one. Nice little moment for the stream, hehe.",
+  "similarity": 0.947,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 8.229,
+    "rms": 0.08461,
+    "peak": 0.40199,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.189,
+    "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.16,
+      "text": " Hehe, there we go. That closed green. Okay, I did enjoy that one. Nice little moment for the stream, hehe."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

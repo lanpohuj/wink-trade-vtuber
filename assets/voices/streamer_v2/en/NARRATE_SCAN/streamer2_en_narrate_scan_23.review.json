@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_23",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let me put the pieces together. I know the button looks inviting, but that's not an entry reason.",
+  "tts_text": "[conversational, smiling] Let me put the pieces together. I know the button looks inviting, but that's not an entry reason.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "839d6227789d2e679210672ff41b98aabd257e497d8a1533dfe7d51cee28a0b4",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_23.mp3",
+  "duration": 5.72075,
+  "sha256": "d1511729ff08849e5b122cab8fd1e84f8d6249f1b9a2e45a4df5a0c50cd0ff5a",
+  "request_payload": {
+    "text": "[conversational, smiling] Let me put the pieces together. I know the button looks inviting, but that's not an entry reason.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

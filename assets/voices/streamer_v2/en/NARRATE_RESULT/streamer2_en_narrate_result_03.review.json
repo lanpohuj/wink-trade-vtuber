@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_03",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "One hundred and ten is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss.",
+  "tts_text": "[composed, conversational] One hundred and ten is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ad7719d6afeb8e3c54594a012c6a6ad6084f3a092499b042683d63dd06a14aa5",
+  "delivery": "composed, conversational",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_03.mp3",
+  "duration": 6.870125,
+  "sha256": "774e04b8c986c4a2cbf4106e38092e7cee1ff63eb5a2f561f1d60d22fcd5f40e",
+  "request_payload": {
+    "text": "[composed, conversational] One hundred and ten is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

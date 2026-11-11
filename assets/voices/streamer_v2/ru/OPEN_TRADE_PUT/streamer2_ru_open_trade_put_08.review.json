@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_08",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Так, вниз уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок.",
+  "tts_text": "[pleased, focused] Так, вниз уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7e7723c93627b1ad2916af55e5c077024206bde8b8ad1c3041f91a622ae1d300",
+  "delivery": "pleased, focused",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_08.mp3",
+  "duration": 6.034187,
+  "sha256": "882c5af6cf7e66bdaafdf0b2490f50441d600f4945a7a06f051fbe6106f96939",
+  "request_payload": {
+    "text": "[pleased, focused] Так, вниз уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

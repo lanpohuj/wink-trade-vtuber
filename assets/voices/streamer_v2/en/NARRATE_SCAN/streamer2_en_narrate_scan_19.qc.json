@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_19",
+  "sha256": "368cc3663c69079982b18532140f989b6964148e9d47be06f091c6be24f4ac6f",
+  "expected": "Charts are a bit like messages. Take one out of context and suddenly it's a different story.",
+  "transcript": "Charts are a bit like messages. Take one out of context and suddenly it's a different story.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.0784,
+    "peak": 0.477,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.201,
+    "sha256": "368cc3663c69079982b18532140f989b6964148e9d47be06f091c6be24f4ac6f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Charts are a bit like messages. Take one out of context and suddenly it's a different story."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

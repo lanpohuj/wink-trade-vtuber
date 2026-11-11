@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_09",
+  "sha256": "0cabd69b4efd625b4a6b07e9521c2e373cc6baa6eddaebddc923c5aa1cf3b5f8",
+  "expected": "I'd rather test an idea than defend it at any cost. Even after I've made it sound lovely.",
+  "transcript": "I'd rather test an idea than defend it at any cost, even after I've made it sound lovely.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08664,
+    "peak": 0.40623,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.164,
+    "sha256": "0cabd69b4efd625b4a6b07e9521c2e373cc6baa6eddaebddc923c5aa1cf3b5f8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " I'd rather test an idea than defend it at any cost, even after I've made it sound lovely."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_03",
+  "sha256": "bab033ddba51ce7c83a026aee95187d89f026876827d6c49d02b8162cc55c750",
+  "expected": "Нулевой итог, ставка вернулась. Такой вот спокойный финал у этой сделки.",
+  "transcript": "на левой итог ставка вернулась такой вот спокойный финал у этой сделки",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.07413,
+    "peak": 0.35508,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.101,
+    "sha256": "bab033ddba51ce7c83a026aee95187d89f026876827d6c49d02b8162cc55c750"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.12,
+      "text": " на левой итог ставка вернулась такой вот спокойный финал у этой сделки"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

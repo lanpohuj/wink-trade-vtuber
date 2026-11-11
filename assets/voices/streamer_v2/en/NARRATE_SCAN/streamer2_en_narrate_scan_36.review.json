@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_36",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let's let the chart load. I'd love everything instantly too, but first I need the actual picture.",
+  "tts_text": "[warm, lightly playful] Let's let the chart load. I'd love everything instantly too, but first I need the actual picture.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a49ed1eb45ffae266a5f3eb672477d466afbcf319d1242a534107ac37359b197",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_36.mp3",
+  "duration": 6.5305,
+  "sha256": "2f2f5e4ea12376f299eb567aa658e69ecf99d9cacaa35b39456f727a4e57b816",
+  "request_payload": {
+    "text": "[warm, lightly playful] Let's let the chart load. I'd love everything instantly too, but first I need the actual picture.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

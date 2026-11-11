@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_05",
+  "sha256": "969d9b5ce37f18bc7c5d788553398be2b9e773d9ef5793cf2a8978e866f9f36b",
+  "expected": "Самая коварная мысль — что надо обязательно успеть. График не знает, что мы тут торопимся.",
+  "transcript": "Самая коварная мысль. Что надо обязательно успеть? График не знает, что мы тут торопимся.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08694,
+    "peak": 0.47077,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.09,
+    "sha256": "969d9b5ce37f18bc7c5d788553398be2b9e773d9ef5793cf2a8978e866f9f36b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.34,
+      "text": " Самая коварная мысль. Что надо обязательно успеть?"
+    },
+    {
+      "start": 3.34,
+      "end": 5.7,
+      "text": " График не знает, что мы тут торопимся."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_06",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I like being able to explain an entry simply. A fancy term won't rescue an idea I can't explain.",
+  "tts_text": "[lightly playful] I like being able to explain an entry simply. A fancy term won't rescue an idea I can't explain.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "35a3bdf8d72cf37031f2915945422b9278b36d58077c39de27e4c98ca42ab573",
+  "delivery": "lightly playful",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_06.mp3",
+  "duration": 6.399938,
+  "sha256": "37ead4497098460ddcd06fd1ea0856ffd9628de4f0a4063f44d2d6c5781b6787",
+  "request_payload": {
+    "text": "[lightly playful] I like being able to explain an entry simply. A fancy term won't rescue an idea I can't explain.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_04",
+  "sha256": "69a08cce6f40e0d6a5489130e9f2d823a5632857f10e56e00adbd6019745de0c",
+  "expected": "Yes, green is on the board! Let's not turn one trade into a legend, though. Same focus from here.",
+  "transcript": "Yes! Green is on the board. Let's not turn one trade into a legend, though. Same focus from here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.661,
+    "rms": 0.08455,
+    "peak": 0.35445,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "69a08cce6f40e0d6a5489130e9f2d823a5632857f10e56e00adbd6019745de0c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.5600000000000005,
+      "text": " Yes! Green is on the board. Let's not turn one trade into a legend, though. Same focus from here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

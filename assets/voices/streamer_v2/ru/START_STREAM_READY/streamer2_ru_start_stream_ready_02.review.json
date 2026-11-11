@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_start_stream_ready_02",
+  "lang": "ru",
+  "category": "START_STREAM_READY",
+  "text": "Так, мы на месте! Всем, кто уже залетел, привет. Сейчас посмотрим рынок и начнём разбор без лишней суеты.",
+  "tts_text": "[friendly, lively] Так, мы на месте! Всем, кто уже залетел, привет. Сейчас посмотрим рынок и начнём разбор без лишней суеты.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3955721663a776539cb2140873b85e1e1d0c86ea8cdbeea8b9b071865825b540",
+  "delivery": "friendly, lively",
+  "file": "ru/START_STREAM_READY/streamer2_ru_start_stream_ready_02.mp3",
+  "duration": 7.131313,
+  "sha256": "30dac5bdf28aebcacf26e89d93cd11d137e69fae8091492215f5fd84e3e79313",
+  "request_payload": {
+    "text": "[friendly, lively] Так, мы на месте! Всем, кто уже залетел, привет. Сейчас посмотрим рынок и начнём разбор без лишней суеты.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

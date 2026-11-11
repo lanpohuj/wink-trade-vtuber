@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_05",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I'm on the chart, chat. Looking for an entry I can actually explain, rather than just clicking something.",
+  "tts_text": "[conversational, smiling] I'm on the chart, chat. Looking for an entry I can actually explain, rather than just clicking something.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "57563dca19c20657d231341270c085918b5acaff63b7dbb31de0eacfd6e7e21a",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_05.mp3",
+  "duration": 6.086438,
+  "sha256": "085cd4068779be1759e7221b9ea8823eb42993e8e41373deccde67884ce23355",
+  "request_payload": {
+    "text": "[conversational, smiling] I'm on the chart, chat. Looking for an entry I can actually explain, rather than just clicking something.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

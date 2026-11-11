@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_11",
+  "sha256": "2c8d5bb765cfe8f9b4f5a816b0c86d9f6651ea6413c05ed5a5477de12b37482b",
+  "expected": "Red registered. I'll take a calm look ahead, without promising to fix it all in one click.",
+  "transcript": "Red registered. I'll take a calm look ahead without promising to fix it all in one click",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.07831,
+    "peak": 0.38795,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.172,
+    "sha256": "2c8d5bb765cfe8f9b4f5a816b0c86d9f6651ea6413c05ed5a5477de12b37482b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " Red registered. I'll take a calm look ahead without promising to fix it all in one click"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

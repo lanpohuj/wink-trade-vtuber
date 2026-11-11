@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_01",
+  "sha256": "e19089e8abc280e64f44179340b8de84f06ca1b30f5736737782cf93e0e68191",
+  "expected": "Ah, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+  "transcript": "Huh, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.262,
+    "rms": 0.07714,
+    "peak": 0.39202,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.162,
+    "sha256": "e19089e8abc280e64f44179340b8de84f06ca1b30f5736737782cf93e0e68191"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.48,
+      "text": " Huh, that one closed red. Bit annoying, honestly. Let me reset and see what the next chart has for us."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

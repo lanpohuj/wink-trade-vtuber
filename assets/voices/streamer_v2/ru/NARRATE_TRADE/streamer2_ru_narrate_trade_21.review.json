@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_21",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сейчас просто смотрим. Самое время проверить, умеем ли мы ждать без маленького сериала в голове.",
+  "tts_text": "[warm, lightly playful] Сейчас просто смотрим. Самое время проверить, умеем ли мы ждать без маленького сериала в голове.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "91e95fa4dc743edf2958a4847fc60ad11835c9ee61dd9efdcaee1e60667aa863",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_21.mp3",
+  "duration": 6.217062,
+  "sha256": "056387e3799fb6acba105a23236e85921fa8bc9d73b71f9c232cbb1c847b129c",
+  "request_payload": {
+    "text": "[warm, lightly playful] Сейчас просто смотрим. Самое время проверить, умеем ли мы ждать без маленького сериала в голове.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_win_15",
+  "sha256": "ac89c0d44221008028dbfaa1fd774eddf897ed7fd811195206b76cbe15c7d890",
+  "expected": "Мне нравится этот финал! Подтверждённый плюс, без объявления победы за пять секунд до закрытия.",
+  "transcript": "Мне нравится этот финал, подтвержденный плюс без объявления победы за 5 секунд до закрытия!",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08113,
+    "peak": 0.39059,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.074,
+    "sha256": "ac89c0d44221008028dbfaa1fd774eddf897ed7fd811195206b76cbe15c7d890"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Мне нравится этот финал, подтвержденный плюс без объявления победы за 5 секунд до закрытия!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

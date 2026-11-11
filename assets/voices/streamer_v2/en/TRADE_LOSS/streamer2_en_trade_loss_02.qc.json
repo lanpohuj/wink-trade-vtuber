@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_02",
+  "sha256": "888137f6ee81007dfb6e8a97edc1bd331ab4ee0c8d5198f3f56fa44197cde123",
+  "expected": "Right, that closed red. It's okay to be annoyed; arguing with a closed trade won't get us anywhere.",
+  "transcript": "Right. That closed red. It's okay to be annoyed. Arguing with a closed trade won't get us anywhere.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.001,
+    "rms": 0.07971,
+    "peak": 0.39793,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.221,
+    "sha256": "888137f6ee81007dfb6e8a97edc1bd331ab4ee0c8d5198f3f56fa44197cde123"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.88,
+      "text": " Right. That closed red. It's okay to be annoyed. Arguing with a closed trade won't get us anywhere."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

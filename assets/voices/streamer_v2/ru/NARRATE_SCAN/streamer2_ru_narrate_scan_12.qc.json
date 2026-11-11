@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_scan_12",
+  "sha256": "47a98f2a5ea5ab46ab0e75eca1dad1438438369fec92d08c3063cbb6405b71b6",
+  "expected": "Я лучше ещё раз сверю график. Открыть сделку быстро — не проблема, выбрать момент уже интереснее.",
+  "transcript": "Я лучше ещё раз сверю график. Открыть сделку быстро, не проблема. Выбрать момент уже интереснее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08506,
+    "peak": 0.34228,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.049,
+    "sha256": "47a98f2a5ea5ab46ab0e75eca1dad1438438369fec92d08c3063cbb6405b71b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Я лучше ещё раз сверю график."
+    },
+    {
+      "start": 2.34,
+      "end": 4.34,
+      "text": " Открыть сделку быстро, не проблема."
+    },
+    {
+      "start": 4.34,
+      "end": 6.34,
+      "text": " Выбрать момент уже интереснее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

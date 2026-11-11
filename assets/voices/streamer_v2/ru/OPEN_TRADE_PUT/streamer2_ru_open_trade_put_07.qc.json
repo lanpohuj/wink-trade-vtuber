@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_07",
+  "sha256": "f2a561554d6004fbfc24ae5ae37573c9cdc655335acdd0ffafa3499549db3863",
+  "expected": "Есть вход вниз, чат. Пробой проверился возвратом, не просто эффектная свеча на пустом месте.",
+  "transcript": "Есть вход вниз, Чат. Пробой проверился возвратом, не просто эффектное свеча на пустом месте.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.07857,
+    "peak": 0.42445,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "f2a561554d6004fbfc24ae5ae37573c9cdc655335acdd0ffafa3499549db3863"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Есть вход вниз, Чат. Пробой проверился возвратом, не просто эффектное свеча на пустом месте."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

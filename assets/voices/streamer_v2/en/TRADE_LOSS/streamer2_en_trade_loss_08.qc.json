@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_08",
+  "sha256": "02e9f723f8cb4a0bbba32b66d291c5ba301cb9e08e95ad4cd638b0d96f0c033b",
+  "expected": "Ah, red at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong.",
+  "transcript": "Huh, read at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08526,
+    "peak": 0.47502,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.274,
+    "sha256": "02e9f723f8cb4a0bbba32b66d291c5ba301cb9e08e95ad4cd638b0d96f0c033b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Huh, read at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

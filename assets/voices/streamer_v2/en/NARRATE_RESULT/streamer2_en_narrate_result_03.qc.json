@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_03",
+  "sha256": "774e04b8c986c4a2cbf4106e38092e7cee1ff63eb5a2f561f1d60d22fcd5f40e",
+  "expected": "One hundred and ten is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss.",
+  "transcript": "110 is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.87,
+    "rms": 0.08193,
+    "peak": 0.40877,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.21,
+    "sha256": "774e04b8c986c4a2cbf4106e38092e7cee1ff63eb5a2f561f1d60d22fcd5f40e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "text": " 110 is set for the next trade. I'm looking for a proper setup, not promising a miracle after a loss."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

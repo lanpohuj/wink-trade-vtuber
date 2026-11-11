@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_engage_04",
+  "sha256": "abbb38730e4ee9d9abb22e17bfbb2c519c1c1d95e3cdab0addecfbc63d88b469",
+  "expected": "If you're on your phone, can you read the trade card okay? I forget how tiny things get on that screen.",
+  "transcript": "If you're on your phone, can you read the trade card okay? I forget how tiny things get on that screen.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.08681,
+    "peak": 0.45662,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.125,
+    "sha256": "abbb38730e4ee9d9abb22e17bfbb2c519c1c1d95e3cdab0addecfbc63d88b469"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " If you're on your phone, can you read the trade card okay?"
+    },
+    {
+      "start": 3.36,
+      "end": 5.84,
+      "text": " I forget how tiny things get on that screen."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_loss_10",
+  "sha256": "ae2e8163c7f8aa79d5d24a951015bca19d31752e4b9a01766ab1cd5004ddb0ce",
+  "expected": "Обидно, тут минус. Я могу расстроиться на секунду и всё равно не торопить следующий вход.",
+  "transcript": "Обидно. Тут минус. Я могу расстроиться на секунду и все равно не торопить следующий вход.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08627,
+    "peak": 0.41655,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "ae2e8163c7f8aa79d5d24a951015bca19d31752e4b9a01766ab1cd5004ddb0ce"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Обидно. Тут минус."
+    },
+    {
+      "start": 2.0,
+      "end": 5.6000000000000005,
+      "text": " Я могу расстроиться на секунду и все равно не торопить следующий вход."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

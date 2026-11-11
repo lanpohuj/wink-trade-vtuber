@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_05",
+  "sha256": "133e2722fd9dced121aeedb5d3df1c9a490b94dd3c08cef67c776735e2ba94d7",
+  "expected": "Возврат подтверждён! Баланс получил ставку обратно, дальше проверю новую ситуацию.",
+  "transcript": "Вас, брат, подтверждён. Баланс получил ставку обратно. Дальше проверю новую ситуацию.",
+  "similarity": 0.957,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08466,
+    "peak": 0.39366,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.093,
+    "sha256": "133e2722fd9dced121aeedb5d3df1c9a490b94dd3c08cef67c776735e2ba94d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Вас, брат, подтверждён. Баланс получил ставку обратно. Дальше проверю новую ситуацию."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

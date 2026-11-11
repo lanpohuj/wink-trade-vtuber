@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_06",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Half a minute here, chat. Watching the chosen window, not judging every single second on its own.",
+  "tts_text": "[warm, relaxed] Half a minute here, chat. Watching the chosen window, not judging every single second on its own.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "eab2f06766260b728acde455689dac7a8797a01c4ccb7ed3b413077a62cde844",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_06.mp3",
+  "duration": 5.955813,
+  "sha256": "144db4cc404f67ccae21cc60abfa2f498a296b87f3809e01d411299b7d47d950",
+  "request_payload": {
+    "text": "[warm, relaxed] Half a minute here, chat. Watching the chosen window, not judging every single second on its own.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

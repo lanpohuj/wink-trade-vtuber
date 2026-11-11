@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_13",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick.",
+  "tts_text": "[confident, conversational] Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c41d87ff0f71e5b135bad2fefeec27ca84cec843b779be3b9eb00b7ce83c7741",
+  "delivery": "confident, conversational",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_13.mp3",
+  "duration": 5.773,
+  "sha256": "06d506688685ebfc703dcf4e0518d52408b81c87fc67b7e2aa168b38283d3858",
+  "request_payload": {
+    "text": "[confident, conversational] Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

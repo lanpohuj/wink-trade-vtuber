@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_14",
+  "sha256": "313e92f949afbecf7b151f29e31fd0464d824f8639eb9dbf761ae255da8ec12e",
+  "expected": "The up trade is open. I'm following the bounce from the range edge; we had a reaction behind the idea.",
+  "transcript": "The up trade is open. I'm following the bounce from the range edge. We had a reaction behind the idea.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08479,
+    "peak": 0.3637,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.133,
+    "sha256": "313e92f949afbecf7b151f29e31fd0464d824f8639eb9dbf761ae255da8ec12e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The up trade is open. I'm following the bounce from the range edge. We had a reaction behind the idea."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

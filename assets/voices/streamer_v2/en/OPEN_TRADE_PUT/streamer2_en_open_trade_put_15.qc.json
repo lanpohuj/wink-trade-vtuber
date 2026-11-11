@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_15",
+  "sha256": "573f5036c2a92a0fa4b694342b1382df4855a479a43ae1d5fd75e15b6db0382e",
+  "expected": "Right, down is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+  "transcript": "Right! Down is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.0822,
+    "peak": 0.41298,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.248,
+    "sha256": "573f5036c2a92a0fa4b694342b1382df4855a479a43ae1d5fd75e15b6db0382e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " Right! Down is running! Price gave a confirmed rejection at the boundary. Let's see this setup through."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

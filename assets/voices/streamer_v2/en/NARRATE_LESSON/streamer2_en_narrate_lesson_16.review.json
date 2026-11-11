@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_16",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The distance to the next level matters. I can like a direction and still have too little room.",
+  "tts_text": "[friendly, conversational] The distance to the next level matters. I can like a direction and still have too little room.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ac4994cf4b547f843366b54c4b62cb786a3ac77fc549055c6befd8df00f15be9",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_16.mp3",
+  "duration": 5.2505,
+  "sha256": "0c788324ed6fa68e076c1baac771f1241d188e772f873ad2aa18f14d91e8c25b",
+  "request_payload": {
+    "text": "[friendly, conversational] The distance to the next level matters. I can like a direction and still have too little room.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

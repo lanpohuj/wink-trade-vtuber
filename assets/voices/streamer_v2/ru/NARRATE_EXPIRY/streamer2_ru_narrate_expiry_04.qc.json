@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_04",
+  "sha256": "38c820ce0bde19e23ce22bc3ef6ca7c8b7d63853946af7e2a80ce80f71835f04",
+  "expected": "Так, пятнадцатисекундная сделка уже идёт. Смотрим конкретное окно, без больших обещаний маленькому таймеру.",
+  "transcript": "Так 15 секундная сделка уже идет. Смотрим конкретное окно, без больших обещаний маленькому таймеру.",
+  "similarity": 0.931,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.08915,
+    "peak": 0.35615,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "38c820ce0bde19e23ce22bc3ef6ca7c8b7d63853946af7e2a80ce80f71835f04"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Так 15 секундная сделка уже идет."
+    },
+    {
+      "start": 2.72,
+      "end": 6.72,
+      "text": " Смотрим конкретное окно, без больших обещаний маленькому таймеру."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_22",
+  "sha256": "2186df79047ed00fbde5eca7b5758091ad192a7705032fd60b3edf5e4b2b6d31",
+  "expected": "Я здесь, не переключаюсь. Хочу видеть не только красивое начало, но и фактическое закрытие.",
+  "transcript": "Я здесь, не переключаюсь. Хочу видеть не только красивое начало, но и фактическое закрытие.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.295,
+    "rms": 0.08427,
+    "peak": 0.36187,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "2186df79047ed00fbde5eca7b5758091ad192a7705032fd60b3edf5e4b2b6d31"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Я здесь, не переключаюсь."
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Хочу видеть не только красивое начало, но и фактическое закрытие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

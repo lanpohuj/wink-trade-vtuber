@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_17",
+  "sha256": "2a37790f49576a845846e6fa809e251181c70d6614278e0fe65ef590907db32f",
+  "expected": "I want the conditions to come together. One nice-looking detail doesn't make the whole decision.",
+  "transcript": "I want the conditions to come together. One nice looking detail doesn't make the whole decision.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08001,
+    "peak": 0.39537,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.32,
+    "sha256": "2a37790f49576a845846e6fa809e251181c70d6614278e0fe65ef590907db32f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " I want the conditions to come together. One nice looking detail doesn't make the whole decision."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

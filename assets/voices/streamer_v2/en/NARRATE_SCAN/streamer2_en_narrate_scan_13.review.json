@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_13",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Still here, chat, just digging into the chart. I want a clear idea behind the next entry.",
+  "tts_text": "[curious, conversational] Still here, chat, just digging into the chart. I want a clear idea behind the next entry.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "24b589efea6dbca5ba885869594259b27cae739a280f3953fa75790346c0c703",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_13.mp3",
+  "duration": 5.4595,
+  "sha256": "60e1a0eb5eae1b6b779c8ab53cca607fafa0f965888ef7bbc96bc50ff77a4d64",
+  "request_payload": {
+    "text": "[curious, conversational] Still here, chat, just digging into the chart. I want a clear idea behind the next entry.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

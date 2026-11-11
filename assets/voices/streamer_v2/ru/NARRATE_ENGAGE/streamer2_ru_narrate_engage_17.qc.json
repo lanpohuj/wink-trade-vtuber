@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_17",
+  "sha256": "96a2cb6b009d4034165b48bbffc7a2ef765868ee44af5d0e5fd92550149c4c8f",
+  "expected": "Если вы просто фоном смотрите, тоже привет. Я постараюсь говорить так, чтобы смысл не терялся без экрана.",
+  "transcript": "Если вы просто фоном смотрите тоже привет, я постараюсь говорить так, чтобы смысл не терялся без экрана.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.0852,
+    "peak": 0.35419,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.087,
+    "sha256": "96a2cb6b009d4034165b48bbffc7a2ef765868ee44af5d0e5fd92550149c4c8f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Если вы просто фоном смотрите тоже привет, я постараюсь говорить так, чтобы смысл не терялся без экрана."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

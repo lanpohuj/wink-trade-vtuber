@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_04",
+  "sha256": "608b4c5768330f97a7137f25c98b21b1ac7398c0bff388accb47001cc8eda977",
+  "expected": "Still watching. I know we want the result already, but let's let the chart finish its sentence.",
+  "transcript": "Still watching. I know we want the result already, but let's let the chart finish its sentence",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.09356,
+    "peak": 0.89276,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.224,
+    "sha256": "608b4c5768330f97a7137f25c98b21b1ac7398c0bff388accb47001cc8eda977"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " Still watching. I know we want the result already, but let's let the chart finish its sentence"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

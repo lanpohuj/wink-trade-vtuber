@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_21",
+  "sha256": "3da030ba8d3f07866c5d48748b55ed521a6065dcd4b3c5115e4b1c5d9baa7d73",
+  "expected": "If the move has already run off, I don't need to chase it. I'll check for the next clear moment.",
+  "transcript": "If the move is already run off, I don't need to chase it. I'll check for the next clear moment.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08683,
+    "peak": 0.49884,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.272,
+    "sha256": "3da030ba8d3f07866c5d48748b55ed521a6065dcd4b3c5115e4b1c5d9baa7d73"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " If the move is already run off, I don't need to chase it. I'll check for the next clear moment."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

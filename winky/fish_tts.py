@@ -57,9 +57,9 @@ class FishAudioTTS:
     def get_tuning(self, slot):
         result = {
             "speed": 1.06,
-            "temperature": 0.7,
-            "top_p": 0.7,
-            "latency": "normal",
+            "temperature": 0.82,
+            "top_p": 0.85,
+            "latency": "balanced",
             "model_id": "s2.1-pro",
             "sample_rate": 44100,
             "normalize": True,

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_12",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New scene! Time for my slightly fussy bit again: timeframes, structure, then the decision.",
+  "tts_text": "[warm, lightly playful] New scene! Time for my slightly fussy bit again: timeframes, structure, then the decision.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e1cc80c864a322aa6e436b906f4ef8af24a10aba6273ffe3ad86010f8ab1c423",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_12.mp3",
+  "duration": 7.00075,
+  "sha256": "b2360502857300052575e74637ca1e36186ae4ca0e3ade41f40c23187fe2a138",
+  "request_payload": {
+    "text": "[warm, lightly playful] New scene! Time for my slightly fussy bit again: timeframes, structure, then the decision.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

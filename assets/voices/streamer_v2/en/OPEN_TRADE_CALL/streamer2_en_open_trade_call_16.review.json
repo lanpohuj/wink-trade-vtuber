@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_call_16",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "I'm in up! More than just a pause here: local structure changed and confirmed the reversal.",
+  "tts_text": "[confident, lively] I'm in up! More than just a pause here: local structure changed and confirmed the reversal.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ad4cb62ea9c6f2cd1b00613967274d83cfea8287ecf5dff2fb78e171e8f8a40",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_CALL/streamer2_en_open_trade_call_16.mp3",
+  "duration": 6.399938,
+  "sha256": "d3e844157b42ca8c0fab9f2b0ea9b9a4c7ba5f4b2687273ac7e076cca1fe8f95",
+  "request_payload": {
+    "text": "[confident, lively] I'm in up! More than just a pause here: local structure changed and confirmed the reversal.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

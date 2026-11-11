@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_02",
+  "sha256": "3a9757c8f9b5f27b6e0868b1fcf85759a800113f25f1f17528d01f4e18084e37",
+  "expected": "The up trade is running. We got confirmation after the pullback; now let's watch the actual close.",
+  "transcript": "The up trade is running. We got confirmation after the pullback. Now let's watch the actual close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08521,
+    "peak": 0.42304,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.144,
+    "sha256": "3a9757c8f9b5f27b6e0868b1fcf85759a800113f25f1f17528d01f4e18084e37"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The up trade is running. We got confirmation after the pullback. Now let's watch the actual close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

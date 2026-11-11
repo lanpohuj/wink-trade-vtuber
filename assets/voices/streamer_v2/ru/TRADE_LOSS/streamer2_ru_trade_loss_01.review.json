@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_01",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+  "tts_text": "[slightly disappointed, composed] Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "74d5eb421450542427d75745605fc16e8b77f775b720e6b8fc3364602f8cce47",
+  "delivery": "slightly disappointed, composed",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_01.mp3",
+  "duration": 7.915,
+  "sha256": "0c113c5b08e4892ad49b79f86d2bd9aa4d523335f800b314d9db4f053213d7e9",
+  "request_payload": {
+    "text": "[slightly disappointed, composed] Эх, тут минус. Неприятно, да. Сейчас спокойно разберусь и посмотрю, что предлагает следующий график.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

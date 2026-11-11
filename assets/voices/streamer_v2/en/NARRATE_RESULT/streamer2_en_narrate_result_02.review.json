@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_02",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Right, the stake's one hundred and ten now. The step changed; my chart checks didn't.",
+  "tts_text": "[confident, steady] Right, the stake's one hundred and ten now. The step changed; my chart checks didn't.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2928e60d23b29ebdce1646c0043d455c51b3e4a51e9eb51fcb735d67f6657448",
+  "delivery": "confident, steady",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_02.mp3",
+  "duration": 5.564,
+  "sha256": "861ee2dd099029764b87517bae5347c528ab56039934a9360a96acf6772295f1",
+  "request_payload": {
+    "text": "[confident, steady] Right, the stake's one hundred and ten now. The step changed; my chart checks didn't.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

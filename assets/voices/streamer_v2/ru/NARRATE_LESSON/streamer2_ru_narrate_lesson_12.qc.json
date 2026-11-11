@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_12",
+  "sha256": "13f2caeed521497774148f1906fe73d2e6fbf27569d7bb0b2b37050b65e0f684",
+  "expected": "Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив.",
+  "transcript": "Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07566,
+    "peak": 0.3019,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.187,
+    "sha256": "13f2caeed521497774148f1906fe73d2e6fbf27569d7bb0b2b37050b65e0f684"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

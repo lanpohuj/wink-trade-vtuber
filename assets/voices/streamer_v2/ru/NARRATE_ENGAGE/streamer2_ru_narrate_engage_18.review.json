@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_18",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Чат, вы больше любите наблюдать короткие сделки или разбирать минутные? Именно смотреть, не повторять за мной.",
+  "tts_text": "[smiling, relaxed] Чат, вы больше любите наблюдать короткие сделки или разбирать минутные? Именно смотреть, не повторять за мной.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a250a81b34e5fb7176e4b91c722216069f8082d83f17a1993050743be6d7dd69",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_18.mp3",
+  "duration": 7.888875,
+  "sha256": "e51aa3c7cd39d1b19131bd35241544dbc04ae0c3c6f2007581c5718a5f16999a",
+  "request_payload": {
+    "text": "[smiling, relaxed] Чат, вы больше любите наблюдать короткие сделки или разбирать минутные? Именно смотреть, не повторять за мной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

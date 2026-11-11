@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_volatility_05",
+  "sha256": "9a26eaec7cb87a6dbc21972848218c096ecee38070bd8a7b3ef38becfa5cb80f",
+  "expected": "Oh, the chart's got a sharper edge. There's a measured range expansion behind that, not just a feeling.",
+  "transcript": "Oh, the chart's got a sharper edge. There's a measured range expansion behind that, not just a feeling.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.0809,
+    "peak": 0.38496,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.207,
+    "sha256": "9a26eaec7cb87a6dbc21972848218c096ecee38070bd8a7b3ef38becfa5cb80f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Oh, the chart's got a sharper edge."
+    },
+    {
+      "start": 2.32,
+      "end": 5.92,
+      "text": " There's a measured range expansion behind that, not just a feeling."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

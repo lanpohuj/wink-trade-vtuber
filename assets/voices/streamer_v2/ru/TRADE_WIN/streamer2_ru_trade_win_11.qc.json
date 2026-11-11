@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_11",
+  "sha256": "86a7659ee804b9c68a9e11a15f6a946caa96b00622be708e974de35bdd03441b",
+  "expected": "Красиво закончили эту историю! Плюс на месте, дальше без лишнего геройства.",
+  "transcript": "Красиво закончили эту историю! Плюс на месте! Дальше без лишнего геройства!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08259,
+    "peak": 0.34358,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.078,
+    "sha256": "86a7659ee804b9c68a9e11a15f6a946caa96b00622be708e974de35bdd03441b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Красиво закончили эту историю!"
+    },
+    {
+      "start": 2.12,
+      "end": 5.16,
+      "text": " Плюс на месте! Дальше без лишнего геройства!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

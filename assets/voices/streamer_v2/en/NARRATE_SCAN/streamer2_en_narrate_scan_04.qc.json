@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_04",
+  "sha256": "4d3097ebca7d7a8e2824cee99882abc4249515773a76486f27d8de53aa81a1dc",
+  "expected": "Right, no rush. Let me work through this chart while you get comfortable.",
+  "transcript": "Right, no rush. Let me work through this chart while you get comfortable.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07527,
+    "peak": 0.39498,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.204,
+    "sha256": "4d3097ebca7d7a8e2824cee99882abc4249515773a76486f27d8de53aa81a1dc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Right, no rush. Let me work through this chart while you get comfortable."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

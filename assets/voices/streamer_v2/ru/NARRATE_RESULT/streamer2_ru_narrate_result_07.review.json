@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_07",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Так, перекрытие на двести сорок два. План вижу, спешку выключаю, ищу следующую подходящую ситуацию.",
+  "tts_text": "[composed, conversational] Так, перекрытие на двести сорок два. План вижу, спешку выключаю, ищу следующую подходящую ситуацию.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a488d7feb84aaf6c6141b6668c709b4e2b82f80003198df64d68e6ad07b6f864",
+  "delivery": "composed, conversational",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_07.mp3",
+  "duration": 6.68725,
+  "sha256": "2fad18082e84442fe43138157884a1627c041dfb657733a5bfb487c14cb65128",
+  "request_payload": {
+    "text": "[composed, conversational] Так, перекрытие на двести сорок два. План вижу, спешку выключаю, ищу следующую подходящую ситуацию.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

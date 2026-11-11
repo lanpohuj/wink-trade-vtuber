@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_27",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I like a simple question: what would cancel this idea? Sometimes that's worth more than ten arguments for it.",
+  "tts_text": "[lightly playful] I like a simple question: what would cancel this idea? Sometimes that's worth more than ten arguments for it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e728c6e03afe10cd6620ee62bdfdb69723452f03b2862eec3472cb39a5b3a3d9",
+  "delivery": "lightly playful",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_27.mp3",
+  "duration": 6.68725,
+  "sha256": "6a11e045047cfa1b0a31bc5300fb3b9010a7ef1d54de678b2b926619915e19f1",
+  "request_payload": {
+    "text": "[lightly playful] I like a simple question: what would cancel this idea? Sometimes that's worth more than ten arguments for it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

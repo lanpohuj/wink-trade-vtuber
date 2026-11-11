@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_04",
+  "sha256": "8f68259f84aa65e3c43b6c1566b724e0f820683a78a7b98e623b02943afc2ab7",
+  "expected": "Закрытие с возвратом. Ну, сегодня эта история решила обойтись без плюса и минуса.",
+  "transcript": "Закрытие с возвратом, но сегодня эта история решила обойтись без плюса и минуса.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08682,
+    "peak": 0.41722,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.073,
+    "sha256": "8f68259f84aa65e3c43b6c1566b724e0f820683a78a7b98e623b02943afc2ab7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Закрытие с возвратом, но сегодня эта история решила обойтись без плюса и минуса."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_15",
+  "sha256": "edfd6f1d364c181a77cf3b3398adeb81254f67cd26943347d887faa9811b83d5",
+  "expected": "Вот сейчас как раз та часть, которую обычно хочется промотать. А я проверю её внимательно.",
+  "transcript": "Вот сейчас как раз та часть, которую обычно хочется промотать. Я проверю ее внимательно.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08429,
+    "peak": 0.38007,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.09,
+    "sha256": "edfd6f1d364c181a77cf3b3398adeb81254f67cd26943347d887faa9811b83d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Вот сейчас как раз та часть, которую обычно хочется промотать."
+    },
+    {
+      "start": 3.4,
+      "end": 5.5600000000000005,
+      "text": " Я проверю ее внимательно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

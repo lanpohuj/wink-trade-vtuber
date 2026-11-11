@@ -1,0 +1,14 @@
+{
+  "id": "streamer2_en_narrate_trade_07",
+  "original_defect": "Generated duration 44.98s; technical QC rejected",
+  "rejected_corrected_take": {
+    "sha256": "f01b7dbcd1e191b6fcdc8413a9f7e7cbaff1a3b8f69dc3ceffd06a939f0ab4ba",
+    "owner_accepted": false
+  },
+  "selected_take": {
+    "file": "docs/voice-audit/streamer-v2/retake-en-trade-07-a.mp3",
+    "sha256": "a25d66d4fea109525991c2f32490ae40d22f418002d2ed7b986c66900a4597c5",
+    "owner_accepted": true
+  },
+  "unselected_take": "retake-en-trade-07-b.mp3"
+}

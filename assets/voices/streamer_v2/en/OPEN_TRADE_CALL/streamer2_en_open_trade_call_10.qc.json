@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_10",
+  "sha256": "0b5575726450f502ff5be6dd832a6f9e812c2b630c00087d22503816bcaf96e7",
+  "expected": "The up trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch.",
+  "transcript": "The up trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08096,
+    "peak": 0.43327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.287,
+    "sha256": "0b5575726450f502ff5be6dd832a6f9e812c2b630c00087d22503816bcaf96e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The up trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

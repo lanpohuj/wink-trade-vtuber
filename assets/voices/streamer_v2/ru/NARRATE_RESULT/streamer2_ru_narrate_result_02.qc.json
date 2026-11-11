@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_result_02",
+  "sha256": "8dee10d5b9e90ebd741733d1348ebcf14e29f537618db175cb91b4493e171d9d",
+  "expected": "Так, теперь ставка сто десять. Шаг изменился, а требования к графику остались прежними.",
+  "transcript": "Так, теперь ставка 110. Шаг изменился, отребования к графику остались прежними.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08237,
+    "peak": 0.35835,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "8dee10d5b9e90ebd741733d1348ebcf14e29f537618db175cb91b4493e171d9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Так, теперь ставка 110."
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Шаг изменился, отребования к графику остались прежними."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

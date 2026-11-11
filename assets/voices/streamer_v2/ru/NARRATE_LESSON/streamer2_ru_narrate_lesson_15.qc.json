@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_15",
+  "sha256": "f73fbd20af6196a2aec8c9e668e019933a0e407903a82af4af2e4b9aeafcbdf0",
+  "expected": "Длинная сделка не становится спокойнее просто от своего названия. Ей тоже нужен подходящий сценарий.",
+  "transcript": "длинная сделка не становится спокойнее просто от своего названия ей тоже нужен подходящий сценарий",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08831,
+    "peak": 0.32599,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.108,
+    "sha256": "f73fbd20af6196a2aec8c9e668e019933a0e407903a82af4af2e4b9aeafcbdf0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " длинная сделка не становится спокойнее просто от своего названия ей тоже нужен подходящий сценарий"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

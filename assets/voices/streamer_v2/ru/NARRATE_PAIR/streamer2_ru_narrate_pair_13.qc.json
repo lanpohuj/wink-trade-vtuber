@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_13",
+  "sha256": "572d8679b0a1aedc38d48248cf4944c071b1a4a9934cefd25001d22031e59ea8",
+  "expected": "Посмотрим ещё один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет.",
+  "transcript": "Посмотрим еще один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07855,
+    "peak": 0.30404,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.073,
+    "sha256": "572d8679b0a1aedc38d48248cf4944c071b1a4a9934cefd25001d22031e59ea8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Посмотрим еще один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_03",
+  "sha256": "64c6e29f1fd197ffc36fc5773134600c74186de2471e61309c505ee856c9432b",
+  "expected": "Мне важно, что цена делает у уровня. Просто нарисовать красивую линию — это ещё полдела.",
+  "transcript": "Мне важно, что цена делает у уровня. Просто нарисовать красивую линию это еще полдела.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07795,
+    "peak": 0.30079,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.093,
+    "sha256": "64c6e29f1fd197ffc36fc5773134600c74186de2471e61309c505ee856c9432b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Мне важно, что цена делает у уровня."
+    },
+    {
+      "start": 2.5,
+      "end": 6.0,
+      "text": " Просто нарисовать красивую линию это еще полдела."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

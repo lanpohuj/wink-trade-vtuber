@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_02",
+  "sha256": "33df3c22c6ec383a6e4e17aac0314c263adc4618652abe56419b544824c6121f",
+  "expected": "The down trade is running. We got confirmation after the pullback; now let's watch the actual close.",
+  "transcript": "The downtrade is running. We got confirmation after the pullback. Now let's watch the actual close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08511,
+    "peak": 0.41055,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.258,
+    "sha256": "33df3c22c6ec383a6e4e17aac0314c263adc4618652abe56419b544824c6121f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " The downtrade is running. We got confirmation after the pullback. Now let's watch the actual close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

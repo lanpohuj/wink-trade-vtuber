@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_11",
+  "sha256": "fe0ce3cdf3009976df0caeb133cfc046208325bb59e808a21355866ff76eced2",
+  "expected": "Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me.",
+  "transcript": "Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08096,
+    "peak": 0.34975,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.252,
+    "sha256": "fe0ce3cdf3009976df0caeb133cfc046208325bb59e808a21355866ff76eced2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_07",
+  "sha256": "1a945a41c3adfa468be7cb86232d8e4ec0896bf0f371238cf525127a0df32dd4",
+  "expected": "Одна зелёная свеча — ещё не весь тренд. Звучит скучно, зато очень легко забывается в моменте.",
+  "transcript": "Одна зеленая свеча, и еще не весь тренд. Звучит скучно, зато очень легко забывается в моменте.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.661,
+    "rms": 0.08955,
+    "peak": 0.38417,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.141,
+    "sha256": "1a945a41c3adfa468be7cb86232d8e4ec0896bf0f371238cf525127a0df32dd4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Одна зеленая свеча, и еще не весь тренд."
+    },
+    {
+      "start": 3.0,
+      "end": 6.5,
+      "text": " Звучит скучно, зато очень легко забывается в моменте."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

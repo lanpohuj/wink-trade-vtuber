@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_26",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "После минуса я не меняю объяснение задним числом. Лучше понять, что было, чем красиво себя оправдать.",
+  "tts_text": "[thoughtful, relaxed] После минуса я не меняю объяснение задним числом. Лучше понять, что было, чем красиво себя оправдать.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e9400344d21609157977c9b8e243d1e8d45e2a4a8ee903cd30a8671500339530",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_26.mp3",
+  "duration": 6.608875,
+  "sha256": "f2e2a62bb878bc316ea2defc8b147acbc26e8c733636dc71b9082b6690c37369",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] После минуса я не меняю объяснение задним числом. Лучше понять, что было, чем красиво себя оправдать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_11",
+  "sha256": "b4327b601e04bc501211ee9558ec267a0c732c69aae3714b17f80a7a02532e4a",
+  "expected": "The stake returns to fifty after that step. I'll calmly rebuild the picture, no promises to recover everything at once.",
+  "transcript": "The stake returns to 50 after that step. I'll calmly rebuild the picture. No promises to recover everything at once.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.445,
+    "rms": 0.08146,
+    "peak": 0.7199,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.265,
+    "sha256": "b4327b601e04bc501211ee9558ec267a0c732c69aae3714b17f80a7a02532e4a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.36,
+      "text": " The stake returns to 50 after that step. I'll calmly rebuild the picture. No promises to recover everything at once."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

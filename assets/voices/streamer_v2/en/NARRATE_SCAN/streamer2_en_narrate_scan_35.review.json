@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_35",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air.",
+  "tts_text": "[conversational, smiling] Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "063882a6eb532cff1be616b98cd58e20496e12849af1755f3425d135b29e8ee7",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_35.mp3",
+  "duration": 5.4595,
+  "sha256": "85c14effbe42682aefd196a64e3d01c8fd43b68a18a194e1c034241aab33caa4",
+  "request_payload": {
+    "text": "[conversational, smiling] Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

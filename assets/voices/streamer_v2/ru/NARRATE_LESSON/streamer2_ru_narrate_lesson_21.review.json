@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_21",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Если движение уже убежало, это не повод мчаться за ним. Я лучше проверю следующий понятный момент.",
+  "tts_text": "[lightly playful] Если движение уже убежало, это не повод мчаться за ним. Я лучше проверю следующий понятный момент.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "75931ff784d784f731e69fc7ce2aeb7030db8152ba9197215afe9365ba75805a",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_21.mp3",
+  "duration": 6.347688,
+  "sha256": "10a06b19ac778d3cc5f89ce1d868ff2795b8836e604e28d71bbbd08dbb2e3336",
+  "request_payload": {
+    "text": "[lightly playful] Если движение уже убежало, это не повод мчаться за ним. Я лучше проверю следующий понятный момент.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

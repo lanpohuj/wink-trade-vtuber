@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_06",
+  "sha256": "c16840247281ff5dc26bc05e6a40de1362aa7ea63d914642ce2494b8c68254fc",
+  "expected": "Ну что, посмотрим, есть ли здесь что-то интересное. Уговаривать график я сегодня не планирую.",
+  "transcript": "Ну что, посмотрим, есть ли здесь что-то интересное. Уговаривать график я сегодня не планирую.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08557,
+    "peak": 0.32189,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "c16840247281ff5dc26bc05e6a40de1362aa7ea63d914642ce2494b8c68254fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.04,
+      "text": " Ну что, посмотрим, есть ли здесь что-то интересное."
+    },
+    {
+      "start": 3.04,
+      "end": 5.54,
+      "text": " Уговаривать график я сегодня не планирую."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

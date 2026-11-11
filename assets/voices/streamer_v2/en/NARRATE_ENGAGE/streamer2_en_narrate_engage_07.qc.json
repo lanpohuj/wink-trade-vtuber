@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_07",
+  "sha256": "6f9d57640922a21af4be878d246e117ea6e349c2cd66f8ab9196e33b5f0bf5ec",
+  "expected": "No quiz on trading abbreviations here. If I make it sound complicated, we'll put it into plain English.",
+  "transcript": "No quiz on trading abbreviations here. If I make it sound complicated, we'll put it into plain English.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.07768,
+    "peak": 0.36367,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.174,
+    "sha256": "6f9d57640922a21af4be878d246e117ea6e349c2cd66f8ab9196e33b5f0bf5ec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " No quiz on trading abbreviations here. If I make it sound complicated, we'll put it into plain English."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_11",
+  "sha256": "d761d2bcd20846ca878c05d890b42765ee41b7e73ecaa72a9ca4b890b90990da",
+  "expected": "A minute on this entry. I'm watching the move as a whole, not staging a finale every five seconds.",
+  "transcript": "A minute on this entry, I'm watching the move as a whole, not staging a finale every five seconds.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.07814,
+    "peak": 0.391,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.256,
+    "sha256": "d761d2bcd20846ca878c05d890b42765ee41b7e73ecaa72a9ca4b890b90990da"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " A minute on this entry, I'm watching the move as a whole, not staging a finale every five seconds."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

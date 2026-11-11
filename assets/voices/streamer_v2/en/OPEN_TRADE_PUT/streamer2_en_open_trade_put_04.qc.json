@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_04",
+  "sha256": "285e46a558562e103973cbf9e215145a25bc8a099f8c41b99d2c791bac7f2cb8",
+  "expected": "Opened down. It's the move out of the pullback I'm interested in; confirmation came and the trade's on screen.",
+  "transcript": "Open down. It's the move out of the pullback. I'm interested in confirmation came in the trades on screen",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.687,
+    "rms": 0.08483,
+    "peak": 0.42958,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.227,
+    "sha256": "285e46a558562e103973cbf9e215145a25bc8a099f8c41b99d2c791bac7f2cb8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.28,
+      "text": " Open down. It's the move out of the pullback. I'm interested in confirmation came in the trades on screen"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

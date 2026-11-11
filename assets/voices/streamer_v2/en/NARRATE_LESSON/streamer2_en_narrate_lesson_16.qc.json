@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_16",
+  "sha256": "0c788324ed6fa68e076c1baac771f1241d188e772f873ad2aa18f14d91e8c25b",
+  "expected": "The distance to the next level matters. I can like a direction and still have too little room.",
+  "transcript": "The distance to the next level matters. I can like a direction and still have too little room.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.0803,
+    "peak": 0.34245,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.171,
+    "sha256": "0c788324ed6fa68e076c1baac771f1241d188e772f873ad2aa18f14d91e8c25b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " The distance to the next level matters. I can like a direction and still have too little room."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

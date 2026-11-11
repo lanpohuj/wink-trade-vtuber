@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_10",
+  "sha256": "ff7393108f778773ef60c04b86b3145f63e6d195c2b06c42bcbd6cf5aa2b030b",
+  "expected": "Annoying, that one's red. I can be disappointed for a second without rushing the next entry.",
+  "transcript": "Annoying. That one's red. I can be disappointed for a second without rushing the next entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07743,
+    "peak": 0.44105,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.242,
+    "sha256": "ff7393108f778773ef60c04b86b3145f63e6d195c2b06c42bcbd6cf5aa2b030b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Annoying. That one's red. I can be disappointed for a second without rushing the next entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

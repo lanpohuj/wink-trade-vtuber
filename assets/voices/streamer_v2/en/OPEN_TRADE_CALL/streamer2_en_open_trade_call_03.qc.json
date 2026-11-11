@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_03",
+  "sha256": "304cf4e46b6e8306a2db35a89e02b6ffa9aa285e93751f31e9e07eed6d1444df",
+  "expected": "I'm in up, chat. The move picking up after the pullback caught my attention, not just one candle.",
+  "transcript": "I'm in up chat. The move picking up after the pullback caught my attention, not just one candle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08101,
+    "peak": 0.38224,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "304cf4e46b6e8306a2db35a89e02b6ffa9aa285e93751f31e9e07eed6d1444df"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " I'm in up chat. The move picking up after the pullback caught my attention, not just one candle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_09",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle.",
+  "tts_text": "[confident, conversational] This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "70360cb95f11c11b312546e300f9fba0aaaae3f0b19d5bb2b16b1504dde6f2d0",
+  "delivery": "confident, conversational",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_09.mp3",
+  "duration": 5.2505,
+  "sha256": "43f99aa0843dd8b59fb16b925295732d5e47ae7af9cf0ded38fb29411637830c",
+  "request_payload": {
+    "text": "[confident, conversational] This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

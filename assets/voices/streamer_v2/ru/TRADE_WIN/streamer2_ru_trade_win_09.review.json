@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_09",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюс подтверждён! Вот теперь моя довольная интонация вполне по делу.",
+  "tts_text": "[bright, warm] Плюс подтверждён! Вот теперь моя довольная интонация вполне по делу.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8b186dd29cf55f66e102de36dd5c862afaa00a3797203dc42972ac52cd0f9cc4",
+  "delivery": "bright, warm",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_09.mp3",
+  "duration": 4.545187,
+  "sha256": "06db26947a049d116eec01fb474aeae646e79d3ad93fc3014de85b4b1f78c8ca",
+  "request_payload": {
+    "text": "[bright, warm] Плюс подтверждён! Вот теперь моя довольная интонация вполне по делу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

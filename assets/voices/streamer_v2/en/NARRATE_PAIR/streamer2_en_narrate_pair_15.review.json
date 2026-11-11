@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_15",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New asset. Let's get to know the chart before making any serious commitments.",
+  "tts_text": "[warm, lightly playful] New asset. Let's get to know the chart before making any serious commitments.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a6e657df63c315f144972f8ec02c938ed5b99e87d4ef14fdd844341306c037aa",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_15.mp3",
+  "duration": 4.545187,
+  "sha256": "4558b6cd11faa26e80ebdf185cededc8f035caa55cb248530cdd6f6576326749",
+  "request_payload": {
+    "text": "[warm, lightly playful] New asset. Let's get to know the chart before making any serious commitments.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

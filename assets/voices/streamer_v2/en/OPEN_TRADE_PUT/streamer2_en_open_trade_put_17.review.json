@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_17",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down, chat. The level reaction developed into a confirmed local reversal; that's my entry reason.",
+  "tts_text": "[bright, conversational] Opened down, chat. The level reaction developed into a confirmed local reversal; that's my entry reason.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aa56542aa130d9f4780466b25819f06f7451a23f6d930e6e3d7e37ee85f4d335",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_17.mp3",
+  "duration": 6.556625,
+  "sha256": "21803792761eb0821dac07fc0dc313ba1c3ade76437ff729003b80cc1fe75980",
+  "request_payload": {
+    "text": "[bright, conversational] Opened down, chat. The level reaction developed into a confirmed local reversal; that's my entry reason.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

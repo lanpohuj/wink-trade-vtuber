@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_13",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "That's a frustrating finish: positive just before the close, then a tiny move left it red.",
+  "tts_text": "[disappointed, composed] That's a frustrating finish: positive just before the close, then a tiny move left it red.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7749a0b6564681f63e723c2b5447ee2875cdcd32dee2d5475e7f60dcc3bb31f8",
+  "delivery": "disappointed, composed",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_13.mp3",
+  "duration": 5.903563,
+  "sha256": "8be47159ee32902aa981e2e1d4182e45b765083c8eb7d2b4947fbfb728f9d264",
+  "request_payload": {
+    "text": "[disappointed, composed] That's a frustrating finish: positive just before the close, then a tiny move left it red.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

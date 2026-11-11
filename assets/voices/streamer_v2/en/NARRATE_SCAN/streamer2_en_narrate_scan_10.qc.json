@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_10",
+  "sha256": "ea8f1245ef2470ed9e849c41bf7c3a16a6e1a2cc9eac5f82f08b9c73bb462efe",
+  "expected": "Give me another second. I'm checking whether the short move fits the bigger picture.",
+  "transcript": "Give me another second. I'm checking whether the short move fits the bigger picture.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08033,
+    "peak": 0.46187,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.235,
+    "sha256": "ea8f1245ef2470ed9e849c41bf7c3a16a6e1a2cc9eac5f82f08b9c73bb462efe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Give me another second. I'm checking whether the short move fits the bigger picture."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

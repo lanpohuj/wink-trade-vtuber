@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_14",
+  "sha256": "44132dbe813ca725b72b54e8b04b70132d797da30b9f4db773b843439dd4f877",
+  "expected": "I've chosen two minutes. One quick wobble isn't a reason to rewrite the whole idea.",
+  "transcript": "I've chosen two minutes. One quick wobble isn't a reason to rewrite the whole idea.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08371,
+    "peak": 0.45507,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.156,
+    "sha256": "44132dbe813ca725b72b54e8b04b70132d797da30b9f4db773b843439dd4f877"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " I've chosen two minutes. One quick wobble isn't a reason to rewrite the whole idea."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

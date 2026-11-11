@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_12",
+  "sha256": "7f20faea2e0893e10794b105f4e057670e3f5d65aa185d1669972c1a6b2cd330",
+  "expected": "I'd rather check again. Clicking quickly is easy; choosing the moment is the interesting part.",
+  "transcript": "I'd rather check again. Clicking quickly is easy. Choosing the moment is the interesting part.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08305,
+    "peak": 0.37858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.238,
+    "sha256": "7f20faea2e0893e10794b105f4e057670e3f5d65aa185d1669972c1a6b2cd330"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " I'd rather check again. Clicking quickly is easy. Choosing the moment is the interesting part."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

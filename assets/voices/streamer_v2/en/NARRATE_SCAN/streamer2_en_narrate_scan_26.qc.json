@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_26",
+  "sha256": "3d48319035b798b9f2a0bd03d128068fd92d0d544ead4caff3da3f1ff36ea5a5",
+  "expected": "Right, where's the entry idea here? I'll check that before choosing the expiry.",
+  "transcript": "Right, where's the entry idea here? I'll check that before choosing the expiry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08117,
+    "peak": 0.44269,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.129,
+    "sha256": "3d48319035b798b9f2a0bd03d128068fd92d0d544ead4caff3da3f1ff36ea5a5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Right, where's the entry idea here? I'll check that before choosing the expiry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

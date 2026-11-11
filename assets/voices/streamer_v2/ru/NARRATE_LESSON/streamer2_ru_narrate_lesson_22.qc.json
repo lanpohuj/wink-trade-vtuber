@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_22",
+  "sha256": "8fdd45c293b17e0e3ec50db582b8576a356e27ee8b9ee7efa0e9fbc1849b8625",
+  "expected": "Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас.",
+  "transcript": "Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.0747,
+    "peak": 0.28151,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "8fdd45c293b17e0e3ec50db582b8576a356e27ee8b9ee7efa0e9fbc1849b8625"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

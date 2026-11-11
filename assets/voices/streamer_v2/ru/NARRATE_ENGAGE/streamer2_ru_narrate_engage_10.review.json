@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_10",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Если хочется, чтобы я объяснила какой-то момент подробнее, напишите сам момент. Так будет проще не разминуться.",
+  "tts_text": "[friendly, curious] Если хочется, чтобы я объяснила какой-то момент подробнее, напишите сам момент. Так будет проще не разминуться.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "61a8a4a1dddd967a7ed0ad81d2240651f7f5ff297e1b9f030b4e9467ff12f607",
+  "delivery": "friendly, curious",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_10.mp3",
+  "duration": 5.825188,
+  "sha256": "646232a34b0e167f7c4c5b8e5b0ca96bbba785f3b3abc467287e5ade32e61972",
+  "request_payload": {
+    "text": "[friendly, curious] Если хочется, чтобы я объяснила какой-то момент подробнее, напишите сам момент. Так будет проще не разминуться.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

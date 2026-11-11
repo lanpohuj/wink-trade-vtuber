@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_13",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Let's check another chart. I like having options rather than pretending there's only one.",
+  "tts_text": "[curious, conversational] Let's check another chart. I like having options rather than pretending there's only one.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7fd5106238a82e2c896d8d34ddedaae4b88868264485da8bdb70e9b60f0d61db",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_13.mp3",
+  "duration": 4.728063,
+  "sha256": "49b100dde60d46d5cc2eec2bf7b0aa24f89114c90ed7cbb8f50744186287718a",
+  "request_payload": {
+    "text": "[curious, conversational] Let's check another chart. I like having options rather than pretending there's only one.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

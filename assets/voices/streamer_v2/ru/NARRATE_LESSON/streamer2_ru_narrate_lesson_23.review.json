@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_23",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Разные интервалы могут спорить. Это нормально; я не буду выбирать только тот, который говорит приятное.",
+  "tts_text": "[thoughtful, relaxed] Разные интервалы могут спорить. Это нормально; я не буду выбирать только тот, который говорит приятное.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b57555a75aa16ae7827eabbc0606d3492cac3e7f3dccd167dfaeb41dc17ce75e",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_23.mp3",
+  "duration": 6.086438,
+  "sha256": "c7436a0f63bd3f15ca90f2ba1d485cf6738190a068cd5ef60903c613952d06a6",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Разные интервалы могут спорить. Это нормально; я не буду выбирать только тот, который говорит приятное.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

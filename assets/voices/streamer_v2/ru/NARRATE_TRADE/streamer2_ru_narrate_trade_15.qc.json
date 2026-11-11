@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_15",
+  "sha256": "c60046d20949b99cf9546d05e250f97d8944dd509208bb2ded3d989b0ffe42ae",
+  "expected": "Чатик, пока всё внимание сюда. Следующую пару будем разбирать уже после этой сделки.",
+  "transcript": "Чатик, пока все внимание сюда! Следующую пару будем разбирать уже после этой сделки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.0915,
+    "peak": 0.41925,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "c60046d20949b99cf9546d05e250f97d8944dd509208bb2ded3d989b0ffe42ae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " Чатик, пока все внимание сюда!"
+    },
+    {
+      "start": 2.68,
+      "end": 5.68,
+      "text": " Следующую пару будем разбирать уже после этой сделки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

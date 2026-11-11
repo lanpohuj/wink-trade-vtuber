@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_23",
+  "sha256": "eb2060ff255c4015a07ae990f1fcb59bb43bfb8132fcb3ef9688f6dd65d36b19",
+  "expected": "Be honest, chat: which is harder to watch, waiting for an entry or the last seconds of a trade?",
+  "transcript": "Be honest, chat. Which is harder to watch. Waiting for an entry or the last seconds of a trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.07848,
+    "peak": 0.34425,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.204,
+    "sha256": "eb2060ff255c4015a07ae990f1fcb59bb43bfb8132fcb3ef9688f6dd65d36b19"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Be honest, chat. Which is harder to watch. Waiting for an entry or the last seconds of a trade."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

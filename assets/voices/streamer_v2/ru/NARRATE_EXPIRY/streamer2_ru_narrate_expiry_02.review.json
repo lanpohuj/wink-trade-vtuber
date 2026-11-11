@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_02",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбрала пятнадцать секунд. Сейчас важен именно этот короткий участок, а не то, что будет через полчаса.",
+  "tts_text": "[warm, relaxed] Выбрала пятнадцать секунд. Сейчас важен именно этот короткий участок, а не то, что будет через полчаса.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "485975067caf52aa033f9b178ac2f3f1d04017e78f2208fbcf97f1eded0133da",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_02.mp3",
+  "duration": 6.269312,
+  "sha256": "31446f1947d0eb04b6b3e85a079ad52ae9cef623321d921b0f361085fa548274",
+  "request_payload": {
+    "text": "[warm, relaxed] Выбрала пятнадцать секунд. Сейчас важен именно этот короткий участок, а не то, что будет через полчаса.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

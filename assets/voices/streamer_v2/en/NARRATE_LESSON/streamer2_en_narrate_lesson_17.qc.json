@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_17",
+  "sha256": "2974112cdcb21d951d01769f6af7588351f61b25d01c0eaad879d6512ec5824d",
+  "expected": "A chart can change while I'm explaining it. So I check the idea again just before entry.",
+  "transcript": "A chart can change while I'm explaining it, so I check the idea again just before entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08728,
+    "peak": 0.75862,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.251,
+    "sha256": "2974112cdcb21d951d01769f6af7588351f61b25d01c0eaad879d6512ec5824d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " A chart can change while I'm explaining it, so I check the idea again just before entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_30",
+  "sha256": "e98de47227dc6121e7594acae9e59d3bf51094dde1adb977fb6fa614ee698a93",
+  "expected": "Even a good-looking setup can close against us. Handling the result is part of the plan too.",
+  "transcript": "Even a good-looking setup can close against us. Handling the result is part of the plan, too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07935,
+    "peak": 0.46129,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.242,
+    "sha256": "e98de47227dc6121e7594acae9e59d3bf51094dde1adb977fb6fa614ee698a93"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Even a good-looking setup can close against us. Handling the result is part of the plan, too."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

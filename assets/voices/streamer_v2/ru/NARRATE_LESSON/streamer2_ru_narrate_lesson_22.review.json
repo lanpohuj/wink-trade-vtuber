@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_22",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас.",
+  "tts_text": "[friendly, conversational] Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c9af2b03f1836d6d6f0dd0b7abd587ab723f20c1740e488cba90042297efd30e",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_22.mp3",
+  "duration": 5.328875,
+  "sha256": "8fdd45c293b17e0e3ec50db582b8576a356e27ee8b9ee7efa0e9fbc1849b8625",
+  "request_payload": {
+    "text": "[friendly, conversational] Мне не нужен каждый график. Мне нужен тот, на котором условия совпали именно сейчас.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

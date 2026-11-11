@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_08",
+  "sha256": "2bd66e042346e1e50d84644b7b8aa015c6f812880c114e86698c6581dc4bb17d",
+  "expected": "A thirty-second trade. I'd rather watch it through than change my mind every couple of ticks.",
+  "transcript": "A 30-second trade. I'd rather watch it through than change my mind every couple of ticks.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08755,
+    "peak": 0.55107,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.218,
+    "sha256": "2bd66e042346e1e50d84644b7b8aa015c6f812880c114e86698c6581dc4bb17d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " A 30-second trade. I'd rather watch it through than change my mind every couple of ticks."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

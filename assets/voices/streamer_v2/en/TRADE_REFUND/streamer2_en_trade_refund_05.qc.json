@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_05",
+  "sha256": "c295976945a4175c785a727657ce73523562b8e59ca6cdf8dac4afe579ddcd48",
+  "expected": "Refund confirmed! The stake's back; I'll check the next situation.",
+  "transcript": "Refund confirmed. The stakes back. I'll check the next situation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07976,
+    "peak": 0.4734,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.055,
+    "sha256": "c295976945a4175c785a727657ce73523562b8e59ca6cdf8dac4afe579ddcd48"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Refund confirmed. The stakes back. I'll check the next situation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

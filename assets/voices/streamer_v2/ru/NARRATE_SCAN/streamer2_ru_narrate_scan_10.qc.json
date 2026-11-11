@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_10",
+  "sha256": "7db2ff981f2868555c331e03ba9890ef18ff07de7407897343dc47f72deec5e1",
+  "expected": "Так, дайте мне ещё секундочку. Проверю, совпадает ли короткое движение с общей картиной.",
+  "transcript": "Так, дайте мне ещё секундочку. Проверю, совпадает ли короткое движение с общей картиной?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.426,
+    "rms": 0.08547,
+    "peak": 0.37014,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.046,
+    "sha256": "7db2ff981f2868555c331e03ba9890ef18ff07de7407897343dc47f72deec5e1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Так, дайте мне ещё секундочку."
+    },
+    {
+      "start": 2.7,
+      "end": 6.5,
+      "text": " Проверю, совпадает ли короткое движение с общей картиной?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

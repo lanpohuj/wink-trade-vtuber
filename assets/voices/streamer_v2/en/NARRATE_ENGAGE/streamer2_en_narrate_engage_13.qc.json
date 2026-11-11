@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_13",
+  "sha256": "c67a5ecbfb8a7dbfb8ae4b8f5a763225904f9436b2ebb882a175d68734c992f3",
+  "expected": "You can disagree with my read. Tell me what you're seeing on the chart; that's the interesting part.",
+  "transcript": "You can disagree with my read. Tell me what you're seeing on the chart. That's the interesting part.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07733,
+    "peak": 0.4331,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.289,
+    "sha256": "c67a5ecbfb8a7dbfb8ae4b8f5a763225904f9436b2ebb882a175d68734c992f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " You can disagree with my read. Tell me what you're seeing on the chart. That's the interesting part."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

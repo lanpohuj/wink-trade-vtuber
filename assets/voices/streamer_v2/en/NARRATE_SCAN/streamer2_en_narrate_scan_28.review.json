@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_28",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Still looking. I'd rather say I'm checking than dramatically announce the first thing I see.",
+  "tts_text": "[curious, conversational] Still looking. I'd rather say I'm checking than dramatically announce the first thing I see.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7c82f6306dee3a872d9dc301730a86c30871f92c9744de02257f38b684d02eda",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_28.mp3",
+  "duration": 5.172125,
+  "sha256": "effe0df2022b1356b1e500c9d1f5e3a5eac0a4dadd16985842b888b27c2a69ff",
+  "request_payload": {
+    "text": "[curious, conversational] Still looking. I'd rather say I'm checking than dramatically announce the first thing I see.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

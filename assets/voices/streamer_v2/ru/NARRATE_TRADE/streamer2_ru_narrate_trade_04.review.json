@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_04",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит.",
+  "tts_text": "[curious, conversational] Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ea428f8bc13508b3fd8826f1c6e808e8d525b525603090cf82862b518f798302",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_04.mp3",
+  "duration": 5.2505,
+  "sha256": "ba47e02aff485edfaaff70936115d069731621967463c0dedc32ba56ddafb3c4",
+  "request_payload": {
+    "text": "[curious, conversational] Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

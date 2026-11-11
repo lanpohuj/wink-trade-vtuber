@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_06",
+  "sha256": "3b5b3bf3ae09d5d89d42638869d08c8ecda041008193c1ec286f20ab08e74643",
+  "expected": "Two hundred and forty-two is set now. Next comes a confirmed entry, not a hurried reaction to the result.",
+  "transcript": "242 is set now. Next comes a confirmed entry. Not a hurried reaction to the result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.478,
+    "rms": 0.07896,
+    "peak": 0.38609,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.258,
+    "sha256": "3b5b3bf3ae09d5d89d42638869d08c8ecda041008193c1ec286f20ab08e74643"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "text": " 242 is set now. Next comes a confirmed entry. Not a hurried reaction to the result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

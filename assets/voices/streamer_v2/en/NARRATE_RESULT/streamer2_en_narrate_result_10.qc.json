@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_10",
+  "sha256": "b2311ffd47ead82523f2cf0c3e4469427f6d4c3880a221181e7923e48a2563c3",
+  "expected": "Back to the base fifty. We'll read the next chart separately; it isn't responsible for the previous ones.",
+  "transcript": "Back to the base 50. We'll read the next chart separately. It isn't responsible for the previous ones.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.07625,
+    "peak": 0.45877,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.276,
+    "sha256": "b2311ffd47ead82523f2cf0c3e4469427f6d4c3880a221181e7923e48a2563c3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Back to the base 50. We'll read the next chart separately. It isn't responsible for the previous ones."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

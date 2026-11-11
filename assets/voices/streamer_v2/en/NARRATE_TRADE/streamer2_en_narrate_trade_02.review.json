@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_02",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "I'm watching, chat. No celebrating or spiralling yet; the clock's still running.",
+  "tts_text": "[conversational, smiling] I'm watching, chat. No celebrating or spiralling yet; the clock's still running.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "01fb6b510b79f4542daae580b559fab21980021a78166048c9c06c45c6a7f567",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_02.mp3",
+  "duration": 5.30275,
+  "sha256": "4429214403550fe01f27fd5e2510fc2bf05ab132430c0e1804bd2a937ac9a1f1",
+  "request_payload": {
+    "text": "[conversational, smiling] I'm watching, chat. No celebrating or spiralling yet; the clock's still running.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

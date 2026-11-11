@@ -954,6 +954,16 @@ class WinkyAPI:
         lang = self._chat_router.default_stream_lang if self._chat_router else "ru"
         self._stream_interaction_count += 1
 
+        # The approved conversational bank also owns standalone idle remarks.
+        # Do not synthesize the old repeated "write ones in chat" warmups.
+        from winky.voice_bank import active_commentary_root
+        if active_commentary_root().name == 'streamer_v2':
+            category = 'NARRATE_ENGAGE' if self._stream_interaction_count % 2 else 'NARRATE_LESSON'
+            result = self._controller.enqueue_voice_event({'category': category, 'lang': lang})
+            if result.get('ok'):
+                self._last_cta_at = monotonic()
+            return
+
         # Соотношение 4:1 — 4 раза интерактив/разогрев молчащего чата, 1 раз — напоминание про ассистента
         if self._stream_interaction_count % 5 == 0:
             message = self._book.cta.random_message(lang)

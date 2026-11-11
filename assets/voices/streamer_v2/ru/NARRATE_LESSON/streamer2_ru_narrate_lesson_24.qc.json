@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_24",
+  "sha256": "18bcc241753e52681ab9b9d1c5b220c42952a9b5217b2fcc761589033cce0766",
+  "expected": "Прогноз и итог — разные вещи. Пока сделка идёт, я не записываю победу авансом.",
+  "transcript": "Прогноз и итог. Разные вещи. Пока сделка идет, я не записываю победу авансам.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08226,
+    "peak": 0.37506,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "18bcc241753e52681ab9b9d1c5b220c42952a9b5217b2fcc761589033cce0766"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " Прогноз и итог. Разные вещи."
+    },
+    {
+      "start": 2.2,
+      "end": 5.2,
+      "text": " Пока сделка идет, я не записываю победу авансам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

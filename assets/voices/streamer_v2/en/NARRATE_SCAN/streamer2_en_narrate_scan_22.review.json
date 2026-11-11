@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_22",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Looking for a reading that doesn't need stretching. If I have to talk myself into it, that's worth noticing.",
+  "tts_text": "[curious, conversational] Looking for a reading that doesn't need stretching. If I have to talk myself into it, that's worth noticing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9f2829b02292004a56cb936f656f1acdf894ac3091fe11cf0b3e8048e9231030",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_22.mp3",
+  "duration": 6.217062,
+  "sha256": "072a53f1b560d27279e872414aed7b303406a5ee94cc959fe6d226616ef2e234",
+  "request_payload": {
+    "text": "[curious, conversational] Looking for a reading that doesn't need stretching. If I have to talk myself into it, that's worth noticing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

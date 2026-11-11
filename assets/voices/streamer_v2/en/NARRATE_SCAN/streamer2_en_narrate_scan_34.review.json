@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_34",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "The data's still arriving. I'll hold the call rather than backtrack a second later.",
+  "tts_text": "[curious, conversational] The data's still arriving. I'll hold the call rather than backtrack a second later.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d1d9e14987debcf1ab8e3e2d185500b7f0494021d0300b9f05a6df58171f94c7",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_34.mp3",
+  "duration": 4.675813,
+  "sha256": "62ea538b0002db203b5c5439307cdb3459627aaa5de143c4e9650f291787f9fd",
+  "request_payload": {
+    "text": "[curious, conversational] The data's still arriving. I'll hold the call rather than backtrack a second later.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

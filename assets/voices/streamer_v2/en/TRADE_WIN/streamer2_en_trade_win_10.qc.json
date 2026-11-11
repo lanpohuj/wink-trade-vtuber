@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_10",
+  "sha256": "e0ad657fd65701db8f006b5519f0ba9b559c2e82810a385096425a984becf665",
+  "expected": "Oh, nice close, green! I like the moment when the countdown's done and the result's checked.",
+  "transcript": "Oh, nice, close, green! I like the moment when the countdown's done and the results checked.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08467,
+    "peak": 0.36221,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.302,
+    "sha256": "e0ad657fd65701db8f006b5519f0ba9b559c2e82810a385096425a984becf665"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Oh, nice, close, green! I like the moment when the countdown's done and the results checked."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

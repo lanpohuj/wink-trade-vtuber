@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_refund_08",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Ну вот, вернулись со ставкой. Не самый драматичный финал, зато итог понятен — возврат.",
+  "tts_text": "[warm, conversational] Ну вот, вернулись со ставкой. Не самый драматичный финал, зато итог понятен — возврат.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f4d1b8b069c673cab63ce4deffc033b656798b53b932649a87eeda2d367d94a1",
+  "delivery": "warm, conversational",
+  "file": "ru/TRADE_REFUND/streamer2_ru_trade_refund_08.mp3",
+  "duration": 6.086438,
+  "sha256": "4897e9c6dc3d50c435c962ada400c5b0b88a98dddd47ba7067f0eafafb932950",
+  "request_payload": {
+    "text": "[warm, conversational] Ну вот, вернулись со ставкой. Не самый драматичный финал, зато итог понятен — возврат.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

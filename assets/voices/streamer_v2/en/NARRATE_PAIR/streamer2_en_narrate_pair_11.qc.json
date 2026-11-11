@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_11",
+  "sha256": "25916a400758ea12faa706f20df7189dfb86a483bfd0df388049e0408b095cdc",
+  "expected": "We haven't worked through this pair yet. Give me a moment for a fresh look.",
+  "transcript": "We haven't worked through this pair yet. Give me a moment for a fresh look.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08232,
+    "peak": 0.44365,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.212,
+    "sha256": "25916a400758ea12faa706f20df7189dfb86a483bfd0df388049e0408b095cdc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " We haven't worked through this pair yet. Give me a moment for a fresh look."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_07",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Right, recovery step at two hundred and forty-two. Plan noted, hurry switched off; looking for a suitable setup.",
+  "tts_text": "[composed, conversational] Right, recovery step at two hundred and forty-two. Plan noted, hurry switched off; looking for a suitable setup.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bfaa78eb034388f3d6096db037b6eb9b971f35d57b2446ecca9127df70082194",
+  "delivery": "composed, conversational",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_07.mp3",
+  "duration": 7.314187,
+  "sha256": "5819e95ae61a49eb88db40cd818d614d083d5c09a9a1086c328be80bb1a61ba4",
+  "request_payload": {
+    "text": "[composed, conversational] Right, recovery step at two hundred and forty-two. Plan noted, hurry switched off; looking for a suitable setup.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

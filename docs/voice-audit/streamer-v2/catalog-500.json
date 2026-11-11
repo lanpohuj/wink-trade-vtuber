@@ -2778,13 +2778,14 @@
       "id": "streamer2_en_narrate_trade_07",
       "lang": "en",
       "category": "NARRATE_TRADE",
-      "text": "Now we watch, without the fuss. I'm interested in how this particular entry closes too.",
-      "tts_text": "[curious, conversational] Now we watch, without the fuss. I'm interested in how this particular entry closes too.",
+      "text": "Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+      "tts_text": "[curious, conversational] Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
       "conditions": {},
       "voice_id": "e34c486929524d41b88646b4ac2f382f",
       "text_version": 1,
-      "text_sha256": "f9af938b1d50f5fb7d94d178ed21b16526ebcd1b23ff4605232defc2ad71c08d",
-      "delivery": "curious, conversational"
+      "text_sha256": "489b11068dd76ca6b89d303954211168f1a5c715e9e59683bf2459792472b614",
+      "delivery": "curious, conversational",
+      "requires_listening": true
     },
     {
       "id": "streamer2_ru_narrate_trade_08",

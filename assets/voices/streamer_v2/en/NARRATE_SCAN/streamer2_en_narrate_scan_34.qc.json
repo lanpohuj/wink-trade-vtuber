@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_34",
+  "sha256": "62ea538b0002db203b5c5439307cdb3459627aaa5de143c4e9650f291787f9fd",
+  "expected": "The data's still arriving. I'll hold the call rather than backtrack a second later.",
+  "transcript": "The data is still arriving. I'll hold the call rather than backtrack a second later.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08659,
+    "peak": 0.45293,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.276,
+    "sha256": "62ea538b0002db203b5c5439307cdb3459627aaa5de143c4e9650f291787f9fd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " The data is still arriving. I'll hold the call rather than backtrack a second later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

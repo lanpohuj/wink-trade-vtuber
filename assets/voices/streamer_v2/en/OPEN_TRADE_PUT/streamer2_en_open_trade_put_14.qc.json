@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_14",
+  "sha256": "f17f156453d48b7df8d88fbd7e31602d9ad4ff4557bd7d5933f3aadd27de9558",
+  "expected": "The down trade is open. I'm following the bounce from the range edge; we had a reaction behind the idea.",
+  "transcript": "The downtrade is open. I'm following the bounce from the range edge. We had a reaction behind the idea.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08847,
+    "peak": 0.39647,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.207,
+    "sha256": "f17f156453d48b7df8d88fbd7e31602d9ad4ff4557bd7d5933f3aadd27de9558"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The downtrade is open. I'm following the bounce from the range edge. We had a reaction behind the idea."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_14",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "I'm not clicking anything extra. I'd rather follow the entry we already have through to the end.",
+  "tts_text": "[conversational, smiling] I'm not clicking anything extra. I'd rather follow the entry we already have through to the end.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d1c5290ed5ce37ac9c64b248085c3def2fc657f0e18552502f1d8b2418a0cae0",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_14.mp3",
+  "duration": 5.041563,
+  "sha256": "bf7034e1f901e1692024691a95d716d887b11ed71472a1c8850142f2e4643dc9",
+  "request_payload": {
+    "text": "[conversational, smiling] I'm not clicking anything extra. I'd rather follow the entry we already have through to the end.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

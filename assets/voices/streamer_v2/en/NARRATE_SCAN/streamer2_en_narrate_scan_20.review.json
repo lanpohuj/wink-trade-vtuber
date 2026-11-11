@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_20",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let's give this one a calm look. I want the chart to support the idea, not finish the story for it.",
+  "tts_text": "[conversational, smiling] Let's give this one a calm look. I want the chart to support the idea, not finish the story for it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "97bf7eb980cd15ded7441013a852c3e39d30847d3cd2199897259456d835d940",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_20.mp3",
+  "duration": 6.269312,
+  "sha256": "7ced363e3e77671bee5902f30487313db3d8ea5fab67b27d18f15abedb10616e",
+  "request_payload": {
+    "text": "[conversational, smiling] Let's give this one a calm look. I want the chart to support the idea, not finish the story for it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

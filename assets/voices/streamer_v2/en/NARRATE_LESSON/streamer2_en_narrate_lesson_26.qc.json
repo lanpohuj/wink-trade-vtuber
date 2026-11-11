@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_26",
+  "sha256": "b993a91c53dd3a4dc3ee42f0bb561e1e23d10799be100813596ba4b24a4f8179",
+  "expected": "After a loss, I don't rewrite the reason for entry. I'd rather understand it than make excuses.",
+  "transcript": "After a loss I don't rewrite the reason for entry. I'd rather understand it than make excuses",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08221,
+    "peak": 0.39931,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.308,
+    "sha256": "b993a91c53dd3a4dc3ee42f0bb561e1e23d10799be100813596ba4b24a4f8179"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5600000000000005,
+      "text": " After a loss I don't rewrite the reason for entry. I'd rather understand it than make excuses"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

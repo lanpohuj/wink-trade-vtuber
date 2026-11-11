@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_start_stream_ready_02",
+  "sha256": "30dac5bdf28aebcacf26e89d93cd11d137e69fae8091492215f5fd84e3e79313",
+  "expected": "Так, мы на месте! Всем, кто уже залетел, привет. Сейчас посмотрим рынок и начнём разбор без лишней суеты.",
+  "transcript": "Так, мы на месте! Всем, кто уже залетел, привет! Сейчас посмотрим рынок и начнем разбор без лишней суеты.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.131,
+    "rms": 0.08535,
+    "peak": 0.42909,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.051,
+    "sha256": "30dac5bdf28aebcacf26e89d93cd11d137e69fae8091492215f5fd84e3e79313"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Так, мы на месте!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Всем, кто уже залетел, привет!"
+    },
+    {
+      "start": 4.0,
+      "end": 7.0,
+      "text": " Сейчас посмотрим рынок и начнем разбор без лишней суеты."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

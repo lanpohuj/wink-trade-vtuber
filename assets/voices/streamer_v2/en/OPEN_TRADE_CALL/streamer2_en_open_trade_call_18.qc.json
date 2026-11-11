@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_18",
+  "sha256": "da19bbd822e27f3726955e5da44300c750b3579e318588591e596428e1599615",
+  "expected": "The up trade is running. I waited for local structure to change; one nice wick wasn't enough.",
+  "transcript": "The up trade is running. I waited for local structure to change. One nice wick wasn't enough.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08551,
+    "peak": 0.44535,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.216,
+    "sha256": "da19bbd822e27f3726955e5da44300c750b3579e318588591e596428e1599615"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The up trade is running. I waited for local structure to change. One nice wick wasn't enough."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

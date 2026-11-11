@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_14",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Looking for a clear situation, not the loudest candle. There's already plenty of noise without me.",
+  "tts_text": "[conversational, smiling] Looking for a clear situation, not the loudest candle. There's already plenty of noise without me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "61fb00b12f10df1c25886b17bfedf09b39743e324864cd964500c4375acf1b96",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_14.mp3",
+  "duration": 5.773,
+  "sha256": "670c407aa1ecc1c12b7ac0f3ee7a36f9b083fd6fb1b71414ef7fac57417dcee7",
+  "request_payload": {
+    "text": "[conversational, smiling] Looking for a clear situation, not the loudest candle. There's already plenty of noise without me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_01",
+  "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+  "expected": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+  "transcript": "Та-а-а! Что тут у нас? Сейчас верю пару интервалов. Хочу понять, где движение, а где просто суета.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.07833,
+    "peak": 0.34188,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.094,
+    "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Та-а-а! Что тут у нас?"
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Сейчас верю пару интервалов. Хочу понять, где движение, а где просто суета."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

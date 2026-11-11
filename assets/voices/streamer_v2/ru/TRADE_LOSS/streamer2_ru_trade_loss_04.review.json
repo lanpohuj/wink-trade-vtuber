@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_04",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Эх, не наш итог. Сделка в минус, сейчас без суеты проверю дальнейший шаг.",
+  "tts_text": "[slightly disappointed, composed] Эх, не наш итог. Сделка в минус, сейчас без суеты проверю дальнейший шаг.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8a0dba1deb6b45bd9e3bd0ac9c34dba346f1b9b51e68675f20abd2a91a7c11aa",
+  "delivery": "slightly disappointed, composed",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_04.mp3",
+  "duration": 5.2505,
+  "sha256": "ae863babf0117f2134d8dff650528f70a476ad706063048fdb4a1cc635998c4f",
+  "request_payload": {
+    "text": "[slightly disappointed, composed] Эх, не наш итог. Сделка в минус, сейчас без суеты проверю дальнейший шаг.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

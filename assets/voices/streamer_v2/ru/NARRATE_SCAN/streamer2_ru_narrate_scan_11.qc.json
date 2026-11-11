@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_11",
+  "sha256": "1ebbb7bff8c1e4bc4235b64227374d7e2d8f668da4e4e21cf43997a84244883c",
+  "expected": "Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше.",
+  "transcript": "Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08655,
+    "peak": 0.43986,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.157,
+    "sha256": "1ebbb7bff8c1e4bc4235b64227374d7e2d8f668da4e4e21cf43997a84244883c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.9,
+      "text": " Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_07",
+  "sha256": "2314f09c60cecece0999dd8f43fbe4a260346cac338ad481564722938031fde0",
+  "expected": "Переключились. Сейчас главное — не притащить сюда ожидания от старого графика.",
+  "transcript": "Переключились. Сейчас главное не притащить сюда ожидания от старого графика.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08711,
+    "peak": 0.3982,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.082,
+    "sha256": "2314f09c60cecece0999dd8f43fbe4a260346cac338ad481564722938031fde0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Переключились. Сейчас главное не притащить сюда ожидания от старого графика."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

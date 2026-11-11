@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_29",
+  "sha256": "f6d5bd5f97c9f9693b78d7664852bc7084973c4dee30d7e38532e53fd090a378",
+  "expected": "Когда данных мало, я так и говорю. Голос поувереннее не добавит недостающие свечи.",
+  "transcript": "Когда данных мало, я так и говорю, голос поувереннее не добавит недостающие свечи.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08928,
+    "peak": 0.35462,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.093,
+    "sha256": "f6d5bd5f97c9f9693b78d7664852bc7084973c4dee30d7e38532e53fd090a378"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Когда данных мало, я так и говорю, голос поувереннее не добавит недостающие свечи."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

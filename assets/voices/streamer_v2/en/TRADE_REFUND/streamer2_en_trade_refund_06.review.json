@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_refund_06",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "The stake came back here. I won't dress that up as a win; it's a neutral result.",
+  "tts_text": "[warm, conversational] The stake came back here. I won't dress that up as a win; it's a neutral result.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fca451d4b19105ba5802f561d5d3ec413534d3ecc0fb010e4e9e024775719e35",
+  "delivery": "warm, conversational",
+  "file": "en/TRADE_REFUND/streamer2_en_trade_refund_06.mp3",
+  "duration": 5.2505,
+  "sha256": "4a4ea5fd523fa2f93104600f736f9f55150ea0bc6bda7102c0f1af5b8736dc74",
+  "request_payload": {
+    "text": "[warm, conversational] The stake came back here. I won't dress that up as a win; it's a neutral result.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

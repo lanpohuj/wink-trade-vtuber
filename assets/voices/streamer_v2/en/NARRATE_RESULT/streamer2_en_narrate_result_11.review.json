@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_11",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "The stake returns to fifty after that step. I'll calmly rebuild the picture, no promises to recover everything at once.",
+  "tts_text": "[composed, gentle] The stake returns to fifty after that step. I'll calmly rebuild the picture, no promises to recover everything at once.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1c0272c46223b43de6209e02bae6424a8a57c297a196bf100abd7509749e9d7b",
+  "delivery": "composed, gentle",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_11.mp3",
+  "duration": 7.444812,
+  "sha256": "b4327b601e04bc501211ee9558ec267a0c732c69aae3714b17f80a7a02532e4a",
+  "request_payload": {
+    "text": "[composed, gentle] The stake returns to fifty after that step. I'll calmly rebuild the picture, no promises to recover everything at once.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

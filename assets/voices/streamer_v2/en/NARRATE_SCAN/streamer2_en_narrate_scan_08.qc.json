@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_08",
+  "sha256": "745d446fd274abb764a97c6c24df6128d4ff0314eba96204776ef783fe191c06",
+  "expected": "I'm comparing the options. I'd rather find one where I don't have to invent half the explanation.",
+  "transcript": "I'm comparing the options. I'd rather find one where I don't have to invent half the explanation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08774,
+    "peak": 0.39919,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.254,
+    "sha256": "745d446fd274abb764a97c6c24df6128d4ff0314eba96204776ef783fe191c06"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I'm comparing the options. I'd rather find one where I don't have to invent half the explanation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

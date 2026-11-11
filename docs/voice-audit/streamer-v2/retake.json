@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_trade_07",
+  "text": "Right, the trade is running. I'm staying with this chart until it closes. Let's see how this one finishes.",
+  "tts_text": "[conversational, relaxed] Right, the trade is running. I'm staying with this chart until it closes. Let's see how this one finishes.",
+  "file": "docs/voice-audit/streamer-v2/retake-en-trade-07.mp3",
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08144,
+    "peak": 0.37039,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.274,
+    "sha256": "f01b7dbcd1e191b6fcdc8413a9f7e7cbaff1a3b8f69dc3ceffd06a939f0ab4ba"
+  },
+  "transcript": "All right, the trade is running. I'm staying with this chart until it closes. Let's see how this one finishes",
+  "similarity": 0.982,
+  "request_payload": {
+    "text": "[conversational, relaxed] Right, the trade is running. I'm staying with this chart until it closes. Let's see how this one finishes.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "auditory_verified": false
+}

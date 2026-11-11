@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_20",
+  "sha256": "61e4e3c1ed65bbb11bd846fbc2de4df25720e6dc3e4fe958e11b133c4ee271f4",
+  "expected": "If you just joined, no need to catch up all at once. I'll explain what we're doing as we go.",
+  "transcript": "If you just joined, no need to catch up all at once. I'll explain what we're doing as we go.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08456,
+    "peak": 0.41413,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.116,
+    "sha256": "61e4e3c1ed65bbb11bd846fbc2de4df25720e6dc3e4fe958e11b133c4ee271f4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " If you just joined, no need to catch up all at once. I'll explain what we're doing as we go."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

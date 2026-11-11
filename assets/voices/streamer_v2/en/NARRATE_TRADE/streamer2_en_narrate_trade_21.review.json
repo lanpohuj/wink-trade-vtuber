@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_21",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Just watching now. A good time to practise waiting without writing a whole drama in our heads.",
+  "tts_text": "[warm, lightly playful] Just watching now. A good time to practise waiting without writing a whole drama in our heads.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a78f32ad9386741df375f0645afd625954c763a5c5c50ecb9a4599131dfc00d9",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_21.mp3",
+  "duration": 5.72075,
+  "sha256": "d4c380dac1efe4c9d7027e4300ce76a4d3cb101a2e72e93f29145c0aef02fe2c",
+  "request_payload": {
+    "text": "[warm, lightly playful] Just watching now. A good time to practise waiting without writing a whole drama in our heads.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

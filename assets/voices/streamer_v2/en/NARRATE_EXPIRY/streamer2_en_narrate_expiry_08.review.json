@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_08",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "A thirty-second trade. I'd rather watch it through than change my mind every couple of ticks.",
+  "tts_text": "[warm, relaxed] A thirty-second trade. I'd rather watch it through than change my mind every couple of ticks.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "86488d842393bc5fb197595ba1c5d0681c6486f2ba0e5716edbf2b15beecebb6",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_08.mp3",
+  "duration": 5.19825,
+  "sha256": "2bd66e042346e1e50d84644b7b8aa015c6f812880c114e86698c6581dc4bb17d",
+  "request_payload": {
+    "text": "[warm, relaxed] A thirty-second trade. I'd rather watch it through than change my mind every couple of ticks.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

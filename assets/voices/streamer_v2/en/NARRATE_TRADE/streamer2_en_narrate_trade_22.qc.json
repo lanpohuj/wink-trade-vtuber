@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_22",
+  "sha256": "4349c082b584bdf1a241d8adbc2720e7baabeb86e3224b4c47e93ab01387650d",
+  "expected": "I'm here, staying on this one. I want the actual close, not just a nice-looking beginning.",
+  "transcript": "I'm here, staying on this one. I want the actual close, not just a nice-looking beginning.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08441,
+    "peak": 0.41266,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.208,
+    "sha256": "4349c082b584bdf1a241d8adbc2720e7baabeb86e3224b4c47e93ab01387650d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " I'm here, staying on this one. I want the actual close, not just a nice-looking beginning."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

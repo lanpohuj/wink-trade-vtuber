@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_06",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Let's have a look here. Changing charts can be more useful than arguing with the last one.",
+  "tts_text": "[warm, lightly playful] Let's have a look here. Changing charts can be more useful than arguing with the last one.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3c3dc948f3bfc2a5d174a53861f7d9ba52b09078b2b448dc435fe3dee6139ad1",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_06.mp3",
+  "duration": 5.067687,
+  "sha256": "d407e617dfabb3f8123a525cbd3f5260430c391bc8d6a9df0bba9fcecebaa203",
+  "request_payload": {
+    "text": "[warm, lightly playful] Let's have a look here. Changing charts can be more useful than arguing with the last one.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

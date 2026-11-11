@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_22",
+  "sha256": "072a53f1b560d27279e872414aed7b303406a5ee94cc959fe6d226616ef2e234",
+  "expected": "Looking for a reading that doesn't need stretching. If I have to talk myself into it, that's worth noticing.",
+  "transcript": "Looking for a reading that doesn't need stretching if I have to talk myself into it. That's worth noticing",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08039,
+    "peak": 0.35135,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.277,
+    "sha256": "072a53f1b560d27279e872414aed7b303406a5ee94cc959fe6d226616ef2e234"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.82,
+      "text": " Looking for a reading that doesn't need stretching if I have to talk myself into it. That's worth noticing"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

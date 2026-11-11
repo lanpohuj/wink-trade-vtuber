@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_06",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Two hundred and forty-two is set now. Next comes a confirmed entry, not a hurried reaction to the result.",
+  "tts_text": "[focused, steady] Two hundred and forty-two is set now. Next comes a confirmed entry, not a hurried reaction to the result.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "593dc78cbe80b8bbcecc2580c3725bc58cb97e3be4021bdea9cb262aa958e00f",
+  "delivery": "focused, steady",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_06.mp3",
+  "duration": 6.47825,
+  "sha256": "3b5b3bf3ae09d5d89d42638869d08c8ecda041008193c1ec286f20ab08e74643",
+  "request_payload": {
+    "text": "[focused, steady] Two hundred and forty-two is set now. Next comes a confirmed entry, not a hurried reaction to the result.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

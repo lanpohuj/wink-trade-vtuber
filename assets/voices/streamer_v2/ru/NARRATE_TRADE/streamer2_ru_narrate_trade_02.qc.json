@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_02",
+  "sha256": "627d4ff125811b0b47794957f1fcc0e489041a39ec41e07f640f55edcd906452",
+  "expected": "Я на графике, чат. Пока не празднуем и не драматизируем — у нас ещё идёт время.",
+  "transcript": "Я на графике чат. Пока не праздную, мы не драматизируем, у нас ещё идёт время.",
+  "similarity": 0.967,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08348,
+    "peak": 0.40311,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.087,
+    "sha256": "627d4ff125811b0b47794957f1fcc0e489041a39ec41e07f640f55edcd906452"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Я на графике чат. Пока не праздную, мы не драматизируем, у нас ещё идёт время."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

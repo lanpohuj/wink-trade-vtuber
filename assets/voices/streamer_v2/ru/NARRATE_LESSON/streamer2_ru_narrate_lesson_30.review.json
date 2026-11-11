@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_30",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Даже хороший сценарий может закрыться не в нашу сторону. Поэтому реакция на итог тоже часть плана.",
+  "tts_text": "[lightly playful] Даже хороший сценарий может закрыться не в нашу сторону. Поэтому реакция на итог тоже часть плана.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f7b00efb15a1ae7a119b4c734dc95803e3d8f4745a1fde36eaffddfb07ac2717",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_30.mp3",
+  "duration": 6.086438,
+  "sha256": "f685d9756c0946ebac34b3f81f58ebea1bfbc21debc9fa185ec84e4aeb54e0a8",
+  "request_payload": {
+    "text": "[lightly playful] Даже хороший сценарий может закрыться не в нашу сторону. Поэтому реакция на итог тоже часть плана.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

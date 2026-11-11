@@ -57,6 +57,16 @@ class StreamerBankTests(unittest.TestCase):
             any(word in text for word in ("мяу", "мурр", "meow", "purr", "ушки"))
         )
 
+    def test_half_minute_is_thirty_seconds_without_hiding_fifteen(self):
+        from tools.build_commentary_bank import normalize
+
+        self.assertEqual(normalize("полминуты", "ru"), "30")
+        self.assertEqual(normalize("half a minute", "en"), "30")
+        self.assertNotEqual(
+            normalize("fifteen", "en"), normalize("half a minute", "en")
+        )
+        self.assertNotEqual(normalize("пятнадцать", "ru"), normalize("полминуты", "ru"))
+
     def test_delivery_acceptance_is_bound_to_both_languages_and_all_files(self):
         root = Path(__file__).resolve().parents[1]
         approval = json.loads(
@@ -105,6 +115,103 @@ class StreamerBankTests(unittest.TestCase):
                 self.assertEqual(
                     voice_bank.active_commentary_root(), root / "commentary_v1"
                 )
+
+    def test_new_bank_standalone_warmup_uses_recordings_not_generated_old_text(self):
+        from types import SimpleNamespace
+        from unittest.mock import Mock
+        from winky.app import WinkyAPI
+        from winky.director import stream_director
+
+        api = object.__new__(WinkyAPI)
+        api._cta_enabled = True
+        api._controller = SimpleNamespace(
+            paused=False,
+            speaking=False,
+            queue_size=lambda: 0,
+            enqueue_voice_event=Mock(return_value={"ok": True}),
+            speak=Mock(),
+        )
+        api._book = SimpleNamespace(cta=SimpleNamespace(interval_minutes=0))
+        api._last_cta_at = 0
+        api._chat_router = None
+        api._stream_interaction_count = 0
+        with (
+            patch.object(stream_director, "context", {}),
+            patch.object(stream_director, "_last_phase_update", 0),
+            patch(
+                "winky.voice_bank.active_commentary_root",
+                return_value=Path("streamer_v2"),
+            ),
+        ):
+            api.maybe_say_cta()
+        api._controller.speak.assert_not_called()
+        api._controller.enqueue_voice_event.assert_called_once_with(
+            {"category": "NARRATE_ENGAGE", "lang": "ru"}
+        )
+
+    def test_fresh_fish_defaults_match_delivery_but_explicit_user_tuning_wins(self):
+        from winky.fish_tts import FishAudioTTS
+
+        engine = FishAudioTTS()
+        try:
+            engine.tuning = {}
+            t = engine.get_tuning("en")
+            self.assertEqual(
+                (t["temperature"], t["top_p"], t["latency"]), (0.82, 0.85, "balanced")
+            )
+            engine.tuning["en"] = {"temperature": 0.5, "latency": "low"}
+            self.assertEqual(engine.get_tuning("en")["temperature"], 0.5)
+            self.assertEqual(engine.get_tuning("en")["latency"], "low")
+        finally:
+            engine._client.close()
+
+    def test_replacing_audio_invalidates_the_old_lipsync_envelope(self):
+        from unittest.mock import Mock
+        from tools import build_commentary_bank as generator
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bank = root / "bank"
+            catalog_path = root / "catalog.json"
+            dest = bank / "en/NARRATE_TRADE/line.mp3"
+            dest.parent.mkdir(parents=True)
+            dest.write_bytes(b"old audio")
+            cache = dest.with_suffix(".mp3.rms2.json")
+            cache.write_text("[0.1,0.2]")
+            dest.with_suffix(".review.json").write_text(
+                json.dumps({"text_sha256": "old"})
+            )
+            source = root / "fresh.mp3"
+            source.write_bytes(b"new audio")
+            row = dict(
+                id="line",
+                lang="en",
+                category="NARRATE_TRADE",
+                text="Watching this trade.",
+                tts_text="Watching this trade.",
+                text_sha256="new",
+                voice_id="voice",
+            )
+            catalog_path.write_text(json.dumps({"records": [row]}))
+            engine = Mock()
+            engine.voices = {"en": "voice"}
+            engine.tuning = {}
+            engine.synthesize.return_value = source
+            engine.payload.return_value = {}
+
+            def compute(path):
+                self.assertFalse(cache.exists())
+                self.assertEqual(path.read_bytes(), b"new audio")
+                return [0.3]
+
+            with (
+                patch.object(generator, "BANK", bank),
+                patch.object(generator, "CATALOG", catalog_path),
+                patch.object(generator, "FishAudioTTS", return_value=engine),
+                patch.object(generator, "compute_rms_chunks", side_effect=compute),
+                patch.object(generator, "media_duration_seconds", return_value=1),
+            ):
+                generator.generate()
 
     def test_every_eligible_line_is_used_before_a_repeat(self):
         with tempfile.TemporaryDirectory() as tmp:

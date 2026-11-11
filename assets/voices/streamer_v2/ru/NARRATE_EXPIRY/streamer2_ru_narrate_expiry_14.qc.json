@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_expiry_14",
+  "sha256": "544ae190102e7b05c67eeb6372a5b1e818100f8e93d30b60e58d04d387f0b0f7",
+  "expected": "Выбрала две минуты. Поэтому на одном коротком колебании я не буду переписывать всю идею.",
+  "transcript": "Выбрала две минуты, поэтому на одном коротком колебании я не буду переписывать всю идею.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08748,
+    "peak": 0.36002,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "544ae190102e7b05c67eeb6372a5b1e818100f8e93d30b60e58d04d387f0b0f7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Выбрала две минуты, поэтому на одном коротком колебании я не буду переписывать всю идею."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

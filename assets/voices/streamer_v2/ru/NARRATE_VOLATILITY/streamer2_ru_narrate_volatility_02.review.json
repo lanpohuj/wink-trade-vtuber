@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_volatility_02",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Так, сейчас график ощутимо штормит. Диапазон последних свечей вырос, я это учитываю в комментарии.",
+  "tts_text": "[focused, conversational] Так, сейчас график ощутимо штормит. Диапазон последних свечей вырос, я это учитываю в комментарии.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ad5b3e899410ed072957120a25fab75fbe7aa81bfb0a79f16f6555451548e8b1",
+  "delivery": "focused, conversational",
+  "file": "ru/NARRATE_VOLATILITY/streamer2_ru_narrate_volatility_02.mp3",
+  "duration": 6.269312,
+  "sha256": "da1764c5cce20c8e650e475a123d1cd893dc2cdfbcc2bab9ab03ebe6437dcdb1",
+  "request_payload": {
+    "text": "[focused, conversational] Так, сейчас график ощутимо штормит. Диапазон последних свечей вырос, я это учитываю в комментарии.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

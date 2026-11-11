@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_27",
+  "sha256": "3bb050d6f4f72f3631f3d7af8c0b2db7b3dc1cecb7511cd87e96cddbea36621c",
+  "expected": "Мне нравится простой вопрос: что отменит эту идею? Он иногда полезнее десяти аргументов за неё.",
+  "transcript": "Мне нравится простой вопрос, что отменит эту идею? Он иногда полезнее десяти аргументов за неё.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08203,
+    "peak": 0.40895,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "3bb050d6f4f72f3631f3d7af8c0b2db7b3dc1cecb7511cd87e96cddbea36621c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " Мне нравится простой вопрос, что отменит эту идею? Он иногда полезнее десяти аргументов за неё."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_02",
+  "sha256": "4429214403550fe01f27fd5e2510fc2bf05ab132430c0e1804bd2a937ac9a1f1",
+  "expected": "I'm watching, chat. No celebrating or spiralling yet; the clock's still running.",
+  "transcript": "I'm watching chat. No celebrating or spiraling yet? The clock's still running.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08429,
+    "peak": 0.39729,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.243,
+    "sha256": "4429214403550fe01f27fd5e2510fc2bf05ab132430c0e1804bd2a937ac9a1f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I'm watching chat. No celebrating or spiraling yet? The clock's still running."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

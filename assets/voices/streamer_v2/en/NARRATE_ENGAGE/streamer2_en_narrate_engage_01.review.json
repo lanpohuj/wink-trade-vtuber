@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_01",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "If you've just joined, hey! We're reading charts as we go, so feel free to ask about anything unclear.",
+  "tts_text": "[friendly, curious] If you've just joined, hey! We're reading charts as we go, so feel free to ask about anything unclear.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "567eb60bec4375399ca1cdeaa1fc4a72d92587e50029bf468213ce605bc57c14",
+  "delivery": "friendly, curious",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_01.mp3",
+  "duration": 6.347688,
+  "sha256": "fa47f4ed30b91d4d6b59717f3025d28da942cb7c74c813a91b3551ea2e89367c",
+  "request_payload": {
+    "text": "[friendly, curious] If you've just joined, hey! We're reading charts as we go, so feel free to ask about anything unclear.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

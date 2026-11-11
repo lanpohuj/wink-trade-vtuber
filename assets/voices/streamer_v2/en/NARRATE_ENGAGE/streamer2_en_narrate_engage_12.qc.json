@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_12",
+  "sha256": "babb9f451f49b7f668d2d194dec5a7183d0a6848368f688e9dd6beb0ad2dbc18",
+  "expected": "Who's been here from the start, and who just dropped in? Hey to the quiet viewers too.",
+  "transcript": "Who's been here from the start? And who just dropped in? Hey to the quiet viewers too!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.07884,
+    "peak": 0.38602,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.281,
+    "sha256": "babb9f451f49b7f668d2d194dec5a7183d0a6848368f688e9dd6beb0ad2dbc18"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Who's been here from the start? And who just dropped in? Hey to the quiet viewers too!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

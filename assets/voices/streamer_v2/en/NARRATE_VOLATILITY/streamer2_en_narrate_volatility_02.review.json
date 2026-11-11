@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_volatility_02",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "The chart's getting choppy now. Recent candle ranges have expanded; that's what I'm pointing out.",
+  "tts_text": "[focused, conversational] The chart's getting choppy now. Recent candle ranges have expanded; that's what I'm pointing out.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "70ba7f5fbcfc7160689466a5a4c5a83aaaa0a620017d327384dfa90488de21b9",
+  "delivery": "focused, conversational",
+  "file": "en/NARRATE_VOLATILITY/streamer2_en_narrate_volatility_02.mp3",
+  "duration": 5.4595,
+  "sha256": "50a4dce6788e474e1931fcbae3638da8b4b9c8fc5caeca5b23dea1ad46618002",
+  "request_payload": {
+    "text": "[focused, conversational] The chart's getting choppy now. Recent candle ranges have expanded; that's what I'm pointing out.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

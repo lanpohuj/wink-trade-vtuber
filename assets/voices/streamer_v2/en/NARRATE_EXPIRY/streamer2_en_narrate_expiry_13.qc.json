@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_13",
+  "sha256": "06d506688685ebfc703dcf4e0518d52408b81c87fc67b7e2aa168b38283d3858",
+  "expected": "Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick.",
+  "transcript": "Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.0763,
+    "peak": 0.4583,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.313,
+    "sha256": "06d506688685ebfc703dcf4e0518d52408b81c87fc67b7e2aa168b38283d3858"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Two minutes here, chat. I'm following the wider stretch, not trying to catch every tiny tick."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

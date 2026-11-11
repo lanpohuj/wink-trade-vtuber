@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_16",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Так, сначала сверим интервалы. Я не хочу делать большой вывод из маленького кусочка графика.",
+  "tts_text": "[curious, conversational] Так, сначала сверим интервалы. Я не хочу делать большой вывод из маленького кусочка графика.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "774fec6270b0a4984cf4efd6c6fcacc80d69a4e41efd312fc56a8718b7b48aed",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_16.mp3",
+  "duration": 5.694625,
+  "sha256": "405cf1ae724a21767842e33f5c01788121b839aebc4a20ad515254141c481a35",
+  "request_payload": {
+    "text": "[curious, conversational] Так, сначала сверим интервалы. Я не хочу делать большой вывод из маленького кусочка графика.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

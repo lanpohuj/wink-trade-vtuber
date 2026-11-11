@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_33",
+  "sha256": "32ded735204f6786c583e49044f206950a2df363d12f86aa6a3037c6763229d0",
+  "expected": "Жду данные по этой паре. Да, это самая негламурная часть, но без неё никуда.",
+  "transcript": "Жду данные по этой паре. Да, это самая негламурная часть, но без нее никуда.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08813,
+    "peak": 0.4168,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.062,
+    "sha256": "32ded735204f6786c583e49044f206950a2df363d12f86aa6a3037c6763229d0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Жду данные по этой паре."
+    },
+    {
+      "start": 2.0,
+      "end": 5.6000000000000005,
+      "text": " Да, это самая негламурная часть, но без нее никуда."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

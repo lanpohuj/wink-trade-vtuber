@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_01",
+  "sha256": "ac7927d8e394f51284c09f3b68bceed56c746dc8d5b9889b0982a8be069e3bff",
+  "expected": "Right, new pair. Let's see what this one's got for us.",
+  "transcript": "Right, new pair. Let's see what this one's got for us.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07531,
+    "peak": 0.3501,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.12,
+    "sha256": "ac7927d8e394f51284c09f3b68bceed56c746dc8d5b9889b0982a8be069e3bff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Right, new pair. Let's see what this one's got for us."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

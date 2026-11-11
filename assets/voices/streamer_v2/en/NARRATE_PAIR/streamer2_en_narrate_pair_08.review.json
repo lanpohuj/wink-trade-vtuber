@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_08",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Another option, let's look. I'm choosing a setup, not pledging loyalty to the first pair.",
+  "tts_text": "[conversational, smiling] Another option, let's look. I'm choosing a setup, not pledging loyalty to the first pair.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "959bd2af89e6782f2561c233fb041d47839936a9456da6ee0d8bc9600d5eddb4",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_08.mp3",
+  "duration": 6.086438,
+  "sha256": "8ea590a848d393e95d3000028e8a39e7b23e3b8ea9e1a7a9ae9f2a396394c9cc",
+  "request_payload": {
+    "text": "[conversational, smiling] Another option, let's look. I'm choosing a setup, not pledging loyalty to the first pair.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_08",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Ah, red at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong.",
+  "tts_text": "[thoughtful, conversational] Ah, red at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1873b72b3b432d250bf64568cfaee77ca448c0ea7dd5b2cf7efd7ce9c3efb106",
+  "delivery": "thoughtful, conversational",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_08.mp3",
+  "duration": 6.034187,
+  "sha256": "02e9f723f8cb4a0bbba32b66d291c5ba301cb9e08e95ad4cd638b0d96f0c033b",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Ah, red at the close. I'd rather keep the analysis sensible than rush to prove the chart wrong.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_12",
+  "sha256": "d41be484cdd050ea3d976c39ec3d6afc8eb5ecae33893c2e022980193eec82fc",
+  "expected": "Да, эту забрали в плюс! Сейчас спокойно зафиксируем и вернёмся к графикам.",
+  "transcript": "Да, эту забрали в плюс. Сейчас спокойно зафиксируем и вернемся к графикам.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07171,
+    "peak": 0.32125,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.092,
+    "sha256": "d41be484cdd050ea3d976c39ec3d6afc8eb5ecae33893c2e022980193eec82fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Да, эту забрали в плюс."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Сейчас спокойно зафиксируем и вернемся к графикам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

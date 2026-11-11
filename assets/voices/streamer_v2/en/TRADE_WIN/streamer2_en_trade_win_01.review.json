@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_01",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+  "tts_text": "[happy, smiling] There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "62a83729c77b53ba3d55f6b7fb0b7e23095c1d52fed18e88ed6abb4e690e044c",
+  "delivery": "happy, smiling",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_01.mp3",
+  "duration": 8.2285,
+  "sha256": "646a09f7cf52ae7987765592b11dee526ff62aa2b4283f651aaabd1466d9ab69",
+  "request_payload": {
+    "text": "[happy, smiling] There we go, that closed green! Okay, I did enjoy that one. Nice little moment for the stream!",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

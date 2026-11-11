@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_01",
+  "sha256": "a078361ed1b93dc4d4437e0070801be8e412ad2f3a770d0b2acc4e6952530d80",
+  "expected": "Следующий шаг — сто десять, перекрытие по плану. Но сам вход всё равно сначала проверю, просто так не жму.",
+  "transcript": "Следующий шаг 110, перекрытие по плану. Но сам вход все равно сначала проверю. Просто так не жму.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.445,
+    "rms": 0.07953,
+    "peak": 0.3644,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "a078361ed1b93dc4d4437e0070801be8e412ad2f3a770d0b2acc4e6952530d80"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.9,
+      "text": " Следующий шаг 110, перекрытие по плану."
+    },
+    {
+      "start": 3.9,
+      "end": 6.24,
+      "text": " Но сам вход все равно сначала проверю."
+    },
+    {
+      "start": 6.24,
+      "end": 7.44,
+      "text": " Просто так не жму."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

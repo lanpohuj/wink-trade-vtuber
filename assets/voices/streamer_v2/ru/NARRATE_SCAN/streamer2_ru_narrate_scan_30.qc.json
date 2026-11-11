@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_30",
+  "sha256": "bfee0c68f5ac40cf36e5bf813b77431a08116f164921f4204c475848dc3e7446",
+  "expected": "У меня тут маленькое расследование. Проверю график, а красивую речь оставлю на потом.",
+  "transcript": "У меня тут маленькое расследование. Проверю график, а красивую речь оставлю на потом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07529,
+    "peak": 0.34438,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.091,
+    "sha256": "bfee0c68f5ac40cf36e5bf813b77431a08116f164921f4204c475848dc3e7446"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " У меня тут маленькое расследование."
+    },
+    {
+      "start": 2.44,
+      "end": 5.44,
+      "text": " Проверю график, а красивую речь оставлю на потом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

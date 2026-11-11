@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_11",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открыла вниз, чат! На границе диапазона появилась подтверждённая реакция — на неё и опираюсь.",
+  "tts_text": "[confident, lively] Открыла вниз, чат! На границе диапазона появилась подтверждённая реакция — на неё и опираюсь.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1ec2cd1c536c587301ef8282db710d4aa12df7483405323220bc71306d08778b",
+  "delivery": "confident, lively",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_11.mp3",
+  "duration": 6.5305,
+  "sha256": "e3a63310cf6c2f428e9655e66530fff82d1394ecbcbd695c5fade68ed4749870",
+  "request_payload": {
+    "text": "[confident, lively] Открыла вниз, чат! На границе диапазона появилась подтверждённая реакция — на неё и опираюсь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

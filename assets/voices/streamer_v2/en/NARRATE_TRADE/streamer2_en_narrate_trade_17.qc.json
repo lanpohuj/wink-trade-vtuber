@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_17",
+  "sha256": "37938a926cf4920e84753101a9bedf556d9eff363409b3f06a456f8beaef5b39",
+  "expected": "I don't have the result yet; it's still running. I can wait and check it properly, though.",
+  "transcript": "I don't have the result yet. It's still running. I can wait and check it properly though",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08484,
+    "peak": 0.43233,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "37938a926cf4920e84753101a9bedf556d9eff363409b3f06a456f8beaef5b39"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " I don't have the result yet. It's still running. I can wait and check it properly though"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_01",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+  "tts_text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5e95c09c73cd8bd31c01632ab17251b2bfeb22892ae3f166aefa67bcd37ee34c",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_01.mp3",
+  "duration": 6.034187,
+  "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+  "request_payload": {
+    "text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

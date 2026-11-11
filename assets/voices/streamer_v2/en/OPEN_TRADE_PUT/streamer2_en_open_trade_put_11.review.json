@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_11",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down, chat! We got a confirmed reaction at the range boundary; that's what I'm working with.",
+  "tts_text": "[confident, lively] Opened down, chat! We got a confirmed reaction at the range boundary; that's what I'm working with.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0ea50e881c72bc2186019e21dadcdf442df96263716fd5ee2b4f9b4eab825cf3",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_11.mp3",
+  "duration": 5.328875,
+  "sha256": "2163dc1e6f461906441b2f3129db63c170f44a6e9458a349455e646dc6370417",
+  "request_payload": {
+    "text": "[confident, lively] Opened down, chat! We got a confirmed reaction at the range boundary; that's what I'm working with.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

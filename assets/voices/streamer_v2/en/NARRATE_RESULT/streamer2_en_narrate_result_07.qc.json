@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_result_07",
+  "sha256": "5819e95ae61a49eb88db40cd818d614d083d5c09a9a1086c328be80bb1a61ba4",
+  "expected": "Right, recovery step at two hundred and forty-two. Plan noted, hurry switched off; looking for a suitable setup.",
+  "transcript": "Right, recovery step at 242. Plan noted, hurry switched off, looking for a suitable setup.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.314,
+    "rms": 0.08081,
+    "peak": 0.49672,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.254,
+    "sha256": "5819e95ae61a49eb88db40cd818d614d083d5c09a9a1086c328be80bb1a61ba4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Right, recovery step at 242."
+    },
+    {
+      "start": 3.44,
+      "end": 7.2,
+      "text": " Plan noted, hurry switched off, looking for a suitable setup."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_11",
+  "sha256": "2163dc1e6f461906441b2f3129db63c170f44a6e9458a349455e646dc6370417",
+  "expected": "Opened down, chat! We got a confirmed reaction at the range boundary; that's what I'm working with.",
+  "transcript": "Open down chat. We got a confirmed reaction at the range boundary. That's what I'm working with",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08833,
+    "peak": 0.48784,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.149,
+    "sha256": "2163dc1e6f461906441b2f3129db63c170f44a6e9458a349455e646dc6370417"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.08,
+      "text": " Open down chat. We got a confirmed reaction at the range boundary. That's what I'm working with"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

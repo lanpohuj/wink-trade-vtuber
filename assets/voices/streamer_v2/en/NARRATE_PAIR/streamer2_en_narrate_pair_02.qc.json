@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_02",
+  "sha256": "432616bab64e13ea5a7210d3f6d41f4a22be61bc6b6b8ab38ef43081b59f2977",
+  "expected": "Change of scenery! New chart, so the last pair's conclusions stay with the last pair.",
+  "transcript": "Change of scenery new chart so the last pair's conclusions stay with the last pair",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08142,
+    "peak": 0.38762,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.323,
+    "sha256": "432616bab64e13ea5a7210d3f6d41f4a22be61bc6b6b8ab38ef43081b59f2977"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Change of scenery new chart so the last pair's conclusions stay with the last pair"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

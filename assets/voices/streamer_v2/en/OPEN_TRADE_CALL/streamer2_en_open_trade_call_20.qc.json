@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_20",
+  "sha256": "66319e3d2a42f907ddff334159ff6c9f46b18ea8ce890de255b4407b42d1a834",
+  "expected": "Opened up. First the level reaction, then reversal confirmation. Now we follow the trade itself.",
+  "transcript": "Opened up first the level reaction then reversal confirmation now we follow the trade itself",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08038,
+    "peak": 0.39155,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.311,
+    "sha256": "66319e3d2a42f907ddff334159ff6c9f46b18ea8ce890de255b4407b42d1a834"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.1000000000000005,
+      "text": " Opened up first the level reaction then reversal confirmation now we follow the trade itself"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_24",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A forecast and a result are different things. I don't book a win while the trade is still running.",
+  "tts_text": "[lightly playful] A forecast and a result are different things. I don't book a win while the trade is still running.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cf56b64bbd82a1730a61c5e0347204c6571d6c2a9ab7bd0f8f6d222fc971d44c",
+  "delivery": "lightly playful",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_24.mp3",
+  "duration": 5.4595,
+  "sha256": "b2c37d005d63186cff07f89b9bafefcf0fae20ed0eafd7266501370af64a8321",
+  "request_payload": {
+    "text": "[lightly playful] A forecast and a result are different things. I don't book a win while the trade is still running.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_refund_07",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Чат, возврат. Сделка закончилась без итогового плюса или минуса, смотрим дальше спокойно.",
+  "tts_text": "[lightly amused, relaxed] Чат, возврат. Сделка закончилась без итогового плюса или минуса, смотрим дальше спокойно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "91ea9aedc074fce82a38fc911f5656aefbc9a0f77700635ca72cff25caecdb33",
+  "delivery": "lightly amused, relaxed",
+  "file": "ru/TRADE_REFUND/streamer2_ru_trade_refund_07.mp3",
+  "duration": 6.426063,
+  "sha256": "c4329d0d1159dc3d40403f3794ff5d245993833930b407e897d1cb9b2914463c",
+  "request_payload": {
+    "text": "[lightly amused, relaxed] Чат, возврат. Сделка закончилась без итогового плюса или минуса, смотрим дальше спокойно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

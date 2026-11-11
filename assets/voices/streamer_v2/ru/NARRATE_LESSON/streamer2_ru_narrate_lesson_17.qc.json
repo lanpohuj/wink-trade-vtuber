@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_17",
+  "sha256": "1d9c048b602a55a13107b1a35b6cc2343e3723321b62d8cf5e26b35ccea053e7",
+  "expected": "График может поменяться, пока я объясняю идею. Поэтому перед входом ещё раз сверяю, что она жива.",
+  "transcript": "график может поменяться пока я объясняю идею поэтому перед входом еще раз сверяю что она жива",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08686,
+    "peak": 0.37932,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.087,
+    "sha256": "1d9c048b602a55a13107b1a35b6cc2343e3723321b62d8cf5e26b35ccea053e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " график может поменяться пока я объясняю идею поэтому перед входом еще раз сверяю что она жива"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

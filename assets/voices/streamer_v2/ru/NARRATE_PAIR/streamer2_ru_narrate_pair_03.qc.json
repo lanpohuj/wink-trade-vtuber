@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_03",
+  "sha256": "a493ec41a4d0fb6c5b3407e970a7a18720d94050e1460da17d3013673bc4cbd8",
+  "expected": "Вот и следующий кандидат. Посмотрим спокойно, без любви с первого взгляда к одной свече.",
+  "transcript": "Вот и следующий кандидат. Посмотрим спокойно, без любви, с первого взгляда к одной свече.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07846,
+    "peak": 0.31414,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.102,
+    "sha256": "a493ec41a4d0fb6c5b3407e970a7a18720d94050e1460da17d3013673bc4cbd8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Вот и следующий кандидат. Посмотрим спокойно, без любви, с первого взгляда к одной свече."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

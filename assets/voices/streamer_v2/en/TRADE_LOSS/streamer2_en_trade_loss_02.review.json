@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_02",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Right, that closed red. It's okay to be annoyed; arguing with a closed trade won't get us anywhere.",
+  "tts_text": "[thoughtful, conversational] Right, that closed red. It's okay to be annoyed; arguing with a closed trade won't get us anywhere.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b60c8e9fe9b3dcf59e9c88410a30709d8837cc9fa812ffffa04c666418855b2e",
+  "delivery": "thoughtful, conversational",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_02.mp3",
+  "duration": 7.00075,
+  "sha256": "888137f6ee81007dfb6e8a97edc1bd331ab4ee0c8d5198f3f56fa44197cde123",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Right, that closed red. It's okay to be annoyed; arguing with a closed trade won't get us anywhere.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

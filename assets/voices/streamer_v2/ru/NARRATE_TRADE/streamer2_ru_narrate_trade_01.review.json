@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_01",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Так, сделка идёт. Всё, кнопку оставляем в покое, теперь смотрим, как закончится эта история.",
+  "tts_text": "[curious, conversational] Так, сделка идёт. Всё, кнопку оставляем в покое, теперь смотрим, как закончится эта история.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7496bd54baefe538a9a60f3dc9054c0080c494e4bdebbdf65a041ec798514575",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_01.mp3",
+  "duration": 6.347688,
+  "sha256": "6cd915e129cdb62cc5077a96e0f7f370e89242e326acf89c16eaf8914309cd46",
+  "request_payload": {
+    "text": "[curious, conversational] Так, сделка идёт. Всё, кнопку оставляем в покое, теперь смотрим, как закончится эта история.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_12",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Да, эту забрали в плюс! Сейчас спокойно зафиксируем и вернёмся к графикам.",
+  "tts_text": "[bright, warm] Да, эту забрали в плюс! Сейчас спокойно зафиксируем и вернёмся к графикам.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "597f7843f7ad4a29014a3909273a8e4df57aab387393521e441c9b79ffea2a08",
+  "delivery": "bright, warm",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_12.mp3",
+  "duration": 5.172125,
+  "sha256": "d41be484cdd050ea3d976c39ec3d6afc8eb5ecae33893c2e022980193eec82fc",
+  "request_payload": {
+    "text": "[bright, warm] Да, эту забрали в плюс! Сейчас спокойно зафиксируем и вернёмся к графикам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

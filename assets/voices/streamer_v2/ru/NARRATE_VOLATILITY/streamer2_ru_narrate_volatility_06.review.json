@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_volatility_06",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Сейчас движения сильнее обычного, это видно по диапазону свечей. Устраивать восторг только из-за скорости я не буду.",
+  "tts_text": "[focused, conversational] Сейчас движения сильнее обычного, это видно по диапазону свечей. Устраивать восторг только из-за скорости я не буду.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "42ca93b45afcb876fd8d95a05433220f6f76150abeaeff1b2178b2bf2ac9579c",
+  "delivery": "focused, conversational",
+  "file": "ru/NARRATE_VOLATILITY/streamer2_ru_narrate_volatility_06.mp3",
+  "duration": 6.5305,
+  "sha256": "1b777cd461f4af574e6dadd03a5e81536170bd2831571a98df463abc06e1aad5",
+  "request_payload": {
+    "text": "[focused, conversational] Сейчас движения сильнее обычного, это видно по диапазону свечей. Устраивать восторг только из-за скорости я не буду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

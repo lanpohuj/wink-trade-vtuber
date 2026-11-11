@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_26",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Так, где здесь идея для входа? Сейчас проверю, есть ли она вообще, прежде чем выбирать время.",
+  "tts_text": "[conversational, smiling] Так, где здесь идея для входа? Сейчас проверю, есть ли она вообще, прежде чем выбирать время.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ebd2469378faa69d3dfe654ba340e54d6410374499434117b580306832b9f354",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_26.mp3",
+  "duration": 5.4595,
+  "sha256": "808912499e232eb5f8feacd061082cd09e352358fb3f4400a1f30e76345e9b4f",
+  "request_payload": {
+    "text": "[conversational, smiling] Так, где здесь идея для входа? Сейчас проверю, есть ли она вообще, прежде чем выбирать время.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

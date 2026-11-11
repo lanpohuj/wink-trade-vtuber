@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_13",
+  "sha256": "05bb032dcd340884663837e1fc00fd2c3575937ad60a49e434de997761feba5c",
+  "expected": "Продолжаю смотреть эту сделку. Финальную оценку оставлю до её закрытия, так честнее.",
+  "transcript": "продолжаю смотреть эту сделку финальную оценку оставлю до ее закрытия так честнее",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08603,
+    "peak": 0.39117,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.072,
+    "sha256": "05bb032dcd340884663837e1fc00fd2c3575937ad60a49e434de997761feba5c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " продолжаю смотреть эту сделку финальную оценку оставлю до ее закрытия так честнее"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

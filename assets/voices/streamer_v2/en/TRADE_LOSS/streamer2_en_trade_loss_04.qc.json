@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_04",
+  "sha256": "e7b1edb9e4699837dec7e1d175840d2687296830efdfbd8971409c1291c8a472",
+  "expected": "Ah, not our result. The trade closed red; I'll calmly check the next step.",
+  "transcript": "Ah, not a result. The trade closed red. I'll calmly check the next step.",
+  "similarity": 0.964,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07944,
+    "peak": 0.41774,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.309,
+    "sha256": "e7b1edb9e4699837dec7e1d175840d2687296830efdfbd8971409c1291c8a472"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Ah, not a result. The trade closed red. I'll calmly check the next step."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

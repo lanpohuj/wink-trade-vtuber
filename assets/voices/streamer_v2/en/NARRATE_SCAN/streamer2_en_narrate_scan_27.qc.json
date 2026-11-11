@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_27",
+  "sha256": "a0d04320f617126a434d0e54ec0695b213932caf68f409a7555196426ef3c306",
+  "expected": "I like this part, chat. Nothing looks obvious at first, then you start unpacking the details.",
+  "transcript": "I like this part, Chat. Nothing looks obvious at first, then you start unpacking the details.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07833,
+    "peak": 0.39236,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.213,
+    "sha256": "a0d04320f617126a434d0e54ec0695b213932caf68f409a7555196426ef3c306"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " I like this part, Chat. Nothing looks obvious at first, then you start unpacking the details."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

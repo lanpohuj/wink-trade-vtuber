@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_22",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Если что-то на экране мелковато, скажите. Мне хочется, чтобы вы видели смысл, а не просто красивые огоньки.",
+  "tts_text": "[friendly, curious] Если что-то на экране мелковато, скажите. Мне хочется, чтобы вы видели смысл, а не просто красивые огоньки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2739206300ba84eb3756b894eb34495306d291ec33d8e7df5ce1a7acdcd6291b",
+  "delivery": "friendly, curious",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_22.mp3",
+  "duration": 6.086438,
+  "sha256": "3f0a0cb7b11de6ad0cbe6a77a01a8bc3e42ea24ca232b4197d5aa86575853ed5",
+  "request_payload": {
+    "text": "[friendly, curious] Если что-то на экране мелковато, скажите. Мне хочется, чтобы вы видели смысл, а не просто красивые огоньки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

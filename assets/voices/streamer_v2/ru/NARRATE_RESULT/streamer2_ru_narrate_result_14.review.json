@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_14",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Тут действительно срезало под закрытие. До последнего были в положительной зоне, итоговый минус получился рядом со входом.",
+  "tts_text": "[disappointed, composed] Тут действительно срезало под закрытие. До последнего были в положительной зоне, итоговый минус получился рядом со входом.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c67f230346ca13b45477d8d92f63ac97f27338d497e2bc5bc310027a6349026c",
+  "delivery": "disappointed, composed",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_14.mp3",
+  "duration": 6.9485,
+  "sha256": "ce2d39166801fd49d778b1ef417174d2df41c595b33fe8d2679f6544a876964d",
+  "request_payload": {
+    "text": "[disappointed, composed] Тут действительно срезало под закрытие. До последнего были в положительной зоне, итоговый минус получился рядом со входом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

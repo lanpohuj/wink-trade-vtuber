@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_volatility_04",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "The pace really has changed here: the recent candles are wider. No need to get heroic.",
+  "tts_text": "[focused, conversational] The pace really has changed here: the recent candles are wider. No need to get heroic.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0aafe8c1343d94808696bec8b5e57552440234b5ee206cdefffafd4946ecbf16",
+  "delivery": "focused, conversational",
+  "file": "en/NARRATE_VOLATILITY/streamer2_en_narrate_volatility_04.mp3",
+  "duration": 5.328875,
+  "sha256": "06ab31f79e65dc68229929aa60cd91e68f8a5a3fcd663ae4ea5e1ea4d9b356d4",
+  "request_payload": {
+    "text": "[focused, conversational] The pace really has changed here: the recent candles are wider. No need to get heroic.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

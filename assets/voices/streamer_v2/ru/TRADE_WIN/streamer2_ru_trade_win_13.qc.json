@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_trade_win_13",
+  "sha256": "5b9d4fe38044444e45291711d2b6f54214579fc92103273e5cbb030a5e7ae5fb",
+  "expected": "Вот и результат: плюс! Можно пару секунд порадоваться, я разрешаю себе официально.",
+  "transcript": "Вот и результат! Плюс! Можно пару секунд порадоваться! Я разрешаю себе официально!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08203,
+    "peak": 0.35712,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.094,
+    "sha256": "5b9d4fe38044444e45291711d2b6f54214579fc92103273e5cbb030a5e7ae5fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Вот и результат! Плюс!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Можно пару секунд порадоваться!"
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Я разрешаю себе официально!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

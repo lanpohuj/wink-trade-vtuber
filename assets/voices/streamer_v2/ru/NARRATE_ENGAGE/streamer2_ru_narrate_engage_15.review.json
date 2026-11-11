@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_15",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Заходите без стеснения. Вопрос «а почему?» здесь вообще один из самых полезных.",
+  "tts_text": "[smiling, relaxed] Заходите без стеснения. Вопрос «а почему?» здесь вообще один из самых полезных.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d000732b0c8ddc17c56758d1847f408a436c8465abe01f623531880956b7ae39",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_15.mp3",
+  "duration": 5.642375,
+  "sha256": "c1b09f8dd819b80c98466ae0837b9bb2ad298258a4f814e90a3c28b5eb42966a",
+  "request_payload": {
+    "text": "[smiling, relaxed] Заходите без стеснения. Вопрос «а почему?» здесь вообще один из самых полезных.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

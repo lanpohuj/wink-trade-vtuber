@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_07",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Только давайте без экзамена на знание сокращений. Если говорю непонятно — переводим на обычный язык.",
+  "tts_text": "[friendly, curious] Только давайте без экзамена на знание сокращений. Если говорю непонятно — переводим на обычный язык.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "df5183c37835b928b29b2d7db42cc2bd98145acf9622dcf04f3f778c1ffa0ef8",
+  "delivery": "friendly, curious",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_07.mp3",
+  "duration": 5.955813,
+  "sha256": "efc61908dee085b120372c7ee560a9472fc13a163083dcdbb98d67d16196375c",
+  "request_payload": {
+    "text": "[friendly, curious] Только давайте без экзамена на знание сокращений. Если говорю непонятно — переводим на обычный язык.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

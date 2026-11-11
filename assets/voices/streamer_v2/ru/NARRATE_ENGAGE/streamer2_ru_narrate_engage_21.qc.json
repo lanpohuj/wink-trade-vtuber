@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_21",
+  "sha256": "0149adcec47655708d205445d15df432c56fbedbabfe35ac8a7e73a829c26efc",
+  "expected": "Я люблю вопросы без сложных слов. Иногда «почему не сейчас?» — это целый хороший разбор.",
+  "transcript": "Я люблю вопросы без сложных слов. Иногда почему не сейчас? Это целый хороший разбор.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08159,
+    "peak": 0.3905,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.11,
+    "sha256": "0149adcec47655708d205445d15df432c56fbedbabfe35ac8a7e73a829c26efc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5600000000000005,
+      "text": " Я люблю вопросы без сложных слов. Иногда почему не сейчас? Это целый хороший разбор."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

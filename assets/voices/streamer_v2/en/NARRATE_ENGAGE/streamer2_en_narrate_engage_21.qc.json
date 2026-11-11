@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_21",
+  "sha256": "6ffc3788fd57e11405466a3d7c352aec07eda195c18832d1b3dd7c0b28149fbc",
+  "expected": "I like simple questions. Why not now can turn into a really useful discussion.",
+  "transcript": "I like simple questions. Why not now can turn into a really useful discussion?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08316,
+    "peak": 0.44616,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.249,
+    "sha256": "6ffc3788fd57e11405466a3d7c352aec07eda195c18832d1b3dd7c0b28149fbc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I like simple questions. Why not now can turn into a really useful discussion?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

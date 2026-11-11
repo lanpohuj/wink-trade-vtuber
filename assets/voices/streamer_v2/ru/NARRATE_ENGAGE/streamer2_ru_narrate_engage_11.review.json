@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_11",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Мне нравится, когда чат замечает детали. Иногда один хороший вопрос делает разбор намного интереснее.",
+  "tts_text": "[warm, conversational] Мне нравится, когда чат замечает детали. Иногда один хороший вопрос делает разбор намного интереснее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0efa0b5606af94e2b8a284977d081be53c3a4f3103d380ff421066d51db06832",
+  "delivery": "warm, conversational",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_11.mp3",
+  "duration": 5.955813,
+  "sha256": "7034d96d88d445ecda5919708082b7818a8aa36460e15e7b732a2ee19fbbc05b",
+  "request_payload": {
+    "text": "[warm, conversational] Мне нравится, когда чат замечает детали. Иногда один хороший вопрос делает разбор намного интереснее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

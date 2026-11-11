@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_volatility_02",
+  "sha256": "da1764c5cce20c8e650e475a123d1cd893dc2cdfbcc2bab9ab03ebe6437dcdb1",
+  "expected": "Так, сейчас график ощутимо штормит. Диапазон последних свечей вырос, я это учитываю в комментарии.",
+  "transcript": "Так, сейчас график ощутим уж тормит, диапазон последних свечей вырос, я это учитываю в комментарии.",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08896,
+    "peak": 0.39123,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "da1764c5cce20c8e650e475a123d1cd893dc2cdfbcc2bab9ab03ebe6437dcdb1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Так, сейчас график ощутим уж тормит, диапазон последних свечей вырос, я это учитываю в комментарии."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

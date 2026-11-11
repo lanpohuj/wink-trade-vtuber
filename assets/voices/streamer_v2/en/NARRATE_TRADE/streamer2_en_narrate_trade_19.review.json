@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_19",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Let's give the setup its time. We don't need to rename it after every candle movement.",
+  "tts_text": "[curious, conversational] Let's give the setup its time. We don't need to rename it after every candle movement.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c7341b26af3fb58b8a23d00076611803ec149a75bdbbd91433d34c73230c3953",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_19.mp3",
+  "duration": 4.989312,
+  "sha256": "5edf69fa73d940a98c1d8fbe6668349c744a120b20d336c3feb427b2e5855e31",
+  "request_payload": {
+    "text": "[curious, conversational] Let's give the setup its time. We don't need to rename it after every candle movement.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

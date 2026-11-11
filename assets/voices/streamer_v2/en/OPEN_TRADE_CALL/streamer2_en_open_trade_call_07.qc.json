@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_07",
+  "sha256": "dfd32bda4d90f5a1b65cc596aa1fa73115342695eac5d0ddcfe57ff3b16349a2",
+  "expected": "We're in up, chat. The breakout got tested on the return, rather than just giving us a flashy candle.",
+  "transcript": "We're in up, chat. The breakout got tested on the return, rather than just giving us a flashy candle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08333,
+    "peak": 0.38858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.277,
+    "sha256": "dfd32bda4d90f5a1b65cc596aa1fa73115342695eac5d0ddcfe57ff3b16349a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " We're in up, chat. The breakout got tested on the return, rather than just giving us a flashy candle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

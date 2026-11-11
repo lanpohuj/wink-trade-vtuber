@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_20",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Так, проверим этот вариант спокойно. Мне хочется видеть продолжение идеи, а не самой её дописывать.",
+  "tts_text": "[conversational, smiling] Так, проверим этот вариант спокойно. Мне хочется видеть продолжение идеи, а не самой её дописывать.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "32aa2d5b0d853c94c2da32c0688146b8389562955c1d9b6640a9d6ecebb345ae",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_20.mp3",
+  "duration": 6.399938,
+  "sha256": "d071a65289fffdb51b570222a65de2346117148d4393772844ab0e4f0eef44e3",
+  "request_payload": {
+    "text": "[conversational, smiling] Так, проверим этот вариант спокойно. Мне хочется видеть продолжение идеи, а не самой её дописывать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_12",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "That didn't close our way, chat. The loss is counted honestly; next we look at conditions, not emotions.",
+  "tts_text": "[gentle, steady] That didn't close our way, chat. The loss is counted honestly; next we look at conditions, not emotions.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "030c13749462ea8adffe4567cf89b22c8eea6cf2e9502612a54ea6c78c21ff3b",
+  "delivery": "gentle, steady",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_12.mp3",
+  "duration": 6.5305,
+  "sha256": "f3d08ea670c288a156ed76714439a40d877cfa4f40a4b70b6129b3fb94fe4213",
+  "request_payload": {
+    "text": "[gentle, steady] That didn't close our way, chat. The loss is counted honestly; next we look at conditions, not emotions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_10",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Уровень для меня — место, где смотрю реакцию. Не магическая стенка, которая обязана удержать цену.",
+  "tts_text": "[friendly, conversational] Уровень для меня — место, где смотрю реакцию. Не магическая стенка, которая обязана удержать цену.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "69717bc8b170716286b78261a77846b854c769e6f63a428ca65eabaae63f49fb",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_10.mp3",
+  "duration": 6.086438,
+  "sha256": "422c8172e8036e53e2242d08fd33c974651f02cbcd1cbc9405eb91b18fd71a53",
+  "request_payload": {
+    "text": "[friendly, conversational] Уровень для меня — место, где смотрю реакцию. Не магическая стенка, которая обязана удержать цену.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_open_trade_call_01",
+  "sha256": "17e247742d4d21c0ad66cced1e9fe5a689a9fb1699f699f2a9e701800d8aaf79",
+  "expected": "Есть, открыла вверх! После отката движение снова подтвердилось — вот эту идею сейчас и смотрим.",
+  "transcript": "Есть! Открыла вверх! После отката движения снова подтвердилась. Вот эту идею сейчас и смотрим!",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.08047,
+    "peak": 0.41631,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.088,
+    "sha256": "17e247742d4d21c0ad66cced1e9fe5a689a9fb1699f699f2a9e701800d8aaf79"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Есть! Открыла вверх!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.2,
+      "text": " После отката движения снова подтвердилась."
+    },
+    {
+      "start": 4.2,
+      "end": 6.2,
+      "text": " Вот эту идею сейчас и смотрим!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

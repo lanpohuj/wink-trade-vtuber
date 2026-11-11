@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_05",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New pair on screen. I'll figure it out first and save the excitement for a reason.",
+  "tts_text": "[conversational, smiling] New pair on screen. I'll figure it out first and save the excitement for a reason.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7b32d756210dd4b2ccb80e98d3a89a482c199546a2c627f89944849be9f8d576",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_05.mp3",
+  "duration": 5.067687,
+  "sha256": "74c9af8a814fdfeb2ae052663b8077bb52834c508944fbfbdf587e2ad9a85713",
+  "request_payload": {
+    "text": "[conversational, smiling] New pair on screen. I'll figure it out first and save the excitement for a reason.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

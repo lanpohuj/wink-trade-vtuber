@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_scan_31",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Секундочку, график ещё подгружается. Сначала дождусь данных, а потом уже буду умничать.",
+  "tts_text": "[curious, conversational] Секундочку, график ещё подгружается. Сначала дождусь данных, а потом уже буду умничать.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "38c6b09a0cd25cac2511487b27cc08f4b5687ee6a498f46f66af763c1127ace4",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_31.mp3",
+  "duration": 5.2505,
+  "sha256": "fbdc9318da07373ca379b29a9599ca413260e3c6faec5e5223a289a66a89d44b",
+  "request_payload": {
+    "text": "[curious, conversational] Секундочку, график ещё подгружается. Сначала дождусь данных, а потом уже буду умничать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

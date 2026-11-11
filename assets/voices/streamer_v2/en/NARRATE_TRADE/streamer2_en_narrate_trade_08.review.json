@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_08",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "We're not at the result yet, chat. I'll save the grand finale for the actual close.",
+  "tts_text": "[conversational, smiling] We're not at the result yet, chat. I'll save the grand finale for the actual close.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2e1665ba29afd0958f29ef707e7209364cbc241572c36af9917ad4c9c514ffa0",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_08.mp3",
+  "duration": 4.989312,
+  "sha256": "79735912c0aed1613c0cad946ad9e5deebad25f89423dd82f3e95c4d2d0c6d9c",
+  "request_payload": {
+    "text": "[conversational, smiling] We're not at the result yet, chat. I'll save the grand finale for the actual close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

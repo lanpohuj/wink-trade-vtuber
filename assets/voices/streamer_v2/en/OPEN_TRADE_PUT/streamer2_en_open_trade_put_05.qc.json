@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_05",
+  "sha256": "13abcef515b77a276c3b499cfaa900f7c2355034c16ef4d542736cd051c7ac0e",
+  "expected": "Right, down is open! The pullback gave confirmed continuation. That's the reasoning; now we wait for the result.",
+  "transcript": "Right, down is open. The pullback gave confirmed continuation. That's the reasoning. Now we wait for the result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.445,
+    "rms": 0.08592,
+    "peak": 0.51181,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.185,
+    "sha256": "13abcef515b77a276c3b499cfaa900f7c2355034c16ef4d542736cd051c7ac0e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.4,
+      "text": " Right, down is open. The pullback gave confirmed continuation. That's the reasoning. Now we wait for the result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

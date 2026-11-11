@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_30",
+  "sha256": "acaa706b5b66f390933480a69e2d85bf762f578bce959ee20368c4f079a539a3",
+  "expected": "Tiny chart investigation going on here. Let me check the evidence before making the speech.",
+  "transcript": "Tiny chart investigation going on here. Let me check the evidence before making the speech",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08243,
+    "peak": 0.45524,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.098,
+    "sha256": "acaa706b5b66f390933480a69e2d85bf762f578bce959ee20368c4f079a539a3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Tiny chart investigation going on here. Let me check the evidence before making the speech"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

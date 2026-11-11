@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_14",
+  "sha256": "42ee18707e8323cf28841bc0cf6a579cc66101c0544b4f57d68934128a81b9a3",
+  "expected": "Ищу не самую громкую свечу, а понятную ситуацию. Громких тут и без меня хватает.",
+  "transcript": "И еще не самую громкую свечу, а понятную ситуацию. Громкий кто-то без меня хватает.",
+  "similarity": 0.923,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08215,
+    "peak": 0.34526,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.138,
+    "sha256": "42ee18707e8323cf28841bc0cf6a579cc66101c0544b4f57d68934128a81b9a3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " И еще не самую громкую свечу, а понятную ситуацию."
+    },
+    {
+      "start": 3.68,
+      "end": 5.84,
+      "text": " Громкий кто-то без меня хватает."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

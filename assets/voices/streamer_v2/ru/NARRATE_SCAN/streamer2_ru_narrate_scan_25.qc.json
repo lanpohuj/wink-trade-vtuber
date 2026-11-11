@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_25",
+  "sha256": "3225896cba6c5bb46d7b631df695664bfd78a82927b2485472d9092233f508ba",
+  "expected": "Без суеты, я тут. Сверяю короткий участок с тем, что происходит на старшем интервале.",
+  "transcript": "Без суи ты! Я тут! Сверяю короткий участок с тем, что происходит на старшем интервале!",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.07937,
+    "peak": 0.42885,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.097,
+    "sha256": "3225896cba6c5bb46d7b631df695664bfd78a82927b2485472d9092233f508ba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Без суи ты! Я тут!"
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Сверяю короткий участок с тем, что происходит на старшем интервале!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

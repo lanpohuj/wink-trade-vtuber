@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_35",
+  "sha256": "85c14effbe42682aefd196a64e3d01c8fd43b68a18a194e1c034241aab33caa4",
+  "expected": "Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air.",
+  "transcript": "Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.0836,
+    "peak": 0.40527,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "85c14effbe42682aefd196a64e3d01c8fd43b68a18a194e1c034241aab33caa4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Once the history arrives, I can take a proper look. Until then, no conclusions out of thin air."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

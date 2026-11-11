@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_14",
+  "sha256": "e67f22d58d7552fd682b98005c0f5c624d690d7055b8af70d8fec33ddec58020",
+  "expected": "That really was caught at the close. Positive near the end, then a small red finish close to the entry.",
+  "transcript": "That really was caught at the close, positive near the end, then a small red finish close to the entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.07763,
+    "peak": 0.44687,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.148,
+    "sha256": "e67f22d58d7552fd682b98005c0f5c624d690d7055b8af70d8fec33ddec58020"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " That really was caught at the close, positive near the end, then a small red finish close to the entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

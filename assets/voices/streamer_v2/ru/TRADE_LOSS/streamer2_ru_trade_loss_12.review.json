@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_12",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Чат, эту закрыли не в нашу сторону. Минус честно учтён; дальше снова смотрим условия, а не эмоции.",
+  "tts_text": "[gentle, steady] Чат, эту закрыли не в нашу сторону. Минус честно учтён; дальше снова смотрим условия, а не эмоции.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6c8da565c8d7ad3b812c3a96d9576cc4f7e4aeae88b3b16a0b9d12ce7b7bcc9c",
+  "delivery": "gentle, steady",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_12.mp3",
+  "duration": 7.261938,
+  "sha256": "1630e9e8817b82df0880bb78836094bc3503d22a2b021495826549be97c16641",
+  "request_payload": {
+    "text": "[gentle, steady] Чат, эту закрыли не в нашу сторону. Минус честно учтён; дальше снова смотрим условия, а не эмоции.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

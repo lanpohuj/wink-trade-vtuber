@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_31",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Я сравниваю варианты, а не коллекционирую нажатия. В этом и есть смысл сначала посмотреть несколько пар.",
+  "tts_text": "[friendly, conversational] Я сравниваю варианты, а не коллекционирую нажатия. В этом и есть смысл сначала посмотреть несколько пар.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "33a935f8f2c3ab6c50043637b202de8c66027a081d7cc0b1e80d4705a3095e16",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_31.mp3",
+  "duration": 5.955813,
+  "sha256": "4a8564ec323eda6f06b20662d7368bc30a2fb48081c1e603755ff6b3fa19efb9",
+  "request_payload": {
+    "text": "[friendly, conversational] Я сравниваю варианты, а не коллекционирую нажатия. В этом и есть смысл сначала посмотреть несколько пар.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

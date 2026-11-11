@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_34",
+  "sha256": "04708a8c5bbd9eaf83e241e67b44ddd0eb5b621f08cdddc1b24c5be635a5b963",
+  "expected": "Так, данные ещё собираются. Я пока ничего не объявляю, чтобы потом не переобуваться на ходу.",
+  "transcript": "Так, данные ещё собираются. Я пока ничего не объявляю, чтобы потом не переобуваться на ходу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08661,
+    "peak": 0.34736,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.11,
+    "sha256": "04708a8c5bbd9eaf83e241e67b44ddd0eb5b621f08cdddc1b24c5be635a5b963"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Так, данные ещё собираются."
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 5.5600000000000005,
+      "text": " Я пока ничего не объявляю, чтобы потом не переобуваться на ходу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

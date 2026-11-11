@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_09",
+  "sha256": "6b0d79bf111e6f77e6db8b5bd132050d02c324255a839eb48cc3039a8717c68b",
+  "expected": "Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением?",
+  "transcript": "Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08532,
+    "peak": 0.35173,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "6b0d79bf111e6f77e6db8b5bd132050d02c324255a839eb48cc3039a8717c68b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

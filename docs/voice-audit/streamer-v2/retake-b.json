@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_trade_07",
+  "text": "And now we wait. Very glamorous, I know! I'm keeping an eye on the chart while this one plays out.",
+  "tts_text": "[happy, smiling] And now we wait. Very glamorous, I know! I'm keeping an eye on the chart while this one plays out.",
+  "file": "docs/voice-audit/streamer-v2/retake-en-trade-07-b.mp3",
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08335,
+    "peak": 0.39178,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.189,
+    "sha256": "a50380ec15687b566c25b5282004138e9758bb4de5c6cdbedee887cf12134a11"
+  },
+  "transcript": "And now we wait. Very glamorous, I know. I'm keeping an eye on the chart while this one plays out.",
+  "similarity": 1.0,
+  "request_payload": {
+    "text": "[happy, smiling] And now we wait. Very glamorous, I know! I'm keeping an eye on the chart while this one plays out.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "auditory_verified": false
+}

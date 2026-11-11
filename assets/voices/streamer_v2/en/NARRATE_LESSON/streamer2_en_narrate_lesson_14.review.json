@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_14",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "If the chart gives no clear entry, skipping is a decision too. Just without the fanfare and countdown.",
+  "tts_text": "[thoughtful, relaxed] If the chart gives no clear entry, skipping is a decision too. Just without the fanfare and countdown.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ce106f196693f8b8433852f2b028beb026f538d587b32747ee42ef7656eb0dcc",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_14.mp3",
+  "duration": 6.086438,
+  "sha256": "7d48eccf88d8a052052a85c6ec6857cdb1e699612ea38bcc3e7151a97629a701",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] If the chart gives no clear entry, skipping is a decision too. Just without the fanfare and countdown.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

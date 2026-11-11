@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_02",
+  "sha256": "2a3b03f670e0a98c7f917f9e7f9e256f7f9e66eef45fe6adb0c62c029182381e",
+  "expected": "Я не выбираю время сделки по настроению. Сначала смотрю ситуацию, потом решаю, какое окно ей подходит.",
+  "transcript": "Я не выбираю время сделки понастроения. Сначала смотрю ситуацию, потом решаю, какое окно ей подходит.",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.07494,
+    "peak": 0.32236,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.098,
+    "sha256": "2a3b03f670e0a98c7f917f9e7f9e256f7f9e66eef45fe6adb0c62c029182381e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Я не выбираю время сделки понастроения."
+    },
+    {
+      "start": 2.72,
+      "end": 6.72,
+      "text": " Сначала смотрю ситуацию, потом решаю, какое окно ей подходит."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

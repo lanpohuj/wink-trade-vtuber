@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_16",
+  "sha256": "e30b9c98e5773995300dc04ed3e636fa51669b96f39c192b0e7301e3ebccb0d8",
+  "expected": "I'm in down! More than just a pause here: local structure changed and confirmed the reversal.",
+  "transcript": "I'm in down. More than just a pause here, local structure changed and confirmed the reversal.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08252,
+    "peak": 0.39669,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.161,
+    "sha256": "e30b9c98e5773995300dc04ed3e636fa51669b96f39c192b0e7301e3ebccb0d8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " I'm in down. More than just a pause here, local structure changed and confirmed the reversal."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

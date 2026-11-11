@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_01",
+  "sha256": "20dc5d0d06c50294eb1615675f6b50e5f0bce90f4ff65fe8f719fb3904ead269",
+  "expected": "Next step is one hundred and ten, as planned. I still check the entry first; the stake isn't a reason to click.",
+  "transcript": "Next step is 110 as planned. I still check the entry first. The stake isn't a reason to click",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.131,
+    "rms": 0.07842,
+    "peak": 0.47804,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.231,
+    "sha256": "20dc5d0d06c50294eb1615675f6b50e5f0bce90f4ff65fe8f719fb3904ead269"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.78,
+      "text": " Next step is 110 as planned. I still check the entry first. The stake isn't a reason to click"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

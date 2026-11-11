@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_12",
+  "sha256": "92a0102f58ab3946b4c55eaa331e4d1a722e25a19ea99516226f08adf9be2481",
+  "expected": "The up entry is on screen. This one's about the range-edge reaction, not trying to find a trend.",
+  "transcript": "The up entry is on screen. This one's about the range edge reaction, not trying to find a trend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.07994,
+    "peak": 0.3722,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.294,
+    "sha256": "92a0102f58ab3946b4c55eaa331e4d1a722e25a19ea99516226f08adf9be2481"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " The up entry is on screen. This one's about the range edge reaction, not trying to find a trend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

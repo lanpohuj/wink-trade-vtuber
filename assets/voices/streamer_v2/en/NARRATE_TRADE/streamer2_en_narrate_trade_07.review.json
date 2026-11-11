@@ -1,0 +1,35 @@
+{
+  "id": "streamer2_en_narrate_trade_07",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+  "tts_text": "[curious, conversational] Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "489b11068dd76ca6b89d303954211168f1a5c715e9e59683bf2459792472b614",
+  "delivery": "curious, conversational",
+  "requires_listening": true,
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_07.mp3",
+  "duration": 5.955813,
+  "sha256": "a25d66d4fea109525991c2f32490ae40d22f418002d2ed7b986c66900a4597c5",
+  "request_payload": {
+    "text": "[curious, conversational] Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

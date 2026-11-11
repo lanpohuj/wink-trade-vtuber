@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_16",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Две минуты на эту историю. Сейчас важнее посмотреть движение в целом, чем спорить с каждой свечой.",
+  "tts_text": "[warm, relaxed] Две минуты на эту историю. Сейчас важнее посмотреть движение в целом, чем спорить с каждой свечой.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e0d626d74b01d086f644afc3ab61f0d13ca589dd7061f7f6c47da5f415ce1850",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_16.mp3",
+  "duration": 5.564,
+  "sha256": "7b08400f84e7452fb9423192dcb06b839008743fe65e504c1b65004cc9ae5858",
+  "request_payload": {
+    "text": "[warm, relaxed] Две минуты на эту историю. Сейчас важнее посмотреть движение в целом, чем спорить с каждой свечой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

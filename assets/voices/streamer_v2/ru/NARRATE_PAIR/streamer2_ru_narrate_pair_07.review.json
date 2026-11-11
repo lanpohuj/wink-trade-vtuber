@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_07",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Переключились. Сейчас главное — не притащить сюда ожидания от старого графика.",
+  "tts_text": "[curious, conversational] Переключились. Сейчас главное — не притащить сюда ожидания от старого графика.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0941693946d1831300d5594196f240c76e331e169acd7aab0f856bc8e4f32d1b",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_07.mp3",
+  "duration": 4.362375,
+  "sha256": "2314f09c60cecece0999dd8f43fbe4a260346cac338ad481564722938031fde0",
+  "request_payload": {
+    "text": "[curious, conversational] Переключились. Сейчас главное — не притащить сюда ожидания от старого графика.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_03",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "The tricky bit now is letting it finish. Staring at the timer won't speed it up.",
+  "tts_text": "[warm, lightly playful] The tricky bit now is letting it finish. Staring at the timer won't speed it up.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "29a7d5f3a8eae0e9a582c3910a27cbed2f3876502e0a8e6c5b362027dd8772b4",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_03.mp3",
+  "duration": 4.728063,
+  "sha256": "8dc180ef2bb73997db1d6b838bfa6577c796ad3d78910fc6de8b5cd152b19ec1",
+  "request_payload": {
+    "text": "[warm, lightly playful] The tricky bit now is letting it finish. Staring at the timer won't speed it up.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_14",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down trade is open. I'm following the bounce from the range edge; we had a reaction behind the idea.",
+  "tts_text": "[confident, lively] The down trade is open. I'm following the bounce from the range edge; we had a reaction behind the idea.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b468ddd91436595cf290ad67162cbf0b548165582662d895fb236feca36b3e9f",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_14.mp3",
+  "duration": 6.086438,
+  "sha256": "f17f156453d48b7df8d88fbd7e31602d9ad4ff4557bd7d5933f3aadd27de9558",
+  "request_payload": {
+    "text": "[confident, lively] The down trade is open. I'm following the bounce from the range edge; we had a reaction behind the idea.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

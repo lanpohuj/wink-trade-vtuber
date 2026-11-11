@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_18",
+  "sha256": "7deda412fe22d27072b1bc814aeb63e0c6c1b01de513e15a05a6922926c3ce7d",
+  "expected": "Не пытаюсь быть права в каждой свече. Я смотрю условия, а не спорю с экраном.",
+  "transcript": "Не пытаюсь быть права в каждой свече. Я смотрю условия, а не спорю с экраном.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07263,
+    "peak": 0.33129,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "7deda412fe22d27072b1bc814aeb63e0c6c1b01de513e15a05a6922926c3ce7d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.3000000000000003,
+      "text": " Не пытаюсь быть права в каждой свече."
+    },
+    {
+      "start": 2.3000000000000003,
+      "end": 5.0,
+      "text": " Я смотрю условия, а не спорю с экраном."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

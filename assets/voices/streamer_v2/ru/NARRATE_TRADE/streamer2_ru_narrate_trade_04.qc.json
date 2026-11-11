@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_04",
+  "sha256": "ba47e02aff485edfaaff70936115d069731621967463c0dedc32ba56ddafb3c4",
+  "expected": "Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит.",
+  "transcript": "Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07767,
+    "peak": 0.29107,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.111,
+    "sha256": "ba47e02aff485edfaaff70936115d069731621967463c0dedc32ba56ddafb3c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Наблюдаем дальше. Я знаю, хочется уже итог, но сначала пусть график договорит."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

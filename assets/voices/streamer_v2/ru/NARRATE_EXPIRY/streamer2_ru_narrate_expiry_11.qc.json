@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_11",
+  "sha256": "b7c92eef2738b07133c154828a3e91a5bd8bf003ce13c0c2a2c8fd730b6ec199",
+  "expected": "На вход поставлена минута. Так что я смотрю движение целиком, а не устраиваю финал каждые пять секунд.",
+  "transcript": "На вход поставлена минута. Так что я смотрю движение целиком, а не устраиваю финал каждые 5 секунд.",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.08165,
+    "peak": 0.38015,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.129,
+    "sha256": "b7c92eef2738b07133c154828a3e91a5bd8bf003ce13c0c2a2c8fd730b6ec199"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " На вход поставлена минута."
+    },
+    {
+      "start": 2.0,
+      "end": 7.0,
+      "text": " Так что я смотрю движение целиком, а не устраиваю финал каждые 5 секунд."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

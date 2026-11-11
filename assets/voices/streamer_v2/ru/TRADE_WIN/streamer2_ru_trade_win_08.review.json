@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_08",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Есть! Эта сделка в плюс. Я довольна, но корону из одного результата себе строить не буду.",
+  "tts_text": "[pleased, lively] Есть! Эта сделка в плюс. Я довольна, но корону из одного результата себе строить не буду.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9369d2e99382a33fb4d189ec2d9e44e25ffac1636c40a30e0c942007d4fd33de",
+  "delivery": "pleased, lively",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_08.mp3",
+  "duration": 6.870125,
+  "sha256": "627b635db4a3401cc5bdaca3f34709b081d0d8a51a6ae0982d9e51decddfd5af",
+  "request_payload": {
+    "text": "[pleased, lively] Есть! Эта сделка в плюс. Я довольна, но корону из одного результата себе строить не буду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

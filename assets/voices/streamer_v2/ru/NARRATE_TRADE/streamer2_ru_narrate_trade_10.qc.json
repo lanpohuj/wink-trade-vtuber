@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_10",
+  "sha256": "e527f5793fb1bf269991b53d2ba3a3bf45d6af08185f7b57ad807e17e3d909d7",
+  "expected": "Теперь уже не подгоняем график словами. Сделка открыта, следим за фактическим движением.",
+  "transcript": "Теперь уже не подгоняем график словами. Сделка открыта. Следим за фактическим движением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.09472,
+    "peak": 0.41279,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.094,
+    "sha256": "e527f5793fb1bf269991b53d2ba3a3bf45d6af08185f7b57ad807e17e3d909d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Теперь уже не подгоняем график словами. Сделка открыта. Следим за фактическим движением."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

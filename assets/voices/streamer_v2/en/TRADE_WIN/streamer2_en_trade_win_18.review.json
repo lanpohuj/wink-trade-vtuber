@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_18",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green, chat! We can enjoy this result without making promises about the next chart.",
+  "tts_text": "[bright, warm] Green, chat! We can enjoy this result without making promises about the next chart.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c88b943b6b9a849ce397b2d44293037135ce2c56d03afe0909aebd3cc9814e35",
+  "delivery": "bright, warm",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_18.mp3",
+  "duration": 4.858688,
+  "sha256": "38b2a5048a26412d9465998a32791f7cb01f2572cde6c3bef851e4ae4c51bef2",
+  "request_payload": {
+    "text": "[bright, warm] Green, chat! We can enjoy this result without making promises about the next chart.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

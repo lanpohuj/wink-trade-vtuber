@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_28",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for.",
+  "tts_text": "[friendly, conversational] I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8c309a54a662519e3e305545ae527a651590746a652d8153d0ac1147370e50ec",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_28.mp3",
+  "duration": 5.328875,
+  "sha256": "818e6eb5b6675f6e2dc2817a8295b3ca66f0b49f74e78f1d4ad4142093ae8450",
+  "request_payload": {
+    "text": "[friendly, conversational] I won't rush an entry for a better-looking stream. I'd rather explain what I'm waiting for.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

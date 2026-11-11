@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_05",
+  "sha256": "32af4ae3cf1b955b1900b317e0b000b76172ca96d059dd92d38e41fdc5a23e22",
+  "expected": "Well, that one didn't work out, red. Not a fun moment, but I don't want to make a drama out of it.",
+  "transcript": "Well, that one didn't work out, Red. Not a fun moment, but I don't want to make a drama out of it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.001,
+    "rms": 0.07517,
+    "peak": 0.4052,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.141,
+    "sha256": "32af4ae3cf1b955b1900b317e0b000b76172ca96d059dd92d38e41fdc5a23e22"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "text": " Well, that one didn't work out, Red. Not a fun moment, but I don't want to make a drama out of it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

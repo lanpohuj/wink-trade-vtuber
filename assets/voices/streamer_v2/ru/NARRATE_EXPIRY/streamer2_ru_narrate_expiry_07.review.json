@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_07",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "На эту сделку — тридцать секунд. Время выбрано под идею входа, не просто любимая цифра.",
+  "tts_text": "[confident, conversational] На эту сделку — тридцать секунд. Время выбрано под идею входа, не просто любимая цифра.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8699b3cb53377ce2480e3930619e844a81ccb0720f0f832fe1759a09422aab87",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_07.mp3",
+  "duration": 6.295438,
+  "sha256": "26faa683baa3621919a03f082ca9b83d95870da54d920c3373a949a69ecb5788",
+  "request_payload": {
+    "text": "[confident, conversational] На эту сделку — тридцать секунд. Время выбрано под идею входа, не просто любимая цифра.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

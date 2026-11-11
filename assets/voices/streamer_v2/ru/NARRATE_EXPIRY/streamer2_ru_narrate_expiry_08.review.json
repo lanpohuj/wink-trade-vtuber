@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_08",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика.",
+  "tts_text": "[warm, relaxed] Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f1b7adcb139cff2b0953f48ad2c7a6717e7f8dfe58f37e123a7eac619346d533",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_08.mp3",
+  "duration": 5.773,
+  "sha256": "d8c6e538232d79ec9357b78e9d8c318ff5407cb995fb1a6682c6b3f7383772a0",
+  "request_payload": {
+    "text": "[warm, relaxed] Сделка на полминуты. Сейчас я лучше спокойно досмотрю, чем буду передумывать каждые два тика.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_05",
+  "sha256": "71b7b88be1d6d898dd9b0e3a0b40ad3757950f86e85bae82ef2d1db2fa7c04a2",
+  "expected": "Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту.",
+  "transcript": "Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07608,
+    "peak": 0.3058,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.148,
+    "sha256": "71b7b88be1d6d898dd9b0e3a0b40ad3757950f86e85bae82ef2d1db2fa7c04a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Новая пара на экране. Я сначала разберусь, а восторгаться буду по факту."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

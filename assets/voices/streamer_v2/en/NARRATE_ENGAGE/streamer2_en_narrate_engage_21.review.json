@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_21",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "I like simple questions. Why not now can turn into a really useful discussion.",
+  "tts_text": "[smiling, relaxed] I like simple questions. Why not now can turn into a really useful discussion.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "99a59b63c5c1189e6f4b931622c372b7e7de53e6547ae916143733b34785d66f",
+  "delivery": "smiling, relaxed",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_21.mp3",
+  "duration": 5.328875,
+  "sha256": "6ffc3788fd57e11405466a3d7c352aec07eda195c18832d1b3dd7c0b28149fbc",
+  "request_payload": {
+    "text": "[smiling, relaxed] I like simple questions. Why not now can turn into a really useful discussion.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

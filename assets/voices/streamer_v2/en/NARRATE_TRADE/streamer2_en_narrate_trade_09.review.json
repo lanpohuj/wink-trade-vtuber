@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_09",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Watching through to the close. One good second along the way doesn't finish the trade.",
+  "tts_text": "[warm, lightly playful] Watching through to the close. One good second along the way doesn't finish the trade.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "981c44c8334b8cc4fd2d1d07e8fe38907eddd12b179aa27afdf26e8ef2189beb",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_09.mp3",
+  "duration": 5.067687,
+  "sha256": "2f57b3f3be89659b8098d8cf22e24b9dd4838574ebbe091709bc8c3e04811ece",
+  "request_payload": {
+    "text": "[warm, lightly playful] Watching through to the close. One good second along the way doesn't finish the trade.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

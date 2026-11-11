@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_03",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Мне важно, что цена делает у уровня. Просто нарисовать красивую линию — это ещё полдела.",
+  "tts_text": "[lightly playful] Мне важно, что цена делает у уровня. Просто нарисовать красивую линию — это ещё полдела.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ea92afaeeab8540d639ada4265d0afe9406c46bec218b09bb3b6c33da4b7d845",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_03.mp3",
+  "duration": 5.773,
+  "sha256": "64c6e29f1fd197ffc36fc5773134600c74186de2471e61309c505ee856c9432b",
+  "request_payload": {
+    "text": "[lightly playful] Мне важно, что цена делает у уровня. Просто нарисовать красивую линию — это ещё полдела.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

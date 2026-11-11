@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_22",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Смотрю, что здесь можно прочитать без натяжки. Если надо долго себя убеждать, это уже повод задуматься.",
+  "tts_text": "[curious, conversational] Смотрю, что здесь можно прочитать без натяжки. Если надо долго себя убеждать, это уже повод задуматься.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "55e879fc355822d357597cd3238d54d7e274346d63f66909a17c106282e23dfc",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_22.mp3",
+  "duration": 5.955813,
+  "sha256": "fde3c01698fed3b5f856dea4fe00e3a2572e3147b437519d2d2819d0bc35bab4",
+  "request_payload": {
+    "text": "[curious, conversational] Смотрю, что здесь можно прочитать без натяжки. Если надо долго себя убеждать, это уже повод задуматься.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

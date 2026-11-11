@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_18",
+  "sha256": "5d00374d4f10286081e996be32e2d2b6c7b8cb173628feec155c6aeb17784fa8",
+  "expected": "I'm not trying to be right about every candle. I'm checking conditions, not arguing with a screen.",
+  "transcript": "I'm not trying to be right about every candle. I'm checking conditions, not arguing with a screen.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.08532,
+    "peak": 0.5167,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.165,
+    "sha256": "5d00374d4f10286081e996be32e2d2b6c7b8cb173628feec155c6aeb17784fa8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " I'm not trying to be right about every candle. I'm checking conditions, not arguing with a screen."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

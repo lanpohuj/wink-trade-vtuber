@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_12",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив.",
+  "tts_text": "[lightly playful] Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "56047002e344ff0cc723036a617d1d551dcb5172ba252eaba0984014f2f3a30a",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_12.mp3",
+  "duration": 4.806438,
+  "sha256": "13f2caeed521497774148f1906fe73d2e6fbf27569d7bb0b2b37050b65e0f684",
+  "request_payload": {
+    "text": "[lightly playful] Я смотрю несколько интервалов, потому что крупный план без общего иногда очень обманчив.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

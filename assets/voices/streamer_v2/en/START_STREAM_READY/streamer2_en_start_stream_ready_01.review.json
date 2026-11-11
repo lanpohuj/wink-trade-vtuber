@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_start_stream_ready_01",
+  "lang": "en",
+  "category": "START_STREAM_READY",
+  "text": "Hey everyone, Winky here! Settle in; we'll watch charts, unpack the entries, and chat as we go.",
+  "tts_text": "[welcoming, bright] Hey everyone, Winky here! Settle in; we'll watch charts, unpack the entries, and chat as we go.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a44297b7ab5f1450d8c6165e1830d3a1a8c5d89c533a678cd7dca1904e338a2d",
+  "delivery": "welcoming, bright",
+  "file": "en/START_STREAM_READY/streamer2_en_start_stream_ready_01.mp3",
+  "duration": 6.47825,
+  "sha256": "e3dd33a7b12793a22c93e71b747887ba750da8fe2908970d1c3cbe9edc147955",
+  "request_payload": {
+    "text": "[welcoming, bright] Hey everyone, Winky here! Settle in; we'll watch charts, unpack the entries, and chat as we go.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

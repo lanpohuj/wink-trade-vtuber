@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_25",
+  "sha256": "fb87a4ffee12035214a8e9e069e712698ca9034b22aec57e6e0aec0184848add",
+  "expected": "A tired-looking rise isn't enough for a reversal. I want to see local structure actually change.",
+  "transcript": "A tired-looking rise isn't enough for a reversal. I want to see local structure actually change.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08761,
+    "peak": 0.61013,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.202,
+    "sha256": "fb87a4ffee12035214a8e9e069e712698ca9034b22aec57e6e0aec0184848add"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " A tired-looking rise isn't enough for a reversal. I want to see local structure actually change."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

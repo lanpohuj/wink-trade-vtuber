@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_12",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Эх, срезало на закрытии. В последние секунды были в положительной зоне, а итог вышел совсем рядом, но в минус.",
+  "tts_text": "[disappointed, composed] Эх, срезало на закрытии. В последние секунды были в положительной зоне, а итог вышел совсем рядом, но в минус.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1a340876469cc180f876a29e93e2ac34fba679fe5186fdd36ee5ed0473d326d8",
+  "delivery": "disappointed, composed",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_12.mp3",
+  "duration": 7.653813,
+  "sha256": "a157ca4b4bb70d7ea2c11fd9f096d1f7f03ae11b94b865779c72c50d3298e19a",
+  "request_payload": {
+    "text": "[disappointed, composed] Эх, срезало на закрытии. В последние секунды были в положительной зоне, а итог вышел совсем рядом, но в минус.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

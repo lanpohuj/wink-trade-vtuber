@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_14",
+  "sha256": "6275df18b4450f1dcf117002b1b2fb749678d6d22ac491fbcbec0dccf8b38494",
+  "expected": "Когда график не даёт понятной точки, пропуск — тоже решение. Да, без фанфар и красивого таймера.",
+  "transcript": "Когда график не дает понятной точки, пропуск тоже решения. Да, без фанфары красивого таймера.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08036,
+    "peak": 0.35064,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.138,
+    "sha256": "6275df18b4450f1dcf117002b1b2fb749678d6d22ac491fbcbec0dccf8b38494"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Когда график не дает понятной точки, пропуск тоже решения."
+    },
+    {
+      "start": 3.4,
+      "end": 5.9,
+      "text": " Да, без фанфары красивого таймера."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

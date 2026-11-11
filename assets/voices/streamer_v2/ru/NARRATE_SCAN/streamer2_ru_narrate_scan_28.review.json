@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_28",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я пока в поиске. Лучше честно сказать, что проверяю, чем торжественно объявить первое, что увидела.",
+  "tts_text": "[curious, conversational] Я пока в поиске. Лучше честно сказать, что проверяю, чем торжественно объявить первое, что увидела.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8f643606a5df3fb390efc077b0c5054fb2a2e553eec99c2c725c05bbca8944d5",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_28.mp3",
+  "duration": 5.955813,
+  "sha256": "f532b28ed1847670325623b5e9f5b644c9121cfdaef6067f2ecf13a763aff129",
+  "request_payload": {
+    "text": "[curious, conversational] Я пока в поиске. Лучше честно сказать, что проверяю, чем торжественно объявить первое, что увидела.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

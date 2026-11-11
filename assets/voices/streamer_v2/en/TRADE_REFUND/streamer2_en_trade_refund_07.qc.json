@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_07",
+  "sha256": "e6327daaababca3ca3d6818aded914cce40874569705c37e50262ad37972c1de",
+  "expected": "Refund, chat. The trade finished without a net win or loss; we calmly carry on.",
+  "transcript": "Refun Chat! The trade finished without a net win or loss. We calmly carry on.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08502,
+    "peak": 0.41207,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.169,
+    "sha256": "e6327daaababca3ca3d6818aded914cce40874569705c37e50262ad37972c1de"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Refun Chat! The trade finished without a net win or loss. We calmly carry on."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

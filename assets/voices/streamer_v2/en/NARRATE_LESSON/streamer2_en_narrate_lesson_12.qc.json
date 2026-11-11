@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_12",
+  "sha256": "307f81e99e4d44654946906fd41bcf25557898b295f5a0c4b44000ae631f5fbc",
+  "expected": "I check several timeframes because a close-up without the wide shot can be misleading.",
+  "transcript": "I checked several timeframes because a close-up without the wide shot can be misleading.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08412,
+    "peak": 0.47513,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.327,
+    "sha256": "307f81e99e4d44654946906fd41bcf25557898b295f5a0c4b44000ae631f5fbc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " I checked several timeframes because a close-up without the wide shot can be misleading."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

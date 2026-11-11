@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_03",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Fifteen seconds for this entry. Not much room for a speech, so I'll save that for later.",
+  "tts_text": "[confident, conversational] Fifteen seconds for this entry. Not much room for a speech, so I'll save that for later.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "78328791401c561c6c8a426cda04d51bc6c4ce05bae9cf86efc08f5a83c344b3",
+  "delivery": "confident, conversational",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_03.mp3",
+  "duration": 5.041563,
+  "sha256": "7299e272618ad85e9fb1d3383123a19766f22875151c04de9a8021e93c92c651",
+  "request_payload": {
+    "text": "[confident, conversational] Fifteen seconds for this entry. Not much room for a speech, so I'll save that for later.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

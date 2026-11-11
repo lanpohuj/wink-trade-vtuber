@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_19",
+  "sha256": "1a53f0b72fe010425b0f156ec0faa1232d49b6416c03b746909a50a7ac2f1b0f",
+  "expected": "Так, даём сценарию своё время. Не надо переименовывать его после каждого движения свечи.",
+  "transcript": "Так, даем сценарию свое время. Не надо переименовывать его после каждого движения свечи.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08456,
+    "peak": 0.33675,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.09,
+    "sha256": "1a53f0b72fe010425b0f156ec0faa1232d49b6416c03b746909a50a7ac2f1b0f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Так, даем сценарию свое время."
+    },
+    {
+      "start": 2.44,
+      "end": 5.6000000000000005,
+      "text": " Не надо переименовывать его после каждого движения свечи."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

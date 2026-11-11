@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_05",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбрала тридцать секунд. Мне нужен этот отрезок движения, а не универсальное время на все случаи.",
+  "tts_text": "[confident, conversational] Выбрала тридцать секунд. Мне нужен этот отрезок движения, а не универсальное время на все случаи.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "eed04dfa577e051ca8692600add5d0ff604a3a15f99604e9978ce8221212a48f",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_05.mp3",
+  "duration": 5.955813,
+  "sha256": "2ac6940385e07f161868d419a1088ca5279b3931cd8fd5ab9716e592f806427c",
+  "request_payload": {
+    "text": "[confident, conversational] Выбрала тридцать секунд. Мне нужен этот отрезок движения, а не универсальное время на все случаи.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

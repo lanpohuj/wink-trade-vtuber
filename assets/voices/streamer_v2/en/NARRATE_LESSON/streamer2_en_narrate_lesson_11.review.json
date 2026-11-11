@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_11",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me.",
+  "tts_text": "[thoughtful, relaxed] Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0f180ae2bec451327e39734ced674953bca2ea4cd40505ca262f7a27feee3e73",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_11.mp3",
+  "duration": 5.172125,
+  "sha256": "fe0ce3cdf3009976df0caeb133cfc046208325bb59e808a21355866ff76eced2",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Pullbacks and reversals can look alike. That's why one candle doesn't settle it for me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

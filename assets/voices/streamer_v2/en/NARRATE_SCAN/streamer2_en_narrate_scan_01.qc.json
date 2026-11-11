@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_01",
+  "sha256": "3afb82f5d1490d3c67ce8d2be38fa10feb2c9ee541d28e42a41d9aa8a3203979",
+  "expected": "Okay, what have we got here? Let me check the other timeframe. I want the bigger picture before I get involved.",
+  "transcript": "Okay? What have we got here? Let me check the other time frame. I want the bigger picture before I get involved.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.08193,
+    "peak": 0.40914,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "3afb82f5d1490d3c67ce8d2be38fa10feb2c9ee541d28e42a41d9aa8a3203979"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "text": " Okay? What have we got here? Let me check the other time frame. I want the bigger picture before I get involved."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

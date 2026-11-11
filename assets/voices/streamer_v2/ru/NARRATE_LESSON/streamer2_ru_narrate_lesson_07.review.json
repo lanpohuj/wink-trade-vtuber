@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_07",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Одна зелёная свеча — ещё не весь тренд. Звучит скучно, зато очень легко забывается в моменте.",
+  "tts_text": "[friendly, conversational] Одна зелёная свеча — ещё не весь тренд. Звучит скучно, зато очень легко забывается в моменте.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "be007dbe6060148c560d0d35ff38844d304f8496229d4b773e081b8cf24a7295",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_07.mp3",
+  "duration": 6.661125,
+  "sha256": "1a945a41c3adfa468be7cb86232d8e4ec0896bf0f371238cf525127a0df32dd4",
+  "request_payload": {
+    "text": "[friendly, conversational] Одна зелёная свеча — ещё не весь тренд. Звучит скучно, зато очень легко забывается в моменте.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

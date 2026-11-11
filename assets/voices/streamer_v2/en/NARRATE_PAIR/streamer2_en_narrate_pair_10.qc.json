@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_10",
+  "sha256": "751a87dcf6fe295dd6cc7891b3931d445339a3f01dcde6ae08b01520aaf4880a",
+  "expected": "Over here next. Let's not decide it's better before I've actually checked it.",
+  "transcript": "Over here next. Let's not decide it's better before I've actually checked it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07931,
+    "peak": 0.38375,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.215,
+    "sha256": "751a87dcf6fe295dd6cc7891b3931d445339a3f01dcde6ae08b01520aaf4880a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Over here next. Let's not decide it's better before I've actually checked it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

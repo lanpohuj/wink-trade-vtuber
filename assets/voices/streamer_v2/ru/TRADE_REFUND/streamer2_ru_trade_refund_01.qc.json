@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_01",
+  "sha256": "94d82bc7a7970d0c5718e37cfbc75216f7c79bdc73177208a16d0d1d0e4c5acd",
+  "expected": "О, возврат! Ну что, график оставил нас без финального поворота сюжета. Ставка вернулась.",
+  "transcript": "О! Возврат! Ну что, график оставил нас без финального поворота сюжета. Ставка вернулась.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.08354,
+    "peak": 0.35384,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.118,
+    "sha256": "94d82bc7a7970d0c5718e37cfbc75216f7c79bdc73177208a16d0d1d0e4c5acd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.72,
+      "text": " О! Возврат! Ну что, график оставил нас без финального поворота сюжета. Ставка вернулась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

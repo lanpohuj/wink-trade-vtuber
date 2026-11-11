@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_15",
+  "sha256": "a73eb55cec44f6add1fbc4d382faa33d1e0acd58acdcd4b7bf134c4c332e38fc",
+  "expected": "Keeping the attention here, chat. We can look at the next pair after this trade.",
+  "transcript": "Keeping the attention here chat we can look at the next pair after this trade",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07749,
+    "peak": 0.38796,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "a73eb55cec44f6add1fbc4d382faa33d1e0acd58acdcd4b7bf134c4c332e38fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Keeping the attention here chat we can look at the next pair after this trade"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

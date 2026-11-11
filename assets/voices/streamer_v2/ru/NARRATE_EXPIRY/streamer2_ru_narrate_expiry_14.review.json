@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_14",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбрала две минуты. Поэтому на одном коротком колебании я не буду переписывать всю идею.",
+  "tts_text": "[warm, relaxed] Выбрала две минуты. Поэтому на одном коротком колебании я не буду переписывать всю идею.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9320a7d2ec3097b607ea6a8c2d6f1ed2ed1b164f37388e8a12f833c1708ebd20",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_14.mp3",
+  "duration": 5.172125,
+  "sha256": "544ae190102e7b05c67eeb6372a5b1e818100f8e93d30b60e58d04d387f0b0f7",
+  "request_payload": {
+    "text": "[warm, relaxed] Выбрала две минуты. Поэтому на одном коротком колебании я не буду переписывать всю идею.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_09",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "That recovery cycle is finished; back to fifty. Fresh checks, without arguing with the past.",
+  "tts_text": "[composed, gentle] That recovery cycle is finished; back to fifty. Fresh checks, without arguing with the past.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "728ee1b5a3e39aebc7239d0471a847bd94b063969be1a60d435dce01fcf14260",
+  "delivery": "composed, gentle",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_09.mp3",
+  "duration": 6.269312,
+  "sha256": "cc2ee2ae2c1f0bdc541b2dd5de5a2a8f159a3601e20ba3a872b93b155702562d",
+  "request_payload": {
+    "text": "[composed, gentle] That recovery cycle is finished; back to fifty. Fresh checks, without arguing with the past.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

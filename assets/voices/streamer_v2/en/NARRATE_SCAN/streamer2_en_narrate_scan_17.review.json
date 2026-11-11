@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_17",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I want the conditions to come together. One nice-looking detail doesn't make the whole decision.",
+  "tts_text": "[conversational, smiling] I want the conditions to come together. One nice-looking detail doesn't make the whole decision.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bcdb9d2fbf29789c0b19e1c3c5cd63df80c3acf9ea3ead58176d89804d0da14b",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_17.mp3",
+  "duration": 5.4595,
+  "sha256": "2a37790f49576a845846e6fa809e251181c70d6614278e0fe65ef590907db32f",
+  "request_payload": {
+    "text": "[conversational, smiling] I want the conditions to come together. One nice-looking detail doesn't make the whole decision.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

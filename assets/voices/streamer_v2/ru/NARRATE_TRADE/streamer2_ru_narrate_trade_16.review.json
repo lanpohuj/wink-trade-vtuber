@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_16",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Вот эта часть — без перемотки. Смотрим реальное движение до самого закрытия.",
+  "tts_text": "[curious, conversational] Вот эта часть — без перемотки. Смотрим реальное движение до самого закрытия.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ed8fbe0ea66d30f2d6e851e165a332145c1f66479a04322b84a3411b1d69f466",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_16.mp3",
+  "duration": 5.19825,
+  "sha256": "d219a98502e34eca51112cc629862727950fc39c3078f932ed2ccad457c92e43",
+  "request_payload": {
+    "text": "[curious, conversational] Вот эта часть — без перемотки. Смотрим реальное движение до самого закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

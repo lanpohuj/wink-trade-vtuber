@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_lesson_07",
+  "sha256": "a7dd75f6788a9b1b91785eaf828898a6eada0de9eb3d6029dfa5b99d97b07b0b",
+  "expected": "One green candle isn't the whole trend. Sounds obvious, but it's easy to forget in the moment.",
+  "transcript": "One green candle isn't the whole trend. Sounds obvious, but it's easy to forget in the moment.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08416,
+    "peak": 0.39021,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.201,
+    "sha256": "a7dd75f6788a9b1b91785eaf828898a6eada0de9eb3d6029dfa5b99d97b07b0b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " One green candle isn't the whole trend."
+    },
+    {
+      "start": 2.5,
+      "end": 5.5,
+      "text": " Sounds obvious, but it's easy to forget in the moment."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

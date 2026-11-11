@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_05",
+  "sha256": "832daabc5d7813eade29caf6daa3fe0416252b8878d7aba984a418e4a9849376",
+  "expected": "Trade's in progress, I'm here. No need for a whole new conclusion every half-second.",
+  "transcript": "Trades in progress. I'm here. No need for a whole new conclusion every half second",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.08134,
+    "peak": 0.41416,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.201,
+    "sha256": "832daabc5d7813eade29caf6daa3fe0416252b8878d7aba984a418e4a9849376"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.98,
+      "text": " Trades in progress. I'm here. No need for a whole new conclusion every half second"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

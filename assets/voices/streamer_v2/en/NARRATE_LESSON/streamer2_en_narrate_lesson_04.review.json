@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_04",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "If the short entry doesn't fit, I check the longer one separately. A minute isn't a punishment for fifteen seconds.",
+  "tts_text": "[friendly, conversational] If the short entry doesn't fit, I check the longer one separately. A minute isn't a punishment for fifteen seconds.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0b5fc56224c601cdcd03093e09e6c7ed0dbeb395e69f1d42869295ab5d487e70",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_04.mp3",
+  "duration": 6.47825,
+  "sha256": "77c6573ce010c556ebda39a2500da4a739ba58f271a7d48b72c5da5ef940deb4",
+  "request_payload": {
+    "text": "[friendly, conversational] If the short entry doesn't fit, I check the longer one separately. A minute isn't a punishment for fifteen seconds.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

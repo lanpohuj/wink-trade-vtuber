@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_07",
+  "sha256": "f4e2bf79a871801112a973691046b613cb46377b2fa91e8108ffea9126b5bec9",
+  "expected": "Thirty seconds for this trade. Chosen for the entry idea, not because it's my favourite number.",
+  "transcript": "30 seconds for this trade chosen for the entry idea not because it's my favorite number",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08051,
+    "peak": 0.37513,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.201,
+    "sha256": "f4e2bf79a871801112a973691046b613cb46377b2fa91e8108ffea9126b5bec9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " 30 seconds for this trade chosen for the entry idea not because it's my favorite number"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_06",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Ну что, посмотрим, есть ли здесь что-то интересное. Уговаривать график я сегодня не планирую.",
+  "tts_text": "[warm, lightly playful] Ну что, посмотрим, есть ли здесь что-то интересное. Уговаривать график я сегодня не планирую.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "dd3830395ac0a4117d23ac4254b9e49669c7df62a319189742583ddfa89c1c00",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_06.mp3",
+  "duration": 5.433375,
+  "sha256": "c16840247281ff5dc26bc05e6a40de1362aa7ea63d914642ce2494b8c68254fc",
+  "request_payload": {
+    "text": "[warm, lightly playful] Ну что, посмотрим, есть ли здесь что-то интересное. Уговаривать график я сегодня не планирую.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

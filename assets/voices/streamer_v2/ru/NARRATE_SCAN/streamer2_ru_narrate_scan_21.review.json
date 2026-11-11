@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_21",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Вход пока не объявляю. Я ещё сравниваю, какой сценарий вообще подходит к этой картинке.",
+  "tts_text": "[warm, lightly playful] Вход пока не объявляю. Я ещё сравниваю, какой сценарий вообще подходит к этой картинке.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3cc952e92e6f2d26a5626c5d2fbc6d1faf2be92b8ee978620cc732037da77677",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_21.mp3",
+  "duration": 5.067687,
+  "sha256": "6a00bfe8115de931207272cf3161ddc17af0ea119fdba374a784831e791b89e2",
+  "request_payload": {
+    "text": "[warm, lightly playful] Вход пока не объявляю. Я ещё сравниваю, какой сценарий вообще подходит к этой картинке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_14",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "That really was caught at the close. Positive near the end, then a small red finish close to the entry.",
+  "tts_text": "[disappointed, composed] That really was caught at the close. Positive near the end, then a small red finish close to the entry.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d273558a7687c2fe5259c422f7b33355d36060ebe0c1f558ef07c0bd48e09fa5",
+  "delivery": "disappointed, composed",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_14.mp3",
+  "duration": 6.008063,
+  "sha256": "e67f22d58d7552fd682b98005c0f5c624d690d7055b8af70d8fec33ddec58020",
+  "request_payload": {
+    "text": "[disappointed, composed] That really was caught at the close. Positive near the end, then a small red finish close to the entry.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_06",
+  "sha256": "35b890080b48e0c56bc66b31afe174df24ccb2eec093be728e1219d9e75acba4",
+  "expected": "Открыла вниз! После пробоя цена вернулась к уровню и удержала новую сторону — это и было важно.",
+  "transcript": "Открыла вниз, после пробоицы навернулась к уровню и удержала новую сторону. Это и было важно.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.09438,
+    "peak": 0.46016,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "35b890080b48e0c56bc66b31afe174df24ccb2eec093be728e1219d9e75acba4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.5200000000000005,
+      "text": " Открыла вниз, после пробоицы навернулась к уровню и удержала новую сторону. Это и было важно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

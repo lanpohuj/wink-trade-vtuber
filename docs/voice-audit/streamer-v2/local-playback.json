@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-11",
+  "kind": "Local Winky playback acceptance; not a new Pocket trade or TikTok-live acceptance",
+  "voice_starts": [
+    {
+      "category": "NARRATE_ENGAGE",
+      "event_id": null,
+      "file_id": "streamer2_ru_narrate_engage_15",
+      "text": "Заходите без стеснения. Вопрос «а почему?» здесь вообще один из самых полезных.",
+      "source": "bank_NARRATE_ENGAGE",
+      "time": 1794390651.259813
+    },
+    {
+      "category": "NARRATE_LESSON",
+      "event_id": "streamer-v2-local-acceptance-en",
+      "file_id": "streamer2_en_narrate_lesson_05",
+      "text": "The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+      "source": "bank_NARRATE_LESSON",
+      "time": 1794390676.708364
+    }
+  ],
+  "final_state": {
+    "phase": "IDLE",
+    "remaining_sec": 0,
+    "is_speaking": false,
+    "queue_len": 0
+  },
+  "auditory_claim": "Owner accepted six voice samples and replacement A; agent did not hear audio",
+  "tests": 68
+}

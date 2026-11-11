@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_04",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее.",
+  "tts_text": "[curious, conversational] Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f23c5b21c1f6f0ad1f63e411639224e7ac436677d88158b0661dacb6cc25d325",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_04.mp3",
+  "duration": 6.399938,
+  "sha256": "abc8f8a5a8a550fa7800355b778831e6cb601acb4f3d51c4dacac53dfa09ae57",
+  "request_payload": {
+    "text": "[curious, conversational] Так, без спешки. Сейчас разложу этот график по полочкам, а вы пока устраивайтесь поудобнее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

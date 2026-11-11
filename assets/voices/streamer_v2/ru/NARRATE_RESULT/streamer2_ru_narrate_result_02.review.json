@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_02",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Так, теперь ставка сто десять. Шаг изменился, а требования к графику остались прежними.",
+  "tts_text": "[confident, steady] Так, теперь ставка сто десять. Шаг изменился, а требования к графику остались прежними.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e0a8df6d94c849a4778f2ba699009238634855c000430388749a80661680a6a6",
+  "delivery": "confident, steady",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_02.mp3",
+  "duration": 5.955813,
+  "sha256": "8dee10d5b9e90ebd741733d1348ebcf14e29f537618db175cb91b4493e171d9d",
+  "request_payload": {
+    "text": "[confident, steady] Так, теперь ставка сто десять. Шаг изменился, а требования к графику остались прежними.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

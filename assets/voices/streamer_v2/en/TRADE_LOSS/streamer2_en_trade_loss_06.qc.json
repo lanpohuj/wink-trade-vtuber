@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_06",
+  "sha256": "18ddb4e3761277164ad7828a9871bf1d42d70e674b16648a86fb110414c8a112",
+  "expected": "This one closed red. I'd rather say that plainly than start inventing a lovely excuse.",
+  "transcript": "This one closed red. I'd rather say that plainly than start inventing a lovely excuse.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08519,
+    "peak": 0.39612,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.273,
+    "sha256": "18ddb4e3761277164ad7828a9871bf1d42d70e674b16648a86fb110414c8a112"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " This one closed red. I'd rather say that plainly than start inventing a lovely excuse."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

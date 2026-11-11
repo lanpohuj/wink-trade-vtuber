@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_14",
+  "sha256": "5db9dc6dad3bdaa71e53a874072ee8508e2882bf52ae16740cd8a36ed529f580",
+  "expected": "Вот здесь начну с чистого листа. Предыдущая пара не выдаёт рекомендаций за эту.",
+  "transcript": "вот здесь начну с чистого листа предыдущая пара не выдаёт рекомендации за эту",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08664,
+    "peak": 0.40326,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "5db9dc6dad3bdaa71e53a874072ee8508e2882bf52ae16740cd8a36ed529f580"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " вот здесь начну с чистого листа предыдущая пара не выдаёт рекомендации за эту"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

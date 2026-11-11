@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_03",
+  "sha256": "bd6bccfc5cb1b0d6f0a94828afa33c41d6624c53e241840adbec5c384c670360",
+  "expected": "Lovely, that one closed green! I like seeing it through and then enjoying the result.",
+  "transcript": "Lovely, that one closed green. I like seeing it through and then enjoying the result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08267,
+    "peak": 0.31397,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.272,
+    "sha256": "bd6bccfc5cb1b0d6f0a94828afa33c41d6624c53e241840adbec5c384c670360"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Lovely, that one closed green. I like seeing it through and then enjoying the result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_18",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Так, сделка вниз уже идёт. Дождалась изменения локальной структуры, одной красивой тени мне было мало.",
+  "tts_text": "[pleased, focused] Так, сделка вниз уже идёт. Дождалась изменения локальной структуры, одной красивой тени мне было мало.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ec6fc416c1efb38198d4dd337ae477d575af46797d70e3954b15e0ab6b2ce9e5",
+  "delivery": "pleased, focused",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_18.mp3",
+  "duration": 6.269312,
+  "sha256": "cc3591427c37c26a617160eff475c6f379df5f10586eebc809ee01043f54ed14",
+  "request_payload": {
+    "text": "[pleased, focused] Так, сделка вниз уже идёт. Дождалась изменения локальной структуры, одной красивой тени мне было мало.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

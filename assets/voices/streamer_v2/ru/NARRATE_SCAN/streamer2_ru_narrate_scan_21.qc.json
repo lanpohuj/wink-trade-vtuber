@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_21",
+  "sha256": "6a00bfe8115de931207272cf3161ddc17af0ea119fdba374a784831e791b89e2",
+  "expected": "Вход пока не объявляю. Я ещё сравниваю, какой сценарий вообще подходит к этой картинке.",
+  "transcript": "Вход пока не объявляю, но я ещё сравниваю, какой сценарий вообще подходит к этой картинке.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.09201,
+    "peak": 0.43695,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "6a00bfe8115de931207272cf3161ddc17af0ea119fdba374a784831e791b89e2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вход пока не объявляю, но я ещё сравниваю, какой сценарий вообще подходит к этой картинке."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

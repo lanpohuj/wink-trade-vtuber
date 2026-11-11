@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_19",
+  "sha256": "359533531a5e9edb70cda8b80b05ff8144eb982d29ad463db9af08902789815d",
+  "expected": "We're in up! It's a confirmed local reversal idea, not me declaring a whole new major trend.",
+  "transcript": "We're in up! It's a confirmed local reversal idea, not me declaring a whole new major trend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08428,
+    "peak": 0.39821,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.127,
+    "sha256": "359533531a5e9edb70cda8b80b05ff8144eb982d29ad463db9af08902789815d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " We're in up! It's a confirmed local reversal idea, not me declaring a whole new major trend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

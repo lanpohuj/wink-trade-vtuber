@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_trade_loss_09",
+  "sha256": "22f8866943962bfb6997f0f53d066587f356f037aed79689995bafb5f5cd6e53",
+  "expected": "That trade closed red. Yes, I wanted a different finish, but we'll work with what actually happened.",
+  "transcript": "That trade closed red. Yes, I wanted a different finish, but we'll work with what actually happened.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.426,
+    "rms": 0.07865,
+    "peak": 0.37966,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.246,
+    "sha256": "22f8866943962bfb6997f0f53d066587f356f037aed79689995bafb5f5cd6e53"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " That trade closed red."
+    },
+    {
+      "start": 2.0,
+      "end": 6.4,
+      "text": " Yes, I wanted a different finish, but we'll work with what actually happened."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

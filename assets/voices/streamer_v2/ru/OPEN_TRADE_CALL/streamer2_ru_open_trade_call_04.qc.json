@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_open_trade_call_04",
+  "sha256": "2c685f5ee936fd3fc3ab498b9d8036c026553c7e1a8bd4a2207bb6b61bef0fa9",
+  "expected": "Открыла вверх. Мне здесь интересен именно выход из отката: подтверждение было, сделка уже на экране.",
+  "transcript": "Открыла вверх. Мне здесь интересен именно выход из отката. Подтверждение было сделка уже на экране.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.08807,
+    "peak": 0.41027,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.069,
+    "sha256": "2c685f5ee936fd3fc3ab498b9d8036c026553c7e1a8bd4a2207bb6b61bef0fa9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Открыла вверх. Мне здесь интересен именно выход из отката."
+    },
+    {
+      "start": 4.0,
+      "end": 7.0,
+      "text": " Подтверждение было сделка уже на экране."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

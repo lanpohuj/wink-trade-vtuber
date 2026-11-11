@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_08",
+  "sha256": "46fb0c04873464675aad3e35e55ccbd722936e001e374f8e9e347c8123221ff0",
+  "expected": "The down trade is running. I liked the confirmation on the retest, not just that first jump.",
+  "transcript": "That down trade is running. I liked the confirmation on the retest, not just that first jump.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.07983,
+    "peak": 0.46917,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.194,
+    "sha256": "46fb0c04873464675aad3e35e55ccbd722936e001e374f8e9e347c8123221ff0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " That down trade is running. I liked the confirmation on the retest, not just that first jump."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

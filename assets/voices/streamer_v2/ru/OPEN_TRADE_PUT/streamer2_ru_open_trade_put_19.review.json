@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_19",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Есть вход вниз! Идея здесь в подтверждённом локальном развороте. Не переименовываю его в новый большой тренд.",
+  "tts_text": "[confident, lively] Есть вход вниз! Идея здесь в подтверждённом локальном развороте. Не переименовываю его в новый большой тренд.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "dc50f73b3f8c4bcb131b307c389dd5a5a601568783535cd863360fa2cacc8564",
+  "delivery": "confident, lively",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_19.mp3",
+  "duration": 6.7395,
+  "sha256": "12bada43b7bbf59022dd928041f80f78fcd4dc724cdf7f7d3ef9ba04d145e66c",
+  "request_payload": {
+    "text": "[confident, lively] Есть вход вниз! Идея здесь в подтверждённом локальном развороте. Не переименовываю его в новый большой тренд.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

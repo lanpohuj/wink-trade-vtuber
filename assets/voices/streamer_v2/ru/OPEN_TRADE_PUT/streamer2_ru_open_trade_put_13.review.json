@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_13",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Есть, зашла вниз! От границы диапазона получили подтверждение. Теперь наблюдаем, без победных речей заранее.",
+  "tts_text": "[pleased, focused] Есть, зашла вниз! От границы диапазона получили подтверждение. Теперь наблюдаем, без победных речей заранее.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "78764f090180898b5c3a0398fbbb4f0ac8f685fea4c9108ed0300e2068536286",
+  "delivery": "pleased, focused",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_13.mp3",
+  "duration": 8.17625,
+  "sha256": "a19d1c05e103273c4844e80b96c94babe2487564f532ea723981185acbcc2172",
+  "request_payload": {
+    "text": "[pleased, focused] Есть, зашла вниз! От границы диапазона получили подтверждение. Теперь наблюдаем, без победных речей заранее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

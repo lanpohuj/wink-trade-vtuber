@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_14",
+  "sha256": "a6678589b99939829c35a6c8e2847001606aab51f3e698b6413ea9dcd9a37a4f",
+  "expected": "Starting fresh here. The previous pair doesn't get to make this one's decisions.",
+  "transcript": "Starting fresh here, the previous pair doesn't get to make this one's decisions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08193,
+    "peak": 0.67261,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "a6678589b99939829c35a6c8e2847001606aab51f3e698b6413ea9dcd9a37a4f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Starting fresh here, the previous pair doesn't get to make this one's decisions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

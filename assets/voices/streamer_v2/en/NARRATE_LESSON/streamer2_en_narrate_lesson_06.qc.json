@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_lesson_06",
+  "sha256": "37ead4497098460ddcd06fd1ea0856ffd9628de4f0a4063f44d2d6c5781b6787",
+  "expected": "I like being able to explain an entry simply. A fancy term won't rescue an idea I can't explain.",
+  "transcript": "I like being able to explain an entry simply. A fancy term won't rescue an idea, I can't explain.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08315,
+    "peak": 0.35431,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.16,
+    "sha256": "37ead4497098460ddcd06fd1ea0856ffd9628de4f0a4063f44d2d6c5781b6787"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " I like being able to explain an entry simply."
+    },
+    {
+      "start": 3.12,
+      "end": 6.24,
+      "text": " A fancy term won't rescue an idea, I can't explain."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

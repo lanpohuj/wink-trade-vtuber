@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_refund_02",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Тут возврат, чат. Ни победную речь, ни грустную музыку не включаем — просто идём дальше.",
+  "tts_text": "[warm, conversational] Тут возврат, чат. Ни победную речь, ни грустную музыку не включаем — просто идём дальше.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1f86c30afea068b048bbd7fd990818888efef70cdc32239ba9eb5cd3b5c0fd18",
+  "delivery": "warm, conversational",
+  "file": "ru/TRADE_REFUND/streamer2_ru_trade_refund_02.mp3",
+  "duration": 5.2505,
+  "sha256": "4bf1f8a7e5056ba86f347bb09b7fc0f1113c63bfd841dc24c2ebbf0b09a9b854",
+  "request_payload": {
+    "text": "[warm, conversational] Тут возврат, чат. Ни победную речь, ни грустную музыку не включаем — просто идём дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

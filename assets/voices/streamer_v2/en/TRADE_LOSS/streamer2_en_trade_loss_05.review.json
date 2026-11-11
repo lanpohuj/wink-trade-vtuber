@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_05",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Well, that one didn't work out, red. Not a fun moment, but I don't want to make a drama out of it.",
+  "tts_text": "[thoughtful, conversational] Well, that one didn't work out, red. Not a fun moment, but I don't want to make a drama out of it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ba95c6f9e9870bc8573ea35f316fe6505208c16a16c36e721f91e4c4f9cf1629",
+  "delivery": "thoughtful, conversational",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_05.mp3",
+  "duration": 7.00075,
+  "sha256": "32af4ae3cf1b955b1900b317e0b000b76172ca96d059dd92d38e41fdc5a23e22",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Well, that one didn't work out, red. Not a fun moment, but I don't want to make a drama out of it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

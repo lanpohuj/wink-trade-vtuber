@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_12",
+  "sha256": "741d2feb9d5df7bc627aa2a2e33ed9adc717d2ee0ce42410a160046d150bfbca",
+  "expected": "Так, минутное окно уже идёт. Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой.",
+  "transcript": "Так, минутное окно уже идет. Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08193,
+    "peak": 0.33359,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.114,
+    "sha256": "741d2feb9d5df7bc627aa2a2e33ed9adc717d2ee0ce42410a160046d150bfbca"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Так, минутное окно уже идет."
+    },
+    {
+      "start": 2.0,
+      "end": 5.4,
+      "text": " Здесь можно чуть выдохнуть и спокойно проследить за всей сделкой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

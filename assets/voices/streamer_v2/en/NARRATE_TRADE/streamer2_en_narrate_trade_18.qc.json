@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_18",
+  "sha256": "8f97fcd1d2552e6014b209dc5b79b4dc5b75d8f03f332c67a3c9f817cb6f36b3",
+  "expected": "I won't narrate every tiny wobble. Let's see how it actually ends first.",
+  "transcript": "I won't narrate every tiny wobble. Let's see how it actually ends first.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.0852,
+    "peak": 0.41119,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.105,
+    "sha256": "8f97fcd1d2552e6014b209dc5b79b4dc5b75d8f03f332c67a3c9f817cb6f36b3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " I won't narrate every tiny wobble. Let's see how it actually ends first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

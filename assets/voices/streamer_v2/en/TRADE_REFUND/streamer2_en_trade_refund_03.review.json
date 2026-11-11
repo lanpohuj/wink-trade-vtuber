@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_refund_03",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Neutral result, stake returned. A quiet ending for this trade.",
+  "tts_text": "[lightly amused, relaxed] Neutral result, stake returned. A quiet ending for this trade.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4720fa7b0c432219b4dc9695622904fa20c537428af7155b767c7ccdf22c2a60",
+  "delivery": "lightly amused, relaxed",
+  "file": "en/TRADE_REFUND/streamer2_en_trade_refund_03.mp3",
+  "duration": 4.780312,
+  "sha256": "1ca8f5fc7cc430bb290b8931fd1a49f470944484bcf73c0d74a4fe5bdde57196",
+  "request_payload": {
+    "text": "[lightly amused, relaxed] Neutral result, stake returned. A quiet ending for this trade.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

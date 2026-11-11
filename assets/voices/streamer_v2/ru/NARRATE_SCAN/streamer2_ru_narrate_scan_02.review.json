@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_02",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Секунду, я ещё смотрю. Входить только потому, что свеча красивая, — ну такое, если честно.",
+  "tts_text": "[conversational, smiling] Секунду, я ещё смотрю. Входить только потому, что свеча красивая, — ну такое, если честно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f665e28787ca2ab70e3090ea57f45c24f719f959b8d40416584e54162fb038e3",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_02.mp3",
+  "duration": 7.497062,
+  "sha256": "cce591774837743279deb1a6e5283a2c14d3ef0c4b8d992cbd7c8e040972bf9b",
+  "request_payload": {
+    "text": "[conversational, smiling] Секунду, я ещё смотрю. Входить только потому, что свеча красивая, — ну такое, если честно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

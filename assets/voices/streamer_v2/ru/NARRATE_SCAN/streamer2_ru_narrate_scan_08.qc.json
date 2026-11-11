@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_08",
+  "sha256": "fe5c601c64a176f431af289bbec8be42be3becbac75be1cef4861a8f110c00db",
+  "expected": "Я сейчас сравниваю варианты. Хочется найти тот, где не приходится придумывать половину объяснения.",
+  "transcript": "Я сейчас сравниваю варианты. Хочется найти тот, где не приходится придумывать половину объяснения.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.0899,
+    "peak": 0.35922,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.094,
+    "sha256": "fe5c601c64a176f431af289bbec8be42be3becbac75be1cef4861a8f110c00db"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Я сейчас сравниваю варианты."
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Хочется найти тот, где не приходится придумывать половину объяснения."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

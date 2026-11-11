@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_09",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь минутная сделка. Дадим ей эту минуту, а не будем требовать весь результат от первой свечки.",
+  "tts_text": "[confident, conversational] Здесь минутная сделка. Дадим ей эту минуту, а не будем требовать весь результат от первой свечки.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fdb28f61459b78a20e65869110a7c9fd940edbc3744294fac5d5f9258e3c9fd3",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_09.mp3",
+  "duration": 5.877438,
+  "sha256": "bb721ce8c645667c8d2e2bf20dfd711de5c3f9f788ca4193795aa6dd2a031456",
+  "request_payload": {
+    "text": "[confident, conversational] Здесь минутная сделка. Дадим ей эту минуту, а не будем требовать весь результат от первой свечки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

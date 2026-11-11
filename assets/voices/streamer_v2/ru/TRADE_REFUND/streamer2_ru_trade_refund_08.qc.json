@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_refund_08",
+  "sha256": "4897e9c6dc3d50c435c962ada400c5b0b88a98dddd47ba7067f0eafafb932950",
+  "expected": "Ну вот, вернулись со ставкой. Не самый драматичный финал, зато итог понятен — возврат.",
+  "transcript": "Ну вот, вернулись составкой. Не самый драматичный финал, зато итог понятен. Возврат.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07032,
+    "peak": 0.27146,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "4897e9c6dc3d50c435c962ada400c5b0b88a98dddd47ba7067f0eafafb932950"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Ну вот, вернулись составкой."
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 6.0,
+      "text": " Не самый драматичный финал, зато итог понятен. Возврат."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

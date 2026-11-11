@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_09",
+  "sha256": "575b8493a69d2bdd5735bb59cc63f80439e92c0cb40734d34e85d274f543ebcb",
+  "expected": "Green confirmed! Now the pleased voice is actually justified.",
+  "transcript": "Green confirmed. Now the pleased voice is actually justified.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08299,
+    "peak": 0.45185,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.212,
+    "sha256": "575b8493a69d2bdd5735bb59cc63f80439e92c0cb40734d34e85d274f543ebcb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Green confirmed. Now the pleased voice is actually justified."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

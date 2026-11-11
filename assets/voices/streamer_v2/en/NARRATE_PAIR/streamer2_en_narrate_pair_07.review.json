@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_pair_07",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Switched over. The important bit is not dragging my expectations from the old chart along.",
+  "tts_text": "[curious, conversational] Switched over. The important bit is not dragging my expectations from the old chart along.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d8d397d6ad1df4abd9069c0945e478c307f4e1690fadeb398e0983b93b64b5f9",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_PAIR/streamer2_en_narrate_pair_07.mp3",
+  "duration": 5.328875,
+  "sha256": "38a39095cd015dd05fac90a2f75c636872914ab59fc51b2b6998832d543ad94f",
+  "request_payload": {
+    "text": "[curious, conversational] Switched over. The important bit is not dragging my expectations from the old chart along.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

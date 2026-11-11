@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_08",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "The next entry's stake is two hundred and forty-two. Increasing it doesn't promise a different outcome.",
+  "tts_text": "[focused, steady] The next entry's stake is two hundred and forty-two. Increasing it doesn't promise a different outcome.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0240943fcc419e2ba40cd08b03cbe3f92a8eb05a0dcee8222648c5246b515d89",
+  "delivery": "focused, steady",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_08.mp3",
+  "duration": 6.269312,
+  "sha256": "fe01bd74e0e6ca6c21b803bdb2c9225b18b56460d80e0c7c58bb7561d2d856c8",
+  "request_payload": {
+    "text": "[focused, steady] The next entry's stake is two hundred and forty-two. Increasing it doesn't promise a different outcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

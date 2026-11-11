@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_12",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "The one-minute window's running. We can take a breath and follow the whole trade.",
+  "tts_text": "[warm, relaxed] The one-minute window's running. We can take a breath and follow the whole trade.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "130b173811b1fb60648f19f73271beef2231c7aadf333dfe5d7a243486ecaec8",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_12.mp3",
+  "duration": 4.205625,
+  "sha256": "f09f743fb5bc4a6187fe3af9d83727a8d872eb4324defc9c09424d53b11c8010",
+  "request_payload": {
+    "text": "[warm, relaxed] The one-minute window's running. We can take a breath and follow the whole trade.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

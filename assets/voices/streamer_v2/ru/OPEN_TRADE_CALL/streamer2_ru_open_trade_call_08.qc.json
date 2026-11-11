@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_call_08",
+  "sha256": "e02cf060b963306cf88fb1f9c52c0bd363d817d177f9421a1a9eff720ac55149",
+  "expected": "Так, вверх уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок.",
+  "transcript": "Так, вверх уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07596,
+    "peak": 0.39315,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "e02cf060b963306cf88fb1f9c52c0bd363d817d177f9421a1a9eff720ac55149"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Так, вверх уже в работе. Мне здесь понравилось подтверждение на ретесте, а не сам первый рывок."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

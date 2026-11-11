@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_07",
+  "sha256": "09407ed3e212301ad4b7578a122843555bd0138d7832ec1ed1789ff8d8ff5d66",
+  "expected": "Green close, chat! Thanks for watching that one all the way through with me.",
+  "transcript": "Haha! Green clothes, chat! Thanks for watching that one all the way through with me!",
+  "similarity": 0.937,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08794,
+    "peak": 0.5556,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "09407ed3e212301ad4b7578a122843555bd0138d7832ec1ed1789ff8d8ff5d66"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Haha! Green clothes, chat! Thanks for watching that one all the way through with me!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_06",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Так, держим внимание на этой сделке. Параллельно открывать вторую ради движухи не собираюсь.",
+  "tts_text": "[warm, lightly playful] Так, держим внимание на этой сделке. Параллельно открывать вторую ради движухи не собираюсь.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a5df717c12690d395267c4606bbe2620cc229e69818883c35ad6a6981d0b6b1a",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_06.mp3",
+  "duration": 6.138687,
+  "sha256": "e88997364ab43488d23022d63022df04eca0e2a4ed42a8133eb8ea120383841d",
+  "request_payload": {
+    "text": "[warm, lightly playful] Так, держим внимание на этой сделке. Параллельно открывать вторую ради движухи не собираюсь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

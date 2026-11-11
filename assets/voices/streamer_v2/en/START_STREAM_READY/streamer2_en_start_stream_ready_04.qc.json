@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_start_stream_ready_04",
+  "sha256": "9c4acf65746e6eedafda695759af5e930e2b06fbf6b0f26207d6457550134ccf",
+  "expected": "Shall we get into it? I'm Winky. You can watch, ask questions, and follow what's happening on the chart.",
+  "transcript": "Shall we get into it? I'm Winky. You can watch, ask questions, and follow what's happening on the chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08383,
+    "peak": 0.4099,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.174,
+    "sha256": "9c4acf65746e6eedafda695759af5e930e2b06fbf6b0f26207d6457550134ccf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Shall we get into it? I'm Winky. You can watch, ask questions, and follow what's happening on the chart."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

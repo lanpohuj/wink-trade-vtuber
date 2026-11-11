@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_11",
+  "sha256": "ddf259359778a2c1844517d29c81a1110254afc33c47942b73a41bffccb87cbe",
+  "expected": "Nice ending to that chapter! Green is there; no need to get carried away now.",
+  "transcript": "Nice ending to that chapter. Green is there. No need to get carried away now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.09093,
+    "peak": 0.37706,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.167,
+    "sha256": "ddf259359778a2c1844517d29c81a1110254afc33c47942b73a41bffccb87cbe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Nice ending to that chapter. Green is there. No need to get carried away now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

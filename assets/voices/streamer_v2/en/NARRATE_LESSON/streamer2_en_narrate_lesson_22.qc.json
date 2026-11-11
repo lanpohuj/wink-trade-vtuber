@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_22",
+  "sha256": "51c6f1f89a5744832492b8732280d080a90ff5a71a4af0298403630e61bcbcfd",
+  "expected": "I don't need every chart. I need one where the conditions line up right now.",
+  "transcript": "I don't need every chart. I need one where the conditions line up right now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08199,
+    "peak": 0.38864,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.022,
+    "sha256": "51c6f1f89a5744832492b8732280d080a90ff5a71a4af0298403630e61bcbcfd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " I don't need every chart. I need one where the conditions line up right now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

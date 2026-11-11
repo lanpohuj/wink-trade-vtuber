@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_09",
+  "sha256": "18d1f66e739022f15391bfd9f9754cca4656c1883b3e681081f3f5ae1cb94f05",
+  "expected": "Чат, новый график подъехал. Сейчас сверю направление и посмотрю, есть ли за что зацепиться.",
+  "transcript": "Чат, новый график подъехал. Сейчас сверю в направление и посмотрю, есть ли за что зацепиться.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.09408,
+    "peak": 0.55416,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.109,
+    "sha256": "18d1f66e739022f15391bfd9f9754cca4656c1883b3e681081f3f5ae1cb94f05"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Чат, новый график подъехал. Сейчас сверю в направление и посмотрю, есть ли за что зацепиться."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

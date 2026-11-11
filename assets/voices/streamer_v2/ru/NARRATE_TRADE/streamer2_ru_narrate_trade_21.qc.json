@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_21",
+  "sha256": "056387e3799fb6acba105a23236e85921fa8bc9d73b71f9c232cbb1c847b129c",
+  "expected": "Сейчас просто смотрим. Самое время проверить, умеем ли мы ждать без маленького сериала в голове.",
+  "transcript": "Сейчас просто смотрим, самое время проверить, умеем ли мы ждать без маленького сериала в голове?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.09243,
+    "peak": 0.61861,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.057,
+    "sha256": "056387e3799fb6acba105a23236e85921fa8bc9d73b71f9c232cbb1c847b129c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Сейчас просто смотрим, самое время проверить, умеем ли мы ждать без маленького сериала в голове?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

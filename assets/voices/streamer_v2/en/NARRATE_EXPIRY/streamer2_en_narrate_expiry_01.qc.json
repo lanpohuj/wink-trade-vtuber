@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_01",
+  "sha256": "03c7850e113ee6096049650904a5f8ec7200e53474527409c1824d8d0ca1162c",
+  "expected": "Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend.",
+  "transcript": "Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.165,
+    "rms": 0.07978,
+    "peak": 0.4811,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.145,
+    "sha256": "03c7850e113ee6096049650904a5f8ec7200e53474527409c1824d8d0ca1162c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

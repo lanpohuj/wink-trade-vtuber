@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_07",
+  "sha256": "38a39095cd015dd05fac90a2f75c636872914ab59fc51b2b6998832d543ad94f",
+  "expected": "Switched over. The important bit is not dragging my expectations from the old chart along.",
+  "transcript": "Switched over the important bit is not dragging my expectations from the old chart along",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08396,
+    "peak": 0.55018,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.249,
+    "sha256": "38a39095cd015dd05fac90a2f75c636872914ab59fc51b2b6998832d543ad94f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.86,
+      "text": " Switched over the important bit is not dragging my expectations from the old chart along"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

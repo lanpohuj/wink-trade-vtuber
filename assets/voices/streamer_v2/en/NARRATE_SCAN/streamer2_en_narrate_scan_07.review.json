@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_07",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Direction first, entry second. I do like a bit of order, even if I don't always look like it.",
+  "tts_text": "[curious, conversational] Direction first, entry second. I do like a bit of order, even if I don't always look like it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b1803c40d676da11809bca0105935eef810385add4b64036d8b22ef34b8f83ee",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_07.mp3",
+  "duration": 6.347688,
+  "sha256": "d1ac3a7ebe4fd2cb77e3bf4347d5dd4c55efb7e61bafa778fe11148d109fb6b6",
+  "request_payload": {
+    "text": "[curious, conversational] Direction first, entry second. I do like a bit of order, even if I don't always look like it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

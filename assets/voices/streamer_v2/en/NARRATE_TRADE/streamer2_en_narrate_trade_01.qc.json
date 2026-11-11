@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_01",
+  "sha256": "ee655ea3611ec3dc2fc4f4885a7abe7621199adde7929408b90a7ef0d520b25c",
+  "expected": "Right, the trade's running. Hands off the button now; let's see how this one finishes.",
+  "transcript": "Alright, the trade's running. Hands off the button now. Let's see how this one finishes.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.0763,
+    "peak": 0.38696,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.237,
+    "sha256": "ee655ea3611ec3dc2fc4f4885a7abe7621199adde7929408b90a7ef0d520b25c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Alright, the trade's running. Hands off the button now. Let's see how this one finishes."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

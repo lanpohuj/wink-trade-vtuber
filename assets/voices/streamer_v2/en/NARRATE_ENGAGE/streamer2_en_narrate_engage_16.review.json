@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_16",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Do you like quick explanations or a bit more detail? I'm trying to find your pace.",
+  "tts_text": "[friendly, curious] Do you like quick explanations or a bit more detail? I'm trying to find your pace.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d69914277883916e0e9ccc13c540d876c0a6657ce37bb7f628ea2f45dbb89aee",
+  "delivery": "friendly, curious",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_16.mp3",
+  "duration": 5.172125,
+  "sha256": "c54c9a972005cd18b94e723971099e719793e0dbefd744af8b9c6fa7d4d4edd6",
+  "request_payload": {
+    "text": "[friendly, curious] Do you like quick explanations or a bit more detail? I'm trying to find your pace.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

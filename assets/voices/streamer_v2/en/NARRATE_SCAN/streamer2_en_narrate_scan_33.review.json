@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_33",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Waiting for this pair's data. Not the glamorous bit, I know, but we do need it.",
+  "tts_text": "[warm, lightly playful] Waiting for this pair's data. Not the glamorous bit, I know, but we do need it.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "42b2d105da5714c7589a3293db18f9e7e37488b9273a02e802a3b670835738f8",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_33.mp3",
+  "duration": 4.910938,
+  "sha256": "33a02df42599dcf3913c0710e76c973fe6b24e23bac8cf69e0e3c806d90fbbab",
+  "request_payload": {
+    "text": "[warm, lightly playful] Waiting for this pair's data. Not the glamorous bit, I know, but we do need it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

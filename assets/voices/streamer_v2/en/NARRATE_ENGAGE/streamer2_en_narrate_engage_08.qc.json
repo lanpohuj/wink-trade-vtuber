@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_08",
+  "sha256": "2488fa4bcab97536ef41c08d1ad46f712614f37922423177fc83226e50472936",
+  "expected": "First time here? Make yourself comfortable. I'm Winky, and talking through charts is very much my thing.",
+  "transcript": "First time here? Make yourself comfortable. I'm winky and talking through charts is very much my thing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08724,
+    "peak": 0.41561,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.191,
+    "sha256": "2488fa4bcab97536ef41c08d1ad46f712614f37922423177fc83226e50472936"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "text": " First time here? Make yourself comfortable. I'm winky and talking through charts is very much my thing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

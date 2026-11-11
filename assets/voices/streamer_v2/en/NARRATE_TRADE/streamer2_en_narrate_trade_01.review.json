@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_01",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Right, the trade's running. Hands off the button now; let's see how this one finishes.",
+  "tts_text": "[curious, conversational] Right, the trade's running. Hands off the button now; let's see how this one finishes.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b9dfbcc2afea5f282c8cc601bfd9cb7dcbb1a5d46b1f14d70e828ae932c5aef0",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_01.mp3",
+  "duration": 4.937063,
+  "sha256": "ee655ea3611ec3dc2fc4f4885a7abe7621199adde7929408b90a7ef0d520b25c",
+  "request_payload": {
+    "text": "[curious, conversational] Right, the trade's running. Hands off the button now; let's see how this one finishes.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

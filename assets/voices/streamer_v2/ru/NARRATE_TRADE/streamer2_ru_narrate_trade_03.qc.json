@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_03",
+  "sha256": "f9f8eafac4872b48cf7ce3ef3b03db49f85d5f2f3b10b9aad604808d4e3ca2a1",
+  "expected": "Сейчас самое сложное — просто дать сделке закончиться. Таймер от моего взгляда быстрее не побежит.",
+  "transcript": "А сейчас самое сложное, просто дать сделки закончиться! Таймер от моего взгляда быстрее не подлежит!",
+  "similarity": 0.963,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08112,
+    "peak": 0.33697,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "f9f8eafac4872b48cf7ce3ef3b03db49f85d5f2f3b10b9aad604808d4e3ca2a1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3200000000000003,
+      "text": " А сейчас самое сложное, просто дать сделки закончиться!"
+    },
+    {
+      "start": 3.3200000000000003,
+      "end": 5.96,
+      "text": " Таймер от моего взгляда быстрее не подлежит!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

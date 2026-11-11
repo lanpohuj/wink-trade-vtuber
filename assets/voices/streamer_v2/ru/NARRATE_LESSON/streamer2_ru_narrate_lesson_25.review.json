@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_25",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Для разворота мне мало, что цена устала расти. Хочу увидеть, что локальная структура действительно меняется.",
+  "tts_text": "[friendly, conversational] Для разворота мне мало, что цена устала расти. Хочу увидеть, что локальная структура действительно меняется.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3cc335787748c5eb0c5866cc4e875556ce1cc10cb48c356bc2d725b2b4b3cc7d",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_25.mp3",
+  "duration": 5.773,
+  "sha256": "a16abe322566572d0baf78bafe132d77709016ad7705874d631b722a32348a55",
+  "request_payload": {
+    "text": "[friendly, conversational] Для разворота мне мало, что цена устала расти. Хочу увидеть, что локальная структура действительно меняется.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_03",
+  "sha256": "76dfc32e74b6584a68ad3479d814df857b63b4097eedbc184626a9347e4fd7e0",
+  "expected": "I like getting the whole picture first. Then I can work out the direction and how long to give it.",
+  "transcript": "I like getting the whole picture first, then I can work out the direction and how long to give it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07829,
+    "peak": 0.38226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.257,
+    "sha256": "76dfc32e74b6584a68ad3479d814df857b63b4097eedbc184626a9347e4fd7e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " I like getting the whole picture first, then I can work out the direction and how long to give it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

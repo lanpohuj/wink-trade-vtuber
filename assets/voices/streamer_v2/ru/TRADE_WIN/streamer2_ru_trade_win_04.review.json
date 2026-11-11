@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_04",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Да-а, плюс записан! Только не будем из одной сделки делать легенду, дальше всё так же внимательно.",
+  "tts_text": "[happy, smiling] Да-а, плюс записан! Только не будем из одной сделки делать легенду, дальше всё так же внимательно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a581a8b15d35f9275e1aeaabfa1b76e1f5b9a0dffcf229618e27ea8df9041bde",
+  "delivery": "happy, smiling",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_04.mp3",
+  "duration": 6.5305,
+  "sha256": "a21288c72f32f44814ba0ba300f545f1c7dee95ace001725120b7622d3c84bb2",
+  "request_payload": {
+    "text": "[happy, smiling] Да-а, плюс записан! Только не будем из одной сделки делать легенду, дальше всё так же внимательно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

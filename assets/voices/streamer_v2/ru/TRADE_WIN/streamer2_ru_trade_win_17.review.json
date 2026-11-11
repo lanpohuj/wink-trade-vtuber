@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_17",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Окей, эта сделка закрыта в плюс. Приятно, спорить не буду! Дальше смотрим уже новую ситуацию.",
+  "tts_text": "[pleased, lively] Окей, эта сделка закрыта в плюс. Приятно, спорить не буду! Дальше смотрим уже новую ситуацию.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "77bcab35704f5b529e4afef5258ca8ecd79520b68575c0cf8b400901cd0cf24c",
+  "delivery": "pleased, lively",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_17.mp3",
+  "duration": 7.314187,
+  "sha256": "5670d734e7c69dc9909e554b90cad3f02be7f438fea3a3995f503b63ee4c9cff",
+  "request_payload": {
+    "text": "[pleased, lively] Окей, эта сделка закрыта в плюс. Приятно, спорить не буду! Дальше смотрим уже новую ситуацию.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

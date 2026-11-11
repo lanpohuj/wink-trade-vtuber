@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_03",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Зашла вниз, чат. Здесь меня зацепило возобновление движения после отката, без гадания по одной свече.",
+  "tts_text": "[pleased, focused] Зашла вниз, чат. Здесь меня зацепило возобновление движения после отката, без гадания по одной свече.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "828696437356bdfe78dae4ed680585dcff5c24c1dc92db59f86ffd4c0ec31a46",
+  "delivery": "pleased, focused",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_03.mp3",
+  "duration": 7.392563,
+  "sha256": "dbbf3e229323da29825122c423708c1d255876efe0e514019e650c62fe6ee78a",
+  "request_payload": {
+    "text": "[pleased, focused] Зашла вниз, чат. Здесь меня зацепило возобновление движения после отката, без гадания по одной свече.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

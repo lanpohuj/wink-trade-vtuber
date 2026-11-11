@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_09",
+  "sha256": "cfdc293088653f7d549e6c70885fd18ef2e7ac498e0be7284cd5cbe1c446ea65",
+  "expected": "I'm in up. The level held when price came back after the break. That gives the idea something to stand on.",
+  "transcript": "I'm an up. The level held when price came back after the break. That gives the idea something to stand on.",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.07821,
+    "peak": 0.37503,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.271,
+    "sha256": "cfdc293088653f7d549e6c70885fd18ef2e7ac498e0be7284cd5cbe1c446ea65"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "text": " I'm an up. The level held when price came back after the break. That gives the idea something to stand on."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

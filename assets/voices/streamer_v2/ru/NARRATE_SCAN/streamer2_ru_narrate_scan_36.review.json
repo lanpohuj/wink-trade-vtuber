@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_scan_36",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка.",
+  "tts_text": "[warm, lightly playful] Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "18c40ceaebb6cf990f15510bb830330330440b1090967085c4bc19ac834f425a",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_36.mp3",
+  "duration": 6.086438,
+  "sha256": "9b87b21677505b78fb397ba4560ff8a0a9c018d3c15d0563c6310bd27469d9f9",
+  "request_payload": {
+    "text": "[warm, lightly playful] Дайте графику загрузиться. Я бы тоже хотела всё мгновенно, но сначала нужна сама картинка.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

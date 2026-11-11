@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_expiry_10",
+  "sha256": "fde715042bdcada34ad8c6f1dfee7d20bd1aa1e7cbe71d517f4748bc9c575812",
+  "expected": "Выбрала минуту. Мне интересен этот более длинный участок, короткое мельтешение само по себе не итог.",
+  "transcript": "Выбрала минуту. Мне интересен этот более длинный участок. Короткое мельтешение само по себе не итог.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08908,
+    "peak": 0.43144,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.108,
+    "sha256": "fde715042bdcada34ad8c6f1dfee7d20bd1aa1e7cbe71d517f4748bc9c575812"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Выбрала минуту. Мне интересен этот более длинный участок. Короткое мельтешение само по себе не итог."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_19",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "We're in down! It's a confirmed local reversal idea, not me declaring a whole new major trend.",
+  "tts_text": "[confident, lively] We're in down! It's a confirmed local reversal idea, not me declaring a whole new major trend.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "44bc539e2dfcd280079f2a2b8e504e22bb385c863794d20ad39950f120603db2",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_19.mp3",
+  "duration": 6.399938,
+  "sha256": "e5c6122dd02b890ab528859c6b9bb032f518de5cc5a41fc94d4393147260795a",
+  "request_payload": {
+    "text": "[confident, lively] We're in down! It's a confirmed local reversal idea, not me declaring a whole new major trend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

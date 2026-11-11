@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_pair_11",
+  "sha256": "f58c85cd886b5f243ee6b891fad6a244c1d37e8ec7c268f1197ebc91fc13d0b0",
+  "expected": "Так, эту пару ещё не разобрали. Дайте мне момент, посмотрю её без предвзятости.",
+  "transcript": "Так, эту пару ещё не разобрали. Дайте мне момент, посмотрю её без предвзятости.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08301,
+    "peak": 0.34204,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "f58c85cd886b5f243ee6b891fad6a244c1d37e8ec7c268f1197ebc91fc13d0b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Так, эту пару ещё не разобрали."
+    },
+    {
+      "start": 2.4,
+      "end": 5.0,
+      "text": " Дайте мне момент, посмотрю её без предвзятости."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_05",
+  "sha256": "085cd4068779be1759e7221b9ea8823eb42993e8e41373deccde67884ce23355",
+  "expected": "I'm on the chart, chat. Looking for an entry I can actually explain, rather than just clicking something.",
+  "transcript": "I'm on the chart chat looking for an entry I can actually explain rather than just clicking something",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07596,
+    "peak": 0.38496,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "085cd4068779be1759e7221b9ea8823eb42993e8e41373deccde67884ce23355"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " I'm on the chart chat looking for an entry I can actually explain rather than just clicking something"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

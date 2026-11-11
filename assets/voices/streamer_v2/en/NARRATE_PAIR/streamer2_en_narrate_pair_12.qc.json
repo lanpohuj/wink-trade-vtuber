@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_12",
+  "sha256": "b2360502857300052575e74637ca1e36186ae4ca0e3ade41f40c23187fe2a138",
+  "expected": "New scene! Time for my slightly fussy bit again: timeframes, structure, then the decision.",
+  "transcript": "New scene! Time for my slightly fussy bit again. Timeframes, structure, then the decision.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.001,
+    "rms": 0.0798,
+    "peak": 0.55284,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.221,
+    "sha256": "b2360502857300052575e74637ca1e36186ae4ca0e3ade41f40c23187fe2a138"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "text": " New scene! Time for my slightly fussy bit again. Timeframes, structure, then the decision."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

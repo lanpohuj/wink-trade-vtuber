@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_13",
+  "sha256": "60e1a0eb5eae1b6b779c8ab53cca607fafa0f965888ef7bbc96bc50ff77a4d64",
+  "expected": "Still here, chat, just digging into the chart. I want a clear idea behind the next entry.",
+  "transcript": "Still here, chat. Just digging into the chart. I want a clear idea behind the next entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07699,
+    "peak": 0.41328,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.2,
+    "sha256": "60e1a0eb5eae1b6b779c8ab53cca607fafa0f965888ef7bbc96bc50ff77a4d64"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Still here, chat. Just digging into the chart. I want a clear idea behind the next entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

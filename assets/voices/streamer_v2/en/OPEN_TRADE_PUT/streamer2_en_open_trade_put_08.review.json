@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_08",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down trade is running. I liked the confirmation on the retest, not just that first jump.",
+  "tts_text": "[pleased, focused] The down trade is running. I liked the confirmation on the retest, not just that first jump.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f5e343190d92f6a6609cbc13106d07777f728b8fdc5f7f191c0f35bf644e2781",
+  "delivery": "pleased, focused",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_08.mp3",
+  "duration": 6.034187,
+  "sha256": "46fb0c04873464675aad3e35e55ccbd722936e001e374f8e9e347c8123221ff0",
+  "request_payload": {
+    "text": "[pleased, focused] The down trade is running. I liked the confirmation on the retest, not just that first jump.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

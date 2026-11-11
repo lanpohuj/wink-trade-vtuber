@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_07",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Вот теперь наблюдаем, без лишней суеты. Мне самой интересно, как закроется именно этот вход.",
+  "tts_text": "[curious, conversational] Вот теперь наблюдаем, без лишней суеты. Мне самой интересно, как закроется именно этот вход.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "bb5c6cd2b6eb5210a3210e7d5d54bb1bedc2f0cec57bda85965750b49521fa26",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_07.mp3",
+  "duration": 5.903563,
+  "sha256": "ea7e0ca40d2269805def0ff6bff298c4d0de9ed6d679d10e4b16c2354014d254",
+  "request_payload": {
+    "text": "[curious, conversational] Вот теперь наблюдаем, без лишней суеты. Мне самой интересно, как закроется именно этот вход.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

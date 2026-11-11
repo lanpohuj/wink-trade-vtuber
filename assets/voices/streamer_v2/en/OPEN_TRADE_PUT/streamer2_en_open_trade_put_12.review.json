@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_12",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down entry is on screen. This one's about the range-edge reaction, not trying to find a trend.",
+  "tts_text": "[bright, conversational] The down entry is on screen. This one's about the range-edge reaction, not trying to find a trend.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "af5949a9feb41918625378b7fe5e0c9bbc7e6acc49d4bb120b04a061e9c21962",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_12.mp3",
+  "duration": 6.217062,
+  "sha256": "a07590b6744b10e922f63ff0fe0e38ad9c851fe817d1e560bac6f90ed707374b",
+  "request_payload": {
+    "text": "[bright, conversational] The down entry is on screen. This one's about the range-edge reaction, not trying to find a trend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

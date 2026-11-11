@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_03",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Красота, эту закрыли в плюс! Люблю, когда можно спокойно досмотреть и уже потом порадоваться.",
+  "tts_text": "[bright, warm] Красота, эту закрыли в плюс! Люблю, когда можно спокойно досмотреть и уже потом порадоваться.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "12bace426a45a3718a30fa11caa0510668f6d2c7257f2d94888b7c61abd72d22",
+  "delivery": "bright, warm",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_03.mp3",
+  "duration": 6.5305,
+  "sha256": "71a0f7ef5733782e08f84d3e8908a2ffe54fb71c62cbb1bea235c5a7cce363e7",
+  "request_payload": {
+    "text": "[bright, warm] Красота, эту закрыли в плюс! Люблю, когда можно спокойно досмотреть и уже потом порадоваться.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_16",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Кому удобнее коротко и по делу, а кому нравится разбор с деталями? Пытаюсь поймать ваш темп.",
+  "tts_text": "[friendly, curious] Кому удобнее коротко и по делу, а кому нравится разбор с деталями? Пытаюсь поймать ваш темп.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "633ff73af9577de5abbd93b73751dac47576c9be8a8fe82e28029ab388f65152",
+  "delivery": "friendly, curious",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_16.mp3",
+  "duration": 5.381125,
+  "sha256": "a5aafb431b39539739d51a348c9cb9c3d94d0aa7756e87da8c464c785516508b",
+  "request_payload": {
+    "text": "[friendly, curious] Кому удобнее коротко и по делу, а кому нравится разбор с деталями? Пытаюсь поймать ваш темп.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

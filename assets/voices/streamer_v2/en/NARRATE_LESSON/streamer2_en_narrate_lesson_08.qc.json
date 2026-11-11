@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_08",
+  "sha256": "28563f1601d7818e13b2f08214298fe2a78923e0db005ec24dbe9af25bfd121a",
+  "expected": "Bigger timeframe first, details second. Like opening the map before looking for your turn.",
+  "transcript": "Bigger time frame first, details second, like opening the map before looking for your turn.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.07878,
+    "peak": 0.46533,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.264,
+    "sha256": "28563f1601d7818e13b2f08214298fe2a78923e0db005ec24dbe9af25bfd121a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Bigger time frame first, details second, like opening the map before looking for your turn."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

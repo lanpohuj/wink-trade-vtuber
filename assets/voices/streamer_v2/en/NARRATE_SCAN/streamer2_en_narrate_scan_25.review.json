@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_25",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "No panic, I'm here. Comparing the short stretch with what's happening on the higher timeframe.",
+  "tts_text": "[curious, conversational] No panic, I'm here. Comparing the short stretch with what's happening on the higher timeframe.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bc023e5e85346b884b2d6ee45aff84cfe3510e9d1e76b6b017f4f57642ff4df6",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_25.mp3",
+  "duration": 5.955813,
+  "sha256": "bb20c5d35cbe0a371a7caa4dcaaf2814642946fb4e05755fe1044ae7241bf715",
+  "request_payload": {
+    "text": "[curious, conversational] No panic, I'm here. Comparing the short stretch with what's happening on the higher timeframe.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

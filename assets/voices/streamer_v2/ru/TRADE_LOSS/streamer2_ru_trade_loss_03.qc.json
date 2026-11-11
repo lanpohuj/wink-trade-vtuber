@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_loss_03",
+  "sha256": "7ef53493b00fca01138b5cdcf0cde1154321ed6a6cc9dab03ed9d8f65c7bfa2a",
+  "expected": "Минус подтверждён, чат. Я не буду делать вид, что так и задумано. Спокойно идём по плану дальше.",
+  "transcript": "Минус подтверждён, Чат. Я не буду делать вид, что так и задумано. Спокойно идём по плану дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.165,
+    "rms": 0.07491,
+    "peak": 0.30141,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "7ef53493b00fca01138b5cdcf0cde1154321ed6a6cc9dab03ed9d8f65c7bfa2a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.12,
+      "text": " Минус подтверждён, Чат. Я не буду делать вид, что так и задумано. Спокойно идём по плану дальше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

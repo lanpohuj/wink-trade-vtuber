@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_pair_01",
+  "sha256": "60294f0505bb813154929aa06743fb8147ff37eeba61470adc1d35084a1b48a4",
+  "expected": "Так, переехали на другую пару. Сейчас посмотрим, что интересного у нас здесь.",
+  "transcript": "Так, переехали на другую пару. Сейчас посмотрим, что интересного у нас здесь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08778,
+    "peak": 0.40725,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.136,
+    "sha256": "60294f0505bb813154929aa06743fb8147ff37eeba61470adc1d35084a1b48a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Так, переехали на другую пару."
+    },
+    {
+      "start": 2.0,
+      "end": 4.64,
+      "text": " Сейчас посмотрим, что интересного у нас здесь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

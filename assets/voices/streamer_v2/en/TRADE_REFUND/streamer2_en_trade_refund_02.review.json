@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_refund_02",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "A refund here, chat. No victory speech or sad soundtrack; we just move on.",
+  "tts_text": "[warm, conversational] A refund here, chat. No victory speech or sad soundtrack; we just move on.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f369d080f65bb45a353365d59120f1d9b1b3f2bc76ce5da2135a9eebeec895d1",
+  "delivery": "warm, conversational",
+  "file": "en/TRADE_REFUND/streamer2_en_trade_refund_02.mp3",
+  "duration": 5.590125,
+  "sha256": "b51448c08f1c4c069e78a38cc0729581ead9280d9abacf01f227014e252ff508",
+  "request_payload": {
+    "text": "[warm, conversational] A refund here, chat. No victory speech or sad soundtrack; we just move on.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_32",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "The history's still coming in. A confident voice won't make an empty chart useful.",
+  "tts_text": "[conversational, smiling] The history's still coming in. A confident voice won't make an empty chart useful.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "de88fbe48a9d4c32a911f37d426c4170376d5304d72932685b5bb7ca86c4fc4b",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_32.mp3",
+  "duration": 4.937063,
+  "sha256": "25f7860b3d7f7c703dbcd796a0289561a07ac30c774f4a0e2bdd91700960d4bf",
+  "request_payload": {
+    "text": "[conversational, smiling] The history's still coming in. A confident voice won't make an empty chart useful.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

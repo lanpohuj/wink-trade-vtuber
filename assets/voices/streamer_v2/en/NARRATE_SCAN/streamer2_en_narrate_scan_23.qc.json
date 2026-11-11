@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_23",
+  "sha256": "d1511729ff08849e5b122cab8fd1e84f8d6249f1b9a2e45a4df5a0c50cd0ff5a",
+  "expected": "Let me put the pieces together. I know the button looks inviting, but that's not an entry reason.",
+  "transcript": "Let me put the pieces together. I know the button looks inviting, but that's not an entry reason.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08369,
+    "peak": 0.4262,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "d1511729ff08849e5b122cab8fd1e84f8d6249f1b9a2e45a4df5a0c50cd0ff5a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Let me put the pieces together. I know the button looks inviting, but that's not an entry reason."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

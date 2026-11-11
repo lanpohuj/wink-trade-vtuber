@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_05",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+  "tts_text": "[thoughtful, relaxed] The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "143f395422e873f60cda18f4dd58734db7c6401bc4dfd00197307934b8917b02",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_05.mp3",
+  "duration": 5.4595,
+  "sha256": "121d2a84ed47230a89fa5fe61e0fb992c11a1dbdf8b0b92a77123368e4e44c17",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

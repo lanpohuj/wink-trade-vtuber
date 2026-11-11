@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_05",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Trade's in progress, I'm here. No need for a whole new conclusion every half-second.",
+  "tts_text": "[conversational, smiling] Trade's in progress, I'm here. No need for a whole new conclusion every half-second.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "eaed5d5d00ad5958228dd17ae6736e0a7a85f130519bb43cfe51e6f2e83782ff",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_05.mp3",
+  "duration": 5.381125,
+  "sha256": "832daabc5d7813eade29caf6daa3fe0416252b8878d7aba984a418e4a9849376",
+  "request_payload": {
+    "text": "[conversational, smiling] Trade's in progress, I'm here. No need for a whole new conclusion every half-second.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

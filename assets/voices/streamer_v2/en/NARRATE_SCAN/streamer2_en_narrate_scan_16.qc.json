@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_scan_16",
+  "sha256": "aeaf480f00905be428618a08e2a444aa43ca07aeb140dad85414062a96394d87",
+  "expected": "Let's compare the timeframes first. I don't want a big conclusion from a tiny slice of the chart.",
+  "transcript": "Let's compare the timeframes first. I don't want a big conclusion from a tiny slice of the chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08411,
+    "peak": 0.52756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "aeaf480f00905be428618a08e2a444aa43ca07aeb140dad85414062a96394d87"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Let's compare the timeframes first."
+    },
+    {
+      "start": 2.5,
+      "end": 6.0,
+      "text": " I don't want a big conclusion from a tiny slice of the chart."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

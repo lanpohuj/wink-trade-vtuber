@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_volatility_03",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "The moves have picked up, chat. I won't call every sharp candle a lovely opportunity.",
+  "tts_text": "[alert, composed] The moves have picked up, chat. I won't call every sharp candle a lovely opportunity.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f32fc5e1d8a9874a26b4bed73d06e6393ffafdace6edbc716b713bab00e1896e",
+  "delivery": "alert, composed",
+  "file": "en/NARRATE_VOLATILITY/streamer2_en_narrate_volatility_03.mp3",
+  "duration": 4.937063,
+  "sha256": "3c5601948678e405d6caf3160f4e4a4973c07ba2604b35e3d95b8c742a3e626c",
+  "request_payload": {
+    "text": "[alert, composed] The moves have picked up, chat. I won't call every sharp candle a lovely opportunity.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

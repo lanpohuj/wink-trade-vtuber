@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_16",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Есть положительный итог! Я сейчас улыбаюсь вполне заслуженно, но дальше держим тот же темп проверки.",
+  "tts_text": "[happy, smiling] Есть положительный итог! Я сейчас улыбаюсь вполне заслуженно, но дальше держим тот же темп проверки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "749d75e64718186ce67a9700374475e5b673e227eb65b4766393f3bc2613037c",
+  "delivery": "happy, smiling",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_16.mp3",
+  "duration": 6.556625,
+  "sha256": "74f016fa35341f48ccc978c6334ade06ac9ce25dca2d36ebde6d9be9faa75364",
+  "request_payload": {
+    "text": "[happy, smiling] Есть положительный итог! Я сейчас улыбаюсь вполне заслуженно, но дальше держим тот же темп проверки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_06",
+  "sha256": "144db4cc404f67ccae21cc60abfa2f498a296b87f3809e01d411299b7d47d950",
+  "expected": "Half a minute here, chat. Watching the chosen window, not judging every single second on its own.",
+  "transcript": "Half a minute here, chat. Watching the chosen window, not judging every single second on its own.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08412,
+    "peak": 0.42388,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.256,
+    "sha256": "144db4cc404f67ccae21cc60abfa2f498a296b87f3809e01d411299b7d47d950"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Half a minute here, chat. Watching the chosen window, not judging every single second on its own."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

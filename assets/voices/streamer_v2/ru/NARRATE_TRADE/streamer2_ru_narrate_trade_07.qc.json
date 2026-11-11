@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_07",
+  "sha256": "ea7e0ca40d2269805def0ff6bff298c4d0de9ed6d679d10e4b16c2354014d254",
+  "expected": "Вот теперь наблюдаем, без лишней суеты. Мне самой интересно, как закроется именно этот вход.",
+  "transcript": "Вот теперь наблюдаем без лишней суеты. Мне самой интересно, как закроется именно этот вход.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08735,
+    "peak": 0.38052,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.104,
+    "sha256": "ea7e0ca40d2269805def0ff6bff298c4d0de9ed6d679d10e4b16c2354014d254"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Вот теперь наблюдаем без лишней суеты."
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 5.84,
+      "text": " Мне самой интересно, как закроется именно этот вход."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

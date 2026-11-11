@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_10",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Back to the base fifty. We'll read the next chart separately; it isn't responsible for the previous ones.",
+  "tts_text": "[composed, gentle] Back to the base fifty. We'll read the next chart separately; it isn't responsible for the previous ones.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ba4379c84f920cea93c4ad7ebc1963a8a0201eeeec50506e5a32dc160e71d1e4",
+  "delivery": "composed, gentle",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_10.mp3",
+  "duration": 5.955813,
+  "sha256": "b2311ffd47ead82523f2cf0c3e4469427f6d4c3880a221181e7923e48a2563c3",
+  "request_payload": {
+    "text": "[composed, gentle] Back to the base fifty. We'll read the next chart separately; it isn't responsible for the previous ones.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

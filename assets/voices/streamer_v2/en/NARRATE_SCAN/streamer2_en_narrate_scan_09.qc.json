@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_09",
+  "sha256": "9b9770e94847d1922ae32324282d3361ffadeea191c8eca7658655f398fc9764",
+  "expected": "Looking beyond one candle here. A single candle can be a surprisingly good distraction.",
+  "transcript": "Looking beyond one candle here a single candle can be a surprisingly good distraction",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.0814,
+    "peak": 0.37143,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.32,
+    "sha256": "9b9770e94847d1922ae32324282d3361ffadeea191c8eca7658655f398fc9764"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0200000000000005,
+      "text": " Looking beyond one candle here a single candle can be a surprisingly good distraction"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

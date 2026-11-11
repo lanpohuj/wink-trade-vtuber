@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_06",
+  "sha256": "9c458ad0b7bb84a51431b410262a308a588c2d9cfec53d2b6537c8580a2eb5ad",
+  "expected": "Keeping my attention on this trade. I'm not opening another one just to keep things busy.",
+  "transcript": "Keeping my attention on this trade. I'm not opening another one just to keep things busy",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08478,
+    "peak": 0.38409,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.311,
+    "sha256": "9c458ad0b7bb84a51431b410262a308a588c2d9cfec53d2b6537c8580a2eb5ad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Keeping my attention on this trade. I'm not opening another one just to keep things busy"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

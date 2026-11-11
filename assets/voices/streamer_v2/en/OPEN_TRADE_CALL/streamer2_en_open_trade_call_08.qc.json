@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_08",
+  "sha256": "c3afc1051c77e2bfd3e1efbc28de4e1484094d69fe735c351becd8b5ba3bf574",
+  "expected": "The up trade is running. I liked the confirmation on the retest, not just that first jump.",
+  "transcript": "The up trade is running. I like the confirmation on the retest, not just that first jump.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08209,
+    "peak": 0.45599,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.324,
+    "sha256": "c3afc1051c77e2bfd3e1efbc28de4e1484094d69fe735c351becd8b5ba3bf574"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " The up trade is running. I like the confirmation on the retest, not just that first jump."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

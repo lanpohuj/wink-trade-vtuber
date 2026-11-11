@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_result_08",
+  "sha256": "19d3820b113d19b561429af77f5abc3fa460cba7dc93d8c6943272b7f33ad818",
+  "expected": "На следующий вход ставка двести сорок два. Просто увеличение ставки не обещает нам другой исход.",
+  "transcript": "На следующий вход ставка 242. Просто увеличение ставки не обещает нам другой исход.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08783,
+    "peak": 0.41956,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.134,
+    "sha256": "19d3820b113d19b561429af77f5abc3fa460cba7dc93d8c6943272b7f33ad818"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " На следующий вход ставка 242. Просто увеличение ставки не обещает нам другой исход."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

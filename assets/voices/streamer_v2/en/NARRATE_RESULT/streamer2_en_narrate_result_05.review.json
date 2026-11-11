@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_05",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next step is two hundred and forty-two. A bigger number doesn't make the chart clearer; I check the conditions again.",
+  "tts_text": "[composed, conversational] Next step is two hundred and forty-two. A bigger number doesn't make the chart clearer; I check the conditions again.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7d746e2d35f561cc6a1016c8b38b28b114158970ba6ce92dbc353123f4cb7d4d",
+  "delivery": "composed, conversational",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_05.mp3",
+  "duration": 7.183562,
+  "sha256": "bf8ad17b66fefcc94ea66ab644bf530199d193e384bffb419f90f3b21e3ec10b",
+  "request_payload": {
+    "text": "[composed, conversational] Next step is two hundred and forty-two. A bigger number doesn't make the chart clearer; I check the conditions again.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

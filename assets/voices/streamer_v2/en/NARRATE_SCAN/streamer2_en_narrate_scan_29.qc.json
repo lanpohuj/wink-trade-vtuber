@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_29",
+  "sha256": "d9cbb96b384bc7ccf210f534cd6c81490cb80a184a64358b273333f6a1934681",
+  "expected": "Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go.",
+  "transcript": "Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08111,
+    "peak": 0.43963,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.216,
+    "sha256": "d9cbb96b384bc7ccf210f534cd6c81490cb80a184a64358b273333f6a1934681"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_06",
+  "sha256": "3995b185b26713c07cafdc3c3303f1d216c16bc242ef59c19bf0763db792ac31",
+  "expected": "Opened down! Price came back after the breakout and held the new side of the level. That was the key bit.",
+  "transcript": "Open down price came back after the breakout and held the new side of the level that was the key bit",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.08433,
+    "peak": 0.48252,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.288,
+    "sha256": "3995b185b26713c07cafdc3c3303f1d216c16bc242ef59c19bf0763db792ac31"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.94,
+      "text": " Open down price came back after the breakout and held the new side of the level that was the key bit"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

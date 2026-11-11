@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_16",
+  "sha256": "d219a98502e34eca51112cc629862727950fc39c3078f932ed2ccad457c92e43",
+  "expected": "Вот эта часть — без перемотки. Смотрим реальное движение до самого закрытия.",
+  "transcript": "Вот эта часть без перемотки. Смотрим реальное движение до самого закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08227,
+    "peak": 0.35119,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.078,
+    "sha256": "d219a98502e34eca51112cc629862727950fc39c3078f932ed2ccad457c92e43"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Вот эта часть без перемотки."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Смотрим реальное движение до самого закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

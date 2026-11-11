@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_19",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Charts are a bit like messages. Take one out of context and suddenly it's a different story.",
+  "tts_text": "[curious, conversational] Charts are a bit like messages. Take one out of context and suddenly it's a different story.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ac79aabce96f748ddcb7a608d703d5ee6534e5b2e969897ba4d4a9e44dd283d",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_19.mp3",
+  "duration": 5.72075,
+  "sha256": "368cc3663c69079982b18532140f989b6964148e9d47be06f091c6be24f4ac6f",
+  "request_payload": {
+    "text": "[curious, conversational] Charts are a bit like messages. Take one out of context and suddenly it's a different story.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

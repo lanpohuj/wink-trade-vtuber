@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_11",
+  "sha256": "15e8fd4a1eed638a586e3d6be3889506ef8e264cd11b8cda6a7da36dfd51dda4",
+  "expected": "Мне нравится разбирать вход, а вот ждать закрытия приходится всем одинаково. Сидим красиво, наблюдаем.",
+  "transcript": "Мне нравится разбирать вход, а вот ждать закрытия приходится всем одинаково. Сидим красиво, наблюдаем!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.74,
+    "rms": 0.07779,
+    "peak": 0.30404,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "15e8fd4a1eed638a586e3d6be3889506ef8e264cd11b8cda6a7da36dfd51dda4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.72,
+      "text": " Мне нравится разбирать вход, а вот ждать закрытия приходится всем одинаково."
+    },
+    {
+      "start": 4.72,
+      "end": 6.72,
+      "text": " Сидим красиво, наблюдаем!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

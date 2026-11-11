@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_put_16",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Зашла вниз! Здесь не просто остановка: локальная структура изменилась и дала подтверждение разворота.",
+  "tts_text": "[confident, lively] Зашла вниз! Здесь не просто остановка: локальная структура изменилась и дала подтверждение разворота.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7ec8fee6d682fa83c39ac76f00b9bf68788dadc7360f4747cb06cd8e2a9905c8",
+  "delivery": "confident, lively",
+  "file": "ru/OPEN_TRADE_PUT/streamer2_ru_open_trade_put_16.mp3",
+  "duration": 6.217062,
+  "sha256": "58858196aa1e7ab9bc2396e51c44f07c83bdaaea780e9b2d4ce29f6b4a77cd5b",
+  "request_payload": {
+    "text": "[confident, lively] Зашла вниз! Здесь не просто остановка: локальная структура изменилась и дала подтверждение разворота.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

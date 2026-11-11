@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_10",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Annoying, that one's red. I can be disappointed for a second without rushing the next entry.",
+  "tts_text": "[slightly disappointed, composed] Annoying, that one's red. I can be disappointed for a second without rushing the next entry.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8f59f43976161ca48949be33b69bc038a63b961d6ce0d8d12a8d6b7cde0da255",
+  "delivery": "slightly disappointed, composed",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_10.mp3",
+  "duration": 5.642375,
+  "sha256": "ff7393108f778773ef60c04b86b3145f63e6d195c2b06c42bcbd6cf5aa2b030b",
+  "request_payload": {
+    "text": "[slightly disappointed, composed] Annoying, that one's red. I can be disappointed for a second without rushing the next entry.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

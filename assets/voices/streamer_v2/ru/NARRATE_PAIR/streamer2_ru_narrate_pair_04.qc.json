@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_pair_04",
+  "sha256": "a395aa28d3999062f39b46b1b274131b5a3f28c2ae0fc2621410e953225a78b4",
+  "expected": "Поехали дальше, чат. У этой пары своя история, сейчас быстро с ней познакомлюсь.",
+  "transcript": "Поехали дальше, Чат! У этой пары своя история. Сейчас быстро с ней познакомлюсь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07596,
+    "peak": 0.32408,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.123,
+    "sha256": "a395aa28d3999062f39b46b1b274131b5a3f28c2ae0fc2621410e953225a78b4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Поехали дальше, Чат!"
+    },
+    {
+      "start": 1.6,
+      "end": 3.4,
+      "text": " У этой пары своя история."
+    },
+    {
+      "start": 3.4,
+      "end": 5.4,
+      "text": " Сейчас быстро с ней познакомлюсь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_02",
+  "sha256": "55ba17204d85a6ec0085a5f4e4e111bb1b0f1099a6c95ef62c7081203ce95468",
+  "expected": "Hang on, I'm still looking. A pretty candle alone isn't really enough to talk me into an entry.",
+  "transcript": "Hang on, I'm still looking. A pretty candle alone isn't really enough to talk me into an entry.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08501,
+    "peak": 0.41067,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.293,
+    "sha256": "55ba17204d85a6ec0085a5f4e4e111bb1b0f1099a6c95ef62c7081203ce95468"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Hang on, I'm still looking. A pretty candle alone isn't really enough to talk me into an entry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

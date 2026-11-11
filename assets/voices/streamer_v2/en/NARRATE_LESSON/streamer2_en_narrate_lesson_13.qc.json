@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_13",
+  "sha256": "f17be96f915bc33f779523f7951ff4d91c6df13cea7944b16fff5b3c7c1dd932",
+  "expected": "After a breakout, the return to the level matters. I care more about the hold than the dramatic jump.",
+  "transcript": "After a break out, the return to the level matters. I care more about the hold than the dramatic jump.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.08596,
+    "peak": 0.4249,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.225,
+    "sha256": "f17be96f915bc33f779523f7951ff4d91c6df13cea7944b16fff5b3c7c1dd932"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " After a break out, the return to the level matters. I care more about the hold than the dramatic jump."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

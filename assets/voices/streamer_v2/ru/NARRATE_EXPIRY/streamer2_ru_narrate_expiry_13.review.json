@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_13",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь две минуты, чат. Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик.",
+  "tts_text": "[confident, conversational] Здесь две минуты, чат. Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f08b92e5248312af88d44700c0c1fae58bd1208271767a19d5068af198583ed8",
+  "delivery": "confident, conversational",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_13.mp3",
+  "duration": 6.870125,
+  "sha256": "f495ea8a8d56cb8938ee969decbb0fa82a47a2e3c1cabf6b27bdb2c1df03fd9a",
+  "request_payload": {
+    "text": "[confident, conversational] Здесь две минуты, чат. Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_05",
+  "sha256": "5837063f0ab2a7d20d77bce7d133660e2a7350c46a82d8cf4a0de56decd5a7eb",
+  "expected": "Сделка в работе, я здесь. Новых выводов каждые полсекунды устраивать не буду.",
+  "transcript": "Сделка в работе! Я здесь! Новых выводов каждые полсекунда устраивать не буду.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.07507,
+    "peak": 0.28962,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.13,
+    "sha256": "5837063f0ab2a7d20d77bce7d133660e2a7350c46a82d8cf4a0de56decd5a7eb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Сделка в работе! Я здесь!"
+    },
+    {
+      "start": 2.5,
+      "end": 5.5,
+      "text": " Новых выводов каждые полсекунда устраивать не буду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

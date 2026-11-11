@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_02",
+  "sha256": "cce591774837743279deb1a6e5283a2c14d3ef0c4b8d992cbd7c8e040972bf9b",
+  "expected": "Секунду, я ещё смотрю. Входить только потому, что свеча красивая, — ну такое, если честно.",
+  "transcript": "Секунду, я ещё смотрю. Входить только потому, что свеча красивая. Ну, такое, если честно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.497,
+    "rms": 0.0785,
+    "peak": 0.39241,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.137,
+    "sha256": "cce591774837743279deb1a6e5283a2c14d3ef0c4b8d992cbd7c8e040972bf9b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.4,
+      "text": " Секунду, я ещё смотрю. Входить только потому, что свеча красивая. Ну, такое, если честно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

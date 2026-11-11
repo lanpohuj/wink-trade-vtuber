@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_02",
+  "sha256": "4bf1f8a7e5056ba86f347bb09b7fc0f1113c63bfd841dc24c2ebbf0b09a9b854",
+  "expected": "Тут возврат, чат. Ни победную речь, ни грустную музыку не включаем — просто идём дальше.",
+  "transcript": "Тут возвратчат. Непобедную речь, не грустную музыку не включаем, просто идем дальше.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08506,
+    "peak": 0.34277,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.131,
+    "sha256": "4bf1f8a7e5056ba86f347bb09b7fc0f1113c63bfd841dc24c2ebbf0b09a9b854"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Тут возвратчат. Непобедную речь, не грустную музыку не включаем, просто идем дальше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

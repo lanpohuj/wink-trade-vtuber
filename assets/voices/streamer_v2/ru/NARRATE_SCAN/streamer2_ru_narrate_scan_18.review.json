@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_18",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сейчас смотрю и направление, и расстояние до уровня. Просто угадать сторону мне мало.",
+  "tts_text": "[warm, lightly playful] Сейчас смотрю и направление, и расстояние до уровня. Просто угадать сторону мне мало.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ec032d957047be1c6ae636dbccaaa0e9c785b7a1f65cfd8aedc96ea71ef5cf0e",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_18.mp3",
+  "duration": 5.51175,
+  "sha256": "befb3f6e48e82e2e34b244b47c7c221dff2763f98413d6d80be7ec382849baad",
+  "request_payload": {
+    "text": "[warm, lightly playful] Сейчас смотрю и направление, и расстояние до уровня. Просто угадать сторону мне мало.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

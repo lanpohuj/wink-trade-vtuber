@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_loss_06",
+  "sha256": "f3135786c880a7f80d79c539fb195c78b2fb12120fc7e38ff329980cdeba5176",
+  "expected": "Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание.",
+  "transcript": "Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08353,
+    "peak": 0.37432,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.074,
+    "sha256": "f3135786c880a7f80d79c539fb195c78b2fb12120fc7e38ff329980cdeba5176"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Здесь закрылись в минус. Я лучше честно это скажу, чем начну придумывать красивое оправдание."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

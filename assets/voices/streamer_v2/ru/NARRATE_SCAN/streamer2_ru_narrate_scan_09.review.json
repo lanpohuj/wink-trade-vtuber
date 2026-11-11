@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_09",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Смотрю чуть шире, чем одна свечка. Одна свечка тоже умеет красиво отвлекать, между прочим.",
+  "tts_text": "[warm, lightly playful] Смотрю чуть шире, чем одна свечка. Одна свечка тоже умеет красиво отвлекать, между прочим.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e2f810e8b9dcb934325e943625887b17dbb656b2bde7d226c34b648ed2e955ef",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_09.mp3",
+  "duration": 6.399938,
+  "sha256": "2858a8a084d6fc4f2c9c212e20a476f483e3db178f2010ff19fe5bf2540730de",
+  "request_payload": {
+    "text": "[warm, lightly playful] Смотрю чуть шире, чем одна свечка. Одна свечка тоже умеет красиво отвлекать, между прочим.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_04",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Ah, not our result. The trade closed red; I'll calmly check the next step.",
+  "tts_text": "[slightly disappointed, composed] Ah, not our result. The trade closed red; I'll calmly check the next step.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "45339782306644015f084709f9b566dee7be1de1ada9a4f27b02ca3acc06dba9",
+  "delivery": "slightly disappointed, composed",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_04.mp3",
+  "duration": 5.328875,
+  "sha256": "e7b1edb9e4699837dec7e1d175840d2687296830efdfbd8971409c1291c8a472",
+  "request_payload": {
+    "text": "[slightly disappointed, composed] Ah, not our result. The trade closed red; I'll calmly check the next step.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

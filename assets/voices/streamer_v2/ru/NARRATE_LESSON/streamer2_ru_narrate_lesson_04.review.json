@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_04",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Если короткий вход не складывается, я проверяю длинный отдельно. Минуту не назначают в наказание пятнадцати секундам.",
+  "tts_text": "[friendly, conversational] Если короткий вход не складывается, я проверяю длинный отдельно. Минуту не назначают в наказание пятнадцати секундам.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b5c92fe6a3d96a35f58dcfbdc8a897948b21206d1d4d763e2592640584178fd4",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_04.mp3",
+  "duration": 6.5305,
+  "sha256": "ad36b1a5742d52f58e4e9d4209755f70736b69dd467f4c417d807a7d6abd512d",
+  "request_payload": {
+    "text": "[friendly, conversational] Если короткий вход не складывается, я проверяю длинный отдельно. Минуту не назначают в наказание пятнадцати секундам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_10",
+  "sha256": "a1c0fae145be2d1bcabdf0182deac75ccf610b17548200d1b21581db1f4c8a95",
+  "expected": "I've chosen a minute. I'm following the longer stretch; the little flickers aren't a verdict on their own.",
+  "transcript": "I've chosen a minute. I'm following the longer stretch. The little flickers aren't a verdict on their own.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.082,
+    "peak": 0.38848,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.193,
+    "sha256": "a1c0fae145be2d1bcabdf0182deac75ccf610b17548200d1b21581db1f4c8a95"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " I've chosen a minute. I'm following the longer stretch. The little flickers aren't a verdict on their own."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

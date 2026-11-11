@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_lesson_04",
+  "sha256": "77c6573ce010c556ebda39a2500da4a739ba58f271a7d48b72c5da5ef940deb4",
+  "expected": "If the short entry doesn't fit, I check the longer one separately. A minute isn't a punishment for fifteen seconds.",
+  "transcript": "If the short entry doesn't fit, I check the longer one separately. A minute isn't a punishment for 15 seconds.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.478,
+    "rms": 0.0844,
+    "peak": 0.53009,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.178,
+    "sha256": "77c6573ce010c556ebda39a2500da4a739ba58f271a7d48b72c5da5ef940deb4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " If the short entry doesn't fit, I check the longer one separately."
+    },
+    {
+      "start": 3.6,
+      "end": 6.4,
+      "text": " A minute isn't a punishment for 15 seconds."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

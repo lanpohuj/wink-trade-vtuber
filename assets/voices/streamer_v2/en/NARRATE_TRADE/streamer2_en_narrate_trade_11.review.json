@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_11",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "I enjoy unpacking an entry, but everyone has to wait for the close. Settle in; we're watching.",
+  "tts_text": "[conversational, smiling] I enjoy unpacking an entry, but everyone has to wait for the close. Settle in; we're watching.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6c531b79c3987af5042d7941fda3325f939923ccb82a5db6b967a1858fa2426f",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_11.mp3",
+  "duration": 5.773,
+  "sha256": "82022027fb1429138561ad25b586c4347ea4aaf5f77ac9c9ba808af4a47b680e",
+  "request_payload": {
+    "text": "[conversational, smiling] I enjoy unpacking an entry, but everyone has to wait for the close. Settle in; we're watching.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

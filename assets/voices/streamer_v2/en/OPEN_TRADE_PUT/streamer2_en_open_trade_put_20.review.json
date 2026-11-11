@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_20",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down. First the level reaction, then reversal confirmation. Now we follow the trade itself.",
+  "tts_text": "[bright, conversational] Opened down. First the level reaction, then reversal confirmation. Now we follow the trade itself.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7b59c72b10e3429c43ed66e6e4823e5a5bb809303cbfcbd9b63929a31ece8524",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_20.mp3",
+  "duration": 6.426063,
+  "sha256": "8bc75d05bc96165ec6bb35ca6ccaa92006a200dd0c9f851e573ae6cffaff9a1e",
+  "request_payload": {
+    "text": "[bright, conversational] Opened down. First the level reaction, then reversal confirmation. Now we follow the trade itself.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

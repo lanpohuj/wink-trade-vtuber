@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_loss_04",
+  "sha256": "ae863babf0117f2134d8dff650528f70a476ad706063048fdb4a1cc635998c4f",
+  "expected": "Эх, не наш итог. Сделка в минус, сейчас без суеты проверю дальнейший шаг.",
+  "transcript": "Эх, не наш итог, но сделка в минус, сейчас бесует и проверю дальнейший шаг.",
+  "similarity": 0.957,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07894,
+    "peak": 0.34109,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "ae863babf0117f2134d8dff650528f70a476ad706063048fdb4a1cc635998c4f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Эх, не наш итог, но сделка в минус, сейчас бесует и проверю дальнейший шаг."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_20",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "The trade's still on screen and I'm following it. I'll call the result when there is one, no future spoilers.",
+  "tts_text": "[conversational, smiling] The trade's still on screen and I'm following it. I'll call the result when there is one, no future spoilers.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7adfddc58f97fd327b7a2244535a64119878e69ebfddb4aa03331ccdc6fcdcfb",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_20.mp3",
+  "duration": 6.399938,
+  "sha256": "4e0c5644b6b6ecd18b4d877c6fc48e340f18c8debf61f1479781c158ee6e6a79",
+  "request_payload": {
+    "text": "[conversational, smiling] The trade's still on screen and I'm following it. I'll call the result when there is one, no future spoilers.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

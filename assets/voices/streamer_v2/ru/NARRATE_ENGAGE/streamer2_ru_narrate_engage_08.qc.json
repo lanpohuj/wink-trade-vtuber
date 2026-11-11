@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_engage_08",
+  "sha256": "bbca5c4aebc5eb1abb39b836bff85fb0742b7bcc3b67025c416905095c3452cf",
+  "expected": "Кто здесь впервые, устраивайтесь. Я Винки, и комментировать графики вслух — это как раз моя история.",
+  "transcript": "Кто здесь впервые устраиваетесь? Я Винки! И комментировать графики в слух, это как раз моя история!",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08372,
+    "peak": 0.3787,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "bbca5c4aebc5eb1abb39b836bff85fb0742b7bcc3b67025c416905095c3452cf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Кто здесь впервые устраиваетесь?"
+    },
+    {
+      "start": 2.0,
+      "end": 3.0,
+      "text": " Я Винки!"
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " И комментировать графики в слух, это как раз моя история!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_02",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Так, сделка вверх уже в работе. Откат закончился с подтверждением, теперь смотрим фактическое закрытие.",
+  "tts_text": "[bright, conversational] Так, сделка вверх уже в работе. Откат закончился с подтверждением, теперь смотрим фактическое закрытие.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c5fd037e942f49ee878f63e37155d00d9388351ed18a84973bc158bec455e456",
+  "delivery": "bright, conversational",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_02.mp3",
+  "duration": 5.642375,
+  "sha256": "018321b33f004160764f9e1617c250ce3d322ddcb7cc827f8b47b9ff809852aa",
+  "request_payload": {
+    "text": "[bright, conversational] Так, сделка вверх уже в работе. Откат закончился с подтверждением, теперь смотрим фактическое закрытие.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

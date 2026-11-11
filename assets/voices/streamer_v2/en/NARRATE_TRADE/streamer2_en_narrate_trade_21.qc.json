@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_21",
+  "sha256": "d4c380dac1efe4c9d7027e4300ce76a4d3cb101a2e72e93f29145c0aef02fe2c",
+  "expected": "Just watching now. A good time to practise waiting without writing a whole drama in our heads.",
+  "transcript": "Just watching now a good time to practice waiting without writing a whole drama in our heads",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08521,
+    "peak": 0.42057,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.181,
+    "sha256": "d4c380dac1efe4c9d7027e4300ce76a4d3cb101a2e72e93f29145c0aef02fe2c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " Just watching now a good time to practice waiting without writing a whole drama in our heads"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

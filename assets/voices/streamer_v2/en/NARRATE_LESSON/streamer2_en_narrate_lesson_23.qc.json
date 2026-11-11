@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_23",
+  "sha256": "67b54ae961d15555c2e5cf9b4e540ea8012f79bdcd3a2972bc34547fcb0cc57c",
+  "expected": "Timeframes can disagree. That's normal; I won't just pick the one saying what I want to hear.",
+  "transcript": "Timeframes can disagree. That's normal. I won't just pick the one saying what I want to hear.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08097,
+    "peak": 0.39304,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.249,
+    "sha256": "67b54ae961d15555c2e5cf9b4e540ea8012f79bdcd3a2972bc34547fcb0cc57c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Timeframes can disagree. That's normal. I won't just pick the one saying what I want to hear."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

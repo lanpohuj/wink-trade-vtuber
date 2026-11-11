@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_09",
+  "sha256": "81d4547add8d636f8a6369f8f4bb76d75f27e5a891b79223c21c41bc8cf42df4",
+  "expected": "I'm in down. The level held when price came back after the break. That gives the idea something to stand on.",
+  "transcript": "Home and down the level held when price came back after the break that gives the idea something to stand on",
+  "similarity": 0.959,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.557,
+    "rms": 0.08023,
+    "peak": 0.39451,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.277,
+    "sha256": "81d4547add8d636f8a6369f8f4bb76d75f27e5a891b79223c21c41bc8cf42df4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.12,
+      "text": " Home and down the level held when price came back after the break that gives the idea something to stand on"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_21",
+  "sha256": "481eca8e82974e4eda604d287726369082d7a0b4c37429c349187a109a089036",
+  "expected": "No entry call yet. I'm still checking which setup actually fits this picture.",
+  "transcript": "No entry call yet. I'm still checking which setup actually fits this picture.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.0709,
+    "peak": 0.51489,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.176,
+    "sha256": "481eca8e82974e4eda604d287726369082d7a0b4c37429c349187a109a089036"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " No entry call yet. I'm still checking which setup actually fits this picture."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

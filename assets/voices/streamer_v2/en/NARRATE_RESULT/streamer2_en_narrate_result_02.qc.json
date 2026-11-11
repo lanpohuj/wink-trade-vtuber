@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_02",
+  "sha256": "861ee2dd099029764b87517bae5347c528ab56039934a9360a96acf6772295f1",
+  "expected": "Right, the stake's one hundred and ten now. The step changed; my chart checks didn't.",
+  "transcript": "Right. The stakes 110 now. The step changed. My chart checks didn't.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.07925,
+    "peak": 0.45165,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.224,
+    "sha256": "861ee2dd099029764b87517bae5347c528ab56039934a9360a96acf6772295f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Right. The stakes 110 now. The step changed. My chart checks didn't."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_19",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive.",
+  "tts_text": "[friendly, conversational] A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "61fe6f0f08efbcfbdbd0eea1eae50f4f997d61bed04d8b113d9fd01fa2d1c6d0",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_19.mp3",
+  "duration": 6.399938,
+  "sha256": "c34f5e9161d49cca13c8efd6601c01718258d7201ff7fc63814104417bbd4178",
+  "request_payload": {
+    "text": "[friendly, conversational] A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

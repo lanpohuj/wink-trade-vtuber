@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_10",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Сделка вверх открыта! Не погналась за пробоем, дождалась подтверждённого ретеста. Смотрим дальше.",
+  "tts_text": "[bright, conversational] Сделка вверх открыта! Не погналась за пробоем, дождалась подтверждённого ретеста. Смотрим дальше.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e29122720a7fce31a6ade999783d5f5f080f93fa4b2e4e70764bbbd1c88cbb10",
+  "delivery": "bright, conversational",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_10.mp3",
+  "duration": 6.217062,
+  "sha256": "7ad90db3cac8fb07a18e41b66fad4a77c9bfd8ef843f3d034e5e2b7508866e23",
+  "request_payload": {
+    "text": "[bright, conversational] Сделка вверх открыта! Не погналась за пробоем, дождалась подтверждённого ретеста. Смотрим дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

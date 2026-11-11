@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_10",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch.",
+  "tts_text": "[bright, conversational] The down trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7bd038958b7d9a5ad489c70f64e5396940c843526c368e89b4fa03b294335215",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_10.mp3",
+  "duration": 6.661125,
+  "sha256": "65802da329b79600f4088d4eedc9d1d1c6baa68a57d3d3abf09f248eeb0bff6e",
+  "request_payload": {
+    "text": "[bright, conversational] The down trade is open! I waited for the confirmed retest instead of chasing the breakout. Let's watch.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_12",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Так, вход вверх уже на экране. Здесь идея от реакции у края диапазона, а не от желания поймать тренд.",
+  "tts_text": "[bright, conversational] Так, вход вверх уже на экране. Здесь идея от реакции у края диапазона, а не от желания поймать тренд.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "15406904498192d4d8a8a6634653b03b72411429b8c8cc36e1fb3dfa4cf23b6b",
+  "delivery": "bright, conversational",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_12.mp3",
+  "duration": 5.955813,
+  "sha256": "d239f564b8d3991569c00b984d4cae636c8094c267458f33ac324ed67214a24d",
+  "request_payload": {
+    "text": "[bright, conversational] Так, вход вверх уже на экране. Здесь идея от реакции у края диапазона, а не от желания поймать тренд.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

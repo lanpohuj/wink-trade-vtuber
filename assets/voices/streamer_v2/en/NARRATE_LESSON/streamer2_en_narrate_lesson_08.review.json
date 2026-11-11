@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_08",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Bigger timeframe first, details second. Like opening the map before looking for your turn.",
+  "tts_text": "[thoughtful, relaxed] Bigger timeframe first, details second. Like opening the map before looking for your turn.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "96c04347002427a0c993f35a9397e67b3c4c424186b0f988f7026b72f6c89ab6",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_08.mp3",
+  "duration": 5.903563,
+  "sha256": "28563f1601d7818e13b2f08214298fe2a78923e0db005ec24dbe9af25bfd121a",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Bigger timeframe first, details second. Like opening the map before looking for your turn.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

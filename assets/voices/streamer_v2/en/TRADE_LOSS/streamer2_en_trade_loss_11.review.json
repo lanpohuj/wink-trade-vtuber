@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_loss_11",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Red registered. I'll take a calm look ahead, without promising to fix it all in one click.",
+  "tts_text": "[thoughtful, conversational] Red registered. I'll take a calm look ahead, without promising to fix it all in one click.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1441ec4aaf5624d010021272781c4f235a087ce1db7f453023073848c67ea4f6",
+  "delivery": "thoughtful, conversational",
+  "file": "en/TRADE_LOSS/streamer2_en_trade_loss_11.mp3",
+  "duration": 5.51175,
+  "sha256": "2c8d5bb765cfe8f9b4f5a816b0c86d9f6651ea6413c05ed5a5477de12b37482b",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Red registered. I'll take a calm look ahead, without promising to fix it all in one click.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

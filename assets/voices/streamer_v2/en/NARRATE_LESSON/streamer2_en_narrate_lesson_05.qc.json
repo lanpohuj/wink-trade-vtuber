@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_05",
+  "sha256": "121d2a84ed47230a89fa5fe61e0fb992c11a1dbdf8b0b92a77123368e4e44c17",
+  "expected": "The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+  "transcript": "The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08535,
+    "peak": 0.54226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.18,
+    "sha256": "121d2a84ed47230a89fa5fe61e0fb992c11a1dbdf8b0b92a77123368e4e44c17"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " The sneaky thought is that you have to catch it. The chart has no idea we're feeling impatient."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

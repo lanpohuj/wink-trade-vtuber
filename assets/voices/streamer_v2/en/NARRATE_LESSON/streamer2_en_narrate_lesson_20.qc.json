@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_20",
+  "sha256": "371db205f790d046808afe34b1d94e7ebc941f1cf536b85a1cc20d059cef5b1a",
+  "expected": "In a range, I watch the edge reaction. Just saying price is low isn't enough of an explanation.",
+  "transcript": "In a range, I watched the edge reaction. Just saying price is low isn't enough of an explanation.",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08669,
+    "peak": 0.42987,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.298,
+    "sha256": "371db205f790d046808afe34b1d94e7ebc941f1cf536b85a1cc20d059cef5b1a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " In a range, I watched the edge reaction. Just saying price is low isn't enough of an explanation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

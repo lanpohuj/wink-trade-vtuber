@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_13",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Посмотрим ещё один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет.",
+  "tts_text": "[curious, conversational] Посмотрим ещё один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a840dd8ed75e9661aeef96664b42edff55213c573af0d9f9c541e51b8c61d2a8",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_13.mp3",
+  "duration": 5.773,
+  "sha256": "572d8679b0a1aedc38d48248cf4944c071b1a4a9934cefd25001d22031e59ea8",
+  "request_payload": {
+    "text": "[curious, conversational] Посмотрим ещё один график. Мне нравится иметь выбор, а не делать вид, что других вариантов нет.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_02",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down trade is running. We got confirmation after the pullback; now let's watch the actual close.",
+  "tts_text": "[bright, conversational] The down trade is running. We got confirmation after the pullback; now let's watch the actual close.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c1bbb7d50764d51c6a8795af80ff57589eb5c7439902266cd6d541ad2756678e",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_02.mp3",
+  "duration": 5.877438,
+  "sha256": "33df3c22c6ec383a6e4e17aac0314c263adc4618652abe56419b544824c6121f",
+  "request_payload": {
+    "text": "[bright, conversational] The down trade is running. We got confirmation after the pullback; now let's watch the actual close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

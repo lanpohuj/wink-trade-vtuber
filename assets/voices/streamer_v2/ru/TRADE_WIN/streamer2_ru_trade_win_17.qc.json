@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_17",
+  "sha256": "5670d734e7c69dc9909e554b90cad3f02be7f438fea3a3995f503b63ee4c9cff",
+  "expected": "Окей, эта сделка закрыта в плюс. Приятно, спорить не буду! Дальше смотрим уже новую ситуацию.",
+  "transcript": "Окей. Это сделка закрыта в плюс. Приятно спорить не буду. Дальше смотрим уже новую ситуацию.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.314,
+    "rms": 0.08234,
+    "peak": 0.34203,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.094,
+    "sha256": "5670d734e7c69dc9909e554b90cad3f02be7f438fea3a3995f503b63ee4c9cff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Окей. Это сделка закрыта в плюс. Приятно спорить не буду."
+    },
+    {
+      "start": 4.76,
+      "end": 7.28,
+      "text": " Дальше смотрим уже новую ситуацию."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

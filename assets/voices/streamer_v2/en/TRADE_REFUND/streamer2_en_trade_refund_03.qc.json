@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_03",
+  "sha256": "1ca8f5fc7cc430bb290b8931fd1a49f470944484bcf73c0d74a4fe5bdde57196",
+  "expected": "Neutral result, stake returned. A quiet ending for this trade.",
+  "transcript": "Neutral result. Stake returned. A quiet ending for this trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.07398,
+    "peak": 0.61377,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.1,
+    "sha256": "1ca8f5fc7cc430bb290b8931fd1a49f470944484bcf73c0d74a4fe5bdde57196"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Neutral result. Stake returned. A quiet ending for this trade."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

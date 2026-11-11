@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_24",
+  "sha256": "91420e97140e9a273a9dbf8ae5c45982dcc68a9d3131210586ae384cba459053",
+  "expected": "The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it.",
+  "transcript": "The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08303,
+    "peak": 0.586,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.204,
+    "sha256": "91420e97140e9a273a9dbf8ae5c45982dcc68a9d3131210586ae384cba459053"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

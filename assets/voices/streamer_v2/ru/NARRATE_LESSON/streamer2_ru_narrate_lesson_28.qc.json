@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_lesson_28",
+  "sha256": "605c85fec9721aa8e5e0ee38e3c19f6f7e0ac241a6f1e387680e278a7fa9dd34",
+  "expected": "Я не ускоряю вход ради красивой картинки в эфире. Лучше объясню, чего сейчас жду.",
+  "transcript": "Я не ускоряю вход ради красивой картинки в эфире. Лучше объясню, чего сейчас жду.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07544,
+    "peak": 0.32073,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "605c85fec9721aa8e5e0ee38e3c19f6f7e0ac241a6f1e387680e278a7fa9dd34"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Я не ускоряю вход ради красивой картинки в эфире."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Лучше объясню, чего сейчас жду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

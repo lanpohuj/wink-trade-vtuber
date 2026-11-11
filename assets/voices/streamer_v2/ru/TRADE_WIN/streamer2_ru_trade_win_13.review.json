@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_13",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Вот и результат: плюс! Можно пару секунд порадоваться, я разрешаю себе официально.",
+  "tts_text": "[happy, smiling] Вот и результат: плюс! Можно пару секунд порадоваться, я разрешаю себе официально.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "21f20331d0acb697ebe37fd1fa04fc9cbca8e9a9914a11524eefe2a3e83721c0",
+  "delivery": "happy, smiling",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_13.mp3",
+  "duration": 6.034187,
+  "sha256": "5b9d4fe38044444e45291711d2b6f54214579fc92103273e5cbb030a5e7ae5fb",
+  "request_payload": {
+    "text": "[happy, smiling] Вот и результат: плюс! Можно пару секунд порадоваться, я разрешаю себе официально.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

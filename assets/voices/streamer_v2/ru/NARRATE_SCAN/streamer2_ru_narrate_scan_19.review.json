@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_19",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "С графиком как с перепиской: вырвать одно сообщение из контекста — и уже совсем другая история.",
+  "tts_text": "[curious, conversational] С графиком как с перепиской: вырвать одно сообщение из контекста — и уже совсем другая история.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b3d7611c697b984dc0a08d5e6e45375089b494e200ac823d8af86baab57cd495",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_19.mp3",
+  "duration": 6.008063,
+  "sha256": "00f3b310b3491b59d05448d40389017c55d1e4c02699b4a29a82051ffb8c9076",
+  "request_payload": {
+    "text": "[curious, conversational] С графиком как с перепиской: вырвать одно сообщение из контекста — и уже совсем другая история.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

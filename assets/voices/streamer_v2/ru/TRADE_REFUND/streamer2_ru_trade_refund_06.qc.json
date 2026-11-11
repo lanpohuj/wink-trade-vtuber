@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_refund_06",
+  "sha256": "e0b536462f11084bc02fca1a0d4d605c09a6bb9b108fc765387fd974be33c901",
+  "expected": "Так, здесь вернули ставку. Я этот итог не буду украшать словом «победа», он просто нейтральный.",
+  "transcript": "Так, здесь вернули ставку. Я этот эток не буду украшать словом победы, он просто нейтральный.",
+  "similarity": 0.96,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08111,
+    "peak": 0.34964,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "e0b536462f11084bc02fca1a0d4d605c09a6bb9b108fc765387fd974be33c901"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.44,
+      "text": " Так, здесь вернули ставку. Я этот эток не буду украшать словом победы, он просто нейтральный."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

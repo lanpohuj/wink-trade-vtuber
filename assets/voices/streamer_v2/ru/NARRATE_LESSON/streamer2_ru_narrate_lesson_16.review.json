@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_16",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Мне важно расстояние до ближайшего уровня. Направление может нравиться, а места для движения быть мало.",
+  "tts_text": "[friendly, conversational] Мне важно расстояние до ближайшего уровня. Направление может нравиться, а места для движения быть мало.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "54a17fda1ec87aebfa309874b80c163a28c80ae637666f0248b02da2f9a80c9f",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_16.mp3",
+  "duration": 6.164813,
+  "sha256": "efec41b29bb5be3c132f56f35588747116d1f3c642228788da51df3833134e63",
+  "request_payload": {
+    "text": "[friendly, conversational] Мне важно расстояние до ближайшего уровня. Направление может нравиться, а места для движения быть мало.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

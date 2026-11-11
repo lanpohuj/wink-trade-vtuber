@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_refund_06",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Так, здесь вернули ставку. Я этот итог не буду украшать словом «победа», он просто нейтральный.",
+  "tts_text": "[warm, conversational] Так, здесь вернули ставку. Я этот итог не буду украшать словом «победа», он просто нейтральный.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "db2a00b5a5d30d3e34bbc30ac2c39220e8ae30963a6082604250a147b670f0da",
+  "delivery": "warm, conversational",
+  "file": "ru/TRADE_REFUND/streamer2_ru_trade_refund_06.mp3",
+  "duration": 6.5305,
+  "sha256": "e0b536462f11084bc02fca1a0d4d605c09a6bb9b108fc765387fd974be33c901",
+  "request_payload": {
+    "text": "[warm, conversational] Так, здесь вернули ставку. Я этот итог не буду украшать словом «победа», он просто нейтральный.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

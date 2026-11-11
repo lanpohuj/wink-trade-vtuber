@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_01",
+  "sha256": "6cd915e129cdb62cc5077a96e0f7f370e89242e326acf89c16eaf8914309cd46",
+  "expected": "Так, сделка идёт. Всё, кнопку оставляем в покое, теперь смотрим, как закончится эта история.",
+  "transcript": "так сделка идет все кнопку оставляем в покое теперь смотрим как закончится эта история",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.07098,
+    "peak": 0.37221,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.108,
+    "sha256": "6cd915e129cdb62cc5077a96e0f7f370e89242e326acf89c16eaf8914309cd46"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.12,
+      "text": " так сделка идет все кнопку оставляем в покое теперь смотрим как закончится эта история"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

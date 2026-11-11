@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_06",
+  "sha256": "cc70ad9368432936cb5bd3bce2bfa7faab9589d230f4c1e0d1c78640e851e2a5",
+  "expected": "What do you notice first, chat: the price move or the levels? Everyone seems to have a different first look.",
+  "transcript": "What do you notice first, chat? The price move or the levels? Everyone seems to have a different first look.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.07783,
+    "peak": 0.54674,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.218,
+    "sha256": "cc70ad9368432936cb5bd3bce2bfa7faab9589d230f4c1e0d1c78640e851e2a5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.72,
+      "text": " What do you notice first, chat? The price move or the levels? Everyone seems to have a different first look."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

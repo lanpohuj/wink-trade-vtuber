@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_volatility_04",
+  "sha256": "06ab31f79e65dc68229929aa60cd91e68f8a5a3fcd663ae4ea5e1ea4d9b356d4",
+  "expected": "The pace really has changed here: the recent candles are wider. No need to get heroic.",
+  "transcript": "The pace really has changed here. The recent candles are wider. No need to get heroic.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.0783,
+    "peak": 0.37583,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.189,
+    "sha256": "06ab31f79e65dc68229929aa60cd91e68f8a5a3fcd663ae4ea5e1ea4d9b356d4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " The pace really has changed here. The recent candles are wider. No need to get heroic."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

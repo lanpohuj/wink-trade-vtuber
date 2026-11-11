@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_05",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Now there's a reason to say lovely! The trade closed green and the result's been checked.",
+  "tts_text": "[pleased, lively] Now there's a reason to say lovely! The trade closed green and the result's been checked.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "df5defba1f05935e337a05f94fb70c2d898fe24f0dcc85ea722e6b7f79321bbc",
+  "delivery": "pleased, lively",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_05.mp3",
+  "duration": 5.172125,
+  "sha256": "42b6c073e646c35ed370f64bab905c53606b8409b500193102f05b47c46a972d",
+  "request_payload": {
+    "text": "[pleased, lively] Now there's a reason to say lovely! The trade closed green and the result's been checked.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

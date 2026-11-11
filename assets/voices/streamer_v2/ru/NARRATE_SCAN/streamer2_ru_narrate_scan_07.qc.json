@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_07",
+  "sha256": "a6700159fb55d755edb52b7f6c2c727e549bc2ea0febf16ea214d65f3aedd9b0",
+  "expected": "Сначала направление, потом точка входа. Да, я люблю порядок, хотя по мне иногда и не скажешь.",
+  "transcript": "Сначала направление, потом точка входа. Да, я люблю порядок, хотя по мне иногда и не скажешь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08273,
+    "peak": 0.43539,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "a6700159fb55d755edb52b7f6c2c727e549bc2ea0febf16ea214d65f3aedd9b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " Сначала направление, потом точка входа."
+    },
+    {
+      "start": 2.6,
+      "end": 5.6000000000000005,
+      "text": " Да, я люблю порядок, хотя по мне иногда и не скажешь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_30",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "У меня тут маленькое расследование. Проверю график, а красивую речь оставлю на потом.",
+  "tts_text": "[warm, lightly playful] У меня тут маленькое расследование. Проверю график, а красивую речь оставлю на потом.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "93439171f15ab96b6a3a563813d25b30e339f3991fa338b1538f1b3a72a85864",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_30.mp3",
+  "duration": 5.2505,
+  "sha256": "bfee0c68f5ac40cf36e5bf813b77431a08116f164921f4204c475848dc3e7446",
+  "request_payload": {
+    "text": "[warm, lightly playful] У меня тут маленькое расследование. Проверю график, а красивую речь оставлю на потом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

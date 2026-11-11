@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_19",
+  "sha256": "5edf69fa73d940a98c1d8fbe6668349c744a120b20d336c3feb427b2e5855e31",
+  "expected": "Let's give the setup its time. We don't need to rename it after every candle movement.",
+  "transcript": "Let's give the setup its time. We don't need to rename it after every candle movement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08699,
+    "peak": 0.4728,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "5edf69fa73d940a98c1d8fbe6668349c744a120b20d336c3feb427b2e5855e31"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Let's give the setup its time. We don't need to rename it after every candle movement."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

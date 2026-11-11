@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_10",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "No talking the chart into it now. The trade's open; we're watching what actually happens.",
+  "tts_text": "[curious, conversational] No talking the chart into it now. The trade's open; we're watching what actually happens.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8e1dc6d75cdb9c5918bc952d0a093ae48102545ce4b74c46822429cc6fffad95",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_10.mp3",
+  "duration": 5.30275,
+  "sha256": "a3040bd0b02f7ff2dd948a64de3d07dbc906c355b31fbb0e9b7b2a7eb125b1f4",
+  "request_payload": {
+    "text": "[curious, conversational] No talking the chart into it now. The trade's open; we're watching what actually happens.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

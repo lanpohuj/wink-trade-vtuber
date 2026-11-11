@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_24",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it.",
+  "tts_text": "[warm, lightly playful] The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3969c0d4ba56e88ffe7dfe9e26b3b493877ceb5af21fc3ca1661ad1c7e887a6c",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_24.mp3",
+  "duration": 5.903563,
+  "sha256": "91420e97140e9a273a9dbf8ae5c45982dcc68a9d3131210586ae384cba459053",
+  "request_payload": {
+    "text": "[warm, lightly playful] The trade's running on its chosen expiry. I'd rather leave a calm moment than talk just to fill it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

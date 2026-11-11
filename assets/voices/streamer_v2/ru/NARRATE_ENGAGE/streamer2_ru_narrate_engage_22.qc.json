@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_22",
+  "sha256": "3f0a0cb7b11de6ad0cbe6a77a01a8bc3e42ea24ca232b4197d5aa86575853ed5",
+  "expected": "Если что-то на экране мелковато, скажите. Мне хочется, чтобы вы видели смысл, а не просто красивые огоньки.",
+  "transcript": "Если что-то на экране мелковато, скажите, мне хочется, чтобы вы видели смысл, а не просто красивые огоньки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07192,
+    "peak": 0.32076,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.087,
+    "sha256": "3f0a0cb7b11de6ad0cbe6a77a01a8bc3e42ea24ca232b4197d5aa86575853ed5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Если что-то на экране мелковато, скажите, мне хочется, чтобы вы видели смысл, а не просто красивые огоньки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

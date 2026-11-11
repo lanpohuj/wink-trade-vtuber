@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_15",
+  "sha256": "c1b09f8dd819b80c98466ae0837b9bb2ad298258a4f814e90a3c28b5eb42966a",
+  "expected": "Заходите без стеснения. Вопрос «а почему?» здесь вообще один из самых полезных.",
+  "transcript": "Заходите без стеснения. Вопрос, а почему? Здесь вообще один из самых полезных.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07917,
+    "peak": 0.35069,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "c1b09f8dd819b80c98466ae0837b9bb2ad298258a4f814e90a3c28b5eb42966a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Заходите без стеснения. Вопрос, а почему? Здесь вообще один из самых полезных."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

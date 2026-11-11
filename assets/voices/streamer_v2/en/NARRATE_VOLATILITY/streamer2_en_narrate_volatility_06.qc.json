@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_volatility_06",
+  "sha256": "6e048f180ee5552f5e59b1eb35fe4e3b9547c0b280b37b74eebc9369ee47864a",
+  "expected": "Moves are stronger than usual, judging by the candle ranges. Speed alone isn't a reason for excitement.",
+  "transcript": "Moves are stronger than usual, judging by the candle ranges. Speed alone isn't a reason for excitement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.687,
+    "rms": 0.08137,
+    "peak": 0.42273,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.147,
+    "sha256": "6e048f180ee5552f5e59b1eb35fe4e3b9547c0b280b37b74eebc9369ee47864a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Moves are stronger than usual, judging by the candle ranges."
+    },
+    {
+      "start": 4.0,
+      "end": 6.6000000000000005,
+      "text": " Speed alone isn't a reason for excitement."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

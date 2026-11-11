@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_13",
+  "sha256": "199922818f968f0967096caa0d972142c295bc3a28f70d932f4f4caa2c48fe12",
+  "expected": "There, I'm in down! The range boundary gave confirmation. Now we watch, no victory speech just yet.",
+  "transcript": "There! I'm in down! The range boundary gave confirmation. Now we watch! No victory speech just yet!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.445,
+    "rms": 0.08461,
+    "peak": 0.37784,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.245,
+    "sha256": "199922818f968f0967096caa0d972142c295bc3a28f70d932f4f4caa2c48fe12"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.34,
+      "text": " There! I'm in down! The range boundary gave confirmation. Now we watch! No victory speech just yet!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

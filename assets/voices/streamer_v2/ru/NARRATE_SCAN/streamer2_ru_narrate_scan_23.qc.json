@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_scan_23",
+  "sha256": "eb4e24f4ce6caea1962eea2c8c9b0cc30fe6d1cd3891331e924424ffd23e7ca3",
+  "expected": "Дайте мне собрать пазл. Я знаю, кнопка большая и красивая, но это не аргумент для входа.",
+  "transcript": "дайте мне собрать пазл я знаю кнопка большая и красивая но это не аргумент для входа",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08452,
+    "peak": 0.35646,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "eb4e24f4ce6caea1962eea2c8c9b0cc30fe6d1cd3891331e924424ffd23e7ca3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " дайте мне собрать пазл"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " я знаю кнопка большая и красивая"
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " но это не аргумент для входа"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

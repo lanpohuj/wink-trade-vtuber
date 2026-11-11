@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_13",
+  "sha256": "be8f9f8ef370d27b6be5a4e1e8c8cde4ab6fd9e92e0b38f60bffec50fb409193",
+  "expected": "После пробоя интересен возврат к уровню. Мне важнее, как его удерживают, чем сам эффектный рывок.",
+  "transcript": "После пробоя интересен возвратку уровню. Мне важнее, как его удерживают, чем сам эффектный рывок.",
+  "similarity": 0.994,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08807,
+    "peak": 0.4005,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.133,
+    "sha256": "be8f9f8ef370d27b6be5a4e1e8c8cde4ab6fd9e92e0b38f60bffec50fb409193"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " После пробоя интересен возвратку уровню. Мне важнее, как его удерживают, чем сам эффектный рывок."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

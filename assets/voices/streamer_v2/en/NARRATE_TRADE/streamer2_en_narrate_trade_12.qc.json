@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_12",
+  "sha256": "ef932898dbc96b4835fb8168aeb8f4da0b08e7d816a8d8fdd77a769e6bad4638",
+  "expected": "No result here yet. If I sound too triumphant, feel free to remind me about the clock.",
+  "transcript": "No result here yet. If I sound too triumphant, feel free to remind me about the clock.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.0805,
+    "peak": 0.35492,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.089,
+    "sha256": "ef932898dbc96b4835fb8168aeb8f4da0b08e7d816a8d8fdd77a769e6bad4638"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " No result here yet. If I sound too triumphant, feel free to remind me about the clock."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

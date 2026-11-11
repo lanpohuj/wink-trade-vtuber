@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_13",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "After a breakout, the return to the level matters. I care more about the hold than the dramatic jump.",
+  "tts_text": "[friendly, conversational] After a breakout, the return to the level matters. I care more about the hold than the dramatic jump.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d4f52134247f8cda05b77e47608ca5c4f18de7de1d92aab4bcbf18aa973c0c0c",
+  "delivery": "friendly, conversational",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_13.mp3",
+  "duration": 5.825188,
+  "sha256": "f17be96f915bc33f779523f7951ff4d91c6df13cea7944b16fff5b3c7c1dd932",
+  "request_payload": {
+    "text": "[friendly, conversational] After a breakout, the return to the level matters. I care more about the hold than the dramatic jump.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_16",
+  "sha256": "2e4a38b3b5df6f9c53685afd6c3c0e585cb8a3f1f42d103d92f3bcef96555c9d",
+  "expected": "Two minutes for this chapter. Better to follow the overall move than argue with each candle.",
+  "transcript": "Two minutes for this chapter. Better to follow the overall move than argue with each candle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08615,
+    "peak": 0.47174,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.159,
+    "sha256": "2e4a38b3b5df6f9c53685afd6c3c0e585cb8a3f1f42d103d92f3bcef96555c9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Two minutes for this chapter. Better to follow the overall move than argue with each candle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

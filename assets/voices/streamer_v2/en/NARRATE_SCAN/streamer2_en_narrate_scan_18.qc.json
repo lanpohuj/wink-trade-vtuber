@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_18",
+  "sha256": "1066a66cf1179094a58f10f5dabd348e633961b109d56a8b3cec00a8c29918fc",
+  "expected": "Checking direction and the room around the level. Picking a side is only part of it.",
+  "transcript": "Checking direction in the room around the level picking a side is only part of it",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08527,
+    "peak": 0.38613,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.287,
+    "sha256": "1066a66cf1179094a58f10f5dabd348e633961b109d56a8b3cec00a8c29918fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.44,
+      "text": " Checking direction in the room around the level picking a side is only part of it"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

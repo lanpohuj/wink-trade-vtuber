@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_engage_16",
+  "sha256": "c54c9a972005cd18b94e723971099e719793e0dbefd744af8b9c6fa7d4d4edd6",
+  "expected": "Do you like quick explanations or a bit more detail? I'm trying to find your pace.",
+  "transcript": "Do you like quick explanations or a bit more detail? I'm trying to find your pace.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08001,
+    "peak": 0.41423,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.292,
+    "sha256": "c54c9a972005cd18b94e723971099e719793e0dbefd744af8b9c6fa7d4d4edd6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.16,
+      "text": " Do you like quick explanations or a bit more detail?"
+    },
+    {
+      "start": 3.16,
+      "end": 5.16,
+      "text": " I'm trying to find your pace."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

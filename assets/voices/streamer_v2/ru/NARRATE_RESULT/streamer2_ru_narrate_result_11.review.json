@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_11",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "После этого шага вернулась база — пятьдесят. Сейчас спокойно пересоберу картину и начну проверку с чистого листа.",
+  "tts_text": "[composed, gentle] После этого шага вернулась база — пятьдесят. Сейчас спокойно пересоберу картину и начну проверку с чистого листа.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5828e24bfe3e3007745c8e2eb995c93015061b25264ad6ec89e4f2d42ac1fba5",
+  "delivery": "composed, gentle",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_11.mp3",
+  "duration": 6.68725,
+  "sha256": "201c26c731949c804f2f2bc0e85d9e01850b6cf10976b054b9fd7545d0340f57",
+  "request_payload": {
+    "text": "[composed, gentle] После этого шага вернулась база — пятьдесят. Сейчас спокойно пересоберу картину и начну проверку с чистого листа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

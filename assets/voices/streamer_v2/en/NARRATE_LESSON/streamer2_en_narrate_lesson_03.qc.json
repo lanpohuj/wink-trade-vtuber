@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_03",
+  "sha256": "c27c5a98f127872c9b311a76501b35143c14e97a98597b07211f10fc866fa111",
+  "expected": "What matters is how price behaves at a level. Drawing a pretty line is only the beginning.",
+  "transcript": "What matters is how price behaves at a level. Drawing a pretty line is only the beginning.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08288,
+    "peak": 0.39016,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.283,
+    "sha256": "c27c5a98f127872c9b311a76501b35143c14e97a98597b07211f10fc866fa111"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " What matters is how price behaves at a level. Drawing a pretty line is only the beginning."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

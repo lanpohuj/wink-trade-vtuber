@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_03",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сейчас самое сложное — просто дать сделке закончиться. Таймер от моего взгляда быстрее не побежит.",
+  "tts_text": "[warm, lightly playful] Сейчас самое сложное — просто дать сделке закончиться. Таймер от моего взгляда быстрее не побежит.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5bcd868e9026cb3599d77af82cb0d7adc7d7d4f7b89c066340073b771b157842",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_03.mp3",
+  "duration": 6.008063,
+  "sha256": "f9f8eafac4872b48cf7ce3ef3b03db49f85d5f2f3b10b9aad604808d4e3ca2a1",
+  "request_payload": {
+    "text": "[warm, lightly playful] Сейчас самое сложное — просто дать сделке закончиться. Таймер от моего взгляда быстрее не побежит.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

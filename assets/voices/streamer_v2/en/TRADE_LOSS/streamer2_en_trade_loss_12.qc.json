@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_12",
+  "sha256": "f3d08ea670c288a156ed76714439a40d877cfa4f40a4b70b6129b3fb94fe4213",
+  "expected": "That didn't close our way, chat. The loss is counted honestly; next we look at conditions, not emotions.",
+  "transcript": "That didn't close our way, chat. The loss is counted honestly. Next we look at conditions, not emotions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.07859,
+    "peak": 0.39152,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.251,
+    "sha256": "f3d08ea670c288a156ed76714439a40d877cfa4f40a4b70b6129b3fb94fe4213"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "text": " That didn't close our way, chat. The loss is counted honestly. Next we look at conditions, not emotions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

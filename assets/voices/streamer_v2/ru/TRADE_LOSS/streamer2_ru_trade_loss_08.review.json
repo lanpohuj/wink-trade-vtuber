@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_08",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Эх, минус на закрытии. Сейчас мне важнее сохранить нормальный разбор, чем срочно доказать графику свою правоту.",
+  "tts_text": "[thoughtful, conversational] Эх, минус на закрытии. Сейчас мне важнее сохранить нормальный разбор, чем срочно доказать графику свою правоту.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "73854021529795d1d019fd976c215dda0ea8c656b457c4c9e821ce58403e2546",
+  "delivery": "thoughtful, conversational",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_08.mp3",
+  "duration": 7.209688,
+  "sha256": "48c28d1793a20b4c05f3053fade83bfc36f0af68d2c3d1668c78e5570096f5d3",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Эх, минус на закрытии. Сейчас мне важнее сохранить нормальный разбор, чем срочно доказать графику свою правоту.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

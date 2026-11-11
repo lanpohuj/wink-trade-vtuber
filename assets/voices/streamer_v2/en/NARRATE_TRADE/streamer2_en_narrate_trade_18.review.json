@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_18",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "I won't narrate every tiny wobble. Let's see how it actually ends first.",
+  "tts_text": "[warm, lightly playful] I won't narrate every tiny wobble. Let's see how it actually ends first.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b30088b2c874bc987cb62d83b9b3398b841810774c23ce3fef998c802ba70967",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_18.mp3",
+  "duration": 4.545187,
+  "sha256": "8f97fcd1d2552e6014b209dc5b79b4dc5b75d8f03f332c67a3c9f817cb6f36b3",
+  "request_payload": {
+    "text": "[warm, lightly playful] I won't narrate every tiny wobble. Let's see how it actually ends first.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

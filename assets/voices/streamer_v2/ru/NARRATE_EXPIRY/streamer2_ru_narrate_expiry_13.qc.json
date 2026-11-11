@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_13",
+  "sha256": "f495ea8a8d56cb8938ee969decbb0fa82a47a2e3c1cabf6b27bdb2c1df03fd9a",
+  "expected": "Здесь две минуты, чат. Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик.",
+  "transcript": "Здесь две минуты, Чат. Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.87,
+    "rms": 0.07912,
+    "peak": 0.41981,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.11,
+    "sha256": "f495ea8a8d56cb8938ee969decbb0fa82a47a2e3c1cabf6b27bdb2c1df03fd9a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Здесь две минуты, Чат."
+    },
+    {
+      "start": 2.0,
+      "end": 7.0,
+      "text": " Смотрю более широкий участок движения, а не пытаюсь ловить каждый маленький тик."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

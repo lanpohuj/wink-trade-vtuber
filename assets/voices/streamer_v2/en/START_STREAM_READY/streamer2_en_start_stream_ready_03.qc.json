@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_start_stream_ready_03",
+  "sha256": "6dcfad70bf1d06b035e8dfceb6cdfa5e9ab7370efccb64b0fb91f43d9e9b13dc",
+  "expected": "Hey, chat! Lovely to see you. Charts together again: I'll explain, you ask, and we'll work through it.",
+  "transcript": "Hey chat! Lovely to see you! Charts together again. I'll explain you ask and we'll work through it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.07889,
+    "peak": 0.40139,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.189,
+    "sha256": "6dcfad70bf1d06b035e8dfceb6cdfa5e9ab7370efccb64b0fb91f43d9e9b13dc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "text": " Hey chat! Lovely to see you! Charts together again. I'll explain you ask and we'll work through it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

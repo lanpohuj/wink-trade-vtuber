@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_06",
+  "sha256": "4a4ea5fd523fa2f93104600f736f9f55150ea0bc6bda7102c0f1af5b8736dc74",
+  "expected": "The stake came back here. I won't dress that up as a win; it's a neutral result.",
+  "transcript": "The state came back here. I won't dress that up as a win. It's a neutral result.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08473,
+    "peak": 0.6332,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.251,
+    "sha256": "4a4ea5fd523fa2f93104600f736f9f55150ea0bc6bda7102c0f1af5b8736dc74"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " The state came back here. I won't dress that up as a win. It's a neutral result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

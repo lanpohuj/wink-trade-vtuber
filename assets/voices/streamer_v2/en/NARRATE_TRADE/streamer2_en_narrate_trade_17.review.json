@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_17",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "I don't have the result yet; it's still running. I can wait and check it properly, though.",
+  "tts_text": "[conversational, smiling] I don't have the result yet; it's still running. I can wait and check it properly, though.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c93ec32a2f3de4e1c1047598846a718b35a2f86ab0399c51c83eecfffbe7a046",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_17.mp3",
+  "duration": 5.564,
+  "sha256": "37938a926cf4920e84753101a9bedf556d9eff363409b3f06a456f8beaef5b39",
+  "request_payload": {
+    "text": "[conversational, smiling] I don't have the result yet; it's still running. I can wait and check it properly, though.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_07",
+  "sha256": "26faa683baa3621919a03f082ca9b83d95870da54d920c3373a949a69ecb5788",
+  "expected": "На эту сделку — тридцать секунд. Время выбрано под идею входа, не просто любимая цифра.",
+  "transcript": "На эту сделку, 30 секунд. Время выбрано под идею входа, не просто любимая цифра.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.295,
+    "rms": 0.07164,
+    "peak": 0.29438,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.095,
+    "sha256": "26faa683baa3621919a03f082ca9b83d95870da54d920c3373a949a69ecb5788"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " На эту сделку, 30 секунд."
+    },
+    {
+      "start": 2.64,
+      "end": 6.28,
+      "text": " Время выбрано под идею входа, не просто любимая цифра."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

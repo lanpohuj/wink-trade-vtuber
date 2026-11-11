@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_20",
+  "sha256": "329ed9f580d8a63d285cb8ce10bfdc6dc68f76c6e0472251ec3ef88228e98a59",
+  "expected": "Кто только подключился, не надо догонять всё сразу. По ходу объясню, что сейчас делаем.",
+  "transcript": "Кто только подключился, не надо догонять всё сразу. По ходу объясню, что сейчас делаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08101,
+    "peak": 0.42101,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "329ed9f580d8a63d285cb8ce10bfdc6dc68f76c6e0472251ec3ef88228e98a59"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Кто только подключился, не надо догонять всё сразу. По ходу объясню, что сейчас делаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

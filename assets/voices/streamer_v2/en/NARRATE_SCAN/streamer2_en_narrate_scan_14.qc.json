@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_14",
+  "sha256": "670c407aa1ecc1c12b7ac0f3ee7a36f9b083fd6fb1b71414ef7fac57417dcee7",
+  "expected": "Looking for a clear situation, not the loudest candle. There's already plenty of noise without me.",
+  "transcript": "Looking for a clear situation not the loudest candle. There's already plenty of noise without me",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07758,
+    "peak": 0.35346,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.253,
+    "sha256": "670c407aa1ecc1c12b7ac0f3ee7a36f9b083fd6fb1b71414ef7fac57417dcee7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.42,
+      "text": " Looking for a clear situation not the loudest candle. There's already plenty of noise without me"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_15",
+  "sha256": "d56675a29ea7e03253644c0ff6c694574413d9537d4239f5a53eceda65b488ad",
+  "expected": "Don't be shy about asking. Why is honestly one of the most useful questions here.",
+  "transcript": "Don't be shy about asking. Why is honestly one of the most useful questions here?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08599,
+    "peak": 0.4051,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.268,
+    "sha256": "d56675a29ea7e03253644c0ff6c694574413d9537d4239f5a53eceda65b488ad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Don't be shy about asking. Why is honestly one of the most useful questions here?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

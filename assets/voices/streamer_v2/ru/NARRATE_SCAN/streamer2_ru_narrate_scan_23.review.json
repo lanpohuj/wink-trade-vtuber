@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_23",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Дайте мне собрать пазл. Я знаю, кнопка большая и красивая, но это не аргумент для входа.",
+  "tts_text": "[conversational, smiling] Дайте мне собрать пазл. Я знаю, кнопка большая и красивая, но это не аргумент для входа.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d51bbac796c51d05ea90b2df0c640b4e7d695b388b752cdfb16b37b242c917bd",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_23.mp3",
+  "duration": 6.217062,
+  "sha256": "eb4e24f4ce6caea1962eea2c8c9b0cc30fe6d1cd3891331e924424ffd23e7ca3",
+  "request_payload": {
+    "text": "[conversational, smiling] Дайте мне собрать пазл. Я знаю, кнопка большая и красивая, но это не аргумент для входа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

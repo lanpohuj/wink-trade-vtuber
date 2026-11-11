@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_trade_09",
+  "sha256": "b282bd32d513668fda578208fbca499140e8aae31450dc3347b1f8cfad94f6fb",
+  "expected": "Смотрю до закрытия. Одна удачная секунда по дороге ещё не ставит точку в сделке.",
+  "transcript": "Смотрю до закрытия. Одна удачная секунда по дороге еще не ставит точку в сделке.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.07646,
+    "peak": 0.32709,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.154,
+    "sha256": "b282bd32d513668fda578208fbca499140e8aae31450dc3347b1f8cfad94f6fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.76,
+      "text": " Смотрю до закрытия."
+    },
+    {
+      "start": 1.76,
+      "end": 5.36,
+      "text": " Одна удачная секунда по дороге еще не ставит точку в сделке."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

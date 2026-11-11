@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_05",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Ну вот, эта не сложилась — минус. Неприятный момент, но превращать его в драму я не хочу.",
+  "tts_text": "[thoughtful, conversational] Ну вот, эта не сложилась — минус. Неприятный момент, но превращать его в драму я не хочу.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "93c64074e37d626d464510e57d09a6f19559a3561bedf9c3cb2b0003e02e8df8",
+  "delivery": "thoughtful, conversational",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_05.mp3",
+  "duration": 6.5305,
+  "sha256": "087d9325e589d74672ccc7ea6954b96d1d235acd0efe546e6692f9e90a9c194d",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Ну вот, эта не сложилась — минус. Неприятный момент, но превращать его в драму я не хочу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_05",
+  "sha256": "74c9af8a814fdfeb2ae052663b8077bb52834c508944fbfbdf587e2ad9a85713",
+  "expected": "New pair on screen. I'll figure it out first and save the excitement for a reason.",
+  "transcript": "New pair on screen. I'll figure it out first and save the excitement for a reason.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08154,
+    "peak": 0.41509,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.088,
+    "sha256": "74c9af8a814fdfeb2ae052663b8077bb52834c508944fbfbdf587e2ad9a85713"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " New pair on screen. I'll figure it out first and save the excitement for a reason."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

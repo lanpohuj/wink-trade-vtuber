@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_loss_02",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Так, эту закрыли в минус. Расстраиваться можно, спорить с уже закрытой сделкой — занятие бесполезное.",
+  "tts_text": "[thoughtful, conversational] Так, эту закрыли в минус. Расстраиваться можно, спорить с уже закрытой сделкой — занятие бесполезное.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "635c8d3ec758ce3f075385e8c2fb8975d303be6416ff8315c87688324647ef55",
+  "delivery": "thoughtful, conversational",
+  "file": "ru/TRADE_LOSS/streamer2_ru_trade_loss_02.mp3",
+  "duration": 7.314187,
+  "sha256": "73e2e0292382e84f44d41a03bf1a568eb84ae1e86833b312d75023eaf12ffbfd",
+  "request_payload": {
+    "text": "[thoughtful, conversational] Так, эту закрыли в минус. Расстраиваться можно, спорить с уже закрытой сделкой — занятие бесполезное.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

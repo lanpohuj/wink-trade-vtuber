@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_03",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Вот и следующий кандидат. Посмотрим спокойно, без любви с первого взгляда к одной свече.",
+  "tts_text": "[warm, lightly playful] Вот и следующий кандидат. Посмотрим спокойно, без любви с первого взгляда к одной свече.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a1066dc6f53f2c9d3abf95264006f1b9306272e96f9aac23ab8ce25bee788a13",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_03.mp3",
+  "duration": 5.642375,
+  "sha256": "a493ec41a4d0fb6c5b3407e970a7a18720d94050e1460da17d3013673bc4cbd8",
+  "request_payload": {
+    "text": "[warm, lightly playful] Вот и следующий кандидат. Посмотрим спокойно, без любви с первого взгляда к одной свече.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

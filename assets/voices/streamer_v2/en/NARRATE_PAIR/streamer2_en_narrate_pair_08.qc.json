@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_08",
+  "sha256": "8ea590a848d393e95d3000028e8a39e7b23e3b8ea9e1a7a9ae9f2a396394c9cc",
+  "expected": "Another option, let's look. I'm choosing a setup, not pledging loyalty to the first pair.",
+  "transcript": "Another option let's look I'm choosing a setup not pledging loyalty to the first pair",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07904,
+    "peak": 0.45996,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.207,
+    "sha256": "8ea590a848d393e95d3000028e8a39e7b23e3b8ea9e1a7a9ae9f2a396394c9cc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.66,
+      "text": " Another option let's look I'm choosing a setup not pledging loyalty to the first pair"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

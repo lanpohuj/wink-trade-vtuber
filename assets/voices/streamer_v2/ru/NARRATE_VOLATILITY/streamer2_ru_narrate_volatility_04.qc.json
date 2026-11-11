@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_volatility_04",
+  "sha256": "a9fbd52c539275125ea49f6399bf8dcf621675dbb5cf21d06ef2dc27c2ef36a6",
+  "expected": "Вот сейчас темп действительно изменился: последние свечи заметно шире. Так что без лишнего геройства.",
+  "transcript": "Вот сейчас темб действительно изменился. Последние свечи заметно шире, так что без лишнего герояства.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08459,
+    "peak": 0.41508,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.077,
+    "sha256": "a9fbd52c539275125ea49f6399bf8dcf621675dbb5cf21d06ef2dc27c2ef36a6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Вот сейчас темб действительно изменился. Последние свечи заметно шире, так что без лишнего герояства."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

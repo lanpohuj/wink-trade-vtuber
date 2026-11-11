@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_03",
+  "sha256": "c187aadd78bff67f432c7294d08b9fbbcf11effbda24f11bba0d7e76ed81fccc",
+  "expected": "Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами.",
+  "transcript": "Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08195,
+    "peak": 0.32796,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.117,
+    "sha256": "c187aadd78bff67f432c7294d08b9fbbcf11effbda24f11bba0d7e76ed81fccc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Если потеряли мысль, спросите. Я лучше объясню по-человечески, чем оставлю вас один на один с терминами."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

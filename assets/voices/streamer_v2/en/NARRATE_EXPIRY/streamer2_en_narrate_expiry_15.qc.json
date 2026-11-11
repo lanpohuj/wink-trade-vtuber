@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_15",
+  "sha256": "98d64d1ba36258b1bbef179ceb8e7711456e9273f26676aaf9c8d7a0335d48fb",
+  "expected": "This is a two-minute trade. More time, but the result still waits until the actual close.",
+  "transcript": "This is a two-minute trade. More time. But the result still waits until the actual close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08298,
+    "peak": 0.41529,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.304,
+    "sha256": "98d64d1ba36258b1bbef179ceb8e7711456e9273f26676aaf9c8d7a0335d48fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " This is a two-minute trade. More time. But the result still waits until the actual close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

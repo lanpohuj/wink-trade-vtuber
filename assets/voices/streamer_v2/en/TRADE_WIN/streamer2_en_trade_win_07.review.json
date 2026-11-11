@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_07",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green close, chat! Thanks for watching that one all the way through with me.",
+  "tts_text": "[happy, smiling] Green close, chat! Thanks for watching that one all the way through with me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f0698b83053b233043ceaa2885942f3eb208f9b08718ba3cba1e03bbf8bc1606",
+  "delivery": "happy, smiling",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_07.mp3",
+  "duration": 4.910938,
+  "sha256": "09407ed3e212301ad4b7578a122843555bd0138d7832ec1ed1789ff8d8ff5d66",
+  "request_payload": {
+    "text": "[happy, smiling] Green close, chat! Thanks for watching that one all the way through with me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

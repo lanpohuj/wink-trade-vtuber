@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_04",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down. It's the move out of the pullback I'm interested in; confirmation came and the trade's on screen.",
+  "tts_text": "[confident, lively] Opened down. It's the move out of the pullback I'm interested in; confirmation came and the trade's on screen.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "dd36aa17c6b1c1ec288e88de1001dbd39bb5d9d4bdabfe7bbe2560b87a810497",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_04.mp3",
+  "duration": 6.68725,
+  "sha256": "285e46a558562e103973cbf9e215145a25bc8a099f8c41b99d2c791bac7f2cb8",
+  "request_payload": {
+    "text": "[confident, lively] Opened down. It's the move out of the pullback I'm interested in; confirmation came and the trade's on screen.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

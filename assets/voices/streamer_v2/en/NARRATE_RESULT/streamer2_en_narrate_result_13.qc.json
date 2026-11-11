@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_13",
+  "sha256": "8be47159ee32902aa981e2e1d4182e45b765083c8eb7d2b4947fbfb728f9d264",
+  "expected": "That's a frustrating finish: positive just before the close, then a tiny move left it red.",
+  "transcript": "That's a frustrating finish. Positive just before the close, then a tiny move left it red.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.07243,
+    "peak": 0.36428,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "8be47159ee32902aa981e2e1d4182e45b765083c8eb7d2b4947fbfb728f9d264"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " That's a frustrating finish. Positive just before the close, then a tiny move left it red."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

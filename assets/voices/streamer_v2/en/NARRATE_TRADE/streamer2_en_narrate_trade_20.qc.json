@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_20",
+  "sha256": "4e0c5644b6b6ecd18b4d877c6fc48e340f18c8debf61f1479781c158ee6e6a79",
+  "expected": "The trade's still on screen and I'm following it. I'll call the result when there is one, no future spoilers.",
+  "transcript": "The trade's still on screen and I'm following it. I'll call the result when there is one. No future spoilers.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08273,
+    "peak": 0.55674,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.22,
+    "sha256": "4e0c5644b6b6ecd18b4d877c6fc48e340f18c8debf61f1479781c158ee6e6a79"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " The trade's still on screen and I'm following it. I'll call the result when there is one. No future spoilers."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

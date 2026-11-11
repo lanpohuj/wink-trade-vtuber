@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_engage_06",
+  "sha256": "12d6ac5f97bc82fa42124e4dfbe6c63fafdc127d6212d75aab3ee217550609ed",
+  "expected": "Чат, а вы сначала замечаете движение цены или сразу ищете уровни? У всех, кажется, свой первый взгляд.",
+  "transcript": "Чат, а вас сначала замечаете движение цены, или сразу ищите уровни? У всех кажется свой первый взгляд.",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.922,
+    "rms": 0.08742,
+    "peak": 0.37464,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.122,
+    "sha256": "12d6ac5f97bc82fa42124e4dfbe6c63fafdc127d6212d75aab3ee217550609ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Чат, а вас сначала замечаете движение цены, или сразу ищите уровни?"
+    },
+    {
+      "start": 4.88,
+      "end": 6.88,
+      "text": " У всех кажется свой первый взгляд."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

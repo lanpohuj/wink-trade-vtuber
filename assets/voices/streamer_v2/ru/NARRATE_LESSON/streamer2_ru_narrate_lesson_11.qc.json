@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_11",
+  "sha256": "af1f34c63236704417b4462743057dfc79a839ae19ce0f02ada8927796c3fa6a",
+  "expected": "Откат и разворот иногда выглядят похоже. Поэтому одной свечой я эти вопросы не закрываю.",
+  "transcript": "Откаты развороты иногда выглядят похожи, поэтому одной свечой я эти вопросы не закрываю.",
+  "similarity": 0.966,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.0923,
+    "peak": 0.52929,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "af1f34c63236704417b4462743057dfc79a839ae19ce0f02ada8927796c3fa6a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Откаты развороты иногда выглядят похожи, поэтому одной свечой я эти вопросы не закрываю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

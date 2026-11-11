@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_16",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let's compare the timeframes first. I don't want a big conclusion from a tiny slice of the chart.",
+  "tts_text": "[curious, conversational] Let's compare the timeframes first. I don't want a big conclusion from a tiny slice of the chart.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "736481e32357cbce0947712e2f25b4e1def700226c19ae196f3831a30aac127a",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_16.mp3",
+  "duration": 6.008063,
+  "sha256": "aeaf480f00905be428618a08e2a444aa43ca07aeb140dad85414062a96394d87",
+  "request_payload": {
+    "text": "[curious, conversational] Let's compare the timeframes first. I don't want a big conclusion from a tiny slice of the chart.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

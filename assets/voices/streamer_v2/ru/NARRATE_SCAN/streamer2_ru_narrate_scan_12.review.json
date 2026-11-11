@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_12",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я лучше ещё раз сверю график. Открыть сделку быстро — не проблема, выбрать момент уже интереснее.",
+  "tts_text": "[warm, lightly playful] Я лучше ещё раз сверю график. Открыть сделку быстро — не проблема, выбрать момент уже интереснее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "26742fc164311456e138e3b4d7de2884d149ab005b8392264279f6d75c12709d",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_12.mp3",
+  "duration": 6.269312,
+  "sha256": "47a98f2a5ea5ab46ab0e75eca1dad1438438369fec92d08c3063cbb6405b71b6",
+  "request_payload": {
+    "text": "[warm, lightly playful] Я лучше ещё раз сверю график. Открыть сделку быстро — не проблема, выбрать момент уже интереснее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

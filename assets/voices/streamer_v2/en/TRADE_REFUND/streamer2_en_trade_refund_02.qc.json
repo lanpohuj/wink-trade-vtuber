@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_02",
+  "sha256": "b51448c08f1c4c069e78a38cc0729581ead9280d9abacf01f227014e252ff508",
+  "expected": "A refund here, chat. No victory speech or sad soundtrack; we just move on.",
+  "transcript": "Ah, refund here, chat. No victory speech or sad soundtrack. We just move on.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.0734,
+    "peak": 0.42532,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.35,
+    "sha256": "b51448c08f1c4c069e78a38cc0729581ead9280d9abacf01f227014e252ff508"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " Ah, refund here, chat. No victory speech or sad soundtrack. We just move on."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

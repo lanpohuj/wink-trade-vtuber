@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_expiry_06",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь полминуты, чат. Смотрим, как отработает именно выбранное окно, а не каждая отдельная секунда.",
+  "tts_text": "[warm, relaxed] Здесь полминуты, чат. Смотрим, как отработает именно выбранное окно, а не каждая отдельная секунда.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c7c38d16f063a5179af1c1eb3df484e320dd9e575f865235223e198e783a5a56",
+  "delivery": "warm, relaxed",
+  "file": "ru/NARRATE_EXPIRY/streamer2_ru_narrate_expiry_06.mp3",
+  "duration": 5.564,
+  "sha256": "53932d64d6652195c4ca60676ce6745117c7f1844024e93b4acf8a4a1b535de3",
+  "request_payload": {
+    "text": "[warm, relaxed] Здесь полминуты, чат. Смотрим, как отработает именно выбранное окно, а не каждая отдельная секунда.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

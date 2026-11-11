@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_pair_15",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьёзные отношения.",
+  "tts_text": "[warm, lightly playful] Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьёзные отношения.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "da68b5512560210a476bdcac79303c25f4a94abccd15d61a3c1ebe4bf65d7fec",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_PAIR/streamer2_ru_narrate_pair_15.mp3",
+  "duration": 5.328875,
+  "sha256": "f3abe775815c324d62f592278023df5ccd377f2d50bbd7954f95b2ed1b8f2588",
+  "request_payload": {
+    "text": "[warm, lightly playful] Так, новый актив. Сначала знакомство с графиком, потом уже какие-то серьёзные отношения.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

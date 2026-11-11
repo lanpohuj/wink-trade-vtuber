@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_engage_18",
+  "sha256": "2dfa017015b014b213328181cfec764c64c3621c7d097092eb0de77b64051ba4",
+  "expected": "Chat, do you prefer watching the short trades or unpacking the minute-long ones? Watching, not copying me.",
+  "transcript": "Chat, do you prefer watching the short trades or unpacking the minute-long ones? Watching, not copying me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.131,
+    "rms": 0.07457,
+    "peak": 0.38068,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.091,
+    "sha256": "2dfa017015b014b213328181cfec764c64c3621c7d097092eb0de77b64051ba4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Chat, do you prefer watching the short trades or unpacking the minute-long ones?"
+    },
+    {
+      "start": 5.0,
+      "end": 7.0,
+      "text": " Watching, not copying me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

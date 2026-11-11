@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_18",
+  "sha256": "38b2a5048a26412d9465998a32791f7cb01f2572cde6c3bef851e4ae4c51bef2",
+  "expected": "Green, chat! We can enjoy this result without making promises about the next chart.",
+  "transcript": "Green Chat, we can enjoy this result without making promises about the next chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0856,
+    "peak": 0.40703,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.139,
+    "sha256": "38b2a5048a26412d9465998a32791f7cb01f2572cde6c3bef851e4ae4c51bef2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Green Chat, we can enjoy this result without making promises about the next chart."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

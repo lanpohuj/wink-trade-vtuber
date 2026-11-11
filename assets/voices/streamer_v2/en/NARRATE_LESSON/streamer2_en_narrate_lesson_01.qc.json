@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_01",
+  "sha256": "aa42efa319a3223cf57a324f65a011ed1b0f572368aacbfe104a3d39d34c0269",
+  "expected": "You know what's easy to mix up? A strong move and a good entry moment. They're different things.",
+  "transcript": "You know what's easy to mix up? A strong move and a good entry moment. They're different things.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07666,
+    "peak": 0.84655,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.342,
+    "sha256": "aa42efa319a3223cf57a324f65a011ed1b0f572368aacbfe104a3d39d34c0269"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " You know what's easy to mix up? A strong move and a good entry moment. They're different things."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

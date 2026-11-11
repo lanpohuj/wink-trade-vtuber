@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_04",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "The fifteen-second trade is running. One specific window, no huge promises to a tiny countdown.",
+  "tts_text": "[warm, relaxed] The fifteen-second trade is running. One specific window, no huge promises to a tiny countdown.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b6d1919e6e114623cd3c42b945f4b80697d8753601f5d9f33ff9a07e319a0e4a",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_04.mp3",
+  "duration": 6.9485,
+  "sha256": "758c07270fd50f3cf1173c022f6d3da1df59608ef4dae9afab8f644443bc1872",
+  "request_payload": {
+    "text": "[warm, relaxed] The fifteen-second trade is running. One specific window, no huge promises to a tiny countdown.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

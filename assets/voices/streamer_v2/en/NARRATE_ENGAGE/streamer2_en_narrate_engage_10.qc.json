@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_engage_10",
+  "sha256": "850c626ae721c4ea8cadce57276982e0018f8a0bebb4298c4eb7ae6690797be0",
+  "expected": "If you'd like more detail, tell me which bit. That makes it easier for us to stay on the same page.",
+  "transcript": "If you'd like more detail, tell me which bit. That makes it easier for us to stay on the same page.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08256,
+    "peak": 0.41529,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.22,
+    "sha256": "850c626ae721c4ea8cadce57276982e0018f8a0bebb4298c4eb7ae6690797be0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " If you'd like more detail, tell me which bit."
+    },
+    {
+      "start": 2.64,
+      "end": 5.36,
+      "text": " That makes it easier for us to stay on the same page."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

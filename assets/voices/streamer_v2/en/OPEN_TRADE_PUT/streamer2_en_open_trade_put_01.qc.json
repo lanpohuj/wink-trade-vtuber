@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_01",
+  "sha256": "7ba359fcab1955e19bfd9c68298bf04acecbf362d95390de3d0feef167847c30",
+  "expected": "There we go, opened down! The move confirmed again after the pullback; that's the idea I'm following.",
+  "transcript": "There we go! Open down! The move confirmed again after the pullback. That's the idea I'm following!",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.165,
+    "rms": 0.08176,
+    "peak": 0.35275,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.265,
+    "sha256": "7ba359fcab1955e19bfd9c68298bf04acecbf362d95390de3d0feef167847c30"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " There we go! Open down! The move confirmed again after the pullback. That's the idea I'm following!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

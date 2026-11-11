@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_29",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go.",
+  "tts_text": "[conversational, smiling] Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aa6ac6891e96891726ea1ee82d2e178ef6fc13f1ff8925a4c4f21bc1335f8895",
+  "delivery": "conversational, smiling",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_29.mp3",
+  "duration": 5.955813,
+  "sha256": "d9cbb96b384bc7ccf210f534cd6c81490cb80a184a64358b273333f6a1934681",
+  "request_payload": {
+    "text": "[conversational, smiling] Let's see what lines up across the timeframes. That gives me a clearer idea of where price might go.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

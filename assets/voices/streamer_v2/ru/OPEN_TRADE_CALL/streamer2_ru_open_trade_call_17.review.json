@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_17",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Открыла вверх, чат. Реакция у уровня перешла в подтверждённый локальный разворот — вот моя причина входа.",
+  "tts_text": "[bright, conversational] Открыла вверх, чат. Реакция у уровня перешла в подтверждённый локальный разворот — вот моя причина входа.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "61510da3d39f40760aa4455ef26037a179e78ec2754bc79612839120c7fd068f",
+  "delivery": "bright, conversational",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_17.mp3",
+  "duration": 6.68725,
+  "sha256": "db3c9753916e06320033a7ce0b8899706c9e81d660a76548ea3ce1cd64cc4ae7",
+  "request_payload": {
+    "text": "[bright, conversational] Открыла вверх, чат. Реакция у уровня перешла в подтверждённый локальный разворот — вот моя причина входа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

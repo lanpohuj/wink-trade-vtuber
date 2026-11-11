@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_14",
+  "sha256": "090b6db61f3a35e261408c3914b4fde4ae0f7adde6b21a503f6f0b42aa9c18f5",
+  "expected": "Чатик, если я увлекусь терминами, возвращайте меня на землю. Объяснить просто — тоже навык.",
+  "transcript": "Чатик, если я увлекусь терминами, возвращайте меня на землю. Объяснить просто, тоже навык.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.09047,
+    "peak": 0.59854,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "090b6db61f3a35e261408c3914b4fde4ae0f7adde6b21a503f6f0b42aa9c18f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " Чатик, если я увлекусь терминами, возвращайте меня на землю. Объяснить просто, тоже навык."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_28",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Я не ускоряю вход ради красивой картинки в эфире. Лучше объясню, чего сейчас жду.",
+  "tts_text": "[friendly, conversational] Я не ускоряю вход ради красивой картинки в эфире. Лучше объясню, чего сейчас жду.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2d92a47bbe92a3314a03ad4d818e6656fabb14a0998612b8dd9b9f71861bd9ce",
+  "delivery": "friendly, conversational",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_28.mp3",
+  "duration": 4.728063,
+  "sha256": "605c85fec9721aa8e5e0ee38e3c19f6f7e0ac241a6f1e387680e278a7fa9dd34",
+  "request_payload": {
+    "text": "[friendly, conversational] Я не ускоряю вход ради красивой картинки в эфире. Лучше объясню, чего сейчас жду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

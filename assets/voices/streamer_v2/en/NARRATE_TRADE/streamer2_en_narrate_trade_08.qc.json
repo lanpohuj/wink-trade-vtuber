@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_08",
+  "sha256": "79735912c0aed1613c0cad946ad9e5deebad25f89423dd82f3e95c4d2d0c6d9c",
+  "expected": "We're not at the result yet, chat. I'll save the grand finale for the actual close.",
+  "transcript": "We're not at the result yet, chat. I'll save the grand finale for the actual close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08098,
+    "peak": 0.35538,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.189,
+    "sha256": "79735912c0aed1613c0cad946ad9e5deebad25f89423dd82f3e95c4d2d0c6d9c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " We're not at the result yet, chat. I'll save the grand finale for the actual close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

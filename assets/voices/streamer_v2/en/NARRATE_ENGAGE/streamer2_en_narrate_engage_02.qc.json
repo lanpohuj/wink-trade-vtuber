@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_engage_02",
+  "sha256": "b9e2c12ca0db32bc540b16a0e9a82d27e33f7e03ace4a56e8ebcafd91b574ef1",
+  "expected": "Chat, do you prefer the entry explanation or the big picture first? I'm curious.",
+  "transcript": "Chat, do you prefer the entry explanation or the big picture first? I'm curious.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07365,
+    "peak": 0.44259,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.369,
+    "sha256": "b9e2c12ca0db32bc540b16a0e9a82d27e33f7e03ace4a56e8ebcafd91b574ef1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Chat, do you prefer the entry explanation or the big picture first?"
+    },
+    {
+      "start": 4.12,
+      "end": 5.12,
+      "text": " I'm curious."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

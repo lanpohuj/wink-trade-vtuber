@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_08",
+  "sha256": "fe01bd74e0e6ca6c21b803bdb2c9225b18b56460d80e0c7c58bb7561d2d856c8",
+  "expected": "The next entry's stake is two hundred and forty-two. Increasing it doesn't promise a different outcome.",
+  "transcript": "The next entry stake is 242. Increasing it doesn't promise a different outcome.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.06951,
+    "peak": 0.37037,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.289,
+    "sha256": "fe01bd74e0e6ca6c21b803bdb2c9225b18b56460d80e0c7c58bb7561d2d856c8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The next entry stake is 242. Increasing it doesn't promise a different outcome."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

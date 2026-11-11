@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_18",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюс, чат! Вот так можно порадоваться конкретному результату и не обещать ничего следующему графику.",
+  "tts_text": "[bright, warm] Плюс, чат! Вот так можно порадоваться конкретному результату и не обещать ничего следующему графику.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a69394ec8c7cc43f4d2f23fdafc6c316b6028d59b8a9fe4572979ad0c8f512e4",
+  "delivery": "bright, warm",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_18.mp3",
+  "duration": 6.034187,
+  "sha256": "5ac971b41f14b8261695234efc1adba895a418037d73ea7df28729a7ec9432ba",
+  "request_payload": {
+    "text": "[bright, warm] Плюс, чат! Вот так можно порадоваться конкретному результату и не обещать ничего следующему графику.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_expiry_03",
+  "sha256": "980fc37a48422f91a4fa0ebef053fbbcb13fa1a8d0c722b549d51a89e3e68c4d",
+  "expected": "На этот вход — пятнадцать секунд. Да, времени немного, поэтому лишний монолог пока отложу.",
+  "transcript": "На этот вход 15 секунд. Да. Времени немного. Поэтому лишний монолог пока отложу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08298,
+    "peak": 0.36315,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "980fc37a48422f91a4fa0ebef053fbbcb13fa1a8d0c722b549d51a89e3e68c4d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " На этот вход 15 секунд. Да."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Времени немного. Поэтому лишний монолог пока отложу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

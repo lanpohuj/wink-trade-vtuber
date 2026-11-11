@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_expiry_15",
+  "sha256": "21bce0c0e69b93b154e3529a1328a1f9d1bcef649df7c0979467add9c06fb6f3",
+  "expected": "Это двухминутная сделка. Времени больше, но итог всё равно объявляем только после закрытия.",
+  "transcript": "Это двухминутная сделка, времени больше, но итог все равно объявляем только после закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.0846,
+    "peak": 0.36694,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "21bce0c0e69b93b154e3529a1328a1f9d1bcef649df7c0979467add9c06fb6f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Это двухминутная сделка, времени больше, но итог все равно объявляем только после закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

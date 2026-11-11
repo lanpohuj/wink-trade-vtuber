@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_09",
+  "sha256": "2858a8a084d6fc4f2c9c212e20a476f483e3db178f2010ff19fe5bf2540730de",
+  "expected": "Смотрю чуть шире, чем одна свечка. Одна свечка тоже умеет красиво отвлекать, между прочим.",
+  "transcript": "Смотрю чуть шире, чем одна свечка. Одна свечка тоже умеет красиво отвлекать, между прочим.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.07085,
+    "peak": 0.37027,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.14,
+    "sha256": "2858a8a084d6fc4f2c9c212e20a476f483e3db178f2010ff19fe5bf2540730de"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " Смотрю чуть шире, чем одна свечка."
+    },
+    {
+      "start": 2.68,
+      "end": 6.38,
+      "text": " Одна свечка тоже умеет красиво отвлекать, между прочим."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_20",
+  "sha256": "7ced363e3e77671bee5902f30487313db3d8ea5fab67b27d18f15abedb10616e",
+  "expected": "Let's give this one a calm look. I want the chart to support the idea, not finish the story for it.",
+  "transcript": "Let's give this one a calm look. I want the chart to support the idea not finish the story for it",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.07654,
+    "peak": 0.38065,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.329,
+    "sha256": "7ced363e3e77671bee5902f30487313db3d8ea5fab67b27d18f15abedb10616e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Let's give this one a calm look. I want the chart to support the idea not finish the story for it"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

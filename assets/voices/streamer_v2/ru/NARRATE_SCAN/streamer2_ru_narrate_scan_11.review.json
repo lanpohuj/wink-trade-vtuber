@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_11",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше.",
+  "tts_text": "[conversational, smiling] Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b64c9eac9fa9fb6e0df72114f9eb2a5a887a8862c848420637456e31b94408b1",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_11.mp3",
+  "duration": 6.217062,
+  "sha256": "1ebbb7bff8c1e4bc4235b64227374d7e2d8f668da4e4e21cf43997a84244883c",
+  "request_payload": {
+    "text": "[conversational, smiling] Сейчас не гадаю по цветам. Мне надо понять, как цена сюда пришла и что делает дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

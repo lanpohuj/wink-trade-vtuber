@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_15",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Don't be shy about asking. Why is honestly one of the most useful questions here.",
+  "tts_text": "[smiling, relaxed] Don't be shy about asking. Why is honestly one of the most useful questions here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "89fcb90f476d8295c14fddf54a03f3817009a3331055b2b720863a6f16a53b95",
+  "delivery": "smiling, relaxed",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_15.mp3",
+  "duration": 5.067687,
+  "sha256": "d56675a29ea7e03253644c0ff6c694574413d9537d4239f5a53eceda65b488ad",
+  "request_payload": {
+    "text": "[smiling, relaxed] Don't be shy about asking. Why is honestly one of the most useful questions here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

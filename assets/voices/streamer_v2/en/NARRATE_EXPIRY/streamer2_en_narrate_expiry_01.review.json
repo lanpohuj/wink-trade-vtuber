@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_01",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend.",
+  "tts_text": "[confident, conversational] Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "40144cc99dd53d2a379c69448f4616a6775bfadb2a68cbf050e9cfefb07ea35a",
+  "delivery": "confident, conversational",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_01.mp3",
+  "duration": 6.164813,
+  "sha256": "03c7850e113ee6096049650904a5f8ec7200e53474527409c1824d8d0ca1162c",
+  "request_payload": {
+    "text": "[confident, conversational] Fifteen seconds here. A short little chapter, so I'm watching closely without calling a whole trend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

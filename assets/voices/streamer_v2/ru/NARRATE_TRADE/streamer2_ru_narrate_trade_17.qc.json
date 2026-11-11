@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_17",
+  "sha256": "0d852dcfe374cea17457afc486c9accf97ff1a3b75c6ca9aecda37e9b2fb221a",
+  "expected": "Я ещё не знаю итог, сделка идёт. Зато могу спокойно дождаться и проверить его нормально.",
+  "transcript": "Я ещё не знаю, итог сделка идёт, зато могу спокойно дождаться и проверить его нормально.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08295,
+    "peak": 0.32461,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.082,
+    "sha256": "0d852dcfe374cea17457afc486c9accf97ff1a3b75c6ca9aecda37e9b2fb221a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Я ещё не знаю, итог сделка идёт, зато могу спокойно дождаться и проверить его нормально."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

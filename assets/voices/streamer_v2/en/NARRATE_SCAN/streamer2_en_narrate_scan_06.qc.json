@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_scan_06",
+  "sha256": "31c5fd1abb2483fdb147ffe0db010ed5310f77909fd287f65935c161f0009ca5",
+  "expected": "Let's see if there's anything interesting here. I'm not planning to sweet-talk a chart into a setup.",
+  "transcript": "Let's see if there's anything interesting here. I'm not planning to sweet talk a chart into a setup.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08222,
+    "peak": 0.44634,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.273,
+    "sha256": "31c5fd1abb2483fdb147ffe0db010ed5310f77909fd287f65935c161f0009ca5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Let's see if there's anything interesting here."
+    },
+    {
+      "start": 2.64,
+      "end": 5.6000000000000005,
+      "text": " I'm not planning to sweet talk a chart into a setup."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_19",
+  "sha256": "c34f5e9161d49cca13c8efd6601c01718258d7201ff7fc63814104417bbd4178",
+  "expected": "A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive.",
+  "transcript": "A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.07621,
+    "peak": 0.35183,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.12,
+    "sha256": "c34f5e9161d49cca13c8efd6601c01718258d7201ff7fc63814104417bbd4178"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " A nice setup name isn't enough for me. I want the chart to show what I'm describing, not just sound impressive."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

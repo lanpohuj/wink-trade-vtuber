@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_10",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Теперь уже не подгоняем график словами. Сделка открыта, следим за фактическим движением.",
+  "tts_text": "[curious, conversational] Теперь уже не подгоняем график словами. Сделка открыта, следим за фактическим движением.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7399a46ace536326b66a5a8e6142b3ce99ce00304790ae1f5f2d9d4c8a2d9353",
+  "delivery": "curious, conversational",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_10.mp3",
+  "duration": 6.034187,
+  "sha256": "e527f5793fb1bf269991b53d2ba3a3bf45d6af08185f7b57ad807e17e3d909d7",
+  "request_payload": {
+    "text": "[curious, conversational] Теперь уже не подгоняем график словами. Сделка открыта, следим за фактическим движением.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_11",
+  "sha256": "92eff98fa279b7931ec1cfb30a6a4efbcff751642aaec99d4910e4a0e8b84c02",
+  "expected": "I love it when chat notices the details. One good question can make the whole discussion more interesting.",
+  "transcript": "I love it when chat notices the details. One good question can make the whole discussion more interesting.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.07669,
+    "peak": 0.38042,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.377,
+    "sha256": "92eff98fa279b7931ec1cfb30a6a4efbcff751642aaec99d4910e4a0e8b84c02"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " I love it when chat notices the details. One good question can make the whole discussion more interesting."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

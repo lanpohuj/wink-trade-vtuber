@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_03",
+  "sha256": "8dc180ef2bb73997db1d6b838bfa6577c796ad3d78910fc6de8b5cd152b19ec1",
+  "expected": "The tricky bit now is letting it finish. Staring at the timer won't speed it up.",
+  "transcript": "The tricky bit now is letting it finish. Staring at the timer won't speed it up.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08294,
+    "peak": 0.55296,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.168,
+    "sha256": "8dc180ef2bb73997db1d6b838bfa6577c796ad3d78910fc6de8b5cd152b19ec1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " The tricky bit now is letting it finish. Staring at the timer won't speed it up."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

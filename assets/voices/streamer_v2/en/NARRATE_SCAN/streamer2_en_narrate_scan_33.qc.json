@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_33",
+  "sha256": "33a02df42599dcf3913c0710e76c973fe6b24e23bac8cf69e0e3c806d90fbbab",
+  "expected": "Waiting for this pair's data. Not the glamorous bit, I know, but we do need it.",
+  "transcript": "Waiting for this pair's data. Not the glamorous bed, I know, but we do need it.",
+  "similarity": 0.966,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07636,
+    "peak": 0.35294,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.151,
+    "sha256": "33a02df42599dcf3913c0710e76c973fe6b24e23bac8cf69e0e3c806d90fbbab"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Waiting for this pair's data. Not the glamorous bed, I know, but we do need it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

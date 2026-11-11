@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_09",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением?",
+  "tts_text": "[smiling, relaxed] Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением?",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e4cb5d823f5529f28d421e50a76a5ca18d63c2aecb38b5ec5a582f98472db990",
+  "delivery": "smiling, relaxed",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_09.mp3",
+  "duration": 5.067687,
+  "sha256": "6b0d79bf111e6f77e6db8b5bd132050d02c324255a839eb48cc3039a8717c68b",
+  "request_payload": {
+    "text": "[smiling, relaxed] Интересно, кто у нас любит разбирать причины входа, а кто больше следит за самим движением?",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

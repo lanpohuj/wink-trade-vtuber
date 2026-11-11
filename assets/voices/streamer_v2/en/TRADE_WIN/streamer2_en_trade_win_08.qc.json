@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_08",
+  "sha256": "570949b89360147d6b93f069c849f4143df801561a8059236ec692e325054050",
+  "expected": "There it is! That trade closed green. I'm pleased, but I'm not building myself a crown out of one result.",
+  "transcript": "There it is. That trade closed green. I'm pleased, but I'm not building myself a crown out of one result.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.687,
+    "rms": 0.08011,
+    "peak": 0.49376,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.287,
+    "sha256": "570949b89360147d6b93f069c849f4143df801561a8059236ec692e325054050"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " There it is. That trade closed green. I'm pleased, but I'm not building myself a crown out of one result."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

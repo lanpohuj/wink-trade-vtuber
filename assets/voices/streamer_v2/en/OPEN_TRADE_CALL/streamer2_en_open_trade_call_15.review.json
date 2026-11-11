@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_call_15",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Right, up is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+  "tts_text": "[bright, conversational] Right, up is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f6078c399138d5f2f870e597b39ea576b44f7b3941b4804fcc02f7e0b0991460",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_CALL/streamer2_en_open_trade_call_15.mp3",
+  "duration": 7.314187,
+  "sha256": "acaa7aa6037444cb7dac43d7fd4a6da436c485c27b47d1c3240db12580c196a7",
+  "request_payload": {
+    "text": "[bright, conversational] Right, up is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

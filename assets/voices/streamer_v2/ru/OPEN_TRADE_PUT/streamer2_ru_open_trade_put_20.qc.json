@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_open_trade_put_20",
+  "sha256": "4954ee7eb635bd8b90fdbb4c0b27ffd16b7168bc5644b1b03d936d993f8c2e0e",
+  "expected": "Открыла вниз. Сначала была реакция у уровня, потом подтверждение разворота. Теперь смотрим саму сделку.",
+  "transcript": "Открыла вниз. Сначала была реакция уровня, потом подтверждение разворота. Теперь смотрим саму сделку.",
+  "similarity": 0.994,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.08892,
+    "peak": 0.41402,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "4954ee7eb635bd8b90fdbb4c0b27ffd16b7168bc5644b1b03d936d993f8c2e0e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Открыла вниз. Сначала была реакция уровня, потом подтверждение разворота."
+    },
+    {
+      "start": 5.0,
+      "end": 7.0,
+      "text": " Теперь смотрим саму сделку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

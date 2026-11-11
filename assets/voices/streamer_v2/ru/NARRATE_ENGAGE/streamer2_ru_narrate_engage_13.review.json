@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_13",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Можно не соглашаться с моей идеей. Только расскажите, что именно видите на графике, — вот это интересно.",
+  "tts_text": "[friendly, curious] Можно не соглашаться с моей идеей. Только расскажите, что именно видите на графике, — вот это интересно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "67b351d3a5961e7526209c4ffe70eafdf848bc4081a04947c26095545ea0fa02",
+  "delivery": "friendly, curious",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_13.mp3",
+  "duration": 7.079125,
+  "sha256": "202928e626ae3a40a2ebfc8ce81d1d32f09d8bd5aad32f8817a5a25c0ea9ebb5",
+  "request_payload": {
+    "text": "[friendly, curious] Можно не соглашаться с моей идеей. Только расскажите, что именно видите на графике, — вот это интересно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

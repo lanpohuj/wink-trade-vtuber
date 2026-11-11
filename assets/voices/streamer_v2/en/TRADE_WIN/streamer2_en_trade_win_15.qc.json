@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_15",
+  "sha256": "aad45ffd046046665fee5888bb3e2cc2ae4dc8498e3c9fea1e7f4d8985f46aea",
+  "expected": "I like that ending! Confirmed green, without calling a win five seconds too early.",
+  "transcript": "I like that ending! Confirmed green, without calling a win 5 seconds too early!",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08704,
+    "peak": 0.40867,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "aad45ffd046046665fee5888bb3e2cc2ae4dc8498e3c9fea1e7f4d8985f46aea"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " I like that ending! Confirmed green, without calling a win 5 seconds too early!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_20",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "В диапазоне смотрю реакцию у края. Покупать просто потому, что цена низко, для меня слишком короткое объяснение.",
+  "tts_text": "[thoughtful, relaxed] В диапазоне смотрю реакцию у края. Покупать просто потому, что цена низко, для меня слишком короткое объяснение.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "06b1d9703718687794ec1581e339cec0eaeecaeda60349f3d4ac55a7d039e46a",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_20.mp3",
+  "duration": 6.399938,
+  "sha256": "698885458c0ab867bdd35b920e16af7555810de4474355c3a74886992325eb21",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] В диапазоне смотрю реакцию у края. Покупать просто потому, что цена низко, для меня слишком короткое объяснение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

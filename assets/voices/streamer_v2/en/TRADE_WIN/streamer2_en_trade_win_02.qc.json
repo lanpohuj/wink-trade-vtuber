@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_02",
+  "sha256": "bcbd9564a331c612c61cca9f15d7e24cd325c7f0b0332801dd4443d2edbfcacd",
+  "expected": "That's a green close, chat! Now I can smile about it; confirmed result, not just a nice moment mid-trade.",
+  "transcript": "That's a green close chat. Now I can smile about it. Confirmed result, not just a nice moment mid-trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.001,
+    "rms": 0.08824,
+    "peak": 0.38886,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.281,
+    "sha256": "bcbd9564a331c612c61cca9f15d7e24cd325c7f0b0332801dd4443d2edbfcacd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.88,
+      "text": " That's a green close chat. Now I can smile about it. Confirmed result, not just a nice moment mid-trade."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

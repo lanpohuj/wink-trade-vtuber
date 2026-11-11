@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_engage_13",
+  "sha256": "202928e626ae3a40a2ebfc8ce81d1d32f09d8bd5aad32f8817a5a25c0ea9ebb5",
+  "expected": "Можно не соглашаться с моей идеей. Только расскажите, что именно видите на графике, — вот это интересно.",
+  "transcript": "Можно не соглашаться с моей идеей. Только расскажите, что именно видите на графике. Вот это интересно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.079,
+    "rms": 0.08731,
+    "peak": 0.36967,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.059,
+    "sha256": "202928e626ae3a40a2ebfc8ce81d1d32f09d8bd5aad32f8817a5a25c0ea9ebb5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Можно не соглашаться с моей идеей."
+    },
+    {
+      "start": 2.5,
+      "end": 5.5,
+      "text": " Только расскажите, что именно видите на графике."
+    },
+    {
+      "start": 5.5,
+      "end": 7.5,
+      "text": " Вот это интересно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

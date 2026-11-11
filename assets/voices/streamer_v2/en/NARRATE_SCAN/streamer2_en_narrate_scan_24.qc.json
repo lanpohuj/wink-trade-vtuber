@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_24",
+  "sha256": "047798ad0daf3d144b1f695080c6bbd01d2e2607cf9a8e4782faa048a960d62f",
+  "expected": "I'm checking a few things together. Anyone can tell a nice chart story; I want the conditions behind it.",
+  "transcript": "I'm checking a few things together. Anyone can tell a nice chart story. I want the conditions behind it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.0827,
+    "peak": 0.52201,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.296,
+    "sha256": "047798ad0daf3d144b1f695080c6bbd01d2e2607cf9a8e4782faa048a960d62f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " I'm checking a few things together. Anyone can tell a nice chart story. I want the conditions behind it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_10",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "I've chosen a minute. I'm following the longer stretch; the little flickers aren't a verdict on their own.",
+  "tts_text": "[warm, relaxed] I've chosen a minute. I'm following the longer stretch; the little flickers aren't a verdict on their own.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3626783a0832446b8e8f7a11f358a04a649a76ece4bcfaafa59aed156382e6c8",
+  "delivery": "warm, relaxed",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_10.mp3",
+  "duration": 5.773,
+  "sha256": "a1c0fae145be2d1bcabdf0182deac75ccf610b17548200d1b21581db1f4c8a95",
+  "request_payload": {
+    "text": "[warm, relaxed] I've chosen a minute. I'm following the longer stretch; the little flickers aren't a verdict on their own.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_02",
+  "sha256": "b91fcb074fd3d0d6b137f93a80cee5b2fd1f356d7e018c4fa21f6915093ea32d",
+  "expected": "I've chosen fifteen seconds. This short stretch matters, not a guess about half an hour from now.",
+  "transcript": "I've chosen 15 seconds. This short stretch matters, not a guess about half an hour from now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08126,
+    "peak": 0.43052,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.157,
+    "sha256": "b91fcb074fd3d0d6b137f93a80cee5b2fd1f356d7e018c4fa21f6915093ea32d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " I've chosen 15 seconds. This short stretch matters, not a guess about half an hour from now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_11",
+  "sha256": "e3a63310cf6c2f428e9655e66530fff82d1394ecbcbd695c5fade68ed4749870",
+  "expected": "Открыла вниз, чат! На границе диапазона появилась подтверждённая реакция — на неё и опираюсь.",
+  "transcript": "Открыла вниз, чат. На границе диапазона появилась подтвержденная реакция, но не её я опираюсь.",
+  "similarity": 0.967,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08517,
+    "peak": 0.37872,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.151,
+    "sha256": "e3a63310cf6c2f428e9655e66530fff82d1394ecbcbd695c5fade68ed4749870"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "text": " Открыла вниз, чат. На границе диапазона появилась подтвержденная реакция, но не её я опираюсь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

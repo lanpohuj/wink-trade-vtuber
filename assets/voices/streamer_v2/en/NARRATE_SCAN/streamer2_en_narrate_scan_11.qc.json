@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_11",
+  "sha256": "5627b67d78a466824070444de6b87e54c62fbf956f88f8b06558529fbbaea575",
+  "expected": "I'm not guessing from the colours. I want to know how price got here and what it's doing now.",
+  "transcript": "I'm not guessing from the colors. I want to know how price got here and what it's doing now.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08406,
+    "peak": 0.4444,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.323,
+    "sha256": "5627b67d78a466824070444de6b87e54c62fbf956f88f8b06558529fbbaea575"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I'm not guessing from the colors. I want to know how price got here and what it's doing now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_09",
+  "sha256": "5e8bad1b320c3e9132f64cac26ff6339e1e2cbd8b1ca10d859c6931a01d0c53e",
+  "expected": "I'm curious: who enjoys the entry reasoning, and who mostly watches the move itself?",
+  "transcript": "I'm curious. Who enjoys the entry reasoning, and who mostly watches the move itself?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08382,
+    "peak": 0.41444,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.276,
+    "sha256": "5e8bad1b320c3e9132f64cac26ff6339e1e2cbd8b1ca10d859c6931a01d0c53e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " I'm curious. Who enjoys the entry reasoning, and who mostly watches the move itself?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_loss_05",
+  "sha256": "087d9325e589d74672ccc7ea6954b96d1d235acd0efe546e6692f9e90a9c194d",
+  "expected": "Ну вот, эта не сложилась — минус. Неприятный момент, но превращать его в драму я не хочу.",
+  "transcript": "Ну вот, это не сложилось минус, неприятный момент, но превращать его в драму я не хочу.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08236,
+    "peak": 0.35215,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.151,
+    "sha256": "087d9325e589d74672ccc7ea6954b96d1d235acd0efe546e6692f9e90a9c194d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.48,
+      "text": " Ну вот, это не сложилось минус, неприятный момент, но превращать его в драму я не хочу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

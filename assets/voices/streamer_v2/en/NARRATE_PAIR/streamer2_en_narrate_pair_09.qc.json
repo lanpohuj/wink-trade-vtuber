@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_09",
+  "sha256": "c64d5950000fa4051265b4a57d632d05c6c6a48b0ca5f84bcce152b52eae511e",
+  "expected": "Fresh chart just landed, chat. I'll check direction and see if there's an idea worth following.",
+  "transcript": "Fresh chart just landed chat. I'll check direction and see if there's an idea worth following",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08202,
+    "peak": 0.40765,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.289,
+    "sha256": "c64d5950000fa4051265b4a57d632d05c6c6a48b0ca5f84bcce152b52eae511e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.92,
+      "text": " Fresh chart just landed chat. I'll check direction and see if there's an idea worth following"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

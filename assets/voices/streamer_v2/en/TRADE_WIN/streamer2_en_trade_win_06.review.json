@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_06",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Yay, that one's green! A nice little stream moment. Take a breath, then we carry on.",
+  "tts_text": "[bright, warm] Yay, that one's green! A nice little stream moment. Take a breath, then we carry on.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5b0f69721a8485095cfefef9f5439fa10a2a069e62b9896652953d7af8a74acb",
+  "delivery": "bright, warm",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_06.mp3",
+  "duration": 6.086438,
+  "sha256": "bbcc472d34fc2194f15eac6d270276632013575d15d23c0eb6eaa863812bcbec",
+  "request_payload": {
+    "text": "[bright, warm] Yay, that one's green! A nice little stream moment. Take a breath, then we carry on.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

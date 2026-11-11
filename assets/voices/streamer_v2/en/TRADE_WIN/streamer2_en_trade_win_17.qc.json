@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_trade_win_17",
+  "sha256": "1fdfd41a084fa265e905f3266d23a9f8565fd0cd2adc032e98fef4a90f81d25d",
+  "expected": "Okay, that trade closed green. Lovely, no complaints from me! Next we look at a fresh situation.",
+  "transcript": "Okay, that trade closed green. Lovely, no complaints from me. Next we look at a fresh situation.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.445,
+    "rms": 0.07661,
+    "peak": 0.39921,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.185,
+    "sha256": "1fdfd41a084fa265e905f3266d23a9f8565fd0cd2adc032e98fef4a90f81d25d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Okay, that trade closed green. Lovely, no complaints from me."
+    },
+    {
+      "start": 5.0,
+      "end": 7.5,
+      "text": " Next we look at a fresh situation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

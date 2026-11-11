@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_04",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Перекрытие сейчас на сто десять, чат. Это следующий шаг плана, а не повод торопиться с кнопкой.",
+  "tts_text": "[confident, steady] Перекрытие сейчас на сто десять, чат. Это следующий шаг плана, а не повод торопиться с кнопкой.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b28e34dfe4a2ffe01a74dbdcd153b88f70f9fcbd4143fecd6c1a250abaf826b2",
+  "delivery": "confident, steady",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_04.mp3",
+  "duration": 5.172125,
+  "sha256": "7a8b11f5d3acc47b227fd01cec4978ddcd8c15fdb2bd7fbfcd48fd7bcb1f6e9d",
+  "request_payload": {
+    "text": "[confident, steady] Перекрытие сейчас на сто десять, чат. Это следующий шаг плана, а не повод торопиться с кнопкой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

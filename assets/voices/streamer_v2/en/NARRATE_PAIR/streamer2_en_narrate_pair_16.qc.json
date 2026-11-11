@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_16",
+  "sha256": "1ce741ee046919e2af5585a72d7ee6019c684abffcf13d9704eb899b682bdfe5",
+  "expected": "On to the next one. One skipped chart doesn't need a whole drama.",
+  "transcript": "On to the next one. One skip chart doesn't need a whole drama.",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.023,
+    "rms": 0.08478,
+    "peak": 0.45498,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.263,
+    "sha256": "1ce741ee046919e2af5585a72d7ee6019c684abffcf13d9704eb899b682bdfe5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " On to the next one. One skip chart doesn't need a whole drama."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

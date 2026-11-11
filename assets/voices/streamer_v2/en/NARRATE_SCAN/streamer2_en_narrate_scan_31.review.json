@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_scan_31",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "One second, the chart's still loading. I'll wait for the data before acting clever.",
+  "tts_text": "[curious, conversational] One second, the chart's still loading. I'll wait for the data before acting clever.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "be0b074278c173a63d1a007e0240f48eb2acac4067cda896f40eaa8e6715c032",
+  "delivery": "curious, conversational",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_31.mp3",
+  "duration": 5.172125,
+  "sha256": "c226ac2541d7664caefe9fbf721efec0558a19191dd9b9ff8f597ebe6795a7db",
+  "request_payload": {
+    "text": "[curious, conversational] One second, the chart's still loading. I'll wait for the data before acting clever.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

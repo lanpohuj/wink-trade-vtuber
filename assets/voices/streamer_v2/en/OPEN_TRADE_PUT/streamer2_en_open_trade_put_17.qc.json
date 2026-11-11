@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_17",
+  "sha256": "21803792761eb0821dac07fc0dc313ba1c3ade76437ff729003b80cc1fe75980",
+  "expected": "Opened down, chat. The level reaction developed into a confirmed local reversal; that's my entry reason.",
+  "transcript": "Open down chat the level reaction developed into a confirmed local reversal. That's my entry reason",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.557,
+    "rms": 0.08848,
+    "peak": 0.43494,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.117,
+    "sha256": "21803792761eb0821dac07fc0dc313ba1c3ade76437ff729003b80cc1fe75980"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.36,
+      "text": " Open down chat the level reaction developed into a confirmed local reversal. That's my entry reason"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

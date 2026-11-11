@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_01",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Следующий шаг — сто десять, перекрытие по плану. Но сам вход всё равно сначала проверю, просто так не жму.",
+  "tts_text": "[composed, conversational] Следующий шаг — сто десять, перекрытие по плану. Но сам вход всё равно сначала проверю, просто так не жму.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "cb6e5346f8867412d9f7bf92eec11a761aa0143b1c41eceb4ee012a2c9908047",
+  "delivery": "composed, conversational",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_01.mp3",
+  "duration": 7.444812,
+  "sha256": "a078361ed1b93dc4d4437e0070801be8e412ad2f3a770d0b2acc4e6952530d80",
+  "request_payload": {
+    "text": "[composed, conversational] Следующий шаг — сто десять, перекрытие по плану. Но сам вход всё равно сначала проверю, просто так не жму.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

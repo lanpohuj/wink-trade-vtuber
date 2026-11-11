@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_refund_01",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Oh, a refund! The chart skipped the big plot twist this time. Stake returned.",
+  "tts_text": "[lightly amused, relaxed] Oh, a refund! The chart skipped the big plot twist this time. Stake returned.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7aa2152662519ddbcd6673a3cf8fa0d8e6dbfc350b5732e6d185dc365fdfa960",
+  "delivery": "lightly amused, relaxed",
+  "file": "en/TRADE_REFUND/streamer2_en_trade_refund_01.mp3",
+  "duration": 5.773,
+  "sha256": "e7aab7fdb3f05380f5bbcffb86027e86e8099898eb9657f4c330399bc641fc3a",
+  "request_payload": {
+    "text": "[lightly amused, relaxed] Oh, a refund! The chart skipped the big plot twist this time. Stake returned.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

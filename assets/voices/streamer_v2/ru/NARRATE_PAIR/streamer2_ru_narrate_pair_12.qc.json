@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_pair_12",
+  "sha256": "f3311566e2526ec679a98c747a8b6bf674fd7f7cd812fbccca98d0856a7675d7",
+  "expected": "Смена кадра! Сейчас я опять чуть-чуть зануда: интервалы, структура, потом уже решение.",
+  "transcript": "Смена кадра, а сейчас я опять чуть-чуть зануда. Интервалы, структура, потом уже решение.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.139,
+    "rms": 0.08437,
+    "peak": 0.34119,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "f3311566e2526ec679a98c747a8b6bf674fd7f7cd812fbccca98d0856a7675d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2600000000000002,
+      "text": " Смена кадра, а сейчас я опять чуть-чуть зануда."
+    },
+    {
+      "start": 3.2600000000000002,
+      "end": 6.26,
+      "text": " Интервалы, структура, потом уже решение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_05",
+  "sha256": "f5c0b21f6f7a5395842a5a5c0d228a372bf96ac60b9a0a2ba301e032572d7531",
+  "expected": "I like it when you ask why. That's more interesting than silently staring at a countdown together.",
+  "transcript": "I like it when you ask why that's more interesting than silently staring at a countdown together",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08113,
+    "peak": 0.55764,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.182,
+    "sha256": "f5c0b21f6f7a5395842a5a5c0d228a372bf96ac60b9a0a2ba301e032572d7531"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " I like it when you ask why that's more interesting than silently staring at a countdown together"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

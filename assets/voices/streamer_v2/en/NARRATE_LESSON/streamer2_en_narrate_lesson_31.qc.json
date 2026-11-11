@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_31",
+  "sha256": "e0246361ad31350761328e0d44609e7bac652d8887c77bc9e37f41b8babb83a8",
+  "expected": "I'm comparing options, not collecting clicks. That's the point of looking across a few pairs.",
+  "transcript": "I'm comparing options, not collecting clicks. That's the point of looking across a few pairs.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.07789,
+    "peak": 0.46214,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.324,
+    "sha256": "e0246361ad31350761328e0d44609e7bac652d8887c77bc9e37f41b8babb83a8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " I'm comparing options, not collecting clicks. That's the point of looking across a few pairs."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_23",
+  "sha256": "81c6103dd6f10daee2ecf4f8c0e790770f6a9d747e1d7232aebb720a10c3b754",
+  "expected": "Still following this trade. I don't want ten different predictions cluttering up the wait.",
+  "transcript": "Still following this trade. I don't want ten different predictions cluttering up the wait",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09113,
+    "peak": 0.64969,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.219,
+    "sha256": "81c6103dd6f10daee2ecf4f8c0e790770f6a9d747e1d7232aebb720a10c3b754"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Still following this trade. I don't want ten different predictions cluttering up the wait"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

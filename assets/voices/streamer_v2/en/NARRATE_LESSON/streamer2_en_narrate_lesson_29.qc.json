@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_29",
+  "sha256": "b98894b3eae2ca8413fbe48e4fb305eb5ead326275dc4c8bda058baa0af960d5",
+  "expected": "When data is missing, I say so. A more confident voice won't add the candles we don't have.",
+  "transcript": "When data is missing, I say so. A more confident voice won't add the candles we don't have.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.09052,
+    "peak": 0.48277,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "b98894b3eae2ca8413fbe48e4fb305eb5ead326275dc4c8bda058baa0af960d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " When data is missing, I say so. A more confident voice won't add the candles we don't have."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

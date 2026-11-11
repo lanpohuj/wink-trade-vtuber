@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_08",
+  "sha256": "627b635db4a3401cc5bdaca3f34709b081d0d8a51a6ae0982d9e51decddfd5af",
+  "expected": "Есть! Эта сделка в плюс. Я довольна, но корону из одного результата себе строить не буду.",
+  "transcript": "Есть! Это сделка в плюс! Я довольна, но корону из одного результата себе строить не буду!",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.87,
+    "rms": 0.08082,
+    "peak": 0.3195,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.09,
+    "sha256": "627b635db4a3401cc5bdaca3f34709b081d0d8a51a6ae0982d9e51decddfd5af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Есть! Это сделка в плюс!"
+    },
+    {
+      "start": 2.72,
+      "end": 6.84,
+      "text": " Я довольна, но корону из одного результата себе строить не буду!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

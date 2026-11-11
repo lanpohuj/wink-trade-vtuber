@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_start_stream_ready_02",
+  "sha256": "d38bd9304342476a27e398a357d013649feb773b8623932ffdffb241aff1c79b",
+  "expected": "Right, we're here! Hey to everyone who's dropped in. Let's look at the charts and get into it without the rush.",
+  "transcript": "Right, we're here! Hey to everyone who's dropped in! Let's look at the charts and get into it without the rush!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08833,
+    "peak": 0.38975,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.236,
+    "sha256": "d38bd9304342476a27e398a357d013649feb773b8623932ffdffb241aff1c79b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Right, we're here! Hey to everyone who's dropped in! Let's look at the charts and get into it without the rush!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

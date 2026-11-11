@@ -1,0 +1,13 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Winky · 500 реплик</title>
+<style>body{background:#10191e;color:#e4f5ef;font:16px system-ui;margin:32px auto;max-width:1050px;padding:0 16px}h1{color:#72eec3}select,input{background:#192a31;color:inherit;border:1px solid #386356;padding:10px;border-radius:8px}article{margin:16px 0;padding:20px;border:1px solid #2a5347;border-radius:14px}small{color:#a6c1b7}audio{width:100%;margin-top:12px}.flag{color:#ffd27b}#error{color:#ffb4b4}</style>
+<h1>Winky · библиотека реплик</h1><p>Марин · RU / Venti · EN. Проверка файлов и текста не заменяет слуховую оценку подачи.</p>
+<label>Язык <select id="lang"><option value="ru">Русский</option><option value="en">English</option></select></label>
+<label>Категория <select id="category"><option value="">Все</option></select></label>
+<label><input id="flagged" type="checkbox"> Только замечания QC</label><p id="status">Загрузка…</p><p id="error"></p><main id="records"></main>
+<script>
+let rows=[],issues={};const $=s=>document.querySelector(s);
+function render(){const visible=rows.filter(r=>r.lang===$('#lang').value&&(!$('#category').value||r.category===$('#category').value)&&(!$('#flagged').checked||(issues[r.id]||[]).length));$('#status').textContent=`Показано ${visible.length} из ${rows.length} записей`;
+$('#records').replaceChildren(...visible.map(r=>{const box=document.createElement('article');const title=document.createElement('small');title.textContent=`${r.id} · ${r.duration.toFixed(2)} с`;const text=document.createElement('p');text.textContent=r.text;const transcript=document.createElement('small');transcript.textContent=`ASR: ${r.transcript||'Проверка ещё не закончена'}`;const flags=document.createElement('p');flags.className='flag';flags.textContent=(issues[r.id]||[]).join(', ');const a=document.createElement('audio');a.controls=true;a.preload='none';a.src=r.file;a.addEventListener('play',()=>document.querySelectorAll('audio').forEach(other=>{if(other!==a)other.pause()}));box.append(title,text,transcript,flags,a);return box}));}
+Promise.all([fetch('manifest.json').then(r=>r.json()),fetch('qc.json').then(r=>r.json())]).then(([m,q])=>{rows=Object.values(m.categories).flat();issues=Object.fromEntries(q.records.map(r=>[r.id,r.issues]));for(const name of [...new Set(rows.map(r=>r.category))].sort()){const o=document.createElement('option');o.value=name;o.textContent=name;$('#category').append(o)}render()}).catch(()=>{$('#error').textContent='Откройте страницу через локальный HTTP-сервер после завершения генерации и QC.'});
+for(const id of ['lang','category','flagged'])$('#'+id).addEventListener('change',render);
+</script></html>

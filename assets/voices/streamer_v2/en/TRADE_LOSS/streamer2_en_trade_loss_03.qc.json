@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_loss_03",
+  "sha256": "a067b395d369cefa87f0a6a8594c2af6348f1bf90565710739354d05a67cec27",
+  "expected": "Red confirmed, chat. I won't pretend that was the plan. We reset and follow the process.",
+  "transcript": "Red confirmed chat. I won't pretend that was the plan. We reset and follow the process.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08088,
+    "peak": 0.40895,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.242,
+    "sha256": "a067b395d369cefa87f0a6a8594c2af6348f1bf90565710739354d05a67cec27"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Red confirmed chat. I won't pretend that was the plan. We reset and follow the process."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

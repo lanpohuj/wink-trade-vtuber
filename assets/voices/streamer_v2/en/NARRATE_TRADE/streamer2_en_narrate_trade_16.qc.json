@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_16",
+  "sha256": "2af5e703f0aad38a2c0c70acd030140decbdc2ef9f449ba65b9c07811b95c557",
+  "expected": "This is the bit with no fast-forward button. Following the actual move all the way to the close.",
+  "transcript": "This is the bit with no fast forward button, following the actual move all the way to the close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08987,
+    "peak": 0.4042,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.2,
+    "sha256": "2af5e703f0aad38a2c0c70acd030140decbdc2ef9f449ba65b9c07811b95c557"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " This is the bit with no fast forward button, following the actual move all the way to the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_win_03",
+  "sha256": "71a0f7ef5733782e08f84d3e8908a2ffe54fb71c62cbb1bea235c5a7cce363e7",
+  "expected": "Красота, эту закрыли в плюс! Люблю, когда можно спокойно досмотреть и уже потом порадоваться.",
+  "transcript": "Красота! Эту закрыли в плюс! Люблю, когда можно спокойно досмотреть, и уже потом порадоваться.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08614,
+    "peak": 0.39055,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "71a0f7ef5733782e08f84d3e8908a2ffe54fb71c62cbb1bea235c5a7cce363e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Красота! Эту закрыли в плюс!"
+    },
+    {
+      "start": 2.5,
+      "end": 6.5,
+      "text": " Люблю, когда можно спокойно досмотреть, и уже потом порадоваться."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

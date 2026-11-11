@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_lesson_24",
+  "sha256": "b2c37d005d63186cff07f89b9bafefcf0fae20ed0eafd7266501370af64a8321",
+  "expected": "A forecast and a result are different things. I don't book a win while the trade is still running.",
+  "transcript": "A forecast and a result are different things. I don't book a win while the trade is still running.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08521,
+    "peak": 0.44109,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.18,
+    "sha256": "b2c37d005d63186cff07f89b9bafefcf0fae20ed0eafd7266501370af64a8321"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " A forecast and a result are different things."
+    },
+    {
+      "start": 2.88,
+      "end": 5.28,
+      "text": " I don't book a win while the trade is still running."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

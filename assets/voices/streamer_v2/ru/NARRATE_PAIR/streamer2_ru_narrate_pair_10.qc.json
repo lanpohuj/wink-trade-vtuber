@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_pair_10",
+  "sha256": "181865df32e002ab6fdb05d6b3326ad9368f60d3aab5c9efcc885f09e6053fa6",
+  "expected": "Переходим сюда. Только не будем сразу решать, что здесь лучше: сначала проверка.",
+  "transcript": "Переходим сюда. Только не будем сразу решать, что здесь лучше. Сначала проверка.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08354,
+    "peak": 0.36444,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.121,
+    "sha256": "181865df32e002ab6fdb05d6b3326ad9368f60d3aab5c9efcc885f09e6053fa6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Переходим сюда. Только не будем сразу решать, что здесь лучше. Сначала проверка."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

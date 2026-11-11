@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_24",
+  "sha256": "bfc7a13ab532b0115dabead7de9b35d259f4262c2900cf806fc76c2b46307b50",
+  "expected": "Lovely to see people interested in the process as well as the green closes. That's my kind of conversation.",
+  "transcript": "Lovely to see people interested in the process as well as the green closes. That's my kind of conversation",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08157,
+    "peak": 0.46273,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.187,
+    "sha256": "bfc7a13ab532b0115dabead7de9b35d259f4262c2900cf806fc76c2b46307b50"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Lovely to see people interested in the process as well as the green closes. That's my kind of conversation"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

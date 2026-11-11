@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_win_09",
+  "sha256": "06db26947a049d116eec01fb474aeae646e79d3ad93fc3014de85b4b1f78c8ca",
+  "expected": "Плюс подтверждён! Вот теперь моя довольная интонация вполне по делу.",
+  "transcript": "Плюс подтверждён. Вот теперь моя довольная интонация вполне по делу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08554,
+    "peak": 0.38158,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.085,
+    "sha256": "06db26947a049d116eec01fb474aeae646e79d3ad93fc3014de85b4b1f78c8ca"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Плюс подтверждён. Вот теперь моя довольная интонация вполне по делу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

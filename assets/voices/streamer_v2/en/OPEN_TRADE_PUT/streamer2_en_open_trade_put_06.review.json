@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_06",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down! Price came back after the breakout and held the new side of the level. That was the key bit.",
+  "tts_text": "[confident, lively] Opened down! Price came back after the breakout and held the new side of the level. That was the key bit.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5cb056d472ca746b7253d66aac4d9e1b39b3b3f97bdfb875a80985836a839868",
+  "delivery": "confident, lively",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_06.mp3",
+  "duration": 6.347688,
+  "sha256": "3995b185b26713c07cafdc3c3303f1d216c16bc242ef59c19bf0763db792ac31",
+  "request_payload": {
+    "text": "[confident, lively] Opened down! Price came back after the breakout and held the new side of the level. That was the key bit.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

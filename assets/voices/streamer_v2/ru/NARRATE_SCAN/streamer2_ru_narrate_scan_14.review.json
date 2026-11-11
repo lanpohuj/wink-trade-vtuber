@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_14",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Ищу не самую громкую свечу, а понятную ситуацию. Громких тут и без меня хватает.",
+  "tts_text": "[conversational, smiling] Ищу не самую громкую свечу, а понятную ситуацию. Громких тут и без меня хватает.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "654d4f24f6b6ec1bad1e3b5ac8517b7be2fb2d79f956050eacd05c38202fe096",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_14.mp3",
+  "duration": 5.877438,
+  "sha256": "42ee18707e8323cf28841bc0cf6a579cc66101c0544b4f57d68934128a81b9a3",
+  "request_payload": {
+    "text": "[conversational, smiling] Ищу не самую громкую свечу, а понятную ситуацию. Громких тут и без меня хватает.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

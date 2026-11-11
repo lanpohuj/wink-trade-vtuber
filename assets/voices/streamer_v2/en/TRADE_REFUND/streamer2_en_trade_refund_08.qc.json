@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_08",
+  "sha256": "8127c91005b221034348ab2a5c528577407c844a8a54090a770daeb09dd4d241",
+  "expected": "Well, we've got the stake back. Not the most dramatic ending, but the result's clear: refund.",
+  "transcript": "Well, we've got the stake back. Not the most dramatic ending, but the results clear. Refund!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.07885,
+    "peak": 0.41185,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.231,
+    "sha256": "8127c91005b221034348ab2a5c528577407c844a8a54090a770daeb09dd4d241"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.5,
+      "text": " Well, we've got the stake back. Not the most dramatic ending, but the results clear. Refund!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

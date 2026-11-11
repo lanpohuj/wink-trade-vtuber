@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_expiry_11",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "A minute on this entry. I'm watching the move as a whole, not staging a finale every five seconds.",
+  "tts_text": "[confident, conversational] A minute on this entry. I'm watching the move as a whole, not staging a finale every five seconds.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "14e60815905728e3d0b02d7763842e51db2fc1ee9af39dd24ebad7c165fdbb74",
+  "delivery": "confident, conversational",
+  "file": "en/NARRATE_EXPIRY/streamer2_en_narrate_expiry_11.mp3",
+  "duration": 5.955813,
+  "sha256": "d761d2bcd20846ca878c05d890b42765ee41b7e73ecaa72a9ca4b890b90990da",
+  "request_payload": {
+    "text": "[confident, conversational] A minute on this entry. I'm watching the move as a whole, not staging a finale every five seconds.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

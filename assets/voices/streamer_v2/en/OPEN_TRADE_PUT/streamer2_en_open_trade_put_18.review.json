@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_18",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "The down trade is running. I waited for local structure to change; one nice wick wasn't enough.",
+  "tts_text": "[pleased, focused] The down trade is running. I waited for local structure to change; one nice wick wasn't enough.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d90e3a19f57ed06c2c92924ca188d76ef10913af26f4935e6bd7d2f73db65be6",
+  "delivery": "pleased, focused",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_18.mp3",
+  "duration": 6.269312,
+  "sha256": "01dd33d1adcee6c67e6b54f6b2a9a842e8d20221c193c1d9162a454f24bcae9b",
+  "request_payload": {
+    "text": "[pleased, focused] The down trade is running. I waited for local structure to change; one nice wick wasn't enough.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_30",
+  "sha256": "f685d9756c0946ebac34b3f81f58ebea1bfbc21debc9fa185ec84e4aeb54e0a8",
+  "expected": "Даже хороший сценарий может закрыться не в нашу сторону. Поэтому реакция на итог тоже часть плана.",
+  "transcript": "Даже хороший сценарий может закрыться не в нашу сторону, поэтому реакция на итог тоже часть плана.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08166,
+    "peak": 0.31688,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.107,
+    "sha256": "f685d9756c0946ebac34b3f81f58ebea1bfbc21debc9fa185ec84e4aeb54e0a8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Даже хороший сценарий может закрыться не в нашу сторону, поэтому реакция на итог тоже часть плана."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

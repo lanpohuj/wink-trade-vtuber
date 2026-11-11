@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_29",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "When data is missing, I say so. A more confident voice won't add the candles we don't have.",
+  "tts_text": "[thoughtful, relaxed] When data is missing, I say so. A more confident voice won't add the candles we don't have.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4fadccab042c2e56867a9e727b43cde25371ab238a33942fdb2b0afa338ea86d",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_29.mp3",
+  "duration": 5.4595,
+  "sha256": "b98894b3eae2ca8413fbe48e4fb305eb5ead326275dc4c8bda058baa0af960d5",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] When data is missing, I say so. A more confident voice won't add the candles we don't have.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

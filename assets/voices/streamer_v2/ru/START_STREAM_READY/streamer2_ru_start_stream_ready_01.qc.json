@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_start_stream_ready_01",
+  "sha256": "c3c631430ef487ae1c349529db40cff5ca6513acda94441a477ef5bed3bfe481",
+  "expected": "Всем привет! Винки на связи. Устраивайтесь, будем смотреть графики, разбирать входы и разговаривать по ходу.",
+  "transcript": "Всем привет! Винки на связи! Устраивайтесь! Будем смотреть графики, разбирать входы и разговаривать по ходу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.949,
+    "rms": 0.09026,
+    "peak": 0.47865,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.129,
+    "sha256": "c3c631430ef487ae1c349529db40cff5ca6513acda94441a477ef5bed3bfe481"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " Всем привет! Винки на связи!"
+    },
+    {
+      "start": 2.24,
+      "end": 6.88,
+      "text": " Устраивайтесь! Будем смотреть графики, разбирать входы и разговаривать по ходу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

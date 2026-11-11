@@ -57,6 +57,9 @@ def generate(only_ids=None):
             or json.loads(previous.read_text()).get("text_sha256") != row["text_sha256"]
         ):
             shutil.copy2(engine.synthesize(row["tts_text"], row["lang"]), dest)
+            # RMS is cached by filename. A replacement take needs a new envelope,
+            # otherwise its mouth animation can retain the previous duration.
+            dest.with_suffix(dest.suffix + ".rms2.json").unlink(missing_ok=True)
         compute_rms_chunks(dest)
         row.update(
             file=dest.relative_to(BANK).as_posix(),
@@ -122,6 +125,7 @@ def normalize(text, lang="ru"):
             ("fifty", "50"),
             ("fifteen", "15"),
             ("thirty", "30"),
+            ("half a minute", "30"),
         ]
         if lang == "en"
         else [
@@ -130,6 +134,7 @@ def normalize(text, lang="ru"):
             ("пятьдесят", "50"),
             ("пятнадцать", "15"),
             ("тридцать", "30"),
+            ("полминуты", "30"),
         ]
     )
     for words, number in forms:

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_trade_win_06",
+  "sha256": "b03bf0c0ec06b54e702a33b2d0c1994a06d208f38e5e449ad2b5c9a12e636cf4",
+  "expected": "Ура, здесь плюс! Маленький приятный момент эфира, можно выдохнуть и смотреть дальше.",
+  "transcript": "Ура! Здесь плюс! Маленький приятный момент эфира! Можно выдохнуть и смотреть дальше!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08726,
+    "peak": 0.376,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "b03bf0c0ec06b54e702a33b2d0c1994a06d208f38e5e449ad2b5c9a12e636cf4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5600000000000005,
+      "text": " Ура! Здесь плюс! Маленький приятный момент эфира! Можно выдохнуть и смотреть дальше!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

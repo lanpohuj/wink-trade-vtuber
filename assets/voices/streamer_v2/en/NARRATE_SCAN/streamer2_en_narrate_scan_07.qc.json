@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_scan_07",
+  "sha256": "d1ac3a7ebe4fd2cb77e3bf4347d5dd4c55efb7e61bafa778fe11148d109fb6b6",
+  "expected": "Direction first, entry second. I do like a bit of order, even if I don't always look like it.",
+  "transcript": "Direction first. Entry second. I do like a bit of order, even if I don't always look like it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.07822,
+    "peak": 0.40844,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.208,
+    "sha256": "d1ac3a7ebe4fd2cb77e3bf4347d5dd4c55efb7e61bafa778fe11148d109fb6b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " Direction first. Entry second. I do like a bit of order, even if I don't always look like it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

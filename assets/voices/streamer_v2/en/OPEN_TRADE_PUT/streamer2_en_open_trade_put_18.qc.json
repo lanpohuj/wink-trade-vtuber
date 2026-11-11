@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_put_18",
+  "sha256": "01dd33d1adcee6c67e6b54f6b2a9a842e8d20221c193c1d9162a454f24bcae9b",
+  "expected": "The down trade is running. I waited for local structure to change; one nice wick wasn't enough.",
+  "transcript": "The down trade is running. I waited for local structure to change. One nice wick wasn't enough.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08103,
+    "peak": 0.42098,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.169,
+    "sha256": "01dd33d1adcee6c67e6b54f6b2a9a842e8d20221c193c1d9162a454f24bcae9b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " The down trade is running. I waited for local structure to change. One nice wick wasn't enough."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

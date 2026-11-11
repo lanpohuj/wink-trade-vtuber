@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_24",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я сейчас проверяю несколько вещей сразу. Красивую историю про график можно сочинить любую, мне нужны условия.",
+  "tts_text": "[warm, lightly playful] Я сейчас проверяю несколько вещей сразу. Красивую историю про график можно сочинить любую, мне нужны условия.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "cdc9ae0bcda0f3bb6db0f749610ba31c53929ad1a3d9b73e4413031b335253e5",
+  "delivery": "warm, lightly playful",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_24.mp3",
+  "duration": 6.295438,
+  "sha256": "6783340ec14b8702e687f9383ef7a8d5b5717cbfe43bc2906cf19e1aae1b0e3a",
+  "request_payload": {
+    "text": "[warm, lightly playful] Я сейчас проверяю несколько вещей сразу. Красивую историю про график можно сочинить любую, мне нужны условия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_06",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Я люблю, когда могу объяснить вход простыми словами. Если самой непонятно, красивый термин не спасёт.",
+  "tts_text": "[lightly playful] Я люблю, когда могу объяснить вход простыми словами. Если самой непонятно, красивый термин не спасёт.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "342cc69c057b97bd4434d50bbc5e4977fb85a47ffdecd11a1826c8bc2954be48",
+  "delivery": "lightly playful",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_06.mp3",
+  "duration": 5.877438,
+  "sha256": "732f728f2f4d03b8d40349b8468165fbb0abe975b2c8e7af0861f4250fa11196",
+  "request_payload": {
+    "text": "[lightly playful] Я люблю, когда могу объяснить вход простыми словами. Если самой непонятно, красивый термин не спасёт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

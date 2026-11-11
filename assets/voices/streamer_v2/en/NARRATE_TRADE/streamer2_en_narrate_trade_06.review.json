@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_trade_06",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Keeping my attention on this trade. I'm not opening another one just to keep things busy.",
+  "tts_text": "[warm, lightly playful] Keeping my attention on this trade. I'm not opening another one just to keep things busy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "706e9077abd6480ba3cf2dd82266e211b987476b43ee39a1e14c8de7df2fc412",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_TRADE/streamer2_en_narrate_trade_06.mp3",
+  "duration": 4.910938,
+  "sha256": "9c458ad0b7bb84a51431b410262a308a588c2d9cfec53d2b6537c8580a2eb5ad",
+  "request_payload": {
+    "text": "[warm, lightly playful] Keeping my attention on this trade. I'm not opening another one just to keep things busy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

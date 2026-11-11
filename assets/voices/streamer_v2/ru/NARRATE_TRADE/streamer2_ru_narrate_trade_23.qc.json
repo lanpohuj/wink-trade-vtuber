@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_trade_23",
+  "sha256": "5e75dbdb9693f56fd3ffd0893cbe0b20ac75cf859d3268eceffece4b90d4b24d",
+  "expected": "Пока наблюдаем эту сделку. Мне не хочется мешать ожиданию десятью разными прогнозами за минуту.",
+  "transcript": "пока наблюдаем эту сделку мне не хочется мешать ожиданию десятью разными прогнозами за минуту",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.09371,
+    "peak": 0.43771,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "5e75dbdb9693f56fd3ffd0893cbe0b20ac75cf859d3268eceffece4b90d4b24d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " пока наблюдаем эту сделку мне не хочется мешать ожиданию десятью разными прогнозами за минуту"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

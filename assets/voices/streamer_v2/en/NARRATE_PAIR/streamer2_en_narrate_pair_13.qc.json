@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_13",
+  "sha256": "49b100dde60d46d5cc2eec2bf7b0aa24f89114c90ed7cbb8f50744186287718a",
+  "expected": "Let's check another chart. I like having options rather than pretending there's only one.",
+  "transcript": "Let's check another chart. I like having options rather than pretending there's only one.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08412,
+    "peak": 0.42845,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.228,
+    "sha256": "49b100dde60d46d5cc2eec2bf7b0aa24f89114c90ed7cbb8f50744186287718a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Let's check another chart. I like having options rather than pretending there's only one."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

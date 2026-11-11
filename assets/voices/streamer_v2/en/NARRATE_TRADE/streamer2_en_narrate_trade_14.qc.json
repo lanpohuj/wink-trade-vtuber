@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_14",
+  "sha256": "bf7034e1f901e1692024691a95d716d887b11ed71472a1c8850142f2e4643dc9",
+  "expected": "I'm not clicking anything extra. I'd rather follow the entry we already have through to the end.",
+  "transcript": "I'm not clicking anything extra. I'd rather follow the entry we already have through to the end.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08191,
+    "peak": 0.37199,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.222,
+    "sha256": "bf7034e1f901e1692024691a95d716d887b11ed71472a1c8850142f2e4643dc9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " I'm not clicking anything extra. I'd rather follow the entry we already have through to the end."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

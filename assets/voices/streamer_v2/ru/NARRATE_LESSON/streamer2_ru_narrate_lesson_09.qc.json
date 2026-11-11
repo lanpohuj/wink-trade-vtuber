@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_lesson_09",
+  "sha256": "63a07a45279ffc77ffd363f3045539da09140ddd91aaf32f934effffc67a11c8",
+  "expected": "Мне нравится проверять идею, а не защищать её любой ценой. Даже если я уже красиво её объяснила.",
+  "transcript": "Мне нравится проверять идею, а не защищать её любой ценой, даже если я уже красиво её объяснила.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.0806,
+    "peak": 0.3183,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "63a07a45279ffc77ffd363f3045539da09140ddd91aaf32f934effffc67a11c8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Мне нравится проверять идею, а не защищать её любой ценой, даже если я уже красиво её объяснила."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

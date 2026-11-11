@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_trade_win_06",
+  "sha256": "bbcc472d34fc2194f15eac6d270276632013575d15d23c0eb6eaa863812bcbec",
+  "expected": "Yay, that one's green! A nice little stream moment. Take a breath, then we carry on.",
+  "transcript": "Yay! That one's green! A nice little stream moment. Take a breath, then we carry on.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.0813,
+    "peak": 0.36288,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.147,
+    "sha256": "bbcc472d34fc2194f15eac6d270276632013575d15d23c0eb6eaa863812bcbec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Yay! That one's green!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " A nice little stream moment."
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Take a breath, then we carry on."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

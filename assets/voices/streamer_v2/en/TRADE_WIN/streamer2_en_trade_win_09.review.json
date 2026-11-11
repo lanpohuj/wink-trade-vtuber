@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_09",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green confirmed! Now the pleased voice is actually justified.",
+  "tts_text": "[bright, warm] Green confirmed! Now the pleased voice is actually justified.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "41482972e31ef17909c675f38387b4086bc10d2706314f8350b89e4b0e8361d9",
+  "delivery": "bright, warm",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_09.mp3",
+  "duration": 4.23175,
+  "sha256": "575b8493a69d2bdd5735bb59cc63f80439e92c0cb40734d34e85d274f543ebcb",
+  "request_payload": {
+    "text": "[bright, warm] Green confirmed! Now the pleased voice is actually justified.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_lesson_29",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Когда данных мало, я так и говорю. Голос поувереннее не добавит недостающие свечи.",
+  "tts_text": "[thoughtful, relaxed] Когда данных мало, я так и говорю. Голос поувереннее не добавит недостающие свечи.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0416e334e54a92d09d2d50a9d59fd3cba0f80e685ddb0d29c9d48e34ad8f2095",
+  "delivery": "thoughtful, relaxed",
+  "file": "ru/NARRATE_LESSON/streamer2_ru_narrate_lesson_29.mp3",
+  "duration": 5.773,
+  "sha256": "f6d5bd5f97c9f9693b78d7664852bc7084973c4dee30d7e38532e53fd090a378",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] Когда данных мало, я так и говорю. Голос поувереннее не добавит недостающие свечи.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

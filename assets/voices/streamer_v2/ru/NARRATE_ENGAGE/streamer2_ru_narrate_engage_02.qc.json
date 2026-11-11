@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_engage_02",
+  "sha256": "c2e744705892cb8b95718ada9d5fd68a3514cf6716582bb4d417f074865ab507",
+  "expected": "Чат, вам удобнее, когда я объясняю сам вход или сначала показываю общую картину? Любопытно.",
+  "transcript": "Чат, вам удобнее, когда я объясняю сам вход или сначала показываю общую картину? Любопытно?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.314,
+    "rms": 0.0825,
+    "peak": 0.3666,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.134,
+    "sha256": "c2e744705892cb8b95718ada9d5fd68a3514cf6716582bb4d417f074865ab507"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.2,
+      "text": " Чат, вам удобнее, когда я объясняю сам вход или сначала показываю общую картину? Любопытно?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

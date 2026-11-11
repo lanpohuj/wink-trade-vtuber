@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_15",
+  "sha256": "acaa7aa6037444cb7dac43d7fd4a6da436c485c27b47d1c3240db12580c196a7",
+  "expected": "Right, up is running! Price gave a confirmed rejection at the boundary. Let's see this setup through.",
+  "transcript": "Right! Up is running! Price gave a confirmed rejection at the boundary. Let's see this set up through. Hmm.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.314,
+    "rms": 0.07537,
+    "peak": 0.41352,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.194,
+    "sha256": "acaa7aa6037444cb7dac43d7fd4a6da436c485c27b47d1c3240db12580c196a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.2,
+      "text": " Right! Up is running! Price gave a confirmed rejection at the boundary. Let's see this set up through. Hmm."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

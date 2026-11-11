@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_engage_23",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Be honest, chat: which is harder to watch, waiting for an entry or the last seconds of a trade?",
+  "tts_text": "[warm, conversational] Be honest, chat: which is harder to watch, waiting for an entry or the last seconds of a trade?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "68a66894ab865498c3c9b9b6776916396dfcdec88714138f0836c4e4c6dfe407",
+  "delivery": "warm, conversational",
+  "file": "en/NARRATE_ENGAGE/streamer2_en_narrate_engage_23.mp3",
+  "duration": 5.564,
+  "sha256": "eb2060ff255c4015a07ae990f1fcb59bb43bfb8132fcb3ef9688f6dd65d36b19",
+  "request_payload": {
+    "text": "[warm, conversational] Be honest, chat: which is harder to watch, waiting for an entry or the last seconds of a trade?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

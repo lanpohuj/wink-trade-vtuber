@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_15",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Мне нравится этот финал! Подтверждённый плюс, без объявления победы за пять секунд до закрытия.",
+  "tts_text": "[bright, warm] Мне нравится этот финал! Подтверждённый плюс, без объявления победы за пять секунд до закрытия.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e8bb210f7667d5937c4129f2dcf1d6a3e103747f1c46aeee7209f5e56d7c1214",
+  "delivery": "bright, warm",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_15.mp3",
+  "duration": 6.034187,
+  "sha256": "ac89c0d44221008028dbfaa1fd774eddf897ed7fd811195206b76cbe15c7d890",
+  "request_payload": {
+    "text": "[bright, warm] Мне нравится этот финал! Подтверждённый плюс, без объявления победы за пять секунд до закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

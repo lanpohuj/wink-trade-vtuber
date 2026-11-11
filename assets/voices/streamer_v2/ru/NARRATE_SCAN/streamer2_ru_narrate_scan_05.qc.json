@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_05",
+  "sha256": "fd6e95f2ecd5915863c7ca2be1a3f6df950a6cc9bf4694e17ab5b5708a6536b0",
+  "expected": "Чат, я на графике. Ищу момент, который можно нормально объяснить, а не просто ткнуть кнопку.",
+  "transcript": "Чат, и я на графике. Ищу момент, который можно нормально объяснить, а не просто ткнуть кнопку.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.09105,
+    "peak": 0.38079,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.097,
+    "sha256": "fd6e95f2ecd5915863c7ca2be1a3f6df950a6cc9bf4694e17ab5b5708a6536b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Чат, и я на графике."
+    },
+    {
+      "start": 2.0,
+      "end": 6.0,
+      "text": " Ищу момент, который можно нормально объяснить, а не просто ткнуть кнопку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

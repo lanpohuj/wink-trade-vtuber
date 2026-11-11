@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_result_03",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "На следующую сделку выставлено сто десять. Сейчас ищу нормальную ситуацию, а не обещаю чудо после минуса.",
+  "tts_text": "[composed, conversational] На следующую сделку выставлено сто десять. Сейчас ищу нормальную ситуацию, а не обещаю чудо после минуса.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6caa3ea807d63b1bba8439e69090b0c59d037a05b558bb8848afa336cd18d18d",
+  "delivery": "composed, conversational",
+  "file": "ru/NARRATE_RESULT/streamer2_ru_narrate_result_03.mp3",
+  "duration": 6.68725,
+  "sha256": "9d440f12189f8925e26d0f016f92322571a52601c700cce33cbc42b47fba6ccf",
+  "request_payload": {
+    "text": "[composed, conversational] На следующую сделку выставлено сто десять. Сейчас ищу нормальную ситуацию, а не обещаю чудо после минуса.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

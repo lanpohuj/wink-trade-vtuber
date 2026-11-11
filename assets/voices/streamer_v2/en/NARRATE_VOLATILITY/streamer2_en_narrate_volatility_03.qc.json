@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_volatility_03",
+  "sha256": "3c5601948678e405d6caf3160f4e4a4973c07ba2604b35e3d95b8c742a3e626c",
+  "expected": "The moves have picked up, chat. I won't call every sharp candle a lovely opportunity.",
+  "transcript": "The moves have picked up, chat. I won't call every sharp candle a lovely opportunity.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07895,
+    "peak": 0.39443,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.137,
+    "sha256": "3c5601948678e405d6caf3160f4e4a4973c07ba2604b35e3d95b8c742a3e626c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " The moves have picked up, chat. I won't call every sharp candle a lovely opportunity."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

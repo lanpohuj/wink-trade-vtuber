@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_05",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Мне нравится, когда вы спрашиваете, почему именно так. Это интереснее, чем просто молча смотреть на таймер.",
+  "tts_text": "[warm, conversational] Мне нравится, когда вы спрашиваете, почему именно так. Это интереснее, чем просто молча смотреть на таймер.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9425fca42bc9f8c96199d0071e75441b21a4a119025e144f97f78d9794962ee0",
+  "delivery": "warm, conversational",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_05.mp3",
+  "duration": 6.217062,
+  "sha256": "1f0342929ac5260257ce4c0dbeead791721ce2a3ef077e96212729de12d6e033",
+  "request_payload": {
+    "text": "[warm, conversational] Мне нравится, когда вы спрашиваете, почему именно так. Это интереснее, чем просто молча смотреть на таймер.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

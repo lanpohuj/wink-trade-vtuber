@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_19",
+  "sha256": "39226a7a4f2eb9c6d0ef1bff205f1de84885b30ea983662a2a3e0df646b0d782",
+  "expected": "Which part tends to raise the most questions: the pair, the direction, or the expiry?",
+  "transcript": "Which part tends to raise the most questions, the pair, the direction, or the expiry?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.07165,
+    "peak": 0.40936,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.298,
+    "sha256": "39226a7a4f2eb9c6d0ef1bff205f1de84885b30ea983662a2a3e0df646b0d782"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.8,
+      "text": " Which part tends to raise the most questions, the pair, the direction, or the expiry?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

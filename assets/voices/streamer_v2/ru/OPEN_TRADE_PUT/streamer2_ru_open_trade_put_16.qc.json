@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_16",
+  "sha256": "58858196aa1e7ab9bc2396e51c44f07c83bdaaea780e9b2d4ce29f6b4a77cd5b",
+  "expected": "Зашла вниз! Здесь не просто остановка: локальная структура изменилась и дала подтверждение разворота.",
+  "transcript": "Зашла вниз. Здесь не просто остановка. Локальная структура изменилась и дала подтверждение разворота.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08776,
+    "peak": 0.38652,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.117,
+    "sha256": "58858196aa1e7ab9bc2396e51c44f07c83bdaaea780e9b2d4ce29f6b4a77cd5b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Зашла вниз. Здесь не просто остановка. Локальная структура изменилась и дала подтверждение разворота."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

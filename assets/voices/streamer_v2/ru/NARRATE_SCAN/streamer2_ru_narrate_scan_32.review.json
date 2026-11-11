@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_ru_narrate_scan_32",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом.",
+  "tts_text": "[conversational, smiling] Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9a6bfa49aae70e938cfd276ad47979928196ff0d9625563d0f3c50da9ce85829",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_32.mp3",
+  "duration": 5.903563,
+  "sha256": "483bfe56e119dee46125141fe4f8baca642352ea990e63de6f92b9761d37facc",
+  "request_payload": {
+    "text": "[conversational, smiling] Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

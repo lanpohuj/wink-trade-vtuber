@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_refund_01",
+  "sha256": "e7aab7fdb3f05380f5bbcffb86027e86e8099898eb9657f4c330399bc641fc3a",
+  "expected": "Oh, a refund! The chart skipped the big plot twist this time. Stake returned.",
+  "transcript": "Oh, a refund! The charts skipped the big plot twist this time. Stake returned.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07795,
+    "peak": 0.45846,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.193,
+    "sha256": "e7aab7fdb3f05380f5bbcffb86027e86e8099898eb9657f4c330399bc641fc3a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.68,
+      "text": " Oh, a refund! The charts skipped the big plot twist this time. Stake returned."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

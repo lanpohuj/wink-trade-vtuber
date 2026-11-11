@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_lesson_32",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A small but useful detail: I check direction and expiry together, not as separate guesses.",
+  "tts_text": "[thoughtful, relaxed] A small but useful detail: I check direction and expiry together, not as separate guesses.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cf52153724d71ad0c605ccd96506a87bdaf1e8b565de6a2e1c351d61747685e8",
+  "delivery": "thoughtful, relaxed",
+  "file": "en/NARRATE_LESSON/streamer2_en_narrate_lesson_32.mp3",
+  "duration": 6.269312,
+  "sha256": "6c3afcbbc7f878c2f57c221b1b67bddef3961e520d2f4a0f73800f4bfcffff46",
+  "request_payload": {
+    "text": "[thoughtful, relaxed] A small but useful detail: I check direction and expiry together, not as separate guesses.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

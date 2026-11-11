@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_14",
+  "sha256": "e52bfc626372a2f043effbc0a82f51d384806fbdf7f532522f894775b5fd7373",
+  "expected": "That closed nicely, chat, green! The next entry still gets checked from scratch.",
+  "transcript": "That clothes nicely chat green. The next entry still gets checked from scratch.",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07684,
+    "peak": 0.383,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.097,
+    "sha256": "e52bfc626372a2f043effbc0a82f51d384806fbdf7f532522f894775b5fd7373"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " That clothes nicely chat green. The next entry still gets checked from scratch."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

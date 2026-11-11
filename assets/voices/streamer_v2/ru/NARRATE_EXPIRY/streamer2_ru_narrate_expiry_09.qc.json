@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_expiry_09",
+  "sha256": "bb721ce8c645667c8d2e2bf20dfd711de5c3f9f788ca4193795aa6dd2a031456",
+  "expected": "Здесь минутная сделка. Дадим ей эту минуту, а не будем требовать весь результат от первой свечки.",
+  "transcript": "Здесь минутная сделка. Дадим я эту минуту, а не будем требовать весь результат от первой свечки.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.08848,
+    "peak": 0.36033,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.118,
+    "sha256": "bb721ce8c645667c8d2e2bf20dfd711de5c3f9f788ca4193795aa6dd2a031456"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Здесь минутная сделка. Дадим я эту минуту, а не будем требовать весь результат от первой свечки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

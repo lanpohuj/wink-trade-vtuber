@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_trade_11",
+  "sha256": "82022027fb1429138561ad25b586c4347ea4aaf5f77ac9c9ba808af4a47b680e",
+  "expected": "I enjoy unpacking an entry, but everyone has to wait for the close. Settle in; we're watching.",
+  "transcript": "I enjoy unpacking an entry, but everyone has to wait for the close. Settle in, we're watching!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.0703,
+    "peak": 0.38281,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.213,
+    "sha256": "82022027fb1429138561ad25b586c4347ea4aaf5f77ac9c9ba808af4a47b680e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " I enjoy unpacking an entry, but everyone has to wait for the close."
+    },
+    {
+      "start": 4.16,
+      "end": 5.6000000000000005,
+      "text": " Settle in, we're watching!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

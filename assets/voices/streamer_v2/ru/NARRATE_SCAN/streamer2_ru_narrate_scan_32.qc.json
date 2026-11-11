@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_narrate_scan_32",
+  "sha256": "483bfe56e119dee46125141fe4f8baca642352ea990e63de6f92b9761d37facc",
+  "expected": "Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом.",
+  "transcript": "Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08541,
+    "peak": 0.35043,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.084,
+    "sha256": "483bfe56e119dee46125141fe4f8baca642352ea990e63de6f92b9761d37facc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Тут пока догружается история. По пустому экрану анализ не устроишь, даже с очень уверенным голосом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_expiry_09",
+  "sha256": "43f99aa0843dd8b59fb16b925295732d5e47ae7af9cf0ded38fb29411637830c",
+  "expected": "This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle.",
+  "transcript": "This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08795,
+    "peak": 0.34584,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "43f99aa0843dd8b59fb16b925295732d5e47ae7af9cf0ded38fb29411637830c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " This is a one-minute trade. Let's give it that minute rather than demand everything from the first candle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

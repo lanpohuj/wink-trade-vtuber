@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_03",
+  "sha256": "0a68a87a811597ee50ea8eb15b7c791df8d18931f6bbf4cf17f2cf026e2ded10",
+  "expected": "If I lose you, ask. I'd rather explain it simply than leave you wrestling with the terminology.",
+  "transcript": "If I lose you, ask. I'd rather explain it simply than leave you wrestling with the terminology.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.818,
+    "rms": 0.09318,
+    "peak": 0.7032,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.318,
+    "sha256": "0a68a87a811597ee50ea8eb15b7c791df8d18931f6bbf4cf17f2cf026e2ded10"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.72,
+      "text": " If I lose you, ask. I'd rather explain it simply than leave you wrestling with the terminology."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

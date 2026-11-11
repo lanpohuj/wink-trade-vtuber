@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_ru_open_trade_call_01",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Есть, открыла вверх! После отката движение снова подтвердилось — вот эту идею сейчас и смотрим.",
+  "tts_text": "[confident, lively] Есть, открыла вверх! После отката движение снова подтвердилось — вот эту идею сейчас и смотрим.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ca6ff885a2f824f7394efa13e5c62ae4cf261f860287dfa58a1b32f61c53619a",
+  "delivery": "confident, lively",
+  "file": "ru/OPEN_TRADE_CALL/streamer2_ru_open_trade_call_01.mp3",
+  "duration": 6.347688,
+  "sha256": "17e247742d4d21c0ad66cced1e9fe5a689a9fb1699f699f2a9e701800d8aaf79",
+  "request_payload": {
+    "text": "[confident, lively] Есть, открыла вверх! После отката движение снова подтвердилось — вот эту идею сейчас и смотрим.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

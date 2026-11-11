@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_engage_17",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Если вы просто фоном смотрите, тоже привет. Я постараюсь говорить так, чтобы смысл не терялся без экрана.",
+  "tts_text": "[warm, conversational] Если вы просто фоном смотрите, тоже привет. Я постараюсь говорить так, чтобы смысл не терялся без экрана.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "dd5d24d46cd33d674f4c9717e625859b2f0dd7979d5dcc8e738ab0729d1af1ad",
+  "delivery": "warm, conversational",
+  "file": "ru/NARRATE_ENGAGE/streamer2_ru_narrate_engage_17.mp3",
+  "duration": 6.086438,
+  "sha256": "96a2cb6b009d4034165b48bbffc7a2ef765868ee44af5d0e5fd92550149c4c8f",
+  "request_payload": {
+    "text": "[warm, conversational] Если вы просто фоном смотрите, тоже привет. Я постараюсь говорить так, чтобы смысл не терялся без экрана.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

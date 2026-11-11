@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_en_narrate_lesson_27",
+  "sha256": "6a11e045047cfa1b0a31bc5300fb3b9010a7ef1d54de678b2b926619915e19f1",
+  "expected": "I like a simple question: what would cancel this idea? Sometimes that's worth more than ten arguments for it.",
+  "transcript": "I like a simple question. What would cancel this idea? Sometimes that's worth more than 10 arguments for it.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.687,
+    "rms": 0.08108,
+    "peak": 0.4313,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.087,
+    "sha256": "6a11e045047cfa1b0a31bc5300fb3b9010a7ef1d54de678b2b926619915e19f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " I like a simple question. What would cancel this idea?"
+    },
+    {
+      "start": 3.84,
+      "end": 6.640000000000001,
+      "text": " Sometimes that's worth more than 10 arguments for it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

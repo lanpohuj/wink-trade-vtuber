@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_12",
+  "sha256": "92cd17123ed71ce23e51b1c2da180aee95397a48236625cc34961c8db0b0302c",
+  "expected": "Ah, caught at the close. It was positive in the final seconds, then finished just the wrong side, in red.",
+  "transcript": "Ugh, caught at the close. It was positive in the final seconds, then finished just the wrong side, and read...",
+  "similarity": 0.958,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.393,
+    "rms": 0.07594,
+    "peak": 0.38353,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.153,
+    "sha256": "92cd17123ed71ce23e51b1c2da180aee95397a48236625cc34961c8db0b0302c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.28,
+      "text": " Ugh, caught at the close. It was positive in the final seconds, then finished just the wrong side, and read..."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

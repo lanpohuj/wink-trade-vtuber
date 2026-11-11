@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_scan_29",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сейчас посмотрю, что подтверждается на разных интервалах. Так понятнее, куда может пойти график.",
+  "tts_text": "[conversational, smiling] Сейчас посмотрю, что подтверждается на разных интервалах. Так понятнее, куда может пойти график.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8f2397065bf0aab34abc8f30c74f0199dada19c850864a4e9273add85c76e00c",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_SCAN/streamer2_ru_narrate_scan_29.mp3",
+  "duration": 5.773,
+  "sha256": "eb94bc085041d0be943bcf1aefc30e719011467a9218becc2da727acd844c5ba",
+  "request_payload": {
+    "text": "[conversational, smiling] Сейчас посмотрю, что подтверждается на разных интервалах. Так понятнее, куда может пойти график.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

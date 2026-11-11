@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_02",
+  "sha256": "66d07ee0a4ac30afbdcc7aebcac1e5e9ae514eebafab803ff721e60006f15aff",
+  "expected": "I don't choose the expiry by mood. I read the setup first and then choose the window.",
+  "transcript": "I don't choose the expiry by mood. I read the setup first and then choose the window.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.0856,
+    "peak": 0.44189,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.244,
+    "sha256": "66d07ee0a4ac30afbdcc7aebcac1e5e9ae514eebafab803ff721e60006f15aff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " I don't choose the expiry by mood. I read the setup first and then choose the window."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

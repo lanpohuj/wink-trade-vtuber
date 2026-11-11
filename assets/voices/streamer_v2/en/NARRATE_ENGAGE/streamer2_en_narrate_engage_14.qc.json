@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_engage_14",
+  "sha256": "d3b5832492a4eefb5569fdf4e4eff42a7002002c549f19f088cf53f81482f6c9",
+  "expected": "If I disappear into jargon, chat, bring me back. Keeping things simple takes practice too.",
+  "transcript": "If I disappear into jargon chat, bring me back. Keeping things simple takes practice too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08173,
+    "peak": 0.42341,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.233,
+    "sha256": "d3b5832492a4eefb5569fdf4e4eff42a7002002c549f19f088cf53f81482f6c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " If I disappear into jargon chat, bring me back. Keeping things simple takes practice too."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_lesson_14",
+  "sha256": "7d48eccf88d8a052052a85c6ec6857cdb1e699612ea38bcc3e7151a97629a701",
+  "expected": "If the chart gives no clear entry, skipping is a decision too. Just without the fanfare and countdown.",
+  "transcript": "If the chart gives no clear entry, skipping is a decision too, just without the fanfare and countdown.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07976,
+    "peak": 0.44224,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.147,
+    "sha256": "7d48eccf88d8a052052a85c6ec6857cdb1e699612ea38bcc3e7151a97629a701"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " If the chart gives no clear entry, skipping is a decision too, just without the fanfare and countdown."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_trade_win_07",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Закрылись в плюс, чатик! Спасибо тем, кто досмотрел со мной до самого конца.",
+  "tts_text": "[happy, smiling] Закрылись в плюс, чатик! Спасибо тем, кто досмотрел со мной до самого конца.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f70f4f1aef739e7fed78feef857c55e8772fe26c20f97b08759be1a64ec711c6",
+  "delivery": "happy, smiling",
+  "file": "ru/TRADE_WIN/streamer2_ru_trade_win_07.mp3",
+  "duration": 4.858688,
+  "sha256": "c205606141c197490e51adbcb70291f0460547087966131ad84e068b558b5841",
+  "request_payload": {
+    "text": "[happy, smiling] Закрылись в плюс, чатик! Спасибо тем, кто досмотрел со мной до самого конца.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_14",
+  "sha256": "73b4e8872c0ffdb2f2d74ea374769556363e8d17994a50988d3584eafe723eaa",
+  "expected": "Сделка вниз открыта. Здесь смотрю отбой от края диапазона; реакция была, идею объяснила.",
+  "transcript": "Сделка вниз открыта. Здесь смотрю отбой и от края диапазона. Реакция была, идею объяснила.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.87,
+    "rms": 0.0898,
+    "peak": 0.42119,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.09,
+    "sha256": "73b4e8872c0ffdb2f2d74ea374769556363e8d17994a50988d3584eafe723eaa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.8,
+      "text": " Сделка вниз открыта. Здесь смотрю отбой и от края диапазона. Реакция была, идею объяснила."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

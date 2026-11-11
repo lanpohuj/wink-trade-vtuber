@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_narrate_scan_15",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "This is the bit people usually want to skip. I'm giving it a proper look.",
+  "tts_text": "[warm, lightly playful] This is the bit people usually want to skip. I'm giving it a proper look.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9c285e49a1bf18b6b66e5b3079c0f0c1c7d1dbe5d6e30d61c3a50d6a5d046c2a",
+  "delivery": "warm, lightly playful",
+  "file": "en/NARRATE_SCAN/streamer2_en_narrate_scan_15.mp3",
+  "duration": 4.597437,
+  "sha256": "94c51800af9ea3cf9883efc26f4261c197870eb620dd88b92e0ff7b2698d2b2d",
+  "request_payload": {
+    "text": "[warm, lightly playful] This is the bit people usually want to skip. I'm giving it a proper look.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

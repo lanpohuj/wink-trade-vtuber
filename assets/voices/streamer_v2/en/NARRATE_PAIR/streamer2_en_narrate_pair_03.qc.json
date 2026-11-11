@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_pair_03",
+  "sha256": "ecac68bed2289d342eec8d728e6890f56f97645fba57256bed6ebe778acc5c6d",
+  "expected": "Here's the next candidate. Let's not fall in love with the first candle we see.",
+  "transcript": "Here's the next candidate. Let's not fall in love with the first candle we see.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07558,
+    "peak": 0.36089,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.127,
+    "sha256": "ecac68bed2289d342eec8d728e6890f56f97645fba57256bed6ebe778acc5c6d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Here's the next candidate. Let's not fall in love with the first candle we see."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

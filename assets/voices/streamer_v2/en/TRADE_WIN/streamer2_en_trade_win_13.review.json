@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_13",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "And there's the result: green! I'm officially allowing myself a little happy moment.",
+  "tts_text": "[happy, smiling] And there's the result: green! I'm officially allowing myself a little happy moment.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5ac9a2cca299e9cb31e01439e19e89ee20530879e7a5a53fadf6ac0f7d452210",
+  "delivery": "happy, smiling",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_13.mp3",
+  "duration": 5.30275,
+  "sha256": "b3f9c0cbbf69a33c60398cd4ee928749d60d8445577eef9dd82b791e23ad9262",
+  "request_payload": {
+    "text": "[happy, smiling] And there's the result: green! I'm officially allowing myself a little happy moment.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_volatility_02",
+  "sha256": "50a4dce6788e474e1931fcbae3638da8b4b9c8fc5caeca5b23dea1ad46618002",
+  "expected": "The chart's getting choppy now. Recent candle ranges have expanded; that's what I'm pointing out.",
+  "transcript": "The chart's getting choppy now. Recent candle ranges have expanded. That's what I'm pointing out.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08116,
+    "peak": 0.36305,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.18,
+    "sha256": "50a4dce6788e474e1931fcbae3638da8b4b9c8fc5caeca5b23dea1ad46618002"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " The chart's getting choppy now. Recent candle ranges have expanded. That's what I'm pointing out."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

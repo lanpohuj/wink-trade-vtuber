@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_trade_win_16",
+  "sha256": "8fc9131ee13218874bf94b482e4c8bd3d7db07c14183bba0c7a756f2f87654af",
+  "expected": "Positive result! The smile's earned this time, but we keep the same careful checks from here.",
+  "transcript": "Positive result! The smiles earned this time, but we keep the same careful checks from here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.0767,
+    "peak": 0.37392,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.273,
+    "sha256": "8fc9131ee13218874bf94b482e4c8bd3d7db07c14183bba0c7a756f2f87654af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Positive result! The smiles earned this time, but we keep the same careful checks from here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

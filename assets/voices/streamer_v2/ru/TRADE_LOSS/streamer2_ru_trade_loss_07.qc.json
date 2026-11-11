@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_trade_loss_07",
+  "sha256": "118d94ac3c24e9bcc80adf9c0dfeda813702b5061e2db5b41f903a82e595a676",
+  "expected": "Так, результат отрицательный. Выдохнули, чат. Следующее решение не будем принимать из обиды.",
+  "transcript": "Так, результат отрицательный. Выдохнули чат. Следующее решение не будем принимать из обиды.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.08451,
+    "peak": 0.31912,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "118d94ac3c24e9bcc80adf9c0dfeda813702b5061e2db5b41f903a82e595a676"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Так, результат отрицательный. Выдохнули чат."
+    },
+    {
+      "start": 3.5,
+      "end": 6.0,
+      "text": " Следующее решение не будем принимать из обиды."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

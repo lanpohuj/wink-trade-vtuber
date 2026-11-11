@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_en_trade_win_04",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Yes, green is on the board! Let's not turn one trade into a legend, though. Same focus from here.",
+  "tts_text": "[happy, smiling] Yes, green is on the board! Let's not turn one trade into a legend, though. Same focus from here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a1ede67465d37bd8f1ad731cc74deecb46afab447ff9ff5c9aee5d1883a925e8",
+  "delivery": "happy, smiling",
+  "file": "en/TRADE_WIN/streamer2_en_trade_win_04.mp3",
+  "duration": 6.661125,
+  "sha256": "69a08cce6f40e0d6a5489130e9f2d823a5632857f10e56e00adbd6019745de0c",
+  "request_payload": {
+    "text": "[happy, smiling] Yes, green is on the board! Let's not turn one trade into a legend, though. Same focus from here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

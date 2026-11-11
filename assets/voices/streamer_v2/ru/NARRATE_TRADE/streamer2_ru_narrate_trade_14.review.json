@@ -1,0 +1,34 @@
+{
+  "id": "streamer2_ru_narrate_trade_14",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сейчас ничего дополнительно не нажимаю. Мне важнее довести до конца уже открытый вход.",
+  "tts_text": "[conversational, smiling] Сейчас ничего дополнительно не нажимаю. Мне важнее довести до конца уже открытый вход.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "180c7299c0950d902765e91b693a183bbfd4bb66782f84775ff42644cb30f2b9",
+  "delivery": "conversational, smiling",
+  "file": "ru/NARRATE_TRADE/streamer2_ru_narrate_trade_14.mp3",
+  "duration": 4.989312,
+  "sha256": "c55a6417853868de751a0c9157bb20c897dae6b378351646287d0500c8f13d3d",
+  "request_payload": {
+    "text": "[conversational, smiling] Сейчас ничего дополнительно не нажимаю. Мне важнее довести до конца уже открытый вход.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

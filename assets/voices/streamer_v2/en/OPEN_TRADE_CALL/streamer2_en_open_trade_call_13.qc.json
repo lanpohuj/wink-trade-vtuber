@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_open_trade_call_13",
+  "sha256": "31d069f6955d66471d43896bfb608e5253d11ee79cafd59170b1f2d51f82b052",
+  "expected": "There, I'm in up! The range boundary gave confirmation. Now we watch, no victory speech just yet.",
+  "transcript": "There, I'm in up! The range boundary gave confirmation. Now we watch. No victory speech just yet!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.079,
+    "rms": 0.07847,
+    "peak": 0.39339,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.219,
+    "sha256": "31d069f6955d66471d43896bfb608e5253d11ee79cafd59170b1f2d51f82b052"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "text": " There, I'm in up! The range boundary gave confirmation. Now we watch. No victory speech just yet!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_trade_07",
+  "sha256": "a25d66d4fea109525991c2f32490ae40d22f418002d2ed7b986c66900a4597c5",
+  "expected": "Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+  "transcript": "Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08476,
+    "peak": 0.4037,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.256,
+    "sha256": "a25d66d4fea109525991c2f32490ae40d22f418002d2ed7b986c66900a4597c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Okay, we're in! Now comes the bit where staring at the countdown doesn't make it go any faster."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

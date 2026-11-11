@@ -1,0 +1,39 @@
+{
+  "id": "streamer2_en_open_trade_put_07",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "We're in down, chat. The breakout got tested on the return, rather than just giving us a flashy candle.",
+  "tts_text": "[bright, conversational] We're in down, chat. The breakout got tested on the return, rather than just giving us a flashy candle.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "641519773f9e74b8460aaba043c86f1967dc20158885ddfa17cce9f8e4252fd7",
+  "delivery": "bright, conversational",
+  "file": "en/OPEN_TRADE_PUT/streamer2_en_open_trade_put_07.mp3",
+  "duration": 6.47825,
+  "sha256": "c2b38e2e0c16dbb55f03bbad96022c7eabc315c4f57e94b47f727c91e6431809",
+  "request_payload": {
+    "text": "[bright, conversational] We're in down, chat. The breakout got tested on the return, rather than just giving us a flashy candle.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

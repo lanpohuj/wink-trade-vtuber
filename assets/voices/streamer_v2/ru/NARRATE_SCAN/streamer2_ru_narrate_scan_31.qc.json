@@ -1,0 +1,31 @@
+{
+  "id": "streamer2_ru_narrate_scan_31",
+  "sha256": "fbdc9318da07373ca379b29a9599ca413260e3c6faec5e5223a289a66a89d44b",
+  "expected": "Секундочку, график ещё подгружается. Сначала дождусь данных, а потом уже буду умничать.",
+  "transcript": "Секундочку! График ещё подгружается! Сначала дождусь данных, а потом уже буду умничать!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.09129,
+    "peak": 0.36891,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.111,
+    "sha256": "fbdc9318da07373ca379b29a9599ca413260e3c6faec5e5223a289a66a89d44b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Секундочку! График ещё подгружается!"
+    },
+    {
+      "start": 2.5,
+      "end": 5.2,
+      "text": " Сначала дождусь данных, а потом уже буду умничать!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

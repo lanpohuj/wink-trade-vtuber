@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_ru_open_trade_put_10",
+  "sha256": "ee47ff9cdc12268c0c4031aa10c3fdeeedd8cdb5197e4bb1b06d97acedb1ec9d",
+  "expected": "Сделка вниз открыта! Не погналась за пробоем, дождалась подтверждённого ретеста. Смотрим дальше.",
+  "transcript": "Сделка вниз открыта. Не погналась за пробоем, дождалась подтвержденного ретеста. Смотрим дальше.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.08538,
+    "peak": 0.3864,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "ee47ff9cdc12268c0c4031aa10c3fdeeedd8cdb5197e4bb1b06d97acedb1ec9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Сделка вниз открыта. Не погналась за пробоем, дождалась подтвержденного ретеста. Смотрим дальше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

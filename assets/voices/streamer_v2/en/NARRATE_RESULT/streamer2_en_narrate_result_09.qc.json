@@ -1,0 +1,26 @@
+{
+  "id": "streamer2_en_narrate_result_09",
+  "sha256": "cc2ee2ae2c1f0bdc541b2dd5de5a2a8f159a3601e20ba3a872b93b155702562d",
+  "expected": "That recovery cycle is finished; back to fifty. Fresh checks, without arguing with the past.",
+  "transcript": "That recovery cycle is finished. Back to 50. Fresh checks, without arguing with the past.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.07449,
+    "peak": 0.42167,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.249,
+    "sha256": "cc2ee2ae2c1f0bdc541b2dd5de5a2a8f159a3601e20ba3a872b93b155702562d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " That recovery cycle is finished. Back to 50. Fresh checks, without arguing with the past."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

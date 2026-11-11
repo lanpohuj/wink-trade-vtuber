@@ -1,0 +1,36 @@
+{
+  "id": "streamer2_en_narrate_result_01",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next step is one hundred and ten, as planned. I still check the entry first; the stake isn't a reason to click.",
+  "tts_text": "[composed, conversational] Next step is one hundred and ten, as planned. I still check the entry first; the stake isn't a reason to click.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e17fa6c85482ee5bea0ca80971d20b8b47de5eae1fc243598c64cb574efc967a",
+  "delivery": "composed, conversational",
+  "file": "en/NARRATE_RESULT/streamer2_en_narrate_result_01.mp3",
+  "duration": 7.131313,
+  "sha256": "20dc5d0d06c50294eb1615675f6b50e5f0bce90f4ff65fe8f719fb3904ead269",
+  "request_payload": {
+    "text": "[composed, conversational] Next step is one hundred and ten, as planned. I still check the entry first; the stake isn't a reason to click.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}
