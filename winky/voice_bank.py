@@ -60,6 +60,8 @@ def category_name(value: str) -> str:
     return ALIASES.get(value.lower(), value.upper())
 
 def priority(category: str) -> int:
+    if category == 'CHAT_REACTION':
+        return 3
     if category == 'NARRATE_RESULT':
         return 2
     if category.startswith('NARRATE_'):
@@ -86,6 +88,10 @@ class VoiceBank:
         self._follow_overlay = root is None and overlay_root is None
         self.overlay_root = overlay_root or (active_commentary_root() if root is None else None)
         self.history_path = history_path or Path.home() / '.winky_voice_decks.json'
+        from winky.speech_rotation import SpeechRotation, shared_rotation
+        from winky.voice_review import VoiceReview
+        self.rotation = SpeechRotation(history_path) if history_path else shared_rotation()
+        self.review = VoiceReview()
         self.lock = threading.RLock()
         try:
             self.history = json.loads(self.history_path.read_text())
@@ -148,6 +154,8 @@ class VoiceBank:
             media = (root / item.get('file', '')).resolve()
             if not media.is_relative_to(root.resolve()) or not media.is_file():
                 continue
+            if self.review.blocked(item, media):
+                continue
             if event.get('file_id') and item.get('id') != event['file_id']:
                 continue
             if event.get('file_path') and item.get('file') != event['file_path']:
@@ -162,34 +170,23 @@ class VoiceBank:
             if 'conditions' not in item and re.search(r'тридцать|пятнадцать|RSI|перепродан|перекуплен|половина|уровень|уровня|минимум|максимум|вершин|объем|нейросеть', item.get('text', ''), re.I):
                 continue
             item['path'] = media
+            item.setdefault('topic', category)
             result.append(item)
         return result
 
     def reserve(self, event: dict) -> dict | None:
         with self.lock:
             pool = self.candidates(event)
-            key = event.get('lang', 'ru') + ':' + category_name(event.get('category'))
-            used = self.history.get(key, [])
-            available = [i for i in pool if i['id'] not in used and i['id'] not in self.reserved]
-            if not available and pool and not any(i['id'] in self.reserved for i in pool):
-                last = used[-1:] or []
-                self.history[key] = []
-                available = [i for i in pool if len(pool) == 1 or i['id'] not in last]
-            if not available:
-                return None
-            item = random.choice(available)
-            self.reserved.add(item['id'])
+            universe = self.candidates({k: v for k, v in event.items() if k != 'max_duration_sec'})
+            relevant = {k for row in universe for k in row.get('conditions', {})}
+            context = {k: event[k] for k in sorted(relevant) if k in event}
+            key = event.get('lang', 'ru') + ':' + category_name(event.get('category')) + ':' + json.dumps(context, sort_keys=True)
+            item = self.rotation.reserve(pool, key, universe=universe)
+            if item:
+                self.reserved.add(item['id'])
             return item
 
-    def release(self, item_id: str, event: dict, played: bool = False) -> None:
+    def release(self, item_id: str, event: dict, played: bool = False, spoken_text=None) -> None:
         with self.lock:
             self.reserved.discard(item_id)
-            if not played:
-                return
-            key = event.get('lang', 'ru') + ':' + category_name(event.get('category'))
-            self.history.setdefault(key, []).append(item_id)
-            self.history[key] = self.history[key][-500:]
-            self.history_path.parent.mkdir(parents=True, exist_ok=True)
-            temp = self.history_path.with_suffix('.tmp')
-            temp.write_text(json.dumps(self.history, ensure_ascii=False))
-            temp.replace(self.history_path)
+            self.rotation.release(item_id, played=played, spoken_text=spoken_text)

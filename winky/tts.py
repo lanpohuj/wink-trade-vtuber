@@ -1552,6 +1552,7 @@ class SpeechController:
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
         self._afplay_proc: subprocess.Popen | None = None
+        self.last_recording: dict | None = None
         self._synth_pool = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-synth")
 
     # ---------- публичное API (вызывается из js_api и таймеров) ----------
@@ -1710,6 +1711,7 @@ class SpeechController:
         action: str | None = None,
         action_duration: float = 3.5,
         source: str = "manual",
+        _reservation: str = "",
     ) -> bool:
         """Добавляет фразу в конвейер озвучки: асинхронный синтез в фоне + воспроизведение без обрыва реплик."""
         actual_lang = lang or detect_lang(text)
@@ -1717,9 +1719,13 @@ class SpeechController:
         text = sanitize_for_tiktok(text, actual_lang)
         text = strip_emoji_control(text)
         if not text:
+            if _reservation:
+                self.voice_bank.release(_reservation, {})
             return False
         ok, reason = check_phrase(text)
         if not ok:
+            if _reservation:
+                self.voice_bank.release(_reservation, {})
             logger.warning("Фраза заблокирована цензурой: %s", reason)
             self._last_blocked = f"{reason} («{text[:40]}…»)"
             self._emit_status()
@@ -1732,6 +1738,8 @@ class SpeechController:
             action=action,
             action_duration=action_duration,
             source=source,
+            bank_id=_reservation,
+            priority=3 if source.startswith('chat') else 2,
         )
 
         with self._lock:
@@ -1743,6 +1751,21 @@ class SpeechController:
         self._wake.set()
         self._emit_status()
         return True
+
+    def speak_options(self, texts, lang='ru', category='scenario', substitutions=None, **kwargs) -> bool:
+        """Reserve a text variant in the same history as prerecorded speech."""
+        from winky.speech_rotation import fingerprint
+        pool = [dict(id='text_' + fingerprint(t), text=t, lang=lang, topic=category,
+                     semantic_group=lang + ':text:' + fingerprint(t), tone='playful')
+                for t in texts if t and check_phrase(t)[0]]
+        row = self.voice_bank.rotation.reserve(pool, lang + ':' + category)
+        if not row:
+            return False
+        # speak() transfers the reservation into the queued item atomically.
+        text = row['text']
+        for name, value in (substitutions or {}).items():
+            text = text.replace('{' + name + '}', str(value))
+        return self.speak(text, lang=lang, _reservation=row['id'], **kwargs)
 
     def _cleanup_prefetched(self) -> None:
         now = time.time()
@@ -1965,6 +1988,14 @@ class SpeechController:
         if clean_text.startswith("[") and "]" in clean_text[:15]:
             clean_text = clean_text[clean_text.index("]") + 1:].strip()
 
+        from winky.speech_rotation import fingerprint
+        reserved = self.voice_bank.rotation.reserve(
+            [dict(id='chat_' + fingerprint(clean_text), text=clean_text, lang=lang, topic='chat', tone='playful')],
+            lang + ':chat:' + str(getattr(chat_item, 'rotation_kind', 'reply')))
+        if not reserved:
+            chat_item.failed = True
+            return False
+
         item = SpeechItem(
             text=clean_text,
             lang=lang,
@@ -1974,6 +2005,7 @@ class SpeechController:
             media_path=media,
             rms_chunks=compute_rms_chunks(media) if media and media.exists() else None,
             source=f"chat_reply_{getattr(chat_item, 'user', 'viewer')}",
+            bank_id=reserved['id'],
             priority=3, max_age_sec=90, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
         )
         if media and media.exists():
@@ -2076,7 +2108,7 @@ class SpeechController:
         with self._lock:
             return {'speaking': self._speaking, 'paused': self._paused,
                     'ended_at': self.last_speech_ended_at,
-                    'background_pending': any(i.event.get('commentary') for i in self._playback_queue),
+                    'background_pending': any(i.priority == 4 for i in self._playback_queue),
                     'pending_fact_keys': [i.event.get('commentary_fact_key') for i in self._playback_queue if i.event.get('commentary')],
                     'foreground_ready': any(i.priority < 4 and i.ready_event.is_set() for i in self._playback_queue)}
 
@@ -2085,6 +2117,9 @@ class SpeechController:
             return False
         if not check_phrase(item.text)[0]:
             return False
+        if item.media_path and self.voice_bank.review.blocked(
+                {'id': item.bank_id or str(item.media_path)}, item.media_path):
+            return False
         from winky.director import stream_director
         phase = stream_director.trade_phase
         if item.priority == 3:
@@ -2092,6 +2127,20 @@ class SpeechController:
         if not item.event:
             return True
         event = item.event
+        if event.get('category') == 'NARRATE_CTA':
+            if event.get('manual_cta'):
+                return True
+            current = stream_director.context
+            if event.get('lang') != current.get('lang', stream_director.stream_lang):
+                return False
+            if event.get('session_id') and event['session_id'] != current.get('session_id'):
+                return False
+            if event.get('trade_seq') is not None and event['trade_seq'] != current.get('trade_seq'):
+                return False
+            return stream_director.cta_allowed(time.time())
+        if event.get('standalone'):
+            return (time.time() - stream_director._last_phase_update > 3
+                    and event.get('lang') == stream_director.stream_lang)
         if item.priority == 0:
             return True
         current = stream_director.context
@@ -2124,6 +2173,8 @@ class SpeechController:
             return True
         from winky.director import stream_director
         phase = stream_director.trade_phase
+        if item.event.get('category') == 'NARRATE_CTA' and phase in ('ANALYZING', 'COOLDOWN'):
+            return True
         if item.event.get('commentary') and phase in ('ANALYZING', 'COOLDOWN', 'RESULT'):
             return True
         if phase == 'IDLE' or (item.priority == 3 and phase in ('ANALYZING', 'COOLDOWN')):
@@ -2182,6 +2233,8 @@ class SpeechController:
         if item.priority == 3 and media_duration_seconds(item.media_path) > 8:
             if item.chat_item:
                 item.chat_item.failed = True
+            if item.bank_id:
+                self.voice_bank.release(item.bank_id, item.event)
             return
         self._play_media(item.media_path, item.text, item.emotion, item.lang, item.rms_chunks, item=item)
 
@@ -2222,12 +2275,20 @@ class SpeechController:
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
             )
+            start_play = time.monotonic()
             self._afplay_proc = afplay_proc
+            # An immediate player failure must not consume a phrase or CTA timer.
+            if afplay_proc.poll() not in (None, 0):
+                raise RuntimeError('afplay failed before playback')
             if item:
                 if item.chat_item:
                     item.chat_item.played = True
                 if item.bank_id:
-                    self.voice_bank.release(item.bank_id, item.event, played=True)
+                    self.voice_bank.release(item.bank_id, item.event, played=True, spoken_text=item.text)
+                else:
+                    self.voice_bank.rotation.note(item.text, item.lang, item.source)
+                self.last_recording = dict(id=item.bank_id or str(media), path=str(media),
+                                           text=item.text, lang=item.lang)
                 from winky.director import stream_director
                 stream_director.note_voice_started({**item.event, 'file_id': item.bank_id,
                                                     'text': item.text, 'voice_source': item.source})
@@ -2244,7 +2305,6 @@ class SpeechController:
             except Exception:
                 logger.exception("Avatar speech callback failed")
             logger.info("voice_start source=%s event=%s", item.source if item else 'manual', item.event.get('event_id', '') if item else '')
-            start_play = time.monotonic()
             last_idx = -1
             chunk_sec = 0.05
             while afplay_proc.poll() is None:

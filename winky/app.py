@@ -472,13 +472,12 @@ class WinkyAPI:
             action = reply.emotion
             action_duration = 3.2
 
-        # Выбираем фразу: если есть кэшированные варианты, берём из них для мгновенного отклика 0.05с
+        # Rotate the whole phrase pool; preparation remains asynchronous.
         pool = reply.texts_ru if (lang or "ru").lower() == "ru" else reply.texts_en
-        cached_pool = [t for t in pool if hasattr(self._controller, "is_cached") and self._controller.is_cached(t, lang=lang)]
-        chosen_text = random.choice(cached_pool) if cached_pool else reply.random_text(lang)
-        return self._controller.speak(
-            chosen_text,
+        return self._controller.speak_options(
+            pool,
             lang=lang,
+            category='quick_' + reply.id,
             emotion=reply.emotion,
             action=action,
             action_duration=action_duration,
@@ -719,18 +718,31 @@ class WinkyAPI:
 
     def toggle_cta(self, enabled: bool) -> None:
         self._cta_enabled = bool(enabled)
+        from winky.director import stream_director
+        stream_director.cta_enabled = self._cta_enabled
 
     def repeat_cta(self) -> bool:
         lang = self._chat_router.default_stream_lang if self._chat_router else "ru"
-        message = self._book.cta.random_message(lang)
-        if not message:
-            return False
-        self._last_cta_at = monotonic()
-        return self._controller.speak(message, lang, "happy", source="cta")
+        if self._controller.voice_bank.candidates({'category': 'NARRATE_CTA', 'lang': lang}):
+            return self._controller.enqueue_voice_event({'category': 'NARRATE_CTA', 'lang': lang, 'manual_cta': True}).get('ok', False)
+        messages = self._book.cta.messages_ru if lang == 'ru' else self._book.cta.messages_en
+        return self._controller.speak_options(messages, lang, category='NARRATE_CTA', emotion='happy', source='cta')
+
+    def report_voice_defect(self, issue: str = 'хрип', offset_sec=None) -> dict:
+        row = self._controller.last_recording
+        if not row:
+            return {'ok': False, 'error': 'Сначала воспроизведите реплику'}
+        try:
+            report = self._controller.voice_bank.review.report(row, issue, offset_sec)
+            return {'ok': True, 'id': report['id'], 'sha256': report['sha256']}
+        except (ValueError, OSError) as error:
+            return {'ok': False, 'error': str(error)}
 
     def set_stream_lang(self, lang: str) -> str:
         """Переключает язык стрима по умолчанию (ru / en)."""
         target = "en" if (lang or "").lower() == "en" else "ru"
+        from winky.director import stream_director
+        stream_director.stream_lang = target
         if self._chat_router:
             self._chat_router.set_stream_lang(target)
         self.push_status()
@@ -933,50 +945,12 @@ class WinkyAPI:
             self._chat_router.handle_like(user, count=count)
 
     def maybe_say_cta(self) -> None:
-        # Pocket narration owns idle windows while its bridge is connected.
-        # Do not add unrelated warmups or synthesize extra automatic speech.
         from winky.director import stream_director
-        from winky.commentary import context_valid
-        from time import time as wall_time
-        if context_valid(stream_director.context, stream_director._last_phase_update) or (
-            'auto_stream' in stream_director.context
-            and wall_time() - stream_director._last_phase_update <= 3
-        ):
-            return
-        if not self._cta_enabled or self._controller.paused or self._controller.speaking:
-            return
-        if self._controller.queue_size() > 0:
-            return
-        interval = self._book.cta.interval_minutes * 60
-        if monotonic() - self._last_cta_at < interval:
-            return
-
-        lang = self._chat_router.default_stream_lang if self._chat_router else "ru"
-        self._stream_interaction_count += 1
-
-        # The approved conversational bank also owns standalone idle remarks.
-        # Do not synthesize the old repeated "write ones in chat" warmups.
-        from winky.voice_bank import active_commentary_root
-        if active_commentary_root().name == 'streamer_v2':
-            category = 'NARRATE_ENGAGE' if self._stream_interaction_count % 2 else 'NARRATE_LESSON'
-            result = self._controller.enqueue_voice_event({'category': category, 'lang': lang})
-            if result.get('ok'):
-                self._last_cta_at = monotonic()
-            return
-
-        # Соотношение 4:1 — 4 раза интерактив/разогрев молчащего чата, 1 раз — напоминание про ассистента
-        if self._stream_interaction_count % 5 == 0:
-            message = self._book.cta.random_message(lang)
-            emotion = "happy"
-        else:
-            message = self._book.cta.random_warmup(lang)
-            emotion = "wink"
-
-        if not message:
-            return
-
-        self._last_cta_at = monotonic()
-        self._controller.speak(message, lang=lang, emotion=emotion, source="stream_warmup")
+        stream_director.cta_enabled = getattr(self, '_cta_enabled', True)
+        router = getattr(self, '_chat_router', None)
+        lang = router.default_stream_lang if router else "ru"
+        stream_director.stream_lang = lang
+        stream_director.maybe_cta(lang=lang)
 
     # ---------- уведомления JS ----------
 
@@ -1210,6 +1184,10 @@ def main() -> None:
     # Smoke-режим для автопроверки: окна закроются сами через N секунд
     if os.environ.get("WINKY_SMOKE"):
         seconds = float(os.environ.get("WINKY_SMOKE", "6"))
+        # Smoke checks use accepted local recordings, never a fresh paid order.
+        winky_api._cta_enabled = False
+        stream_director.cta_enabled = False
+        stream_director._next_commentary_at = float('inf')
 
         def _smoke_close() -> None:
             logger.info("Smoke-режим: сохраняю снимок и закрываю окна")
@@ -1232,7 +1210,9 @@ def main() -> None:
 
         def _smoke_speak() -> None:
             logger.info("Smoke: авто-проверка голоса")
-            controller.speak("Привет! Проверка голоса, мимики и прозрачности.", lang="ru", emotion="happy")
+            for lang in ('ru', 'en'):
+                controller.enqueue_voice_event({'category': 'NARRATE_ENGAGE', 'lang': lang,
+                                                'event_id': 'smoke:' + lang, 'ttl_sec': 30})
 
         threading.Timer(2.5, _smoke_speak).start()
         threading.Timer(seconds, _smoke_close).start()

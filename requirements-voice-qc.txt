@@ -1,0 +1,4 @@
+# Optional offline audio QA tools. Not part of the VPS image.
+numpy>=2.0,<3
+faster-whisper==1.2.1
+ctranslate2>=4.6,<5

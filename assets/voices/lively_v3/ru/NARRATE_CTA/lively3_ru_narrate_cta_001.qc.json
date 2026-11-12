@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_001",
+  "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b",
+  "expected": "Кстати, бот в шапке. Не потеряйте, а то потом будет: «Винки, ну где ссылка?»",
+  "transcript": "Кстати, бот, в шапке не потеряйте, а то потом будет Винки? Ну, где ссылка?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.09374,
+    "peak": 0.74603,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.113,
+    "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.62,
+      "text": " Кстати, бот, в шапке не потеряйте, а то потом будет Винки?"
+    },
+    {
+      "start": 4.62,
+      "end": 5.74,
+      "text": " Ну, где ссылка?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

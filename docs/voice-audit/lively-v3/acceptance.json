@@ -1,0 +1,22 @@
+{
+  "method": "owner_sampled",
+  "voice_samples_accepted": false,
+  "delivery_samples": [
+    {
+      "id": "lively3_ru_trade_win_001",
+      "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner-selected probe B"
+    }
+  ],
+  "records": [
+    {
+      "id": "lively3_ru_trade_win_001",
+      "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner-selected probe B"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_001",
+  "phrase_id": "lively3_ru_open_trade_call_001",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+  "tts_text": "[conversational] Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5963a6bf122c86914ebc567548116b0d20d68a4e7c49bcc942fb4486aedbabd0",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_001",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_001.mp3",
+  "duration": 6.399938,
+  "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+  "request_payload": {
+    "text": "[conversational] Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

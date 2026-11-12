@@ -51,10 +51,12 @@ def generate(only_ids=None):
         dest = BANK / row["lang"] / row["category"] / (row["id"] + ".mp3")
         dest.parent.mkdir(parents=True, exist_ok=True)
         previous = dest.with_suffix(".review.json")
+        prior = json.loads(previous.read_text()) if previous.exists() else {}
         if (
             not dest.exists()
             or not previous.exists()
-            or json.loads(previous.read_text()).get("text_sha256") != row["text_sha256"]
+            or prior.get("text_sha256") != row["text_sha256"]
+            or prior.get('request_payload') != engine.payload(row['tts_text'], row['lang'])
         ):
             shutil.copy2(engine.synthesize(row["tts_text"], row["lang"]), dest)
             # RMS is cached by filename. A replacement take needs a new envelope,
@@ -212,7 +214,7 @@ def qc():
                     issues.append("decode_or_silence")
                 if metrics.get("clipped_fraction", 0) > 0.001:
                     issues.append("possible_clipping")
-                if metrics.get("duration", 999) > MAX_DURATION_SEC:
+                if metrics.get("duration", 999) > min(MAX_DURATION_SEC, row.get('max_duration_sec', MAX_DURATION_SEC)):
                     issues.append("too_long")
                 if not check_phrase(transcript)[0]:
                     issues.append("content_review")

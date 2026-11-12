@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_001",
+  "phrase_id": "lively3_en_trade_win_001",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+  "tts_text": "[excited, conversational] That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e1942bcba375a21d4fe83731a546d59815ef98dfdf74712bad7d576324f71770",
+  "delivery": "excited, conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_001",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_001.mp3",
+  "duration": 6.295438,
+  "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+  "request_payload": {
+    "text": "[excited, conversational] That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

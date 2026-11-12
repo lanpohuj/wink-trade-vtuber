@@ -26,6 +26,8 @@ def narration_valid(event, context, phase, received_at, now=None):
         "lang"
     ) != context.get("lang", "ru"):
         return False
+    if event.get('data_status') == 'NO_DATA' and context.get('data_status') != 'NO_DATA':
+        return False
     if event.get("category") == "NARRATE_VOLATILITY":
         if (
             context.get("high_volatility") is not True

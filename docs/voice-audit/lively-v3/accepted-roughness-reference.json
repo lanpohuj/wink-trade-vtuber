@@ -1,0 +1,42 @@
+{
+  "label": "B",
+  "text": "Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+  "tts_text": "[conversational] Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+  "lang": "ru",
+  "file": "assets/voices/lively_roughness/ru-B.mp3",
+  "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+  "request_payload": {
+    "text": "[conversational] Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.295,
+    "rms": 0.08222,
+    "peak": 0.3471,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.075,
+    "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80"
+  },
+  "auditory_verified": false,
+  "acceptance_status": "pending",
+  "transcript": "Есть плюс! Ну, вот это приятно! Дайте мне секунду порадоваться и смотрим дальше!",
+  "similarity": 1.0,
+  "accepted": true,
+  "listened": true,
+  "basis": "Owner explicitly selected B as clean and natural"
+}

@@ -8,6 +8,7 @@ Winky помнит историю диалога с конкретным зри�
 from __future__ import annotations
 
 import logging
+import json
 import random
 import re
 from threading import Lock
@@ -25,124 +26,16 @@ MAX_REPLY_CHARS = 280  # TTS-реплики должны быть коротки
 
 
 def generate_smart_local_reply(nickname: str = "", comment: str = "", lang: str = "ru") -> str:
-    """Умный контекстный локальный генератор ответов Winky 20-летней стримерши.
+    """Intent-specific fallback selected against actual playback history."""
+    from winky.chat_style import reply
+    return reply(comment, lang)
 
-    Гарантирует 100% живой ответ даже при отсутствии API-ключа DeepSeek,
-    таймаутах сети или сбоях сервера.
-    """
-    clean_name = (nickname or ("друг" if lang == "ru" else "friend")).strip()
-    low = (comment or "").lower().strip()
-    is_ru = lang == "ru" or bool(re.search(r"[а-яА-ЯёЁ]", comment or ""))
-
-    # 1. Вопросы про бота / сигналы / доступ / как заработать / где ссылка
-    if any(k in low for k in (
-        "бот", "сигнал", "ссылк", "шапк", "био", "bio", "link", "где взят",
-        "как зайти", "как начать", "сколько стоит", "как заработать", "доступ",
-        "платн", "бесплатн", "скачать", "попробовать", "как работает"
-    )):
-        if is_ru:
-            options = [
-                f"[wink] {clean_name}, всё просто и абсолютно бесплатно! Вся веб-аналитика и наш бот живут прямо в шапке профиля — переходи по ссылке и забирай доступ по трём шагам!",
-                f"[happy] {clean_name}, бот открыт для всех в описании профиля! Заходи по ссылке, активируй ассистента и торгуй вместе с нами!",
-                f"[wink] Лови подсказку, {clean_name}! Ссылка на нашего торгового бота ждёт тебя в шапке профиля, доступ свободный!",
-            ]
-        else:
-            options = [
-                f"[wink] {clean_name}, it's super easy and 100% free! All web analytics and our signal bot are right in the bio link — tap and get instant access!",
-                f"[happy] {clean_name}, the signal bot is completely free in my bio! Check the link in profile and trade along with us!",
-            ]
-        return random.choice(options)
-
-    # 2. Запрос валютной пары
-    if any(k in low for k in ("евро", "доллар", "фунт", "йен", "золот", "биткоин", "биток", "eur", "usd", "gbp", "jpy", "gold", "btc", "cad", "aud")):
-        if is_ru:
-            options = [
-                f"[happy] {clean_name}, отличный выбор пары! Сейчас дотикает наша текущая сделка и сразу переключаю график на твой запрос!",
-                f"[wink] Вижу твою пару, {clean_name}! Ставлю в очередь, завершаем текущий вход и сразу переходим на неё!",
-            ]
-        else:
-            options = [
-                f"[happy] Great pair {clean_name}! As soon as our current trade finishes, I will switch over to your chart!",
-                f"[wink] Got your pair {clean_name}! Queued up right after this candle closes!",
-            ]
-        return random.choice(options)
-
-    # 3. Приветствие
-    if any(k in low for k in ("привет", "хай", "салют", "ку", "добрый", "здарова", "hello", "hi", "hey")):
-        if is_ru:
-            options = [
-                f"[wave] {clean_name}, приветик! Рада видеть тебя на эфире! Как твоё настроение сегодня? Присоединяйся к разбору графиков!",
-                f"[happy] Хей, {clean_name}, добро пожаловать! Ты как раз вовремя, сейчас ловим красивое импульсное движение!",
-                f"[wink] Салют, {clean_name}! Залетай к нам, устраивайся поудобнее и следи за сделками на экране!",
-            ]
-        else:
-            options = [
-                f"[wave] Hey {clean_name}, welcome in! So glad to have you on the live stream! How are you doing today?",
-                f"[happy] Welcome {clean_name}! You joined right on time, we are hunting for great entries!",
-            ]
-        return random.choice(options)
-
-    # 4. Комплименты и флирт
-    if any(k in low for k in ("красотк", "мил", "любл", "замуж", "сексуальн", "красив", "милаш", "вайб", "cute", "love", "marry", "gorgeous", "hot", "краш", "поцелуй")):
-        if is_ru:
-            options = [
-                f"[blush] Ой, {clean_name}, засмущал прямо посреди стрима! Спасибо за тёплые слова, лови сердечко! А сам давно за графиками следишь? 🥰",
-                f"[wink] {clean_name}, умеешь делать комплименты! Мне безумно приятно! Оставайся с нами на трансляции, заряжаемся позитивом!",
-                f"[blush] Спасибо, {clean_name}! От таких слов на стриме сразу теплее! Рада, что ты с нами!",
-            ]
-        else:
-            options = [
-                f"[blush] Aww {clean_name}, thank you so much for the sweet words! Sending lots of love to you! Enjoy the stream! 🥰",
-                f"[wink] {clean_name}, you are so sweet! Thank you! Glad to have you hanging out with us!",
-            ]
-        return random.choice(options)
-
-    # 5. Скепсис / недоверие
-    if any(k in low for k in ("скам", "развод", "лохотрон", "фейк", "не верю", "наеб", "слив", "scam", "fake")):
-        if is_ru:
-            options = [
-                f"[thinking] {clean_name}, а верить на слово и не нужно! Смотри прямо на экран в прямом эфире — графики и строгий мани-менеджмент говорят сами за себя!",
-                f"[wink] {clean_name}, здоровая проверка — это отлично! Наблюдай за сделками вживую, мы работаем строго по 5-факторной системе без эмоций!",
-            ]
-        else:
-            options = [
-                f"[thinking] {clean_name}, no need to take my word for it! Just watch the live screen — clean strategy and discipline speak for themselves!",
-            ]
-        return random.choice(options)
-
-    # 6. Вопросы по торговле / куда пойдёт
-    if any(k in low for k in ("куда", "вверх", "вниз", "пойдет", "растет", "падает", "свеч", "up", "down")):
-        if is_ru:
-            options = [
-                f"[happy] {clean_name}, смотрим за структурой свечей! Сейчас оцениваем силу тренда и заходим строго на микро-откате по лучшей котировке!",
-                f"[wink] {clean_name}, главное правило — не гадать, а дождаться 5-факторного подтверждения и входить по тренду!",
-            ]
-        else:
-            options = [
-                f"[happy] {clean_name}, we follow the trend structure! Waiting for a confirmed micro-pullback to get the best entry price!",
-            ]
-        return random.choice(options)
-
-    # 7. Универсальные обаятельные реплики
-    if is_ru:
-        general_options = [
-            f"[happy] {clean_name}, спасибо за активность в чате! Следим за рынком и двигаемся к профиту!",
-            f"[wink] {clean_name}, в точку! Обожаю, когда чат такой живой и активный! Что думаешь по следующей сделке?",
-            f"[excited] {clean_name}, согласна с тобой! На стриме сегодня отличный вайб, продолжаем торговлю!",
-            f"[happy] Вижу твой комментарий, {clean_name}! Спасибо, что делишься мыслями, оставайся с нами на связи!",
-        ]
-    else:
-        general_options = [
-            f"[happy] {clean_name}, thanks for the comment! Keeping our focus on the charts and trading disciplined!",
-            f"[wink] Totally agree, {clean_name}! Great having you in the chat today!",
-        ]
-    return random.choice(general_options)
 
 SYSTEM_PROMPT = """Ты — Винки (Winky), 20-летняя обаятельная, харизматичная, остроумная и слегка кокетливая девушка-стример в прямом эфире TikTok!
 Ты ведёшь стрим вместе с ведущим, комментируешь график и общаешься с чатом как со своими близкими друзьями.
 
 ТВОЙ ХАРАКТЕР И СТИЛЬ:
-- Тебе 20 лет: ты яркая, живая, уверенная в себе, с отличным чувством юмора, умеешь красиво пофлиртовать или дерзко подшутить.
+- Твоя манера общения — девушка 20–25 лет; аудитория того же возраста. Ты живая, уверенная, остроумная, с лёгким флиртом и суховатой самоиронией.
 - Ты говоришь как настоящая современная девушка-стример: легко, без канцеляризмов, используешь живую разговорную речь и естественный сленг («вайб», «кайф», «краш», «ага», «ну ты даёшь», «огонь», «изи»).
 - Обращайся к зрителю по имени, если оно известно.
 - Не вставляй «мяу», «мур», реплики про ушки, meow, purr или ears up как присказки. Игривость передавай интонацией, остроумием и реакцией на слова зрителя; не изображай кошку в каждом ответе.
@@ -152,7 +45,12 @@ SYSTEM_PROMPT = """Ты — Винки (Winky), 20-летняя обаятель
 - Если зритель пишет комплимент («красотка», «ты милая», «приятно))», «выходи замуж»), делится настроением («я готов», «всем привет») или просто шутит — ОТВЕЧАЙ ТОЛЬКО НА ЕГО СЛОВА! Шути, кокетничай, общайся, задавай вопросы. НИКАКОЙ РЕКЛАМЫ И БОТОВ!
 
 КРЮЧКИ ВОВЛЕЧЕНИЯ (RESPONSE BAIT):
-- Почти каждый твой ответ должен заканчиваться живым вопросом или подначкой к зрителю / в чат, чтобы разговор продолжался! (Например: «А ты сам давно за графиками следишь?», «Признавайся, сколько сегодня тапов набил? 😉», «А ты рисковый парень или любишь поспокойнее?»).
+- Чередуй шутку, реакцию, короткий ответ и вопрос. Не завершай каждый ответ вопросом.
+- Добавь самоиронию, лёгкий сарказм и игривость. Подкалывай ситуацию, не унижай зрителя.
+- Сленг используй умеренно и естественно для языка. EN не переводить дословно с русского.
+- Не повторяй мысли, шутки, обращения и обороты из последних 20 произнесённых реплик.
+- Умеренный сленг по смыслу: RU «скип», «тильт», «тайминг», «не форсим», «чекну»; EN «locked in», «low-key», «that's a W». Нормальная разговорная речь важнее модных слов. Не используй «на чилле», «плюс аура», delulu, bestie, мемные лозунги и детский сленг.
+- Не зачитывай статусы «подтверждено», «зафиксировано» и оговорки про собственный голос. Говори коротко, разговорно, реагируй именно на слова зрителя.
 
 ТОН В ЗАВИСИМОСТИ ОТ ВАЙБА ЗРИТЕЛЯ (VIBE):
 - flirty: игриво, кокетливо, слегка смущаешься или дерзко подкалываешь («Ой, ну засмущал! А сам-то свободен или просто так комплиментами соришь? 🥰»).
@@ -223,13 +121,17 @@ class LLMBrain:
         локальный ответ стримерши, гарантируя 100% работу без тишины.
         """
         if not self.available:
-            return generate_smart_local_reply(nickname, comment)
+            return generate_smart_local_reply(nickname, comment, "ru" if re.search(r"[\u0400-\u04ff]", comment) else "en")
 
         if not self._rate_allowed():
             logger.debug("LLM анти-дребезг: пропускаю частый вызов")
-            return generate_smart_local_reply(nickname, comment)
+            return generate_smart_local_reply(nickname, comment, "ru" if re.search(r"[\u0400-\u04ff]", comment) else "en")
 
+        from winky.speech_rotation import shared_rotation
         extra_info: list[str] = []
+        spoken = shared_rotation().recent_texts(20)
+        if spoken:
+            extra_info.append("Recent spoken lines. Avoid repeating wording or jokes: " + json.dumps(spoken, ensure_ascii=False))
         if profile is not None:
             vibe = getattr(profile, "vibe", "regular")
             msg_count = getattr(profile, "message_count", 1)
@@ -284,12 +186,12 @@ class LLMBrain:
             payload = response.json()
         except requests.RequestException as exc:
             logger.warning("LLM (%s) недоступен (%s), подключаю умный локальный ответ", self.api_url, exc)
-            return generate_smart_local_reply(nickname, comment)
+            return generate_smart_local_reply(nickname, comment, "ru" if re.search(r"[\u0400-\u04ff]", comment) else "en")
 
         choices = payload.get("choices") or []
         if not choices:
             logger.warning("LLM вернул пустой ответ, подключаю умный локальный ответ: %s", payload)
-            return generate_smart_local_reply(nickname, comment)
+            return generate_smart_local_reply(nickname, comment, "ru" if re.search(r"[\u0400-\u04ff]", comment) else "en")
 
         text = str(choices[0].get("message", {}).get("content", "")).strip()
         # Срезаем внешние кавычки, если модель случайно их вернула
@@ -298,4 +200,4 @@ class LLMBrain:
 
         if len(text) > MAX_REPLY_CHARS:
             text = text[: MAX_REPLY_CHARS - 1].rsplit(" ", 1)[0] + "…"
-        return text or generate_smart_local_reply(nickname, comment)
+        return text or generate_smart_local_reply(nickname, comment, "ru" if re.search(r"[\u0400-\u04ff]", comment) else "en")

@@ -1,0 +1,81 @@
+# CATEGORY number | RU | EN. Editorial changes after owner feedback, not extra slots.
+NARRATE_CTA 3 | Кому нужен бот — велком в шапку профиля. Да, он всё ещё там. | Need the bot? Bio link. Tiny side quest, honestly.
+NARRATE_CTA 4 | Бот в шапке профиля. Можно без квеста на три вечера, я всё предусмотрела. | Bot's in my bio. We are not turning finding a link into a whole lore event.
+NARRATE_CTA 11 | Чат, кто искал бота: он в шапке профиля. Да, база, но вдруг потеряли. | Chat, if you're looking for the bot, it's in my bio. Keeping that one low effort.
+NARRATE_CTA 15 | У бота инструкция внятнее моих историй. Он в шапке профиля. Справедливо, я не обиделась. | Bot's in my bio if you'd rather read than listen to me yap. Fair enough, honestly.
+NARRATE_CTA 21 | Новенькие, бот в шапке. Всё, мини-гайд выдала, возвращаюсь к своим делам. | New here? Bot link's in my bio. Tutorial complete; I'll stop yapping now.
+NARRATE_CTA 35 | Бот в шапке, если нужен. Чекните условия внутри, там без моих лирических отступлений. | Bot's in my bio if you want it. Check the terms inside; no main-character monologue from me.
+NARRATE_CTA 45 | Про бота напомнила и исчезаю с рекламой. Ссылка в шапке профиля, чат, не теряйте. | One bot reminder, then I'm out. Link in bio, chat. That's the whole side quest.
+NARRATE_CTA 50 | Бот в шапке профиля. Всё, больше не душню, возвращаемся к эфиру. | Bot link's in my bio. Okay, promotional yap finished. Back to it.
+NARRATE_SCAN 2 | Палец уже хочет жать, я ещё думаю. Не, дружище, ты тут не главный. | Clicking finger's getting ahead of itself. Not yet, bestie. I'm still checking.
+NARRATE_SCAN 3 | Так, картинку чекнула. Теперь бы понять, что здесь вообще по делу. | Okay, first look done. Let me lock in and check what's actually here.
+NARRATE_SCAN 5 | Не, мне ещё глянуть надо. Сделать умное лицо — это я быстро, разобраться чуть дольше. | Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.
+NARRATE_SCAN 8 | Вход на одном «ну вроде» — скип. Хочу нормально понять картинку. | Entering on 'looks fine, I guess'? Hard pass. Let me actually read this.
+NARRATE_SCAN 9 | Чат, я чуть подушню с проверкой. Лучше сейчас, чем потом придумывать отмазки. | Let me be picky for a second, chat. Better now than inventing excuses later.
+NARRATE_SCAN 12 | Секунду. Я уже почти начала умничать, а сама ещё смотрю. Хороша, да? | One second. Nearly started explaining before I'd finished looking. Very professional of me.
+NARRATE_SCAN 16 | Если идею надо уговаривать десять минут, ну её. Гляну без розовых очков. | If I have to talk myself into it, that's a bit sus. Checking properly.
+NARRATE_SCAN 17 | Я не зависла, я думаю. Не так эффектно, как хотелось бы, зато честно. | Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.
+NARRATE_SCAN 21 | Чат, без спидрана по кнопкам. Сейчас разберусь и скажу, что к чему. | Chat, we're not speedrunning the buttons. Let me figure this out first.
+NARRATE_SCAN 23 | Да, опять проверяю. Такая вот база, без которой мой красивый голос бесполезен. | Yep, checking again. Boring? A little. Still doing it.
+NARRATE_SCAN 27 | Так, на чилле смотрим дальше. Во всяком случае, я стараюсь. | Keeping it chill and looking again. Well, attempting the chill part.
+NARRATE_SCAN 30 | Это пока не тот момент, где хочется сказать «имба». Я ещё посмотрю. | Not quite an 'okay, we're cooking' moment yet. Still looking.
+NARRATE_SCAN 34 | Выбрать кнопку, а потом придумать объяснение? Не, такой лор мне не нужен. | Pick a button, invent the reasoning afterwards? Nah. That's not the lore we're building.
+NARRATE_SCAN 37 | Я ещё раз чекну. У меня сегодня вайб «доверяй, но вообще-то проверь». | Let me check once more. Today's vibe is trust, but definitely verify.
+NARRATE_SCAN 44 | Посмотреть и не нажать — тоже вариант, прикиньте. Контент от этого не сломается. | We can look without clicking. Wild concept, I know. Stream still works.
+NARRATE_SCAN 47 | Мне можно нести чушь в шутках. Кнопке входа такой абонемент не выдавали. | I can yap nonsense as a joke. The entry button doesn't get that privilege.
+NARRATE_SCAN 51 | Входить ради того, чтобы что-то происходило? Ну такое. Ещё посмотрю. | Clicking just so something happens? Not the vibe. Still looking.
+NARRATE_SCAN 53 | Не, чат, я пока не готова. Сделать вид, что готова, — кринж какой-то. | Not ready yet, chat. Pretending otherwise would be a bit embarrassing.
+NARRATE_SCAN 57 | График пока в режиме загадочного краша. Ну окей, я тоже не тороплюсь. | Chart's doing the mysterious-crush thing. Fine. I'm not chasing.
+NARRATE_SCAN 61 | Загрузка. Мой любимый геймплей — смотреть, как ничего не происходит. Ждём данные. | Loading. My favourite gameplay: watching absolutely nothing happen. Waiting for data.
+NARRATE_SCAN 64 | История грузится. Интернет сегодня на чилле, я завидую. | History's loading. The connection's deeply unbothered today. Must be nice.
+NARRATE_SCAN 68 | Грузится ещё. Да, чат, у моей ауры тоже бывают технические перерывы. | Still loading. Even my aura needs a buffering break, apparently.
+NARRATE_PAIR 3 | Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед. | Right, we've moved. Leaving the last chart alone. No unnecessary lore dump.
+NARRATE_PAIR 8 | Новая пара. Ну, удивляй. Хотя ладно, сначала я сама посмотрю нормально. | New pair. Go on, impress me. Actually, let me look properly first.
+NARRATE_PAIR 9 | Следующая пара подъехала. Пока без статуса «имба», ещё не разобралась. | Next pair's here. Not calling it peak yet; I haven't checked it.
+NARRATE_PAIR 13 | Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю. | Next one, chat. We'll survive the breakup with the last chart. Probably.
+NARRATE_PAIR 15 | Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт. | Let's check this pair. No instant crush; I've learned to be a little less delulu.
+NARRATE_PAIR 22 | Другой график, новый вайб. Дайте секунду понять, что тут вообще. | Different chart, different vibe. Give me a second to work it out.
+NARRATE_LESSON 6 | Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется. | Until it closes, don't write the happy ending. Even if you're feeling a bit delulu.
+NARRATE_LESSON 11 | Кликнуть просто от скуки — ну такое. Я лучше ещё одну шутку неудачную выдам. | Clicking out of boredom? Hard pass. I'd rather tell another questionable joke.
+NARRATE_LESSON 15 | Можно пять минут душнить и ничего не сказать. Я стараюсь ловить себя раньше. | I can yap for five minutes and say nothing. Trying to catch myself sooner.
+NARRATE_LESSON 18 | Вайб у сделки может быть прекрасный. Проверки всё равно нужны, сорян. | A trade can have immaculate vibes. Still needs checking. Sorry, bestie.
+NARRATE_LESSON 25 | На чилле тоже можно ошибиться. Но хотя бы не добавляешь к ошибке ещё и тильт. | Staying chill doesn't make you right. At least it stops the tilt from joining in.
+NARRATE_LESSON 31 | Понимать, чего не знаешь, — база. Изображать всезнайку я и так умею. | Knowing what you don't know is a solid start. The know-it-all act is easy.
+NARRATE_LESSON 41 | Если непонятно, громче объяснять бессмысленно. Я пробовала, плюс аура не случился. | If it doesn't make sense, saying it louder won't help. Tried it. Zero aura gained.
+NARRATE_ENGAGE 2 | Молчунам тоже привет. Сидеть на чилле и ничего не писать — уважаемый формат. | Hey to the lurkers too. Chilling quietly is a completely valid choice.
+NARRATE_ENGAGE 3 | Я нормально объясняю или уже душню? Только честно, корону придержу. | Am I making sense or just yapping now? Be honest. My ego can take it.
+NARRATE_ENGAGE 4 | Чат, вы по жизни на чилле или «ой, уже нажал»? | Chat, are you naturally chill, or more of an 'oops, already clicked' person?
+NARRATE_ENGAGE 6 | Если объяснила понятно — мне плюс аура. Если нет, ладно, давайте ещё раз. | If that explanation landed, aura points for me. If not, okay, round two.
+NARRATE_ENGAGE 9 | Открыть приложение и забыть зачем — это база или я одна такая легенда? | Opening an app and forgetting why. Universal experience, or am I uniquely cooked?
+NARRATE_ENGAGE 13 | Мне нравится, когда вы болтаете. Но байтить «напиши плюсик» каждые пять секунд не буду. | I like it when you chat. Not farming random comments every five seconds, though.
+NARRATE_ENGAGE 15 | Мой сарказм иногда без тормозов. Если что, это я шучу, не ловите тильт. | My sarcasm sometimes forgets the brakes. I'm teasing, chat, don't let me tilt you.
+NARRATE_ENGAGE 16 | Шутка не зашла? Всё, скипнули, ничего не было. Я уже следующую придумала. | Joke didn't land? Skip it. Never happened. I've already moved on.
+NARRATE_ENGAGE 20 | Сижу с лицом «всё под контролем». А внутри вкладок открыто, чат, вы бы знали. | Giving nonchalant on the outside. The number of mental tabs open, though.
+NARRATE_ENGAGE 24 | Мозг такой: будь серьёзнее. Я такая: ещё один рофл, и точно начну. | Brain says be serious. I'm like, one more joke and then I'll lock in.
+NARRATE_ENGAGE 25 | Можно объяснять нормально, а не как финальный босс душноты. Я стараюсь, честно. | Trying to explain this without becoming the final boss of yapping. Honestly.
+NARRATE_ENGAGE 27 | Вайб дня иногда хочется просто перезагрузить. Желательно без установки обновлений. | Sometimes the day's vibe needs a reboot. Preferably without a whole update.
+NARRATE_TRADE 3 | Таймер идёт, я на чилле. Ну, пытаюсь соответствовать заявленному вайбу. | Timer's running, I'm chill. Trying to match the advertised vibe, anyway.
+NARRATE_TRADE 5 | Чат, сидим ровно. Кнопки уже нажали, теперь не тильтуем заранее. | Sit tight, chat. Buttons pressed; we're not pre-ordering the tilt.
+NARRATE_TRADE 7 | Таймер сам справится. Моё ценное мнение каждую секунду ему, прикиньте, не нужно. | Timer's got this. Apparently it doesn't need my expert yap every second.
+NARRATE_TRADE 8 | Не, я пока не праздную. Мой внутренний делулу и так слишком активный. | Not celebrating yet. My inner delulu is already doing enough.
+NARRATE_TRADE 10 | Ждём. Да, геймплей сейчас вот такой. Я тоже хотела кнопку «быстрее». | Waiting. Yep, this is the gameplay right now. I'd like a fast-forward button too.
+NARRATE_TRADE 16 | Рано радоваться, чат. Я уже почти начала, но вовремя себя поймала. | Too early to call the W, chat. Nearly did it myself. Caught that.
+NARRATE_TRADE 20 | Давайте без «ну всё, изи» посреди сделки. Финал ещё не вышел, алло. | Let's not call it free halfway through. The ending hasn't dropped yet.
+NARRATE_TRADE 23 | Фразу «я же говорила» держу при себе. И так аура слишком уверенная. | Keeping the 'told you so' to myself. Already giving too much confidence.
+NARRATE_TRADE 28 | Руки от кнопок, чат. Мы уже в сделке, дополнительный спам ей не поможет. | Hands off the buttons, chat. We're already in; extra spam won't help.
+NARRATE_TRADE 33 | Сижу, смотрю. Делать вид, что мне вообще не интересно, не буду — это уже кринж. | Just watching. Pretending I'm completely unbothered would be a bit much.
+NARRATE_TRADE 39 | Скипнуть ожидание нельзя. Да, обидно, я уже мысленно навела курсор. | Can't skip the waiting. I know. I'd already mentally hovered over it.
+TRADE_WIN 9 | Плюс! Ну что, теперь имею право слегка поважничать. Совсем чуть-чуть. | That's green! Low-key pleased with that one. Okay, maybe not that low-key.
+TRADE_WIN 12 | Вот это плюс, приятно! Но с короной к следующему входу не идём, я себя знаю. | Nice win! Keeping the ego away from the next entry, though. I know myself.
+TRADE_WIN 13 | Есть плюс, чат! Всё, пару секунд я тут главная звезда. Потерпите. | That's green, chat! Main-character moment. Give me two seconds, please.
+TRADE_WIN 14 | Опа, плюс! Теперь можно сказать «имба» и не делать это заранее. | Ooh, that's a W! Now I can say it without getting ahead of myself.
+TRADE_WIN 16 | Зашло в плюс! Так, не надо делать вид, что я не довольная. Вы же видите. | Closed green! Not even attempting the unbothered act. You can see my face.
+TRADE_WIN 25 | Сюда, чат! Плюс есть. Самодовольная улыбка в комплекте, извините. | Let's go, chat! That's a W. Smug smile included, sorry about that.
+TRADE_WIN 27 | Плюс! Ну, это было вкусно. Всё, чуть-чуть порадовалась, дальше работаем. | Win! Okay, that was clean. Tiny celebration, then back to it.
+TRADE_LOSS 6 | Эх, минус. Ладно, чат, без тильта. Сейчас точно не время жать на эмоциях. | Ah, that's a loss. No tilt, chat. Definitely not clicking out of frustration.
+TRADE_LOSS 12 | Вот сейчас обидно, минус. Но режим «срочно нажать ещё» — скип. | That loss stings. But the 'click again immediately' impulse? Hard pass.
+TRADE_LOSS 14 | Минус. Да ну блин, хотелось по-другому. Ладно, выдохнули. | That's a loss. Ugh, not the ending I wanted. Okay. Breathe.
+TRADE_LOSS 15 | Не зашло, чат, минус. Делать вид «мне вообще всё равно» не буду. | Didn't land, chat. A loss. Not about to pretend I'm totally unbothered.
+TRADE_LOSS 17 | Ага, минус. Ну спасибо за сюжетный поворот, конечно. Ладно, дальше без суеты. | Yep, a loss. Thanks for the plot twist, I guess. Okay, no rushing.
+TRADE_REFUND 6 | Возврат. Плот-твиста не завезли, просто ставка вернулась. Ну окей. | Refund. No plot twist delivered, just the stake coming back. Fair enough.
+TRADE_REFUND 10 | Возврат, чат. Не плюс, не минус. Просто такой вайб у финала. | Refund, chat. Neither a win nor a loss. That's the ending's vibe.

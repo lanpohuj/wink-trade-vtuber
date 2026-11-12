@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_001",
+  "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+  "expected": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+  "transcript": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.0838,
+    "peak": 0.48144,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.282,
+    "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

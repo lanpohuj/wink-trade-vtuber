@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_001",
+  "phrase_id": "lively3_en_narrate_cta_001",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+  "tts_text": "[casual, amused] Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "691cace44f1a16d63f67a0fa250320970840456d84e9e6d698eed4306cc111a3",
+  "delivery": "casual, amused",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_001",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_001.mp3",
+  "duration": 5.590125,
+  "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+  "request_payload": {
+    "text": "[casual, amused] Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

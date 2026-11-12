@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_001",
+  "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+  "expected": "Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+  "transcript": "Так, вверх. Откат подтвердился. Сделка открыта. Все, сидим ровно, не суетимся.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.0809,
+    "peak": 0.43222,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Так, вверх. Откат подтвердился. Сделка открыта."
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Все, сидим ровно, не суетимся."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

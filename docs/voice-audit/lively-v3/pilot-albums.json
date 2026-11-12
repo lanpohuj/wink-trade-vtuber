@@ -1,0 +1,76 @@
+[
+  {
+    "lang": "ru",
+    "file": "docs/voice-audit/lively-v3/pilot-ru-c2ba606b.mp3",
+    "sha256": "ca013319ac30600a5bffb3be6317a730d519b3b1e82bd07cdc8e4a152b1e33f1",
+    "records": [
+      {
+        "id": "lively3_ru_narrate_engage_001",
+        "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d",
+        "text": "Чат, я вообще-то собиралась быть серьёзной. Но вы же видите, как хорошо у меня получается."
+      },
+      {
+        "id": "lively3_ru_narrate_scan_001",
+        "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed",
+        "text": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну."
+      },
+      {
+        "id": "lively3_ru_narrate_cta_001",
+        "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b",
+        "text": "Кстати, бот в шапке. Не потеряйте, а то потом будет: «Винки, ну где ссылка?»"
+      },
+      {
+        "id": "lively3_ru_open_trade_call_001",
+        "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+        "text": "Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся."
+      },
+      {
+        "id": "lively3_ru_trade_win_001",
+        "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+        "text": "Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше."
+      },
+      {
+        "id": "lively3_ru_trade_loss_001",
+        "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+        "text": "А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану."
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "file": "docs/voice-audit/lively-v3/pilot-en-83c91075.mp3",
+    "sha256": "bef5d5ae494266d4b33852f2524bf1945799b3d87737ec5162a91ced43d05c25",
+    "records": [
+      {
+        "id": "lively3_en_narrate_engage_001",
+        "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858",
+        "text": "Chat, I was going to be professional today. You can see how well that's going."
+      },
+      {
+        "id": "lively3_en_narrate_scan_001",
+        "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+        "text": "Okay, I'm locked in. A nice-looking candle isn't the whole setup. Let me check the rest."
+      },
+      {
+        "id": "lively3_en_narrate_cta_001",
+        "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+        "text": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time."
+      },
+      {
+        "id": "lively3_en_open_trade_call_001",
+        "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+        "text": "Okay, we're in, going up. Pullback confirmed. Hands off the button now, chat."
+      },
+      {
+        "id": "lively3_en_trade_win_001",
+        "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+        "text": "That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again."
+      },
+      {
+        "id": "lively3_en_trade_loss_001",
+        "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+        "text": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though."
+      }
+    ]
+  }
+]

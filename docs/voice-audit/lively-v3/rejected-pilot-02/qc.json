@@ -1,0 +1,347 @@
+{
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "lively3_en_narrate_cta_001",
+      "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+      "expected": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+      "transcript": "Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.59,
+        "rms": 0.08426,
+        "peak": 0.40286,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.23,
+        "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.44,
+          "text": " Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_cta_001",
+      "sha256": "aa1bcb2c89f9fec4abafa86874f3d671d22fae1e644380134ed13d0739d8c8e1",
+      "expected": "Кстати, бот в шапке. Не потеряйте, а то потом будет: «Винки, ну где ссылка?»",
+      "transcript": "Кстати, бот в шапке! Не потеряйте, а то потом будет винки, ну где ссылка?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.251,
+        "rms": 0.08911,
+        "peak": 0.45778,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.111,
+        "sha256": "aa1bcb2c89f9fec4abafa86874f3d671d22fae1e644380134ed13d0739d8c8e1"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.82,
+          "text": " Кстати, бот в шапке!"
+        },
+        {
+          "start": 1.82,
+          "end": 5.2,
+          "text": " Не потеряйте, а то потом будет винки, ну где ссылка?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_scan_001",
+      "sha256": "e2f3fc31daa4a855159d96325520460d3f52f82e9b2d870f98b78fdae615bc77",
+      "expected": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+      "transcript": "Да, да. Хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.661,
+        "rms": 0.079,
+        "peak": 0.34296,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.101,
+        "sha256": "e2f3fc31daa4a855159d96325520460d3f52f82e9b2d870f98b78fdae615bc77"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.5600000000000005,
+          "text": " Да, да. Хочется уже нажать. Но входить на одном вайбе? Ну такое."
+        },
+        {
+          "start": 5.5600000000000005,
+          "end": 6.5600000000000005,
+          "text": " Я ещё гляну."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_narrate_scan_001",
+      "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+      "expected": "Okay, I'm locked in. A nice-looking candle isn't the whole setup. Let me check the rest.",
+      "transcript": "Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.087,
+        "rms": 0.07396,
+        "peak": 0.44325,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.247,
+        "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.5600000000000005,
+          "text": " Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_engage_001",
+      "sha256": "e3e0af6eaacf87acabf6fa5248c777b9b46d0e591bd0acb7e29c89677674baef",
+      "expected": "Чат, я тут вся такая на чилле. А сама по три раза всё проверяю. Очень спокойная, ага.",
+      "transcript": "Чат, я тут вся такая на чиле, а сама по три раза все проверяю. Очень спокойная, ага.",
+      "similarity": 0.992,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.531,
+        "rms": 0.07655,
+        "peak": 0.3499,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "e3e0af6eaacf87acabf6fa5248c777b9b46d0e591bd0acb7e29c89677674baef"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.5,
+          "text": " Чат, я тут вся такая на чиле, а сама по три раза все проверяю. Очень спокойная, ага."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_narrate_engage_001",
+      "sha256": "2738c2a67eecf39a770d665902e54e053a34c0e4d22797664dc1018b1857c364",
+      "expected": "Chat, I'm supposed to be the calm one. Meanwhile, I've checked this three times. Very nonchalant of me.",
+      "transcript": "Chat? I'm supposed to be the calm one. Meanwhile, I've checked this three times. Very nonchalant of me.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.687,
+        "rms": 0.08327,
+        "peak": 0.45984,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.307,
+        "sha256": "2738c2a67eecf39a770d665902e54e053a34c0e4d22797664dc1018b1857c364"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.24,
+          "text": " Chat? I'm supposed to be the calm one. Meanwhile, I've checked this three times. Very nonchalant of me."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_open_trade_call_001",
+      "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+      "expected": "Okay, we're in, going up. Pullback confirmed. Hands off the button now, chat.",
+      "transcript": "Okay, we're in going up pull back confirmed hands off the button now chat",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.434,
+        "rms": 0.08181,
+        "peak": 0.42809,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.134,
+        "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.22,
+          "text": " Okay, we're in going up pull back confirmed hands off the button now chat"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_open_trade_call_001",
+      "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+      "expected": "Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+      "transcript": "Так, вверх. Откат подтвердился. Сделка открыта. Все, сидим ровно, не суетимся.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.4,
+        "rms": 0.0809,
+        "peak": 0.43222,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.1,
+        "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Так, вверх. Откат подтвердился. Сделка открыта."
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Все, сидим ровно, не суетимся."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_trade_win_001",
+      "sha256": "1ab23104125e632a3abb0f730e7d602ebd83bf9f7696498ff7f0dff4279018b2",
+      "expected": "Сюда! Есть плюс. Всё, чат, дайте мне секунду поважничать. Плюс аура, как говорится.",
+      "transcript": "Сюда! Есть плюс! Все, чат, дайте мне секунду поважничать! Плюс, ауру, как говорится!",
+      "similarity": 0.984,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.131,
+        "rms": 0.08205,
+        "peak": 0.38612,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.071,
+        "sha256": "1ab23104125e632a3abb0f730e7d602ebd83bf9f7696498ff7f0dff4279018b2"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Сюда! Есть плюс!"
+        },
+        {
+          "start": 2.0,
+          "end": 5.0,
+          "text": " Все, чат, дайте мне секунду поважничать!"
+        },
+        {
+          "start": 5.0,
+          "end": 7.0,
+          "text": " Плюс, ауру, как говорится!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_trade_win_001",
+      "sha256": "58d69a47d75ba16814a685f7fb00bcd7d6f95b1636e6643a2fc4f9ffd82d0d14",
+      "expected": "Chat, that's a W! Okay, let me be a little smug for a second. Just a second.",
+      "transcript": "Chat, that's a W. Okay, let me be a little smug for a second. Just a second.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.348,
+        "rms": 0.08167,
+        "peak": 0.45385,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.208,
+        "sha256": "58d69a47d75ba16814a685f7fb00bcd7d6f95b1636e6643a2fc4f9ffd82d0d14"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.08,
+          "text": " Chat, that's a W. Okay, let me be a little smug for a second. Just a second."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_trade_loss_001",
+      "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+      "expected": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+      "transcript": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.642,
+        "rms": 0.0838,
+        "peak": 0.48144,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.282,
+        "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.6000000000000005,
+          "text": " Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_trade_loss_001",
+      "sha256": "ddf30880032e5feba0c15f02b76b0526c60899eef39fcb69da77c885786c2f77",
+      "expected": "А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+      "transcript": "Ну, класс. Минус. Да, бесит. Но в тильт не уходим, выдохнули. Дальше по плану.",
+      "similarity": 0.991,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.314,
+        "rms": 0.07501,
+        "peak": 0.35343,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.074,
+        "sha256": "ddf30880032e5feba0c15f02b76b0526c60899eef39fcb69da77c885786c2f77"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Ну, класс. Минус. Да, бесит."
+        },
+        {
+          "start": 4.0,
+          "end": 7.28,
+          "text": " Но в тильт не уходим, выдохнули. Дальше по плану."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ]
+}

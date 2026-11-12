@@ -1,0 +1,336 @@
+{
+  "records": [
+    {
+      "id": "lively3_en_narrate_cta_001",
+      "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+      "expected": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+      "transcript": "Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.59,
+        "rms": 0.08426,
+        "peak": 0.40286,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.23,
+        "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.44,
+          "text": " Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_cta_001",
+      "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b",
+      "expected": "Кстати, бот в шапке. Не потеряйте, а то потом будет: «Винки, ну где ссылка?»",
+      "transcript": "Кстати, бот, в шапке не потеряйте, а то потом будет Винки? Ну, где ссылка?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.773,
+        "rms": 0.09374,
+        "peak": 0.74603,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.113,
+        "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.62,
+          "text": " Кстати, бот, в шапке не потеряйте, а то потом будет Винки?"
+        },
+        {
+          "start": 4.62,
+          "end": 5.74,
+          "text": " Ну, где ссылка?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_scan_001",
+      "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed",
+      "expected": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+      "transcript": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.4,
+        "rms": 0.08016,
+        "peak": 0.33294,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.08,
+        "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.32,
+          "text": " Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_narrate_scan_001",
+      "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+      "expected": "Okay, I'm locked in. A nice-looking candle isn't the whole setup. Let me check the rest.",
+      "transcript": "Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.087,
+        "rms": 0.07396,
+        "peak": 0.44325,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.247,
+        "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.5600000000000005,
+          "text": " Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_narrate_engage_001",
+      "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d",
+      "expected": "Чат, я вообще-то собиралась быть серьёзной. Но вы же видите, как хорошо у меня получается.",
+      "transcript": "Чат, я вообще-то собиралась быть серьезной, но вы же видите, как хорошо у меня получается.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.4,
+        "rms": 0.09134,
+        "peak": 0.71215,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.32,
+        "trailing_silence": 0.1,
+        "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.12,
+          "text": " Чат, я вообще-то собиралась быть серьезной, но вы же видите, как хорошо у меня получается."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_narrate_engage_001",
+      "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858",
+      "expected": "Chat, I was going to be professional today. You can see how well that's going.",
+      "transcript": "Chat I was going to be professional today you can see how well that's going",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.859,
+        "rms": 0.0842,
+        "peak": 0.398,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.219,
+        "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.46,
+          "text": " Chat I was going to be professional today you can see how well that's going"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_open_trade_call_001",
+      "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+      "expected": "Okay, we're in, going up. Pullback confirmed. Hands off the button now, chat.",
+      "transcript": "Okay, we're in going up pull back confirmed hands off the button now chat",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.434,
+        "rms": 0.08181,
+        "peak": 0.42809,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.134,
+        "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.22,
+          "text": " Okay, we're in going up pull back confirmed hands off the button now chat"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_open_trade_call_001",
+      "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+      "expected": "Так, вверх! Откат подтвердился, сделка открыта. Всё, сидим ровно, не суетимся.",
+      "transcript": "Так, вверх. Откат подтвердился. Сделка открыта. Все, сидим ровно, не суетимся.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.4,
+        "rms": 0.0809,
+        "peak": 0.43222,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.1,
+        "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Так, вверх. Откат подтвердился. Сделка открыта."
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Все, сидим ровно, не суетимся."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_trade_win_001",
+      "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+      "expected": "Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+      "transcript": "Есть плюс! Ну, вот это приятно! Дайте мне секунду порадоваться и смотрим дальше!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.295,
+        "rms": 0.08222,
+        "peak": 0.3471,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.075,
+        "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.44,
+          "text": " Есть плюс! Ну, вот это приятно!"
+        },
+        {
+          "start": 3.44,
+          "end": 6.32,
+          "text": " Дайте мне секунду порадоваться и смотрим дальше!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_trade_win_001",
+      "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+      "expected": "That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+      "transcript": "That's a win. Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.295,
+        "rms": 0.09057,
+        "peak": 0.39922,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.16,
+        "trailing_silence": 0.215,
+        "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.16,
+          "text": " That's a win. Okay, that felt good. Give me a second to enjoy it, then we'll look again."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_en_trade_loss_001",
+      "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+      "expected": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+      "transcript": "Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.642,
+        "rms": 0.0838,
+        "peak": 0.48144,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.282,
+        "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.6000000000000005,
+          "text": " Oh, come on. That's a loss. Annoying. We're not going on tilt over it, though."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_trade_loss_001",
+      "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+      "expected": "А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+      "transcript": "Ммм, ну класс! Минус! Да, бесят! Но в тильт не уходим, выдохнули. Дальше по плану.",
+      "similarity": 0.949,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 7.131,
+        "rms": 0.08093,
+        "peak": 0.32726,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.091,
+        "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.9,
+          "text": " Ммм, ну класс! Минус! Да, бесят!"
+        },
+        {
+          "start": 3.9,
+          "end": 7.12,
+          "text": " Но в тильт не уходим, выдохнули. Дальше по плану."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ]
+}

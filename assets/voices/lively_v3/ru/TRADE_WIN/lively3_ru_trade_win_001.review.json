@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_001",
+  "phrase_id": "lively3_ru_trade_win_001",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+  "tts_text": "[conversational] Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "685f4464d09e4914b24270aabc3838f0e623eb9aadefffa03c35d2179f081ab5",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_001",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_001.mp3",
+  "duration": 6.295438,
+  "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+  "request_payload": {
+    "text": "[conversational] Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -377,9 +377,15 @@
       <input type="range" id="volumeSlider" min="0" max="100" value="100">
       <span id="volumeValue">100%</span>
     </label>
+    <div class="row">
+      <input id="voiceDefectIssue" value="хрип" aria-label="Дефект звука" placeholder="Что не так со звуком">
+      <input id="voiceDefectOffset" type="number" min="0" step="0.1" placeholder="секунда" aria-label="Место дефекта в секундах" style="width:85px">
+    </div>
+    <button id="voiceDefectBtn" class="small-btn">Дефект последней реплики</button>
+    <div id="voiceDefectStatus" class="hint" role="status"></div>
     <label class="check-row">
       <input type="checkbox" id="ctaToggle" checked>
-      <span>CTA-ротация (каждые <span id="ctaInterval">4</span> мин)</span>
+      <span>Приглашение в бота (каждые <span id="ctaInterval">3–5</span> мин)</span>
     </label>
   </section>
 

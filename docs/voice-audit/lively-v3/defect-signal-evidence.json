@@ -1,0 +1,59 @@
+{
+  "file": "assets/voices/lively_v3/ru/TRADE_WIN/lively3_ru_trade_win_001.mp3",
+  "sha256": "1ab23104125e632a3abb0f730e7d602ebd83bf9f7696498ff7f0dff4279018b2",
+  "request_payload": {
+    "text": "[excited, conversational] Сюда! Есть плюс. Всё, чат, дайте мне секунду поважничать. Плюс аура, как говорится.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "intervals": [
+    {
+      "start": 0,
+      "end": 7.1314375,
+      "rms": 0.08204887062311172,
+      "peak": 0.3861156105995178,
+      "clipped_fraction": 0.0
+    },
+    {
+      "start": 0,
+      "end": 4.5,
+      "rms": 0.08172046393156052,
+      "peak": 0.3695884048938751,
+      "clipped_fraction": 0.0
+    },
+    {
+      "start": 4.5,
+      "end": 6.5,
+      "rms": 0.07987894117832184,
+      "peak": 0.3349400758743286,
+      "clipped_fraction": 0.0
+    },
+    {
+      "start": 5,
+      "end": 5.5,
+      "rms": 0.008648358285427094,
+      "peak": 0.08165919035673141,
+      "clipped_fraction": 0.0
+    },
+    {
+      "start": 5.5,
+      "end": 6,
+      "rms": 0.09205717593431473,
+      "peak": 0.33037909865379333,
+      "clipped_fraction": 0.0
+    }
+  ],
+  "diagnosis": "Owner-confirmed audible defect; no conclusion of naturalness from signal metrics"
+}

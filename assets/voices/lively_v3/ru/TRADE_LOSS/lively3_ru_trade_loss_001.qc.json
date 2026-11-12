@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_001",
+  "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+  "expected": "А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+  "transcript": "Ммм, ну класс! Минус! Да, бесят! Но в тильт не уходим, выдохнули. Дальше по плану.",
+  "similarity": 0.949,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 7.131,
+    "rms": 0.08093,
+    "peak": 0.32726,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.091,
+    "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.9,
+      "text": " Ммм, ну класс! Минус! Да, бесят!"
+    },
+    {
+      "start": 3.9,
+      "end": 7.12,
+      "text": " Но в тильт не уходим, выдохнули. Дальше по плану."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

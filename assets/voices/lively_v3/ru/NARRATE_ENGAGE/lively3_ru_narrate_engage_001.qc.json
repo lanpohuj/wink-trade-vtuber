@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_001",
+  "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d",
+  "expected": "Чат, я вообще-то собиралась быть серьёзной. Но вы же видите, как хорошо у меня получается.",
+  "transcript": "Чат, я вообще-то собиралась быть серьезной, но вы же видите, как хорошо у меня получается.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.09134,
+    "peak": 0.71215,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.32,
+    "trailing_silence": 0.1,
+    "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.12,
+      "text": " Чат, я вообще-то собиралась быть серьезной, но вы же видите, как хорошо у меня получается."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

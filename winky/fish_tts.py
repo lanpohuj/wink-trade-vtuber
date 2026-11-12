@@ -159,6 +159,8 @@ class FishAudioTTS:
 
     def payload(self, text, lang):
         t = self.get_tuning(lang)
+        if lang == 'ru' and not text.lstrip().startswith('['):
+            text = '[conversational] ' + text
         return {
             "text": text,
             "reference_id": self.voices[lang],
@@ -228,7 +230,7 @@ class FishAudioTTS:
                 return target
             if not settings.FISHAUDIO_API_KEY:
                 raise TTSError("FISHAUDIO_API_KEY missing")
-            cost = len(text.encode("utf8")) * 15 / 1_000_000
+            cost = len(request_payload['text'].encode("utf8")) * 15 / 1_000_000
             self._budget(cost)
             temp = target.with_suffix("." + uuid.uuid4().hex + ".part")
             try:

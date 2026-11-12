@@ -1,0 +1,76 @@
+[
+  {
+    "lang": "ru",
+    "file": "docs/voice-audit/lively-v3/pilot-ru.mp3",
+    "sha256": "ae621a42191abbc20965200a9f00775b64a77cd5cf6513556e3a4a9bb70964af",
+    "records": [
+      {
+        "id": "lively3_ru_narrate_engage_001",
+        "sha256": "2ca6804381fcbc64d6d8fea993259d138fd930aa889534c5b55e9c3ee2aef45d",
+        "text": "Чат, я сегодня почти серьёзная. Не портите мне легенду слишком быстро."
+      },
+      {
+        "id": "lively3_ru_narrate_scan_001",
+        "sha256": "88ecced3a1c9bccbca9209e52f0ce79dbfdc4165333c366e6708bf501530bcb5",
+        "text": "График решил поиграть в загадочного. Ладно, подождём подтверждения."
+      },
+      {
+        "id": "lively3_ru_narrate_cta_001",
+        "sha256": "d2fc2e7bbc511a8683d9a916c95415d863f38c4ba626a2f72ca436756b8c9188",
+        "text": "Бот в шапке профиля. Да, полезная ссылка наконец лежит там, где её ищут."
+      },
+      {
+        "id": "lively3_ru_open_trade_call_001",
+        "sha256": "3269769260e001980ef9cba36f889bb11b9aa593a1d46d0233fb2895b64cc9bc",
+        "text": "Открылись вверх после подтверждённого отката. Всё, кнопку оставляем в покое."
+      },
+      {
+        "id": "lively3_ru_trade_win_001",
+        "sha256": "515241ed2515dab3c7c10d297cb4e2863061c0fa164fc415a92d2ba55b2faeb4",
+        "text": "Плюс закрыт. Всё, теперь можно выдохнуть и немного повыпендриваться."
+      },
+      {
+        "id": "lively3_ru_trade_loss_001",
+        "sha256": "adaa4f73b3b2b779c8d0d6e6b1a0812d0448a2a5b85eb11a5d4786e4e27ef3ca",
+        "text": "Минус закрыт. Неприятно, но переписывать факт красивым голосом не стану."
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "file": "docs/voice-audit/lively-v3/pilot-en.mp3",
+    "sha256": "b9246ecbbb2d59b4c07a92be40813c80574f3c5c728dc8778068401d9b86d842",
+    "records": [
+      {
+        "id": "lively3_en_narrate_engage_001",
+        "sha256": "84597607baaefe7c578d626dd8c04f4e60b49d46908598fecb013cb488ced6f1",
+        "text": "Chat, I'm almost professional today. Please don't ruin the cover story immediately."
+      },
+      {
+        "id": "lively3_en_narrate_scan_001",
+        "sha256": "a85b2a38f8f071e7ea6566e94b879d6a9cafe355c2a2fa91556daa80d9ea84cc",
+        "text": "The chart's being mysterious. Fine, I'll wait for something more convincing."
+      },
+      {
+        "id": "lively3_en_narrate_cta_001",
+        "sha256": "aa7787bc27f5435add74eb6aec9f7241139825560c658dfff9688fa32bc02944",
+        "text": "Bot link's in my bio. For once, the useful thing is exactly where you'd look."
+      },
+      {
+        "id": "lively3_en_open_trade_call_001",
+        "sha256": "2d6b1ef51408d962cdfd82f01630a698c1be3549a784ea22d661a6925909fbfb",
+        "text": "Opened up after the confirmed pullback. Button can rest now."
+      },
+      {
+        "id": "lively3_en_trade_win_001",
+        "sha256": "a55614145520de2e73560be661d1f49fa8473a3ce7d6fc522934840a7b4d2e92",
+        "text": "Green close confirmed. Now I can breathe and be mildly insufferable about it."
+      },
+      {
+        "id": "lively3_en_trade_loss_001",
+        "sha256": "5be54059f3dd0e24aa8cc731cf716a2d4d3c38a83af159d3d1447de63a7e7bde",
+        "text": "Red close confirmed. Unpleasant, but a pretty voice won't rewrite it."
+      }
+    ]
+  }
+]

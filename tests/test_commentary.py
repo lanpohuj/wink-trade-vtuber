@@ -253,7 +253,7 @@ class CommentaryTests(unittest.TestCase):
                 )
                 # A different record lets the reservation remain truthful.
                 (root / "b.mp3").write_bytes(b"audio" * 1000)
-                row2 = {**row, "id": "b", "file": "b.mp3"}
+                row2 = {**row, "id": "b", "file": "b.mp3", "text": "Проверяю другую идею."}
                 (root / "manifest.json").write_text(
                     json.dumps({"categories": {"NARRATE_SCAN": [row, row2]}})
                 )

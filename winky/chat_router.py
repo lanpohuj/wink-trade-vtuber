@@ -534,15 +534,15 @@ class ChatRouter:
         # 2. Ключевые сценарии — приоритет при прямых вопросах
         keyword = self._book.match_keyword(text)
         if keyword is not None:
-            emo = detected_emo or keyword.emotion
-            kw_text = keyword.text(lang)
-            clean_kw = kw_text.replace("{user}", clean_user)
-            profile.history.append({"user": text, "winky": clean_kw})
-            if any(w in clean_kw.lower() for w in ("шапк", "профил", "ссылк", "био", "bio", "link")):
-                profile.mentioned_bio = True
-            self._bump("keyword_hits")
-            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion=emo, reply_text=clean_kw)
-            return
+            if re.search(r'бот|ссылк|шапк|био|\bbot\b|\bbio\b|\blink\b|\baccess\b|доступ', lower_text):
+                if self._recorded_reaction('bot', lang, 'happy'):
+                    return
+                from winky.deepseek import generate_smart_local_reply
+                stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang,
+                    emotion='happy', reply_text=generate_smart_local_reply(clean_user, text, lang))
+                return
+            # Ordinary greetings/skepticism go through the same conversational
+            # responder as other comments, rather than one fixed keyword line.
 
         # 3. Добавляем в очередь StreamDirector с фоновым пре-синтезом (DeepSeek / умный фоллбэк)
         self._bump("comments_queued")
@@ -569,9 +569,11 @@ class ChatRouter:
                 return
 
         self._last_greet_at = now
-        scenario_phrase = self._book.chat_phrases.greeting(target_lang)
-        text = scenario_phrase if scenario_phrase else random.choice(JOIN_PHRASES_RU if target_lang == "ru" else JOIN_PHRASES_EN)
-        self._say(text, target_lang, "wave", clean_name, action="wave", action_duration=3.0)
+        if self._recorded_reaction('join', target_lang, 'wave', 'wave'):
+            return
+        phrases = self._book.chat_phrases
+        pool = (phrases.greetings_ru if target_lang == 'ru' else phrases.greetings_en) or (JOIN_PHRASES_RU if target_lang == 'ru' else JOIN_PHRASES_EN)
+        self._say_options(pool, 'join', target_lang, 'wave', clean_name, action='wave', action_duration=3.0)
 
     def handle_follow(self, user: str, force: bool = False, lang: str = "auto") -> None:
         """Подписка зрителя: танец dance с кулдауном 4с."""
@@ -586,9 +588,11 @@ class ChatRouter:
             return
 
         self._last_follow_at = now
-        scenario_phrase = self._book.chat_phrases.follow(target_lang)
-        text = scenario_phrase if scenario_phrase else random.choice(FOLLOW_PHRASES_RU if target_lang == "ru" else FOLLOW_PHRASES_EN)
-        self._say(text, target_lang, "excited", clean_name, action="dance", action_duration=4.5)
+        if self._recorded_reaction('follow', target_lang, 'excited', 'dance'):
+            return
+        phrases = self._book.chat_phrases
+        pool = (phrases.follows_ru if target_lang == 'ru' else phrases.follows_en) or (FOLLOW_PHRASES_RU if target_lang == 'ru' else FOLLOW_PHRASES_EN)
+        self._say_options(pool, 'follow', target_lang, 'excited', clean_name, action='dance', action_duration=4.5)
 
     def handle_gift(self, user: str, gift: str = "Роза", lang: str = "auto") -> None:
         """Подарок: персональная благодарность за конкретный подарок + танец dance."""
@@ -597,10 +601,12 @@ class ChatRouter:
         clean_gift = (gift or "").strip() or ("Роза" if target_lang == "ru" else "Rose")
         self._bump("gifts")
         self._feed("user", clean_name, f"🎁 {clean_gift}")
+        if self._recorded_reaction('gift', target_lang, 'excited', 'dance'):
+            return
 
-        scenario_phrase = self._book.chat_phrases.gift_thank(target_lang)
-        text = scenario_phrase if scenario_phrase else random.choice(GIFT_PHRASES_RU if target_lang == "ru" else GIFT_PHRASES_EN)
-        self._say(text, target_lang, "excited", clean_name, gift=clean_gift, action="dance", action_duration=4.5)
+        phrases = self._book.chat_phrases
+        pool = (phrases.gift_thanks_ru if target_lang == 'ru' else phrases.gift_thanks_en) or (GIFT_PHRASES_RU if target_lang == 'ru' else GIFT_PHRASES_EN)
+        self._say_options(pool, 'gift', target_lang, 'excited', clean_name, gift=clean_gift, action='dance', action_duration=4.5)
 
     def handle_like(self, user: str, count: int = 1, force: bool = False, lang: str = "auto") -> None:
         """Лайки: благодарность с кулдауном 20с при свободной очереди."""
@@ -618,11 +624,26 @@ class ChatRouter:
                 return
 
         self._last_like_at = now
-        scenario_phrase = self._book.chat_phrases.like(target_lang)
-        text = scenario_phrase if scenario_phrase else random.choice(LIKE_PHRASES_RU if target_lang == "ru" else LIKE_PHRASES_EN)
-        self._say(text, target_lang, "excited", clean_name, count=count, action="cheer", action_duration=3.0)
+        if self._recorded_reaction('like', target_lang, 'happy', 'cheer'):
+            return
+        phrases = self._book.chat_phrases
+        pool = (phrases.likes_ru if target_lang == 'ru' else phrases.likes_en) or (LIKE_PHRASES_RU if target_lang == 'ru' else LIKE_PHRASES_EN)
+        self._say_options(pool, 'like', target_lang, 'happy', clean_name, count=count, action='cheer', action_duration=3.0)
 
     # ---------- внутреннее ----------
+
+    def _recorded_reaction(self, kind, lang, emotion, action=None):
+        event = dict(category='CHAT_REACTION', chat_kind=kind, lang=lang,
+                     emotion=emotion, action=action, ttl_sec=30, max_duration_sec=8)
+        if not self._controller.voice_bank.candidates(event):
+            return False
+        return bool(self._controller.enqueue_voice_event(event).get('ok'))
+
+    def _say_options(self, pool, kind, lang, emotion, user, gift='', count=1, **kwargs):
+        # Reserve stable templates, then render the viewer name. Different names
+        # must not turn one stock response into a supposedly new phrase.
+        return self._controller.speak_options(pool, lang=lang, category='chat_' + kind,
+            emotion=emotion, source='chat', substitutions={'user': user, 'gift': gift, 'count': str(count)}, **kwargs)
 
     def _emotion_for(self, text: str) -> str:
         """Подбор эмоции под тон ответа LLM."""

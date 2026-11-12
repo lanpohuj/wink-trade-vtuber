@@ -71,6 +71,10 @@ class StreamDirector:
         self._commentary_session = None
         self._announced_result = None
         self._important_attempt_at = 0.0
+        self.cta_enabled = True
+        self.stream_lang = 'ru'
+        self._last_loss_at = 0.0
+        self._cta_lock = threading.Lock()
 
         self._lock = threading.Lock()
         self._stop_event = threading.Event()
@@ -229,6 +233,11 @@ class StreamDirector:
                     from winky.deepseek import generate_smart_local_reply
                     reply_text = generate_smart_local_reply(item.user, item.text, item.lang)
 
+            from winky.speech_rotation import shared_rotation, fingerprint
+            if fingerprint(reply_text) in {fingerprint(t) for t in shared_rotation().recent_texts(20)}:
+                from winky.deepseek import generate_smart_local_reply
+                reply_text = generate_smart_local_reply(item.user, item.text, item.lang)
+
             # Проверка цензуры
             try:
                 from winky.censor import check_phrase
@@ -299,6 +308,62 @@ class StreamDirector:
                          'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'time': time.time()})
         if event.get('category') in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
             self._announced_result = (event.get('session_id'), event.get('trade_seq'))
+        if event.get('category') == 'TRADE_LOSS':
+            self._last_loss_at = time.time()
+
+    def cta_allowed(self, now):
+        from winky.commentary import seconds
+        result = self.context.get('last_result') or {}
+        loss_at = max(self._last_loss_at, seconds(result.get('closed_at')) if result.get('outcome') == 'LOSS' else 0)
+        return (self.cta_enabled and self.trade_phase in ('IDLE', 'ANALYZING', 'IN_TRADE', 'COOLDOWN')
+                and now - loss_at >= 60)
+
+    def maybe_cta(self, now=None, lang=None):
+        """The only automatic CTA scheduler, shared by Pocket and standalone."""
+        if not self._cta_lock.acquire(blocking=False):
+            return False
+        try:
+            return self._maybe_cta(now, lang)
+        finally:
+            self._cta_lock.release()
+
+    def _maybe_cta(self, now=None, lang=None):
+        now = time.time() if now is None else now
+        if not self._tts or not hasattr(self._tts, 'voice_bank') or not self.cta_allowed(now):
+            return False
+        rotation = self._tts.voice_bank.rotation
+        from winky.speech_rotation import SpeechRotation
+        if not isinstance(rotation, SpeechRotation):
+            return False
+        if not rotation.cta_due(now) or self.is_speaking:
+            return False
+        state = self._tts.narration_state()
+        self._sync_speech_gap(state.get('ended_at', 0))
+        if state.get('paused') or state.get('foreground_ready') or state.get('background_pending'):
+            return False
+        with self._lock:
+            if any(i.ready and not i.failed and not i.played for i in self._chat_queue):
+                return False
+        if now < self._next_commentary_at:
+            return False
+        language = lang or self.context.get('lang', self.stream_lang)
+        event = dict(category='NARRATE_CTA', lang=language, created_at=now,
+                     event_id=f'cta:{int(now // 8)}', ttl_sec=8, automatic_cta=True)
+        if self.trade_phase == 'IN_TRADE':
+            from winky.commentary import context_valid
+            if not context_valid(self.context, self._last_phase_update, now):
+                return False
+            event.update(session_id=self.context.get('session_id'), trade_seq=self.context.get('trade_seq'),
+                         pair=self.context.get('pair'), max_duration_sec=max(0, self.remaining_sec - (now - self._last_phase_update) - 2))
+        if not self._tts.voice_bank.candidates(event):
+            return False
+        return bool(self._tts.enqueue_voice_event(event).get('ok'))
+
+    def _sync_speech_gap(self, ended_at):
+        with self._lock:
+            if ended_at != self._observed_speech_end:
+                self._observed_speech_end = ended_at
+                self._next_commentary_at = ended_at + random.uniform(4, 7)
 
     def tick(self, now=None) -> None:
         from winky.commentary import choices, context_valid
@@ -340,9 +405,7 @@ class StreamDirector:
         if self.is_speaking:
             return
         ended_at = state.get('ended_at', 0)
-        if ended_at != self._observed_speech_end:
-            self._observed_speech_end = ended_at
-            self._next_commentary_at = ended_at + random.uniform(4, 7)
+        self._sync_speech_gap(ended_at)
         # Ready viewer replies outrank idle commentary even during analysis.
         if phase in ('IDLE', 'ANALYZING', 'COOLDOWN', 'IN_TRADE') and now - self._last_chat_speak_time >= 3.8:
             with self._lock:
@@ -363,12 +426,35 @@ class StreamDirector:
                 item.dispatched = True
                 self._dispatch_chat_item(item)
                 return
+        if self.maybe_cta(now):
+            return
+        if (not context_valid(context, received_at, now) and now - received_at > 3
+                and not state.get('foreground_ready') and not state.get('background_pending')
+                and now >= self._next_commentary_at and now - self._commentary_attempt_at >= 1):
+            from winky.speech_rotation import SpeechRotation
+            rotation = getattr(self._tts.voice_bank, 'rotation', None)
+            if isinstance(rotation, SpeechRotation):
+                self._commentary_attempt_at = now
+                options = [(c,) for c in ('NARRATE_ENGAGE', 'NARRATE_LESSON')]
+                for (category,) in rotation.topic_order(options, self.stream_lang):
+                    event = dict(category=category, lang=self.stream_lang, standalone=True,
+                                 created_at=now, ttl_sec=8, event_id=f'standalone:{int(now*1000)}')
+                    if self._tts.enqueue_voice_event(event).get('ok'):
+                        return
         if (not context_valid(context, received_at, now) or phase == 'RESULT'
                 or state.get('foreground_ready') or state.get('background_pending')
                 or now < self._next_commentary_at or now - self._commentary_attempt_at < 1):
             return
         self._commentary_attempt_at = now
-        for category, key, scope, extra, cooldown in choices(context, phase, now):
+        available_choices = list(choices(context, phase, now))
+        # Facts with one-shot keys stay first; recurrent topics share airtime.
+        factual = [c for c in available_choices if c[4] == 0]
+        background = [c for c in available_choices if c[4] != 0]
+        from winky.speech_rotation import SpeechRotation
+        rotation = getattr(self._tts.voice_bank, 'rotation', None)
+        if isinstance(rotation, SpeechRotation):
+            background = rotation.topic_order(background, context.get('lang', 'ru'))
+        for category, key, scope, extra, cooldown in factual + background:
             if category == 'NARRATE_RESULT':
                 continue  # Important follow-ups use the result-announcement guard above.
             key = f"{context.get('session_id')}:{context.get('lang','ru')}:{key}"

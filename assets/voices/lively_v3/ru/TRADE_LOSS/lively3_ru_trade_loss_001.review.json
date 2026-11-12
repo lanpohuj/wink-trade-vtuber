@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_001",
+  "phrase_id": "lively3_ru_trade_loss_001",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+  "tts_text": "[conversational] А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d90bb608a882348645234b8dce30f9d7f69eb3522624a109e5c2c92b56d2c5c7",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:tilt",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_001.mp3",
+  "duration": 7.131313,
+  "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+  "request_payload": {
+    "text": "[conversational] А, ну класс… Минус. Да, бесит. Но в тильт не уходим — выдохнули, дальше по плану.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

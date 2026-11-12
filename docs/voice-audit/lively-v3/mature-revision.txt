@@ -1,0 +1,19 @@
+# Audience 20-25. Editorial replacement of meme-heavy lines rejected by owner.
+NARRATE_SCAN 2 | Палец уже хочет жать, я ещё думаю. Не, дружище, ты тут не главный. | Clicking finger's getting ahead of itself. Not yet. I'm still checking.
+NARRATE_SCAN 27 | Так, спокойно смотрим дальше. Во всяком случае, я стараюсь не торопиться. | Keeping a level head and looking again. Attempting the level-head part, anyway.
+NARRATE_SCAN 64 | История грузится. Интернет сегодня никуда не торопится. Везёт ему. | History's loading. The connection's in absolutely no hurry. Must be nice.
+NARRATE_SCAN 68 | Грузится ещё. Тут бы кофе успеть сделать, но я остаюсь с вами. | Still loading. Almost enough time to make a coffee, but I'm staying here.
+NARRATE_PAIR 15 | Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт. | Let's check this pair. No instant crush; I've learned to look twice.
+NARRATE_LESSON 6 | Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется. | Until it closes, don't write the happy ending. Even if you really want to.
+NARRATE_LESSON 18 | Вайб у сделки может быть прекрасный. Проверки всё равно нужны, сорян. | A trade can look lovely. Still needs checking. Sorry to ruin the mood.
+NARRATE_LESSON 25 | Спокойно ошибиться тоже можно. Но хотя бы без тильта и лишних решений следом. | You can get it wrong calmly too. At least without tilt making the next decision.
+NARRATE_LESSON 41 | Если непонятно, громче объяснять бессмысленно. Я пробовала. Понятнее не стало. | If it doesn't make sense, saying it louder won't help. Tried that. Still confusing.
+NARRATE_ENGAGE 1 | Чат, я вообще-то собиралась быть серьёзной. Но вы же видите, как хорошо у меня получается. | Chat, I was going to be professional today. You can see how well that's going.
+NARRATE_ENGAGE 2 | Тем, кто смотрит молча, тоже привет. Никакой обязательной переклички, отдыхайте. | Hey to the quiet viewers too. No compulsory roll call. Make yourselves comfortable.
+NARRATE_ENGAGE 4 | Чат, вы обычно долго выбираете или сначала нажимаете, а потом разбираетесь? | Chat, do you take forever deciding, or click first and figure it out afterwards?
+NARRATE_ENGAGE 6 | Если понятно объяснила — отлично. Если нет, скажите где, попробую без лишних слов. | If that made sense, great. If not, tell me where. I'll try fewer words.
+NARRATE_ENGAGE 20 | Сижу с лицом «всё под контролем». А внутри вкладок открыто, чат, вы бы знали. | Looking completely composed. You should see the number of mental tabs open, though.
+NARRATE_TRADE 3 | Таймер идёт. Я сижу спокойная. Ну, по крайней мере, с виду. | Timer's running. I'm perfectly calm. Well, from the outside.
+NARRATE_TRADE 8 | Не, я пока не праздную. А то сейчас размечтаюсь, и меня не остановить. | Not celebrating yet. Once I start getting carried away, there's no stopping me.
+NARRATE_TRADE 23 | Фразу «я же говорила» держу при себе. Рано ещё, а я уже собралась. | Keeping the 'told you so' to myself. Too early, and I was already getting ready.
+TRADE_WIN 1 | Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше. | That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.

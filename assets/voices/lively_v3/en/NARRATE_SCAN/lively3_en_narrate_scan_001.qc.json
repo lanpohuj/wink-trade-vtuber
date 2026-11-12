@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_001",
+  "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+  "expected": "Okay, I'm locked in. A nice-looking candle isn't the whole setup. Let me check the rest.",
+  "transcript": "Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07396,
+    "peak": 0.44325,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.247,
+    "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5600000000000005,
+      "text": " Okay, I'm locked in a nice-looking candle isn't the whole setup. Let me check the rest"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

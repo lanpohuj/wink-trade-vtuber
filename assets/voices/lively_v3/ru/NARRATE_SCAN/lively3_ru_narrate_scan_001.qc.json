@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_001",
+  "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed",
+  "expected": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+  "transcript": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.08016,
+    "peak": 0.33294,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.08,
+    "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.32,
+      "text": " Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

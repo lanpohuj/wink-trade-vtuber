@@ -17,7 +17,7 @@ class VoicePipelineTests(unittest.TestCase):
         for i in range(3):
             (self.root / f'{i}.mp3').write_bytes(b'audio' * 1000)
             items.append({'id': str(i), 'lang': 'ru', 'file': f'{i}.mp3',
-                          'text': 'Закрытие завершено.', 'conditions': {}})
+                          'text': f'Закрытие завершено, вариант {i}.', 'conditions': {}})
         (self.root / 'manifest.json').write_text(json.dumps({'categories': {'TRADE_WIN': items}}))
         self.bank = VoiceBank(self.root, self.root / 'history.json')
         self.controller = SpeechController(on_speak=Mock(), engine=Mock())

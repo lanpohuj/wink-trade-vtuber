@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_001",
+  "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
+  "expected": "Есть плюс! Ну, вот это приятно. Дайте мне секунду порадоваться — и смотрим дальше.",
+  "transcript": "Есть плюс! Ну, вот это приятно! Дайте мне секунду порадоваться и смотрим дальше!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.295,
+    "rms": 0.08222,
+    "peak": 0.3471,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.075,
+    "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Есть плюс! Ну, вот это приятно!"
+    },
+    {
+      "start": 3.44,
+      "end": 6.32,
+      "text": " Дайте мне секунду порадоваться и смотрим дальше!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

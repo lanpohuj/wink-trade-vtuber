@@ -903,6 +903,15 @@ pauseBtn.addEventListener("click", async () => {
 });
 
 ctaBtn.addEventListener("click", () => api()?.repeat_cta());
+document.getElementById('voiceDefectBtn')?.addEventListener('click', async () => {
+  const status = document.getElementById('voiceDefectStatus');
+  try {
+    const result = await api()?.report_voice_defect(
+      document.getElementById('voiceDefectIssue').value,
+      document.getElementById('voiceDefectOffset').value || null);
+    status.textContent = result?.ok ? 'Реплика исключена. Оригинал сохранён.' : (result?.error || 'Пульт ещё не подключён');
+  } catch (_) { status.textContent = 'Не удалось сохранить отметку. Попробуйте ещё раз.'; }
+});
 
 volumeSlider.addEventListener("input", () => {
   const value = volumeSlider.value / 100;
@@ -1240,7 +1249,7 @@ async function init() {
   const status = await api().get_state();
   renderStatus(status);
   renderQuickReplies(status.quick_replies);
-  ctaInterval.textContent = status.cta_interval_minutes;
+  ctaInterval.textContent = '3–5';
   ctaToggle.checked = status.cta_enabled;
   pauseBtn.textContent = status.state === "paused" ? "▶ Продолжить" : "⏸ Пауза";
 

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_001",
+  "phrase_id": "lively3_en_narrate_engage_001",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Chat, I was going to be professional today. You can see how well that's going.",
+  "tts_text": "[casual, teasing] Chat, I was going to be professional today. You can see how well that's going.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0dd209f59534059669fa524a48c8b2a4634dfbeadc46bbb22210e748224cad48",
+  "delivery": "casual, teasing",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_001",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_001.mp3",
+  "duration": 4.858688,
+  "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858",
+  "request_payload": {
+    "text": "[casual, teasing] Chat, I was going to be professional today. You can see how well that's going.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_001",
+  "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+  "expected": "That's a win! Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+  "transcript": "That's a win. Okay, that felt good. Give me a second to enjoy it, then we'll look again.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.295,
+    "rms": 0.09057,
+    "peak": 0.39922,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.215,
+    "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " That's a win. Okay, that felt good. Give me a second to enjoy it, then we'll look again."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

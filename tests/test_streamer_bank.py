@@ -138,6 +138,7 @@ class StreamerBankTests(unittest.TestCase):
         with (
             patch.object(stream_director, "context", {}),
             patch.object(stream_director, "_last_phase_update", 0),
+            patch.object(stream_director, "maybe_cta", return_value=False) as schedule,
             patch(
                 "winky.voice_bank.active_commentary_root",
                 return_value=Path("streamer_v2"),
@@ -145,9 +146,8 @@ class StreamerBankTests(unittest.TestCase):
         ):
             api.maybe_say_cta()
         api._controller.speak.assert_not_called()
-        api._controller.enqueue_voice_event.assert_called_once_with(
-            {"category": "NARRATE_ENGAGE", "lang": "ru"}
-        )
+        api._controller.enqueue_voice_event.assert_not_called()
+        schedule.assert_called_once_with(lang='ru')
 
     def test_fresh_fish_defaults_match_delivery_but_explicit_user_tuning_wins(self):
         from winky.fish_tts import FishAudioTTS

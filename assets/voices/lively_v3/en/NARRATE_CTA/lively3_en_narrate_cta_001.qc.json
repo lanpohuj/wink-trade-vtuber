@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_001",
+  "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+  "expected": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+  "transcript": "Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08426,
+    "peak": 0.40286,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.23,
+    "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " Quick side quest! The bot's in my bio! Yep, the link's been there this whole time!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

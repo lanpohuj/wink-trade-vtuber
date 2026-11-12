@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_001",
+  "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+  "expected": "Okay, we're in, going up. Pullback confirmed. Hands off the button now, chat.",
+  "transcript": "Okay, we're in going up pull back confirmed hands off the button now chat",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08181,
+    "peak": 0.42809,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.134,
+    "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.22,
+      "text": " Okay, we're in going up pull back confirmed hands off the button now chat"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}
