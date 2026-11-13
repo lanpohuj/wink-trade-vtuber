@@ -3392,18 +3392,32 @@
     status.hidden = true;
   }
 
-  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null) {
+  let visualStages = {pair: '', generation: null, values: [null,null,null,null]};
+
+  function resetVisualStages(pair = state.targetPair) {
+    visualStages = {pair: normalizePocketPair(pair), generation: state.searchGeneration, values: [null,null,null,null]};
+  }
+
+  function syncPanelControlVisibility() {
+    const hidden = Boolean(state.autoStream || state.searchRunning || state.tradeContext || state.botState !== 'IDLE');
+    document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid').forEach(el => { el.hidden = hidden; });
+  }
+
+  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null) {
     const block=document.getElementById('botDirectionBlock');
     if(!block) return;
+    try { syncPanelControlVisibility(); } catch (_) {}
     const ru=state.lang==='ru', key=state.targetPair+'|'+stepIndex;
-    if(!block.querySelector('[data-analysis-card]')) {
+    const pair = normalizePocketPair(state.targetPair);
+    if (visualStages.pair !== pair || visualStages.generation !== state.searchGeneration) resetVisualStages();
+    if(!block.querySelector('[data-analysis-tiles]')) {
       block.className='winky-direction-block winky-signal-display analysing';
-      block.innerHTML=`<div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span class="winky-chart-scanner"></span></div>
-        <div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
-        <div class="winky-scan-segments">${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map((name,i)=>`<div class="winky-scan-seg"><span>0${i+1}</span><small>${name}</small></div>`).join('')}</div>
-        <div class="winky-analysis-meta" data-analysis-meta></div><div class="winky-flip-stage"><div class="winky-flip-card" data-analysis-card>
-        <div class="winky-flip-header"><span class="winky-flip-step-name" data-analysis-title></span><span class="winky-flip-status" data-analysis-status></span></div>
-        <details class="winky-analysis-details"><summary>${ru?'Подробнее':'Details'}</summary><div class="winky-flip-desc" data-analysis-detail></div></details></div></div>`;
+      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
+      block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
+        ${demo?`<div class="winky-data-note" data-feed-note>${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
+        <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span class="winky-chart-scanner"></span></div>
+        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map((name,i)=>`<div class="winky-scan-seg"><span class="winky-stage-index">0${i+1}</span><small data-stage-label>${name}</small><span class="winky-stage-indicator" data-stage-indicator></span></div>`).join('')}</div>
+        <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
     const status=phase || (isConfirmed?'confirmed':'checking');
@@ -3414,14 +3428,23 @@
     const periods=(state.analysisCache?.analysis?.timeframesUsed || []).filter(p=>p!==120);
     const tfNames=Array.from(new Set([state.actualChartTf, ...periods.map(p=>p<60?'S'+p:'M'+p/60)].filter(Boolean)));
     put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
-    put('[data-analysis-title]',stepTitle);
-    put('[data-analysis-detail]',stepDesc);
-    put('[data-analysis-status]',statusText[status] || statusText.checking);
-    const statusEl=block.querySelector('[data-analysis-status]');if(statusEl)statusEl.className='winky-flip-status '+status;
+    put('[data-feed-note]',ru?'Демо-данные могут изменяться':'Demo data may be altered');
+    const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
+    visualStages.values[stepIndex] = stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
+      (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null);
     const segments=block.querySelectorAll('.winky-scan-seg');
-    segments.forEach((el,i)=>{el.className='winky-scan-seg '+(i===stepIndex?'active':i<stepIndex?'done':'');});
-    const card=block.querySelector('[data-analysis-card]');
-    if(state.analysisRenderKey!==key && card) {card.classList.remove('winky-stage-transition');void card.offsetWidth;card.classList.add('winky-stage-transition');}
+    const labels=ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry'];
+    try {
+      segments.forEach((el,i)=>{
+        const result=visualStages.values[i], current=i===stepIndex;
+        el.className='winky-scan-seg'+(current?' active':'')+(result?' '+result:'');
+        const label=el.querySelector('[data-stage-label]'), indicator=el.querySelector('[data-stage-indicator]');
+        if(label) label.textContent=labels[i];
+        if(indicator) indicator.textContent=result==='confirmed'?'✓':result==='rejected'?'×':current?'·':'';
+        const description=result ? statusText[result] : current ? (status==='loading'?statusText.loading:statusText.checking) : (ru?'Ожидание':'Waiting');
+        el.setAttribute('aria-label',`${labels[i]}: ${description}`);
+      });
+    } catch (_) { /* Presentation must never interrupt analysis. */ }
     state.analysisRenderKey=key;
     const acc=document.getElementById('metricAccuracyVal');
     if(acc) {acc.textContent=known?Math.round(Number(scoreStr)/5*100)+'%':'—';acc.title=ru?'Совпадение условий стратегии':'Strategy conditions matched';}
@@ -3869,26 +3892,30 @@
     if(state.searchRound===1) state.round1Candidates=[];
     const generation=++state.searchGeneration;
     state.botState='ANALYZING_PAIR';state.analysisStartedAt=Date.now();
+    try { syncPanelControlVisibility(); } catch (_) {}
     state.searchSeen=[];state.pairCandidates=[];
     requestMarketRecovery(state.targetPair,60);
     const button=document.getElementById('btnGetSignalAction'),ru=state.lang==='ru';
     const steps=ru?['01 · ТРЕНД M1','02 · СТРУКТУРА','03 · УРОВНИ S30','04 · ТОЧКА ВХОДА']:['01 · M1 TREND','02 · STRUCTURE','03 · S30 LEVELS','04 · ENTRY'];
     let chosen=null;
     const alive=()=>generation===state.searchGeneration && !state.tradeContext;
-    const render=(step,sample,status)=>{
+    const render=(step,sample,status,finalEntry=false)=>{
       const factor=step<3 && sample?.analysis?.dataStatus!=='NO_DATA'?sample?.confluence?.factors?.[step]:null;
       if(status==='checking' && factor) status=factor.pass?'confirmed':'rejected';
-      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status);
+      const available = step === 0 ? Boolean(sample?.analysis?.trendRegime) : step === 1 ? Boolean(sample?.analysis?.setup) : step === 2 ? Boolean(sample?.analysis?.sr) : false;
+      const entryAvailable = Boolean(sample?.analysis && sample.analysis.dataStatus !== 'NO_DATA' && !sample.analysis.forcedBestRoundEntry);
+      const visualEntry = step === 3 && entryAvailable && (status === 'rejected' || (finalEntry && status === 'confirmed')) ? status : null;
+      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status,available && typeof factor?.pass === 'boolean' ? factor.pass : null,visualEntry);
     };
     try {
-      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(ru?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
+      if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(state.lang==='ru'?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
       notifyTradePhase('ANALYZING',state.targetPair,0);
       if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
       for(let attempt=0;attempt<10 && state.pairCandidates.length<PAIR_SEARCH_LIMIT && alive();attempt++) {
         const pair=state.targetPair,key=normalizePocketPair(pair);
         if(state.searchSeen.includes(key)) break;
         state.searchSeen.push(key);state.searchPairIndex=state.pairCandidates.length+1;
-        if(button) button.textContent=(ru?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/'+PAIR_SEARCH_LIMIT;
+        if(button) button.textContent=(state.lang==='ru'?'АНАЛИЗ ПАР · ':'SCANNING PAIRS · ')+state.searchPairIndex+'/'+PAIR_SEARCH_LIMIT;
         let sample=null,ready=false,anyReady=false;
         state.pairDataDeadline=Date.now()+2000;
         state.botState='ANALYZING_PAIR';
@@ -3979,7 +4006,7 @@
         executableAnalysis.searchGeneration=generation;executableAnalysis.entryThreshold=threshold;
         if(candidate.analysis?.forcedBestRoundEntry) executableAnalysis.forcedBestRoundEntry=true;
         journalDecision('entry_confirmed',{analysis:executableAnalysis,confluence:executableConfluence,scan:executableScan});
-        render(3,{analysis:executableAnalysis,confluence:executableConfluence},'confirmed');
+        render(3,{analysis:executableAnalysis,confluence:executableConfluence},'confirmed',true);
         await executeTradeWithSignal(executableAnalysis,executableConfluence,executableScan);
         if(state.tradeContext) break;
         journalDecision('entry_cancelled',{analysis:executableAnalysis,confluence:executableConfluence},'pre_click_recheck');
@@ -3989,9 +4016,11 @@
       state.searchRunning=false;state.analysisStartedAt=null;state.pairDataDeadline=null;state.lastScanCompletedAt=Date.now();
       if(!state.tradeContext && !['IN_TRADE','TRADE_RESULT','COOLDOWN'].includes(state.botState)) {
         state.botState='IDLE';
-        if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=state.autoStream?(ru?'НОВЫЙ КРУГ ПОИСКА…':'NEXT SCAN…'):t('getSignal');}
+        try { renderSignalCardState(); } catch (_) {}
+        if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=state.autoStream?(state.lang==='ru'?'НОВЫЙ КРУГ ПОИСКА…':'NEXT SCAN…'):t('getSignal');}
         if(state.autoStream) setTimeout(()=>{if(state.autoStream && !state.tradeContext && state.botState==='IDLE')startSignalAnalysis();},1500);
       }
+      try { syncPanelControlVisibility(); } catch (_) {}
     }
   }
 
@@ -4446,7 +4475,6 @@
 
       <!-- Body -->
       <div class="winky-bot-body">
-        ${typeof location !== 'undefined' && location.pathname.includes('demo') ? `<div class="winky-integrity-note">${isRu?'Данные демо-потока могут быть изменены':'Demo feed data may be altered'}</div>` : ''}
 
         <!-- TAB 1: SIGNALS -->
         <div class="winky-tab-content ${state.activeTab === "signals" ? "active" : ""}" id="tabContentSignals">
@@ -4489,13 +4517,6 @@
               <button type="button" class="winky-metric-pill winky-accuracy-button" id="winkyAccuracyButton" aria-expanded="false"><span class="winky-metric-title" data-ui-label="accuracy">${t("accuracy")}</span><span class="winky-metric-val amber" id="metricAccuracyVal">—</span><span class="winky-info-mark">ⓘ</span></button>
             </div>
             <div class="winky-accuracy-note" id="winkyAccuracyNote" hidden>${isRu?'Совпадение условий стратегии, а не вероятность прибыли.':'Strategy conditions matched, not the probability of profit.'}</div>
-
-            <!-- Stake Mode Badge -->
-            <div class="winky-stake-badge-row">
-              <div class="winky-stake-badge ${state.recoveryStep === 0 ? "base" : state.recoveryStep === 1 ? "rec1" : "rec2"}" id="winkyStakeBadge">
-                ${getStakeBadgeText()}
-              </div>
-            </div>
 
             <!-- Direction & TA Block -->
             <div class="winky-direction-block winky-signal-display idle" id="botDirectionBlock">
@@ -4723,6 +4744,7 @@
   }
 
   function renderSignalCardState() {
+    try { syncPanelControlVisibility(); } catch (_) {}
     const block = document.getElementById("botDirectionBlock");
     const accEl = document.getElementById("metricAccuracyVal");
     if (!block) return;
@@ -4802,7 +4824,8 @@
       const labels = {WIN:ru?'Прибыль':'Profit', LOSS:ru?'Убыток':'Loss', REFUND:ru?'Возврат':'Refund', UNKNOWN:ru?'Результат не получен':'Result unavailable'};
       const amount = result.outcome === 'WIN' && Number.isFinite(result.profitDelta) && result.profitDelta > 0 ? '+$'+result.profitDelta.toFixed(2) : result.outcome === 'LOSS' && Number.isFinite(result.lossDelta) && result.lossDelta > 0 ? '−$'+result.lossDelta.toFixed(2) : '—';
       block.className = 'winky-direction-block winky-result-card ' + (result.outcome === 'WIN' ? 'buy' : result.outcome === 'LOSS' ? 'sell' : 'neutral');
-      block.innerHTML = `<div class="winky-result-label">${ru?'Результат сделки':'Trade result'}</div><div class="winky-result-line"><strong>${labels[result.outcome] || labels.UNKNOWN}</strong><span>${amount}</span></div>`;
+      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
+      block.innerHTML = `<div class="winky-result-label">${ru?'Результат сделки':'Trade result'}</div><div class="winky-result-line"><strong>${labels[result.outcome] || labels.UNKNOWN}</strong><span>${amount}</span></div>${demo?`<div class="winky-data-note">${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}`;
     } else if (state.botState === "COOLDOWN") {
       block.className = "winky-direction-block winky-signal-display idle";
       block.innerHTML = `<span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
@@ -4866,6 +4889,19 @@
   }
 
   function updateCardPairUI() {
+    try {
+      if (visualStages.pair && visualStages.pair !== normalizePocketPair(state.targetPair)) {
+        resetVisualStages();
+        const block = document.getElementById('botDirectionBlock');
+        if (block) block.querySelectorAll('.winky-scan-seg').forEach(el => {
+          el.className = 'winky-scan-seg';
+          const indicator = el.querySelector('[data-stage-indicator]');
+          const label = el.querySelector('[data-stage-label]');
+          if (indicator) indicator.textContent = '';
+          el.setAttribute('aria-label',`${label?.textContent || ''}: ${state.lang === 'ru' ? 'Ожидание' : 'Waiting'}`);
+        });
+      }
+    } catch (_) { /* Presentation must never interrupt pair synchronization. */ }
     const chart = document.getElementById('winkyVisualChart');
     if (chart && chart.dataset.pair && chart.dataset.pair !== normalizePocketPair(state.targetPair)) {
       chart.innerHTML = ''; chart.dataset.pair = '';
@@ -5056,11 +5092,25 @@
     setText('#winky-bot-root .winky-demo-badge', ru ? 'Демо' : 'Demo');
     setText('#winky-bot-root .winky-model-menu-title', ru ? 'Выбор модели · Демо' : 'Select model · Demo');
     setText('#winky-bot-root .winky-model-note', ru ? 'Визуальный выбор. Анализ: Winky AI.' : 'Visual selection. Analysis: Winky AI.');
-    setText('#winky-bot-root .winky-integrity-note', ru ? 'Данные демо-потока могут быть изменены' : 'Demo feed data may be altered');
+    setText('#winky-bot-root [data-feed-note]', ru ? 'Демо-данные могут изменяться' : 'Demo data may be altered');
     setText('#winkyAccuracyNote', ru ? 'Совпадение условий стратегии, а не вероятность прибыли.' : 'Strategy conditions matched, not the probability of profit.');
     setText('#winky-bot-root .winky-chat-welcome span', ru ? 'Ваш ассистент по анализу' : 'Your analysis assistant');
     const btn = document.getElementById('btnGetSignalAction');
     if (btn && state.botState === 'IDLE') btn.innerHTML = `<span>✦</span><span>${t('getSignal')}</span>`;
+    if (btn && (state.searchRunning || ['ANALYZING','ANALYZING_PAIR','PREPARING_TRADE','SWITCHING_PAIR'].includes(state.botState))) {
+      btn.textContent = `${ru?'АНАЛИЗ ПАР':'SCANNING PAIRS'} · ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}`;
+    }
+    setText('#botDirectionBlock [data-analysis-heading]', ru ? 'АНАЛИЗ ГРАФИКА' : 'CHART ANALYSIS');
+    const analysisMeta = document.querySelector('#botDirectionBlock [data-analysis-meta]');
+    if (analysisMeta) analysisMeta.textContent = analysisMeta.textContent.replace(/^(Пара|Pair)/, ru ? 'Пара' : 'Pair');
+    const labels = ru ? ['Тренд','Структура','Уровни','Вход'] : ['Trend','Structure','Levels','Entry'];
+    document.querySelectorAll('#botDirectionBlock .winky-scan-seg').forEach((el,i) => {
+      const label=el.querySelector('[data-stage-label]'); if(label) label.textContent=labels[i];
+      const result=visualStages.values[i];
+      const status=result==='confirmed'?(ru?'Подтверждено':'Confirmed'):result==='rejected'?(ru?'Не подтверждено':'Not confirmed'):
+        el.classList.contains('active')?(ru?'Проверяем':'Checking'):(ru?'Ожидание':'Waiting');
+      el.setAttribute('aria-label',`${labels[i]}: ${status}`);
+    });
     renderChatFeed();
   }
 
@@ -5130,6 +5180,7 @@
 
   function setupEventListeners() {
     setupVisualControls();
+    try { syncPanelControlVisibility(); } catch (_) {}
     // 1. Language buttons
     document.querySelectorAll(".winky-lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -5161,6 +5212,7 @@
           state.round1Candidates = [];
         }
         autoToggle.classList.toggle("active", state.autoStream);
+        try { syncPanelControlVisibility(); } catch (_) {}
         if (state.autoStream) {
           VoiceManager.playCategory("switch_pair", false);
           if (state.botState === "IDLE") {

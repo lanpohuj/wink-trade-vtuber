@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, renderSignalCardState, currentDisplayCandles, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
@@ -90,6 +90,13 @@ test('the visual chart only shows fresh broker candles for the active pair', () 
   c.tick(61000);
   assert.equal(c.currentDisplayCandles(),null);
 });
+test('the chart clears stale candles and shows waiting when the pair has no data', () => {
+  const c=loadContent(),chart={innerHTML:'old candles',dataset:{pair:'other'}},status={hidden:true,textContent:''};
+  c.document.getElementById=id=>id==='winkyVisualChart'?chart:id==='winkyVisualChartStatus'?status:null;
+  c.state.botState='ANALYZING_PAIR'; c.refreshDisplayChart();
+  assert.equal(chart.innerHTML,'');assert.equal(chart.dataset.pair,'');assert.equal(status.hidden,false);
+  assert.match(status.textContent,/Ожидаем данные/);
+});
 test('result card never turns an unknown or refund into a win or loss', () => {
   const c=loadContent(), block={className:'',innerHTML:''};
   c.document.getElementById=id=>id==='botDirectionBlock'?block:null;
@@ -98,6 +105,19 @@ test('result card never turns an unknown or refund into a win or loss', () => {
     c.setVisualTradeOutcome({outcome,profitDelta:0,lossDelta:0}); c.renderSignalCardState();
     assert.match(block.innerHTML, outcome==='UNKNOWN' ? /Результат не получен/ : /Возврат/);
     assert.doesNotMatch(block.innerHTML, /Прибыль|Убыток|\+\$/);
+  }
+});
+test('market settings are visible only in idle manual mode', () => {
+  const c=loadContent(), controls=[{hidden:false},{hidden:false}];
+  c.document.querySelectorAll=()=>controls;
+  for (const [auto,running,trade,phase,hidden] of [
+    [false,false,null,'IDLE',false], [true,false,null,'IDLE',true],
+    [false,true,null,'ANALYZING_PAIR',true], [true,true,null,'ANALYZING_PAIR',true],
+    [false,false,{},'IN_TRADE',true], [false,false,{},'TRADE_RESULT',true],
+    [false,false,{},'COOLDOWN',true], [false,false,null,'IDLE',false],
+  ]) {
+    Object.assign(c.state,{autoStream:auto,searchRunning:running,tradeContext:trade,botState:phase});
+    c.syncPanelControlVisibility(); assert.deepEqual(controls.map(el=>el.hidden),[hidden,hidden]);
   }
 });
 test('deducted balance stays PENDING until the settlement window completes', () => {
@@ -340,19 +360,30 @@ test('switching off or cancelling a search generation prevents a delayed entry',
   c.setSearchDependencies({ready:async()=>{c.state.searchGeneration++;return true;}});
   await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.equal(c.state.searchRunning,false);
 });
-test('rendering live updates preserves the card node and does not inflate accuracy',()=>{
-  const c=loadContent(),nodes=new Map(),segments=Array.from({length:4},()=>({className:''}));let mounts=0,transitions=0;
-  const card={classList:{remove(){},add(){transitions++;}},offsetWidth:300};
-  const block={className:'',set innerHTML(value){mounts++;nodes.set('[data-analysis-card]',card);},
-    querySelector(selector){if(selector==='[data-analysis-card]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);},
+test('analysis tiles show observed states, reset per pair and do not inflate accuracy',()=>{
+  const c=loadContent(),nodes=new Map(),segments=Array.from({length:4},()=>{
+    const label={textContent:''},indicator={textContent:''};
+    return {className:'',label,indicator,attrs:{},querySelector(s){return s==='[data-stage-label]'?label:indicator;},setAttribute(k,v){this.attrs[k]=v;}};
+  });let mounts=0;
+  const block={className:'',set innerHTML(value){mounts++;nodes.set('[data-analysis-tiles]',{});},
+    querySelector(selector){if(selector==='[data-analysis-tiles]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);},
     querySelectorAll(){return segments;}};
   const accuracy={textContent:'',title:''};c.document.getElementById=id=>id==='botDirectionBlock'?block:id==='metricAccuracyVal'?accuracy:null;
-  for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','Данные обновляются','2.5',false);
-  assert.equal(mounts,1);assert.equal(transitions,1);assert.equal(accuracy.textContent,'50%');
-  c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected');
-  assert.equal(mounts,1);assert.equal(nodes.get('[data-analysis-card]'),card);assert.equal(transitions,2);assert.equal(accuracy.textContent,'50%');
-  assert.equal(nodes.get('[data-analysis-status]').textContent,'Не подтверждено');
+  for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','Данные обновляются','2.5',true,'confirmed',true);
+  assert.equal(mounts,1);assert.equal(segments[0].indicator.textContent,'✓');assert.equal(accuracy.textContent,'50%');
+  c.renderAnalysisStep(1,4,'Структура','Проверка','2.5',false,'rejected',false);
+  assert.equal(segments[0].indicator.textContent,'✓');assert.equal(segments[1].indicator.textContent,'×');
+  c.renderAnalysisStep(2,4,'Уровни','Нет данных',null,false,'loading',null);
+  assert.equal(segments[2].indicator.textContent,'·');assert.doesNotMatch(segments[2].className,/confirmed|rejected/);
+  c.renderAnalysisStep(3,4,'Вход','Недостаточно данных',null,false,'rejected',null,null);
+  assert.equal(segments[3].indicator.textContent,'·');assert.doesNotMatch(segments[3].className,/confirmed|rejected/);
+  c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected',null,'rejected');
+  assert.equal(mounts,1);assert.equal(segments[3].indicator.textContent,'×');assert.equal(accuracy.textContent,'50%');
+  c.state.targetPair='GBP/USD OTC';
+  c.updateCardPairUI();
+  assert.equal(segments[1].indicator.textContent,'');assert.equal(segments[3].indicator.textContent,'');
   c.renderAnalysisStep(0,4,'Данные','M1: 0 закрытых',null,false,'loading');
+  assert.equal(segments[1].indicator.textContent,'');assert.equal(segments[3].indicator.textContent,'');
   assert.equal(accuracy.textContent,'—');assert.equal(nodes.get('[data-analysis-score]').textContent,'— / 5');assert.equal(mounts,1);
 });
 test('confirmed click failure creates no timer, result or recovery step',async()=>{
