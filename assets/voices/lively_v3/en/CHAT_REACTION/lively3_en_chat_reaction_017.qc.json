@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_017",
-  "sha256": "a6525e6cfce3b4c6e2cf1c3baf4708ef4b618d43ac3dd49086ffb8325c9c844a",
-  "expected": "Thanks for the hearts! The screen's officially a little cosier.",
-  "transcript": "Thanks for the hearts the screens officially a little cozier",
-  "similarity": 0.98,
+  "sha256": "a42a923a1f874edf9368cfc05096b65e69c9cf2bba821da6fa224da2ba31d7bb",
+  "expected": "I see the hearts, thank you! It's lovely feeling your support.",
+  "transcript": "I see the hearts. Thank you. It's lovely feeling your support.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.971,
-    "rms": 0.08365,
-    "peak": 0.51427,
+    "duration": 4.232,
+    "rms": 0.07761,
+    "peak": 0.4476,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.211,
-    "sha256": "a6525e6cfce3b4c6e2cf1c3baf4708ef4b618d43ac3dd49086ffb8325c9c844a"
+    "trailing_silence": 0.192,
+    "sha256": "a42a923a1f874edf9368cfc05096b65e69c9cf2bba821da6fa224da2ba31d7bb"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.62,
-      "text": " Thanks for the hearts the screens officially a little cozier"
+      "end": 4.16,
+      "text": " I see the hearts. Thank you. It's lovely feeling your support."
     }
   ],
   "issues": [],

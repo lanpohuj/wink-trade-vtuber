@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_003",
-  "sha256": "c06b2c00650829a5101ceed2614d3ca2efd0335e24f337ff9004b513edd0d247",
-  "expected": "Right, we've moved. Leaving the last chart alone. No unnecessary lore dump.",
-  "transcript": "All right, we've moved leaving the last chart alone no unnecessary lore dump",
-  "similarity": 0.975,
+  "sha256": "d993470b7f25af7e6857e4fc6bdea8717218c14b2293208916b27cfb4486a860",
+  "expected": "New pair on screen. I'll read the movement before deciding on an entry.",
+  "transcript": "New pair on screen. I'll read the movement before deciding on an entry.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.329,
-    "rms": 0.08294,
-    "peak": 0.44847,
+    "duration": 4.232,
+    "rms": 0.08433,
+    "peak": 0.44826,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.289,
-    "sha256": "c06b2c00650829a5101ceed2614d3ca2efd0335e24f337ff9004b513edd0d247"
+    "leading_silence": 0.16,
+    "trailing_silence": 0.172,
+    "sha256": "d993470b7f25af7e6857e4fc6bdea8717218c14b2293208916b27cfb4486a860"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.96,
-      "text": " All right, we've moved leaving the last chart alone no unnecessary lore dump"
+      "end": 4.16,
+      "text": " New pair on screen. I'll read the movement before deciding on an entry."
     }
   ],
   "issues": [],

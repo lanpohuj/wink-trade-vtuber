@@ -1,24 +1,29 @@
 {
   "id": "lively3_ru_narrate_pair_019",
-  "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df",
-  "expected": "Следующая остановка — этот график. Экскурсия начинается с деталей.",
-  "transcript": "Следующая остановка. Этот график. Экскурсия начинается с деталей.",
+  "sha256": "747ef01aa055768acdb5f4611dd63ca1bf09435a60d5a12c57defdd8ef2e9b0d",
+  "expected": "Разберём ещё одну пару. Хочу посмотреть движение целиком.",
+  "transcript": "Разберём ещё одну пару. Хочу посмотреть движение целиком.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.075,
-    "rms": 0.10629,
-    "peak": 0.85933,
+    "duration": 3.945,
+    "rms": 0.07558,
+    "peak": 0.34658,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.135,
-    "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "747ef01aa055768acdb5f4611dd63ca1bf09435a60d5a12c57defdd8ef2e9b0d"
   },
   "segments": [
     {
       "start": 0.0,
+      "end": 2.0,
+      "text": " Разберём ещё одну пару."
+    },
+    {
+      "start": 2.0,
       "end": 4.0,
-      "text": " Следующая остановка. Этот график. Экскурсия начинается с деталей."
+      "text": " Хочу посмотреть движение целиком."
     }
   ],
   "issues": [],

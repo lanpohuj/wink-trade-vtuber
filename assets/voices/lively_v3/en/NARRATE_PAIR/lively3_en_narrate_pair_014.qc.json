@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_014",
-  "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0",
-  "expected": "New main character. We're not writing its storyline for it.",
-  "transcript": "No main character. We're not writing its storyline for it.",
-  "similarity": 0.968,
+  "sha256": "3c8e9487a87cbfc2126aff7cf01959b4514964a8e11fe96c1fce53c70e881916",
+  "expected": "Another pair's open, chat. I'll take a closer look at this one.",
+  "transcript": "Another pair is open chat. I'll take a closer look at this one",
+  "similarity": 0.989,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.892,
-    "rms": 0.08211,
-    "peak": 0.34117,
+    "duration": 3.553,
+    "rms": 0.07926,
+    "peak": 0.39364,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.232,
-    "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.113,
+    "sha256": "3c8e9487a87cbfc2126aff7cf01959b4514964a8e11fe96c1fce53c70e881916"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.84,
-      "text": " No main character. We're not writing its storyline for it."
+      "end": 3.3200000000000003,
+      "text": " Another pair is open chat. I'll take a closer look at this one"
     }
   ],
   "issues": [],

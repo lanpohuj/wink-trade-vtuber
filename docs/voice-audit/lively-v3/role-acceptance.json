@@ -1,0 +1,64 @@
+{
+  "method": "owner_sampled",
+  "records": [
+    {
+      "id": "lively3_ru_narrate_pair_018",
+      "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081",
+      "expected": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+      "transcript": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.721,
+        "rms": 0.07979,
+        "peak": 0.33847,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.101,
+        "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Переключились на следующую пару."
+        },
+        {
+          "start": 2.0,
+          "end": 6.0,
+          "text": " Сейчас посмотрим, есть ли здесь подходящий момент для входа."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "lively3_ru_chat_reaction_020",
+      "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b",
+      "expected": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+      "transcript": "Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.217,
+        "rms": 0.08668,
+        "peak": 0.39221,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.117,
+        "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 6.12,
+          "text": " Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ],
+  "owner_accepted": true,
+  "source": "Да, оба подходят — продолжай"
+}

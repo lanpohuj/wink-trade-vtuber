@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_004",
-  "sha256": "6b1622a8d5b35d5ad3731fc8f60500e7f0589507e17504cd66c4a335c94a3ba5",
-  "expected": "Next pair's up. Introduction starts with checks. I'm romantic like that.",
-  "transcript": "Next pairs up. Introduction starts with checks. I'm romantic like that.",
+  "sha256": "6e3ad2fe307ae97e04bfb9c88b4858cf524e87f52c594cf36c371212b895d795",
+  "expected": "Moving on, chat. I'll check this pair across the timeframes first.",
+  "transcript": "Moving on, Chat. I'll check this pair across the timeframes first.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.46,
-    "rms": 0.07648,
-    "peak": 0.42203,
+    "duration": 4.232,
+    "rms": 0.07556,
+    "peak": 0.43289,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.26,
-    "sha256": "6b1622a8d5b35d5ad3731fc8f60500e7f0589507e17504cd66c4a335c94a3ba5"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.132,
+    "sha256": "6e3ad2fe307ae97e04bfb9c88b4858cf524e87f52c594cf36c371212b895d795"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 5.36,
-      "text": " Next pairs up. Introduction starts with checks. I'm romantic like that."
+      "end": 4.16,
+      "text": " Moving on, Chat. I'll check this pair across the timeframes first."
     }
   ],
   "issues": [],

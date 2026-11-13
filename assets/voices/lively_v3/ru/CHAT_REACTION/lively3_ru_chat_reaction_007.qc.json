@@ -1,24 +1,29 @@
 {
   "id": "lively3_ru_chat_reaction_007",
-  "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382",
-  "expected": "О, подписка! Добро пожаловать в клуб терпеливых слушателей.",
-  "transcript": "О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!",
+  "sha256": "7d0360e703a9379b9bda806a7e4fa5aca6f2c5092ef24c2270cd0a802af005b1",
+  "expected": "О, новая подписка! Спасибо за поддержку, очень рада тебя видеть!",
+  "transcript": "О, новая подписка! Спасибо за поддержку! Очень рада тебя видеть!",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.415,
-    "rms": 0.07893,
-    "peak": 0.35298,
+    "duration": 4.937,
+    "rms": 0.07602,
+    "peak": 0.36778,
     "clipped_fraction": 0.0,
     "leading_silence": 0.2,
-    "trailing_silence": 0.075,
-    "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382"
+    "trailing_silence": 0.097,
+    "sha256": "7d0360e703a9379b9bda806a7e4fa5aca6f2c5092ef24c2270cd0a802af005b1"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.32,
-      "text": " О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!"
+      "end": 2.0,
+      "text": " О, новая подписка!"
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Спасибо за поддержку! Очень рада тебя видеть!"
     }
   ],
   "issues": [],

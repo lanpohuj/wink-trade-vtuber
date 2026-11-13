@@ -227,7 +227,7 @@ def activate():
             # Preserve the old audio, but keep jokes out of informational switches.
             row['delivery_role'] = 'banter'
         manifest['categories'].setdefault(r['category'], []).append(row)
-    manifest.update(active_count=1500, activated=True)
+    manifest.update(version='1.0', bank_type='commentary_v1', active_count=1500, activated=True)
     write_json(BANK / 'manifest.json', manifest)
     pointer = ROOT / 'assets/voices/commentary-bank.json'
     write_json(DOCS / 'previous-pointer.json', json.loads(pointer.read_text()))

@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_009",
-  "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13",
-  "expected": "One more in the crew. Thanks for the follow; make yourself comfortable!",
-  "transcript": "One more in the crew. Thanks for the follow! Make yourself comfortable!",
+  "sha256": "23f22d8a4d9d0ae1b860631cc0d1e9cb87122f05389929f5627f1efb5695f400",
+  "expected": "That's lovely, thanks for following! Join the conversation; questions are always welcome.",
+  "transcript": "That's lovely. Thanks for following. Join the conversation. Questions are always welcome.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.232,
-    "rms": 0.08018,
-    "peak": 0.35638,
+    "duration": 5.381,
+    "rms": 0.08431,
+    "peak": 0.3895,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.112,
-    "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13"
+    "trailing_silence": 0.161,
+    "sha256": "23f22d8a4d9d0ae1b860631cc0d1e9cb87122f05389929f5627f1efb5695f400"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.16,
-      "text": " One more in the crew. Thanks for the follow! Make yourself comfortable!"
+      "end": 5.2,
+      "text": " That's lovely. Thanks for following. Join the conversation. Questions are always welcome."
     }
   ],
   "issues": [],

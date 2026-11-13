@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_007",
-  "sha256": "8e9901315e3f99998f46da0ebeb1ac6e176703d3d5ab9dcc8a774b7584bd177e",
-  "expected": "Another pair open. Attention here rather than on the previous story.",
-  "transcript": "Another pair open attention here rather than on the previous story",
-  "similarity": 1.0,
+  "sha256": "102fd9d37d778b0a24e940f393534ffb8b15cebf6f459056b9aa8fe52fdfcd81",
+  "expected": "Pair changed. Give me a moment to read the price movement.",
+  "transcript": "Pear changed. Give me a moment to read the price movement.",
+  "similarity": 0.978,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.336,
-    "rms": 0.07015,
-    "peak": 0.35914,
+    "duration": 3.553,
+    "rms": 0.08334,
+    "peak": 0.38897,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.276,
-    "sha256": "8e9901315e3f99998f46da0ebeb1ac6e176703d3d5ab9dcc8a774b7584bd177e"
+    "leading_silence": 0.16,
+    "trailing_silence": 0.193,
+    "sha256": "102fd9d37d778b0a24e940f393534ffb8b15cebf6f459056b9aa8fe52fdfcd81"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.84,
-      "text": " Another pair open attention here rather than on the previous story"
+      "end": 3.44,
+      "text": " Pear changed. Give me a moment to read the price movement."
     }
   ],
   "issues": [],

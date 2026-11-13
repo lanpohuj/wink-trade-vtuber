@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_chat_reaction_017",
-  "sha256": "6e2c493cc9a3378237e0c8f47014302aa25dfcc21a7e0097ab86e9d46c6099e6",
-  "expected": "Спасибо за сердечки! Экран теперь официально чуть уютнее.",
-  "transcript": "Спасибо за сердечки! Экран теперь официально чуть уютнее.",
+  "sha256": "9bd3bffd28be545222a150d7d2f1f34393bb76f354ef1ccd448ffee40022ee26",
+  "expected": "Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку.",
+  "transcript": "Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку!",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.023,
-    "rms": 0.09124,
-    "peak": 0.5561,
+    "duration": 4.598,
+    "rms": 0.08793,
+    "peak": 0.3625,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.103,
-    "sha256": "6e2c493cc9a3378237e0c8f47014302aa25dfcc21a7e0097ab86e9d46c6099e6"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.098,
+    "sha256": "9bd3bffd28be545222a150d7d2f1f34393bb76f354ef1ccd448ffee40022ee26"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.0,
-      "text": " Спасибо за сердечки!"
-    },
-    {
-      "start": 2.0,
-      "end": 4.0,
-      "text": " Экран теперь официально чуть уютнее."
+      "end": 4.5200000000000005,
+      "text": " Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку!"
     }
   ],
   "issues": [],

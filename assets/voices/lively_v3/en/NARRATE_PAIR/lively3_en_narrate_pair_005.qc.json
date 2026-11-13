@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_005",
-  "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2",
-  "expected": "New candidate. No 'pair of the evening' crown just yet.",
-  "transcript": "New candidate. No pair of the evening crown just yet.",
+  "sha256": "a59c1277fbc793eaf11690730fb99b4704828ae5197a35ddac279eb1eed9516b",
+  "expected": "Let's check the next pair. I'll start with the bigger picture.",
+  "transcript": "Let's check the next pair. I'll start with the bigger picture.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
     "duration": 3.762,
-    "rms": 0.07858,
-    "peak": 0.36467,
+    "rms": 0.07238,
+    "peak": 0.39138,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.342,
-    "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.162,
+    "sha256": "a59c1277fbc793eaf11690730fb99b4704828ae5197a35ddac279eb1eed9516b"
   },
   "segments": [
     {
       "start": 0.0,
       "end": 3.6,
-      "text": " New candidate. No pair of the evening crown just yet."
+      "text": " Let's check the next pair. I'll start with the bigger picture."
     }
   ],
   "issues": [],

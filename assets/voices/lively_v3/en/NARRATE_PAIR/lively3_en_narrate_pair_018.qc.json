@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_018",
-  "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca",
-  "expected": "New location. Old expectations aren't coming through customs.",
-  "transcript": "New location. Old expectations aren't coming through customs.",
+  "sha256": "c8d16073a0e41868fc144a7c979505989e03e5612ac8d36d044a187361fdd27d",
+  "expected": "We've switched pairs. Let me check whether there's a suitable entry here.",
+  "transcript": "We've switched pairs. Let me check whether there's a suitable entry here.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.101,
-    "rms": 0.07108,
-    "peak": 0.363,
+    "duration": 4.336,
+    "rms": 0.07689,
+    "peak": 0.39839,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.121,
-    "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.176,
+    "sha256": "c8d16073a0e41868fc144a7c979505989e03e5612ac8d36d044a187361fdd27d"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.0,
-      "text": " New location. Old expectations aren't coming through customs."
+      "end": 4.24,
+      "text": " We've switched pairs. Let me check whether there's a suitable entry here."
     }
   ],
   "issues": [],

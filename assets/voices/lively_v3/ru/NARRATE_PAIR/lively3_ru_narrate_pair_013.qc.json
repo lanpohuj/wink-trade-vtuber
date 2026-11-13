@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_013",
-  "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7",
-  "expected": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
-  "transcript": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
+  "sha256": "f6e78ea3cf6010d20e8e4f6012fc90aadf0c4ab4ad61cea59c3f53ac36d79598",
+  "expected": "Теперь проверю этот вариант. Посмотрим, найдётся ли подходящий момент.",
+  "transcript": "Теперь проверю этот вариант. Посмотрим, найдется ли подходящий момент.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.042,
-    "rms": 0.09056,
-    "peak": 0.43572,
+    "duration": 4.937,
+    "rms": 0.07646,
+    "peak": 0.3021,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.122,
-    "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.077,
+    "sha256": "f6e78ea3cf6010d20e8e4f6012fc90aadf0c4ab4ad61cea59c3f53ac36d79598"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 5.0,
-      "text": " Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю."
+      "end": 4.88,
+      "text": " Теперь проверю этот вариант. Посмотрим, найдется ли подходящий момент."
     }
   ],
   "issues": [],

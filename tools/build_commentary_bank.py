@@ -101,7 +101,7 @@ def generate(only_ids=None):
             row = json.loads(path.read_text())
             categories.setdefault(row["category"], []).append(row)
         metadata = (
-            existing
+            {"version": "1.0", "bank_type": "commentary_v1", "activated": False, **existing}
             if only_ids
             else {"version": "1.0", "bank_type": "commentary_v1", "activated": False}
         )

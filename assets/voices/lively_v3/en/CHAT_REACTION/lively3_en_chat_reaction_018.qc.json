@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_018",
-  "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7",
-  "expected": "Support noticed, thank you! The pleased smile is entirely intentional.",
-  "transcript": "Support noticed. Thank you. The please smile is entirely intentional.",
-  "similarity": 0.991,
+  "sha256": "4b647e76cf6dfaf56c6b6a4e1d087f5d518c28c0ddd80d40d5c2b6292e115798",
+  "expected": "Thanks for the likes, everyone! You make this stream feel alive. I appreciate you!",
+  "transcript": "Thanks for the likes, everyone. You make this stream feel alive. I appreciate you.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.042,
-    "rms": 0.09064,
-    "peak": 0.62069,
+    "duration": 4.859,
+    "rms": 0.08604,
+    "peak": 0.42981,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.062,
-    "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "4b647e76cf6dfaf56c6b6a4e1d087f5d518c28c0ddd80d40d5c2b6292e115798"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 5.0,
-      "text": " Support noticed. Thank you. The please smile is entirely intentional."
+      "end": 4.8,
+      "text": " Thanks for the likes, everyone. You make this stream feel alive. I appreciate you."
     }
   ],
   "issues": [],

@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_chat_reaction_012",
-  "sha256": "f01f6c0c98a6025c1829c5cc7486818a4ddf76bde64d704298df5159427e25ca",
-  "expected": "Спасибо за подарок! Всё, сейчас буду подозрительно довольная.",
-  "transcript": "Спасибо за подарок! Всё, сейчас буду подозрительно довольная!",
-  "similarity": 1.0,
+  "sha256": "9c47e91bac2fccaf13e1f3237be6a2762a09ffb5bc467233d18d11d72d65a6bc",
+  "expected": "О, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!",
+  "transcript": "А, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!",
+  "similarity": 0.981,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.598,
-    "rms": 0.09247,
-    "peak": 0.58117,
+    "duration": 5.251,
+    "rms": 0.0821,
+    "peak": 0.43675,
     "clipped_fraction": 0.0,
     "leading_silence": 0.2,
-    "trailing_silence": 0.098,
-    "sha256": "f01f6c0c98a6025c1829c5cc7486818a4ddf76bde64d704298df5159427e25ca"
+    "trailing_silence": 0.111,
+    "sha256": "9c47e91bac2fccaf13e1f3237be6a2762a09ffb5bc467233d18d11d72d65a6bc"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.0,
-      "text": " Спасибо за подарок!"
-    },
-    {
-      "start": 2.0,
-      "end": 4.5,
-      "text": " Всё, сейчас буду подозрительно довольная!"
+      "end": 5.2,
+      "text": " А, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!"
     }
   ],
   "issues": [],

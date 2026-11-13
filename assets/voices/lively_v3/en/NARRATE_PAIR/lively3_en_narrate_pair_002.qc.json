@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_002",
-  "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482",
-  "expected": "New scenery. Let's see what this chart offers without my prompting.",
-  "transcript": "New scenery. Let's see what this chart offers without my prompting.",
+  "sha256": "92d4c97eafbe7024bf17e3bef8c5ed17380138ce3c62e0d8b7a54f39e019cec9",
+  "expected": "We've switched over. Let's look through this chart and check the entry conditions.",
+  "transcript": "We've switched over. Let's look through this chart and check the entry conditions.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.232,
-    "rms": 0.08248,
-    "peak": 0.39272,
+    "duration": 4.545,
+    "rms": 0.08071,
+    "peak": 0.37037,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.192,
-    "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482"
+    "trailing_silence": 0.245,
+    "sha256": "92d4c97eafbe7024bf17e3bef8c5ed17380138ce3c62e0d8b7a54f39e019cec9"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.16,
-      "text": " New scenery. Let's see what this chart offers without my prompting."
+      "end": 4.48,
+      "text": " We've switched over. Let's look through this chart and check the entry conditions."
     }
   ],
   "issues": [],

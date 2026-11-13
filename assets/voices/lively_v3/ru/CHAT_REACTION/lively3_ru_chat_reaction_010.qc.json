@@ -1,24 +1,34 @@
 {
   "id": "lively3_ru_chat_reaction_010",
-  "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb",
-  "expected": "Спасибо за фоллоу! Самооценка ведущей одобрительно кивнула.",
-  "transcript": "Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула.",
-  "similarity": 0.911,
+  "sha256": "dcfd13f7d8de2dbb385b42af8d853c0180ba71bf1299f8b8f454c1b8f4f5bbc8",
+  "expected": "Спасибо за фоллоу! Здорово, что наша компания растёт. Оставайся с нами!",
+  "transcript": "Спасибо за Фоллу! Здорово, что наша компания растет! Оставайся с нами!",
+  "similarity": 0.991,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.101,
-    "rms": 0.09335,
-    "peak": 0.48006,
+    "duration": 5.434,
+    "rms": 0.08527,
+    "peak": 0.61913,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.101,
-    "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb"
+    "trailing_silence": 0.134,
+    "sha256": "dcfd13f7d8de2dbb385b42af8d853c0180ba71bf1299f8b8f454c1b8f4f5bbc8"
   },
   "segments": [
     {
       "start": 0.0,
+      "end": 2.0,
+      "text": " Спасибо за Фоллу!"
+    },
+    {
+      "start": 2.0,
       "end": 4.0,
-      "text": " Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула."
+      "text": " Здорово, что наша компания растет!"
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Оставайся с нами!"
     }
   ],
   "issues": [],

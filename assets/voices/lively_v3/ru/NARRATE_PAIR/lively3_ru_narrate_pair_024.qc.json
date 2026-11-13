@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_024",
-  "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036",
-  "expected": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
-  "transcript": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
-  "similarity": 1.0,
+  "sha256": "b80c0ddd85f3b761df5a913f2bab12eea49d24adbee1d1ddbed2962a5d39770e",
+  "expected": "Посмотрим другую пару. Решение примем после разбора.",
+  "transcript": "Космотрим другую пару. Решение примем после разбора.",
+  "similarity": 0.977,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.989,
-    "rms": 0.08723,
-    "peak": 0.32156,
+    "duration": 4.075,
+    "rms": 0.08793,
+    "peak": 0.37133,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.109,
-    "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036"
+    "leading_silence": 0.26,
+    "trailing_silence": 0.135,
+    "sha256": "b80c0ddd85f3b761df5a913f2bab12eea49d24adbee1d1ddbed2962a5d39770e"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 1.6,
-      "text": " Меняем картинку."
-    },
-    {
-      "start": 1.6,
-      "end": 4.8,
-      "text": " Сюжет прошлого графика закрываем вместе с вкладкой внимания."
+      "end": 4.0,
+      "text": " Космотрим другую пару. Решение примем после разбора."
     }
   ],
   "issues": [],

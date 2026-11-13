@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_016",
-  "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d",
-  "expected": "Page turned. This chart gets its own attention.",
-  "transcript": "Page turned. This chart gets its own attention.",
-  "similarity": 1.0,
+  "sha256": "448122a2d5124a348c57b5541d791c1b907ba8dd48532ee5a0ae69d3274a4254",
+  "expected": "Continuing the search. I'll check direction and the entry point on this pair.",
+  "transcript": "Continuing the search, I'll check direction in the entry point on this pair.",
+  "similarity": 0.976,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.187,
-    "rms": 0.07506,
-    "peak": 0.45123,
+    "duration": 4.284,
+    "rms": 0.07757,
+    "peak": 0.38856,
     "clipped_fraction": 0.0,
     "leading_silence": 0.16,
-    "trailing_silence": 0.187,
-    "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d"
+    "trailing_silence": 0.204,
+    "sha256": "448122a2d5124a348c57b5541d791c1b907ba8dd48532ee5a0ae69d3274a4254"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.0,
-      "text": " Page turned. This chart gets its own attention."
+      "end": 4.16,
+      "text": " Continuing the search, I'll check direction in the entry point on this pair."
     }
   ],
   "issues": [],

@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_020",
-  "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2",
-  "expected": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
-  "transcript": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+  "sha256": "33e33666caf2df08bc3d101df4e1cba95f2aabc8dafbda6ca8df849eb46e3ea6",
+  "expected": "Новую пару открыли. Проверю её так же внимательно.",
+  "transcript": "Новую пару открыли. Проверю её также внимательно.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.042,
-    "rms": 0.07651,
-    "peak": 0.31525,
+    "duration": 3.5,
+    "rms": 0.08616,
+    "peak": 0.33088,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.142,
-    "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "33e33666caf2df08bc3d101df4e1cba95f2aabc8dafbda6ca8df849eb46e3ea6"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.0,
-      "text": " Новая пара появилась."
-    },
-    {
-      "start": 2.0,
-      "end": 5.0,
-      "text": " Сейчас познакомимся без обещаний и красивых титулов."
+      "end": 3.5,
+      "text": " Новую пару открыли. Проверю её также внимательно."
     }
   ],
   "issues": [],

@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_015",
-  "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f",
-  "expected": "Let's check this pair. No instant crush; I've learned to look twice.",
-  "transcript": "Let's check this pair. No instant crush. I've learned to look twice.",
+  "sha256": "e6840641987717af340a54793dccce9449ca1a6b488d1e27696132c6006fe512",
+  "expected": "Next chart on screen. Checking its entry conditions now.",
+  "transcript": "Next chart on screen checking its entry conditions now",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.676,
-    "rms": 0.07971,
-    "peak": 0.43224,
+    "duration": 3.814,
+    "rms": 0.08365,
+    "peak": 0.38137,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.156,
-    "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "e6840641987717af340a54793dccce9449ca1a6b488d1e27696132c6006fe512"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.64,
-      "text": " Let's check this pair. No instant crush. I've learned to look twice."
+      "end": 3.48,
+      "text": " Next chart on screen checking its entry conditions now"
     }
   ],
   "issues": [],

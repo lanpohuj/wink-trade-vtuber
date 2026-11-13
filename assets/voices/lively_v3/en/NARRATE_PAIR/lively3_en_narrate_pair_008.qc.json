@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_008",
-  "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130",
-  "expected": "New pair. Go on, impress me. Actually, let me look properly first.",
-  "transcript": "No, Pear. Go on and press me. Actually, let me look properly first.",
-  "similarity": 0.9,
+  "sha256": "ecb003714a169739be0a51ee31b23882ed0c19f1751f184bac265b8dd53d6f4a",
+  "expected": "On to the next one. Let's see whether there's a setup here.",
+  "transcript": "On to the next one. Let's see whether there's a setup here.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 6.087,
-    "rms": 0.07684,
-    "peak": 0.39966,
+    "duration": 3.5,
+    "rms": 0.07586,
+    "peak": 0.35019,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.287,
-    "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "ecb003714a169739be0a51ee31b23882ed0c19f1751f184bac265b8dd53d6f4a"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 6.0,
-      "text": " No, Pear. Go on and press me. Actually, let me look properly first."
+      "end": 3.6,
+      "text": " On to the next one. Let's see whether there's a setup here."
     }
   ],
   "issues": [],

@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_019",
-  "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340",
-  "expected": "Next stop: this chart. The tour starts with the details.",
-  "transcript": "Next stop, this chart. The tour starts with the details.",
+  "sha256": "d59a282002b4c2d0fd1717e2b0a074a8de7e9424cf01c1aef595b863a889350c",
+  "expected": "Let's work through another pair. I want to see the full movement.",
+  "transcript": "Let's work through another pair. I want to see the full movement.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.232,
-    "rms": 0.07793,
-    "peak": 0.79121,
+    "duration": 3.814,
+    "rms": 0.08253,
+    "peak": 0.50774,
     "clipped_fraction": 0.0,
     "leading_silence": 0.16,
-    "trailing_silence": 0.152,
-    "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340"
+    "trailing_silence": 0.314,
+    "sha256": "d59a282002b4c2d0fd1717e2b0a074a8de7e9424cf01c1aef595b863a889350c"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.16,
-      "text": " Next stop, this chart. The tour starts with the details."
+      "end": 3.6,
+      "text": " Let's work through another pair. I want to see the full movement."
     }
   ],
   "issues": [],

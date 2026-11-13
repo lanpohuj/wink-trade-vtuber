@@ -171,6 +171,20 @@
       "accepted": true,
       "listened": true,
       "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_018",
+      "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted both role-revised prototypes and authorized remaining 78 recordings"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_020",
+      "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted both role-revised prototypes and authorized remaining 78 recordings"
     }
   ]
 }

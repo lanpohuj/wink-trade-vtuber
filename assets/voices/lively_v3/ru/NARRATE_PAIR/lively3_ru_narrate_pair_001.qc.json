@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_001",
-  "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2",
-  "expected": "Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
-  "transcript": "Новая пара – чистый лист. Прошлое впечатление оставляем за дверью.",
-  "similarity": 0.963,
+  "sha256": "394568276f13cfd6f06374c91989ebe37e82d507921a0d9acab2bdbf7ec755c5",
+  "expected": "Так, открыли другую пару. Проверю, есть ли здесь понятный вход.",
+  "transcript": "Так, открыли другую пару. Проверю, есть ли здесь понятный вход?",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.545,
-    "rms": 0.07448,
-    "peak": 0.32851,
+    "duration": 4.075,
+    "rms": 0.07944,
+    "peak": 0.31208,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.105,
-    "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.155,
+    "sha256": "394568276f13cfd6f06374c91989ebe37e82d507921a0d9acab2bdbf7ec755c5"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.2,
-      "text": " Новая пара – чистый лист."
-    },
-    {
-      "start": 2.2,
-      "end": 4.7,
-      "text": " Прошлое впечатление оставляем за дверью."
+      "end": 4.0,
+      "text": " Так, открыли другую пару. Проверю, есть ли здесь понятный вход?"
     }
   ],
   "issues": [],

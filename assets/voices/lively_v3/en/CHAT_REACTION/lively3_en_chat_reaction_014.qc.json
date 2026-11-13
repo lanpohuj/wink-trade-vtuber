@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_014",
-  "sha256": "f4c51792662c27b884d9c5db171e3f14323920005644659b350046af3399b9fc",
-  "expected": "Gift spotted, genuinely lovely! Thanks for supporting the stream.",
-  "transcript": "Gift-spotted, genuinely lovely, thanks for supporting the stream!",
+  "sha256": "d91276f71ba93c7aa925e68fcfa091ab2e6cd01ecfeb2ca039720d7479b2910c",
+  "expected": "I saw the gift, thank you! That's really kind. I'm glad you're here with us!",
+  "transcript": "I saw the gift! Thank you! That's really kind. I'm glad you're here with us.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.362,
-    "rms": 0.08128,
-    "peak": 0.67246,
+    "duration": 5.042,
+    "rms": 0.0813,
+    "peak": 0.46204,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.162,
-    "sha256": "f4c51792662c27b884d9c5db171e3f14323920005644659b350046af3399b9fc"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.302,
+    "sha256": "d91276f71ba93c7aa925e68fcfa091ab2e6cd01ecfeb2ca039720d7479b2910c"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.3,
-      "text": " Gift-spotted, genuinely lovely, thanks for supporting the stream!"
+      "end": 4.88,
+      "text": " I saw the gift! Thank you! That's really kind. I'm glad you're here with us."
     }
   ],
   "issues": [],

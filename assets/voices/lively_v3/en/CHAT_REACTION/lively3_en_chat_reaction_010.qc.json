@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_010",
-  "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a",
-  "expected": "Thanks for the follow! The host's confidence gave an approving nod.",
-  "transcript": "Thanks for the follow the hosts confidence gave an approving nod",
+  "sha256": "027a75717d8d818639ed944fd322e68ee6033ef9627c6ca8903ba7e051cb19f4",
+  "expected": "Thanks for the follow! It's lovely seeing the community grow. Stick around!",
+  "transcript": "Thanks for the follow it's lovely seeing the community grow stick around",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.284,
-    "rms": 0.08106,
-    "peak": 0.47965,
+    "duration": 4.545,
+    "rms": 0.08775,
+    "peak": 0.45172,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.22,
-    "trailing_silence": 0.164,
-    "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a"
+    "leading_silence": 0.24,
+    "trailing_silence": 0.125,
+    "sha256": "027a75717d8d818639ed944fd322e68ee6033ef9627c6ca8903ba7e051cb19f4"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.9,
-      "text": " Thanks for the follow the hosts confidence gave an approving nod"
+      "end": 4.16,
+      "text": " Thanks for the follow it's lovely seeing the community grow stick around"
     }
   ],
   "issues": [],

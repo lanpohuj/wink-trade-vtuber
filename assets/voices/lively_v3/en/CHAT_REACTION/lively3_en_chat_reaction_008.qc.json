@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_008",
-  "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74",
-  "expected": "Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
-  "transcript": "Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain.",
-  "similarity": 0.993,
+  "sha256": "f223d620b9bee0308ca67b3273506d38d833548601e0e713964d4e8abd4a6a10",
+  "expected": "Thank you for following! Get comfortable; we'll work through the charts together.",
+  "transcript": "Thank you for following. Get comfortable. We'll work through the charts together.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.46,
-    "rms": 0.08262,
-    "peak": 0.52788,
+    "duration": 4.362,
+    "rms": 0.07513,
+    "peak": 0.40629,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.22,
-    "trailing_silence": 0.3,
-    "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.162,
+    "sha256": "f223d620b9bee0308ca67b3273506d38d833548601e0e713964d4e8abd4a6a10"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 5.0,
-      "text": " Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain."
+      "end": 4.24,
+      "text": " Thank you for following. Get comfortable. We'll work through the charts together."
     }
   ],
   "issues": [],

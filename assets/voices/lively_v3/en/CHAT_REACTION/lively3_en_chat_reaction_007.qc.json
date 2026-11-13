@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_007",
-  "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d",
-  "expected": "A follow! Welcome to the remarkably patient listeners' club.",
-  "transcript": "A follow! Welcome to the remarkably patient listeners club!",
+  "sha256": "2adbeac9dce9bf15e9ef154d73c221ad3ac66d155f8bdd3b2ae89eaaa40c293e",
+  "expected": "Oh, a new follower! Thanks for the support. So glad to have you here!",
+  "transcript": "Oh, a new follower! Thanks for the support! So glad to have you here!",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.101,
-    "rms": 0.08547,
-    "peak": 0.5098,
+    "duration": 4.65,
+    "rms": 0.08115,
+    "peak": 0.43423,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.181,
-    "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d"
+    "trailing_silence": 0.13,
+    "sha256": "2adbeac9dce9bf15e9ef154d73c221ad3ac66d155f8bdd3b2ae89eaaa40c293e"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.0,
-      "text": " A follow! Welcome to the remarkably patient listeners club!"
+      "end": 4.48,
+      "text": " Oh, a new follower! Thanks for the support! So glad to have you here!"
     }
   ],
   "issues": [],

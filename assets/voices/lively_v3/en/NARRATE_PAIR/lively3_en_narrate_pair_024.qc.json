@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_024",
-  "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e",
-  "expected": "New picture. Closing the previous chart's mental tab.",
-  "transcript": "New picture. Closing the previous chart's mental tab.",
+  "sha256": "6785b39b9cdb19936211d8cf0a5f1cc4350127e0efd04d37f7385a5953fcb506",
+  "expected": "Let's look at a different pair. We'll decide after checking it.",
+  "transcript": "Let's look at a different pair. We'll decide after checking it.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.023,
-    "rms": 0.07659,
-    "peak": 0.4051,
+    "duration": 3.579,
+    "rms": 0.078,
+    "peak": 0.4015,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.223,
-    "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.099,
+    "sha256": "6785b39b9cdb19936211d8cf0a5f1cc4350127e0efd04d37f7385a5953fcb506"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.0,
-      "text": " New picture. Closing the previous chart's mental tab."
+      "end": 3.6,
+      "text": " Let's look at a different pair. We'll decide after checking it."
     }
   ],
   "issues": [],

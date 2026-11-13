@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_005",
-  "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6",
-  "expected": "Так, новый кандидат. Пока без короны «лучшая пара вечера».",
-  "transcript": "Так, новый кандидат. Пока бескороны, лучшая пара вечера.",
-  "similarity": 0.978,
+  "sha256": "e0b66bbff3e3887d1f90a518bc9b77612320666d864a7515dae3b382abd0618e",
+  "expected": "Проверим следующую пару. Начну с общей картины.",
+  "transcript": "Проверим следующую пару. Начну с общей картины.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.945,
-    "rms": 0.07887,
-    "peak": 0.35405,
+    "duration": 3.37,
+    "rms": 0.07997,
+    "peak": 0.35633,
     "clipped_fraction": 0.0,
     "leading_silence": 0.2,
-    "trailing_silence": 0.105,
-    "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6"
+    "trailing_silence": 0.11,
+    "sha256": "e0b66bbff3e3887d1f90a518bc9b77612320666d864a7515dae3b382abd0618e"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.0,
-      "text": " Так, новый кандидат. Пока бескороны, лучшая пара вечера."
+      "end": 3.4,
+      "text": " Проверим следующую пару. Начну с общей картины."
     }
   ],
   "issues": [],

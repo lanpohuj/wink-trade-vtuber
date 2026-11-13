@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_021",
-  "sha256": "691ad0b183807e0888b017cedb17bc583c488eb542973b2e93b9fe5e81a57061",
-  "expected": "Switched over. Checking again; memory doesn't replace observation.",
-  "transcript": "Switched over checking again memory doesn't replace observation",
+  "sha256": "ca210f3c62b1821bc79d978ec471ab29c80cda23c5d93605b597a2c1efe256e0",
+  "expected": "We've changed assets. Comparing timeframes to get the full picture.",
+  "transcript": "We've changed assets, comparing timeframes to get the full picture.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
     "duration": 4.415,
-    "rms": 0.08864,
-    "peak": 0.65335,
+    "rms": 0.07968,
+    "peak": 0.55726,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
     "trailing_silence": 0.235,
-    "sha256": "691ad0b183807e0888b017cedb17bc583c488eb542973b2e93b9fe5e81a57061"
+    "sha256": "ca210f3c62b1821bc79d978ec471ab29c80cda23c5d93605b597a2c1efe256e0"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.08,
-      "text": " Switched over checking again memory doesn't replace observation"
+      "end": 4.24,
+      "text": " We've changed assets, comparing timeframes to get the full picture."
     }
   ],
   "issues": [],

@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_013",
-  "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b",
-  "expected": "What a surprise, thank you! Unexpected kindness is always welcome.",
-  "transcript": "What a surprise! Thank you! Unexpected kindness is always welcome!",
+  "sha256": "51f068c1ea079f6ada8c60196431e2097afd86a0d79fad647ef06ba87e700e18",
+  "expected": "Thank you so much for the gift! I really appreciate you supporting what we're doing here.",
+  "transcript": "Thank you so much for the gift! I really appreciate you supporting what we're doing here.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.042,
-    "rms": 0.07562,
-    "peak": 0.44671,
+    "duration": 4.807,
+    "rms": 0.08661,
+    "peak": 0.40467,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.302,
-    "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.167,
+    "sha256": "51f068c1ea079f6ada8c60196431e2097afd86a0d79fad647ef06ba87e700e18"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.88,
-      "text": " What a surprise! Thank you! Unexpected kindness is always welcome!"
+      "end": 4.8,
+      "text": " Thank you so much for the gift! I really appreciate you supporting what we're doing here."
     }
   ],
   "issues": [],

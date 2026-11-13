@@ -1,29 +1,31 @@
 {
-  "bank": "streamer_v2",
+  "bank": "lively_v3",
   "events": [
     {
-      "at": "2026-11-13 00:33:28,623",
-      "kind": "start",
-      "event": "smoke:ru"
+      "at": 1794544406.17437,
+      "recording": {
+        "id": "lively3_ru_chat_reaction_020",
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lively_v3/ru/CHAT_REACTION/lively3_ru_chat_reaction_020.mp3",
+        "text": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+        "lang": "ru"
+      },
+      "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b"
     },
     {
-      "at": "2026-11-13 00:33:34,588",
-      "kind": "end",
-      "event": "smoke:ru"
-    },
-    {
-      "at": "2026-11-13 00:33:34,958",
-      "kind": "start",
-      "event": "smoke:en"
-    },
-    {
-      "at": "2026-11-13 00:33:41,687",
-      "kind": "end",
-      "event": "smoke:en"
+      "at": 1794544413.859709,
+      "recording": {
+        "id": "lively3_en_narrate_cta_001",
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lively_v3/en/NARRATE_CTA/lively3_en_narrate_cta_001.mp3",
+        "text": "Quick side quest: the bot's in my bio. Yep, the link's been there this whole time.",
+        "lang": "en"
+      },
+      "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd"
     }
   ],
-  "max_simultaneous_players_in_controller": 1,
-  "new_paid_tts_requests": 0,
-  "model_visual_acceptance": false,
-  "reason": "Smoke screenshot entirely transparent; asset transfer raised No buffer space available; avatar.js unchanged"
+  "distinct_player_processes": 2,
+  "single_controller_player": true,
+  "rms_samples": 241,
+  "final_rms": 0.0,
+  "new_paid_requests": 0,
+  "gui_lipsync_verified": false
 }

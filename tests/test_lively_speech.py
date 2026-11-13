@@ -135,6 +135,14 @@ class BankAndReviewTests(unittest.TestCase):
                 build.generate(['line'])
             self.assertEqual(media.read_bytes(), b'new conversational take')
             engine.synthesize.assert_called_once_with('[conversational] Привет!', 'ru')
+            manifest = json.loads((bank / 'manifest.json').read_text())
+            self.assertEqual(manifest['bank_type'], 'commentary_v1')
+            from winky import voice_bank
+            manifest.update(activated=True, review_accepted=True)
+            (bank / 'manifest.json').write_text(json.dumps(manifest))
+            (root / 'commentary-bank.json').write_text(json.dumps({'path': 'bank'}))
+            with patch.object(voice_bank, 'VOICE_ROOT', root):
+                self.assertEqual(voice_bank.active_commentary_root(), bank.resolve())
 
     def test_loading_comment_is_discarded_when_data_arrives(self):
         from winky.commentary import narration_valid

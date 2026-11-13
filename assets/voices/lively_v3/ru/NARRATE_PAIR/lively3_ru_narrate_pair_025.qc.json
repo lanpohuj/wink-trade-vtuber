@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_025",
-  "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749",
-  "expected": "Пошли смотреть дальше. Новая пара ещё не повод говорить громче.",
-  "transcript": "Вошли смотреть дальше! Новая пара еще не повод говорить громче!",
-  "similarity": 0.981,
+  "sha256": "03aec05ab592c49e93e02a09a135de95bded630758f9b8e28bd578683fd53909",
+  "expected": "Так, здесь уже другой график. Дайте мне момент на анализ.",
+  "transcript": "Так, здесь уже другой график. Дайте мне момент на анализ.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.545,
-    "rms": 0.08384,
-    "peak": 0.33553,
+    "duration": 4.101,
+    "rms": 0.08795,
+    "peak": 0.35174,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.22,
-    "trailing_silence": 0.085,
-    "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.101,
+    "sha256": "03aec05ab592c49e93e02a09a135de95bded630758f9b8e28bd578683fd53909"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.48,
-      "text": " Вошли смотреть дальше! Новая пара еще не повод говорить громче!"
+      "end": 4.0,
+      "text": " Так, здесь уже другой график. Дайте мне момент на анализ."
     }
   ],
   "issues": [],

@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_013",
-  "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae",
-  "expected": "Next one, chat. We'll survive the breakup with the last chart. Probably.",
-  "transcript": "Next one chat. We'll survive the breakup with the last chart. Probably.",
+  "sha256": "43e9da5c210c7233127660667695f9a8f282bede1dce5a03f4e731c62310feae",
+  "expected": "I'll check this option now. Let's see whether a suitable moment develops.",
+  "transcript": "I'll check this option now. Let's see whether a suitable moment develops.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.598,
-    "rms": 0.08248,
-    "peak": 0.4208,
+    "duration": 4.154,
+    "rms": 0.08353,
+    "peak": 0.40356,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.238,
-    "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae"
+    "trailing_silence": 0.093,
+    "sha256": "43e9da5c210c7233127660667695f9a8f282bede1dce5a03f4e731c62310feae"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.24,
-      "text": " Next one chat. We'll survive the breakup with the last chart. Probably."
+      "end": 4.16,
+      "text": " I'll check this option now. Let's see whether a suitable moment develops."
     }
   ],
   "issues": [],

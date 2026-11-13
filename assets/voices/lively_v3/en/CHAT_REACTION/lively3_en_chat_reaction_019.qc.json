@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_019",
-  "sha256": "a10c4337dd2a2f2b7df3b9e0aac5fcd65e39c0a44d8eca9545557fb8d701dc5e",
-  "expected": "Oh, thanks for the likes! Lovely knowing you're here.",
-  "transcript": "Oh, thanks for the likes. Lovely knowing you're here.",
+  "sha256": "7258f0224fb08b8b3dade59f1ccea36452fd8b49064a7b19c6163934182d32af",
+  "expected": "Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us!",
+  "transcript": "Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.5,
-    "rms": 0.07856,
-    "peak": 0.42547,
+    "duration": 5.381,
+    "rms": 0.08007,
+    "peak": 0.44898,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.12,
-    "sha256": "a10c4337dd2a2f2b7df3b9e0aac5fcd65e39c0a44d8eca9545557fb8d701dc5e"
+    "trailing_silence": 0.121,
+    "sha256": "7258f0224fb08b8b3dade59f1ccea36452fd8b49064a7b19c6163934182d32af"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.44,
-      "text": " Oh, thanks for the likes. Lovely knowing you're here."
+      "end": 5.28,
+      "text": " Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us."
     }
   ],
   "issues": [],

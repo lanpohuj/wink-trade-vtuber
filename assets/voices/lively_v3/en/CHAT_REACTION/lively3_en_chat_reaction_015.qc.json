@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_015",
-  "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b",
-  "expected": "Thank you! One kind gesture and my cool-host act has a crack in it.",
-  "transcript": "Thank you one kind gesture and my cool host act has a crack in it",
+  "sha256": "846f4a2a34dd94e329228ea56072dd15ec2fe5eadb5e9bff4bba32cd81da6b46",
+  "expected": "Thank you for such a kind gesture! You've made this moment even nicer.",
+  "transcript": "Thank you for such a kind gesture! You've made this moment even nicer!",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.068,
-    "rms": 0.08206,
-    "peak": 0.39203,
+    "duration": 4.232,
+    "rms": 0.0849,
+    "peak": 0.39607,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.22,
-    "trailing_silence": 0.188,
-    "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b"
+    "leading_silence": 0.16,
+    "trailing_silence": 0.072,
+    "sha256": "846f4a2a34dd94e329228ea56072dd15ec2fe5eadb5e9bff4bba32cd81da6b46"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.64,
-      "text": " Thank you one kind gesture and my cool host act has a crack in it"
+      "end": 4.2,
+      "text": " Thank you for such a kind gesture! You've made this moment even nicer!"
     }
   ],
   "issues": [],

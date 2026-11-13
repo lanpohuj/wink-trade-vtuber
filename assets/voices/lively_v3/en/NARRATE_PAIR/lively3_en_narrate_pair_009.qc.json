@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_009",
-  "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd",
-  "expected": "Next pair's here. Not calling it peak yet; I haven't checked it.",
-  "transcript": "Next pair is here. Not calling it peak yet. I haven't checked it.",
-  "similarity": 0.99,
+  "sha256": "adf5175e02b37dfd9cf92c97308266b989f4fbaadcda0e5a17d2bba10a86524b",
+  "expected": "We're looking at another asset. Conditions first, then the decision.",
+  "transcript": "We're looking at another asset. Conditions first, then the decision.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.362,
-    "rms": 0.07065,
-    "peak": 0.43264,
+    "duration": 4.284,
+    "rms": 0.07769,
+    "peak": 0.38952,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.302,
-    "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd"
+    "trailing_silence": 0.084,
+    "sha256": "adf5175e02b37dfd9cf92c97308266b989f4fbaadcda0e5a17d2bba10a86524b"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.08,
-      "text": " Next pair is here. Not calling it peak yet. I haven't checked it."
+      "end": 4.16,
+      "text": " We're looking at another asset. Conditions first, then the decision."
     }
   ],
   "issues": [],

@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_chat_reaction_014",
-  "sha256": "cfcaa31b7ecbb87081afd0ef65048031a94228064388904fd5c0beafb604c7e0",
-  "expected": "Подарок заметила, очень приятно! Спасибо за поддержку эфира.",
-  "transcript": "Подарок заметила? Очень приятно! Спасибо за поддержку эфира!",
-  "similarity": 1.0,
+  "sha256": "f2e872d10d5777cfdee247f5abb33f96965e4a2d5f8fcfc536cb67b36b6c7a70",
+  "expected": "Подарок увидела, спасибо! Это очень приятно. Рада, что ты с нами!",
+  "transcript": "А, да, Року видела. Спасибо. Это очень приятно. Рада, что ты с нами.",
+  "similarity": 0.97,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.728,
-    "rms": 0.08675,
-    "peak": 0.4075,
+    "duration": 5.695,
+    "rms": 0.08391,
+    "peak": 0.40056,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.24,
-    "trailing_silence": 0.088,
-    "sha256": "cfcaa31b7ecbb87081afd0ef65048031a94228064388904fd5c0beafb604c7e0"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "f2e872d10d5777cfdee247f5abb33f96965e4a2d5f8fcfc536cb67b36b6c7a70"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.7,
-      "text": " Подарок заметила? Очень приятно!"
-    },
-    {
-      "start": 2.7,
-      "end": 4.7,
-      "text": " Спасибо за поддержку эфира!"
+      "end": 5.6000000000000005,
+      "text": " А, да, Року видела. Спасибо. Это очень приятно. Рада, что ты с нами."
     }
   ],
   "issues": [],

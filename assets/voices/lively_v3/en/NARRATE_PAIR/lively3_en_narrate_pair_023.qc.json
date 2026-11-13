@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_023",
-  "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316",
-  "expected": "New pair on screen. Give me a moment to meet its personality.",
-  "transcript": "New pair on screen. Give me a moment to meet its personality.",
+  "sha256": "5d8cdd2576d4cc246de6e6971b5098822d2e7dc5f7a8ae3730e56272e2699001",
+  "expected": "Starting a fresh analysis here. I'll check the conditions we need.",
+  "transcript": "Starting a fresh analysis here, I'll check the conditions we need.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.814,
-    "rms": 0.08047,
-    "peak": 0.34131,
+    "duration": 4.075,
+    "rms": 0.09197,
+    "peak": 0.60226,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.114,
-    "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316"
+    "trailing_silence": 0.275,
+    "sha256": "5d8cdd2576d4cc246de6e6971b5098822d2e7dc5f7a8ae3730e56272e2699001"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.8000000000000003,
-      "text": " New pair on screen. Give me a moment to meet its personality."
+      "end": 4.0,
+      "text": " Starting a fresh analysis here, I'll check the conditions we need."
     }
   ],
   "issues": [],

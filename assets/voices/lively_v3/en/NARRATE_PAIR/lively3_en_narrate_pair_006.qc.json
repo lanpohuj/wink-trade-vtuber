@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_006",
-  "sha256": "bdfc4c5b71c7e5877caf8c5bb10ff0a86d94757fbfc5fbb9787b8f0d33b7ed7f",
-  "expected": "Changed charts. The previous setup doesn't automatically move next door.",
-  "transcript": "Change Charts. The previous setup doesn't automatically move next door.",
-  "similarity": 0.992,
+  "sha256": "5abbde1969871c066a7df3d6c61d68a48391a4c799ea04ddb683763ce0d1e72c",
+  "expected": "Here's the new chart. Let's see which conditions line up.",
+  "transcript": "Here's the new chart. Let's see which conditions line up.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.728,
-    "rms": 0.08228,
-    "peak": 0.53376,
+    "duration": 3.5,
+    "rms": 0.07733,
+    "peak": 0.32377,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.16,
-    "trailing_silence": 0.268,
-    "sha256": "bdfc4c5b71c7e5877caf8c5bb10ff0a86d94757fbfc5fbb9787b8f0d33b7ed7f"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.3,
+    "sha256": "5abbde1969871c066a7df3d6c61d68a48391a4c799ea04ddb683763ce0d1e72c"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.64,
-      "text": " Change Charts. The previous setup doesn't automatically move next door."
+      "end": 3.44,
+      "text": " Here's the new chart. Let's see which conditions line up."
     }
   ],
   "issues": [],

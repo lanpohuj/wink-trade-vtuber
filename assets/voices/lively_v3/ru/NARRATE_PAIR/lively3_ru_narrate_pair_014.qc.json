@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_014",
-  "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2",
-  "expected": "У нас смена главного героя. Но сценарий за него писать не будем.",
-  "transcript": "У нас смена главного героя, но сценарий за него писать не будем.",
+  "sha256": "1ca3100e35a3e3183cd51d83eb219192fd48489156d17f179ec620d495455b58",
+  "expected": "Открыли другую пару, чат. Сейчас посмотрю её внимательнее.",
+  "transcript": "Открыли другую пару чат. Сейчас посмотрю ее внимательнее.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.206,
-    "rms": 0.08367,
-    "peak": 0.32478,
+    "duration": 3.709,
+    "rms": 0.09169,
+    "peak": 0.39783,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.166,
-    "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.069,
+    "sha256": "1ca3100e35a3e3183cd51d83eb219192fd48489156d17f179ec620d495455b58"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.12,
-      "text": " У нас смена главного героя, но сценарий за него писать не будем."
+      "end": 3.72,
+      "text": " Открыли другую пару чат. Сейчас посмотрю ее внимательнее."
     }
   ],
   "issues": [],

@@ -1,24 +1,29 @@
 {
   "id": "lively3_ru_narrate_pair_015",
-  "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae",
-  "expected": "Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
-  "transcript": "к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт",
-  "similarity": 0.958,
+  "sha256": "ccb7eb5830b062265a33e524ad97b9acfdccc29af041ca8e7588656774d45aca",
+  "expected": "Следующий график на экране. Проверяю условия для входа.",
+  "transcript": "Следующий график на экране. Проверяю условия для входа.",
+  "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.859,
-    "rms": 0.0882,
-    "peak": 0.43572,
+    "duration": 3.814,
+    "rms": 0.08978,
+    "peak": 0.34796,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.119,
-    "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "ccb7eb5830b062265a33e524ad97b9acfdccc29af041ca8e7588656774d45aca"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.68,
-      "text": " к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт"
+      "end": 2.0,
+      "text": " Следующий график на экране."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Проверяю условия для входа."
     }
   ],
   "issues": [],

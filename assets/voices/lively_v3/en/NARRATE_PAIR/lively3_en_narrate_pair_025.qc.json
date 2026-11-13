@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_025",
-  "sha256": "aec674472581e70fcaaed0fad40360e8142f9a557ba99066fc86ed40f4e418eb",
-  "expected": "Let's look further. A new pair isn't a reason to raise my voice.",
-  "transcript": "Let's look further. A new pair isn't a reason to raise my voice.",
-  "similarity": 1.0,
+  "sha256": "1fe3d7c26d93487e77ebe122cfa3c6c02c957ecade972790c6edb951058e7743",
+  "expected": "Right, this is the next chart. Give me a moment to analyse it.",
+  "transcript": "Right. This is the next chart. Give me a moment to analyze it.",
+  "similarity": 0.979,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.232,
-    "rms": 0.07569,
-    "peak": 0.36802,
+    "duration": 4.101,
+    "rms": 0.07715,
+    "peak": 0.40485,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.232,
-    "sha256": "aec674472581e70fcaaed0fad40360e8142f9a557ba99066fc86ed40f4e418eb"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.241,
+    "sha256": "1fe3d7c26d93487e77ebe122cfa3c6c02c957ecade972790c6edb951058e7743"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.16,
-      "text": " Let's look further. A new pair isn't a reason to raise my voice."
+      "end": 4.0,
+      "text": " Right. This is the next chart. Give me a moment to analyze it."
     }
   ],
   "issues": [],

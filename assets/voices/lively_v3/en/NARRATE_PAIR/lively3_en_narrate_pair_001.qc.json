@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_001",
-  "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51",
-  "expected": "New pair, fresh page. Previous impressions stay outside.",
-  "transcript": "New pair, fresh page. Previous impressions stay outside.",
+  "sha256": "470b6e1092f3e83c0dd7c8c243dd222c93da4c97f0391118d4849536cc34c4f0",
+  "expected": "Right, another pair is open. Let me check whether there's a clear entry here.",
+  "transcript": "Right. Another pair is open. Let me check whether there's a clear entry here.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.362,
-    "rms": 0.06828,
-    "peak": 0.29859,
+    "duration": 4.728,
+    "rms": 0.07705,
+    "peak": 0.38037,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.262,
-    "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51"
+    "trailing_silence": 0.188,
+    "sha256": "470b6e1092f3e83c0dd7c8c243dd222c93da4c97f0391118d4849536cc34c4f0"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.16,
-      "text": " New pair, fresh page. Previous impressions stay outside."
+      "end": 4.64,
+      "text": " Right. Another pair is open. Let me check whether there's a clear entry here."
     }
   ],
   "issues": [],

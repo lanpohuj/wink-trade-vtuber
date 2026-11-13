@@ -1,0 +1,19 @@
+{
+  "active_bank": "lively_v3",
+  "active_count": 1500,
+  "new_count": 1000,
+  "languages": {
+    "en": 750,
+    "ru": 750
+  },
+  "new_qc_passed": 1000,
+  "python_http_tests": 102,
+  "budget_reserved_usd": 3.7587149999999987,
+  "budget_limit_usd": 7,
+  "rollback_pointer": "streamer_v2",
+  "auditory_verified_new_count": 14,
+  "acceptance_method": "owner_sampled",
+  "qt_demo_cycle_verified": false,
+  "tiktok_live_verified": false,
+  "gui_lipsync_verified": false
+}

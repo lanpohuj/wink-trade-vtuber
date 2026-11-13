@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_007",
-  "sha256": "d10d5bbe604c19921b0196f5b224fce1cb659f1b216ccad791ec3fae2a2caf6f",
-  "expected": "Открыли другую пару. Теперь внимание сюда, а не в прошлую историю.",
-  "transcript": "Открыли другую пару. Теперь внимание сюда. Они в прошлую историю.",
-  "similarity": 0.962,
+  "sha256": "189fbdcdf88b23f764bfb4324f31ef6fc38fc260505c81f3d7dd483f26f7e015",
+  "expected": "Сменили пару. Дайте секунду, разберусь с движением.",
+  "transcript": "Взлинили пару. Дайте секунду, разберусь с движением.",
+  "similarity": 0.918,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.937,
-    "rms": 0.08589,
-    "peak": 0.33416,
+    "duration": 3.709,
+    "rms": 0.09024,
+    "peak": 0.33338,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.117,
-    "sha256": "d10d5bbe604c19921b0196f5b224fce1cb659f1b216ccad791ec3fae2a2caf6f"
+    "leading_silence": 0.28,
+    "trailing_silence": 0.069,
+    "sha256": "189fbdcdf88b23f764bfb4324f31ef6fc38fc260505c81f3d7dd483f26f7e015"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.88,
-      "text": " Открыли другую пару. Теперь внимание сюда. Они в прошлую историю."
+      "end": 3.68,
+      "text": " Взлинили пару. Дайте секунду, разберусь с движением."
     }
   ],
   "issues": [],

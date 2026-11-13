@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_011",
-  "sha256": "ddb6d7cf8a12ccfbaba2517f2485fe214ccd6f80ba6bd1fa5f308e506ed7f204",
-  "expected": "A gift! Thank you, that's lovely. I briefly misplaced my sarcasm.",
-  "transcript": "A gift! Thank you! That's lovely! I briefly misplaced my sarcasm.",
+  "sha256": "101f0b5082d4703c8d5b93ade9f1327656b9cd8788353439e1aff8275989551f",
+  "expected": "Thank you for the gift! I really appreciate it. Thanks for supporting the stream!",
+  "transcript": "Thank you for the gift. I really appreciate it. Thanks for supporting the stream",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 5.46,
-    "rms": 0.07994,
-    "peak": 0.50966,
+    "duration": 4.728,
+    "rms": 0.08236,
+    "peak": 0.46962,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.18,
-    "trailing_silence": 0.22,
-    "sha256": "ddb6d7cf8a12ccfbaba2517f2485fe214ccd6f80ba6bd1fa5f308e506ed7f204"
+    "leading_silence": 0.16,
+    "trailing_silence": 0.228,
+    "sha256": "101f0b5082d4703c8d5b93ade9f1327656b9cd8788353439e1aff8275989551f"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 5.36,
-      "text": " A gift! Thank you! That's lovely! I briefly misplaced my sarcasm."
+      "end": 4.3,
+      "text": " Thank you for the gift. I really appreciate it. Thanks for supporting the stream"
     }
   ],
   "issues": [],

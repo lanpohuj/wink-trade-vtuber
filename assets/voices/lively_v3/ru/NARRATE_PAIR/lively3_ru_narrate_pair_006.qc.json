@@ -1,24 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_006",
-  "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a",
-  "expected": "Сменили график. Переносить чужой сценарий по соседству не будем.",
-  "transcript": "сменили график переносить чужой сценарий по соседству не будем",
+  "sha256": "51a9180cfc6df803fb9db49157433d0270ba17e236a03f1ab59bf7ae9b709823",
+  "expected": "Здесь новый график. Сейчас посмотрю, что подтверждается.",
+  "transcript": "Здесь новый график. Сейчас посмотрю, что подтверждается.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 3.971,
-    "rms": 0.08242,
-    "peak": 0.3,
+    "duration": 3.709,
+    "rms": 0.08699,
+    "peak": 0.39598,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.22,
-    "trailing_silence": 0.091,
-    "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a"
+    "leading_silence": 0.2,
+    "trailing_silence": 0.129,
+    "sha256": "51a9180cfc6df803fb9db49157433d0270ba17e236a03f1ab59bf7ae9b709823"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.84,
-      "text": " сменили график переносить чужой сценарий по соседству не будем"
+      "end": 3.6,
+      "text": " Здесь новый график. Сейчас посмотрю, что подтверждается."
     }
   ],
   "issues": [],

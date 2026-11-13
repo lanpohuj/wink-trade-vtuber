@@ -13197,30 +13197,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_001",
-      "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2",
-      "expected": "Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
-      "transcript": "Новая пара – чистый лист. Прошлое впечатление оставляем за дверью.",
-      "similarity": 0.963,
+      "sha256": "394568276f13cfd6f06374c91989ebe37e82d507921a0d9acab2bdbf7ec755c5",
+      "expected": "Так, открыли другую пару. Проверю, есть ли здесь понятный вход.",
+      "transcript": "Так, открыли другую пару. Проверю, есть ли здесь понятный вход?",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.545,
-        "rms": 0.07448,
-        "peak": 0.32851,
+        "duration": 4.075,
+        "rms": 0.07944,
+        "peak": 0.31208,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.105,
-        "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.155,
+        "sha256": "394568276f13cfd6f06374c91989ebe37e82d507921a0d9acab2bdbf7ec755c5"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.2,
-          "text": " Новая пара – чистый лист."
-        },
-        {
-          "start": 2.2,
-          "end": 4.7,
-          "text": " Прошлое впечатление оставляем за дверью."
+          "end": 4.0,
+          "text": " Так, открыли другую пару. Проверю, есть ли здесь понятный вход?"
         }
       ],
       "issues": [],
@@ -13228,25 +13223,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_001",
-      "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51",
-      "expected": "New pair, fresh page. Previous impressions stay outside.",
-      "transcript": "New pair, fresh page. Previous impressions stay outside.",
+      "sha256": "470b6e1092f3e83c0dd7c8c243dd222c93da4c97f0391118d4849536cc34c4f0",
+      "expected": "Right, another pair is open. Let me check whether there's a clear entry here.",
+      "transcript": "Right. Another pair is open. Let me check whether there's a clear entry here.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.362,
-        "rms": 0.06828,
-        "peak": 0.29859,
+        "duration": 4.728,
+        "rms": 0.07705,
+        "peak": 0.38037,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.262,
-        "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51"
+        "trailing_silence": 0.188,
+        "sha256": "470b6e1092f3e83c0dd7c8c243dd222c93da4c97f0391118d4849536cc34c4f0"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " New pair, fresh page. Previous impressions stay outside."
+          "end": 4.64,
+          "text": " Right. Another pair is open. Let me check whether there's a clear entry here."
         }
       ],
       "issues": [],
@@ -13254,25 +13249,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_002",
-      "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482",
-      "expected": "New scenery. Let's see what this chart offers without my prompting.",
-      "transcript": "New scenery. Let's see what this chart offers without my prompting.",
+      "sha256": "92d4c97eafbe7024bf17e3bef8c5ed17380138ce3c62e0d8b7a54f39e019cec9",
+      "expected": "We've switched over. Let's look through this chart and check the entry conditions.",
+      "transcript": "We've switched over. Let's look through this chart and check the entry conditions.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.08248,
-        "peak": 0.39272,
+        "duration": 4.545,
+        "rms": 0.08071,
+        "peak": 0.37037,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.192,
-        "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482"
+        "trailing_silence": 0.245,
+        "sha256": "92d4c97eafbe7024bf17e3bef8c5ed17380138ce3c62e0d8b7a54f39e019cec9"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " New scenery. Let's see what this chart offers without my prompting."
+          "end": 4.48,
+          "text": " We've switched over. Let's look through this chart and check the entry conditions."
         }
       ],
       "issues": [],
@@ -13280,25 +13275,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_002",
-      "sha256": "51a068d66e8650e54e45418c8c1e9510827845cf5546544b7a0204504ea3ae14",
-      "expected": "Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
-      "transcript": "Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+      "sha256": "214999ffcd73368e10be58b0cd9dab7d9230d5efaf9d29074b31d9545f3759d6",
+      "expected": "Переключились. Сейчас разберём этот график и посмотрим на условия для входа.",
+      "transcript": "Переключились. Сейчас разберем этот график и посмотрим на условия для входа.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.467,
-        "rms": 0.08249,
-        "peak": 0.4327,
+        "duration": 4.232,
+        "rms": 0.0826,
+        "peak": 0.351,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.107,
-        "sha256": "51a068d66e8650e54e45418c8c1e9510827845cf5546544b7a0204504ea3ae14"
+        "trailing_silence": 0.072,
+        "sha256": "214999ffcd73368e10be58b0cd9dab7d9230d5efaf9d29074b31d9545f3759d6"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.32,
-          "text": " Смена декораций. Посмотрим, что предложит этот график без моей подсказки."
+          "end": 4.16,
+          "text": " Переключились. Сейчас разберем этот график и посмотрим на условия для входа."
         }
       ],
       "issues": [],
@@ -13306,25 +13301,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_003",
-      "sha256": "eb6d05e27c578d1851926fd723b2cb248b399a117fa98e0a03d0842e51b0da02",
-      "expected": "Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед.",
-      "transcript": "Так, переехали. Прошлую пару отпускаем. Не будем душнитей вслед.",
-      "similarity": 0.99,
+      "sha256": "57a712e8f3d389b25f9af90ac055eabfb69fe6b1d22b057adb19a920f95b3001",
+      "expected": "Новая пара на экране. Посмотрю движение, потом определимся со входом.",
+      "transcript": "Новая пара на экране. Посмотрю движение, потом определимся со входом.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.519,
-        "rms": 0.08157,
-        "peak": 0.40853,
+        "duration": 4.284,
+        "rms": 0.08776,
+        "peak": 0.49968,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.24,
-        "trailing_silence": 0.119,
-        "sha256": "eb6d05e27c578d1851926fd723b2cb248b399a117fa98e0a03d0842e51b0da02"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.084,
+        "sha256": "57a712e8f3d389b25f9af90ac055eabfb69fe6b1d22b057adb19a920f95b3001"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.48,
-          "text": " Так, переехали. Прошлую пару отпускаем. Не будем душнитей вслед."
+          "end": 4.16,
+          "text": " Новая пара на экране. Посмотрю движение, потом определимся со входом."
         }
       ],
       "issues": [],
@@ -13332,25 +13327,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_003",
-      "sha256": "c06b2c00650829a5101ceed2614d3ca2efd0335e24f337ff9004b513edd0d247",
-      "expected": "Right, we've moved. Leaving the last chart alone. No unnecessary lore dump.",
-      "transcript": "All right, we've moved leaving the last chart alone no unnecessary lore dump",
-      "similarity": 0.975,
+      "sha256": "d993470b7f25af7e6857e4fc6bdea8717218c14b2293208916b27cfb4486a860",
+      "expected": "New pair on screen. I'll read the movement before deciding on an entry.",
+      "transcript": "New pair on screen. I'll read the movement before deciding on an entry.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.329,
-        "rms": 0.08294,
-        "peak": 0.44847,
+        "duration": 4.232,
+        "rms": 0.08433,
+        "peak": 0.44826,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.289,
-        "sha256": "c06b2c00650829a5101ceed2614d3ca2efd0335e24f337ff9004b513edd0d247"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.172,
+        "sha256": "d993470b7f25af7e6857e4fc6bdea8717218c14b2293208916b27cfb4486a860"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.96,
-          "text": " All right, we've moved leaving the last chart alone no unnecessary lore dump"
+          "end": 4.16,
+          "text": " New pair on screen. I'll read the movement before deciding on an entry."
         }
       ],
       "issues": [],
@@ -13358,30 +13353,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_004",
-      "sha256": "363728c494859b4e913dc9408b96245359a926173ed3950a108955246a30a9d0",
-      "expected": "Следующая пара на экране. Знакомство начинаем с проверки, я такая романтичная.",
-      "transcript": "Следующая пара на экране. Знакомство, начинаем с проверки. Я такая романтичная.",
+      "sha256": "3fdedc4c11e10ebec4056f7a37d183250d6a02432751484fc6b438d312fe0870",
+      "expected": "Идём дальше, чат. Эту пару сначала проверю на разных интервалах.",
+      "transcript": "Идём дальше, Чат. Эту пару сначала проверю на разных интервалах.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.303,
-        "rms": 0.08572,
-        "peak": 0.39015,
+        "duration": 4.101,
+        "rms": 0.09223,
+        "peak": 0.37442,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.103,
-        "sha256": "363728c494859b4e913dc9408b96245359a926173ed3950a108955246a30a9d0"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.061,
+        "sha256": "3fdedc4c11e10ebec4056f7a37d183250d6a02432751484fc6b438d312fe0870"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Следующая пара на экране."
+          "end": 1.5,
+          "text": " Идём дальше, Чат."
         },
         {
-          "start": 2.0,
-          "end": 5.28,
-          "text": " Знакомство, начинаем с проверки. Я такая романтичная."
+          "start": 1.5,
+          "end": 4.0,
+          "text": " Эту пару сначала проверю на разных интервалах."
         }
       ],
       "issues": [],
@@ -13389,25 +13384,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_004",
-      "sha256": "6b1622a8d5b35d5ad3731fc8f60500e7f0589507e17504cd66c4a335c94a3ba5",
-      "expected": "Next pair's up. Introduction starts with checks. I'm romantic like that.",
-      "transcript": "Next pairs up. Introduction starts with checks. I'm romantic like that.",
+      "sha256": "6e3ad2fe307ae97e04bfb9c88b4858cf524e87f52c594cf36c371212b895d795",
+      "expected": "Moving on, chat. I'll check this pair across the timeframes first.",
+      "transcript": "Moving on, Chat. I'll check this pair across the timeframes first.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.46,
-        "rms": 0.07648,
-        "peak": 0.42203,
+        "duration": 4.232,
+        "rms": 0.07556,
+        "peak": 0.43289,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.26,
-        "sha256": "6b1622a8d5b35d5ad3731fc8f60500e7f0589507e17504cd66c4a335c94a3ba5"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.132,
+        "sha256": "6e3ad2fe307ae97e04bfb9c88b4858cf524e87f52c594cf36c371212b895d795"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.36,
-          "text": " Next pairs up. Introduction starts with checks. I'm romantic like that."
+          "end": 4.16,
+          "text": " Moving on, Chat. I'll check this pair across the timeframes first."
         }
       ],
       "issues": [],
@@ -13415,25 +13410,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_005",
-      "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6",
-      "expected": "Так, новый кандидат. Пока без короны «лучшая пара вечера».",
-      "transcript": "Так, новый кандидат. Пока бескороны, лучшая пара вечера.",
-      "similarity": 0.978,
+      "sha256": "e0b66bbff3e3887d1f90a518bc9b77612320666d864a7515dae3b382abd0618e",
+      "expected": "Проверим следующую пару. Начну с общей картины.",
+      "transcript": "Проверим следующую пару. Начну с общей картины.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.945,
-        "rms": 0.07887,
-        "peak": 0.35405,
+        "duration": 3.37,
+        "rms": 0.07997,
+        "peak": 0.35633,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.105,
-        "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6"
+        "trailing_silence": 0.11,
+        "sha256": "e0b66bbff3e3887d1f90a518bc9b77612320666d864a7515dae3b382abd0618e"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " Так, новый кандидат. Пока бескороны, лучшая пара вечера."
+          "end": 3.4,
+          "text": " Проверим следующую пару. Начну с общей картины."
         }
       ],
       "issues": [],
@@ -13441,25 +13436,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_005",
-      "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2",
-      "expected": "New candidate. No 'pair of the evening' crown just yet.",
-      "transcript": "New candidate. No pair of the evening crown just yet.",
+      "sha256": "a59c1277fbc793eaf11690730fb99b4704828ae5197a35ddac279eb1eed9516b",
+      "expected": "Let's check the next pair. I'll start with the bigger picture.",
+      "transcript": "Let's check the next pair. I'll start with the bigger picture.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
         "duration": 3.762,
-        "rms": 0.07858,
-        "peak": 0.36467,
+        "rms": 0.07238,
+        "peak": 0.39138,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.342,
-        "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.162,
+        "sha256": "a59c1277fbc793eaf11690730fb99b4704828ae5197a35ddac279eb1eed9516b"
       },
       "segments": [
         {
           "start": 0.0,
           "end": 3.6,
-          "text": " New candidate. No pair of the evening crown just yet."
+          "text": " Let's check the next pair. I'll start with the bigger picture."
         }
       ],
       "issues": [],
@@ -13467,25 +13462,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_006",
-      "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a",
-      "expected": "Сменили график. Переносить чужой сценарий по соседству не будем.",
-      "transcript": "сменили график переносить чужой сценарий по соседству не будем",
+      "sha256": "51a9180cfc6df803fb9db49157433d0270ba17e236a03f1ab59bf7ae9b709823",
+      "expected": "Здесь новый график. Сейчас посмотрю, что подтверждается.",
+      "transcript": "Здесь новый график. Сейчас посмотрю, что подтверждается.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.971,
-        "rms": 0.08242,
-        "peak": 0.3,
+        "duration": 3.709,
+        "rms": 0.08699,
+        "peak": 0.39598,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.091,
-        "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.129,
+        "sha256": "51a9180cfc6df803fb9db49157433d0270ba17e236a03f1ab59bf7ae9b709823"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.84,
-          "text": " сменили график переносить чужой сценарий по соседству не будем"
+          "end": 3.6,
+          "text": " Здесь новый график. Сейчас посмотрю, что подтверждается."
         }
       ],
       "issues": [],
@@ -13493,25 +13488,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_006",
-      "sha256": "bdfc4c5b71c7e5877caf8c5bb10ff0a86d94757fbfc5fbb9787b8f0d33b7ed7f",
-      "expected": "Changed charts. The previous setup doesn't automatically move next door.",
-      "transcript": "Change Charts. The previous setup doesn't automatically move next door.",
-      "similarity": 0.992,
+      "sha256": "5abbde1969871c066a7df3d6c61d68a48391a4c799ea04ddb683763ce0d1e72c",
+      "expected": "Here's the new chart. Let's see which conditions line up.",
+      "transcript": "Here's the new chart. Let's see which conditions line up.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.728,
-        "rms": 0.08228,
-        "peak": 0.53376,
+        "duration": 3.5,
+        "rms": 0.07733,
+        "peak": 0.32377,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.268,
-        "sha256": "bdfc4c5b71c7e5877caf8c5bb10ff0a86d94757fbfc5fbb9787b8f0d33b7ed7f"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.3,
+        "sha256": "5abbde1969871c066a7df3d6c61d68a48391a4c799ea04ddb683763ce0d1e72c"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.64,
-          "text": " Change Charts. The previous setup doesn't automatically move next door."
+          "end": 3.44,
+          "text": " Here's the new chart. Let's see which conditions line up."
         }
       ],
       "issues": [],
@@ -13519,25 +13514,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_007",
-      "sha256": "d10d5bbe604c19921b0196f5b224fce1cb659f1b216ccad791ec3fae2a2caf6f",
-      "expected": "Открыли другую пару. Теперь внимание сюда, а не в прошлую историю.",
-      "transcript": "Открыли другую пару. Теперь внимание сюда. Они в прошлую историю.",
-      "similarity": 0.962,
+      "sha256": "189fbdcdf88b23f764bfb4324f31ef6fc38fc260505c81f3d7dd483f26f7e015",
+      "expected": "Сменили пару. Дайте секунду, разберусь с движением.",
+      "transcript": "Взлинили пару. Дайте секунду, разберусь с движением.",
+      "similarity": 0.918,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.937,
-        "rms": 0.08589,
-        "peak": 0.33416,
+        "duration": 3.709,
+        "rms": 0.09024,
+        "peak": 0.33338,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.117,
-        "sha256": "d10d5bbe604c19921b0196f5b224fce1cb659f1b216ccad791ec3fae2a2caf6f"
+        "leading_silence": 0.28,
+        "trailing_silence": 0.069,
+        "sha256": "189fbdcdf88b23f764bfb4324f31ef6fc38fc260505c81f3d7dd483f26f7e015"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.88,
-          "text": " Открыли другую пару. Теперь внимание сюда. Они в прошлую историю."
+          "end": 3.68,
+          "text": " Взлинили пару. Дайте секунду, разберусь с движением."
         }
       ],
       "issues": [],
@@ -13545,25 +13540,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_007",
-      "sha256": "8e9901315e3f99998f46da0ebeb1ac6e176703d3d5ab9dcc8a774b7584bd177e",
-      "expected": "Another pair open. Attention here rather than on the previous story.",
-      "transcript": "Another pair open attention here rather than on the previous story",
-      "similarity": 1.0,
+      "sha256": "102fd9d37d778b0a24e940f393534ffb8b15cebf6f459056b9aa8fe52fdfcd81",
+      "expected": "Pair changed. Give me a moment to read the price movement.",
+      "transcript": "Pear changed. Give me a moment to read the price movement.",
+      "similarity": 0.978,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.336,
-        "rms": 0.07015,
-        "peak": 0.35914,
+        "duration": 3.553,
+        "rms": 0.08334,
+        "peak": 0.38897,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.276,
-        "sha256": "8e9901315e3f99998f46da0ebeb1ac6e176703d3d5ab9dcc8a774b7584bd177e"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.193,
+        "sha256": "102fd9d37d778b0a24e940f393534ffb8b15cebf6f459056b9aa8fe52fdfcd81"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.84,
-          "text": " Another pair open attention here rather than on the previous story"
+          "end": 3.44,
+          "text": " Pear changed. Give me a moment to read the price movement."
         }
       ],
       "issues": [],
@@ -13571,30 +13566,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_008",
-      "sha256": "63edc849ff40fd5ff1f836e85b9d83081a1219f19f1ab5b5cf2cf6ba640ef224",
-      "expected": "Новая пара. Ну, удивляй. Хотя ладно, сначала я сама посмотрю нормально.",
-      "transcript": "Новая пара. Ну, удивляй. Хотя ладно, сначала я сама посмотрю нормально.",
-      "similarity": 1.0,
+      "sha256": "79b7029a5740fd5540446a7358a9320129c95be4897a5e5b55d4d90138ee6927",
+      "expected": "Поехали дальше. Гляну, есть ли здесь сценарий для входа.",
+      "transcript": "Поехали дальше, гляну, если здесь сценарий для входа.",
+      "similarity": 0.977,
       "metrics": {
         "decode_ok": true,
-        "duration": 6.139,
-        "rms": 0.07747,
-        "peak": 0.39323,
+        "duration": 4.232,
+        "rms": 0.08069,
+        "peak": 0.32124,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.099,
-        "sha256": "63edc849ff40fd5ff1f836e85b9d83081a1219f19f1ab5b5cf2cf6ba640ef224"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.052,
+        "sha256": "79b7029a5740fd5540446a7358a9320129c95be4897a5e5b55d4d90138ee6927"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.0,
-          "text": " Новая пара. Ну, удивляй."
-        },
-        {
-          "start": 3.0,
-          "end": 6.0,
-          "text": " Хотя ладно, сначала я сама посмотрю нормально."
+          "end": 4.24,
+          "text": " Поехали дальше, гляну, если здесь сценарий для входа."
         }
       ],
       "issues": [],
@@ -13602,25 +13592,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_008",
-      "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130",
-      "expected": "New pair. Go on, impress me. Actually, let me look properly first.",
-      "transcript": "No, Pear. Go on and press me. Actually, let me look properly first.",
-      "similarity": 0.9,
+      "sha256": "ecb003714a169739be0a51ee31b23882ed0c19f1751f184bac265b8dd53d6f4a",
+      "expected": "On to the next one. Let's see whether there's a setup here.",
+      "transcript": "On to the next one. Let's see whether there's a setup here.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 6.087,
-        "rms": 0.07684,
-        "peak": 0.39966,
+        "duration": 3.5,
+        "rms": 0.07586,
+        "peak": 0.35019,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.287,
-        "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.1,
+        "sha256": "ecb003714a169739be0a51ee31b23882ed0c19f1751f184bac265b8dd53d6f4a"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 6.0,
-          "text": " No, Pear. Go on and press me. Actually, let me look properly first."
+          "end": 3.6,
+          "text": " On to the next one. Let's see whether there's a setup here."
         }
       ],
       "issues": [],
@@ -13628,25 +13618,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_009",
-      "sha256": "6681148ca76d57cb9f1d46b6199a83bd2c686c148595fa680fa93447f7acd5e8",
-      "expected": "Следующая пара подъехала. Пока без статуса «имба», ещё не разобралась.",
-      "transcript": "Следующая пара подъехала. Пока без статуса имба. Ты еще не разобралась.",
-      "similarity": 0.982,
+      "sha256": "684f88d64cc98a015cc5b13c3224ec19ebb3d7140b5680c0d7321359832701ba",
+      "expected": "Смотрим другой актив. Сначала условия, потом уже решение.",
+      "transcript": "Смотрим другой актив. Сначала условия, потом уже решение.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.08531,
-        "peak": 0.3426,
+        "duration": 4.075,
+        "rms": 0.07282,
+        "peak": 0.3668,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.122,
-        "sha256": "6681148ca76d57cb9f1d46b6199a83bd2c686c148595fa680fa93447f7acd5e8"
+        "trailing_silence": 0.095,
+        "sha256": "684f88d64cc98a015cc5b13c3224ec19ebb3d7140b5680c0d7321359832701ba"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Следующая пара подъехала. Пока без статуса имба. Ты еще не разобралась."
+          "end": 4.0,
+          "text": " Смотрим другой актив. Сначала условия, потом уже решение."
         }
       ],
       "issues": [],
@@ -13654,25 +13644,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_009",
-      "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd",
-      "expected": "Next pair's here. Not calling it peak yet; I haven't checked it.",
-      "transcript": "Next pair is here. Not calling it peak yet. I haven't checked it.",
-      "similarity": 0.99,
+      "sha256": "adf5175e02b37dfd9cf92c97308266b989f4fbaadcda0e5a17d2bba10a86524b",
+      "expected": "We're looking at another asset. Conditions first, then the decision.",
+      "transcript": "We're looking at another asset. Conditions first, then the decision.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.362,
-        "rms": 0.07065,
-        "peak": 0.43264,
+        "duration": 4.284,
+        "rms": 0.07769,
+        "peak": 0.38952,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.302,
-        "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd"
+        "trailing_silence": 0.084,
+        "sha256": "adf5175e02b37dfd9cf92c97308266b989f4fbaadcda0e5a17d2bba10a86524b"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.08,
-          "text": " Next pair is here. Not calling it peak yet. I haven't checked it."
+          "end": 4.16,
+          "text": " We're looking at another asset. Conditions first, then the decision."
         }
       ],
       "issues": [],
@@ -13680,25 +13670,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_010",
-      "sha256": "21a0bc9148f0a93385e1651c5a3ddbdcb8b23b85750c35c2345d8807ae96d2d5",
-      "expected": "Pair changed, assumptions reset. Checks start fresh.",
-      "transcript": "Pair changed. Assumptions reset. Check start fresh.",
-      "similarity": 0.988,
+      "sha256": "a957f884f5cfc71a994e3af407b28fd64ebf682bb3dbb54f616b2a4c700d9c6e",
+      "expected": "Next pair. I'll check the structure and the relevant timeframe.",
+      "transcript": "Next pair, I'll check the structure in the relevant time frame.",
+      "similarity": 0.97,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.07308,
-        "peak": 0.53241,
+        "duration": 3.553,
+        "rms": 0.08277,
+        "peak": 0.40617,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.181,
-        "sha256": "21a0bc9148f0a93385e1651c5a3ddbdcb8b23b85750c35c2345d8807ae96d2d5"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.133,
+        "sha256": "a957f884f5cfc71a994e3af407b28fd64ebf682bb3dbb54f616b2a4c700d9c6e"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " Pair changed. Assumptions reset. Check start fresh."
+          "end": 3.5,
+          "text": " Next pair, I'll check the structure in the relevant time frame."
         }
       ],
       "issues": [],
@@ -13706,30 +13696,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_010",
-      "sha256": "72bdaae49a96e066eaa2da72cab70aa02d4674af5979280fbed466ea114d82be",
-      "expected": "Пара сменилась, самоуверенность обнулили. Проверка снова с начала.",
-      "transcript": "Пара сменилась, самоуверенность обнулили. Проверка снова сначала.",
+      "sha256": "178e666d6e9a9495c033b32950bce1d8dca465a7df6edfb2e49f4e403982137e",
+      "expected": "Следующая пара. Сейчас проверю структуру и подходящий интервал.",
+      "transcript": "Следующая пара. Сейчас проверю структуру и подходящий интервал.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.676,
-        "rms": 0.08764,
-        "peak": 0.34531,
+        "duration": 3.971,
+        "rms": 0.08827,
+        "peak": 0.43583,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.24,
-        "trailing_silence": 0.156,
-        "sha256": "72bdaae49a96e066eaa2da72cab70aa02d4674af5979280fbed466ea114d82be"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.051,
+        "sha256": "178e666d6e9a9495c033b32950bce1d8dca465a7df6edfb2e49f4e403982137e"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.64,
-          "text": " Пара сменилась, самоуверенность обнулили."
-        },
-        {
-          "start": 2.64,
-          "end": 4.64,
-          "text": " Проверка снова сначала."
+          "end": 4.0,
+          "text": " Следующая пара. Сейчас проверю структуру и подходящий интервал."
         }
       ],
       "issues": [],
@@ -13737,25 +13722,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_011",
-      "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624",
-      "expected": "Let's visit another chart. Maybe the conversation's clearer here.",
-      "transcript": "Let's visit another chart. Maybe the conversation's clearer here.",
+      "sha256": "d7dc4225957da3979a5908bf4a1a8daf150f6256e79e8c645acf8334a5d2c186",
+      "expected": "We're on a different chart now. I'm looking at how price is behaving here.",
+      "transcript": "We're on a different chart now. I'm looking at how price is behaving here.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.07614,
-        "peak": 0.37701,
+        "duration": 4.362,
+        "rms": 0.07972,
+        "peak": 0.35479,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.261,
-        "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624"
+        "trailing_silence": 0.182,
+        "sha256": "d7dc4225957da3979a5908bf4a1a8daf150f6256e79e8c645acf8334a5d2c186"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " Let's visit another chart. Maybe the conversation's clearer here."
+          "end": 4.32,
+          "text": " We're on a different chart now. I'm looking at how price is behaving here."
         }
       ],
       "issues": [],
@@ -13763,25 +13748,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_011",
-      "sha256": "405222f8ccaf7fc4e594e34954744fd7d49df747335882bc8e8e4ee6263170e0",
-      "expected": "Заглянем на другой график. Вдруг здесь разговор будет понятнее.",
-      "transcript": "Заглянем на другой график. Вдруг здесь разговор будет понятнее.",
-      "similarity": 1.0,
+      "sha256": "d26ccc6ed39aa95840fe38d8559b35f205977e150943d56adec89359099cd8e0",
+      "expected": "Перешли на другой график. Смотрю, как здесь ведёт себя цена.",
+      "transcript": "ты решли на другой график смотрю как здесь ведет себя цена",
+      "similarity": 0.958,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.206,
-        "rms": 0.08818,
-        "peak": 0.37833,
+        "duration": 4.232,
+        "rms": 0.06858,
+        "peak": 0.30113,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.24,
-        "trailing_silence": 0.126,
-        "sha256": "405222f8ccaf7fc4e594e34954744fd7d49df747335882bc8e8e4ee6263170e0"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.132,
+        "sha256": "d26ccc6ed39aa95840fe38d8559b35f205977e150943d56adec89359099cd8e0"
       },
       "segments": [
         {
           "start": 0.0,
+          "end": 2.0,
+          "text": " ты решли на другой график"
+        },
+        {
+          "start": 2.0,
           "end": 4.0,
-          "text": " Заглянем на другой график. Вдруг здесь разговор будет понятнее."
+          "text": " смотрю как здесь ведет себя цена"
         }
       ],
       "issues": [],
@@ -13789,25 +13779,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_012",
-      "sha256": "c57d9131a7fc1f88131a2bae37968005dd95855afba2917595e53c0a9e1bdbbc",
-      "expected": "New screen, new conditions. Yes, I need to investigate again.",
-      "transcript": "New screen? New conditions? Yes, I need to investigate again.",
+      "sha256": "411da093e0b287e00f237822839ae58dbf15d25b657de96a5887661843db9538",
+      "expected": "The pair has changed. Let's give this chart a fresh assessment.",
+      "transcript": "The pair has changed. Let's give this chart a fresh assessment.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.467,
-        "rms": 0.07581,
-        "peak": 0.35118,
+        "duration": 4.284,
+        "rms": 0.07684,
+        "peak": 0.53062,
         "clipped_fraction": 0.0,
         "leading_silence": 0.16,
-        "trailing_silence": 0.167,
-        "sha256": "c57d9131a7fc1f88131a2bae37968005dd95855afba2917595e53c0a9e1bdbbc"
+        "trailing_silence": 0.184,
+        "sha256": "411da093e0b287e00f237822839ae58dbf15d25b657de96a5887661843db9538"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.4,
-          "text": " New screen? New conditions? Yes, I need to investigate again."
+          "end": 4.16,
+          "text": " The pair has changed. Let's give this chart a fresh assessment."
         }
       ],
       "issues": [],
@@ -13815,30 +13805,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_012",
-      "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a",
-      "expected": "Новый экран, новые условия. Да, мне опять нужно разобраться.",
-      "transcript": "Новый экран! Новые условия! Да, мне опять нужно разобраться!",
-      "similarity": 1.0,
+      "sha256": "59d3b5ab2fbd65b75b1ae50d95e5eb8e40a81d0209426aeb51d5955bc303600c",
+      "expected": "Пара сменилась. Разберём эту картину отдельно.",
+      "transcript": "Лара сменилась. Разберём эту картину отдельно.",
+      "similarity": 0.974,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.989,
-        "rms": 0.0735,
-        "peak": 0.28574,
+        "duration": 3.422,
+        "rms": 0.08056,
+        "peak": 0.29079,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.109,
-        "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.102,
+        "sha256": "59d3b5ab2fbd65b75b1ae50d95e5eb8e40a81d0209426aeb51d5955bc303600c"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.7,
-          "text": " Новый экран! Новые условия!"
-        },
-        {
-          "start": 2.7,
-          "end": 5.0,
-          "text": " Да, мне опять нужно разобраться!"
+          "end": 3.4,
+          "text": " Лара сменилась. Разберём эту картину отдельно."
         }
       ],
       "issues": [],
@@ -13846,25 +13831,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_013",
-      "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7",
-      "expected": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
-      "transcript": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
+      "sha256": "f6e78ea3cf6010d20e8e4f6012fc90aadf0c4ab4ad61cea59c3f53ac36d79598",
+      "expected": "Теперь проверю этот вариант. Посмотрим, найдётся ли подходящий момент.",
+      "transcript": "Теперь проверю этот вариант. Посмотрим, найдется ли подходящий момент.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.09056,
-        "peak": 0.43572,
+        "duration": 4.937,
+        "rms": 0.07646,
+        "peak": 0.3021,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.122,
-        "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.077,
+        "sha256": "f6e78ea3cf6010d20e8e4f6012fc90aadf0c4ab4ad61cea59c3f53ac36d79598"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю."
+          "end": 4.88,
+          "text": " Теперь проверю этот вариант. Посмотрим, найдется ли подходящий момент."
         }
       ],
       "issues": [],
@@ -13872,25 +13857,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_013",
-      "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae",
-      "expected": "Next one, chat. We'll survive the breakup with the last chart. Probably.",
-      "transcript": "Next one chat. We'll survive the breakup with the last chart. Probably.",
+      "sha256": "43e9da5c210c7233127660667695f9a8f282bede1dce5a03f4e731c62310feae",
+      "expected": "I'll check this option now. Let's see whether a suitable moment develops.",
+      "transcript": "I'll check this option now. Let's see whether a suitable moment develops.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.598,
-        "rms": 0.08248,
-        "peak": 0.4208,
+        "duration": 4.154,
+        "rms": 0.08353,
+        "peak": 0.40356,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.238,
-        "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae"
+        "trailing_silence": 0.093,
+        "sha256": "43e9da5c210c7233127660667695f9a8f282bede1dce5a03f4e731c62310feae"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.24,
-          "text": " Next one chat. We'll survive the breakup with the last chart. Probably."
+          "end": 4.16,
+          "text": " I'll check this option now. Let's see whether a suitable moment develops."
         }
       ],
       "issues": [],
@@ -13898,25 +13883,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_014",
-      "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0",
-      "expected": "New main character. We're not writing its storyline for it.",
-      "transcript": "No main character. We're not writing its storyline for it.",
-      "similarity": 0.968,
+      "sha256": "3c8e9487a87cbfc2126aff7cf01959b4514964a8e11fe96c1fce53c70e881916",
+      "expected": "Another pair's open, chat. I'll take a closer look at this one.",
+      "transcript": "Another pair is open chat. I'll take a closer look at this one",
+      "similarity": 0.989,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.892,
-        "rms": 0.08211,
-        "peak": 0.34117,
+        "duration": 3.553,
+        "rms": 0.07926,
+        "peak": 0.39364,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.232,
-        "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.113,
+        "sha256": "3c8e9487a87cbfc2126aff7cf01959b4514964a8e11fe96c1fce53c70e881916"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.84,
-          "text": " No main character. We're not writing its storyline for it."
+          "end": 3.3200000000000003,
+          "text": " Another pair is open chat. I'll take a closer look at this one"
         }
       ],
       "issues": [],
@@ -13924,25 +13909,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_014",
-      "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2",
-      "expected": "У нас смена главного героя. Но сценарий за него писать не будем.",
-      "transcript": "У нас смена главного героя, но сценарий за него писать не будем.",
+      "sha256": "1ca3100e35a3e3183cd51d83eb219192fd48489156d17f179ec620d495455b58",
+      "expected": "Открыли другую пару, чат. Сейчас посмотрю её внимательнее.",
+      "transcript": "Открыли другую пару чат. Сейчас посмотрю ее внимательнее.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.206,
-        "rms": 0.08367,
-        "peak": 0.32478,
+        "duration": 3.709,
+        "rms": 0.09169,
+        "peak": 0.39783,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.166,
-        "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.069,
+        "sha256": "1ca3100e35a3e3183cd51d83eb219192fd48489156d17f179ec620d495455b58"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.12,
-          "text": " У нас смена главного героя, но сценарий за него писать не будем."
+          "end": 3.72,
+          "text": " Открыли другую пару чат. Сейчас посмотрю ее внимательнее."
         }
       ],
       "issues": [],
@@ -13950,25 +13935,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_015",
-      "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae",
-      "expected": "Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
-      "transcript": "к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт",
-      "similarity": 0.958,
+      "sha256": "ccb7eb5830b062265a33e524ad97b9acfdccc29af041ca8e7588656774d45aca",
+      "expected": "Следующий график на экране. Проверяю условия для входа.",
+      "transcript": "Следующий график на экране. Проверяю условия для входа.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.859,
-        "rms": 0.0882,
-        "peak": 0.43572,
+        "duration": 3.814,
+        "rms": 0.08978,
+        "peak": 0.34796,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.119,
-        "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.114,
+        "sha256": "ccb7eb5830b062265a33e524ad97b9acfdccc29af041ca8e7588656774d45aca"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.68,
-          "text": " к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт"
+          "end": 2.0,
+          "text": " Следующий график на экране."
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Проверяю условия для входа."
         }
       ],
       "issues": [],
@@ -13976,25 +13966,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_015",
-      "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f",
-      "expected": "Let's check this pair. No instant crush; I've learned to look twice.",
-      "transcript": "Let's check this pair. No instant crush. I've learned to look twice.",
+      "sha256": "e6840641987717af340a54793dccce9449ca1a6b488d1e27696132c6006fe512",
+      "expected": "Next chart on screen. Checking its entry conditions now.",
+      "transcript": "Next chart on screen checking its entry conditions now",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.676,
-        "rms": 0.07971,
-        "peak": 0.43224,
+        "duration": 3.814,
+        "rms": 0.08365,
+        "peak": 0.38137,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.156,
-        "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.114,
+        "sha256": "e6840641987717af340a54793dccce9449ca1a6b488d1e27696132c6006fe512"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.64,
-          "text": " Let's check this pair. No instant crush. I've learned to look twice."
+          "end": 3.48,
+          "text": " Next chart on screen checking its entry conditions now"
         }
       ],
       "issues": [],
@@ -14002,25 +13992,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_016",
-      "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d",
-      "expected": "Page turned. This chart gets its own attention.",
-      "transcript": "Page turned. This chart gets its own attention.",
-      "similarity": 1.0,
+      "sha256": "448122a2d5124a348c57b5541d791c1b907ba8dd48532ee5a0ae69d3274a4254",
+      "expected": "Continuing the search. I'll check direction and the entry point on this pair.",
+      "transcript": "Continuing the search, I'll check direction in the entry point on this pair.",
+      "similarity": 0.976,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.187,
-        "rms": 0.07506,
-        "peak": 0.45123,
+        "duration": 4.284,
+        "rms": 0.07757,
+        "peak": 0.38856,
         "clipped_fraction": 0.0,
         "leading_silence": 0.16,
-        "trailing_silence": 0.187,
-        "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d"
+        "trailing_silence": 0.204,
+        "sha256": "448122a2d5124a348c57b5541d791c1b907ba8dd48532ee5a0ae69d3274a4254"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.0,
-          "text": " Page turned. This chart gets its own attention."
+          "end": 4.16,
+          "text": " Continuing the search, I'll check direction in the entry point on this pair."
         }
       ],
       "issues": [],
@@ -14028,30 +14018,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_016",
-      "sha256": "f05b07d5129b9a07916507d0d282e11dbc1078b113f544de33d031e36746d2cc",
-      "expected": "Так, перевернули страницу. Новому графику — отдельное внимание.",
-      "transcript": "Так, перевернули страницу. Новому графику, отдельное внимание.",
+      "sha256": "78cd180ca1bc4ce0f5d3be3168d11487196000f4d8626018b357fb854bb5fccb",
+      "expected": "Ищем дальше. На этой паре проверю направление и точку входа.",
+      "transcript": "Ищем дальше. На этой паре проверю направление и точку входа.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.937,
-        "rms": 0.0859,
-        "peak": 0.37069,
+        "duration": 4.362,
+        "rms": 0.08765,
+        "peak": 0.31391,
         "clipped_fraction": 0.0,
         "leading_silence": 0.22,
-        "trailing_silence": 0.117,
-        "sha256": "f05b07d5129b9a07916507d0d282e11dbc1078b113f544de33d031e36746d2cc"
+        "trailing_silence": 0.102,
+        "sha256": "78cd180ca1bc4ce0f5d3be3168d11487196000f4d8626018b357fb854bb5fccb"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.32,
-          "text": " Так, перевернули страницу."
+          "end": 1.4000000000000001,
+          "text": " Ищем дальше."
         },
         {
-          "start": 2.32,
-          "end": 4.88,
-          "text": " Новому графику, отдельное внимание."
+          "start": 1.4000000000000001,
+          "end": 4.4,
+          "text": " На этой паре проверю направление и точку входа."
         }
       ],
       "issues": [],
@@ -14059,25 +14049,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_017",
-      "sha256": "364dc63e0cd12755c7cab278f0d91111dd02d6d9db6339dfebb09ee1ee185509",
-      "expected": "Другая пара, тот же принцип: сначала понять, потом решать.",
-      "transcript": "Другая пара. Тот же принцип. Сначала понять, потом решать.",
-      "similarity": 1.0,
+      "sha256": "0dd15ee46b91064746d73d84a2a9c0a2117d357d15c2be4c6558e2e3b48bbe33",
+      "expected": "Переключились сюда. Сначала посмотрю, какой сценарий здесь уместен.",
+      "transcript": "Ну, переключились сюда. Посначала посмотрю, какой сценарий здесь уместен.",
+      "similarity": 0.966,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.08236,
-        "peak": 0.34438,
+        "duration": 4.545,
+        "rms": 0.07841,
+        "peak": 0.34903,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.132,
-        "sha256": "364dc63e0cd12755c7cab278f0d91111dd02d6d9db6339dfebb09ee1ee185509"
+        "trailing_silence": 0.045,
+        "sha256": "0dd15ee46b91064746d73d84a2a9c0a2117d357d15c2be4c6558e2e3b48bbe33"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.12,
-          "text": " Другая пара. Тот же принцип. Сначала понять, потом решать."
+          "end": 1.7,
+          "text": " Ну, переключились сюда."
+        },
+        {
+          "start": 1.7,
+          "end": 4.7,
+          "text": " Посначала посмотрю, какой сценарий здесь уместен."
         }
       ],
       "issues": [],
@@ -14085,25 +14080,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_017",
-      "sha256": "3c3fa1b3ec0100ce35bfdf074c6144fe64f8fe7db1e8bc1cde884af45cf3c184",
-      "expected": "Different pair, same principle: understand first, decide second.",
-      "transcript": "Different pair, same principle. Understand first, decide second.",
+      "sha256": "852317ec47799b6d9f6640b469c8f6aef09a0cd5cf0e3af53be0162508d95471",
+      "expected": "We've switched to this chart. First, I'll see which setup fits it.",
+      "transcript": "We've switched to this chart. First, I'll see which setup fits it.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.172,
-        "rms": 0.07858,
-        "peak": 0.45812,
+        "duration": 3.971,
+        "rms": 0.06891,
+        "peak": 0.39679,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.232,
-        "sha256": "3c3fa1b3ec0100ce35bfdf074c6144fe64f8fe7db1e8bc1cde884af45cf3c184"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.171,
+        "sha256": "852317ec47799b6d9f6640b469c8f6aef09a0cd5cf0e3af53be0162508d95471"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Different pair, same principle. Understand first, decide second."
+          "end": 4.0,
+          "text": " We've switched to this chart. First, I'll see which setup fits it."
         }
       ],
       "issues": [],
@@ -14111,53 +14106,56 @@
     },
     {
       "id": "lively3_ru_narrate_pair_018",
-      "sha256": "1bd5570d3bf2558a70f0c631eb8754e96be1258d2699a8500d15afa40d65265e",
-      "expected": "Сменили локацию. Старые ожидания в новый график не импортируем.",
-      "transcript": "Сменили локацию. Старое ожидание у нового графика не импортируем.",
-      "similarity": 0.889,
+      "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081",
+      "expected": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+      "transcript": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.598,
-        "rms": 0.09316,
-        "peak": 0.36575,
+        "duration": 5.721,
+        "rms": 0.07979,
+        "peak": 0.33847,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.098,
-        "sha256": "1bd5570d3bf2558a70f0c631eb8754e96be1258d2699a8500d15afa40d65265e"
+        "trailing_silence": 0.101,
+        "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.48,
-          "text": " Сменили локацию. Старое ожидание у нового графика не импортируем."
+          "end": 2.0,
+          "text": " Переключились на следующую пару."
+        },
+        {
+          "start": 2.0,
+          "end": 6.0,
+          "text": " Сейчас посмотрим, есть ли здесь подходящий момент для входа."
         }
       ],
-      "issues": [
-        "transcript_mismatch"
-      ],
+      "issues": [],
       "auditory_verified": false
     },
     {
       "id": "lively3_en_narrate_pair_018",
-      "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca",
-      "expected": "New location. Old expectations aren't coming through customs.",
-      "transcript": "New location. Old expectations aren't coming through customs.",
+      "sha256": "c8d16073a0e41868fc144a7c979505989e03e5612ac8d36d044a187361fdd27d",
+      "expected": "We've switched pairs. Let me check whether there's a suitable entry here.",
+      "transcript": "We've switched pairs. Let me check whether there's a suitable entry here.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.07108,
-        "peak": 0.363,
+        "duration": 4.336,
+        "rms": 0.07689,
+        "peak": 0.39839,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.121,
-        "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.176,
+        "sha256": "c8d16073a0e41868fc144a7c979505989e03e5612ac8d36d044a187361fdd27d"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " New location. Old expectations aren't coming through customs."
+          "end": 4.24,
+          "text": " We've switched pairs. Let me check whether there's a suitable entry here."
         }
       ],
       "issues": [],
@@ -14165,25 +14163,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_019",
-      "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df",
-      "expected": "Следующая остановка — этот график. Экскурсия начинается с деталей.",
-      "transcript": "Следующая остановка. Этот график. Экскурсия начинается с деталей.",
+      "sha256": "747ef01aa055768acdb5f4611dd63ca1bf09435a60d5a12c57defdd8ef2e9b0d",
+      "expected": "Разберём ещё одну пару. Хочу посмотреть движение целиком.",
+      "transcript": "Разберём ещё одну пару. Хочу посмотреть движение целиком.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.075,
-        "rms": 0.10629,
-        "peak": 0.85933,
+        "duration": 3.945,
+        "rms": 0.07558,
+        "peak": 0.34658,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.135,
-        "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.085,
+        "sha256": "747ef01aa055768acdb5f4611dd63ca1bf09435a60d5a12c57defdd8ef2e9b0d"
       },
       "segments": [
         {
           "start": 0.0,
+          "end": 2.0,
+          "text": " Разберём ещё одну пару."
+        },
+        {
+          "start": 2.0,
           "end": 4.0,
-          "text": " Следующая остановка. Этот график. Экскурсия начинается с деталей."
+          "text": " Хочу посмотреть движение целиком."
         }
       ],
       "issues": [],
@@ -14191,25 +14194,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_019",
-      "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340",
-      "expected": "Next stop: this chart. The tour starts with the details.",
-      "transcript": "Next stop, this chart. The tour starts with the details.",
+      "sha256": "d59a282002b4c2d0fd1717e2b0a074a8de7e9424cf01c1aef595b863a889350c",
+      "expected": "Let's work through another pair. I want to see the full movement.",
+      "transcript": "Let's work through another pair. I want to see the full movement.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.07793,
-        "peak": 0.79121,
+        "duration": 3.814,
+        "rms": 0.08253,
+        "peak": 0.50774,
         "clipped_fraction": 0.0,
         "leading_silence": 0.16,
-        "trailing_silence": 0.152,
-        "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340"
+        "trailing_silence": 0.314,
+        "sha256": "d59a282002b4c2d0fd1717e2b0a074a8de7e9424cf01c1aef595b863a889350c"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " Next stop, this chart. The tour starts with the details."
+          "end": 3.6,
+          "text": " Let's work through another pair. I want to see the full movement."
         }
       ],
       "issues": [],
@@ -14217,30 +14220,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_020",
-      "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2",
-      "expected": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
-      "transcript": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+      "sha256": "33e33666caf2df08bc3d101df4e1cba95f2aabc8dafbda6ca8df849eb46e3ea6",
+      "expected": "Новую пару открыли. Проверю её так же внимательно.",
+      "transcript": "Новую пару открыли. Проверю её также внимательно.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.07651,
-        "peak": 0.31525,
+        "duration": 3.5,
+        "rms": 0.08616,
+        "peak": 0.33088,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.142,
-        "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.08,
+        "sha256": "33e33666caf2df08bc3d101df4e1cba95f2aabc8dafbda6ca8df849eb46e3ea6"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Новая пара появилась."
-        },
-        {
-          "start": 2.0,
-          "end": 5.0,
-          "text": " Сейчас познакомимся без обещаний и красивых титулов."
+          "end": 3.5,
+          "text": " Новую пару открыли. Проверю её также внимательно."
         }
       ],
       "issues": [],
@@ -14248,25 +14246,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_020",
-      "sha256": "94f0253c6cf4343969999191f92bd027520f4eba1279d12c68a1f2078d304821",
-      "expected": "New pair's here. Let's meet it without promises or fancy titles.",
-      "transcript": "New pairs here! Let's meet it without promises or fancy titles!",
+      "sha256": "bdd0b1940fd28be8bd0f237a41a6420ea49b8b9f2d20cdae7bfa090488951488",
+      "expected": "The new pair is open. I'll give it the same careful look.",
+      "transcript": "The new pair is open. I'll give it the same careful look.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.08421,
-        "peak": 0.40344,
+        "duration": 3.553,
+        "rms": 0.08287,
+        "peak": 0.44909,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.292,
-        "sha256": "94f0253c6cf4343969999191f92bd027520f4eba1279d12c68a1f2078d304821"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.213,
+        "sha256": "bdd0b1940fd28be8bd0f237a41a6420ea49b8b9f2d20cdae7bfa090488951488"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " New pairs here! Let's meet it without promises or fancy titles!"
+          "end": 3.44,
+          "text": " The new pair is open. I'll give it the same careful look."
         }
       ],
       "issues": [],
@@ -14274,30 +14272,30 @@
     },
     {
       "id": "lively3_ru_narrate_pair_021",
-      "sha256": "758b155f0c19ac03a7143973f7401222270eacf61f4d6e688bf0b433e04eb567",
-      "expected": "Переключились. Проверю условия заново, память тут не заменяет взгляд.",
-      "transcript": "Переключились? Проверю условия заново. Память тут не заменяет взгляд.",
+      "sha256": "2412aeb65ad2e2148b685643645c18371d86433431b756eb37075578e10932ad",
+      "expected": "Поменяли актив. Сверяю интервалы, чтобы видеть общую картину.",
+      "transcript": "Поменяли актив. Сверяю интервалы, чтобы видеть общую картину.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.598,
-        "rms": 0.08712,
-        "peak": 0.41086,
+        "duration": 4.545,
+        "rms": 0.08585,
+        "peak": 0.38704,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.098,
-        "sha256": "758b155f0c19ac03a7143973f7401222270eacf61f4d6e688bf0b433e04eb567"
+        "trailing_silence": 0.085,
+        "sha256": "2412aeb65ad2e2148b685643645c18371d86433431b756eb37075578e10932ad"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.7600000000000002,
-          "text": " Переключились? Проверю условия заново."
+          "end": 2.0,
+          "text": " Поменяли актив."
         },
         {
-          "start": 2.7600000000000002,
-          "end": 4.76,
-          "text": " Память тут не заменяет взгляд."
+          "start": 2.0,
+          "end": 4.5,
+          "text": " Сверяю интервалы, чтобы видеть общую картину."
         }
       ],
       "issues": [],
@@ -14305,25 +14303,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_021",
-      "sha256": "691ad0b183807e0888b017cedb17bc583c488eb542973b2e93b9fe5e81a57061",
-      "expected": "Switched over. Checking again; memory doesn't replace observation.",
-      "transcript": "Switched over checking again memory doesn't replace observation",
+      "sha256": "ca210f3c62b1821bc79d978ec471ab29c80cda23c5d93605b597a2c1efe256e0",
+      "expected": "We've changed assets. Comparing timeframes to get the full picture.",
+      "transcript": "We've changed assets, comparing timeframes to get the full picture.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
         "duration": 4.415,
-        "rms": 0.08864,
-        "peak": 0.65335,
+        "rms": 0.07968,
+        "peak": 0.55726,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
         "trailing_silence": 0.235,
-        "sha256": "691ad0b183807e0888b017cedb17bc583c488eb542973b2e93b9fe5e81a57061"
+        "sha256": "ca210f3c62b1821bc79d978ec471ab29c80cda23c5d93605b597a2c1efe256e0"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.08,
-          "text": " Switched over checking again memory doesn't replace observation"
+          "end": 4.24,
+          "text": " We've changed assets, comparing timeframes to get the full picture."
         }
       ],
       "issues": [],
@@ -14331,30 +14329,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_022",
-      "sha256": "9e0413bf694769e84b594a2d55c6941c654e1e6c7064b2225016436aeeefa761",
-      "expected": "Другой график, новый вайб. Дайте секунду понять, что тут вообще.",
-      "transcript": "Другой график! Новый вайп! Дайте секунду понять, что тут вообще!",
+      "sha256": "02526c182028b467078fdd926c81f1ed600a4254e976779f4fbaa476217a96f9",
+      "expected": "Идём к следующей паре. Посмотрим, есть ли здесь подтверждение.",
+      "transcript": "Идем к следующей поре. Посмотрим, есть ли здесь подтверждение.",
       "similarity": 0.98,
       "metrics": {
         "decode_ok": true,
         "duration": 4.023,
-        "rms": 0.08269,
-        "peak": 0.34124,
+        "rms": 0.08871,
+        "peak": 0.41407,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.123,
-        "sha256": "9e0413bf694769e84b594a2d55c6941c654e1e6c7064b2225016436aeeefa761"
+        "trailing_silence": 0.083,
+        "sha256": "02526c182028b467078fdd926c81f1ed600a4254e976779f4fbaa476217a96f9"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 1.86,
-          "text": " Другой график! Новый вайп!"
-        },
-        {
-          "start": 1.86,
           "end": 4.0,
-          "text": " Дайте секунду понять, что тут вообще!"
+          "text": " Идем к следующей поре. Посмотрим, есть ли здесь подтверждение."
         }
       ],
       "issues": [],
@@ -14362,25 +14355,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_022",
-      "sha256": "cef32df753778a40530e7361d241ce9ce4f88cc0501f4cf5fd7cb5f16d3c1b39",
-      "expected": "Different chart, different vibe. Give me a second to work it out.",
-      "transcript": "Different chart, different vibe. Give me a second to work it out.",
+      "sha256": "b583b613eb1cf53cb36bb9b61021908a3fe4797dfc25effad0ebca56d1dac7b1",
+      "expected": "On to the next pair. Let's check for confirmation here.",
+      "transcript": "On to the next pair. Let's check for confirmation here.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.945,
-        "rms": 0.08397,
-        "peak": 0.58457,
+        "duration": 4.101,
+        "rms": 0.07494,
+        "peak": 0.49406,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.164,
-        "sha256": "cef32df753778a40530e7361d241ce9ce4f88cc0501f4cf5fd7cb5f16d3c1b39"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.261,
+        "sha256": "b583b613eb1cf53cb36bb9b61021908a3fe4797dfc25effad0ebca56d1dac7b1"
       },
       "segments": [
         {
           "start": 0.0,
           "end": 4.0,
-          "text": " Different chart, different vibe. Give me a second to work it out."
+          "text": " On to the next pair. Let's check for confirmation here."
         }
       ],
       "issues": [],
@@ -14388,30 +14381,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_023",
-      "sha256": "5815d880a1872135b6293f84d6cd9e11762e31c54b3986ec3bddc21f5a93dbcd",
-      "expected": "На экране уже новая пара. Дайте мне короткое знакомство с характером.",
-      "transcript": "На экране уже новая пара. Дайте мне короткое знакомство с характером.",
+      "sha256": "99ea0f5d042b2227d399fac22fcf0523f7f055b2163d65f56c64cd7f43954319",
+      "expected": "Здесь начинаем новый разбор. Сейчас проверю необходимые условия.",
+      "transcript": "Здесь начинаем новый разбор. Сейчас проверю необходимые условия.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.467,
-        "rms": 0.07799,
-        "peak": 0.31763,
+        "duration": 4.232,
+        "rms": 0.08861,
+        "peak": 0.37916,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.107,
-        "sha256": "5815d880a1872135b6293f84d6cd9e11762e31c54b3986ec3bddc21f5a93dbcd"
+        "trailing_silence": 0.112,
+        "sha256": "99ea0f5d042b2227d399fac22fcf0523f7f055b2163d65f56c64cd7f43954319"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " На экране уже новая пара."
-        },
-        {
-          "start": 2.0,
-          "end": 4.5,
-          "text": " Дайте мне короткое знакомство с характером."
+          "end": 4.0,
+          "text": " Здесь начинаем новый разбор. Сейчас проверю необходимые условия."
         }
       ],
       "issues": [],
@@ -14419,25 +14407,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_023",
-      "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316",
-      "expected": "New pair on screen. Give me a moment to meet its personality.",
-      "transcript": "New pair on screen. Give me a moment to meet its personality.",
+      "sha256": "5d8cdd2576d4cc246de6e6971b5098822d2e7dc5f7a8ae3730e56272e2699001",
+      "expected": "Starting a fresh analysis here. I'll check the conditions we need.",
+      "transcript": "Starting a fresh analysis here, I'll check the conditions we need.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.814,
-        "rms": 0.08047,
-        "peak": 0.34131,
+        "duration": 4.075,
+        "rms": 0.09197,
+        "peak": 0.60226,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.114,
-        "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316"
+        "trailing_silence": 0.275,
+        "sha256": "5d8cdd2576d4cc246de6e6971b5098822d2e7dc5f7a8ae3730e56272e2699001"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.8000000000000003,
-          "text": " New pair on screen. Give me a moment to meet its personality."
+          "end": 4.0,
+          "text": " Starting a fresh analysis here, I'll check the conditions we need."
         }
       ],
       "issues": [],
@@ -14445,25 +14433,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_024",
-      "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e",
-      "expected": "New picture. Closing the previous chart's mental tab.",
-      "transcript": "New picture. Closing the previous chart's mental tab.",
+      "sha256": "6785b39b9cdb19936211d8cf0a5f1cc4350127e0efd04d37f7385a5953fcb506",
+      "expected": "Let's look at a different pair. We'll decide after checking it.",
+      "transcript": "Let's look at a different pair. We'll decide after checking it.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.023,
-        "rms": 0.07659,
-        "peak": 0.4051,
+        "duration": 3.579,
+        "rms": 0.078,
+        "peak": 0.4015,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.223,
-        "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.099,
+        "sha256": "6785b39b9cdb19936211d8cf0a5f1cc4350127e0efd04d37f7385a5953fcb506"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " New picture. Closing the previous chart's mental tab."
+          "end": 3.6,
+          "text": " Let's look at a different pair. We'll decide after checking it."
         }
       ],
       "issues": [],
@@ -14471,30 +14459,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_024",
-      "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036",
-      "expected": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
-      "transcript": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
-      "similarity": 1.0,
+      "sha256": "b80c0ddd85f3b761df5a913f2bab12eea49d24adbee1d1ddbed2962a5d39770e",
+      "expected": "Посмотрим другую пару. Решение примем после разбора.",
+      "transcript": "Космотрим другую пару. Решение примем после разбора.",
+      "similarity": 0.977,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.989,
-        "rms": 0.08723,
-        "peak": 0.32156,
+        "duration": 4.075,
+        "rms": 0.08793,
+        "peak": 0.37133,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.109,
-        "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036"
+        "leading_silence": 0.26,
+        "trailing_silence": 0.135,
+        "sha256": "b80c0ddd85f3b761df5a913f2bab12eea49d24adbee1d1ddbed2962a5d39770e"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 1.6,
-          "text": " Меняем картинку."
-        },
-        {
-          "start": 1.6,
-          "end": 4.8,
-          "text": " Сюжет прошлого графика закрываем вместе с вкладкой внимания."
+          "end": 4.0,
+          "text": " Космотрим другую пару. Решение примем после разбора."
         }
       ],
       "issues": [],
@@ -14502,25 +14485,25 @@
     },
     {
       "id": "lively3_ru_narrate_pair_025",
-      "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749",
-      "expected": "Пошли смотреть дальше. Новая пара ещё не повод говорить громче.",
-      "transcript": "Вошли смотреть дальше! Новая пара еще не повод говорить громче!",
-      "similarity": 0.981,
+      "sha256": "03aec05ab592c49e93e02a09a135de95bded630758f9b8e28bd578683fd53909",
+      "expected": "Так, здесь уже другой график. Дайте мне момент на анализ.",
+      "transcript": "Так, здесь уже другой график. Дайте мне момент на анализ.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.545,
-        "rms": 0.08384,
-        "peak": 0.33553,
+        "duration": 4.101,
+        "rms": 0.08795,
+        "peak": 0.35174,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.085,
-        "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.101,
+        "sha256": "03aec05ab592c49e93e02a09a135de95bded630758f9b8e28bd578683fd53909"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.48,
-          "text": " Вошли смотреть дальше! Новая пара еще не повод говорить громче!"
+          "end": 4.0,
+          "text": " Так, здесь уже другой график. Дайте мне момент на анализ."
         }
       ],
       "issues": [],
@@ -14528,25 +14511,25 @@
     },
     {
       "id": "lively3_en_narrate_pair_025",
-      "sha256": "aec674472581e70fcaaed0fad40360e8142f9a557ba99066fc86ed40f4e418eb",
-      "expected": "Let's look further. A new pair isn't a reason to raise my voice.",
-      "transcript": "Let's look further. A new pair isn't a reason to raise my voice.",
-      "similarity": 1.0,
+      "sha256": "1fe3d7c26d93487e77ebe122cfa3c6c02c957ecade972790c6edb951058e7743",
+      "expected": "Right, this is the next chart. Give me a moment to analyse it.",
+      "transcript": "Right. This is the next chart. Give me a moment to analyze it.",
+      "similarity": 0.979,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.07569,
-        "peak": 0.36802,
+        "duration": 4.101,
+        "rms": 0.07715,
+        "peak": 0.40485,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.232,
-        "sha256": "aec674472581e70fcaaed0fad40360e8142f9a557ba99066fc86ed40f4e418eb"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.241,
+        "sha256": "1fe3d7c26d93487e77ebe122cfa3c6c02c957ecade972790c6edb951058e7743"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " Let's look further. A new pair isn't a reason to raise my voice."
+          "end": 4.0,
+          "text": " Right. This is the next chart. Give me a moment to analyze it."
         }
       ],
       "issues": [],
@@ -17274,25 +17257,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_006",
-      "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb",
-      "expected": "Thanks for following! You may now officially get used to my commentary.",
-      "transcript": "Thanks for following. You may now officially get used to my commentary.",
+      "sha256": "5b70eb422575e95cdda160f504ec0faf80da0ca16102c8fa14cd0766553476ef",
+      "expected": "Thanks for following! I'm happy you're staying with us. Welcome to the stream!",
+      "transcript": "Thanks for following. I'm happy you're staying with us. Welcome to the stream",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.08422,
-        "peak": 0.35868,
+        "duration": 4.362,
+        "rms": 0.08646,
+        "peak": 0.51845,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.121,
-        "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.102,
+        "sha256": "5b70eb422575e95cdda160f504ec0faf80da0ca16102c8fa14cd0766553476ef"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.84,
-          "text": " Thanks for following. You may now officially get used to my commentary."
+          "end": 4.04,
+          "text": " Thanks for following. I'm happy you're staying with us. Welcome to the stream"
         }
       ],
       "issues": [],
@@ -17300,25 +17283,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_006",
-      "sha256": "2b890451f7b290913db4540dd34676eab0627383b9f59cc9f0c46c2ef0c15a81",
-      "expected": "Спасибо за подписку! Теперь официально можно привыкать к моим комментариям.",
-      "transcript": "Спасибо за подписку! Теперь официально можно привыкать к моим комментариям!",
-      "similarity": 1.0,
+      "sha256": "1fa822e285105002f9e62657311046caa3510ca6b9f66bb9cdcff58dc1007e71",
+      "expected": "Спасибо за подписку! Рада, что остаёшься с нами. Добро пожаловать на эфир!",
+      "transcript": "Спасибо за подписку! Раду, что остаешься с нами! Добро пожаловать на эфир!",
+      "similarity": 0.983,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.807,
-        "rms": 0.08919,
-        "peak": 0.43624,
+        "duration": 4.65,
+        "rms": 0.08943,
+        "peak": 0.47709,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.107,
-        "sha256": "2b890451f7b290913db4540dd34676eab0627383b9f59cc9f0c46c2ef0c15a81"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.13,
+        "sha256": "1fa822e285105002f9e62657311046caa3510ca6b9f66bb9cdcff58dc1007e71"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.8,
-          "text": " Спасибо за подписку! Теперь официально можно привыкать к моим комментариям!"
+          "end": 4.5200000000000005,
+          "text": " Спасибо за подписку! Раду, что остаешься с нами! Добро пожаловать на эфир!"
         }
       ],
       "issues": [],
@@ -17326,25 +17309,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_007",
-      "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d",
-      "expected": "A follow! Welcome to the remarkably patient listeners' club.",
-      "transcript": "A follow! Welcome to the remarkably patient listeners club!",
+      "sha256": "2adbeac9dce9bf15e9ef154d73c221ad3ac66d155f8bdd3b2ae89eaaa40c293e",
+      "expected": "Oh, a new follower! Thanks for the support. So glad to have you here!",
+      "transcript": "Oh, a new follower! Thanks for the support! So glad to have you here!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.08547,
-        "peak": 0.5098,
+        "duration": 4.65,
+        "rms": 0.08115,
+        "peak": 0.43423,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.181,
-        "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d"
+        "trailing_silence": 0.13,
+        "sha256": "2adbeac9dce9bf15e9ef154d73c221ad3ac66d155f8bdd3b2ae89eaaa40c293e"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.0,
-          "text": " A follow! Welcome to the remarkably patient listeners club!"
+          "end": 4.48,
+          "text": " Oh, a new follower! Thanks for the support! So glad to have you here!"
         }
       ],
       "issues": [],
@@ -17352,25 +17335,30 @@
     },
     {
       "id": "lively3_ru_chat_reaction_007",
-      "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382",
-      "expected": "О, подписка! Добро пожаловать в клуб терпеливых слушателей.",
-      "transcript": "О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!",
+      "sha256": "7d0360e703a9379b9bda806a7e4fa5aca6f2c5092ef24c2270cd0a802af005b1",
+      "expected": "О, новая подписка! Спасибо за поддержку, очень рада тебя видеть!",
+      "transcript": "О, новая подписка! Спасибо за поддержку! Очень рада тебя видеть!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.415,
-        "rms": 0.07893,
-        "peak": 0.35298,
+        "duration": 4.937,
+        "rms": 0.07602,
+        "peak": 0.36778,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.075,
-        "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382"
+        "trailing_silence": 0.097,
+        "sha256": "7d0360e703a9379b9bda806a7e4fa5aca6f2c5092ef24c2270cd0a802af005b1"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.32,
-          "text": " О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!"
+          "end": 2.0,
+          "text": " О, новая подписка!"
+        },
+        {
+          "start": 2.0,
+          "end": 5.0,
+          "text": " Спасибо за поддержку! Очень рада тебя видеть!"
         }
       ],
       "issues": [],
@@ -17378,25 +17366,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_008",
-      "sha256": "fb839c99a6283e51e7540407743537a4e2cb0a1fbcb1506d00a93b892b627358",
-      "expected": "Спасибо, что остаёшься! Обещаю характер, расписание идеальности не обещаю.",
-      "transcript": "Спасибо, что остаешься. Обещаю характер. Расписание идеальности не обещаю.",
+      "sha256": "2eb490cdf2c652d9e5815522fbd4d091b0ae65429d252b1049422d78ae055200",
+      "expected": "Спасибо, что подписался! Устраивайся поудобнее, будем разбирать графики вместе.",
+      "transcript": "Спасибо, что подписался. Устраивайся поудобнее. Будем разбирать графики вместе.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.172,
-        "rms": 0.08964,
-        "peak": 0.44911,
+        "duration": 5.46,
+        "rms": 0.08407,
+        "peak": 0.44048,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.112,
-        "sha256": "fb839c99a6283e51e7540407743537a4e2cb0a1fbcb1506d00a93b892b627358"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.12,
+        "sha256": "2eb490cdf2c652d9e5815522fbd4d091b0ae65429d252b1049422d78ae055200"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Спасибо, что остаешься. Обещаю характер. Расписание идеальности не обещаю."
+          "end": 5.4,
+          "text": " Спасибо, что подписался. Устраивайся поудобнее. Будем разбирать графики вместе."
         }
       ],
       "issues": [],
@@ -17404,25 +17392,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_008",
-      "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74",
-      "expected": "Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
-      "transcript": "Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain.",
-      "similarity": 0.993,
+      "sha256": "f223d620b9bee0308ca67b3273506d38d833548601e0e713964d4e8abd4a6a10",
+      "expected": "Thank you for following! Get comfortable; we'll work through the charts together.",
+      "transcript": "Thank you for following. Get comfortable. We'll work through the charts together.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.46,
-        "rms": 0.08262,
-        "peak": 0.52788,
+        "duration": 4.362,
+        "rms": 0.07513,
+        "peak": 0.40629,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.3,
-        "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.162,
+        "sha256": "f223d620b9bee0308ca67b3273506d38d833548601e0e713964d4e8abd4a6a10"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain."
+          "end": 4.24,
+          "text": " Thank you for following. Get comfortable. We'll work through the charts together."
         }
       ],
       "issues": [],
@@ -17430,25 +17418,35 @@
     },
     {
       "id": "lively3_ru_chat_reaction_009",
-      "sha256": "a40e5cfebf944b2c97d4c75a71a704d70375633f1f9f263a4b124d4861fcea19",
-      "expected": "Плюс один в компании. Спасибо за подписку, располагайся!",
-      "transcript": "Плюс один в компании. Спасибо за подписку, располагайся.",
-      "similarity": 1.0,
+      "sha256": "03d5b9bb4d3064ae936502a097d1c1e486d5c8edf0255cde7c2c972e27b2e365",
+      "expected": "Как приятно, спасибо за подписку! Присоединяйся к разговору, всегда рада вопросам.",
+      "transcript": "А как приятно! Спасибо за подписку! Присоединяйся к разговору! Всегда рада вопросам!",
+      "similarity": 0.993,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.814,
-        "rms": 0.0685,
-        "peak": 0.3438,
+        "duration": 6.295,
+        "rms": 0.08688,
+        "peak": 0.3818,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.134,
-        "sha256": "a40e5cfebf944b2c97d4c75a71a704d70375633f1f9f263a4b124d4861fcea19"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.075,
+        "sha256": "03d5b9bb4d3064ae936502a097d1c1e486d5c8edf0255cde7c2c972e27b2e365"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.72,
-          "text": " Плюс один в компании. Спасибо за подписку, располагайся."
+          "end": 3.0,
+          "text": " А как приятно! Спасибо за подписку!"
+        },
+        {
+          "start": 3.0,
+          "end": 4.86,
+          "text": " Присоединяйся к разговору!"
+        },
+        {
+          "start": 4.86,
+          "end": 6.36,
+          "text": " Всегда рада вопросам!"
         }
       ],
       "issues": [],
@@ -17456,25 +17454,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_009",
-      "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13",
-      "expected": "One more in the crew. Thanks for the follow; make yourself comfortable!",
-      "transcript": "One more in the crew. Thanks for the follow! Make yourself comfortable!",
+      "sha256": "23f22d8a4d9d0ae1b860631cc0d1e9cb87122f05389929f5627f1efb5695f400",
+      "expected": "That's lovely, thanks for following! Join the conversation; questions are always welcome.",
+      "transcript": "That's lovely. Thanks for following. Join the conversation. Questions are always welcome.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.232,
-        "rms": 0.08018,
-        "peak": 0.35638,
+        "duration": 5.381,
+        "rms": 0.08431,
+        "peak": 0.3895,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.112,
-        "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13"
+        "trailing_silence": 0.161,
+        "sha256": "23f22d8a4d9d0ae1b860631cc0d1e9cb87122f05389929f5627f1efb5695f400"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.16,
-          "text": " One more in the crew. Thanks for the follow! Make yourself comfortable!"
+          "end": 5.2,
+          "text": " That's lovely. Thanks for following. Join the conversation. Questions are always welcome."
         }
       ],
       "issues": [],
@@ -17482,25 +17480,35 @@
     },
     {
       "id": "lively3_ru_chat_reaction_010",
-      "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb",
-      "expected": "Спасибо за фоллоу! Самооценка ведущей одобрительно кивнула.",
-      "transcript": "Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула.",
-      "similarity": 0.911,
+      "sha256": "dcfd13f7d8de2dbb385b42af8d853c0180ba71bf1299f8b8f454c1b8f4f5bbc8",
+      "expected": "Спасибо за фоллоу! Здорово, что наша компания растёт. Оставайся с нами!",
+      "transcript": "Спасибо за Фоллу! Здорово, что наша компания растет! Оставайся с нами!",
+      "similarity": 0.991,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.101,
-        "rms": 0.09335,
-        "peak": 0.48006,
+        "duration": 5.434,
+        "rms": 0.08527,
+        "peak": 0.61913,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.101,
-        "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb"
+        "trailing_silence": 0.134,
+        "sha256": "dcfd13f7d8de2dbb385b42af8d853c0180ba71bf1299f8b8f454c1b8f4f5bbc8"
       },
       "segments": [
         {
           "start": 0.0,
+          "end": 2.0,
+          "text": " Спасибо за Фоллу!"
+        },
+        {
+          "start": 2.0,
           "end": 4.0,
-          "text": " Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула."
+          "text": " Здорово, что наша компания растет!"
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Оставайся с нами!"
         }
       ],
       "issues": [],
@@ -17508,25 +17516,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_010",
-      "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a",
-      "expected": "Thanks for the follow! The host's confidence gave an approving nod.",
-      "transcript": "Thanks for the follow the hosts confidence gave an approving nod",
+      "sha256": "027a75717d8d818639ed944fd322e68ee6033ef9627c6ca8903ba7e051cb19f4",
+      "expected": "Thanks for the follow! It's lovely seeing the community grow. Stick around!",
+      "transcript": "Thanks for the follow it's lovely seeing the community grow stick around",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.284,
-        "rms": 0.08106,
-        "peak": 0.47965,
+        "duration": 4.545,
+        "rms": 0.08775,
+        "peak": 0.45172,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.164,
-        "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a"
+        "leading_silence": 0.24,
+        "trailing_silence": 0.125,
+        "sha256": "027a75717d8d818639ed944fd322e68ee6033ef9627c6ca8903ba7e051cb19f4"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.9,
-          "text": " Thanks for the follow the hosts confidence gave an approving nod"
+          "end": 4.16,
+          "text": " Thanks for the follow it's lovely seeing the community grow stick around"
         }
       ],
       "issues": [],
@@ -17534,25 +17542,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_011",
-      "sha256": "b75ecd9e949442973be447542ab78bdf79a05fd0138565b170d4c40cb4b968e6",
-      "expected": "О, подарок! Спасибо, это очень мило. Я даже на секунду потеряла сарказм.",
-      "transcript": "О, подарок! Спасибо! Это очень мило! Я даже на секунду потеряла сарказм!",
+      "sha256": "ebf50649e862fddd7e0d5387b36088610286fff33cbda62941c091b803b28482",
+      "expected": "Спасибо за подарок! Мне очень приятно. Спасибо, что поддерживаешь эфир!",
+      "transcript": "Спасибо за подарок! Мне очень приятно! Спасибо, что поддерживаешь эфир!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 6.034,
-        "rms": 0.08053,
-        "peak": 0.33473,
+        "duration": 5.46,
+        "rms": 0.08163,
+        "peak": 0.39334,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.114,
-        "sha256": "b75ecd9e949442973be447542ab78bdf79a05fd0138565b170d4c40cb4b968e6"
+        "trailing_silence": 0.08,
+        "sha256": "ebf50649e862fddd7e0d5387b36088610286fff33cbda62941c091b803b28482"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 6.0,
-          "text": " О, подарок! Спасибо! Это очень мило! Я даже на секунду потеряла сарказм!"
+          "end": 5.4,
+          "text": " Спасибо за подарок! Мне очень приятно! Спасибо, что поддерживаешь эфир!"
         }
       ],
       "issues": [],
@@ -17560,25 +17568,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_011",
-      "sha256": "ddb6d7cf8a12ccfbaba2517f2485fe214ccd6f80ba6bd1fa5f308e506ed7f204",
-      "expected": "A gift! Thank you, that's lovely. I briefly misplaced my sarcasm.",
-      "transcript": "A gift! Thank you! That's lovely! I briefly misplaced my sarcasm.",
+      "sha256": "101f0b5082d4703c8d5b93ade9f1327656b9cd8788353439e1aff8275989551f",
+      "expected": "Thank you for the gift! I really appreciate it. Thanks for supporting the stream!",
+      "transcript": "Thank you for the gift. I really appreciate it. Thanks for supporting the stream",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.46,
-        "rms": 0.07994,
-        "peak": 0.50966,
+        "duration": 4.728,
+        "rms": 0.08236,
+        "peak": 0.46962,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.22,
-        "sha256": "ddb6d7cf8a12ccfbaba2517f2485fe214ccd6f80ba6bd1fa5f308e506ed7f204"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.228,
+        "sha256": "101f0b5082d4703c8d5b93ade9f1327656b9cd8788353439e1aff8275989551f"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.36,
-          "text": " A gift! Thank you! That's lovely! I briefly misplaced my sarcasm."
+          "end": 4.3,
+          "text": " Thank you for the gift. I really appreciate it. Thanks for supporting the stream"
         }
       ],
       "issues": [],
@@ -17586,25 +17594,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_012",
-      "sha256": "2c6f43debbefa3e31f15bc84d4e80a63cf2f0fa582c4a9ec20824db08c5da426",
-      "expected": "Thanks for the gift! I'm about to look suspiciously pleased.",
-      "transcript": "Thanks for the gift. I'm about to look suspiciously pleased",
+      "sha256": "ba119a0c04fb987dafcda5d3ac324f535c2ee52069c4671b36f7f3c4540fb0f0",
+      "expected": "Oh, what a lovely surprise! Thank you for the gift and your support!",
+      "transcript": "Oh, what a lovely surprise. Thank you for the gift and your support.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.892,
-        "rms": 0.07294,
-        "peak": 0.36746,
+        "duration": 4.415,
+        "rms": 0.072,
+        "peak": 0.34855,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.152,
-        "sha256": "2c6f43debbefa3e31f15bc84d4e80a63cf2f0fa582c4a9ec20824db08c5da426"
+        "leading_silence": 0.22,
+        "trailing_silence": 0.255,
+        "sha256": "ba119a0c04fb987dafcda5d3ac324f535c2ee52069c4671b36f7f3c4540fb0f0"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.3200000000000003,
-          "text": " Thanks for the gift. I'm about to look suspiciously pleased"
+          "end": 4.32,
+          "text": " Oh, what a lovely surprise. Thank you for the gift and your support."
         }
       ],
       "issues": [],
@@ -17612,30 +17620,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_012",
-      "sha256": "f01f6c0c98a6025c1829c5cc7486818a4ddf76bde64d704298df5159427e25ca",
-      "expected": "Спасибо за подарок! Всё, сейчас буду подозрительно довольная.",
-      "transcript": "Спасибо за подарок! Всё, сейчас буду подозрительно довольная!",
-      "similarity": 1.0,
+      "sha256": "9c47e91bac2fccaf13e1f3237be6a2762a09ffb5bc467233d18d11d72d65a6bc",
+      "expected": "О, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!",
+      "transcript": "А, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!",
+      "similarity": 0.981,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.598,
-        "rms": 0.09247,
-        "peak": 0.58117,
+        "duration": 5.251,
+        "rms": 0.0821,
+        "peak": 0.43675,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.098,
-        "sha256": "f01f6c0c98a6025c1829c5cc7486818a4ddf76bde64d704298df5159427e25ca"
+        "trailing_silence": 0.111,
+        "sha256": "9c47e91bac2fccaf13e1f3237be6a2762a09ffb5bc467233d18d11d72d65a6bc"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Спасибо за подарок!"
-        },
-        {
-          "start": 2.0,
-          "end": 4.5,
-          "text": " Всё, сейчас буду подозрительно довольная!"
+          "end": 5.2,
+          "text": " А, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!"
         }
       ],
       "issues": [],
@@ -17643,30 +17646,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_013",
-      "sha256": "819f09444e5e5e5dcf27136252974e4be76cfa56511e2290f040305850f0cb29",
-      "expected": "Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты.",
-      "transcript": "Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты!",
+      "sha256": "80cb176df8c5453e3cf302b2dee3d189e40e71505c955af6d191e5f4797c094f",
+      "expected": "Спасибо большое за подарок! Очень ценю, что вы поддерживаете то, что мы здесь делаем.",
+      "transcript": "Спасибо большое за подарок! Очень ценю, что вы поддерживаете то, что мы здесь делаем!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.728,
-        "rms": 0.09091,
-        "peak": 0.4161,
+        "duration": 5.956,
+        "rms": 0.08876,
+        "peak": 0.44565,
         "clipped_fraction": 0.0,
         "leading_silence": 0.24,
-        "trailing_silence": 0.128,
-        "sha256": "819f09444e5e5e5dcf27136252974e4be76cfa56511e2290f040305850f0cb29"
+        "trailing_silence": 0.096,
+        "sha256": "80cb176df8c5453e3cf302b2dee3d189e40e71505c955af6d191e5f4797c094f"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.22,
-          "text": " Вот это сюрприз, спасибо!"
-        },
-        {
-          "start": 2.22,
-          "end": 4.72,
-          "text": " Люблю неожиданные добрые моменты!"
+          "end": 5.92,
+          "text": " Спасибо большое за подарок! Очень ценю, что вы поддерживаете то, что мы здесь делаем!"
         }
       ],
       "issues": [],
@@ -17674,25 +17672,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_013",
-      "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b",
-      "expected": "What a surprise, thank you! Unexpected kindness is always welcome.",
-      "transcript": "What a surprise! Thank you! Unexpected kindness is always welcome!",
+      "sha256": "51f068c1ea079f6ada8c60196431e2097afd86a0d79fad647ef06ba87e700e18",
+      "expected": "Thank you so much for the gift! I really appreciate you supporting what we're doing here.",
+      "transcript": "Thank you so much for the gift! I really appreciate you supporting what we're doing here.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.07562,
-        "peak": 0.44671,
+        "duration": 4.807,
+        "rms": 0.08661,
+        "peak": 0.40467,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.302,
-        "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.167,
+        "sha256": "51f068c1ea079f6ada8c60196431e2097afd86a0d79fad647ef06ba87e700e18"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.88,
-          "text": " What a surprise! Thank you! Unexpected kindness is always welcome!"
+          "end": 4.8,
+          "text": " Thank you so much for the gift! I really appreciate you supporting what we're doing here."
         }
       ],
       "issues": [],
@@ -17700,30 +17698,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_014",
-      "sha256": "cfcaa31b7ecbb87081afd0ef65048031a94228064388904fd5c0beafb604c7e0",
-      "expected": "Подарок заметила, очень приятно! Спасибо за поддержку эфира.",
-      "transcript": "Подарок заметила? Очень приятно! Спасибо за поддержку эфира!",
-      "similarity": 1.0,
+      "sha256": "f2e872d10d5777cfdee247f5abb33f96965e4a2d5f8fcfc536cb67b36b6c7a70",
+      "expected": "Подарок увидела, спасибо! Это очень приятно. Рада, что ты с нами!",
+      "transcript": "А, да, Року видела. Спасибо. Это очень приятно. Рада, что ты с нами.",
+      "similarity": 0.97,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.728,
-        "rms": 0.08675,
-        "peak": 0.4075,
+        "duration": 5.695,
+        "rms": 0.08391,
+        "peak": 0.40056,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.24,
-        "trailing_silence": 0.088,
-        "sha256": "cfcaa31b7ecbb87081afd0ef65048031a94228064388904fd5c0beafb604c7e0"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.095,
+        "sha256": "f2e872d10d5777cfdee247f5abb33f96965e4a2d5f8fcfc536cb67b36b6c7a70"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.7,
-          "text": " Подарок заметила? Очень приятно!"
-        },
-        {
-          "start": 2.7,
-          "end": 4.7,
-          "text": " Спасибо за поддержку эфира!"
+          "end": 5.6000000000000005,
+          "text": " А, да, Року видела. Спасибо. Это очень приятно. Рада, что ты с нами."
         }
       ],
       "issues": [],
@@ -17731,25 +17724,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_014",
-      "sha256": "f4c51792662c27b884d9c5db171e3f14323920005644659b350046af3399b9fc",
-      "expected": "Gift spotted, genuinely lovely! Thanks for supporting the stream.",
-      "transcript": "Gift-spotted, genuinely lovely, thanks for supporting the stream!",
+      "sha256": "d91276f71ba93c7aa925e68fcfa091ab2e6cd01ecfeb2ca039720d7479b2910c",
+      "expected": "I saw the gift, thank you! That's really kind. I'm glad you're here with us!",
+      "transcript": "I saw the gift! Thank you! That's really kind. I'm glad you're here with us.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.362,
-        "rms": 0.08128,
-        "peak": 0.67246,
+        "duration": 5.042,
+        "rms": 0.0813,
+        "peak": 0.46204,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.162,
-        "sha256": "f4c51792662c27b884d9c5db171e3f14323920005644659b350046af3399b9fc"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.302,
+        "sha256": "d91276f71ba93c7aa925e68fcfa091ab2e6cd01ecfeb2ca039720d7479b2910c"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.3,
-          "text": " Gift-spotted, genuinely lovely, thanks for supporting the stream!"
+          "end": 4.88,
+          "text": " I saw the gift! Thank you! That's really kind. I'm glad you're here with us."
         }
       ],
       "issues": [],
@@ -17757,25 +17750,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_015",
-      "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b",
-      "expected": "Thank you! One kind gesture and my cool-host act has a crack in it.",
-      "transcript": "Thank you one kind gesture and my cool host act has a crack in it",
+      "sha256": "846f4a2a34dd94e329228ea56072dd15ec2fe5eadb5e9bff4bba32cd81da6b46",
+      "expected": "Thank you for such a kind gesture! You've made this moment even nicer.",
+      "transcript": "Thank you for such a kind gesture! You've made this moment even nicer!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.068,
-        "rms": 0.08206,
-        "peak": 0.39203,
+        "duration": 4.232,
+        "rms": 0.0849,
+        "peak": 0.39607,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.188,
-        "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b"
+        "leading_silence": 0.16,
+        "trailing_silence": 0.072,
+        "sha256": "846f4a2a34dd94e329228ea56072dd15ec2fe5eadb5e9bff4bba32cd81da6b46"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.64,
-          "text": " Thank you one kind gesture and my cool host act has a crack in it"
+          "end": 4.2,
+          "text": " Thank you for such a kind gesture! You've made this moment even nicer!"
         }
       ],
       "issues": [],
@@ -17783,25 +17776,30 @@
     },
     {
       "id": "lively3_ru_chat_reaction_015",
-      "sha256": "a01b7b692eb1ffa291e906911623285ddd5de90deec1a479314b9a0aff063c99",
-      "expected": "Спасибо! Такой приятный жест — и моя невозмутимость уже дала трещину.",
-      "transcript": "Спасибо! Такой приятный жест и моя невозмутимость уже дала трещину!",
+      "sha256": "c0395a2d572b315a1cf0af0b3ae491170138c71f496e0c78cca94414ef626a1d",
+      "expected": "Спасибо за такой приятный знак внимания! Ты сделал этот момент ещё теплее.",
+      "transcript": "Спасибо за такой приятный знак внимания! Ты сделал этот момент еще теплее!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.381,
-        "rms": 0.08723,
-        "peak": 0.45746,
+        "duration": 5.068,
+        "rms": 0.09319,
+        "peak": 0.43548,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.081,
-        "sha256": "a01b7b692eb1ffa291e906911623285ddd5de90deec1a479314b9a0aff063c99"
+        "trailing_silence": 0.088,
+        "sha256": "c0395a2d572b315a1cf0af0b3ae491170138c71f496e0c78cca94414ef626a1d"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.36,
-          "text": " Спасибо! Такой приятный жест и моя невозмутимость уже дала трещину!"
+          "end": 2.8000000000000003,
+          "text": " Спасибо за такой приятный знак внимания!"
+        },
+        {
+          "start": 2.8000000000000003,
+          "end": 5.0,
+          "text": " Ты сделал этот момент еще теплее!"
         }
       ],
       "issues": [],
@@ -17809,30 +17807,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_016",
-      "sha256": "c9ec77a55c5db5ea0491f7e99414ac5383e29432fbe582f6617f5981cadbc53a",
-      "expected": "Лайки вижу, спасибо! Маленькие сердечки, большой заряд настроения.",
-      "transcript": "Лайки вижу! Спасибо! Маленькие сердечки! Большой заряд настроения!",
+      "sha256": "0acc7812b2f8ffd9db0542e2db04ed33dc8a47d236914cb15ac4075ac7bc864a",
+      "expected": "Чат, спасибо за лайки! Ваша поддержка очень радует. Давайте ещё сердечек!",
+      "transcript": "Чат, спасибо за лайки! Ваша поддержка очень радует! Давайте ещё, сердечек!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.172,
-        "rms": 0.08312,
-        "peak": 0.35271,
+        "duration": 5.773,
+        "rms": 0.11926,
+        "peak": 0.91415,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.092,
-        "sha256": "c9ec77a55c5db5ea0491f7e99414ac5383e29432fbe582f6617f5981cadbc53a"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.113,
+        "sha256": "0acc7812b2f8ffd9db0542e2db04ed33dc8a47d236914cb15ac4075ac7bc864a"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Лайки вижу! Спасибо!"
-        },
-        {
-          "start": 2.0,
-          "end": 5.0,
-          "text": " Маленькие сердечки! Большой заряд настроения!"
+          "end": 5.72,
+          "text": " Чат, спасибо за лайки! Ваша поддержка очень радует! Давайте ещё, сердечек!"
         }
       ],
       "issues": [],
@@ -17840,25 +17833,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_016",
-      "sha256": "588b9f46c2b8b382cb95a88ec7a6ac966ed75573843a2f8a1cf133c543d34419",
-      "expected": "I see the likes, thank you! Tiny hearts, surprisingly good mood boost.",
-      "transcript": "I see the likes thank you tiny hearts surprisingly good mood boost",
+      "sha256": "638a28e398a86a72ded1eaf15b16e0dfdce382e78db19033d1decd15cad7eb39",
+      "expected": "Chat, thanks for the likes! Your support means a lot. Keep those hearts coming!",
+      "transcript": "Chat, thanks for the likes. Your support means a lot. Keep those hearts coming!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.172,
-        "rms": 0.08058,
-        "peak": 0.37436,
+        "duration": 4.911,
+        "rms": 0.07471,
+        "peak": 0.37831,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.232,
-        "sha256": "588b9f46c2b8b382cb95a88ec7a6ac966ed75573843a2f8a1cf133c543d34419"
+        "trailing_silence": 0.111,
+        "sha256": "638a28e398a86a72ded1eaf15b16e0dfdce382e78db19033d1decd15cad7eb39"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.72,
-          "text": " I see the likes thank you tiny hearts surprisingly good mood boost"
+          "end": 4.88,
+          "text": " Chat, thanks for the likes. Your support means a lot. Keep those hearts coming!"
         }
       ],
       "issues": [],
@@ -17866,25 +17859,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_017",
-      "sha256": "a6525e6cfce3b4c6e2cf1c3baf4708ef4b618d43ac3dd49086ffb8325c9c844a",
-      "expected": "Thanks for the hearts! The screen's officially a little cosier.",
-      "transcript": "Thanks for the hearts the screens officially a little cozier",
-      "similarity": 0.98,
+      "sha256": "a42a923a1f874edf9368cfc05096b65e69c9cf2bba821da6fa224da2ba31d7bb",
+      "expected": "I see the hearts, thank you! It's lovely feeling your support.",
+      "transcript": "I see the hearts. Thank you. It's lovely feeling your support.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.971,
-        "rms": 0.08365,
-        "peak": 0.51427,
+        "duration": 4.232,
+        "rms": 0.07761,
+        "peak": 0.4476,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.211,
-        "sha256": "a6525e6cfce3b4c6e2cf1c3baf4708ef4b618d43ac3dd49086ffb8325c9c844a"
+        "trailing_silence": 0.192,
+        "sha256": "a42a923a1f874edf9368cfc05096b65e69c9cf2bba821da6fa224da2ba31d7bb"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.62,
-          "text": " Thanks for the hearts the screens officially a little cozier"
+          "end": 4.16,
+          "text": " I see the hearts. Thank you. It's lovely feeling your support."
         }
       ],
       "issues": [],
@@ -17892,30 +17885,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_017",
-      "sha256": "6e2c493cc9a3378237e0c8f47014302aa25dfcc21a7e0097ab86e9d46c6099e6",
-      "expected": "Спасибо за сердечки! Экран теперь официально чуть уютнее.",
-      "transcript": "Спасибо за сердечки! Экран теперь официально чуть уютнее.",
+      "sha256": "9bd3bffd28be545222a150d7d2f1f34393bb76f354ef1ccd448ffee40022ee26",
+      "expected": "Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку.",
+      "transcript": "Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.023,
-        "rms": 0.09124,
-        "peak": 0.5561,
+        "duration": 4.598,
+        "rms": 0.08793,
+        "peak": 0.3625,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.2,
-        "trailing_silence": 0.103,
-        "sha256": "6e2c493cc9a3378237e0c8f47014302aa25dfcc21a7e0097ab86e9d46c6099e6"
+        "leading_silence": 0.18,
+        "trailing_silence": 0.098,
+        "sha256": "9bd3bffd28be545222a150d7d2f1f34393bb76f354ef1ccd448ffee40022ee26"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Спасибо за сердечки!"
-        },
-        {
-          "start": 2.0,
-          "end": 4.0,
-          "text": " Экран теперь официально чуть уютнее."
+          "end": 4.5200000000000005,
+          "text": " Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку!"
         }
       ],
       "issues": [],
@@ -17923,25 +17911,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_018",
-      "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7",
-      "expected": "Support noticed, thank you! The pleased smile is entirely intentional.",
-      "transcript": "Support noticed. Thank you. The please smile is entirely intentional.",
-      "similarity": 0.991,
+      "sha256": "4b647e76cf6dfaf56c6b6a4e1d087f5d518c28c0ddd80d40d5c2b6292e115798",
+      "expected": "Thanks for the likes, everyone! You make this stream feel alive. I appreciate you!",
+      "transcript": "Thanks for the likes, everyone. You make this stream feel alive. I appreciate you.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.09064,
-        "peak": 0.62069,
+        "duration": 4.859,
+        "rms": 0.08604,
+        "peak": 0.42981,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.16,
-        "trailing_silence": 0.062,
-        "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.119,
+        "sha256": "4b647e76cf6dfaf56c6b6a4e1d087f5d518c28c0ddd80d40d5c2b6292e115798"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 5.0,
-          "text": " Support noticed. Thank you. The please smile is entirely intentional."
+          "end": 4.8,
+          "text": " Thanks for the likes, everyone. You make this stream feel alive. I appreciate you."
         }
       ],
       "issues": [],
@@ -17949,25 +17937,35 @@
     },
     {
       "id": "lively3_ru_chat_reaction_018",
-      "sha256": "5017eae31e084cc438736524c8c53d22bb4f47d817000ba66c28cd4ed95d0720",
-      "expected": "Поддержку заметила, спасибо! Я сейчас довольно улыбаюсь, это предусмотрено.",
-      "transcript": "поддержку заметила спасибо я сейчас довольно улыбаюсь это предусмотрено",
+      "sha256": "c83b2dd4d23b798833069dceacb15f5d4bd8a98a9d36a29977b035d412350238",
+      "expected": "Спасибо за лайки, ребята! Вы делаете этот эфир живым, очень вас ценю!",
+      "transcript": "Спасибо за лайки, ребята! Вы делаете этот эфир живым! Очень вас ценю!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.042,
-        "rms": 0.09357,
-        "peak": 0.44878,
+        "duration": 5.198,
+        "rms": 0.09185,
+        "peak": 0.46509,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.22,
-        "trailing_silence": 0.102,
-        "sha256": "5017eae31e084cc438736524c8c53d22bb4f47d817000ba66c28cd4ed95d0720"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.098,
+        "sha256": "c83b2dd4d23b798833069dceacb15f5d4bd8a98a9d36a29977b035d412350238"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.88,
-          "text": " поддержку заметила спасибо я сейчас довольно улыбаюсь это предусмотрено"
+          "end": 2.0,
+          "text": " Спасибо за лайки, ребята!"
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Вы делаете этот эфир живым!"
+        },
+        {
+          "start": 4.0,
+          "end": 6.0,
+          "text": " Очень вас ценю!"
         }
       ],
       "issues": [],
@@ -17975,25 +17973,25 @@
     },
     {
       "id": "lively3_en_chat_reaction_019",
-      "sha256": "a10c4337dd2a2f2b7df3b9e0aac5fcd65e39c0a44d8eca9545557fb8d701dc5e",
-      "expected": "Oh, thanks for the likes! Lovely knowing you're here.",
-      "transcript": "Oh, thanks for the likes. Lovely knowing you're here.",
+      "sha256": "7258f0224fb08b8b3dade59f1ccea36452fd8b49064a7b19c6163934182d32af",
+      "expected": "Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us!",
+      "transcript": "Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us.",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 3.5,
-        "rms": 0.07856,
-        "peak": 0.42547,
+        "duration": 5.381,
+        "rms": 0.08007,
+        "peak": 0.44898,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.12,
-        "sha256": "a10c4337dd2a2f2b7df3b9e0aac5fcd65e39c0a44d8eca9545557fb8d701dc5e"
+        "trailing_silence": 0.121,
+        "sha256": "7258f0224fb08b8b3dade59f1ccea36452fd8b49064a7b19c6163934182d32af"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 3.44,
-          "text": " Oh, thanks for the likes. Lovely knowing you're here."
+          "end": 5.28,
+          "text": " Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us."
         }
       ],
       "issues": [],
@@ -18001,25 +17999,25 @@
     },
     {
       "id": "lively3_ru_chat_reaction_019",
-      "sha256": "c0d09c453d00d330ea034ed0578847eab4a3026f2a98c2a24e54c104626eff2c",
-      "expected": "О, спасибо за лайки! Приятно знать, что вы здесь.",
-      "transcript": "Спасибо за лайки! Приятно знать, что вы здесь!",
-      "similarity": 0.986,
+      "sha256": "9c1ca3f667ea8833764c3070ff761550a402b9e19cdadc2e3955900b06f14a10",
+      "expected": "О, спасибо за сердечки! Рада, что вам нравится. Оставайтесь, будем смотреть вместе!",
+      "transcript": "Ох, спасибо за сердечки! Рады, что вам нравится. Оставайтесь! Будем смотреть вместе!",
+      "similarity": 0.977,
       "metrics": {
         "decode_ok": true,
-        "duration": 4.519,
-        "rms": 0.07527,
-        "peak": 0.32885,
+        "duration": 6.557,
+        "rms": 0.08177,
+        "peak": 0.36165,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.18,
-        "trailing_silence": 0.179,
-        "sha256": "c0d09c453d00d330ea034ed0578847eab4a3026f2a98c2a24e54c104626eff2c"
+        "leading_silence": 0.2,
+        "trailing_silence": 0.077,
+        "sha256": "9c1ca3f667ea8833764c3070ff761550a402b9e19cdadc2e3955900b06f14a10"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.44,
-          "text": " Спасибо за лайки! Приятно знать, что вы здесь!"
+          "end": 6.5200000000000005,
+          "text": " Ох, спасибо за сердечки! Рады, что вам нравится. Оставайтесь! Будем смотреть вместе!"
         }
       ],
       "issues": [],
@@ -18027,58 +18025,51 @@
     },
     {
       "id": "lively3_ru_chat_reaction_020",
-      "sha256": "fe65c33b5a5f497253cfa1b2d16acf87316c5eeecc8e64eecb11252afaf44c07",
-      "expected": "Сердечки долетели, спасибо! Саркастичная ведущая тоже бывает растроганной.",
-      "transcript": "Сердечки долетели, спасибо! Сыркастичные ведущие тоже бывают расстроганной.",
-      "similarity": 0.899,
+      "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b",
+      "expected": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+      "transcript": "Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек.",
+      "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 5.068,
-        "rms": 0.09357,
-        "peak": 0.38413,
+        "duration": 6.217,
+        "rms": 0.08668,
+        "peak": 0.39221,
         "clipped_fraction": 0.0,
         "leading_silence": 0.2,
-        "trailing_silence": 0.088,
-        "sha256": "fe65c33b5a5f497253cfa1b2d16acf87316c5eeecc8e64eecb11252afaf44c07"
+        "trailing_silence": 0.117,
+        "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 2.0,
-          "text": " Сердечки долетели, спасибо!"
-        },
-        {
-          "start": 2.0,
-          "end": 5.0,
-          "text": " Сыркастичные ведущие тоже бывают расстроганной."
+          "end": 6.12,
+          "text": " Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек."
         }
       ],
-      "issues": [
-        "transcript_mismatch"
-      ],
+      "issues": [],
       "auditory_verified": false
     },
     {
       "id": "lively3_en_chat_reaction_020",
-      "sha256": "64040029b0b0f9a37de502409849fcf344de26c95f41e7b6d1da815769e3d3f7",
-      "expected": "Hearts received, thank you! Even the sarcastic host gets a little touched.",
-      "transcript": "Hearts received, thank you! Even the sarcastic host gets a little touched.",
+      "sha256": "afe92bb9360edc7578778a5e954f8f01c06e75d779ae9bb0267113ddef796eb7",
+      "expected": "Thanks for the likes, chat! I really appreciate the support. Keep those hearts coming!",
+      "transcript": "Thanks for the likes chat. I really appreciate the support keep those hearts coming",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
         "duration": 4.859,
-        "rms": 0.07278,
-        "peak": 0.42679,
+        "rms": 0.08446,
+        "peak": 0.45349,
         "clipped_fraction": 0.0,
         "leading_silence": 0.18,
-        "trailing_silence": 0.179,
-        "sha256": "64040029b0b0f9a37de502409849fcf344de26c95f41e7b6d1da815769e3d3f7"
+        "trailing_silence": 0.079,
+        "sha256": "afe92bb9360edc7578778a5e954f8f01c06e75d779ae9bb0267113ddef796eb7"
       },
       "segments": [
         {
           "start": 0.0,
-          "end": 4.8,
-          "text": " Hearts received, thank you! Even the sarcastic host gets a little touched."
+          "end": 4.66,
+          "text": " Thanks for the likes chat. I really appreciate the support keep those hearts coming"
         }
       ],
       "issues": [],

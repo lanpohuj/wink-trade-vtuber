@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_011",
-  "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624",
-  "expected": "Let's visit another chart. Maybe the conversation's clearer here.",
-  "transcript": "Let's visit another chart. Maybe the conversation's clearer here.",
+  "sha256": "d7dc4225957da3979a5908bf4a1a8daf150f6256e79e8c645acf8334a5d2c186",
+  "expected": "We're on a different chart now. I'm looking at how price is behaving here.",
+  "transcript": "We're on a different chart now. I'm looking at how price is behaving here.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.101,
-    "rms": 0.07614,
-    "peak": 0.37701,
+    "duration": 4.362,
+    "rms": 0.07972,
+    "peak": 0.35479,
     "clipped_fraction": 0.0,
     "leading_silence": 0.18,
-    "trailing_silence": 0.261,
-    "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624"
+    "trailing_silence": 0.182,
+    "sha256": "d7dc4225957da3979a5908bf4a1a8daf150f6256e79e8c645acf8334a5d2c186"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.0,
-      "text": " Let's visit another chart. Maybe the conversation's clearer here."
+      "end": 4.32,
+      "text": " We're on a different chart now. I'm looking at how price is behaving here."
     }
   ],
   "issues": [],

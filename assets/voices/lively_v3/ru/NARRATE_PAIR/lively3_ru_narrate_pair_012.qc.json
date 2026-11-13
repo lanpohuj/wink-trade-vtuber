@@ -1,29 +1,24 @@
 {
   "id": "lively3_ru_narrate_pair_012",
-  "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a",
-  "expected": "Новый экран, новые условия. Да, мне опять нужно разобраться.",
-  "transcript": "Новый экран! Новые условия! Да, мне опять нужно разобраться!",
-  "similarity": 1.0,
+  "sha256": "59d3b5ab2fbd65b75b1ae50d95e5eb8e40a81d0209426aeb51d5955bc303600c",
+  "expected": "Пара сменилась. Разберём эту картину отдельно.",
+  "transcript": "Лара сменилась. Разберём эту картину отдельно.",
+  "similarity": 0.974,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.989,
-    "rms": 0.0735,
-    "peak": 0.28574,
+    "duration": 3.422,
+    "rms": 0.08056,
+    "peak": 0.29079,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.109,
-    "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "59d3b5ab2fbd65b75b1ae50d95e5eb8e40a81d0209426aeb51d5955bc303600c"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 2.7,
-      "text": " Новый экран! Новые условия!"
-    },
-    {
-      "start": 2.7,
-      "end": 5.0,
-      "text": " Да, мне опять нужно разобраться!"
+      "end": 3.4,
+      "text": " Лара сменилась. Разберём эту картину отдельно."
     }
   ],
   "issues": [],

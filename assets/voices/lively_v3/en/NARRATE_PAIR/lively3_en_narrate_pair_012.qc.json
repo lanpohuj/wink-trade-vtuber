@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_narrate_pair_012",
-  "sha256": "c57d9131a7fc1f88131a2bae37968005dd95855afba2917595e53c0a9e1bdbbc",
-  "expected": "New screen, new conditions. Yes, I need to investigate again.",
-  "transcript": "New screen? New conditions? Yes, I need to investigate again.",
+  "sha256": "411da093e0b287e00f237822839ae58dbf15d25b657de96a5887661843db9538",
+  "expected": "The pair has changed. Let's give this chart a fresh assessment.",
+  "transcript": "The pair has changed. Let's give this chart a fresh assessment.",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.467,
-    "rms": 0.07581,
-    "peak": 0.35118,
+    "duration": 4.284,
+    "rms": 0.07684,
+    "peak": 0.53062,
     "clipped_fraction": 0.0,
     "leading_silence": 0.16,
-    "trailing_silence": 0.167,
-    "sha256": "c57d9131a7fc1f88131a2bae37968005dd95855afba2917595e53c0a9e1bdbbc"
+    "trailing_silence": 0.184,
+    "sha256": "411da093e0b287e00f237822839ae58dbf15d25b657de96a5887661843db9538"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 4.4,
-      "text": " New screen? New conditions? Yes, I need to investigate again."
+      "end": 4.16,
+      "text": " The pair has changed. Let's give this chart a fresh assessment."
     }
   ],
   "issues": [],

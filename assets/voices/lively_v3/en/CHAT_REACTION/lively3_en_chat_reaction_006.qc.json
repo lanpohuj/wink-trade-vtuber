@@ -1,24 +1,24 @@
 {
   "id": "lively3_en_chat_reaction_006",
-  "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb",
-  "expected": "Thanks for following! You may now officially get used to my commentary.",
-  "transcript": "Thanks for following. You may now officially get used to my commentary.",
+  "sha256": "5b70eb422575e95cdda160f504ec0faf80da0ca16102c8fa14cd0766553476ef",
+  "expected": "Thanks for following! I'm happy you're staying with us. Welcome to the stream!",
+  "transcript": "Thanks for following. I'm happy you're staying with us. Welcome to the stream",
   "similarity": 1.0,
   "metrics": {
     "decode_ok": true,
-    "duration": 4.101,
-    "rms": 0.08422,
-    "peak": 0.35868,
+    "duration": 4.362,
+    "rms": 0.08646,
+    "peak": 0.51845,
     "clipped_fraction": 0.0,
-    "leading_silence": 0.2,
-    "trailing_silence": 0.121,
-    "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb"
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "5b70eb422575e95cdda160f504ec0faf80da0ca16102c8fa14cd0766553476ef"
   },
   "segments": [
     {
       "start": 0.0,
-      "end": 3.84,
-      "text": " Thanks for following. You may now officially get used to my commentary."
+      "end": 4.04,
+      "text": " Thanks for following. I'm happy you're staying with us. Welcome to the stream"
     }
   ],
   "issues": [],
