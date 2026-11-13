@@ -3352,20 +3352,32 @@
     const pair = normalizePocketPair(state.targetPair);
     const now = Date.now();
     const candidates = Array.from(state.marketFrames.values()).filter(frame =>
-      frame.source === 'broker' && normalizePocketPair(frame.pair) === pair &&
-      now - frame.receivedAt < Math.max(30000, frame.period * 2000) &&
+      ['broker', 'pixels'].includes(frame.source) && normalizePocketPair(frame.pair) === pair &&
+      now - frame.receivedAt < (frame.source === 'pixels' ? 30000 : Math.max(30000, frame.period * 2000)) &&
       Array.isArray(frame.bars) && frame.bars.length > 0
     );
     const activePeriod = chartPeriodSeconds();
-    candidates.sort((a, b) => (b.period === activePeriod) - (a.period === activePeriod) || b.receivedAt - a.receivedAt);
-    const frame = candidates[0];
-    if (!frame) return null;
     const brokerNow = marketNow();
-    const bars = frame.bars.filter(c => [c.open,c.high,c.low,c.close,c.time].every(Number.isFinite) && c.time <= brokerNow &&
-      c.high >= Math.max(c.open,c.close) && c.low <= Math.min(c.open,c.close)).slice(-26);
-    const last = bars[bars.length - 1];
-    if (!last || brokerNow - (last.time + frame.period * 1000) > frame.period * 2000) return null;
-    return {bars, period: frame.period};
+    if (normalizePocketPair(LiveTickBuffer.pair) === pair) {
+      const lastTick = LiveTickBuffer.ticks.at(-1);
+      if (lastTick && lastTick.ts <= brokerNow && brokerNow - lastTick.ts < 30000) {
+        for (const period of [15,30,60,120]) {
+          const bars = LiveTickBuffer.buildCandles(period,200);
+          if (bars.length) candidates.push({bars, period, source:'ticks', receivedAt:now});
+        }
+      }
+    }
+    const usable = candidates.map(frame => {
+      const bars = frame.bars.filter(c => [c.open,c.high,c.low,c.close,c.time].every(Number.isFinite) && c.time <= brokerNow &&
+        c.high >= Math.max(c.open,c.close) && c.low <= Math.min(c.open,c.close)).slice(-26);
+      const last = bars.at(-1);
+      return last && brokerNow - (last.time + frame.period * 1000) <= frame.period * 2000 ? {...frame,bars} : null;
+    }).filter(Boolean);
+    const priority = {broker: 2, ticks: 1, pixels: 0};
+    usable.sort((a,b) => (b.period === activePeriod) - (a.period === activePeriod) ||
+      (b.bars.length >= 4) - (a.bars.length >= 4) || priority[b.source] - priority[a.source] || b.bars.length - a.bars.length);
+    const frame = usable[0];
+    return frame ? {bars:frame.bars, period:frame.period, source:frame.source} : null;
   }
 
   function refreshDisplayChart() {
@@ -3376,6 +3388,9 @@
     if (!data) {
       chart.innerHTML = '';
       chart.dataset.pair = '';
+      chart.dataset.source = '';
+      const source = document.getElementById('winkyVisualChartSource');
+      if (source) source.hidden = true;
       status.textContent = state.lang === 'ru' ? 'Ожидаем данные графика' : 'Waiting for chart data';
       status.hidden = false;
       return;
@@ -3385,10 +3400,16 @@
     const width = 300 / data.bars.length, bodyWidth = Math.min(7, width * .55);
     chart.innerHTML = data.bars.map((c, i) => {
       const x = (i + .5) * width, top = Math.min(y(c.open), y(c.close)), body = Math.max(1.4, Math.abs(y(c.open)-y(c.close)));
-      const color = c.close >= c.open ? '#55dcb2' : '#f28580';
+      const color = c.close >= c.open ? '#66b549' : '#eb5033';
       return `<line x1="${x.toFixed(2)}" y1="${y(c.high).toFixed(2)}" x2="${x.toFixed(2)}" y2="${y(c.low).toFixed(2)}" stroke="${color}" stroke-width="1"/><rect x="${(x-bodyWidth/2).toFixed(2)}" y="${top.toFixed(2)}" width="${bodyWidth.toFixed(2)}" height="${body.toFixed(2)}" rx="1" fill="${color}"/>`;
     }).join('');
     chart.dataset.pair = normalizePocketPair(state.targetPair);
+    chart.dataset.source = data.source;
+    const source = document.getElementById('winkyVisualChartSource');
+    if (source) {
+      source.hidden = data.source !== 'pixels';
+      source.textContent = state.lang === 'ru' ? 'По изображению графика' : 'From chart image';
+    }
     status.hidden = true;
   }
 
@@ -3398,12 +3419,19 @@
     visualStages = {pair: normalizePocketPair(pair), generation: state.searchGeneration, values: [null,null,null,null]};
   }
 
+  function observedAnalysisFactors(sample) {
+    const analysis = sample?.analysis;
+    if (!analysis || analysis.dataStatus === 'NO_DATA' || normalizePocketPair(sample.pair) !== normalizePocketPair(state.targetPair)) return [];
+    const available = [Boolean(analysis.trendRegime), Boolean(analysis.setup || (analysis.valid && analysis.rejected?.length)), Boolean(analysis.sr)];
+    return available.map((known, i) => known && typeof sample.confluence?.factors?.[i]?.pass === 'boolean' ? sample.confluence.factors[i].pass : null);
+  }
+
   function syncPanelControlVisibility() {
     const hidden = Boolean(state.autoStream || state.searchRunning || state.tradeContext || state.botState !== 'IDLE');
     document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid').forEach(el => { el.hidden = hidden; });
   }
 
-  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null) {
+  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null, observedFactors = null) {
     const block=document.getElementById('botDirectionBlock');
     if(!block) return;
     try { syncPanelControlVisibility(); } catch (_) {}
@@ -3415,8 +3443,8 @@
       const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
       block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
         ${demo?`<div class="winky-data-note" data-feed-note>${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
-        <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span class="winky-chart-scanner"></span></div>
-        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map((name,i)=>`<div class="winky-scan-seg"><span class="winky-stage-index">0${i+1}</span><small data-stage-label>${name}</small><span class="winky-stage-indicator" data-stage-indicator></span></div>`).join('')}</div>
+        <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span id="winkyVisualChartSource" class="winky-chart-source" hidden></span><span class="winky-chart-scanner"></span></div>
+        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map(name=>`<div class="winky-scan-seg"><small data-stage-label>${name}</small><span class="winky-stage-indicator" data-stage-indicator></span></div>`).join('')}</div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
@@ -3430,6 +3458,9 @@
     put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
     put('[data-feed-note]',ru?'Демо-данные могут изменяться':'Demo data may be altered');
     const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
+    if (Array.isArray(observedFactors)) observedFactors.forEach((value, i) => {
+      if (i < 3 && i < stepIndex && typeof value === 'boolean') visualStages.values[i] = value ? 'confirmed' : 'rejected';
+    });
     visualStages.values[stepIndex] = stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
       (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null);
     const segments=block.querySelectorAll('.winky-scan-seg');
@@ -3902,10 +3933,10 @@
     const render=(step,sample,status,finalEntry=false)=>{
       const factor=step<3 && sample?.analysis?.dataStatus!=='NO_DATA'?sample?.confluence?.factors?.[step]:null;
       if(status==='checking' && factor) status=factor.pass?'confirmed':'rejected';
-      const available = step === 0 ? Boolean(sample?.analysis?.trendRegime) : step === 1 ? Boolean(sample?.analysis?.setup) : step === 2 ? Boolean(sample?.analysis?.sr) : false;
+      const observedFactors = observedAnalysisFactors(sample);
       const entryAvailable = Boolean(sample?.analysis && sample.analysis.dataStatus !== 'NO_DATA' && !sample.analysis.forcedBestRoundEntry);
       const visualEntry = step === 3 && entryAvailable && (status === 'rejected' || (finalEntry && status === 'confirmed')) ? status : null;
-      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status,available && typeof factor?.pass === 'boolean' ? factor.pass : null,visualEntry);
+      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status,observedFactors[step] ?? null,visualEntry,observedFactors);
     };
     try {
       if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(state.lang==='ru'?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
@@ -4782,6 +4813,10 @@
         </div>
       `;
     } else if (state.botState === "ANALYZING_PAIR" || state.botState === "ANALYZING") {
+      if (block.querySelector('[data-analysis-tiles]')) {
+        refreshDisplayChart();
+        return;
+      }
       // Do not overwrite active Deep Chart Vision 3D flip scanner if already rendered!
       if (block.querySelector(".winky-flip-stage") && block.querySelector(".winky-scan-segments")) {
         return;

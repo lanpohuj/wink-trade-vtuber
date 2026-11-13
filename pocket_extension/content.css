@@ -1703,14 +1703,14 @@
 #winky-bot-root .winky-data-note { color: #d6bf91; font-size: 9px; line-height: 1.25; }
 #winky-bot-root .winky-chart-preview { height: 124px; min-height: 124px; }
 #winky-bot-root .winky-scan-segments { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 5px; }
-#winky-bot-root .winky-scan-seg { min-width: 0; min-height: 42px; position: relative; padding: 5px 3px; border: 1px solid #ffffff0d; background: #152623; border-radius: 7px; }
-#winky-bot-root .winky-scan-seg .winky-stage-index { display: block; color: #93aaa2; font-size: 9px; line-height: 1.2; }
-#winky-bot-root .winky-scan-seg small { display: block; color: #b2c5be; font-size: 10px; line-height: 1.4; white-space: nowrap; }
-#winky-bot-root .winky-scan-seg .winky-stage-indicator { position: absolute; top: 3px; right: 5px; color: #9cb7ac; font-size: 13px; line-height: 1; font-weight: 800; }
+#winky-bot-root .winky-scan-seg { min-width: 0; min-height: 42px; position: relative; display: flex; flex-direction: column-reverse; align-items: center; justify-content: center; gap: 1px; padding: 4px 2px; border: 1px solid #ffffff1c; background: #152623; border-radius: 7px; }
+#winky-bot-root .winky-scan-seg small { display: block; color: #d3e4dd; font-size: 10.5px; font-weight: 750; letter-spacing: -.2px; line-height: 1.1; white-space: nowrap; }
+#winky-bot-root .winky-scan-seg .winky-stage-indicator { position: static; min-height: 13px; color: #a9c3b8; font-size: 15px; line-height: 13px; font-weight: 850; }
 #winky-bot-root .winky-scan-seg.active { background: #203b34; border-color: #84dcc2; box-shadow: inset 0 0 0 1px #84dcc240; }
-#winky-bot-root .winky-scan-seg.confirmed, #winky-bot-root .winky-scan-seg.active.confirmed { background: #1d4836; border-color: #63d3a0; }
-#winky-bot-root .winky-scan-seg.confirmed small, #winky-bot-root .winky-scan-seg.confirmed .winky-stage-indicator { color: #adf1cd; }
-#winky-bot-root .winky-scan-seg.rejected, #winky-bot-root .winky-scan-seg.active.rejected { background: #482b2b; border-color: #e58c80; }
-#winky-bot-root .winky-scan-seg.rejected small, #winky-bot-root .winky-scan-seg.rejected .winky-stage-indicator { color: #ffc0b6; }
+#winky-bot-root .winky-scan-seg.confirmed, #winky-bot-root .winky-scan-seg.active.confirmed { background: #67e978; border-color: #8cff9b; }
+#winky-bot-root .winky-scan-seg.confirmed small, #winky-bot-root .winky-scan-seg.confirmed .winky-stage-indicator { color: #092b13; }
+#winky-bot-root .winky-scan-seg.rejected, #winky-bot-root .winky-scan-seg.active.rejected { background: #ff6358; border-color: #ff8e84; }
+#winky-bot-root .winky-scan-seg.rejected small, #winky-bot-root .winky-scan-seg.rejected .winky-stage-indicator { color: #39100d; }
 #winky-bot-root .winky-scan-seg.active.confirmed, #winky-bot-root .winky-scan-seg.active.rejected { box-shadow: inset 0 0 0 1px currentColor; }
+#winky-bot-root .winky-chart-source { position: absolute; right: 5px; bottom: 4px; padding: 2px 4px; border-radius: 3px; background: #071814df; color: #c5d8d0; font-size: 8px; line-height: 1.1; }
 #winky-bot-root .winky-analysis-meta { font-size: 10px; }

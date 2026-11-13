@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
@@ -77,18 +77,37 @@ function row(text, fields = {}, id = null) {
 test('x2.2 stake schedule is unchanged', () => {
   const c=loadContent(); assert.deepEqual([0,1,2,3].map(c.getExpectedStake),[50,110,242,50]);
 });
-test('the visual chart only shows fresh broker candles for the active pair', () => {
+test('the visual chart uses fresh matching candles and identifies visual fallback', () => {
   const c=loadContent(), candle={time:c.now()-15000,open:1,high:1.2,low:.9,close:1.1};
   c.state.targetPair='EUR/USD OTC';
   c.rememberMarketFrame(15,[candle],'broker',c.now(),'GBP/USD OTC');
   assert.equal(c.currentDisplayCandles(), null);
   c.rememberMarketFrame(15,[candle],'pixels',c.now(),'EUR/USD OTC');
-  assert.equal(c.currentDisplayCandles(), null);
+  assert.equal(c.currentDisplayCandles().source, 'pixels');
   c.rememberMarketFrame(15,[candle],'broker',c.now(),'EUR/USD OTC');
   const view=c.currentDisplayCandles();
   assert.equal(view.period,15); assert.equal(view.bars[0].close,1.1);
   c.tick(61000);
   assert.equal(c.currentDisplayCandles(),null);
+});
+test('the visual chart uses matching fresh ticks but never the previous pair or stale quotes', () => {
+  const c=loadContent(); c.state.targetPair='EUR/USD OTC'; c.state.actualChartTf='S30';
+  c.LiveTickBuffer.pair='EUR/USD OTC';
+  c.LiveTickBuffer.ticks=[{ts:c.now()-5000,price:1},{ts:c.now()-1000,price:1.1}];
+  const view=c.currentDisplayCandles();
+  assert.equal(view.source,'ticks');assert.equal(view.period,30);assert.equal(view.bars.at(-1).close,1.1);
+  c.state.targetPair='GBP/USD OTC';assert.equal(c.currentDisplayCandles(),null);
+  c.state.targetPair='EUR/USD OTC';c.tick(31000);assert.equal(c.currentDisplayCandles(),null);
+});
+test('structure shows an observed rejection even without a confirmed setup', () => {
+  const c=loadContent();c.state.targetPair='EUR/USD OTC';
+  const sample={pair:c.state.targetPair,analysis:{valid:true,dataStatus:'SETUP_FORMING',trendRegime:'UPTREND',sr:{},rejected:[{reason:'SETUP_FORMING'}]},
+    confluence:{factors:[{pass:true},{pass:false},{pass:true}]}};
+  assert.deepEqual(Array.from(c.observedAnalysisFactors(sample)),[true,false,true]);
+  sample.analysis.dataStatus='NO_DATA';assert.equal(c.observedAnalysisFactors(sample).length,0);
+  sample.analysis.dataStatus='SETUP_FORMING';sample.analysis.rejected=[];
+  assert.deepEqual(Array.from(c.observedAnalysisFactors(sample)),[true,null,true]);
+  sample.pair='GBP/USD OTC';assert.equal(c.observedAnalysisFactors(sample).length,0);
 });
 test('the chart clears stale candles and shows waiting when the pair has no data', () => {
   const c=loadContent(),chart={innerHTML:'old candles',dataset:{pair:'other'}},status={hidden:true,textContent:''};
@@ -365,16 +384,18 @@ test('analysis tiles show observed states, reset per pair and do not inflate acc
     const label={textContent:''},indicator={textContent:''};
     return {className:'',label,indicator,attrs:{},querySelector(s){return s==='[data-stage-label]'?label:indicator;},setAttribute(k,v){this.attrs[k]=v;}};
   });let mounts=0;
-  const block={className:'',set innerHTML(value){mounts++;nodes.set('[data-analysis-tiles]',{});},
+  const block={className:'',markup:'',set innerHTML(value){this.markup=value;mounts++;nodes.set('[data-analysis-tiles]',{});},
     querySelector(selector){if(selector==='[data-analysis-tiles]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);},
     querySelectorAll(){return segments;}};
   const accuracy={textContent:'',title:''};c.document.getElementById=id=>id==='botDirectionBlock'?block:id==='metricAccuracyVal'?accuracy:null;
   for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','Данные обновляются','2.5',true,'confirmed',true);
-  assert.equal(mounts,1);assert.equal(segments[0].indicator.textContent,'✓');assert.equal(accuracy.textContent,'50%');
+  assert.equal(mounts,1);assert.doesNotMatch(block.markup,/winky-stage-index/);assert.equal(segments[0].indicator.textContent,'✓');assert.equal(accuracy.textContent,'50%');
   c.renderAnalysisStep(1,4,'Структура','Проверка','2.5',false,'rejected',false);
   assert.equal(segments[0].indicator.textContent,'✓');assert.equal(segments[1].indicator.textContent,'×');
   c.renderAnalysisStep(2,4,'Уровни','Нет данных',null,false,'loading',null);
   assert.equal(segments[2].indicator.textContent,'·');assert.doesNotMatch(segments[2].className,/confirmed|rejected/);
+  c.renderAnalysisStep(2,4,'Уровни','Проверка','2.5',false,'checking',true,null,[true,false,true]);
+  assert.equal(segments[1].indicator.textContent,'×');assert.equal(segments[2].indicator.textContent,'✓');
   c.renderAnalysisStep(3,4,'Вход','Недостаточно данных',null,false,'rejected',null,null);
   assert.equal(segments[3].indicator.textContent,'·');assert.doesNotMatch(segments[3].className,/confirmed|rejected/);
   c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected',null,'rejected');
