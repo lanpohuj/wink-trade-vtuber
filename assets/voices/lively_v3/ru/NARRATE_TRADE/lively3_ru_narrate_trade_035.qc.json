@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_035",
+  "sha256": "db70081a5589c3bbc198b24d009da5beecb0ce7fee2b4348c09073260de35dd2",
+  "expected": "Часы не слушают уговоры. А я, между прочим, старалась бы красиво.",
+  "transcript": "Часы не слушают уговоры, а я, между прочим, старалась бы красиво.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08979,
+    "peak": 0.45621,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "db70081a5589c3bbc198b24d009da5beecb0ce7fee2b4348c09073260de35dd2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Часы не слушают уговоры, а я, между прочим, старалась бы красиво."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_020",
+  "phrase_id": "lively3_en_trade_loss_020",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Closed red, unpleasant. Keeping an honest count, no arguing with the past.",
+  "tts_text": "[calm, mildly disappointed] Closed red, unpleasant. Keeping an honest count, no arguing with the past.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "109004ea71c4fcbf0ce9adbf69b05eae396f850840f2f59e9a644e4af5f7c4b8",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_020",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_020.mp3",
+  "duration": 5.564,
+  "sha256": "5aa73da5ee588e39a6b03872269664a7e4380389a43396503440fb1613524566",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Closed red, unpleasant. Keeping an honest count, no arguing with the past.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

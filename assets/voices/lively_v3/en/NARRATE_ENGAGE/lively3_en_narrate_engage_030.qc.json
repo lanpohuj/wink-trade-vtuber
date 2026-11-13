@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_030",
+  "sha256": "5be3e544f25961966d81e25350ac06654aeb2dcc83857f99bf87743ab0161396",
+  "expected": "If I go quiet, I'm not sulking. Just letting my thoughts dress appropriately.",
+  "transcript": "If I go quiet, I'm not sulking, just letting my thoughts dress appropriately.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07723,
+    "peak": 0.46771,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.208,
+    "sha256": "5be3e544f25961966d81e25350ac06654aeb2dcc83857f99bf87743ab0161396"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " If I go quiet, I'm not sulking, just letting my thoughts dress appropriately."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

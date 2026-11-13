@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_014",
+  "sha256": "5610d831c5f7c8ce8159b24e675ff2cc0d183e3a1c156c1ec058b3a7f55d8f33",
+  "expected": "There's a bot for exploring the tools yourself. The link behaves and stays in my bio.",
+  "transcript": "There's a bot for exploring the tools yourself. The link behaves and stays in my bio.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07791,
+    "peak": 0.39008,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.209,
+    "sha256": "5610d831c5f7c8ce8159b24e675ff2cc0d183e3a1c156c1ec058b3a7f55d8f33"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " There's a bot for exploring the tools yourself."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 5.2,
+      "text": " The link behaves and stays in my bio."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

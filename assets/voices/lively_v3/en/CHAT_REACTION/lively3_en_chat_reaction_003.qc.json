@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_003",
+  "sha256": "0281d8f17d32474730382c642d82b5c4381cf105ed6c9fe0ce9cc09efe9ec872",
+  "expected": "Come on in. We're figuring things out with occasional side-eye.",
+  "transcript": "Come on in! We're figuring things out with occasional side-eye!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.08231,
+    "peak": 0.39266,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.242,
+    "sha256": "0281d8f17d32474730382c642d82b5c4381cf105ed6c9fe0ce9cc09efe9ec872"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Come on in! We're figuring things out with occasional side-eye!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

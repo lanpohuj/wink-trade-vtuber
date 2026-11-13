@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_007",
+  "phrase_id": "lively3_en_chat_reaction_007",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "A follow! Welcome to the remarkably patient listeners' club.",
+  "tts_text": "[warm, relaxed] A follow! Welcome to the remarkably patient listeners' club.",
+  "conditions": {
+    "chat_kind": "follow"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d81f697e29c1520cd95f1e7c809b0bb33a7008b17b53a1727dec3510e30570c2",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_007",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_007.mp3",
+  "duration": 4.101125,
+  "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d",
+  "request_payload": {
+    "text": "[warm, relaxed] A follow! Welcome to the remarkably patient listeners' club.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

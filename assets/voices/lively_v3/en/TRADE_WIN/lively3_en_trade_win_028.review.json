@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_028",
+  "phrase_id": "lively3_en_trade_win_028",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green close confirmed. The pleased tone's earned its place now.",
+  "tts_text": "[natural, conversational] Green close confirmed. The pleased tone's earned its place now.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0c607033db24c8363170090486199690d66c50c8c96c9885a8572ea11358c40d",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_028",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_028.mp3",
+  "duration": 3.944375,
+  "sha256": "aeb305ca47e1e02335381e485006a28c309a905cffb6848ea3fd10e667799bdb",
+  "request_payload": {
+    "text": "[natural, conversational] Green close confirmed. The pleased tone's earned its place now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

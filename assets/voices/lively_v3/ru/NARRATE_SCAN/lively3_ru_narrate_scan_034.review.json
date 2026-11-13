@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_034",
+  "phrase_id": "lively3_ru_narrate_scan_034",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Выбрать кнопку, а потом придумать объяснение? Не, такой лор мне не нужен.",
+  "tts_text": "[conversational] Выбрать кнопку, а потом придумать объяснение? Не, такой лор мне не нужен.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fd7c0ec9d115271e34b4f43586d165a93c680c2636a5db0aadbb4d0c97b28d90",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_034",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_034.mp3",
+  "duration": 5.2505,
+  "sha256": "c7394e081ab090f2c482f6ce31c426bd7a8635fdc24b7488289fe40179a1c0f3",
+  "request_payload": {
+    "text": "[conversational] Выбрать кнопку, а потом придумать объяснение? Не, такой лор мне не нужен.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

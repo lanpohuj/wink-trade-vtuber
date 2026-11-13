@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_007",
+  "phrase_id": "lively3_en_narrate_scan_007",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "The button isn't going anywhere. Its flirting is admittedly effective.",
+  "tts_text": "[warm, relaxed] The button isn't going anywhere. Its flirting is admittedly effective.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c107e4464f98d3e7de88368e2e019449e08d979da0ad9220c799b4de04b1303b",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_007",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_007.mp3",
+  "duration": 4.519125,
+  "sha256": "a05aa05d06558e8dfcb451a8501efc57b60eb1ac62718c9276df5a3bc4f57604",
+  "request_payload": {
+    "text": "[warm, relaxed] The button isn't going anywhere. Its flirting is admittedly effective.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

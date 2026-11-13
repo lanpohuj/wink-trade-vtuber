@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_043",
+  "sha256": "647f007d010a548ce5a14280d69e2339782c2abe291746551a1c34c510270d55",
+  "expected": "Небольшой указатель для чата: бот не в комментариях, он по ссылке в шапке.",
+  "transcript": "Небольшой указатель для чата. Вот не в комментариях, он по ссылке в шапке.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07732,
+    "peak": 0.30784,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.065,
+    "sha256": "647f007d010a548ce5a14280d69e2339782c2abe291746551a1c34c510270d55"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Небольшой указатель для чата."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Вот не в комментариях, он по ссылке в шапке."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_002",
+  "sha256": "78c00ee66759ddffe1af0bd3d3d5ceb43a3e1e5b0cbc0725ac5c30fda990afd0",
+  "expected": "Stake's back, chat. Refund, so the winner's crown stays put.",
+  "transcript": "Stakes back chat refund so the winner's crown stays put",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.08418,
+    "peak": 0.44282,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.116,
+    "sha256": "78c00ee66759ddffe1af0bd3d3d5ceb43a3e1e5b0cbc0725ac5c30fda990afd0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0200000000000005,
+      "text": " Stakes back chat refund so the winner's crown stays put"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

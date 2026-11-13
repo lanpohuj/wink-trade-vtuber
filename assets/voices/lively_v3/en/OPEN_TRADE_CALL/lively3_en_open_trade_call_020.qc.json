@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_020",
+  "sha256": "bd8a2c58ffb3d914a21a56ccd6c4d55a28efe5e5022819938b473e0f127f1ad3",
+  "expected": "Entered up after the completed retest. Breakout checked; watching the trade now.",
+  "transcript": "Entered up after the completed retest breakout checked watching the trade now",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07764,
+    "peak": 0.46542,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.252,
+    "sha256": "bd8a2c58ffb3d914a21a56ccd6c4d55a28efe5e5022819938b473e0f127f1ad3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Entered up after the completed retest breakout checked watching the trade now"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_034",
+  "sha256": "8ad5fd2839f19b2369f4ec0c23e938a29e90e0159098b33a8a4ccd520dc0441b",
+  "expected": "Down trade open on the reversal setup. The microphone doesn't control the outcome.",
+  "transcript": "Down trade open on the reversal setup. The microphone doesn't control the outcome.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.073,
+    "peak": 0.38163,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.21,
+    "sha256": "8ad5fd2839f19b2369f4ec0c23e938a29e90e0159098b33a8a4ccd520dc0441b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Down trade open on the reversal setup. The microphone doesn't control the outcome."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

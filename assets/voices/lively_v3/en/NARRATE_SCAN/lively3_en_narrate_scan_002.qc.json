@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_002",
+  "sha256": "45cb737c0e4a9669b99a8884979041fd2644d43386ba4851f9c4260b7518d0d1",
+  "expected": "Clicking finger's getting ahead of itself. Not yet. I'm still checking.",
+  "transcript": "Clicking fingers getting ahead of itself. Not yet. I'm still checking",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.0756,
+    "peak": 0.50497,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.245,
+    "sha256": "45cb737c0e4a9669b99a8884979041fd2644d43386ba4851f9c4260b7518d0d1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.22,
+      "text": " Clicking fingers getting ahead of itself. Not yet. I'm still checking"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_050",
+  "sha256": "a898d5699fd1a2afe6fb0e27039b2ff59f620ac691a28ad54e9a6dab92b4f038",
+  "expected": "Так, смотрим внимательно. Самоуверенность сегодня работает только на подаче.",
+  "transcript": "так смотрим внимательно самоуверенность сегодня работает только на подаче",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.07708,
+    "peak": 0.31138,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.107,
+    "sha256": "a898d5699fd1a2afe6fb0e27039b2ff59f620ac691a28ad54e9a6dab92b4f038"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " так смотрим внимательно самоуверенность сегодня работает только на подаче"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

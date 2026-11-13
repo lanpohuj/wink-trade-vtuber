@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_014",
+  "sha256": "8d1e9b1a1ef8d75df13d225f95c6704f20cc26913337326e30867311eb529bee",
+  "expected": "Up entry after the closed breakout retest. Now waiting through the chosen expiry.",
+  "transcript": "Um, um entry after the closed breakout retest. Now waiting through the chosen expiry.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.07963,
+    "peak": 0.43467,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.136,
+    "sha256": "8d1e9b1a1ef8d75df13d225f95c6704f20cc26913337326e30867311eb529bee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Um, um entry after the closed breakout retest. Now waiting through the chosen expiry."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

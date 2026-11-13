@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_009",
+  "sha256": "d56795d3e5c3078b931040657eee00b65621101c06e11ed20e3802dc2073231e",
+  "expected": "Curious about the tools? Start with the bot in my bio. It'll explain the steps.",
+  "transcript": "Curious about the tools? Start with the bot in my bio. It'll explain the steps.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07929,
+    "peak": 0.4453,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.169,
+    "sha256": "d56795d3e5c3078b931040657eee00b65621101c06e11ed20e3802dc2073231e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Curious about the tools? Start with the bot in my bio. It'll explain the steps."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

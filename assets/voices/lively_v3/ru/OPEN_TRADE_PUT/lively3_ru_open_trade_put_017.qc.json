@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_017",
+  "sha256": "1cf8ab24daaf8ad570e11cd03443edeec98e2e0e5f320b515e4530e773478b34",
+  "expected": "Продажа по пробою и закрытому ретесту открыта. Теперь без лишней суеты.",
+  "transcript": "Продажу по пробою и закрытому ритесту открыто. Теперь без лишней суеты.",
+  "similarity": 0.949,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09459,
+    "peak": 0.44684,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "1cf8ab24daaf8ad570e11cd03443edeec98e2e0e5f320b515e4530e773478b34"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Продажу по пробою и закрытому ритесту открыто. Теперь без лишней суеты."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

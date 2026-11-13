@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_010",
+  "phrase_id": "lively3_en_narrate_expiry_010",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Thirty seconds here. My inner commentator's checking the running order.",
+  "tts_text": "[clear, conversational] Thirty seconds here. My inner commentator's checking the running order.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8919e62af8f7f981a18c67385469122dc1d8f632a92782ab984749bc46157fc1",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_010",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_010.mp3",
+  "duration": 4.597437,
+  "sha256": "a2a300a1cc4cc8ec57c421b53fc542eaf11978061aa450f2e8293472964895e1",
+  "request_payload": {
+    "text": "[clear, conversational] Thirty seconds here. My inner commentator's checking the running order.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

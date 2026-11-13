@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_008",
+  "phrase_id": "lively3_en_narrate_trade_008",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Not celebrating yet. Once I start getting carried away, there's no stopping me.",
+  "tts_text": "[casual] Not celebrating yet. Once I start getting carried away, there's no stopping me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f593cc0d9f77a768f35d2acf05718f97222e26d1db5c04f309e0b458f808b232",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_008",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_008.mp3",
+  "duration": 5.119937,
+  "sha256": "06abcec0671aafcc4aa30d1385edda3d7b149492e14d58cf45c484c2b09a70cf",
+  "request_payload": {
+    "text": "[casual] Not celebrating yet. Once I start getting carried away, there's no stopping me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

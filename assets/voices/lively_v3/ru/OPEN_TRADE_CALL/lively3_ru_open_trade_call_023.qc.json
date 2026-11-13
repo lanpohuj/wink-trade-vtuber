@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_023",
+  "sha256": "403d3acc886ea3d9c79f9e1a81913d7612e9752aa0b128737c9dc99a2f03618e",
+  "expected": "Купили по отбою диапазона. Подтверждение было до входа, а не в моей речи.",
+  "transcript": "Купили по отбою диапазона, подтверждение было до входа, а не в моей речи.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08846,
+    "peak": 0.42888,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.1,
+    "sha256": "403d3acc886ea3d9c79f9e1a81913d7612e9752aa0b128737c9dc99a2f03618e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Купили по отбою диапазона, подтверждение было до входа, а не в моей речи."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

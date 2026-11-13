@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_018",
+  "phrase_id": "lively3_ru_narrate_expiry_018",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбрана одна минута. У этой сделки свой срок, у меня свои комментарии.",
+  "tts_text": "[conversational] Выбрана одна минута. У этой сделки свой срок, у меня свои комментарии.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c273283d72ac31900fca0d210f677f757e7d5e2d72922b156eec7fab002717f7",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_018",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_018.mp3",
+  "duration": 4.519125,
+  "sha256": "794dcfe9ab22bc38bf3d5413521cb7e297c163e005088660ff2dae968266d2b3",
+  "request_payload": {
+    "text": "[conversational] Выбрана одна минута. У этой сделки свой срок, у меня свои комментарии.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

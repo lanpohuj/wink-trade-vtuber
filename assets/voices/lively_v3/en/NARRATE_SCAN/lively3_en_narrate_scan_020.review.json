@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_020",
+  "phrase_id": "lively3_en_narrate_scan_020",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Arguments on the table. Charisma alone won't get this decision approved.",
+  "tts_text": "[natural, conversational] Arguments on the table. Charisma alone won't get this decision approved.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "85a1ff1c7745c714ff1f4e1aaabb1e1b3fccbe314e0d7ab275139e4d998d7108",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_020",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_020.mp3",
+  "duration": 4.414625,
+  "sha256": "692e7ab9677cbba8fc2b5d9f73ba60b1e3322e4cccdbf4ed37640e1d1c71834f",
+  "request_payload": {
+    "text": "[natural, conversational] Arguments on the table. Charisma alone won't get this decision approved.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

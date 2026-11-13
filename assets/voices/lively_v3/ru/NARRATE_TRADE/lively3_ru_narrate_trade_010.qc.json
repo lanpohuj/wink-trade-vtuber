@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_trade_010",
+  "sha256": "dc119cde7a2eac703b3b6608681f64d7555b9b298f7c61b103cfdda8b3b21ead",
+  "expected": "Ждём. Да, геймплей сейчас вот такой. Я тоже хотела кнопку «быстрее».",
+  "transcript": "Ждём? Да. Лемплая сейчас вот такой. Я тоже хотела кнопку быстрее.",
+  "similarity": 0.932,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08096,
+    "peak": 0.39337,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "dc119cde7a2eac703b3b6608681f64d7555b9b298f7c61b103cfdda8b3b21ead"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.0,
+      "text": " Ждём?"
+    },
+    {
+      "start": 1.0,
+      "end": 2.0,
+      "text": " Да."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Лемплая сейчас вот такой."
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Я тоже хотела кнопку быстрее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

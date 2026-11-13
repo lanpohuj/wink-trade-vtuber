@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_005",
+  "sha256": "6552d4fa8f3c3f9a7cde621864ac3d4ae359f3fd26da66e463f303ba4b1ad764",
+  "expected": "Я сегодня держу баланс между аналитикой и желанием пошутить не вовремя.",
+  "transcript": "А я сегодня держу баланс между аналитикой и желанием пошутить не вовремя.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08919,
+    "peak": 0.32101,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.146,
+    "sha256": "6552d4fa8f3c3f9a7cde621864ac3d4ae359f3fd26da66e463f303ba4b1ad764"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " А я сегодня держу баланс между аналитикой и желанием пошутить не вовремя."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

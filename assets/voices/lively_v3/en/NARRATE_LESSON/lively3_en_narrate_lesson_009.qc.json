@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_009",
+  "sha256": "0fb184c3e8d95e3da1b44848d294f423ab5fc94cc6f80b363b5d90d86d5c545c",
+  "expected": "A random win doesn't validate every explanation. Terrible news for good storytelling.",
+  "transcript": "A random when doesn't validate every explanation. Terrible news for good storytelling.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08201,
+    "peak": 0.34857,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.163,
+    "sha256": "0fb184c3e8d95e3da1b44848d294f423ab5fc94cc6f80b363b5d90d86d5c545c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.08,
+      "text": " A random when doesn't validate every explanation."
+    },
+    {
+      "start": 3.08,
+      "end": 5.28,
+      "text": " Terrible news for good storytelling."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

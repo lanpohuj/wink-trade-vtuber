@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_021",
+  "sha256": "2ae68eac779663ac36b071793b4d8b00492dddf2be51b34ad15d65aca6b6f529",
+  "expected": "A shorter timeframe doesn't make outcomes predictable. Just shorter.",
+  "transcript": "A shorter time frame doesn't make outcomes predictable. Just shorter.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08217,
+    "peak": 0.60043,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.238,
+    "sha256": "2ae68eac779663ac36b071793b4d8b00492dddf2be51b34ad15d65aca6b6f529"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " A shorter time frame doesn't make outcomes predictable. Just shorter."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

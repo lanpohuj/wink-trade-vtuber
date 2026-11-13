@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_007",
+  "sha256": "12f5d985a8d0d56342cdb7547bbcd6669adb9684062abaeca8f46b4f3b2ab9f2",
+  "expected": "Trade closed green. Yes, I'm glowing a little. There's a reason.",
+  "transcript": "Trade closed green. Yes, I'm glowing a little. There's a reason.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08604,
+    "peak": 0.44272,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.159,
+    "sha256": "12f5d985a8d0d56342cdb7547bbcd6669adb9684062abaeca8f46b4f3b2ab9f2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " Trade closed green. Yes, I'm glowing a little. There's a reason."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

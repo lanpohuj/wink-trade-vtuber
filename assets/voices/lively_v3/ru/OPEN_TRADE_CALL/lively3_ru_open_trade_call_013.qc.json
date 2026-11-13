@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_013",
+  "sha256": "14608d287cd3dc6cc15d70897f17c2225418950effe3ad8a1e8d3fd079381124",
+  "expected": "Открылись вверх: пробой прошёл проверку ретестом. Мой комментарий уже догоняет событие.",
+  "transcript": "Открылись вверх. Пробой прошел проверку ретестом. Мой комментарий уже догоняет событие.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08968,
+    "peak": 0.5086,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.134,
+    "sha256": "14608d287cd3dc6cc15d70897f17c2225418950effe3ad8a1e8d3fd079381124"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Открылись вверх. Пробой прошел проверку ретестом. Мой комментарий уже догоняет событие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

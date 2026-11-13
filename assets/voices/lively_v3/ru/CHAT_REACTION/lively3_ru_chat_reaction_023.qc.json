@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_023",
+  "sha256": "d90fb2a12b5b6a5d2890c16d8d9c5c305a02cc89671dfb97faccf8aedb5f266a",
+  "expected": "Секретной команды нет: ссылка в шапке ведёт в бота с инструкцией.",
+  "transcript": "Секретной команды нет. Ссылка в шапке ведет в ботус инструкции.",
+  "similarity": 0.952,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08906,
+    "peak": 0.56294,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.084,
+    "sha256": "d90fb2a12b5b6a5d2890c16d8d9c5c305a02cc89671dfb97faccf8aedb5f266a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Секретной команды нет. Ссылка в шапке ведет в ботус инструкции."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

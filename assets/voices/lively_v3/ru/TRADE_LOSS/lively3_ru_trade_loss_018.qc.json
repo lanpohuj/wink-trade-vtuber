@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_018",
+  "sha256": "f590ba6d433b62bdc128fa53f08067660875ae423a0ed481c3310e64a17d2d60",
+  "expected": "Минус подтверждён. Отдельный результат не превращаем в повод для хаоса.",
+  "transcript": "Минус подтверждён. Отдельный результат не превращаем в повод для хаоса.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08428,
+    "peak": 0.42071,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.077,
+    "sha256": "f590ba6d433b62bdc128fa53f08067660875ae423a0ed481c3310e64a17d2d60"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Минус подтверждён."
+    },
+    {
+      "start": 3.24,
+      "end": 6.24,
+      "text": " Отдельный результат не превращаем в повод для хаоса."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

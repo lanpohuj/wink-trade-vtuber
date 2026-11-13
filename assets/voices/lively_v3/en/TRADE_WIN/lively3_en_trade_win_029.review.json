@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_029",
+  "phrase_id": "lively3_en_trade_win_029",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "This result's positive. Nice when joy doesn't need announcing in advance.",
+  "tts_text": "[lightly playful, smiling] This result's positive. Nice when joy doesn't need announcing in advance.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "45128925346ff7bcd3bdf3b0feafb6878c2cbdfbb0c13ca05990c0f5d34d3aac",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_029",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_029.mp3",
+  "duration": 4.545187,
+  "sha256": "288b9584937daaf856f2c31c5b9f7d5b7e95ea2fafbfac0935df85d15e55b313",
+  "request_payload": {
+    "text": "[lightly playful, smiling] This result's positive. Nice when joy doesn't need announcing in advance.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

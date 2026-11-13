@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_065",
+  "sha256": "5171f911df836fa486b7383025bec6384005d5c5f0a24ba53efeb1daae6cc828",
+  "expected": "Сначала данные, потом выводы. Удивительно неудобный порядок, но правильный.",
+  "transcript": "Сначала данные, потом выводы. Удивительно неудобный порядок, но правильный.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.09269,
+    "peak": 0.38947,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "5171f911df836fa486b7383025bec6384005d5c5f0a24ba53efeb1daae6cc828"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Сначала данные, потом выводы."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Удивительно неудобный порядок, но правильный."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

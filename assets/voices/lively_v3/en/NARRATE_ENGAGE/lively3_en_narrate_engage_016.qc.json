@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_016",
+  "sha256": "ad02ed83dc811ecaf5ba164b90211cc5ca24409b2ed03a4e073ea2df880ef314",
+  "expected": "Joke didn't land? Skip it. Never happened. I've already moved on.",
+  "transcript": "Joke didn't land. Skip it. Never happened. I've already moved on.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08113,
+    "peak": 0.41005,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.21,
+    "sha256": "ad02ed83dc811ecaf5ba164b90211cc5ca24409b2ed03a4e073ea2df880ef314"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Joke didn't land. Skip it. Never happened. I've already moved on."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

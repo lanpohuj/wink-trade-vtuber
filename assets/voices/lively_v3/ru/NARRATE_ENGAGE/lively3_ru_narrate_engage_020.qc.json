@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_020",
+  "sha256": "1587390b6554db4c434ff871bbfb170c16068e6e307b34604b423f412aed9f04",
+  "expected": "Сижу с лицом «всё под контролем». А внутри вкладок открыто, чат, вы бы знали.",
+  "transcript": "Сижу с лицом всё под контролем, а внутри вкладок открытый чат. Вы бы знали.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08832,
+    "peak": 0.40601,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.088,
+    "sha256": "1587390b6554db4c434ff871bbfb170c16068e6e307b34604b423f412aed9f04"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Сижу с лицом всё под контролем, а внутри вкладок открытый чат. Вы бы знали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

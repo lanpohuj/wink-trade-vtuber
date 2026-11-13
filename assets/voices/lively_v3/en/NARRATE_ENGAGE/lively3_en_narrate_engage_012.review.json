@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_012",
+  "phrase_id": "lively3_en_narrate_engage_012",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Which explanations work better: concise, or with my inevitable commentary?",
+  "tts_text": "[natural, conversational] Which explanations work better: concise, or with my inevitable commentary?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4feed83d5a4bdc86dff0b82b31afd4171fedcdf3a1f3571b211a56cdab0dda3c",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_012",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_012.mp3",
+  "duration": 5.30275,
+  "sha256": "e5f1889d73a17b7469ee40f51065bc0d7a365824a8a4aefb1777c5e86ae8d21b",
+  "request_payload": {
+    "text": "[natural, conversational] Which explanations work better: concise, or with my inevitable commentary?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

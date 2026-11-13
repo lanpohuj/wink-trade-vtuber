@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_013",
+  "sha256": "41deb7d4067e85527a80b8decbc8dd9b7e47c371fc8d4f0ef5dde47a66090daf",
+  "expected": "Наблюдаю спокойно. Хотя слово «спокойно» иногда приходится себе напоминать.",
+  "transcript": "Наблюдая спокойно, хотя слово «спокойно» иногда приходится себе напоминать.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08478,
+    "peak": 0.3509,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "41deb7d4067e85527a80b8decbc8dd9b7e47c371fc8d4f0ef5dde47a66090daf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Наблюдая спокойно, хотя слово «спокойно» иногда приходится себе напоминать."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

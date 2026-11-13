@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_007",
+  "sha256": "a05aa05d06558e8dfcb451a8501efc57b60eb1ac62718c9276df5a3bc4f57604",
+  "expected": "The button isn't going anywhere. Its flirting is admittedly effective.",
+  "transcript": "The button isn't going anywhere. It's flirting is admittedly effective.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08644,
+    "peak": 0.37611,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.259,
+    "sha256": "a05aa05d06558e8dfcb451a8501efc57b60eb1ac62718c9276df5a3bc4f57604"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " The button isn't going anywhere. It's flirting is admittedly effective."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

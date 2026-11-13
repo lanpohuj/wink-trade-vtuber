@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_007",
+  "phrase_id": "lively3_ru_narrate_volatility_007",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Расширение диапазонов видно в свежих данных. Тут моя эмоциональность ни при чём.",
+  "tts_text": "[conversational] Расширение диапазонов видно в свежих данных. Тут моя эмоциональность ни при чём.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5929361693c29b2e6e3c511d9a17889fa84cd5e99e26043ffb835291e6658df5",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_007",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_007.mp3",
+  "duration": 4.910938,
+  "sha256": "209c9447f1c0b1b0909617f9b0977f05cb503a866dd4c260ba49dbcadb9c602e",
+  "request_payload": {
+    "text": "[conversational] Расширение диапазонов видно в свежих данных. Тут моя эмоциональность ни при чём.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

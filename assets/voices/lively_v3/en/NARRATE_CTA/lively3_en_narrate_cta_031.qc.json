@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_031",
+  "sha256": "3e4a1f9ad8c27371d47f47fdf815e0345b70c3c4e9f939a6b130093623b9f046",
+  "expected": "While there's a gap: bot in bio. It handles instructions; I handle commentary.",
+  "transcript": "Well, there's a gap, but in bio. It handles instructions, I handle commentary.",
+  "similarity": 0.942,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.0802,
+    "peak": 0.43155,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.276,
+    "sha256": "3e4a1f9ad8c27371d47f47fdf815e0345b70c3c4e9f939a6b130093623b9f046"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Well, there's a gap, but in bio. It handles instructions, I handle commentary."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

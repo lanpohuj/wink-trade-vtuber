@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_008",
+  "phrase_id": "lively3_en_narrate_lesson_008",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Changed conditions don't grant the old idea lifetime membership.",
+  "tts_text": "[natural, conversational] Changed conditions don't grant the old idea lifetime membership.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b006c0ad4aba5b3202de4ead3684978bac862195078f6ad8639ba4ba04afb54a",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_008",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_008.mp3",
+  "duration": 3.813812,
+  "sha256": "331b3f4b37e39a1eeacda8e59c661c931865b856f0ef5a4eaa1a91ad3d717318",
+  "request_payload": {
+    "text": "[natural, conversational] Changed conditions don't grant the old idea lifetime membership.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

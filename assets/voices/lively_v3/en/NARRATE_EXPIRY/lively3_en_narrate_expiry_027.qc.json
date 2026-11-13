@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_027",
+  "sha256": "dcbf78fda595e4645aff735123d9ef4b7b7bb434c8708514d0859743521c398b",
+  "expected": "Two-minute trade. Definitely too early for the final reaction.",
+  "transcript": "Two-minute trade. Definitely too early for the final reaction.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0788,
+    "peak": 0.36899,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.234,
+    "sha256": "dcbf78fda595e4645aff735123d9ef4b7b7bb434c8708514d0859743521c398b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7600000000000002,
+      "text": " Two-minute trade. Definitely too early for the final reaction."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

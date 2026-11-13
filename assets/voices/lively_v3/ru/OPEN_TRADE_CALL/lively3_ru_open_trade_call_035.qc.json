@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_035",
+  "sha256": "44d21bd1a8c84ae068a07b922c582d6f93f9246ffe9a0377440d2414c2c2e4f1",
+  "expected": "Открылись вверх после локального разворота с подтверждением. Просто называю причину входа.",
+  "transcript": "Открылись вверх после локального разворота с подтверждением. Роста называю причину входа.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.09118,
+    "peak": 0.38889,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "44d21bd1a8c84ae068a07b922c582d6f93f9246ffe9a0377440d2414c2c2e4f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Открылись вверх после локального разворота с подтверждением."
+    },
+    {
+      "start": 3.4,
+      "end": 5.4,
+      "text": " Роста называю причину входа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

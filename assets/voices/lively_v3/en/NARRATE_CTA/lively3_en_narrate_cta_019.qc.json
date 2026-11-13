@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_019",
+  "sha256": "ef1996a1080a9324345f906a828612bba7c46208f0e84711992e7eaab86584c9",
+  "expected": "Checking out the tools? The bot in my bio explains the conditions. Have a proper read.",
+  "transcript": "Checking out the tools the bot in my bio explains the conditions have a proper read",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08455,
+    "peak": 0.51942,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.209,
+    "sha256": "ef1996a1080a9324345f906a828612bba7c46208f0e84711992e7eaab86584c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": " Checking out the tools the bot in my bio explains the conditions have a proper read"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

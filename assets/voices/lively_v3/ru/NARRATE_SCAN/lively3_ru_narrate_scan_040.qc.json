@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_040",
+  "sha256": "6eae323cb9122993114f88353116dd216c3405df4ef19d92149c20b88a7d55d5",
+  "expected": "Мне нравится идея, которую можно объяснить просто. Сейчас как раз проверяю.",
+  "transcript": "Мне нравится идея, которую можно объяснить просто, но сейчас как раз проверяю.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.0819,
+    "peak": 0.40992,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.142,
+    "sha256": "6eae323cb9122993114f88353116dd216c3405df4ef19d92149c20b88a7d55d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Мне нравится идея, которую можно объяснить просто, но сейчас как раз проверяю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

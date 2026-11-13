@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_018",
+  "sha256": "9b38c7b4dc5e2bdcf3cefae9c2d4364a10e0e79f4c61b647f5aba8ee809defd7",
+  "expected": "Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией.",
+  "transcript": "Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.09077,
+    "peak": 0.66666,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "9b38c7b4dc5e2bdcf3cefae9c2d4364a10e0e79f4c61b647f5aba8ee809defd7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

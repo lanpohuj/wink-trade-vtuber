@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_027",
+  "phrase_id": "lively3_ru_open_trade_call_027",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Подтверждённый отбой дал вход вверх. Сделка уже на экране, руки отдыхают.",
+  "tts_text": "[conversational] Подтверждённый отбой дал вход вверх. Сделка уже на экране, руки отдыхают.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "02d77d276c55ce2baf82f09cb6bdf369e5b04a1d53244a3ee0b417d87d9f4bc9",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_027",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_027.mp3",
+  "duration": 4.989312,
+  "sha256": "4880b4c569bf036f6fe5990ab93d7e33a1308967ebf417b07c96ca8d4a2f29fc",
+  "request_payload": {
+    "text": "[conversational] Подтверждённый отбой дал вход вверх. Сделка уже на экране, руки отдыхают.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

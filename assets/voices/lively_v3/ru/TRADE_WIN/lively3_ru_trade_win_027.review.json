@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_027",
+  "phrase_id": "lively3_ru_trade_win_027",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюс! Ну, это было вкусно. Всё, чуть-чуть порадовалась, дальше работаем.",
+  "tts_text": "[conversational] Плюс! Ну, это было вкусно. Всё, чуть-чуть порадовалась, дальше работаем.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1a8789f6956585be43207c76e38e54fa039aea3770de4c42f8031c260d9bdb82",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_027",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_027.mp3",
+  "duration": 5.433375,
+  "sha256": "761cd6704043f72ed593dccd29f96da23bf976071817f3f725cd738f89a2f40a",
+  "request_payload": {
+    "text": "[conversational] Плюс! Ну, это было вкусно. Всё, чуть-чуть порадовалась, дальше работаем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

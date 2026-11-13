@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_026",
+  "sha256": "1fe798d6475d66bee4d98e37a557b879344998def0b17775e0a62a01c8da2671",
+  "expected": "Compare setups before entering. Opinions get more expensive afterwards.",
+  "transcript": "Compare setups before entering. Opinions get more expensive afterwards.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08296,
+    "peak": 0.50064,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.245,
+    "sha256": "1fe798d6475d66bee4d98e37a557b879344998def0b17775e0a62a01c8da2671"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Compare setups before entering."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Opinions get more expensive afterwards."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

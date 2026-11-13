@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_009",
+  "sha256": "5e92b29b546fc9761480ea9426563acb1b43c6c9c72e9ad8bd43b74048d4e22a",
+  "expected": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+  "transcript": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.695,
+    "rms": 0.07435,
+    "peak": 0.31511,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "5e92b29b546fc9761480ea9426563acb1b43c6c9c72e9ad8bd43b74048d4e22a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

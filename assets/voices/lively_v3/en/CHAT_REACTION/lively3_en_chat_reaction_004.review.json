@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_004",
+  "phrase_id": "lively3_en_chat_reaction_004",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Hello, newcomers! No dress code or scheduled serious faces.",
+  "tts_text": "[natural, conversational] Hello, newcomers! No dress code or scheduled serious faces.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3863b7ec048069256d592f7b548d1fb97cb44b47cfc240535c1bbf6603b41cb7",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_004",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_004.mp3",
+  "duration": 4.545187,
+  "sha256": "27a79046565659e6692b5b57fae9bf4de895486e9c8a75414ca4d639b374e071",
+  "request_payload": {
+    "text": "[natural, conversational] Hello, newcomers! No dress code or scheduled serious faces.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

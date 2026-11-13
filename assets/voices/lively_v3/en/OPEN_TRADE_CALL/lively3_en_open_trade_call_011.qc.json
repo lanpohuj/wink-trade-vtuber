@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_011",
+  "sha256": "b0291e1c5b16591b9eba484ef888c2bfdf6eb0e59d3457cf2a2eeb2fffd1aa49",
+  "expected": "Up trade opened on the breakout and closed retest. More than one flashy move.",
+  "transcript": "Up trade opened on the breakout and closed retest. More than one flashy move.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.0851,
+    "peak": 0.50529,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.238,
+    "sha256": "b0291e1c5b16591b9eba484ef888c2bfdf6eb0e59d3457cf2a2eeb2fffd1aa49"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Up trade opened on the breakout and closed retest. More than one flashy move."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

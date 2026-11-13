@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_021",
+  "sha256": "328b9eb5f12d72a9719937ccbb1b29af79601b99269761b2d315531d9ec8d2ba",
+  "expected": "Opened down on confirmed range rejection. Outcome hasn't signed off yet.",
+  "transcript": "Open down on confirmed range rejection outcome hasn't signed off yet",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08073,
+    "peak": 0.36674,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.148,
+    "sha256": "328b9eb5f12d72a9719937ccbb1b29af79601b99269761b2d315531d9ec8d2ba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.28,
+      "text": " Open down on confirmed range rejection outcome hasn't signed off yet"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

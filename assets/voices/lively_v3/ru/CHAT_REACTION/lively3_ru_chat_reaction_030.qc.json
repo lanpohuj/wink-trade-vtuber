@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_030",
+  "sha256": "fbf42400666dbac0ac07b8f9d5e69563a0b5ab7b437f8fa6179ad08e18e6effa",
+  "expected": "Для знакомства с инструментами загляни в бота через профиль. Инструкция уже внутри.",
+  "transcript": "Для знакомства с инструментами заглянив боты через профиль. Инструкция уже внутри.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08174,
+    "peak": 0.3594,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "fbf42400666dbac0ac07b8f9d5e69563a0b5ab7b437f8fa6179ad08e18e6effa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Для знакомства с инструментами заглянив боты через профиль. Инструкция уже внутри."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

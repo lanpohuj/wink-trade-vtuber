@@ -122,21 +122,21 @@ def normalize(text, lang="ru"):
     text = text.lower().replace("ё", "е")
     forms = (
         [
-            ("two hundred (?:and )?forty[- ]two", "242"),
-            ("one hundred (?:and )?ten", "110"),
+            (r"two[-\s]+hundred(?:[-\s]+and)?[-\s]+forty[-\s]+two", "242"),
+            (r"one[-\s]+hundred(?:[-\s]+and)?[-\s]+ten", "110"),
             ("fifty", "50"),
             ("fifteen", "15"),
             ("thirty", "30"),
-            ("half a minute", "30"),
+            (r"half[-\s]+a[-\s]+minute", "30"),
         ]
         if lang == "en"
         else [
             ("двести сорок два", "242"),
             ("сто десять", "110"),
-            ("пятьдесят", "50"),
+            (r"пятьдесят|пятидесяти", "50"),
             ("пятнадцать", "15"),
             ("тридцать", "30"),
-            ("полминуты", "30"),
+            (r"пол\s*минуты", "30"),
         ]
     )
     for words, number in forms:
@@ -144,7 +144,7 @@ def normalize(text, lang="ru"):
     return re.sub(r"[^a-zа-я0-9]", "", text)
 
 
-def qc():
+def qc(only_ids=None):
     import numpy as np
     from faster_whisper import WhisperModel
     from tools.audit_voice_bank import measure
@@ -160,6 +160,8 @@ def qc():
     source = {r["id"]: r for r in json.loads(CATALOG.read_text())["records"]}
     for category in manifest["categories"].values():
         for row in category:
+            if only_ids and row['id'] not in only_ids:
+                continue
             if row["text_sha256"] != source[row["id"]]["text_sha256"]:
                 raise ValueError("Catalog text changed; regenerate " + row["id"])
             row["conditions"] = source[row["id"]]["conditions"]
@@ -263,7 +265,8 @@ def qc():
     (BANK / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     )
-    QC_OUTPUT.write_text(
+    report_path = QC_OUTPUT.with_name('qc-selected.json') if only_ids else QC_OUTPUT
+    report_path.write_text(
         json.dumps(
             {"auditory_review_complete": False, "records": reports},
             ensure_ascii=False,
@@ -271,7 +274,7 @@ def qc():
         )
         + "\n"
     )
-    (BANK / "qc.json").write_text(
+    (BANK / ('qc-selected.json' if only_ids else 'qc.json')).write_text(
         json.dumps({"records": reports}, ensure_ascii=False, indent=2) + "\n"
     )
 

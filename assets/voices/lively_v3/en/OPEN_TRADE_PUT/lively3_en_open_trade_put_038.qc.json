@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_038",
+  "sha256": "419c7301e74ba38db925172840e95763a86f088af555f88459a32fe1b9cfde82",
+  "expected": "Entered down after reversal confirmation. The outcome gets its own line.",
+  "transcript": "Enter down after reversal confirmation the outcome gets its own line",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08486,
+    "peak": 0.38829,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.262,
+    "sha256": "419c7301e74ba38db925172840e95763a86f088af555f88459a32fe1b9cfde82"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.94,
+      "text": " Enter down after reversal confirmation the outcome gets its own line"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

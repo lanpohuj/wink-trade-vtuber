@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_006",
+  "sha256": "2b890451f7b290913db4540dd34676eab0627383b9f59cc9f0c46c2ef0c15a81",
+  "expected": "Спасибо за подписку! Теперь официально можно привыкать к моим комментариям.",
+  "transcript": "Спасибо за подписку! Теперь официально можно привыкать к моим комментариям!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08919,
+    "peak": 0.43624,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.107,
+    "sha256": "2b890451f7b290913db4540dd34676eab0627383b9f59cc9f0c46c2ef0c15a81"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Спасибо за подписку! Теперь официально можно привыкать к моим комментариям!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

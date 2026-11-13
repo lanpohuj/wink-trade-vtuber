@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_011",
+  "phrase_id": "lively3_en_chat_reaction_011",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "A gift! Thank you, that's lovely. I briefly misplaced my sarcasm.",
+  "tts_text": "[warm, relaxed] A gift! Thank you, that's lovely. I briefly misplaced my sarcasm.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "77d039db8d4374c4df625f93b345470ebd73b3e75a23b816d35c1bd61c97e780",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_011",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_011.mp3",
+  "duration": 5.4595,
+  "sha256": "ddb6d7cf8a12ccfbaba2517f2485fe214ccd6f80ba6bd1fa5f308e506ed7f204",
+  "request_payload": {
+    "text": "[warm, relaxed] A gift! Thank you, that's lovely. I briefly misplaced my sarcasm.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

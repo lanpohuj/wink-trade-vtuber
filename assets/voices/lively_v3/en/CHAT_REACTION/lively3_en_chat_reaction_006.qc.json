@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_006",
+  "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb",
+  "expected": "Thanks for following! You may now officially get used to my commentary.",
+  "transcript": "Thanks for following. You may now officially get used to my commentary.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08422,
+    "peak": 0.35868,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "a40839e67e6069be866f5453750cbad978636ff0ee965b1f1ed3013bd6b10fdb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Thanks for following. You may now officially get used to my commentary."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

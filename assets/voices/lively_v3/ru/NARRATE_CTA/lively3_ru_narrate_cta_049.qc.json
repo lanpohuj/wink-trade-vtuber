@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_049",
+  "sha256": "eb0b8e8f5e3f4d19aba567a8335a8a03ff02749d68fe963541b613d1cb10fb22",
+  "expected": "На всякий случай оставлю словесную стрелочку вверх: ссылка на бота в профиле.",
+  "transcript": "На всякий случай оставлю словесную стрелочку вверх. Ссылка на бота в профиле.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07985,
+    "peak": 0.37655,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.119,
+    "sha256": "eb0b8e8f5e3f4d19aba567a8335a8a03ff02749d68fe963541b613d1cb10fb22"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " На всякий случай оставлю словесную стрелочку вверх."
+    },
+    {
+      "start": 2.88,
+      "end": 4.48,
+      "text": " Ссылка на бота в профиле."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_026",
+  "phrase_id": "lively3_ru_narrate_cta_026",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Для тех, кто любит разбираться сам: бот в шапке профиля. Инструкция не кусается.",
+  "tts_text": "[conversational] Для тех, кто любит разбираться сам: бот в шапке профиля. Инструкция не кусается.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "da23a66ae85211bd3bb719a36459be285fa12408cfce3d75e3d98b34edcd101a",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_026",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_026.mp3",
+  "duration": 5.72075,
+  "sha256": "7c4eca737827296bc03120383f95928faebae8cbb3fb1dc39beb6f35d2d75935",
+  "request_payload": {
+    "text": "[conversational] Для тех, кто любит разбираться сам: бот в шапке профиля. Инструкция не кусается.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_012",
+  "sha256": "47c9d1e8fdd550d2ad3249b5696df33887d02c12a76fd73cbceffa00a6673fba",
+  "expected": "Nice win! Keeping the ego away from the next entry, though. I know myself.",
+  "transcript": "Nice win! Keeping the ego away from the next entry, though. I know myself.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08056,
+    "peak": 0.45306,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.252,
+    "sha256": "47c9d1e8fdd550d2ad3249b5696df33887d02c12a76fd73cbceffa00a6673fba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Nice win! Keeping the ego away from the next entry, though. I know myself."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

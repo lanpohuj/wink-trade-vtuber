@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_015",
+  "sha256": "90a42ae856859f5008d19a47586818c89d59f39c4269b6aa0f39a12c1e070124",
+  "expected": "Closed green. One deserved happy second, then back to watching calmly.",
+  "transcript": "Closed green one deserved happy second then back to watching calmly",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08155,
+    "peak": 0.56701,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.087,
+    "sha256": "90a42ae856859f5008d19a47586818c89d59f39c4269b6aa0f39a12c1e070124"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Closed green one deserved happy second then back to watching calmly"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

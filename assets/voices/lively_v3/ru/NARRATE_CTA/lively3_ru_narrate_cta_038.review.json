@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_038",
+  "phrase_id": "lively3_ru_narrate_cta_038",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Ссылка на бота в профиле. Хоть одна вещь в интернете лежит на своём месте.",
+  "tts_text": "[conversational] Ссылка на бота в профиле. Хоть одна вещь в интернете лежит на своём месте.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d7ab8f5bf1c9cf966640aa752dc42c669157d0043337554133b1c2bab09b6dfa",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_038",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_038.mp3",
+  "duration": 5.041563,
+  "sha256": "9abf3834dcd474a25d1cc5bad7db6973858a3274dfbfdc206828002d561fc965",
+  "request_payload": {
+    "text": "[conversational] Ссылка на бота в профиле. Хоть одна вещь в интернете лежит на своём месте.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

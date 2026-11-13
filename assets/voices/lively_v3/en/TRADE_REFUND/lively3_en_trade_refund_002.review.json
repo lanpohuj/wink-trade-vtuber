@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_002",
+  "phrase_id": "lively3_en_trade_refund_002",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Stake's back, chat. Refund, so the winner's crown stays put.",
+  "tts_text": "[gently sarcastic, conversational] Stake's back, chat. Refund, so the winner's crown stays put.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e201ac1e10679ed4d850271c76c19612c260d30802e2648fb1816e2b4e4d66e5",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:crown",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_002.mp3",
+  "duration": 4.33625,
+  "sha256": "78c00ee66759ddffe1af0bd3d3d5ceb43a3e1e5b0cbc0725ac5c30fda990afd0",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Stake's back, chat. Refund, so the winner's crown stays put.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

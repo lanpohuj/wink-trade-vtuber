@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_023",
+  "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316",
+  "expected": "New pair on screen. Give me a moment to meet its personality.",
+  "transcript": "New pair on screen. Give me a moment to meet its personality.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08047,
+    "peak": 0.34131,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " New pair on screen. Give me a moment to meet its personality."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

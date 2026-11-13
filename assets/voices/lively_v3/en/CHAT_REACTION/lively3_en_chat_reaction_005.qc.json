@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_005",
+  "sha256": "a195b1808c45310b2bbe9f884aba17d73b358d5102cf2a9e4b7b4e8009805c57",
+  "expected": "Lovely to see new viewers. Settle in; questions welcome, exams cancelled.",
+  "transcript": "Lovely to see new viewers settle in questions welcome exams canceled",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08209,
+    "peak": 0.41899,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "a195b1808c45310b2bbe9f884aba17d73b358d5102cf2a9e4b7b4e8009805c57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.24,
+      "text": " Lovely to see new viewers settle in questions welcome exams canceled"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

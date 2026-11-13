@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_002",
+  "sha256": "6926031bee047910d3baa33252d3e7f78e4b79dea857fa1733541cecef55afe5",
+  "expected": "Down trade open. Pullback confirmed; waiting for the trade's outcome.",
+  "transcript": "Down trade open, pullback confirmed, waiting for the trade's outcome.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08343,
+    "peak": 0.42441,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "6926031bee047910d3baa33252d3e7f78e4b79dea857fa1733541cecef55afe5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Down trade open, pullback confirmed, waiting for the trade's outcome."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

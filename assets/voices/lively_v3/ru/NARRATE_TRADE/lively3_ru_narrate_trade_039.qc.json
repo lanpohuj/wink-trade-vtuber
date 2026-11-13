@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_039",
+  "sha256": "f38205f1b358c4630db934a179a4b7672f2081101a34712fee453141296232f3",
+  "expected": "Скипнуть ожидание нельзя. Да, обидно, я уже мысленно навела курсор.",
+  "transcript": "Скипнуть ожидания нельзя. Да, обидно. Я уже мысленно навела курсор.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.10214,
+    "peak": 0.8785,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.1,
+    "sha256": "f38205f1b358c4630db934a179a4b7672f2081101a34712fee453141296232f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Скипнуть ожидания нельзя."
+    },
+    {
+      "start": 2.0,
+      "end": 5.5,
+      "text": " Да, обидно. Я уже мысленно навела курсор."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

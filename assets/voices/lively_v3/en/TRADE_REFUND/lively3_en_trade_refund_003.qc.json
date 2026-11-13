@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_003",
+  "sha256": "c7b44921e2f0a5e22a6a8069ca3b73fb8ee5a39aac4466709ddfcffb160534c5",
+  "expected": "Trade closed with a refund. A calm status, like my rare quiet mode.",
+  "transcript": "Trade closed with a refund. A calm status, like my rare quiet mode.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08016,
+    "peak": 0.38939,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.249,
+    "sha256": "c7b44921e2f0a5e22a6a8069ca3b73fb8ee5a39aac4466709ddfcffb160534c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Trade closed with a refund. A calm status, like my rare quiet mode."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

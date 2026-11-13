@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_014",
+  "sha256": "6f250dd9301e54d78dfd2046946b308933c1535fad34a3b81b9b8131bbc4bd71",
+  "expected": "Открылись вниз: сначала пробой, затем закрытый ретест. Причину назвала, наблюдаем.",
+  "transcript": "Открылись вниз? Сначала пробой, затем закрытый ретест. Причину назвала. Наблюдаем?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.531,
+    "rms": 0.08543,
+    "peak": 0.37256,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "6f250dd9301e54d78dfd2046946b308933c1535fad34a3b81b9b8131bbc4bd71"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.44,
+      "text": " Открылись вниз? Сначала пробой, затем закрытый ретест. Причину назвала. Наблюдаем?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

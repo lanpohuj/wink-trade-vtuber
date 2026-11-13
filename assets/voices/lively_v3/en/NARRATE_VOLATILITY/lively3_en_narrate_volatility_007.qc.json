@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_007",
+  "sha256": "462df33fb9222b818677771b323740837c51299283f98a6d8d5c7d189dc04055",
+  "expected": "Wider ranges show in recent data. My emotional delivery isn't the cause.",
+  "transcript": "Wider ranges show in recent data. My emotional delivery isn't the cause.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08146,
+    "peak": 0.42115,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.205,
+    "sha256": "462df33fb9222b818677771b323740837c51299283f98a6d8d5c7d189dc04055"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Wider ranges show in recent data. My emotional delivery isn't the cause."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

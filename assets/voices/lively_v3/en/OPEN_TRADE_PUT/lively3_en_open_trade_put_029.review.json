@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_029",
+  "phrase_id": "lively3_en_open_trade_put_029",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Down on the range rejection, trade running. Overconfidence wasn't among the conditions.",
+  "tts_text": "[clear, conversational] Down on the range rejection, trade running. Overconfidence wasn't among the conditions.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d2a327717e92141ec34bb4696cedb43f4dccc37e045a32da4c8700825d006c20",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_029",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_029.mp3",
+  "duration": 5.4595,
+  "sha256": "16fc778af18b3fc712bd9c59abfd913a67116e1c23c1fda172852f2bf775b175",
+  "request_payload": {
+    "text": "[clear, conversational] Down on the range rejection, trade running. Overconfidence wasn't among the conditions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_008",
+  "sha256": "0a3179c5aff7edaa25f10fa67f84890debee4a3a472ac3ccd629cbc4d30fe827",
+  "expected": "Если условия изменились, старая идея не получает пожизненный абонемент.",
+  "transcript": "Если условия изменились, старые идеи не получают пожизненный абонемент.",
+  "similarity": 0.934,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.078,
+    "peak": 0.33138,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.005,
+    "sha256": "0a3179c5aff7edaa25f10fa67f84890debee4a3a472ac3ccd629cbc4d30fe827"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Если условия изменились, старые идеи не получают пожизненный абонемент."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

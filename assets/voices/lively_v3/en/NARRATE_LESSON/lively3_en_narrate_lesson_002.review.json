@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_002",
+  "phrase_id": "lively3_en_narrate_lesson_002",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Direction and expiry are separate decisions. One confident arrow won't cover both.",
+  "tts_text": "[gently sarcastic, conversational] Direction and expiry are separate decisions. One confident arrow won't cover both.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "504422b8bddc45276ca99d9a51d893da2001e3da677291f157b52ace938e2a40",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_002",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_002.mp3",
+  "duration": 5.2505,
+  "sha256": "179bd4c2879b5e4b822a1a377e152a2225da50ab2d563a3afc30698e92e44ab6",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Direction and expiry are separate decisions. One confident arrow won't cover both.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_015",
+  "phrase_id": "lively3_en_trade_win_015",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Closed green. One deserved happy second, then back to watching calmly.",
+  "tts_text": "[warm, relaxed] Closed green. One deserved happy second, then back to watching calmly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f796acf2dcb4bab50382b27cc2c0a1663f92211dac4801fa361b2f66872b03fa",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_015",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_015.mp3",
+  "duration": 4.806438,
+  "sha256": "90a42ae856859f5008d19a47586818c89d59f39c4269b6aa0f39a12c1e070124",
+  "request_payload": {
+    "text": "[warm, relaxed] Closed green. One deserved happy second, then back to watching calmly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

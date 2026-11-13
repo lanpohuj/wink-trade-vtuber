@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_024",
+  "sha256": "5fb1e668bd26b0debe61645a7b30174027c89a4c96102bd090d727f1319f4dc1",
+  "expected": "Profile, link, bot. A storyline with refreshingly few plot twists.",
+  "transcript": "Profile link bot a storyline with refreshingly few plot twists",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07598,
+    "peak": 0.52652,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.12,
+    "sha256": "5fb1e668bd26b0debe61645a7b30174027c89a4c96102bd090d727f1319f4dc1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.12,
+      "text": " Profile link bot a storyline with refreshingly few plot twists"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

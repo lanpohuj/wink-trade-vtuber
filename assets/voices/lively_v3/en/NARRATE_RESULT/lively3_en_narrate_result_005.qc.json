@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_005",
+  "sha256": "70213f8f736c24878beeea508a6be28ec49b6da8eb1cb8156c0edbfff1d8735c",
+  "expected": "Next size is one hundred and ten. The market owes no repayments on request.",
+  "transcript": "Next size is 110. The market owes no repayments on request.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08115,
+    "peak": 0.36229,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.209,
+    "sha256": "70213f8f736c24878beeea508a6be28ec49b6da8eb1cb8156c0edbfff1d8735c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Next size is 110. The market owes no repayments on request."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

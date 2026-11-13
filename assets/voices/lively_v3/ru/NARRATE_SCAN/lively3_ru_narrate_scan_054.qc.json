@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_054",
+  "sha256": "b199f7a2cad2cb2b6cfddd628e3a6a2efbfc25bae37dabdff8570e32b4b4db61",
+  "expected": "Тут важно не только заметить, но и не поспешить с выводом.",
+  "transcript": "Тут важно не только заметить, но и не поспешить с выводом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.09075,
+    "peak": 0.36133,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "b199f7a2cad2cb2b6cfddd628e3a6a2efbfc25bae37dabdff8570e32b4b4db61"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Тут важно не только заметить, но и не поспешить с выводом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

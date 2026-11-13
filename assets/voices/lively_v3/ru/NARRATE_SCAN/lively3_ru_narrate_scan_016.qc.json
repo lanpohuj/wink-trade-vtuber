@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_016",
+  "sha256": "cbf2a3d67e190123c81f08b4377c1c55b2621f7252cd771b40e699dd421c11b8",
+  "expected": "Если идею надо уговаривать десять минут, ну её. Гляну без розовых очков.",
+  "transcript": "Если идею надо уговаривать десять минут, ну и её, гляну без розовых очков.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08261,
+    "peak": 0.32051,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.12,
+    "sha256": "cbf2a3d67e190123c81f08b4377c1c55b2621f7252cd771b40e699dd421c11b8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Если идею надо уговаривать десять минут, ну и её, гляну без розовых очков."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

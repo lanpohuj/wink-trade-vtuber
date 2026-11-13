@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_022",
+  "phrase_id": "lively3_en_narrate_scan_022",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "If half the picture needs imagining, another look seems sensible.",
+  "tts_text": "[gently sarcastic, conversational] If half the picture needs imagining, another look seems sensible.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4f8a953063c8a04ed8a36ad4e1b29ba2fc992d5bea4f003f4b6f608bc6b0695d",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_022",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_022.mp3",
+  "duration": 3.9705,
+  "sha256": "b4806fe38e0a7bd1b8fce41c8829458bad58dc5f99efcc2c9d2b72c336c2706d",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] If half the picture needs imagining, another look seems sensible.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

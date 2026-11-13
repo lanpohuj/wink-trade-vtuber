@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_003",
+  "phrase_id": "lively3_en_narrate_lesson_003",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The score reflects matching conditions. It isn't a promised win probability.",
+  "tts_text": "[warm, relaxed] The score reflects matching conditions. It isn't a promised win probability.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c1853b94ff6cc996008ba010903e54ba1e97044dbe98b14b7b5529aa1a253ea0",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_003",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_003.mp3",
+  "duration": 5.041563,
+  "sha256": "0d62636c9ec9b7b562ec64e328f64f098cc274106b71a6a128b6cb36c16f47dd",
+  "request_payload": {
+    "text": "[warm, relaxed] The score reflects matching conditions. It isn't a promised win probability.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_013",
+  "sha256": "a3a6ad6403793646d8734ae5068fbdd54d111042456b5b3ef50a6c8bf72db0aa",
+  "expected": "Thirty-second expiry, chat. Even if my voice sounds extremely impatient.",
+  "transcript": "30 second expiry chat even if my voice sounds extremely impatient",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08192,
+    "peak": 0.46233,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.119,
+    "sha256": "a3a6ad6403793646d8734ae5068fbdd54d111042456b5b3ef50a6c8bf72db0aa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " 30 second expiry chat even if my voice sounds extremely impatient"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

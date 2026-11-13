@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_027",
+  "sha256": "4880b4c569bf036f6fe5990ab93d7e33a1308967ebf417b07c96ca8d4a2f29fc",
+  "expected": "Подтверждённый отбой дал вход вверх. Сделка уже на экране, руки отдыхают.",
+  "transcript": "Подтвержденный отбой дал вход вверх. Сделка уже на экране, руки отдыхают.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08698,
+    "peak": 0.44926,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "4880b4c569bf036f6fe5990ab93d7e33a1308967ebf417b07c96ca8d4a2f29fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Подтвержденный отбой дал вход вверх."
+    },
+    {
+      "start": 2.56,
+      "end": 5.0600000000000005,
+      "text": " Сделка уже на экране, руки отдыхают."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

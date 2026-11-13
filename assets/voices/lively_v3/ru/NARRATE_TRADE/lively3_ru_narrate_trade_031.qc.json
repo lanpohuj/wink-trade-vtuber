@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_031",
+  "sha256": "641334a6a9fb970769be01b8d0362607d7cb497c86511e6466e86f7075d1275b",
+  "expected": "Чат, не торопим финал. Даже моей харизме это полномочие не выдали.",
+  "transcript": "Чат, не торопим финал. Даже моей харизме это полномочие не выдали.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.10749,
+    "peak": 0.74494,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.079,
+    "sha256": "641334a6a9fb970769be01b8d0362607d7cb497c86511e6466e86f7075d1275b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Чат, не торопим финал. Даже моей харизме это полномочие не выдали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

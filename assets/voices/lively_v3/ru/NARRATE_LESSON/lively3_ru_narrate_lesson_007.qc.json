@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_007",
+  "sha256": "44faaf08f2ffedf53daf8bf5c78331d9500f5bf3ba529b8dc68662db271067a4",
+  "expected": "Уверенность ведущей — часть подачи. Проверять нужно основания, а не тембр.",
+  "transcript": "Уверенность ведущей, часть подачи, проверять нужно основание, а не тембр.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.0811,
+    "peak": 0.30799,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.172,
+    "sha256": "44faaf08f2ffedf53daf8bf5c78331d9500f5bf3ba529b8dc68662db271067a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Уверенность ведущей, часть подачи, проверять нужно основание, а не тембр."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_003",
+  "sha256": "b60167b3c06d8b346d57cb71e883e5d2dcb681e431be6cb45b5e02b7b8e1db1d",
+  "expected": "Buy opened on the trend pullback. My confident pose isn't part of the setup.",
+  "transcript": "Buy opened on the trend pullback. My confident pose isn't part of the setup.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07946,
+    "peak": 0.43954,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.268,
+    "sha256": "b60167b3c06d8b346d57cb71e883e5d2dcb681e431be6cb45b5e02b7b8e1db1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Buy opened on the trend pullback. My confident pose isn't part of the setup."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

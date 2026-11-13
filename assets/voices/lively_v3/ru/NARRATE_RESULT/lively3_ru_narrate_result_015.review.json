@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_015",
+  "phrase_id": "lively3_ru_narrate_result_015",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "По плану возвращаем пятьдесят. Результаты сохраняются как были, без косметики.",
+  "tts_text": "[conversational] По плану возвращаем пятьдесят. Результаты сохраняются как были, без косметики.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "442abe5de3403277720a3f73c9cff9c57dce42b3ac0b16794540f235843fe541",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_015",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_015.mp3",
+  "duration": 5.433375,
+  "sha256": "b8905a37e55213f20f5c5d7048eb3b108280c0ab67b4405f395d784ba8e3a008",
+  "request_payload": {
+    "text": "[conversational] По плану возвращаем пятьдесят. Результаты сохраняются как были, без косметики.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

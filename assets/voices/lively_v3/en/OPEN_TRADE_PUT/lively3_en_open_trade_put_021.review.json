@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_021",
+  "phrase_id": "lively3_en_open_trade_put_021",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down on confirmed range rejection. Outcome hasn't signed off yet.",
+  "tts_text": "[clear, conversational] Opened down on confirmed range rejection. Outcome hasn't signed off yet.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "80b9ba7e6910c20bfab80644f0be1a10b74d3119ba286ee7ebf1bf1f94cefe55",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_021",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_021.mp3",
+  "duration": 4.728063,
+  "sha256": "328b9eb5f12d72a9719937ccbb1b29af79601b99269761b2d315531d9ec8d2ba",
+  "request_payload": {
+    "text": "[clear, conversational] Opened down on confirmed range rejection. Outcome hasn't signed off yet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

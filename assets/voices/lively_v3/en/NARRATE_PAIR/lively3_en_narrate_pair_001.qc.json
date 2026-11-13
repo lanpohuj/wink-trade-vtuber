@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_001",
+  "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51",
+  "expected": "New pair, fresh page. Previous impressions stay outside.",
+  "transcript": "New pair, fresh page. Previous impressions stay outside.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.06828,
+    "peak": 0.29859,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " New pair, fresh page. Previous impressions stay outside."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

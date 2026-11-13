@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_022",
+  "sha256": "9bf2b5dfce7cac3b4284e486d4afb5c931f8c3cb7bdd9f98e7952e013a7d81f5",
+  "expected": "Small reminder: open the bot through my bio. The steps are laid out inside.",
+  "transcript": "Small reminder open the bot through my bio the steps are laid out inside",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07426,
+    "peak": 0.37829,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.179,
+    "sha256": "9bf2b5dfce7cac3b4284e486d4afb5c931f8c3cb7bdd9f98e7952e013a7d81f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Small reminder open the bot through my bio the steps are laid out inside"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

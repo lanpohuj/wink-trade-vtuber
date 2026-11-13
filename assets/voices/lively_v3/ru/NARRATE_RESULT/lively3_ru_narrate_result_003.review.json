@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_003",
+  "phrase_id": "lively3_ru_narrate_result_003",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "После минуса следующий шаг сто десять. Торопиться из-за этого не собираюсь.",
+  "tts_text": "[conversational] После минуса следующий шаг сто десять. Торопиться из-за этого не собираюсь.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "bc8083bce6f50fd6e1628c30b19115b15b23553f486a847ec1d893695f61f618",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_003",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_003.mp3",
+  "duration": 4.675813,
+  "sha256": "8cf8ecef4b81e49bf949def7f09d7c98e2bd2c1d6ce0630e4e4cea52567cb06f",
+  "request_payload": {
+    "text": "[conversational] После минуса следующий шаг сто десять. Торопиться из-за этого не собираюсь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

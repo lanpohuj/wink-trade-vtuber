@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_036",
+  "phrase_id": "lively3_en_narrate_lesson_036",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A direction is a scenario, not the market's promise. I can't sign on its behalf.",
+  "tts_text": "[natural, conversational] A direction is a scenario, not the market's promise. I can't sign on its behalf.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "df67039d11bc600bc599f68dd2953bb28acf0ac7a25ea493a2f19e52ee6062f9",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_036",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_036.mp3",
+  "duration": 5.172125,
+  "sha256": "7ee9786ef22b9852fa5bc33b9dd612bc5fee9f766e4952aa4e11e6a390756072",
+  "request_payload": {
+    "text": "[natural, conversational] A direction is a scenario, not the market's promise. I can't sign on its behalf.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

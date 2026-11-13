@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_030",
+  "sha256": "bca45ff9647df7aa669a4d0f9bd021c982c2f33cf6cd304e1ffeb0aab6f361bd",
+  "expected": "Результат объявлю по факту. Мне хватает драматургии без выдуманных спойлеров.",
+  "transcript": "Результат объявлю по факту. Мне хватает драматургии без выдуманных спойлеров.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.09007,
+    "peak": 0.34565,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.075,
+    "sha256": "bca45ff9647df7aa669a4d0f9bd021c982c2f33cf6cd304e1ffeb0aab6f361bd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Результат объявлю по факту."
+    },
+    {
+      "start": 1.8,
+      "end": 4.32,
+      "text": " Мне хватает драматургии без выдуманных спойлеров."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

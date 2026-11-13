@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_008",
+  "sha256": "744dbdf957ce00f3c438536f07534a2d30e5f317635dd002d59007a798c8cfd8",
+  "expected": "Мой любимый формат общения — когда можно спросить без страха выглядеть новичком.",
+  "transcript": "Мой любимый формат общения, когда можно спросить без страха выглядеть новичком.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07718,
+    "peak": 0.33688,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.122,
+    "sha256": "744dbdf957ce00f3c438536f07534a2d30e5f317635dd002d59007a798c8cfd8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Мой любимый формат общения, когда можно спросить без страха выглядеть новичком."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

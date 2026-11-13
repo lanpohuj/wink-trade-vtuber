@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_refund_010",
+  "sha256": "f7803f9f397751ace9bbb66dd8250d1fa6505c636525f912f5646068a63bb999",
+  "expected": "Возврат, чат. Не плюс, не минус. Просто такой вайб у финала.",
+  "transcript": "Возврат, Чат! Не плюс, не минус! Просто такой вай по финалу!",
+  "similarity": 0.933,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07414,
+    "peak": 0.30484,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "f7803f9f397751ace9bbb66dd8250d1fa6505c636525f912f5646068a63bb999"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.56,
+      "text": " Возврат, Чат!"
+    },
+    {
+      "start": 1.56,
+      "end": 3.0,
+      "text": " Не плюс, не минус!"
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Просто такой вай по финалу!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

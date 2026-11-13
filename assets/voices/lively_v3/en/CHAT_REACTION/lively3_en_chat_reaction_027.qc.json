@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_027",
+  "sha256": "a7fc9c0495198dff47ab469b6b79a0c36cedeae4f350cce427280cc1d33fd77b",
+  "expected": "Shortest route: profile, link, bot. Then follow its instructions.",
+  "transcript": "Shortest route. Profile. Link. Bought. Then follow its instructions.",
+  "similarity": 0.972,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07977,
+    "peak": 0.53112,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.14,
+    "sha256": "a7fc9c0495198dff47ab469b6b79a0c36cedeae4f350cce427280cc1d33fd77b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Shortest route. Profile. Link. Bought. Then follow its instructions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

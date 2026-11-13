@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_037",
+  "phrase_id": "lively3_ru_open_trade_put_037",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Продажа открыта по подтверждённому локальному развороту. Крупный тренд не объявляю.",
+  "tts_text": "[conversational] Продажа открыта по подтверждённому локальному развороту. Крупный тренд не объявляю.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e769329b5b72ecd334964200281df0e45f2e1fecbdf15a508db71dfe0b57055e",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_037",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_037.mp3",
+  "duration": 4.649687,
+  "sha256": "a93a1bf5cd493c2d9e8c183fffff9fdfabb98b037e9a8dc5a61e4ae72adf6963",
+  "request_payload": {
+    "text": "[conversational] Продажа открыта по подтверждённому локальному развороту. Крупный тренд не объявляю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

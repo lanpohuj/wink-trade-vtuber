@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_result_009",
+  "sha256": "0f6c346ee2a8d4eeeb4c54dc945fde29aae91149dae153a5ad01fd1696afa8e3",
+  "expected": "Next stake is two hundred and forty-two. Facts beat the urge to recover a loss.",
+  "transcript": "Next stake is 242. Facts beat the urge to recover a loss.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.0861,
+    "peak": 0.5471,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.161,
+    "sha256": "0f6c346ee2a8d4eeeb4c54dc945fde29aae91149dae153a5ad01fd1696afa8e3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Next stake is 242."
+    },
+    {
+      "start": 2.7,
+      "end": 5.3,
+      "text": " Facts beat the urge to recover a loss."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

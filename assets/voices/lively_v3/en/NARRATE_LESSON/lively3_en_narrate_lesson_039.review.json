@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_039",
+  "phrase_id": "lively3_en_narrate_lesson_039",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Checks still matter after a good streak. Overconfidence loves those moments.",
+  "tts_text": "[warm, relaxed] Checks still matter after a good streak. Overconfidence loves those moments.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "094228d7cdba6dac6c133bf34f526c18a4405789842b5ed84662d8018ed44590",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_039",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_039.mp3",
+  "duration": 5.172125,
+  "sha256": "cdfe5fd10badc6df45df80081e49eed3d7a6cda25cb8aa3f3db96d955cdb5b8a",
+  "request_payload": {
+    "text": "[warm, relaxed] Checks still matter after a good streak. Overconfidence loves those moments.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

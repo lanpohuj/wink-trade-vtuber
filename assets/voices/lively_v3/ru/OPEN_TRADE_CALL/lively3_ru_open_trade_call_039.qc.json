@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_039",
+  "sha256": "1c895b1ed0095ed55e05cfb7fd932b9f406994d82ea29740ba10e35de6cdbb8e",
+  "expected": "Открытие вверх зафиксировано. Сценарий локального разворота, без обещаний большого шествия.",
+  "transcript": "Открытие вверх зафиксировано в сценарии локального разворота без обещаний большого шествия.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08675,
+    "peak": 0.36679,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "1c895b1ed0095ed55e05cfb7fd932b9f406994d82ea29740ba10e35de6cdbb8e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Открытие вверх зафиксировано в сценарии локального разворота без обещаний большого шествия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

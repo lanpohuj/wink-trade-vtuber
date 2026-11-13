@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_012",
+  "sha256": "e5f1889d73a17b7469ee40f51065bc0d7a365824a8a4aefb1777c5e86ae8d21b",
+  "expected": "Which explanations work better: concise, or with my inevitable commentary?",
+  "transcript": "Which explanations work better? Concise? Or with my inevitable commentary?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07627,
+    "peak": 0.33419,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.203,
+    "sha256": "e5f1889d73a17b7469ee40f51065bc0d7a365824a8a4aefb1777c5e86ae8d21b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Which explanations work better? Concise? Or with my inevitable commentary?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

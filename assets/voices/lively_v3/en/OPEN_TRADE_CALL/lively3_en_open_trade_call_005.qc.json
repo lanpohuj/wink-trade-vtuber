@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_005",
+  "sha256": "8415365033b923b77f608b94ba7941aace3cae3b550395beca8689ad1d9fab53",
+  "expected": "Up trade opened on the pullback setup. Watching now, no fuss.",
+  "transcript": "Hup! Trade opened on the pullback setup. Watching now, no fuss!",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07938,
+    "peak": 0.3688,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.179,
+    "sha256": "8415365033b923b77f608b94ba7941aace3cae3b550395beca8689ad1d9fab53"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Hup! Trade opened on the pullback setup. Watching now, no fuss!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

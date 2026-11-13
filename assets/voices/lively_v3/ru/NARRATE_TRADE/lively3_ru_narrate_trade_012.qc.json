@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_012",
+  "sha256": "1b071e92170f2755f595d0dd8b4f7c6105899698e2adb8575888d6e30563c356",
+  "expected": "Сделка работает по выбранному сроку. Мой комментарий её не ускоряет.",
+  "transcript": "Сделка работает по выбранному сроку. Мой комментарий ее не ускоряет.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.09287,
+    "peak": 0.47372,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "1b071e92170f2755f595d0dd8b4f7c6105899698e2adb8575888d6e30563c356"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Сделка работает по выбранному сроку."
+    },
+    {
+      "start": 2.56,
+      "end": 4.5600000000000005,
+      "text": " Мой комментарий ее не ускоряет."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

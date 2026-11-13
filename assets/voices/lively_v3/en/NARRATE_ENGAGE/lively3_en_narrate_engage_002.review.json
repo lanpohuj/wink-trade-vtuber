@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_002",
+  "phrase_id": "lively3_en_narrate_engage_002",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Hey to the quiet viewers too. No compulsory roll call. Make yourselves comfortable.",
+  "tts_text": "[casual] Hey to the quiet viewers too. No compulsory roll call. Make yourselves comfortable.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "15bda4f469ff9cc58a8babdb469dec5189ac932f9881e86cd4ab3978d7eeda57",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_002",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_002.mp3",
+  "duration": 5.642375,
+  "sha256": "176002d9da7f1e320ffa9fcf7e94a94a29d82f89ab83c421ed40f0236e2bb009",
+  "request_payload": {
+    "text": "[casual] Hey to the quiet viewers too. No compulsory roll call. Make yourselves comfortable.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

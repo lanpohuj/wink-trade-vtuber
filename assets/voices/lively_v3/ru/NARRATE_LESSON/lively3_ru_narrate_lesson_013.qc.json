@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_013",
+  "sha256": "9a6ca9891891513cdbf7f4cfdb6db86f4b7d885ac75d1d230bec09946bc9bab3",
+  "expected": "После открытия сценарий уже выбран. Подгонять объяснение под каждую свечу не надо.",
+  "transcript": "После открытия сценария уже выбран. Подгонять объяснение под каждую свечу не надо.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.09073,
+    "peak": 0.33862,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "9a6ca9891891513cdbf7f4cfdb6db86f4b7d885ac75d1d230bec09946bc9bab3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " После открытия сценария уже выбран. Подгонять объяснение под каждую свечу не надо."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

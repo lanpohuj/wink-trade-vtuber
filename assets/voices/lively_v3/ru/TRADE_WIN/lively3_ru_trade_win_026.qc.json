@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_026",
+  "sha256": "aaca8f2a3d7a96ef6b5b07fcf754a890e36cbf6c75edc4056b1e77e80b906efc",
+  "expected": "Плюсовой результат на месте. Внутренние аплодисменты короткие, но искренние.",
+  "transcript": "Плюсовой результат на месте. Внутренние аплодисменты короткие, но и искренние.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08109,
+    "peak": 0.32788,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "aaca8f2a3d7a96ef6b5b07fcf754a890e36cbf6c75edc4056b1e77e80b906efc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Плюсовой результат на месте. Внутренние аплодисменты короткие, но и искренние."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

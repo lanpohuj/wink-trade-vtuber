@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_002",
+  "sha256": "4a8ab04d2642879a9c3eb67bb3ae61007b7c751f9c1bd2418460fa3f787d99fc",
+  "expected": "Тем, кто смотрит молча, тоже привет. Никакой обязательной переклички, отдыхайте.",
+  "transcript": "Тем, кто смотрит молча, тоже привет! Никакой обязательно переклички, отдыхайте!",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.0746,
+    "peak": 0.32549,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.088,
+    "sha256": "4a8ab04d2642879a9c3eb67bb3ae61007b7c751f9c1bd2418460fa3f787d99fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Тем, кто смотрит молча, тоже привет!"
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 5.08,
+      "text": " Никакой обязательно переклички, отдыхайте!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

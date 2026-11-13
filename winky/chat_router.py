@@ -494,7 +494,8 @@ class ChatRouter:
                 f"[happy] Great pick {clean_user}! Switching to {requested_pair} next!",
             ]
             ack = random.choice(ack_phrases_ru if lang == "ru" else ack_phrases_en)
-            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion="wink", reply_text=ack)
+            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion="wink", reply_text=ack,
+                                                 profile=profile, recent_context=list(self._recent_chat))
             return
 
         lower_text = text.lower()
@@ -539,7 +540,8 @@ class ChatRouter:
                     return
                 from winky.deepseek import generate_smart_local_reply
                 stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang,
-                    emotion='happy', reply_text=generate_smart_local_reply(clean_user, text, lang))
+                    emotion='happy', reply_text=generate_smart_local_reply(clean_user, text, lang),
+                    profile=profile, recent_context=list(self._recent_chat))
                 return
             # Ordinary greetings/skepticism go through the same conversational
             # responder as other comments, rather than one fixed keyword line.
@@ -551,6 +553,8 @@ class ChatRouter:
             text=text,
             lang=lang,
             emotion=detected_emo or "happy",
+            profile=profile,
+            recent_context=list(self._recent_chat),
         )
 
     def handle_join(self, user: str, force: bool = False, lang: str = "auto") -> None:

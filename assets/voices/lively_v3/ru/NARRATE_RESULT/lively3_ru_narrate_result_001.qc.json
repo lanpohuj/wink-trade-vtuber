@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_001",
+  "sha256": "ccb6db745c3f73f9eea301593da022966252579045da330f9d433f25128daece",
+  "expected": "Следующая ставка сто десять по плану. Это не повод обходить проверку входа.",
+  "transcript": "Следующая ставка 110 по плану. Это не повод обходить проверку входа.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08615,
+    "peak": 0.42934,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "ccb6db745c3f73f9eea301593da022966252579045da330f9d433f25128daece"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Следующая ставка 110 по плану."
+    },
+    {
+      "start": 2.32,
+      "end": 4.5200000000000005,
+      "text": " Это не повод обходить проверку входа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

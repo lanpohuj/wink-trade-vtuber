@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_030",
+  "sha256": "105c7bf931116635df342fad1dae9ce368783b8924d40afd7f274401d804efc6",
+  "expected": "Точное число на экране ещё не делает вывод безошибочным.",
+  "transcript": "Точное число на экране еще не делает вывод безошибочным.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.09786,
+    "peak": 0.50655,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.13,
+    "sha256": "105c7bf931116635df342fad1dae9ce368783b8924d40afd7f274401d804efc6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " Точное число на экране еще не делает вывод безошибочным."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_011",
+  "sha256": "40a2bae5c125b8a7ba18da8298865e4610b5efdd6edea3f8cc2a7e32e86eac5a",
+  "expected": "Если у меня слишком умный вид, не пугайтесь. Это иногда просто освещение.",
+  "transcript": "Если у меня слишком умный вид, не пугайтесь. Это иногда просто освещение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07522,
+    "peak": 0.36962,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.123,
+    "sha256": "40a2bae5c125b8a7ba18da8298865e4610b5efdd6edea3f8cc2a7e32e86eac5a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Если у меня слишком умный вид, не пугайтесь. Это иногда просто освещение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

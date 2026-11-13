@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_013",
+  "phrase_id": "lively3_ru_trade_win_013",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Есть плюс, чат! Всё, пару секунд я тут главная звезда. Потерпите.",
+  "tts_text": "[conversational] Есть плюс, чат! Всё, пару секунд я тут главная звезда. Потерпите.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c24dab0ae09017e0e50224f880ac6a0e483938d72ceb312cedd20d83c4fb8caf",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_013",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_013.mp3",
+  "duration": 5.328875,
+  "sha256": "73d5824ea118cfd3cb33b35ef5dd3e0cda0a352ccea6578494f9ac95400b6621",
+  "request_payload": {
+    "text": "[conversational] Есть плюс, чат! Всё, пару секунд я тут главная звезда. Потерпите.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

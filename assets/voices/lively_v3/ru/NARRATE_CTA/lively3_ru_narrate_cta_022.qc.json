@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_022",
+  "sha256": "8e13dd1181e936232cef37fe27fd9be1621847c8d1777c5a422da8d97713bf78",
+  "expected": "Небольшое напоминание: бот открывается из шапки профиля. Внутри всё разложено по шагам.",
+  "transcript": "Небольшое напоминание. Бот открывается из шапки профиля. Внутри все разложено по шагам.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.0777,
+    "peak": 0.33383,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "8e13dd1181e936232cef37fe27fd9be1621847c8d1777c5a422da8d97713bf78"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Небольшое напоминание. Бот открывается из шапки профиля. Внутри все разложено по шагам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

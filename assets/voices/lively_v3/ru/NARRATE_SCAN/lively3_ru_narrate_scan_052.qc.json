@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_052",
+  "sha256": "d3ce93d4c79577727e8271cc7f73061cd1efbd663406bfa121d6bf7c189f7c5c",
+  "expected": "Проверяю, где заканчиваются факты и начинается моя фантазия.",
+  "transcript": "Проверяю, где заканчиваются факты и начинается моя фантазия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.579,
+    "rms": 0.09421,
+    "peak": 0.40707,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "d3ce93d4c79577727e8271cc7f73061cd1efbd663406bfa121d6bf7c189f7c5c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.5,
+      "text": " Проверяю, где заканчиваются факты и начинается моя фантазия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

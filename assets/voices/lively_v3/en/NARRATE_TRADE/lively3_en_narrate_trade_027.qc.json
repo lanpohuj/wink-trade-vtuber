@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_027",
+  "sha256": "193db941f5f38452015999354391004b93b896f87ed82f01b36b885feadf1654",
+  "expected": "Waiting for the close. No poll on where we'd prefer price to go.",
+  "transcript": "Waiting for the close. No poll on where we prefer price to go.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.0798,
+    "peak": 0.37345,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.216,
+    "sha256": "193db941f5f38452015999354391004b93b896f87ed82f01b36b885feadf1654"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Waiting for the close. No poll on where we prefer price to go."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

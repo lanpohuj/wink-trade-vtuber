@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_035",
+  "sha256": "82f3fb5632d79fd73388efada093a34ec6195125bc35d988cdb1ecdd7ec4bd7f",
+  "expected": "Бот в шапке, если нужен. Чекните условия внутри, там без моих лирических отступлений.",
+  "transcript": "Вот в шапке. Если нужен, чекните условия внутри. Там без моих лирических отступлений.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.07641,
+    "peak": 0.316,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.78,
+    "sha256": "82f3fb5632d79fd73388efada093a34ec6195125bc35d988cdb1ecdd7ec4bd7f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Вот в шапке. Если нужен, чекните условия внутри. Там без моих лирических отступлений."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

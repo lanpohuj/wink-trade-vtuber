@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_027",
+  "sha256": "4f6e7b7025c4ec6ce19175c5765b11bb82829d8386635a37cb2d44e6d7efe5be",
+  "expected": "Quick useful note: bot through my bio. The conditions are explained there.",
+  "transcript": "Click Useful Note. Bought through my bio, the conditions are explained there.",
+  "similarity": 0.943,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08334,
+    "peak": 0.51205,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.228,
+    "sha256": "4f6e7b7025c4ec6ce19175c5765b11bb82829d8386635a37cb2d44e6d7efe5be"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Click Useful Note. Bought through my bio, the conditions are explained there."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

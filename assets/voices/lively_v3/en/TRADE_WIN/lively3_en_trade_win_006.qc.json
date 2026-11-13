@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_006",
+  "sha256": "c454d192b9081f75af8c4cf2ff10867c25a1a4d4c2493c035247992c89effb18",
+  "expected": "Now I'm pleased. Held it in until closing; do admire the restraint.",
+  "transcript": "Now I'm pleased. Held it in until closing. Do admire the restraint.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08106,
+    "peak": 0.37334,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "c454d192b9081f75af8c4cf2ff10867c25a1a4d4c2493c035247992c89effb18"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Now I'm pleased. Held it in until closing. Do admire the restraint."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

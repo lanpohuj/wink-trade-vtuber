@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_014",
+  "phrase_id": "lively3_en_narrate_expiry_014",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Thirty seconds already selected. My jokes don't reconfigure the timer.",
+  "tts_text": "[clear, conversational] Thirty seconds already selected. My jokes don't reconfigure the timer.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4fc0ea462e0998efa41fb8e8047ba6df5ffcce39e4160017407b76706686ffe4",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_014",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_014.mp3",
+  "duration": 5.172125,
+  "sha256": "2479fd95fd2fda9de199c638a0fe50ee9c900e120f4bf73cf7f5c873c86fa0bf",
+  "request_payload": {
+    "text": "[clear, conversational] Thirty seconds already selected. My jokes don't reconfigure the timer.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

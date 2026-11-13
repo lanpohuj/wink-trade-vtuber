@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_012",
+  "phrase_id": "lively3_ru_narrate_trade_012",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сделка работает по выбранному сроку. Мой комментарий её не ускоряет.",
+  "tts_text": "[conversational] Сделка работает по выбранному сроку. Мой комментарий её не ускоряет.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "401ffb3fa7b0201fc72d7367f67795cc559287fb46dae4f118dcaabe45702780",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_012",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_012.mp3",
+  "duration": 4.545187,
+  "sha256": "1b071e92170f2755f595d0dd8b4f7c6105899698e2adb8575888d6e30563c356",
+  "request_payload": {
+    "text": "[conversational] Сделка работает по выбранному сроку. Мой комментарий её не ускоряет.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

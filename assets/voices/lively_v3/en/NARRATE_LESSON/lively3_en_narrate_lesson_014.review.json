@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_014",
+  "phrase_id": "lively3_en_narrate_lesson_014",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Count the result after closing. Before then, joy is on a provisional contract.",
+  "tts_text": "[gently sarcastic, conversational] Count the result after closing. Before then, joy is on a provisional contract.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "320d36a2a99b748b1833bc9790345f646d721c46d644a8858da6dc251409827a",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_014",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_014.mp3",
+  "duration": 5.328875,
+  "sha256": "9fd5804b58f39b4da1aaa179aedf738b335616f2b9070934a879d21cdeac98c3",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Count the result after closing. Before then, joy is on a provisional contract.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

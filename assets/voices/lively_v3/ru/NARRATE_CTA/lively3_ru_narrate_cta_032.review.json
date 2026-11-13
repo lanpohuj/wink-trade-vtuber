@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_032",
+  "phrase_id": "lively3_ru_narrate_cta_032",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "В шапке профиля наша единственная официальная ссылка на бота. Так проще не перепутать.",
+  "tts_text": "[conversational] В шапке профиля наша единственная официальная ссылка на бота. Так проще не перепутать.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b4821a6e8e23ed5758e37070ffe0a04bf4a1c7282c9d97d4bbb487d2985926dd",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_032",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_032.mp3",
+  "duration": 4.989312,
+  "sha256": "2a6214e41c48a08f1073fe3421e7e0c4c3b3e6955382bd1f5a95ef67e1868978",
+  "request_payload": {
+    "text": "[conversational] В шапке профиля наша единственная официальная ссылка на бота. Так проще не перепутать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

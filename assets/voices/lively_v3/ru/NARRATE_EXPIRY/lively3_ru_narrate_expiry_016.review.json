@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_016",
+  "phrase_id": "lively3_ru_narrate_expiry_016",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Окно тридцать секунд. Смотрим этот отрезок, не придумываем целую эпоху.",
+  "tts_text": "[conversational] Окно тридцать секунд. Смотрим этот отрезок, не придумываем целую эпоху.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6a0c8808afbe9ffa1f968bc0952fd3604fa568e217d210874a673dcc8983d528",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_016",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_016.mp3",
+  "duration": 5.041563,
+  "sha256": "6790dbebdbcefae3655fc4ede2cc5833133947e7bf6f112a8be87772e9ca421e",
+  "request_payload": {
+    "text": "[conversational] Окно тридцать секунд. Смотрим этот отрезок, не придумываем целую эпоху.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_038",
+  "sha256": "d0b795f119a7d36c1a908f5470bdb72fc33c15ac9097e8ddb590cb22c80c9654",
+  "expected": "Вошли вверх после разворотного подтверждения. Финальную оценку оставляю времени.",
+  "transcript": "Вошли вверх после разворотного подтверждения. Финальную оценку оставляю времени.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08479,
+    "peak": 0.34424,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.148,
+    "sha256": "d0b795f119a7d36c1a908f5470bdb72fc33c15ac9097e8ddb590cb22c80c9654"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Вошли вверх после разворотного подтверждения."
+    },
+    {
+      "start": 2.5,
+      "end": 4.5,
+      "text": " Финальную оценку оставляю времени."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_026",
+  "sha256": "4e2696d651116a3ba596df0b42acb3e9e4a11a4e69db87079e3e425fc0f15484",
+  "expected": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+  "transcript": "Доступ объясняется в ботте, он по ссылке в профиле. Если шаг не понятен, уточни какой.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08621,
+    "peak": 0.37174,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "4e2696d651116a3ba596df0b42acb3e9e4a11a4e69db87079e3e425fc0f15484"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Доступ объясняется в ботте, он по ссылке в профиле."
+    },
+    {
+      "start": 2.72,
+      "end": 4.88,
+      "text": " Если шаг не понятен, уточни какой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

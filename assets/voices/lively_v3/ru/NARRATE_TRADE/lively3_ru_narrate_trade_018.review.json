@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_018",
+  "phrase_id": "lively3_ru_narrate_trade_018",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Таймер не поддаётся обаянию. Первый такой стойкий собеседник за вечер.",
+  "tts_text": "[conversational] Таймер не поддаётся обаянию. Первый такой стойкий собеседник за вечер.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5ecabfd23e6289bd35a55ec909734f959872f6c935f530eedf5617849e075eeb",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_018",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_018.mp3",
+  "duration": 4.101125,
+  "sha256": "fb21c672d7d1162735b664b100cb1f8c150e3b9b20757bb77362d7d3022ff4bb",
+  "request_payload": {
+    "text": "[conversational] Таймер не поддаётся обаянию. Первый такой стойкий собеседник за вечер.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_039",
+  "sha256": "e4899bfdf7d8080cd305c4717fc3a8ea40885d81f63699b8d32e10421095ad98",
+  "expected": "Проверка нужна и после красивой серии. Самоуверенность любит такие моменты.",
+  "transcript": "Проверка нужна. И после красивой серии. Самоуверенность любит такие моменты.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.0874,
+    "peak": 0.36533,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.072,
+    "sha256": "e4899bfdf7d8080cd305c4717fc3a8ea40885d81f63699b8d32e10421095ad98"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " Проверка нужна. И после красивой серии."
+    },
+    {
+      "start": 3.2,
+      "end": 5.5600000000000005,
+      "text": " Самоуверенность любит такие моменты."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

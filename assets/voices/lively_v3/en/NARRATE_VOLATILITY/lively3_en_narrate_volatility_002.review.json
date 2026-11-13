@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_002",
+  "phrase_id": "lively3_en_narrate_volatility_002",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Recent candle ranges widened. More actual drama on screen.",
+  "tts_text": "[gently sarcastic, conversational] Recent candle ranges widened. More actual drama on screen.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3e7f1b63d2d167dc147aa329fd67d41672466e545d76719e419ac53761a899b3",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_002",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_002.mp3",
+  "duration": 4.545187,
+  "sha256": "8f12ab77d178e259a15b8d42747b90adcac5fafb794431a93e73fdf3145c488c",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Recent candle ranges widened. More actual drama on screen.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

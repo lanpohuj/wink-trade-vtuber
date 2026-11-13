@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_032",
+  "phrase_id": "lively3_ru_narrate_expiry_032",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь две минуты на сделку. Уговорить часы ускориться пока никому не удалось.",
+  "tts_text": "[conversational] Здесь две минуты на сделку. Уговорить часы ускориться пока никому не удалось.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e4a964c44b97a2391fb92557fc6be90dbfdcfe33455d4a65239cc62eb311e843",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_032",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_032.mp3",
+  "duration": 4.414625,
+  "sha256": "c837e8be07218c732b29ec59167c189d417b0d45faa305f297a36dc7e8d40d2f",
+  "request_payload": {
+    "text": "[conversational] Здесь две минуты на сделку. Уговорить часы ускориться пока никому не удалось.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

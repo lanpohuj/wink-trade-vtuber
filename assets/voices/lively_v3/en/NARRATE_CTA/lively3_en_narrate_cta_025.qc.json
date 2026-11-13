@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_025",
+  "sha256": "8351d52eb95c5b45b2da67ecf70f2a9433e4a42cb43f46342ef8fe51f4caf4a5",
+  "expected": "No need to memorise an address from my voice. The bot link's already in my bio.",
+  "transcript": "No need to memorize an address from my voice. The bot link's already in my bio.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08348,
+    "peak": 0.33971,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.245,
+    "sha256": "8351d52eb95c5b45b2da67ecf70f2a9433e4a42cb43f46342ef8fe51f4caf4a5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " No need to memorize an address from my voice. The bot link's already in my bio."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

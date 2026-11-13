@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_026",
+  "phrase_id": "lively3_ru_narrate_expiry_026",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбраны две минуты. Это срок сделки, а не обещание результата.",
+  "tts_text": "[conversational] Выбраны две минуты. Это срок сделки, а не обещание результата.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "da8493d2a0943bf722a7ef83da701597ee9ec3c622e25f097a1609ceae22c82f",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_026",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_026.mp3",
+  "duration": 4.23175,
+  "sha256": "8c2d7b1edfcb915763dabd9ebcbe8ee6725780e38d07ab63a5567a5305094c93",
+  "request_payload": {
+    "text": "[conversational] Выбраны две минуты. Это срок сделки, а не обещание результата.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

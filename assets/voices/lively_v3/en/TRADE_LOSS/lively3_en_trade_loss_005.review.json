@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_005",
+  "phrase_id": "lively3_en_trade_loss_005",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Negative result. Annoying, but no spoken argument with the chart.",
+  "tts_text": "[calm, mildly disappointed] Negative result. Annoying, but no spoken argument with the chart.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4e6b59890631c2ea8f98f1462296f39a371c252474a4b1f2ef01671a791db485",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_005",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_005.mp3",
+  "duration": 4.414625,
+  "sha256": "afdba45f970851a2af8ea7b099898b4f0aefcabaf43b72fb1f3158236014d9da",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Negative result. Annoying, but no spoken argument with the chart.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

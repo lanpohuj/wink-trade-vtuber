@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_002",
+  "phrase_id": "lively3_en_narrate_cta_002",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Looking for the bot? Check my bio. No dramatic side quest required.",
+  "tts_text": "[gently sarcastic, conversational] Looking for the bot? Check my bio. No dramatic side quest required.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "23d34901e6f4b347f95dd21f3daa7859d1892ce0e74acf7482561d8af62b7451",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_002",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_002.mp3",
+  "duration": 4.728063,
+  "sha256": "e0abdce0600fc1842bd8f69a7fb7ead64e5b38a9aff52b809f4cb9b877757892",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Looking for the bot? Check my bio. No dramatic side quest required.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

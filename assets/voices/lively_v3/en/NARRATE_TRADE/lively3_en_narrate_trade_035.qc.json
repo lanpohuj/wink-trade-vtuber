@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_035",
+  "sha256": "eae7858a5860b7a48421153e27ed98fb176f50c5f365c320056c5d4ff64af210",
+  "expected": "Clocks don't take persuasion. Shame; I'd have made quite the pitch.",
+  "transcript": "Clocks don't take persuasion. Shame, I'd have made quite the pitch.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.06578,
+    "peak": 0.35298,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.108,
+    "sha256": "eae7858a5860b7a48421153e27ed98fb176f50c5f365c320056c5d4ff64af210"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Clocks don't take persuasion. Shame, I'd have made quite the pitch."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

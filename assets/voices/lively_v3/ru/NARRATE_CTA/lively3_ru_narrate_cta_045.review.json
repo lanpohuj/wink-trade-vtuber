@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_045",
+  "phrase_id": "lively3_ru_narrate_cta_045",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Про бота напомнила и исчезаю с рекламой. Ссылка в шапке профиля, чат, не теряйте.",
+  "tts_text": "[conversational] Про бота напомнила и исчезаю с рекламой. Ссылка в шапке профиля, чат, не теряйте.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f66b8043d97e46583ee2e42a435fd86f4a3e51b3cd1d47deefd189217357d66e",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_045",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_045.mp3",
+  "duration": 5.564,
+  "sha256": "88eeefd2f8136868243758da8eb2c6e922d41eaa762f5b0797554d793505dec6",
+  "request_payload": {
+    "text": "[conversational] Про бота напомнила и исчезаю с рекламой. Ссылка в шапке профиля, чат, не теряйте.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_004",
+  "phrase_id": "lively3_ru_chat_reaction_004",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Привет новеньким! Сегодня без строгого дресс-кода и умных лиц по расписанию.",
+  "tts_text": "[conversational] Привет новеньким! Сегодня без строгого дресс-кода и умных лиц по расписанию.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "517f1a4756a2afbf40a731cf35457352eff3b7173775d1f0bf699bfe292e3ed4",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_004",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_004.mp3",
+  "duration": 5.642375,
+  "sha256": "9115176e0bf538fc4662881688c73bdf628ef520aa66088e4e09be3634890532",
+  "request_payload": {
+    "text": "[conversational] Привет новеньким! Сегодня без строгого дресс-кода и умных лиц по расписанию.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

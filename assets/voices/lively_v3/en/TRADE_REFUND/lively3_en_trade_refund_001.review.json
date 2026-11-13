@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_001",
+  "phrase_id": "lively3_en_trade_refund_001",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Stake returned. This ending needs neither victory music nor sad credits.",
+  "tts_text": "[lightly playful, smiling] Stake returned. This ending needs neither victory music nor sad credits.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1fd46732847a619aff12e5d850ac83915772ff8ddd3e6d02465ba65ac64529fa",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_001",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_001.mp3",
+  "duration": 5.172125,
+  "sha256": "d2d741086f27a185c66f753fb8b4bd615b15b63fca3c87aa9cea8be7510521e2",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Stake returned. This ending needs neither victory music nor sad credits.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

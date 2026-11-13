@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_009",
+  "sha256": "f18c46e1047677137c9cd9f15866fd36444274d55de7ae07f0d1dcc0832aeb28",
+  "expected": "Let me be picky for a second, chat. Better now than inventing excuses later.",
+  "transcript": "Let me be picky for a second, chat. Better now than inventing excuses later.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08377,
+    "peak": 0.38102,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "f18c46e1047677137c9cd9f15866fd36444274d55de7ae07f0d1dcc0832aeb28"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Let me be picky for a second, chat. Better now than inventing excuses later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

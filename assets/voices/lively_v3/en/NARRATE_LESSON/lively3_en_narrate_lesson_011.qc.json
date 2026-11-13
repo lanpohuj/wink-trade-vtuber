@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_011",
+  "sha256": "ca6c4280afdd53f1054bdbbc2e058f2369ac940b506451df3bf1442caa710f0e",
+  "expected": "Clicking out of boredom? Hard pass. I'd rather tell another questionable joke.",
+  "transcript": "Clicking out of boredom? Hard pass. I'd rather tell another questionable joke.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08101,
+    "peak": 0.41929,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.302,
+    "sha256": "ca6c4280afdd53f1054bdbbc2e058f2369ac940b506451df3bf1442caa710f0e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Clicking out of boredom? Hard pass. I'd rather tell another questionable joke."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

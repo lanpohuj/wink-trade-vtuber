@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_001",
+  "sha256": "ef10316a5e9eb10f89715d440a3bc364b889e6b76adceb44dce088d47de84176",
+  "expected": "Opened down after the confirmed pullback. The button's already had its line.",
+  "transcript": "Open down after the confirmed pullback. The buttons already had its line.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08271,
+    "peak": 0.40991,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.295,
+    "sha256": "ef10316a5e9eb10f89715d440a3bc364b889e6b76adceb44dce088d47de84176"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Open down after the confirmed pullback. The buttons already had its line."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

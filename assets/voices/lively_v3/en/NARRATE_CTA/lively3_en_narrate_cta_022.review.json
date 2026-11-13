@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_022",
+  "phrase_id": "lively3_en_narrate_cta_022",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Small reminder: open the bot through my bio. The steps are laid out inside.",
+  "tts_text": "[gently sarcastic, conversational] Small reminder: open the bot through my bio. The steps are laid out inside.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0da96458eceb6d474223e375b12e671123aa696b711d9b6876b465b63e2d3d16",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_022",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_022.mp3",
+  "duration": 4.858688,
+  "sha256": "9bf2b5dfce7cac3b4284e486d4afb5c931f8c3cb7bdd9f98e7952e013a7d81f5",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Small reminder: open the bot through my bio. The steps are laid out inside.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

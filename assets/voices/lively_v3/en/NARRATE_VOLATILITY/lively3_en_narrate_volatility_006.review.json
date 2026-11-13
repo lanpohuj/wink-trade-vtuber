@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_006",
+  "phrase_id": "lively3_en_narrate_volatility_006",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Chart's moving more sharply now. Confirmed, not added for the storyline.",
+  "tts_text": "[gently sarcastic, conversational] Chart's moving more sharply now. Confirmed, not added for the storyline.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "998ebca838c2e1de8a2e71988bb86381874e0e06779ec4c724e07c631b6606fc",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_006",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_006.mp3",
+  "duration": 4.937063,
+  "sha256": "cb436df63d5250bae0714e0c546a8ca53672b3f392a78fa0997b35e3af861088",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Chart's moving more sharply now. Confirmed, not added for the storyline.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_025",
+  "sha256": "deef4c8b1586e85aaa4a47ea847f591bfc40f86462218a593b79f28baf30ad06",
+  "expected": "Открыли вниз после подтверждения отбоя. Диапазон зафиксирован в причине входа.",
+  "transcript": "Открыли вниз после подтверждения от боя. Диапазон зафиксирован в причине входа.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08118,
+    "peak": 0.44143,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "deef4c8b1586e85aaa4a47ea847f591bfc40f86462218a593b79f28baf30ad06"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Открыли вниз после подтверждения от боя."
+    },
+    {
+      "start": 2.5,
+      "end": 5.0,
+      "text": " Диапазон зафиксирован в причине входа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

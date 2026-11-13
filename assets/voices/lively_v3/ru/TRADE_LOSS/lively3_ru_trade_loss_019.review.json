@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_019",
+  "phrase_id": "lively3_ru_trade_loss_019",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Красное закрытие есть. Сначала спокойная голова, потом следующие проверки.",
+  "tts_text": "[conversational] Красное закрытие есть. Сначала спокойная голова, потом следующие проверки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "750176a6e9f111b203c3b6f1d0060748bec7a17bc810f8518267ed2fd4d61b31",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_019",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_019.mp3",
+  "duration": 5.19825,
+  "sha256": "4c771f815255c0681f0dc664a2d0f2b6654c758f450986cbf99381c475431cf3",
+  "request_payload": {
+    "text": "[conversational] Красное закрытие есть. Сначала спокойная голова, потом следующие проверки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

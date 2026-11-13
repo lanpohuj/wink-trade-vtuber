@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_028",
+  "sha256": "c0a46ce06ffe9cc5897f6b2d2a3ce1b6295e060e4744214c1d7e58fd1e5a22b5",
+  "expected": "Тут двухминутное окно. Короткий шум не назначаем главным итогом.",
+  "transcript": "Тут двухминутное окно. Короткий шум не назначаем главным итогом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08455,
+    "peak": 0.3616,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.126,
+    "sha256": "c0a46ce06ffe9cc5897f6b2d2a3ce1b6295e060e4744214c1d7e58fd1e5a22b5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Тут двухминутное окно."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Короткий шум не назначаем главным итогом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

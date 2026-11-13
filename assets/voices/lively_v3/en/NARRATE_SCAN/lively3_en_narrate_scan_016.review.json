@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_016",
+  "phrase_id": "lively3_en_narrate_scan_016",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "If I have to talk myself into it, that's a bit sus. Checking properly.",
+  "tts_text": "[casual] If I have to talk myself into it, that's a bit sus. Checking properly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cb99315817b28bed146a744ed65f00b2f9aa32327f1714c7c84e639325e84f26",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_016",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_016.mp3",
+  "duration": 4.728063,
+  "sha256": "3ade56d01efb8e46c2290c5bdfe49bf0291090f5fb8687740dc9df7331c46452",
+  "request_payload": {
+    "text": "[casual] If I have to talk myself into it, that's a bit sus. Checking properly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

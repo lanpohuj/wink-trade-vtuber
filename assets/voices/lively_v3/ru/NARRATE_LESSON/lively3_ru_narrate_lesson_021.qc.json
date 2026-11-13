@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_021",
+  "sha256": "d05b77ff076fed90ddacdaccf3e3d292b06c5a40a34244f6b7da028353fbdd24",
+  "expected": "Маленький интервал не делает результат предсказуемым. Он просто короче.",
+  "transcript": "Маленький интервал не делает результат предсказуемым. Он просто короче.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07751,
+    "peak": 0.30416,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "d05b77ff076fed90ddacdaccf3e3d292b06c5a40a34244f6b7da028353fbdd24"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Маленький интервал не делает результат предсказуемым. Он просто короче."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_043",
+  "sha256": "257a7531bcf16dcf674fac56a1c533e25113676fac8fafeab804f072caf4a942",
+  "expected": "Ведущая на месте, мысли тоже. Просто я решила сначала проверить.",
+  "transcript": "Ведущие на месте? Мысли тоже. Просто я решила сначала проверить.",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07753,
+    "peak": 0.28935,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "257a7531bcf16dcf674fac56a1c533e25113676fac8fafeab804f072caf4a942"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Ведущие на месте? Мысли тоже."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Просто я решила сначала проверить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

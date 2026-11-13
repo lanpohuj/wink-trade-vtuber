@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_011",
+  "sha256": "d1cdcf7421df907b441506f14a430dc7e8c5d82372c79632c9febca143a0d3d7",
+  "expected": "Stake refund here. Not inventing any extra plot twists.",
+  "transcript": "Stake refund here not inventing any extra plot twists",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.0945,
+    "peak": 0.87469,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.241,
+    "sha256": "d1cdcf7421df907b441506f14a430dc7e8c5d82372c79632c9febca143a0d3d7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Stake refund here not inventing any extra plot twists"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

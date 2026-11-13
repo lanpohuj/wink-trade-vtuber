@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_016",
+  "sha256": "588b9f46c2b8b382cb95a88ec7a6ac966ed75573843a2f8a1cf133c543d34419",
+  "expected": "I see the likes, thank you! Tiny hearts, surprisingly good mood boost.",
+  "transcript": "I see the likes thank you tiny hearts surprisingly good mood boost",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08058,
+    "peak": 0.37436,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.232,
+    "sha256": "588b9f46c2b8b382cb95a88ec7a6ac966ed75573843a2f8a1cf133c543d34419"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.72,
+      "text": " I see the likes thank you tiny hearts surprisingly good mood boost"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

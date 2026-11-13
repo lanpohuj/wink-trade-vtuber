@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_044",
+  "sha256": "82ae20a87f0e1b7ec43bfd8fb09354f7e4d93ebb68f3fc140acc2db56aac1773",
+  "expected": "You can open the bot from my profile and read the conditions at your own pace.",
+  "transcript": "You can open the bot for my profile and read the conditions at your own pace.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08673,
+    "peak": 0.44328,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.252,
+    "sha256": "82ae20a87f0e1b7ec43bfd8fb09354f7e4d93ebb68f3fc140acc2db56aac1773"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " You can open the bot for my profile and read the conditions at your own pace."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

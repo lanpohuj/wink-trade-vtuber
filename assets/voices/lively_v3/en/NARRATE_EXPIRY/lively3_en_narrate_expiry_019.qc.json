@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_019",
+  "sha256": "1595eb012921e28557feb7fb17fcdfbd633102ba31aac3e49da45ad006e0fcd5",
+  "expected": "One-minute trade. Saving the final opinion for the close.",
+  "transcript": "One minute trade. Saving the final opinion for the close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.08172,
+    "peak": 0.40219,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "1595eb012921e28557feb7fb17fcdfbd633102ba31aac3e49da45ad006e0fcd5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " One minute trade. Saving the final opinion for the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_016",
+  "sha256": "b3cb10eb9e2c591be1df1f6ddb386a9eb8fd348b961ac25421eb5e3f6bcbca84",
+  "expected": "Step reset to fifty. Normal checks first; rushing isn't enabled.",
+  "transcript": "Heh, step reset to 50. Normal checks first. Rushing isn't enabled.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07323,
+    "peak": 0.40736,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "b3cb10eb9e2c591be1df1f6ddb386a9eb8fd348b961ac25421eb5e3f6bcbca84"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Heh, step reset to 50. Normal checks first. Rushing isn't enabled."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

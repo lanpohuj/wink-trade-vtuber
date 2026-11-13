@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_006",
+  "sha256": "67a4d9d50ac59140e93ce103acf3525e630064da0059bd5334bfa1f5f58030d9",
+  "expected": "Сделка открыта, результат ещё впереди. Интонацию победителя оставлю в черновиках.",
+  "transcript": "Сделка открыта. Результат еще впереди. Интонацию победителей оставлю в черновиках.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.0854,
+    "peak": 0.42341,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.103,
+    "sha256": "67a4d9d50ac59140e93ce103acf3525e630064da0059bd5334bfa1f5f58030d9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " Сделка открыта. Результат еще впереди."
+    },
+    {
+      "start": 2.66,
+      "end": 5.16,
+      "text": " Интонацию победителей оставлю в черновиках."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

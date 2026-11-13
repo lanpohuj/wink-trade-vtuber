@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_013",
+  "sha256": "04e578cb759aef2fd1ea8477b81e2f3919983ed3443223a0a47299a05360078c",
+  "expected": "Watching calmly. Though I occasionally need to remind myself about the calmly part.",
+  "transcript": "Watching calmly, though I occasionally need to remind myself about the calmly part.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08241,
+    "peak": 0.44937,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.168,
+    "sha256": "04e578cb759aef2fd1ea8477b81e2f3919983ed3443223a0a47299a05360078c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Watching calmly, though I occasionally need to remind myself about the calmly part."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

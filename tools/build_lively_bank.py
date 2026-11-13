@@ -124,25 +124,32 @@ document.getElementById('export').onclick=()=>{const a=document.createElement('a
 
 def pilot_albums():
     import subprocess
+    import tempfile
     manifest = json.loads((BANK / 'manifest.json').read_text())
     staged = {r['id']: r for v in manifest['categories'].values() for r in v}
-    gap = DOCS / 'pilot-gap.mp3'
+    gap = DOCS / 'pilot-gap.wav'
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i',
                     'anullsrc=r=44100:cl=mono', '-t', '0.45', str(gap)], check=True)
     albums = []
     for lang in ('ru', 'en'):
         rows = [staged[r['id']] for r in pilot_rows() if r['lang'] == lang]
-        playlist = DOCS / f'pilot-{lang}.concat.txt'
-        playlist.write_text('\n'.join("file '" + str(p).replace("'", "'\\''") + "'"
-                             for r in rows for p in (BANK / r['file'], gap)) + '\n')
         revision = hashlib.sha256(''.join(r['sha256'] for r in rows).encode()).hexdigest()[:8]
-        output = DOCS / f'pilot-{lang}-{revision}.mp3'
-        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0',
-                        '-i', str(playlist), '-c:a', 'libmp3lame', '-b:a', '128k', str(output)], check=True)
+        output = DOCS / f'pilot-{lang}-{revision}.wav'
+        with tempfile.TemporaryDirectory() as tmp:
+            work = Path(tmp)
+            pieces = []
+            for index, row in enumerate(rows):
+                wav = work / f'{index}.wav'
+                subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', str(BANK / row['file']),
+                                '-ar', '44100', '-ac', '1', '-c:a', 'pcm_s16le', str(wav)], check=True)
+                pieces.extend((wav, gap))
+            playlist = work / 'concat.txt'
+            playlist.write_text('\n'.join("file '" + str(p) + "'" for p in pieces) + '\n')
+            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0',
+                            '-i', str(playlist), '-c:a', 'pcm_s16le', str(output)], check=True)
         albums.append(dict(lang=lang, file=output.relative_to(ROOT).as_posix(),
                            sha256=hashlib.sha256(output.read_bytes()).hexdigest(),
                            records=[dict(id=r['id'], sha256=r['sha256'], text=r['text']) for r in rows]))
-        playlist.unlink()
     gap.unlink()
     write_json(DOCS / 'pilot-albums.json', albums)
 
@@ -216,6 +223,9 @@ def activate():
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
         row = dict(r, file=dst.relative_to(BANK).as_posix(), phrase_id=r.get('phrase_id', r['id']))
+        if row['category'] == 'NARRATE_PAIR' and row['id'].rsplit('_', 1)[-1] in ('03', '05', '06', '08', '12', '14', '15', '16'):
+            # Preserve the old audio, but keep jokes out of informational switches.
+            row['delivery_role'] = 'banter'
         manifest['categories'].setdefault(r['category'], []).append(row)
     manifest.update(active_count=1500, activated=True)
     write_json(BANK / 'manifest.json', manifest)
@@ -241,14 +251,14 @@ def verify_listening_shortlist():
         raise ValueError('Listening shortlist not reviewed: ' + row['id'])
 
 
-def retake(item_id):
+def retake(item_id, new_text=None):
     """One explicitly requested paid take; never overwrite an original or cache."""
     from winky.voice_bank import VoiceBank
     from winky.fish_tts import FishAudioTTS
     bank = VoiceBank()
     choices = []
     roots = [bank.overlay_root, bank.root]
-    if (BANK / 'manifest.json').exists() and BANK not in roots:
+    if item_id.startswith('lively3_') and (BANK / 'manifest.json').exists() and BANK not in roots:
         roots.append(BANK)
     for root in roots:
         manifest = json.loads((root / 'manifest.json').read_text())
@@ -258,7 +268,10 @@ def retake(item_id):
     source = choices[0]
     # New cache key from a new delivery request; originals remain untouched.
     row = dict(source)
-    row['tts_text'] = '[natural, clear, relaxed voice] ' + row['text']
+    if new_text:
+        row['text'] = new_text
+        row['text_sha256'] = hashlib.sha256(new_text.encode()).hexdigest()
+    row['tts_text'] = '[conversational] ' + row['text']
     estimate([row])
     engine = FishAudioTTS()
     try:
@@ -271,6 +284,7 @@ def retake(item_id):
         out.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, out)
         row.update(file=out.relative_to(ROOT).as_posix(), sha256=sha, phrase_id=source.get('phrase_id', source['id']),
+                   request_payload=engine.payload(row['tts_text'], row['lang']),
                    auditory_verified=False, status='review_pending')
         write_json(out.with_suffix('.review.json'), row)
         print(json.dumps(dict(id=item_id, file=row['file'], sha256=sha)))
@@ -308,8 +322,11 @@ def accept_retakes(path):
     decisions = json.loads(path.read_text())['records']
     existing_path = DOCS / 'replacement-decisions.json'
     approved = json.loads(existing_path.read_text()) if existing_path.exists() else []
+    registry_path = ROOT / 'assets/voices/recording-replacements.json'
+    registry = json.loads(registry_path.read_text()) if registry_path.exists() else {}
     sources = [json.loads(p.read_text()) for p in (ROOT / 'assets/voices/lively_retakes').glob('*/*.review.json')]
     staged = json.loads((BANK / 'manifest.json').read_text()) if (BANK / 'manifest.json').exists() else None
+    staged_changed = False
     for heard in decisions:
         row = next(r for r in sources if r['id'] == heard['id'] and r['sha256'] == heard['sha256'])
         audio = ROOT / row['file']
@@ -319,11 +336,14 @@ def accept_retakes(path):
             raise ValueError('Retake requires clean QC and explicit listening acceptance')
         staged_row = next((r for v in staged['categories'].values() for r in v if r['id'] == row['id']), None) if staged else None
         if staged_row:
+            staged_changed = True
             target = BANK / 'retakes' / audio.name
             target.parent.mkdir(exist_ok=True)
             shutil.copy2(audio, target)
             shutil.copy2(audio.with_suffix('.qc.json'), target.with_suffix('.qc.json'))
             staged_row.update(file=target.relative_to(BANK).as_posix(), sha256=row['sha256'],
+                              text=row['text'], text_sha256=row['text_sha256'], tts_text=row['tts_text'],
+                              request_payload=row['request_payload'],
                               transcript=qc['transcript'], duration=qc['metrics']['duration'],
                               automatic_qc_passed=True, status='review_pending')
             approval = json.loads(APPROVAL.read_text())
@@ -335,8 +355,22 @@ def accept_retakes(path):
         else:
             approved = [r for r in approved if r['id'] != row['id']]
             approved.append(dict(heard, file=row['file']))
+            from winky.voice_bank import active_root, active_commentary_root
+            original = None
+            for original_root in (active_root(), active_commentary_root()):
+                original_manifest = json.loads((original_root / 'manifest.json').read_text())
+                for group in original_manifest['categories'].values():
+                    for record in group:
+                        if record['id'] == row['id']:
+                            original = original_root / record['file']
+            if original is None:
+                raise ValueError('Replacement has no active source identity')
+            registry[row['id']] = dict(id=row['id'], source_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+                file=row['file'], sha256=row['sha256'], text=row['text'], transcript=qc['transcript'],
+                duration=qc['metrics']['duration'], accepted=True, listened=True, automatic_qc_passed=True)
     write_json(existing_path, approved)
-    if staged: write_json(BANK / 'manifest.json', staged)
+    write_json(registry_path, registry)
+    if staged_changed: write_json(BANK / 'manifest.json', staged)
 
 
 def main():
@@ -344,6 +378,7 @@ def main():
     p.add_argument('command', choices=('catalog', 'estimate', 'pilots', 'batch', 'qc', 'review', 'accept', 'activate', 'retake', 'qc-retakes', 'accept-retakes'))
     p.add_argument('--decisions', type=Path)
     p.add_argument('--id')
+    p.add_argument('--text')
     a = p.parse_args()
     if a.command == 'catalog': prepare()
     elif a.command == 'estimate': print(json.dumps(estimate(preflight())))
@@ -351,7 +386,7 @@ def main():
     elif a.command == 'qc': configure(); build.qc()
     elif a.command == 'review': review_page(); pilot_albums()
     elif a.command == 'accept': import_decisions(a.decisions)
-    elif a.command == 'retake': retake(a.id)
+    elif a.command == 'retake': retake(a.id, a.text)
     elif a.command == 'qc-retakes': qc_retakes()
     elif a.command == 'accept-retakes': accept_retakes(a.decisions)
     else: activate()

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_037",
+  "sha256": "6add11a97e04021ce94f897799fac667e7c742b10d8f8bcaf311b918ee2701e8",
+  "expected": "Не делаю вывод по настроению чата. Результат у сделки будет свой.",
+  "transcript": "Не делаю вывод по настроению чата, по результату сделки будет свой.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07284,
+    "peak": 0.36128,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.132,
+    "sha256": "6add11a97e04021ce94f897799fac667e7c742b10d8f8bcaf311b918ee2701e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Не делаю вывод по настроению чата, по результату сделки будет свой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

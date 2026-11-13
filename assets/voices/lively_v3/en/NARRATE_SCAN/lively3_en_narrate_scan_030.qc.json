@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_030",
+  "sha256": "d667eb9327ce68c3b3c5e8e5d16cd308b851c4167b8f9765caac26447fe9573e",
+  "expected": "Not quite an 'okay, we're cooking' moment yet. Still looking.",
+  "transcript": "Not quite an okay-we're-cooking moment yet. Still looking.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.07932,
+    "peak": 0.38332,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "d667eb9327ce68c3b3c5e8e5d16cd308b851c4167b8f9765caac26447fe9573e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Not quite an okay-we're-cooking moment yet. Still looking."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

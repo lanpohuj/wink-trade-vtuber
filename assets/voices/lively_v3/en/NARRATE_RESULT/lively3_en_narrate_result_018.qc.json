@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_018",
+  "sha256": "cc24dd552789e93d537b7713f7bf0a0b112a902dff4add68d98e0e593e912e87",
+  "expected": "A close loss here. Annoying moment, no imaginary win.",
+  "transcript": "Huh, a close loss here. Annoying moment, no imaginary win.",
+  "similarity": 0.966,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08611,
+    "peak": 0.40826,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.258,
+    "sha256": "cc24dd552789e93d537b7713f7bf0a0b112a902dff4add68d98e0e593e912e87"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Huh, a close loss here. Annoying moment, no imaginary win."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

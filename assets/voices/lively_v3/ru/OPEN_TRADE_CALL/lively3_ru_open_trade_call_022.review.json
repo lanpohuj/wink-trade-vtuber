@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_022",
+  "phrase_id": "lively3_ru_open_trade_call_022",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Вверх уже открыто после отбоя границы диапазона. Без преждевременного восторга.",
+  "tts_text": "[conversational] Вверх уже открыто после отбоя границы диапазона. Без преждевременного восторга.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7f7d2125524459dce052635ec6f0cc0ea6ba41d98bc832de2a92d2084c5abe32",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_022",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_022.mp3",
+  "duration": 5.19825,
+  "sha256": "891a7a0184ad7d4477b6efa1b7f4550cc92d53387f7129de3d670d41f57bf35d",
+  "request_payload": {
+    "text": "[conversational] Вверх уже открыто после отбоя границы диапазона. Без преждевременного восторга.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

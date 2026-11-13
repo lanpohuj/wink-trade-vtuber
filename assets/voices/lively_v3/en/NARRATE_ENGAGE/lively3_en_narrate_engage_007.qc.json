@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_007",
+  "sha256": "e345909e2e250160e0c5e71e202ffb86c1ccd722b87f992d280652f251557958",
+  "expected": "Sofa check: comfortable? I'm putting in effort over here.",
+  "transcript": "Self a check comfortable. I'm putting an effort over here",
+  "similarity": 0.945,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.07945,
+    "peak": 0.38148,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.091,
+    "sha256": "e345909e2e250160e0c5e71e202ffb86c1ccd722b87f992d280652f251557958"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Self a check comfortable. I'm putting an effort over here"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

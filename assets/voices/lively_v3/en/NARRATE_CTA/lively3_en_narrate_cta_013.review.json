@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_013",
+  "phrase_id": "lively3_en_narrate_cta_013",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Wondering where the bot is? Already on it: link in bio.",
+  "tts_text": "[lightly playful, smiling] Wondering where the bot is? Already on it: link in bio.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a35c4db1bb6d3219d9142f7f29767917ab5da4ffd27db8abf78e5abe62efb20d",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_013",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_013.mp3",
+  "duration": 4.205625,
+  "sha256": "9bb9484cc015ea7d03a685ffcfd0b987e348fdbd989bfc1aab9e9e82fc6e303a",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Wondering where the bot is? Already on it: link in bio.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

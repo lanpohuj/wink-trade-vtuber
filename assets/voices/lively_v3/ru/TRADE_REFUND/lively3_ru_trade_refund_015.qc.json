@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_015",
+  "sha256": "4399d1b680610d3fef814914de08361d20bbd77018efc2d2de322377d18edc82",
+  "expected": "Сделка завершилась возвратом. Спокойный финал, почти подозрительно спокойный.",
+  "transcript": "Сделка завершилась возвратом. Спокойный финал. Почти подозрительно спокойный.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08583,
+    "peak": 0.40788,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.134,
+    "sha256": "4399d1b680610d3fef814914de08361d20bbd77018efc2d2de322377d18edc82"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Сделка завершилась возвратом. Спокойный финал. Почти подозрительно спокойный."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

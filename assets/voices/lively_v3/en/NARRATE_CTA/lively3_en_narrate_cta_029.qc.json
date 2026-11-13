@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_029",
+  "sha256": "0c626ff2c8a2d45bda561f9fd8fea5670a866f11c8cf8f8b910c13ef52bdc69a",
+  "expected": "The portal to the bot looks suspiciously like a bio link. Technology, apparently.",
+  "transcript": "The portal to the bot looks suspiciously like a biolink. Technology, apparently.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08035,
+    "peak": 0.43227,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "0c626ff2c8a2d45bda561f9fd8fea5670a866f11c8cf8f8b910c13ef52bdc69a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " The portal to the bot looks suspiciously like a biolink. Technology, apparently."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

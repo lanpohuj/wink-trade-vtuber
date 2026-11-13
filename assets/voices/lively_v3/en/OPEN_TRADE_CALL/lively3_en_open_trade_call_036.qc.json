@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_call_036",
+  "sha256": "7f8947ba36d0c9cb78b5c78c84300cc3fce0cb648e53194f0c9fb27527ae4697",
+  "expected": "Up on confirmed local reversal. Trade running; no dressing a scenario as certainty.",
+  "transcript": "Up on confirmed local reversal! Trade running, no dressing a scenario as certainty!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08678,
+    "peak": 0.4007,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.256,
+    "sha256": "7f8947ba36d0c9cb78b5c78c84300cc3fce0cb648e53194f0c9fb27527ae4697"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Up on confirmed local reversal!"
+    },
+    {
+      "start": 2.64,
+      "end": 5.84,
+      "text": " Trade running, no dressing a scenario as certainty!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

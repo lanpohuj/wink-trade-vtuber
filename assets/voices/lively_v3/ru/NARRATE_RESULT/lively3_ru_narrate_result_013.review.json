@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_013",
+  "phrase_id": "lively3_ru_narrate_result_013",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Последовательность завершена, возвращаемся к пятидесяти. Прошлые минусы никуда не исчезли.",
+  "tts_text": "[conversational] Последовательность завершена, возвращаемся к пятидесяти. Прошлые минусы никуда не исчезли.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b73110a1c370ef6e110b4d2512af6f699a201ef197683a7849a5c50d3858007e",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_013",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_013.mp3",
+  "duration": 5.564,
+  "sha256": "0a4744591381b6346a51db9065d3c6bf8dde3bab48564c61f208adc4172ec4e4",
+  "request_payload": {
+    "text": "[conversational] Последовательность завершена, возвращаемся к пятидесяти. Прошлые минусы никуда не исчезли.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

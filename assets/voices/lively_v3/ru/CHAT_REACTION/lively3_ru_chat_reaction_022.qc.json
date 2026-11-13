@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_022",
+  "sha256": "9c5dbe42029fc8e2832f07846a00a997e793f4b0c8f6d2c2085ddcd89c25492d",
+  "expected": "Загляни в профиль, там ссылка на бота. Он объяснит порядок действий.",
+  "transcript": "Заглянив профиль, там ссылка на бота. Он объяснит порядок действий.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.086,
+    "peak": 0.40785,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "9c5dbe42029fc8e2832f07846a00a997e793f4b0c8f6d2c2085ddcd89c25492d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Заглянив профиль, там ссылка на бота. Он объяснит порядок действий."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

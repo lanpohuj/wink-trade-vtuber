@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_009",
+  "sha256": "8daf385d477b9e1611646d6aad4f369c92e40cfa44632ad401d8d62e8c95c1c0",
+  "expected": "Открыли вниз: откат получил подтверждение. Мой голос не делает сценарий безошибочным.",
+  "transcript": "Открыли вниз, откат получил подтверждение. Мой голос не делает сценарий безошибочным.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.139,
+    "rms": 0.08969,
+    "peak": 0.42468,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "8daf385d477b9e1611646d6aad4f369c92e40cfa44632ad401d8d62e8c95c1c0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Открыли вниз, откат получил подтверждение."
+    },
+    {
+      "start": 3.12,
+      "end": 6.12,
+      "text": " Мой голос не делает сценарий безошибочным."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_024",
+  "sha256": "0705babeb2d76af9966b69eb81acfc681f7e2a8eabb831904ab46cbba107d438",
+  "expected": "Профиль, ссылка, бот. Вот такой сюжет без неожиданных поворотов.",
+  "transcript": "Профель, ссылка, бот. Вот такой сюжет без неожиданных поворотов.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08196,
+    "peak": 0.34782,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.148,
+    "sha256": "0705babeb2d76af9966b69eb81acfc681f7e2a8eabb831904ab46cbba107d438"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Профель, ссылка, бот. Вот такой сюжет без неожиданных поворотов."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

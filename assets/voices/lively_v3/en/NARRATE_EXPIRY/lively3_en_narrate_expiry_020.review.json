@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_020",
+  "phrase_id": "lively3_en_narrate_expiry_020",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "One-minute expiry. More time doesn't mean more certainty.",
+  "tts_text": "[clear, conversational] One-minute expiry. More time doesn't mean more certainty.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "64780678280b603229fa49ee384849036eb0e4ae502549a0b2f45b31441a50ba",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_020",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_020.mp3",
+  "duration": 4.075,
+  "sha256": "1382cead8ec704aa0a9bf5a676ec56404e6190ada5303f2f715673c27600d0ee",
+  "request_payload": {
+    "text": "[clear, conversational] One-minute expiry. More time doesn't mean more certainty.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

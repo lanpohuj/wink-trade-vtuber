@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_018",
+  "phrase_id": "lively3_ru_narrate_engage_018",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь.",
+  "tts_text": "[conversational] Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8c9477ccc07cad4e3bc9455a7ce6823914bd9b74cd75409b795e17388747714c",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_018",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_018.mp3",
+  "duration": 4.910938,
+  "sha256": "87670a82fbe75b18c610cd992dc283a26e0c2888aef89d5ff4111f84e0f0bf98",
+  "request_payload": {
+    "text": "[conversational] Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

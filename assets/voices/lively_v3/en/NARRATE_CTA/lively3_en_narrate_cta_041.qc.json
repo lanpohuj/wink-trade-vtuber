@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_041",
+  "sha256": "bbbc19a18ee155950b5dc18caa2c25e9ede41736b73052cbb614778475303589",
+  "expected": "The bot in my bio explains access steps. I'd help too, but it's more patient.",
+  "transcript": "The bot in my bio explains access steps. I'd help too, but it's more patient.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.07109,
+    "peak": 0.46457,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.153,
+    "sha256": "bbbc19a18ee155950b5dc18caa2c25e9ede41736b73052cbb614778475303589"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " The bot in my bio explains access steps."
+    },
+    {
+      "start": 3.44,
+      "end": 5.6000000000000005,
+      "text": " I'd help too, but it's more patient."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

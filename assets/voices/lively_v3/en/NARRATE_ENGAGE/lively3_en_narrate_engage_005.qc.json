@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_005",
+  "sha256": "00416a1dfb3e7c0c738127bcc16452af643261f22b6aff1c3e67fe59960c451f",
+  "expected": "Balancing analysis with the urge to joke at deeply unhelpful moments.",
+  "transcript": "Balancing analysis with the urge to joke at deeply unhelpful moments.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.08583,
+    "peak": 0.4403,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.187,
+    "sha256": "00416a1dfb3e7c0c738127bcc16452af643261f22b6aff1c3e67fe59960c451f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Balancing analysis with the urge to joke at deeply unhelpful moments."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

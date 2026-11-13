@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_002",
+  "phrase_id": "lively3_ru_narrate_volatility_002",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Диапазоны свежих свечей расширились. Драмы на экране стало больше по факту.",
+  "tts_text": "[conversational] Диапазоны свежих свечей расширились. Драмы на экране стало больше по факту.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3182495dd384f6d410668e8a1f617bf1ae2eeca3d0869d84f1549c611fa7f8f0",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_002",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_002.mp3",
+  "duration": 4.675813,
+  "sha256": "58457bc4d0ce2b84f4bc9771ef5ca801ca919f55571d47249173e5ddc968dc20",
+  "request_payload": {
+    "text": "[conversational] Диапазоны свежих свечей расширились. Драмы на экране стало больше по факту.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_014",
+  "sha256": "cc7c3b3b92bf9a731de3d0dbfe27997f5f9f1de407f98745cd362d074ba824c6",
+  "expected": "Следующий размер снова пятьдесят. Без попытки назвать сброс чудесным спасением.",
+  "transcript": "Следующий размер снова 50. Без попытки назвать сброс чудесным спасением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08206,
+    "peak": 0.35695,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "cc7c3b3b92bf9a731de3d0dbfe27997f5f9f1de407f98745cd362d074ba824c6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Следующий размер снова 50."
+    },
+    {
+      "start": 2.4,
+      "end": 5.5,
+      "text": " Без попытки назвать сброс чудесным спасением."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

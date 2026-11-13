@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_004",
+  "sha256": "e110f350ba2dee8f412a5eea1107ce4a71ac702712741ff87c585e0180a7eb5f",
+  "expected": "Вошли вверх: после отката появилось подтверждение. Без истории, придуманной задним числом.",
+  "transcript": "Вошли вверх. После отката появилось подтверждение. Без истории, придуманное задним числом.",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.165,
+    "rms": 0.08987,
+    "peak": 0.42628,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "e110f350ba2dee8f412a5eea1107ce4a71ac702712741ff87c585e0180a7eb5f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Вошли вверх. После отката появилось подтверждение. Без истории, придуманное задним числом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

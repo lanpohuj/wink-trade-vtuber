@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_005",
+  "phrase_id": "lively3_en_narrate_trade_005",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Sit tight, chat. Buttons pressed; we're not pre-ordering the tilt.",
+  "tts_text": "[casual] Sit tight, chat. Buttons pressed; we're not pre-ordering the tilt.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7a6a89c6bcde979d56c7e8b8caa16287d6e4348a5332b22f750ce939dc49d2b4",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:tilt",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_005.mp3",
+  "duration": 3.944375,
+  "sha256": "4849d69f6ed002d922e161ea62fe505c935b9b82dd50ef280e857774ffe44980",
+  "request_payload": {
+    "text": "[casual] Sit tight, chat. Buttons pressed; we're not pre-ordering the tilt.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

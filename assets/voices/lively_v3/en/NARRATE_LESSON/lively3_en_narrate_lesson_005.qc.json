@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_005",
+  "sha256": "33a250aa9a3937e789cf4c9e018b332accd8710294a2a51c5ed233311331ebf8",
+  "expected": "The mistake is rewriting history after an outcome. A loss doesn't need a legend.",
+  "transcript": "The mistake is rewriting history after an outcome. A loss doesn't need a legend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08425,
+    "peak": 0.46718,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.212,
+    "sha256": "33a250aa9a3937e789cf4c9e018b332accd8710294a2a51c5ed233311331ebf8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " The mistake is rewriting history after an outcome. A loss doesn't need a legend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

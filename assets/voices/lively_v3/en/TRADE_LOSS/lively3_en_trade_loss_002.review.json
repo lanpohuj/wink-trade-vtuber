@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_002",
+  "phrase_id": "lively3_en_trade_loss_002",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "This trade lost. Taking a breath, skipping the multi-season excuse.",
+  "tts_text": "[calm, mildly disappointed] This trade lost. Taking a breath, skipping the multi-season excuse.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ea23d4ca079811e5afe6e208ada6bacc78b9664651ab1289df7290337df3d99",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_002.mp3",
+  "duration": 5.30275,
+  "sha256": "0e39f3db9c1559fccb44e74ea9c901d09de75acb6ddfd0f5c35ffaae013b2def",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] This trade lost. Taking a breath, skipping the multi-season excuse.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

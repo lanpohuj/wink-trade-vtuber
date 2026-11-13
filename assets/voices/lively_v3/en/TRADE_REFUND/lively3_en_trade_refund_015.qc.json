@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_015",
+  "sha256": "f883ee41b11870eacd33267fb610ce937a58977390e0bf43129f863b19d36d26",
+  "expected": "Trade ended in a refund. Quiet ending. Almost suspiciously quiet.",
+  "transcript": "Trade ended in a refund. Quiet ending. Almost suspiciously quiet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07943,
+    "peak": 0.50824,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.267,
+    "sha256": "f883ee41b11870eacd33267fb610ce937a58977390e0bf43129f863b19d36d26"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Trade ended in a refund. Quiet ending. Almost suspiciously quiet."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

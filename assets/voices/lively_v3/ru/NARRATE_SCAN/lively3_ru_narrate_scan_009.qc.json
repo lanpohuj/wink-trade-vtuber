@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_009",
+  "sha256": "d67a3b3f46ccbf4d8d41668cdfc1100dddf8f21cf61f6457fdfd6d5e9f20b47c",
+  "expected": "Чат, я чуть подушню с проверкой. Лучше сейчас, чем потом придумывать отмазки.",
+  "transcript": "Чат, я чуть подошню с проверкой. Лучше сейчас, чем потом придумывать отмазки.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08769,
+    "peak": 0.41437,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "d67a3b3f46ccbf4d8d41668cdfc1100dddf8f21cf61f6457fdfd6d5e9f20b47c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Чат, я чуть подошню с проверкой. Лучше сейчас, чем потом придумывать отмазки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_volatility_005",
+  "sha256": "849d5677ae937541521dcdf5fc1fe7a0881bccaafec4ed9a597ac1d10ccfcf03",
+  "expected": "Данные показывают усиление волатильности. Не просто решила прокомментировать погромче.",
+  "transcript": "Данные показывают усиление волатильности. Не просто решила прокомментировать погромче.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07814,
+    "peak": 0.3545,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "849d5677ae937541521dcdf5fc1fe7a0881bccaafec4ed9a597ac1d10ccfcf03"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " Данные показывают усиление волатильности."
+    },
+    {
+      "start": 2.6,
+      "end": 4.8,
+      "text": " Не просто решила прокомментировать погромче."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

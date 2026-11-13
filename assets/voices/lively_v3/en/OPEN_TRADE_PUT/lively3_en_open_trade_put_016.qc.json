@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_016",
+  "sha256": "933cc071d6903e72ad91adfe6f3495cc1432b33f89a2b12c187510bff551cac2",
+  "expected": "Down opening after completed retest. Entry confirmed, outcome not yet.",
+  "transcript": "Down opening after completed retest. Entry confirmed. Outcome not yet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07657,
+    "peak": 0.57346,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.189,
+    "sha256": "933cc071d6903e72ad91adfe6f3495cc1432b33f89a2b12c187510bff551cac2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Down opening after completed retest. Entry confirmed. Outcome not yet."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

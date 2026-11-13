@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_024",
+  "sha256": "1b0cc10eee2130c0f962e3b39840a1e4273b2a7ab942e9f924322f78cda15ac0",
+  "expected": "Brain says be serious. I'm like, one more joke and then I'll lock in.",
+  "transcript": "Brain says be serious. I'm like one more joke and then I'll lock in",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.07989,
+    "peak": 0.38404,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.158,
+    "sha256": "1b0cc10eee2130c0f962e3b39840a1e4273b2a7ab942e9f924322f78cda15ac0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.28,
+      "text": " Brain says be serious. I'm like one more joke and then I'll lock in"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

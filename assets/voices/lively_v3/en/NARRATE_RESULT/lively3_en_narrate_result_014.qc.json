@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_014",
+  "sha256": "bb2e00cbc4fe0652a40e280f520be44141d9486280c1224d39e4933dfd13d6a3",
+  "expected": "Next size is fifty again. Not calling a reset a miraculous rescue.",
+  "transcript": "Next size is 50 again. Not calling a reset a miraculous rescue.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07956,
+    "peak": 0.40356,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.296,
+    "sha256": "bb2e00cbc4fe0652a40e280f520be44141d9486280c1224d39e4933dfd13d6a3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Next size is 50 again. Not calling a reset a miraculous rescue."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

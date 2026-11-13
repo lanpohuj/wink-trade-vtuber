@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_038",
+  "sha256": "b7ea7c83d2d43291ecab14b4d176aef7fd76240dca4830726f949e0f79aa6833",
+  "expected": "Trade open, commentary on, premature excitement paused.",
+  "transcript": "Trade open commentary on premature excitement paused",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.0717,
+    "peak": 0.34162,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.201,
+    "sha256": "b7ea7c83d2d43291ecab14b4d176aef7fd76240dca4830726f949e0f79aa6833"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.64,
+      "text": " Trade open commentary on premature excitement paused"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

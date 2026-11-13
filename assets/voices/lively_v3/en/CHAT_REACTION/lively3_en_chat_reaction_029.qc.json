@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_029",
+  "sha256": "6ddbd1ca1a8846bc2cf3bf4a8a5b5f5bd1351f76836dc3f79dc69d4b5b7d36b6",
+  "expected": "No need to scroll through all of chat. The bot's linked in my bio.",
+  "transcript": "No need to scroll through all of chat. The bot's linked in my bio.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08201,
+    "peak": 0.44337,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.154,
+    "sha256": "6ddbd1ca1a8846bc2cf3bf4a8a5b5f5bd1351f76836dc3f79dc69d4b5b7d36b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " No need to scroll through all of chat. The bot's linked in my bio."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

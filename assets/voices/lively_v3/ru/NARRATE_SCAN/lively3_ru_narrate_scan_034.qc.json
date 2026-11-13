@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_034",
+  "sha256": "c7394e081ab090f2c482f6ce31c426bd7a8635fdc24b7488289fe40179a1c0f3",
+  "expected": "Выбрать кнопку, а потом придумать объяснение? Не, такой лор мне не нужен.",
+  "transcript": "Выбрать кнопку, а потом придумать объяснение? Нет, такой лор мне не нужен.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07907,
+    "peak": 0.33865,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "c7394e081ab090f2c482f6ce31c426bd7a8635fdc24b7488289fe40179a1c0f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.38,
+      "text": " Выбрать кнопку, а потом придумать объяснение?"
+    },
+    {
+      "start": 3.38,
+      "end": 5.38,
+      "text": " Нет, такой лор мне не нужен."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_004",
+  "sha256": "1a20cc006bdfdff45779321d296740238ee2b7e3bd811bcc1c392dda28791862",
+  "expected": "Chat, do you take forever deciding, or click first and figure it out afterwards?",
+  "transcript": "Chat, do you take forever deciding or click first and figure it out afterwards?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07932,
+    "peak": 0.39599,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.263,
+    "sha256": "1a20cc006bdfdff45779321d296740238ee2b7e3bd811bcc1c392dda28791862"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Chat, do you take forever deciding or click first and figure it out afterwards?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

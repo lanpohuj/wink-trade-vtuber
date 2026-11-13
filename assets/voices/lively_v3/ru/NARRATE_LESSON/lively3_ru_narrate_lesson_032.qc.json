@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_032",
+  "sha256": "89a8816ab5f1ed9362b9acd45fb5317f9961aaeab7dbff6e0f7d0b5f16e27614",
+  "expected": "В объяснении важно не только что вижу, но и что ещё не знаю.",
+  "transcript": "В объяснении важно не только что вижу, но и что еще не знаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08828,
+    "peak": 0.29867,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.061,
+    "sha256": "89a8816ab5f1ed9362b9acd45fb5317f9961aaeab7dbff6e0f7d0b5f16e27614"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " В объяснении важно не только что вижу, но и что еще не знаю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_030",
+  "sha256": "56c8c6fba7d22eb9792165389b87ee26a0b7d3d904fca8f00c7edf9bb91b5cbe",
+  "expected": "Sell open after confirmed rejection. Not rushing ahead with a verdict.",
+  "transcript": "Sell open after confirmed rejection not rushing ahead with a verdict",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07265,
+    "peak": 0.35816,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "56c8c6fba7d22eb9792165389b87ee26a0b7d3d904fca8f00c7edf9bb91b5cbe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.96,
+      "text": " Sell open after confirmed rejection not rushing ahead with a verdict"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

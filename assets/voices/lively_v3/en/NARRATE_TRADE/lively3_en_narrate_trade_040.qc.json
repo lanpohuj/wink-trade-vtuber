@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_040",
+  "sha256": "f385f1010177409155df052cb2d22d1fcaa908750d3ab0a845508333d862292c",
+  "expected": "Watching through the close. No guessing it from my tone.",
+  "transcript": "Watching through the close. No guessing it from my tone.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.631,
+    "rms": 0.08055,
+    "peak": 0.47186,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.151,
+    "sha256": "f385f1010177409155df052cb2d22d1fcaa908750d3ab0a845508333d862292c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Watching through the close. No guessing it from my tone."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

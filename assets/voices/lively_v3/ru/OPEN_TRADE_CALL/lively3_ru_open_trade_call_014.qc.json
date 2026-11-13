@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_014",
+  "sha256": "90140e30cea6fdae19c708c80f3a8c024fe9b7f261889a169707ccd2186d4fe6",
+  "expected": "Вход вверх состоялся после закрытого ретеста пробоя. Теперь ждём по выбранному сроку.",
+  "transcript": "Вход вверх состоялся после закрытого ретеста пробоя. Теперь ждём по выбранному сроку.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0893,
+    "peak": 0.48174,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.099,
+    "sha256": "90140e30cea6fdae19c708c80f3a8c024fe9b7f261889a169707ccd2186d4fe6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Вход вверх состоялся после закрытого ретеста пробоя."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Теперь ждём по выбранному сроку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

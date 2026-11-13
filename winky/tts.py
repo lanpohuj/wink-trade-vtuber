@@ -2131,7 +2131,7 @@ class SpeechController:
             if event.get('manual_cta'):
                 return True
             current = stream_director.context
-            if event.get('lang') != current.get('lang', stream_director.stream_lang):
+            if event.get('lang') != stream_director.current_language():
                 return False
             if event.get('session_id') and event['session_id'] != current.get('session_id'):
                 return False
@@ -2283,6 +2283,12 @@ class SpeechController:
             if item:
                 if item.chat_item:
                     item.chat_item.played = True
+                    profile = getattr(item.chat_item, 'profile', None)
+                    if profile is not None:
+                        profile.history.append({'user': item.chat_item.text, 'winky': item.text})
+                        from winky.speech_rotation import mentions_bot
+                        if mentions_bot(item.text):
+                            profile.mentioned_bio = True
                 if item.bank_id:
                     self.voice_bank.release(item.bank_id, item.event, played=True, spoken_text=item.text)
                 else:

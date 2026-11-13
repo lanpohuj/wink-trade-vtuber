@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_010",
+  "sha256": "d6370175c60df64d19c5836da440ee9a6ea471e460a1a40d0a0e336b910a9a19",
+  "expected": "Loss is in; nothing to hide. The next decision gets its own checks.",
+  "transcript": "Loss is in. Nothing to hide. The next decision gets its own checks.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08224,
+    "peak": 0.38207,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.075,
+    "sha256": "d6370175c60df64d19c5836da440ee9a6ea471e460a1a40d0a0e336b910a9a19"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Loss is in. Nothing to hide. The next decision gets its own checks."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

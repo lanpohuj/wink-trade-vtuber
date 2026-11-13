@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_007",
+  "sha256": "2f238f373a5b932503c4c898d8a37995b61d9c6b1f3212ecb089d2674aad7aa6",
+  "expected": "Кнопка никуда не убежит. Хотя соблазняет она профессионально.",
+  "transcript": "Кнопка никуда не убежит, хотя соблазняет она профессионально.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.08544,
+    "peak": 0.33449,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "2f238f373a5b932503c4c898d8a37995b61d9c6b1f3212ecb089d2674aad7aa6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Кнопка никуда не убежит, хотя соблазняет она профессионально."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

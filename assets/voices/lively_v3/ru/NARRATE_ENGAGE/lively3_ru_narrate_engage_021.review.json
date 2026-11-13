@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_021",
+  "phrase_id": "lively3_ru_narrate_engage_021",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Мне нравится, когда спрашивают «почему». Сразу меньше шансов отделаться красивой фразой.",
+  "tts_text": "[conversational] Мне нравится, когда спрашивают «почему». Сразу меньше шансов отделаться красивой фразой.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7ffb2f3cb41811345d3fa7c23b8eff6b98424618335b010fffb99dbea7bb50e0",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_021",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_021.mp3",
+  "duration": 5.2505,
+  "sha256": "d9079e87f39a7c22be34f3d3a13b517ad40ca6189d96a3212839da816112c21f",
+  "request_payload": {
+    "text": "[conversational] Мне нравится, когда спрашивают «почему». Сразу меньше шансов отделаться красивой фразой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

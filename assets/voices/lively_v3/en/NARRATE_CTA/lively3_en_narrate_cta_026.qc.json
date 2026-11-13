@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_026",
+  "sha256": "2c6534bfbd363d92245ef07b8a96ff0b635c863b787d1768ab9a49f8b0badb64",
+  "expected": "For the independent researchers: bot in bio. The instructions don't bite.",
+  "transcript": "For the independent researchers bought in bio, the instructions don't bite.",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.07867,
+    "peak": 0.43908,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.154,
+    "sha256": "2c6534bfbd363d92245ef07b8a96ff0b635c863b787d1768ab9a49f8b0badb64"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " For the independent researchers bought in bio, the instructions don't bite."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_010",
+  "sha256": "1fcc355cc10f8d691615c07c85ff5bf9930a3bf3bbf98c369143806a41b08705",
+  "expected": "Проверяю спокойно. За самый быстрый клик медаль нам не выдадут.",
+  "transcript": "Проверяю спокойно! За самый быстрый клик медаль нам не выдадут!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.08297,
+    "peak": 0.36008,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "1fcc355cc10f8d691615c07c85ff5bf9930a3bf3bbf98c369143806a41b08705"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " Проверяю спокойно! За самый быстрый клик медаль нам не выдадут!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

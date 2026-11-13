@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_002",
+  "phrase_id": "lively3_en_narrate_scan_002",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Clicking finger's getting ahead of itself. Not yet. I'm still checking.",
+  "tts_text": "[casual] Clicking finger's getting ahead of itself. Not yet. I'm still checking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0017c395b172c6df59d9c10487a768578a3397c73d0b75dc8fd76537df6fc3fb",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_002",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_002.mp3",
+  "duration": 4.545187,
+  "sha256": "45cb737c0e4a9669b99a8884979041fd2644d43386ba4851f9c4260b7518d0d1",
+  "request_payload": {
+    "text": "[casual] Clicking finger's getting ahead of itself. Not yet. I'm still checking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

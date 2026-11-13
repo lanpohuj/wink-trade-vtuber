@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_026",
+  "sha256": "4229c2f69aa2e45c64b795afff185ac58793daa17936725cf2ba13f76ccfedf1",
+  "expected": "Открытие вверх состоялось. Здесь работал сценарий отбоя от границы диапазона.",
+  "transcript": "Открытие вверх состоялось. Здесь работал сценарий от боя от границы диапазона.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09175,
+    "peak": 0.42181,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "4229c2f69aa2e45c64b795afff185ac58793daa17936725cf2ba13f76ccfedf1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Открытие вверх состоялось. Здесь работал сценарий от боя от границы диапазона."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

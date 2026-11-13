@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_028",
+  "sha256": "17e51211221846d46d0200b88eeddb03c48c3a23171c68029cc1f99e3cffd1c3",
+  "expected": "Choosing the moment first. We can give it a fancy name later.",
+  "transcript": "Choosing the moment first. We can give it a fancy name later.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.0753,
+    "peak": 0.35402,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.224,
+    "sha256": "17e51211221846d46d0200b88eeddb03c48c3a23171c68029cc1f99e3cffd1c3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Choosing the moment first. We can give it a fancy name later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

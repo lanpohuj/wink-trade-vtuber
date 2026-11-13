@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_031",
+  "sha256": "a294c10897eb3af64ec01076f9f0305275b5baaaf15c99c960d46a8ac96a6879",
+  "expected": "Понимать, чего не знаешь, — база. Изображать всезнайку я и так умею.",
+  "transcript": "Понимать, чего не знаешь? База! Изображать все Знайку я и так умею!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07933,
+    "peak": 0.33992,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "a294c10897eb3af64ec01076f9f0305275b5baaaf15c99c960d46a8ac96a6879"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Понимать, чего не знаешь? База!"
+    },
+    {
+      "start": 2.4,
+      "end": 5.0,
+      "text": " Изображать все Знайку я и так умею!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

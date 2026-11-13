@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_expiry_022",
+  "sha256": "ed22766de667063f448174ce3ada5d8c0da88ddd26ac07b3d6ec0fb0967cf419",
+  "expected": "One minute for the trade, chat. Breathe, then keep watching.",
+  "transcript": "One minute for the trade chat. Breathe, then keep watching.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.07219,
+    "peak": 0.30804,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "ed22766de667063f448174ce3ada5d8c0da88ddd26ac07b3d6ec0fb0967cf419"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " One minute for the trade chat."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Breathe, then keep watching."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

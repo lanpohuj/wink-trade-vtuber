@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_021",
+  "sha256": "352b852039cc0a560881841e0adb78f676afd6b5a4197bcc4f3928fb58522d2f",
+  "expected": "New here? Bot link's in my bio. Tutorial complete; I'll stop yapping now.",
+  "transcript": "New here! Botlinks in my bio! Tutorial complete! I'll stop yapping now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08457,
+    "peak": 0.38873,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.26,
+    "sha256": "352b852039cc0a560881841e0adb78f676afd6b5a4197bcc4f3928fb58522d2f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " New here! Botlinks in my bio!"
+    },
+    {
+      "start": 2.6,
+      "end": 5.4,
+      "text": " Tutorial complete! I'll stop yapping now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

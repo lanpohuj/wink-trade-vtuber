@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_040",
+  "phrase_id": "lively3_en_narrate_trade_040",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Watching through the close. No guessing it from my tone.",
+  "tts_text": "[natural, conversational] Watching through the close. No guessing it from my tone.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "32ebb827016d7c5510dd3fb25375e7c3b38d2225c1c1050c49631fe63fd8d73c",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_040",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_040.mp3",
+  "duration": 3.630937,
+  "sha256": "f385f1010177409155df052cb2d22d1fcaa908750d3ab0a845508333d862292c",
+  "request_payload": {
+    "text": "[natural, conversational] Watching through the close. No guessing it from my tone.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

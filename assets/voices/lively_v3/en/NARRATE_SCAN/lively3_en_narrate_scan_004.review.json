@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_004",
+  "phrase_id": "lively3_en_narrate_scan_004",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Sounding certain is easy. Finding a reason takes slightly more effort.",
+  "tts_text": "[natural, conversational] Sounding certain is easy. Finding a reason takes slightly more effort.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e4d56f595d46c5d539f3707c0925f2841f822e6a94669fb41fddeb1d8d48cdb7",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_004",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_004.mp3",
+  "duration": 4.362375,
+  "sha256": "9e33b0aa7adef80269d267532bf76065ba8f26f5309be6e1bdac1863040f9444",
+  "request_payload": {
+    "text": "[natural, conversational] Sounding certain is easy. Finding a reason takes slightly more effort.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

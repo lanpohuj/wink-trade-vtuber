@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_018",
+  "sha256": "7b1ed183efeced62fdbce438b214911b38dd7e392e7d0655d5673bd35f6b446f",
+  "expected": "The timer resists charm. Remarkably stubborn company tonight.",
+  "transcript": "The timer resists charm. Remarkably stubborn company tonight.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07646,
+    "peak": 0.41928,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "7b1ed183efeced62fdbce438b214911b38dd7e392e7d0655d5673bd35f6b446f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " The timer resists charm. Remarkably stubborn company tonight."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

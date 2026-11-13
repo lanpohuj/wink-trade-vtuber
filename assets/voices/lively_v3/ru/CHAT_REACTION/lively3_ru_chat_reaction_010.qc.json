@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_010",
+  "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb",
+  "expected": "Спасибо за фоллоу! Самооценка ведущей одобрительно кивнула.",
+  "transcript": "Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула.",
+  "similarity": 0.911,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.09335,
+    "peak": 0.48006,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.101,
+    "sha256": "cae2331b6caa7d98ee6bc039d51571687a88b6444d8b4400f27a90f7b63b22bb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Спасибо за ФОЛЛАУ. Самаоценка ведущая добрительно кивнула."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

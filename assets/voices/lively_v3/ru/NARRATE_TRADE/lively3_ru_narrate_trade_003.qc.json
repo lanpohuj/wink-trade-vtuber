@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_003",
+  "sha256": "fdcdae08a6cf48179b268a0c13be53a6786f287149b8b102c7164827632863d5",
+  "expected": "Таймер идёт. Я сижу спокойная. Ну, по крайней мере, с виду.",
+  "transcript": "Таймер идет. Я сижу спокойно. Ну, по крайней мере, с виду.",
+  "similarity": 0.966,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07424,
+    "peak": 0.2908,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.125,
+    "sha256": "fdcdae08a6cf48179b268a0c13be53a6786f287149b8b102c7164827632863d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Таймер идет. Я сижу спокойно. Ну, по крайней мере, с виду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

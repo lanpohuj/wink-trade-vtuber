@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_062",
+  "sha256": "627eaef7c85728fbea506d5f5e8f158b4d824c1a97115e4bdd8803a7bea74b6b",
+  "expected": "История догружается. Без неё моя уверенность была бы чистым актёрством.",
+  "transcript": "История догружается. Без нее моя уверенность была бы чистым актерством.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.09005,
+    "peak": 0.40971,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.13,
+    "sha256": "627eaef7c85728fbea506d5f5e8f158b4d824c1a97115e4bdd8803a7bea74b6b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " История догружается."
+    },
+    {
+      "start": 1.8,
+      "end": 4.8,
+      "text": " Без нее моя уверенность была бы чистым актерством."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

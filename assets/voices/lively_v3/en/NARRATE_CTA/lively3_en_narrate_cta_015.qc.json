@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_015",
+  "sha256": "e6953a767da08eaed48340c07cfd246934cacddfc603a6e399f42663f2095beb",
+  "expected": "Bot's in my bio if you'd rather read than listen to me yap. Fair enough, honestly.",
+  "transcript": "But's in my bio if you'd rather read than listen to me yap. Fair enough, honestly.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07876,
+    "peak": 0.32327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.319,
+    "sha256": "e6953a767da08eaed48340c07cfd246934cacddfc603a6e399f42663f2095beb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " But's in my bio if you'd rather read than listen to me yap. Fair enough, honestly."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

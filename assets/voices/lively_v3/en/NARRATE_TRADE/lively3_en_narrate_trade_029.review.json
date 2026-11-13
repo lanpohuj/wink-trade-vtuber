@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_029",
+  "phrase_id": "lively3_en_narrate_trade_029",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Currently an observer with a microphone. Talkative, but still an observer.",
+  "tts_text": "[lightly playful, smiling] Currently an observer with a microphone. Talkative, but still an observer.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "32a018282b50a554490176eb1141c5a43dc0aaad4c2095f25addd849694de148",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_029.mp3",
+  "duration": 4.675813,
+  "sha256": "6cc33a3a40262b8dcc736aac1b9f956b13a144637aea18b35e296df1264d4320",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Currently an observer with a microphone. Talkative, but still an observer.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

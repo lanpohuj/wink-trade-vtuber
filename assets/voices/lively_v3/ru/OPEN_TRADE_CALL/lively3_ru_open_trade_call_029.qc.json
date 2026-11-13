@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_029",
+  "sha256": "b180d7e66ff534dc63f5d783fd16a85e51e0e333d048d366cc2527a42b27bd0c",
+  "expected": "Купили после подтверждения отбоя в диапазоне. Мой оптимизм остаётся просто настроением.",
+  "transcript": "Купили после подтверждения от боя в диапазоне. Мой оптимизм остается просто настроением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08589,
+    "peak": 0.34179,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.07,
+    "sha256": "b180d7e66ff534dc63f5d783fd16a85e51e0e333d048d366cc2527a42b27bd0c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.86,
+      "text": " Купили после подтверждения от боя в диапазоне."
+    },
+    {
+      "start": 2.86,
+      "end": 5.5600000000000005,
+      "text": " Мой оптимизм остается просто настроением."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

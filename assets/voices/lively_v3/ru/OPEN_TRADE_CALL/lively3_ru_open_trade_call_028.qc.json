@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_028",
+  "sha256": "337d73f6b91dc6aca5cb767a91f69b043b92a47bf2fb82d1c2a7194b44652542",
+  "expected": "Вверх по отбою диапазона, открытие подтверждено. До финала не забегаем.",
+  "transcript": "Вверх по отбою диапазона. Открытие подтверждено. До финала не забегаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08806,
+    "peak": 0.41696,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.091,
+    "sha256": "337d73f6b91dc6aca5cb767a91f69b043b92a47bf2fb82d1c2a7194b44652542"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Вверх по отбою диапазона. Открытие подтверждено. До финала не забегаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

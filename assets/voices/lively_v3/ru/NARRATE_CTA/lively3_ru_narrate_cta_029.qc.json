@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_029",
+  "sha256": "441a237717610ec0fc8e8884cdbd9018946823307c9c29a9ed4b1457aed6c4be",
+  "expected": "Кнопка телепорта в бота выглядит как ссылка в профиле. Технологии, да.",
+  "transcript": "Кнопка телепортов бота выглядит как ссылка в профиле. Технология да.",
+  "similarity": 0.965,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08352,
+    "peak": 0.36467,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "441a237717610ec0fc8e8884cdbd9018946823307c9c29a9ed4b1457aed6c4be"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Кнопка телепортов бота выглядит как ссылка в профиле."
+    },
+    {
+      "start": 3.0,
+      "end": 4.0,
+      "text": " Технология да."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

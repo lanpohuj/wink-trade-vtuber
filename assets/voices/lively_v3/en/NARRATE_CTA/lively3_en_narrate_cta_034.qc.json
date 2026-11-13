@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_034",
+  "sha256": "c8b0014cc52a70cde36257abe6632d59fa772ca87d9bb0bacacb259911c6e273",
+  "expected": "Navigation check: bio leads to bot. That's the guided tour concluded.",
+  "transcript": "Navigation check. Bio leads to bot. That's the guided tour concluded.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07657,
+    "peak": 0.41747,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.259,
+    "sha256": "c8b0014cc52a70cde36257abe6632d59fa772ca87d9bb0bacacb259911c6e273"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Navigation check. Bio leads to bot. That's the guided tour concluded."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

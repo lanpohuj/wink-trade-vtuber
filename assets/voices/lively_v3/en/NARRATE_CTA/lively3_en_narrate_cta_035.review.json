@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_035",
+  "phrase_id": "lively3_en_narrate_cta_035",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Bot's in my bio if you want it. Check the terms inside; no main-character monologue from me.",
+  "tts_text": "[casual] Bot's in my bio if you want it. Check the terms inside; no main-character monologue from me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f40ebff25ad3d7635064e7acd642edaca362cf1b020559553ae8ca59c84bf439",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_035",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_035.mp3",
+  "duration": 5.773,
+  "sha256": "a9264f08e386366400e743d7bfe970fff53f5d7a632fdbec8331adb22d2a1dff",
+  "request_payload": {
+    "text": "[casual] Bot's in my bio if you want it. Check the terms inside; no main-character monologue from me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

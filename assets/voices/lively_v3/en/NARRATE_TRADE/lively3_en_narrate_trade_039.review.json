@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_039",
+  "phrase_id": "lively3_en_narrate_trade_039",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Can't skip the waiting. I know. I'd already mentally hovered over it.",
+  "tts_text": "[casual] Can't skip the waiting. I know. I'd already mentally hovered over it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d499ced9145f244b5ae71276803167d8d471cb624c9baad2c0ce407016414e71",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_039.mp3",
+  "duration": 4.519125,
+  "sha256": "a6849c261234fd27c425d4673acff680086617193dc663c1fe53cd080338e644",
+  "request_payload": {
+    "text": "[casual] Can't skip the waiting. I know. I'd already mentally hovered over it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

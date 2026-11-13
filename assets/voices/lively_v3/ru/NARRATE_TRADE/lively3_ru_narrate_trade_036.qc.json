@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_036",
+  "sha256": "2a55e1d46caca1f886720a16d72f8e833307fa90d3d64531068d04e7f6b09812",
+  "expected": "Ждём завершения. Мой оптимизм сейчас без доступа к счётчику.",
+  "transcript": "Ждём завершения! Мой оптимизм сейчас без доступа к счётчику!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08527,
+    "peak": 0.37942,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.115,
+    "sha256": "2a55e1d46caca1f886720a16d72f8e833307fa90d3d64531068d04e7f6b09812"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Ждём завершения! Мой оптимизм сейчас без доступа к счётчику!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

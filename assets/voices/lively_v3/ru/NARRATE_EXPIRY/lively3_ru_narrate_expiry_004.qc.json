@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_004",
+  "sha256": "f661b86d62885663a24bcd122509571d108f8302c2c8350f2cb50316e2402b3c",
+  "expected": "Срок — пятнадцать секунд. Коротко не значит предсказуемо, просто коротко.",
+  "transcript": "Срок 15 секунд. Коротко не значит предсказуемо, просто коротко.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.0822,
+    "peak": 0.3975,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.135,
+    "sha256": "f661b86d62885663a24bcd122509571d108f8302c2c8350f2cb50316e2402b3c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Срок 15 секунд. Коротко не значит предсказуемо, просто коротко."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

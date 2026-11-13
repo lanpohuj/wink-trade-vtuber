@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_007",
+  "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382",
+  "expected": "О, подписка! Добро пожаловать в клуб терпеливых слушателей.",
+  "transcript": "О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07893,
+    "peak": 0.35298,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.075,
+    "sha256": "5e3b2ab7ec72cb7e7fc2e3346581b01f75223c4d2edfaf2a8a381126df7f5382"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " О, подписка! Добро пожаловать в клуб «Терпеливых Слушателей»!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_040",
+  "sha256": "9b388654ad453c674aff2e2e679e03f1eb2988fd7c51cf58d284ba7ede2f78b8",
+  "expected": "Local reversal confirmed, down trade open. Let's see how it closes.",
+  "transcript": "Local reversal confirmed, down trade open. Let's see how it closes.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07219,
+    "peak": 0.34248,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "9b388654ad453c674aff2e2e679e03f1eb2988fd7c51cf58d284ba7ede2f78b8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Local reversal confirmed, down trade open. Let's see how it closes."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

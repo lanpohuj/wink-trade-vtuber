@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_035",
+  "sha256": "b71d6680e1c3446c399e78d7e47d9939145d688afb0ecc60a432d1bbf585ad43",
+  "expected": "Красивую догадку пока оставлю догадкой. До подтверждения ей рано повышаться.",
+  "transcript": "Красивую догадку, пока оставлю догадкой. До подтверждения ей рано повышаться.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.0857,
+    "peak": 0.42094,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "b71d6680e1c3446c399e78d7e47d9939145d688afb0ecc60a432d1bbf585ad43"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " Красивую догадку, пока оставлю догадкой. До подтверждения ей рано повышаться."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

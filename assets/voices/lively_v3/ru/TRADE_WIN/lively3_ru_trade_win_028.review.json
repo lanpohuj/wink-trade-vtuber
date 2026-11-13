@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_028",
+  "phrase_id": "lively3_ru_trade_win_028",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Зелёное закрытие подтверждено. Теперь довольный тон звучит заслуженно.",
+  "tts_text": "[conversational] Зелёное закрытие подтверждено. Теперь довольный тон звучит заслуженно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "91c1f8e46ffbda1cd61a99467f79cac57a32bdf1f273012f036488dc70136bf2",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_028",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_028.mp3",
+  "duration": 4.858688,
+  "sha256": "6ca134805f157ba0bdc7c4303c660cfdda374f18df8ab2d79fd035e7d8200d70",
+  "request_payload": {
+    "text": "[conversational] Зелёное закрытие подтверждено. Теперь довольный тон звучит заслуженно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

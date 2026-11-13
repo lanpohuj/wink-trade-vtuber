@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_009",
+  "sha256": "df9343117e56caab39440dafbfa88a044e08713e0122164076f8e3267e649407",
+  "expected": "Thirty seconds for this trade. Half a minute to avoid rushing conclusions.",
+  "transcript": "30 seconds for this trade half a minute to avoid rushing conclusions",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07727,
+    "peak": 0.38561,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.259,
+    "sha256": "df9343117e56caab39440dafbfa88a044e08713e0122164076f8e3267e649407"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " 30 seconds for this trade half a minute to avoid rushing conclusions"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

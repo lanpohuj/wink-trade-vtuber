@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_001",
+  "sha256": "bab15b131d88fcee80f3c6ee36accd29679f31e624980838933ad52a0f90b155",
+  "expected": "Сделка идёт. Я пока не праздную, хотя характер уже просится на сцену.",
+  "transcript": "Сделка идет! Я пока не праздную, хотя характер уже просится на сцену!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.09064,
+    "peak": 0.47548,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.132,
+    "sha256": "bab15b131d88fcee80f3c6ee36accd29679f31e624980838933ad52a0f90b155"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Сделка идет! Я пока не праздную, хотя характер уже просится на сцену!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

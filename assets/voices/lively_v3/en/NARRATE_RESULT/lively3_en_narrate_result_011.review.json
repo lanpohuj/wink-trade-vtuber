@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_011",
+  "phrase_id": "lively3_en_narrate_result_011",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next in sequence: two hundred and forty-two. Same strict checks apply.",
+  "tts_text": "[clear, conversational] Next in sequence: two hundred and forty-two. Same strict checks apply.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f14efd6e37af1dc04c2ca6ff1e4700e3342bbb954567f2afe8d3b1a15672d222",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_011",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_011.mp3",
+  "duration": 5.328875,
+  "sha256": "efbcffbdedc4b2ce80e21ebd0ab613093b2d4bdc82d69cc15e151293526f13d9",
+  "request_payload": {
+    "text": "[clear, conversational] Next in sequence: two hundred and forty-two. Same strict checks apply.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

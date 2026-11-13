@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_023",
+  "sha256": "0347a4a2d1222e9fdae88f2cd06c3e1af2176481986aaf32a4a835bfbdd9e899",
+  "expected": "Statistics describe the past. They don't issue a warranty for the next trade.",
+  "transcript": "Statistics describe the past. They don't issue a warranty for the next trade.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08719,
+    "peak": 0.76536,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.247,
+    "sha256": "0347a4a2d1222e9fdae88f2cd06c3e1af2176481986aaf32a4a835bfbdd9e899"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Statistics describe the past. They don't issue a warranty for the next trade."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

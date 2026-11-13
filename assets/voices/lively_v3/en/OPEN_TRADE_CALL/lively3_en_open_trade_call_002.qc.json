@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_002",
+  "sha256": "aaf79dd532bd5d27186d1059d4fb799ffd43e8e9abe850714246b742fd0798fe",
+  "expected": "Up trade's open. Pullback confirmed; time gets the next word.",
+  "transcript": "Up trades open. Pullback confirmed. Time gets the next word.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.07993,
+    "peak": 0.44587,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.154,
+    "sha256": "aaf79dd532bd5d27186d1059d4fb799ffd43e8e9abe850714246b742fd0798fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Up trades open. Pullback confirmed. Time gets the next word."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

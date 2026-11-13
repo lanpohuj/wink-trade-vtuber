@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_001",
+  "sha256": "8bd2fcb607f27e585a22beaa0035ec54adccaaf07e3118aa8d69f0033dd4d607",
+  "expected": "Next stake is one hundred and ten per plan. Entry checks still apply.",
+  "transcript": "Next stake is 110 per plan. Entry checks still apply.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07642,
+    "peak": 0.40371,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.225,
+    "sha256": "8bd2fcb607f27e585a22beaa0035ec54adccaaf07e3118aa8d69f0033dd4d607"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Next stake is 110 per plan. Entry checks still apply."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

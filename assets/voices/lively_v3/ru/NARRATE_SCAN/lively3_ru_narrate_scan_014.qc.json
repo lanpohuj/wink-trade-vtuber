@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_014",
+  "sha256": "fe6600139c230cfc48ebeca3a714fb0c6f140cb52869de46d4241ef63f1c2176",
+  "expected": "График читаю внимательно. Между строк свои желания не вставляю.",
+  "transcript": "Драфик читаю внимательно, между строк своей желания не вставляю.",
+  "similarity": 0.953,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08521,
+    "peak": 0.34397,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.082,
+    "sha256": "fe6600139c230cfc48ebeca3a714fb0c6f140cb52869de46d4241ef63f1c2176"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Драфик читаю внимательно, между строк своей желания не вставляю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

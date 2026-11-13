@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_023",
+  "sha256": "0c0a8ce6dfb0f085b1f0c618b3b629b9c7f978f8d4012a4f4214435b7a6d4777",
+  "expected": "Сделка плюсовая, закрытие подтверждено. Всё, я официально порадовалась.",
+  "transcript": "Сделка плюсовая. Закрытие подтверждено. Всё, я официально порадовалась.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.07424,
+    "peak": 0.34122,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.114,
+    "sha256": "0c0a8ce6dfb0f085b1f0c618b3b629b9c7f978f8d4012a4f4214435b7a6d4777"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Сделка плюсовая. Закрытие подтверждено."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Всё, я официально порадовалась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

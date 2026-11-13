@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_008",
+  "phrase_id": "lively3_en_narrate_engage_008",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Favourite kind of chat: asking questions without worrying about looking new.",
+  "tts_text": "[natural, conversational] Favourite kind of chat: asking questions without worrying about looking new.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3243fc8f7ca0e86e1a195d153544075171c6580d30dbd4a4c63540990ff1ed1a",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_008",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_008.mp3",
+  "duration": 4.858688,
+  "sha256": "37bc5f2c77d38384286035d8b6bf4136e157640fe775c238d01ff217857ec4bb",
+  "request_payload": {
+    "text": "[natural, conversational] Favourite kind of chat: asking questions without worrying about looking new.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

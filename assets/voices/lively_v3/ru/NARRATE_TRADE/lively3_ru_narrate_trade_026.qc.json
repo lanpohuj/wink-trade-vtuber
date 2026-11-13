@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_026",
+  "sha256": "57aa7d5a11b5d9095158ee0a6e197d54e8df8514b6c5fe129894e23b92be4c18",
+  "expected": "Секунды идут своим темпом. Мои драматичные паузы с ними не спорят.",
+  "transcript": "Секунды идут своим темпом. Мои драматичные паузы с ними не спорят.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08977,
+    "peak": 0.54903,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.3,
+    "trailing_silence": 0.105,
+    "sha256": "57aa7d5a11b5d9095158ee0a6e197d54e8df8514b6c5fe129894e23b92be4c18"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Секунды идут своим темпом. Мои драматичные паузы с ними не спорят."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

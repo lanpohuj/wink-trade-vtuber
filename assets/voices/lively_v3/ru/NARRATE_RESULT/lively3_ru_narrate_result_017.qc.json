@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_017",
+  "sha256": "4faa5f048cea4b262f24f9d5e233d05a685138dab7ce567b36f92f9b195667a5",
+  "expected": "Минус закрылся близко к границе. Обидно, но «почти» результат не меняет.",
+  "transcript": "Минус закрылся близко границе. Бидно, но почти результат не меняет.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.07674,
+    "peak": 0.26742,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.044,
+    "sha256": "4faa5f048cea4b262f24f9d5e233d05a685138dab7ce567b36f92f9b195667a5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.16,
+      "text": " Минус закрылся близко границе."
+    },
+    {
+      "start": 2.16,
+      "end": 5.2,
+      "text": " Бидно, но почти результат не меняет."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_loss_017",
+  "sha256": "eb5ee45e2b51081480de0803368c0a0cd915a2f56a3045b6f10a11bc5bd59176",
+  "expected": "Ага, минус. Ну спасибо за сюжетный поворот, конечно. Ладно, дальше без суеты.",
+  "transcript": "Ага, минус. Ну спасибо за сюжетный поворот, конечно. Ладно, дальше без святы.",
+  "similarity": 0.967,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.348,
+    "rms": 0.08525,
+    "peak": 0.35367,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.148,
+    "sha256": "eb5ee45e2b51081480de0803368c0a0cd915a2f56a3045b6f10a11bc5bd59176"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Ага, минус."
+    },
+    {
+      "start": 1.7,
+      "end": 4.2,
+      "text": " Ну спасибо за сюжетный поворот, конечно."
+    },
+    {
+      "start": 4.2,
+      "end": 6.2,
+      "text": " Ладно, дальше без святы."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

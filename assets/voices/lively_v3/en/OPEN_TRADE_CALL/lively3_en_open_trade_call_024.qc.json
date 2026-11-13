@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_024",
+  "sha256": "a4d680129dbaecf884461186095ebac582024ad244ebee015f4fd2e036324794",
+  "expected": "Entered up: range rejection confirmed. Watching for the close now.",
+  "transcript": "Entered up range rejection confirmed watching for the close now",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07762,
+    "peak": 0.43253,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.185,
+    "sha256": "a4d680129dbaecf884461186095ebac582024ad244ebee015f4fd2e036324794"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Entered up range rejection confirmed watching for the close now"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

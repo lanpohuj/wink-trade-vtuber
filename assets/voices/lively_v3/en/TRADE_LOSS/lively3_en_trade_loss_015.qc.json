@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_015",
+  "sha256": "721e7ecfac1447520a29ce108967cd57ea306639d67cc90a9bf86bdec6e2bf6d",
+  "expected": "Didn't land, chat. A loss. Not about to pretend I'm totally unbothered.",
+  "transcript": "Didn't land chat? A loss. Not about to pretend I'm totally unbothered.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07998,
+    "peak": 0.37088,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.128,
+    "sha256": "721e7ecfac1447520a29ce108967cd57ea306639d67cc90a9bf86bdec6e2bf6d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.7,
+      "text": " Didn't land chat? A loss. Not about to pretend I'm totally unbothered."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

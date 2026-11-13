@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_003",
+  "phrase_id": "lively3_en_narrate_result_003",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "After the loss, next step's one hundred and ten. No reason to hurry.",
+  "tts_text": "[clear, conversational] After the loss, next step's one hundred and ten. No reason to hurry.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4f483d2feef03a5fe324e20b16c0f28279c111b05ced842a1c6514e049e9443f",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_003",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_003.mp3",
+  "duration": 4.414625,
+  "sha256": "daad05e8b94af80ad93e83dda49df09d4c82a1c66ba211b3eec2a86c01c22987",
+  "request_payload": {
+    "text": "[clear, conversational] After the loss, next step's one hundred and ten. No reason to hurry.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_002",
+  "phrase_id": "lively3_en_narrate_trade_002",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Watching now. Extra clicks aren't on the entertainment schedule.",
+  "tts_text": "[gently sarcastic, conversational] Watching now. Extra clicks aren't on the entertainment schedule.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "66f71c98e9205d0caa3b58d6263e94e956ad2bf6879ee429ab27ce67a5936a60",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_002",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_002.mp3",
+  "duration": 4.075,
+  "sha256": "ec94a9963b4e0cf19a747bd4e79f6c6759e7114fed6f88450ede9ca2337cc4c5",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Watching now. Extra clicks aren't on the entertainment schedule.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_002",
+  "sha256": "80a837e59dc0f6e5510a92cb9369582fc20fcc0ca44b0eb9163179a8a714b484",
+  "expected": "Эта сделка в минус. Выдохну, без оправданий на целый сериал.",
+  "transcript": "Это сделка в минус. Выдохну без оправданий на целый сериал.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07686,
+    "peak": 0.3265,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "80a837e59dc0f6e5510a92cb9369582fc20fcc0ca44b0eb9163179a8a714b484"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Это сделка в минус."
+    },
+    {
+      "start": 1.7,
+      "end": 4.2,
+      "text": " Выдохну без оправданий на целый сериал."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

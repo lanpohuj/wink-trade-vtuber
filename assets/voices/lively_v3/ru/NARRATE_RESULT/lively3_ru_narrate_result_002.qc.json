@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_002",
+  "sha256": "4713286332729da8c10ec982ea115a7e2a72626eebd7c00c99bc7fac2751c32a",
+  "expected": "Теперь шаг сто десять. Размер изменился, факты под него не подгоняем.",
+  "transcript": "Теперь шаг 110! Размер изменился, факты под него не подгоняем!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07876,
+    "peak": 0.37848,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.108,
+    "sha256": "4713286332729da8c10ec982ea115a7e2a72626eebd7c00c99bc7fac2751c32a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Теперь шаг 110! Размер изменился, факты под него не подгоняем!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_003",
+  "phrase_id": "lively3_en_narrate_expiry_003",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Fifteen seconds for this trade. Watching that specific window.",
+  "tts_text": "[clear, conversational] Fifteen seconds for this trade. Watching that specific window.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f5a04c253263ec381e46403cba80a028b0c368e4bd18fbd922a2be34d4a66d8f",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_003",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_003.mp3",
+  "duration": 4.101125,
+  "sha256": "1ffa9d0f11da538404f243c3327217c11ca1a0076321ae97ad2fa26c8f9ed969",
+  "request_payload": {
+    "text": "[clear, conversational] Fifteen seconds for this trade. Watching that specific window.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

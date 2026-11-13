@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_029",
+  "sha256": "23fa8f9bab7529f155b54406b505963dea87abfe570fc16d707b13aa0a72bf2f",
+  "expected": "Вниз по отбою диапазона, сделка идёт. Самоуверенность в условия не включали.",
+  "transcript": "Вниз по отбою диапазона. Сделка идет, самоуверенность в условии не включали.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08436,
+    "peak": 0.33731,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "23fa8f9bab7529f155b54406b505963dea87abfe570fc16d707b13aa0a72bf2f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вниз по отбою диапазона. Сделка идет, самоуверенность в условии не включали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

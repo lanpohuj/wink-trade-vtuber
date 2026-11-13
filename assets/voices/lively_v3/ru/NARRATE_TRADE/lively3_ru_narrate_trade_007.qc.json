@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_007",
+  "sha256": "a10be5fbc23cc87f888147303051115e21e2ea43bd97916f75a175fc6c7d72a2",
+  "expected": "Таймер сам справится. Моё ценное мнение каждую секунду ему, прикиньте, не нужно.",
+  "transcript": "Таймер сам справится. Мое ценное мнение каждую секунду ему прикиньте не нужно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.09327,
+    "peak": 0.41503,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.092,
+    "sha256": "a10be5fbc23cc87f888147303051115e21e2ea43bd97916f75a175fc6c7d72a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Таймер сам справится. Мое ценное мнение каждую секунду ему прикиньте не нужно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

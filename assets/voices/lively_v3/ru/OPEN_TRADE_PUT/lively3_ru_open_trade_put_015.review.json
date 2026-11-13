@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_015",
+  "phrase_id": "lively3_ru_open_trade_put_015",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Сделка вниз идёт по сценарию пробоя с ретестом. Голосом свечи не толкаю.",
+  "tts_text": "[conversational] Сделка вниз идёт по сценарию пробоя с ретестом. Голосом свечи не толкаю.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "be242060b473b84087160e26d846254d4407ef9c52eabc6ba0c6f5558aebaf1a",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_015",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_015.mp3",
+  "duration": 4.545187,
+  "sha256": "21fb62b4d74374f188e803aa24f461b931c622d63be90addd90af9ca39e64b45",
+  "request_payload": {
+    "text": "[conversational] Сделка вниз идёт по сценарию пробоя с ретестом. Голосом свечи не толкаю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

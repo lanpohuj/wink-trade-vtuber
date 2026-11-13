@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_019",
+  "phrase_id": "lively3_ru_narrate_expiry_019",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Сделка на минуту. Финальное мнение придержу до закрытия.",
+  "tts_text": "[conversational] Сделка на минуту. Финальное мнение придержу до закрытия.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5f4304517c3322a9bbcbbafa4a90fb43aa7e4c20916ff453cbd1349a86804410",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_019",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_019.mp3",
+  "duration": 4.075,
+  "sha256": "5e4648c463ad23afc74eaa70852a95ed0736de6163855a9e64a4b2e35c2a5862",
+  "request_payload": {
+    "text": "[conversational] Сделка на минуту. Финальное мнение придержу до закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

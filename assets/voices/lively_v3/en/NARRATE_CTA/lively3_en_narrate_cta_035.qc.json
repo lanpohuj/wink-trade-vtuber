@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_035",
+  "sha256": "a9264f08e386366400e743d7bfe970fff53f5d7a632fdbec8331adb22d2a1dff",
+  "expected": "Bot's in my bio if you want it. Check the terms inside; no main-character monologue from me.",
+  "transcript": "Bot's in my bio if you want it. Check the terms inside. No main character monologue from me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.0827,
+    "peak": 0.44285,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.173,
+    "sha256": "a9264f08e386366400e743d7bfe970fff53f5d7a632fdbec8331adb22d2a1dff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Bot's in my bio if you want it."
+    },
+    {
+      "start": 2.0,
+      "end": 5.6000000000000005,
+      "text": " Check the terms inside. No main character monologue from me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

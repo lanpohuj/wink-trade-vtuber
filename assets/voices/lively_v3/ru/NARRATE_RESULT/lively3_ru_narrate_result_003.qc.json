@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_003",
+  "sha256": "8cf8ecef4b81e49bf949def7f09d7c98e2bd2c1d6ce0630e4e4cea52567cb06f",
+  "expected": "После минуса следующий шаг сто десять. Торопиться из-за этого не собираюсь.",
+  "transcript": "После минуса следующий шаг 110! Торопиться из-за этого не собираюсь!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08981,
+    "peak": 0.40608,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.096,
+    "sha256": "8cf8ecef4b81e49bf949def7f09d7c98e2bd2c1d6ce0630e4e4cea52567cb06f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " После минуса следующий шаг 110!"
+    },
+    {
+      "start": 2.5,
+      "end": 4.5,
+      "text": " Торопиться из-за этого не собираюсь!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

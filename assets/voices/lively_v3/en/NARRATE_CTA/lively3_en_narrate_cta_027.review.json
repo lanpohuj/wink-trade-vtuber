@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_027",
+  "phrase_id": "lively3_en_narrate_cta_027",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Quick useful note: bot through my bio. The conditions are explained there.",
+  "tts_text": "[warm, relaxed] Quick useful note: bot through my bio. The conditions are explained there.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "01d729742307ea2387f6f6ed33b01bc62a276286c7c380f4331ab8cfe98c37c9",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_027",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_027.mp3",
+  "duration": 4.728063,
+  "sha256": "4f6e7b7025c4ec6ce19175c5765b11bb82829d8386635a37cb2d44e6d7efe5be",
+  "request_payload": {
+    "text": "[warm, relaxed] Quick useful note: bot through my bio. The conditions are explained there.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

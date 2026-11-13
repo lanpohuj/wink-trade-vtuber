@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_013",
+  "phrase_id": "lively3_ru_narrate_cta_013",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Спросишь, где бот? Я уже отвечаю: в шапке профиля, по ссылке.",
+  "tts_text": "[conversational] Спросишь, где бот? Я уже отвечаю: в шапке профиля, по ссылке.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0a85dbc3aa0673f00e79dfd21e4e0ca472694ab013a5da913a708d793d7fd2de",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_013",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_013.mp3",
+  "duration": 5.590125,
+  "sha256": "516ef52d4808b699c826b273c26343c10c40196b85abd353ebe288ad99a7afdf",
+  "request_payload": {
+    "text": "[conversational] Спросишь, где бот? Я уже отвечаю: в шапке профиля, по ссылке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

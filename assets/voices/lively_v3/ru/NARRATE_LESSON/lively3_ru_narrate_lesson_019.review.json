@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_019",
+  "phrase_id": "lively3_ru_narrate_lesson_019",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Пропустить ситуацию — тоже решение. Диплом за обязательный клик не предусмотрен.",
+  "tts_text": "[conversational] Пропустить ситуацию — тоже решение. Диплом за обязательный клик не предусмотрен.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "05f410d70ad8eb6b2f1acaba1cedaafac04ddb2fe0b21c12d2452249114bb816",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_019",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_019.mp3",
+  "duration": 5.041563,
+  "sha256": "2b4732c3e9cd18de2236b20fbc152ef30763ae4c6d27d1bfe367a92e649f5073",
+  "request_payload": {
+    "text": "[conversational] Пропустить ситуацию — тоже решение. Диплом за обязательный клик не предусмотрен.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

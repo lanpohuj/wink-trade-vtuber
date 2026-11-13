@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_035",
+  "phrase_id": "lively3_en_open_trade_put_035",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down after confirmed local reversal. No additional prophecies.",
+  "tts_text": "[clear, conversational] Opened down after confirmed local reversal. No additional prophecies.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cf5f6cd05c2b9125db335f8860aabba6f6b088b26cbb7f360d00db67b05a6a28",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_035",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_035.mp3",
+  "duration": 4.649687,
+  "sha256": "587a360af13be62d3b2a2df7824b7ef3f9cb79092bdf353a597da117a5f090ed",
+  "request_payload": {
+    "text": "[clear, conversational] Opened down after confirmed local reversal. No additional prophecies.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

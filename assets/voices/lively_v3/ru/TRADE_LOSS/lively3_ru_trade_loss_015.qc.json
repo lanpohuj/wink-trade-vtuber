@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_015",
+  "sha256": "1ae00f82de37bedfda94e4d25f1427fd14a835db1b0928bcf8893932c5ff02ed",
+  "expected": "Не зашло, чат, минус. Делать вид «мне вообще всё равно» не буду.",
+  "transcript": "Мне зашло чат минус. Делать вид мне вообще всё равно не буду.",
+  "similarity": 0.989,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.072,
+    "peak": 0.29426,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.064,
+    "sha256": "1ae00f82de37bedfda94e4d25f1427fd14a835db1b0928bcf8893932c5ff02ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Мне зашло чат минус. Делать вид мне вообще всё равно не буду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_019",
+  "sha256": "5e4648c463ad23afc74eaa70852a95ed0736de6163855a9e64a4b2e35c2a5862",
+  "expected": "Сделка на минуту. Финальное мнение придержу до закрытия.",
+  "transcript": "Сделка на минуту. Финальное мнение придержу до закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.0809,
+    "peak": 0.30846,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.095,
+    "sha256": "5e4648c463ad23afc74eaa70852a95ed0736de6163855a9e64a4b2e35c2a5862"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Сделка на минуту. Финальное мнение придержу до закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

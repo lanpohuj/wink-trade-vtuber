@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_002",
+  "sha256": "9a6c98214a56a05d6dee5019a37e18153efbc4c2cce2cfe553a7bb1b8284807f",
+  "expected": "Палец уже хочет жать, я ещё думаю. Не, дружище, ты тут не главный.",
+  "transcript": "Палец уже хочет жать, я еще думаю. Нет, дружище, ты тут не главный.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07771,
+    "peak": 0.34028,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "9a6c98214a56a05d6dee5019a37e18153efbc4c2cce2cfe553a7bb1b8284807f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Палец уже хочет жать, я еще думаю."
+    },
+    {
+      "start": 2.4,
+      "end": 4.9,
+      "text": " Нет, дружище, ты тут не главный."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

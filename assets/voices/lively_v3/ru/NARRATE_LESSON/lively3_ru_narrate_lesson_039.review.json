@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_039",
+  "phrase_id": "lively3_ru_narrate_lesson_039",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Проверка нужна и после красивой серии. Самоуверенность любит такие моменты.",
+  "tts_text": "[conversational] Проверка нужна и после красивой серии. Самоуверенность любит такие моменты.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3bf8ca33fc875b5f73cd035667dc1d559799c2247d2f9203dad36ed0c9ef63f5",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_039",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_039.mp3",
+  "duration": 5.51175,
+  "sha256": "e4899bfdf7d8080cd305c4717fc3a8ea40885d81f63699b8d32e10421095ad98",
+  "request_payload": {
+    "text": "[conversational] Проверка нужна и после красивой серии. Самоуверенность любит такие моменты.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

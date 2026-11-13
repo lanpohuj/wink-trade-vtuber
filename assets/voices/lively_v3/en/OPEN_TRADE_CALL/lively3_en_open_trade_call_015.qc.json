@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_015",
+  "sha256": "8037e01fb1b7b732ff1254d31ebde0156af1d640d5df5e42337f11e60b7621f8",
+  "expected": "Up trade open. The basis is a breakout with a confirmed closed retest.",
+  "transcript": "Up trade open. The basis is a breakout with a confirmed closed retest.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08021,
+    "peak": 0.5291,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.172,
+    "sha256": "8037e01fb1b7b732ff1254d31ebde0156af1d640d5df5e42337f11e60b7621f8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Up trade open. The basis is a breakout with a confirmed closed retest."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

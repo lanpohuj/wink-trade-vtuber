@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_032",
+  "sha256": "040d18cb97ac1b003b1a4e8a0cd441d7d7db6de9ffcd904dcfa580becaeb508d",
+  "expected": "Сейчас полезнее внимательность, чем моя способность звучать убедительно.",
+  "transcript": "Сейчас полезнее внимательность, чем моя способность звучать убедительно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.09251,
+    "peak": 0.45513,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.074,
+    "sha256": "040d18cb97ac1b003b1a4e8a0cd441d7d7db6de9ffcd904dcfa580becaeb508d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Сейчас полезнее внимательность, чем моя способность звучать убедительно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

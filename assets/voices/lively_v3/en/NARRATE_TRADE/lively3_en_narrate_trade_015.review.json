@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_015",
+  "phrase_id": "lively3_en_narrate_trade_015",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Gap between decision and outcome. Not the loudest part, but a real one.",
+  "tts_text": "[warm, relaxed] Gap between decision and outcome. Not the loudest part, but a real one.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "44e1482a8be7506a027a00498255b60921ccbd72b02a5a251fb2ded25ed889b6",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_015",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_015.mp3",
+  "duration": 4.728063,
+  "sha256": "d672f28015029b2338628e1a5a7cbd22ae2c9e4e089f8d6f96f075393bebd65f",
+  "request_payload": {
+    "text": "[warm, relaxed] Gap between decision and outcome. Not the loudest part, but a real one.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

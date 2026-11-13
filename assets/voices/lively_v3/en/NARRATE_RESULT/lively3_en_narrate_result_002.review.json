@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_002",
+  "phrase_id": "lively3_en_narrate_result_002",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Now the one-hundred-and-ten step. Different size, no tailoring the facts to it.",
+  "tts_text": "[clear, conversational] Now the one-hundred-and-ten step. Different size, no tailoring the facts to it.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7cb14fc0413e4f43f3515e0cf9e6979c1a7d7b36f6b1aa36eab89618676149cb",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_002",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_002.mp3",
+  "duration": 5.172125,
+  "sha256": "b2dbb4798d99529f46d53bb2f7cf6560d46b3a46d85882b2244b06209329331c",
+  "request_payload": {
+    "text": "[clear, conversational] Now the one-hundred-and-ten step. Different size, no tailoring the facts to it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

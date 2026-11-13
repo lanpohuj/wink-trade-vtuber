@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_034",
+  "phrase_id": "lively3_ru_narrate_cta_034",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Проверка навигации: шапка профиля ведёт в бота. Всё, экскурсию по меню закончила.",
+  "tts_text": "[conversational] Проверка навигации: шапка профиля ведёт в бота. Всё, экскурсию по меню закончила.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "79e5d5c88f66950272a8f16cecba7d3347dd654b8a2738f4d9c32dbf1072c43b",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_034",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_034.mp3",
+  "duration": 6.164813,
+  "sha256": "aa01aea0ef1e6c6511fbfbf625a2cb1351c5c748c55e0c2f2351330d63c54303",
+  "request_payload": {
+    "text": "[conversational] Проверка навигации: шапка профиля ведёт в бота. Всё, экскурсию по меню закончила.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_008",
+  "sha256": "bd251905ecab41266511bc3de14ed3065ba379b65503320dd3dd7c04ed034e53",
+  "expected": "Бот ждёт в шапке профиля. Терпения у него больше, чем у меня перед загрузкой.",
+  "transcript": "Бот ждет в шапке профиля. Терпение у него больше, чем у меня перед загрузкой.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.0843,
+    "peak": 0.31976,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "bd251905ecab41266511bc3de14ed3065ba379b65503320dd3dd7c04ed034e53"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Бот ждет в шапке профиля."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Терпение у него больше, чем у меня перед загрузкой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

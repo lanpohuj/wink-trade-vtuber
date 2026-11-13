@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_023",
+  "sha256": "616c8d44800ca402ef38671c9646f0b041c4c83d5ec1fca2edb925ea68cdd05b",
+  "expected": "Статистика описывает прошлое. Гарантию на следующую сделку она не выдаёт.",
+  "transcript": "статистика описывает прошлое гарантию на следующую сделку она не выдаёт",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08745,
+    "peak": 0.46834,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.109,
+    "sha256": "616c8d44800ca402ef38671c9646f0b041c4c83d5ec1fca2edb925ea68cdd05b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " статистика описывает прошлое гарантию на следующую сделку она не выдаёт"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

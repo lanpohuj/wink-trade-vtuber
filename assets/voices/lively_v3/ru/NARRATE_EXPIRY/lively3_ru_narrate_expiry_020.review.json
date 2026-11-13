@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_020",
+  "phrase_id": "lively3_ru_narrate_expiry_020",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Тут минутный срок. Времени чуть больше, определённости от этого не добавляется.",
+  "tts_text": "[conversational] Тут минутный срок. Времени чуть больше, определённости от этого не добавляется.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "de944991ec37e04b0aa007285d4871c734f9e03ee4a03890e43a70c1c40414be",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_020",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_020.mp3",
+  "duration": 5.041563,
+  "sha256": "1308595210d1d3de10826f3b45aa1d29df05c6d30a447ada2ed3d1c46639e711",
+  "request_payload": {
+    "text": "[conversational] Тут минутный срок. Времени чуть больше, определённости от этого не добавляется.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

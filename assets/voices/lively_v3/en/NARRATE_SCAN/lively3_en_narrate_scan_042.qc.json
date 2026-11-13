@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_042",
+  "sha256": "0932dd16f97b433a5d350e5c23024669c1287cf02b5fd3e37cbf5192784c3fb4",
+  "expected": "Brief common-sense intermission. Rare content, surprisingly useful.",
+  "transcript": "Brief common sense intermission rare content surprisingly useful",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07986,
+    "peak": 0.35893,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.279,
+    "sha256": "0932dd16f97b433a5d350e5c23024669c1287cf02b5fd3e37cbf5192784c3fb4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Brief common sense intermission rare content surprisingly useful"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

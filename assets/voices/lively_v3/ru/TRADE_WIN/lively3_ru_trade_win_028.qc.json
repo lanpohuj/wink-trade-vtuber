@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_028",
+  "sha256": "6ca134805f157ba0bdc7c4303c660cfdda374f18df8ab2d79fd035e7d8200d70",
+  "expected": "Зелёное закрытие подтверждено. Теперь довольный тон звучит заслуженно.",
+  "transcript": "Зеленое закрытие подтверждено. Теперь довольны то он звучит заслужено.",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08315,
+    "peak": 0.37025,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "6ca134805f157ba0bdc7c4303c660cfdda374f18df8ab2d79fd035e7d8200d70"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Зеленое закрытие подтверждено. Теперь довольны то он звучит заслужено."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

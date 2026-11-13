@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_020",
+  "phrase_id": "lively3_en_narrate_engage_020",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Looking completely composed. You should see the number of mental tabs open, though.",
+  "tts_text": "[casual] Looking completely composed. You should see the number of mental tabs open, though.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cc2b45984d2c944cde1ea97df3f1fd5e93aeeadb06a0afae93996918b1c26664",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_020",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_020.mp3",
+  "duration": 5.119937,
+  "sha256": "02a362e006151a25e5e6145954f0e0eecb2e57ddeb3c884d545ebf13b0ba20ea",
+  "request_payload": {
+    "text": "[casual] Looking completely composed. You should see the number of mental tabs open, though.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

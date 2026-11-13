@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_014",
+  "phrase_id": "lively3_en_narrate_engage_014",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Who's got things under control, and who's opened another tab of chaos?",
+  "tts_text": "[gently sarcastic, conversational] Who's got things under control, and who's opened another tab of chaos?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "51b4a4ba33d978041f0c2efb949b93e0cc78bc90a375ea806390da1b35e90a07",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_014",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_014.mp3",
+  "duration": 4.414625,
+  "sha256": "5776641a0c9b3bf6295ce71b122070968faa3c0133575c9b2ee6bb6fd79a99af",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Who's got things under control, and who's opened another tab of chaos?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_005",
+  "phrase_id": "lively3_en_narrate_pair_005",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New candidate. No 'pair of the evening' crown just yet.",
+  "tts_text": "[lightly playful, smiling] New candidate. No 'pair of the evening' crown just yet.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "07ced93727d57c979a49a1137066a08726740d1b50d0176237e1f22376a3447f",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:crown",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_005.mp3",
+  "duration": 3.761563,
+  "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2",
+  "request_payload": {
+    "text": "[lightly playful, smiling] New candidate. No 'pair of the evening' crown just yet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

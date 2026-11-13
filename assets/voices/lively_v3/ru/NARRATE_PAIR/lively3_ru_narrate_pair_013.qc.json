@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_013",
+  "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7",
+  "expected": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
+  "transcript": "Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09056,
+    "peak": 0.43572,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.122,
+    "sha256": "b52d9e200f0e45465095e3ba84be52741a16dd919c1ede7223a6ccfbc46adfa7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Чат, дальше по списку. Расставание с прошлым графиком переживём, я верю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

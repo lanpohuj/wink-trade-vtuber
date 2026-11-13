@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_039",
+  "phrase_id": "lively3_ru_narrate_scan_039",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Не даю одной детали украсть всё внимание. Тут не сольный концерт.",
+  "tts_text": "[conversational] Не даю одной детали украсть всё внимание. Тут не сольный концерт.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d93902868728a0af3233a6f52740f065d1b7c477a7d6663b057255f6b6bdb169",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_039",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_039.mp3",
+  "duration": 4.675813,
+  "sha256": "0970e79457e3065c872ed8211a55bde7480a4eed0df17dae98087b5e492371b5",
+  "request_payload": {
+    "text": "[conversational] Не даю одной детали украсть всё внимание. Тут не сольный концерт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_002",
+  "sha256": "176002d9da7f1e320ffa9fcf7e94a94a29d82f89ab83c421ed40f0236e2bb009",
+  "expected": "Hey to the quiet viewers too. No compulsory roll call. Make yourselves comfortable.",
+  "transcript": "Hey to the quiet viewers too! No compulsory roll call! Make yourselves comfortable!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08064,
+    "peak": 0.53085,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.142,
+    "sha256": "176002d9da7f1e320ffa9fcf7e94a94a29d82f89ab83c421ed40f0236e2bb009"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Hey to the quiet viewers too! No compulsory roll call! Make yourselves comfortable!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

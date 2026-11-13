@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_021",
+  "sha256": "57323cca83b812fcd1565a0db81a556f1f25394f9dfa4140eb72f948a4a68158",
+  "expected": "Find the bot through my bio. Access conditions and steps are inside.",
+  "transcript": "Find the bot through my bio access conditions and steps are inside",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07949,
+    "peak": 0.51665,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.165,
+    "sha256": "57323cca83b812fcd1565a0db81a556f1f25394f9dfa4140eb72f948a4a68158"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.04,
+      "text": " Find the bot through my bio access conditions and steps are inside"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

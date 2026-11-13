@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_010",
+  "sha256": "f2a417821d158b5e9091d40e06089fda8a813ee82e518db74419fece8ad82b49",
+  "expected": "Let's skip broken telephone. The current bot link is in my bio.",
+  "transcript": "Let's skip broken telephone. The current bot link is in my bio.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08063,
+    "peak": 0.42092,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.275,
+    "sha256": "f2a417821d158b5e9091d40e06089fda8a813ee82e518db74419fece8ad82b49"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Let's skip broken telephone. The current bot link is in my bio."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

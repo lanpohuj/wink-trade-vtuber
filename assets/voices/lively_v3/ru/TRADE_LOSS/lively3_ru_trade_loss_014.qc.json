@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_014",
+  "sha256": "adcd59fb1396907e275bc0ff3ec92d766b997458237340b2559b07a6174cd56b",
+  "expected": "Минус. Да ну блин, хотелось по-другому. Ладно, выдохнули.",
+  "transcript": "Минус! Да ну блин, хотелось по-другому! Ладно, выдохнули!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07842,
+    "peak": 0.34198,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "adcd59fb1396907e275bc0ff3ec92d766b997458237340b2559b07a6174cd56b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Минус! Да ну блин, хотелось по-другому!"
+    },
+    {
+      "start": 3.36,
+      "end": 4.86,
+      "text": " Ладно, выдохнули!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

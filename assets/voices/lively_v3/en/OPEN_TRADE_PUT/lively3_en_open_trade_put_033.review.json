@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_033",
+  "phrase_id": "lively3_en_open_trade_put_033",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Down entry happened: local reversal checked. Watching through the expiry now.",
+  "tts_text": "[clear, conversational] Down entry happened: local reversal checked. Watching through the expiry now.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "af569dee3174ea9def2a1c5142d567cae5996954177f8bdeaa160d9f612e9774",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_033",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_033.mp3",
+  "duration": 5.041563,
+  "sha256": "eb069b2809ca9044e9095d0723edc9afcba256c291e0bedc1f8cd1a42c839de5",
+  "request_payload": {
+    "text": "[clear, conversational] Down entry happened: local reversal checked. Watching through the expiry now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

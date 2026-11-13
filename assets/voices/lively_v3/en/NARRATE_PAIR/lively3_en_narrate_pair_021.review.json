@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_021",
+  "phrase_id": "lively3_en_narrate_pair_021",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Switched over. Checking again; memory doesn't replace observation.",
+  "tts_text": "[lightly playful, smiling] Switched over. Checking again; memory doesn't replace observation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "67053d8750ff82967c99c25ab8dc2c215e5ad4f12c429c80fdcb3fd32bdcbe53",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_021",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_021.mp3",
+  "duration": 4.414625,
+  "sha256": "691ad0b183807e0888b017cedb17bc583c488eb542973b2e93b9fe5e81a57061",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Switched over. Checking again; memory doesn't replace observation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

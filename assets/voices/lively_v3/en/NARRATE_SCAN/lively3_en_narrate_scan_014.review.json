@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_014",
+  "phrase_id": "lively3_en_narrate_scan_014",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Reading the chart carefully. Not adding my wishes between the lines.",
+  "tts_text": "[gently sarcastic, conversational] Reading the chart carefully. Not adding my wishes between the lines.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e70b26a0af63193afeaa7c48e7f18c8cdeaf1ae2457b3c471522e9b6e504b870",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_014",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_014.mp3",
+  "duration": 4.101125,
+  "sha256": "fb245ca6680142e1bcd1d9c4f0e6b3321fdf5a58566e73bcaf0bd647baf8ad32",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Reading the chart carefully. Not adding my wishes between the lines.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

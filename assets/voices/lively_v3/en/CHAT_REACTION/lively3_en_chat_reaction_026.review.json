@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_026",
+  "phrase_id": "lively3_en_chat_reaction_026",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Access is explained in the bot linked from my profile. Tell me if a step's unclear.",
+  "tts_text": "[gently sarcastic, conversational] Access is explained in the bot linked from my profile. Tell me if a step's unclear.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9ddad7f12b2ff71a6d0ec335fca5a257140f78bba86a802a75bf152886040ac6",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_026",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_026.mp3",
+  "duration": 5.041563,
+  "sha256": "c54cb27c0fcabad8f5422e2cb7f51dcda89536ef698208c9e05f2b79717bd296",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Access is explained in the bot linked from my profile. Tell me if a step's unclear.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

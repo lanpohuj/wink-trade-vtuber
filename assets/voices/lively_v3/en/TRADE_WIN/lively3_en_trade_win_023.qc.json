@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_023",
+  "sha256": "5d7b60a982d14428cf81de86df990412c5d7d6903fcd9b8cba8a75d6733a5a8e",
+  "expected": "Winning trade, close confirmed. There, I've officially enjoyed it.",
+  "transcript": "Winning trade close confirmed there. I've officially enjoyed it",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07665,
+    "peak": 0.40145,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.312,
+    "sha256": "5d7b60a982d14428cf81de86df990412c5d7d6903fcd9b8cba8a75d6733a5a8e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Winning trade close confirmed there. I've officially enjoyed it"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

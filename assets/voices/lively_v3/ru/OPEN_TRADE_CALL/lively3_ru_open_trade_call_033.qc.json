@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_033",
+  "sha256": "f3d01fa2c69ddd81c5afe332964014298c434d45c774dd950a03fcef8457258f",
+  "expected": "Вход вверх состоялся: локальный разворот подтверждён. Дальше слово у закрытия.",
+  "transcript": "Вход вверх состоялся. Локальный разворот подтвержден. Дальше слово у закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.08163,
+    "peak": 0.42779,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.121,
+    "sha256": "f3d01fa2c69ddd81c5afe332964014298c434d45c774dd950a03fcef8457258f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Вход вверх состоялся. Локальный разворот подтвержден. Дальше слово у закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

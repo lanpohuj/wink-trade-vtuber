@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_010",
+  "sha256": "2c2533247baa63d2fee6ab7e8130b02b66cd941d993ce9d0f4c4ea9fb6f937a7",
+  "expected": "Открыли вверх после отката с подтверждением. Всё, моя работа с кнопкой закончилась.",
+  "transcript": "Открыли вверх после отката с подтверждением. Все, моя работа с кнопкой закончилась.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.0878,
+    "peak": 0.3901,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.103,
+    "sha256": "2c2533247baa63d2fee6ab7e8130b02b66cd941d993ce9d0f4c4ea9fb6f937a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Открыли вверх после отката с подтверждением."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Все, моя работа с кнопкой закончилась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

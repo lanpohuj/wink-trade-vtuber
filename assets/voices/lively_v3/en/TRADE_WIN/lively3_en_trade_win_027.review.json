@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_027",
+  "phrase_id": "lively3_en_trade_win_027",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Win! Okay, that was clean. Tiny celebration, then back to it.",
+  "tts_text": "[casual] Win! Okay, that was clean. Tiny celebration, then back to it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0a6d0eb8ba8ab07fc9ae3c91d923bfc1789a113ff4455659064928a707cd7a8f",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_027",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_027.mp3",
+  "duration": 5.067687,
+  "sha256": "b21e2fc6ecff1e4cf98a022515b2e2533f02bff1a2eb4264207e168bae72c14e",
+  "request_payload": {
+    "text": "[casual] Win! Okay, that was clean. Tiny celebration, then back to it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

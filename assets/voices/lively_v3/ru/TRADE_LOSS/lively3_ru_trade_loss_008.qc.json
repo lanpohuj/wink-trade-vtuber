@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_008",
+  "sha256": "4eb7877effb8ccd9dd44a53cfbf7af4306dd16028aae7f5978fd10f5d1483c1b",
+  "expected": "Красное закрытие. Неприятный момент без необходимости сочинять ему легенду.",
+  "transcript": "Красное закрытие. Неприятный момент без необходимости сочинять ему легенду.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.09313,
+    "peak": 0.3045,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.096,
+    "sha256": "4eb7877effb8ccd9dd44a53cfbf7af4306dd16028aae7f5978fd10f5d1483c1b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Красное закрытие. Неприятный момент без необходимости сочинять ему легенду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

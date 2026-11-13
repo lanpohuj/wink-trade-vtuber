@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_004",
+  "sha256": "65c42f94ccf093a267fc5610d212cd8b495f82fc4fc6fee82d8e536a192fac6c",
+  "expected": "Уверенный голос включить легко. Уверенные основания найти интереснее.",
+  "transcript": "Уверенный голос включить легко, уверенные основания найти интереснее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08664,
+    "peak": 0.36347,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "65c42f94ccf093a267fc5610d212cd8b495f82fc4fc6fee82d8e536a192fac6c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Уверенный голос включить легко, уверенные основания найти интереснее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

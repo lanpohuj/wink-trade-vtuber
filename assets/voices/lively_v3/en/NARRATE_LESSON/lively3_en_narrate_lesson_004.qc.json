@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_004",
+  "sha256": "9999c089e024f366f2581ff4aba8b529497f77dad7ddb63a62aed8a33650e5b7",
+  "expected": "A pause doesn't have to look impressive to be useful.",
+  "transcript": "A pause doesn't have to look impressive to be useful.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.056,
+    "rms": 0.08216,
+    "peak": 0.76407,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.236,
+    "sha256": "9999c089e024f366f2581ff4aba8b529497f77dad7ddb63a62aed8a33650e5b7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.96,
+      "text": " A pause doesn't have to look impressive to be useful."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

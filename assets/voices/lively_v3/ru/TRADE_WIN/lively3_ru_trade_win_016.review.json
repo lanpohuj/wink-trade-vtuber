@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_016",
+  "phrase_id": "lively3_ru_trade_win_016",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Зашло в плюс! Так, не надо делать вид, что я не довольная. Вы же видите.",
+  "tts_text": "[conversational] Зашло в плюс! Так, не надо делать вид, что я не довольная. Вы же видите.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6bd05ddd46b90d504912dbd7406ca4542958f7736d2d8894f6057bee13cd6837",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_016",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_016.mp3",
+  "duration": 5.590125,
+  "sha256": "d97897f003dc88208dfd24dd188e29f36846d6751fda1ea282665fae7161224e",
+  "request_payload": {
+    "text": "[conversational] Зашло в плюс! Так, не надо делать вид, что я не довольная. Вы же видите.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

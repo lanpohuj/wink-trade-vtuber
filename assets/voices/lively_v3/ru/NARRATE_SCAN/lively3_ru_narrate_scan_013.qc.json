@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_013",
+  "sha256": "e69730613fd39796af0bdd16db975596a8f47158f349a5d5d0f437b4b6c0e75a",
+  "expected": "Пока никаких торжественных заявлений. У меня тут обычная проверка, без фанфар.",
+  "transcript": "Пока никаких торжественных заявлений. У меня тут обычная проверка без фанфар.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08548,
+    "peak": 0.38645,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "e69730613fd39796af0bdd16db975596a8f47158f349a5d5d0f437b4b6c0e75a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.3000000000000003,
+      "text": " Пока никаких торжественных заявлений."
+    },
+    {
+      "start": 2.3000000000000003,
+      "end": 5.2,
+      "text": " У меня тут обычная проверка без фанфар."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

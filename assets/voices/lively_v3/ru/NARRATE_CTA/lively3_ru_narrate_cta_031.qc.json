@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_031",
+  "sha256": "a3a5cd87cdf5630eb86da5e69b8ed244272b42ccf1a99c02e39cb7eb7d8f37c4",
+  "expected": "Пока есть пауза: напомню про бота в профиле. У него инструкция, у меня комментарии.",
+  "transcript": "Пока есть пауза, напомню, работа в профиле. У него инструкция, у меня комментарии.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.09088,
+    "peak": 0.40543,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.3,
+    "trailing_silence": 0.1,
+    "sha256": "a3a5cd87cdf5630eb86da5e69b8ed244272b42ccf1a99c02e39cb7eb7d8f37c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Пока есть пауза, напомню, работа в профиле. У него инструкция, у меня комментарии."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

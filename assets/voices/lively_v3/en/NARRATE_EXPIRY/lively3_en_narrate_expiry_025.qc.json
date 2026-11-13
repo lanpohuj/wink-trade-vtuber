@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_025",
+  "sha256": "6e8e567c447aa722dcf47e4d79db45353b2ae8b23c489001f3c4d8240868bbed",
+  "expected": "Two minutes here. The timer's giving me a chance to look patient.",
+  "transcript": "Two minutes here. The timer's giving me a chance to look patient.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07377,
+    "peak": 0.41584,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.154,
+    "sha256": "6e8e567c447aa722dcf47e4d79db45353b2ae8b23c489001f3c4d8240868bbed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Two minutes here. The timer's giving me a chance to look patient."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

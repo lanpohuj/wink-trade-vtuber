@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_009",
+  "phrase_id": "lively3_en_narrate_engage_009",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Opening an app and forgetting why. Universal experience, or am I uniquely cooked?",
+  "tts_text": "[casual] Opening an app and forgetting why. Universal experience, or am I uniquely cooked?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f17fbd2d760f4301e1a8bf19f518b4ac0fd3203e182bac3d9de78ab2a47e5842",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_009",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_009.mp3",
+  "duration": 5.564,
+  "sha256": "ec9424a6ba61a5e906029508f8aed7859482711bbfef79c29fee19ff17b79276",
+  "request_payload": {
+    "text": "[casual] Opening an app and forgetting why. Universal experience, or am I uniquely cooked?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

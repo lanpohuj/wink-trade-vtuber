@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_025",
+  "phrase_id": "lively3_en_open_trade_call_025",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Up trade open on the range rejection. A nice name won't skip the wait.",
+  "tts_text": "[clear, conversational] Up trade open on the range rejection. A nice name won't skip the wait.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bbdd22b9ec11dc251e9af3d7523deb2ace96ad993e164551d812e4ed4ab8f8f9",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_025",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_025.mp3",
+  "duration": 4.858688,
+  "sha256": "ab22e4167b4f66a1c971f61d8173fdea4351c8e6391bc7e4cf0d90982d28b16a",
+  "request_payload": {
+    "text": "[clear, conversational] Up trade open on the range rejection. A nice name won't skip the wait.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

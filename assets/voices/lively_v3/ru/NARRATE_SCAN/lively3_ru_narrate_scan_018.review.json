@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_018",
+  "phrase_id": "lively3_ru_narrate_scan_018",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сейчас не спешу нравиться графику. Пусть сначала условия покажет.",
+  "tts_text": "[conversational] Сейчас не спешу нравиться графику. Пусть сначала условия покажет.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2689c09da7a4eae151469e51447d57ac562e71fa7c22210f07dff571c1457d38",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_018",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_018.mp3",
+  "duration": 3.892125,
+  "sha256": "04b1366cd362889bf5c208d06662df8ce65e9a1ebec9febb012213b907f267c5",
+  "request_payload": {
+    "text": "[conversational] Сейчас не спешу нравиться графику. Пусть сначала условия покажет.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

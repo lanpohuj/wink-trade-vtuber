@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_007",
+  "phrase_id": "lively3_en_narrate_volatility_007",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Wider ranges show in recent data. My emotional delivery isn't the cause.",
+  "tts_text": "[warm, relaxed] Wider ranges show in recent data. My emotional delivery isn't the cause.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d5bbeec5a3a96450f8ad945d27fcb112919b0620929d6a40434e733cfd2c7d7e",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_007",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_007.mp3",
+  "duration": 4.545187,
+  "sha256": "462df33fb9222b818677771b323740837c51299283f98a6d8d5c7d189dc04055",
+  "request_payload": {
+    "text": "[warm, relaxed] Wider ranges show in recent data. My emotional delivery isn't the cause.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

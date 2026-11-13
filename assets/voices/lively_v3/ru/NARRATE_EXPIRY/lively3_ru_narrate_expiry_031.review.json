@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_031",
+  "phrase_id": "lively3_ru_narrate_expiry_031",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Две минуты — выбранный срок. Мой комментарий может быть заметно короче.",
+  "tts_text": "[conversational] Две минуты — выбранный срок. Мой комментарий может быть заметно короче.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3a6dd392a121c2c57e6a50035c47caee847d5bbd547c48f84585f73d8819983c",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_031",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_031.mp3",
+  "duration": 4.545187,
+  "sha256": "bfe5eba216ab1caf2517314445b246d9853f1a43b687e15b8aaa81b4093d8c2f",
+  "request_payload": {
+    "text": "[conversational] Две минуты — выбранный срок. Мой комментарий может быть заметно короче.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

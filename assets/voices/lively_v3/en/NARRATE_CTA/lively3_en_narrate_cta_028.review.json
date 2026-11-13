@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_028",
+  "phrase_id": "lively3_en_narrate_cta_028",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Where's the bot, asks the inner voice. In my bio, answers the unnecessarily loud one.",
+  "tts_text": "[natural, conversational] Where's the bot, asks the inner voice. In my bio, answers the unnecessarily loud one.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9193efcdcde45379b50f9e12b67e5255fcf170c2360a6551ee5176e71be981a8",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_028.mp3",
+  "duration": 6.556625,
+  "sha256": "724332a86f5d9f0a985aff7d4a861593d85c46f0ac68c59fc153fce2e5b9247b",
+  "request_payload": {
+    "text": "[natural, conversational] Where's the bot, asks the inner voice. In my bio, answers the unnecessarily loud one.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

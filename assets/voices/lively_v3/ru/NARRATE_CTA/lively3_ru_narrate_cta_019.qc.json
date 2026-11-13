@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_019",
+  "sha256": "7e472460ec990fc28785e7a28440d71bed6ab60671b847d0a31ddcdb55f44b91",
+  "expected": "Если присматриваешься к инструментам, бот в профиле покажет условия. Спокойно почитай.",
+  "transcript": "Если присматриваешься к инструментам, бот в профиле покажет условия. Спокойно почитай.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.06923,
+    "peak": 0.37723,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "7e472460ec990fc28785e7a28440d71bed6ab60671b847d0a31ddcdb55f44b91"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Если присматриваешься к инструментам, бот в профиле покажет условия."
+    },
+    {
+      "start": 3.68,
+      "end": 5.0,
+      "text": " Спокойно почитай."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_scan_006",
+  "sha256": "f0cdda975a1828fcd4e8c080ff0c5da95e8e6385452237b3d88383156df7e286",
+  "expected": "Not buying the story from its trailer. Checking the chart's details first.",
+  "transcript": "Not buying the story from its trailer. Checking the chart's details first.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.06958,
+    "peak": 0.36553,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.225,
+    "sha256": "f0cdda975a1828fcd4e8c080ff0c5da95e8e6385452237b3d88383156df7e286"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Not buying the story from its trailer."
+    },
+    {
+      "start": 2.44,
+      "end": 4.44,
+      "text": " Checking the chart's details first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

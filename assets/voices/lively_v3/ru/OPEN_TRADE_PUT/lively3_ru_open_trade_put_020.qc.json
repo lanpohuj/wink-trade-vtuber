@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_020",
+  "sha256": "eb51c750af078b84ac79215e0cdd02c8d5557970e167a146f2d72ed83d142c44",
+  "expected": "Открыли вниз после ретеста с подтверждением. Всё, пафос оставлю за кадром.",
+  "transcript": "Открыли вниз после ретеста с подтверждением. Всё, пафа составлю за кадром.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08509,
+    "peak": 0.4414,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "eb51c750af078b84ac79215e0cdd02c8d5557970e167a146f2d72ed83d142c44"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Открыли вниз после ретеста с подтверждением."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Всё, пафа составлю за кадром."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

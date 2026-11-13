@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_006",
+  "phrase_id": "lively3_ru_trade_win_006",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Вот теперь радуюсь. До закрытия держалась, можете оценить выдержку.",
+  "tts_text": "[conversational] Вот теперь радуюсь. До закрытия держалась, можете оценить выдержку.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ce314f8b341e9cd58a0b02b4600b6fec43cc43d452ad4f272d5117088665c1b0",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_006",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_006.mp3",
+  "duration": 5.119937,
+  "sha256": "6ecb61e892d1dfcd087a2d7005af0cb3376208dd0d9f22ceb83b8304e5a74178",
+  "request_payload": {
+    "text": "[conversational] Вот теперь радуюсь. До закрытия держалась, можете оценить выдержку.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

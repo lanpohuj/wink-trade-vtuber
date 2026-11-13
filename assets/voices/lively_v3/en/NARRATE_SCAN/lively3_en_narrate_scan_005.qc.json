@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_scan_005",
+  "sha256": "7349eed8da69be5dbd8882423ecd23295ea1581c9494995e7e06aa8decfb5023",
+  "expected": "Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.",
+  "transcript": "Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.07737,
+    "peak": 0.39573,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.161,
+    "sha256": "7349eed8da69be5dbd8882423ecd23295ea1581c9494995e7e06aa8decfb5023"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Hang on, I'm not there yet."
+    },
+    {
+      "start": 2.4,
+      "end": 5.6000000000000005,
+      "text": " Looking smart is easy. Being useful takes a minute."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

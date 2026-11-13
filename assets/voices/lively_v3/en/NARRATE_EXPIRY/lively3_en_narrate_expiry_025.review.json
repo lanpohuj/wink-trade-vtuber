@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_025",
+  "phrase_id": "lively3_en_narrate_expiry_025",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two minutes here. The timer's giving me a chance to look patient.",
+  "tts_text": "[clear, conversational] Two minutes here. The timer's giving me a chance to look patient.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f60949825ce2b0930570f9fe0741b3ef0a377437ddc156f535953ebb70390d5b",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_025",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_025.mp3",
+  "duration": 3.813812,
+  "sha256": "6e8e567c447aa722dcf47e4d79db45353b2ae8b23c489001f3c4d8240868bbed",
+  "request_payload": {
+    "text": "[clear, conversational] Two minutes here. The timer's giving me a chance to look patient.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

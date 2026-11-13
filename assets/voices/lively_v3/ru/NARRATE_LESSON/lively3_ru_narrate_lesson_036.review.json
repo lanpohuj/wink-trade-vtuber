@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_036",
+  "phrase_id": "lively3_ru_narrate_lesson_036",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Выбранное направление — сценарий, а не обещание рынка. Я подпись за него не ставлю.",
+  "tts_text": "[conversational] Выбранное направление — сценарий, а не обещание рынка. Я подпись за него не ставлю.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7afab88afa57f1cad3a79d49fb6e8206e4f98c5404d8a9076c34eb4881d026d6",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_036",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_036.mp3",
+  "duration": 5.172125,
+  "sha256": "1d1ce39b9af4f33435106aa0a4ce1968fd5f86de03a099f8334eba8a220ae1d2",
+  "request_payload": {
+    "text": "[conversational] Выбранное направление — сценарий, а не обещание рынка. Я подпись за него не ставлю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

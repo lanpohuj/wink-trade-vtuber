@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_043",
+  "phrase_id": "lively3_en_narrate_scan_043",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Host present, thoughts present. I've simply decided to check first.",
+  "tts_text": "[warm, relaxed] Host present, thoughts present. I've simply decided to check first.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6f68a0bf3bb7b2cb20bb1557772686ba03de5a15dddba44bbd563ab986acc870",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_043",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_043.mp3",
+  "duration": 4.780312,
+  "sha256": "5f219d8ceec28a1ca8c40bf90f748b444d2bdbf6ee09b3243cd5f736515eb658",
+  "request_payload": {
+    "text": "[warm, relaxed] Host present, thoughts present. I've simply decided to check first.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

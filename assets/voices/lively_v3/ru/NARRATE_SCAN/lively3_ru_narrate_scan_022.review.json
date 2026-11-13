@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_022",
+  "phrase_id": "lively3_ru_narrate_scan_022",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Если приходится додумывать половину картины, лучше проверить ещё раз.",
+  "tts_text": "[conversational] Если приходится додумывать половину картины, лучше проверить ещё раз.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "89f9dda3c98f4ff504fc2060b232f9b8628be409c4fccc4c1116788089ae5e1b",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_022",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_022.mp3",
+  "duration": 4.675813,
+  "sha256": "935ca3fd82a13c1b11e75db9415f63cfc14f3b3bde2998e30afaf66c2cbc9488",
+  "request_payload": {
+    "text": "[conversational] Если приходится додумывать половину картины, лучше проверить ещё раз.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

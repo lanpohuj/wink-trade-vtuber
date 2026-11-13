@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_015",
+  "phrase_id": "lively3_ru_narrate_scan_015",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я за красивую речь, но сначала пусть появится понятная идея.",
+  "tts_text": "[conversational] Я за красивую речь, но сначала пусть появится понятная идея.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c46bf443608ab2bd7976936f5ffc2b9c755b7e4995f3d313781d7097ea9a02f4",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_015",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_015.mp3",
+  "duration": 4.075,
+  "sha256": "7a9035c601f84de88f53281eb599658852243ce1abd8571e4d338e35d9a86748",
+  "request_payload": {
+    "text": "[conversational] Я за красивую речь, но сначала пусть появится понятная идея.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

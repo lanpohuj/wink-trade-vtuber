@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_010",
+  "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a",
+  "expected": "Thanks for the follow! The host's confidence gave an approving nod.",
+  "transcript": "Thanks for the follow the hosts confidence gave an approving nod",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08106,
+    "peak": 0.47965,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.164,
+    "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.9,
+      "text": " Thanks for the follow the hosts confidence gave an approving nod"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lively3_ru_narrate_pair_018",
+    "sha256": "489e93cfba518f7a79da7bdd1008718e9d906cc05e5ea69341f4540696e72ea9",
+    "audio_clean": true,
+    "text_accepted": false,
+    "source": "Owner: no hoarseness, phrases need revision"
+  },
+  {
+    "id": "lively3_ru_chat_reaction_020",
+    "sha256": "14e0f148af4c91f2e5917fa8a5aba3190e00f86e104ead0b2bf666b0ec5f721e",
+    "audio_clean": true,
+    "text_accepted": false,
+    "source": "Owner: no hoarseness, phrases need revision"
+  }
+]

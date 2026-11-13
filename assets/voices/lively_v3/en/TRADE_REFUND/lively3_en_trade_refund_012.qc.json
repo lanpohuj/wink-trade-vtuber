@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_012",
+  "sha256": "8b9c40256a732d1148726e7e401135f4a36432980212d0fdd62765f0d385dec8",
+  "expected": "Refunded close. A breath will do; no emotional press conference.",
+  "transcript": "Refunded close. A breath will do. No emotional press conference.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.06946,
+    "peak": 0.37964,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.27,
+    "sha256": "8b9c40256a732d1148726e7e401135f4a36432980212d0fdd62765f0d385dec8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Refunded close. A breath will do. No emotional press conference."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

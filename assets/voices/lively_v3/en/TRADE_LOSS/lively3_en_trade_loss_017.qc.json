@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_017",
+  "sha256": "aed248ccd8a7f158c864afb82eb1f249e8885f660240a893c73d506d006aa919",
+  "expected": "Yep, a loss. Thanks for the plot twist, I guess. Okay, no rushing.",
+  "transcript": "Yep, lost. Thanks for the plot twist, I guess. Okay, no rushing.",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08189,
+    "peak": 0.41991,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.118,
+    "sha256": "aed248ccd8a7f158c864afb82eb1f249e8885f660240a893c73d506d006aa919"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Yep, lost. Thanks for the plot twist, I guess. Okay, no rushing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

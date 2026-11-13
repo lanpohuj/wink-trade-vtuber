@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_004",
+  "sha256": "b4c634bb7577734e7d3690111e734242cb9c5efcb6fe5f9a4bf47bac55b8aff8",
+  "expected": "Вошли вниз после подтверждения отката. Причина есть, исход пока не определён.",
+  "transcript": "Вошли вниз после подтверждения отката. Причина есть, и сход пока не определен.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08615,
+    "peak": 0.37682,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.09,
+    "sha256": "b4c634bb7577734e7d3690111e734242cb9c5efcb6fe5f9a4bf47bac55b8aff8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Вошли вниз после подтверждения отката."
+    },
+    {
+      "start": 2.44,
+      "end": 4.44,
+      "text": " Причина есть, и сход пока не определен."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

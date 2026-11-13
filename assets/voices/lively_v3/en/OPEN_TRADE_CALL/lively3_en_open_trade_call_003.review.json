@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_003",
+  "phrase_id": "lively3_en_open_trade_call_003",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Buy opened on the trend pullback. My confident pose isn't part of the setup.",
+  "tts_text": "[clear, conversational] Buy opened on the trend pullback. My confident pose isn't part of the setup.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aceb5d1ad4d71023c4cc896e3fc9d25504622ccd8ede013b04eee895f0fd1756",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_003",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_003.mp3",
+  "duration": 4.728063,
+  "sha256": "b60167b3c06d8b346d57cb71e883e5d2dcb681e431be6cb45b5e02b7b8e1db1d",
+  "request_payload": {
+    "text": "[clear, conversational] Buy opened on the trend pullback. My confident pose isn't part of the setup.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

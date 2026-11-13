@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_018",
+  "sha256": "87670a82fbe75b18c610cd992dc283a26e0c2888aef89d5ff4111f84e0f0bf98",
+  "expected": "Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь.",
+  "transcript": "Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.09338,
+    "peak": 0.35447,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "87670a82fbe75b18c610cd992dc283a26e0c2888aef89d5ff4111f84e0f0bf98"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Здесь можно не соглашаться со мной. Даже если я очень красиво подняла бровь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

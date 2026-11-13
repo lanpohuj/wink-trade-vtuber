@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_019",
+  "sha256": "4c771f815255c0681f0dc664a2d0f2b6654c758f450986cbf99381c475431cf3",
+  "expected": "Красное закрытие есть. Сначала спокойная голова, потом следующие проверки.",
+  "transcript": "Красное закрытие есть. Сначала спокойная голова, потом следующие проверки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08374,
+    "peak": 0.42103,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "4c771f815255c0681f0dc664a2d0f2b6654c758f450986cbf99381c475431cf3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Красное закрытие есть. Сначала спокойная голова, потом следующие проверки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

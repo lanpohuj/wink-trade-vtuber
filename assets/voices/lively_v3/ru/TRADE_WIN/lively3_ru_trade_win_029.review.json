@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_029",
+  "phrase_id": "lively3_ru_trade_win_029",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Этот результат плюсовой. Приятно, когда радость не приходится объявлять заранее.",
+  "tts_text": "[conversational] Этот результат плюсовой. Приятно, когда радость не приходится объявлять заранее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2524433eaba6fbe8c1f69ef30a0f2d73ce309a05dea3b66488dc935a0d60623d",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_029",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_029.mp3",
+  "duration": 4.989312,
+  "sha256": "33d5d55e5c00bcfdb818f293946aab70969c915065b4258d9d7d57daa33f4a54",
+  "request_payload": {
+    "text": "[conversational] Этот результат плюсовой. Приятно, когда радость не приходится объявлять заранее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

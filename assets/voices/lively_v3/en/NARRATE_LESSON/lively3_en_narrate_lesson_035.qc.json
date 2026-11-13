@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_035",
+  "sha256": "be80181249e642fbc22a83f7d6417af76dbc602ec2390c3924561bf96b203781",
+  "expected": "Good delivery helps you listen. Good checking keeps words separate from facts.",
+  "transcript": "Good delivery helps you listen. Good checking keeps words separate from facts.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07564,
+    "peak": 0.41103,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.229,
+    "sha256": "be80181249e642fbc22a83f7d6417af76dbc602ec2390c3924561bf96b203781"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Good delivery helps you listen."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Good checking keeps words separate from facts."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_040",
+  "sha256": "5246873549c8aa831c4506af370b59fbd58be6e94bfb7d7d4cc27bb63b89b51d",
+  "expected": "Вверх открыто: локальный разворот прошёл подтверждение. Сейчас уже наблюдаем.",
+  "transcript": "Вверх открыто! Локальный разворот прошел подтверждение. Сейчас уже наблюдаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08466,
+    "peak": 0.36414,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "5246873549c8aa831c4506af370b59fbd58be6e94bfb7d7d4cc27bb63b89b51d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вверх открыто! Локальный разворот прошел подтверждение. Сейчас уже наблюдаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

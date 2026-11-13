@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_006",
+  "phrase_id": "lively3_en_narrate_result_006",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Step changed to one hundred and ten. Calm delivery isn't a promise of recovery.",
+  "tts_text": "[clear, conversational] Step changed to one hundred and ten. Calm delivery isn't a promise of recovery.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "017a27458025fc736ced9eb64dfa339839ba8c5642feaf817bbce8356d10b753",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_006",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_006.mp3",
+  "duration": 5.041563,
+  "sha256": "544ba1274dd4f2f71a7ab239ef929eee25e1c6dc69625e244ed53a85bc49d695",
+  "request_payload": {
+    "text": "[clear, conversational] Step changed to one hundred and ten. Calm delivery isn't a promise of recovery.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

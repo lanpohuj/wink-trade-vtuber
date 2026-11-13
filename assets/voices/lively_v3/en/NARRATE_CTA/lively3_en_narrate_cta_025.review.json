@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_025",
+  "phrase_id": "lively3_en_narrate_cta_025",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "No need to memorise an address from my voice. The bot link's already in my bio.",
+  "tts_text": "[lightly playful, smiling] No need to memorise an address from my voice. The bot link's already in my bio.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a9c47f6c414d5d35c0b551fd16dd8f3cb5ed76f4b9e8801c1fd8737c22214258",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_025.mp3",
+  "duration": 4.545187,
+  "sha256": "8351d52eb95c5b45b2da67ecf70f2a9433e4a42cb43f46342ef8fe51f4caf4a5",
+  "request_payload": {
+    "text": "[lightly playful, smiling] No need to memorise an address from my voice. The bot link's already in my bio.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

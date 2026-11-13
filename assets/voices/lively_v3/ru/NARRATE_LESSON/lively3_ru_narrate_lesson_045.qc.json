@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_045",
+  "sha256": "644b8f6f804a674b9983f6775fadc152e624c4c6e66f4822f5c0e5fa9d669466",
+  "expected": "Не обязательно комментировать каждую секунду. Иногда графику полезно дать договорить.",
+  "transcript": "Не обязательно комментировать каждую секунду, иногда графику полезно дать договорить.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07497,
+    "peak": 0.30653,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.102,
+    "sha256": "644b8f6f804a674b9983f6775fadc152e624c4c6e66f4822f5c0e5fa9d669466"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Не обязательно комментировать каждую секунду, иногда графику полезно дать договорить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_001",
+  "phrase_id": "lively3_ru_open_trade_put_001",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открылись вниз после подтверждённого отката. Кнопка свою реплику уже сказала.",
+  "tts_text": "[conversational] Открылись вниз после подтверждённого отката. Кнопка свою реплику уже сказала.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6185bdbb276c1ecb3fbf3ce363daa60089efd4ad1c3db401b5dc14447cc6819d",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_001",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_001.mp3",
+  "duration": 4.519125,
+  "sha256": "968f13477bbd51da0755c0cda9d704243dcc804f55f06ae884f43b8ee2684870",
+  "request_payload": {
+    "text": "[conversational] Открылись вниз после подтверждённого отката. Кнопка свою реплику уже сказала.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

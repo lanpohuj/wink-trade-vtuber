@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_014",
+  "phrase_id": "lively3_en_narrate_result_014",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next size is fifty again. Not calling a reset a miraculous rescue.",
+  "tts_text": "[clear, conversational] Next size is fifty again. Not calling a reset a miraculous rescue.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a6ef9aedce002b0b35303cb2be5ee846d03fc06bffee5fcce7efc6d545894a34",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_014",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_014.mp3",
+  "duration": 4.675813,
+  "sha256": "bb2e00cbc4fe0652a40e280f520be44141d9486280c1224d39e4933dfd13d6a3",
+  "request_payload": {
+    "text": "[clear, conversational] Next size is fifty again. Not calling a reset a miraculous rescue.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

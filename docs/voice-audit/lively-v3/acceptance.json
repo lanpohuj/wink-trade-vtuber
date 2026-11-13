@@ -1,22 +1,176 @@
 {
   "method": "owner_sampled",
-  "voice_samples_accepted": false,
+  "voice_samples_accepted": true,
   "delivery_samples": [
+    {
+      "id": "lively3_en_narrate_cta_001",
+      "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_cta_001",
+      "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_scan_001",
+      "sha256": "5ce5ad29b82a959a155f8b8dc17a2b2ae79027b7780737e094fb88f118c736ba",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_narrate_scan_001",
+      "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_engage_001",
+      "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_narrate_engage_001",
+      "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_open_trade_call_001",
+      "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_open_trade_call_001",
+      "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
     {
       "id": "lively3_ru_trade_win_001",
       "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
       "accepted": true,
       "listened": true,
-      "source": "Owner-selected probe B"
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_trade_win_001",
+      "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_trade_loss_001",
+      "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_trade_loss_001",
+      "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
     }
   ],
   "records": [
     {
+      "id": "lively3_en_narrate_cta_001",
+      "sha256": "23d80953819248cdef15a632c1e9cac228c1b482332ca56eac2fc893d90bf8dd",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_cta_001",
+      "sha256": "dc01c2c7f9d56f8c971ddfc5145c655e26de464afe5cc136439865528985649b",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_scan_001",
+      "sha256": "5ce5ad29b82a959a155f8b8dc17a2b2ae79027b7780737e094fb88f118c736ba",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_narrate_scan_001",
+      "sha256": "964f8adf2b0e377384d48fc5880a1e08062f76f3b44ac1ff3a3a738ec1dfaa53",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_narrate_engage_001",
+      "sha256": "6a1796a8fe0b09cb8de1d8f0a8573afb25fb370d3ff5a25cea67332b3b85a77d",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_narrate_engage_001",
+      "sha256": "616d26f7210dc305f05e3e75ddc51071bb76f0d68ce91dc71adf551758e2c858",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_open_trade_call_001",
+      "sha256": "960b7b0ff8c1548dfa702a4f454ca96a902d776ad304e42d402a899ee30acddf",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_open_trade_call_001",
+      "sha256": "11c8abbfe5333fa63896cdd55339a2eacc5d1ac8ba6a2fa9fc6474caed0e992b",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
       "id": "lively3_ru_trade_win_001",
       "sha256": "fb4aabff79b4b8f60407328b632ed3b44709881b8900494aaf0e15af85bdbe80",
       "accepted": true,
       "listened": true,
-      "source": "Owner-selected probe B"
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_trade_win_001",
+      "sha256": "af8538587090a57101a03c87b1ba164371d1edaece7e7a8bf2dafe338b3b4ce5",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_en_trade_loss_001",
+      "sha256": "801eea39a75ea159803dbd3c8b3919ea138282f43a1100d05bc47b9b3a1d5668",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
+    },
+    {
+      "id": "lively3_ru_trade_loss_001",
+      "sha256": "8154b1c53806d186b38398f66c03e4744b80588f11580b798cf3a366b7b5ebbf",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner accepted 11 samples, then explicitly accepted replacement scan and authorized remaining generation"
     }
   ]
 }

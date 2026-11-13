@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_021",
+  "sha256": "4c9814f4d867c4d2fbce60aa2e1cbdbd138e95d8827e87bc027e573a06b72459",
+  "expected": "Открылись вверх по подтверждённому отбою диапазона. Сценарий назван, ждём факт.",
+  "transcript": "Открылись вверх по подтвержденному отбою диапазона. Сценарий назван. Ждём факт.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08893,
+    "peak": 0.49576,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.104,
+    "sha256": "4c9814f4d867c4d2fbce60aa2e1cbdbd138e95d8827e87bc027e573a06b72459"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Открылись вверх по подтвержденному отбою диапазона."
+    },
+    {
+      "start": 3.36,
+      "end": 5.86,
+      "text": " Сценарий назван. Ждём факт."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

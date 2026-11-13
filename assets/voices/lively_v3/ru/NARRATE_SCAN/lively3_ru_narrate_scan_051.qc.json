@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_narrate_scan_051",
+  "sha256": "d908941864c2afb15eb76674611b05e1a8ff61e075658a55557f7a7e9e024144",
+  "expected": "Входить ради того, чтобы что-то происходило? Ну такое. Ещё посмотрю.",
+  "transcript": "Входить ради того, чтобы что-то происходило? Ну такое. Ещё посмотрю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08418,
+    "peak": 0.4065,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.091,
+    "sha256": "d908941864c2afb15eb76674611b05e1a8ff61e075658a55557f7a7e9e024144"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Входить ради того, чтобы что-то происходило?"
+    },
+    {
+      "start": 2.32,
+      "end": 3.62,
+      "text": " Ну такое."
+    },
+    {
+      "start": 3.62,
+      "end": 4.86,
+      "text": " Ещё посмотрю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

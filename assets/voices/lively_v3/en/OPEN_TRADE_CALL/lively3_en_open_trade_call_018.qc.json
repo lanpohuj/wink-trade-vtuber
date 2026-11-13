@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_018",
+  "sha256": "1652afcc96dc978c2cea49976f149735a43703e25e8b7d87ec23e2af33cd204c",
+  "expected": "Bought the confirmed breakout-retest setup. Voice volume wasn't an input.",
+  "transcript": "bought the confirmed breakout retest setup. Voice volume wasn't an input.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07836,
+    "peak": 0.37791,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.257,
+    "sha256": "1652afcc96dc978c2cea49976f149735a43703e25e8b7d87ec23e2af33cd204c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " bought the confirmed breakout retest setup. Voice volume wasn't an input."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

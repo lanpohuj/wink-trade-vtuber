@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_005",
+  "sha256": "bac0aeadc397a21fb38960d88ae418af7ec3741915a957f0c76aebb889a573b6",
+  "expected": "Результат отрицательный. Досадно, и всё-таки без голосового спора с графиком.",
+  "transcript": "Результат отрицательный. Досадно? И все-таки без голосового спора с графиком.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08273,
+    "peak": 0.42113,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "bac0aeadc397a21fb38960d88ae418af7ec3741915a957f0c76aebb889a573b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Результат отрицательный. Досадно? И все-таки без голосового спора с графиком."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

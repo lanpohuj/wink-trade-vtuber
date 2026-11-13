@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_008",
+  "sha256": "524e67b4aa4c4a049e851d00f63dc76632b854fc34a833c19e5a5180b2a132f2",
+  "expected": "Bought after pullback confirmation. The market answers without my prompting now.",
+  "transcript": "But after pullback confirmation, the market answers without my prompting now.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07547,
+    "peak": 0.43581,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.196,
+    "sha256": "524e67b4aa4c4a049e851d00f63dc76632b854fc34a833c19e5a5180b2a132f2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " But after pullback confirmation, the market answers without my prompting now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

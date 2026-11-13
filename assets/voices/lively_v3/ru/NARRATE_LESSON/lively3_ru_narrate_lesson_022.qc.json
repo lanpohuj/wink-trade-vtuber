@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_022",
+  "sha256": "8a27e3a0124ca862b6e58671018a7540ac0831eb9da90b71ee4b306e06ed7a6e",
+  "expected": "Если факт не подтверждён, я не добавляю его для убедительности.",
+  "transcript": "Если факт не подтвержден, я не добавляю его для убедительности.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.448,
+    "rms": 0.08878,
+    "peak": 0.31653,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "8a27e3a0124ca862b6e58671018a7540ac0831eb9da90b71ee4b306e06ed7a6e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.4,
+      "text": " Если факт не подтвержден, я не добавляю его для убедительности."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

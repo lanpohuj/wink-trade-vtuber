@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "id": "wait_03",
+      "sha256": "2b69a603468719f45eba465b47d9707dc90596e5e91b4e3ad60a822296a421ab",
+      "accepted": true,
+      "listened": true,
+      "source": "Owner explicitly accepted clean replacement and requested activation"
+    }
+  ]
+}

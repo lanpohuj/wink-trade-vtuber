@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_007",
+  "sha256": "1dae05ecf0711cb3e453971384b9caac3e185041b920127d52cfd7bbcc9ed145",
+  "expected": "Закрылись возвратом ставки. Всё спокойно, без выдуманного торжества.",
+  "transcript": "закрылись возвратом ставки все спокойно без выдуманного торжества",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08751,
+    "peak": 0.37945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.148,
+    "sha256": "1dae05ecf0711cb3e453971384b9caac3e185041b920127d52cfd7bbcc9ed145"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " закрылись возвратом ставки все спокойно без выдуманного торжества"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

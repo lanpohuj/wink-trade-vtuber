@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_006",
+  "sha256": "3e3a2c9c6058d25c91560ed1e49afda82c1992bfdffbb3f01ed7468c2583a164",
+  "expected": "Ссылка в шапке ведёт прямо в бота. Без квеста «найди последнее сообщение».",
+  "transcript": "Ссылка в шапке ведет прямо в бота. Без квеста, найди последнее сообщение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08707,
+    "peak": 0.41074,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "3e3a2c9c6058d25c91560ed1e49afda82c1992bfdffbb3f01ed7468c2583a164"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Ссылка в шапке ведет прямо в бота."
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 4.78,
+      "text": " Без квеста, найди последнее сообщение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

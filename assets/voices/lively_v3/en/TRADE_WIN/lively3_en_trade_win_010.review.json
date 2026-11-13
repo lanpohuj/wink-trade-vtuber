@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_010",
+  "phrase_id": "lively3_en_trade_win_010",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Closed green, chat! My victory comment finally reached the front of the queue.",
+  "tts_text": "[gently sarcastic, conversational] Closed green, chat! My victory comment finally reached the front of the queue.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c20b53a31d7e0e592147a279efc9c7c43dd77676499fe8522525da2954853931",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_010",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_010.mp3",
+  "duration": 5.2505,
+  "sha256": "d0141d934819aa736770580e8bb1ce7f3de5c555be0c0ede466d37fe465084f5",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Closed green, chat! My victory comment finally reached the front of the queue.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

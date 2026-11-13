@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_048",
+  "sha256": "7136e4b574cf7f37a1c6c48212bd1f77167aee2f770b778aa4ae052d6c2fc981",
+  "expected": "The idea needs to survive a calm look. Without emotional support from me.",
+  "transcript": "The idea needs to survive a calm look without emotional support from me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07991,
+    "peak": 0.35666,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.287,
+    "sha256": "7136e4b574cf7f37a1c6c48212bd1f77167aee2f770b778aa4ae052d6c2fc981"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " The idea needs to survive a calm look without emotional support from me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_008",
+  "sha256": "fb839c99a6283e51e7540407743537a4e2cb0a1fbcb1506d00a93b892b627358",
+  "expected": "Спасибо, что остаёшься! Обещаю характер, расписание идеальности не обещаю.",
+  "transcript": "Спасибо, что остаешься. Обещаю характер. Расписание идеальности не обещаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08964,
+    "peak": 0.44911,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "fb839c99a6283e51e7540407743537a4e2cb0a1fbcb1506d00a93b892b627358"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Спасибо, что остаешься. Обещаю характер. Расписание идеальности не обещаю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

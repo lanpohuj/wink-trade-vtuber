@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_013",
+  "phrase_id": "lively3_en_trade_refund_013",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refund confirmed, chat. Calling the result by its actual name.",
+  "tts_text": "[lightly playful, smiling] Refund confirmed, chat. Calling the result by its actual name.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fd1a83473574b4a48c57859100884945b8788da4d5c55978a65e45cf97df2002",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_013",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_013.mp3",
+  "duration": 4.23175,
+  "sha256": "117808dab230b5b2553afb631d41d3a8fee47b7dff5ed688dbf4bb8ebfa67d8c",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Refund confirmed, chat. Calling the result by its actual name.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

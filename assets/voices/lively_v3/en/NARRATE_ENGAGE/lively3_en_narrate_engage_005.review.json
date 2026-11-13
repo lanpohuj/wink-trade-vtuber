@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_005",
+  "phrase_id": "lively3_en_narrate_engage_005",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Balancing analysis with the urge to joke at deeply unhelpful moments.",
+  "tts_text": "[lightly playful, smiling] Balancing analysis with the urge to joke at deeply unhelpful moments.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a3c19135c5df6de29ff9c343c9a56debaf746d975699f17eb2dfa812e9b81bac",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_005",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_005.mp3",
+  "duration": 4.466875,
+  "sha256": "00416a1dfb3e7c0c738127bcc16452af643261f22b6aff1c3e67fe59960c451f",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Balancing analysis with the urge to joke at deeply unhelpful moments.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

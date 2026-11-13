@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_050",
+  "sha256": "1dba94d2d26a5a6fe5e89d27e11be084d669c0d80deadc3d3283f3096637d65b",
+  "expected": "Looking carefully. Overconfidence is restricted to my delivery today.",
+  "transcript": "Looking carefully over confidence is restricted to my delivery today",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08082,
+    "peak": 0.40182,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.145,
+    "sha256": "1dba94d2d26a5a6fe5e89d27e11be084d669c0d80deadc3d3283f3096637d65b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Looking carefully over confidence is restricted to my delivery today"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

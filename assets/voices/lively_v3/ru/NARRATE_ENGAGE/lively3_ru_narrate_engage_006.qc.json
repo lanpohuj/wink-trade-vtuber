@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_006",
+  "sha256": "61d96cc0f67a1db46f9ff29e55d4a82569e1be33aee0d62f16e523d78a7b863a",
+  "expected": "Если понятно объяснила — отлично. Если нет, скажите где, попробую без лишних слов.",
+  "transcript": "Если понятно объяснила, отлично. Если нет, скажите где, попробую без лишних слов.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08385,
+    "peak": 0.36361,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.17,
+    "sha256": "61d96cc0f67a1db46f9ff29e55d4a82569e1be33aee0d62f16e523d78a7b863a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.04,
+      "text": " Если понятно объяснила, отлично."
+    },
+    {
+      "start": 2.04,
+      "end": 4.54,
+      "text": " Если нет, скажите где, попробую без лишних слов."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

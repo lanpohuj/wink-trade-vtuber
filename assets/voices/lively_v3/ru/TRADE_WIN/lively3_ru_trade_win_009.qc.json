@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_009",
+  "sha256": "5a27b4a276418a2e70e132f5d9bc35e7ea4a6b26941ab70e5ef51b38ef7a640f",
+  "expected": "Плюс! Ну что, теперь имею право слегка поважничать. Совсем чуть-чуть.",
+  "transcript": "Люс! Ну что, теперь имею право слегка поважничать! Совсем чуть-чуть!",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.0786,
+    "peak": 0.35587,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "5a27b4a276418a2e70e132f5d9bc35e7ea4a6b26941ab70e5ef51b38ef7a640f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Люс! Ну что, теперь имею право слегка поважничать! Совсем чуть-чуть!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

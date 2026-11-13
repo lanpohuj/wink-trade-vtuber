@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_016",
+  "sha256": "7a5a931dac98572c4e16f8c68a56868439d36dacac8c8b9a70523e71fb329c0b",
+  "expected": "Рынок не обязан продолжать движение из вежливости. Жалобную книгу не выдавали.",
+  "transcript": "Рынок не обязан продолжать движение извежливости. Жалобную книгу не выдавали.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.09339,
+    "peak": 0.32238,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.077,
+    "sha256": "7a5a931dac98572c4e16f8c68a56868439d36dacac8c8b9a70523e71fb329c0b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Рынок не обязан продолжать движение извежливости."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Жалобную книгу не выдавали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

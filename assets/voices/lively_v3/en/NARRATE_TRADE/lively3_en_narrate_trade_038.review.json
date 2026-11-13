@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_038",
+  "phrase_id": "lively3_en_narrate_trade_038",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Trade open, commentary on, premature excitement paused.",
+  "tts_text": "[gently sarcastic, conversational] Trade open, commentary on, premature excitement paused.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ed413ed5b19c591c96afe73fb4ede4a8dd07e8402ef4b76a35209744963e4ee9",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_038",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_038.mp3",
+  "duration": 4.101125,
+  "sha256": "b7ea7c83d2d43291ecab14b4d176aef7fd76240dca4830726f949e0f79aa6833",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Trade open, commentary on, premature excitement paused.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

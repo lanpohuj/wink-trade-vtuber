@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_012",
+  "phrase_id": "lively3_en_open_trade_put_012",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Sold after breakout and completed retest. No triumphant 'done' just yet.",
+  "tts_text": "[clear, conversational] Sold after breakout and completed retest. No triumphant 'done' just yet.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "61570abfeceb87a9d6fd6f663253c532ac28c4d01ae7ec7845539f8fb49f45c6",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_012",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_012.mp3",
+  "duration": 5.19825,
+  "sha256": "9c9f1fe1964497efb71cd662525e6bf94e5c3229f98aca6b684735e02726531f",
+  "request_payload": {
+    "text": "[clear, conversational] Sold after breakout and completed retest. No triumphant 'done' just yet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

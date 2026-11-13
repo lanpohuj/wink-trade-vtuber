@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_004",
+  "sha256": "90128272ece283e4478889babc3e2fd20adee97b03511e9634063dafcbfc8577",
+  "expected": "Entered down after pullback confirmation. Reason included, outcome still open.",
+  "transcript": "Enter down after pullback confirmation. Reason included. Outcomes still open.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08207,
+    "peak": 0.49368,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.109,
+    "sha256": "90128272ece283e4478889babc3e2fd20adee97b03511e9634063dafcbfc8577"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Enter down after pullback confirmation. Reason included. Outcomes still open."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

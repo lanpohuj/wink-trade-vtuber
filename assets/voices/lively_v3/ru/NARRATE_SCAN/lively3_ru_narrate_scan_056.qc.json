@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_056",
+  "sha256": "6ad001a0d919fc2619bf7547b26509a4b1545eedea51b1f754eac255ff5e5e8e",
+  "expected": "Я сейчас фильтрую идеи. Некоторые очень убедительные, пока не проверишь.",
+  "transcript": "Я сейчас фильтрую идеи. Некоторые очень убедительные, пока не проверишь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.071,
+    "peak": 0.27877,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.138,
+    "sha256": "6ad001a0d919fc2619bf7547b26509a4b1545eedea51b1f754eac255ff5e5e8e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Я сейчас фильтрую идеи."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Некоторые очень убедительные, пока не проверишь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

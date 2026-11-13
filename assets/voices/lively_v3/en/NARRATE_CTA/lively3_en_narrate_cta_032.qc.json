@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_032",
+  "sha256": "3854126fe67aacd6cee49bc9b3bd9e7fe546a8211f76617cf883cfef747c63a2",
+  "expected": "The official bot link's in my bio. Easiest way to avoid a mix-up.",
+  "transcript": "The official botlinks in my bio. Easiest way to avoid a mix-up.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08204,
+    "peak": 0.36461,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.221,
+    "sha256": "3854126fe67aacd6cee49bc9b3bd9e7fe546a8211f76617cf883cfef747c63a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " The official botlinks in my bio. Easiest way to avoid a mix-up."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

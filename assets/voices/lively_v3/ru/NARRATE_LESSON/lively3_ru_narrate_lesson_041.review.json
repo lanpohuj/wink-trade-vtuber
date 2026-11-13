@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_041",
+  "phrase_id": "lively3_ru_narrate_lesson_041",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Если непонятно, громче объяснять бессмысленно. Я пробовала. Понятнее не стало.",
+  "tts_text": "[conversational] Если непонятно, громче объяснять бессмысленно. Я пробовала. Понятнее не стало.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "199671ba167842820cdd363057396bed4fa15823d8bc584476ffd66d4c7d7a22",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_041",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_041.mp3",
+  "duration": 5.041563,
+  "sha256": "93af011ef3f5fdcb60d11c02a4c887388573112279be916fa5bafa4a8cf323d8",
+  "request_payload": {
+    "text": "[conversational] Если непонятно, громче объяснять бессмысленно. Я пробовала. Понятнее не стало.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

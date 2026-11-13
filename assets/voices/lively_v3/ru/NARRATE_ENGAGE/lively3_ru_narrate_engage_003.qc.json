@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_003",
+  "sha256": "edce22028397ab4170fe8c7be27725dbb5656921f46d66844ecdd0ffc047c43c",
+  "expected": "Я нормально объясняю или уже душню? Только честно, корону придержу.",
+  "transcript": "Я нормально объясняю или уж и душню. Только честно, корону придержу.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08378,
+    "peak": 0.3206,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "edce22028397ab4170fe8c7be27725dbb5656921f46d66844ecdd0ffc047c43c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Я нормально объясняю или уж и душню."
+    },
+    {
+      "start": 2.5,
+      "end": 4.5,
+      "text": " Только честно, корону придержу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

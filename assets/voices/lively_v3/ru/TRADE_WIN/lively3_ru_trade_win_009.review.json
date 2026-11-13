@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_009",
+  "phrase_id": "lively3_ru_trade_win_009",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюс! Ну что, теперь имею право слегка поважничать. Совсем чуть-чуть.",
+  "tts_text": "[conversational] Плюс! Ну что, теперь имею право слегка поважничать. Совсем чуть-чуть.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "df3ab30787ee3b21c9cfff6c0633272746c3a106ec7f5ed8dae645adf9ebb2fe",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_009",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_009.mp3",
+  "duration": 4.989312,
+  "sha256": "5a27b4a276418a2e70e132f5d9bc35e7ea4a6b26941ab70e5ef51b38ef7a640f",
+  "request_payload": {
+    "text": "[conversational] Плюс! Ну что, теперь имею право слегка поважничать. Совсем чуть-чуть.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

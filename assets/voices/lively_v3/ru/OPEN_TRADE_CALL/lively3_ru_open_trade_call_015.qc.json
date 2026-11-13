@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_015",
+  "sha256": "ba090da25c893019c75b7407c4b4906e09a2b1bed8bac5c619ce045cfd1ad9e8",
+  "expected": "Сделка вверх открыта. Основание — пробой с подтверждённым закрытым ретестом.",
+  "transcript": "Сделка вверх открыта. Основание. Пробой с подтвержденным закрытым ретестом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08849,
+    "peak": 0.39558,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.152,
+    "sha256": "ba090da25c893019c75b7407c4b4906e09a2b1bed8bac5c619ce045cfd1ad9e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Сделка вверх открыта. Основание. Пробой с подтвержденным закрытым ретестом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

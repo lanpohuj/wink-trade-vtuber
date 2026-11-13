@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_008",
+  "phrase_id": "lively3_ru_narrate_volatility_008",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Волатильность выросла, движения резче. Можно назвать происходящее без художественных добавлений.",
+  "tts_text": "[conversational] Волатильность выросла, движения резче. Можно назвать происходящее без художественных добавлений.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7a8ba8b72ea0d7a8a99f184646102e7b3e17ace3aa6752b87815cf00d9d8cfdb",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_008",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_008.mp3",
+  "duration": 6.269312,
+  "sha256": "cc6125e0ad9e96ec9b2f5d19f2c8e3c02fd4b548115a9344cf83aa8df8003a22",
+  "request_payload": {
+    "text": "[conversational] Волатильность выросла, движения резче. Можно назвать происходящее без художественных добавлений.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

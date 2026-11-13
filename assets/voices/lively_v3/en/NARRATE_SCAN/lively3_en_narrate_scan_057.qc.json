@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_057",
+  "sha256": "372d43ad13767e134c0522c1a878b1a5d4be38d5230f400e482b178ee97e412d",
+  "expected": "Chart's doing the mysterious-crush thing. Fine. I'm not chasing.",
+  "transcript": "Chart's doing the mysterious crush thing. Fine. I'm not chasing",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.06913,
+    "peak": 0.38362,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.219,
+    "sha256": "372d43ad13767e134c0522c1a878b1a5d4be38d5230f400e482b178ee97e412d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Chart's doing the mysterious crush thing. Fine. I'm not chasing"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

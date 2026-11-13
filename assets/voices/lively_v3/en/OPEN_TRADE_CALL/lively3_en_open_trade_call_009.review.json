@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_009",
+  "phrase_id": "lively3_en_open_trade_call_009",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Up entry happened on the trend pullback. Reason stated; waiting for the close.",
+  "tts_text": "[clear, conversational] Up entry happened on the trend pullback. Reason stated; waiting for the close.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aab25062f87ec36e281a66c8668358455d92e04af96e9453393fa8558a7c904e",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_009",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_009.mp3",
+  "duration": 5.119937,
+  "sha256": "4eb08ef1c800ab6c9e87a645af03382db6c9827364fc37024d7f6d5c50f40e8d",
+  "request_payload": {
+    "text": "[clear, conversational] Up entry happened on the trend pullback. Reason stated; waiting for the close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

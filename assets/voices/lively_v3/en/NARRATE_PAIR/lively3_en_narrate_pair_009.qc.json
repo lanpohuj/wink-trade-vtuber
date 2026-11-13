@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_009",
+  "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd",
+  "expected": "Next pair's here. Not calling it peak yet; I haven't checked it.",
+  "transcript": "Next pair is here. Not calling it peak yet. I haven't checked it.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07065,
+    "peak": 0.43264,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.302,
+    "sha256": "2522551d7137e143e4a0474a200150bf58af7b9c28c9f408c29dccaff1184dfd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Next pair is here. Not calling it peak yet. I haven't checked it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

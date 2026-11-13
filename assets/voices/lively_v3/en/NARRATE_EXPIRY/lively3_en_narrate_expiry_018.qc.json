@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_018",
+  "sha256": "e1b086a73014bbaa7187487939cd4361d0d63728c9298c5ad69146e4c047ca57",
+  "expected": "One minute selected. The trade has its expiry; I have my commentary.",
+  "transcript": "One minute selected. The trade has its expiry. I have my commentary.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08135,
+    "peak": 0.48272,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.108,
+    "sha256": "e1b086a73014bbaa7187487939cd4361d0d63728c9298c5ad69146e4c047ca57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " One minute selected. The trade has its expiry. I have my commentary."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_016",
+  "sha256": "e6143967d08fe3d84ce953de3a4484aea593199b5148e2d9ba1114626e16bdab",
+  "expected": "Too early to call the W, chat. Nearly did it myself. Caught that.",
+  "transcript": "Too early to call the W, chat! Nearly did it myself! Caught that!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08396,
+    "peak": 0.43822,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.225,
+    "sha256": "e6143967d08fe3d84ce953de3a4484aea593199b5148e2d9ba1114626e16bdab"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Too early to call the W, chat! Nearly did it myself! Caught that!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_012",
+  "phrase_id": "lively3_en_narrate_scan_012",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "One second. Nearly started explaining before I'd finished looking. Very professional of me.",
+  "tts_text": "[casual] One second. Nearly started explaining before I'd finished looking. Very professional of me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "18d1c4874c1458984ae846eaba843f644d8fbfe43f53554431f450d333b00cfb",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_012",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_012.mp3",
+  "duration": 5.773,
+  "sha256": "bf09c04041082fcde4d35a14457aaba6e22db506c685b66102320e8610107345",
+  "request_payload": {
+    "text": "[casual] One second. Nearly started explaining before I'd finished looking. Very professional of me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

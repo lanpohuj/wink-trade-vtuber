@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_017",
+  "phrase_id": "lively3_en_narrate_lesson_017",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Separate facts from interpretations. Even when the interpretation has charisma.",
+  "tts_text": "[lightly playful, smiling] Separate facts from interpretations. Even when the interpretation has charisma.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fb7d9f437a56cc65d41eb2ce94f2ef4ccd970b1f601ff51d0c3bdf305beb5ae4",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_017",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_017.mp3",
+  "duration": 4.858688,
+  "sha256": "7a8bd04407ed7630601ff0b1b1f2ebd8e7089290055547c566521e0894f28ff5",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Separate facts from interpretations. Even when the interpretation has charisma.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

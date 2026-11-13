@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_032",
+  "sha256": "9d700ca08b9a756b4f446b76b99fbc0aec3e2eafe8a3f7f241316230becde346",
+  "expected": "Продали после подтверждения локального разворота. Это причина входа, не итог.",
+  "transcript": "Продали после подтверждения локального разворота. Эта причина входа — не итог.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.0845,
+    "peak": 0.43121,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.13,
+    "sha256": "9d700ca08b9a756b4f446b76b99fbc0aec3e2eafe8a3f7f241316230becde346"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Продали после подтверждения локального разворота."
+    },
+    {
+      "start": 2.64,
+      "end": 4.64,
+      "text": " Эта причина входа — не итог."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

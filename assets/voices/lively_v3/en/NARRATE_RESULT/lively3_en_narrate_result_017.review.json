@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_017",
+  "phrase_id": "lively3_en_narrate_result_017",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Loss closed close to the boundary. Frustrating, but 'almost' doesn't change the result.",
+  "tts_text": "[clear, conversational] Loss closed close to the boundary. Frustrating, but 'almost' doesn't change the result.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "93aca67e51c0010535cfb1d3bc75ea3c8b55505073dae49bd05338c75c1ceac9",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_017",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_017.mp3",
+  "duration": 5.328875,
+  "sha256": "306fd80b8c612e6c7d7e878dc1dbbf3eccdbed020cc66de179e43caaa1f01eea",
+  "request_payload": {
+    "text": "[clear, conversational] Loss closed close to the boundary. Frustrating, but 'almost' doesn't change the result.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

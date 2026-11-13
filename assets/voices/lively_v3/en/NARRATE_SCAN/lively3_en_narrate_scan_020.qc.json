@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_020",
+  "sha256": "692e7ab9677cbba8fc2b5d9f73ba60b1e3322e4cccdbf4ed37640e1d1c71834f",
+  "expected": "Arguments on the table. Charisma alone won't get this decision approved.",
+  "transcript": "Arguments on the table. Charisma alone won't get this decision approved.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08228,
+    "peak": 0.41346,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.235,
+    "sha256": "692e7ab9677cbba8fc2b5d9f73ba60b1e3322e4cccdbf4ed37640e1d1c71834f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Arguments on the table. Charisma alone won't get this decision approved."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

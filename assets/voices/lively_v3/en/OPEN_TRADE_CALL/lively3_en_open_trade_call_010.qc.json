@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_010",
+  "sha256": "96604ae1d57dcb48b8f7eefeed59738063c30aae6c99bad50baaa1882f0d49d9",
+  "expected": "Opened up after confirmed pullback. My button duties are concluded.",
+  "transcript": "Opened up after confirmed pullback. My button duties are concluded",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08298,
+    "peak": 0.37712,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.132,
+    "sha256": "96604ae1d57dcb48b8f7eefeed59738063c30aae6c99bad50baaa1882f0d49d9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Opened up after confirmed pullback. My button duties are concluded"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

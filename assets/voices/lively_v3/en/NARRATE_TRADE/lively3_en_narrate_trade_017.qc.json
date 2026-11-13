@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_017",
+  "sha256": "50c7c338997d76a3dded2ea635430ff5a51381eabcfa03f3aa01164ebddc8f91",
+  "expected": "Watching on. No conclusions board until the result's closed.",
+  "transcript": "Watching on. No conclusions bored until the results closed.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.0794,
+    "peak": 0.32246,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.241,
+    "sha256": "50c7c338997d76a3dded2ea635430ff5a51381eabcfa03f3aa01164ebddc8f91"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Watching on. No conclusions bored until the results closed."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

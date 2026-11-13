@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_006",
+  "phrase_id": "lively3_ru_narrate_expiry_006",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Тут пятнадцать секунд, чат. Внимание на закрытие, а не на мою драму.",
+  "tts_text": "[conversational] Тут пятнадцать секунд, чат. Внимание на закрытие, а не на мою драму.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ade88b76e230c253bd7520cf409b328617553c52744d410234218e19b849dea7",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_006",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_006.mp3",
+  "duration": 4.545187,
+  "sha256": "b94bd65ab428ab280acca982cbe20a2030021bb33a2e8ff73fe2ab16c26bc0e8",
+  "request_payload": {
+    "text": "[conversational] Тут пятнадцать секунд, чат. Внимание на закрытие, а не на мою драму.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

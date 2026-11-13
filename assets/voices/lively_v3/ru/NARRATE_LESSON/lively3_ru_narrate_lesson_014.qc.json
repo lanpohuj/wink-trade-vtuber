@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_014",
+  "sha256": "dce4540595b0fa19e74202564a71adaa2912047c1f436153f6a5dc0f761fc06a",
+  "expected": "Результат считаем после закрытия. До него у радости предварительный статус.",
+  "transcript": "Результат считаем после закрытия. До него урадости предварительный статус.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08472,
+    "peak": 0.4212,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "dce4540595b0fa19e74202564a71adaa2912047c1f436153f6a5dc0f761fc06a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Результат считаем после закрытия."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " До него урадости предварительный статус."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

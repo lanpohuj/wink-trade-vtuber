@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_055",
+  "sha256": "2c26622eca866c8e0a99dea816d72878478162d11c6397d67d4456d2b5971e9e",
+  "expected": "Skipping the 'understood it instantly' mode. That one's a little too confident.",
+  "transcript": "Skipping the understood it instantly mode that one's a little too confident",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.10296,
+    "peak": 0.87764,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.205,
+    "sha256": "2c26622eca866c8e0a99dea816d72878478162d11c6397d67d4456d2b5971e9e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.28,
+      "text": " Skipping the understood it instantly mode that one's a little too confident"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

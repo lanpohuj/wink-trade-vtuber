@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_007",
+  "phrase_id": "lively3_en_narrate_engage_007",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Sofa check: comfortable? I'm putting in effort over here.",
+  "tts_text": "[warm, relaxed] Sofa check: comfortable? I'm putting in effort over here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5e6b2442b1378ff724b934d0964e7318e3fb536a7419604a00965a22c466b064",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_007",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_007.mp3",
+  "duration": 3.9705,
+  "sha256": "e345909e2e250160e0c5e71e202ffb86c1ccd722b87f992d280652f251557958",
+  "request_payload": {
+    "text": "[warm, relaxed] Sofa check: comfortable? I'm putting in effort over here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

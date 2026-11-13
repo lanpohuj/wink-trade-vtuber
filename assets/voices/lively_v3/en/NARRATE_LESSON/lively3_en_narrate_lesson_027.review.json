@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_027",
+  "phrase_id": "lively3_en_narrate_lesson_027",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Changing your mind before clicking is fine when conditions change. That's a working check.",
+  "tts_text": "[warm, relaxed] Changing your mind before clicking is fine when conditions change. That's a working check.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "30a4f1ef42b561a42b170d6338d7203326002671d705db0e427ca794ed1c2097",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_027",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_027.mp3",
+  "duration": 4.989312,
+  "sha256": "f13dda28cb3bcdc6955f94e4d152d91d9861f05be6000315a01ef57115636da8",
+  "request_payload": {
+    "text": "[warm, relaxed] Changing your mind before clicking is fine when conditions change. That's a working check.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

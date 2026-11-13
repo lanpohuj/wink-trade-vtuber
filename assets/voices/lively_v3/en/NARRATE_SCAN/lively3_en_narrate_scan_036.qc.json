@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_036",
+  "sha256": "fb0fd1c0e1edff8ba8b21ebcda287de78d44c27833dce78a0755ae3888ee00ab",
+  "expected": "Looking without insisting there must be something. The chart owes us nothing.",
+  "transcript": "Looking without insisting there must be something. The chart owes us nothing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08377,
+    "peak": 0.40518,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.185,
+    "sha256": "fb0fd1c0e1edff8ba8b21ebcda287de78d44c27833dce78a0755ae3888ee00ab"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Looking without insisting there must be something. The chart owes us nothing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

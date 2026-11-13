@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_040",
+  "sha256": "299fe23c51f5fe556afbd6920bb40e9bd6e7f430dec9f6d5ac3a5e43bd997e23",
+  "expected": "Кому нужен понятный старт — загляните в бота. Ссылку оставили сверху в профиле.",
+  "transcript": "Кому нужен понятный старт, загляните в бота. Ссылку оставили сверху в профиле.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.08559,
+    "peak": 0.35246,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.097,
+    "sha256": "299fe23c51f5fe556afbd6920bb40e9bd6e7f430dec9f6d5ac3a5e43bd997e23"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Кому нужен понятный старт, загляните в бота."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Ссылку оставили сверху в профиле."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

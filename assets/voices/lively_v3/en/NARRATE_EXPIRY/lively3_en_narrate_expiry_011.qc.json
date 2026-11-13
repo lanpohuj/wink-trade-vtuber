@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_011",
+  "sha256": "4d1dc676615b1d79e4f633cedaa904d1858dd2d411b1a7c24a73c4cc4f8b4947",
+  "expected": "Thirty seconds chosen. Time for watching, not for grand promises.",
+  "transcript": "30 seconds chosen time for watching not for grand promises",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07709,
+    "peak": 0.38241,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.3,
+    "trailing_silence": 0.271,
+    "sha256": "4d1dc676615b1d79e4f633cedaa904d1858dd2d411b1a7c24a73c4cc4f8b4947"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.46,
+      "text": " 30 seconds chosen time for watching not for grand promises"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

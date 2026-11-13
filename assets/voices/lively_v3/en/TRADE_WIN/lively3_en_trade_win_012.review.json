@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_012",
+  "phrase_id": "lively3_en_trade_win_012",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Nice win! Keeping the ego away from the next entry, though. I know myself.",
+  "tts_text": "[casual] Nice win! Keeping the ego away from the next entry, though. I know myself.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e69d71a39648b8d2d24ee5169edb00fb2532833027005c84c1a48c852d6396db",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_012",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_012.mp3",
+  "duration": 5.172125,
+  "sha256": "47c9d1e8fdd550d2ad3249b5696df33887d02c12a76fd73cbceffa00a6673fba",
+  "request_payload": {
+    "text": "[casual] Nice win! Keeping the ego away from the next entry, though. I know myself.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

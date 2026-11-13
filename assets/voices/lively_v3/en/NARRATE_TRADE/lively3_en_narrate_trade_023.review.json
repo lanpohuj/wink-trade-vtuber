@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_023",
+  "phrase_id": "lively3_en_narrate_trade_023",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Keeping the 'told you so' to myself. Too early, and I was already getting ready.",
+  "tts_text": "[casual] Keeping the 'told you so' to myself. Too early, and I was already getting ready.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a0d2526d5bd576411aa74dec6dbb3f0a66c32a7defe0e16b543413c89b35f0a8",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_023",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_023.mp3",
+  "duration": 4.545187,
+  "sha256": "cbc4af690b3314981b4e3b07ac89b8ac3fe135051a86ca0cf398904b139796ab",
+  "request_payload": {
+    "text": "[casual] Keeping the 'told you so' to myself. Too early, and I was already getting ready.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_030",
+  "phrase_id": "lively3_ru_open_trade_put_030",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Продажа после подтверждённого отбоя открыта. Не забегаем вперёд с оценкой.",
+  "tts_text": "[conversational] Продажа после подтверждённого отбоя открыта. Не забегаем вперёд с оценкой.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c1651930e9fe2ad9aeb47d49591e753586887696e5f67dc6a75142ad37200966",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_030",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_030.mp3",
+  "duration": 4.858688,
+  "sha256": "c8fb96845bc7f66c5be830f017968673ceaec04a9905d578c70572c3296dcbdc",
+  "request_payload": {
+    "text": "[conversational] Продажа после подтверждённого отбоя открыта. Не забегаем вперёд с оценкой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

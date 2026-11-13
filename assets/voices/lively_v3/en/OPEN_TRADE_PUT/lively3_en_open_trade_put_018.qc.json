@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_018",
+  "sha256": "ec084a2e490923993fbb6423d1bbb041027fd4868af96d0df832265291ad9f9d",
+  "expected": "Down after the verified breakout retest. Entry in place; waiting for closing.",
+  "transcript": "Down after the verified breakout retest, entry in place, waiting for closing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07333,
+    "peak": 0.42953,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.14,
+    "sha256": "ec084a2e490923993fbb6423d1bbb041027fd4868af96d0df832265291ad9f9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Down after the verified breakout retest, entry in place, waiting for closing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

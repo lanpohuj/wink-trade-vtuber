@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_016",
+  "phrase_id": "lively3_en_trade_win_016",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Closed green! Not even attempting the unbothered act. You can see my face.",
+  "tts_text": "[casual] Closed green! Not even attempting the unbothered act. You can see my face.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "180736dbfa1288ee902e70c493e684dbd2942dbeeafaec4817ec49355074d76c",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_016",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_016.mp3",
+  "duration": 5.328875,
+  "sha256": "3284b95b9822bb1548b368a5eeb708620393aeb6d1ae84addc1f98bf5d6f5ffd",
+  "request_payload": {
+    "text": "[casual] Closed green! Not even attempting the unbothered act. You can see my face.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

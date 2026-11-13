@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_008",
+  "phrase_id": "lively3_en_trade_win_008",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Win's in, dramatic pause over. Restoring normal levels of chatter.",
+  "tts_text": "[natural, conversational] Win's in, dramatic pause over. Restoring normal levels of chatter.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5628f8d5652e4c287b344627053a83b35264d658e57541309ef4a25f39db21f1",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_008",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_008.mp3",
+  "duration": 4.858688,
+  "sha256": "8096908a9750531a7de48669868cc1b14e56fcaa919eb21312d93fc91f629d0f",
+  "request_payload": {
+    "text": "[natural, conversational] Win's in, dramatic pause over. Restoring normal levels of chatter.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

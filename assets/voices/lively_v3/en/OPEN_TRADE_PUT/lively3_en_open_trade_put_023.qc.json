@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_023",
+  "sha256": "56d1bb6f2b7b2cc315b1514610c16be63fde030879a450fcf8a05e04763187ba",
+  "expected": "Down entry on range rejection completed. Confirmation yes, promise no.",
+  "transcript": "Down entry on range rejection completed. Confirmation, yes. Promise, no.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07971,
+    "peak": 0.43399,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.262,
+    "sha256": "56d1bb6f2b7b2cc315b1514610c16be63fde030879a450fcf8a05e04763187ba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down entry on range rejection completed. Confirmation, yes. Promise, no."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

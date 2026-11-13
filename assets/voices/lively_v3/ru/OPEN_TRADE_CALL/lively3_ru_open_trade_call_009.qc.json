@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_009",
+  "sha256": "e92fdaddf0a0fdfc287241600de0f92356d2e6f3ce43f0a1d69cff5e12db64d4",
+  "expected": "Вход вверх состоялся по откату в тренде. Повод для клика назван, ждём закрытие.",
+  "transcript": "Вход вверх состоялся по откату в тренде. Повод для клика назван. Ждём закрытие.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.09049,
+    "peak": 0.55163,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "e92fdaddf0a0fdfc287241600de0f92356d2e6f3ce43f0a1d69cff5e12db64d4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вход вверх состоялся по откату в тренде. Повод для клика назван. Ждём закрытие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

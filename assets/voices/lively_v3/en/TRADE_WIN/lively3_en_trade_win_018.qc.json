@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_018",
+  "sha256": "a926f571598ce3e9c350a8ad648c5a8a15602cbb9eb55cf76e49488fe10bea44",
+  "expected": "Win's recorded, chat. Rationing celebratory theatre for the rest of the stream.",
+  "transcript": "Winds recorded chat rationing celebratory theater for the rest of the stream",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08767,
+    "peak": 0.37759,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.239,
+    "sha256": "a926f571598ce3e9c350a8ad648c5a8a15602cbb9eb55cf76e49488fe10bea44"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Winds recorded chat rationing celebratory theater for the rest of the stream"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

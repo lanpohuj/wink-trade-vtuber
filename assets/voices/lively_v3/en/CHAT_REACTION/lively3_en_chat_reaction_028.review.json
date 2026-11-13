@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_028",
+  "phrase_id": "lively3_en_chat_reaction_028",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "The bot link's in my bio. Open it and read the conditions at your own pace.",
+  "tts_text": "[natural, conversational] The bot link's in my bio. Open it and read the conditions at your own pace.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "402b37705d28715060981ef2984b9a6adf5f1e7dde6be92c944e9ae32ffec28d",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_028",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_028.mp3",
+  "duration": 4.362375,
+  "sha256": "38431713f568d503100d19e362d9b9c758e53a4d5d45292432d751ccb494a583",
+  "request_payload": {
+    "text": "[natural, conversational] The bot link's in my bio. Open it and read the conditions at your own pace.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

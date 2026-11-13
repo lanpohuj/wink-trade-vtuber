@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_015",
+  "sha256": "29af5d865c13b886a6588930a54fae96b1c7027c002efa2a10c5dceeb7bf588e",
+  "expected": "I can yap for five minutes and say nothing. Trying to catch myself sooner.",
+  "transcript": "I can yelp for five minutes and say nothing trying to catch myself sooner",
+  "similarity": 0.975,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08609,
+    "peak": 0.41063,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.188,
+    "sha256": "29af5d865c13b886a6588930a54fae96b1c7027c002efa2a10c5dceeb7bf588e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " I can yelp for five minutes and say nothing trying to catch myself sooner"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

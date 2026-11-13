@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_011",
+  "sha256": "51e6b1d21623d96429a90d8cdc5ecb3ecbc7140d5b13686019851a5075b440ed",
+  "expected": "Вверх открыто по пробою с закрытым ретестом. Не на одном эффектном рывке.",
+  "transcript": "Вверх открыто по пробою с закрытым ретестом, не на одном эффектном рывке.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07638,
+    "peak": 0.35126,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.125,
+    "sha256": "51e6b1d21623d96429a90d8cdc5ecb3ecbc7140d5b13686019851a5075b440ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Вверх открыто по пробою с закрытым ретестом, не на одном эффектном рывке."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

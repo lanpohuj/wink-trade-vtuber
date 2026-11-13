@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_029",
+  "sha256": "6cc33a3a40262b8dcc736aac1b9f956b13a144637aea18b35e296df1264d4320",
+  "expected": "Currently an observer with a microphone. Talkative, but still an observer.",
+  "transcript": "Currently an observer with a microphone, talkative but still an observer.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07721,
+    "peak": 0.3707,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.276,
+    "sha256": "6cc33a3a40262b8dcc736aac1b9f956b13a144637aea18b35e296df1264d4320"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Currently an observer with a microphone, talkative but still an observer."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

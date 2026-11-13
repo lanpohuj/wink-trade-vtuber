@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_014",
+  "sha256": "07da070c38e1efed1c74ef1fafb8adf811f6dcd25616736041c75830f63e6b47",
+  "expected": "Can't pull an outcome into place with my voice. Watching what actually happens.",
+  "transcript": "Can't pull an outcome into place with my voice, watching what actually happens.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.077,
+    "peak": 0.37983,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.209,
+    "sha256": "07da070c38e1efed1c74ef1fafb8adf811f6dcd25616736041c75830f63e6b47"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Can't pull an outcome into place with my voice, watching what actually happens."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

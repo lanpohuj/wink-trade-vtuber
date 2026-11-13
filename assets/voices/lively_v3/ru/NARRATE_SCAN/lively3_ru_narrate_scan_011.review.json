@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_011",
+  "phrase_id": "lively3_ru_narrate_scan_011",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Одна деталь ещё не вся картина. У пазла тоже есть остальные кусочки.",
+  "tts_text": "[conversational] Одна деталь ещё не вся картина. У пазла тоже есть остальные кусочки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a151f4b60353a050bc9b77bb3191ae9ad3213c307baabd70dfb4f61ab90b2966",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_011",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_011.mp3",
+  "duration": 4.545187,
+  "sha256": "2b2a93b20b485a60dcee329dae3a9594977f972d624aa9a9850108cb6714001b",
+  "request_payload": {
+    "text": "[conversational] Одна деталь ещё не вся картина. У пазла тоже есть остальные кусочки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

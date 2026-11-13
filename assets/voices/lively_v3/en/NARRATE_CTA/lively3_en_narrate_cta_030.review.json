@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_030",
+  "phrase_id": "lively3_en_narrate_cta_030",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Want a closer look at the tools? Start with my bio; the bot's linked there.",
+  "tts_text": "[gently sarcastic, conversational] Want a closer look at the tools? Start with my bio; the bot's linked there.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "33c6865aaa6940afa0f3ab65bb2b6a5e88b8d6267dd8c79564b128c87f554700",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_030",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_030.mp3",
+  "duration": 5.433375,
+  "sha256": "753b70e5fdff829bd97f8ffd57462357ea1dc6e209ebff4e3b360caf3f2b27f8",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Want a closer look at the tools? Start with my bio; the bot's linked there.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

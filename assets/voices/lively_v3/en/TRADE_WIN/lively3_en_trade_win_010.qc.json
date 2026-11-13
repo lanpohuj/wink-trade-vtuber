@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_010",
+  "sha256": "d0141d934819aa736770580e8bb1ce7f3de5c555be0c0ede466d37fe465084f5",
+  "expected": "Closed green, chat! My victory comment finally reached the front of the queue.",
+  "transcript": "Closed green chat my victory comment finally reached the front of the queue",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07286,
+    "peak": 0.37516,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.271,
+    "sha256": "d0141d934819aa736770580e8bb1ce7f3de5c555be0c0ede466d37fe465084f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Closed green chat my victory comment finally reached the front of the queue"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

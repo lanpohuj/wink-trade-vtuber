@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_003",
+  "phrase_id": "lively3_ru_trade_win_003",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Закрылись в плюс. Маленький праздник без заявления, что я поняла всю вселенную.",
+  "tts_text": "[conversational] Закрылись в плюс. Маленький праздник без заявления, что я поняла всю вселенную.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c773923143d0e4b3a1a5193f19c682aea8c4bd7087e17e2ee37f5a6144e7ca07",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_003",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_003.mp3",
+  "duration": 5.041563,
+  "sha256": "404a58be569d4235c2cadd36b3403cde6a55d358705f67deeff5b9cc35a9d316",
+  "request_payload": {
+    "text": "[conversational] Закрылись в плюс. Маленький праздник без заявления, что я поняла всю вселенную.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

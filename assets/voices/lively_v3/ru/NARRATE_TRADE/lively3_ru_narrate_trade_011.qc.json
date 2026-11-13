@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_011",
+  "sha256": "bc0f81690f4daa17084955c1832d5de71fa3a690aa95ceccca41f4224bba1aed",
+  "expected": "Чат, не делаем финальные выводы на середине истории.",
+  "transcript": "Чать, не делаем финальные выводы на середине истории!",
+  "similarity": 0.989,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.318,
+    "rms": 0.10236,
+    "peak": 0.41159,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.078,
+    "sha256": "bc0f81690f4daa17084955c1832d5de71fa3a690aa95ceccca41f4224bba1aed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " Чать, не делаем финальные выводы на середине истории!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_038",
+  "sha256": "257260371220a336bc5f5f4049042b5136a9444a07482932bf89f92162898471",
+  "expected": "Clicking takes a second. Undoing impatience is a little trickier.",
+  "transcript": "Clicking takes a second. Undoing impatience is a little trickier.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08339,
+    "peak": 0.69492,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.155,
+    "sha256": "257260371220a336bc5f5f4049042b5136a9444a07482932bf89f92162898471"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Clicking takes a second. Undoing impatience is a little trickier."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

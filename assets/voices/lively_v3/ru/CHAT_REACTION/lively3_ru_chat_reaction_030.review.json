@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_030",
+  "phrase_id": "lively3_ru_chat_reaction_030",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Для знакомства с инструментами загляни в бота через профиль. Инструкция уже внутри.",
+  "tts_text": "[conversational] Для знакомства с инструментами загляни в бота через профиль. Инструкция уже внутри.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fa7804f4f5d9a4d999820302b3fd8003ddf443092cdc27f6b551929376c91b93",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_030",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_030.mp3",
+  "duration": 5.172125,
+  "sha256": "fbf42400666dbac0ac07b8f9d5e69563a0b5ab7b437f8fa6179ad08e18e6effa",
+  "request_payload": {
+    "text": "[conversational] Для знакомства с инструментами загляни в бота через профиль. Инструкция уже внутри.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

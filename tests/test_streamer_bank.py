@@ -61,7 +61,12 @@ class StreamerBankTests(unittest.TestCase):
         from tools.build_commentary_bank import normalize
 
         self.assertEqual(normalize("полминуты", "ru"), "30")
+        self.assertEqual(normalize("пол минуты", "ru"), "30")
         self.assertEqual(normalize("half a minute", "en"), "30")
+        self.assertEqual(normalize("half-a-minute", "en"), "30")
+        self.assertEqual(normalize("one-hundred-and-ten", "en"), "110")
+        self.assertEqual(normalize("two-hundred-and-forty-two", "en"), "242")
+        self.assertEqual(normalize("к пятидесяти", "ru"), "к50")
         self.assertNotEqual(
             normalize("fifteen", "en"), normalize("half a minute", "en")
         )

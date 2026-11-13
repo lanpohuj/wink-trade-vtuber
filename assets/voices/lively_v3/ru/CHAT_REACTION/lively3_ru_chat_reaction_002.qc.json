@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_002",
+  "sha256": "6698dbd027a274f4db4bd5dc71c23bc336762b721399b6d4b57e56ea40fdcf52",
+  "expected": "Привет, добро пожаловать! Знание всех кнопок на входе не проверяем.",
+  "transcript": "Привет, добро пожаловать. Знания всех кнопок на входе не проверяем.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08701,
+    "peak": 0.34316,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "6698dbd027a274f4db4bd5dc71c23bc336762b721399b6d4b57e56ea40fdcf52"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Привет, добро пожаловать. Знания всех кнопок на входе не проверяем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

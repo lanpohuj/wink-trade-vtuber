@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_015",
+  "sha256": "21fb62b4d74374f188e803aa24f461b931c622d63be90addd90af9ca39e64b45",
+  "expected": "Сделка вниз идёт по сценарию пробоя с ретестом. Голосом свечи не толкаю.",
+  "transcript": "Сделка вниз идет по сценарию пробоя с ретестом. Голосом свечи не толкаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08451,
+    "peak": 0.3785,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "21fb62b4d74374f188e803aa24f461b931c622d63be90addd90af9ca39e64b45"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.92,
+      "text": " Сделка вниз идет по сценарию пробоя с ретестом."
+    },
+    {
+      "start": 2.92,
+      "end": 4.5200000000000005,
+      "text": " Голосом свечи не толкаю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

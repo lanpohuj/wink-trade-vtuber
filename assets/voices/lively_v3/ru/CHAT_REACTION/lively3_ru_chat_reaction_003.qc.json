@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_003",
+  "sha256": "d8aff12df9db0d3120cc59b6e2daf6ff8417a22aeff333ff8d03f8b87c0e93ad",
+  "expected": "Залетай, мы тут разбираемся и слегка подкалываем происходящее.",
+  "transcript": "Залетаем. Мы тут разбираемся и слегка подкалываем происходящее.",
+  "similarity": 0.972,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08111,
+    "peak": 0.33128,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.124,
+    "sha256": "d8aff12df9db0d3120cc59b6e2daf6ff8417a22aeff333ff8d03f8b87c0e93ad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Залетаем. Мы тут разбираемся и слегка подкалываем происходящее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

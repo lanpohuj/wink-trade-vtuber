@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_025",
+  "phrase_id": "lively3_en_narrate_engage_025",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Trying to explain this without becoming the final boss of yapping. Honestly.",
+  "tts_text": "[casual] Trying to explain this without becoming the final boss of yapping. Honestly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e4b1d34ff02d3488a588da08e2bd346a44e3da9473da8b127843cd98620dac77",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_025.mp3",
+  "duration": 4.414625,
+  "sha256": "f3a613a9606e903f030aff7d20791860cd456c7128f64e13e281949ec3684cba",
+  "request_payload": {
+    "text": "[casual] Trying to explain this without becoming the final boss of yapping. Honestly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_040",
+  "phrase_id": "lively3_ru_narrate_cta_040",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Кому нужен понятный старт — загляните в бота. Ссылку оставили сверху в профиле.",
+  "tts_text": "[conversational] Кому нужен понятный старт — загляните в бота. Ссылку оставили сверху в профиле.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1985dbe3f4fa76f43e13ea1ad7efc3cc81ff2ed8a5ea1598806a848c0d95c669",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_040",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_040.mp3",
+  "duration": 4.937063,
+  "sha256": "299fe23c51f5fe556afbd6920bb40e9bd6e7f430dec9f6d5ac3a5e43bd997e23",
+  "request_payload": {
+    "text": "[conversational] Кому нужен понятный старт — загляните в бота. Ссылку оставили сверху в профиле.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

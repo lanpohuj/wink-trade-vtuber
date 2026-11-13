@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_019",
+  "sha256": "30952e45c29dce1065c607083058ce31bfae53eb4543820d2c8d9f37c8ea655c",
+  "expected": "До границы оказалось близко, но закрытие минусовое. Называю именно факт.",
+  "transcript": "До границы оказалось близко, но закрытие минусовое. Называю именно факт.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08663,
+    "peak": 0.38016,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.156,
+    "sha256": "30952e45c29dce1065c607083058ce31bfae53eb4543820d2c8d9f37c8ea655c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " До границы оказалось близко, но закрытие минусовое. Называю именно факт."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

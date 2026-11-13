@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_036",
+  "sha256": "b7c3cdfa19812d73b9aab6e42e27999e1f22d960e0f402ec6b2b6178ae136033",
+  "expected": "Waiting for completion. My optimism currently has no scoreboard access.",
+  "transcript": "Waiting for completion. My optimism currently has no scoreboard access.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08275,
+    "peak": 0.45322,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.202,
+    "sha256": "b7c3cdfa19812d73b9aab6e42e27999e1f22d960e0f402ec6b2b6178ae136033"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Waiting for completion. My optimism currently has no scoreboard access."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

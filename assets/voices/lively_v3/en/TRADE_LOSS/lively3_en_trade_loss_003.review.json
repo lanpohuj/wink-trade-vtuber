@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_003",
+  "phrase_id": "lively3_en_trade_loss_003",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Closed red. I don't like it; naming it honestly is more useful.",
+  "tts_text": "[calm, mildly disappointed] Closed red. I don't like it; naming it honestly is more useful.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3b8948a0c9849fb8cdda903be3f2158752e1cdc57f7b977c6f55fa0f4c302085",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_003",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_003.mp3",
+  "duration": 4.545187,
+  "sha256": "8f88085f0494b46ca978ee69d020b803e7a2b82de938551718127905f12ebe6c",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Closed red. I don't like it; naming it honestly is more useful.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

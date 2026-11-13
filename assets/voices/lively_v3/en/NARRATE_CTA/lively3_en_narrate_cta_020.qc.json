@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_020",
+  "sha256": "0f77e38a38249c101b8173933c4fa7c4ad4f394f0ae20ed4e0401a9ae50a8d68",
+  "expected": "Useful-link roll call: bot in bio, present and accounted for.",
+  "transcript": "Useful Link Roll Call, bought in Bio, present and accounted for.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07539,
+    "peak": 0.41038,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.139,
+    "sha256": "0f77e38a38249c101b8173933c4fa7c4ad4f394f0ae20ed4e0401a9ae50a8d68"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Useful Link Roll Call, bought in Bio, present and accounted for."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_013",
+  "sha256": "819f09444e5e5e5dcf27136252974e4be76cfa56511e2290f040305850f0cb29",
+  "expected": "Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты.",
+  "transcript": "Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09091,
+    "peak": 0.4161,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.128,
+    "sha256": "819f09444e5e5e5dcf27136252974e4be76cfa56511e2290f040305850f0cb29"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.22,
+      "text": " Вот это сюрприз, спасибо!"
+    },
+    {
+      "start": 2.22,
+      "end": 4.72,
+      "text": " Люблю неожиданные добрые моменты!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

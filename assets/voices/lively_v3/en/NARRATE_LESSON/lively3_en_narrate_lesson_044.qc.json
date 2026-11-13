@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_044",
+  "sha256": "2ffdc1e06167fc6d77d916acebf2aac2bd524badcc4b206f605685393cdb6d35",
+  "expected": "Conditions can align and the trade can still lose. Those facts can coexist.",
+  "transcript": "Conditions can align and the trade can still lose. Those facts can coexist.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07884,
+    "peak": 0.41336,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.292,
+    "sha256": "2ffdc1e06167fc6d77d916acebf2aac2bd524badcc4b206f605685393cdb6d35"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Conditions can align and the trade can still lose. Those facts can coexist."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_049",
+  "phrase_id": "lively3_en_narrate_scan_049",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not dressing the first candle in an explanation that doesn't fit.",
+  "tts_text": "[lightly playful, smiling] Not dressing the first candle in an explanation that doesn't fit.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2d1caec791f118f9d436b55e527eb6cdc6d3c84dd97e925cddb76ba5b4751ec3",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_049",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_049.mp3",
+  "duration": 3.892125,
+  "sha256": "d087f13c050ad4b59f2261cbcdf2954038baa10bae881e4652fcc6dcc8725def",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Not dressing the first candle in an explanation that doesn't fit.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

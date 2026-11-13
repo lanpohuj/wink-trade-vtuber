@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_021",
+  "sha256": "6c6f4de6fc50802a1a29c9a32e5d5e756e976cddb59e39dbb2e5c5fcf8a69ded",
+  "expected": "That's pleasant: positive result. Dropping the pretend composure now.",
+  "transcript": "That's pleasant! Positive result! Dropping the pretend composure now!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08246,
+    "peak": 0.44193,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.265,
+    "sha256": "6c6f4de6fc50802a1a29c9a32e5d5e756e976cddb59e39dbb2e5c5fcf8a69ded"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " That's pleasant! Positive result! Dropping the pretend composure now!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

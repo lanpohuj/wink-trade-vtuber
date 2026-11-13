@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_008",
+  "sha256": "37bc5f2c77d38384286035d8b6bf4136e157640fe775c238d01ff217857ec4bb",
+  "expected": "Favourite kind of chat: asking questions without worrying about looking new.",
+  "transcript": "Favorite kind of chat asking questions without worrying about looking new",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08927,
+    "peak": 0.42904,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.179,
+    "sha256": "37bc5f2c77d38384286035d8b6bf4136e157640fe775c238d01ff217857ec4bb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.46,
+      "text": " Favorite kind of chat asking questions without worrying about looking new"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

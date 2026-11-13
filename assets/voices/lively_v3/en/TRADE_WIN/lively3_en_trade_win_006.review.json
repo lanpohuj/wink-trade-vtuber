@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_006",
+  "phrase_id": "lively3_en_trade_win_006",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Now I'm pleased. Held it in until closing; do admire the restraint.",
+  "tts_text": "[gently sarcastic, conversational] Now I'm pleased. Held it in until closing; do admire the restraint.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7254e44a813607be8234da008aee96fa83b00bb40c5eaddd28ca7715051d1b1b",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_006",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_006.mp3",
+  "duration": 4.806438,
+  "sha256": "c454d192b9081f75af8c4cf2ff10867c25a1a4d4c2493c035247992c89effb18",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Now I'm pleased. Held it in until closing; do admire the restraint.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_036",
+  "phrase_id": "lively3_en_narrate_trade_036",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Waiting for completion. My optimism currently has no scoreboard access.",
+  "tts_text": "[natural, conversational] Waiting for completion. My optimism currently has no scoreboard access.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "043c0081b0420590af358ef1488dccfc65bce682b5707dd16d7d6bbe0d4d7291",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_036",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_036.mp3",
+  "duration": 5.041563,
+  "sha256": "b7c3cdfa19812d73b9aab6e42e27999e1f22d960e0f402ec6b2b6178ae136033",
+  "request_payload": {
+    "text": "[natural, conversational] Waiting for completion. My optimism currently has no scoreboard access.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

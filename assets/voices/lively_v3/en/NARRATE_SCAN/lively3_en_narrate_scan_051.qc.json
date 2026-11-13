@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_051",
+  "sha256": "de142ca01b81f51485c9f3e17486dc0d842c2d1a795efd69f6f6d9d8a6c95328",
+  "expected": "Clicking just so something happens? Not the vibe. Still looking.",
+  "transcript": "Clicking just so something happens? Not the vibe. Still looking.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07528,
+    "peak": 0.41485,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.171,
+    "sha256": "de142ca01b81f51485c9f3e17486dc0d842c2d1a795efd69f6f6d9d8a6c95328"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Clicking just so something happens? Not the vibe. Still looking."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

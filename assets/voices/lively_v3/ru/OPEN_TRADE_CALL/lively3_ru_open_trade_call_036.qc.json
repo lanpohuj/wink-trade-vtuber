@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_036",
+  "sha256": "7b11a2ea886ef8be1becc6be99c097f428416cb9ff3f8e2c78df8bb91b65e3c9",
+  "expected": "Вверх по подтверждённому локальному развороту. Сделка идёт, прогноз в гарантию не переодеваем.",
+  "transcript": "Верх по подтвержденному локальному развороту. В сделка идет. Прогноз в гарантию не переодеваем.",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.09425,
+    "peak": 0.37412,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.062,
+    "sha256": "7b11a2ea886ef8be1becc6be99c097f428416cb9ff3f8e2c78df8bb91b65e3c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Верх по подтвержденному локальному развороту."
+    },
+    {
+      "start": 2.7,
+      "end": 5.7,
+      "text": " В сделка идет. Прогноз в гарантию не переодеваем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

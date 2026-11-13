@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_027",
+  "sha256": "3508ad82115e2bc82b90426e643ef38f074ca73c0b89c0e1399f723f02a32269",
+  "expected": "Вход вниз по диапазонному отбою состоялся. Следующее важное событие — закрытие.",
+  "transcript": "Вход вниз, по диапазонному отбою состоялся. Следующее важное событие — закрытие.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.0849,
+    "peak": 0.4021,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.154,
+    "sha256": "3508ad82115e2bc82b90426e643ef38f074ca73c0b89c0e1399f723f02a32269"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Вход вниз, по диапазонному отбою состоялся."
+    },
+    {
+      "start": 3.0,
+      "end": 5.5,
+      "text": " Следующее важное событие — закрытие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

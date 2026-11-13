@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_019",
+  "phrase_id": "lively3_ru_narrate_cta_019",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Если присматриваешься к инструментам, бот в профиле покажет условия. Спокойно почитай.",
+  "tts_text": "[conversational] Если присматриваешься к инструментам, бот в профиле покажет условия. Спокойно почитай.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "987cf68e4242fa5d910ae274b4c3098eeb7c8a86d9167b61879309c69e600358",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_019",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_019.mp3",
+  "duration": 4.989312,
+  "sha256": "7e472460ec990fc28785e7a28440d71bed6ab60671b847d0a31ddcdb55f44b91",
+  "request_payload": {
+    "text": "[conversational] Если присматриваешься к инструментам, бот в профиле покажет условия. Спокойно почитай.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

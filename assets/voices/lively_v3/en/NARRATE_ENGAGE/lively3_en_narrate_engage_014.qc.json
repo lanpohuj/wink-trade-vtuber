@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_014",
+  "sha256": "5776641a0c9b3bf6295ce71b122070968faa3c0133575c9b2ee6bb6fd79a99af",
+  "expected": "Who's got things under control, and who's opened another tab of chaos?",
+  "transcript": "Who's got things under control? And who's opened another tab of chaos?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07591,
+    "peak": 0.39372,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.215,
+    "sha256": "5776641a0c9b3bf6295ce71b122070968faa3c0133575c9b2ee6bb6fd79a99af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Who's got things under control? And who's opened another tab of chaos?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

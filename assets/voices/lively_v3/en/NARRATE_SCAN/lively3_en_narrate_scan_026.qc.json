@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_026",
+  "sha256": "6b1c1d69a69eb40977be49f909c16c69c43387ef2258fce24e861d20568c093f",
+  "expected": "Giving the chart some attention. My wit can stand beside me quietly.",
+  "transcript": "Giving the chart some attention. My wit can stand beside me quietly",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07516,
+    "peak": 0.38726,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.245,
+    "sha256": "6b1c1d69a69eb40977be49f909c16c69c43387ef2258fce24e861d20568c093f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Giving the chart some attention. My wit can stand beside me quietly"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_028",
+  "phrase_id": "lively3_ru_narrate_engage_028",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "На стриме разрешён спокойный вайб. Шуметь на максимум круглые сутки я не подписывалась.",
+  "tts_text": "[conversational] На стриме разрешён спокойный вайб. Шуметь на максимум круглые сутки я не подписывалась.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "bd32ab7ba45814f41aaae0ec0ec035307316a10931be9979d0b91c4c7efecdcc",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_028",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_028.mp3",
+  "duration": 5.041563,
+  "sha256": "87c25e6147bae459095517fe472ed886554c8b6c0a05d15d34a0deaa9a089473",
+  "request_payload": {
+    "text": "[conversational] На стриме разрешён спокойный вайб. Шуметь на максимум круглые сутки я не подписывалась.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

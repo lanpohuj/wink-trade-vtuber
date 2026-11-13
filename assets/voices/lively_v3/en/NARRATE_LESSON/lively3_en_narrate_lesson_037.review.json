@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_037",
+  "phrase_id": "lively3_en_narrate_lesson_037",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A red close is unpleasant enough without elaborate excuses. We can name it honestly.",
+  "tts_text": "[lightly playful, smiling] A red close is unpleasant enough without elaborate excuses. We can name it honestly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "605becb7313d3ed4bff9087c446818b7334a2c6e4742245387899cebbb64e278",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_037",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_037.mp3",
+  "duration": 5.642375,
+  "sha256": "1a14d653c22b63c7d09a711663436a64e0828d7613f2a74fdcad01c5451ff23c",
+  "request_payload": {
+    "text": "[lightly playful, smiling] A red close is unpleasant enough without elaborate excuses. We can name it honestly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

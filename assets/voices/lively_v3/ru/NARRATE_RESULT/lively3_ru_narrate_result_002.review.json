@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_002",
+  "phrase_id": "lively3_ru_narrate_result_002",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Теперь шаг сто десять. Размер изменился, факты под него не подгоняем.",
+  "tts_text": "[conversational] Теперь шаг сто десять. Размер изменился, факты под него не подгоняем.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "eb8f0cd6893bfedaa050fb2449e93ab4430b8a9f79be5f3a60d2f8d678119f07",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_002",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_002.mp3",
+  "duration": 4.728063,
+  "sha256": "4713286332729da8c10ec982ea115a7e2a72626eebd7c00c99bc7fac2751c32a",
+  "request_payload": {
+    "text": "[conversational] Теперь шаг сто десять. Размер изменился, факты под него не подгоняем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_024",
+  "sha256": "b6c25dadd6e287ffb9ec9ee44761a125c4ea50882a712ac258473a04ae944951",
+  "expected": "Waiting isn't a new entry decision. The trade's already open.",
+  "transcript": "Waiting isn't a new entry decision. The trade's already open.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.08085,
+    "peak": 0.38663,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.242,
+    "sha256": "b6c25dadd6e287ffb9ec9ee44761a125c4ea50882a712ac258473a04ae944951"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " Waiting isn't a new entry decision. The trade's already open."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

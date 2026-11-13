@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_068",
+  "sha256": "e041726b1f92fe3de2ea72a951069b46c01503429f9fb178de7cc8e3016db77e",
+  "expected": "Грузится ещё. Тут бы кофе успеть сделать, но я остаюсь с вами.",
+  "transcript": "Грузится еще. Тут бы кофе успеть сделать, но я остаюсь с вами.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07267,
+    "peak": 0.32027,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.061,
+    "sha256": "e041726b1f92fe3de2ea72a951069b46c01503429f9fb178de7cc8e3016db77e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Грузится еще. Тут бы кофе успеть сделать, но я остаюсь с вами."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_011",
+  "sha256": "efbcffbdedc4b2ce80e21ebd0ab613093b2d4bdc82d69cc15e151293526f13d9",
+  "expected": "Next in sequence: two hundred and forty-two. Same strict checks apply.",
+  "transcript": "Next in sequence, 242. Same strict check supply.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08362,
+    "peak": 0.66599,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.149,
+    "sha256": "efbcffbdedc4b2ce80e21ebd0ab613093b2d4bdc82d69cc15e151293526f13d9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Next in sequence, 242. Same strict check supply."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_049",
+  "sha256": "d087f13c050ad4b59f2261cbcdf2954038baa10bae881e4652fcc6dcc8725def",
+  "expected": "Not dressing the first candle in an explanation that doesn't fit.",
+  "transcript": "Not dressing the first candle in an explanation that doesn't fit.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.08539,
+    "peak": 0.35934,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.332,
+    "sha256": "d087f13c050ad4b59f2261cbcdf2954038baa10bae881e4652fcc6dcc8725def"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Not dressing the first candle in an explanation that doesn't fit."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

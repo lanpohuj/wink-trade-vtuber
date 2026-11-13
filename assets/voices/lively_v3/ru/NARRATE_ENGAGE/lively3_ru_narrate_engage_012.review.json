@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_012",
+  "phrase_id": "lively3_ru_narrate_engage_012",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Какое объяснение интереснее: коротко по делу или с моими неизбежными комментариями?",
+  "tts_text": "[conversational] Какое объяснение интереснее: коротко по делу или с моими неизбежными комментариями?",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3f8489af198086c989ca59919ee58b0948c71c07a8cbde45677d12ac1e1c6c3e",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_012",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_012.mp3",
+  "duration": 5.72075,
+  "sha256": "518a97ef931dfbd28ea7b6edf532c07af40e9fda11445dffea7d63d42af94060",
+  "request_payload": {
+    "text": "[conversational] Какое объяснение интереснее: коротко по делу или с моими неизбежными комментариями?",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

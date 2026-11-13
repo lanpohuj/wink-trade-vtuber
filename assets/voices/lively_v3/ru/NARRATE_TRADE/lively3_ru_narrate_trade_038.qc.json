@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_038",
+  "sha256": "68f36bc1dfba5957e0691b69266bc8e97c5f578cd22bdd2a5132b1ec615923d8",
+  "expected": "Сделка открыта, комментарий включён, преждевременный восторг на паузе.",
+  "transcript": "Сделка открыта. Комментарий включён. Прежде временный восторг на паузе.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.09313,
+    "peak": 0.36395,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.126,
+    "sha256": "68f36bc1dfba5957e0691b69266bc8e97c5f578cd22bdd2a5132b1ec615923d8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Сделка открыта. Комментарий включён. Прежде временный восторг на паузе."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

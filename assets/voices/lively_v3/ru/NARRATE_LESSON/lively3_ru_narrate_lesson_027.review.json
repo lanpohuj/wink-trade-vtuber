@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_027",
+  "phrase_id": "lively3_ru_narrate_lesson_027",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Нормально передумать до клика, если условия изменились. Это проверка сработала.",
+  "tts_text": "[conversational] Нормально передумать до клика, если условия изменились. Это проверка сработала.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "61239f234e4318568d1ea744eb0596cb3a8312a104dfbe0198d56d705e3422b0",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_027",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_027.mp3",
+  "duration": 4.675813,
+  "sha256": "6b0f9097ac2b8c3c2997a455d266a8eb9d9aacc4d925be8bd8312f7b9754c842",
+  "request_payload": {
+    "text": "[conversational] Нормально передумать до клика, если условия изменились. Это проверка сработала.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

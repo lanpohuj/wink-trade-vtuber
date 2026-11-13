@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_scan_017",
+  "sha256": "0787994b5d850b08de7833f81d2e449ef578ae7f71b585917814dccb7eec1725",
+  "expected": "Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.",
+  "transcript": "Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08108,
+    "peak": 0.40061,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.232,
+    "sha256": "0787994b5d850b08de7833f81d2e449ef578ae7f71b585917814dccb7eec1725"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " Not lagging, just thinking."
+    },
+    {
+      "start": 2.24,
+      "end": 5.04,
+      "text": " Less glamorous than I'd hoped, but here we are."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

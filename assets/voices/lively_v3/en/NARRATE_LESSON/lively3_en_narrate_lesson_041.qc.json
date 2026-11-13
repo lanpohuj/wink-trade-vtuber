@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_041",
+  "sha256": "fd57b24681bf2acf02eb4b234ac9fc34b996614698f656373f1a0c5db4a60597",
+  "expected": "If it doesn't make sense, saying it louder won't help. Tried that. Still confusing.",
+  "transcript": "If it doesn't make sense, saying it louder won't help. Try that. Still confusing.",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07803,
+    "peak": 0.45981,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.143,
+    "sha256": "fd57b24681bf2acf02eb4b234ac9fc34b996614698f656373f1a0c5db4a60597"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " If it doesn't make sense, saying it louder won't help."
+    },
+    {
+      "start": 3.2,
+      "end": 5.2,
+      "text": " Try that. Still confusing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

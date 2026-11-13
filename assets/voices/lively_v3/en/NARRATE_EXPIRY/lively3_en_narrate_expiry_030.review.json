@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_030",
+  "phrase_id": "lively3_en_narrate_expiry_030",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two minutes chosen for this setup. Now watching it through.",
+  "tts_text": "[clear, conversational] Two minutes chosen for this setup. Now watching it through.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4e84cb375e45e54a3a46e6671fae9b9551b40f36f38c6bee6c7b3d71fbdce7a0",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_030",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_030.mp3",
+  "duration": 3.761563,
+  "sha256": "771799215fa78358f8ec5cca9fbcaa1efbf486a62cd251b7e560979b92d1fbce",
+  "request_payload": {
+    "text": "[clear, conversational] Two minutes chosen for this setup. Now watching it through.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

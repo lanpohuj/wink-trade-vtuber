@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_010",
+  "sha256": "1e306fca8689b656cfc8a0f4700d0a2df53f86539de79808d1a1801d735b8bbb",
+  "expected": "Welcome to the cosy observation club. Silly mugs actively encouraged.",
+  "transcript": "Welcome to the Cozy Observation Club! Silly mugs actively encouraged.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07341,
+    "peak": 0.34887,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "1e306fca8689b656cfc8a0f4700d0a2df53f86539de79808d1a1801d735b8bbb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Welcome to the Cozy Observation Club! Silly mugs actively encouraged."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

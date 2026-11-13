@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_013",
+  "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b",
+  "expected": "What a surprise, thank you! Unexpected kindness is always welcome.",
+  "transcript": "What a surprise! Thank you! Unexpected kindness is always welcome!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07562,
+    "peak": 0.44671,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.302,
+    "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " What a surprise! Thank you! Unexpected kindness is always welcome!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

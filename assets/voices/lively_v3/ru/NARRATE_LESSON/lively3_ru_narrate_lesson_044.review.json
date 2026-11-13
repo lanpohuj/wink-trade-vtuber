@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_044",
+  "phrase_id": "lively3_ru_narrate_lesson_044",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу.",
+  "tts_text": "[conversational] Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f6937b4ed226ebb96d03fa072d3a8236c05c2f83f012356d27a986510d056f4f",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_044",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_044.mp3",
+  "duration": 5.642375,
+  "sha256": "cbd4c038122e319caca4c084daf9b9f4388ad2c4f199c98add7921c719e70f84",
+  "request_payload": {
+    "text": "[conversational] Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

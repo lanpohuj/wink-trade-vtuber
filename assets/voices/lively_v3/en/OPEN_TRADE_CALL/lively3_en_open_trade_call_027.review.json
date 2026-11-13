@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_027",
+  "phrase_id": "lively3_en_open_trade_call_027",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Confirmed rejection gave the up entry. Trade's on screen; hands rest.",
+  "tts_text": "[clear, conversational] Confirmed rejection gave the up entry. Trade's on screen; hands rest.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aaef6322ead53685a69d0961f9fff8cba9e3a2afa21c1dd9c276a18f0181bca2",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_027",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_027.mp3",
+  "duration": 4.728063,
+  "sha256": "24f357230066aadcb3b90b0d747bd316175b0ff94ccdc90f6da4e09ffd265783",
+  "request_payload": {
+    "text": "[clear, conversational] Confirmed rejection gave the up entry. Trade's on screen; hands rest.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_047",
+  "phrase_id": "lively3_en_narrate_scan_047",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I can yap nonsense as a joke. The entry button doesn't get that privilege.",
+  "tts_text": "[casual] I can yap nonsense as a joke. The entry button doesn't get that privilege.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "25f6d048b2d236ddcd4410bfde546e0462c54a8f0fcecc74cccb139086ee744a",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_047.mp3",
+  "duration": 4.414625,
+  "sha256": "7e8bc485adba7a22d74426d2d6b3deb8caa2a309ae0b37f87d606fa6bf5f850a",
+  "request_payload": {
+    "text": "[casual] I can yap nonsense as a joke. The entry button doesn't get that privilege.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

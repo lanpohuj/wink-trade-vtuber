@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_011",
+  "phrase_id": "lively3_ru_trade_loss_011",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Закрыли в минус. Сейчас эмоции на паузу, данные остаются как есть.",
+  "tts_text": "[conversational] Закрыли в минус. Сейчас эмоции на паузу, данные остаются как есть.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1762a57df3737fcd7b31b718ba2b5e89fcb98e519b26a43d61de89a501232dd0",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_011",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_011.mp3",
+  "duration": 4.33625,
+  "sha256": "4d0dd06a83fb095c88d031529f9c5d2e5c6550b6726d97dd6372d91bdf2aff3e",
+  "request_payload": {
+    "text": "[conversational] Закрыли в минус. Сейчас эмоции на паузу, данные остаются как есть.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

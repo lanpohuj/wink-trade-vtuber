@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_018",
+  "phrase_id": "lively3_en_narrate_expiry_018",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "One minute selected. The trade has its expiry; I have my commentary.",
+  "tts_text": "[clear, conversational] One minute selected. The trade has its expiry; I have my commentary.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "da5455b47c26978be22977ebb410cb060a1225e0f0d32ed3de4a284878f6a7c8",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_018",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_018.mp3",
+  "duration": 4.728063,
+  "sha256": "e1b086a73014bbaa7187487939cd4361d0d63728c9298c5ad69146e4c047ca57",
+  "request_payload": {
+    "text": "[clear, conversational] One minute selected. The trade has its expiry; I have my commentary.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

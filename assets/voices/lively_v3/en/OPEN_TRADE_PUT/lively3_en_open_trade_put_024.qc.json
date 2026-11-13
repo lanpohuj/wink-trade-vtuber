@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_024",
+  "sha256": "0431b27a4c461251caa5b509057273e389ddef75f4dc08c8141e09b2a4d711c9",
+  "expected": "Down trade open. Setup: confirmed rejection at the range boundary.",
+  "transcript": "Down trade open. Set up. Confirmed rejection at the range boundary.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08263,
+    "peak": 0.468,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.195,
+    "sha256": "0431b27a4c461251caa5b509057273e389ddef75f4dc08c8141e09b2a4d711c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Down trade open. Set up. Confirmed rejection at the range boundary."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

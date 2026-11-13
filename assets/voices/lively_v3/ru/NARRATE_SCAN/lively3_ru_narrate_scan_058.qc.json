@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_058",
+  "sha256": "f0262fbfb32896875e52454b0e3261f16590968cd0c9f4d104b1526f3dcc37eb",
+  "expected": "Секунду, сверю основания. Пафосную интонацию пока можно не включать.",
+  "transcript": "Секунду! Сверю основание! Пафосную интонацию пока можно не включать!",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08844,
+    "peak": 0.43079,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "f0262fbfb32896875e52454b0e3261f16590968cd0c9f4d104b1526f3dcc37eb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2600000000000002,
+      "text": " Секунду! Сверю основание!"
+    },
+    {
+      "start": 2.2600000000000002,
+      "end": 4.88,
+      "text": " Пафосную интонацию пока можно не включать!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

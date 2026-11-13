@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_015",
+  "sha256": "55773f44d7c1037051fec9f6afc0718ab52e7c97ebe3b79d267134e73c968f35",
+  "expected": "Down trade running on the breakout-retest setup. Not pushing candles with my voice.",
+  "transcript": "Down trade running on the breakout retest setup. Not pushing candles with my voice.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07969,
+    "peak": 0.37866,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.2,
+    "sha256": "55773f44d7c1037051fec9f6afc0718ab52e7c97ebe3b79d267134e73c968f35"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down trade running on the breakout retest setup. Not pushing candles with my voice."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_007",
+  "phrase_id": "lively3_en_narrate_result_007",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next step: two hundred and forty-two. Entry checks remain mandatory.",
+  "tts_text": "[clear, conversational] Next step: two hundred and forty-two. Entry checks remain mandatory.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "73eb515b71daa95d429b9369627f2e2399df875231f625b62e316897c1a8cfba",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_007",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_007.mp3",
+  "duration": 4.780312,
+  "sha256": "d3ab015f871b7d06d911d9ae55469964a6a470e7ab0e85df7d1e522a2545ac10",
+  "request_payload": {
+    "text": "[clear, conversational] Next step: two hundred and forty-two. Entry checks remain mandatory.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

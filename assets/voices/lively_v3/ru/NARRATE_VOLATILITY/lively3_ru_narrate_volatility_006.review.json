@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_006",
+  "phrase_id": "lively3_ru_narrate_volatility_006",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "График сейчас двигается резче. Это подтверждено, а не добавлено для сюжета.",
+  "tts_text": "[conversational] График сейчас двигается резче. Это подтверждено, а не добавлено для сюжета.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c423626c0b457684256c5e31a6f0a108497a4c6e64029da382eab83b69650712",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_006",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_006.mp3",
+  "duration": 4.728063,
+  "sha256": "1cf8180a3c851b6766554c4b7734fdfa74c14d5c0adf5082fbb7c7c29b62e037",
+  "request_payload": {
+    "text": "[conversational] График сейчас двигается резче. Это подтверждено, а не добавлено для сюжета.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

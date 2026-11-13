@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_005",
+  "phrase_id": "lively3_ru_narrate_engage_005",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Я сегодня держу баланс между аналитикой и желанием пошутить не вовремя.",
+  "tts_text": "[conversational] Я сегодня держу баланс между аналитикой и желанием пошутить не вовремя.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4ea8154c4eb32f68fc55089a1125a70c081e33a487087e6da414321bf2b27dac",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_005",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_005.mp3",
+  "duration": 4.205625,
+  "sha256": "6552d4fa8f3c3f9a7cde621864ac3d4ae359f3fd26da66e463f303ba4b1ad764",
+  "request_payload": {
+    "text": "[conversational] Я сегодня держу баланс между аналитикой и желанием пошутить не вовремя.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

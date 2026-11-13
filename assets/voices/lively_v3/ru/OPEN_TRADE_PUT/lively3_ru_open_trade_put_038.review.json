@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_038",
+  "phrase_id": "lively3_ru_open_trade_put_038",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Вошли вниз после разворотного подтверждения. У результата будет отдельная реплика.",
+  "tts_text": "[conversational] Вошли вниз после разворотного подтверждения. У результата будет отдельная реплика.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "76e3a36523803822988c7c5dc6f521db83ddc697f0187b3ea833b025f4c4cc0a",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_038",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_038.mp3",
+  "duration": 4.858688,
+  "sha256": "cf3c4681c7840f6cd8a82374238fe2119fd370bb85a70d8dc70f7a7c51131fec",
+  "request_payload": {
+    "text": "[conversational] Вошли вниз после разворотного подтверждения. У результата будет отдельная реплика.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

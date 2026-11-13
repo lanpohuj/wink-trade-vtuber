@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_026",
+  "sha256": "8cd1102d59376042f3dd7c6583276ee4f7508a4bb38a455e1acfc654e0f19bb0",
+  "expected": "Positive result recorded. Internal applause: brief but sincere.",
+  "transcript": "Positive result recorded. Internal applause, brief but sincere.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07776,
+    "peak": 0.369,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.148,
+    "sha256": "8cd1102d59376042f3dd7c6583276ee4f7508a4bb38a455e1acfc654e0f19bb0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Positive result recorded. Internal applause, brief but sincere."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

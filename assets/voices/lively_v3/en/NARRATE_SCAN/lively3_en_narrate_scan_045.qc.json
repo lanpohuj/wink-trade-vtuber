@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_045",
+  "sha256": "ac3f759096e945cc3cc53ef6c4fa7ca0ba6f6d0c0f629bb1a676c74bc8bb568b",
+  "expected": "Reading the full picture. Headlines alone have never been enough for me.",
+  "transcript": "Reading the full picture. Headlines alone have never been enough for me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08515,
+    "peak": 0.36035,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.144,
+    "sha256": "ac3f759096e945cc3cc53ef6c4fa7ca0ba6f6d0c0f629bb1a676c74bc8bb568b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Reading the full picture. Headlines alone have never been enough for me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

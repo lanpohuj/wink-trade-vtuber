@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_020",
+  "sha256": "45a00ecab2fa18f928035f875e8ad1a87f31f8c29c5ef799bf218ce514c6a8b8",
+  "expected": "Let's not call it free halfway through. The ending hasn't dropped yet.",
+  "transcript": "Let's not call it free halfway through. The ending hasn't dropped yet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08254,
+    "peak": 0.48158,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.225,
+    "sha256": "45a00ecab2fa18f928035f875e8ad1a87f31f8c29c5ef799bf218ce514c6a8b8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Let's not call it free halfway through. The ending hasn't dropped yet."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

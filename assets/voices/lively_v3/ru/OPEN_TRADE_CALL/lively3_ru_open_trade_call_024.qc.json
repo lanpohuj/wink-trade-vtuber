@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_024",
+  "sha256": "d2f5a6f1849564250ab8c59aecc5bc5b7ffb2621f699ca9ea7e5674c2be360e2",
+  "expected": "Вошли вверх: подтверждён отбой в диапазоне. Теперь смотрим закрытие.",
+  "transcript": "Вошли вверх, подтверждён от боя в диапазоне. Теперь смотрим закрытие.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08289,
+    "peak": 0.37238,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "d2f5a6f1849564250ab8c59aecc5bc5b7ffb2621f699ca9ea7e5674c2be360e2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.34,
+      "text": " Вошли вверх, подтверждён от боя в диапазоне."
+    },
+    {
+      "start": 3.34,
+      "end": 5.34,
+      "text": " Теперь смотрим закрытие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

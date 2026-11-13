@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_009",
+  "phrase_id": "lively3_en_narrate_scan_009",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let me be picky for a second, chat. Better now than inventing excuses later.",
+  "tts_text": "[casual] Let me be picky for a second, chat. Better now than inventing excuses later.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "29bf8be956148b76051688b0b270d9a648ecbc74d8609872f8b496e1f621c96e",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_009",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_009.mp3",
+  "duration": 4.545187,
+  "sha256": "f18c46e1047677137c9cd9f15866fd36444274d55de7ae07f0d1dcc0832aeb28",
+  "request_payload": {
+    "text": "[casual] Let me be picky for a second, chat. Better now than inventing excuses later.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

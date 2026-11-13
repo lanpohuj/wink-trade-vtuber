@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_044",
+  "phrase_id": "lively3_en_narrate_trade_044",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "While the outcome's open, let's hold off on handing out labels.",
+  "tts_text": "[natural, conversational] While the outcome's open, let's hold off on handing out labels.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f1915ec1d8f92bae955f04c033fb543907f79a9f8c44ed07c2c136a8829f017f",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_044",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_044.mp3",
+  "duration": 3.892125,
+  "sha256": "1a906b4af14a9386290ca797efee1a031866da40a53db3915103c60bc60256c0",
+  "request_payload": {
+    "text": "[natural, conversational] While the outcome's open, let's hold off on handing out labels.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

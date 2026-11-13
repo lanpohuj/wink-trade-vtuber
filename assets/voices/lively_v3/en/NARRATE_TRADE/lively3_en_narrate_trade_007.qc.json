@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_007",
+  "sha256": "de101e3beb8e61b71eb47543162a8a22869935b57174694f0f746a94d4f36d28",
+  "expected": "Timer's got this. Apparently it doesn't need my expert yap every second.",
+  "transcript": "Timers got this. Apparently it doesn't need my expert yap every second.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07303,
+    "peak": 0.41364,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.279,
+    "sha256": "de101e3beb8e61b71eb47543162a8a22869935b57174694f0f746a94d4f36d28"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.46,
+      "text": " Timers got this. Apparently it doesn't need my expert yap every second."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

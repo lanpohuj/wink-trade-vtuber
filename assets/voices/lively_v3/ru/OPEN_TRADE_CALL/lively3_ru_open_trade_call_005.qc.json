@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_005",
+  "sha256": "aa2394ccbb146ad77790dd2b9060e1569800611a65101dbd938d8c0ecedbdf04",
+  "expected": "Сделка вверх открыта по сценарию отката. Сейчас уже наблюдаем, не суетимся.",
+  "transcript": "Сделка вверх открыта по сценарию отката. Сейчас уже наблюдаем, не светимся.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.0914,
+    "peak": 0.38815,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.082,
+    "sha256": "aa2394ccbb146ad77790dd2b9060e1569800611a65101dbd938d8c0ecedbdf04"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Сделка вверх открыта по сценарию отката."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Сейчас уже наблюдаем, не светимся."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

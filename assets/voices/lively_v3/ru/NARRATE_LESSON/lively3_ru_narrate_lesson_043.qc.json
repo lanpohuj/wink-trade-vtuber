@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_043",
+  "sha256": "6a554b9cc768169d7bda2b7d59399b0e2f4359a4fb9058f55a683bbcdf38cde0",
+  "expected": "Лучшая причина для терпения — отсутствие подтверждения. Драматичная музыка необязательна.",
+  "transcript": "Лучшая причина для терпения — отсутствие подтверждения. Драматичная музыка не обязательно.",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.08468,
+    "peak": 0.44528,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "6a554b9cc768169d7bda2b7d59399b0e2f4359a4fb9058f55a683bbcdf38cde0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Лучшая причина для терпения — отсутствие подтверждения."
+    },
+    {
+      "start": 3.72,
+      "end": 5.72,
+      "text": " Драматичная музыка не обязательно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

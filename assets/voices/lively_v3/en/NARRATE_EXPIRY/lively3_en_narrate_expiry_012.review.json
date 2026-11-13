@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_012",
+  "phrase_id": "lively3_en_narrate_expiry_012",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "This trade's thirty seconds. Waiting for its close, no early ending.",
+  "tts_text": "[clear, conversational] This trade's thirty seconds. Waiting for its close, no early ending.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "38cf18ac1d873d128a6f93e32784b0e051579b2fad7a37b778d1c80022e1539d",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_012",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_012.mp3",
+  "duration": 5.51175,
+  "sha256": "e263030a0a3798722d0f71b168dc477494d465d9039732b7e7304aab13a350f9",
+  "request_payload": {
+    "text": "[clear, conversational] This trade's thirty seconds. Waiting for its close, no early ending.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

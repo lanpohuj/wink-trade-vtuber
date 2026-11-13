@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_045",
+  "sha256": "ff72aeb147c573ca348932b69ad576e80be0bfead82d6f5de1bcad4bec60c320",
+  "expected": "We don't need commentary every second. Sometimes the chart can finish its sentence.",
+  "transcript": "We don't need commentary every second. Sometimes the chart can finish its sentence.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.0711,
+    "peak": 0.30974,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.172,
+    "sha256": "ff72aeb147c573ca348932b69ad576e80be0bfead82d6f5de1bcad4bec60c320"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " We don't need commentary every second. Sometimes the chart can finish its sentence."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

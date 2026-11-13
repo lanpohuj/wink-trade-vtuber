@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_001",
+  "sha256": "d2d741086f27a185c66f753fb8b4bd615b15b63fca3c87aa9cea8be7510521e2",
+  "expected": "Stake returned. This ending needs neither victory music nor sad credits.",
+  "transcript": "Stake returned. This ending needs neither victory music nor sad credits.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.09048,
+    "peak": 0.85647,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.492,
+    "sha256": "d2d741086f27a185c66f753fb8b4bd615b15b63fca3c87aa9cea8be7510521e2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.7,
+      "text": " Stake returned. This ending needs neither victory music nor sad credits."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_011",
+  "sha256": "cb2395d5d257babac9c29a9198d3f1588f177ada00e14caa8d3b1a929b3ccf99",
+  "expected": "Closed red. Emotions paused; the facts remain as they are.",
+  "transcript": "Closed red emotions paused the facts remain as they are",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07602,
+    "peak": 0.46794,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.248,
+    "sha256": "cb2395d5d257babac9c29a9198d3f1588f177ada00e14caa8d3b1a929b3ccf99"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.28,
+      "text": " Closed red emotions paused the facts remain as they are"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

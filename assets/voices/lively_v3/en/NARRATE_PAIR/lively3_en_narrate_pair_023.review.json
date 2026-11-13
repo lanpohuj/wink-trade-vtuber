@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_023",
+  "phrase_id": "lively3_en_narrate_pair_023",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New pair on screen. Give me a moment to meet its personality.",
+  "tts_text": "[warm, relaxed] New pair on screen. Give me a moment to meet its personality.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2939c67130bb6277b3d9cebbaa70db3d28303b6de874fa7306da1788eb86fc2f",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_023",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_023.mp3",
+  "duration": 3.813812,
+  "sha256": "9d6c490e95d9adc2828d5a1361d37a31d2822ab5f5b6da31ea152665930f3316",
+  "request_payload": {
+    "text": "[warm, relaxed] New pair on screen. Give me a moment to meet its personality.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

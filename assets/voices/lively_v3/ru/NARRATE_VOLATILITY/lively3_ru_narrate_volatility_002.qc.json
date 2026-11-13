@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_volatility_002",
+  "sha256": "58457bc4d0ce2b84f4bc9771ef5ca801ca919f55571d47249173e5ddc968dc20",
+  "expected": "Диапазоны свежих свечей расширились. Драмы на экране стало больше по факту.",
+  "transcript": "Диапазоны свежих свечей расширились. Драмы на экране стало больше по факту.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08166,
+    "peak": 0.3237,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "58457bc4d0ce2b84f4bc9771ef5ca801ca919f55571d47249173e5ddc968dc20"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Диапазоны свежих свечей расширились."
+    },
+    {
+      "start": 2.44,
+      "end": 4.64,
+      "text": " Драмы на экране стало больше по факту."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

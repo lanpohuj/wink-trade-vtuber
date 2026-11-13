@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_025",
+  "sha256": "ab22e4167b4f66a1c971f61d8173fdea4351c8e6391bc7e4cf0d90982d28b16a",
+  "expected": "Up trade open on the range rejection. A nice name won't skip the wait.",
+  "transcript": "Up trade open on the range rejection. A nice name won't skip the wait.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08368,
+    "peak": 0.43051,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.179,
+    "sha256": "ab22e4167b4f66a1c971f61d8173fdea4351c8e6391bc7e4cf0d90982d28b16a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Up trade open on the range rejection. A nice name won't skip the wait."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

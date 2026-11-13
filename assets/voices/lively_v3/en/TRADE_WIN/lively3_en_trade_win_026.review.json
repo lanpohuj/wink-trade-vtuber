@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_026",
+  "phrase_id": "lively3_en_trade_win_026",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Positive result recorded. Internal applause: brief but sincere.",
+  "tts_text": "[gently sarcastic, conversational] Positive result recorded. Internal applause: brief but sincere.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1dc05aea5ebe730792df74bb60829309b1e9798563d980313d55aa0535262984",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_026",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_026.mp3",
+  "duration": 4.728063,
+  "sha256": "8cd1102d59376042f3dd7c6583276ee4f7508a4bb38a455e1acfc654e0f19bb0",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Positive result recorded. Internal applause: brief but sincere.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

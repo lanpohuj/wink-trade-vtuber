@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_032",
+  "sha256": "8924e2b3b0d5fffae1ae46e7502c165620de72cb07247be7693e5d3082056e39",
+  "expected": "Сейчас полезен спокойный взгляд. Эффектное закатывание глаз оставлю на потом.",
+  "transcript": "Сейчас полезен спокойный взгляд, эффектное закатывание глаз оставлено потом.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09178,
+    "peak": 0.57305,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "8924e2b3b0d5fffae1ae46e7502c165620de72cb07247be7693e5d3082056e39"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.7,
+      "text": " Сейчас полезен спокойный взгляд, эффектное закатывание глаз оставлено потом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

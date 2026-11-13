@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_025",
+  "sha256": "e71e8549f885a28f79ac08bd43898df1d451916f201f4b56c1c2fbffa0d95850",
+  "expected": "Не заставляю запоминать адрес на слух: ссылка на бота уже в шапке профиля.",
+  "transcript": "Не заставляю запоминать адрес на слух. Ссылка на боту уже в шапке профиля.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07324,
+    "peak": 0.27976,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.125,
+    "sha256": "e71e8549f885a28f79ac08bd43898df1d451916f201f4b56c1c2fbffa0d95850"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Не заставляю запоминать адрес на слух."
+    },
+    {
+      "start": 2.4,
+      "end": 4.5200000000000005,
+      "text": " Ссылка на боту уже в шапке профиля."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

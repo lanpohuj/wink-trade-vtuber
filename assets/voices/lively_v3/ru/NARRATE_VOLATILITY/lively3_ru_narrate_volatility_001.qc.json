@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_volatility_001",
+  "sha256": "ba76e2637851cd1a4c9f151ea22cf01151b800b90519a118877e3421babe8bbf",
+  "expected": "Движения стали резче по свежим данным. График включил характер, не я придумала.",
+  "transcript": "Движения стали речи по свежим данным. График включил характер, не я придумала.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.08364,
+    "peak": 0.32717,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "ba76e2637851cd1a4c9f151ea22cf01151b800b90519a118877e3421babe8bbf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Движения стали речи по свежим данным."
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 5.26,
+      "text": " График включил характер, не я придумала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

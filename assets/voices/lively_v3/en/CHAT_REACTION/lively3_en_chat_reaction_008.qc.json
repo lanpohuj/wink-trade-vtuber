@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_008",
+  "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74",
+  "expected": "Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
+  "transcript": "Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08262,
+    "peak": 0.52788,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.3,
+    "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Thanks for sticking around. Plenty of personality. Perfection schedule remains uncertain."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

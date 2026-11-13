@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_008",
+  "sha256": "595e42058265a011340782b8ea13a24aa85de8594ad834db3a7b692335093ff2",
+  "expected": "Не, я пока не праздную. А то сейчас размечтаюсь, и меня не остановить.",
+  "transcript": "Не, я пока не праздну. А то сейчас размечтаюсь и меня не остановить.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07708,
+    "peak": 0.32763,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.149,
+    "sha256": "595e42058265a011340782b8ea13a24aa85de8594ad834db3a7b692335093ff2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Не, я пока не праздну."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " А то сейчас размечтаюсь и меня не остановить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

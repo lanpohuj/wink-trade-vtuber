@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_022",
+  "sha256": "891a7a0184ad7d4477b6efa1b7f4550cc92d53387f7129de3d670d41f57bf35d",
+  "expected": "Вверх уже открыто после отбоя границы диапазона. Без преждевременного восторга.",
+  "transcript": "Вверх уже открыто после отбоя границы диапазона, без преждевременного восторга.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.09057,
+    "peak": 0.36073,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "891a7a0184ad7d4477b6efa1b7f4550cc92d53387f7129de3d670d41f57bf35d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вверх уже открыто после отбоя границы диапазона, без преждевременного восторга."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

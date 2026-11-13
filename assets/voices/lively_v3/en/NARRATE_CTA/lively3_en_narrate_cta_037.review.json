@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_037",
+  "phrase_id": "lively3_en_narrate_cta_037",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "When you're ready to check access, open the bot from my profile. Current conditions are there.",
+  "tts_text": "[lightly playful, smiling] When you're ready to check access, open the bot from my profile. Current conditions are there.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fa6fd90ed2c3ca21332f3c1901885ee16631ddddefadcc61d30887fb000390b9",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_037",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_037.mp3",
+  "duration": 5.4595,
+  "sha256": "6f57596f4b2559b58fe82254639097ae1d674c85a22ef08cfeade4751475e5af",
+  "request_payload": {
+    "text": "[lightly playful, smiling] When you're ready to check access, open the bot from my profile. Current conditions are there.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

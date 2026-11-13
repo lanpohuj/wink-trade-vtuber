@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_041",
+  "sha256": "93af011ef3f5fdcb60d11c02a4c887388573112279be916fa5bafa4a8cf323d8",
+  "expected": "Если непонятно, громче объяснять бессмысленно. Я пробовала. Понятнее не стало.",
+  "transcript": "Если непонятно громче объяснять бессмысленно, я пробовала. Понятнее не стало.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08318,
+    "peak": 0.37858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "93af011ef3f5fdcb60d11c02a4c887388573112279be916fa5bafa4a8cf323d8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Если непонятно громче объяснять бессмысленно, я пробовала. Понятнее не стало."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

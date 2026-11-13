@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_005",
+  "sha256": "ed65b0f72b67384b4176c750133fcc055de031845059b2822018f0aa19fc5dc2",
+  "expected": "Следующий размер сто десять. Рынок не обязан ничего возвращать по просьбе.",
+  "transcript": "Следующий размер 110. Рынок не обязан ничего возвращать по просьбе.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08259,
+    "peak": 0.38516,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "ed65b0f72b67384b4176c750133fcc055de031845059b2822018f0aa19fc5dc2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Следующий размер 110. Рынок не обязан ничего возвращать по просьбе."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

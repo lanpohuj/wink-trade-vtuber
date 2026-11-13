@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_004",
+  "sha256": "a3f4d737c3852edb32c77d5f61ff2ad15990f4600f3366f17dd972d5d752f65c",
+  "expected": "Не выдаём промежуточное движение за финал. Сериал ещё не закончился.",
+  "transcript": "Не выдаём промежуточное движение за финал! Сериал ещё не закончился!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.07254,
+    "peak": 0.31889,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.084,
+    "sha256": "a3f4d737c3852edb32c77d5f61ff2ad15990f4600f3366f17dd972d5d752f65c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Не выдаём промежуточное движение за финал!"
+    },
+    {
+      "start": 2.56,
+      "end": 4.32,
+      "text": " Сериал ещё не закончился!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

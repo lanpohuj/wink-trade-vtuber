@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_027",
+  "phrase_id": "lively3_en_narrate_scan_027",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Keeping a level head and looking again. Attempting the level-head part, anyway.",
+  "tts_text": "[casual] Keeping a level head and looking again. Attempting the level-head part, anyway.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b9494bda9ee8198d947aaf90720ed410bbe37aaa0bf1f174bc3be26d955c2864",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_027",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_027.mp3",
+  "duration": 4.414625,
+  "sha256": "281d2a6eb0c7783351369fa909c67caf86095b03272e81de33f67312654cd301",
+  "request_payload": {
+    "text": "[casual] Keeping a level head and looking again. Attempting the level-head part, anyway.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

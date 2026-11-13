@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_026",
+  "phrase_id": "lively3_ru_open_trade_put_026",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Продали по отбою в диапазоне. Мне теперь остаётся красиво ждать.",
+  "tts_text": "[conversational] Продали по отбою в диапазоне. Мне теперь остаётся красиво ждать.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "937f69c95a9ac72803f19452a72ffa02b43e6f10d0f42a958345a00f123e7c34",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_026",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_026.mp3",
+  "duration": 4.519125,
+  "sha256": "c86cc28aab3b0aa46f4672196b7e4588585d2d2ad30406a1cc8f481fc5351ea7",
+  "request_payload": {
+    "text": "[conversational] Продали по отбою в диапазоне. Мне теперь остаётся красиво ждать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

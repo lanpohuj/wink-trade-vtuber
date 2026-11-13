@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_021",
+  "sha256": "7261b5db3a97a1776b5e4a44f9d44ad250d3510c4bee7d7bdfc9d04c19c3a9b0",
+  "expected": "Чат, без спидрана по кнопкам. Сейчас разберусь и скажу, что к чему.",
+  "transcript": "Чать! Без спидрана по кнопкам! Сейчас разберусь и скажу, что к чему!",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07762,
+    "peak": 0.36154,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.129,
+    "sha256": "7261b5db3a97a1776b5e4a44f9d44ad250d3510c4bee7d7bdfc9d04c19c3a9b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.46,
+      "text": " Чать! Без спидрана по кнопкам!"
+    },
+    {
+      "start": 2.46,
+      "end": 4.96,
+      "text": " Сейчас разберусь и скажу, что к чему!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

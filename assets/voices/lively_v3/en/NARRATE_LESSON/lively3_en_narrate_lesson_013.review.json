@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_013",
+  "phrase_id": "lively3_en_narrate_lesson_013",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Once opened, the setup's chosen. No rewriting it for every candle.",
+  "tts_text": "[lightly playful, smiling] Once opened, the setup's chosen. No rewriting it for every candle.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5fb0943ece5bb6e7590f0c42707d04dc1f887b4e169adf9b692a133065de586e",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_013",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_013.mp3",
+  "duration": 4.284,
+  "sha256": "ba284858872b58919545fba9015549eaa1c04e89a8e398833afcbfc485fb1e27",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Once opened, the setup's chosen. No rewriting it for every candle.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

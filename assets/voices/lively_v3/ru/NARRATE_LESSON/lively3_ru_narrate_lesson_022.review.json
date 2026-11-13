@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_022",
+  "phrase_id": "lively3_ru_narrate_lesson_022",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Если факт не подтверждён, я не добавляю его для убедительности.",
+  "tts_text": "[conversational] Если факт не подтверждён, я не добавляю его для убедительности.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "cda5faaf7e18f4d68b924aa0f8d34cd1e8b790c37935a68721b82a1e8374de95",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_022",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_022.mp3",
+  "duration": 3.448062,
+  "sha256": "8a27e3a0124ca862b6e58671018a7540ac0831eb9da90b71ee4b306e06ed7a6e",
+  "request_payload": {
+    "text": "[conversational] Если факт не подтверждён, я не добавляю его для убедительности.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

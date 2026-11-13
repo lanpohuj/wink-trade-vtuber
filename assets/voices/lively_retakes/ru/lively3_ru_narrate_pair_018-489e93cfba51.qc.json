@@ -1,0 +1,17 @@
+{
+  "sha256": "489e93cfba518f7a79da7bdd1008718e9d906cc05e5ea69341f4540696e72ea9",
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.773,
+    "rms": 0.08487,
+    "peak": 0.35984,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.073,
+    "sha256": "489e93cfba518f7a79da7bdd1008718e9d906cc05e5ea69341f4540696e72ea9"
+  },
+  "transcript": "переехали на другой график старые выводы оставим там сейчас смотрим заново",
+  "similarity": 1.0,
+  "issues": [],
+  "auditory_verified": false
+}

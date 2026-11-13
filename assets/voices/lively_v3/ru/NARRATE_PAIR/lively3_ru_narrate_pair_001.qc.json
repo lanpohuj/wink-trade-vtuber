@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_001",
+  "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2",
+  "expected": "Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
+  "transcript": "Новая пара – чистый лист. Прошлое впечатление оставляем за дверью.",
+  "similarity": 0.963,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07448,
+    "peak": 0.32851,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.105,
+    "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " Новая пара – чистый лист."
+    },
+    {
+      "start": 2.2,
+      "end": 4.7,
+      "text": " Прошлое впечатление оставляем за дверью."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

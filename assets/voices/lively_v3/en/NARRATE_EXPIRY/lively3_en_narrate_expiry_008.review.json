@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_008",
+  "phrase_id": "lively3_en_narrate_expiry_008",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Fifteen seconds is the window. Grand speeches belong in a longer genre.",
+  "tts_text": "[clear, conversational] Fifteen seconds is the window. Grand speeches belong in a longer genre.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3b00beb1d24d868db3bb3ef1e8bf1db77552fa078da3d04895d2d5f7c4f391c8",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_008",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_008.mp3",
+  "duration": 4.780312,
+  "sha256": "cc5a8f10a04d914503d12ca850587e47342ab77df2845ea97b9af67653b34fcb",
+  "request_payload": {
+    "text": "[clear, conversational] Fifteen seconds is the window. Grand speeches belong in a longer genre.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

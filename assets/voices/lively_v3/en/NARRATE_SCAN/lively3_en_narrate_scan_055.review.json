@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_055",
+  "phrase_id": "lively3_en_narrate_scan_055",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Skipping the 'understood it instantly' mode. That one's a little too confident.",
+  "tts_text": "[warm, relaxed] Skipping the 'understood it instantly' mode. That one's a little too confident.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "08b4b33b8aa4d40d01df387c935c3999f30f731c73f7ab2076a04142f032d2d9",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_055.mp3",
+  "duration": 4.545187,
+  "sha256": "2c26622eca866c8e0a99dea816d72878478162d11c6397d67d4456d2b5971e9e",
+  "request_payload": {
+    "text": "[warm, relaxed] Skipping the 'understood it instantly' mode. That one's a little too confident.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

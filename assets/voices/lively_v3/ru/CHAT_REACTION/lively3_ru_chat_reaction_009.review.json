@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_009",
+  "phrase_id": "lively3_ru_chat_reaction_009",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Плюс один в компании. Спасибо за подписку, располагайся!",
+  "tts_text": "[conversational] Плюс один в компании. Спасибо за подписку, располагайся!",
+  "conditions": {
+    "chat_kind": "follow"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b4f98c6c4460db00e0cff2509602464341677b2f5e1ee31903dbb56983907221",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_009",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_009.mp3",
+  "duration": 3.813812,
+  "sha256": "a40e5cfebf944b2c97d4c75a71a704d70375633f1f9f263a4b124d4861fcea19",
+  "request_payload": {
+    "text": "[conversational] Плюс один в компании. Спасибо за подписку, располагайся!",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_013",
+  "sha256": "a823014502b4ec5af23bcfe2d6ae98560f033bd9f58560b81be0d1ffc5b8b119",
+  "expected": "Получился минус. Оправдывать каждую свечку задним числом не буду.",
+  "transcript": "Волшился минус. Оправдывать каждую свечку задним числом не буду.",
+  "similarity": 0.954,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.078,
+    "peak": 0.32358,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "a823014502b4ec5af23bcfe2d6ae98560f033bd9f58560b81be0d1ffc5b8b119"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Волшился минус."
+    },
+    {
+      "start": 1.7,
+      "end": 4.42,
+      "text": " Оправдывать каждую свечку задним числом не буду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

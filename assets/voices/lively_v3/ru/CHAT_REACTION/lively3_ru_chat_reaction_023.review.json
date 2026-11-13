@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_023",
+  "phrase_id": "lively3_ru_chat_reaction_023",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Секретной команды нет: ссылка в шапке ведёт в бота с инструкцией.",
+  "tts_text": "[conversational] Секретной команды нет: ссылка в шапке ведёт в бота с инструкцией.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "55a6828f695a2ef3b3d86f2270b4d78829937c7d165f757fbb2fc4341d563722",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_023",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_023.mp3",
+  "duration": 4.284,
+  "sha256": "d90fb2a12b5b6a5d2890c16d8d9c5c305a02cc89671dfb97faccf8aedb5f266a",
+  "request_payload": {
+    "text": "[conversational] Секретной команды нет: ссылка в шапке ведёт в бота с инструкцией.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

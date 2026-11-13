@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_008",
+  "phrase_id": "lively3_ru_narrate_result_008",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "По плану теперь двести сорок два. Увеличенная ставка не улучшает сам сценарий.",
+  "tts_text": "[conversational] По плану теперь двести сорок два. Увеличенная ставка не улучшает сам сценарий.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "488d70c735a9ec0e23e9ccad9bd5199ed31e5aa65f95f4291e0f11ea3d75d2fe",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_008",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_008.mp3",
+  "duration": 4.937063,
+  "sha256": "9359c3d91ba5c6b8ce3d406f5f33018011a3af3b6928c72124c4769fbaa88066",
+  "request_payload": {
+    "text": "[conversational] По плану теперь двести сорок два. Увеличенная ставка не улучшает сам сценарий.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_011",
+  "phrase_id": "lively3_en_trade_loss_011",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Closed red. Emotions paused; the facts remain as they are.",
+  "tts_text": "[calm, mildly disappointed] Closed red. Emotions paused; the facts remain as they are.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "17d5f4360ce5f00cf1b7abc760a6d83218d6be6e40c51704b8a4ab7a800acd6a",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_011",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_011.mp3",
+  "duration": 4.728063,
+  "sha256": "cb2395d5d257babac9c29a9198d3f1588f177ada00e14caa8d3b1a929b3ccf99",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Closed red. Emotions paused; the facts remain as they are.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

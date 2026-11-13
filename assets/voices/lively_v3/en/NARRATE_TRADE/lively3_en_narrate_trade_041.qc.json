@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_041",
+  "sha256": "32a3f59cbf88c1b33fa5000b016fa0270fbc3a3741c686b500f4184d0fb9fd59",
+  "expected": "Entry's already happened. Not the time to rewrite its biography.",
+  "transcript": "Entry's already happened. Not the time to rewrite its biography.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07697,
+    "peak": 0.41027,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.241,
+    "sha256": "32a3f59cbf88c1b33fa5000b016fa0270fbc3a3741c686b500f4184d0fb9fd59"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Entry's already happened. Not the time to rewrite its biography."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

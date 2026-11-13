@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_015",
+  "sha256": "bf46921c78b538409b20a244df3f2cd374de39020e85d0c0205bd8e198eb8f1f",
+  "expected": "My sarcasm sometimes forgets the brakes. I'm teasing, chat, don't let me tilt you.",
+  "transcript": "My sarcasm sometimes forgets the breaks. I'm teasing, chat. Don't let me tilt you.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.084,
+    "peak": 0.47106,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "bf46921c78b538409b20a244df3f2cd374de39020e85d0c0205bd8e198eb8f1f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " My sarcasm sometimes forgets the breaks. I'm teasing, chat. Don't let me tilt you."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

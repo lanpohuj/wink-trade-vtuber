@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_017",
+  "phrase_id": "lively3_en_trade_loss_017",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Yep, a loss. Thanks for the plot twist, I guess. Okay, no rushing.",
+  "tts_text": "[casual] Yep, a loss. Thanks for the plot twist, I guess. Okay, no rushing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "71fc7fe68620b1b68c56444cfbfe3cbbe5ed61052817d33c81d3814067426169",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_017",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_017.mp3",
+  "duration": 5.19825,
+  "sha256": "aed248ccd8a7f158c864afb82eb1f249e8885f660240a893c73d506d006aa919",
+  "request_payload": {
+    "text": "[casual] Yep, a loss. Thanks for the plot twist, I guess. Okay, no rushing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

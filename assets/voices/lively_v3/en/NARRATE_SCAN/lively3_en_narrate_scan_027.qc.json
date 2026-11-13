@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_027",
+  "sha256": "281d2a6eb0c7783351369fa909c67caf86095b03272e81de33f67312654cd301",
+  "expected": "Keeping a level head and looking again. Attempting the level-head part, anyway.",
+  "transcript": "Keeping a level head and looking again. Attempting the level head part anyway.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07695,
+    "peak": 0.39299,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.295,
+    "sha256": "281d2a6eb0c7783351369fa909c67caf86095b03272e81de33f67312654cd301"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Keeping a level head and looking again. Attempting the level head part anyway."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

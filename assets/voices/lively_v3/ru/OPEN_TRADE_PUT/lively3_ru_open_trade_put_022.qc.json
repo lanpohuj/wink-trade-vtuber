@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_022",
+  "sha256": "f32f2216ab818ba0b2a1afb4c24f9dff6f5b9c6620beed4bf3c0631368889dba",
+  "expected": "Продажа открыта после отбоя границы диапазона. Теперь смотрим до закрытия.",
+  "transcript": "Продажа открыта после отбоя границы диапазона. Теперь смотрим до закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08982,
+    "peak": 0.47731,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "f32f2216ab818ba0b2a1afb4c24f9dff6f5b9c6620beed4bf3c0631368889dba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Продажа открыта после отбоя границы диапазона."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Теперь смотрим до закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

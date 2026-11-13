@@ -148,11 +148,48 @@ def import_decisions(path):
     (DOCS / 'live-listening.json').write_text(json.dumps(dict(records=decisions), ensure_ascii=False, indent=2))
 
 
+def listening_albums():
+    import tempfile
+    from tools.build_lively_bank import write_json
+    rows = [r for r in json.loads((DOCS / 'live-audit.json').read_text())['records'] if r['listening_reasons']]
+    albums = []
+    with tempfile.TemporaryDirectory() as tmp:
+        work = Path(tmp)
+        gap = work / 'gap.wav'
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=mono',
+                        '-t', '0.5', str(gap)], check=True)
+        for lang in ('ru', 'en'):
+            group = [r for r in rows if r['lang'] == lang]
+            for batch, start in enumerate(range(0, len(group), 8), 1):
+                playlist, index, elapsed = [], [], 0.0
+                for n, row in enumerate(group[start:start + 8], 1):
+                    # Decode each recording first: old files may use a different
+                    # MP3 format. A listening album must not introduce artifacts.
+                    wav = work / f'{lang}-{batch}-{n}.wav'
+                    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', row['path'], '-ar', '44100', '-ac', '1', str(wav)], check=True)
+                    duration = float(row['metrics']['duration'])
+                    index.append(dict(number=n, id=row['id'], sha256=row['metrics']['sha256'],
+                                      at_sec=round(elapsed, 3), duration=duration, path=row['path']))
+                    elapsed += duration + .5
+                    playlist.extend((wav, gap))
+                listing = work / 'concat.txt'
+                listing.write_text('\n'.join("file '" + str(p) + "'" for p in playlist))
+                out = DOCS / f'listening-{lang}-{batch}.wav'
+                subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', str(listing),
+                                '-c:a', 'pcm_s16le', str(out)], check=True)
+                albums.append(dict(lang=lang, batch=batch, file=out.relative_to(ROOT).as_posix(), records=index))
+    write_json(DOCS / 'listening-albums.json', albums)
+    print(json.dumps(dict(albums=len(albums), records=len(rows))))
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--decisions', type=Path)
+    parser.add_argument('--albums', action='store_true')
     args = parser.parse_args()
-    if args.decisions:
+    if args.albums:
+        listening_albums()
+    elif args.decisions:
         import_decisions(args.decisions)
     else:
         audit()

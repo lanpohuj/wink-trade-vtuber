@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_024",
+  "sha256": "67a8978891fd9a1dc8ea8f7dcc38b2ed6859cfb29c9403cd22f11f422bf13350",
+  "expected": "This isn't a prediction contest. The crystal ball's taking the day off.",
+  "transcript": "This isn't a prediction contest. The crystal ball's taking the day off.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.07719,
+    "peak": 0.49967,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.306,
+    "sha256": "67a8978891fd9a1dc8ea8f7dcc38b2ed6859cfb29c9403cd22f11f422bf13350"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " This isn't a prediction contest. The crystal ball's taking the day off."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

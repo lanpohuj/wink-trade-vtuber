@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_006",
+  "sha256": "b76d99e34476e5f8ad1643698508616addb6685deb930aec163c032756866ee0",
+  "expected": "Trade open, result pending. Victory voice stays in drafts.",
+  "transcript": "Trade open, result pending. Victory voice stays in drafts.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08146,
+    "peak": 0.39054,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.141,
+    "sha256": "b76d99e34476e5f8ad1643698508616addb6685deb930aec163c032756866ee0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Trade open, result pending. Victory voice stays in drafts."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

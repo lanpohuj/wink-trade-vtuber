@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_007",
+  "sha256": "13b07717b86d18155ba5ec1df19f3770334ed1a8b4582835012c09edc94ffb82",
+  "expected": "Новеньким ориентир: бот по ссылке в профиле. Условия доступа читайте внутри.",
+  "transcript": "Новенький маринтир. Бот по ссылке в профиле. Условия доступа. Читайте внутри.",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07373,
+    "peak": 0.40045,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "13b07717b86d18155ba5ec1df19f3770334ed1a8b4582835012c09edc94ffb82"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Новенький маринтир. Бот по ссылке в профиле. Условия доступа. Читайте внутри."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

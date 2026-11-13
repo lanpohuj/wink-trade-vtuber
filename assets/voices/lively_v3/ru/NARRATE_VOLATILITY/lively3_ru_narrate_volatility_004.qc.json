@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_volatility_004",
+  "sha256": "76449be22fa14fafbbff84c3f614fdca2941b84599e1a35bc4e68e3c9161974f",
+  "expected": "Свежие свечи ходят шире обычного. Вот это и называю резкими движениями.",
+  "transcript": "Свежая свеча ходит шире обычного. Вот это и называю резкими движениями.",
+  "similarity": 0.932,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.09093,
+    "peak": 0.3636,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "76449be22fa14fafbbff84c3f614fdca2941b84599e1a35bc4e68e3c9161974f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Свежая свеча ходит шире обычного. Вот это и называю резкими движениями."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

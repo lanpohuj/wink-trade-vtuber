@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_032",
+  "sha256": "25d2aa110b08653601bda4ae52e25e6a540d83e1ced2f7afc2c6ca4c3354bbf8",
+  "expected": "Attention's more useful right now than my ability to sound persuasive.",
+  "transcript": "Attention's more useful right now than my ability to sound persuasive.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08523,
+    "peak": 0.45152,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.284,
+    "sha256": "25d2aa110b08653601bda4ae52e25e6a540d83e1ced2f7afc2c6ca4c3354bbf8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Attention's more useful right now than my ability to sound persuasive."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_004",
+  "phrase_id": "lively3_en_narrate_trade_004",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "No calling a mid-trade move the ending. This episode isn't over.",
+  "tts_text": "[natural, conversational] No calling a mid-trade move the ending. This episode isn't over.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b9f72fe7f10e43d9100063222b8e8f91d70a3f2b11dbec9df6a3928c15c2528d",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_004",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_004.mp3",
+  "duration": 4.414625,
+  "sha256": "f3655cec97d7f6ae85286b029279b91abe2d883c1a9a332f48272e802c1bfe98",
+  "request_payload": {
+    "text": "[natural, conversational] No calling a mid-trade move the ending. This episode isn't over.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

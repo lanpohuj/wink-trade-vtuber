@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_015",
+  "phrase_id": "lively3_ru_narrate_lesson_015",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Можно пять минут душнить и ничего не сказать. Я стараюсь ловить себя раньше.",
+  "tts_text": "[conversational] Можно пять минут душнить и ничего не сказать. Я стараюсь ловить себя раньше.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "99c29bc075f14de8132f105862af8ae6097863e65867f66ab6853c3a2e987345",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:yapping",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_015.mp3",
+  "duration": 5.433375,
+  "sha256": "2be5576a1702bcca7c5436fe40a79e89d333b1b33fea545683f5e383a59db6ac",
+  "request_payload": {
+    "text": "[conversational] Можно пять минут душнить и ничего не сказать. Я стараюсь ловить себя раньше.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

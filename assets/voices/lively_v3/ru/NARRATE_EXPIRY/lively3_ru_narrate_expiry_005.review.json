@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_005",
+  "phrase_id": "lively3_ru_narrate_expiry_005",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Эта сделка на пятнадцать секунд. Пресс-конференцию точно не успею.",
+  "tts_text": "[conversational] Эта сделка на пятнадцать секунд. Пресс-конференцию точно не успею.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d49bbb002bb583da8d4777a5742ebe06c1e3cceca3b305905fcf006c165b98a7",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_005",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_005.mp3",
+  "duration": 4.23175,
+  "sha256": "7765f9cc7ca1534781b328a8008b071cccb6b7faa36bb6830413244934aad0f0",
+  "request_payload": {
+    "text": "[conversational] Эта сделка на пятнадцать секунд. Пресс-конференцию точно не успею.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

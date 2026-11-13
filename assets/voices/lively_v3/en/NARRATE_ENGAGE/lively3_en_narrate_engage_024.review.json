@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_024",
+  "phrase_id": "lively3_en_narrate_engage_024",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Brain says be serious. I'm like, one more joke and then I'll lock in.",
+  "tts_text": "[casual] Brain says be serious. I'm like, one more joke and then I'll lock in.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "be95176ce90b0ca2090f930070af1ec1045d4d36a4d5b52f5bb633276d875be7",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_024",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_024.mp3",
+  "duration": 4.597437,
+  "sha256": "1b0cc10eee2130c0f962e3b39840a1e4273b2a7ab942e9f924322f78cda15ac0",
+  "request_payload": {
+    "text": "[casual] Brain says be serious. I'm like, one more joke and then I'll lock in.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

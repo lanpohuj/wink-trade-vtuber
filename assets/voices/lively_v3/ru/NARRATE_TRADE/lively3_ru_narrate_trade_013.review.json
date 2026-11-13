@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_013",
+  "phrase_id": "lively3_ru_narrate_trade_013",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Наблюдаю спокойно. Хотя слово «спокойно» иногда приходится себе напоминать.",
+  "tts_text": "[conversational] Наблюдаю спокойно. Хотя слово «спокойно» иногда приходится себе напоминать.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a2f51477b550c5447f89daa1bc9302e35823debabf5ea1a1582d1474fa008c76",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_013",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_013.mp3",
+  "duration": 4.728063,
+  "sha256": "41deb7d4067e85527a80b8decbc8dd9b7e47c371fc8d4f0ef5dde47a66090daf",
+  "request_payload": {
+    "text": "[conversational] Наблюдаю спокойно. Хотя слово «спокойно» иногда приходится себе напоминать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

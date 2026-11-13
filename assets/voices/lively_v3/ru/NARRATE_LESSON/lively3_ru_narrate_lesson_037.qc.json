@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_037",
+  "sha256": "73440c40f9df62eb97d20537eaa6cf6186d1ff9994e1c07a19c3c9d7d4f8177d",
+  "expected": "Красный результат неприятен без дополнительных оправданий. Можно просто назвать его честно.",
+  "transcript": "Храсный результат неприятен без дополнительных оправданий. Можно просто назвать его честно.",
+  "similarity": 0.987,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.08695,
+    "peak": 0.35176,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.103,
+    "sha256": "73440c40f9df62eb97d20537eaa6cf6186d1ff9994e1c07a19c3c9d7d4f8177d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.34,
+      "text": " Храсный результат неприятен без дополнительных оправданий."
+    },
+    {
+      "start": 3.34,
+      "end": 5.34,
+      "text": " Можно просто назвать его честно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

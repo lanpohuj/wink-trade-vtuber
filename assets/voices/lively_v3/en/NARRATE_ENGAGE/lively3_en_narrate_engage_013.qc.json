@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_013",
+  "sha256": "5e33150d38122bdaa683b38435908b89582f1688e8fa5e56aff47aa2ca1573fb",
+  "expected": "I like it when you chat. Not farming random comments every five seconds, though.",
+  "transcript": "I like it when you chat. Not farming random comments every five seconds, though.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.0817,
+    "peak": 0.37215,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.231,
+    "sha256": "5e33150d38122bdaa683b38435908b89582f1688e8fa5e56aff47aa2ca1573fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " I like it when you chat. Not farming random comments every five seconds, though."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_009",
+  "sha256": "a00636df9d432e897ef208c92f1d7ab6bb14ac4d799fe85da224806f8190717a",
+  "expected": "На сделку тридцать секунд. Полминуты, чтобы не торопить выводы.",
+  "transcript": "На сделку 30 секунд! Пол минуты, чтобы не торопить выводы!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07533,
+    "peak": 0.36418,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.085,
+    "sha256": "a00636df9d432e897ef208c92f1d7ab6bb14ac4d799fe85da224806f8190717a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " На сделку 30 секунд! Пол минуты, чтобы не торопить выводы!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

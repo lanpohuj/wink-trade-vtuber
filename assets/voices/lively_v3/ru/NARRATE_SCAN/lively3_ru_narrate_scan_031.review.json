@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_031",
+  "phrase_id": "lively3_ru_narrate_scan_031",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Не хочу перепутать интересную картинку с готовым решением.",
+  "tts_text": "[conversational] Не хочу перепутать интересную картинку с готовым решением.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "84d95c6454395dcdbd4014cf3c1e480fa6ee193e96ad546ae523af8486006475",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_031",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_031.mp3",
+  "duration": 3.500313,
+  "sha256": "d628d67dad3a2c36262a48daa9d20bc086771db24cf05b40dad4b942a0139c67",
+  "request_payload": {
+    "text": "[conversational] Не хочу перепутать интересную картинку с готовым решением.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

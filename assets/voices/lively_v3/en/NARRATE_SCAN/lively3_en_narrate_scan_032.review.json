@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_032",
+  "phrase_id": "lively3_en_narrate_scan_032",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Attention's more useful right now than my ability to sound persuasive.",
+  "tts_text": "[natural, conversational] Attention's more useful right now than my ability to sound persuasive.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d69a3f4290b32903226f44c303c645a19b25425118a7c9bfedd1db4a8548636e",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_032",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_032.mp3",
+  "duration": 3.944375,
+  "sha256": "25d2aa110b08653601bda4ae52e25e6a540d83e1ced2f7afc2c6ca4c3354bbf8",
+  "request_payload": {
+    "text": "[natural, conversational] Attention's more useful right now than my ability to sound persuasive.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

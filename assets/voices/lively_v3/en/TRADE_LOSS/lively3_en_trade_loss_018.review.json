@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_018",
+  "phrase_id": "lively3_en_trade_loss_018",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Loss confirmed. One outcome doesn't get to start a chaos party.",
+  "tts_text": "[calm, mildly disappointed] Loss confirmed. One outcome doesn't get to start a chaos party.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "335541d2b2a888470f1253f9820cbd9b04df90752ba468701833b980a99efb8d",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_018",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_018.mp3",
+  "duration": 4.284,
+  "sha256": "423a4ed651f5c60d111ac33123bc18ade26424c2772dd6034ed16961e40f7744",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Loss confirmed. One outcome doesn't get to start a chaos party.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

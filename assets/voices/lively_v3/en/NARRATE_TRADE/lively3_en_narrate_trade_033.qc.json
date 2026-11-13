@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_033",
+  "sha256": "05a82000fdda72ec3676f94d1b1891b154e10551ce3556862624f4663074af1d",
+  "expected": "Just watching. Pretending I'm completely unbothered would be a bit much.",
+  "transcript": "Just watching, pretending I'm completely unbothered would be a bit much.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08772,
+    "peak": 0.49463,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.166,
+    "sha256": "05a82000fdda72ec3676f94d1b1891b154e10551ce3556862624f4663074af1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Just watching, pretending I'm completely unbothered would be a bit much."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_004",
+  "phrase_id": "lively3_en_trade_win_004",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "That was lovely! Win confirmed; smiling officially authorised.",
+  "tts_text": "[natural, conversational] That was lovely! Win confirmed; smiling officially authorised.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e4b31f69b461dc2ed322356cddce29e74504855f73b1265c181fb4c83f146945",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_004",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_004.mp3",
+  "duration": 4.675813,
+  "sha256": "32545bb8b6cdec342291299ebd8caa9c700fdddc650c56e9e4c062bea07ee38d",
+  "request_payload": {
+    "text": "[natural, conversational] That was lovely! Win confirmed; smiling officially authorised.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

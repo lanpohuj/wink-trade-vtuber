@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_031",
+  "sha256": "bfe5eba216ab1caf2517314445b246d9853f1a43b687e15b8aaa81b4093d8c2f",
+  "expected": "Две минуты — выбранный срок. Мой комментарий может быть заметно короче.",
+  "transcript": "Две минуты выбранный срок. Мой комментарий может быть заметно короче.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07598,
+    "peak": 0.31916,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.065,
+    "sha256": "bfe5eba216ab1caf2517314445b246d9853f1a43b687e15b8aaa81b4093d8c2f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Две минуты выбранный срок."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Мой комментарий может быть заметно короче."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_020",
+  "sha256": "8f4afd323ce3ea20097345f16fa619cc69f45e114a46a1e727695c65f3e10cfd",
+  "expected": "Давайте без «ну всё, изи» посреди сделки. Финал ещё не вышел, алло.",
+  "transcript": "Ну давайте безновсё, Ези, посреди сделки! Финал ещё не вышел, ало!",
+  "similarity": 0.931,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.0907,
+    "peak": 0.39132,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.127,
+    "sha256": "8f4afd323ce3ea20097345f16fa619cc69f45e114a46a1e727695c65f3e10cfd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Ну давайте безновсё, Ези, посреди сделки!"
+    },
+    {
+      "start": 2.72,
+      "end": 4.44,
+      "text": " Финал ещё не вышел, ало!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

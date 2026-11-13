@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_040",
+  "sha256": "8d2af314a0ea898d3cd04c5e09d2998e26ec4ff816fed558cbf30dcfe2a0d63f",
+  "expected": "Иногда самое полезное в анализе — вовремя сказать «пока не ясно».",
+  "transcript": "Иногда самое полезное в анализе, вовремя сказать пока не ясно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08703,
+    "peak": 0.35654,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "8d2af314a0ea898d3cd04c5e09d2998e26ec4ff816fed558cbf30dcfe2a0d63f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Иногда самое полезное в анализе, вовремя сказать пока не ясно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_033",
+  "phrase_id": "lively3_en_narrate_lesson_033",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "When data's missing, an honest pause sounds better than imaginary analysis.",
+  "tts_text": "[lightly playful, smiling] When data's missing, an honest pause sounds better than imaginary analysis.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7a149a0f49ac607484a7ffd321633926d66c2676164f13f7de53b292c5a14d69",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_033",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_033.mp3",
+  "duration": 5.041563,
+  "sha256": "dfdb3249e71323b14ac5a4ece730f0763d17b1e2d0d5c74420750a96725d70d3",
+  "request_payload": {
+    "text": "[lightly playful, smiling] When data's missing, an honest pause sounds better than imaginary analysis.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

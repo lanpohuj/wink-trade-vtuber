@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_007",
+  "phrase_id": "lively3_ru_narrate_cta_007",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Новеньким ориентир: бот по ссылке в профиле. Условия доступа читайте внутри.",
+  "tts_text": "[conversational] Новеньким ориентир: бот по ссылке в профиле. Условия доступа читайте внутри.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "63c25f3490591de2e70ca24d6e4efc792e35ee392fe315c83b0bf8e30a481ea9",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_007",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_007.mp3",
+  "duration": 5.642375,
+  "sha256": "13b07717b86d18155ba5ec1df19f3770334ed1a8b4582835012c09edc94ffb82",
+  "request_payload": {
+    "text": "[conversational] Новеньким ориентир: бот по ссылке в профиле. Условия доступа читайте внутри.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

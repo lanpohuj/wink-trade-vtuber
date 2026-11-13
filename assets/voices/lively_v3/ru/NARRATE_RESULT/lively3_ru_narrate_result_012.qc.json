@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_012",
+  "sha256": "7fe0cfaae291795451c7f4b551461fbe0bb5497ab21cf87b3a475fe7ddc697f3",
+  "expected": "Размер следующего шага двести сорок два. Это описание плана, не обещание результата.",
+  "transcript": "Размер следующего шага 242. Это описание плана, не обещание результата.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08906,
+    "peak": 0.38119,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "7fe0cfaae291795451c7f4b551461fbe0bb5497ab21cf87b3a475fe7ddc697f3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Размер следующего шага 242. Это описание плана, не обещание результата."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

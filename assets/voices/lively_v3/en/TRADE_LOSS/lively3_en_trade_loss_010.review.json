@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_010",
+  "phrase_id": "lively3_en_trade_loss_010",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Loss is in; nothing to hide. The next decision gets its own checks.",
+  "tts_text": "[calm, mildly disappointed] Loss is in; nothing to hide. The next decision gets its own checks.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6850d26519d3bc88593f1c4c3daf7ec355e6311a7f3d576ac5b20c41faeeff05",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_010",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_010.mp3",
+  "duration": 4.414625,
+  "sha256": "d6370175c60df64d19c5836da440ee9a6ea471e460a1a40d0a0e336b910a9a19",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Loss is in; nothing to hide. The next decision gets its own checks.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

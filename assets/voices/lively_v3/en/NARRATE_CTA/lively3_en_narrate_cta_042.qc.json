@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_042",
+  "sha256": "e3625b83f619c0aa82eebc81ef7036817ba3a3e9f90f30bb11af3d9c13c4ee17",
+  "expected": "If you lose your way after the stream, remember my profile. The bot link stays there.",
+  "transcript": "If you lose your way after the stream, remember my profile. The bot link stays there.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.085,
+    "peak": 0.41246,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.091,
+    "sha256": "e3625b83f619c0aa82eebc81ef7036817ba3a3e9f90f30bb11af3d9c13c4ee17"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " If you lose your way after the stream, remember my profile. The bot link stays there."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

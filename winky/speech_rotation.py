@@ -20,7 +20,7 @@ def fingerprint(text):
 
 
 def mentions_bot(text):
-    return bool(re.search(r"шапк|ссылк.{0,35}(?:бот|профил)|бот.{0,35}(?:ссылк|профил)|link in (?:my |the )?bio|bot.{0,35}bio", text, re.I))
+    return bool(re.search(r"шапк|ссылк.{0,35}(?:бот|профил)|бот.{0,35}(?:ссылк|профил)|(?:bot|link).{0,45}(?:bio|profile)|(?:bio|profile).{0,45}(?:bot|link)", text, re.I))
 
 
 class SpeechRotation:
@@ -113,7 +113,7 @@ class SpeechRotation:
             self.groups[group] = now
         stats = self.topics.setdefault(lang + ':' + topic, {'at': 0, 'count': 0})
         stats.update(at=now, count=stats['count'] + 1)
-        if mentions_bot(text):
+        if topic == 'NARRATE_CTA' or mentions_bot(text):
             self.state['next_cta_at'] = now + random.uniform(180, 300)
 
     def note(self, text, lang, topic='chat', now=None):

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_028",
+  "sha256": "38431713f568d503100d19e362d9b9c758e53a4d5d45292432d751ccb494a583",
+  "expected": "The bot link's in my bio. Open it and read the conditions at your own pace.",
+  "transcript": "The bot links in my bio. Open it and read the conditions at your own pace.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08005,
+    "peak": 0.57079,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.202,
+    "sha256": "38431713f568d503100d19e362d9b9c758e53a4d5d45292432d751ccb494a583"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " The bot links in my bio. Open it and read the conditions at your own pace."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

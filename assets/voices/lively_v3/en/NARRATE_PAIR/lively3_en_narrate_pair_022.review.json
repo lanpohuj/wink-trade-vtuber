@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_022",
+  "phrase_id": "lively3_en_narrate_pair_022",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Different chart, different vibe. Give me a second to work it out.",
+  "tts_text": "[casual] Different chart, different vibe. Give me a second to work it out.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "97cc942a5a654e163847e88d91f8b84ac7576525da910d63d6a80a85049133bf",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_022",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_022.mp3",
+  "duration": 3.944375,
+  "sha256": "cef32df753778a40530e7361d241ce9ce4f88cc0501f4cf5fd7cb5f16d3c1b39",
+  "request_payload": {
+    "text": "[casual] Different chart, different vibe. Give me a second to work it out.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

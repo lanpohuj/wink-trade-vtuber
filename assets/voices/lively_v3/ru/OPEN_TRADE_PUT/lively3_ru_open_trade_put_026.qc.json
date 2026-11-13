@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_026",
+  "sha256": "c86cc28aab3b0aa46f4672196b7e4588585d2d2ad30406a1cc8f481fc5351ea7",
+  "expected": "Продали по отбою в диапазоне. Мне теперь остаётся красиво ждать.",
+  "transcript": "Продали по отбою в диапазоне. Мне теперь остается красиво ждать.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07874,
+    "peak": 0.42425,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "c86cc28aab3b0aa46f4672196b7e4588585d2d2ad30406a1cc8f481fc5351ea7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Продали по отбою в диапазоне."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Мне теперь остается красиво ждать."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

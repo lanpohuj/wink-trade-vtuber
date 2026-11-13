@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_027",
+  "sha256": "b21e2fc6ecff1e4cf98a022515b2e2533f02bff1a2eb4264207e168bae72c14e",
+  "expected": "Win! Okay, that was clean. Tiny celebration, then back to it.",
+  "transcript": "When okay, that was clean tiny celebration then back to it",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.07737,
+    "peak": 0.39201,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.288,
+    "sha256": "b21e2fc6ecff1e4cf98a022515b2e2533f02bff1a2eb4264207e168bae72c14e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.66,
+      "text": " When okay, that was clean tiny celebration then back to it"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

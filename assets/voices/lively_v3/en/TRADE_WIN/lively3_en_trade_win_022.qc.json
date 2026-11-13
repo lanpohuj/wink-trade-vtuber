@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_022",
+  "sha256": "9897f8861217676e8ed6fd63a10e7cf7a7ef945d98bbcd9411ca6cf0f6d3aa4c",
+  "expected": "Win recorded. Smile activated before I could supervise it.",
+  "transcript": "When recorded. Smile activated before I could supervise it.",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.06977,
+    "peak": 0.41945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.221,
+    "sha256": "9897f8861217676e8ed6fd63a10e7cf7a7ef945d98bbcd9411ca6cf0f6d3aa4c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " When recorded. Smile activated before I could supervise it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

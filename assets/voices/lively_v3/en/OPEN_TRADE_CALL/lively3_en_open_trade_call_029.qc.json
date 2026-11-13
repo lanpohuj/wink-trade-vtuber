@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_029",
+  "sha256": "697716f46972dde6766c9dbb4eb59df3f3ddc31a3adb5ab0c817657da24841cc",
+  "expected": "Bought after range-rejection confirmation. My optimism remains just a mood.",
+  "transcript": "But after range rejection confirmation, my optimism remains just a mood.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08779,
+    "peak": 0.40345,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.3,
+    "sha256": "697716f46972dde6766c9dbb4eb59df3f3ddc31a3adb5ab0c817657da24841cc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.7,
+      "text": " But after range rejection confirmation, my optimism remains just a mood."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

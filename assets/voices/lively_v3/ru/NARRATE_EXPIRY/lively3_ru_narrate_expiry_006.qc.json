@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_006",
+  "sha256": "b94bd65ab428ab280acca982cbe20a2030021bb33a2e8ff73fe2ab16c26bc0e8",
+  "expected": "Тут пятнадцать секунд, чат. Внимание на закрытие, а не на мою драму.",
+  "transcript": "А тут 15 секунд, Чат! Внимание на закрытие, а не на мою драму!",
+  "similarity": 0.989,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07951,
+    "peak": 0.30451,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.065,
+    "sha256": "b94bd65ab428ab280acca982cbe20a2030021bb33a2e8ff73fe2ab16c26bc0e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " А тут 15 секунд, Чат!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Внимание на закрытие, а не на мою драму!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

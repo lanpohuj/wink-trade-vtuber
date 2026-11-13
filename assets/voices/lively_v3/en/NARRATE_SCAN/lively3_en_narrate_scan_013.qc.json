@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_013",
+  "sha256": "bff5f093f3243c4aa6adc58c84ea260704ad3efd44add95077bf224669a9f256",
+  "expected": "No grand announcement yet. Just checking, with a strict no-fanfare policy.",
+  "transcript": "No grand announcement yet, just checking with a strict no-fanfare policy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08022,
+    "peak": 0.53635,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.172,
+    "sha256": "bff5f093f3243c4aa6adc58c84ea260704ad3efd44add95077bf224669a9f256"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " No grand announcement yet, just checking with a strict no-fanfare policy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

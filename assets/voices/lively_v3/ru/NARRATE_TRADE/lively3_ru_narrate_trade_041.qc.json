@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_041",
+  "sha256": "7993344ca5ef3e7dfa46320cf1c13f65a16b4e782559f5894d5b54b41b60fc46",
+  "expected": "Вход уже сделан. Сейчас не момент переписывать ему биографию.",
+  "transcript": "Ход уже сделан. Сейчас не момент переписывать ему биографию.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.09813,
+    "peak": 0.37858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.134,
+    "sha256": "7993344ca5ef3e7dfa46320cf1c13f65a16b4e782559f5894d5b54b41b60fc46"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Ход уже сделан. Сейчас не момент переписывать ему биографию."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_045",
+  "phrase_id": "lively3_en_narrate_scan_045",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Reading the full picture. Headlines alone have never been enough for me.",
+  "tts_text": "[lightly playful, smiling] Reading the full picture. Headlines alone have never been enough for me.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "57b03824b9858397b1bf1aaaf0cfb43e5a18a5412f59754032153408b20ee153",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_045",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_045.mp3",
+  "duration": 4.284,
+  "sha256": "ac3f759096e945cc3cc53ef6c4fa7ca0ba6f6d0c0f629bb1a676c74bc8bb568b",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Reading the full picture. Headlines alone have never been enough for me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

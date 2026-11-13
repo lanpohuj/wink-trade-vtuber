@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_025",
+  "sha256": "9acac55d88e7ac109a2e5ab6d3c10e26ce908963d1fc98d9759cfda9eddc99fe",
+  "expected": "Здесь две минуты. Таймер даёт мне шанс выглядеть терпеливой.",
+  "transcript": "Здесь две минуты. Таймер дает мне шанс выглядеть терпеливой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.07942,
+    "peak": 0.28953,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.071,
+    "sha256": "9acac55d88e7ac109a2e5ab6d3c10e26ce908963d1fc98d9759cfda9eddc99fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6600000000000001,
+      "text": " Здесь две минуты."
+    },
+    {
+      "start": 1.6600000000000001,
+      "end": 4.0,
+      "text": " Таймер дает мне шанс выглядеть терпеливой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_004",
+  "sha256": "8782d9bd95102cab38b9c9c5718fb7e6eeeb6b969d8605205056800682d6bead",
+  "expected": "Бот в шапке профиля. Можно без квеста на три вечера, я всё предусмотрела.",
+  "transcript": "Вот в шапке профиля. Можно без квеста на три вечера, я всё предусмотрела.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08494,
+    "peak": 0.38316,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.098,
+    "sha256": "8782d9bd95102cab38b9c9c5718fb7e6eeeb6b969d8605205056800682d6bead"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Вот в шапке профиля."
+    },
+    {
+      "start": 1.8,
+      "end": 4.6000000000000005,
+      "text": " Можно без квеста на три вечера, я всё предусмотрела."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

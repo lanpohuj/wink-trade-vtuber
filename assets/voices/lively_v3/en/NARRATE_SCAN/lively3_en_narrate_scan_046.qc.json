@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_scan_046",
+  "sha256": "faa58970ba81e067da0380220d3f9a9fd4b4c4b08786271306f0d8ef4f701e60",
+  "expected": "Check first, useful comment second. Reversing that order would be far too easy.",
+  "transcript": "Check first. Useful comment second. Reversing that order would be far too easy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08382,
+    "peak": 0.67762,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "faa58970ba81e067da0380220d3f9a9fd4b4c4b08786271306f0d8ef4f701e60"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Check first. Useful comment second."
+    },
+    {
+      "start": 3.0,
+      "end": 5.5,
+      "text": " Reversing that order would be far too easy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

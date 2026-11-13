@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_031",
+  "sha256": "617df3efa12402f6d8be8676ee351d65aa843b9309a11f388e5acab98f7868b6",
+  "expected": "Two minutes is the expiry. My commentary can be considerably shorter.",
+  "transcript": "Two minutes is the expiry. My commentary can be considerably shorter.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08341,
+    "peak": 0.41556,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.122,
+    "sha256": "617df3efa12402f6d8be8676ee351d65aa843b9309a11f388e5acab98f7868b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Two minutes is the expiry. My commentary can be considerably shorter."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

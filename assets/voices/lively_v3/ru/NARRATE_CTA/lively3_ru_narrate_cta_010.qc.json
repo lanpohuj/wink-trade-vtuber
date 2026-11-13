@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_010",
+  "sha256": "1bd4dd72f833618f86ec9d792272cd2a36fdfbe9bc66b38806d5f2a0433ceecc",
+  "expected": "Не будем играть в испорченный телефон: актуальная ссылка на бота в профиле.",
+  "transcript": "Не будем играть в испорченный телефон. Актуальная ссылка на бота в профиле.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08028,
+    "peak": 0.28152,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.081,
+    "sha256": "1bd4dd72f833618f86ec9d792272cd2a36fdfbe9bc66b38806d5f2a0433ceecc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Не будем играть в испорченный телефон."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Актуальная ссылка на бота в профиле."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

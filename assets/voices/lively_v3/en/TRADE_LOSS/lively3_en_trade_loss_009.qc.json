@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_009",
+  "sha256": "b03af02c8f1305b027f98b1c8439928b3c1ca72c1cf63e71a81efd374e7c3485",
+  "expected": "This trade's a loss. Taking a breath, then back to facts.",
+  "transcript": "This trades a loss taking a breath then back to facts",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07873,
+    "peak": 0.40229,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.175,
+    "sha256": "b03af02c8f1305b027f98b1c8439928b3c1ca72c1cf63e71a81efd374e7c3485"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.92,
+      "text": " This trades a loss taking a breath then back to facts"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_038",
+  "sha256": "c003d375fe1729278bb511c75413c4df06be0b0997b1ba06f1490fa7282a69c1",
+  "expected": "Нажать можно за секунду. А вот отменить поспешность уже сложнее.",
+  "transcript": "Нажать можно за секунду. Вот отменить поспешность уже сложнее.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.07554,
+    "peak": 0.26886,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.096,
+    "sha256": "c003d375fe1729278bb511c75413c4df06be0b0997b1ba06f1490fa7282a69c1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Нажать можно за секунду."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Вот отменить поспешность уже сложнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

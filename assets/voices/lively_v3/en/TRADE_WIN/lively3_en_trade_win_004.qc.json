@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_004",
+  "sha256": "32545bb8b6cdec342291299ebd8caa9c700fdddc650c56e9e4c062bea07ee38d",
+  "expected": "That was lovely! Win confirmed; smiling officially authorised.",
+  "transcript": "That was lovely, when confirmed, smiling officially authorized.",
+  "similarity": 0.952,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.0812,
+    "peak": 0.3596,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.136,
+    "sha256": "32545bb8b6cdec342291299ebd8caa9c700fdddc650c56e9e4c062bea07ee38d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " That was lovely, when confirmed, smiling officially authorized."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_022",
+  "sha256": "20902360de2ea9c5289b21689e7026630cd862c3aa9282bb3d8879326f11e91a",
+  "expected": "Одна минута на сделку, чат. Выдохнули, дальше наблюдаем.",
+  "transcript": "Одна минута на сделку чат. Выдохнули, дальше наблюдаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08559,
+    "peak": 0.38033,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.134,
+    "sha256": "20902360de2ea9c5289b21689e7026630cd862c3aa9282bb3d8879326f11e91a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.64,
+      "text": " Одна минута на сделку чат. Выдохнули, дальше наблюдаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

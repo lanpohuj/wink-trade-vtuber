@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_008",
+  "phrase_id": "lively3_ru_trade_loss_008",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Красное закрытие. Неприятный момент без необходимости сочинять ему легенду.",
+  "tts_text": "[conversational] Красное закрытие. Неприятный момент без необходимости сочинять ему легенду.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "afefb29cef6463c5c54dd68d92c3a20f51354f951003798ae427b276788d22e2",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_008",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_008.mp3",
+  "duration": 4.675813,
+  "sha256": "4eb7877effb8ccd9dd44a53cfbf7af4306dd16028aae7f5978fd10f5d1483c1b",
+  "request_payload": {
+    "text": "[conversational] Красное закрытие. Неприятный момент без необходимости сочинять ему легенду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

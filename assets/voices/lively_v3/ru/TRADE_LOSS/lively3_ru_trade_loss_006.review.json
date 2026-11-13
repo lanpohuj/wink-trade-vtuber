@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_006",
+  "phrase_id": "lively3_ru_trade_loss_006",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Эх, минус. Ладно, чат, без тильта. Сейчас точно не время жать на эмоциях.",
+  "tts_text": "[conversational] Эх, минус. Ладно, чат, без тильта. Сейчас точно не время жать на эмоциях.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9f271f4cc3478157115bde2c821b407660967c8772ae757ff27b939657b472ca",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:tilt",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_006.mp3",
+  "duration": 5.172125,
+  "sha256": "83eac6a1e22e8d6c38592d0d95082f032ed4c3b3421a779a30c506e585a6f430",
+  "request_payload": {
+    "text": "[conversational] Эх, минус. Ладно, чат, без тильта. Сейчас точно не время жать на эмоциях.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

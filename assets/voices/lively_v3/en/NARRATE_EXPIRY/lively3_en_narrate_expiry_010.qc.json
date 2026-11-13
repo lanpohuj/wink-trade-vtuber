@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_010",
+  "sha256": "a2a300a1cc4cc8ec57c421b53fc542eaf11978061aa450f2e8293472964895e1",
+  "expected": "Thirty seconds here. My inner commentator's checking the running order.",
+  "transcript": "Huh, 30 seconds here. My inner commentators checking the running order.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.07987,
+    "peak": 0.4288,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.118,
+    "sha256": "a2a300a1cc4cc8ec57c421b53fc542eaf11978061aa450f2e8293472964895e1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Huh, 30 seconds here. My inner commentators checking the running order."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

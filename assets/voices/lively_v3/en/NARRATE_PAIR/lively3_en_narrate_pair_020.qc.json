@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_020",
+  "sha256": "94f0253c6cf4343969999191f92bd027520f4eba1279d12c68a1f2078d304821",
+  "expected": "New pair's here. Let's meet it without promises or fancy titles.",
+  "transcript": "New pairs here! Let's meet it without promises or fancy titles!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08421,
+    "peak": 0.40344,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.292,
+    "sha256": "94f0253c6cf4343969999191f92bd027520f4eba1279d12c68a1f2078d304821"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " New pairs here! Let's meet it without promises or fancy titles!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

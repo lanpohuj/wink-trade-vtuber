@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_023",
+  "sha256": "9852a51c24179f359e077d2f76455f5c270e06157d65e86cef5c6f609911ee1d",
+  "expected": "Фразу «я же говорила» держу при себе. Рано ещё, а я уже собралась.",
+  "transcript": "Фразу я же говорила, держу при себе. Рано ещё, а я уже собралась.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08267,
+    "peak": 0.33334,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.087,
+    "sha256": "9852a51c24179f359e077d2f76455f5c270e06157d65e86cef5c6f609911ee1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Фразу я же говорила, держу при себе. Рано ещё, а я уже собралась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

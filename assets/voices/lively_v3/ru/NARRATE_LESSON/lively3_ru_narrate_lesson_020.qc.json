@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_020",
+  "sha256": "439657ad60ab0b526378b02fc746a11940aca7b739a26ef02768a48b5af1aa7a",
+  "expected": "Понятная причина входа полезнее сложного названия, которое никто не понял.",
+  "transcript": "Понятная причина входа полезнее и сложного названия, который никто не понял.",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.09688,
+    "peak": 0.39281,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "439657ad60ab0b526378b02fc746a11940aca7b739a26ef02768a48b5af1aa7a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Понятная причина входа полезнее и сложного названия, который никто не понял."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_039",
+  "phrase_id": "lively3_en_narrate_cta_039",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "No secret handshake here. The bio link opens the bot.",
+  "tts_text": "[warm, relaxed] No secret handshake here. The bio link opens the bot.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0f8d8f5eeafe217da025b209b21d01d88739c3054eea780266197cc952a82a67",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_039",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_039.mp3",
+  "duration": 3.813812,
+  "sha256": "3cd88a5b735a4820d46c1356eeb849e2c12567daff39da2f8b71d3593e92b022",
+  "request_payload": {
+    "text": "[warm, relaxed] No secret handshake here. The bio link opens the bot.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

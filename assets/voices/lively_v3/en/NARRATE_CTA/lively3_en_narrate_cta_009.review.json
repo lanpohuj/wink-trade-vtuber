@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_009",
+  "phrase_id": "lively3_en_narrate_cta_009",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Curious about the tools? Start with the bot in my bio. It'll explain the steps.",
+  "tts_text": "[lightly playful, smiling] Curious about the tools? Start with the bot in my bio. It'll explain the steps.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "61651e14283fca8e709041c10d8580a264fe37d12f94a4b62cab4bcc583dd061",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_009",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_009.mp3",
+  "duration": 5.328875,
+  "sha256": "d56795d3e5c3078b931040657eee00b65621101c06e11ed20e3802dc2073231e",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Curious about the tools? Start with the bot in my bio. It'll explain the steps.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_014",
+  "phrase_id": "lively3_en_narrate_trade_014",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Can't pull an outcome into place with my voice. Watching what actually happens.",
+  "tts_text": "[gently sarcastic, conversational] Can't pull an outcome into place with my voice. Watching what actually happens.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "06e4ad8bd224bbdc8535d5556e59e0584456654402031399cf0a5c09d330943b",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_014.mp3",
+  "duration": 4.989312,
+  "sha256": "07da070c38e1efed1c74ef1fafb8adf811f6dcd25616736041c75830f63e6b47",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Can't pull an outcome into place with my voice. Watching what actually happens.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

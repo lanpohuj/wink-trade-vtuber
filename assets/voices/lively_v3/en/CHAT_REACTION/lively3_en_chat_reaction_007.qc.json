@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_007",
+  "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d",
+  "expected": "A follow! Welcome to the remarkably patient listeners' club.",
+  "transcript": "A follow! Welcome to the remarkably patient listeners club!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08547,
+    "peak": 0.5098,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.181,
+    "sha256": "f862699cf63d4e51c1fe913a00d6255af86a0211108e0ac2812a1ffcf8d9bc4d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A follow! Welcome to the remarkably patient listeners club!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

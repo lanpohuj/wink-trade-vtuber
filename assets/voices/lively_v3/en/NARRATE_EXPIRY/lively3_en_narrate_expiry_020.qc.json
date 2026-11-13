@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_020",
+  "sha256": "1382cead8ec704aa0a9bf5a676ec56404e6190ada5303f2f715673c27600d0ee",
+  "expected": "One-minute expiry. More time doesn't mean more certainty.",
+  "transcript": "One minute expiry. More time doesn't mean more certainty.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.07941,
+    "peak": 0.35049,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.195,
+    "sha256": "1382cead8ec704aa0a9bf5a676ec56404e6190ada5303f2f715673c27600d0ee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " One minute expiry. More time doesn't mean more certainty."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

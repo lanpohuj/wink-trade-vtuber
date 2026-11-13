@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_029",
+  "sha256": "846027aa5c52a44cd070c57b7929533337c4ea41c3c9915c7b5961171e4f7928",
+  "expected": "Two-minute expiry, chat. Still no press conference; don't get comfortable.",
+  "transcript": "Two-minute expiry chat. Still no press conference. Don't get comfortable.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07407,
+    "peak": 0.4291,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.291,
+    "sha256": "846027aa5c52a44cd070c57b7929533337c4ea41c3c9915c7b5961171e4f7928"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Two-minute expiry chat. Still no press conference. Don't get comfortable."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

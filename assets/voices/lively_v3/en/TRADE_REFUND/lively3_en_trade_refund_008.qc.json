@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_008",
+  "sha256": "fab52b78f3b06c785aa09fb422f918fcc5a46a9c02507a8291e0f8e6ad1aec9f",
+  "expected": "Refund recorded. Wrong status for a victory speech; just stating the fact.",
+  "transcript": "Refund recorded. Wrong status for a victory speech. Just stating the fact.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07363,
+    "peak": 0.4724,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "fab52b78f3b06c785aa09fb422f918fcc5a46a9c02507a8291e0f8e6ad1aec9f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Refund recorded. Wrong status for a victory speech. Just stating the fact."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

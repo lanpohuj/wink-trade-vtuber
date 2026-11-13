@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_024",
+  "sha256": "f9181ea8f170e9fd14c84e925be25d2445f369bcc3440ea2362bd09afd3182db",
+  "expected": "Expiry's a minute. No need to speed-read every thought at once.",
+  "transcript": "Expiry is a minute. No need to speedread every thought at once.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.10428,
+    "peak": 0.82609,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.284,
+    "sha256": "f9181ea8f170e9fd14c84e925be25d2445f369bcc3440ea2362bd09afd3182db"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " Expiry is a minute. No need to speedread every thought at once."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

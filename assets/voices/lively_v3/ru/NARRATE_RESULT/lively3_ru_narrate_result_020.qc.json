@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_020",
+  "sha256": "9ff6756c9f200c6944bfbcdee86645716981f3f413175f19de6ddd3a38361dc0",
+  "expected": "Близко к границе, всё равно минус. Мой вздох в статистику не входит.",
+  "transcript": "Блескограницы все равно минус. Мой вздох в статистику не входит.",
+  "similarity": 0.935,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07727,
+    "peak": 0.29676,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.141,
+    "sha256": "9ff6756c9f200c6944bfbcdee86645716981f3f413175f19de6ddd3a38361dc0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Блескограницы все равно минус. Мой вздох в статистику не входит."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

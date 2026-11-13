@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_019",
+  "phrase_id": "lively3_en_narrate_expiry_019",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "One-minute trade. Saving the final opinion for the close.",
+  "tts_text": "[clear, conversational] One-minute trade. Saving the final opinion for the close.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "918c35e26eb5c4a693bdf69b3c6e2650134fb40e99db943961e3034ca6c34ee4",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_019",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_019.mp3",
+  "duration": 3.839938,
+  "sha256": "1595eb012921e28557feb7fb17fcdfbd633102ba31aac3e49da45ad006e0fcd5",
+  "request_payload": {
+    "text": "[clear, conversational] One-minute trade. Saving the final opinion for the close.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_004",
+  "phrase_id": "lively3_en_trade_loss_004",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "That's a loss. Not pretending it's secretly a win.",
+  "tts_text": "[calm, mildly disappointed] That's a loss. Not pretending it's secretly a win.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "52fc74808c8732d9a8742688e47c8d33adaa9b7c220f58bb205309a18b96732f",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_004",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_004.mp3",
+  "duration": 3.813812,
+  "sha256": "1f41886bdb770863c3171f644907ee8a077e11f564c1deed26e4de376e02ac92",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] That's a loss. Not pretending it's secretly a win.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

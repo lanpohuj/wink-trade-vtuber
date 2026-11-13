@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_013",
+  "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae",
+  "expected": "Next one, chat. We'll survive the breakup with the last chart. Probably.",
+  "transcript": "Next one chat. We'll survive the breakup with the last chart. Probably.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08248,
+    "peak": 0.4208,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.238,
+    "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Next one chat. We'll survive the breakup with the last chart. Probably."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

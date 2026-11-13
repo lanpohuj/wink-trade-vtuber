@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_030",
+  "sha256": "266ab815b090a95e2cd65d424e3601770b9bb1f75164c7979afec9b8bd11837f",
+  "expected": "Up entry at the range boundary happened. Rejection confirmed; result still ahead.",
+  "transcript": "Up entry at the range boundary happened. Rejection confirmed. Results still ahead.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08047,
+    "peak": 0.45891,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "266ab815b090a95e2cd65d424e3601770b9bb1f75164c7979afec9b8bd11837f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Up entry at the range boundary happened. Rejection confirmed. Results still ahead."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

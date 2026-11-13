@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_024",
+  "phrase_id": "lively3_en_narrate_trade_024",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Waiting isn't a new entry decision. The trade's already open.",
+  "tts_text": "[natural, conversational] Waiting isn't a new entry decision. The trade's already open.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a95c70bc523a5dc7b0650166455f955311464aa768ce89b4fc3fe70088ad96f4",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_024",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_024.mp3",
+  "duration": 3.761563,
+  "sha256": "b6c25dadd6e287ffb9ec9ee44761a125c4ea50882a712ac258473a04ae944951",
+  "request_payload": {
+    "text": "[natural, conversational] Waiting isn't a new entry decision. The trade's already open.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

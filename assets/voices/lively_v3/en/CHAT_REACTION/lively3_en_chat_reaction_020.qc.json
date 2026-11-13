@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_020",
+  "sha256": "64040029b0b0f9a37de502409849fcf344de26c95f41e7b6d1da815769e3d3f7",
+  "expected": "Hearts received, thank you! Even the sarcastic host gets a little touched.",
+  "transcript": "Hearts received, thank you! Even the sarcastic host gets a little touched.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07278,
+    "peak": 0.42679,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.179,
+    "sha256": "64040029b0b0f9a37de502409849fcf344de26c95f41e7b6d1da815769e3d3f7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Hearts received, thank you! Even the sarcastic host gets a little touched."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_035",
+  "sha256": "18468cbbf202d4add3a1c72d14d6c536681efa27ed8c1e6f43d7f60a3428251b",
+  "expected": "Opened up after confirmed local reversal. Simply stating the entry reason.",
+  "transcript": "opened up after confirmed local reversal simply stating the entry reason",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08605,
+    "peak": 0.50892,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.196,
+    "sha256": "18468cbbf202d4add3a1c72d14d6c536681efa27ed8c1e6f43d7f60a3428251b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " opened up after confirmed local reversal simply stating the entry reason"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

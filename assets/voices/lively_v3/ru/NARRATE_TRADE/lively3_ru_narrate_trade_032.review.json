@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_032",
+  "phrase_id": "lively3_ru_narrate_trade_032",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сейчас полезен спокойный взгляд. Эффектное закатывание глаз оставлю на потом.",
+  "tts_text": "[conversational] Сейчас полезен спокойный взгляд. Эффектное закатывание глаз оставлю на потом.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ad0c143e1c2349c78143dc0833b9a8be659501b47f2bb0eb755f789b421a5914",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_032",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_032.mp3",
+  "duration": 4.858688,
+  "sha256": "8924e2b3b0d5fffae1ae46e7502c165620de72cb07247be7693e5d3082056e39",
+  "request_payload": {
+    "text": "[conversational] Сейчас полезен спокойный взгляд. Эффектное закатывание глаз оставлю на потом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

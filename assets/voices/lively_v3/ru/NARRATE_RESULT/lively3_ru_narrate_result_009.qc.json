@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_009",
+  "sha256": "e0a629a811fd2e677bd5cc6e72c482ae9237d2583649fb6b57e8cebbaa294b14",
+  "expected": "Следующая ставка двести сорок два. Факты важнее желания вернуть предыдущий минус.",
+  "transcript": "Следующая ставка 242. Факты важнее желания вернуть предыдущий минус.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.09207,
+    "peak": 0.49794,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.069,
+    "sha256": "e0a629a811fd2e677bd5cc6e72c482ae9237d2583649fb6b57e8cebbaa294b14"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Следующая ставка 242."
+    },
+    {
+      "start": 2.32,
+      "end": 5.32,
+      "text": " Факты важнее желания вернуть предыдущий минус."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

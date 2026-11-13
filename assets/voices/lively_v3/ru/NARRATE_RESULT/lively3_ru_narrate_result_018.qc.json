@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_018",
+  "sha256": "51b97d697667bc50fc566efd05bb1b3418b5997e089f029e0fc620e43e82de00",
+  "expected": "Здесь было близкое закрытие в минус. Досадный момент, без выдуманного плюса.",
+  "transcript": "Здесь было близкое закрытие в минус. Досадный момент. Без выдуманного плюса.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.09164,
+    "peak": 0.33592,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.123,
+    "sha256": "51b97d697667bc50fc566efd05bb1b3418b5997e089f029e0fc620e43e82de00"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Здесь было близкое закрытие в минус."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Досадный момент. Без выдуманного плюса."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

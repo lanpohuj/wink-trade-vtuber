@@ -37,6 +37,8 @@ class ChatItem:
     failed: bool = False
     played: bool = False
     dispatched: bool = False
+    profile: Any = None
+    recent_context: list[dict] = field(default_factory=list)
 
 
 class StreamDirector:
@@ -177,6 +179,8 @@ class StreamDirector:
         lang: str = "ru",
         emotion: str = "happy",
         reply_text: str = "",
+        profile: Any = None,
+        recent_context: list[dict] | None = None,
     ) -> None:
         """Добавляет входящий комментарий зрителя в очередь с немедленным фоновым пре-синтезом."""
         from winky.censor import check_phrase
@@ -195,6 +199,8 @@ class StreamDirector:
             lang=lang,
             emotion=emotion,
             reply_text=reply_text.strip(),
+            profile=profile,
+            recent_context=list(recent_context or []),
         )
 
         with self._lock:
@@ -226,7 +232,11 @@ class StreamDirector:
             if not reply_text:
                 if self._brain and hasattr(self._brain, "reply"):
                     try:
-                        reply_text = self._brain.reply(item.text, nickname=item.user)
+                        if item.profile is not None or item.recent_context:
+                            reply_text = self._brain.reply(item.text, nickname=item.user,
+                                profile=item.profile, recent_context=item.recent_context)
+                        else:
+                            reply_text = self._brain.reply(item.text, nickname=item.user)
                     except Exception as ex:
                         logger.warning("Ошибка brain.reply: %s", ex)
                 if not reply_text:
@@ -318,6 +328,12 @@ class StreamDirector:
         return (self.cta_enabled and self.trade_phase in ('IDLE', 'ANALYZING', 'IN_TRADE', 'COOLDOWN')
                 and now - loss_at >= 60)
 
+    def current_language(self, now=None):
+        now = time.time() if now is None else now
+        if 0 <= now - self._last_phase_update <= 3:
+            return self.context.get('lang', self.stream_lang)
+        return self.stream_lang
+
     def maybe_cta(self, now=None, lang=None):
         """The only automatic CTA scheduler, shared by Pocket and standalone."""
         if not self._cta_lock.acquire(blocking=False):
@@ -346,7 +362,7 @@ class StreamDirector:
                 return False
         if now < self._next_commentary_at:
             return False
-        language = lang or self.context.get('lang', self.stream_lang)
+        language = lang or self.current_language(now)
         event = dict(category='NARRATE_CTA', lang=language, created_at=now,
                      event_id=f'cta:{int(now // 8)}', ttl_sec=8, automatic_cta=True)
         if self.trade_phase == 'IN_TRADE':

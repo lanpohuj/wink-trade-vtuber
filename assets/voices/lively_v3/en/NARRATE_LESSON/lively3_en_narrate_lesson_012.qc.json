@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_012",
+  "sha256": "15d0f3324726e5cb96aeffad38fc05bae1df2aee13808cb4278a02085ccf7b57",
+  "expected": "One candle can impress. Context prevents an embarrassingly quick crush.",
+  "transcript": "One candle can impress. Context prevents an embarrassingly quick crush.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07519,
+    "peak": 0.42804,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.312,
+    "sha256": "15d0f3324726e5cb96aeffad38fc05bae1df2aee13808cb4278a02085ccf7b57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " One candle can impress. Context prevents an embarrassingly quick crush."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

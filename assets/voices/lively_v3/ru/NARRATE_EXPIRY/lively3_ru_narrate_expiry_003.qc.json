@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_003",
+  "sha256": "0f29b8fea175f96f7d84c8dd938791f2b01832d2d6f2b239b4dcb6809b2c0661",
+  "expected": "Пятнадцать секунд на эту сделку. Смотрим именно её выбранное окно.",
+  "transcript": "15 секунд на эту сделку! Смотрим именно её выбранное окно!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08348,
+    "peak": 0.34885,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.102,
+    "sha256": "0f29b8fea175f96f7d84c8dd938791f2b01832d2d6f2b239b4dcb6809b2c0661"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " 15 секунд на эту сделку! Смотрим именно её выбранное окно!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

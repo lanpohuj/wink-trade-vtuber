@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_001",
+  "sha256": "b41b316b48868b88438032a702a5d195f0e59985959cf4ca40d143cda9a8377b",
+  "expected": "A good explanation doesn't determine the outcome. Inconvenient, but honest.",
+  "transcript": "A good explanation doesn't determine the outcome. Inconvenient, but honest.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08227,
+    "peak": 0.47705,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.219,
+    "sha256": "b41b316b48868b88438032a702a5d195f0e59985959cf4ca40d143cda9a8377b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " A good explanation doesn't determine the outcome. Inconvenient, but honest."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

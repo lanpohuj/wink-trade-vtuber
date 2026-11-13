@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_022",
+  "sha256": "2e6c0a11bb4dcb4164acd97ab867227d1b0b87cfd405bdea3b99008019bd032f",
+  "expected": "Sell opened after rejection at the range boundary. Watching through the close.",
+  "transcript": "Cell opened after rejection at the range boundary, watching through the close.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08003,
+    "peak": 0.43302,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.155,
+    "sha256": "2e6c0a11bb4dcb4164acd97ab867227d1b0b87cfd405bdea3b99008019bd032f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Cell opened after rejection at the range boundary, watching through the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

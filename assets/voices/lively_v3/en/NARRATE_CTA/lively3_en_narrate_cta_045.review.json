@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_045",
+  "phrase_id": "lively3_en_narrate_cta_045",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "One bot reminder, then I'm out. Link in bio, chat. That's the whole side quest.",
+  "tts_text": "[casual] One bot reminder, then I'm out. Link in bio, chat. That's the whole side quest.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "08763a539097a488629bf90ec3badf45b6b61d0ec0c6a4bae735d30e536e2e8e",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_045",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_045.mp3",
+  "duration": 5.4595,
+  "sha256": "1bac15d3c6d46398e0667cfcad91039b013c9ec7ad83e602add3007c901b5a1d",
+  "request_payload": {
+    "text": "[casual] One bot reminder, then I'm out. Link in bio, chat. That's the whole side quest.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

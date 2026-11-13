@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_011",
+  "phrase_id": "lively3_en_narrate_pair_011",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Let's visit another chart. Maybe the conversation's clearer here.",
+  "tts_text": "[warm, relaxed] Let's visit another chart. Maybe the conversation's clearer here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a3faebfb968abed03cc12e1d3cf3a98deb7b7a88aa0be21a36d253b1a6765a5c",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_011",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_011.mp3",
+  "duration": 4.101125,
+  "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624",
+  "request_payload": {
+    "text": "[warm, relaxed] Let's visit another chart. Maybe the conversation's clearer here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

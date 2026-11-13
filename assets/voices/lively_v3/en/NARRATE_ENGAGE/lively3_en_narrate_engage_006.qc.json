@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_006",
+  "sha256": "9c751a94cffc823c994d1f211c1c1ef62fe2400b9058a00c187617880f9dbe35",
+  "expected": "If that made sense, great. If not, tell me where. I'll try fewer words.",
+  "transcript": "If that made sense, great. If not, tell me where. I'll try fewer words.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07375,
+    "peak": 0.49328,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "9c751a94cffc823c994d1f211c1c1ef62fe2400b9058a00c187617880f9dbe35"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " If that made sense, great. If not, tell me where. I'll try fewer words."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

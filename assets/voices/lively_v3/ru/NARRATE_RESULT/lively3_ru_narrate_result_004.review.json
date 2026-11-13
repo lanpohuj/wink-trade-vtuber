@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_004",
+  "phrase_id": "lively3_ru_narrate_result_004",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "По последовательности сейчас сто десять. Условия следующего входа проверяются заново.",
+  "tts_text": "[conversational] По последовательности сейчас сто десять. Условия следующего входа проверяются заново.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d4313a88ba9f711f791a4452b60382e81dc0e620642f4f7a526441bb517f2014",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_004",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_004.mp3",
+  "duration": 5.433375,
+  "sha256": "01b73d4ae64b90e4a78081f27702dd4750ac804163c743f289af3d264846139c",
+  "request_payload": {
+    "text": "[conversational] По последовательности сейчас сто десять. Условия следующего входа проверяются заново.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

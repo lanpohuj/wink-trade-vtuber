@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_029",
+  "sha256": "294208e89f9c176649c47eb1ecbf12d99ac5d1ecbc9779a78bd37c859f9587e0",
+  "expected": "Не придётся листать весь чат: бот доступен из шапки профиля.",
+  "transcript": "Не придется листать весь чат. Бот доступен на шапке профиля.",
+  "similarity": 0.939,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07102,
+    "peak": 0.31529,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.635,
+    "sha256": "294208e89f9c176649c47eb1ecbf12d99ac5d1ecbc9779a78bd37c859f9587e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Не придется листать весь чат. Бот доступен на шапке профиля."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

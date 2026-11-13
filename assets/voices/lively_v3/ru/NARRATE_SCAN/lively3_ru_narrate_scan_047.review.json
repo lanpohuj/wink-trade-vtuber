@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_047",
+  "phrase_id": "lively3_ru_narrate_scan_047",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Мне можно нести чушь в шутках. Кнопке входа такой абонемент не выдавали.",
+  "tts_text": "[conversational] Мне можно нести чушь в шутках. Кнопке входа такой абонемент не выдавали.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6e2cd3221be4434f56a9cb9513c6a86dc24a135384303d55bb8d9f43271fb9b3",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_047",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_047.mp3",
+  "duration": 4.806438,
+  "sha256": "4ce6730057da3e319f1661c533096a1ddd5949073de4a88f00c9db0cfd3144c4",
+  "request_payload": {
+    "text": "[conversational] Мне можно нести чушь в шутках. Кнопке входа такой абонемент не выдавали.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_007",
+  "sha256": "f0516b0a7ccb67a691afaf60c472a5eaf32eff5b61a28d5ce520f417c9a6e5c4",
+  "expected": "Вверх по подтверждённому откату, сделка уже идёт. Красивые речи потом.",
+  "transcript": "Верху подтверждённому откату. Сделка уже идёт. Красивые речи потом.",
+  "similarity": 0.965,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08426,
+    "peak": 0.36048,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.088,
+    "sha256": "f0516b0a7ccb67a691afaf60c472a5eaf32eff5b61a28d5ce520f417c9a6e5c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Верху подтверждённому откату. Сделка уже идёт. Красивые речи потом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

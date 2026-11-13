@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_017",
+  "phrase_id": "lively3_ru_narrate_cta_017",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Ссылку на бота вынесли в профиль. Дизайнерский ход века — сделать её заметной.",
+  "tts_text": "[conversational] Ссылку на бота вынесли в профиль. Дизайнерский ход века — сделать её заметной.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f8a201db43b1dec740732163dcf724bfe27a2b9edde84f6fdfab2c70ebf6b0cc",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_017",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_017.mp3",
+  "duration": 4.806438,
+  "sha256": "a1cdb6febc4ca26a1c2a3b92666ec6d836366091e1a06b3d39e9af586ab187c6",
+  "request_payload": {
+    "text": "[conversational] Ссылку на бота вынесли в профиль. Дизайнерский ход века — сделать её заметной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

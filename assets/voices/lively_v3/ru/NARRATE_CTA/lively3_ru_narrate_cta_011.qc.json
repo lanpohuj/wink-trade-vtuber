@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_011",
+  "sha256": "5fc5363e0f8538d7bbd2fe79d9a5f1343381b247eda03bd7c5b2ee950de1ee45",
+  "expected": "Чат, кто искал бота: он в шапке профиля. Да, база, но вдруг потеряли.",
+  "transcript": "Чат, кто из колбота? Он в шапке профиля. Да, база, но вдруг потеряли.",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08572,
+    "peak": 0.40008,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.049,
+    "sha256": "5fc5363e0f8538d7bbd2fe79d9a5f1343381b247eda03bd7c5b2ee950de1ee45"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Чат, кто из колбота? Он в шапке профиля. Да, база, но вдруг потеряли."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_002",
+  "sha256": "46b75a6d2cb78018e4926cb5d2d38c372dc5e2d57e08f454d443df77378fcb6a",
+  "expected": "Вниз уже открыто. Откат подтвердился, теперь ждём результат сделки.",
+  "transcript": "Вниз уже открыто. Откат подтвердился. Теперь ждём результат сделки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08393,
+    "peak": 0.39256,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.13,
+    "sha256": "46b75a6d2cb78018e4926cb5d2d38c372dc5e2d57e08f454d443df77378fcb6a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Вниз уже открыто. Откат подтвердился. Теперь ждём результат сделки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

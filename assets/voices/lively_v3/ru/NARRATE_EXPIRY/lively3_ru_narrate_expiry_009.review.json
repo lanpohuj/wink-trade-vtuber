@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_009",
+  "phrase_id": "lively3_ru_narrate_expiry_009",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "На сделку тридцать секунд. Полминуты, чтобы не торопить выводы.",
+  "tts_text": "[conversational] На сделку тридцать секунд. Полминуты, чтобы не торопить выводы.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5e750e4b84b5cb4164c3a43817d79a6a63e3813afaf97849f8f262bbbb23fbdf",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_009",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_009.mp3",
+  "duration": 3.944375,
+  "sha256": "a00636df9d432e897ef208c92f1d7ab6bb14ac4d799fe85da224806f8190717a",
+  "request_payload": {
+    "text": "[conversational] На сделку тридцать секунд. Полминуты, чтобы не торопить выводы.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

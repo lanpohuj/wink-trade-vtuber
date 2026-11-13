@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_014",
+  "phrase_id": "lively3_ru_trade_refund_014",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Вернули ставку. Ни победный танец, ни драматичный монолог не требуются.",
+  "tts_text": "[conversational] Вернули ставку. Ни победный танец, ни драматичный монолог не требуются.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "78e5fdb8a2bb0f3560cdf164e6c0d8698ec520f67d1a535eafc2602ad694d16d",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_refund_014",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_014.mp3",
+  "duration": 4.649687,
+  "sha256": "8af4712709bf7481a2c4e3580c10904abcf8552adcddb5ea8e182333c5d92fe5",
+  "request_payload": {
+    "text": "[conversational] Вернули ставку. Ни победный танец, ни драматичный монолог не требуются.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

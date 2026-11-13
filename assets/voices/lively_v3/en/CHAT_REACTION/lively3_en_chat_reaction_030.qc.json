@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_030",
+  "sha256": "777de766eebb8d63f767bb7a779e4262e2d6db384426f3b02a57128e7662d1d5",
+  "expected": "To explore the tools, open the bot through my profile. Instructions are already inside.",
+  "transcript": "To explore the tools, open the bot through my profile. Instructions are already inside.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08077,
+    "peak": 0.41909,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.242,
+    "sha256": "777de766eebb8d63f767bb7a779e4262e2d6db384426f3b02a57128e7662d1d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " To explore the tools, open the bot through my profile. Instructions are already inside."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

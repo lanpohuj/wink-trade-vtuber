@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_008",
+  "phrase_id": "lively3_ru_open_trade_put_008",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Вниз по откату в тренде, вход уже произошёл. Красивую историю не добавляю.",
+  "tts_text": "[conversational] Вниз по откату в тренде, вход уже произошёл. Красивую историю не добавляю.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "22a3428b6352badb117528ee5ab465ae4b24ec82964157e0d080d969b3c8811b",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_008",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_008.mp3",
+  "duration": 4.728063,
+  "sha256": "3d86f28f770ffbed765ee0f2f235543e75818397594b5306894b497c8341aeb0",
+  "request_payload": {
+    "text": "[conversational] Вниз по откату в тренде, вход уже произошёл. Красивую историю не добавляю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

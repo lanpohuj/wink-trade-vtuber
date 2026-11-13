@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_006",
+  "sha256": "cf48f9cd61f0ec83a2340f5d4f200caea66d554ec3f7c640e019d24fed01b069",
+  "expected": "Up opening confirmed. The idea's continuation after a pullback; outcome still unknown.",
+  "transcript": "Up-opening confirmed. The idea's continuation after a pullback. Outcomes still unknown.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07892,
+    "peak": 0.48326,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.267,
+    "sha256": "cf48f9cd61f0ec83a2340f5d4f200caea66d554ec3f7c640e019d24fed01b069"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Up-opening confirmed. The idea's continuation after a pullback. Outcomes still unknown."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

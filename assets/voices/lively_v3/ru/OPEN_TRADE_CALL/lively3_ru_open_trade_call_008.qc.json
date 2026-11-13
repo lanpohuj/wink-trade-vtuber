@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_008",
+  "sha256": "829606a912da743058f2cc7a630964d65712e2a48ec87e64f4b5fb9735b3a989",
+  "expected": "Купили после подтверждения отката. Теперь рынок отвечает без моей подсказки.",
+  "transcript": "Купили после подтверждения отката. Теперь рынок отвечает без моей подсказки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08506,
+    "peak": 0.34117,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "829606a912da743058f2cc7a630964d65712e2a48ec87e64f4b5fb9735b3a989"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " Купили после подтверждения отката."
+    },
+    {
+      "start": 2.2,
+      "end": 4.7,
+      "text": " Теперь рынок отвечает без моей подсказки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

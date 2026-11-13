@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_031",
+  "phrase_id": "lively3_ru_narrate_cta_031",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Пока есть пауза: напомню про бота в профиле. У него инструкция, у меня комментарии.",
+  "tts_text": "[conversational] Пока есть пауза: напомню про бота в профиле. У него инструкция, у меня комментарии.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8532f9362fbd28e8fe3877d5bde06e8de96b879571022d1c286470026a7cd650",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_031",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_031.mp3",
+  "duration": 5.4595,
+  "sha256": "a3a5cd87cdf5630eb86da5e69b8ed244272b42ccf1a99c02e39cb7eb7d8f37c4",
+  "request_payload": {
+    "text": "[conversational] Пока есть пауза: напомню про бота в профиле. У него инструкция, у меня комментарии.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

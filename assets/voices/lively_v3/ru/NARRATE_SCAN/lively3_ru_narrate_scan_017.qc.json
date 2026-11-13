@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_017",
+  "sha256": "36893479a460e84c310505b8752df6f1053946aa9195597defaa739da0ac915f",
+  "expected": "Я не зависла, я думаю. Не так эффектно, как хотелось бы, зато честно.",
+  "transcript": "Я не зависла, я думаю. Не так эффектно, как хотелось бы, зато честно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.06882,
+    "peak": 0.28121,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.1,
+    "sha256": "36893479a460e84c310505b8752df6f1053946aa9195597defaa739da0ac915f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Я не зависла, я думаю. Не так эффектно, как хотелось бы, зато честно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

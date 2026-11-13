@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_018",
+  "sha256": "2fb627d2572d2c09b71adfcd179a739ec248c4f69f092887db81f8e521b34d5d",
+  "expected": "Вниз после проверенного ретеста пробоя. Вход уже на месте, ждём закрытия.",
+  "transcript": "Вниз после проверенного ретеста пробоя. Вход уже на месте, ждём закрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07128,
+    "peak": 0.31829,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.099,
+    "sha256": "2fb627d2572d2c09b71adfcd179a739ec248c4f69f092887db81f8e521b34d5d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " Вниз после проверенного ретеста пробоя."
+    },
+    {
+      "start": 2.66,
+      "end": 4.8,
+      "text": " Вход уже на месте, ждём закрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

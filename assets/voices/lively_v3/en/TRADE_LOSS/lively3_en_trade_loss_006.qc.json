@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_006",
+  "sha256": "67dbd2e5ad1621d3a24da2409b0c0799e5e2d3c8a81ce502190604a654dd1c9f",
+  "expected": "Ah, that's a loss. No tilt, chat. Definitely not clicking out of frustration.",
+  "transcript": "Oh, that's a loss. No tilt chat. Definitely not clicking out of frustration.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.07614,
+    "peak": 0.38062,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "67dbd2e5ad1621d3a24da2409b0c0799e5e2d3c8a81ce502190604a654dd1c9f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Oh, that's a loss. No tilt chat. Definitely not clicking out of frustration."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

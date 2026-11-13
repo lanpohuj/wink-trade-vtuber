@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_057",
+  "phrase_id": "lively3_en_narrate_scan_057",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Chart's doing the mysterious-crush thing. Fine. I'm not chasing.",
+  "tts_text": "[casual] Chart's doing the mysterious-crush thing. Fine. I'm not chasing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8caa5f9915c2cc1ebc9bc1f02f1ae742cb15310070e663b84ceaa5a50b9c44af",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_057",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_057.mp3",
+  "duration": 4.858688,
+  "sha256": "372d43ad13767e134c0522c1a878b1a5d4be38d5230f400e482b178ee97e412d",
+  "request_payload": {
+    "text": "[casual] Chart's doing the mysterious-crush thing. Fine. I'm not chasing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

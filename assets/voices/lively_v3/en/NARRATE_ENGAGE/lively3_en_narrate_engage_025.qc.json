@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_025",
+  "sha256": "f3a613a9606e903f030aff7d20791860cd456c7128f64e13e281949ec3684cba",
+  "expected": "Trying to explain this without becoming the final boss of yapping. Honestly.",
+  "transcript": "Trying to explain this without becoming the final boss of yapping honestly",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08138,
+    "peak": 0.45167,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.195,
+    "sha256": "f3a613a9606e903f030aff7d20791860cd456c7128f64e13e281949ec3684cba"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Trying to explain this without becoming the final boss of yapping honestly"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

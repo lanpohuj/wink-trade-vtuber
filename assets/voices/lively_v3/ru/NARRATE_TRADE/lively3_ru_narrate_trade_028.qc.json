@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_028",
+  "sha256": "32e1ce494aff865d59338aba929a139633cb25720b980177177bfa6353c26e8e",
+  "expected": "Руки от кнопок, чат. Мы уже в сделке, дополнительный спам ей не поможет.",
+  "transcript": "Роки от кнопок чат. Мы уже в сделке, дополнительный спам ей не поможет.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08631,
+    "peak": 0.31858,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.116,
+    "sha256": "32e1ce494aff865d59338aba929a139633cb25720b980177177bfa6353c26e8e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Роки от кнопок чат. Мы уже в сделке, дополнительный спам ей не поможет."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

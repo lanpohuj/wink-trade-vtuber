@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_009",
+  "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13",
+  "expected": "One more in the crew. Thanks for the follow; make yourself comfortable!",
+  "transcript": "One more in the crew. Thanks for the follow! Make yourself comfortable!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08018,
+    "peak": 0.35638,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " One more in the crew. Thanks for the follow! Make yourself comfortable!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

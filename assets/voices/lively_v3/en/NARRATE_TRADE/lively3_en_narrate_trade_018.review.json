@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_018",
+  "phrase_id": "lively3_en_narrate_trade_018",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "The timer resists charm. Remarkably stubborn company tonight.",
+  "tts_text": "[gently sarcastic, conversational] The timer resists charm. Remarkably stubborn company tonight.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7005a90b10633884832700d45729c0f56ba5573965e5262ecc9a69922086b3ee",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_018",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_018.mp3",
+  "duration": 4.728063,
+  "sha256": "7b1ed183efeced62fdbce438b214911b38dd7e392e7d0655d5673bd35f6b446f",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] The timer resists charm. Remarkably stubborn company tonight.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

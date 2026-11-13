@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_017",
+  "sha256": "924d4ffa51ce783e06fc04b514735d8a6cc5acc9082d37b96f497f5e854778ad",
+  "expected": "Now that's my cue to smile. Trade closed green.",
+  "transcript": "No, that's my cutest smile. Trade closed green.",
+  "similarity": 0.944,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.683,
+    "rms": 0.07666,
+    "peak": 0.3627,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.163,
+    "sha256": "924d4ffa51ce783e06fc04b514735d8a6cc5acc9082d37b96f497f5e854778ad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " No, that's my cutest smile. Trade closed green."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

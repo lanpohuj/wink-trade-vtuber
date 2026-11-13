@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_005",
+  "sha256": "3c4aab3a61f6bb0874970b3f8cae73efa24369ae956bcda0adf6256570b3298f",
+  "expected": "Ставка вернулась. У этой серии нейтральный финал, бывает и такой жанр.",
+  "transcript": "Ставка вернулась. В этой серии нейтральный финал бывает и такой жанр.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09079,
+    "peak": 0.42201,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "3c4aab3a61f6bb0874970b3f8cae73efa24369ae956bcda0adf6256570b3298f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Ставка вернулась. В этой серии нейтральный финал бывает и такой жанр."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

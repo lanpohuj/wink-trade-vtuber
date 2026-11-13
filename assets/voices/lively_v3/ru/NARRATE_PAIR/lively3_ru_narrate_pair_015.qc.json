@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_015",
+  "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae",
+  "expected": "Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
+  "transcript": "к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт",
+  "similarity": 0.958,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0882,
+    "peak": 0.43572,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.68,
+      "text": " к чекнем эту пару пока без любви сперва взгляда у меня уже был такой опыт"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

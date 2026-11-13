@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_019",
+  "sha256": "f96d22eeaa312abf7cdc6db4bd37eb1d5eb8a14b819050b3182629c5fa95197c",
+  "expected": "Здесь уже важнее выдержка, чем моя скорость речи.",
+  "transcript": "Здесь уже важнее выдержка, чем моя скорость речи.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.09225,
+    "peak": 0.44497,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.084,
+    "sha256": "f96d22eeaa312abf7cdc6db4bd37eb1d5eb8a14b819050b3182629c5fa95197c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Здесь уже важнее выдержка, чем моя скорость речи."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_024",
+  "sha256": "985c5d183db7dd2e32bb9a16c4e620eaf9d7cc6da272340fb5972b20a332b8a1",
+  "expected": "Срок — минута. Да, можно без ускоренной озвучки всех мыслей сразу.",
+  "transcript": "Срок минуты. Да, можно безускоренная озвучки. Всех мысли и сразу.",
+  "similarity": 0.904,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08932,
+    "peak": 0.38662,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.054,
+    "sha256": "985c5d183db7dd2e32bb9a16c4e620eaf9d7cc6da272340fb5972b20a332b8a1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Срок минуты. Да, можно безускоренная озвучки. Всех мысли и сразу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

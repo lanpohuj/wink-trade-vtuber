@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_volatility_006",
+  "sha256": "1cf8180a3c851b6766554c4b7734fdfa74c14d5c0adf5082fbb7c7c29b62e037",
+  "expected": "График сейчас двигается резче. Это подтверждено, а не добавлено для сюжета.",
+  "transcript": "График сейчас двигается резче. Это подтверждено. Они добавлены для сюжета.",
+  "similarity": 0.952,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08029,
+    "peak": 0.3387,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "1cf8180a3c851b6766554c4b7734fdfa74c14d5c0adf5082fbb7c7c29b62e037"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " График сейчас двигается резче. Это подтверждено. Они добавлены для сюжета."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

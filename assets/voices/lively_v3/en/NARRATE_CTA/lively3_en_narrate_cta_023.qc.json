@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_023",
+  "sha256": "fad6e2b5122448907e9877aaad8c7b1b9df6b433d189a3427162b29acb846710",
+  "expected": "For access questions, check the bot first. Link in bio, details inside.",
+  "transcript": "For access questions, check the bot first. Link in bio, details inside.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08109,
+    "peak": 0.46792,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.119,
+    "sha256": "fad6e2b5122448907e9877aaad8c7b1b9df6b433d189a3427162b29acb846710"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " For access questions, check the bot first."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Link in bio, details inside."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

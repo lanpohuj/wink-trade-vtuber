@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_042",
+  "sha256": "4842321fb396e9e0f699937f8ea26d6b8b0b1ba09271565ff1da0a9536562c6f",
+  "expected": "Letting the trade finish. I'm at least attempting to look patient.",
+  "transcript": "Letting the trade finish. I'm at least attempting to look patient",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.0787,
+    "peak": 0.42754,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.132,
+    "sha256": "4842321fb396e9e0f699937f8ea26d6b8b0b1ba09271565ff1da0a9536562c6f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Letting the trade finish. I'm at least attempting to look patient"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

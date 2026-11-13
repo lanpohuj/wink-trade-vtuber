@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_059",
+  "sha256": "073fd4cbd38d1c2783db1d2ae8044f36849bcb0b2ec728b0401138ebdf07ada2",
+  "expected": "Not drawing in a convenient setup. Let's inspect the one actually here.",
+  "transcript": "Not drawing in a convenient setup. Let's inspect the one actually here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07622,
+    "peak": 0.36472,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.276,
+    "sha256": "073fd4cbd38d1c2783db1d2ae8044f36849bcb0b2ec728b0401138ebdf07ada2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Not drawing in a convenient setup. Let's inspect the one actually here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

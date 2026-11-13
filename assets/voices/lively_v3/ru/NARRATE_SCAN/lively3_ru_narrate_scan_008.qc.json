@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_narrate_scan_008",
+  "sha256": "5727308fd3a1609687e976131caba61787c9321d5cb4a5b22986713f4cdd883d",
+  "expected": "Вход на одном «ну вроде» — скип. Хочу нормально понять картинку.",
+  "transcript": "Вход на одном, но вроде. Скип! Хочу нормально понять картинку.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08532,
+    "peak": 0.43503,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.088,
+    "sha256": "5727308fd3a1609687e976131caba61787c9321d5cb4a5b22986713f4cdd883d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Вход на одном, но вроде."
+    },
+    {
+      "start": 2.0,
+      "end": 3.0,
+      "text": " Скип!"
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Хочу нормально понять картинку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

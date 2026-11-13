@@ -1,0 +1,12 @@
+[
+  {
+    "lang": "ru",
+    "file": "docs/voice-audit/lively-v3/pilot-ru-055a9824.wav",
+    "first_recording_pcm_identical": true
+  },
+  {
+    "lang": "en",
+    "file": "docs/voice-audit/lively-v3/pilot-en-83c91075.wav",
+    "first_recording_pcm_identical": true
+  }
+]

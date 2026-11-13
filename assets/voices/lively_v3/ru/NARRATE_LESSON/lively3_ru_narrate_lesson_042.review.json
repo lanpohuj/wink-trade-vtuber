@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_042",
+  "phrase_id": "lively3_ru_narrate_lesson_042",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Сценарий объясняет решение до результата. Задним числом истории сочиняются слишком легко.",
+  "tts_text": "[conversational] Сценарий объясняет решение до результата. Задним числом истории сочиняются слишком легко.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "cbd8efd6f7b73ef7f176ee11aa7e7e8c739c7b7c9ac8f5503c266c938f39bcc7",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_042",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_042.mp3",
+  "duration": 5.2505,
+  "sha256": "c86ffc79b115486c1b605df758834f18f8aa2f44db588617c8f480be45ade8fb",
+  "request_payload": {
+    "text": "[conversational] Сценарий объясняет решение до результата. Задним числом истории сочиняются слишком легко.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

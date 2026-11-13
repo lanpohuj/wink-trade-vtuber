@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_003",
+  "sha256": "79321dadd1dc521d5f4d62503fd50c124dbbc1e53406f4d40432a5b7a65c9d4f",
+  "expected": "Need the bot? Bio link. Tiny side quest, honestly.",
+  "transcript": "Need the bot? Biolink. Tiny side quest, honestly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07603,
+    "peak": 0.41492,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.319,
+    "sha256": "79321dadd1dc521d5f4d62503fd50c124dbbc1e53406f4d40432a5b7a65c9d4f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.42,
+      "text": " Need the bot? Biolink. Tiny side quest, honestly."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

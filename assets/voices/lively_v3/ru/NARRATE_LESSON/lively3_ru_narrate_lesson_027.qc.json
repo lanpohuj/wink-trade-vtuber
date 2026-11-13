@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_027",
+  "sha256": "6b0f9097ac2b8c3c2997a455d266a8eb9d9aacc4d925be8bd8312f7b9754c842",
+  "expected": "Нормально передумать до клика, если условия изменились. Это проверка сработала.",
+  "transcript": "Нормально передумать до клика, если условия изменились. Эта проверка сработала.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.075,
+    "peak": 0.29438,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "6b0f9097ac2b8c3c2997a455d266a8eb9d9aacc4d925be8bd8312f7b9754c842"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Нормально передумать до клика, если условия изменились."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Эта проверка сработала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

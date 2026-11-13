@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_017",
+  "phrase_id": "lively3_en_chat_reaction_017",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Thanks for the hearts! The screen's officially a little cosier.",
+  "tts_text": "[lightly playful, smiling] Thanks for the hearts! The screen's officially a little cosier.",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f392437b6042d17c085a2353861f9a59bb725bc9e35a86d4cb62800e79e606e5",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_017",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_017.mp3",
+  "duration": 3.9705,
+  "sha256": "a6525e6cfce3b4c6e2cf1c3baf4708ef4b618d43ac3dd49086ffb8325c9c844a",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Thanks for the hearts! The screen's officially a little cosier.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

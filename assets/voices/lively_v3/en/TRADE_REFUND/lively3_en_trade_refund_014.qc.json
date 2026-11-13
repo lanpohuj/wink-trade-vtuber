@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_014",
+  "sha256": "8f8d02f3027a906e1b103cae8f3aa0ab041a8665713182362c4e07fa9b46be56",
+  "expected": "Stake returned. Neither a victory dance nor a dramatic monologue required.",
+  "transcript": "Stake returned neither a victory dance nor a dramatic monologue required",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09251,
+    "peak": 0.71883,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.168,
+    "sha256": "8f8d02f3027a906e1b103cae8f3aa0ab041a8665713182362c4e07fa9b46be56"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.34,
+      "text": " Stake returned neither a victory dance nor a dramatic monologue required"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

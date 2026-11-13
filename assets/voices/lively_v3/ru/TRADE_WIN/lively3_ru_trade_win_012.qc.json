@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_012",
+  "sha256": "ad75c7eff8c37f3baaf9280866b1f7140b7fa8c6bc8f3405a574c4fd3fd53ed7",
+  "expected": "Вот это плюс, приятно! Но с короной к следующему входу не идём, я себя знаю.",
+  "transcript": "Вот это плюс! Приятно! Но с короной к следующему входу не идем! Я себя знаю!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08189,
+    "peak": 0.34759,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.1,
+    "sha256": "ad75c7eff8c37f3baaf9280866b1f7140b7fa8c6bc8f3405a574c4fd3fd53ed7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Вот это плюс! Приятно!"
+    },
+    {
+      "start": 2.0,
+      "end": 5.4,
+      "text": " Но с короной к следующему входу не идем! Я себя знаю!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

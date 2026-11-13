@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_003",
+  "phrase_id": "lively3_en_trade_win_003",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Closed green. Small celebration, no claim that I've solved the universe.",
+  "tts_text": "[warm, relaxed] Closed green. Small celebration, no claim that I've solved the universe.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6a101c86ab7fc22cb8c56a2869448fa347a5355d56707546458c78c265b1ae04",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_003",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_003.mp3",
+  "duration": 5.172125,
+  "sha256": "b701a0dab25d1ad9ad4b651db357f2b2aa411bb7b5fccb4bad9f35b24d758744",
+  "request_payload": {
+    "text": "[warm, relaxed] Closed green. Small celebration, no claim that I've solved the universe.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

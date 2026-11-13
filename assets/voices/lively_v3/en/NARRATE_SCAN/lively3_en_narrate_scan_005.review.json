@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_005",
+  "phrase_id": "lively3_en_narrate_scan_005",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.",
+  "tts_text": "[casual] Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "09421feb6ff3157975920cbc5d6bac8fb9b2c3771eff1f0a30c78cd7a47c3aac",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_005",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_005.mp3",
+  "duration": 5.72075,
+  "sha256": "7349eed8da69be5dbd8882423ecd23295ea1581c9494995e7e06aa8decfb5023",
+  "request_payload": {
+    "text": "[casual] Hang on, I'm not there yet. Looking smart is easy. Being useful takes a minute.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

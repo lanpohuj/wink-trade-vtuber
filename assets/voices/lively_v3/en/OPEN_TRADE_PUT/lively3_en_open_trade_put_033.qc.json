@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_033",
+  "sha256": "eb069b2809ca9044e9095d0723edc9afcba256c291e0bedc1f8cd1a42c839de5",
+  "expected": "Down entry happened: local reversal checked. Watching through the expiry now.",
+  "transcript": "Down entry happened. Local reversal checked. Watching through the expiry now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07691,
+    "peak": 0.48851,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.282,
+    "sha256": "eb069b2809ca9044e9095d0723edc9afcba256c291e0bedc1f8cd1a42c839de5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down entry happened. Local reversal checked. Watching through the expiry now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

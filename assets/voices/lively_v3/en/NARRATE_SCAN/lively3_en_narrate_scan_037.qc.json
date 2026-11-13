@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_037",
+  "sha256": "a1c6a1a59d8cbeb1dfd260579fda06522077ab41da22860b40d41f0861d5e425",
+  "expected": "Let me check once more. Today's vibe is trust, but definitely verify.",
+  "transcript": "Let me check once more. Today's vibe is trust, but definitely verify.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07718,
+    "peak": 0.37978,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.199,
+    "sha256": "a1c6a1a59d8cbeb1dfd260579fda06522077ab41da22860b40d41f0861d5e425"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Let me check once more. Today's vibe is trust, but definitely verify."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

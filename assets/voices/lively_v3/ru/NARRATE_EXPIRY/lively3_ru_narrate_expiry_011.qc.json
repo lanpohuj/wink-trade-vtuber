@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_011",
+  "sha256": "b34ae46fbc2585724e2ffa27113a663b9430d1e70cdc8313972f692ec10c47b4",
+  "expected": "Выбрали тридцать секунд. Времени на ожидание, не на громкие обещания.",
+  "transcript": "Выбрали 30 секунд, времени на ожидание, не на громкие обещания.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.08449,
+    "peak": 0.30665,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.104,
+    "sha256": "b34ae46fbc2585724e2ffa27113a663b9430d1e70cdc8313972f692ec10c47b4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " Выбрали 30 секунд, времени на ожидание, не на громкие обещания."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

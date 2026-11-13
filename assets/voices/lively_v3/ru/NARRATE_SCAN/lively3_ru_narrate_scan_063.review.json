@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_scan_063",
+  "phrase_id": "lively3_ru_narrate_scan_063",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Пустые данные не превращаются в сигнал от красивой интонации. Подождём.",
+  "tts_text": "[conversational] Пустые данные не превращаются в сигнал от красивой интонации. Подождём.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "535a6501a718524a1750fcd4f5818f21f0e48a5edd8c10cf3184e83073ea6555",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_063",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_063.mp3",
+  "duration": 4.858688,
+  "sha256": "6cd040bb1fe9a66e7fef08d5c95e12441a143247bcd089b204f3d2dc18fd4e92",
+  "request_payload": {
+    "text": "[conversational] Пустые данные не превращаются в сигнал от красивой интонации. Подождём.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

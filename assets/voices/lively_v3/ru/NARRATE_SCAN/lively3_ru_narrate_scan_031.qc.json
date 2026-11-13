@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_031",
+  "sha256": "d628d67dad3a2c36262a48daa9d20bc086771db24cf05b40dad4b942a0139c67",
+  "expected": "Не хочу перепутать интересную картинку с готовым решением.",
+  "transcript": "Не хочу перепутать интересную картинку с готовым решением.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.07657,
+    "peak": 0.27713,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.1,
+    "sha256": "d628d67dad3a2c36262a48daa9d20bc086771db24cf05b40dad4b942a0139c67"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.46,
+      "text": " Не хочу перепутать интересную картинку с готовым решением."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

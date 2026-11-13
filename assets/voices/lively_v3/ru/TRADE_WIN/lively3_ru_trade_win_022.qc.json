@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_022",
+  "sha256": "3d97e43c8c44afe19e21ca94a5432a1b95564bf18a4aef68eb4335e9d282815b",
+  "expected": "Плюс зафиксирован. Улыбка включилась быстрее, чем я успела её проконтролировать.",
+  "transcript": "Блёс зафиксирован. Улыбка включилась быстрее, чем я успела её проконтролировать.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.0796,
+    "peak": 0.35151,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.108,
+    "sha256": "3d97e43c8c44afe19e21ca94a5432a1b95564bf18a4aef68eb4335e9d282815b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Блёс зафиксирован. Улыбка включилась быстрее, чем я успела её проконтролировать."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

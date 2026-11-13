@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_001",
+  "sha256": "dd7b618d19b4ce4f2514bcdfa8fcef825f3ff6a783b886368bf890bf2754534a",
+  "expected": "Fifteen seconds here. Short format; no half-hour speech from me.",
+  "transcript": "15 seconds here. Short format, no half hour speech from me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08823,
+    "peak": 0.43554,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "dd7b618d19b4ce4f2514bcdfa8fcef825f3ff6a783b886368bf890bf2754534a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " 15 seconds here. Short format, no half hour speech from me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

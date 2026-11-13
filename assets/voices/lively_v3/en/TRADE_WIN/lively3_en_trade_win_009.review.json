@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_009",
+  "phrase_id": "lively3_en_trade_win_009",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "That's green! Low-key pleased with that one. Okay, maybe not that low-key.",
+  "tts_text": "[casual] That's green! Low-key pleased with that one. Okay, maybe not that low-key.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5a48457bfc81588063c0f8961e481053a41d702c95d36f64bd9997bdd3c48552",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_009",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_009.mp3",
+  "duration": 5.642375,
+  "sha256": "9b17537e443aeae4fdce0dcdd994bfa7a73041f8cfac46b5a3c7857862c4d36b",
+  "request_payload": {
+    "text": "[casual] That's green! Low-key pleased with that one. Okay, maybe not that low-key.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

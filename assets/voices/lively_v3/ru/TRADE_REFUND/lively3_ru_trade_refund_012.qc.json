@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_012",
+  "sha256": "8e135e487e336516a3cbb0e284fd4f68fbb3e47c85a1dd05f2b7d8180523f871",
+  "expected": "Закрытие с возвратом. Можно просто выдохнуть без эмоциональной пресс-конференции.",
+  "transcript": "Закрытие с возвратом можно просто выдохнуть без эмоциональной пресс-конференции.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08551,
+    "peak": 0.3423,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.068,
+    "sha256": "8e135e487e336516a3cbb0e284fd4f68fbb3e47c85a1dd05f2b7d8180523f871"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Закрытие с возвратом можно просто выдохнуть без эмоциональной пресс-конференции."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

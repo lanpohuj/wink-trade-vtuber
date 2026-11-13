@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_015",
+  "sha256": "abc6c89b7c9889cb3a443dc2b8161961e6f3a14083e8cdb4de2694e359c98c0f",
+  "expected": "I enjoy a good speech. Let's find an actual idea before delivering one.",
+  "transcript": "I enjoy a good speech. Let's find an actual idea before delivering one.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.0824,
+    "peak": 0.41249,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.116,
+    "sha256": "abc6c89b7c9889cb3a443dc2b8161961e6f3a14083e8cdb4de2694e359c98c0f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " I enjoy a good speech. Let's find an actual idea before delivering one."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

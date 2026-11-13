@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_037",
+  "phrase_id": "lively3_ru_narrate_scan_037",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я ещё раз чекну. У меня сегодня вайб «доверяй, но вообще-то проверь».",
+  "tts_text": "[conversational] Я ещё раз чекну. У меня сегодня вайб «доверяй, но вообще-то проверь».",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3e2b5e4da699afe439620fce243ef03619320811cb2a127112ebd9f3b9de0548",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_037",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_037.mp3",
+  "duration": 4.728063,
+  "sha256": "e04b60b2eb1bf4d7a5c48f4c23f7d53bbe9bd679d0b13f8aba04fda37551e6fe",
+  "request_payload": {
+    "text": "[conversational] Я ещё раз чекну. У меня сегодня вайб «доверяй, но вообще-то проверь».",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_014",
+  "phrase_id": "lively3_ru_narrate_lesson_014",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Результат считаем после закрытия. До него у радости предварительный статус.",
+  "tts_text": "[conversational] Результат считаем после закрытия. До него у радости предварительный статус.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ca729d6844cf9ec05731fedccd1eb566d325dd1a199e56697798037732500feb",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_014",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_014.mp3",
+  "duration": 4.414625,
+  "sha256": "dce4540595b0fa19e74202564a71adaa2912047c1f436153f6a5dc0f761fc06a",
+  "request_payload": {
+    "text": "[conversational] Результат считаем после закрытия. До него у радости предварительный статус.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

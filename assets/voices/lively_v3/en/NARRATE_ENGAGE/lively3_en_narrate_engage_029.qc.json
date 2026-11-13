@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_029",
+  "sha256": "781ea4ae9f0b7dbcd5ed9b31d2f6fff35652d1eba93178b3bf815569637c3323",
+  "expected": "Clear explanations without the theatre? Right place. Occasional theatre may escape.",
+  "transcript": "Clear explanations without the theater? Right place. Occasional theater may escape.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07695,
+    "peak": 0.34646,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.122,
+    "sha256": "781ea4ae9f0b7dbcd5ed9b31d2f6fff35652d1eba93178b3bf815569637c3323"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Clear explanations without the theater? Right place. Occasional theater may escape."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

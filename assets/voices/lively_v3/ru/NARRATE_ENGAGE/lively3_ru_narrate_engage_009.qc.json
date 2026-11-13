@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_009",
+  "sha256": "8bbccea09c3b349133869ed5a9dad909827eacca022611d8c739ab7cd90615a4",
+  "expected": "Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+  "transcript": "Открыть приложение и забыть зачем? Это база или я одна такая легенда?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09862,
+    "peak": 0.39709,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "8bbccea09c3b349133869ed5a9dad909827eacca022611d8c739ab7cd90615a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2800000000000002,
+      "text": " Открыть приложение и забыть зачем?"
+    },
+    {
+      "start": 2.2800000000000002,
+      "end": 4.64,
+      "text": " Это база или я одна такая легенда?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

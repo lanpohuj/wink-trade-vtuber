@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_002",
+  "sha256": "0e39f3db9c1559fccb44e74ea9c901d09de75acb6ddfd0f5c35ffaae013b2def",
+  "expected": "This trade lost. Taking a breath, skipping the multi-season excuse.",
+  "transcript": "This trade lost. Taking a breath, skipping the multi-season excuse.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07171,
+    "peak": 0.45848,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.203,
+    "sha256": "0e39f3db9c1559fccb44e74ea9c901d09de75acb6ddfd0f5c35ffaae013b2def"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " This trade lost. Taking a breath, skipping the multi-season excuse."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

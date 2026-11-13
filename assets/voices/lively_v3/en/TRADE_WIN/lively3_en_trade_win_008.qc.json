@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_008",
+  "sha256": "8096908a9750531a7de48669868cc1b14e56fcaa919eb21312d93fc91f629d0f",
+  "expected": "Win's in, dramatic pause over. Restoring normal levels of chatter.",
+  "transcript": "Wind's in! Dramatic pause over. Restoring normal levels of chatter.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08111,
+    "peak": 0.38928,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.219,
+    "sha256": "8096908a9750531a7de48669868cc1b14e56fcaa919eb21312d93fc91f629d0f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Wind's in! Dramatic pause over. Restoring normal levels of chatter."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

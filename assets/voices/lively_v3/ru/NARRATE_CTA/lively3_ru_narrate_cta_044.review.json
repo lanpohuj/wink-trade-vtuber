@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_044",
+  "phrase_id": "lively3_ru_narrate_cta_044",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "При желании можно открыть бота из профиля и спокойно изучить условия. Без гонки.",
+  "tts_text": "[conversational] При желании можно открыть бота из профиля и спокойно изучить условия. Без гонки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "93477203612f31768ff4f92363194f2ac3b87e2f119155886506d2f0fd2f9737",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_044",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_044.mp3",
+  "duration": 4.675813,
+  "sha256": "8bb23916c15e8de02429d3381bf85d00049c6daf33766f9f7e7b5ff3d61787b5",
+  "request_payload": {
+    "text": "[conversational] При желании можно открыть бота из профиля и спокойно изучить условия. Без гонки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

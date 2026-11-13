@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_023",
+  "sha256": "18396ce0a1fcb748778d12c46ef6aef2b0988ee54e90c98c925865cadb5f7b11",
+  "expected": "Здесь окно в одну минуту. Не пытаемся оценить его по первому мгновению.",
+  "transcript": "Здесь окно в одну минуту. Не пытаемся оценить его по первому мгновению.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.09403,
+    "peak": 0.3493,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "18396ce0a1fcb748778d12c46ef6aef2b0988ee54e90c98c925865cadb5f7b11"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Здесь окно в одну минуту. Не пытаемся оценить его по первому мгновению."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

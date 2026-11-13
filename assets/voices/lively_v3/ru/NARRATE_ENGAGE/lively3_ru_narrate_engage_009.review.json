@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_009",
+  "phrase_id": "lively3_ru_narrate_engage_009",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+  "tts_text": "[conversational] Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3fc11736aa7e74426aa96ba61c1948a0f416e9d4dd7c381462cdb59535f88e92",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_009",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_009.mp3",
+  "duration": 4.728063,
+  "sha256": "8bbccea09c3b349133869ed5a9dad909827eacca022611d8c739ab7cd90615a4",
+  "request_payload": {
+    "text": "[conversational] Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

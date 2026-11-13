@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_032",
+  "sha256": "f9b094a0eced0a60bb90b6ecb716e91965222b54d5fd02e4c2f5ec0b0af743b5",
+  "expected": "An explanation should include what I don't know, not just what I see.",
+  "transcript": "An explanation should include what I don't know, not just what I see.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07545,
+    "peak": 0.46226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.272,
+    "sha256": "f9b094a0eced0a60bb90b6ecb716e91965222b54d5fd02e4c2f5ec0b0af743b5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " An explanation should include what I don't know, not just what I see."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

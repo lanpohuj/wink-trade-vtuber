@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_023",
+  "sha256": "d1bfbd69d9c8466ff6e53b6a0c0f0de5a89612b8ec87a9bb67741c431cdc443f",
+  "expected": "Как настроение, чат? Можно ответить честно, а не корпоративным «всё отлично».",
+  "transcript": "Как настроение, Чат! Можно ответить честно, а не корпоративным всё отлично!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08397,
+    "peak": 0.34945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "d1bfbd69d9c8466ff6e53b6a0c0f0de5a89612b8ec87a9bb67741c431cdc443f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Как настроение, Чат! Можно ответить честно, а не корпоративным всё отлично!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

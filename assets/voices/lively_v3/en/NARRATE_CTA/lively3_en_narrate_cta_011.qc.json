@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_011",
+  "sha256": "b8bfcb409ef3d27fc23e6d9ecb59f937c7640ddee33992f56766ffd52f547121",
+  "expected": "Chat, if you're looking for the bot, it's in my bio. Keeping that one low effort.",
+  "transcript": "Chat, if you're looking for the bot, it's in my bio, keeping that one low effort.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07694,
+    "peak": 0.35945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.159,
+    "sha256": "b8bfcb409ef3d27fc23e6d9ecb59f937c7640ddee33992f56766ffd52f547121"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Chat, if you're looking for the bot, it's in my bio, keeping that one low effort."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

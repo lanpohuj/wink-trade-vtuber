@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_037",
+  "sha256": "1a14d653c22b63c7d09a711663436a64e0828d7613f2a74fdcad01c5451ff23c",
+  "expected": "A red close is unpleasant enough without elaborate excuses. We can name it honestly.",
+  "transcript": "Her head close is unpleasant enough without elaborate excuses. We can name it honestly.",
+  "similarity": 0.95,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07969,
+    "peak": 0.35177,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "1a14d653c22b63c7d09a711663436a64e0828d7613f2a74fdcad01c5451ff23c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Her head close is unpleasant enough without elaborate excuses. We can name it honestly."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

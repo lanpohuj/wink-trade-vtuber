@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_001",
+  "phrase_id": "lively3_ru_narrate_pair_001",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
+  "tts_text": "[conversational] Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "02e9eb646c77de5107391bbf7abaab9c7789b78a544f36a788b192ebcbd57dbe",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_001",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_001.mp3",
+  "duration": 4.545187,
+  "sha256": "e8121565c13d325786c62074dbbff0bb13eb07b1a21992cb07b35add1b7ba2a2",
+  "request_payload": {
+    "text": "[conversational] Новая пара, чистый лист. Прошлые впечатления оставляем за дверью.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

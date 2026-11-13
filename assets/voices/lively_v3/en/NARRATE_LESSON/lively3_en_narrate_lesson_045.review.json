@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_045",
+  "phrase_id": "lively3_en_narrate_lesson_045",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "We don't need commentary every second. Sometimes the chart can finish its sentence.",
+  "tts_text": "[lightly playful, smiling] We don't need commentary every second. Sometimes the chart can finish its sentence.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "04d155b9c6a4a3818bc79e3861ca95693d9cdd6cf80809777b3c6c60d3b21145",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_045",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_045.mp3",
+  "duration": 5.172125,
+  "sha256": "ff72aeb147c573ca348932b69ad576e80be0bfead82d6f5de1bcad4bec60c320",
+  "request_payload": {
+    "text": "[lightly playful, smiling] We don't need commentary every second. Sometimes the chart can finish its sentence.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

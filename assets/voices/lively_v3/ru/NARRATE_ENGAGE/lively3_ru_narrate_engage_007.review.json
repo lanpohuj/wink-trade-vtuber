@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_007",
+  "phrase_id": "lively3_ru_narrate_engage_007",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Проверка связи с диваном: удобно устроились? Я тут уже стараюсь.",
+  "tts_text": "[conversational] Проверка связи с диваном: удобно устроились? Я тут уже стараюсь.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6088a8804fd8109d4b3cd20e5793104d424aec6961933329cef18814d5f8e185",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_007",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_007.mp3",
+  "duration": 4.728063,
+  "sha256": "2619f34e9b59b66c9c470106fe630f3703c438ecafd95c7a872f0db275e1df9b",
+  "request_payload": {
+    "text": "[conversational] Проверка связи с диваном: удобно устроились? Я тут уже стараюсь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

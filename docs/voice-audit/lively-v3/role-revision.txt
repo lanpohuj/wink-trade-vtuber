@@ -1,0 +1,41 @@
+# Informational pair changes and genuinely cheerful support acknowledgements.
+NARRATE_PAIR 1 | Так, открыли другую пару. Проверю, есть ли здесь понятный вход. | Right, another pair is open. Let me check whether there's a clear entry here.
+NARRATE_PAIR 2 | Переключились. Сейчас разберём этот график и посмотрим на условия для входа. | We've switched over. Let's look through this chart and check the entry conditions.
+NARRATE_PAIR 3 | Новая пара на экране. Посмотрю движение, потом определимся со входом. | New pair on screen. I'll read the movement before deciding on an entry.
+NARRATE_PAIR 4 | Идём дальше, чат. Эту пару сначала проверю на разных интервалах. | Moving on, chat. I'll check this pair across the timeframes first.
+NARRATE_PAIR 5 | Проверим следующую пару. Начну с общей картины. | Let's check the next pair. I'll start with the bigger picture.
+NARRATE_PAIR 6 | Здесь новый график. Сейчас посмотрю, что подтверждается. | Here's the new chart. Let's see which conditions line up.
+NARRATE_PAIR 7 | Сменили пару. Дайте секунду, разберусь с движением. | Pair changed. Give me a moment to read the price movement.
+NARRATE_PAIR 8 | Поехали дальше. Гляну, есть ли здесь сценарий для входа. | On to the next one. Let's see whether there's a setup here.
+NARRATE_PAIR 9 | Смотрим другой актив. Сначала условия, потом уже решение. | We're looking at another asset. Conditions first, then the decision.
+NARRATE_PAIR 10 | Следующая пара. Сейчас проверю структуру и подходящий интервал. | Next pair. I'll check the structure and the relevant timeframe.
+NARRATE_PAIR 11 | Перешли на другой график. Смотрю, как здесь ведёт себя цена. | We're on a different chart now. I'm looking at how price is behaving here.
+NARRATE_PAIR 12 | Пара сменилась. Разберём эту картину отдельно. | The pair has changed. Let's give this chart a fresh assessment.
+NARRATE_PAIR 13 | Теперь проверю этот вариант. Посмотрим, найдётся ли подходящий момент. | I'll check this option now. Let's see whether a suitable moment develops.
+NARRATE_PAIR 14 | Открыли другую пару, чат. Сейчас посмотрю её внимательнее. | Another pair's open, chat. I'll take a closer look at this one.
+NARRATE_PAIR 15 | Следующий график на экране. Проверяю условия для входа. | Next chart on screen. Checking its entry conditions now.
+NARRATE_PAIR 16 | Ищем дальше. На этой паре проверю направление и точку входа. | Continuing the search. I'll check direction and the entry point on this pair.
+NARRATE_PAIR 17 | Переключились сюда. Сначала посмотрю, какой сценарий здесь уместен. | We've switched to this chart. First, I'll see which setup fits it.
+NARRATE_PAIR 18 | Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа. | We've switched pairs. Let me check whether there's a suitable entry here.
+NARRATE_PAIR 19 | Разберём ещё одну пару. Хочу посмотреть движение целиком. | Let's work through another pair. I want to see the full movement.
+NARRATE_PAIR 20 | Новую пару открыли. Проверю её так же внимательно. | The new pair is open. I'll give it the same careful look.
+NARRATE_PAIR 21 | Поменяли актив. Сверяю интервалы, чтобы видеть общую картину. | We've changed assets. Comparing timeframes to get the full picture.
+NARRATE_PAIR 22 | Идём к следующей паре. Посмотрим, есть ли здесь подтверждение. | On to the next pair. Let's check for confirmation here.
+NARRATE_PAIR 23 | Здесь начинаем новый разбор. Сейчас проверю необходимые условия. | Starting a fresh analysis here. I'll check the conditions we need.
+NARRATE_PAIR 24 | Посмотрим другую пару. Решение примем после разбора. | Let's look at a different pair. We'll decide after checking it.
+NARRATE_PAIR 25 | Так, здесь уже другой график. Дайте мне момент на анализ. | Right, this is the next chart. Give me a moment to analyse it.
+CHAT_REACTION 6 | Спасибо за подписку! Рада, что остаёшься с нами. Добро пожаловать на эфир! | Thanks for following! I'm happy you're staying with us. Welcome to the stream!
+CHAT_REACTION 7 | О, новая подписка! Спасибо за поддержку, очень рада тебя видеть! | Oh, a new follower! Thanks for the support. So glad to have you here!
+CHAT_REACTION 8 | Спасибо, что подписался! Устраивайся поудобнее, будем разбирать графики вместе. | Thank you for following! Get comfortable; we'll work through the charts together.
+CHAT_REACTION 9 | Как приятно, спасибо за подписку! Присоединяйся к разговору, всегда рада вопросам. | That's lovely, thanks for following! Join the conversation; questions are always welcome.
+CHAT_REACTION 10 | Спасибо за фоллоу! Здорово, что наша компания растёт. Оставайся с нами! | Thanks for the follow! It's lovely seeing the community grow. Stick around!
+CHAT_REACTION 11 | Спасибо за подарок! Мне очень приятно. Спасибо, что поддерживаешь эфир! | Thank you for the gift! I really appreciate it. Thanks for supporting the stream!
+CHAT_REACTION 12 | О, какой приятный сюрприз! Спасибо за подарок и за твою поддержку! | Oh, what a lovely surprise! Thank you for the gift and your support!
+CHAT_REACTION 13 | Спасибо большое за подарок! Очень ценю, что вы поддерживаете то, что мы здесь делаем. | Thank you so much for the gift! I really appreciate you supporting what we're doing here.
+CHAT_REACTION 14 | Подарок увидела, спасибо! Это очень приятно. Рада, что ты с нами! | I saw the gift, thank you! That's really kind. I'm glad you're here with us!
+CHAT_REACTION 15 | Спасибо за такой приятный знак внимания! Ты сделал этот момент ещё теплее. | Thank you for such a kind gesture! You've made this moment even nicer.
+CHAT_REACTION 16 | Чат, спасибо за лайки! Ваша поддержка очень радует. Давайте ещё сердечек! | Chat, thanks for the likes! Your support means a lot. Keep those hearts coming!
+CHAT_REACTION 17 | Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку. | I see the hearts, thank you! It's lovely feeling your support.
+CHAT_REACTION 18 | Спасибо за лайки, ребята! Вы делаете этот эфир живым, очень вас ценю! | Thanks for the likes, everyone! You make this stream feel alive. I appreciate you!
+CHAT_REACTION 19 | О, спасибо за сердечки! Рада, что вам нравится. Оставайтесь, будем смотреть вместе! | Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us!
+CHAT_REACTION 20 | Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек! | Thanks for the likes, chat! I really appreciate the support. Keep those hearts coming!

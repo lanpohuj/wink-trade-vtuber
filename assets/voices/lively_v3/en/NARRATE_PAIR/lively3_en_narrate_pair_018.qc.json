@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_018",
+  "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca",
+  "expected": "New location. Old expectations aren't coming through customs.",
+  "transcript": "New location. Old expectations aren't coming through customs.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07108,
+    "peak": 0.363,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.121,
+    "sha256": "676b359e461c674cc215d131da620e84ed2331dd8c8e6202ad5dc5d1f93992ca"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " New location. Old expectations aren't coming through customs."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

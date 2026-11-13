@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_020",
+  "phrase_id": "lively3_ru_trade_loss_020",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Закрылись в минус, неприятно. Сохраним честный счёт и не будем спорить с прошлым.",
+  "tts_text": "[conversational] Закрылись в минус, неприятно. Сохраним честный счёт и не будем спорить с прошлым.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f83ca87deedc4623b48c70efb361462087380ddb5069fb236febffcc4ce32b8b",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_020",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_020.mp3",
+  "duration": 5.041563,
+  "sha256": "f572338fa92e7127805aa9c42b9ac7a58e9ef9b5cf8a7ef99b6342db4c958cde",
+  "request_payload": {
+    "text": "[conversational] Закрылись в минус, неприятно. Сохраним честный счёт и не будем спорить с прошлым.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_020",
+  "sha256": "c2e917a26d339325f5f7ef7efee10167623195e3337624a48d5b507ad1d5c630",
+  "expected": "Вошли вверх после завершённого ретеста. Пробой проверен, теперь наблюдаем сделку.",
+  "transcript": "Вошли вверх после завершенного ретеста. Пробой проверен. Теперь наблюдаем сделку.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.695,
+    "rms": 0.08019,
+    "peak": 0.35015,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "c2e917a26d339325f5f7ef7efee10167623195e3337624a48d5b507ad1d5c630"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Вошли вверх после завершенного ретеста."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Пробой проверен. Теперь наблюдаем сделку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

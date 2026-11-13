@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_052",
+  "sha256": "1fa4923c97ef9279e03a3ebcb062e2c5dda824e0af0c7bd37daa9c50a45f7bee",
+  "expected": "Checking where the facts stop and my imagination starts.",
+  "transcript": "Checking where the facts stop and my imagination starts.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.08483,
+    "peak": 0.47431,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.087,
+    "sha256": "1fa4923c97ef9279e03a3ebcb062e2c5dda824e0af0c7bd37daa9c50a45f7bee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Checking where the facts stop and my imagination starts."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

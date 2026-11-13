@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_021",
+  "sha256": "e5a31fda1c1f7453a8c8e4925a541891dbc8f9403ad612551fa80bd22bc64ea7",
+  "expected": "Watch through to the end, chat. One nice frame isn't a close.",
+  "transcript": "Watch through to the end, chat. One nice frame isn't a close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.07201,
+    "peak": 0.32998,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.195,
+    "sha256": "e5a31fda1c1f7453a8c8e4925a541891dbc8f9403ad612551fa80bd22bc64ea7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Watch through to the end, chat. One nice frame isn't a close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

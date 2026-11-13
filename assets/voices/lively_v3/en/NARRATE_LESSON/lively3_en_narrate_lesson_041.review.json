@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_041",
+  "phrase_id": "lively3_en_narrate_lesson_041",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "If it doesn't make sense, saying it louder won't help. Tried that. Still confusing.",
+  "tts_text": "[casual] If it doesn't make sense, saying it louder won't help. Tried that. Still confusing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "256ae50d0b68422a9e4bf23954d3fc835f989c921dfdf408aa91f91679c1cb51",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_041",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_041.mp3",
+  "duration": 5.30275,
+  "sha256": "fd57b24681bf2acf02eb4b234ac9fc34b996614698f656373f1a0c5db4a60597",
+  "request_payload": {
+    "text": "[casual] If it doesn't make sense, saying it louder won't help. Tried that. Still confusing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

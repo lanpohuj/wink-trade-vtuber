@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_035",
+  "sha256": "587a360af13be62d3b2a2df7824b7ef3f9cb79092bdf353a597da117a5f090ed",
+  "expected": "Opened down after confirmed local reversal. No additional prophecies.",
+  "transcript": "Open down after confirmed local reversal. No additional prophecies",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.07893,
+    "peak": 0.3592,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.29,
+    "sha256": "587a360af13be62d3b2a2df7824b7ef3f9cb79092bdf353a597da117a5f090ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Open down after confirmed local reversal. No additional prophecies"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

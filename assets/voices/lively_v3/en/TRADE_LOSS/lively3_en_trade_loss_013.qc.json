@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_013",
+  "sha256": "5d7fb84c4b3763eb6db593362fdd9f4bf5d774ad5203fb3454b7c4060a2c1d5d",
+  "expected": "Ended in a loss. Not defending every candle after the fact.",
+  "transcript": "Ended in a loss not defending every candle after the fact",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07897,
+    "peak": 0.37576,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.264,
+    "sha256": "5d7fb84c4b3763eb6db593362fdd9f4bf5d774ad5203fb3454b7c4060a2c1d5d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.48,
+      "text": " Ended in a loss not defending every candle after the fact"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

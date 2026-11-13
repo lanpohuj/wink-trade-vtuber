@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_005",
+  "phrase_id": "lively3_en_narrate_lesson_005",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The mistake is rewriting history after an outcome. A loss doesn't need a legend.",
+  "tts_text": "[lightly playful, smiling] The mistake is rewriting history after an outcome. A loss doesn't need a legend.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "80c7842954f69c968bdef6defd9d138c5c61a10474cacd9faeaf8f106c0db223",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_005",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_005.mp3",
+  "duration": 5.172125,
+  "sha256": "33a250aa9a3937e789cf4c9e018b332accd8710294a2a51c5ed233311331ebf8",
+  "request_payload": {
+    "text": "[lightly playful, smiling] The mistake is rewriting history after an outcome. A loss doesn't need a legend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

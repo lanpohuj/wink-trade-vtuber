@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_004",
+  "sha256": "35ad64148813e8a15cc87f74aae5e7453defe3bb16dfa575a17e11b31b4b1a98",
+  "expected": "Bot's in my bio. We are not turning finding a link into a whole lore event.",
+  "transcript": "Bot's in my bio. We are not turning finding a link into a whole lore event.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08474,
+    "peak": 0.35423,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.252,
+    "sha256": "35ad64148813e8a15cc87f74aae5e7453defe3bb16dfa575a17e11b31b4b1a98"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Bot's in my bio. We are not turning finding a link into a whole lore event."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

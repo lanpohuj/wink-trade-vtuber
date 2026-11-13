@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_002",
+  "sha256": "ea085e64fcf88d0df1dc2edc1d24a25dffc59a8d377ce42b3b94699e46a4fd67",
+  "expected": "Если потерял бота, загляни в профиль. Он там, драматического поиска не требуется.",
+  "transcript": "Если потерял бота, загляни в профиль. Он там. Драматического поиска не требуется.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08124,
+    "peak": 0.35794,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "ea085e64fcf88d0df1dc2edc1d24a25dffc59a8d377ce42b3b94699e46a4fd67"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Если потерял бота, загляни в профиль."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Он там. Драматического поиска не требуется."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

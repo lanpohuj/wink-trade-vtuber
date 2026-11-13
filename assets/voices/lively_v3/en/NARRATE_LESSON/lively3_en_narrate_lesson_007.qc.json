@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_007",
+  "sha256": "3e3b0c39f019cb2c6a4071741e8904069e1d9e4085177fbee1f550d68adfaac2",
+  "expected": "The host's confidence is presentation. Check the reasoning, not the vocal tone.",
+  "transcript": "The host's confidence is presentation. Check the reasoning, not the vocal tone.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08314,
+    "peak": 0.4897,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.202,
+    "sha256": "3e3b0c39f019cb2c6a4071741e8904069e1d9e4085177fbee1f550d68adfaac2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " The host's confidence is presentation. Check the reasoning, not the vocal tone."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

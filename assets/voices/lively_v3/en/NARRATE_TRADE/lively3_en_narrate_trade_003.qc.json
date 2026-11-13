@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_003",
+  "sha256": "8ffebdabe4f5f3aca33dc4ed1937335be56dab99d1ecbbce269f9984a670214b",
+  "expected": "Timer's running. I'm perfectly calm. Well, from the outside.",
+  "transcript": "Timer's running. I'm perfectly calm. Well, from the outside...",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.07792,
+    "peak": 0.48023,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.226,
+    "sha256": "8ffebdabe4f5f3aca33dc4ed1937335be56dab99d1ecbbce269f9984a670214b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " Timer's running. I'm perfectly calm. Well, from the outside..."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_004",
+  "sha256": "f3655cec97d7f6ae85286b029279b91abe2d883c1a9a332f48272e802c1bfe98",
+  "expected": "No calling a mid-trade move the ending. This episode isn't over.",
+  "transcript": "No calling a mid-trade move the ending. This episode isn't over.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08422,
+    "peak": 0.40672,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.195,
+    "sha256": "f3655cec97d7f6ae85286b029279b91abe2d883c1a9a332f48272e802c1bfe98"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.3,
+      "text": " No calling a mid-trade move the ending. This episode isn't over."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

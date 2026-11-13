@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_002",
+  "sha256": "179bd4c2879b5e4b822a1a377e152a2225da50ab2d563a3afc30698e92e44ab6",
+  "expected": "Direction and expiry are separate decisions. One confident arrow won't cover both.",
+  "transcript": "Direction and expiry are separate decisions. One confident arrow won't cover both.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08192,
+    "peak": 0.45394,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.291,
+    "sha256": "179bd4c2879b5e4b822a1a377e152a2225da50ab2d563a3afc30698e92e44ab6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Direction and expiry are separate decisions. One confident arrow won't cover both."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

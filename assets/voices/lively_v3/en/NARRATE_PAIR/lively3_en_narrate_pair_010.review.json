@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_010",
+  "phrase_id": "lively3_en_narrate_pair_010",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Pair changed, assumptions reset. Checks start fresh.",
+  "tts_text": "[gently sarcastic, conversational] Pair changed, assumptions reset. Checks start fresh.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "67add15777f76d6afa7881c0d9c085d73e737c1adb384b303618819db20a40fe",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_010",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_010.mp3",
+  "duration": 4.101125,
+  "sha256": "21a0bc9148f0a93385e1651c5a3ddbdcb8b23b85750c35c2345d8807ae96d2d5",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Pair changed, assumptions reset. Checks start fresh.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

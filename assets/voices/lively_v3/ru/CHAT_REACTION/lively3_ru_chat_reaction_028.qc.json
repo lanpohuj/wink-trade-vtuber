@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_028",
+  "sha256": "d742bcfc79da84769a4358b6762584a02e6280c544329615a462809f92dfc6b6",
+  "expected": "Ссылку на бота оставили в шапке. Можно спокойно открыть и прочитать условия.",
+  "transcript": "Ссылку на бота оставили в шапке. Можно спокойно открыть и прочитать условия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08065,
+    "peak": 0.4471,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.11,
+    "sha256": "d742bcfc79da84769a4358b6762584a02e6280c544329615a462809f92dfc6b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Ссылку на бота оставили в шапке. Можно спокойно открыть и прочитать условия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

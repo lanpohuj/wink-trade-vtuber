@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_007",
+  "sha256": "5c3247a69bcba2d1606c36c8dedd8a8c1858d37e4ce49d52b657614c6ff2d825",
+  "expected": "Fifteen-second expiry chosen. Long-range predictions aren't included.",
+  "transcript": "15-second expiry chosen. Long-range predictions aren't included.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08629,
+    "peak": 0.4222,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.235,
+    "sha256": "5c3247a69bcba2d1606c36c8dedd8a8c1858d37e4ce49d52b657614c6ff2d825"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.3,
+      "text": " 15-second expiry chosen. Long-range predictions aren't included."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

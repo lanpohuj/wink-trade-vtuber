@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_066",
+  "sha256": "3650005467baa3f85e58cf8060b893a8ecc897c6e92b51fcea131f27693e3a71",
+  "expected": "Загрузка ещё идёт. Ничего не объявляю, голосовым фокусам сегодня выходной.",
+  "transcript": "Загрузка ещё идёт! Ничего не объявляю! Голосовым фокусом сегодня выходной!",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08795,
+    "peak": 0.34998,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "3650005467baa3f85e58cf8060b893a8ecc897c6e92b51fcea131f27693e3a71"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Загрузка ещё идёт!"
+    },
+    {
+      "start": 1.7,
+      "end": 5.2,
+      "text": " Ничего не объявляю! Голосовым фокусом сегодня выходной!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

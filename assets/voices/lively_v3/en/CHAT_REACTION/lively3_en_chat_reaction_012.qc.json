@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_012",
+  "sha256": "2c6f43debbefa3e31f15bc84d4e80a63cf2f0fa582c4a9ec20824db08c5da426",
+  "expected": "Thanks for the gift! I'm about to look suspiciously pleased.",
+  "transcript": "Thanks for the gift. I'm about to look suspiciously pleased",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.07294,
+    "peak": 0.36746,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.152,
+    "sha256": "2c6f43debbefa3e31f15bc84d4e80a63cf2f0fa582c4a9ec20824db08c5da426"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.3200000000000003,
+      "text": " Thanks for the gift. I'm about to look suspiciously pleased"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

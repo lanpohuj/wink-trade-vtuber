@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_005",
+  "phrase_id": "lively3_en_narrate_cta_005",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Reminder: bot in bio. Instructions are inside, and I won't even interrupt them.",
+  "tts_text": "[lightly playful, smiling] Reminder: bot in bio. Instructions are inside, and I won't even interrupt them.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5ff492e30fd5f3ec4fe9c685c364a2781950ccaa3befa2d4207d966fae31fd2e",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_005",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_005.mp3",
+  "duration": 5.328875,
+  "sha256": "3d72452987e9759620ad9c8cd25ab7620e5b1b33295af027cb50688f3948008b",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Reminder: bot in bio. Instructions are inside, and I won't even interrupt them.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

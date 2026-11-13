@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_009",
+  "phrase_id": "lively3_en_trade_loss_009",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "This trade's a loss. Taking a breath, then back to facts.",
+  "tts_text": "[calm, mildly disappointed] This trade's a loss. Taking a breath, then back to facts.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bd4212d2d84cd2d5c7f9b08062d7eeef2781d196f924927b11ba243c9261d1b4",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_009",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_009.mp3",
+  "duration": 4.414625,
+  "sha256": "b03af02c8f1305b027f98b1c8439928b3c1ca72c1cf63e71a81efd374e7c3485",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] This trade's a loss. Taking a breath, then back to facts.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

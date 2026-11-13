@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_003",
+  "sha256": "4a41be17ad5a77575c3bad3999c5f5226551792a241621f2ec0a888549d4d727",
+  "expected": "Volatility's elevated now. Don't let my calm expression mislead you.",
+  "transcript": "Volatility's elevated now. Don't let my calm expression mislead you.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07596,
+    "peak": 0.58722,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.188,
+    "sha256": "4a41be17ad5a77575c3bad3999c5f5226551792a241621f2ec0a888549d4d727"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Volatility's elevated now. Don't let my calm expression mislead you."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

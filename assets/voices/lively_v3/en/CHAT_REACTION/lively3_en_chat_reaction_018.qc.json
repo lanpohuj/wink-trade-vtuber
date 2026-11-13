@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_018",
+  "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7",
+  "expected": "Support noticed, thank you! The pleased smile is entirely intentional.",
+  "transcript": "Support noticed. Thank you. The please smile is entirely intentional.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09064,
+    "peak": 0.62069,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.062,
+    "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Support noticed. Thank you. The please smile is entirely intentional."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

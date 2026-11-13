@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_007",
+  "sha256": "2619f34e9b59b66c9c470106fe630f3703c438ecafd95c7a872f0db275e1df9b",
+  "expected": "Проверка связи с диваном: удобно устроились? Я тут уже стараюсь.",
+  "transcript": "Проверка связи с диваном. Удобно устроились? Я тут уже стараюсь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07831,
+    "peak": 0.36803,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.108,
+    "sha256": "2619f34e9b59b66c9c470106fe630f3703c438ecafd95c7a872f0db275e1df9b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Проверка связи с диваном. Удобно устроились? Я тут уже стараюсь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

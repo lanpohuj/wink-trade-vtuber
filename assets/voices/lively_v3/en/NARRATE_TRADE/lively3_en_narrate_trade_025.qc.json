@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_025",
+  "sha256": "a548cc01823f1a41a149f70b2b0b480127711563eafa5e53848c223c767012d3",
+  "expected": "We're seeing a process, not a finished outcome. Boring terms, useful distinction.",
+  "transcript": "We're seeing a process, not a finished outcome. Boring terms, useful distinction.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.07557,
+    "peak": 0.39157,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.15,
+    "sha256": "a548cc01823f1a41a149f70b2b0b480127711563eafa5e53848c223c767012d3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " We're seeing a process, not a finished outcome. Boring terms, useful distinction."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

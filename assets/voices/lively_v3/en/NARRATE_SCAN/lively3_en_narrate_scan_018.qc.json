@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_018",
+  "sha256": "45ef559d092c7de717cc9fbb7babd457c6063168b575f0f863b7f46bfb7d449a",
+  "expected": "Not trying to impress the chart. It can show its conditions first.",
+  "transcript": "Not trying to impress the chart. It can show its conditions first.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08019,
+    "peak": 0.63082,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.201,
+    "sha256": "45ef559d092c7de717cc9fbb7babd457c6063168b575f0f863b7f46bfb7d449a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Not trying to impress the chart. It can show its conditions first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

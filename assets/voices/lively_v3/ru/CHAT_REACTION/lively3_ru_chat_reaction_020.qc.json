@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_020",
+  "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b",
+  "expected": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+  "transcript": "Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.217,
+    "rms": 0.08668,
+    "peak": 0.39221,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.117,
+    "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.12,
+      "text": " Чат, спасибо за лайки. Очень приятно видеть вашу поддержку. Давайте еще сердечек."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

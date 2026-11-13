@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_008",
+  "phrase_id": "lively3_ru_narrate_lesson_008",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Если условия изменились, старая идея не получает пожизненный абонемент.",
+  "tts_text": "[conversational] Если условия изменились, старая идея не получает пожизненный абонемент.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9710ebddcaccbfb91b43ffad86224a208890b0a8d5ee9776b34cc86628eca790",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_008",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_008.mp3",
+  "duration": 4.545187,
+  "sha256": "0a3179c5aff7edaa25f10fa67f84890debee4a3a472ac3ccd629cbc4d30fe827",
+  "request_payload": {
+    "text": "[conversational] Если условия изменились, старая идея не получает пожизненный абонемент.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

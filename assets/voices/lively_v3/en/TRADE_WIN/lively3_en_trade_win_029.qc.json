@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_029",
+  "sha256": "288b9584937daaf856f2c31c5b9f7d5b7e95ea2fafbfac0935df85d15e55b313",
+  "expected": "This result's positive. Nice when joy doesn't need announcing in advance.",
+  "transcript": "This results positive. Nice when Joy doesn't need announcing in advance.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08051,
+    "peak": 0.42063,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.185,
+    "sha256": "288b9584937daaf856f2c31c5b9f7d5b7e95ea2fafbfac0935df85d15e55b313"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " This results positive. Nice when Joy doesn't need announcing in advance."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

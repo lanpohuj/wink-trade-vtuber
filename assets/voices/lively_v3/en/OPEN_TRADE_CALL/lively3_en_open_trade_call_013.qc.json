@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_013",
+  "sha256": "0a100a7d7e280b4d3ad54418d7366977ed08879f36e580439db43f503a1ef49d",
+  "expected": "Opened up: breakout checked by the retest. Commentary catching up with the event.",
+  "transcript": "Opened up breakout checked by the retest commentary catching up with the event",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07818,
+    "peak": 0.40879,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.232,
+    "sha256": "0a100a7d7e280b4d3ad54418d7366977ed08879f36e580439db43f503a1ef49d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Opened up breakout checked by the retest commentary catching up with the event"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

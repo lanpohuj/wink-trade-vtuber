@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_004",
+  "phrase_id": "lively3_ru_narrate_volatility_004",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Свежие свечи ходят шире обычного. Вот это и называю резкими движениями.",
+  "tts_text": "[conversational] Свежие свечи ходят шире обычного. Вот это и называю резкими движениями.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3be942342bc5cc0f7545ab43ec84bec44ac59d9c331dc97cdd8759cbefe26854",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_004",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_004.mp3",
+  "duration": 4.597437,
+  "sha256": "76449be22fa14fafbbff84c3f614fdca2941b84599e1a35bc4e68e3c9161974f",
+  "request_payload": {
+    "text": "[conversational] Свежие свечи ходят шире обычного. Вот это и называю резкими движениями.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

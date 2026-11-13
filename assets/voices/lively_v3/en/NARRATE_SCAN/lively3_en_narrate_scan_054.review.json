@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_054",
+  "phrase_id": "lively3_en_narrate_scan_054",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Noticing matters. Not rushing the conclusion matters too.",
+  "tts_text": "[gently sarcastic, conversational] Noticing matters. Not rushing the conclusion matters too.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0130a6b76680dd3b9f12eb938a24580080ebd5fe75e98cb58e60e926c1a82b48",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_054",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_054.mp3",
+  "duration": 4.101125,
+  "sha256": "28296203f1c5ec99daa3fa9f6a8c93b8524c43806a02aa233b5a7ccaf70c7179",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Noticing matters. Not rushing the conclusion matters too.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_016",
+  "sha256": "418b6400f66c36f62a7bf8f6fd6f74971e88d8fe804efccf4aff039f6f6659d3",
+  "expected": "Breakout and closed retest supplied the up setup. Entry has happened.",
+  "transcript": "Breakout and closed retest supplied the upset up entry has happened",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08211,
+    "peak": 0.48808,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.195,
+    "sha256": "418b6400f66c36f62a7bf8f6fd6f74971e88d8fe804efccf4aff039f6f6659d3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Breakout and closed retest supplied the upset up entry has happened"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

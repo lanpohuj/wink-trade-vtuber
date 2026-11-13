@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_039",
+  "sha256": "cdfe5fd10badc6df45df80081e49eed3d7a6cda25cb8aa3f3db96d955cdb5b8a",
+  "expected": "Checks still matter after a good streak. Overconfidence loves those moments.",
+  "transcript": "Checks still matter after a good streak. Overconfidence loves those moments.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07797,
+    "peak": 0.47381,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.172,
+    "sha256": "cdfe5fd10badc6df45df80081e49eed3d7a6cda25cb8aa3f3db96d955cdb5b8a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " Checks still matter after a good streak."
+    },
+    {
+      "start": 2.6,
+      "end": 5.1000000000000005,
+      "text": " Overconfidence loves those moments."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

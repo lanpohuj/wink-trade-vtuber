@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_063",
+  "sha256": "6cd040bb1fe9a66e7fef08d5c95e12441a143247bcd089b204f3d2dc18fd4e92",
+  "expected": "Пустые данные не превращаются в сигнал от красивой интонации. Подождём.",
+  "transcript": "Пустые данные не превращаются в сигнал от красивой интонации. Подождём.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08747,
+    "peak": 0.47565,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.299,
+    "sha256": "6cd040bb1fe9a66e7fef08d5c95e12441a143247bcd089b204f3d2dc18fd4e92"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Пустые данные не превращаются в сигнал от красивой интонации. Подождём."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

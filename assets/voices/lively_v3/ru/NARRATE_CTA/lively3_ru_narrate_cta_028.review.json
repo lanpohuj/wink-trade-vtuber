@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_028",
+  "phrase_id": "lively3_ru_narrate_cta_028",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Где бот, спросит внутренний голос. В шапке профиля, отвечает внешний.",
+  "tts_text": "[conversational] Где бот, спросит внутренний голос. В шапке профиля, отвечает внешний.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "b66f67a01dd6cdabd18879f00b483b15a82602c22e0393810c62545c418a3c5f",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:voice_meta",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_028.mp3",
+  "duration": 5.4595,
+  "sha256": "dbe726b25d8063164d14ea7000b67f85ce59be92b25b9e053a751f5c6a4aa395",
+  "request_payload": {
+    "text": "[conversational] Где бот, спросит внутренний голос. В шапке профиля, отвечает внешний.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

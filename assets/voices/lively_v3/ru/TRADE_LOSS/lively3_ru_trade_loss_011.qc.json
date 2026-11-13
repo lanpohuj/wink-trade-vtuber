@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_011",
+  "sha256": "4d0dd06a83fb095c88d031529f9c5d2e5c6550b6726d97dd6372d91bdf2aff3e",
+  "expected": "Закрыли в минус. Сейчас эмоции на паузу, данные остаются как есть.",
+  "transcript": "Закрыли в минус! Сейчас эмоции на паузу, данные остаются как есть!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.09167,
+    "peak": 0.44833,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.116,
+    "sha256": "4d0dd06a83fb095c88d031529f9c5d2e5c6550b6726d97dd6372d91bdf2aff3e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Закрыли в минус! Сейчас эмоции на паузу, данные остаются как есть!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

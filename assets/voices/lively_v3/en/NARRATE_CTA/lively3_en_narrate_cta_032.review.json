@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_032",
+  "phrase_id": "lively3_en_narrate_cta_032",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "The official bot link's in my bio. Easiest way to avoid a mix-up.",
+  "tts_text": "[natural, conversational] The official bot link's in my bio. Easiest way to avoid a mix-up.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d420e119a01aba9f4d06aede392ec79c5d0e5a9018e68fc372fbc007bca08e33",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_032",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_032.mp3",
+  "duration": 4.101125,
+  "sha256": "3854126fe67aacd6cee49bc9b3bd9e7fe546a8211f76617cf883cfef747c63a2",
+  "request_payload": {
+    "text": "[natural, conversational] The official bot link's in my bio. Easiest way to avoid a mix-up.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

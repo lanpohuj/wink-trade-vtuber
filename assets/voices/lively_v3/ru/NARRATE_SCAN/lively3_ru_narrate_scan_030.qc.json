@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_030",
+  "sha256": "5ce45d0063b9e9c97e006362af2e9a3a6cdc8ea60842e2c8b13ee00a5da6a893",
+  "expected": "Это пока не тот момент, где хочется сказать «имба». Я ещё посмотрю.",
+  "transcript": "Это пока не тот момент, где хочется сказать имба. Я ещё посмотрю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08903,
+    "peak": 0.45114,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.071,
+    "sha256": "5ce45d0063b9e9c97e006362af2e9a3a6cdc8ea60842e2c8b13ee00a5da6a893"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Это пока не тот момент, где хочется сказать имба."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.0,
+      "text": " Я ещё посмотрю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

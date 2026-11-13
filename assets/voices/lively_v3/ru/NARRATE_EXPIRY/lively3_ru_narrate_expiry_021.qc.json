@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_021",
+  "sha256": "2ac800097cb7c6b32e8160ae6497b664ae992d6b796ab9050f5e24980856acbb",
+  "expected": "На эту ситуацию выбрали минуту. Моя любовь к коротким репликам не возражает.",
+  "transcript": "На эту ситуацию выбрали минуту. Моя любовь в коротким репликам не возражает.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07419,
+    "peak": 0.29334,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.167,
+    "sha256": "2ac800097cb7c6b32e8160ae6497b664ae992d6b796ab9050f5e24980856acbb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.3000000000000003,
+      "text": " На эту ситуацию выбрали минуту."
+    },
+    {
+      "start": 2.3000000000000003,
+      "end": 4.8,
+      "text": " Моя любовь в коротким репликам не возражает."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

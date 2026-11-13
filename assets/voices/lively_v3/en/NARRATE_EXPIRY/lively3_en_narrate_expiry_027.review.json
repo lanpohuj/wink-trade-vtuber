@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_027",
+  "phrase_id": "lively3_en_narrate_expiry_027",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two-minute trade. Definitely too early for the final reaction.",
+  "tts_text": "[clear, conversational] Two-minute trade. Definitely too early for the final reaction.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6ae9f8d7eebbce1fee1dd0ca359191b16c6501621fa94f7e716ba62affd55c99",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_027",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_027.mp3",
+  "duration": 3.813812,
+  "sha256": "dcbf78fda595e4645aff735123d9ef4b7b7bb434c8708514d0859743521c398b",
+  "request_payload": {
+    "text": "[clear, conversational] Two-minute trade. Definitely too early for the final reaction.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

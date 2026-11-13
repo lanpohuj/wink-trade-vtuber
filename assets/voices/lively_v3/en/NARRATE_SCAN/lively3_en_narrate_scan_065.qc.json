@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_065",
+  "sha256": "e5ad4dd9412cee6be26dc136364c410327f26ed4978bbbdbf6e2babd95a862c5",
+  "expected": "Data first, conclusions second. Terribly inconvenient, entirely sensible.",
+  "transcript": "Data first. Conclusion second. Terribly inconvenient. Entirely sensible.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08012,
+    "peak": 0.44293,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.08,
+    "sha256": "e5ad4dd9412cee6be26dc136364c410327f26ed4978bbbdbf6e2babd95a862c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Data first. Conclusion second. Terribly inconvenient. Entirely sensible."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

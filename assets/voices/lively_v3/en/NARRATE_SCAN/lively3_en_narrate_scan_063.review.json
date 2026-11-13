@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_063",
+  "phrase_id": "lively3_en_narrate_scan_063",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "A nice delivery won't turn missing data into a signal. We'll wait.",
+  "tts_text": "[warm, relaxed] A nice delivery won't turn missing data into a signal. We'll wait.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8d18c3009afb2d38aea74f50b50728815caf608f9c013d8df2ebcb773a16f617",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_063",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_063.mp3",
+  "duration": 4.101125,
+  "sha256": "f404b3ba197def4ba9eb1f319696cc94eaff610c8581b3e85c5d12ffb1a0b640",
+  "request_payload": {
+    "text": "[warm, relaxed] A nice delivery won't turn missing data into a signal. We'll wait.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_004",
+  "sha256": "0810190f6f6b74dd43d34fab8790cbea820a82d12079ac6a03f33d533f2761a5",
+  "expected": "Expiry's fifteen seconds. Short doesn't mean predictable. It means short.",
+  "transcript": "Expiry's 15 seconds. Short doesn't mean predictable. It means short.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08229,
+    "peak": 0.57428,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.202,
+    "sha256": "0810190f6f6b74dd43d34fab8790cbea820a82d12079ac6a03f33d533f2761a5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Expiry's 15 seconds. Short doesn't mean predictable. It means short."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

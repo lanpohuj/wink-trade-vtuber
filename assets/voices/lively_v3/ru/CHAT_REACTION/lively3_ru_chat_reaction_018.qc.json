@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_018",
+  "sha256": "5017eae31e084cc438736524c8c53d22bb4f47d817000ba66c28cd4ed95d0720",
+  "expected": "Поддержку заметила, спасибо! Я сейчас довольно улыбаюсь, это предусмотрено.",
+  "transcript": "поддержку заметила спасибо я сейчас довольно улыбаюсь это предусмотрено",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09357,
+    "peak": 0.44878,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.102,
+    "sha256": "5017eae31e084cc438736524c8c53d22bb4f47d817000ba66c28cd4ed95d0720"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " поддержку заметила спасибо я сейчас довольно улыбаюсь это предусмотрено"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

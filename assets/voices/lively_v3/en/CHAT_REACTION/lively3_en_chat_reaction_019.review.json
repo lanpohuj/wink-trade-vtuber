@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_019",
+  "phrase_id": "lively3_en_chat_reaction_019",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Oh, thanks for the likes! Lovely knowing you're here.",
+  "tts_text": "[warm, relaxed] Oh, thanks for the likes! Lovely knowing you're here.",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d2bb5386d6386c958c44fc6641e892074536366dbb94f785ce5e7bb6d8cf8201",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_019",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_019.mp3",
+  "duration": 3.500313,
+  "sha256": "a10c4337dd2a2f2b7df3b9e0aac5fcd65e39c0a44d8eca9545557fb8d701dc5e",
+  "request_payload": {
+    "text": "[warm, relaxed] Oh, thanks for the likes! Lovely knowing you're here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

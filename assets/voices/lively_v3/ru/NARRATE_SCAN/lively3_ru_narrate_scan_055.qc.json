@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_055",
+  "sha256": "256e3d5bb0b5af58ed3b2a7dc2e700439d94166cff6ed39f0fc33baf33bb64ed",
+  "expected": "Разбираюсь без режима «я всё поняла с первого взгляда». Он слишком самоуверенный.",
+  "transcript": "Разбираюсь без режима, я все поняла с первого взгляда. Он слишком самоуверенный.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.09851,
+    "peak": 0.42271,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "256e3d5bb0b5af58ed3b2a7dc2e700439d94166cff6ed39f0fc33baf33bb64ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Разбираюсь без режима, я все поняла с первого взгляда. Он слишком самоуверенный."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

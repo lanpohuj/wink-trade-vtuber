@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_007",
+  "sha256": "3c40defa2490ab6f735c30dd78bb7a1de62765a2891cf54d1c355653ebf5cb25",
+  "expected": "Следующий шаг двести сорок два. Проверка входа остаётся обязательной.",
+  "transcript": "Следующий шаг 242. Проверка входа остается обязательной.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08794,
+    "peak": 0.4435,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "3c40defa2490ab6f735c30dd78bb7a1de62765a2891cf54d1c355653ebf5cb25"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.24,
+      "text": " Следующий шаг 242."
+    },
+    {
+      "start": 2.24,
+      "end": 4.8,
+      "text": " Проверка входа остается обязательной."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

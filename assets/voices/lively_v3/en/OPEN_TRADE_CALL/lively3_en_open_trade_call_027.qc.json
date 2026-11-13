@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_call_027",
+  "sha256": "24f357230066aadcb3b90b0d747bd316175b0ff94ccdc90f6da4e09ffd265783",
+  "expected": "Confirmed rejection gave the up entry. Trade's on screen; hands rest.",
+  "transcript": "Confirmed rejection gave the up-entry. Trades on screen. Hands rest.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08191,
+    "peak": 0.35965,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.168,
+    "sha256": "24f357230066aadcb3b90b0d747bd316175b0ff94ccdc90f6da4e09ffd265783"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.46,
+      "text": " Confirmed rejection gave the up-entry."
+    },
+    {
+      "start": 2.46,
+      "end": 4.66,
+      "text": " Trades on screen. Hands rest."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

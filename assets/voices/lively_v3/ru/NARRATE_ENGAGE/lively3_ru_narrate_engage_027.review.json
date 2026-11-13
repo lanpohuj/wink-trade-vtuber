@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_027",
+  "phrase_id": "lively3_ru_narrate_engage_027",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Вайб дня иногда хочется просто перезагрузить. Желательно без установки обновлений.",
+  "tts_text": "[conversational] Вайб дня иногда хочется просто перезагрузить. Желательно без установки обновлений.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d5b2c70b8b33e5e1d5d919c6f7dd673df7d0833a94eabd71064ad555ce5395ee",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_027",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_027.mp3",
+  "duration": 5.328875,
+  "sha256": "f8d0d3fdf2d71e8d5c773cbd543ec201285afee7b45eaa6ead83b563ebe5e0f8",
+  "request_payload": {
+    "text": "[conversational] Вайб дня иногда хочется просто перезагрузить. Желательно без установки обновлений.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

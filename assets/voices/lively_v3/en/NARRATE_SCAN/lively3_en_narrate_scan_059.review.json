@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_059",
+  "phrase_id": "lively3_en_narrate_scan_059",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not drawing in a convenient setup. Let's inspect the one actually here.",
+  "tts_text": "[warm, relaxed] Not drawing in a convenient setup. Let's inspect the one actually here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cf0f9b54fd6ed2586cc93db49f2c25350f415e4bb992178c9f112755b08f276e",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_059",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_059.mp3",
+  "duration": 4.675813,
+  "sha256": "073fd4cbd38d1c2783db1d2ae8044f36849bcb0b2ec728b0401138ebdf07ada2",
+  "request_payload": {
+    "text": "[warm, relaxed] Not drawing in a convenient setup. Let's inspect the one actually here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

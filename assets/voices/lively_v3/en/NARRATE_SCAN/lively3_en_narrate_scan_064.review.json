@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_064",
+  "phrase_id": "lively3_en_narrate_scan_064",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "History's loading. The connection's in absolutely no hurry. Must be nice.",
+  "tts_text": "[casual] History's loading. The connection's in absolutely no hurry. Must be nice.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "926ef96f833bfd82d970f91c6846fc54e5590429cd989d4334169de2b4fdfbd5",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_064",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_064.mp3",
+  "duration": 4.806438,
+  "sha256": "4f55aa32025eb218ece108fb8b44f872c89421f8ed0826247b7c1572d8855778",
+  "request_payload": {
+    "text": "[casual] History's loading. The connection's in absolutely no hurry. Must be nice.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

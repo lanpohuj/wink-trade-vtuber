@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_025",
+  "phrase_id": "lively3_ru_narrate_expiry_025",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь две минуты. Таймер даёт мне шанс выглядеть терпеливой.",
+  "tts_text": "[conversational] Здесь две минуты. Таймер даёт мне шанс выглядеть терпеливой.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f7fb9903daa9879140e0091b7d2bc8fe6f7ed5a1176c352cf1a79974bef44266",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_025",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_025.mp3",
+  "duration": 3.9705,
+  "sha256": "9acac55d88e7ac109a2e5ab6d3c10e26ce908963d1fc98d9759cfda9eddc99fe",
+  "request_payload": {
+    "text": "[conversational] Здесь две минуты. Таймер даёт мне шанс выглядеть терпеливой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_008",
+  "sha256": "bf2ccdd2c4aa831ed2c3715403c81c99f2ec16614787b512be57c402027fd680",
+  "expected": "Red close. Unpleasant moment, no need to give it a legend.",
+  "transcript": "Red close. Unpleasant moment. No need to give it a legend.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07903,
+    "peak": 0.37071,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.285,
+    "sha256": "bf2ccdd2c4aa831ed2c3715403c81c99f2ec16614787b512be57c402027fd680"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.42,
+      "text": " Red close. Unpleasant moment. No need to give it a legend."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

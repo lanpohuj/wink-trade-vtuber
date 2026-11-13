@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_042",
+  "sha256": "c86ffc79b115486c1b605df758834f18f8aa2f44db588617c8f480be45ade8fb",
+  "expected": "Сценарий объясняет решение до результата. Задним числом истории сочиняются слишком легко.",
+  "transcript": "Сценарий объясняет решение до результата. Задним числом истории сочиняются слишком легко.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.09231,
+    "peak": 0.38889,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "c86ffc79b115486c1b605df758834f18f8aa2f44db588617c8f480be45ade8fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " Сценарий объясняет решение до результата."
+    },
+    {
+      "start": 2.5,
+      "end": 5.5,
+      "text": " Задним числом истории сочиняются слишком легко."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

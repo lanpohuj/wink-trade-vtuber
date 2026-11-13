@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_057",
+  "sha256": "b5b7fac22c924f5003653cab6eef5a7084366aad2bf1d4826b0f3ab74948239c",
+  "expected": "График пока в режиме загадочного краша. Ну окей, я тоже не тороплюсь.",
+  "transcript": "График пока в режиме загадочного краша. Ну, окей. Я тоже не тороплюсь.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.07446,
+    "peak": 0.28703,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.121,
+    "sha256": "b5b7fac22c924f5003653cab6eef5a7084366aad2bf1d4826b0f3ab74948239c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.88,
+      "text": " График пока в режиме загадочного краша."
+    },
+    {
+      "start": 2.88,
+      "end": 5.38,
+      "text": " Ну, окей. Я тоже не тороплюсь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

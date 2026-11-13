@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_007",
+  "phrase_id": "lively3_en_trade_win_007",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Trade closed green. Yes, I'm glowing a little. There's a reason.",
+  "tts_text": "[warm, relaxed] Trade closed green. Yes, I'm glowing a little. There's a reason.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "adc26aa344c3ca6c9ef83defa89f2873fbad719380091ce0f9dbd8cb18bbe135",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_007",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_007.mp3",
+  "duration": 4.858688,
+  "sha256": "12f5d985a8d0d56342cdb7547bbcd6669adb9684062abaeca8f46b4f3b2ab9f2",
+  "request_payload": {
+    "text": "[warm, relaxed] Trade closed green. Yes, I'm glowing a little. There's a reason.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

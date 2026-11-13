@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_001",
+  "sha256": "c0ff32ceb18a7ace83b940906c976f1fd1cd534d2120808d1776c5ddc43874b1",
+  "expected": "Trade's running. Not celebrating yet, despite my personality requesting stage time.",
+  "transcript": "Trade's running. Not celebrating yet, despite my personality requesting stage time.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07948,
+    "peak": 0.46429,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.312,
+    "sha256": "c0ff32ceb18a7ace83b940906c976f1fd1cd534d2120808d1776c5ddc43874b1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Trade's running. Not celebrating yet, despite my personality requesting stage time."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

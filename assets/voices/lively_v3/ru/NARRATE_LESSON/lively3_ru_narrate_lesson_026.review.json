@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_026",
+  "phrase_id": "lively3_ru_narrate_lesson_026",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Сравнивать сценарии лучше до входа. После него мнение уже дороже обходится.",
+  "tts_text": "[conversational] Сравнивать сценарии лучше до входа. После него мнение уже дороже обходится.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1bff8c67e3aa819b92580b218862bb1efa1ed92fb1da3c933e268a8f213dbecb",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_026",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_026.mp3",
+  "duration": 4.806438,
+  "sha256": "b827792658d35f08c5dd25c78103de324469b51b3786472610d8964277ef0307",
+  "request_payload": {
+    "text": "[conversational] Сравнивать сценарии лучше до входа. После него мнение уже дороже обходится.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_019",
+  "sha256": "c0d09c453d00d330ea034ed0578847eab4a3026f2a98c2a24e54c104626eff2c",
+  "expected": "О, спасибо за лайки! Приятно знать, что вы здесь.",
+  "transcript": "Спасибо за лайки! Приятно знать, что вы здесь!",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07527,
+    "peak": 0.32885,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.179,
+    "sha256": "c0d09c453d00d330ea034ed0578847eab4a3026f2a98c2a24e54c104626eff2c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.44,
+      "text": " Спасибо за лайки! Приятно знать, что вы здесь!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

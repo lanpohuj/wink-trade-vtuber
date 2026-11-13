@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_038",
+  "sha256": "cf3c4681c7840f6cd8a82374238fe2119fd370bb85a70d8dc70f7a7c51131fec",
+  "expected": "Вошли вниз после разворотного подтверждения. У результата будет отдельная реплика.",
+  "transcript": "Вошли вниз после разворотного подтверждения. У результаты будет отдельная реплика.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09141,
+    "peak": 0.35948,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.079,
+    "sha256": "cf3c4681c7840f6cd8a82374238fe2119fd370bb85a70d8dc70f7a7c51131fec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Вошли вниз после разворотного подтверждения."
+    },
+    {
+      "start": 2.72,
+      "end": 4.72,
+      "text": " У результаты будет отдельная реплика."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

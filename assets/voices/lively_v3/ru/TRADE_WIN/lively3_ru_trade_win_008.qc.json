@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_008",
+  "sha256": "a89b5ecfb4180a64750721d7b24a094ab1c73779e99d44ee75095c554ecbed93",
+  "expected": "Плюс есть, драматичная пауза закончилась. Возвращаю обычную разговорчивость.",
+  "transcript": "Хлёс есть? Драматичная пауза закончилась. Возвращаю обычную разговорчивость.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08015,
+    "peak": 0.34788,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "a89b5ecfb4180a64750721d7b24a094ab1c73779e99d44ee75095c554ecbed93"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.06,
+      "text": " Хлёс есть? Драматичная пауза закончилась."
+    },
+    {
+      "start": 3.06,
+      "end": 5.0600000000000005,
+      "text": " Возвращаю обычную разговорчивость."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

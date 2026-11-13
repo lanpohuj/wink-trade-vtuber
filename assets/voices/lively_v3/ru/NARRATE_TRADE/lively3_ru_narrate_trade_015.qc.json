@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_015",
+  "sha256": "5ca6b9229b446b7a07a2b4575a2cadc74c7a8eccf7dc8fb1e35035dc3b20b52c",
+  "expected": "У нас пауза между решением и результатом. Не самая громкая часть, зато настоящая.",
+  "transcript": "У нас пауза между решением и результатом. Не самая громкая часть, зато настоящее.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.695,
+    "rms": 0.08323,
+    "peak": 0.33078,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "5ca6b9229b446b7a07a2b4575a2cadc74c7a8eccf7dc8fb1e35035dc3b20b52c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " У нас пауза между решением и результатом."
+    },
+    {
+      "start": 2.7,
+      "end": 5.7,
+      "text": " Не самая громкая часть, зато настоящее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

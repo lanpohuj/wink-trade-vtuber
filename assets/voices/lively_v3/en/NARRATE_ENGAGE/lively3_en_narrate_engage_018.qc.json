@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_018",
+  "sha256": "25fb1d09623900602c68d983178785e662b304477dabf1bdfe52e122c63be4c4",
+  "expected": "You're allowed to disagree with me. Even after an exceptionally elegant eyebrow raise.",
+  "transcript": "You're allowed to disagree with me, even after an exceptionally elegant eyebrow raise.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07201,
+    "peak": 0.43364,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "25fb1d09623900602c68d983178785e662b304477dabf1bdfe52e122c63be4c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " You're allowed to disagree with me, even after an exceptionally elegant eyebrow raise."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

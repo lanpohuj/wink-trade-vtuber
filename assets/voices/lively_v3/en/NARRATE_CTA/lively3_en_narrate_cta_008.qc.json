@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_008",
+  "sha256": "4652f63c4a7e9105f2e617b70e3d489377b178be144023a9c1b4f95eb0aa1a57",
+  "expected": "The bot's waiting in my bio. More patient than me watching a loading screen.",
+  "transcript": "The bot's waiting in my bio. More patient than me watching a loading screen.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08871,
+    "peak": 0.43418,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.17,
+    "sha256": "4652f63c4a7e9105f2e617b70e3d489377b178be144023a9c1b4f95eb0aa1a57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " The bot's waiting in my bio. More patient than me watching a loading screen."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

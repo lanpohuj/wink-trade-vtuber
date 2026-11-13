@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_037",
+  "phrase_id": "lively3_en_narrate_trade_037",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Chat's mood doesn't determine the result. The trade gets its own outcome.",
+  "tts_text": "[lightly playful, smiling] Chat's mood doesn't determine the result. The trade gets its own outcome.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1f849448dac276c4c3b0cc1d5178329036edfe3c9320009be90f8c6ace13d9e5",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_037",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_037.mp3",
+  "duration": 4.23175,
+  "sha256": "ee182a0e954a72d35b05cf5326552e5acd9ff3a96599218c926aa6b3c320c7a8",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Chat's mood doesn't determine the result. The trade gets its own outcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

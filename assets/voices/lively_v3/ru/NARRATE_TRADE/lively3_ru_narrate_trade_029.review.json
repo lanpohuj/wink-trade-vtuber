@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_029",
+  "phrase_id": "lively3_ru_narrate_trade_029",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Я пока наблюдатель с микрофоном. Очень разговорчивый, но всё-таки наблюдатель.",
+  "tts_text": "[conversational] Я пока наблюдатель с микрофоном. Очень разговорчивый, но всё-таки наблюдатель.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c740d853c8f6769a90ad5493e9575e1f674eb644669a44afc7fc14d19cce2e5a",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:voice_meta",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_029.mp3",
+  "duration": 5.041563,
+  "sha256": "64b2932d5ee90389c3a64323f4de535430792e29e34d7180e179b873a607ffd6",
+  "request_payload": {
+    "text": "[conversational] Я пока наблюдатель с микрофоном. Очень разговорчивый, но всё-таки наблюдатель.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

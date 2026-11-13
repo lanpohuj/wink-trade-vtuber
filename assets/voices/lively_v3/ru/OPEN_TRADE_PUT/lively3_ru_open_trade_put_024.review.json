@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_024",
+  "phrase_id": "lively3_ru_open_trade_put_024",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Сделка вниз открыта. Сценарий — подтверждённый отбой от границы диапазона.",
+  "tts_text": "[conversational] Сделка вниз открыта. Сценарий — подтверждённый отбой от границы диапазона.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "29b81d55c0040bed5544675d2743dde5d5b920278410157499e49434b3286ad3",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_024",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_024.mp3",
+  "duration": 4.545187,
+  "sha256": "88006201f49269c2f10516560c77de0ab27f38efc58837b17d6f76877342d878",
+  "request_payload": {
+    "text": "[conversational] Сделка вниз открыта. Сценарий — подтверждённый отбой от границы диапазона.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_026",
+  "phrase_id": "lively3_en_open_trade_call_026",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Up opening happened. This was the range-boundary rejection setup.",
+  "tts_text": "[clear, conversational] Up opening happened. This was the range-boundary rejection setup.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "51eb37db8800ccd2f853567f0d31df209c70c168a09757916851a307bd188d02",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_026",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_026.mp3",
+  "duration": 4.414625,
+  "sha256": "b9adcd510f10ae14d5db305ad1e42dfc0f95c9372737bc07d298d13848376f44",
+  "request_payload": {
+    "text": "[clear, conversational] Up opening happened. This was the range-boundary rejection setup.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

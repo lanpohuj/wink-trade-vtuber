@@ -1,4 +1,5 @@
 # Audience 20-25. Editorial replacement of meme-heavy lines rejected by owner.
+NARRATE_SCAN 1 | Не, секунду. Я сначала всю картинку проверю, а потом уже решим с входом. | Okay, I'm locked in. A nice-looking candle isn't the whole setup. Let me check the rest.
 NARRATE_SCAN 2 | Палец уже хочет жать, я ещё думаю. Не, дружище, ты тут не главный. | Clicking finger's getting ahead of itself. Not yet. I'm still checking.
 NARRATE_SCAN 27 | Так, спокойно смотрим дальше. Во всяком случае, я стараюсь не торопиться. | Keeping a level head and looking again. Attempting the level-head part, anyway.
 NARRATE_SCAN 64 | История грузится. Интернет сегодня никуда не торопится. Везёт ему. | History's loading. The connection's in absolutely no hurry. Must be nice.

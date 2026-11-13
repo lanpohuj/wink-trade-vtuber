@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_036",
+  "sha256": "cf51382cbc0dc34a5acb3ff6c4fa63b114b7a66301efd43fcd972dfa5c0eb98a",
+  "expected": "For newcomers: link in bio, then the bot and its instructions.",
+  "transcript": "For newcomers, link in bio, then the bot and its instructions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07386,
+    "peak": 0.37981,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.265,
+    "sha256": "cf51382cbc0dc34a5acb3ff6c4fa63b114b7a66301efd43fcd972dfa5c0eb98a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " For newcomers, link in bio, then the bot and its instructions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

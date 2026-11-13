@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_032",
+  "sha256": "e0a83beeb9d7b3c83ba4fc10ed736ea8c942ffa59e3cf135d4cd81e5ad6fa7f8",
+  "expected": "A calm look helps now. The theatrical eye-roll can wait.",
+  "transcript": "A calm look helps now. The theatrical eye roll can wait.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.09346,
+    "peak": 0.76055,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.222,
+    "sha256": "e0a83beeb9d7b3c83ba4fc10ed736ea8c942ffa59e3cf135d4cd81e5ad6fa7f8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " A calm look helps now. The theatrical eye roll can wait."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

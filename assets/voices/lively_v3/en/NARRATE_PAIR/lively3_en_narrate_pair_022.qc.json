@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_022",
+  "sha256": "cef32df753778a40530e7361d241ce9ce4f88cc0501f4cf5fd7cb5f16d3c1b39",
+  "expected": "Different chart, different vibe. Give me a second to work it out.",
+  "transcript": "Different chart, different vibe. Give me a second to work it out.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08397,
+    "peak": 0.58457,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.164,
+    "sha256": "cef32df753778a40530e7361d241ce9ce4f88cc0501f4cf5fd7cb5f16d3c1b39"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Different chart, different vibe. Give me a second to work it out."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

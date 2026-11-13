@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_011",
+  "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624",
+  "expected": "Let's visit another chart. Maybe the conversation's clearer here.",
+  "transcript": "Let's visit another chart. Maybe the conversation's clearer here.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07614,
+    "peak": 0.37701,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.261,
+    "sha256": "c1d7263e434e1334bebadb51525b250beefcc3d7c17fe2a1ac9ca303f1aed624"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Let's visit another chart. Maybe the conversation's clearer here."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

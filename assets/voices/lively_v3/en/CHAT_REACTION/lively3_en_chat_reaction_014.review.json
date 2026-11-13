@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_014",
+  "phrase_id": "lively3_en_chat_reaction_014",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Gift spotted, genuinely lovely! Thanks for supporting the stream.",
+  "tts_text": "[gently sarcastic, conversational] Gift spotted, genuinely lovely! Thanks for supporting the stream.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a60569498dbe1a31f937055c9adcade1a579cde93eec051f64cd3106b9796375",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_014",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_014.mp3",
+  "duration": 4.362375,
+  "sha256": "f4c51792662c27b884d9c5db171e3f14323920005644659b350046af3399b9fc",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Gift spotted, genuinely lovely! Thanks for supporting the stream.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

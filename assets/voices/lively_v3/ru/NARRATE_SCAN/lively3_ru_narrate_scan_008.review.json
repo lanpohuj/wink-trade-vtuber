@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_008",
+  "phrase_id": "lively3_ru_narrate_scan_008",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Вход на одном «ну вроде» — скип. Хочу нормально понять картинку.",
+  "tts_text": "[conversational] Вход на одном «ну вроде» — скип. Хочу нормально понять картинку.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "295405b1205c98330f325714fa8a27859322b15585dad66cd268b48a45c9c5dd",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:skip",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_008.mp3",
+  "duration": 4.728063,
+  "sha256": "5727308fd3a1609687e976131caba61787c9321d5cb4a5b22986713f4cdd883d",
+  "request_payload": {
+    "text": "[conversational] Вход на одном «ну вроде» — скип. Хочу нормально понять картинку.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

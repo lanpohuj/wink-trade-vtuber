@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_021",
+  "phrase_id": "lively3_ru_open_trade_call_021",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Открылись вверх по подтверждённому отбою диапазона. Сценарий назван, ждём факт.",
+  "tts_text": "[conversational] Открылись вверх по подтверждённому отбою диапазона. Сценарий назван, ждём факт.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "dd8d61ab7673fc6fe0989f176075eb956f8fbd3e52234e0500cb9a7c862f7fa5",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_021",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_021.mp3",
+  "duration": 5.903563,
+  "sha256": "4c9814f4d867c4d2fbce60aa2e1cbdbd138e95d8827e87bc027e573a06b72459",
+  "request_payload": {
+    "text": "[conversational] Открылись вверх по подтверждённому отбою диапазона. Сценарий назван, ждём факт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

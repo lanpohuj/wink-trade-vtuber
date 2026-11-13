@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_030",
+  "sha256": "cbb6bd0a6c8e52db6ded4bd419e09c0b313fc3022d510f34b4c2d8ec6bfe9805",
+  "expected": "A precise number on screen doesn't make the conclusion infallible.",
+  "transcript": "A precise number on screen doesn't make the conclusion infallible.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08618,
+    "peak": 0.39486,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.355,
+    "sha256": "cbb6bd0a6c8e52db6ded4bd419e09c0b313fc3022d510f34b4c2d8ec6bfe9805"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A precise number on screen doesn't make the conclusion infallible."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

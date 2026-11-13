@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_017",
+  "phrase_id": "lively3_en_narrate_trade_017",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Watching on. No conclusions board until the result's closed.",
+  "tts_text": "[lightly playful, smiling] Watching on. No conclusions board until the result's closed.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b0a28956b0fc10cd25ef1c0018d70ce02497ab34f75d908e4ade4ae9102cf4f6",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_017",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_017.mp3",
+  "duration": 4.101125,
+  "sha256": "50c7c338997d76a3dded2ea635430ff5a51381eabcfa03f3aa01164ebddc8f91",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Watching on. No conclusions board until the result's closed.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

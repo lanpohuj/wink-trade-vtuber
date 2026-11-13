@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_026",
+  "sha256": "d4beaa61999dd2df48c045a05ee4f5561d0ad125ec1aa9220ef99ee48760fad8",
+  "expected": "Two minutes selected. That's an expiry, not an outcome promise.",
+  "transcript": "Two minutes selected. That's an expiry, not an outcome promise.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07959,
+    "peak": 0.3934,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.172,
+    "sha256": "d4beaa61999dd2df48c045a05ee4f5561d0ad125ec1aa9220ef99ee48760fad8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Two minutes selected. That's an expiry, not an outcome promise."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_006",
+  "sha256": "eccedc742a6fb66b1f7c612b5066c2581f1fad6b477df525c8e7a7f6f9c08995",
+  "expected": "My bio takes you straight to the bot. No scrolling through ancient messages.",
+  "transcript": "My bio takes you straight to the bot! No scrolling through ancient messages!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08215,
+    "peak": 0.43814,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.298,
+    "sha256": "eccedc742a6fb66b1f7c612b5066c2581f1fad6b477df525c8e7a7f6f9c08995"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " My bio takes you straight to the bot! No scrolling through ancient messages!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_002",
+  "phrase_id": "lively3_ru_narrate_expiry_002",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбраны пятнадцать секунд. Даже мой сарказм должен уложиться компактно.",
+  "tts_text": "[conversational] Выбраны пятнадцать секунд. Даже мой сарказм должен уложиться компактно.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1769aa484d7978eee26cfceb4a4b29001b7cb56838ac25df7b74205a33a7ba89",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_002",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_002.mp3",
+  "duration": 4.414625,
+  "sha256": "d5deb85ab7075c78d0e16b2e63fad8238bc1848c9d1003253a3d293b3cc73178",
+  "request_payload": {
+    "text": "[conversational] Выбраны пятнадцать секунд. Даже мой сарказм должен уложиться компактно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

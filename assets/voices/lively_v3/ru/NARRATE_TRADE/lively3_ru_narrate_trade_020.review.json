@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_020",
+  "phrase_id": "lively3_ru_narrate_trade_020",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Давайте без «ну всё, изи» посреди сделки. Финал ещё не вышел, алло.",
+  "tts_text": "[conversational] Давайте без «ну всё, изи» посреди сделки. Финал ещё не вышел, алло.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "67b1aa55bc0bc052da3bd5b4a3d0fc90edf5fad5235b70634d4fd2e2cbfaf543",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_020",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_020.mp3",
+  "duration": 4.466875,
+  "sha256": "8f4afd323ce3ea20097345f16fa619cc69f45e114a46a1e727695c65f3e10cfd",
+  "request_payload": {
+    "text": "[conversational] Давайте без «ну всё, изи» посреди сделки. Финал ещё не вышел, алло.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

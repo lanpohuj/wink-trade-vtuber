@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_009",
+  "sha256": "eb5f593b7dc6d78be24fe6797e828b3f05081914ad660529981461e4cfd7b7fe",
+  "expected": "Тут уже не добавишь секунды красивым взглядом. Проверять не буду.",
+  "transcript": "Тут уже не добавишь секунды красивым взглядом? Проверять не буду!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.09626,
+    "peak": 0.42731,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "eb5f593b7dc6d78be24fe6797e828b3f05081914ad660529981461e4cfd7b7fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.64,
+      "text": " Тут уже не добавишь секунды красивым взглядом?"
+    },
+    {
+      "start": 2.64,
+      "end": 3.9,
+      "text": " Проверять не буду!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

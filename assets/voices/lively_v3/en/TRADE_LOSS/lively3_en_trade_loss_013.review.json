@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_013",
+  "phrase_id": "lively3_en_trade_loss_013",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Ended in a loss. Not defending every candle after the fact.",
+  "tts_text": "[calm, mildly disappointed] Ended in a loss. Not defending every candle after the fact.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ec14115913c0294b9af691a7463fa4c89bcfdfb833becdcc5c18cf6d60d25239",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_013",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_013.mp3",
+  "duration": 3.944375,
+  "sha256": "5d7fb84c4b3763eb6db593362fdd9f4bf5d774ad5203fb3454b7c4060a2c1d5d",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Ended in a loss. Not defending every candle after the fact.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

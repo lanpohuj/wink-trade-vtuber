@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_038",
+  "phrase_id": "lively3_en_narrate_cta_038",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Bot link in bio. One thing on the internet is actually where it belongs.",
+  "tts_text": "[gently sarcastic, conversational] Bot link in bio. One thing on the internet is actually where it belongs.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fc6c144caea41920480fa730f364b7eea9946752eb7008afa03a574a26378258",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_038",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_038.mp3",
+  "duration": 4.649687,
+  "sha256": "8378f5ce775d39b42719a18d1b670d944fd7fe2c0956ce2b18343b23c2011343",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Bot link in bio. One thing on the internet is actually where it belongs.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

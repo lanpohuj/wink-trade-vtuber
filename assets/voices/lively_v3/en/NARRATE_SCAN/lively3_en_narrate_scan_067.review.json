@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_067",
+  "phrase_id": "lively3_en_narrate_scan_067",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not enough data yet. Charisma isn't an approved gap filler.",
+  "tts_text": "[warm, relaxed] Not enough data yet. Charisma isn't an approved gap filler.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "54ece16de442e525b800d2992b90bb071c4d4c90889022a1bff8a616c7919400",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_067",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_067.mp3",
+  "duration": 3.944375,
+  "sha256": "637e02a0e8b7d10a8f795e65dd2aacbc0b10bf39b8656268ebb738c5b02de9e0",
+  "request_payload": {
+    "text": "[warm, relaxed] Not enough data yet. Charisma isn't an approved gap filler.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_014",
+  "phrase_id": "lively3_en_narrate_pair_014",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New main character. We're not writing its storyline for it.",
+  "tts_text": "[gently sarcastic, conversational] New main character. We're not writing its storyline for it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "24d7733d98803152d657bbf75e4bbfbf6f0d5b41250a42aca336bda19573db07",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_014",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_014.mp3",
+  "duration": 3.892125,
+  "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] New main character. We're not writing its storyline for it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

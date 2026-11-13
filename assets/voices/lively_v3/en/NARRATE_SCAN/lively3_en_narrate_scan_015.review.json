@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_015",
+  "phrase_id": "lively3_en_narrate_scan_015",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I enjoy a good speech. Let's find an actual idea before delivering one.",
+  "tts_text": "[warm, relaxed] I enjoy a good speech. Let's find an actual idea before delivering one.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5cfe47f6db8ed718081229e314bf1a904b39a69ca7a7532e4c8c67471de21321",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_015",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_015.mp3",
+  "duration": 4.675813,
+  "sha256": "abc6c89b7c9889cb3a443dc2b8161961e6f3a14083e8cdb4de2694e359c98c0f",
+  "request_payload": {
+    "text": "[warm, relaxed] I enjoy a good speech. Let's find an actual idea before delivering one.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

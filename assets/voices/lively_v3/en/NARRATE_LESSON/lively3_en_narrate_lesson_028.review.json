@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_028",
+  "phrase_id": "lively3_en_narrate_lesson_028",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A trade has a chosen expiry. My emotional monologue won't extend it.",
+  "tts_text": "[natural, conversational] A trade has a chosen expiry. My emotional monologue won't extend it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0bd5807e09cd51b836390f548190189f5563d7bbcb0778867092b6a11e34923c",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_028",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_028.mp3",
+  "duration": 4.806438,
+  "sha256": "911be9db338f257f1b690eb809d4dfd3270e93d990c752093913f8d2e1f0299a",
+  "request_payload": {
+    "text": "[natural, conversational] A trade has a chosen expiry. My emotional monologue won't extend it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

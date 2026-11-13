@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_020",
+  "phrase_id": "lively3_ru_open_trade_put_020",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открыли вниз после ретеста с подтверждением. Всё, пафос оставлю за кадром.",
+  "tts_text": "[conversational] Открыли вниз после ретеста с подтверждением. Всё, пафос оставлю за кадром.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ed6a66b4343bfea77ae1e0c8e6d3975f85dc4e2d8f3b3356c4c13420ac6a2a09",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_020",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_020.mp3",
+  "duration": 4.728063,
+  "sha256": "eb51c750af078b84ac79215e0cdd02c8d5557970e167a146f2d72ed83d142c44",
+  "request_payload": {
+    "text": "[conversational] Открыли вниз после ретеста с подтверждением. Всё, пафос оставлю за кадром.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_021",
+  "phrase_id": "lively3_en_narrate_expiry_021",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "A minute chosen for this situation. My fondness for short comments approves.",
+  "tts_text": "[clear, conversational] A minute chosen for this situation. My fondness for short comments approves.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d623fd26fcda3490d6e4fe70aa6be0acfb59f2ecd2558f497e68952a94c33e2c",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_021",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_021.mp3",
+  "duration": 4.858688,
+  "sha256": "43779866dc280e2834ac636717d6ee810e94be3eb4bf1bbacc889418f6d34a4b",
+  "request_payload": {
+    "text": "[clear, conversational] A minute chosen for this situation. My fondness for short comments approves.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

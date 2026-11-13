@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_040",
+  "sha256": "c90c8d35a8f8dc029ed14012b56fe4a80f79252248375a09a8b12e58701faba4",
+  "expected": "I like ideas I can explain simply. Checking this one now.",
+  "transcript": "I like ideas I can explain simply checking this one now",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.082,
+    "peak": 0.3715,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.161,
+    "sha256": "c90c8d35a8f8dc029ed14012b56fe4a80f79252248375a09a8b12e58701faba4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7600000000000002,
+      "text": " I like ideas I can explain simply checking this one now"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

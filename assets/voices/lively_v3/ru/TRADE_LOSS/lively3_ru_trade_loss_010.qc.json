@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_010",
+  "sha256": "03557e161840e3820d6c55409c9360aa56e9774f7e03816a5a4c39dd95b281a2",
+  "expected": "Минус есть, скрывать нечего. Следующее решение проверяется отдельно.",
+  "transcript": "Минус есть, скрывать нечего. Следующее решение проверяется отдельно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.07811,
+    "peak": 0.32681,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "03557e161840e3820d6c55409c9360aa56e9774f7e03816a5a4c39dd95b281a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " Минус есть, скрывать нечего."
+    },
+    {
+      "start": 2.68,
+      "end": 5.28,
+      "text": " Следующее решение проверяется отдельно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

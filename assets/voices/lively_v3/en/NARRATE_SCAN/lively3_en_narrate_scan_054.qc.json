@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_054",
+  "sha256": "28296203f1c5ec99daa3fa9f6a8c93b8524c43806a02aa233b5a7ccaf70c7179",
+  "expected": "Noticing matters. Not rushing the conclusion matters too.",
+  "transcript": "Noticing matters, not rushing the conclusion matters too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08078,
+    "peak": 0.38686,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.301,
+    "sha256": "28296203f1c5ec99daa3fa9f6a8c93b8524c43806a02aa233b5a7ccaf70c7179"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Noticing matters, not rushing the conclusion matters too."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_020",
+  "phrase_id": "lively3_en_chat_reaction_020",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Hearts received, thank you! Even the sarcastic host gets a little touched.",
+  "tts_text": "[natural, conversational] Hearts received, thank you! Even the sarcastic host gets a little touched.",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "516caabe52d32839b3b5ca30826d8e1ca746adb4cc3f60adc675c08dfae952a0",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_020",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_020.mp3",
+  "duration": 4.858688,
+  "sha256": "64040029b0b0f9a37de502409849fcf344de26c95f41e7b6d1da815769e3d3f7",
+  "request_payload": {
+    "text": "[natural, conversational] Hearts received, thank you! Even the sarcastic host gets a little touched.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

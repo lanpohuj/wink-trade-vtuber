@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_044",
+  "sha256": "ec864801c78df57a426adda3bc36ab1771cf15b3082d70ae2edbbb50c97291df",
+  "expected": "Посмотреть и не нажать — тоже вариант, прикиньте. Контент от этого не сломается.",
+  "transcript": "Посмотрите, не нажать тоже вариант, прикиньте. Контент от этого не сломается.",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08678,
+    "peak": 0.36812,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.092,
+    "sha256": "ec864801c78df57a426adda3bc36ab1771cf15b3082d70ae2edbbb50c97291df"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Посмотрите, не нажать тоже вариант, прикиньте."
+    },
+    {
+      "start": 3.12,
+      "end": 5.12,
+      "text": " Контент от этого не сломается."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

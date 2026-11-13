@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_008",
+  "sha256": "331b3f4b37e39a1eeacda8e59c661c931865b856f0ef5a4eaa1a91ad3d717318",
+  "expected": "Changed conditions don't grant the old idea lifetime membership.",
+  "transcript": "Changed conditions don't grant the old idea lifetime membership.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07642,
+    "peak": 0.36419,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.194,
+    "sha256": "331b3f4b37e39a1eeacda8e59c661c931865b856f0ef5a4eaa1a91ad3d717318"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Changed conditions don't grant the old idea lifetime membership."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

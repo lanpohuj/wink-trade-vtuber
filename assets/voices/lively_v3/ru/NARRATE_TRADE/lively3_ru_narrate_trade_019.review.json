@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_019",
+  "phrase_id": "lively3_ru_narrate_trade_019",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Здесь уже важнее выдержка, чем моя скорость речи.",
+  "tts_text": "[conversational] Здесь уже важнее выдержка, чем моя скорость речи.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0967fbcdcb45b8045418dd48613e41c2ac7c05588b9f7957d12205dbaa91836d",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_019",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_019.mp3",
+  "duration": 3.004,
+  "sha256": "f96d22eeaa312abf7cdc6db4bd37eb1d5eb8a14b819050b3182629c5fa95197c",
+  "request_payload": {
+    "text": "[conversational] Здесь уже важнее выдержка, чем моя скорость речи.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

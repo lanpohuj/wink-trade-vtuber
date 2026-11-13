@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_004",
+  "sha256": "7e6355146e803e7c3608886873d1df8ef778e7ab5ee95ab97e1c9b035e74efcb",
+  "expected": "Есть минус. Сейчас не буду изображать, что это тайная победа.",
+  "transcript": "Есть минус. Сейчас не буду изображать, что это тайная победа.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.077,
+    "peak": 0.3064,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.094,
+    "sha256": "7e6355146e803e7c3608886873d1df8ef778e7ab5ee95ab97e1c9b035e74efcb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.28,
+      "text": " Есть минус."
+    },
+    {
+      "start": 1.28,
+      "end": 3.7800000000000002,
+      "text": " Сейчас не буду изображать, что это тайная победа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

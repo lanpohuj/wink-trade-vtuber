@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_032",
+  "phrase_id": "lively3_en_narrate_trade_032",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "A calm look helps now. The theatrical eye-roll can wait.",
+  "tts_text": "[natural, conversational] A calm look helps now. The theatrical eye-roll can wait.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c730a682596bc53d76989ec3acd8daf9c53ac668039597ce548b89131d18baa8",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_032",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_032.mp3",
+  "duration": 3.421937,
+  "sha256": "e0a83beeb9d7b3c83ba4fc10ed736ea8c942ffa59e3cf135d4cd81e5ad6fa7f8",
+  "request_payload": {
+    "text": "[natural, conversational] A calm look helps now. The theatrical eye-roll can wait.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

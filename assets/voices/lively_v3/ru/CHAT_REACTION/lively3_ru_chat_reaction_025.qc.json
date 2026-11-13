@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_025",
+  "sha256": "e8487240f008ef7ce60d59b1c16a6d52b6311052441bcd97de6ae4c3116ab0f5",
+  "expected": "Шапка профиля — твой ориентир. Там бот и пояснения по доступу.",
+  "transcript": "Шапка профиля твой ориентир. Там бот и пояснение по доступу.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.08829,
+    "peak": 0.49754,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "e8487240f008ef7ce60d59b1c16a6d52b6311052441bcd97de6ae4c3116ab0f5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Шапка профиля твой ориентир. Там бот и пояснение по доступу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

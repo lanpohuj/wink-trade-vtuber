@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_003",
+  "phrase_id": "lively3_en_chat_reaction_003",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Come on in. We're figuring things out with occasional side-eye.",
+  "tts_text": "[warm, relaxed] Come on in. We're figuring things out with occasional side-eye.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5b1e2b71ec6d7bc28b561f66b33a37596d2346004830c00e301747ee04e9bf24",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_003",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_003.mp3",
+  "duration": 3.761563,
+  "sha256": "0281d8f17d32474730382c642d82b5c4381cf105ed6c9fe0ce9cc09efe9ec872",
+  "request_payload": {
+    "text": "[warm, relaxed] Come on in. We're figuring things out with occasional side-eye.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

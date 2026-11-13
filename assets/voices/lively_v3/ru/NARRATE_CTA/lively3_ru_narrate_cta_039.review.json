@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_039",
+  "phrase_id": "lively3_ru_narrate_cta_039",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "У нас без секретного рукопожатия: бот открывается по ссылке в шапке профиля.",
+  "tts_text": "[conversational] У нас без секретного рукопожатия: бот открывается по ссылке в шапке профиля.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "e67d95522f119d7227d11e8c509d504faadaba073ab1d34407f732bfbd943a9e",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_039",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_039.mp3",
+  "duration": 4.545187,
+  "sha256": "726c4f7516c74be354a44b9b0af6f53eaaa85728510b9c74ec9ab018066cbd10",
+  "request_payload": {
+    "text": "[conversational] У нас без секретного рукопожатия: бот открывается по ссылке в шапке профиля.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

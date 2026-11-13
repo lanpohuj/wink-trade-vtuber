@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_050",
+  "phrase_id": "lively3_en_narrate_cta_050",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Bot link's in my bio. Okay, promotional yap finished. Back to it.",
+  "tts_text": "[casual] Bot link's in my bio. Okay, promotional yap finished. Back to it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b74bc95a9a1c197081467b67c9f75056fe018904bca924e1c39d798fefbce87a",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_050.mp3",
+  "duration": 5.172125,
+  "sha256": "13f93338240a65ffb478e9b2a9937db338b83f234305b283e321dda4738a9554",
+  "request_payload": {
+    "text": "[casual] Bot link's in my bio. Okay, promotional yap finished. Back to it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

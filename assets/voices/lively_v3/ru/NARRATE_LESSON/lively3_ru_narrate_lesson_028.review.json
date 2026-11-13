@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_028",
+  "phrase_id": "lively3_ru_narrate_lesson_028",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "У сделки есть выбранный срок. Мой эмоциональный монолог его не продлит.",
+  "tts_text": "[conversational] У сделки есть выбранный срок. Мой эмоциональный монолог его не продлит.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "439be585e9eb01abc13766683a9bc621d7cee42f01afef6774721f24f30c7075",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_028",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_028.mp3",
+  "duration": 4.597437,
+  "sha256": "721d20813ab1786a1e94c7e2067c6cb003b74887b6aa99e15e0a305940e88f66",
+  "request_payload": {
+    "text": "[conversational] У сделки есть выбранный срок. Мой эмоциональный монолог его не продлит.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

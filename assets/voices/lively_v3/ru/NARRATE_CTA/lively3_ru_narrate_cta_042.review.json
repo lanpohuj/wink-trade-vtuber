@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_042",
+  "phrase_id": "lively3_ru_narrate_cta_042",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Если потеряешься после эфира, вспомни профиль. Ссылка на бота останется там.",
+  "tts_text": "[conversational] Если потеряешься после эфира, вспомни профиль. Ссылка на бота останется там.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "552e1dfe5935daa788e4736a6669f90627a6f9c07352827031520eed9bb1f059",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_042",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_042.mp3",
+  "duration": 4.910938,
+  "sha256": "90630c64b160eca2bee5a073d43ab0743415dbb1d156ed2cbe1bbaaad3b31cac",
+  "request_payload": {
+    "text": "[conversational] Если потеряешься после эфира, вспомни профиль. Ссылка на бота останется там.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_030",
+  "sha256": "c46902298cc5ffe178a2e1965f3e162b318d4b5660f306881d2975876a57160a",
+  "expected": "На этот сценарий выбраны две минуты. Теперь смотрим его завершение.",
+  "transcript": "На этот сценарий выбраны две минуты. Теперь смотрим его завершение.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07484,
+    "peak": 0.2849,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.145,
+    "sha256": "c46902298cc5ffe178a2e1965f3e162b318d4b5660f306881d2975876a57160a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.6,
+      "text": " На этот сценарий выбраны две минуты."
+    },
+    {
+      "start": 2.6,
+      "end": 4.6000000000000005,
+      "text": " Теперь смотрим его завершение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

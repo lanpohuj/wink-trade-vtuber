@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_029",
+  "phrase_id": "lively3_en_chat_reaction_029",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "No need to scroll through all of chat. The bot's linked in my bio.",
+  "tts_text": "[lightly playful, smiling] No need to scroll through all of chat. The bot's linked in my bio.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "918da438111888603acfa63141ad75ad76dce0934b923d4e36c449322717d974",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_029",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_029.mp3",
+  "duration": 3.813812,
+  "sha256": "6ddbd1ca1a8846bc2cf3bf4a8a5b5f5bd1351f76836dc3f79dc69d4b5b7d36b6",
+  "request_payload": {
+    "text": "[lightly playful, smiling] No need to scroll through all of chat. The bot's linked in my bio.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

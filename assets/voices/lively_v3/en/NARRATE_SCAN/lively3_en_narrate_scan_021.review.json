@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_021",
+  "phrase_id": "lively3_en_narrate_scan_021",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Chat, we're not speedrunning the buttons. Let me figure this out first.",
+  "tts_text": "[casual] Chat, we're not speedrunning the buttons. Let me figure this out first.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2039f37b3377d05fe24632ee53b29b5cf5ebe05f3d229a9bae77fdb97e941161",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_021",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_021.mp3",
+  "duration": 4.362375,
+  "sha256": "f8a2ffcb6d1d6c475927b5de347ec264fe0957248f5898e5c5ebd0d7990dd73e",
+  "request_payload": {
+    "text": "[casual] Chat, we're not speedrunning the buttons. Let me figure this out first.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_034",
+  "phrase_id": "lively3_en_narrate_cta_034",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Navigation check: bio leads to bot. That's the guided tour concluded.",
+  "tts_text": "[gently sarcastic, conversational] Navigation check: bio leads to bot. That's the guided tour concluded.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d2e48533190767785797bc4fe3e244e185f9ed73b78587af84a5966d70c78a90",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_034",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_034.mp3",
+  "duration": 4.858688,
+  "sha256": "c8b0014cc52a70cde36257abe6632d59fa772ca87d9bb0bacacb259911c6e273",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Navigation check: bio leads to bot. That's the guided tour concluded.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

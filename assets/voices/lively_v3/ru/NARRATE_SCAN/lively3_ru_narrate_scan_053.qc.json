@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_053",
+  "sha256": "02ecfd8c454d420e03e19dbeddb38f36200a83b5930b24b60d905cd9d8013883",
+  "expected": "Не, чат, я пока не готова. Сделать вид, что готова, — кринж какой-то.",
+  "transcript": "Нет, Чат, я пока не готова! Сделать вид, что готова, кренж какой-то!",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.07056,
+    "peak": 0.31621,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "02ecfd8c454d420e03e19dbeddb38f36200a83b5930b24b60d905cd9d8013883"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Нет, Чат, я пока не готова!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Сделать вид, что готова, кренж какой-то!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

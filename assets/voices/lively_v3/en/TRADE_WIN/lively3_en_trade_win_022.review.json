@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_022",
+  "phrase_id": "lively3_en_trade_win_022",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Win recorded. Smile activated before I could supervise it.",
+  "tts_text": "[gently sarcastic, conversational] Win recorded. Smile activated before I could supervise it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "af97f3249e20dfdc61b80055f09f3be6330b7abbb8b61dccd443efa6b3791916",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_022",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_022.mp3",
+  "duration": 4.101125,
+  "sha256": "9897f8861217676e8ed6fd63a10e7cf7a7ef945d98bbcd9411ca6cf0f6d3aa4c",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Win recorded. Smile activated before I could supervise it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

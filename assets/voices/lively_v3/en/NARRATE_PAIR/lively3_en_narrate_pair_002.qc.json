@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_002",
+  "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482",
+  "expected": "New scenery. Let's see what this chart offers without my prompting.",
+  "transcript": "New scenery. Let's see what this chart offers without my prompting.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08248,
+    "peak": 0.39272,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.192,
+    "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " New scenery. Let's see what this chart offers without my prompting."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

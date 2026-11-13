@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_038",
+  "phrase_id": "lively3_ru_narrate_lesson_038",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Не называю случайность стратегией только потому, что она однажды понравилась.",
+  "tts_text": "[conversational] Не называю случайность стратегией только потому, что она однажды понравилась.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "66f9ba4acf833348b77310ace7e05dad9161d566c7796b4fbfdd838e0240432d",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_038",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_038.mp3",
+  "duration": 4.23175,
+  "sha256": "579ee99d7eb916918d25615c884c58a3257f479c5e4c3e964d4229f535d190d0",
+  "request_payload": {
+    "text": "[conversational] Не называю случайность стратегией только потому, что она однажды понравилась.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

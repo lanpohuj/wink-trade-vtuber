@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_061",
+  "phrase_id": "lively3_en_narrate_scan_061",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Loading. My favourite gameplay: watching absolutely nothing happen. Waiting for data.",
+  "tts_text": "[casual] Loading. My favourite gameplay: watching absolutely nothing happen. Waiting for data.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0fdeef0bb405df7d9d50dc376ae377d72fc959f0f1e048ea11cf85fa3d690528",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_061",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_061.mp3",
+  "duration": 5.955813,
+  "sha256": "ccc90a0b6078b85dbf89f43a4f760c4056a177f81f6911f6d649228bab3597dd",
+  "request_payload": {
+    "text": "[casual] Loading. My favourite gameplay: watching absolutely nothing happen. Waiting for data.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

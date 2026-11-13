@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_006",
+  "sha256": "544ba1274dd4f2f71a7ab239ef929eee25e1c6dc69625e244ed53a85bc49d695",
+  "expected": "Step changed to one hundred and ten. Calm delivery isn't a promise of recovery.",
+  "transcript": "Step change to 110 calm delivery isn't a promise of recovery",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09182,
+    "peak": 0.69368,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.222,
+    "sha256": "544ba1274dd4f2f71a7ab239ef929eee25e1c6dc69625e244ed53a85bc49d695"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Step change to 110 calm delivery isn't a promise of recovery"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

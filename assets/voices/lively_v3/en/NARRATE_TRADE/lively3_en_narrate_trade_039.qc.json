@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_039",
+  "sha256": "a6849c261234fd27c425d4673acff680086617193dc663c1fe53cd080338e644",
+  "expected": "Can't skip the waiting. I know. I'd already mentally hovered over it.",
+  "transcript": "Can't skip the waiting. I know. I'd already mentally hovered over it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.0863,
+    "peak": 0.46397,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.259,
+    "sha256": "a6849c261234fd27c425d4673acff680086617193dc663c1fe53cd080338e644"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Can't skip the waiting. I know. I'd already mentally hovered over it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

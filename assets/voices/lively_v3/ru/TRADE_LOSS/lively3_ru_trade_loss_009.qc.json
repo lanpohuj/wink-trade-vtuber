@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_009",
+  "sha256": "f8ffdbda7182208fcb60cd2644a89450f200c236c7669f5d43074c71bfdf3ea7",
+  "expected": "Эта сделка минусовая. Позволю себе выдохнуть и вернусь к фактам.",
+  "transcript": "Это сделка минусовая. Позволь у себя выдохнуть и вернуть к фактам.",
+  "similarity": 0.916,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.09117,
+    "peak": 0.40561,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.081,
+    "sha256": "f8ffdbda7182208fcb60cd2644a89450f200c236c7669f5d43074c71bfdf3ea7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Это сделка минусовая."
+    },
+    {
+      "start": 1.8,
+      "end": 4.0,
+      "text": " Позволь у себя выдохнуть и вернуть к фактам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_034",
+  "sha256": "ec1aab34107accaddf63bc042143032f034b0f32372c98fc7675e0f0a058ff8e",
+  "expected": "Watching for now. A couple of quiet seconds can be good commentary too.",
+  "transcript": "Watching for now, a couple of quiet seconds can be good commentary too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07657,
+    "peak": 0.35265,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.256,
+    "sha256": "ec1aab34107accaddf63bc042143032f034b0f32372c98fc7675e0f0a058ff8e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " Watching for now, a couple of quiet seconds can be good commentary too."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

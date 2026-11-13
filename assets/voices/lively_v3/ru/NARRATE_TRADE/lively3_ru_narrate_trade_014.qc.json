@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_014",
+  "sha256": "fa9c28af3692be26d3bd499b198973b61fec891ed37418dc2d54940d0714f8d2",
+  "expected": "Голосом результат не подтянуть. Так что просто смотрим по факту.",
+  "transcript": "голосом результат не подтянуть так что просто смотрим по факту",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07416,
+    "peak": 0.31944,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.081,
+    "sha256": "fa9c28af3692be26d3bd499b198973b61fec891ed37418dc2d54940d0714f8d2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " голосом результат не подтянуть"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " так что просто смотрим по факту"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

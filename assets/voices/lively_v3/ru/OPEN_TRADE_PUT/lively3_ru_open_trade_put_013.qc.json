@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_013",
+  "sha256": "24126aa5c2881f3911e93a7509c490427de169001e1277acbaec5cc3f2fe3c4b",
+  "expected": "Вошли вниз по подтверждённому ретесту пробоя. Дальше уже сделка, не репетиция.",
+  "transcript": "Вошли вниз по подтвержденному ретесту пробоя. Дальше уже сделка, не репетиция.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08339,
+    "peak": 0.37681,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.092,
+    "sha256": "24126aa5c2881f3911e93a7509c490427de169001e1277acbaec5cc3f2fe3c4b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Вошли вниз по подтвержденному ретесту пробоя."
+    },
+    {
+      "start": 2.7,
+      "end": 5.2,
+      "text": " Дальше уже сделка, не репетиция."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

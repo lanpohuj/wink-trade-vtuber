@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_010",
+  "sha256": "11117573189996ee2562108c0a21410c0d2d1d2fdb03658c9ac7d74d9e91db1d",
+  "expected": "Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены.",
+  "transcript": "Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09209,
+    "peak": 0.3875,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.099,
+    "sha256": "11117573189996ee2562108c0a21410c0d2d1d2fdb03658c9ac7d74d9e91db1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

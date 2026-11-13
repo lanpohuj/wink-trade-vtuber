@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_032",
+  "phrase_id": "lively3_ru_open_trade_call_032",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Купили после подтверждения локального разворота. Крупный тренд за него не объявляю.",
+  "tts_text": "[conversational] Купили после подтверждения локального разворота. Крупный тренд за него не объявляю.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "02f9cb3efeb85a10fe2bec5c6bf20c87f56396364dfd0337346aaffd09b413e8",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_032",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_032.mp3",
+  "duration": 4.675813,
+  "sha256": "cb63c92c67f0241fac5dec7b5df01ed37b1c8e33301adc5440cc527464ed8cb7",
+  "request_payload": {
+    "text": "[conversational] Купили после подтверждения локального разворота. Крупный тренд за него не объявляю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_035",
+  "phrase_id": "lively3_en_narrate_scan_035",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "A nice guess stays a guess. Promotion requires confirmation.",
+  "tts_text": "[warm, relaxed] A nice guess stays a guess. Promotion requires confirmation.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5ff1ed97297d20e1420c8bdedb3337c9bda639390da5ef8b2ac32df39a1fa2f4",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_035",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_035.mp3",
+  "duration": 4.414625,
+  "sha256": "bc01d6529ea9f3432ebadc2fa4922c73892fcd4bee6505681d6175d9701128c9",
+  "request_payload": {
+    "text": "[warm, relaxed] A nice guess stays a guess. Promotion requires confirmation.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

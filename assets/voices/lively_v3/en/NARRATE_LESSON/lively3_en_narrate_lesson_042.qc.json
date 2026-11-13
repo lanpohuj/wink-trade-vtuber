@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_042",
+  "sha256": "80d12a59dc206252fbe16b0482d3650fe47567c6e79ffea5e9315f5bf30a4a39",
+  "expected": "A setup explains the decision before the outcome. Hindsight stories are too easy.",
+  "transcript": "A setup explains the decision before the outcome. Hindsight stories are too easy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08363,
+    "peak": 0.6371,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.26,
+    "sha256": "80d12a59dc206252fbe16b0482d3650fe47567c6e79ffea5e9315f5bf30a4a39"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": " A setup explains the decision before the outcome. Hindsight stories are too easy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

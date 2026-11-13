@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_004",
+  "sha256": "9e33b0aa7adef80269d267532bf76065ba8f26f5309be6e1bdac1863040f9444",
+  "expected": "Sounding certain is easy. Finding a reason takes slightly more effort.",
+  "transcript": "Sounding certain is easy. Finding a reason takes slightly more effort.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08098,
+    "peak": 0.34734,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.162,
+    "sha256": "9e33b0aa7adef80269d267532bf76065ba8f26f5309be6e1bdac1863040f9444"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Sounding certain is easy. Finding a reason takes slightly more effort."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

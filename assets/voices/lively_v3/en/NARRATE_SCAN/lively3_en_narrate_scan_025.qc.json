@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_025",
+  "sha256": "db092b092d388ebe9bb97d1ba2b6f4650089035bc908909807cb3c30d3482777",
+  "expected": "Looking for support for the idea. 'Just a feeling' can leave by the side door.",
+  "transcript": "Looking for support for the idea. Just a feeling can leave by the side door.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08246,
+    "peak": 0.40512,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.178,
+    "sha256": "db092b092d388ebe9bb97d1ba2b6f4650089035bc908909807cb3c30d3482777"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Looking for support for the idea. Just a feeling can leave by the side door."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

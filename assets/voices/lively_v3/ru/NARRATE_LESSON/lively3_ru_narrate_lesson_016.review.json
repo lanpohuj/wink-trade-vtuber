@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_016",
+  "phrase_id": "lively3_ru_narrate_lesson_016",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Рынок не обязан продолжать движение из вежливости. Жалобную книгу не выдавали.",
+  "tts_text": "[conversational] Рынок не обязан продолжать движение из вежливости. Жалобную книгу не выдавали.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8151dca0df9189735d50c730f4c91a58389c721a8f86e04c6135c76cc3bfef8a",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_016",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_016.mp3",
+  "duration": 4.937063,
+  "sha256": "7a5a931dac98572c4e16f8c68a56868439d36dacac8c8b9a70523e71fb329c0b",
+  "request_payload": {
+    "text": "[conversational] Рынок не обязан продолжать движение из вежливости. Жалобную книгу не выдавали.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

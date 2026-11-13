@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_017",
+  "phrase_id": "lively3_en_narrate_cta_017",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "We put the bot link in the bio. Groundbreaking design: making things findable.",
+  "tts_text": "[lightly playful, smiling] We put the bot link in the bio. Groundbreaking design: making things findable.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bcec91a3eea4d88fc43d2c07be19145fbafbd8d8925f1f3207a62d67982a4110",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_017",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_017.mp3",
+  "duration": 5.041563,
+  "sha256": "2ed9bee456bf184ac85721b8318da17e6e5bc7c3c5b9831d819bb3f123117aef",
+  "request_payload": {
+    "text": "[lightly playful, smiling] We put the bot link in the bio. Groundbreaking design: making things findable.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

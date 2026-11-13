@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_003",
+  "sha256": "a65358800255d214e70e9c75f6a70d0a3b27b046c35fcf4498b9e3e278023359",
+  "expected": "Кому нужен бот — велком в шапку профиля. Да, он всё ещё там.",
+  "transcript": "Кому нужен бот, вилкам в шапку профили. Да, он всё ещё там.",
+  "similarity": 0.932,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.08513,
+    "peak": 0.36806,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.076,
+    "sha256": "a65358800255d214e70e9c75f6a70d0a3b27b046c35fcf4498b9e3e278023359"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Кому нужен бот, вилкам в шапку профили."
+    },
+    {
+      "start": 3.0,
+      "end": 4.32,
+      "text": " Да, он всё ещё там."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

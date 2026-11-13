@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_007",
+  "sha256": "8c3b07b269fe32490a7fdadd8d6b9fd01a095f374162b4a43ebc57155646cdd5",
+  "expected": "Up on the confirmed pullback, trade's running. Pretty speeches later.",
+  "transcript": "Up on the confirmed pullback, trade's running. Pretty speeches later.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07691,
+    "peak": 0.42837,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "8c3b07b269fe32490a7fdadd8d6b9fd01a095f374162b4a43ebc57155646cdd5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Up on the confirmed pullback, trade's running. Pretty speeches later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

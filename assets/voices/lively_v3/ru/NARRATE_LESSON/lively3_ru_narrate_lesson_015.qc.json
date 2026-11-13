@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_015",
+  "sha256": "2be5576a1702bcca7c5436fe40a79e89d333b1b33fea545683f5e383a59db6ac",
+  "expected": "Можно пять минут душнить и ничего не сказать. Я стараюсь ловить себя раньше.",
+  "transcript": "Можно 5 минут душните ничего не сказать. Я стараюсь ловить себя раньше.",
+  "similarity": 0.933,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.11262,
+    "peak": 0.92315,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.094,
+    "sha256": "2be5576a1702bcca7c5436fe40a79e89d333b1b33fea545683f5e383a59db6ac"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Можно 5 минут душните ничего не сказать. Я стараюсь ловить себя раньше."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

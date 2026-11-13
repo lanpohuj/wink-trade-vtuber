@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_001",
+  "sha256": "c9bf7ad6bb8a304d103b42385b8f795f259c75d4f67a220abc6003d49c5240fe",
+  "expected": "New face! Settle in; quietly watching is perfectly welcome.",
+  "transcript": "Neil Face! Settle in! Quietly watching is perfectly welcome!",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.07882,
+    "peak": 0.38596,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.16,
+    "sha256": "c9bf7ad6bb8a304d103b42385b8f795f259c75d4f67a220abc6003d49c5240fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Neil Face! Settle in! Quietly watching is perfectly welcome!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

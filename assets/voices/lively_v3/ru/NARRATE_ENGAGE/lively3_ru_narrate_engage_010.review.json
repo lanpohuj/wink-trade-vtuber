@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_010",
+  "phrase_id": "lively3_ru_narrate_engage_010",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены.",
+  "tts_text": "[conversational] Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "78465024c6a93373ce717b8a90b461b0c6a33140db3d943d5f738207bcd2f14d",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_010",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_010.mp3",
+  "duration": 4.858688,
+  "sha256": "11117573189996ee2562108c0a21410c0d2d1d2fdb03658c9ac7d74d9e91db1d",
+  "request_payload": {
+    "text": "[conversational] Сегодня у нас уютный клуб наблюдателей. Кружки со смешными надписями разрешены.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

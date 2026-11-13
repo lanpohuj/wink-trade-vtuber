@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_002",
+  "sha256": "110f18875acaaf4bf2300c403d7de26041458fc62a6c17e04d36cfebe7a62c9e",
+  "expected": "Вверх уже открыто. Откат получил подтверждение, теперь проверяем результат временем.",
+  "transcript": "Вверх уже открыто. Откат получил подтверждение. Теперь проверяем результат временем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.08255,
+    "peak": 0.34642,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "110f18875acaaf4bf2300c403d7de26041458fc62a6c17e04d36cfebe7a62c9e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Вверх уже открыто. Откат получил подтверждение. Теперь проверяем результат временем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

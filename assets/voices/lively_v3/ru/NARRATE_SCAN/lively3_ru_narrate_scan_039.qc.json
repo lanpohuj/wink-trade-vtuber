@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_039",
+  "sha256": "0970e79457e3065c872ed8211a55bde7480a4eed0df17dae98087b5e492371b5",
+  "expected": "Не даю одной детали украсть всё внимание. Тут не сольный концерт.",
+  "transcript": "не даю одной детали украсть все внимание тут не сольный концерт",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07871,
+    "peak": 0.28583,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.096,
+    "sha256": "0970e79457e3065c872ed8211a55bde7480a4eed0df17dae98087b5e492371b5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " не даю одной детали украсть все внимание тут не сольный концерт"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

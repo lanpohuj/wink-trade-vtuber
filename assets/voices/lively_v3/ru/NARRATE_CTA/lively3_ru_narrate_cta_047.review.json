@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_047",
+  "phrase_id": "lively3_ru_narrate_cta_047",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Пора маленького напоминания: бот открывается из шапки профиля. Никакой магии, просто ссылка.",
+  "tts_text": "[conversational] Пора маленького напоминания: бот открывается из шапки профиля. Никакой магии, просто ссылка.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6db055a0cf5546ec5811664fe31b0e65884eea409b07c78bb4a04ac3e94feb94",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_047",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_047.mp3",
+  "duration": 5.72075,
+  "sha256": "5a5aec8c76b181079492c3eb35a884350f11be43d6f9104c9989d36210420333",
+  "request_payload": {
+    "text": "[conversational] Пора маленького напоминания: бот открывается из шапки профиля. Никакой магии, просто ссылка.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

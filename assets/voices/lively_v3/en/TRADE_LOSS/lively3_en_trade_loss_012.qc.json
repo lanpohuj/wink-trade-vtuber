@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_012",
+  "sha256": "cbd131e1d38ccacdb892bc430f9060974e9742cb0aeb22dcd846caa75fd36601",
+  "expected": "That loss stings. But the 'click again immediately' impulse? Hard pass.",
+  "transcript": "That loss stings, but the click again immediately impulse? Hard pass.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08202,
+    "peak": 0.48818,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.122,
+    "sha256": "cbd131e1d38ccacdb892bc430f9060974e9742cb0aeb22dcd846caa75fd36601"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " That loss stings, but the click again immediately impulse? Hard pass."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

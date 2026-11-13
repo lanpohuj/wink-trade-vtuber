@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_031",
+  "sha256": "c0a12ad2ec731cff89f0e8869a13c07599fd638c389377b50dbcdee3b89904f7",
+  "expected": "Вниз открылись по подтверждённому локальному развороту. Большую катастрофу графику не приписываю.",
+  "transcript": "Вниз открылись по подтвержденному локальному развороту. Большую катастрофу графику не приписываю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.0791,
+    "peak": 0.32594,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.1,
+    "sha256": "c0a12ad2ec731cff89f0e8869a13c07599fd638c389377b50dbcdee3b89904f7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Вниз открылись по подтвержденному локальному развороту."
+    },
+    {
+      "start": 3.0,
+      "end": 5.5,
+      "text": " Большую катастрофу графику не приписываю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

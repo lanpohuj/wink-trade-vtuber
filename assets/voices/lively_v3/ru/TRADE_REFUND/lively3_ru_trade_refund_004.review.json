@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_004",
+  "phrase_id": "lively3_ru_trade_refund_004",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Возврат подтверждён. Никаких лишних плюсов в историю не дорисовываем.",
+  "tts_text": "[conversational] Возврат подтверждён. Никаких лишних плюсов в историю не дорисовываем.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fc4446d36ab31e1715541f9b19d0251ce8be81455cb9b8d2571a8c6e490ba430",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_refund_004",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_004.mp3",
+  "duration": 4.23175,
+  "sha256": "8002c9013b8c135f2c971bfb04249a56fbdf5a7dc499c412027ba382d8fb02e7",
+  "request_payload": {
+    "text": "[conversational] Возврат подтверждён. Никаких лишних плюсов в историю не дорисовываем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

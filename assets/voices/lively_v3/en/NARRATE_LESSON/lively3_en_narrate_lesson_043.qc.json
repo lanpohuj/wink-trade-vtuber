@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_lesson_043",
+  "sha256": "feb9b238fe24cd5858c5a1765aa168ed47b941852f83d1f3c4bb666746bc88a3",
+  "expected": "Missing confirmation is reason enough for patience. Dramatic music optional.",
+  "transcript": "Missing confirmation is reason enough for patience. Dramatic music, optional.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07492,
+    "peak": 0.32643,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "feb9b238fe24cd5858c5a1765aa168ed47b941852f83d1f3c4bb666746bc88a3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Missing confirmation is reason enough for patience."
+    },
+    {
+      "start": 3.12,
+      "end": 4.96,
+      "text": " Dramatic music, optional."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

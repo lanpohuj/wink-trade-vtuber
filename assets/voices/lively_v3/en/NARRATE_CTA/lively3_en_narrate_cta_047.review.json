@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_047",
+  "phrase_id": "lively3_en_narrate_cta_047",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Time for a tiny reminder: bot through my bio. No magic, just a link.",
+  "tts_text": "[warm, relaxed] Time for a tiny reminder: bot through my bio. No magic, just a link.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2a11b0d1c2044c757f3aac140c0aa903cafbb9218ab5be4f2f55f511e530612c",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_047",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_047.mp3",
+  "duration": 5.433375,
+  "sha256": "a043f404c6a9f8102b87eb89be5bc3e7f65d7c7266989386fd4ca21384dfbecb",
+  "request_payload": {
+    "text": "[warm, relaxed] Time for a tiny reminder: bot through my bio. No magic, just a link.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

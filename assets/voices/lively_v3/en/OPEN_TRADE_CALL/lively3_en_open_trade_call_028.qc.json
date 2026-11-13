@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_028",
+  "sha256": "4b0f46ac3e123061f966c57fbf5623f084ace4fb95a478a22d7da99cbdf2c26f",
+  "expected": "Up on range rejection, opening confirmed. Not jumping to the ending.",
+  "transcript": "Up on range rejection, opening confirmed. Not jumping to the ending.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08066,
+    "peak": 0.47074,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.236,
+    "sha256": "4b0f46ac3e123061f966c57fbf5623f084ace4fb95a478a22d7da99cbdf2c26f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Up on range rejection, opening confirmed. Not jumping to the ending."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

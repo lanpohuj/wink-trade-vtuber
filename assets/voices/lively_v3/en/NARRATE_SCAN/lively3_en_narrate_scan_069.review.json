@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_069",
+  "phrase_id": "lively3_en_narrate_scan_069",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "History hasn't arrived yet. Conclusions aren't boarding without it.",
+  "tts_text": "[lightly playful, smiling] History hasn't arrived yet. Conclusions aren't boarding without it.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5be747ccba48c301e04ecde38e90906007c3ae3a5e0f093478c2192500d14cdb",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_069",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_069.mp3",
+  "duration": 3.944375,
+  "sha256": "36cd6f3344797587035ddcf7b54e1c62dbd0162779074813c49e2d369c93e0b6",
+  "request_payload": {
+    "text": "[lightly playful, smiling] History hasn't arrived yet. Conclusions aren't boarding without it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

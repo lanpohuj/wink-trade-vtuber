@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_005",
+  "phrase_id": "lively3_ru_chat_reaction_005",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Рада новым зрителям. Устраивайтесь, эфир не экзамен, можно задавать вопросы.",
+  "tts_text": "[conversational] Рада новым зрителям. Устраивайтесь, эфир не экзамен, можно задавать вопросы.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "242528ca78ce2594f9f0e8b00357b193ffbceb6bb3fbe66053182061049f9ff0",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_005",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_005.mp3",
+  "duration": 5.381125,
+  "sha256": "4e7fa8267bd65d97542ed0f1ee565a938a9fbca359b64bc64a11e1df1d03edbf",
+  "request_payload": {
+    "text": "[conversational] Рада новым зрителям. Устраивайтесь, эфир не экзамен, можно задавать вопросы.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

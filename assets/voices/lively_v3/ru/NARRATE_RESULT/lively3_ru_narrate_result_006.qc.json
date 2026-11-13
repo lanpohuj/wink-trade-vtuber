@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_006",
+  "sha256": "9ff0e7d0c959fa2bd4557f6a772f9866548e9922cbbf58dbc3d4e149c9e38590",
+  "expected": "Шаг сменился на сто десять. Мой спокойный тон не означает обещанного перекрытия.",
+  "transcript": "Шаг сменился на 110. Мой спокойный тон не означает обещанного перекрытия.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08872,
+    "peak": 0.36651,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "9ff0e7d0c959fa2bd4557f6a772f9866548e9922cbbf58dbc3d4e149c9e38590"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Шаг сменился на 110. Мой спокойный тон не означает обещанного перекрытия."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

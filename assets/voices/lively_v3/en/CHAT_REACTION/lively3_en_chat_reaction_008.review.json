@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_008",
+  "phrase_id": "lively3_en_chat_reaction_008",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
+  "tts_text": "[natural, conversational] Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
+  "conditions": {
+    "chat_kind": "follow"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "52cacd65cfab0ac126b76ddcfe8b9644a19d30fc2e79dd48d83a625be2c54991",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_008",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_008.mp3",
+  "duration": 5.4595,
+  "sha256": "d38fa443c68febf2bcb64d2741e2a4253d671c5292760cbe9ca16a13ee703d74",
+  "request_payload": {
+    "text": "[natural, conversational] Thanks for sticking around! Plenty of personality; perfection's schedule remains uncertain.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

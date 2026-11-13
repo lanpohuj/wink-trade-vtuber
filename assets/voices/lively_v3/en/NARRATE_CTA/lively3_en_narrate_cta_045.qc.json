@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_045",
+  "sha256": "1bac15d3c6d46398e0667cfcad91039b013c9ec7ad83e602add3007c901b5a1d",
+  "expected": "One bot reminder, then I'm out. Link in bio, chat. That's the whole side quest.",
+  "transcript": "One bot reminder, then I'm out. Link in bio chat. That's the whole side quest.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07621,
+    "peak": 0.44936,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.38,
+    "sha256": "1bac15d3c6d46398e0667cfcad91039b013c9ec7ad83e602add3007c901b5a1d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.16,
+      "text": " One bot reminder, then I'm out."
+    },
+    {
+      "start": 2.16,
+      "end": 5.36,
+      "text": " Link in bio chat. That's the whole side quest."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

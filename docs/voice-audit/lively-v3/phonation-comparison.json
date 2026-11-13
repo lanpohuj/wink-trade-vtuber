@@ -1,0 +1,65 @@
+{
+  "records": [
+    {
+      "label": "bad_win",
+      "file": "assets/voices/lively_v3/rejected-pilot-02/ru/TRADE_WIN/lively3_ru_trade_win_001.mp3",
+      "f0_p10": 255.5439363130949,
+      "f0_median": 371.66638939741244,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 5.010662288062795,
+      "hnr_median": 14.569813779365283,
+      "jitter_local": 0.019293341692334567
+    },
+    {
+      "label": "bad_scan",
+      "file": "assets/voices/lively_v3/rejected-scan-round3/ru/NARRATE_SCAN/lively3_ru_narrate_scan_001.mp3",
+      "f0_p10": 236.41734495591444,
+      "f0_median": 319.1862455286345,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 6.622463994615228,
+      "hnr_median": 16.028638875227657,
+      "jitter_local": 0.015893896843216966
+    },
+    {
+      "label": "bad_legacy",
+      "file": "assets/voices/lumean/IN_TRADE_WAITING/wait_03.mp3",
+      "f0_p10": 198.92645442048007,
+      "f0_median": 332.5190045397658,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 5.161242201780186,
+      "hnr_median": 14.80999825415963,
+      "jitter_local": 0.020608726410904978
+    },
+    {
+      "label": "clean_B",
+      "file": "assets/voices/lively_roughness/ru-B.mp3",
+      "f0_p10": 285.6114960391362,
+      "f0_median": 368.70892551423356,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 6.527252197076058,
+      "hnr_median": 15.739236420201827,
+      "jitter_local": 0.018634710904561952
+    },
+    {
+      "label": "clean_scan",
+      "file": "assets/voices/lively_v3/ru/NARRATE_SCAN/lively3_ru_narrate_scan_001.mp3",
+      "f0_p10": 223.5261532410211,
+      "f0_median": 264.82314403862455,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 5.254767088295821,
+      "hnr_median": 15.008721578362437,
+      "jitter_local": 0.01978598259585654
+    },
+    {
+      "label": "clean_legacy",
+      "file": "assets/voices/lively_retakes/ru/wait_03-2b69a6034687.mp3",
+      "f0_p10": 217.04269102727244,
+      "f0_median": 276.36733190013155,
+      "low_pitch_fraction": 0.0,
+      "hnr_p10": 5.598812524328594,
+      "hnr_median": 12.757822512866072,
+      "jitter_local": 0.026498596856317894
+    }
+  ],
+  "interpretation": "Exploratory only. Different phonemes and prosody affect metrics; not an auditory verdict or proof of tag causation."
+}

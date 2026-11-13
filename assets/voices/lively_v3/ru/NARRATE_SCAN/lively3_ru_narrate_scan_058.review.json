@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_058",
+  "phrase_id": "lively3_ru_narrate_scan_058",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Секунду, сверю основания. Пафосную интонацию пока можно не включать.",
+  "tts_text": "[conversational] Секунду, сверю основания. Пафосную интонацию пока можно не включать.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2a1b20ab13414f263ec54cd2d691b58e2225ce3e4026d1239cc968d11bb7dc5c",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_058",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_058.mp3",
+  "duration": 4.910938,
+  "sha256": "f0262fbfb32896875e52454b0e3261f16590968cd0c9f4d104b1526f3dcc37eb",
+  "request_payload": {
+    "text": "[conversational] Секунду, сверю основания. Пафосную интонацию пока можно не включать.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

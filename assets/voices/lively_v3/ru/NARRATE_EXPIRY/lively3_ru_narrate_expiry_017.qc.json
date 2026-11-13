@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_narrate_expiry_017",
+  "sha256": "6c35e494c61c29b2cfacf069940bfd41a44a5ce934ce2828dc93023cb48121e7",
+  "expected": "Здесь одна минута. Могу говорить спокойнее, таймер не на спринте.",
+  "transcript": "Здесь одна минута. Могу говорить спокойнее. Таймер не на спринте.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.09101,
+    "peak": 0.38217,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "6c35e494c61c29b2cfacf069940bfd41a44a5ce934ce2828dc93023cb48121e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Здесь одна минута."
+    },
+    {
+      "start": 1.8,
+      "end": 3.5,
+      "text": " Могу говорить спокойнее."
+    },
+    {
+      "start": 3.5,
+      "end": 5.0,
+      "text": " Таймер не на спринте."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

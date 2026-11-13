@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_015",
+  "phrase_id": "lively3_en_narrate_engage_015",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "My sarcasm sometimes forgets the brakes. I'm teasing, chat, don't let me tilt you.",
+  "tts_text": "[casual] My sarcasm sometimes forgets the brakes. I'm teasing, chat, don't let me tilt you.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "348890bbeeb2c7716eb71f21a90cf18f514bab672ba95fb2100c3f3a437e3b4e",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:tilt",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_015.mp3",
+  "duration": 5.328875,
+  "sha256": "bf46921c78b538409b20a244df3f2cd374de39020e85d0c0205bd8e198eb8f1f",
+  "request_payload": {
+    "text": "[casual] My sarcasm sometimes forgets the brakes. I'm teasing, chat, don't let me tilt you.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_023",
+  "phrase_id": "lively3_ru_open_trade_put_023",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Вниз уже вошли по отбою диапазона. Подтверждение было, обещания не было.",
+  "tts_text": "[conversational] Вниз уже вошли по отбою диапазона. Подтверждение было, обещания не было.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "96169fec2280d28055f629d7093fb8f5cf0213565ffa8d366cb117d8c7563cba",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_023",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_023.mp3",
+  "duration": 5.041563,
+  "sha256": "a1030020c953ef1cfe8478f12fa13ce762b4e2b618ac9816b7f0be4a7cd70d96",
+  "request_payload": {
+    "text": "[conversational] Вниз уже вошли по отбою диапазона. Подтверждение было, обещания не было.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

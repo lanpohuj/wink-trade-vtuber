@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_006",
+  "sha256": "83eac6a1e22e8d6c38592d0d95082f032ed4c3b3421a779a30c506e585a6f430",
+  "expected": "Эх, минус. Ладно, чат, без тильта. Сейчас точно не время жать на эмоциях.",
+  "transcript": "Минус! Ладно, чат, бестильта! Сейчас точно не время жать на эмоциях!",
+  "similarity": 0.963,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07802,
+    "peak": 0.32054,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "83eac6a1e22e8d6c38592d0d95082f032ed4c3b3421a779a30c506e585a6f430"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.08,
+      "text": " Минус! Ладно, чат, бестильта! Сейчас точно не время жать на эмоциях!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_022",
+  "sha256": "6c004009c34044504d4687d7acf51562e838d5af8a0a55196dbccf2304b37e71",
+  "expected": "Если у вас тоже двадцать открытых вкладок, мы уже немного знакомы.",
+  "transcript": "Если у вас тоже 20 открытых вкладок, мы уже немного знакомы.",
+  "similarity": 0.902,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08441,
+    "peak": 0.31096,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "6c004009c34044504d4687d7acf51562e838d5af8a0a55196dbccf2304b37e71"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Если у вас тоже 20 открытых вкладок, мы уже немного знакомы."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

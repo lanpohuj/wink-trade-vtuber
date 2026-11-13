@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_015",
+  "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f",
+  "expected": "Let's check this pair. No instant crush; I've learned to look twice.",
+  "transcript": "Let's check this pair. No instant crush. I've learned to look twice.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.07971,
+    "peak": 0.43224,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.156,
+    "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Let's check this pair. No instant crush. I've learned to look twice."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

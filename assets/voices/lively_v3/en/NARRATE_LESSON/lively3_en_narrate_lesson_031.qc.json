@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_031",
+  "sha256": "364c6ff0434d20127437224dc6412ad87b6fc55f8a5b58e3e4a365fcb0787d12",
+  "expected": "Knowing what you don't know is a solid start. The know-it-all act is easy.",
+  "transcript": "Knowing what you don't know is a solid start. The know-it-all act is easy.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07704,
+    "peak": 0.35817,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.259,
+    "sha256": "364c6ff0434d20127437224dc6412ad87b6fc55f8a5b58e3e4a365fcb0787d12"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Knowing what you don't know is a solid start. The know-it-all act is easy."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

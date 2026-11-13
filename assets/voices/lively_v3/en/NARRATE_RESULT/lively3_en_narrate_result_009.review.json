@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_009",
+  "phrase_id": "lively3_en_narrate_result_009",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next stake is two hundred and forty-two. Facts beat the urge to recover a loss.",
+  "tts_text": "[clear, conversational] Next stake is two hundred and forty-two. Facts beat the urge to recover a loss.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e6b7d3a5853b13da0b90a3d186fd6e7483bff4e0e668049d9ac1bd881f601eaa",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_009",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_009.mp3",
+  "duration": 5.381125,
+  "sha256": "0f6c346ee2a8d4eeeb4c54dc945fde29aae91149dae153a5ad01fd1696afa8e3",
+  "request_payload": {
+    "text": "[clear, conversational] Next stake is two hundred and forty-two. Facts beat the urge to recover a loss.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

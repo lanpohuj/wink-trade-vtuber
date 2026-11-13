@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_033",
+  "sha256": "77f6edc1b7a86ea27a9c410c7491e3c66b120ad2a3276c725bccd32c9121c2b0",
+  "expected": "Знакомство с ботом начинается в профиле. Рукопожатие не обязательно, прочитать условия полезно.",
+  "transcript": "Знакомство с ботом начинается в профиле. Руку пожатить необязательно, прочитать условия полезно.",
+  "similarity": 0.969,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.07536,
+    "peak": 0.32907,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.098,
+    "sha256": "77f6edc1b7a86ea27a9c410c7491e3c66b120ad2a3276c725bccd32c9121c2b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Знакомство с ботом начинается в профиле. Руку пожатить необязательно, прочитать условия полезно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

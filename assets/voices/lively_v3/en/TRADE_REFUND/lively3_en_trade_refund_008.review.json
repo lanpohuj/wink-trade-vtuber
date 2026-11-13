@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_008",
+  "phrase_id": "lively3_en_trade_refund_008",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refund recorded. Wrong status for a victory speech; just stating the fact.",
+  "tts_text": "[natural, conversational] Refund recorded. Wrong status for a victory speech; just stating the fact.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0258324d87eebb9f4585e9eca2462fca40e52cef0ca71fd949f55d212611df6f",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_008",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_008.mp3",
+  "duration": 5.172125,
+  "sha256": "fab52b78f3b06c785aa09fb422f918fcc5a46a9c02507a8291e0f8e6ad1aec9f",
+  "request_payload": {
+    "text": "[natural, conversational] Refund recorded. Wrong status for a victory speech; just stating the fact.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

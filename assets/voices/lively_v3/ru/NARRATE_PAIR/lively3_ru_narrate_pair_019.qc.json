@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_019",
+  "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df",
+  "expected": "Следующая остановка — этот график. Экскурсия начинается с деталей.",
+  "transcript": "Следующая остановка. Этот график. Экскурсия начинается с деталей.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.10629,
+    "peak": 0.85933,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.135,
+    "sha256": "944bdd64ce90146c172d0065d1afca3af9ffce2d23423a5053a686e0c704b0df"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Следующая остановка. Этот график. Экскурсия начинается с деталей."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

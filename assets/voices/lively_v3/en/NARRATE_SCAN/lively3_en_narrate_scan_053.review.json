@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_053",
+  "phrase_id": "lively3_en_narrate_scan_053",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not ready yet, chat. Pretending otherwise would be a bit embarrassing.",
+  "tts_text": "[casual] Not ready yet, chat. Pretending otherwise would be a bit embarrassing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "090bd1cda9bf680dc6f2d46ad4b326cd2c411a4e420cdfef49ee0f77ed9ef037",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_053",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_053.mp3",
+  "duration": 4.23175,
+  "sha256": "cd536a75146fecfb43e746b79e2a79f9fb8a7e5b2a4dd2f510b2ed0361f52eb2",
+  "request_payload": {
+    "text": "[casual] Not ready yet, chat. Pretending otherwise would be a bit embarrassing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

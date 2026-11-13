@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_016",
+  "sha256": "8320dd369d1428109fb505ca0827b6ec05cdae012657e5afc76c69b700701e9d",
+  "expected": "Рано радоваться, чат. Я уже почти начала, но вовремя себя поймала.",
+  "transcript": "Рано радоваться, Чат. Я уже почти начала, но вовремя себя поймала.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08968,
+    "peak": 0.374,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "8320dd369d1428109fb505ca0827b6ec05cdae012657e5afc76c69b700701e9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Рано радоваться, Чат. Я уже почти начала, но вовремя себя поймала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_003",
+  "phrase_id": "lively3_ru_narrate_lesson_003",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Баллы показывают совпадение условий. Процентом обещанного выигрыша они не становятся.",
+  "tts_text": "[conversational] Баллы показывают совпадение условий. Процентом обещанного выигрыша они не становятся.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ee1d401a207cdbdcc7b3fdec5304900d51fa56ff05c68d156763a1a1c8db145d",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_003",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_003.mp3",
+  "duration": 5.328875,
+  "sha256": "d4fcb5698e8db7e0607d5b56978ae500e80cd6a1df8bf52d7360c8d3d4633a7c",
+  "request_payload": {
+    "text": "[conversational] Баллы показывают совпадение условий. Процентом обещанного выигрыша они не становятся.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

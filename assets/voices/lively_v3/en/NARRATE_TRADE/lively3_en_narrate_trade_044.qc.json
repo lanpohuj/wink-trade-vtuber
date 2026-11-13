@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_044",
+  "sha256": "1a906b4af14a9386290ca797efee1a031866da40a53db3915103c60bc60256c0",
+  "expected": "While the outcome's open, let's hold off on handing out labels.",
+  "transcript": "While the outcome is open, let's hold off on handing out labels.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.07545,
+    "peak": 0.38499,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.292,
+    "sha256": "1a906b4af14a9386290ca797efee1a031866da40a53db3915103c60bc60256c0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " While the outcome is open, let's hold off on handing out labels."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

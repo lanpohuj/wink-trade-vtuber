@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_016",
+  "phrase_id": "lively3_en_narrate_lesson_016",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The market doesn't owe us polite continuation. No complaints book provided.",
+  "tts_text": "[natural, conversational] The market doesn't owe us polite continuation. No complaints book provided.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9f828a708e5a55ed71bf12e5121f96b1ed31d338841cc945aa0240f0c2246ff2",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_016",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_016.mp3",
+  "duration": 4.806438,
+  "sha256": "663731816babaa10236b07fc38d23b0433092908c2f94ca0c133812082282a9f",
+  "request_payload": {
+    "text": "[natural, conversational] The market doesn't owe us polite continuation. No complaints book provided.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

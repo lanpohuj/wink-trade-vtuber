@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_037",
+  "sha256": "a93a1bf5cd493c2d9e8c183fffff9fdfabb98b037e9a8dc5a61e4ae72adf6963",
+  "expected": "Продажа открыта по подтверждённому локальному развороту. Крупный тренд не объявляю.",
+  "transcript": "Продажа открыта по подтвержденному локальному развороту. Крупный тренд не объявляю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.09007,
+    "peak": 0.4228,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.11,
+    "sha256": "a93a1bf5cd493c2d9e8c183fffff9fdfabb98b037e9a8dc5a61e4ae72adf6963"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Продажа открыта по подтвержденному локальному развороту."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Крупный тренд не объявляю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

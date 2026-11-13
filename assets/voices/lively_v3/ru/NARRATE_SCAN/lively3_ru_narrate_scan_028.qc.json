@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_028",
+  "sha256": "2af58628baf18c307ddb22e44b53759601261095b1100ac606b1fd157ddbf2e7",
+  "expected": "Я пока выбираю момент, а не красивое название для него.",
+  "transcript": "Я пока выбираю момент, а не красивое название для него.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.09964,
+    "peak": 0.33905,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.124,
+    "sha256": "2af58628baf18c307ddb22e44b53759601261095b1100ac606b1fd157ddbf2e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Я пока выбираю момент, а не красивое название для него."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

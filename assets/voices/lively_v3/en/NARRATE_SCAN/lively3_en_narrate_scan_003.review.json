@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_003",
+  "phrase_id": "lively3_en_narrate_scan_003",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Okay, first look done. Let me lock in and check what's actually here.",
+  "tts_text": "[casual] Okay, first look done. Let me lock in and check what's actually here.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "96e909ad553f84db56e87b8a311d23c90c11111ad7e7da4523366bf447c13fdb",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_003",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_003.mp3",
+  "duration": 4.858688,
+  "sha256": "b9f082babe72cc737cba43afa0574839ff6bcdc027a4ce6580fa54ca17c4ee04",
+  "request_payload": {
+    "text": "[casual] Okay, first look done. Let me lock in and check what's actually here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

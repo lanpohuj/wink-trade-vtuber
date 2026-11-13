@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_013",
+  "phrase_id": "lively3_ru_narrate_scan_013",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Пока никаких торжественных заявлений. У меня тут обычная проверка, без фанфар.",
+  "tts_text": "[conversational] Пока никаких торжественных заявлений. У меня тут обычная проверка, без фанфар.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4143c9555a830fc9c4c5eb22e499e26475148be3fcc6f558f1120aa16fbc9b1a",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_013",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_013.mp3",
+  "duration": 5.2505,
+  "sha256": "e69730613fd39796af0bdd16db975596a8f47158f349a5d5d0f437b4b6c0e75a",
+  "request_payload": {
+    "text": "[conversational] Пока никаких торжественных заявлений. У меня тут обычная проверка, без фанфар.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

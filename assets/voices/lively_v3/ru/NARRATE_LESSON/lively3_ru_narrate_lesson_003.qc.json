@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_003",
+  "sha256": "d4fcb5698e8db7e0607d5b56978ae500e80cd6a1df8bf52d7360c8d3d4633a7c",
+  "expected": "Баллы показывают совпадение условий. Процентом обещанного выигрыша они не становятся.",
+  "transcript": "Балы показывают совпадение условий. Процентам обещанного выигрыша они не становятся.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08261,
+    "peak": 0.32265,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.089,
+    "sha256": "d4fcb5698e8db7e0607d5b56978ae500e80cd6a1df8bf52d7360c8d3d4633a7c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Балы показывают совпадение условий. Процентам обещанного выигрыша они не становятся."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

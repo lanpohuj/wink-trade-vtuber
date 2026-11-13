@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_027",
+  "phrase_id": "lively3_ru_narrate_expiry_027",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Эта сделка на две минуты. Спешить с финальной реакцией точно рано.",
+  "tts_text": "[conversational] Эта сделка на две минуты. Спешить с финальной реакцией точно рано.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "030ae00bab927e5c1c4ed21e9c8e31176d1301b2d6090676b6807d33e6e9fd75",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_027",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_027.mp3",
+  "duration": 3.9705,
+  "sha256": "a6d9251716795c1fd0212572b3c13123d79047934b0b1949aa423369134d41c7",
+  "request_payload": {
+    "text": "[conversational] Эта сделка на две минуты. Спешить с финальной реакцией точно рано.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

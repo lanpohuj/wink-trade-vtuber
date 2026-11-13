@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_060",
+  "phrase_id": "lively3_en_narrate_scan_060",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Decisions need details. Unfortunately, so do I. Still checking.",
+  "tts_text": "[natural, conversational] Decisions need details. Unfortunately, so do I. Still checking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fba776eff42dd9f63d322287e851fa497c65b6c4d34e845d572742252663a201",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_060",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_060.mp3",
+  "duration": 5.119937,
+  "sha256": "37f0f11f755bdac00013f4788dd2c7c1ec30bf80b4377ee87e86c7041f0c7e3e",
+  "request_payload": {
+    "text": "[natural, conversational] Decisions need details. Unfortunately, so do I. Still checking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

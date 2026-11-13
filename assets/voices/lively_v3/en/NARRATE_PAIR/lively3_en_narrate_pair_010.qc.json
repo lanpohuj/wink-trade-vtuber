@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_010",
+  "sha256": "21a0bc9148f0a93385e1651c5a3ddbdcb8b23b85750c35c2345d8807ae96d2d5",
+  "expected": "Pair changed, assumptions reset. Checks start fresh.",
+  "transcript": "Pair changed. Assumptions reset. Check start fresh.",
+  "similarity": 0.988,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07308,
+    "peak": 0.53241,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.181,
+    "sha256": "21a0bc9148f0a93385e1651c5a3ddbdcb8b23b85750c35c2345d8807ae96d2d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Pair changed. Assumptions reset. Check start fresh."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

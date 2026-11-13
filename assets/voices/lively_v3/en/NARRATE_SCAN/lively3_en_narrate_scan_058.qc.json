@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_058",
+  "sha256": "e9db7e63c43eda54f08c3551918a32a072b233ce8f14afa4c51a04a04cd8bd4d",
+  "expected": "One second, checking the reasoning. Dramatic voice can stay switched off.",
+  "transcript": "One second, checking the reasoning, dramatic voice can stay switched off.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07621,
+    "peak": 0.42514,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.28,
+    "sha256": "e9db7e63c43eda54f08c3551918a32a072b233ce8f14afa4c51a04a04cd8bd4d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " One second, checking the reasoning, dramatic voice can stay switched off."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

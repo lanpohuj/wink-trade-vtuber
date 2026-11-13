@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_put_019",
+  "sha256": "6ca00a4cf36fe8d4e84334c94d73053ee87dd2bf226d8c324ba6820cde604ade",
+  "expected": "Breakout with closed retest confirmed the down setup. Trade's open.",
+  "transcript": "Breakout with closed retest confirmed the down set up. Trades open.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.154,
+    "rms": 0.0833,
+    "peak": 0.39895,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "6ca00a4cf36fe8d4e84334c94d73053ee87dd2bf226d8c324ba6820cde604ade"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Breakout with closed retest confirmed the down set up."
+    },
+    {
+      "start": 3.0,
+      "end": 4.0,
+      "text": " Trades open."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_028",
+  "sha256": "0a0b52dc8d47c13456d0f58060d32f33a6c34f9a0bb447782ecd03f42fc30e51",
+  "expected": "Calm vibes are allowed here. I never signed up for permanent maximum volume.",
+  "transcript": "Calm vibes are allowed here. I never signed up for permanent maximum volume.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08189,
+    "peak": 0.3737,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.227,
+    "sha256": "0a0b52dc8d47c13456d0f58060d32f33a6c34f9a0bb447782ecd03f42fc30e51"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Calm vibes are allowed here. I never signed up for permanent maximum volume."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

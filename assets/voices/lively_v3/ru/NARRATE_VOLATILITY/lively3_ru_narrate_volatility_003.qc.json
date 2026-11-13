@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_volatility_003",
+  "sha256": "e982035de126b87b4baaafee01cff88a717d085d6c909aabdf063bf50bd7216a",
+  "expected": "Волатильность сейчас повышенная. Мой спокойный вид пусть не вводит в заблуждение.",
+  "transcript": "Володильность сейчас повышенная. Мой спокойный вид пусть не вводит в заблуждение.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08985,
+    "peak": 0.40186,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "e982035de126b87b4baaafee01cff88a717d085d6c909aabdf063bf50bd7216a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Володильность сейчас повышенная. Мой спокойный вид пусть не вводит в заблуждение."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

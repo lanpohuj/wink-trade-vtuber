@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_036",
+  "phrase_id": "lively3_ru_narrate_trade_036",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Ждём завершения. Мой оптимизм сейчас без доступа к счётчику.",
+  "tts_text": "[conversational] Ждём завершения. Мой оптимизм сейчас без доступа к счётчику.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ab5aeb51611e0aff92e3652e316aa466195e5253c7b745032661e53b4ba9cb63",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_036",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_036.mp3",
+  "duration": 4.075,
+  "sha256": "2a55e1d46caca1f886720a16d72f8e833307fa90d3d64531068d04e7f6b09812",
+  "request_payload": {
+    "text": "[conversational] Ждём завершения. Мой оптимизм сейчас без доступа к счётчику.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

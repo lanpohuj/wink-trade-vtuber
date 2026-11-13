@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_020",
+  "phrase_id": "lively3_en_narrate_pair_020",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New pair's here. Let's meet it without promises or fancy titles.",
+  "tts_text": "[natural, conversational] New pair's here. Let's meet it without promises or fancy titles.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d270228c7c75ede86f6804832b26c7f5b7d7fff9567234901e504b754bad0c85",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_020",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_020.mp3",
+  "duration": 4.23175,
+  "sha256": "94f0253c6cf4343969999191f92bd027520f4eba1279d12c68a1f2078d304821",
+  "request_payload": {
+    "text": "[natural, conversational] New pair's here. Let's meet it without promises or fancy titles.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

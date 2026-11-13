@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_002",
+  "phrase_id": "lively3_en_chat_reaction_002",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Welcome in! No button-knowledge test at the door.",
+  "tts_text": "[gently sarcastic, conversational] Welcome in! No button-knowledge test at the door.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "da3078c514cd3a4b0e59f5715a7935da40bac195e0f9b52138f929314ff3fe3d",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_002",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_002.mp3",
+  "duration": 3.552562,
+  "sha256": "635e870af9ff9d000098eaa248cf8035b10851306652dfa21cea0ca86e9942d3",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Welcome in! No button-knowledge test at the door.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

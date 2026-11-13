@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_024",
+  "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036",
+  "expected": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
+  "transcript": "Меняем картинку. Сюжет прошлого графика закрываем вместе с вкладкой внимания.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08723,
+    "peak": 0.32156,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.109,
+    "sha256": "f65a4ca108461fb85944cbbd96949f406c0e3f5d7946edf68725290dc2056036"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Меняем картинку."
+    },
+    {
+      "start": 1.6,
+      "end": 4.8,
+      "text": " Сюжет прошлого графика закрываем вместе с вкладкой внимания."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

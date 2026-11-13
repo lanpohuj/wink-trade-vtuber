@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_044",
+  "sha256": "cbd4c038122e319caca4c084daf9b9f4388ad2c4f199c98add7921c719e70f84",
+  "expected": "Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу.",
+  "transcript": "Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08933,
+    "peak": 0.43571,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.122,
+    "sha256": "cbd4c038122e319caca4c084daf9b9f4388ad2c4f199c98add7921c719e70f84"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5600000000000005,
+      "text": " Условия могут совпасть, а сделка закрыться в минус. Эти вещи не противоречат друг другу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

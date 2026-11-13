@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_008",
+  "sha256": "06abcec0671aafcc4aa30d1385edda3d7b149492e14d58cf45c484c2b09a70cf",
+  "expected": "Not celebrating yet. Once I start getting carried away, there's no stopping me.",
+  "transcript": "Not celebrating yet. Once I start getting carried away, there's no stopping me.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08296,
+    "peak": 0.54952,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.18,
+    "sha256": "06abcec0671aafcc4aa30d1385edda3d7b149492e14d58cf45c484c2b09a70cf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Not celebrating yet. Once I start getting carried away, there's no stopping me."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

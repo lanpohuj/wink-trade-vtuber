@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_020",
+  "sha256": "7cb9e82c4dd2498812a9ca42c848c100fa4262be873e15838ab0a6051df789ed",
+  "expected": "Устроим перекличку полезных ссылок: бот в шапке профиля на месте.",
+  "transcript": "Устроим перекличку полезных ссылок, бот в шапке профили на месте.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08482,
+    "peak": 0.39404,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "7cb9e82c4dd2498812a9ca42c848c100fa4262be873e15838ab0a6051df789ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Устроим перекличку полезных ссылок, бот в шапке профили на месте."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

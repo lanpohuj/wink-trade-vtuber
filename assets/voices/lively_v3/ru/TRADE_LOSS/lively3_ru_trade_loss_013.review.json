@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_013",
+  "phrase_id": "lively3_ru_trade_loss_013",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Получился минус. Оправдывать каждую свечку задним числом не буду.",
+  "tts_text": "[conversational] Получился минус. Оправдывать каждую свечку задним числом не буду.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c46d743e47cee3a513a0c533f39ec76bc8c0a9ff60b12c36df68f038c5e60dd3",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_013",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_013.mp3",
+  "duration": 4.466875,
+  "sha256": "a823014502b4ec5af23bcfe2d6ae98560f033bd9f58560b81be0d1ffc5b8b119",
+  "request_payload": {
+    "text": "[conversational] Получился минус. Оправдывать каждую свечку задним числом не буду.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

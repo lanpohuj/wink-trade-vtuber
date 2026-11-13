@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_021",
+  "sha256": "9c1916e7b454ebf0e1c8a9586b12fe62ab50c0dc746a7e2894852610110fff9c",
+  "expected": "Бот по ссылке в шапке профиля. Условия и шаги доступа прочитай внутри.",
+  "transcript": "Будут посылки в шапке профиля. Условие шаги доступа, прочитай внутри.",
+  "similarity": 0.912,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07541,
+    "peak": 0.34177,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "9c1916e7b454ebf0e1c8a9586b12fe62ab50c0dc746a7e2894852610110fff9c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Будут посылки в шапке профиля."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Условие шаги доступа, прочитай внутри."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

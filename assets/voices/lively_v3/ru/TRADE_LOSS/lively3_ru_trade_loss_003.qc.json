@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_loss_003",
+  "sha256": "fc66f07bdabf734a62a0c0242bc2539a0c41d308edbe0b4cbc466757b5aa79ff",
+  "expected": "Закрылись красным. Мне не нравится, но честно назвать результат полезнее.",
+  "transcript": "Закрылись красным. Мне не нравится, но честно назвать результат полезнее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08474,
+    "peak": 0.3866,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.072,
+    "sha256": "fc66f07bdabf734a62a0c0242bc2539a0c41d308edbe0b4cbc466757b5aa79ff"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Закрылись красным. Мне не нравится, но честно назвать результат полезнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

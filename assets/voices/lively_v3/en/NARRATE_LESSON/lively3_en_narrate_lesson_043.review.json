@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_043",
+  "phrase_id": "lively3_en_narrate_lesson_043",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Missing confirmation is reason enough for patience. Dramatic music optional.",
+  "tts_text": "[warm, relaxed] Missing confirmation is reason enough for patience. Dramatic music optional.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "10f5e19d01e9e2964359b0ebaf83b8f74c3c2d5c2fa656c1df00706b381cd8d7",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_043",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_043.mp3",
+  "duration": 4.989312,
+  "sha256": "feb9b238fe24cd5858c5a1765aa168ed47b941852f83d1f3c4bb666746bc88a3",
+  "request_payload": {
+    "text": "[warm, relaxed] Missing confirmation is reason enough for patience. Dramatic music optional.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

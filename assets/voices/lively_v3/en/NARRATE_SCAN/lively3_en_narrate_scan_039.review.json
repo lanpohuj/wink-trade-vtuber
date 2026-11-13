@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_039",
+  "phrase_id": "lively3_en_narrate_scan_039",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not letting one detail steal all the attention. This isn't a solo act.",
+  "tts_text": "[warm, relaxed] Not letting one detail steal all the attention. This isn't a solo act.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4368e7f7285fe9b433b2d5a44f14f1b73eb862f984b145f4d898372debf627aa",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_039",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_039.mp3",
+  "duration": 4.989312,
+  "sha256": "294342219d9b20a853f2da768c4943bacfcd3845da65adb249224f82d755231d",
+  "request_payload": {
+    "text": "[warm, relaxed] Not letting one detail steal all the attention. This isn't a solo act.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

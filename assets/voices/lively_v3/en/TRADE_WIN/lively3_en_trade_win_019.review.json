@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_019",
+  "phrase_id": "lively3_en_trade_win_019",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green close recorded. My tiny pleased reaction is entirely official.",
+  "tts_text": "[warm, relaxed] Green close recorded. My tiny pleased reaction is entirely official.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7c8a06f5b750f5b0a464c52deede95a006110aaca1b20b50202e0a28ed39beb6",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_019",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_019.mp3",
+  "duration": 4.728063,
+  "sha256": "5b53e93121bf7e5f6ddedca9cd84c5ed272a896ab746800372076c3fc89f9c18",
+  "request_payload": {
+    "text": "[warm, relaxed] Green close recorded. My tiny pleased reaction is entirely official.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_028",
+  "sha256": "561e53a439170b4b20d1c0672703a86df2c8fafb3a9eef50a0d652265eb4f8ee",
+  "expected": "Two-minute window. A brief move doesn't get promoted to final outcome.",
+  "transcript": "Two-minute window. A brief move doesn't get promoted to final outcome.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.06986,
+    "peak": 0.34357,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.302,
+    "sha256": "561e53a439170b4b20d1c0672703a86df2c8fafb3a9eef50a0d652265eb4f8ee"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Two-minute window. A brief move doesn't get promoted to final outcome."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

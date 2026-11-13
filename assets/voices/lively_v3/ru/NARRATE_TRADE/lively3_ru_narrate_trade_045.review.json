@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_045",
+  "phrase_id": "lively3_ru_narrate_trade_045",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сделка ещё идёт. Моя работа сейчас — не выдать ожидания за факты.",
+  "tts_text": "[conversational] Сделка ещё идёт. Моя работа сейчас — не выдать ожидания за факты.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c38146ca4e2fcfb18ef47e5f7a74012c240dbcdb59f3161d787fed7763a07a2a",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_045",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_045.mp3",
+  "duration": 4.519125,
+  "sha256": "592fe6d29d0a7adeb0552c4f283eed37cbcfcc83b55631027c0e261e08588f94",
+  "request_payload": {
+    "text": "[conversational] Сделка ещё идёт. Моя работа сейчас — не выдать ожидания за факты.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

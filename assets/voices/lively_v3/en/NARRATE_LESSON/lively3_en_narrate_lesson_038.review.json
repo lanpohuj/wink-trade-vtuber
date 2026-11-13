@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_038",
+  "phrase_id": "lively3_en_narrate_lesson_038",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I'm not calling something a strategy just because it worked once.",
+  "tts_text": "[gently sarcastic, conversational] I'm not calling something a strategy just because it worked once.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2e04ae2e15753dee13cc23a40fe362ebf37cbe54530500e3a5398b7792348195",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_038",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_038.mp3",
+  "duration": 3.813812,
+  "sha256": "0a4e757d8d4e9c338ed5ee1364a6f15adf1ec4f06d8e91a127116b277122194f",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] I'm not calling something a strategy just because it worked once.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

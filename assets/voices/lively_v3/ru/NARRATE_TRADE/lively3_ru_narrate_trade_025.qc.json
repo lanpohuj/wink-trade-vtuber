@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_025",
+  "sha256": "755d0991ba4cb2fcc534a54f3d11c89e976355eb4c514401bdacc6925dc8de51",
+  "expected": "Я вижу процесс, а не готовый результат. Термины скучные, разница полезная.",
+  "transcript": "Я вижу процесс, а не готовый результат. Термины скучные, разница полезная.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08164,
+    "peak": 0.31639,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "755d0991ba4cb2fcc534a54f3d11c89e976355eb4c514401bdacc6925dc8de51"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.46,
+      "text": " Я вижу процесс, а не готовый результат."
+    },
+    {
+      "start": 2.46,
+      "end": 5.16,
+      "text": " Термины скучные, разница полезная."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

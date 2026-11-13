@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_027",
+  "phrase_id": "lively3_en_narrate_trade_027",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Waiting for the close. No poll on where we'd prefer price to go.",
+  "tts_text": "[warm, relaxed] Waiting for the close. No poll on where we'd prefer price to go.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8afb8ef6a06c37ffd2018bcb360000b66ae190713a3dea82aa112e9ca3bdee94",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_027",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_027.mp3",
+  "duration": 4.675813,
+  "sha256": "193db941f5f38452015999354391004b93b896f87ed82f01b36b885feadf1654",
+  "request_payload": {
+    "text": "[warm, relaxed] Waiting for the close. No poll on where we'd prefer price to go.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

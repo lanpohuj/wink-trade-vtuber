@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_012",
+  "phrase_id": "lively3_en_narrate_lesson_012",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "One candle can impress. Context prevents an embarrassingly quick crush.",
+  "tts_text": "[natural, conversational] One candle can impress. Context prevents an embarrassingly quick crush.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2e8cbe8d27c38dcf0e87ca67d15488e6da0c296d6f2391289f5e81b6d3ee0223",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_012",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_012.mp3",
+  "duration": 5.172125,
+  "sha256": "15d0f3324726e5cb96aeffad38fc05bae1df2aee13808cb4278a02085ccf7b57",
+  "request_payload": {
+    "text": "[natural, conversational] One candle can impress. Context prevents an embarrassingly quick crush.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

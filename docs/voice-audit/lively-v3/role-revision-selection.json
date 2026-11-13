@@ -1,0 +1,404 @@
+{
+  "records": [
+    {
+      "id": "lively3_ru_narrate_pair_001",
+      "text": "Так, открыли другую пару. Проверю, есть ли здесь понятный вход.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_001",
+      "text": "Right, another pair is open. Let me check whether there's a clear entry here.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_002",
+      "text": "Переключились. Сейчас разберём этот график и посмотрим на условия для входа.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_002",
+      "text": "We've switched over. Let's look through this chart and check the entry conditions.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_003",
+      "text": "Новая пара на экране. Посмотрю движение, потом определимся со входом.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_003",
+      "text": "New pair on screen. I'll read the movement before deciding on an entry.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_004",
+      "text": "Идём дальше, чат. Эту пару сначала проверю на разных интервалах.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_004",
+      "text": "Moving on, chat. I'll check this pair across the timeframes first.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_005",
+      "text": "Проверим следующую пару. Начну с общей картины.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_005",
+      "text": "Let's check the next pair. I'll start with the bigger picture.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_006",
+      "text": "Здесь новый график. Сейчас посмотрю, что подтверждается.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_006",
+      "text": "Here's the new chart. Let's see which conditions line up.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_007",
+      "text": "Сменили пару. Дайте секунду, разберусь с движением.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_007",
+      "text": "Pair changed. Give me a moment to read the price movement.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_008",
+      "text": "Поехали дальше. Гляну, есть ли здесь сценарий для входа.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_008",
+      "text": "On to the next one. Let's see whether there's a setup here.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_009",
+      "text": "Смотрим другой актив. Сначала условия, потом уже решение.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_009",
+      "text": "We're looking at another asset. Conditions first, then the decision.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_010",
+      "text": "Следующая пара. Сейчас проверю структуру и подходящий интервал.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_010",
+      "text": "Next pair. I'll check the structure and the relevant timeframe.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_011",
+      "text": "Перешли на другой график. Смотрю, как здесь ведёт себя цена.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_011",
+      "text": "We're on a different chart now. I'm looking at how price is behaving here.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_012",
+      "text": "Пара сменилась. Разберём эту картину отдельно.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_012",
+      "text": "The pair has changed. Let's give this chart a fresh assessment.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_013",
+      "text": "Теперь проверю этот вариант. Посмотрим, найдётся ли подходящий момент.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_013",
+      "text": "I'll check this option now. Let's see whether a suitable moment develops.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_014",
+      "text": "Открыли другую пару, чат. Сейчас посмотрю её внимательнее.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_014",
+      "text": "Another pair's open, chat. I'll take a closer look at this one.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_015",
+      "text": "Следующий график на экране. Проверяю условия для входа.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_015",
+      "text": "Next chart on screen. Checking its entry conditions now.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_016",
+      "text": "Ищем дальше. На этой паре проверю направление и точку входа.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_016",
+      "text": "Continuing the search. I'll check direction and the entry point on this pair.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_017",
+      "text": "Переключились сюда. Сначала посмотрю, какой сценарий здесь уместен.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_017",
+      "text": "We've switched to this chart. First, I'll see which setup fits it.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_018",
+      "text": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_018",
+      "text": "We've switched pairs. Let me check whether there's a suitable entry here.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_019",
+      "text": "Разберём ещё одну пару. Хочу посмотреть движение целиком.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_019",
+      "text": "Let's work through another pair. I want to see the full movement.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_020",
+      "text": "Новую пару открыли. Проверю её так же внимательно.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_020",
+      "text": "The new pair is open. I'll give it the same careful look.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_021",
+      "text": "Поменяли актив. Сверяю интервалы, чтобы видеть общую картину.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_021",
+      "text": "We've changed assets. Comparing timeframes to get the full picture.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_022",
+      "text": "Идём к следующей паре. Посмотрим, есть ли здесь подтверждение.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_022",
+      "text": "On to the next pair. Let's check for confirmation here.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_023",
+      "text": "Здесь начинаем новый разбор. Сейчас проверю необходимые условия.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_023",
+      "text": "Starting a fresh analysis here. I'll check the conditions we need.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_024",
+      "text": "Посмотрим другую пару. Решение примем после разбора.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_024",
+      "text": "Let's look at a different pair. We'll decide after checking it.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_narrate_pair_025",
+      "text": "Так, здесь уже другой график. Дайте мне момент на анализ.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_en_narrate_pair_025",
+      "text": "Right, this is the next chart. Give me a moment to analyse it.",
+      "delivery": "conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_006",
+      "text": "Спасибо за подписку! Рада, что остаёшься с нами. Добро пожаловать на эфир!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_006",
+      "text": "Thanks for following! I'm happy you're staying with us. Welcome to the stream!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_007",
+      "text": "О, новая подписка! Спасибо за поддержку, очень рада тебя видеть!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_007",
+      "text": "Oh, a new follower! Thanks for the support. So glad to have you here!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_008",
+      "text": "Спасибо, что подписался! Устраивайся поудобнее, будем разбирать графики вместе.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_008",
+      "text": "Thank you for following! Get comfortable; we'll work through the charts together.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_009",
+      "text": "Как приятно, спасибо за подписку! Присоединяйся к разговору, всегда рада вопросам.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_009",
+      "text": "That's lovely, thanks for following! Join the conversation; questions are always welcome.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_010",
+      "text": "Спасибо за фоллоу! Здорово, что наша компания растёт. Оставайся с нами!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_010",
+      "text": "Thanks for the follow! It's lovely seeing the community grow. Stick around!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_011",
+      "text": "Спасибо за подарок! Мне очень приятно. Спасибо, что поддерживаешь эфир!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_011",
+      "text": "Thank you for the gift! I really appreciate it. Thanks for supporting the stream!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_012",
+      "text": "О, какой приятный сюрприз! Спасибо за подарок и за твою поддержку!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_012",
+      "text": "Oh, what a lovely surprise! Thank you for the gift and your support!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_013",
+      "text": "Спасибо большое за подарок! Очень ценю, что вы поддерживаете то, что мы здесь делаем.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_013",
+      "text": "Thank you so much for the gift! I really appreciate you supporting what we're doing here.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_014",
+      "text": "Подарок увидела, спасибо! Это очень приятно. Рада, что ты с нами!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_014",
+      "text": "I saw the gift, thank you! That's really kind. I'm glad you're here with us!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_015",
+      "text": "Спасибо за такой приятный знак внимания! Ты сделал этот момент ещё теплее.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_015",
+      "text": "Thank you for such a kind gesture! You've made this moment even nicer.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_016",
+      "text": "Чат, спасибо за лайки! Ваша поддержка очень радует. Давайте ещё сердечек!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_016",
+      "text": "Chat, thanks for the likes! Your support means a lot. Keep those hearts coming!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_017",
+      "text": "Сердечки вижу, спасибо! Очень приятно чувствовать вашу поддержку.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_017",
+      "text": "I see the hearts, thank you! It's lovely feeling your support.",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_018",
+      "text": "Спасибо за лайки, ребята! Вы делаете этот эфир живым, очень вас ценю!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_018",
+      "text": "Thanks for the likes, everyone! You make this stream feel alive. I appreciate you!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_019",
+      "text": "О, спасибо за сердечки! Рада, что вам нравится. Оставайтесь, будем смотреть вместе!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_019",
+      "text": "Oh, thanks for the hearts! I'm glad you're enjoying it. Stay and watch along with us!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_ru_chat_reaction_020",
+      "text": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+      "delivery": "warm, smiling, conversational"
+    },
+    {
+      "id": "lively3_en_chat_reaction_020",
+      "text": "Thanks for the likes, chat! I really appreciate the support. Keep those hearts coming!",
+      "delivery": "warm, smiling, conversational"
+    }
+  ]
+}

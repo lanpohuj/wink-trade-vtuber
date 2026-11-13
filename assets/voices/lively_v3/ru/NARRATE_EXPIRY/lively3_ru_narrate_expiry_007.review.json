@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_007",
+  "phrase_id": "lively3_ru_narrate_expiry_007",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Выбран срок пятнадцать секунд. Дальние прогнозы к нему не прилагаются.",
+  "tts_text": "[conversational] Выбран срок пятнадцать секунд. Дальние прогнозы к нему не прилагаются.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3d76aff11ca56665c7e79bb31c6aa2e028573d96a6eba7a6fbd2ea0e6b56d413",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_007",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_007.mp3",
+  "duration": 4.519125,
+  "sha256": "201de12a42089ed497332b2f8d2a5568ceec661e25f0eb970c3dc0c082b8b45e",
+  "request_payload": {
+    "text": "[conversational] Выбран срок пятнадцать секунд. Дальние прогнозы к нему не прилагаются.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

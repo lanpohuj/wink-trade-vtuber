@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_045",
+  "sha256": "4845a69df1a7c5aeefa93c2d0b3a177d44af612730e1185b0bd0009deb5761c8",
+  "expected": "Читаю картинку целиком. Заголовки сами по себе я тоже не очень люблю.",
+  "transcript": "Читаю картинку целиком. Из-за головки сами по себе, я тоже не очень люблю.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09194,
+    "peak": 0.49892,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.108,
+    "sha256": "4845a69df1a7c5aeefa93c2d0b3a177d44af612730e1185b0bd0009deb5761c8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Читаю картинку целиком."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Из-за головки сами по себе, я тоже не очень люблю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

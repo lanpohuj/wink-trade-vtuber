@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_040",
+  "sha256": "338c2b03c91b55553242b530422086cbefc2db00b632ff5e4400c36b5c2af8b8",
+  "expected": "Want a clear starting point? Check the bot through the link at the top of my profile.",
+  "transcript": "Want a clear starting point? Check the bot through the link at the top of my profile.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08058,
+    "peak": 0.42967,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.199,
+    "sha256": "338c2b03c91b55553242b530422086cbefc2db00b632ff5e4400c36b5c2af8b8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Want a clear starting point?"
+    },
+    {
+      "start": 2.0,
+      "end": 4.8,
+      "text": " Check the bot through the link at the top of my profile."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

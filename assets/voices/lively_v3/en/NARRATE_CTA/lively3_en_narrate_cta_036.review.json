@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_036",
+  "phrase_id": "lively3_en_narrate_cta_036",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "For newcomers: link in bio, then the bot and its instructions.",
+  "tts_text": "[natural, conversational] For newcomers: link in bio, then the bot and its instructions.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a18267e817bf58fda8999bc88c74d506e31802ced3e2877dbcd7e5c74aaaf1e8",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_036",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_036.mp3",
+  "duration": 4.545187,
+  "sha256": "cf51382cbc0dc34a5acb3ff6c4fa63b114b7a66301efd43fcd972dfa5c0eb98a",
+  "request_payload": {
+    "text": "[natural, conversational] For newcomers: link in bio, then the bot and its instructions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_008",
+  "phrase_id": "lively3_en_narrate_volatility_008",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Volatility's up, moves are sharper. We can describe it without artistic additions.",
+  "tts_text": "[natural, conversational] Volatility's up, moves are sharper. We can describe it without artistic additions.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "222784ef7c72e41c530ad517aa003517228326b98cdb816443682828cfca38c1",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_008",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_008.mp3",
+  "duration": 5.642375,
+  "sha256": "57675bb679d8c0c15480adc64fb4573f603d7fb6078ef5f3f6ff2fdcd812ff64",
+  "request_payload": {
+    "text": "[natural, conversational] Volatility's up, moves are sharper. We can describe it without artistic additions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

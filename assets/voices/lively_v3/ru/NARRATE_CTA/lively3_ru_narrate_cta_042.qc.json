@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_042",
+  "sha256": "90630c64b160eca2bee5a073d43ab0743415dbb1d156ed2cbe1bbaaad3b31cac",
+  "expected": "Если потеряешься после эфира, вспомни профиль. Ссылка на бота останется там.",
+  "transcript": "Если потеряешься после эфира, вспомни профиль. Ссылка на бота останется там.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07403,
+    "peak": 0.33187,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "90630c64b160eca2bee5a073d43ab0743415dbb1d156ed2cbe1bbaaad3b31cac"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Если потеряешься после эфира, вспомни профиль."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Ссылка на бота останется там."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

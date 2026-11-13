@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_029",
+  "sha256": "64b2932d5ee90389c3a64323f4de535430792e29e34d7180e179b873a607ffd6",
+  "expected": "Я пока наблюдатель с микрофоном. Очень разговорчивый, но всё-таки наблюдатель.",
+  "transcript": "Я пока наблюдатель с микрофоном. Очень разговорчивый, но все-таки наблюдатель.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08262,
+    "peak": 0.35257,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.102,
+    "sha256": "64b2932d5ee90389c3a64323f4de535430792e29e34d7180e179b873a607ffd6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Я пока наблюдатель с микрофоном. Очень разговорчивый, но все-таки наблюдатель."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

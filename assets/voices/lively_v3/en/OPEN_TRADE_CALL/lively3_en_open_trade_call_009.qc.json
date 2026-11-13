@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_call_009",
+  "sha256": "4eb08ef1c800ab6c9e87a645af03382db6c9827364fc37024d7f6d5c50f40e8d",
+  "expected": "Up entry happened on the trend pullback. Reason stated; waiting for the close.",
+  "transcript": "Up entry happened on the trend pullback. Reason stated, waiting for the close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07252,
+    "peak": 0.35612,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "4eb08ef1c800ab6c9e87a645af03382db6c9827364fc37024d7f6d5c50f40e8d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Up entry happened on the trend pullback."
+    },
+    {
+      "start": 2.4,
+      "end": 5.0,
+      "text": " Reason stated, waiting for the close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

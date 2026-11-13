@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_027",
+  "phrase_id": "lively3_en_narrate_engage_027",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Sometimes the day's vibe needs a reboot. Preferably without a whole update.",
+  "tts_text": "[casual] Sometimes the day's vibe needs a reboot. Preferably without a whole update.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "78a5d56ced8bacb7e0240cdf0fa57a9f2629511ae34966ef140c8b852f69b80c",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_027",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_027.mp3",
+  "duration": 4.728063,
+  "sha256": "e3bf891cc8a6762591a6bc4162b0ac930d25421c9e229bf859d9e7b63684ccfd",
+  "request_payload": {
+    "text": "[casual] Sometimes the day's vibe needs a reboot. Preferably without a whole update.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

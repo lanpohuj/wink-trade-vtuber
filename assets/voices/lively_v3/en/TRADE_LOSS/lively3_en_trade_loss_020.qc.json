@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_020",
+  "sha256": "5aa73da5ee588e39a6b03872269664a7e4380389a43396503440fb1613524566",
+  "expected": "Closed red, unpleasant. Keeping an honest count, no arguing with the past.",
+  "transcript": "Closed red unpleasant keeping an honest count no arguing with the past",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.07536,
+    "peak": 0.39032,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.264,
+    "sha256": "5aa73da5ee588e39a6b03872269664a7e4380389a43396503440fb1613524566"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Closed red unpleasant keeping an honest count no arguing with the past"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

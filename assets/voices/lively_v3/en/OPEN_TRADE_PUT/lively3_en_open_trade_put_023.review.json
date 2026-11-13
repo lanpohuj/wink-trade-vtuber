@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_023",
+  "phrase_id": "lively3_en_open_trade_put_023",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Down entry on range rejection completed. Confirmation yes, promise no.",
+  "tts_text": "[clear, conversational] Down entry on range rejection completed. Confirmation yes, promise no.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9edba7ac987f106e41b76e510e284798f40c9424d96744949fc78f02e2356a49",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_023",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_023.mp3",
+  "duration": 5.041563,
+  "sha256": "56d1bb6f2b7b2cc315b1514610c16be63fde030879a450fcf8a05e04763187ba",
+  "request_payload": {
+    "text": "[clear, conversational] Down entry on range rejection completed. Confirmation yes, promise no.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

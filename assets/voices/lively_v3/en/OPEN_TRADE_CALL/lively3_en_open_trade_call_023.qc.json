@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_023",
+  "sha256": "caa66372daa80a4b01a8dc6c2dbda2a126b581cd14ee7b3b1495afda26d1bbb8",
+  "expected": "Bought the range rejection. Confirmation came before entry, not from my speech.",
+  "transcript": "Bought the range rejection. Confirmation came before entry, not from my speech.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07806,
+    "peak": 0.40978,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.202,
+    "sha256": "caa66372daa80a4b01a8dc6c2dbda2a126b581cd14ee7b3b1495afda26d1bbb8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": " Bought the range rejection. Confirmation came before entry, not from my speech."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

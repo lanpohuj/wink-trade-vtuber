@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_048",
+  "sha256": "18afaf248066544812879215f336aeebad915fd400790573a864acdd9c07db7e",
+  "expected": "Been meaning to check the bot? Same route: my bio. Read the conditions inside.",
+  "transcript": "Then meaning to check the bot. Same route, my bio. Read the conditions inside.",
+  "similarity": 0.967,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08243,
+    "peak": 0.43906,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.232,
+    "sha256": "18afaf248066544812879215f336aeebad915fd400790573a864acdd9c07db7e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Then meaning to check the bot. Same route, my bio. Read the conditions inside."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_027",
+  "sha256": "a6d9251716795c1fd0212572b3c13123d79047934b0b1949aa423369134d41c7",
+  "expected": "Эта сделка на две минуты. Спешить с финальной реакцией точно рано.",
+  "transcript": "Это сделка на две минуты. Спешить с финальной реакцией точно рано.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.07886,
+    "peak": 0.35443,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.071,
+    "sha256": "a6d9251716795c1fd0212572b3c13123d79047934b0b1949aa423369134d41c7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Это сделка на две минуты."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Спешить с финальной реакцией точно рано."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

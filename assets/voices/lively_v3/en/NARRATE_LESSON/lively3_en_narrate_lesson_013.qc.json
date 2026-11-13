@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_013",
+  "sha256": "ba284858872b58919545fba9015549eaa1c04e89a8e398833afcbfc485fb1e27",
+  "expected": "Once opened, the setup's chosen. No rewriting it for every candle.",
+  "transcript": "Once opened, the setup's chosen. No rewriting it for every candle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08148,
+    "peak": 0.35281,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.164,
+    "sha256": "ba284858872b58919545fba9015549eaa1c04e89a8e398833afcbfc485fb1e27"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Once opened, the setup's chosen. No rewriting it for every candle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

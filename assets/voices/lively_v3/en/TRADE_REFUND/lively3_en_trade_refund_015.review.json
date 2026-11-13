@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_015",
+  "phrase_id": "lively3_en_trade_refund_015",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Trade ended in a refund. Quiet ending. Almost suspiciously quiet.",
+  "tts_text": "[warm, relaxed] Trade ended in a refund. Quiet ending. Almost suspiciously quiet.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3bf86b0af1d958d7b0eb1f8ed39a179622393b51ddd99a66e05e6930a555a29e",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_015",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_015.mp3",
+  "duration": 4.806438,
+  "sha256": "f883ee41b11870eacd33267fb610ce937a58977390e0bf43129f863b19d36d26",
+  "request_payload": {
+    "text": "[warm, relaxed] Trade ended in a refund. Quiet ending. Almost suspiciously quiet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

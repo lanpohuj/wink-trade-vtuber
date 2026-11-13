@@ -1,0 +1,17 @@
+{
+  "sha256": "14e0f148af4c91f2e5917fa8a5aba3190e00f86e104ead0b2bf666b0ec5f721e",
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07698,
+    "peak": 0.3909,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.082,
+    "sha256": "14e0f148af4c91f2e5917fa8a5aba3190e00f86e104ead0b2bf666b0ec5f721e"
+  },
+  "transcript": "О, сердечки долетели. Все, я довольная. Спасибо, что вы со мной.",
+  "similarity": 1.0,
+  "issues": [],
+  "auditory_verified": false
+}

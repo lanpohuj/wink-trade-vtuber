@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_047",
+  "sha256": "4ce6730057da3e319f1661c533096a1ddd5949073de4a88f00c9db0cfd3144c4",
+  "expected": "Мне можно нести чушь в шутках. Кнопке входа такой абонемент не выдавали.",
+  "transcript": "Мне можно нести чушь в шутках. Кнопки входа такой абонемент не выдавали.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07715,
+    "peak": 0.41756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.127,
+    "sha256": "4ce6730057da3e319f1661c533096a1ddd5949073de4a88f00c9db0cfd3144c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.12,
+      "text": " Мне можно нести чушь в шутках."
+    },
+    {
+      "start": 2.12,
+      "end": 4.76,
+      "text": " Кнопки входа такой абонемент не выдавали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

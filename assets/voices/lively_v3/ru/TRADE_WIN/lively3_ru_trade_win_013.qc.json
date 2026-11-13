@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_win_013",
+  "sha256": "73d5824ea118cfd3cb33b35ef5dd3e0cda0a352ccea6578494f9ac95400b6621",
+  "expected": "Есть плюс, чат! Всё, пару секунд я тут главная звезда. Потерпите.",
+  "transcript": "Есть плюс чат! Всё, пару секунд, я тут главная звезда! Потерпите!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07698,
+    "peak": 0.37702,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "73d5824ea118cfd3cb33b35ef5dd3e0cda0a352ccea6578494f9ac95400b6621"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Есть плюс чат!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Всё, пару секунд, я тут главная звезда!"
+    },
+    {
+      "start": 4.0,
+      "end": 6.0,
+      "text": " Потерпите!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

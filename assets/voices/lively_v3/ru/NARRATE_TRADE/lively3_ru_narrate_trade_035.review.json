@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_035",
+  "phrase_id": "lively3_ru_narrate_trade_035",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Часы не слушают уговоры. А я, между прочим, старалась бы красиво.",
+  "tts_text": "[conversational] Часы не слушают уговоры. А я, между прочим, старалась бы красиво.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a1afdf5fd90d201e16aa0060ae5e013ed7e758dc7bb1d142ea7a94df8cfa6a8b",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_035",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_035.mp3",
+  "duration": 4.23175,
+  "sha256": "db70081a5589c3bbc198b24d009da5beecb0ce7fee2b4348c09073260de35dd2",
+  "request_payload": {
+    "text": "[conversational] Часы не слушают уговоры. А я, между прочим, старалась бы красиво.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

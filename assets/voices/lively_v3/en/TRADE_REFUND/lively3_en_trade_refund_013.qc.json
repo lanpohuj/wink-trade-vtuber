@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_013",
+  "sha256": "117808dab230b5b2553afb631d41d3a8fee47b7dff5ed688dbf4bb8ebfa67d8c",
+  "expected": "Refund confirmed, chat. Calling the result by its actual name.",
+  "transcript": "Refund confirmed, chat, calling the result by its actual name.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07788,
+    "peak": 0.38608,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.272,
+    "sha256": "117808dab230b5b2553afb631d41d3a8fee47b7dff5ed688dbf4bb8ebfa67d8c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Refund confirmed, chat, calling the result by its actual name."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

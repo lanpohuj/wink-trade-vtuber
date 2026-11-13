@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_003",
+  "phrase_id": "lively3_ru_trade_loss_003",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Закрылись красным. Мне не нравится, но честно назвать результат полезнее.",
+  "tts_text": "[conversational] Закрылись красным. Мне не нравится, но честно назвать результат полезнее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d578b1c6426a6c3e6e9201693a35956dc16707d69214a0106d581b2713a4b924",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_003",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_003.mp3",
+  "duration": 5.172125,
+  "sha256": "fc66f07bdabf734a62a0c0242bc2539a0c41d308edbe0b4cbc466757b5aa79ff",
+  "request_payload": {
+    "text": "[conversational] Закрылись красным. Мне не нравится, но честно назвать результат полезнее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

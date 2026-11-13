@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_volatility_007",
+  "sha256": "209c9447f1c0b1b0909617f9b0977f05cb503a866dd4c260ba49dbcadb9c602e",
+  "expected": "Расширение диапазонов видно в свежих данных. Тут моя эмоциональность ни при чём.",
+  "transcript": "Расширение диапазонов видно в свежих данных. Тут моя эмоциональность ни при чем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.09244,
+    "peak": 0.36622,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.071,
+    "sha256": "209c9447f1c0b1b0909617f9b0977f05cb503a866dd4c260ba49dbcadb9c602e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Расширение диапазонов видно в свежих данных."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Тут моя эмоциональность ни при чем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

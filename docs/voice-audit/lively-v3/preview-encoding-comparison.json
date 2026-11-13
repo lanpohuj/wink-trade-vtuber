@@ -1,0 +1,8 @@
+{
+  "source": "rejected-scan-round3",
+  "album": "pilot-ru-c2ba606b.mp3",
+  "aligned_start_sec": 6.85,
+  "extra_mp3_encode_snr_db": 40.06363126677337,
+  "aligned_gain": 0.9500128022688187,
+  "conclusion": "Lossy album differs from source. This measurement alone cannot identify audible hoarseness; future previews use lossless PCM."
+}

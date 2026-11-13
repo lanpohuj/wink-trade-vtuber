@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_007",
+  "sha256": "345898e7ee19cfda7dcec44dd983ee7ea9cd5bef7359d9399d33b585833cd442",
+  "expected": "Didn't work; trade closed red. No 'convince outcome otherwise' button.",
+  "transcript": "Didn't work. Trade closed red. No convinced outcome otherwise button.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.07826,
+    "peak": 0.34489,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.264,
+    "sha256": "345898e7ee19cfda7dcec44dd983ee7ea9cd5bef7359d9399d33b585833cd442"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " Didn't work. Trade closed red. No convinced outcome otherwise button."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

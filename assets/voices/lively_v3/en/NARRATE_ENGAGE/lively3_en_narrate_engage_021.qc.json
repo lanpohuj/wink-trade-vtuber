@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_021",
+  "sha256": "4b2db1b50eb2c188cfc016d88297bad007f810540550cceee206a0e9bb46b07c",
+  "expected": "I like a 'why' question. Harder to escape with one pretty sentence.",
+  "transcript": "I like a why question. Harder to escape with one pretty sentence.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07524,
+    "peak": 0.4309,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.192,
+    "sha256": "4b2db1b50eb2c188cfc016d88297bad007f810540550cceee206a0e9bb46b07c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " I like a why question. Harder to escape with one pretty sentence."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

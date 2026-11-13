@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_017",
+  "sha256": "a1cdb6febc4ca26a1c2a3b92666ec6d836366091e1a06b3d39e9af586ab187c6",
+  "expected": "Ссылку на бота вынесли в профиль. Дизайнерский ход века — сделать её заметной.",
+  "transcript": "Ссылку на бота вынесли в профиль. Дизайнерский ход века сделать ее заметной.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08505,
+    "peak": 0.34948,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "a1cdb6febc4ca26a1c2a3b92666ec6d836366091e1a06b3d39e9af586ab187c6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Ссылку на бота вынесли в профиль. Дизайнерский ход века сделать ее заметной."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

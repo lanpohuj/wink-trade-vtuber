@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_025",
+  "phrase_id": "lively3_en_narrate_trade_025",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "We're seeing a process, not a finished outcome. Boring terms, useful distinction.",
+  "tts_text": "[lightly playful, smiling] We're seeing a process, not a finished outcome. Boring terms, useful distinction.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "316c3ebd0a1f0116b85acd6c9c7ae77358f046a090876bcc03320747ebd3d41a",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_025",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_025.mp3",
+  "duration": 5.590125,
+  "sha256": "a548cc01823f1a41a149f70b2b0b480127711563eafa5e53848c223c767012d3",
+  "request_payload": {
+    "text": "[lightly playful, smiling] We're seeing a process, not a finished outcome. Boring terms, useful distinction.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_015",
+  "sha256": "17b9f8bffbbd0d04e7e49395e5778143259d69d24fc9f9f1d83ae852f9113660",
+  "expected": "Half a minute here, thirty seconds. I do enjoy explanation without a puzzle.",
+  "transcript": "Half a minute here, 30 seconds. I do enjoy explanation without a puzzle.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07687,
+    "peak": 0.40828,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.282,
+    "sha256": "17b9f8bffbbd0d04e7e49395e5778143259d69d24fc9f9f1d83ae852f9113660"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Half a minute here, 30 seconds. I do enjoy explanation without a puzzle."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

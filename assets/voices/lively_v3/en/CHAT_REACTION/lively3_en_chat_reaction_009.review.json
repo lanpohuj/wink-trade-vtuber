@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_009",
+  "phrase_id": "lively3_en_chat_reaction_009",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "One more in the crew. Thanks for the follow; make yourself comfortable!",
+  "tts_text": "[lightly playful, smiling] One more in the crew. Thanks for the follow; make yourself comfortable!",
+  "conditions": {
+    "chat_kind": "follow"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "de2242cde888b43b1bfca8672271b29d7cb9f827bafdeaab0deb06534920cc7b",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_009",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_009.mp3",
+  "duration": 4.23175,
+  "sha256": "b8ef281c874bc61f78916859be20ed7a9e276cc2b26a15d005f70087fecc0d13",
+  "request_payload": {
+    "text": "[lightly playful, smiling] One more in the crew. Thanks for the follow; make yourself comfortable!",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

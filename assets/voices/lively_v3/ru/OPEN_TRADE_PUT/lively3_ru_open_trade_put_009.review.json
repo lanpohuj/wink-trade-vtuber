@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_009",
+  "phrase_id": "lively3_ru_open_trade_put_009",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открыли вниз: откат получил подтверждение. Мой голос не делает сценарий безошибочным.",
+  "tts_text": "[conversational] Открыли вниз: откат получил подтверждение. Мой голос не делает сценарий безошибочным.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2232ca2517f323bbe04f375099c9a93c7421a1286c9566312863a67ea40c8ad2",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_009",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_009.mp3",
+  "duration": 6.138687,
+  "sha256": "8daf385d477b9e1611646d6aad4f369c92e40cfa44632ad401d8d62e8c95c1c0",
+  "request_payload": {
+    "text": "[conversational] Открыли вниз: откат получил подтверждение. Мой голос не делает сценарий безошибочным.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

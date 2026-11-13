@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_024",
+  "phrase_id": "lively3_ru_narrate_scan_024",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Тут не конкурс предсказателей. Хрустальный шар отправили на выходной.",
+  "tts_text": "[conversational] Тут не конкурс предсказателей. Хрустальный шар отправили на выходной.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7346c4c19d27c11fb60c2ee2b91b39ee7f9f99aa0421dcb619a190045048d019",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_024",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_024.mp3",
+  "duration": 4.23175,
+  "sha256": "a031b10fccdd9f2a3fbf14bd6a1de1bd78782ea8f8ea14f70b5cec4a3166b1ad",
+  "request_payload": {
+    "text": "[conversational] Тут не конкурс предсказателей. Хрустальный шар отправили на выходной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

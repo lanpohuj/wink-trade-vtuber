@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_016",
+  "phrase_id": "lively3_en_narrate_expiry_016",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Thirty-second window. Watching this stretch, not inventing an entire era.",
+  "tts_text": "[clear, conversational] Thirty-second window. Watching this stretch, not inventing an entire era.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "df90bb607a15db2ac9dd9114e686e1196b0292861a499d386b34aae02041afe0",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_016",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_016.mp3",
+  "duration": 4.858688,
+  "sha256": "40ef9d16c532c69ffbdbd97cab5a0478481c19934bbbc3e3b159b7c2747c6cad",
+  "request_payload": {
+    "text": "[clear, conversational] Thirty-second window. Watching this stretch, not inventing an entire era.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

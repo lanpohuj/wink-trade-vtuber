@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_045",
+  "sha256": "592fe6d29d0a7adeb0552c4f283eed37cbcfcc83b55631027c0e261e08588f94",
+  "expected": "Сделка ещё идёт. Моя работа сейчас — не выдать ожидания за факты.",
+  "transcript": "Сделка ещё идёт! Моя работа сейчас не выдать ожидания за факты!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08252,
+    "peak": 0.38748,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.139,
+    "sha256": "592fe6d29d0a7adeb0552c4f283eed37cbcfcc83b55631027c0e261e08588f94"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Сделка ещё идёт! Моя работа сейчас не выдать ожидания за факты!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

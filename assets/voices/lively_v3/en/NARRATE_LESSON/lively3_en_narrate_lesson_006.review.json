@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_006",
+  "phrase_id": "lively3_en_narrate_lesson_006",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Until it closes, don't write the happy ending. Even if you really want to.",
+  "tts_text": "[casual] Until it closes, don't write the happy ending. Even if you really want to.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e2c8ba26dcf0aecefe76b2ab9b65227dc5a2ff6dfa594d0d2490afa0cb23cf54",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_006",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_006.mp3",
+  "duration": 4.728063,
+  "sha256": "2349e0d8309aa0707e91cbc566a49341a9631759823110f29d9f7b37d986048d",
+  "request_payload": {
+    "text": "[casual] Until it closes, don't write the happy ending. Even if you really want to.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

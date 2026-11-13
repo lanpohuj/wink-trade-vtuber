@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_006",
+  "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a",
+  "expected": "Сменили график. Переносить чужой сценарий по соседству не будем.",
+  "transcript": "сменили график переносить чужой сценарий по соседству не будем",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.971,
+    "rms": 0.08242,
+    "peak": 0.3,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.091,
+    "sha256": "9ae6852737c72bb9dbdb3e9eb484a9f1d59e6a4db62b373aa519a18d429efe3a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " сменили график переносить чужой сценарий по соседству не будем"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

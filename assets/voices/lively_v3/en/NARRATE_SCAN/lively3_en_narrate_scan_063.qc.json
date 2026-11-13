@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_063",
+  "sha256": "f404b3ba197def4ba9eb1f319696cc94eaff610c8581b3e85c5d12ffb1a0b640",
+  "expected": "A nice delivery won't turn missing data into a signal. We'll wait.",
+  "transcript": "A nice delivery won't turn missing data into a signal. We'll wait.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07717,
+    "peak": 0.35592,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.241,
+    "sha256": "f404b3ba197def4ba9eb1f319696cc94eaff610c8581b3e85c5d12ffb1a0b640"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A nice delivery won't turn missing data into a signal. We'll wait."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

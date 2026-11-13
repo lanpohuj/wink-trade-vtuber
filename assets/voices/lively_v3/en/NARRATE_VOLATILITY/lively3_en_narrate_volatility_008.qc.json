@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_008",
+  "sha256": "57675bb679d8c0c15480adc64fb4573f603d7fb6078ef5f3f6ff2fdcd812ff64",
+  "expected": "Volatility's up, moves are sharper. We can describe it without artistic additions.",
+  "transcript": "Volatilities up. Moves are sharper. We can describe it without artistic additions.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07586,
+    "peak": 0.41319,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.302,
+    "sha256": "57675bb679d8c0c15480adc64fb4573f603d7fb6078ef5f3f6ff2fdcd812ff64"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Volatilities up. Moves are sharper. We can describe it without artistic additions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

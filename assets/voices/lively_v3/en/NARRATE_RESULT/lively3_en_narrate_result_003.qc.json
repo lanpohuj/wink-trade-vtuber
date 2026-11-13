@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_003",
+  "sha256": "daad05e8b94af80ad93e83dda49df09d4c82a1c66ba211b3eec2a86c01c22987",
+  "expected": "After the loss, next step's one hundred and ten. No reason to hurry.",
+  "transcript": "After the loss next steps 110 no reason to hurry",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08641,
+    "peak": 0.51853,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.175,
+    "sha256": "daad05e8b94af80ad93e83dda49df09d4c82a1c66ba211b3eec2a86c01c22987"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.98,
+      "text": " After the loss next steps 110 no reason to hurry"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

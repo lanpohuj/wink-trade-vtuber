@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_010",
+  "sha256": "707c8001c93911b8ce4ae40ff991f5d21f04ddf5f5d1de3755e211b918c49236",
+  "expected": "Down entry on confirmed pullback recorded. Patience replaces more button pressing.",
+  "transcript": "Down entry on confirmed pullback recorded. Patience replaces more button pressing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.07239,
+    "peak": 0.37455,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.254,
+    "sha256": "707c8001c93911b8ce4ae40ff991f5d21f04ddf5f5d1de3755e211b918c49236"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down entry on confirmed pullback recorded. Patience replaces more button pressing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

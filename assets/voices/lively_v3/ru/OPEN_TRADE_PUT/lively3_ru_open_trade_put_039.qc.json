@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_039",
+  "sha256": "088b9ac5aa4f5b52f553d956e18e6e68732a8b5053c4df582705f234c77a9b9b",
+  "expected": "Открытие вниз зафиксировано по локальному развороту. Праздничный прогноз не заказывали.",
+  "transcript": "Открытие вниз зафиксировано по локальному развороту. Праздничный прогноз не заказывали.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09346,
+    "peak": 0.34907,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.099,
+    "sha256": "088b9ac5aa4f5b52f553d956e18e6e68732a8b5053c4df582705f234c77a9b9b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.84,
+      "text": " Открытие вниз зафиксировано по локальному развороту."
+    },
+    {
+      "start": 2.84,
+      "end": 4.84,
+      "text": " Праздничный прогноз не заказывали."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_025",
+  "sha256": "8153c0573f0c01a60c2a043906f95626db996c7ba99bac128e628781549cad2a",
+  "expected": "Можно объяснять нормально, а не как финальный босс душноты. Я стараюсь, честно.",
+  "transcript": "Можно объяснять нормально, а не как финальный босс-душноты. Я стараюсь, честно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.0813,
+    "peak": 0.31097,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.116,
+    "sha256": "8153c0573f0c01a60c2a043906f95626db996c7ba99bac128e628781549cad2a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Можно объяснять нормально, а не как финальный босс-душноты. Я стараюсь, честно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

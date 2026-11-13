@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_058",
+  "phrase_id": "lively3_en_narrate_scan_058",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "One second, checking the reasoning. Dramatic voice can stay switched off.",
+  "tts_text": "[gently sarcastic, conversational] One second, checking the reasoning. Dramatic voice can stay switched off.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5d1e61a557b2cf7b9a50175f6492f26dec41cd71b677c23064738966f6e817ef",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_058.mp3",
+  "duration": 5.119937,
+  "sha256": "e9db7e63c43eda54f08c3551918a32a072b233ce8f14afa4c51a04a04cd8bd4d",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] One second, checking the reasoning. Dramatic voice can stay switched off.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

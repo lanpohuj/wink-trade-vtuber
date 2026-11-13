@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_014",
+  "sha256": "b5f6d1273a93f966a88abce76e60091d8257f937b1552cf9a14cbd4d38cb942f",
+  "expected": "Ooh, that's a W! Now I can say it without getting ahead of myself.",
+  "transcript": "Oh, that's a W. Now I can say it without getting ahead of myself.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07912,
+    "peak": 0.3846,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.292,
+    "sha256": "b5f6d1273a93f966a88abce76e60091d8257f937b1552cf9a14cbd4d38cb942f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Oh, that's a W. Now I can say it without getting ahead of myself."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

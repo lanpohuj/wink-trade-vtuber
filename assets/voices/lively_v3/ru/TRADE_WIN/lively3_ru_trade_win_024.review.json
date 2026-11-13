@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_024",
+  "phrase_id": "lively3_ru_trade_win_024",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Зелёный финал этой сделки. Продолжение сериала ещё не написано.",
+  "tts_text": "[conversational] Зелёный финал этой сделки. Продолжение сериала ещё не написано.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "dc6d7ecc1df4e8172b84cb7355ef1a12c0d9fbb0a9e3d39526af2f2f929f45a5",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_024",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_024.mp3",
+  "duration": 3.944375,
+  "sha256": "aeeff6668133616b402b17057b733efb7dfa8adae9fd2e97b5cd98f579cb2a52",
+  "request_payload": {
+    "text": "[conversational] Зелёный финал этой сделки. Продолжение сериала ещё не написано.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

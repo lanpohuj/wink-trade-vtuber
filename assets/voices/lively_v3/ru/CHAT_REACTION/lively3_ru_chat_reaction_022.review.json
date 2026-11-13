@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_022",
+  "phrase_id": "lively3_ru_chat_reaction_022",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Загляни в профиль, там ссылка на бота. Он объяснит порядок действий.",
+  "tts_text": "[conversational] Загляни в профиль, там ссылка на бота. Он объяснит порядок действий.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ecd65af89e913d2bcb1b6846de347bfe29b52e151824bea512d20fa82b82e88a",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_022",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_022.mp3",
+  "duration": 3.944375,
+  "sha256": "9c5dbe42029fc8e2832f07846a00a997e793f4b0c8f6d2c2085ddcd89c25492d",
+  "request_payload": {
+    "text": "[conversational] Загляни в профиль, там ссылка на бота. Он объяснит порядок действий.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

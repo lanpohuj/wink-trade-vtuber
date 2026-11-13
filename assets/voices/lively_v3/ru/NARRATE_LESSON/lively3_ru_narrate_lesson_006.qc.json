@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_006",
+  "sha256": "cb73e03dbe957a81ded68af8b95696bd8e6cc2519a54cae9b62ac3c07f154ecc",
+  "expected": "Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется.",
+  "transcript": "Пока сделка не закрылась, рано писать ей счастливый конец, даже если очень хочется.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.0804,
+    "peak": 0.38135,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "cb73e03dbe957a81ded68af8b95696bd8e6cc2519a54cae9b62ac3c07f154ecc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Пока сделка не закрылась, рано писать ей счастливый конец, даже если очень хочется."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

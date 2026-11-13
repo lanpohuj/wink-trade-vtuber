@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_002",
+  "sha256": "51a068d66e8650e54e45418c8c1e9510827845cf5546544b7a0204504ea3ae14",
+  "expected": "Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+  "transcript": "Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.08249,
+    "peak": 0.4327,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "51a068d66e8650e54e45418c8c1e9510827845cf5546544b7a0204504ea3ae14"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Смена декораций. Посмотрим, что предложит этот график без моей подсказки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

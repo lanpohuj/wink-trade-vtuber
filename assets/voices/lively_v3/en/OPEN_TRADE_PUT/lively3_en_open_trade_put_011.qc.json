@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_011",
+  "sha256": "fac1a50a1f6ce9975fd858111004bcb2749061b2a92e8425a5a5c840b859aa57",
+  "expected": "Down trade open on breakout and closed retest. Sequence followed; now waiting.",
+  "transcript": "Down trade open on breakout and closed retest sequence followed now waiting",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.07579,
+    "peak": 0.50972,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.096,
+    "sha256": "fac1a50a1f6ce9975fd858111004bcb2749061b2a92e8425a5a5c840b859aa57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Down trade open on breakout and closed retest sequence followed now waiting"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

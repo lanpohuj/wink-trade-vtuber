@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_024",
+  "sha256": "e92bbd2d1af979d27baf83941e9eb941831d3b37806e2eb022aab23e790a06ec",
+  "expected": "The word 'system' doesn't remove risk. Not even in a beautiful font.",
+  "transcript": "The word system doesn't remove risk, not even in a beautiful font.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.0815,
+    "peak": 0.36124,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.298,
+    "sha256": "e92bbd2d1af979d27baf83941e9eb941831d3b37806e2eb022aab23e790a06ec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " The word system doesn't remove risk, not even in a beautiful font."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

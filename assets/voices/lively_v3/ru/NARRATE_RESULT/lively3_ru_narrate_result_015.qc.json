@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_015",
+  "sha256": "b8905a37e55213f20f5c5d7048eb3b108280c0ab67b4405f395d784ba8e3a008",
+  "expected": "По плану возвращаем пятьдесят. Результаты сохраняются как были, без косметики.",
+  "transcript": "По плану возвращаем 50. Результаты сохраняются как были. Без косметики.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08528,
+    "peak": 0.38389,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.114,
+    "sha256": "b8905a37e55213f20f5c5d7048eb3b108280c0ab67b4405f395d784ba8e3a008"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " По плану возвращаем 50. Результаты сохраняются как были. Без косметики."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

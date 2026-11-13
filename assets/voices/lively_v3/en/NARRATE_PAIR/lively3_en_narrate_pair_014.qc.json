@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_014",
+  "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0",
+  "expected": "New main character. We're not writing its storyline for it.",
+  "transcript": "No main character. We're not writing its storyline for it.",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.08211,
+    "peak": 0.34117,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.232,
+    "sha256": "9c12130934be01b94f4b42b0bf0015d3c3616c963deaa367f55a5ff63a173ba0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " No main character. We're not writing its storyline for it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

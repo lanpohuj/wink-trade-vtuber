@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_008",
+  "phrase_id": "lively3_ru_trade_win_008",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюс есть, драматичная пауза закончилась. Возвращаю обычную разговорчивость.",
+  "tts_text": "[conversational] Плюс есть, драматичная пауза закончилась. Возвращаю обычную разговорчивость.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5433e0d74e0fe38f54306cf532e4297de103d0fe3ffde3d3ddd134d60f04545e",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_008",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_008.mp3",
+  "duration": 5.172125,
+  "sha256": "a89b5ecfb4180a64750721d7b24a094ab1c73779e99d44ee75095c554ecbed93",
+  "request_payload": {
+    "text": "[conversational] Плюс есть, драматичная пауза закончилась. Возвращаю обычную разговорчивость.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

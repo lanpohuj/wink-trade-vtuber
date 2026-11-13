@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_021",
+  "sha256": "f8a2ffcb6d1d6c475927b5de347ec264fe0957248f5898e5c5ebd0d7990dd73e",
+  "expected": "Chat, we're not speedrunning the buttons. Let me figure this out first.",
+  "transcript": "Chet, we're not speedrunning the buttons. Let me figure this out first.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07389,
+    "peak": 0.40741,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "f8a2ffcb6d1d6c475927b5de347ec264fe0957248f5898e5c5ebd0d7990dd73e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Chet, we're not speedrunning the buttons. Let me figure this out first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

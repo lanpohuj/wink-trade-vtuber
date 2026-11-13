@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_scan_066",
+  "phrase_id": "lively3_ru_narrate_scan_066",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Загрузка ещё идёт. Ничего не объявляю, голосовым фокусам сегодня выходной.",
+  "tts_text": "[conversational] Загрузка ещё идёт. Ничего не объявляю, голосовым фокусам сегодня выходной.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "eb7fc268c62c9cc4aeb7e2305807ed209524a63e2f7e834dbbf8fd32041495e3",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:voice_meta",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_066.mp3",
+  "duration": 5.172125,
+  "sha256": "3650005467baa3f85e58cf8060b893a8ecc897c6e92b51fcea131f27693e3a71",
+  "request_payload": {
+    "text": "[conversational] Загрузка ещё идёт. Ничего не объявляю, голосовым фокусам сегодня выходной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_005",
+  "sha256": "be2edda40badc9880c88486165b610c39fa5f81b3b9833cbac7c2e984733f11c",
+  "expected": "Сделка вниз открыта по откатному сценарию. Пальцы больше не импровизируют.",
+  "transcript": "Сделка вниз открыта по откатному сценарию. Пальцы больше не импровизируют.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09098,
+    "peak": 0.40665,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.108,
+    "sha256": "be2edda40badc9880c88486165b610c39fa5f81b3b9833cbac7c2e984733f11c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Сделка вниз открыта по откатному сценарию."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Пальцы больше не импровизируют."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

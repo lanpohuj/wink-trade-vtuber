@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_loss_016",
+  "sha256": "09f7140fcbf2b047b12cc5171e6a1ab80ca45de1d266cbc0cd0072a5d92a82fb",
+  "expected": "Эта сделка не дала плюс. Досаду признаём, торопливость не подключаем.",
+  "transcript": "Эта сделка не дала плюс. Досаду признаем. Трапливость не подключаем.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.0894,
+    "peak": 0.37613,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "09f7140fcbf2b047b12cc5171e6a1ab80ca45de1d266cbc0cd0072a5d92a82fb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.7,
+      "text": " Эта сделка не дала плюс."
+    },
+    {
+      "start": 1.7,
+      "end": 2.92,
+      "text": " Досаду признаем."
+    },
+    {
+      "start": 2.92,
+      "end": 4.42,
+      "text": " Трапливость не подключаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

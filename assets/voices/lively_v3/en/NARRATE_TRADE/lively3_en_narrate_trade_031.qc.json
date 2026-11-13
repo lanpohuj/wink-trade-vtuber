@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_031",
+  "sha256": "fb88fae028972ebd9d09c37a2a4f31b8e34d12b706fa564ea0a827d1c6bb89e3",
+  "expected": "Don't rush the ending, chat. Even my charisma wasn't given that authority.",
+  "transcript": "Don't rush the ending, chat. Even my charisma wasn't given that authority.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08247,
+    "peak": 0.36549,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.084,
+    "sha256": "fb88fae028972ebd9d09c37a2a4f31b8e34d12b706fa564ea0a827d1c6bb89e3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Don't rush the ending, chat. Even my charisma wasn't given that authority."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_001",
+  "phrase_id": "lively3_ru_chat_reaction_001",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "О, новый зритель! Располагайся, здесь можно сначала просто посмотреть.",
+  "tts_text": "[conversational] О, новый зритель! Располагайся, здесь можно сначала просто посмотреть.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4fb2086310aac4b23544c9ef2ba7df019bcb83fd13d4151df56d8449eb8aaff9",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_001",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_001.mp3",
+  "duration": 4.989312,
+  "sha256": "e57e56a3cbe31d903bf6cf2976b6b148560741f18adf2605a6314976bbf03c48",
+  "request_payload": {
+    "text": "[conversational] О, новый зритель! Располагайся, здесь можно сначала просто посмотреть.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

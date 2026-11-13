@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_005",
+  "phrase_id": "lively3_ru_narrate_volatility_005",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Данные показывают усиление волатильности. Не просто решила прокомментировать погромче.",
+  "tts_text": "[conversational] Данные показывают усиление волатильности. Не просто решила прокомментировать погромче.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "510c18140ed462e4eb02c5fc086713c04c496a36b3e2839e50d2619def7dbfcd",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_005",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_005.mp3",
+  "duration": 4.858688,
+  "sha256": "849d5677ae937541521dcdf5fc1fe7a0881bccaafec4ed9a597ac1d10ccfcf03",
+  "request_payload": {
+    "text": "[conversational] Данные показывают усиление волатильности. Не просто решила прокомментировать погромче.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,17 @@
+{
+  "sha256": "2b69a603468719f45eba465b47d9707dc90596e5e91b4e3ad60a822296a421ab",
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.0703,
+    "peak": 0.28435,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.098,
+    "sha256": "2b69a603468719f45eba465b47d9707dc90596e5e91b4e3ad60a822296a421ab"
+  },
+  "transcript": "Сделка ещё идёт. Смотрим спокойно. До закрытия не будем загадывать.",
+  "similarity": 1.0,
+  "issues": [],
+  "auditory_verified": false
+}

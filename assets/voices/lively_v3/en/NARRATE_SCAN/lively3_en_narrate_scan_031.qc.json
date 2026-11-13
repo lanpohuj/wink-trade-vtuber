@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_031",
+  "sha256": "db603f0229deb275c9750fc620e543634ee5eec5c56805a8ccb205578b244cc7",
+  "expected": "An interesting picture and a finished decision aren't the same thing.",
+  "transcript": "An interesting picture and a finished decision aren't the same thing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.08144,
+    "peak": 0.35095,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.16,
+    "sha256": "db603f0229deb275c9750fc620e543634ee5eec5c56805a8ccb205578b244cc7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " An interesting picture and a finished decision aren't the same thing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

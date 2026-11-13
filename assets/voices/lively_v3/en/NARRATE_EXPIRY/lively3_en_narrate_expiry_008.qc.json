@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_008",
+  "sha256": "cc5a8f10a04d914503d12ca850587e47342ab77df2845ea97b9af67653b34fcb",
+  "expected": "Fifteen seconds is the window. Grand speeches belong in a longer genre.",
+  "transcript": "Fifteen seconds is the window. Grand speeches belong in a longer genre.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08627,
+    "peak": 0.49786,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.18,
+    "sha256": "cc5a8f10a04d914503d12ca850587e47342ab77df2845ea97b9af67653b34fcb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Fifteen seconds is the window. Grand speeches belong in a longer genre."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

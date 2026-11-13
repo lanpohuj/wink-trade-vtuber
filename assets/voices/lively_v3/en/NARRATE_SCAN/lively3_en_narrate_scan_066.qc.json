@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_066",
+  "sha256": "9016b73711dc9cdced2e87fe00ff579bcdabf62a0bf7d1910d8ca5c89f0529df",
+  "expected": "Still loading. No calls yet; vocal magic tricks have the day off.",
+  "transcript": "Still loading. No calls yet. Vocal magic tricks have the day off.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.10466,
+    "peak": 0.8916,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.228,
+    "sha256": "9016b73711dc9cdced2e87fe00ff579bcdabf62a0bf7d1910d8ca5c89f0529df"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.26,
+      "text": " Still loading. No calls yet. Vocal magic tricks have the day off."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

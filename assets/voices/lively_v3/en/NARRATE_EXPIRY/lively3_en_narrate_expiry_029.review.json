@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_029",
+  "phrase_id": "lively3_en_narrate_expiry_029",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two-minute expiry, chat. Still no press conference; don't get comfortable.",
+  "tts_text": "[clear, conversational] Two-minute expiry, chat. Still no press conference; don't get comfortable.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5e1c40ab6c237f91a640269e3df71e1130add2bd3172d36b9cdf3422533f9b5a",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_029",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_029.mp3",
+  "duration": 4.910938,
+  "sha256": "846027aa5c52a44cd070c57b7929533337c4ea41c3c9915c7b5961171e4f7928",
+  "request_payload": {
+    "text": "[clear, conversational] Two-minute expiry, chat. Still no press conference; don't get comfortable.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_009",
+  "sha256": "9b17537e443aeae4fdce0dcdd994bfa7a73041f8cfac46b5a3c7857862c4d36b",
+  "expected": "That's green! Low-key pleased with that one. Okay, maybe not that low-key.",
+  "transcript": "That's green! Low-key, please, with that one. Okay, maybe not that low-key.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08228,
+    "peak": 0.42464,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.102,
+    "sha256": "9b17537e443aeae4fdce0dcdd994bfa7a73041f8cfac46b5a3c7857862c4d36b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " That's green! Low-key, please, with that one. Okay, maybe not that low-key."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

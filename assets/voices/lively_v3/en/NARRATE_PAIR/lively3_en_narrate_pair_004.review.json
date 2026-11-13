@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_004",
+  "phrase_id": "lively3_en_narrate_pair_004",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Next pair's up. Introduction starts with checks. I'm romantic like that.",
+  "tts_text": "[natural, conversational] Next pair's up. Introduction starts with checks. I'm romantic like that.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c1bf33aa68f666bc0f530de6dcdbc5970718ee0a6e14ff6c7b8d419c9dec036d",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_004",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_004.mp3",
+  "duration": 5.4595,
+  "sha256": "6b1622a8d5b35d5ad3731fc8f60500e7f0589507e17504cd66c4a335c94a3ba5",
+  "request_payload": {
+    "text": "[natural, conversational] Next pair's up. Introduction starts with checks. I'm romantic like that.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_019",
+  "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340",
+  "expected": "Next stop: this chart. The tour starts with the details.",
+  "transcript": "Next stop, this chart. The tour starts with the details.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07793,
+    "peak": 0.79121,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.152,
+    "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Next stop, this chart. The tour starts with the details."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

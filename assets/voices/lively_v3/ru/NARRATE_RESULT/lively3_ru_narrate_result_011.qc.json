@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_011",
+  "sha256": "9d9bb7afb78d7fd44e0b68680072266472bfb0c82229797d18c2ccbda21dcd20",
+  "expected": "Дальше по последовательности двести сорок два. Проверять будем с той же строгостью.",
+  "transcript": "Дальше по последовательности 242 проверять будем с той же строгостью.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.07086,
+    "peak": 0.29736,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.097,
+    "sha256": "9d9bb7afb78d7fd44e0b68680072266472bfb0c82229797d18c2ccbda21dcd20"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Дальше по последовательности 242 проверять будем с той же строгостью."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

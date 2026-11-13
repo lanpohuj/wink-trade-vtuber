@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_003",
+  "phrase_id": "lively3_ru_narrate_pair_003",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед.",
+  "tts_text": "[conversational] Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "fe6d5095b09d5e7777e5fdf84aa506844b943d647c66aed952ae24f25fbc39fa",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:yapping",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_003.mp3",
+  "duration": 4.519125,
+  "sha256": "eb6d05e27c578d1851926fd723b2cb248b399a117fa98e0a03d0842e51b0da02",
+  "request_payload": {
+    "text": "[conversational] Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

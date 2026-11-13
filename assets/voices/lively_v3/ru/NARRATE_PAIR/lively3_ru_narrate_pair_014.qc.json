@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_014",
+  "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2",
+  "expected": "У нас смена главного героя. Но сценарий за него писать не будем.",
+  "transcript": "У нас смена главного героя, но сценарий за него писать не будем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08367,
+    "peak": 0.32478,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.166,
+    "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " У нас смена главного героя, но сценарий за него писать не будем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

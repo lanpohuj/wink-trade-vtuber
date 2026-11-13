@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_030",
+  "sha256": "03efbd94ce6436cbe015a98f68dba08ba0531ed9fdd6a3ae9e0aeefe94c8cc1c",
+  "expected": "Если я сейчас помолчу, это не обида на чат. Просто даю мыслям собраться прилично.",
+  "transcript": "Если я сейчас помолчу, это не обиды начат. Просто даю мыслям собраться прилично.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.878,
+    "rms": 0.07856,
+    "peak": 0.31376,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "03efbd94ce6436cbe015a98f68dba08ba0531ed9fdd6a3ae9e0aeefe94c8cc1c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.84,
+      "text": " Если я сейчас помолчу, это не обиды начат. Просто даю мыслям собраться прилично."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

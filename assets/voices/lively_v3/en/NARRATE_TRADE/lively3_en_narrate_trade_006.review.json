@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_006",
+  "phrase_id": "lively3_en_narrate_trade_006",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Trade open, result pending. Victory voice stays in drafts.",
+  "tts_text": "[gently sarcastic, conversational] Trade open, result pending. Victory voice stays in drafts.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a2036072ffefcd37302175a5ac3895828245881accce1ff5c9a2e335de6c0f6a",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:voice_meta",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_006.mp3",
+  "duration": 4.101125,
+  "sha256": "b76d99e34476e5f8ad1643698508616addb6685deb930aec163c032756866ee0",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Trade open, result pending. Victory voice stays in drafts.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_023",
+  "sha256": "9a905b8fe244db461d08a643c9f92540e5ba82e2518666aa242c4ab103a09ea4",
+  "expected": "No secret command: the bio link opens the bot and its instructions.",
+  "transcript": "No secret command. The Biolink opens the bot and its instructions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0811,
+    "peak": 0.57148,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.259,
+    "sha256": "9a905b8fe244db461d08a643c9f92540e5ba82e2518666aa242c4ab103a09ea4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " No secret command. The Biolink opens the bot and its instructions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

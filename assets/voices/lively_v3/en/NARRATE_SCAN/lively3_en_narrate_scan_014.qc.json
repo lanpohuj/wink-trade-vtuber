@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_014",
+  "sha256": "fb245ca6680142e1bcd1d9c4f0e6b3321fdf5a58566e73bcaf0bd647baf8ad32",
+  "expected": "Reading the chart carefully. Not adding my wishes between the lines.",
+  "transcript": "Reading the chart carefully not adding my wishes between the lines",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08446,
+    "peak": 0.49246,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.221,
+    "sha256": "fb245ca6680142e1bcd1d9c4f0e6b3321fdf5a58566e73bcaf0bd647baf8ad32"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.56,
+      "text": " Reading the chart carefully not adding my wishes between the lines"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

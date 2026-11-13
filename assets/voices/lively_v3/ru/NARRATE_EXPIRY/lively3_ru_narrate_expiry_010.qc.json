@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_010",
+  "sha256": "381bd2eeb07985bf19b313f384f49db18d03d6d6078a27e0e2a93030a5ae863f",
+  "expected": "Здесь тридцать секунд. Мой внутренний комментатор уже рассчитывает хронометраж.",
+  "transcript": "Здесь 30 секунд. Мой внутренний комментатор уже рассчитывает хронометраж.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07995,
+    "peak": 0.34146,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "381bd2eeb07985bf19b313f384f49db18d03d6d6078a27e0e2a93030a5ae863f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Здесь 30 секунд. Мой внутренний комментатор уже рассчитывает хронометраж."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

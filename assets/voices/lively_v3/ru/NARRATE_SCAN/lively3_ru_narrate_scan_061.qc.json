@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_061",
+  "sha256": "ac3c16902e93aa3a890bc5ca12a955211a4aff9046c0f597fa5ec0cfd88b0b0a",
+  "expected": "Загрузка. Мой любимый геймплей — смотреть, как ничего не происходит. Ждём данные.",
+  "transcript": "Загрузка! Мой любимый геймплей. Смотреть как ничего не происходит. Ждём данные.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.0823,
+    "peak": 0.33853,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "ac3c16902e93aa3a890bc5ca12a955211a4aff9046c0f597fa5ec0cfd88b0b0a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.16,
+      "text": " Загрузка! Мой любимый геймплей. Смотреть как ничего не происходит. Ждём данные."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

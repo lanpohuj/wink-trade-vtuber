@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_038",
+  "phrase_id": "lively3_en_open_trade_put_038",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Entered down after reversal confirmation. The outcome gets its own line.",
+  "tts_text": "[clear, conversational] Entered down after reversal confirmation. The outcome gets its own line.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1262e76e107a5b018517dc6a17d9f667a1b6fcd75140f4ec474810dcf5c0a23e",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_038",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_038.mp3",
+  "duration": 4.362375,
+  "sha256": "419c7301e74ba38db925172840e95763a86f088af555f88459a32fe1b9cfde82",
+  "request_payload": {
+    "text": "[clear, conversational] Entered down after reversal confirmation. The outcome gets its own line.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

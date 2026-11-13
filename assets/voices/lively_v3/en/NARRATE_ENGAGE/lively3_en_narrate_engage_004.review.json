@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_004",
+  "phrase_id": "lively3_en_narrate_engage_004",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Chat, do you take forever deciding, or click first and figure it out afterwards?",
+  "tts_text": "[casual] Chat, do you take forever deciding, or click first and figure it out afterwards?",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "352be42f1fb1c9bf7c514c0e094c2da45f5e3af0cae96e34af19518e6cf8c876",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_004",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_004.mp3",
+  "duration": 5.30275,
+  "sha256": "1a20cc006bdfdff45779321d296740238ee2b7e3bd811bcc1c392dda28791862",
+  "request_payload": {
+    "text": "[casual] Chat, do you take forever deciding, or click first and figure it out afterwards?",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

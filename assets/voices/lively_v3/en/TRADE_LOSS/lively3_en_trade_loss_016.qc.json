@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_016",
+  "sha256": "dd6e7289366868e49efef83c19cafbdc869e9fab12bef259c46a452ce8d2295c",
+  "expected": "This trade didn't win. Disappointment acknowledged; impatience not invited.",
+  "transcript": "This trade didn't win. Disappointment acknowledged. Impatience not invited.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07641,
+    "peak": 0.39694,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.152,
+    "sha256": "dd6e7289366868e49efef83c19cafbdc869e9fab12bef259c46a452ce8d2295c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " This trade didn't win. Disappointment acknowledged. Impatience not invited."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

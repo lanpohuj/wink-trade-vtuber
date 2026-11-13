@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_028",
+  "phrase_id": "lively3_en_narrate_trade_028",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Hands off the buttons, chat. We're already in; extra spam won't help.",
+  "tts_text": "[casual] Hands off the buttons, chat. We're already in; extra spam won't help.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e74f80e9749ac4a11e6e10dee8514433ed385bb297452b74f5dd11d7202a62d5",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_028",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_028.mp3",
+  "duration": 4.466875,
+  "sha256": "c705a3843b784f850a300790a5155329fac6cb099c332eaeaeaf835732b43bd7",
+  "request_payload": {
+    "text": "[casual] Hands off the buttons, chat. We're already in; extra spam won't help.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

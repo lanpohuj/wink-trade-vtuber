@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_038",
+  "sha256": "8378f5ce775d39b42719a18d1b670d944fd7fe2c0956ce2b18343b23c2011343",
+  "expected": "Bot link in bio. One thing on the internet is actually where it belongs.",
+  "transcript": "Bot link in bio. One thing on the internet is actually where it belongs.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08753,
+    "peak": 0.34451,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.27,
+    "sha256": "8378f5ce775d39b42719a18d1b670d944fd7fe2c0956ce2b18343b23c2011343"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " Bot link in bio. One thing on the internet is actually where it belongs."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

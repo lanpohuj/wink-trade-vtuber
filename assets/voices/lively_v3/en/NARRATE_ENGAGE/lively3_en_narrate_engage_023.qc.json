@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_023",
+  "sha256": "46c485665f1b1d8898eeb939884fd2a8c55f600d99522c99823ee8a96b887c52",
+  "expected": "How's the mood, chat? Honest answers welcome, no corporate 'all great' required.",
+  "transcript": "How's the mood, chat? Honest answers welcome. No corporate all great required.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.251,
+    "rms": 0.08278,
+    "peak": 0.37113,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.171,
+    "sha256": "46c485665f1b1d8898eeb939884fd2a8c55f600d99522c99823ee8a96b887c52"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " How's the mood, chat? Honest answers welcome. No corporate all great required."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

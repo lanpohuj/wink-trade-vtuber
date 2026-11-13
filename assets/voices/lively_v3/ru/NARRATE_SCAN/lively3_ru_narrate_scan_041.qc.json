@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_041",
+  "sha256": "99a440c5039328ee4a5b9df7348b0424babed9ffa47ec9d7ee9805e88e3ae20b",
+  "expected": "Сейчас не обещаю направление. Я ещё знакомлюсь с условиями.",
+  "transcript": "Сейчас не обещаю направления. Я еще знакомлюсь с условиями.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.0851,
+    "peak": 0.2928,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "99a440c5039328ee4a5b9df7348b0424babed9ffa47ec9d7ee9805e88e3ae20b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Сейчас не обещаю направления. Я еще знакомлюсь с условиями."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

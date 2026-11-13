@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_019",
+  "phrase_id": "lively3_ru_narrate_result_019",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "До границы оказалось близко, но закрытие минусовое. Называю именно факт.",
+  "tts_text": "[conversational] До границы оказалось близко, но закрытие минусовое. Называю именно факт.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5c827bca03e99c0f162df1e63b6a42114e6794c03ad8f7d78af41c09941247d0",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_019",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_019.mp3",
+  "duration": 4.675813,
+  "sha256": "30952e45c29dce1065c607083058ce31bfae53eb4543820d2c8d9f37c8ea655c",
+  "request_payload": {
+    "text": "[conversational] До границы оказалось близко, но закрытие минусовое. Называю именно факт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

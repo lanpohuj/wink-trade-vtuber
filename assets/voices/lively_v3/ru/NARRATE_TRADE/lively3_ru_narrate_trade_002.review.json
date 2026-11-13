@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_002",
+  "phrase_id": "lively3_ru_narrate_trade_002",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Теперь наблюдаем. Дополнительный клик не входит в программу развлечений.",
+  "tts_text": "[conversational] Теперь наблюдаем. Дополнительный клик не входит в программу развлечений.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7b0bb64ed433ced784506837c6fac381b0d85b351cf4fba22e04da7a98d3c475",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_002",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_002.mp3",
+  "duration": 4.414625,
+  "sha256": "083ebc4cf98c42c0bca48fe75e55f1a89bed5d5d2acba8a892f2ea1f747447a4",
+  "request_payload": {
+    "text": "[conversational] Теперь наблюдаем. Дополнительный клик не входит в программу развлечений.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

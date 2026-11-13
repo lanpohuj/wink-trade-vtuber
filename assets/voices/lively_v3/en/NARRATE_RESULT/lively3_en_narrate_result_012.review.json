@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_012",
+  "phrase_id": "lively3_en_narrate_result_012",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next step size: two hundred and forty-two. Describing the plan, not promising the outcome.",
+  "tts_text": "[clear, conversational] Next step size: two hundred and forty-two. Describing the plan, not promising the outcome.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "84d44d4ee536bd55b29c0c0810a8c6c48b3c332b8ad718808a81f3a2c94ee559",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_012",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_012.mp3",
+  "duration": 6.7395,
+  "sha256": "0aaa2b940ccddd4d3d3c30dac545d71621f4d18466d69ff9583d13a5952bf3ce",
+  "request_payload": {
+    "text": "[clear, conversational] Next step size: two hundred and forty-two. Describing the plan, not promising the outcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

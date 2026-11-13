@@ -105,6 +105,13 @@ class RotationTests(unittest.TestCase):
             self.rotation.note(str(i), 'en')
         self.assertEqual(self.rotation.recent_texts(), [str(i) for i in range(5, 25)])
 
+    def test_english_profile_link_and_cta_category_both_reset_timer(self):
+        with patch('winky.speech_rotation.random.uniform', return_value=200):
+            self.rotation.note('Check my profile for the bot link.', 'en', now=100)
+            self.assertEqual(self.rotation.state['next_cta_at'], 300)
+            self.rotation.note('Find it up there.', 'en', 'NARRATE_CTA', now=150)
+            self.assertEqual(self.rotation.state['next_cta_at'], 350)
+
 
 class BankAndReviewTests(unittest.TestCase):
     def test_changing_delivery_with_same_text_replaces_staged_audio(self):
@@ -179,19 +186,56 @@ class BankAndReviewTests(unittest.TestCase):
             finally:
                 c._synth_pool.shutdown(wait=False, cancel_futures=True)
 
+    def test_informational_pair_event_excludes_preserved_banter(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            records = []
+            for identity, text, role in (('plain', 'Проверю следующую пару.', 'informational'),
+                                         ('joke', 'У графика опять своё мнение.', 'banter')):
+                (root / f'{identity}.mp3').write_bytes(b'audio')
+                records.append(dict(id=identity, text=text, lang='ru', file=f'{identity}.mp3',
+                                    delivery_role=role, conditions={}))
+            (root / 'manifest.json').write_text(json.dumps({'categories': {'NARRATE_PAIR': records}}))
+            bank = VoiceBank(root, root / 'history.json')
+            event = dict(category='NARRATE_PAIR', lang='ru')
+            self.assertEqual({r['id'] for r in bank.candidates(event)}, {'plain'})
+            self.assertEqual({r['id'] for r in bank.candidates(dict(event, allow_banter=True))},
+                             {'plain', 'joke'})
+
     def test_context_decks_are_independent(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             groups = []
             for i, expiry in enumerate(('15s', '30s')):
                 (root / f'{i}.mp3').write_bytes(b'audio')
-                groups.append(dict(id=str(i), text=f'Expiry {expiry}', lang='en', file=f'{i}.mp3', conditions=dict(expiry=expiry)))
+                groups.append(dict(id=str(i), text=f'Expiry {expiry}', lang='en', file=f'{i}.mp3',
+                                   semantic_group='expiry_shared', conditions=dict(expiry=expiry)))
             (root / 'manifest.json').write_text(json.dumps({'categories': {'NARRATE_EXPIRY': groups}}))
             bank = VoiceBank(root, root / 'history.json')
             for expiry in ('15s', '30s'):
                 e = dict(category='NARRATE_EXPIRY', lang='en', expiry=expiry)
                 r = bank.reserve(e); bank.release(r['id'], e, True)
             self.assertEqual(len(bank.rotation.decks), 2)
+
+    def test_accepted_legacy_retake_keeps_original_and_rejects_changed_waveform(self):
+        from winky import voice_review
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
+            original = root / 'original.mp3'; original.write_bytes(b'original')
+            replacement = root / 'assets/voices/lively_retakes/ru/new.mp3'
+            replacement.parent.mkdir(parents=True); replacement.write_bytes(b'new recording')
+            entry = dict(file=replacement.relative_to(root).as_posix(),
+                         sha256=hashlib.sha256(replacement.read_bytes()).hexdigest(),
+                         source_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),
+                         text='Новая реплика', duration=3, transcript='Новая реплика',
+                         accepted=True, listened=True, automatic_qc_passed=True)
+            (root / 'assets/voices/recording-replacements.json').write_text(json.dumps({'old-id': entry}))
+            review = VoiceReview(root / 'defects.json')
+            with patch.object(voice_review, 'ROOT', root):
+                self.assertEqual(review.replacement({'id': 'old-id'}, original)['path'], replacement)
+                self.assertEqual(original.read_bytes(), b'original')
+                replacement.write_bytes(b'changed')
+                self.assertIsNone(review.replacement({'id': 'old-id'}, original))
 
     def test_batch_generation_is_blocked_before_owner_acceptance(self):
         from tools import build_lively_bank as build
@@ -238,6 +282,29 @@ class DirectorTests(unittest.TestCase):
             self.tts.narration_state.return_value = state
             self.assertFalse(self.d.maybe_cta(1000))
         self.tts.enqueue_voice_event.assert_not_called()
+
+    def test_fresh_pocket_language_expires_back_to_panel_language(self):
+        self.d.stream_lang = 'ru'
+        self.d.context['lang'] = 'en'
+        self.d._last_phase_update = 1000
+        self.assertEqual(self.d.current_language(1002), 'en')
+        self.assertEqual(self.d.current_language(1004), 'ru')
+
+    def test_viewer_memory_reaches_model_but_is_not_committed_during_preparation(self):
+        from collections import deque
+        from winky.director import ChatItem
+        brain = Mock(); brain.reply.return_value = '[happy] Рада тебя видеть!'
+        self.d._brain = brain
+        media = Path(self.tmp.name) / 'reply.mp3'; media.write_bytes(b'audio')
+        self.tts.engine.synthesize.return_value = media
+        profile = SimpleNamespace(history=deque(maxlen=4), mentioned_bio=False)
+        item = ChatItem('Viewer', 'Привет', profile=profile,
+                        recent_context=[dict(who='Another', text='Hello')])
+        self.d._pre_synthesize(item)
+        brain.reply.assert_called_once_with('Привет', nickname='Viewer', profile=profile,
+                                            recent_context=[dict(who='Another', text='Hello')])
+        self.assertTrue(item.ready)
+        self.assertFalse(profile.history)
 
     def test_four_hour_stream_balances_topics_and_never_starves_cta(self):
         categories, ctas = Counter(), []

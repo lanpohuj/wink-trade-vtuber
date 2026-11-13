@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_026",
+  "phrase_id": "lively3_en_narrate_cta_026",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "For the independent researchers: bot in bio. The instructions don't bite.",
+  "tts_text": "[gently sarcastic, conversational] For the independent researchers: bot in bio. The instructions don't bite.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "44c6c7fe6c0e938f0ec2e8df6a3761ef92c319a6654d7715fb2d71ab1cfe12cb",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_026",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_026.mp3",
+  "duration": 5.433375,
+  "sha256": "2c6534bfbd363d92245ef07b8a96ff0b635c863b787d1768ab9a49f8b0badb64",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] For the independent researchers: bot in bio. The instructions don't bite.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

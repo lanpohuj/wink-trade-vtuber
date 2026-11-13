@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_021",
+  "sha256": "43779866dc280e2834ac636717d6ee810e94be3eb4bf1bbacc889418f6d34a4b",
+  "expected": "A minute chosen for this situation. My fondness for short comments approves.",
+  "transcript": "A minute chosen for this situation, my fondness for short comments approves!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07237,
+    "peak": 0.39944,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.199,
+    "sha256": "43779866dc280e2834ac636717d6ee810e94be3eb4bf1bbacc889418f6d34a4b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " A minute chosen for this situation, my fondness for short comments approves!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

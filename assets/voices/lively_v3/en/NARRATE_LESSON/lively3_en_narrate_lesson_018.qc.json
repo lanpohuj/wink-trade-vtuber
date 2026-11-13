@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_018",
+  "sha256": "449eab6407f7e8fbbef6be1c961fbda1a71ec15b5befa75b3ec23b40b96dd8a7",
+  "expected": "A trade can look lovely. Still needs checking. Sorry to ruin the mood.",
+  "transcript": "A trade can look lovely. Still needs checking. Sorry to ruin the mood.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08323,
+    "peak": 0.52535,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.155,
+    "sha256": "449eab6407f7e8fbbef6be1c961fbda1a71ec15b5befa75b3ec23b40b96dd8a7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " A trade can look lovely. Still needs checking. Sorry to ruin the mood."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

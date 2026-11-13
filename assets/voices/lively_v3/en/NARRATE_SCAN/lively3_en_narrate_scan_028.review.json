@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_028",
+  "phrase_id": "lively3_en_narrate_scan_028",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Choosing the moment first. We can give it a fancy name later.",
+  "tts_text": "[natural, conversational] Choosing the moment first. We can give it a fancy name later.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2b61df0814ad668401232ab01cc44074e8dc8e390993e6b52ce6848dc7244145",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_028",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_028.mp3",
+  "duration": 3.944375,
+  "sha256": "17e51211221846d46d0200b88eeddb03c48c3a23171c68029cc1f99e3cffd1c3",
+  "request_payload": {
+    "text": "[natural, conversational] Choosing the moment first. We can give it a fancy name later.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

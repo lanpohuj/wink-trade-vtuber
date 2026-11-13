@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_016",
+  "sha256": "36872dc5912a70ebdcd4b1dc5cdc56a52e51ebaa2f546d4705ed9e96d946dc3d",
+  "expected": "Шаг сброшен на пятьдесят. Сначала обычная проверка, спешка не включена.",
+  "transcript": "Шаг сброшен на 50. Сначала обычная проверка спешка не включена.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.09097,
+    "peak": 0.4248,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "36872dc5912a70ebdcd4b1dc5cdc56a52e51ebaa2f546d4705ed9e96d946dc3d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Шаг сброшен на 50. Сначала обычная проверка спешка не включена."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

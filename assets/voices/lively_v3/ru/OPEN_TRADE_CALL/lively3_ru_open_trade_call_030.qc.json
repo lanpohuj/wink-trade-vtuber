@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_030",
+  "sha256": "dfbab4810d9a0bd4cecdfb4a26aadda864e35a274eb4a14035e0dd41ff12a99b",
+  "expected": "Вход вверх по границе диапазона состоялся. Отбой подтверждён, дальше ждём результат.",
+  "transcript": "Вход вверх по границе диапазона состоялся. Отбой подтвержден. Дальше ждем результат.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08914,
+    "peak": 0.5056,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.1,
+    "sha256": "dfbab4810d9a0bd4cecdfb4a26aadda864e35a274eb4a14035e0dd41ff12a99b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.32,
+      "text": " Вход вверх по границе диапазона состоялся. Отбой подтвержден. Дальше ждем результат."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

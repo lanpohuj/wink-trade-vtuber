@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_019",
+  "sha256": "8bf08cb2679c67e9e42af7dbdf3147a7251662c1da087dc8e5bd27cfcc051ef4",
+  "expected": "New arrivals: no prior knowledge required. Ask whatever needs explaining.",
+  "transcript": "New arrivals. No prior knowledge required. Ask whatever needs explaining.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.082,
+    "peak": 0.37784,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.131,
+    "sha256": "8bf08cb2679c67e9e42af7dbdf3147a7251662c1da087dc8e5bd27cfcc051ef4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " New arrivals. No prior knowledge required. Ask whatever needs explaining."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_024",
+  "sha256": "88006201f49269c2f10516560c77de0ab27f38efc58837b17d6f76877342d878",
+  "expected": "Сделка вниз открыта. Сценарий — подтверждённый отбой от границы диапазона.",
+  "transcript": "Сделка вниз открыта. Сценарий, подтвержденный от бой от границы диапазона.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08812,
+    "peak": 0.39226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.065,
+    "sha256": "88006201f49269c2f10516560c77de0ab27f38efc58837b17d6f76877342d878"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Сделка вниз открыта. Сценарий, подтвержденный от бой от границы диапазона."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_loss_008",
+  "phrase_id": "lively3_en_trade_loss_008",
+  "lang": "en",
+  "category": "TRADE_LOSS",
+  "text": "Red close. Unpleasant moment, no need to give it a legend.",
+  "tts_text": "[calm, mildly disappointed] Red close. Unpleasant moment, no need to give it a legend.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d451a955f3546a13a241a8c708d97d4f0fbdd4eda70db9e1ec0750e5b1dd31a6",
+  "delivery": "calm, mildly disappointed",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_loss_008",
+  "file": "en/TRADE_LOSS/lively3_en_trade_loss_008.mp3",
+  "duration": 4.545187,
+  "sha256": "bf2ccdd2c4aa831ed2c3715403c81c99f2ec16614787b512be57c402027fd680",
+  "request_payload": {
+    "text": "[calm, mildly disappointed] Red close. Unpleasant moment, no need to give it a legend.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

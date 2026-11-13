@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_015",
+  "phrase_id": "lively3_ru_trade_refund_015",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Сделка завершилась возвратом. Спокойный финал, почти подозрительно спокойный.",
+  "tts_text": "[conversational] Сделка завершилась возвратом. Спокойный финал, почти подозрительно спокойный.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8fdbf1cf148a2a75ef8e1d815e6da380442e8aca48e91965e981529ae0226eab",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_refund_015",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_015.mp3",
+  "duration": 5.433375,
+  "sha256": "4399d1b680610d3fef814914de08361d20bbd77018efc2d2de322377d18edc82",
+  "request_payload": {
+    "text": "[conversational] Сделка завершилась возвратом. Спокойный финал, почти подозрительно спокойный.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

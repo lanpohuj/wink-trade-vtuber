@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_011",
+  "phrase_id": "lively3_en_narrate_scan_011",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "One detail isn't the whole picture. The puzzle has other pieces.",
+  "tts_text": "[warm, relaxed] One detail isn't the whole picture. The puzzle has other pieces.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7c935a94e447e069dfc7f50beb985641e32cfb502a86cf4766987c93f7c2c217",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_011",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_011.mp3",
+  "duration": 3.944375,
+  "sha256": "b33fdfabdf971e750089acb0643c59237cc64b3ea7ca3cc4949981d78e5ba4db",
+  "request_payload": {
+    "text": "[warm, relaxed] One detail isn't the whole picture. The puzzle has other pieces.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_041",
+  "phrase_id": "lively3_ru_narrate_trade_041",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Вход уже сделан. Сейчас не момент переписывать ему биографию.",
+  "tts_text": "[conversational] Вход уже сделан. Сейчас не момент переписывать ему биографию.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "01dee1e27b9b122cdd05e8c39bb00bdcbe888a31fec0f7afaf4760b5574780ae",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_041",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_041.mp3",
+  "duration": 3.813812,
+  "sha256": "7993344ca5ef3e7dfa46320cf1c13f65a16b4e782559f5894d5b54b41b60fc46",
+  "request_payload": {
+    "text": "[conversational] Вход уже сделан. Сейчас не момент переписывать ему биографию.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

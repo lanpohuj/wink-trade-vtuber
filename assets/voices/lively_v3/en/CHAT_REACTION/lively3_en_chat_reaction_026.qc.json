@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_026",
+  "sha256": "c54cb27c0fcabad8f5422e2cb7f51dcda89536ef698208c9e05f2b79717bd296",
+  "expected": "Access is explained in the bot linked from my profile. Tell me if a step's unclear.",
+  "transcript": "Access is explained in the bot linked from my profile, tell me if a step's unclear.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.0826,
+    "peak": 0.38684,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.222,
+    "sha256": "c54cb27c0fcabad8f5422e2cb7f51dcda89536ef698208c9e05f2b79717bd296"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Access is explained in the bot linked from my profile, tell me if a step's unclear."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_010",
+  "phrase_id": "lively3_ru_narrate_cta_010",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Не будем играть в испорченный телефон: актуальная ссылка на бота в профиле.",
+  "tts_text": "[conversational] Не будем играть в испорченный телефон: актуальная ссылка на бота в профиле.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "80dcc16176375a41c96f3bfdb0954488410c42f816b7c698e466cbcc681756ea",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_010",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_010.mp3",
+  "duration": 4.101125,
+  "sha256": "1bd4dd72f833618f86ec9d792272cd2a36fdfbe9bc66b38806d5f2a0433ceecc",
+  "request_payload": {
+    "text": "[conversational] Не будем играть в испорченный телефон: актуальная ссылка на бота в профиле.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

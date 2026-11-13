@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_014",
+  "sha256": "29165fa72b0c3bcf4ac13b207db2bb5074d0427325ddfd1137f5ff28994e6f13",
+  "expected": "That's a loss. Ugh, not the ending I wanted. Okay. Breathe.",
+  "transcript": "That's a loss. Huh, not the ending I wanted. Okay, breathe.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08225,
+    "peak": 0.46516,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.212,
+    "sha256": "29165fa72b0c3bcf4ac13b207db2bb5074d0427325ddfd1137f5ff28994e6f13"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.44,
+      "text": " That's a loss. Huh, not the ending I wanted. Okay, breathe."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

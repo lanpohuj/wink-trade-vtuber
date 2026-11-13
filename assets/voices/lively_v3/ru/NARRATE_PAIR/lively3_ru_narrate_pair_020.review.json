@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_020",
+  "phrase_id": "lively3_ru_narrate_pair_020",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+  "tts_text": "[conversational] Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f21e1a1d5806ca9a587f2bc238ad537330cc337fd2fc9e6ca209fcd871b19307",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_020",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_020.mp3",
+  "duration": 5.041563,
+  "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2",
+  "request_payload": {
+    "text": "[conversational] Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

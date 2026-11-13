@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_053",
+  "sha256": "cd536a75146fecfb43e746b79e2a79f9fb8a7e5b2a4dd2f510b2ed0361f52eb2",
+  "expected": "Not ready yet, chat. Pretending otherwise would be a bit embarrassing.",
+  "transcript": "Not ready yet, chat. Pretending otherwise would be a bit embarrassing.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08193,
+    "peak": 0.40201,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.192,
+    "sha256": "cd536a75146fecfb43e746b79e2a79f9fb8a7e5b2a4dd2f510b2ed0361f52eb2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Not ready yet, chat. Pretending otherwise would be a bit embarrassing."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

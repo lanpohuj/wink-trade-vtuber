@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_047",
+  "sha256": "7e8bc485adba7a22d74426d2d6b3deb8caa2a309ae0b37f87d606fa6bf5f850a",
+  "expected": "I can yap nonsense as a joke. The entry button doesn't get that privilege.",
+  "transcript": "I can yap nonsense as a joke. The entry button doesn't get that privilege.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08085,
+    "peak": 0.40162,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.095,
+    "sha256": "7e8bc485adba7a22d74426d2d6b3deb8caa2a309ae0b37f87d606fa6bf5f850a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " I can yap nonsense as a joke. The entry button doesn't get that privilege."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

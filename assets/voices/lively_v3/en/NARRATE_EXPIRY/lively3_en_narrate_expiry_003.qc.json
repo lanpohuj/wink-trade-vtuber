@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_003",
+  "sha256": "1ffa9d0f11da538404f243c3327217c11ca1a0076321ae97ad2fa26c8f9ed969",
+  "expected": "Fifteen seconds for this trade. Watching that specific window.",
+  "transcript": "15 seconds for this trade. Watching that specific window.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07938,
+    "peak": 0.49816,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.301,
+    "sha256": "1ffa9d0f11da538404f243c3327217c11ca1a0076321ae97ad2fa26c8f9ed969"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " 15 seconds for this trade. Watching that specific window."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

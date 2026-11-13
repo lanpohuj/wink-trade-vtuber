@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_034",
+  "phrase_id": "lively3_en_open_trade_put_034",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Down trade open on the reversal setup. The microphone doesn't control the outcome.",
+  "tts_text": "[clear, conversational] Down trade open on the reversal setup. The microphone doesn't control the outcome.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ddb44131cf522472562d88d26a1ba54d74d4dc4d19c66c172297c34ee3dafd50",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_034",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_034.mp3",
+  "duration": 4.649687,
+  "sha256": "8ad5fd2839f19b2369f4ec0c23e938a29e90e0159098b33a8a4ccd520dc0441b",
+  "request_payload": {
+    "text": "[clear, conversational] Down trade open on the reversal setup. The microphone doesn't control the outcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

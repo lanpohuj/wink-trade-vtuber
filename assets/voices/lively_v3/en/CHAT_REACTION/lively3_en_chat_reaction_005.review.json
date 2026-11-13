@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_005",
+  "phrase_id": "lively3_en_chat_reaction_005",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Lovely to see new viewers. Settle in; questions welcome, exams cancelled.",
+  "tts_text": "[lightly playful, smiling] Lovely to see new viewers. Settle in; questions welcome, exams cancelled.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "88045982106599012838a5034b40664689b42bbcd63fd9a8b440cb7ed74a773a",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_005",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_005.mp3",
+  "duration": 5.4595,
+  "sha256": "a195b1808c45310b2bbe9f884aba17d73b358d5102cf2a9e4b7b4e8009805c57",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Lovely to see new viewers. Settle in; questions welcome, exams cancelled.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

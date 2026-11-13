@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_007",
+  "phrase_id": "lively3_ru_trade_win_007",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Сделка закрылась в плюс. Да, я сейчас немного сияю, это по делу.",
+  "tts_text": "[conversational] Сделка закрылась в плюс. Да, я сейчас немного сияю, это по делу.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6d21fa53f978469c0ba0a864e3260b2d29362ec0f2e7d59536f34bc1cea6c8ad",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_007",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_007.mp3",
+  "duration": 4.910938,
+  "sha256": "e8bde6befd94b8da231eecade12e918a424e41375eaa6b5c541c36a20333ed6d",
+  "request_payload": {
+    "text": "[conversational] Сделка закрылась в плюс. Да, я сейчас немного сияю, это по делу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

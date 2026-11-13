@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_036",
+  "sha256": "1d1ce39b9af4f33435106aa0a4ce1968fd5f86de03a099f8334eba8a220ae1d2",
+  "expected": "Выбранное направление — сценарий, а не обещание рынка. Я подпись за него не ставлю.",
+  "transcript": "Выбранное направление сценарии, а не обещание рынка. Я подпись за него не ставлю.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08863,
+    "peak": 0.37812,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "1d1ce39b9af4f33435106aa0a4ce1968fd5f86de03a099f8334eba8a220ae1d2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Выбранное направление сценарии, а не обещание рынка. Я подпись за него не ставлю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_004",
+  "phrase_id": "lively3_en_narrate_volatility_004",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Recent candles cover wider ranges. That's what I mean by sharper moves.",
+  "tts_text": "[natural, conversational] Recent candles cover wider ranges. That's what I mean by sharper moves.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a25ebadca048f93a0e06fda48193ac531a1f66d7c4a06b7896e5e326f8095b0b",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_004",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_004.mp3",
+  "duration": 4.649687,
+  "sha256": "3cbf8b42f2a798b487a561a6059389a70da95377949b8ceef216fec2de2a394b",
+  "request_payload": {
+    "text": "[natural, conversational] Recent candles cover wider ranges. That's what I mean by sharper moves.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

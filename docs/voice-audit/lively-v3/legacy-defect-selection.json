@@ -1,0 +1,40 @@
+{
+  "row": {
+    "id": "wait_03",
+    "category": "IN_TRADE_WAITING",
+    "text": "Сделка в самом разгаре! График показывает хорошую реакцию, ждем финальной фиксации таймера!",
+    "file": "IN_TRADE_WAITING/wait_03.mp3",
+    "duration": 5.93,
+    "size": 95397,
+    "lang": "ru",
+    "status": "ready",
+    "conditions": {
+      "favorable_reaction_confirmed": true
+    },
+    "transcript": "Сделка в самом разгаре! Ну график показывает хорошую реакцию! Ждём финальной фиксации таймера!",
+    "topic": "IN_TRADE_WAITING",
+    "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/IN_TRADE_WAITING/wait_03.mp3",
+    "metrics": {
+      "decode_ok": true,
+      "duration": 5.904,
+      "rms": 0.15447,
+      "peak": 0.5557,
+      "clipped_fraction": 0.0,
+      "leading_silence": 0.08,
+      "trailing_silence": 0.144,
+      "sha256": "f05ccf0e32638a17a06e5aa71ad01f0b1e2203571d48f52dae97d0818922f523",
+      "high_frequency_ratio": 0.02816,
+      "zero_crossing_rate": 0.1211,
+      "largest_rms_jump": 0.14228,
+      "candidate_offset_sec": 3.36
+    },
+    "auditory_verified": false,
+    "listening_reasons": [
+      "signal_outlier:largest_rms_jump"
+    ],
+    "transcript_source": "fresh_whisper",
+    "listening_rank": 4.182,
+    "text_similarity": 0.987
+  },
+  "offset_sec": 2.046999999999997
+}

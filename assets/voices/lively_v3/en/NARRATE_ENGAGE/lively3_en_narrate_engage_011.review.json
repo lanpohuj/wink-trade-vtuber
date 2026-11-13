@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_011",
+  "phrase_id": "lively3_en_narrate_engage_011",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "If I look exceptionally clever, don't panic. Sometimes it's just the lighting.",
+  "tts_text": "[warm, relaxed] If I look exceptionally clever, don't panic. Sometimes it's just the lighting.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fca38d09a972d41133c617a462e802aa3f82bcd4eccc618141ee14f4ff905dc3",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_011",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_011.mp3",
+  "duration": 4.910938,
+  "sha256": "8cb068817eebc882ce790f3d3e68f36a1e0856e7514b754ecd889490ed173cd8",
+  "request_payload": {
+    "text": "[warm, relaxed] If I look exceptionally clever, don't panic. Sometimes it's just the lighting.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

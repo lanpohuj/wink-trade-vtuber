@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_011",
+  "sha256": "1ca026a22b0d9326e520ea4610de27a92528f4e2d331f362521c6b4fed109eb8",
+  "expected": "Приятное закрытие в плюс. Можно порадоваться без прогноза на вечность.",
+  "transcript": "Приятное закрытие в плюс! Можно порадоваться без прогноза на вечность!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07747,
+    "peak": 0.32878,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "1ca026a22b0d9326e520ea4610de27a92528f4e2d331f362521c6b4fed109eb8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Приятное закрытие в плюс! Можно порадоваться без прогноза на вечность!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_008",
+  "phrase_id": "lively3_ru_narrate_trade_008",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Не, я пока не праздную. А то сейчас размечтаюсь, и меня не остановить.",
+  "tts_text": "[conversational] Не, я пока не праздную. А то сейчас размечтаюсь, и меня не остановить.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c48aee12e2b34d98221ffbf373f45cfd3347b5d39f7fae9699500277f0c9de41",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_008",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_008.mp3",
+  "duration": 4.989312,
+  "sha256": "595e42058265a011340782b8ea13a24aa85de8594ad834db3a7b692335093ff2",
+  "request_payload": {
+    "text": "[conversational] Не, я пока не праздную. А то сейчас размечтаюсь, и меня не остановить.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

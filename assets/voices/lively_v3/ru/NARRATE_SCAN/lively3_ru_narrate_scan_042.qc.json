@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_042",
+  "sha256": "7f743fd6bbfa1d2e87257ed1681da4c8a50bbf7c1564cdff52629b8eca157302",
+  "expected": "У нас небольшая пауза на здравый смысл. Редкий, но полезный контент.",
+  "transcript": "У нас небольшая пауза, у нас здравый смысл. Редкий, но полезный контент.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08068,
+    "peak": 0.348,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "7f743fd6bbfa1d2e87257ed1681da4c8a50bbf7c1564cdff52629b8eca157302"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " У нас небольшая пауза, у нас здравый смысл."
+    },
+    {
+      "start": 2.68,
+      "end": 4.44,
+      "text": " Редкий, но полезный контент."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

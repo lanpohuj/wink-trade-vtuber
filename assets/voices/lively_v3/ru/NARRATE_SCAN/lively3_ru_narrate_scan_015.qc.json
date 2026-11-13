@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_015",
+  "sha256": "7a9035c601f84de88f53281eb599658852243ce1abd8571e4d338e35d9a86748",
+  "expected": "Я за красивую речь, но сначала пусть появится понятная идея.",
+  "transcript": "Я за красивую речь, но сначала пусть появится понятная идея.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08175,
+    "peak": 0.3658,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.115,
+    "sha256": "7a9035c601f84de88f53281eb599658852243ce1abd8571e4d338e35d9a86748"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Я за красивую речь, но сначала пусть появится понятная идея."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

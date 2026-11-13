@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_033",
+  "sha256": "6318cd731432e16bf8eae5b304be767829b5b6b1d204060112e8c291cf8e0612",
+  "expected": "Up entry happened: local reversal confirmed. The close speaks next.",
+  "transcript": "Up entry happened. Local reversal confirmed. The close speaks next.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07641,
+    "peak": 0.43954,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.267,
+    "sha256": "6318cd731432e16bf8eae5b304be767829b5b6b1d204060112e8c291cf8e0612"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Up entry happened. Local reversal confirmed. The close speaks next."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

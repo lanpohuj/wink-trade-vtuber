@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_009",
+  "sha256": "a40e5cfebf944b2c97d4c75a71a704d70375633f1f9f263a4b124d4861fcea19",
+  "expected": "Плюс один в компании. Спасибо за подписку, располагайся!",
+  "transcript": "Плюс один в компании. Спасибо за подписку, располагайся.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.0685,
+    "peak": 0.3438,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.134,
+    "sha256": "a40e5cfebf944b2c97d4c75a71a704d70375633f1f9f263a4b124d4861fcea19"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Плюс один в компании. Спасибо за подписку, располагайся."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

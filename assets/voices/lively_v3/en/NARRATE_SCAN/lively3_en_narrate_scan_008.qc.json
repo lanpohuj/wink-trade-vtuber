@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_008",
+  "sha256": "b7bac06de952fa791be9cfcca2bf2b23c54dde1171aa58644de9fcfd0afeca23",
+  "expected": "Entering on 'looks fine, I guess'? Hard pass. Let me actually read this.",
+  "transcript": "Entering on looks fine. I guess hard pass. Let me actually read this",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07303,
+    "peak": 0.41517,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.229,
+    "sha256": "b7bac06de952fa791be9cfcca2bf2b23c54dde1171aa58644de9fcfd0afeca23"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Entering on looks fine. I guess hard pass. Let me actually read this"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

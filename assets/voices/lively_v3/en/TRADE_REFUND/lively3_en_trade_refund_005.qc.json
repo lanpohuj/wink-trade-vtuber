@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_005",
+  "sha256": "0892a58afaa8ecf04dcdc3f81b47d51b23760b0528d86c72e2a9e57bc07bcb21",
+  "expected": "Stake returned. Neutral ending for this episode; that's a genre too.",
+  "transcript": "Stake returned neutral ending for this episode. That's a genre too",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09238,
+    "peak": 0.89727,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.208,
+    "sha256": "0892a58afaa8ecf04dcdc3f81b47d51b23760b0528d86c72e2a9e57bc07bcb21"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Stake returned neutral ending for this episode. That's a genre too"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

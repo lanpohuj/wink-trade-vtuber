@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_013",
+  "sha256": "9dc1acedee740db0ce0b9eea99a74266432c6b9cb23ded04aadcfeab9d7171a6",
+  "expected": "Мне нравится, когда вы болтаете. Но байтить «напиши плюсик» каждые пять секунд не буду.",
+  "transcript": "Мне нравится, когда вы болтаете, но байтить напиши плюсик, каждые 5 секунд не буду.",
+  "similarity": 0.963,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.825,
+    "rms": 0.07947,
+    "peak": 0.32071,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.125,
+    "sha256": "9dc1acedee740db0ce0b9eea99a74266432c6b9cb23ded04aadcfeab9d7171a6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.76,
+      "text": " Мне нравится, когда вы болтаете, но байтить напиши плюсик, каждые 5 секунд не буду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_029",
+  "sha256": "d4c3d9f2654de7cdfa7ace9235dd4ea2ed178b84d21c493dbdb7b66bc2de301a",
+  "expected": "Кто любит понятные объяснения без пафоса, вы по адресу. Пафос иногда прорывается случайно.",
+  "transcript": "Кто любит понятное объяснение без Пафоса, вы по адресу. Пафос иногда прорывается случайно.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08812,
+    "peak": 0.36939,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.081,
+    "sha256": "d4c3d9f2654de7cdfa7ace9235dd4ea2ed178b84d21c493dbdb7b66bc2de301a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Кто любит понятное объяснение без Пафоса, вы по адресу. Пафос иногда прорывается случайно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_014",
+  "sha256": "c6e5b70db1e640d364475b99e6b99a592c2dccd589eb483cbd687835c119165e",
+  "expected": "Чат, у кого сегодня день «всё под контролем», а у кого уже новая вкладка хаоса?",
+  "transcript": "Чат, у кого сегодня день всё под контролем, а у кого уже новая вкладка хаоса?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09322,
+    "peak": 0.44052,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.219,
+    "sha256": "c6e5b70db1e640d364475b99e6b99a592c2dccd589eb483cbd687835c119165e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Чат, у кого сегодня день всё под контролем, а у кого уже новая вкладка хаоса?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

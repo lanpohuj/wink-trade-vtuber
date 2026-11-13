@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_006",
+  "sha256": "2349e0d8309aa0707e91cbc566a49341a9631759823110f29d9f7b37d986048d",
+  "expected": "Until it closes, don't write the happy ending. Even if you really want to.",
+  "transcript": "Until it closes don't write the happy ending even if you really want to",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08271,
+    "peak": 0.41855,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "2349e0d8309aa0707e91cbc566a49341a9631759823110f29d9f7b37d986048d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Until it closes don't write the happy ending even if you really want to"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

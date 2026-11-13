@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_035",
+  "phrase_id": "lively3_ru_open_trade_put_035",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открылись вниз после локального разворота с подтверждением. Без лишних пророчеств.",
+  "tts_text": "[conversational] Открылись вниз после локального разворота с подтверждением. Без лишних пророчеств.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "51c3f5dec84d1643d1fb7f8d3238ab87735790e6919ed19c9008714345204f02",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_035",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_035.mp3",
+  "duration": 5.172125,
+  "sha256": "c8283adabe27869c9d6d0e9647ce1feda71d234834b842e346a3be96f7dfef87",
+  "request_payload": {
+    "text": "[conversational] Открылись вниз после локального разворота с подтверждением. Без лишних пророчеств.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

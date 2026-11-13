@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_narrate_engage_016",
+  "sha256": "dc743f868280e0bd80127cc1dc2a4e30be1eb562a04afeaff8efa6efe49d624d",
+  "expected": "Шутка не зашла? Всё, скипнули, ничего не было. Я уже следующую придумала.",
+  "transcript": "Шутка не зашла? Все, скипнули, ничего не было. Я уже следующего придумала.",
+  "similarity": 0.957,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08353,
+    "peak": 0.35488,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.082,
+    "sha256": "dc743f868280e0bd80127cc1dc2a4e30be1eb562a04afeaff8efa6efe49d624d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.28,
+      "text": " Шутка не зашла?"
+    },
+    {
+      "start": 1.28,
+      "end": 3.36,
+      "text": " Все, скипнули, ничего не было."
+    },
+    {
+      "start": 3.36,
+      "end": 4.86,
+      "text": " Я уже следующего придумала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

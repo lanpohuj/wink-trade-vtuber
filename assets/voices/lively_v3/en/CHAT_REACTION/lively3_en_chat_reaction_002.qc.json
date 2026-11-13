@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_002",
+  "sha256": "635e870af9ff9d000098eaa248cf8035b10851306652dfa21cea0ca86e9942d3",
+  "expected": "Welcome in! No button-knowledge test at the door.",
+  "transcript": "Welcome in! No button knowledge test at the door!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.553,
+    "rms": 0.08295,
+    "peak": 0.34261,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.253,
+    "sha256": "635e870af9ff9d000098eaa248cf8035b10851306652dfa21cea0ca86e9942d3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Welcome in! No button knowledge test at the door!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

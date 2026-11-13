@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_002",
+  "phrase_id": "lively3_ru_narrate_lesson_002",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Направление и время — два разных решения. Одной уверенной стрелочки маловато.",
+  "tts_text": "[conversational] Направление и время — два разных решения. Одной уверенной стрелочки маловато.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f98c25cccdbfb442d56e8dd13071e693e6e4068a6e0875c74d9bfdc8f057351b",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_002",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_002.mp3",
+  "duration": 5.19825,
+  "sha256": "900f3252fd07c0ddd6c33e84c7c72d2f2e16bf892df92d77338ae09258fcec03",
+  "request_payload": {
+    "text": "[conversational] Направление и время — два разных решения. Одной уверенной стрелочки маловато.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

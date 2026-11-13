@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_014",
+  "sha256": "0865948f0b52e91d4732752d0d140a9edf3d95d1533ca76b594d7424b1e730c7",
+  "expected": "Опа, плюс! Теперь можно сказать «имба» и не делать это заранее.",
+  "transcript": "Опа! Плюс! Теперь можно сказать имба и не делать это заранее!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.09005,
+    "peak": 0.36945,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.098,
+    "sha256": "0865948f0b52e91d4732752d0d140a9edf3d95d1533ca76b594d7424b1e730c7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.16,
+      "text": " Опа! Плюс! Теперь можно сказать имба и не делать это заранее!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

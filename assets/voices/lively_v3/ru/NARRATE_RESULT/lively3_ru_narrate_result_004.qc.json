@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_004",
+  "sha256": "01b73d4ae64b90e4a78081f27702dd4750ac804163c743f289af3d264846139c",
+  "expected": "По последовательности сейчас сто десять. Условия следующего входа проверяются заново.",
+  "transcript": "У последовательности сейчас 110. Условия следующего входа проверяются заново.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08383,
+    "peak": 0.40452,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.114,
+    "sha256": "01b73d4ae64b90e4a78081f27702dd4750ac804163c743f289af3d264846139c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " У последовательности сейчас 110."
+    },
+    {
+      "start": 2.66,
+      "end": 5.34,
+      "text": " Условия следующего входа проверяются заново."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_005",
+  "sha256": "4849d69f6ed002d922e161ea62fe505c935b9b82dd50ef280e857774ffe44980",
+  "expected": "Sit tight, chat. Buttons pressed; we're not pre-ordering the tilt.",
+  "transcript": "Sit tight, chat. Buttons pressed. We're not pre-ordering the tilt.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08257,
+    "peak": 0.45752,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.184,
+    "sha256": "4849d69f6ed002d922e161ea62fe505c935b9b82dd50ef280e857774ffe44980"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Sit tight, chat. Buttons pressed. We're not pre-ordering the tilt."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_002",
+  "sha256": "083ebc4cf98c42c0bca48fe75e55f1a89bed5d5d2acba8a892f2ea1f747447a4",
+  "expected": "Теперь наблюдаем. Дополнительный клик не входит в программу развлечений.",
+  "transcript": "Теперь наблюдаем. Дополнительный клик не входит в программу развлечений.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08966,
+    "peak": 0.32483,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.135,
+    "sha256": "083ebc4cf98c42c0bca48fe75e55f1a89bed5d5d2acba8a892f2ea1f747447a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Теперь наблюдаем. Дополнительный клик не входит в программу развлечений."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

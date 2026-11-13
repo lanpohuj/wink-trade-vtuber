@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_044",
+  "phrase_id": "lively3_ru_narrate_trade_044",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Пока результат открыт, не раздаём титулы хорошей или плохой сделке.",
+  "tts_text": "[conversational] Пока результат открыт, не раздаём титулы хорошей или плохой сделке.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9559d7bde4fd2089301f8ab08cad09174b77cadb160190230ff41ac6d10d4390",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_044",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_044.mp3",
+  "duration": 3.839938,
+  "sha256": "5a8f2566bbac7f5c8edd0145c81d771a3690f89b91e5f36d87c4c9449b3f0430",
+  "request_payload": {
+    "text": "[conversational] Пока результат открыт, не раздаём титулы хорошей или плохой сделке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_015",
+  "phrase_id": "lively3_en_narrate_result_015",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Back to fifty per plan. Results remain unchanged, no cosmetic edits.",
+  "tts_text": "[clear, conversational] Back to fifty per plan. Results remain unchanged, no cosmetic edits.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1ea8962e8dd563fe3d099c9c9cfb16000a2877b6c789eb7b13c84a1633fcf526",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_015",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_015.mp3",
+  "duration": 4.858688,
+  "sha256": "53477220eeb20e7d81a5ba15b775df1917d4eabf4e6e491a43504182133790fc",
+  "request_payload": {
+    "text": "[clear, conversational] Back to fifty per plan. Results remain unchanged, no cosmetic edits.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

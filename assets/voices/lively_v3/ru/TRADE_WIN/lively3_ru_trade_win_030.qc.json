@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_030",
+  "sha256": "d3ef306cbc89ca2b91eaa80c92ccf4817cbaa8518f9167aa4004c579906f68b0",
+  "expected": "Плюс есть, чат. Праздничную корону надела на секунду и убрала.",
+  "transcript": "Плюс есть чат, праздничную корону надела на секунду и убрала.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08439,
+    "peak": 0.33464,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.109,
+    "sha256": "d3ef306cbc89ca2b91eaa80c92ccf4817cbaa8518f9167aa4004c579906f68b0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Плюс есть чат, праздничную корону надела на секунду и убрала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

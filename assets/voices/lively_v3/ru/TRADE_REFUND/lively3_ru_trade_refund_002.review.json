@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_002",
+  "phrase_id": "lively3_ru_trade_refund_002",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Вернулась ставка, чат. Это возврат, корону победителя не достаём.",
+  "tts_text": "[conversational] Вернулась ставка, чат. Это возврат, корону победителя не достаём.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0458da9e9ce4ddd799d3a7013a8793cd6cf1dee22e3783eafdd533b3290a54d2",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:crown",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_002.mp3",
+  "duration": 4.597437,
+  "sha256": "72b299ffb88d488cd6b63fbe65ef10980e806415ffaf38a55a1c03100538b055",
+  "request_payload": {
+    "text": "[conversational] Вернулась ставка, чат. Это возврат, корону победителя не достаём.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

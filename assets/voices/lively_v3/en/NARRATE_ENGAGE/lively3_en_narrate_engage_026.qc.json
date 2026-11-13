@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_026",
+  "sha256": "236af3d379f02b6f612ff77772e12761e19967ec65ccc0a8f42cb7401fc31b67",
+  "expected": "Got it? Great. Didn't? Ask; I do have more words available.",
+  "transcript": "Got it? Great. Didn't? Ask. I do have more words available.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07606,
+    "peak": 0.43815,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.088,
+    "sha256": "236af3d379f02b6f612ff77772e12761e19967ec65ccc0a8f42cb7401fc31b67"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.7,
+      "text": " Got it? Great. Didn't? Ask. I do have more words available."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

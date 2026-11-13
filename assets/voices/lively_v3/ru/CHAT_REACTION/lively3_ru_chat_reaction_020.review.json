@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_020",
+  "phrase_id": "lively3_ru_chat_reaction_020",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+  "tts_text": "[warm, smiling, conversational] Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6694319f3909d42096ad3582cd1ff9ffc19536c5f9b4bb987d3e6cff01afd967",
+  "delivery": "warm, smiling, conversational",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_020",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_020.mp3",
+  "duration": 6.217062,
+  "sha256": "ef779a4ef34257cdc923fa8e3ae4b5091625f418ab75bf584a49d3e59d9fe44b",
+  "request_payload": {
+    "text": "[warm, smiling, conversational] Чат, спасибо за лайки! Очень приятно видеть вашу поддержку. Давайте ещё сердечек!",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

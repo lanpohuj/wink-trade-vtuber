@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_002",
+  "sha256": "8f12ab77d178e259a15b8d42747b90adcac5fafb794431a93e73fdf3145c488c",
+  "expected": "Recent candle ranges widened. More actual drama on screen.",
+  "transcript": "Recent candle range is widened. More actual drama on screen.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08401,
+    "peak": 0.41231,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.205,
+    "sha256": "8f12ab77d178e259a15b8d42747b90adcac5fafb794431a93e73fdf3145c488c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Recent candle range is widened. More actual drama on screen."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

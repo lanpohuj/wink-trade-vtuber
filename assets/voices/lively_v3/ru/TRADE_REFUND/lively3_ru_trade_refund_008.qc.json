@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_008",
+  "sha256": "19b5dea10fd42d1763f839a6edf1b51ccf1eb3a054bfe97dfbb07ebbb652fea9",
+  "expected": "Возврат есть. Для радостного доклада не тот статус, просто называю факт.",
+  "transcript": "Возврат есть. Для радостного доклада не тот статус. Просто называю факт.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.07844,
+    "peak": 0.36171,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.109,
+    "sha256": "19b5dea10fd42d1763f839a6edf1b51ccf1eb3a054bfe97dfbb07ebbb652fea9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Возврат есть. Для радостного доклада не тот статус. Просто называю факт."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

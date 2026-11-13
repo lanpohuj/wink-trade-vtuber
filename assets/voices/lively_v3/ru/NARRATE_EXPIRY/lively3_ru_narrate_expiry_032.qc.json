@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_032",
+  "sha256": "c837e8be07218c732b29ec59167c189d417b0d45faa305f297a36dc7e8d40d2f",
+  "expected": "Здесь две минуты на сделку. Уговорить часы ускориться пока никому не удалось.",
+  "transcript": "Здесь две минуты на сделку. Говорить часы ускорится, пока никому не удалось.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08814,
+    "peak": 0.37549,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "c837e8be07218c732b29ec59167c189d417b0d45faa305f297a36dc7e8d40d2f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.8,
+      "text": " Здесь две минуты на сделку."
+    },
+    {
+      "start": 1.8,
+      "end": 4.3,
+      "text": " Говорить часы ускорится, пока никому не удалось."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

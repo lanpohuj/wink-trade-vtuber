@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_038",
+  "phrase_id": "lively3_en_narrate_scan_038",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Clicking takes a second. Undoing impatience is a little trickier.",
+  "tts_text": "[gently sarcastic, conversational] Clicking takes a second. Undoing impatience is a little trickier.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ebdce09d4f2767688f12e46d6e305affa30e78dbcf9c67dde78b6bab5387a8dd",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_038",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_038.mp3",
+  "duration": 4.414625,
+  "sha256": "257260371220a336bc5f5f4049042b5136a9444a07482932bf89f92162898471",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Clicking takes a second. Undoing impatience is a little trickier.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

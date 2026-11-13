@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_010",
+  "sha256": "a88b5e5fba08b686c8e90126c9bdad09cd246e6153ded729bd615414de5634a9",
+  "expected": "Refund, chat. Neither a win nor a loss. That's the ending's vibe.",
+  "transcript": "Reef on chat. Neither a win nor a loss. That's the ending's vibe.",
+  "similarity": 0.958,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08557,
+    "peak": 0.40367,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.219,
+    "sha256": "a88b5e5fba08b686c8e90126c9bdad09cd246e6153ded729bd615414de5634a9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Reef on chat. Neither a win nor a loss. That's the ending's vibe."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_022",
+  "phrase_id": "lively3_en_narrate_trade_022",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Trade in progress. My urge to narrate everything is behaving, mostly.",
+  "tts_text": "[gently sarcastic, conversational] Trade in progress. My urge to narrate everything is behaving, mostly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cd56c9ab2534ee077a5570fbc9c1f248362e3a7b89f244ca2a48afef9c70d8f3",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_022",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_022.mp3",
+  "duration": 4.989312,
+  "sha256": "0b7955faf7d1297b7cea410ea873497264e6fd8cd3b0bedff8ff991251402e63",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Trade in progress. My urge to narrate everything is behaving, mostly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

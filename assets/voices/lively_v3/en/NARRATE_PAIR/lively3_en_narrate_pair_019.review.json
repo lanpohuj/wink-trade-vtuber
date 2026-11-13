@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_019",
+  "phrase_id": "lively3_en_narrate_pair_019",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Next stop: this chart. The tour starts with the details.",
+  "tts_text": "[warm, relaxed] Next stop: this chart. The tour starts with the details.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c3733d25b18bd234e47a28acc580c578fb0db9274d7c103b0d38f856267f075f",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_019",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_019.mp3",
+  "duration": 4.23175,
+  "sha256": "4fc30a389e2bcc54caaf28ee718549b4f0a043c5e1575a447a23fc5afdad3340",
+  "request_payload": {
+    "text": "[warm, relaxed] Next stop: this chart. The tour starts with the details.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

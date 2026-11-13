@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_024",
+  "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e",
+  "expected": "New picture. Closing the previous chart's mental tab.",
+  "transcript": "New picture. Closing the previous chart's mental tab.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.023,
+    "rms": 0.07659,
+    "peak": 0.4051,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.223,
+    "sha256": "a3298265d2807a19f4671d11ec60abded40f9b2675409052e09bc87f0e71910e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " New picture. Closing the previous chart's mental tab."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

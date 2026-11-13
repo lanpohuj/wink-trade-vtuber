@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_037",
+  "sha256": "e04b60b2eb1bf4d7a5c48f4c23f7d53bbe9bd679d0b13f8aba04fda37551e6fe",
+  "expected": "Я ещё раз чекну. У меня сегодня вайб «доверяй, но вообще-то проверь».",
+  "transcript": "Я ещё раз чекну. У меня сегодня вайп, доверяй, но вообще-то проверь.",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07612,
+    "peak": 0.29761,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.128,
+    "sha256": "e04b60b2eb1bf4d7a5c48f4c23f7d53bbe9bd679d0b13f8aba04fda37551e6fe"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Я ещё раз чекну."
+    },
+    {
+      "start": 1.6,
+      "end": 4.6000000000000005,
+      "text": " У меня сегодня вайп, доверяй, но вообще-то проверь."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

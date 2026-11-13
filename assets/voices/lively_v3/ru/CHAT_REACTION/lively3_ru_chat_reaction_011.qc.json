@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_011",
+  "sha256": "b75ecd9e949442973be447542ab78bdf79a05fd0138565b170d4c40cb4b968e6",
+  "expected": "О, подарок! Спасибо, это очень мило. Я даже на секунду потеряла сарказм.",
+  "transcript": "О, подарок! Спасибо! Это очень мило! Я даже на секунду потеряла сарказм!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.034,
+    "rms": 0.08053,
+    "peak": 0.33473,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "b75ecd9e949442973be447542ab78bdf79a05fd0138565b170d4c40cb4b968e6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " О, подарок! Спасибо! Это очень мило! Я даже на секунду потеряла сарказм!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

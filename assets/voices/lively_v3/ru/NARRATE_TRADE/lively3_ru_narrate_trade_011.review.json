@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_011",
+  "phrase_id": "lively3_ru_narrate_trade_011",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Чат, не делаем финальные выводы на середине истории.",
+  "tts_text": "[conversational] Чат, не делаем финальные выводы на середине истории.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a3acb75ebbb7f7f153525c34e20c7c515d551cb2a44ae421bee6fb56e264132c",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_011",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_011.mp3",
+  "duration": 3.317438,
+  "sha256": "bc0f81690f4daa17084955c1832d5de71fa3a690aa95ceccca41f4224bba1aed",
+  "request_payload": {
+    "text": "[conversational] Чат, не делаем финальные выводы на середине истории.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

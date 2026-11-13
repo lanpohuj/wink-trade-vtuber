@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_win_025",
+  "sha256": "75ccc48647f13de561e12fe5e8fe0fbaca6771021f477bc32b42012481937aa2",
+  "expected": "Сюда, чат! Плюс есть. Самодовольная улыбка в комплекте, извините.",
+  "transcript": "Сюда, Чат! Плюс есть! Самодовольная улыбка в комплекте, извините!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08747,
+    "peak": 0.47508,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.089,
+    "sha256": "75ccc48647f13de561e12fe5e8fe0fbaca6771021f477bc32b42012481937aa2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.42,
+      "text": " Сюда, Чат!"
+    },
+    {
+      "start": 1.42,
+      "end": 2.5,
+      "text": " Плюс есть!"
+    },
+    {
+      "start": 2.5,
+      "end": 5.28,
+      "text": " Самодовольная улыбка в комплекте, извините!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

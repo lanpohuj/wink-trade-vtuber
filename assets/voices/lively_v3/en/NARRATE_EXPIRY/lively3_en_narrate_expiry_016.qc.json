@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_016",
+  "sha256": "40ef9d16c532c69ffbdbd97cab5a0478481c19934bbbc3e3b159b7c2747c6cad",
+  "expected": "Thirty-second window. Watching this stretch, not inventing an entire era.",
+  "transcript": "30-second window watching this stretch not inventing an entire era",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08841,
+    "peak": 0.65504,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.139,
+    "sha256": "40ef9d16c532c69ffbdbd97cab5a0478481c19934bbbc3e3b159b7c2747c6cad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " 30-second window watching this stretch not inventing an entire era"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

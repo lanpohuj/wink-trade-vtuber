@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_065",
+  "phrase_id": "lively3_en_narrate_scan_065",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Data first, conclusions second. Terribly inconvenient, entirely sensible.",
+  "tts_text": "[lightly playful, smiling] Data first, conclusions second. Terribly inconvenient, entirely sensible.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "45c214ac39f581294304373cc7752408cba7b6a6951994bb8c895f5002a0d910",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_065",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_065.mp3",
+  "duration": 5.4595,
+  "sha256": "e5ad4dd9412cee6be26dc136364c410327f26ed4978bbbdbf6e2babd95a862c5",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Data first, conclusions second. Terribly inconvenient, entirely sensible.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

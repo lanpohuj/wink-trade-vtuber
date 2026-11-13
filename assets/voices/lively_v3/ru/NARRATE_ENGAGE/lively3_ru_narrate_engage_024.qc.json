@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_024",
+  "sha256": "4de9839dad0f430bbc3904512a33720dc5bf453d7de5a6ec9803aad4d4f2670e",
+  "expected": "Мозг такой: будь серьёзнее. Я такая: ещё один рофл, и точно начну.",
+  "transcript": "Мозг такой, будь серьёзнее, я такая. Ещё один Роффел и точно начну.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.07799,
+    "peak": 0.31025,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.096,
+    "sha256": "4de9839dad0f430bbc3904512a33720dc5bf453d7de5a6ec9803aad4d4f2670e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " Мозг такой, будь серьёзнее, я такая."
+    },
+    {
+      "start": 3.68,
+      "end": 5.92,
+      "text": " Ещё один Роффел и точно начну."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

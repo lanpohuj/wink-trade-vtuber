@@ -1,0 +1,38 @@
+{
+  "id": "lively3_ru_narrate_pair_018",
+  "phrase_id": "lively3_ru_narrate_pair_018",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+  "tts_text": "[conversational] Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "ec336dc2d7b97a118a97ee6089cda668fb85d642105fc028314a98640845a694",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_018.mp3",
+  "duration": 5.72075,
+  "sha256": "79b63653667c94deb2b76c6078331303fdda15ed34890d19abd03dd168942081",
+  "request_payload": {
+    "text": "[conversational] Переключились на следующую пару. Сейчас посмотрим, есть ли здесь подходящий момент для входа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

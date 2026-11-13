@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_027",
+  "sha256": "502a2dda75f9b09622556e55b6921faba6cf9ba35fc3443107b793878e70648e",
+  "expected": "Так, спокойно смотрим дальше. Во всяком случае, я стараюсь не торопиться.",
+  "transcript": "Так, спокойно смотрим дальше. Во всяком случае, я стараюсь не торопиться.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08088,
+    "peak": 0.36332,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.085,
+    "sha256": "502a2dda75f9b09622556e55b6921faba6cf9ba35fc3443107b793878e70648e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Так, спокойно смотрим дальше."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Во всяком случае, я стараюсь не торопиться."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

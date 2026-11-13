@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_028",
+  "sha256": "dbe726b25d8063164d14ea7000b67f85ce59be92b25b9e053a751f5c6a4aa395",
+  "expected": "Где бот, спросит внутренний голос. В шапке профиля, отвечает внешний.",
+  "transcript": "Где Бот спросит внутренний голос, в шапке профиля отвечает внешний.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07642,
+    "peak": 0.35356,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "dbe726b25d8063164d14ea7000b67f85ce59be92b25b9e053a751f5c6a4aa395"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "text": " Где Бот спросит внутренний голос, в шапке профиля отвечает внешний."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

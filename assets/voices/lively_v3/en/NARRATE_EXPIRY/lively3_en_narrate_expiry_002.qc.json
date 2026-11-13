@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_expiry_002",
+  "sha256": "1a35df189bacc4064c82cb644b501eb6063b9209e8711e3dd78826e0b3d12140",
+  "expected": "Fifteen seconds selected. Even my sarcasm needs a compact edition.",
+  "transcript": "15 seconds selected. Even my sarcasm needs a compact addition.",
+  "similarity": 0.97,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08162,
+    "peak": 0.43662,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.251,
+    "sha256": "1a35df189bacc4064c82cb644b501eb6063b9209e8711e3dd78826e0b3d12140"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " 15 seconds selected."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Even my sarcasm needs a compact addition."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

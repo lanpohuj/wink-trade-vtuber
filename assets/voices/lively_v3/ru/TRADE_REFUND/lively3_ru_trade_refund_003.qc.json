@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_refund_003",
+  "sha256": "0617060bc3ffd6e80e70e0d09b4c5cecd1d5c5b84a204e0d10a3e761122afcb7",
+  "expected": "Сделка закрылась возвратом. Статус спокойный, как мой редкий режим молчания.",
+  "transcript": "Сделка закрылась возвратом. Статус спокойный. Как мой редкий режим молчания.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.09113,
+    "peak": 0.41801,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.114,
+    "sha256": "0617060bc3ffd6e80e70e0d09b4c5cecd1d5c5b84a204e0d10a3e761122afcb7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Сделка закрылась возвратом."
+    },
+    {
+      "start": 2.0,
+      "end": 3.5,
+      "text": " Статус спокойный."
+    },
+    {
+      "start": 3.5,
+      "end": 5.5,
+      "text": " Как мой редкий режим молчания."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

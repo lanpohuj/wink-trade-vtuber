@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_037",
+  "sha256": "6f57596f4b2559b58fe82254639097ae1d674c85a22ef08cfeade4751475e5af",
+  "expected": "When you're ready to check access, open the bot from my profile. Current conditions are there.",
+  "transcript": "When you're ready to check access, open the bot from my profile. Current conditions are there.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.07588,
+    "peak": 0.43309,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "6f57596f4b2559b58fe82254639097ae1d674c85a22ef08cfeade4751475e5af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7600000000000002,
+      "text": " When you're ready to check access, open the bot from my profile."
+    },
+    {
+      "start": 3.7600000000000002,
+      "end": 5.36,
+      "text": " Current conditions are there."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

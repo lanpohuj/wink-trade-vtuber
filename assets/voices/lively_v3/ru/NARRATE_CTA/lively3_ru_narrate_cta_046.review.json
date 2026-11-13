@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_046",
+  "phrase_id": "lively3_ru_narrate_cta_046",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Бот в профиле — для инструментов и шагов. Я здесь — для разбора и сомнительных шуток.",
+  "tts_text": "[conversational] Бот в профиле — для инструментов и шагов. Я здесь — для разбора и сомнительных шуток.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "efcc73bc8d2c4d53d8c144efd00c8c41b955709a50c3a6c2b8a133aa82985f14",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_046",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_046.mp3",
+  "duration": 5.955813,
+  "sha256": "43058f44fdcb4be06d21ca325a0d7ac15e5ee4cb34d02f900ae6a9e46b20dd9c",
+  "request_payload": {
+    "text": "[conversational] Бот в профиле — для инструментов и шагов. Я здесь — для разбора и сомнительных шуток.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

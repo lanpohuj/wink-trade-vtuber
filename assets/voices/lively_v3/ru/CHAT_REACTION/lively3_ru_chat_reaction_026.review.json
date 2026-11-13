@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_026",
+  "phrase_id": "lively3_ru_chat_reaction_026",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+  "tts_text": "[conversational] Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "939d6829db6f08b4d12d919e7a1563d1de5bc6defadc458af2c6723891ce0dbf",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_026",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_026.mp3",
+  "duration": 4.910938,
+  "sha256": "4e2696d651116a3ba596df0b42acb3e9e4a11a4e69db87079e3e425fc0f15484",
+  "request_payload": {
+    "text": "[conversational] Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

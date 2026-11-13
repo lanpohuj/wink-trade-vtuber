@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_034",
+  "phrase_id": "lively3_en_narrate_scan_034",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Pick a button, invent the reasoning afterwards? Nah. That's not the lore we're building.",
+  "tts_text": "[casual] Pick a button, invent the reasoning afterwards? Nah. That's not the lore we're building.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9736838fdf815b166cde1413161a308c1e433a15917687d51fb4cdf670e1f3bc",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_034",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_034.mp3",
+  "duration": 5.30275,
+  "sha256": "54d867d14b00b123a0ef7f10aa5b4fe2868fde37c6c67d63904957112d3410aa",
+  "request_payload": {
+    "text": "[casual] Pick a button, invent the reasoning afterwards? Nah. That's not the lore we're building.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

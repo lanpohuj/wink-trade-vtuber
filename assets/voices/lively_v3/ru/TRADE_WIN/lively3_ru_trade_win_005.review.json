@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_005",
+  "phrase_id": "lively3_ru_trade_win_005",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюсовое закрытие. Моя внутренняя звезда просит две секунды внимания.",
+  "tts_text": "[conversational] Плюсовое закрытие. Моя внутренняя звезда просит две секунды внимания.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "6663cb4fa2d82a096cdf2c6a7f8f070e6e89b09978352cc937840a7fd506e69c",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_005",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_005.mp3",
+  "duration": 4.675813,
+  "sha256": "a2fe1e45698c2c3199968170cb21bc1009510d7bd303e0b09fc5eb3425857f71",
+  "request_payload": {
+    "text": "[conversational] Плюсовое закрытие. Моя внутренняя звезда просит две секунды внимания.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

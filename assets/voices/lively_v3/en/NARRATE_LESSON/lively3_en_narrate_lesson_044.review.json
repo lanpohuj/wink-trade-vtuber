@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_044",
+  "phrase_id": "lively3_en_narrate_lesson_044",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Conditions can align and the trade can still lose. Those facts can coexist.",
+  "tts_text": "[natural, conversational] Conditions can align and the trade can still lose. Those facts can coexist.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "428377204133d4bb38b6189258a0c1405b180688f95a863dc43875bc703a6fc9",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_044",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_044.mp3",
+  "duration": 5.172125,
+  "sha256": "2ffdc1e06167fc6d77d916acebf2aac2bd524badcc4b206f605685393cdb6d35",
+  "request_payload": {
+    "text": "[natural, conversational] Conditions can align and the trade can still lose. Those facts can coexist.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

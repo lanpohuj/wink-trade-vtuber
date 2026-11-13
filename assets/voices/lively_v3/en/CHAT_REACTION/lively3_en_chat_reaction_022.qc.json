@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_022",
+  "sha256": "708403775870fb3cc0da86022071aeff2d70e2826aea3b67a8bc21948e45047c",
+  "expected": "Check my profile for the bot link. It'll explain what to do.",
+  "transcript": "Check my profile for the bot link. It'll explain what to do.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.37,
+    "rms": 0.08086,
+    "peak": 0.4192,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.11,
+    "sha256": "708403775870fb3cc0da86022071aeff2d70e2826aea3b67a8bc21948e45047c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.36,
+      "text": " Check my profile for the bot link. It'll explain what to do."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

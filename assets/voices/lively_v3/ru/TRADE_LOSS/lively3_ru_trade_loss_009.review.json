@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_009",
+  "phrase_id": "lively3_ru_trade_loss_009",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Эта сделка минусовая. Позволю себе выдохнуть и вернусь к фактам.",
+  "tts_text": "[conversational] Эта сделка минусовая. Позволю себе выдохнуть и вернусь к фактам.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "498c3f84f0324777ea290c845eabe89b6cea272bd65bff6fee1e8020352f7a20",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_009",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_009.mp3",
+  "duration": 4.101125,
+  "sha256": "f8ffdbda7182208fcb60cd2644a89450f200c236c7669f5d43074c71bfdf3ea7",
+  "request_payload": {
+    "text": "[conversational] Эта сделка минусовая. Позволю себе выдохнуть и вернусь к фактам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

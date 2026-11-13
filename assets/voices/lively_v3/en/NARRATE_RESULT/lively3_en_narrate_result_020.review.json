@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_020",
+  "phrase_id": "lively3_en_narrate_result_020",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Close to the boundary, still a loss. My sigh doesn't enter the statistics.",
+  "tts_text": "[clear, conversational] Close to the boundary, still a loss. My sigh doesn't enter the statistics.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b86ba5ed03a9425f296761a4869f474a02cfef9f55d5d213da330e3e76f53d78",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_020",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_020.mp3",
+  "duration": 5.30275,
+  "sha256": "cb6c1040090140b20bfc1e2cb7ef776f52f8ddbf73990b26256537a2b08b588c",
+  "request_payload": {
+    "text": "[clear, conversational] Close to the boundary, still a loss. My sigh doesn't enter the statistics.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

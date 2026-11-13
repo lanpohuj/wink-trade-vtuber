@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_046",
+  "sha256": "3f7962ff5eab38fb4aea430605f3d325ba3889430ae8596e04d4c38e157e6ba2",
+  "expected": "Bot in bio for tools and instructions. Me here for explanations and questionable jokes.",
+  "transcript": "Bought in bio for tools and instructions. Me here for explanations and questionable jokes.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.008,
+    "rms": 0.08187,
+    "peak": 0.39168,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.228,
+    "sha256": "3f7962ff5eab38fb4aea430605f3d325ba3889430ae8596e04d4c38e157e6ba2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Bought in bio for tools and instructions."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Me here for explanations and questionable jokes."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

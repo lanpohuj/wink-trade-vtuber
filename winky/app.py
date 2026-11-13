@@ -950,7 +950,10 @@ class WinkyAPI:
         router = getattr(self, '_chat_router', None)
         lang = router.default_stream_lang if router else "ru"
         stream_director.stream_lang = lang
-        stream_director.maybe_cta(lang=lang)
+        if 0 <= time.time() - stream_director._last_phase_update <= 3:
+            stream_director.maybe_cta()
+        else:
+            stream_director.maybe_cta(lang=lang)
 
     # ---------- уведомления JS ----------
 

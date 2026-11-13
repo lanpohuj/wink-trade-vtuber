@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_021",
+  "phrase_id": "lively3_ru_narrate_lesson_021",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Маленький интервал не делает результат предсказуемым. Он просто короче.",
+  "tts_text": "[conversational] Маленький интервал не делает результат предсказуемым. Он просто короче.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f9ec06b2bdf1f5ce534ff6a6d13d5856dec21a0490ead37972ec6f1977e9d2d2",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_021",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_021.mp3",
+  "duration": 4.545187,
+  "sha256": "d05b77ff076fed90ddacdaccf3e3d292b06c5a40a34244f6b7da028353fbdd24",
+  "request_payload": {
+    "text": "[conversational] Маленький интервал не делает результат предсказуемым. Он просто короче.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

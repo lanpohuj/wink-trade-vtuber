@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_037",
+  "sha256": "a587811523e9d022ff8001585a6b395542c7653fc8883008ac77715b919e0153",
+  "expected": "Buy opened on the local reversal. Conditions checked; outcome still ahead.",
+  "transcript": "Buy opened on the local reversal. Conditions checked. Outcomes still ahead.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.07869,
+    "peak": 0.40037,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.17,
+    "sha256": "a587811523e9d022ff8001585a6b395542c7653fc8883008ac77715b919e0153"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " Buy opened on the local reversal. Conditions checked. Outcomes still ahead."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_060",
+  "sha256": "6d6ce01fd69ae57923669bc4bfd83a877477ecf6f08fe74ae8e416b04760eeaa",
+  "expected": "Решение любит детали. Я, к сожалению, тоже — поэтому ещё проверяю.",
+  "transcript": "Решение любит детали. Я, к сожалению, тоже, поэтому еще проверяю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08705,
+    "peak": 0.4173,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "6d6ce01fd69ae57923669bc4bfd83a877477ecf6f08fe74ae8e416b04760eeaa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Решение любит детали. Я, к сожалению, тоже, поэтому еще проверяю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_005",
+  "phrase_id": "lively3_en_trade_win_005",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Green close. My inner diva requests two seconds of attention.",
+  "tts_text": "[lightly playful, smiling] Green close. My inner diva requests two seconds of attention.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "42a159629987edb8e4d253aa0cee279c04243b88e56623d3570ab396efd77d0c",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_005",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_005.mp3",
+  "duration": 4.519125,
+  "sha256": "397a650e116d8603e4cca729d8ddd03564d3c551cd6ff511a6ce3332fc4a793a",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Green close. My inner diva requests two seconds of attention.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

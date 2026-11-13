@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_put_013",
+  "sha256": "0f1192ce7ba7002dc77b5bdce998ea96bbe73e42442612a3d4bf84accf55a8ed",
+  "expected": "Entered down on the confirmed breakout retest. Trade now, rehearsal finished.",
+  "transcript": "Enter down on the confirmed breakout retest. Treat now. Rehearsal finished.",
+  "similarity": 0.952,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08149,
+    "peak": 0.39756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.202,
+    "sha256": "0f1192ce7ba7002dc77b5bdce998ea96bbe73e42442612a3d4bf84accf55a8ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Enter down on the confirmed breakout retest."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Treat now. Rehearsal finished."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_012",
+  "phrase_id": "lively3_en_chat_reaction_012",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Thanks for the gift! I'm about to look suspiciously pleased.",
+  "tts_text": "[natural, conversational] Thanks for the gift! I'm about to look suspiciously pleased.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "665b2a9a281414a474ae4a8576615b3df8f9278d1399a7c40e8e97a70ea865d7",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_012",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_012.mp3",
+  "duration": 3.892125,
+  "sha256": "2c6f43debbefa3e31f15bc84d4e80a63cf2f0fa582c4a9ec20824db08c5da426",
+  "request_payload": {
+    "text": "[natural, conversational] Thanks for the gift! I'm about to look suspiciously pleased.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

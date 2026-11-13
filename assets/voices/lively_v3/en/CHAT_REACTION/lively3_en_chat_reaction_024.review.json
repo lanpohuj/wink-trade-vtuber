@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_024",
+  "phrase_id": "lively3_en_chat_reaction_024",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Open our bot from my profile. Read the conditions inside first.",
+  "tts_text": "[natural, conversational] Open our bot from my profile. Read the conditions inside first.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ba4db61700b29347b47299191185ea4519c0a6a9c58ef0863af2dc1918d36f25",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_024",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_024.mp3",
+  "duration": 4.284,
+  "sha256": "b6a84c60f4849ff6aebd1722d2ba43035292f485d86b17e8037d9902efe0aef1",
+  "request_payload": {
+    "text": "[natural, conversational] Open our bot from my profile. Read the conditions inside first.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

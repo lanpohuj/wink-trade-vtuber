@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_006",
+  "phrase_id": "lively3_ru_narrate_trade_006",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Сделка открыта, результат ещё впереди. Интонацию победителя оставлю в черновиках.",
+  "tts_text": "[conversational] Сделка открыта, результат ещё впереди. Интонацию победителя оставлю в черновиках.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5376fcd9f378bea3ec3e56741cc996e9927a091e731310c2ba2d029c3e1f8dfa",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_006",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_006.mp3",
+  "duration": 5.30275,
+  "sha256": "67a4d9d50ac59140e93ce103acf3525e630064da0059bd5334bfa1f5f58030d9",
+  "request_payload": {
+    "text": "[conversational] Сделка открыта, результат ещё впереди. Интонацию победителя оставлю в черновиках.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

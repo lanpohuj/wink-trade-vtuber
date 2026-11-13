@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_033",
+  "phrase_id": "lively3_ru_narrate_cta_033",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Знакомство с ботом начинается в профиле. Рукопожатие не обязательно, прочитать условия полезно.",
+  "tts_text": "[conversational] Знакомство с ботом начинается в профиле. Рукопожатие не обязательно, прочитать условия полезно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9ba95a96cc1a617d13ad680a52541f65a81f50feef68495be3fbe6f3c1ab6d3f",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_033",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_033.mp3",
+  "duration": 5.877438,
+  "sha256": "77f6edc1b7a86ea27a9c410c7491e3c66b120ad2a3276c725bccd32c9121c2b0",
+  "request_payload": {
+    "text": "[conversational] Знакомство с ботом начинается в профиле. Рукопожатие не обязательно, прочитать условия полезно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

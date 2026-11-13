@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_019",
+  "sha256": "a92fd91ee9dcfe60c5dae2e69588f3f906fa57963fce293c57670f33a4580fa9",
+  "expected": "Patience matters more here than how quickly I can talk.",
+  "transcript": "Patience matters more here than how quickly I can talk.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.422,
+    "rms": 0.0858,
+    "peak": 0.35856,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.362,
+    "sha256": "a92fd91ee9dcfe60c5dae2e69588f3f906fa57963fce293c57670f33a4580fa9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2800000000000002,
+      "text": " Patience matters more here than how quickly I can talk."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

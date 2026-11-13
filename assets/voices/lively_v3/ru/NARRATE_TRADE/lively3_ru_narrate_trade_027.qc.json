@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_027",
+  "sha256": "0dbd4f864b62f1ca1bb0fa1d9aee94238fecfb9d5ab811360f95a3e06a17f20d",
+  "expected": "Ждём закрытия без голосования, куда цене удобнее пойти.",
+  "transcript": "Ждём закрытие без голосования, куда цене удобнее пойти.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.5,
+    "rms": 0.09141,
+    "peak": 0.33034,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.1,
+    "sha256": "0dbd4f864b62f1ca1bb0fa1d9aee94238fecfb9d5ab811360f95a3e06a17f20d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.44,
+      "text": " Ждём закрытие без голосования, куда цене удобнее пойти."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_022",
+  "phrase_id": "lively3_en_open_trade_call_022",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Up trade open after rejection at the range boundary. Holding the early excitement.",
+  "tts_text": "[clear, conversational] Up trade open after rejection at the range boundary. Holding the early excitement.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "990016548927c65e45a1262c7e92df4b848e5f47cc298d6b88ce422448f473d1",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_022",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_022.mp3",
+  "duration": 5.119937,
+  "sha256": "df82287c0f060cf19a9cbb2efeedde5bc0f841b59d24e2ccc5d0b89cfe2eeb91",
+  "request_payload": {
+    "text": "[clear, conversational] Up trade open after rejection at the range boundary. Holding the early excitement.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

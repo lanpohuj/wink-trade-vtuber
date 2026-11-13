@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_017",
+  "phrase_id": "lively3_ru_open_trade_call_017",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Вверх по ретесту после пробоя, сделка открыта. Ранних фанфар не заказывала.",
+  "tts_text": "[conversational] Вверх по ретесту после пробоя, сделка открыта. Ранних фанфар не заказывала.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3d80c9eace5c7e958df1db9bba3baa1b2ba953b1170d0ee7f85492f4a37d5699",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_017",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_017.mp3",
+  "duration": 5.067687,
+  "sha256": "d812b7ce005c90c528ae3cd8cafc7bcdbab06673d44d8a817d7d0c74cb570712",
+  "request_payload": {
+    "text": "[conversational] Вверх по ретесту после пробоя, сделка открыта. Ранних фанфар не заказывала.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

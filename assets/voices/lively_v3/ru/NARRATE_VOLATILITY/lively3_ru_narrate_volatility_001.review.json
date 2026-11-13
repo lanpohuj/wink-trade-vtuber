@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_volatility_001",
+  "phrase_id": "lively3_ru_narrate_volatility_001",
+  "lang": "ru",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Движения стали резче по свежим данным. График включил характер, не я придумала.",
+  "tts_text": "[conversational] Движения стали резче по свежим данным. График включил характер, не я придумала.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "be9f1d8823f3348d1d40a891aa689c8686cb0f31e9bb87f5ec6e607267c695c7",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_volatility_001",
+  "file": "ru/NARRATE_VOLATILITY/lively3_ru_narrate_volatility_001.mp3",
+  "duration": 5.381125,
+  "sha256": "ba76e2637851cd1a4c9f151ea22cf01151b800b90519a118877e3421babe8bbf",
+  "request_payload": {
+    "text": "[conversational] Движения стали резче по свежим данным. График включил характер, не я придумала.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

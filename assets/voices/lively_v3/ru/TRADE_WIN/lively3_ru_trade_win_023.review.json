@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_023",
+  "phrase_id": "lively3_ru_trade_win_023",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Сделка плюсовая, закрытие подтверждено. Всё, я официально порадовалась.",
+  "tts_text": "[conversational] Сделка плюсовая, закрытие подтверждено. Всё, я официально порадовалась.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4bcabb0510fb52034c9224f58b344415c8b676d7131a8e10d925b7eefa2e7f32",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_023",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_023.mp3",
+  "duration": 5.433375,
+  "sha256": "0c0a8ce6dfb0f085b1f0c618b3b629b9c7f978f8d4012a4f4214435b7a6d4777",
+  "request_payload": {
+    "text": "[conversational] Сделка плюсовая, закрытие подтверждено. Всё, я официально порадовалась.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_030",
+  "phrase_id": "lively3_en_trade_win_030",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Win's in, chat. Celebration crown on for one second, then back in storage.",
+  "tts_text": "[gently sarcastic, conversational] Win's in, chat. Celebration crown on for one second, then back in storage.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "c397c8d2f2f84781f6f13697b03a75326e497908820d99d330f663a02e9b012a",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:crown",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_030.mp3",
+  "duration": 5.19825,
+  "sha256": "a42607d3020f1f15fbb7db267ea4c90590b4ffcbb3ee8bd664a473b4a55fe366",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Win's in, chat. Celebration crown on for one second, then back in storage.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

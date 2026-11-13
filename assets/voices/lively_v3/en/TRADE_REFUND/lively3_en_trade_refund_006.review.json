@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_006",
+  "phrase_id": "lively3_en_trade_refund_006",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refund. No plot twist delivered, just the stake coming back. Fair enough.",
+  "tts_text": "[casual] Refund. No plot twist delivered, just the stake coming back. Fair enough.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ae9b2d34982a402b931bb4a8387ca8c601137f621523ed7c30e1bb2382d0215e",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_006",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_006.mp3",
+  "duration": 5.041563,
+  "sha256": "f2a51c11d600273d56515f6f954b7cafcc2a24a147b676f94763c17bdf93b6e5",
+  "request_payload": {
+    "text": "[casual] Refund. No plot twist delivered, just the stake coming back. Fair enough.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

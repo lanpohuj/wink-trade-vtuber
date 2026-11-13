@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_012",
+  "phrase_id": "lively3_ru_narrate_pair_012",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Новый экран, новые условия. Да, мне опять нужно разобраться.",
+  "tts_text": "[conversational] Новый экран, новые условия. Да, мне опять нужно разобраться.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "934d5fc2cd7051e46aa84bc22a65c4f17c68c00215e90e27aab7714b651fdc91",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_012",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_012.mp3",
+  "duration": 4.989312,
+  "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a",
+  "request_payload": {
+    "text": "[conversational] Новый экран, новые условия. Да, мне опять нужно разобраться.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

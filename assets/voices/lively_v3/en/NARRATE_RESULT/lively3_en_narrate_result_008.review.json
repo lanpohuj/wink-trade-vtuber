@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_008",
+  "phrase_id": "lively3_en_narrate_result_008",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Plan now calls for two hundred and forty-two. A larger stake doesn't improve a setup.",
+  "tts_text": "[clear, conversational] Plan now calls for two hundred and forty-two. A larger stake doesn't improve a setup.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "226b3cc67d7298eef1bda35a1d6035054910c0296dfcf7b2474a7557ea898a8a",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_008",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_008.mp3",
+  "duration": 5.30275,
+  "sha256": "53349143d70012c4793fc413e27c9bd9aa6238407ee62dec4424f860ec3b869d",
+  "request_payload": {
+    "text": "[clear, conversational] Plan now calls for two hundred and forty-two. A larger stake doesn't improve a setup.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

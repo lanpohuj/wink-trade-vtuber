@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_025",
+  "sha256": "15652a8cfd90860f5803652b6907401093b3e989ca67a6b9d7f6cfa3f61c357a",
+  "expected": "Let's go, chat! That's a W. Smug smile included, sorry about that.",
+  "transcript": "Let's go chat. That's a W. Smug smile included. Sorry about that",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08379,
+    "peak": 0.40746,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.149,
+    "sha256": "15652a8cfd90860f5803652b6907401093b3e989ca67a6b9d7f6cfa3f61c357a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Let's go chat. That's a W. Smug smile included. Sorry about that"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_037",
+  "phrase_id": "lively3_ru_narrate_trade_037",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Не делаю вывод по настроению чата. Результат у сделки будет свой.",
+  "tts_text": "[conversational] Не делаю вывод по настроению чата. Результат у сделки будет свой.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7cbff167be9112a525a592344c778f117218ac8957fcf15b3127d000d866704f",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_037",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_037.mp3",
+  "duration": 4.23175,
+  "sha256": "6add11a97e04021ce94f897799fac667e7c742b10d8f8bcaf311b918ee2701e8",
+  "request_payload": {
+    "text": "[conversational] Не делаю вывод по настроению чата. Результат у сделки будет свой.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

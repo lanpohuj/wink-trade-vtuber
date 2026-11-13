@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_002",
+  "sha256": "b2dbb4798d99529f46d53bb2f7cf6560d46b3a46d85882b2244b06209329331c",
+  "expected": "Now the one-hundred-and-ten step. Different size, no tailoring the facts to it.",
+  "transcript": "Now the 110 step, different size, no tailoring the facts to it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08046,
+    "peak": 0.45454,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.172,
+    "sha256": "b2dbb4798d99529f46d53bb2f7cf6560d46b3a46d85882b2244b06209329331c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Now the 110 step, different size, no tailoring the facts to it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

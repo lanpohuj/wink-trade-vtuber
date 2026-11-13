@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_021",
+  "sha256": "d19d7b5d4d1a3792d44d1ba6d63be92567be6aec096e06c37a837efc11efde57",
+  "expected": "Новенькие, бот в шапке. Всё, мини-гайд выдала, возвращаюсь к своим делам.",
+  "transcript": "Новенькие, бот в шапке. Всё, мини-гайт выдала, возвращаюсь к своим делам.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.07901,
+    "peak": 0.31131,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.082,
+    "sha256": "d19d7b5d4d1a3792d44d1ba6d63be92567be6aec096e06c37a837efc11efde57"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Новенькие, бот в шапке."
+    },
+    {
+      "start": 2.0,
+      "end": 5.5,
+      "text": " Всё, мини-гайт выдала, возвращаюсь к своим делам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

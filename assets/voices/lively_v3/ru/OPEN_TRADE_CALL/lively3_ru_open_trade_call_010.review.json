@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_010",
+  "phrase_id": "lively3_ru_open_trade_call_010",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Открыли вверх после отката с подтверждением. Всё, моя работа с кнопкой закончилась.",
+  "tts_text": "[conversational] Открыли вверх после отката с подтверждением. Всё, моя работа с кнопкой закончилась.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "567978ee3c1b467be31bd1812ffded5a089c7cc7986cde7fed9165c8b5cddb18",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_010",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_010.mp3",
+  "duration": 5.30275,
+  "sha256": "2c2533247baa63d2fee6ab7e8130b02b66cd941d993ce9d0f4c4ea9fb6f937a7",
+  "request_payload": {
+    "text": "[conversational] Открыли вверх после отката с подтверждением. Всё, моя работа с кнопкой закончилась.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_012",
+  "sha256": "0aaa2b940ccddd4d3d3c30dac545d71621f4d18466d69ff9583d13a5952bf3ce",
+  "expected": "Next step size: two hundred and forty-two. Describing the plan, not promising the outcome.",
+  "transcript": "Next step size 242 describing the plan not promising the outcome",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.74,
+    "rms": 0.0816,
+    "peak": 0.49101,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.26,
+    "sha256": "0aaa2b940ccddd4d3d3c30dac545d71621f4d18466d69ff9583d13a5952bf3ce"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.36,
+      "text": " Next step size 242 describing the plan not promising the outcome"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

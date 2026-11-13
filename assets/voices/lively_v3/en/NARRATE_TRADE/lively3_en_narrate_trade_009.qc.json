@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_009",
+  "sha256": "a4643bee3d68877c3f0ec6b617e9f125adb4c94badc38e5c6324e4632f9bad9d",
+  "expected": "A charming look won't add seconds here. I won't bother testing it.",
+  "transcript": "A charming look won't add seconds here. I won't bother testing it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07575,
+    "peak": 0.40642,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.265,
+    "sha256": "a4643bee3d68877c3f0ec6b617e9f125adb4c94badc38e5c6324e4632f9bad9d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " A charming look won't add seconds here. I won't bother testing it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

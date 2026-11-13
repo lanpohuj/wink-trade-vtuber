@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_002",
+  "sha256": "d5deb85ab7075c78d0e16b2e63fad8238bc1848c9d1003253a3d293b3cc73178",
+  "expected": "Выбраны пятнадцать секунд. Даже мой сарказм должен уложиться компактно.",
+  "transcript": "Выбрана 15 секунд! Даже мой сарказм должен уложиться компактно!",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08531,
+    "peak": 0.29214,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.095,
+    "sha256": "d5deb85ab7075c78d0e16b2e63fad8238bc1848c9d1003253a3d293b3cc73178"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Выбрана 15 секунд! Даже мой сарказм должен уложиться компактно!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_put_005",
+  "sha256": "07ca4b11d6466efbef2a046d576804278b403e091295584e169127bebfa82737",
+  "expected": "Down trade open on the pullback setup. Fingers stop improvising now.",
+  "transcript": "Down trade open on the pullback setup. Fingers stop improvising now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07912,
+    "peak": 0.34725,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.119,
+    "sha256": "07ca4b11d6466efbef2a046d576804278b403e091295584e169127bebfa82737"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Down trade open on the pullback setup."
+    },
+    {
+      "start": 2.4,
+      "end": 4.4,
+      "text": " Fingers stop improvising now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

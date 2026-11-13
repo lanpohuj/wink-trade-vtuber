@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_019",
+  "sha256": "5b53e93121bf7e5f6ddedca9cd84c5ed272a896ab746800372076c3fc89f9c18",
+  "expected": "Green close recorded. My tiny pleased reaction is entirely official.",
+  "transcript": "Green close recorded my tiny pleased reaction is entirely official",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.0792,
+    "peak": 0.45458,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.128,
+    "sha256": "5b53e93121bf7e5f6ddedca9cd84c5ed272a896ab746800372076c3fc89f9c18"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " Green close recorded my tiny pleased reaction is entirely official"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

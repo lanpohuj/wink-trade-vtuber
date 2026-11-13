@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_036",
+  "sha256": "7ee9786ef22b9852fa5bc33b9dd612bc5fee9f766e4952aa4e11e6a390756072",
+  "expected": "A direction is a scenario, not the market's promise. I can't sign on its behalf.",
+  "transcript": "A direction is a scenario, not the market's promise. I can't sign on its behalf.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07366,
+    "peak": 0.3601,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.312,
+    "sha256": "7ee9786ef22b9852fa5bc33b9dd612bc5fee9f766e4952aa4e11e6a390756072"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " A direction is a scenario, not the market's promise. I can't sign on its behalf."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

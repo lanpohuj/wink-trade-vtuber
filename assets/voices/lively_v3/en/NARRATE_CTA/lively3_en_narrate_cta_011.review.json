@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_011",
+  "phrase_id": "lively3_en_narrate_cta_011",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Chat, if you're looking for the bot, it's in my bio. Keeping that one low effort.",
+  "tts_text": "[casual] Chat, if you're looking for the bot, it's in my bio. Keeping that one low effort.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1cb901a601ae5a49a96547fd4e18e1328441a3ca94694bf9eb6b1ee3c504851c",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_011",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_011.mp3",
+  "duration": 4.858688,
+  "sha256": "b8bfcb409ef3d27fc23e6d9ecb59f937c7640ddee33992f56766ffd52f547121",
+  "request_payload": {
+    "text": "[casual] Chat, if you're looking for the bot, it's in my bio. Keeping that one low effort.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_009",
+  "sha256": "1116c537fbdc63759f73f461404bded35df106aa6ca0569fc342409d6751c50e",
+  "expected": "Случайный плюс не делает любое объяснение правильным. Обидно для красивых историй.",
+  "transcript": "Случайный плюс не делает любое объяснение правильным. Обидно для красивых историй.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.09159,
+    "peak": 0.37226,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.134,
+    "sha256": "1116c537fbdc63759f73f461404bded35df106aa6ca0569fc342409d6751c50e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.38,
+      "text": " Случайный плюс не делает любое объяснение правильным."
+    },
+    {
+      "start": 3.38,
+      "end": 5.38,
+      "text": " Обидно для красивых историй."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

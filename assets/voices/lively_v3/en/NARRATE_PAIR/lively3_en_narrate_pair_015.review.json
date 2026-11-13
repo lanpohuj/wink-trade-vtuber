@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_015",
+  "phrase_id": "lively3_en_narrate_pair_015",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Let's check this pair. No instant crush; I've learned to look twice.",
+  "tts_text": "[casual] Let's check this pair. No instant crush; I've learned to look twice.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "918b0ed28e0e470f337093bc59a2128ade03aefc10d22bcea4eda3b2da4be584",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_015",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_015.mp3",
+  "duration": 4.675813,
+  "sha256": "a05da157fdd42e609adb4742214b0417d3cc84227f45a9b7810d4a5452d9ec2f",
+  "request_payload": {
+    "text": "[casual] Let's check this pair. No instant crush; I've learned to look twice.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

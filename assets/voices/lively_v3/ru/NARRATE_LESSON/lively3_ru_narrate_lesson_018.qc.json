@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_018",
+  "sha256": "787899e0c5b3df5b2e9ce8e2993b170069d802bb68e4627497cae8a255082d16",
+  "expected": "Вайб у сделки может быть прекрасный. Проверки всё равно нужны, сорян.",
+  "transcript": "Вайпу сделки может быть прекрасной. Проверки все равно нужны, Сарян.",
+  "similarity": 0.946,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.0854,
+    "peak": 0.38624,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.095,
+    "sha256": "787899e0c5b3df5b2e9ce8e2993b170069d802bb68e4627497cae8a255082d16"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.44,
+      "text": " Вайпу сделки может быть прекрасной."
+    },
+    {
+      "start": 2.44,
+      "end": 4.44,
+      "text": " Проверки все равно нужны, Сарян."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

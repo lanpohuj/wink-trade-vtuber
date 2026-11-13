@@ -1,0 +1,285 @@
+[
+  {
+    "lang": "ru",
+    "batch": 1,
+    "file": "docs/voice-audit/lively-v3/listening-ru-1.mp3",
+    "records": [
+      {
+        "number": 1,
+        "id": "switch_04",
+        "sha256": "414ecd20023fdf7091536f87fa71a80116dafb3704663dfff387907042b8ed45",
+        "at_sec": 0.0,
+        "duration": 7.158,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/WEAK_SIGNAL_SWITCH_PAIR/switch_04.mp3"
+      },
+      {
+        "number": 2,
+        "id": "prep_03",
+        "sha256": "1abb43e86927ddede87b0a6dbe584eca5d70ed9265cb236e2c4b3c1c48ebe1a4",
+        "at_sec": 7.658,
+        "duration": 7.549,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PREPARE_ENTRY/prep_03.mp3"
+      },
+      {
+        "number": 3,
+        "id": "wait_02",
+        "sha256": "721bacd6b722a15bf0d960d1fd6bb95f4ac9ad51a99c3e1ee6cfe593b8605e30",
+        "at_sec": 15.707,
+        "duration": 6.322,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/IN_TRADE_WAITING/wait_02.mp3"
+      },
+      {
+        "number": 4,
+        "id": "pause_03",
+        "sha256": "5bf0d0a2080d96a2aafcb7801fe5969f7cfd738cc77f16241dca3db38584c3b1",
+        "at_sec": 22.529,
+        "duration": 5.303,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAUSE_BETWEEN_TRADES/pause_03.mp3"
+      },
+      {
+        "number": 5,
+        "id": "switched_02",
+        "sha256": "ae22fe3cae53fd1f7b9bd6e61469619dce46260c41ceb1db3890a2b40f507bc6",
+        "at_sec": 28.332,
+        "duration": 7.158,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAIR_SWITCHED_NEW_SCAN/switched_02.mp3"
+      },
+      {
+        "number": 6,
+        "id": "call_04",
+        "sha256": "195a5cf2ed6880b533335775885ff6311bebbb02d4a2f134b44f0c313256e435",
+        "at_sec": 35.99,
+        "duration": 6.531,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/OPEN_TRADE_CALL/call_04.mp3"
+      },
+      {
+        "number": 7,
+        "id": "put_04",
+        "sha256": "cda02ef5a9ca74018dfd72f8ce65b2b6cd8fb5296573c925d565408677a28322",
+        "at_sec": 43.021,
+        "duration": 6.191,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/OPEN_TRADE_PUT/put_04.mp3"
+      },
+      {
+        "number": 8,
+        "id": "switched_03",
+        "sha256": "c2de777ab8e3009220bdfc0b2d0bb4454206c459ebf785ff25fe016b1fe878e5",
+        "at_sec": 49.712,
+        "duration": 5.878,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAIR_SWITCHED_NEW_SCAN/switched_03.mp3"
+      }
+    ]
+  },
+  {
+    "lang": "ru",
+    "batch": 2,
+    "file": "docs/voice-audit/lively-v3/listening-ru-2.mp3",
+    "records": [
+      {
+        "number": 1,
+        "id": "prep_04",
+        "sha256": "8ecb90e3aae01f463a35f9d9cd7ae8ce653c23a1f39bbafe194028c4f6f7820f",
+        "at_sec": 0.0,
+        "duration": 6.531,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PREPARE_ENTRY/prep_04.mp3"
+      },
+      {
+        "number": 2,
+        "id": "switched_01",
+        "sha256": "c736f90d9f32585324f5dc10d86df6ab2273438a2a5e9c00a18fcd5ba9da3243",
+        "at_sec": 7.031,
+        "duration": 5.825,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAIR_SWITCHED_NEW_SCAN/switched_01.mp3"
+      },
+      {
+        "number": 3,
+        "id": "put_03",
+        "sha256": "4ea976f6e1dd457388d04276e8e60bc020bd6b6f0d2109752ee12e54bc8a6557",
+        "at_sec": 13.356,
+        "duration": 6.949,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/OPEN_TRADE_PUT/put_03.mp3"
+      },
+      {
+        "number": 4,
+        "id": "switch_03",
+        "sha256": "d673d92538c03463a3ff76517ba58fdb88691897fe2081e2f07802436c666e58",
+        "at_sec": 20.805,
+        "duration": 7.575,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/WEAK_SIGNAL_SWITCH_PAIR/switch_03.mp3"
+      },
+      {
+        "number": 5,
+        "id": "analyze_01",
+        "sha256": "3e1de71d871215dd9e93f6ba263a98affa42f59b608c1a38f2c0ff7826e88828",
+        "at_sec": 28.88,
+        "duration": 8.568,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/ANALYZING_CHART/analyze_01.mp3"
+      },
+      {
+        "number": 6,
+        "id": "wait_05",
+        "sha256": "f2046263fe5767cbe7a148dfc4d74ab467102ddafaa9dbc08744501fda76f833",
+        "at_sec": 37.948,
+        "duration": 4.284,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/IN_TRADE_WAITING/wait_05.mp3"
+      },
+      {
+        "number": 7,
+        "id": "put_05",
+        "sha256": "8d17839e9cd40e2bec4bd5a39b89998520ac7920a4cd318cd90e5e69ee5b3731",
+        "at_sec": 42.732,
+        "duration": 5.721,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/OPEN_TRADE_PUT/put_05.mp3"
+      },
+      {
+        "number": 8,
+        "id": "wait_03",
+        "sha256": "f05ccf0e32638a17a06e5aa71ad01f0b1e2203571d48f52dae97d0818922f523",
+        "at_sec": 48.953,
+        "duration": 5.904,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/IN_TRADE_WAITING/wait_03.mp3"
+      }
+    ]
+  },
+  {
+    "lang": "ru",
+    "batch": 3,
+    "file": "docs/voice-audit/lively-v3/listening-ru-3.mp3",
+    "records": [
+      {
+        "number": 1,
+        "id": "pause_01",
+        "sha256": "79c48768c9a15d839a599267389b5beb7da7483aee8ef977b6a3cb7770efc36b",
+        "at_sec": 0.0,
+        "duration": 6.713,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAUSE_BETWEEN_TRADES/pause_01.mp3"
+      },
+      {
+        "number": 2,
+        "id": "pause_04",
+        "sha256": "d5d558431c78c67de13223713733526a723603fcc552c84aed33f660561955ce",
+        "at_sec": 7.213,
+        "duration": 6.243,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/PAUSE_BETWEEN_TRADES/pause_04.mp3"
+      },
+      {
+        "number": 3,
+        "id": "call_02",
+        "sha256": "c96cc9c42da9601fd6ef11f9de215c37e5305e4c0746653b89088af3fbf0da30",
+        "at_sec": 13.956,
+        "duration": 7.967,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/OPEN_TRADE_CALL/call_02.mp3"
+      },
+      {
+        "number": 4,
+        "id": "streamer2_ru_narrate_volatility_06",
+        "sha256": "1b777cd461f4af574e6dadd03a5e81536170bd2831571a98df463abc06e1aad5",
+        "at_sec": 22.423,
+        "duration": 6.531,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/ru/NARRATE_VOLATILITY/streamer2_ru_narrate_volatility_06.mp3"
+      },
+      {
+        "number": 5,
+        "id": "wait_04",
+        "sha256": "1d4e6ca2d29adbd0d23a7754c602cb95fdd4a93f3dd09316d5dc350fedc6c87c",
+        "at_sec": 29.454,
+        "duration": 4.754,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/IN_TRADE_WAITING/wait_04.mp3"
+      },
+      {
+        "number": 6,
+        "id": "switch_01",
+        "sha256": "135d25159e1604be85927c56152896f2f5d108a7defb0b4402565f83afaa71a8",
+        "at_sec": 34.708,
+        "duration": 8.202,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/lumean/WEAK_SIGNAL_SWITCH_PAIR/switch_01.mp3"
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "batch": 1,
+    "file": "docs/voice-audit/lively-v3/listening-en-1.mp3",
+    "records": [
+      {
+        "number": 1,
+        "id": "streamer2_en_narrate_trade_04",
+        "sha256": "608b4c5768330f97a7137f25c98b21b1ac7398c0bff388accb47001cc8eda977",
+        "at_sec": 0.0,
+        "duration": 5.564,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_TRADE/streamer2_en_narrate_trade_04.mp3"
+      },
+      {
+        "number": 2,
+        "id": "streamer2_en_narrate_scan_28",
+        "sha256": "effe0df2022b1356b1e500c9d1f5e3a5eac0a4dadd16985842b888b27c2a69ff",
+        "at_sec": 6.064,
+        "duration": 5.172,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_SCAN/streamer2_en_narrate_scan_28.mp3"
+      },
+      {
+        "number": 3,
+        "id": "streamer2_en_trade_win_07",
+        "sha256": "09407ed3e212301ad4b7578a122843555bd0138d7832ec1ed1789ff8d8ff5d66",
+        "at_sec": 11.736,
+        "duration": 4.911,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/TRADE_WIN/streamer2_en_trade_win_07.mp3"
+      },
+      {
+        "number": 4,
+        "id": "streamer2_en_narrate_engage_03",
+        "sha256": "0a68a87a811597ee50ea8eb15b7c791df8d18931f6bbf4cf17f2cf026e2ded10",
+        "at_sec": 17.147,
+        "duration": 6.818,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_ENGAGE/streamer2_en_narrate_engage_03.mp3"
+      },
+      {
+        "number": 5,
+        "id": "streamer2_en_narrate_lesson_01",
+        "sha256": "aa42efa319a3223cf57a324f65a011ed1b0f572368aacbfe104a3d39d34c0269",
+        "at_sec": 24.465,
+        "duration": 5.642,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_LESSON/streamer2_en_narrate_lesson_01.mp3"
+      },
+      {
+        "number": 6,
+        "id": "streamer2_en_narrate_scan_08",
+        "sha256": "745d446fd274abb764a97c6c24df6128d4ff0314eba96204776ef783fe191c06",
+        "at_sec": 30.607,
+        "duration": 5.434,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_SCAN/streamer2_en_narrate_scan_08.mp3"
+      },
+      {
+        "number": 7,
+        "id": "streamer2_en_narrate_result_11",
+        "sha256": "b4327b601e04bc501211ee9558ec267a0c732c69aae3714b17f80a7a02532e4a",
+        "at_sec": 36.541,
+        "duration": 7.445,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_RESULT/streamer2_en_narrate_result_11.mp3"
+      },
+      {
+        "number": 8,
+        "id": "streamer2_en_narrate_engage_02",
+        "sha256": "b9e2c12ca0db32bc540b16a0e9a82d27e33f7e03ace4a56e8ebcafd91b574ef1",
+        "at_sec": 44.486,
+        "duration": 5.329,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/NARRATE_ENGAGE/streamer2_en_narrate_engage_02.mp3"
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "batch": 2,
+    "file": "docs/voice-audit/lively-v3/listening-en-2.mp3",
+    "records": [
+      {
+        "number": 1,
+        "id": "streamer2_en_trade_win_14",
+        "sha256": "e52bfc626372a2f043effbc0a82f51d384806fbdf7f532522f894775b5fd7373",
+        "at_sec": 0.0,
+        "duration": 4.937,
+        "path": "/Users/alansalam/Wink Trade Pocket/assets/voices/streamer_v2/en/TRADE_WIN/streamer2_en_trade_win_14.mp3"
+      }
+    ]
+  }
+]

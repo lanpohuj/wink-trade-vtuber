@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_017",
+  "phrase_id": "lively3_ru_narrate_engage_017",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Чатик, вы за чай или кофе? Вопрос серьёзнее некоторых моих вступлений.",
+  "tts_text": "[conversational] Чатик, вы за чай или кофе? Вопрос серьёзнее некоторых моих вступлений.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a38c9ad69536fe96a4e8176696086d6e12b4715660c93238b4acab94dba18e47",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_017",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_017.mp3",
+  "duration": 4.910938,
+  "sha256": "6583e873238c535838c2342ee04286fc1c5a5c79c57ff1d2b381ec456cb755ea",
+  "request_payload": {
+    "text": "[conversational] Чатик, вы за чай или кофе? Вопрос серьёзнее некоторых моих вступлений.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

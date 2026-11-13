@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_007",
+  "sha256": "d3ab015f871b7d06d911d9ae55469964a6a470e7ab0e85df7d1e522a2545ac10",
+  "expected": "Next step: two hundred and forty-two. Entry checks remain mandatory.",
+  "transcript": "Next step, 242. Entry checks remain mandatory.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.07994,
+    "peak": 0.48458,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.12,
+    "sha256": "d3ab015f871b7d06d911d9ae55469964a6a470e7ab0e85df7d1e522a2545ac10"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Next step, 242. Entry checks remain mandatory."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

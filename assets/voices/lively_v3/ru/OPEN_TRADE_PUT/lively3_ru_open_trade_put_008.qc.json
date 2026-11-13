@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_008",
+  "sha256": "3d86f28f770ffbed765ee0f2f235543e75818397594b5306894b497c8341aeb0",
+  "expected": "Вниз по откату в тренде, вход уже произошёл. Красивую историю не добавляю.",
+  "transcript": "Вниз по откату в трензе. Вход уже произошел. Красивую историю не добавляю.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07565,
+    "peak": 0.3598,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.088,
+    "sha256": "3d86f28f770ffbed765ee0f2f235543e75818397594b5306894b497c8341aeb0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Вниз по откату в трензе. Вход уже произошел."
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 4.76,
+      "text": " Красивую историю не добавляю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

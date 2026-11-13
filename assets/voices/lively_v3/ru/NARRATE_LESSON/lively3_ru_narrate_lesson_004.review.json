@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_004",
+  "phrase_id": "lively3_ru_narrate_lesson_004",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Пауза не обязана выглядеть эффектно, чтобы быть полезной.",
+  "tts_text": "[conversational] Пауза не обязана выглядеть эффектно, чтобы быть полезной.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "09d944088d3abe02cf4d55b41e7f2f25d5515266dd9381a110e83b72b9bddc72",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_004",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_004.mp3",
+  "duration": 3.004,
+  "sha256": "d9e575f87fdf3fd4ce507098614a6114876cb1cd03ec3825efd2e52a160bfe77",
+  "request_payload": {
+    "text": "[conversational] Пауза не обязана выглядеть эффектно, чтобы быть полезной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

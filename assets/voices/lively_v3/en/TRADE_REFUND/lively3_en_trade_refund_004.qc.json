@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_004",
+  "sha256": "7ca36a0194ba8a444ce2ab62c8dc8510b7ec5558df7b10bcc2ac20a51d03e3c9",
+  "expected": "Refund confirmed. No imaginary wins added to the history.",
+  "transcript": "Reef Unconfirmed. No imaginary wins added to the history.",
+  "similarity": 0.979,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08644,
+    "peak": 0.40452,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.101,
+    "sha256": "7ca36a0194ba8a444ce2ab62c8dc8510b7ec5558df7b10bcc2ac20a51d03e3c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Reef Unconfirmed. No imaginary wins added to the history."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

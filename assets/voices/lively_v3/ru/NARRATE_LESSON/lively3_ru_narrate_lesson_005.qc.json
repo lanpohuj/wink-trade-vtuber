@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_005",
+  "sha256": "b306cced778277d0d301643f05d929b8649045bdf27d697ea5fcad281b9cf3b4",
+  "expected": "Ошибка — врать себе после результата. А сам минус ещё не повод сочинять легенду.",
+  "transcript": "Ошибка. Врать себе после результата. А сам минус еще не повод сочинять легенду.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.09135,
+    "peak": 0.43165,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.09,
+    "sha256": "b306cced778277d0d301643f05d929b8649045bdf27d697ea5fcad281b9cf3b4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Ошибка. Врать себе после результата."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " А сам минус еще не повод сочинять легенду."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

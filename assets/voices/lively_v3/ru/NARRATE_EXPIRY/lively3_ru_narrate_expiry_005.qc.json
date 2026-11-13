@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_005",
+  "sha256": "7765f9cc7ca1534781b328a8008b071cccb6b7faa36bb6830413244934aad0f0",
+  "expected": "Эта сделка на пятнадцать секунд. Пресс-конференцию точно не успею.",
+  "transcript": "Это сделка на 15 секунд! Тресконференцию точно не успею!",
+  "similarity": 0.946,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08921,
+    "peak": 0.37581,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.092,
+    "sha256": "7765f9cc7ca1534781b328a8008b071cccb6b7faa36bb6830413244934aad0f0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Это сделка на 15 секунд!"
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Тресконференцию точно не успею!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

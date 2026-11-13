@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_037",
+  "phrase_id": "lively3_en_narrate_scan_037",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Let me check once more. Today's vibe is trust, but definitely verify.",
+  "tts_text": "[casual] Let me check once more. Today's vibe is trust, but definitely verify.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1d1e11d4080c21a996e65e9398aec6a7f838116f9815ba193931053fcb4aa421",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_037",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_037.mp3",
+  "duration": 4.858688,
+  "sha256": "a1c6a1a59d8cbeb1dfd260579fda06522077ab41da22860b40d41f0861d5e425",
+  "request_payload": {
+    "text": "[casual] Let me check once more. Today's vibe is trust, but definitely verify.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_003",
+  "phrase_id": "lively3_en_narrate_engage_003",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Am I making sense or just yapping now? Be honest. My ego can take it.",
+  "tts_text": "[casual] Am I making sense or just yapping now? Be honest. My ego can take it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ef05a84ce5ae1ec03bae8a7df15a431390e3b0cb2709e5911284cc2a946ecfd2",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_003.mp3",
+  "duration": 5.30275,
+  "sha256": "7d47e301b32654cfe77839e2936df1ac612bdef3d05b35ab898b8fe825528f37",
+  "request_payload": {
+    "text": "[casual] Am I making sense or just yapping now? Be honest. My ego can take it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

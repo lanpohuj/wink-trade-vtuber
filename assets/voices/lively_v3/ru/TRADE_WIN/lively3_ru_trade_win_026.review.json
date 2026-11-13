@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_026",
+  "phrase_id": "lively3_ru_trade_win_026",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Плюсовой результат на месте. Внутренние аплодисменты короткие, но искренние.",
+  "tts_text": "[conversational] Плюсовой результат на месте. Внутренние аплодисменты короткие, но искренние.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0d599ed7e9b600dbd42988549a51a0255a1915c318c1c2b5ea953bf4e7067df3",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_026",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_026.mp3",
+  "duration": 4.910938,
+  "sha256": "aaca8f2a3d7a96ef6b5b07fcf754a890e36cbf6c75edc4056b1e77e80b906efc",
+  "request_payload": {
+    "text": "[conversational] Плюсовой результат на месте. Внутренние аплодисменты короткие, но искренние.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

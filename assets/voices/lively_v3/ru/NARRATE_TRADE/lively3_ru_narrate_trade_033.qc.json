@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_033",
+  "sha256": "ff0e8dd46b0e5290ea610dba9b6b6d368cacab5a0a5a0557866ecf2702e109d9",
+  "expected": "Сижу, смотрю. Делать вид, что мне вообще не интересно, не буду — это уже кринж.",
+  "transcript": "Сижу, смотрю, делать вид, что мне вообще не интересно. Не буду, это уже кринш.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.59,
+    "rms": 0.08757,
+    "peak": 0.32162,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.13,
+    "sha256": "ff0e8dd46b0e5290ea610dba9b6b6d368cacab5a0a5a0557866ecf2702e109d9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "text": " Сижу, смотрю, делать вид, что мне вообще не интересно. Не буду, это уже кринш."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_025",
+  "phrase_id": "lively3_en_narrate_lesson_025",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "You can get it wrong calmly too. At least without tilt making the next decision.",
+  "tts_text": "[casual] You can get it wrong calmly too. At least without tilt making the next decision.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f6f4acb8a35111d7391f99481557f7c64f239b2518a4fc9ecfa0c27ae1bad974",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:tilt",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_025.mp3",
+  "duration": 4.728063,
+  "sha256": "a766d706f0beaf2376af901e8b18e2f6ef6d440ab5d0489b6b4f0985ab60497a",
+  "request_payload": {
+    "text": "[casual] You can get it wrong calmly too. At least without tilt making the next decision.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

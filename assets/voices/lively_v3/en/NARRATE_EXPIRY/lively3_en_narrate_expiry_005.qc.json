@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_005",
+  "sha256": "e174aad49a87752dbdfbea1d087fd6bb82e9f7e2ec9ecc0ef2922ee6dc711518",
+  "expected": "This one's fifteen seconds. Definitely no time for a press conference.",
+  "transcript": "Hmm, this one's 15 seconds. Definitely no time for a press conference.",
+  "similarity": 0.972,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07639,
+    "peak": 0.39271,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.182,
+    "sha256": "e174aad49a87752dbdfbea1d087fd6bb82e9f7e2ec9ecc0ef2922ee6dc711518"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": " Hmm, this one's 15 seconds. Definitely no time for a press conference."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

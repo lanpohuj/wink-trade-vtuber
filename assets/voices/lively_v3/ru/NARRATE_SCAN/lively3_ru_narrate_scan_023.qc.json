@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_023",
+  "sha256": "a163ddd9025ac24df4ed0ce663f34a0f74911f820fb4d743e35c4c8bd9ab597d",
+  "expected": "Да, опять проверяю. Такая вот база, без которой мой красивый голос бесполезен.",
+  "transcript": "Да! Опять проверяю! Такая вот база, без которой мой красивый голос бесполезен!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08843,
+    "peak": 0.34451,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.12,
+    "sha256": "a163ddd9025ac24df4ed0ce663f34a0f74911f820fb4d743e35c4c8bd9ab597d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Да! Опять проверяю!"
+    },
+    {
+      "start": 2.0,
+      "end": 5.5,
+      "text": " Такая вот база, без которой мой красивый голос бесполезен!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

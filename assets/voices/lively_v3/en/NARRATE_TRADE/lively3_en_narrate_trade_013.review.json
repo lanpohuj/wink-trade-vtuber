@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_013",
+  "phrase_id": "lively3_en_narrate_trade_013",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Watching calmly. Though I occasionally need to remind myself about the calmly part.",
+  "tts_text": "[lightly playful, smiling] Watching calmly. Though I occasionally need to remind myself about the calmly part.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5598e7c1ea1bcc1297e9c9d9ba1a15445587e3072a67411f74e52e88f36fa0b9",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_013",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_013.mp3",
+  "duration": 5.067687,
+  "sha256": "04e578cb759aef2fd1ea8477b81e2f3919983ed3443223a0a47299a05360078c",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Watching calmly. Though I occasionally need to remind myself about the calmly part.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

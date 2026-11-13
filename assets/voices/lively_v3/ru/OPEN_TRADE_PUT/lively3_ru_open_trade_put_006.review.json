@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_006",
+  "phrase_id": "lively3_ru_open_trade_put_006",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открытие вниз подтверждено. Идея — продолжение после отката, смотрим закрытие.",
+  "tts_text": "[conversational] Открытие вниз подтверждено. Идея — продолжение после отката, смотрим закрытие.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "39e99b66e8ac441c01c3daac5da86e7b888388fe04e2ced70abb479f25bbfed2",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_006",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_006.mp3",
+  "duration": 5.4595,
+  "sha256": "96634a476fc1a581d74c199a5cd9e79a5bbc03fd251fe742ac76b9845e95122b",
+  "request_payload": {
+    "text": "[conversational] Открытие вниз подтверждено. Идея — продолжение после отката, смотрим закрытие.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_003",
+  "sha256": "eb6d05e27c578d1851926fd723b2cb248b399a117fa98e0a03d0842e51b0da02",
+  "expected": "Так, переехали. Прошлую пару отпускаем, не будем душнить ей вслед.",
+  "transcript": "Так, переехали. Прошлую пару отпускаем. Не будем душнитей вслед.",
+  "similarity": 0.99,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08157,
+    "peak": 0.40853,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.119,
+    "sha256": "eb6d05e27c578d1851926fd723b2cb248b399a117fa98e0a03d0842e51b0da02"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Так, переехали. Прошлую пару отпускаем. Не будем душнитей вслед."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

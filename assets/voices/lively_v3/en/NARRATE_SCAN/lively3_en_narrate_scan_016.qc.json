@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_016",
+  "sha256": "3ade56d01efb8e46c2290c5bdfe49bf0291090f5fb8687740dc9df7331c46452",
+  "expected": "If I have to talk myself into it, that's a bit sus. Checking properly.",
+  "transcript": "If I have to talk myself into it, that's a bit sus. Checking properly.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07485,
+    "peak": 0.45532,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.248,
+    "sha256": "3ade56d01efb8e46c2290c5bdfe49bf0291090f5fb8687740dc9df7331c46452"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " If I have to talk myself into it, that's a bit sus. Checking properly."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_029",
+  "sha256": "decfa6ce501a3a684fd998917508d879ab6ae7637b208af2b2e04c8b0d0a3564",
+  "expected": "A readable chart doesn't always offer a suitable entry right now.",
+  "transcript": "A readable chart doesn't always offer a suitable entry right now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.08874,
+    "peak": 0.39207,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.249,
+    "sha256": "decfa6ce501a3a684fd998917508d879ab6ae7637b208af2b2e04c8b0d0a3564"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " A readable chart doesn't always offer a suitable entry right now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

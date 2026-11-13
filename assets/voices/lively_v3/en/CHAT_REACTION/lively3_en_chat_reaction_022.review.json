@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_022",
+  "phrase_id": "lively3_en_chat_reaction_022",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Check my profile for the bot link. It'll explain what to do.",
+  "tts_text": "[gently sarcastic, conversational] Check my profile for the bot link. It'll explain what to do.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "db61bfa35b48f75c1bc0487a408b886ec487e56ebbda91c5cf64939adf528316",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_022",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_022.mp3",
+  "duration": 3.369687,
+  "sha256": "708403775870fb3cc0da86022071aeff2d70e2826aea3b67a8bc21948e45047c",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Check my profile for the bot link. It'll explain what to do.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

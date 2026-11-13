@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_018",
+  "sha256": "fb21c672d7d1162735b664b100cb1f8c150e3b9b20757bb77362d7d3022ff4bb",
+  "expected": "Таймер не поддаётся обаянию. Первый такой стойкий собеседник за вечер.",
+  "transcript": "Таймер не подаётся обаянию. Первый такой стойкий собеседник за вечер.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08885,
+    "peak": 0.39471,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.061,
+    "sha256": "fb21c672d7d1162735b664b100cb1f8c150e3b9b20757bb77362d7d3022ff4bb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Таймер не подаётся обаянию. Первый такой стойкий собеседник за вечер."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

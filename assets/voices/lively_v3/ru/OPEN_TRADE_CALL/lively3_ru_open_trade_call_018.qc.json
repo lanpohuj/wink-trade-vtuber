@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_018",
+  "sha256": "4bb2635a875fdf00341e589a399d03dbff60dcb4fddcce94acd435519680362a",
+  "expected": "Купили по подтверждённому пробою с ретестом. Громкость голоса в расчёт не включали.",
+  "transcript": "купили по подтвержденному пробую с ретестом громкость голоса в расчет не включали",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.09479,
+    "peak": 0.40474,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.091,
+    "sha256": "4bb2635a875fdf00341e589a399d03dbff60dcb4fddcce94acd435519680362a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.66,
+      "text": " купили по подтвержденному пробую с ретестом"
+    },
+    {
+      "start": 2.66,
+      "end": 4.66,
+      "text": " громкость голоса в расчет не включали"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

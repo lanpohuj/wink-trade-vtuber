@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_025",
+  "phrase_id": "lively3_en_trade_win_025",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Let's go, chat! That's a W. Smug smile included, sorry about that.",
+  "tts_text": "[casual] Let's go, chat! That's a W. Smug smile included, sorry about that.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "dc28f4fdb920a4f1039b13eaae19c010da1fc8aa13a8e7b62533a2f630e3a2a5",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_025",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_025.mp3",
+  "duration": 5.328875,
+  "sha256": "15652a8cfd90860f5803652b6907401093b3e989ca67a6b9d7f6cfa3f61c357a",
+  "request_payload": {
+    "text": "[casual] Let's go, chat! That's a W. Smug smile included, sorry about that.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

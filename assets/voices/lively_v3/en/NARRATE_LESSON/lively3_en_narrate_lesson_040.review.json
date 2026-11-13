@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_040",
+  "phrase_id": "lively3_en_narrate_lesson_040",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Sometimes the most useful analysis is saying 'not clear yet' at the right time.",
+  "tts_text": "[natural, conversational] Sometimes the most useful analysis is saying 'not clear yet' at the right time.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "12f92cc7d8a0b7a1955b480b5fcc159cbed6e36a692c6d25a1341acab2ec489c",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_040",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_040.mp3",
+  "duration": 4.545187,
+  "sha256": "e0b8c5c42dbbb3ce351bb84eb3814553d96dedb69408340fef6db425ab0377c0",
+  "request_payload": {
+    "text": "[natural, conversational] Sometimes the most useful analysis is saying 'not clear yet' at the right time.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

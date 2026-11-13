@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_033",
+  "sha256": "eca49228632f11978de8f1863b0b5171265f30ece98ce067d8f8954e9ae88b4b",
+  "expected": "Вход вниз состоялся: локальный разворот проверен. Дальше наблюдаем по сроку.",
+  "transcript": "Вход вниз состоялся. Молокальный разворот проверен. Дальше наблюдаем по сроку.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08846,
+    "peak": 0.3902,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "eca49228632f11978de8f1863b0b5171265f30ece98ce067d8f8954e9ae88b4b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Вход вниз состоялся. Молокальный разворот проверен. Дальше наблюдаем по сроку."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

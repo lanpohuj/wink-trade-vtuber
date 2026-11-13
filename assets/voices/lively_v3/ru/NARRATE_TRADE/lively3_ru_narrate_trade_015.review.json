@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_015",
+  "phrase_id": "lively3_ru_narrate_trade_015",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "У нас пауза между решением и результатом. Не самая громкая часть, зато настоящая.",
+  "tts_text": "[conversational] У нас пауза между решением и результатом. Не самая громкая часть, зато настоящая.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a93f4d00f01b1f99f8096becd29dccb0770cedace37ef48ab1ee757fba30c2b8",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_015",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_015.mp3",
+  "duration": 5.694625,
+  "sha256": "5ca6b9229b446b7a07a2b4575a2cadc74c7a8eccf7dc8fb1e35035dc3b20b52c",
+  "request_payload": {
+    "text": "[conversational] У нас пауза между решением и результатом. Не самая громкая часть, зато настоящая.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

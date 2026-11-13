@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_044",
+  "sha256": "5a8f2566bbac7f5c8edd0145c81d771a3690f89b91e5f36d87c4c9449b3f0430",
+  "expected": "Пока результат открыт, не раздаём титулы хорошей или плохой сделке.",
+  "transcript": "Пока результат открыт, не раздаём титулы хорошей или плохой сделки.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.09292,
+    "peak": 0.41044,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.1,
+    "sha256": "5a8f2566bbac7f5c8edd0145c81d771a3690f89b91e5f36d87c4c9449b3f0430"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " Пока результат открыт, не раздаём титулы хорошей или плохой сделки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

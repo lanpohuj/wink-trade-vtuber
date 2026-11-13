@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_028",
+  "sha256": "87c25e6147bae459095517fe472ed886554c8b6c0a05d15d34a0deaa9a089473",
+  "expected": "На стриме разрешён спокойный вайб. Шуметь на максимум круглые сутки я не подписывалась.",
+  "transcript": "На стриме разрешен спокойный вайп. Шумить на максимум круглые сутки я не подписывалась.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08309,
+    "peak": 0.33558,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "87c25e6147bae459095517fe472ed886554c8b6c0a05d15d34a0deaa9a089473"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " На стриме разрешен спокойный вайп."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Шумить на максимум круглые сутки я не подписывалась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

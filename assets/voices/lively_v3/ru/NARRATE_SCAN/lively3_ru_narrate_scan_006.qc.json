@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_006",
+  "sha256": "652cf5012aec2f00aef1dcecd9083a2d9685ba88d720a86f9a21f87a52afb6be",
+  "expected": "Не покупаю историю только за красивый трейлер. Сначала проверю детали графика.",
+  "transcript": "Ну не покупаю историю только за красивый трейлер. Посначала проверю детали графика.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07625,
+    "peak": 0.40803,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.139,
+    "sha256": "652cf5012aec2f00aef1dcecd9083a2d9685ba88d720a86f9a21f87a52afb6be"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Ну не покупаю историю только за красивый трейлер."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Посначала проверю детали графика."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

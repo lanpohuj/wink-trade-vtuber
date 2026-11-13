@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_007",
+  "sha256": "bcf778173ccc48570ac7534da836a2906a109dc8a22ffdc9717726a52cb1ff13",
+  "expected": "Closed with the stake refunded. Keeping it calm, no invented triumph.",
+  "transcript": "Closed with the stake refunded keeping it calm no invented triumph",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07078,
+    "peak": 0.46078,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.142,
+    "sha256": "bcf778173ccc48570ac7534da836a2906a109dc8a22ffdc9717726a52cb1ff13"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Closed with the stake refunded keeping it calm no invented triumph"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

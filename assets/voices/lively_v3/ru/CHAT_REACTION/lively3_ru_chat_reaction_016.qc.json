@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_016",
+  "sha256": "c9ec77a55c5db5ea0491f7e99414ac5383e29432fbe582f6617f5981cadbc53a",
+  "expected": "Лайки вижу, спасибо! Маленькие сердечки, большой заряд настроения.",
+  "transcript": "Лайки вижу! Спасибо! Маленькие сердечки! Большой заряд настроения!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08312,
+    "peak": 0.35271,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "c9ec77a55c5db5ea0491f7e99414ac5383e29432fbe582f6617f5981cadbc53a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Лайки вижу! Спасибо!"
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Маленькие сердечки! Большой заряд настроения!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

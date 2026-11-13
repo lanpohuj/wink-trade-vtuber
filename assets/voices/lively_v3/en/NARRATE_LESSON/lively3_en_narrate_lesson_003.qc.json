@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_003",
+  "sha256": "0d62636c9ec9b7b562ec64e328f64f098cc274106b71a6a128b6cb36c16f47dd",
+  "expected": "The score reflects matching conditions. It isn't a promised win probability.",
+  "transcript": "The score reflects matching conditions. It isn't a promised win probability.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08029,
+    "peak": 0.62485,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "0d62636c9ec9b7b562ec64e328f64f098cc274106b71a6a128b6cb36c16f47dd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " The score reflects matching conditions. It isn't a promised win probability."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

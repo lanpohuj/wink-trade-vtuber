@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_024",
+  "sha256": "6815ef9576bbc4c1b504d3fd033e99e61a21d5372cdc9a58525ce4dbb04f37a9",
+  "expected": "Green ending for this trade. The next episode isn't written yet.",
+  "transcript": "Green ending for this trade the next episode isn't written yet",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.06966,
+    "peak": 0.35682,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.172,
+    "sha256": "6815ef9576bbc4c1b504d3fd033e99e61a21d5372cdc9a58525ce4dbb04f37a9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.56,
+      "text": " Green ending for this trade the next episode isn't written yet"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

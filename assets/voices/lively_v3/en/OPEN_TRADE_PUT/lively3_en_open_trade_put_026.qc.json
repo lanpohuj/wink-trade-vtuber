@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_026",
+  "sha256": "ba9491eecab5516f5465fd976ab7f6cfdfe0ae3d054ea1f40f73ab023b1f92a2",
+  "expected": "Sold the range rejection. My job now is to wait elegantly.",
+  "transcript": "Sold the range rejection my job now is to wait elegantly",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.10254,
+    "peak": 0.90613,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.195,
+    "sha256": "ba9491eecab5516f5465fd976ab7f6cfdfe0ae3d054ea1f40f73ab023b1f92a2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Sold the range rejection my job now is to wait elegantly"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

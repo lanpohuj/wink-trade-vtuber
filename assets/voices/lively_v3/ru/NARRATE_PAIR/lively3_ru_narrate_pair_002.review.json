@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_002",
+  "phrase_id": "lively3_ru_narrate_pair_002",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+  "tts_text": "[conversational] Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "987de0a1efe38766d41a45f97a721af1e212aa416edb31205c31c180fae9c7d2",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_002",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_002.mp3",
+  "duration": 4.466875,
+  "sha256": "51a068d66e8650e54e45418c8c1e9510827845cf5546544b7a0204504ea3ae14",
+  "request_payload": {
+    "text": "[conversational] Смена декораций. Посмотрим, что предложит этот график без моей подсказки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

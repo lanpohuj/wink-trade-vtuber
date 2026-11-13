@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_019",
+  "sha256": "8af172486aeef8dc4b3973d4f728f1e4054757d6e07aa5c1011b0280144b781c",
+  "expected": "A nice moment still needs reading properly. My filters have standards.",
+  "transcript": "A nice moment still needs reading properly. My filters have standards.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.07655,
+    "peak": 0.43805,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.145,
+    "sha256": "8af172486aeef8dc4b3973d4f728f1e4054757d6e07aa5c1011b0280144b781c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " A nice moment still needs reading properly. My filters have standards."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

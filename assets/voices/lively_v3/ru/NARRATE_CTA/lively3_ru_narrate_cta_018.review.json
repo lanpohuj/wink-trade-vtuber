@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_018",
+  "phrase_id": "lively3_ru_narrate_cta_018",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией.",
+  "tts_text": "[conversational] Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "58b76aee29803abf34102e66964ded5a6314b8f944ff70c73d3fb962fb04985d",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_018",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_018.mp3",
+  "duration": 4.937063,
+  "sha256": "9b38c7b4dc5e2bdcf3cefae9c2d4364a10e0e79f4c61b647f5aba8ee809defd7",
+  "request_payload": {
+    "text": "[conversational] Кстати, в шапке профиля не просто украшение. Там наш бот с инструкцией.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

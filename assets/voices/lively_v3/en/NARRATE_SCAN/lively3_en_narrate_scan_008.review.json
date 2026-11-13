@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_008",
+  "phrase_id": "lively3_en_narrate_scan_008",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Entering on 'looks fine, I guess'? Hard pass. Let me actually read this.",
+  "tts_text": "[casual] Entering on 'looks fine, I guess'? Hard pass. Let me actually read this.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "516da60a15b11bb1dd269ea966f13476071d224099e1ddbd44cb89c05b622d2c",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_008",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_008.mp3",
+  "duration": 5.328875,
+  "sha256": "b7bac06de952fa791be9cfcca2bf2b23c54dde1171aa58644de9fcfd0afeca23",
+  "request_payload": {
+    "text": "[casual] Entering on 'looks fine, I guess'? Hard pass. Let me actually read this.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

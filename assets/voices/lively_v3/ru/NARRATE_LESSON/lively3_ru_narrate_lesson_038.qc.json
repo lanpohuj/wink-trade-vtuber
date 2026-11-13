@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_038",
+  "sha256": "579ee99d7eb916918d25615c884c58a3257f479c5e4c3e964d4229f535d190d0",
+  "expected": "Не называю случайность стратегией только потому, что она однажды понравилась.",
+  "transcript": "Не называю случайность стратегии только потому, что она однажды понравилась.",
+  "similarity": 0.977,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07031,
+    "peak": 0.30809,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "579ee99d7eb916918d25615c884c58a3257f479c5e4c3e964d4229f535d190d0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Не называю случайность стратегии только потому, что она однажды понравилась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

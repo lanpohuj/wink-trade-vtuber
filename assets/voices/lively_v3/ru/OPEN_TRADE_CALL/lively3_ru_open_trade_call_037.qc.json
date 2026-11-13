@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_037",
+  "sha256": "43bc946ee403f321f5c890a0d19bb77a3732668ea25ec6cced3b0bc07e514d3b",
+  "expected": "Покупка открыта по локальному развороту. Условия проверены, исход ещё впереди.",
+  "transcript": "Покупка открыта по локальному развороту. Условия проверены, исход еще впереди.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08796,
+    "peak": 0.39466,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "43bc946ee403f321f5c890a0d19bb77a3732668ea25ec6cced3b0bc07e514d3b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Покупка открыта по локальному развороту."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Условия проверены, исход еще впереди."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

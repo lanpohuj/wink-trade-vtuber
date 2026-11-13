@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_005",
+  "phrase_id": "lively3_ru_narrate_cta_005",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Напоминаю про бота в профиле. Всё по шагам внутри, я там даже не перебиваю.",
+  "tts_text": "[conversational] Напоминаю про бота в профиле. Всё по шагам внутри, я там даже не перебиваю.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f26161a4fc1c9252541d014829a723078a1c91230c4e71fc001232e799c32f67",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_005",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_005.mp3",
+  "duration": 5.172125,
+  "sha256": "e58e99930d546274b5036948b1ceba6ac105affabf68869fbfcb1faefcd94442",
+  "request_payload": {
+    "text": "[conversational] Напоминаю про бота в профиле. Всё по шагам внутри, я там даже не перебиваю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_023",
+  "sha256": "3172de3623d2faec9662749c342ee94dc6f8ea864f03ce3adf41d9f42c79fbb3",
+  "expected": "Yep, checking again. Boring? A little. Still doing it.",
+  "transcript": "Yep, checking again. Boring? A little. Still doing it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.06972,
+    "peak": 0.34285,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.179,
+    "sha256": "3172de3623d2faec9662749c342ee94dc6f8ea864f03ce3adf41d9f42c79fbb3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Yep, checking again. Boring? A little. Still doing it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

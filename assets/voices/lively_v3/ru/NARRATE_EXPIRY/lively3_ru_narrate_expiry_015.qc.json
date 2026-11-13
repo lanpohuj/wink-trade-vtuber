@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_015",
+  "sha256": "f7b28bb778a040f594a4da7c92edf8a16d7af7008db9010b897f9339b57bb9c1",
+  "expected": "Тут полминуты, то есть тридцать секунд. Люблю пояснения без квеста.",
+  "transcript": "Тут полминуты, то есть тридцать секунд. Люблю пояснения без квеста.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08676,
+    "peak": 0.41768,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "f7b28bb778a040f594a4da7c92edf8a16d7af7008db9010b897f9339b57bb9c1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Тут полминуты, то есть тридцать секунд."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Люблю пояснения без квеста."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

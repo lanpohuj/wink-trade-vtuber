@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_048",
+  "phrase_id": "lively3_ru_narrate_cta_048",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Если давно собирался посмотреть бота, ориентир прежний: шапка профиля. Внутри прочитай условия.",
+  "tts_text": "[conversational] Если давно собирался посмотреть бота, ориентир прежний: шапка профиля. Внутри прочитай условия.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f7640f5eea6bee01b0b4215d1a344a2d2aecbcbb8bf1939ebb4f1476245ccd69",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_048",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_048.mp3",
+  "duration": 6.79175,
+  "sha256": "e1b97aa6fcde492e966012100e96704018c972c36640288fb0983a8c20c005f8",
+  "request_payload": {
+    "text": "[conversational] Если давно собирался посмотреть бота, ориентир прежний: шапка профиля. Внутри прочитай условия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_022",
+  "phrase_id": "lively3_ru_narrate_expiry_022",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Одна минута на сделку, чат. Выдохнули, дальше наблюдаем.",
+  "tts_text": "[conversational] Одна минута на сделку, чат. Выдохнули, дальше наблюдаем.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0c1aa2b24c6edc596037f6aff8ef262016dd922911368aa204124a8a21fab0f1",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_022",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_022.mp3",
+  "duration": 3.813812,
+  "sha256": "20902360de2ea9c5289b21689e7026630cd862c3aa9282bb3d8879326f11e91a",
+  "request_payload": {
+    "text": "[conversational] Одна минута на сделку, чат. Выдохнули, дальше наблюдаем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

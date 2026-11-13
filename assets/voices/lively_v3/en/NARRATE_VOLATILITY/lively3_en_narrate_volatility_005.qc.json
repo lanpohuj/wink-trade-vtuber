@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_005",
+  "sha256": "b9425ae5ddb753009d7130beff73e3e849f33c11c0c91fcab1462d5b5251abcd",
+  "expected": "Data shows increased volatility. I didn't simply decide to speak louder.",
+  "transcript": "Data shows increased volatility. I didn't simply decide to speak louder.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07535,
+    "peak": 0.42597,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.279,
+    "sha256": "b9425ae5ddb753009d7130beff73e3e849f33c11c0c91fcab1462d5b5251abcd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Data shows increased volatility. I didn't simply decide to speak louder."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

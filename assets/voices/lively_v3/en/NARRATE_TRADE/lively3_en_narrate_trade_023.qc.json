@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_023",
+  "sha256": "cbc4af690b3314981b4e3b07ac89b8ac3fe135051a86ca0cf398904b139796ab",
+  "expected": "Keeping the 'told you so' to myself. Too early, and I was already getting ready.",
+  "transcript": "Keeping the told you so to myself too early, and I was already getting ready",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08215,
+    "peak": 0.4705,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.265,
+    "sha256": "cbc4af690b3314981b4e3b07ac89b8ac3fe135051a86ca0cf398904b139796ab"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.08,
+      "text": " Keeping the told you so to myself too early, and I was already getting ready"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

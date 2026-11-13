@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_022",
+  "sha256": "8c41750209e73fae70d033245f72129d6ae40bd39c6c76c001b27ef0e8bb2981",
+  "expected": "If a fact isn't confirmed, I'm not adding it for dramatic effect.",
+  "transcript": "If a fact isn't confirmed, I'm not adding it for dramatic effect.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08391,
+    "peak": 0.42142,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.252,
+    "sha256": "8c41750209e73fae70d033245f72129d6ae40bd39c6c76c001b27ef0e8bb2981"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " If a fact isn't confirmed, I'm not adding it for dramatic effect."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_021",
+  "sha256": "758b155f0c19ac03a7143973f7401222270eacf61f4d6e688bf0b433e04eb567",
+  "expected": "Переключились. Проверю условия заново, память тут не заменяет взгляд.",
+  "transcript": "Переключились? Проверю условия заново. Память тут не заменяет взгляд.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08712,
+    "peak": 0.41086,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "758b155f0c19ac03a7143973f7401222270eacf61f4d6e688bf0b433e04eb567"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Переключились? Проверю условия заново."
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 4.76,
+      "text": " Память тут не заменяет взгляд."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

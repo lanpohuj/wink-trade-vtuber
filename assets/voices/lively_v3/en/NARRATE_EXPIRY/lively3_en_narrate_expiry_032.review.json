@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_032",
+  "phrase_id": "lively3_en_narrate_expiry_032",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Two minutes for this trade. Nobody's persuaded a clock to hurry yet.",
+  "tts_text": "[clear, conversational] Two minutes for this trade. Nobody's persuaded a clock to hurry yet.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fcabce035139a13209d40ba8ca68ee3632231616077bb1556a29d2f057f0ae01",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_032",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_032.mp3",
+  "duration": 4.23175,
+  "sha256": "980a82ffa19b0982be8dcebd233880ce4ac84d05567cfdbefa487fe63f173b4e",
+  "request_payload": {
+    "text": "[clear, conversational] Two minutes for this trade. Nobody's persuaded a clock to hurry yet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_005",
+  "sha256": "397a650e116d8603e4cca729d8ddd03564d3c551cd6ff511a6ce3332fc4a793a",
+  "expected": "Green close. My inner diva requests two seconds of attention.",
+  "transcript": "Green close. My inner diva requests two seconds of attention.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07457,
+    "peak": 0.42574,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.199,
+    "sha256": "397a650e116d8603e4cca729d8ddd03564d3c551cd6ff511a6ce3332fc4a793a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Green close. My inner diva requests two seconds of attention."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

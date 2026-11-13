@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_030",
+  "phrase_id": "lively3_en_narrate_lesson_030",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A precise number on screen doesn't make the conclusion infallible.",
+  "tts_text": "[gently sarcastic, conversational] A precise number on screen doesn't make the conclusion infallible.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f7f4ce36d806188ade9cce651e4358e25e8dfad194c1681a7c8fc1294e9858b5",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_030",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_030.mp3",
+  "duration": 4.075,
+  "sha256": "cbb6bd0a6c8e52db6ded4bd419e09c0b313fc3022d510f34b4c2d8ec6bfe9805",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] A precise number on screen doesn't make the conclusion infallible.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

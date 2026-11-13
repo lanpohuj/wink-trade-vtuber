@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_014",
+  "phrase_id": "lively3_ru_narrate_result_014",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Следующий размер снова пятьдесят. Без попытки назвать сброс чудесным спасением.",
+  "tts_text": "[conversational] Следующий размер снова пятьдесят. Без попытки назвать сброс чудесным спасением.",
+  "conditions": {
+    "result_kind": "LOSS_RESET"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "050daec11599317dc894c3cf5474a4c2f3a381cb86e5948a7a6238f12f412cda",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_014",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_014.mp3",
+  "duration": 5.51175,
+  "sha256": "cc7c3b3b92bf9a731de3d0dbfe27997f5f9f1de407f98745cd362d074ba824c6",
+  "request_payload": {
+    "text": "[conversational] Следующий размер снова пятьдесят. Без попытки назвать сброс чудесным спасением.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

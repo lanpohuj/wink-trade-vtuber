@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_014",
+  "sha256": "b2ec8728b9fb97d72eaf51cdf257a4a370f01a685125fc5f4d43fbd95ce8b15b",
+  "expected": "Тридцать секунд здесь уже выбраны. Мои шутки таймер не перенастраивают.",
+  "transcript": "30 секунд здесь уже выбраны. Мои шутки таймер не перенасстраивают.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08695,
+    "peak": 0.38842,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.102,
+    "sha256": "b2ec8728b9fb97d72eaf51cdf257a4a370f01a685125fc5f4d43fbd95ce8b15b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " 30 секунд здесь уже выбраны. Мои шутки таймер не перенасстраивают."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

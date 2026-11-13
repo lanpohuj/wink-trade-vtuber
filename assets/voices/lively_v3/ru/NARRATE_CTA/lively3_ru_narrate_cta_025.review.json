@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_025",
+  "phrase_id": "lively3_ru_narrate_cta_025",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Не заставляю запоминать адрес на слух: ссылка на бота уже в шапке профиля.",
+  "tts_text": "[conversational] Не заставляю запоминать адрес на слух: ссылка на бота уже в шапке профиля.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "311c2517e3c31f6ff005f7268ef617e55dfed40a51045b22ca6032cd5ff67c63",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_025",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_025.mp3",
+  "duration": 4.545187,
+  "sha256": "e71e8549f885a28f79ac08bd43898df1d451916f201f4b56c1c2fbffa0d95850",
+  "request_payload": {
+    "text": "[conversational] Не заставляю запоминать адрес на слух: ссылка на бота уже в шапке профиля.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

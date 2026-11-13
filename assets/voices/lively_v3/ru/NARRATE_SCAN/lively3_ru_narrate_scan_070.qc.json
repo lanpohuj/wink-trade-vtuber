@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_070",
+  "sha256": "5d51bfda622aeef64ba0d27de410739ad565670afd99232c11ecb7967b29d776",
+  "expected": "Подождём данные по паре. Воображаемый график слишком дорого комментировать всерьёз.",
+  "transcript": "Подождём данные по паре. Выображаемый график слишком дорого комментировать всерьёз.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09108,
+    "peak": 0.36976,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "5d51bfda622aeef64ba0d27de410739ad565670afd99232c11ecb7967b29d776"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Подождём данные по паре."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Выображаемый график слишком дорого комментировать всерьёз."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

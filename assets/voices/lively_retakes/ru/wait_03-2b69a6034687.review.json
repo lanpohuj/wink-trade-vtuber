@@ -1,0 +1,19 @@
+{
+  "id": "wait_03",
+  "category": "IN_TRADE_WAITING",
+  "text": "Сделка ещё идёт. Смотрим спокойно, до закрытия не будем загадывать.",
+  "file": "assets/voices/lively_retakes/ru/wait_03-2b69a6034687.mp3",
+  "duration": 5.93,
+  "size": 95397,
+  "lang": "ru",
+  "status": "review_pending",
+  "conditions": {
+    "favorable_reaction_confirmed": true
+  },
+  "transcript": "Сделка в самом разгаре! Ну график показывает хорошую реакцию! Ждём финальной фиксации таймера!",
+  "text_sha256": "c8576831f7f72c7979c2604a34a3fabe3aabc65befd5b7d42962e1d582b23220",
+  "tts_text": "[conversational] Сделка ещё идёт. Смотрим спокойно, до закрытия не будем загадывать.",
+  "sha256": "2b69a603468719f45eba465b47d9707dc90596e5e91b4e3ad60a822296a421ab",
+  "phrase_id": "wait_03",
+  "auditory_verified": false
+}

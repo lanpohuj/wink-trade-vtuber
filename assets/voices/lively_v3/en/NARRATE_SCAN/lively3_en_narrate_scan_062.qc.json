@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_062",
+  "sha256": "052f348dbd7b8526886ccf8df574fb4c5b6628fb6f43762a1f087edfc52ac258",
+  "expected": "History's loading. Without it, any confidence would be pure acting.",
+  "transcript": "History's loading. Without it, any confidence would be pure acting.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08227,
+    "peak": 0.5365,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.315,
+    "sha256": "052f348dbd7b8526886ccf8df574fb4c5b6628fb6f43762a1f087edfc52ac258"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " History's loading. Without it, any confidence would be pure acting."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

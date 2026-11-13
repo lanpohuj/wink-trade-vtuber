@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_014",
+  "phrase_id": "lively3_ru_trade_win_014",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Опа, плюс! Теперь можно сказать «имба» и не делать это заранее.",
+  "tts_text": "[conversational] Опа, плюс! Теперь можно сказать «имба» и не делать это заранее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8bfdf54f547973337f6d646d6a7a0da040529257878d1a52d842cbbb3886dba6",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_014",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_014.mp3",
+  "duration": 5.19825,
+  "sha256": "0865948f0b52e91d4732752d0d140a9edf3d95d1533ca76b594d7424b1e730c7",
+  "request_payload": {
+    "text": "[conversational] Опа, плюс! Теперь можно сказать «имба» и не делать это заранее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_024",
+  "sha256": "b55c17e66f021d84847bae6b53e23229be40dee7210b0daf8de23697602b8437",
+  "expected": "Слово «система» не отменяет риск. Даже очень красивым шрифтом.",
+  "transcript": "Слово «система» не отменяет риск, даже очень красивым шрифтом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.08419,
+    "peak": 0.34681,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.115,
+    "sha256": "b55c17e66f021d84847bae6b53e23229be40dee7210b0daf8de23697602b8437"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Слово «система» не отменяет риск, даже очень красивым шрифтом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_004",
+  "phrase_id": "lively3_en_narrate_result_004",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Sequence now calls for one hundred and ten. Next entry conditions get fresh checks.",
+  "tts_text": "[clear, conversational] Sequence now calls for one hundred and ten. Next entry conditions get fresh checks.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3cb270b048eb417ea9c48d0cce63f808be49c7a049b38daa5d00e77d7d9c2a98",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_004",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_004.mp3",
+  "duration": 5.328875,
+  "sha256": "ac81ee28e4369db6f90a8081bd3d3a98c54fc43805b1fbe4ae7b22b123449f7e",
+  "request_payload": {
+    "text": "[clear, conversational] Sequence now calls for one hundred and ten. Next entry conditions get fresh checks.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

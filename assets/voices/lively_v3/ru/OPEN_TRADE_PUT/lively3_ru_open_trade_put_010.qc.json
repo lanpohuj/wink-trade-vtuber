@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_010",
+  "sha256": "a4071eaf14087f34e28305ff45424a92457f185dc9d486b5b4fea5ab343314e9",
+  "expected": "Вход вниз по подтверждённому откату есть. Теперь терпение вместо новых кнопок.",
+  "transcript": "Вход вниз по подтверждённому откату есть. Теперь терпение вместо новых кнопок.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08925,
+    "peak": 0.49677,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.139,
+    "sha256": "a4071eaf14087f34e28305ff45424a92457f185dc9d486b5b4fea5ab343314e9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.68,
+      "text": " Вход вниз по подтверждённому откату есть. Теперь терпение вместо новых кнопок."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

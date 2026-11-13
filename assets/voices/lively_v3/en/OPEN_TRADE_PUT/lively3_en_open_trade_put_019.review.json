@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_019",
+  "phrase_id": "lively3_en_open_trade_put_019",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Breakout with closed retest confirmed the down setup. Trade's open.",
+  "tts_text": "[clear, conversational] Breakout with closed retest confirmed the down setup. Trade's open.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "65d6a5de47917ccabcd21471e4dc0fcff91ab7c722841c2ed71da77a332c2375",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_019",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_019.mp3",
+  "duration": 4.153375,
+  "sha256": "6ca00a4cf36fe8d4e84334c94d73053ee87dd2bf226d8c324ba6820cde604ade",
+  "request_payload": {
+    "text": "[clear, conversational] Breakout with closed retest confirmed the down setup. Trade's open.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_069",
+  "sha256": "36cd6f3344797587035ddcf7b54e1c62dbd0162779074813c49e2d369c93e0b6",
+  "expected": "History hasn't arrived yet. Conclusions aren't boarding without it.",
+  "transcript": "History hasn't arrived yet. Conclusions aren't boarding without it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08477,
+    "peak": 0.52317,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.224,
+    "sha256": "36cd6f3344797587035ddcf7b54e1c62dbd0162779074813c49e2d369c93e0b6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " History hasn't arrived yet. Conclusions aren't boarding without it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

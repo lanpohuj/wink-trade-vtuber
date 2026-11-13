@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_031",
+  "phrase_id": "lively3_en_narrate_trade_031",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Don't rush the ending, chat. Even my charisma wasn't given that authority.",
+  "tts_text": "[warm, relaxed] Don't rush the ending, chat. Even my charisma wasn't given that authority.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2e16a1018e250affc5f4ea04ed2331db60ebe2912b9cd5faea6431245bcb940a",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_031",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_031.mp3",
+  "duration": 4.284,
+  "sha256": "fb88fae028972ebd9d09c37a2a4f31b8e34d12b706fa564ea0a827d1c6bb89e3",
+  "request_payload": {
+    "text": "[warm, relaxed] Don't rush the ending, chat. Even my charisma wasn't given that authority.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

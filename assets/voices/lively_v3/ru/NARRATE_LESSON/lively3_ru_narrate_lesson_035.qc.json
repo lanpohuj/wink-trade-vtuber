@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_035",
+  "sha256": "a8ce94a1848cd57712dd21f73c17556915e4af0907e2be538dc366d4ddc1a8c4",
+  "expected": "Хорошая подача помогает слушать. Хорошая проверка помогает не путать слова с фактами.",
+  "transcript": "Хорошая подача помогает слушать. Хорошая проверка помогает не путать слова с фактами.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08108,
+    "peak": 0.41023,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.129,
+    "sha256": "a8ce94a1848cd57712dd21f73c17556915e4af0907e2be538dc366d4ddc1a8c4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Хорошая подача помогает слушать."
+    },
+    {
+      "start": 2.32,
+      "end": 5.32,
+      "text": " Хорошая проверка помогает не путать слова с фактами."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

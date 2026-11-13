@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_031",
+  "sha256": "71bed29b86cc75cf3e0b36a79514aef371637bff50dd192d96862b2404ecb886",
+  "expected": "Вверх открылись по подтверждённому локальному развороту. Именно локальному, без эпоса.",
+  "transcript": "Вверх открылись по подтвержденному локальному развороту. Именно локальному. Без эпоса.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.642,
+    "rms": 0.08367,
+    "peak": 0.31648,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.102,
+    "sha256": "71bed29b86cc75cf3e0b36a79514aef371637bff50dd192d96862b2404ecb886"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.22,
+      "text": " Вверх открылись по подтвержденному локальному развороту."
+    },
+    {
+      "start": 3.22,
+      "end": 5.72,
+      "text": " Именно локальному. Без эпоса."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

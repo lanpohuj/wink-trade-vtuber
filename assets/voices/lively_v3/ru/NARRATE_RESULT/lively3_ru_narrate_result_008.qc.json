@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_008",
+  "sha256": "9359c3d91ba5c6b8ce3d406f5f33018011a3af3b6928c72124c4769fbaa88066",
+  "expected": "По плану теперь двести сорок два. Увеличенная ставка не улучшает сам сценарий.",
+  "transcript": "По плану теперь 242, увеличенная ставка не улучшает сам сценарий.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.09345,
+    "peak": 0.40585,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.097,
+    "sha256": "9359c3d91ba5c6b8ce3d406f5f33018011a3af3b6928c72124c4769fbaa88066"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " По плану теперь 242, увеличенная ставка не улучшает сам сценарий."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

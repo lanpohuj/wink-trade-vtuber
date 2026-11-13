@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_039",
+  "sha256": "3cd88a5b735a4820d46c1356eeb849e2c12567daff39da2f8b71d3593e92b022",
+  "expected": "No secret handshake here. The bio link opens the bot.",
+  "transcript": "No secret handshake here. The bio-link opens the bot.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.08229,
+    "peak": 0.40203,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.174,
+    "sha256": "3cd88a5b735a4820d46c1356eeb849e2c12567daff39da2f8b71d3593e92b022"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.8000000000000003,
+      "text": " No secret handshake here. The bio-link opens the bot."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

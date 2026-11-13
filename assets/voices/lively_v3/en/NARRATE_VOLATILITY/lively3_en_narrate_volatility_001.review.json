@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_001",
+  "phrase_id": "lively3_en_narrate_volatility_001",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Recent data shows sharper moves. The chart's showing attitude; that's not my invention.",
+  "tts_text": "[lightly playful, smiling] Recent data shows sharper moves. The chart's showing attitude; that's not my invention.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b2030da317ce680627383d6522b3ddeef92b6691539d57cfa4ec23f7d7e5fc13",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_001",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_001.mp3",
+  "duration": 5.51175,
+  "sha256": "4df295ae7af358b7f8171c0a6240f3e3edaf917328714a6484c04a214af40f74",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Recent data shows sharper moves. The chart's showing attitude; that's not my invention.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

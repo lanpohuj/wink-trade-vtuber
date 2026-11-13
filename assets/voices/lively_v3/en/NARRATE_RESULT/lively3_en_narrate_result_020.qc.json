@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_020",
+  "sha256": "cb6c1040090140b20bfc1e2cb7ef776f52f8ddbf73990b26256537a2b08b588c",
+  "expected": "Close to the boundary, still a loss. My sigh doesn't enter the statistics.",
+  "transcript": "Close to the boundary, still a loss. My side doesn't enter the statistics.",
+  "similarity": 0.966,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.07643,
+    "peak": 0.39429,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.203,
+    "sha256": "cb6c1040090140b20bfc1e2cb7ef776f52f8ddbf73990b26256537a2b08b588c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Close to the boundary, still a loss. My side doesn't enter the statistics."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

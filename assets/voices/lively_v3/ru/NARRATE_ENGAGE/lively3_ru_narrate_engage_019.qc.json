@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_engage_019",
+  "sha256": "87804b6f082d7896cf8fa567757b4dc7ca0880b00d1eb7e136491025a9cd3550",
+  "expected": "Кто недавно пришёл, вы ничего не должны были знать заранее. Спрашивайте спокойно.",
+  "transcript": "Кто недавно пришёл, вы ничего не должны были знать заранее. Спрашивайте спокойно.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.303,
+    "rms": 0.09021,
+    "peak": 0.40712,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.083,
+    "sha256": "87804b6f082d7896cf8fa567757b4dc7ca0880b00d1eb7e136491025a9cd3550"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.88,
+      "text": " Кто недавно пришёл, вы ничего не должны были знать заранее."
+    },
+    {
+      "start": 3.88,
+      "end": 5.38,
+      "text": " Спрашивайте спокойно."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

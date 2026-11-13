@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_001",
+  "sha256": "dc02a84b6e760cd81f87631f3e201373bb9ed5a70a717522b0b2042850b46b2e",
+  "expected": "Здесь пятнадцать секунд. Короткий формат, без моей речи на полчаса.",
+  "transcript": "Здесь 15 секунд, короткий формат. Без моей речи на пол часа.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08196,
+    "peak": 0.36431,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.13,
+    "sha256": "dc02a84b6e760cd81f87631f3e201373bb9ed5a70a717522b0b2042850b46b2e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.6000000000000005,
+      "text": " Здесь 15 секунд, короткий формат. Без моей речи на пол часа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

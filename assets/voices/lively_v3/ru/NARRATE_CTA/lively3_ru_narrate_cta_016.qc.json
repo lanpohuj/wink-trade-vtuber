@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_016",
+  "sha256": "683361ad085381ae58ce7725bcc08770c0b0267391f6094cb1616a224a9d2749",
+  "expected": "Сохрани ориентир: бот из шапки профиля. Потом не придётся раскапывать чат.",
+  "transcript": "Сохрани ориентир. Бот из шапки профиля. Потом не придется раскапывать чат.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08298,
+    "peak": 0.44431,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.072,
+    "sha256": "683361ad085381ae58ce7725bcc08770c0b0267391f6094cb1616a224a9d2749"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Сохрани ориентир. Бот из шапки профиля."
+    },
+    {
+      "start": 3.12,
+      "end": 5.12,
+      "text": " Потом не придется раскапывать чат."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

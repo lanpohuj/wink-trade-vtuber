@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_034",
+  "sha256": "d13f7bba9533c877130929f1bb5b14c8bb8ef34a71d93ed0e1f5b42b1f71e7f4",
+  "expected": "Expiry follows the situation. Personal favourite numbers don't get a vote.",
+  "transcript": "Expiry follows the situation. Personal favorite numbers don't get a vote.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.0911,
+    "peak": 0.65653,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.242,
+    "sha256": "d13f7bba9533c877130929f1bb5b14c8bb8ef34a71d93ed0e1f5b42b1f71e7f4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Expiry follows the situation. Personal favorite numbers don't get a vote."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

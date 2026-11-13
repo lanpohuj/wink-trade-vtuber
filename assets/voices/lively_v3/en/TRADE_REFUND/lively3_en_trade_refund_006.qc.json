@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_006",
+  "sha256": "f2a51c11d600273d56515f6f954b7cafcc2a24a147b676f94763c17bdf93b6e5",
+  "expected": "Refund. No plot twist delivered, just the stake coming back. Fair enough.",
+  "transcript": "Refund. No plot twist delivered. Just the state coming back. Fair enough.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07396,
+    "peak": 0.39766,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.222,
+    "sha256": "f2a51c11d600273d56515f6f954b7cafcc2a24a147b676f94763c17bdf93b6e5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Refund. No plot twist delivered. Just the state coming back. Fair enough."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

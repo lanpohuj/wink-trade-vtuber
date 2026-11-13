@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_refund_009",
+  "sha256": "3b90550e12f89e6d812a6b1f1a82cfdac27d8c02f3aad20d6369628349e036f7",
+  "expected": "Stake refunded, trade closed. Neutral episodes deserve screen time too.",
+  "transcript": "Stake refunded, trade closed, neutral episodes deserve screen time too.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07811,
+    "peak": 0.44579,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.132,
+    "sha256": "3b90550e12f89e6d812a6b1f1a82cfdac27d8c02f3aad20d6369628349e036f7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Stake refunded, trade closed, neutral episodes deserve screen time too."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

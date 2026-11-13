@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_result_010",
+  "sha256": "384077ab6f206ba24c9a55b5138f38f690c1c987d2883874a0f83b1c5a752764",
+  "expected": "Сейчас шаг двести сорок два. Больший размер не делает исход известным.",
+  "transcript": "Сейчас шаг 242. Больше размер не делает, исход известным.",
+  "similarity": 0.968,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.09517,
+    "peak": 0.52713,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.188,
+    "sha256": "384077ab6f206ba24c9a55b5138f38f690c1c987d2883874a0f83b1c5a752764"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Сейчас шаг 242. Больше размер не делает, исход известным."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

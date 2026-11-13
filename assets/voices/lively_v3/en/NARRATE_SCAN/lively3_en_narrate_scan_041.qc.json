@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_041",
+  "sha256": "e6271c24146e8caf0d8b87bfef74408f601171f9db0cc51f506243b70e73caa4",
+  "expected": "Not calling a direction yet. Still getting acquainted with the conditions.",
+  "transcript": "Not calling a direction yet, still getting acquainted with the conditions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.07719,
+    "peak": 0.37386,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.402,
+    "sha256": "e6271c24146e8caf0d8b87bfef74408f601171f9db0cc51f506243b70e73caa4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Not calling a direction yet, still getting acquainted with the conditions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

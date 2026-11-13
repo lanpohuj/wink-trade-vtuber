@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_016",
+  "sha256": "3284b95b9822bb1548b368a5eeb708620393aeb6d1ae84addc1f98bf5d6f5ffd",
+  "expected": "Closed green! Not even attempting the unbothered act. You can see my face.",
+  "transcript": "Closed green not even attempting the unbothered act you can see my face",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08152,
+    "peak": 0.3764,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.069,
+    "sha256": "3284b95b9822bb1548b368a5eeb708620393aeb6d1ae84addc1f98bf5d6f5ffd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Closed green not even attempting the unbothered act you can see my face"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

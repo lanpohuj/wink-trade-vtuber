@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_012",
+  "phrase_id": "lively3_ru_trade_win_012",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Вот это плюс, приятно! Но с короной к следующему входу не идём, я себя знаю.",
+  "tts_text": "[conversational] Вот это плюс, приятно! Но с короной к следующему входу не идём, я себя знаю.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d43133de31c5255957a0c4f039e67cc0616f7c76ac8f7d05d056e4a952e9f4c0",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:crown",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_012.mp3",
+  "duration": 5.4595,
+  "sha256": "ad75c7eff8c37f3baaf9280866b1f7140b7fa8c6bc8f3405a574c4fd3fd53ed7",
+  "request_payload": {
+    "text": "[conversational] Вот это плюс, приятно! Но с короной к следующему входу не идём, я себя знаю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

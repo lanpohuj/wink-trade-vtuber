@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_024",
+  "sha256": "b6a84c60f4849ff6aebd1722d2ba43035292f485d86b17e8037d9902efe0aef1",
+  "expected": "Open our bot from my profile. Read the conditions inside first.",
+  "transcript": "Open our bot from my profile. Read the conditions inside first.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.07899,
+    "peak": 0.37639,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.144,
+    "sha256": "b6a84c60f4849ff6aebd1722d2ba43035292f485d86b17e8037d9902efe0aef1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Open our bot from my profile. Read the conditions inside first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

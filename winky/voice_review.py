@@ -30,6 +30,23 @@ class VoiceReview:
         sha = hashlib.sha256(path.read_bytes()).hexdigest()
         return any(r['sha256'] == sha for r in reports)
 
+    def replacement(self, row, original):
+        try:
+            registry = json.loads((ROOT / 'assets/voices/recording-replacements.json').read_text())
+            entry = registry.get(row['id'])
+            if not entry:
+                return None
+            candidate = (ROOT / entry['file']).resolve()
+            if (not candidate.is_relative_to((ROOT / 'assets/voices/lively_retakes').resolve())
+                    or not candidate.is_file() or entry.get('accepted') is not True
+                    or entry.get('listened') is not True or entry.get('automatic_qc_passed') is not True
+                    or hashlib.sha256(candidate.read_bytes()).hexdigest() != entry['sha256']
+                    or hashlib.sha256(original.read_bytes()).hexdigest() != entry['source_sha256']):
+                return None
+            return dict(entry, path=candidate)
+        except (OSError, ValueError, KeyError, TypeError):
+            return None
+
     def report(self, row, issue='хрип', offset_sec=None):
         with self.lock:
             path = Path(row['path']).resolve()

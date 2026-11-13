@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_015",
+  "sha256": "d672f28015029b2338628e1a5a7cbd22ae2c9e4e089f8d6f96f075393bebd65f",
+  "expected": "Gap between decision and outcome. Not the loudest part, but a real one.",
+  "transcript": "Gap between decision and outcome. Not the loudest part, but a real one.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07355,
+    "peak": 0.3804,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.128,
+    "sha256": "d672f28015029b2338628e1a5a7cbd22ae2c9e4e089f8d6f96f075393bebd65f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Gap between decision and outcome. Not the loudest part, but a real one."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

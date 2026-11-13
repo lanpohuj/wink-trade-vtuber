@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_018",
+  "phrase_id": "lively3_en_narrate_cta_018",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "By the way, my bio isn't purely decorative. There's a bot and instructions there.",
+  "tts_text": "[gently sarcastic, conversational] By the way, my bio isn't purely decorative. There's a bot and instructions there.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "eb8bd769625f2dedfec12ae1cfefab91229101d5ad91a30f16fa73db839018b1",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_018",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_018.mp3",
+  "duration": 4.910938,
+  "sha256": "dfc97d9646625600d16d57a30cad8de2a381455af052ed8f6c53ef29bc2904ed",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] By the way, my bio isn't purely decorative. There's a bot and instructions there.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

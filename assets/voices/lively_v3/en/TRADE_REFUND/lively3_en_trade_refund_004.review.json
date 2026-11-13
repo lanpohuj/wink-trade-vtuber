@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_004",
+  "phrase_id": "lively3_en_trade_refund_004",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refund confirmed. No imaginary wins added to the history.",
+  "tts_text": "[natural, conversational] Refund confirmed. No imaginary wins added to the history.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8bf8f8e562170acbe6ff545c9f9e138c1f6b1d86b77c25077e2fa45664e806ed",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_004",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_004.mp3",
+  "duration": 4.101125,
+  "sha256": "7ca36a0194ba8a444ce2ab62c8dc8510b7ec5558df7b10bcc2ac20a51d03e3c9",
+  "request_payload": {
+    "text": "[natural, conversational] Refund confirmed. No imaginary wins added to the history.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

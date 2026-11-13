@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_022",
+  "phrase_id": "lively3_ru_narrate_cta_022",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Небольшое напоминание: бот открывается из шапки профиля. Внутри всё разложено по шагам.",
+  "tts_text": "[conversational] Небольшое напоминание: бот открывается из шапки профиля. Внутри всё разложено по шагам.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2e732ec090664734836cdc342b84acea57815d7a203831d1aa35e0cfe8784f74",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_022",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_022.mp3",
+  "duration": 5.642375,
+  "sha256": "8e13dd1181e936232cef37fe27fd9be1621847c8d1777c5a422da8d97713bf78",
+  "request_payload": {
+    "text": "[conversational] Небольшое напоминание: бот открывается из шапки профиля. Внутри всё разложено по шагам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

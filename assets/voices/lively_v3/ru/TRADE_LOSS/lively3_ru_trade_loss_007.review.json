@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_007",
+  "phrase_id": "lively3_ru_trade_loss_007",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Не зашло, сделка закрыта в минус. У результата нет кнопки «переубедить».",
+  "tts_text": "[conversational] Не зашло, сделка закрыта в минус. У результата нет кнопки «переубедить».",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "03934074b3ac1d14e7ea8d02fcf801eadd2f634b077695891cd3ee26675ac30b",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_007",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_007.mp3",
+  "duration": 4.910938,
+  "sha256": "174a6acbf2be0c0f7c22ad66fc483f21650d0a2cade74cfb08c0e6bfe5f87c23",
+  "request_payload": {
+    "text": "[conversational] Не зашло, сделка закрыта в минус. У результата нет кнопки «переубедить».",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

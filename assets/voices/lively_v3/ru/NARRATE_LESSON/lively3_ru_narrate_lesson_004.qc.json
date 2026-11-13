@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_004",
+  "sha256": "d9e575f87fdf3fd4ce507098614a6114876cb1cd03ec3825efd2e52a160bfe77",
+  "expected": "Пауза не обязана выглядеть эффектно, чтобы быть полезной.",
+  "transcript": "Пауза не обязана выглядеть эффектно, чтобы быть полезной.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.004,
+    "rms": 0.08584,
+    "peak": 0.38162,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.104,
+    "sha256": "d9e575f87fdf3fd4ce507098614a6114876cb1cd03ec3825efd2e52a160bfe77"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Пауза не обязана выглядеть эффектно, чтобы быть полезной."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

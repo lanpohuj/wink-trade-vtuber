@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_050",
+  "phrase_id": "lively3_en_narrate_scan_050",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Looking carefully. Overconfidence is restricted to my delivery today.",
+  "tts_text": "[gently sarcastic, conversational] Looking carefully. Overconfidence is restricted to my delivery today.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "6d8e36b6b5a4385065f69c72bbfaca8b9b9143bbb008fdcb19f3657c7a2de52c",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_050",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_050.mp3",
+  "duration": 4.545187,
+  "sha256": "1dba94d2d26a5a6fe5e89d27e11be084d669c0d80deadc3d3283f3096637d65b",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Looking carefully. Overconfidence is restricted to my delivery today.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

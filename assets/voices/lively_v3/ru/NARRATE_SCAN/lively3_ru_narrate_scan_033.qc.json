@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_033",
+  "sha256": "94161e7f41e8db33098106e94c276e77815be104dceeeee08fa7bd5a08585327",
+  "expected": "Чат, спойлеров не будет. Сначала посмотрим, что действительно складывается.",
+  "transcript": "Чат, спойлеров не будет. Сначала посмотрим, что действительно складывается.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.381,
+    "rms": 0.08573,
+    "peak": 0.38067,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.081,
+    "sha256": "94161e7f41e8db33098106e94c276e77815be104dceeeee08fa7bd5a08585327"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Чат, спойлеров не будет. Сначала посмотрим, что действительно складывается."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

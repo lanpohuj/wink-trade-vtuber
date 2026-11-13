@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_013",
+  "phrase_id": "lively3_ru_narrate_expiry_013",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Срок тридцать секунд, чат. Даже если голос звучит очень нетерпеливо.",
+  "tts_text": "[conversational] Срок тридцать секунд, чат. Даже если голос звучит очень нетерпеливо.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "20c6a535cb4f35f407f3db3cd7428b27b8fbada9b754fdf6498f824b4970448d",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_013",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_013.mp3",
+  "duration": 4.284,
+  "sha256": "244d15b8816d4c948425a1e2ed7918030538e41d0ec0a17b7652085bbd68a35f",
+  "request_payload": {
+    "text": "[conversational] Срок тридцать секунд, чат. Даже если голос звучит очень нетерпеливо.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

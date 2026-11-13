@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_001",
+  "phrase_id": "lively3_en_narrate_lesson_001",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "A good explanation doesn't determine the outcome. Inconvenient, but honest.",
+  "tts_text": "[lightly playful, smiling] A good explanation doesn't determine the outcome. Inconvenient, but honest.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "53e4ab4f5118f45851c950901c43c36b1de4466f28182760f8f5816fba9cdc27",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_001",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_001.mp3",
+  "duration": 4.858688,
+  "sha256": "b41b316b48868b88438032a702a5d195f0e59985959cf4ca40d143cda9a8377b",
+  "request_payload": {
+    "text": "[lightly playful, smiling] A good explanation doesn't determine the outcome. Inconvenient, but honest.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

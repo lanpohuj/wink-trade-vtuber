@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_win_019",
+  "phrase_id": "lively3_ru_trade_win_019",
+  "lang": "ru",
+  "category": "TRADE_WIN",
+  "text": "Зелёное закрытие есть. Моя маленькая довольная реакция вполне официальная.",
+  "tts_text": "[conversational] Зелёное закрытие есть. Моя маленькая довольная реакция вполне официальная.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "25baa920cde4f92ae7c8552c1f931fd12c37bcc8cebc0098d05a17dd05ee026b",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_win_019",
+  "file": "ru/TRADE_WIN/lively3_ru_trade_win_019.mp3",
+  "duration": 5.119937,
+  "sha256": "d1657fcc67a02085270cd3215a517718815c917e77b71ed5504821302fe8b209",
+  "request_payload": {
+    "text": "[conversational] Зелёное закрытие есть. Моя маленькая довольная реакция вполне официальная.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

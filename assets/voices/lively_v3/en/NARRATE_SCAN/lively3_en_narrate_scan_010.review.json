@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_010",
+  "phrase_id": "lively3_en_narrate_scan_010",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Checking calmly. There's no medal for fastest click.",
+  "tts_text": "[gently sarcastic, conversational] Checking calmly. There's no medal for fastest click.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d9fb72533bbaaae2c614330c1d025b52572d0459388317d20da7458fdc9eba2a",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_010",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_010.mp3",
+  "duration": 3.944375,
+  "sha256": "3846f8c4203d4f6e110d6cf7545f1557bb231ab404ff7de20073bc53ff89ad52",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Checking calmly. There's no medal for fastest click.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

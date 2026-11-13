@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_016",
+  "sha256": "f05b07d5129b9a07916507d0d282e11dbc1078b113f544de33d031e36746d2cc",
+  "expected": "Так, перевернули страницу. Новому графику — отдельное внимание.",
+  "transcript": "Так, перевернули страницу. Новому графику, отдельное внимание.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.0859,
+    "peak": 0.37069,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.117,
+    "sha256": "f05b07d5129b9a07916507d0d282e11dbc1078b113f544de33d031e36746d2cc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Так, перевернули страницу."
+    },
+    {
+      "start": 2.32,
+      "end": 4.88,
+      "text": " Новому графику, отдельное внимание."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

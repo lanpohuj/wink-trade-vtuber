@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_027",
+  "sha256": "e3bf891cc8a6762591a6bc4162b0ac930d25421c9e229bf859d9e7b63684ccfd",
+  "expected": "Sometimes the day's vibe needs a reboot. Preferably without a whole update.",
+  "transcript": "Sometimes the day's vibe needs a reboot, preferably without a whole update.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.083,
+    "peak": 0.44916,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.208,
+    "sha256": "e3bf891cc8a6762591a6bc4162b0ac930d25421c9e229bf859d9e7b63684ccfd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Sometimes the day's vibe needs a reboot, preferably without a whole update."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

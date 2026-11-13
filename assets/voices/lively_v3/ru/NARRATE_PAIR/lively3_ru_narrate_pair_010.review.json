@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_010",
+  "phrase_id": "lively3_ru_narrate_pair_010",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Пара сменилась, самоуверенность обнулили. Проверка снова с начала.",
+  "tts_text": "[conversational] Пара сменилась, самоуверенность обнулили. Проверка снова с начала.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "5e77a42d16a55709f4cf0172549412b878504a8f7f4323530d8e369a3a7bf027",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_010",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_010.mp3",
+  "duration": 4.675813,
+  "sha256": "72bdaae49a96e066eaa2da72cab70aa02d4674af5979280fbed466ea114d82be",
+  "request_payload": {
+    "text": "[conversational] Пара сменилась, самоуверенность обнулили. Проверка снова с начала.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

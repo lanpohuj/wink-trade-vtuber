@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_004",
+  "phrase_id": "lively3_ru_open_trade_call_004",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Вошли вверх: после отката появилось подтверждение. Без истории, придуманной задним числом.",
+  "tts_text": "[conversational] Вошли вверх: после отката появилось подтверждение. Без истории, придуманной задним числом.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c9856cc9accbe2fcaae71c7c35fd3a2dc09e6e0bc3d2ae37a71e038494697de3",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_004",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_004.mp3",
+  "duration": 6.164813,
+  "sha256": "e110f350ba2dee8f412a5eea1107ce4a71ac702712741ff87c585e0180a7eb5f",
+  "request_payload": {
+    "text": "[conversational] Вошли вверх: после отката появилось подтверждение. Без истории, придуманной задним числом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

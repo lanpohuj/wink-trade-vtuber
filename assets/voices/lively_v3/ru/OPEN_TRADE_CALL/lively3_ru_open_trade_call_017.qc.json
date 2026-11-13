@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_call_017",
+  "sha256": "d812b7ce005c90c528ae3cd8cafc7bcdbab06673d44d8a817d7d0c74cb570712",
+  "expected": "Вверх по ретесту после пробоя, сделка открыта. Ранних фанфар не заказывала.",
+  "transcript": "Верх паритесту после пробоя! Сделка открыта! Ранних фанфар не заказывала!",
+  "similarity": 0.959,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08659,
+    "peak": 0.37585,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.088,
+    "sha256": "d812b7ce005c90c528ae3cd8cafc7bcdbab06673d44d8a817d7d0c74cb570712"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Верх паритесту после пробоя! Сделка открыта! Ранних фанфар не заказывала!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

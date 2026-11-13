@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_038",
+  "sha256": "e2159518cfa120412e89e299e7cd674f34b2d999ecb7b2ea683d5d7fa649100d",
+  "expected": "Entered up after reversal confirmation. Leaving the final verdict to time.",
+  "transcript": "Entered up after reversal confirmation leaving the final verdict to time",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08153,
+    "peak": 0.37416,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.116,
+    "sha256": "e2159518cfa120412e89e299e7cd674f34b2d999ecb7b2ea683d5d7fa649100d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.34,
+      "text": " Entered up after reversal confirmation leaving the final verdict to time"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

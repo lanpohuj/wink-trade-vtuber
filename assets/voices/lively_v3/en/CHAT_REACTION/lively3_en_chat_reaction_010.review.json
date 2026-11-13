@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_010",
+  "phrase_id": "lively3_en_chat_reaction_010",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Thanks for the follow! The host's confidence gave an approving nod.",
+  "tts_text": "[gently sarcastic, conversational] Thanks for the follow! The host's confidence gave an approving nod.",
+  "conditions": {
+    "chat_kind": "follow"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "40807eb2ae05059752cdbef1154055b0ef86c29e35ae267845fba8c49fe03a49",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_010",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_010.mp3",
+  "duration": 4.284,
+  "sha256": "bff133c53c06c8e6ef933df175107132de4e240abf57fb728d1c0eeed8a6ad0a",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Thanks for the follow! The host's confidence gave an approving nod.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

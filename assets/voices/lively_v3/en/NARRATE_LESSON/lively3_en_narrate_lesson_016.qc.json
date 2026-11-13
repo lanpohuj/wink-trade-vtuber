@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_016",
+  "sha256": "663731816babaa10236b07fc38d23b0433092908c2f94ca0c133812082282a9f",
+  "expected": "The market doesn't owe us polite continuation. No complaints book provided.",
+  "transcript": "The market doesn't owe us polite continuation. No complaints book provided.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.07994,
+    "peak": 0.3676,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "663731816babaa10236b07fc38d23b0433092908c2f94ca0c133812082282a9f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " The market doesn't owe us polite continuation. No complaints book provided."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

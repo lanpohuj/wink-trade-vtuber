@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_012",
+  "sha256": "8eabfba4107bad7cc4f997ebc142902af457732b8ab75a776fbfabd2af13066e",
+  "expected": "Bought after breakout and completed retest. Setup confirmed, outcome not yet.",
+  "transcript": "Bought after breakout and completed retest, set up confirmed. Outcome not yet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.07818,
+    "peak": 0.49111,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.108,
+    "sha256": "8eabfba4107bad7cc4f997ebc142902af457732b8ab75a776fbfabd2af13066e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Bought after breakout and completed retest, set up confirmed. Outcome not yet."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

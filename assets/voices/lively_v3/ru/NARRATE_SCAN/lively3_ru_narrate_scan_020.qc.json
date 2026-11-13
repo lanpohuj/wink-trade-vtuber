@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_020",
+  "sha256": "932bf02315231213713e5e32e0e313ce22a9bc1f1e63aa5eae99c4c2745e145f",
+  "expected": "Так, аргументы на стол. Одна харизма сегодня решение не протащит.",
+  "transcript": "Так, аргументы на стол. Одна харизма сегодня решение не протащит.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08171,
+    "peak": 0.36694,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.098,
+    "sha256": "932bf02315231213713e5e32e0e313ce22a9bc1f1e63aa5eae99c4c2745e145f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Так, аргументы на стол. Одна харизма сегодня решение не протащит."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

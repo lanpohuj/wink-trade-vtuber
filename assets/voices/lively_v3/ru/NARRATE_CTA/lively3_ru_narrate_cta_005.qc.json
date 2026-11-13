@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_005",
+  "sha256": "e58e99930d546274b5036948b1ceba6ac105affabf68869fbfcb1faefcd94442",
+  "expected": "Напоминаю про бота в профиле. Всё по шагам внутри, я там даже не перебиваю.",
+  "transcript": "Напоминаю, работа в профиле. Всё, по шагам внутри. Я там даже не перебиваю.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.06937,
+    "peak": 0.30167,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.132,
+    "sha256": "e58e99930d546274b5036948b1ceba6ac105affabf68869fbfcb1faefcd94442"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Напоминаю, работа в профиле."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Всё, по шагам внутри. Я там даже не перебиваю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_open_trade_put_011",
+  "sha256": "72dbd78a0fd3829c553813a92315e748c0c040d8ee200281c5ee1f9f8243b1ea",
+  "expected": "Вниз открыто по пробою с закрытым ретестом. Последовательность соблюдена, ждём.",
+  "transcript": "Вниз открыто по пробою с закрытым ретестом. Последовательность соблюдена. Ждём.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07183,
+    "peak": 0.41322,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.14,
+    "sha256": "72dbd78a0fd3829c553813a92315e748c0c040d8ee200281c5ee1f9f8243b1ea"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.68,
+      "text": " Вниз открыто по пробою с закрытым ретестом."
+    },
+    {
+      "start": 2.68,
+      "end": 4.32,
+      "text": " Последовательность соблюдена."
+    },
+    {
+      "start": 4.32,
+      "end": 5.0,
+      "text": " Ждём."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

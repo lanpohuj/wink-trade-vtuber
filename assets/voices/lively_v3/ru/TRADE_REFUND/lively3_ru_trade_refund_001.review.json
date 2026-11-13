@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_001",
+  "phrase_id": "lively3_ru_trade_refund_001",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Возврат ставки. Сегодня у сделки финал без победной музыки и грустных титров.",
+  "tts_text": "[conversational] Возврат ставки. Сегодня у сделки финал без победной музыки и грустных титров.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8533d17a5ed17827c9e5bddf08250d0076c8804d5e7c088640223e228ccf4968",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_refund_001",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_001.mp3",
+  "duration": 5.172125,
+  "sha256": "9e91f747047befe8cdff1e48a76b0fac57817db4cc38138e9d36f6114b236d22",
+  "request_payload": {
+    "text": "[conversational] Возврат ставки. Сегодня у сделки финал без победной музыки и грустных титров.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_025",
+  "sha256": "368366c82eaab56478efe5beafbbbd34fe2e78e4312130d44f33dd32fd7adca8",
+  "expected": "My bio's your signpost. Bot and access information are there.",
+  "transcript": "My bio's your signpost! BOT and access information are there!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.07862,
+    "peak": 0.33914,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.204,
+    "sha256": "368366c82eaab56478efe5beafbbbd34fe2e78e4312130d44f33dd32fd7adca8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " My bio's your signpost! BOT and access information are there!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

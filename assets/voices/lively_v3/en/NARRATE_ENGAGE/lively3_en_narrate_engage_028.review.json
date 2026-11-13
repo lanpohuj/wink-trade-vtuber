@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_028",
+  "phrase_id": "lively3_en_narrate_engage_028",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Calm vibes are allowed here. I never signed up for permanent maximum volume.",
+  "tts_text": "[natural, conversational] Calm vibes are allowed here. I never signed up for permanent maximum volume.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "50e10264c4258b1fad9a10bdd81e37d522df72697fb287d057cbda5b16af2afa",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_028",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_028.mp3",
+  "duration": 4.806438,
+  "sha256": "0a0b52dc8d47c13456d0f58060d32f33a6c34f9a0bb447782ecd03f42fc30e51",
+  "request_payload": {
+    "text": "[natural, conversational] Calm vibes are allowed here. I never signed up for permanent maximum volume.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

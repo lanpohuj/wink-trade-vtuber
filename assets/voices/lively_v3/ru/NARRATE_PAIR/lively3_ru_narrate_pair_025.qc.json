@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_025",
+  "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749",
+  "expected": "Пошли смотреть дальше. Новая пара ещё не повод говорить громче.",
+  "transcript": "Вошли смотреть дальше! Новая пара еще не повод говорить громче!",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08384,
+    "peak": 0.33553,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.085,
+    "sha256": "aee1065409dd14daae092e4f3dcce02d9bea782f86ca4321f66960bb4d936749"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Вошли смотреть дальше! Новая пара еще не повод говорить громче!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

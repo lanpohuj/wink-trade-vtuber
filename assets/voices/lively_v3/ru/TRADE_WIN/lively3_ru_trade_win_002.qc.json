@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_002",
+  "sha256": "c12592469782bd440a1df76e31231b46a9e4a1ed463491179c460f8f50593841",
+  "expected": "Есть плюс! Вот теперь мой довольный вид прошёл проверку фактами.",
+  "transcript": "Есть плюс! Вот теперь мой довольный вид прошел проверку фактами!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08025,
+    "peak": 0.34348,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.108,
+    "sha256": "c12592469782bd440a1df76e31231b46a9e4a1ed463491179c460f8f50593841"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Есть плюс! Вот теперь мой довольный вид прошел проверку фактами!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

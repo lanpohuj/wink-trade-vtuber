@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_035",
+  "phrase_id": "lively3_en_narrate_trade_035",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Clocks don't take persuasion. Shame; I'd have made quite the pitch.",
+  "tts_text": "[warm, relaxed] Clocks don't take persuasion. Shame; I'd have made quite the pitch.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "fd31bfbd328bc465a2ebb4c192e4da7b060725392f2e4d55829aa5350965bcab",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_035",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_035.mp3",
+  "duration": 4.728063,
+  "sha256": "eae7858a5860b7a48421153e27ed98fb176f50c5f365c320056c5d4ff64af210",
+  "request_payload": {
+    "text": "[warm, relaxed] Clocks don't take persuasion. Shame; I'd have made quite the pitch.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

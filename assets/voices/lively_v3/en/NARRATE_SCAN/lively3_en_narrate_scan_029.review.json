@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_029",
+  "phrase_id": "lively3_en_narrate_scan_029",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Putting the conditions together. Separately, they can be misleading little things.",
+  "tts_text": "[lightly playful, smiling] Putting the conditions together. Separately, they can be misleading little things.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "80956bd419078a019641af13e37fb09cfd58b69ff36ad9c371298df4fcfbb050",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_029",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_029.mp3",
+  "duration": 4.858688,
+  "sha256": "6e3cd78c594e3ff6d66be0e28c2702c43b740385096cf52e50029456137a1d42",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Putting the conditions together. Separately, they can be misleading little things.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

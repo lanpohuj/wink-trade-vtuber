@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_021",
+  "sha256": "b651da9a703028477024ec21a0d351bc3f1eb39c910cbfb9ed9a99098db9b1e8",
+  "expected": "Opened up on the confirmed range rejection. Setup named, outcome pending.",
+  "transcript": "Opened up on the confirmed range rejection set up named outcome pending",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08188,
+    "peak": 0.45237,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.28,
+    "sha256": "b651da9a703028477024ec21a0d351bc3f1eb39c910cbfb9ed9a99098db9b1e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.72,
+      "text": " Opened up on the confirmed range rejection set up named outcome pending"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

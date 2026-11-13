@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_019",
+  "sha256": "a239cb3ae7e41355c872a66dcd20c40eb9a7ebf981c3c0f059b2c3b5010134d8",
+  "expected": "Пробой с закрытым ретестом подтвердил сценарий вниз. Сделка открыта.",
+  "transcript": "Пробой с закрытым ретестом подтвердил сценарий вниз. Сделка открыта.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.336,
+    "rms": 0.08848,
+    "peak": 0.40329,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.136,
+    "sha256": "a239cb3ae7e41355c872a66dcd20c40eb9a7ebf981c3c0f059b2c3b5010134d8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Пробой с закрытым ретестом подтвердил сценарий вниз. Сделка открыта."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

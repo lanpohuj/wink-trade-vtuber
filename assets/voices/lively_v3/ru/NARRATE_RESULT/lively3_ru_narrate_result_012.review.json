@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_012",
+  "phrase_id": "lively3_ru_narrate_result_012",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Размер следующего шага двести сорок два. Это описание плана, не обещание результата.",
+  "tts_text": "[conversational] Размер следующего шага двести сорок два. Это описание плана, не обещание результата.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1aac1e9cf2f9a32dd50ff1b7d64c3547dad382702eaf85ca353c4a8a039ce0f0",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_012",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_012.mp3",
+  "duration": 5.433375,
+  "sha256": "7fe0cfaae291795451c7f4b551461fbe0bb5497ab21cf87b3a475fe7ddc697f3",
+  "request_payload": {
+    "text": "[conversational] Размер следующего шага двести сорок два. Это описание плана, не обещание результата.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

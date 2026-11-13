@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_006",
+  "sha256": "96634a476fc1a581d74c199a5cd9e79a5bbc03fd251fe742ac76b9845e95122b",
+  "expected": "Открытие вниз подтверждено. Идея — продолжение после отката, смотрим закрытие.",
+  "transcript": "Открытие вниз подтверждено. Идея продолжения после отката. Смотрим закрытие.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08071,
+    "peak": 0.37475,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.1,
+    "sha256": "96634a476fc1a581d74c199a5cd9e79a5bbc03fd251fe742ac76b9845e95122b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Открытие вниз подтверждено."
+    },
+    {
+      "start": 2.0,
+      "end": 5.5,
+      "text": " Идея продолжения после отката. Смотрим закрытие."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_019",
+  "phrase_id": "lively3_en_narrate_scan_019",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "A nice moment still needs reading properly. My filters have standards.",
+  "tts_text": "[warm, relaxed] A nice moment still needs reading properly. My filters have standards.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2926cf331dd7efc65e0a0f95dde71635e19d93a0d8797961bc917f085ff29793",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_019",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_019.mp3",
+  "duration": 4.545187,
+  "sha256": "8af172486aeef8dc4b3973d4f728f1e4054757d6e07aa5c1011b0280144b781c",
+  "request_payload": {
+    "text": "[warm, relaxed] A nice moment still needs reading properly. My filters have standards.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

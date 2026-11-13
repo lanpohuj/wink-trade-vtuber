@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_068",
+  "sha256": "cd4eba029c32d6f69e391a8fbf7b48a5a54d13a96a5f7a26e9ff0747b2e2c46a",
+  "expected": "Still loading. Almost enough time to make a coffee, but I'm staying here.",
+  "transcript": "Still loading almost enough time to make a coffee, but I'm staying here",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.10549,
+    "peak": 0.88886,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.064,
+    "sha256": "cd4eba029c32d6f69e391a8fbf7b48a5a54d13a96a5f7a26e9ff0747b2e2c46a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.1,
+      "text": " Still loading almost enough time to make a coffee, but I'm staying here"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

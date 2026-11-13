@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_trade_021",
+  "sha256": "b0dfc4fc16b1943a5db947db151f79b4564a3919be548993f39c99496161fb9b",
+  "expected": "Чатик, смотрим до конца. Красивый кадр посередине не заменяет закрытие.",
+  "transcript": "Хучатик, смотрим до конца! Красивый кадр посередине не заменяет закрытие!",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.09316,
+    "peak": 0.4307,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.109,
+    "sha256": "b0dfc4fc16b1943a5db947db151f79b4564a3919be548993f39c99496161fb9b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Хучатик, смотрим до конца!"
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Красивый кадр посередине не заменяет закрытие!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

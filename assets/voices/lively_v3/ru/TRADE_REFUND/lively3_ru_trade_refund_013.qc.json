@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_refund_013",
+  "sha256": "b63fd9181cb5bb80931027ae3d621b414ac13622002f6410bf8b1c03ab142235",
+  "expected": "Возврат подтверждён, чат. Результат называем своим именем, без приукрашивания.",
+  "transcript": "Возврат подтвержден чат. Результат называем своим именем без приукрашивания.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.07904,
+    "peak": 0.34628,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.078,
+    "sha256": "b63fd9181cb5bb80931027ae3d621b414ac13622002f6410bf8b1c03ab142235"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Возврат подтвержден чат."
+    },
+    {
+      "start": 2.0,
+      "end": 5.2,
+      "text": " Результат называем своим именем без приукрашивания."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

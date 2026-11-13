@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_018",
+  "sha256": "dfc97d9646625600d16d57a30cad8de2a381455af052ed8f6c53ef29bc2904ed",
+  "expected": "By the way, my bio isn't purely decorative. There's a bot and instructions there.",
+  "transcript": "By the way, my bio isn't purely decorative. There's a bot in instructions there.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08185,
+    "peak": 0.37486,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.191,
+    "sha256": "dfc97d9646625600d16d57a30cad8de2a381455af052ed8f6c53ef29bc2904ed"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " By the way, my bio isn't purely decorative. There's a bot in instructions there."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

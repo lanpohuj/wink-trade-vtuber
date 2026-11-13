@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_017",
+  "phrase_id": "lively3_en_narrate_engage_017",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Tea or coffee, chat? More serious than several of my introductions.",
+  "tts_text": "[lightly playful, smiling] Tea or coffee, chat? More serious than several of my introductions.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "562b861c51d2cd6cee6d291dfca603d90fa2a266f9bc10aa2d40ad84065545a9",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_017",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_017.mp3",
+  "duration": 4.466875,
+  "sha256": "25f73e41fd528324b77919fad77b9c1b18096c1e2b6df2a9303b66c68e55136d",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Tea or coffee, chat? More serious than several of my introductions.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

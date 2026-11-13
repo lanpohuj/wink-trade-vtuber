@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_056",
+  "sha256": "ae48ee170328fa25c901743a979da6eb88e09c79ffd8b8f06972efab511a2f27",
+  "expected": "Filtering ideas. Some sound excellent right up until you check them.",
+  "transcript": "Filtering ideas. Some sound excellent right up until you check them.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08237,
+    "peak": 0.41847,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.28,
+    "trailing_silence": 0.212,
+    "sha256": "ae48ee170328fa25c901743a979da6eb88e09c79ffd8b8f06972efab511a2f27"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Filtering ideas. Some sound excellent right up until you check them."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

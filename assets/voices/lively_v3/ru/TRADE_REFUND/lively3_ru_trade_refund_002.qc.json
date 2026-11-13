@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_002",
+  "sha256": "72b299ffb88d488cd6b63fbe65ef10980e806415ffaf38a55a1c03100538b055",
+  "expected": "Вернулась ставка, чат. Это возврат, корону победителя не достаём.",
+  "transcript": "Вернулась ставка, Чат. Это возврат корону победителя не достаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.07689,
+    "peak": 0.30852,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "72b299ffb88d488cd6b63fbe65ef10980e806415ffaf38a55a1c03100538b055"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Вернулась ставка, Чат. Это возврат корону победителя не достаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

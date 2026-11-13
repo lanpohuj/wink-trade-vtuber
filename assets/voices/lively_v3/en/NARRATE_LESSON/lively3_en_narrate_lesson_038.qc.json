@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_038",
+  "sha256": "0a4e757d8d4e9c338ed5ee1364a6f15adf1ec4f06d8e91a127116b277122194f",
+  "expected": "I'm not calling something a strategy just because it worked once.",
+  "transcript": "I'm not calling something a strategy just because it worked once.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07574,
+    "peak": 0.40571,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.114,
+    "sha256": "0a4e757d8d4e9c338ed5ee1364a6f15adf1ec4f06d8e91a127116b277122194f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " I'm not calling something a strategy just because it worked once."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

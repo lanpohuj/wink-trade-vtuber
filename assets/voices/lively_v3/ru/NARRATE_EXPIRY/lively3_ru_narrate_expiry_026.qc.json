@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_026",
+  "sha256": "8c2d7b1edfcb915763dabd9ebcbe8ee6725780e38d07ab63a5567a5305094c93",
+  "expected": "Выбраны две минуты. Это срок сделки, а не обещание результата.",
+  "transcript": "Выбрана две минуты. Это срок сделки, а не обещание результата.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.07882,
+    "peak": 0.32191,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.112,
+    "sha256": "8c2d7b1edfcb915763dabd9ebcbe8ee6725780e38d07ab63a5567a5305094c93"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Выбрана две минуты. Это срок сделки, а не обещание результата."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

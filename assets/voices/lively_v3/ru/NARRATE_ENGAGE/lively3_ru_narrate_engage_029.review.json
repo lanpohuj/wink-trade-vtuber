@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_029",
+  "phrase_id": "lively3_ru_narrate_engage_029",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Кто любит понятные объяснения без пафоса, вы по адресу. Пафос иногда прорывается случайно.",
+  "tts_text": "[conversational] Кто любит понятные объяснения без пафоса, вы по адресу. Пафос иногда прорывается случайно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a83acde0da2bc1738404f9387afc6c108725d6cb2483d2c7a666bc3a9affa7f4",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_029",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_029.mp3",
+  "duration": 5.72075,
+  "sha256": "d4c3d9f2654de7cdfa7ace9235dd4ea2ed178b84d21c493dbdb7b66bc2de301a",
+  "request_payload": {
+    "text": "[conversational] Кто любит понятные объяснения без пафоса, вы по адресу. Пафос иногда прорывается случайно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

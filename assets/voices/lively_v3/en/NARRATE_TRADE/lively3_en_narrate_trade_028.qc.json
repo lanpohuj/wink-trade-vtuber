@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_028",
+  "sha256": "c705a3843b784f850a300790a5155329fac6cb099c332eaeaeaf835732b43bd7",
+  "expected": "Hands off the buttons, chat. We're already in; extra spam won't help.",
+  "transcript": "Hands off the buttons chat. We're already in extra spam won't help",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.07805,
+    "peak": 0.37338,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.127,
+    "sha256": "c705a3843b784f850a300790a5155329fac6cb099c332eaeaeaf835732b43bd7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Hands off the buttons chat. We're already in extra spam won't help"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_017",
+  "sha256": "25f73e41fd528324b77919fad77b9c1b18096c1e2b6df2a9303b66c68e55136d",
+  "expected": "Tea or coffee, chat? More serious than several of my introductions.",
+  "transcript": "Tea or coffee chat? More serious than several of my introductions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.08122,
+    "peak": 0.38923,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.287,
+    "sha256": "25f73e41fd528324b77919fad77b9c1b18096c1e2b6df2a9303b66c68e55136d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Tea or coffee chat? More serious than several of my introductions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

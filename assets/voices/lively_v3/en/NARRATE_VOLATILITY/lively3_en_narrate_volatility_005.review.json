@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_005",
+  "phrase_id": "lively3_en_narrate_volatility_005",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Data shows increased volatility. I didn't simply decide to speak louder.",
+  "tts_text": "[lightly playful, smiling] Data shows increased volatility. I didn't simply decide to speak louder.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cc070b851822e12fcac5a73bf36cb2357e73556840d439ac7325c2b011d925d6",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_005",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_005.mp3",
+  "duration": 4.858688,
+  "sha256": "b9425ae5ddb753009d7130beff73e3e849f33c11c0c91fcab1462d5b5251abcd",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Data shows increased volatility. I didn't simply decide to speak louder.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

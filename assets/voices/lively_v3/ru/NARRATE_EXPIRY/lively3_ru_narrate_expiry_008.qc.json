@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_expiry_008",
+  "sha256": "819f0a8e8a840835876a96477cbf8c6b10e09d4d2414d5721cba11320b16dbc2",
+  "expected": "Пятнадцать секунд — такое здесь окно. Пафос оставлю для более длинного жанра.",
+  "transcript": "15 секунд! Такое здесь окно! Пафа, составлю для более длинного жанра!",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08875,
+    "peak": 0.41646,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.062,
+    "sha256": "819f0a8e8a840835876a96477cbf8c6b10e09d4d2414d5721cba11320b16dbc2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "text": " 15 секунд! Такое здесь окно!"
+    },
+    {
+      "start": 2.5,
+      "end": 5.0,
+      "text": " Пафа, составлю для более длинного жанра!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

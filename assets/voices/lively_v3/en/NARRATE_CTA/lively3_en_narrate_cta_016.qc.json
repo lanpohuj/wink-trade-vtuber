@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_narrate_cta_016",
+  "sha256": "d1bd2e6a218278ca294d713c02cb872fd4e67dd5eadad7d4f7b7695252283768",
+  "expected": "Remember the route: bio, then bot. Saves a little chat archaeology later.",
+  "transcript": "Remember the root. Bio, then bot. Saves a little chat archaeology later.",
+  "similarity": 0.974,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08577,
+    "peak": 0.48034,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.132,
+    "sha256": "d1bd2e6a218278ca294d713c02cb872fd4e67dd5eadad7d4f7b7695252283768"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.2,
+      "text": " Remember the root. Bio, then bot."
+    },
+    {
+      "start": 3.2,
+      "end": 5.5,
+      "text": " Saves a little chat archaeology later."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

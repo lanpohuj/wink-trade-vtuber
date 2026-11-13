@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_009",
+  "phrase_id": "lively3_ru_narrate_cta_009",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+  "tts_text": "[conversational] Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3ff3dae12bd51bdb16b86268d5377fbbaf6c1acc4c6d6e825b83217c07eee688",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_009",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_009.mp3",
+  "duration": 5.694625,
+  "sha256": "5e92b29b546fc9761480ea9426563acb1b43c6c9c72e9ad8bd43b74048d4e22a",
+  "request_payload": {
+    "text": "[conversational] Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

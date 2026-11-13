@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_012",
+  "phrase_id": "lively3_en_trade_refund_012",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refunded close. A breath will do; no emotional press conference.",
+  "tts_text": "[natural, conversational] Refunded close. A breath will do; no emotional press conference.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0811c4a9169279a05ffd6edbdfdcfa58db72db80f4c2807c9b70a3fc340b9d80",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_012",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_012.mp3",
+  "duration": 4.649687,
+  "sha256": "8b9c40256a732d1148726e7e401135f4a36432980212d0fdd62765f0d385dec8",
+  "request_payload": {
+    "text": "[natural, conversational] Refunded close. A breath will do; no emotional press conference.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

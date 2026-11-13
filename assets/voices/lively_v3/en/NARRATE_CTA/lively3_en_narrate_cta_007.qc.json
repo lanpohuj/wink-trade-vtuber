@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_007",
+  "sha256": "46c96b020adc447d990777f3a6d05d3b660b86ec391e03548bf1433087861c17",
+  "expected": "New here? Bot link's in my bio. Check the access requirements inside.",
+  "transcript": "New here, bought links in my bio, check the access requirements inside.",
+  "similarity": 0.973,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08202,
+    "peak": 0.39384,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.162,
+    "sha256": "46c96b020adc447d990777f3a6d05d3b660b86ec391e03548bf1433087861c17"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " New here, bought links in my bio, check the access requirements inside."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

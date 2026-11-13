@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_027",
+  "sha256": "f8d0d3fdf2d71e8d5c773cbd543ec201285afee7b45eaa6ead83b563ebe5e0f8",
+  "expected": "Вайб дня иногда хочется просто перезагрузить. Желательно без установки обновлений.",
+  "transcript": "Ваеб дня иногда хочется просто перезагрузить, желательно без установки обновлений.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08408,
+    "peak": 0.29826,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.089,
+    "sha256": "f8d0d3fdf2d71e8d5c773cbd543ec201285afee7b45eaa6ead83b563ebe5e0f8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Ваеб дня иногда хочется просто перезагрузить, желательно без установки обновлений."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

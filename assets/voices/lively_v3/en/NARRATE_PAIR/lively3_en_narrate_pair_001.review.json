@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_001",
+  "phrase_id": "lively3_en_narrate_pair_001",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New pair, fresh page. Previous impressions stay outside.",
+  "tts_text": "[lightly playful, smiling] New pair, fresh page. Previous impressions stay outside.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aedc66514e485d68afb0edaeab66f6361fb3d3dba0a413b455272458d54c6024",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_001",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_001.mp3",
+  "duration": 4.362375,
+  "sha256": "b3c790d84d9a657e84f51e915f3b90d770e76f1f5eb6fa01354da12db4681a51",
+  "request_payload": {
+    "text": "[lightly playful, smiling] New pair, fresh page. Previous impressions stay outside.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

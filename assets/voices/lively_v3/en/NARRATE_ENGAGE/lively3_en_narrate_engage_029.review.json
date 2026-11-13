@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_029",
+  "phrase_id": "lively3_en_narrate_engage_029",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Clear explanations without the theatre? Right place. Occasional theatre may escape.",
+  "tts_text": "[lightly playful, smiling] Clear explanations without the theatre? Right place. Occasional theatre may escape.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f74cad60588d8b18fd9aa387c5a16dfe39875df7705d61cb1e99acb8ccd22ebe",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_029",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_029.mp3",
+  "duration": 5.642375,
+  "sha256": "781ea4ae9f0b7dbcd5ed9b31d2f6fff35652d1eba93178b3bf815569637c3323",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Clear explanations without the theatre? Right place. Occasional theatre may escape.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

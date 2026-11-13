@@ -1,0 +1,14 @@
+{
+  "wait_03": {
+    "id": "wait_03",
+    "source_sha256": "f05ccf0e32638a17a06e5aa71ad01f0b1e2203571d48f52dae97d0818922f523",
+    "file": "assets/voices/lively_retakes/ru/wait_03-2b69a6034687.mp3",
+    "sha256": "2b69a603468719f45eba465b47d9707dc90596e5e91b4e3ad60a822296a421ab",
+    "text": "Сделка ещё идёт. Смотрим спокойно, до закрытия не будем загадывать.",
+    "transcript": "Сделка ещё идёт. Смотрим спокойно. До закрытия не будем загадывать.",
+    "duration": 4.598,
+    "accepted": true,
+    "listened": true,
+    "automatic_qc_passed": true
+  }
+}

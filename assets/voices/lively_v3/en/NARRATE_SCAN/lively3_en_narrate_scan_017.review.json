@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_017",
+  "phrase_id": "lively3_en_narrate_scan_017",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.",
+  "tts_text": "[casual] Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0e6449740c3c97c0f61ce80093c0f5fc172ffe2a701878b570bf4ae8cda608a0",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_017",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_017.mp3",
+  "duration": 5.172125,
+  "sha256": "0787994b5d850b08de7833f81d2e449ef578ae7f71b585917814dccb7eec1725",
+  "request_payload": {
+    "text": "[casual] Not lagging, just thinking. Less glamorous than I'd hoped, but here we are.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

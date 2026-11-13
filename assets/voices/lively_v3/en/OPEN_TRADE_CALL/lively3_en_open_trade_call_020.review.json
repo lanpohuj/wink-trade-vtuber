@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_call_020",
+  "phrase_id": "lively3_en_open_trade_call_020",
+  "lang": "en",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Entered up after the completed retest. Breakout checked; watching the trade now.",
+  "tts_text": "[clear, conversational] Entered up after the completed retest. Breakout checked; watching the trade now.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3d913af2c34a6488fb35c450a558ba28e32c6efc9ee6c4c6752f4eed2ec541f5",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_call_020",
+  "file": "en/OPEN_TRADE_CALL/lively3_en_open_trade_call_020.mp3",
+  "duration": 5.172125,
+  "sha256": "bd8a2c58ffb3d914a21a56ccd6c4d55a28efe5e5022819938b473e0f127f1ad3",
+  "request_payload": {
+    "text": "[clear, conversational] Entered up after the completed retest. Breakout checked; watching the trade now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

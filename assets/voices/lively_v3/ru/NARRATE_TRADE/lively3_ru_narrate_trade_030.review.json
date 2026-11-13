@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_030",
+  "phrase_id": "lively3_ru_narrate_trade_030",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Результат объявлю по факту. Мне хватает драматургии без выдуманных спойлеров.",
+  "tts_text": "[conversational] Результат объявлю по факту. Мне хватает драматургии без выдуманных спойлеров.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2ccf0bf5e4dc1b5cbfefbcabd87a53e25f2ce28ab77c543fecb6c1d6a4c63f16",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_030",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_030.mp3",
+  "duration": 4.414625,
+  "sha256": "bca45ff9647df7aa669a4d0f9bd021c982c2f33cf6cd304e1ffeb0aab6f361bd",
+  "request_payload": {
+    "text": "[conversational] Результат объявлю по факту. Мне хватает драматургии без выдуманных спойлеров.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

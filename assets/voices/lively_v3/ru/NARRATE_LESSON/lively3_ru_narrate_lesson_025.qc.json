@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_025",
+  "sha256": "a89076fa7e5f4b66b57d4db69d2e51f4aa7979d9c084399236782b860067dc63",
+  "expected": "Спокойно ошибиться тоже можно. Но хотя бы без тильта и лишних решений следом.",
+  "transcript": "Спокойно ошибиться тоже можно, но хотя бы без тиль, то и лишних решений следом.",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.08892,
+    "peak": 0.70629,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.1,
+    "sha256": "a89076fa7e5f4b66b57d4db69d2e51f4aa7979d9c084399236782b860067dc63"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Спокойно ошибиться тоже можно, но хотя бы без тиль, то и лишних решений следом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_022",
+  "sha256": "b2162e3ea50ca71b8bb9640e8104c17f0fc5c55811a9c275f9640c064887c85d",
+  "expected": "Сделка в процессе. Моя привычка комментировать всё тоже, но держится прилично.",
+  "transcript": "Сделка в процессе. Моя привычка комментировать всё тоже, но держится прилично.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08231,
+    "peak": 0.35922,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.081,
+    "sha256": "b2162e3ea50ca71b8bb9640e8104c17f0fc5c55811a9c275f9640c064887c85d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.68,
+      "text": " Сделка в процессе. Моя привычка комментировать всё тоже, но держится прилично."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

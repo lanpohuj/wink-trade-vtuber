@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_018",
+  "phrase_id": "lively3_en_chat_reaction_018",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Support noticed, thank you! The pleased smile is entirely intentional.",
+  "tts_text": "[gently sarcastic, conversational] Support noticed, thank you! The pleased smile is entirely intentional.",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e4a080e0f67d39abc895105f9793ef9264c2672d591cef4c5e85a856297eabab",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_018",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_018.mp3",
+  "duration": 5.041563,
+  "sha256": "2e519b0bad7e768c2cd7876e48db770d32e6a1f8fbc1c11e1c53b69dd67ca9f7",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Support noticed, thank you! The pleased smile is entirely intentional.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

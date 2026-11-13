@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_003",
+  "sha256": "b701a0dab25d1ad9ad4b651db357f2b2aa411bb7b5fccb4bad9f35b24d758744",
+  "expected": "Closed green. Small celebration, no claim that I've solved the universe.",
+  "transcript": "Closed green small celebration no claim that I've solved the universe",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08011,
+    "peak": 0.36194,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.212,
+    "sha256": "b701a0dab25d1ad9ad4b651db357f2b2aa411bb7b5fccb4bad9f35b24d758744"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.76,
+      "text": " Closed green small celebration no claim that I've solved the universe"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

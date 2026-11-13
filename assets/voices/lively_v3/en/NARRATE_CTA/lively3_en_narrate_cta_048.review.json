@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_048",
+  "phrase_id": "lively3_en_narrate_cta_048",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Been meaning to check the bot? Same route: my bio. Read the conditions inside.",
+  "tts_text": "[natural, conversational] Been meaning to check the bot? Same route: my bio. Read the conditions inside.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3d4575ed7cbe1a31d2e8b114e4551d45066e560c38a4071c560523d4c174710a",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_048",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_048.mp3",
+  "duration": 5.172125,
+  "sha256": "18afaf248066544812879215f336aeebad915fd400790573a864acdd9c07db7e",
+  "request_payload": {
+    "text": "[natural, conversational] Been meaning to check the bot? Same route: my bio. Read the conditions inside.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

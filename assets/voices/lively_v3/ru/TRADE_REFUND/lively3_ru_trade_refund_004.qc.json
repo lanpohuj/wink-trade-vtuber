@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_004",
+  "sha256": "8002c9013b8c135f2c971bfb04249a56fbdf5a7dc499c412027ba382d8fb02e7",
+  "expected": "Возврат подтверждён. Никаких лишних плюсов в историю не дорисовываем.",
+  "transcript": "Возврать подтверждён. Никаких лишних плюсов в историю не дорисовываем.",
+  "similarity": 0.992,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08802,
+    "peak": 0.36979,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "8002c9013b8c135f2c971bfb04249a56fbdf5a7dc499c412027ba382d8fb02e7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Возврать подтверждён. Никаких лишних плюсов в историю не дорисовываем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

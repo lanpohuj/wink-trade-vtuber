@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_017",
+  "sha256": "3c3fa1b3ec0100ce35bfdf074c6144fe64f8fe7db1e8bc1cde884af45cf3c184",
+  "expected": "Different pair, same principle: understand first, decide second.",
+  "transcript": "Different pair, same principle. Understand first, decide second.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07858,
+    "peak": 0.45812,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.232,
+    "sha256": "3c3fa1b3ec0100ce35bfdf074c6144fe64f8fe7db1e8bc1cde884af45cf3c184"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Different pair, same principle. Understand first, decide second."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_046",
+  "sha256": "43058f44fdcb4be06d21ca325a0d7ac15e5ee4cb34d02f900ae6a9e46b20dd9c",
+  "expected": "Бот в профиле — для инструментов и шагов. Я здесь — для разбора и сомнительных шуток.",
+  "transcript": "Вот в профиле для инструментов и шагов. Я здесь для разбора и сомнительных шуток.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08363,
+    "peak": 0.36351,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.076,
+    "sha256": "43058f44fdcb4be06d21ca325a0d7ac15e5ee4cb34d02f900ae6a9e46b20dd9c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Вот в профиле для инструментов и шагов."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Я здесь для разбора и сомнительных шуток."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

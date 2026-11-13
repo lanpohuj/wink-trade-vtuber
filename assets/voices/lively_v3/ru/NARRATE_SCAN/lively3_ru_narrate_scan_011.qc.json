@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_011",
+  "sha256": "2b2a93b20b485a60dcee329dae3a9594977f972d624aa9a9850108cb6714001b",
+  "expected": "Одна деталь ещё не вся картина. У пазла тоже есть остальные кусочки.",
+  "transcript": "Одна деталь еще не вся картина. У Пазла тоже есть остальные кусочки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08946,
+    "peak": 0.4105,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.065,
+    "sha256": "2b2a93b20b485a60dcee329dae3a9594977f972d624aa9a9850108cb6714001b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Одна деталь еще не вся картина."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " У Пазла тоже есть остальные кусочки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

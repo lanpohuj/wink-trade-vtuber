@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_001",
+  "phrase_id": "lively3_en_narrate_expiry_001",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Fifteen seconds here. Short format; no half-hour speech from me.",
+  "tts_text": "[clear, conversational] Fifteen seconds here. Short format; no half-hour speech from me.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e2f7c689d2cb562dea09339f74efb62d763ca323691c129a0b5aeabbb3f53ab9",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_001",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_001.mp3",
+  "duration": 4.153375,
+  "sha256": "dd7b618d19b4ce4f2514bcdfa8fcef825f3ff6a783b886368bf890bf2754534a",
+  "request_payload": {
+    "text": "[clear, conversational] Fifteen seconds here. Short format; no half-hour speech from me.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

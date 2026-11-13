@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_007",
+  "sha256": "201de12a42089ed497332b2f8d2a5568ceec661e25f0eb970c3dc0c082b8b45e",
+  "expected": "Выбран срок пятнадцать секунд. Дальние прогнозы к нему не прилагаются.",
+  "transcript": "Выбран срок 15 секунд. Дальние прогнозы к нему не прилагаются.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.0804,
+    "peak": 0.32666,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "201de12a42089ed497332b2f8d2a5568ceec661e25f0eb970c3dc0c082b8b45e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Выбран срок 15 секунд. Дальние прогнозы к нему не прилагаются."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

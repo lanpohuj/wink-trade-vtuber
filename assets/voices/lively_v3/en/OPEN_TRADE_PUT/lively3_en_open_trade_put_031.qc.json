@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_031",
+  "sha256": "f541e04f21e060e99798fa5ed40ba402b646c9cea0f03cd57d732a26e7d8c693",
+  "expected": "Opened down on confirmed local reversal. Not declaring a chart apocalypse.",
+  "transcript": "Open down on confirmed local reversal not declaring a chart apocalypse",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08067,
+    "peak": 0.39386,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.202,
+    "sha256": "f541e04f21e060e99798fa5ed40ba402b646c9cea0f03cd57d732a26e7d8c693"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.68,
+      "text": " Open down on confirmed local reversal not declaring a chart apocalypse"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

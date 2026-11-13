@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_044",
+  "phrase_id": "lively3_ru_narrate_scan_044",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Посмотреть и не нажать — тоже вариант, прикиньте. Контент от этого не сломается.",
+  "tts_text": "[conversational] Посмотреть и не нажать — тоже вариант, прикиньте. Контент от этого не сломается.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d305a4dfe3ad908ddf822f93aec359c1f4b1f5968de2cb981c401ef0c073c250",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_044",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_044.mp3",
+  "duration": 5.172125,
+  "sha256": "ec864801c78df57a426adda3bc36ab1771cf15b3082d70ae2edbbb50c97291df",
+  "request_payload": {
+    "text": "[conversational] Посмотреть и не нажать — тоже вариант, прикиньте. Контент от этого не сломается.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

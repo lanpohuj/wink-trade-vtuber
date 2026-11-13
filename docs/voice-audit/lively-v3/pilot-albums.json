@@ -1,8 +1,8 @@
 [
   {
     "lang": "ru",
-    "file": "docs/voice-audit/lively-v3/pilot-ru-c2ba606b.mp3",
-    "sha256": "ca013319ac30600a5bffb3be6317a730d519b3b1e82bd07cdc8e4a152b1e33f1",
+    "file": "docs/voice-audit/lively-v3/pilot-ru-055a9824.wav",
+    "sha256": "a630c51d0ec90512682c6262cfe1cf45a894ee3012aeba48d0f6d402c727ff71",
     "records": [
       {
         "id": "lively3_ru_narrate_engage_001",
@@ -11,8 +11,8 @@
       },
       {
         "id": "lively3_ru_narrate_scan_001",
-        "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed",
-        "text": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну."
+        "sha256": "5ce5ad29b82a959a155f8b8dc17a2b2ae79027b7780737e094fb88f118c736ba",
+        "text": "Не, секунду. Я сначала всю картинку проверю, а потом уже решим с входом."
       },
       {
         "id": "lively3_ru_narrate_cta_001",
@@ -38,8 +38,8 @@
   },
   {
     "lang": "en",
-    "file": "docs/voice-audit/lively-v3/pilot-en-83c91075.mp3",
-    "sha256": "bef5d5ae494266d4b33852f2524bf1945799b3d87737ec5162a91ced43d05c25",
+    "file": "docs/voice-audit/lively-v3/pilot-en-83c91075.wav",
+    "sha256": "64d68aa0e7a9f949348dc4fa514b211286faf1407508a939ae8f3fcf5cae9872",
     "records": [
       {
         "id": "lively3_en_narrate_engage_001",

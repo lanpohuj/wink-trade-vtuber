@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_030",
+  "sha256": "b40dc49fbdecd9dea8d4eb11b20ea82e232e60326ea70949d15aee631ef0cd89",
+  "expected": "Если хочется посмотреть инструменты поближе, маршрут начинается в шапке профиля. Там бот.",
+  "transcript": "Если хочется посмотреть инструменты поближе, маршрут начинается в шапке профиля. Там бот.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.956,
+    "rms": 0.08172,
+    "peak": 0.34677,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.136,
+    "sha256": "b40dc49fbdecd9dea8d4eb11b20ea82e232e60326ea70949d15aee631ef0cd89"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Если хочется посмотреть инструменты поближе, маршрут начинается в шапке профиля."
+    },
+    {
+      "start": 5.0,
+      "end": 6.0,
+      "text": " Там бот."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_019",
+  "sha256": "35c313078e3e1e9d997c2febf2752098d895695af88793a5bf9062e7fde5e405",
+  "expected": "Near the boundary, but the close was a loss. Stating the actual outcome.",
+  "transcript": "Near the boundary, but the close was a loss stating the actual outcome",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.07572,
+    "peak": 0.37035,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.231,
+    "sha256": "35c313078e3e1e9d997c2febf2752098d895695af88793a5bf9062e7fde5e405"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " Near the boundary, but the close was a loss stating the actual outcome"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

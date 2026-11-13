@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_scan_068",
+  "phrase_id": "lively3_en_narrate_scan_068",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Still loading. Almost enough time to make a coffee, but I'm staying here.",
+  "tts_text": "[casual] Still loading. Almost enough time to make a coffee, but I'm staying here.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f3e9fbc6f44bd7c73551a6fdf9a521312bfe9835c797cd3eb740e8b551567fc0",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_068",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_068.mp3",
+  "duration": 4.284,
+  "sha256": "cd4eba029c32d6f69e391a8fbf7b48a5a54d13a96a5f7a26e9ff0747b2e2c46a",
+  "request_payload": {
+    "text": "[casual] Still loading. Almost enough time to make a coffee, but I'm staying here.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

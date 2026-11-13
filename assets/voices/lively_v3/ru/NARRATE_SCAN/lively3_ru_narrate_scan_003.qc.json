@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_003",
+  "sha256": "2d44dd006d7910715ae20bc443bfc1c29a8259f1e01536c598d5cd1d5407a787",
+  "expected": "Так, картинку чекнула. Теперь бы понять, что здесь вообще по делу.",
+  "transcript": "Так, картинку чекнула. Теперь бы понять, что здесь вообще по делу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.0821,
+    "peak": 0.35156,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.128,
+    "sha256": "2d44dd006d7910715ae20bc443bfc1c29a8259f1e01536c598d5cd1d5407a787"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Так, картинку чекнула. Теперь бы понять, что здесь вообще по делу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

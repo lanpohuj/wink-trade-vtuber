@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_019",
+  "sha256": "a05a5deabbb34b7766c3fd1cdd8821da6498e00ffa1421c19938c37218a2e472",
+  "expected": "Red close recorded. Clear head first, next checks second.",
+  "transcript": "Red close recorded. Clear head first. Next check second.",
+  "similarity": 0.989,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.06692,
+    "peak": 0.39436,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.125,
+    "sha256": "a05a5deabbb34b7766c3fd1cdd8821da6498e00ffa1421c19938c37218a2e472"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Red close recorded. Clear head first. Next check second."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

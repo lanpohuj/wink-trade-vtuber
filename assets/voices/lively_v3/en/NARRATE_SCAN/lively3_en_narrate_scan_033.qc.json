@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_033",
+  "sha256": "cae7de91aff4be1f8b89de4ec0b8e45a865b6d6206ca04b2a95af7d5ad98a945",
+  "expected": "No spoilers, chat. Let's see what actually comes together.",
+  "transcript": "No spoilers, chat. Let's see what actually comes together.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.709,
+    "rms": 0.07867,
+    "peak": 0.35439,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "cae7de91aff4be1f8b89de4ec0b8e45a865b6d6206ca04b2a95af7d5ad98a945"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " No spoilers, chat. Let's see what actually comes together."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

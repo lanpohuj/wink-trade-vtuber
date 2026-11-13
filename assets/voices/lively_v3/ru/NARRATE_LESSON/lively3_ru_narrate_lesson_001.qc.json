@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_001",
+  "sha256": "0666b785b6323cf14abe44bd42749efef3476725acf70a5421b16b6a09b2c479",
+  "expected": "Красивое объяснение не определяет результат. Это неприятно, зато честно.",
+  "transcript": "Красивое объяснение не определяет результат! Это неприятно, зато честно!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.09233,
+    "peak": 0.37975,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.117,
+    "sha256": "0666b785b6323cf14abe44bd42749efef3476725acf70a5421b16b6a09b2c479"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Красивое объяснение не определяет результат!"
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 4.76,
+      "text": " Это неприятно, зато честно!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

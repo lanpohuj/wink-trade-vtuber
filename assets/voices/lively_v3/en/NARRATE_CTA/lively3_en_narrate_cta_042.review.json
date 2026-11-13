@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_042",
+  "phrase_id": "lively3_en_narrate_cta_042",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "If you lose your way after the stream, remember my profile. The bot link stays there.",
+  "tts_text": "[gently sarcastic, conversational] If you lose your way after the stream, remember my profile. The bot link stays there.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3ba8faf9d49ea1d42b96873a4ff8986c4f118fa89f9a6669643146c9a5ec8e8e",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_042",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_042.mp3",
+  "duration": 4.910938,
+  "sha256": "e3625b83f619c0aa82eebc81ef7036817ba3a3e9f90f30bb11af3d9c13c4ee17",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] If you lose your way after the stream, remember my profile. The bot link stays there.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

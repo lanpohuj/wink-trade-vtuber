@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_015",
+  "phrase_id": "lively3_ru_narrate_pair_015",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
+  "tts_text": "[conversational] Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9dd48ac2c1e258d782b262fc8ce3be7916a125fe8101f2e7d4bbc7ee090f13b3",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_015",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_015.mp3",
+  "duration": 4.858688,
+  "sha256": "fa8ed498072e0c9bdd941574ffad56c58bb8a3097ec6fbd076f823c921486dae",
+  "request_payload": {
+    "text": "[conversational] Чекнем эту пару. Пока без любви с первого взгляда, у меня уже был такой опыт.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

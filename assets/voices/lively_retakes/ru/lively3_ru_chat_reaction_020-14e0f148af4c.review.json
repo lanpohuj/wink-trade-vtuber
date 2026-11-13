@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_chat_reaction_020",
+  "phrase_id": "lively3_ru_chat_reaction_020",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "О, сердечки долетели. Всё, я довольная. Спасибо, что вы со мной.",
+  "tts_text": "[conversational] О, сердечки долетели. Всё, я довольная. Спасибо, что вы со мной.",
+  "conditions": {
+    "chat_kind": "like"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "053a7e74aefb19334757efcc0ccf846d6975b03dba65843d85a0540e060adb60",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_020",
+  "file": "assets/voices/lively_retakes/ru/lively3_ru_chat_reaction_020-14e0f148af4c.mp3",
+  "duration": 5.067687,
+  "sha256": "14e0f148af4c91f2e5917fa8a5aba3190e00f86e104ead0b2bf666b0ec5f721e",
+  "request_payload": {
+    "text": "[conversational] О, сердечки долетели. Всё, я довольная. Спасибо, что вы со мной.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false,
+  "requires_listening": false,
+  "transcript": "Сердечки долетели, спасибо! Сыркастичные ведущие тоже бывают расстроганной.",
+  "automatic_qc_passed": false
+}

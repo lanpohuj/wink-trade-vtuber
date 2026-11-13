@@ -1,0 +1,31 @@
+{
+  "id": "lively3_en_open_trade_put_028",
+  "sha256": "11b2909d476d1cdc4517e376edf673b294e329db3ccfe713218a6f01f7070822",
+  "expected": "Boundary rejection gave a confirmed down setup. Opening's recorded.",
+  "transcript": "Boundary rejection gave a confirmed down setup. Openings recorded.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.075,
+    "rms": 0.07852,
+    "peak": 0.3866,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.175,
+    "sha256": "11b2909d476d1cdc4517e376edf673b294e329db3ccfe713218a6f01f7070822"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Boundary rejection gave a confirmed down setup."
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 4.0,
+      "text": " Openings recorded."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

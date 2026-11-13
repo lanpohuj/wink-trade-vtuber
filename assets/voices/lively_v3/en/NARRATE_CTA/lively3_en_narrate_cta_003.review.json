@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_003",
+  "phrase_id": "lively3_en_narrate_cta_003",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Need the bot? Bio link. Tiny side quest, honestly.",
+  "tts_text": "[casual] Need the bot? Bio link. Tiny side quest, honestly.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f9a2806d15fcce898b11df6acecc563aa55bbd84266e3e099cfcad9335390cc4",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_003",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_003.mp3",
+  "duration": 4.519125,
+  "sha256": "79321dadd1dc521d5f4d62503fd50c124dbbc1e53406f4d40432a5b7a65c9d4f",
+  "request_payload": {
+    "text": "[casual] Need the bot? Bio link. Tiny side quest, honestly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

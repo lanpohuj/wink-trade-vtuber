@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_009",
+  "phrase_id": "lively3_ru_narrate_scan_009",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Чат, я чуть подушню с проверкой. Лучше сейчас, чем потом придумывать отмазки.",
+  "tts_text": "[conversational] Чат, я чуть подушню с проверкой. Лучше сейчас, чем потом придумывать отмазки.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1c3c8fd72e2260e7808c6314a6483a10115770c33c5f66c7d547b9cd511f0e6e",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:yapping",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_009.mp3",
+  "duration": 5.119937,
+  "sha256": "d67a3b3f46ccbf4d8d41668cdfc1100dddf8f21cf61f6457fdfd6d5e9f20b47c",
+  "request_payload": {
+    "text": "[conversational] Чат, я чуть подушню с проверкой. Лучше сейчас, чем потом придумывать отмазки.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

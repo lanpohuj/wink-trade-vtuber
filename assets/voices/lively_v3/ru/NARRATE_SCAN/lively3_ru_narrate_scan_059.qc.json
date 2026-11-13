@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_059",
+  "sha256": "4257d0751fad99aad41b6c5c1f8555ce0ba95b3f2bd58cf4f593628703cfdcaa",
+  "expected": "Не собираюсь дорисовывать удобный сценарий. Посмотрим на тот, что есть.",
+  "transcript": "Не собираюсь дорисовывать удобные сценарии. Посмотрим на то, что есть.",
+  "similarity": 0.957,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.08795,
+    "peak": 0.3885,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.122,
+    "sha256": "4257d0751fad99aad41b6c5c1f8555ce0ba95b3f2bd58cf4f593628703cfdcaa"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Не собираюсь дорисовывать удобные сценарии. Посмотрим на то, что есть."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

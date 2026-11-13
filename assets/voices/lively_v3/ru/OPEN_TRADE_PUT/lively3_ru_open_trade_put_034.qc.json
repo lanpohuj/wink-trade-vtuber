@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_034",
+  "sha256": "5edbaeef753e8fd31301e1a9b58a61a4a2c431c44a9d6e9a3373774b68d37fad",
+  "expected": "Сделка вниз уже открыта по разворотному сценарию. Микрофон не управляет исходом.",
+  "transcript": "Сделка вниз уже открыта по разворотному сценарию. Микрофон не управляет исходом.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.09051,
+    "peak": 0.36032,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.129,
+    "sha256": "5edbaeef753e8fd31301e1a9b58a61a4a2c431c44a9d6e9a3373774b68d37fad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Сделка вниз уже открыта по разворотному сценарию."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Микрофон не управляет исходом."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

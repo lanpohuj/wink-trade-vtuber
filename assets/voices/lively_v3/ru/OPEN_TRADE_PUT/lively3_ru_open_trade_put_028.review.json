@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_028",
+  "phrase_id": "lively3_ru_open_trade_put_028",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Отбой границы дал подтверждённый сценарий вниз. Открытие уже есть.",
+  "tts_text": "[conversational] Отбой границы дал подтверждённый сценарий вниз. Открытие уже есть.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "aa5824415846f893d75c7d7891fc920365f66339d1cb6a0f0aaeeb3054530d2c",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_028",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_028.mp3",
+  "duration": 4.101125,
+  "sha256": "43577c4c5626bac60d27822b9a29505c129876b5ea65a282ffefc0af3e0b4aac",
+  "request_payload": {
+    "text": "[conversational] Отбой границы дал подтверждённый сценарий вниз. Открытие уже есть.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_011",
+  "sha256": "8380ebc48286ce21f4a7cdd9dffd2fed62e5a194aae390b42d3ad6f4663a3e62",
+  "expected": "Кликнуть просто от скуки — ну такое. Я лучше ещё одну шутку неудачную выдам.",
+  "transcript": "Хликнуть просто от скуки, ну такое. Но я лучше ещё одну шутку неудачную выдам.",
+  "similarity": 0.967,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08774,
+    "peak": 0.40483,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.152,
+    "sha256": "8380ebc48286ce21f4a7cdd9dffd2fed62e5a194aae390b42d3ad6f4663a3e62"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.32,
+      "text": " Хликнуть просто от скуки, ну такое."
+    },
+    {
+      "start": 2.32,
+      "end": 5.16,
+      "text": " Но я лучше ещё одну шутку неудачную выдам."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

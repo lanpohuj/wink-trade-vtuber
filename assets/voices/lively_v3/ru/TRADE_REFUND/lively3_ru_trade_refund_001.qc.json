@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_001",
+  "sha256": "9e91f747047befe8cdff1e48a76b0fac57817db4cc38138e9d36f6114b236d22",
+  "expected": "Возврат ставки. Сегодня у сделки финал без победной музыки и грустных титров.",
+  "transcript": "Возврат ставки! Сегодня у сделки финал беспобедной музыки и грустных титров!",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08564,
+    "peak": 0.33883,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.172,
+    "sha256": "9e91f747047befe8cdff1e48a76b0fac57817db4cc38138e9d36f6114b236d22"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Возврат ставки! Сегодня у сделки финал беспобедной музыки и грустных титров!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

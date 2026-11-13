@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_031",
+  "phrase_id": "lively3_ru_narrate_lesson_031",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Понимать, чего не знаешь, — база. Изображать всезнайку я и так умею.",
+  "tts_text": "[conversational] Понимать, чего не знаешь, — база. Изображать всезнайку я и так умею.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f78f5d7128485e7b107310a337b7869fc2c38cfe93bd4e1d6aee00fe2b0bbd31",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_031",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_031.mp3",
+  "duration": 5.041563,
+  "sha256": "a294c10897eb3af64ec01076f9f0305275b5baaaf15c99c960d46a8ac96a6879",
+  "request_payload": {
+    "text": "[conversational] Понимать, чего не знаешь, — база. Изображать всезнайку я и так умею.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

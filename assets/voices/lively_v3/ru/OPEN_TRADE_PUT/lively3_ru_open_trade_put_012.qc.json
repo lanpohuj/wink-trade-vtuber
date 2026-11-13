@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_012",
+  "sha256": "7c93c319e7d6d5a03d2933a93b82683482f1cbbeb7df2c532b3eda236f3de676",
+  "expected": "Продали после пробоя и завершённого ретеста. Сейчас без торжественного «готово».",
+  "transcript": "Прадали после пробоя из завершенного ри-теста. Сейчас без торжественного готова.",
+  "similarity": 0.948,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.07484,
+    "peak": 0.35759,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.12,
+    "sha256": "7c93c319e7d6d5a03d2933a93b82683482f1cbbeb7df2c532b3eda236f3de676"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Прадали после пробоя из завершенного ри-теста."
+    },
+    {
+      "start": 2.72,
+      "end": 4.72,
+      "text": " Сейчас без торжественного готова."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

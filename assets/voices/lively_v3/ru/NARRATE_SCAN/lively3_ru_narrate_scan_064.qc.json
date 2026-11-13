@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_064",
+  "sha256": "9e24ac821a7c1e085a77f8725f29b81fd52e183f15aa8cc3f23de4688990e72d",
+  "expected": "История грузится. Интернет сегодня никуда не торопится. Везёт ему.",
+  "transcript": "История грузится. Интернет сегодня никуда не торопится. Лезёт ему.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0872,
+    "peak": 0.39984,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "9e24ac821a7c1e085a77f8725f29b81fd52e183f15aa8cc3f23de4688990e72d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " История грузится. Интернет сегодня никуда не торопится. Лезёт ему."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

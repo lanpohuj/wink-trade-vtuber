@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_045",
+  "sha256": "e145032df6135f1159832e6fac893b52e75f89c5ef73f2c1ac74cbeafe1f249d",
+  "expected": "Trade's still running. My job is keeping hopes separate from facts.",
+  "transcript": "Trade's still running. My job is keeping hope separate from facts.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07808,
+    "peak": 0.4283,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.175,
+    "sha256": "e145032df6135f1159832e6fac893b52e75f89c5ef73f2c1ac74cbeafe1f249d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Trade's still running. My job is keeping hope separate from facts."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

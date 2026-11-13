@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_result_013",
+  "sha256": "0a4744591381b6346a51db9065d3c6bf8dde3bab48564c61f208adc4172ec4e4",
+  "expected": "Последовательность завершена, возвращаемся к пятидесяти. Прошлые минусы никуда не исчезли.",
+  "transcript": "Осведовательность завершена. Возвращаемся к 50. Прошлые минусы никуда не исчезли.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08625,
+    "peak": 0.46856,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.124,
+    "sha256": "0a4744591381b6346a51db9065d3c6bf8dde3bab48564c61f208adc4172ec4e4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.48,
+      "text": " Осведовательность завершена. Возвращаемся к 50."
+    },
+    {
+      "start": 3.48,
+      "end": 5.48,
+      "text": " Прошлые минусы никуда не исчезли."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_034",
+  "sha256": "1a0174e50dc1742bd0c5ebfc30652388c5e619f5c554030d17f846100ab9f9a4",
+  "expected": "Пока смотрим. Если помолчу пару секунд, это тоже часть хорошего комментария.",
+  "transcript": "Пока смотрим. Если помолчу пару секунд, это тоже часть хорошего комментария.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08341,
+    "peak": 0.39311,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "1a0174e50dc1742bd0c5ebfc30652388c5e619f5c554030d17f846100ab9f9a4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Пока смотрим. Если помолчу пару секунд, это тоже часть хорошего комментария."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

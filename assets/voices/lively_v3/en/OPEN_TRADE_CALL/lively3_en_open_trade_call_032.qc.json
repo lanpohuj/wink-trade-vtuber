@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_032",
+  "sha256": "0be358f935f867877f3b137f523a79af0119f094474a7e5f07479f5462344f2b",
+  "expected": "Bought after local-reversal confirmation. Not declaring a major trend from it.",
+  "transcript": "But after local reversal confirmation, not declaring a major trend from it...",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.0727,
+    "peak": 0.31968,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.299,
+    "sha256": "0be358f935f867877f3b137f523a79af0119f094474a7e5f07479f5462344f2b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " But after local reversal confirmation, not declaring a major trend from it..."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_032",
+  "phrase_id": "lively3_ru_narrate_scan_032",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сейчас полезнее внимательность, чем моя способность звучать убедительно.",
+  "tts_text": "[conversational] Сейчас полезнее внимательность, чем моя способность звучать убедительно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d8f3b35f069918d1fedb183fbe6711f78756c935a8a586dc43a9bd54954608ff",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_032",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_032.mp3",
+  "duration": 4.153375,
+  "sha256": "040d18cb97ac1b003b1a4e8a0cd441d7d7db6de9ffcd904dcfa580becaeb508d",
+  "request_payload": {
+    "text": "[conversational] Сейчас полезнее внимательность, чем моя способность звучать убедительно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

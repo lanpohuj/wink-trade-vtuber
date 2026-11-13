@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_030",
+  "phrase_id": "lively3_en_narrate_engage_030",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "If I go quiet, I'm not sulking. Just letting my thoughts dress appropriately.",
+  "tts_text": "[gently sarcastic, conversational] If I go quiet, I'm not sulking. Just letting my thoughts dress appropriately.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "5c027db03afa2bed67b09e5a87a07b4f0e2625734e1df606282247651c61dfbb",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_030",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_030.mp3",
+  "duration": 4.728063,
+  "sha256": "5be3e544f25961966d81e25350ac06654aeb2dcc83857f99bf87743ab0161396",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] If I go quiet, I'm not sulking. Just letting my thoughts dress appropriately.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

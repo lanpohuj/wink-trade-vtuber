@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_017",
+  "sha256": "364dc63e0cd12755c7cab278f0d91111dd02d6d9db6339dfebb09ee1ee185509",
+  "expected": "Другая пара, тот же принцип: сначала понять, потом решать.",
+  "transcript": "Другая пара. Тот же принцип. Сначала понять, потом решать.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08236,
+    "peak": 0.34438,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "364dc63e0cd12755c7cab278f0d91111dd02d6d9db6339dfebb09ee1ee185509"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.12,
+      "text": " Другая пара. Тот же принцип. Сначала понять, потом решать."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

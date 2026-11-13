@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_017",
+  "sha256": "460e0848d260d999daaf30e124cd3a68af3381055957f7ad43d607c9a060e522",
+  "expected": "Up on the post-breakout retest, trade open. No early fanfare ordered.",
+  "transcript": "Up on the post breakout retest, trade open. No early fanfare ordered.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07768,
+    "peak": 0.39509,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.209,
+    "sha256": "460e0848d260d999daaf30e124cd3a68af3381055957f7ad43d607c9a060e522"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.2,
+      "text": " Up on the post breakout retest, trade open. No early fanfare ordered."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

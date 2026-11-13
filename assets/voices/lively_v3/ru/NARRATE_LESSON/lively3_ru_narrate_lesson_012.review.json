@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_012",
+  "phrase_id": "lively3_ru_narrate_lesson_012",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Одна свеча умеет впечатлить. Контекст нужен, чтобы не влюбиться слишком быстро.",
+  "tts_text": "[conversational] Одна свеча умеет впечатлить. Контекст нужен, чтобы не влюбиться слишком быстро.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a3bd77c564d37da8cba58113d11021696512c23f033f61daa861ec49ea0e71e6",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_012",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_012.mp3",
+  "duration": 4.989312,
+  "sha256": "41c12c163ebc267bc1a5b055df7c787c90f8e4f695004d87d23162bd7da3f883",
+  "request_payload": {
+    "text": "[conversational] Одна свеча умеет впечатлить. Контекст нужен, чтобы не влюбиться слишком быстро.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

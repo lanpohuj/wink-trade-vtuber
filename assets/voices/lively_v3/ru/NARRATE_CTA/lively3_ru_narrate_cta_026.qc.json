@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_026",
+  "sha256": "7c4eca737827296bc03120383f95928faebae8cbb3fb1dc39beb6f35d2d75935",
+  "expected": "Для тех, кто любит разбираться сам: бот в шапке профиля. Инструкция не кусается.",
+  "transcript": "Для тех, кто любит разбираться сам, бот в шапке профиля, инструкция не кусается.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.07092,
+    "peak": 0.35399,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.121,
+    "sha256": "7c4eca737827296bc03120383f95928faebae8cbb3fb1dc39beb6f35d2d75935"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.6000000000000005,
+      "text": " Для тех, кто любит разбираться сам, бот в шапке профиля, инструкция не кусается."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

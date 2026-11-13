@@ -46,7 +46,7 @@ def catalog():
                              max_duration_sec=8 if category == 'CHAT_REACTION' else 10,
                              semantic_group=lang + ':' + group))
     revisions = {}
-    editorial = '\n'.join((DOCS / name).read_text() for name in ('style-revision.txt', 'mature-revision.txt'))
+    editorial = '\n'.join((DOCS / name).read_text() for name in ('style-revision.txt', 'mature-revision.txt', 'role-revision.txt'))
     for line in editorial.splitlines():
         if not line or line.startswith('#'):
             continue
@@ -82,6 +82,13 @@ def catalog():
         if row['lang'] == 'ru':
             row['delivery'] = 'conversational'
             row['tts_text'] = '[conversational] ' + row['text']
+        if row['category'] == 'NARRATE_PAIR':
+            row.update(tone='conversational', delivery='conversational')
+            row['tts_text'] = '[conversational] ' + row['text']
+            row.pop('semantic_group', None)
+        if row['category'] == 'CHAT_REACTION' and row['conditions'].get('chat_kind') in ('follow', 'gift', 'like'):
+            row.update(tone='warm', delivery='warm, smiling, conversational')
+            row['tts_text'] = '[warm, smiling, conversational] ' + row['text']
     return rows
 
 

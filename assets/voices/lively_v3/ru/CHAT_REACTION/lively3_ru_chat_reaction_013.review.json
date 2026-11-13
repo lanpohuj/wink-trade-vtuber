@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_013",
+  "phrase_id": "lively3_ru_chat_reaction_013",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты.",
+  "tts_text": "[conversational] Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2ee43249b367ac7b300637cfa6ee10a287781cd4e919d497ba5d339f0bc7e3a6",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_013",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_013.mp3",
+  "duration": 4.728063,
+  "sha256": "819f09444e5e5e5dcf27136252974e4be76cfa56511e2290f040305850f0cb29",
+  "request_payload": {
+    "text": "[conversational] Вот это сюрприз, спасибо! Люблю неожиданные добрые моменты.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

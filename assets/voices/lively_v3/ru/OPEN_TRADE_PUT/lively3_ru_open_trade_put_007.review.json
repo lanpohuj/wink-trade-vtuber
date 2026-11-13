@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_007",
+  "phrase_id": "lively3_ru_open_trade_put_007",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Продали после подтверждённого отката. Всё, теперь у меня роль наблюдателя.",
+  "tts_text": "[conversational] Продали после подтверждённого отката. Всё, теперь у меня роль наблюдателя.",
+  "conditions": {
+    "setup": "TREND_PULLBACK",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "59e36e7e30141e49cd3d4d60ccadae9ac45e1e61652d88bc2257ba4e78a3dd7d",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_007",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_007.mp3",
+  "duration": 4.989312,
+  "sha256": "e3ed163705fda2ddcaaae0212f8bb9b1788cb17442bb8182e746ee6cd983cd60",
+  "request_payload": {
+    "text": "[conversational] Продали после подтверждённого отката. Всё, теперь у меня роль наблюдателя.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

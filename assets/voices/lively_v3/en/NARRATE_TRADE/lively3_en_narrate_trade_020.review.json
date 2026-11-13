@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_020",
+  "phrase_id": "lively3_en_narrate_trade_020",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Let's not call it free halfway through. The ending hasn't dropped yet.",
+  "tts_text": "[casual] Let's not call it free halfway through. The ending hasn't dropped yet.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4ba9bdf1ce45f0015ff36305ef1510ac5b19add7b9a64c690cd684b8865fcebc",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_020",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_020.mp3",
+  "duration": 4.545187,
+  "sha256": "45a00ecab2fa18f928035f875e8ad1a87f31f8c29c5ef799bf218ce514c6a8b8",
+  "request_payload": {
+    "text": "[casual] Let's not call it free halfway through. The ending hasn't dropped yet.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

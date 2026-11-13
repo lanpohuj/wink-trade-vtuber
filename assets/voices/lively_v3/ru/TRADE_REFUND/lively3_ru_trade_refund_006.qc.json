@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_refund_006",
+  "sha256": "85123c749c017bd971c2ec0c679b22f654bb399bd3f5dca3595010a0feeecd29",
+  "expected": "Возврат. Плот-твиста не завезли, просто ставка вернулась. Ну окей.",
+  "transcript": "Возврат, плод Твисто не завезли? Просто ставка вернулась. Ну, окей.",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08421,
+    "peak": 0.41172,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.088,
+    "sha256": "85123c749c017bd971c2ec0c679b22f654bb399bd3f5dca3595010a0feeecd29"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Возврат, плод Твисто не завезли? Просто ставка вернулась. Ну, окей."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

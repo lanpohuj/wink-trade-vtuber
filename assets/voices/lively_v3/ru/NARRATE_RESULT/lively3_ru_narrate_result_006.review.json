@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_006",
+  "phrase_id": "lively3_ru_narrate_result_006",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Шаг сменился на сто десять. Мой спокойный тон не означает обещанного перекрытия.",
+  "tts_text": "[conversational] Шаг сменился на сто десять. Мой спокойный тон не означает обещанного перекрытия.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d425f54efb2f83ed63ec3c7ab0087b88e88bacbde96abb390e6c5cd702b9f101",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_006",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_006.mp3",
+  "duration": 4.989312,
+  "sha256": "9ff0e7d0c959fa2bd4557f6a772f9866548e9922cbbf58dbc3d4e149c9e38590",
+  "request_payload": {
+    "text": "[conversational] Шаг сменился на сто десять. Мой спокойный тон не означает обещанного перекрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

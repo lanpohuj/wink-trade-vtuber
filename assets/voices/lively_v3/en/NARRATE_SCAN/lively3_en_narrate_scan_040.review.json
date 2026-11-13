@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_040",
+  "phrase_id": "lively3_en_narrate_scan_040",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "I like ideas I can explain simply. Checking this one now.",
+  "tts_text": "[natural, conversational] I like ideas I can explain simply. Checking this one now.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0c3375b40bf41a3e1885d7cf0357f1cf7e6826d7deb82b969a7a12d918526ba8",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_040",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_040.mp3",
+  "duration": 4.101125,
+  "sha256": "c90c8d35a8f8dc029ed14012b56fe4a80f79252248375a09a8b12e58701faba4",
+  "request_payload": {
+    "text": "[natural, conversational] I like ideas I can explain simply. Checking this one now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

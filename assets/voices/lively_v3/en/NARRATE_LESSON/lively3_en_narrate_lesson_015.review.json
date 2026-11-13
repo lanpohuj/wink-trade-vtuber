@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_015",
+  "phrase_id": "lively3_en_narrate_lesson_015",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I can yap for five minutes and say nothing. Trying to catch myself sooner.",
+  "tts_text": "[casual] I can yap for five minutes and say nothing. Trying to catch myself sooner.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "36677867890f14512019663fd68f0d3343c3e6c0fea76ce7d8b9ec6383f89c86",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_015.mp3",
+  "duration": 4.728063,
+  "sha256": "29af5d865c13b886a6588930a54fae96b1c7027c002efa2a10c5dceeb7bf588e",
+  "request_payload": {
+    "text": "[casual] I can yap for five minutes and say nothing. Trying to catch myself sooner.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

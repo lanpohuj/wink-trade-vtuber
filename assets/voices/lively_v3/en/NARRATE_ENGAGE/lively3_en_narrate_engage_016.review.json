@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_016",
+  "phrase_id": "lively3_en_narrate_engage_016",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "Joke didn't land? Skip it. Never happened. I've already moved on.",
+  "tts_text": "[casual] Joke didn't land? Skip it. Never happened. I've already moved on.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4244e701f80fc3b135ba240865581bf53e13a5551ae6479452d1aaf59d27349c",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_016.mp3",
+  "duration": 4.649687,
+  "sha256": "ad02ed83dc811ecaf5ba164b90211cc5ca24409b2ed03a4e073ea2df880ef314",
+  "request_payload": {
+    "text": "[casual] Joke didn't land? Skip it. Never happened. I've already moved on.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

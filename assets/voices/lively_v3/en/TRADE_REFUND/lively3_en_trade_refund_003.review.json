@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_003",
+  "phrase_id": "lively3_en_trade_refund_003",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Trade closed with a refund. A calm status, like my rare quiet mode.",
+  "tts_text": "[warm, relaxed] Trade closed with a refund. A calm status, like my rare quiet mode.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8c5e2e59b64601993455d379b9c7f0c77d000f08f942535133309e23340571fd",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_003",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_003.mp3",
+  "duration": 4.989312,
+  "sha256": "c7b44921e2f0a5e22a6a8069ca3b73fb8ee5a39aac4466709ddfcffb160534c5",
+  "request_payload": {
+    "text": "[warm, relaxed] Trade closed with a refund. A calm status, like my rare quiet mode.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

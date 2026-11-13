@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_chat_reaction_025",
+  "phrase_id": "lively3_ru_chat_reaction_025",
+  "lang": "ru",
+  "category": "CHAT_REACTION",
+  "text": "Шапка профиля — твой ориентир. Там бот и пояснения по доступу.",
+  "tts_text": "[conversational] Шапка профиля — твой ориентир. Там бот и пояснения по доступу.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f26ade57d925234f95758a0c19d643fb8d2c23d951a546700b801f46f717de5f",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "ru:chat_reaction_025",
+  "file": "ru/CHAT_REACTION/lively3_ru_chat_reaction_025.mp3",
+  "duration": 4.153375,
+  "sha256": "e8487240f008ef7ce60d59b1c16a6d52b6311052441bcd97de6ae4c3116ab0f5",
+  "request_payload": {
+    "text": "[conversational] Шапка профиля — твой ориентир. Там бот и пояснения по доступу.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

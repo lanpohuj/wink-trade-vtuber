@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_011",
+  "sha256": "b33fdfabdf971e750089acb0643c59237cc64b3ea7ca3cc4949981d78e5ba4db",
+  "expected": "One detail isn't the whole picture. The puzzle has other pieces.",
+  "transcript": "One detail isn't the whole picture. The puzzle has other pieces.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07698,
+    "peak": 0.52066,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.244,
+    "sha256": "b33fdfabdf971e750089acb0643c59237cc64b3ea7ca3cc4949981d78e5ba4db"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " One detail isn't the whole picture. The puzzle has other pieces."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

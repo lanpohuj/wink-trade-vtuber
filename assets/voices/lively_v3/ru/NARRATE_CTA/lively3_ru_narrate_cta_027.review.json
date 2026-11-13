@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_027",
+  "phrase_id": "lively3_ru_narrate_cta_027",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Отмечу полезное между делом: бот по ссылке в профиле. Условия смотрите там.",
+  "tts_text": "[conversational] Отмечу полезное между делом: бот по ссылке в профиле. Условия смотрите там.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a8c3c03bda3d71cbe946fe711ddf2b87a1c1d636573c25b1f5c9dfc335635120",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_027",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_027.mp3",
+  "duration": 5.328875,
+  "sha256": "1d7366186c699667bef0ba0a398456c5e27aa5a2f9b741a993519d254189b988",
+  "request_payload": {
+    "text": "[conversational] Отмечу полезное между делом: бот по ссылке в профиле. Условия смотрите там.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

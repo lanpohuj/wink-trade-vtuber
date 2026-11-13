@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_016",
+  "sha256": "6790dbebdbcefae3655fc4ede2cc5833133947e7bf6f112a8be87772e9ca421e",
+  "expected": "Окно тридцать секунд. Смотрим этот отрезок, не придумываем целую эпоху.",
+  "transcript": "Окно 30 секунд. Смотрим этот отрезок. Не придумываем целую эпоху.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08329,
+    "peak": 0.33396,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.142,
+    "sha256": "6790dbebdbcefae3655fc4ede2cc5833133947e7bf6f112a8be87772e9ca421e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Окно 30 секунд. Смотрим этот отрезок. Не придумываем целую эпоху."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

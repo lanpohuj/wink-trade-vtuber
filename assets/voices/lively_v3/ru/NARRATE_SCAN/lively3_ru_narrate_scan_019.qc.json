@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_019",
+  "sha256": "c11651234c908f862a184565134697b1836bcf933740c216cdcf8c6f49c77669",
+  "expected": "Красивый момент ещё надо правильно прочитать. С фильтрами у меня строго.",
+  "transcript": "Красивый момент еще надо правильно прочитать. С фильтрами у меня строго.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08709,
+    "peak": 0.40345,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.099,
+    "sha256": "c11651234c908f862a184565134697b1836bcf933740c216cdcf8c6f49c77669"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Красивый момент еще надо правильно прочитать. С фильтрами у меня строго."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

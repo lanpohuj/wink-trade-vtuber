@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_020",
+  "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2",
+  "expected": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+  "transcript": "Новая пара появилась. Сейчас познакомимся без обещаний и красивых титулов.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07651,
+    "peak": 0.31525,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.142,
+    "sha256": "26583253ce63e2c8874b6b8538dc53a39578e3d8b5937077ee2b84a5ba1315c2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Новая пара появилась."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Сейчас познакомимся без обещаний и красивых титулов."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

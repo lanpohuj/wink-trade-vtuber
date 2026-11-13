@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_032",
+  "phrase_id": "lively3_en_open_trade_put_032",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Sold after local-reversal confirmation. That's the entry reason, not the result.",
+  "tts_text": "[clear, conversational] Sold after local-reversal confirmation. That's the entry reason, not the result.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "195eb579ff3909315204627e41741d2ff7204fd11e1d3c060cbf97ee8fc19abd",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_032",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_032.mp3",
+  "duration": 5.4595,
+  "sha256": "34354280aae46e333d876742a4b05a7adea94bf525d2c0d19ec741202ca3cabc",
+  "request_payload": {
+    "text": "[clear, conversational] Sold after local-reversal confirmation. That's the entry reason, not the result.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

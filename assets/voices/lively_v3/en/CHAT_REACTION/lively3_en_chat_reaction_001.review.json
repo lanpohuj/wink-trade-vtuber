@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_001",
+  "phrase_id": "lively3_en_chat_reaction_001",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "New face! Settle in; quietly watching is perfectly welcome.",
+  "tts_text": "[lightly playful, smiling] New face! Settle in; quietly watching is perfectly welcome.",
+  "conditions": {
+    "chat_kind": "join"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7187d06468d7c89e46b2a35ecda2305fc8b14a7ff53262cedd4ab223996738ac",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_001",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_001.mp3",
+  "duration": 4.780312,
+  "sha256": "c9bf7ad6bb8a304d103b42385b8f795f259c75d4f67a220abc6003d49c5240fe",
+  "request_payload": {
+    "text": "[lightly playful, smiling] New face! Settle in; quietly watching is perfectly welcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

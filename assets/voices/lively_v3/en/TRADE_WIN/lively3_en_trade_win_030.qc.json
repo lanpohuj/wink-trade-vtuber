@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_030",
+  "sha256": "a42607d3020f1f15fbb7db267ea4c90590b4ffcbb3ee8bd664a473b4a55fe366",
+  "expected": "Win's in, chat. Celebration crown on for one second, then back in storage.",
+  "transcript": "Winds in, chat! Celebration crown on for one second, then back in storage.",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08354,
+    "peak": 0.37792,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.218,
+    "sha256": "a42607d3020f1f15fbb7db267ea4c90590b4ffcbb3ee8bd664a473b4a55fe366"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Winds in, chat! Celebration crown on for one second, then back in storage."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

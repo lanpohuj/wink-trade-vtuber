@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_003",
+  "sha256": "b9f15002889be1927a934bf8835ea49ec7f6b6bd12d855a3d8c389904b1d0b89",
+  "expected": "Продажа по откату в тренде открыта. Моя решительность здесь только озвучка.",
+  "transcript": "Продажа подкату в тренде открыта. Моя решительность здесь только озвучка.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.65,
+    "rms": 0.08514,
+    "peak": 0.45345,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.09,
+    "sha256": "b9f15002889be1927a934bf8835ea49ec7f6b6bd12d855a3d8c389904b1d0b89"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Продажа подкату в тренде открыта."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Моя решительность здесь только озвучка."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_012",
+  "sha256": "2e4689f7f80c88ffb0d764c2717528cc6157181981b16ae80f4f25b689c51caf",
+  "expected": "Trade follows its chosen expiry. My commentary won't speed it up.",
+  "transcript": "Trade follows its chosen expiry. My commentary won't speed it up.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.0863,
+    "peak": 0.50442,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.107,
+    "sha256": "2e4689f7f80c88ffb0d764c2717528cc6157181981b16ae80f4f25b689c51caf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Trade follows its chosen expiry. My commentary won't speed it up."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_013",
+  "phrase_id": "lively3_en_narrate_scan_013",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "No grand announcement yet. Just checking, with a strict no-fanfare policy.",
+  "tts_text": "[lightly playful, smiling] No grand announcement yet. Just checking, with a strict no-fanfare policy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "45f545b80171f8068704c43e497ac088666559ac3b131e616dc868560bc2b70b",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_013",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_013.mp3",
+  "duration": 5.51175,
+  "sha256": "bff5f093f3243c4aa6adc58c84ea260704ad3efd44add95077bf224669a9f256",
+  "request_payload": {
+    "text": "[lightly playful, smiling] No grand announcement yet. Just checking, with a strict no-fanfare policy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_033",
+  "phrase_id": "lively3_ru_narrate_lesson_033",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Когда данных нет, честная пауза звучит лучше выдуманного анализа.",
+  "tts_text": "[conversational] Когда данных нет, честная пауза звучит лучше выдуманного анализа.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0ec02904a2e47cf0b6222395c46426f6405f348699329278dbebac129c32049c",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_033",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_033.mp3",
+  "duration": 4.23175,
+  "sha256": "a46a2e04b28bea7c2c97f31396e70a4d42b252a347312c46aec217ca194e3e75",
+  "request_payload": {
+    "text": "[conversational] Когда данных нет, честная пауза звучит лучше выдуманного анализа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_007",
+  "sha256": "0ef08ffc81e0471cdce69287ebc553bbbba895ff0024db93ee6a8528ffb89aec",
+  "expected": "Sold after the confirmed pullback. Switching to observer duties now.",
+  "transcript": "Sold after the confirmed pullback, switching to observer duties now.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.362,
+    "rms": 0.06842,
+    "peak": 0.35131,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.262,
+    "sha256": "0ef08ffc81e0471cdce69287ebc553bbbba895ff0024db93ee6a8528ffb89aec"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.2,
+      "text": " Sold after the confirmed pullback, switching to observer duties now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

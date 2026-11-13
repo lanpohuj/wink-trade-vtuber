@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_002",
+  "sha256": "900f3252fd07c0ddd6c33e84c7c72d2f2e16bf892df92d77338ae09258fcec03",
+  "expected": "Направление и время — два разных решения. Одной уверенной стрелочки маловато.",
+  "transcript": "В направлении и время два разных решения. Одной уверенной стрелочке маловато.",
+  "similarity": 0.961,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.07571,
+    "peak": 0.29449,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.078,
+    "sha256": "900f3252fd07c0ddd6c33e84c7c72d2f2e16bf892df92d77338ae09258fcec03"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " В направлении и время два разных решения. Одной уверенной стрелочке маловато."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

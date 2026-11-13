@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_028",
+  "sha256": "721d20813ab1786a1e94c7e2067c6cb003b74887b6aa99e15e0a305940e88f66",
+  "expected": "У сделки есть выбранный срок. Мой эмоциональный монолог его не продлит.",
+  "transcript": "У сделки есть выбранный срок. Мой эмоциональный монолог его не продлит.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08946,
+    "peak": 0.3294,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.118,
+    "sha256": "721d20813ab1786a1e94c7e2067c6cb003b74887b6aa99e15e0a305940e88f66"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " У сделки есть выбранный срок."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Мой эмоциональный монолог его не продлит."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

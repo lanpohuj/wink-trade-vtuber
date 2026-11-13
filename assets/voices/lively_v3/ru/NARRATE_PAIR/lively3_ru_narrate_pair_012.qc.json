@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_012",
+  "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a",
+  "expected": "Новый экран, новые условия. Да, мне опять нужно разобраться.",
+  "transcript": "Новый экран! Новые условия! Да, мне опять нужно разобраться!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.0735,
+    "peak": 0.28574,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "fee047c0beeeabec641b1cf214d07859d834c87c0800a58f9e4e03d8b451068a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Новый экран! Новые условия!"
+    },
+    {
+      "start": 2.7,
+      "end": 5.0,
+      "text": " Да, мне опять нужно разобраться!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

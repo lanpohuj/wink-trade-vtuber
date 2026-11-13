@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_060",
+  "sha256": "37f0f11f755bdac00013f4788dd2c7c1ec30bf80b4377ee87e86c7041f0c7e3e",
+  "expected": "Decisions need details. Unfortunately, so do I. Still checking.",
+  "transcript": "Decisions need details. Unfortunately, so do I. Still checking.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.08067,
+    "peak": 0.56005,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.14,
+    "sha256": "37f0f11f755bdac00013f4788dd2c7c1ec30bf80b4377ee87e86c7041f0c7e3e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.96,
+      "text": " Decisions need details. Unfortunately, so do I. Still checking."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

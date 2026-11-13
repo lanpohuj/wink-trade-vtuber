@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_win_020",
+  "sha256": "6697b1e7f4550ada164ce0ba65bb34f2d62b35cd88068d6b2ba7e641e5e91ba4",
+  "expected": "Closed green. Confidence woke up; keeping it away from the next button.",
+  "transcript": "Closed green confidence woke up keeping it away from the next button",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07571,
+    "peak": 0.43962,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.262,
+    "sha256": "6697b1e7f4550ada164ce0ba65bb34f2d62b35cd88068d6b2ba7e641e5e91ba4"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.66,
+      "text": " Closed green confidence woke up keeping it away from the next button"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

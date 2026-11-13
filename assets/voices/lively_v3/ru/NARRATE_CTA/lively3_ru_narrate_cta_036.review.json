@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_036",
+  "phrase_id": "lively3_ru_narrate_cta_036",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Для новых зрителей повторю маршрут: ссылка в шапке, дальше бот и его инструкция.",
+  "tts_text": "[conversational] Для новых зрителей повторю маршрут: ссылка в шапке, дальше бот и его инструкция.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "010e68a013d4e24d7232cb8c4865b78a2cbeaa35cfed9a75601989ed883f8494",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_036",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_036.mp3",
+  "duration": 5.328875,
+  "sha256": "236c62bdb8c92f75fdebf3b04a7aafa6e0be6c12199e8b745d3976df7ea71665",
+  "request_payload": {
+    "text": "[conversational] Для новых зрителей повторю маршрут: ссылка в шапке, дальше бот и его инструкция.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

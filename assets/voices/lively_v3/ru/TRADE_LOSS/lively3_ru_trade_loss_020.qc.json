@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_020",
+  "sha256": "f572338fa92e7127805aa9c42b9ac7a58e9ef9b5cf8a7ef99b6342db4c958cde",
+  "expected": "Закрылись в минус, неприятно. Сохраним честный счёт и не будем спорить с прошлым.",
+  "transcript": "Закрылись в минус, неприятно? Сохраним честный счёт и не будем спорить с прошлым.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08937,
+    "peak": 0.34286,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.102,
+    "sha256": "f572338fa92e7127805aa9c42b9ac7a58e9ef9b5cf8a7ef99b6342db4c958cde"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.2,
+      "text": " Закрылись в минус, неприятно?"
+    },
+    {
+      "start": 2.2,
+      "end": 5.2,
+      "text": " Сохраним честный счёт и не будем спорить с прошлым."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_032",
+  "phrase_id": "lively3_en_narrate_lesson_032",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "An explanation should include what I don't know, not just what I see.",
+  "tts_text": "[natural, conversational] An explanation should include what I don't know, not just what I see.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b45da1c84b20b0dab2e740092ea420062bbed89b0d6785d4c25d7020d8d5a388",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_032",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_032.mp3",
+  "duration": 4.23175,
+  "sha256": "f9b094a0eced0a60bb90b6ecb716e91965222b54d5fd02e4c2f5ec0b0af743b5",
+  "request_payload": {
+    "text": "[natural, conversational] An explanation should include what I don't know, not just what I see.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

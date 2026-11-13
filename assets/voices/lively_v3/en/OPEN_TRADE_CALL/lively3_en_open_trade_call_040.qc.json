@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_040",
+  "sha256": "a863be390c1338c98ed7c09cc46ee853591a7d7f12f28634242153618b3e6505",
+  "expected": "Up trade open: local reversal passed confirmation. Watching now.",
+  "transcript": "Up trade open. Local reversal past confirmation. Watching now.",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.08149,
+    "peak": 0.47465,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.258,
+    "sha256": "a863be390c1338c98ed7c09cc46ee853591a7d7f12f28634242153618b3e6505"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Up trade open. Local reversal past confirmation. Watching now."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_010",
+  "phrase_id": "lively3_en_narrate_result_010",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Current step's two hundred and forty-two. A larger size doesn't make the outcome known.",
+  "tts_text": "[clear, conversational] Current step's two hundred and forty-two. A larger size doesn't make the outcome known.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "06dc9de711a32715896c3c6fc9a14f39c977c0ce766989d9b396feb810ef8211",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_010",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_010.mp3",
+  "duration": 5.041563,
+  "sha256": "7aa340d6201407c94b04feb65afa241210379fd7c637a8cdc9d994c4a7c5e917",
+  "request_payload": {
+    "text": "[clear, conversational] Current step's two hundred and forty-two. A larger size doesn't make the outcome known.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

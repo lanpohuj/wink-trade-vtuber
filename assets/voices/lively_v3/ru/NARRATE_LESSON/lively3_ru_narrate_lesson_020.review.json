@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_020",
+  "phrase_id": "lively3_ru_narrate_lesson_020",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Понятная причина входа полезнее сложного названия, которое никто не понял.",
+  "tts_text": "[conversational] Понятная причина входа полезнее сложного названия, которое никто не понял.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "935cd1df0214dd52cd549428b227364bc7a3fa46ddacab318ba7f206beebb616",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_020",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_020.mp3",
+  "duration": 3.9705,
+  "sha256": "439657ad60ab0b526378b02fc746a11940aca7b739a26ef02768a48b5af1aa7a",
+  "request_payload": {
+    "text": "[conversational] Понятная причина входа полезнее сложного названия, которое никто не понял.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_020",
+  "phrase_id": "lively3_en_open_trade_put_020",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Opened down after retest confirmation. Leaving the theatrics off-screen.",
+  "tts_text": "[clear, conversational] Opened down after retest confirmation. Leaving the theatrics off-screen.",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "56edb1816a893ec8df1004f4bb39370e8e27530a6a3317de53d09445b22e8efe",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_020",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_020.mp3",
+  "duration": 4.728063,
+  "sha256": "71778bd4558dcd409147623828ce3b12f3f89e071e7ae26681ae7ddcef381904",
+  "request_payload": {
+    "text": "[clear, conversational] Opened down after retest confirmation. Leaving the theatrics off-screen.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

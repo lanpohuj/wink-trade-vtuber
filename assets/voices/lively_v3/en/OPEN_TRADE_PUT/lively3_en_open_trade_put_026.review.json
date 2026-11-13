@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_026",
+  "phrase_id": "lively3_en_open_trade_put_026",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Sold the range rejection. My job now is to wait elegantly.",
+  "tts_text": "[clear, conversational] Sold the range rejection. My job now is to wait elegantly.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1e3d3f60abddc64959686ee16dcc376cf5683c0d744b9d6af55440434992ffc2",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_026",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_026.mp3",
+  "duration": 4.414625,
+  "sha256": "ba9491eecab5516f5465fd976ab7f6cfdfe0ae3d054ea1f40f73ab023b1f92a2",
+  "request_payload": {
+    "text": "[clear, conversational] Sold the range rejection. My job now is to wait elegantly.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

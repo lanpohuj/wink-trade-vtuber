@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_046",
+  "phrase_id": "lively3_en_narrate_scan_046",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Check first, useful comment second. Reversing that order would be far too easy.",
+  "tts_text": "[gently sarcastic, conversational] Check first, useful comment second. Reversing that order would be far too easy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "11f0f8c9e58ae983af1130cc5834d5a453ec989991c72015dd967aff34a7f017",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_046",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_046.mp3",
+  "duration": 5.564,
+  "sha256": "faa58970ba81e067da0380220d3f9a9fd4b4c4b08786271306f0d8ef4f701e60",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Check first, useful comment second. Reversing that order would be far too easy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

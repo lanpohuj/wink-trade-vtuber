@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_024",
+  "sha256": "4bb817661e4f23f6377486a0f3319ab107ce1e4518ab40a89179fe228c334c13",
+  "expected": "Тут главное не перепутать ожидание с новым решением. Вход уже произошёл.",
+  "transcript": "Тут главное не перепутать ожидания с новым решением. Вход уже произошел.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08703,
+    "peak": 0.38368,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.106,
+    "sha256": "4bb817661e4f23f6377486a0f3319ab107ce1e4518ab40a89179fe228c334c13"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Тут главное не перепутать ожидания с новым решением. Вход уже произошел."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

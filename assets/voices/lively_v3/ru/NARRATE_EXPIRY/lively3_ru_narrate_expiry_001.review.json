@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_001",
+  "phrase_id": "lively3_ru_narrate_expiry_001",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь пятнадцать секунд. Короткий формат, без моей речи на полчаса.",
+  "tts_text": "[conversational] Здесь пятнадцать секунд. Короткий формат, без моей речи на полчаса.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "3f2692f1f35fbfaf5f56f280dc18a1656320a4cd0c0e87f5fd1a6e45a89d546c",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_001",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_001.mp3",
+  "duration": 4.649687,
+  "sha256": "dc02a84b6e760cd81f87631f3e201373bb9ed5a70a717522b0b2042850b46b2e",
+  "request_payload": {
+    "text": "[conversational] Здесь пятнадцать секунд. Короткий формат, без моей речи на полчаса.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

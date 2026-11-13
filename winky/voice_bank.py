@@ -149,11 +149,19 @@ class VoiceBank:
                 continue
             if item.get('lang', 'ru') != lang or item.get('status', 'ready') != 'ready':
                 continue
+            if item.get('delivery_role') == 'banter' and not event.get('allow_banter'):
+                continue
             if item.get('duration', 0) > event.get('max_duration_sec', float('inf')):
                 continue
             media = (root / item.get('file', '')).resolve()
             if not media.is_relative_to(root.resolve()) or not media.is_file():
                 continue
+            replacement = self.review.replacement(item, media)
+            if replacement:
+                media = replacement['path']
+                # Keep the old route/file identity for existing extensions.
+                item.update(text=replacement['text'], duration=replacement['duration'],
+                            sha256=replacement['sha256'], transcript=replacement['transcript'])
             if self.review.blocked(item, media):
                 continue
             if event.get('file_id') and item.get('id') != event['file_id']:
@@ -171,6 +179,10 @@ class VoiceBank:
                 continue
             item['path'] = media
             item.setdefault('topic', category)
+            if category.startswith('OPEN_') or category in ('NARRATE_PAIR', 'NARRATE_EXPIRY', 'NARRATE_RESULT'):
+                # Ten-minute joke spacing must not silence factual announcements
+                # once their full contextual deck has legitimately cycled.
+                item.pop('semantic_group', None)
             result.append(item)
         return result
 

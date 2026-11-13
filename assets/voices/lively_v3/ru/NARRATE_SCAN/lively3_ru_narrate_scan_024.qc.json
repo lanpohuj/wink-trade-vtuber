@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_024",
+  "sha256": "a031b10fccdd9f2a3fbf14bd6a1de1bd78782ea8f8ea14f70b5cec4a3166b1ad",
+  "expected": "Тут не конкурс предсказателей. Хрустальный шар отправили на выходной.",
+  "transcript": "Тут не конкурс предсказателей. Хрустальный шар отправили на выходной.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08943,
+    "peak": 0.46279,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.072,
+    "sha256": "a031b10fccdd9f2a3fbf14bd6a1de1bd78782ea8f8ea14f70b5cec4a3166b1ad"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Тут не конкурс предсказателей. Хрустальный шар отправили на выходной."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_020",
+  "sha256": "f5c80acf1217ccfce32cb6a0ace09451c8d247ff2dae6730d3edca923e6b30ac",
+  "expected": "A clear entry reason beats a fancy name nobody understands.",
+  "transcript": "A clear entry reason beats a fancy name nobody understands.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08972,
+    "peak": 0.6035,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.224,
+    "sha256": "f5c80acf1217ccfce32cb6a0ace09451c8d247ff2dae6730d3edca923e6b30ac"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " A clear entry reason beats a fancy name nobody understands."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

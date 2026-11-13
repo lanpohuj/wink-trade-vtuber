@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_038",
+  "sha256": "9abf3834dcd474a25d1cc5bad7db6973858a3274dfbfdc206828002d561fc965",
+  "expected": "Ссылка на бота в профиле. Хоть одна вещь в интернете лежит на своём месте.",
+  "transcript": "Ссылка на бота в профиле. Хоть одна вещь в интернете лежит на своем месте.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09088,
+    "peak": 0.38528,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.122,
+    "sha256": "9abf3834dcd474a25d1cc5bad7db6973858a3274dfbfdc206828002d561fc965"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Ссылка на бота в профиле."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Хоть одна вещь в интернете лежит на своем месте."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

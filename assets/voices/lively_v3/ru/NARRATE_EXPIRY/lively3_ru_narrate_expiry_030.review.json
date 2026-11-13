@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_030",
+  "phrase_id": "lively3_ru_narrate_expiry_030",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "На этот сценарий выбраны две минуты. Теперь смотрим его завершение.",
+  "tts_text": "[conversational] На этот сценарий выбраны две минуты. Теперь смотрим его завершение.",
+  "conditions": {
+    "expiry": "2m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "495c5438b09803e17b2424bd5c1f70cb071b49298380b89c2a321d73435b1372",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_030",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_030.mp3",
+  "duration": 4.545187,
+  "sha256": "c46902298cc5ffe178a2e1965f3e162b318d4b5660f306881d2975876a57160a",
+  "request_payload": {
+    "text": "[conversational] На этот сценарий выбраны две минуты. Теперь смотрим его завершение.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_008",
+  "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130",
+  "expected": "New pair. Go on, impress me. Actually, let me look properly first.",
+  "transcript": "No, Pear. Go on and press me. Actually, let me look properly first.",
+  "similarity": 0.9,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.087,
+    "rms": 0.07684,
+    "peak": 0.39966,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.287,
+    "sha256": "5f8db883e3b6da925b91915fda72e763f1961d6b9e7da7464e233494478c0130"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.0,
+      "text": " No, Pear. Go on and press me. Actually, let me look properly first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

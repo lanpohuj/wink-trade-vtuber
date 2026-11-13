@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_011",
+  "phrase_id": "lively3_en_trade_refund_011",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Stake refund here. Not inventing any extra plot twists.",
+  "tts_text": "[warm, relaxed] Stake refund here. Not inventing any extra plot twists.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2eadc90b06a665346b60df66677a4e7eb8275cee72f0f0bb0e811235823aa076",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_011",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_011.mp3",
+  "duration": 4.101125,
+  "sha256": "d1cdcf7421df907b441506f14a430dc7e8c5d82372c79632c9febca143a0d3d7",
+  "request_payload": {
+    "text": "[warm, relaxed] Stake refund here. Not inventing any extra plot twists.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

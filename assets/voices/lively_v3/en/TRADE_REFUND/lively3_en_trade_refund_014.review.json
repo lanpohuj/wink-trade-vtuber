@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_014",
+  "phrase_id": "lively3_en_trade_refund_014",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Stake returned. Neither a victory dance nor a dramatic monologue required.",
+  "tts_text": "[gently sarcastic, conversational] Stake returned. Neither a victory dance nor a dramatic monologue required.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "88642bcf485f1aa04677b143cba1b164b94a0e3b218b1be39cfcea79f79905e8",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_014",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_014.mp3",
+  "duration": 4.728063,
+  "sha256": "8f8d02f3027a906e1b103cae8f3aa0ab041a8665713182362c4e07fa9b46be56",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Stake returned. Neither a victory dance nor a dramatic monologue required.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

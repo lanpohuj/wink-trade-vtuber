@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_019",
+  "phrase_id": "lively3_en_narrate_result_019",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Near the boundary, but the close was a loss. Stating the actual outcome.",
+  "tts_text": "[clear, conversational] Near the boundary, but the close was a loss. Stating the actual outcome.",
+  "conditions": {
+    "result_kind": "NEAR_LOSS"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "92a27c79bbc845649825dd62763320afb3c7d7c0cd3a635e0d919acb86d2e9d5",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_019",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_019.mp3",
+  "duration": 4.910938,
+  "sha256": "35c313078e3e1e9d997c2febf2752098d895695af88793a5bf9062e7fde5e405",
+  "request_payload": {
+    "text": "[clear, conversational] Near the boundary, but the close was a loss. Stating the actual outcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

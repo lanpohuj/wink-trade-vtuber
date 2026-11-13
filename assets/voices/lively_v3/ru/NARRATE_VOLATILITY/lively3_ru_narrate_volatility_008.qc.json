@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_volatility_008",
+  "sha256": "cc6125e0ad9e96ec9b2f5d19f2c8e3c02fd4b548115a9344cf83aa8df8003a22",
+  "expected": "Волатильность выросла, движения резче. Можно назвать происходящее без художественных добавлений.",
+  "transcript": "Волотильность выросла, движение резче. Можно назвать происходящее без художественных добавлений.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.269,
+    "rms": 0.08457,
+    "peak": 0.36935,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.109,
+    "sha256": "cc6125e0ad9e96ec9b2f5d19f2c8e3c02fd4b548115a9344cf83aa8df8003a22"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Волотильность выросла, движение резче."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Можно назвать происходящее без художественных добавлений."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

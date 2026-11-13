@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_029",
+  "sha256": "12074ab34dedca7b6e3c93ffd3cdd26bfa1ac58521cb60990972317bc49320b1",
+  "expected": "Не каждый понятный график даёт подходящий момент прямо сейчас.",
+  "transcript": "Не каждый понятный график дает подходящий момент прямо сейчас.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.84,
+    "rms": 0.0778,
+    "peak": 0.32784,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.14,
+    "sha256": "12074ab34dedca7b6e3c93ffd3cdd26bfa1ac58521cb60990972317bc49320b1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.72,
+      "text": " Не каждый понятный график дает подходящий момент прямо сейчас."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_result_005",
+  "phrase_id": "lively3_en_narrate_result_005",
+  "lang": "en",
+  "category": "NARRATE_RESULT",
+  "text": "Next size is one hundred and ten. The market owes no repayments on request.",
+  "tts_text": "[clear, conversational] Next size is one hundred and ten. The market owes no repayments on request.",
+  "conditions": {
+    "result_kind": "LOSS_110"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "13c7b451f4b5490dc7fab23565091adfcd13f9ad71b71d1641b45606f37052b5",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_result_005",
+  "file": "en/NARRATE_RESULT/lively3_en_narrate_result_005.mp3",
+  "duration": 4.989312,
+  "sha256": "70213f8f736c24878beeea508a6be28ec49b6da8eb1cb8156c0edbfff1d8735c",
+  "request_payload": {
+    "text": "[clear, conversational] Next size is one hundred and ten. The market owes no repayments on request.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

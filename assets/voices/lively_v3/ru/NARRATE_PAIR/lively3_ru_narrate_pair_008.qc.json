@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_008",
+  "sha256": "63edc849ff40fd5ff1f836e85b9d83081a1219f19f1ab5b5cf2cf6ba640ef224",
+  "expected": "Новая пара. Ну, удивляй. Хотя ладно, сначала я сама посмотрю нормально.",
+  "transcript": "Новая пара. Ну, удивляй. Хотя ладно, сначала я сама посмотрю нормально.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.139,
+    "rms": 0.07747,
+    "peak": 0.39323,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.099,
+    "sha256": "63edc849ff40fd5ff1f836e85b9d83081a1219f19f1ab5b5cf2cf6ba640ef224"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Новая пара. Ну, удивляй."
+    },
+    {
+      "start": 3.0,
+      "end": 6.0,
+      "text": " Хотя ладно, сначала я сама посмотрю нормально."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_022",
+  "sha256": "df82287c0f060cf19a9cbb2efeedde5bc0f841b59d24e2ccc5d0b89cfe2eeb91",
+  "expected": "Up trade open after rejection at the range boundary. Holding the early excitement.",
+  "transcript": "Up trade open after rejection at the range boundary, holding the early excitement.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.0841,
+    "peak": 0.41236,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.1,
+    "sha256": "df82287c0f060cf19a9cbb2efeedde5bc0f841b59d24e2ccc5d0b89cfe2eeb91"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Up trade open after rejection at the range boundary, holding the early excitement."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

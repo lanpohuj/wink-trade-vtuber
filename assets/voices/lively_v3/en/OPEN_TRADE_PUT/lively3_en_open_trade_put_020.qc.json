@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_020",
+  "sha256": "71778bd4558dcd409147623828ce3b12f3f89e071e7ae26681ae7ddcef381904",
+  "expected": "Opened down after retest confirmation. Leaving the theatrics off-screen.",
+  "transcript": "Open down after retest confirmation, leaving the theatrics off-screen.",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07977,
+    "peak": 0.39628,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.268,
+    "sha256": "71778bd4558dcd409147623828ce3b12f3f89e071e7ae26681ae7ddcef381904"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Open down after retest confirmation, leaving the theatrics off-screen."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

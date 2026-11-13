@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_chat_reaction_001",
+  "sha256": "e57e56a3cbe31d903bf6cf2976b6b148560741f18adf2605a6314976bbf03c48",
+  "expected": "О, новый зритель! Располагайся, здесь можно сначала просто посмотреть.",
+  "transcript": "О! Новый зритель! Располагайся! Здесь можно сначала просто посмотреть!",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08434,
+    "peak": 0.33165,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.129,
+    "sha256": "e57e56a3cbe31d903bf6cf2976b6b148560741f18adf2605a6314976bbf03c48"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " О! Новый зритель! Располагайся! Здесь можно сначала просто посмотреть!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

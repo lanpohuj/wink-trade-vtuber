@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_031",
+  "phrase_id": "lively3_en_narrate_scan_031",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "An interesting picture and a finished decision aren't the same thing.",
+  "tts_text": "[warm, relaxed] An interesting picture and a finished decision aren't the same thing.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "bb348852ca1ea45a516a9b0fd84423894a065313d25fec75ca914fca9c0ec3ac",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_031",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_031.mp3",
+  "duration": 3.500313,
+  "sha256": "db603f0229deb275c9750fc620e543634ee5eec5c56805a8ccb205578b244cc7",
+  "request_payload": {
+    "text": "[warm, relaxed] An interesting picture and a finished decision aren't the same thing.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

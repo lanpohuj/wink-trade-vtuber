@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_005",
+  "sha256": "3d72452987e9759620ad9c8cd25ab7620e5b1b33295af027cb50688f3948008b",
+  "expected": "Reminder: bot in bio. Instructions are inside, and I won't even interrupt them.",
+  "transcript": "Reminder, bought in bio. Instructions are inside and I won't even interrupt them.",
+  "similarity": 0.976,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.0836,
+    "peak": 0.43012,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.209,
+    "sha256": "3d72452987e9759620ad9c8cd25ab7620e5b1b33295af027cb50688f3948008b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Reminder, bought in bio. Instructions are inside and I won't even interrupt them."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

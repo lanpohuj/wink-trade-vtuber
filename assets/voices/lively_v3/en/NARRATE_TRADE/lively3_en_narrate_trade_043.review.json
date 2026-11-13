@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_043",
+  "phrase_id": "lively3_en_narrate_trade_043",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Still watching, chat. Joy and disappointment can wait for a confirmed reason.",
+  "tts_text": "[warm, relaxed] Still watching, chat. Joy and disappointment can wait for a confirmed reason.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3dbfb99318b0858820f634062fe3178fae140faa6f2d43c8973de864a7df4d27",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_043",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_043.mp3",
+  "duration": 4.989312,
+  "sha256": "92e63f302e1ad1232a6b248ff5ff1f83fc24c738b9de7fd9b22e534aeed9388a",
+  "request_payload": {
+    "text": "[warm, relaxed] Still watching, chat. Joy and disappointment can wait for a confirmed reason.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_018",
+  "sha256": "04b1366cd362889bf5c208d06662df8ce65e9a1ebec9febb012213b907f267c5",
+  "expected": "Сейчас не спешу нравиться графику. Пусть сначала условия покажет.",
+  "transcript": "Сейчас не спешу нравится графику пусть сначала условия покажет",
+  "similarity": 0.991,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.09015,
+    "peak": 0.48004,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.092,
+    "sha256": "04b1366cd362889bf5c208d06662df8ce65e9a1ebec9febb012213b907f267c5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.7600000000000002,
+      "text": " Сейчас не спешу нравится графику пусть сначала условия покажет"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

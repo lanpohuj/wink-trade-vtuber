@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_015",
+  "sha256": "53477220eeb20e7d81a5ba15b775df1917d4eabf4e6e491a43504182133790fc",
+  "expected": "Back to fifty per plan. Results remain unchanged, no cosmetic edits.",
+  "transcript": "Back to 50 per plan. Results remain unchanged. No cosmetic edits.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08201,
+    "peak": 0.52313,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.159,
+    "sha256": "53477220eeb20e7d81a5ba15b775df1917d4eabf4e6e491a43504182133790fc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Back to 50 per plan. Results remain unchanged. No cosmetic edits."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

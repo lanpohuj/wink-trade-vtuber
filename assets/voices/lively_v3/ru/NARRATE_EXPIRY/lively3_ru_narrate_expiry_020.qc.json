@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_020",
+  "sha256": "1308595210d1d3de10826f3b45aa1d29df05c6d30a447ada2ed3d1c46639e711",
+  "expected": "Тут минутный срок. Времени чуть больше, определённости от этого не добавляется.",
+  "transcript": "Тут минутный срок. Времени чуть больше. Определенность от этого не добавляется.",
+  "similarity": 0.985,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08788,
+    "peak": 0.41372,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.082,
+    "sha256": "1308595210d1d3de10826f3b45aa1d29df05c6d30a447ada2ed3d1c46639e711"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Тут минутный срок. Времени чуть больше. Определенность от этого не добавляется."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

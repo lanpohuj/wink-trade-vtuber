@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_004",
+  "sha256": "1f41886bdb770863c3171f644907ee8a077e11f564c1deed26e4de376e02ac92",
+  "expected": "That's a loss. Not pretending it's secretly a win.",
+  "transcript": "That's a loss. Not pretending it's secretly a win.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.814,
+    "rms": 0.07842,
+    "peak": 0.4458,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.234,
+    "sha256": "1f41886bdb770863c3171f644907ee8a077e11f564c1deed26e4de376e02ac92"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.68,
+      "text": " That's a loss. Not pretending it's secretly a win."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

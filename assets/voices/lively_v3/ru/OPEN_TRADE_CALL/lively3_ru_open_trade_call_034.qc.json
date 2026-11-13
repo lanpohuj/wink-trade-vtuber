@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_call_034",
+  "sha256": "bfa5116ba3076b0bddbc71ccbe9def461dbc161ee6e2649b58d37f29c87845b2",
+  "expected": "Сделка вверх уже открыта по разворотному сценарию. Праздничный тон пока придержу.",
+  "transcript": "Сделка вверх уже открыта по разворотному сценарию. Праздничный тон пока придержу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.09394,
+    "peak": 0.38855,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.08,
+    "sha256": "bfa5116ba3076b0bddbc71ccbe9def461dbc161ee6e2649b58d37f29c87845b2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.12,
+      "text": " Сделка вверх уже открыта по разворотному сценарию."
+    },
+    {
+      "start": 3.12,
+      "end": 5.12,
+      "text": " Праздничный тон пока придержу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

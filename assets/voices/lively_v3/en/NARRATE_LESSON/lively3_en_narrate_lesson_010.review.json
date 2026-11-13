@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_010",
+  "phrase_id": "lively3_en_narrate_lesson_010",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "I like a testable idea. It usually outlives my first emotional reaction.",
+  "tts_text": "[gently sarcastic, conversational] I like a testable idea. It usually outlives my first emotional reaction.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aa9ae6d41ea2c6ab01b3434a68791ff973010bdb07e77a41cb845da92cded2b7",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_010",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_010.mp3",
+  "duration": 4.728063,
+  "sha256": "1bbd6025ded0da56b7d565a7a57b2cb544a7d1a8b439a75e3f8fbc16f916b1c2",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] I like a testable idea. It usually outlives my first emotional reaction.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

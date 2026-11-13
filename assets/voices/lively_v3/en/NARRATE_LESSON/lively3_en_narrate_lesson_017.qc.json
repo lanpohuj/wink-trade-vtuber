@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_017",
+  "sha256": "7a8bd04407ed7630601ff0b1b1f2ebd8e7089290055547c566521e0894f28ff5",
+  "expected": "Separate facts from interpretations. Even when the interpretation has charisma.",
+  "transcript": "Separate facts from interpretations, even when the interpretation has charisma.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07431,
+    "peak": 0.54714,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.139,
+    "sha256": "7a8bd04407ed7630601ff0b1b1f2ebd8e7089290055547c566521e0894f28ff5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Separate facts from interpretations, even when the interpretation has charisma."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

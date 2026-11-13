@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_048",
+  "sha256": "65038952dfbfa3aec3e1d7c4c56c6378c3be6ca509618f4fe57be8e27b7a485d",
+  "expected": "Идея должна выдержать спокойный взгляд. Без моей эмоциональной поддержки.",
+  "transcript": "Идея должна выдержать спокойный взгляд без моей эмоциональной поддержки.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.09031,
+    "peak": 0.36624,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.098,
+    "sha256": "65038952dfbfa3aec3e1d7c4c56c6378c3be6ca509618f4fe57be8e27b7a485d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " Идея должна выдержать спокойный взгляд без моей эмоциональной поддержки."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

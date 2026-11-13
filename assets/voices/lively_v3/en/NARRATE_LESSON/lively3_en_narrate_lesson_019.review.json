@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_019",
+  "phrase_id": "lively3_en_narrate_lesson_019",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Skipping a situation is a decision too. No certificate for compulsory clicking.",
+  "tts_text": "[warm, relaxed] Skipping a situation is a decision too. No certificate for compulsory clicking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f1ebe8fd19ef34ac7ab8652475d16d4390f0233d1597f869f413515762c535fd",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_019.mp3",
+  "duration": 5.30275,
+  "sha256": "e667d323dd310653842b8dbc519c40d8eb7702734d8a09ae96b9cd5207832a9e",
+  "request_payload": {
+    "text": "[warm, relaxed] Skipping a situation is a decision too. No certificate for compulsory clicking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

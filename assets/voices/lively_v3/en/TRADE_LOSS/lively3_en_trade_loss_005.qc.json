@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_005",
+  "sha256": "afdba45f970851a2af8ea7b099898b4f0aefcabaf43b72fb1f3158236014d9da",
+  "expected": "Negative result. Annoying, but no spoken argument with the chart.",
+  "transcript": "Negative result. Annoying, but no spoken argument with the chart.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07527,
+    "peak": 0.34791,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.175,
+    "sha256": "afdba45f970851a2af8ea7b099898b4f0aefcabaf43b72fb1f3158236014d9da"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Negative result. Annoying, but no spoken argument with the chart."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

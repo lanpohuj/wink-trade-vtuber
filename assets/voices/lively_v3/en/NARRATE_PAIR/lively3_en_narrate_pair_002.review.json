@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_002",
+  "phrase_id": "lively3_en_narrate_pair_002",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "New scenery. Let's see what this chart offers without my prompting.",
+  "tts_text": "[gently sarcastic, conversational] New scenery. Let's see what this chart offers without my prompting.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "aa3923822db24c8578c93f0effbd2c6d7de23278fe9eadbb1bebd59fd2568fa5",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_002",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_002.mp3",
+  "duration": 4.23175,
+  "sha256": "cfcece3102ffa676559c386c17b5a5d7661f0b375edc44c61c2a2f095e1db482",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] New scenery. Let's see what this chart offers without my prompting.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

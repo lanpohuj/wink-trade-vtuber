@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_006",
+  "sha256": "6ecb61e892d1dfcd087a2d7005af0cb3376208dd0d9f22ceb83b8304e5a74178",
+  "expected": "Вот теперь радуюсь. До закрытия держалась, можете оценить выдержку.",
+  "transcript": "Вот теперь радуясь, да закрыть я держалась, можете оценить выдержку?",
+  "similarity": 0.946,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.12,
+    "rms": 0.07593,
+    "peak": 0.35034,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.12,
+    "sha256": "6ecb61e892d1dfcd087a2d7005af0cb3376208dd0d9f22ceb83b8304e5a74178"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Вот теперь радуясь, да закрыть я держалась, можете оценить выдержку?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

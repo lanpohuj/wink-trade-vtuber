@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_027",
+  "sha256": "132b90ade75ac0212922b66803cad13337f5c5a75415c36c6ba12b9bf721edaf",
+  "expected": "Down entry on range rejection happened. Next key event: the close.",
+  "transcript": "Down entry on range rejection happened. Next key event. The close.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07952,
+    "peak": 0.39566,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.242,
+    "sha256": "132b90ade75ac0212922b66803cad13337f5c5a75415c36c6ba12b9bf721edaf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Down entry on range rejection happened. Next key event. The close."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

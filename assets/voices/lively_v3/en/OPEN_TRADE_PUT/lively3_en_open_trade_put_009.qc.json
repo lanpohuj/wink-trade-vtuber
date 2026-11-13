@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_009",
+  "sha256": "c44bfe67db10c0868aaedd43530a00e1bb3fb3424ac19dd9814ad4c2e5c610f1",
+  "expected": "Opened down: pullback confirmed. My voice doesn't make the setup infallible.",
+  "transcript": "Open down pull back confirmed my voice doesn't make the setup infallible",
+  "similarity": 0.984,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08054,
+    "peak": 0.4447,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.239,
+    "sha256": "c44bfe67db10c0868aaedd43530a00e1bb3fb3424ac19dd9814ad4c2e5c610f1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.54,
+      "text": " Open down pull back confirmed my voice doesn't make the setup infallible"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

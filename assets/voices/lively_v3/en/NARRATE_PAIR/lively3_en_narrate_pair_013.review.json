@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_013",
+  "phrase_id": "lively3_en_narrate_pair_013",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Next one, chat. We'll survive the breakup with the last chart. Probably.",
+  "tts_text": "[casual] Next one, chat. We'll survive the breakup with the last chart. Probably.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e01f52a2ba6c35aad7d6c2ad86f0570b5897db4b81172216889fd650df093739",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_013",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_013.mp3",
+  "duration": 4.597437,
+  "sha256": "5fd89d37e86bc350c970c5f34b352873f7f7b2a295b1ab995ba5f5791b4529ae",
+  "request_payload": {
+    "text": "[casual] Next one, chat. We'll survive the breakup with the last chart. Probably.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_036",
+  "sha256": "43958b13f4cb242940ca028ac3f68a0bbf98102e3037707822e2a6b40558e0af",
+  "expected": "Вниз по локальному развороту, открытие подтверждено. Теперь спокойно ждём.",
+  "transcript": "Вниз по локальному развороту. Открытие подтверждено. Теперь спокойно ждём.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.07581,
+    "peak": 0.34163,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.119,
+    "sha256": "43958b13f4cb242940ca028ac3f68a0bbf98102e3037707822e2a6b40558e0af"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Вниз по локальному развороту. Открытие подтверждено. Теперь спокойно ждём."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

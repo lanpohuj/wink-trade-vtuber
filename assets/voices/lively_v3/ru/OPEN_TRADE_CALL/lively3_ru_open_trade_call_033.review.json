@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_033",
+  "phrase_id": "lively3_ru_open_trade_call_033",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Вход вверх состоялся: локальный разворот подтверждён. Дальше слово у закрытия.",
+  "tts_text": "[conversational] Вход вверх состоялся: локальный разворот подтверждён. Дальше слово у закрытия.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8822155e75316f2e7abb9965b53df98f67befabb0b2fdfaa51ece16eee02ab6a",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_033",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_033.mp3",
+  "duration": 5.381125,
+  "sha256": "f3d01fa2c69ddd81c5afe332964014298c434d45c774dd950a03fcef8457258f",
+  "request_payload": {
+    "text": "[conversational] Вход вверх состоялся: локальный разворот подтверждён. Дальше слово у закрытия.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

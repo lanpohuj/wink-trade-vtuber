@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_019",
+  "sha256": "4e421ee41632c06962915f13f3f77c6d3f168478dc44ad4a6808941f26ea3b4f",
+  "expected": "Up opening recorded: breakout, then closed retest. Sequence beats theatrics.",
+  "transcript": "Up-opening recorded. Breakout, then closed retest. Sequence beats theatrics.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 6.4,
+    "rms": 0.07152,
+    "peak": 0.41478,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.3,
+    "sha256": "4e421ee41632c06962915f13f3f77c6d3f168478dc44ad4a6808941f26ea3b4f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.24,
+      "text": " Up-opening recorded. Breakout, then closed retest. Sequence beats theatrics."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

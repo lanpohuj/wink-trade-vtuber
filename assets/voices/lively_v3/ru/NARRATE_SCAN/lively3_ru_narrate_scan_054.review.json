@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_054",
+  "phrase_id": "lively3_ru_narrate_scan_054",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Тут важно не только заметить, но и не поспешить с выводом.",
+  "tts_text": "[conversational] Тут важно не только заметить, но и не поспешить с выводом.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "0942dc8f821d24d627b86009447d8404e797a6ea907793a265fd57ff573788a2",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_054",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_054.mp3",
+  "duration": 3.05625,
+  "sha256": "b199f7a2cad2cb2b6cfddd628e3a6a2efbfc25bae37dabdff8570e32b4b4db61",
+  "request_payload": {
+    "text": "[conversational] Тут важно не только заметить, но и не поспешить с выводом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

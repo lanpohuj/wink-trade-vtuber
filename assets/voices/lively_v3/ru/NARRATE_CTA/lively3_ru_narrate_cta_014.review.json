@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_014",
+  "phrase_id": "lively3_ru_narrate_cta_014",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Для самостоятельного знакомства с инструментами есть бот. Ссылка, как приличная, в шапке.",
+  "tts_text": "[conversational] Для самостоятельного знакомства с инструментами есть бот. Ссылка, как приличная, в шапке.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c231feb901f4767debbbb18ee853aad2420bda65b20336e56101b353eda9e947",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_014",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_014.mp3",
+  "duration": 5.381125,
+  "sha256": "d7f0e785dff38c7ebef5430ede1f0928deac205b6d547b4929d38d2a385f66f7",
+  "request_payload": {
+    "text": "[conversational] Для самостоятельного знакомства с инструментами есть бот. Ссылка, как приличная, в шапке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

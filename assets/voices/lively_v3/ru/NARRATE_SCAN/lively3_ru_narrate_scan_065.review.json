@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_scan_065",
+  "phrase_id": "lively3_ru_narrate_scan_065",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Сначала данные, потом выводы. Удивительно неудобный порядок, но правильный.",
+  "tts_text": "[conversational] Сначала данные, потом выводы. Удивительно неудобный порядок, но правильный.",
+  "conditions": {
+    "data_status": "NO_DATA"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4a63d9731513d73b8a753bbf1e7d96009500c77ab27034f7ddca72fedf6ca6c6",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_065",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_065.mp3",
+  "duration": 4.545187,
+  "sha256": "5171f911df836fa486b7383025bec6384005d5c5f0a24ba53efeb1daae6cc828",
+  "request_payload": {
+    "text": "[conversational] Сначала данные, потом выводы. Удивительно неудобный порядок, но правильный.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

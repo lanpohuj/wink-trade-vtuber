@@ -1,0 +1,42 @@
+{
+  "id": "lively3_ru_narrate_scan_001",
+  "phrase_id": "lively3_ru_narrate_scan_001",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+  "tts_text": "[conversational] Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "de520738da32575204cd221df09a7c9d63a8dbe334d37c2f125b71a7075f5cd5",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_001",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_001.mp3",
+  "duration": 6.399938,
+  "sha256": "f944efad27217a4dfd3596a1b05df0ccf32d0a6caedf376f2af20077490974ed",
+  "request_payload": {
+    "text": "[conversational] Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false,
+  "requires_listening": false,
+  "transcript": "Да-да, хочется уже нажать. Но входить на одном вайбе? Ну такое. Я ещё гляну.",
+  "automatic_qc_passed": true
+}

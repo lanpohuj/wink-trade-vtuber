@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_043",
+  "phrase_id": "lively3_en_narrate_cta_043",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Little signpost for chat: find the bot through my bio rather than buried comments.",
+  "tts_text": "[warm, relaxed] Little signpost for chat: find the bot through my bio rather than buried comments.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3cc46060af675331d854be93114146cf6c2a090cb3735c330fedebcf5b28b001",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_043",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_043.mp3",
+  "duration": 4.937063,
+  "sha256": "5379628c3e2cc0647f63c9de585c89919dce7b2590d558a73b93657291b8ec44",
+  "request_payload": {
+    "text": "[warm, relaxed] Little signpost for chat: find the bot through my bio rather than buried comments.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

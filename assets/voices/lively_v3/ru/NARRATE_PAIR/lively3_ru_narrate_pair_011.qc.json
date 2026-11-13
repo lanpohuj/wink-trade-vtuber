@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_011",
+  "sha256": "405222f8ccaf7fc4e594e34954744fd7d49df747335882bc8e8e4ee6263170e0",
+  "expected": "Заглянем на другой график. Вдруг здесь разговор будет понятнее.",
+  "transcript": "Заглянем на другой график. Вдруг здесь разговор будет понятнее.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.206,
+    "rms": 0.08818,
+    "peak": 0.37833,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.126,
+    "sha256": "405222f8ccaf7fc4e594e34954744fd7d49df747335882bc8e8e4ee6263170e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Заглянем на другой график. Вдруг здесь разговор будет понятнее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

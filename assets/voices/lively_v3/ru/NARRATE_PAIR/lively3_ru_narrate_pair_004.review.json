@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_004",
+  "phrase_id": "lively3_ru_narrate_pair_004",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Следующая пара на экране. Знакомство начинаем с проверки, я такая романтичная.",
+  "tts_text": "[conversational] Следующая пара на экране. Знакомство начинаем с проверки, я такая романтичная.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "66b9785bac2ba999538b2b41db9dc4e97ecd503267f26a4f243fe6a10c509144",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_004",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_004.mp3",
+  "duration": 5.30275,
+  "sha256": "363728c494859b4e913dc9408b96245359a926173ed3950a108955246a30a9d0",
+  "request_payload": {
+    "text": "[conversational] Следующая пара на экране. Знакомство начинаем с проверки, я такая романтичная.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

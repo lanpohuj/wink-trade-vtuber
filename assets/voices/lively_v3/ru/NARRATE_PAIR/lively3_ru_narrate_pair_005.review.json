@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_005",
+  "phrase_id": "lively3_ru_narrate_pair_005",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "Так, новый кандидат. Пока без короны «лучшая пара вечера».",
+  "tts_text": "[conversational] Так, новый кандидат. Пока без короны «лучшая пара вечера».",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2460dfde32406f2cee0577727d12ea42f4ef8940ab341abc7e54efcf1c071fe0",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:crown",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_005.mp3",
+  "duration": 3.944375,
+  "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6",
+  "request_payload": {
+    "text": "[conversational] Так, новый кандидат. Пока без короны «лучшая пара вечера».",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

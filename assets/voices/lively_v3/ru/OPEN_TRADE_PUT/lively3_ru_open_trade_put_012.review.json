@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_012",
+  "phrase_id": "lively3_ru_open_trade_put_012",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Продали после пробоя и завершённого ретеста. Сейчас без торжественного «готово».",
+  "tts_text": "[conversational] Продали после пробоя и завершённого ретеста. Сейчас без торжественного «готово».",
+  "conditions": {
+    "setup": "BREAKOUT_RETEST",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f581301d75dafad182918c41849dc96a1accd94da89897604ef0e90bc8b6dfeb",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_012",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_012.mp3",
+  "duration": 4.780312,
+  "sha256": "7c93c319e7d6d5a03d2933a93b82683482f1cbbeb7df2c532b3eda236f3de676",
+  "request_payload": {
+    "text": "[conversational] Продали после пробоя и завершённого ретеста. Сейчас без торжественного «готово».",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

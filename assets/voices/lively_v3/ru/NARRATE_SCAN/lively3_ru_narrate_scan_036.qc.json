@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_036",
+  "sha256": "02fe708bb6b5444435f638761a41c58ca43f94cae715aaf3cc819081c7289098",
+  "expected": "Смотрю без желания обязательно что-то найти. График нам ничего не должен.",
+  "transcript": "Смотрю без желания. Обязательно что-то найти. График нам ничего не должен.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.937,
+    "rms": 0.08674,
+    "peak": 0.34526,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.26,
+    "trailing_silence": 0.077,
+    "sha256": "02fe708bb6b5444435f638761a41c58ca43f94cae715aaf3cc819081c7289098"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.94,
+      "text": " Смотрю без желания. Обязательно что-то найти."
+    },
+    {
+      "start": 2.94,
+      "end": 4.94,
+      "text": " График нам ничего не должен."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

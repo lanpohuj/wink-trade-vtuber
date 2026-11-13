@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_006",
+  "phrase_id": "lively3_en_narrate_pair_006",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Changed charts. The previous setup doesn't automatically move next door.",
+  "tts_text": "[gently sarcastic, conversational] Changed charts. The previous setup doesn't automatically move next door.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "63df08651f714a61951dc0c1c13017c57baa4a468083469a8d9849cc5df0e139",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_006",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_006.mp3",
+  "duration": 4.728063,
+  "sha256": "bdfc4c5b71c7e5877caf8c5bb10ff0a86d94757fbfc5fbb9787b8f0d33b7ed7f",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Changed charts. The previous setup doesn't automatically move next door.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

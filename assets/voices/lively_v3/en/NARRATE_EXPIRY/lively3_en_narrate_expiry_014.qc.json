@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_014",
+  "sha256": "2479fd95fd2fda9de199c638a0fe50ee9c900e120f4bf73cf7f5c873c86fa0bf",
+  "expected": "Thirty seconds already selected. My jokes don't reconfigure the timer.",
+  "transcript": "30 seconds already selected. My jokes don't reconfigure the timer.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08939,
+    "peak": 0.80254,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.252,
+    "sha256": "2479fd95fd2fda9de199c638a0fe50ee9c900e120f4bf73cf7f5c873c86fa0bf"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " 30 seconds already selected. My jokes don't reconfigure the timer."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

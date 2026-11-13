@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_040",
+  "sha256": "d75c343f6b21997159ea6a6a6f978f40a34fd881ca15d32ed7b098c81c32263f",
+  "expected": "Локальный разворот подтвердился, вниз открыто. Смотрим, как закроется сделка.",
+  "transcript": "Локальный разворот подтвердился. Вниз открыто. Смотрим, как закроется сделка.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08313,
+    "peak": 0.39711,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.111,
+    "sha256": "d75c343f6b21997159ea6a6a6f978f40a34fd881ca15d32ed7b098c81c32263f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Локальный разворот подтвердился. Вниз открыто."
+    },
+    {
+      "start": 3.0,
+      "end": 5.0,
+      "text": " Смотрим, как закроется сделка."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

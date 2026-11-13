@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_034",
+  "phrase_id": "lively3_ru_open_trade_put_034",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Сделка вниз уже открыта по разворотному сценарию. Микрофон не управляет исходом.",
+  "tts_text": "[conversational] Сделка вниз уже открыта по разворотному сценарию. Микрофон не управляет исходом.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7b2889f7791b3795008767892cd06049cbf4c3c24b5a94df58a605515e1ca9c5",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_034",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_034.mp3",
+  "duration": 4.989312,
+  "sha256": "5edbaeef753e8fd31301e1a9b58a61a4a2c431c44a9d6e9a3373774b68d37fad",
+  "request_payload": {
+    "text": "[conversational] Сделка вниз уже открыта по разворотному сценарию. Микрофон не управляет исходом.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

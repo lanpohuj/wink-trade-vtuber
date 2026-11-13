@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_011",
+  "phrase_id": "lively3_en_narrate_expiry_011",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "Thirty seconds chosen. Time for watching, not for grand promises.",
+  "tts_text": "[clear, conversational] Thirty seconds chosen. Time for watching, not for grand promises.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a2d7c6fe8e71c6d9bf4d2820138a29bba94c446367c955e21fc7c80b2e3ca01f",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_011",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_011.mp3",
+  "duration": 4.910938,
+  "sha256": "4d1dc676615b1d79e4f633cedaa904d1858dd2d411b1a7c24a73c4cc4f8b4947",
+  "request_payload": {
+    "text": "[clear, conversational] Thirty seconds chosen. Time for watching, not for grand promises.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_010",
+  "phrase_id": "lively3_en_narrate_cta_010",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Let's skip broken telephone. The current bot link is in my bio.",
+  "tts_text": "[gently sarcastic, conversational] Let's skip broken telephone. The current bot link is in my bio.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "cc92a705f0f4e422e1367d8049080aa6870e9c4ced1ec6ab5bed3952597f55b9",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:skip",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_010.mp3",
+  "duration": 4.414625,
+  "sha256": "f2a417821d158b5e9091d40e06089fda8a813ee82e518db74419fece8ad82b49",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Let's skip broken telephone. The current bot link is in my bio.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

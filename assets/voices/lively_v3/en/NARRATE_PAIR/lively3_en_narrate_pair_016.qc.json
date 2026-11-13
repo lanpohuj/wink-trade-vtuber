@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_016",
+  "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d",
+  "expected": "Page turned. This chart gets its own attention.",
+  "transcript": "Page turned. This chart gets its own attention.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.187,
+    "rms": 0.07506,
+    "peak": 0.45123,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.187,
+    "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Page turned. This chart gets its own attention."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

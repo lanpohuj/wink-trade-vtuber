@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_refund_011",
+  "phrase_id": "lively3_ru_trade_refund_011",
+  "lang": "ru",
+  "category": "TRADE_REFUND",
+  "text": "Тут возврат ставки. Никаких дополнительных сюжетных поворотов не придумываю.",
+  "tts_text": "[conversational] Тут возврат ставки. Никаких дополнительных сюжетных поворотов не придумываю.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "d757ae9a4e7d8400a3e5e95d640488581e740d49edd81cf9abf87e29921948e0",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_refund_011",
+  "file": "ru/TRADE_REFUND/lively3_ru_trade_refund_011.mp3",
+  "duration": 4.937063,
+  "sha256": "d7083c4ce5032a8e12355d9f2e8e9b27adbc4bfca380aeec269dc6e786c1f418",
+  "request_payload": {
+    "text": "[conversational] Тут возврат ставки. Никаких дополнительных сюжетных поворотов не придумываю.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

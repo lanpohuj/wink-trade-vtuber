@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_044",
+  "sha256": "73eb394178a40317cf9d297b7d942bbb249a69b84e10b4be27c1555eab9dd45d",
+  "expected": "We can look without clicking. Wild concept, I know. Stream still works.",
+  "transcript": "We can look without clicking. Wild concept, I know. Stream still works.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07499,
+    "peak": 0.37048,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.269,
+    "sha256": "73eb394178a40317cf9d297b7d942bbb249a69b84e10b4be27c1555eab9dd45d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " We can look without clicking. Wild concept, I know. Stream still works."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

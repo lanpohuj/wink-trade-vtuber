@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_trade_loss_003",
+  "sha256": "8f88085f0494b46ca978ee69d020b803e7a2b82de938551718127905f12ebe6c",
+  "expected": "Closed red. I don't like it; naming it honestly is more useful.",
+  "transcript": "Closed red. I don't like it naming it honestly is more useful",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.0795,
+    "peak": 0.34441,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.125,
+    "sha256": "8f88085f0494b46ca978ee69d020b803e7a2b82de938551718127905f12ebe6c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Closed red. I don't like it naming it honestly is more useful"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

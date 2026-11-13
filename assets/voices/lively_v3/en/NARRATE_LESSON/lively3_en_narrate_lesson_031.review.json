@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_031",
+  "phrase_id": "lively3_en_narrate_lesson_031",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Knowing what you don't know is a solid start. The know-it-all act is easy.",
+  "tts_text": "[casual] Knowing what you don't know is a solid start. The know-it-all act is easy.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "b60caa0f442131847e78b4f8289cae5a09321dec946a0a145f17962ff7474425",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_031",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_031.mp3",
+  "duration": 4.519125,
+  "sha256": "364c6ff0434d20127437224dc6412ad87b6fc55f8a5b58e3e4a365fcb0787d12",
+  "request_payload": {
+    "text": "[casual] Knowing what you don't know is a solid start. The know-it-all act is easy.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

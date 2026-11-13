@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_043",
+  "phrase_id": "lively3_ru_narrate_cta_043",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Небольшой указатель для чата: бот не в комментариях, он по ссылке в шапке.",
+  "tts_text": "[conversational] Небольшой указатель для чата: бот не в комментариях, он по ссылке в шапке.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9451a14f88d851585c94c42373759bcc0c94e3e0d169e58594d14c48fed682dd",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_043",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_043.mp3",
+  "duration": 4.545187,
+  "sha256": "647f007d010a548ce5a14280d69e2339782c2abe291746551a1c34c510270d55",
+  "request_payload": {
+    "text": "[conversational] Небольшой указатель для чата: бот не в комментариях, он по ссылке в шапке.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

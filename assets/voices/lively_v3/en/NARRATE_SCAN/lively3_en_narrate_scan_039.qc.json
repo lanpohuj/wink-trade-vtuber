@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_039",
+  "sha256": "294342219d9b20a853f2da768c4943bacfcd3845da65adb249224f82d755231d",
+  "expected": "Not letting one detail steal all the attention. This isn't a solo act.",
+  "transcript": "Not letting one detail steal all the attention. This isn't a solo act.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.989,
+    "rms": 0.08331,
+    "peak": 0.45297,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.209,
+    "sha256": "294342219d9b20a853f2da768c4943bacfcd3845da65adb249224f82d755231d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " Not letting one detail steal all the attention. This isn't a solo act."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

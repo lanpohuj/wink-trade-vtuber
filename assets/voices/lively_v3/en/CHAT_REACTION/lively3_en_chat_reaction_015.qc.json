@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_015",
+  "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b",
+  "expected": "Thank you! One kind gesture and my cool-host act has a crack in it.",
+  "transcript": "Thank you one kind gesture and my cool host act has a crack in it",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08206,
+    "peak": 0.39203,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.188,
+    "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Thank you one kind gesture and my cool host act has a crack in it"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

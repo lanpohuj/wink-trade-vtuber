@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_scan_012",
+  "sha256": "06f6eaa123e61b35b0de864dd6cc0b4ea280316cdc51915dc83e689a50957f6c",
+  "expected": "Секунду. Я уже почти начала умничать, а сама ещё смотрю. Хороша, да?",
+  "transcript": "Секунду! Я уже почти начала умничать, а сама ещё смотрю! Хорошо, да?",
+  "similarity": 0.981,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08292,
+    "peak": 0.38242,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.112,
+    "sha256": "06f6eaa123e61b35b0de864dd6cc0b4ea280316cdc51915dc83e689a50957f6c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Секунду! Я уже почти начала умничать, а сама ещё смотрю!"
+    },
+    {
+      "start": 4.0,
+      "end": 5.0,
+      "text": " Хорошо, да?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

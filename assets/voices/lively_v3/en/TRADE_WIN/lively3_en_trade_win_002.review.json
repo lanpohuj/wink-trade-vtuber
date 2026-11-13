@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_002",
+  "phrase_id": "lively3_en_trade_win_002",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "That's a win! My pleased expression now has supporting evidence.",
+  "tts_text": "[gently sarcastic, conversational] That's a win! My pleased expression now has supporting evidence.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e8be5bdf89cc02cb68f759a7aed2a3701df7fcdd9ff78943716305521a7934d1",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_002",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_002.mp3",
+  "duration": 4.414625,
+  "sha256": "0a0422c7a891245c47a8732d558a8be2624713feea9ec4f317c4f1296912f51e",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] That's a win! My pleased expression now has supporting evidence.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

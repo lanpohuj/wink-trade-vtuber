@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_018",
+  "sha256": "fe7d881af200f8cad167a62bee09a9f4ed93000859c914fe7e06ac510e866dd7",
+  "expected": "Плюс на месте, чат. Праздничный пафос дозирую, чтобы хватило на эфир.",
+  "transcript": "Плюс на месте, чат! Бразничный пафос дозирую, чтобы хватило на эфир!",
+  "similarity": 0.972,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.09128,
+    "peak": 0.48548,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.116,
+    "sha256": "fe7d881af200f8cad167a62bee09a9f4ed93000859c914fe7e06ac510e866dd7"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.6,
+      "text": " Плюс на месте, чат!"
+    },
+    {
+      "start": 1.6,
+      "end": 4.6000000000000005,
+      "text": " Бразничный пафос дозирую, чтобы хватило на эфир!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_005",
+  "sha256": "31e7cc902383b12abdad01072d90814fb9e2f555076f69e620e9363150ac26be",
+  "expected": "Чат, сидим ровно. Кнопки уже нажали, теперь не тильтуем заранее.",
+  "transcript": "Чат! Сидим ровно. Кнопки уже нажали. Теперь не тельтуем заранее.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09268,
+    "peak": 0.45555,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.119,
+    "sha256": "31e7cc902383b12abdad01072d90814fb9e2f555076f69e620e9363150ac26be"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Чат! Сидим ровно. Кнопки уже нажали. Теперь не тельтуем заранее."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_033",
+  "sha256": "a46a2e04b28bea7c2c97f31396e70a4d42b252a347312c46aec217ca194e3e75",
+  "expected": "Когда данных нет, честная пауза звучит лучше выдуманного анализа.",
+  "transcript": "Когда данных нет, честная пауза звучит лучше выдуманного анализа.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.232,
+    "rms": 0.08807,
+    "peak": 0.35115,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.24,
+    "trailing_silence": 0.112,
+    "sha256": "a46a2e04b28bea7c2c97f31396e70a4d42b252a347312c46aec217ca194e3e75"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.16,
+      "text": " Когда данных нет, честная пауза звучит лучше выдуманного анализа."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

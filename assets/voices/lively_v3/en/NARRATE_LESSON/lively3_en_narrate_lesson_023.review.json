@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_023",
+  "phrase_id": "lively3_en_narrate_lesson_023",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "Statistics describe the past. They don't issue a warranty for the next trade.",
+  "tts_text": "[warm, relaxed] Statistics describe the past. They don't issue a warranty for the next trade.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "337001f1c83efdc2acb45f3f8adb2807a93049dece7feeb33bd23af7da284aee",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_023",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_023.mp3",
+  "duration": 4.806438,
+  "sha256": "0347a4a2d1222e9fdae88f2cd06c3e1af2176481986aaf32a4a835bfbdd9e899",
+  "request_payload": {
+    "text": "[warm, relaxed] Statistics describe the past. They don't issue a warranty for the next trade.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

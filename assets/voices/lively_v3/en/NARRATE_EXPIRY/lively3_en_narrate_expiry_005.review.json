@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_005",
+  "phrase_id": "lively3_en_narrate_expiry_005",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "This one's fifteen seconds. Definitely no time for a press conference.",
+  "tts_text": "[clear, conversational] This one's fifteen seconds. Definitely no time for a press conference.",
+  "conditions": {
+    "expiry": "15s"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d3148023d688f6724d5a88e64d9f5ea62e34c66e894a6e43c06456117448e1d5",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_005",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_005.mp3",
+  "duration": 5.041563,
+  "sha256": "e174aad49a87752dbdfbea1d087fd6bb82e9f7e2ec9ecc0ef2922ee6dc711518",
+  "request_payload": {
+    "text": "[clear, conversational] This one's fifteen seconds. Definitely no time for a press conference.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

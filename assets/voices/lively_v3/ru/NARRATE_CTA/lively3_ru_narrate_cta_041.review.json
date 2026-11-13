@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_041",
+  "phrase_id": "lively3_ru_narrate_cta_041",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Бот в шапке профиля объясняет шаги доступа. Я бы тоже объяснила, но он терпеливее.",
+  "tts_text": "[conversational] Бот в шапке профиля объясняет шаги доступа. Я бы тоже объяснила, но он терпеливее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "9660c2037357f210ea6909ac30379018ad261bcb455f3483bc992ba155de115b",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_041",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_041.mp3",
+  "duration": 5.30275,
+  "sha256": "02e2f49cc1a35c6507f3f3b1d5fd195664d70713d578aced4ca2e531f75f5495",
+  "request_payload": {
+    "text": "[conversational] Бот в шапке профиля объясняет шаги доступа. Я бы тоже объяснила, но он терпеливее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_040",
+  "sha256": "e0b8c5c42dbbb3ce351bb84eb3814553d96dedb69408340fef6db425ab0377c0",
+  "expected": "Sometimes the most useful analysis is saying 'not clear yet' at the right time.",
+  "transcript": "Sometimes the most useful analysis is saying not clear yet at the right time.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08528,
+    "peak": 0.41543,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.085,
+    "sha256": "e0b8c5c42dbbb3ce351bb84eb3814553d96dedb69408340fef6db425ab0377c0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5,
+      "text": " Sometimes the most useful analysis is saying not clear yet at the right time."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

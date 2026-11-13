@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_011",
+  "sha256": "8cb068817eebc882ce790f3d3e68f36a1e0856e7514b754ecd889490ed173cd8",
+  "expected": "If I look exceptionally clever, don't panic. Sometimes it's just the lighting.",
+  "transcript": "If I look exceptionally clever, don't panic. Sometimes it's just the lighting.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08204,
+    "peak": 0.48842,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.171,
+    "sha256": "8cb068817eebc882ce790f3d3e68f36a1e0856e7514b754ecd889490ed173cd8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " If I look exceptionally clever, don't panic. Sometimes it's just the lighting."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

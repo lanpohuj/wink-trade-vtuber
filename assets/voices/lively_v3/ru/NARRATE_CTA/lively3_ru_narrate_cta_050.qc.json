@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_050",
+  "sha256": "482c27c4844da0c0b1da20ea352c4ddf408f723f9ee5f8f42a6f5a5e988b2301",
+  "expected": "Бот в шапке профиля. Всё, больше не душню, возвращаемся к эфиру.",
+  "transcript": "Вот в шапке профиля. Всё, больше не душню, возвращаемся к эфиру.",
+  "similarity": 0.98,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.198,
+    "rms": 0.06526,
+    "peak": 0.30355,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.098,
+    "sha256": "482c27c4844da0c0b1da20ea352c4ddf408f723f9ee5f8f42a6f5a5e988b2301"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Вот в шапке профиля."
+    },
+    {
+      "start": 2.0,
+      "end": 5.0,
+      "text": " Всё, больше не душню, возвращаемся к эфиру."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

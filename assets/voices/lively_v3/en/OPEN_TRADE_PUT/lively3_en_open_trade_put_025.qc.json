@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_025",
+  "sha256": "f2bca8bd1c63977330a2ca1767213e715e81734f6aad8477bc6dbab087eaeb7e",
+  "expected": "Opened down after rejection confirmation. Range setup recorded as the entry reason.",
+  "transcript": "Open down after rejection confirmation. Range setup recorded as the entry reason.",
+  "similarity": 0.986,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.068,
+    "rms": 0.08476,
+    "peak": 0.44635,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.108,
+    "sha256": "f2bca8bd1c63977330a2ca1767213e715e81734f6aad8477bc6dbab087eaeb7e"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.04,
+      "text": " Open down after rejection confirmation. Range setup recorded as the entry reason."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

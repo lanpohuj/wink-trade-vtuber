@@ -1,0 +1,29 @@
+{
+  "bank": "streamer_v2",
+  "events": [
+    {
+      "at": "2026-11-13 00:33:28,623",
+      "kind": "start",
+      "event": "smoke:ru"
+    },
+    {
+      "at": "2026-11-13 00:33:34,588",
+      "kind": "end",
+      "event": "smoke:ru"
+    },
+    {
+      "at": "2026-11-13 00:33:34,958",
+      "kind": "start",
+      "event": "smoke:en"
+    },
+    {
+      "at": "2026-11-13 00:33:41,687",
+      "kind": "end",
+      "event": "smoke:en"
+    }
+  ],
+  "max_simultaneous_players_in_controller": 1,
+  "new_paid_tts_requests": 0,
+  "model_visual_acceptance": false,
+  "reason": "Smoke screenshot entirely transparent; asset transfer raised No buffer space available; avatar.js unchanged"
+}

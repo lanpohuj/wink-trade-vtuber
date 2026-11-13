@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_engage_023",
+  "phrase_id": "lively3_en_narrate_engage_023",
+  "lang": "en",
+  "category": "NARRATE_ENGAGE",
+  "text": "How's the mood, chat? Honest answers welcome, no corporate 'all great' required.",
+  "tts_text": "[warm, relaxed] How's the mood, chat? Honest answers welcome, no corporate 'all great' required.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2fb975d4821d8971470b90f1e1debfa6b53f464b90a7b3998eb4f299f57072d6",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_engage_023",
+  "file": "en/NARRATE_ENGAGE/lively3_en_narrate_engage_023.mp3",
+  "duration": 5.2505,
+  "sha256": "46c485665f1b1d8898eeb939884fd2a8c55f600d99522c99823ee8a96b887c52",
+  "request_payload": {
+    "text": "[warm, relaxed] How's the mood, chat? Honest answers welcome, no corporate 'all great' required.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

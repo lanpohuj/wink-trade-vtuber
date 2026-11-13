@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_024",
+  "phrase_id": "lively3_en_narrate_lesson_024",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "The word 'system' doesn't remove risk. Not even in a beautiful font.",
+  "tts_text": "[natural, conversational] The word 'system' doesn't remove risk. Not even in a beautiful font.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "86fa62eccf1e055f7e693ebb84efa9b3f215c656453884d3e47dc0cfa1cbb394",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_024",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_024.mp3",
+  "duration": 4.597437,
+  "sha256": "e92bbd2d1af979d27baf83941e9eb941831d3b37806e2eb022aab23e790a06ec",
+  "request_payload": {
+    "text": "[natural, conversational] The word 'system' doesn't remove risk. Not even in a beautiful font.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

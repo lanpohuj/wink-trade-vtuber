@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_042",
+  "phrase_id": "lively3_ru_narrate_scan_042",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "У нас небольшая пауза на здравый смысл. Редкий, но полезный контент.",
+  "tts_text": "[conversational] У нас небольшая пауза на здравый смысл. Редкий, но полезный контент.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "665887b84ade2e5541f51221eea3200ab40212ed52b8b8e2649210882258c5c3",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_042",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_042.mp3",
+  "duration": 4.414625,
+  "sha256": "7f743fd6bbfa1d2e87257ed1681da4c8a50bbf7c1564cdff52629b8eca157302",
+  "request_payload": {
+    "text": "[conversational] У нас небольшая пауза на здравый смысл. Редкий, но полезный контент.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_056",
+  "phrase_id": "lively3_en_narrate_scan_056",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Filtering ideas. Some sound excellent right up until you check them.",
+  "tts_text": "[natural, conversational] Filtering ideas. Some sound excellent right up until you check them.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "86684c5d3f531f0269f7bbd819b2a52abeed547d239c1e0bc68a847bb0c316e9",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_056",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_056.mp3",
+  "duration": 4.23175,
+  "sha256": "ae48ee170328fa25c901743a979da6eb88e09c79ffd8b8f06972efab511a2f27",
+  "request_payload": {
+    "text": "[natural, conversational] Filtering ideas. Some sound excellent right up until you check them.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

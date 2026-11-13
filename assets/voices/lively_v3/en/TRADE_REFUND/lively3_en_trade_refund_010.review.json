@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_010",
+  "phrase_id": "lively3_en_trade_refund_010",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Refund, chat. Neither a win nor a loss. That's the ending's vibe.",
+  "tts_text": "[casual] Refund, chat. Neither a win nor a loss. That's the ending's vibe.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4a025a7df9f09a38fa6a692a0980dd6931977a9134c2ad4e0d077a2a7eed9214",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_010",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_010.mp3",
+  "duration": 4.519125,
+  "sha256": "a88b5e5fba08b686c8e90126c9bdad09cd246e6153ded729bd615414de5634a9",
+  "request_payload": {
+    "text": "[casual] Refund, chat. Neither a win nor a loss. That's the ending's vibe.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

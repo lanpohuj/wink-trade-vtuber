@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_lesson_006",
+  "phrase_id": "lively3_ru_narrate_lesson_006",
+  "lang": "ru",
+  "category": "NARRATE_LESSON",
+  "text": "Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется.",
+  "tts_text": "[conversational] Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f2314f0cc94e3c969c036ca3e2e995601274ff8892b22f67511c3fd3ab152427",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_lesson_006",
+  "file": "ru/NARRATE_LESSON/lively3_ru_narrate_lesson_006.mp3",
+  "duration": 5.172125,
+  "sha256": "cb73e03dbe957a81ded68af8b95696bd8e6cc2519a54cae9b62ac3c07f154ecc",
+  "request_payload": {
+    "text": "[conversational] Пока сделка не закрылась, рано писать ей счастливый конец. Даже если очень хочется.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

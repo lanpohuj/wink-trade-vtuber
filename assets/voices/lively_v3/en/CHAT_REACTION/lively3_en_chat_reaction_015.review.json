@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_015",
+  "phrase_id": "lively3_en_chat_reaction_015",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Thank you! One kind gesture and my cool-host act has a crack in it.",
+  "tts_text": "[warm, relaxed] Thank you! One kind gesture and my cool-host act has a crack in it.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "8bcb726a4da0178d9202362f61fb679c0147e0be463d33a46198a47b8a44a5c0",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_015",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_015.mp3",
+  "duration": 5.067687,
+  "sha256": "ea3a4492f7ce35e1c11d42e0777c84cb2c700c58753d83b04c4db6c698de189b",
+  "request_payload": {
+    "text": "[warm, relaxed] Thank you! One kind gesture and my cool-host act has a crack in it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

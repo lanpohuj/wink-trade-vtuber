@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_030",
+  "phrase_id": "lively3_en_chat_reaction_030",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "To explore the tools, open the bot through my profile. Instructions are already inside.",
+  "tts_text": "[gently sarcastic, conversational] To explore the tools, open the bot through my profile. Instructions are already inside.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "2eb01c461ec8919989380beabf0b4a19847434f56f1846a836f758079da53647",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_030",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_030.mp3",
+  "duration": 5.642375,
+  "sha256": "777de766eebb8d63f767bb7a779e4262e2d6db384426f3b02a57128e7662d1d5",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] To explore the tools, open the bot through my profile. Instructions are already inside.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

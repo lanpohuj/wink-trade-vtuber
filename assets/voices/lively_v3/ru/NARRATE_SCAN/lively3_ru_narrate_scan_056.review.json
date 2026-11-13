@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_056",
+  "phrase_id": "lively3_ru_narrate_scan_056",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Я сейчас фильтрую идеи. Некоторые очень убедительные, пока не проверишь.",
+  "tts_text": "[conversational] Я сейчас фильтрую идеи. Некоторые очень убедительные, пока не проверишь.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "f7d0299f968dabb4f7eb555cb7305799ecb60c7d48a066dfeee686d65ef7d600",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_056",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_056.mp3",
+  "duration": 4.597437,
+  "sha256": "6ad001a0d919fc2619bf7547b26509a4b1545eedea51b1f754eac255ff5e5e8e",
+  "request_payload": {
+    "text": "[conversational] Я сейчас фильтрую идеи. Некоторые очень убедительные, пока не проверишь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

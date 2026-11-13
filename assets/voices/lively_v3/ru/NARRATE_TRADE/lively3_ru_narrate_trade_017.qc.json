@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_trade_017",
+  "sha256": "fbf3c548bddc61bc8a9516039ff26fa8df99c173304c06c137b63cd0e0580552",
+  "expected": "Смотрим дальше. Пока результат не закрыт, табличку с выводами не достаю.",
+  "transcript": "Смотрим дальше. Пока результат не закрыт, табличку с выводами не достаю.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.08419,
+    "peak": 0.33086,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "fbf3c548bddc61bc8a9516039ff26fa8df99c173304c06c137b63cd0e0580552"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Смотрим дальше. Пока результат не закрыт, табличку с выводами не достаю."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

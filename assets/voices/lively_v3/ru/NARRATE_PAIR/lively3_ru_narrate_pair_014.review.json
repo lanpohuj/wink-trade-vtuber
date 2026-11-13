@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_pair_014",
+  "phrase_id": "lively3_ru_narrate_pair_014",
+  "lang": "ru",
+  "category": "NARRATE_PAIR",
+  "text": "У нас смена главного героя. Но сценарий за него писать не будем.",
+  "tts_text": "[conversational] У нас смена главного героя. Но сценарий за него писать не будем.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "38723c3fc930d434314edbb760e828879c8ec91fe6fe6233c7d2913f03bdaf58",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_pair_014",
+  "file": "ru/NARRATE_PAIR/lively3_ru_narrate_pair_014.mp3",
+  "duration": 4.205625,
+  "sha256": "16d974ed698ba4a57d83751ffc2eac3a03be804ddb5d5ee0ca5191d85f88f0f2",
+  "request_payload": {
+    "text": "[conversational] У нас смена главного героя. Но сценарий за него писать не будем.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

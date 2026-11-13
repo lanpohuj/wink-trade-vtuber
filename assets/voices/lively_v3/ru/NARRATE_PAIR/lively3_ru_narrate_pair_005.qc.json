@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_005",
+  "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6",
+  "expected": "Так, новый кандидат. Пока без короны «лучшая пара вечера».",
+  "transcript": "Так, новый кандидат. Пока бескороны, лучшая пара вечера.",
+  "similarity": 0.978,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.07887,
+    "peak": 0.35405,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.105,
+    "sha256": "e066d872fc380f3301135e52d1c4aa3bd7ac7f7d72f939f3106e7dd026c5f6e6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Так, новый кандидат. Пока бескороны, лучшая пара вечера."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

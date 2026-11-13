@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_022",
+  "sha256": "935ca3fd82a13c1b11e75db9415f63cfc14f3b3bde2998e30afaf66c2cbc9488",
+  "expected": "Если приходится додумывать половину картины, лучше проверить ещё раз.",
+  "transcript": "Если приходится додумывать половину картины, лучше проверить еще раз.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.676,
+    "rms": 0.08262,
+    "peak": 0.32883,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.176,
+    "sha256": "935ca3fd82a13c1b11e75db9415f63cfc14f3b3bde2998e30afaf66c2cbc9488"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Если приходится додумывать половину картины, лучше проверить еще раз."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_scan_029",
+  "sha256": "8c41542a21a716a04f0467c93cbc0fb37b8b5cea575d1c423763f70ff889a2c3",
+  "expected": "Собираю условия вместе. По отдельности они тоже умеют обманывать ожидания.",
+  "transcript": "Собираю условия вместе. По отдельности, они тоже умеют обманывать ожидания.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.08961,
+    "peak": 0.34143,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.109,
+    "sha256": "8c41542a21a716a04f0467c93cbc0fb37b8b5cea575d1c423763f70ff889a2c3"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Собираю условия вместе. По отдельности, они тоже умеют обманывать ожидания."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

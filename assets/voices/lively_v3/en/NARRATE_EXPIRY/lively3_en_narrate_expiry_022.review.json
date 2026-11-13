@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_expiry_022",
+  "phrase_id": "lively3_en_narrate_expiry_022",
+  "lang": "en",
+  "category": "NARRATE_EXPIRY",
+  "text": "One minute for the trade, chat. Breathe, then keep watching.",
+  "tts_text": "[clear, conversational] One minute for the trade, chat. Breathe, then keep watching.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "ad4bf4344fd7a4a3a06cc5d38063c331f366128befdd57af14b9ce780903556c",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_expiry_022",
+  "file": "en/NARRATE_EXPIRY/lively3_en_narrate_expiry_022.mp3",
+  "duration": 3.892125,
+  "sha256": "ed22766de667063f448174ce3ada5d8c0da88ddd26ac07b3d6ec0fb0967cf419",
+  "request_payload": {
+    "text": "[clear, conversational] One minute for the trade, chat. Breathe, then keep watching.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

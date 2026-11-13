@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_038",
+  "phrase_id": "lively3_ru_narrate_scan_038",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Нажать можно за секунду. А вот отменить поспешность уже сложнее.",
+  "tts_text": "[conversational] Нажать можно за секунду. А вот отменить поспешность уже сложнее.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "2440161b56786d3e9bb3f90c02fa2227c7ab677e2a890fe71521b592c08c42da",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_038",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_038.mp3",
+  "duration": 4.33625,
+  "sha256": "c003d375fe1729278bb511c75413c4df06be0b0997b1ba06f1490fa7282a69c1",
+  "request_payload": {
+    "text": "[conversational] Нажать можно за секунду. А вот отменить поспешность уже сложнее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

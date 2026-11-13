@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_trade_010",
+  "phrase_id": "lively3_en_narrate_trade_010",
+  "lang": "en",
+  "category": "NARRATE_TRADE",
+  "text": "Waiting. Yep, this is the gameplay right now. I'd like a fast-forward button too.",
+  "tts_text": "[casual] Waiting. Yep, this is the gameplay right now. I'd like a fast-forward button too.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "f6eff112dfdde954ff5802c67371e428b184f411fb1a4991b800a027ac8245ac",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_trade_010",
+  "file": "en/NARRATE_TRADE/lively3_en_narrate_trade_010.mp3",
+  "duration": 5.773,
+  "sha256": "aa6223088b70e717a2376dba1b2ec4be8a97492cb157e9c7ef1f36012ef49e58",
+  "request_payload": {
+    "text": "[casual] Waiting. Yep, this is the gameplay right now. I'd like a fast-forward button too.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

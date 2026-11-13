@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_029",
+  "sha256": "16fc778af18b3fc712bd9c59abfd913a67116e1c23c1fda172852f2bf775b175",
+  "expected": "Down on the range rejection, trade running. Overconfidence wasn't among the conditions.",
+  "transcript": "Down on the range rejection, trade running, overconfidence wasn't among the conditions.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.46,
+    "rms": 0.08037,
+    "peak": 0.3852,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.28,
+    "sha256": "16fc778af18b3fc712bd9c59abfd913a67116e1c23c1fda172852f2bf775b175"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down on the range rejection, trade running, overconfidence wasn't among the conditions."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

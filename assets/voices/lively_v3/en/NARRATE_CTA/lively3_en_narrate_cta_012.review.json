@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_012",
+  "phrase_id": "lively3_en_narrate_cta_012",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "Tiny announcement, no marching band: find the bot through my bio.",
+  "tts_text": "[natural, conversational] Tiny announcement, no marching band: find the bot through my bio.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "3359ea77f75e9e2b78a7d552923a735d5f27a314cade1c417a77fd305e95afc1",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_cta_012",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_012.mp3",
+  "duration": 4.33625,
+  "sha256": "d4cfa75a528dabf9254fb0fe40f46c5f301c52a58b112b131a8434614549d808",
+  "request_payload": {
+    "text": "[natural, conversational] Tiny announcement, no marching band: find the bot through my bio.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

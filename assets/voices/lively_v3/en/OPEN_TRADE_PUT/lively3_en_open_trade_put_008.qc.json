@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_008",
+  "sha256": "ec4f1a7bace13941976436cb7615648b28129c77baf4bdf0765652a6ef1715e0",
+  "expected": "Down on the trend pullback, entry already happened. No extra narrative needed.",
+  "transcript": "Down on the trend pullback, entry already happened. No extra narrative needed.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08625,
+    "peak": 0.44938,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.182,
+    "sha256": "ec4f1a7bace13941976436cb7615648b28129c77baf4bdf0765652a6ef1715e0"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Down on the trend pullback, entry already happened. No extra narrative needed."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

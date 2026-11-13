@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_put_025",
+  "phrase_id": "lively3_ru_open_trade_put_025",
+  "lang": "ru",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Открыли вниз после подтверждения отбоя. Диапазон зафиксирован в причине входа.",
+  "tts_text": "[conversational] Открыли вниз после подтверждения отбоя. Диапазон зафиксирован в причине входа.",
+  "conditions": {
+    "setup": "RANGE_REJECTION",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "59ba4230ae72f7f0ad7d190c343f6e03c5d9a01dc23132c31ed547787db7de50",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_put_025",
+  "file": "ru/OPEN_TRADE_PUT/lively3_ru_open_trade_put_025.mp3",
+  "duration": 4.780312,
+  "sha256": "deef4c8b1586e85aaa4a47ea847f591bfc40f86462218a593b79f28baf30ad06",
+  "request_payload": {
+    "text": "[conversational] Открыли вниз после подтверждения отбоя. Диапазон зафиксирован в причине входа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

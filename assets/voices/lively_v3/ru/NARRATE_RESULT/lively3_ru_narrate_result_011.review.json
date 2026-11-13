@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_result_011",
+  "phrase_id": "lively3_ru_narrate_result_011",
+  "lang": "ru",
+  "category": "NARRATE_RESULT",
+  "text": "Дальше по последовательности двести сорок два. Проверять будем с той же строгостью.",
+  "tts_text": "[conversational] Дальше по последовательности двести сорок два. Проверять будем с той же строгостью.",
+  "conditions": {
+    "result_kind": "LOSS_242"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "1d00f7ec372448de875d273cbd397728525c8cd9b71bb259af14eecce44faa9a",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_RESULT",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_result_011",
+  "file": "ru/NARRATE_RESULT/lively3_ru_narrate_result_011.mp3",
+  "duration": 4.937063,
+  "sha256": "9d9bb7afb78d7fd44e0b68680072266472bfb0c82229797d18c2ccbda21dcd20",
+  "request_payload": {
+    "text": "[conversational] Дальше по последовательности двести сорок два. Проверять будем с той же строгостью.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

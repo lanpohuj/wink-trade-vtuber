@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_022",
+  "phrase_id": "lively3_ru_narrate_engage_022",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Если у вас тоже двадцать открытых вкладок, мы уже немного знакомы.",
+  "tts_text": "[conversational] Если у вас тоже двадцать открытых вкладок, мы уже немного знакомы.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4fb699b48db654d2acd102e0f08c983dd324f9b900894c7d1355755238cd3941",
+  "delivery": "conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_022",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_022.mp3",
+  "duration": 4.075,
+  "sha256": "6c004009c34044504d4687d7acf51562e838d5af8a0a55196dbccf2304b37e71",
+  "request_payload": {
+    "text": "[conversational] Если у вас тоже двадцать открытых вкладок, мы уже немного знакомы.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

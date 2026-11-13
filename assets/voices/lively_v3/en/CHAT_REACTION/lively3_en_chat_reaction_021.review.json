@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_021",
+  "phrase_id": "lively3_en_chat_reaction_021",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "Find the bot through my bio. Access conditions and steps are inside.",
+  "tts_text": "[lightly playful, smiling] Find the bot through my bio. Access conditions and steps are inside.",
+  "conditions": {
+    "chat_kind": "bot"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a18e0683634cfa67ebfec180cf6e26c9760c34f959edec79a47e05012e2e4a67",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_021",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_021.mp3",
+  "duration": 4.545187,
+  "sha256": "57323cca83b812fcd1565a0db81a556f1f25394f9dfa4140eb72f948a4a68158",
+  "request_payload": {
+    "text": "[lightly playful, smiling] Find the bot through my bio. Access conditions and steps are inside.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_021",
+  "phrase_id": "lively3_ru_narrate_cta_021",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Новенькие, бот в шапке. Всё, мини-гайд выдала, возвращаюсь к своим делам.",
+  "tts_text": "[conversational] Новенькие, бот в шапке. Всё, мини-гайд выдала, возвращаюсь к своим делам.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c3bd28f65b83209b4e1f4d62d74c61a50769f9f37e980e965dcb614c771ec171",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_021",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_021.mp3",
+  "duration": 5.642375,
+  "sha256": "d19d7b5d4d1a3792d44d1ba6d63be92567be6aec096e06c37a837efc11efde57",
+  "request_payload": {
+    "text": "[conversational] Новенькие, бот в шапке. Всё, мини-гайд выдала, возвращаюсь к своим делам.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_scan_043",
+  "phrase_id": "lively3_ru_narrate_scan_043",
+  "lang": "ru",
+  "category": "NARRATE_SCAN",
+  "text": "Ведущая на месте, мысли тоже. Просто я решила сначала проверить.",
+  "tts_text": "[conversational] Ведущая на месте, мысли тоже. Просто я решила сначала проверить.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "84c80dabbd9b9e308408d643dd8e6ac75f58c11a9e5c6f4912569caae5701f07",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_scan_043",
+  "file": "ru/NARRATE_SCAN/lively3_ru_narrate_scan_043.mp3",
+  "duration": 5.328875,
+  "sha256": "257a7531bcf16dcf674fac56a1c533e25113676fac8fafeab804f072caf4a942",
+  "request_payload": {
+    "text": "[conversational] Ведущая на месте, мысли тоже. Просто я решила сначала проверить.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

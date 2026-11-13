@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_trade_win_017",
+  "sha256": "8bb15909a886d67a46da9a0ed1b367de97b5332352ba78cdf39cefe0c902cdb6",
+  "expected": "О, вот теперь можно красиво улыбнуться. Сделка закрыта в плюс.",
+  "transcript": "О, вот теперь можно красиво улыбнуться. Сделка закрыта в плюс.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08204,
+    "peak": 0.36727,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.145,
+    "sha256": "8bb15909a886d67a46da9a0ed1b367de97b5332352ba78cdf39cefe0c902cdb6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.48,
+      "text": " О, вот теперь можно красиво улыбнуться. Сделка закрыта в плюс."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

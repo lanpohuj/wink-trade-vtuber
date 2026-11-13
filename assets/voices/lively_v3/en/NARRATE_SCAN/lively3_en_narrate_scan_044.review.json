@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_044",
+  "phrase_id": "lively3_en_narrate_scan_044",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "We can look without clicking. Wild concept, I know. Stream still works.",
+  "tts_text": "[casual] We can look without clicking. Wild concept, I know. Stream still works.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "1389658305aef397e9677a4e4f014719a816b9828fdabaf7cd4693d4173968b5",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_044",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_044.mp3",
+  "duration": 5.328875,
+  "sha256": "73eb394178a40317cf9d297b7d942bbb249a69b84e10b4be27c1555eab9dd45d",
+  "request_payload": {
+    "text": "[casual] We can look without clicking. Wild concept, I know. Stream still works.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

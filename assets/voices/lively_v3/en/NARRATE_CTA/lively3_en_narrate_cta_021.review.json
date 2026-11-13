@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_cta_021",
+  "phrase_id": "lively3_en_narrate_cta_021",
+  "lang": "en",
+  "category": "NARRATE_CTA",
+  "text": "New here? Bot link's in my bio. Tutorial complete; I'll stop yapping now.",
+  "tts_text": "[casual] New here? Bot link's in my bio. Tutorial complete; I'll stop yapping now.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "64189482bf3b1b492a7291d5ca67ad9a779b11862c3c56a5be5cf4eb7a49991f",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "en:yapping",
+  "file": "en/NARRATE_CTA/lively3_en_narrate_cta_021.mp3",
+  "duration": 5.4595,
+  "sha256": "352b852039cc0a560881841e0adb78f676afd6b5a4197bcc4f3928fb58522d2f",
+  "request_payload": {
+    "text": "[casual] New here? Bot link's in my bio. Tutorial complete; I'll stop yapping now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

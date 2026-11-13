@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_chat_reaction_013",
+  "phrase_id": "lively3_en_chat_reaction_013",
+  "lang": "en",
+  "category": "CHAT_REACTION",
+  "text": "What a surprise, thank you! Unexpected kindness is always welcome.",
+  "tts_text": "[lightly playful, smiling] What a surprise, thank you! Unexpected kindness is always welcome.",
+  "conditions": {
+    "chat_kind": "gift"
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "888d968722e9dc175f68713f74a0b8df40f688d0f85a5ed31f985615a0e8bddd",
+  "delivery": "lightly playful, smiling",
+  "tone": "playful",
+  "topic": "CHAT_REACTION",
+  "max_duration_sec": 8,
+  "semantic_group": "en:chat_reaction_013",
+  "file": "en/CHAT_REACTION/lively3_en_chat_reaction_013.mp3",
+  "duration": 5.041563,
+  "sha256": "96fd269da5d81621084021211ae29f7ffe90ec6a2c6c478c8cf608eb7701af1b",
+  "request_payload": {
+    "text": "[lightly playful, smiling] What a surprise, thank you! Unexpected kindness is always welcome.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

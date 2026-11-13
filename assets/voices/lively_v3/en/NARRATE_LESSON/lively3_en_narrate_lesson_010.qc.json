@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_010",
+  "sha256": "1bbd6025ded0da56b7d565a7a57b2cb544a7d1a8b439a75e3f8fbc16f916b1c2",
+  "expected": "I like a testable idea. It usually outlives my first emotional reaction.",
+  "transcript": "I like a testable idea. It usually outlives my first emotional reaction.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07665,
+    "peak": 0.3603,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.128,
+    "sha256": "1bbd6025ded0da56b7d565a7a57b2cb544a7d1a8b439a75e3f8fbc16f916b1c2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " I like a testable idea. It usually outlives my first emotional reaction."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

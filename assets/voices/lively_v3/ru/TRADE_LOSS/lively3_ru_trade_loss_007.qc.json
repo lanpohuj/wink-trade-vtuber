@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_loss_007",
+  "sha256": "174a6acbf2be0c0f7c22ad66fc483f21650d0a2cade74cfb08c0e6bfe5f87c23",
+  "expected": "Не зашло, сделка закрыта в минус. У результата нет кнопки «переубедить».",
+  "transcript": "Не зашло! Сделка закрыта в минус! У результата нет кнопки переубедить.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.06764,
+    "peak": 0.29314,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.131,
+    "sha256": "174a6acbf2be0c0f7c22ad66fc483f21650d0a2cade74cfb08c0e6bfe5f87c23"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7600000000000002,
+      "text": " Не зашло! Сделка закрыта в минус!"
+    },
+    {
+      "start": 2.7600000000000002,
+      "end": 4.88,
+      "text": " У результата нет кнопки переубедить."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_047",
+  "sha256": "a043f404c6a9f8102b87eb89be5bc3e7f65d7c7266989386fd4ca21384dfbecb",
+  "expected": "Time for a tiny reminder: bot through my bio. No magic, just a link.",
+  "transcript": "Time for a tiny reminder. Bought through my bio. No magic, just a link.",
+  "similarity": 0.971,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08049,
+    "peak": 0.39582,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.194,
+    "sha256": "a043f404c6a9f8102b87eb89be5bc3e7f65d7c7266989386fd4ca21384dfbecb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Time for a tiny reminder. Bought through my bio. No magic, just a link."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_030",
+  "phrase_id": "lively3_en_narrate_scan_030",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Not quite an 'okay, we're cooking' moment yet. Still looking.",
+  "tts_text": "[casual] Not quite an 'okay, we're cooking' moment yet. Still looking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "9af481e1572f2300af1a980cbef93b67cd88c4b35bc3df79a67993372c19b6b2",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_030",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_030.mp3",
+  "duration": 3.892125,
+  "sha256": "d667eb9327ce68c3b3c5e8e5d16cd308b851c4167b8f9765caac26447fe9573e",
+  "request_payload": {
+    "text": "[casual] Not quite an 'okay, we're cooking' moment yet. Still looking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

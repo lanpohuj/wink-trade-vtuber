@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_engage_023",
+  "phrase_id": "lively3_ru_narrate_engage_023",
+  "lang": "ru",
+  "category": "NARRATE_ENGAGE",
+  "text": "Как настроение, чат? Можно ответить честно, а не корпоративным «всё отлично».",
+  "tts_text": "[conversational] Как настроение, чат? Можно ответить честно, а не корпоративным «всё отлично».",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8e9f61de86657b02b3fdf214c7a9280b34eb050d276713d25c38f42f7dc2280d",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "NARRATE_ENGAGE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_engage_023",
+  "file": "ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_023.mp3",
+  "duration": 5.328875,
+  "sha256": "d1bfbd69d9c8466ff6e53b6a0c0f0de5a89612b8ec87a9bb67741c431cdc443f",
+  "request_payload": {
+    "text": "[conversational] Как настроение, чат? Можно ответить честно, а не корпоративным «всё отлично».",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

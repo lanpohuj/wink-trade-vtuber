@@ -1,0 +1,44 @@
+{
+  "id": "lively3_en_open_trade_put_036",
+  "phrase_id": "lively3_en_open_trade_put_036",
+  "lang": "en",
+  "category": "OPEN_TRADE_PUT",
+  "text": "Down on local reversal, opening confirmed. Waiting calmly now.",
+  "tts_text": "[clear, conversational] Down on local reversal, opening confirmed. Waiting calmly now.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "SELL",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "549b8d4efc70d66f2d2daae49d22939f6dfcefb78a1bf3ebd35ae8b132c7fcc7",
+  "delivery": "clear, conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_PUT",
+  "max_duration_sec": 10,
+  "semantic_group": "en:open_trade_put_036",
+  "file": "en/OPEN_TRADE_PUT/lively3_en_open_trade_put_036.mp3",
+  "duration": 4.728063,
+  "sha256": "20de6aa4fe1c26b16e0bbc2e5b5f298569f5fbc5d7e213f4194887765e22ed99",
+  "request_payload": {
+    "text": "[clear, conversational] Down on local reversal, opening confirmed. Waiting calmly now.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

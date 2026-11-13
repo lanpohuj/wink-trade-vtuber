@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_017",
+  "sha256": "2ed9bee456bf184ac85721b8318da17e6e5bc7c3c5b9831d819bb3f123117aef",
+  "expected": "We put the bot link in the bio. Groundbreaking design: making things findable.",
+  "transcript": "We put the bot link in the bio. Groundbreaking design. Making things findable.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08035,
+    "peak": 0.37461,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.082,
+    "sha256": "2ed9bee456bf184ac85721b8318da17e6e5bc7c3c5b9831d819bb3f123117aef"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.88,
+      "text": " We put the bot link in the bio. Groundbreaking design. Making things findable."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

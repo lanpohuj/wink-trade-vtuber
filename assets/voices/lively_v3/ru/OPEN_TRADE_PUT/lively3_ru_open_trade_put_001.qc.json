@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_001",
+  "sha256": "968f13477bbd51da0755c0cda9d704243dcc804f55f06ae884f43b8ee2684870",
+  "expected": "Открылись вниз после подтверждённого отката. Кнопка свою реплику уже сказала.",
+  "transcript": "Открылись вниз после подтвержденного отката. Кнопка свою реплику уже сказала.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.519,
+    "rms": 0.08085,
+    "peak": 0.41575,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.099,
+    "sha256": "968f13477bbd51da0755c0cda9d704243dcc804f55f06ae884f43b8ee2684870"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.56,
+      "text": " Открылись вниз после подтвержденного отката."
+    },
+    {
+      "start": 2.56,
+      "end": 4.5600000000000005,
+      "text": " Кнопка свою реплику уже сказала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

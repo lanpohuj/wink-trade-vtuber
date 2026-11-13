@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_009",
+  "sha256": "ec9424a6ba61a5e906029508f8aed7859482711bbfef79c29fee19ff17b79276",
+  "expected": "Opening an app and forgetting why. Universal experience, or am I uniquely cooked?",
+  "transcript": "Opening an app and forgetting why universal experience or am I uniquely cooked?",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.07822,
+    "peak": 0.40173,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.204,
+    "sha256": "ec9424a6ba61a5e906029508f8aed7859482711bbfef79c29fee19ff17b79276"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Opening an app and forgetting why universal experience or am I uniquely cooked?"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

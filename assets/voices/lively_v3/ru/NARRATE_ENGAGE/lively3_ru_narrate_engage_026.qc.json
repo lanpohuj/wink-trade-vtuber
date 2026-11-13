@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_engage_026",
+  "sha256": "313ff20ac18f2b0e62997eee61dcce860ea6d3e50de743acbf359a1435e17d89",
+  "expected": "Кто понял — отлично. Кто не понял — спросите, у меня ещё есть запас слов.",
+  "transcript": "Кто понял? Отлично. Кто не понял? Спросите, у меня еще есть запас слов.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.07902,
+    "peak": 0.34698,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.132,
+    "sha256": "313ff20ac18f2b0e62997eee61dcce860ea6d3e50de743acbf359a1435e17d89"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Кто понял? Отлично. Кто не понял? Спросите, у меня еще есть запас слов."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_035",
+  "sha256": "bc01d6529ea9f3432ebadc2fa4922c73892fcd4bee6505681d6175d9701128c9",
+  "expected": "A nice guess stays a guess. Promotion requires confirmation.",
+  "transcript": "A nice guest stays a guest. Promotion requires confirmation.",
+  "similarity": 0.96,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.07272,
+    "peak": 0.48423,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.255,
+    "sha256": "bc01d6529ea9f3432ebadc2fa4922c73892fcd4bee6505681d6175d9701128c9"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " A nice guest stays a guest. Promotion requires confirmation."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

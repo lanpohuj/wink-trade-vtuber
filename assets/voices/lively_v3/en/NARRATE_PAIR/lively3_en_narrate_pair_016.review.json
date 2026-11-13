@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_pair_016",
+  "phrase_id": "lively3_en_narrate_pair_016",
+  "lang": "en",
+  "category": "NARRATE_PAIR",
+  "text": "Page turned. This chart gets its own attention.",
+  "tts_text": "[natural, conversational] Page turned. This chart gets its own attention.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "4744f33c7f5a13c4c520d383680571c6815bb39a6598e78f774ef07d02ecbd1c",
+  "delivery": "natural, conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_PAIR",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_pair_016",
+  "file": "en/NARRATE_PAIR/lively3_en_narrate_pair_016.mp3",
+  "duration": 3.186875,
+  "sha256": "c531b0bf16ca02b3d47a6eaa2ce21044e82839610cf0e793f477967e2eb4933d",
+  "request_payload": {
+    "text": "[natural, conversational] Page turned. This chart gets its own attention.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

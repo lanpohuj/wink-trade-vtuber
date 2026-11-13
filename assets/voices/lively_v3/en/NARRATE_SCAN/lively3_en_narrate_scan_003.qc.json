@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_003",
+  "sha256": "b9f082babe72cc737cba43afa0574839ff6bcdc027a4ce6580fa54ca17c4ee04",
+  "expected": "Okay, first look done. Let me lock in and check what's actually here.",
+  "transcript": "Okay, first look done. Let me lock in and check what's actually here",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08202,
+    "peak": 0.41325,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.239,
+    "sha256": "b9f082babe72cc737cba43afa0574839ff6bcdc027a4ce6580fa54ca17c4ee04"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5200000000000005,
+      "text": " Okay, first look done. Let me lock in and check what's actually here"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

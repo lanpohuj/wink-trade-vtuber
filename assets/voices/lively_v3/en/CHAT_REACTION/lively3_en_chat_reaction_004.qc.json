@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_chat_reaction_004",
+  "sha256": "27a79046565659e6692b5b57fae9bf4de895486e9c8a75414ca4d639b374e071",
+  "expected": "Hello, newcomers! No dress code or scheduled serious faces.",
+  "transcript": "Hello newcomers. No dress code or scheduled serious faces.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.08033,
+    "peak": 0.387,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.205,
+    "sha256": "27a79046565659e6692b5b57fae9bf4de895486e9c8a75414ca4d639b374e071"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Hello newcomers. No dress code or scheduled serious faces."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

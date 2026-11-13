@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_007",
+  "phrase_id": "lively3_ru_narrate_trade_007",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Таймер сам справится. Моё ценное мнение каждую секунду ему, прикиньте, не нужно.",
+  "tts_text": "[conversational] Таймер сам справится. Моё ценное мнение каждую секунду ему, прикиньте, не нужно.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "8856cd613156ea7a438becccb02cc6975d9058e7b09d0327fb31dc42a8797482",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_007",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_007.mp3",
+  "duration": 5.172125,
+  "sha256": "a10be5fbc23cc87f888147303051115e21e2ea43bd97916f75a175fc6c7d72a2",
+  "request_payload": {
+    "text": "[conversational] Таймер сам справится. Моё ценное мнение каждую секунду ему, прикиньте, не нужно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_volatility_001",
+  "sha256": "4df295ae7af358b7f8171c0a6240f3e3edaf917328714a6484c04a214af40f74",
+  "expected": "Recent data shows sharper moves. The chart's showing attitude; that's not my invention.",
+  "transcript": "Recent data shows sharper moves. The chart showing attitude. That's not my invention.",
+  "similarity": 0.993,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.512,
+    "rms": 0.08437,
+    "peak": 0.41441,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.112,
+    "sha256": "4df295ae7af358b7f8171c0a6240f3e3edaf917328714a6484c04a214af40f74"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.36,
+      "text": " Recent data shows sharper moves. The chart showing attitude. That's not my invention."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

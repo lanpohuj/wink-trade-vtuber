@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_engage_022",
+  "sha256": "25a6a4456f8920474c1515c4569401ab7ccec4bb39800808c84ad3bc8305945a",
+  "expected": "If you've also got twenty tabs open, we're practically acquainted.",
+  "transcript": "If you've also got 20 tabs open, we're practically acquainted.",
+  "similarity": 0.922,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.892,
+    "rms": 0.0832,
+    "peak": 0.46063,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.232,
+    "sha256": "25a6a4456f8920474c1515c4569401ab7ccec4bb39800808c84ad3bc8305945a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.84,
+      "text": " If you've also got 20 tabs open, we're practically acquainted."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

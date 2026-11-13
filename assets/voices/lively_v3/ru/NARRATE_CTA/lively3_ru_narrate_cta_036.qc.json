@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_cta_036",
+  "sha256": "236c62bdb8c92f75fdebf3b04a7aafa6e0be6c12199e8b745d3976df7ea71665",
+  "expected": "Для новых зрителей повторю маршрут: ссылка в шапке, дальше бот и его инструкция.",
+  "transcript": "Для новых зрителей повторю маршрут, ссылка в шапке, дальше бот и его инструкция.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.329,
+    "rms": 0.07266,
+    "peak": 0.32883,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.109,
+    "sha256": "236c62bdb8c92f75fdebf3b04a7aafa6e0be6c12199e8b745d3976df7ea71665"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Для новых зрителей повторю маршрут, ссылка в шапке, дальше бот и его инструкция."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

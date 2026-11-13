@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_051",
+  "phrase_id": "lively3_en_narrate_scan_051",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Clicking just so something happens? Not the vibe. Still looking.",
+  "tts_text": "[casual] Clicking just so something happens? Not the vibe. Still looking.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "7dbe6b0f85fa7842032496746cbfdb0ad5984414837eb2c71af35ec9f54ba9bc",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_051",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_051.mp3",
+  "duration": 4.910938,
+  "sha256": "de142ca01b81f51485c9f3e17486dc0d842c2d1a795efd69f6f6d9d8a6c95328",
+  "request_payload": {
+    "text": "[casual] Clicking just so something happens? Not the vibe. Still looking.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

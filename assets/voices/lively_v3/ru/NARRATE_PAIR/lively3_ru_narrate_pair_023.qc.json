@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_pair_023",
+  "sha256": "5815d880a1872135b6293f84d6cd9e11762e31c54b3986ec3bddc21f5a93dbcd",
+  "expected": "На экране уже новая пара. Дайте мне короткое знакомство с характером.",
+  "transcript": "На экране уже новая пара. Дайте мне короткое знакомство с характером.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.07799,
+    "peak": 0.31763,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.107,
+    "sha256": "5815d880a1872135b6293f84d6cd9e11762e31c54b3986ec3bddc21f5a93dbcd"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " На экране уже новая пара."
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Дайте мне короткое знакомство с характером."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

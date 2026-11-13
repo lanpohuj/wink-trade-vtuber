@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_trade_win_027",
+  "sha256": "761cd6704043f72ed593dccd29f96da23bf976071817f3f725cd738f89a2f40a",
+  "expected": "Плюс! Ну, это было вкусно. Всё, чуть-чуть порадовалась, дальше работаем.",
+  "transcript": "Плюс. Ну, это было вкусно. Всё, чуть-чуть порадовалась. Дальше работаем.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.434,
+    "rms": 0.08116,
+    "peak": 0.42032,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.134,
+    "sha256": "761cd6704043f72ed593dccd29f96da23bf976071817f3f725cd738f89a2f40a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.0,
+      "text": " Плюс. Ну, это было вкусно."
+    },
+    {
+      "start": 3.0,
+      "end": 5.5,
+      "text": " Всё, чуть-чуть порадовалась. Дальше работаем."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

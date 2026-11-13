@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_open_trade_put_035",
+  "sha256": "c8283adabe27869c9d6d0e9647ce1feda71d234834b842e346a3be96f7dfef87",
+  "expected": "Открылись вниз после локального разворота с подтверждением. Без лишних пророчеств.",
+  "transcript": "Открылись вниз после локального разворота с подтверждением без лишних пророчеств.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.172,
+    "rms": 0.08482,
+    "peak": 0.36562,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.112,
+    "sha256": "c8283adabe27869c9d6d0e9647ce1feda71d234834b842e346a3be96f7dfef87"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Открылись вниз после локального разворота с подтверждением без лишних пророчеств."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

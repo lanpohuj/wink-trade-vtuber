@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_039",
+  "sha256": "726c4f7516c74be354a44b9b0af6f53eaaa85728510b9c74ec9ab018066cbd10",
+  "expected": "У нас без секретного рукопожатия: бот открывается по ссылке в шапке профиля.",
+  "transcript": "У нас без секретного рукопожатия. Бот открывается по ссылке в шапке профиля.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.0745,
+    "peak": 0.38473,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.085,
+    "sha256": "726c4f7516c74be354a44b9b0af6f53eaaa85728510b9c74ec9ab018066cbd10"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.1,
+      "text": " У нас без секретного рукопожатия."
+    },
+    {
+      "start": 2.1,
+      "end": 4.6000000000000005,
+      "text": " Бот открывается по ссылке в шапке профиля."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

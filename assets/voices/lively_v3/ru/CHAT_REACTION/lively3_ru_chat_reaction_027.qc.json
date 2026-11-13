@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_027",
+  "sha256": "199df23fd9c0c25e40c8adab508ae21096f5bde48dd7aa9f3772f2a2be455472",
+  "expected": "Самый короткий маршрут — профиль, ссылка, бот. Дальше он покажет шаги.",
+  "transcript": "Самый короткий маршрут, профиль, ссылка, бот. Дальше он покажет шаги.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.09205,
+    "peak": 0.45439,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.104,
+    "sha256": "199df23fd9c0c25e40c8adab508ae21096f5bde48dd7aa9f3772f2a2be455472"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.7,
+      "text": " Самый короткий маршрут, профиль, ссылка, бот."
+    },
+    {
+      "start": 2.7,
+      "end": 4.2,
+      "text": " Дальше он покажет шаги."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

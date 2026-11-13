@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_013",
+  "sha256": "afc265e16beb7ee529b6c5f2fbd40f0c7790840e4c7dc6d8d61467524dc210ca",
+  "expected": "Sequence finished, back to fifty. Previous losses haven't disappeared.",
+  "transcript": "Sequence finished. Back to 50. Previous losses haven't disappeared.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.467,
+    "rms": 0.07252,
+    "peak": 0.46818,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.147,
+    "sha256": "afc265e16beb7ee529b6c5f2fbd40f0c7790840e4c7dc6d8d61467524dc210ca"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " Sequence finished. Back to 50. Previous losses haven't disappeared."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

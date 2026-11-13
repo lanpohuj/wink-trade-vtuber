@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_pair_009",
+  "sha256": "6681148ca76d57cb9f1d46b6199a83bd2c686c148595fa680fa93447f7acd5e8",
+  "expected": "Следующая пара подъехала. Пока без статуса «имба», ещё не разобралась.",
+  "transcript": "Следующая пара подъехала. Пока без статуса имба. Ты еще не разобралась.",
+  "similarity": 0.982,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.08531,
+    "peak": 0.3426,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.122,
+    "sha256": "6681148ca76d57cb9f1d46b6199a83bd2c686c148595fa680fa93447f7acd5e8"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": " Следующая пара подъехала. Пока без статуса имба. Ты еще не разобралась."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_lesson_028",
+  "sha256": "911be9db338f257f1b690eb809d4dfd3270e93d990c752093913f8d2e1f0299a",
+  "expected": "A trade has a chosen expiry. My emotional monologue won't extend it.",
+  "transcript": "A trade has a chosen expiry. My emotional monologue won't extend it.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.807,
+    "rms": 0.09143,
+    "peak": 0.87138,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.287,
+    "sha256": "911be9db338f257f1b690eb809d4dfd3270e93d990c752093913f8d2e1f0299a"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " A trade has a chosen expiry. My emotional monologue won't extend it."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

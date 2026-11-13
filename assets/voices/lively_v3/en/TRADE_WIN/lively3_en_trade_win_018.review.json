@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_win_018",
+  "phrase_id": "lively3_en_trade_win_018",
+  "lang": "en",
+  "category": "TRADE_WIN",
+  "text": "Win's recorded, chat. Rationing celebratory theatre for the rest of the stream.",
+  "tts_text": "[gently sarcastic, conversational] Win's recorded, chat. Rationing celebratory theatre for the rest of the stream.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "26057e99e3ac1a8939079b832bd57ed411565ab931a49f02a53fb1226b1bc126",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "TRADE_WIN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_win_018",
+  "file": "en/TRADE_WIN/lively3_en_trade_win_018.mp3",
+  "duration": 4.858688,
+  "sha256": "a926f571598ce3e9c350a8ad648c5a8a15602cbb9eb55cf76e49488fe10bea44",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] Win's recorded, chat. Rationing celebratory theatre for the rest of the stream.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

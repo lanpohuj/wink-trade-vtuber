@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_026",
+  "sha256": "b9adcd510f10ae14d5db305ad1e42dfc0f95c9372737bc07d298d13848376f44",
+  "expected": "Up opening happened. This was the range-boundary rejection setup.",
+  "transcript": "Up-opening happened! This was the range boundary rejection set up.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.415,
+    "rms": 0.08866,
+    "peak": 0.50555,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.235,
+    "sha256": "b9adcd510f10ae14d5db305ad1e42dfc0f95c9372737bc07d298d13848376f44"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.32,
+      "text": " Up-opening happened! This was the range boundary rejection set up."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

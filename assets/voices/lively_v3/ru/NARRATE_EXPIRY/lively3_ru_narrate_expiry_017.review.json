@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_017",
+  "phrase_id": "lively3_ru_narrate_expiry_017",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь одна минута. Могу говорить спокойнее, таймер не на спринте.",
+  "tts_text": "[conversational] Здесь одна минута. Могу говорить спокойнее, таймер не на спринте.",
+  "conditions": {
+    "expiry": "1m"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a797417a1b580bb103c4043c014c01df8cf8d0a9c899ce0be4a185b89fa38d5e",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_017",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_017.mp3",
+  "duration": 4.937063,
+  "sha256": "6c35e494c61c29b2cfacf069940bfd41a44a5ce934ce2828dc93023cb48121e7",
+  "request_payload": {
+    "text": "[conversational] Здесь одна минута. Могу говорить спокойнее, таймер не на спринте.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

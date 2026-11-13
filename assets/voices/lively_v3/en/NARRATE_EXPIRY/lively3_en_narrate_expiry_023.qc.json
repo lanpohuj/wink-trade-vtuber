@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_023",
+  "sha256": "eb8225274360fb93f55404c0bdb648b559ac82f04b4e7b2abfececde23b51e4c",
+  "expected": "One-minute window here. Let's not judge it from the first instant.",
+  "transcript": "One minute window here. Let's not judge it from the first instant.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.07642,
+    "peak": 0.41256,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.241,
+    "sha256": "eb8225274360fb93f55404c0bdb648b559ac82f04b4e7b2abfececde23b51e4c"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " One minute window here. Let's not judge it from the first instant."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

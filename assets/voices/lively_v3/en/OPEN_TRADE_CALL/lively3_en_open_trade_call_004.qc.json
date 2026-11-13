@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_004",
+  "sha256": "58f1d6a08905ada61f0c9f00d393d565b62811e3763dadb1bb517fb13ae054cb",
+  "expected": "Entered up: confirmation after the pullback. No hindsight screenplay.",
+  "transcript": "Entered up confirmation after the pullback no hindsight screenplay",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.07702,
+    "peak": 0.39133,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.299,
+    "sha256": "58f1d6a08905ada61f0c9f00d393d565b62811e3763dadb1bb517fb13ae054cb"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.44,
+      "text": " Entered up confirmation after the pullback no hindsight screenplay"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

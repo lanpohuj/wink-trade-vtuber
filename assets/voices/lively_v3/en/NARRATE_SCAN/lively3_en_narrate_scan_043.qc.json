@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_043",
+  "sha256": "5f219d8ceec28a1ca8c40bf90f748b444d2bdbf6ee09b3243cd5f736515eb658",
+  "expected": "Host present, thoughts present. I've simply decided to check first.",
+  "transcript": "Host present. Thoughts present. I've simply decided to check first.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.78,
+    "rms": 0.06936,
+    "peak": 0.44546,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.24,
+    "sha256": "5f219d8ceec28a1ca8c40bf90f748b444d2bdbf6ee09b3243cd5f736515eb658"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Host present. Thoughts present. I've simply decided to check first."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

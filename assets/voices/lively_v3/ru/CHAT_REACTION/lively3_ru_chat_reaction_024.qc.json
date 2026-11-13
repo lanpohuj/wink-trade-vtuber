@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_chat_reaction_024",
+  "sha256": "57abe35276b2b37bf1d4db5a785a2de05fc41dc589440c0afb93b182b6205569",
+  "expected": "Наш бот открывается из профиля. Сначала ознакомься с условиями внутри.",
+  "transcript": "Наш бот открывается из профиля? Сначала ознакомься с условиями внутри.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.598,
+    "rms": 0.08684,
+    "peak": 0.32802,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.098,
+    "sha256": "57abe35276b2b37bf1d4db5a785a2de05fc41dc589440c0afb93b182b6205569"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Наш бот открывается из профиля?"
+    },
+    {
+      "start": 2.0,
+      "end": 4.5,
+      "text": " Сначала ознакомься с условиями внутри."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

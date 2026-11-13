@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_lesson_010",
+  "sha256": "4e203ab6a799dce3300c8dfc65fa1bcd191e6bb966bee03c1a883b700d6936bc",
+  "expected": "Мне нравится проверяемая мысль. Она обычно переживает мою первую эмоцию.",
+  "transcript": "Мне нравится проверяемая мысль. Она обычно переживает мою первую эмоцию.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.07891,
+    "peak": 0.29366,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.108,
+    "sha256": "4e203ab6a799dce3300c8dfc65fa1bcd191e6bb966bee03c1a883b700d6936bc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.64,
+      "text": " Мне нравится проверяемая мысль. Она обычно переживает мою первую эмоцию."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

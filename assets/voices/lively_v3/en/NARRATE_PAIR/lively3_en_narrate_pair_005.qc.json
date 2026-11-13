@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_pair_005",
+  "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2",
+  "expected": "New candidate. No 'pair of the evening' crown just yet.",
+  "transcript": "New candidate. No pair of the evening crown just yet.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.762,
+    "rms": 0.07858,
+    "peak": 0.36467,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.342,
+    "sha256": "63e508c661b402ce955995df7c93c3fa829b4d36d870bd08f66195a704c339b2"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 3.6,
+      "text": " New candidate. No pair of the evening crown just yet."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_lesson_034",
+  "sha256": "ec7f0bf7d797a74d4336627d3837696091296fc5ef78498922c8ea2a30b9d248",
+  "expected": "Срок сделки выбирается по ситуации. Личные симпатии к числам оставим вне кнопок.",
+  "transcript": "Срок сделки выбирается по ситуации. Личные симпатии к числам оставим вне кнопок.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.09099,
+    "peak": 0.3904,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.082,
+    "sha256": "ec7f0bf7d797a74d4336627d3837696091296fc5ef78498922c8ea2a30b9d248"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.4,
+      "text": " Срок сделки выбирается по ситуации."
+    },
+    {
+      "start": 2.4,
+      "end": 5.0,
+      "text": " Личные симпатии к числам оставим вне кнопок."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

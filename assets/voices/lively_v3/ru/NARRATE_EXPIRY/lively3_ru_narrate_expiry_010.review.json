@@ -1,0 +1,41 @@
+{
+  "id": "lively3_ru_narrate_expiry_010",
+  "phrase_id": "lively3_ru_narrate_expiry_010",
+  "lang": "ru",
+  "category": "NARRATE_EXPIRY",
+  "text": "Здесь тридцать секунд. Мой внутренний комментатор уже рассчитывает хронометраж.",
+  "tts_text": "[conversational] Здесь тридцать секунд. Мой внутренний комментатор уже рассчитывает хронометраж.",
+  "conditions": {
+    "expiry": "30s"
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "af645697a6ba5ff30a31c569f798290edb939390ffc97259d09345615d8786fb",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_EXPIRY",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_expiry_010",
+  "file": "ru/NARRATE_EXPIRY/lively3_ru_narrate_expiry_010.mp3",
+  "duration": 4.519125,
+  "sha256": "381bd2eeb07985bf19b313f384f49db18d03d6d6078a27e0e2a93030a5ae863f",
+  "request_payload": {
+    "text": "[conversational] Здесь тридцать секунд. Мой внутренний комментатор уже рассчитывает хронометраж.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

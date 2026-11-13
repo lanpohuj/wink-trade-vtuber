@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_lesson_022",
+  "phrase_id": "lively3_en_narrate_lesson_022",
+  "lang": "en",
+  "category": "NARRATE_LESSON",
+  "text": "If a fact isn't confirmed, I'm not adding it for dramatic effect.",
+  "tts_text": "[gently sarcastic, conversational] If a fact isn't confirmed, I'm not adding it for dramatic effect.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "a4049743feb769e551d594454b900d9c92215d061cafe2479d09749a83a087c2",
+  "delivery": "gently sarcastic, conversational",
+  "tone": "sarcastic",
+  "topic": "NARRATE_LESSON",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_lesson_022",
+  "file": "en/NARRATE_LESSON/lively3_en_narrate_lesson_022.mp3",
+  "duration": 4.23175,
+  "sha256": "8c41750209e73fae70d033245f72129d6ae40bd39c6c76c001b27ef0e8bb2981",
+  "request_payload": {
+    "text": "[gently sarcastic, conversational] If a fact isn't confirmed, I'm not adding it for dramatic effect.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

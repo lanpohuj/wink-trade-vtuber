@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_013",
+  "sha256": "244d15b8816d4c948425a1e2ed7918030538e41d0ec0a17b7652085bbd68a35f",
+  "expected": "Срок тридцать секунд, чат. Даже если голос звучит очень нетерпеливо.",
+  "transcript": "Срок 30 секунд, Чат. Даже если голос звучит очень нетерпеливо.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.284,
+    "rms": 0.08936,
+    "peak": 0.33776,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.084,
+    "sha256": "244d15b8816d4c948425a1e2ed7918030538e41d0ec0a17b7652085bbd68a35f"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.24,
+      "text": " Срок 30 секунд, Чат. Даже если голос звучит очень нетерпеливо."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

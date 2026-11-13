@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_cta_002",
+  "sha256": "e0abdce0600fc1842bd8f69a7fb7ead64e5b38a9aff52b809f4cb9b877757892",
+  "expected": "Looking for the bot? Check my bio. No dramatic side quest required.",
+  "transcript": "Looking for the bot? Check my bio. No dramatic side quest required.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.728,
+    "rms": 0.08111,
+    "peak": 0.39467,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.168,
+    "sha256": "e0abdce0600fc1842bd8f69a7fb7ead64e5b38a9aff52b809f4cb9b877757892"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.34,
+      "text": " Looking for the bot? Check my bio. No dramatic side quest required."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

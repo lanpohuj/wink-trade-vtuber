@@ -1,0 +1,26 @@
+{
+  "id": "lively3_ru_narrate_expiry_012",
+  "sha256": "15be78418f771e842273751aa7da400466105676c93dd8750011464cf6732557",
+  "expected": "Эта сделка на тридцать секунд. Подождём её закрытия, без раннего финала.",
+  "transcript": "Это сделка на 30 секунд. Подождём её закрытие без раннего финала.",
+  "similarity": 0.962,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.08478,
+    "peak": 0.33258,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.119,
+    "sha256": "15be78418f771e842273751aa7da400466105676c93dd8750011464cf6732557"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.8,
+      "text": " Это сделка на 30 секунд. Подождём её закрытие без раннего финала."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

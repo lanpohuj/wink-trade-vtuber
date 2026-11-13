@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_call_031",
+  "sha256": "a1e4060153701bd62bb093d9e082d10b62fae4a7c14ee7ce10348eef6f5af826",
+  "expected": "Opened up on the confirmed local reversal. Local, with no epic storyline attached.",
+  "transcript": "Opened up on the confirmed local reversal local with no epic storyline attached",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.721,
+    "rms": 0.08009,
+    "peak": 0.38181,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.2,
+    "trailing_silence": 0.201,
+    "sha256": "a1e4060153701bd62bb093d9e082d10b62fae4a7c14ee7ce10348eef6f5af826"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.28,
+      "text": " Opened up on the confirmed local reversal local with no epic storyline attached"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

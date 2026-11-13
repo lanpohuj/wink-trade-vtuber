@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_result_010",
+  "sha256": "7aa340d6201407c94b04feb65afa241210379fd7c637a8cdc9d994c4a7c5e917",
+  "expected": "Current step's two hundred and forty-two. A larger size doesn't make the outcome known.",
+  "transcript": "Current steps 242 a larger size doesn't make the outcome known",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.042,
+    "rms": 0.07958,
+    "peak": 0.39921,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.302,
+    "sha256": "7aa340d6201407c94b04feb65afa241210379fd7c637a8cdc9d994c4a7c5e917"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.5600000000000005,
+      "text": " Current steps 242 a larger size doesn't make the outcome known"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

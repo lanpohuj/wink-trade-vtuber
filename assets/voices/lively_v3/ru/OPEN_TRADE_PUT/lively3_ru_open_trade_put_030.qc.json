@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_open_trade_put_030",
+  "sha256": "c8fb96845bc7f66c5be830f017968673ceaec04a9905d578c70572c3296dcbdc",
+  "expected": "Продажа после подтверждённого отбоя открыта. Не забегаем вперёд с оценкой.",
+  "transcript": "Продажа после подтвержденного отбоя открыта. Не забегаем вперед с оценкой.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.859,
+    "rms": 0.09173,
+    "peak": 0.46947,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.099,
+    "sha256": "c8fb96845bc7f66c5be830f017968673ceaec04a9905d578c70572c3296dcbdc"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.8000000000000003,
+      "text": " Продажа после подтвержденного отбоя открыта."
+    },
+    {
+      "start": 2.8000000000000003,
+      "end": 4.8,
+      "text": " Не забегаем вперед с оценкой."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

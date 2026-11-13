@@ -1,0 +1,41 @@
+{
+  "id": "lively3_en_narrate_volatility_003",
+  "phrase_id": "lively3_en_narrate_volatility_003",
+  "lang": "en",
+  "category": "NARRATE_VOLATILITY",
+  "text": "Volatility's elevated now. Don't let my calm expression mislead you.",
+  "tts_text": "[warm, relaxed] Volatility's elevated now. Don't let my calm expression mislead you.",
+  "conditions": {
+    "high_volatility": true
+  },
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "0b67b9f3b28be32dbd0d09eeeaefd4b96230350e67a9db5ec8db0e5884e54fca",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "NARRATE_VOLATILITY",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_volatility_003",
+  "file": "en/NARRATE_VOLATILITY/lively3_en_narrate_volatility_003.mp3",
+  "duration": 4.728063,
+  "sha256": "4a41be17ad5a77575c3bad3999c5f5226551792a241621f2ec0a888549d4d727",
+  "request_payload": {
+    "text": "[warm, relaxed] Volatility's elevated now. Don't let my calm expression mislead you.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

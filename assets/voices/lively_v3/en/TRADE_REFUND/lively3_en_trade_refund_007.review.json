@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_trade_refund_007",
+  "phrase_id": "lively3_en_trade_refund_007",
+  "lang": "en",
+  "category": "TRADE_REFUND",
+  "text": "Closed with the stake refunded. Keeping it calm, no invented triumph.",
+  "tts_text": "[warm, relaxed] Closed with the stake refunded. Keeping it calm, no invented triumph.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "d750d98e5012969796beecdeb6aca7f5a52486bd12541614750db39ac2922c57",
+  "delivery": "warm, relaxed",
+  "tone": "warm",
+  "topic": "TRADE_REFUND",
+  "max_duration_sec": 10,
+  "semantic_group": "en:trade_refund_007",
+  "file": "en/TRADE_REFUND/lively3_en_trade_refund_007.mp3",
+  "duration": 5.041563,
+  "sha256": "bcf778173ccc48570ac7534da836a2906a109dc8a22ffdc9717726a52cb1ff13",
+  "request_payload": {
+    "text": "[warm, relaxed] Closed with the stake refunded. Keeping it calm, no invented triumph.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lively3_ru_trade_win_007",
+  "sha256": "e8bde6befd94b8da231eecade12e918a424e41375eaa6b5c541c36a20333ed6d",
+  "expected": "Сделка закрылась в плюс. Да, я сейчас немного сияю, это по делу.",
+  "transcript": "Сделка закрылась в плюс. Да, я сейчас немного сияю. Это по делу.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.911,
+    "rms": 0.08663,
+    "peak": 0.52144,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.22,
+    "trailing_silence": 0.091,
+    "sha256": "e8bde6befd94b8da231eecade12e918a424e41375eaa6b5c541c36a20333ed6d"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.0,
+      "text": " Сделка закрылась в плюс."
+    },
+    {
+      "start": 2.0,
+      "end": 4.0,
+      "text": " Да, я сейчас немного сияю."
+    },
+    {
+      "start": 4.0,
+      "end": 5.0,
+      "text": " Это по делу."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

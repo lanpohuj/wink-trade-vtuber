@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_trade_026",
+  "sha256": "8e64b05e39d69508b346eb109b7d621d9f0ae33b189709217efb9574f6faa3d5",
+  "expected": "Seconds keep their own pace. My dramatic pauses won't argue.",
+  "transcript": "Seconds keep their own pace. My dramatic pauses won't argue.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.101,
+    "rms": 0.08304,
+    "peak": 0.40933,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.101,
+    "sha256": "8e64b05e39d69508b346eb109b7d621d9f0ae33b189709217efb9574f6faa3d5"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Seconds keep their own pace. My dramatic pauses won't argue."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

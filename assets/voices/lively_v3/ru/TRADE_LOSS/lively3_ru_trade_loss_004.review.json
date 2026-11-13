@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_trade_loss_004",
+  "phrase_id": "lively3_ru_trade_loss_004",
+  "lang": "ru",
+  "category": "TRADE_LOSS",
+  "text": "Есть минус. Сейчас не буду изображать, что это тайная победа.",
+  "tts_text": "[conversational] Есть минус. Сейчас не буду изображать, что это тайная победа.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "4ac1c9b7fa3bbd35629ae896b3a157c4c4b2c05456a5ce87e7ef1e713979cb15",
+  "delivery": "conversational",
+  "tone": "warm",
+  "topic": "TRADE_LOSS",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:trade_loss_004",
+  "file": "ru/TRADE_LOSS/lively3_ru_trade_loss_004.mp3",
+  "duration": 3.813812,
+  "sha256": "7e6355146e803e7c3608886873d1df8ef778e7ab5ee95ab97e1c9b035e74efcb",
+  "request_payload": {
+    "text": "[conversational] Есть минус. Сейчас не буду изображать, что это тайная победа.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

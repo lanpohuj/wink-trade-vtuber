@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_024",
+  "phrase_id": "lively3_ru_narrate_cta_024",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Профиль, ссылка, бот. Вот такой сюжет без неожиданных поворотов.",
+  "tts_text": "[conversational] Профиль, ссылка, бот. Вот такой сюжет без неожиданных поворотов.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "984a0d53627fb69a09081e29c3595dd737f8a7c2f760279f018753db6d8ea47b",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_024",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_024.mp3",
+  "duration": 4.728063,
+  "sha256": "0705babeb2d76af9966b69eb81acfc681f7e2a8eabb831904ab46cbba107d438",
+  "request_payload": {
+    "text": "[conversational] Профиль, ссылка, бот. Вот такой сюжет без неожиданных поворотов.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

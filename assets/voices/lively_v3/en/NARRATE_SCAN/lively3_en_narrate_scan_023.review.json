@@ -1,0 +1,39 @@
+{
+  "id": "lively3_en_narrate_scan_023",
+  "phrase_id": "lively3_en_narrate_scan_023",
+  "lang": "en",
+  "category": "NARRATE_SCAN",
+  "text": "Yep, checking again. Boring? A little. Still doing it.",
+  "tts_text": "[casual] Yep, checking again. Boring? A little. Still doing it.",
+  "conditions": {},
+  "voice_id": "e34c486929524d41b88646b4ac2f382f",
+  "text_version": 1,
+  "text_sha256": "e4c66a66982698a23ba608aa99e824f07adbee1fb29a1f477f1ad322baeda370",
+  "delivery": "casual",
+  "tone": "playful",
+  "topic": "NARRATE_SCAN",
+  "max_duration_sec": 10,
+  "semantic_group": "en:narrate_scan_023",
+  "file": "en/NARRATE_SCAN/lively3_en_narrate_scan_023.mp3",
+  "duration": 4.858688,
+  "sha256": "3172de3623d2faec9662749c342ee94dc6f8ea864f03ce3adf41d9f42c79fbb3",
+  "request_payload": {
+    "text": "[casual] Yep, checking again. Boring? A little. Still doing it.",
+    "reference_id": "e34c486929524d41b88646b4ac2f382f",
+    "language": "en",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

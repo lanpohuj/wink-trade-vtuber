@@ -1,0 +1,44 @@
+{
+  "id": "lively3_ru_open_trade_call_037",
+  "phrase_id": "lively3_ru_open_trade_call_037",
+  "lang": "ru",
+  "category": "OPEN_TRADE_CALL",
+  "text": "Покупка открыта по локальному развороту. Условия проверены, исход ещё впереди.",
+  "tts_text": "[conversational] Покупка открыта по локальному развороту. Условия проверены, исход ещё впереди.",
+  "conditions": {
+    "setup": "LOCAL_REVERSAL",
+    "direction": "BUY",
+    "setup_confirmed": true,
+    "open_observed": true
+  },
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "7ee771c5078ed51d3af332528f8607bf9acb6297c377c0ea3b23f85df7592703",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "OPEN_TRADE_CALL",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:open_trade_call_037",
+  "file": "ru/OPEN_TRADE_CALL/lively3_ru_open_trade_call_037.mp3",
+  "duration": 4.545187,
+  "sha256": "43bc946ee403f321f5c890a0d19bb77a3732668ea25ec6cced3b0bc07e514d3b",
+  "request_payload": {
+    "text": "[conversational] Покупка открыта по локальному развороту. Условия проверены, исход ещё впереди.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_trade_024",
+  "phrase_id": "lively3_ru_narrate_trade_024",
+  "lang": "ru",
+  "category": "NARRATE_TRADE",
+  "text": "Тут главное не перепутать ожидание с новым решением. Вход уже произошёл.",
+  "tts_text": "[conversational] Тут главное не перепутать ожидание с новым решением. Вход уже произошёл.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "c2228001ab98f6ddf659348d33fb6e4fdbace1c05b4e674bc84e363371b0f469",
+  "delivery": "conversational",
+  "tone": "conversational",
+  "topic": "NARRATE_TRADE",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_trade_024",
+  "file": "ru/NARRATE_TRADE/lively3_ru_narrate_trade_024.mp3",
+  "duration": 4.205625,
+  "sha256": "4bb817661e4f23f6377486a0f3319ab107ce1e4518ab40a89179fe228c334c13",
+  "request_payload": {
+    "text": "[conversational] Тут главное не перепутать ожидание с новым решением. Вход уже произошёл.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_open_trade_put_014",
+  "sha256": "9b1b1d285c1c7320a6a4c43093e6352dd04a637ec1529acf6d973c2c9fcf97f6",
+  "expected": "Opened down: breakout first, then closed retest. Reason stated; watching.",
+  "transcript": "Open down break out first then closed retest reason stated watching",
+  "similarity": 0.983,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.904,
+    "rms": 0.07314,
+    "peak": 0.44038,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.104,
+    "sha256": "9b1b1d285c1c7320a6a4c43093e6352dd04a637ec1529acf6d973c2c9fcf97f6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.72,
+      "text": " Open down break out first then closed retest reason stated watching"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,39 @@
+{
+  "id": "lively3_ru_narrate_cta_003",
+  "phrase_id": "lively3_ru_narrate_cta_003",
+  "lang": "ru",
+  "category": "NARRATE_CTA",
+  "text": "Кому нужен бот — велком в шапку профиля. Да, он всё ещё там.",
+  "tts_text": "[conversational] Кому нужен бот — велком в шапку профиля. Да, он всё ещё там.",
+  "conditions": {},
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "text_version": 1,
+  "text_sha256": "a9d8dbe530368fb004f3408d2b0373e8415bc25c908d1cde32a322b0b6e79692",
+  "delivery": "conversational",
+  "tone": "playful",
+  "topic": "NARRATE_CTA",
+  "max_duration_sec": 10,
+  "semantic_group": "ru:narrate_cta_003",
+  "file": "ru/NARRATE_CTA/lively3_ru_narrate_cta_003.mp3",
+  "duration": 4.33625,
+  "sha256": "a65358800255d214e70e9c75f6a70d0a3b27b046c35fcf4498b9e3e278023359",
+  "request_payload": {
+    "text": "[conversational] Кому нужен бот — велком в шапку профиля. Да, он всё ещё там.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending",
+  "auditory_verified": false
+}

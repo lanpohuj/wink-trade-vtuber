@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_scan_010",
+  "sha256": "3846f8c4203d4f6e110d6cf7545f1557bb231ab404ff7de20073bc53ff89ad52",
+  "expected": "Checking calmly. There's no medal for fastest click.",
+  "transcript": "Checking calmly. There's no metal for fast as click.",
+  "similarity": 0.94,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 3.945,
+    "rms": 0.08405,
+    "peak": 0.62756,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.16,
+    "trailing_silence": 0.284,
+    "sha256": "3846f8c4203d4f6e110d6cf7545f1557bb231ab404ff7de20073bc53ff89ad52"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.0,
+      "text": " Checking calmly. There's no metal for fast as click."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

@@ -1,0 +1,26 @@
+{
+  "id": "lively3_en_narrate_expiry_017",
+  "sha256": "14590ef1b6823d96aaecd0940a7e55596a8a87e5a32ea3660dc962193d7c88c1",
+  "expected": "One minute here. I can speak calmly; the timer isn't sprinting.",
+  "transcript": "One minute here. I can speak calmly. The timer isn't sprinting.",
+  "similarity": 1.0,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 4.545,
+    "rms": 0.06755,
+    "peak": 0.37023,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.265,
+    "sha256": "14590ef1b6823d96aaecd0940a7e55596a8a87e5a32ea3660dc962193d7c88c1"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.4,
+      "text": " One minute here. I can speak calmly. The timer isn't sprinting."
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}

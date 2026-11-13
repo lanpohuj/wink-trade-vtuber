@@ -1,0 +1,31 @@
+{
+  "id": "lively3_ru_narrate_cta_045",
+  "sha256": "88eeefd2f8136868243758da8eb2c6e922d41eaa762f5b0797554d793505dec6",
+  "expected": "Про бота напомнила и исчезаю с рекламой. Ссылка в шапке профиля, чат, не теряйте.",
+  "transcript": "Работа напомнила, исчезая с рекламой. Ссылка в шапке профиля. Чат, не теряйте!",
+  "similarity": 0.952,
+  "metrics": {
+    "decode_ok": true,
+    "duration": 5.564,
+    "rms": 0.08018,
+    "peak": 0.34568,
+    "clipped_fraction": 0.0,
+    "leading_silence": 0.18,
+    "trailing_silence": 0.144,
+    "sha256": "88eeefd2f8136868243758da8eb2c6e922d41eaa762f5b0797554d793505dec6"
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.52,
+      "text": " Работа напомнила, исчезая с рекламой."
+    },
+    {
+      "start": 2.52,
+      "end": 5.5200000000000005,
+      "text": " Ссылка в шапке профиля. Чат, не теряйте!"
+    }
+  ],
+  "issues": [],
+  "auditory_verified": false
+}
