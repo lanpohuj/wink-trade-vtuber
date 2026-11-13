@@ -4503,6 +4503,20 @@
   let visualTradeOutcome = null;
   const winkyPortrait = typeof chrome !== 'undefined' && chrome.runtime?.getURL ? chrome.runtime.getURL('assets/winky-portrait.png') : 'assets/winky-portrait.png';
 
+  const CLAUDE_SVG = `<svg class="winky-model-brand-svg winky-brand-claude" viewBox="0 0 24 24" fill="#D97757" xmlns="http://www.w3.org/2000/svg"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>`;
+
+  const GROK_SVG = `<svg class="winky-model-brand-svg winky-brand-grok" viewBox="0 0 24 24" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"><path d="M23.08,1.12L23.08,1.44L22.77,1.60L22.46,2.40L21.85,3.04L21.85,3.36L21.69,3.36L21.69,3.68L21.54,3.68L21.54,4.00L21.08,4.64L20.92,5.76L20.77,5.76L20.77,8.80L20.92,8.80L20.92,9.76L21.08,9.76L21.08,11.20L20.92,11.20L20.92,12.96L20.77,13.28L20.77,14.72L20.46,15.20L20.46,16.48L20.15,16.80L20.15,17.28L19.85,17.60L19.85,18.08L19.54,18.40L19.23,19.20L18.92,19.52L18.62,20.00L18.00,20.48L17.54,20.96L16.92,21.28L16.46,21.60L15.69,21.92L14.77,22.08L14.46,22.24L10.92,22.24L9.08,21.92L8.77,21.60L7.69,21.28L7.69,20.96L6.92,20.48L6.46,20.48L5.54,19.68L4.31,18.56L3.69,17.92L3.69,17.28L3.23,17.28L3.23,16.96L2.92,16.96L2.92,16.64L2.62,16.64L2.46,16.16L2.31,16.16L2.00,15.20L1.85,15.20L1.69,14.56L1.54,14.56L1.54,14.08L1.38,13.76L1.38,12.96L1.23,12.96L0.92,10.72L0.92,7.20L1.08,7.20L1.08,5.92L1.38,5.92L1.38,4.96L1.54,4.96L1.69,4.48L1.85,4.48L2.00,4.00L2.31,4.00L2.46,3.68L2.92,3.36L3.23,3.04L4.00,2.56L4.77,2.24L5.69,1.92L6.62,1.76L10.77,1.76L12.00,1.92L13.08,2.24L14.00,2.56L14.77,3.04L15.38,3.52L15.69,4.00L16.00,4.48L16.00,4.96L16.15,4.96L16.15,5.60L16.00,5.92L15.69,6.72L15.23,7.52L14.77,8.32L14.15,9.12L13.54,9.92L12.92,10.72L12.15,11.52L11.54,12.32L10.77,13.12L10.15,13.76L9.69,14.40L9.08,15.20L8.62,15.68L8.15,16.32L7.69,16.96L7.23,17.44L6.77,18.08L6.46,18.40L5.38,19.36L4.77,19.36L4.46,19.68L4.00,20.16L3.54,20.64L3.08,21.12L2.77,21.60L2.46,22.08L2.00,22.56L1.38,23.04L0.92,23.20L0.62,23.52L0.31,23.52L0.31,23.36L0.46,23.36L0.77,22.72L1.08,22.72L1.23,22.24L1.54,22.24L1.85,21.60L2.15,21.60L2.46,20.96L2.77,20.96L3.23,20.00L3.54,20.00L4.15,18.88L4.46,18.88L4.92,18.08L5.38,18.08L5.85,17.12L6.15,17.12L6.62,16.32L6.92,16.32L7.38,15.52L7.69,15.52L8.15,14.72L8.46,14.72L8.92,13.92L9.23,13.92L9.69,13.12L10.00,13.12L10.46,12.32L10.77,12.32L11.23,11.52L11.54,11.52L12.00,10.72L12.31,10.72L12.77,9.92L13.08,9.92L13.54,9.12L13.85,9.12L14.31,8.32L14.62,8.32L15.08,7.52L15.38,7.52L15.85,6.72L16.15,6.72L16.62,5.92L16.92,5.92L17.38,5.12L17.69,5.12L18.15,4.32L18.46,4.32L18.92,3.52L19.23,3.52L19.69,2.72L20.00,2.72L20.46,1.92L20.77,1.92L21.23,1.12L21.54,1.12L22.00,0.32L22.31,0.32L22.77,0.00L23.08,0.00Z" fill-rule="evenodd"/></svg>`;
+
+  const CHATGPT_SVG = `<svg class="winky-model-brand-svg winky-brand-chatgpt" viewBox="0 0 24 24" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"><path d="M22.28 10.42a5.8 5.8 0 0 0-.5-4.52 5.94 5.94 0 0 0-4.4-2.9 5.86 5.86 0 0 0-5.1 1.24 5.89 5.89 0 0 0-4.22-.53 5.9 5.9 0 0 0-3.6 2.87 5.88 5.88 0 0 0-.82 4.47 5.87 5.87 0 0 0-2.7 3.78 5.92 5.92 0 0 0 .8 5.16 5.88 5.88 0 0 0 4.4 2.9 5.86 5.86 0 0 0 5.1-1.24 5.89 5.89 0 0 0 4.22.53 5.9 5.9 0 0 0 3.6-2.87 5.88 5.88 0 0 0 .82-4.47 5.87 5.87 0 0 0 2.7-3.78 5.92 5.92 0 0 0-.8-5.16zm-8.4 10.74a4.4 4.4 0 0 1-2.9-.17l.15-.26 3.6-6.23a.74.74 0 0 1 .65-.37h.03a.74.74 0 0 1 .64.38l1.8 3.12a4.42 4.42 0 0 1-3.97 3.53zm-7.6-3.04a4.4 4.4 0 0 1-.8-2.8 4.44 4.44 0 0 1 1.34-3.13l.25.15 6.23 3.6a.74.74 0 0 1 .37.65v3.6a4.42 4.42 0 0 1-7.39-2.07zm-2.12-7.9a4.4 4.4 0 0 1 2.1-2.04v7.5a.74.74 0 0 1-.37.64l-3.12 1.8a4.43 4.43 0 0 1 1.39-7.9zm13.12 2.04-6.23-3.6a.74.74 0 0 1-.37-.65V2.41a4.42 4.42 0 0 1 7.39 2.07 4.4 4.4 0 0 1 .8 2.8 4.44 4.44 0 0 1-1.59 3.48zm2.92 3.7a4.4 4.4 0 0 1-2.1 2.04V10.5a.74.74 0 0 1 .37-.64l3.12-1.8a4.43 4.43 0 0 1-1.39 7.9zM10.12 8.94l1.8-3.12a4.42 4.42 0 0 1 4.77-.36 4.4 4.4 0 0 1 2.1 2.92l-.15.26-3.6 6.23a.74.74 0 0 1-.65.37h-.03a.74.74 0 0 1-.64-.38L12 11.74l-1.88-2.8z"/></svg>`;
+
+  function getModelBrandLogoSVG(modelName) {
+    const m = String(modelName || '').toLowerCase();
+    if (m.includes('claude')) return CLAUDE_SVG;
+    if (m.includes('grok')) return GROK_SVG;
+    if (m.includes('gpt') || m.includes('chatgpt')) return CHATGPT_SVG;
+    return CLAUDE_SVG;
+  }
+
   function buildTradingBotHTML() {
     const isRu = state.lang === "ru";
     return `
@@ -4535,8 +4549,8 @@
           <button type="button" class="winky-btn-collapse" id="btnCollapseBot" title="Свернуть">—</button>
         </div>
         <div class="winky-model-row">
-          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu"><span class="winky-model-dot"></span><span id="winkyModelLabel">${visualModel}</span><span class="winky-model-chevron">⌄</span></button>
-          <div class="winky-model-menu" id="winkyModelMenu" hidden><div class="winky-model-menu-title">${isRu?'Выбор модели':'Select model'}</div>${DEMO_MODELS.map(name=>`<button type="button" class="winky-model-option ${name===visualModel?'selected':''}" data-demo-model="${name}"><span>${name}</span><span>${name===visualModel?'✓':''}</span></button>`).join('')}<div class="winky-model-note">${isRu?'Визуальный выбор. Анализ: Winky AI.':'Visual selection. Analysis: Winky AI.'}</div></div>
+          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu"><span class="winky-model-btn-logo" id="winkyModelLogo">${getModelBrandLogoSVG(visualModel)}</span><span id="winkyModelLabel">${visualModel}</span><span class="winky-model-chevron">⌄</span></button>
+          <div class="winky-model-menu" id="winkyModelMenu" hidden><div class="winky-model-menu-title">${isRu ? 'Выбор модели' : 'Select model'}</div>${DEMO_MODELS.map(name => `<button type="button" class="winky-model-option ${name === visualModel ? 'selected' : ''}" data-demo-model="${name}"><span class="winky-model-opt-main"><span class="winky-model-opt-logo">${getModelBrandLogoSVG(name)}</span><span class="winky-model-opt-name">${name}</span></span><span class="winky-model-opt-check">${name === visualModel ? '✓' : ''}</span></button>`).join('')}</div>
         </div>
       </div>
 
@@ -5220,10 +5234,13 @@
       modelMenu.querySelectorAll('[data-demo-model]').forEach(option => option.addEventListener('click', () => {
         visualModel = option.dataset.demoModel;
         if (modelLabel) modelLabel.textContent = visualModel;
+        const logoEl = document.getElementById('winkyModelLogo');
+        if (logoEl) logoEl.innerHTML = getModelBrandLogoSVG(visualModel);
         modelMenu.querySelectorAll('[data-demo-model]').forEach(item => {
           const selected = item.dataset.demoModel === visualModel;
           item.classList.toggle('selected', selected);
-          item.lastElementChild.textContent = selected ? '✓' : '';
+          const check = item.querySelector('.winky-model-opt-check') || item.lastElementChild;
+          if (check) check.textContent = selected ? '✓' : '';
         });
         modelMenu.hidden = true;
         modelButton.setAttribute('aria-expanded', 'false');

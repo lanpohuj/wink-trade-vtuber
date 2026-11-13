@@ -1596,15 +1596,184 @@
 #winky-bot-root .winky-auto-stream-wrap.active .winky-mini-knob { background: #69e3b8; }
 #winky-bot-root .winky-btn-collapse { color: #a3bab5; }
 #winky-bot-root .winky-model-row { width: 100%; position: relative; }
-#winky-bot-root .winky-model-button { display: flex; width: 100%; height: 29px; align-items: center; gap: 7px; text-align: left; padding: 0 9px; border: 1px solid #ffffff12; border-radius: 8px; background: #0a1516; color: #daeae5; font-size: 10px; font-weight: 650; cursor: pointer; }
-#winky-bot-root .winky-model-dot, #winky-bot-root .winky-scan-dot { width: 6px; height: 6px; border-radius: 50%; background: #69e3b8; box-shadow: 0 0 8px #5be0b66b; flex: none; }
-#winky-bot-root .winky-demo-badge { color: #9db9ad; background: #233b34; border-radius: 4px; padding: 2px 5px; font-size: 9px; }
-#winky-bot-root .winky-model-chevron { margin-left: auto; color: #99ada8; font-size: 16px; }
-#winky-bot-root .winky-model-menu { position: absolute; left: 0; right: 0; top: 34px; padding: 7px; border: 1px solid #35574e; border-radius: 11px; background: #152421; box-shadow: 0 14px 34px #000a; z-index: 10; }
-#winky-bot-root .winky-model-menu-title { padding: 5px 7px 7px; color: #92a9a3; font-size: 10px; }
-#winky-bot-root .winky-model-option { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 8px; border: 0; border-radius: 7px; background: transparent; color: #e6f3ee; font-size: 11px; text-align: left; cursor: pointer; }
-#winky-bot-root .winky-model-option:hover, #winky-bot-root .winky-model-option.selected { background: #26483d; color: #a2f1d4; }
-#winky-bot-root .winky-model-note { margin: 6px 7px 3px; color: #9aaca6; font-size: 9px; line-height: 1.35; }
+
+/* Top Trigger Button */
+#winky-bot-root .winky-model-button {
+  display: flex !important;
+  width: 100% !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-align: left !important;
+  padding: 0 12px !important;
+  border: 1px solid rgba(16, 245, 135, 0.55) !important;
+  border-radius: 10px !important;
+  background: #091315 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 14px rgba(16, 245, 135, 0.18) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+#winky-bot-root .winky-model-button:hover {
+  border-color: rgba(16, 245, 135, 0.85) !important;
+  box-shadow: 0 0 18px rgba(16, 245, 135, 0.3) !important;
+}
+
+#winky-bot-root .winky-model-btn-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+#winky-bot-root .winky-model-btn-logo svg,
+#winky-bot-root .winky-model-btn-logo .winky-model-brand-svg {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+  display: block;
+}
+
+#winky-bot-root #winkyModelLabel {
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.2px;
+}
+
+#winky-bot-root .winky-model-chevron {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+#winky-bot-root .winky-model-button[aria-expanded="true"] .winky-model-chevron {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+#winky-bot-root .winky-model-menu {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 44px !important;
+  padding: 8px !important;
+  border: 1px solid rgba(16, 245, 135, 0.35) !important;
+  border-radius: 14px !important;
+  background: rgba(13, 23, 22, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(16, 245, 135, 0.12) !important;
+  z-index: 50 !important;
+}
+
+#winky-bot-root .winky-model-menu-title {
+  padding: 6px 10px 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+#winky-bot-root .winky-model-option {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 9px 12px !important;
+  margin: 2px 0 !important;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: all 0.18s ease !important;
+  box-sizing: border-box !important;
+}
+
+#winky-bot-root .winky-model-opt-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#winky-bot-root .winky-model-opt-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+#winky-bot-root .winky-model-opt-logo svg,
+#winky-bot-root .winky-model-opt-logo .winky-model-brand-svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+}
+
+#winky-bot-root .winky-model-opt-name {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+#winky-bot-root .winky-model-option:hover:not(.selected) {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+#winky-bot-root .winky-model-option:hover:not(.selected) .winky-model-opt-logo {
+  opacity: 1 !important;
+}
+
+/* Selected / Active Model in Dropdown */
+#winky-bot-root .winky-model-option.selected {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(16, 245, 135, 0.55) !important;
+  padding: 11px 14px !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(90deg, rgba(16, 245, 135, 0.24) 0%, rgba(16, 245, 135, 0.08) 100%) !important;
+  border: 1px solid rgba(16, 245, 135, 0.75) !important;
+  box-shadow: 0 0 16px rgba(16, 245, 135, 0.28), inset 0 0 12px rgba(16, 245, 135, 0.12) !important;
+}
+
+#winky-bot-root .winky-model-option.selected .winky-model-opt-logo {
+  width: 22px !important;
+  height: 22px !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) !important;
+}
+
+#winky-bot-root .winky-model-option.selected .winky-model-opt-logo svg,
+#winky-bot-root .winky-model-option.selected .winky-model-opt-logo .winky-model-brand-svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+#winky-bot-root .winky-model-opt-check {
+  font-size: 14px;
+  font-weight: 800;
+  color: #10F587;
+  text-shadow: 0 0 10px rgba(16, 245, 135, 0.85);
+  margin-left: 8px;
+}
 #winky-bot-root .winky-bot-body { padding: 11px 13px 12px; gap: 9px; }
 #winky-bot-root .winky-tab-content { gap: 9px; }
 #winky-bot-root .winky-market-switch { background: #091315; border-color: #ffffff0c; border-radius: 9px; }
@@ -1737,8 +1906,6 @@
 #winky-bot-root { max-height: calc(100vh - 82px); overflow-x: hidden; overflow-y: auto; }
 #winky-bot-root .winky-bot-header { padding-top: 9px; padding-bottom: 8px; gap: 6px; }
 #winky-bot-root .winky-neko-icon { width: 34px; height: 34px; }
-#winky-bot-root .winky-model-button { height: 26px; }
-#winky-bot-root .winky-model-menu { top: 30px; }
 #winky-bot-root .winky-bot-body { padding-top: 9px; padding-bottom: 9px; }
 #winky-bot-root .winky-chart-preview { height: 70px; }
 #winky-bot-root .winky-scan-seg { padding-top: 4px; padding-bottom: 4px; }
@@ -1779,8 +1946,6 @@
 @media (prefers-reduced-motion: reduce) { #winky-bot-root .winky-stage-current, #winky-bot-root .winky-stage-current.checking .winky-stage-indicator { animation: none; } }
 #winky-bot-root .winky-chart-source { position: absolute; right: 5px; bottom: 4px; padding: 2px 4px; border-radius: 3px; background: #071814df; color: #c5d8d0; font-size: 8px; line-height: 1.1; }
 #winky-bot-root .winky-analysis-meta { font-size: 10px; }
-#winky-bot-root .winky-model-button { height: 32px; color: #f0fff9; font-size: 12px; font-weight: 800; border-color: #438c72; }
-#winky-bot-root .winky-model-menu { top: 36px; }
 #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text {
   color: #10F587 !important;
   text-shadow: 0 0 14px rgba(16, 245, 135, 0.8), 0 0 28px rgba(16, 245, 135, 0.35) !important;
