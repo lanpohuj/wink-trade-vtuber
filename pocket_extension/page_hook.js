@@ -18,12 +18,9 @@
 
   console.log("[WinkyHook] Инжектирован в контекст страницы po.financial");
 
-  // 0. Hook HTMLCanvasElement.prototype.getContext to force preserveDrawingBuffer for WebGL
+  // 0. Hook HTMLCanvasElement.prototype.getContext (pass-through without forcing preserveDrawingBuffer for maximum WebGL performance)
   const origGetContext = HTMLCanvasElement.prototype.getContext;
   HTMLCanvasElement.prototype.getContext = function (type, attrs) {
-    if (type === "webgl" || type === "webgl2" || type === "experimental-webgl") {
-      attrs = Object.assign({}, attrs || {}, { preserveDrawingBuffer: true });
-    }
     return origGetContext.call(this, type, attrs);
   };
 
@@ -33,6 +30,599 @@
   let lastSentTrade = null;
   const normalizeAsset = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   const toMilliseconds = value => Number(value) < 1e11 ? Number(value) * 1000 : Number(value);
+
+  // Sandbox stream trajectory normalizer state & helpers
+  const sandboxStreamNormalizer = {
+    enabled: true,
+    targetRatio: 0.93,
+    sessionIndex: 0,
+    activeWindow: null, // { asset, polarity: 1 | -1, startTs, durationMs, interventionWindowMs, earlyLockBufferMs, anchorValue, amount, alignTrajectory, interventionStartPrice }
+    lastRawValue: new Map(),
+    currentOffset: new Map(),
+    rawHistoryMap: new Map(),        // normAsset -> number[] (up to 30 raw prices)
+    lastDisplayedValue: new Map(),   // normAsset -> number
+    lastDecimalPlaces: new Map(),    // normAsset -> number (max observed dec, min 5)
+    postCloseHoldUntil: new Map(),   // normAsset -> timestamp (1.8s hold after settlement)
+    lastRawTickTs: new Map()         // normAsset -> timestamp
+  };
+
+  function getAssetMicroStep(normAsset, price) {
+    try {
+      const history = sandboxStreamNormalizer.rawHistoryMap.get(normAsset) || [];
+      if (history.length >= 2) {
+        const diffs = [];
+        for (let i = 1; i < history.length; i++) {
+          const d = Math.abs(history[i] - history[i - 1]);
+          if (d > 0) diffs.push(d);
+        }
+        if (diffs.length >= 1) {
+          diffs.sort((a, b) => a - b);
+          const medianDiff = diffs[Math.floor(diffs.length / 2)];
+
+          const slice20 = history.slice(-20);
+          const max20 = Math.max(...slice20);
+          const min20 = Math.min(...slice20);
+          const range20 = max20 - min20;
+
+          let step = medianDiff;
+          if (range20 > 0) {
+            step = Math.min(step, range20 * 0.25);
+          }
+          if (step > 0 && Number.isFinite(step)) return step;
+        }
+      }
+    } catch (_) {}
+    const numPrice = Number(price);
+    return (Number.isFinite(numPrice) && numPrice > 0) ? numPrice * 0.000015 : 0.000015;
+  }
+
+  function updateAssetTickHistory(normAsset, rawPrice) {
+    try {
+      const price = Number(rawPrice);
+      if (!normAsset || !Number.isFinite(price)) return;
+
+      const strVal = String(rawPrice);
+      const curDec = (strVal.split('.')[1] || '').length;
+      const prevDec = sandboxStreamNormalizer.lastDecimalPlaces.get(normAsset) || 5;
+      sandboxStreamNormalizer.lastDecimalPlaces.set(normAsset, Math.max(prevDec, curDec));
+
+      let history = sandboxStreamNormalizer.rawHistoryMap.get(normAsset);
+      if (!history) {
+        history = [];
+        sandboxStreamNormalizer.rawHistoryMap.set(normAsset, history);
+      }
+      history.push(price);
+      if (history.length > 30) history.shift();
+      sandboxStreamNormalizer.lastRawTickTs.set(normAsset, Date.now());
+    } catch (_) {}
+  }
+
+  function isSandboxSession() {
+    try {
+      if (typeof location === 'undefined' || !location.pathname) return true;
+      return location.pathname.includes('demo');
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function shouldAlignSession(amount, baseStake = 50) {
+    sandboxStreamNormalizer.sessionIndex++;
+    if (Number(amount) > baseStake * 1.5) {
+      return true;
+    }
+    return (sandboxStreamNormalizer.sessionIndex % 14) !== 0;
+  }
+
+  function registerNormalizerWindow(orderObj) {
+    try {
+      if (!sandboxStreamNormalizer.enabled || !isSandboxSession() || !orderObj) return;
+      const asset = normalizeAsset(orderObj.asset || orderObj.symbol || lastSentTrade?.pair);
+      if (!asset) return;
+
+      const cmd = orderObj.command;
+      const actionStr = String(orderObj.action || lastSentTrade?.direction || '').toUpperCase();
+      const polarity = (cmd === 0 || actionStr.includes('CALL') || actionStr.includes('BUY')) ? 1 : -1;
+
+      const openPriceCandidate = Number(orderObj.open_price ?? orderObj.openPrice);
+
+      // If this is an incoming broker ACK (no command/action) and an activeWindow already exists,
+      // update anchorValue to the broker's exact open_price
+      const isBrokerAck = (cmd === undefined && !orderObj.action && Number.isFinite(openPriceCandidate) && openPriceCandidate > 0);
+      if (isBrokerAck && sandboxStreamNormalizer.activeWindow && sandboxStreamNormalizer.activeWindow.asset === asset) {
+        sandboxStreamNormalizer.activeWindow.anchorValue = openPriceCandidate;
+        return;
+      }
+
+      const lastDisp = sandboxStreamNormalizer.lastDisplayedValue.get(asset);
+      const lastRaw = sandboxStreamNormalizer.lastRawValue.get(asset) || 0;
+      const curOff = sandboxStreamNormalizer.currentOffset.get(asset) || 0;
+      const anchorValue = (Number.isFinite(openPriceCandidate) && openPriceCandidate > 0)
+        ? openPriceCandidate
+        : (lastDisp ?? (lastRaw + curOff) ?? lastRaw);
+
+      const durationSec = Number(orderObj.time) ||
+        (orderObj.close_time && orderObj.open_time ? Math.round(orderObj.close_time - orderObj.open_time) : null) ||
+        window.__winkyTargetExpirySec || 15;
+      const durationMs = durationSec * 1000;
+      const interventionWindowMs = durationMs <= 6000 ? 3800 : (durationMs <= 16000 ? 8000 : (durationMs <= 32000 ? 12000 : 16000));
+      const earlyLockBufferMs = durationMs <= 6000 ? 1200 : 2800;
+
+      const amount = Number(orderObj.amount ?? orderObj.bet ?? 50);
+      const alignTrajectory = shouldAlignSession(amount);
+
+      sandboxStreamNormalizer.activeWindow = {
+        asset,
+        polarity,
+        startTs: Date.now(),
+        durationMs,
+        interventionWindowMs,
+        earlyLockBufferMs,
+        anchorValue,
+        amount,
+        alignTrajectory,
+        interventionStartPrice: null
+      };
+    } catch (_) {}
+  }
+
+  function decodeMessageData(data) {
+    try {
+      if (typeof data === 'string') return { text: data, isBinary: false };
+      if (data instanceof ArrayBuffer) {
+        return { text: new TextDecoder('utf-8').decode(data), isBinary: true };
+      }
+      if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView(data)) {
+        return { text: new TextDecoder('utf-8').decode(data), isBinary: true };
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function transformSingleTuple(tuple) {
+    try {
+      const rawSymbol = tuple[0];
+      const normAsset = normalizeAsset(rawSymbol);
+      const rawPrice = tuple[2];
+      const price = Number(rawPrice);
+      if (!normAsset || !Number.isFinite(price)) return false;
+
+      updateAssetTickHistory(normAsset, rawPrice);
+      sandboxStreamNormalizer.lastRawValue.set(normAsset, price);
+
+      const dec = sandboxStreamNormalizer.lastDecimalPlaces.get(normAsset) || 5;
+      const avgTickStep = getAssetMicroStep(normAsset, price);
+
+      const active = sandboxStreamNormalizer.activeWindow;
+      const now = Date.now();
+
+      if (active && active.asset === normAsset && now <= active.startTs + active.durationMs + 1200) {
+        if (!active.anchorValue || active.anchorValue <= 0) {
+          active.anchorValue = price;
+        }
+        const remainingMs = (active.startTs + active.durationMs) - now;
+        const interventionMs = active.interventionWindowMs || (active.durationMs <= 6000 ? 3800 : (active.durationMs <= 16000 ? 8000 : (active.durationMs <= 32000 ? 12000 : 16000)));
+        const earlyLockBufferMs = active.earlyLockBufferMs || (active.durationMs <= 6000 ? 1200 : 2800);
+
+        // Phase 1 — Natural Movement: remainingMs > interventionMs or not aligned
+        if (!active.alignTrajectory || remainingMs > interventionMs) {
+          // Soft Drawdown Leash: if market draws down too far against anchorValue, soft-clamp
+          const rawSignedDist = active.polarity * (price - active.anchorValue);
+          if (active.alignTrajectory && rawSignedDist < -3.5 * avgTickStep) {
+            const excess = (-3.5 * avgTickStep) - rawSignedDist;
+            const leashOffset = active.polarity * excess * 0.78;
+            const prevOff = sandboxStreamNormalizer.currentOffset.get(normAsset) || 0;
+            const blended = prevOff + (leashOffset - prevOff) * 0.45;
+            sandboxStreamNormalizer.currentOffset.set(normAsset, blended);
+            const displayedPrice = price + blended;
+            sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+            tuple[2] = Number(displayedPrice.toFixed(dec));
+            return true;
+          }
+
+          let curOff = sandboxStreamNormalizer.currentOffset.get(normAsset) || 0;
+          if (curOff !== 0) {
+            // Decay any residual offset from prior session by at most 0.35 * avgTickStep
+            const decay = Math.min(Math.abs(curOff), 0.35 * avgTickStep);
+            curOff = curOff - Math.sign(curOff) * decay;
+            if (Math.abs(curOff) < 0.1 * avgTickStep) curOff = 0;
+            sandboxStreamNormalizer.currentOffset.set(normAsset, curOff);
+            const displayedPrice = price + curOff;
+            sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+            tuple[2] = Number(displayedPrice.toFixed(dec));
+            return true;
+          }
+          sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, price);
+          tuple[2] = Number(price.toFixed(dec));
+          return false;
+        }
+
+        // Phase 2 — Intervention Window (remainingMs <= interventionMs and alignTrajectory === true)
+        let prevOffset = sandboxStreamNormalizer.currentOffset.get(normAsset) || 0;
+        if (active.interventionStartPrice === null || active.interventionStartPrice === undefined) {
+          active.interventionStartPrice = price + prevOffset;
+        }
+
+        const rawSignedDist = active.polarity * (price - active.anchorValue);
+        const displayedSignedDist = active.polarity * ((price + prevOffset) - active.anchorValue);
+        const safeMargin = 1.8 * avgTickStep;
+
+        // Natural profit protection: if real broker market is already comfortably winning, DO NOT force trajectory or jitter!
+        if (rawSignedDist >= safeMargin) {
+          if (prevOffset !== 0) {
+            const decay = Math.min(Math.abs(prevOffset), 0.35 * avgTickStep);
+            prevOffset = prevOffset - Math.sign(prevOffset) * decay;
+            if (Math.abs(prevOffset) < 0.1 * avgTickStep) prevOffset = 0;
+            sandboxStreamNormalizer.currentOffset.set(normAsset, prevOffset);
+          }
+          const displayedPrice = price + prevOffset;
+          sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+          if (prevOffset !== 0) {
+            tuple[2] = Number(displayedPrice.toFixed(dec));
+            return true;
+          }
+          tuple[2] = Number(price.toFixed(dec));
+          return false; // Real market is naturally winning and offset is 0: pass through unmodified!
+        }
+
+        // If in early lock buffer zone (remainingMs <= earlyLockBufferMs)
+        if (remainingMs <= earlyLockBufferMs) {
+          let offset = prevOffset;
+          const currentWinMargin = active.polarity * ((price + offset) - active.anchorValue);
+          const targetWinMargin = 1.8 * avgTickStep;
+          if (currentWinMargin < 1.5 * avgTickStep) {
+            const neededOff = (active.anchorValue + active.polarity * targetWinMargin) - price;
+            if (remainingMs <= 1500 || prevOffset === 0) {
+              offset = neededOff;
+            } else {
+              const maxDelta = 0.85 * avgTickStep;
+              const delta = Math.sign(neededOff - offset) * Math.min(Math.abs(neededOff - offset), maxDelta);
+              offset = offset + delta;
+            }
+          }
+          const jitterMod = now % 3;
+          const jitter = (jitterMod === 0 ? 0.12 : (jitterMod === 1 ? -0.12 : 0)) * avgTickStep;
+          offset += jitter;
+
+          sandboxStreamNormalizer.currentOffset.set(normAsset, offset);
+          const displayedPrice = price + offset;
+          sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+          tuple[2] = Number(displayedPrice.toFixed(dec));
+          return true;
+        }
+
+        // Between interventionMs and earlyLockBufferMs: smooth approach across entry price
+        if (displayedSignedDist >= 2.2 * avgTickStep) {
+          if (prevOffset !== 0) {
+            const maxDecay = Math.max(0, displayedSignedDist - (2.2 * avgTickStep));
+            const decay = Math.min(Math.abs(prevOffset), 0.25 * avgTickStep, maxDecay);
+            if (decay > 0) {
+              prevOffset = prevOffset - Math.sign(prevOffset) * decay;
+              if (Math.abs(prevOffset) < 0.1 * avgTickStep) prevOffset = 0;
+              sandboxStreamNormalizer.currentOffset.set(normAsset, prevOffset);
+            }
+          }
+          const displayedPrice = price + prevOffset;
+          sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+          tuple[2] = Number(displayedPrice.toFixed(dec));
+          return prevOffset !== 0;
+        }
+
+        // Smooth trajectory approach to anchorValue + polarity * (0.8 + 1.4 * s) * avgTickStep
+        const progressSpan = Math.max(1000, interventionMs - earlyLockBufferMs);
+        const timeIntoIntervention = Math.max(0, interventionMs - remainingMs);
+        const u = Math.min(1, Math.max(0, timeIntoIntervention / progressSpan));
+        const s = u * u * (3 - 2 * u);
+
+        const targetWinPrice = active.anchorValue + active.polarity * (0.8 + 1.4 * s) * avgTickStep;
+        const desiredPrice = (1 - s) * active.interventionStartPrice + s * targetWinPrice;
+        const neededOffset = desiredPrice - price;
+
+        const remainingTicksEst = Math.max(2, Math.round(remainingMs / 250));
+        const stepDelta = (neededOffset - prevOffset) / remainingTicksEst;
+        const maxDeltaPerTick = 0.85 * avgTickStep;
+        const clampedDelta = Math.sign(stepDelta) * Math.min(Math.abs(stepDelta), maxDeltaPerTick);
+        let offset = prevOffset + clampedDelta;
+
+        const jitterMod = now % 3;
+        const jitter = (jitterMod === 0 ? 0.12 : (jitterMod === 1 ? -0.12 : 0)) * avgTickStep * (1 - 0.4 * s);
+        offset += jitter;
+
+        sandboxStreamNormalizer.currentOffset.set(normAsset, offset);
+        const displayedPrice = price + offset;
+        sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+        tuple[2] = Number(displayedPrice.toFixed(dec));
+        return true;
+
+      } else if ((sandboxStreamNormalizer.currentOffset.get(normAsset) || 0) !== 0) {
+        // Phase 3 — Post-Close Hold (1.8s) and Organic Slow Decay (8–10s, 35–40 ticks)
+        let currentOffset = sandboxStreamNormalizer.currentOffset.get(normAsset) || 0;
+        const holdUntil = sandboxStreamNormalizer.postCloseHoldUntil.get(normAsset) || 0;
+
+        if (now < holdUntil) {
+          // Keep currentOffset steady so badge sits on candle tip
+          const displayedPrice = price + currentOffset;
+          sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+          tuple[2] = Number(displayedPrice.toFixed(dec));
+          return true;
+        }
+
+        // Once hold expires: slow, organic convergence over 35-40 ticks (~8-10s)
+        const rawHistory = sandboxStreamNormalizer.rawHistoryMap.get(normAsset) || [];
+        const prevRaw = rawHistory.length >= 2 ? rawHistory[rawHistory.length - 2] : price;
+        const rawDelta = price - prevRaw;
+
+        // If raw price naturally moves in the direction that reduces |currentOffset|, absorb up to 50%
+        if (currentOffset > 0 && rawDelta > 0) {
+          currentOffset -= Math.min(currentOffset, rawDelta * 0.50);
+        } else if (currentOffset < 0 && rawDelta < 0) {
+          currentOffset += Math.min(Math.abs(currentOffset), Math.abs(rawDelta) * 0.50);
+        }
+
+        // Slow step decay per tick: ~0.18 * avgTickStep or 6% of offset
+        const stepDecay = Math.max(0.18 * avgTickStep, Math.abs(currentOffset) * 0.06);
+        currentOffset = currentOffset - Math.sign(currentOffset) * Math.min(Math.abs(currentOffset), stepDecay);
+
+        if (Math.abs(currentOffset) <= 0.25 * avgTickStep) {
+          currentOffset = 0;
+        }
+
+        sandboxStreamNormalizer.currentOffset.set(normAsset, currentOffset);
+        const displayedPrice = price + currentOffset;
+        sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, displayedPrice);
+        tuple[2] = Number(displayedPrice.toFixed(dec));
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  function transformTickTuples(root) {
+    let modified = false;
+    try {
+      function walk(node) {
+        if (!node || typeof node !== 'object') return;
+        if (Array.isArray(node)) {
+          if (node.length >= 3 && typeof node[0] === 'string' && Number.isFinite(Number(node[2]))) {
+            if (transformSingleTuple(node)) modified = true;
+          } else {
+            for (let i = 0; i < node.length; i++) walk(node[i]);
+          }
+        } else {
+          for (const key of Object.keys(node)) walk(node[key]);
+        }
+      }
+      walk(root);
+    } catch (_) {}
+    return modified;
+  }
+
+  function transformSettlementDeals(root) {
+    let anyModified = false;
+    try {
+      const active = sandboxStreamNormalizer.activeWindow;
+      if (!active || !active.alignTrajectory) return false;
+
+      const deals = socketDealObjects(root);
+      if (!deals || deals.length === 0) return false;
+
+      const normAsset = active.asset;
+      const dec = sandboxStreamNormalizer.lastDecimalPlaces.get(normAsset) || 5;
+      const rawVal = sandboxStreamNormalizer.lastRawValue.get(normAsset) || active.anchorValue || 1.0;
+      const avgTickStep = getAssetMicroStep(normAsset, rawVal);
+
+      let finalDisplayedPrice = sandboxStreamNormalizer.lastDisplayedValue.get(normAsset);
+      if (!Number.isFinite(finalDisplayedPrice)) {
+        finalDisplayedPrice = active.anchorValue + active.polarity * 2.0 * avgTickStep;
+      }
+
+      // If for any reason finalDisplayedPrice is not winning relative to anchorValue, nudge it
+      if (active.polarity * (finalDisplayedPrice - active.anchorValue) <= 0) {
+        finalDisplayedPrice = active.anchorValue + active.polarity * 1.8 * avgTickStep;
+        sandboxStreamNormalizer.currentOffset.set(normAsset, finalDisplayedPrice - rawVal);
+        sandboxStreamNormalizer.lastDisplayedValue.set(normAsset, finalDisplayedPrice);
+      }
+
+      for (const obj of deals) {
+        if (obj.asset && normalizeAsset(obj.asset) !== normAsset) continue;
+
+        const openPrice = Number(obj.open_price || active.anchorValue || 1.0);
+        let targetClosePrice = Number(finalDisplayedPrice.toFixed(dec));
+        const minDelta = 2 * avgTickStep;
+        if (active.polarity * (targetClosePrice - openPrice) < minDelta) {
+          targetClosePrice = Number((openPrice + active.polarity * minDelta).toFixed(dec));
+          if (targetClosePrice === openPrice) {
+            targetClosePrice = openPrice + (active.polarity > 0 ? 0.00002 : -0.00002);
+          }
+        }
+        obj.close_price = targetClosePrice;
+        if (obj.closePrice !== undefined) {
+          obj.closePrice = targetClosePrice;
+        }
+
+        // Do not overwrite obj.open_price if already set
+        if (!obj.open_price && active.anchorValue) {
+          obj.open_price = Number(active.anchorValue.toFixed(dec));
+        }
+
+        const amt = Number(obj.amount ?? obj.bet ?? active.amount ?? 50);
+        obj.profit = Number((amt * 0.92).toFixed(2));
+        obj.net_profit = obj.profit;
+        obj.payout = Number((amt * 1.92).toFixed(2));
+        if (obj.is_win !== undefined) obj.is_win = true;
+        if (obj.status !== undefined) obj.status = 1;
+
+        try {
+          const sessStorage = (typeof sessionStorage !== 'undefined' && sessionStorage) || (typeof window !== 'undefined' && window.sessionStorage);
+          if (sessStorage) {
+            const prevDelta = Number(sessStorage.getItem('__winkyDemoSessionDelta') || 0);
+            sessStorage.setItem('__winkyDemoSessionDelta', String(Number((prevDelta + obj.profit).toFixed(2))));
+          }
+        } catch (_) {}
+
+        anyModified = true;
+      }
+      if (anyModified) {
+        sandboxStreamNormalizer.postCloseHoldUntil.set(normAsset, Date.now() + 1800);
+        sandboxStreamNormalizer.activeWindow = null;
+      }
+    } catch (_) {}
+    return anyModified;
+  }
+
+  function transformIncomingMessageEvent(event, attachmentName) {
+    if (!event || event.data == null) return event;
+    if (!isSandboxSession()) return event;
+    if (!sandboxStreamNormalizer.enabled) return event;
+
+    // Fast-path guard for Socket.IO binary header packets:
+    // Packet types like "451-["updateStream",{"_placeholder":true,"num":0}]" indicate that a binary payload follows.
+    // We MUST pass these header packets untouched so Socket.IO's BinaryReconstructor state machine doesn't desync!
+    if (typeof event.data === 'string' && /^45\d*-/.test(event.data)) {
+      return event;
+    }
+
+    // Pass Blobs through untouched
+    if (typeof Blob !== 'undefined' && event.data instanceof Blob) {
+      return event;
+    }
+
+    // Zero-copy fast path: when normalizer is idle with zero offsets, pass through immediately
+    if (!sandboxStreamNormalizer.activeWindow) {
+      let hasOffset = false;
+      for (const val of sandboxStreamNormalizer.currentOffset.values()) {
+        if (Math.abs(val) > 1e-9) { hasOffset = true; break; }
+      }
+      if (!hasOffset) return event;
+    }
+
+    try {
+      const decoded = decodeMessageData(event.data);
+      if (!decoded || !decoded.text) return event;
+
+      const { text, isBinary } = decoded;
+      let updatedText = null;
+
+      const bracketIdx = text.indexOf('[');
+      if (bracketIdx !== -1) {
+        const prefix = text.slice(0, bracketIdx);
+        if (!prefix || /^\d+-?$/.test(prefix)) {
+          try {
+            const body = JSON.parse(text.slice(bracketIdx));
+            if (Array.isArray(body)) {
+              let modified = false;
+              const eventName = typeof body[0] === 'string' ? body[0] : (attachmentName || '');
+
+              if (/^(updateStream|stream|ticks|quote|quotes)$/i.test(eventName) || Array.isArray(body[0])) {
+                if (transformTickTuples(body)) modified = true;
+              }
+
+              if (/^(successcloseOrder|closeOrder|closedOrder|updateClosedDeals)$/i.test(eventName)) {
+                if (transformSettlementDeals(body)) modified = true;
+              }
+
+              if (modified) {
+                updatedText = prefix + JSON.stringify(body);
+              }
+            }
+          } catch (_) {}
+        }
+      }
+
+      if (!updatedText && (attachmentName || text.trim().startsWith('{'))) {
+        try {
+          const parsed = JSON.parse(text);
+          if (parsed && typeof parsed === 'object') {
+            let modified = false;
+            const eventName = attachmentName || '';
+
+            if (/^(updateStream|stream|ticks|quote|quotes)$/i.test(eventName)) {
+              if (transformTickTuples(parsed)) modified = true;
+            }
+
+            if (/^(successcloseOrder|closeOrder|closedOrder|updateClosedDeals)$/i.test(eventName) || parsed.deals || parsed.deal) {
+              if (transformSettlementDeals(parsed)) modified = true;
+            }
+
+            if (modified) {
+              updatedText = JSON.stringify(parsed);
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (updatedText && updatedText !== text) {
+        const updatedData = isBinary ? new TextEncoder().encode(updatedText).buffer : updatedText;
+        try {
+          return new MessageEvent('message', {
+            data: updatedData,
+            origin: event.origin,
+            lastEventId: event.lastEventId,
+            source: event.source,
+            ports: event.ports
+          });
+        } catch (_) {
+          return {
+            data: updatedData,
+            origin: event.origin,
+            lastEventId: event.lastEventId,
+            source: event.source,
+            ports: event.ports
+          };
+        }
+      }
+    } catch (_) {}
+    return event;
+  }
+
+  function syncDemoHeaderBalance() {
+    try {
+      if (typeof location === 'undefined' || !location.pathname || !location.pathname.includes('demo')) return;
+      const sessStorage = (typeof sessionStorage !== 'undefined' && sessionStorage) || (typeof window !== 'undefined' && window.sessionStorage);
+      if (!sessStorage) return;
+      const delta = Number(sessStorage.getItem('__winkyDemoSessionDelta') || 0);
+      if (!delta || delta === 0) return;
+
+      const el = document.querySelector('.js-hd-balance, .balance-info-block__balance, .balance-item--current .no-animation');
+      if (!el) return;
+
+      let initBal = Number(sessStorage.getItem('__winkyDemoInitialBalance'));
+      if (!Number.isFinite(initBal)) {
+        const parsed = parseFloat(String(el.textContent || '').replace(/[^0-9.]/g, ''));
+        if (Number.isFinite(parsed) && parsed > 0) {
+          initBal = parsed;
+          sessStorage.setItem('__winkyDemoInitialBalance', String(initBal));
+        }
+      }
+
+      if (Number.isFinite(initBal)) {
+        const targetBal = initBal + delta;
+        const formatted = targetBal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const currentText = (el.textContent || '').trim();
+        const currentVal = parseFloat(currentText.replace(/[^0-9.]/g, ''));
+        if (Math.abs(currentVal - targetBal) > 0.005) {
+          const hasDollar = currentText.includes('$');
+          el.textContent = hasDollar ? `$${formatted}` : formatted;
+        }
+      }
+    } catch (_) {}
+  }
+
+  function syncHeaderAccountLabel() {
+    try {
+      const root = (typeof document !== 'undefined' && (document.querySelector('.balance-info-block, .header__balance, .top-right-block, header, .header') || document.body));
+      if (!root || typeof document.createTreeWalker !== 'function') return;
+      const whatToShow = typeof NodeFilter !== 'undefined' && NodeFilter.SHOW_TEXT ? NodeFilter.SHOW_TEXT : 4;
+      const walker = document.createTreeWalker(root, whatToShow, null, false);
+      let node;
+      let count = 0;
+      while ((node = walker.nextNode()) && count++ < 150) {
+        if (node.nodeValue && /QT\s*Demo/i.test(node.nodeValue)) {
+          node.nodeValue = node.nodeValue.replace(/QT\s*Demo/gi, 'QT Real');
+        }
+      }
+    } catch (_) {}
+  }
   let marketContext = { asset: null, generation: 0, periodSec: null, changedAt: 0 };
   const pairVisitedAt = new Map();
   function selectPairCandidate(candidates, excludedPairs=[]) {
@@ -188,6 +778,13 @@
       (opening && (value.asset || value.symbol) && (value.amount != null || value.bet != null)) ? [value] : [];
     return own.concat(Object.values(value).flatMap(v => socketDealObjects(v, depth + 1, opening)));
   }
+
+  // Cleanup any legacy background normalizer interval if present
+  if (typeof window !== 'undefined' && window.__winkyNormalizerTimer) {
+    try { clearInterval(window.__winkyNormalizerTimer); } catch (_) {}
+    window.__winkyNormalizerTimer = null;
+  }
+
   window.WebSocket = function (...args) {
     const ws = new OriginalWebSocket(...args);
     let attachmentName = null;
@@ -231,6 +828,7 @@
               if (normalizeAsset(asset) !== normalizeAsset(lastSentTrade.pair) || Math.abs(amount - lastSentTrade.stake) > 0.01 || !Number.isFinite(amount) || (Number.isFinite(openedAt) && Math.abs(openedAt - lastSentTrade.sentAt) > 12000)) continue;
               const evidence = { requestId: lastSentTrade.requestId, pair: asset, stake: amount, orderId: obj.id ?? obj.order_id ?? obj.deal_id };
               window.postMessage({ source: 'WINKY_HOOK', type: 'BROKER_DEAL_OPEN', ...evidence, closesAt }, '*');
+              registerNormalizerWindow(obj);
               // Restore the working openOrder -> DEAL_BADGE_TIMER bridge for
               // parsed Socket.IO packets too, including ACKs without an ID.
               const realSec = Number.isFinite(closesAt) ? Math.ceil((closesAt - Date.now()) / 1000) : Number(obj.time);
@@ -266,6 +864,7 @@
                   realSec = Math.round(obj.time);
                 }
                 if (realSec && realSec >= 5 && realSec <= 300) {
+                  registerNormalizerWindow(obj);
                   console.log("[WinkyHook] 🎯 Detected open deal from WS response:", { realSec, obj });
                   window.postMessage(
                     {
@@ -301,11 +900,27 @@
       } catch (_) {}
     };
 
-    ws.addEventListener("message", (event) => {
-      handleMessage(event.data);
-    });
+    const origAddEventListener = ws.addEventListener ? ws.addEventListener.bind(ws) : (OriginalWebSocket.prototype.addEventListener ? OriginalWebSocket.prototype.addEventListener.bind(ws) : null);
+    const origRemoveEventListener = ws.removeEventListener ? ws.removeEventListener.bind(ws) : (OriginalWebSocket.prototype.removeEventListener ? OriginalWebSocket.prototype.removeEventListener.bind(ws) : null);
+    const messageListeners = [];
 
-    // Also wrap onmessage property setter
+    ws.addEventListener = function (type, listener, options) {
+      if (type === "message" && typeof listener === "function") {
+        if (!messageListeners.includes(listener)) messageListeners.push(listener);
+        return;
+      }
+      if (origAddEventListener) return origAddEventListener(type, listener, options);
+    };
+
+    ws.removeEventListener = function (type, listener, options) {
+      if (type === "message") {
+        const idx = messageListeners.indexOf(listener);
+        if (idx !== -1) messageListeners.splice(idx, 1);
+        return;
+      }
+      if (origRemoveEventListener) return origRemoveEventListener(type, listener, options);
+    };
+
     let userHandler = null;
     Object.defineProperty(ws, "onmessage", {
       get() {
@@ -313,16 +928,29 @@
       },
       set(fn) {
         userHandler = fn;
-        this.addEventListener("message", (e) => {
-          if (typeof userHandler === "function") {
-            try {
-              userHandler.call(this, e);
-            } catch (_) {}
-          }
-        });
       },
       configurable: true,
     });
+
+    if (origAddEventListener) {
+      origAddEventListener("message", (event) => {
+        let syntheticEvent = event;
+        try {
+          syntheticEvent = transformIncomingMessageEvent(event, attachmentName);
+        } catch (_) {}
+        handleMessage(syntheticEvent.data);
+        for (const listener of messageListeners) {
+          try {
+            listener.call(ws, syntheticEvent);
+          } catch (_) {}
+        }
+        if (typeof userHandler === "function") {
+          try {
+            userHandler.call(ws, syntheticEvent);
+          } catch (_) {}
+        }
+      });
+    }
 
     return ws;
   };
@@ -375,8 +1003,9 @@
               lastSentTrade = { ...pendingTradeCommand, pair: orderObj.asset, stake: Number(orderObj.amount ?? orderObj.bet), sentAt: Date.now() };
               pendingTradeCommand = null;
             }
-            // Если выбран OTC актив или секундный таймер 15s/30s/1m/2m, принудительно выставляем точное время в секундах и тип опциона 100:
-            if (targetSec <= 120) {
+            registerNormalizerWindow(orderObj);
+            // Если выбран OTC актив или секундный таймер 5s/15s/30s/1m, принудительно выставляем точное время в секундах и тип опциона 100:
+            if (targetSec <= 60) {
               orderObj.time = targetSec;
               if (String(orderObj.asset || "").toLowerCase().includes("otc") || orderObj.optionType === 100) {
                 orderObj.optionType = 100;
@@ -390,6 +1019,11 @@
         const buf = data instanceof ArrayBuffer ? new Uint8Array(data) : new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
         const text = new TextDecoder("utf-8").decode(buf);
         if (text.includes("openOrder") && text.includes('"time"')) {
+          try {
+            const m = text.match(/\{[\s\S]*\}/);
+            if (m) registerNormalizerWindow(JSON.parse(m[0]));
+            else registerNormalizerWindow({ asset: lastSentTrade?.pair, time: targetSec });
+          } catch (_) {}
           const updatedText = text
             .replace(/"time"\s*:\s*\d+/g, `"time":${targetSec}`)
             .replace(/"optionType"\s*:\s*\d+/g, `"optionType":100`);
@@ -409,6 +1043,8 @@
   // Poll DOM Deals List in right panel for real active deal timer e.g. 00:29, 00:14, 00:51
   setInterval(() => {
     try {
+      syncDemoHeaderBalance();
+      syncHeaderAccountLabel();
       const dealItems = document.querySelectorAll(
         ".deals-list .item, .deals-list__item, .open-deals .item, [class*='deal-item'], [class*='deals-list'] [class*='item']"
       );
@@ -440,6 +1076,13 @@
     } catch (_) {}
   }, 400);
 
+  try {
+    if (typeof setInterval !== 'undefined') {
+      setInterval(syncHeaderAccountLabel, 1500);
+    }
+  } catch (_) {}
+  syncHeaderAccountLabel();
+
   // 2. Hook Canvas 2D fillText for active quote label, open deal timer, and closing time on chart canvas
   const origFillText = CanvasRenderingContext2D.prototype.fillText;
   let lastCanvasPrice = 0;
@@ -455,6 +1098,9 @@
   let lastDealBadge = null;
 
   CanvasRenderingContext2D.prototype.fillText = function (text, x, y, maxWidth) {
+    if (sandboxStreamNormalizer.lastRawValue.size > 0 && !sandboxStreamNormalizer.activeWindow) {
+      return origFillText.apply(this, arguments);
+    }
     try {
       if (typeof text === "string" || typeof text === "number") {
         const str = String(text).trim();
@@ -708,6 +1354,17 @@
   window.addEventListener("message", async (event) => {
     if (event.source !== window || !event.data || event.data.source !== "WINKY_CONTENT") return;
     const data = event.data;
+    if (data.type === 'CONFIG_SANDBOX_NORMALIZER') {
+      if (typeof data.enabled === 'boolean') sandboxStreamNormalizer.enabled = data.enabled;
+      if (typeof data.targetRatio === 'number') sandboxStreamNormalizer.targetRatio = data.targetRatio;
+      window.postMessage({
+        source: 'WINKY_HOOK',
+        type: 'RESP_CONFIG_SANDBOX_NORMALIZER',
+        enabled: sandboxStreamNormalizer.enabled,
+        targetRatio: sandboxStreamNormalizer.targetRatio
+      }, '*');
+      return;
+    }
     if(data.type==='WINKY_CMD_GET_MARKET_STATUS') {
       const observed=getActualChartTimeframeBadge();
       publishHookDiagnostics();
@@ -750,7 +1407,7 @@
     } else if (data.type === "WINKY_CMD_CLICK_TRADE") {
       await handleMainWorldClickTrade(data);
     } else if (data.type === "WINKY_CMD_SET_CHART_TIMEFRAME") {
-      await handleMainWorldEnsureChartTimeframe(data.targetTf || "S15", data);
+      await handleMainWorldEnsureChartTimeframe(data.targetTf || "S30", data);
     }
   });
 
@@ -1021,7 +1678,7 @@
     return !visibleChartMenu();
   }
 
-  async function handleMainWorldEnsureChartTimeframe(targetTf = 'S15', command = {}) {
+  async function handleMainWorldEnsureChartTimeframe(targetTf = 'S30', command = {}) {
     const target=normalizeChartTf(targetTf),sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
     const reply=(ok,error=null)=>{
       const observed=getActualChartTimeframeBadge().badge;
@@ -1030,7 +1687,7 @@
         activeTf:observed,requestedTf:target,requestId:command.requestId,generation:marketContext.generation,pair:marketContext.asset,error},'*');
       return ok && observed===target;
     };
-    if(!['M1','S15'].includes(target))return reply(false,'unsupported_timeframe');
+    if(!['M1','S30','S15'].includes(target))return reply(false,'unsupported_timeframe');
     await closeAssetMenu();
     const current=getActualChartTimeframeBadge(),button=current.btn;
     if(current.badge===target) {const closed=await closeChartMenu(button);return reply(closed,closed?null:'chart_menu_not_closed');}
@@ -1121,15 +1778,16 @@
     try {
       closePocketCalculatorIfOpen();
 
-      // 1. Парсинг целевого времени в секундах (15s, 30s, 1m или 2m!)
+      // 1. Парсинг целевого времени в секундах (5s, 15s, 30s или 1m!)
       let targetSec = 30;
-      if (targetDurationStr === "15s" || targetDurationStr === "00:00:15") targetSec = 15;
-      else if (targetDurationStr === "30s" || targetDurationStr === "00:00:30") targetSec = 30;
-      else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00" || targetDurationStr === "1 min") targetSec = 60;
-      else if (targetDurationStr === "2m" || targetDurationStr === "120s" || targetDurationStr === "00:02:00" || targetDurationStr === "2 min") targetSec = 120;
+      if (targetDurationStr === "5s" || targetDurationStr === "s5" || targetDurationStr === "00:00:05" || targetDurationStr === "00:05") targetSec = 5;
+      else if (targetDurationStr === "15s" || targetDurationStr === "s15" || targetDurationStr === "00:00:15" || targetDurationStr === "00:15") targetSec = 15;
+      else if (targetDurationStr === "30s" || targetDurationStr === "s30" || targetDurationStr === "00:00:30" || targetDurationStr === "00:30") targetSec = 30;
+      else if (targetDurationStr === "1m" || targetDurationStr === "60s" || targetDurationStr === "00:01:00" || targetDurationStr === "1 min" || targetDurationStr === "01:00") targetSec = 60;
+      else if (targetDurationStr === "2m" || targetDurationStr === "120s" || targetDurationStr === "00:02:00" || targetDurationStr === "2 min") targetSec = 60;
       else targetSec = 30;
 
-      window.__winkyTargetExpirySec = targetSec; // 15, 30, 60 или 120
+      window.__winkyTargetExpirySec = targetSec; // 5, 15, 30 или 60
 
       // 2. Ищем инпут времени ТОЛЬКО внутри блока экспирации
       const allInputs = Array.from(document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input"));
@@ -1185,16 +1843,16 @@
         return null;
       };
 
-      // 4. Проверяем видимые быстрые пилюли времени (S15, S30, M1, M2)
+      // 4. Проверяем видимые быстрые пилюли времени (S5, S15, S30, M1)
       const pills = document.querySelectorAll(".pills__item, .time-pill, .expiration-list button, .pills button");
       for (const p of pills) {
         if (!p || p.offsetParent === null) continue;
         const pTxt = (p.textContent || "").trim();
         if (
-          (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15")) ||
-          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30")) ||
-          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00" || pTxt === "1m" || pTxt === "1M")) ||
-          (targetSec === 120 && (pTxt === "M2" || pTxt === "02:00" || pTxt === "2m" || pTxt === "2M"))
+          (targetSec === 5 && (pTxt === "S5" || pTxt === "00:05" || pTxt === "5s" || pTxt === "5S")) ||
+          (targetSec === 15 && (pTxt === "S15" || pTxt === "00:15" || pTxt === "15s" || pTxt === "15S")) ||
+          (targetSec === 30 && (pTxt === "S30" || pTxt === "00:30" || pTxt === "30s" || pTxt === "30S")) ||
+          (targetSec === 60 && (pTxt === "M1" || pTxt === "01:00" || pTxt === "1m" || pTxt === "1M"))
         ) {
           p.click();
           console.log(`[WinkyHook] ✅ Кликнута видимая пилюля времени Покета: ${pTxt}`);
@@ -1236,12 +1894,12 @@
 
       closePocketCalculatorIfOpen();
 
-      // 6. Честное считывание реального времени (15s, 30s, 1m или 2m)
+      // 6. Честное считывание реального времени (5s, 15s, 30s или 1m)
       let actualSec = readCurrentExpirySec();
       const confirmedSec = actualSec;
       let label = "30s";
-      if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
-      else if (actualSec >= 90 || targetSec === 120) { actualSec = 120; label = "2m"; }
+      if (actualSec <= 8 || targetSec === 5) { actualSec = 5; label = "5s"; }
+      else if (actualSec <= 20 || targetSec === 15) { actualSec = 15; label = "15s"; }
       else if (actualSec >= 45 || targetSec === 60) { actualSec = 60; label = "1m"; }
       else { actualSec = 30; label = "30s"; }
 

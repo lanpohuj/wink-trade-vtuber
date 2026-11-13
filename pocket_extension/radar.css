@@ -2,16 +2,19 @@
    WINKY AI — Pocket Option Chart Radar & Floating HUDs
    ======================================================== */
 
-/* Targeting Radar Overlay on Pocket Option Chart */
-.winky-radar-overlay {
-  position: absolute;
-  pointer-events: none;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
-  overflow: hidden;
+/* Targeting Radar Overlay on Pocket Option Chart (Hidden) */
+.winky-radar-overlay,
+.winky-radar-box,
+.winky-radar-candle,
+.winky-radar-laser,
+.winky-radar-reticle,
+.winky-radar-crosshair-h,
+.winky-radar-crosshair-v,
+.winky-radar-label {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 .winky-radar-box {

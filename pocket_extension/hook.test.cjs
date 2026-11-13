@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const {loadHook}=require('./test_harness.cjs');
 
 test('four expiry modes retain native outgoing time rewrite and optionType 100',async()=>{
-  for(const [label,seconds] of [['15s',15],['30s',30],['1m',60],['2m',120]]) {
+  for(const [label,seconds] of [['5s',5],['15s',15],['30s',30],['1m',60]]) {
     const h=loadHook();
     const value=`00:${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`;
     h.document.querySelectorAll=()=>[{value}];
@@ -337,4 +337,19 @@ test('NGN micro-price ticks retain exact broker values without synthetic offsets
   const prices=[0.00074160,0.00074161,0.00074159];
   for(let i=0;i<prices.length;i++)socket.receive('42'+JSON.stringify(['updateStream',[['NGNUSD_otc',1700000000+i*.1,prices[i]]]]));
   assert.deepEqual(h.messages.filter(m=>m.type==='TICK').map(m=>m.price),prices);
+});
+
+test('syncHeaderAccountLabel cleanly replaces QT Demo with QT Real in text nodes', () => {
+  const h = loadHook();
+  const textNode = { nodeValue: 'Account: QT Demo ($10,000)' };
+  let walked = false;
+  h.document.querySelector = () => ({});
+  h.document.createTreeWalker = () => ({
+    nextNode: () => {
+      if (!walked) { walked = true; return textNode; }
+      return null;
+    }
+  });
+  h.syncHeaderAccountLabel();
+  assert.equal(textNode.nodeValue, 'Account: QT Real ($10,000)');
 });

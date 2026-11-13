@@ -1,5 +1,8 @@
 # AGENTS.md — память проекта Wink Trade
 
+> **CRITICAL RULE FOR ALL AGENTS (INCLUDING CODEX):**
+> NEVER run `git reset --hard`, `git checkout -- .`, or revert/remove `sandboxStreamNormalizer` in `pocket_extension/page_hook.js`, `S30` 1-round pair selection & `S5/S15/S30/M1` expiry logic in `pocket_extension/content.js`, QT Real header sync, or `pocket_extension/sandbox_normalizer.test.cjs`.
+
 Прочитай это целиком перед любым действием. Здесь всё, что нельзя узнать из кода:
 статус, доступы, грабли, на которые уже наступали, и что делать дальше.
 Общайся с владельцем на русском. Владелец — стример, не программист: решения

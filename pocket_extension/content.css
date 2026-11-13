@@ -1548,3 +1548,18 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.02); }
 }
+
+/* Radar & overlay suppression */
+.winky-radar-overlay,
+.winky-radar-box,
+.winky-radar-candle,
+.winky-radar-laser,
+.winky-radar-reticle,
+.winky-radar-crosshair-h,
+.winky-radar-crosshair-v,
+.winky-radar-label {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}

@@ -101,3 +101,8 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Резервные копии расширения
+pocket_extension_backup/
+pocket_extension_backup_*/
+

@@ -52,11 +52,10 @@
 
   window.WinkyChartRadar = {
     show: function (label = "SCANNING...") {
-      createRadarOverlay();
-      positionRadarOverChart();
-      const lbl = document.getElementById("winkyRadarLabel");
-      if (lbl) lbl.textContent = `WINKY AI RADAR: ${label}`;
-      radarOverlay.style.display = "flex";
+      // Disabled to keep Pocket Option native chart clean and lag-free
+      if (radarOverlay) {
+        radarOverlay.style.display = "none";
+      }
     },
     hide: function () {
       if (radarOverlay) {
