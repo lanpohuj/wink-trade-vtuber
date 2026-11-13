@@ -851,12 +851,12 @@
   transition: width 0.3s linear;
 }
 .winky-sig-progress-fill.buy {
-  background: linear-gradient(90deg, #00FF88, #00E5FF);
-  box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+  background: linear-gradient(90deg, #00FF88 0%, #00D9F5 100%);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
 }
 .winky-sig-progress-fill.sell {
-  background: linear-gradient(90deg, #FF3B5C, #FF8A00);
-  box-shadow: 0 0 8px rgba(255, 59, 92, 0.6);
+  background: linear-gradient(90deg, #FF3B5C 0%, #FF8A00 100%);
+  box-shadow: 0 0 10px rgba(255, 59, 92, 0.7);
 }
 
 /* Legacy fallback classes */
@@ -1615,7 +1615,7 @@
 #winky-bot-root .winky-select-native { color: #e8f5f0; background: #0a1315; border-color: #ffffff12; border-radius: 8px; padding: 8px; font-family: inherit; font-weight: 650; font-size: 11px; line-height: 1.2; }
 #winky-bot-root .winky-signal-card { padding: 10px; gap: 8px; background: #101f20; border-color: #ffffff10; border-radius: 12px; box-shadow: none; }
 #winky-bot-root .winky-card-pair { color: #eef8f5; font-family: inherit; font-weight: 700; font-size: 13px; line-height: 1.2; letter-spacing: 0; }
-#winky-bot-root .winky-card-payout { font-family: inherit; font-weight: 700; font-size: 10px; line-height: 1.2; color: #8aebc9; background: #1c4436; border: 0; border-radius: 6px; padding: 4px 7px; }
+#winky-bot-root .winky-card-payout { font-family: inherit; font-weight: 700; font-size: 10px; line-height: 1.2; color: #10F587; background: rgba(16, 245, 135, 0.16); border: 1px solid rgba(16, 245, 135, 0.45); border-radius: 6px; padding: 4px 7px; text-shadow: 0 0 8px rgba(16, 245, 135, 0.6); box-shadow: 0 0 10px rgba(16, 245, 135, 0.25); }
 #winky-bot-root .winky-metrics-row { gap: 6px; }
 #winky-bot-root .winky-metric-pill { background: #0a1617; border: 1px solid #ffffff0a; padding: 7px 8px; border-radius: 7px; }
 #winky-bot-root .winky-metric-title { color: #8fa7a1; font-family: inherit; font-weight: 600; font-size: 10px; line-height: 1.2; text-transform: none; letter-spacing: 0; }
@@ -1635,31 +1635,78 @@
 @keyframes winkyVisualScan { from { left: 3%; opacity: .35; } to { left: 97%; opacity: .85; } }
 #winky-bot-root .winky-scan-top { margin-top: 2px; }
 #winky-bot-root .winky-scan-title { color: #e9f6f0; font-family: inherit; font-weight: 700; font-size: 11px; line-height: 1.2; letter-spacing: 0; text-transform: none; }
-#winky-bot-root .winky-scan-score-badge { color: #8ee6c4; font-family: inherit; font-weight: 650; font-size: 10px; line-height: 1.2; background: #203c33; border: none; box-shadow: none; }
+#winky-bot-root .winky-scan-score-badge { color: #10F587; font-family: inherit; font-weight: 750; font-size: 10px; line-height: 1.2; background: rgba(16, 245, 135, 0.14); border: 1px solid rgba(16, 245, 135, 0.55); border-radius: 6px; padding: 2px 7px; text-shadow: 0 0 10px rgba(16, 245, 135, 0.75); box-shadow: 0 0 12px rgba(16, 245, 135, 0.25); }
 #winky-bot-root .winky-scan-segments { gap: 4px; margin: 0; align-items: stretch; }
-#winky-bot-root .winky-scan-seg { height: auto; padding: 6px 3px; background: #152623; border-radius: 5px; text-align: center; box-shadow: none; animation: none; overflow: visible; }
+#winky-bot-root .winky-scan-seg { height: auto; padding: 6px 3px; background: #152623; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 5px; text-align: center; box-shadow: none; animation: none; overflow: visible; }
 #winky-bot-root .winky-scan-seg span, #winky-bot-root .winky-scan-seg small { display: block; color: #819890; font-size: 8px; line-height: 1.45; }
-#winky-bot-root .winky-scan-seg.active { background: #285343; }
-#winky-bot-root .winky-scan-seg.active span, #winky-bot-root .winky-scan-seg.active small { color: #b1f5d7; }
-#winky-bot-root .winky-scan-seg.done span, #winky-bot-root .winky-scan-seg.done small { color: #72d7af; }
+#winky-bot-root .winky-scan-seg.active { background: rgba(16, 245, 135, 0.18); border-color: rgba(16, 245, 135, 0.65); box-shadow: 0 0 12px rgba(16, 245, 135, 0.35); }
+#winky-bot-root .winky-scan-seg.active span, #winky-bot-root .winky-scan-seg.active small { color: #10F587; text-shadow: 0 0 8px rgba(16, 245, 135, 0.75); }
+#winky-bot-root .winky-scan-seg.done { background: rgba(16, 245, 135, 0.14); border-color: rgba(16, 245, 135, 0.55); box-shadow: 0 0 10px rgba(16, 245, 135, 0.25); }
+#winky-bot-root .winky-scan-seg.done span, #winky-bot-root .winky-scan-seg.done small { color: #10F587; text-shadow: 0 0 8px rgba(16, 245, 135, 0.7); }
 #winky-bot-root .winky-analysis-meta { color: #8ca59c; font-size: 9px; min-height: 0; margin: 0; }
 #winky-bot-root .winky-flip-stage { min-height: 0; max-height: none; flex: none; }
 #winky-bot-root .winky-flip-card { height: auto; padding: 8px; border: 1px solid #ffffff0c; border-radius: 7px; background: #13231f; box-shadow: none; gap: 5px; }
 #winky-bot-root .winky-flip-card::after { display: none; }
 #winky-bot-root .winky-flip-step-name { color: #e3f4ec; font-family: inherit; font-weight: 700; font-size: 10px; line-height: 1.2; letter-spacing: 0; }
 #winky-bot-root .winky-flip-status { color: #a2dcc4 !important; background: #25483c !important; border: 0 !important; font-family: inherit; font-weight: 600; font-size: 9px; line-height: 1.2; padding: 3px 5px; }
+#winky-bot-root .winky-flip-status.confirmed {
+  color: #10F587 !important;
+  background: rgba(16, 245, 135, 0.16) !important;
+  border: 1px solid rgba(16, 245, 135, 0.65) !important;
+  border-radius: 6px;
+  text-shadow: 0 0 10px rgba(16, 245, 135, 0.75) !important;
+  box-shadow: 0 0 12px rgba(16, 245, 135, 0.3) !important;
+}
 #winky-bot-root .winky-analysis-details, #winky-bot-root .winky-sig-strategy-box { color: #9ab5aa; font-size: 10px; }
 #winky-bot-root summary { cursor: pointer; color: #9ecbb8; font-size: 10px; }
 #winky-bot-root .winky-flip-desc, #winky-bot-root .winky-sig-strategy-text { color: #d5e5df; font-family: inherit; font-weight: 500; font-size: 10px; line-height: 1.4; padding-top: 5px; }
 #winky-bot-root .winky-direction-block.active { gap: 10px; padding: 12px; }
-#winky-bot-root .winky-direction-block.active.buy, #winky-bot-root .winky-result-card.buy { background: #15372c; border-color: #5fca9f70; box-shadow: none; }
-#winky-bot-root .winky-direction-block.active.sell, #winky-bot-root .winky-result-card.sell { background: #3a2425; border-color: #e4827970; box-shadow: none; }
-#winky-bot-root .winky-sig-dir-text { color: inherit; font-family: inherit; font-weight: 750; font-size: 15px; line-height: 1.2; letter-spacing: 0; text-shadow: none !important; }
-#winky-bot-root .winky-sig-arrow { font-size: 22px; text-shadow: none !important; }
-#winky-bot-root .winky-sig-dir-wrap.buy { color: #89ecc5; }
-#winky-bot-root .winky-sig-dir-wrap.sell { color: #ffaaa1; }
-#winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text { color: #89ecc5; }
-#winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-dir-text { color: #ffaaa1; }
+#winky-bot-root .winky-direction-block.active.buy,
+#winky-bot-root .winky-result-card.buy,
+#winky-bot-root .winky-direction-block.cooldown.win {
+  background: linear-gradient(135deg, rgba(16, 245, 135, 0.16), rgba(0, 217, 245, 0.1)) !important;
+  border: 1px solid rgba(16, 245, 135, 0.75) !important;
+  box-shadow: 0 0 22px rgba(16, 245, 135, 0.22), inset 0 0 18px rgba(16, 245, 135, 0.12) !important;
+}
+#winky-bot-root .winky-direction-block.active.sell,
+#winky-bot-root .winky-result-card.sell,
+#winky-bot-root .winky-direction-block.cooldown.loss {
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.16), rgba(239, 68, 68, 0.1)) !important;
+  border: 1px solid rgba(255, 77, 109, 0.75) !important;
+  box-shadow: 0 0 22px rgba(255, 77, 109, 0.22), inset 0 0 18px rgba(255, 77, 109, 0.12) !important;
+}
+#winky-bot-root .winky-sig-dir-text { font-family: inherit; font-weight: 800; font-size: 15px; line-height: 1.2; letter-spacing: 0; }
+#winky-bot-root .winky-sig-arrow { font-size: 22px; font-weight: 800; }
+#winky-bot-root .winky-sig-dir-wrap.buy,
+#winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow,
+#winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text {
+  color: #10F587 !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 14px rgba(16, 245, 135, 0.8), 0 0 28px rgba(16, 245, 135, 0.35) !important;
+}
+#winky-bot-root .winky-sig-dir-wrap.sell,
+#winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-arrow,
+#winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-dir-text {
+  color: #FF4D6D !important;
+  font-weight: 800 !important;
+  text-shadow: 0 0 14px rgba(255, 77, 109, 0.85), 0 0 28px rgba(255, 77, 109, 0.4) !important;
+}
+#winky-bot-root .winky-sig-progress-fill.buy {
+  background: linear-gradient(90deg, #00FF88 0%, #00D9F5 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7) !important;
+}
+#winky-bot-root .winky-sig-progress-fill.sell {
+  background: linear-gradient(90deg, #FF3B5C 0%, #FF8A00 100%) !important;
+  box-shadow: 0 0 10px rgba(255, 59, 92, 0.7) !important;
+}
+#winky-bot-root .winky-cooldown-result.win .winky-cooldown-title {
+  color: #10F587 !important;
+  text-shadow: 0 0 14px rgba(16, 245, 135, 0.8), 0 0 28px rgba(16, 245, 135, 0.35) !important;
+}
+#winky-bot-root .winky-cooldown-result.loss .winky-cooldown-title {
+  color: #FF4D6D !important;
+  text-shadow: 0 0 14px rgba(255, 77, 109, 0.85), 0 0 28px rgba(255, 77, 109, 0.4) !important;
+}
 #winky-bot-root .winky-sig-timer-capsule { background: #07151288; border-color: #ffffff18; box-shadow: none; }
 #winky-bot-root .winky-sig-timer-val { color: #f3f9f6; font-family: inherit; font-weight: 750; font-size: 16px; line-height: 1.1; font-variant-numeric: tabular-nums; }
 #winky-bot-root .winky-sig-strategy-box { display: block; margin: 0; padding: 7px; background: #0a161780; border: 1px solid #ffffff0b; box-shadow: none; }
@@ -1704,9 +1751,27 @@
 #winky-bot-root .winky-chart-preview { height: 124px; min-height: 124px; }
 #winky-bot-root .winky-stage-frame { min-height: 43px; overflow: hidden; }
 #winky-bot-root .winky-stage-current { min-height: 43px; display: flex; align-items: center; gap: 10px; padding: 6px 10px; border: 1px solid #75dcb78c; border-radius: 9px; background: linear-gradient(110deg,#162a27,#101e1e); box-shadow: inset 0 0 0 1px #b2ffe210, 0 0 14px #39e6ad14; animation: winky-stage-enter .28s cubic-bezier(.2,.8,.2,1) both; }
-#winky-bot-root .winky-stage-symbol { display: grid; place-items: center; flex: none; width: 27px; height: 27px; border-radius: 7px; background: #213f34; color: #92f3cb; font-size: 16px; line-height: 1; font-weight: 750; }
+#winky-bot-root .winky-stage-current.confirmed {
+  border: 1px solid rgba(16, 245, 135, 0.65) !important;
+  background: linear-gradient(110deg, rgba(16, 245, 135, 0.16), rgba(8, 22, 19, 0.95)) !important;
+  box-shadow: 0 0 18px rgba(16, 245, 135, 0.22), inset 0 0 12px rgba(16, 245, 135, 0.12) !important;
+}
+#winky-bot-root .winky-stage-symbol { display: grid; place-items: center; flex: none; width: 27px; height: 27px; border-radius: 7px; background: #153229; color: #10F587; border: 1px solid rgba(16, 245, 135, 0.4); font-size: 16px; line-height: 1; font-weight: 750; }
+#winky-bot-root .winky-stage-current.confirmed .winky-stage-symbol {
+  background: rgba(16, 245, 135, 0.18) !important;
+  color: #10F587 !important;
+  border: 1px solid rgba(16, 245, 135, 0.65) !important;
+  text-shadow: 0 0 10px rgba(16, 245, 135, 0.75) !important;
+  box-shadow: 0 0 10px rgba(16, 245, 135, 0.35) !important;
+}
 #winky-bot-root .winky-stage-name { flex: 1; color: #eefaf5; font-size: 12px; font-weight: 750; line-height: 1.2; }
-#winky-bot-root .winky-stage-indicator { color: #a3eccb; font-size: 16px; font-weight: 800; line-height: 1; }
+#winky-bot-root .winky-stage-indicator { color: #10F587; font-size: 16px; font-weight: 800; line-height: 1; }
+#winky-bot-root .winky-stage-current.confirmed .winky-stage-indicator {
+  color: #10F587 !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  text-shadow: 0 0 12px rgba(16, 245, 135, 0.85), 0 0 22px rgba(16, 245, 135, 0.45) !important;
+}
 #winky-bot-root .winky-stage-current.checking .winky-stage-indicator { font-size: 11px; letter-spacing: 2px; animation: winky-stage-pulse 1.2s ease-in-out infinite; }
 #winky-bot-root .winky-stage-current.rejected .winky-stage-indicator { color: #b8c9c2; }
 @keyframes winky-stage-enter { from { opacity: 0; transform: translateY(7px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -1716,5 +1781,11 @@
 #winky-bot-root .winky-analysis-meta { font-size: 10px; }
 #winky-bot-root .winky-model-button { height: 32px; color: #f0fff9; font-size: 12px; font-weight: 800; border-color: #438c72; }
 #winky-bot-root .winky-model-menu { top: 36px; }
-#winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text { color: #00ff88; }
-#winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-dir-text { color: #ff3b5c; }
+#winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text {
+  color: #10F587 !important;
+  text-shadow: 0 0 14px rgba(16, 245, 135, 0.8), 0 0 28px rgba(16, 245, 135, 0.35) !important;
+}
+#winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-dir-text {
+  color: #FF4D6D !important;
+  text-shadow: 0 0 14px rgba(255, 77, 109, 0.85), 0 0 28px rgba(255, 77, 109, 0.4) !important;
+}

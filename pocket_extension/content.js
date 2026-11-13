@@ -4927,20 +4927,20 @@
       const isRu = (state.lang === "ru");
       const last = state.lastClosedTrade;
       if (last && last.isWin) {
-        block.className = "winky-direction-block winky-signal-display active buy";
+        block.className = "winky-direction-block winky-signal-display active buy cooldown win";
         const profit = Number.isFinite(last.profitDelta) ? last.profitDelta.toFixed(2) : "46.00";
         block.innerHTML = `
           <div class="winky-cooldown-result win" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px 8px; text-align:center; width:100%;">
-            <span class="winky-cooldown-title" style="color:#10F587; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">✔ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В ПЛЮС" : "TRADE CLOSED IN PROFIT"}</span>
+            <span class="winky-cooldown-title" style="color:#10F587; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase; text-shadow:0 0 14px rgba(16, 245, 135, 0.8), 0 0 28px rgba(16, 245, 135, 0.35);">✔ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В ПЛЮС" : "TRADE CLOSED IN PROFIT"}</span>
             <span class="winky-cooldown-subtitle" style="color:#a8b3cf; font-size:11px; font-weight:600;">${isRu ? `Профит: +$${profit} · Подготовка следующего входа...` : `Profit: +$${profit} · Preparing next entry...`}</span>
           </div>
         `;
       } else if (last && !last.isWin && !last.refund) {
-        block.className = "winky-direction-block winky-signal-display active sell";
+        block.className = "winky-direction-block winky-signal-display active sell cooldown loss";
         const loss = Number.isFinite(last.lossDelta) ? last.lossDelta.toFixed(2) : "50.00";
         block.innerHTML = `
           <div class="winky-cooldown-result loss" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px 8px; text-align:center; width:100%;">
-            <span class="winky-cooldown-title" style="color:#FF4D6D; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">✖ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В МИНУС" : "TRADE CLOSED IN LOSS"}</span>
+            <span class="winky-cooldown-title" style="color:#FF4D6D; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase; text-shadow:0 0 14px rgba(255, 77, 109, 0.85), 0 0 28px rgba(255, 77, 109, 0.4);">✖ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В МИНУС" : "TRADE CLOSED IN LOSS"}</span>
             <span class="winky-cooldown-subtitle" style="color:#a8b3cf; font-size:11px; font-weight:600;">${isRu ? `Убыток: -$${loss} · Готовим перекрытие x2.2...` : `Loss: -$${loss} · Preparing x2.2 recovery...`}</span>
           </div>
         `;
