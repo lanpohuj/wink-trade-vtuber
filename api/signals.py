@@ -16,23 +16,22 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
-import hmac
-import json
 import logging
 import random
 import time
-import urllib.parse
 from datetime import datetime, timezone
-from typing import Literal
+from typing import Any, Literal
 
 from fastapi import APIRouter, Header, HTTPException, Request
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
 from config import settings
-from database import async_session_factory
+from database import async_session_factory, write_transaction
 from database import crud
-from database.models import DIRECTION_BUY, DIRECTION_SELL, SignalHistory
+from database.models import DIRECTION_BUY, DIRECTION_SELL, SignalHistory, LiveStats
+from api.auth import verify_webapp_init_data, telegram_identity, internal_publisher, require_publisher
+from database.signal_access import reserve_signal, release_signal, commit_signal
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -271,33 +270,6 @@ _TA_FAILURE_COOLDOWN = 60.0
 _TA_TIMEOUT = 5.0
 
 
-def verify_webapp_init_data(init_data: str, bot_token: str) -> dict | None:
-    """Проверяет криптографическую подпись HMAC-SHA256 initData от Telegram Mini App.
-
-    Возвращает словарь данных пользователя (с полем 'id') или None при невалидной подписи.
-    """
-    if not init_data or not bot_token:
-        return None
-    try:
-        parsed = dict(urllib.parse.parse_qsl(init_data, keep_blank_values=True))
-        received_hash = parsed.pop("hash", None)
-        if not received_hash:
-            return None
-        data_check_string = "\n".join(f"{k}={v}" for k, v in sorted(parsed.items()))
-        secret_key = hmac.new(b"WebAppData", bot_token.encode("utf-8"), hashlib.sha256).digest()
-        computed_hash = hmac.new(secret_key, data_check_string.encode("utf-8"), hashlib.sha256).hexdigest()
-        if not hmac.compare_digest(computed_hash, received_hash):
-            return None
-        user_str = parsed.get("user")
-        if user_str:
-            user_dict = json.loads(user_str)
-            if isinstance(user_dict, dict) and "id" in user_dict:
-                return user_dict
-        if "id" in parsed:
-            return {"id": int(parsed["id"])}
-        return parsed
-    except Exception:
-        return None
 
 
 class SignalRequest(BaseModel):
@@ -341,8 +313,8 @@ class SignalResponse(BaseModel):
 
 
 class LiveStatsRequest(BaseModel):
-    wins: int | None = None
-    losses: int | None = None
+    wins: int | None = Field(default=None, ge=0, le=1000000000)
+    losses: int | None = Field(default=None, ge=0, le=1000000000)
     pair: str | None = None
     reset: bool = False
 
@@ -354,12 +326,6 @@ class LiveStatsResponse(BaseModel):
     pair: str
 
 
-_live_stats_state: dict[str, Any] = {
-    "wins": 110,
-    "losses": 1,
-    "pair": "EUR/USD OTC",
-}
-
 # Синхронизированный сигнал со стрима (расширение -> сервер -> Mini App)
 _latest_synced_signal: dict[str, Any] | None = None
 
@@ -367,9 +333,9 @@ _latest_synced_signal: dict[str, Any] | None = None
 class SignalSyncRequest(BaseModel):
     pair: str
     direction: Literal["BUY", "SELL"]
-    accuracy: int = 94
+    accuracy: int = Field(default=94, ge=1, le=100)
     duration: str = "30s"
-    confluence: float = 4.8
+    confluence: float = Field(default=4.8, ge=0, le=5)
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
     model: str = "claude-fable-5.1"
@@ -404,6 +370,7 @@ class MeResponse(BaseModel):
     rank: int | None = None
     rules: str
     is_vip: bool = False
+    is_admin: bool = False
     free_signals_left: int = 0
     register_url: str = ""
     deposit_url: str = ""
@@ -534,103 +501,62 @@ async def get_signal(
     if duration not in DURATIONS:
         raise HTTPException(status_code=400, detail=f"Unknown duration: {payload.duration!r}")
 
-    # Аутентификация:
-    # 1. Telegram WebApp HMAC-SHA256 подпись (приоритетно)
-    # 2. X-Internal-Token для авторизованного десктопного стримера/бэкенда
-    init_data = x_telegram_init_data or payload.init_data
-    internal_token = x_internal_token or request.query_params.get("token")
-
-    if init_data:
-        verified_data = verify_webapp_init_data(init_data, settings.BOT_TOKEN)
-        if verified_data is not None and "id" in verified_data:
-            payload.tg_id = int(verified_data["id"])
-        else:
-            raise HTTPException(status_code=401, detail="UNAUTHORIZED_WEBAPP: Invalid Telegram initData signature")
-    elif internal_token and settings.POSTBACK_SECRET and internal_token == settings.POSTBACK_SECRET:
-        pass
+    if internal_publisher(request) and not (x_telegram_init_data or payload.init_data):
+        if not settings.is_admin(payload.tg_id):
+            raise HTTPException(403, "ADMIN_REQUIRED")
     else:
-        raise HTTPException(
-            status_code=401,
-            detail="UNAUTHORIZED_WEBAPP: Telegram initData or internal token required",
-        )
-
-    # 0 никогда не является админом или VIP!
-    if payload.tg_id <= 0:
-        raise HTTPException(status_code=401, detail="UNAUTHORIZED_WEBAPP: Invalid user ID")
-
+        payload.tg_id = telegram_identity(request, x_telegram_init_data or payload.init_data)
+    user, is_vip, lease = await reserve_signal(payload.tg_id)
     is_admin = settings.is_admin(payload.tg_id)
-    is_vip = is_admin
-    free_signals_left = 999 if is_admin else 0
+    free_signals_left = 999 if is_vip else 0
 
-    async with async_session_factory() as session:
-        user = await crud.get_user(session, payload.tg_id)
-        if user is not None and user.has_access:
-            is_vip = True
-            free_signals_left = 999
-        elif not is_admin:
-            # Демо-режим для гостей: 3 бесплатных сигнала
-            used_signals = await session.scalar(
-                select(func.count()).select_from(SignalHistory).where(SignalHistory.tg_id == payload.tg_id)
-            ) or 0
-            free_signals_left = max(0, 3 - used_signals)
-            if free_signals_left <= 0:
-                raise HTTPException(
-                    status_code=403,
-                    detail="FREE_LIMIT_EXCEEDED: Вы использовали все 3 бесплатных сигнала. Пополните счёт для полного доступа!",
-                )
+    try:
+        # --- Режим стримера: принудительный сигнал или заранее заданная очередь ---
+        synced_rationale_ru: list[str] | None = None
+        synced_rationale_en: list[str] | None = None
 
-    # --- Режим стримера: принудительный сигнал или заранее заданная очередь ---
-    synced_rationale_ru: list[str] | None = None
-    synced_rationale_en: list[str] | None = None
-
-    if _latest_synced_signal is not None and time.time() < _latest_synced_signal.get("expires_at", 0):
-        if _latest_synced_signal.get("pair") == pair:
-            direction = _latest_synced_signal["direction"]
-            accuracy = _latest_synced_signal["accuracy"]
-            if _latest_synced_signal.get("rationale_ru"):
-                synced_rationale_ru = _latest_synced_signal["rationale_ru"]
-            if _latest_synced_signal.get("rationale_en"):
-                synced_rationale_en = _latest_synced_signal["rationale_en"]
-        elif is_admin and payload.force_dir is not None:
-            direction = payload.force_dir
-            accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
-        else:
-            direction, accuracy = await _user_signal(pair)
-    elif is_admin:
-        if payload.force_dir is not None:
-            direction = payload.force_dir
-            accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
-        else:
-            async with async_session_factory() as session:
-                queued = await crud.get_next_admin_signal(session, payload.tg_id)
-            if queued is not None:
-                direction, accuracy = queued.direction, queued.accuracy
+        if _latest_synced_signal is not None and time.time() < _latest_synced_signal.get("expires_at", 0):
+            if _latest_synced_signal.get("pair") == pair:
+                direction = _latest_synced_signal["direction"]
+                accuracy = _latest_synced_signal["accuracy"]
+                if _latest_synced_signal.get("rationale_ru"):
+                    synced_rationale_ru = _latest_synced_signal["rationale_ru"]
+                if _latest_synced_signal.get("rationale_en"):
+                    synced_rationale_en = _latest_synced_signal["rationale_en"]
+            elif is_admin and payload.force_dir is not None:
+                direction = payload.force_dir
+                accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
             else:
                 direction, accuracy = await _user_signal(pair)
-    else:
-        direction, accuracy = await _user_signal(pair)
+        elif is_admin:
+            if payload.force_dir is not None:
+                direction = payload.force_dir
+                accuracy = random.randint(settings.SIGNAL_ACCURACY_MIN, settings.SIGNAL_ACCURACY_MAX)
+            else:
+                async with async_session_factory() as session:
+                    queued = await crud.get_next_admin_signal(session, payload.tg_id)
+                if queued is not None:
+                    direction, accuracy = queued.direction, queued.accuracy
+                else:
+                    direction, accuracy = await _user_signal(pair)
+        else:
+            direction, accuracy = await _user_signal(pair)
 
-    # Генерация реалистичного профессионального теханализа под сигнал
-    if synced_rationale_ru and synced_rationale_en:
-        rationale_ru, rationale_en = synced_rationale_ru, synced_rationale_en
-    else:
-        rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "claude-fable-5.1")
-    duration_sec = DURATION_SECONDS.get(duration, 5)
+        # Генерация реалистичного профессионального теханализа под сигнал
+        if synced_rationale_ru and synced_rationale_en:
+            rationale_ru, rationale_en = synced_rationale_ru, synced_rationale_en
+        else:
+            rationale_ru, rationale_en = _build_rationale(pair, direction, model=payload.model or "claude-fable-5.1")
+        duration_sec = DURATION_SECONDS.get(duration, 5)
 
-    async with async_session_factory() as session:
-        await crud.save_signal(
-            session,
-            tg_id=payload.tg_id,
-            pair=pair,
-            direction=direction,
-            accuracy=accuracy,
-            duration=duration,
+        free_signals_left = await commit_signal(
+            tg_id=payload.tg_id, lease=lease, pair=pair, direction=direction,
+            accuracy=accuracy, duration=duration,
         )
-        await crud.register_activity(session, payload.tg_id)
-        await crud.award_signal_points(session, payload.tg_id)
-
-    if not is_vip:
-        free_signals_left = max(0, free_signals_left - 1)
+        if is_vip:
+            free_signals_left = 999
+    finally:
+        await asyncio.shield(release_signal(lease))
 
     user_lang = "ru"
     if user is not None and user.lang:
@@ -685,8 +611,11 @@ async def get_signal(
 
 
 @router.post("/signal/sync")
-async def sync_stream_signal(payload: SignalSyncRequest) -> dict[str, Any]:
+async def sync_stream_signal(payload: SignalSyncRequest, request: Request) -> dict[str, Any]:
     """Синхронизация активного сигнала со стрима Pocket Option."""
+    require_publisher(request)
+    if not _is_known_pair(payload.pair.strip()) or payload.duration.lower() not in DURATIONS:
+        raise HTTPException(400, "Invalid pair or duration")
     global _latest_synced_signal
     duration_sec = DURATION_SECONDS.get(payload.duration.lower(), 30)
     now = time.time()
@@ -707,8 +636,13 @@ async def sync_stream_signal(payload: SignalSyncRequest) -> dict[str, Any]:
 
 
 @router.get("/signal/sync")
-async def get_synced_stream_signal() -> dict[str, Any]:
+async def get_synced_stream_signal(request: Request) -> dict[str, Any]:
     """Получение текущего активного сигнала со стрима (если валиден)."""
+    tg_id = telegram_identity(request)
+    async with async_session_factory() as session:
+        user = await crud.get_user(session, tg_id)
+        if not settings.is_admin(tg_id) and not (user and user.has_access):
+            raise HTTPException(403, "DEPOSIT_REQUIRED")
     global _latest_synced_signal
     if _latest_synced_signal is not None and time.time() < _latest_synced_signal.get("expires_at", 0):
         remaining = int(_latest_synced_signal["expires_at"] - time.time())
@@ -717,14 +651,19 @@ async def get_synced_stream_signal() -> dict[str, Any]:
 
 
 @router.get("/history", response_model=HistoryResponse)
-async def get_history() -> HistoryResponse:
+async def get_history(request: Request) -> HistoryResponse:
     """Живая лента последних сигналов + счётчики для Mini App.
 
     «Всего N трейдеров» возвращается только после преодоления порога
     TOTAL_COUNTER_THRESHOLD — чтобы не показывать маленькие числа.
     """
+    tg_id = telegram_identity(request)
     async with async_session_factory() as session:
-        signals = await crud.get_recent_signals(session, limit=6)
+        user = await crud.get_user(session, tg_id)
+        query = select(SignalHistory).order_by(SignalHistory.id.desc()).limit(6)
+        if not settings.is_admin(tg_id) and not (user and user.has_access):
+            query = query.where(SignalHistory.tg_id == tg_id)
+        signals = list((await session.scalars(query)).all())
         today_traders = await crud.get_today_signal_users(session)
         total_users = await crud.get_total_users(session)
 
@@ -763,12 +702,12 @@ TOURNAMENT_RULES = {
 
 
 @router.get("/me", response_model=MeResponse)
-async def get_me(tg_id: int) -> MeResponse:
+async def get_me(request: Request, tg_id: int | None = None) -> MeResponse:
     """Личный прогресс пользователя + правила турнира (язык по Accept-Language)."""
+    tg_id = telegram_identity(request)
     lang = "en"
     async with async_session_factory() as session:
         user = await crud.get_or_create_user(session, tg_id=tg_id)
-        await crud.register_activity(session, tg_id)
         stats = await crud.get_personal_stats(session, tg_id)
         if user is not None:
             lang = user.lang
@@ -790,15 +729,28 @@ async def get_me(tg_id: int) -> MeResponse:
         is_vip=is_vip,
         free_signals_left=free_signals_left,
         register_url=settings.partner_url(tg_id, lang),
+        is_admin=is_admin,
         deposit_url=settings.deposit_url(tg_id, lang),
         promo_code=settings.PROMO_CODE,
         **stats,
     )
 
 
+@router.post("/activity")
+async def register_visit(request: Request) -> dict:
+    tg_id = telegram_identity(request)
+    async with async_session_factory() as session:
+        await crud.get_or_create_user(session, tg_id)
+        await session.commit()
+        async with write_transaction(session):
+            return await crud.register_activity(session, tg_id, commit=False)
+
+
 @router.get("/leaderboard", response_model=LeaderboardResponse)
-async def get_leaderboard(tg_id: int | None = None) -> LeaderboardResponse:
+async def get_leaderboard(request: Request, tg_id: int | None = None) -> LeaderboardResponse:
     """Недельный топ-10; your_rank — место запросившего."""
+    if tg_id is not None:
+        tg_id = telegram_identity(request)
     async with async_session_factory() as session:
         entries = await crud.get_leaderboard(session, limit=10)
         your_rank = await crud.get_week_rank(session, tg_id) if tg_id else None
@@ -809,43 +761,38 @@ async def get_leaderboard(tg_id: int | None = None) -> LeaderboardResponse:
     )
 
 
+def _stats_response(state: LiveStats | None) -> LiveStatsResponse:
+    wins, losses = (state.wins, state.losses) if state else (0, 0)
+    total = wins + losses
+    return LiveStatsResponse(wins=wins, losses=losses,
+                            winrate=f"{wins / total * 100:.1f}%" if total else "0.0%",
+                            pair=state.pair if state else "EUR/USD OTC")
+
+
 @router.get("/live_stats", response_model=LiveStatsResponse)
 async def get_live_stats() -> LiveStatsResponse:
-    """Получение текущей статистики побед/поражений для плавающего виджета счетчика."""
-    w = int(_live_stats_state["wins"])
-    l = int(_live_stats_state["losses"])
-    total = w + l
-    rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
-    return LiveStatsResponse(
-        wins=w,
-        losses=l,
-        winrate=rate,
-        pair=str(_live_stats_state.get("pair", "EUR/USD OTC")),
-    )
+    async with async_session_factory() as session:
+        return _stats_response(await session.get(LiveStats, 1))
 
 
 @router.post("/live_stats", response_model=LiveStatsResponse)
-async def update_live_stats(payload: LiveStatsRequest) -> LiveStatsResponse:
-    """Обновление счетчика побед/поражений (из терминала, расширения или виджета)."""
-    if payload.reset:
-        _live_stats_state["wins"] = 110
-        _live_stats_state["losses"] = 1
-    else:
-        if payload.wins is not None:
-            _live_stats_state["wins"] = max(0, payload.wins)
-        if payload.losses is not None:
-            _live_stats_state["losses"] = max(0, payload.losses)
-    if payload.pair:
-        _live_stats_state["pair"] = payload.pair
-
-    w = int(_live_stats_state["wins"])
-    l = int(_live_stats_state["losses"])
-    total = w + l
-    rate = f"{(w / total * 100):.1f}%" if total > 0 else "0.0%"
-    return LiveStatsResponse(
-        wins=w,
-        losses=l,
-        winrate=rate,
-        pair=str(_live_stats_state.get("pair", "EUR/USD OTC")),
-    )
-
+async def update_live_stats(payload: LiveStatsRequest, request: Request) -> LiveStatsResponse:
+    require_publisher(request)
+    async with async_session_factory() as session:
+        async with write_transaction(session):
+            state = await session.get(LiveStats, 1)
+            if state is None:
+                state = LiveStats(id=1, wins=0, losses=0, pair="EUR/USD OTC")
+                session.add(state)
+            if payload.reset:
+                state.wins, state.losses = 0, 0
+            else:
+                if payload.wins is not None:
+                    state.wins = payload.wins
+                if payload.losses is not None:
+                    state.losses = payload.losses
+            if payload.pair:
+                if not _is_known_pair(payload.pair):
+                    raise HTTPException(400, "Invalid pair")
+                state.pair = payload.pair
+            return _stats_response(state)

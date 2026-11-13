@@ -135,8 +135,8 @@ async def run_daily_teasers(bot: Bot) -> None:
     for user in targets:
         if await send_teaser(bot, user):
             sent += 1
-        async with async_session_factory() as session:
-            await crud.record_teaser_sent(session, user.tg_id)
+            async with async_session_factory() as session:
+                await crud.record_teaser_sent(session, user.tg_id)
         await asyncio.sleep(_SEND_DELAY_SECONDS)
     if targets:
         logger.info("Вечерний тизер 19:00: отправлено %d из %d адресатов", sent, len(targets))
@@ -144,7 +144,6 @@ async def run_daily_teasers(bot: Bot) -> None:
 
 async def run_teaser_scheduler(bot: Bot) -> None:
     """Фоновая задача авто-воронки: проверяет базу каждые 3 минуты."""
-    last_daily_date = None
     while True:
         try:
             # 1. Быстрые дожимы 15м и 45м
@@ -152,8 +151,9 @@ async def run_teaser_scheduler(bot: Bot) -> None:
 
             # 2. Ежедневный вечерний тизер в TEASER_HOUR (19:00)
             now = datetime.now()
-            if now.hour == settings.TEASER_HOUR and last_daily_date != now.date():
-                last_daily_date = now.date()
+            # Successful recipients are excluded by their persisted last_teaser_at.
+            # Failed deliveries can retry during the same hour and after a restart.
+            if now.hour == settings.TEASER_HOUR:
                 await run_daily_teasers(bot)
 
         except Exception:  # noqa: BLE001 — планировщик не должен падать

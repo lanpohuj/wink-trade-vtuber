@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # --- Telegram ---
     BOT_TOKEN: str = Field(
         default="",
+        repr=False,
         description="Токен бота от @BotFather (на сервере обязателен для запуска бота)",
     )
     WEBAPP_URL: str = Field(
@@ -92,9 +93,12 @@ class Settings(BaseSettings):
     # --- Postback API ---
     POSTBACK_SECRET: str = Field(
         default="",
+        repr=False,
         description="Секрет постбека (параметр token или заголовок X-Postback-Token); "
         "пустое значение — постбеки не принимаются",
     )
+    INTERNAL_API_TOKEN: str = Field(default="", repr=False)
+    WEBAPP_AUTH_MAX_AGE_SECONDS: int = Field(default=86400, ge=60, le=604800)
 
     # --- Админы / стримеры ---
     ADMIN_TG_IDS: str = Field(

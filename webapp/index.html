@@ -49,12 +49,12 @@
 
       <!-- VIP Status Badge -->
       <div class="user-status-badge" id="userStatusBadge">
-        <span class="badge vip" id="badgeVip">
+        <span class="badge vip" id="badgeVip" hidden>
           <svg class="badge-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           VIP
         </span>
-        <span class="badge guest" id="badgeGuest" hidden>
-          GUEST <b id="guestCount">3/3</b>
+        <span class="badge guest" id="badgeGuest">
+          DEMO <b id="guestCount">—</b>
         </span>
       </div>
     </div>
@@ -70,17 +70,17 @@
 
       <div class="bumper-pill stat-pill wins" id="pillWins" title="+1 Победа">
         <span class="pill-lbl">WINS:</span>
-        <span class="pill-val val-green" id="winCount">110</span>
+        <span class="pill-val val-green" id="winCount">0</span>
       </div>
 
       <div class="bumper-pill stat-pill losses" id="pillLosses" title="+1 Поражение">
         <span class="pill-lbl">LOSSES:</span>
-        <span class="pill-val val-red" id="lossCount">1</span>
+        <span class="pill-val val-red" id="lossCount">0</span>
       </div>
 
       <div class="bumper-pill stat-pill winrate" id="pillWinrate" title="Winrate">
         <span class="pill-lbl">RATE:</span>
-        <span class="pill-val val-cyan" id="winRateVal">99.1%</span>
+        <span class="pill-val val-cyan" id="winRateVal">0.0%</span>
       </div>
 
       <button type="button" class="btn-close-bumper" id="btnCloseBumper" title="Скрыть табло">✕</button>
@@ -157,7 +157,7 @@
             </div>
             <div class="winky-metric-pill">
               <span class="winky-metric-title" data-i18n="accuracy">Точность:</span>
-              <span class="winky-metric-val" id="metricAccuracy">94%</span>
+              <span class="winky-metric-val" id="metricAccuracy">—</span>
             </div>
           </div>
 

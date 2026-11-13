@@ -8,7 +8,6 @@
 from __future__ import annotations
 
 import json
-import math
 import random
 from collections.abc import Sequence
 from datetime import date, datetime, timedelta, timezone
@@ -16,6 +15,7 @@ from typing import Any
 
 from sqlalchemy import delete, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 
 from config import settings
 from database.models import (
@@ -66,9 +66,15 @@ async def get_or_create_user(
     """
     user = await get_user(session, tg_id)
     if user is None:
-        user = User(tg_id=tg_id, username=username, lang=settings.DEFAULT_LANG, source=source)
-        session.add(user)
+        result = await session.execute(sqlite_insert(User).values(
+            tg_id=tg_id, username=username, lang=settings.DEFAULT_LANG, source=source,
+        ).on_conflict_do_nothing(index_elements=["tg_id"]))
         await session.commit()
+        user = await get_user(session, tg_id)
+        await session.commit()
+        from database.funnel import reconcile_waiting_events
+        if result.rowcount:
+            await reconcile_waiting_events(session, user)
         return user
     changed = False
     if username is not None and user.username != username:
@@ -100,94 +106,29 @@ async def set_language(session: AsyncSession, tg_id: int, lang: str) -> User | N
 
 
 async def mark_registered(session: AsyncSession, tg_id: int, trader_id: str | None = None) -> User | None:
-    """Подтверждает регистрацию (вызывается Postback'ом регистрации или вручную)."""
-    user = await get_user(session, tg_id)
-    if user is None:
-        return None
-    if trader_id:
-        clean_id = str(trader_id).strip()
-        conflict = await session.execute(
-            select(User)
-            .where(User.trader_id == clean_id, User.tg_id != tg_id)
-            .order_by(User.is_registered.desc(), User.id.asc())
-        )
-        if conflict.scalars().first() is not None:
-            return None
-        user.trader_id = clean_id
-    user.is_registered = True
-    if not user.registered_at:
-        user.registered_at = utcnow()
-    await session.commit()
-    return user
+    from database.funnel import apply_partner_event
+    receipt = await apply_partner_event(
+        session, key=f"registration:direct:{tg_id}:{trader_id or ''}",
+        event_type=EVENT_REGISTRATION, tg_id=tg_id, trader_id=trader_id,
+        cents=0, raw_data={},
+    )
+    return None if receipt.status == "identity_conflict" else receipt.user
 
 
 async def add_deposit(
-    session: AsyncSession,
-    amount: float,
-    tg_id: int | None = None,
-    trader_id: str | None = None,
-    dedup_key: str | None = None,
+    session: AsyncSession, amount: float, tg_id: int | None = None,
+    trader_id: str | None = None, dedup_key: str | None = None,
     raw_data: dict[str, Any] | None = None,
 ) -> tuple[User | None, bool]:
-    """Зачисляет депозит (Postback депозита) с валидацией, дедупликацией и порогом $10.
-
-    Возвращает (user, is_duplicate).
-    """
-    if amount is None:
-        raise ValueError("Сумма депозита не может быть None")
-    amt_val = float(amount)
-    if not math.isfinite(amt_val) or amt_val <= 0:
-        raise ValueError("Сумма депозита должна быть положительным числом")
-
-    if tg_id is None and trader_id is None:
-        raise ValueError("Для зачисления депозита укажите tg_id или trader_id")
-
-    user: User | None = None
-    if tg_id is not None:
-        user = await get_user(session, tg_id)
-    if user is None and trader_id is not None:
-        user = await get_user_by_trader_id(session, str(trader_id))
-    if user is None:
-        return None, False
-
-    # Дедупликация по dedup_key
-    if dedup_key:
-        existing_pb = await session.execute(
-            select(PostbackLog)
-            .where(PostbackLog.dedup_key == dedup_key)
-            .where(PostbackLog.status.in_((STATUS_OK, "below_min_deposit")))
-        )
-        if existing_pb.scalars().first() is not None:
-            return user, True
-
-    # Регистрация: подтверждаем только если предоставлен валидный trader_id (не занятый другим)
-    if trader_id:
-        clean_trader_id = str(trader_id).strip()
-        conflict = await session.execute(
-            select(User)
-            .where(User.trader_id == clean_trader_id, User.tg_id != user.tg_id)
-            .order_by(User.is_registered.desc(), User.id.asc())
-        )
-        if conflict.scalars().first() is None:
-            user.trader_id = clean_trader_id
-            user.is_registered = True
-            if not user.registered_at:
-                user.registered_at = utcnow()
-
-    # Зачисление депозита
-    user.deposit_amount = round((user.deposit_amount or 0.0) + amt_val, 2)
-
-    # Доступ открывается ТОЛЬКО если пользователь зарегистрирован И депозит >= MIN_DEPOSIT
-    min_dep = float(settings.MIN_DEPOSIT)
-    if user.is_registered and user.deposit_amount >= min_dep:
-        user.has_access = True
-    elif settings.is_admin(user.tg_id):
-        user.has_access = True
-    else:
-        user.has_access = False
-
-    await session.commit()
-    return user, False
+    from database.funnel import amount_cents, apply_partner_event
+    cents = amount_cents(amount)
+    if cents is None or not dedup_key:
+        raise ValueError("A positive USD amount and stable event identity are required")
+    receipt = await apply_partner_event(
+        session, key=dedup_key, event_type=EVENT_DEPOSIT, tg_id=tg_id,
+        trader_id=trader_id, cents=cents, raw_data=raw_data or {},
+    )
+    return (None if receipt.status == "identity_conflict" else receipt.user), receipt.duplicate
 
 
 async def grant_access(session: AsyncSession, tg_id: int) -> User | None:
@@ -338,6 +279,7 @@ async def log_postback(
     status: str = STATUS_OK,
     dedup_key: str | None = None,
     raw_data: dict[str, Any] | None = None,
+    commit: bool = True,
 ) -> PostbackLog:
     """Сохраняет в журнал запись о входящем Postback-запросе.
 
@@ -353,7 +295,10 @@ async def log_postback(
         raw_data=json.dumps(raw_data, ensure_ascii=False, default=str) if raw_data else None,
     )
     session.add(entry)
-    await session.commit()
+    if commit:
+        await session.commit()
+    else:
+        await session.flush()
     return entry
 
 
@@ -383,13 +328,17 @@ async def save_signal(
     direction: str,
     accuracy: int,
     duration: str,
+    commit: bool = True,
 ) -> SignalHistory:
     """Сохраняет выданный сигнал в общую ленту."""
     entry = SignalHistory(
         tg_id=tg_id, pair=pair, direction=direction, accuracy=accuracy, duration=duration
     )
     session.add(entry)
-    await session.commit()
+    if commit:
+        await session.commit()
+    else:
+        await session.flush()
     return entry
 
 
@@ -498,72 +447,48 @@ async def get_postbacks_for_trader_id(session: AsyncSession, trader_id: str) -> 
 async def bind_manual_trader_id(
     session: AsyncSession, tg_id: int, trader_id: str
 ) -> tuple[User, bool, bool, str]:
-    """Привязывает trader_id к пользователю с проверкой уникальности, защитой от захвата и порогом $10.
-
-    Возвращает (user, has_postback, had_deposit, status).
-    status:
-      'access_granted' - ID подтвержден, внесен депозит >= MIN_DEPOSIT ($10)
-      'registered_need_deposit' - ID подтвержден, но депозит < MIN_DEPOSIT ($10)
-      'not_found' - постбеков по этому ID в базе нет
-      'conflict_already_bound' - этот ID уже привязан к другому Telegram-пользователю
-      'conflict_sub_id_mismatch' - по этому ID зафиксирован постбек с чужим sub_id
-    """
+    """Recover only receipts explicitly attributed to this Telegram identity."""
+    from database import write_transaction
+    from database.funnel import recompute_access
     clean_id = str(trader_id).strip()
     user = await get_or_create_user(session, tg_id)
-
-    # 1. Проверяем, не привязан ли этот trader_id к ДРУГОМУ пользователю
-    conflict_res = await session.execute(
-        select(User)
-        .where(User.trader_id == clean_id, User.tg_id != tg_id)
-        .order_by(User.is_registered.desc(), User.id.asc())
-    )
-    if conflict_res.scalars().first() is not None:
-        return user, False, False, "conflict_already_bound"
-
-    # 2. Проверяем наличие постбеков по этому trader_id
-    postbacks = await get_postbacks_for_trader_id(session, clean_id)
-    if not postbacks:
-        return user, False, False, "not_found"
-
-    # 3. Защита от угона аккаунта: проверяем, нет ли постбека с чужим sub_id
-    for p in postbacks:
-        if p.sub_id and p.sub_id.strip().isdigit() and int(p.sub_id.strip()) != tg_id:
-            return user, False, False, "conflict_sub_id_mismatch"
-
-    # 4. Проверяем наличие подтверждения регистрации или депозита
-    has_reg = any(p.event_type == EVENT_REGISTRATION for p in postbacks)
-    has_dep = any(p.event_type == EVENT_DEPOSIT and p.amount > 0 for p in postbacks)
-    if not has_reg and not has_dep:
-        return user, False, False, "not_found"
-
-    # Привязываем trader_id и подтверждаем регистрацию
-    user.trader_id = clean_id
-    user.is_registered = True
-    if not user.registered_at:
-        user.registered_at = utcnow()
-
-    # 5. Дедуплицированный подсчёт депозитов
-    seen_deps: set[str] = set()
-    deposit_sum = 0.0
-    for p in postbacks:
-        if p.event_type == EVENT_DEPOSIT and p.amount > 0:
-            dedup = p.dedup_key or f"{p.event_type}:{clean_id}:{p.amount}:{p.raw_data or ''}"
-            if dedup not in seen_deps:
-                seen_deps.add(dedup)
-                deposit_sum += float(p.amount)
-
-    deposit_sum = round(deposit_sum, 2)
-    user.deposit_amount = max(float(user.deposit_amount or 0.0), deposit_sum)
-
-    min_dep = float(settings.MIN_DEPOSIT)
-    if user.deposit_amount >= min_dep:
-        user.has_access = True
-        await session.commit()
-        return user, True, True, "access_granted"
-
-    user.has_access = False
+    # A preceding get may have opened a read-only ORM transaction.
     await session.commit()
-    return user, True, False, "registered_need_deposit"
+    async with write_transaction(session):
+        await session.refresh(user)
+        conflict = await session.scalar(select(User).where(
+            User.trader_id == clean_id, User.tg_id != tg_id,
+        ))
+        if conflict is not None or (user.trader_id and user.trader_id != clean_id):
+            return user, False, False, "conflict_already_bound"
+        postbacks = await get_postbacks_for_trader_id(session, clean_id)
+        if not postbacks:
+            return user, False, False, "not_found"
+        if any(p.sub_id and p.sub_id.strip() != str(tg_id) for p in postbacks):
+            return user, False, False, "conflict_sub_id_mismatch"
+        trusted = [p for p in postbacks if p.sub_id == str(tg_id) and p.status in (
+            STATUS_OK, "below_min_deposit", "awaiting_registration", "user_not_found", "waiting_user",
+        )]
+        if not trusted:
+            return user, False, False, "verification_required"
+        was_registered = bool(user.is_registered)
+        user.trader_id = clean_id
+        user.is_registered = True
+        user.registered_at = user.registered_at or utcnow()
+        seen = set()
+        deposit_sum = 0.0
+        for p in trusted:
+            if p.event_type != EVENT_DEPOSIT or p.amount <= 0:
+                continue
+            key = p.dedup_key or f"{p.event_type}:{clean_id}:{p.amount}:{p.raw_data or ''}"
+            if key not in seen:
+                seen.add(key)
+                deposit_sum += p.amount
+        user.deposit_amount = max(float(user.deposit_amount or 0), round(deposit_sum, 2))
+        await recompute_access(session, user, was_registered=was_registered)
+        return user, True, bool(user.has_access), (
+            "access_granted" if user.has_access else "registered_need_deposit"
+        )
 
 
 async def mark_demo_used(session: AsyncSession, tg_id: int) -> bool:
@@ -611,7 +536,7 @@ async def get_45m_followup_targets(session: AsyncSession, threshold_minutes: int
         select(User).where(
             User.is_registered.is_(True),
             User.has_access.is_(False),
-            User.deposit_amount == 0.0,
+            User.deposit_amount < settings.MIN_DEPOSIT,
             User.push_paused.is_(False),
             User.followup_45m_sent.is_(False),
         ).order_by(User.id)
@@ -652,7 +577,7 @@ def _week_key(now: datetime | None = None) -> str:
     return (now or datetime.now(timezone.utc)).strftime("%G-W%V")
 
 
-async def register_activity(session: AsyncSession, tg_id: int) -> dict:
+async def register_activity(session: AsyncSession, tg_id: int, *, commit: bool = True) -> dict:
     """Отмечает активность в Mini App: серия дней и бонус за первый заход.
 
     Возвращает {"streak": N, "visit_awarded": bool, "streak_bonus": int}.
@@ -692,11 +617,12 @@ async def register_activity(session: AsyncSession, tg_id: int) -> dict:
         user.points_week += POINTS_VISIT_BONUS + streak_bonus
         visit_awarded = True
 
-    await session.commit()
+    if commit:
+        await session.commit()
     return {"streak": user.streak_days, "visit_awarded": visit_awarded, "streak_bonus": streak_bonus}
 
 
-async def award_signal_points(session: AsyncSession, tg_id: int) -> int:
+async def award_signal_points(session: AsyncSession, tg_id: int, *, commit: bool = True) -> int:
     """Балл за сигнал в пределах дневного лимита. Возвращает начисленное (0 — лимит)."""
     user = await get_user(session, tg_id)
     if user is None:
@@ -718,7 +644,8 @@ async def award_signal_points(session: AsyncSession, tg_id: int) -> int:
     user.points_daily_earned += 1
     user.points_total += 1
     user.points_week += 1
-    await session.commit()
+    if commit:
+        await session.commit()
     return 1
 
 

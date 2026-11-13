@@ -218,7 +218,7 @@
     <!-- WINS CARD -->
     <div class="stat-card wins wps-tactical-box">
       <span class="stat-tag">WINS</span>
-      <span class="stat-num" id="winsNum">110</span>
+      <span class="stat-num" id="winsNum">0</span>
       <div class="btn-controls">
         <button type="button" class="btn-step" id="btnWinsMinus">-</button>
         <button type="button" class="btn-step" id="btnWinsPlus">+</button>
@@ -228,7 +228,7 @@
     <!-- LOSSES CARD -->
     <div class="stat-card losses wps-tactical-box">
       <span class="stat-tag">LOSSES</span>
-      <span class="stat-num" id="lossesNum">1</span>
+      <span class="stat-num" id="lossesNum">0</span>
       <div class="btn-controls">
         <button type="button" class="btn-step" id="btnLossesMinus">-</button>
         <button type="button" class="btn-step" id="btnLossesPlus">+</button>
@@ -239,16 +239,17 @@
   <footer class="hud-footer">
     <div class="winrate-wrap">
       <span class="winrate-label">WINRATE:</span>
-      <span class="winrate-val" id="winrateNum">99.1%</span>
+      <span class="winrate-val" id="winrateNum">0.0%</span>
     </div>
     <button type="button" class="btn-reset" id="btnReset">[Reset]</button>
   </footer>
 
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
     (function () {
       const state = {
-        wins: 110,
-        losses: 1,
+        wins: 0,
+        losses: 0,
         pair: 'USD/CAD OTC',
       };
 
@@ -267,7 +268,20 @@
         if (state.pair) pairEl.textContent = state.pair;
       }
 
+      const authHeaders = {
+        'Content-Type': 'application/json',
+        'X-Telegram-Init-Data': window.Telegram?.WebApp?.initData || '',
+      };
+      let canPublish = false;
+      const controls = document.querySelectorAll('.btn-controls button, .btn-reset');
+      controls.forEach(button => { button.disabled = true; });
+      fetch('/api/me', {headers: authHeaders}).then(r => r.ok ? r.json() : null).then(profile => {
+        canPublish = !!profile?.is_admin;
+        controls.forEach(button => { button.disabled = !canPublish; });
+      }).catch(() => {});
+
       function broadcast(source) {
+        if (!canPublish) return;
         updateUI();
         try {
           localStorage.setItem('winky_live_stats', JSON.stringify({
@@ -294,7 +308,7 @@
 
         fetch('/api/live_stats', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: authHeaders,
           body: JSON.stringify({ wins: state.wins, losses: state.losses, pair: state.pair })
         }).catch(function () {});
       }
@@ -326,24 +340,29 @@
       }
 
       document.getElementById('btnWinsPlus').addEventListener('click', function () {
+        if (!canPublish) return;
         state.wins += 1;
         broadcast('counter');
       });
       document.getElementById('btnWinsMinus').addEventListener('click', function () {
+        if (!canPublish) return;
         state.wins = Math.max(0, state.wins - 1);
         broadcast('counter');
       });
       document.getElementById('btnLossesPlus').addEventListener('click', function () {
+        if (!canPublish) return;
         state.losses += 1;
         broadcast('counter');
       });
       document.getElementById('btnLossesMinus').addEventListener('click', function () {
+        if (!canPublish) return;
         state.losses = Math.max(0, state.losses - 1);
         broadcast('counter');
       });
       document.getElementById('btnReset').addEventListener('click', function () {
-        state.wins = 110;
-        state.losses = 1;
+        if (!canPublish) return;
+        state.wins = 0;
+        state.losses = 0;
         broadcast('counter');
       });
 

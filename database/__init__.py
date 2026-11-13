@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from sqlalchemy import Connection, inspect, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -22,9 +23,31 @@ __all__ = [
     "PostbackLog",
 ]
 
-engine = create_async_engine(settings.DATABASE_URL, echo=settings.DATABASE_ECHO)
+engine = create_async_engine(
+    settings.DATABASE_URL, echo=settings.DATABASE_ECHO,
+    connect_args={"timeout": 30} if settings.DATABASE_URL.startswith("sqlite") else {},
+)
 
 async_session_factory = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+
+
+@asynccontextmanager
+async def write_transaction(session: AsyncSession):
+    """Serialize SQLite writers before reading mutable balances or quotas.
+
+    Call on a fresh/committed session. No helper inside may commit independently.
+    SQLite's lock works across processes and rolls back all effects on failure.
+    """
+    try:
+        if session.bind.dialect.name == "sqlite":
+            await session.execute(text("BEGIN IMMEDIATE"))
+        else:
+            raise RuntimeError("Funnel transactions currently require SQLite")
+        yield
+        await session.commit()
+    except BaseException:
+        await session.rollback()
+        raise
 
 
 def _apply_light_migrations(sync_conn: Connection) -> None:

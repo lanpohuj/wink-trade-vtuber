@@ -66,6 +66,7 @@ class SecurityAuditVerificationTests(unittest.IsolatedAsyncioTestCase):
         # Гарантируем тестовые настройки
         self.test_secret = "test_postback_secret_123"
         settings.POSTBACK_SECRET = self.test_secret
+        settings.INTERNAL_API_TOKEN = self.test_secret
         if not settings.BOT_TOKEN:
             settings.BOT_TOKEN = "123456789:TEST_BOT_TOKEN_FOR_SECURITY_AUDIT"
         # Сохраняем исходных админов

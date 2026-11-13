@@ -184,3 +184,47 @@ class PostbackLog(Base):
             f"trader_id={self.trader_id!r}, sub_id={self.sub_id!r}, "
             f"amount={self.amount}, status={self.status!r})"
         )
+
+
+class PartnerEvent(Base):
+    """Durable event identity, committed atomically with money and entitlement."""
+
+    __tablename__ = "partner_events"
+    key: Mapped[str] = mapped_column(String(192), primary_key=True)
+    event_type: Mapped[str] = mapped_column(String(32), nullable=False)
+    tg_id: Mapped[int | None] = mapped_column(BigInteger, index=True)
+    trader_id: Mapped[str | None] = mapped_column(String(64), index=True)
+    amount_cents: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(32), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class NotificationOutbox(Base):
+    """At-least-once delivery of funnel notifications, independently of deposits."""
+
+    __tablename__ = "notification_outbox"
+    key: Mapped[str] = mapped_column(String(192), primary_key=True)
+    tg_id: Mapped[int] = mapped_column(BigInteger, nullable=False, index=True)
+    kind: Mapped[str] = mapped_column(String(24), nullable=False)
+    status: Mapped[str] = mapped_column(String(16), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    next_attempt_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    claimed_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class SignalLease(Base):
+    """Short-lived reservation of one free signal, shared by all API workers."""
+
+    __tablename__ = "signal_leases"
+    key: Mapped[str] = mapped_column(String(32), primary_key=True)
+    tg_id: Mapped[int] = mapped_column(BigInteger, nullable=False, index=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+
+
+class LiveStats(Base):
+    __tablename__ = "live_stats"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    wins: Mapped[int] = mapped_column(Integer, default=0)
+    losses: Mapped[int] = mapped_column(Integer, default=0)
+    pair: Mapped[str] = mapped_column(String(64), default="EUR/USD OTC")

@@ -20,7 +20,7 @@ TEXTS: dict[str, dict[str, str]] = {
         "welcome": (
             "💖 <b>Приветик! Это я, твоя Winky со стрима!</b>\n\n"
             "Я рада, что ты заглянул в мой закрытый клуб! Здесь мой ИИ-алгоритм круглосуточно "
-            "сканирует рынок и выдаёт <b>точки входа с проходимостью 87–93%</b> 📈\n\n"
+            "сканирует рынок и выдаёт <b>сигналы с направлением и временем экспирации</b> 📈\n\n"
             "Чтобы я могла выдавать тебе сигналы бесплатно, давай за 30 секунд подключим твой аккаунт:\n\n"
             "1️⃣ Нажми кнопку <b>«🚀 Зарегистрироваться (30 сек)»</b> ниже — откроется официальная страница быстрой регистрации.\n"
             "2️⃣ Введи Email и пароль (или войди через Google в 1 клик).\n"
@@ -89,19 +89,12 @@ TEXTS: dict[str, dict[str, str]] = {
         ),
         "today_stats": (
             "📊 <b>Статистика сигналов Winky за сегодня</b>\n\n"
-            "🔥 <b>Винрейт алгоритма:</b> <b>89.4%</b>\n"
             "👥 <b>Трейдеров получили сигналы сегодня:</b> <b>{today_traders}</b>\n\n"
-            "<b>Последние закрытые сделки ИИ:</b>\n"
-            "✅ EUR/USD OTC — <b>+92%</b> (M1)\n"
-            "✅ GBP/JPY OTC — <b>+89%</b> (M1)\n"
-            "✅ USD/CHF OTC — <b>+91%</b> (M1)\n"
-            "✅ AUD/USD OTC — <b>+88%</b> (M1)\n"
-            "✅ NZD/USD OTC — <b>+93%</b> (M1)\n\n"
-            "<i>Алгоритм сканирует рынок 24/7. Подключайся и торгуй вместе со мной!</i>"
+            "Результаты сделок не подтверждены брокером и не включены в статистику."
         ),
         "followup_15m": (
             "👀 <b>Эй, ты куда пропал?</b>\n\n"
-            "Я тут только что закрыла сделку по <b>{pair}</b> в чистый плюс (точность была {accuracy}%)! 🔥\n\n"
+            "В приложении доступны пробные сигналы. Например, можно выбрать <b>{pair}</b>.\n\n"
             "Регистрация занимает реально 30 секунд — жми кнопку ниже, или если уже создал аккаунт, "
             "просто пришли мне свой <b>ID трейдера</b> цифрами прямо сюда в чат!"
         ),
@@ -182,7 +175,7 @@ TEXTS: dict[str, dict[str, str]] = {
         "welcome": (
             "💖 <b>Hey there! It's me, your Winky from the live stream!</b>\n\n"
             "I'm so glad you joined my private VIP club! Here, my AI algorithm scans the market 24/7 "
-            "and delivers <b>entry points with 87–93% win rate</b> 📈\n\n"
+            "and delivers <b>signals with direction and expiry time</b> 📈\n\n"
             "To start getting free signals, let's link your account in just 30 seconds:\n\n"
             "1️⃣ Tap <b>«🚀 Register on Website (30 sec)»</b> below — the official fast registration page will open.\n"
             "2️⃣ Enter your Email and password (or sign in with Google in 1 tap).\n"
@@ -250,19 +243,12 @@ TEXTS: dict[str, dict[str, str]] = {
         ),
         "today_stats": (
             "📊 <b>Today's Winky Signal Statistics</b>\n\n"
-            "🔥 <b>AI Win Rate:</b> <b>89.4%</b>\n"
             "👥 <b>Traders received signals today:</b> <b>{today_traders}</b>\n\n"
-            "<b>Latest AI closed trades:</b>\n"
-            "✅ EUR/USD OTC — <b>+92%</b> (M1)\n"
-            "✅ GBP/JPY OTC — <b>+89%</b> (M1)\n"
-            "✅ USD/CHF OTC — <b>+91%</b> (M1)\n"
-            "✅ AUD/USD OTC — <b>+88%</b> (M1)\n"
-            "✅ NZD/USD OTC — <b>+93%</b> (M1)\n\n"
-            "<i>Algorithm scans the market 24/7. Connect and trade with me!</i>"
+            "Trade outcomes are not confirmed by the broker and are not counted."
         ),
         "followup_15m": (
             "👀 <b>Hey, where did you go?</b>\n\n"
-            "I just closed a winning trade on <b>{pair}</b> (accuracy was {accuracy}%)! 🔥\n\n"
+            "Trial signals are available in the app. For example, you can select <b>{pair}</b>.\n\n"
             "Registration takes literally 30 seconds — tap the button below, or if you already created an account, "
             "simply send your <b>Trader ID</b> digits right here in the chat!"
         ),

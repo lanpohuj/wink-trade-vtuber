@@ -57,7 +57,7 @@ class IsAdmin(BaseFilter):
 
 def _funnel_state(user: User) -> str:
     """Этап воронки: ``'access'`` | ``'deposit'`` | ``'unregistered'``."""
-    if user.has_access or user.deposit_amount > 0:
+    if user.has_access or settings.is_admin(user.tg_id):
         return "access"
     if user.is_registered:
         return "deposit"
@@ -233,11 +233,18 @@ async def choose_language(callback: CallbackQuery) -> None:
 
     # 3. Текстовое меню Шага 1
     counters = await _counters_line(lang)
-    text = get_text(lang, "welcome") + "\n\n" + _progress_line(lang, "unregistered")
+    state = _funnel_state(user)
+    text = get_text(lang, {
+        "access": "status_access_granted", "deposit": "status_registered_no_deposit",
+        "unregistered": "welcome",
+    }[state], trader_id=user.trader_id or "—") + "\n\n" + _progress_line(lang, state)
     if counters:
         text += "\n" + counters
 
-    await _edit_message(callback, text, main_menu_keyboard(user.tg_id, lang))
+    keyboard = access_keyboard(lang, user.tg_id) if state == "access" else (
+        deposit_keyboard(user.tg_id, lang) if state == "deposit" else main_menu_keyboard(user.tg_id, lang)
+    )
+    await _edit_message(callback, text, keyboard)
     await callback.answer()
 
 
@@ -312,6 +319,17 @@ async def handle_manual_trader_id(message: Message) -> None:
         await message.answer(text, reply_markup=main_menu_keyboard(user.tg_id, user.lang), parse_mode="HTML")
         return
 
+    if bind_status == "verification_required":
+        text = (
+            "Не удалось подтвердить, что этот счёт принадлежит вашему Telegram. "
+            f"Обратитесь в поддержку: @{settings.SUPPORT_USERNAME}"
+        ) if user.lang == "ru" else (
+            "We cannot verify that this account belongs to your Telegram. "
+            f"Please contact support: @{settings.SUPPORT_USERNAME}"
+        )
+        await message.answer(text, reply_markup=support_keyboard(user.lang))
+        return
+
     if bind_status == "not_found":
         text = (
             f"⏳ <b>ID <code>{trader_id}</code> пока не найден в списке регистраций.</b>\n\n"
@@ -334,7 +352,7 @@ async def handle_manual_trader_id(message: Message) -> None:
             + "\n\n"
             + progress
         )
-        keyboard = access_keyboard(user.lang)
+        keyboard = access_keyboard(user.lang, user.tg_id)
     else:
         progress = _progress_line(user.lang, "deposit")
         text = (
@@ -440,7 +458,7 @@ async def on_today_stats(callback: CallbackQuery) -> None:
     user = await _get_user(callback.from_user.id, callback.from_user.username)
     async with async_session_factory() as session:
         today = await crud.get_today_signal_users(session)
-    display_count = max(today, 128)
+    display_count = today
     text = get_text(user.lang, "today_stats", today_traders=display_count)
     keyboard = (
         deposit_keyboard(user.tg_id, user.lang)

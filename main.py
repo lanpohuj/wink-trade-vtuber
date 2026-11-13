@@ -12,12 +12,15 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import re
 from contextlib import asynccontextmanager, suppress
 from pathlib import Path
 
 import uvicorn
 from aiogram import Bot, Dispatcher
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from sqlalchemy import text
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -25,8 +28,9 @@ from fastapi.staticfiles import StaticFiles
 from api import postback, signals
 from bot.handlers import router as bot_router
 from bot.teaser import run_teaser_scheduler
+from bot.notifications import run_notification_worker
 from config import settings
-from database import init_db
+from database import init_db, async_session_factory
 
 # На уровне модуля: под uvicorn __main__ не выполняется,
 # без этого INFO-логи жизненного цикла не видны в docker logs
@@ -34,6 +38,22 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
 )
+
+
+class SecretFilter(logging.Filter):
+    def filter(self, record):
+        def redact(value):
+            if not isinstance(value, str):
+                return value
+            value = re.sub(r"(?i)(token=)[^&\s\"']+", r"\1[REDACTED]", value)
+            return re.sub(r"/bot\d+:[A-Za-z0-9_-]+", "/bot[REDACTED]", value)
+        record.msg = redact(record.getMessage())
+        record.args = ()
+        return True
+
+
+logging.getLogger("uvicorn.access").addFilter(SecretFilter())
+logging.getLogger("httpx").addFilter(SecretFilter())
 
 WEBAPP_DIR = Path(__file__).parent / "webapp"
 
@@ -69,12 +89,15 @@ async def lifespan(app: FastAPI):
         dispatcher = Dispatcher()
         dispatcher.include_router(bot_router)
         try:
-            await bot.delete_webhook(drop_pending_updates=True)
+            await bot.delete_webhook(drop_pending_updates=False)
         except Exception:  # noqa: BLE001
             logging.exception("Не удалось удалить webhook — бот может не работать")
 
-        tasks.append(asyncio.create_task(_run_polling(dispatcher, bot), name="telegram-polling"))
+        polling_task = asyncio.create_task(_run_polling(dispatcher, bot), name="telegram-polling")
+        app.state.polling_task = polling_task
+        tasks.append(polling_task)
         tasks.append(asyncio.create_task(run_teaser_scheduler(bot), name="daily-teaser"))
+        tasks.append(asyncio.create_task(run_notification_worker(bot), name="funnel-notifications"))
 
         # Регистрация глобальной кнопки MenuButtonWebApp и команд бота
         try:
@@ -145,6 +168,20 @@ def create_app() -> FastAPI:
     @app.get("/", include_in_schema=False)
     async def root_redirect():
         return RedirectResponse(url="/webapp/")
+
+    @app.get("/health", include_in_schema=False)
+    async def health():
+        try:
+            async with async_session_factory() as session:
+                await session.execute(text("SELECT 1"))
+        except Exception:
+            return JSONResponse({"status": "unavailable", "database": False}, status_code=503)
+        polling = getattr(app.state, "polling_task", None)
+        bot_running = polling is not None and not polling.done()
+        return JSONResponse(
+            {"status": "ok" if bot_running else "api_only", "database": True, "bot_polling": bot_running},
+            status_code=200 if bot_running else 503,
+        )
 
     app.include_router(postback.router, prefix="/api")
     app.include_router(signals.router, prefix="/api")

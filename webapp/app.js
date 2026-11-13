@@ -52,9 +52,10 @@ const state = {
   forceDir: null, // Secret Streamer trigger: 'BUY' (logo) | 'SELL' (badge/pair)
   initData: window.Telegram?.WebApp?.initData || "",
   tgId: window.Telegram?.WebApp?.initDataUnsafe?.user?.id || (queryTgId ? parseInt(queryTgId, 10) : null),
-  liveWins: 110,
-  liveLosses: 1,
+  liveWins: 0,
+  liveLosses: 0,
   countdownInterval: null,
+  lastSignal: null,
 };
 
 const i18n = {
@@ -79,6 +80,9 @@ const i18n = {
     depositNow: "2. ПОПОЛНИТЬ СЧЁТ (+50% БОНУС)",
     close: "Закрыть",
     copied: "Скопировано!",
+    authError: "Откройте приложение заново из Telegram-бота.",
+    signalError: "Не удалось получить сигнал. Проверьте связь и повторите запрос.",
+    expired: "Время сигнала истекло. Результат сделки не подтверждён.",
   },
   en: {
     pairLbl: "Currency Pair",
@@ -101,6 +105,9 @@ const i18n = {
     depositNow: "2. DEPOSIT (+50% BONUS)",
     close: "Close",
     copied: "Copied!",
+    authError: "Reopen the app from the Telegram bot.",
+    signalError: "Unable to get a signal. Check your connection and try again.",
+    expired: "Signal expired. The trade result is unconfirmed.",
   }
 };
 
@@ -199,9 +206,56 @@ function formatCountdown(sec) {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[ch]));
+}
+
+function telegramHeaders() {
+  return { "Content-Type": "application/json", "X-Telegram-Init-Data": state.initData || "" };
+}
+
+function updateReferralLinks(data) {
+  if (typeof data.is_vip === "boolean") {
+    const vip = document.getElementById("badgeVip");
+    const guest = document.getElementById("badgeGuest");
+    if (vip) vip.hidden = !data.is_vip;
+    if (guest) {
+      guest.hidden = data.is_vip;
+      guest.textContent = `${state.lang === "ru" ? "ДЕМО" : "DEMO"} ${Number(data.free_signals_left) || 0}/3`;
+    }
+  }
+  for (const [id, key] of [["btnRegisterLink", "register_url"], ["btnDepositLink", "deposit_url"]]) {
+    const el = document.getElementById(id);
+    if (el && typeof data[key] === "string" && data[key].startsWith("https://")) el.href = data[key];
+  }
+}
+
+function showSignalError(key) {
+  state.isBusy = false;
+  state.autoSignals = false;
+  state.lastSignal = null;
+  const block = document.getElementById("directionBlock");
+  if (block) { block.className = "winky-direction-block idle"; block.textContent = t(key); }
+  const btn = document.getElementById("btnGetSignal");
+  if (btn) { btn.disabled = false; btn.classList.remove("disabled"); btn.textContent = t("getSignal"); }
+  const accuracy = document.getElementById("metricAccuracy");
+  if (accuracy) accuracy.textContent = "—";
+}
+
+async function loadProfile() {
+  try {
+    if (state.initData) await fetch("/api/activity", { method: "POST", headers: telegramHeaders() });
+    const response = await fetch("/api/me", { headers: telegramHeaders() });
+    if (response.ok) updateReferralLinks(await response.json());
+  } catch (_) {}
+}
+
 async function startSignalAnalysis() {
   if (state.isBusy) return;
   state.isBusy = true;
+  state.lastSignal = null;
 
   if (state.countdownInterval) {
     clearInterval(state.countdownInterval);
@@ -259,11 +313,20 @@ async function startSignalAnalysis() {
       return;
     }
 
-    if (resp.ok) {
-      apiData = await resp.json();
+    if (!resp.ok) {
+      showSignalError(resp.status === 401 ? "authError" : "signalError");
+      return;
     }
+    apiData = await resp.json();
+    if (!["BUY", "SELL"].includes(apiData.direction) || !Number.isFinite(apiData.accuracy)) {
+      showSignalError("signalError");
+      return;
+    }
+    state.lastSignal = apiData;
+    updateReferralLinks(apiData);
   } catch (_) {
-    // offline fallback
+    showSignalError("signalError");
+    return;
   }
 
   // Ensure minimum 950ms smooth analysis bar animation
@@ -273,9 +336,9 @@ async function startSignalAnalysis() {
   }
 
   // 2. ACTIVE SIGNAL STATE
-  const dir = apiData?.direction || (Math.random() > 0.45 ? "BUY" : "SELL");
+  const dir = apiData.direction;
   const isBuy = dir === "BUY";
-  const accuracy = apiData?.accuracy || Math.floor(91 + Math.random() * 6);
+  const accuracy = apiData.accuracy;
   const totalSec = parseDurationSeconds(state.duration);
 
   const accEl = document.getElementById("metricAccuracy");
@@ -315,7 +378,7 @@ async function startSignalAnalysis() {
           <span class="winky-sig-strategy-score">★ ${apiData?.confluence ? Number(apiData.confluence).toFixed(1) : "4.7"} / 5.0 · ${accuracy}%</span>
         </div>
         <div class="winky-sig-strategy-text">
-          ${strategyText}
+          ${escapeHtml(strategyText)}
         </div>
       </div>
 
@@ -364,15 +427,11 @@ async function startSignalAnalysis() {
 }
 
 function onSignalExpiryFinished() {
-  state.liveWins += 1;
-  updateLiveScoreUI();
-
-  if (window.Telegram?.WebApp?.HapticFeedback) {
-    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-  }
+  const block = document.getElementById("directionBlock");
+  if (block) { block.className = "winky-direction-block idle"; block.textContent = t("expired"); }
 
   const btn = document.getElementById("btnGetSignal");
-  if (btn) btn.disabled = false;
+  if (btn) { btn.disabled = false; btn.classList.remove("disabled"); btn.textContent = t("getSignal"); }
   state.isBusy = false;
 
   // Auto-signals loop on stream
@@ -411,7 +470,7 @@ function updateLiveScoreUI() {
   if (lossEl) lossEl.textContent = state.liveLosses;
 
   const total = state.liveWins + state.liveLosses;
-  const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "99.1";
+  const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "0.0";
   if (rateEl) rateEl.textContent = `${rate}%`;
 }
 
@@ -434,25 +493,18 @@ function setupLiveScore() {
     });
   }
 
-  if (pillWins) {
-    pillWins.addEventListener("click", () => {
-      state.liveWins += 1;
+  async function refreshScore() {
+    try {
+      const response = await fetch("/api/live_stats");
+      if (!response.ok) return;
+      const data = await response.json();
+      state.liveWins = Number(data.wins) || 0;
+      state.liveLosses = Number(data.losses) || 0;
       updateLiveScoreUI();
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred("medium");
-      }
-    });
+    } catch (_) {}
   }
-
-  if (pillLosses) {
-    pillLosses.addEventListener("click", () => {
-      state.liveLosses += 1;
-      updateLiveScoreUI();
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
-      }
-    });
-  }
+  refreshScore();
+  setInterval(refreshScore, 5000);
 
   // Update clock every second
   const clockEl = document.getElementById("liveClock");
@@ -484,61 +536,22 @@ function setupAiChat() {
     });
   }
 
-  function sendChatQuery() {
-    if (!chatFeed) return;
-
-    // User Message Bubble
-    const userBubble = document.createElement("div");
-    userBubble.className = "winky-chat-bubble user";
-    userBubble.innerHTML = `
-      <div class="bubble-header">
-        <span class="user-badge">${state.lang === "ru" ? "ВЫ" : "YOU"}</span>
-      </div>
-      <div class="bubble-content">
-        ${state.lang === "ru" ? "Анализ актива" : "Asset analysis"}: <b>${state.pair}</b> · ${state.duration}
-      </div>
-    `;
-    chatFeed.appendChild(userBubble);
-
-    // AI Response Loading Indicator
-    const aiBubble = document.createElement("div");
-    aiBubble.className = "winky-chat-bubble ai";
-    aiBubble.innerHTML = `
-      <div class="bubble-header">
-        <span class="ai-badge">WINKY AI</span>
-        <span class="bubble-model">${selectModel?.options[selectModel.selectedIndex]?.text.split("·")[0].trim() || "Claude Fable"}</span>
-      </div>
-      <div class="bubble-content" style="opacity:0.7;">
-        ${state.lang === "ru" ? "Обработка свечного графика и стакана ордеров..." : "Processing candlesticks and order flow..."}
-      </div>
-    `;
-    chatFeed.appendChild(aiBubble);
+  async function sendChatQuery() {
+    if (!chatFeed || state.isBusy) return;
+    if (!state.lastSignal || state.lastSignal.pair !== state.pair || state.lastSignal.duration !== state.duration) {
+      await startSignalAnalysis();
+    }
+    const bubble = document.createElement("div");
+    bubble.className = "winky-chat-bubble ai";
+    const data = state.lastSignal;
+    if (!data) {
+      bubble.textContent = t("signalError");
+    } else {
+      const lines = state.lang === "ru" ? data.rationale_ru : data.rationale_en;
+      bubble.textContent = [data.pair, data.duration, data.direction, ...(lines || [])].join(" · ");
+    }
+    chatFeed.appendChild(bubble);
     chatFeed.scrollTop = chatFeed.scrollHeight;
-
-    setTimeout(() => {
-      const isUp = Math.random() > 0.45;
-      const rsi = (35 + Math.random() * 35).toFixed(1);
-      const conf = Math.floor(92 + Math.random() * 6);
-
-      aiBubble.querySelector(".bubble-content").innerHTML = `
-        <div style="font-weight:700;color:#fff;margin-bottom:6px;">
-          ${state.pair} · ${state.duration}
-        </div>
-        <div style="color:#94a3b8;font-size:12px;margin-bottom:6px;line-height:1.5;">
-          • RSI: <b style="color:#fff;">${rsi}</b> (${isUp ? (state.lang === "ru" ? "выход из перепроданности" : "oversold recovery") : (state.lang === "ru" ? "разворот вниз" : "overbought rejection")})<br>
-          • EMA 9/21: <b style="color:#fff;">${isUp ? "Bullish Cross" : "Bearish Cross"}</b><br>
-          • Confidence: <b style="color:#10b981;">${conf}%</b>
-        </div>
-        <div style="display:inline-block;padding:4px 10px;border-radius:6px;font-weight:800;font-size:12px;background:${isUp ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'};color:${isUp ? '#10B981' : '#EF4444'};border:1px solid ${isUp ? 'rgba(16,185,129,0.4)' : 'rgba(239,68,68,0.4)'};">
-          ${isUp ? (state.lang === "ru" ? "РЕКОМЕНДАЦИЯ: КУПИТЬ ↗" : "CALL: BUY ↗") : (state.lang === "ru" ? "РЕКОМЕНДАЦИЯ: ПРОДАТЬ ↘" : "CALL: SELL ↘")}
-        </div>
-      `;
-      chatFeed.scrollTop = chatFeed.scrollHeight;
-
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-      }
-    }, 850);
   }
 
   if (btnSend) btnSend.addEventListener("click", sendChatQuery);
@@ -598,6 +611,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Apply language
   applyLanguage();
+  loadProfile();
 
   // Tab switching
   document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
@@ -712,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastSyncedSignalKey = "";
   async function pollSyncedStreamSignal() {
     try {
-      const res = await fetch("/api/signal/sync");
+      const res = await fetch("/api/signal/sync", { headers: telegramHeaders() });
       if (!res.ok) return;
       const data = await res.json();
       if (data.active && data.signal && data.remaining_sec > 0) {
