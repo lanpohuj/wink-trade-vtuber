@@ -3413,10 +3413,11 @@
     status.hidden = true;
   }
 
-  let visualStages = {pair: '', generation: null, values: [null,null,null,null]};
+  let visualStages = {pair: '', generation: null, values: [null,null,null,null], details: [null,null,null,null]};
+  let visualTradeEvidence = null;
 
   function resetVisualStages(pair = state.targetPair) {
-    visualStages = {pair: normalizePocketPair(pair), generation: state.searchGeneration, values: [null,null,null,null]};
+    visualStages = {pair: normalizePocketPair(pair), generation: state.searchGeneration, values: [null,null,null,null], details: [null,null,null,null]};
   }
 
   function observedAnalysisFactors(sample) {
@@ -3426,12 +3427,40 @@
     return available.map((known, i) => known && typeof sample.confluence?.factors?.[i]?.pass === 'boolean' ? sample.confluence.factors[i].pass : null);
   }
 
+  // This snapshot is presentation-only and is made before a candidate is promoted.
+  function visualEvidenceForSample(sample, forced = false) {
+    if (!sample?.pair || normalizePocketPair(sample.pair) !== normalizePocketPair(state.targetPair)) return null;
+    const factors = observedAnalysisFactors(sample), a = sample.analysis || {};
+    const trend = factors[0] === true ? (/UPTREND/.test(a.trendRegime) ? 'up' : /DOWNTREND/.test(a.trendRegime) ? 'down' : 'range') : factors[0] === false ? 'rejected' : 'unavailable';
+    const setups = {TREND_PULLBACK:'pullback', BREAKOUT_RETEST:'retest', RANGE_REJECTION:'rejection', LOCAL_REVERSAL:'reversal'};
+    const structure = factors[1] === true ? (setups[a.family || a.setup] || 'confirmed') : factors[1] === false ? 'rejected' : 'unavailable';
+    const levels = factors[2] === true ? (a.sr?.levelHeld ? 'held' : 'confirmed') : factors[2] === false ? 'rejected' : 'unavailable';
+    const codes = [trend, structure, levels, forced ? 'forced' : 'confirmed'];
+    const score = a.dataStatus !== 'NO_DATA' && Number.isFinite(sample.confluence?.score) ? sample.confluence.score : null;
+    return {pair:normalizePocketPair(sample.pair), generation:state.searchGeneration, codes, factors, score, forced};
+  }
+
+  function visualStageText(code, ru = state.lang === 'ru') {
+    const text = {up:['Восходящий','Uptrend'],down:['Нисходящий','Downtrend'],range:['Боковой','Sideways'],
+      confirmed:['Подтверждено','Confirmed'],rejected:['Не подтверждено','Not confirmed'],unavailable:['Нет данных','No data'],
+      pullback:['Откат EMA','EMA pullback'],retest:['Ретест','Retest'],rejection:['Отбой','Rejection'],reversal:['Разворот','Reversal'],held:['Уровень удержан','Level held'],
+      forced:['Принудительный','Forced'],checking:['Проверяем','Checking'],waiting:['Ожидание','Waiting']};
+    return (text[code] || text.unavailable)[ru ? 0 : 1];
+  }
+
+  function visualTradeSummary(evidence, ru = state.lang === 'ru') {
+    if (!evidence) return ru ? 'Данные анализа недоступны.' : 'Analysis data unavailable.';
+    const names = ru ? ['Тренд','Структура','Уровни'] : ['Trend','Structure','Levels'];
+    const details = evidence.codes.slice(0,3).map((code,i) => `${names[i]}: ${visualStageText(code,ru).toLowerCase()}`).join(' · ');
+    return (evidence.forced ? (ru ? 'Принудительный выбор после трёх пар. ' : 'Forced selection after three pairs. ') : '') + details + '.';
+  }
+
   function syncPanelControlVisibility() {
     const hidden = Boolean(state.autoStream || state.searchRunning || state.tradeContext || state.botState !== 'IDLE');
     document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid').forEach(el => { el.hidden = hidden; });
   }
 
-  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null, observedFactors = null) {
+  function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null, observedFactors = null, evidence = null) {
     const block=document.getElementById('botDirectionBlock');
     if(!block) return;
     try { syncPanelControlVisibility(); } catch (_) {}
@@ -3444,12 +3473,11 @@
       block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
         ${demo?`<div class="winky-data-note" data-feed-note>${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
         <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span id="winkyVisualChartSource" class="winky-chart-source" hidden></span><span class="winky-chart-scanner"></span></div>
-        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map(name=>`<div class="winky-scan-seg"><small data-stage-label>${name}</small><span class="winky-stage-indicator" data-stage-indicator></span></div>`).join('')}</div>
+        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map(name=>`<div class="winky-scan-seg"><small data-stage-label>${name}</small><span class="winky-stage-result" data-stage-indicator></span></div>`).join('')}</div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
     const status=phase || (isConfirmed?'confirmed':'checking');
-    const statusText={checking:ru?'Проверяем':'Checking',confirmed:ru?'Подтверждено':'Confirmed',rejected:ru?'Не подтверждено':'Not confirmed',loading:ru?'Загрузка':'Loading'};
     put('[data-analysis-heading]',ru?'АНАЛИЗ ГРАФИКА':'CHART ANALYSIS');
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
     put('[data-analysis-score]',known?'★ '+Number(scoreStr).toFixed(1)+' / 5':'— / 5');
@@ -3459,10 +3487,11 @@
     put('[data-feed-note]',ru?'Демо-данные могут изменяться':'Demo data may be altered');
     const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
     if (Array.isArray(observedFactors)) observedFactors.forEach((value, i) => {
-      if (i < 3 && i < stepIndex && typeof value === 'boolean') visualStages.values[i] = value ? 'confirmed' : 'rejected';
+      if (i < 3 && i < stepIndex && typeof value === 'boolean') { visualStages.values[i] = value ? 'confirmed' : 'rejected'; visualStages.details[i] = evidence?.codes?.[i] || visualStages.values[i]; }
     });
     visualStages.values[stepIndex] = stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
       (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null);
+    visualStages.details[stepIndex] = visualStages.values[stepIndex] ? (evidence?.codes?.[stepIndex] || visualStages.values[stepIndex]) : null;
     const segments=block.querySelectorAll('.winky-scan-seg');
     const labels=ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry'];
     try {
@@ -3471,8 +3500,8 @@
         el.className='winky-scan-seg'+(current?' active':'')+(result?' '+result:'');
         const label=el.querySelector('[data-stage-label]'), indicator=el.querySelector('[data-stage-indicator]');
         if(label) label.textContent=labels[i];
-        if(indicator) indicator.textContent=result==='confirmed'?'✓':result==='rejected'?'×':current?'·':'';
-        const description=result ? statusText[result] : current ? (status==='loading'?statusText.loading:statusText.checking) : (ru?'Ожидание':'Waiting');
+        const description=result ? visualStageText(visualStages.details[i],ru) : current ? visualStageText('checking',ru) : visualStageText(i<stepIndex?'unavailable':'waiting',ru);
+        if(indicator) indicator.textContent=description;
         el.setAttribute('aria-label',`${labels[i]}: ${description}`);
       });
     } catch (_) { /* Presentation must never interrupt analysis. */ }
@@ -3918,6 +3947,7 @@
 
   async function startSignalAnalysis() {
     if(state.botState!=='IDLE' || state.searchRunning || state.tradeContext) return;
+    visualTradeEvidence=null;
     state.searchRunning=true;
     state.searchRound=(state.searchRound || 0)+1;
     if(state.searchRound===1) state.round1Candidates=[];
@@ -3928,15 +3958,17 @@
     requestMarketRecovery(state.targetPair,60);
     const button=document.getElementById('btnGetSignalAction'),ru=state.lang==='ru';
     const steps=ru?['01 · ТРЕНД M1','02 · СТРУКТУРА','03 · УРОВНИ S30','04 · ТОЧКА ВХОДА']:['01 · M1 TREND','02 · STRUCTURE','03 · S30 LEVELS','04 · ENTRY'];
-    let chosen=null;
+    let chosen=null, mandatoryOriginal=null;
     const alive=()=>generation===state.searchGeneration && !state.tradeContext;
-    const render=(step,sample,status,finalEntry=false)=>{
+    const render=(step,sample,status,finalEntry=false,forced=false)=>{
       const factor=step<3 && sample?.analysis?.dataStatus!=='NO_DATA'?sample?.confluence?.factors?.[step]:null;
       if(status==='checking' && factor) status=factor.pass?'confirmed':'rejected';
       const observedFactors = observedAnalysisFactors(sample);
       const entryAvailable = Boolean(sample?.analysis && sample.analysis.dataStatus !== 'NO_DATA' && !sample.analysis.forcedBestRoundEntry);
       const visualEntry = step === 3 && entryAvailable && (status === 'rejected' || (finalEntry && status === 'confirmed')) ? status : null;
-      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),sample && sample.analysis.dataStatus!=='NO_DATA'?String(sample.confluence?.score ?? 0):null,status==='confirmed',status,observedFactors[step] ?? null,visualEntry,observedFactors);
+      const evidence=visualEvidenceForSample(sample,forced);
+      const displayScore = sample?.analysis?.dataStatus !== 'NO_DATA' && Number.isFinite(sample?.confluence?.score) ? String(sample.confluence.score) : null;
+      renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),displayScore,status==='confirmed',status,observedFactors[step] ?? null,visualEntry,observedFactors,evidence);
     };
     try {
       if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(state.lang==='ru'?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
@@ -3998,6 +4030,7 @@
         const rawBest=bestPairCandidate(state.pairCandidates.filter(c=>!c.analysis?.hardVeto)) ||
           bestPairCandidate(state.pairCandidates) ||
           state.pairCandidates[0];
+        mandatoryOriginal=rawBest;
         best=promoteCandidateForMandatoryEntry(rawBest);
         ranked=best?[best]:[];
       }
@@ -4037,7 +4070,11 @@
         executableAnalysis.searchGeneration=generation;executableAnalysis.entryThreshold=threshold;
         if(candidate.analysis?.forcedBestRoundEntry) executableAnalysis.forcedBestRoundEntry=true;
         journalDecision('entry_confirmed',{analysis:executableAnalysis,confluence:executableConfluence,scan:executableScan});
-        render(3,{analysis:executableAnalysis,confluence:executableConfluence},'confirmed',true);
+        try {
+          const displaySample = executableAnalysis === fresh.analysis ? fresh : candidate.analysis?.forcedBestRoundEntry ? mandatoryOriginal : candidate;
+          visualTradeEvidence = visualEvidenceForSample(displaySample,Boolean(candidate.analysis?.forcedBestRoundEntry));
+          render(3,displaySample,'confirmed',true,Boolean(candidate.analysis?.forcedBestRoundEntry));
+        } catch (_) { visualTradeEvidence = null; }
         await executeTradeWithSignal(executableAnalysis,executableConfluence,executableScan);
         if(state.tradeContext) break;
         journalDecision('entry_cancelled',{analysis:executableAnalysis,confluence:executableConfluence},'pre_click_recheck');
@@ -4868,17 +4905,15 @@
       const sig = state.activeSignal;
       const isBuy = sig.direction === "BUY";
       const isRu = (state.lang === "ru");
-      if (accEl) accEl.textContent = `${sig.accuracy}%`;
-
-      const cleanLine1 = cleanRationaleText(sig.line1);
-      const cleanLine2 = cleanRationaleText(sig.line2);
-      let strategyText = cleanLine1;
-      if (cleanLine2 && cleanLine2 !== cleanLine1) {
-        strategyText += (strategyText.endsWith(".") ? " " : ". ") + cleanLine2;
-      }
-      if (!strategyText) {
-        strategyText = isRu ? "Подробности анализа недоступны." : "Analysis details are unavailable.";
-      }
+      const evidence = visualTradeEvidence && visualTradeEvidence.pair === normalizePocketPair(sig.pair) &&
+        visualTradeEvidence.generation === state.searchGeneration ? visualTradeEvidence : null;
+      const rawScore = evidence?.score;
+      const accuracy = Number.isFinite(rawScore) ? Math.round(rawScore/5*100)+'%' : '—';
+      if (accEl) accEl.textContent = accuracy;
+      const strategyText = visualTradeSummary(evidence,isRu);
+      const names = isRu ? ['Тренд','Структура','Уровни','Вход'] : ['Trend','Structure','Levels','Entry'];
+      const codes = evidence?.codes || ['unavailable','unavailable','unavailable','unavailable'];
+      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
 
       const dur = String(sig.duration || "").toUpperCase();
       let headerPrefix = "S30";
@@ -4899,16 +4934,20 @@
           </div>
           <div class="winky-sig-timer-capsule">
             <span class="winky-sig-pulse-dot">●</span>
-            <span class="winky-sig-timer-val" id="signalTimerVal">${formatTime(sig.durationSec)}</span>
+            <span class="winky-sig-timer-val" id="signalTimerVal">${formatTime(state._currentTradeRemaining ?? sig.durationSec)}</span>
             <span id="sigExpiry" style="display:none;">${sig.duration || "30s"}</span>
           </div>
         </div>
 
+        ${demo?`<div class="winky-data-note" data-feed-note>${isRu?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
+        <div class="winky-trade-reason">${strategyText}</div>
+        <div class="winky-checks-caption">${isRu?'Проверки завершены · зелёный — этап обработан':'Checks complete · green means processed'}</div>
+        <div class="winky-scan-segments winky-trade-stages">${names.map((name,i)=>`<div class="winky-scan-seg completed"><small>${name}</small><span class="winky-stage-result">${visualStageText(codes[i],isRu)}</span></div>`).join('')}</div>
         <details class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
           <summary>${isRu ? 'Подробности анализа' : 'Analysis details'}</summary>
           <div class="winky-sig-strategy-meta">
             <span>${entryHeader}</span>
-            <span class="winky-sig-strategy-score">★ ${Number.isFinite(sig.confluence) ? sig.confluence.toFixed(1) : "—"} / 5.0 · ${sig.accuracy}%</span>
+            <span class="winky-sig-strategy-score">★ ${Number.isFinite(rawScore) ? rawScore.toFixed(1) : "—"} / 5.0 · ${accuracy}</span>
           </div>
           <div class="winky-sig-strategy-text" id="sigReasoningText">
             ${strategyText}
@@ -5142,8 +5181,8 @@
     document.querySelectorAll('#botDirectionBlock .winky-scan-seg').forEach((el,i) => {
       const label=el.querySelector('[data-stage-label]'); if(label) label.textContent=labels[i];
       const result=visualStages.values[i];
-      const status=result==='confirmed'?(ru?'Подтверждено':'Confirmed'):result==='rejected'?(ru?'Не подтверждено':'Not confirmed'):
-        el.classList.contains('active')?(ru?'Проверяем':'Checking'):(ru?'Ожидание':'Waiting');
+      const status=result?visualStageText(visualStages.details[i],ru):el.classList.contains('active')?visualStageText('checking',ru):visualStageText('waiting',ru);
+      const detail=el.querySelector('[data-stage-indicator]'); if(detail) detail.textContent=status;
       el.setAttribute('aria-label',`${labels[i]}: ${status}`);
     });
     renderChatFeed();
