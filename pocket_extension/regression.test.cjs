@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, visualTradeSummary, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setVisualTradeEvidence(value) { visualTradeEvidence = value; },
       getVisualTradeEvidence() { return visualTradeEvidence; },
@@ -123,13 +123,11 @@ test('forced trade display uses the original pair evidence and score, never prom
   c.document.getElementById=id=>id==='botDirectionBlock'?block:id==='metricAccuracyVal'?accuracy:null;
   c.state.botState='IN_TRADE';c.state.activeSignal={pair:raw.pair,direction:'SELL',accuracy:82,confluence:4.1,duration:'30s',durationSec:30,line1:'Изобретённый сетап'};
   c.renderSignalCardState();
-  assert.equal(accuracy.textContent,'62%');assert.match(block.innerHTML,/Принудительный выбор после трёх пар/);
-  assert.match(block.innerHTML,/Не подтверждено/);assert.match(block.innerHTML,/Принудительный/);
-  assert.equal((block.innerHTML.match(/winky-scan-seg completed/g)||[]).length,4);
-  assert.doesNotMatch(block.innerHTML,/Изобретённый сетап|4\.1 \/ 5/);
+  assert.equal(accuracy.textContent,'62%');assert.match(block.innerHTML,/ПРОДАТЬ · ВНИЗ/);
+  assert.doesNotMatch(block.innerHTML,/Принудительный|Не подтверждено|winky-scan-seg|Изобретённый сетап|4\.1 \/ 5/);
   c.state.activeSignal.pair='GBP/USD OTC';c.renderSignalCardState();
-  assert.equal(accuracy.textContent,'—');assert.match(block.innerHTML,/Данные анализа недоступны/);assert.doesNotMatch(block.innerHTML,/Принудительный выбор/);
-  c.state.lang='en';c.renderSignalCardState();assert.match(block.innerHTML,/Analysis data unavailable/);
+  assert.equal(accuracy.textContent,'—');assert.doesNotMatch(block.innerHTML,/Принудительный выбор/);
+  c.state.lang='en';c.renderSignalCardState();assert.match(block.innerHTML,/SELL · PUT/);
 });
 test('visual evidence does not invent results when analysis is unavailable', () => {
   const c=loadContent();c.state.targetPair='EUR/USD OTC';
@@ -417,33 +415,24 @@ test('switching off or cancelling a search generation prevents a delayed entry',
   c.setSearchDependencies({ready:async()=>{c.state.searchGeneration++;return true;}});
   await c.startSignalAnalysis();assert.equal(c.executed.length,0);assert.equal(c.state.searchRunning,false);
 });
-test('analysis tiles show observed states, reset per pair and do not inflate accuracy',()=>{
-  const c=loadContent(),nodes=new Map(),segments=Array.from({length:4},()=>{
-    const label={textContent:''},indicator={textContent:''};
-    return {className:'',label,indicator,attrs:{},querySelector(s){return s==='[data-stage-label]'?label:indicator;},setAttribute(k,v){this.attrs[k]=v;}};
-  });let mounts=0;
-  const block={className:'',markup:'',set innerHTML(value){this.markup=value;mounts++;nodes.set('[data-analysis-tiles]',{});},
-    querySelector(selector){if(selector==='[data-analysis-tiles]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);},
-    querySelectorAll(){return segments;}};
+test('analysis displays one stage, animates only on changes and does not invent a check',()=>{
+  const c=loadContent(),nodes=new Map(),label={textContent:''},indicator={textContent:''},icon={textContent:''};let mounts=0,transitions=0;
+  const card={className:'',attrs:{},querySelector(s){return s==='[data-stage-label]'?label:s==='[data-stage-icon]'?icon:indicator;},setAttribute(k,v){this.attrs[k]=v;}};
+  const frame={dataset:{},set innerHTML(value){this.markup=value;if(value)transitions++;},querySelector(){return card;}};
+  const block={className:'',markup:'',set innerHTML(value){this.markup=value;mounts++;nodes.set('[data-analysis-tiles]',frame);},
+    querySelector(selector){if(selector==='[data-analysis-tiles]')return nodes.get(selector)||null;if(!nodes.has(selector))nodes.set(selector,{textContent:'',className:''});return nodes.get(selector);}};
   const accuracy={textContent:'',title:''};c.document.getElementById=id=>id==='botDirectionBlock'?block:id==='metricAccuracyVal'?accuracy:null;
-  for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','Данные обновляются','2.5',true,'confirmed',true);
-  assert.equal(mounts,1);assert.doesNotMatch(block.markup,/winky-stage-index/);assert.equal(segments[0].indicator.textContent,'Подтверждено');assert.equal(accuracy.textContent,'50%');
-  c.renderAnalysisStep(1,4,'Структура','Проверка','2.5',false,'rejected',false);
-  assert.equal(segments[0].indicator.textContent,'Подтверждено');assert.equal(segments[1].indicator.textContent,'Не подтверждено');
-  c.renderAnalysisStep(2,4,'Уровни','Нет данных',null,false,'loading',null);
-  assert.equal(segments[2].indicator.textContent,'Проверяем');assert.doesNotMatch(segments[2].className,/confirmed|rejected/);
-  c.renderAnalysisStep(2,4,'Уровни','Проверка','2.5',false,'checking',true,null,[true,false,true]);
-  assert.equal(segments[1].indicator.textContent,'Не подтверждено');assert.equal(segments[2].indicator.textContent,'Подтверждено');
-  c.renderAnalysisStep(3,4,'Вход','Недостаточно данных',null,false,'rejected',null,null);
-  assert.equal(segments[3].indicator.textContent,'Проверяем');assert.doesNotMatch(segments[3].className,/confirmed|rejected/);
-  c.renderAnalysisStep(3,4,'Вход','Не подтверждено','2.5',false,'rejected',null,'rejected');
-  assert.equal(mounts,1);assert.equal(segments[3].indicator.textContent,'Не подтверждено');assert.equal(accuracy.textContent,'50%');
-  c.state.targetPair='GBP/USD OTC';
-  c.updateCardPairUI();
-  assert.equal(segments[1].indicator.textContent,'');assert.equal(segments[3].indicator.textContent,'');
-  c.renderAnalysisStep(0,4,'Данные','M1: 0 закрытых',null,false,'loading');
-  assert.equal(segments[1].indicator.textContent,'Ожидание');assert.equal(segments[3].indicator.textContent,'Ожидание');
-  assert.equal(accuracy.textContent,'—');assert.equal(nodes.get('[data-analysis-score]').textContent,'— / 5');assert.equal(mounts,1);
+  for(let i=0;i<20;i++)c.renderAnalysisStep(0,4,'Тренд','','2.5',true,'confirmed',true);
+  assert.equal(mounts,1);assert.equal(transitions,1);assert.equal(label.textContent,'Тренд');assert.equal(indicator.textContent,'✓');assert.equal(accuracy.textContent,'50%');
+  c.renderAnalysisStep(1,4,'Структура','','2.5',false,'rejected',false);
+  assert.equal(transitions,2);assert.equal(label.textContent,'Структура');assert.equal(indicator.textContent,'–');assert.match(card.attrs['aria-label'],/Не подтверждено/);
+  c.renderAnalysisStep(2,4,'Уровни','',null,false,'loading',null);
+  assert.equal(transitions,3);assert.equal(label.textContent,'Уровни');assert.equal(indicator.textContent,'•••');
+  c.renderAnalysisStep(3,4,'Вход','','2.5',true,'confirmed',null,'confirmed',null,{forced:true});
+  assert.equal(label.textContent,'Вход');assert.equal(indicator.textContent,'•••');
+  c.state.targetPair='GBP/USD OTC';c.updateCardPairUI();assert.equal(frame.markup,'');
+  c.renderAnalysisStep(0,4,'Тренд','',null,false,'loading');
+  assert.equal(transitions,5);assert.equal(label.textContent,'Тренд');assert.equal(indicator.textContent,'•••');assert.equal(accuracy.textContent,'—');
 });
 test('confirmed click failure creates no timer, result or recovery step',async()=>{
   const c=loadContent();c.prepareExecution();c.POAutomation.clickTrade=async()=>false;

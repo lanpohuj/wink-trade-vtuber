@@ -1697,28 +1697,24 @@
 #winky-bot-root .winky-scan-seg { padding-top: 4px; padding-bottom: 4px; }
 #winky-bot-root .winky-integrity-note { padding: 6px 8px; border-radius: 6px; background: #413721; color: #f3d9a0; font-size: 10px; line-height: 1.3; }
 
-/* Compact chart-first analysis: four tiles carry the observed stage states. */
+/* Compact chart-first analysis: one animated stage at a time. */
 #winky-bot-root .winky-direction-block.analysing { gap: 7px; }
 #winky-bot-root .winky-scan-title { font-size: 12px; font-weight: 700; }
 #winky-bot-root .winky-data-note { color: #d6bf91; font-size: 9px; line-height: 1.25; }
 #winky-bot-root .winky-chart-preview { height: 124px; min-height: 124px; }
-#winky-bot-root .winky-scan-segments { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 5px; }
-#winky-bot-root .winky-scan-seg { min-width: 0; min-height: 44px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 5px 3px; border: 1px solid #ffffff1c; background: #152623; border-radius: 7px; }
-#winky-bot-root .winky-scan-seg small { display: block; color: #e4f2ed; font-size: 11px; font-weight: 800; letter-spacing: -.2px; line-height: 1.1; white-space: nowrap; }
-#winky-bot-root .winky-scan-seg .winky-stage-result { display: block; color: #b5cfc4; font-size: 10px; font-weight: 600; line-height: 1.12; white-space: normal; overflow-wrap: anywhere; }
-#winky-bot-root .winky-scan-seg.active { background: #203b34; border-color: #84dcc2; box-shadow: inset 0 0 0 1px #84dcc240; }
-#winky-bot-root .winky-scan-seg.confirmed, #winky-bot-root .winky-scan-seg.active.confirmed, #winky-bot-root .winky-scan-seg.completed { background: #00ff88; border-color: #00ff88; }
-#winky-bot-root .winky-scan-seg.confirmed small, #winky-bot-root .winky-scan-seg.confirmed .winky-stage-result, #winky-bot-root .winky-scan-seg.completed small, #winky-bot-root .winky-scan-seg.completed .winky-stage-result { color: #05291b; }
-#winky-bot-root .winky-scan-seg.rejected, #winky-bot-root .winky-scan-seg.active.rejected { background: #ff3b5c; border-color: #ff3b5c; }
-#winky-bot-root .winky-scan-seg.rejected small, #winky-bot-root .winky-scan-seg.rejected .winky-stage-result { color: #240710; }
-#winky-bot-root .winky-scan-seg.active.confirmed, #winky-bot-root .winky-scan-seg.active.rejected { box-shadow: inset 0 0 0 1px currentColor; }
+#winky-bot-root .winky-stage-frame { min-height: 43px; overflow: hidden; }
+#winky-bot-root .winky-stage-current { min-height: 43px; display: flex; align-items: center; gap: 10px; padding: 6px 10px; border: 1px solid #75dcb78c; border-radius: 9px; background: linear-gradient(110deg,#162a27,#101e1e); box-shadow: inset 0 0 0 1px #b2ffe210, 0 0 14px #39e6ad14; animation: winky-stage-enter .28s cubic-bezier(.2,.8,.2,1) both; }
+#winky-bot-root .winky-stage-symbol { display: grid; place-items: center; flex: none; width: 27px; height: 27px; border-radius: 7px; background: #213f34; color: #92f3cb; font-size: 16px; line-height: 1; font-weight: 750; }
+#winky-bot-root .winky-stage-name { flex: 1; color: #eefaf5; font-size: 12px; font-weight: 750; line-height: 1.2; }
+#winky-bot-root .winky-stage-indicator { color: #a3eccb; font-size: 16px; font-weight: 800; line-height: 1; }
+#winky-bot-root .winky-stage-current.checking .winky-stage-indicator { font-size: 11px; letter-spacing: 2px; animation: winky-stage-pulse 1.2s ease-in-out infinite; }
+#winky-bot-root .winky-stage-current.rejected .winky-stage-indicator { color: #b8c9c2; }
+@keyframes winky-stage-enter { from { opacity: 0; transform: translateY(7px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes winky-stage-pulse { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { #winky-bot-root .winky-stage-current, #winky-bot-root .winky-stage-current.checking .winky-stage-indicator { animation: none; } }
 #winky-bot-root .winky-chart-source { position: absolute; right: 5px; bottom: 4px; padding: 2px 4px; border-radius: 3px; background: #071814df; color: #c5d8d0; font-size: 8px; line-height: 1.1; }
 #winky-bot-root .winky-analysis-meta { font-size: 10px; }
 #winky-bot-root .winky-model-button { height: 32px; color: #f0fff9; font-size: 12px; font-weight: 800; border-color: #438c72; }
 #winky-bot-root .winky-model-menu { top: 36px; }
 #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.buy .winky-sig-dir-text { color: #00ff88; }
 #winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-arrow, #winky-bot-root .winky-sig-dir-wrap.sell .winky-sig-dir-text { color: #ff3b5c; }
-#winky-bot-root .winky-trade-reason { color: #e8f6f0; font-size: 10px; font-weight: 600; line-height: 1.35; }
-#winky-bot-root .winky-checks-caption { color: #c1d9cf; font-size: 9px; font-weight: 650; line-height: 1.25; }
-#winky-bot-root .winky-trade-stages { grid-template-columns: repeat(2,minmax(0,1fr)); }
-#winky-bot-root .winky-trade-stages .winky-scan-seg { min-height: 38px; }

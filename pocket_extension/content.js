@@ -3448,13 +3448,6 @@
     return (text[code] || text.unavailable)[ru ? 0 : 1];
   }
 
-  function visualTradeSummary(evidence, ru = state.lang === 'ru') {
-    if (!evidence) return ru ? 'Данные анализа недоступны.' : 'Analysis data unavailable.';
-    const names = ru ? ['Тренд','Структура','Уровни'] : ['Trend','Structure','Levels'];
-    const details = evidence.codes.slice(0,3).map((code,i) => `${names[i]}: ${visualStageText(code,ru).toLowerCase()}`).join(' · ');
-    return (evidence.forced ? (ru ? 'Принудительный выбор после трёх пар. ' : 'Forced selection after three pairs. ') : '') + details + '.';
-  }
-
   function syncPanelControlVisibility() {
     const hidden = Boolean(state.autoStream || state.searchRunning || state.tradeContext || state.botState !== 'IDLE');
     document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid').forEach(el => { el.hidden = hidden; });
@@ -3473,7 +3466,7 @@
       block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
         ${demo?`<div class="winky-data-note" data-feed-note>${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
         <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span id="winkyVisualChartSource" class="winky-chart-source" hidden></span><span class="winky-chart-scanner"></span></div>
-        <div class="winky-scan-segments" data-analysis-tiles>${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map(name=>`<div class="winky-scan-seg"><small data-stage-label>${name}</small><span class="winky-stage-result" data-stage-indicator></span></div>`).join('')}</div>
+        <div class="winky-stage-frame" data-analysis-tiles></div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
@@ -3492,18 +3485,24 @@
     visualStages.values[stepIndex] = stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
       (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null);
     visualStages.details[stepIndex] = visualStages.values[stepIndex] ? (evidence?.codes?.[stepIndex] || visualStages.values[stepIndex]) : null;
-    const segments=block.querySelectorAll('.winky-scan-seg');
+    visualStages.step=stepIndex;
     const labels=ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry'];
     try {
-      segments.forEach((el,i)=>{
-        const result=visualStages.values[i], current=i===stepIndex;
-        el.className='winky-scan-seg'+(current?' active':'')+(result?' '+result:'');
-        const label=el.querySelector('[data-stage-label]'), indicator=el.querySelector('[data-stage-indicator]');
-        if(label) label.textContent=labels[i];
-        const description=result ? visualStageText(visualStages.details[i],ru) : current ? visualStageText('checking',ru) : visualStageText(i<stepIndex?'unavailable':'waiting',ru);
-        if(indicator) indicator.textContent=description;
-        el.setAttribute('aria-label',`${labels[i]}: ${description}`);
-      });
+      const frame=block.querySelector('[data-analysis-tiles]');
+      if(frame && frame.dataset.stageKey !== key) {
+        frame.dataset.stageKey=key;
+        frame.innerHTML='<div class="winky-stage-current"><span class="winky-stage-symbol" data-stage-icon aria-hidden="true"></span><span class="winky-stage-name" data-stage-label></span><span class="winky-stage-indicator" data-stage-indicator aria-hidden="true"></span></div>';
+      }
+      const card=frame?.querySelector('.winky-stage-current');
+      if(card) {
+        const result=visualStages.values[stepIndex], actual=result==='confirmed' && evidence?.forced && stepIndex===3 ? null : result;
+        const icon=card.querySelector('[data-stage-icon]'), label=card.querySelector('[data-stage-label]'), indicator=card.querySelector('[data-stage-indicator]');
+        if(icon) icon.textContent=['↗','◇','⌁','◎'][stepIndex] || '◇';
+        if(label) label.textContent=labels[stepIndex] || '';
+        if(indicator) indicator.textContent=actual==='confirmed'?'✓':actual==='rejected'?'–':'•••';
+        card.className='winky-stage-current '+(actual || 'checking');
+        card.setAttribute('aria-label',`${labels[stepIndex]}: ${visualStageText(actual || 'checking',ru)}`);
+      }
     } catch (_) { /* Presentation must never interrupt analysis. */ }
     state.analysisRenderKey=key;
     const acc=document.getElementById('metricAccuracyVal');
@@ -4910,20 +4909,7 @@
       const rawScore = evidence?.score;
       const accuracy = Number.isFinite(rawScore) ? Math.round(rawScore/5*100)+'%' : '—';
       if (accEl) accEl.textContent = accuracy;
-      const strategyText = visualTradeSummary(evidence,isRu);
-      const names = isRu ? ['Тренд','Структура','Уровни','Вход'] : ['Trend','Structure','Levels','Entry'];
-      const codes = evidence?.codes || ['unavailable','unavailable','unavailable','unavailable'];
       const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
-
-      const dur = String(sig.duration || "").toUpperCase();
-      let headerPrefix = "S30";
-      if (dur === "15S" || (sig.durationSec > 0 && sig.durationSec <= 20)) headerPrefix = "S15";
-      else if (dur === "30S" || (sig.durationSec > 20 && sig.durationSec <= 44)) headerPrefix = "S30";
-      else if (dur === "2M" || sig.durationSec >= 90) headerPrefix = "M2";
-      else if (dur === "1M" || sig.durationSec >= 45) headerPrefix = "M1";
-      else headerPrefix = "S30";
-
-      const entryHeader = isRu ? `${headerPrefix} - ТОЧКА ВХОДА!` : `${headerPrefix} - ENTRY POINT!`;
 
       block.className = `winky-direction-block winky-signal-display active ${isBuy ? "buy" : "sell"}`;
       block.innerHTML = `
@@ -4940,20 +4926,6 @@
         </div>
 
         ${demo?`<div class="winky-data-note" data-feed-note>${isRu?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
-        <div class="winky-trade-reason">${strategyText}</div>
-        <div class="winky-checks-caption">${isRu?'Проверки завершены · зелёный — этап обработан':'Checks complete · green means processed'}</div>
-        <div class="winky-scan-segments winky-trade-stages">${names.map((name,i)=>`<div class="winky-scan-seg completed"><small>${name}</small><span class="winky-stage-result">${visualStageText(codes[i],isRu)}</span></div>`).join('')}</div>
-        <details class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
-          <summary>${isRu ? 'Подробности анализа' : 'Analysis details'}</summary>
-          <div class="winky-sig-strategy-meta">
-            <span>${entryHeader}</span>
-            <span class="winky-sig-strategy-score">★ ${Number.isFinite(rawScore) ? rawScore.toFixed(1) : "—"} / 5.0 · ${accuracy}</span>
-          </div>
-          <div class="winky-sig-strategy-text" id="sigReasoningText">
-            ${strategyText}
-          </div>
-        </details>
-
         <div class="winky-sig-progress-track">
           <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
         </div>
@@ -4967,13 +4939,8 @@
       if (visualStages.pair && visualStages.pair !== normalizePocketPair(state.targetPair)) {
         resetVisualStages();
         const block = document.getElementById('botDirectionBlock');
-        if (block) block.querySelectorAll('.winky-scan-seg').forEach(el => {
-          el.className = 'winky-scan-seg';
-          const indicator = el.querySelector('[data-stage-indicator]');
-          const label = el.querySelector('[data-stage-label]');
-          if (indicator) indicator.textContent = '';
-          el.setAttribute('aria-label',`${label?.textContent || ''}: ${state.lang === 'ru' ? 'Ожидание' : 'Waiting'}`);
-        });
+        const frame = block?.querySelector('[data-analysis-tiles]');
+        if (frame) { frame.innerHTML=''; frame.dataset.stageKey=''; }
       }
     } catch (_) { /* Presentation must never interrupt pair synchronization. */ }
     const chart = document.getElementById('winkyVisualChart');
@@ -5178,13 +5145,12 @@
     const analysisMeta = document.querySelector('#botDirectionBlock [data-analysis-meta]');
     if (analysisMeta) analysisMeta.textContent = analysisMeta.textContent.replace(/^(Пара|Pair)/, ru ? 'Пара' : 'Pair');
     const labels = ru ? ['Тренд','Структура','Уровни','Вход'] : ['Trend','Structure','Levels','Entry'];
-    document.querySelectorAll('#botDirectionBlock .winky-scan-seg').forEach((el,i) => {
-      const label=el.querySelector('[data-stage-label]'); if(label) label.textContent=labels[i];
-      const result=visualStages.values[i];
-      const status=result?visualStageText(visualStages.details[i],ru):el.classList.contains('active')?visualStageText('checking',ru):visualStageText('waiting',ru);
-      const detail=el.querySelector('[data-stage-indicator]'); if(detail) detail.textContent=status;
-      el.setAttribute('aria-label',`${labels[i]}: ${status}`);
-    });
+    const stage=document.querySelector('#botDirectionBlock .winky-stage-current'), index=visualStages.step;
+    if(stage && Number.isInteger(index)) {
+      const label=stage.querySelector('[data-stage-label]'); if(label) label.textContent=labels[index];
+      const status=stage.classList.contains('confirmed')?'confirmed':stage.classList.contains('rejected')?'rejected':'checking';
+      stage.setAttribute('aria-label',`${labels[index]}: ${visualStageText(status,ru)}`);
+    }
     renderChatFeed();
   }
 
