@@ -153,14 +153,14 @@ test('result card never turns an unknown or refund into a win or loss', () => {
     assert.doesNotMatch(block.innerHTML, /Прибыль|Убыток|\+\$/);
   }
 });
-test('market settings are visible only in idle manual mode', () => {
+test('market settings are visible in manual idle and trade modes, hidden during active analysis', () => {
   const c=loadContent(), controls=[{hidden:false},{hidden:false}];
   c.document.querySelectorAll=()=>controls;
   for (const [auto,running,trade,phase,hidden] of [
     [false,false,null,'IDLE',false], [true,false,null,'IDLE',true],
     [false,true,null,'ANALYZING_PAIR',true], [true,true,null,'ANALYZING_PAIR',true],
-    [false,false,{},'IN_TRADE',true], [false,false,{},'TRADE_RESULT',true],
-    [false,false,{},'COOLDOWN',true], [false,false,null,'IDLE',false],
+    [false,false,{},'IN_TRADE',false], [false,false,{},'TRADE_RESULT',false],
+    [false,false,{},'COOLDOWN',false], [false,false,null,'IDLE',false],
   ]) {
     Object.assign(c.state,{autoStream:auto,searchRunning:running,tradeContext:trade,botState:phase});
     c.syncPanelControlVisibility(); assert.deepEqual(controls.map(el=>el.hidden),[hidden,hidden]);

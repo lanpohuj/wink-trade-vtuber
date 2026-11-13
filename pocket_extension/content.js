@@ -3449,8 +3449,19 @@
   }
 
   function syncPanelControlVisibility() {
-    const hidden = Boolean(state.autoStream || state.searchRunning || state.tradeContext || state.botState !== 'IDLE');
-    document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid').forEach(el => { el.hidden = hidden; });
+    const isSearching = Boolean(state.autoStream || state.searchRunning || ['ANALYZING', 'ANALYZING_PAIR', 'SWITCHING_PAIR', 'PREPARING_TRADE'].includes(state.botState));
+    const inTrade = state.botState === 'IN_TRADE';
+    const elements = document.querySelectorAll('#tabContentSignals .winky-market-switch, #tabContentSignals .winky-selectors-grid');
+    elements.forEach(el => {
+      el.hidden = isSearching;
+      if (inTrade) {
+        if (el.classList && el.classList.add) el.classList.add('locked');
+        if (el.style) el.style.pointerEvents = 'none';
+      } else {
+        if (el.classList && el.classList.remove) el.classList.remove('locked');
+        if (el.style) el.style.pointerEvents = '';
+      }
+    });
   }
 
   function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null, factorPass = null, entryResult = null, observedFactors = null, evidence = null) {
