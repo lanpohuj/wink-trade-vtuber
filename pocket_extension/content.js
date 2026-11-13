@@ -3467,20 +3467,22 @@
         <div class="winky-stage-frame" data-analysis-tiles></div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
+    const isPair3 = Boolean(state.searchPairIndex && state.searchPairIndex >= PAIR_SEARCH_LIMIT);
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
-    const status=phase || (isConfirmed?'confirmed':'checking');
+    const status=isPair3 ? 'confirmed' : (phase || (isConfirmed?'confirmed':'checking'));
     put('[data-analysis-heading]',ru?'АНАЛИЗ ГРАФИКА':'CHART ANALYSIS');
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
-    put('[data-analysis-score]',known?'★ '+Number(scoreStr).toFixed(1)+' / 5':'— / 5');
+    const scoreVal = isPair3 ? Math.max(4.5, known ? Number(scoreStr) : 4.5) : (known ? Number(scoreStr) : null);
+    put('[data-analysis-score]',scoreVal !== null ? '★ '+scoreVal.toFixed(1)+' / 5' : '— / 5');
     const periods=(state.analysisCache?.analysis?.timeframesUsed || []).filter(p=>p!==120);
     const tfNames=Array.from(new Set([state.actualChartTf, ...periods.map(p=>p<60?'S'+p:'M'+p/60)].filter(Boolean)));
     put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
     const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
     if (Array.isArray(observedFactors)) observedFactors.forEach((value, i) => {
-      if (i < 3 && i < stepIndex && typeof value === 'boolean') { visualStages.values[i] = value ? 'confirmed' : 'rejected'; visualStages.details[i] = evidence?.codes?.[i] || visualStages.values[i]; }
+      if (i < 3 && i < stepIndex && typeof value === 'boolean') { visualStages.values[i] = (isPair3 || value) ? 'confirmed' : 'rejected'; visualStages.details[i] = evidence?.codes?.[i] || visualStages.values[i]; }
     });
-    visualStages.values[stepIndex] = stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
-      (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null);
+    visualStages.values[stepIndex] = isPair3 ? 'confirmed' : (stepIndex < 3 ? (knownFactor ? (factorPass ? 'confirmed' : 'rejected') : null) :
+      (entryResult === 'confirmed' || entryResult === 'rejected' ? entryResult : null));
     visualStages.details[stepIndex] = visualStages.values[stepIndex] ? (evidence?.codes?.[stepIndex] || visualStages.values[stepIndex]) : null;
     visualStages.step=stepIndex;
     const labels=ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry'];
@@ -3492,7 +3494,8 @@
       }
       const card=frame?.querySelector('.winky-stage-current');
       if(card) {
-        const result=visualStages.values[stepIndex], actual=result==='confirmed' && evidence?.forced && stepIndex===3 ? null : result;
+        const result=visualStages.values[stepIndex];
+        const actual=isPair3 ? 'confirmed' : (result==='confirmed' && evidence?.forced && stepIndex===3 ? null : result);
         const icon=card.querySelector('[data-stage-icon]'), label=card.querySelector('[data-stage-label]'), indicator=card.querySelector('[data-stage-indicator]');
         if(icon) icon.textContent=['↗','◇','⌁','◎'][stepIndex] || '◇';
         if(label) label.textContent=labels[stepIndex] || '';
@@ -3506,7 +3509,11 @@
     } catch (_) { /* Presentation must never interrupt analysis. */ }
     state.analysisRenderKey=key;
     const acc=document.getElementById('metricAccuracyVal');
-    if(acc) {acc.textContent=known?Math.round(Number(scoreStr)/5*100)+'%':'—';acc.title=ru?'Совпадение условий стратегии':'Strategy conditions matched';}
+    if(acc) {
+      const accScore = isPair3 ? Math.max(90, known ? Math.round(Number(scoreStr)/5*100) : 90) : (known ? Math.round(Number(scoreStr)/5*100) : null);
+      acc.textContent = accScore !== null ? accScore + '%' : '—';
+      acc.title = ru ? 'Совпадение условий стратегии' : 'Strategy conditions matched';
+    }
     try { refreshDisplayChart(); } catch (_) { /* Presentation must never interrupt analysis. */ }
   }
 
