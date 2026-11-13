@@ -1601,48 +1601,48 @@
 #winky-bot-root .winky-model-button {
   display: flex !important;
   width: 100% !important;
-  height: 38px !important;
-  min-height: 38px !important;
+  height: auto !important;
+  min-height: 36px !important;
   align-items: center !important;
   gap: 10px !important;
   text-align: left !important;
-  padding: 0 12px !important;
-  border: 1px solid rgba(16, 245, 135, 0.55) !important;
+  padding: 6px 12px !important;
+  border: 1px solid rgba(16, 245, 135, 0.35) !important;
   border-radius: 10px !important;
   background: #091315 !important;
   color: #FFFFFF !important;
-  box-shadow: 0 0 14px rgba(16, 245, 135, 0.18) !important;
+  box-shadow: 0 0 10px rgba(16, 245, 135, 0.10) !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
 }
 
 #winky-bot-root .winky-model-button:hover {
   border-color: rgba(16, 245, 135, 0.85) !important;
-  box-shadow: 0 0 18px rgba(16, 245, 135, 0.3) !important;
+  box-shadow: 0 0 16px rgba(16, 245, 135, 0.25) !important;
 }
 
 #winky-bot-root .winky-model-btn-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  flex: none;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
 }
 
 #winky-bot-root .winky-model-btn-logo svg,
 #winky-bot-root .winky-model-btn-logo .winky-model-brand-svg {
-  width: 20px !important;
-  height: 20px !important;
-  flex-shrink: 0;
-  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0 !important;
+  display: block !important;
 }
 
 #winky-bot-root #winkyModelLabel {
   color: #FFFFFF !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.2px;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
 }
 
 #winky-bot-root .winky-model-chevron {
@@ -1687,13 +1687,13 @@
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 9px 12px !important;
+  padding: 8px 12px !important;
   margin: 2px 0 !important;
   border: 1px solid transparent !important;
-  border-radius: 10px !important;
+  border-radius: 9px !important;
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-  font-size: 13.5px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 13px !important;
   font-weight: 500 !important;
   text-align: left !important;
   cursor: pointer !important;
@@ -1702,26 +1702,27 @@
 }
 
 #winky-bot-root .winky-model-opt-main {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
 }
 
 #winky-bot-root .winky-model-opt-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
   opacity: 0.85;
 }
 
 #winky-bot-root .winky-model-opt-logo svg,
 #winky-bot-root .winky-model-opt-logo .winky-model-brand-svg {
-  width: 18px !important;
-  height: 18px !important;
-  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
 }
 
 #winky-bot-root .winky-model-opt-name {
@@ -1742,37 +1743,37 @@
 
 /* Selected / Active Model in Dropdown */
 #winky-bot-root .winky-model-option.selected {
-  font-size: 15px !important;
-  font-weight: 800 !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
   color: #FFFFFF !important;
   text-shadow: 0 0 10px rgba(16, 245, 135, 0.55) !important;
-  padding: 11px 14px !important;
-  margin: 4px 0 !important;
-  border-radius: 12px !important;
-  background: linear-gradient(90deg, rgba(16, 245, 135, 0.24) 0%, rgba(16, 245, 135, 0.08) 100%) !important;
-  border: 1px solid rgba(16, 245, 135, 0.75) !important;
-  box-shadow: 0 0 16px rgba(16, 245, 135, 0.28), inset 0 0 12px rgba(16, 245, 135, 0.12) !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 9px !important;
+  background: linear-gradient(90deg, rgba(16, 245, 135, 0.18) 0%, rgba(16, 245, 135, 0.05) 100%) !important;
+  border: 1px solid rgba(16, 245, 135, 0.55) !important;
+  box-shadow: 0 0 12px rgba(16, 245, 135, 0.18) !important;
 }
 
 #winky-bot-root .winky-model-option.selected .winky-model-opt-logo {
-  width: 22px !important;
-  height: 22px !important;
   opacity: 1 !important;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35)) !important;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.35)) !important;
 }
 
 #winky-bot-root .winky-model-option.selected .winky-model-opt-logo svg,
 #winky-bot-root .winky-model-option.selected .winky-model-opt-logo .winky-model-brand-svg {
-  width: 22px !important;
-  height: 22px !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 #winky-bot-root .winky-model-opt-check {
-  font-size: 14px;
-  font-weight: 800;
-  color: #10F587;
-  text-shadow: 0 0 10px rgba(16, 245, 135, 0.85);
-  margin-left: 8px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-left: 8px !important;
+  flex-shrink: 0 !important;
 }
 #winky-bot-root .winky-bot-body { padding: 11px 13px 12px; gap: 9px; }
 #winky-bot-root .winky-tab-content { gap: 9px; }
@@ -1867,6 +1868,31 @@
 #winky-bot-root .winky-sig-progress-fill.sell {
   background: linear-gradient(90deg, #FF3B5C 0%, #FF8A00 100%) !important;
   box-shadow: 0 0 10px rgba(255, 59, 92, 0.7) !important;
+}
+#winky-bot-root .winky-cooldown-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+#winky-bot-root .winky-result-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  margin-right: 8px !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+}
+#winky-bot-root .winky-result-badge.win svg {
+  filter: drop-shadow(0 0 6px rgba(16, 245, 135, 0.65)) !important;
+}
+#winky-bot-root .winky-result-badge.loss svg {
+  filter: drop-shadow(0 0 6px rgba(255, 77, 109, 0.65)) !important;
 }
 #winky-bot-root .winky-cooldown-result.win .winky-cooldown-title {
   color: #10F587 !important;
