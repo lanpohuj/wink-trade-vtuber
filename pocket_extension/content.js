@@ -112,12 +112,12 @@
     const step = state.recoveryStep;
     const stake = getExpectedStake(step);
     const isRu = (state.lang === "ru");
-    const lbl = isRu ? "СТАВКА:" : "STAKE:";
+    const lbl = isRu ? "Ставка" : "Stake";
     let val = "";
     if (step === 0) {
-      val = isRu ? `$${stake} · БАЗА 1%` : `$${stake} · BASE 1%`;
+      val = isRu ? `$${stake} · база` : `$${stake} · base`;
     } else {
-      val = isRu ? `$${stake} · ПЕРЕКРЫТИЕ x2.2` : `$${stake} · RECOVERY x2.2`;
+      val = isRu ? `$${stake} · перекрытие x2.2` : `$${stake} · recovery x2.2`;
     }
     return `<span class="winky-stake-badge-lbl">${lbl}</span><span class="winky-stake-badge-val">${val}</span>`;
   }
@@ -226,6 +226,7 @@
     chatMessages: [
       {
         type: "ai",
+        initial: true,
         model: "Claude Fable 5.1",
         text: "Привет! Я Winky AI. Выберите валютную пару и время экспирации или нажмите «Получить сигнал».",
       },
@@ -245,14 +246,14 @@
       timeLbl: "Время сделки",
       time: "Экспирация",
       accuracy: "Точность",
-      getSignal: "ПОЛУЧИТЬ СИГНАЛ",
-      autoStream: "АВТО-СТРИМ",
+      getSignal: "Анализировать",
+      autoStream: "Auto",
       readyForSignal: "Готов к анализу графика",
       analysing: "Анализ RSI, EMA и уровней...",
       buy: "↗ КУПИТЬ · ВВЕРХ",
       sell: "↘ ПРОДАТЬ · ВНИЗ",
-      tabSignals: "СИГНАЛЫ",
-      tabChat: "ИИ-ЧАТ",
+      tabSignals: "Сигналы",
+      tabChat: "ИИ-чат",
       liveScore: "WINKY LIVE SCORE",
       wins: "ПЛЮСЫ",
       losses: "МИНУСЫ",
@@ -269,14 +270,14 @@
       timeLbl: "Expiry time",
       time: "Expiry",
       accuracy: "Accuracy",
-      getSignal: "GET SIGNAL",
-      autoStream: "AUTO-STREAM",
+      getSignal: "Analyze",
+      autoStream: "Auto",
       readyForSignal: "Ready for chart analysis",
       analysing: "Analyzing RSI, EMA & levels...",
       buy: "↗ BUY · CALL",
       sell: "↘ SELL · PUT",
-      tabSignals: "SIGNALS",
-      tabChat: "AI CHAT",
+      tabSignals: "Signals",
+      tabChat: "AI chat",
       liveScore: "WINKY LIVE SCORE",
       wins: "WINS",
       losses: "LOSSES",
@@ -3346,17 +3347,63 @@
     return parseDurationSeconds(strategyTf || "30s") || 30;
   }
 
+  // Presentation only: never request history or modify the trading data.
+  function currentDisplayCandles() {
+    const pair = normalizePocketPair(state.targetPair);
+    const now = Date.now();
+    const candidates = Array.from(state.marketFrames.values()).filter(frame =>
+      frame.source === 'broker' && normalizePocketPair(frame.pair) === pair &&
+      now - frame.receivedAt < Math.max(30000, frame.period * 2000) &&
+      Array.isArray(frame.bars) && frame.bars.length > 0
+    );
+    const activePeriod = chartPeriodSeconds();
+    candidates.sort((a, b) => (b.period === activePeriod) - (a.period === activePeriod) || b.receivedAt - a.receivedAt);
+    const frame = candidates[0];
+    if (!frame) return null;
+    const brokerNow = marketNow();
+    const bars = frame.bars.filter(c => [c.open,c.high,c.low,c.close,c.time].every(Number.isFinite) && c.time <= brokerNow &&
+      c.high >= Math.max(c.open,c.close) && c.low <= Math.min(c.open,c.close)).slice(-26);
+    const last = bars[bars.length - 1];
+    if (!last || brokerNow - (last.time + frame.period * 1000) > frame.period * 2000) return null;
+    return {bars, period: frame.period};
+  }
+
+  function refreshDisplayChart() {
+    const chart = document.getElementById('winkyVisualChart');
+    const status = document.getElementById('winkyVisualChartStatus');
+    if (!chart || !status || !['ANALYZING_PAIR','ANALYZING','PREPARING_TRADE'].includes(state.botState)) return;
+    const data = currentDisplayCandles();
+    if (!data) {
+      chart.innerHTML = '';
+      chart.dataset.pair = '';
+      status.textContent = state.lang === 'ru' ? 'Ожидаем данные графика' : 'Waiting for chart data';
+      status.hidden = false;
+      return;
+    }
+    const low = Math.min(...data.bars.map(c => c.low)), high = Math.max(...data.bars.map(c => c.high));
+    const range = high - low || 1, y = n => 92 - (n - low) / range * 76;
+    const width = 300 / data.bars.length, bodyWidth = Math.min(7, width * .55);
+    chart.innerHTML = data.bars.map((c, i) => {
+      const x = (i + .5) * width, top = Math.min(y(c.open), y(c.close)), body = Math.max(1.4, Math.abs(y(c.open)-y(c.close)));
+      const color = c.close >= c.open ? '#55dcb2' : '#f28580';
+      return `<line x1="${x.toFixed(2)}" y1="${y(c.high).toFixed(2)}" x2="${x.toFixed(2)}" y2="${y(c.low).toFixed(2)}" stroke="${color}" stroke-width="1"/><rect x="${(x-bodyWidth/2).toFixed(2)}" y="${top.toFixed(2)}" width="${bodyWidth.toFixed(2)}" height="${body.toFixed(2)}" rx="1" fill="${color}"/>`;
+    }).join('');
+    chart.dataset.pair = normalizePocketPair(state.targetPair);
+    status.hidden = true;
+  }
+
   function renderAnalysisStep(stepIndex, totalSteps, stepTitle, stepDesc, scoreStr, isConfirmed = false, phase = null) {
     const block=document.getElementById('botDirectionBlock');
     if(!block) return;
     const ru=state.lang==='ru', key=state.targetPair+'|'+stepIndex;
     if(!block.querySelector('[data-analysis-card]')) {
       block.className='winky-direction-block winky-signal-display analysing';
-      block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title">🧠 <span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
-        <div class="winky-scan-segments">${[0,1,2,3].map(()=>'<div class="winky-scan-seg"></div>').join('')}</div>
+      block.innerHTML=`<div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span class="winky-chart-scanner"></span></div>
+        <div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
+        <div class="winky-scan-segments">${(ru?['Тренд','Структура','Уровни','Вход']:['Trend','Structure','Levels','Entry']).map((name,i)=>`<div class="winky-scan-seg"><span>0${i+1}</span><small>${name}</small></div>`).join('')}</div>
         <div class="winky-analysis-meta" data-analysis-meta></div><div class="winky-flip-stage"><div class="winky-flip-card" data-analysis-card>
         <div class="winky-flip-header"><span class="winky-flip-step-name" data-analysis-title></span><span class="winky-flip-status" data-analysis-status></span></div>
-        <div class="winky-flip-desc" data-analysis-detail></div></div></div>`;
+        <details class="winky-analysis-details"><summary>${ru?'Подробнее':'Details'}</summary><div class="winky-flip-desc" data-analysis-detail></div></details></div></div>`;
     }
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
     const status=phase || (isConfirmed?'confirmed':'checking');
@@ -3365,20 +3412,20 @@
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
     put('[data-analysis-score]',known?'★ '+Number(scoreStr).toFixed(1)+' / 5':'— / 5');
     const periods=(state.analysisCache?.analysis?.timeframesUsed || []).filter(p=>p!==120);
-    const tfNames=Array.from(new Set([state.actualChartTf || 'S30', ...periods.map(p=>p<60?'S'+p:'M'+p/60)]));
-    if(tfNames.length===1 && tfNames[0]==='S30') tfNames.push('M1');
-    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT} · ${tfNames.join(' · ')}`);
+    const tfNames=Array.from(new Set([state.actualChartTf, ...periods.map(p=>p<60?'S'+p:'M'+p/60)].filter(Boolean)));
+    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
     put('[data-analysis-title]',stepTitle);
     put('[data-analysis-detail]',stepDesc);
     put('[data-analysis-status]',statusText[status] || statusText.checking);
     const statusEl=block.querySelector('[data-analysis-status]');if(statusEl)statusEl.className='winky-flip-status '+status;
     const segments=block.querySelectorAll('.winky-scan-seg');
-    segments.forEach((el,i)=>{el.className='winky-scan-seg '+(i<stepIndex || (i===stepIndex && isConfirmed)?'done':i===stepIndex?'active':'');});
+    segments.forEach((el,i)=>{el.className='winky-scan-seg '+(i===stepIndex?'active':i<stepIndex?'done':'');});
     const card=block.querySelector('[data-analysis-card]');
     if(state.analysisRenderKey!==key && card) {card.classList.remove('winky-stage-transition');void card.offsetWidth;card.classList.add('winky-stage-transition');}
     state.analysisRenderKey=key;
     const acc=document.getElementById('metricAccuracyVal');
     if(acc) {acc.textContent=known?Math.round(Number(scoreStr)/5*100)+'%':'—';acc.title=ru?'Совпадение условий стратегии':'Strategy conditions matched';}
+    try { refreshDisplayChart(); } catch (_) { /* Presentation must never interrupt analysis. */ }
   }
 
   function journalDecision(event, sample=null, detail='') {
@@ -4019,6 +4066,7 @@
     const isWin = outcomeResult.isWin;
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
+    visualTradeOutcome = {outcome: outcomeResult.outcome, profitDelta, lossDelta};
 
     loggerLog(`[onSignalTimerFinished] Итог: ${outcomeResult.outcome} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
 
@@ -4086,10 +4134,10 @@
     } else if (outcomeResult.outcome === 'REFUND') {
       state.lastTradeOutcome = 'REFUND';
       VoiceManager.playCategory('trade_refund', false, 'happy');
-      if (block) block.textContent = state.lang === 'ru' ? 'ВОЗВРАТ СТАВКИ · шаг перекрытия сохранён' : 'REFUND · recovery step unchanged';
+      renderSignalCardState();
     } else if (outcomeResult.outcome === 'UNKNOWN') {
       state.lastTradeOutcome = 'UNKNOWN';
-      if (block) block.textContent = state.lang === 'ru' ? 'РЕЗУЛЬТАТ НЕ ПОЛУЧЕН · статистика и шаг перекрытия сохранены' : 'RESULT UNAVAILABLE · score and recovery step unchanged';
+      renderSignalCardState();
     } else {
       // МИНУС (isWin === false)
       state.consecutiveLosses = (state.consecutiveLosses || 0) + 1;
@@ -4354,6 +4402,11 @@
 
   /* ==================== 7. DOM Mounting: Trading Bot & Live Score ==================== */
 
+  const DEMO_MODELS = ['Claude Fable 5.2', 'Claude Opus 5.5', 'Grok 4.7', 'GPT-6 Astra', 'GPT-6.1 Sol'];
+  let visualModel = DEMO_MODELS[0];
+  let visualTradeOutcome = null;
+  const winkyPortrait = typeof chrome !== 'undefined' && chrome.runtime?.getURL ? chrome.runtime.getURL('assets/winky-portrait.png') : 'assets/winky-portrait.png';
+
   function buildTradingBotHTML() {
     const isRu = state.lang === "ru";
     return `
@@ -4361,20 +4414,12 @@
       <div class="winky-bot-header" id="winkyBotHeader">
         <div class="winky-header-left">
           <div class="winky-brand-logo" id="winkyBrandLogo" title="⚡ Клик: секретный BUY триггер">
-            <div class="winky-neko-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 19V9.5L8 4L12 8L16 4L20 9.5V19C20 19.5 19.5 20 19 20H5C4.5 20 4 19.5 4 19Z" stroke="#00F5A0" stroke-width="2" stroke-linejoin="round"/>
-                <circle cx="8.5" cy="13.5" r="1.5" fill="#FFB800"/>
-                <circle cx="15.5" cy="13.5" r="1.5" fill="#FFB800"/>
-                <path d="M11 16.5L12 17.5L13 16.5" stroke="#00F5A0" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
+            <div class="winky-neko-icon"><img src="${winkyPortrait}" alt="Winky"></div>
             <div class="winky-brand-text">
               <span class="winky-brand-title">WINKY<span>AI</span></span>
-              <span class="winky-brand-sub">NEKO-CYBER v3.0</span>
+              <span class="winky-brand-sub">TRADING ASSISTANT</span>
             </div>
           </div>
-          <span class="winky-badge-live"><span class="dot"></span>LIVE</span>
         </div>
 
         <div class="winky-header-right">
@@ -4385,18 +4430,23 @@
           </div>
 
           <!-- Auto-Stream Toggle -->
-          <div class="winky-auto-stream-wrap ${state.autoStream ? "active" : ""}" id="autoStreamToggle" title="Автономные сделки и TikTok-чат">
+          <button type="button" class="winky-auto-stream-wrap ${state.autoStream ? "active" : ""}" id="autoStreamToggle" title="Автономные сделки и TikTok-чат">
             <span class="winky-auto-stream-lbl">${t("autoStream")}</span>
             <div class="winky-mini-knob"></div>
-          </div>
+          </button>
 
           <!-- Collapse Button -->
           <button type="button" class="winky-btn-collapse" id="btnCollapseBot" title="Свернуть">—</button>
+        </div>
+        <div class="winky-model-row">
+          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu"><span class="winky-model-dot"></span><span id="winkyModelLabel">${visualModel}</span><span class="winky-demo-badge">${isRu?'Демо':'Demo'}</span><span class="winky-model-chevron">⌄</span></button>
+          <div class="winky-model-menu" id="winkyModelMenu" hidden><div class="winky-model-menu-title">${isRu?'Выбор модели · Демо':'Select model · Demo'}</div>${DEMO_MODELS.map(name=>`<button type="button" class="winky-model-option ${name===visualModel?'selected':''}" data-demo-model="${name}"><span>${name}</span><span>${name===visualModel?'✓':''}</span></button>`).join('')}<div class="winky-model-note">${isRu?'Визуальный выбор. Анализ: Winky AI.':'Visual selection. Analysis: Winky AI.'}</div></div>
         </div>
       </div>
 
       <!-- Body -->
       <div class="winky-bot-body">
+        ${typeof location !== 'undefined' && location.pathname.includes('demo') ? `<div class="winky-integrity-note">${isRu?'Данные демо-потока могут быть изменены':'Demo feed data may be altered'}</div>` : ''}
 
         <!-- TAB 1: SIGNALS -->
         <div class="winky-tab-content ${state.activeTab === "signals" ? "active" : ""}" id="tabContentSignals">
@@ -4410,11 +4460,11 @@
           <!-- Selectors Grid -->
           <div class="winky-selectors-grid">
             <div class="winky-select-box">
-              <span class="winky-select-lbl">${t("pairLbl")}</span>
+              <span class="winky-select-lbl" data-ui-label="pairLbl">${t("pairLbl")}</span>
               <select class="winky-select-native" id="selectBotPair"></select>
             </div>
             <div class="winky-select-box">
-              <span class="winky-select-lbl">${t("timeLbl")}</span>
+              <span class="winky-select-lbl" data-ui-label="timeLbl">${t("timeLbl")}</span>
               <select class="winky-select-native" id="selectBotTimeframe">
                 ${TIMEFRAMES.map((tf) => `<option value="${tf}" ${tf === state.selectedTimeframe ? "selected" : ""}>${tf}</option>`).join("")}
               </select>
@@ -4433,14 +4483,12 @@
 
             <div class="winky-metrics-row">
               <div class="winky-metric-pill">
-                <span class="winky-metric-title">${t("time")}:</span>
+                <span class="winky-metric-title" data-ui-label="time">${t("time")}</span>
                 <span class="winky-metric-val" id="metricTimeframeVal">${state.selectedTimeframe}</span>
               </div>
-              <div class="winky-metric-pill">
-                <span class="winky-metric-title">${t("accuracy")}:</span>
-                <span class="winky-metric-val amber" id="metricAccuracyVal">94%</span>
-              </div>
+              <button type="button" class="winky-metric-pill winky-accuracy-button" id="winkyAccuracyButton" aria-expanded="false"><span class="winky-metric-title" data-ui-label="accuracy">${t("accuracy")}</span><span class="winky-metric-val amber" id="metricAccuracyVal">—</span><span class="winky-info-mark">ⓘ</span></button>
             </div>
+            <div class="winky-accuracy-note" id="winkyAccuracyNote" hidden>${isRu?'Совпадение условий стратегии, а не вероятность прибыли.':'Strategy conditions matched, not the probability of profit.'}</div>
 
             <!-- Stake Mode Badge -->
             <div class="winky-stake-badge-row">
@@ -4470,9 +4518,9 @@
         <!-- TAB 2: AI CHAT -->
         <div class="winky-tab-content ${state.activeTab === "chat" ? "active" : ""}" id="tabContentChat">
           
-          <div class="winky-select-box">
-            <span class="winky-select-lbl">ИИ-Модель теханализа:</span>
-            <select class="winky-select-native" id="selectChatModel">
+          <div class="winky-chat-welcome"><img src="${winkyPortrait}" alt=""><div><strong>Winky AI</strong><span>${isRu?'Ваш ассистент по анализу':'Your analysis assistant'}</span></div></div>
+          <div class="winky-select-box" hidden>
+            <select class="winky-select-native" id="selectChatModel" tabindex="-1">
               ${AI_MODELS.map((m) => `<option value="${m.id}" ${m.id === state.selectedModel ? "selected" : ""}>${m.name}</option>`).join("")}
             </select>
           </div>
@@ -4504,6 +4552,7 @@
           <span>${t("tabChat")}</span>
         </button>
       </div>
+      <button type="button" class="winky-resize-handle" id="winkyResizeHandle" aria-label="${isRu?'Изменить масштаб панели':'Resize panel'}" title="${isRu?'Изменить масштаб':'Resize'}"></button>
     `;
   }
 
@@ -4685,6 +4734,7 @@
     }
 
     if (state.botState === "IDLE") {
+      if (accEl) accEl.textContent = '—';
       block.className = "winky-direction-block winky-signal-display idle";
       block.innerHTML = `<span>${t("readyForSignal")}</span>`;
     } else if (state.botState === "SWITCHING_PAIR") {
@@ -4747,6 +4797,12 @@
           </div>
         </div>
       `;
+    } else if (state.botState === "TRADE_RESULT" && visualTradeOutcome) {
+      const result = visualTradeOutcome, ru = state.lang === 'ru';
+      const labels = {WIN:ru?'Прибыль':'Profit', LOSS:ru?'Убыток':'Loss', REFUND:ru?'Возврат':'Refund', UNKNOWN:ru?'Результат не получен':'Result unavailable'};
+      const amount = result.outcome === 'WIN' && Number.isFinite(result.profitDelta) && result.profitDelta > 0 ? '+$'+result.profitDelta.toFixed(2) : result.outcome === 'LOSS' && Number.isFinite(result.lossDelta) && result.lossDelta > 0 ? '−$'+result.lossDelta.toFixed(2) : '—';
+      block.className = 'winky-direction-block winky-result-card ' + (result.outcome === 'WIN' ? 'buy' : result.outcome === 'LOSS' ? 'sell' : 'neutral');
+      block.innerHTML = `<div class="winky-result-label">${ru?'Результат сделки':'Trade result'}</div><div class="winky-result-line"><strong>${labels[result.outcome] || labels.UNKNOWN}</strong><span>${amount}</span></div>`;
     } else if (state.botState === "COOLDOWN") {
       block.className = "winky-direction-block winky-signal-display idle";
       block.innerHTML = `<span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
@@ -4763,9 +4819,7 @@
         strategyText += (strategyText.endsWith(".") ? " " : ". ") + cleanLine2;
       }
       if (!strategyText) {
-        strategyText = isBuy
-          ? (isRu ? "Подтверждённый отскок от зоны спроса — покупатели удерживают инициативу." : "Confirmed demand zone bounce — buyers sustaining upside momentum.")
-          : (isRu ? "Пробой локального уровня поддержки — продавцы давят цену вниз без откатов." : "Support breakdown confirmed — sellers pressing price action lower.");
+        strategyText = isRu ? "Подробности анализа недоступны." : "Analysis details are unavailable.";
       }
 
       const dur = String(sig.duration || "").toUpperCase();
@@ -4792,15 +4846,16 @@
           </div>
         </div>
 
-        <div class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
+        <details class="winky-sig-strategy-box ${isBuy ? "buy" : "sell"}">
+          <summary>${isRu ? 'Подробности анализа' : 'Analysis details'}</summary>
           <div class="winky-sig-strategy-meta">
             <span>${entryHeader}</span>
-            <span class="winky-sig-strategy-score">★ ${sig.confluence ? sig.confluence.toFixed(1) : "4.7"} / 5.0 · ${sig.accuracy}%</span>
+            <span class="winky-sig-strategy-score">★ ${Number.isFinite(sig.confluence) ? sig.confluence.toFixed(1) : "—"} / 5.0 · ${sig.accuracy}%</span>
           </div>
           <div class="winky-sig-strategy-text" id="sigReasoningText">
             ${strategyText}
           </div>
-        </div>
+        </details>
 
         <div class="winky-sig-progress-track">
           <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
@@ -4811,6 +4866,12 @@
   }
 
   function updateCardPairUI() {
+    const chart = document.getElementById('winkyVisualChart');
+    if (chart && chart.dataset.pair && chart.dataset.pair !== normalizePocketPair(state.targetPair)) {
+      chart.innerHTML = ''; chart.dataset.pair = '';
+      const waiting = document.getElementById('winkyVisualChartStatus');
+      if (waiting) { waiting.hidden = false; waiting.textContent = state.lang === 'ru' ? 'Ожидаем данные графика' : 'Waiting for chart data'; }
+    }
     const flagsEl = document.getElementById("cardPairFlags");
     const nameEl = document.getElementById("cardPairName");
     const payoutEl = document.getElementById("cardPayoutBadge");
@@ -4969,9 +5030,9 @@
         bubble.innerHTML = `
           <div class="bubble-header">
             <span class="ai-badge">WINKY AI</span>
-            <span class="bubble-model">${msg.model || "Claude Fable"}</span>
+            <span class="bubble-model">${state.lang === 'ru' ? 'Ассистент' : 'Assistant'}</span>
           </div>
-          <div>${msg.text}</div>
+          <div>${msg.initial ? (state.lang === 'ru' ? 'Привет! Выберите пару и время, чтобы начать анализ.' : 'Hello! Choose a pair and time to start your analysis.') : msg.text}</div>
         `;
       } else {
         bubble.innerHTML = `
@@ -4986,12 +5047,95 @@
     feed.scrollTop = feed.scrollHeight;
   }
 
+  function updateVisualLanguage() {
+    const ru = state.lang === 'ru';
+    document.querySelectorAll('#winky-bot-root [data-ui-label]').forEach(el => { el.textContent = t(el.dataset.uiLabel); });
+    const setText = (selector, value) => { const el = document.querySelector(selector); if (el) el.textContent = value; };
+    setText('#winky-bot-root [data-tab="signals"] span', t('tabSignals'));
+    setText('#winky-bot-root [data-tab="chat"] span', t('tabChat'));
+    setText('#winky-bot-root .winky-demo-badge', ru ? 'Демо' : 'Demo');
+    setText('#winky-bot-root .winky-model-menu-title', ru ? 'Выбор модели · Демо' : 'Select model · Demo');
+    setText('#winky-bot-root .winky-model-note', ru ? 'Визуальный выбор. Анализ: Winky AI.' : 'Visual selection. Analysis: Winky AI.');
+    setText('#winky-bot-root .winky-integrity-note', ru ? 'Данные демо-потока могут быть изменены' : 'Demo feed data may be altered');
+    setText('#winkyAccuracyNote', ru ? 'Совпадение условий стратегии, а не вероятность прибыли.' : 'Strategy conditions matched, not the probability of profit.');
+    setText('#winky-bot-root .winky-chat-welcome span', ru ? 'Ваш ассистент по анализу' : 'Your analysis assistant');
+    const btn = document.getElementById('btnGetSignalAction');
+    if (btn && state.botState === 'IDLE') btn.innerHTML = `<span>✦</span><span>${t('getSignal')}</span>`;
+    renderChatFeed();
+  }
+
+  function setupVisualControls() {
+    const root = document.getElementById('winky-bot-root');
+    const modelButton = document.getElementById('winkyModelButton');
+    const modelMenu = document.getElementById('winkyModelMenu');
+    const modelLabel = document.getElementById('winkyModelLabel');
+    if (modelButton && modelMenu) {
+      modelButton.addEventListener('click', () => {
+        modelMenu.hidden = !modelMenu.hidden;
+        modelButton.setAttribute('aria-expanded', String(!modelMenu.hidden));
+      });
+      modelMenu.querySelectorAll('[data-demo-model]').forEach(option => option.addEventListener('click', () => {
+        visualModel = option.dataset.demoModel;
+        if (modelLabel) modelLabel.textContent = visualModel;
+        modelMenu.querySelectorAll('[data-demo-model]').forEach(item => {
+          const selected = item.dataset.demoModel === visualModel;
+          item.classList.toggle('selected', selected);
+          item.lastElementChild.textContent = selected ? '✓' : '';
+        });
+        modelMenu.hidden = true;
+        modelButton.setAttribute('aria-expanded', 'false');
+      }));
+      document.addEventListener('click', e => {
+        if (!modelMenu.hidden && !e.target.closest('.winky-model-row')) {
+          modelMenu.hidden = true; modelButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+    const infoButton = document.getElementById('winkyAccuracyButton'), note = document.getElementById('winkyAccuracyNote');
+    if (infoButton && note) infoButton.addEventListener('click', () => {
+      note.hidden = !note.hidden; infoButton.setAttribute('aria-expanded', String(!note.hidden));
+    });
+
+    const handle = document.getElementById('winkyResizeHandle');
+    if (!root || !handle) return;
+    let scale = 1;
+    try { const saved = Number(localStorage.getItem('winky_ui_scale_v1')); if (saved >= .7 && saved <= 1.5) scale = saved; } catch (_) {}
+    const applyScale = () => {
+      root.style.setProperty('width', `${348 * scale}px`, 'important');
+      root.querySelectorAll(':scope > .winky-bot-header, :scope > .winky-bot-body, :scope > .winky-bot-nav').forEach(el => { el.style.zoom = String(scale); });
+      handle.style.width = `${18 * scale}px`; handle.style.height = `${18 * scale}px`;
+    };
+    applyScale();
+    let startX = 0, startScale = 1, resizing = false;
+    handle.addEventListener('pointerdown', e => {
+      e.preventDefault(); e.stopPropagation();
+      const rect = root.getBoundingClientRect();
+      root.style.right = 'auto'; root.style.left = `${rect.left}px`;
+      startX = e.clientX; startScale = scale; resizing = true;
+      handle.setPointerCapture(e.pointerId);
+    });
+    handle.addEventListener('pointermove', e => {
+      if (!resizing) return;
+      const available = Math.max(.7, Math.min(1.5, (window.innerWidth - root.getBoundingClientRect().left) / 348));
+      scale = Math.max(.7, Math.min(available, startScale + (e.clientX - startX) / 348));
+      applyScale();
+    });
+    const finish = e => {
+      if (!resizing) return; resizing = false;
+      try { handle.releasePointerCapture(e.pointerId); } catch (_) {}
+      try { localStorage.setItem('winky_ui_scale_v1', String(scale)); } catch (_) {}
+    };
+    handle.addEventListener('pointerup', finish); handle.addEventListener('pointercancel', finish);
+  }
+
   function setupEventListeners() {
+    setupVisualControls();
     // 1. Language buttons
     document.querySelectorAll(".winky-lang-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         state.lang = btn.dataset.lang || "ru";
         document.querySelectorAll(".winky-lang-btn").forEach((b) => b.classList.toggle("active", b === btn));
+        updateVisualLanguage();
         renderSignalCardState();
       });
     });
@@ -5106,7 +5250,7 @@
       const model = modelSelect ? modelSelect.value : state.selectedModel;
       state.chatMessages.push({
         type: "user",
-        text: `Анализ ${state.targetPair} (${state.selectedTimeframe}) через ${model}`,
+        text: state.lang === 'ru' ? `Анализ ${state.targetPair} (${state.selectedTimeframe})` : `Analyze ${state.targetPair} (${state.selectedTimeframe})`,
       });
       renderChatFeed();
 

@@ -45,7 +45,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "page_hook.js"
+        "page_hook.js",
+        "assets/winky-portrait.png"
       ],
       "matches": [
         "*://po.financial/*",

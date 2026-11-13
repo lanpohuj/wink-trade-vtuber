@@ -26,7 +26,8 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, renderAnalysisStep, renderSignalCardState, currentDisplayCandles, quoteIsFresh, readTradersSentiment,
+      setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setBalanceReader(fn) { getPocketBalance = fn; },
       setRowsReader(fn) { pocketDealRows = fn; },
       setClickBridge(fn) { requestMainWorldClickTrade = fn; },
@@ -75,6 +76,29 @@ function row(text, fields = {}, id = null) {
 
 test('x2.2 stake schedule is unchanged', () => {
   const c=loadContent(); assert.deepEqual([0,1,2,3].map(c.getExpectedStake),[50,110,242,50]);
+});
+test('the visual chart only shows fresh broker candles for the active pair', () => {
+  const c=loadContent(), candle={time:c.now()-15000,open:1,high:1.2,low:.9,close:1.1};
+  c.state.targetPair='EUR/USD OTC';
+  c.rememberMarketFrame(15,[candle],'broker',c.now(),'GBP/USD OTC');
+  assert.equal(c.currentDisplayCandles(), null);
+  c.rememberMarketFrame(15,[candle],'pixels',c.now(),'EUR/USD OTC');
+  assert.equal(c.currentDisplayCandles(), null);
+  c.rememberMarketFrame(15,[candle],'broker',c.now(),'EUR/USD OTC');
+  const view=c.currentDisplayCandles();
+  assert.equal(view.period,15); assert.equal(view.bars[0].close,1.1);
+  c.tick(61000);
+  assert.equal(c.currentDisplayCandles(),null);
+});
+test('result card never turns an unknown or refund into a win or loss', () => {
+  const c=loadContent(), block={className:'',innerHTML:''};
+  c.document.getElementById=id=>id==='botDirectionBlock'?block:null;
+  c.state.botState='TRADE_RESULT';
+  for (const outcome of ['UNKNOWN','REFUND']) {
+    c.setVisualTradeOutcome({outcome,profitDelta:0,lossDelta:0}); c.renderSignalCardState();
+    assert.match(block.innerHTML, outcome==='UNKNOWN' ? /Результат не получен/ : /Возврат/);
+    assert.doesNotMatch(block.innerHTML, /Прибыль|Убыток|\+\$/);
+  }
 });
 test('deducted balance stays PENDING until the settlement window completes', () => {
   const c=loadContent(); c.trade(); c.setBalance(950);
