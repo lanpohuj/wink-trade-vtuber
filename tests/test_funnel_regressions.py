@@ -320,6 +320,16 @@ class FunnelRegressionTests(unittest.IsolatedAsyncioTestCase):
         SecretFilter().filter(record)
         self.assertNotIn("PRIVATE", record.getMessage())
 
+    async def test_redaction_preserves_uvicorn_access_formatter(self):
+        from uvicorn.logging import AccessFormatter
+        record = logging.LogRecord("uvicorn.access", 20, "", 1, '%s - "%s %s HTTP/%s" %d',
+                                  ("127.0.0.1:1234", "GET", "/api/postback?token=PRIVATE", "1.1", 403), None)
+        SecretFilter().filter(record)
+        formatter = AccessFormatter('%(client_addr)s - "%(request_line)s" %(status_code)s', use_colors=False)
+        result = formatter.format(record)
+        self.assertNotIn("PRIVATE", result)
+        self.assertIn("403", result)
+
     async def test_conflicting_attribution_fields_are_rejected(self):
         await self.seed(registered=True, trader="T1")
         response = await self.receipt(tg_id="910000002")
