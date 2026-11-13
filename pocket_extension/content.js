@@ -3462,9 +3462,7 @@
     if (visualStages.pair !== pair || visualStages.generation !== state.searchGeneration) resetVisualStages();
     if(!block.querySelector('[data-analysis-tiles]')) {
       block.className='winky-direction-block winky-signal-display analysing';
-      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
       block.innerHTML=`<div class="winky-scan-top"><div class="winky-scan-title"><span class="winky-scan-dot"></span><span data-analysis-heading></span></div><div class="winky-scan-score-badge" data-analysis-score></div></div>
-        ${demo?`<div class="winky-data-note" data-feed-note>${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
         <div class="winky-chart-preview"><svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="winkyVisualChartStatus" class="winky-chart-wait"></div><span id="winkyVisualChartSource" class="winky-chart-source" hidden></span><span class="winky-chart-scanner"></span></div>
         <div class="winky-stage-frame" data-analysis-tiles></div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
@@ -3477,7 +3475,6 @@
     const periods=(state.analysisCache?.analysis?.timeframesUsed || []).filter(p=>p!==120);
     const tfNames=Array.from(new Set([state.actualChartTf, ...periods.map(p=>p<60?'S'+p:'M'+p/60)].filter(Boolean)));
     put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
-    put('[data-feed-note]',ru?'Демо-данные могут изменяться':'Demo data may be altered');
     const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
     if (Array.isArray(observedFactors)) observedFactors.forEach((value, i) => {
       if (i < 3 && i < stepIndex && typeof value === 'boolean') { visualStages.values[i] = value ? 'confirmed' : 'rejected'; visualStages.details[i] = evidence?.codes?.[i] || visualStages.values[i]; }
@@ -3664,6 +3661,7 @@
         flags: state.targetFlags,
         payout: state.targetPayout,
         direction: tradeDir,
+        family: analysis?.family || analysis?.setup || "",
         accuracy: Math.round((confluence?.score || 0)/5*100),
         confluence: confluence?.score || 4.7,
         duration: resolvedTf,
@@ -4229,10 +4227,12 @@
       }, true, "excited", "cheer");
     } else if (outcomeResult.outcome === 'REFUND') {
       state.lastTradeOutcome = 'REFUND';
+      state.lastClosedTrade = { isWin: null, outcome: 'REFUND', refund: true, closedAt: Date.now() };
       VoiceManager.playCategory('trade_refund', false, 'happy');
       renderSignalCardState();
     } else if (outcomeResult.outcome === 'UNKNOWN') {
       state.lastTradeOutcome = 'UNKNOWN';
+      state.lastClosedTrade = null;
       renderSignalCardState();
     } else {
       // МИНУС (isWin === false)
@@ -4535,8 +4535,8 @@
           <button type="button" class="winky-btn-collapse" id="btnCollapseBot" title="Свернуть">—</button>
         </div>
         <div class="winky-model-row">
-          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu"><span class="winky-model-dot"></span><span id="winkyModelLabel">${visualModel}</span><span class="winky-demo-badge">${isRu?'Демо':'Demo'}</span><span class="winky-model-chevron">⌄</span></button>
-          <div class="winky-model-menu" id="winkyModelMenu" hidden><div class="winky-model-menu-title">${isRu?'Выбор модели · Демо':'Select model · Demo'}</div>${DEMO_MODELS.map(name=>`<button type="button" class="winky-model-option ${name===visualModel?'selected':''}" data-demo-model="${name}"><span>${name}</span><span>${name===visualModel?'✓':''}</span></button>`).join('')}<div class="winky-model-note">${isRu?'Визуальный выбор. Анализ: Winky AI.':'Visual selection. Analysis: Winky AI.'}</div></div>
+          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu"><span class="winky-model-dot"></span><span id="winkyModelLabel">${visualModel}</span><span class="winky-model-chevron">⌄</span></button>
+          <div class="winky-model-menu" id="winkyModelMenu" hidden><div class="winky-model-menu-title">${isRu?'Выбор модели':'Select model'}</div>${DEMO_MODELS.map(name=>`<button type="button" class="winky-model-option ${name===visualModel?'selected':''}" data-demo-model="${name}"><span>${name}</span><span>${name===visualModel?'✓':''}</span></button>`).join('')}<div class="winky-model-note">${isRu?'Визуальный выбор. Анализ: Winky AI.':'Visual selection. Analysis: Winky AI.'}</div></div>
         </div>
       </div>
 
@@ -4810,6 +4810,33 @@
       .trim();
   }
 
+  function getTradeSetupExplanation(sig, isRu = true) {
+    const family = sig?.family || state.tradeContext?.commentaryEntry?.setup || state.analysisCache?.analysis?.family || state.analysisCache?.analysis?.setup || "";
+    const isBuy = sig?.direction === "BUY";
+
+    if (family === "TREND_PULLBACK") {
+      return isRu
+        ? (isBuy ? "Откат к EMA завершён · вход по тренду вверх" : "Откат к EMA завершён · вход по тренду вниз")
+        : (isBuy ? "EMA pullback completed · trend entry up" : "EMA pullback completed · trend entry down");
+    }
+    if (family === "BREAKOUT_RETEST") {
+      return isRu
+        ? (isBuy ? "Пробой уровня и ретест · импульс вверх" : "Пробой уровня и ретест · импульс вниз")
+        : (isBuy ? "Level breakout & retest · momentum up" : "Level breakout & retest · momentum down");
+    }
+    if (family === "RANGE_REJECTION") {
+      return isRu
+        ? (isBuy ? "Отскок от нижней границы канала вверх" : "Отскок от верхней границы канала вниз")
+        : (isBuy ? "Bounce from channel low upward" : "Bounce from channel high downward");
+    }
+    if (family === "LOCAL_REVERSAL") {
+      return isRu
+        ? (isBuy ? "Разворот от уровня поддержки · импульс вверх" : "Разворот от уровня сопротивления · импульс вниз")
+        : (isBuy ? "Reversal from support level · impulse up" : "Reversal from resistance level · impulse down");
+    }
+    return isRu ? "Подтверждённый импульс по тренду" : "Confirmed trend momentum";
+  }
+
   function renderSignalCardState() {
     try { syncPanelControlVisibility(); } catch (_) {}
     const block = document.getElementById("botDirectionBlock");
@@ -4895,11 +4922,32 @@
       const labels = {WIN:ru?'Прибыль':'Profit', LOSS:ru?'Убыток':'Loss', REFUND:ru?'Возврат':'Refund', UNKNOWN:ru?'Результат не получен':'Result unavailable'};
       const amount = result.outcome === 'WIN' && Number.isFinite(result.profitDelta) && result.profitDelta > 0 ? '+$'+result.profitDelta.toFixed(2) : result.outcome === 'LOSS' && Number.isFinite(result.lossDelta) && result.lossDelta > 0 ? '−$'+result.lossDelta.toFixed(2) : '—';
       block.className = 'winky-direction-block winky-result-card ' + (result.outcome === 'WIN' ? 'buy' : result.outcome === 'LOSS' ? 'sell' : 'neutral');
-      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
-      block.innerHTML = `<div class="winky-result-label">${ru?'Результат сделки':'Trade result'}</div><div class="winky-result-line"><strong>${labels[result.outcome] || labels.UNKNOWN}</strong><span>${amount}</span></div>${demo?`<div class="winky-data-note">${ru?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}`;
+      block.innerHTML = `<div class="winky-result-label">${ru?'Результат сделки':'Trade result'}</div><div class="winky-result-line"><strong>${labels[result.outcome] || labels.UNKNOWN}</strong><span>${amount}</span></div>`;
     } else if (state.botState === "COOLDOWN") {
-      block.className = "winky-direction-block winky-signal-display idle";
-      block.innerHTML = `<span>${state.lang === "ru" ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
+      const isRu = (state.lang === "ru");
+      const last = state.lastClosedTrade;
+      if (last && last.isWin) {
+        block.className = "winky-direction-block winky-signal-display active buy";
+        const profit = Number.isFinite(last.profitDelta) ? last.profitDelta.toFixed(2) : "46.00";
+        block.innerHTML = `
+          <div class="winky-cooldown-result win" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px 8px; text-align:center; width:100%;">
+            <span class="winky-cooldown-title" style="color:#10F587; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">✔ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В ПЛЮС" : "TRADE CLOSED IN PROFIT"}</span>
+            <span class="winky-cooldown-subtitle" style="color:#a8b3cf; font-size:11px; font-weight:600;">${isRu ? `Профит: +$${profit} · Подготовка следующего входа...` : `Profit: +$${profit} · Preparing next entry...`}</span>
+          </div>
+        `;
+      } else if (last && !last.isWin && !last.refund) {
+        block.className = "winky-direction-block winky-signal-display active sell";
+        const loss = Number.isFinite(last.lossDelta) ? last.lossDelta.toFixed(2) : "50.00";
+        block.innerHTML = `
+          <div class="winky-cooldown-result loss" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px 8px; text-align:center; width:100%;">
+            <span class="winky-cooldown-title" style="color:#FF4D6D; font-weight:800; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;">✖ ${isRu ? "СДЕЛКА ЗАКРЫЛАСЬ В МИНУС" : "TRADE CLOSED IN LOSS"}</span>
+            <span class="winky-cooldown-subtitle" style="color:#a8b3cf; font-size:11px; font-weight:600;">${isRu ? `Убыток: -$${loss} · Готовим перекрытие x2.2...` : `Loss: -$${loss} · Preparing x2.2 recovery...`}</span>
+          </div>
+        `;
+      } else {
+        block.className = "winky-direction-block winky-signal-display idle";
+        block.innerHTML = `<span>${isRu ? "ПАУЗА МЕЖДУ СДЕЛКАМИ..." : "POST-TRADE COOLDOWN..."}</span>`;
+      }
     } else if (state.botState === "IN_TRADE" && state.activeSignal) {
       const sig = state.activeSignal;
       const isBuy = sig.direction === "BUY";
@@ -4909,7 +4957,6 @@
       const rawScore = evidence?.score;
       const accuracy = Number.isFinite(rawScore) ? Math.round(rawScore/5*100)+'%' : '—';
       if (accEl) accEl.textContent = accuracy;
-      const demo = typeof location !== 'undefined' && location.pathname.includes('demo');
 
       block.className = `winky-direction-block winky-signal-display active ${isBuy ? "buy" : "sell"}`;
       block.innerHTML = `
@@ -4925,7 +4972,7 @@
           </div>
         </div>
 
-        ${demo?`<div class="winky-data-note" data-feed-note>${isRu?'Демо-данные могут изменяться':'Demo data may be altered'}</div>`:''}
+        <div class="winky-trade-setup-note" style="color:#d5e5df; font-size:11px; font-weight:600; line-height:1.35; padding:4px 0 2px; text-align:left;">${getTradeSetupExplanation(sig, isRu)}</div>
         <div class="winky-sig-progress-track">
           <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
         </div>
@@ -4966,22 +5013,30 @@
   }
 
   function updateScoreOnTradeClose(isWin, profitDelta, lossDelta, wasRecovery = false) {
+    const calculatedProfit = (typeof profitDelta === "number" && profitDelta > 0)
+      ? profitDelta
+      : Math.round((state.actualStakePlaced || state.currentStake || 50) * ((state.actualPayoutPct || 92) / 100));
+    const calculatedLoss = (typeof lossDelta === "number" && lossDelta > 0)
+      ? lossDelta
+      : Math.round(state.actualStakePlaced || state.currentStake || 50);
+
+    state.lastClosedTrade = {
+      isWin: !!isWin,
+      profitDelta: calculatedProfit,
+      lossDelta: calculatedLoss,
+      closedAt: Date.now()
+    };
+
     if (isWin) {
       state.scoreWins = (Number(state.scoreWins) || 0) + 1;
       state.liveWins = state.scoreWins;
-      const addAmount = (typeof profitDelta === "number" && profitDelta > 0)
-        ? profitDelta
-        : Math.round((state.actualStakePlaced || state.currentStake || 50) * ((state.actualPayoutPct || 92) / 100));
-      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) + addAmount) * 100) / 100;
+      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) + calculatedProfit) * 100) / 100;
       state.sessionProfit = state.scoreProfit;
     } else {
       state.scoreLosses = (Number(state.scoreLosses) || 0) + 1;
       state.liveLosses = state.scoreLosses;
-      const subAmount = (typeof lossDelta === "number" && lossDelta > 0)
-        ? lossDelta
-        : Math.round(state.actualStakePlaced || state.currentStake || 50);
       // ОБЯЗАТЕЛЬНО ВЫЧИТАЕМ УБЫТОК ИЗ ТЕКУЩЕГО ПРОФИТА!
-      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) - subAmount) * 100) / 100;
+      state.scoreProfit = Math.round(((Number(state.scoreProfit) || 0) - calculatedLoss) * 100) / 100;
       state.sessionProfit = state.scoreProfit;
     }
 
@@ -5130,10 +5185,8 @@
     const setText = (selector, value) => { const el = document.querySelector(selector); if (el) el.textContent = value; };
     setText('#winky-bot-root [data-tab="signals"] span', t('tabSignals'));
     setText('#winky-bot-root [data-tab="chat"] span', t('tabChat'));
-    setText('#winky-bot-root .winky-demo-badge', ru ? 'Демо' : 'Demo');
-    setText('#winky-bot-root .winky-model-menu-title', ru ? 'Выбор модели · Демо' : 'Select model · Demo');
+    setText('#winky-bot-root .winky-model-menu-title', ru ? 'Выбор модели' : 'Select model');
     setText('#winky-bot-root .winky-model-note', ru ? 'Визуальный выбор. Анализ: Winky AI.' : 'Visual selection. Analysis: Winky AI.');
-    setText('#winky-bot-root [data-feed-note]', ru ? 'Демо-данные могут изменяться' : 'Demo data may be altered');
     setText('#winkyAccuracyNote', ru ? 'Совпадение условий стратегии, а не вероятность прибыли.' : 'Strategy conditions matched, not the probability of profit.');
     setText('#winky-bot-root .winky-chat-welcome span', ru ? 'Ваш ассистент по анализу' : 'Your analysis assistant');
     const btn = document.getElementById('btnGetSignalAction');
