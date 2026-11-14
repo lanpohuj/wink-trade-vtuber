@@ -1,0 +1,231 @@
+{
+  "verified_at": "2026-11-14T15:48:34.338839+00:00",
+  "scope": "isolated_lab_skinned_mesh_and_muted_media_simulation_not_native_or_tiktok_acceptance",
+  "expression_checks": [
+    "quiet_laugh preview and Stop work through the UI",
+    "ponder preview and Stop work through the UI",
+    "playful_doubt preview and Stop work through the UI",
+    "hand_heart preview and Stop work through the UI",
+    "shy has finite positions and returns to idle",
+    "shy leaves both eyes uncovered by hands",
+    "shy palm physically covers the mouth",
+    "quiet_laugh has finite positions and returns to idle",
+    "quiet_laugh leaves both eyes uncovered by hands",
+    "laugh shoulders have a separate rhythmic movement",
+    "ponder has finite positions and returns to idle",
+    "ponder leaves both eyes uncovered by hands",
+    "ponder finger reaches the chin",
+    "playful_doubt has finite positions and returns to idle",
+    "playful_doubt leaves both eyes uncovered by hands",
+    "playful doubt turns the head in both directions",
+    "hand_heart has finite positions and returns to idle",
+    "hand_heart leaves both eyes uncovered by hands",
+    "heart index fingertips meet",
+    "heart thumb tips meet",
+    "heart has an upper cleft and lower point",
+    "heart opening is not filled by a hand mesh",
+    "no browser errors",
+    "browser requests stay on the laboratory port"
+  ],
+  "policy_tests_passed": 7,
+  "speech_scenarios": {
+    "scope": "simulated_chat_emotion_on_existing_muted_recording",
+    "results": [
+      {
+        "action": "quiet_laugh",
+        "id": "lab-1",
+        "rms": 0.47966843758550265,
+        "profile": "amused",
+        "stopped": true
+      },
+      {
+        "action": "ponder",
+        "id": "lab-2",
+        "rms": 0.4438903701956833,
+        "profile": "thoughtful",
+        "stopped": true
+      },
+      {
+        "action": "playful_doubt",
+        "id": "lab-3",
+        "rms": 1,
+        "profile": "skeptical",
+        "stopped": true
+      },
+      {
+        "action": "hand_heart",
+        "id": "lab-4",
+        "rms": 1,
+        "profile": "gift_thanks",
+        "stopped": true
+      }
+    ],
+    "errors": []
+  },
+  "preservation_checks": [
+    "every library recording has a performance profile",
+    "ru real audio starts one identified session",
+    "ru waveform drives articulation",
+    "ru pause keeps the same audio clock",
+    "en real audio starts one identified session",
+    "en waveform drives articulation",
+    "en pause keeps the same audio clock",
+    "Right thumb folds toward index knuckle",
+    "Left thumb folds toward index knuckle",
+    "kiss release retains puckered lips",
+    "kiss sends three small hearts",
+    "preserved hip groove Shibahu_Hips",
+    "preserved hip groove Shibahu_RightHand",
+    "preserved hip groove Shibahu_LeftHand",
+    "low frame rate preserves action duration",
+    "no browser JavaScript errors",
+    "all browser requests stay on isolated laboratory port"
+  ],
+  "errors": [],
+  "mouth_hand_weight_min": 1,
+  "eye_hand_weight_max": 0,
+  "heart_index_tip_gap_max_cm": 0.3400509782372631,
+  "heart_thumb_tip_gap_max_cm": 0.22189929289747215,
+  "heart_upper_arch_min_cm": 0.9275534141419115,
+  "heart_height_min_cm": 7.347737561143582,
+  "heart_gap_hits": [
+    {
+      "mesh": "shirts_mesh",
+      "handWeight": 0,
+      "point": [
+        -1.7233885036898045,
+        118.75556744877909,
+        14.941929259714584
+      ]
+    },
+    {
+      "mesh": "shirts_mesh",
+      "handWeight": 0,
+      "point": [
+        -1.7176134641051481,
+        119.00061987352093,
+        13.928532373510478
+      ]
+    }
+  ],
+  "working_files_unchanged": 324,
+  "backup_files_match": 46,
+  "controls": {
+    "info": {
+      "buttons": 5,
+      "sticky": 265,
+      "action": "shy"
+    },
+    "errors": []
+  },
+  "pixels": {
+    "shy": {
+      "size": [
+        760,
+        900
+      ],
+      "region": [
+        80,
+        134,
+        680,
+        854
+      ],
+      "frames": [
+        0,
+        47
+      ],
+      "changed_pixels": 106284
+    },
+    "quiet_laugh": {
+      "size": [
+        760,
+        900
+      ],
+      "region": [
+        80,
+        134,
+        680,
+        854
+      ],
+      "frames": [
+        140,
+        152
+      ],
+      "changed_pixels": 42849
+    },
+    "ponder": {
+      "size": [
+        760,
+        900
+      ],
+      "region": [
+        80,
+        134,
+        680,
+        854
+      ],
+      "frames": [
+        216,
+        263
+      ],
+      "changed_pixels": 103955
+    },
+    "playful_doubt": {
+      "size": [
+        760,
+        900
+      ],
+      "region": [
+        80,
+        134,
+        680,
+        854
+      ],
+      "frames": [
+        351,
+        363
+      ],
+      "changed_pixels": 54659
+    },
+    "hand_heart": {
+      "size": [
+        760,
+        900
+      ],
+      "region": [
+        80,
+        134,
+        680,
+        854
+      ],
+      "frames": [
+        432,
+        479
+      ],
+      "changed_pixels": 108324
+    }
+  },
+  "video": {
+    "frames": 540,
+    "fps": 30,
+    "seconds": 18,
+    "width": 760,
+    "height": 900,
+    "sound": false,
+    "sha256": "94fd96033409100dd7bb2427099dae9b9078869456a9ea12ed68602d44733c60"
+  },
+  "source_sha256": {
+    "experiments/winky_avatar/candidate.mjs": "93b77bea76bc313be972d054081b19e7a744e48a6eff301837b17d5e9b51a152",
+    "experiments/winky_avatar/review-expressions.cjs": "6020ce2f2bb173c8607091e31a24e6e224e05e542f0afe4c2dde0edd47e927ce",
+    "experiments/winky_avatar/index.html": "af5b70d71c24ec1ee34370065fa7c5332f4e1ed727effabf73384c8995de797b",
+    "experiments/winky_avatar/motion-tracks.mjs": "19d488e1979e381de7fd0bb1f7eb65a17765b826f14d73e5c8a0bfc76f95f03e",
+    "experiments/winky_avatar/ui.mjs": "3b646c45f37b849d8242a02eba988ff6d8a984dfae6e1f78cd45a59569c16057",
+    "experiments/winky_avatar/verify.cjs": "e54526e8363983be297b8d031c158dc89369f29facaa06989cbc2ad17bfdf596",
+    "experiments/winky_avatar/serve.py": "8eacb688bf7cf35d486d7f836eed4b1d5b2fcb58a4f4df3b153713ed30c4ca5d",
+    "experiments/winky_avatar/verify-expressions-speech.cjs": "f18e6439f2fbd578c5f84055e940ba058b0bbd3de9b10a7ebe4960d111e3d8fa",
+    "experiments/winky_avatar/extra-motions.mjs": "df3e9b869afae4e6950ab655c0757474324151f7b90eac63e5bb8491ae70e47c",
+    "experiments/winky_avatar/policy.mjs": "de8e29a036a76bc46f4faf03ea367d52acc227bcb367063664e5e39481a1f46e",
+    "experiments/winky_avatar/policy.test.mjs": "c6a3d6c9625f475de191180c28656300ae565e0c04a5de7e3f49efe9c52d557e",
+    "experiments/winky_avatar/review-motions.cjs": "8b9e1fb68e549e2884603f45c9f78adc7a9854883e687696bd63d749228ec22a"
+  }
+}

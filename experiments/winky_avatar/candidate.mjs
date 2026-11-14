@@ -1,5 +1,5 @@
 import {Director} from './policy.mjs';
-import {REST, JOINTS, TRACKS, sampleTrack, actionWeight} from './motion-tracks.mjs';
+import {REST, JOINTS, TRACKS, FACE_MOODS, sampleTrack, actionWeight} from './motion-tracks.mjs';
 const director = new Director();
 const controller = window.vtuber;
 const originalUpdate = controller.update.bind(controller);
@@ -26,6 +26,11 @@ function poseQuaternion(pose,alias){
 }
 const originalWave=controller.wave.bind(controller);
 controller.wave=function(duration=3.2){originalWave();this.labWaveDuration=duration;this.waveTimer=duration;};
+const originalAction=controller.triggerAction.bind(controller);
+controller.triggerAction=function(action,duration=3.2){
+  originalAction(action,duration);
+  if(FACE_MOODS[action]){this.currentEmotion=FACE_MOODS[action];this.emotionResetTimer=duration;}
+};
 let kissWasActive=false, heartsSent=false;
 const style=document.createElement('style');
 style.textContent='@keyframes winkyLabHeart{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}18%{opacity:.9}100%{opacity:0;transform:translate(calc(-50% + var(--drift)), -85px) scale(1.1)}}.winky-lab-heart{position:fixed;pointer-events:none;color:#fa83ae;font:20px system-ui;animation:winkyLabHeart 1.4s ease-out forwards;z-index:10}';
@@ -58,7 +63,7 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
     this.bones[name].quaternion.slerp(targetQuaternion,1-Math.exp(-delta*(alias==='RightHand'?16:12)));
     return;
   }
-  if(authored && ['wave','shy'].includes(authored.mode)){
+  if(authored && authored.mode==='wave'){
     const finger=/^Shibahu_RightHand(Index|Middle|Ring|Pinky|Thumb)([123])$/.exec(name);
     if(finger){
       const w=actionWeight(authored.time),thumb=finger[1]==='Thumb';
@@ -98,6 +103,17 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
 };
 const originalMorph=controller.smoothSetMorph.bind(controller);
 controller.smoothSetMorph=function(name,target,dt,speed=20){
+  const mode=this.actionMode;
+  if(mode==='ponder' && name==='face_mesh7')target=0; // Keep the authored eyes open.
+  if(mode==='quiet_laugh' && !frame.speaking){
+    const time=this.actionDuration-this.actionTimer;
+    if(name==='face_mesh1')target=.28+.10*Math.max(0,Math.sin((time-.9)*17))*actionWeight(time);
+    if(name==='facial_cheek')target=.8;
+  }
+  if(mode==='hand_heart' && !frame.speaking){
+    if(name==='face_mesh1')target=.24;
+    if(name==='facial_cheek')target=.85;
+  }
   if(this.actionMode==='flirt_kiss' && !frame.speaking && this.smoothedRms<=.03){
     const elapsed=Math.max(0,this.actionDuration-this.actionTimer);
     const puckered=.88*(1-ease((elapsed-2.65)/.5));
@@ -140,14 +156,14 @@ window.addEventListener('message', e => {
     controller.currentEmotion = ['idle','happy','neutral','thinking','excited','blush','wink','surprised'].includes(m.event.emotion) ? m.event.emotion : 'happy';
     controller.emotionResetTimer = 4;
     if (a.gesture === 'wave') controller.wave(Math.min(3.2,a.duration));
-    if (a.gesture === 'shy') controller.triggerAction('shy',a.duration);
+    if (a.gesture !== 'wave' && Object.hasOwn(TRACKS,a.gesture)) controller.triggerAction(a.gesture,a.duration);
   } else if (m.type === 'clock' && director.active?.id === m.id) {
     director.clock(m.id, m.time); audioRms = Math.max(0, Math.min(1, Number(m.rms) || 0));
   } else if (m.type === 'end' && director.active?.id === m.id) {
     director.end(m.id); audioRms = 0; controller.waveTimer = 0;
     controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
-  } else if (m.type === 'legacy') {
+  } else if (m.type === 'legacy' || m.type === 'preview') {
     director.end(director.active?.id); audioRms = 0;
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
     kissWasActive=false;heartsSent=false;

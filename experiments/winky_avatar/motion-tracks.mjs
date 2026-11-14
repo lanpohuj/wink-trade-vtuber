@@ -1,14 +1,17 @@
 // Authored only for the frozen Shibahu FBX. Angles are offsets from its rest pose.
 // The adapter interpolates orientations as quaternions, including forearm roll.
+import {EXTRA_REST,EXTRA_JOINTS,makeExtraTracks} from './extra-motions.mjs';
+export {FACE_MOODS} from './extra-motions.mjs';
 export const REST = {
   RightShoulder:[0,0,0], RightArm:[0,0,.04], RightForeArm:[0,-.16,0], RightHand:[0,0,0],
   Head:[0,0,0], Neck:[0,0,0], Spine:[0,0,0], Spine1:[0,0,0], Spine2:[0,0,0],
   LeftShoulder:[0,0,0],
+  ...EXTRA_REST,
 };
 export const JOINTS={
   wave:['RightShoulder','RightArm','RightForeArm','RightHand'],
   flirt_kiss:['RightShoulder','RightArm','RightForeArm','RightHand'],
-  shy:Object.keys(REST),
+  ...EXTRA_JOINTS,
 };
 const center = {
   RightShoulder:[0,0,.06], RightArm:[-.88,.23,.31], RightForeArm:[1.72,-.38,2.27],
@@ -23,13 +26,6 @@ const outside = {
 const inside = {
   RightShoulder:[0,0,.05], RightArm:[-.77,-.09,.34], RightForeArm:[1.86,-.63,2.47],
   RightHand:[.31135,.13314,-.26744], forearmTwist:.22,
-};
-const shy = {
-  RightShoulder:[0,0,.06], RightArm:[-.82,-.70,-.27], RightForeArm:[-.57,-2.32,0],
-  RightHand:[-.63385,-.49666,-.33535], forearmTwist:-.45,
-  Head:[.085,.075,-.09], Neck:[.045,.04,-.045],
-  Spine:[.012,.008,0], Spine1:[.018,.012,0], Spine2:[.022,.012,0],
-  LeftShoulder:[0,0,.045],
 };
 const kissTouch = {
   RightShoulder:[0,0,.08], RightArm:[-.84,-1.21,-.29], RightForeArm:[-.44,-2.27,0],
@@ -56,8 +52,8 @@ export const TRACKS = {
     [1.86,softPose(center,outside,.68)],[2.16,softPose(center,inside,.58)],
     [2.42,center],[2.58,center],[2.82,lift2],[3.02,lift1],[3.2,REST],
   ],
-  shy:[[0,REST],[.72,shy],[1.15,shy],[1.9,softPose(shy,REST,.05)],[2.5,shy],[3.2,REST]],
   flirt_kiss:[[0,REST],[.5,kissTouch],[1.0,kissTouch],[1.95,kissSend],[2.5,kissSend],[3.2,REST]],
+  ...makeExtraTracks(REST),
 };
 export function sampleTrack(name,time){
   const track=TRACKS[name];

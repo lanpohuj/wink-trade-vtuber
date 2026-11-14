@@ -4,18 +4,38 @@ import {Director, profileFor, envelope, PROFILES} from './policy.mjs';
 
 test('semantics override broad excited emotion, likes do not cheer', () => {
   assert.equal(profileFor({category:'NARRATE_PAIR',emotion:'excited'}),'focus');
-  for(const kind of ['like','gift','follow']) assert.equal(profileFor({conditions:{chat_kind:kind},emotion:'excited'}),'thanks');
+  for(const kind of ['like','follow']) assert.equal(profileFor({conditions:{chat_kind:kind},emotion:'excited'}),'thanks');
+  assert.equal(profileFor({conditions:{chat_kind:'gift'},emotion:'excited'}),'gift_thanks');
   assert.ok(!PROFILES.thanks.includes('cheer'));
   assert.equal(profileFor({category:'TRADE_LOSS',emotion:'excited'}),'reassure');
-  assert.equal(profileFor({category:'CHAT_REPLY',emotion:'thinking'}),'curious');
+  assert.equal(profileFor({category:'CHAT_REPLY',emotion:'thinking'}),'thoughtful');
   assert.equal(profileFor({category:'CHAT_REPLY',intent:'skeptic',emotion:'wink'}),'reassure');
   assert.equal(profileFor({category:'NARRATE_PAIR',emotion:'blush'}),'focus');
   assert.equal(profileFor({category:'CHAT_REPLY',emotion:'blush'}),'embarrassed');
+});
+test('new reactions follow explicit intent and never replace serious results',()=>{
+  for(const [emotion,profile,gesture]of [
+    ['quiet_laugh','amused','quiet_laugh'],['ponder','thoughtful','ponder'],
+    ['playful_doubt','skeptical','playful_doubt'],['hand_heart','gift_thanks','hand_heart'],
+  ]){
+    const d=new Director(),event={id:emotion,category:'CHAT_REPLY',emotion};
+    assert.equal(d.begin(event).gesture,gesture);assert.equal(profileFor(event),profile);
+    assert.equal(profileFor({...event,category:'TRADE_LOSS'}),'reassure');
+    assert.equal(profileFor({...event,category:'NARRATE_PAIR'}),'focus');
+    assert.equal(profileFor({...event,category:'TRADE_LOSS',conditions:{chat_kind:'gift'}}),'reassure');
+    assert.equal(profileFor({...event,category:'NARRATE_PAIR',conditions:{chat_kind:'gift'}}),'focus');
+    assert.equal(profileFor({...event,intent:'gambler'}),'reassure');
+  }
 });
 test('one performance for duplicate callbacks, stale end cannot kill next phrase', () => {
   const d=new Director();d.end(undefined);d.clock(undefined,1);assert.equal(d.active,null);d.begin({id:'a',duration:8});
   d.clock('a',1);assert.equal(d.begin({id:'a'}),null);assert.equal(d.active.time,1);
   d.begin({id:'b'});d.clock('a',8);d.end('a');assert.equal(d.active.id,'b');assert.equal(d.active.ended,false);
+});
+test('short replies use a nod instead of an accelerated large gesture',()=>{
+  const d=new Director();
+  assert.equal(d.begin({id:'short',conditions:{chat_kind:'gift'},duration:1}).gesture,'nod');
+  assert.equal(d.begin({id:'preview',conditions:{chat_kind:'gift'},duration:1,gesture:'hand_heart'}).gesture,'hand_heart');
 });
 test('short audio and silence never hold a gesture indefinitely', () => {
   const d=new Director();d.begin({id:'a',duration:1,gesture:'nod'});d.clock('a',.6);

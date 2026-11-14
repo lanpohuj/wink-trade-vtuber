@@ -10,21 +10,19 @@ export const PROFILES = {
   curious: ['tilt', 'listen', 'nod'],
   playful: ['tilt', 'joy', 'listen'],
   embarrassed: ['shy', 'tilt', 'listen'],
+  amused: ['quiet_laugh', 'tilt', 'listen'],
+  thoughtful: ['ponder', 'listen', 'tilt'],
+  skeptical: ['playful_doubt', 'listen', 'nod'],
+  gift_thanks: ['hand_heart', 'bow', 'joy'],
 };
 export const LABELS = {
   listen: 'Спокойная речь', nod: 'Мягкий кивок', tilt: 'Любопытный наклон',
   explain_right: 'Объяснение правой рукой', explain_left: 'Объяснение левой рукой',
   bow: 'Благодарный поклон', joy: 'Сдержанная радость', wave: 'Живое приветствие',
-  shy: 'Смущение с рукой у лица',
+  shy: 'Смущение · прикрывает рот',
+  quiet_laugh:'Тихий смех',ponder:'Задумчивость',playful_doubt:'Игривое недоверие',hand_heart:'Сердечко руками',
 };
 export function profileFor(event = {}) {
-  const kind = event.chat_kind || event.conditions?.chat_kind;
-  if (kind === 'join') return 'greeting';
-  if (['like', 'follow', 'gift'].includes(kind)) return 'thanks';
-  if(event.intent==='greeting')return 'greeting';
-  if(event.intent==='compliment')return ['blush','shy'].includes(event.emotion)?'embarrassed':'playful';
-  if(['strategy','bot'].includes(event.intent))return 'explain';
-  if(['skeptic','gambler'].includes(event.intent))return 'reassure';
   const c = String(event.category || '').toUpperCase();
   if (c === 'TRADE_WIN') return 'celebrate';
   if (['TRADE_LOSS', 'TRADE_REFUND', 'NARRATE_RESULT'].includes(c)) return 'reassure';
@@ -33,10 +31,22 @@ export function profileFor(event = {}) {
     'OPEN_TRADE_CALL', 'OPEN_TRADE_PUT', 'NARRATE_VOLATILITY', 'WEAK_SIGNAL_SWITCH_PAIR'].includes(c)) return 'focus';
   if (['NARRATE_LESSON', 'STREAM_INSIGHT', 'NARRATE_CTA'].includes(c)) return 'explain';
   if (c === 'START_STREAM_READY') return 'greeting';
+  const kind = event.chat_kind || event.conditions?.chat_kind;
+  if (kind === 'join') return 'greeting';
+  if (kind === 'gift') return 'gift_thanks';
+  if (['like', 'follow'].includes(kind)) return 'thanks';
+  if(event.intent==='greeting')return 'greeting';
+  if(event.intent==='compliment')return ['blush','shy'].includes(event.emotion)?'embarrassed':'playful';
+  if(['strategy','bot'].includes(event.intent))return 'explain';
+  if(['skeptic','gambler'].includes(event.intent))return 'reassure';
   // Explicit semantics precede emotion. An excited explanation is still an explanation.
+  if (['quiet_laugh','laugh'].includes(event.emotion) || event.intent==='joke') return 'amused';
+  if (event.emotion==='ponder' || event.emotion==='thinking') return 'thoughtful';
+  if (event.emotion==='playful_doubt' || event.intent==='playful_doubt') return 'skeptical';
+  if (event.emotion==='hand_heart' || event.intent==='thanks') return 'gift_thanks';
   if (['blush','shy'].includes(event.emotion)) return 'embarrassed';
-  if (['thinking', 'surprised', 'peek_closer'].includes(event.emotion)) return 'curious';
-  if (['blush', 'shy', 'flirt_kiss', 'wink'].includes(event.emotion)) return 'playful';
+  if (['surprised', 'peek_closer'].includes(event.emotion)) return 'curious';
+  if (['flirt_kiss', 'wink'].includes(event.emotion)) return 'playful';
   if (['wave', 'greeting'].includes(event.emotion)) return 'greeting';
   return 'conversation';
 }
@@ -56,6 +66,9 @@ export class Director {
     if (gesture === this.previous && pool.length > 1) gesture = pool[index++ % pool.length];
     this.indices[profile] = index;
     if (event.gesture && Object.hasOwn(LABELS, event.gesture)) gesture = event.gesture;
+    // A short acknowledgment should not compress a full arm gesture into a jerk.
+    if(!event.gesture && Number(event.duration)>0 && Number(event.duration)<1.8
+      && ['wave','shy','quiet_laugh','ponder','hand_heart'].includes(gesture))gesture='nod';
     this.previous = gesture;
     this.active = { id: event.id, profile, gesture, time: 0, duration: Math.min(3.1, Math.max(.8, Number(event.duration) || 3)), ended: false };
     return this.active;
