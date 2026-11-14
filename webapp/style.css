@@ -872,26 +872,30 @@ html, body {
 }
 
 .winky-direction-block.analysing {
-  min-height: 241px !important;
-  height: 241px !important;
-  max-height: 241px !important;
+  min-height: 310px !important;
+  height: 315px !important;
+  max-height: none !important;
   background: #0a1617 !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow: none !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  padding: 10px !important;
-  gap: 7px !important;
+  padding: 14px !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+  flex: 1 1 auto !important;
 }
 
 .winky-scan-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 8px;
-  white-space: nowrap;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .winky-scan-title {
@@ -932,15 +936,18 @@ html, body {
 }
 
 .winky-chart-preview {
-  height: 100px;
-  min-height: 100px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 7px;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 180px !important;
+  height: 195px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 10px !important;
   background: linear-gradient(#ffffff08 1px, transparent 1px),
               linear-gradient(90deg, #ffffff08 1px, transparent 1px),
-              #0b1c1b;
-  background-size: 100% 25%, 25% 100%;
+              #0b1c1b !important;
+  background-size: 100% 25%, 25% 100% !important;
+  box-sizing: border-box !important;
 }
 
 .winky-chart-preview canvas,
@@ -966,9 +973,11 @@ html, body {
 }
 
 .winky-stage-frame {
-  min-height: 42px;
-  overflow: hidden;
-  width: 100%;
+  min-height: 42px !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
 }
 
 .winky-stage-current {
@@ -1027,10 +1036,7 @@ html, body {
 }
 
 .winky-analysis-meta {
-  color: #8ca59c;
-  font-size: 9.5px;
-  font-weight: 600;
-  text-align: center;
+  display: none !important;
 }
 
 .winky-direction-block.active {

@@ -703,8 +703,8 @@ function generateClientRealisticCandles(pair = "AUD/CAD OTC", duration = "30s", 
 function drawRealisticCandleChart(canvas, candles) {
   if (!canvas || !candles || !candles.length) return;
   const rect = canvas.getBoundingClientRect();
-  const width = rect.width || 300;
-  const height = rect.height || 100;
+  const width = rect.width || 320;
+  const height = (rect.height && rect.height >= 50) ? rect.height : 195;
   const dpr = window.devicePixelRatio || 2;
 
   canvas.width = Math.round(width * dpr);
@@ -718,7 +718,7 @@ function drawRealisticCandleChart(canvas, candles) {
   ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
   ctx.lineWidth = 1;
   const gridCols = 5;
-  const gridRows = 4;
+  const gridRows = 5;
   for (let c = 1; c < gridCols; c++) {
     const gx = Math.round((width / gridCols) * c) + 0.5;
     ctx.beginPath();
@@ -734,13 +734,13 @@ function drawRealisticCandleChart(canvas, candles) {
     ctx.stroke();
   }
 
-  // 10px top/bottom padding to utilize 85%+ canvas height
+  // 12px top/bottom padding to utilize 85%+ canvas height
   const minLow = Math.min(...candles.map((c) => c.low));
   const maxHigh = Math.max(...candles.map((c) => c.high));
   const rawRange = maxHigh - minLow || 0.0001;
 
-  const topPadding = 10;
-  const botPadding = 10;
+  const topPadding = 12;
+  const botPadding = 12;
   const usableHeight = height - topPadding - botPadding;
 
   const paddingLeft = 8;
@@ -868,14 +868,15 @@ async function startSignalAnalysis() {
           <span class="winky-stage-indicator" id="stageIndicator">${MODEL_CHECK_SVG}</span>
         </div>
       </div>
-
-      <div class="winky-analysis-meta" id="analysisMeta">${isRu ? "Анализ" : "Analysis"} · S30 · M1</div>
     `;
 
     const chartCanvas = document.getElementById("winkyVisualChart");
     if (chartCanvas) {
       const initialCandles = generateClientRealisticCandles(state.pair, state.duration, state.forceDir);
       drawRealisticCandleChart(chartCanvas, initialCandles);
+      requestAnimationFrame(() => {
+        drawRealisticCandleChart(chartCanvas, initialCandles);
+      });
     }
   }
 
