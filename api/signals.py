@@ -357,6 +357,87 @@ class SignalRequest(BaseModel):
     init_data: str | None = None
 
 
+class CandleOHLC(BaseModel):
+    open: float
+    high: float
+    low: float
+    close: float
+
+
+def generate_realistic_candles(pair: str, direction: str, family: str = "TREND_PULLBACK") -> list[CandleOHLC]:
+    """Генерация 28 реалистичных японских свечей (OHLC) в соответствии с направлением и парой.
+    Никаких чередующихся зелёно-красных блоков! Моделирует тренды, консолидации и импульс входа."""
+    p = pair.upper()
+    if "JPY" in p:
+        base_price, step, decimals = 154.30, 0.06, 3
+    elif "BTC" in p:
+        base_price, step, decimals = 91450.0, 35.0, 2
+    elif "ETH" in p:
+        base_price, step, decimals = 3120.0, 3.0, 2
+    elif "XAU" in p or "GOLD" in p:
+        base_price, step, decimals = 2685.0, 1.5, 2
+    elif "SILVER" in p or "XAG" in p:
+        base_price, step, decimals = 31.40, 0.04, 3
+    elif any(c in p for c in ["RUB", "INR", "THB", "BRL"]):
+        base_price, step, decimals = 96.50, 0.04, 3
+    else:
+        base_price, step, decimals = 1.08450, 0.00015, 5
+
+    is_buy = (direction == "BUY")
+
+    if is_buy:
+        moves = [
+            0.6, 1.2, -0.4, 0.8, 1.5, -0.5, 1.1, 0.9, -0.3, 1.4, -0.2,
+            -0.8, -1.2, 0.3, -1.0, -0.7, 0.2, -0.9, 0.1,
+            1.2, 1.6, -0.4, 1.8, 1.4, -0.3, 1.9,
+            2.1, 1.8,
+        ]
+    else:
+        moves = [
+            -0.6, -1.2, 0.4, -0.8, -1.5, 0.5, -1.1, -0.9, 0.3, -1.4, 0.2,
+            0.8, 1.2, -0.3, 1.0, 0.7, -0.2, 0.9, -0.1,
+            -1.2, -1.6, 0.4, -1.8, -1.4, 0.3, -1.9,
+            -2.1, -1.8,
+        ]
+
+    candles: list[CandleOHLC] = []
+    current_price = base_price - (sum(moves) * step * 0.45)
+
+    for i, m in enumerate(moves):
+        c_open = current_price
+        delta = m * step
+        c_close = c_open + delta
+
+        body_top = max(c_open, c_close)
+        body_bottom = min(c_open, c_close)
+
+        upper_wick = abs(delta) * (0.2 + (0.3 if i % 2 == 0 else 0.15)) + (step * 0.2)
+        lower_wick = abs(delta) * (0.2 + (0.15 if i % 2 == 0 else 0.3)) + (step * 0.2)
+
+        if i >= 26:
+            if is_buy:
+                upper_wick = step * 0.15
+                lower_wick = step * 0.4
+            else:
+                lower_wick = step * 0.15
+                upper_wick = step * 0.4
+
+        c_high = body_top + upper_wick
+        c_low = body_bottom - lower_wick
+
+        candles.append(
+            CandleOHLC(
+                open=round(c_open, decimals),
+                high=round(c_high, decimals),
+                low=round(c_low, decimals),
+                close=round(c_close, decimals),
+            )
+        )
+        current_price = c_close
+
+    return candles
+
+
 class SignalResponse(BaseModel):
     direction: Literal["BUY", "SELL"]
     accuracy: int = Field(ge=1, le=100)
@@ -367,6 +448,7 @@ class SignalResponse(BaseModel):
     family: str = "TREND_PULLBACK"
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
+    candles: list[CandleOHLC] = Field(default_factory=list)
     entry_delay_sec: int = 3
     duration_sec: int = 5
     is_vip: bool = False
@@ -670,6 +752,7 @@ async def get_signal(
         family=family,
         rationale_ru=rationale_ru,
         rationale_en=rationale_en,
+        candles=generate_realistic_candles(pair=pair, direction=direction, family=family),
         entry_delay_sec=3,
         duration_sec=duration_sec,
         is_vip=is_vip,

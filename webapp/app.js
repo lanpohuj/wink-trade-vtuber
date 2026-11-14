@@ -193,9 +193,9 @@ const i18n = {
     readyForSignal: "Готов к анализу графика",
     analysing: "Анализ графических паттернов...",
     getSignal: "⚡ Анализировать",
-    analyzingBtn: "⚡ Анализ графика...",
-    tradeActive: "Сделка активна",
-    tradeCompleted: "Сделка завершена · Сигнал отработан",
+    analyzingBtn: "⚡ АНАЛИЗ ГРАФИКА...",
+    tradeActive: "СДЕЛКА АКТИВНА",
+    tradeCompleted: "СДЕЛКА ЗАВЕРШЕНА · СИГНАЛ ОТРАБОТАН",
     tabSignals: "Сигналы",
     tabChat: "ИИ-чат",
     chatSubtitle: "Ваш ассистент по анализу",
@@ -221,9 +221,9 @@ const i18n = {
     readyForSignal: "Ready for chart analysis",
     analysing: "Analyzing chart patterns...",
     getSignal: "⚡ Analyze",
-    analyzingBtn: "⚡ Analyzing chart...",
-    tradeActive: "Trade active",
-    tradeCompleted: "Trade completed · Signal executed",
+    analyzingBtn: "⚡ ANALYZING CHART...",
+    tradeActive: "TRADE ACTIVE",
+    tradeCompleted: "TRADE COMPLETED · SIGNAL EXECUTED",
     tabSignals: "Signals",
     tabChat: "AI chat",
     chatSubtitle: "Your analysis assistant",
@@ -598,8 +598,14 @@ function syncPanelControlVisibility(phase) {
   if (!mkt || !sel) return;
 
   if (phase === "analysing") {
-    mkt.hidden = true;
-    sel.hidden = true;
+    mkt.hidden = false;
+    sel.hidden = false;
+    mkt.classList.add("locked");
+    sel.classList.add("locked");
+    mkt.style.pointerEvents = "none";
+    sel.style.pointerEvents = "none";
+    mkt.style.opacity = "0.85";
+    sel.style.opacity = "0.85";
   } else if (phase === "trade") {
     mkt.hidden = false;
     sel.hidden = false;
@@ -607,6 +613,8 @@ function syncPanelControlVisibility(phase) {
     sel.classList.add("locked");
     mkt.style.pointerEvents = "none";
     sel.style.pointerEvents = "none";
+    mkt.style.opacity = "1";
+    sel.style.opacity = "1";
   } else {
     mkt.hidden = false;
     sel.hidden = false;
@@ -614,6 +622,8 @@ function syncPanelControlVisibility(phase) {
     sel.classList.remove("locked");
     mkt.style.pointerEvents = "";
     sel.style.pointerEvents = "";
+    mkt.style.opacity = "1";
+    sel.style.opacity = "1";
   }
 }
 
@@ -646,35 +656,181 @@ function getTradeSetupExplanation(sig, isRu = true) {
     : (isBuy ? "Confirmed trend momentum up" : "Confirmed trend momentum down");
 }
 
-function generateCandleSVG() {
-  const bars = [
-    { o: 40, c: 55, h: 62, l: 36 },
-    { o: 55, c: 50, h: 58, l: 45 },
-    { o: 50, c: 68, h: 72, l: 48 },
-    { o: 68, c: 62, h: 70, l: 58 },
-    { o: 62, c: 75, h: 80, l: 60 },
-    { o: 75, c: 71, h: 78, l: 68 },
-    { o: 71, c: 84, h: 88, l: 69 },
-    { o: 84, c: 78, h: 86, l: 74 },
-    { o: 78, c: 88, h: 92, l: 75 },
-    { o: 88, c: 94, h: 96, l: 85 },
-    { o: 94, c: 90, h: 95, l: 86 },
-    { o: 90, c: 96, h: 98, l: 88 },
-  ];
-  const width = 300 / bars.length;
-  const bodyWidth = 10;
-  return bars.map((b, i) => {
-    const x = (i + 0.5) * width;
-    const top = 100 - Math.max(b.o, b.c);
-    const bottom = 100 - Math.min(b.o, b.c);
-    const height = Math.max(2, bottom - top);
-    const yHigh = 100 - b.h;
-    const yLow = 100 - b.l;
-    const isUp = b.c >= b.o;
+function generateClientRealisticCandles(pair = "AUD/CAD OTC", duration = "30s", direction = null) {
+  const p = (pair || "").toUpperCase();
+  let basePrice = 1.08450;
+  let step = 0.00015;
+  let decimals = 5;
+
+  if (p.includes("JPY")) {
+    basePrice = 154.30;
+    step = 0.06;
+    decimals = 3;
+  } else if (p.includes("BTC")) {
+    basePrice = 91450.0;
+    step = 35.0;
+    decimals = 2;
+  } else if (p.includes("ETH")) {
+    basePrice = 3120.0;
+    step = 3.0;
+    decimals = 2;
+  } else if (p.includes("XAU") || p.includes("GOLD")) {
+    basePrice = 2685.0;
+    step = 1.5;
+    decimals = 2;
+  } else if (p.includes("SILVER") || p.includes("XAG")) {
+    basePrice = 31.40;
+    step = 0.04;
+    decimals = 3;
+  } else if (["RUB", "INR", "THB", "BRL"].some(c => p.includes(c))) {
+    basePrice = 96.50;
+    step = 0.04;
+    decimals = 3;
+  }
+
+  const isBuy = direction ? (direction === "BUY") : (p.length % 2 === 0);
+
+  const moves = isBuy
+    ? [
+        0.6, 1.2, -0.4, 0.8, 1.5, -0.5, 1.1, 0.9, -0.3, 1.4, -0.2,
+        -0.8, -1.2, 0.3, -1.0, -0.7, 0.2, -0.9, 0.1,
+        1.2, 1.6, -0.4, 1.8, 1.4, -0.3, 1.9,
+        2.1, 1.8
+      ]
+    : [
+        -0.6, -1.2, 0.4, -0.8, -1.5, 0.5, -1.1, -0.9, 0.3, -1.4, 0.2,
+        0.8, 1.2, -0.3, 1.0, 0.7, -0.2, 0.9, -0.1,
+        -1.2, -1.6, 0.4, -1.8, -1.4, 0.3, -1.9,
+        -2.1, -1.8
+      ];
+
+  let currentPrice = basePrice - (moves.reduce((a, b) => a + b, 0) * step * 0.45);
+  const candles = [];
+
+  for (let i = 0; i < moves.length; i++) {
+    const m = moves[i];
+    const cOpen = currentPrice;
+    const delta = m * step;
+    const cClose = cOpen + delta;
+
+    const bodyTop = Math.max(cOpen, cClose);
+    const bodyBottom = Math.min(cOpen, cClose);
+
+    let upperWick = Math.abs(delta) * (0.2 + (i % 2 === 0 ? 0.3 : 0.15)) + (step * 0.2);
+    let lowerWick = Math.abs(delta) * (0.2 + (i % 2 === 0 ? 0.15 : 0.3)) + (step * 0.2);
+
+    if (i >= 26) {
+      if (isBuy) {
+        upperWick = step * 0.15;
+        lowerWick = step * 0.4;
+      } else {
+        lowerWick = step * 0.15;
+        upperWick = step * 0.4;
+      }
+    }
+
+    const cHigh = bodyTop + upperWick;
+    const cLow = bodyBottom - lowerWick;
+
+    candles.push({
+      open: Number(cOpen.toFixed(decimals)),
+      high: Number(cHigh.toFixed(decimals)),
+      low: Number(cLow.toFixed(decimals)),
+      close: Number(cClose.toFixed(decimals)),
+    });
+    currentPrice = cClose;
+  }
+
+  return candles;
+}
+
+function drawRealisticCandleChart(canvas, candles) {
+  if (!canvas || !candles || !candles.length) return;
+  const rect = canvas.getBoundingClientRect();
+  const width = rect.width || 300;
+  const height = rect.height || 100;
+  const dpr = window.devicePixelRatio || 2;
+
+  canvas.width = Math.round(width * dpr);
+  canvas.height = Math.round(height * dpr);
+
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, width, height);
+
+  // Subtle 5x4 grid
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+  ctx.lineWidth = 1;
+  const gridCols = 5;
+  const gridRows = 4;
+  for (let c = 1; c < gridCols; c++) {
+    const gx = Math.round((width / gridCols) * c) + 0.5;
+    ctx.beginPath();
+    ctx.moveTo(gx, 0);
+    ctx.lineTo(gx, height);
+    ctx.stroke();
+  }
+  for (let r = 1; r < gridRows; r++) {
+    const gy = Math.round((height / gridRows) * r) + 0.5;
+    ctx.beginPath();
+    ctx.moveTo(0, gy);
+    ctx.lineTo(width, gy);
+    ctx.stroke();
+  }
+
+  // 16% vertical padding at top and bottom to eliminate clipping
+  const minLow = Math.min(...candles.map((c) => c.low));
+  const maxHigh = Math.max(...candles.map((c) => c.high));
+  const rawRange = maxHigh - minLow || 0.0001;
+
+  const paddingTop = height * 0.16;
+  const paddingBottom = height * 0.16;
+  const usableHeight = height - paddingTop - paddingBottom;
+
+  const paddingLeft = 8;
+  const paddingRight = 10;
+  const usableWidth = width - paddingLeft - paddingRight;
+
+  const count = candles.length;
+  const stepX = usableWidth / count;
+  const bodyWidth = Math.max(3.5, Math.min(6, stepX * 0.65));
+
+  function getY(price) {
+    const norm = (price - minLow) / rawRange;
+    return height - paddingBottom - norm * usableHeight;
+  }
+
+  candles.forEach((c, i) => {
+    const x = paddingLeft + (i + 0.5) * stepX;
+    const isUp = c.close >= c.open;
     const color = isUp ? "#10F587" : "#FF4D6D";
-    return `<line x1="${x.toFixed(1)}" y1="${yHigh.toFixed(1)}" x2="${x.toFixed(1)}" y2="${yLow.toFixed(1)}" stroke="${color}" stroke-width="1.2" opacity="0.85"/>
-<rect x="${(x - bodyWidth / 2).toFixed(1)}" y="${top.toFixed(1)}" width="${bodyWidth}" height="${height.toFixed(1)}" rx="1.5" fill="${color}" opacity="0.9"/>`;
-  }).join("");
+
+    const yHigh = getY(c.high);
+    const yLow = getY(c.low);
+    const yOpen = getY(c.open);
+    const yClose = getY(c.close);
+
+    const top = Math.min(yOpen, yClose);
+    const bottom = Math.max(yOpen, yClose);
+    const bodyHeight = Math.max(1.5, bottom - top);
+
+    // 1px crisp wick on half-pixel
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const wickX = Math.round(x) + 0.5;
+    ctx.moveTo(wickX, Math.round(yHigh));
+    ctx.lineTo(wickX, Math.round(yLow));
+    ctx.stroke();
+
+    // Body
+    ctx.fillStyle = color;
+    const rx = Math.round(x - bodyWidth / 2);
+    const ry = Math.round(top);
+    const rw = Math.round(bodyWidth);
+    const rh = Math.round(bodyHeight);
+    ctx.fillRect(rx, ry, rw, rh);
+  });
 }
 
 function showSignalError(key) {
@@ -745,9 +901,7 @@ async function startSignalAnalysis() {
       </div>
 
       <div class="winky-chart-preview">
-        <svg id="winkyVisualChart" viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">
-          ${generateCandleSVG()}
-        </svg>
+        <canvas id="winkyVisualChart"></canvas>
         <span class="winky-chart-scanner"></span>
       </div>
 
@@ -761,6 +915,12 @@ async function startSignalAnalysis() {
 
       <div class="winky-analysis-meta" id="analysisMeta">${isRu ? "Анализ" : "Analysis"} · S30 · M1</div>
     `;
+
+    const chartCanvas = document.getElementById("winkyVisualChart");
+    if (chartCanvas) {
+      const initialCandles = generateClientRealisticCandles(state.pair, state.duration, state.forceDir);
+      drawRealisticCandleChart(chartCanvas, initialCandles);
+    }
   }
 
   const startTime = performance.now();
@@ -832,6 +992,13 @@ async function startSignalAnalysis() {
     }
     state.lastSignal = apiData;
     updateReferralLinks(apiData);
+
+    if (apiData.candles && apiData.candles.length) {
+      const chartCanvas = document.getElementById("winkyVisualChart");
+      if (chartCanvas) {
+        drawRealisticCandleChart(chartCanvas, apiData.candles);
+      }
+    }
   } catch (_) {
     syncPanelControlVisibility("idle");
     showSignalError("signalError");
@@ -868,7 +1035,7 @@ async function startSignalAnalysis() {
         </div>
       </div>
 
-      <div class="winky-trade-setup-note">${getTradeSetupExplanation(apiData, isRu)}</div>
+      <div class="winky-trade-setup-note winky-signal-reason">${getTradeSetupExplanation(apiData, isRu)}</div>
 
       <div class="winky-sig-progress-track">
         <div class="winky-sig-progress-fill ${isBuy ? "buy" : "sell"}" id="signalProgressFill" style="width: 100%;"></div>
