@@ -170,6 +170,15 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    @app.middleware("http")
+    async def add_cache_control_header(request, call_next):
+        response = await call_next(request)
+        if request.url.path.startswith("/webapp"):
+            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
     @app.get("/", include_in_schema=False)
     async def root_redirect():
         return RedirectResponse(url="/webapp/")

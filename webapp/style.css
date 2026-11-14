@@ -71,20 +71,21 @@ html, body {
   position: relative;
   z-index: 10;
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 430px !important;
   min-height: 100dvh !important;
   height: 100dvh !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: linear-gradient(180deg, #0d1915 0%, #09120f 100%) !important;
+  margin: 0 auto !important;
+  padding: 12px 14px 14px !important;
+  box-sizing: border-box !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
-  box-sizing: border-box !important;
-  padding: 10px 14px 12px !important;
-  overflow: hidden !important;
+  background: #0c1614 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 
 /* ==================== PANEL HEADER ==================== */
@@ -397,14 +398,33 @@ html, body {
   display: none !important;
 }
 
-.tab-view.active {
+.tab-view.active:not(.hidden):not([hidden]) {
+  display: flex !important;
+}
+
+#tabSignals.active:not(.hidden):not([hidden]) {
   display: flex !important;
   flex-direction: column !important;
   gap: 10px !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+}
+
+#tabChat.active:not(.hidden):not([hidden]) {
+  display: flex !important;
+  flex-direction: column !important;
   flex: 1 1 auto !important;
+  justify-content: space-between !important;
   width: 100% !important;
   min-height: 0 !important;
-  justify-content: space-between !important;
+  gap: 10px !important;
+}
+
+#tabSignals.hidden,
+#tabSignals[hidden],
+#tabChat.hidden,
+#tabChat[hidden] {
+  display: none !important;
 }
 
 /* ==================== MARKET SWITCH (MATTE DEEP-EMERALD) ==================== */
@@ -707,18 +727,17 @@ html, body {
 
 /* ==================== SIGNAL CARD ==================== */
 .winky-signal-card {
-  padding: 10px;
-  gap: 8px;
-  background: #101f20;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  padding: 14px !important;
+  border-radius: 14px !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
-  flex: 1 1 auto !important;
+  gap: 10px !important;
+  position: relative !important;
+  background: #101f20 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   width: 100% !important;
-  min-height: 0 !important;
   box-sizing: border-box !important;
+  flex-shrink: 0 !important;
 }
 
 .winky-card-pair-row {
@@ -831,18 +850,16 @@ html, body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border-radius: 10px;
-  padding: 12px 14px;
-  flex: 1 1 auto !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
   width: 100% !important;
-  min-height: 116px !important;
+  position: static !important;
 }
 
 .winky-direction-block.idle {
-  min-height: 116px !important;
-  max-height: none !important;
-  height: auto !important;
-  flex: 1 1 auto !important;
+  min-height: 130px !important;
+  height: 130px !important;
+  max-height: 130px !important;
   background: #0a1617 !important;
   border: 1px dashed rgba(255, 255, 255, 0.12) !important;
   color: #94aca6 !important;
@@ -855,10 +872,9 @@ html, body {
 }
 
 .winky-direction-block.analysing {
-  min-height: 180px !important;
-  max-height: none !important;
-  height: auto !important;
-  flex: 1 1 auto !important;
+  min-height: 241px !important;
+  height: 241px !important;
+  max-height: 241px !important;
   background: #0a1617 !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow: none !important;
@@ -1017,10 +1033,9 @@ html, body {
 }
 
 .winky-direction-block.active {
-  min-height: 116px !important;
-  max-height: none !important;
-  height: auto !important;
-  flex: 1 1 auto !important;
+  min-height: 130px !important;
+  height: 130px !important;
+  max-height: 130px !important;
   color: #FFFFFF !important;
   padding: 12px 14px !important;
   gap: 8px !important;
@@ -1043,10 +1058,9 @@ html, body {
 }
 
 .winky-direction-block.completed {
-  min-height: 116px !important;
-  max-height: none !important;
-  height: auto !important;
-  flex: 1 1 auto !important;
+  min-height: 130px !important;
+  height: 130px !important;
+  max-height: 130px !important;
   background: #0a1617 !important;
   border: 1px solid rgba(16, 245, 135, 0.45) !important;
   box-shadow: 0 0 16px rgba(16, 245, 135, 0.15) !important;
@@ -1250,15 +1264,16 @@ html, body {
 .winky-action-row {
   display: flex !important;
   width: 100% !important;
+  position: static !important;
+  margin-top: 2px !important;
   flex-shrink: 0 !important;
-  margin-top: 4px !important;
 }
 
 .winky-btn-get-signal {
   width: 100% !important;
-  height: 46px !important;
-  min-height: 46px !important;
-  max-height: 46px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
   border-radius: 12px !important;
   border: none !important;
   background: linear-gradient(180deg, #74E9B7 0%, #58D39E 100%) !important;
@@ -1276,6 +1291,8 @@ html, body {
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
+  position: static !important;
+  flex-shrink: 0 !important;
 }
 
 .winky-btn-get-signal:hover {
@@ -1289,15 +1306,6 @@ html, body {
 }
 
 /* ==================== TAB 2: AI CHAT ==================== */
-#tabChat {
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  min-height: 0 !important;
-  flex: 1 1 auto !important;
-}
-
 .winky-chat-welcome {
   display: flex;
   gap: 9px;
@@ -1426,25 +1434,25 @@ html, body {
   transform: none !important;
   width: 100% !important;
   max-width: 100% !important;
-  height: 40px !important;
-  min-height: 40px !important;
-  max-height: 40px !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  max-height: 42px !important;
   background: #0e1c1c !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  padding: 2px 4px !important;
+  padding: 3px 4px !important;
   display: flex !important;
   gap: 6px !important;
   border-radius: 10px !important;
   box-shadow: none !important;
   z-index: 10 !important;
   flex-shrink: 0 !important;
-  margin-top: 6px !important;
+  margin-top: auto !important;
   box-sizing: border-box !important;
 }
 
 .winky-nav-item.nav-item {
   flex: 1 !important;
-  height: 34px !important;
+  height: 36px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1568,3 +1576,9 @@ html, body {
   padding: 6px;
   cursor: pointer;
 }
+
+/* ==================== STRICT VISIBILITY ENFORCEMENT ==================== */
+.hidden, [hidden], .tab-hidden, .is-hidden {
+  display: none !important;
+}
+

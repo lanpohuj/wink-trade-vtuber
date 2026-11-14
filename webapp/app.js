@@ -336,9 +336,18 @@ function setupModelSelector() {
 /* ==================== 1. Tab Switching (Strictly 2 Tabs) ==================== */
 
 function switchTab(tabId) {
-  document.querySelectorAll(".tab-view").forEach((tab) => tab.classList.remove("active"));
+  document.querySelectorAll(".tab-view").forEach((tab) => {
+    tab.classList.remove("active");
+    tab.classList.add("hidden");
+    tab.setAttribute("hidden", "");
+  });
+
   const target = document.getElementById(tabId);
-  if (target) target.classList.add("active");
+  if (target) {
+    target.classList.remove("hidden");
+    target.removeAttribute("hidden");
+    target.classList.add("active");
+  }
 
   document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.tab === tabId);
@@ -1027,6 +1036,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCustomDurationDropdown();
   setupAccuracyInfoButton();
   loadProfile();
+  switchTab("tabSignals");
 
   // Tab switching
   document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
