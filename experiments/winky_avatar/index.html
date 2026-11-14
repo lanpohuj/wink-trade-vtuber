@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Винки · лаборатория анимаций</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#111321;color:#eef0fc;font:15px system-ui}main{max-width:1350px;margin:auto;padding:24px}h1{font-size:26px;margin:0 0 8px}p{color:#aeb5d2;line-height:1.5}select,button,input{font:inherit;background:#24283f;color:inherit;border:1px solid #474d70;border-radius:8px;padding:10px}button{cursor:pointer}button.primary{background:#6848ca}button:disabled{opacity:.4;cursor:wait}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.views{display:grid;grid-template-columns:1fr 1fr;gap:16px}.view{border:1px solid #3b405e;border-radius:12px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#36415c,#181c2b)}.view h2{font-size:16px;margin:0;padding:14px;background:#1d2236}.view iframe{display:block;width:100%;height:590px;border:0}#phrase{font-size:18px;min-height:54px}#status{white-space:pre-wrap;color:#b6c7ff;min-height:30px}audio{width:100%}.note{font-size:13px}label{display:flex;align-items:center;gap:7px}#record{max-width:550px}.catalog{margin-top:24px;padding:16px;background:#1a1e30;border-radius:12px}#legacy{display:flex;gap:8px;flex-wrap:wrap}@media(max-width:800px){.views{grid-template-columns:1fr}.view iframe{height:580px}}
+</style>
+<main>
+<h1>Винки · лаборатория анимаций</h1>
+<p>Отдельный экспериментальный стенд. Слева — точная резервная версия, справа — кандидат. Оба показывают одну модель и одну запись. Изменения справа не подключены к приложению.</p>
+<div class="controls"><label>Язык <select id="lang"><option value="ru">RU · Марин</option><option value="en">EN · Venti</option></select></label><select id="category" aria-label="Категория фразы"></select><select id="record" aria-label="Запись"></select></div>
+<div id="phrase"></div>
+<div class="controls"><button class="primary" id="play" disabled>Загрузка модели…</button><button id="stop">Остановить</button><label>Жест <select id="gesture"><option value="">По смыслу фразы</option></select></label><label><input id="mute" type="checkbox" checked>Без звука</label></div>
+<audio id="audio" controls></audio>
+<p id="status" role="status">Загрузка резервной модели…</p>
+<div class="views"><section class="view"><h2>Резерв · исходное поведение</h2><iframe id="baseline" title="Резервный аватар" src="/frame.html"></iframe></section><section class="view"><h2>Кандидат · отдельные жесты и мимика</h2><iframe id="candidate" title="Экспериментальный аватар" src="/frame.html?candidate=1"></iframe></section></div>
+<section class="catalog"><strong>Любимые движения · сравнение с резервом</strong><p class="note">Слева — оригинал. Справа — поправленные большие пальцы и поцелуй с сердечками. Качание бёдрами сохранено. Танец с поднятыми руками доступен для разбора, в автоматические реакции кандидата он не включён.</p><div id="legacy"></div></section>
+<p class="note">Используются существующие локальные MP3. Генерация речи и запросы к Fish Audio отсутствуют. Свободный ответ чата можно проверить выбором эмоции ниже без синтеза.</p>
+<div class="controls"><select id="chatIntent" aria-label="Смысл ответа чата"><option value="general">Обычный ответ</option><option value="greeting">Приветствие</option><option value="compliment">Комплимент</option><option value="strategy">Объяснение</option><option value="bot">Инструкция зрителю</option><option value="skeptic">Ответ скептику</option><option value="gambler">Успокоить зрителя</option></select><select id="chatEmotion" aria-label="Эмоция ответа чата"><option>happy</option><option>thinking</option><option>wink</option><option>blush</option><option>excited</option><option>surprised</option><option>neutral</option></select><button id="chat">Проверить тип ответа чата на выбранной записи</button></div>
+</main><script type="module" src="/ui.mjs"></script></html>

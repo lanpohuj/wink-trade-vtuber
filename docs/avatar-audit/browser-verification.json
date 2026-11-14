@@ -1,0 +1,289 @@
+{
+  "checks": [
+    "every library recording has a performance profile",
+    "ru real audio starts one identified session",
+    "ru waveform drives articulation",
+    "ru pause keeps the same audio clock",
+    "en real audio starts one identified session",
+    "en waveform drives articulation",
+    "en pause keeps the same audio clock",
+    "Right thumb folds toward index knuckle",
+    "Left thumb folds toward index knuckle",
+    "kiss release retains puckered lips",
+    "kiss sends three small hearts",
+    "preserved hip groove Shibahu_Hips",
+    "preserved hip groove Shibahu_RightHand",
+    "preserved hip groove Shibahu_LeftHand",
+    "low frame rate preserves action duration",
+    "no browser JavaScript errors",
+    "all browser requests stay on isolated laboratory port"
+  ],
+  "playback": [
+    {
+      "lang": "ru",
+      "id": "lab-1",
+      "max_rms": 0.4208630254140895
+    },
+    {
+      "lang": "en",
+      "id": "lab-2",
+      "max_rms": 0.20837356573311402
+    }
+  ],
+  "poses": {
+    "paws": {
+      "baseline": {
+        "thumbs": {
+          "Right": 5.568277758602305,
+          "Left": 6.281195298669001
+        },
+        "mouthA": 3.845410214807463e-43,
+        "mouthO": 6.538368847409009e-42,
+        "hearts": 0,
+        "bones": {
+          "Shibahu_Hips": [
+            0.0002644515033613043,
+            0.019714575601239775,
+            0.006099514144358048,
+            0.9997870080679523
+          ],
+          "Shibahu_RightHand": [
+            -0.050652016582863384,
+            -0.0010626592291785061,
+            -0.05274055262429376,
+            0.9973222538780213
+          ],
+          "Shibahu_LeftHand": [
+            -0.008598371021622375,
+            0.03943786009293121,
+            -0.2038651668035043,
+            0.9781665077946826
+          ]
+        }
+      },
+      "candidate": {
+        "thumbs": {
+          "Right": 0.10362148191797718,
+          "Left": 0.21926440491891416
+        },
+        "mouthA": 3.658426790266698e-44,
+        "mouthO": 1.0161282768100253e-43,
+        "hearts": 0,
+        "bones": {
+          "Shibahu_Hips": [
+            0.00026445150335244227,
+            0.01971457560123211,
+            0.006099514144372103,
+            0.9997870080679524
+          ],
+          "Shibahu_RightHand": [
+            -0.05065201658312632,
+            -0.0010626592303414352,
+            -0.05274055262421669,
+            0.9973222538780109
+          ],
+          "Shibahu_LeftHand": [
+            -0.00859837102164538,
+            0.03943786009279806,
+            -0.20386516680350586,
+            0.9781665077946873
+          ]
+        }
+      }
+    },
+    "kiss": {
+      "baseline": {
+        "thumbs": {
+          "Right": 1.79207361081466,
+          "Left": 6.281195298668943
+        },
+        "mouthA": 0.8799970326265939,
+        "mouthO": 2.866212949018301e-06,
+        "hearts": 0,
+        "bones": {
+          "Shibahu_Hips": [
+            6.435055241320081e-05,
+            0.012982037755803887,
+            0.03399716618989205,
+            0.9993376082414642
+          ],
+          "Shibahu_RightHand": [
+            -0.26531411921411335,
+            0.12301503590562338,
+            0.0042189006197652906,
+            0.9562729317325354
+          ],
+          "Shibahu_LeftHand": [
+            -0.008598371021622375,
+            0.03943786009293121,
+            -0.2038651668035043,
+            0.9781665077946826
+          ]
+        }
+      },
+      "candidate": {
+        "thumbs": {
+          "Right": 1.7920734790458304,
+          "Left": 0.21926440491891583
+        },
+        "mouthA": 4.72990568306756e-66,
+        "mouthO": 0.8799999999999998,
+        "hearts": 3,
+        "bones": {
+          "Shibahu_Hips": [
+            6.435055241320081e-05,
+            0.012982037755803887,
+            0.03399716618989205,
+            0.9993376082414642
+          ],
+          "Shibahu_RightHand": [
+            -0.22643852624780675,
+            0.17758300151548115,
+            0.06805720059625088,
+            0.9552790633372404
+          ],
+          "Shibahu_LeftHand": [
+            -0.00859837102164538,
+            0.03943786009279806,
+            -0.20386516680350586,
+            0.9781665077946873
+          ]
+        }
+      }
+    },
+    "hip_groove": {
+      "baseline": {
+        "thumbs": {
+          "Right": 2.8756258762363536,
+          "Left": 3.2370979197994894
+        },
+        "mouthA": 0.7500000000000003,
+        "mouthO": 7.32847923759712e-21,
+        "hearts": 0,
+        "bones": {
+          "Shibahu_Hips": [
+            0.015397739310931746,
+            0.03192825754912397,
+            0.06175680784326289,
+            0.9974615745375855
+          ],
+          "Shibahu_RightHand": [
+            -0.017619777064377243,
+            0.14886699100331202,
+            0.21049136261472706,
+            0.9660339273081546
+          ],
+          "Shibahu_LeftHand": [
+            -0.017063050581597388,
+            -0.09838264693892879,
+            0.16836719177741116,
+            0.9806539633423854
+          ]
+        }
+      },
+      "candidate": {
+        "thumbs": {
+          "Right": 2.8756258661967045,
+          "Left": 3.237097475950088
+        },
+        "mouthA": 0.7499999999999982,
+        "mouthO": 2.2500288163495716e-15,
+        "hearts": 2,
+        "bones": {
+          "Shibahu_Hips": [
+            0.015397739310931746,
+            0.03192825754912397,
+            0.06175680784326289,
+            0.9974615745375855
+          ],
+          "Shibahu_RightHand": [
+            -0.017619779578633903,
+            0.1488669934595939,
+            0.21049136220108242,
+            0.9660339269739104
+          ],
+          "Shibahu_LeftHand": [
+            -0.017063050581597388,
+            -0.09838264693892879,
+            0.16836719177741116,
+            0.9806539633423854
+          ]
+        }
+      }
+    }
+  },
+  "requests": 43,
+  "coverage": {
+    "recordings": 1543,
+    "profiles": {
+      "explain": 254,
+      "focus": 824,
+      "conversation": 132,
+      "celebrate": 100,
+      "reassure": 183,
+      "greeting": 20,
+      "thanks": 30
+    },
+    "categories": {
+      "NARRATE_CTA": 100,
+      "NARRATE_SCAN": 212,
+      "NARRATE_ENGAGE": 108,
+      "OPEN_TRADE_CALL": 123,
+      "TRADE_WIN": 100,
+      "TRADE_LOSS": 67,
+      "NARRATE_PAIR": 82,
+      "NARRATE_LESSON": 154,
+      "CHAT_REACTION": 60,
+      "NARRATE_TRADE": 138,
+      "NARRATE_EXPIRY": 96,
+      "OPEN_TRADE_PUT": 123,
+      "TRADE_REFUND": 48,
+      "NARRATE_RESULT": 68,
+      "NARRATE_VOLATILITY": 28,
+      "START_STREAM_READY": 10,
+      "ANALYZING_CHART": 5,
+      "WEAK_SIGNAL_SWITCH_PAIR": 5,
+      "PAIR_SWITCHED_NEW_SCAN": 4,
+      "PREPARE_ENTRY": 3,
+      "IN_TRADE_WAITING": 5,
+      "PAUSE_BETWEEN_TRADES": 4
+    }
+  },
+  "errors": [],
+  "scope": "isolated_chromium_existing_audio_muted_not_native_or_tiktok_acceptance",
+  "verified_at": "2026-11-14T12:49:47.376030+00:00",
+  "policy_tests": 5,
+  "baseline_verified_files": 46,
+  "pixels": {
+    "candidate_heart_region": {
+      "box": [
+        1005,
+        235,
+        1045,
+        290
+      ],
+      "pink_pixels": 224
+    },
+    "baseline_corresponding_region": {
+      "box": [
+        330,
+        235,
+        370,
+        290
+      ],
+      "pink_pixels": 12
+    }
+  },
+  "source_sha256": {
+    "experiments/winky_avatar/candidate.mjs": "40baf4e2920e00eff43e9e04a0abb10f747fc5b61e25dd461071e359419f73c2",
+    "experiments/winky_avatar/index.html": "d62ae41ed47b37a58946b8845321b8f1832a59a81326e5afeba73a32c604241b",
+    "experiments/winky_avatar/ui.mjs": "f3a9cabfceeb612dcfd781e81e6925e9b23c667d23d3abefc13fc95cf4ba2e0b",
+    "experiments/winky_avatar/verify.cjs": "e54526e8363983be297b8d031c158dc89369f29facaa06989cbc2ad17bfdf596",
+    "experiments/winky_avatar/serve.py": "375c24f39f4272eb6659b2c731d6f4a61d6d303892089c86209aefb9b2fc305b",
+    "experiments/winky_avatar/README.md": "d98f55e28111b753291072d338a3016840945b8a2b814e77d1b265ebc235e19e",
+    "experiments/winky_avatar/Открыть стенд.command": "cf0db74394095a4876cb3e78577158cb3601258f4bf14bbc556eefb6223bd505",
+    "experiments/winky_avatar/.gitignore": "0b2aeda4a5309f3271f2aea97905052040c1dbf32a9bc181852a74030419e89a",
+    "experiments/winky_avatar/policy.mjs": "71f228bc9d703b987022575569bfd10bb162f22dc72a05413174df1f13815812",
+    "experiments/winky_avatar/policy.test.mjs": "b74112a7248fbb6ffc21452bd2bc1571b7b37334790bfa65578d2ad0e1aabde0"
+  }
+}

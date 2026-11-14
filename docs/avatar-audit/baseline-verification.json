@@ -1,0 +1,193 @@
+{
+  "verified_at": "2026-11-14T12:29:47.561228+00:00",
+  "backup": "artifacts/avatar-backups/20261114-140151/avatar-before.tgz",
+  "archive_sha256": "4b7672bb2a07d9563e4644770e3c8f2768fc231bab745cc0832d23fad057f0d0",
+  "files": {
+    "winky/app.py": {
+      "expected": "8d7dfe27e896c04857d4e1f3000877c6bbd4e83e9ae324023fa5810b7360b001",
+      "actual": "8d7dfe27e896c04857d4e1f3000877c6bbd4e83e9ae324023fa5810b7360b001"
+    },
+    "winky/chat_router.py": {
+      "expected": "fd8991038012090f5028cde1387273a62914cc850dd8c794ceecb81dee3700a9",
+      "actual": "fd8991038012090f5028cde1387273a62914cc850dd8c794ceecb81dee3700a9"
+    },
+    "winky/director.py": {
+      "expected": "45435229a4365dbfa7f91dca84cbc926bd964fa53e8b2d9dd4abc89ac06cae4b",
+      "actual": "45435229a4365dbfa7f91dca84cbc926bd964fa53e8b2d9dd4abc89ac06cae4b"
+    },
+    "winky/scenarios.py": {
+      "expected": "221cd086ab744662e9e268aea925aaf27820a3817fffe1213498056f4cd0c428",
+      "actual": "221cd086ab744662e9e268aea925aaf27820a3817fffe1213498056f4cd0c428"
+    },
+    "winky/tts.py": {
+      "expected": "ffd47caeac1c55e4302dff20c3e4609b4295720871a8af1c8e413b009fc9e15f",
+      "actual": "ffd47caeac1c55e4302dff20c3e4609b4295720871a8af1c8e413b009fc9e15f"
+    },
+    "winky/voice_bank.py": {
+      "expected": "9a49bd62903b8a9d837ef0b2d61dff8f24765753d5481df49e39fd0bb6dfc77f",
+      "actual": "9a49bd62903b8a9d837ef0b2d61dff8f24765753d5481df49e39fd0bb6dfc77f"
+    },
+    "winky/web/avatar.css": {
+      "expected": "34712f62291a6e91a877a85cde4395116b2759a54ebae3b72ea6c6dfc25803a1",
+      "actual": "34712f62291a6e91a877a85cde4395116b2759a54ebae3b72ea6c6dfc25803a1"
+    },
+    "winky/web/avatar.html": {
+      "expected": "f50eeda997f1882b49ae40828954e670f4176376bed7f4bb32cab7a7f8f1ca75",
+      "actual": "f50eeda997f1882b49ae40828954e670f4176376bed7f4bb32cab7a7f8f1ca75"
+    },
+    "winky/web/avatar.js": {
+      "expected": "3656d945879d168c00d9440f279e0c5f93cbac8fbe3edf6df8f6c5e31f59633e",
+      "actual": "3656d945879d168c00d9440f279e0c5f93cbac8fbe3edf6df8f6c5e31f59633e"
+    },
+    "winky/web/model/.gitkeep": {
+      "expected": "538f30424f8d4e54a24e73d16b26eaedd5f921482534b6929ee79fcb54834318",
+      "actual": "538f30424f8d4e54a24e73d16b26eaedd5f921482534b6929ee79fcb54834318"
+    },
+    "winky/web/model/Shibahu_skechfab.fbx": {
+      "expected": "179771a816c655ea3d21de48c07691f7138129b35683dbd3fa2823ad80edea80",
+      "actual": "179771a816c655ea3d21de48c07691f7138129b35683dbd3fa2823ad80edea80"
+    },
+    "winky/web/model/Texture/Shibahu_body_dif.png": {
+      "expected": "70fb2298408d904fcab58e0ef1dc81c463aac6e86fc490ec685a27c1817d6ebc",
+      "actual": "70fb2298408d904fcab58e0ef1dc81c463aac6e86fc490ec685a27c1817d6ebc"
+    },
+    "winky/web/model/Texture/Shibahu_cheek_msk.png": {
+      "expected": "2407c7990c23bba0d2d3c1fbb610e6f6c88397591d5c9a8ae950ee9fd21f6c86",
+      "actual": "2407c7990c23bba0d2d3c1fbb610e6f6c88397591d5c9a8ae950ee9fd21f6c86"
+    },
+    "winky/web/model/Texture/Shibahu_cosA_dif.png": {
+      "expected": "8af3bb638352124697cf12b0dff8110d2ef5362c264bfc59fb98504dc6a4b6da",
+      "actual": "8af3bb638352124697cf12b0dff8110d2ef5362c264bfc59fb98504dc6a4b6da"
+    },
+    "winky/web/model/Texture/Shibahu_cosB_dif.png": {
+      "expected": "6932ebbbca6c7eab1b27f98c6dccc4a566311259eb490494fd28ae2a82a57886",
+      "actual": "6932ebbbca6c7eab1b27f98c6dccc4a566311259eb490494fd28ae2a82a57886"
+    },
+    "winky/web/model/Texture/Shibahu_face_dif.png": {
+      "expected": "1105b56c1df904d47ef8f238612b2df859d8192ae85414591d4aa8f8fc39ba30",
+      "actual": "1105b56c1df904d47ef8f238612b2df859d8192ae85414591d4aa8f8fc39ba30"
+    },
+    "winky/web/model/Texture/Shibahu_hairA_dif.png": {
+      "expected": "7010057e7f219bc9c5c9d4269672da55f0e3aaa70f9986487010665c8c0490c9",
+      "actual": "7010057e7f219bc9c5c9d4269672da55f0e3aaa70f9986487010665c8c0490c9"
+    },
+    "winky/web/model/Texture/Shibahu_hairB_dif.png": {
+      "expected": "ad424fc1869e905723a5edde51ba8db1e14e395a6ec589cec27f5378749ba2a4",
+      "actual": "ad424fc1869e905723a5edde51ba8db1e14e395a6ec589cec27f5378749ba2a4"
+    },
+    "winky/web/model/Texture/base_msk.png": {
+      "expected": "3ac4ae81a849c11e9b0e38cb186f0ceecf5be5bd90bd43f291ab62fe161f4635",
+      "actual": "3ac4ae81a849c11e9b0e38cb186f0ceecf5be5bd90bd43f291ab62fe161f4635"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_body_dif.png": {
+      "expected": "4dc5762397b8de241f6fe51ca9fec9a2ffbce76820141a0293b52a53c92a94bc",
+      "actual": "4dc5762397b8de241f6fe51ca9fec9a2ffbce76820141a0293b52a53c92a94bc"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_cosA_dif.png": {
+      "expected": "50625b5d50e581f1cca8b9b3a07950b92c36dbb302acd60bfa102debcc44f9e1",
+      "actual": "50625b5d50e581f1cca8b9b3a07950b92c36dbb302acd60bfa102debcc44f9e1"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_cosB_dif.png": {
+      "expected": "d54ad6ccf91ec96271a38cfb5ad0c5ce1607a1a230cb86628b8d9ed3397e1529",
+      "actual": "d54ad6ccf91ec96271a38cfb5ad0c5ce1607a1a230cb86628b8d9ed3397e1529"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_face_dif.png": {
+      "expected": "9c58d292d9545daf6599cdc329ae280ec57235bf562c3973169430cda1d8c0d2",
+      "actual": "9c58d292d9545daf6599cdc329ae280ec57235bf562c3973169430cda1d8c0d2"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_hairA_dif.png": {
+      "expected": "3ddeb2d7948cb00e43040500d096c22a835a298ad3e16357f656b9a5ba141439",
+      "actual": "3ddeb2d7948cb00e43040500d096c22a835a298ad3e16357f656b9a5ba141439"
+    },
+    "winky/web/model/Texture/boosted_Shibahu_hairB_dif.png": {
+      "expected": "97773a07fd0eaf50aac866d3f6c9de488fc09bf08d178a35ef6033bdcb4ee70d",
+      "actual": "97773a07fd0eaf50aac866d3f6c9de488fc09bf08d178a35ef6033bdcb4ee70d"
+    },
+    "winky/web/model/alicia.vrm": {
+      "expected": "237bb02efadf8c13a114af91dd8e860173081457dee87017e51011c448d05dc2",
+      "actual": "237bb02efadf8c13a114af91dd8e860173081457dee87017e51011c448d05dc2"
+    },
+    "winky/web/model/avatar.vrm": {
+      "expected": "dd5ec932943e03694f85c13f6d599f7bf84ccb0ab5f5c7941b891489138306df",
+      "actual": "dd5ec932943e03694f85c13f6d599f7bf84ccb0ab5f5c7941b891489138306df"
+    },
+    "winky/web/model/shibahu.fbx": {
+      "expected": "179771a816c655ea3d21de48c07691f7138129b35683dbd3fa2823ad80edea80",
+      "actual": "179771a816c655ea3d21de48c07691f7138129b35683dbd3fa2823ad80edea80"
+    },
+    "winky/web/panel.css": {
+      "expected": "19937f03fd5ae5923a2b140668ec7f769c9f3f333b546cfd12fad8a78d08b513",
+      "actual": "19937f03fd5ae5923a2b140668ec7f769c9f3f333b546cfd12fad8a78d08b513"
+    },
+    "winky/web/panel.html": {
+      "expected": "5b716bd9effd70f25351292319fb2073fc436c69f4419d442c851e399d1d7555",
+      "actual": "5b716bd9effd70f25351292319fb2073fc436c69f4419d442c851e399d1d7555"
+    },
+    "winky/web/panel.js": {
+      "expected": "1a2f2c33ca006b1840981db004eea558058c46227fdac8568e8b29823bb3fef5",
+      "actual": "1a2f2c33ca006b1840981db004eea558058c46227fdac8568e8b29823bb3fef5"
+    },
+    "winky/web/vendor/jsm/curves/NURBSCurve.js": {
+      "expected": "7b7560795ee8b8869b7e6612c61187fb16dd59ab33cdc4565ce20cc00f79c467",
+      "actual": "7b7560795ee8b8869b7e6612c61187fb16dd59ab33cdc4565ce20cc00f79c467"
+    },
+    "winky/web/vendor/jsm/curves/NURBSUtils.js": {
+      "expected": "e7755151ab9f959ec5895252912bfd09957c76754db9d6a6bab41607fc9fb846",
+      "actual": "e7755151ab9f959ec5895252912bfd09957c76754db9d6a6bab41607fc9fb846"
+    },
+    "winky/web/vendor/jsm/libs/fflate.module.js": {
+      "expected": "5686c3d02432a47d8e31f16cabc2d725bbf4531a3abb37cc6fd00142256e3730",
+      "actual": "5686c3d02432a47d8e31f16cabc2d725bbf4531a3abb37cc6fd00142256e3730"
+    },
+    "winky/web/vendor/jsm/loaders/FBXLoader.js": {
+      "expected": "12b7e0d2554d3f81ac06deefc6b09af8f9cf88512831d4b785795a3889d4a2fc",
+      "actual": "12b7e0d2554d3f81ac06deefc6b09af8f9cf88512831d4b785795a3889d4a2fc"
+    },
+    "winky/web/vendor/jsm/loaders/GLTFLoader.js": {
+      "expected": "6f1719dcc6a179d30273dfb0de07a8c898a7981f7b08e600b446387f5967371f",
+      "actual": "6f1719dcc6a179d30273dfb0de07a8c898a7981f7b08e600b446387f5967371f"
+    },
+    "winky/web/vendor/jsm/utils/BufferGeometryUtils.js": {
+      "expected": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+      "actual": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6"
+    },
+    "winky/web/vendor/three-vrm/nodes/index.cjs": {
+      "expected": "6c798e5e387ea22ce6d30f6704f85d65b0f5ec26b83f56776a811f23c0d8130c",
+      "actual": "6c798e5e387ea22ce6d30f6704f85d65b0f5ec26b83f56776a811f23c0d8130c"
+    },
+    "winky/web/vendor/three-vrm/nodes/index.min.cjs": {
+      "expected": "09cdf9b2cf8b63ea4dab013d2032281c525df9b6dcb0db372a00d3ff4f377e59",
+      "actual": "09cdf9b2cf8b63ea4dab013d2032281c525df9b6dcb0db372a00d3ff4f377e59"
+    },
+    "winky/web/vendor/three-vrm/nodes/index.module.js": {
+      "expected": "1b88101eb9f22f3976249f1ff7f53cde08d2699f36c24d0b9b66d7e5ffa21f26",
+      "actual": "1b88101eb9f22f3976249f1ff7f53cde08d2699f36c24d0b9b66d7e5ffa21f26"
+    },
+    "winky/web/vendor/three-vrm/nodes/index.module.min.js": {
+      "expected": "0b4d83a8af6f598c980ccfdb2951c45b75dc0fed0952dd445fba27bc8d31bc90",
+      "actual": "0b4d83a8af6f598c980ccfdb2951c45b75dc0fed0952dd445fba27bc8d31bc90"
+    },
+    "winky/web/vendor/three-vrm/three-vrm.cjs": {
+      "expected": "ef4cb99ba7ae8ae637e2899d4067a2e6af6c7dbbf85f11709f8cd19be65c7e96",
+      "actual": "ef4cb99ba7ae8ae637e2899d4067a2e6af6c7dbbf85f11709f8cd19be65c7e96"
+    },
+    "winky/web/vendor/three-vrm/three-vrm.min.cjs": {
+      "expected": "cafbe029b67572ff53299ff82937b762e7788c430dc1977bda5649745af551ab",
+      "actual": "cafbe029b67572ff53299ff82937b762e7788c430dc1977bda5649745af551ab"
+    },
+    "winky/web/vendor/three-vrm/three-vrm.module.js": {
+      "expected": "bfc0f3bd49ee5b706b3055d366759e881f20dee32be344c4c8f586600f223434",
+      "actual": "bfc0f3bd49ee5b706b3055d366759e881f20dee32be344c4c8f586600f223434"
+    },
+    "winky/web/vendor/three-vrm/three-vrm.module.min.js": {
+      "expected": "99f943e956e52dbf52bbe418899e8a8ae5e35f5c79a94ab8e404926afc620bf2",
+      "actual": "99f943e956e52dbf52bbe418899e8a8ae5e35f5c79a94ab8e404926afc620bf2"
+    },
+    "winky/web/vendor/three.module.min.js": {
+      "expected": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6",
+      "actual": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6"
+    }
+  },
+  "result": "already_identical_no_overwrite_required",
+  "live_code_modified": false
+}
