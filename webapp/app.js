@@ -7,6 +7,16 @@
 
 "use strict";
 
+// Synchronize Telegram WebApp viewport & theme colors immediately
+if (window.Telegram?.WebApp) {
+  try {
+    window.Telegram.WebApp.ready();
+    window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.setHeaderColor("#0d1915");
+    window.Telegram.WebApp.setBackgroundColor("#09120f");
+  } catch (_) {}
+}
+
 const CURRENCY_FLAGS = {
   USD: "🇺🇸", EUR: "🇪🇺", GBP: "🇬🇧", JPY: "🇯🇵", AUD: "🇦🇺", CAD: "🇨🇦",
   CHF: "🇨🇭", NZD: "🇳🇿", CNY: "🇨🇳", CNH: "🇨🇳", AED: "🇦🇪", MAD: "🇲🇦",
@@ -1005,8 +1015,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.Telegram.WebApp.ready();
     window.Telegram.WebApp.expand();
     try {
-      window.Telegram.WebApp.setHeaderColor("#0b1619");
-      window.Telegram.WebApp.setBackgroundColor("#0b1619");
+      window.Telegram.WebApp.setHeaderColor("#0d1915");
+      window.Telegram.WebApp.setBackgroundColor("#09120f");
     } catch (_) {}
   }
 

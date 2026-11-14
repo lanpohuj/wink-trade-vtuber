@@ -34,67 +34,74 @@
   display: none !important;
 }
 
-body {
-  background-color: var(--wn-bg-main);
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100dvh !important;
+  min-height: 100dvh !important;
+  background: #0b1512 !important;
+  background-image: none !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  display: block !important;
   color: var(--wn-text);
   font-family: var(--wn-font-main);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-x: hidden;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .app-container {
-  width: 100%;
-  max-width: 420px;
-  min-height: 100vh;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100dvh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  display: block !important;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 8px 10px 24px 10px;
-  box-sizing: border-box;
 }
 
 .tactical-grid-bg {
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(16, 245, 135, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 245, 135, 0.03) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-  z-index: 0;
+  display: none !important;
 }
 
-/* ==================== UNIFIED WINKY PANEL (1-TO-1 WITH EXTENSION HUD) ==================== */
+/* ==================== UNIFIED WINKY PANEL (FULL-BLEED ROOT) ==================== */
 .winky-unified-panel {
   position: relative;
   z-index: 10;
-  width: 100%;
-  max-width: 370px;
-  margin: 6px auto 16px;
-  background: #0b1619;
-  border: 1px solid rgba(108, 229, 177, 0.22);
-  border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65), 0 0 28px rgba(56, 217, 162, 0.04);
-  overflow: visible;
-  display: flex;
-  flex-direction: column;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100dvh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: linear-gradient(180deg, #0d1915 0%, #09120f 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px 12px !important;
+  overflow: hidden !important;
 }
 
 /* ==================== PANEL HEADER ==================== */
 .winky-panel-header {
   position: relative;
   z-index: 25;
-  background: #101e20;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 18px 18px 0 0;
-  padding: 12px 14px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(108, 229, 177, 0.12) !important;
+  border-radius: 0 !important;
+  padding: 0 0 10px 0 !important;
+  margin-bottom: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex-shrink: 0 !important;
 }
 
 .winky-header-top {
@@ -374,12 +381,16 @@ body {
 
 /* ==================== PANEL BODY ==================== */
 .winky-panel-body {
-  padding: 12px 14px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
   position: relative;
   z-index: 15;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
 }
 
 .tab-view {
@@ -388,8 +399,12 @@ body {
 
 .tab-view.active {
   display: flex !important;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  justify-content: space-between !important;
 }
 
 /* ==================== MARKET SWITCH (MATTE DEEP-EMERALD) ==================== */
@@ -401,6 +416,8 @@ body {
   border-radius: 9px;
   padding: 2px;
   gap: 3px;
+  flex-shrink: 0 !important;
+  width: 100% !important;
 }
 
 .winky-market-switch.locked,
@@ -439,6 +456,8 @@ body {
   display: grid;
   grid-template-columns: 1.7fr 1fr;
   gap: 8px;
+  flex-shrink: 0 !important;
+  width: 100% !important;
 }
 
 .winky-select-box {
@@ -693,14 +712,20 @@ body {
   background: #101f20;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .winky-card-pair-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0 !important;
 }
 
 .winky-card-pair {
@@ -739,6 +764,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
+  flex-shrink: 0 !important;
 }
 
 .winky-metric-pill {
@@ -796,6 +822,7 @@ body {
   background: rgba(0, 0, 0, 0.35);
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0 !important;
 }
 
 /* ==================== DIRECTION & TA BLOCK ==================== */
@@ -806,24 +833,32 @@ body {
   justify-content: center !important;
   border-radius: 10px;
   padding: 12px 14px;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 116px !important;
 }
 
 .winky-direction-block.idle {
   min-height: 116px !important;
-  max-height: 124px !important;
+  max-height: none !important;
   height: auto !important;
+  flex: 1 1 auto !important;
   background: #0a1617 !important;
   border: 1px dashed rgba(255, 255, 255, 0.12) !important;
   color: #94aca6 !important;
-  font-size: 12.5px !important;
+  font-size: 13px !important;
   font-weight: 600 !important;
   text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .winky-direction-block.analysing {
-  min-height: 241px !important;
-  max-height: 241px !important;
-  height: 241px !important;
+  min-height: 180px !important;
+  max-height: none !important;
+  height: auto !important;
+  flex: 1 1 auto !important;
   background: #0a1617 !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow: none !important;
@@ -983,8 +1018,9 @@ body {
 
 .winky-direction-block.active {
   min-height: 116px !important;
-  max-height: 124px !important;
+  max-height: none !important;
   height: auto !important;
+  flex: 1 1 auto !important;
   color: #FFFFFF !important;
   padding: 12px 14px !important;
   gap: 8px !important;
@@ -1008,8 +1044,9 @@ body {
 
 .winky-direction-block.completed {
   min-height: 116px !important;
-  max-height: 124px !important;
+  max-height: none !important;
   height: auto !important;
+  flex: 1 1 auto !important;
   background: #0a1617 !important;
   border: 1px solid rgba(16, 245, 135, 0.45) !important;
   box-shadow: 0 0 16px rgba(16, 245, 135, 0.15) !important;
@@ -1211,16 +1248,18 @@ body {
 
 /* ==================== MAIN ACTION BUTTON ==================== */
 .winky-action-row {
-  display: flex;
-  width: 100%;
+  display: flex !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+  margin-top: 4px !important;
 }
 
 .winky-btn-get-signal {
   width: 100% !important;
-  height: 42px !important;
-  min-height: 42px !important;
-  max-height: 42px !important;
-  border-radius: 10px !important;
+  height: 46px !important;
+  min-height: 46px !important;
+  max-height: 46px !important;
+  border-radius: 12px !important;
   border: none !important;
   background: linear-gradient(180deg, #74E9B7 0%, #58D39E 100%) !important;
   color: #061510 !important;
@@ -1250,12 +1289,22 @@ body {
 }
 
 /* ==================== TAB 2: AI CHAT ==================== */
+#tabChat {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+}
+
 .winky-chat-welcome {
   display: flex;
   gap: 9px;
   align-items: center;
   padding: 8px 3px;
   margin-bottom: 4px;
+  flex-shrink: 0 !important;
 }
 
 .winky-chat-welcome img {
@@ -1282,8 +1331,10 @@ body {
 }
 
 .winky-chat-scroll {
-  height: 200px;
-  overflow-y: auto;
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 160px !important;
+  overflow-y: auto !important;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1336,6 +1387,8 @@ body {
   display: flex;
   gap: 6px;
   align-items: center;
+  flex-shrink: 0 !important;
+  margin-top: 8px !important;
 }
 
 .winky-chat-pill {
@@ -1373,24 +1426,30 @@ body {
   transform: none !important;
   width: 100% !important;
   max-width: 100% !important;
-  height: auto !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
   background: #0e1c1c !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
-  padding: 6px 10px 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 2px 4px !important;
   display: flex !important;
   gap: 6px !important;
-  border-radius: 0 0 18px 18px !important;
+  border-radius: 10px !important;
   box-shadow: none !important;
   z-index: 10 !important;
+  flex-shrink: 0 !important;
+  margin-top: 6px !important;
+  box-sizing: border-box !important;
 }
 
 .winky-nav-item.nav-item {
   flex: 1 !important;
+  height: 34px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 6px !important;
-  padding: 8px 0 !important;
+  padding: 0 !important;
   border-radius: 8px !important;
   color: #8da49e !important;
   font-size: 11.5px !important;
