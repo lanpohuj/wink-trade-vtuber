@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import logging
+import math
 import random
 import time
 from datetime import datetime, timezone
@@ -365,75 +366,40 @@ class CandleOHLC(BaseModel):
 
 
 def generate_realistic_candles(pair: str, direction: str, family: str = "TREND_PULLBACK") -> list[CandleOHLC]:
-    """Генерация 28 реалистичных японских свечей (OHLC) в соответствии с направлением и парой.
-    Никаких чередующихся зелёно-красных блоков! Моделирует тренды, консолидации и импульс входа."""
-    p = pair.upper()
-    if "JPY" in p:
-        base_price, step, decimals = 154.30, 0.06, 3
-    elif "BTC" in p:
-        base_price, step, decimals = 91450.0, 35.0, 2
-    elif "ETH" in p:
-        base_price, step, decimals = 3120.0, 3.0, 2
-    elif "XAU" in p or "GOLD" in p:
-        base_price, step, decimals = 2685.0, 1.5, 2
-    elif "SILVER" in p or "XAG" in p:
-        base_price, step, decimals = 31.40, 0.04, 3
-    elif any(c in p for c in ["RUB", "INR", "THB", "BRL"]):
-        base_price, step, decimals = 96.50, 0.04, 3
-    else:
-        base_price, step, decimals = 1.08450, 0.00015, 5
-
+    """Генерация 22 реалистичных японских свечей (OHLC) с непрерывностью open[i] = close[i-1]
+    и глубокими волнами размахом 18-42px."""
+    base_wave = [
+        0.22, 0.38, 0.58, 0.51, 0.72, 0.84, 0.68, 0.49, 0.34, 0.46, 0.64,
+        0.55, 0.36, 0.21, 0.16, 0.28, 0.23, 0.44, 0.63, 0.58, 0.78, 0.91,
+    ]
     is_buy = (direction == "BUY")
-
-    if is_buy:
-        moves = [
-            0.6, 1.2, -0.4, 0.8, 1.5, -0.5, 1.1, 0.9, -0.3, 1.4, -0.2,
-            -0.8, -1.2, 0.3, -1.0, -0.7, 0.2, -0.9, 0.1,
-            1.2, 1.6, -0.4, 1.8, 1.4, -0.3, 1.9,
-            2.1, 1.8,
-        ]
-    else:
-        moves = [
-            -0.6, -1.2, 0.4, -0.8, -1.5, 0.5, -1.1, -0.9, 0.3, -1.4, 0.2,
-            0.8, 1.2, -0.3, 1.0, 0.7, -0.2, 0.9, -0.1,
-            -1.2, -1.6, 0.4, -1.8, -1.4, 0.3, -1.9,
-            -2.1, -1.8,
-        ]
+    pair_seed = abs(hash(pair)) % 1000
 
     candles: list[CandleOHLC] = []
-    current_price = base_price - (sum(moves) * step * 0.45)
+    for i in range(len(base_wave)):
+        open_val = (0.14 if is_buy else 0.86) if i == 0 else candles[i - 1].close
+        raw_wave = base_wave[i] if is_buy else (1.0 - base_wave[i])
+        jitter = math.sin(pair_seed + i * 7.13) * 0.04
+        close_val = raw_wave + jitter
 
-    for i, m in enumerate(moves):
-        c_open = current_price
-        delta = m * step
-        c_close = c_open + delta
+        if abs(close_val - open_val) < 0.045:
+            close_val = open_val + (1.0 if close_val >= open_val else -1.0) * (0.05 + (i % 3) * 0.025)
 
-        body_top = max(c_open, c_close)
-        body_bottom = min(c_open, c_close)
+        body_top = max(open_val, close_val)
+        body_bot = min(open_val, close_val)
+        body_size = body_top - body_bot
 
-        upper_wick = abs(delta) * (0.2 + (0.3 if i % 2 == 0 else 0.15)) + (step * 0.2)
-        lower_wick = abs(delta) * (0.2 + (0.15 if i % 2 == 0 else 0.3)) + (step * 0.2)
-
-        if i >= 26:
-            if is_buy:
-                upper_wick = step * 0.15
-                lower_wick = step * 0.4
-            else:
-                lower_wick = step * 0.15
-                upper_wick = step * 0.4
-
-        c_high = body_top + upper_wick
-        c_low = body_bottom - lower_wick
+        high_val = body_top + body_size * (0.25 + ((i * 7) % 5) * 0.14)
+        low_val = body_bot - body_size * (0.25 + ((i * 11) % 5) * 0.14)
 
         candles.append(
             CandleOHLC(
-                open=round(c_open, decimals),
-                high=round(c_high, decimals),
-                low=round(c_low, decimals),
-                close=round(c_close, decimals),
+                open=round(open_val, 4),
+                high=round(high_val, 4),
+                low=round(low_val, 4),
+                close=round(close_val, 4),
             )
         )
-        current_price = c_close
 
     return candles
 

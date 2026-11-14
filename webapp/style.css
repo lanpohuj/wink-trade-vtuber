@@ -1234,7 +1234,7 @@ html, body {
   display: flex !important;
   width: 100% !important;
   position: static !important;
-  margin-top: 2px !important;
+  margin: 0 !important;
   flex-shrink: 0 !important;
 }
 
@@ -1249,10 +1249,10 @@ html, body {
   color: #061510 !important;
   font-family: inherit !important;
   font-weight: 700 !important;
-  font-size: 14.5px !important;
+  font-size: 13px !important;
   line-height: 1 !important;
-  letter-spacing: 0.01em !important;
-  text-transform: none !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
   box-shadow: 0 4px 14px rgba(108, 229, 177, 0.3) !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
@@ -1262,6 +1262,7 @@ html, body {
   gap: 8px !important;
   position: static !important;
   flex-shrink: 0 !important;
+  margin: 0 !important;
 }
 
 .winky-btn-get-signal:hover {

@@ -598,17 +598,15 @@ function syncPanelControlVisibility(phase) {
   if (!mkt || !sel) return;
 
   if (phase === "analysing") {
-    mkt.hidden = false;
-    sel.hidden = false;
-    mkt.classList.add("locked");
-    sel.classList.add("locked");
-    mkt.style.pointerEvents = "none";
-    sel.style.pointerEvents = "none";
-    mkt.style.opacity = "0.85";
-    sel.style.opacity = "0.85";
+    mkt.hidden = true;
+    sel.hidden = true;
+    mkt.style.setProperty("display", "none", "important");
+    sel.style.setProperty("display", "none", "important");
   } else if (phase === "trade") {
     mkt.hidden = false;
     sel.hidden = false;
+    mkt.style.removeProperty("display");
+    sel.style.removeProperty("display");
     mkt.classList.add("locked");
     sel.classList.add("locked");
     mkt.style.pointerEvents = "none";
@@ -618,6 +616,8 @@ function syncPanelControlVisibility(phase) {
   } else {
     mkt.hidden = false;
     sel.hidden = false;
+    mkt.style.removeProperty("display");
+    sel.style.removeProperty("display");
     mkt.classList.remove("locked");
     sel.classList.remove("locked");
     mkt.style.pointerEvents = "";
@@ -657,88 +657,44 @@ function getTradeSetupExplanation(sig, isRu = true) {
 }
 
 function generateClientRealisticCandles(pair = "AUD/CAD OTC", duration = "30s", direction = null) {
-  const p = (pair || "").toUpperCase();
-  let basePrice = 1.08450;
-  let step = 0.00015;
-  let decimals = 5;
+  const isBuy = direction ? (direction === "BUY") : (String(pair).length % 2 === 0);
+  const baseWave = [
+    0.22, 0.38, 0.58, 0.51, 0.72, 0.84, 0.68, 0.49, 0.34, 0.46, 0.64,
+    0.55, 0.36, 0.21, 0.16, 0.28, 0.23, 0.44, 0.63, 0.58, 0.78, 0.91
+  ];
 
-  if (p.includes("JPY")) {
-    basePrice = 154.30;
-    step = 0.06;
-    decimals = 3;
-  } else if (p.includes("BTC")) {
-    basePrice = 91450.0;
-    step = 35.0;
-    decimals = 2;
-  } else if (p.includes("ETH")) {
-    basePrice = 3120.0;
-    step = 3.0;
-    decimals = 2;
-  } else if (p.includes("XAU") || p.includes("GOLD")) {
-    basePrice = 2685.0;
-    step = 1.5;
-    decimals = 2;
-  } else if (p.includes("SILVER") || p.includes("XAG")) {
-    basePrice = 31.40;
-    step = 0.04;
-    decimals = 3;
-  } else if (["RUB", "INR", "THB", "BRL"].some(c => p.includes(c))) {
-    basePrice = 96.50;
-    step = 0.04;
-    decimals = 3;
+  let hash = 0;
+  const str = String(pair || "AUD/CAD OTC");
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
   }
+  const pairSeed = Math.abs(hash) % 1000;
 
-  const isBuy = direction ? (direction === "BUY") : (p.length % 2 === 0);
-
-  const moves = isBuy
-    ? [
-        0.6, 1.2, -0.4, 0.8, 1.5, -0.5, 1.1, 0.9, -0.3, 1.4, -0.2,
-        -0.8, -1.2, 0.3, -1.0, -0.7, 0.2, -0.9, 0.1,
-        1.2, 1.6, -0.4, 1.8, 1.4, -0.3, 1.9,
-        2.1, 1.8
-      ]
-    : [
-        -0.6, -1.2, 0.4, -0.8, -1.5, 0.5, -1.1, -0.9, 0.3, -1.4, 0.2,
-        0.8, 1.2, -0.3, 1.0, 0.7, -0.2, 0.9, -0.1,
-        -1.2, -1.6, 0.4, -1.8, -1.4, 0.3, -1.9,
-        -2.1, -1.8
-      ];
-
-  let currentPrice = basePrice - (moves.reduce((a, b) => a + b, 0) * step * 0.45);
   const candles = [];
+  for (let i = 0; i < baseWave.length; i++) {
+    const open = (i === 0) ? (isBuy ? 0.14 : 0.86) : candles[i - 1].close;
+    const rawWave = isBuy ? baseWave[i] : (1.0 - baseWave[i]);
+    const jitter = Math.sin(pairSeed + i * 7.13) * 0.04;
+    let close = rawWave + jitter;
 
-  for (let i = 0; i < moves.length; i++) {
-    const m = moves[i];
-    const cOpen = currentPrice;
-    const delta = m * step;
-    const cClose = cOpen + delta;
-
-    const bodyTop = Math.max(cOpen, cClose);
-    const bodyBottom = Math.min(cOpen, cClose);
-
-    let upperWick = Math.abs(delta) * (0.2 + (i % 2 === 0 ? 0.3 : 0.15)) + (step * 0.2);
-    let lowerWick = Math.abs(delta) * (0.2 + (i % 2 === 0 ? 0.15 : 0.3)) + (step * 0.2);
-
-    if (i >= 26) {
-      if (isBuy) {
-        upperWick = step * 0.15;
-        lowerWick = step * 0.4;
-      } else {
-        lowerWick = step * 0.15;
-        upperWick = step * 0.4;
-      }
+    if (Math.abs(close - open) < 0.045) {
+      close = open + (close >= open ? 1 : -1) * (0.05 + (i % 3) * 0.025);
     }
 
-    const cHigh = bodyTop + upperWick;
-    const cLow = bodyBottom - lowerWick;
+    const bodyTop = Math.max(open, close);
+    const bodyBot = Math.min(open, close);
+    const bodySize = bodyTop - bodyBot;
+
+    const high = bodyTop + bodySize * (0.25 + ((i * 7) % 5) * 0.14);
+    const low = bodyBot - bodySize * (0.25 + ((i * 11) % 5) * 0.14);
 
     candles.push({
-      open: Number(cOpen.toFixed(decimals)),
-      high: Number(cHigh.toFixed(decimals)),
-      low: Number(cLow.toFixed(decimals)),
-      close: Number(cClose.toFixed(decimals)),
+      open: Number(open.toFixed(4)),
+      high: Number(high.toFixed(4)),
+      low: Number(low.toFixed(4)),
+      close: Number(close.toFixed(4)),
     });
-    currentPrice = cClose;
   }
 
   return candles;
@@ -778,14 +734,14 @@ function drawRealisticCandleChart(canvas, candles) {
     ctx.stroke();
   }
 
-  // 16% vertical padding at top and bottom to eliminate clipping
+  // 10px top/bottom padding to utilize 85%+ canvas height
   const minLow = Math.min(...candles.map((c) => c.low));
   const maxHigh = Math.max(...candles.map((c) => c.high));
   const rawRange = maxHigh - minLow || 0.0001;
 
-  const paddingTop = height * 0.16;
-  const paddingBottom = height * 0.16;
-  const usableHeight = height - paddingTop - paddingBottom;
+  const topPadding = 10;
+  const botPadding = 10;
+  const usableHeight = height - topPadding - botPadding;
 
   const paddingLeft = 8;
   const paddingRight = 10;
@@ -793,17 +749,17 @@ function drawRealisticCandleChart(canvas, candles) {
 
   const count = candles.length;
   const stepX = usableWidth / count;
-  const bodyWidth = Math.max(3.5, Math.min(6, stepX * 0.65));
+  const barWidth = Math.max(6, Math.floor(stepX * 0.64));
 
-  function getY(price) {
-    const norm = (price - minLow) / rawRange;
-    return height - paddingBottom - norm * usableHeight;
+  function getY(val) {
+    const norm = (val - minLow) / rawRange;
+    return height - botPadding - norm * usableHeight;
   }
 
   candles.forEach((c, i) => {
     const x = paddingLeft + (i + 0.5) * stepX;
     const isUp = c.close >= c.open;
-    const color = isUp ? "#10F587" : "#FF4D6D";
+    const color = isUp ? "#12E286" : "#FF4760";
 
     const yHigh = getY(c.high);
     const yLow = getY(c.low);
@@ -812,11 +768,11 @@ function drawRealisticCandleChart(canvas, candles) {
 
     const top = Math.min(yOpen, yClose);
     const bottom = Math.max(yOpen, yClose);
-    const bodyHeight = Math.max(1.5, bottom - top);
+    const bodyHeight = Math.max(3, bottom - top);
 
-    // 1px crisp wick on half-pixel
+    // 1.2px wick
     ctx.strokeStyle = color;
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1.2;
     ctx.beginPath();
     const wickX = Math.round(x) + 0.5;
     ctx.moveTo(wickX, Math.round(yHigh));
@@ -825,9 +781,9 @@ function drawRealisticCandleChart(canvas, candles) {
 
     // Body
     ctx.fillStyle = color;
-    const rx = Math.round(x - bodyWidth / 2);
+    const rx = Math.round(x - barWidth / 2);
     const ry = Math.round(top);
-    const rw = Math.round(bodyWidth);
+    const rw = Math.round(barWidth);
     const rh = Math.round(bodyHeight);
     ctx.fillRect(rx, ry, rw, rh);
   });
