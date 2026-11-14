@@ -7,6 +7,9 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
   await page.goto('http://127.0.0.1:8794');await page.waitForFunction(()=>!document.getElementById('play').disabled);
   await page.selectOption('#category','NARRATE_ENGAGE');
   for(const action of ['quiet_laugh','ponder','playful_doubt','hand_heart']){
+   // Each first reaction is a fresh session; cooldown behavior is tested separately.
+   await page.reload();await page.waitForFunction(()=>!document.getElementById('play').disabled);
+   await page.selectOption('#category','NARRATE_ENGAGE');
    await page.selectOption('#gesture','');await page.selectOption('#chatEmotion',action);
    await page.click('#chat');
    await page.waitForFunction(action=>{
@@ -22,7 +25,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    results.push({action,id:started.id,rms:started.rms,profile:started.profile,stopped:true});
   }
   assert.deepEqual(errors,[]);
-  const output=path.join(__dirname,'.runtime/revision-3/speech-verification.json');
+  const output=path.join(__dirname,'.runtime/revision-4/speech-verification.json');
   fs.writeFileSync(output,JSON.stringify({scope:'simulated_chat_emotion_on_existing_muted_recording',results,errors},null,2)+'\n');
   console.log(JSON.stringify({speech_scenarios:results.length,errors}));
  }finally{await browser.close();}

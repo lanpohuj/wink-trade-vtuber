@@ -2,7 +2,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const {execFileSync}=require('node:child_process');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const output=path.join(__dirname,'.runtime/revision-3'),exporting=process.argv.includes('--export');
+const output=path.join(__dirname,'.runtime/revision-4'),exporting=process.argv.includes('--export');
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
  const browser=await chromium.launch({headless:true});
@@ -65,6 +65,20 @@ fs.mkdirSync(output,{recursive:true});
     return rows;
    };
    const landmarks={mouth:landmark('face_mesh9'),leftEye:landmark('face_mesh8',-1),rightEye:landmark('face_mesh8',1)};
+   const fingerMeshes=[];
+   c.fbx.traverse(m=>{
+    if(!m.isSkinnedMesh||!m.visible||m===mesh)return;
+    const si=m.geometry.attributes.skinIndex,sw=m.geometry.attributes.skinWeight,rows=[];if(!si)return;
+    for(let i=0;i<si.count;i++){let weight=0;for(let k=0;k<4;k++)if(m.skeleton.bones[si.getComponent(i,k)]?.name==='Shibahu_RightHandIndex3')weight+=sw.getComponent(i,k);if(weight>.65)rows.push(i);}
+    if(rows.length)fingerMeshes.push({mesh:m,rows});
+   });
+   const squintIndex=dict.face_mesh7??dict['blendShape1.face_mesh7'];
+   let squintEyeEnergy=0,squintMouthEnergy=0;
+   for(let i=0;i<base.count;i++){
+    const d=new THREE.Vector3().fromBufferAttribute(g.morphAttributes.position[squintIndex],i);
+    if(!g.morphTargetsRelative)d.sub(new THREE.Vector3().fromBufferAttribute(base,i));
+    if(base.getY(i)<138.3)squintMouthEnergy+=d.lengthSq();else squintEyeEnergy+=d.lengthSq();
+   }
    const point=rows=>{const sum=new THREE.Vector3();let weight=0;for(const[i,w]of rows){const p=mesh.getVertexPosition(i,new THREE.Vector3());mesh.localToWorld(p);sum.addScaledVector(p,w);weight+=w;}return sum.divideScalar(weight);};
    window.occlusionProbe=()=>{
     c.fbx.updateMatrixWorld(true);const meshes=[];
@@ -82,14 +96,20 @@ fs.mkdirSync(output,{recursive:true});
     const metrics=expressionMetrics(),index=new THREE.Vector3(...metrics.indexTip),chin=mouth.clone();chin.y-=2;
     const gap=new THREE.Vector3(...metrics.indexTip).lerp(new THREE.Vector3(...metrics.leftIndexTip),.5)
       .lerp(new THREE.Vector3(...metrics.thumbTip).lerp(new THREE.Vector3(...metrics.leftThumbTip),.5),.55);
+    const chinAim=point(landmarks.mouth).add(new THREE.Vector3(0,-1.8,0));
+    const chinRay=new THREE.Raycaster(camera.position,chinAim.clone().sub(camera.position).normalize());
+    const chinHit=chinRay.intersectObject(mesh,false).find(h=>{const mat=Array.isArray(mesh.material)?mesh.material[h.face.materialIndex]:mesh.material;return mat?.visible!==false;});
+    let skinGap=Infinity;
+    if(chinHit)for(const {mesh:m,rows}of fingerMeshes)for(const i of rows){const v=m.getVertexPosition(i,new THREE.Vector3());m.localToWorld(v);skinGap=Math.min(skinGap,v.distanceTo(chinHit.point));}
     return {mouth:mouth.toArray(),mouthHits,eyes:[firstHit(point(landmarks.leftEye)),firstHit(point(landmarks.rightEye))],
-     chinDistance:index.distanceTo(chin),heartOpening:firstHit(gap)};
+     chinDistance:index.distanceTo(chin),skinGap,chin:chinHit?.point.toArray(),squint:mesh.morphTargetInfluences[squintIndex],
+     squintEyeEnergy,squintMouthEnergy,heartOpening:firstHit(gap)};
    };
   });
   let imageIndex=0;const framesDir=path.join(output,'frames');if(exporting)fs.mkdirSync(framesDir,{recursive:true});
   for(const [action,title]of [
    ['shy','Смущение · ладонь прикрывает рот'],['quiet_laugh','Тихий смех · лёгкие движения плеч и головы'],
-   ['ponder','Задумчивость · палец у подбородка'],['playful_doubt','Игривое недоверие · мягкое покачивание головой'],['hand_heart','Сердечко руками · благодарность за поддержку'],
+   ['ponder','Задумчивость · касание подбородка и лёгкий прищур'],['playful_doubt','Игривое недоверие · мягкое покачивание головой'],['hand_heart','Сердечко руками · благодарность за поддержку'],
   ]){
    await page.evaluate(text=>document.getElementById('expressionTitle').textContent=text,title);
    await candidate.evaluate(action=>resetExpression(action),action);
@@ -104,7 +124,10 @@ fs.mkdirSync(output,{recursive:true});
    check(action+' has finite positions and returns to idle',samples.every(s=>[...s.wrist,...s.indexTip].every(Number.isFinite))&&samples.at(-1).active===null);
    check(action+' leaves both eyes uncovered by hands',probes.every(p=>p.eyes.every(h=>h.handWeight<.1)));
    if(action==='shy')check('shy palm physically covers the mouth',probes.every(p=>p.mouthHits.every(h=>h.handWeight>.8)));
-   if(action==='ponder')check('ponder finger reaches the chin',probes.every(p=>p.chinDistance<4));
+   if(action==='ponder'){
+    check('ponder real fingertip skin touches the visible chin within 2.5 mm',probes.every(p=>p.skinGap<.25));
+    check('ponder has a mild eye-only squint without mouth deformation',probes.every(p=>p.squint>.17&&p.squint<.23&&p.squintEyeEnergy>0&&p.squintMouthEnergy<1e-10));
+   }
    if(action==='quiet_laugh'){
     const held=samples.filter(s=>s.time>=.9&&s.time<=2.3).map(s=>s.shoulderZ);
     check('laugh shoulders have a separate rhythmic movement',Math.max(...held)-Math.min(...held)>.025);

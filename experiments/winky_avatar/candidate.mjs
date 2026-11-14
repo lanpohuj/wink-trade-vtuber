@@ -1,4 +1,5 @@
 import {Director} from './policy.mjs';
+import {LEGACY_ACTIONS,normalizeEvent} from './sync-event.mjs';
 import {REST, JOINTS, TRACKS, FACE_MOODS, sampleTrack, actionWeight} from './motion-tracks.mjs';
 const director = new Director();
 const controller = window.vtuber;
@@ -6,6 +7,7 @@ const originalUpdate = controller.update.bind(controller);
 const originalBone = controller.lerpBoneOffset.bind(controller);
 let frame = {gesture: 'listen', weight: 0, speaking: false};
 let audioRms = 0, hasSession = false;
+let scheduledKey='';
 const ease = x => {x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
 // Calibrated on the frozen FBX: each thumb has its own rest frame. Approximate
 // terminal thumb points now reach the outside of the index knuckle (.10/.22 cm).
@@ -104,7 +106,8 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
 const originalMorph=controller.smoothSetMorph.bind(controller);
 controller.smoothSetMorph=function(name,target,dt,speed=20){
   const mode=this.actionMode;
-  if(mode==='ponder' && name==='face_mesh7')target=0; // Keep the authored eyes open.
+  if(mode==='ponder' && name==='face_mesh7')target=.20*actionWeight(authored?.time||0); // Gentle eye-only squint; blinking remains independent.
+  else if(hasSession&&frame.profile==='thoughtful'&&name==='face_mesh7')target=.20*frame.weight;
   if(mode==='quiet_laugh' && !frame.speaking){
     const time=this.actionDuration-this.actionTimer;
     if(name==='face_mesh1')target=.28+.10*Math.max(0,Math.sin((time-.9)*17))*actionWeight(time);
@@ -126,17 +129,38 @@ controller.update = function(dt, elapsed) {
   dt = Math.max(0, Math.min(.5, dt));
   frame = director.frame(dt);
   if (hasSession && !frame.speaking) this.speechHoldTimer = 0;
+  const scheduled=hasSession&&director.active&&['during','tail'].includes(frame.phase)
+    && (Object.hasOwn(TRACKS,frame.gesture)||LEGACY_ACTIONS.includes(frame.gesture));
+  if(hasSession){
+    const key=scheduled?`${director.active.id}:${frame.phase}:${frame.gesture}`:'';
+    if(key!==scheduledKey){
+      this.actionMode=null;this.actionTimer=0;this.waveTimer=0;
+      if(key){
+        if(frame.gesture==='wave')this.wave(frame.poseDuration);
+        else this.triggerAction(frame.gesture,frame.poseDuration);
+      }
+      scheduledKey=key;
+    }
+  }
   // Preserve elapsed time at low frame rates. Small integration steps prevent
   // pose jumps without making a three-second action take ten seconds on screen.
   const steps=Math.max(1,Math.ceil(dt/.05)),step=dt/steps;
   for(let i=0;i<steps;i++){
     this.idleFlirtTimer=Infinity;
+    // Hold authored poses on the media clock, including pause and seek. Only the
+    // post-speech kiss uses elapsed time after the audio has actually ended.
+    if(scheduled){
+      const remaining=Math.max(.00001,frame.poseDuration-frame.poseTime)+step;
+      if(frame.gesture==='wave')this.waveTimer=remaining;
+      else {this.actionMode=frame.gesture;this.actionDuration=frame.poseDuration;this.actionTimer=remaining;}
+    }
     const waving=this.waveTimer>0,mode=waving?'wave':this.actionMode;
     const duration=waving?(this.labWaveDuration||3.2):this.actionDuration;
     const timer=waving?this.waveTimer:this.actionTimer;
     authored=Object.hasOwn(TRACKS,mode)?{...sampleTrack(mode,(duration-Math.max(0,timer-step))*3.2/duration),mode}:null;
     written.clear();
-    originalUpdate(step,elapsed-dt+(i+1)*step,frame.speaking,frame.speaking?audioRms:0);
+    const motionElapsed=scheduled&&LEGACY_ACTIONS.includes(frame.gesture)?frame.poseTime:elapsed-dt+(i+1)*step;
+    originalUpdate(step,motionElapsed,frame.speaking,frame.speaking?audioRms:0);
   }
   const kissing=this.actionMode==='flirt_kiss';
   if(kissing&&!kissWasActive)heartsSent=false;
@@ -151,26 +175,27 @@ window.addEventListener('message', e => {
     const a = director.begin(m.event);
     if (!a) return;
     hasSession = true;
+    scheduledKey='';
+    document.querySelectorAll('.winky-lab-heart').forEach(h=>h.remove());
     controller.actionMode = null; controller.actionTimer = 0; controller.waveTimer = 0;
     // Expressions don't invoke body actions in the candidate.
-    controller.currentEmotion = ['idle','happy','neutral','thinking','excited','blush','wink','surprised'].includes(m.event.emotion) ? m.event.emotion : 'happy';
+    const emotion=normalizeEvent(m.event).emotion;
+    controller.currentEmotion = ['idle','happy','neutral','thinking','excited','blush','wink','surprised'].includes(emotion) ? emotion : 'happy';
     controller.emotionResetTimer = 4;
-    if (a.gesture === 'wave') controller.wave(Math.min(3.2,a.duration));
-    if (a.gesture !== 'wave' && Object.hasOwn(TRACKS,a.gesture)) controller.triggerAction(a.gesture,a.duration);
   } else if (m.type === 'clock' && director.active?.id === m.id) {
-    director.clock(m.id, m.time); audioRms = Math.max(0, Math.min(1, Number(m.rms) || 0));
+    director.clock(m.id, m.time,m.playing!==false); audioRms = Math.max(0, Math.min(1, Number(m.rms) || 0));
   } else if (m.type === 'end' && director.active?.id === m.id) {
     director.end(m.id); audioRms = 0; controller.waveTimer = 0;
     controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
   } else if (m.type === 'legacy' || m.type === 'preview') {
-    director.end(director.active?.id); audioRms = 0;
+    director.cancel(); audioRms = 0;hasSession=false;scheduledKey='';
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
     kissWasActive=false;heartsSent=false;
     if (m.action === 'wave') controller.wave();
     else controller.triggerAction(m.action, 3.2);
   } else if (m.type === 'cancel') {
-    director.end(director.active?.id);audioRms=0;controller.speechHoldTimer=0;
+    director.cancel();hasSession=false;scheduledKey='';audioRms=0;controller.speechHoldTimer=0;
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
     controller.currentEmotion='idle';controller.emotionResetTimer=0;
     document.querySelectorAll('.winky-lab-heart').forEach(h=>h.remove());

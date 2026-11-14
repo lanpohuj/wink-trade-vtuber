@@ -26,8 +26,8 @@ const cover={
   ...relaxed,
 };
 const thinking={
-  RightShoulder:[0,0,.02],RightArm:[-.26,-.55,.40],RightForeArm:[-.14,-2.45,0],
-  RightHand:[-.53029,-.27548,-.30918],forearmTwist:-.55,
+  RightShoulder:[0,0,.02],RightArm:[-0.4537746,-0.7543527,0.4253688],RightForeArm:[-2.4307703,-0.4941997,-2.6434844],
+  RightHand:[-0.4436753,-0.2632735,-0.293206],forearmTwist:0,
   Head:[.025,.16,.075],Neck:[.015,.08,.04],
   Spine:[0,0,0],Spine1:[.012,.01,0],Spine2:[.015,.015,0],LeftShoulder:[0,0,.015],
 };

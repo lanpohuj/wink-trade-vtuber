@@ -62,3 +62,25 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/ver
 Полный разбор и границы приёмки: `docs/avatar-audit/analysis.md`.
 Уточнения второй доработки: `docs/avatar-audit/revision-2.md`.
 Третья доработка: `docs/avatar-audit/revision-3.md`.
+
+Четвёртая доработка: указательный палец касается кожи подбородка, добавлен
+лёгкий прищур без деформации рта. Синхронизация расширена на весь читаемый
+каталог: 1543 записи и 575 текстовых вариантов из всех известных источников.
+Внизу стенда есть выбор источника/шаблона и симуляция произвольного ответа.
+У текста без готового аудио — явный беззвучный просмотр, без синтеза.
+
+Жест следует времени записи и фиксируется на паузе; артикуляция останавливается.
+Поцелуй выполняется после окончания речи и отменяется новой репликой или Stop.
+Старые и новые жесты чередуются по смыслу с интервалом между крупными движениями.
+Рабочая очередь SpeechController и живой TikTok к кандидату не подключены.
+Подробности, таблица маршрутов и ограничения: `docs/avatar-audit/revision-4.md`.
+
+Дополнительные проверки при запущенном стенде:
+
+```bash
+node --test experiments/winky_avatar/policy.test.mjs experiments/winky_avatar/sync.test.mjs
+.venv/bin/python experiments/winky_avatar/test_sync_catalog.py
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/verify-sync.cjs
+```
+
+Актуальные снимки, полный реестр и экспорт новых движений: `.runtime/revision-4`.

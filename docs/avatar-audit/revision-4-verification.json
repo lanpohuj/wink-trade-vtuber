@@ -1,0 +1,158 @@
+{
+  "scope": "isolated_avatar_lab_only",
+  "working_application_integration": false,
+  "live_tiktok_acceptance": false,
+  "source_rows": 2118,
+  "sources": {
+    "recording": 1543,
+    "scenario": 67,
+    "keyword": 14,
+    "scenario_social": 36,
+    "scenario_cta": 18,
+    "router_fallback": 61,
+    "local_reply": 104,
+    "legacy_scenario_text": 242,
+    "app_compat_text": 33
+  },
+  "routes": [
+    {
+      "id": "join",
+      "category": "CHAT_REACTION",
+      "chat_kind": "join",
+      "intent": "greeting"
+    },
+    {
+      "id": "follow",
+      "category": "CHAT_REACTION",
+      "chat_kind": "follow",
+      "intent": "thanks"
+    },
+    {
+      "id": "gift",
+      "category": "CHAT_REACTION",
+      "chat_kind": "gift",
+      "intent": "thanks"
+    },
+    {
+      "id": "like",
+      "category": "CHAT_REACTION",
+      "chat_kind": "like",
+      "intent": "thanks"
+    },
+    {
+      "id": "pair_request",
+      "category": "CHAT_REPLY",
+      "chat_kind": "",
+      "intent": "pair_request"
+    },
+    {
+      "id": "llm_reply",
+      "category": "CHAT_REPLY",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "llm_fallback",
+      "category": "CHAT_REPLY",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "manual",
+      "category": "MANUAL",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "signal_announcement",
+      "category": "SIGNAL_ANNOUNCEMENT",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "trade_event",
+      "category": "TRADE_EVENT",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "quick_reply",
+      "category": "QUICK_REPLY",
+      "chat_kind": "",
+      "intent": "general"
+    },
+    {
+      "id": "keyword_reply",
+      "category": "CHAT_REPLY",
+      "chat_kind": "",
+      "intent": "general"
+    }
+  ],
+  "source_sha256": {
+    "winky/scenarios.yaml": "5768a4f4ff635f832efb1892dc932bb3c4e273628089e0a1ad7d9a7a8e6d84cb",
+    "winky/scenarios.py": "221cd086ab744662e9e268aea925aaf27820a3817fffe1213498056f4cd0c428",
+    "winky/chat_router.py": "fd8991038012090f5028cde1387273a62914cc850dd8c794ceecb81dee3700a9",
+    "winky/chat_style.py": "22715cb7dde01fa19e1c1daf35110edde760dc2f928d364b8625efe802061346",
+    "winky/deepseek.py": "6b285e4bd1a41320e7605cc73c54804d1b206cfdec269e07f09585c3ffdba68b",
+    "winky/director.py": "45435229a4365dbfa7f91dca84cbc926bd964fa53e8b2d9dd4abc89ac06cae4b",
+    "winky/app.py": "8d7dfe27e896c04857d4e1f3000877c6bbd4e83e9ae324023fa5810b7360b001",
+    "winky/tts.py": "ffd47caeac1c55e4302dff20c3e4609b4295720871a8af1c8e413b009fc9e15f"
+  },
+  "node_tests": 14,
+  "catalog_python_tests": 3,
+  "expression_checks": 25,
+  "sync_checks": 15,
+  "regression_checks": 17,
+  "speech_scenarios": 4,
+  "chin_skin_gap_cm": [
+    0.058660242300063725,
+    0.07557396079152041
+  ],
+  "squint_weight": [
+    0.19999968578211305,
+    0.19999999997871842
+  ],
+  "squint_mouth_energy": [
+    0,
+    0
+  ],
+  "squint_pixels": {
+    "crop": [
+      224,
+      138,
+      326,
+      177
+    ],
+    "measure": "fixed iris-color mask; blink disabled, matched pose/camera",
+    "weights": {
+      "0": {
+        "visible_iris_pixels": 436,
+        "relative_to_open": 1.0
+      },
+      "0.12": {
+        "visible_iris_pixels": 408,
+        "relative_to_open": 0.9357798165137615
+      },
+      "0.2": {
+        "visible_iris_pixels": 382,
+        "relative_to_open": 0.8761467889908257
+      },
+      "0.28": {
+        "visible_iris_pixels": 370,
+        "relative_to_open": 0.8486238532110092
+      },
+      "0.36": {
+        "visible_iris_pixels": 343,
+        "relative_to_open": 0.786697247706422
+      }
+    }
+  },
+  "protected_files": 324,
+  "protected_mismatches": [],
+  "backup_files": 46,
+  "backup_mismatches": [],
+  "video": "/Users/alansalam/Wink Trade Pocket/experiments/winky_avatar/.runtime/revision-4/new-expressions.mp4",
+  "video_fps": 30,
+  "video_frames": 540,
+  "video_audio": false
+}

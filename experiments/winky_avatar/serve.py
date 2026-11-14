@@ -13,6 +13,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from urllib.request import urlopen
+from sync_catalog import build_catalog
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -107,7 +108,7 @@ def build_library():
                 if excluded and any(r.get('sha256') == hashlib.sha256(path.read_bytes()).hexdigest() for r in excluded):
                     continue
                 seen.add(key)
-                rows.append({k: record.get(k) for k in ['text', 'lang', 'duration', 'conditions', 'tone', 'auditory_verified']}
+                rows.append({k: record.get(k) for k in ['text', 'lang', 'duration', 'conditions', 'tone', 'topic', 'delivery', 'auditory_verified']}
                             | dict(id=key, category=category, bank=bank.name, audio=f'/audio/{len(rows)}', review='owner_sampled' if sampled else 'legacy_or_individual'))
                 audio[f'/audio/{len(rows)-1}'] = path
     return rows, audio
@@ -122,6 +123,8 @@ class Handler(BaseHTTPRequestHandler):
         path = None
         if route == '/library.json':
             return self.reply(json.dumps(self.server.library, ensure_ascii=False).encode(), 'application/json')
+        if route == '/sync-catalog.json':
+            return self.reply(json.dumps(self.server.sync_catalog, ensure_ascii=False).encode(), 'application/json')
         if route == '/health':
             return self.reply(json.dumps({'isolated': True, 'snapshot_sha256': self.server.info['archive_sha256'], 'recordings': len(self.server.library)}).encode(), 'application/json')
         if route == '/frame.html':
@@ -152,7 +155,7 @@ parent.postMessage({scope:'winky-avatar-lab',type:'ready',candidate:CANDIDATE},l
             path = self.server.audio[route]
         elif route == '/':
             path = HERE / 'index.html'
-        elif route in ['/candidate.mjs', '/policy.mjs', '/ui.mjs', '/motion-tracks.mjs', '/extra-motions.mjs']:
+        elif route in ['/candidate.mjs', '/policy.mjs', '/ui.mjs', '/motion-tracks.mjs', '/extra-motions.mjs', '/sync-event.mjs']:
             path = HERE / route[1:]
         else:
             static = (SNAPSHOT / 'winky/web' / route.lstrip('/')).resolve()
@@ -192,6 +195,7 @@ def main():
     library, audio = build_library()
     server = ThreadingHTTPServer(('127.0.0.1', args.port), Handler)
     server.info, server.library, server.audio = info, library, audio
+    server.sync_catalog = build_catalog(library)
     print(f'Winky avatar laboratory: http://127.0.0.1:{args.port} ({len(library)} local recordings)', flush=True)
     if args.open:
         threading.Timer(.3, lambda: webbrowser.open(f'http://127.0.0.1:{args.port}')).start()

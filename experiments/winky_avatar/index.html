@@ -7,7 +7,7 @@
 <main>
 <h1>Винки · лаборатория анимаций</h1>
 <p>Отдельный экспериментальный стенд. Слева — точная резервная версия, справа — кандидат. Оба показывают одну модель и одну запись. Изменения справа не подключены к приложению.</p>
-<div class="controls"><label>Язык <select id="lang"><option value="ru">RU · Марин</option><option value="en">EN · Venti</option></select></label><select id="category" aria-label="Категория фразы"></select><select id="record" aria-label="Запись"></select></div>
+<div class="controls"><label>Язык <select id="lang"><option value="ru">RU</option><option value="en">EN</option></select></label><select id="category" aria-label="Категория фразы"></select><select id="record" aria-label="Запись"></select></div>
 <div id="phrase"></div>
 <div class="controls"><button class="primary" id="play" disabled>Загрузка модели…</button><button id="stop">Остановить</button><label>Жест <select id="gesture"><option value="">По смыслу фразы</option></select></label><label><input id="mute" type="checkbox" checked>Без звука</label></div>
 <audio id="audio" controls></audio>
@@ -17,4 +17,10 @@
 <section class="catalog"><strong>Любимые движения · сравнение с резервом</strong><p class="note">Слева — оригинал. Справа — доработанные приветствие, смущение, кулачки и поцелуй с сердечками. Качание бёдрами сохранено. Танец с поднятыми руками доступен для разбора, в автоматические реакции кандидата он не включён.</p><div id="legacy"></div></section>
 <p class="note">Используются существующие локальные MP3. Генерация речи и запросы к Fish Audio отсутствуют. Свободный ответ чата можно проверить выбором эмоции ниже без синтеза.</p>
 <div class="controls"><select id="chatIntent" aria-label="Смысл ответа чата"><option value="general">Обычный ответ</option><option value="greeting">Приветствие</option><option value="compliment">Комплимент</option><option value="strategy">Объяснение</option><option value="bot">Инструкция зрителю</option><option value="skeptic">Ответ скептику</option><option value="gambler">Успокоить зрителя</option></select><select id="chatEmotion" aria-label="Эмоция ответа чата"><option>happy</option><option>thinking</option><option>wink</option><option>blush</option><option>excited</option><option>surprised</option><option>neutral</option><option value="quiet_laugh">Тихий смех</option><option value="ponder">Задумчивость</option><option value="playful_doubt">Игривое недоверие</option><option value="hand_heart">Сердечко руками</option></select><button id="chat">Проверить тип ответа чата на выбранной записи</button></div>
+<section class="catalog"><strong>Все источники фраз и ответов</strong><p id="coverage"></p>
+<div class="controls"><select id="templateLang" aria-label="Язык шаблона"><option value="ru">RU</option><option value="en">EN</option></select><select id="source" aria-label="Источник текста"></select><select id="template" aria-label="Шаблон" style="max-width:650px"></select></div>
+<p id="templateText"></p><p id="plan" class="note"></p><button id="templatePlay">Посмотреть без озвучки</button>
+<p class="note">Тексты без готовой записи показывают только движение по условной шкале времени. Озвучка не создаётся. Переменные {user}, {gift}, {pair} остаются шаблонами.</p></section>
+<section class="catalog"><strong>Ответ на произвольный комментарий · без озвучки</strong><p class="note">Проверка маршрута будущего ответа: учитываются тип события, смысл комментария и тег эмоции в ответе. Это симуляция, соединения с TikTok нет.</p>
+<div class="controls"><label>Событие <select id="route"></select></label><input id="commentText" aria-label="Комментарий зрителя" placeholder="Комментарий зрителя" value="Что думаешь об этом?"><input id="replyText" aria-label="Ответ Винки" placeholder="Ответ Винки с тегом эмоции" value="[thinking] Сейчас подумаю…" style="min-width:330px"><button id="dynamicPlay">Показать ответ</button></div></section>
 </main><script type="module" src="/ui.mjs"></script></html>
