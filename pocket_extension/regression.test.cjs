@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setVisualTradeEvidence(value) { visualTradeEvidence = value; },
       getVisualTradeEvidence() { return visualTradeEvidence; },
@@ -1050,3 +1050,68 @@ test('dispatch: waitForOptimalMicroEntry timeout does not abort trade execution 
   assert.ok(c.state.tradeContext);
   assert.equal(c.state.botState, 'IN_TRADE');
 });
+
+test('suppressPocketDemoUpsellPopups removes demo-to-real upsell popups and preserves main containers', () => {
+  const c = loadContent();
+  let removedCards = [];
+  const fakeUpsellCard = {
+    textContent: 'Отличная работа! Не упустите возможность получить реальную прибыль! Инвестировать реальные деньги',
+    offsetWidth: 320,
+    offsetHeight: 180,
+    style: {
+      setProperty(k, v) { this[k] = v; }
+    },
+    remove() { removedCards.push(this); },
+    closest(selector) { return selector.includes('winky') ? null : this; }
+  };
+  const fakeLargeContainer = {
+    textContent: 'Отличная работа! Инвестировать реальные деньги',
+    offsetWidth: 900,
+    offsetHeight: 600,
+    style: { setProperty() {} },
+    remove() { assert.fail('Large container should never be removed'); },
+    closest() { return null; }
+  };
+  const fakeBotElement = {
+    textContent: 'Инвестировать реальные деньги',
+    offsetWidth: 200,
+    offsetHeight: 80,
+    style: { setProperty() {} },
+    remove() { assert.fail('Bot element should never be removed'); },
+    closest(selector) { return selector.includes('winky') ? {} : null; }
+  };
+
+  c.document.querySelectorAll = (selector) => {
+    if (selector.includes('cabinet/quick-high-low')) return [];
+    return [fakeUpsellCard, fakeLargeContainer, fakeBotElement];
+  };
+
+  c.suppressPocketDemoUpsellPopups();
+  assert.equal(removedCards.length, 1);
+  assert.equal(fakeUpsellCard.style.display, 'none');
+  assert.equal(fakeUpsellCard.style.visibility, 'hidden');
+});
+
+test('suppressPocketDemoUpsellPopups removes elements by upsell link /cabinet/quick-high-low', () => {
+  const c = loadContent();
+  let removed = [];
+  const card = {
+    offsetWidth: 300,
+    offsetHeight: 150,
+    style: { setProperty(k, v) { this[k] = v; } },
+    remove() { removed.push(this); },
+    closest(selector) { return selector.includes('winky') ? null : this; }
+  };
+  const link = {
+    closest(selector) { return card; }
+  };
+  c.document.querySelectorAll = (selector) => {
+    if (selector.includes('cabinet/quick-high-low')) return [link];
+    return [];
+  };
+  c.suppressPocketDemoUpsellPopups();
+  assert.equal(removed.length, 1);
+  assert.equal(card.style.display, 'none');
+  assert.equal(card.style.visibility, 'hidden');
+});
+

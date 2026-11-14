@@ -476,8 +476,11 @@
         if (state.botState === 'IN_TRADE') state.tradeEndTime = data.closesAt;
       }
     }
-    if (data.type === 'BROKER_DEAL_RESULT' && trade && trade.brokerId && String(data.orderId) === String(trade.brokerId) && Number.isFinite(data.net)) {
-      trade.brokerResult = { id: data.orderId, net: data.net, openPrice:data.openPrice, closePrice:data.closePrice, closedAt:data.closedAt };
+    if (data.type === 'BROKER_DEAL_RESULT') {
+      try { suppressPocketDemoUpsellPopups(); } catch (_) {}
+      if (trade && trade.brokerId && String(data.orderId) === String(trade.brokerId) && Number.isFinite(data.net)) {
+        trade.brokerResult = { id: data.orderId, net: data.net, openPrice:data.openPrice, closePrice:data.closePrice, closedAt:data.closedAt };
+      }
     }
 
     // A. Live Price Tick with Y-ratio
@@ -2529,6 +2532,63 @@
 
   setInterval(scanPocketOptionDOM, 1000);
 
+  function suppressPocketDemoUpsellPopups() {
+    try {
+      if (typeof document === 'undefined' || !document.querySelectorAll) return;
+
+      // 1. Selector-based fast removal of known demo-to-real upsell links (/cabinet/quick-high-low)
+      const upsellLinks = document.querySelectorAll('a[href*="/cabinet/quick-high-low"], a[href*="quick-high-low"]');
+      if (upsellLinks && upsellLinks.length) {
+        upsellLinks.forEach(link => {
+          const card = link.closest && link.closest('[class*="popup"], [class*="modal"], [class*="notify"], [class*="notification"], [class*="toast"], [class*="congrat"], [class*="alert"], div');
+          if (card && card !== document.body && card !== document.documentElement && !card.closest?.('#winky-bot-root')) {
+            const w = card.offsetWidth || 0, h = card.offsetHeight || 0;
+            if ((w === 0 || w < 550) && (h === 0 || h < 400)) {
+              if (card.style?.setProperty) {
+                card.style.setProperty('display', 'none', 'important');
+                card.style.setProperty('visibility', 'hidden', 'important');
+              }
+              try { card.remove(); } catch (_) {}
+            }
+          }
+        });
+      }
+
+      // 2. Targeted search for floating notification/toast containers outside #winky-bot-root
+      const candidates = document.querySelectorAll(
+        '.demo-congrat-popup, .congrat-block, .modal-demo-congrat, .notification-demo-congrat, .demo-to-real-popup, .QuickHighLowDemoPopup, .quick-high-low-demo-popup, [class*="congrat"], [class*="notification"], [class*="popup"], [class*="toast"], [class*="modal"], .bottom-right-block'
+      );
+      if (candidates && candidates.length) {
+        candidates.forEach(el => {
+          if (el.closest?.('#winky-bot-root')) return;
+          const w = el.offsetWidth || 0, h = el.offsetHeight || 0;
+          if (w > 550 || h > 400) return; // Strict safety guard: never touch main layout containers or chart
+
+          const text = el.textContent || '';
+          if (!text) return;
+
+          const isUpsell =
+            text.includes('Инвестировать реальные деньги') ||
+            text.includes('Не упустите возможность получить реальную прибыль') ||
+            (text.includes('Отличная работа') && (text.includes('реальную прибыль') || text.includes('реальные деньги'))) ||
+            text.includes('Invest real money') ||
+            text.includes('make real profit') ||
+            (text.includes('Great job') && (text.includes('real profit') || text.includes('real money')));
+
+          if (isUpsell) {
+            if (el.style?.setProperty) {
+              el.style.setProperty('display', 'none', 'important');
+              el.style.setProperty('visibility', 'hidden', 'important');
+            }
+            try { el.remove(); } catch (_) {}
+          }
+        });
+      }
+    } catch (_) {}
+  }
+
+  setInterval(suppressPocketDemoUpsellPopups, 1000);
+
   /* ==================== 3. DOM Automation & PO Controls ==================== */
 
   const failedPairsBlacklist = new Map(); // lowercase pair -> timestamp
@@ -4182,6 +4242,8 @@
     const profitDelta = outcomeResult.profitDelta;
     const lossDelta = outcomeResult.lossDelta;
     visualTradeOutcome = {outcome: outcomeResult.outcome, profitDelta, lossDelta};
+    try { suppressPocketDemoUpsellPopups(); } catch (_) {}
+    setTimeout(() => { try { suppressPocketDemoUpsellPopups(); } catch (_) {} }, 350);
 
     loggerLog(`[onSignalTimerFinished] Итог: ${outcomeResult.outcome} (причина: ${outcomeResult.reason}, profitDelta: ${profitDelta}, lossDelta: ${lossDelta})`);
 

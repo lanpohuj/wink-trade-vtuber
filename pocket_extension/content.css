@@ -2093,3 +2093,38 @@
   color: #FF4D6D !important;
   text-shadow: 0 0 14px rgba(255, 77, 109, 0.85), 0 0 28px rgba(255, 77, 109, 0.4) !important;
 }
+
+/* ==================== BLOCK POCKET OPTION DEMO-TO-REAL UPSELL POPUP ==================== */
+/* Hides "Отличная работа! Не упустите возможность получить реальную прибыль! Инвестировать реальные деньги" / "Great job! Invest real money" */
+.demo-congrat-popup,
+.congrat-block,
+.modal-demo-congrat,
+.notification-demo-congrat,
+.demo-to-real-popup,
+.QuickHighLowDemoPopup,
+.quick-high-low-demo-popup,
+.demo-upsell-popup,
+[class*="demo-congrat"],
+[class*="congrat-popup"],
+[class*="congrat-modal"],
+[class*="real-profit-popup"],
+[class*="demo-upsell"],
+div[class*="notification"]:has(a[href*="/cabinet/quick-high-low"]),
+div[class*="popup"]:has(a[href*="/cabinet/quick-high-low"]),
+div[class*="modal"]:has(a[href*="/cabinet/quick-high-low"]),
+div[class*="toast"]:has(a[href*="/cabinet/quick-high-low"]),
+div:has(> a[href*="/cabinet/quick-high-low"]),
+a[href*="/cabinet/quick-high-low"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
