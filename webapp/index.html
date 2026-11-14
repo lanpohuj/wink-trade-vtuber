@@ -19,8 +19,8 @@
 
   <!-- ==================== TOPBAR ==================== -->
   <header class="topbar">
-    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI (Click for BUY trigger)">
-      <div class="brand-icon winky-neko-icon" style="width:26px; height:26px; display:flex; align-items:center; justify-content:center; filter:drop-shadow(0 0 8px rgba(0,245,160,0.5));">
+    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI">
+      <div class="brand-icon winky-neko-icon" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; filter:drop-shadow(0 0 8px rgba(0,245,160,0.5));">
         <svg viewBox="0 0 24 24" fill="none" style="width:100%; height:100%;">
           <path d="M4 19V9.5L8 4L12 8L16 4L20 9.5V19C20 19.5 19.5 20 19 20H5C4.5 20 4 19.5 4 19Z" stroke="#00F5A0" stroke-width="2" stroke-linejoin="round"/>
           <circle cx="8.5" cy="13.5" r="1.5" fill="#FFB800"/>
@@ -30,62 +30,18 @@
       </div>
       <div class="brand-info">
         <div class="brand-title">WINKY<span>AI</span></div>
-        <div class="brand-sub">NEKO-CYBER v3.0</div>
+        <div class="brand-sub">TRADING ASSISTANT</div>
       </div>
     </div>
 
     <div class="topbar-actions">
-      <!-- Live Stream Counter HUD Toggle -->
-      <button type="button" class="btn-live-toggle" id="btnLiveToggle" title="Табло стримера WINS/LOSSES">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span class="live-label">LIVE SCORE</span>
-      </button>
-
       <!-- Language Switch RU / EN -->
       <div class="lang-switch" id="langSwitch" data-active="ru">
         <button type="button" class="lang-btn active" data-lang="ru">RU</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
       </div>
-
-      <!-- VIP Status Badge -->
-      <div class="user-status-badge" id="userStatusBadge">
-        <span class="badge vip" id="badgeVip" hidden>
-          <svg class="badge-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          VIP
-        </span>
-        <span class="badge guest" id="badgeGuest">
-          DEMO <b id="guestCount">—</b>
-        </span>
-      </div>
     </div>
   </header>
-
-  <!-- ==================== LIVE STREAM HUD BUMPER ==================== -->
-  <section class="live-bumper" id="liveBumper" hidden>
-    <div class="live-bumper-track">
-      <div class="bumper-pill clock-pill">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span id="liveClock">19:15:58 UTC</span>
-      </div>
-
-      <div class="bumper-pill stat-pill wins" id="pillWins" title="+1 Победа">
-        <span class="pill-lbl">WINS:</span>
-        <span class="pill-val val-green" id="winCount">0</span>
-      </div>
-
-      <div class="bumper-pill stat-pill losses" id="pillLosses" title="+1 Поражение">
-        <span class="pill-lbl">LOSSES:</span>
-        <span class="pill-val val-red" id="lossCount">0</span>
-      </div>
-
-      <div class="bumper-pill stat-pill winrate" id="pillWinrate" title="Winrate">
-        <span class="pill-lbl">RATE:</span>
-        <span class="pill-val val-cyan" id="winRateVal">0.0%</span>
-      </div>
-
-      <button type="button" class="btn-close-bumper" id="btnCloseBumper" title="Скрыть табло">✕</button>
-    </div>
-  </section>
 
   <!-- ==================== MAIN CONTENT CONTAINER (2 TABS) ==================== -->
   <main class="content-body">
@@ -95,15 +51,28 @@
     <!-- ======================================================== -->
     <section class="tab-view active" id="tabSignals">
       <div class="winky-bot-card">
+
+        <!-- Model Selector Row -->
+        <div class="winky-model-row">
+          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu">
+            <span class="winky-model-btn-logo" id="winkyModelLogo"></span>
+            <span id="winkyModelLabel">Claude Fable 5.2</span>
+            <span class="winky-model-chevron">⌄</span>
+          </button>
+          <div class="winky-model-menu" id="winkyModelMenu" hidden>
+            <div class="winky-model-menu-title" id="winkyModelMenuTitle">Выбор модели</div>
+            <div class="winky-model-options" id="winkyModelOptions"></div>
+          </div>
+        </div>
         
         <!-- Market Switch (Regular | OTC) -->
-        <div class="winky-market-switch">
+        <div class="winky-market-switch" id="winkyMarketSwitch">
+          <button type="button" class="winky-market-btn active" id="mktOtcBtn" data-mtype="otc">OTC (24/7)</button>
           <button type="button" class="winky-market-btn" id="mktRegularBtn" data-mtype="regular">Regular</button>
-          <button type="button" class="winky-market-btn active" id="mktOtcBtn" data-mtype="otc">OTC</button>
         </div>
 
         <!-- Selectors Grid (Pair & Timeframe) -->
-        <div class="winky-selectors-grid">
+        <div class="winky-selectors-grid" id="winkySelectorsGrid">
           <div class="winky-select-box">
             <span class="winky-select-lbl" data-i18n="pairLbl">Валютная пара</span>
             <select class="winky-select-native" id="selectPair">
@@ -128,12 +97,9 @@
             <span class="winky-select-lbl" data-i18n="timeLbl">Время сделки</span>
             <select class="winky-select-native" id="selectDuration">
               <option value="5s">5s</option>
-              <option value="10s">10s</option>
               <option value="15s">15s</option>
               <option value="30s" selected>30s</option>
               <option value="1m">1m</option>
-              <option value="3m">3m</option>
-              <option value="5m">5m</option>
             </select>
           </div>
         </div>
@@ -167,18 +133,12 @@
           </div>
         </div>
 
-        <!-- Action Row (Get Signal + Auto) -->
+        <!-- Action Row (Get Signal) -->
         <div class="winky-action-row">
           <button type="button" class="winky-btn-get-signal" id="btnGetSignal">
             <span>⚡</span>
             <span id="btnGetSignalText" data-i18n="getSignal">ПОЛУЧИТЬ СИГНАЛ</span>
           </button>
-          <div class="winky-auto-toggle" id="autoToggle" title="Авто-сигналы на стриме">
-            <span class="winky-auto-lbl" data-i18n="auto">АВТО</span>
-            <div class="winky-auto-switch">
-              <div class="winky-auto-knob"></div>
-            </div>
-          </div>
         </div>
 
       </div>
