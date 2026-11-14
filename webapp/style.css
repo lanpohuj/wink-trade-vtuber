@@ -825,6 +825,47 @@ body {
   justify-content: center !important;
 }
 
+.winky-direction-block.completed {
+  min-height: 112px !important;
+  max-height: 128px !important;
+  height: auto !important;
+  background: #0a1617 !important;
+  border: 1px solid rgba(16, 245, 135, 0.45) !important;
+  box-shadow: 0 0 16px rgba(16, 245, 135, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.winky-completion-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(16, 245, 135, 0.15);
+  border: 1.5px solid #10F587;
+  box-shadow: 0 0 14px rgba(16, 245, 135, 0.5);
+  flex-shrink: 0;
+}
+
+.winky-completion-text {
+  font-family: 'Orbitron', 'Chakra Petch', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #10F587;
+  text-shadow: 0 0 10px rgba(16, 245, 135, 0.75);
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* Level 1: Hero Direction & Live Timer Capsule */
 .winky-sig-hero {
   display: flex;

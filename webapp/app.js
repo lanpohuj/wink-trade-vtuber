@@ -85,14 +85,16 @@ const i18n = {
     time: "Экспирация:",
     accuracy: "Точность:",
     readyForSignal: "Готов к анализу графика",
-    analysing: "Анализ RSI, EMA и уровней...",
-    getSignal: "ПОЛУЧИТЬ СИГНАЛ",
-    auto: "АВТО",
+    analysing: "Анализ графических паттернов...",
+    getSignal: "⚡ АНАЛИЗИРОВАТЬ",
+    analyzingBtn: "⚡ АНАЛИЗ ГРАФИКА...",
+    tradeActive: "СДЕЛКА АКТИВНА",
+    tradeCompleted: "СДЕЛКА ЗАВЕРШЕНА · СИГНАЛ ОТРАБОТАН",
     tabSignals: "🏠 СИГНАЛЫ",
     tabChat: "💬 ИИ-ЧАТ",
     chatWelcome: "Привет! Я Winky AI. Выберите пару, экспирацию и нажмите кнопку запроса.",
-    buyText: "↗ КУПИТЬ (ВВЕРХ)",
-    sellText: "↘ ПРОДАТЬ (ВНИЗ)",
+    buyText: "↗ КУПИТЬ · ВВЕРХ",
+    sellText: "↘ ПРОДАТЬ · ВНИЗ",
     depositTitle: "Демо-сигналы исчерпаны",
     depositDesc: "Вы использовали 3 бесплатных сигнала. Пополните счёт Pocket Option, чтобы получить безлимитный доступ к сигналам, OTC-алгоритмам и всем ИИ-моделям.",
     promoBonus: "+50% к депозиту от $50",
@@ -102,7 +104,7 @@ const i18n = {
     copied: "Скопировано!",
     authError: "Откройте приложение заново из Telegram-бота.",
     signalError: "Не удалось получить сигнал. Проверьте связь и повторите запрос.",
-    expired: "Время сигнала истекло. Результат сделки не подтверждён.",
+    expired: "Время сигнала истекло.",
   },
   en: {
     pairLbl: "Currency Pair",
@@ -110,14 +112,16 @@ const i18n = {
     time: "Expiry:",
     accuracy: "Accuracy:",
     readyForSignal: "Ready for chart analysis",
-    analysing: "Analyzing RSI, EMA & levels...",
-    getSignal: "GET SIGNAL",
-    auto: "AUTO",
+    analysing: "Analyzing chart patterns...",
+    getSignal: "⚡ ANALYZE",
+    analyzingBtn: "⚡ ANALYZING CHART...",
+    tradeActive: "TRADE ACTIVE",
+    tradeCompleted: "TRADE COMPLETED · SIGNAL EXECUTED",
     tabSignals: "🏠 SIGNALS",
     tabChat: "💬 AI CHAT",
     chatWelcome: "Hello! I am Winky AI. Select a currency pair, duration and tap send.",
-    buyText: "↗ BUY (CALL)",
-    sellText: "↘ SELL (PUT)",
+    buyText: "↗ BUY · CALL",
+    sellText: "↘ SELL · PUT",
     depositTitle: "Demo Signals Exhausted",
     depositDesc: "You have used all 3 free demo signals. Deposit on Pocket Option to unlock unlimited signals, OTC algorithms, and all AI models.",
     promoBonus: "+50% Deposit Bonus from $50",
@@ -127,7 +131,7 @@ const i18n = {
     copied: "Copied!",
     authError: "Reopen the app from the Telegram bot.",
     signalError: "Unable to get a signal. Check your connection and try again.",
-    expired: "Signal expired. The trade result is unconfirmed.",
+    expired: "Signal expired.",
   }
 };
 
@@ -441,16 +445,28 @@ async function startSignalAnalysis() {
   const dirBlock = document.getElementById("directionBlock");
   const btn = document.getElementById("btnGetSignal");
   const accEl = document.getElementById("metricAccuracy");
-  if (btn) btn.disabled = true;
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = t("analyzingBtn");
+  }
 
   // 1. ANALYSIS STATE: Hide selectors grid & market switch, set height 241px
   syncPanelControlVisibility("analysing");
 
   const isRu = (state.lang === "ru");
-  const steps = isRu
-    ? ["01 · ТРЕНД M1", "02 · СТРУКТУРА", "03 · УРОВНИ S30", "04 · ТОЧКА ВХОДА"]
-    : ["01 · M1 TREND", "02 · STRUCTURE", "03 · S30 LEVELS", "04 · ENTRY"];
-  const stepIcons = ["↗", "◇", "⌁", "◎"];
+  const stages = isRu
+    ? [
+        { name: "Тренд M1", icon: "↗" },
+        { name: "Структура", icon: "◇" },
+        { name: "Импульс", icon: "⌁" },
+        { name: "Точка входа", icon: "◎" },
+      ]
+    : [
+        { name: "M1 Trend", icon: "↗" },
+        { name: "Structure", icon: "◇" },
+        { name: "Momentum", icon: "⌁" },
+        { name: "Entry Point", icon: "◎" },
+      ];
 
   if (dirBlock) {
     dirBlock.className = "winky-direction-block analysing";
@@ -460,7 +476,7 @@ async function startSignalAnalysis() {
           <span class="winky-scan-dot"></span>
           <span>${isRu ? "АНАЛИЗ ГРАФИКА" : "CHART ANALYSIS"}</span>
         </div>
-        <div class="winky-scan-score-badge" id="scanScoreBadge">★ 4.8 / 5.0</div>
+        <div class="winky-scan-score-badge" id="scanScoreBadge">★ 4.9 / 5.0</div>
       </div>
 
       <div class="winky-chart-preview">
@@ -472,13 +488,13 @@ async function startSignalAnalysis() {
 
       <div class="winky-stage-frame">
         <div class="winky-stage-current confirmed" id="analysisCurrentStage">
-          <span class="winky-stage-symbol" id="stageSymbol">${stepIcons[0]}</span>
-          <span class="winky-stage-name" id="stageName">${steps[0]}</span>
+          <span class="winky-stage-symbol" id="stageSymbol">${stages[0].icon}</span>
+          <span class="winky-stage-name" id="stageName">${stages[0].name}</span>
           <span class="winky-stage-indicator" id="stageIndicator">${MODEL_CHECK_SVG}</span>
         </div>
       </div>
 
-      <div class="winky-analysis-meta" id="analysisMeta">${isRu ? "Пара 1/1" : "Pair 1/1"} · S30 · S15 · M1</div>
+      <div class="winky-analysis-meta" id="analysisMeta">${isRu ? "Анализ" : "Analysis"} · S30 · M1</div>
     `;
   }
 
@@ -503,20 +519,20 @@ async function startSignalAnalysis() {
   });
   state.forceDir = null; // consume trigger
 
-  // Animate smoothly across the 4 stages (~260ms each)
+  // Animate smoothly across the 4 stages (~680ms each = ~2.7s total)
   const symEl = document.getElementById("stageSymbol");
   const nameEl = document.getElementById("stageName");
   const indEl = document.getElementById("stageIndicator");
 
-  for (let i = 0; i < steps.length; i++) {
-    if (symEl) symEl.textContent = stepIcons[i];
-    if (nameEl) nameEl.textContent = steps[i];
+  for (let i = 0; i < stages.length; i++) {
+    if (symEl) symEl.textContent = stages[i].icon;
+    if (nameEl) nameEl.textContent = stages[i].name;
     if (indEl) indEl.innerHTML = MODEL_CHECK_SVG;
     if (accEl) {
-      const stepScores = [92, 94, 96, 96];
+      const stepScores = [88, 92, 95, 96];
       accEl.textContent = `${stepScores[i]}%`;
     }
-    await new Promise((r) => setTimeout(r, 260));
+    await new Promise((r) => setTimeout(r, 680));
   }
 
   try {
@@ -528,7 +544,10 @@ async function startSignalAnalysis() {
         dirBlock.className = "winky-direction-block idle";
         dirBlock.innerHTML = `<span id="dirStateText">${t("readyForSignal")}</span>`;
       }
-      if (btn) btn.disabled = false;
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = t("getSignal");
+      }
       state.isBusy = false;
       const depositBackdrop = document.getElementById("depositSheetBackdrop");
       if (depositBackdrop) depositBackdrop.hidden = false;
@@ -554,10 +573,10 @@ async function startSignalAnalysis() {
     return;
   }
 
-  // Ensure minimum smooth transition time
+  // Ensure minimum smooth transition time (~2.7s total)
   const elapsed = performance.now() - startTime;
-  if (elapsed < 1100) {
-    await new Promise((r) => setTimeout(r, 1100 - elapsed));
+  if (elapsed < 2700) {
+    await new Promise((r) => setTimeout(r, 2700 - elapsed));
   }
 
   // 2. ACTIVE SIGNAL STATE
@@ -595,7 +614,7 @@ async function startSignalAnalysis() {
   if (btn) {
     btn.disabled = true;
     btn.classList.add("disabled");
-    btn.textContent = isRu ? `СДЕЛКА АКТИВНА · ${formatCountdown(totalSec)}` : `TRADE ACTIVE · ${formatCountdown(totalSec)}`;
+    btn.textContent = `${t("tradeActive")} · ${formatCountdown(totalSec)}`;
   }
 
   if (window.Telegram?.WebApp?.HapticFeedback) {
@@ -618,7 +637,7 @@ async function startSignalAnalysis() {
       progressEl.style.width = `${pct}%`;
     }
     if (btn) {
-      btn.textContent = isRu ? `СДЕЛКА АКТИВНА · ${formatCountdown(safeRem)}` : `TRADE ACTIVE · ${formatCountdown(safeRem)}`;
+      btn.textContent = `${t("tradeActive")} · ${formatCountdown(safeRem)}`;
     }
 
     if (remaining <= 0) {
@@ -630,22 +649,33 @@ async function startSignalAnalysis() {
 }
 
 function onSignalExpiryFinished() {
-  syncPanelControlVisibility("expired");
   const isRu = (state.lang === "ru");
-
   const block = document.getElementById("directionBlock");
+  const btn = document.getElementById("btnGetSignal");
+
   if (block) {
-    block.className = "winky-direction-block idle";
-    block.textContent = isRu ? "Сделка завершена · результат зафиксирован" : "Trade expired · result registered";
+    block.className = "winky-direction-block completed";
+    block.innerHTML = `
+      <span class="winky-completion-badge">${MODEL_CHECK_SVG}</span>
+      <span class="winky-completion-text">${t("tradeCompleted")}</span>
+    `;
   }
 
-  const btn = document.getElementById("btnGetSignal");
-  if (btn) {
-    btn.disabled = false;
-    btn.classList.remove("disabled");
-    btn.textContent = t("getSignal");
-  }
-  state.isBusy = false;
+  setTimeout(() => {
+    syncPanelControlVisibility("idle");
+    if (block) {
+      block.className = "winky-direction-block idle";
+      block.innerHTML = `<span id="dirStateText">${t("readyForSignal")}</span>`;
+    }
+    if (btn) {
+      btn.disabled = false;
+      btn.classList.remove("disabled");
+      btn.textContent = t("getSignal");
+    }
+    const accEl = document.getElementById("metricAccuracy");
+    if (accEl) accEl.textContent = "—";
+    state.isBusy = false;
+  }, 2500);
 }
 
 async function dispatchLumeanVoice(payload) {

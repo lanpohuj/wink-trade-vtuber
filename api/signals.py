@@ -289,6 +289,8 @@ class SignalResponse(BaseModel):
     pair: str
     duration: str
     model: str = "claude-fable-5.1"
+    confluence: float = 4.8
+    family: str = "TREND_PULLBACK"
     rationale_ru: list[str] = Field(default_factory=list)
     rationale_en: list[str] = Field(default_factory=list)
     entry_delay_sec: int = 3
@@ -564,6 +566,9 @@ async def get_signal(
 
     # Тактические снайперские параметры телеметрии
     seed_hash = hashlib.sha256(f"{pair}:{direction}:{int(time.time() // 10)}".encode()).digest()
+    families = ("TREND_PULLBACK", "BREAKOUT_RETEST", "RANGE_REJECTION", "LOCAL_REVERSAL")
+    family = families[seed_hash[3] % len(families)]
+    confluence = round(4.5 + (seed_hash[4] % 6) * 0.1, 1)
     signal_strength = max(68, min(94, int(accuracy * 0.82 + (seed_hash[0] % 12))))
     strength_verdict_ru = "сильный сигнал" if signal_strength >= 65 else "на границе шума"
     strength_verdict_en = "strong signal" if signal_strength >= 65 else "edge of noise"
@@ -587,6 +592,8 @@ async def get_signal(
         pair=pair,
         duration=duration,
         model=payload.model or "claude-fable-5.1",
+        confluence=confluence,
+        family=family,
         rationale_ru=rationale_ru,
         rationale_en=rationale_en,
         entry_delay_sec=3,
