@@ -1,0 +1,27 @@
+{
+  "status": "rejected_by_owner",
+  "default_mode": "legacy",
+  "backup_path": "/Users/alansalam/Wink Trade Pocket/artifacts/avatar-backups/20261114-140151",
+  "backup_verified_files": 46,
+  "source_commit": "d32297140b687bbb11432872a1946c714301ca63",
+  "models_and_vendor_unchanged": true,
+  "voice_files_unchanged": 1500,
+  "animation_map_records": 1500,
+  "gestures": 20,
+  "new_gestures": 12,
+  "python_tests": 136,
+  "node_tests": 4,
+  "simulation_hours": 4,
+  "viewport": [
+    600,
+    720
+  ],
+  "native_legacy_frame_ms": 33.577777777777776,
+  "native_new_frame_ms": 33.43333333333333,
+  "audition_videos": {
+    "winky-speech-RU-EN.mp4": "d96ebd7b99d8744d87c31a482eefdfe731d356718230861d9514a25856e986d8",
+    "winky-flirt-transitions.mp4": "0bdb69ce6543b360902342da15a245d502a2d63095b64e0d9c21e091f53aeeac"
+  },
+  "live_tiktok_verified": false,
+  "owner_feedback": "Владелец отверг движения, пересечения мешей и синхронизацию. Удачным назвал только поднесение одной руки к лицу; конкретный вариант уточняется."
+}

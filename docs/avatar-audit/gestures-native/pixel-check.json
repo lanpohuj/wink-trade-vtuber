@@ -1,0 +1,162 @@
+[
+  {
+    "gesture": "gesture-beat",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-cheer",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-clap",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-compare",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-dance",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-explain_left",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-explain_right",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-fist_pump",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-flirt_kiss",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-hand_chest",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-hip_groove",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-neko_paws",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-peek_closer",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-point",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-shrug",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-shy",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-thank_bow",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-think",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-thumbs_up",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  },
+  {
+    "gesture": "gesture-wave",
+    "dimensions": [
+      1200,
+      1440
+    ],
+    "horizontal_edge_pixels": 0
+  }
+]

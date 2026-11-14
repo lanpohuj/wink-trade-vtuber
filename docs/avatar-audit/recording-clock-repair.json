@@ -1,0 +1,17 @@
+{
+  "source_offsets": [
+    {
+      "id": "lively3_ru_narrate_pair_018",
+      "offset_s": 0.0888125,
+      "correlation": 0.9883902168458518
+    },
+    {
+      "id": "lively3_en_narrate_cta_001",
+      "offset_s": 6.8325,
+      "correlation": 0.9980306692628174
+    }
+  ],
+  "max_audio_packet_s": 0.021333,
+  "decoded_audio_s": 13.3973125,
+  "old_long_packet_s": 1.029333
+}

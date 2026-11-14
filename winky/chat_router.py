@@ -499,38 +499,9 @@ class ChatRouter:
             return
 
         lower_text = text.lower()
-        is_compliment = profile.vibe == "flirty" or any(word in lower_text for word in ("красотк", "лучш", "мил", "любл", "топ", "няшк", "красив", "cute", "love", "best", "милашк", "прелесть"))
-        is_greeting = any(word in lower_text for word in ("привет", "хей", "ку", "здарова", "добрый", "hi", "hello", "hey", "салют"))
-        is_win = profile.vibe == "gambler" and any(word in lower_text for word in ("плюс", "профит", "зашло", "выиграл", "ура", "win", "profit", "побед"))
-
-        if is_compliment:
-            detected_emo = "blush"
-            if self._on_action:
-                try:
-                    self._on_action("shy", 3.2)
-                except Exception:
-                    logger.exception("on_action shy упал")
-        elif is_greeting:
-            detected_emo = "wave"
-            if self._on_wave:
-                try:
-                    self._on_wave()
-                except Exception:
-                    logger.exception("on_wave упал")
-        elif is_win:
-            detected_emo = "excited"
-            if self._on_action:
-                try:
-                    self._on_action("cheer", 3.5)
-                except Exception:
-                    logger.exception("on_action cheer упал")
-        else:
-            detected_emo = None
-            if self._on_action:
-                try:
-                    self._on_action("thinking", 0.8)
-                except Exception:
-                    pass
+        from winky.avatar_performance import chat_animation_intent
+        # No body action before actual audio; intent belongs to this message, not old profile mood.
+        detected_emo = chat_animation_intent(text)
 
         # 2. Ключевые сценарии — приоритет при прямых вопросах
         keyword = self._book.match_keyword(text)

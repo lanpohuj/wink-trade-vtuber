@@ -1280,3 +1280,18 @@ if (window.pywebview?.api) {
 } else {
   window.addEventListener("pywebviewready", init);
 }
+
+
+// Avatar-only controls. No trading commands or audio synthesis.
+(async function avatarControls(){
+ const {GESTURES}=await import('./avatar-performance.mjs');
+ const select=document.getElementById('avatarGestureSelect');
+ for(const [value,label]of Object.entries(GESTURES)){const o=document.createElement('option');o.value=value;o.textContent=label;select?.append(o);}
+ const fields={mode:document.getElementById('animationMode'),activity:document.getElementById('animationActivity'),flirt:document.getElementById('animationFlirt')};
+ const sync=async()=>{if(!api())return;const options=await api().configure_avatar_animation(Object.fromEntries(Object.entries(fields).map(([k,e])=>[k,e.value])));for(const[k,e]of Object.entries(fields))e.value=options[k];};
+ for(const e of Object.values(fields))e?.addEventListener('change',sync);
+ document.getElementById('avatarGesturePreview')?.addEventListener('click',()=>api()?.trigger_action(select.value,3));
+ const ready=async()=>{if(!api())return;const options=await api().configure_avatar_animation({});for(const[k,e]of Object.entries(fields))if(options[k])e.value=options[k];};
+ if(api())ready();else window.addEventListener('pywebviewready',ready,{once:true});
+ setInterval(async()=>{if(!api())return;const state=await api().avatar_animation_status();document.getElementById('avatarAnimationStatus').textContent=`${state.mode==='expressive'?'Новый':'Прежний'} · ${GESTURES[state.gesture]||'Свободная пластика'} · ${state.profile||'idle'}`;},1500);
+})();

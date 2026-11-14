@@ -1472,6 +1472,7 @@ class SpeechItem:
     event: dict = field(default_factory=dict)
     bank_id: str = ""
     chat_item: object | None = None
+    animation: dict = field(default_factory=dict)
 
 
 # Алиас для обратной совместимости
@@ -1533,6 +1534,7 @@ class SpeechController:
     on_emotion: Callable[[str], None] = field(default=lambda emo: None)
     on_status: Callable[[SpeechStatus], None] = field(default=lambda status: None)
     engine: ElevenLabsTTS | LumeanTTS | EdgeTTS = field(default_factory=build_engine)
+    on_avatar_event: Callable[[dict], None] | None = None
 
     def __post_init__(self) -> None:
         from winky.voice_bank import VoiceBank
@@ -2075,6 +2077,7 @@ class SpeechController:
         item = SpeechItem(text=selected['text'], lang=event['lang'],
             emotion=event.get('emotion', 'happy'), action=event.get('action'),
             media_path=selected['path'], source='bank_' + event['category'],
+            animation={k:selected[k] for k in ('tone','topic','conditions') if k in selected},
             priority=priority(event['category']), event=event, bank_id=selected['id'],
             created_at=created, max_age_sec=event_ttl)
         item.ready_event.set()
@@ -2269,6 +2272,10 @@ class SpeechController:
 
         self._finished.clear()
         # Воспроизведение на macOS через afplay с потоковой передачей RMS-громкости для Lip-Sync
+        speech_id = str(uuid.uuid4())
+        avatar_started = False
+        avatar_end_reason = "ended"
+        start_play = time.monotonic()
         try:
             afplay_proc = subprocess.Popen(
                 ["/usr/bin/afplay", "-v", str(max(0.05, self._volume)), str(media)],
@@ -2276,6 +2283,7 @@ class SpeechController:
                 stderr=subprocess.DEVNULL,
             )
             start_play = time.monotonic()
+            start_epoch_ms = time.time()*1000
             self._afplay_proc = afplay_proc
             # An immediate player failure must not consume a phrase or CTA timer.
             if afplay_proc.poll() not in (None, 0):
@@ -2300,6 +2308,12 @@ class SpeechController:
                                                     'text': item.text, 'voice_source': item.source})
                 if item.event.get('commentary'):
                     stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
+                if self.on_avatar_event:
+                    from winky.avatar_performance import for_item
+                    self._emit_avatar(dict(type='start', speech_id=speech_id, duration=duration,
+                        started_at_ms=start_epoch_ms, text=text, lang=lang,
+                        file_id=item.bank_id, animation=for_item(item)))
+                    avatar_started = True
                 try:
                     if item.action:
                         self.on_action(item.action, item.action_duration)
@@ -2315,6 +2329,7 @@ class SpeechController:
             chunk_sec = 0.05
             while afplay_proc.poll() is None:
                 if time.monotonic() - start_play > duration + 5:
+                    avatar_end_reason = "timeout"
                     afplay_proc.kill()
                     break
                 elapsed = time.monotonic() - start_play
@@ -2322,17 +2337,26 @@ class SpeechController:
                 if 0 <= idx < len(rms_chunks) and idx != last_idx:
                     last_idx = idx
                     try:
-                        self.on_rms(rms_chunks[idx])
+                        if self.on_avatar_event:
+                            self._emit_avatar(dict(type='frame', speech_id=speech_id, elapsed=elapsed, rms=rms_chunks[idx]))
+                        else:
+                            self.on_rms(rms_chunks[idx])
                     except Exception:
                         pass
                 elif idx >= len(rms_chunks) and last_idx != -2:
                     last_idx = -2
-                    self.on_rms(0.0)
+                    if self.on_avatar_event:
+                        self._emit_avatar(dict(type='frame',speech_id=speech_id,elapsed=elapsed,rms=0.0))
+                    else:
+                        self.on_rms(0.0)
                 time.sleep(0.012)
 
             try:
-                afplay_proc.wait(timeout=max(2.0, duration + 2.0))
+                return_code = afplay_proc.wait(timeout=max(2.0, duration + 2.0))
+                if isinstance(return_code, int) and return_code != 0:
+                    avatar_end_reason = "cancelled" if return_code < 0 else "error"
             except subprocess.TimeoutExpired:
+                avatar_end_reason = "timeout"
                 afplay_proc.kill()
         except Exception as exc:
             proc = self._afplay_proc
@@ -2341,12 +2365,15 @@ class SpeechController:
                 proc.wait(timeout=2)
             if item and item.chat_item:
                 item.chat_item.failed = True
+            avatar_end_reason = "error"
             logger.error("Ошибка воспроизведения afplay: %s", exc)
         finally:
             if item and item.bank_id:
                 self.voice_bank.release(item.bank_id, item.event)
             logger.info("voice_end event=%s", item.event.get("event_id", "") if item else "")
             self._afplay_proc = None
+            if avatar_started:
+                self._emit_avatar(dict(type='end',speech_id=speech_id,elapsed=time.monotonic()-start_play,rms=0.0,reason=avatar_end_reason))
             try:
                 self.on_rms(0.0)
             except Exception:
@@ -2364,6 +2391,13 @@ class SpeechController:
             self._emit_status_impl()
             # Естественная микропауза между фразами в очереди
             time.sleep(0.35)
+
+    def _emit_avatar(self, event: dict) -> None:
+        try:
+            if self.on_avatar_event:
+                self.on_avatar_event(event)
+        except Exception:
+            logger.exception("Avatar lifecycle callback failed")
 
     def _emit_status_impl(self) -> None:
         try:

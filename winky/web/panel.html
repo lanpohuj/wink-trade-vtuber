@@ -175,6 +175,12 @@
     </label>
     <div class="row">
       <button class="small-btn" id="avatarResetBtn">Сбросить размер и положение</button>
+    <div class="setting-row"><label for="animationMode">Анимации</label><select id="animationMode"><option value="legacy">Прежние</option><option value="expressive" disabled>Новые — на доработке</option></select></div>
+    <div class="setting-row"><label for="animationActivity">Активность</label><select id="animationActivity"><option value="high">Очень активная</option><option value="low">Сдержанная</option></select></div>
+    <div class="setting-row"><label for="animationFlirt">Флирт</label><select id="animationFlirt"><option value="expressive">Выраженный</option><option value="contextual">По ситуации</option><option value="off">Выключен</option></select></div>
+    <div class="setting-row"><label for="avatarGestureSelect">Жест</label><select id="avatarGestureSelect"></select><button class="small-btn" id="avatarGesturePreview">Показать</button></div>
+    <div id="avatarAnimationStatus" aria-live="polite">Прежний режим до визуальной приёмки.</div>
+
     </div>
   </section>
 

@@ -2,6 +2,16 @@
 
 import * as THREE from "three";
 import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
+import { PerformanceDirector, GESTURES } from "./avatar-performance.mjs";
+import { calibrateArms } from "./avatar-rig.mjs";
+import { visemeWeights } from "./avatar-visemes.mjs";
+let rigCalibration=null;
+const performanceDirector = new PerformanceDirector();
+const requestedAnimationMode = new URLSearchParams(location.search).get("animation");
+let animationMode = requestedAnimationMode === "expressive" ? "expressive" : "legacy";
+let animationSettings = {mode:animationMode, activity:"high", flirt:"expressive"};
+const frameDurations=[];
+let eyeAudit=null;
 
 window.THREE = THREE;
 
@@ -810,6 +820,7 @@ class ShibahuFBXController {
     ];
     for (const name of EYE_CHEEK_MORPHS) {
       let target = emoCfg.eyes[name] || 0.0;
+      if(animationMode === "expressive" && name === "face_mesh7")target=0;
       if (name === "facial_irisHilight_Big" && (this.activeMicroHabit === "curious_look" || activeEmotion !== "idle")) {
         target = 1.0;
       }
@@ -835,11 +846,20 @@ class ShibahuFBXController {
       }
     }
     this.smoothSetMorph("face_mesh8", blinkTarget, dt, 35.0);
+    if(animationMode === "expressive" && eyeAudit?.wink) {
+      const weight=performanceDirector.wink>0 ? Math.sin((1-performanceDirector.wink/.24)*Math.PI) : 0;
+      this.smoothSetMorph(eyeAudit.wink, this.isBlinking?0:Math.max(0,weight),dt,35);
+    }
 
     // 4. Морфы рта:
     this.smoothSetMorph("face_mesh5", 0.0, dt, 20.0); // Полный запрет оскала face_mesh5!
     this.smoothSetMorph("face_mesh4", 0.0, dt, 20.0); // Полный запрет оскала face_mesh4!
 
+    if(animationMode === "expressive" && performanceDirector.speech?.mouthCues) {
+      const weights=visemeWeights(performanceDirector.speech.mouthCues,performanceDirector.speech.elapsed);
+      for(const [name,weight]of Object.entries(weights))this.smoothSetMorph(name,weight,dt,60);
+      return;
+    }
     if (isPhonating) {
       const mouthOpen = Math.min(1.0, Math.pow(this.smoothedRms, 0.85));
       const vowelMod = 0.5 + 0.5 * Math.sin(t * 16.0);
@@ -881,6 +901,7 @@ class ShibahuFBXController {
         const MOUTH_MORPHS = ["face_mesh1", "face_mesh6", "face_mesh9", "face_mesh3", "face_mesh4_2"];
         for (const name of MOUTH_MORPHS) {
           let target = emoCfg.mouth[name] || 0.0;
+          if(animationMode === "expressive")target=name==="face_mesh4_2"?.40:0;
           if (this.activeMicroHabit === "curious_look" && name === "face_mesh3") {
             target = 0.75;
           }
@@ -997,6 +1018,24 @@ class ShibahuFBXController {
   }
 
   update(delta, elapsed, isSpeaking, audioRms = 0) {
+    if (animationMode === "expressive") {
+      const dt=Math.max(0,Math.min(.05,delta));
+      performanceDirector.update(dt,elapsed);
+      const pose=performanceDirector.pose(elapsed);
+      for(const [name,offset] of Object.entries(pose)) this.lerpBoneOffset(name,...offset,dt,10);
+      const hips=this.bones["Shibahu_Hips"], base=this.basePositions["Shibahu_Hips"];
+      if(hips&&base)hips.position.set(base.x,base.y,base.z);
+      this.actionMode=performanceDirector.gesture?.action || null;
+      this.actionDuration=performanceDirector.gesture?.duration || 0;
+      this.actionTimer=performanceDirector.gesture ? Math.max(0,this.actionDuration-(elapsed-performanceDirector.gesture.start)) : 0;
+      this.waveTimer=0;
+      this.currentEmotion=performanceDirector.mood;
+      this.activeMicroHabit=null;
+      const speaking=!!performanceDirector.speech;
+      this.talkBodyWeight+=(Number(speaking)-this.talkBodyWeight)*(1-Math.exp(-8*dt));
+      this.updateFace(elapsed,dt,speaking,performanceDirector.rms);
+      return;
+    }
     if (this.waveTimer > 0) this.waveTimer -= delta;
 
     if (this.actionTimer > 0) {
@@ -1046,6 +1085,38 @@ class ShibahuFBXController {
     this.updateBodyPhysics(elapsed, delta, isSpeakingStable, mouseX, mouseY);
     this.updateFace(elapsed, delta, isSpeakingStable, audioRms);
   }
+}
+
+function inspectEyeMorphs(mesh) {
+  if(!mesh)return {wink:null,candidates:[]};
+  const geom=mesh.geometry,base=geom.attributes.position,attrs=geom.morphAttributes.position;
+  const dict=mesh.morphTargetDictionary,relative=geom.morphTargetsRelative;
+  const resolve=n=>dict[n]??dict["blendShape1."+n];const blink=attrs[resolve("face_mesh8")];
+  if(!blink)return {wink:null,candidates:[]};
+  const candidates=[];
+  for(const name of ["face_mesh1_2","face_mesh2","face_mesh3_2","face_mesh4","face_mesh5","face_mesh5_2","face_mesh7","face_mesh9_2","face_mesh10"]){
+    const attr=attrs[resolve(name)];if(!attr)continue;let left=0,right=0,dot=0,energy=0,blinkEnergy=0;
+    for(let i=0;i<base.count;i++){if(base.getY(i)<138.3)continue;let e=0;
+      for(const axis of ["X","Y","Z"]){const a=attr["get"+axis](i)-(relative?0:base["get"+axis](i)),b=blink["get"+axis](i)-(relative?0:base["get"+axis](i));e+=a*a;dot+=a*b;blinkEnergy+=b*b;}
+      if(base.getX(i)<0)left+=e;else right+=e;energy+=e;
+    }
+    candidates.push({name,left,right,asymmetry:Math.max(left,right)/(Math.min(left,right)+1e-8),correlation:dot/Math.sqrt(energy*blinkEnergy||1)});
+  }
+  const valid=candidates.filter(c=>c.asymmetry>8&&c.correlation>.55).sort((a,b)=>b.correlation-a.correlation);
+  if(valid.length)return {wink:valid[0].name,candidates};
+  // All authored candidates affect both eyes. Isolate one half of the known blink.
+  const data=new Float32Array(base.count*3);let eyeEnergy=0,mouthEnergy=0;
+  for(let i=0;i<base.count;i++){
+    const mask=base.getY(i)>=138.3?Math.max(0,Math.min(1,(base.getX(i)-.5)/1.5)):0;
+    for(const [axis,j]of [["X",0],["Y",1],["Z",2]]){
+      const original=base["get"+axis](i),delta=blink["get"+axis](i)-(relative?0:original);
+      data[i*3+j]=(relative?0:original)+delta*mask;
+      if(base.getY(i)<138.3)mouthEnergy+=delta*delta*mask*mask;else eyeEnergy+=delta*delta*mask*mask;
+    }
+  }
+  const attr=new THREE.BufferAttribute(data,3);attr.name="winky_wink_left";
+  const oldWeights=[...mesh.morphTargetInfluences];attrs.push(attr);mesh.updateMorphTargets();oldWeights.forEach((x,i)=>mesh.morphTargetInfluences[i]=x);
+  return {wink:"winky_wink_left",generated_from:"face_mesh8",eyeEnergy,mouthEnergy,candidates};
 }
 
 /* ==================== 5. Загрузка оригинального Shibahu FBX ==================== */
@@ -1138,6 +1209,9 @@ function loadShibahuFBX() {
         vtuber = new ShibahuFBXController(fbx);
         window.vtuber = vtuber;
         window.activeController = vtuber;
+        eyeAudit=inspectEyeMorphs(vtuber.faceMesh);
+        rigCalibration=calibrateArms(vtuber);
+        performanceDirector.calibration=rigCalibration.poses;
         window.__fbxStatus = "ready";
 
         console.log("[Winky] Оригинальный Shibahu FBX успешно загружен: фронтальная поза активна, 0% клиппинга!");
@@ -1189,6 +1263,7 @@ function initAudioContext() {
 });
 
 function winkySpeak(mediaUrl, emotion = "happy", volume = 1.0) {
+  if (animationMode === "expressive") return true;
   if (vtuber) {
     vtuber.setEmotion(emotion || "happy", 6000);
   }
@@ -1200,6 +1275,13 @@ function winkySpeak(mediaUrl, emotion = "happy", volume = 1.0) {
 window.winkySpeak = winkySpeak;
 window.winkySetEmotion = (emo) => {
   if (!vtuber) return;
+  if(animationMode === "expressive") {
+    const action={wave:"wave",greeting:"wave",win:"cheer",dance:"dance",shy:"shy",flirt_kiss:"flirt_kiss",neko_paws:"neko_paws",hip_groove:"hip_groove",peek_closer:"peek_closer"}[emo];
+    if(action)performanceDirector.trigger(action,3,true);
+    else if(emo==="wink")window.winkyPreviewWink();
+    else if(!performanceDirector.speech)performanceDirector.setMood(EMOTION_MAP[emo]?emo:"idle",4);
+    return;
+  }
   if (emo === "wave" || emo === "greeting") {
     window.winkyWave();
   } else if (emo === "win") {
@@ -1221,12 +1303,14 @@ window.winkySetEmotion = (emo) => {
   }
 };
 window.winkyTriggerAction = (action, duration = 4.0) => {
-  if (vtuber) vtuber.triggerAction(action, duration);
+  action=({greeting:"wave",win:"cheer",blush:"shy",kiss:"flirt_kiss",paws:"neko_paws",groove:"hip_groove",peek:"peek_closer",thinking:"think"})[action]||action;
+  if(animationMode === "expressive")performanceDirector.trigger(action==="thinking"?"think":action,duration,true);
+  else if (vtuber) vtuber.triggerAction(action, duration);
 };
-window.winkyOnGift = (gift) => vtuber && vtuber.onGift(gift);
-window.winkyOnWin = () => vtuber && vtuber.onWin();
-window.winkyWave = () => vtuber && vtuber.wave();
-window.winkyPlayBodyMotion = (motion) => vtuber && vtuber.playBodyMotion(motion);
+window.winkyOnGift = () => window.winkyTriggerAction("dance",4.5);
+window.winkyOnWin = () => window.winkyTriggerAction("cheer",3.5);
+window.winkyWave = () => animationMode === "expressive" ? performanceDirector.trigger("wave",3,true) : vtuber && vtuber.wave();
+window.winkyPlayBodyMotion = (motion) => animationMode === "expressive" ? window.winkyTriggerAction(motion,3) : vtuber && vtuber.playBodyMotion(motion);
 window.winkySetVolume = (vol) => {
   if (currentAudio) currentAudio.volume = Math.min(1, Math.max(0, vol));
 };
@@ -1238,6 +1322,23 @@ window.setAvatarSpeechVolume = (vol) => {
     vtuber.speechHoldTimer = 0.85;
   }
 };
+window.winkyConfigureAnimation = (settings={}) => {
+  animationSettings={...animationSettings,...settings};
+  const next=requestedAnimationMode||animationSettings.mode;
+  animationMode=next==="expressive"?"expressive":"legacy";
+  performanceDirector.configure(animationSettings);
+  if(performanceDirector.speech)performanceDirector.stopGesture();else performanceDirector.stop();
+  if(vtuber){vtuber.actionMode=null;vtuber.actionTimer=0;vtuber.waveTimer=0;vtuber.currentEmotion="idle";vtuber.speechHoldTimer=0;if(eyeAudit?.wink&&vtuber.faceMesh){const index=vtuber.faceMesh.morphTargetDictionary[eyeAudit.wink];if(index!==undefined)vtuber.faceMesh.morphTargetInfluences[index]=0;}}
+  return window.winkyAnimationStatus();
+};
+window.winkyBeginSpeech = e => {performanceDirector.time=clock.elapsedTime;return performanceDirector.begin(e);};
+window.winkySpeechFrame = e => {if(!performanceDirector.frame(e))return false;if(animationMode==="legacy")window.setAvatarSpeechVolume(e.rms);return true;};
+window.winkyEndSpeech = e => {const ok=performanceDirector.end(e);if(ok){window.__forceAudioRms=0;window.__forceSpeaking=false;if(vtuber){vtuber.speechHoldTimer=0;vtuber.currentEmotion="idle";vtuber.emotionResetTimer=0;}}return ok;};
+window.winkyPreviewWink = () => {performanceDirector.wink=.24;if(vtuber){vtuber.isBlinking=false;vtuber.blinkTimer=0;vtuber.smoothSetMorph("face_mesh8",0,.1,100);}};
+window.winkyStopAnimation = () => {performanceDirector.stop();if(vtuber){vtuber.actionMode=null;vtuber.actionTimer=0;vtuber.waveTimer=0;vtuber.speechHoldTimer=0;vtuber.currentEmotion="idle";}};
+window.winkyAnimationStatus = () => ({mode:animationMode,loaded:window.__fbxStatus,...performanceDirector.status(),mouthWeights:Object.fromEntries(["face_mesh1","face_mesh6","face_mesh9"].map(name=>[name,vtuber?.faceMesh?.morphTargetInfluences[vtuber.faceMesh.morphTargetDictionary[name]]||0])),rigCalibration:rigCalibration?.report,eyeAudit,scale:vtuber?.fbx.scale.toArray(),position:vtuber?.fbx.position.toArray(),frame_ms:frameDurations.length?frameDurations.reduce((a,b)=>a+b,0)/frameDurations.length:0});
+fetch('/voice_cache/avatar-animation/settings.json').then(r=>r.ok?r.json():{}).then(s=>window.winkyConfigureAnimation(s)).catch(()=>{});
+
 window.winkySetScale = (scale) => {
   userScale = Math.min(2.0, Math.max(0.4, scale));
   updateAvatarTransform();
@@ -1271,6 +1372,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   const delta = clock.getDelta();
+  frameDurations.push(delta*1000);if(frameDurations.length>180)frameDurations.shift();
   const elapsed = clock.elapsedTime;
 
   const isSpeaking = Boolean(window.__forceSpeaking);

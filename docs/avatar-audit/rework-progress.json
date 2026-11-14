@@ -1,0 +1,15 @@
+{
+  "status": "reworking_after_visual_rejection",
+  "rejected": "First 20-gesture candidate; owner reported mesh intersections, unnatural movements and poor sync",
+  "accepted_motion": "Original hand-to-lips kiss only",
+  "timing_acceptance": {
+    "language": "en",
+    "video": "artifacts/avatar-review/english-viseme-clock-fixed.mp4",
+    "sha256": "9631ce6b27a359909c5ac854fb7b7d0130bfc7d8b08d64a0168440982c3be71c",
+    "owner_reply": "Теперь время совпадает"
+  },
+  "recording_defect": "AAC packet spanning 1.029333 s at the RU/EN pause; rebuilt as continuous PCM before AAC encoding",
+  "production_mode": "legacy",
+  "author_motion_probes": "not yet accepted",
+  "lip_source": "Two offline Rhubarb samples only, not enabled for the full bank"
+}

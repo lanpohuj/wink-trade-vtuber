@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "start",
+    "mode": "expressive",
+    "profile": "chat",
+    "speech_id": "ebbe5654-9a9c-40ca-b8d0-7cbb28b3de45",
+    "rms": 0
+  },
+  {
+    "kind": "end",
+    "mode": "expressive",
+    "profile": "idle",
+    "speech_id": null,
+    "rms": 0
+  },
+  {
+    "kind": "start",
+    "mode": "expressive",
+    "profile": "cta",
+    "speech_id": "77903fd7-534c-4634-8fec-9ad5926a9641",
+    "rms": 0
+  },
+  {
+    "kind": "end",
+    "mode": "expressive",
+    "profile": "idle",
+    "speech_id": null,
+    "rms": 0
+  }
+]
