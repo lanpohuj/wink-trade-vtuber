@@ -1,43 +1,141 @@
 /* ============================================================
    WINKY AI TRADING BOT — TELEGRAM MINI APP CONTROLLER (Vanilla JS)
-   Classic Trading Bot HUD (Dark Sapphire Matte #0D1322)
-   Strictly 2 Bottom Tabs: 🏠 СИГНАЛЫ & 💬 ИИ-ЧАТ
+   1-to-1 Visual Clone of Chrome Extension HUD
+   Strictly 2 Bottom Tabs: Signals & AI Chat
    Zero Popups · Zero speechSynthesis · Full Inline Experience
    ============================================================ */
 
 "use strict";
 
+const CURRENCY_FLAGS = {
+  USD: "🇺🇸", EUR: "🇪🇺", GBP: "🇬🇧", JPY: "🇯🇵", AUD: "🇦🇺", CAD: "🇨🇦",
+  CHF: "🇨🇭", NZD: "🇳🇿", CNY: "🇨🇳", CNH: "🇨🇳", AED: "🇦🇪", MAD: "🇲🇦",
+  BHD: "🇧🇭", INR: "🇮🇳", BRL: "🇧🇷", MXN: "🇲🇽", ZAR: "🇿🇦", TRY: "🇹🇷",
+  KES: "🇰🇪", SGD: "🇸🇬", NOK: "🇳🇴", SEK: "🇸🇪", DKK: "🇩🇰", PLN: "🇵🇱",
+  CZK: "🇨🇿", HUF: "🇭🇺", ILS: "🇮🇱", SAR: "🇸🇦", QAR: "🇶🇦", KWD: "🇰🇼",
+  OMR: "🇴🇲", EGP: "🇪🇬", IDR: "🇮🇩", PHP: "🇵🇭", THB: "🇹🇭", VND: "🇻🇳",
+  PKR: "🇵🇰", ARS: "🇦🇷", COP: "🇨🇴", CLP: "🇨🇱", PEN: "🇵🇪", NGN: "🇳🇬",
+  GHS: "🇬🇭", JOD: "🇯🇴", LBP: "🇱🇧", TND: "🇹🇳", UAH: "🇺🇦", BDT: "🇧🇩",
+  DZD: "🇩🇿", MYR: "🇲🇾", RUB: "🇷🇺", YER: "🇾🇪",
+  BTC: "₿", ETH: "Ξ", SOL: "◎", LTC: "Ł", XRP: "✕",
+  GOLD: "🥇", SILVER: "🥈", OIL: "🛢️", BRENT: "🛢️",
+  APPLE: "🍏", TESLA: "⚡", MICROSOFT: "🪟", AMAZON: "📦", GOOGLE: "🔍",
+  META: "👤"
+};
+
+function getPairFlags(pairName) {
+  if (!pairName) return "🌐";
+  const clean = String(pairName).replace(/\s*OTC\b/i, "").trim();
+  if (clean.includes("/")) {
+    const parts = clean.split("/");
+    const f1 = CURRENCY_FLAGS[parts[0].toUpperCase()] || "🌐";
+    const f2 = CURRENCY_FLAGS[parts[1].toUpperCase()] || "🌐";
+    return f1 + f2;
+  }
+  return CURRENCY_FLAGS[clean.toUpperCase()] || "🌐";
+}
+
 const ASSET_CATALOG = {
   otc: [
-    { id: "EUR/USD OTC", name: "EUR/USD OTC", flags: "🇪🇺🇺🇸", payout: "92%" },
+    { id: "AED/CNY OTC", name: "AED/CNY OTC", flags: "🇦🇪🇨🇳", payout: "92%" },
     { id: "AUD/CAD OTC", name: "AUD/CAD OTC", flags: "🇦🇺🇨🇦", payout: "90%" },
-    { id: "MAD/USD OTC", name: "MAD/USD OTC", flags: "🇲🇦🇺🇸", payout: "92%" },
-    { id: "USD/CAD OTC", name: "USD/CAD OTC", flags: "🇺🇸🇨🇦", payout: "92%" },
-    { id: "GBP/USD OTC", name: "GBP/USD OTC", flags: "🇬🇧🇺🇸", payout: "92%" },
-    { id: "USD/JPY OTC", name: "USD/JPY OTC", flags: "🇺🇸🇯🇵", payout: "90%" },
+    { id: "AUD/CHF OTC", name: "AUD/CHF OTC", flags: "🇦🇺🇨🇭", payout: "91%" },
+    { id: "AUD/JPY OTC", name: "AUD/JPY OTC", flags: "🇦🇺🇯🇵", payout: "90%" },
+    { id: "AUD/NZD OTC", name: "AUD/NZD OTC", flags: "🇦🇺🇳🇿", payout: "90%" },
     { id: "AUD/USD OTC", name: "AUD/USD OTC", flags: "🇦🇺🇺🇸", payout: "91%" },
+    { id: "BHD/CNY OTC", name: "BHD/CNY OTC", flags: "🇧🇭🇨🇳", payout: "92%" },
+    { id: "CAD/CHF OTC", name: "CAD/CHF OTC", flags: "🇨🇦🇨🇭", payout: "90%" },
+    { id: "CAD/JPY OTC", name: "CAD/JPY OTC", flags: "🇨🇦🇯🇵", payout: "90%" },
+    { id: "CHF/JPY OTC", name: "CHF/JPY OTC", flags: "🇨🇭🇯🇵", payout: "90%" },
+    { id: "CHF/NOK OTC", name: "CHF/NOK OTC", flags: "🇨🇭🇳🇴", payout: "90%" },
+    { id: "EUR/CAD OTC", name: "EUR/CAD OTC", flags: "🇪🇺🇨🇦", payout: "90%" },
+    { id: "EUR/CHF OTC", name: "EUR/CHF OTC", flags: "🇪🇺🇨🇭", payout: "90%" },
+    { id: "EUR/GBP OTC", name: "EUR/GBP OTC", flags: "🇪🇺🇬🇧", payout: "91%" },
+    { id: "EUR/HUF OTC", name: "EUR/HUF OTC", flags: "🇪🇺🇭🇺", payout: "90%" },
+    { id: "EUR/JPY OTC", name: "EUR/JPY OTC", flags: "🇪🇺🇯🇵", payout: "91%" },
+    { id: "EUR/NZD OTC", name: "EUR/NZD OTC", flags: "🇪🇺🇳🇿", payout: "90%" },
+    { id: "EUR/RUB OTC", name: "EUR/RUB OTC", flags: "🇪🇺🇷🇺", payout: "90%" },
+    { id: "EUR/TRY OTC", name: "EUR/TRY OTC", flags: "🇪🇺🇹🇷", payout: "90%" },
+    { id: "EUR/USD OTC", name: "EUR/USD OTC", flags: "🇪🇺🇺🇸", payout: "92%" },
+    { id: "GBP/AUD OTC", name: "GBP/AUD OTC", flags: "🇬🇧🇦🇺", payout: "90%" },
+    { id: "GBP/CAD OTC", name: "GBP/CAD OTC", flags: "🇬🇧🇨🇦", payout: "90%" },
+    { id: "GBP/CHF OTC", name: "GBP/CHF OTC", flags: "🇬🇧🇨🇭", payout: "90%" },
+    { id: "GBP/JPY OTC", name: "GBP/JPY OTC", flags: "🇬🇧🇯🇵", payout: "91%" },
+    { id: "GBP/USD OTC", name: "GBP/USD OTC", flags: "🇬🇧🇺🇸", payout: "92%" },
+    { id: "JOD/CNY OTC", name: "JOD/CNY OTC", flags: "🇯🇴🇨🇳", payout: "92%" },
+    { id: "KES/USD OTC", name: "KES/USD OTC", flags: "🇰🇪🇺🇸", payout: "90%" },
+    { id: "LBP/USD OTC", name: "LBP/USD OTC", flags: "🇱🇧🇺🇸", payout: "92%" },
+    { id: "MAD/USD OTC", name: "MAD/USD OTC", flags: "🇲🇦🇺🇸", payout: "92%" },
+    { id: "NGN/USD OTC", name: "NGN/USD OTC", flags: "🇳🇬🇺🇸", payout: "90%" },
+    { id: "NZD/JPY OTC", name: "NZD/JPY OTC", flags: "🇳🇿🇯🇵", payout: "90%" },
     { id: "NZD/USD OTC", name: "NZD/USD OTC", flags: "🇳🇿🇺🇸", payout: "88%" },
+    { id: "OMR/CNY OTC", name: "OMR/CNY OTC", flags: "🇴🇲🇨🇳", payout: "92%" },
+    { id: "QAR/CNY OTC", name: "QAR/CNY OTC", flags: "🇶🇦🇨🇳", payout: "92%" },
+    { id: "SAR/CNY OTC", name: "SAR/CNY OTC", flags: "🇸🇦🇨🇳", payout: "92%" },
+    { id: "TND/USD OTC", name: "TND/USD OTC", flags: "🇹🇳🇺🇸", payout: "92%" },
+    { id: "UAH/USD OTC", name: "UAH/USD OTC", flags: "🇺🇦🇺🇸", payout: "90%" },
+    { id: "USD/ARS OTC", name: "USD/ARS OTC", flags: "🇺🇸🇦🇷", payout: "90%" },
+    { id: "USD/BDT OTC", name: "USD/BDT OTC", flags: "🇺🇸🇧🇩", payout: "90%" },
+    { id: "USD/BRL OTC", name: "USD/BRL OTC", flags: "🇺🇸🇧🇷", payout: "90%" },
+    { id: "USD/CAD OTC", name: "USD/CAD OTC", flags: "🇺🇸🇨🇦", payout: "92%" },
+    { id: "USD/CHF OTC", name: "USD/CHF OTC", flags: "🇺🇸🇨🇭", payout: "90%" },
+    { id: "USD/CLP OTC", name: "USD/CLP OTC", flags: "🇺🇸🇨🇱", payout: "90%" },
+    { id: "USD/CNH OTC", name: "USD/CNH OTC", flags: "🇺🇸🇨🇳", payout: "92%" },
+    { id: "USD/COP OTC", name: "USD/COP OTC", flags: "🇺🇸🇨🇴", payout: "90%" },
+    { id: "USD/DZD OTC", name: "USD/DZD OTC", flags: "🇺🇸🇩🇿", payout: "90%" },
+    { id: "USD/EGP OTC", name: "USD/EGP OTC", flags: "🇺🇸🇪🇬", payout: "90%" },
+    { id: "USD/IDR OTC", name: "USD/IDR OTC", flags: "🇺🇸🇮🇩", payout: "90%" },
+    { id: "USD/INR OTC", name: "USD/INR OTC", flags: "🇺🇸🇮🇳", payout: "90%" },
+    { id: "USD/JPY OTC", name: "USD/JPY OTC", flags: "🇺🇸🇯🇵", payout: "90%" },
+    { id: "USD/MXN OTC", name: "USD/MXN OTC", flags: "🇺🇸🇲🇽", payout: "90%" },
+    { id: "USD/MYR OTC", name: "USD/MYR OTC", flags: "🇺🇸🇲🇾", payout: "90%" },
+    { id: "USD/PHP OTC", name: "USD/PHP OTC", flags: "🇺🇸🇵🇭", payout: "90%" },
+    { id: "USD/PKR OTC", name: "USD/PKR OTC", flags: "🇺🇸🇵🇰", payout: "90%" },
+    { id: "USD/RUB OTC", name: "USD/RUB OTC", flags: "🇺🇸🇷🇺", payout: "90%" },
+    { id: "USD/SGD OTC", name: "USD/SGD OTC", flags: "🇺🇸🇸🇬", payout: "90%" },
+    { id: "USD/THB OTC", name: "USD/THB OTC", flags: "🇺🇸🇹🇭", payout: "90%" },
+    { id: "USD/VND OTC", name: "USD/VND OTC", flags: "🇺🇸🇻🇳", payout: "90%" },
+    { id: "YER/USD OTC", name: "YER/USD OTC", flags: "🇾🇪🇺🇸", payout: "92%" },
     { id: "Apple OTC", name: "Apple OTC", flags: "🍏", payout: "90%" },
     { id: "Tesla OTC", name: "Tesla OTC", flags: "⚡", payout: "90%" },
-    { id: "BTC/USD OTC", name: "BTC/USD OTC", flags: "₿", payout: "86%" },
-    { id: "ETH/USD OTC", name: "ETH/USD OTC", flags: "Ξ", payout: "85%" },
-    { id: "GOLD OTC", name: "GOLD OTC", flags: "🥇", payout: "90%" },
+    { id: "BTC/USD OTC", name: "Bitcoin OTC", flags: "₿🇺🇸", payout: "86%" },
+    { id: "ETH/USD OTC", name: "Ethereum OTC", flags: "Ξ🇺🇸", payout: "85%" },
+    { id: "GOLD OTC", name: "Gold OTC", flags: "🥇", payout: "90%" },
   ],
   regular: [
-    { id: "EUR/USD", name: "EUR/USD", flags: "🇪🇺🇺🇸", payout: "85%" },
-    { id: "GBP/USD", name: "GBP/USD", flags: "🇬🇧🇺🇸", payout: "84%" },
-    { id: "USD/JPY", name: "USD/JPY", flags: "🇺🇸🇯🇵", payout: "85%" },
-    { id: "AUD/USD", name: "AUD/USD", flags: "🇦🇺🇺🇸", payout: "80%" },
-    { id: "USD/CAD", name: "USD/CAD", flags: "🇺🇸🇨🇦", payout: "82%" },
     { id: "AUD/CAD", name: "AUD/CAD", flags: "🇦🇺🇨🇦", payout: "82%" },
+    { id: "AUD/CHF", name: "AUD/CHF", flags: "🇦🇺🇨🇭", payout: "80%" },
+    { id: "AUD/JPY", name: "AUD/JPY", flags: "🇦🇺🇯🇵", payout: "82%" },
+    { id: "AUD/NZD", name: "AUD/NZD", flags: "🇦🇺🇳🇿", payout: "80%" },
+    { id: "AUD/USD", name: "AUD/USD", flags: "🇦🇺🇺🇸", payout: "80%" },
+    { id: "CAD/CHF", name: "CAD/CHF", flags: "🇨🇦🇨🇭", payout: "80%" },
+    { id: "CAD/JPY", name: "CAD/JPY", flags: "🇨🇦🇯🇵", payout: "80%" },
+    { id: "CHF/JPY", name: "CHF/JPY", flags: "🇨🇭🇯🇵", payout: "82%" },
+    { id: "EUR/AUD", name: "EUR/AUD", flags: "🇪🇺🇦🇺", payout: "82%" },
+    { id: "EUR/CAD", name: "EUR/CAD", flags: "🇪🇺🇨🇦", payout: "82%" },
+    { id: "EUR/CHF", name: "EUR/CHF", flags: "🇪🇺🇨🇭", payout: "80%" },
+    { id: "EUR/GBP", name: "EUR/GBP", flags: "🇪🇺🇬🇧", payout: "82%" },
+    { id: "EUR/JPY", name: "EUR/JPY", flags: "🇪🇺🇯🇵", payout: "84%" },
+    { id: "EUR/NZD", name: "EUR/NZD", flags: "🇪🇺🇳🇿", payout: "80%" },
+    { id: "EUR/USD", name: "EUR/USD", flags: "🇪🇺🇺🇸", payout: "85%" },
+    { id: "GBP/AUD", name: "GBP/AUD", flags: "🇬🇧🇦🇺", payout: "80%" },
+    { id: "GBP/CAD", name: "GBP/CAD", flags: "🇬🇧🇨🇦", payout: "80%" },
+    { id: "GBP/CHF", name: "GBP/CHF", flags: "🇬🇧🇨🇭", payout: "80%" },
+    { id: "GBP/JPY", name: "GBP/JPY", flags: "🇬🇧🇯🇵", payout: "85%" },
+    { id: "GBP/USD", name: "GBP/USD", flags: "🇬🇧🇺🇸", payout: "84%" },
+    { id: "NZD/JPY", name: "NZD/JPY", flags: "🇳🇿🇯🇵", payout: "80%" },
     { id: "NZD/USD", name: "NZD/USD", flags: "🇳🇿🇺🇸", payout: "80%" },
+    { id: "USD/CAD", name: "USD/CAD", flags: "🇺🇸🇨🇦", payout: "82%" },
+    { id: "USD/CHF", name: "USD/CHF", flags: "🇺🇸🇨🇭", payout: "80%" },
+    { id: "USD/JPY", name: "USD/JPY", flags: "🇺🇸🇯🇵", payout: "85%" },
   ]
 };
+
+const TIMEFRAMES = ["5s", "15s", "30s", "1m"];
 
 const urlParams = new URLSearchParams(window.location.search);
 const queryTgId = urlParams.get("tg_id") ? parseInt(urlParams.get("tg_id"), 10) : null;
 const queryLang = urlParams.get("lang") === "ru" || urlParams.get("lang") === "en" ? urlParams.get("lang") : null;
-const isStreamerMode = urlParams.get("streamer") === "1";
 
 const DEMO_MODELS = ['Claude Fable 5.2', 'Claude Opus 5.5', 'Grok 4.7', 'GPT-6 Astra', 'GPT-6.1 Sol'];
 let visualModel = DEMO_MODELS[0];
@@ -72,8 +170,6 @@ const state = {
   forceDir: null, // Secret Streamer trigger: 'BUY' (logo) | 'SELL' (badge/pair)
   initData: window.Telegram?.WebApp?.initData || "",
   tgId: window.Telegram?.WebApp?.initDataUnsafe?.user?.id || (queryTgId ? parseInt(queryTgId, 10) : null),
-  liveWins: 0,
-  liveLosses: 0,
   countdownInterval: null,
   lastSignal: null,
 };
@@ -82,19 +178,20 @@ const i18n = {
   ru: {
     pairLbl: "Валютная пара",
     timeLbl: "Время сделки",
-    time: "Экспирация:",
-    accuracy: "Точность:",
+    time: "Экспирация",
+    accuracy: "Точность",
     readyForSignal: "Готов к анализу графика",
     analysing: "Анализ графических паттернов...",
-    getSignal: "⚡ АНАЛИЗИРОВАТЬ",
-    analyzingBtn: "⚡ АНАЛИЗ ГРАФИКА...",
-    tradeActive: "СДЕЛКА АКТИВНА",
-    tradeCompleted: "СДЕЛКА ЗАВЕРШЕНА · СИГНАЛ ОТРАБОТАН",
-    tabSignals: "🏠 СИГНАЛЫ",
-    tabChat: "💬 ИИ-ЧАТ",
-    chatWelcome: "Привет! Я Winky AI. Выберите пару, экспирацию и нажмите кнопку запроса.",
-    buyText: "↗ КУПИТЬ · ВВЕРХ",
-    sellText: "↘ ПРОДАТЬ · ВНИЗ",
+    getSignal: "⚡ Анализировать",
+    analyzingBtn: "⚡ Анализ графика...",
+    tradeActive: "Сделка активна",
+    tradeCompleted: "Сделка завершена · Сигнал отработан",
+    tabSignals: "Сигналы",
+    tabChat: "ИИ-чат",
+    chatSubtitle: "Ваш ассистент по анализу",
+    chatWelcome: "Привет! Я Winky AI. Выберите валютную пару и время экспирации или нажмите кнопку анализа.",
+    strategyNote: "Совпадение условий стратегии, а не вероятность прибыли.",
+    searchPlaceholder: "Поиск пары...",
     depositTitle: "Демо-сигналы исчерпаны",
     depositDesc: "Вы использовали 3 бесплатных сигнала. Пополните счёт Pocket Option, чтобы получить безлимитный доступ к сигналам, OTC-алгоритмам и всем ИИ-моделям.",
     promoBonus: "+50% к депозиту от $50",
@@ -107,21 +204,22 @@ const i18n = {
     expired: "Время сигнала истекло.",
   },
   en: {
-    pairLbl: "Currency Pair",
-    timeLbl: "Trade Duration",
-    time: "Expiry:",
-    accuracy: "Accuracy:",
+    pairLbl: "Currency pair",
+    timeLbl: "Expiry time",
+    time: "Expiry",
+    accuracy: "Accuracy",
     readyForSignal: "Ready for chart analysis",
     analysing: "Analyzing chart patterns...",
-    getSignal: "⚡ ANALYZE",
-    analyzingBtn: "⚡ ANALYZING CHART...",
-    tradeActive: "TRADE ACTIVE",
-    tradeCompleted: "TRADE COMPLETED · SIGNAL EXECUTED",
-    tabSignals: "🏠 SIGNALS",
-    tabChat: "💬 AI CHAT",
-    chatWelcome: "Hello! I am Winky AI. Select a currency pair, duration and tap send.",
-    buyText: "↗ BUY · CALL",
-    sellText: "↘ SELL · PUT",
+    getSignal: "⚡ Analyze",
+    analyzingBtn: "⚡ Analyzing chart...",
+    tradeActive: "Trade active",
+    tradeCompleted: "Trade completed · Signal executed",
+    tabSignals: "Signals",
+    tabChat: "AI chat",
+    chatSubtitle: "Your analysis assistant",
+    chatWelcome: "Hello! I am Winky AI. Select a currency pair and duration or tap analyze.",
+    strategyNote: "Strategy conditions matched, not the probability of profit.",
+    searchPlaceholder: "Search pair...",
     depositTitle: "Demo Signals Exhausted",
     depositDesc: "You have used all 3 free demo signals. Deposit on Pocket Option to unlock unlimited signals, OTC algorithms, and all AI models.",
     promoBonus: "+50% Deposit Bonus from $50",
@@ -145,12 +243,16 @@ function applyLanguage() {
     const k = node.getAttribute("data-i18n");
     node.textContent = t(k);
   });
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
+  document.querySelectorAll(".winky-lang-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === state.lang);
   });
   const titleEl = document.getElementById("winkyModelMenuTitle");
   if (titleEl) {
-    titleEl.textContent = state.lang === "ru" ? "Выбор модели" : "Select Model";
+    titleEl.textContent = state.lang === "ru" ? "Выбор модели" : "Select model";
+  }
+  const searchInput = document.getElementById("pairSearchInput");
+  if (searchInput) {
+    searchInput.placeholder = t("searchPlaceholder");
   }
   updateCardUI();
 }
@@ -200,7 +302,7 @@ function setupModelSelector() {
 
   if (logoEl) logoEl.innerHTML = getModelBrandLogoSVG(visualModel);
   if (labelEl) labelEl.textContent = visualModel;
-  if (titleEl) titleEl.textContent = state.lang === "ru" ? "Выбор модели" : "Select Model";
+  if (titleEl) titleEl.textContent = state.lang === "ru" ? "Выбор модели" : "Select model";
 
   renderModelOptions();
 
@@ -235,30 +337,188 @@ function switchTab(tabId) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* ==================== 2. Market Switch & Selectors ==================== */
+/* ==================== 2. Custom Styled Dropdowns (Pair & Duration) ==================== */
 
-function populatePairSelect() {
-  const select = document.getElementById("selectPair");
-  if (!select) return;
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[ch]));
+}
 
-  const list = ASSET_CATALOG[state.marketType] || ASSET_CATALOG.otc;
-  select.innerHTML = "";
+function renderPairDropdownList(searchQuery = "") {
+  const listEl = document.getElementById("pairDropdownList");
+  if (!listEl) return;
 
-  list.forEach((item) => {
-    const opt = document.createElement("option");
-    opt.value = item.id;
-    opt.textContent = `${item.flags} ${item.name} (${item.payout})`;
-    if (item.id === state.pair) opt.selected = true;
-    select.appendChild(opt);
+  const pairs = ASSET_CATALOG[state.marketType] || ASSET_CATALOG.otc;
+  const q = String(searchQuery || "").trim().toLowerCase();
+  const filtered = q ? pairs.filter(p => p.name.toLowerCase().includes(q) || p.id.toLowerCase().includes(q)) : pairs;
+
+  if (filtered.length === 0) {
+    listEl.innerHTML = `<div style="padding: 12px; text-align: center; color: #7f9991; font-size: 11px;">${state.lang === 'ru' ? 'Пары не найдены' : 'No pairs found'}</div>`;
+    return;
+  }
+
+  listEl.innerHTML = filtered.map(item => `
+    <button type="button" class="winky-pair-option ${item.id === state.pair ? 'selected' : ''}" data-pair-id="${escapeHtml(item.id)}">
+      <span class="winky-opt-left">
+        <span class="winky-opt-flag">${item.flags}</span>
+        <span class="winky-opt-name">${escapeHtml(item.name)}</span>
+      </span>
+      <span class="winky-opt-payout">+${escapeHtml(item.payout)}</span>
+    </button>
+  `).join("");
+
+  listEl.querySelectorAll(".winky-pair-option").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const pairId = btn.getAttribute("data-pair-id");
+      if (pairId) {
+        selectPair(pairId);
+        closePairDropdown();
+      }
+    });
   });
+}
 
-  // Ensure valid selection
-  const match = list.find((x) => x.id === select.value) || list[0];
-  state.pair = match.id;
-  state.flags = match.flags;
-  state.payout = match.payout;
-
+function selectPair(pairId) {
+  const all = [...ASSET_CATALOG.otc, ...ASSET_CATALOG.regular];
+  const found = all.find(p => p.id.toLowerCase() === pairId.toLowerCase()) || { id: pairId, name: pairId, flags: getPairFlags(pairId), payout: "90%" };
+  state.pair = found.id;
+  state.flags = found.flags;
+  state.payout = found.payout;
   updateCardUI();
+}
+
+function openPairDropdown() {
+  const menu = document.getElementById("pairDropdownMenu");
+  const trigger = document.getElementById("pairDropdownBtn");
+  const searchInput = document.getElementById("pairSearchInput");
+  if (!menu || !trigger) return;
+
+  closeDurationDropdown();
+  const modelMenu = document.getElementById("winkyModelMenu");
+  if (modelMenu) modelMenu.hidden = true;
+
+  menu.hidden = false;
+  trigger.setAttribute("aria-expanded", "true");
+  if (searchInput) {
+    searchInput.value = "";
+    searchInput.focus();
+  }
+  renderPairDropdownList("");
+}
+
+function closePairDropdown() {
+  const menu = document.getElementById("pairDropdownMenu");
+  const trigger = document.getElementById("pairDropdownBtn");
+  if (menu) menu.hidden = true;
+  if (trigger) trigger.setAttribute("aria-expanded", "false");
+}
+
+function setupCustomPairDropdown() {
+  const trigger = document.getElementById("pairDropdownBtn");
+  const menu = document.getElementById("pairDropdownMenu");
+  const searchInput = document.getElementById("pairSearchInput");
+
+  if (trigger && menu) {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (menu.hidden) {
+        openPairDropdown();
+      } else {
+        closePairDropdown();
+      }
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        renderPairDropdownList(e.target.value);
+      });
+      searchInput.addEventListener("click", (e) => e.stopPropagation());
+    }
+
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !trigger.contains(e.target)) {
+        closePairDropdown();
+      }
+    });
+  }
+}
+
+function renderDurationDropdownList() {
+  const listEl = document.getElementById("durationDropdownList");
+  if (!listEl) return;
+
+  listEl.innerHTML = TIMEFRAMES.map(tf => `
+    <button type="button" class="winky-duration-option ${tf === state.duration ? 'selected' : ''}" data-duration="${tf}">
+      <span>${tf}</span>
+    </button>
+  `).join("");
+
+  listEl.querySelectorAll(".winky-duration-option").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const dur = btn.getAttribute("data-duration");
+      if (dur) {
+        state.duration = dur;
+        updateCardUI();
+        closeDurationDropdown();
+      }
+    });
+  });
+}
+
+function openDurationDropdown() {
+  const menu = document.getElementById("durationDropdownMenu");
+  const trigger = document.getElementById("durationDropdownBtn");
+  if (!menu || !trigger) return;
+
+  closePairDropdown();
+  menu.hidden = false;
+  trigger.setAttribute("aria-expanded", "true");
+  renderDurationDropdownList();
+}
+
+function closeDurationDropdown() {
+  const menu = document.getElementById("durationDropdownMenu");
+  const trigger = document.getElementById("durationDropdownBtn");
+  if (menu) menu.hidden = true;
+  if (trigger) trigger.setAttribute("aria-expanded", "false");
+}
+
+function setupCustomDurationDropdown() {
+  const trigger = document.getElementById("durationDropdownBtn");
+  const menu = document.getElementById("durationDropdownMenu");
+
+  if (trigger && menu) {
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (menu.hidden) {
+        openDurationDropdown();
+      } else {
+        closeDurationDropdown();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!menu.contains(e.target) && !trigger.contains(e.target)) {
+        closeDurationDropdown();
+      }
+    });
+  }
+}
+
+function setupAccuracyInfoButton() {
+  const btn = document.getElementById("winkyAccuracyButton");
+  const note = document.getElementById("winkyAccuracyNote");
+  if (btn && note) {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = note.hidden;
+      note.hidden = !isHidden;
+      btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+    });
+  }
 }
 
 function updateCardUI() {
@@ -269,24 +529,26 @@ function updateCardUI() {
   const pillChatPair = document.getElementById("pillChatPair");
   const pillChatDuration = document.getElementById("pillChatDuration");
 
+  const selFlag = document.getElementById("selectedPairFlag");
+  const selName = document.getElementById("selectedPairName");
+  const selPayout = document.getElementById("selectedPairPayout");
+  const selDur = document.getElementById("selectedDurationVal");
+
   if (flagsEl) flagsEl.textContent = state.flags;
   if (nameEl) nameEl.textContent = state.pair;
   if (payoutEl) payoutEl.textContent = `+${state.payout}`;
   if (metricTimeEl) metricTimeEl.textContent = state.duration;
+
+  if (selFlag) selFlag.textContent = state.flags;
+  if (selName) selName.textContent = state.pair;
+  if (selPayout) selPayout.textContent = `+${state.payout}`;
+  if (selDur) selDur.textContent = state.duration;
 
   if (pillChatPair) pillChatPair.textContent = state.pair;
   if (pillChatDuration) pillChatDuration.textContent = state.duration;
 }
 
 /* ==================== 3. Signal Generation Flow ==================== */
-
-function cleanRationaleText(str) {
-  if (!str) return "";
-  return String(str)
-    .replace(/[📌🎯⚡⚠️]/g, "")
-    .replace(/^(Картина графика:|Логика входа:|Настроение рынка:|Анализ просадки:|Умное перекрытие:|Chart structure:|Trade entry:|Market sentiment:|Drawdown analysis:|Smart recovery:)\s*/i, "")
-    .trim();
-}
 
 function parseDurationSeconds(dur) {
   const num = parseInt(dur, 10) || 30;
@@ -300,26 +562,11 @@ function formatCountdown(sec) {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-  }[ch]));
-}
-
 function telegramHeaders() {
   return { "Content-Type": "application/json", "X-Telegram-Init-Data": state.initData || "" };
 }
 
 function updateReferralLinks(data) {
-  if (typeof data.is_vip === "boolean") {
-    const vip = document.getElementById("badgeVip");
-    const guest = document.getElementById("badgeGuest");
-    if (vip) vip.hidden = !data.is_vip;
-    if (guest) {
-      guest.hidden = data.is_vip;
-      guest.textContent = `${state.lang === "ru" ? "ДЕМО" : "DEMO"} ${Number(data.free_signals_left) || 0}/3`;
-    }
-  }
   for (const [id, key] of [["btnRegisterLink", "register_url"], ["btnDepositLink", "deposit_url"]]) {
     const el = document.getElementById(id);
     if (el && typeof data[key] === "string" && data[key].startsWith("https://")) el.href = data[key];
@@ -342,7 +589,6 @@ function syncPanelControlVisibility(phase) {
     mkt.style.pointerEvents = "none";
     sel.style.pointerEvents = "none";
   } else {
-    // idle or expired
     mkt.hidden = false;
     sel.hidden = false;
     mkt.classList.remove("locked");
@@ -693,82 +939,13 @@ async function dispatchLumeanVoice(payload) {
   }
 }
 
-/* ==================== 4. Live Score Streamer HUD ==================== */
-
-function updateLiveScoreUI() {
-  const winEl = document.getElementById("winCount");
-  const lossEl = document.getElementById("lossCount");
-  const rateEl = document.getElementById("winRateVal");
-
-  if (winEl) winEl.textContent = state.liveWins;
-  if (lossEl) lossEl.textContent = state.liveLosses;
-
-  const total = state.liveWins + state.liveLosses;
-  const rate = total > 0 ? ((state.liveWins / total) * 100).toFixed(1) : "0.0";
-  if (rateEl) rateEl.textContent = `${rate}%`;
-}
-
-function setupLiveScore() {
-  const btnToggle = document.getElementById("btnLiveToggle");
-  const bumper = document.getElementById("liveBumper");
-  const btnClose = document.getElementById("btnCloseBumper");
-  const pillWins = document.getElementById("pillWins");
-  const pillLosses = document.getElementById("pillLosses");
-
-  if (btnToggle && bumper) {
-    btnToggle.addEventListener("click", () => {
-      bumper.hidden = !bumper.hidden;
-    });
-  }
-
-  if (btnClose && bumper) {
-    btnClose.addEventListener("click", () => {
-      bumper.hidden = true;
-    });
-  }
-
-  async function refreshScore() {
-    try {
-      const response = await fetch("/api/live_stats");
-      if (!response.ok) return;
-      const data = await response.json();
-      state.liveWins = Number(data.wins) || 0;
-      state.liveLosses = Number(data.losses) || 0;
-      updateLiveScoreUI();
-    } catch (_) {}
-  }
-  refreshScore();
-  setInterval(refreshScore, 5000);
-
-  // Update clock every second
-  const clockEl = document.getElementById("liveClock");
-  setInterval(() => {
-    if (clockEl) {
-      const now = new Date();
-      clockEl.textContent = `${now.toISOString().substring(11, 19)} UTC`;
-    }
-  }, 1000);
-}
-
-/* ==================== 5. AI Chat Tab Controller ==================== */
+/* ==================== 4. AI Chat Tab Controller ==================== */
 
 function setupAiChat() {
-  const selectModel = document.getElementById("selectChatModel");
   const chatFeed = document.getElementById("chatFeed");
   const btnSend = document.getElementById("btnChatSend");
   const pillPair = document.getElementById("pillChatPair");
   const pillDuration = document.getElementById("pillChatDuration");
-  const modelTag = document.getElementById("chatActiveModelTag");
-
-  if (selectModel) {
-    selectModel.addEventListener("change", (e) => {
-      state.model = e.target.value;
-      if (modelTag) {
-        const text = e.target.options[e.target.selectedIndex]?.text || state.model;
-        modelTag.textContent = text.split("·")[0].trim();
-      }
-    });
-  }
 
   async function sendChatQuery() {
     if (!chatFeed || state.isBusy) return;
@@ -793,12 +970,11 @@ function setupAiChat() {
   if (pillDuration) pillDuration.addEventListener("click", sendChatQuery);
 }
 
-/* ==================== 6. Streamer Secret Triggers ==================== */
+/* ==================== 5. Streamer Secret Triggers ==================== */
 
 function setupSecretTriggers() {
   const brand = document.getElementById("brand");
-  const cardPair = document.getElementById("cardPairName");
-  const badge = document.getElementById("userStatusBadge");
+  const cardPair = document.getElementById("cardPairClickable");
 
   // Tap Logo -> Force BUY
   if (brand) {
@@ -810,7 +986,7 @@ function setupSecretTriggers() {
     });
   }
 
-  // Tap Pair Name or Badge -> Force SELL
+  // Tap Pair Name or clickable row -> Force SELL
   if (cardPair) {
     cardPair.addEventListener("click", () => {
       state.forceDir = "SELL";
@@ -819,18 +995,9 @@ function setupSecretTriggers() {
       }
     });
   }
-
-  if (badge) {
-    badge.addEventListener("click", () => {
-      state.forceDir = "SELL";
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred("light");
-      }
-    });
-  }
 }
 
-/* ==================== 7. App Initialization ==================== */
+/* ==================== 6. App Initialization ==================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Telegram WebApp setup
@@ -838,14 +1005,17 @@ document.addEventListener("DOMContentLoaded", () => {
     window.Telegram.WebApp.ready();
     window.Telegram.WebApp.expand();
     try {
-      window.Telegram.WebApp.setHeaderColor("#0D1322");
-      window.Telegram.WebApp.setBackgroundColor("#0D1322");
+      window.Telegram.WebApp.setHeaderColor("#0b1619");
+      window.Telegram.WebApp.setBackgroundColor("#0b1619");
     } catch (_) {}
   }
 
-  // Apply language & model selector
+  // Setup UI components
   applyLanguage();
   setupModelSelector();
+  setupCustomPairDropdown();
+  setupCustomDurationDropdown();
+  setupAccuracyInfoButton();
   loadProfile();
 
   // Tab switching
@@ -865,7 +1035,9 @@ document.addEventListener("DOMContentLoaded", () => {
       state.marketType = "regular";
       mktReg.classList.add("active");
       if (mktOtc) mktOtc.classList.remove("active");
-      populatePairSelect();
+      const defaultPair = ASSET_CATALOG.regular[0].id;
+      selectPair(defaultPair);
+      renderPairDropdownList("");
     });
   }
 
@@ -874,35 +1046,19 @@ document.addEventListener("DOMContentLoaded", () => {
       state.marketType = "otc";
       mktOtc.classList.add("active");
       if (mktReg) mktReg.classList.remove("active");
-      populatePairSelect();
+      const defaultPair = ASSET_CATALOG.otc[0].id;
+      selectPair(defaultPair);
+      renderPairDropdownList("");
     });
   }
 
-  // Populate Selectors
-  populatePairSelect();
-
-  const selectPair = document.getElementById("selectPair");
-  if (selectPair) {
-    selectPair.addEventListener("change", (e) => {
-      state.pair = e.target.value;
-      const list = ASSET_CATALOG[state.marketType] || ASSET_CATALOG.otc;
-      const match = list.find((x) => x.id === state.pair) || { flags: "⚡", payout: "90%" };
-      state.flags = match.flags;
-      state.payout = match.payout;
-      updateCardUI();
-    });
-  }
-
-  const selectDuration = document.getElementById("selectDuration");
-  if (selectDuration) {
-    selectDuration.addEventListener("change", (e) => {
-      state.duration = e.target.value;
-      updateCardUI();
-    });
-  }
+  // Initial pair selection and list render
+  selectPair(state.pair);
+  renderPairDropdownList("");
+  renderDurationDropdownList();
 
   // Language Switch
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
+  document.querySelectorAll(".winky-lang-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       state.lang = btn.getAttribute("data-lang") || "ru";
       localStorage.setItem("winky_lang", state.lang);
@@ -937,9 +1093,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Live Score Bumper setup
-  setupLiveScore();
-
   // AI Chat setup
   setupAiChat();
 
@@ -959,27 +1112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (key !== lastSyncedSignalKey) {
           lastSyncedSignalKey = key;
           if (!state.isBusy) {
-            state.pair = sig.pair;
-            const pairEl = document.getElementById("selectPair");
-            if (pairEl) {
-              let found = false;
-              for (const opt of pairEl.options) {
-                if (opt.value.toLowerCase() === sig.pair.toLowerCase()) {
-                  opt.selected = true;
-                  found = true;
-                  break;
-                }
-              }
-              if (!found) {
-                const newOpt = document.createElement("option");
-                newOpt.value = sig.pair;
-                newOpt.textContent = sig.pair;
-                newOpt.selected = true;
-                pairEl.prepend(newOpt);
-              }
-            }
-            const pairDisplay = document.getElementById("cardPairName");
-            if (pairDisplay) pairDisplay.textContent = sig.pair;
+            selectPair(sig.pair);
           }
         }
       }

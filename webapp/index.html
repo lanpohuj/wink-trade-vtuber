@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <title>WINKY AI — Pocket Option Trading Bot</title>
-  <meta name="theme-color" content="#0D1322">
+  <meta name="theme-color" content="#0b1619">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
@@ -17,98 +17,104 @@
   <!-- Ambient Grid -->
   <div class="tactical-grid-bg" aria-hidden="true"></div>
 
-  <!-- ==================== TOPBAR ==================== -->
-  <header class="topbar">
-    <div class="brand" id="brand" role="button" tabindex="0" title="WINKY AI">
-      <div class="brand-icon winky-neko-icon" style="width:28px; height:28px; display:flex; align-items:center; justify-content:center; filter:drop-shadow(0 0 8px rgba(0,245,160,0.5));">
-        <svg viewBox="0 0 24 24" fill="none" style="width:100%; height:100%;">
-          <path d="M4 19V9.5L8 4L12 8L16 4L20 9.5V19C20 19.5 19.5 20 19 20H5C4.5 20 4 19.5 4 19Z" stroke="#00F5A0" stroke-width="2" stroke-linejoin="round"/>
-          <circle cx="8.5" cy="13.5" r="1.5" fill="#FFB800"/>
-          <circle cx="15.5" cy="13.5" r="1.5" fill="#FFB800"/>
-          <path d="M11 16.5L12 17.5L13 16.5" stroke="#00F5A0" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="brand-info">
-        <div class="brand-title">WINKY<span>AI</span></div>
-        <div class="brand-sub">TRADING ASSISTANT</div>
-      </div>
-    </div>
+  <!-- ==================== UNIFIED WINKY PANEL (1-to-1 with Extension HUD) ==================== -->
+  <div class="winky-unified-panel" id="winkyHudRoot">
 
-    <div class="topbar-actions">
-      <!-- Language Switch RU / EN -->
-      <div class="lang-switch" id="langSwitch" data-active="ru">
-        <button type="button" class="lang-btn active" data-lang="ru">RU</button>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ==================== MAIN CONTENT CONTAINER (2 TABS) ==================== -->
-  <main class="content-body">
-
-    <!-- ======================================================== -->
-    <!-- TAB 1: 🏠 СИГНАЛЫ (SIGNALS — DEFAULT TAB)                  -->
-    <!-- ======================================================== -->
-    <section class="tab-view active" id="tabSignals">
-      <div class="winky-bot-card">
-
-        <!-- Model Selector Row -->
-        <div class="winky-model-row">
-          <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu">
-            <span class="winky-model-btn-logo" id="winkyModelLogo"></span>
-            <span id="winkyModelLabel">Claude Fable 5.2</span>
-            <span class="winky-model-chevron">⌄</span>
-          </button>
-          <div class="winky-model-menu" id="winkyModelMenu" hidden>
-            <div class="winky-model-menu-title" id="winkyModelMenuTitle">Выбор модели</div>
-            <div class="winky-model-options" id="winkyModelOptions"></div>
+    <!-- Header -->
+    <header class="winky-panel-header" id="winkyBotHeader">
+      <div class="winky-header-top">
+        <div class="winky-brand-logo" id="brand" role="button" tabindex="0" title="⚡ Клик: секретный BUY триггер">
+          <div class="winky-neko-icon">
+            <img src="winky-portrait.png" alt="Winky">
+          </div>
+          <div class="winky-brand-text">
+            <span class="winky-brand-title">WINKY<span>AI</span></span>
+            <span class="winky-brand-sub">TRADING ASSISTANT</span>
           </div>
         </div>
+
+        <div class="winky-header-right">
+          <!-- Language Switch RU / EN -->
+          <div class="winky-lang-switch" id="langSwitch" data-active="ru">
+            <button type="button" class="winky-lang-btn active" data-lang="ru">RU</button>
+            <button type="button" class="winky-lang-btn" data-lang="en">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model Selector Row -->
+      <div class="winky-model-row">
+        <button type="button" class="winky-model-button" id="winkyModelButton" aria-expanded="false" aria-controls="winkyModelMenu">
+          <span class="winky-model-btn-logo" id="winkyModelLogo"></span>
+          <span id="winkyModelLabel">Claude Fable 5.2</span>
+          <span class="winky-model-chevron">⌄</span>
+        </button>
+        <div class="winky-model-menu" id="winkyModelMenu" hidden>
+          <div class="winky-model-menu-title" id="winkyModelMenuTitle">Выбор модели</div>
+          <div class="winky-model-options" id="winkyModelOptions"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="winky-panel-body">
+
+      <!-- ======================================================== -->
+      <!-- TAB 1: СИГНАЛЫ (SIGNALS — DEFAULT TAB)                   -->
+      <!-- ======================================================== -->
+      <section class="tab-view active" id="tabSignals">
         
-        <!-- Market Switch (Regular | OTC) -->
+        <!-- Market Switch (OTC | Regular) -->
         <div class="winky-market-switch" id="winkyMarketSwitch">
           <button type="button" class="winky-market-btn active" id="mktOtcBtn" data-mtype="otc">OTC (24/7)</button>
           <button type="button" class="winky-market-btn" id="mktRegularBtn" data-mtype="regular">Regular</button>
         </div>
 
-        <!-- Selectors Grid (Pair & Timeframe) -->
+        <!-- Selectors Grid (Pair & Timeframe with Custom Dark Glass Dropdowns) -->
         <div class="winky-selectors-grid" id="winkySelectorsGrid">
-          <div class="winky-select-box">
-            <span class="winky-select-lbl" data-i18n="pairLbl">Валютная пара</span>
-            <select class="winky-select-native" id="selectPair">
-              <!-- Dynamically populated or static -->
-              <option value="EUR/USD OTC" selected>🇪🇺🇺🇸 EUR/USD OTC (92%)</option>
-              <option value="AUD/CAD OTC">🇦🇺🇨🇦 AUD/CAD OTC (90%)</option>
-              <option value="MAD/USD OTC">🇲🇦🇺🇸 MAD/USD OTC (92%)</option>
-              <option value="USD/CAD OTC">🇺🇸🇨🇦 USD/CAD OTC (92%)</option>
-              <option value="GBP/USD OTC">🇬🇧🇺🇸 GBP/USD OTC (92%)</option>
-              <option value="USD/JPY OTC">🇺🇸🇯🇵 USD/JPY OTC (90%)</option>
-              <option value="AUD/USD OTC">🇦🇺🇺🇸 AUD/USD OTC (91%)</option>
-              <option value="NZD/USD OTC">🇳🇿🇺🇸 NZD/USD OTC (88%)</option>
-              <option value="Apple OTC">🍏 Apple OTC (90%)</option>
-              <option value="Tesla OTC">⚡ Tesla OTC (90%)</option>
-              <option value="BTC/USD OTC">₿ BTC/USD OTC (86%)</option>
-              <option value="ETH/USD OTC">Ξ ETH/USD OTC (85%)</option>
-              <option value="GOLD OTC">🥇 GOLD OTC (90%)</option>
-            </select>
+          
+          <!-- Pair Box -->
+          <div class="winky-select-box" id="pairSelectBox">
+            <span class="winky-select-lbl" id="pairSelectLbl" data-i18n="pairLbl">Валютная пара</span>
+            <div class="winky-custom-dropdown" id="pairDropdown">
+              <button type="button" class="winky-custom-select-btn" id="pairDropdownBtn" aria-expanded="false">
+                <span class="winky-selected-pair-val">
+                  <span class="winky-selected-flag" id="selectedPairFlag">🇪🇺🇺🇸</span>
+                  <span class="winky-selected-name" id="selectedPairName">EUR/USD OTC</span>
+                </span>
+                <span class="winky-selected-payout" id="selectedPairPayout">+92%</span>
+                <span class="winky-select-chevron" id="pairDropdownChevron">⌄</span>
+              </button>
+              <div class="winky-custom-dropdown-menu" id="pairDropdownMenu" hidden>
+                <div class="winky-pair-search-wrap">
+                  <input type="text" class="winky-pair-search-input" id="pairSearchInput" placeholder="Поиск пары..." autocomplete="off">
+                </div>
+                <div class="winky-pair-list-scroll" id="pairDropdownList"></div>
+              </div>
+            </div>
           </div>
 
-          <div class="winky-select-box">
-            <span class="winky-select-lbl" data-i18n="timeLbl">Время сделки</span>
-            <select class="winky-select-native" id="selectDuration">
-              <option value="5s">5s</option>
-              <option value="15s">15s</option>
-              <option value="30s" selected>30s</option>
-              <option value="1m">1m</option>
-            </select>
+          <!-- Duration Box -->
+          <div class="winky-select-box" id="durationSelectBox">
+            <span class="winky-select-lbl" id="timeSelectLbl" data-i18n="timeLbl">Время сделки</span>
+            <div class="winky-custom-dropdown" id="durationDropdown">
+              <button type="button" class="winky-custom-select-btn" id="durationDropdownBtn" aria-expanded="false">
+                <span id="selectedDurationVal">30s</span>
+                <span class="winky-select-chevron" id="durationDropdownChevron">⌄</span>
+              </button>
+              <div class="winky-custom-dropdown-menu winky-duration-menu" id="durationDropdownMenu" hidden>
+                <div class="winky-duration-options" id="durationDropdownList"></div>
+              </div>
+            </div>
           </div>
+
         </div>
 
-        <!-- Signal Card (Always Visible Inside Container) -->
+        <!-- Inline Signal Card -->
         <div class="winky-signal-card">
           <!-- Pair Row -->
           <div class="winky-card-pair-row">
-            <div class="winky-card-pair">
+            <div class="winky-card-pair" id="cardPairClickable" title="⚡ Клик: секретный SELL триггер">
               <span class="winky-card-flags" id="cardFlags">🇪🇺🇺🇸</span>
               <span id="cardPairName">EUR/USD OTC</span>
             </div>
@@ -118,14 +124,16 @@
           <!-- Metrics Row -->
           <div class="winky-metrics-row">
             <div class="winky-metric-pill">
-              <span class="winky-metric-title" data-i18n="time">Время:</span>
+              <span class="winky-metric-title" data-i18n="time">Экспирация</span>
               <span class="winky-metric-val" id="metricTime">30s</span>
             </div>
-            <div class="winky-metric-pill">
-              <span class="winky-metric-title" data-i18n="accuracy">Точность:</span>
-              <span class="winky-metric-val" id="metricAccuracy">—</span>
-            </div>
+            <button type="button" class="winky-metric-pill winky-accuracy-button" id="winkyAccuracyButton" aria-expanded="false">
+              <span class="winky-metric-title" data-i18n="accuracy">Точность</span>
+              <span class="winky-metric-val amber" id="metricAccuracy">—</span>
+              <span class="winky-info-mark">ⓘ</span>
+            </button>
           </div>
+          <div class="winky-accuracy-note" id="winkyAccuracyNote" hidden data-i18n="strategyNote">Совпадение условий стратегии, а не вероятность прибыли.</div>
 
           <!-- Direction Block -->
           <div class="winky-direction-block idle" id="directionBlock">
@@ -136,42 +144,24 @@
         <!-- Action Row (Get Signal) -->
         <div class="winky-action-row">
           <button type="button" class="winky-btn-get-signal" id="btnGetSignal">
-            <span id="btnGetSignalText" data-i18n="getSignal">⚡ АНАЛИЗИРОВАТЬ</span>
+            <span id="btnGetSignalText" data-i18n="getSignal">⚡ Анализировать</span>
           </button>
         </div>
 
-      </div>
-    </section>
+      </section>
 
-    <!-- ======================================================== -->
-    <!-- TAB 2: 💬 ИИ-ЧАТ (AI CHAT TAB)                            -->
-    <!-- ======================================================== -->
-    <section class="tab-view" id="tabChat">
-      <div class="winky-bot-card">
+      <!-- ======================================================== -->
+      <!-- TAB 2: ИИ-ЧАТ (AI CHAT TAB)                              -->
+      <!-- ======================================================== -->
+      <section class="tab-view" id="tabChat">
         
-        <!-- Model Selector -->
-        <div class="winky-select-box">
-          <span class="winky-select-lbl">ИИ-Модель теханализа:</span>
-          <select class="winky-select-native" id="selectChatModel">
-            <optgroup label="Anthropic">
-              <option value="claude-fable-5.1" selected>Claude Fable 5.1 · Flagship</option>
-              <option value="claude-opus-5">Claude Opus 5</option>
-              <option value="claude-sonnet-5">Claude Sonnet 5</option>
-              <option value="claude-haiku-4.5">Claude Haiku 4.5</option>
-            </optgroup>
-            <optgroup label="OpenAI">
-              <option value="gpt-5-astra">GPT-5 Astra · Vision</option>
-              <option value="gpt-5-luna">GPT-5 Luna · Fast</option>
-              <option value="gpt-5-pro">GPT-5 Pro</option>
-              <option value="gpt-5-mini">GPT-5 mini</option>
-            </optgroup>
-            <optgroup label="Google">
-              <option value="gemini-argon">Gemini Argon · Chart AI</option>
-              <option value="gemini-3.1-pro">Gemini 3.1 Pro</option>
-              <option value="gemini-3.8-flash">Gemini 3.8 Flash</option>
-              <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
-            </optgroup>
-          </select>
+        <!-- Welcome Header -->
+        <div class="winky-chat-welcome">
+          <img src="winky-portrait.png" alt="Winky">
+          <div>
+            <strong>Winky AI</strong>
+            <span id="chatSubtitle" data-i18n="chatSubtitle">Ваш ассистент по анализу</span>
+          </div>
         </div>
 
         <!-- Chat Feed -->
@@ -179,10 +169,10 @@
           <div class="winky-chat-bubble ai">
             <div class="bubble-header">
               <span class="ai-badge">WINKY AI</span>
-              <span class="bubble-model" id="chatActiveModelTag">Claude Fable 5.1</span>
+              <span class="bubble-model" id="chatActiveModelTag">Claude Fable 5.2</span>
             </div>
             <div class="bubble-content" data-i18n="chatWelcome">
-              Привет! Выберите пару, экспирацию и нажмите кнопку запроса.
+              Привет! Я Winky AI. Выберите валютную пару и время экспирации или нажмите кнопку анализа.
             </div>
           </div>
         </div>
@@ -194,33 +184,29 @@
           <button type="button" class="winky-btn-send-chat" id="btnChatSend" title="Анализировать">➤</button>
         </div>
 
-      </div>
-    </section>
+      </section>
 
-  </main>
+    </div>
 
-  <!-- ==================== BOTTOM NAVIGATION (STRICTLY 2 TABS) ==================== -->
-  <nav class="bottom-nav">
-    <button type="button" class="nav-item active" data-tab="tabSignals" id="btnNavSignals">
-      <span class="nav-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Panel Footer Navigation (Integrated inside unified shell, NO duplicate emojis) -->
+    <nav class="winky-panel-nav bottom-nav">
+      <button type="button" class="winky-nav-item nav-item active" data-tab="tabSignals" id="btnNavSignals">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
-      </span>
-      <span class="nav-label" data-i18n="tabSignals">🏠 СИГНАЛЫ</span>
-    </button>
-    <button type="button" class="nav-item" data-tab="tabChat" id="btnNavChat">
-      <span class="nav-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="nav-label" data-i18n="tabSignals">Сигналы</span>
+      </button>
+      <button type="button" class="winky-nav-item nav-item" data-tab="tabChat" id="btnNavChat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
         </svg>
-      </span>
-      <span class="nav-label" data-i18n="tabChat">💬 ИИ-ЧАТ</span>
-    </button>
-  </nav>
+        <span class="nav-label" data-i18n="tabChat">ИИ-чат</span>
+      </button>
+    </nav>
 
-  <!-- ==================== VIP DEPOSIT SHEET ==================== -->
+  </div>
+
+  <!-- ==================== VIP DEPOSIT SHEET (MODAL OVERLAY) ==================== -->
   <div class="sheet-backdrop" id="depositSheetBackdrop" hidden>
     <div class="deposit-card" id="depositSheet">
       <div class="deposit-badge">VIP UPGRADE</div>
