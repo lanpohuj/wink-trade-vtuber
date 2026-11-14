@@ -1,4 +1,5 @@
 import {Director} from './policy.mjs';
+import {REST, JOINTS, TRACKS, sampleTrack, actionWeight} from './motion-tracks.mjs';
 const director = new Director();
 const controller = window.vtuber;
 const originalUpdate = controller.update.bind(controller);
@@ -12,9 +13,19 @@ const pawThumbs = {
   Right: [[.69,-.14,.37],[.26,.14,.02],[.01,-.18,-.07]],
   Left: [[.77,-.28,.56],[.01,.08,.01],[-.01,-.35,-.06]],
 };
-const kissTouch = {RightShoulder:[0,0,.08],RightArm:[-.90,-.75,-.45],RightForeArm:[-.45,-2.12,0],RightHand:[-.40,.25,-.20]};
-const kissSend = {RightShoulder:[0,0,.08],RightArm:[-.75,-.45,-.30],RightForeArm:[-.35,-1.65,0],RightHand:[-.40,.20,-.25]};
-const kissRest = {RightShoulder:[0,0,0],RightArm:[0,0,.04],RightForeArm:[0,-.16,0],RightHand:[0,0,0]};
+let authored=null, written=new Set();
+const quaternionCache=new WeakMap(),targetQuaternion=new THREE.Quaternion(),axis=new THREE.Vector3(1,0,0);
+function poseQuaternion(pose,alias){
+  let cache=quaternionCache.get(pose);
+  if(!cache){cache={};quaternionCache.set(pose,cache);}
+  if(cache[alias])return cache[alias];
+  const base=controller.baseRotations['Shibahu_'+alias],offset=pose[alias]||REST[alias];
+  const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(base.x+offset[0],base.y+offset[1],base.z+offset[2],'XYZ'));
+  if(alias==='RightForeArm'&&pose.forearmTwist)q.multiply(new THREE.Quaternion().setFromAxisAngle(axis,pose.forearmTwist));
+  cache[alias]=q;return q;
+}
+const originalWave=controller.wave.bind(controller);
+controller.wave=function(duration=3.2){originalWave();this.labWaveDuration=duration;this.waveTimer=duration;};
 let kissWasActive=false, heartsSent=false;
 const style=document.createElement('style');
 style.textContent='@keyframes winkyLabHeart{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}18%{opacity:.9}100%{opacity:0;transform:translate(calc(-50% + var(--drift)), -85px) scale(1.1)}}.winky-lab-heart{position:fixed;pointer-events:none;color:#fa83ae;font:20px system-ui;animation:winkyLabHeart 1.4s ease-out forwards;z-index:10}';
@@ -37,22 +48,27 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
   const name = named ? tx : typeof bone === 'string' ? bone : bone?.name;
   const target = named ? [ty, tz, dt] : [tx, ty, tz];
   const delta = named ? speed : dt, rate = named ? maybeSpeed : speed;
+  const alias=name?.startsWith('Shibahu_')?name.slice(8):'';
+  if(authored && JOINTS[authored.mode].includes(alias)){
+    if(written.has(name))return;
+    written.add(name);
+    const bracket=alias==='RightHand'&&authored.mode==='wave'&&authored.time>.5&&authored.time<2.4
+      ? sampleTrack('wave',authored.time+.045):authored;
+    targetQuaternion.copy(poseQuaternion(bracket.a,alias)).slerp(poseQuaternion(bracket.b,alias),bracket.weight);
+    this.bones[name].quaternion.slerp(targetQuaternion,1-Math.exp(-delta*(alias==='RightHand'?16:12)));
+    return;
+  }
+  if(authored && ['wave','shy'].includes(authored.mode)){
+    const finger=/^Shibahu_RightHand(Index|Middle|Ring|Pinky|Thumb)([123])$/.exec(name);
+    if(finger){
+      const w=actionWeight(authored.time),thumb=finger[1]==='Thumb';
+      const curl=authored.mode==='wave'?.055:(finger[1]==='Pinky'?-.08:-.015);
+      return originalBone(name,0,thumb?-.08+(.1*w):0,thumb?0:-.16+(curl+.16)*w,delta,12);
+    }
+  }
   if(this.actionMode==='neko_paws'){
     const match=/^Shibahu_(Right|Left)HandThumb([123])$/.exec(name);
     if(match)return originalBone(name,...pawThumbs[match[1]][Number(match[2])-1],delta,9);
-  }
-  if(this.actionMode==='flirt_kiss' && name?.startsWith('Shibahu_')){
-    const alias=name.slice(8),touch=kissTouch[alias];
-    if(touch){
-      const time=Math.max(0,this.actionDuration-this.actionTimer);
-      const reach=ease(time/.9),release=ease((time-1.25)/1.05),lower=ease((time-2.55)/.65);
-      const pose=touch.map((v,i)=>{
-        const sending=v+(kissSend[alias][i]-v)*release;
-        const fromRest=kissRest[alias][i]+(sending-kissRest[alias][i])*reach;
-        return fromRest+(kissRest[alias][i]-fromRest)*lower;
-      });
-      return originalBone(name,...pose,delta,9);
-    }
   }
   if (!this.actionMode && this.waveTimer <= 0) {
     const side = name?.includes('Right') ? 'Right' : 'Left';
@@ -99,11 +115,16 @@ controller.update = function(dt, elapsed) {
   const steps=Math.max(1,Math.ceil(dt/.05)),step=dt/steps;
   for(let i=0;i<steps;i++){
     this.idleFlirtTimer=Infinity;
+    const waving=this.waveTimer>0,mode=waving?'wave':this.actionMode;
+    const duration=waving?(this.labWaveDuration||3.2):this.actionDuration;
+    const timer=waving?this.waveTimer:this.actionTimer;
+    authored=Object.hasOwn(TRACKS,mode)?{...sampleTrack(mode,(duration-Math.max(0,timer-step))*3.2/duration),mode}:null;
+    written.clear();
     originalUpdate(step,elapsed-dt+(i+1)*step,frame.speaking,frame.speaking?audioRms:0);
   }
   const kissing=this.actionMode==='flirt_kiss';
   if(kissing&&!kissWasActive)heartsSent=false;
-  if(kissing&&!heartsSent && this.actionDuration-this.actionTimer>=1.4){sendHearts();heartsSent=true;}
+  if(kissing&&!heartsSent && this.actionDuration-this.actionTimer>=1.12){sendHearts();heartsSent=true;}
   kissWasActive=kissing;
   window.avatarLabState = { ...frame, id: director.active?.id || null, time: director.active?.time || 0, rms: audioRms };
 };
@@ -118,11 +139,13 @@ window.addEventListener('message', e => {
     // Expressions don't invoke body actions in the candidate.
     controller.currentEmotion = ['idle','happy','neutral','thinking','excited','blush','wink','surprised'].includes(m.event.emotion) ? m.event.emotion : 'happy';
     controller.emotionResetTimer = 4;
-    if (a.gesture === 'wave') controller.waveTimer = Math.min(2.5, a.duration);
+    if (a.gesture === 'wave') controller.wave(Math.min(3.2,a.duration));
+    if (a.gesture === 'shy') controller.triggerAction('shy',a.duration);
   } else if (m.type === 'clock' && director.active?.id === m.id) {
     director.clock(m.id, m.time); audioRms = Math.max(0, Math.min(1, Number(m.rms) || 0));
   } else if (m.type === 'end' && director.active?.id === m.id) {
     director.end(m.id); audioRms = 0; controller.waveTimer = 0;
+    controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
   } else if (m.type === 'legacy') {
     director.end(director.active?.id); audioRms = 0;

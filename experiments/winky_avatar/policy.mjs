@@ -9,18 +9,20 @@ export const PROFILES = {
   reassure: ['nod', 'listen', 'tilt'],
   curious: ['tilt', 'listen', 'nod'],
   playful: ['tilt', 'joy', 'listen'],
+  embarrassed: ['shy', 'tilt', 'listen'],
 };
 export const LABELS = {
   listen: 'Спокойная речь', nod: 'Мягкий кивок', tilt: 'Любопытный наклон',
   explain_right: 'Объяснение правой рукой', explain_left: 'Объяснение левой рукой',
-  bow: 'Благодарный поклон', joy: 'Сдержанная радость', wave: 'Приветствие из резерва',
+  bow: 'Благодарный поклон', joy: 'Сдержанная радость', wave: 'Живое приветствие',
+  shy: 'Смущение с рукой у лица',
 };
 export function profileFor(event = {}) {
   const kind = event.chat_kind || event.conditions?.chat_kind;
   if (kind === 'join') return 'greeting';
   if (['like', 'follow', 'gift'].includes(kind)) return 'thanks';
   if(event.intent==='greeting')return 'greeting';
-  if(event.intent==='compliment')return 'playful';
+  if(event.intent==='compliment')return ['blush','shy'].includes(event.emotion)?'embarrassed':'playful';
   if(['strategy','bot'].includes(event.intent))return 'explain';
   if(['skeptic','gambler'].includes(event.intent))return 'reassure';
   const c = String(event.category || '').toUpperCase();
@@ -32,6 +34,7 @@ export function profileFor(event = {}) {
   if (['NARRATE_LESSON', 'STREAM_INSIGHT', 'NARRATE_CTA'].includes(c)) return 'explain';
   if (c === 'START_STREAM_READY') return 'greeting';
   // Explicit semantics precede emotion. An excited explanation is still an explanation.
+  if (['blush','shy'].includes(event.emotion)) return 'embarrassed';
   if (['thinking', 'surprised', 'peek_closer'].includes(event.emotion)) return 'curious';
   if (['blush', 'shy', 'flirt_kiss', 'wink'].includes(event.emotion)) return 'playful';
   if (['wave', 'greeting'].includes(event.emotion)) return 'greeting';

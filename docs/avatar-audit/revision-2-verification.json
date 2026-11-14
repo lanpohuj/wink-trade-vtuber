@@ -1,0 +1,326 @@
+{
+  "verified_at": "2026-11-14T13:22:28.445599+00:00",
+  "scope": "isolated_browser_and_offline_animation_export_not_native_stream_acceptance",
+  "previous_commit": "ffbc79c893f8f950936a9ebb1439fd073ddc29ee",
+  "policy_tests_passed": 5,
+  "motion_checks": [
+    "wave finite rig positions",
+    "wave palm faces the viewer during sweeps",
+    "wave fingertips stay inside the image while raising and lowering",
+    "wave elbow is steadier than the hand",
+    "shy finite rig positions",
+    "shy hand reaches the face height",
+    "flirt_kiss finite rig positions",
+    "kiss back of hand faces the viewer",
+    "kiss hand reaches lip height earlier",
+    "no browser errors"
+  ],
+  "speech_and_preservation_checks": [
+    "every library recording has a performance profile",
+    "ru real audio starts one identified session",
+    "ru waveform drives articulation",
+    "ru pause keeps the same audio clock",
+    "en real audio starts one identified session",
+    "en waveform drives articulation",
+    "en pause keeps the same audio clock",
+    "Right thumb folds toward index knuckle",
+    "Left thumb folds toward index knuckle",
+    "kiss release retains puckered lips",
+    "kiss sends three small hearts",
+    "preserved hip groove Shibahu_Hips",
+    "preserved hip groove Shibahu_RightHand",
+    "preserved hip groove Shibahu_LeftHand",
+    "low frame rate preserves action duration",
+    "no browser JavaScript errors",
+    "all browser requests stay on isolated laboratory port"
+  ],
+  "browser_errors": [],
+  "muted_audio_playback": [
+    {
+      "lang": "ru",
+      "id": "lab-1",
+      "max_rms": 0.46701387950759066
+    },
+    {
+      "lang": "en",
+      "id": "lab-2",
+      "max_rms": 0.44265851518874144
+    }
+  ],
+  "measurements": {
+    "wave": {
+      "palm_facing_viewer_min": 0.9593751443715983,
+      "palm_facing_viewer_max": 0.9999142147005683,
+      "at_0_6s": {
+        "previous": {
+          "wrist": [
+            -20.661635179272935,
+            124.23179924866272,
+            22.37295891834002
+          ],
+          "elbow": [
+            -23.43867918583399,
+            107.4632285390902,
+            10.364624155354754
+          ],
+          "palmFacing": 0.967377009599975,
+          "fingertip": [
+            -17.06753484077974,
+            132.67100506124243,
+            29.867154610213174
+          ],
+          "projected": [
+            -0.5031094963230449,
+            0.43986168128061626,
+            0.9896178175966055
+          ],
+          "fingerHeadHeight": 4.779398363677132,
+          "hand": [
+            -0.05244244819524391,
+            -0.0032965368887001977,
+            0.22036874695962894,
+            0.9740002760960973
+          ],
+          "head": [
+            -0.0012656155944981789,
+            0.008002752525752586,
+            -0.01650627574202476,
+            0.9998309342235352
+          ]
+        },
+        "candidate": {
+          "wrist": [
+            -20.685339564171166,
+            128.0560457043732,
+            20.685062997258083
+          ],
+          "elbow": [
+            -24.616370936488153,
+            109.32083872956319,
+            12.521972112236611
+          ],
+          "palmFacing": 0.9839458803771198,
+          "fingertip": [
+            -19.898390776266325,
+            137.7675688115151,
+            27.405169111906414
+          ],
+          "projected": [
+            -0.5783224308652889,
+            0.5601795903475978,
+            0.9897916614968179
+          ],
+          "fingerHeadHeight": 0.5515138514371074,
+          "hand": [
+            -0.09829795941937025,
+            0.15069181506630103,
+            0.14285084613489385,
+            0.973253884556623
+          ],
+          "head": [
+            -0.0012656155944981789,
+            0.008002752525752586,
+            -0.01650627574202476,
+            0.9998309342235352
+          ]
+        }
+      }
+    },
+    "shy": {
+      "palm_facing_viewer_min": -0.9814752175647611,
+      "palm_facing_viewer_max": -0.943625965297746,
+      "at_0_6s": {
+        "previous": {
+          "wrist": [
+            -24.60127677066374,
+            86.87146255180174,
+            17.324964544711616
+          ],
+          "elbow": [
+            -19.954181027126722,
+            102.81221306053655,
+            4.77928739260456
+          ],
+          "palmFacing": 0.20163855601530867,
+          "fingertip": [
+            -24.19432686067302,
+            79.69319397264563,
+            23.59232229815975
+          ],
+          "projected": [
+            -0.6798549309155898,
+            -0.8284100755728384,
+            0.9901966646619152
+          ],
+          "fingerHeadHeight": 53.6018518571384,
+          "hand": [
+            -0.0399362142913711,
+            0.05199429868601932,
+            0.21740617655657077,
+            0.9738769152656181
+          ],
+          "head": [
+            0.017312430949038712,
+            0.0006235168967403018,
+            -0.033959679356230156,
+            0.999273051342493
+          ]
+        },
+        "candidate": {
+          "wrist": [
+            -6.8865167018756654,
+            121.69291865123051,
+            27.068142114618794
+          ],
+          "elbow": [
+            -14.51285591534068,
+            105.45516835509413,
+            16.519613479888804
+          ],
+          "palmFacing": -0.756989748969026,
+          "fingertip": [
+            -5.113630771313874,
+            132.90343041510033,
+            26.43820992917562
+          ],
+          "projected": [
+            -0.1476145112733065,
+            0.4389953256907347,
+            0.9898743876093311
+          ],
+          "fingerHeadHeight": 7.475053645583927,
+          "hand": [
+            -0.31696882683986305,
+            -0.14012105605053848,
+            0.13837486760769668,
+            0.9277657293075634
+          ],
+          "head": [
+            0.03335030741908428,
+            0.03220397353916889,
+            -0.03545924090499216,
+            0.9982951984847883
+          ]
+        }
+      }
+    },
+    "flirt_kiss": {
+      "palm_facing_viewer_min": -0.9999418646897626,
+      "palm_facing_viewer_max": -0.9818305734646927,
+      "at_0_6s": {
+        "previous": {
+          "wrist": [
+            -9.064464783627232,
+            109.28655176188164,
+            32.506518206094086
+          ],
+          "elbow": [
+            -14.300011662493842,
+            104.79226025122912,
+            12.872684308133774
+          ],
+          "palmFacing": 0.0287241961302823,
+          "fingertip": [
+            -3.818409274518127,
+            111.07630117947289,
+            43.155042575116724
+          ],
+          "projected": [
+            -0.12207766549750038,
+            -0.1149060865955244,
+            0.9885703499491553
+          ],
+          "fingerHeadHeight": 26.404005722127778,
+          "hand": [
+            -0.15147815741207554,
+            0.14271267040642643,
+            0.134926085130666,
+            0.9687530196514595
+          ],
+          "head": [
+            0.013913870209001096,
+            0.022574265218304707,
+            -0.05000513519634661,
+            0.9983968615834364
+          ]
+        },
+        "candidate": {
+          "wrist": [
+            0.5794661855253125,
+            122.49778588589733,
+            17.59791436796953
+          ],
+          "elbow": [
+            -14.170753967909382,
+            107.82279927186882,
+            17.182205167297838
+          ],
+          "palmFacing": -0.998401211301894,
+          "fingertip": [
+            1.5210148756793511,
+            133.4426786506748,
+            12.756614847005878
+          ],
+          "projected": [
+            0.0405517985994405,
+            0.4271336542780681,
+            0.9908011166178591
+          ],
+          "fingerHeadHeight": 6.140894843069674,
+          "hand": [
+            -0.19213003591109606,
+            -0.26752042967418366,
+            0.122416239855167,
+            0.9362334822187588
+          ],
+          "head": [
+            0.013913870209001096,
+            0.022574265218304707,
+            -0.05000513519634661,
+            0.9983968615834364
+          ]
+        }
+      }
+    }
+  },
+  "pixel_check": {
+    "previous_face_side": {
+      "box": [
+        180,
+        285,
+        240,
+        365
+      ],
+      "skin_color_pixels": 52
+    },
+    "candidate_hand_at_face": {
+      "box": [
+        820,
+        285,
+        880,
+        365
+      ],
+      "skin_color_pixels": 2924
+    }
+  },
+  "preserved_working_files": 324,
+  "backup_matching_files": 46,
+  "export": {
+    "frames": 324,
+    "fps": 30,
+    "seconds": 10.8,
+    "audio": false,
+    "sha256": "553fb2e2424bec05dfbf1118730dcb5453cf0f562ce62908c3d2a4e3dcbd548d"
+  },
+  "source_sha256": {
+    "experiments/winky_avatar/candidate.mjs": "9e48c26f0e8241c7705391feae565476679e95813767adaffbf5c0b3d34c5031",
+    "experiments/winky_avatar/index.html": "e6c8a17e44470005166f2ec90f023570d88fd597637d5da745cf7f884df138e3",
+    "experiments/winky_avatar/motion-tracks.mjs": "cdfeb17f7f9a559f79eac7c511474eed7a4f66b0610d0d66bd7757e67a020630",
+    "experiments/winky_avatar/ui.mjs": "f3a9cabfceeb612dcfd781e81e6925e9b23c667d23d3abefc13fc95cf4ba2e0b",
+    "experiments/winky_avatar/verify.cjs": "e54526e8363983be297b8d031c158dc89369f29facaa06989cbc2ad17bfdf596",
+    "experiments/winky_avatar/serve.py": "5d3853a86602bec909e72cf37c0a531e14b796cddc095cdf75f2437d538ff89a",
+    "experiments/winky_avatar/policy.mjs": "2ad2067fb8dec038de0356b060bb812efc092d6639c02b0fc9b3c7a0c41a1e71",
+    "experiments/winky_avatar/policy.test.mjs": "2d33bae287ecfaef4e6cbb0a1be6a6dac4194da5e450737527a53cec46ac6cfb",
+    "experiments/winky_avatar/review-motions.cjs": "8b9e1fb68e549e2884603f45c9f78adc7a9854883e687696bd63d749228ec22a"
+  }
+}

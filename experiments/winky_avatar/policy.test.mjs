@@ -9,6 +9,8 @@ test('semantics override broad excited emotion, likes do not cheer', () => {
   assert.equal(profileFor({category:'TRADE_LOSS',emotion:'excited'}),'reassure');
   assert.equal(profileFor({category:'CHAT_REPLY',emotion:'thinking'}),'curious');
   assert.equal(profileFor({category:'CHAT_REPLY',intent:'skeptic',emotion:'wink'}),'reassure');
+  assert.equal(profileFor({category:'NARRATE_PAIR',emotion:'blush'}),'focus');
+  assert.equal(profileFor({category:'CHAT_REPLY',emotion:'blush'}),'embarrassed');
 });
 test('one performance for duplicate callbacks, stale end cannot kill next phrase', () => {
   const d=new Director();d.end(undefined);d.clock(undefined,1);assert.equal(d.active,null);d.begin({id:'a',duration:8});
