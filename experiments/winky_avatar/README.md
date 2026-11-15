@@ -148,3 +148,18 @@ WINKY_VERIFY_EXPANDED_SURFACE=1 .venv/bin/python tools/verify_avatar_wins.py
 `victory-poses.mjs` является частью пакета. Старые проверки фиксированного малого
 кадра относятся к своему историческому выпуску. Актуальный разбор:
 `docs/avatar-audit/portrait-natural-v2.md`.
+
+Актуальное исправление выворачивания рук: полные реперы сегментов, одна ось
+сгиба локтя, исправленный полюс, плавная кривая разгибания и отсутствие
+принудительного вращения предплечья к камере. Плотные ключи двух новых реакций
+не получают повторный ease на каждом промежутке. Размер и другие жесты сохранены.
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-arm-rotation.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/export-arm-rotation.cjs
+WINKY_VERIFY_ARM_ROTATION=1 .venv/bin/python tools/verify_avatar_wins.py
+```
+
+Проверка сравнивает с отклонёнными позами `c6e7003` (нужен этот коммит в истории)
+и проверяет также реальные вращения костей, а не только позиции кистей.
+Разбор с первичными источниками: `docs/avatar-audit/arm-rotation-v3.md`.

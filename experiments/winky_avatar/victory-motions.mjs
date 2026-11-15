@@ -1,4 +1,4 @@
-// The arm paths are retargeted offline with elbow IK and forearm pronation.
+// Retargeted in stable anatomical bind frames; elbow flexion stays in one plane.
 import {ARM_JOINTS,VICTORY_POSES} from './victory-poses.mjs';
 const body=['Hips','Head','Neck','Spine','Spine1','Spine2'];
 const fingers=[];

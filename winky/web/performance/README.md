@@ -28,3 +28,9 @@ forearm pronation with neutral wrists, short hops and planted-foot leg IK. They 
 not generate speech, interrupt afplay, change result calculation or send orders.
 Development/review remains in the lab; `tools/package_avatar_performance.py`
 copies the reviewed snapshot and updates its hashes.
+
+Arm revision v3 solves full bind frames with a stable local elbow hinge. It
+removes camera-facing forearm roll and hard reach locking, and uses the sampled
+victory curves without per-sample re-easing. The lab rotation regression must
+reject the old c6e7003 data before validating the replacement. Other gestures,
+portrait density and afplay/voice clocks are preserved.

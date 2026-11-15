@@ -65,7 +65,7 @@ export function sampleTrack(name,time){
   const t=Math.max(0,Math.min(3.2,time));
   for(let i=1;i<track.length;i++)if(t<=track[i][0]){
     const [start,a]=track[i-1],[end,b]=track[i];
-    const f=(t-start)/(end-start),weight=f*f*(3-2*f);
+    const f=(t-start)/(end-start),weight=name.startsWith('victory_')?f:f*f*(3-2*f);
     return {a,b,weight,time:t};
   }
   return {a:REST,b:REST,weight:0,time:t};

@@ -1,0 +1,209 @@
+{
+  "scope": "two_victory_arm_motions_only",
+  "source_video": {
+    "sha256": "1d7a4588e093eb74dc88822b9cfd7164e5b46ce064b2094ace2e65eddf2d9dfd",
+    "duration_sec": 5.504083,
+    "fps": 60,
+    "size": [
+      1876,
+      1990
+    ]
+  },
+  "baseline_revision": "c6e7003",
+  "arm_rotation_checks": 16,
+  "targets": {
+    "baseline": [
+      {
+        "mode": "victory_jump",
+        "maxima": {
+          "step": 53.10478369915407,
+          "offHinge": 102.5102817227461,
+          "forearmTwist": 55.75419078118769,
+          "elbowFlex": 79.20863579848378,
+          "upperStep": 23.534729938227596,
+          "upperTwist": 1.3069496718615867
+        },
+        "minima": {
+          "elbowFlex": -61.8781882050579
+        }
+      },
+      {
+        "mode": "victory_wave",
+        "maxima": {
+          "step": 53.10478369915407,
+          "offHinge": 102.5102817227461,
+          "forearmTwist": 56.09540436313106,
+          "elbowFlex": 79.20863579848378,
+          "upperStep": 23.534729938227596,
+          "upperTwist": 1.3069496718615867
+        },
+        "minima": {
+          "elbowFlex": -61.8781882050579
+        }
+      }
+    ],
+    "current": [
+      {
+        "mode": "victory_jump",
+        "maxima": {
+          "step": 11.176547143940349,
+          "offHinge": 0.2840871618758786,
+          "forearmTwist": 0.03908527289971487,
+          "elbowFlex": 97.84255977828059,
+          "upperStep": 19.81815579791127,
+          "upperTwist": 67.88864097926147
+        },
+        "minima": {
+          "elbowFlex": 9.167323016994773
+        }
+      },
+      {
+        "mode": "victory_wave",
+        "maxima": {
+          "step": 11.176547143940349,
+          "offHinge": 0.2840871618758786,
+          "forearmTwist": 0.03908527289971487,
+          "elbowFlex": 97.84255977828059,
+          "upperStep": 19.81815579791127,
+          "upperTwist": 67.95784230075449
+        },
+        "minima": {
+          "elbowFlex": 9.167323016994773
+        }
+      }
+    ]
+  },
+  "runtime_rotation": [
+    {
+      "mode": "victory_jump",
+      "peakForearmSpeed": 212.56859692823005,
+      "peakOffHinge": 0.27849382262059336
+    },
+    {
+      "mode": "victory_wave",
+      "peakForearmSpeed": 212.4811465963353,
+      "peakOffHinge": 0.27849382262059336
+    }
+  ],
+  "framing": {
+    "checks": 167,
+    "cases": 45,
+    "max_skin_ndc": 0.8756679034602944,
+    "max_camera_drift": 0,
+    "errors": []
+  },
+  "mechanics": {
+    "checks": 10,
+    "errors": []
+  },
+  "native": {
+    "samples": 105,
+    "arm_samples": 62,
+    "max_off_hinge_deg": 0.27856250512183695,
+    "gestures_checked": [
+      "victory_jump",
+      "victory_wave"
+    ],
+    "window": {
+      "width": 1000.0,
+      "height": 920.0,
+      "x": 728,
+      "y": 197
+    },
+    "viewport": {
+      "width": 1000,
+      "height": 920,
+      "dpr": 2
+    },
+    "max_afplay": 1,
+    "voice_overlap_gestures": [
+      "victory_jump",
+      "victory_wave"
+    ],
+    "camera_drift": {
+      "distance": 0.0,
+      "panX": 0,
+      "panY": 0.0,
+      "effectiveScale": 0.0,
+      "requestedScale": 0.0
+    },
+    "errors": [],
+    "pixels": [
+      {
+        "file": "result-1.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "near_black_fraction": 0.0023524749407039247
+      },
+      {
+        "file": "result-2.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "near_black_fraction": 0.002407924942609043
+      },
+      {
+        "file": "result-3.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "near_black_fraction": 0.001291089094343301
+      },
+      {
+        "file": "result-4.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "near_black_fraction": 0.0019004820969775117
+      },
+      {
+        "file": "result-5.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "near_black_fraction": 0.001175851434207524
+      }
+    ]
+  },
+  "node_tests": 31,
+  "python_tests": 20,
+  "other_regression_checks": {
+    "native_package": 16,
+    "original_motions_ru_en": 17
+  },
+  "protected_files": 24,
+  "protected_mismatches": [],
+  "preview": {
+    "file": "experiments/winky_avatar/.runtime/arm-rotation/arm-rotation-fixed.mp4",
+    "duration_sec": 16.8,
+    "frames": 1008,
+    "fps": 60,
+    "audio": false
+  }
+}
