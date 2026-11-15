@@ -475,7 +475,7 @@ class CommentaryTests(unittest.TestCase):
                 engine.assert_not_called()
             self.assertEqual(before, manifest.read_bytes())
 
-    def test_ready_chat_can_play_during_analysis_but_must_fit_trade_window(self):
+    def test_ready_chat_keeps_priority_during_analysis_and_near_trade_end(self):
         from winky.tts import SpeechItem
 
         c = SpeechController(on_speak=Mock(), engine=Mock())
@@ -494,7 +494,7 @@ class CommentaryTests(unittest.TestCase):
                 director.remaining_sec = 3
                 director._last_phase_update = 100
                 with patch("winky.tts.time.time", return_value=100):
-                    self.assertFalse(c._fits_window(item))
+                    self.assertTrue(c._fits_window(item))
                     director.remaining_sec = 10
                     self.assertTrue(c._fits_window(item))
         finally:

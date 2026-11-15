@@ -1,0 +1,93 @@
+{
+  "scope": "local_Winky_speech_avatar_only",
+  "trading_cycle_started": false,
+  "tiktok": {
+    "test_account": "_99xx99",
+    "presence_live": true,
+    "connection_observed": true,
+    "inbound_comments_total": 13,
+    "local_synthetic_comments": 1,
+    "like_events": 16,
+    "join_events": 5,
+    "account_disconnected_after_test": true,
+    "permanent_username_changed": false
+  },
+  "real_fish_synthesis_seconds": [
+    3.032,
+    3.204,
+    2.704,
+    2.44,
+    3.432
+  ],
+  "real_native_playbacks": [
+    {
+      "source": "recorded",
+      "start_sec": 2.151,
+      "end_sec": 7.875,
+      "natural_end": true,
+      "duration_sec": 5.724
+    },
+    {
+      "source": "chat",
+      "start_sec": 8.316,
+      "end_sec": 16.286,
+      "natural_end": true,
+      "duration_sec": 7.97
+    },
+    {
+      "source": "chat",
+      "start_sec": 16.694,
+      "end_sec": 24.914,
+      "natural_end": true,
+      "duration_sec": 8.22
+    },
+    {
+      "source": "chat",
+      "start_sec": 25.314,
+      "end_sec": 32.531,
+      "natural_end": true,
+      "duration_sec": 7.217
+    },
+    {
+      "source": "chat",
+      "start_sec": 32.938,
+      "end_sec": 39.639,
+      "natural_end": true,
+      "duration_sec": 6.701
+    },
+    {
+      "source": "chat",
+      "start_sec": 40.039,
+      "end_sec": 48.782,
+      "natural_end": true,
+      "duration_sec": 8.743
+    }
+  ],
+  "max_simultaneous_afplay": 1,
+  "native_pose_profiles": [
+    "conversation",
+    "embarrassed",
+    "focus",
+    "thoughtful"
+  ],
+  "native_final_smoke": {
+    "samples": 43,
+    "ready": true,
+    "max_afplay": 1
+  },
+  "python_tests": 107,
+  "browser_checks": 14,
+  "browser_errors": [],
+  "catalog_rows": 2118,
+  "catalog_routes": 12,
+  "protected_core_files": 36,
+  "protected_core_mismatches": [],
+  "original_avatar_sha256": "3656d945879d168c00d9440f279e0c5f93cbac8fbe3edf6df8f6c5e31f59633e",
+  "concurrent_unrelated_commit": "5ce0dda",
+  "backup": "artifacts/avatar-backups/live-sync-20261115-122711",
+  "notes": [
+    "Actual Fish latency was faster than the 15-20s scenario covered with controlled delay in tests.",
+    "The initial live run exposed a missing TikTok panel callback; its fix passed the dedicated browser regression.",
+    "Local reports retain viewer text outside Git; this summary is anonymized."
+  ]
+}

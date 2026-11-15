@@ -169,6 +169,11 @@ class _AssetsHandler(SimpleHTTPRequestHandler):
             })
             return
 
+        if clean == "/api/winky/speech_status":
+            callback=_winky_sync_callbacks.get('speech_status')
+            self._send_json(callback() if callback else {'available':False})
+            return
+
         if clean == "/api/winky/trade_phase":
             status = stream_director.get_status()
             if _chat_requested_pairs:

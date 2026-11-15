@@ -320,7 +320,7 @@ function onWarmupProgress(done, total, statusText) {
   }
 }
 
-window.winkyPanel = { renderStatus, renderQuickReplies, onScenariosReloaded, onChatEvent, onWarmupProgress };
+window.winkyPanel = { renderStatus, renderQuickReplies, onScenariosReloaded, onChatEvent, onWarmupProgress, onTikTokStatus };
 
 function renderQuickReplies(replies) {
   quickGrid.innerHTML = "";

@@ -64,6 +64,7 @@ export function profileFor(input = {}) {
   if (['wave', 'greeting'].includes(event.emotion)) return 'greeting';
   return 'conversation';
 }
+const actionHint=event=>event.promised_action||(['dance','cheer','win'].includes(event.legacy_action)||['dance','cheer','win'].includes(event.emotion)?'':event.action);
 const smooth = x => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); };
 export function envelope(t, duration) {
   if (t < 0 || t >= duration) return 0;
@@ -81,7 +82,7 @@ export class Director {
     if (gesture === this.previous && pool.length > 1) gesture = pool[index++ % pool.length];
     this.indices[profile] = index;
     const serious=['focus','analysis','reassure','explain'].includes(profile);
-    const hint=canonicalAction(event.promised_action||event.action);
+    const hint=canonicalAction(actionHint(event));
     if(hint&&Object.hasOwn(LABELS,hint)&&(!serious||['nod','listen','ponder','peek_closer','explain_left','explain_right'].includes(hint)))gesture=hint;
     if (event.gesture && Object.hasOwn(LABELS, event.gesture)) gesture = event.gesture;
     // A short acknowledgment should not compress a full arm gesture into a jerk.
@@ -113,6 +114,6 @@ export class Director {
 }
 export function performancePlan(input){
   const event=normalizeEvent(input),profile=profileFor(event);
-  return {profile,variants:PROFILES[profile],hint:event.promised_action||event.action||'',emotion:event.emotion,
+  return {profile,variants:PROFILES[profile],hint:actionHint(event)||'',emotion:event.emotion,
     intent:event.intent,category:event.category,chat_kind:event.chat_kind,afterSpeech:PROFILES[profile].includes('flirt_kiss')};
 }

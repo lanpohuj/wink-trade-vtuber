@@ -61,6 +61,7 @@ export function normalizeEvent(input={}){
   if(event.chat_kind==='bot')event.intent='bot';
   if(event.chat_kind==='question')event.intent='question';
   const actionTags=['win','cheer','dance','flirt_kiss','kiss','neko_paws','paws','hip_groove','groove','peek_closer','peek','wave'];
+  event.legacy_action=input.legacy_action||String(input.action||'');
   event.action=canonicalAction(input.action||(actionTags.includes(event.emotion)?event.emotion:''));
   event.promised_action=promisedAction(event.text);
   event.tag=tag?.[1]||'';

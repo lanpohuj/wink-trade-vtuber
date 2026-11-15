@@ -485,17 +485,17 @@ class ChatRouter:
 
             clean_pair_name = requested_pair.replace(" OTC", "").replace("/", " ")
             ack_phrases_ru = [
-                f"[wink] О, {clean_user}, приняла запрос на {clean_pair_name}! Завершу эту сделку и сразу переключаю график!",
-                f"[happy] {clean_user}, отличный выбор! Ставлю {clean_pair_name} в очередь, сейчас разберём график!",
-                f"[wink] Вижу {clean_pair_name} от {clean_user}! Переключаемся на неё следующей!",
+                f"[wink] О, {clean_user}, вижу твой запрос на {clean_pair_name}! Спасибо за идею для разбора!",
+                f"[happy] {clean_user}, приняла идею с {clean_pair_name}! Запрос есть в очереди разбора.",
+                f"[wink] Вижу запрос на {clean_pair_name} от {clean_user}! Спасибо, что участвуешь!",
             ]
             ack_phrases_en = [
-                f"[wink] Got it {clean_user}! {requested_pair} queued, analyzing right after this trade!",
-                f"[happy] Great pick {clean_user}! Switching to {requested_pair} next!",
+                f"[wink] Got your request for {requested_pair}, {clean_user}! Thanks for the idea!",
+                f"[happy] Thanks {clean_user}! Your request for {requested_pair} is in the analysis queue.",
             ]
             ack = random.choice(ack_phrases_ru if lang == "ru" else ack_phrases_en)
             stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion="wink", reply_text=ack,
-                                                 profile=profile, recent_context=list(self._recent_chat))
+                                                 profile=profile, recent_context=list(self._recent_chat), intent='pair_request')
             return
 
         lower_text = text.lower()
@@ -505,32 +505,13 @@ class ChatRouter:
 
         if is_compliment:
             detected_emo = "blush"
-            if self._on_action:
-                try:
-                    self._on_action("shy", 3.2)
-                except Exception:
-                    logger.exception("on_action shy упал")
         elif is_greeting:
             detected_emo = "wave"
-            if self._on_wave:
-                try:
-                    self._on_wave()
-                except Exception:
-                    logger.exception("on_wave упал")
         elif is_win:
             detected_emo = "excited"
-            if self._on_action:
-                try:
-                    self._on_action("cheer", 3.5)
-                except Exception:
-                    logger.exception("on_action cheer упал")
         else:
             detected_emo = None
-            if self._on_action:
-                try:
-                    self._on_action("thinking", 0.8)
-                except Exception:
-                    pass
+        # Gesture and emotion start with actual playback, after Fish is ready.
 
         # 2. Ключевые сценарии — приоритет при прямых вопросах
         keyword = self._book.match_keyword(text)
@@ -568,8 +549,6 @@ class ChatRouter:
         now = monotonic()
         if not force:
             if now - self._last_greet_at < 20.0:
-                return
-            if self._controller.speaking or self._controller.queue_size() > 0:
                 return
 
         self._last_greet_at = now
@@ -624,8 +603,6 @@ class ChatRouter:
         if not force:
             if now - self._last_like_at < 20.0:
                 return
-            if self._controller.speaking or self._controller.queue_size() > 0:
-                return
 
         self._last_like_at = now
         if self._recorded_reaction('like', target_lang, 'happy', 'cheer'):
@@ -647,7 +624,8 @@ class ChatRouter:
         # Reserve stable templates, then render the viewer name. Different names
         # must not turn one stock response into a supposedly new phrase.
         return self._controller.speak_options(pool, lang=lang, category='chat_' + kind,
-            emotion=emotion, source='chat', substitutions={'user': user, 'gift': gift, 'count': str(count)}, **kwargs)
+            emotion=emotion, source='chat', event={'category':'CHAT_REACTION','chat_kind':kind},
+            substitutions={'user': user, 'gift': gift, 'count': str(count)}, **kwargs)
 
     def _emotion_for(self, text: str) -> str:
         """Подбор эмоции под тон ответа LLM."""

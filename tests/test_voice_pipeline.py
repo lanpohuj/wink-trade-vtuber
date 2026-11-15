@@ -83,7 +83,7 @@ class VoicePipelineTests(unittest.TestCase):
         media = self.root / '0.mp3'
         proc = Mock()
         proc.poll.return_value = 0
-        with patch('winky.tts.subprocess.Popen', return_value=proc), patch('winky.tts.time.sleep'):
+        with patch('winky.tts.subprocess.Popen', return_value=proc), patch('winky.tts.time.sleep'), patch('winky.tts.media_duration_seconds',return_value=3):
             self.controller._play_media(media, 'Закрытие завершено.', 'happy', 'ru', [0.1])
         self.assertTrue(media.exists())
 
@@ -156,13 +156,11 @@ class VoiceContextTests(unittest.TestCase):
         self.assertFalse(self.bank.history)
         self.assertFalse(self.bank.reserved)
 
-    def test_chat_waiting_window_is_checked_at_playback(self):
+    def test_chat_priority_is_independent_of_remaining_trade_window(self):
         from winky.director import stream_director as director
         item=SpeechItem(text='Привет!',lang='ru',priority=3,media_path=self.root/'0.mp3')
         item.ready_event.set();self.controller._playback_queue.append(item)
         with patch.object(director,'_trade_phase','IN_TRADE'),patch.object(director,'_remaining_sec',7),patch.object(director,'_last_phase_update',time.time()),patch('winky.tts.media_duration_seconds',return_value=6):
-            self.assertIsNone(self.controller._next_item())
-        with patch.object(director,'_trade_phase','IDLE'):
             self.assertIs(self.controller._next_item(),item)
 
 
@@ -184,9 +182,9 @@ class ChatPreparationTests(unittest.TestCase):
             self.director.enqueue_chat_comment('Аня','Привет!')
             self.director.enqueue_chat_comment('Боря','привет!')
             self.assertEqual(submit.call_count,1)
-    def test_20_40_89_second_preparation_does_not_occupy_speech_queue(self):
+    def test_fifteen_and_twenty_second_fish_preparation_stays_outside_speech_queue(self):
         from winky.director import ChatItem
-        for elapsed in (20,40,89):
+        for elapsed in (15,20):
             item=ChatItem('Аня','Привет!',created_at=100)
             self.director._brain.reply.return_value='Привет! Как настроение?'
             self.director._tts.engine.synthesize.return_value=Path('/tmp/reply.mp3')

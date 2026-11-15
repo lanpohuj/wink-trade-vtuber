@@ -79,7 +79,8 @@ def _update_manifest(voice_dir: Path, text_hash: str, original_text: str, filena
 
 EMOTIONS = (
     "idle", "happy", "excited", "thinking", "wink", "blush", "surprised", "neutral",
-    "win", "wave", "dance", "flirt_kiss", "neko_paws", "hip_groove", "peek_closer"
+    "win", "wave", "dance", "flirt_kiss", "neko_paws", "hip_groove", "peek_closer",
+    "shy", "quiet_laugh", "ponder", "playful_doubt", "hand_heart"
 )
 
 DEFAULT_RU_SERVICE = "fishaudio"
@@ -1472,6 +1473,7 @@ class SpeechItem:
     event: dict = field(default_factory=dict)
     bank_id: str = ""
     chat_item: object | None = None
+    generation: int | None = None
 
 
 # Алиас для обратной совместимости
@@ -1533,6 +1535,7 @@ class SpeechController:
     on_emotion: Callable[[str], None] = field(default=lambda emo: None)
     on_status: Callable[[SpeechStatus], None] = field(default=lambda status: None)
     engine: ElevenLabsTTS | LumeanTTS | EdgeTTS = field(default_factory=build_engine)
+    on_performance: Callable[[dict], None] | None = None
 
     def __post_init__(self) -> None:
         from winky.voice_bank import VoiceBank
@@ -1552,6 +1555,7 @@ class SpeechController:
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
         self._afplay_proc: subprocess.Popen | None = None
+        self._cancel_generation = 0
         self.last_recording: dict | None = None
         self._synth_pool = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-synth")
 
@@ -1712,9 +1716,14 @@ class SpeechController:
         action_duration: float = 3.5,
         source: str = "manual",
         _reservation: str = "",
+        event: dict | None = None,
     ) -> bool:
         """Добавляет фразу в конвейер озвучки: асинхронный синтез в фоне + воспроизведение без обрыва реплик."""
         actual_lang = lang or detect_lang(text)
+        tag = re.match(r'^\[([a-z_]+)\]\s*', text, re.I)
+        if tag and tag.group(1).lower() in EMOTIONS:
+            emotion = tag.group(1).lower()
+            text = text[tag.end():]
         # TikTok Anti-Ban Sanitizer: заменяем финансовые триггеры перед любой озвучкой
         text = sanitize_for_tiktok(text, actual_lang)
         text = strip_emoji_control(text)
@@ -1731,6 +1740,9 @@ class SpeechController:
             self._emit_status()
             return False
 
+        from winky.voice_bank import priority as category_priority
+        speech_priority = (3 if source.startswith(('chat','tiktok_chat')) else
+                           category_priority(event['category']) if source=='trade_event' and event else 2)
         item = SpeechItem(
             text=text,
             lang=actual_lang,
@@ -1739,10 +1751,13 @@ class SpeechController:
             action_duration=action_duration,
             source=source,
             bank_id=_reservation,
-            priority=3 if source.startswith('chat') else 2,
+            priority=speech_priority,
+            event=dict(event or {}), generation=self._cancel_generation,
+            max_age_sec=45 if speech_priority==3 else 30 if speech_priority==0 else 5 if source=='signal_announcement' else 35,
         )
 
         with self._lock:
+            item.generation = self._cancel_generation
             self._playback_queue.append(item)
 
         # Сразу запускаем фоновый синтез в пуле потоков
@@ -1765,7 +1780,8 @@ class SpeechController:
         text = row['text']
         for name, value in (substitutions or {}).items():
             text = text.replace('{' + name + '}', str(value))
-        return self.speak(text, lang=lang, _reservation=row['id'], **kwargs)
+        event=kwargs.pop('event',None) or {'category':category}
+        return self.speak(text, lang=lang, _reservation=row['id'], event=event, **kwargs)
 
     def _cleanup_prefetched(self) -> None:
         now = time.time()
@@ -1811,6 +1827,7 @@ class SpeechController:
             max_age_sec=ttl_sec,
             expected_pair=expected_pair,
             expected_state=expected_state,
+            generation=self._cancel_generation,
         )
 
         with self._lock:
@@ -1888,6 +1905,9 @@ class SpeechController:
     def _prepare_audio(self, item: SpeechItem) -> None:
         """Фоновый синтез речи для элемента очереди."""
         try:
+            if item.failed or (item.generation is not None and item.generation != self._cancel_generation):
+                item.failed = True
+                return
             # 1. Проверяем локальный кэш
             if hasattr(self.engine, "is_cached") and self.engine.is_cached(item.text, item.lang):
                 cached_file = self.engine.get_cache_path(item.text, item.lang)
@@ -1914,12 +1934,17 @@ class SpeechController:
     def clear_queue_and_stop(self) -> None:
         """Очищает очередь и останавливает текущее воспроизведение."""
         with self._lock:
+            self._cancel_generation += 1
             for item in self._playback_queue:
+                item.failed = True
                 if item.chat_item:
                     item.chat_item.failed = True
                 if item.bank_id:
                     self.voice_bank.release(item.bank_id, item.event)
             self._playback_queue.clear()
+            for item in self._prefetched_items.values():
+                item.failed = True
+            self._prefetched_items.clear()
         proc = self._afplay_proc
         if proc and proc.poll() is None:
             try:
@@ -1929,6 +1954,11 @@ class SpeechController:
         self._finished.set()
         self._speaking = False
         self._current_text = ""
+        if self.on_performance is not None:
+            try:
+                self.on_performance({'type':'cancel'})
+            except Exception:
+                logger.exception('Avatar cancellation callback failed')
         try:
             self.on_rms(0.0)
         except Exception:
@@ -2006,7 +2036,10 @@ class SpeechController:
             rms_chunks=compute_rms_chunks(media) if media and media.exists() else None,
             source=f"chat_reply_{getattr(chat_item, 'user', 'viewer')}",
             bank_id=reserved['id'],
-            priority=3, max_age_sec=90, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
+            priority=3, max_age_sec=45, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
+            generation=self._cancel_generation,
+            event={'category':'CHAT_REPLY','intent':getattr(chat_item,'intent',''),
+                   'comment':getattr(chat_item,'text','')},
         )
         if media and media.exists():
             item.ready_event.set()
@@ -2059,7 +2092,7 @@ class SpeechController:
         with self._lock:
             if event_id and event_id in self._voice_events:
                 return {'ok': True, 'duplicate': True}
-        event_ttl = 86400 if priority(event['category']) == 0 else 15
+        event_ttl = 30 if priority(event['category']) == 0 else 5 if priority(event['category']) == 1 else 15
         try:
             event_ttl = min(event_ttl, max(0, float(event.get('ttl_sec', event_ttl))))
         except (ValueError, TypeError):
@@ -2077,6 +2110,7 @@ class SpeechController:
             media_path=selected['path'], source='bank_' + event['category'],
             priority=priority(event['category']), event=event, bank_id=selected['id'],
             created_at=created, max_age_sec=event_ttl)
+        item.generation = self._cancel_generation
         item.ready_event.set()
         with self._lock:
             if event_id and event_id in self._voice_events:
@@ -2113,7 +2147,9 @@ class SpeechController:
                     'foreground_ready': any(i.priority < 4 and i.ready_event.is_set() for i in self._playback_queue)}
 
     def _item_valid(self, item: SpeechItem) -> bool:
-        if item.failed or time.time() - item.created_at > item.max_age_sec:
+        if (item.failed or time.time() - item.created_at > item.max_age_sec
+                or (item.generation is not None and item.generation != self._cancel_generation)
+                or (item.chat_item is not None and getattr(item.chat_item,'failed',False))):
             return False
         if not check_phrase(item.text)[0]:
             return False
@@ -2127,6 +2163,10 @@ class SpeechController:
         if not item.event:
             return True
         event = item.event
+        if item.source == 'trade_event' and event.get('legacy_bridge'):
+            return True  # Legacy voice-only route supplied no trade-state guard before this adapter.
+        if item.source in ('manual','panel','panel_test','scenario'):
+            return True
         if event.get('category') == 'NARRATE_CTA':
             if event.get('manual_cta'):
                 return True
@@ -2149,6 +2189,8 @@ class SpeechController:
             return narration_valid(event, current, phase, stream_director._last_phase_update)
         if event.get('session_id') and current.get('session_id') and event['session_id'] != current['session_id']:
             return False
+        if item.priority == 2 and event.get('search_generation') is not None and current.get('search_generation') is not None and event['search_generation'] != current['search_generation']:
+            return False
         if item.priority == 1 and current.get('remaining_sec') is not None and float(current['remaining_sec']) - (time.time() - stream_director._last_phase_update) <= 0:
             return False
         if item.priority == 1 and event.get('direction') and current.get('direction') and event['direction'] != current['direction']:
@@ -2169,6 +2211,8 @@ class SpeechController:
         return True
 
     def _fits_window(self, item: SpeechItem) -> bool:
+        if item.priority == 3:
+            return True  # Chat has priority at phrase boundaries, independent of trade phase.
         if item.priority not in (1, 3, 4) and item.event.get("category") != "IN_TRADE_WAITING":
             return True
         from winky.director import stream_director
@@ -2198,7 +2242,14 @@ class SpeechController:
             ready = [i for i in self._playback_queue if i.ready_event.is_set() and self._fits_window(i)]
             if not ready:
                 return None
-            selected = min(ready, key=lambda i: (i.priority, i.created_at))
+            def rank(item):
+                if item.priority == 3:
+                    # Thank a gift at the next boundary; short direct answers
+                    # precede ambient joins/likes. All of them outrank commentary.
+                    kind=item.event.get('chat_kind')
+                    return (0, {'gift':0,'follow':2,'join':3,'like':3}.get(kind,1), item.created_at)
+                return (1,item.priority,item.created_at)
+            selected = min(ready, key=rank)
             self._playback_queue.remove(selected)
             return selected
 
@@ -2261,7 +2312,18 @@ class SpeechController:
                     media_url = f"/media/{media.name}"
 
         rms_chunks = precomputed_rms if precomputed_rms is not None else compute_rms_chunks(media, chunk_ms=50)
-        duration = len(rms_chunks) * 0.05 if rms_chunks else max(2.5, wav_duration_seconds(media))
+        measured_duration = media_duration_seconds(media)
+        duration = max(measured_duration, len(rms_chunks)*.05) if 0 < measured_duration < 999 else max(30, len(rms_chunks) * .05)
+        playback_id = str(uuid.uuid4())
+        performance_started = False
+        end_reason = 'completed'
+
+        def performance(message):
+            if self.on_performance is not None:
+                try:
+                    self.on_performance(message)
+                except Exception:
+                    logger.exception('Avatar performance callback failed')
 
         self._speaking = True
         self._current_text = text
@@ -2270,13 +2332,17 @@ class SpeechController:
         self._finished.clear()
         # Воспроизведение на macOS через afplay с потоковой передачей RMS-громкости для Lip-Sync
         try:
-            afplay_proc = subprocess.Popen(
-                ["/usr/bin/afplay", "-v", str(max(0.05, self._volume)), str(media)],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
+            with self._lock:
+                if item and not self._item_valid(item):
+                    end_reason = 'cancelled'
+                    return
+                afplay_proc = subprocess.Popen(
+                    ["/usr/bin/afplay", "-v", str(max(0.0, self._volume)), str(media)],
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                )
+                self._afplay_proc = afplay_proc
             start_play = time.monotonic()
-            self._afplay_proc = afplay_proc
             # An immediate player failure must not consume a phrase or CTA timer.
             if afplay_proc.poll() not in (None, 0):
                 raise RuntimeError('afplay failed before playback')
@@ -2301,25 +2367,39 @@ class SpeechController:
                 if item.event.get('commentary'):
                     stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
                 try:
-                    if item.action:
+                    if item.action and self.on_performance is None:
                         self.on_action(item.action, item.action_duration)
-                    self.on_emotion(item.emotion)
+                    if self.on_performance is None:
+                        self.on_emotion(item.emotion)
                 except Exception:
                     logger.exception("Avatar emotion callback failed")
             try:
-                self.on_speak(media_url, emotion, self._volume, lang)
+                if self.on_performance is not None:
+                    performance_started = True
+                    performance({'type':'begin','event':{
+                        **(item.event if item else {}), 'id':playback_id,'text':text,
+                        'emotion':emotion,'action':item.action if item else None,
+                        'lang':lang,'source':item.source if item else 'manual','duration':duration}})
+                else:
+                    self.on_speak(media_url, emotion, self._volume, lang)
             except Exception:
                 logger.exception("Avatar speech callback failed")
             logger.info("voice_start source=%s event=%s", item.source if item else 'manual', item.event.get('event_id', '') if item else '')
             last_idx = -1
             chunk_sec = 0.05
             while afplay_proc.poll() is None:
-                if time.monotonic() - start_play > duration + 5:
+                if time.monotonic() - start_play > max(30, duration * 1.5 + 5):
+                    end_reason = 'player_timeout'
                     afplay_proc.kill()
                     break
                 elapsed = time.monotonic() - start_play
                 idx = int(elapsed / chunk_sec)
-                if 0 <= idx < len(rms_chunks) and idx != last_idx:
+                if self.on_performance is not None:
+                    if idx != last_idx:
+                        last_idx = idx
+                        performance({'type':'clock','id':playback_id,'time':elapsed,
+                                     'rms':rms_chunks[idx] if idx < len(rms_chunks) else 0,'playing':True})
+                elif 0 <= idx < len(rms_chunks) and idx != last_idx:
                     last_idx = idx
                     try:
                         self.on_rms(rms_chunks[idx])
@@ -2331,10 +2411,12 @@ class SpeechController:
                 time.sleep(0.012)
 
             try:
-                afplay_proc.wait(timeout=max(2.0, duration + 2.0))
+                if afplay_proc.wait(timeout=max(2.0, duration + 2.0)) != 0:
+                    end_reason = 'player_error'
             except subprocess.TimeoutExpired:
                 afplay_proc.kill()
         except Exception as exc:
+            end_reason = 'player_error'
             proc = self._afplay_proc
             if proc is not None and proc.poll() is None:
                 proc.kill()
@@ -2343,6 +2425,9 @@ class SpeechController:
                 item.chat_item.failed = True
             logger.error("Ошибка воспроизведения afplay: %s", exc)
         finally:
+            if performance_started:
+                cancelled = item is not None and item.generation is not None and item.generation != self._cancel_generation
+                performance({'type':'cancel' if cancelled or end_reason!='completed' else 'end','id':playback_id})
             if item and item.bank_id:
                 self.voice_bank.release(item.bank_id, item.event)
             logger.info("voice_end event=%s", item.event.get("event_id", "") if item else "")

@@ -67,6 +67,9 @@ class WinkyAPI:
         self._chat_router: ChatRouter | None = None
         self._tiktok: TikTokConnector | None = None
         self._tiktok_status = "off"
+        self._performance_ready = False
+        self._performance_lock = threading.Lock()
+        self._pending_performance: dict = {}
         self._chat_history: list[dict] = []
         self._stream_interaction_count = 0
 
@@ -101,6 +104,8 @@ class WinkyAPI:
 
     def on_signal_scan(self) -> None:
         """Реакция аватара Winky на начало сканирования: присматривается к графику."""
+        if self._controller.speaking:
+            return
         self.trigger_action("peek_closer", 2.0)
         self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
 
@@ -169,8 +174,9 @@ class WinkyAPI:
         phrase: str | None = None,
     ) -> None:
         """Реакция аватара Winky на результат сигнала: радость + озвучка живым женским голосом."""
-        self.trigger_action("cheer", 3.0)
-        self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('excited')")
+        if self._controller.on_performance is None:
+            self.trigger_action("cheer", 3.0)
+            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('excited')")
 
         if not self._voice_signals_enabled:
             return
@@ -222,13 +228,19 @@ class WinkyAPI:
             payload = {}
 
         event_type = payload.get("event") or payload.get("type") or "win"
+        voice_event = {'category':{
+            'win':'TRADE_WIN','loss_step1':'TRADE_LOSS','loss_step2':'TRADE_LOSS',
+            'flat_skip':'WEAK_SIGNAL_SWITCH_PAIR','ask_chat':'NARRATE_ENGAGE',
+            'start_analysis':'ANALYZING_CHART','switch_pair':'PAIR_SWITCHED_NEW_SCAN',
+        }.get(event_type,'LEGACY_TRADE'), 'legacy_bridge':True}
         lang = payload.get("lang") or "ru"
         pair = payload.get("pair") or "EUR/USD OTC"
         clean_pair_ru = pair.replace(" OTC", " на ОТС").replace("/", " ")
 
         if event_type == "win":
-            self.trigger_action("cheer", 3.5)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('win')")
+            if self._controller.on_performance is None:
+                self.trigger_action("cheer", 3.5)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('win')")
             phrases_ru = [
                 "[win] Есть плюс в копилочку! Отличная сделка, график отработал как по учебнику!",
                 "[excited] Плюсик зафиксирован! Красивое движение, поздравляю всех, кто заходил со мной!",
@@ -239,11 +251,12 @@ class WinkyAPI:
                 "[excited] Another win secured! Love this momentum, congrats everyone!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="win", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="win", source="trade_event", event=voice_event)
 
         elif event_type == "loss_step1":
-            self.trigger_action("think", 2.5)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            if self._controller.on_performance is None:
+                self.trigger_action("think", 2.5)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
             phrases_ru = [
                 "[wink] Ой, на последней секунде чуть зацепило тенью, вообще ничего страшного! Тренд тут сильный, захожу на перекрытие с удвоением в ту же пару и забираем своё с плюсом!",
                 "[thinking] Чуть-чуть не хватило времени до закрытия импульса. Захожу на первое колено перекрытия в эту же пару!",
@@ -252,11 +265,12 @@ class WinkyAPI:
                 "[wink] Slight wick touched our level, no worries at all! Trend is solid, entering step 1 recovery on this pair!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="wink", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="wink", source="trade_event", event=voice_event)
 
         elif event_type == "loss_step2":
-            self.trigger_action("peek_closer", 3.0)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            if self._controller.on_performance is None:
+                self.trigger_action("peek_closer", 3.0)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
             phrases_ru = [
                 "[thinking] Так, эта пара начала капризничать и пилить уровень, не будем с ней спорить! Переключаюсь на более чистый график и спокойно закрываем перекрытие там!",
                 "[wink] График ушёл в микро-боковик. Переключаю пару на свежий тренд, забираем вторую ступень без нервов!",
@@ -265,11 +279,12 @@ class WinkyAPI:
                 "[thinking] Alright, this pair is getting choppy! Switching to a cleaner chart for step 2 recovery!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "flat_skip":
-            self.trigger_action("think", 2.0)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            if self._controller.on_performance is None:
+                self.trigger_action("think", 2.0)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
             phrases_ru = [
                 f"[thinking] Смотрите, ребятки, на {clean_pair_ru} сейчас узкий боковик и слабый объём — по моей стратегии в такой шум не лезем! Переключаюсь на другую пару с чистым трендом!",
                 f"[wink] На {clean_pair_ru} пила и флэт, уверенность ниже 82%. Пропускаем шум и ищем чёткий импульс!",
@@ -278,11 +293,12 @@ class WinkyAPI:
                 f"[thinking] Guys, {pair} is flatlining right now with weak volume. Skipping this noise to find a clear trend!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "ask_chat":
-            self.trigger_action("wave", 2.5)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('happy')")
+            if self._controller.on_performance is None:
+                self.trigger_action("wave", 2.5)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('happy')")
             phrases_ru = [
                 "[happy] Ребятки, какую валютную пару идём разбирать следующей? Пишите прямо сейчас в чат — выберем и зайдём вместе!",
                 "[wave] Чат, жду ваши любимые валютные пары! Напишите в комментарии, на какой график переключаемся!",
@@ -291,11 +307,12 @@ class WinkyAPI:
                 "[happy] Chat, which currency pair should we analyze next? Drop your picks in the comments!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="happy", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="happy", source="trade_event", event=voice_event)
 
         elif event_type == "start_analysis":
-            self.trigger_action("think", 2.0)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            if self._controller.on_performance is None:
+                self.trigger_action("think", 2.0)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
             phrases_ru = [
                 f"[thinking] Анализирую график {clean_pair_ru}, считываю микроструктуру и объёмы...",
                 f"[wink] Сканирую стакан и свечной паттерн по {clean_pair_ru}, секундочку...",
@@ -306,11 +323,12 @@ class WinkyAPI:
                 f"[wink] Scanning order flow and momentum on {pair}, one moment...",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "switch_pair":
-            self.trigger_action("peek_closer", 2.5)
-            self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
+            if self._controller.on_performance is None:
+                self.trigger_action("peek_closer", 2.5)
+                self._avatar_js("window.winkySetEmotion && window.winkySetEmotion('thinking')")
             target_clean = pair.replace(" OTC", " на ОТС").replace("/", " ")
             user_text = f" по просьбе {payload.get('user')}" if payload.get("user") else ""
             phrases_ru = [
@@ -321,7 +339,7 @@ class WinkyAPI:
                 f"[wink] Switching chart to {pair}, let's find a clean setup!",
             ]
             phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event")
+            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
 
         return True
 
@@ -753,6 +771,8 @@ class WinkyAPI:
 
     def clear_queue(self) -> None:
         """Очищает очередь речи и останавливает текущее воспроизведение."""
+        from winky.director import stream_director
+        stream_director.cancel_pending_chat()
         self._controller.clear_queue_and_stop()
         self.push_status()
 
@@ -791,6 +811,44 @@ class WinkyAPI:
         }
 
     # ---------- CTA-ротация (вызывается из фонового цикла) ----------
+
+    def report_performance_ready(self, payload: dict) -> None:
+        with self._performance_lock:
+            self._performance_ready = isinstance(payload, dict) and payload.get('release') == 'speech-sync-v1'
+            if self._performance_ready:
+                for key in ('begin','clock'):
+                    if key in self._pending_performance:
+                        self._send_performance(self._pending_performance[key])
+                self._pending_performance.clear()
+        logger.info('Avatar speech performance ready=%s', self._performance_ready)
+
+    def _send_performance(self, message: dict) -> None:
+        self._avatar_js('window.winkyPerformance && window.winkyPerformance.receive('
+                        + json.dumps(message, ensure_ascii=False) + ')')
+
+    def deliver_performance(self, message: dict) -> None:
+        with self._performance_lock:
+            if self._performance_ready:
+                self._send_performance(message)
+                return
+            kind=message.get('type')
+            if kind=='begin':
+                self._pending_performance={'begin':message}
+            elif kind=='clock' and message.get('id')==self._pending_performance.get('begin',{}).get('event',{}).get('id'):
+                self._pending_performance['clock']=message
+            elif kind in ('end','cancel') and (not message.get('id') or message['id']==self._pending_performance.get('begin',{}).get('event',{}).get('id')):
+                self._pending_performance.clear()
+
+    def speech_health(self) -> dict:
+        from winky.director import stream_director
+        state = dataclasses.asdict(self._controller.status())
+        state.pop('current_text', None)
+        state.pop('last_blocked', None)
+        return {**state, 'performance_ready':self._performance_ready,
+                'chat':stream_director.chat_queue_status(),
+                'tiktok_status':self._tiktok_status if self._tiktok else 'off',
+                'tiktok_detail':getattr(self,'_tiktok_detail',''),
+                'tiktok_username':self._tiktok.username if self._tiktok else settings.TIKTOK_USERNAME}
 
     def report_assets(self, payload: str) -> None:
         """Диагностика из окна аватара: что реально загрузилось в WKWebView."""
@@ -843,7 +901,7 @@ class WinkyAPI:
         self._tiktok_status = status
         self._tiktok_detail = detail_message
         self._panel_js(
-            "window.winkyPanel && window.winkyPanel.onTikTokStatus("
+            "window.winkyPanel && window.winkyPanel.onTikTokStatus && window.winkyPanel.onTikTokStatus("
             + json.dumps(status) + ", "
             + json.dumps(detail_message, ensure_ascii=False) + ")"
         )
@@ -1066,12 +1124,16 @@ def main() -> None:
     def on_status(_status) -> None:
         winky_api.push_status()
 
+    def on_performance(message: dict) -> None:
+        winky_api.deliver_performance(message)
+
     controller = SpeechController(
         on_speak=on_speak,
         on_rms=on_rms,
         on_action=on_action,
         on_emotion=on_emotion,
         on_status=on_status,
+        on_performance=on_performance,
     )
     winky_api = WinkyAPI(controller, book)
 
@@ -1110,6 +1172,7 @@ def main() -> None:
     base_url = f"http://{assets_host}:{assets_port}"
     winky_api.set_assets_endpoint(assets_host, assets_port)
     register_winky_callback("scan", winky_api.on_signal_scan)
+    register_winky_callback("speech_status", winky_api.speech_health)
     register_winky_callback(
         "signal",
         lambda direction="BUY", pair="", duration="", model="": winky_api.on_signal_result(direction, pair, duration, model),
@@ -1191,6 +1254,7 @@ def main() -> None:
         winky_api._cta_enabled = False
         stream_director.cta_enabled = False
         stream_director._next_commentary_at = float('inf')
+        stream_director._commentary_attempt_at = float('inf')
 
         def _smoke_close() -> None:
             logger.info("Smoke-режим: сохраняю снимок и закрываю окна")
@@ -1223,6 +1287,10 @@ def main() -> None:
     try:
         webview.start(background)
     finally:
+        winky_api._avatar_window = None
+        winky_api._panel_window = None
+        if winky_api._tiktok:
+            winky_api._tiktok.stop()
         stream_director.stop()
         controller.clear_queue_and_stop()
         controller._synth_pool.shutdown(wait=False, cancel_futures=True)

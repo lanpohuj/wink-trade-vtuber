@@ -1,0 +1,49 @@
+// Native release assets with the real rig; same begin/clock/end contract as afplay.
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+(async()=>{
+ const browser=await chromium.launch({headless:true});const report={checks:[],errors:[],states:[]};
+ const output=path.join(__dirname,'../artifacts/avatar-live-sync');fs.mkdirSync(output,{recursive:true});
+ try{
+  const page=await browser.newPage({viewport:{width:600,height:720}}),requests=[];
+  page.on('pageerror',e=>report.errors.push(e.message));page.on('request',r=>requests.push(r.url()));
+  await page.goto('http://127.0.0.1:8795/avatar.html');await page.waitForFunction(()=>window.winkyPerformance?.ready);
+  const check=(label,value)=>{assert.ok(value,label);report.checks.push(label);};
+  const send=m=>page.evaluate(m=>winkyPerformance.receive(m),m);
+  const state=()=>page.evaluate(()=>winkyPerformance.state);
+  check('the native page loads the original avatar and packaged adapter',await page.evaluate(()=>!!vtuber&&winkyPerformance.ready));
+  await send({type:'begin',event:{id:'gift',category:'CHAT_REACTION',chat_kind:'gift',action:'dance',text:'Спасибо за подарок!',duration:6}});
+  await send({type:'clock',id:'gift',time:1.5,rms:.7});
+  await page.waitForFunction(()=>vtuber.actionMode==='hand_heart');
+  check('generic old dance no longer overwrites a gift heart',true);report.states.push(await state());
+  await send({type:'begin',event:{id:'gift',category:'CHAT_REACTION',chat_kind:'gift',duration:6}});
+  check('duplicate begin does not reset the current clock',(await state()).time===1.5);
+  await send({type:'end',id:'stale'});await send({type:'cancel',id:'stale'});
+  check('stale end and cancel leave the next phrase speaking',(await state()).id==='gift'&&(await state()).speaking);
+  await send({type:'clock',id:'gift',time:1.5,rms:0,playing:false});
+  await page.waitForFunction(()=>winkyPerformance.state.speaking===false);
+  check('a paused audio clock stops procedural articulation',true);
+  await send({type:'begin',event:{id:'loss',category:'TRADE_LOSS',emotion:'excited',action:'cheer',duration:7}});
+  await send({type:'clock',id:'loss',time:1,rms:.5});await page.waitForFunction(()=>winkyPerformance.state.id==='loss');
+  check('actual loss metadata prevents cheerful arm gestures',(await state()).profile==='reassure'&&!['hip_groove','hand_heart','wave','joy'].includes((await state()).gesture));
+  await send({type:'cancel'});
+  await send({type:'begin',event:{id:'kiss',category:'CHAT_REPLY',comment:'Ты милая!',gesture:'flirt_kiss',duration:7}});
+  await send({type:'clock',id:'kiss',time:1,rms:.5});await page.waitForFunction(()=>winkyPerformance.state.id==='kiss');
+  check('kiss waits during spoken audio',await page.evaluate(()=>vtuber.actionMode!=='flirt_kiss'&&winkyPerformance.state.speaking));
+  await send({type:'end',id:'kiss'});await page.waitForFunction(()=>winkyPerformance.state.phase==='tail');
+  check('audio end starts the silent release gesture',(await state()).gesture==='flirt_kiss'&&!(await state()).speaking);
+  await page.waitForFunction(()=>document.querySelectorAll('.winky-performance-heart').length===3);
+  check('native kiss emits three hearts',true);
+  await send({type:'begin',event:{id:'pair',category:'NARRATE_PAIR',duration:6}});await send({type:'clock',id:'pair',time:1,rms:.3});
+  await page.waitForFunction(()=>winkyPerformance.state.id==='pair');
+  check('next playback cancels the previous tail immediately',await page.evaluate(()=>vtuber.actionMode!=='flirt_kiss'&&document.querySelectorAll('.winky-performance-heart').length===0));
+  await page.screenshot({path:path.join(output,'native-release-browser.png')});
+  await send({type:'cancel'});await page.waitForFunction(()=>!winkyPerformance.state.id);
+  check('Stop clears voice pose state',true);
+  const panel=await browser.newPage();await panel.goto('http://127.0.0.1:8795/panel.html');
+  await panel.waitForFunction(()=>typeof window.winkyPanel?.onTikTokStatus==='function');
+  check('native TikTok status callback is exported for Python',await panel.evaluate(()=>{winkyPanel.onTikTokStatus('connected','Native callback test');return true;}));
+  check('no JavaScript errors',report.errors.length===0);check('all browser requests stay local',requests.every(u=>u.startsWith('http://127.0.0.1:8795/')));
+  console.log(JSON.stringify({checks:report.checks.length,errors:report.errors}));
+ }finally{fs.writeFileSync(path.join(output,'native-browser.json'),JSON.stringify(report,null,2));await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

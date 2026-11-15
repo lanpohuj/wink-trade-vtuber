@@ -20,6 +20,8 @@ from pathlib import Path
 from typing import Any, Callable
 
 logger = logging.getLogger(__name__)
+CHAT_MAX_AGE_SEC = 45.0
+CHAT_MAX_START_WAIT_SEC = 12.0
 
 
 @dataclass
@@ -39,6 +41,8 @@ class ChatItem:
     dispatched: bool = False
     profile: Any = None
     recent_context: list[dict] = field(default_factory=list)
+    intent: str = ""
+    future: Any = None
 
 
 class StreamDirector:
@@ -94,11 +98,17 @@ class StreamDirector:
 
     def stop(self) -> None:
         self._stop_event.set()
+        self.cancel_pending_chat()
+        self._chat_workers.shutdown(wait=False, cancel_futures=True)
+
+    def cancel_pending_chat(self) -> None:
+        """Discard queued and in-flight replies; late Fish results stay discarded."""
         with self._lock:
             for item in self._chat_queue:
                 item.failed = True
+                if item.future is not None:
+                    item.future.cancel()
             self._chat_queue.clear()
-        self._chat_workers.shutdown(wait=False, cancel_futures=True)
 
     def set_brain(self, brain: Any) -> None:
         self._brain = brain
@@ -181,8 +191,11 @@ class StreamDirector:
         reply_text: str = "",
         profile: Any = None,
         recent_context: list[dict] | None = None,
+        intent: str = "",
     ) -> None:
         """Добавляет входящий комментарий зрителя в очередь с немедленным фоновым пре-синтезом."""
+        if self._stop_event.is_set():
+            return
         from winky.censor import check_phrase
         clean_user = re.sub(r"[^\w -]", "", user, flags=re.UNICODE).strip()[:32] or "Зритель"
         if not check_phrase(clean_user)[0]:
@@ -201,11 +214,15 @@ class StreamDirector:
             reply_text=reply_text.strip(),
             profile=profile,
             recent_context=list(recent_context or []),
+            intent=intent,
         )
 
         with self._lock:
             for queued in list(self._chat_queue):
-                if time.time() - queued.created_at > 90 or queued.failed or queued.played:
+                if time.time() - queued.created_at > CHAT_MAX_AGE_SEC or queued.failed or queued.played:
+                    queued.failed = not queued.played
+                    if queued.future is not None:
+                        queued.future.cancel()
                     self._chat_queue.remove(queued)
             if len(self._chat_queue) >= 6 or any(q.user == clean_user or q.text.casefold() == clean_text.casefold() for q in self._chat_queue):
                 return
@@ -220,12 +237,15 @@ class StreamDirector:
         })
 
         # Запускаем фоновый пре-синтез (текст ответа + .mp3 файл)
-        self._chat_workers.submit(self._pre_synthesize, item)
+        try:
+            item.future = self._chat_workers.submit(self._pre_synthesize, item)
+        except RuntimeError:  # The owner closed Winky between admission and submit.
+            item.failed = True
 
     def _pre_synthesize(self, item: ChatItem) -> None:
         """В фоне генерирует ответ и синтезирует .mp3 файл до начала воспроизведения."""
         try:
-            if item.failed or time.time() - item.created_at > 90:
+            if item.failed or time.time() - item.created_at > CHAT_MAX_START_WAIT_SEC:
                 item.failed = True
                 return
             reply_text = item.reply_text
@@ -271,10 +291,17 @@ class StreamDirector:
             emo = item.emotion
             if reply_text.startswith("[") and "]" in reply_text[:15]:
                 extracted = reply_text[1:reply_text.index("]")].lower()
-                if extracted in ("happy", "blush", "excited", "wink", "thinking", "surprised", "wave"):
+                from winky.tts import EMOTIONS
+                if extracted in EMOTIONS:
                     emo = extracted
 
             item.emotion = emo
+
+            # Never pay for an answer that already became stale while the LLM
+            # was working, or after the owner stopped the queue.
+            if item.failed or time.time() - item.created_at > CHAT_MAX_AGE_SEC - 20:
+                item.failed = True
+                return
 
             # Синтезируем аудиофайл через Lumean / кэш
             if self._tts and hasattr(self._tts, "engine"):
@@ -286,7 +313,7 @@ class StreamDirector:
 
                 if hasattr(engine, "synthesize"):
                     media = engine.synthesize(clean_for_audio, item.lang)
-                    if item.failed or time.time() - item.created_at > 90:
+                    if item.failed or time.time() - item.created_at > CHAT_MAX_AGE_SEC:
                         item.failed = True
                         return
                     item.media_path = media
@@ -418,16 +445,18 @@ class StreamDirector:
                 if self._tts.voice_bank.candidates(event):
                     self._tts.enqueue_voice_event(event)
                     break
-        if self.is_speaking:
-            return
         ended_at = state.get('ended_at', 0)
         self._sync_speech_gap(ended_at)
-        # Ready viewer replies outrank idle commentary even during analysis.
-        if phase in ('IDLE', 'ANALYZING', 'COOLDOWN', 'IN_TRADE') and now - self._last_chat_speak_time >= 3.8:
+        # Enqueue ready replies while the current phrase is still speaking, so
+        # the playback worker can choose chat at the very next natural boundary.
+        if now - self._last_chat_speak_time >= 3.8:
             with self._lock:
                 items = []
                 for item in list(self._chat_queue):
-                    if now - item.created_at > 90 or item.failed or item.played:
+                    if now - item.created_at > CHAT_MAX_AGE_SEC or item.failed or item.played:
+                        item.failed = not item.played
+                        if item.future is not None:
+                            item.future.cancel()
                         self._chat_queue.remove(item)
                     elif item.ready and not item.dispatched:
                         items.append(item)
@@ -437,11 +466,11 @@ class StreamDirector:
                 if duration > 8:
                     item.failed = True
                     continue
-                if phase == 'IN_TRADE' and duration + 2 > rem:
-                    continue
                 item.dispatched = True
                 self._dispatch_chat_item(item)
                 return
+        if self.is_speaking:
+            return
         if self.maybe_cta(now):
             return
         if (not context_valid(context, received_at, now) and now - received_at > 3
@@ -538,6 +567,15 @@ class StreamDirector:
     def get_recent_events(self) -> list[dict]:
         with self._lock:
             return list(self._event_log)
+
+    def chat_queue_status(self) -> dict:
+        now=time.time()
+        with self._lock:
+            items=[i for i in self._chat_queue if not i.failed and not i.played]
+            return {'pending':len(items),'ready':sum(i.ready for i in items),
+                    'preparing':sum(not i.ready for i in items),
+                    'oldest_age_sec':round(max((now-i.created_at for i in items),default=0),1),
+                    'max_age_sec':CHAT_MAX_AGE_SEC,'max_parallel':2}
 
     def get_status(self) -> dict:
         with self._lock:

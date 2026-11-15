@@ -1,0 +1,12 @@
+{
+  "source_revision": "e1c33f1",
+  "release": "speech-sync-v1",
+  "files": {
+    "controller.mjs": "800a72ab23335e9995df253a4bbad1e1596ec664e5c669f181418189d29186d2",
+    "extra-motions.mjs": "968832cd927a1de7ed045c433aa84d134548b2790a6e9abb505fd0927211a59d",
+    "motion-tracks.mjs": "19d488e1979e381de7fd0bb1f7eb65a17765b826f14d73e5c8a0bfc76f95f03e",
+    "policy.mjs": "a9e472dacf0a47a10df31ec180a9c8043a58a14ca5e9a9b8e6f79586dca47614",
+    "sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5"
+  },
+  "notes": "Approved motion snapshot plus live metadata and legacy action normalization."
+}
