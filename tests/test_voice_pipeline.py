@@ -72,6 +72,43 @@ class VoicePipelineTests(unittest.TestCase):
         self.assertIsNone(self.bank.reserve({'category': 'TRADE_WIN', 'lang': 'en'}))
         self.assertIsNone(self.bank.reserve({'category': 'TRADE_WIN', 'file_id': 'missing'}))
 
+    def test_pinned_file_does_not_restart_the_category_round(self):
+        event = {'category': 'TRADE_WIN', 'lang': 'ru', 'file_id': '0'}
+        row = self.bank.reserve(event)
+        self.bank.release(row['id'], event, played=True)
+        self.assertIsNone(self.bank.reserve(event))
+        self.assertIn(self.bank.reserve({'category': 'TRADE_WIN'})['id'], ('1', '2'))
+
+    def test_pinned_legacy_preview_preserves_live_overlay_round(self):
+        overlay = self.root / 'overlay'
+        overlay.mkdir()
+        rows = []
+        for n in range(3):
+            (overlay / f'{n}.mp3').write_bytes(b'approved overlay')
+            rows.append(dict(id=f'overlay{n}', lang='ru', file=f'{n}.mp3', text=f'Новая фраза {n}',
+                             conditions={}, auditory_verified=True, automatic_qc_passed=True))
+        (overlay / 'manifest.json').write_text(json.dumps(dict(activated=True, bank_type='commentary_v1',
+                                                            categories={'TRADE_WIN': rows})))
+        self.bank.overlay_root = overlay
+        event = dict(category='TRADE_WIN', lang='ru')
+        first = self.bank.reserve(event)
+        self.bank.release(first['id'], event, True)
+        for n in range(3):
+            preview = self.bank.reserve(dict(event, file_id=str(n)))
+            self.assertEqual(preview['id'], str(n))
+            self.bank.release(preview['id'], event, True)
+        self.assertNotEqual(self.bank.reserve(event)['id'], first['id'])
+
+    def test_expiry_explanations_are_rejected_and_queued_ones_discarded(self):
+        result = self.controller.enqueue_voice_event({'category': 'NARRATE_EXPIRY'})
+        self.assertEqual(result, {'ok': False, 'error': 'category_disabled'})
+        self.controller.engine.synthesize.assert_not_called()
+        item = SpeechItem(text='На сделку тридцать секунд.', lang='ru',
+                          source='manual', event={'category': 'NARRATE_EXPIRY'})
+        item.ready_event.set()
+        self.controller._playback_queue.append(item)
+        self.assertIsNone(self.controller._next_item())
+
     def test_expired_recording_releases_reservation(self):
         self.controller.enqueue_voice_event({'category': 'TRADE_WIN'})
         item = self.controller._playback_queue[0]

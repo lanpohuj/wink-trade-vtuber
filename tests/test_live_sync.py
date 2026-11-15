@@ -17,6 +17,25 @@ class LiveSpeechTests(unittest.TestCase):
     setUp=fixtures.VoicePipelineTests.setUp
     tearDown=fixtures.VoicePipelineTests.tearDown
 
+    def test_legacy_winky_win_phrases_use_full_round_without_synthesis(self):
+        from winky.app import WinkyAPI
+        from winky.speech_rotation import fingerprint
+        heard = []
+        def started(text, **kwargs):
+            heard.append(fingerprint(text))
+            self.bank.rotation.release(kwargs['_reservation'], True)
+            return True
+        self.controller.speak = Mock(side_effect=started)
+        self.controller.on_performance = Mock()
+        api = SimpleNamespace(_controller=self.controller)
+        for n in range(6):
+            with patch('time.time', return_value=10000+n*700):
+                self.assertTrue(WinkyAPI.handle_trading_event(api, dict(event='win', lang='ru')))
+        self.assertEqual(len(set(heard[:3])), 3)
+        self.assertEqual(len(set(heard[3:])), 3)
+        self.assertNotEqual(heard[2], heard[3])
+        self.controller.engine.synthesize.assert_not_called()
+
     def chat(self):
         item=SpeechItem(text='Спасибо за вопрос!',lang='ru',priority=3,media_path=self.root/'0.mp3')
         item.ready_event.set()

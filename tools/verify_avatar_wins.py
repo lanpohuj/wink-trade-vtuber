@@ -1,13 +1,18 @@
 """Muted WKWebView result reactions. Simulated facts, existing MP3; no trades/TikTok/TTS."""
-import base64,json,os,subprocess,sys,threading,time
+import base64,json,os,subprocess,sys,threading,time,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));os.environ['TIKTOK_USERNAME']=''
+from winky import speech_rotation
+_history_dir=tempfile.TemporaryDirectory(prefix='winky-native-review-')
+speech_rotation._shared=speech_rotation.SpeechRotation(Path(_history_dir.name)/'history.json')
 from winky import app
 from winky.director import stream_director
 FIXED=os.environ.get('WINKY_VERIFY_FIXED_FRAMING')=='1'
 ARM_ROTATION=os.environ.get('WINKY_VERIFY_ARM_ROTATION')=='1'
 EXPANDED=os.environ.get('WINKY_VERIFY_EXPANDED_SURFACE')=='1' or ARM_ROTATION
 OUT=ROOT/('artifacts/avatar-arm-twist/native' if ARM_ROTATION else 'artifacts/avatar-expanded-surface/native' if EXPANDED else 'artifacts/avatar-fixed-framing/native' if FIXED else 'artifacts/avatar-win-reactions/native');OUT.mkdir(parents=True,exist_ok=True)
+if os.environ.get('WINKY_REVIEW_OUT'):
+    OUT=Path(os.environ['WINKY_REVIEW_OUT']);OUT.mkdir(parents=True,exist_ok=True)
 report={'samples':[],'errors':[],'scope':'isolated_native_simulated_result_existing_recording_muted'}
 original=app.WinkyAPI.attach;closed=threading.Event()
 if ARM_ROTATION:
@@ -16,7 +21,7 @@ if ARM_ROTATION:
         original_transparency(self)
         # Seed before installPerformance captures Math.random in its director.
         # This is confined to the test process; it makes both new gestures lead.
-        self._avatar_js('Math.random=()=>0.999')
+        self._avatar_js("Math.random=()=>0.999;window.winkyReviewErrors=[];window.addEventListener('error',e=>winkyReviewErrors.push(e.message));window.addEventListener('unhandledrejection',e=>winkyReviewErrors.push(String(e.reason)))")
     app.WinkyAPI.apply_native_transparency=apply_native_transparency
 def attach(self,avatar,panel):
     original(self,avatar,panel)
@@ -47,7 +52,8 @@ def attach(self,avatar,panel):
                 context['result_age_sec']=elapsed-(seq-1)*4.8
                 state=avatar.evaluate_js('JSON.stringify(window.winkyPerformance.state)');state=json.loads(state) if isinstance(state,str) else state
                 players=subprocess.run(['pgrep','-fl','/usr/bin/afplay'],capture_output=True,text=True).stdout.splitlines()
-                report['samples'].append({'time':round(elapsed,3),'state':state,'afplay_count':len(players)})
+                diagnostics=avatar.evaluate_js('JSON.stringify({hidden:document.hidden,visibility:document.visibilityState,errors:window.winkyReviewErrors||[]})')
+                report['samples'].append({'time':round(elapsed,3),'state':state,'afplay_count':len(players),'diagnostics':json.loads(diagnostics)})
                 if ARM_ROTATION and state.get('gesture') in ('victory_jump','victory_wave'):
                     arms=avatar.evaluate_js('''JSON.stringify(['Right','Left'].map(side=>{
                         const name='Shibahu_'+side+'ForeArm',r=vtuber.baseRotations[name];

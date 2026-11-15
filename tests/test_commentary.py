@@ -12,6 +12,11 @@ from tools.commentary_catalog import catalog
 
 
 class CommentaryTests(unittest.TestCase):
+    def test_trade_wait_keeps_commentary_without_expiry_explanations(self):
+        categories = [c[0] for c in choices(dict(open_observed=True, duration='30s', trade_seq=1), 'IN_TRADE', 100)]
+        self.assertIn('NARRATE_TRADE', categories)
+        self.assertNotIn('NARRATE_EXPIRY', categories)
+
     def test_catalog_has_80_unique_contextual_records_per_language(self):
         rows = catalog()
         self.assertEqual(len(rows), 160)

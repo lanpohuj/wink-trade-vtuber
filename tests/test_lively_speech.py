@@ -59,6 +59,7 @@ class RotationTests(unittest.TestCase):
         self.rotation.release(a['id'], True)
         self.rotation.release(b['id'], True)
         self.assertEqual(set(self.rotation.decks['en:test']['used']), {a['id'], b['id']})
+        self.assertEqual(len(self.rotation.decks['en:test']['used_texts']), 2)
 
     def test_duration_subset_does_not_reset_larger_deck(self):
         row = self.rotation.reserve(self.pool[:1], 'en:test', universe=self.pool)
@@ -72,6 +73,37 @@ class RotationTests(unittest.TestCase):
         self.assertIsNone(self.rotation.reserve(rows, 'ru:other'))
         self.rotation.release(one['id'], True)
         self.assertEqual(len(self.rotation.decks['ru:test']['used']), 1)
+
+    def test_renamed_recording_cannot_repeat_text_before_full_round(self):
+        old = dict(id='old', text='Same wording!')
+        other = dict(id='other', text='Another line')
+        self.rotation.reserve([old], 'en:test', universe=[old, other], now=0)
+        self.rotation.release('old', True, now=0)
+        # File IDs and delivery tags can change without creating a new phrase.
+        renamed = dict(id='new', text='[happy] Same wording.')
+        self.assertIsNone(self.rotation.reserve([renamed], 'en:test',
+                         universe=[renamed, other], now=1000))
+        restarted = SpeechRotation(self.path)
+        self.assertEqual(restarted.reserve([renamed, other], 'en:test', now=1000)['id'], 'other')
+
+    def test_changed_duplicate_representative_does_not_stall_or_reset_round(self):
+        first = dict(id='a', text='Same wording')
+        alias = dict(id='alias', text='Same wording')
+        other = dict(id='b', text='Another line')
+        for row in (first, other):
+            chosen = self.rotation.reserve([row], 'en:test', universe=[first, alias, other], now=0)
+            self.rotation.release(chosen['id'], True, now=0)
+        chosen = self.rotation.reserve([alias, other], 'en:test', now=1000)
+        self.assertEqual(chosen['id'], 'alias')  # Full round ended on b, so no b at its boundary.
+
+    def test_legacy_used_ids_migrate_to_text_identity(self):
+        self.path.write_text(json.dumps({'_rotation_v2': {'decks': {
+            'en:test': {'used': ['a'], 'last': 'a'}}}}))
+        rotation = SpeechRotation(self.path)
+        a = dict(id='a', text='Same wording')
+        alias = dict(id='alias', text='Same wording')
+        b = dict(id='b', text='Another line')
+        self.assertIsNone(rotation.reserve([alias], 'en:test', universe=[a, alias, b]))
 
     def test_semantic_joke_group_waits_ten_minutes_across_categories(self):
         a = dict(id='a', text='A joke', semantic_group='mystery', tone='playful')
@@ -111,6 +143,38 @@ class RotationTests(unittest.TestCase):
             self.assertEqual(self.rotation.state['next_cta_at'], 300)
             self.rotation.note('Find it up there.', 'en', 'NARRATE_CTA', now=150)
             self.assertEqual(self.rotation.state['next_cta_at'], 350)
+
+    def test_local_chat_full_round_commits_only_at_playback(self):
+        from winky.chat_style import reply, reply_pool
+        from winky.speech_rotation import fingerprint
+        controller = SpeechController(on_speak=Mock(), engine=Mock())
+        controller.voice_bank.rotation = self.rotation
+        media = Path(self.tmp.name) / 'ready.mp3'
+        media.write_bytes(b'prepared audio')
+        try:
+            for lang in ('ru', 'en'):
+                for comment in ('привет', 'ты красотка', 'не верю скам', 'отыграю', 'где бот', 'стратегия', 'а что думаешь'):
+                    key, pool = reply_pool(comment, lang)
+                    rounds = []
+                    for cycle in range(2):
+                        heard = []
+                        for n in range(len(pool)):
+                            now = 10000 + cycle * 100000 + n * 601
+                            with patch('winky.chat_style.shared_rotation', return_value=self.rotation), patch('time.time', return_value=now), \
+                                 patch('winky.tts.compute_rms_chunks', return_value=[.1]):
+                                text = reply(comment, lang)
+                                self.assertTrue(text, (key, cycle, n))
+                                self.assertFalse(self.rotation.pending)
+                                item = SimpleNamespace(media_path=media, reply_text=text, text=comment, lang=lang, user='viewer')
+                                self.assertTrue(controller.speak_chat_item(item))
+                                queued = controller._playback_queue.pop()
+                                self.rotation.release(queued.bank_id, True, spoken_text=queued.text)
+                                heard.append(fingerprint(queued.text))
+                        self.assertEqual(len(set(heard)), len(pool), key)
+                        rounds.append(heard)
+                    self.assertNotEqual(rounds[0][-1], rounds[1][0], key)
+        finally:
+            controller._synth_pool.shutdown(wait=False, cancel_futures=True)
 
 
 class BankAndReviewTests(unittest.TestCase):

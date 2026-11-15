@@ -1,12 +1,12 @@
 // Silent full-round preview of received result events. No live trades or voice generation.
 const{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
-(async()=>{const b=await chromium.launch();const out=path.join(__dirname,'.runtime/arm-rotation'),dir=path.join(out,'frames');fs.mkdirSync(dir,{recursive:true});
+(async()=>{const b=await chromium.launch();const out=process.env.WINKY_REVIEW_OUT||path.join(__dirname,'.runtime/arm-rotation'),dir=path.join(out,'frames');fs.mkdirSync(dir,{recursive:true});
  try{const p=await b.newPage({viewport:{width:1000,height:920}});await p.goto('http://127.0.0.1:8794/frame.html?candidate=1');await p.waitForFunction(()=>window.labReady);
  await p.evaluate(()=>{avatarLabReceive({type:'cancel'});avatarLabReceive({type:'idle-enabled',enabled:false});avatarLabCelebrations.random=()=>.999;
   window.step=vtuber.update.bind(vtuber);vtuber.update=()=>{};winkySetScale(1);for(let i=0;i<30;i++)step(1/30,0);
   window.exportCanvas=document.createElement('canvas');exportCanvas.width=1000;exportCanvas.height=920;});
- const labels=['Прыжки · исправленный сгиб рук','Взмахи · исправленный сгиб рук'];
+ const labels=['Прыжки · быстрее руки, сильнее взмах','Взмахи · быстрее руки, сильнее взмах'];
  for(let n=0;n<1008;n++){
   const data=await p.evaluate(({n,label})=>{
    const clip=Math.floor(n/504),local=n%504;

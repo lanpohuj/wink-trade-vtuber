@@ -73,7 +73,7 @@ POOLS = {
 }
 
 
-def reply(comment, lang='ru'):
+def reply_pool(comment, lang='ru'):
     low = comment.lower()
     kind = 'general'
     if re.search(r'бот|ссылк|шапк|био|\bbot\b|\bbio\b|\blink\b|\baccess\b|доступ|как начать|как зайти', low):
@@ -89,11 +89,24 @@ def reply(comment, lang='ru'):
     elif re.search(r'стратег|анализ|сценар|strategy|setup|analysis', low):
         kind = 'strategy'
     index = 0 if lang == 'ru' else 1
-    pool = [line.split(' | ')[index].strip() for line in POOLS[kind].strip().splitlines()]
+    pool = []
+    for line in POOLS[kind].strip().splitlines():
+        text = '[wink] ' + line.split(' | ')[index].strip()
+        # Match the director's short-answer limit before assigning phrase identity.
+        if len(text) > 130:
+            text = re.split(r'(?<=[.!?])\s+', text.strip())[0]
+        pool.append(dict(id='chat_' + fingerprint(text), text=text, lang=lang,
+                         topic='chat_' + kind, tone='playful'))
+    return lang + ':chat_local:' + kind, pool
+
+
+def reply(comment, lang='ru'):
+    key, pool = reply_pool(comment, lang)
     rotation = shared_rotation()
-    recent = {fingerprint(t) for t in rotation.recent_texts(20)}
-    candidates = [t for t in pool if fingerprint(t) not in recent]
-    if not candidates:
+    row = rotation.reserve(pool, key)
+    if not row:
         return ''
-    import random
-    return '[wink] ' + random.choice(candidates)
+    # Preparation is not playback. Recheck and commit the exact prepared answer
+    # in SpeechController when it reaches the player; cancelled synthesis uses no slot.
+    rotation.release(row['id'])
+    return row['text']

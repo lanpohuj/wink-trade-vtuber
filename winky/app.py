@@ -17,7 +17,6 @@ import dataclasses
 import json
 import logging
 import os
-import random
 import sys
 import threading
 import time
@@ -217,8 +216,8 @@ class WinkyAPI:
                     f"Рост остановился по {clean_pair_ru}! Открываем сделку ВНИЗ на {clean_dur} вместе с крупными продавцами!",
                 ]
 
-        chosen_phrase = random.choice(phrases)
-        self._controller.speak(chosen_phrase, lang=lang, emotion="excited", source="signal_announcement")
+        self._controller.speak_options(phrases, lang=lang, category="signal_announcement_" + ("BUY" if is_buy else "SELL"),
+                                       emotion="excited", source="signal_announcement")
 
     def handle_trading_event(self, payload: Any = None) -> bool:
         """Обрабатывает автономные события сделок со стрима: победа, перекрытие, флэт, вопрос в чат."""
@@ -253,8 +252,8 @@ class WinkyAPI:
                 "[win] Boom, that's a win! Clean execution, moving right into profit!",
                 "[excited] Another win secured! Love this momentum, congrats everyone!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="win", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="win", source="trade_event", event=voice_event)
 
         elif event_type == "loss_step1":
             if self._controller.on_performance is None:
@@ -267,8 +266,8 @@ class WinkyAPI:
             phrases_en = [
                 "[wink] Slight wick touched our level, no worries at all! Trend is solid, entering step 1 recovery on this pair!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="wink", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="wink", source="trade_event", event=voice_event)
 
         elif event_type == "loss_step2":
             if self._controller.on_performance is None:
@@ -281,8 +280,8 @@ class WinkyAPI:
             phrases_en = [
                 "[thinking] Alright, this pair is getting choppy! Switching to a cleaner chart for step 2 recovery!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "flat_skip":
             if self._controller.on_performance is None:
@@ -295,8 +294,8 @@ class WinkyAPI:
             phrases_en = [
                 f"[thinking] Guys, {pair} is flatlining right now with weak volume. Skipping this noise to find a clear trend!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "ask_chat":
             if self._controller.on_performance is None:
@@ -309,8 +308,8 @@ class WinkyAPI:
             phrases_en = [
                 "[happy] Chat, which currency pair should we analyze next? Drop your picks in the comments!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="happy", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="happy", source="trade_event", event=voice_event)
 
         elif event_type == "start_analysis":
             if self._controller.on_performance is None:
@@ -325,8 +324,8 @@ class WinkyAPI:
                 f"[thinking] Analyzing {pair} chart, checking volatility and market depth...",
                 f"[wink] Scanning order flow and momentum on {pair}, one moment...",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="thinking", source="trade_event", event=voice_event)
 
         elif event_type == "switch_pair":
             if self._controller.on_performance is None:
@@ -341,8 +340,8 @@ class WinkyAPI:
             phrases_en = [
                 f"[wink] Switching chart to {pair}, let's find a clean setup!",
             ]
-            phrase = random.choice(phrases_ru if lang == "ru" else phrases_en)
-            self._controller.speak(phrase, lang=lang, emotion="thinking", source="trade_event", event=voice_event)
+            self._controller.speak_options(phrases_ru if lang == "ru" else phrases_en, lang=lang,
+                                           category="legacy_" + event_type, emotion="thinking", source="trade_event", event=voice_event)
 
         return True
 

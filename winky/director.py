@@ -269,6 +269,9 @@ class StreamDirector:
                 reply_text = generate_smart_local_reply(item.user, item.text, item.lang)
 
             # Проверка цензуры
+            if not reply_text:
+                item.failed = True
+                return
             try:
                 from winky.censor import check_phrase
                 ok, reason = check_phrase(reply_text)

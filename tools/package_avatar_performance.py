@@ -20,7 +20,7 @@ def main():
         (OUT/(name+'.mjs')).write_bytes((LAB/(name+'.mjs')).read_bytes())
     release=json.loads((OUT/'release.json').read_text())
     release['source_revision']=subprocess.check_output(['git','rev-parse','--short','HEAD'],cwd=ROOT,text=True).strip()
-    release.update(feature_revision='anatomical-arm-hinge-v3',notes='Stable bind-frame arm IK, single elbow hinge, no camera-facing forearm roll, soft extension and continuous sampled interpolation. Large portrait and existing voice/result routing preserved.')
+    release.update(feature_revision='expressive-arm-tempo-v4',notes='Faster raise/lower transitions and stronger asymmetric hand waves on the stable anatomical elbow hinge. Fixed large portrait, hop clock and result routing preserved.')
     release['files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.mjs'))}
     (OUT/'release.json').write_text(json.dumps(release,ensure_ascii=False,indent=2)+'\n')
     print('Packaged',len(release['files']),'reviewed modules')

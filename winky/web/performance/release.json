@@ -1,5 +1,5 @@
 {
-  "source_revision": "c6e7003",
+  "source_revision": "e89cf20",
   "release": "speech-sync-v1",
   "files": {
     "celebration.mjs": "179625e8bfb9b0fea597a3771c9087e22fb6f8ec2c1f66eed0770203f6a0842a",
@@ -11,8 +11,8 @@
     "policy.mjs": "070575c50fe8ae33e7601912aa9a17684bc533cd53dac83ef64e38f2a206e04a",
     "sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5",
     "victory-motions.mjs": "00da419146f0e6512f9a6c3871f5305e6c71d6c396879c6ba4bc9d493555bc99",
-    "victory-poses.mjs": "11ecac7705b073e61f1ee1895bc18eb85ca80aa24971db5ca05c8dccf65a9860"
+    "victory-poses.mjs": "97f957f0d0202af2dc202c15b51f71b78f7e2ecd49f64f1abca119bce32668b7"
   },
-  "notes": "Stable bind-frame arm IK, single elbow hinge, no camera-facing forearm roll, soft extension and continuous sampled interpolation. Large portrait and existing voice/result routing preserved.",
-  "feature_revision": "anatomical-arm-hinge-v3"
+  "notes": "Faster raise/lower transitions and stronger asymmetric hand waves on the stable anatomical elbow hinge. Fixed large portrait, hop clock and result routing preserved.",
+  "feature_revision": "expressive-arm-tempo-v4"
 }

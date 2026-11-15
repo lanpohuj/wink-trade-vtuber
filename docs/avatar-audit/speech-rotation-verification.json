@@ -1,0 +1,927 @@
+{
+  "scope": "active_recordings_temporary_history_no_audio",
+  "pools": [
+    {
+      "category": "ANALYZING_CHART",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 2,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "ANALYZING_CHART",
+      "lang": "ru",
+      "context": {
+        "indicators_ready": true
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "ru",
+      "context": {
+        "chat_kind": "join"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "ru",
+      "context": {
+        "chat_kind": "follow"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "ru",
+      "context": {
+        "chat_kind": "gift"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "ru",
+      "context": {
+        "chat_kind": "like"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "ru",
+      "context": {
+        "chat_kind": "bot"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "en",
+      "context": {
+        "chat_kind": "join"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "en",
+      "context": {
+        "chat_kind": "follow"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "en",
+      "context": {
+        "chat_kind": "gift"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "en",
+      "context": {
+        "chat_kind": "like"
+      },
+      "unique_phrases": 5,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "CHAT_REACTION",
+      "lang": "en",
+      "context": {
+        "chat_kind": "bot"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "IN_TRADE_WAITING",
+      "lang": "ru",
+      "context": {
+        "halfway_favorable_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "IN_TRADE_WAITING",
+      "lang": "ru",
+      "context": {
+        "remaining_sec": 15
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "IN_TRADE_WAITING",
+      "lang": "ru",
+      "context": {
+        "favorable_reaction_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "IN_TRADE_WAITING",
+      "lang": "ru",
+      "context": {
+        "near_expiry_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "IN_TRADE_WAITING",
+      "lang": "ru",
+      "context": {
+        "candle_close_near_expiry_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "NARRATE_CTA",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 50,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_CTA",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 50,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_ENGAGE",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 54,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_ENGAGE",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 54,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_LESSON",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 77,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_LESSON",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 77,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_PAIR",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 41,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_PAIR",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 41,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "context": {
+        "result_kind": "LOSS_110"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "context": {
+        "result_kind": "LOSS_242"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "context": {
+        "result_kind": "LOSS_RESET"
+      },
+      "unique_phrases": 7,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "ru",
+      "context": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "unique_phrases": 7,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "context": {
+        "result_kind": "LOSS_110"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "context": {
+        "result_kind": "LOSS_242"
+      },
+      "unique_phrases": 10,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "context": {
+        "result_kind": "LOSS_RESET"
+      },
+      "unique_phrases": 7,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_RESULT",
+      "lang": "en",
+      "context": {
+        "result_kind": "NEAR_LOSS"
+      },
+      "unique_phrases": 7,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 90,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_SCAN",
+      "lang": "ru",
+      "context": {
+        "data_status": "NO_DATA"
+      },
+      "unique_phrases": 106,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 90,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_SCAN",
+      "lang": "en",
+      "context": {
+        "data_status": "NO_DATA"
+      },
+      "unique_phrases": 106,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_TRADE",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 69,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_TRADE",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 69,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_VOLATILITY",
+      "lang": "ru",
+      "context": {
+        "high_volatility": true
+      },
+      "unique_phrases": 14,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "NARRATE_VOLATILITY",
+      "lang": "en",
+      "context": {
+        "high_volatility": true
+      },
+      "unique_phrases": 14,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "direction": "BUY",
+        "rsi_oversold_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "direction": "BUY",
+        "local_bottom_impulse_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "direction": "BUY",
+        "support_pullback_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "ru",
+      "context": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "context": {
+        "setup": "TREND_PULLBACK",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "context": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "context": {
+        "setup": "RANGE_REJECTION",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_CALL",
+      "lang": "en",
+      "context": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "BUY",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "direction": "SELL",
+        "expiry": "30s",
+        "upper_level_rejection_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "direction": "SELL",
+        "resistance_fade_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "direction": "SELL",
+        "top_selling_pressure_confirmed": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "ru",
+      "context": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "context": {
+        "setup": "TREND_PULLBACK",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "context": {
+        "setup": "BREAKOUT_RETEST",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "context": {
+        "setup": "RANGE_REJECTION",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "OPEN_TRADE_PUT",
+      "lang": "en",
+      "context": {
+        "setup": "LOCAL_REVERSAL",
+        "direction": "SELL",
+        "setup_confirmed": true,
+        "open_observed": true
+      },
+      "unique_phrases": 15,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 2,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "lang": "ru",
+      "context": {
+        "high_payout_confirmed": true
+      },
+      "unique_phrases": 3,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PAIR_SWITCHED_NEW_SCAN",
+      "lang": "ru",
+      "context": {
+        "indicators_ready": true
+      },
+      "unique_phrases": 3,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PAUSE_BETWEEN_TRADES",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 4,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PREPARE_ENTRY",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "PREPARE_ENTRY",
+      "lang": "ru",
+      "context": {
+        "all_indicators_confirmed": true
+      },
+      "unique_phrases": 2,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "PREPARE_ENTRY",
+      "lang": "ru",
+      "context": {
+        "rsi_level_reversal_confirmed": true
+      },
+      "unique_phrases": 2,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "START_STREAM_READY",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 4,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "START_STREAM_READY",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 4,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_LOSS",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 32,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_LOSS",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 32,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_REFUND",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 23,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_REFUND",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 23,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_WIN",
+      "lang": "ru",
+      "context": {},
+      "unique_phrases": 48,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "TRADE_WIN",
+      "lang": "en",
+      "context": {},
+      "unique_phrases": 48,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": true
+    },
+    {
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "lang": "ru",
+      "context": {
+        "skip_reason": "WEAK_AND_CHOPPY"
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "lang": "ru",
+      "context": {
+        "skip_reason": "UNCONFIRMED_ENTRY"
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "lang": "ru",
+      "context": {
+        "skip_reason": "INDICATOR_CONFLICT"
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "lang": "ru",
+      "context": {
+        "market_regime": "LOW_VOL_RANGE"
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    },
+    {
+      "category": "WEAK_SIGNAL_SWITCH_PAIR",
+      "lang": "ru",
+      "context": {
+        "indicators_ready": true
+      },
+      "unique_phrases": 1,
+      "rounds": 2,
+      "restart": true,
+      "boundary_no_repeat": false
+    }
+  ],
+  "starts": 3248,
+  "passed": true
+}

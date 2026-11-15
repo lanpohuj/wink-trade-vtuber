@@ -54,19 +54,26 @@ class SpeechRotation:
             rows = list(unique.values())
             universe = universe if universe is not None else rows
             full_rows = {fingerprint(r['text']): r for r in reversed(universe)}
-            full_ids = {r.get('phrase_id', r['id']) for r in full_rows.values()}
             legacy = self.data.get(':'.join(key.split(':')[:2]), [])
             deck = self.decks.get(key, {'used': list(legacy), 'last': legacy[-1] if legacy else None})
             used = set(deck['used'])
-            exhausted = bool(full_ids) and full_ids.issubset(used)
+            # Keep logical IDs for retakes, and wording for aliases/replaced files.
+            # Migrate the current round in place; never clear the owner's history.
+            used_texts = set(deck.get('used_texts', []))
+            used_texts.update(fingerprint(r['text']) for r in universe
+                              if r.get('phrase_id', r['id']) in used or r['id'] in used)
+            last_text = deck.get('last_text') or next((fingerprint(r['text']) for r in universe
+                        if r.get('phrase_id', r['id']) == deck.get('last') or r['id'] == deck.get('last')), None)
+            exhausted = bool(full_rows) and set(full_rows).issubset(used_texts)
             pending_texts = {fingerprint(r['text']) for r in self.pending.values()}
             recent_texts = {r['hash'] for r in self.recent if now - r['at'] < 600}
             candidates = []
             for row in rows:
                 logical = row.get('phrase_id', row['id'])
-                if logical in used and not exhausted:
+                text_hash = fingerprint(row['text'])
+                if (logical in used or text_hash in used_texts) and not exhausted:
                     continue
-                if exhausted and logical == deck['last'] and len(full_ids) > 1:
+                if exhausted and (logical == deck['last'] or text_hash == last_text) and len(full_rows) > 1:
                     continue
                 if row['id'] in self.pending or fingerprint(row['text']) in pending_texts:
                     continue
@@ -84,7 +91,8 @@ class SpeechRotation:
                 return None
             row = random.choice(candidates)
             self.pending[row['id']] = dict(row, _deck=key, _cycle=deck.get('cycle', 0) + int(exhausted),
-                                          _initial_used=list(deck['used']))
+                                          _initial_used=list(deck['used']),
+                                          _initial_texts=[] if exhausted else sorted(used_texts))
             return row
 
     def release(self, item_id, played=False, now=None, spoken_text=None):
@@ -97,11 +105,18 @@ class SpeechRotation:
             deck = self.decks.setdefault(key, {'used': row['_initial_used'], 'last': None})
             if row['_cycle'] > deck.get('cycle', 0):
                 deck['used'] = []
+                deck['used_texts'] = []
                 deck['cycle'] = row['_cycle']
+            else:
+                deck['used_texts'] = sorted(set(deck.get('used_texts', [])) | set(row['_initial_texts']))
             logical = row.get('phrase_id', row['id'])
             if logical not in deck['used']:
                 deck['used'].append(logical)
             deck['last'] = logical
+            text_hash = fingerprint(row['text'])
+            if text_hash not in deck['used_texts']:
+                deck['used_texts'].append(text_hash)
+            deck['last_text'] = text_hash
             self._note(spoken_text or row['text'], row.get('lang', 'ru'), row.get('topic', key), row.get('semantic_group'), now)
             self.recent[-1]['deck'] = key
             self.save()

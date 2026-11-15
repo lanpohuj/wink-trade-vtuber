@@ -2019,9 +2019,14 @@ class SpeechController:
             clean_text = clean_text[clean_text.index("]") + 1:].strip()
 
         from winky.speech_rotation import fingerprint
+        from winky.chat_style import reply_pool
+        local_key, local_pool = reply_pool(getattr(chat_item, 'text', ''), lang)
+        local_row = next((r for r in local_pool if fingerprint(r['text']) == fingerprint(clean_text)), None)
         reserved = self.voice_bank.rotation.reserve(
+            [local_row] if local_row else
             [dict(id='chat_' + fingerprint(clean_text), text=clean_text, lang=lang, topic='chat', tone='playful')],
-            lang + ':chat:' + str(getattr(chat_item, 'rotation_kind', 'reply')))
+            local_key if local_row else lang + ':chat:' + str(getattr(chat_item, 'rotation_kind', 'reply')),
+            universe=local_pool if local_row else None)
         if not reserved:
             chat_item.failed = True
             return False
@@ -2057,6 +2062,8 @@ class SpeechController:
         from winky.voice_bank import category_name, priority
         event = dict(payload)
         event['category'] = category_name(event.get('category'))
+        if event['category'] == 'NARRATE_EXPIRY':
+            return {'ok': False, 'error': 'category_disabled'}
         event['lang'] = 'en' if event.get('lang') == 'en' else 'ru'
         raw_direction = str(event.get('direction') or event.get('trade_dir') or event.get('trade_action') or '').upper()
         if event['category'] in ('OPEN_TRADE_CALL', 'OPEN_TRADE_PUT'):
@@ -2147,6 +2154,8 @@ class SpeechController:
                     'foreground_ready': any(i.priority < 4 and i.ready_event.is_set() for i in self._playback_queue)}
 
     def _item_valid(self, item: SpeechItem) -> bool:
+        if item.event.get('category') == 'NARRATE_EXPIRY':
+            return False
         if (item.failed or time.time() - item.created_at > item.max_age_sec
                 or (item.generation is not None and item.generation != self._cancel_generation)
                 or (item.chat_item is not None and getattr(item.chat_item,'failed',False))):

@@ -1,0 +1,240 @@
+{
+  "scope": "local_avatar_and_speech_only_no_trades_no_paid_synthesis",
+  "backup": "artifacts/avatar-backups/faster-arms-rotation-20261115-200153",
+  "protected_files": 46,
+  "protected_mismatches": [],
+  "arm_tempo": {
+    "baseline": [
+      {
+        "mode": "victory_jump",
+        "side": "Right",
+        "raise": 0.49166666666666664,
+        "lower": 0.766666666666667,
+        "wrist": 2.7580594762889814
+      },
+      {
+        "mode": "victory_jump",
+        "side": "Left",
+        "raise": 0.4833333333333333,
+        "lower": 0.7666666666666666,
+        "wrist": 3.1290652098227802
+      },
+      {
+        "mode": "victory_wave",
+        "side": "Right",
+        "raise": 0.49166666666666664,
+        "lower": 0.766666666666667,
+        "wrist": 7.547890749074749
+      },
+      {
+        "mode": "victory_wave",
+        "side": "Left",
+        "raise": 0.4833333333333333,
+        "lower": 0.7666666666666666,
+        "wrist": 5.459144770066548
+      }
+    ],
+    "current": [
+      {
+        "mode": "victory_jump",
+        "side": "Right",
+        "raise": 0.36666666666666664,
+        "lower": 0.5916666666666668,
+        "wrist": 7.975795430600118,
+        "raiseRatio": 0.7457627118644068,
+        "lowerRatio": 0.7717391304347824,
+        "waveRatio": 2.8918141538164703
+      },
+      {
+        "mode": "victory_jump",
+        "side": "Left",
+        "raise": 0.3666666666666667,
+        "lower": 0.6000000000000001,
+        "wrist": 6.914917771250186,
+        "raiseRatio": 0.7586206896551726,
+        "lowerRatio": 0.7826086956521741,
+        "waveRatio": 2.2098989019285487
+      },
+      {
+        "mode": "victory_wave",
+        "side": "Right",
+        "raise": 0.36666666666666664,
+        "lower": 0.5916666666666668,
+        "wrist": 13.668439504919304,
+        "raiseRatio": 0.7457627118644068,
+        "lowerRatio": 0.7717391304347824,
+        "waveRatio": 1.8108952499868705
+      },
+      {
+        "mode": "victory_wave",
+        "side": "Left",
+        "raise": 0.375,
+        "lower": 0.6000000000000001,
+        "wrist": 11.656870104697996,
+        "raiseRatio": 0.7758620689655173,
+        "lowerRatio": 0.7826086956521741,
+        "waveRatio": 2.135292357259816
+      }
+    ],
+    "checks": [
+      "victory_jump Right raise is faster",
+      "victory_jump Right lower is faster",
+      "victory_jump Right wave is stronger",
+      "victory_jump Left raise is faster",
+      "victory_jump Left lower is faster",
+      "victory_jump Left wave is stronger",
+      "victory_wave Right raise is faster",
+      "victory_wave Right lower is faster",
+      "victory_wave Right wave is stronger",
+      "victory_wave Left raise is faster",
+      "victory_wave Left lower is faster",
+      "victory_wave Left wave is stronger"
+    ]
+  },
+  "arm_rotation": {
+    "checks": 16,
+    "target": [
+      {
+        "mode": "victory_jump",
+        "maxima": {
+          "step": 14.89081243658551,
+          "offHinge": 0.28437904114105794,
+          "forearmTwist": 0.039211999623507576,
+          "elbowFlex": 97.93833154861315,
+          "upperStep": 25.650410442570713,
+          "upperTwist": 68.17910818837841
+        },
+        "minima": {
+          "elbowFlex": 9.167323016994773
+        }
+      },
+      {
+        "mode": "victory_wave",
+        "maxima": {
+          "step": 14.89081243658551,
+          "offHinge": 0.28437904114105794,
+          "forearmTwist": 0.039211999623507576,
+          "elbowFlex": 97.93833154861315,
+          "upperStep": 25.650410442570713,
+          "upperTwist": 68.18861682188034
+        },
+        "minima": {
+          "elbowFlex": 9.167323016994773
+        }
+      }
+    ],
+    "runtime": [
+      {
+        "mode": "victory_jump",
+        "peakForearmSpeed": 268.43793872884316,
+        "peakOffHinge": 0.27515869456833547
+      },
+      {
+        "mode": "victory_wave",
+        "peakForearmSpeed": 268.166162590622,
+        "peakOffHinge": 0.27515869456833547
+      }
+    ]
+  },
+  "surface": {
+    "checks": 167,
+    "cases": 45
+  },
+  "native": {
+    "samples": 109,
+    "errors": [],
+    "framing_drift": {
+      "distance": 0.0,
+      "panX": 0,
+      "panY": 0.0,
+      "effectiveScale": 0.0,
+      "requestedScale": 0.0
+    },
+    "max_afplay": 1,
+    "results": [
+      "native-test:1:result",
+      "native-test:2:result",
+      "native-test:3:result",
+      "native-test:4:result",
+      "native-test:5:result"
+    ],
+    "max_elbow_off_hinge": 0.26676174691970833
+  },
+  "images": [
+    {
+      "file": "result-1.png",
+      "size": [
+        2000,
+        1840
+      ],
+      "bbox": [
+        550,
+        254,
+        1429,
+        1840
+      ],
+      "transparent_pixels": 3040502,
+      "black_shell_ratio": 0.0
+    },
+    {
+      "file": "result-2.png",
+      "size": [
+        2000,
+        1840
+      ],
+      "bbox": [
+        551,
+        260,
+        1420,
+        1840
+      ],
+      "transparent_pixels": 3041794,
+      "black_shell_ratio": 0.0
+    },
+    {
+      "file": "result-3.png",
+      "size": [
+        2000,
+        1840
+      ],
+      "bbox": [
+        689,
+        446,
+        1265,
+        1840
+      ],
+      "transparent_pixels": 3138204,
+      "black_shell_ratio": 0.0
+    },
+    {
+      "file": "result-4.png",
+      "size": [
+        2000,
+        1840
+      ],
+      "bbox": [
+        497,
+        457,
+        1433,
+        1840
+      ],
+      "transparent_pixels": 3056704,
+      "black_shell_ratio": 0.0
+    },
+    {
+      "file": "result-5.png",
+      "size": [
+        2000,
+        1840
+      ],
+      "bbox": [
+        674,
+        446,
+        1273,
+        1840
+      ],
+      "transparent_pixels": 3131027,
+      "black_shell_ratio": 0.0
+    }
+  ]
+}

@@ -63,7 +63,6 @@ def narration_valid(event, context, phase, received_at, now=None):
 def choices(context, phase, now=None):
     """Ordered choices with semantic keys; no freshly invented market facts."""
     now = time.time() if now is None else now
-    seq = context.get("trade_seq")
     result = context.get("last_result") or {}
     if (
         result.get("outcome") == "LOSS"
@@ -100,13 +99,6 @@ def choices(context, phase, now=None):
                 0,
             )
     if phase == "IN_TRADE" and context.get("open_observed") is True:
-        yield (
-            "NARRATE_EXPIRY",
-            f"expiry:{seq}",
-            "trade",
-            {"expiry": context.get("duration")},
-            0,
-        )
         yield "NARRATE_TRADE", "trade_wait", "trade", {}, 15
     if phase == "ANALYZING":
         if (

@@ -188,11 +188,27 @@ class VoiceBank:
 
     def reserve(self, event: dict) -> dict | None:
         with self.lock:
-            pool = self.candidates(event)
-            universe = self.candidates({k: v for k, v in event.items() if k != 'max_duration_sec'})
+            # A duration window or explicit file request narrows this selection,
+            # never the full round. Select one bank before applying those limits.
+            universe = self.candidates({k: v for k, v in event.items()
+                                        if k not in ('max_duration_sec', 'file_id', 'file_path')})
+            matches_file = lambda r: ((not event.get('file_id') or r['id'] == event['file_id'])
+                                     and (not event.get('file_path') or r.get('file') == event['file_path']))
+            legacy_file = False
+            if (event.get('file_id') or event.get('file_path')) and not any(matches_file(r) for r in universe):
+                # Preserve explicitly requested legacy previews even when an
+                # overlay is active. Their separate round cannot reset live speech.
+                universe = self._candidates({k: v for k, v in event.items()
+                                             if k not in ('max_duration_sec', 'file_id', 'file_path')}, self.root)
+                legacy_file = True
+            pool = [r for r in universe
+                    if r.get('duration', 0) <= event.get('max_duration_sec', float('inf'))
+                    and matches_file(r)]
             relevant = {k for row in universe for k in row.get('conditions', {})}
             context = {k: event[k] for k in sorted(relevant) if k in event}
             key = event.get('lang', 'ru') + ':' + category_name(event.get('category')) + ':' + json.dumps(context, sort_keys=True)
+            if legacy_file:
+                key += ':legacy_file'
             item = self.rotation.reserve(pool, key, universe=universe)
             if item:
                 self.reserved.add(item['id'])

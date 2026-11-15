@@ -28,7 +28,9 @@ try{const p=await b.newPage({viewport:{width:1000,height:920}});p.on('pageerror'
   check(m.mode+' no forced longitudinal forearm spin',m.maxima.forearmTwist<4);
   check(m.mode+' no backward elbow or full lock',m.minima.elbowFlex>4&&m.maxima.elbowFlex<145);
   check(m.mode+' no abrupt target rotation',m.maxima.step<15);
-  check(m.mode+' upper arm has no half-turn spin',m.maxima.upperTwist<120&&m.maxima.upperStep<20);
+  // Faster authored transitions permit a larger 40 ms target step. The actual
+  // interpolated chain is checked separately at 120 Hz below.
+  check(m.mode+' upper arm has no half-turn spin',m.maxima.upperTwist<120&&m.maxima.upperStep<27);
  }
  const runtime=await p.evaluate(()=>{
   const c=vtuber,T=THREE;avatarLabReceive({type:'idle-enabled',enabled:false});window.rotationStep=c.update.bind(c);c.update=()=>{};winkySetScale(1.5);
