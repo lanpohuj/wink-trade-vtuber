@@ -1,0 +1,120 @@
+{
+  "scope": "avatar_camera_only",
+  "source_video": {
+    "duration_sec": 8.233,
+    "fps": 60,
+    "sha256": "63843ba1c2fcc4ae7126bc5bfb329cc19378f8a34f8d620807862681c7d95c32"
+  },
+  "before_jump_camera_distance": {
+    "min": 209.53678958651773,
+    "max": 311.85851284028723
+  },
+  "measured_motion_bounds": {
+    "min": [
+      -58.40596509406694,
+      68.07399047536137,
+      -14.331379031125708
+    ],
+    "max": [
+      58.471699633900606,
+      173.7440721858094,
+      44.594943231392406
+    ]
+  },
+  "browser": {
+    "checks": 460,
+    "cases": 180,
+    "max_camera_or_scale_drift": 0,
+    "max_skin_ndc": 0.8766160934882704,
+    "errors": []
+  },
+  "native": {
+    "samples": 109,
+    "camera_ranges": {
+      "distance": {
+        "min": 494.17186602054426,
+        "max": 494.17186602054426,
+        "drift": 0.0
+      },
+      "panX": {
+        "min": 0,
+        "max": 0,
+        "drift": 0
+      },
+      "panY": {
+        "min": 9,
+        "max": 9,
+        "drift": 0
+      },
+      "effectiveScale": {
+        "min": 0.5830776911781929,
+        "max": 0.5830776911781929,
+        "drift": 0.0
+      },
+      "requestedScale": {
+        "min": 1.5,
+        "max": 1.5,
+        "drift": 0.0
+      }
+    },
+    "errors": [],
+    "pixels": [
+      {
+        "file": "result-1.png",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 290168,
+        "near_black_fraction": 0.003646163601775523
+      },
+      {
+        "file": "result-2.png",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 251854,
+        "near_black_fraction": 0.0013420473766547285
+      },
+      {
+        "file": "result-3.png",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 282207,
+        "near_black_fraction": 0.0027922765912964595
+      },
+      {
+        "file": "result-4.png",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 294256,
+        "near_black_fraction": 0.003401799793377195
+      },
+      {
+        "file": "result-5.png",
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 249322,
+        "near_black_fraction": 0.0015722639799135255
+      }
+    ]
+  },
+  "node_tests": 31,
+  "native_package_regression_checks": 14,
+  "protected_files": 22,
+  "protected_mismatches": [],
+  "preview": {
+    "file": "experiments/winky_avatar/.runtime/fixed-framing/fixed-framing.mp4",
+    "duration_sec": 16.8,
+    "frames": 504,
+    "fps": 30,
+    "audio": false
+  }
+}

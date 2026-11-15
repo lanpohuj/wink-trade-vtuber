@@ -11,7 +11,9 @@ contract; this package has no dependency on the laboratory server or its iframe.
 
 Trade decisions and TikTok transport are not implemented in this package.
 
-`framing.mjs` protects the portrait's arms and head using the posed skin;
+`framing.mjs` reserves a fixed envelope measured from the arms/head skin over
+all 15 motions, including transitions and jumps. Camera position, projection
+and model scale stay constant until a user setting or viewport changes;
 `idle.mjs` selects silent contextual activities and yields to every speech ID.
 The native context message is read-only. The original idle action loop stays
 suppressed. The panel's optional idle toggle can disable the new scheduler.

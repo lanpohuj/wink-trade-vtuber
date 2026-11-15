@@ -1,17 +1,17 @@
 {
-  "source_revision": "5be71c1",
+  "source_revision": "2b94346",
   "release": "speech-sync-v1",
   "files": {
     "celebration.mjs": "179625e8bfb9b0fea597a3771c9087e22fb6f8ec2c1f66eed0770203f6a0842a",
     "controller.mjs": "83b425b1db6a74d221c626d8b30a7ba3584b27fcf8f6ced7dd423e1a622fcc83",
     "extra-motions.mjs": "968832cd927a1de7ed045c433aa84d134548b2790a6e9abb505fd0927211a59d",
-    "framing.mjs": "69b9d993f0c3917a70ac95c9a752e0de111f6fc4378fdd3c51052fda982e09fd",
+    "framing.mjs": "13486d81f0819965805b58704cd1334bb3a853837cb6cef5bc66a1f011a9b185",
     "idle.mjs": "668f2b3ff9321aba2470af8e72f272cc23df6d11519e2a60f22f2adfd2d432ac",
     "motion-tracks.mjs": "b51962e9560895ce8fc01ea349313811ec76b3e784aede631b0d1b7546d98ede",
     "policy.mjs": "070575c50fe8ae33e7601912aa9a17684bc533cd53dac83ef64e38f2a206e04a",
     "sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5",
     "victory-motions.mjs": "380e1b2cfeea53b1e84dcdde76e19f5f687067cf6d1687c036a8a8cdfac07903"
   },
-  "notes": "Five-motion result bag; immediate read-only WIN reaction independent of audio, with protected portrait.",
-  "feature_revision": "trade-celebration-v1"
+  "notes": "Fixed camera over the full motion envelope; no pose-driven zoom or camera following. Five-motion WIN bag preserved.",
+  "feature_revision": "fixed-motion-framing-v1"
 }

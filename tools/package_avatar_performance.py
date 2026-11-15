@@ -20,7 +20,7 @@ def main():
         (OUT/(name+'.mjs')).write_bytes((LAB/(name+'.mjs')).read_bytes())
     release=json.loads((OUT/'release.json').read_text())
     release['source_revision']=subprocess.check_output(['git','rev-parse','--short','HEAD'],cwd=ROOT,text=True).strip()
-    release.update(feature_revision='trade-celebration-v1',notes='Five-motion result bag; immediate read-only WIN reaction independent of audio, with protected portrait.')
+    release.update(feature_revision='fixed-motion-framing-v1',notes='Fixed camera over the full motion envelope; no pose-driven zoom or camera following. Five-motion WIN bag preserved.')
     release['files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.mjs'))}
     (OUT/'release.json').write_text(json.dumps(release,ensure_ascii=False,indent=2)+'\n')
     print('Packaged',len(release['files']),'reviewed modules')

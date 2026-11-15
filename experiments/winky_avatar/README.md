@@ -116,3 +116,16 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/exp
 ```
 
 Материалы: `.runtime/win-reactions`, разбор: `docs/avatar-audit/win-reactions.md`.
+
+Исправление по видео владельца: кадр больше не следует текущей позе. Постоянный
+запас рассчитан для всего движения, включая переход рук вверх и оба прыжка.
+Камера пересчитывается только при смене масштаба, Y или размера окна.
+Проверка всех 15 движений и неподвижности камеры:
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-fixed-framing.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/export-fixed-framing.cjs
+WINKY_VERIFY_FIXED_FRAMING=1 .venv/bin/python tools/verify_avatar_wins.py
+```
+
+Ролик и результаты: `.runtime/fixed-framing`, разбор: `docs/avatar-audit/fixed-framing.md`.
