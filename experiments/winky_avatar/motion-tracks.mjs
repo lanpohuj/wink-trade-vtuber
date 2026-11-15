@@ -1,8 +1,10 @@
 // Authored only for the frozen Shibahu FBX. Angles are offsets from its rest pose.
 // The adapter interpolates orientations as quaternions, including forearm roll.
 import {EXTRA_REST,EXTRA_JOINTS,makeExtraTracks} from './extra-motions.mjs';
+import {VICTORY_JOINTS,makeVictoryTracks} from './victory-motions.mjs';
 export {FACE_MOODS} from './extra-motions.mjs';
 export const REST = {
+  Hips:[0,0,0],
   RightShoulder:[0,0,0], RightArm:[0,0,.04], RightForeArm:[0,-.16,0], RightHand:[0,0,0],
   Head:[0,0,0], Neck:[0,0,0], Spine:[0,0,0], Spine1:[0,0,0], Spine2:[0,0,0],
   LeftShoulder:[0,0,0],
@@ -12,6 +14,7 @@ export const JOINTS={
   wave:['RightShoulder','RightArm','RightForeArm','RightHand'],
   flirt_kiss:['RightShoulder','RightArm','RightForeArm','RightHand'],
   ...EXTRA_JOINTS,
+  ...VICTORY_JOINTS,
 };
 const center = {
   RightShoulder:[0,0,.06], RightArm:[-.88,.23,.31], RightForeArm:[1.72,-.38,2.27],
@@ -54,6 +57,7 @@ export const TRACKS = {
   ],
   flirt_kiss:[[0,REST],[.5,kissTouch],[1.0,kissTouch],[1.95,kissSend],[2.5,kissSend],[3.2,REST]],
   ...makeExtraTracks(REST),
+  ...makeVictoryTracks(REST),
 };
 export function sampleTrack(name,time){
   const track=TRACKS[name];

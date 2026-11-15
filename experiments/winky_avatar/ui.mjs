@@ -11,7 +11,7 @@ for(const name of ['wave','dance','cheer','shy','flirt_kiss','neko_paws','hip_gr
   const labels={wave:'Приветствие',dance:'Танец с руками · разбор',cheer:'Руки вверх · разбор',shy:'Смущение',flirt_kiss:'Воздушный поцелуй',neko_paws:'Кулачки у лица',hip_groove:'Качание бёдрами',peek_closer:'Любопытство'};
   const b=document.createElement('button');b.textContent=labels[name];b.onclick=()=>{stop();post({type:'legacy',action:name});};$('legacy').append(b);
 }
-for(const name of ['shy','quiet_laugh','ponder','playful_doubt','hand_heart']){
+for(const name of ['shy','quiet_laugh','ponder','playful_doubt','hand_heart','victory_jump','victory_wave']){
   const button=document.createElement('button');button.textContent=LABELS[name];
   button.onclick=()=>{
     stop();
@@ -21,6 +21,12 @@ for(const name of ['shy','quiet_laugh','ponder','playful_doubt','hand_heart']){
   };
   $('newMotions').append(button);
 }
+let testResult=0;
+$('testWin').onclick=()=>{
+  const context={connected:true,phase:'RESULT',result:'WIN',result_age_sec:0,result_key:`lab-win:${++testResult}:result`};
+  $('candidate').contentWindow.postMessage({scope:'winky-avatar-lab',type:'context',context},location.origin);
+  $('status').textContent='Симуляция закрытого плюса · следующая радость в круге';
+};
 function categories(){const old=$('category').value;$('category').replaceChildren(...[...new Set(library.filter(r=>r.lang===$('lang').value).map(r=>r.category))].sort().map(c=>option(c,c)));if([...$('category').options].some(o=>o.value===old))$('category').value=old;records();}
 function records(){const rows=library.filter(r=>r.lang===$('lang').value&&r.category===$('category').value);$('record').replaceChildren(...rows.map(r=>option(r.id,r.text)));select();}
 function select(){stop();lastTemplate=null;audio.removeAttribute('src');audio.load();selected=library.find(r=>r.id===$('record').value);$('phrase').textContent=selected?.text||'';}

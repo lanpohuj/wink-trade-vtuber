@@ -862,11 +862,14 @@ class WinkyAPI:
             remaining=max(0,stream_director._remaining_sec-max(0,age))
             volatile=bool(stream_director.context.get('high_volatility'))
             result=dict(stream_director.context.get('last_result') or {})
+            session=stream_director.context.get('session_id')
         queue=stream_director.chat_queue_status()
         context={'phase':phase,'connected':0<=age<=4,'remaining_sec':remaining,'high_volatility':volatile,
                  'preparing':queue['preparing'],'ready':queue['ready'],
                  'paused':self._controller.paused,'result':result.get('outcome'),
-                 'result_age_sec':max(0,now-seconds(result.get('closed_at')))}
+                 'result_age_sec':now-seconds(result.get('closed_at')),
+                 'result_key':f"{session}:{result['seq']}:result" if session and result.get('seq') is not None else '',
+                 'result_session_id':session,'result_seq':result.get('seq')}
         self.deliver_performance({'type':'context','context':context})
 
     def speech_health(self) -> dict:
@@ -1270,11 +1273,16 @@ def main() -> None:
             api_bridge.connect_tiktok(settings.TIKTOK_USERNAME)
 
         last_push = 0.0
+        last_maintenance = monotonic()
         while True:
-            threading.Event().wait(2.0)
-            scripts.maybe_reload()
+            # The avatar reads new result facts promptly, independently of voice
+            # synthesis. Keep scenario reload/CTA on their existing two-second cadence.
+            threading.Event().wait(.5)
             api_bridge.publish_avatar_context()
-            api_bridge.maybe_say_cta()
+            if monotonic() - last_maintenance >= 2:
+                scripts.maybe_reload()
+                api_bridge.maybe_say_cta()
+                last_maintenance = monotonic()
             if monotonic() - last_push > 10:
                 api_bridge.push_status()
                 last_push = monotonic()

@@ -4,12 +4,14 @@ import fs from 'node:fs';
 import {Director,PROFILES,LABELS,profileFor,performancePlan} from './policy.mjs';
 import {normalizeEvent,canonicalAction,inferIntent,LEGACY_ACTIONS} from './sync-event.mjs';
 import {TRACKS} from './motion-tracks.mjs';
+import {WIN_GESTURES} from './celebration.mjs';
 
 test('legacy commands preserve safe movements and trading directions stay metadata',()=>{
   for(const [from,to]of [['dance','hip_groove'],['cheer','joy'],['kiss','flirt_kiss'],['blush','shy'],['paws','neko_paws'],['peek','peek_closer']])assert.equal(canonicalAction(from),to);
   for(const value of ['BUY','SELL','CALL','PUT'])assert.equal(canonicalAction(value),'');
   for(const name of Object.values(PROFILES).flat())assert.ok(LABELS[name]);
-  for(const name of [...Object.keys(TRACKS),...LEGACY_ACTIONS])assert.ok(Object.values(PROFILES).flat().includes(name),name+' is reachable automatically');
+  for(const name of [...Object.keys(TRACKS),...LEGACY_ACTIONS])assert.ok([...Object.values(PROFILES).flat(),...WIN_GESTURES].includes(name),name+' is reachable automatically');
+  for(const name of WIN_GESTURES)assert.ok(LABELS[name]);
   assert.ok(!Object.values(PROFILES).flat().some(g=>['dance','cheer'].includes(g)));
 });
 test('Russian and English comments and explicit meanings route before mood',()=>{

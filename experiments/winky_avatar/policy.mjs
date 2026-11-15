@@ -26,6 +26,7 @@ export const LABELS = {
   shy: 'Смущение · прикрывает рот',
   quiet_laugh:'Тихий смех',ponder:'Задумчивость',playful_doubt:'Игривое недоверие',hand_heart:'Сердечко руками',
   flirt_kiss:'Воздушный поцелуй после фразы',neko_paws:'Кулачки у лица',hip_groove:'Качание бёдрами',peek_closer:'Любопытное приближение',
+  victory_jump:'Победные прыжки с руками вверх',victory_wave:'Радостные взмахи над головой',
 };
 export function profileFor(input = {}) {
   const event=normalizeEvent(input);
@@ -97,7 +98,7 @@ export class Director {
     const speechDuration=Math.max(.8,Number(event.duration)||3);
     this.active = { id: event.id, profile, gesture, time: 0, duration: Math.min(3.2, Math.max(.8, Number(event.duration) || 3)),
       start:.12,deferred:gesture==='flirt_kiss',ended:false,playing:true,tailTime:0,source:event.source||'',text:event.text,
-      secondary:speechDuration>=6.4?{gesture:secondary[index%secondary.length],start:4.3,duration:Math.min(2.5,speechDuration-4.5)}:null };
+      secondary:!event.result_reacted&&speechDuration>=6.4?{gesture:secondary[index%secondary.length],start:4.3,duration:Math.min(2.5,speechDuration-4.5)}:null };
     return this.active;
   }
   clock(id, time, playing=true) { if (this.active && this.active.id === id && Number.isFinite(time)) {this.active.time = Math.max(0, time);this.active.playing=playing;} }

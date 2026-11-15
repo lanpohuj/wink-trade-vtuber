@@ -101,3 +101,18 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/exp
 
 Результаты и ролик: `.runtime/framing-idle`. Подробности и ограничения —
 `docs/avatar-audit/framing-idle.md`.
+
+Радость на закрытый плюс: `celebration.mjs` получает только факты результата.
+Полный круг из пяти движений: новые прыжки/взмахи над головой, кулачки, бёдра,
+сердечко. В пределах круга и на стыке нет повторов. Кнопка «Симулировать плюс»
+показывает следующую реакцию без торговли и синтеза. `victory-motions.mjs`
+содержит позы, откалиброванные на замороженной FBX. Проверки и ролик:
+
+```bash
+node --test experiments/winky_avatar/celebration.test.mjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-wins.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/export-wins.cjs
+.venv/bin/python tools/verify_avatar_wins.py
+```
+
+Материалы: `.runtime/win-reactions`, разбор: `docs/avatar-audit/win-reactions.md`.

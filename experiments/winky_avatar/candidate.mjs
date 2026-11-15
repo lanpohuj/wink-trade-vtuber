@@ -3,9 +3,12 @@ import {LEGACY_ACTIONS,normalizeEvent} from './sync-event.mjs';
 import {REST, JOINTS, TRACKS, FACE_MOODS, sampleTrack, actionWeight} from './motion-tracks.mjs';
 import {IdleDirector} from './idle.mjs';
 import {installFraming} from './framing.mjs';
+import {CelebrationDirector,tradeKey} from './celebration.mjs';
+import {jumpBody} from './victory-motions.mjs';
 const director = new Director();
 const controller = window.vtuber;
 const idle=new IdleDirector(),framing=installFraming(controller);
+const celebrations=new CelebrationDirector();
 const originalUpdate = controller.update.bind(controller);
 const originalBone = controller.lerpBoneOffset.bind(controller);
 let frame = {gesture: 'listen', weight: 0, speaking: false};
@@ -38,6 +41,7 @@ controller.triggerAction=function(action,duration=3.2){
   if(!internalTrigger){idle.interrupt(duration+1.5);manualUntil=idle.time+duration+1.5;scheduledKey='';}
   originalAction(action,duration);
   if(FACE_MOODS[action]){this.currentEmotion=FACE_MOODS[action];this.emotionResetTimer=duration;}
+  if(action.startsWith('victory_')){this.currentEmotion='happy';this.emotionResetTimer=duration;}
 };
 let kissWasActive=false, heartsSent=false;
 const style=document.createElement('style');
@@ -114,6 +118,11 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
 const originalMorph=controller.smoothSetMorph.bind(controller);
 controller.smoothSetMorph=function(name,target,dt,speed=20){
   const mode=this.actionMode;
+  if(frame.phase==='celebration'||String(mode).startsWith('victory_')){
+    if(name==='facial_cheek')target=.85;
+    if(name==='facial_irisHilight_Big')target=1;
+    if(name==='face_mesh1'&&!frame.speaking)target=.14;
+  }
   if(mode==='ponder' && name==='face_mesh7')target=.20*actionWeight(authored?.time||0); // Gentle eye-only squint; blinking remains independent.
   else if(hasSession&&frame.profile==='thoughtful'&&name==='face_mesh7')target=.20*frame.weight;
   if(mode==='quiet_laugh' && !frame.speaking){
@@ -138,7 +147,8 @@ controller.smoothSetMorph=function(name,target,dt,speed=20){
 controller.update = function(dt, elapsed) {
   dt = Math.max(0, Math.min(.5, dt));
   frame = director.frame(dt);
-  const activity=idle.tick(dt,{speech:!!director.active,manual:idle.time<manualUntil});
+  const celebration=celebrations.tick(dt);
+  const activity=idle.tick(dt,{speech:!!director.active||!!celebration,manual:idle.time<manualUntil});
   if(activity){
     frame={gesture:activity.gesture,weight:ease(activity.time/.5)*ease((activity.duration-activity.time)/.7),speaking:false,
       phase:'idle',profile:activity.mood,poseTime:activity.time,poseDuration:activity.duration,activityId:activity.id};
@@ -147,11 +157,16 @@ controller.update = function(dt, elapsed) {
       this.emotionResetTimer=activity.duration;
     }
   }
+  if(celebration){
+    frame={...frame,gesture:celebration.gesture,weight:ease(celebration.time/.45)*ease((celebration.duration-celebration.time)/.65),
+      phase:'celebration',profile:'celebrate',poseTime:celebration.time,poseDuration:celebration.duration};
+    this.currentEmotion='happy';this.emotionResetTimer=.8;
+  }
   if (hasSession && !frame.speaking) this.speechHoldTimer = 0;
-  const scheduled=(activity||hasSession&&director.active&&['during','tail'].includes(frame.phase))
+  const scheduled=(celebration||activity||hasSession&&director.active&&['during','tail'].includes(frame.phase))
     && (Object.hasOwn(TRACKS,frame.gesture)||LEGACY_ACTIONS.includes(frame.gesture));
-  if(hasSession||activity||scheduledKey){
-    const key=scheduled?`${activity?'idle-'+activity.id:director.active.id}:${frame.phase}:${frame.beat||0}:${frame.gesture}`:'';
+  if(hasSession||activity||celebration||scheduledKey){
+    const key=scheduled?`${celebration?'win-'+celebration.id:activity?'idle-'+activity.id:director.active.id}:${frame.phase}:${celebration?0:frame.beat||0}:${frame.gesture}`:'';
     if(key!==scheduledKey){
       if(scheduledKey.startsWith('idle-')&&!activity){this.currentEmotion='idle';this.emotionResetTimer=0;}
       this.actionMode=null;this.actionTimer=0;this.waveTimer=0;
@@ -184,6 +199,14 @@ controller.update = function(dt, elapsed) {
     written.clear();
     const motionElapsed=scheduled&&LEGACY_ACTIONS.includes(frame.gesture)?frame.poseTime:elapsed-dt+(i+1)*step;
     originalUpdate(step,motionElapsed,frame.speaking,frame.speaking?audioRms:0);
+    const jumping=this.actionMode==='victory_jump';
+    const body=jumping?jumpBody(scheduled?frame.poseTime:this.actionDuration-this.actionTimer,scheduled?frame.poseDuration:this.actionDuration):{height:0,crouch:0};
+    if(jumping&&this.bones.Shibahu_Hips)this.bones.Shibahu_Hips.position.y=this.basePositions.Shibahu_Hips.y+body.height;
+    // Knee compression precedes takeoff and cushions each landing. Relax it
+    // afterward as the original controller does not write the leg joints.
+    for(const side of ['Right','Left'])for(const [part,amount]of [['UpLeg',-.10],['Leg',.22],['Foot',-.05]]){
+      const name=`Shibahu_${side}${part}`;if(this.bones[name])originalBone(name,amount*body.crouch,0,0,step,12);
+    }
   }
   const kissing=this.actionMode==='flirt_kiss';
   if(kissing&&!kissWasActive)heartsSent=false;
@@ -191,14 +214,17 @@ controller.update = function(dt, elapsed) {
   kissWasActive=kissing;
   framing.update(dt);
   window.avatarLabState = { ...frame, id: director.active?.id || null, time: director.active?.time || 0, rms: audioRms,
-    idle:activity?.gesture||null,idleMood:idle.mood(),framing:framing.state };
+    idle:activity?.gesture||null,idleMood:idle.mood(),celebration:celebration?.key||null,celebrationId:celebration?.id||null,framing:framing.state };
 };
 function receive(m) {
-  if(m.type==='context'){idle.setContext(m.context);return;}
+  if(m.type==='context'){idle.setContext(m.context);if(celebrations.context(m.context))idle.interrupt(5);return;}
   if(m.type==='idle-enabled'){idle.enable(m.enabled);return;}
   if(m.type==='framing'){window.winkySetScale(m.scale);return;}
   if (m.type === 'begin') {
-    const a = director.begin(m.event);
+    const event=normalizeEvent(m.event);
+    const tradeResult=['TRADE_WIN','TRADE_LOSS','TRADE_REFUND'].includes(event.category)&&tradeKey(event.session_id,event.trade_seq);
+    if(tradeResult&&!director.seen.has(event.id))celebrations.speech(event);
+    const a = director.begin(tradeResult&&event.category==='TRADE_WIN'?{...event,gesture:'listen',result_reacted:true}:event);
     if (!a) return;
     idle.speech(a.profile,a.gesture);
     hasSession = true;
@@ -206,7 +232,7 @@ function receive(m) {
     document.querySelectorAll('.winky-lab-heart').forEach(h=>h.remove());
     controller.actionMode = null; controller.actionTimer = 0; controller.waveTimer = 0;
     // Expressions don't invoke body actions in the candidate.
-    const emotion=normalizeEvent(m.event).emotion;
+    const emotion=event.emotion;
     controller.currentEmotion = ['idle','happy','neutral','thinking','excited','blush','wink','surprised'].includes(emotion) ? emotion : 'happy';
     controller.emotionResetTimer = 4;
   } else if (m.type === 'clock' && director.active?.id === m.id) {
@@ -216,6 +242,7 @@ function receive(m) {
     controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
   } else if (m.type === 'legacy' || m.type === 'preview') {
+    celebrations.cancel();
     idle.interrupt(5);
     director.cancel(); audioRms = 0;hasSession=false;scheduledKey='';
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
@@ -224,6 +251,7 @@ function receive(m) {
     else controller.triggerAction(m.action, 3.2);
   } else if (m.type === 'cancel') {
     if(m.id&&director.active?.id!==m.id)return;
+    celebrations.cancel();
     idle.interrupt(4);
     director.cancel();hasSession=false;scheduledKey='';audioRms=0;controller.speechHoldTimer=0;
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
@@ -234,4 +262,4 @@ function receive(m) {
 window.addEventListener('message',e=>{
   if(e.origin===location.origin&&e.source===parent&&e.data?.scope==='winky-avatar-lab')receive(e.data);
 });
-window.avatarLabDirector=director;window.avatarLabIdle=idle;window.avatarLabReceive=receive;
+window.avatarLabDirector=director;window.avatarLabIdle=idle;window.avatarLabReceive=receive;window.avatarLabCelebrations=celebrations;

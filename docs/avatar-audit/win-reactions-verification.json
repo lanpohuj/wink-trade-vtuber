@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-15",
+  "scope": "avatar_only_simulated_results_no_broker_or_TikTok_cycle",
+  "node_tests": 31,
+  "python_tests": 102,
+  "browser": {
+    "checks": 160,
+    "framing_cases": 60,
+    "max_skin_ndc": 0.9564795739012063,
+    "rounds": [
+      "hip_groove",
+      "victory_jump",
+      "hand_heart",
+      "neko_paws",
+      "victory_wave",
+      "hip_groove",
+      "victory_wave",
+      "victory_jump",
+      "hand_heart",
+      "neko_paws",
+      "hand_heart",
+      "victory_wave",
+      "victory_jump",
+      "hip_groove",
+      "neko_paws"
+    ],
+    "errors": []
+  },
+  "native": {
+    "samples": 102,
+    "result_motions": {
+      "native-test:1:result": "victory_wave",
+      "native-test:2:result": "hand_heart",
+      "native-test:3:result": "victory_jump",
+      "native-test:4:result": "neko_paws",
+      "native-test:5:result": "hip_groove"
+    },
+    "max_afplay": 1,
+    "speech_and_celebration_overlap": true,
+    "errors": []
+  },
+  "regression_checks": {
+    "native_package": 14,
+    "ru_en_and_original_motions": 17,
+    "synchronization": 15
+  },
+  "protected_files": 30,
+  "protected_mismatches": [],
+  "preview": {
+    "file": "experiments/winky_avatar/.runtime/win-reactions/win-round.mp4",
+    "duration_sec": 23,
+    "frames": 690,
+    "fps": 30,
+    "audio": false
+  }
+}

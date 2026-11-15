@@ -205,5 +205,20 @@ class LiveSpeechTests(unittest.TestCase):
             self.assertEqual(stream_director.context,context)
             self.assertEqual(self.controller.queue_size(),0)
 
+    def test_avatar_result_identity_uses_closed_trade_even_after_next_trade_started(self):
+        from winky.app import WinkyAPI
+        from winky.director import stream_director
+        now=time.time()
+        context={'session_id':'session-A','trade_seq':12,
+                 'last_result':{'seq':11,'outcome':'WIN','closed_at':(now-.4)*1000}}
+        api=WinkyAPI(self.controller,Mock());api._performance_ready=True;api._send_performance=Mock()
+        with patch.object(stream_director,'context',context),patch.object(stream_director,'_last_phase_update',now):
+            api.publish_avatar_context();result=api._send_performance.call_args.args[0]['context']
+        self.assertEqual(result['result_key'],'session-A:11:result')
+        self.assertEqual(result['result_seq'],11)
+        self.assertAlmostEqual(result['result_age_sec'],.4,delta=.2)
+        self.assertEqual(context['trade_seq'],12)
+        self.assertEqual(self.controller.queue_size(),0)
+
 
 if __name__=='__main__':unittest.main()
