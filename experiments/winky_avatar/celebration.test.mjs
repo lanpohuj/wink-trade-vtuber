@@ -40,6 +40,9 @@ test('reaction ends on elapsed visual time independently of a frozen speech cloc
 });
 test('jump has preparation, two flights and landing, with no sustained floating',()=>{
  const heights=Array.from({length:321},(_,i)=>jumpBody(i/100,3.2).height);let flights=0;
- heights.forEach((v,i)=>{if(v>0&&!(heights[i-1]>0))flights++;assert.ok(Number.isFinite(v)&&v<4.4&&v>=-1.11);});
- assert.equal(flights,2);assert.equal(heights[0],0);assert.equal(heights.at(-1),0);assert.ok(heights.some(v=>v<-.9));
+ heights.forEach((v,i)=>{if(v>0&&!(heights[i-1]>0))flights++;assert.ok(Number.isFinite(v)&&v<=7.21&&v>=-2.21);});
+ assert.equal(flights,2);assert.equal(heights[0],0);assert.equal(heights.at(-1),0);assert.ok(heights.some(v=>v<-1.8));
+ const inAir=Array.from({length:761},(_,i)=>jumpBody(i/200,3.8).flightHeight>0);
+ const spans=[];let start=-1;inAir.forEach((yes,i)=>{if(yes&&start<0)start=i;if(!yes&&start>=0){spans.push((i-start)/200);start=-1;}});
+ assert.equal(spans.length,2);assert.ok(spans.every(t=>t>.19&&t<.27),'short small hops, without slow floating');
 });

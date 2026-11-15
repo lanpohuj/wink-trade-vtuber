@@ -5,7 +5,8 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));os.environ
 from winky import app
 from winky.director import stream_director
 FIXED=os.environ.get('WINKY_VERIFY_FIXED_FRAMING')=='1'
-OUT=ROOT/('artifacts/avatar-fixed-framing/native' if FIXED else 'artifacts/avatar-win-reactions/native');OUT.mkdir(parents=True,exist_ok=True)
+EXPANDED=os.environ.get('WINKY_VERIFY_EXPANDED_SURFACE')=='1'
+OUT=ROOT/('artifacts/avatar-expanded-surface/native' if EXPANDED else 'artifacts/avatar-fixed-framing/native' if FIXED else 'artifacts/avatar-win-reactions/native');OUT.mkdir(parents=True,exist_ok=True)
 report={'samples':[],'errors':[],'scope':'isolated_native_simulated_result_existing_recording_muted'}
 original=app.WinkyAPI.attach;closed=threading.Event()
 def attach(self,avatar,panel):
@@ -23,6 +24,8 @@ def attach(self,avatar,panel):
             while not self._performance_ready and time.monotonic()<deadline:time.sleep(.1)
             if not self._performance_ready:raise RuntimeError('avatar not ready')
             self._controller.set_volume(0);self.set_avatar_idle(False);self.set_avatar_scale(1.5)
+            report['window']={'width':avatar.width,'height':avatar.height,'x':avatar.x,'y':avatar.y}
+            report['viewport']=json.loads(avatar.evaluate_js('JSON.stringify({width:innerWidth,height:innerHeight,dpr:devicePixelRatio})'))
             self._controller.enqueue_voice_event({'category':'NARRATE_ENGAGE','lang':'ru','event_id':'native-win-review','ttl_sec':15})
             start=time.monotonic();previous=0;pictures=set()
             while time.monotonic()-start<25:
@@ -48,9 +51,13 @@ results={s['state']['celebration']:s['state']['gesture'] for s in report['sample
 assert len(results)==5 and len(set(results.values()))==5,results
 assert max(s['afplay_count'] for s in report['samples'])<=1
 assert any(s['state'].get('speaking') and s['state'].get('celebration') for s in report['samples'])
-if FIXED:
+if FIXED or EXPANDED:
     for key in ['distance','panX','panY','effectiveScale','requestedScale']:
         values=[s['state']['framing'][key] for s in report['samples']]
         assert max(values)-min(values)<1e-9,(key,min(values),max(values))
-    assert all(s['state']['framing']['mode']=='fixed-motion-envelope' for s in report['samples'])
+    assert all(s['state']['framing']['mode']==('expanded-portrait-surface' if EXPANDED else 'fixed-motion-envelope') for s in report['samples'])
+if EXPANDED:
+    assert report['window']['width']==1000 and report['window']['height']==920,report['window']
+    assert report['viewport']['width']==1000 and report['viewport']['height']==920,report['viewport']
+    assert all(.91<s['state']['framing']['effectiveScale']<.92 for s in report['samples'])
 print(json.dumps({'samples':len(report['samples']),'results':results,'max_afplay':max(s['afplay_count'] for s in report['samples']),'errors':report['errors']}))

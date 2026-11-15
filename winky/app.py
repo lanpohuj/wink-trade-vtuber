@@ -40,6 +40,7 @@ from winky.chat_router import (
 )
 from winky.deepseek import LLMBrain
 from winky.scenarios import ScenarioBook
+from winky.avatar_surface import window_geometry, pointer_in_portrait
 from winky.server import register_winky_callback, start_assets_server
 from winky.tiktok import TikTokConnector
 from winky.tts import EMOTIONS, SpeechController, SpeechItem, compute_rms_chunks
@@ -911,6 +912,21 @@ class WinkyAPI:
             # NSWindowCollectionBehaviorCanJoinAllSpaces (1 << 0) | NSWindowCollectionBehaviorFullScreenAuxiliary (1 << 8)
             ns_window.setCollectionBehavior_((1 << 0) | (1 << 8))
             ns_window.setMovableByWindowBackground_(True)
+            # The added transparent margins must not cover the trader's controls.
+            # Keep the original portrait draggable; pass clicks through its margins.
+            if not getattr(self,'_avatar_pointer_monitor',False):
+                self._avatar_pointer_monitor=True
+                from PyObjCTools import AppHelper
+                def update_pointer():
+                    if not self._avatar_window:return
+                    frame=ns_window.frame();point=AppKit.NSEvent.mouseLocation()
+                    ignore=not pointer_in_portrait(point.x-frame.origin.x,point.y-frame.origin.y)
+                    if bool(ns_window.ignoresMouseEvents())!=ignore:ns_window.setIgnoresMouseEvents_(ignore)
+                def monitor_pointer():
+                    while self._avatar_window:
+                        AppHelper.callAfter(update_pointer)
+                        time.sleep(.05)
+                threading.Thread(target=monitor_pointer,name='winky-avatar-pointer',daemon=True).start()
             logger.info("Нативная прозрачность WKWebView и плавающий уровень применены")
         except Exception:  # noqa: BLE001
             logger.exception("Не удалось применить нативную прозрачность")
@@ -1225,14 +1241,13 @@ def main() -> None:
     screen_w = screen.width if screen else 1728
     screen_h = screen.height if screen else 1117
 
-    avatar_w = 600
-    avatar_h = 720
-    avatar_x = max(0, screen_w - avatar_w - 10)
-    avatar_y = max(0, screen_h - avatar_h)
+    surface = window_geometry(screen_w,screen_h)
+    avatar_w,avatar_h = surface['width'],surface['height']
+    avatar_x,avatar_y = surface['x'],surface['y']
 
     avatar_window = webview.create_window(
         "Winky",
-        url=f"{base_url}/avatar.html?v={int(monotonic() * 1000)}",
+        url=f"{base_url}/avatar.html?portrait_width=600&portrait_height=720&surface_top={surface['top']}&v={int(monotonic() * 1000)}",
         js_api=winky_api,
         width=avatar_w,
         height=avatar_h,

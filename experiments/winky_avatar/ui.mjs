@@ -5,6 +5,14 @@ const catalog=await(await fetch('/sync-catalog.json')).json();
 let context, analyser, samples, event, ready = new Set(), serial = 0, selected, sessionStarted = false, lastTemplate;
 let visualStart=0,visualDuration=0,tailShown=false;
 const post = m => ['baseline', 'candidate'].forEach(id => $(id)?.contentWindow?.postMessage({scope:'winky-avatar-lab', ...m}, location.origin));
+function applyLabSurface(surface){
+  if(!surface)return;const frame=$('candidate');
+  frame.style.width=surface.width+'px';frame.style.height=surface.height+'px';frame.parentElement.style.overflow='auto';
+}
+window.addEventListener('message',e=>{
+  if(e.origin!==location.origin||e.source!==$('candidate')?.contentWindow||e.data?.scope!=='winky-avatar-lab'||e.data.type!=='surface-size')return;
+  applyLabSurface(e.data.surface);
+});
 const option = (value, text) => {const o = document.createElement('option'); o.value=value;o.textContent=text;return o;};
 for(const [id,label] of Object.entries(LABELS)) $('gesture').append(option(id,label));
 for(const name of ['wave','dance','cheer','shy','flirt_kiss','neko_paws','hip_groove','peek_closer']) {
@@ -72,6 +80,7 @@ function tick(){
 categories();tick();
 // A late frame load cannot lose its ready event while the catalog is loading.
 for (const id of ['baseline','candidate']) if($(id).contentWindow.labReady)ready.add(id);
+applyLabSurface($('candidate').contentWindow.winkyFraming?.state?.surface);
 if(ready.size===2){$('play').disabled=false;$('play').textContent='Сравнить на этой фразе';}
 
 // Text templates are shown separately: an absent approved recording never

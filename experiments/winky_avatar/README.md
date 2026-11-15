@@ -129,3 +129,22 @@ WINKY_VERIFY_FIXED_FRAMING=1 .venv/bin/python tools/verify_avatar_wins.py
 ```
 
 Ролик и результаты: `.runtime/fixed-framing`, разбор: `docs/avatar-audit/fixed-framing.md`.
+
+Актуальная версия после замечания о маленьком размере: исходный портрет
+сохранён, сама прозрачная поверхность расширена сверху и по бокам. В лаборатории
+правый iframe расширяется до размера нативной поверхности, доступна прокрутка.
+Две реакции `victory_jump`/`victory_wave` переписаны с IK локтей, мягкими кистями,
+разными фазами рук и короткими прыжками с опорой стоп. Другие движения сохранены.
+
+```bash
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/generate-victory-poses.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-expanded-surface.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-victory-natural.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/export-victory-natural.cjs
+WINKY_VERIFY_EXPANDED_SURFACE=1 .venv/bin/python tools/verify_avatar_wins.py
+```
+
+`generate-victory-poses.cjs` — офлайн-ретаргетинг на замороженном риге; результат
+`victory-poses.mjs` является частью пакета. Старые проверки фиксированного малого
+кадра относятся к своему историческому выпуску. Актуальный разбор:
+`docs/avatar-audit/portrait-natural-v2.md`.

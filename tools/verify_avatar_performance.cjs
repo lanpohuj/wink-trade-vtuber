@@ -5,13 +5,15 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
  const browser=await chromium.launch({headless:true});const report={checks:[],errors:[],states:[]};
  const output=path.join(__dirname,'../artifacts/avatar-live-sync');fs.mkdirSync(output,{recursive:true});
  try{
-  const page=await browser.newPage({viewport:{width:600,height:720}}),requests=[];
+  const page=await browser.newPage({viewport:{width:1000,height:920}}),requests=[];
   page.on('pageerror',e=>report.errors.push(e.message));page.on('request',r=>requests.push(r.url()));
   await page.goto('http://127.0.0.1:8795/avatar.html');await page.waitForFunction(()=>window.winkyPerformance?.ready);
   const check=(label,value)=>{assert.ok(value,label);report.checks.push(label);};
   const send=m=>page.evaluate(m=>winkyPerformance.receive(m),m);
   const state=()=>page.evaluate(()=>winkyPerformance.state);
   check('the native page loads the original avatar and packaged adapter',await page.evaluate(()=>!!vtuber&&winkyPerformance.ready));
+  check('expanded surface preserves the original 600x720 projection density',await page.evaluate(()=>camera.view.fullWidth===600&&camera.view.fullHeight===720&&camera.view.offsetX===-200&&camera.view.offsetY===-200));
+  check('normal close size is restored instead of fitting all motions into the old window',await page.evaluate(()=>winkyFraming.state.effectiveScale>.91&&winkyFraming.state.effectiveScale<.92));
   await send({type:'begin',event:{id:'gift',category:'CHAT_REACTION',chat_kind:'gift',action:'dance',text:'Спасибо за подарок!',duration:6}});
   await send({type:'clock',id:'gift',time:1.5,rms:.7});
   await page.waitForFunction(()=>vtuber.actionMode==='hand_heart');

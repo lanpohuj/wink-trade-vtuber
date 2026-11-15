@@ -5,11 +5,12 @@ import {REST, JOINTS, TRACKS, FACE_MOODS, sampleTrack, actionWeight} from './mot
 import {IdleDirector} from './idle.mjs';
 import {installFraming} from './framing.mjs';
 import {CelebrationDirector,tradeKey} from './celebration.mjs';
-import {jumpBody} from './victory-motions.mjs';
+import {jumpBody,createJumpLegs} from './victory-motions.mjs';
 export function installPerformance(controller) {
 const director = new Director();
 const idle=new IdleDirector(),framing=installFraming(controller);
 const celebrations=new CelebrationDirector();
+const jumpLegs=createJumpLegs(controller,THREE);
 const originalUpdate = controller.update.bind(controller);
 const originalBone = controller.lerpBoneOffset.bind(controller);
 let frame = {gesture: 'listen', weight: 0, speaking: false};
@@ -202,12 +203,16 @@ controller.update = function(dt, elapsed) {
     originalUpdate(step,motionElapsed,frame.speaking,frame.speaking?audioRms:0);
     const jumping=this.actionMode==='victory_jump';
     const body=jumping?jumpBody(scheduled?frame.poseTime:this.actionDuration-this.actionTimer,scheduled?frame.poseDuration:this.actionDuration):{height:0,crouch:0};
-    if(jumping&&this.bones.Shibahu_Hips)this.bones.Shibahu_Hips.position.y=this.basePositions.Shibahu_Hips.y+body.height;
+    if(this.bones.Shibahu_Hips){
+      this.bones.Shibahu_Hips.position.x=this.basePositions.Shibahu_Hips.x+(jumping?body.shiftX:0);
+      if(jumping)this.bones.Shibahu_Hips.position.y=this.basePositions.Shibahu_Hips.y+body.height;
+    }
     // Knee compression precedes takeoff and cushions each landing. Relax it
     // afterward as the original controller does not write the leg joints.
     for(const side of ['Right','Left'])for(const [part,amount]of [['UpLeg',-.10],['Leg',.22],['Foot',-.05]]){
       const name=`Shibahu_${side}${part}`;if(this.bones[name])originalBone(name,amount*body.crouch,0,0,step,12);
     }
+    if(jumping)jumpLegs(body);
   }
   const kissing=this.actionMode==='flirt_kiss';
   if(kissing&&!kissWasActive)heartsSent=false;

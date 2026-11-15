@@ -1,0 +1,214 @@
+{
+  "scope": "local_avatar_only",
+  "source_image": {
+    "size": [
+      1876,
+      1872
+    ],
+    "sha256": "358bb8ac4bef437627c9322dfd33fe9025c3270c25b3ba748a37fe0be3467334"
+  },
+  "normal_size": {
+    "before_effective_scale": 0.5830776911781929,
+    "restored_effective_scale": 0.9167401313495536,
+    "restored_ratio": 1.5722435367011685
+  },
+  "python_tests": 105,
+  "node_tests": 31,
+  "browser": {
+    "checks": 167,
+    "cases": 45,
+    "max_camera_or_scale_drift": 0,
+    "max_skin_ndc": 0.8756770178718335,
+    "projection": {
+      "rows": [
+        {
+          "old": [
+            271.07462412221156,
+            137.95995376940093
+          ],
+          "expanded": [
+            471.07462412221156,
+            337.95995376940095
+          ]
+        },
+        {
+          "old": [
+            328.9253758777884,
+            137.95995376940093
+          ],
+          "expanded": [
+            528.9253758777884,
+            337.95995376940095
+          ]
+        },
+        {
+          "old": [
+            300,
+            339.32784476367897
+          ],
+          "expanded": [
+            500,
+            539.3278447636791
+          ]
+        }
+      ],
+      "framing": {
+        "requestedScale": 1.5,
+        "effectiveScale": 0.9167401313495536,
+        "limited": false,
+        "distance": 314.31,
+        "panX": 0,
+        "panY": -4.5,
+        "surface": {
+          "width": 1000,
+          "height": 920,
+          "portraitWidth": 600,
+          "portraitHeight": 720,
+          "left": 200,
+          "top": 200,
+          "right": 200,
+          "bottom": 0
+        },
+        "mode": "expanded-portrait-surface"
+      }
+    },
+    "errors": []
+  },
+  "mechanics": {
+    "checks": 10,
+    "motions": [
+      {
+        "action": "victory_jump",
+        "maxWristAngle": 0.054612447578006054,
+        "maxHandSpeed": 186.75154480561548,
+        "maxAsymmetry": 15.551660751085578,
+        "maxGroundError": 2.570260057792371e-13,
+        "maxOutward": 30.100379121696015
+      },
+      {
+        "action": "victory_wave",
+        "maxWristAngle": 0.12124139946280618,
+        "maxHandSpeed": 184.33672492135494,
+        "maxAsymmetry": 15.5530229157132,
+        "maxGroundError": 0,
+        "maxOutward": 30.183099253271344
+      }
+    ],
+    "errors": []
+  },
+  "native": {
+    "samples": 105,
+    "window": {
+      "width": 1000.0,
+      "height": 920.0,
+      "x": 728,
+      "y": 136
+    },
+    "viewport": {
+      "width": 1000,
+      "height": 920,
+      "dpr": 2
+    },
+    "camera_ranges": {
+      "distance": [
+        314.31,
+        314.31
+      ],
+      "effectiveScale": [
+        0.9167401313495536,
+        0.9167401313495536
+      ],
+      "requestedScale": [
+        1.5,
+        1.5
+      ],
+      "panY": [
+        -4.5,
+        -4.5
+      ]
+    },
+    "max_afplay": 1,
+    "speech_and_celebration_overlap": true,
+    "errors": [],
+    "pixels": [
+      {
+        "file": "result-1.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 552078,
+        "near_black_fraction": 0.0010523875249511844
+      },
+      {
+        "file": "result-2.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 645651,
+        "near_black_fraction": 0.002485863105609687
+      },
+      {
+        "file": "result-3.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 631065,
+        "near_black_fraction": 0.0017731929357514677
+      },
+      {
+        "file": "result-4.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 641104,
+        "near_black_fraction": 0.002623599291222641
+      },
+      {
+        "file": "result-5.png",
+        "size": [
+          2000,
+          1840
+        ],
+        "alpha_range": [
+          0,
+          255
+        ],
+        "visible_pixels": 540215,
+        "near_black_fraction": 0.0014531251446183464
+      }
+    ]
+  },
+  "regression_checks": {
+    "native_package": 16,
+    "old_motions_and_RU_EN": 17
+  },
+  "protected_files": 22,
+  "protected_mismatches": [],
+  "preview": {
+    "file": "experiments/winky_avatar/.runtime/victory-natural/victory-natural.mp4",
+    "fps": 60,
+    "frames": 1008,
+    "duration_sec": 16.8,
+    "audio": false
+  }
+}

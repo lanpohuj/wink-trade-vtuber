@@ -16,11 +16,11 @@ def main():
     source+='return {receive,director,get state(){return window.avatarPerformanceState;}};\n}\n'
     source='// Reviewed visual result reactions, close framing and contextual idle.\n'+source
     (OUT/'controller.mjs').write_text(source)
-    for name in ['policy','sync-event','motion-tracks','extra-motions','framing','idle','celebration','victory-motions']:
+    for name in ['policy','sync-event','motion-tracks','extra-motions','framing','idle','celebration','victory-motions','victory-poses']:
         (OUT/(name+'.mjs')).write_bytes((LAB/(name+'.mjs')).read_bytes())
     release=json.loads((OUT/'release.json').read_text())
     release['source_revision']=subprocess.check_output(['git','rev-parse','--short','HEAD'],cwd=ROOT,text=True).strip()
-    release.update(feature_revision='fixed-motion-framing-v1',notes='Fixed camera over the full motion envelope; no pose-driven zoom or camera following. Five-motion WIN bag preserved.')
+    release.update(feature_revision='expanded-portrait-natural-v2',notes='Restored close portrait in an expanded transparent viewport; asymmetric IK arm paths, neutral wrists, planted-foot anticipation/landing and short ballistic hops. No animation-driven camera changes.')
     release['files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.mjs'))}
     (OUT/'release.json').write_text(json.dumps(release,ensure_ascii=False,indent=2)+'\n')
     print('Packaged',len(release['files']),'reviewed modules')
