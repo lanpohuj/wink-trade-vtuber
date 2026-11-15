@@ -389,8 +389,8 @@ def generate_realistic_candles(pair: str, direction: str, family: str = "TREND_P
         body_bot = min(open_val, close_val)
         body_size = body_top - body_bot
 
-        high_val = body_top + body_size * (0.25 + ((i * 7) % 5) * 0.14)
-        low_val = body_bot - body_size * (0.25 + ((i * 11) % 5) * 0.14)
+        high_val = body_top + body_size * (0.20 + ((i * 7) % 5) * 0.05)
+        low_val = body_bot - body_size * (0.20 + ((i * 11) % 5) * 0.05)
 
         candles.append(
             CandleOHLC(

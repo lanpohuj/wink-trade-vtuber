@@ -686,8 +686,8 @@ function generateClientRealisticCandles(pair = "AUD/CAD OTC", duration = "30s", 
     const bodyBot = Math.min(open, close);
     const bodySize = bodyTop - bodyBot;
 
-    const high = bodyTop + bodySize * (0.25 + ((i * 7) % 5) * 0.14);
-    const low = bodyBot - bodySize * (0.25 + ((i * 11) % 5) * 0.14);
+    const high = bodyTop + bodySize * (0.20 + ((i * 7) % 5) * 0.05);
+    const low = bodyBot - bodySize * (0.20 + ((i * 11) % 5) * 0.05);
 
     candles.push({
       open: Number(open.toFixed(4)),
@@ -702,50 +702,49 @@ function generateClientRealisticCandles(pair = "AUD/CAD OTC", duration = "30s", 
 
 function drawRealisticCandleChart(canvas, candles) {
   if (!canvas || !candles || !candles.length) return;
-  const rect = canvas.getBoundingClientRect();
-  const width = rect.width || 320;
-  const height = (rect.height && rect.height >= 50) ? rect.height : 195;
+  const cssWidth = canvas.clientWidth || (canvas.getBoundingClientRect() && canvas.getBoundingClientRect().width) || 300;
+  const cssHeight = 148;
   const dpr = window.devicePixelRatio || 2;
 
-  canvas.width = Math.round(width * dpr);
-  canvas.height = Math.round(height * dpr);
+  canvas.width = Math.round(cssWidth * dpr);
+  canvas.height = Math.round(cssHeight * dpr);
 
   const ctx = canvas.getContext("2d");
   ctx.scale(dpr, dpr);
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, cssWidth, cssHeight);
 
   // Subtle 5x4 grid
   ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
   ctx.lineWidth = 1;
   const gridCols = 5;
-  const gridRows = 5;
+  const gridRows = 4;
   for (let c = 1; c < gridCols; c++) {
-    const gx = Math.round((width / gridCols) * c) + 0.5;
+    const gx = Math.round((cssWidth / gridCols) * c) + 0.5;
     ctx.beginPath();
     ctx.moveTo(gx, 0);
-    ctx.lineTo(gx, height);
+    ctx.lineTo(gx, cssHeight);
     ctx.stroke();
   }
   for (let r = 1; r < gridRows; r++) {
-    const gy = Math.round((height / gridRows) * r) + 0.5;
+    const gy = Math.round((cssHeight / gridRows) * r) + 0.5;
     ctx.beginPath();
     ctx.moveTo(0, gy);
-    ctx.lineTo(width, gy);
+    ctx.lineTo(cssWidth, gy);
     ctx.stroke();
   }
 
-  // 12px top/bottom padding to utilize 85%+ canvas height
+  // 16% top/bottom padding (~24px each) for 68% middle breathing room
   const minLow = Math.min(...candles.map((c) => c.low));
   const maxHigh = Math.max(...candles.map((c) => c.high));
   const rawRange = maxHigh - minLow || 0.0001;
 
-  const topPadding = 12;
-  const botPadding = 12;
-  const usableHeight = height - topPadding - botPadding;
+  const topPadding = Math.round(cssHeight * 0.16);
+  const botPadding = Math.round(cssHeight * 0.16);
+  const usableHeight = cssHeight - topPadding - botPadding;
 
   const paddingLeft = 8;
   const paddingRight = 10;
-  const usableWidth = width - paddingLeft - paddingRight;
+  const usableWidth = cssWidth - paddingLeft - paddingRight;
 
   const count = candles.length;
   const stepX = usableWidth / count;
@@ -753,7 +752,7 @@ function drawRealisticCandleChart(canvas, candles) {
 
   function getY(val) {
     const norm = (val - minLow) / rawRange;
-    return height - botPadding - norm * usableHeight;
+    return cssHeight - botPadding - norm * usableHeight;
   }
 
   candles.forEach((c, i) => {
