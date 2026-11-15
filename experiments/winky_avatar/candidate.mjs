@@ -1,13 +1,18 @@
 import {Director} from './policy.mjs';
 import {LEGACY_ACTIONS,normalizeEvent} from './sync-event.mjs';
 import {REST, JOINTS, TRACKS, FACE_MOODS, sampleTrack, actionWeight} from './motion-tracks.mjs';
+import {IdleDirector} from './idle.mjs';
+import {installFraming} from './framing.mjs';
 const director = new Director();
 const controller = window.vtuber;
+const idle=new IdleDirector(),framing=installFraming(controller);
 const originalUpdate = controller.update.bind(controller);
 const originalBone = controller.lerpBoneOffset.bind(controller);
 let frame = {gesture: 'listen', weight: 0, speaking: false};
 let audioRms = 0, hasSession = false;
 let scheduledKey='';
+let internalTrigger=false,manualUntil=0;
+let lastIdleId=0;
 const ease = x => {x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);};
 // Calibrated on the frozen FBX: each thumb has its own rest frame. Approximate
 // terminal thumb points now reach the outside of the index knuckle (.10/.22 cm).
@@ -27,9 +32,10 @@ function poseQuaternion(pose,alias){
   cache[alias]=q;return q;
 }
 const originalWave=controller.wave.bind(controller);
-controller.wave=function(duration=3.2){originalWave();this.labWaveDuration=duration;this.waveTimer=duration;};
+controller.wave=function(duration=3.2){if(!internalTrigger){idle.interrupt(duration+1.5);manualUntil=idle.time+duration+1.5;scheduledKey='';}originalWave();this.labWaveDuration=duration;this.waveTimer=duration;};
 const originalAction=controller.triggerAction.bind(controller);
 controller.triggerAction=function(action,duration=3.2){
+  if(!internalTrigger){idle.interrupt(duration+1.5);manualUntil=idle.time+duration+1.5;scheduledKey='';}
   originalAction(action,duration);
   if(FACE_MOODS[action]){this.currentEmotion=FACE_MOODS[action];this.emotionResetTimer=duration;}
 };
@@ -84,6 +90,7 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
     if (arm) {
       // A speaking flag never lifts either arm. Gestures have a separate envelope.
       let pose = name.endsWith('ForeArm') ? [0, -.16, 0] : name.endsWith('Arm') ? [0, 0, .04] : [0, 0, 0];
+      if(name.endsWith('ForeArm'))pose[1]+=.035*Math.sin(idle.time*1.1+(side==='Right'?0:1.4));
       const explaining = frame.gesture === `explain_${side.toLowerCase()}`;
       if (explaining) {
         // Deliberately small prototype: use the existing rig's safe low-arm range.
@@ -94,10 +101,11 @@ controller.lerpBoneOffset = function(bone, tx, ty, tz, dt, speed = 8, maybeSpeed
     }
     if (name === 'Shibahu_Head' || name === 'Shibahu_Neck') {
       const share = name.endsWith('Head') ? .6 : .4;
-      if (frame.gesture === 'nod') target[0] += Math.sin((director.active?.time || 0) * 5) * .10 * w * share;
+      const gestureTime=frame.poseTime??director.active?.time??0;
+      if (frame.gesture === 'nod') target[0] += Math.sin(gestureTime * 5) * .10 * w * share;
       if (frame.gesture === 'tilt') { target[2] += .14 * w * share; target[1] += .06 * w * share; }
       if (frame.gesture === 'bow') target[0] += .16 * w * share;
-      if (frame.gesture === 'joy') target[2] += Math.sin((director.active?.time || 0) * 4) * .08 * w * share;
+      if (frame.gesture === 'joy') target[2] += Math.sin(gestureTime * 4) * .08 * w * share;
     }
     if (/^Shibahu_Spine[12]?$/.test(name) && frame.gesture === 'bow') target[0] += .035 * w;
   }
@@ -123,21 +131,36 @@ controller.smoothSetMorph=function(name,target,dt,speed=20){
     if(['face_mesh1','face_mesh3','face_mesh6','face_mesh4_2'].includes(name))target=0;
     if(name==='face_mesh9')target=puckered;
   }
+  if(!frame.speaking&&['hip_groove','neko_paws'].includes(mode)&&name==='face_mesh1')target=.08;
+  if(frame.phase==='idle'&&name==='face_mesh1'&&!['flirt_kiss','quiet_laugh'].includes(mode))target=.08;
   return originalMorph(name,target,dt,speed);
 };
 controller.update = function(dt, elapsed) {
   dt = Math.max(0, Math.min(.5, dt));
   frame = director.frame(dt);
+  const activity=idle.tick(dt,{speech:!!director.active,manual:idle.time<manualUntil});
+  if(activity){
+    frame={gesture:activity.gesture,weight:ease(activity.time/.5)*ease((activity.duration-activity.time)/.7),speaking:false,
+      phase:'idle',profile:activity.mood,poseTime:activity.time,poseDuration:activity.duration,activityId:activity.id};
+    if(activity.id!==lastIdleId){
+      lastIdleId=activity.id;this.currentEmotion=activity.mood==='playful'?'happy':'neutral';
+      this.emotionResetTimer=activity.duration;
+    }
+  }
   if (hasSession && !frame.speaking) this.speechHoldTimer = 0;
-  const scheduled=hasSession&&director.active&&['during','tail'].includes(frame.phase)
+  const scheduled=(activity||hasSession&&director.active&&['during','tail'].includes(frame.phase))
     && (Object.hasOwn(TRACKS,frame.gesture)||LEGACY_ACTIONS.includes(frame.gesture));
-  if(hasSession){
-    const key=scheduled?`${director.active.id}:${frame.phase}:${frame.gesture}`:'';
+  if(hasSession||activity||scheduledKey){
+    const key=scheduled?`${activity?'idle-'+activity.id:director.active.id}:${frame.phase}:${frame.beat||0}:${frame.gesture}`:'';
     if(key!==scheduledKey){
+      if(scheduledKey.startsWith('idle-')&&!activity){this.currentEmotion='idle';this.emotionResetTimer=0;}
       this.actionMode=null;this.actionTimer=0;this.waveTimer=0;
+      this.currentEmotion=activity?'idle':this.currentEmotion;
       if(key){
+        internalTrigger=true;
         if(frame.gesture==='wave')this.wave(frame.poseDuration);
         else this.triggerAction(frame.gesture,frame.poseDuration);
+        internalTrigger=false;
       }
       scheduledKey=key;
     }
@@ -166,14 +189,18 @@ controller.update = function(dt, elapsed) {
   if(kissing&&!kissWasActive)heartsSent=false;
   if(kissing&&!heartsSent && this.actionDuration-this.actionTimer>=1.12){sendHearts();heartsSent=true;}
   kissWasActive=kissing;
-  window.avatarLabState = { ...frame, id: director.active?.id || null, time: director.active?.time || 0, rms: audioRms };
+  framing.update(dt);
+  window.avatarLabState = { ...frame, id: director.active?.id || null, time: director.active?.time || 0, rms: audioRms,
+    idle:activity?.gesture||null,idleMood:idle.mood(),framing:framing.state };
 };
-window.addEventListener('message', e => {
-  if (e.origin !== location.origin || e.source !== parent || e.data?.scope !== 'winky-avatar-lab') return;
-  const m = e.data;
+function receive(m) {
+  if(m.type==='context'){idle.setContext(m.context);return;}
+  if(m.type==='idle-enabled'){idle.enable(m.enabled);return;}
+  if(m.type==='framing'){window.winkySetScale(m.scale);return;}
   if (m.type === 'begin') {
     const a = director.begin(m.event);
     if (!a) return;
+    idle.speech(a.profile,a.gesture);
     hasSession = true;
     scheduledKey='';
     document.querySelectorAll('.winky-lab-heart').forEach(h=>h.remove());
@@ -189,16 +216,22 @@ window.addEventListener('message', e => {
     controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
   } else if (m.type === 'legacy' || m.type === 'preview') {
+    idle.interrupt(5);
     director.cancel(); audioRms = 0;hasSession=false;scheduledKey='';
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
     kissWasActive=false;heartsSent=false;
     if (m.action === 'wave') controller.wave();
     else controller.triggerAction(m.action, 3.2);
   } else if (m.type === 'cancel') {
+    if(m.id&&director.active?.id!==m.id)return;
+    idle.interrupt(4);
     director.cancel();hasSession=false;scheduledKey='';audioRms=0;controller.speechHoldTimer=0;
     controller.actionMode=null;controller.actionTimer=0;controller.waveTimer=0;
     controller.currentEmotion='idle';controller.emotionResetTimer=0;
     document.querySelectorAll('.winky-lab-heart').forEach(h=>h.remove());
   }
+}
+window.addEventListener('message',e=>{
+  if(e.origin===location.origin&&e.source===parent&&e.data?.scope==='winky-avatar-lab')receive(e.data);
 });
-window.avatarLabDirector = director;
+window.avatarLabDirector=director;window.avatarLabIdle=idle;window.avatarLabReceive=receive;

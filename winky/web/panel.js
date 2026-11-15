@@ -935,6 +935,12 @@ function applyAvatarY(val, save = true) {
   if (save) localStorage.setItem("winky_avatar_y", val);
 }
 
+const avatarIdleToggle=document.getElementById('avatarIdleToggle');
+avatarIdleToggle?.addEventListener('change',()=>{
+  api()?.set_avatar_idle(avatarIdleToggle.checked);
+  localStorage.setItem('winky_idle_motion_enabled_v1',String(avatarIdleToggle.checked));
+});
+
 avatarScaleSlider?.addEventListener("input", () => {
   applyAvatarScale(Number(avatarScaleSlider.value));
 });
@@ -1271,6 +1277,11 @@ async function init() {
   const savedY = localStorage.getItem("winky_avatar_y");
   if (savedY !== null) {
     applyAvatarY(Number(savedY), false);
+  }
+  if(avatarIdleToggle){
+    const savedIdle=localStorage.getItem('winky_idle_motion_enabled_v1');
+    avatarIdleToggle.checked=savedIdle===null?status.avatar_idle_enabled!==false:savedIdle==='true';
+    api()?.set_avatar_idle(avatarIdleToggle.checked);
   }
 }
 

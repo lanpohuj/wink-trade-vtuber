@@ -57,3 +57,12 @@ test('regular speech includes calm hands and rotates across phrase starts', () =
   assert.ok(gestures.every(g=>!['cheer','dance','wave'].includes(g)));
   for(let i=1;i<gestures.length;i++)assert.notEqual(gestures[i],gestures[i-1]);
 });
+
+test('long phrases have a second contextual gesture on the same media clock',()=>{
+ const d=new Director();d.begin({id:'long',category:'NARRATE_LESSON',duration:8},20);
+ d.clock('long',1);assert.equal(d.frame(.02).beat,0);
+ d.clock('long',5);const f=d.frame(.02);assert.equal(f.beat,1);assert.ok(f.weight>0);assert.ok(['explain_left','nod'].includes(f.gesture));
+ d.clock('long',5,false);for(let n=0;n<60;n++)d.frame(.02);assert.equal(d.frame(.02).poseTime,f.poseTime);
+ assert.equal(d.frame(.02).speaking,false);
+ d.end('long');for(let n=0;n<180;n++)d.frame(1/60);assert.equal(d.active,null);
+});

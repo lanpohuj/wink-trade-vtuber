@@ -1,0 +1,192 @@
+{
+  "scope": "avatar_framing_idle_only",
+  "portrait_preference": "close_portrait_with_complete_arms",
+  "before_hand_clipped_cases": 22,
+  "before_cases": 30,
+  "framing_cases": 156,
+  "framing_checks": 14,
+  "maximum_full_skin_ndc": 0.957498457677516,
+  "depth_failures": 0,
+  "framing_errors": [],
+  "viewports": [
+    [
+      200,
+      720
+    ],
+    [
+      420,
+      720
+    ],
+    [
+      600,
+      720
+    ],
+    [
+      900,
+      720
+    ]
+  ],
+  "scales": [
+    0.5,
+    1,
+    1.5
+  ],
+  "idle": [
+    {
+      "scene": "free",
+      "active_fraction": 0.5766666666666667,
+      "gestures": [
+        "shy",
+        "peek_closer",
+        "neko_paws",
+        "flirt_kiss",
+        "joy",
+        "hip_groove",
+        "tilt"
+      ],
+      "starts": 10
+    },
+    {
+      "scene": "analysis",
+      "active_fraction": 0.5122222222222222,
+      "gestures": [
+        "ponder",
+        "nod",
+        "tilt",
+        "peek_closer"
+      ],
+      "starts": 10
+    },
+    {
+      "scene": "fish",
+      "active_fraction": 0.5322222222222223,
+      "gestures": [
+        "tilt",
+        "peek_closer",
+        "ponder"
+      ],
+      "starts": 10
+    },
+    {
+      "scene": "loss",
+      "active_fraction": 0.5122222222222222,
+      "gestures": [
+        "nod",
+        "peek_closer",
+        "ponder",
+        "tilt"
+      ],
+      "starts": 10
+    }
+  ],
+  "python_tests": 109,
+  "node_tests": 24,
+  "expression_checks": 25,
+  "sync_checks": 15,
+  "legacy_browser_checks": 17,
+  "runtime_browser_checks": 14,
+  "native": {
+    "complete": true,
+    "samples": 109,
+    "errors": [],
+    "max_afplay": 1,
+    "scales_seen": [
+      0.5,
+      1,
+      1.5
+    ],
+    "idle_motions": [
+      "flirt_kiss",
+      "hip_groove",
+      "joy",
+      "nod",
+      "peek_closer",
+      "tilt"
+    ],
+    "recording_samples": 18
+  },
+  "protected_files": 45,
+  "protected_mismatches": [],
+  "original_avatar_sha256": "3656d945879d168c00d9440f279e0c5f93cbac8fbe3edf6df8f6c5e31f59633e",
+  "release": {
+    "source_revision": "e1c33f1",
+    "release": "speech-sync-v1",
+    "files": {
+      "controller.mjs": "7d335f93ac892130613e93f8979840086f0da0050fe8ff96975f5a2aec05d8c7",
+      "extra-motions.mjs": "968832cd927a1de7ed045c433aa84d134548b2790a6e9abb505fd0927211a59d",
+      "framing.mjs": "69b9d993f0c3917a70ac95c9a752e0de111f6fc4378fdd3c51052fda982e09fd",
+      "idle.mjs": "668f2b3ff9321aba2470af8e72f272cc23df6d11519e2a60f22f2adfd2d432ac",
+      "motion-tracks.mjs": "19d488e1979e381de7fd0bb1f7eb65a17765b826f14d73e5c8a0bfc76f95f03e",
+      "policy.mjs": "7e9a3cb650ba48e3ed74a960a9108c22febb0552d42b4b98583718dbc913840c",
+      "sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5"
+    },
+    "notes": "Reviewed gesture snapshot with protected close portrait, contextual idle and secondary speech beats.",
+    "feature_revision": "framing-idle-v1"
+  },
+  "video": "/Users/alansalam/Wink Trade Pocket/experiments/winky_avatar/.runtime/framing-idle/idle-review.mp4",
+  "video_frames": 930,
+  "video_fps": 30,
+  "video_audio": false,
+  "native_pixels": [
+    {
+      "image": "zoom-50",
+      "size": [
+        1200,
+        1440
+      ],
+      "visible_bounds": [
+        339,
+        402,
+        826,
+        1439
+      ],
+      "visible_pixels": 227487,
+      "near_black_fraction": 0.002896868832065129
+    },
+    {
+      "image": "zoom-100",
+      "size": [
+        1200,
+        1440
+      ],
+      "visible_bounds": [
+        204,
+        121,
+        1016,
+        1439
+      ],
+      "visible_pixels": 606301,
+      "near_black_fraction": 0.001497605974590179
+    },
+    {
+      "image": "zoom-150",
+      "size": [
+        1200,
+        1440
+      ],
+      "visible_bounds": [
+        96,
+        103,
+        1031,
+        1439
+      ],
+      "visible_pixels": 611997,
+      "near_black_fraction": 0.0017614465430386096
+    },
+    {
+      "image": "attentive",
+      "size": [
+        1200,
+        1440
+      ],
+      "visible_bounds": [
+        182,
+        110,
+        1033,
+        1439
+      ],
+      "visible_pixels": 617704,
+      "near_black_fraction": 0.0015929959980832244
+    }
+  ]
+}

@@ -180,5 +180,30 @@ class LiveSpeechTests(unittest.TestCase):
         api.report_performance_ready({'release':'speech-sync-v1'})
         api._avatar_js.assert_not_called()
 
+    def test_idle_options_survive_a_phrase_finishing_while_model_loads(self):
+        from winky.app import WinkyAPI
+        api=WinkyAPI(self.controller,Mock());api._send_performance=Mock()
+        api.deliver_performance({'type':'context','context':{'preparing':2}})
+        api.set_avatar_idle(False)
+        api.deliver_performance({'type':'begin','event':{'id':'old'}})
+        api.deliver_performance({'type':'end','id':'old'})
+        api.report_performance_ready({'release':'speech-sync-v1'})
+        messages=[c.args[0] for c in api._send_performance.call_args_list]
+        self.assertEqual([m['type'] for m in messages],['context','idle-enabled'])
+        self.assertFalse(messages[-1]['enabled'])
+
+    def test_avatar_context_reads_received_facts_without_changing_the_trader(self):
+        from winky.app import WinkyAPI
+        from winky.director import stream_director
+        now=time.time();context={'last_result':{'outcome':'LOSS','closed_at':(now-4)*1000}}
+        api=WinkyAPI(self.controller,Mock());api._performance_ready=True;api._send_performance=Mock()
+        with patch.object(stream_director,'context',context),patch.object(stream_director,'_trade_phase','IN_TRADE'),patch.object(stream_director,'_last_phase_update',now):
+            api.publish_avatar_context();message=api._send_performance.call_args.args[0]
+            self.assertEqual(message['type'],'context');self.assertEqual(message['context']['phase'],'IN_TRADE')
+            self.assertTrue(message['context']['connected']);self.assertEqual(message['context']['result'],'LOSS')
+            self.assertAlmostEqual(message['context']['result_age_sec'],4,delta=.2)
+            self.assertEqual(stream_director.context,context)
+            self.assertEqual(self.controller.queue_size(),0)
+
 
 if __name__=='__main__':unittest.main()

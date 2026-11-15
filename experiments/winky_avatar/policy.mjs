@@ -92,8 +92,12 @@ export class Director {
     if(large&&!event.gesture&&!event.promised_action&&now-this.lastLarge<8)gesture='nod';
     if(large&&gesture!=='nod')this.lastLarge=now;
     this.previous = gesture;
+    const secondary={explain:['explain_left','nod'],focus:['nod','tilt'],analysis:['tilt','nod'],
+      reassure:['tilt','nod'],engage:['joy','tilt'],celebrate:['joy','nod']}[profile]||['tilt','nod'];
+    const speechDuration=Math.max(.8,Number(event.duration)||3);
     this.active = { id: event.id, profile, gesture, time: 0, duration: Math.min(3.2, Math.max(.8, Number(event.duration) || 3)),
-      start:.12,deferred:gesture==='flirt_kiss',ended:false,playing:true,tailTime:0,source:event.source||'',text:event.text };
+      start:.12,deferred:gesture==='flirt_kiss',ended:false,playing:true,tailTime:0,source:event.source||'',text:event.text,
+      secondary:speechDuration>=6.4?{gesture:secondary[index%secondary.length],start:4.3,duration:Math.min(2.5,speechDuration-4.5)}:null };
     return this.active;
   }
   clock(id, time, playing=true) { if (this.active && this.active.id === id && Number.isFinite(time)) {this.active.time = Math.max(0, time);this.active.playing=playing;} }
@@ -107,9 +111,11 @@ export class Director {
       a.release *= Math.exp(-Math.max(0, Math.min(.5, dt)) * 10);
       if (a.release < .001) { this.active = null; return { gesture: 'listen', weight: 0, speaking: false }; }
     }
-    const time=Math.max(0,a.time-a.start),gesture=a.deferred?'tilt':a.gesture;
-    return { gesture,plannedGesture:a.gesture, weight:a.ended&&a.deferred?0:envelope(time,a.duration)*(a.ended?a.release:1),
-      speaking:!a.ended&&a.playing,profile:a.profile,phase:a.ended?'release':a.time<a.start?'before':time<a.duration?'during':'after',poseTime:Math.min(a.duration,time),poseDuration:a.duration };
+    const beat=a.secondary&&a.time>=a.secondary.start?a.secondary:{gesture:a.deferred?'tilt':a.gesture,start:a.start,duration:a.duration};
+    const time=Math.max(0,a.time-beat.start),gesture=beat.gesture;
+    return { gesture,plannedGesture:a.gesture, weight:a.ended&&a.deferred?0:envelope(time,beat.duration)*(a.ended?a.release:1),
+      speaking:!a.ended&&a.playing,profile:a.profile,phase:a.ended?'release':a.time<beat.start?'before':time<beat.duration?'during':'after',
+      poseTime:Math.min(beat.duration,time),poseDuration:beat.duration,beat:beat===a.secondary?1:0 };
   }
 }
 export function performancePlan(input){

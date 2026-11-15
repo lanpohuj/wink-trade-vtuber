@@ -142,6 +142,7 @@ window.addEventListener('message', e => {
  if(m.type==='begin'){window.winkySpeak('',m.event.emotion||'happy',0);}
  if(m.type==='clock')window.setAvatarSpeechVolume(m.rms);
  if(m.type==='end')window.setAvatarSpeechVolume(0);
+ if(m.type==='framing')window.winkySetScale(m.scale);
  if(m.type==='legacy')m.action==='wave'?window.winkyWave():window.winkyTriggerAction(m.action,3.2);
  if(m.type==='cancel'){vtuber.actionMode=null;vtuber.actionTimer=0;vtuber.waveTimer=0;vtuber.speechHoldTimer=0;vtuber.currentEmotion='idle';window.setAvatarSpeechVolume(0);}
  if(m.type==='park'){vtuber.actionMode=null;vtuber.actionTimer=0;vtuber.waveTimer=0;vtuber.speechHoldTimer=0;vtuber.currentEmotion='idle';vtuber.idleFlirtTimer=Infinity;window.setAvatarSpeechVolume(0);}
@@ -155,7 +156,7 @@ parent.postMessage({scope:'winky-avatar-lab',type:'ready',candidate:CANDIDATE},l
             path = self.server.audio[route]
         elif route == '/':
             path = HERE / 'index.html'
-        elif route in ['/candidate.mjs', '/policy.mjs', '/ui.mjs', '/motion-tracks.mjs', '/extra-motions.mjs', '/sync-event.mjs']:
+        elif route in ['/candidate.mjs', '/policy.mjs', '/ui.mjs', '/motion-tracks.mjs', '/extra-motions.mjs', '/sync-event.mjs', '/idle.mjs', '/framing.mjs']:
             path = HERE / route[1:]
         else:
             static = (SNAPSHOT / 'winky/web' / route.lstrip('/')).resolve()

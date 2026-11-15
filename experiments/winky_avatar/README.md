@@ -84,3 +84,20 @@ PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/ver
 ```
 
 Актуальные снимки, полный реестр и экспорт новых движений: `.runtime/revision-4`.
+
+Текущая доработка: `framing.mjs` сохраняет крупный план с полностью видимыми
+руками при масштабе и изменении размеров окна. `idle.mjs` управляет тихой жизнью:
+свободная пауза, внимание к графику, ожидание голоса и поддержка после неудачи.
+В верхней части стенда есть масштаб, переключатель живости и симуляция сцены.
+Это не управление торговлей. В длинных фразах появился второй небольшой жест.
+
+```bash
+node --test experiments/winky_avatar/idle.test.mjs experiments/winky_avatar/policy.test.mjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/review-framing-idle.cjs
+PLAYWRIGHT_MODULE=/absolute/path/to/playwright node experiments/winky_avatar/export-idle.cjs
+# Нативный тест с существующей записью, без синтеза и TikTok:
+.venv/bin/python tools/verify_avatar_framing_idle.py
+```
+
+Результаты и ролик: `.runtime/framing-idle`. Подробности и ограничения —
+`docs/avatar-audit/framing-idle.md`.

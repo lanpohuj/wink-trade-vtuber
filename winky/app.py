@@ -70,6 +70,8 @@ class WinkyAPI:
         self._performance_ready = False
         self._performance_lock = threading.Lock()
         self._pending_performance: dict = {}
+        self._pending_avatar_options: dict = {}
+        self._avatar_idle_enabled = True
         self._chat_history: list[dict] = []
         self._stream_interaction_count = 0
 
@@ -798,6 +800,7 @@ class WinkyAPI:
             ],
             "cta_interval_minutes": self._book.cta.interval_minutes,
             "cta_enabled": self._cta_enabled,
+            "avatar_idle_enabled": self._avatar_idle_enabled,
             "stream_lang": self._chat_router.default_stream_lang if self._chat_router else "ru",
             "lumean": self._controller.get_lumean_settings(),
             "chat": {
@@ -816,6 +819,9 @@ class WinkyAPI:
         with self._performance_lock:
             self._performance_ready = isinstance(payload, dict) and payload.get('release') == 'speech-sync-v1'
             if self._performance_ready:
+                for message in self._pending_avatar_options.values():
+                    self._send_performance(message)
+                self._pending_avatar_options.clear()
                 for key in ('begin','clock'):
                     if key in self._pending_performance:
                         self._send_performance(self._pending_performance[key])
@@ -832,12 +838,36 @@ class WinkyAPI:
                 self._send_performance(message)
                 return
             kind=message.get('type')
-            if kind=='begin':
+            if kind in ('context','idle-enabled'):
+                self._pending_avatar_options[kind]=message
+            elif kind=='begin':
                 self._pending_performance={'begin':message}
             elif kind=='clock' and message.get('id')==self._pending_performance.get('begin',{}).get('event',{}).get('id'):
                 self._pending_performance['clock']=message
             elif kind in ('end','cancel') and (not message.get('id') or message['id']==self._pending_performance.get('begin',{}).get('event',{}).get('id')):
                 self._pending_performance.clear()
+
+    def set_avatar_idle(self, enabled: bool) -> None:
+        self._avatar_idle_enabled = bool(enabled)
+        self.deliver_performance({'type':'idle-enabled','enabled':self._avatar_idle_enabled})
+
+    def publish_avatar_context(self) -> None:
+        """Read the already received context; never send commands to the trader."""
+        from winky.director import stream_director
+        from winky.commentary import seconds
+        now=time.time()
+        with stream_director._lock:
+            age=now-stream_director._last_phase_update
+            phase=stream_director._trade_phase
+            remaining=max(0,stream_director._remaining_sec-max(0,age))
+            volatile=bool(stream_director.context.get('high_volatility'))
+            result=dict(stream_director.context.get('last_result') or {})
+        queue=stream_director.chat_queue_status()
+        context={'phase':phase,'connected':0<=age<=4,'remaining_sec':remaining,'high_volatility':volatile,
+                 'preparing':queue['preparing'],'ready':queue['ready'],
+                 'paused':self._controller.paused,'result':result.get('outcome'),
+                 'result_age_sec':max(0,now-seconds(result.get('closed_at')))}
+        self.deliver_performance({'type':'context','context':context})
 
     def speech_health(self) -> dict:
         from winky.director import stream_director
@@ -846,6 +876,7 @@ class WinkyAPI:
         state.pop('last_blocked', None)
         return {**state, 'performance_ready':self._performance_ready,
                 'chat':stream_director.chat_queue_status(),
+                'idle_enabled':self._avatar_idle_enabled,
                 'tiktok_status':self._tiktok_status if self._tiktok else 'off',
                 'tiktok_detail':getattr(self,'_tiktok_detail',''),
                 'tiktok_username':self._tiktok.username if self._tiktok else settings.TIKTOK_USERNAME}
@@ -1242,6 +1273,7 @@ def main() -> None:
         while True:
             threading.Event().wait(2.0)
             scripts.maybe_reload()
+            api_bridge.publish_avatar_context()
             api_bridge.maybe_say_cta()
             if monotonic() - last_push > 10:
                 api_bridge.push_status()

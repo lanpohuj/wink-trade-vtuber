@@ -4,7 +4,7 @@ const library = await (await fetch('/library.json')).json();
 const catalog=await(await fetch('/sync-catalog.json')).json();
 let context, analyser, samples, event, ready = new Set(), serial = 0, selected, sessionStarted = false, lastTemplate;
 let visualStart=0,visualDuration=0,tailShown=false;
-const post = m => ['baseline', 'candidate'].forEach(id => $(id).contentWindow.postMessage({scope:'winky-avatar-lab', ...m}, location.origin));
+const post = m => ['baseline', 'candidate'].forEach(id => $(id)?.contentWindow?.postMessage({scope:'winky-avatar-lab', ...m}, location.origin));
 const option = (value, text) => {const o = document.createElement('option'); o.value=value;o.textContent=text;return o;};
 for(const [id,label] of Object.entries(LABELS)) $('gesture').append(option(id,label));
 for(const name of ['wave','dance','cheer','shy','flirt_kiss','neko_paws','hip_groove','peek_closer']) {
@@ -57,6 +57,7 @@ function tick(){
     if(visualStart&&time>=visualDuration)finish();
   }else{
     const state=$('candidate').contentWindow.avatarLabState;
+    if(state?.phase==='idle')$('status').textContent='Ожидание · '+(LABELS[state.gesture]||state.gesture);
     if(state?.phase==='tail'){tailShown=true;$('status').textContent='После речи · воздушный поцелуй';}
     else if(tailShown&&!state?.id){tailShown=false;$('status').textContent='Фраза и жест завершены · покой';}
   }
@@ -101,3 +102,13 @@ $('dynamicPlay').onclick=()=>{
 };
 $('coverage').textContent=`${library.length} готовых записей + ${templates.length} текстовых вариантов · ${catalog.routes.length} маршрутов событий`;
 templateOptions();
+
+$('viewScale').oninput=()=>{const scale=Number($('viewScale').value);$('viewScaleValue').textContent=scale+'%';post({type:'framing',scale:scale/100});};
+$('idleEnabled').onchange=()=>post({type:'idle-enabled',enabled:$('idleEnabled').checked});
+function stageContext(){
+ const scene=$('idleScene').value;
+ const context=scene==='analysis'?{connected:true,phase:'ANALYZING'}:scene==='waiting'?{preparing:2}:
+  scene==='loss'?{result:'LOSS',result_age_sec:0}:{};
+ post({type:'context',context});
+}
+$('idleScene').onchange=stageContext;setInterval(stageContext,2000);stageContext();
