@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "approved": true,
+  "order_sha256": "eccb0786cc59c35a67431f72d04198f102978eb8a3a20e92ba3481c75a3ee654",
+  "max_new_usd": 0.1,
+  "baseline_reserved_usd": 3.892319999999997,
+  "instruction": "хорошо продолжай по плану",
+  "recorded_at": "2026-11-16T16:02:48.631162+00:00",
+  "basis": "Owner accepted the corrected first direction take and resumed the previously presented 76-card production plan with the disclosed $0.10 cap. No new texts added.",
+  "previous_quote_estimate_usd": 0.065505,
+  "current_estimate_usd": 0.06147
+}

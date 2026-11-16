@@ -3,8 +3,8 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const {spawn,execFileSync}=require('node:child_process');
 const {once}=require('node:events');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const root=path.resolve(__dirname,'..'),out=path.join(root,'artifacts/winky-autonomous');
-const timeline=JSON.parse(fs.readFileSync(path.join(root,'docs/voice-audit/conversation-v1/autonomous-rehearsal-timeline.json')));
+const root=path.resolve(__dirname,'..'),out=process.env.WINKY_REHEARSAL_OUT||path.join(root,'artifacts/winky-autonomous');
+const timeline=JSON.parse(fs.readFileSync(process.env.WINKY_REHEARSAL_TIMELINE||path.join(root,'docs/voice-audit/conversation-v1/autonomous-rehearsal-timeline.json')));
 const exporting=process.argv.includes('--export');
 fs.mkdirSync(out,{recursive:true});
 
@@ -94,20 +94,20 @@ fs.mkdirSync(out,{recursive:true});
       if(line)c.fillText(line,x,lineY);return lineY+size*1.45;
      };
      text('ВИНКИ · РЕПЕТИЦИЯ',1020,26,260,19,'#bdb5ff');
-     text('Тестовые сообщения и сделки. Существующие MP3. Без живой генерации.',1020,65,260,13,'#b5bfd7');
+     text(review.caption||'Тестовые сообщения и сделки. Существующие MP3. Без живой генерации.',1020,65,260,13,'#b5bfd7');
      const scene=[...review.scenes].reverse().find(s=>s.at<=t);
      text(scene.title,1020,155,260,22);text(scene.description,1020,220,260,16,'#c1c9df');
      const phase={ANALYZING:'Поиск',IN_TRADE:'Наблюдение',RESULT:'Результат',IDLE:'Свободная пауза'}[ctxEvent.phase];
-     text(phase+(ctxEvent.result?' · тестовый WIN':''),1020,350,260,16,'#a1e9cd');
+     text(phase+(ctxEvent.result?' · тестовый '+ctxEvent.result:''),1020,350,260,16,'#a1e9cd');
      const latest=review.clips.filter(c=>c.event.comment&&c.at-2<=t&&t<c.at+c.duration+8).at(-1);
      if(latest){text('Зритель '+latest.event.viewer_key.toUpperCase(),1020,430,260,14,'#bdb5ff');text(latest.event.comment,1020,465,260,18);}
      if(clip){
       c.fillStyle='rgba(11,17,31,.9)';c.fillRect(25,775,945,112);
       text(clip.event.text,45,792,905,21);
-      text(clip.owner_listened?'Принятый голосовой дубль':'Историческая запись · проверка в сцене',1020,660,260,13,'#b5bfd7');
+      text(clip.owner_listened?'Принятый голосовой дубль':review.caption?'Новая запись · оценка в сцене':'Историческая запись · проверка в сцене',1020,660,260,13,'#b5bfd7');
      }
      text('Без фоновой музыки. Оценка режиссуры, переходов и движений.',1020,760,260,13,'#94a3c5');
-     text(`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')} / 6:00`,1020,855,260,17);
+     text(`${Math.floor(t/60)}:${String(Math.floor(t%60)).padStart(2,'0')} / ${Math.floor(review.duration_sec/60)}:${String(review.duration_sec%60).padStart(2,'0')}`,1020,855,260,17);
      c.fillStyle='#a996ff';c.fillRect(0,916,1300*t/review.duration_sec,4);
      return exportCanvas.toDataURL('image/jpeg',.88).split(',')[1];
     };
@@ -118,7 +118,7 @@ fs.mkdirSync(out,{recursive:true});
    let ffError='';ff.stderr.on('data',d=>ffError+=d);ff.stdin.on('error',()=>{});
    const exit=once(ff,'close');
    const frames=timeline.duration_sec*timeline.fps;
-   const snapshots=new Set([6,64,74,93,116,154,159,185,221,292].map(s=>s*timeline.fps));
+   const snapshots=new Set((timeline.snapshot_seconds||[6,64,74,93,116,154,159,185,221,292]).map(s=>s*timeline.fps));
    for(let n=0;n<frames;n++){
     const encoded=await page.evaluate(n=>renderReviewFrame(n),n),data=Buffer.from(encoded,'base64');
     if(snapshots.has(n))fs.writeFileSync(path.join(out,`scene-${n/timeline.fps}.jpg`),data);
@@ -130,8 +130,10 @@ fs.mkdirSync(out,{recursive:true});
     '-c:v','copy','-c:a','aac','-b:a','128k','-t',String(timeline.duration_sec),'-movflags','+faststart',path.join(out,'winky-autonomous-rehearsal.mp4')]);
    report.frames=frames;report.duration_sec=timeline.duration_sec;report.video_exported=true;
    report.stage_samples=await page.evaluate(()=>stageSamples);
-   assert.ok(report.stage_samples.some(s=>s.pending==='rehearsal:2:result'));
-   assert.ok(!report.stage_samples.some(s=>s.celebration==='rehearsal:2:result'),'long explanation must outlast and cancel deferred dance');
+   if(timeline.assert_deferred_win!==false){
+    assert.ok(report.stage_samples.some(s=>s.pending==='rehearsal:2:result'));
+    assert.ok(!report.stage_samples.some(s=>s.celebration==='rehearsal:2:result'),'long explanation must outlast and cancel deferred dance');
+   }
    assert.equal(report.errors.length,0);
   }
   console.log(JSON.stringify({checks:report.checks.length,errors:report.errors,video:report.video_exported}));

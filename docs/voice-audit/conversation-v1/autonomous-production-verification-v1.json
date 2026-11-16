@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "scope": "inactive_ru_production_pilot",
+  "cards": 76,
+  "distinct_texts": 68,
+  "unique_audio": 68,
+  "qc_passed": 75,
+  "qc_pending": [
+    "autonomous_ru_loss_04"
+  ],
+  "initial_paid_requests": 63,
+  "targeted_retake_requests": 8,
+  "spent_this_order_usd": 0.06714,
+  "approved_cap_usd": 0.1,
+  "within_cap": true,
+  "activated": false,
+  "scene_review_accepted": false,
+  "python_tests_passed": 240,
+  "javascript_tests_passed": 35,
+  "staged_model_checks": 10,
+  "stage_errors": [],
+  "full_video_duration_sec": 234,
+  "highlights_duration_sec": 141,
+  "native": {
+    "scope": "isolated_native_WKWebView_muted_native_playhead",
+    "passed": true,
+    "frame_clock_drift_ms": {
+      "median": 50.23,
+      "p95": 55.67,
+      "max": 66.17
+    },
+    "visibility_counts": {
+      "visible": 146,
+      "hidden": 0
+    },
+    "acoustic_latency_measured": false,
+    "agent_listened": false,
+    "records": [
+      {
+        "id": "autonomous_ru_win_02",
+        "sha256": "7cdae2cc3e1e4cdea4bd1160656275518b83b420d7eb1876cf9a6802693c10df",
+        "auditory_verified": false
+      },
+      {
+        "id": "autonomous_ru_bot_03",
+        "sha256": "a485f607ecef52145129d4490b5394696acb3ea89fa67dfc2ba06a41d82e2eed",
+        "auditory_verified": false
+      }
+    ]
+  },
+  "protected_sources": {
+    "winky/web/avatar.js": "3656d945879d168c00d9440f279e0c5f93cbac8fbe3edf6df8f6c5e31f59633e",
+    "assets/voices/commentary-bank.json": "546e8995a245e10340e09965e5f672c137c19616d98b50daf83e1d237b96f3c3",
+    "winky/web/performance/celebration.mjs": "f1c0f15e54ab84e01aada9839ab06713005544ce49d71f0293b2b5044b2f8d81",
+    "winky/web/performance/motion-tracks.mjs": "e1b5279a7c1a88f0bc691b6fc7b7795deb40b49ee24251110a0466d97b74a238",
+    "winky/web/performance/sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5",
+    "winky/web/performance/victory-motions.mjs": "00da419146f0e6512f9a6c3871f5305e6c71d6c396879c6ba4bc9d493555bc99",
+    "winky/web/performance/framing.mjs": "a5dbe4e7a27409de8f503fbe7a18e580f7b4f03a5c1e60c86b92222264fc5823",
+    "winky/web/performance/controller.mjs": "b715db1e0183693de5cbc83074bcc37f0a695a7ee5b6f8d9aa01da1ecbf1d915",
+    "winky/web/performance/README.md": "5270f0edde48504d2cf23c995e632c1395d885077547cb250e28e25f07f9ec5d",
+    "winky/web/performance/victory-poses.mjs": "97f957f0d0202af2dc202c15b51f71b78f7e2ecd49f64f1abca119bce32668b7",
+    "winky/web/performance/release.json": "afc71209eb01a96ea6ab2f784e04cd49db92e2a03754552f70eec35b800ba03e",
+    "winky/web/performance/extra-motions.mjs": "968832cd927a1de7ed045c433aa84d134548b2790a6e9abb505fd0927211a59d",
+    "winky/web/performance/policy.mjs": "37ad49a7971179bafa59c4704ccee097fb7ec23d3972e4498ac81bcb7d3fb06a",
+    "winky/web/performance/idle.mjs": "668f2b3ff9321aba2470af8e72f272cc23df6d11519e2a60f22f2adfd2d432ac"
+  },
+  "full_two_hour_stream_verified": false,
+  "live_tiktok_verified": false,
+  "live_pocket_cycle_verified": false,
+  "en": {
+    "cards": 76,
+    "distinct_texts": 68,
+    "status": "draft",
+    "paid_tts_requests": 0
+  }
+}

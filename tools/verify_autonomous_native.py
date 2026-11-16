@@ -3,6 +3,8 @@ import base64
 from functools import partial
 from http.server import ThreadingHTTPServer
 import json
+import os
+import hashlib
 from pathlib import Path
 import statistics
 import sys
@@ -17,10 +19,10 @@ from winky.speech_rotation import SpeechRotation
 from winky.tts import SpeechController, SpeechItem, compute_rms_chunks
 from verify_autonomous_player import NoSynthesis
 
-OUT=ROOT/'artifacts/winky-autonomous';OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('WINKY_NATIVE_OUT',str(ROOT/'artifacts/winky-autonomous')));OUT.mkdir(parents=True,exist_ok=True)
 ready=threading.Event()
 report={'scope':'isolated_native_WKWebView_muted_native_playhead','samples':[],
-        'errors':[],'synthesis_requests':0,'acoustic_latency_measured':False}
+        'errors':[],'synthesis_requests':0,'acoustic_latency_measured':False,'agent_listened':False}
 
 
 class API:
@@ -66,13 +68,20 @@ def main():
             controller=SpeechController(on_speak=lambda *_:None,engine=NoSynthesis(),on_performance=receive)
             controller.voice_bank.rotation=SpeechRotation(OUT/'isolated-native-history.json')
             controller.set_volume(0)
-            folder=ROOT/'assets/voices/conversation_pilot_v1'
+            folder=Path(os.environ.get('WINKY_NATIVE_BANK',str(ROOT/'assets/voices/conversation_pilot_v1'))).resolve()
+            assert folder.is_relative_to((ROOT/'assets/voices').resolve())
             manifest=json.loads((folder/'manifest.json').read_text())
             records={r['id']:r for rows in manifest['categories'].values() for r in rows}
-            for identity in ('conversation_pilot_ru_01','conversation_pilot_ru_02'):
+            identities=json.loads(os.environ.get('WINKY_NATIVE_RECORDS','["conversation_pilot_ru_01","conversation_pilot_ru_02"]'))
+            assert len(identities)==2
+            preview=os.environ.get('WINKY_NATIVE_QC_PREVIEW')=='1'
+            report.update(qc_preview=preview,records=[])
+            for identity in identities:
                 row=records[identity]
-                assert row['status']=='ready' and row['auditory_verified']
+                assert (row['status']=='ready' and row['auditory_verified']) or (preview and not manifest.get('activated') and row.get('automatic_qc_passed') is True)
                 path=folder/row['file']
+                assert path.resolve().is_relative_to(folder) and hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+                report['records'].append(dict(id=identity,sha256=row['sha256'],auditory_verified=row.get('auditory_verified') is True))
                 item=SpeechItem(text=row['text'],lang='ru',media_path=path,priority=3,generation=0,
                                 source='isolated_native_rehearsal',event={'category':'CHAT_REPLY','max_duration_sec':15})
                 controller._play_media(path,item.text,'happy','ru',compute_rms_chunks(path),item=item)

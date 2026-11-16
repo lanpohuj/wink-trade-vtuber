@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "created_at": "2026-11-16T16:02:21.365454+00:00",
+  "instruction": "хорошо продолжай по плану",
+  "scope": "current_four_direction_takes_after_targeted_fix",
+  "records": [
+    {
+      "id": "autonomous_direction_free_v3_ru_01_retake2_retake3",
+      "sha256": "2f0c0a0dfbd6e932a0eac797df5b84e385596bd413807929f5115f9922190eb7",
+      "accepted": true,
+      "individual_listening_confirmed": true
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_02",
+      "sha256": "1274188edd0f4eb2e1fb2a1b2e54009aea6daabb71f380adbb05292bc3d1cc27",
+      "accepted": true,
+      "individual_listening_confirmed": false
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_03_retake1",
+      "sha256": "4b5cffcbc684d0eab70c23dbf4029dbe2a9a9e6cd00f4c1aea5c4036ec66843e",
+      "accepted": true,
+      "individual_listening_confirmed": false
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_04",
+      "sha256": "bc4c660aa8837f6f13abe48a3f68749c3b6cfa4db687dfae17221d793c0be3e3",
+      "accepted": true,
+      "individual_listening_confirmed": false
+    }
+  ],
+  "note": "The other three are accepted as a set; individual listening is not fabricated."
+}

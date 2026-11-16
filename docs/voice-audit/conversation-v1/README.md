@@ -1,3 +1,5 @@
+Текущий этап: озвучен пилот RU, 76 карточек / 68 текстов; 75 прошли QC, одна отложена. Репетиция и точные границы проверки — в [отчёте пилота](autonomous-production-report-v1.md), оценка — [на странице записей и сцен](autonomous-production-review.html). Активный банк не переключён.
+
 Текущая оценка голоса: [шесть принятых дублей и четыре переделанных направления](autonomous-voice-review-outcome.md). Последняя проба: [8.6 секунды](autonomous-directions-v3.mp3), [страница оценки](autonomous-directions-v3-review.html). Платный заказ удерживается до приёмки.
 
 Условия для принятого состава: [отчёт подключения](autonomous-runtime-report.md), [каталог runtime](autonomous-bank-runtime.json), [виртуальные прогоны](autonomous-context-rehearsal.json).

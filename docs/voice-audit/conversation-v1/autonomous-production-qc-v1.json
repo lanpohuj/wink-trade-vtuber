@@ -1,0 +1,4572 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
+      "expected": "Плюс! Ну, это было вкусно!",
+      "transcript": "Плюс! Ну, это было вкусно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.109,
+        "rms": 0.07236,
+        "peak": 0.33085,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.129,
+        "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Плюс! Ну, это было вкусно!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.5,
+              "word": " Плюс!",
+              "probability": 0.757412314414978
+            },
+            {
+              "start": 1.08,
+              "end": 1.36,
+              "word": " Ну,",
+              "probability": 0.464174747467041
+            },
+            {
+              "start": 1.78,
+              "end": 2.02,
+              "word": " это",
+              "probability": 0.9785959720611572
+            },
+            {
+              "start": 2.02,
+              "end": 2.26,
+              "word": " было",
+              "probability": 0.9053345322608948
+            },
+            {
+              "start": 2.26,
+              "end": 2.88,
+              "word": " вкусно!",
+              "probability": 0.9645349979400635
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_01"
+    },
+    {
+      "sha256": "7cdae2cc3e1e4cdea4bd1160656275518b83b420d7eb1876cf9a6802693c10df",
+      "expected": "Да-а! Вот это приятно!",
+      "transcript": "Да! Вот это приятно!",
+      "similarity": 0.968,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.534,
+        "rms": 0.08462,
+        "peak": 0.33453,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.094,
+        "sha256": "7cdae2cc3e1e4cdea4bd1160656275518b83b420d7eb1876cf9a6802693c10df"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.2,
+          "text": " Да! Вот это приятно!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.5,
+              "word": " Да!",
+              "probability": 0.6745640635490417
+            },
+            {
+              "start": 1.12,
+              "end": 1.42,
+              "word": " Вот",
+              "probability": 0.9230730533599854
+            },
+            {
+              "start": 1.42,
+              "end": 1.62,
+              "word": " это",
+              "probability": 0.9681674838066101
+            },
+            {
+              "start": 1.62,
+              "end": 2.2,
+              "word": " приятно!",
+              "probability": 0.9936622679233551
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0002,
+      "tail_peak": 0.00085,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_02"
+    },
+    {
+      "sha256": "e82f8c6f991af07f7ff2302b9ced027e129711d1f842bd47b1cf19215b73e942",
+      "expected": "Есть! Можно я ещё секунду порадуюсь?",
+      "transcript": "Есть! Можно я еще секунду порадуюсь?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.239,
+        "rms": 0.08118,
+        "peak": 0.35112,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.119,
+        "sha256": "e82f8c6f991af07f7ff2302b9ced027e129711d1f842bd47b1cf19215b73e942"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.12,
+          "text": " Есть! Можно я еще секунду порадуюсь?",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.7,
+              "word": " Есть!",
+              "probability": 0.6892057657241821
+            },
+            {
+              "start": 1.16,
+              "end": 1.56,
+              "word": " Можно",
+              "probability": 0.9784201979637146
+            },
+            {
+              "start": 1.56,
+              "end": 1.78,
+              "word": " я",
+              "probability": 0.8382277488708496
+            },
+            {
+              "start": 1.78,
+              "end": 1.94,
+              "word": " еще",
+              "probability": 0.5655313730239868
+            },
+            {
+              "start": 1.94,
+              "end": 2.42,
+              "word": " секунду",
+              "probability": 0.9844562808672587
+            },
+            {
+              "start": 2.42,
+              "end": 3.12,
+              "word": " порадуюсь?",
+              "probability": 0.9867915064096451
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_03"
+    },
+    {
+      "sha256": "a0284d803e975b1fbf8f090c35632693f171cf10a09ebbdec86e0fc6c5cf502d",
+      "expected": "Ой, хорошо-то как!",
+      "transcript": "Ой, хорошо ты как!",
+      "similarity": 0.923,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.802,
+        "rms": 0.06814,
+        "peak": 0.27378,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.142,
+        "sha256": "a0284d803e975b1fbf8f090c35632693f171cf10a09ebbdec86e0fc6c5cf502d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.5,
+          "text": " Ой, хорошо ты как!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.54,
+              "word": " Ой,",
+              "probability": 0.859777569770813
+            },
+            {
+              "start": 0.7,
+              "end": 1.0,
+              "word": " хорошо",
+              "probability": 0.9582194685935974
+            },
+            {
+              "start": 1.0,
+              "end": 1.28,
+              "word": " ты",
+              "probability": 0.47742611169815063
+            },
+            {
+              "start": 1.28,
+              "end": 1.5,
+              "word": " как!",
+              "probability": 0.8564441204071045
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0015,
+      "tail_peak": 0.00485,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_04"
+    },
+    {
+      "sha256": "25ffd705600ab0632ef01b6299f4f2e7bc9684fb45656b9822384127eb31bc3d",
+      "expected": "Ну вот! Я прямо довольная сейчас.",
+      "transcript": "Ну вот, я прямо довольная сейчас.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.161,
+        "rms": 0.07606,
+        "peak": 0.33699,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.141,
+        "sha256": "25ffd705600ab0632ef01b6299f4f2e7bc9684fb45656b9822384127eb31bc3d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.76,
+          "text": " Ну вот, я прямо довольная сейчас.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.38,
+              "word": " Ну",
+              "probability": 0.698932945728302
+            },
+            {
+              "start": 0.38,
+              "end": 0.68,
+              "word": " вот,",
+              "probability": 0.9187510013580322
+            },
+            {
+              "start": 1.3,
+              "end": 1.58,
+              "word": " я",
+              "probability": 0.9570013880729675
+            },
+            {
+              "start": 1.58,
+              "end": 1.8,
+              "word": " прямо",
+              "probability": 0.8735975623130798
+            },
+            {
+              "start": 1.8,
+              "end": 2.42,
+              "word": " довольная",
+              "probability": 0.9438702861467997
+            },
+            {
+              "start": 2.42,
+              "end": 2.76,
+              "word": " сейчас.",
+              "probability": 0.8758143782615662
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00297,
+      "tail_peak": 0.02221,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_05"
+    },
+    {
+      "sha256": "d0a047cbb66f2fba997795f26d3cb59ded2e7734a559800c39e6124caef740e4",
+      "expected": "А-а, есть! Красиво!",
+      "transcript": "А-а! Есть! Красиво!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.586,
+        "rms": 0.07905,
+        "peak": 0.34683,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.046,
+        "sha256": "d0a047cbb66f2fba997795f26d3cb59ded2e7734a559800c39e6124caef740e4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.46,
+          "text": " А-а! Есть! Красиво!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.4,
+              "word": " А",
+              "probability": 0.6737600564956665
+            },
+            {
+              "start": 0.4,
+              "end": 0.54,
+              "word": "-а!",
+              "probability": 0.5896246805787086
+            },
+            {
+              "start": 0.66,
+              "end": 1.18,
+              "word": " Есть!",
+              "probability": 0.9357702136039734
+            },
+            {
+              "start": 1.66,
+              "end": 2.46,
+              "word": " Красиво!",
+              "probability": 0.9937968651453654
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_06"
+    },
+    {
+      "sha256": "7f6fb7334b38c06796a3029fc68849102e5c0d611fa5c57a8aeab68ae06bf9f6",
+      "expected": "Плюс. М-м, приятно.",
+      "transcript": "Плюс! Ммм, приятно!",
+      "similarity": 0.963,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.142,
+        "rms": 0.07941,
+        "peak": 0.29454,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.102,
+        "sha256": "7f6fb7334b38c06796a3029fc68849102e5c0d611fa5c57a8aeab68ae06bf9f6"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.8,
+          "text": " Плюс! Ммм, приятно!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.5,
+              "word": " Плюс!",
+              "probability": 0.7233270108699799
+            },
+            {
+              "start": 0.94,
+              "end": 1.26,
+              "word": " Ммм,",
+              "probability": 0.6011258264382681
+            },
+            {
+              "start": 1.46,
+              "end": 1.8,
+              "word": " приятно!",
+              "probability": 0.9536128044128418
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0015,
+      "tail_peak": 0.00491,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_08"
+    },
+    {
+      "sha256": "17b2e2e71c84c9ddbc1a780926225815929d5e6db3398b81aa3d309eed76813a",
+      "expected": "Да! Вот за такие моменты я и люблю это смотреть.",
+      "transcript": "Да, вот за такие моменты я и люблю это смотреть.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.08271,
+        "peak": 0.29379,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.11,
+        "sha256": "17b2e2e71c84c9ddbc1a780926225815929d5e6db3398b81aa3d309eed76813a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Да, вот за такие моменты я и люблю это смотреть.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.48,
+              "word": " Да,",
+              "probability": 0.6433227062225342
+            },
+            {
+              "start": 0.88,
+              "end": 1.16,
+              "word": " вот",
+              "probability": 0.7100451588630676
+            },
+            {
+              "start": 1.16,
+              "end": 1.32,
+              "word": " за",
+              "probability": 0.9937957525253296
+            },
+            {
+              "start": 1.32,
+              "end": 1.56,
+              "word": " такие",
+              "probability": 0.9871674180030823
+            },
+            {
+              "start": 1.56,
+              "end": 2.06,
+              "word": " моменты",
+              "probability": 0.9883013665676117
+            },
+            {
+              "start": 2.06,
+              "end": 2.18,
+              "word": " я",
+              "probability": 0.8838368654251099
+            },
+            {
+              "start": 2.18,
+              "end": 2.28,
+              "word": " и",
+              "probability": 0.7707222700119019
+            },
+            {
+              "start": 2.28,
+              "end": 2.42,
+              "word": " люблю",
+              "probability": 0.9780583381652832
+            },
+            {
+              "start": 2.42,
+              "end": 2.7,
+              "word": " это",
+              "probability": 0.9736403822898865
+            },
+            {
+              "start": 2.7,
+              "end": 3.0,
+              "word": " смотреть.",
+              "probability": 0.9971568584442139
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00306,
+      "tail_peak": 0.02435,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_07"
+    },
+    {
+      "sha256": "51af85a3f17d835bec9d4d7379aa5da827fca05394303ada7902087bf69b3e71",
+      "expected": "Уф! Я выдохнула.",
+      "transcript": "Оуф, я выдохнула.",
+      "similarity": 0.96,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.011,
+        "rms": 0.07203,
+        "peak": 0.29383,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "51af85a3f17d835bec9d4d7379aa5da827fca05394303ada7902087bf69b3e71"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.9,
+          "text": " Оуф, я выдохнула.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.64,
+              "word": " Оуф,",
+              "probability": 0.5565971930821737
+            },
+            {
+              "start": 1.02,
+              "end": 1.22,
+              "word": " я",
+              "probability": 0.9782997369766235
+            },
+            {
+              "start": 1.22,
+              "end": 1.9,
+              "word": " выдохнула.",
+              "probability": 0.9887872189283371
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_09"
+    },
+    {
+      "sha256": "9c54ebd1216a4f5717144d6d21a8fb728bee5d5675799482fc477ea3e3dd6a6f",
+      "expected": "Есть! Я не зря тут переживала.",
+      "transcript": "Есть, но я не зря тут переживала.",
+      "similarity": 0.958,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.847,
+        "rms": 0.07364,
+        "peak": 0.28351,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.087,
+        "sha256": "9c54ebd1216a4f5717144d6d21a8fb728bee5d5675799482fc477ea3e3dd6a6f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.62,
+          "text": " Есть, но я не зря тут переживала.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Есть,",
+              "probability": 0.7102290987968445
+            },
+            {
+              "start": 1.16,
+              "end": 1.26,
+              "word": " но",
+              "probability": 0.7883286476135254
+            },
+            {
+              "start": 1.26,
+              "end": 1.36,
+              "word": " я",
+              "probability": 0.9924813508987427
+            },
+            {
+              "start": 1.36,
+              "end": 1.5,
+              "word": " не",
+              "probability": 0.920635998249054
+            },
+            {
+              "start": 1.5,
+              "end": 1.74,
+              "word": " зря",
+              "probability": 0.966569572687149
+            },
+            {
+              "start": 1.74,
+              "end": 1.88,
+              "word": " тут",
+              "probability": 0.9948158860206604
+            },
+            {
+              "start": 1.88,
+              "end": 2.62,
+              "word": " переживала.",
+              "probability": 0.9913298487663269
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_10"
+    },
+    {
+      "sha256": "525a093f83759645be59ecc954e03a29f3ed7503c83d434ec004c0cfaaffca68",
+      "expected": "Вот теперь можно улыбаться!",
+      "transcript": "Вот теперь можно улыбаться",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.933,
+        "rms": 0.08356,
+        "peak": 0.36428,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.113,
+        "sha256": "525a093f83759645be59ecc954e03a29f3ed7503c83d434ec004c0cfaaffca68"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.66,
+          "text": " Вот теперь можно улыбаться",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.42,
+              "word": " Вот",
+              "probability": 0.5274050235748291
+            },
+            {
+              "start": 0.42,
+              "end": 0.7,
+              "word": " теперь",
+              "probability": 0.9671640992164612
+            },
+            {
+              "start": 0.7,
+              "end": 1.02,
+              "word": " можно",
+              "probability": 0.9752447009086609
+            },
+            {
+              "start": 1.02,
+              "end": 1.66,
+              "word": " улыбаться",
+              "probability": 0.9980245679616928
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0,
+      "tail_peak": 1e-05,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_11"
+    },
+    {
+      "sha256": "3802ab02a5775631b554757f9ff8e5d68d30c14c7401708bbb67899b4156485e",
+      "expected": "Да-а! Забрали этот момент.",
+      "transcript": "Да! Забрали этот момент!",
+      "similarity": 0.974,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.534,
+        "rms": 0.09009,
+        "peak": 0.32979,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.094,
+        "sha256": "3802ab02a5775631b554757f9ff8e5d68d30c14c7401708bbb67899b4156485e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.54,
+          "text": " Да!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.54,
+              "word": " Да!",
+              "probability": 0.7447737455368042
+            }
+          ]
+        },
+        {
+          "start": 1.02,
+          "end": 2.2,
+          "text": " Забрали этот момент!",
+          "words": [
+            {
+              "start": 1.02,
+              "end": 1.7,
+              "word": " Забрали",
+              "probability": 0.918169766664505
+            },
+            {
+              "start": 1.7,
+              "end": 1.86,
+              "word": " этот",
+              "probability": 0.9784014821052551
+            },
+            {
+              "start": 1.86,
+              "end": 2.2,
+              "word": " момент!",
+              "probability": 0.9964278340339661
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00032,
+      "tail_peak": 0.00315,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_win_12"
+    },
+    {
+      "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
+      "expected": "Ой, спасибо! Мне очень приятно.",
+      "transcript": "Ой, спасибо! Мне очень приятно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.004,
+        "rms": 0.08364,
+        "peak": 0.33835,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.104,
+        "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.76,
+          "text": " Ой, спасибо! Мне очень приятно!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.46,
+              "word": " Ой,",
+              "probability": 0.7718958854675293
+            },
+            {
+              "start": 0.58,
+              "end": 1.0,
+              "word": " спасибо!",
+              "probability": 0.9920158386230469
+            },
+            {
+              "start": 1.64,
+              "end": 1.92,
+              "word": " Мне",
+              "probability": 0.9479331970214844
+            },
+            {
+              "start": 1.92,
+              "end": 2.14,
+              "word": " очень",
+              "probability": 0.9926733374595642
+            },
+            {
+              "start": 2.14,
+              "end": 2.76,
+              "word": " приятно!",
+              "probability": 0.9954168498516083
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_01"
+    },
+    {
+      "sha256": "6fd746feef873838047c6f179f196749b27f7d03412af763b28daedd79b88c55",
+      "expected": "Ого! Вот это сюрприз. Спасибо тебе!",
+      "transcript": "Ого! Вот это сюрприз! Спасибо тебе!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07305,
+        "peak": 0.37829,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.11,
+        "sha256": "6fd746feef873838047c6f179f196749b27f7d03412af763b28daedd79b88c55"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.08,
+          "text": " Ого! Вот это сюрприз! Спасибо тебе!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.68,
+              "word": " Ого!",
+              "probability": 0.757360965013504
+            },
+            {
+              "start": 1.02,
+              "end": 1.26,
+              "word": " Вот",
+              "probability": 0.901363730430603
+            },
+            {
+              "start": 1.26,
+              "end": 1.46,
+              "word": " это",
+              "probability": 0.9439764618873596
+            },
+            {
+              "start": 1.46,
+              "end": 2.02,
+              "word": " сюрприз!",
+              "probability": 0.9896536618471146
+            },
+            {
+              "start": 2.26,
+              "end": 2.76,
+              "word": " Спасибо",
+              "probability": 0.9887630343437195
+            },
+            {
+              "start": 2.76,
+              "end": 3.08,
+              "word": " тебе!",
+              "probability": 0.988935649394989
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00015,
+      "tail_peak": 0.00055,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_02"
+    },
+    {
+      "sha256": "b5122d21a1a5e074adbda4d0f3baefce84e437b96a77c30a6184ee182d69dfa1",
+      "expected": "А-а, спасибо! Я даже растерялась.",
+      "transcript": "Ах, спасибо! Я даже растерялась!",
+      "similarity": 0.96,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.06881,
+        "peak": 0.29396,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.083,
+        "sha256": "b5122d21a1a5e074adbda4d0f3baefce84e437b96a77c30a6184ee182d69dfa1"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.58,
+          "text": " Ах, спасибо! Я даже растерялась!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.58,
+              "word": " Ах,",
+              "probability": 0.3623322919011116
+            },
+            {
+              "start": 0.88,
+              "end": 1.46,
+              "word": " спасибо!",
+              "probability": 0.9826111197471619
+            },
+            {
+              "start": 2.26,
+              "end": 2.56,
+              "word": " Я",
+              "probability": 0.9711143374443054
+            },
+            {
+              "start": 2.56,
+              "end": 2.8,
+              "word": " даже",
+              "probability": 0.9950750470161438
+            },
+            {
+              "start": 2.8,
+              "end": 3.58,
+              "word": " растерялась!",
+              "probability": 0.9835045486688614
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_03"
+    },
+    {
+      "sha256": "5244d4fffa4a20d0ff0de32d3e794fc62baea4eefe1557398477539e784061a5",
+      "expected": "Как приятно… спасибо, что балуешь.",
+      "transcript": "Как приятно! Спасибо, что балуешь!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.056,
+        "rms": 0.07751,
+        "peak": 0.38661,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.136,
+        "sha256": "5244d4fffa4a20d0ff0de32d3e794fc62baea4eefe1557398477539e784061a5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.88,
+          "text": " Как приятно! Спасибо, что балуешь!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.4,
+              "word": " Как",
+              "probability": 0.5054355263710022
+            },
+            {
+              "start": 0.4,
+              "end": 1.04,
+              "word": " приятно!",
+              "probability": 0.9871962070465088
+            },
+            {
+              "start": 1.52,
+              "end": 1.94,
+              "word": " Спасибо,",
+              "probability": 0.9852641820907593
+            },
+            {
+              "start": 2.14,
+              "end": 2.26,
+              "word": " что",
+              "probability": 0.9939735531806946
+            },
+            {
+              "start": 2.26,
+              "end": 2.88,
+              "word": " балуешь!",
+              "probability": 0.7795717716217041
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_04"
+    },
+    {
+      "sha256": "0e48e4461eef2a7421f8858f31304c0a3c079bc62fd5e212398f5d0bf9aa5250",
+      "expected": "О, ты остаёшься! Привет-привет.",
+      "transcript": "О, ты остаешься! Привет, привет!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.291,
+        "rms": 0.07757,
+        "peak": 0.33095,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.131,
+        "sha256": "0e48e4461eef2a7421f8858f31304c0a3c079bc62fd5e212398f5d0bf9aa5250"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.92,
+          "text": " О, ты остаешься! Привет, привет!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.46,
+              "word": " О,",
+              "probability": 0.6856857538223267
+            },
+            {
+              "start": 0.7,
+              "end": 0.94,
+              "word": " ты",
+              "probability": 0.9652026295661926
+            },
+            {
+              "start": 0.94,
+              "end": 1.86,
+              "word": " остаешься!",
+              "probability": 0.7639483660459518
+            },
+            {
+              "start": 2.12,
+              "end": 2.52,
+              "word": " Привет,",
+              "probability": 0.9768582582473755
+            },
+            {
+              "start": 2.72,
+              "end": 2.92,
+              "word": " привет!",
+              "probability": 0.9219996333122253
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.001,
+      "tail_peak": 0.00692,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_05"
+    },
+    {
+      "sha256": "9ad5aff94689ad1910aee2625690adf6742cabb0bc679126082b7e544bea18cb",
+      "expected": "Спасибо за подписку! Устраивайся.",
+      "transcript": "Спасибо за подписку! Ну, устраивайся!",
+      "similarity": 0.966,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.795,
+        "rms": 0.08899,
+        "peak": 0.5241,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.095,
+        "sha256": "9ad5aff94689ad1910aee2625690adf6742cabb0bc679126082b7e544bea18cb"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.6,
+          "text": " Спасибо за подписку! Ну, устраивайся!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Спасибо",
+              "probability": 0.8128209710121155
+            },
+            {
+              "start": 0.66,
+              "end": 0.9,
+              "word": " за",
+              "probability": 0.9891202449798584
+            },
+            {
+              "start": 0.9,
+              "end": 1.52,
+              "word": " подписку!",
+              "probability": 0.992336243391037
+            },
+            {
+              "start": 1.8,
+              "end": 1.94,
+              "word": " Ну,",
+              "probability": 0.6722325682640076
+            },
+            {
+              "start": 2.0,
+              "end": 2.6,
+              "word": " устраивайся!",
+              "probability": 0.9241926789283752
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_06"
+    },
+    {
+      "sha256": "ca8a5639f9e4e0fcbd526ed8c56268ea1ad10e73b9ccb67039b06461e7e1de7c",
+      "expected": "Всё, теперь ты с нами. Я рада!",
+      "transcript": "Всё, теперь ты с нами. Я рада.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.318,
+        "rms": 0.08528,
+        "peak": 0.63475,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.078,
+        "sha256": "ca8a5639f9e4e0fcbd526ed8c56268ea1ad10e73b9ccb67039b06461e7e1de7c"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.16,
+          "text": " Всё, теперь ты с нами. Я рада.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.5,
+              "word": " Всё,",
+              "probability": 0.45749330520629883
+            },
+            {
+              "start": 1.0,
+              "end": 1.3,
+              "word": " теперь",
+              "probability": 0.971013605594635
+            },
+            {
+              "start": 1.3,
+              "end": 1.48,
+              "word": " ты",
+              "probability": 0.9762088060379028
+            },
+            {
+              "start": 1.48,
+              "end": 1.64,
+              "word": " с",
+              "probability": 0.9833124279975891
+            },
+            {
+              "start": 1.64,
+              "end": 1.9,
+              "word": " нами.",
+              "probability": 0.9975606203079224
+            },
+            {
+              "start": 2.52,
+              "end": 2.74,
+              "word": " Я",
+              "probability": 0.933833122253418
+            },
+            {
+              "start": 2.74,
+              "end": 3.16,
+              "word": " рада.",
+              "probability": 0.9981450438499451
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_07"
+    },
+    {
+      "sha256": "1a8c46537db60407f23d81ace375c240c31d7ee863a5a4e67dac16851a7116ff",
+      "expected": "О, пополнение! Рада тебе.",
+      "transcript": "О, пополнение! Рада тебе!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.664,
+        "rms": 0.07911,
+        "peak": 0.30605,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.124,
+        "sha256": "1a8c46537db60407f23d81ace375c240c31d7ee863a5a4e67dac16851a7116ff"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.36,
+          "text": " О, пополнение! Рада тебе!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.36,
+              "word": " О,",
+              "probability": 0.30910342931747437
+            },
+            {
+              "start": 0.56,
+              "end": 1.4,
+              "word": " пополнение!",
+              "probability": 0.9761687318483988
+            },
+            {
+              "start": 1.74,
+              "end": 2.1,
+              "word": " Рада",
+              "probability": 0.8564884066581726
+            },
+            {
+              "start": 2.1,
+              "end": 2.36,
+              "word": " тебе!",
+              "probability": 0.973768413066864
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00024,
+      "tail_peak": 0.00113,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_08"
+    },
+    {
+      "sha256": "65f9b1cb5f932243bba23e955d4d8507546fc767d28504d69fc015eceea69d29",
+      "expected": "Ой, сколько сердечек! Спасибо!",
+      "transcript": "Ай, сколько сердечек! Спасибо!",
+      "similarity": 0.958,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.482,
+        "rms": 0.08214,
+        "peak": 0.36396,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.082,
+        "sha256": "65f9b1cb5f932243bba23e955d4d8507546fc767d28504d69fc015eceea69d29"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.04,
+          "text": " Ай, сколько сердечек! Спасибо!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.58,
+              "word": " Ай,",
+              "probability": 0.6143584102392197
+            },
+            {
+              "start": 0.66,
+              "end": 0.82,
+              "word": " сколько",
+              "probability": 0.9872701168060303
+            },
+            {
+              "start": 0.82,
+              "end": 1.66,
+              "word": " сердечек!",
+              "probability": 0.9566779534022013
+            },
+            {
+              "start": 1.72,
+              "end": 2.04,
+              "word": " Спасибо!",
+              "probability": 0.9878002405166626
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.05844,
+      "tail_peak": 0.22252,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_09"
+    },
+    {
+      "sha256": "2cec96eae79a5b47f2550537073f16140485e065a155f3a6e1bca778a76c8bc4",
+      "expected": "Вижу ваши сердечки. Мне приятно.",
+      "transcript": "Вижу ваши сердечки! Мне приятно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.08192,
+        "peak": 0.42815,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.107,
+        "sha256": "2cec96eae79a5b47f2550537073f16140485e065a155f3a6e1bca778a76c8bc4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.9,
+          "text": " Вижу ваши сердечки! Мне приятно!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Вижу",
+              "probability": 0.6742868423461914
+            },
+            {
+              "start": 0.6,
+              "end": 0.86,
+              "word": " ваши",
+              "probability": 0.5615984201431274
+            },
+            {
+              "start": 0.86,
+              "end": 1.7,
+              "word": " сердечки!",
+              "probability": 0.9953847726186117
+            },
+            {
+              "start": 1.98,
+              "end": 2.22,
+              "word": " Мне",
+              "probability": 0.958799421787262
+            },
+            {
+              "start": 2.22,
+              "end": 2.9,
+              "word": " приятно!",
+              "probability": 0.9926674664020538
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00017,
+      "tail_peak": 0.00063,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_10"
+    },
+    {
+      "sha256": "d2925e191bf79c8901dada0b66b9791ae36ef8535bcaa85093a6f3c2c273cb8e",
+      "expected": "Спасибо за поддержку! Лови сердечко.",
+      "transcript": "Спасибо за поддержку! Лови сердечко!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.978,
+        "rms": 0.0863,
+        "peak": 0.36814,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.118,
+        "sha256": "d2925e191bf79c8901dada0b66b9791ae36ef8535bcaa85093a6f3c2c273cb8e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.78,
+          "text": " Спасибо за поддержку! Лови сердечко!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Спасибо",
+              "probability": 0.771886944770813
+            },
+            {
+              "start": 0.66,
+              "end": 0.9,
+              "word": " за",
+              "probability": 0.9854196906089783
+            },
+            {
+              "start": 0.9,
+              "end": 1.6,
+              "word": " поддержку!",
+              "probability": 0.9924857020378113
+            },
+            {
+              "start": 1.82,
+              "end": 2.16,
+              "word": " Лови",
+              "probability": 0.973706046740214
+            },
+            {
+              "start": 2.16,
+              "end": 2.78,
+              "word": " сердечко!",
+              "probability": 0.9543203711509705
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_11"
+    },
+    {
+      "sha256": "b5e9601580f2204c54860c690dc5af71cc0a4196fab595823d7bc89a73eb4e89",
+      "expected": "Ну всё, я улыбаюсь. Спасибо вам!",
+      "transcript": "Ну всё, я улыбаюсь! Спасибо вам!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.847,
+        "rms": 0.07564,
+        "peak": 0.30568,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.107,
+        "sha256": "b5e9601580f2204c54860c690dc5af71cc0a4196fab595823d7bc89a73eb4e89"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.62,
+          "text": " Ну всё, я улыбаюсь! Спасибо вам!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.34,
+              "word": " Ну",
+              "probability": 0.7437145113945007
+            },
+            {
+              "start": 0.34,
+              "end": 0.58,
+              "word": " всё,",
+              "probability": 0.6027586460113525
+            },
+            {
+              "start": 0.92,
+              "end": 1.06,
+              "word": " я",
+              "probability": 0.9788119196891785
+            },
+            {
+              "start": 1.06,
+              "end": 1.66,
+              "word": " улыбаюсь!",
+              "probability": 0.9961212277412415
+            },
+            {
+              "start": 1.86,
+              "end": 2.26,
+              "word": " Спасибо",
+              "probability": 0.9881546497344971
+            },
+            {
+              "start": 2.26,
+              "end": 2.62,
+              "word": " вам!",
+              "probability": 0.920506477355957
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_social_12"
+    },
+    {
+      "sha256": "e34edd444bd66f14bde854c7f9236e8d8e93a2f77ad71529a977fa28d0905916",
+      "expected": "Минус… Мне это совсем не нравится.",
+      "transcript": "Минус! Мне это совсем не нравится!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.109,
+        "rms": 0.06849,
+        "peak": 0.31596,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.129,
+        "sha256": "e34edd444bd66f14bde854c7f9236e8d8e93a2f77ad71529a977fa28d0905916"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.64,
+          "text": " Минус! Мне это совсем не нравится!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.8,
+              "word": " Минус!",
+              "probability": 0.8991616169611613
+            },
+            {
+              "start": 1.26,
+              "end": 1.58,
+              "word": " Мне",
+              "probability": 0.9522403478622437
+            },
+            {
+              "start": 1.58,
+              "end": 1.8,
+              "word": " это",
+              "probability": 0.9884114265441895
+            },
+            {
+              "start": 1.8,
+              "end": 2.06,
+              "word": " совсем",
+              "probability": 0.9744247198104858
+            },
+            {
+              "start": 2.06,
+              "end": 2.32,
+              "word": " не",
+              "probability": 0.9868565201759338
+            },
+            {
+              "start": 2.32,
+              "end": 2.64,
+              "word": " нравится!",
+              "probability": 0.9936422109603882
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.03277,
+      "tail_peak": 0.22567,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_01"
+    },
+    {
+      "sha256": "87b9c26e226118a85c8d607358d8a5689c5c392862fe87c21ce7ffa30186d965",
+      "expected": "Ой, ну нет…",
+      "transcript": "Ой, ну нет!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.515,
+        "rms": 0.08016,
+        "peak": 0.27851,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.115,
+        "sha256": "87b9c26e226118a85c8d607358d8a5689c5c392862fe87c21ce7ffa30186d965"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.26,
+          "text": " Ой, ну нет!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.52,
+              "word": " Ой,",
+              "probability": 0.8049008846282959
+            },
+            {
+              "start": 0.8,
+              "end": 0.94,
+              "word": " ну",
+              "probability": 0.6702600121498108
+            },
+            {
+              "start": 0.94,
+              "end": 1.26,
+              "word": " нет!",
+              "probability": 0.9235957264900208
+            }
+          ]
+        }
+      ],
+      "tail_rms": 6e-05,
+      "tail_peak": 0.00021,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_02"
+    },
+    {
+      "sha256": "0315b3a87790fcde3c2f0a943ba9e9c538a7f63aa3b34aecdbee42355f9fd860",
+      "expected": "Эх. Обидно получилось.",
+      "transcript": "О, обидно получилось.",
+      "similarity": 0.914,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.064,
+        "rms": 0.0813,
+        "peak": 0.28631,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.144,
+        "sha256": "0315b3a87790fcde3c2f0a943ba9e9c538a7f63aa3b34aecdbee42355f9fd860"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.7,
+          "text": " О, обидно получилось.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.4,
+              "word": " О,",
+              "probability": 0.2851637303829193
+            },
+            {
+              "start": 0.66,
+              "end": 1.2,
+              "word": " обидно",
+              "probability": 0.9279311498006185
+            },
+            {
+              "start": 1.2,
+              "end": 1.7,
+              "word": " получилось.",
+              "probability": 0.9460039734840393
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00028,
+      "tail_peak": 0.00246,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_03"
+    },
+    {
+      "sha256": "a5f54cca1bd99a9e195e35601fb0ea19c8a92edc81c133d59757defd4c8695ac",
+      "expected": "А-а, досадно!",
+      "transcript": "Да, садно.",
+      "similarity": 0.75,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.959,
+        "rms": 0.08515,
+        "peak": 0.28913,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.059,
+        "sha256": "a5f54cca1bd99a9e195e35601fb0ea19c8a92edc81c133d59757defd4c8695ac"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.8,
+          "text": " Да, садно.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.74,
+              "word": " Да,",
+              "probability": 0.18508517742156982
+            },
+            {
+              "start": 0.98,
+              "end": 1.8,
+              "word": " садно.",
+              "probability": 0.8987399935722351
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [
+        "transcript_mismatch"
+      ],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_04"
+    },
+    {
+      "sha256": "33ae8ecd7dce0f06528376043838d8aedf4a9d0eab0da01ce876f2903efc19f8",
+      "expected": "Минус. Да, неприятно.",
+      "transcript": "Минус? Да. Неприятно.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.06413,
+        "peak": 0.2399,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.087,
+        "sha256": "33ae8ecd7dce0f06528376043838d8aedf4a9d0eab0da01ce876f2903efc19f8"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.92,
+          "text": " Минус? Да. Неприятно.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.82,
+              "word": " Минус?",
+              "probability": 0.8835077285766602
+            },
+            {
+              "start": 1.34,
+              "end": 1.74,
+              "word": " Да.",
+              "probability": 0.9711698889732361
+            },
+            {
+              "start": 2.24,
+              "end": 2.92,
+              "word": " Неприятно.",
+              "probability": 0.9779109954833984
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00014,
+      "tail_peak": 0.0005,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_06"
+    },
+    {
+      "sha256": "3eca34aeb89333ddf40b8611ed10908a6d0d3fcf35ca517f0af0a0177b799089",
+      "expected": "Ну блин… Я расстроилась.",
+      "transcript": "Ну, блин, я расстроилась.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.318,
+        "rms": 0.078,
+        "peak": 0.28401,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.078,
+        "sha256": "3eca34aeb89333ddf40b8611ed10908a6d0d3fcf35ca517f0af0a0177b799089"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.08,
+          "text": " Ну, блин, я расстроилась.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.46,
+              "word": " Ну,",
+              "probability": 0.6333181858062744
+            },
+            {
+              "start": 0.56,
+              "end": 1.12,
+              "word": " блин,",
+              "probability": 0.9765049517154694
+            },
+            {
+              "start": 1.32,
+              "end": 2.3,
+              "word": " я",
+              "probability": 0.8403380513191223
+            },
+            {
+              "start": 2.3,
+              "end": 3.08,
+              "word": " расстроилась.",
+              "probability": 0.9910439252853394
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_05"
+    },
+    {
+      "sha256": "2f38025cb632f987a22ab0d40187e8fb6e83f7474bad340b77b762a9c3c1a6ca",
+      "expected": "Ай… вот это обидно.",
+      "transcript": "Эй, вот это обидно.",
+      "similarity": 0.929,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.194,
+        "rms": 0.0807,
+        "peak": 0.27229,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.114,
+        "sha256": "2f38025cb632f987a22ab0d40187e8fb6e83f7474bad340b77b762a9c3c1a6ca"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Эй, вот это обидно.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.62,
+              "word": " Эй,",
+              "probability": 0.6478789299726486
+            },
+            {
+              "start": 0.92,
+              "end": 1.18,
+              "word": " вот",
+              "probability": 0.9804731011390686
+            },
+            {
+              "start": 1.18,
+              "end": 1.38,
+              "word": " это",
+              "probability": 0.9926106333732605
+            },
+            {
+              "start": 1.38,
+              "end": 2.0,
+              "word": " обидно.",
+              "probability": 0.9880927205085754
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_08"
+    },
+    {
+      "sha256": "174de1637e42be0d32744ea1058d6d13db84f277b4bc9ecd2bec51b82f5badcc",
+      "expected": "Так… мне нужна секундочка.",
+      "transcript": "Так, мне нужна секундочка!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.664,
+        "rms": 0.07583,
+        "peak": 0.37165,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.104,
+        "sha256": "174de1637e42be0d32744ea1058d6d13db84f277b4bc9ecd2bec51b82f5badcc"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.38,
+          "text": " Так, мне нужна секундочка!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.48,
+              "word": " Так,",
+              "probability": 0.6118929386138916
+            },
+            {
+              "start": 1.12,
+              "end": 1.36,
+              "word": " мне",
+              "probability": 0.9799822568893433
+            },
+            {
+              "start": 1.36,
+              "end": 1.74,
+              "word": " нужна",
+              "probability": 0.996618777513504
+            },
+            {
+              "start": 1.74,
+              "end": 2.38,
+              "word": " секундочка!",
+              "probability": 0.9876979192097982
+            }
+          ]
+        }
+      ],
+      "tail_rms": 6e-05,
+      "tail_peak": 0.00021,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_07"
+    },
+    {
+      "sha256": "7353aa9a55df1564c91ffd89c90913e07019f90287427cd37e61df53f958d2a4",
+      "expected": "Жаль. Мне хотелось другого финала.",
+      "transcript": "Ужаль. Мне хотелось другого финала.",
+      "similarity": 0.982,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.187,
+        "rms": 0.08906,
+        "peak": 0.34049,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.087,
+        "sha256": "7353aa9a55df1564c91ffd89c90913e07019f90287427cd37e61df53f958d2a4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.98,
+          "text": " Ужаль. Мне хотелось другого финала.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.62,
+              "word": " Ужаль.",
+              "probability": 0.5387735317150751
+            },
+            {
+              "start": 0.82,
+              "end": 1.66,
+              "word": " Мне",
+              "probability": 0.9288983345031738
+            },
+            {
+              "start": 1.66,
+              "end": 2.14,
+              "word": " хотелось",
+              "probability": 0.9562905728816986
+            },
+            {
+              "start": 2.14,
+              "end": 2.56,
+              "word": " другого",
+              "probability": 0.9631946086883545
+            },
+            {
+              "start": 2.56,
+              "end": 2.98,
+              "word": " финала.",
+              "probability": 0.9503027498722076
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_09"
+    },
+    {
+      "sha256": "ab8396fbc48f303ed7d0d1489032ba3cc6a67eb343a6aedbd5a4d61abb0a0f83",
+      "expected": "Ух… Ну да, я недовольна.",
+      "transcript": "Ну да, я недовольна.",
+      "similarity": 0.938,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.873,
+        "rms": 0.08298,
+        "peak": 0.30109,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.073,
+        "sha256": "ab8396fbc48f303ed7d0d1489032ba3cc6a67eb343a6aedbd5a4d61abb0a0f83"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.74,
+          "text": " Ну да, я недовольна.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Ну",
+              "probability": 0.4176321029663086
+            },
+            {
+              "start": 0.6,
+              "end": 1.48,
+              "word": " да,",
+              "probability": 0.8258158564567566
+            },
+            {
+              "start": 1.84,
+              "end": 2.04,
+              "word": " я",
+              "probability": 0.9753590822219849
+            },
+            {
+              "start": 2.04,
+              "end": 2.74,
+              "word": " недовольна.",
+              "probability": 0.944913700222969
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_10"
+    },
+    {
+      "sha256": "5ee64298220921957cb2995407e2468da49c508544c05df6dd8623317fa75714",
+      "expected": "Ох. Ладно, выдыхаю.",
+      "transcript": "Ладно, выдыхаю.",
+      "similarity": 0.923,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.09,
+        "rms": 0.08504,
+        "peak": 0.38877,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.07,
+        "sha256": "5ee64298220921957cb2995407e2468da49c508544c05df6dd8623317fa75714"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.9,
+          "text": " Ладно, выдыхаю.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 1.28,
+              "word": " Ладно,",
+              "probability": 0.7386097013950348
+            },
+            {
+              "start": 1.38,
+              "end": 1.9,
+              "word": " выдыхаю.",
+              "probability": 0.7580579221248627
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_11"
+    },
+    {
+      "sha256": "11dc99ed1f121412bedc01fba9d8911551d90f3f032dd038bbb773d8b10faabe",
+      "expected": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+      "transcript": "Ну, класс! Минус! Да, бесят! Беру перекрытие!",
+      "similarity": 0.955,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.172,
+        "rms": 0.08505,
+        "peak": 0.40449,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.112,
+        "sha256": "11dc99ed1f121412bedc01fba9d8911551d90f3f032dd038bbb773d8b10faabe"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.98,
+          "text": " Ну, класс! Минус! Да, бесят! Беру перекрытие!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.82,
+              "word": " Ну,",
+              "probability": 0.2819426953792572
+            },
+            {
+              "start": 0.9,
+              "end": 1.16,
+              "word": " класс!",
+              "probability": 0.9647715091705322
+            },
+            {
+              "start": 1.56,
+              "end": 2.14,
+              "word": " Минус!",
+              "probability": 0.981589694817861
+            },
+            {
+              "start": 2.48,
+              "end": 2.74,
+              "word": " Да,",
+              "probability": 0.9643551111221313
+            },
+            {
+              "start": 3.02,
+              "end": 3.64,
+              "word": " бесят!",
+              "probability": 0.7192521095275879
+            },
+            {
+              "start": 3.84,
+              "end": 4.24,
+              "word": " Беру",
+              "probability": 0.990900993347168
+            },
+            {
+              "start": 4.24,
+              "end": 4.98,
+              "word": " перекрытие!",
+              "probability": 0.9565887749195099
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_loss_12"
+    },
+    {
+      "sha256": "eb079fc06f96e189f02c0a9994d0da3386237831377d64f8246b5f559b2379ff",
+      "expected": "О, вернулось. Ну хоть так.",
+      "transcript": "Ох! Вернулась! Ну хоть так!",
+      "similarity": 0.923,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.056,
+        "rms": 0.06801,
+        "peak": 0.30018,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.196,
+        "sha256": "eb079fc06f96e189f02c0a9994d0da3386237831377d64f8246b5f559b2379ff"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.74,
+          "text": " Ох! Вернулась! Ну хоть так!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.78,
+              "word": " Ох!",
+              "probability": 0.35923217236995697
+            },
+            {
+              "start": 1.08,
+              "end": 1.64,
+              "word": " Вернулась!",
+              "probability": 0.9715690463781357
+            },
+            {
+              "start": 2.12,
+              "end": 2.32,
+              "word": " Ну",
+              "probability": 0.8466740846633911
+            },
+            {
+              "start": 2.32,
+              "end": 2.46,
+              "word": " хоть",
+              "probability": 0.763538658618927
+            },
+            {
+              "start": 2.46,
+              "end": 2.74,
+              "word": " так!",
+              "probability": 0.9928290247917175
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00012,
+      "tail_peak": 0.00045,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_01"
+    },
+    {
+      "sha256": "d709588d8db67e48ad26c2134b6e4eac8d9a9aa4f88205ca4146d8d47a15f3e4",
+      "expected": "Так, возврат. Выдыхаю.",
+      "transcript": "Так, возврат. Выдыхаю.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.273,
+        "rms": 0.08526,
+        "peak": 0.35608,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.093,
+        "sha256": "d709588d8db67e48ad26c2134b6e4eac8d9a9aa4f88205ca4146d8d47a15f3e4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.08,
+          "text": " Так, возврат. Выдыхаю.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.46,
+              "word": " Так,",
+              "probability": 0.5546717047691345
+            },
+            {
+              "start": 0.62,
+              "end": 1.0,
+              "word": " возврат.",
+              "probability": 0.9560181796550751
+            },
+            {
+              "start": 1.4,
+              "end": 2.08,
+              "word": " Выдыхаю.",
+              "probability": 0.9203179776668549
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_02"
+    },
+    {
+      "sha256": "8118cd7d37b62126cc72bb4ff404d2f2b232770409d015e30c1ae5ce597b9582",
+      "expected": "Ничья. Ладно, бывает.",
+      "transcript": "Ничья. Ладно. Бывает.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.847,
+        "rms": 0.0739,
+        "peak": 0.29207,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.107,
+        "sha256": "8118cd7d37b62126cc72bb4ff404d2f2b232770409d015e30c1ae5ce597b9582"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.58,
+          "text": " Ничья. Ладно. Бывает.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 1.02,
+              "word": " Ничья.",
+              "probability": 0.7354241609573364
+            },
+            {
+              "start": 1.32,
+              "end": 1.78,
+              "word": " Ладно.",
+              "probability": 0.9768066704273224
+            },
+            {
+              "start": 2.14,
+              "end": 2.58,
+              "word": " Бывает.",
+              "probability": 0.9720914959907532
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0,
+      "tail_peak": 0.0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_03"
+    },
+    {
+      "sha256": "2f7e39b207bb7a712df4a70cc51ecd27530c466ef9dbd3e4c9d6692317152196",
+      "expected": "Фух, без потерь.",
+      "transcript": "Фу! Безпотерь!",
+      "similarity": 0.957,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.829,
+        "rms": 0.06672,
+        "peak": 0.29167,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.089,
+        "sha256": "2f7e39b207bb7a712df4a70cc51ecd27530c466ef9dbd3e4c9d6692317152196"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.68,
+          "text": " Фу! Безпотерь!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.52,
+              "word": " Фу!",
+              "probability": 0.6272310614585876
+            },
+            {
+              "start": 0.84,
+              "end": 1.68,
+              "word": " Безпотерь!",
+              "probability": 0.8505496740341186
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_04"
+    },
+    {
+      "sha256": "c59a8740b41b519f869b554617647c764252b5d16db844434f78e22e51635e8e",
+      "expected": "Ну вот… разошлись.",
+      "transcript": "Ну вот, разошлись.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.351,
+        "rms": 0.06653,
+        "peak": 0.27432,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0,
+        "sha256": "c59a8740b41b519f869b554617647c764252b5d16db844434f78e22e51635e8e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.02,
+          "text": " Ну вот, разошлись.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.4,
+              "word": " Ну",
+              "probability": 0.8121517896652222
+            },
+            {
+              "start": 0.4,
+              "end": 0.72,
+              "word": " вот,",
+              "probability": 0.9137413501739502
+            },
+            {
+              "start": 1.3,
+              "end": 2.02,
+              "word": " разошлись.",
+              "probability": 0.9271896680196127
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.01206,
+      "tail_peak": 0.0277,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_05"
+    },
+    {
+      "sha256": "c8cfb5efa2294d48188843fbeb018d6c91234f19cbf6bf19cdc6bcacff81b4a0",
+      "expected": "Возврат. Я уже успела напрячься.",
+      "transcript": "Возврат! Я уже успела напрячься!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.847,
+        "rms": 0.07462,
+        "peak": 0.37227,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.107,
+        "sha256": "c8cfb5efa2294d48188843fbeb018d6c91234f19cbf6bf19cdc6bcacff81b4a0"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.64,
+          "text": " Возврат! Я уже успела напрячься!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.76,
+              "word": " Возврат!",
+              "probability": 0.9485640078783035
+            },
+            {
+              "start": 1.36,
+              "end": 1.5,
+              "word": " Я",
+              "probability": 0.9700843095779419
+            },
+            {
+              "start": 1.5,
+              "end": 1.66,
+              "word": " уже",
+              "probability": 0.9913246631622314
+            },
+            {
+              "start": 1.66,
+              "end": 2.06,
+              "word": " успела",
+              "probability": 0.9898752868175507
+            },
+            {
+              "start": 2.06,
+              "end": 2.64,
+              "word": " напрячься!",
+              "probability": 0.893678292632103
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_refund_06"
+    },
+    {
+      "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+      "expected": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "transcript": "Та-а-а! Что тут у нас? Сейчас верю пару интервалов. Хочу понять, где движение, а где просто суета.",
+      "similarity": 0.98,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 6.034,
+        "rms": 0.07833,
+        "peak": 0.34188,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.094,
+        "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.82,
+          "text": " Та-а-а! Что тут у нас?",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Та",
+              "probability": 0.6085147857666016
+            },
+            {
+              "start": 0.56,
+              "end": 0.68,
+              "word": "-а",
+              "probability": 0.5575895607471466
+            },
+            {
+              "start": 0.68,
+              "end": 0.82,
+              "word": "-а!",
+              "probability": 0.717416986823082
+            },
+            {
+              "start": 1.0,
+              "end": 1.34,
+              "word": " Что",
+              "probability": 0.5489811301231384
+            },
+            {
+              "start": 1.34,
+              "end": 1.5,
+              "word": " тут",
+              "probability": 0.9970889687538147
+            },
+            {
+              "start": 1.5,
+              "end": 1.66,
+              "word": " у",
+              "probability": 0.9691113829612732
+            },
+            {
+              "start": 1.66,
+              "end": 1.82,
+              "word": " нас?",
+              "probability": 0.9996671676635742
+            }
+          ]
+        },
+        {
+          "start": 2.26,
+          "end": 5.86,
+          "text": " Сейчас верю пару интервалов. Хочу понять, где движение, а где просто суета.",
+          "words": [
+            {
+              "start": 2.26,
+              "end": 2.48,
+              "word": " Сейчас",
+              "probability": 0.9714462161064148
+            },
+            {
+              "start": 2.48,
+              "end": 2.88,
+              "word": " верю",
+              "probability": 0.81816765666008
+            },
+            {
+              "start": 2.88,
+              "end": 3.08,
+              "word": " пару",
+              "probability": 0.8530521988868713
+            },
+            {
+              "start": 3.08,
+              "end": 3.66,
+              "word": " интервалов.",
+              "probability": 0.9481453895568848
+            },
+            {
+              "start": 3.74,
+              "end": 3.94,
+              "word": " Хочу",
+              "probability": 0.9873413244883219
+            },
+            {
+              "start": 3.94,
+              "end": 4.16,
+              "word": " понять,",
+              "probability": 0.9977009892463684
+            },
+            {
+              "start": 4.24,
+              "end": 4.36,
+              "word": " где",
+              "probability": 0.9929099678993225
+            },
+            {
+              "start": 4.36,
+              "end": 4.86,
+              "word": " движение,",
+              "probability": 0.8655560314655304
+            },
+            {
+              "start": 4.98,
+              "end": 4.98,
+              "word": " а",
+              "probability": 0.5527128577232361
+            },
+            {
+              "start": 4.98,
+              "end": 5.1,
+              "word": " где",
+              "probability": 0.9885774850845337
+            },
+            {
+              "start": 5.1,
+              "end": 5.38,
+              "word": " просто",
+              "probability": 0.9638427495956421
+            },
+            {
+              "start": 5.38,
+              "end": 5.86,
+              "word": " суета.",
+              "probability": 0.823517362276713
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_search_interest_01"
+    },
+    {
+      "sha256": "d54f26c9b1fad5f57ee032a7b6921e952f7d2e3049373bd0b94291c3c9f09b47",
+      "expected": "О, погоди… вот тут мне уже интересно.",
+      "transcript": "О, погоди! Вот тут мне уже интересно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.5,
+        "rms": 0.07463,
+        "peak": 0.28594,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.1,
+        "sha256": "d54f26c9b1fad5f57ee032a7b6921e952f7d2e3049373bd0b94291c3c9f09b47"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.3,
+          "text": " О, погоди!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.4,
+              "word": " О,",
+              "probability": 0.27056315541267395
+            },
+            {
+              "start": 0.58,
+              "end": 1.3,
+              "word": " погоди!",
+              "probability": 0.9855127533276876
+            }
+          ]
+        },
+        {
+          "start": 1.8,
+          "end": 3.16,
+          "text": " Вот тут мне уже интересно!",
+          "words": [
+            {
+              "start": 1.8,
+              "end": 2.04,
+              "word": " Вот",
+              "probability": 0.8499183058738708
+            },
+            {
+              "start": 2.04,
+              "end": 2.24,
+              "word": " тут",
+              "probability": 0.9892978668212891
+            },
+            {
+              "start": 2.24,
+              "end": 2.46,
+              "word": " мне",
+              "probability": 0.9858300089836121
+            },
+            {
+              "start": 2.46,
+              "end": 2.66,
+              "word": " уже",
+              "probability": 0.9918752312660217
+            },
+            {
+              "start": 2.66,
+              "end": 3.16,
+              "word": " интересно!",
+              "probability": 0.9957951307296753
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00044,
+      "tail_peak": 0.00187,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_search_interest_02"
+    },
+    {
+      "sha256": "99b00d86e2fa1a939b75df26bda3261424e1ed3c85cfb88b2ab0a504b3b16d55",
+      "expected": "М-м… пока не цепляет.",
+      "transcript": "Пока не цепляет?",
+      "similarity": 0.929,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.09,
+        "rms": 0.0765,
+        "peak": 0.28324,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.13,
+        "sha256": "99b00d86e2fa1a939b75df26bda3261424e1ed3c85cfb88b2ab0a504b3b16d55"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.92,
+          "text": " Пока не цепляет?",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 1.12,
+              "word": " Пока",
+              "probability": 0.30605292320251465
+            },
+            {
+              "start": 1.12,
+              "end": 1.3,
+              "word": " не",
+              "probability": 0.8959118127822876
+            },
+            {
+              "start": 1.3,
+              "end": 1.92,
+              "word": " цепляет?",
+              "probability": 0.9911133795976639
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_search_interest_03"
+    },
+    {
+      "sha256": "d6f94705d5d8f8c88c978d7aa1dec74c19eaec59d7c294f4143bb822e86e9a82",
+      "expected": "Секундочку… хочу получше рассмотреть.",
+      "transcript": "Секундочку! Хочу получше рассмотреть!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.004,
+        "rms": 0.09148,
+        "peak": 0.65801,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.104,
+        "sha256": "d6f94705d5d8f8c88c978d7aa1dec74c19eaec59d7c294f4143bb822e86e9a82"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.9,
+          "text": " Секундочку! Хочу получше рассмотреть!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.98,
+              "word": " Секундочку!",
+              "probability": 0.8004455603659153
+            },
+            {
+              "start": 1.38,
+              "end": 1.74,
+              "word": " Хочу",
+              "probability": 0.9669649004936218
+            },
+            {
+              "start": 1.74,
+              "end": 2.24,
+              "word": " получше",
+              "probability": 0.9592932164669037
+            },
+            {
+              "start": 2.24,
+              "end": 2.9,
+              "word": " рассмотреть!",
+              "probability": 0.9923855861028036
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_search_interest_04"
+    },
+    {
+      "sha256": "160fe0d2aebc996e97afecd38722b005c3eedffc89eec2ebcbfa997d184d059a",
+      "expected": "Ого, зашевелилось!",
+      "transcript": "Ого! Зашевелилась!",
+      "similarity": 0.933,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.011,
+        "rms": 0.08466,
+        "peak": 0.3683,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "160fe0d2aebc996e97afecd38722b005c3eedffc89eec2ebcbfa997d184d059a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.78,
+          "text": " Ого! Зашевелилась!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Ого!",
+              "probability": 0.679342731833458
+            },
+            {
+              "start": 0.92,
+              "end": 1.78,
+              "word": " Зашевелилась!",
+              "probability": 0.832066535949707
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_observation_01"
+    },
+    {
+      "sha256": "8b23c47ffc4d5d2cbac52c593ac097dced41415bb40e5cab5e345c63890d76b3",
+      "expected": "Ну же… ещё чуть-чуть.",
+      "transcript": "Ну же! Ещё чуть-чуть!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.933,
+        "rms": 0.07235,
+        "peak": 0.28771,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.113,
+        "sha256": "8b23c47ffc4d5d2cbac52c593ac097dced41415bb40e5cab5e345c63890d76b3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.72,
+          "text": " Ну же! Ещё чуть-чуть!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.44,
+              "word": " Ну",
+              "probability": 0.326328307390213
+            },
+            {
+              "start": 0.44,
+              "end": 0.64,
+              "word": " же!",
+              "probability": 0.9362274408340454
+            },
+            {
+              "start": 0.94,
+              "end": 1.28,
+              "word": " Ещё",
+              "probability": 0.7054883241653442
+            },
+            {
+              "start": 1.28,
+              "end": 1.46,
+              "word": " чуть",
+              "probability": 0.9879655241966248
+            },
+            {
+              "start": 1.46,
+              "end": 1.72,
+              "word": "-чуть!",
+              "probability": 0.9457714955012003
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_observation_02"
+    },
+    {
+      "sha256": "5e92b29b546fc9761480ea9426563acb1b43c6c9c72e9ad8bd43b74048d4e22a",
+      "expected": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+      "transcript": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 5.695,
+        "rms": 0.07435,
+        "peak": 0.31511,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.115,
+        "sha256": "5e92b29b546fc9761480ea9426563acb1b43c6c9c72e9ad8bd43b74048d4e22a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.5,
+          "text": " Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.52,
+              "word": " Если",
+              "probability": 0.7229353189468384
+            },
+            {
+              "start": 0.52,
+              "end": 0.86,
+              "word": " хочешь",
+              "probability": 0.9608839154243469
+            },
+            {
+              "start": 0.86,
+              "end": 1.44,
+              "word": " разобраться",
+              "probability": 0.9985981186230978
+            },
+            {
+              "start": 1.44,
+              "end": 1.56,
+              "word": " с",
+              "probability": 0.9976730942726135
+            },
+            {
+              "start": 1.56,
+              "end": 2.28,
+              "word": " инструментами,",
+              "probability": 0.9968962371349335
+            },
+            {
+              "start": 2.56,
+              "end": 3.08,
+              "word": " начни",
+              "probability": 0.9927396178245544
+            },
+            {
+              "start": 3.08,
+              "end": 3.18,
+              "word": " с",
+              "probability": 0.8735069036483765
+            },
+            {
+              "start": 3.18,
+              "end": 3.42,
+              "word": " бота",
+              "probability": 0.9202598035335541
+            },
+            {
+              "start": 3.42,
+              "end": 3.5,
+              "word": " в",
+              "probability": 0.9612369537353516
+            },
+            {
+              "start": 3.5,
+              "end": 3.9,
+              "word": " шапке.",
+              "probability": 0.9369389414787292
+            },
+            {
+              "start": 4.5,
+              "end": 4.68,
+              "word": " Он",
+              "probability": 0.9649054408073425
+            },
+            {
+              "start": 4.68,
+              "end": 5.1,
+              "word": " объяснит",
+              "probability": 0.9816403985023499
+            },
+            {
+              "start": 5.1,
+              "end": 5.5,
+              "word": " шаги.",
+              "probability": 0.9976059198379517
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_01"
+    },
+    {
+      "sha256": "4e2696d651116a3ba596df0b42acb3e9e4a11a4e69db87079e3e425fc0f15484",
+      "expected": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+      "transcript": "Доступ объясняется в ботте, он по ссылке в профиле. Если шаг не понятен, уточни какой.",
+      "similarity": 0.993,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.911,
+        "rms": 0.08621,
+        "peak": 0.37174,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.111,
+        "sha256": "4e2696d651116a3ba596df0b42acb3e9e4a11a4e69db87079e3e425fc0f15484"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.78,
+          "text": " Доступ объясняется в ботте, он по ссылке в профиле.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Доступ",
+              "probability": 0.8005859851837158
+            },
+            {
+              "start": 0.56,
+              "end": 1.14,
+              "word": " объясняется",
+              "probability": 0.9832985798517863
+            },
+            {
+              "start": 1.14,
+              "end": 1.24,
+              "word": " в",
+              "probability": 0.9821963310241699
+            },
+            {
+              "start": 1.24,
+              "end": 1.5,
+              "word": " ботте,",
+              "probability": 0.7235475381215414
+            },
+            {
+              "start": 1.54,
+              "end": 1.6,
+              "word": " он",
+              "probability": 0.9446831941604614
+            },
+            {
+              "start": 1.6,
+              "end": 1.74,
+              "word": " по",
+              "probability": 0.812800943851471
+            },
+            {
+              "start": 1.74,
+              "end": 2.06,
+              "word": " ссылке",
+              "probability": 0.9927197098731995
+            },
+            {
+              "start": 2.06,
+              "end": 2.12,
+              "word": " в",
+              "probability": 0.9916523098945618
+            },
+            {
+              "start": 2.12,
+              "end": 2.78,
+              "word": " профиле.",
+              "probability": 0.9374080697695414
+            }
+          ]
+        },
+        {
+          "start": 2.78,
+          "end": 4.6,
+          "text": " Если шаг не понятен, уточни какой.",
+          "words": [
+            {
+              "start": 2.78,
+              "end": 3.22,
+              "word": " Если",
+              "probability": 0.9550633430480957
+            },
+            {
+              "start": 3.22,
+              "end": 3.48,
+              "word": " шаг",
+              "probability": 0.986286848783493
+            },
+            {
+              "start": 3.48,
+              "end": 3.58,
+              "word": " не",
+              "probability": 0.561705470085144
+            },
+            {
+              "start": 3.58,
+              "end": 4.02,
+              "word": " понятен,",
+              "probability": 0.9250460068384806
+            },
+            {
+              "start": 4.04,
+              "end": 4.36,
+              "word": " уточни",
+              "probability": 0.9142305850982666
+            },
+            {
+              "start": 4.36,
+              "end": 4.6,
+              "word": " какой.",
+              "probability": 0.9433696269989014
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00032,
+      "tail_peak": 0.00169,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_02"
+    },
+    {
+      "sha256": "a485f607ecef52145129d4490b5394696acb3ea89fa67dfc2ba06a41d82e2eed",
+      "expected": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+      "transcript": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.519,
+        "rms": 0.08499,
+        "peak": 0.42521,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.119,
+        "sha256": "a485f607ecef52145129d4490b5394696acb3ea89fa67dfc2ba06a41d82e2eed"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.36,
+          "text": " Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.5,
+              "word": " Кстати,",
+              "probability": 0.7785114049911499
+            },
+            {
+              "start": 0.72,
+              "end": 0.92,
+              "word": " бот",
+              "probability": 0.6952128112316132
+            },
+            {
+              "start": 0.92,
+              "end": 1.14,
+              "word": " есть",
+              "probability": 0.987627387046814
+            },
+            {
+              "start": 1.14,
+              "end": 1.28,
+              "word": " в",
+              "probability": 0.9876311421394348
+            },
+            {
+              "start": 1.28,
+              "end": 1.6,
+              "word": " шапке",
+              "probability": 0.9883464773495992
+            },
+            {
+              "start": 1.6,
+              "end": 2.08,
+              "word": " профиля.",
+              "probability": 0.9773112535476685
+            },
+            {
+              "start": 2.5,
+              "end": 2.6,
+              "word": " Там",
+              "probability": 0.9909560084342957
+            },
+            {
+              "start": 2.6,
+              "end": 2.9,
+              "word": " можно",
+              "probability": 0.9955572485923767
+            },
+            {
+              "start": 2.9,
+              "end": 3.32,
+              "word": " посмотреть",
+              "probability": 0.9959520101547241
+            },
+            {
+              "start": 3.32,
+              "end": 3.86,
+              "word": " условия",
+              "probability": 0.9374521970748901
+            },
+            {
+              "start": 3.86,
+              "end": 4.36,
+              "word": " доступа.",
+              "probability": 0.9986372292041779
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_03"
+    },
+    {
+      "sha256": "b38990c93a6eabe0d4e65c27ac443cae03efd118653538553b4d4a5b00760fee",
+      "expected": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+      "transcript": "Оставлю маленькую подсказку. Ссылка на бота в профиле.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.0787,
+        "peak": 0.36007,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.103,
+        "sha256": "b38990c93a6eabe0d4e65c27ac443cae03efd118653538553b4d4a5b00760fee"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.88,
+          "text": " Оставлю маленькую подсказку.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.78,
+              "word": " Оставлю",
+              "probability": 0.8254743814468384
+            },
+            {
+              "start": 0.78,
+              "end": 1.18,
+              "word": " маленькую",
+              "probability": 0.9775263071060181
+            },
+            {
+              "start": 1.18,
+              "end": 1.88,
+              "word": " подсказку.",
+              "probability": 0.9903231561183929
+            }
+          ]
+        },
+        {
+          "start": 2.18,
+          "end": 3.54,
+          "text": " Ссылка на бота в профиле.",
+          "words": [
+            {
+              "start": 2.18,
+              "end": 2.6,
+              "word": " Ссылка",
+              "probability": 0.9787605802218119
+            },
+            {
+              "start": 2.6,
+              "end": 2.74,
+              "word": " на",
+              "probability": 0.9790757894515991
+            },
+            {
+              "start": 2.74,
+              "end": 2.98,
+              "word": " бота",
+              "probability": 0.6873231828212738
+            },
+            {
+              "start": 2.98,
+              "end": 3.06,
+              "word": " в",
+              "probability": 0.9929450154304504
+            },
+            {
+              "start": 3.06,
+              "end": 3.54,
+              "word": " профиле.",
+              "probability": 0.9770382444063822
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_04"
+    },
+    {
+      "sha256": "c86afe07f19fc4e71200172883e2c1b3c6c87a9425f7614c636a7a7b22eda0fb",
+      "expected": "Ссылка на инструменты — в профиле, через бота.",
+      "transcript": "Посылка на инструменты в профиле через бота.",
+      "similarity": 0.959,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.873,
+        "rms": 0.08996,
+        "peak": 0.43822,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.093,
+        "sha256": "c86afe07f19fc4e71200172883e2c1b3c6c87a9425f7614c636a7a7b22eda0fb"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.68,
+          "text": " Посылка на инструменты в профиле через бота.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.62,
+              "word": " Посылка",
+              "probability": 0.8326966563860575
+            },
+            {
+              "start": 0.62,
+              "end": 0.7,
+              "word": " на",
+              "probability": 0.9944884777069092
+            },
+            {
+              "start": 0.7,
+              "end": 1.32,
+              "word": " инструменты",
+              "probability": 0.9874726235866547
+            },
+            {
+              "start": 1.32,
+              "end": 1.4,
+              "word": " в",
+              "probability": 0.9632909297943115
+            },
+            {
+              "start": 1.4,
+              "end": 1.96,
+              "word": " профиле",
+              "probability": 0.9196419517199198
+            },
+            {
+              "start": 1.96,
+              "end": 2.24,
+              "word": " через",
+              "probability": 0.9276604652404785
+            },
+            {
+              "start": 2.24,
+              "end": 2.68,
+              "word": " бота.",
+              "probability": 0.7607810199260712
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_06"
+    },
+    {
+      "sha256": "44d2819984b02dd0bc5a6e850ef736ffb977a0ac56d7c258570f97bede7ad033",
+      "expected": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+      "transcript": "Продоступ удобнее посмотреть в ботте. Ссылка в шапке.",
+      "similarity": 0.989,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.5,
+        "rms": 0.08444,
+        "peak": 0.411,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.1,
+        "sha256": "44d2819984b02dd0bc5a6e850ef736ffb977a0ac56d7c258570f97bede7ad033"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.14,
+          "text": " Продоступ удобнее посмотреть в ботте.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.7,
+              "word": " Продоступ",
+              "probability": 0.7216431498527527
+            },
+            {
+              "start": 0.7,
+              "end": 1.12,
+              "word": " удобнее",
+              "probability": 0.9468938410282135
+            },
+            {
+              "start": 1.12,
+              "end": 1.46,
+              "word": " посмотреть",
+              "probability": 0.9805592894554138
+            },
+            {
+              "start": 1.46,
+              "end": 1.72,
+              "word": " в",
+              "probability": 0.9835456609725952
+            },
+            {
+              "start": 1.72,
+              "end": 2.14,
+              "word": " ботте.",
+              "probability": 0.8387549718221029
+            }
+          ]
+        },
+        {
+          "start": 2.48,
+          "end": 3.28,
+          "text": " Ссылка в шапке.",
+          "words": [
+            {
+              "start": 2.48,
+              "end": 2.86,
+              "word": " Ссылка",
+              "probability": 0.9820101658503214
+            },
+            {
+              "start": 2.86,
+              "end": 2.92,
+              "word": " в",
+              "probability": 0.9920561909675598
+            },
+            {
+              "start": 2.92,
+              "end": 3.28,
+              "word": " шапке.",
+              "probability": 0.9568982323010763
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_05"
+    },
+    {
+      "sha256": "bf54ccc5ee2737ff469d20607e099fa9d986cd54c32f17e4402e9357e7532265",
+      "expected": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+      "transcript": "Кому нужны шаги подключения, они расписаны в ботте из профиля.",
+      "similarity": 0.99,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.945,
+        "rms": 0.08684,
+        "peak": 0.40914,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.105,
+        "sha256": "bf54ccc5ee2737ff469d20607e099fa9d986cd54c32f17e4402e9357e7532265"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.74,
+          "text": " Кому нужны шаги подключения, они расписаны в ботте из профиля.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.48,
+              "word": " Кому",
+              "probability": 0.851653665304184
+            },
+            {
+              "start": 0.48,
+              "end": 0.82,
+              "word": " нужны",
+              "probability": 0.9967419803142548
+            },
+            {
+              "start": 0.82,
+              "end": 1.12,
+              "word": " шаги",
+              "probability": 0.9977579712867737
+            },
+            {
+              "start": 1.12,
+              "end": 1.82,
+              "word": " подключения,",
+              "probability": 0.9963831504185995
+            },
+            {
+              "start": 1.98,
+              "end": 2.24,
+              "word": " они",
+              "probability": 0.9942201375961304
+            },
+            {
+              "start": 2.24,
+              "end": 2.8,
+              "word": " расписаны",
+              "probability": 0.9955085118611654
+            },
+            {
+              "start": 2.8,
+              "end": 2.92,
+              "word": " в",
+              "probability": 0.9913380146026611
+            },
+            {
+              "start": 2.92,
+              "end": 3.22,
+              "word": " ботте",
+              "probability": 0.7910871704419454
+            },
+            {
+              "start": 3.22,
+              "end": 3.3,
+              "word": " из",
+              "probability": 0.8945654630661011
+            },
+            {
+              "start": 3.3,
+              "end": 3.74,
+              "word": " профиля.",
+              "probability": 0.985997885465622
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_07"
+    },
+    {
+      "sha256": "4f1330c71601042e4f203ae290bc2a406b0970f5d3072a1a222e3be36259cc0a",
+      "expected": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+      "transcript": "Будь в шапке профиля. Можешь заглянуть? А я пока здесь.",
+      "similarity": 0.941,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.519,
+        "rms": 0.07008,
+        "peak": 0.34459,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.139,
+        "sha256": "4f1330c71601042e4f203ae290bc2a406b0970f5d3072a1a222e3be36259cc0a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.18,
+          "text": " Будь в шапке профиля. Можешь заглянуть? А я пока здесь.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.52,
+              "word": " Будь",
+              "probability": 0.8671854138374329
+            },
+            {
+              "start": 0.52,
+              "end": 0.6,
+              "word": " в",
+              "probability": 0.9721549153327942
+            },
+            {
+              "start": 0.6,
+              "end": 0.94,
+              "word": " шапке",
+              "probability": 0.9903185168902079
+            },
+            {
+              "start": 0.94,
+              "end": 1.44,
+              "word": " профиля.",
+              "probability": 0.9534106552600861
+            },
+            {
+              "start": 2.04,
+              "end": 2.56,
+              "word": " Можешь",
+              "probability": 0.9608437021573385
+            },
+            {
+              "start": 2.56,
+              "end": 3.1,
+              "word": " заглянуть?",
+              "probability": 0.9867252310117086
+            },
+            {
+              "start": 3.44,
+              "end": 3.5,
+              "word": " А",
+              "probability": 0.8002585768699646
+            },
+            {
+              "start": 3.5,
+              "end": 3.62,
+              "word": " я",
+              "probability": 0.9962195754051208
+            },
+            {
+              "start": 3.62,
+              "end": 3.86,
+              "word": " пока",
+              "probability": 0.9808639883995056
+            },
+            {
+              "start": 3.86,
+              "end": 4.18,
+              "word": " здесь.",
+              "probability": 0.9936249256134033
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0002,
+      "tail_peak": 0.00086,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_bot_08"
+    },
+    {
+      "sha256": "579279c2022197cf38e8c0fb2203991d4a8947da77a6659c4dc136236deb7c76",
+      "expected": "Привет-привет! О, рада тебя видеть.",
+      "transcript": "Привет, привет! Рада тебя видеть!",
+      "similarity": 0.981,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.5,
+        "rms": 0.07675,
+        "peak": 0.38563,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.12,
+        "sha256": "579279c2022197cf38e8c0fb2203991d4a8947da77a6659c4dc136236deb7c76"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.3,
+          "text": " Привет, привет! Рада тебя видеть!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Привет,",
+              "probability": 0.7486304044723511
+            },
+            {
+              "start": 0.74,
+              "end": 1.02,
+              "word": " привет!",
+              "probability": 0.9085654020309448
+            },
+            {
+              "start": 1.8,
+              "end": 2.58,
+              "word": " Рада",
+              "probability": 0.7675681114196777
+            },
+            {
+              "start": 2.58,
+              "end": 2.8,
+              "word": " тебя",
+              "probability": 0.972190260887146
+            },
+            {
+              "start": 2.8,
+              "end": 3.3,
+              "word": " видеть!",
+              "probability": 0.9981191754341125
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_01"
+    },
+    {
+      "sha256": "e3df343f4b80227eb1ab98e1cad214fb6fc7d50b882ee7669590f7702f0d4f62",
+      "expected": "О, привет! Как ты вовремя.",
+      "transcript": "Привет! Как ты вовремя?",
+      "similarity": 0.973,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.534,
+        "rms": 0.08575,
+        "peak": 0.33591,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.094,
+        "sha256": "e3df343f4b80227eb1ab98e1cad214fb6fc7d50b882ee7669590f7702f0d4f62"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.38,
+          "text": " Привет! Как ты вовремя?",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 1.02,
+              "word": " Привет!",
+              "probability": 0.3254724144935608
+            },
+            {
+              "start": 1.5,
+              "end": 1.64,
+              "word": " Как",
+              "probability": 0.9572784304618835
+            },
+            {
+              "start": 1.64,
+              "end": 1.82,
+              "word": " ты",
+              "probability": 0.6906507611274719
+            },
+            {
+              "start": 1.82,
+              "end": 2.38,
+              "word": " вовремя?",
+              "probability": 0.9760279357433319
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_02"
+    },
+    {
+      "sha256": "b660191aad8f4e9b6ff11c7b23a4b90e7af268535a70dd6c3b44717e079cc228",
+      "expected": "Привет! Устраивайся рядом.",
+      "transcript": "Привет! Устраивайся рядом!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.586,
+        "rms": 0.08776,
+        "peak": 0.48253,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.046,
+        "sha256": "b660191aad8f4e9b6ff11c7b23a4b90e7af268535a70dd6c3b44717e079cc228"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.24,
+          "text": " Привет! Устраивайся рядом!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.78,
+              "word": " Привет!",
+              "probability": 0.8297465443611145
+            },
+            {
+              "start": 1.3,
+              "end": 2.0,
+              "word": " Устраивайся",
+              "probability": 0.9526354908943176
+            },
+            {
+              "start": 2.0,
+              "end": 2.24,
+              "word": " рядом!",
+              "probability": 0.98763507604599
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0147,
+      "tail_peak": 0.04723,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_03"
+    },
+    {
+      "sha256": "5d341b0c7abff49358fb5468c64dd35ace41ac606f0c3a77c2067a1f612f2313",
+      "expected": "Приветик! Ну всё, теперь можно поболтать.",
+      "transcript": "Приветик! Ну всё, теперь можно поболтать!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.37,
+        "rms": 0.07464,
+        "peak": 0.35085,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.11,
+        "sha256": "5d341b0c7abff49358fb5468c64dd35ace41ac606f0c3a77c2067a1f612f2313"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.2,
+          "text": " Приветик! Ну всё, теперь можно поболтать!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.78,
+              "word": " Приветик!",
+              "probability": 0.9177414774894714
+            },
+            {
+              "start": 1.18,
+              "end": 1.44,
+              "word": " Ну",
+              "probability": 0.9539673328399658
+            },
+            {
+              "start": 1.44,
+              "end": 1.66,
+              "word": " всё,",
+              "probability": 0.4628616273403168
+            },
+            {
+              "start": 2.04,
+              "end": 2.24,
+              "word": " теперь",
+              "probability": 0.9913038015365601
+            },
+            {
+              "start": 2.24,
+              "end": 2.58,
+              "word": " можно",
+              "probability": 0.9883870482444763
+            },
+            {
+              "start": 2.58,
+              "end": 3.2,
+              "word": " поболтать!",
+              "probability": 0.9922541528940201
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_04"
+    },
+    {
+      "sha256": "b066fc7d576e67d7bea87a8c528e2efc0046c79639475a7ebf86f1715e752378",
+      "expected": "Привет! Я тебя заметила.",
+      "transcript": "Привет! Я тебя заметила!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.403,
+        "rms": 0.08638,
+        "peak": 0.36876,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.24,
+        "trailing_silence": 0.103,
+        "sha256": "b066fc7d576e67d7bea87a8c528e2efc0046c79639475a7ebf86f1715e752378"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.2,
+          "text": " Привет! Я тебя заметила!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.64,
+              "word": " Привет!",
+              "probability": 0.8390122652053833
+            },
+            {
+              "start": 1.08,
+              "end": 1.28,
+              "word": " Я",
+              "probability": 0.9570120573043823
+            },
+            {
+              "start": 1.28,
+              "end": 1.52,
+              "word": " тебя",
+              "probability": 0.9783343076705933
+            },
+            {
+              "start": 1.52,
+              "end": 2.2,
+              "word": " заметила!",
+              "probability": 0.992333710193634
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_05"
+    },
+    {
+      "sha256": "d60af5eaf77a3ff5cc9ff04f410084b8730facd48c23390171525952d8c01737",
+      "expected": "Привет! Что у тебя сегодня хорошего?",
+      "transcript": "Привет! Что у тебя сегодня хорошего?",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.926,
+        "rms": 0.08426,
+        "peak": 0.4044,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.106,
+        "sha256": "d60af5eaf77a3ff5cc9ff04f410084b8730facd48c23390171525952d8c01737"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.7,
+          "text": " Привет! Что у тебя сегодня хорошего?",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Привет!",
+              "probability": 0.910369873046875
+            },
+            {
+              "start": 1.16,
+              "end": 1.46,
+              "word": " Что",
+              "probability": 0.9448415040969849
+            },
+            {
+              "start": 1.46,
+              "end": 1.64,
+              "word": " у",
+              "probability": 0.9930105805397034
+            },
+            {
+              "start": 1.64,
+              "end": 1.76,
+              "word": " тебя",
+              "probability": 0.9988709092140198
+            },
+            {
+              "start": 1.76,
+              "end": 2.06,
+              "word": " сегодня",
+              "probability": 0.9735423922538757
+            },
+            {
+              "start": 2.06,
+              "end": 2.7,
+              "word": " хорошего?",
+              "probability": 0.97186279296875
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_06"
+    },
+    {
+      "sha256": "30822f6c8c1cca72e56f4d816b8226bcb6fc6108a59cdc828e11311d84cdc795",
+      "expected": "Привет! Рада, что написал.",
+      "transcript": "Привет! Рада, что написал!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.194,
+        "rms": 0.08856,
+        "peak": 0.38184,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.094,
+        "sha256": "30822f6c8c1cca72e56f4d816b8226bcb6fc6108a59cdc828e11311d84cdc795"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.04,
+          "text": " Привет! Рада, что написал!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Привет!",
+              "probability": 0.827048659324646
+            },
+            {
+              "start": 1.0,
+              "end": 1.32,
+              "word": " Рада,",
+              "probability": 0.8830794394016266
+            },
+            {
+              "start": 1.32,
+              "end": 1.48,
+              "word": " что",
+              "probability": 0.9941599369049072
+            },
+            {
+              "start": 1.48,
+              "end": 2.04,
+              "word": " написал!",
+              "probability": 0.9901282489299774
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_07"
+    },
+    {
+      "sha256": "f9e75e0f6e88b3acc7c437b9148af5cb761357b1504b5e5beb0cf4221f46c7d6",
+      "expected": "Привет-привет. Располагайся, я тут.",
+      "transcript": "Привет, привет! Располагайся, я тут!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.004,
+        "rms": 0.08331,
+        "peak": 0.38995,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.124,
+        "sha256": "f9e75e0f6e88b3acc7c437b9148af5cb761357b1504b5e5beb0cf4221f46c7d6"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.72,
+          "text": " Привет, привет! Располагайся, я тут!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.64,
+              "word": " Привет,",
+              "probability": 0.7450265884399414
+            },
+            {
+              "start": 0.82,
+              "end": 1.0,
+              "word": " привет!",
+              "probability": 0.8850972056388855
+            },
+            {
+              "start": 1.9,
+              "end": 2.34,
+              "word": " Располагайся,",
+              "probability": 0.9750860134760538
+            },
+            {
+              "start": 2.42,
+              "end": 2.5,
+              "word": " я",
+              "probability": 0.9896101951599121
+            },
+            {
+              "start": 2.5,
+              "end": 2.72,
+              "word": " тут!",
+              "probability": 0.9900087118148804
+            }
+          ]
+        }
+      ],
+      "tail_rms": 6e-05,
+      "tail_peak": 0.0002,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_chat_greeting_08"
+    },
+    {
+      "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879",
+      "expected": "Открыла вверх.",
+      "transcript": "Открыла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08764,
+        "peak": 0.28815,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.158,
+        "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.18,
+          "text": " Открыла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Открыла",
+              "probability": 0.8404434323310852
+            },
+            {
+              "start": 0.66,
+              "end": 1.18,
+              "word": " вверх!",
+              "probability": 0.8343896667162577
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_01_v2"
+    },
+    {
+      "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879",
+      "expected": "Открыла вверх.",
+      "transcript": "Открыла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08764,
+        "peak": 0.28815,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.158,
+        "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.18,
+          "text": " Открыла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Открыла",
+              "probability": 0.8404434323310852
+            },
+            {
+              "start": 0.66,
+              "end": 1.18,
+              "word": " вверх!",
+              "probability": 0.8343896667162577
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_03_v2"
+    },
+    {
+      "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32",
+      "expected": "Зашла вверх.",
+      "transcript": "Зашла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.228,
+        "rms": 0.0893,
+        "peak": 0.30993,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.168,
+        "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.06,
+          "text": " Зашла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Зашла",
+              "probability": 0.8643142183621725
+            },
+            {
+              "start": 0.56,
+              "end": 1.06,
+              "word": " вверх!",
+              "probability": 0.950394074122111
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_02_v2"
+    },
+    {
+      "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32",
+      "expected": "Зашла вверх.",
+      "transcript": "Зашла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.228,
+        "rms": 0.0893,
+        "peak": 0.30993,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.168,
+        "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.06,
+          "text": " Зашла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Зашла",
+              "probability": 0.8643142183621725
+            },
+            {
+              "start": 0.56,
+              "end": 1.06,
+              "word": " вверх!",
+              "probability": 0.950394074122111
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_04_v2"
+    },
+    {
+      "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879",
+      "expected": "Открыла вверх.",
+      "transcript": "Открыла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08764,
+        "peak": 0.28815,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.158,
+        "sha256": "e78de13b8dbab302c828072af21781fccbdc0d4fcda04163c746e2c82c073879"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.18,
+          "text": " Открыла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.66,
+              "word": " Открыла",
+              "probability": 0.8404434323310852
+            },
+            {
+              "start": 0.66,
+              "end": 1.18,
+              "word": " вверх!",
+              "probability": 0.8343896667162577
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_05_v2"
+    },
+    {
+      "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32",
+      "expected": "Зашла вверх.",
+      "transcript": "Зашла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.228,
+        "rms": 0.0893,
+        "peak": 0.30993,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.08,
+        "trailing_silence": 0.168,
+        "sha256": "5c2068f9f8c28ac160f6762cf9f74d97664f063b143d492f4c14d99f7edf5b32"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.06,
+          "text": " Зашла вверх!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.56,
+              "word": " Зашла",
+              "probability": 0.8643142183621725
+            },
+            {
+              "start": 0.56,
+              "end": 1.06,
+              "word": " вверх!",
+              "probability": 0.950394074122111
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0,
+      "tail_peak": 0,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_buy_06_v2"
+    },
+    {
+      "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d",
+      "expected": "Зашла вниз.",
+      "transcript": "Зашла вниз!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.306,
+        "rms": 0.08383,
+        "peak": 0.31779,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.166,
+        "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.86,
+          "text": " Зашла вниз!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Зашла",
+              "probability": 0.8685357968012491
+            },
+            {
+              "start": 0.6,
+              "end": 0.86,
+              "word": " вниз!",
+              "probability": 0.9855172038078308
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00473,
+      "tail_peak": 0.03292,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_02_v2"
+    },
+    {
+      "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e",
+      "expected": "Открыла вниз.",
+      "transcript": "Открыла вниз.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08955,
+        "peak": 0.31825,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.12,
+        "trailing_silence": 0.158,
+        "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.96,
+          "text": " Открыла вниз.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.72,
+              "word": " Открыла",
+              "probability": 0.9170884490013123
+            },
+            {
+              "start": 0.72,
+              "end": 0.96,
+              "word": " вниз.",
+              "probability": 0.9645000696182251
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0019,
+      "tail_peak": 0.02139,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_01_v2"
+    },
+    {
+      "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e",
+      "expected": "Открыла вниз.",
+      "transcript": "Открыла вниз.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08955,
+        "peak": 0.31825,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.12,
+        "trailing_silence": 0.158,
+        "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.96,
+          "text": " Открыла вниз.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.72,
+              "word": " Открыла",
+              "probability": 0.9170884490013123
+            },
+            {
+              "start": 0.72,
+              "end": 0.96,
+              "word": " вниз.",
+              "probability": 0.9645000696182251
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0019,
+      "tail_peak": 0.02139,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_03_v2"
+    },
+    {
+      "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d",
+      "expected": "Зашла вниз.",
+      "transcript": "Зашла вниз!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.306,
+        "rms": 0.08383,
+        "peak": 0.31779,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.166,
+        "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.86,
+          "text": " Зашла вниз!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Зашла",
+              "probability": 0.8685357968012491
+            },
+            {
+              "start": 0.6,
+              "end": 0.86,
+              "word": " вниз!",
+              "probability": 0.9855172038078308
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00473,
+      "tail_peak": 0.03292,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_04_v2"
+    },
+    {
+      "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e",
+      "expected": "Открыла вниз.",
+      "transcript": "Открыла вниз.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08955,
+        "peak": 0.31825,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.12,
+        "trailing_silence": 0.158,
+        "sha256": "2603bb6de613818d784a959fa0ba2451797eda3b107d11765df237de2199b90e"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.96,
+          "text": " Открыла вниз.",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.72,
+              "word": " Открыла",
+              "probability": 0.9170884490013123
+            },
+            {
+              "start": 0.72,
+              "end": 0.96,
+              "word": " вниз.",
+              "probability": 0.9645000696182251
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.0019,
+      "tail_peak": 0.02139,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_05_v2"
+    },
+    {
+      "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d",
+      "expected": "Зашла вниз.",
+      "transcript": "Зашла вниз!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.306,
+        "rms": 0.08383,
+        "peak": 0.31779,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.1,
+        "trailing_silence": 0.166,
+        "sha256": "14d333aa3d3dc4c217e3654131a2084a723618396b061c1f4fb6c19b4866c93d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 0.86,
+          "text": " Зашла вниз!",
+          "words": [
+            {
+              "start": 0.0,
+              "end": 0.6,
+              "word": " Зашла",
+              "probability": 0.8685357968012491
+            },
+            {
+              "start": 0.6,
+              "end": 0.86,
+              "word": " вниз!",
+              "probability": 0.9855172038078308
+            }
+          ]
+        }
+      ],
+      "tail_rms": 0.00473,
+      "tail_peak": 0.03292,
+      "issues": [],
+      "auditory_verified": false,
+      "id": "autonomous_ru_direction_sell_06_v2"
+    }
+  ],
+  "checked_recording_slots": 76,
+  "unique_waveforms": 68,
+  "failed": 1,
+  "paid_asr_requests": 0,
+  "auditory_review_complete": false
+}

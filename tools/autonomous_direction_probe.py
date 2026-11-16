@@ -125,7 +125,7 @@ def retake_v3(identity,tag,*,replace_rejected=False,fresh_take=False,reason='str
     found=[(group,r) for group in manifest['categories'].values() for r in group if r['id']==identity]
     if len(found)!=1:raise ValueError('Unknown active direction take')
     group,old=found[0]
-    heard=old.get('owner_listened') or old.get('auditory_verified')
+    heard=old.get('owner_listened') or old.get('auditory_verified') or old.get('review_accepted') is True
     rejected_replacement=(replace_rejected and old.get('owner_listened') is True
                           and old.get('review_accepted') is False and old.get('status')=='rejected_delivery')
     if heard and not rejected_replacement:raise ValueError('Never replace owner-listened audio')

@@ -68,6 +68,26 @@ class DirectionRevisionTests(unittest.TestCase):
                 production.generate(Path('/nonexistent-approval.json'))
             paid.assert_not_called()
 
+    def test_owner_set_acceptance_is_hash_bound_without_fabricated_individual_hearing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);rows=[]
+            for i,text in enumerate(TEXTS):
+                path=root/f'{i}.mp3';path.write_bytes(str(i).encode())
+                rows.append(dict(text=text,file=path.name,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                    owner_listened=False,auditory_verified=False,review_accepted=True,review_method='owner_set_acceptance',
+                    review_basis='owner_set_acceptance_after_targeted_first_take_fix'))
+            manifest=dict(delivery_set_accepted=True,categories={'DIRECTION':rows})
+            (root/'manifest.json').write_text(json.dumps(manifest))
+            with patch.object(production,'BANK_V3',root):
+                self.assertTrue(production.direction_delivery_accepted())
+                manifest['delivery_set_accepted']=False
+                (root/'manifest.json').write_text(json.dumps(manifest))
+                self.assertFalse(production.direction_delivery_accepted())
+                manifest['delivery_set_accepted']=True
+                (root/'manifest.json').write_text(json.dumps(manifest))
+                (root/'0.mp3').write_bytes(b'changed')
+                self.assertFalse(production.direction_delivery_accepted())
+
     def test_local_quality_profile_does_not_change_global_voice_tuning(self):
         engine=directions.ClearDirectionTTS()
         try:

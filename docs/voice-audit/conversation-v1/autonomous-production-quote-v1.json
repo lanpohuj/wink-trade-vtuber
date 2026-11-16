@@ -4,12 +4,12 @@
   "cards": 76,
   "distinct_texts": 68,
   "preserved": 2,
-  "new_requests": 63,
-  "cached": 3,
-  "utf8_bytes": 4098,
-  "estimate_usd": 0.06147,
+  "new_requests": 0,
+  "cached": 66,
+  "utf8_bytes": 0,
+  "estimate_usd": 0.0,
   "max_new_usd": 0.1,
-  "reserved_usd": 3.892319999999997,
+  "reserved_usd": 3.9594599999999973,
   "cumulative_limit_usd": 7.0,
   "fits_cumulative_limit": true,
   "model": "s2.1-pro",
@@ -1337,6 +1337,9 @@
       }
     }
   ],
-  "direction_delivery_accepted": false,
-  "status": "held_for_direction_delivery_review"
+  "direction_delivery_accepted": true,
+  "status": "generated_pending_scene_review",
+  "spend_approved": true,
+  "spent_this_order_usd": 0.06714,
+  "initial_estimate_usd": 0.06147
 }

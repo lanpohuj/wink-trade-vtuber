@@ -16,10 +16,10 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "delivery": "conversational",
         "max_duration_sec": 5,
-        "requires_listening": true,
-        "auditory_verified": false,
+        "requires_listening": false,
+        "auditory_verified": true,
         "evaluation_only": true,
-        "status": "review_pending",
+        "status": "ready",
         "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01_retake2_retake3.mp3",
         "sha256": "2f0c0a0dfbd6e932a0eac797df5b84e385596bd413807929f5115f9922190eb7",
         "duration": 1.35825,
@@ -42,12 +42,14 @@
         },
         "model": "s2.1-pro-free",
         "estimated_usd": 0,
-        "owner_listened": false,
-        "review_accepted": false,
+        "owner_listened": true,
+        "review_accepted": true,
         "retake_reason": "post_speech_audio",
         "supersedes_audio_id": "autonomous_direction_free_v3_ru_01_retake2",
         "automatic_qc_passed": true,
-        "transcript": "Открыла вверх!"
+        "transcript": "Открыла вверх!",
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_good_continue_after_first_take_fix"
       },
       {
         "id": "autonomous_direction_free_v3_ru_02",
@@ -60,10 +62,10 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "delivery": "conversational",
         "max_duration_sec": 5,
-        "requires_listening": true,
+        "requires_listening": false,
         "auditory_verified": false,
         "evaluation_only": true,
-        "status": "review_pending",
+        "status": "ready",
         "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_02.mp3",
         "sha256": "1274188edd0f4eb2e1fb2a1b2e54009aea6daabb71f380adbb05292bc3d1cc27",
         "duration": 1.541125,
@@ -87,7 +89,11 @@
         "model": "s2.1-pro-free",
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Зашла вверх!"
+        "transcript": "Зашла вверх!",
+        "review_accepted": true,
+        "owner_listened": false,
+        "review_method": "owner_set_acceptance",
+        "review_basis": "owner_set_acceptance_after_targeted_first_take_fix"
       }
     ],
     "OPEN_TRADE_PUT": [
@@ -102,10 +108,10 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "delivery": "confident",
         "max_duration_sec": 5,
-        "requires_listening": true,
+        "requires_listening": false,
         "auditory_verified": false,
         "evaluation_only": true,
-        "status": "review_pending",
+        "status": "ready",
         "file": "ru/OPEN_TRADE_PUT/autonomous_direction_free_v3_ru_03_retake1.mp3",
         "sha256": "4b5cffcbc684d0eab70c23dbf4029dbe2a9a9e6cd00f4c1aea5c4036ec66843e",
         "duration": 1.227688,
@@ -131,7 +137,11 @@
         "retake_reason": "strict_short_phrase_asr_mismatch",
         "supersedes_audio_id": "autonomous_direction_free_v3_ru_03",
         "automatic_qc_passed": true,
-        "transcript": "Открыла вниз."
+        "transcript": "Открыла вниз.",
+        "review_accepted": true,
+        "owner_listened": false,
+        "review_method": "owner_set_acceptance",
+        "review_basis": "owner_set_acceptance_after_targeted_first_take_fix"
       },
       {
         "id": "autonomous_direction_free_v3_ru_04",
@@ -144,10 +154,10 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "delivery": "conversational",
         "max_duration_sec": 5,
-        "requires_listening": true,
+        "requires_listening": false,
         "auditory_verified": false,
         "evaluation_only": true,
-        "status": "review_pending",
+        "status": "ready",
         "file": "ru/OPEN_TRADE_PUT/autonomous_direction_free_v3_ru_04.mp3",
         "sha256": "bc4c660aa8837f6f13abe48a3f68749c3b6cfa4db687dfae17221d793c0be3e3",
         "duration": 1.306063,
@@ -171,7 +181,11 @@
         "model": "s2.1-pro-free",
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Зашла вниз!"
+        "transcript": "Зашла вниз!",
+        "review_accepted": true,
+        "owner_listened": false,
+        "review_method": "owner_set_acceptance",
+        "review_basis": "owner_set_acceptance_after_targeted_first_take_fix"
       }
     ]
   },
@@ -309,5 +323,7 @@
       "transcript": "Открыла вверх!"
     }
   ],
-  "delivery_approved_for_expansion": false
+  "delivery_approved_for_expansion": true,
+  "delivery_set_accepted": true,
+  "delivery_set_acceptance_basis": "Owner reported only first take defective, then accepted its replacement and requested continuation."
 }

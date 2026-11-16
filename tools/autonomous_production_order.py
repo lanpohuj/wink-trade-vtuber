@@ -37,7 +37,10 @@ def direction_delivery_accepted():
     if not path.exists():return False
     manifest=json.loads(path.read_text());rows=[r for group in manifest['categories'].values() for r in group]
     return (len(rows)==4 and {r['text'] for r in rows}==set(TEXTS) and all(
-        r.get('owner_listened') is True and r.get('auditory_verified') is True and r.get('review_accepted') is True
+        r.get('review_accepted') is True
+        and ((r.get('owner_listened') is True and r.get('auditory_verified') is True)
+             or (manifest.get('delivery_set_accepted') is True and r.get('review_method')=='owner_set_acceptance'
+                 and r.get('review_basis')=='owner_set_acceptance_after_targeted_first_take_fix'))
         and hashlib.sha256((BANK_V3/r['file']).read_bytes()).hexdigest()==r['sha256'] for r in rows))
 
 
@@ -110,11 +113,19 @@ def quote():
                     model='s2.1-pro',voice_id=MARIN,pricing_source=PRICING,requests=requests,
                     direction_delivery_accepted=direction_delivery_accepted(),
                     status='awaiting_spend_approval' if direction_delivery_accepted() else 'held_for_direction_delivery_review')
+        approval_path=DOCS/'owner-autonomous-production-spend-approval-v1.json'
+        if approval_path.exists():
+            approval=json.loads(approval_path.read_text())
+            if approval.get('approved') is True and approval.get('order_sha256')==result['order_sha256']:
+                verify_approval(approval,result)
+                result.update(spend_approved=True,spent_this_order_usd=round(spent-approval['baseline_reserved_usd'],6),
+                              initial_estimate_usd=approval.get('current_estimate_usd'),
+                              status='generated_pending_scene_review' if (BANK/'manifest.json').exists() else 'approved_for_generation')
         save(QUOTE,result)
         lines=['# Винки: конкретный заказ рабочего пилота RU','',
-               'Заказ удерживается до принятия новых четырёх направлений. Предыдущая проба отклонена владельцем; платного разрешения нет.','',
+               'Четыре направления приняты после замены первого дубля; индивидуальное прослушивание не приписывается остальным трём. Разрешение расходов хранится отдельно по точному SHA256 заказа.' if result['direction_delivery_accepted'] else 'Заказ удерживается до принятия новых четырёх направлений. Предыдущая проба отклонена владельцем; платного разрешения нет.','',
                f"76 карточек / {result['distinct_texts']} разных текстов. Сохраняем {result['preserved']} уже принятых MP3; новых платных запросов {result['new_requests']}, готовых платных файлов в кеше {result['cached']}.",'',
-               f"Смета ${estimate:.6f}; предлагаемый максимальный новый расход ${MAX_NEW_USD:.2f}. Это отдельный заказ: платный запуск ещё не разрешён. [Тариф Fish Audio]({PRICING}).",'',
+               (f"Фактический расход с заменами ${result['spent_this_order_usd']:.6f}, в пределах согласованных ${MAX_NEW_USD:.2f}. Оставшаяся генерация по исходному составу: ${estimate:.6f}. [Тариф Fish Audio]({PRICING})." if result.get('spend_approved') else f"Смета ${estimate:.6f}; предлагаемый максимальный новый расход ${MAX_NEW_USD:.2f}. Это отдельный заказ: платный запуск ещё не разрешён. [Тариф Fish Audio]({PRICING})."),'',
                'Марин, s2.1-pro; .82 / .85, speed 1.06, balanced, 44.1 кГц. Шесть принятых бесплатных дублей служат образцами исполнения и не выдаются за принятые платные файлы. Четыре направления исправлены точными словами владельца. После генерации выполняются QC, разметка прежних жестов и репетиция; автоматического включения в эфир нет.','',
                'Для четырёх направлений отдельно: conversational, temperature .72, speed 1.0, latency normal. Двенадцать слотов используют четыре записи; одинаковые копии не считаются разнообразием и не оплачиваются повторно.','',
                f"SHA256 заказа: `{result['order_sha256']}`.",'','| ID | Точный текст | Тег | Источник |','|---|---|---|---|']
@@ -140,6 +151,13 @@ def generate(approval_path):
     existing=json.loads(manifest_path.read_text()) if manifest_path.exists() else dict(version='1.0',bank_type='commentary_v1',activated=False,categories={})
     by_id={r['id']:r for group in existing['categories'].values() for r in group}
     if existing.get('activated'):raise ValueError('Never regenerate an active bank')
+    if set(by_id)=={r['id'] for r in rows}:
+        complete=all(r.get('text_sha256')==by_id[r['id']].get('text_sha256')
+                     and (BANK/by_id[r['id']]['file']).is_file()
+                     and hashlib.sha256((BANK/by_id[r['id']]['file']).read_bytes()).hexdigest()==by_id[r['id']]['sha256'] for r in rows)
+        if complete:
+            print('Production bank already complete; preserve its takes and use targeted QC repairs only')
+            return
     new=[]
     for r in rows:
         prior=by_id.get(r['id'])
