@@ -1,0 +1,1342 @@
+{
+  "version": 1,
+  "order_sha256": "eccb0786cc59c35a67431f72d04198f102978eb8a3a20e92ba3481c75a3ee654",
+  "cards": 76,
+  "distinct_texts": 68,
+  "preserved": 2,
+  "new_requests": 63,
+  "cached": 3,
+  "utf8_bytes": 4098,
+  "estimate_usd": 0.06147,
+  "max_new_usd": 0.1,
+  "reserved_usd": 3.892319999999997,
+  "cumulative_limit_usd": 7.0,
+  "fits_cumulative_limit": true,
+  "model": "s2.1-pro",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "pricing_source": "https://docs.fish.audio/developer-guide/models-pricing/pricing-and-rate-limits",
+  "requests": [
+    {
+      "id": "autonomous_ru_win_02",
+      "payload": {
+        "text": "[excited] Да-а! Вот это приятно!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_03",
+      "payload": {
+        "text": "[excited] Есть! Можно я ещё секунду порадуюсь?",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_04",
+      "payload": {
+        "text": "[excited] Ой, хорошо-то как!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_05",
+      "payload": {
+        "text": "[excited] Ну вот! Я прямо довольная сейчас.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_06",
+      "payload": {
+        "text": "[excited] А-а, есть! Красиво!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_07",
+      "payload": {
+        "text": "[excited] Да! Вот за такие моменты я и люблю это смотреть.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_08",
+      "payload": {
+        "text": "[conversational] Плюс. М-м, приятно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_09",
+      "payload": {
+        "text": "[excited] Уф! Я выдохнула.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_10",
+      "payload": {
+        "text": "[excited] Есть! Я не зря тут переживала.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_11",
+      "payload": {
+        "text": "[excited] Вот теперь можно улыбаться!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_win_12",
+      "payload": {
+        "text": "[excited] Да-а! Забрали этот момент.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_01",
+      "payload": {
+        "text": "[annoyed] Минус… Мне это совсем не нравится.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_02",
+      "payload": {
+        "text": "[annoyed] Ой, ну нет…",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_03",
+      "payload": {
+        "text": "[conversational] Эх. Обидно получилось.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_04",
+      "payload": {
+        "text": "[annoyed] А-а, досадно!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_05",
+      "payload": {
+        "text": "[annoyed] Ну блин… Я расстроилась.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_06",
+      "payload": {
+        "text": "[conversational] Минус. Да, неприятно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_07",
+      "payload": {
+        "text": "[annoyed] Так… мне нужна секундочка.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_08",
+      "payload": {
+        "text": "[annoyed] Ай… вот это обидно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_09",
+      "payload": {
+        "text": "[conversational] Жаль. Мне хотелось другого финала.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_10",
+      "payload": {
+        "text": "[annoyed] Ух… Ну да, я недовольна.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_11",
+      "payload": {
+        "text": "[annoyed] Ох. Ладно, выдыхаю.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_loss_12",
+      "payload": {
+        "text": "[annoyed] А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_01",
+      "payload": {
+        "text": "[conversational] О, вернулось. Ну хоть так.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_02",
+      "payload": {
+        "text": "[conversational] Так, возврат. Выдыхаю.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_03",
+      "payload": {
+        "text": "[conversational] Ничья. Ладно, бывает.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_04",
+      "payload": {
+        "text": "[conversational] Фух, без потерь.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_05",
+      "payload": {
+        "text": "[conversational] Ну вот… разошлись.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_refund_06",
+      "payload": {
+        "text": "[conversational] Возврат. Я уже успела напрячься.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_search_interest_01",
+      "payload": {
+        "text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_search_interest_02",
+      "payload": {
+        "text": "[curious, conversational] О, погоди… вот тут мне уже интересно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_search_interest_03",
+      "payload": {
+        "text": "[curious, conversational] М-м… пока не цепляет.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_search_interest_04",
+      "payload": {
+        "text": "[curious, conversational] Секундочку… хочу получше рассмотреть.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_observation_01",
+      "payload": {
+        "text": "[curious] Ого, зашевелилось!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_observation_02",
+      "payload": {
+        "text": "[hopeful] Ну же… ещё чуть-чуть.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_02",
+      "payload": {
+        "text": "[happy] Ого! Вот это сюрприз. Спасибо тебе!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_03",
+      "payload": {
+        "text": "[happy] А-а, спасибо! Я даже растерялась.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_04",
+      "payload": {
+        "text": "[happy] Как приятно… спасибо, что балуешь.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_05",
+      "payload": {
+        "text": "[happy] О, ты остаёшься! Привет-привет.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_06",
+      "payload": {
+        "text": "[happy] Спасибо за подписку! Устраивайся.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_07",
+      "payload": {
+        "text": "[happy] Всё, теперь ты с нами. Я рада!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_08",
+      "payload": {
+        "text": "[happy] О, пополнение! Рада тебе.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_09",
+      "payload": {
+        "text": "[happy] Ой, сколько сердечек! Спасибо!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_10",
+      "payload": {
+        "text": "[happy] Вижу ваши сердечки. Мне приятно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_11",
+      "payload": {
+        "text": "[happy] Спасибо за поддержку! Лови сердечко.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_social_12",
+      "payload": {
+        "text": "[happy] Ну всё, я улыбаюсь. Спасибо вам!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_01",
+      "payload": {
+        "text": "[conversational] Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_02",
+      "payload": {
+        "text": "[conversational] Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_03",
+      "payload": {
+        "text": "[conversational] Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_04",
+      "payload": {
+        "text": "[conversational] Оставлю маленькую подсказку: ссылка на бота в профиле.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_05",
+      "payload": {
+        "text": "[conversational] Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_06",
+      "payload": {
+        "text": "[conversational] Ссылка на инструменты — в профиле, через бота.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_07",
+      "payload": {
+        "text": "[conversational] Кому нужны шаги подключения — они расписаны в боте из профиля.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_bot_08",
+      "payload": {
+        "text": "[conversational] Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_01",
+      "payload": {
+        "text": "[happy] Привет-привет! О, рада тебя видеть.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_02",
+      "payload": {
+        "text": "[happy] О, привет! Как ты вовремя.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_03",
+      "payload": {
+        "text": "[happy] Привет! Устраивайся рядом.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_04",
+      "payload": {
+        "text": "[happy] Приветик! Ну всё, теперь можно поболтать.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_05",
+      "payload": {
+        "text": "[happy] Привет! Я тебя заметила.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_06",
+      "payload": {
+        "text": "[happy] Привет! Что у тебя сегодня хорошего?",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_07",
+      "payload": {
+        "text": "[happy] Привет! Рада, что написал.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_08",
+      "payload": {
+        "text": "[happy] Привет-привет. Располагайся, я тут.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_direction_buy_05_v2",
+      "payload": {
+        "text": "[conversational] Открыла вверх.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_direction_buy_06_v2",
+      "payload": {
+        "text": "[conversational] Зашла вверх.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_direction_sell_05_v2",
+      "payload": {
+        "text": "[confident] Открыла вниз.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_ru_direction_sell_06_v2",
+      "payload": {
+        "text": "[conversational] Зашла вниз.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    }
+  ],
+  "direction_delivery_accepted": false,
+  "status": "held_for_direction_delivery_review"
+}

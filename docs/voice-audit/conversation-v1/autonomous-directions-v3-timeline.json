@@ -1,0 +1,33 @@
+{
+  "duration_sec": 8.616,
+  "records": [
+    {
+      "id": "autonomous_direction_free_v3_ru_01",
+      "text": "Открыла вверх.",
+      "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8",
+      "start": 0,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v3/ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_02",
+      "text": "Зашла вверх.",
+      "sha256": "1274188edd0f4eb2e1fb2a1b2e54009aea6daabb71f380adbb05292bc3d1cc27",
+      "start": 2.541,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v3/ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_02.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_03_retake1",
+      "text": "Открыла вниз.",
+      "sha256": "4b5cffcbc684d0eab70c23dbf4029dbe2a9a9e6cd00f4c1aea5c4036ec66843e",
+      "start": 5.082,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v3/ru/OPEN_TRADE_PUT/autonomous_direction_free_v3_ru_03_retake1.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_04",
+      "text": "Зашла вниз.",
+      "sha256": "bc4c660aa8837f6f13abe48a3f68749c3b6cfa4db687dfae17221d793c0be3e3",
+      "start": 7.31,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v3/ru/OPEN_TRADE_PUT/autonomous_direction_free_v3_ru_04.mp3"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "version": 2,
+  "source_kind": "autonomous_voice_probe_delivery_review",
+  "source_created_at": "2026-11-16T15:28:35.046Z",
+  "authorized_scope": "four_exact_owner_direction_texts",
+  "changes": [
+    {
+      "old_id": "autonomous_ru_direction_buy_01",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_01_v2",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_buy_02",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_02_v2",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_buy_03",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_03_v2",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_buy_04",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_04_v2",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_buy_05",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_05_v2",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_buy_06",
+      "old_text": "Вверх.",
+      "old_text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "id": "autonomous_ru_direction_buy_06_v2",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
+      "category": "OPEN_TRADE_CALL",
+      "source_review_id": "autonomous_voice_probe_free_ru_04_retake01",
+      "source_audio_sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_01",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_01_v2",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_02",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_02_v2",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_03",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_03_v2",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_04",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_04_v2",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_05",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_05_v2",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    },
+    {
+      "old_id": "autonomous_ru_direction_sell_06",
+      "old_text": "Вниз.",
+      "old_text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "id": "autonomous_ru_direction_sell_06_v2",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
+      "category": "OPEN_TRADE_PUT",
+      "source_review_id": "autonomous_voice_probe_free_ru_05",
+      "source_audio_sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+    }
+  ]
+}

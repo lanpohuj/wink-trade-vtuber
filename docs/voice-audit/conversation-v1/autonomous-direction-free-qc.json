@@ -1,0 +1,111 @@
+{
+  "model": "faster-whisper-small-local",
+  "paid_asr_requests": 0,
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "autonomous_direction_free_v2_ru_01",
+      "sha256": "623f8e667d96756a543483c240577441c0cb2a9c5d53e12900c82f2ad0d756a6",
+      "text": "Открыла вверх.",
+      "transcript": "Открыла ВЕРХ!",
+      "similarity": 0.957,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.228,
+        "rms": 0.08988,
+        "peak": 0.39052,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.088,
+        "sha256": "623f8e667d96756a543483c240577441c0cb2a9c5d53e12900c82f2ad0d756a6"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Открыла ВЕРХ!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_02",
+      "sha256": "be05a1e62764340ec8945bebd5b62e0421815c28cd45564ab15a4ca2578438eb",
+      "text": "Зашла вверх.",
+      "transcript": "Зашла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.123,
+        "rms": 0.0836,
+        "peak": 0.32197,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.083,
+        "sha256": "be05a1e62764340ec8945bebd5b62e0421815c28cd45564ab15a4ca2578438eb"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Зашла вверх!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_03",
+      "sha256": "3606735514974227eeaaf77e571a0db1b277508cadba7bb96bd07242693d5746",
+      "text": "Открыла вниз.",
+      "transcript": "Открыла вниз.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.09282,
+        "peak": 0.35839,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.118,
+        "sha256": "3606735514974227eeaaf77e571a0db1b277508cadba7bb96bd07242693d5746"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Открыла вниз."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_04",
+      "sha256": "a8f369ffdcd3bb2b2baf6627a03c410f9584d5884e3f6300ee12d4b769945fab",
+      "text": "Зашла вниз.",
+      "transcript": "Зашла вниз.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 1.358,
+        "rms": 0.08712,
+        "peak": 0.29518,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.138,
+        "sha256": "a8f369ffdcd3bb2b2baf6627a03c410f9584d5884e3f6300ee12d4b769945fab"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Зашла вниз."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ]
+}

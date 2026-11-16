@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "kind": "autonomous_voice_probe_delivery_review",
+  "created_at": "2026-11-16T15:28:35.046Z",
+  "records": [
+    {
+      "id": "autonomous_voice_probe_free_ru_07",
+      "sha256": "6349fc136ba3480efc941de5fe242671c6f9dd2f33f8a1fe9dd4aabd7b7db49a",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_06",
+      "sha256": "33f1c5a975b3e2db3dd225bae0fb6231673a0d11ca07344589b77f1e2afb68ec",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_01",
+      "sha256": "0bacd6080c9ed700778eb7b91e89f82c877cce17b04fd195c0940f1d7ff709f4",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_02",
+      "sha256": "63a9214af800104927db0897bc991466e99ebdeef20cdd6831b197ac80e7b5cd",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_03_retake01",
+      "sha256": "bf5930fd0952a5447e8345f233d02857f9c8284a36fb3e5f610a6a9c0b0ef10d",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_04_retake01",
+      "sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24",
+      "accepted": false,
+      "listened": true,
+      "note": "сделай две разные фразы :1) открыла вверх; 2) зашла вверх",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_05",
+      "sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7",
+      "accepted": false,
+      "listened": true,
+      "note": "сделай две разные фразы :1) открыла вниз; 2) зашла вниз",
+      "offset_sec": null
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_08",
+      "sha256": "9f1324b78b64579df01b6fd73be343ac9f44a95af866f61a56386f33ea5c31d3",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    }
+  ]
+}

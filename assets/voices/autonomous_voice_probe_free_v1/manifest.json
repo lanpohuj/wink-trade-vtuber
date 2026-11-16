@@ -19,8 +19,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "win",
@@ -33,7 +33,7 @@
         "file": "ru/TRADE_WIN/autonomous_voice_probe_free_ru_01.mp3",
         "sha256": "0bacd6080c9ed700778eb7b91e89f82c877cce17b04fd195c0940f1d7ff709f4",
         "duration": 2.403188,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -55,7 +55,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Да! Вот это приятно!"
+        "transcript": "Да! Вот это приятно!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "TRADE_LOSS": [
@@ -72,8 +77,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "loss",
@@ -86,7 +91,7 @@
         "file": "ru/TRADE_LOSS/autonomous_voice_probe_free_ru_02.mp3",
         "sha256": "63a9214af800104927db0897bc991466e99ebdeef20cdd6831b197ac80e7b5cd",
         "duration": 2.873375,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -108,7 +113,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Минус! Мне это совсем не нравится!"
+        "transcript": "Минус! Мне это совсем не нравится!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "TRADE_REFUND": [
@@ -125,8 +135,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "refund",
@@ -139,7 +149,7 @@
         "file": "ru/TRADE_REFUND/autonomous_voice_probe_free_ru_03_retake01.mp3",
         "sha256": "bf5930fd0952a5447e8345f233d02857f9c8284a36fb3e5f610a6a9c0b0ef10d",
         "duration": 3.004,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -163,7 +173,12 @@
         "retake_reason": "uncertain_local_asr",
         "previous_take_id": "autonomous_voice_probe_free_ru_03",
         "automatic_qc_passed": true,
-        "transcript": "О, вернулась! Ну хоть так!"
+        "transcript": "О, вернулась! Ну хоть так!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "OPEN_TRADE_CALL": [
@@ -181,7 +196,7 @@
         "text_version": 1,
         "text_review_accepted": true,
         "auditory_verified": false,
-        "requires_listening": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "direction_buy",
@@ -194,7 +209,7 @@
         "file": "ru/OPEN_TRADE_CALL/autonomous_voice_probe_free_ru_04_retake01.mp3",
         "sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24",
         "duration": 0.731313,
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -218,7 +233,12 @@
         "retake_reason": "uncertain_local_asr",
         "previous_take_id": "autonomous_voice_probe_free_ru_04",
         "automatic_qc_passed": false,
-        "transcript": "Ну вверх!"
+        "transcript": "Ну вверх!",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": "сделай две разные фразы :1) открыла вверх; 2) зашла вверх"
       }
     ],
     "OPEN_TRADE_PUT": [
@@ -236,7 +256,7 @@
         "text_version": 1,
         "text_review_accepted": true,
         "auditory_verified": false,
-        "requires_listening": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "direction_sell",
@@ -249,7 +269,7 @@
         "file": "ru/OPEN_TRADE_PUT/autonomous_voice_probe_free_ru_05.mp3",
         "sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7",
         "duration": 0.966437,
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -271,7 +291,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Вниз!"
+        "transcript": "Вниз!",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": "сделай две разные фразы :1) открыла вниз; 2) зашла вниз"
       }
     ],
     "NARRATE_SCAN": [
@@ -288,8 +313,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "search_interest",
@@ -302,7 +327,7 @@
         "file": "ru/NARRATE_SCAN/autonomous_voice_probe_free_ru_06.mp3",
         "sha256": "33f1c5a975b3e2db3dd225bae0fb6231673a0d11ca07344589b77f1e2afb68ec",
         "duration": 3.683187,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -324,7 +349,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "О, погоди! Вот тут мне уже интересно!"
+        "transcript": "О, погоди! Вот тут мне уже интересно!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "CHAT_REPLY": [
@@ -341,8 +371,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "chat_greeting",
@@ -355,7 +385,7 @@
         "file": "ru/CHAT_REPLY/autonomous_voice_probe_free_ru_07.mp3",
         "sha256": "6349fc136ba3480efc941de5fe242671c6f9dd2f33f8a1fe9dd4aabd7b7db49a",
         "duration": 2.716625,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -377,7 +407,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "А, привет! Как ты вовремя?"
+        "transcript": "А, привет! Как ты вовремя?",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "NARRATE_CTA": [
@@ -394,8 +429,8 @@
         "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
         "text_version": 1,
         "text_review_accepted": true,
-        "auditory_verified": false,
-        "requires_listening": true,
+        "auditory_verified": true,
+        "requires_listening": false,
         "conditions": {},
         "max_duration_sec": 15,
         "source_purpose": "bot",
@@ -408,7 +443,7 @@
         "file": "ru/NARRATE_CTA/autonomous_voice_probe_free_ru_08.mp3",
         "sha256": "9f1324b78b64579df01b6fd73be343ac9f44a95af866f61a56386f33ea5c31d3",
         "duration": 4.101125,
-        "status": "review_pending",
+        "status": "ready",
         "model": "s2.1-pro-free",
         "evaluation_only": true,
         "request_payload": {
@@ -430,7 +465,12 @@
         },
         "estimated_usd": 0,
         "automatic_qc_passed": true,
-        "transcript": "Кстати, вот есть в шапке профиля. Там можно посмотреть условия доступа."
+        "transcript": "Кстати, вот есть в шапке профиля. Там можно посмотреть условия доступа.",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ]
   },
@@ -539,5 +579,6 @@
       "automatic_qc_passed": false,
       "transcript": "Вер!"
     }
-  ]
+  ],
+  "delivery_approved_for_expansion": false
 }

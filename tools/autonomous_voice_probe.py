@@ -68,6 +68,8 @@ def make_records(source):
     by_id={r['id']:r for r in source['records']}
     rows=[]
     for index,(identity,delivery,description) in enumerate(SLOTS,1):
+        if identity not in by_id:
+            raise ValueError('Archived probe text was revised; prepare a new order instead: '+identity)
         original=by_id[identity]
         if not original.get('text_review_accepted') or original['status']!='text_approved':
             raise ValueError('Text not accepted: '+identity)
@@ -126,11 +128,11 @@ def estimate():
         engine._client.close()
 
 
-def verify_approval(approval,quote):
+def verify_approval(approval,quote,*,max_new_usd=MAX_NEW_USD):
     if approval.get('approved') is not True or approval.get('catalog_sha256')!=quote['catalog_sha256']:
         raise ValueError('Approval for this exact eight-line order is required')
     cap=float(approval.get('max_new_usd',0));baseline=float(approval.get('baseline_reserved_usd',float('nan')))
-    if not math.isfinite(cap) or not math.isfinite(baseline) or baseline<0 or not 0<cap<=MAX_NEW_USD:
+    if not math.isfinite(cap) or not math.isfinite(baseline) or baseline<0 or not 0<cap<=max_new_usd:
         raise ValueError('Invalid approval spending limit or baseline')
     used=max(0,quote['reserved_usd']-baseline)
     if used+quote['estimate_usd']>cap+1e-9 or not quote['fits_cumulative_limit']:

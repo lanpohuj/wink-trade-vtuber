@@ -1,0 +1,33 @@
+{
+  "duration_sec": 8.068,
+  "records": [
+    {
+      "id": "autonomous_direction_free_v2_ru_01",
+      "text": "Открыла вверх.",
+      "sha256": "623f8e667d96756a543483c240577441c0cb2a9c5d53e12900c82f2ad0d756a6",
+      "start": 0,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v2/ru/OPEN_TRADE_CALL/autonomous_direction_free_v2_ru_01.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_02",
+      "text": "Зашла вверх.",
+      "sha256": "be05a1e62764340ec8945bebd5b62e0421815c28cd45564ab15a4ca2578438eb",
+      "start": 2.228,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v2/ru/OPEN_TRADE_CALL/autonomous_direction_free_v2_ru_02.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_03",
+      "text": "Открыла вниз.",
+      "sha256": "3606735514974227eeaaf77e571a0db1b277508cadba7bb96bd07242693d5746",
+      "start": 4.351,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v2/ru/OPEN_TRADE_PUT/autonomous_direction_free_v2_ru_03.mp3"
+    },
+    {
+      "id": "autonomous_direction_free_v2_ru_04",
+      "text": "Зашла вниз.",
+      "sha256": "a8f369ffdcd3bb2b2baf6627a03c410f9584d5884e3f6300ee12d4b769945fab",
+      "start": 6.709,
+      "audio": "../../../assets/voices/autonomous_direction_probe_free_v2/ru/OPEN_TRADE_PUT/autonomous_direction_free_v2_ru_04.mp3"
+    }
+  ]
+}

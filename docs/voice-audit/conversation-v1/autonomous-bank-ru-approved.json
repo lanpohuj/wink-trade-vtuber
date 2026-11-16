@@ -1932,12 +1932,12 @@
       "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
     },
     {
-      "id": "autonomous_ru_direction_buy_01",
+      "id": "autonomous_ru_direction_buy_01_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -1960,15 +1960,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_01"
     },
     {
-      "id": "autonomous_ru_direction_buy_02",
+      "id": "autonomous_ru_direction_buy_02_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -1991,15 +1993,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_02"
     },
     {
-      "id": "autonomous_ru_direction_buy_03",
+      "id": "autonomous_ru_direction_buy_03_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2022,15 +2026,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_03"
     },
     {
-      "id": "autonomous_ru_direction_buy_04",
+      "id": "autonomous_ru_direction_buy_04_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2053,15 +2059,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_04"
     },
     {
-      "id": "autonomous_ru_direction_buy_05",
+      "id": "autonomous_ru_direction_buy_05_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2084,15 +2092,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_05"
     },
     {
-      "id": "autonomous_ru_direction_buy_06",
+      "id": "autonomous_ru_direction_buy_06_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_CALL",
       "purpose": "direction_buy",
-      "text": "Вверх.",
-      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "text": "Зашла вверх.",
+      "text_sha256": "e5dd993d69a5f4ce84aff4ba2d6603a9b8f7bf3d0d1269f9bf171a43f2659f81",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2115,15 +2125,17 @@
       "ttl_sec": 5,
       "section_title": "Вверх",
       "when": "Подтверждено открытие вверх; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_buy_06"
     },
     {
-      "id": "autonomous_ru_direction_sell_01",
+      "id": "autonomous_ru_direction_sell_01_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2146,15 +2158,17 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_01"
     },
     {
-      "id": "autonomous_ru_direction_sell_02",
+      "id": "autonomous_ru_direction_sell_02_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2177,15 +2191,17 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_02"
     },
     {
-      "id": "autonomous_ru_direction_sell_03",
+      "id": "autonomous_ru_direction_sell_03_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2208,15 +2224,17 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_03"
     },
     {
-      "id": "autonomous_ru_direction_sell_04",
+      "id": "autonomous_ru_direction_sell_04_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2239,15 +2257,17 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_04"
     },
     {
-      "id": "autonomous_ru_direction_sell_05",
+      "id": "autonomous_ru_direction_sell_05_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Открыла вниз.",
+      "text_sha256": "63ea22f94cd08f8ef63a37986ce05bb685bf3c3bc8df7ca0056170aec6aa2952",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2270,15 +2290,17 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_05"
     },
     {
-      "id": "autonomous_ru_direction_sell_06",
+      "id": "autonomous_ru_direction_sell_06_v2",
       "lang": "ru",
       "category": "OPEN_TRADE_PUT",
       "purpose": "direction_sell",
-      "text": "Вниз.",
-      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "text": "Зашла вниз.",
+      "text_sha256": "e6ac08228740b93d0a0a27f7c02da64d500c94729a33a724a351bc1346b094ca",
       "status": "text_approved",
       "text_review_accepted": true,
       "auditory_verified": false,
@@ -2301,7 +2323,9 @@
       "ttl_sec": 5,
       "section_title": "Вниз",
       "when": "Подтверждено открытие вниз; только направление, без суммы и срока.",
-      "owner_text_decision_source": "explicit_owner_instruction_approve_unmarked"
+      "owner_text_decision_source": "owner_exact_voice_review_edit",
+      "text_revision": 2,
+      "supersedes_id": "autonomous_ru_direction_sell_06"
     }
   ],
   "removed_records": [
@@ -3156,5 +3180,7 @@
     "removed": 4,
     "unreviewed": 0
   },
-  "note": "Тексты приняты. Приёмка озвучки и поведения в сцене выполняется отдельно."
+  "note": "76 принятых карточек; 12 дублей четырёх фраз направления. Четыре отклонённых вопроса исключены. Озвучка и выпуск принимаются отдельно.",
+  "text_revision": 2,
+  "direction_amendment": "owner-autonomous-direction-amendment.json"
 }
