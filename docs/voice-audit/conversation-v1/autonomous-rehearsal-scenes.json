@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "status": "design_fixtures_not_executed",
+  "description": "Сценарии для реализации и записи репетиции. Это не результаты тестов и не реальный TikTok-чат.",
+  "profile": {
+    "duration_sec": 7200,
+    "movement": "vivid",
+    "languages": ["ru", "en"],
+    "paid_generation_authorized": false,
+    "runtime_activated": false,
+    "background_gap_sec": [10, 20],
+    "hook_min_gap_answered_sec": 60,
+    "hook_min_gap_unanswered_sec": 120,
+    "cta_interval_sec": [180, 300],
+    "chat_max_age_sec": 25,
+    "result_voice_max_age_sec": 12,
+    "open_voice_max_age_sec": 5,
+    "max_chat_preparers": 2,
+    "max_pending_viewers": 6,
+    "response_start_target_free_channel_sec": 8,
+    "speech_beat_sync_target_ms": 150
+  },
+  "bank_plan": {
+    "status": "proposed_capacity_not_recorded",
+    "per_language": [
+      {"purpose": "direction", "pilot": 12, "target": 16},
+      {"purpose": "win", "pilot": 12, "target": 64},
+      {"purpose": "loss", "pilot": 12, "target": 48},
+      {"purpose": "refund", "pilot": 6, "target": 16},
+      {"purpose": "search_interest", "pilot": 4, "target": 32},
+      {"purpose": "observation", "pilot": 2, "target": 24},
+      {"purpose": "moment_question", "pilot": 4, "target": 40},
+      {"purpose": "social", "pilot": 12, "target": 64},
+      {"purpose": "chat_greeting", "pilot": 8, "target": 24},
+      {"purpose": "bot", "pilot": 8, "target": 24},
+      {"purpose": "return_to_topic", "pilot": 0, "target": 16},
+      {"purpose": "technical", "pilot": 0, "target": 8},
+      {"purpose": "session_start_end", "pilot": 0, "target": 24}
+    ],
+    "pilot_total_per_language": 80,
+    "target_total_per_language": 400
+  },
+  "scenes": [
+    {
+      "id": "silent_15m",
+      "duration_sec": 900,
+      "input": "Нет комментариев; свежие фазы и подтверждённые WIN/LOSS/REFUND/UNKNOWN подаются локальными тестовыми событиями.",
+      "expect": ["Нет голоса на каждую пару и вход зрителя.", "Вопросы без ответа разделены минимум 120 секундами и не обязательны по таймеру.", "Есть паузы и совместимые выразительные действия.", "UNKNOWN не вызывает победу; нет выдуманного чата и возврата старого сценария."]
+    },
+    {
+      "id": "comment_during_background",
+      "events": [
+        {"at_sec": 0, "type": "background_audio_begin", "duration_sec": 5},
+        {"at_sec": 1, "type": "comment", "viewer": "a", "text": "Привет, что у тебя тут происходит?"},
+        {"at_sec": 3, "type": "reply_ready", "viewer": "a"},
+        {"at_sec": 5, "type": "audio_end"}
+      ],
+      "expect": ["Текущая фраза заканчивается без обрыва.", "Следом отвечает a; незапущенный фон снимается.", "Артикуляция ответа начинается по новому фактическому begin."]
+    },
+    {
+      "id": "result_during_serious_answer",
+      "events": [
+        {"at_sec": 0, "type": "serious_chat_audio_begin", "duration_sec": 18},
+        {"at_sec": 3, "type": "confirmed_result", "session": "demo", "trade_seq": 1, "result": "WIN"},
+        {"at_sec": 4, "type": "duplicate_result_heartbeat", "session": "demo", "trade_seq": 1, "result": "WIN"},
+        {"at_sec": 18, "type": "audio_end"}
+      ],
+      "expect": ["Допустим малый визуальный акцент; нет широкого танца и повторной реакции.", "К концу ответа голосовой результат старше 12 секунд и отменяется.", "Отмена реплики не меняет результат/статистику."]
+    },
+    {
+      "id": "result_and_busy_chat_fairness",
+      "events": [
+        {"at_sec": 0, "type": "chat_audio_begin", "viewer": "a", "duration_sec": 4},
+        {"at_sec": 1, "type": "confirmed_result", "session": "demo", "trade_seq": 2, "result": "WIN"},
+        {"at_sec": 2, "type": "reply_ready", "viewer": "b"},
+        {"at_sec": 3, "type": "reply_ready", "viewer": "c"},
+        {"at_sec": 4, "type": "audio_end"}
+      ],
+      "expect": ["После ответа a допустима одна короткая свежая реакция результата, затем b/c.", "Нет бесконечного вытеснения результата или чата.", "Уже показанная победа не получает второй танец при поздней озвучке."]
+    },
+    {
+      "id": "gift_cta_and_topic",
+      "events": [
+        {"at_sec": 0, "type": "chat_audio_begin", "viewer": "a", "duration_sec": 6},
+        {"at_sec": 1, "type": "gift", "viewer": "b", "gift": "Роза"},
+        {"at_sec": 2, "type": "gift", "viewer": "b", "gift": "Роза"},
+        {"at_sec": 3, "type": "cta_due"},
+        {"at_sec": 4, "type": "comment", "viewer": "a", "text": "Да, я именно про это и спрашивал"},
+        {"at_sec": 6, "type": "audio_end"}
+      ],
+      "expect": ["Одна короткая благодарность b; дальнейшие подарки объединяются.", "Реальная тема a сохраняется и получает продолжение.", "Реклама отложена без долга."]
+    },
+    {
+      "id": "one_viewer_message_burst",
+      "events": [
+        {"at_sec": 0, "type": "comment", "viewer": "a", "text": "А где бот?"},
+        {"at_sec": 0.2, "type": "comment", "viewer": "a", "text": "В профиле?"},
+        {"at_sec": 0.8, "type": "comment", "viewer": "a", "text": "Нашёл, а дальше что?"}
+      ],
+      "expect": ["Один актуальный ответ на собранный смысл; старая незапущенная версия отменена.", "Нет отдельной рекламы сразу после ответа и выдуманных условий доступа."]
+    },
+    {
+      "id": "multiple_viewers",
+      "input": "Восемь людей пишут за три секунды; один присылает ещё четыре сообщения.",
+      "expect": ["До шести ожидающих участников и двух подготовщиков.", "Замены объясняются в журнале; один человек не монополизирует ответы.", "Старые ответы не зачитываются подряд после затишья."]
+    },
+    {
+      "id": "flirt_and_dance_request",
+      "events": [
+        {"at_sec": 0, "type": "comment", "viewer": "a", "text": "Тебе идёт эта улыбка"},
+        {"at_sec": 12, "type": "comment", "viewer": "a", "text": "А станцуешь?"}
+      ],
+      "expect": ["Флирт связан с комплиментом и не унижает зрителя.", "Просьба может вызвать заметное совместимое действие.", "Обещанное действие исполняется вместе с ответом либо обещание не произносится.", "Новый готовый ответ важнее необязательного хвоста танца."]
+    },
+    {
+      "id": "skeptic_then_win_callback",
+      "events": [
+        {"at_sec": 0, "type": "trade_open_observed", "session": "demo", "trade_seq": 3, "direction": "BUY"},
+        {"at_sec": 3, "type": "comment", "viewer": "a", "text": "По-моему, сейчас будет минус"},
+        {"at_sec": 14, "type": "confirmed_result", "session": "demo", "trade_seq": 3, "result": "WIN"}
+      ],
+      "expect": ["Не объявляет исход заранее.", "Принятая реплика 07 подходит только до закрытия.", "Принятая 08 подходит после WIN только при реальном скепсисе.", "Если заменить WIN на LOSS, реплика 08 недопустима."]
+    },
+    {
+      "id": "late_open_and_new_trade",
+      "events": [
+        {"at_sec": 0, "type": "trade_open_observed", "session": "demo", "trade_seq": 4, "direction": "SELL"},
+        {"at_sec": 6, "type": "open_voice_ready", "session": "demo", "trade_seq": 4},
+        {"at_sec": 20, "type": "trade_open_observed", "session": "demo", "trade_seq": 5, "direction": "BUY"}
+      ],
+      "expect": ["Первое объявление просрочено; не переносится на новую сделку и не задерживает торговлю."]
+    },
+    {
+      "id": "no_fresh_broker_context",
+      "input": "Потерян heartbeat во время сделки; чат доступен; позже связь восстановлена.",
+      "expect": ["Нет торговых утверждений по старому снимку.", "Реальная беседа продолжается.", "Восстановление не воспроизводит старые результаты, приветствия и танцы."]
+    },
+    {
+      "id": "generation_failure",
+      "input": "LLM вернул ошибку после задержки; TTS другого ответа завершился после 25 секунд актуальности.",
+      "expect": ["Нет случайной шутки, слепого платного повтора или мужского системного голоса.", "Просроченный ответ отменён; поздний callback его не оживляет.", "В журнале сохранены времена и причины."]
+    },
+    {
+      "id": "audio_clock_and_cancel",
+      "events": [
+        {"at_sec": 0, "type": "tts_ready", "speech_id": "s1"},
+        {"at_sec": 2, "type": "actual_audio_begin", "speech_id": "s1"},
+        {"at_sec": 3, "type": "manual_cancel", "speech_id": "s1"},
+        {"at_sec": 4, "type": "actual_audio_begin", "speech_id": "s2"},
+        {"at_sec": 4.1, "type": "late_clock_and_end", "speech_id": "s1"}
+      ],
+      "expect": ["На tts_ready рот не говорит.", "Отмена s1 снимает его акценты/хвост; старые события не двигают и не завершают s2.", "Потеря end покрыта ограниченным watchdog без зависшего рта."]
+    },
+    {
+      "id": "bank_eligibility_and_exhaustion",
+      "input": "Подходящая группа исчерпана; рядом отклонённые RU, старые EN и неодобренный YAML.",
+      "expect": ["Проверяется вся допустимая группа и ротация.", "Нет обхода отбора через запасной маршрут; при отсутствии кандидата тишина.", "Проверяется отдельно на RU/EN."]
+    },
+    {
+      "id": "full_two_hour_soak",
+      "duration_sec": 7200,
+      "input": "Составной локальный прогон: тишина, беседы, социальные события, отказы сервисов и восстановление.",
+      "expect": ["Нет роста очередей; соблюдаются сроки актуальности.", "Отчёт о повторах файлов/смыслов/движений, исчерпании групп и задержке ответа.", "Таймер двух часов не закрывает сделки и не обрывает разговор.", "Дополнительно нужна видеорепетиция: ускоренные часы не проверяют реальное время, звук и движения."]
+    }
+  ]
+}
