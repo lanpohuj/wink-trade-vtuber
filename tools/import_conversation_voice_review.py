@@ -10,9 +10,9 @@ from pathlib import Path
 from tools.conversation_voice_pilot import BANK, DOCS, save
 
 
-def import_review(path, bank=BANK, docs=DOCS):
+def import_review(path, bank=BANK, docs=DOCS, *, kind='voice_pilot_delivery_review', review_filename='owner-voice-pilot-review.json'):
     review = json.loads(path.read_text())
-    if review.get('kind') != 'voice_pilot_delivery_review':
+    if review.get('kind') != kind:
         raise ValueError('Not a pilot listening review')
     manifest = json.loads((bank / 'manifest.json').read_text())
     rows = {r['id']: r for group in manifest['categories'].values() for r in group}
@@ -48,7 +48,7 @@ def import_review(path, bank=BANK, docs=DOCS):
     manifest.update(activated=False, delivery_approved_for_expansion=False)
     accepted = sum(r.get('review_accepted') is True for r in rows.values())
     rejected = sum(r.get('status') == 'rejected_delivery' for r in rows.values())
-    save(docs / 'owner-voice-pilot-review.json', review)
+    save(docs / review_filename, review)
     save(bank / 'manifest.json', manifest)
     return dict(accepted=accepted, rejected=rejected, activated=False)
 

@@ -28,6 +28,7 @@ def active_commentary_root():
             return fallback
         manifest = json.loads((selected / 'manifest.json').read_text())
         if (manifest.get('bank_type') == 'commentary_v1'
+                and manifest.get('evaluation_only') is not True
                 and manifest.get('activated') is True
                 and manifest.get('review_accepted') is True):
             return selected
@@ -105,11 +106,12 @@ class VoiceBank:
         if self.overlay_root:
             try:
                 overlay = json.loads((self.overlay_root / 'manifest.json').read_text())
-                if overlay.get('activated') is True and overlay.get('bank_type') == 'commentary_v1':
+                if (overlay.get('activated') is True and overlay.get('bank_type') == 'commentary_v1'
+                        and overlay.get('evaluation_only') is not True):
                     records = overlay.get('categories', {}).get(category_name(event.get('category')), [])
                     # Reuse the same contextual eligibility and deck machinery;
                     # unapproved overlay records never enter the active pool.
-                    approved = [r for r in records if recording_reviewed(overlay, r) and
+                    approved = [r for r in records if not r.get('evaluation_only') and recording_reviewed(overlay, r) and
                                 (r.get('automatic_qc_passed') is True or
                                  (r.get('auditory_verified') is True and r.get('qc_override_accepted') is True))]
                     result = self._candidates(event, self.overlay_root, {'categories': {category_name(event.get('category')): approved}})
@@ -124,6 +126,8 @@ class VoiceBank:
         try:
             manifest = supplied if supplied is not None else json.loads((root / 'manifest.json').read_text())
         except (OSError, ValueError):
+            return []
+        if manifest.get('evaluation_only') is True:
             return []
         if str(manifest.get('version', '')).startswith('3'):
             if manifest.get('activated') is not True:
@@ -144,6 +148,8 @@ class VoiceBank:
         result = []
         for original in items:
             item = dict(original)
+            if item.get('evaluation_only') is True:
+                continue
             item.update(eligibility.get(item.get("id"), {}))
             if str(manifest.get('version', '')).startswith('3') and not recording_reviewed(manifest, item):
                 continue

@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "created_at": "2026-11-16T08:42:31.699Z",
+  "version": 1,
+  "created_at": "2026-11-16T11:35:03.817Z",
   "items": [
     {
       "id": "Основной банк:lively3_ru_narrate_cta_001",
@@ -7424,6 +7424,726 @@
       "text_review_accepted": false,
       "auditory_verified": false,
       "note": "Тупой ответ"
+    },
+    {
+      "id": "autonomous_ru_win_01",
+      "text": "Плюс! Ну, это было вкусно!",
+      "text_sha256": "42a5cc30f4a705d5c008b61a1cbc3b5ffd9de284d531de64e511a36b385834e3",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_02",
+      "text": "Да-а! Вот это приятно!",
+      "text_sha256": "13c79ccac553bf449dc42b876de5f73beaad3de12838f95afcc7f5f50c06a4f8",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_03",
+      "text": "Есть! Можно я ещё секунду порадуюсь?",
+      "text_sha256": "96341e95cdf348ea33b69bef0421adea65d5fc3b06423e955fcd432c209eab4f",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_04",
+      "text": "Ой, хорошо-то как!",
+      "text_sha256": "e62853a381ae049c54e2e4aa4ebc74003dc5bfea4ec3126672d6e4c33a1ca5ee",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_05",
+      "text": "Ну вот! Я прямо довольная сейчас.",
+      "text_sha256": "c9874e37383f338e67cb34f36b1439607352ea52adf8e604f29b9bc1b09066da",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_06",
+      "text": "А-а, есть! Красиво!",
+      "text_sha256": "c8d636ca25a0173a13b1dc468d2de28db7107f33b310a102f42521b75ca0a059",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_07",
+      "text": "Да! Вот за такие моменты я и люблю это смотреть.",
+      "text_sha256": "77b0f8202df45dc304e47aa401ea47ee823657e4087be28db547f610f00215a1",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_08",
+      "text": "Плюс. М-м, приятно.",
+      "text_sha256": "721f325bba37d56aeeb0e29704d796a772199a62ac771f2e1f2b4e0d5350346e",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_09",
+      "text": "Уф! Я выдохнула.",
+      "text_sha256": "dc22239a33500984d7cbb31debfaf3d55fbcbd395b41993024541f74b5f0124f",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_10",
+      "text": "Есть! Я не зря тут переживала.",
+      "text_sha256": "976e5e6d52c62ba953fbfea082a0777ca0619bb9ba1ca962085d84725288e887",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_11",
+      "text": "Вот теперь можно улыбаться!",
+      "text_sha256": "7eb92667e8f90a6d7cd2f1dfa79f2b51de7eba9cbdd160bcb114d0c9381d9c06",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_win_12",
+      "text": "Да-а! Забрали этот момент.",
+      "text_sha256": "0ecf1e741d5eef6b99327aec2818d1c3ad7f0e225767d6edff257dd848e51b57",
+      "category": "TRADE_WIN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_01",
+      "text": "Минус… Мне это совсем не нравится.",
+      "text_sha256": "c713fbc5727304807514af2e23350b562109d33c4999e12f6b4619f900387731",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_02",
+      "text": "Ой, ну нет…",
+      "text_sha256": "614b0fdb2b60b9283ac7c217fc9ced484d9925c7260f74ce7839f27b98e5a716",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_03",
+      "text": "Эх. Обидно получилось.",
+      "text_sha256": "0332574eb7ea6f8fec15bc0dfd3733608206662eafb25eedee1bf31b4248a447",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_04",
+      "text": "А-а, досадно!",
+      "text_sha256": "bc45d2848f517416bff1166faa58ae9b335f4d2a831c62777dd463ce9ace6a9e",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_05",
+      "text": "Ну блин… Я расстроилась.",
+      "text_sha256": "c986e2059358441fe9636b52bf658ab89b8606e3dcb182ce72ca0af67e232bc9",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_06",
+      "text": "Минус. Да, неприятно.",
+      "text_sha256": "bec24badfa64e110870913382ea2a1bd021f5a356252649a22a70f25ebeea4c3",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_07",
+      "text": "Так… мне нужна секундочка.",
+      "text_sha256": "678a40bcf0bd7338022db6c0463fe408f7fcd4ce39f8a95223966391e1d4596d",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_08",
+      "text": "Ай… вот это обидно.",
+      "text_sha256": "6c0dcf6c3b2da7976792374fa26010961894df314d27909ded5d06ff843cb74a",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_09",
+      "text": "Жаль. Мне хотелось другого финала.",
+      "text_sha256": "a3dc62889d35c797ad9bda70390b284ece9b94960faf6f02555d7a7b9910685a",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_10",
+      "text": "Ух… Ну да, я недовольна.",
+      "text_sha256": "955423d4d584f120b74a1834ba7829a454d2bc765c94bd62ee41a0f36200bf67",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_11",
+      "text": "Ох. Ладно, выдыхаю.",
+      "text_sha256": "ca2501405de1212f1d715b059267460a1b3202c401cd824b669dee2773803600",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_loss_12",
+      "text": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+      "text_sha256": "d5ff212c3be39bd5251e0729660ed7024be419b1783c1b7945b63a2bb0f44b32",
+      "category": "TRADE_LOSS",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_01",
+      "text": "О, вернулось. Ну хоть так.",
+      "text_sha256": "4237e68cf7ce828bb532d334e0ab00e6b087013de678dd510a40f407c95401fe",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_02",
+      "text": "Так, возврат. Выдыхаю.",
+      "text_sha256": "6ffc4e47fadd74bd824bf4a19b6b29bd95d927805f016b8b8e6366c53ac067c0",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_03",
+      "text": "Ничья. Ладно, бывает.",
+      "text_sha256": "4722315aa7a15ab025dea14e965c268bf65c3f5b2ac873911f19791ce94371d6",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_04",
+      "text": "Фух, без потерь.",
+      "text_sha256": "f75ebc6201b80bdc3ff108de4567e417c5493f3747eb68f654d4ec3ad1d0d196",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_05",
+      "text": "Ну вот… разошлись.",
+      "text_sha256": "7baa099e112df12d1de9645073f7f0b02c48fc9b701be2c248b3d7aeb8035517",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_refund_06",
+      "text": "Возврат. Я уже успела напрячься.",
+      "text_sha256": "517a6eaca3beea547899a75e5833badf04fc9e8ebb0af75a102198e3d3cd79af",
+      "category": "TRADE_REFUND",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_search_interest_01",
+      "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "text_sha256": "5e95c09c73cd8bd31c01632ab17251b2bfeb22892ae3f166aefa67bcd37ee34c",
+      "category": "NARRATE_SCAN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_search_interest_02",
+      "text": "О, погоди… вот тут мне уже интересно.",
+      "text_sha256": "59b1e54a05b5948dc612e959973c0deb54aa9bfd63ddfa110770770903f9f206",
+      "category": "NARRATE_SCAN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_search_interest_03",
+      "text": "М-м… пока не цепляет.",
+      "text_sha256": "ae486d5c36be385311b396f92b296733933226154d6f669e1b11a2b9b9b88607",
+      "category": "NARRATE_SCAN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_search_interest_04",
+      "text": "Секундочку… хочу получше рассмотреть.",
+      "text_sha256": "96b2a9d8ab164df3523f0c57c8c3d85bd493f9a777f2b78b41cf8bba3e7e70f3",
+      "category": "NARRATE_SCAN",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_observation_01",
+      "text": "Ого, зашевелилось!",
+      "text_sha256": "65cacda535b3a0769292fa629e573bfdbb22bce2c39a9f71388ef02c4a76e87e",
+      "category": "NARRATE_MOMENT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_observation_02",
+      "text": "Ну же… ещё чуть-чуть.",
+      "text_sha256": "a0ce60ee584d2483ba6c3da2d3332332778072124a7c8bf3fedc9de739fc0ec2",
+      "category": "NARRATE_MOMENT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_moment_question_01",
+      "text": "Как тебе интереснее: короткие сделки или когда есть время поболтать?",
+      "text_sha256": "97e99beafefbe2cbf828e79347e0c70010a9954360c930220fa01e55acc6ca50",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": "",
+      "decision_source": "explicit_export"
+    },
+    {
+      "id": "autonomous_ru_moment_question_02",
+      "text": "Ты сначала на график посмотрел или на меня?",
+      "text_sha256": "8fde0d457a5159c1fe0f0a0182e9234031effa4eb09503de1e19d380c5249183",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": "",
+      "decision_source": "explicit_export"
+    },
+    {
+      "id": "autonomous_ru_moment_question_03",
+      "text": "Ты обычно сразу пишешь в чат или сначала присматриваешься?",
+      "text_sha256": "f965a270cf60000fb000fcd6f821eef02fe324909c2714df5c1818161fef6a35",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": "",
+      "decision_source": "explicit_export"
+    },
+    {
+      "id": "autonomous_ru_moment_question_04",
+      "text": "Тебе больше нравится, когда всё спокойно, или когда вот так дёргается?",
+      "text_sha256": "69f1085166c04536c3c634e1be2f749ffd355b103b96d58020794a9a18762879",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": "",
+      "decision_source": "explicit_export"
+    },
+    {
+      "id": "autonomous_ru_social_01",
+      "text": "Ой, спасибо! Мне очень приятно.",
+      "text_sha256": "dbfdfed4db79efd8cb714b01853e2ef8119fccc2d52c1ac84bd7f1a4ef664e82",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_02",
+      "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+      "text_sha256": "e00adde8b19e32e96961bb546d43d4b330348ac4bb68345d524086b5e13d194b",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_03",
+      "text": "А-а, спасибо! Я даже растерялась.",
+      "text_sha256": "0c84be8a6bae1345925833bc99c9fac4e3b9cc64e2582139080e8f742f83aeff",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_04",
+      "text": "Как приятно… спасибо, что балуешь.",
+      "text_sha256": "b5d7eaf8b9e096ade5db6220ed1fb8bf5fa706750e8ad24161fb9fea2ce171b4",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_05",
+      "text": "О, ты остаёшься! Привет-привет.",
+      "text_sha256": "460822521ae3128ee6fe7c84ce2bab5fd23452dc5b7031c57f3ae53ae35fa3dc",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_06",
+      "text": "Спасибо за подписку! Устраивайся.",
+      "text_sha256": "c91b8621101e4c0b56285a7f2a0c3f467beb40465d4512c2f3502bb6a1d58dcb",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_07",
+      "text": "Всё, теперь ты с нами. Я рада!",
+      "text_sha256": "4182b0839c0258c2e3cb78165f62f7d2e002c10b2cc120e12def82a46227c544",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_08",
+      "text": "О, пополнение! Рада тебе.",
+      "text_sha256": "3d5f719bd56c1877ad4292cf55b668a332559d95c427d05f544ed0d6b9b05243",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_09",
+      "text": "Ой, сколько сердечек! Спасибо!",
+      "text_sha256": "1704f04a7e6f77b901806f95f9136f713f5d59def9f5244b3ed4f400a7325288",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_10",
+      "text": "Вижу ваши сердечки. Мне приятно.",
+      "text_sha256": "e11804e795a0f5945dc9fec557f823774f0561a0827e3910edb60d303824c2ec",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_11",
+      "text": "Спасибо за поддержку! Лови сердечко.",
+      "text_sha256": "235460829dc8e5022d22e16733b75531cdcbe260b29acc447e3bdeca64416267",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_social_12",
+      "text": "Ну всё, я улыбаюсь. Спасибо вам!",
+      "text_sha256": "3701c632101dcc500d4f1b414dfbb521b1825e2a9604a038509c653c5efd20ef",
+      "category": "CHAT_REACTION",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_01",
+      "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+      "text_sha256": "3ff3dae12bd51bdb16b86268d5377fbbaf6c1acc4c6d6e825b83217c07eee688",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_02",
+      "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+      "text_sha256": "939d6829db6f08b4d12d919e7a1563d1de5bc6defadc458af2c6723891ce0dbf",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_03",
+      "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+      "text_sha256": "30b08d69eed820e421f3081990d2cc93389ebe7f50ec94bbe81d8dd57c1b966b",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_04",
+      "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+      "text_sha256": "a3891de38cc83122f1bfee83753d19720682e1df3774a2b0455f23d58ae92619",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_05",
+      "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+      "text_sha256": "a269732b0ff8cdfcba6e1d5e555e1f9a08f18f2cd787b198c8f5a13b32302e8c",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_06",
+      "text": "Ссылка на инструменты — в профиле, через бота.",
+      "text_sha256": "81b5a4e5a91df5116f5b70a350133ba6f70a240af1b07a16dd8bf0f90536fbd0",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_07",
+      "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+      "text_sha256": "7a9a9f05edea5c566c0c5063ba1cf2b481ce36e70e977c7d59d586b2e23d4afd",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_bot_08",
+      "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+      "text_sha256": "7c7399568bd9979cf08c5e21477f09762badd102e968d679be29faa913253a92",
+      "category": "NARRATE_CTA",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_01",
+      "text": "Привет-привет! О, рада тебя видеть.",
+      "text_sha256": "d82f22e955b24b18166358ff00ff162a7fab76f864fb6566dc9e455bfedc772e",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_02",
+      "text": "О, привет! Как ты вовремя.",
+      "text_sha256": "28bf4ff6591b558ee7cca0c19b273907b172d0faec7b5b9b19ad1a88d8b17bca",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_03",
+      "text": "Привет! Устраивайся рядом.",
+      "text_sha256": "af70de46b065c0156c17d52ab8c39cee353e2d493281654ce851505d38daabdb",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_04",
+      "text": "Приветик! Ну всё, теперь можно поболтать.",
+      "text_sha256": "8a00cbb5de7e18fccfd6ad1cdfa60ae38e5dfe326f81d633aa312b35037a25f3",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_05",
+      "text": "Привет! Я тебя заметила.",
+      "text_sha256": "7a1ae106f1dcb01aba266ac877a8bc01e55712a5fc848ca2d542be8241a06c7c",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_06",
+      "text": "Привет! Что у тебя сегодня хорошего?",
+      "text_sha256": "2b2786b9a224f7f577689dabc46713c01041815a369f3b86f68a768f9d7e58d8",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_07",
+      "text": "Привет! Рада, что написал.",
+      "text_sha256": "d503ed6a86656491d32c18fef67faa7514dace33a8277a3cb7986c238d627ac2",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_chat_greeting_08",
+      "text": "Привет-привет. Располагайся, я тут.",
+      "text_sha256": "c3018f7f7ab19939a5a872d1ded87a703fa650cccbeb0a127467fed1d201d341",
+      "category": "CHAT_REPLY",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_01",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_02",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_03",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_04",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_05",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_buy_06",
+      "text": "Вверх.",
+      "text_sha256": "0c65c6fb1385df6b44164e32ce9eb83e2c57e13aaae69eb2fe6a1815fb1e82c0",
+      "category": "OPEN_TRADE_CALL",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_01",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_02",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_03",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_04",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_05",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
+    },
+    {
+      "id": "autonomous_ru_direction_sell_06",
+      "text": "Вниз.",
+      "text_sha256": "6652003842aa239f6bc65df98f784d609b5f84a22d21f89348e032452e12ec73",
+      "category": "OPEN_TRADE_PUT",
+      "status": "good",
+      "comment": "",
+      "decision_source": "explicit_owner_instruction_approve_unmarked"
     }
   ]
 }

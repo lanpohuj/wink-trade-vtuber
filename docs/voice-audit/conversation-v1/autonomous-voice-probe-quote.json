@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "catalog_sha256": "b2a02a8cf6b3662eedfdb26036022def3c404dfba243812b7452769b727a3137",
+  "takes": 8,
+  "new_requests": 8,
+  "cached": 0,
+  "utf8_bytes": 513,
+  "estimate_usd": 0.007695,
+  "suggested_max_new_usd": 0.03,
+  "reserved_usd": 3.89232,
+  "cumulative_limit_usd": 7.0,
+  "fits_cumulative_limit": true,
+  "rate_usd_per_million_utf8_bytes": 15,
+  "pricing_source": "https://fish.audio/app/developers/",
+  "model": "s2.1-pro",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "requests": [
+    {
+      "id": "autonomous_voice_probe_ru_01",
+      "payload": {
+        "text": "[excited] Да-а! Вот это приятно!",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_02",
+      "payload": {
+        "text": "[annoyed] Минус… Мне это совсем не нравится.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_03",
+      "payload": {
+        "text": "[relieved] О, вернулось. Ну хоть так.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_04",
+      "payload": {
+        "text": "[confident] Вверх.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_05",
+      "payload": {
+        "text": "[confident] Вниз.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_06",
+      "payload": {
+        "text": "[curious, conversational] О, погоди… вот тут мне уже интересно.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_07",
+      "payload": {
+        "text": "[happy] О, привет! Как ты вовремя.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    },
+    {
+      "id": "autonomous_voice_probe_ru_08",
+      "payload": {
+        "text": "[conversational] Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      }
+    }
+  ]
+}

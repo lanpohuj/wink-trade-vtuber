@@ -1,0 +1,217 @@
+{
+  "model": "faster-whisper-small-local",
+  "paid_asr_requests": 0,
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "autonomous_voice_probe_free_ru_01",
+      "sha256": "0bacd6080c9ed700778eb7b91e89f82c877cce17b04fd195c0940f1d7ff709f4",
+      "text": "Да-а! Вот это приятно!",
+      "transcript": "Да! Вот это приятно!",
+      "similarity": 0.968,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.403,
+        "rms": 0.09047,
+        "peak": 0.37033,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.143,
+        "sha256": "0bacd6080c9ed700778eb7b91e89f82c877cce17b04fd195c0940f1d7ff709f4"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.4,
+          "text": " Да! Вот это приятно!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_02",
+      "sha256": "63a9214af800104927db0897bc991466e99ebdeef20cdd6831b197ac80e7b5cd",
+      "text": "Минус… Мне это совсем не нравится.",
+      "transcript": "Минус! Мне это совсем не нравится!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.873,
+        "rms": 0.07131,
+        "peak": 0.33707,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.113,
+        "sha256": "63a9214af800104927db0897bc991466e99ebdeef20cdd6831b197ac80e7b5cd"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.84,
+          "text": " Минус! Мне это совсем не нравится!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_03_retake01",
+      "sha256": "bf5930fd0952a5447e8345f233d02857f9c8284a36fb3e5f610a6a9c0b0ef10d",
+      "text": "О, вернулось. Ну хоть так.",
+      "transcript": "О, вернулась! Ну хоть так!",
+      "similarity": 0.947,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.004,
+        "rms": 0.07099,
+        "peak": 0.29039,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.104,
+        "sha256": "bf5930fd0952a5447e8345f233d02857f9c8284a36fb3e5f610a6a9c0b0ef10d"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " О, вернулась! Ну хоть так!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_04_retake01",
+      "sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24",
+      "text": "Вверх.",
+      "transcript": "Ну вверх!",
+      "similarity": 0.833,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 0.731,
+        "rms": 0.07594,
+        "peak": 0.23737,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.011,
+        "sha256": "daed017b66d1cbab23acaa26f73f26f62583ade3701c5b4f55d6605199ce0c24"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Ну вверх!"
+        }
+      ],
+      "issues": [
+        "asr_mismatch_needs_listening"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_05",
+      "sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7",
+      "text": "Вниз.",
+      "transcript": "Вниз!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 0.967,
+        "rms": 0.07843,
+        "peak": 0.41308,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.127,
+        "sha256": "ad143dfda50ba277caf4e01a19c04f19d95054e9d3c1b5894bf116bf38331ca7"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 1.0,
+          "text": " Вниз!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_06",
+      "sha256": "33f1c5a975b3e2db3dd225bae0fb6231673a0d11ca07344589b77f1e2afb68ec",
+      "text": "О, погоди… вот тут мне уже интересно.",
+      "transcript": "О, погоди! Вот тут мне уже интересно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.683,
+        "rms": 0.07576,
+        "peak": 0.31279,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.103,
+        "sha256": "33f1c5a975b3e2db3dd225bae0fb6231673a0d11ca07344589b77f1e2afb68ec"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.6,
+          "text": " О, погоди! Вот тут мне уже интересно!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_07",
+      "sha256": "6349fc136ba3480efc941de5fe242671c6f9dd2f33f8a1fe9dd4aabd7b7db49a",
+      "text": "О, привет! Как ты вовремя.",
+      "transcript": "А, привет! Как ты вовремя?",
+      "similarity": 0.947,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 2.717,
+        "rms": 0.08511,
+        "peak": 0.42684,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.117,
+        "sha256": "6349fc136ba3480efc941de5fe242671c6f9dd2f33f8a1fe9dd4aabd7b7db49a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.68,
+          "text": " А, привет! Как ты вовремя?"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "autonomous_voice_probe_free_ru_08",
+      "sha256": "9f1324b78b64579df01b6fd73be343ac9f44a95af866f61a56386f33ea5c31d3",
+      "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+      "transcript": "Кстати, вот есть в шапке профиля. Там можно посмотреть условия доступа.",
+      "similarity": 0.983,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08786,
+        "peak": 0.46195,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.081,
+        "sha256": "9f1324b78b64579df01b6fd73be343ac9f44a95af866f61a56386f33ea5c31d3"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Кстати, вот есть в шапке профиля. Там можно посмотреть условия доступа."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ]
+}

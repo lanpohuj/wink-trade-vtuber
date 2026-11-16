@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "kind": "autonomous_bank_text_review",
+  "created_at": "2026-11-16T11:35:03.817Z",
+  "items": [
+    {
+      "id": "autonomous_ru_moment_question_01",
+      "text": "Как тебе интереснее: короткие сделки или когда есть время поболтать?",
+      "text_sha256": "97e99beafefbe2cbf828e79347e0c70010a9954360c930220fa01e55acc6ca50",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": ""
+    },
+    {
+      "id": "autonomous_ru_moment_question_02",
+      "text": "Ты сначала на график посмотрел или на меня?",
+      "text_sha256": "8fde0d457a5159c1fe0f0a0182e9234031effa4eb09503de1e19d380c5249183",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": ""
+    },
+    {
+      "id": "autonomous_ru_moment_question_03",
+      "text": "Ты обычно сразу пишешь в чат или сначала присматриваешься?",
+      "text_sha256": "f965a270cf60000fb000fcd6f821eef02fe324909c2714df5c1818161fef6a35",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": ""
+    },
+    {
+      "id": "autonomous_ru_moment_question_04",
+      "text": "Тебе больше нравится, когда всё спокойно, или когда вот так дёргается?",
+      "text_sha256": "69f1085166c04536c3c634e1be2f749ffd355b103b96d58020794a9a18762879",
+      "category": "NARRATE_ENGAGE",
+      "status": "bad",
+      "comment": ""
+    }
+  ]
+}

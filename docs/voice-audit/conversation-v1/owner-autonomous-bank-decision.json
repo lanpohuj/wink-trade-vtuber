@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "approve_unmarked": true,
+  "instruction": "Неоценённые фразы оставить; отмеченные четыре убрать без замены.",
+  "source_catalog_sha256": "7d56d13901bd78224d41ae66e27a9122518a70010b0a097aed0a824fb33e2ede",
+  "reviewed_text_set_sha256": "d7b7e598a3f96929560618069faae27802e7dc8e76865e7e9674d20ae4e7d30d",
+  "review_sha256": "25968e656cb2a5a44fd4bec06def355d80f0d313482ba4c10b1c058090ae4537",
+  "recorded_at": "2026-11-16T11:51:50.459227+00:00"
+}

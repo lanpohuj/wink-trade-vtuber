@@ -17,7 +17,7 @@
     "pocket_extension/sandbox_normalizer.test.cjs": "18d5ef5e1a0a759ddeaf92591a60d0c5ddb3188948670c59569681d34765532e"
   },
   "python_tests": {
-    "passed": 198,
+    "passed": 209,
     "failed": 0
   },
   "javascript_tests": {
@@ -44,15 +44,42 @@
     "trace": "artifacts/winky-autonomous/native-verification.json"
   },
   "bank": {
-    "recording_cards": 80,
-    "distinct_texts": 70,
-    "review_cards": 70,
+    "recording_cards": 76,
+    "distinct_texts": 66,
+    "review_cards": 66,
     "new_paid_tts_requests": 0,
     "activated": false,
     "exact_previously_rejected_texts": 0,
-    "review_page": "autonomous-bank-review.html"
+    "review_page": "autonomous-bank-review.html",
+    "original_recording_cards": 80,
+    "explicitly_removed": 4,
+    "unreviewed": 0,
+    "text_accepted": true,
+    "owner_decision": "owner-autonomous-bank-decision.json"
   },
   "full_two_hour_stream_verified": false,
   "live_tiktok_verified": false,
-  "note": "Automated and staged checks do not approve tone, new bank audio, or audience retention."
+  "note": "Automated and staged checks do not approve tone, new bank audio, or audience retention.",
+  "voice_evaluation": {
+    "model": "s2.1-pro-free",
+    "evaluation_only": true,
+    "generated_takes": 10,
+    "main_takes": 8,
+    "preserved_first_versions": 2,
+    "new_paid_tts_requests": 0,
+    "cost_usd": 0,
+    "api_credit_unchanged": true,
+    "package_credit_unchanged": true,
+    "paid_ledger_reserved_usd_unchanged": 3.89232,
+    "automatic_qc_passed": 7,
+    "listening_check_ids": [
+      "autonomous_voice_probe_free_ru_04_retake01"
+    ],
+    "owner_delivery_approved": false,
+    "production_selection_blocked": true,
+    "album_duration_sec": 54.696,
+    "review_page": "autonomous-voice-probe-review.html",
+    "pricing_source": "https://fish.audio/app/developers/",
+    "free_evaluation_source": "https://fish.audio/blog/s2-1-pro-free-api/"
+  }
 }

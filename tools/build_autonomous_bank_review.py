@@ -164,24 +164,41 @@ def build():
     payload=dict(version=1,status='editorial_draft_not_active',lang='ru',activated=False,paid_generation_authorized=False,
                  note='80 записей; направление — 12 дублей двух команд, а не 12 разных мыслей. Персональные ответы отдельно, через живую генерацию. Все жесты из прежнего набора.',
                  counts=dict(counts),records=rows)
-    (OUT/'autonomous-bank-ru-80.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
-    table=['# Винки: первые 80 записей RU','',payload['note'],'','Статус: текстовый проект; новый звук не создавался. Условия в JSON — редакционные требования для последующего подключения, не утверждение, что каждый из этих признаков уже передаётся расширением.','',
+    decision_path=OUT/'owner-autonomous-bank-decision.json'
+    if decision_path.exists():
+        from tools.import_autonomous_bank_review import resolve
+        decision=json.loads(decision_path.read_text())
+        review=json.loads((OUT/'owner-autonomous-bank-review.json').read_text())
+        resolved=resolve(payload,review,approve_unmarked=decision.get('approve_unmarked') is True)
+        if resolved['reviewed_text_set_sha256']!=decision['reviewed_text_set_sha256']:
+            raise ValueError('Catalog changed after owner review; unmarked approval cannot cover new text')
+        payload=resolved;rows=resolved['records']
+        (OUT/'autonomous-bank-ru-approved.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
+    else:
+        (OUT/'autonomous-bank-ru-80.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
+    table=[f'# Винки: первые {len(rows)} записей RU','',payload['note'],'','Статус: текстовый проект; новый звук не создавался. Условия в JSON — редакционные требования для последующего подключения, не утверждение, что каждый из этих признаков уже передаётся расширением.','',
            '| ID | Текст | Когда использовать |','|---|---|---|']
     for r in rows:table.append('| '+r['id']+' | '+r['text'].replace('|','\\|')+' | '+r['when']+' |')
-    (OUT/'autonomous-bank-ru-80.md').write_text('\n'.join(table)+'\n')
+    table_file='autonomous-bank-ru-approved.md' if decision_path.exists() else 'autonomous-bank-ru-80.md'
+    (OUT/table_file).write_text('\n'.join(table)+'\n')
     page='''<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Винки · банк 80 RU</title>
 <style>body{margin:0;background:#121826;color:#ecf0fa;font:16px system-ui}main{max-width:1000px;margin:auto;padding:24px}h1{font-size:28px}.card{background:#202a3e;border:1px solid #3c4964;border-radius:14px;padding:20px;margin:14px 0}.line{font-size:22px;line-height:1.5}.muted{color:#b7c2d9;font-size:14px}select,textarea,button{font:inherit;color:inherit;background:#303d58;border:1px solid #637498;border-radius:8px;padding:10px}textarea{box-sizing:border-box;width:100%;margin-top:12px}audio{display:block;width:100%;margin:12px 0}.toolbar{position:sticky;top:0;background:#121826;padding:12px 0;display:flex;gap:12px;flex-wrap:wrap;z-index:2}.yes{border-color:#6aa18b}</style>
 <main><h1>Винки: первые 80 записей RU</h1><p>Сначала оцениваем слова и уместность. Звук ещё не создавался; две уже принятые записи можно прослушать. Направления — по шесть дублей «Вверх» и «Вниз» с разной подачей. Прежние жесты сохранены.</p><div class="toolbar"><button id="export">Скачать оценки</button><select id="filter"><option value="all">Все разделы</option></select><span id="counter"></span></div><div id="rows"></div></main>
 <script>const bank=DATA;const key='winky-autonomous-bank-ru-v1';let marks={};try{marks=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}const save=()=>{localStorage.setItem(key,JSON.stringify(marks));count()};function count(){document.getElementById('counter').textContent='Оценено '+Object.values(marks).filter(v=>v.status).length+' / '+bank.records.length}const filter=document.getElementById('filter');for(const p of [...new Set(bank.records.map(r=>r.purpose))]){const o=document.createElement('option');o.value=p;o.textContent=p;filter.append(o)}for(const r of bank.records){const card=document.createElement('section');card.className='card';card.dataset.purpose=r.purpose;const h=document.createElement('div');h.className='muted';h.textContent=r.id+(r.text_review_accepted?' · текст ранее одобрен':' · черновик');const line=document.createElement('p');line.className='line';line.textContent=r.text;const when=document.createElement('p');when.className='muted';when.textContent='Уместность: '+JSON.stringify(r.conditions)+' · Подача: '+r.delivery;card.append(h,line,when);if(r.existing_audio){const a=document.createElement('audio');a.controls=true;a.preload='none';a.src='../../../'+r.existing_audio.path;card.append(a)}const select=document.createElement('select');for(const [value,label]of [['','Не оценено'],['good','Подходит'],['ref','Образец'],['change','Доработать'],['bad','Убрать']]){const o=document.createElement('option');o.value=value;o.textContent=label;select.append(o)}select.value=marks[r.id]?.status||'';select.onchange=()=>{marks[r.id]??={};marks[r.id].status=select.value;card.classList.toggle('yes',['good','ref'].includes(select.value));save()};const note=document.createElement('textarea');note.rows=2;note.placeholder='Что нравится, что убрать или твой вариант';note.value=marks[r.id]?.comment||'';note.oninput=()=>{marks[r.id]??={};marks[r.id].comment=note.value;save()};card.append(select,note);document.getElementById('rows').append(card)}filter.onchange=()=>document.querySelectorAll('.card').forEach(c=>c.hidden=filter.value!=='all'&&c.dataset.purpose!==filter.value);document.getElementById('export').onclick=()=>{const items=bank.records.filter(r=>marks[r.id]?.status).map(r=>({id:r.id,text:r.text,text_sha256:r.text_sha256,category:r.category,status:marks[r.id].status,comment:marks[r.id].comment||''}));const blob=new Blob([JSON.stringify({version:1,kind:'autonomous_bank_text_review',created_at:new Date().toISOString(),items},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='winky-autonomous-bank-review.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};count();</script></html>'''
     # Review identical direction words once; delivery takes remain separate records.
     page=page.replace('const bank=DATA;', "const bank=DATA;const reviewRows=bank.records.filter(r=>!r.purpose.startsWith('direction_')||r.id.endsWith('_01'));")
-    page=page.replace("+' / '+bank.records.length", "+' / '+reviewRows.length+' текстов · 80 записей'")
+    page=page.replace("Object.values(marks).filter(v=>v.status).length+' / '+bank.records.length", "reviewRows.filter(r=>marks[r.id]?.status).length+' / '+reviewRows.length+' текстов · '+bank.records.length+' записей'")
     page=page.replace('for(const r of bank.records){const card', 'for(const r of reviewRows){const card')
     page=page.replace('o.textContent=p;filter.append(o)', 'o.textContent=bank.records.find(r=>r.purpose===p).section_title;filter.append(o)')
     page=page.replace("'Уместность: '+JSON.stringify(r.conditions)", "'Когда: '+r.when")
     page=page.replace("+' · Подача: '+r.delivery", "+' · Подача: '+(r.purpose.startsWith('direction_')?'Шесть дублей: '+bank.records.filter(x=>x.text===r.text).map(x=>x.delivery).join(' / '):r.delivery)")
+    if decision_path.exists():
+        page=page.replace('первые 80 записей RU',f'принятые {len(rows)} записей RU')
+        page=page.replace('Сначала оцениваем слова и уместность.',f'Принято {len(rows)} записей. Четыре отклонённые фразы убраны; остальные оставлены по вашему решению.')
+        page=page.replace('const save=()=>',"for(const r of bank.records){marks[r.id]??={status:'good',comment:''}}const save=()=>")
+        page=page.replace("bank.records.filter(r=>marks[r.id]?.status).map", "reviewRows.filter(r=>marks[r.id]?.status).map")
     (OUT/'autonomous-bank-review.html').write_text(page.replace('DATA',json.dumps(payload,ensure_ascii=False).replace('</','<\\/')))
-    print(json.dumps(dict(records=len(rows),counts=counts,unique_texts=len({r['text'] for r in rows}),previously_rejected=[r['id'] for r in rows if r['status']=='owner_previously_rejected']),ensure_ascii=False))
+    print(json.dumps(dict(records=len(rows),unique_texts=len({r['text'] for r in rows}),removed=len(payload.get('removed_records',[]))),ensure_ascii=False))
 
 
 if __name__=='__main__':build()
