@@ -176,7 +176,7 @@ def build():
         (OUT/'autonomous-bank-ru-approved.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
     else:
         (OUT/'autonomous-bank-ru-80.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
-    table=[f'# Винки: первые {len(rows)} записей RU','',payload['note'],'','Статус: текстовый проект; новый звук не создавался. Условия в JSON — редакционные требования для последующего подключения, не утверждение, что каждый из этих признаков уже передаётся расширением.','',
+    table=[f'# Винки: первые {len(rows)} записей RU','',payload['note'],'','Статус: текстовый банк; полный звук ещё не создан и не подключён. Отдельные пробы голоса не являются выпуском банка. Условия в JSON требуют подтверждённых источников; доступность каждого признака описана в autonomous-runtime-report.md.','',
            '| ID | Текст | Когда использовать |','|---|---|---|']
     for r in rows:table.append('| '+r['id']+' | '+r['text'].replace('|','\\|')+' | '+r['when']+' |')
     table_file='autonomous-bank-ru-approved.md' if decision_path.exists() else 'autonomous-bank-ru-80.md'

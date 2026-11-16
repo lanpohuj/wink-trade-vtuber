@@ -1,0 +1,2910 @@
+{
+  "version": 1,
+  "scope": "synthetic_routing_not_full_stream_acceptance",
+  "model_latency_verified": false,
+  "avatar_verified": false,
+  "owner_delivery_approved": false,
+  "runs": [
+    {
+      "duration_sec": 7200,
+      "mode": "quiet_chat",
+      "scope": "virtual_text_selection_only",
+      "audio_played": false,
+      "network_requests": 0,
+      "counts": {
+        "NARRATE_SCAN": 12,
+        "OPEN_TRADE_PUT": 30,
+        "NARRATE_MOMENT": 6,
+        "TRADE_WIN": 20,
+        "OPEN_TRADE_CALL": 30,
+        "TRADE_LOSS": 20,
+        "NARRATE_CTA": 29,
+        "TRADE_REFUND": 20
+      },
+      "spoken": 167,
+      "first_15_minutes": {
+        "NARRATE_SCAN": 2,
+        "OPEN_TRADE_PUT": 4,
+        "NARRATE_MOMENT": 1,
+        "TRADE_WIN": 3,
+        "OPEN_TRADE_CALL": 4,
+        "TRADE_LOSS": 2,
+        "NARRATE_CTA": 3,
+        "TRADE_REFUND": 2
+      },
+      "cancelled": {
+        "condition:high_volatility": 50,
+        "condition:remaining_sec_range": 2
+      },
+      "cta_gaps_sec": [
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241,
+        241
+      ],
+      "pending_at_end": 0,
+      "episode_memory_size": 18,
+      "trace": [
+        {
+          "at": 1,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:1",
+          "trade_seq": 1
+        },
+        {
+          "at": 20,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 1
+        },
+        {
+          "at": 76,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:1",
+          "trade_seq": 1
+        },
+        {
+          "at": 80,
+          "id": "autonomous_ru_win_04",
+          "category": "TRADE_WIN",
+          "text": "Ой, хорошо-то как!",
+          "episode": null,
+          "trade_seq": 1
+        },
+        {
+          "at": 122,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:2",
+          "trade_seq": 2
+        },
+        {
+          "at": 140,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 2
+        },
+        {
+          "at": 200,
+          "id": "autonomous_ru_loss_12",
+          "category": "TRADE_LOSS",
+          "text": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+          "episode": null,
+          "trade_seq": 2
+        },
+        {
+          "at": 260,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 273,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 320,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 380,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 4
+        },
+        {
+          "at": 440,
+          "id": "autonomous_ru_win_06",
+          "category": "TRADE_WIN",
+          "text": "А-а, есть! Красиво!",
+          "episode": null,
+          "trade_seq": 4
+        },
+        {
+          "at": 500,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 514,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 560,
+          "id": "autonomous_ru_loss_06",
+          "category": "TRADE_LOSS",
+          "text": "Минус. Да, неприятно.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 620,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 6
+        },
+        {
+          "at": 680,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 6
+        },
+        {
+          "at": 740,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 755,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 800,
+          "id": "autonomous_ru_win_05",
+          "category": "TRADE_WIN",
+          "text": "Ну вот! Я прямо довольная сейчас.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 860,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 8
+        },
+        {
+          "at": 920,
+          "id": "autonomous_ru_loss_01",
+          "category": "TRADE_LOSS",
+          "text": "Минус… Мне это совсем не нравится.",
+          "episode": null,
+          "trade_seq": 8
+        },
+        {
+          "at": 980,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 996,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1040,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1100,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1160,
+          "id": "autonomous_ru_win_01",
+          "category": "TRADE_WIN",
+          "text": "Плюс! Ну, это было вкусно!",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1202,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:11",
+          "trade_seq": 11
+        },
+        {
+          "at": 1220,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1237,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1277,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:11",
+          "trade_seq": 11
+        },
+        {
+          "at": 1280,
+          "id": "autonomous_ru_loss_05",
+          "category": "TRADE_LOSS",
+          "text": "Ну блин… Я расстроилась.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1323,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:12",
+          "trade_seq": 12
+        },
+        {
+          "at": 1340,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1400,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1460,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 13
+        },
+        {
+          "at": 1478,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 13
+        },
+        {
+          "at": 1520,
+          "id": "autonomous_ru_win_12",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Забрали этот момент.",
+          "episode": null,
+          "trade_seq": 13
+        },
+        {
+          "at": 1580,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 14
+        },
+        {
+          "at": 1640,
+          "id": "autonomous_ru_loss_08",
+          "category": "TRADE_LOSS",
+          "text": "Ай… вот это обидно.",
+          "episode": null,
+          "trade_seq": 14
+        },
+        {
+          "at": 1700,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 15
+        },
+        {
+          "at": 1719,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 15
+        },
+        {
+          "at": 1760,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 15
+        },
+        {
+          "at": 1820,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 16
+        },
+        {
+          "at": 1880,
+          "id": "autonomous_ru_win_03",
+          "category": "TRADE_WIN",
+          "text": "Есть! Можно я ещё секунду порадуюсь?",
+          "episode": null,
+          "trade_seq": 16
+        },
+        {
+          "at": 1940,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 17
+        },
+        {
+          "at": 1960,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 17
+        },
+        {
+          "at": 2000,
+          "id": "autonomous_ru_loss_03",
+          "category": "TRADE_LOSS",
+          "text": "Эх. Обидно получилось.",
+          "episode": null,
+          "trade_seq": 17
+        },
+        {
+          "at": 2060,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 18
+        },
+        {
+          "at": 2120,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 18
+        },
+        {
+          "at": 2180,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2201,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2240,
+          "id": "autonomous_ru_win_02",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Вот это приятно!",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2300,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2360,
+          "id": "autonomous_ru_loss_02",
+          "category": "TRADE_LOSS",
+          "text": "Ой, ну нет…",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2403,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:21",
+          "trade_seq": 21
+        },
+        {
+          "at": 2420,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2442,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2480,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2524,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:22",
+          "trade_seq": 22
+        },
+        {
+          "at": 2540,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2596,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:22",
+          "trade_seq": 22
+        },
+        {
+          "at": 2600,
+          "id": "autonomous_ru_win_07",
+          "category": "TRADE_WIN",
+          "text": "Да! Вот за такие моменты я и люблю это смотреть.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2660,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 23
+        },
+        {
+          "at": 2683,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 23
+        },
+        {
+          "at": 2720,
+          "id": "autonomous_ru_loss_09",
+          "category": "TRADE_LOSS",
+          "text": "Жаль. Мне хотелось другого финала.",
+          "episode": null,
+          "trade_seq": 23
+        },
+        {
+          "at": 2780,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 24
+        },
+        {
+          "at": 2840,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 24
+        },
+        {
+          "at": 2900,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 25
+        },
+        {
+          "at": 2924,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 25
+        },
+        {
+          "at": 2960,
+          "id": "autonomous_ru_win_08",
+          "category": "TRADE_WIN",
+          "text": "Плюс. М-м, приятно.",
+          "episode": null,
+          "trade_seq": 25
+        },
+        {
+          "at": 3020,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 26
+        },
+        {
+          "at": 3080,
+          "id": "autonomous_ru_loss_11",
+          "category": "TRADE_LOSS",
+          "text": "Ох. Ладно, выдыхаю.",
+          "episode": null,
+          "trade_seq": 26
+        },
+        {
+          "at": 3140,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 27
+        },
+        {
+          "at": 3165,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 27
+        },
+        {
+          "at": 3200,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 27
+        },
+        {
+          "at": 3260,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 28
+        },
+        {
+          "at": 3320,
+          "id": "autonomous_ru_win_11",
+          "category": "TRADE_WIN",
+          "text": "Вот теперь можно улыбаться!",
+          "episode": null,
+          "trade_seq": 28
+        },
+        {
+          "at": 3380,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3406,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3440,
+          "id": "autonomous_ru_loss_04",
+          "category": "TRADE_LOSS",
+          "text": "А-а, досадно!",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3500,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3560,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3604,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:31",
+          "trade_seq": 31
+        },
+        {
+          "at": 3620,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3647,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3680,
+          "id": "autonomous_ru_win_02",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Вот это приятно!",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3725,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:32",
+          "trade_seq": 32
+        },
+        {
+          "at": 3740,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3797,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:32",
+          "trade_seq": 32
+        },
+        {
+          "at": 3800,
+          "id": "autonomous_ru_loss_10",
+          "category": "TRADE_LOSS",
+          "text": "Ух… Ну да, я недовольна.",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3860,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 33
+        },
+        {
+          "at": 3888,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 33
+        },
+        {
+          "at": 3920,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 33
+        },
+        {
+          "at": 3980,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 34
+        },
+        {
+          "at": 4040,
+          "id": "autonomous_ru_win_07",
+          "category": "TRADE_WIN",
+          "text": "Да! Вот за такие моменты я и люблю это смотреть.",
+          "episode": null,
+          "trade_seq": 34
+        },
+        {
+          "at": 4100,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 35
+        },
+        {
+          "at": 4129,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 35
+        },
+        {
+          "at": 4160,
+          "id": "autonomous_ru_loss_07",
+          "category": "TRADE_LOSS",
+          "text": "Так… мне нужна секундочка.",
+          "episode": null,
+          "trade_seq": 35
+        },
+        {
+          "at": 4220,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 36
+        },
+        {
+          "at": 4280,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 36
+        },
+        {
+          "at": 4340,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 37
+        },
+        {
+          "at": 4370,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 37
+        },
+        {
+          "at": 4400,
+          "id": "autonomous_ru_win_08",
+          "category": "TRADE_WIN",
+          "text": "Плюс. М-м, приятно.",
+          "episode": null,
+          "trade_seq": 37
+        },
+        {
+          "at": 4460,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 38
+        },
+        {
+          "at": 4520,
+          "id": "autonomous_ru_loss_05",
+          "category": "TRADE_LOSS",
+          "text": "Ну блин… Я расстроилась.",
+          "episode": null,
+          "trade_seq": 38
+        },
+        {
+          "at": 4580,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4611,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4640,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4700,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4760,
+          "id": "autonomous_ru_win_01",
+          "category": "TRADE_WIN",
+          "text": "Плюс! Ну, это было вкусно!",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4805,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:41",
+          "trade_seq": 41
+        },
+        {
+          "at": 4820,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4852,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4880,
+          "id": "autonomous_ru_loss_04",
+          "category": "TRADE_LOSS",
+          "text": "А-а, досадно!",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4926,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:42",
+          "trade_seq": 42
+        },
+        {
+          "at": 4940,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 5000,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 5060,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 43
+        },
+        {
+          "at": 5093,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 43
+        },
+        {
+          "at": 5116,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:43",
+          "trade_seq": 43
+        },
+        {
+          "at": 5120,
+          "id": "autonomous_ru_win_04",
+          "category": "TRADE_WIN",
+          "text": "Ой, хорошо-то как!",
+          "episode": null,
+          "trade_seq": 43
+        },
+        {
+          "at": 5180,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 44
+        },
+        {
+          "at": 5240,
+          "id": "autonomous_ru_loss_02",
+          "category": "TRADE_LOSS",
+          "text": "Ой, ну нет…",
+          "episode": null,
+          "trade_seq": 44
+        },
+        {
+          "at": 5300,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 45
+        },
+        {
+          "at": 5334,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 45
+        },
+        {
+          "at": 5360,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 45
+        },
+        {
+          "at": 5420,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 46
+        },
+        {
+          "at": 5480,
+          "id": "autonomous_ru_win_12",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Забрали этот момент.",
+          "episode": null,
+          "trade_seq": 46
+        },
+        {
+          "at": 5540,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 47
+        },
+        {
+          "at": 5575,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 47
+        },
+        {
+          "at": 5600,
+          "id": "autonomous_ru_loss_12",
+          "category": "TRADE_LOSS",
+          "text": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+          "episode": null,
+          "trade_seq": 47
+        },
+        {
+          "at": 5660,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 48
+        },
+        {
+          "at": 5720,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 48
+        },
+        {
+          "at": 5780,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5816,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5840,
+          "id": "autonomous_ru_win_03",
+          "category": "TRADE_WIN",
+          "text": "Есть! Можно я ещё секунду порадуюсь?",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5900,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 5960,
+          "id": "autonomous_ru_loss_08",
+          "category": "TRADE_LOSS",
+          "text": "Ай… вот это обидно.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 6006,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:51",
+          "trade_seq": 51
+        },
+        {
+          "at": 6020,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6057,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6080,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6127,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:52",
+          "trade_seq": 52
+        },
+        {
+          "at": 6140,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6200,
+          "id": "autonomous_ru_win_11",
+          "category": "TRADE_WIN",
+          "text": "Вот теперь можно улыбаться!",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6260,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 53
+        },
+        {
+          "at": 6298,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 53
+        },
+        {
+          "at": 6317,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:53",
+          "trade_seq": 53
+        },
+        {
+          "at": 6320,
+          "id": "autonomous_ru_loss_10",
+          "category": "TRADE_LOSS",
+          "text": "Ух… Ну да, я недовольна.",
+          "episode": null,
+          "trade_seq": 53
+        },
+        {
+          "at": 6380,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 54
+        },
+        {
+          "at": 6440,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 54
+        },
+        {
+          "at": 6500,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 55
+        },
+        {
+          "at": 6539,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 55
+        },
+        {
+          "at": 6560,
+          "id": "autonomous_ru_win_05",
+          "category": "TRADE_WIN",
+          "text": "Ну вот! Я прямо довольная сейчас.",
+          "episode": null,
+          "trade_seq": 55
+        },
+        {
+          "at": 6620,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 56
+        },
+        {
+          "at": 6680,
+          "id": "autonomous_ru_loss_09",
+          "category": "TRADE_LOSS",
+          "text": "Жаль. Мне хотелось другого финала.",
+          "episode": null,
+          "trade_seq": 56
+        },
+        {
+          "at": 6740,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 57
+        },
+        {
+          "at": 6780,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 57
+        },
+        {
+          "at": 6800,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 57
+        },
+        {
+          "at": 6860,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 58
+        },
+        {
+          "at": 6920,
+          "id": "autonomous_ru_win_06",
+          "category": "TRADE_WIN",
+          "text": "А-а, есть! Красиво!",
+          "episode": null,
+          "trade_seq": 58
+        },
+        {
+          "at": 6980,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7021,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7040,
+          "id": "autonomous_ru_loss_11",
+          "category": "TRADE_LOSS",
+          "text": "Ох. Ладно, выдыхаю.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7100,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 60
+        },
+        {
+          "at": 7160,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 60
+        }
+      ]
+    },
+    {
+      "duration_sec": 7200,
+      "mode": "mixed_fixture_chat",
+      "scope": "virtual_text_selection_only",
+      "audio_played": false,
+      "network_requests": 0,
+      "counts": {
+        "NARRATE_SCAN": 12,
+        "OPEN_TRADE_PUT": 4,
+        "NARRATE_MOMENT": 6,
+        "TRADE_WIN": 20,
+        "OPEN_TRADE_CALL": 4,
+        "TRADE_LOSS": 20,
+        "NARRATE_CTA": 27,
+        "TRADE_REFUND": 20,
+        "CHAT_REPLY": 44,
+        "CHAT_REACTION": 22
+      },
+      "spoken": 179,
+      "first_15_minutes": {
+        "NARRATE_SCAN": 2,
+        "OPEN_TRADE_PUT": 4,
+        "NARRATE_MOMENT": 1,
+        "TRADE_WIN": 3,
+        "OPEN_TRADE_CALL": 4,
+        "TRADE_LOSS": 2,
+        "NARRATE_CTA": 3,
+        "TRADE_REFUND": 2
+      },
+      "cancelled": {
+        "condition:high_volatility": 22,
+        "condition:remaining_sec_range": 4,
+        "condition:recent_loss": 1
+      },
+      "cta_gaps_sec": [
+        241,
+        241,
+        283,
+        241,
+        254,
+        241,
+        299,
+        285,
+        241,
+        241,
+        313,
+        285,
+        241,
+        241,
+        313,
+        241,
+        284,
+        241,
+        314,
+        241,
+        284,
+        241,
+        314,
+        241,
+        241,
+        283
+      ],
+      "pending_at_end": 0,
+      "episode_memory_size": 18,
+      "trace": [
+        {
+          "at": 1,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:1",
+          "trade_seq": 1
+        },
+        {
+          "at": 20,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 1
+        },
+        {
+          "at": 76,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:1",
+          "trade_seq": 1
+        },
+        {
+          "at": 80,
+          "id": "autonomous_ru_win_04",
+          "category": "TRADE_WIN",
+          "text": "Ой, хорошо-то как!",
+          "episode": null,
+          "trade_seq": 1
+        },
+        {
+          "at": 122,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:2",
+          "trade_seq": 2
+        },
+        {
+          "at": 140,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 2
+        },
+        {
+          "at": 200,
+          "id": "autonomous_ru_loss_12",
+          "category": "TRADE_LOSS",
+          "text": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+          "episode": null,
+          "trade_seq": 2
+        },
+        {
+          "at": 260,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 273,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 320,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 3
+        },
+        {
+          "at": 380,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 4
+        },
+        {
+          "at": 440,
+          "id": "autonomous_ru_win_06",
+          "category": "TRADE_WIN",
+          "text": "А-а, есть! Красиво!",
+          "episode": null,
+          "trade_seq": 4
+        },
+        {
+          "at": 500,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 514,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 560,
+          "id": "autonomous_ru_loss_06",
+          "category": "TRADE_LOSS",
+          "text": "Минус. Да, неприятно.",
+          "episode": null,
+          "trade_seq": 5
+        },
+        {
+          "at": 620,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 6
+        },
+        {
+          "at": 680,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 6
+        },
+        {
+          "at": 740,
+          "id": "autonomous_ru_direction_sell_01",
+          "category": "OPEN_TRADE_PUT",
+          "text": "Вниз.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 755,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 800,
+          "id": "autonomous_ru_win_05",
+          "category": "TRADE_WIN",
+          "text": "Ну вот! Я прямо довольная сейчас.",
+          "episode": null,
+          "trade_seq": 7
+        },
+        {
+          "at": 860,
+          "id": "autonomous_ru_direction_buy_01",
+          "category": "OPEN_TRADE_CALL",
+          "text": "Вверх.",
+          "episode": null,
+          "trade_seq": 8
+        },
+        {
+          "at": 920,
+          "id": "autonomous_ru_loss_01",
+          "category": "TRADE_LOSS",
+          "text": "Минус… Мне это совсем не нравится.",
+          "episode": null,
+          "trade_seq": 8
+        },
+        {
+          "at": 972,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1002,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1004,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1038,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1040,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 9
+        },
+        {
+          "at": 1092,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1122,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1124,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1160,
+          "id": "autonomous_ru_win_01",
+          "category": "TRADE_WIN",
+          "text": "Плюс! Ну, это было вкусно!",
+          "episode": null,
+          "trade_seq": 10
+        },
+        {
+          "at": 1202,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:11",
+          "trade_seq": 11
+        },
+        {
+          "at": 1212,
+          "id": "autonomous_ru_chat_greeting_03",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Устраивайся рядом.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1242,
+          "id": "autonomous_ru_chat_greeting_06",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Что у тебя сегодня хорошего?",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1244,
+          "id": "autonomous_ru_social_02",
+          "category": "CHAT_REACTION",
+          "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1279,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1281,
+          "id": "autonomous_ru_loss_03",
+          "category": "TRADE_LOSS",
+          "text": "Эх. Обидно получилось.",
+          "episode": null,
+          "trade_seq": 11
+        },
+        {
+          "at": 1323,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:12",
+          "trade_seq": 12
+        },
+        {
+          "at": 1332,
+          "id": "autonomous_ru_chat_greeting_07",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Рада, что написал.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1362,
+          "id": "autonomous_ru_chat_greeting_02",
+          "category": "CHAT_REPLY",
+          "text": "О, привет! Как ты вовремя.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1364,
+          "id": "autonomous_ru_social_03",
+          "category": "CHAT_REACTION",
+          "text": "А-а, спасибо! Я даже растерялась.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1400,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 12
+        },
+        {
+          "at": 1516,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:13",
+          "trade_seq": 13
+        },
+        {
+          "at": 1520,
+          "id": "autonomous_ru_win_11",
+          "category": "TRADE_WIN",
+          "text": "Вот теперь можно улыбаться!",
+          "episode": null,
+          "trade_seq": 13
+        },
+        {
+          "at": 1533,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 13
+        },
+        {
+          "at": 1640,
+          "id": "autonomous_ru_loss_09",
+          "category": "TRADE_LOSS",
+          "text": "Жаль. Мне хотелось другого финала.",
+          "episode": null,
+          "trade_seq": 14
+        },
+        {
+          "at": 1760,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 15
+        },
+        {
+          "at": 1774,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 15
+        },
+        {
+          "at": 1880,
+          "id": "autonomous_ru_win_03",
+          "category": "TRADE_WIN",
+          "text": "Есть! Можно я ещё секунду порадуюсь?",
+          "episode": null,
+          "trade_seq": 16
+        },
+        {
+          "at": 2000,
+          "id": "autonomous_ru_loss_10",
+          "category": "TRADE_LOSS",
+          "text": "Ух… Ну да, я недовольна.",
+          "episode": null,
+          "trade_seq": 17
+        },
+        {
+          "at": 2073,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 18
+        },
+        {
+          "at": 2120,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 18
+        },
+        {
+          "at": 2172,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2202,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2204,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2240,
+          "id": "autonomous_ru_win_02",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Вот это приятно!",
+          "episode": null,
+          "trade_seq": 19
+        },
+        {
+          "at": 2292,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2322,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2324,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2358,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2360,
+          "id": "autonomous_ru_loss_02",
+          "category": "TRADE_LOSS",
+          "text": "Ой, ну нет…",
+          "episode": null,
+          "trade_seq": 20
+        },
+        {
+          "at": 2403,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:21",
+          "trade_seq": 21
+        },
+        {
+          "at": 2412,
+          "id": "autonomous_ru_chat_greeting_03",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Устраивайся рядом.",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2442,
+          "id": "autonomous_ru_chat_greeting_06",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Что у тебя сегодня хорошего?",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2444,
+          "id": "autonomous_ru_social_02",
+          "category": "CHAT_REACTION",
+          "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2480,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 21
+        },
+        {
+          "at": 2524,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:22",
+          "trade_seq": 22
+        },
+        {
+          "at": 2532,
+          "id": "autonomous_ru_chat_greeting_07",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Рада, что написал.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2562,
+          "id": "autonomous_ru_chat_greeting_02",
+          "category": "CHAT_REPLY",
+          "text": "О, привет! Как ты вовремя.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2564,
+          "id": "autonomous_ru_social_03",
+          "category": "CHAT_REACTION",
+          "text": "А-а, спасибо! Я даже растерялась.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2599,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2601,
+          "id": "autonomous_ru_win_07",
+          "category": "TRADE_WIN",
+          "text": "Да! Вот за такие моменты я и люблю это смотреть.",
+          "episode": null,
+          "trade_seq": 22
+        },
+        {
+          "at": 2717,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:23",
+          "trade_seq": 23
+        },
+        {
+          "at": 2720,
+          "id": "autonomous_ru_loss_07",
+          "category": "TRADE_LOSS",
+          "text": "Так… мне нужна секундочка.",
+          "episode": null,
+          "trade_seq": 23
+        },
+        {
+          "at": 2840,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 24
+        },
+        {
+          "at": 2842,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 24
+        },
+        {
+          "at": 2960,
+          "id": "autonomous_ru_win_12",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Забрали этот момент.",
+          "episode": null,
+          "trade_seq": 25
+        },
+        {
+          "at": 3080,
+          "id": "autonomous_ru_loss_11",
+          "category": "TRADE_LOSS",
+          "text": "Ох. Ладно, выдыхаю.",
+          "episode": null,
+          "trade_seq": 26
+        },
+        {
+          "at": 3153,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 27
+        },
+        {
+          "at": 3200,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 27
+        },
+        {
+          "at": 3320,
+          "id": "autonomous_ru_win_08",
+          "category": "TRADE_WIN",
+          "text": "Плюс. М-м, приятно.",
+          "episode": null,
+          "trade_seq": 28
+        },
+        {
+          "at": 3372,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3402,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3404,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3438,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3440,
+          "id": "autonomous_ru_loss_08",
+          "category": "TRADE_LOSS",
+          "text": "Ай… вот это обидно.",
+          "episode": null,
+          "trade_seq": 29
+        },
+        {
+          "at": 3492,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3522,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3524,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3560,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 30
+        },
+        {
+          "at": 3604,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:31",
+          "trade_seq": 31
+        },
+        {
+          "at": 3612,
+          "id": "autonomous_ru_chat_greeting_03",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Устраивайся рядом.",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3642,
+          "id": "autonomous_ru_chat_greeting_06",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Что у тебя сегодня хорошего?",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3644,
+          "id": "autonomous_ru_social_02",
+          "category": "CHAT_REACTION",
+          "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3679,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3681,
+          "id": "autonomous_ru_win_12",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Забрали этот момент.",
+          "episode": null,
+          "trade_seq": 31
+        },
+        {
+          "at": 3725,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:32",
+          "trade_seq": 32
+        },
+        {
+          "at": 3732,
+          "id": "autonomous_ru_chat_greeting_07",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Рада, что написал.",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3762,
+          "id": "autonomous_ru_chat_greeting_02",
+          "category": "CHAT_REPLY",
+          "text": "О, привет! Как ты вовремя.",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3764,
+          "id": "autonomous_ru_social_03",
+          "category": "CHAT_REACTION",
+          "text": "А-а, спасибо! Я даже растерялась.",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3800,
+          "id": "autonomous_ru_loss_04",
+          "category": "TRADE_LOSS",
+          "text": "А-а, досадно!",
+          "episode": null,
+          "trade_seq": 32
+        },
+        {
+          "at": 3920,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 33
+        },
+        {
+          "at": 3922,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 33
+        },
+        {
+          "at": 4036,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:34",
+          "trade_seq": 34
+        },
+        {
+          "at": 4040,
+          "id": "autonomous_ru_win_01",
+          "category": "TRADE_WIN",
+          "text": "Плюс! Ну, это было вкусно!",
+          "episode": null,
+          "trade_seq": 34
+        },
+        {
+          "at": 4160,
+          "id": "autonomous_ru_loss_05",
+          "category": "TRADE_LOSS",
+          "text": "Ну блин… Я расстроилась.",
+          "episode": null,
+          "trade_seq": 35
+        },
+        {
+          "at": 4233,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 36
+        },
+        {
+          "at": 4280,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 36
+        },
+        {
+          "at": 4400,
+          "id": "autonomous_ru_win_03",
+          "category": "TRADE_WIN",
+          "text": "Есть! Можно я ещё секунду порадуюсь?",
+          "episode": null,
+          "trade_seq": 37
+        },
+        {
+          "at": 4474,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 38
+        },
+        {
+          "at": 4520,
+          "id": "autonomous_ru_loss_08",
+          "category": "TRADE_LOSS",
+          "text": "Ай… вот это обидно.",
+          "episode": null,
+          "trade_seq": 38
+        },
+        {
+          "at": 4572,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4602,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4604,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4640,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 39
+        },
+        {
+          "at": 4692,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4722,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4724,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4758,
+          "id": "autonomous_ru_bot_03",
+          "category": "NARRATE_CTA",
+          "text": "Кстати, бот есть в шапке профиля. Там можно посмотреть условия доступа.",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4760,
+          "id": "autonomous_ru_win_06",
+          "category": "TRADE_WIN",
+          "text": "А-а, есть! Красиво!",
+          "episode": null,
+          "trade_seq": 40
+        },
+        {
+          "at": 4805,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:41",
+          "trade_seq": 41
+        },
+        {
+          "at": 4812,
+          "id": "autonomous_ru_chat_greeting_03",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Устраивайся рядом.",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4842,
+          "id": "autonomous_ru_chat_greeting_06",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Что у тебя сегодня хорошего?",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4844,
+          "id": "autonomous_ru_social_02",
+          "category": "CHAT_REACTION",
+          "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4880,
+          "id": "autonomous_ru_loss_06",
+          "category": "TRADE_LOSS",
+          "text": "Минус. Да, неприятно.",
+          "episode": null,
+          "trade_seq": 41
+        },
+        {
+          "at": 4926,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:42",
+          "trade_seq": 42
+        },
+        {
+          "at": 4932,
+          "id": "autonomous_ru_chat_greeting_07",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Рада, что написал.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 4962,
+          "id": "autonomous_ru_chat_greeting_02",
+          "category": "CHAT_REPLY",
+          "text": "О, привет! Как ты вовремя.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 4964,
+          "id": "autonomous_ru_social_03",
+          "category": "CHAT_REACTION",
+          "text": "А-а, спасибо! Я даже растерялась.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 4999,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 5001,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 42
+        },
+        {
+          "at": 5120,
+          "id": "autonomous_ru_win_07",
+          "category": "TRADE_WIN",
+          "text": "Да! Вот за такие моменты я и люблю это смотреть.",
+          "episode": null,
+          "trade_seq": 43
+        },
+        {
+          "at": 5237,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:44",
+          "trade_seq": 44
+        },
+        {
+          "at": 5240,
+          "id": "autonomous_ru_loss_11",
+          "category": "TRADE_LOSS",
+          "text": "Ох. Ладно, выдыхаю.",
+          "episode": null,
+          "trade_seq": 44
+        },
+        {
+          "at": 5313,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 45
+        },
+        {
+          "at": 5360,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 45
+        },
+        {
+          "at": 5480,
+          "id": "autonomous_ru_win_02",
+          "category": "TRADE_WIN",
+          "text": "Да-а! Вот это приятно!",
+          "episode": null,
+          "trade_seq": 46
+        },
+        {
+          "at": 5554,
+          "id": "autonomous_ru_bot_02",
+          "category": "NARRATE_CTA",
+          "text": "Доступ объясняется в боте, он по ссылке в профиле. Если шаг непонятен, уточни какой.",
+          "episode": null,
+          "trade_seq": 47
+        },
+        {
+          "at": 5600,
+          "id": "autonomous_ru_loss_07",
+          "category": "TRADE_LOSS",
+          "text": "Так… мне нужна секундочка.",
+          "episode": null,
+          "trade_seq": 47
+        },
+        {
+          "at": 5720,
+          "id": "autonomous_ru_refund_04",
+          "category": "TRADE_REFUND",
+          "text": "Фух, без потерь.",
+          "episode": null,
+          "trade_seq": 48
+        },
+        {
+          "at": 5772,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5802,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5804,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5838,
+          "id": "autonomous_ru_bot_04",
+          "category": "NARRATE_CTA",
+          "text": "Оставлю маленькую подсказку: ссылка на бота в профиле.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5840,
+          "id": "autonomous_ru_win_05",
+          "category": "TRADE_WIN",
+          "text": "Ну вот! Я прямо довольная сейчас.",
+          "episode": null,
+          "trade_seq": 49
+        },
+        {
+          "at": 5892,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 5922,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 5924,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 5960,
+          "id": "autonomous_ru_loss_01",
+          "category": "TRADE_LOSS",
+          "text": "Минус… Мне это совсем не нравится.",
+          "episode": null,
+          "trade_seq": 50
+        },
+        {
+          "at": 6006,
+          "id": "autonomous_ru_search_interest_01",
+          "category": "NARRATE_SCAN",
+          "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+          "episode": "virtual:ru:search:51",
+          "trade_seq": 51
+        },
+        {
+          "at": 6012,
+          "id": "autonomous_ru_chat_greeting_03",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Устраивайся рядом.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6042,
+          "id": "autonomous_ru_chat_greeting_06",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Что у тебя сегодня хорошего?",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6044,
+          "id": "autonomous_ru_social_02",
+          "category": "CHAT_REACTION",
+          "text": "Ого! Вот это сюрприз. Спасибо тебе!",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6079,
+          "id": "autonomous_ru_bot_06",
+          "category": "NARRATE_CTA",
+          "text": "Ссылка на инструменты — в профиле, через бота.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6081,
+          "id": "autonomous_ru_refund_01",
+          "category": "TRADE_REFUND",
+          "text": "О, вернулось. Ну хоть так.",
+          "episode": null,
+          "trade_seq": 51
+        },
+        {
+          "at": 6127,
+          "id": "autonomous_ru_search_interest_04",
+          "category": "NARRATE_SCAN",
+          "text": "Секундочку… хочу получше рассмотреть.",
+          "episode": "virtual:ru:search:52",
+          "trade_seq": 52
+        },
+        {
+          "at": 6132,
+          "id": "autonomous_ru_chat_greeting_07",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Рада, что написал.",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6162,
+          "id": "autonomous_ru_chat_greeting_02",
+          "category": "CHAT_REPLY",
+          "text": "О, привет! Как ты вовремя.",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6164,
+          "id": "autonomous_ru_social_03",
+          "category": "CHAT_REACTION",
+          "text": "А-а, спасибо! Я даже растерялась.",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6200,
+          "id": "autonomous_ru_win_11",
+          "category": "TRADE_WIN",
+          "text": "Вот теперь можно улыбаться!",
+          "episode": null,
+          "trade_seq": 52
+        },
+        {
+          "at": 6320,
+          "id": "autonomous_ru_loss_03",
+          "category": "TRADE_LOSS",
+          "text": "Эх. Обидно получилось.",
+          "episode": null,
+          "trade_seq": 53
+        },
+        {
+          "at": 6393,
+          "id": "autonomous_ru_bot_08",
+          "category": "NARRATE_CTA",
+          "text": "Бот в шапке профиля. Можешь заглянуть, а я пока здесь.",
+          "episode": null,
+          "trade_seq": 54
+        },
+        {
+          "at": 6440,
+          "id": "autonomous_ru_refund_05",
+          "category": "TRADE_REFUND",
+          "text": "Ну вот… разошлись.",
+          "episode": null,
+          "trade_seq": 54
+        },
+        {
+          "at": 6556,
+          "id": "autonomous_ru_observation_02",
+          "category": "NARRATE_MOMENT",
+          "text": "Ну же… ещё чуть-чуть.",
+          "episode": "virtual:ru:moment:55",
+          "trade_seq": 55
+        },
+        {
+          "at": 6560,
+          "id": "autonomous_ru_win_08",
+          "category": "TRADE_WIN",
+          "text": "Плюс. М-м, приятно.",
+          "episode": null,
+          "trade_seq": 55
+        },
+        {
+          "at": 6634,
+          "id": "autonomous_ru_bot_07",
+          "category": "NARRATE_CTA",
+          "text": "Кому нужны шаги подключения — они расписаны в боте из профиля.",
+          "episode": null,
+          "trade_seq": 56
+        },
+        {
+          "at": 6680,
+          "id": "autonomous_ru_loss_09",
+          "category": "TRADE_LOSS",
+          "text": "Жаль. Мне хотелось другого финала.",
+          "episode": null,
+          "trade_seq": 56
+        },
+        {
+          "at": 6800,
+          "id": "autonomous_ru_refund_02",
+          "category": "TRADE_REFUND",
+          "text": "Так, возврат. Выдыхаю.",
+          "episode": null,
+          "trade_seq": 57
+        },
+        {
+          "at": 6875,
+          "id": "autonomous_ru_bot_05",
+          "category": "NARRATE_CTA",
+          "text": "Про доступ удобнее посмотреть в боте. Ссылка в шапке.",
+          "episode": null,
+          "trade_seq": 58
+        },
+        {
+          "at": 6920,
+          "id": "autonomous_ru_win_04",
+          "category": "TRADE_WIN",
+          "text": "Ой, хорошо-то как!",
+          "episode": null,
+          "trade_seq": 58
+        },
+        {
+          "at": 6972,
+          "id": "autonomous_ru_chat_greeting_08",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет. Располагайся, я тут.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7002,
+          "id": "autonomous_ru_chat_greeting_04",
+          "category": "CHAT_REPLY",
+          "text": "Приветик! Ну всё, теперь можно поболтать.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7004,
+          "id": "autonomous_ru_social_01",
+          "category": "CHAT_REACTION",
+          "text": "Ой, спасибо! Мне очень приятно.",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7040,
+          "id": "autonomous_ru_loss_02",
+          "category": "TRADE_LOSS",
+          "text": "Ой, ну нет…",
+          "episode": null,
+          "trade_seq": 59
+        },
+        {
+          "at": 7092,
+          "id": "autonomous_ru_chat_greeting_01",
+          "category": "CHAT_REPLY",
+          "text": "Привет-привет! О, рада тебя видеть.",
+          "episode": null,
+          "trade_seq": 60
+        },
+        {
+          "at": 7122,
+          "id": "autonomous_ru_chat_greeting_05",
+          "category": "CHAT_REPLY",
+          "text": "Привет! Я тебя заметила.",
+          "episode": null,
+          "trade_seq": 60
+        },
+        {
+          "at": 7124,
+          "id": "autonomous_ru_social_04",
+          "category": "CHAT_REACTION",
+          "text": "Как приятно… спасибо, что балуешь.",
+          "episode": null,
+          "trade_seq": 60
+        },
+        {
+          "at": 7158,
+          "id": "autonomous_ru_bot_01",
+          "category": "NARRATE_CTA",
+          "text": "Если хочешь разобраться с инструментами, начни с бота в шапке. Он объяснит шаги.",
+          "episode": null,
+          "trade_seq": 60
+        },
+        {
+          "at": 7160,
+          "id": "autonomous_ru_refund_03",
+          "category": "TRADE_REFUND",
+          "text": "Ничья. Ладно, бывает.",
+          "episode": null,
+          "trade_seq": 60
+        }
+      ]
+    }
+  ]
+}

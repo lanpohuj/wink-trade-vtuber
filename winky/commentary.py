@@ -68,5 +68,13 @@ def choices(context, phase, now=None):
         episode = f"{session}:{lang}:search:{context.get('search_generation')}"
         yield 'NARRATE_SCAN', episode, 'search', {'purpose': 'search_interest'}, 90
     if phase == 'IN_TRADE' and context.get('open_observed') is True:
+        current_time = time.time() if now is None else now
+        remaining = context.get('remaining_sec')
+        volatility = (context.get('high_volatility') is True
+                      and 0 <= current_time - seconds(context.get('market_observed_at')) <= 3)
+        closing = isinstance(remaining, (int, float)) and not isinstance(remaining, bool) and 3 <= remaining <= 5
+        if volatility or closing:
+            moment = f"{session}:{lang}:moment:{context.get('trade_seq')}"
+            yield 'NARRATE_MOMENT', moment, 'trade', {'purpose': 'observation'}, 0
         episode = f"{session}:{lang}:hook:{context.get('trade_seq')}"
         yield 'NARRATE_ENGAGE', episode, 'trade', {'purpose': 'moment_question'}, 120

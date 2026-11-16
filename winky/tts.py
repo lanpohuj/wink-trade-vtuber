@@ -2055,12 +2055,22 @@ class SpeechController:
         from winky.chat_style import reply_pool
         local_key, local_pool = reply_pool(getattr(chat_item, 'text', ''), lang)
         local_row = next((r for r in local_pool if fingerprint(r['text']) == fingerprint(clean_text)), None)
-        reserved = self.voice_bank.rotation.reserve(
-            [local_row] if local_row else
-            [dict(id='chat_' + fingerprint(clean_text), text=clean_text, lang=lang, topic='chat', tone='playful')],
-            local_key if local_row else lang + ':chat:' + str(getattr(chat_item, 'rotation_kind', 'reply')),
-            universe=local_pool if local_row else None)
+        recording_event = getattr(chat_item, 'recording_event', None)
+        if recording_event:
+            from winky.director import stream_director
+            recording_event = stream_director.recording_context(recording_event)
+            reserved = self.voice_bank.reserve(recording_event)
+        else:
+            reserved = self.voice_bank.rotation.reserve(
+                [local_row] if local_row else
+                [dict(id='chat_' + fingerprint(clean_text), text=clean_text, lang=lang, topic='chat', tone='playful')],
+                local_key if local_row else lang + ':chat:' + str(getattr(chat_item, 'rotation_kind', 'reply')),
+                universe=local_pool if local_row else None)
         if not reserved:
+            chat_item.failed = True
+            return False
+        if recording_event and (media != reserved['path'] or fingerprint(clean_text) != fingerprint(reserved['text'])):
+            self.voice_bank.release(reserved['id'], recording_event, played=False)
             chat_item.failed = True
             return False
 
@@ -2088,6 +2098,14 @@ class SpeechController:
         else:
             self._synth_pool.submit(self._prepare_audio, item)
 
+        if recording_event:
+            item.event.update(chat_kind='comment', purpose='chat_greeting',
+                              selection_reason='autonomous_v1:written_greeting',
+                              _recording_guard={k: reserved[k] for k in
+                                                ('speech_contract', 'requires_fresh_context', 'dialogue_policy', 'conditions') if k in reserved})
+            if (reserved.get('performance', {}).get('review_accepted') is True
+                    and reserved['performance'].get('audio_sha256') == reserved.get('sha256')):
+                item.event['performance'] = reserved['performance']
         with self._lock:
             self._playback_queue.append(item)
 
@@ -2101,6 +2119,8 @@ class SpeechController:
         event['category'] = category_name(event.get('category'))
         from winky.editorial import DISABLED_CATEGORIES
         from winky.director import stream_director
+        event.pop('_recording_guard', None)
+        event.pop('_authored_concern', None)
         if event['category'] in DISABLED_CATEGORIES:
             return {'ok': False, 'error': 'category_disabled'}
         if not stream_director.event_allowed(event):
@@ -2149,6 +2169,7 @@ class SpeechController:
             return {'ok': False, 'error': 'invalid_event_ttl'}
         if time.time() - created > event_ttl:
             return {'ok': False, 'error': 'expired_event'}
+        event = stream_director.recording_context(event)
         selected = self.voice_bank.reserve(event)
         if selected is None:
             self._last_blocked = f"no_eligible_recording: {event['category']} ({event['lang']})"
@@ -2158,6 +2179,12 @@ class SpeechController:
         event.setdefault('purpose', selected.get('purpose'))
         event.setdefault('semantic_group', selected.get('semantic_group'))
         event.setdefault('selection_reason', 'confirmed_event' if priority(event['category']) < 4 else 'episode_beat')
+        if selected.get('speech_contract') == 'autonomous_v1':
+            event['selection_reason'] = 'autonomous_v1:' + str(selected.get('purpose', 'confirmed_event'))
+            event['_recording_guard'] = {k: selected[k] for k in
+                                         ('speech_contract', 'requires_fresh_context', 'dialogue_policy', 'conditions') if k in selected}
+            event['_authored_concern'] = selected.get('expresses_concern') is True
+            event_ttl = min(event_ttl, selected.get('ttl_sec', event_ttl))
         # Only the selected recording can supply its authored timing metadata.
         event.pop('performance', None)
         if (selected.get('performance', {}).get('review_accepted') is True
@@ -2235,6 +2262,12 @@ class SpeechController:
         phase = stream_director.trade_phase
         if item.event and not stream_director.event_allowed(item.event):
             return False
+        if item.event.get('_recording_guard'):
+            from winky.phrase_context import rejection_reason
+            reason = rejection_reason(item.event['_recording_guard'], stream_director.recording_context(item.event))
+            if reason:
+                logger.info('voice_cancel reason=%s event=%s', reason, item.event.get('event_id'))
+                return False
         if item.priority == 3:
             return True  # Duration/window admission is checked at actual playback.
         if not item.event:

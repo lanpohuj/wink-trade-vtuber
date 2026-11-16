@@ -45,6 +45,7 @@ class ChatItem:
     future: Any = None
     max_duration_sec: float = 15
     user_key: str = ""
+    recording_event: dict | None = None
 
 
 class StreamDirector:
@@ -84,6 +85,7 @@ class StreamDirector:
         self.cta_enabled = True
         self.stream_lang = 'ru'
         self._last_loss_at = 0.0
+        self._concern_episode = None
         self._cta_lock = threading.Lock()
 
         self._lock = threading.RLock()
@@ -273,6 +275,23 @@ class StreamDirector:
                 item.failed = True
                 return
             reply_text = item.reply_text
+            # A pure written greeting may reuse an accepted recording. A greeting
+            # with a question stays a personal answer and reaches the brain below.
+            from winky.voice_bank import VoiceBank
+            bank = getattr(self._tts, 'voice_bank', None)
+            if not reply_text and isinstance(bank, VoiceBank):
+                greeting = self.recording_context(dict(category='CHAT_REPLY', lang=item.lang,
+                    chat_kind='comment', comment=item.text, purpose='chat_greeting',
+                    created_at=item.created_at, max_duration_sec=item.max_duration_sec))
+                selected = bank.reserve(greeting)
+                if selected:
+                    bank.release(selected['id'], greeting, played=False)
+                    item.reply_text = selected['text']
+                    item.media_path = selected['path']
+                    item.recording_event = {**greeting, 'file_id': selected['id']}
+                    item.intent = 'greeting'
+                    item.ready = True
+                    return
             if not reply_text:
                 if self._brain and hasattr(self._brain, "reply"):
                     try:
@@ -397,6 +416,19 @@ class StreamDirector:
                 pass
         return True
 
+    def recording_context(self, event, now=None):
+        """Read-only facts for authored recording conditions, refreshed at playback."""
+        from winky.phrase_context import speech_context
+        now = time.time() if now is None else now
+        with self._lock:
+            rotation = getattr(getattr(self._tts, 'voice_bank', None), 'rotation', None)
+            from winky.speech_rotation import SpeechRotation
+            due = isinstance(rotation, SpeechRotation) and rotation.cta_due(now)
+            facts = speech_context(event, self.context, self._trade_phase, self._last_phase_update, now,
+                                   dialogue_active=self.dialogue_active(now), cta_due=due and self.cta_allowed(now),
+                                   last_loss_at=self._last_loss_at, concern_episode=self._concern_episode)
+            return {**event, '_autonomous_context': facts}
+
     # ---------- Диспетчер режиссуры ----------
 
     def _run(self) -> None:
@@ -410,11 +442,14 @@ class StreamDirector:
     def note_voice_started(self, event: dict) -> None:
         with self._lock:
             self.conversation.started(event, time.time())
+            if event.get('_authored_concern') is True and event.get('session_id') and event.get('trade_seq') is not None:
+                self._concern_episode = (event['session_id'], event['trade_seq'])
         self._log_event({'type': 'voice_start', 'category': event.get('category'),
                          'event_id': event.get('event_id'), 'file_id': event.get('file_id'),
                          'text': event.get('text'), 'source': event.get('voice_source'),
                          'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'purpose': event.get('purpose'), 'episode_key': event.get('episode_key'),
                          'selection_reason': event.get('selection_reason'),
+                         'conditions_checked': event.get('_recording_guard', {}).get('conditions'),
                          'arbitration_reason': event.get('arbitration_reason'),
                          'audio_clock': event.get('audio_clock'),
                          'latency_sec': round(time.time() - event['received_at'], 3) if event.get('received_at') else None,
@@ -474,7 +509,7 @@ class StreamDirector:
                 return False
             event.update(session_id=self.context.get('session_id'), trade_seq=self.context.get('trade_seq'),
                          pair=self.context.get('pair'), max_duration_sec=max(0, self.remaining_sec - (now - self._last_phase_update) - 2))
-        if not self._tts.voice_bank.candidates(event):
+        if not self._tts.voice_bank.candidates(self.recording_context(event, now)):
             return False
         return bool(self._tts.enqueue_voice_event(event).get('ok'))
 

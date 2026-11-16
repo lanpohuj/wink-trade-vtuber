@@ -38,6 +38,7 @@ class SpeechRotation:
         self.recent = self.state.setdefault('recent', [])
         self.groups = self.state.setdefault('groups', {})
         self.topics = self.state.setdefault('topics', {})
+        self.recordings = self.state.setdefault('recordings', {})
         self.pending = {}
 
     def save(self):
@@ -76,6 +77,11 @@ class SpeechRotation:
                 if exhausted and (logical == deck['last'] or text_hash == last_text) and len(full_rows) > 1:
                     continue
                 if row['id'] in self.pending or fingerprint(row['text']) in pending_texts:
+                    continue
+                gap = row.get('same_file_min_gap_sec', 0)
+                previous = max(self.recordings.get(text_hash, -1e12),
+                               max((r['at'] for r in self.recent if r['hash'] == text_hash), default=-1e12))
+                if gap and now - previous < gap:
                     continue
                 group = row.get('semantic_group')
                 if group and now - self.groups.get(group, -1e12) < row.get('repeat_after_sec', 600):
@@ -119,6 +125,11 @@ class SpeechRotation:
             deck['last_text'] = text_hash
             self._note(spoken_text or row['text'], row.get('lang', 'ru'), row.get('topic', key), row.get('semantic_group'), now)
             self.recent[-1]['deck'] = key
+            self.recordings[text_hash] = now
+            if len(self.recordings) > 2048:
+                oldest = sorted(self.recordings, key=self.recordings.get)[:len(self.recordings)-2048]
+                for identity in oldest:
+                    del self.recordings[identity]
             self.save()
 
     def _note(self, text, lang, topic, group, now):

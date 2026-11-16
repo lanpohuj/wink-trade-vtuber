@@ -185,8 +185,8 @@ class VoiceBank:
                 continue
             if not check_phrase(item.get('text', ''))[0] or not check_phrase(item.get('transcript', ''))[0]:
                 continue
-            conditions = item.get('conditions', {})
-            if any(event.get(k) not in (v if isinstance(v, list) else [v]) for k, v in conditions.items()):
+            from winky.phrase_context import rejection_reason
+            if rejection_reason(item, event):
                 continue
             # Legacy recordings have no verified context annotations. Do not
             # invent an expiry or technical reason for an arbitrary strategy.
