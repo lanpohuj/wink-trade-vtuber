@@ -30,12 +30,17 @@ def import_review(path, destination, supplement=False):
     if supplement:
         previous = json.loads((destination / 'owner-review.json').read_text())['items']
         merged = {row['id']: row for row in previous}
-        merged.update({row['id']: row for row in items})
+        for row in items:
+            merged.pop(row['id'], None)
+            merged[row['id']] = row
         items = list(merged.values())
     ids = [row['id'] for row in items]
     if len(ids) != len(set(ids)) or any(row.get('status') not in {'good', 'ref', 'change', 'bad'} for row in items):
         raise ValueError('Duplicate IDs or unsupported decisions')
-    approved = {fingerprint(row['text']) for row in items if row['status'] in ('good', 'ref')}
+    # A later review can reject wording previously accepted under another ID.
+    # Keep both audit rows, but apply the latest verdict to that exact wording.
+    latest = {fingerprint(row['text']): row for row in items}
+    approved = {key for key, row in latest.items() if row['status'] in ('good', 'ref')}
     try:
         legacy = set(json.loads((destination / 'editorial.json').read_text())['legacy'])
     except (OSError, ValueError, KeyError):
@@ -59,7 +64,7 @@ def import_review(path, destination, supplement=False):
         'version': source['version'], 'created_at': source['created_at'], 'items': items,
     }, ensure_ascii=False, indent=2) + '\n')
     result = dict(version=1, approved=sorted(approved), legacy=sorted(legacy),
-                  rejected=sorted({fingerprint(row['text']) for row in items if row['status'] in ('bad', 'change')}),
+                  rejected=sorted({key for key, row in latest.items() if row['status'] in ('bad', 'change')}),
                   counts=dict(Counter(row['status'] for row in items)),
                   english_status='pending_adaptation_after_russian_acceptance')
     (destination / 'editorial.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

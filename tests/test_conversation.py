@@ -11,7 +11,7 @@ from unittest.mock import Mock, patch
 from winky.conversation import Conversation
 from winky.director import ChatItem, StreamDirector
 from winky.editorial import ROOT, approved, recording_allowed, reply_allowed, text_allowed
-from winky.speech_rotation import SpeechRotation
+from winky.speech_rotation import SpeechRotation, fingerprint
 from winky.tts import SpeechController, SpeechItem
 from winky.voice_bank import VoiceBank
 
@@ -19,8 +19,10 @@ from winky.voice_bank import VoiceBank
 class EditorialTests(unittest.TestCase):
     def test_every_owner_decision_is_enforced_and_english_is_not_auto_approved(self):
         review = json.loads((ROOT / 'docs/voice-audit/conversation-v1/owner-review.json').read_text())['items']
-        self.assertEqual(Counter(r['status'] for r in review), dict(bad=828, good=39, ref=3, change=2))
-        for row in review:
+        original = [r for r in review if not r['id'].startswith('conversation_')]
+        self.assertEqual(Counter(r['status'] for r in original), dict(bad=828, good=39, ref=3, change=2))
+        latest = {fingerprint(row['text']): row for row in review}
+        for row in latest.values():
             self.assertEqual(approved(row['text']), row['status'] in ('good', 'ref'), row['id'])
             if row['status'] in ('bad', 'change'):
                 self.assertFalse(text_allowed(row['text']))
@@ -30,6 +32,11 @@ class EditorialTests(unittest.TestCase):
             for row in rows:
                 if row['lang'] == 'en':
                     self.assertFalse(recording_allowed(row['text'], ROOT / 'assets/voices/lively_v3'))
+
+    def test_latest_rejection_supersedes_old_approval_under_another_id(self):
+        text = 'Не, секунду. Я сначала всю картинку проверю, а потом уже решим с входом.'
+        self.assertFalse(approved(text))
+        self.assertFalse(recording_allowed(text, ROOT / 'assets/voices/lively_v3'))
 
     def test_rejected_recording_cannot_be_pinned_or_recovered_from_base(self):
         with tempfile.TemporaryDirectory() as tmp:
