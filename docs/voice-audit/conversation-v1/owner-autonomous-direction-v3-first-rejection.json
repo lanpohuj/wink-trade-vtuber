@@ -1,0 +1,15 @@
+{
+  "version": 3,
+  "kind": "autonomous_direction_delivery_review_v3",
+  "created_at": "2026-11-16T15:49:35.561516+00:00",
+  "records": [
+    {
+      "id": "autonomous_direction_free_v3_ru_01",
+      "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8",
+      "accepted": false,
+      "listened": true,
+      "note": "Владелец: в первом дубле посторонние звуки, переделать только его.",
+      "offset_sec": null
+    }
+  ]
+}

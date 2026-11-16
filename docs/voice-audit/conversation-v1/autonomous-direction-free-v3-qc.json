@@ -4,20 +4,20 @@
   "auditory_review_complete": false,
   "records": [
     {
-      "id": "autonomous_direction_free_v3_ru_01",
-      "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8",
+      "id": "autonomous_direction_free_v3_ru_01_retake2_retake3",
+      "sha256": "2f0c0a0dfbd6e932a0eac797df5b84e385596bd413807929f5115f9922190eb7",
       "text": "Открыла вверх.",
       "transcript": "Открыла вверх!",
       "similarity": 1.0,
       "metrics": {
         "decode_ok": true,
-        "duration": 1.541,
-        "rms": 0.08137,
-        "peak": 0.30678,
+        "duration": 1.358,
+        "rms": 0.09241,
+        "peak": 0.29306,
         "clipped_fraction": 0.0,
-        "leading_silence": 0.08,
-        "trailing_silence": 0.141,
-        "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8"
+        "leading_silence": 0.06,
+        "trailing_silence": 0.118,
+        "sha256": "2f0c0a0dfbd6e932a0eac797df5b84e385596bd413807929f5115f9922190eb7"
       },
       "segments": [
         {

@@ -6,7 +6,7 @@
   "categories": {
     "OPEN_TRADE_CALL": [
       {
-        "id": "autonomous_direction_free_v3_ru_01",
+        "id": "autonomous_direction_free_v3_ru_01_retake2_retake3",
         "source_id": "autonomous_ru_direction_buy_01_v2",
         "text": "Открыла вверх.",
         "tts_text": "[conversational] Открыла вверх.",
@@ -20,9 +20,9 @@
         "auditory_verified": false,
         "evaluation_only": true,
         "status": "review_pending",
-        "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01.mp3",
-        "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8",
-        "duration": 1.541125,
+        "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01_retake2_retake3.mp3",
+        "sha256": "2f0c0a0dfbd6e932a0eac797df5b84e385596bd413807929f5115f9922190eb7",
+        "duration": 1.35825,
         "request_payload": {
           "text": "[conversational] Открыла вверх.",
           "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
@@ -42,6 +42,10 @@
         },
         "model": "s2.1-pro-free",
         "estimated_usd": 0,
+        "owner_listened": false,
+        "review_accepted": false,
+        "retake_reason": "post_speech_audio",
+        "supersedes_audio_id": "autonomous_direction_free_v3_ru_01_retake2",
         "automatic_qc_passed": true,
         "transcript": "Открыла вверх!"
       },
@@ -214,6 +218,96 @@
       "automatic_qc_passed": false,
       "transcript": "Открыло вниз?",
       "retake_reason": "strict_short_phrase_asr_mismatch"
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_01",
+      "source_id": "autonomous_ru_direction_buy_01_v2",
+      "text": "Открыла вверх.",
+      "tts_text": "[conversational] Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
+      "lang": "ru",
+      "category": "OPEN_TRADE_CALL",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "max_duration_sec": 5,
+      "requires_listening": false,
+      "auditory_verified": false,
+      "evaluation_only": true,
+      "status": "rejected_delivery",
+      "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01.mp3",
+      "sha256": "5f4c6d4fd745669e5f5d9bc327edcd4a383eabf0b2a13befdddc0d53c8407aa8",
+      "duration": 1.541125,
+      "request_payload": {
+        "text": "[conversational] Открыла вверх.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "model": "s2.1-pro-free",
+      "estimated_usd": 0,
+      "automatic_qc_passed": true,
+      "transcript": "Открыла вверх!",
+      "owner_listened": true,
+      "review_accepted": false,
+      "review_method": "owner_per_recording",
+      "review_basis": "owner_listened_sha256",
+      "owner_review_note": "Владелец: в первом дубле посторонние звуки, переделать только его."
+    },
+    {
+      "id": "autonomous_direction_free_v3_ru_01_retake2",
+      "source_id": "autonomous_ru_direction_buy_01_v2",
+      "text": "Открыла вверх.",
+      "tts_text": "[confident] Открыла вверх.",
+      "text_sha256": "9687ef0d57d590ad1a31920a5f81eef0e74b8499b536aef973d47cd28cc47396",
+      "lang": "ru",
+      "category": "OPEN_TRADE_CALL",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "confident",
+      "max_duration_sec": 5,
+      "requires_listening": true,
+      "auditory_verified": false,
+      "evaluation_only": true,
+      "status": "superseded_technical_mismatch",
+      "file": "ru/OPEN_TRADE_CALL/autonomous_direction_free_v3_ru_01_retake2.mp3",
+      "sha256": "f32004b58257e5ee5e155c7538c0122e4bdaf9a3d1794aeae18f52875737c176",
+      "duration": 3.630937,
+      "request_payload": {
+        "text": "[confident] Открыла вверх.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "normal",
+        "normalize": true,
+        "temperature": 0.72,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.0,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "model": "s2.1-pro-free",
+      "estimated_usd": 0,
+      "owner_listened": false,
+      "review_accepted": false,
+      "retake_reason": "post_speech_audio",
+      "supersedes_audio_id": "autonomous_direction_free_v3_ru_01",
+      "automatic_qc_passed": false,
+      "transcript": "Открыла вверх!"
     }
-  ]
+  ],
+  "delivery_approved_for_expansion": false
 }

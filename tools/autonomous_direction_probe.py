@@ -6,6 +6,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 from decimal import Decimal
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
@@ -103,29 +104,52 @@ def import_verdict(path,version=2):
                          review_filename=f'owner-autonomous-direction-voice-review-v{version}.json')
 
 
-def retake_v3(identity,tag):
+def qc_one_v3(identity):
+    from tools.qc_autonomous_voice_probe import qc_bank
+    path=BANK_V3/'manifest.json';manifest=json.loads(path.read_text())
+    row=next(r for group in manifest['categories'].values() for r in group if r['id']==identity)
+    with tempfile.TemporaryDirectory() as tmp:
+        folder=Path(tmp)
+        save(folder/'manifest.json',dict(evaluation_only=True,activated=False,
+             categories={row['category']:[{**row,'file':str((BANK_V3/row['file']).resolve()),'max_duration_sec':2.5}]}))
+        output=DOCS/(identity+'-qc.json')
+        qc_bank(folder,output,1,text_similarity_min=1)
+        checked=json.loads(output.read_text())['records'][0]
+        row.update(automatic_qc_passed=not checked['issues'],transcript=checked['transcript'])
+    save(path,manifest)
+
+
+def retake_v3(identity,tag,*,replace_rejected=False,fresh_take=False,reason='strict_short_phrase_asr_mismatch'):
     if tag not in ('conversational','confident'):raise ValueError('Unsupported retake delivery')
     path=BANK_V3/'manifest.json';manifest=json.loads(path.read_text())
     found=[(group,r) for group in manifest['categories'].values() for r in group if r['id']==identity]
     if len(found)!=1:raise ValueError('Unknown active direction take')
     group,old=found[0]
-    if old.get('owner_listened') or old.get('auditory_verified'):raise ValueError('Never replace owner-listened audio')
+    heard=old.get('owner_listened') or old.get('auditory_verified')
+    rejected_replacement=(replace_rejected and old.get('owner_listened') is True
+                          and old.get('review_accepted') is False and old.get('status')=='rejected_delivery')
+    if heard and not rejected_replacement:raise ValueError('Never replace owner-listened audio')
     archive=manifest.setdefault('superseded_evaluation_takes',[])
     new_id=identity+'_retake'+str(1+len(archive));target=BANK_V3/'ru'/old['category']/(new_id+'.mp3')
     if target.exists():raise ValueError('Retake already exists')
     engine=ClearDirectionTTS()
     try:
         if engine.voices['ru']!=MARIN:raise ValueError('RU voice changed')
-        before=snapshot(engine);tts_text=f'[{tag}] '+old['text'];audio=engine.synthesize(tts_text,'ru')
+        before=snapshot(engine);tts_text=f'[{tag}] '+old['text']
+        audio=engine.synthesize(tts_text,'ru',bypass_cache=rejected_replacement or fresh_take)
         target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(audio,target)
         new={**old,'id':new_id,'tts_text':tts_text,'delivery':tag,'file':target.relative_to(BANK_V3).as_posix(),
              'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'duration':media_duration_seconds(target),
              'request_payload':engine.payload(tts_text,'ru'),'status':'review_pending','auditory_verified':False,
-             'retake_reason':'strict_short_phrase_asr_mismatch','supersedes_audio_id':identity}
+             'owner_listened':False,'review_accepted':False,'requires_listening':True,
+             'retake_reason':'owner_reported_background_noise' if rejected_replacement else reason,
+             'supersedes_audio_id':identity}
         new.pop('transcript',None);new.pop('automatic_qc_passed',None)
+        for key in ('review_method','review_basis','owner_review_note'):
+            new.pop(key,None)
         group[group.index(old)]=new
-        archive.append({**old,'automatic_qc_passed':False,'status':'superseded_technical_mismatch',
-                        'retake_reason':'strict_short_phrase_asr_mismatch'})
+        archive.append(old if rejected_replacement else {**old,'automatic_qc_passed':False,'status':'superseded_technical_mismatch',
+                        'retake_reason':reason})
         save(path,manifest)
         after=snapshot(engine)
         save(DOCS/'autonomous-direction-v3-retake-cost-check.json',dict(api_credit_unchanged=before['api-credit']==after['api-credit'],
@@ -135,12 +159,18 @@ def retake_v3(identity,tag):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=('generate','qc','import-review','retake-v3'))
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=('generate','qc','qc-one-v3','import-review','retake-v3'))
     parser.add_argument('--id');parser.add_argument('--tag',choices=('conversational','confident'))
+    parser.add_argument('--replace-owner-rejected',action='store_true')
+    parser.add_argument('--fresh-take',action='store_true')
+    parser.add_argument('--reason',choices=('strict_short_phrase_asr_mismatch','post_speech_audio'),default='strict_short_phrase_asr_mismatch')
     parser.add_argument('--review',type=Path);parser.add_argument('--version',type=int,choices=(2,3),default=2);args=parser.parse_args()
-    if args.action=='retake-v3':
+    if args.action=='qc-one-v3':
+        if not args.id:parser.error('--id required')
+        qc_one_v3(args.id)
+    elif args.action=='retake-v3':
         if not args.id or not args.tag:parser.error('--id and --tag required')
-        retake_v3(args.id,args.tag)
+        retake_v3(args.id,args.tag,replace_rejected=args.replace_owner_rejected,fresh_take=args.fresh_take,reason=args.reason)
     elif args.action=='generate':generate(args.version)
     elif args.action=='qc':
         from tools.qc_autonomous_voice_probe import qc_bank

@@ -88,3 +88,34 @@ class DirectionRevisionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,'owner-listened'):
                     directions.retake_v3('reviewed','conversational')
                 synth.assert_not_called()
+
+    def test_explicit_rejected_retake_preserves_old_audio_and_does_not_inherit_listening(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'new.mp3';source.write_bytes(b'new waveform')
+            old_path=root/'old.mp3';old_path.write_bytes(b'old waveform')
+            old=dict(id='rejected',category='OPEN_TRADE_CALL',file='old.mp3',text='Открыла вверх.',
+                     owner_listened=True,auditory_verified=False,status='rejected_delivery',
+                     review_accepted=False,owner_review_note='noise',review_method='owner_per_recording')
+            (root/'manifest.json').write_text(json.dumps(dict(categories={'OPEN_TRADE_CALL':[old]})))
+            with patch.object(directions,'BANK_V3',root),patch.object(directions,'DOCS',root), \
+                    patch.object(directions,'ClearDirectionTTS') as cls,patch.object(directions,'snapshot',return_value={'api-credit':'same','package':{},'ledger_sha256':'same'}), \
+                    patch.object(directions,'media_duration_seconds',return_value=1):
+                engine=cls.return_value;engine.voices={'ru':directions.MARIN}
+                engine.synthesize.return_value=source;engine.payload.return_value={}
+                directions.retake_v3('rejected','confident',replace_rejected=True)
+                engine.synthesize.assert_called_once_with('[confident] Открыла вверх.','ru',bypass_cache=True)
+            result=json.loads((root/'manifest.json').read_text())
+            self.assertEqual(result['superseded_evaluation_takes'][0],old)
+            new=result['categories']['OPEN_TRADE_CALL'][0]
+            self.assertEqual(old_path.read_bytes(),b'old waveform')
+            self.assertNotEqual(new['id'],old['id'])
+            self.assertFalse(new['owner_listened']);self.assertFalse(new['auditory_verified'])
+            self.assertNotIn('owner_review_note',new)
+
+    def test_replacement_flag_does_not_allow_replacing_an_accepted_take(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'manifest.json').write_text(json.dumps(dict(categories={'OPEN_TRADE_CALL':[
+                dict(id='accepted',owner_listened=True,auditory_verified=True,status='ready',review_accepted=True)]})))
+            with patch.object(directions,'BANK_V3',root),patch.object(directions,'ClearDirectionTTS') as synth:
+                with self.assertRaises(ValueError):directions.retake_v3('accepted','confident',replace_rejected=True)
+                synth.assert_not_called()

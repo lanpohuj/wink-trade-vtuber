@@ -1,0 +1,36 @@
+{
+  "model": "faster-whisper-small-local",
+  "paid_asr_requests": 0,
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "autonomous_direction_free_v3_ru_01_retake2",
+      "sha256": "f32004b58257e5ee5e155c7538c0122e4bdaf9a3d1794aeae18f52875737c176",
+      "text": "Открыла вверх.",
+      "transcript": "Открыла вверх!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.631,
+        "rms": 0.08614,
+        "peak": 0.90868,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.12,
+        "trailing_silence": 0.171,
+        "sha256": "f32004b58257e5ee5e155c7538c0122e4bdaf9a3d1794aeae18f52875737c176"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " Открыла вверх!"
+        }
+      ],
+      "issues": [
+        "too_long_for_two_word_command",
+        "post_speech_audio"
+      ],
+      "auditory_verified": false
+    }
+  ]
+}
