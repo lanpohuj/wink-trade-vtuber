@@ -14,7 +14,8 @@ from tools.commentary_catalog import catalog
 class CommentaryTests(unittest.TestCase):
     def test_trade_wait_keeps_commentary_without_expiry_explanations(self):
         categories = [c[0] for c in choices(dict(open_observed=True, duration='30s', trade_seq=1), 'IN_TRADE', 100)]
-        self.assertIn('NARRATE_TRADE', categories)
+        self.assertNotIn('NARRATE_TRADE', categories)
+        self.assertIn('NARRATE_ENGAGE', categories)
         self.assertNotIn('NARRATE_EXPIRY', categories)
 
     def test_catalog_has_80_unique_contextual_records_per_language(self):
@@ -47,59 +48,17 @@ class CommentaryTests(unittest.TestCase):
             )
         self.assertFalse(narration_valid(e, c, "COOLDOWN", 99, 100))
 
-    def test_loss_recovery_refund_unknown_and_near_miss(self):
-        c = {
-            "last_result": dict(seq=1, outcome="LOSS", closed_at=100, previous_step=0),
-            "next_stake": 110,
-        }
-        self.assertEqual(
-            next(choices(c, "COOLDOWN", 101))[3]["result_kind"], "LOSS_110"
-        )
-        c["next_stake"] = 242
-        self.assertEqual(
-            next(choices(c, "COOLDOWN", 101))[3]["result_kind"], "LOSS_242"
-        )
-        c["next_stake"] = 50
-        c["last_result"]["previous_step"] = 2
-        self.assertEqual(
-            next(choices(c, "COOLDOWN", 101))[3]["result_kind"], "LOSS_RESET"
-        )
-        self.assertFalse(
-            any(
-                extra.get("result_kind") == "NEAR_LOSS"
-                for _, _, _, extra, _ in choices(c, "COOLDOWN", 101)
-            )
-        )
-        c["last_result"]["near_loss_verified"] = True
-        self.assertTrue(
-            any(
-                extra.get("result_kind") == "NEAR_LOSS"
-                for _, _, _, extra, _ in choices(c, "COOLDOWN", 101)
-            )
-        )
-        for outcome in ("REFUND", "UNKNOWN"):
-            c["last_result"]["outcome"] = outcome
-            self.assertFalse(
-                any(
-                    category == "NARRATE_RESULT"
-                    for category, *_ in choices(c, "COOLDOWN", 101)
-                )
-            )
+    def test_results_do_not_trigger_recovery_lectures(self):
+        for outcome in ('LOSS', 'REFUND', 'WIN', 'UNKNOWN'):
+            for stake in (50, 110, 242):
+                c = dict(last_result=dict(seq=1, outcome=outcome, closed_at=100,
+                         near_loss_verified=True), next_stake=stake)
+                self.assertEqual(list(choices(c, 'COOLDOWN', 101)), [])
 
-    def test_only_recent_measured_volatility_gets_a_comment(self):
-        c = dict(high_volatility=True, market_observed_at=99)
-        self.assertTrue(
-            any(
-                category == "NARRATE_VOLATILITY"
-                for category, *_ in choices(c, "ANALYZING", 100)
-            )
-        )
-        self.assertFalse(
-            any(
-                category == "NARRATE_VOLATILITY"
-                for category, *_ in choices(c, "ANALYZING", 104)
-            )
-        )
+    def test_volatility_is_not_an_automatic_monologue(self):
+        for observed_at in (99, 95):
+            c = dict(high_volatility=True, market_observed_at=observed_at)
+            self.assertFalse(any(cat == 'NARRATE_VOLATILITY' for cat, *_ in choices(c, 'ANALYZING', 100)))
 
     def test_tick_uses_end_of_speech_gap_and_ready_chat_outranks_filler(self):
         tts = Mock()
@@ -140,7 +99,7 @@ class CommentaryTests(unittest.TestCase):
         tts.enqueue_voice_event.assert_not_called()
         d.stop()
 
-    def test_pending_chat_does_not_block_commentary_and_short_window_does(self):
+    def test_pending_chat_suppresses_background_in_any_trade_window(self):
         tts = Mock()
         tts.speaking = False
         tts.narration_state.return_value = {}
@@ -165,7 +124,7 @@ class CommentaryTests(unittest.TestCase):
         tts.enqueue_voice_event.assert_not_called()
         d._remaining_sec = 15
         d.tick(101)
-        self.assertTrue(tts.enqueue_voice_event.called)
+        tts.enqueue_voice_event.assert_not_called()
         d.stop()
 
     def test_overlay_is_additive_and_requires_acceptance(self):
@@ -294,13 +253,8 @@ class CommentaryTests(unittest.TestCase):
         tts.enqueue_voice_event.assert_not_called()
         d.note_voice_started(dict(category="TRADE_LOSS", session_id="s", trade_seq=1))
         d.tick(101)
-        tts.enqueue_voice_event.assert_called_once()
-        event = tts.enqueue_voice_event.call_args.args[0]
-        self.assertEqual(event["result_kind"], "LOSS_110")
-        self.assertEqual(event["commentary_scope"], "result")
-        d.note_commentary_started(event)
-        tts.enqueue_voice_event.reset_mock()
-        d._trade_phase = "COOLDOWN"
+        tts.enqueue_voice_event.assert_not_called()
+        d._trade_phase = 'COOLDOWN'
         d._last_phase_update = 102
         d.tick(102)
         tts.enqueue_voice_event.assert_not_called()
@@ -551,8 +505,7 @@ class CommentaryTests(unittest.TestCase):
         d._chat_queue.append(chat)
         d._last_phase_update = 100
         d.tick(100)
-        self.assertTrue(tts.enqueue_voice_event.called)
-        tts.enqueue_voice_event.reset_mock()
+        tts.enqueue_voice_event.assert_not_called()
         chat.ready = True
         chat.media_path = Path("reply.mp3")
         d._last_phase_update = 120

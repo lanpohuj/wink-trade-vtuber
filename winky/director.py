@@ -20,8 +20,8 @@ from pathlib import Path
 from typing import Any, Callable
 
 logger = logging.getLogger(__name__)
-CHAT_MAX_AGE_SEC = 45.0
-CHAT_MAX_START_WAIT_SEC = 12.0
+CHAT_MAX_AGE_SEC = 25.0
+CHAT_MAX_START_WAIT_SEC = 8.0
 
 
 @dataclass
@@ -43,6 +43,8 @@ class ChatItem:
     recent_context: list[dict] = field(default_factory=list)
     intent: str = ""
     future: Any = None
+    max_duration_sec: float = 15
+    user_key: str = ""
 
 
 class StreamDirector:
@@ -72,7 +74,9 @@ class StreamDirector:
         self._last_chat_speak_time: float = 0.0
         self._commentary_used: dict[str, float] = {}
         self._observed_speech_end = 0.0
-        self._next_commentary_at = time.time() + 4
+        self._next_commentary_at = time.time() + 15
+        from winky.conversation import Conversation
+        self.conversation = Conversation()
         self._commentary_attempt_at = 0.0
         self._commentary_session = None
         self._announced_result = None
@@ -82,7 +86,7 @@ class StreamDirector:
         self._last_loss_at = 0.0
         self._cta_lock = threading.Lock()
 
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._stop_event = threading.Event()
         self._thread: threading.Thread | None = None
 
@@ -106,7 +110,7 @@ class StreamDirector:
         with self._lock:
             for item in self._chat_queue:
                 item.failed = True
-                if item.future is not None:
+                if getattr(item, 'future', None) is not None:
                     item.future.cancel()
             self._chat_queue.clear()
 
@@ -217,15 +221,31 @@ class StreamDirector:
             intent=intent,
         )
 
+        item.user_key = str(getattr(profile, 'nickname', '') or user).casefold()
+        item.max_duration_sec = 25 if re.search(r'почему|объясни|как работает|разниц|why|explain|how does|difference', clean_text, re.I) else 15
         with self._lock:
+            self.conversation.comment(item.created_at)
             for queued in list(self._chat_queue):
-                if time.time() - queued.created_at > CHAT_MAX_AGE_SEC or queued.failed or queued.played:
-                    queued.failed = not queued.played
+                if queued.user_key == item.user_key and not queued.played and not queued.failed:
+                    # One pending answer per person, using their newest combined thought.
+                    item.text = (queued.text + '\n' + item.text)[-800:]
+                    queued.failed = True
                     if queued.future is not None:
                         queued.future.cancel()
+                if time.time() - queued.created_at > CHAT_MAX_AGE_SEC or queued.failed or queued.played:
+                    if not queued.played:
+                        queued.failed = True
+                        if queued.future is not None:
+                            queued.future.cancel()
                     self._chat_queue.remove(queued)
-            if len(self._chat_queue) >= 6 or any(q.user == clean_user or q.text.casefold() == clean_text.casefold() for q in self._chat_queue):
+            if any(q.text.casefold() == item.text.casefold() for q in self._chat_queue):
                 return
+            if len(self._chat_queue) >= 6:
+                oldest = self._chat_queue.popleft()
+                oldest.failed = True
+                if oldest.future is not None:
+                    oldest.future.cancel()
+                self._log_event({'type': 'chat_cancel', 'reason': 'superseded_by_current_chat', 'time': time.time()})
             self._chat_queue.append(item)
 
         self._log_event({
@@ -245,6 +265,10 @@ class StreamDirector:
     def _pre_synthesize(self, item: ChatItem) -> None:
         """В фоне генерирует ответ и синтезирует .mp3 файл до начала воспроизведения."""
         try:
+            # Brief debounce merges consecutive messages before any paid synthesis.
+            if self._stop_event.wait(0.35):
+                item.failed = True
+                return
             if item.failed or time.time() - item.created_at > CHAT_MAX_START_WAIT_SEC:
                 item.failed = True
                 return
@@ -252,11 +276,9 @@ class StreamDirector:
             if not reply_text:
                 if self._brain and hasattr(self._brain, "reply"):
                     try:
-                        if item.profile is not None or item.recent_context:
-                            reply_text = self._brain.reply(item.text, nickname=item.user,
-                                profile=item.profile, recent_context=item.recent_context)
-                        else:
-                            reply_text = self._brain.reply(item.text, nickname=item.user)
+                        reply_text = self._brain.reply(item.text, nickname=item.user,
+                            profile=item.profile, recent_context=item.recent_context,
+                            stream_context=self.reply_context())
                     except Exception as ex:
                         logger.warning("Ошибка brain.reply: %s", ex)
                 if not reply_text:
@@ -282,10 +304,9 @@ class StreamDirector:
             except Exception as e:
                 logger.warning("Ошибка check_phrase: %s", e)
 
-            # One complete short answer; never cut an already generated MP3.
-            sentences = re.split(r"(?<=[.!?])\s+", reply_text.strip())
-            reply_text = sentences[0] if len(reply_text) > 130 else reply_text
-            if len(reply_text) > 160:
+            from winky.editorial import reply_allowed
+            # Keep complete sentences; don't discard the continuation of a real answer.
+            if not reply_allowed(reply_text) or len(reply_text) > (650 if item.max_duration_sec == 25 else 420):
                 item.failed = True
                 return
             item.reply_text = reply_text
@@ -302,7 +323,7 @@ class StreamDirector:
 
             # Never pay for an answer that already became stale while the LLM
             # was working, or after the owner stopped the queue.
-            if item.failed or time.time() - item.created_at > CHAT_MAX_AGE_SEC - 20:
+            if item.failed or time.time() - item.created_at > CHAT_MAX_START_WAIT_SEC:
                 item.failed = True
                 return
 
@@ -330,6 +351,38 @@ class StreamDirector:
             logger.warning("Ошибка пре-синтеза для %s: %s", item.user, exc)
             item.failed = True
             item.ready = True
+            self._log_event({'type': 'chat_cancel', 'reason': 'generation_or_synthesis_failed', 'time': time.time()})
+
+    def reply_context(self):
+        from winky.commentary import context_valid
+        with self._lock:
+            if not context_valid(self.context, self._last_phase_update):
+                return {'phase': 'UNKNOWN', 'facts_available': False}
+            return {**{k: self.context[k] for k in ('session_id', 'trade_seq', 'pair', 'direction', 'open_observed', 'setup', 'setup_confirmed', 'last_result') if k in self.context},
+                    'phase': self._trade_phase, 'facts_available': True}
+
+    def dialogue_active(self, now=None):
+        now = time.time() if now is None else now
+        with self._lock:
+            return self.conversation.active(now) or any(not i.failed and not i.played and now - getattr(i, 'created_at', now) <= CHAT_MAX_AGE_SEC for i in self._chat_queue)
+
+    def event_allowed(self, event, now=None):
+        now = time.time() if now is None else now
+        category = event.get('category', '')
+        from winky.editorial import DISABLED_CATEGORIES
+        if category in DISABLED_CATEGORIES or event.get('chat_kind') == 'join':
+            return False
+        if category == 'NARRATE_ENGAGE' and event.get('purpose') != 'moment_question':
+            return False
+        if not self.conversation.permits(event, now):
+            return False
+        if self.dialogue_active(now) and (category.startswith('NARRATE_') or event.get('chat_kind') == 'like'):
+            return False
+        if category in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
+            key = (event.get('session_id'), event.get('trade_seq'))
+            if all(v is not None for v in key) and self._announced_result == key:
+                return False
+        return True
 
     # ---------- Диспетчер режиссуры ----------
 
@@ -342,10 +395,15 @@ class StreamDirector:
             self._commentary_used[event['commentary_fact_key']] = time.time()
 
     def note_voice_started(self, event: dict) -> None:
+        with self._lock:
+            self.conversation.started(event, time.time())
         self._log_event({'type': 'voice_start', 'category': event.get('category'),
                          'event_id': event.get('event_id'), 'file_id': event.get('file_id'),
                          'text': event.get('text'), 'source': event.get('voice_source'),
-                         'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'time': time.time()})
+                         'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'purpose': event.get('purpose'), 'episode_key': event.get('episode_key'),
+                         'selection_reason': event.get('selection_reason'),
+                         'latency_sec': round(time.time() - event['received_at'], 3) if event.get('received_at') else None,
+                         'time': time.time()})
         if event.get('category') in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
             self._announced_result = (event.get('session_id'), event.get('trade_seq'))
         if event.get('category') == 'TRADE_LOSS':
@@ -355,7 +413,7 @@ class StreamDirector:
         from winky.commentary import seconds
         result = self.context.get('last_result') or {}
         loss_at = max(self._last_loss_at, seconds(result.get('closed_at')) if result.get('outcome') == 'LOSS' else 0)
-        return (self.cta_enabled and self.trade_phase in ('IDLE', 'ANALYZING', 'IN_TRADE', 'COOLDOWN')
+        return (self.cta_enabled and not self.dialogue_active(now) and self.trade_phase in ('IDLE', 'ANALYZING', 'IN_TRADE', 'COOLDOWN')
                 and now - loss_at >= 60)
 
     def current_language(self, now=None):
@@ -409,117 +467,61 @@ class StreamDirector:
         with self._lock:
             if ended_at != self._observed_speech_end:
                 self._observed_speech_end = ended_at
-                self._next_commentary_at = ended_at + random.uniform(4, 7)
+                self._next_commentary_at = ended_at + random.uniform(10, 20)
 
     def tick(self, now=None) -> None:
         from winky.commentary import choices, context_valid
+        from winky.tts import media_duration_seconds
         now = time.time() if now is None else now
+        if not self._tts:
+            return
         with self._lock:
             phase, context = self._trade_phase, dict(self.context)
             age = max(0, now - self._last_phase_update)
             if age > 20:
                 self._trade_phase = phase = 'IDLE'
-            rem = max(0, self._remaining_sec - age)
             received_at = self._last_phase_update
-        if not self._tts:
-            return
+            ready = []
+            for item in list(self._chat_queue):
+                if now - item.created_at > CHAT_MAX_AGE_SEC or item.failed or item.played:
+                    if not item.played:
+                        item.failed = True
+                        self._log_event({'type': 'chat_cancel', 'reason': 'expired_or_failed', 'time': now})
+                    if item.future is not None:
+                        item.future.cancel()
+                    self._chat_queue.remove(item)
+                elif item.ready and not item.dispatched:
+                    ready.append(item)
         state = self._tts.narration_state() if hasattr(self._tts, 'narration_state') else {}
         if state.get('paused'):
             return
-        if self._commentary_session != context.get('session_id'):
-            self._commentary_session = context.get('session_id')
-            self._commentary_used.clear()
-            if self._announced_result and self._announced_result[0] != self._commentary_session:
-                self._announced_result = None
-        result = context.get('last_result') or {}
-        if (context_valid(context, received_at, now) and phase != 'IN_TRADE'
-                and self._announced_result == (context.get('session_id'), result.get('seq'))
-                and now - self._important_attempt_at >= 1):
-            self._important_attempt_at = now
-            for category, key, scope, extra, cooldown in choices(context, phase, now):
-                if category != 'NARRATE_RESULT':
-                    continue
-                key = f"{context.get('session_id')}:{context.get('lang','ru')}:{key}"
-                if key in self._commentary_used or key in state.get('pending_fact_keys', []):
-                    continue
-                event = {**context, **extra, 'category': category, 'commentary': True,
-                         'commentary_scope': scope, 'commentary_fact_key': key,
-                         'event_id': f'{key}:{int(now*1000)}', 'created_at': now, 'ttl_sec': 15}
-                if self._tts.voice_bank.candidates(event):
-                    self._tts.enqueue_voice_event(event)
-                    break
-        ended_at = state.get('ended_at', 0)
-        self._sync_speech_gap(ended_at)
-        # Enqueue ready replies while the current phrase is still speaking, so
-        # the playback worker can choose chat at the very next natural boundary.
-        if now - self._last_chat_speak_time >= 3.8:
-            with self._lock:
-                items = []
-                for item in list(self._chat_queue):
-                    if now - item.created_at > CHAT_MAX_AGE_SEC or item.failed or item.played:
-                        item.failed = not item.played
-                        if item.future is not None:
-                            item.future.cancel()
-                        self._chat_queue.remove(item)
-                    elif item.ready and not item.dispatched:
-                        items.append(item)
-            from winky.tts import media_duration_seconds
-            for item in items:
-                duration = media_duration_seconds(item.media_path) if item.media_path else 9
-                if duration > 8:
-                    item.failed = True
-                    continue
-                item.dispatched = True
-                self._dispatch_chat_item(item)
-                return
-        if self.is_speaking:
+        self._sync_speech_gap(state.get('ended_at', 0))
+        # Ready answers can be queued during current speech, but never interrupt it.
+        for item in ready:
+            if not item.media_path or media_duration_seconds(item.media_path) > item.max_duration_sec:
+                item.failed = True
+                continue
+            item.dispatched = True
+            self._dispatch_chat_item(item)
+            return
+        if self.is_speaking or self.dialogue_active(now):
             return
         if self.maybe_cta(now):
             return
-        if (not context_valid(context, received_at, now) and now - received_at > 3
-                and not state.get('foreground_ready') and not state.get('background_pending')
-                and now >= self._next_commentary_at and now - self._commentary_attempt_at >= 1):
-            from winky.speech_rotation import SpeechRotation
-            rotation = getattr(self._tts.voice_bank, 'rotation', None)
-            if isinstance(rotation, SpeechRotation):
-                self._commentary_attempt_at = now
-                options = [(c,) for c in ('NARRATE_ENGAGE', 'NARRATE_LESSON')]
-                for (category,) in rotation.topic_order(options, self.stream_lang):
-                    event = dict(category=category, lang=self.stream_lang, standalone=True,
-                                 created_at=now, ttl_sec=8, event_id=f'standalone:{int(now*1000)}')
-                    if self._tts.enqueue_voice_event(event).get('ok'):
-                        return
         if (not context_valid(context, received_at, now) or phase == 'RESULT'
                 or state.get('foreground_ready') or state.get('background_pending')
-                or now < self._next_commentary_at or now - self._commentary_attempt_at < 1):
+                or now < self._next_commentary_at or now - self._commentary_attempt_at < 2):
             return
         self._commentary_attempt_at = now
-        available_choices = list(choices(context, phase, now))
-        # Facts with one-shot keys stay first; recurrent topics share airtime.
-        factual = [c for c in available_choices if c[4] == 0]
-        background = [c for c in available_choices if c[4] != 0]
-        from winky.speech_rotation import SpeechRotation
-        rotation = getattr(self._tts.voice_bank, 'rotation', None)
-        if isinstance(rotation, SpeechRotation):
-            background = rotation.topic_order(background, context.get('lang', 'ru'))
-        for category, key, scope, extra, cooldown in factual + background:
-            if category == 'NARRATE_RESULT':
-                continue  # Important follow-ups use the result-announcement guard above.
-            key = f"{context.get('session_id')}:{context.get('lang','ru')}:{key}"
-            previous = self._commentary_used.get(key)
-            if previous is not None and (cooldown == 0 or now - previous < cooldown):
-                continue
+        for category, key, scope, extra, _cooldown in choices(context, phase, now):
             event = {**context, **extra, 'category': category, 'commentary': True,
                      'commentary_scope': scope, 'commentary_fact_key': key,
-                     'event_id': f"{context.get('session_id')}:narrate:{key}:{int(now*1000)}",
-                     'created_at': now, 'ttl_sec': 8, 'emotion': 'happy'}
-            candidates = self._tts.voice_bank.candidates(event)
-            fitting = [r for r in candidates if phase != 'IN_TRADE' or r.get('duration', 99) + 2 <= rem]
-            if not fitting:
+                     'episode_key': key, 'event_id': key, 'created_at': now,
+                     'ttl_sec': 8, 'emotion': 'happy'}
+            if not self.event_allowed(event, now):
                 continue
-            # Duration admission still repeats at actual playback.
             if phase == 'IN_TRADE':
-                event['max_duration_sec'] = rem - 2
+                event['max_duration_sec'] = max(0, self._remaining_sec - age - 2)
             if self._tts.enqueue_voice_event(event).get('ok'):
                 return
 
@@ -599,6 +601,13 @@ class StreamDirector:
             "is_speaking": is_speaking,
             "queue_len": q_len,
             "commentary": commentary,
+            "conversation": {
+                "dialogue_active": self.dialogue_active(),
+                "dialogue_until": self.conversation.dialogue_until,
+                "last_hook_at": self.conversation.last_hook_at,
+                "hook_due": self.conversation.hook_due(time.time()),
+                "spoken_episodes": len(self.conversation.spoken_episodes),
+            },
             "recent_events": self.get_recent_events(),
         }
 

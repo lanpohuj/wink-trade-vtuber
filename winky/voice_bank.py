@@ -168,6 +168,15 @@ class VoiceBank:
                 continue
             if event.get('file_path') and item.get('file') != event['file_path']:
                 continue
+            from winky.editorial import recording_allowed, annotate
+            if not recording_allowed(item.get('text', ''), root):
+                continue
+            if root.resolve().is_relative_to(VOICE_ROOT.resolve()):
+                item = annotate(item)
+            if category == 'NARRATE_SCAN':
+                item['purpose'] = 'search_interest'
+            if event.get('purpose') and item.get('purpose') != event['purpose']:
+                continue
             if not check_phrase(item.get('text', ''))[0] or not check_phrase(item.get('transcript', ''))[0]:
                 continue
             conditions = item.get('conditions', {})
@@ -182,7 +191,8 @@ class VoiceBank:
             if category.startswith('OPEN_') or category in ('NARRATE_PAIR', 'NARRATE_EXPIRY', 'NARRATE_RESULT'):
                 # Ten-minute joke spacing must not silence factual announcements
                 # once their full contextual deck has legitimately cycled.
-                item.pop('semantic_group', None)
+                if not item.get('repeat_after_sec'):
+                    item.pop('semantic_group', None)
             result.append(item)
         return result
 

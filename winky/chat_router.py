@@ -465,16 +465,14 @@ class ChatRouter:
         now = monotonic()
 
         # Персональный анти-спам зрителя (не чаще раза в 2.5 секунды от одного пользователя)
-        if now - profile.last_comment_at < 2.5:
-            logger.debug("Пропуск частого комментария от зрителя %s", clean_user)
-            return
         profile.last_comment_at = now
         profile.last_seen = now
 
         # Обновляем общую ленту комнаты
         self._recent_chat.append({"who": clean_user, "text": text})
 
-        # Проверка запроса валютной пары от зрителя
+        # Pair requests may reach the existing read-only suggestion queue, but
+        # acknowledgement is a contextual reply, not a stock promise of execution.
         requested_pair = detect_requested_pair(text)
         if requested_pair:
             try:
@@ -482,21 +480,6 @@ class ChatRouter:
                 push_chat_pair_request(requested_pair, clean_user)
             except Exception as e:
                 logger.warning("Ошибка push_chat_pair_request: %s", e)
-
-            clean_pair_name = requested_pair.replace(" OTC", "").replace("/", " ")
-            ack_phrases_ru = [
-                f"[wink] О, {clean_user}, вижу твой запрос на {clean_pair_name}! Спасибо за идею для разбора!",
-                f"[happy] {clean_user}, приняла идею с {clean_pair_name}! Запрос есть в очереди разбора.",
-                f"[wink] Вижу запрос на {clean_pair_name} от {clean_user}! Спасибо, что участвуешь!",
-            ]
-            ack_phrases_en = [
-                f"[wink] Got your request for {requested_pair}, {clean_user}! Thanks for the idea!",
-                f"[happy] Thanks {clean_user}! Your request for {requested_pair} is in the analysis queue.",
-            ]
-            ack = random.choice(ack_phrases_ru if lang == "ru" else ack_phrases_en)
-            stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang, emotion="wink", reply_text=ack,
-                                                 profile=profile, recent_context=list(self._recent_chat), intent='pair_request')
-            return
 
         lower_text = text.lower()
         is_compliment = profile.vibe == "flirty" or any(word in lower_text for word in ("красотк", "лучш", "мил", "любл", "топ", "няшк", "красив", "cute", "love", "best", "милашк", "прелесть"))
@@ -512,20 +495,6 @@ class ChatRouter:
         else:
             detected_emo = None
         # Gesture and emotion start with actual playback, after Fish is ready.
-
-        # 2. Ключевые сценарии — приоритет при прямых вопросах
-        keyword = self._book.match_keyword(text)
-        if keyword is not None:
-            if re.search(r'бот|ссылк|шапк|био|\bbot\b|\bbio\b|\blink\b|\baccess\b|доступ', lower_text):
-                if self._recorded_reaction('bot', lang, 'happy'):
-                    return
-                from winky.deepseek import generate_smart_local_reply
-                stream_director.enqueue_chat_comment(user=clean_user, text=text, lang=lang,
-                    emotion='happy', reply_text=generate_smart_local_reply(clean_user, text, lang),
-                    profile=profile, recent_context=list(self._recent_chat))
-                return
-            # Ordinary greetings/skepticism go through the same conversational
-            # responder as other comments, rather than one fixed keyword line.
 
         # 3. Добавляем в очередь StreamDirector с фоновым пре-синтезом (DeepSeek / умный фоллбэк)
         self._bump("comments_queued")
@@ -546,17 +515,10 @@ class ChatRouter:
         feed_msg = "👋 зашёл(ла) в эфир" if target_lang == "ru" else "👋 joined the live"
         self._feed("user", clean_name, feed_msg)
 
-        now = monotonic()
-        if not force:
-            if now - self._last_greet_at < 20.0:
-                return
-
-        self._last_greet_at = now
-        if self._recorded_reaction('join', target_lang, 'wave', 'wave'):
-            return
-        phrases = self._book.chat_phrases
-        pool = (phrases.greetings_ru if target_lang == 'ru' else phrases.greetings_en) or (JOIN_PHRASES_RU if target_lang == 'ru' else JOIN_PHRASES_EN)
-        self._say_options(pool, 'join', target_lang, 'wave', clean_name, action='wave', action_duration=3.0)
+        # A join is visible in the feed; don't call out every quiet newcomer.
+        if force:
+            self._say_options((self._book.chat_phrases.greetings_ru if target_lang == 'ru' else self._book.chat_phrases.greetings_en),
+                              'join', target_lang, 'wave', clean_name, action='wave')
 
     def handle_follow(self, user: str, force: bool = False, lang: str = "auto") -> None:
         """Подписка зрителя: танец dance с кулдауном 4с."""

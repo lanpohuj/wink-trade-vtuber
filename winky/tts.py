@@ -1719,6 +1719,14 @@ class SpeechController:
         event: dict | None = None,
     ) -> bool:
         """Добавляет фразу в конвейер озвучки: асинхронный синтез в фоне + воспроизведение без обрыва реплик."""
+        from winky.editorial import text_allowed, approved, DISABLED_CATEGORIES
+        category = (event or {}).get('category', '')
+        template = (event or {}).get('editorial_template', text)
+        if (not text_allowed(text) or category in DISABLED_CATEGORIES
+                or (source in ('trade_event', 'signal_announcement') and not approved(template))):
+            if _reservation:
+                self.voice_bank.release(_reservation, event or {})
+            return False
         actual_lang = lang or detect_lang(text)
         tag = re.match(r'^\[([a-z_]+)\]\s*', text, re.I)
         if tag and tag.group(1).lower() in EMOTIONS:
@@ -1770,9 +1778,10 @@ class SpeechController:
     def speak_options(self, texts, lang='ru', category='scenario', substitutions=None, **kwargs) -> bool:
         """Reserve a text variant in the same history as prerecorded speech."""
         from winky.speech_rotation import fingerprint
+        from winky.editorial import text_allowed
         pool = [dict(id='text_' + fingerprint(t), text=t, lang=lang, topic=category,
                      semantic_group=lang + ':text:' + fingerprint(t), tone='playful')
-                for t in texts if t and check_phrase(t)[0]]
+                for t in texts if t and check_phrase(t)[0] and text_allowed(t)]
         row = self.voice_bank.rotation.reserve(pool, lang + ':' + category)
         if not row:
             return False
@@ -1781,6 +1790,7 @@ class SpeechController:
         for name, value in (substitutions or {}).items():
             text = text.replace('{' + name + '}', str(value))
         event=kwargs.pop('event',None) or {'category':category}
+        event = dict(event, editorial_template=row['text'])
         return self.speak(text, lang=lang, _reservation=row['id'], event=event, **kwargs)
 
     def _cleanup_prefetched(self) -> None:
@@ -1804,6 +1814,9 @@ class SpeechController:
         ttl_sec: float = 40.0,
     ) -> str:
         """Запускает упреждающий синтез фразы в фоне без немедленного воспроизведения (Producer)."""
+        from winky.editorial import approved
+        if not approved(text):
+            return ""  # Compatibility prefetch must not invent an entry explanation.
         actual_lang = lang or detect_lang(text)
         text = sanitize_for_tiktok(text, actual_lang)
         text = strip_emoji_control(text)
@@ -2041,10 +2054,13 @@ class SpeechController:
             rms_chunks=compute_rms_chunks(media) if media and media.exists() else None,
             source=f"chat_reply_{getattr(chat_item, 'user', 'viewer')}",
             bank_id=reserved['id'],
-            priority=3, max_age_sec=45, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
+            priority=3, max_age_sec=25, created_at=getattr(chat_item, "created_at", time.time()), chat_item=chat_item,
             generation=self._cancel_generation,
             event={'category':'CHAT_REPLY','intent':getattr(chat_item,'intent',''),
-                   'comment':getattr(chat_item,'text','')},
+                   'comment':getattr(chat_item,'text',''),
+                   'received_at':getattr(chat_item,'created_at',time.time()),
+                   'max_duration_sec':getattr(chat_item,'max_duration_sec',15),
+                   'purpose':'chat_answer'},
         )
         if media and media.exists():
             item.ready_event.set()
@@ -2062,8 +2078,12 @@ class SpeechController:
         from winky.voice_bank import category_name, priority
         event = dict(payload)
         event['category'] = category_name(event.get('category'))
-        if event['category'] == 'NARRATE_EXPIRY':
+        from winky.editorial import DISABLED_CATEGORIES
+        from winky.director import stream_director
+        if event['category'] in DISABLED_CATEGORIES:
             return {'ok': False, 'error': 'category_disabled'}
+        if not stream_director.event_allowed(event):
+            return {'ok': False, 'error': 'conversation_guard'}
         event['lang'] = 'en' if event.get('lang') == 'en' else 'ru'
         raw_direction = str(event.get('direction') or event.get('trade_dir') or event.get('trade_action') or '').upper()
         if event['category'] in ('OPEN_TRADE_CALL', 'OPEN_TRADE_PUT'):
@@ -2112,6 +2132,9 @@ class SpeechController:
             logger.warning(self._last_blocked)
             self._emit_status()
             return {'ok': False, 'error': 'no_eligible_recording'}
+        event.setdefault('purpose', selected.get('purpose'))
+        event.setdefault('semantic_group', selected.get('semantic_group'))
+        event.setdefault('selection_reason', 'confirmed_event' if priority(event['category']) < 4 else 'episode_beat')
         item = SpeechItem(text=selected['text'], lang=event['lang'],
             emotion=event.get('emotion', 'happy'), action=event.get('action'),
             media_path=selected['path'], source='bank_' + event['category'],
@@ -2154,7 +2177,8 @@ class SpeechController:
                     'foreground_ready': any(i.priority < 4 and i.ready_event.is_set() for i in self._playback_queue)}
 
     def _item_valid(self, item: SpeechItem) -> bool:
-        if item.event.get('category') == 'NARRATE_EXPIRY':
+        from winky.editorial import text_allowed, reply_allowed
+        if not (reply_allowed(item.text) if item.priority == 3 else text_allowed(item.text)):
             return False
         if (item.failed or time.time() - item.created_at > item.max_age_sec
                 or (item.generation is not None and item.generation != self._cancel_generation)
@@ -2167,6 +2191,8 @@ class SpeechController:
             return False
         from winky.director import stream_director
         phase = stream_director.trade_phase
+        if item.event and not stream_director.event_allowed(item.event):
+            return False
         if item.priority == 3:
             return True  # Duration/window admission is checked at actual playback.
         if not item.event:
@@ -2244,6 +2270,12 @@ class SpeechController:
             for item in list(self._playback_queue):
                 if not self._item_valid(item):
                     self._playback_queue.remove(item)
+                    from winky.director import stream_director
+                    stream_director._log_event({
+                        'type': 'voice_cancel', 'reason': 'stale_or_ineligible',
+                        'category': item.event.get('category'), 'file_id': item.bank_id,
+                        'episode_key': item.event.get('episode_key'), 'time': time.time(),
+                    })
                     if item.chat_item:
                         item.chat_item.failed = True
                     if item.bank_id:
@@ -2290,7 +2322,8 @@ class SpeechController:
             with self._lock:
                 self._playback_queue.appendleft(item)
             return
-        if item.priority == 3 and media_duration_seconds(item.media_path) > 8:
+        limit = item.event.get('max_duration_sec', 15 if item.chat_item else 8)
+        if item.priority == 3 and media_duration_seconds(item.media_path) > limit:
             if item.chat_item:
                 item.chat_item.failed = True
             if item.bank_id:
@@ -2372,7 +2405,8 @@ class SpeechController:
                                            text=item.text, lang=item.lang)
                 from winky.director import stream_director
                 stream_director.note_voice_started({**item.event, 'file_id': item.bank_id,
-                                                    'text': item.text, 'voice_source': item.source})
+                                                    'text': item.text, 'voice_source': item.source,
+                                                    'duration_sec': measured_duration})
                 if item.event.get('commentary'):
                     stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
                 try:
@@ -2482,6 +2516,9 @@ def warmup_stream_voice_bank(engine: Any = None, delay_between_sec: float = 2.0)
     for lang, categories in STREAM_VOICE_BANK.items():
         for cat, phrases in categories.items():
             for p in phrases:
+                from winky.editorial import approved
+                if not approved(p):
+                    continue
                 try:
                     if hasattr(engine, "is_cached") and engine.is_cached(p, lang=lang):
                         stats["cached"] += 1

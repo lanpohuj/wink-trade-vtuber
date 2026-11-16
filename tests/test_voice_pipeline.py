@@ -212,7 +212,8 @@ class ChatPreparationTests(unittest.TestCase):
             for i in range(9): self.director.enqueue_chat_comment(str(i),'Привет '+str(i))
             self.director.enqueue_chat_comment('0','Как дела?')
             self.assertEqual(len(self.director._chat_queue),6)
-            self.assertEqual(submit.call_count,6)
+            self.assertEqual(submit.call_count,10)
+            self.assertEqual({q.user for q in self.director._chat_queue}, {"5","6","7","8","0","4"})
             self.assertEqual(self.director._chat_workers._max_workers,2)
     def test_repeated_message_is_merged(self):
         with patch.object(self.director._chat_workers,'submit') as submit:
@@ -228,7 +229,8 @@ class ChatPreparationTests(unittest.TestCase):
             t_calls = [100, 100+elapsed]
             with patch('winky.director.time.time', side_effect=lambda: t_calls.pop(0) if t_calls else 100 + elapsed):
                 self.director._pre_synthesize(item)
-            self.assertTrue(item.ready)
+            self.assertTrue(item.failed)
+            self.director._tts.engine.synthesize.assert_not_called()
             self.director._tts.speak_chat_item.assert_not_called()
 
     def test_no_more_than_two_chat_preparations_run_together(self):
@@ -254,8 +256,13 @@ class ChatPreparationTests(unittest.TestCase):
     def test_late_network_result_is_not_requeued(self):
         from winky.director import ChatItem
         item=ChatItem('Аня','Привет!',created_at=100)
-        self.director._brain.reply.return_value='Привет!'
-        with patch('winky.director.time.time',side_effect=[100,191]): self.director._pre_synthesize(item)
+        clock = [100]
+        def late_reply(*args, **kwargs):
+            clock[0] = 191
+            return 'Привет!'
+        self.director._brain.reply.side_effect = late_reply
+        with patch('winky.director.time.time', side_effect=lambda: clock[0]):
+            self.director._pre_synthesize(item)
         self.assertTrue(item.failed)
         self.assertFalse(item.ready)
     def test_content_is_checked_before_and_after_model(self):

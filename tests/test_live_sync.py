@@ -17,23 +17,14 @@ class LiveSpeechTests(unittest.TestCase):
     setUp=fixtures.VoicePipelineTests.setUp
     tearDown=fixtures.VoicePipelineTests.tearDown
 
-    def test_legacy_winky_win_phrases_use_full_round_without_synthesis(self):
+    def test_legacy_win_templates_cannot_resurrect_rejected_stock(self):
         from winky.app import WinkyAPI
-        from winky.speech_rotation import fingerprint
-        heard = []
-        def started(text, **kwargs):
-            heard.append(fingerprint(text))
-            self.bank.rotation.release(kwargs['_reservation'], True)
-            return True
-        self.controller.speak = Mock(side_effect=started)
+        self.controller.speak = Mock()
         self.controller.on_performance = Mock()
         api = SimpleNamespace(_controller=self.controller)
-        for n in range(6):
-            with patch('time.time', return_value=10000+n*700):
-                self.assertTrue(WinkyAPI.handle_trading_event(api, dict(event='win', lang='ru')))
-        self.assertEqual(len(set(heard[:3])), 3)
-        self.assertEqual(len(set(heard[3:])), 3)
-        self.assertNotEqual(heard[2], heard[3])
+        for _ in range(6):
+            WinkyAPI.handle_trading_event(api, dict(event='win', lang='ru'))
+        self.controller.speak.assert_not_called()
         self.controller.engine.synthesize.assert_not_called()
 
     def chat(self):
@@ -57,7 +48,7 @@ class LiveSpeechTests(unittest.TestCase):
         self.controller._playback_queue.extend([join,reply,gift]);self.controller._speaking=True
         self.assertIs(self.controller._next_item(),gift)
         self.assertIs(self.controller._next_item(),reply)
-        self.assertIs(self.controller._next_item(),join)
+        self.assertIsNone(self.controller._next_item())  # Quiet joins are feed-only.
         self.assertTrue(self.controller.speaking)
 
     def test_like_can_queue_while_speaking_and_wait_for_its_natural_slot(self):

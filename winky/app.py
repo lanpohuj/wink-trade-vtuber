@@ -673,9 +673,10 @@ class WinkyAPI:
 
             seen: set[tuple[str, str]] = set()
             unique_phrases: list[tuple[str, str]] = []
+            from winky.editorial import approved
             for text, lang in phrases:
                 clean = text.strip()
-                if clean and (clean, lang) not in seen:
+                if clean and approved(clean) and (clean, lang) not in seen:
                     seen.add((clean, lang))
                     unique_phrases.append((clean, lang))
 

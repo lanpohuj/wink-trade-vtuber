@@ -78,7 +78,7 @@ class SpeechRotation:
                 if row['id'] in self.pending or fingerprint(row['text']) in pending_texts:
                     continue
                 group = row.get('semantic_group')
-                if group and now - self.groups.get(group, -1e12) < 600:
+                if group and now - self.groups.get(group, -1e12) < row.get('repeat_after_sec', 600):
                     continue
                 # Tiny factual pools may cycle; conversational pools take a pause.
                 if fingerprint(row['text']) in recent_texts and row.get('tone') in ('playful', 'sarcastic', 'flirty'):
