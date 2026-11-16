@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "status": "awaiting_spend_approval",
+  "records": [
+    {
+      "id": "conversation_pilot_ru_01",
+      "lang": "ru",
+      "category": "TRADE_WIN",
+      "text": "Плюс! Ну, это было вкусно!",
+      "tts_text": "[conversational] Плюс! Ну, это было вкусно!",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "42a5cc30f4a705d5c008b61a1cbc3b5ffd9de284d531de64e511a36b385834e3",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_ru_quiet_04",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_02",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "Ой, спасибо! Мне очень приятно.",
+      "tts_text": "[conversational] Ой, спасибо! Мне очень приятно.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "dbfdfed4db79efd8cb714b01853e2ef8119fccc2d52c1ac84bd7f1a4ef664e82",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_ru_flirt_01",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_03",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "А ты не отвлекайся. Хотя… мне приятно.",
+      "tts_text": "[conversational] А ты не отвлекайся. Хотя… мне приятно.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "bd20375c70a29e01c04cc951d000409e1277c14c02da4007c94a9e216eef3b47",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_ru_flirt_03",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_04",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "Оставайся. Мне с тобой уже интереснее.",
+      "tts_text": "[conversational] Оставайся. Мне с тобой уже интереснее.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "0266a69b4e2fe799556f2e0fb4e05c953237aec447a73c309b583e38234c709c",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_ru_flirt_04",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_05",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "tts_text": "[conversational] А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "dcb1a7c046723f9404996c49a6ec5bab4345a45c63dc652f6f844e9b8e628226",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_flirt_01",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_06",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "tts_text": "[conversational] Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "cbb959a86cf20af7a671cdfd8836bfbe725e134b6fee788bf802614dfce836b9",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_flirt_02",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_07",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "tts_text": "[conversational] Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "c78b6a0d73052d5302d13364c8930b01550603a53e43431ff440a6669377833c",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_banter_01",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_08",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной.",
+      "tts_text": "[conversational] А ты меня уже в минус записал! Нет уж, теперь радуйся со мной.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "conversational",
+      "text_version": 1,
+      "text_sha256": "a4d76d643fe0dff5aba97ce2aa12c802d2e20659f6935eae5a044e741385355c",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_banter_02",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_09",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "tts_text": "[curious, conversational] А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "curious, conversational",
+      "text_version": 1,
+      "text_sha256": "dcb1a7c046723f9404996c49a6ec5bab4345a45c63dc652f6f844e9b8e628226",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_flirt_01",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_10",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "tts_text": "[curious, conversational] Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+      "delivery": "curious, conversational",
+      "text_version": 1,
+      "text_sha256": "c78b6a0d73052d5302d13364c8930b01550603a53e43431ff440a6669377833c",
+      "conditions": {},
+      "max_duration_sec": 15,
+      "requires_listening": true,
+      "text_review_accepted": true,
+      "owner_text_source": "conversation_reference_v2_banter_01",
+      "delivery_reference_ids": [
+        "streamer2_ru_narrate_scan_01",
+        "lively3_ru_narrate_engage_009"
+      ],
+      "auditory_verified": false
+    }
+  ]
+}

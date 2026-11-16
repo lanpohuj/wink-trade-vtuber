@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "python_tests": 173,
+  "python_tests": 177,
   "python_result": "passed",
   "virtual_quiet_rehearsal_seconds": 900,
   "paid_tts_requests": 0,
@@ -16,9 +16,10 @@
     "change": 1
   },
   "style_reference_status": "owner_selected_existing_audio_delivery",
-  "current_pilot": "reference-pilot-v2.json",
-  "current_pilot_count": 9,
-  "current_pilot_status": "text_revision_against_existing_delivery_references",
+  "current_pilot": "voice-pilot-10.json",
+  "current_pilot_count": 10,
+  "current_pilot_status": "awaiting_exact_pilot_spend_approval",
   "delivery_references": "delivery-references.json",
-  "reference_audio_sha256_verified": 2
+  "reference_audio_sha256_verified": 2,
+  "pilot_estimate_usd": 0.016125
 }

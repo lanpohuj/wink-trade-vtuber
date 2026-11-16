@@ -1,0 +1,17 @@
+{
+  "catalog_sha256": "01f3f4639504b7ca8ddf1ecff8468cd23f3ed3e3cb1a12344ba637650e4c343d",
+  "takes": 10,
+  "unique_texts": 8,
+  "new_requests": 10,
+  "cached": 0,
+  "utf8_bytes": 1075,
+  "estimate_usd": 0.016125,
+  "suggested_max_new_usd": 0.05,
+  "reserved_usd": 3.876195,
+  "cumulative_limit_usd": 7.0,
+  "fits_cumulative_limit": true,
+  "rate_usd_per_million_utf8_bytes": 15,
+  "pricing_source": "https://fish.audio/app/developers/",
+  "model": "s2.1-pro",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727"
+}
