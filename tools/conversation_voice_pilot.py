@@ -120,6 +120,11 @@ def verify_approval(approval, quote):
 
 
 def generate(approval_path):
+    manifest = BANK / 'manifest.json'
+    if manifest.exists():
+        existing = json.loads(manifest.read_text())
+        if any(r.get('owner_listened') for group in existing.get('categories', {}).values() for r in group):
+            raise ValueError('Pilot already reviewed: preserve these takes and create new IDs for any retakes')
     approval = json.loads(approval_path.read_text())
     quote = estimate()
     verify_approval(approval, quote)

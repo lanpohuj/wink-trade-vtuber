@@ -16,14 +16,14 @@
         "text_sha256": "dbfdfed4db79efd8cb714b01853e2ef8119fccc2d52c1ac84bd7f1a4ef664e82",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_ru_flirt_01",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/CHAT_REPLY/conversation_pilot_ru_02.mp3",
         "duration": 3.004,
         "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
@@ -44,9 +44,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "Ой, спасибо! Мне очень приятно!"
+        "transcript": "Ой, спасибо! Мне очень приятно!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_03",
@@ -60,7 +65,7 @@
         "text_sha256": "bd20375c70a29e01c04cc951d000409e1277c14c02da4007c94a9e216eef3b47",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_ru_flirt_03",
         "delivery_reference_ids": [
@@ -88,9 +93,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "automatic_qc_passed": true,
-        "transcript": "А ты не отвлекайся, хотя мне приятно."
+        "transcript": "А ты не отвлекайся, хотя мне приятно.",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_04",
@@ -104,7 +114,7 @@
         "text_sha256": "0266a69b4e2fe799556f2e0fb4e05c953237aec447a73c309b583e38234c709c",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_ru_flirt_04",
         "delivery_reference_ids": [
@@ -132,9 +142,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "automatic_qc_passed": true,
-        "transcript": "Оставайся! Мне с тобой уже интереснее!"
+        "transcript": "Оставайся! Мне с тобой уже интереснее!",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_05",
@@ -148,7 +163,7 @@
         "text_sha256": "dcb1a7c046723f9404996c49a6ec5bab4345a45c63dc652f6f844e9b8e628226",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_flirt_01",
         "delivery_reference_ids": [
@@ -176,9 +191,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "automatic_qc_passed": true,
-        "transcript": "она что смотришь хотя ладно кажется я уже догадалась"
+        "transcript": "она что смотришь хотя ладно кажется я уже догадалась",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_06",
@@ -192,14 +212,14 @@
         "text_sha256": "cbb959a86cf20af7a671cdfd8836bfbe725e134b6fee788bf802614dfce836b9",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_flirt_02",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/CHAT_REPLY/conversation_pilot_ru_06.mp3",
         "duration": 4.075,
         "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b",
@@ -220,9 +240,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "Ну вот, так бы сразу. Мне нравится, когда со мной честно."
+        "transcript": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_07",
@@ -236,14 +261,14 @@
         "text_sha256": "c78b6a0d73052d5302d13364c8930b01550603a53e43431ff440a6669377833c",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_banter_01",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/CHAT_REPLY/conversation_pilot_ru_07.mp3",
         "duration": 4.806438,
         "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75",
@@ -264,9 +289,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "Ты еще до закрытия решил меня расстроить? Подожди, я пока надеюсь."
+        "transcript": "Ты еще до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_08",
@@ -280,14 +310,14 @@
         "text_sha256": "a4d76d643fe0dff5aba97ce2aa12c802d2e20659f6935eae5a044e741385355c",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_banter_02",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/CHAT_REPLY/conversation_pilot_ru_08.mp3",
         "duration": 4.545187,
         "sha256": "e81d4bd61691381881d060628056bc0a21f8b655b5ec7d73a08df3245005bb8a",
@@ -308,9 +338,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной!"
+        "transcript": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_09",
@@ -324,14 +359,14 @@
         "text_sha256": "dcb1a7c046723f9404996c49a6ec5bab4345a45c63dc652f6f844e9b8e628226",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_flirt_01",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/CHAT_REPLY/conversation_pilot_ru_09.mp3",
         "duration": 4.205625,
         "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f",
@@ -352,9 +387,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "Она что, смотришь? Хотя ладно, кажется, я уже догадалась."
+        "transcript": "Она что, смотришь? Хотя ладно, кажется, я уже догадалась.",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       },
       {
         "id": "conversation_pilot_ru_10",
@@ -368,7 +408,7 @@
         "text_sha256": "c78b6a0d73052d5302d13364c8930b01550603a53e43431ff440a6669377833c",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_reference_v2_banter_01",
         "delivery_reference_ids": [
@@ -396,9 +436,14 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "rejected_delivery",
         "automatic_qc_passed": true,
-        "transcript": "Ты ещё до закрытия решил меня расстроить. Подожди, я пока надеюсь."
+        "transcript": "Ты ещё до закрытия решил меня расстроить. Подожди, я пока надеюсь.",
+        "owner_listened": true,
+        "review_accepted": false,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ],
     "TRADE_WIN": [
@@ -414,14 +459,14 @@
         "text_sha256": "42a5cc30f4a705d5c008b61a1cbc3b5ffd9de284d531de64e511a36b385834e3",
         "conditions": {},
         "max_duration_sec": 15,
-        "requires_listening": true,
+        "requires_listening": false,
         "text_review_accepted": true,
         "owner_text_source": "conversation_ru_quiet_04",
         "delivery_reference_ids": [
           "streamer2_ru_narrate_scan_01",
           "lively3_ru_narrate_engage_009"
         ],
-        "auditory_verified": false,
+        "auditory_verified": true,
         "file": "ru/TRADE_WIN/conversation_pilot_ru_01.mp3",
         "duration": 3.1085,
         "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
@@ -442,10 +487,16 @@
             "normalize_loudness": true
           }
         },
-        "status": "review_pending",
+        "status": "ready",
         "automatic_qc_passed": true,
-        "transcript": "Плюс! Ну, это было вкусно!"
+        "transcript": "Плюс! Ну, это было вкусно!",
+        "owner_listened": true,
+        "review_accepted": true,
+        "review_method": "owner_per_recording",
+        "review_basis": "owner_listened_sha256",
+        "owner_review_note": ""
       }
     ]
-  }
+  },
+  "delivery_approved_for_expansion": false
 }

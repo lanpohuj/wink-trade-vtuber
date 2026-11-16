@@ -38,10 +38,20 @@ class PilotSpendingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'approval.json'
             path.write_text(json.dumps({**self.approval, 'approved': False}))
-            with patch.object(pilot, 'estimate', return_value=self.quote), patch.object(pilot.build, 'generate') as generate:
+            with patch.object(pilot, 'BANK', Path(tmp) / 'empty-bank'), patch.object(pilot, 'estimate', return_value=self.quote), patch.object(pilot.build, 'generate') as generate:
                 with self.assertRaises(ValueError):
                     pilot.generate(path)
                 generate.assert_not_called()
+
+    def test_reviewed_pilot_is_never_overwritten_by_resuming_generation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            bank = Path(tmp)
+            (bank / 'manifest.json').write_text(json.dumps({'categories': {'CHAT_REPLY': [
+                {'owner_listened': True, 'status': 'ready'}]}}))
+            with patch.object(pilot, 'BANK', bank), patch.object(pilot, 'estimate') as estimate:
+                with self.assertRaisesRegex(ValueError, 'already reviewed'):
+                    pilot.generate(bank / 'not-needed.json')
+                estimate.assert_not_called()
 
     def test_catalog_refuses_revoked_owner_text(self):
         row = dict(id='revoked', text='Test wording', text_review_accepted=True)

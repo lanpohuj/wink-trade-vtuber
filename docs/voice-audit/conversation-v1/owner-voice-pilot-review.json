@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "kind": "voice_pilot_delivery_review",
+  "created_at": "2026-11-16T09:40:35.273Z",
+  "records": [
+    {
+      "id": "conversation_pilot_ru_01",
+      "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_02",
+      "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_03",
+      "sha256": "c7010726efbc554d4ec108355678c77d7afba0d5cd2ecf78cb2f3e686336ed5c",
+      "accepted": false,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_04",
+      "sha256": "edc4ea7fe0266cb3129f93aae3d70bc5fd90a991561f56f6a10e413f315332a5",
+      "accepted": false,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_05",
+      "sha256": "ad08f8f21762545ec4a8aa3eb24487cbb289bbb3e41b35eec9938950629721ac",
+      "accepted": false,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_09",
+      "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_06",
+      "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_07",
+      "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_10",
+      "sha256": "b4ddd698b4d0ad6af5b73325c9eb37c8d274892d7b4fd4021a22f4fbfc38d989",
+      "accepted": false,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    },
+    {
+      "id": "conversation_pilot_ru_08",
+      "sha256": "e81d4bd61691381881d060628056bc0a21f8b655b5ec7d73a08df3245005bb8a",
+      "accepted": true,
+      "listened": true,
+      "note": "",
+      "offset_sec": null
+    }
+  ]
+}

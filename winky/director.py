@@ -336,6 +336,8 @@ class StreamDirector:
                     clean_for_audio = clean_for_audio[clean_for_audio.index("]") + 1:].strip()
 
                 if hasattr(engine, "synthesize"):
+                    from winky.tts import speech_delivery_text
+                    clean_for_audio = speech_delivery_text(engine, clean_for_audio, item.emotion)
                     media = engine.synthesize(clean_for_audio, item.lang)
                     if item.failed or time.time() - item.created_at > CHAT_MAX_AGE_SEC:
                         item.failed = True

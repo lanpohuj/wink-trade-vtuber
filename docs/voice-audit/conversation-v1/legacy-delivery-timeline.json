@@ -1,0 +1,102 @@
+{
+  "duration_sec": 49.471,
+  "records": [
+    {
+      "id": "legacy_panel_greeting_1",
+      "label": "Приветствие",
+      "text": "[wave] Привет-привет всем! Я Винки — ваша неоновая соведущая! Рада всех видеть на стриме, сегодня будет жарко!",
+      "source_file": "voice_cache/fishaudio_1db1618b6eaf/28978234262407481368.mp3",
+      "sha256": "124bcc132dac4b5e3de35eb95e5986027b24cc55a014f7b62b1fe38a6443324e",
+      "provenance": "panel_button_and_normalized_exact_cache_match",
+      "source_created_at": "2026-10-30 11:53:10",
+      "text_approved_for_live": false,
+      "file": "assets/voices/legacy_delivery_references_v1/legacy_panel_greeting_1.mp3",
+      "scope": "delivery_reference_only",
+      "owner_requested_source": true,
+      "exact_clip_individually_accepted": false,
+      "start": 0,
+      "end": 7.177
+    },
+    {
+      "id": "legacy_panel_ask_in_chat_1",
+      "label": "Вопросы в чат",
+      "text": "[wink] Если есть любые вопросы или просто хотите поболтать — пишите прямо в чатик, я всё читаю и с удовольствием отвечу!",
+      "source_file": "voice_cache/fishaudio_1db1618b6eaf/2db82763ab21fd255c86.mp3",
+      "sha256": "73cb78f98f631c8abd93554b87e8c4b836be3898489a7bb1721d07de082d4517",
+      "provenance": "panel_button_and_normalized_exact_cache_match",
+      "source_created_at": "2026-10-30 11:49:49",
+      "text_approved_for_live": true,
+      "file": "assets/voices/legacy_delivery_references_v1/legacy_panel_ask_in_chat_1.mp3",
+      "scope": "delivery_reference_only",
+      "owner_requested_source": true,
+      "exact_clip_individually_accepted": false,
+      "start": 8.177,
+      "end": 17.826
+    },
+    {
+      "id": "legacy_panel_trade_win_1",
+      "label": "Победа (+1 Win)",
+      "text": "Есть плюс в копилочку! Отличная сделка, график отработал как по учебнику!",
+      "source_file": "voice_cache/fishaudio_1db1618b6eaf/3d75d758ea1e3e8cb950.mp3",
+      "sha256": "36012b41483a159beded72c1a9718b498f7911ddf5b6102651c767c2c0596555",
+      "provenance": "panel_button_and_normalized_exact_cache_match",
+      "source_created_at": "2026-11-01 15:47:53",
+      "text_approved_for_live": false,
+      "file": "assets/voices/legacy_delivery_references_v1/legacy_panel_trade_win_1.mp3",
+      "scope": "delivery_reference_only",
+      "owner_requested_source": true,
+      "exact_clip_individually_accepted": false,
+      "start": 18.826,
+      "end": 24.103
+    },
+    {
+      "id": "legacy_reserve_win_01",
+      "label": "Резерв: win_01",
+      "text": "Да-а! Плюс в копилку! Точка входа отработала просто идеально, забираем чистый профит по сигналу Винки!",
+      "source_file": "assets/voices/lumean/TRADE_WIN/win_01.mp3",
+      "sha256": "e57f1fd15be1dac8a7a3a535f12ad25fa6ab65d0b1a24245ade45deac0385553",
+      "provenance": "reserve_manifest",
+      "text_approved_for_live": true,
+      "file": "assets/voices/legacy_delivery_references_v1/legacy_reserve_win_01.mp3",
+      "scope": "delivery_reference_only",
+      "owner_requested_source": true,
+      "exact_clip_individually_accepted": false,
+      "start": 25.103,
+      "end": 33.201
+    },
+    {
+      "id": "legacy_panel_ask_chat_pair_2",
+      "label": "Запрос пары в чат",
+      "text": "[wave] Чат, жду ваши любимые валютные пары! Напишите в комментарии, на какой график переключаемся!",
+      "source_file": "voice_cache/fishaudio_1db1618b6eaf/b0f2e4b1ca1859cc1f02.mp3",
+      "sha256": "774255657fca9bcb7d1a765be13929bf10817e1e69f6e76a510c8999198b958c",
+      "provenance": "panel_button_and_normalized_exact_cache_match",
+      "source_created_at": "2026-11-01 14:24:23",
+      "text_approved_for_live": false,
+      "file": "assets/voices/legacy_delivery_references_v1/legacy_panel_ask_chat_pair_2.mp3",
+      "scope": "delivery_reference_only",
+      "owner_requested_source": true,
+      "exact_clip_individually_accepted": false,
+      "start": 34.201,
+      "end": 40.156
+    },
+    {
+      "id": "conversation_pilot_ru_01",
+      "label": "Новая проба: 01, принята",
+      "text": "Плюс! Ну, это было вкусно!",
+      "file": "assets/voices/conversation_pilot_v1/ru/TRADE_WIN/conversation_pilot_ru_01.mp3",
+      "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
+      "start": 41.156,
+      "end": 44.265
+    },
+    {
+      "id": "conversation_pilot_ru_09",
+      "label": "Новая проба: 09, принята",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_09.mp3",
+      "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f",
+      "start": 45.265,
+      "end": 49.471
+    }
+  ]
+}

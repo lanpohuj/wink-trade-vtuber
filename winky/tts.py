@@ -230,6 +230,18 @@ class TTSError(RuntimeError):
 from winky.fish_tts import FishAudioTTS
 
 
+def speech_delivery_text(engine, text: str, emotion: str) -> str:
+    """Carry explicit excitement into Fish audio, not only avatar animation.
+
+    Keep accepted conversational defaults and explicit delivery cues intact.
+    Ready recordings never pass through this function.
+    """
+    if (isinstance(engine, FishAudioTTS) and emotion in ('excited', 'win')
+            and not text.lstrip().startswith('[')):
+        return '[excited] ' + text
+    return text
+
+
 class DummyTTS:
     """Безопасная заглушка: логирует ошибки и исключает воспроизведение системных/браузерных голосов."""
 
@@ -1921,9 +1933,10 @@ class SpeechController:
             if item.failed or (item.generation is not None and item.generation != self._cancel_generation):
                 item.failed = True
                 return
+            audio_text = speech_delivery_text(self.engine, item.text, item.emotion)
             # 1. Проверяем локальный кэш
-            if hasattr(self.engine, "is_cached") and self.engine.is_cached(item.text, item.lang):
-                cached_file = self.engine.get_cache_path(item.text, item.lang)
+            if hasattr(self.engine, "is_cached") and self.engine.is_cached(audio_text, item.lang):
+                cached_file = self.engine.get_cache_path(audio_text, item.lang)
                 if cached_file.exists() and cached_file.stat().st_size > 1024:
                     item.media_path = cached_file
                     item.rms_chunks = compute_rms_chunks(cached_file)
@@ -1931,7 +1944,7 @@ class SpeechController:
                     return
 
             # 2. Синтез через движок
-            media = self.engine.synthesize(item.text, item.lang)
+            media = self.engine.synthesize(audio_text, item.lang)
             item.media_path = media
             item.rms_chunks = compute_rms_chunks(media)
             item.ready_event.set()

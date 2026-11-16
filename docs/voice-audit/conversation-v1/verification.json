@@ -1,6 +1,6 @@
 {
   "date": "2026-11-16",
-  "python_tests": 177,
+  "python_tests": 184,
   "python_result": "passed",
   "virtual_quiet_rehearsal_seconds": 900,
   "paid_tts_requests": 10,
@@ -9,7 +9,7 @@
   "browser_render_verified": false,
   "browser_note": "Browser security policy refused file:// navigation; JavaScript syntax checked with node --check.",
   "runtime_restarted": false,
-  "bank_status": "awaiting_owner_text_and_voice_acceptance",
+  "bank_status": "partial_delivery_acceptance_refining_with_legacy_panel",
   "latest_review_counts": {
     "good": 5,
     "bad": 2,
@@ -18,7 +18,7 @@
   "style_reference_status": "owner_selected_existing_audio_delivery",
   "current_pilot": "voice-pilot-10.json",
   "current_pilot_count": 10,
-  "current_pilot_status": "awaiting_owner_audio_review",
+  "current_pilot_status": "reviewed_6_accepted_4_rejected",
   "delivery_references": "delivery-references.json",
   "reference_audio_sha256_verified": 2,
   "pilot_estimate_usd": 0.016125,
@@ -29,5 +29,11 @@
   "listening_album": "voice-pilot-listening.mp3",
   "listening_duration_sec": 61.808,
   "provider_verified_debit_usd": 0.016125,
-  "package_credits_used": 0
+  "package_credits_used": 0,
+  "owner_audio_accepted_records": 6,
+  "owner_audio_rejected_records": 4,
+  "legacy_reference_file": "legacy-delivery-references.json",
+  "legacy_reference_count": 5,
+  "new_tts_requests_this_step": 0,
+  "explicit_excitement_forwarded_to_fish": true
 }
