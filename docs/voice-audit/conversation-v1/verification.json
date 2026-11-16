@@ -11,11 +11,11 @@
   "runtime_restarted": false,
   "bank_status": "awaiting_owner_text_and_voice_acceptance",
   "latest_review_counts": {
-    "good": 12,
-    "bad": 10,
+    "good": 5,
+    "bad": 2,
     "change": 1
   },
-  "style_reference_status": "selected_shylily_with_neuro_conversation_mechanics",
+  "style_reference_status": "shylily_direction_selected_distinctive_trait_under_discussion",
   "current_pilot": "reference-pilot-v2.json",
   "current_pilot_count": 9,
   "current_pilot_status": "awaiting_owner_text_review"
