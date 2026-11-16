@@ -15,8 +15,10 @@
     "bad": 2,
     "change": 1
   },
-  "style_reference_status": "shylily_direction_selected_distinctive_trait_under_discussion",
+  "style_reference_status": "owner_selected_existing_audio_delivery",
   "current_pilot": "reference-pilot-v2.json",
   "current_pilot_count": 9,
-  "current_pilot_status": "awaiting_owner_text_review"
+  "current_pilot_status": "text_revision_against_existing_delivery_references",
+  "delivery_references": "delivery-references.json",
+  "reference_audio_sha256_verified": 2
 }

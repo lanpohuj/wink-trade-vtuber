@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "priority": "primary_owner_approved_audio_examples",
+  "references": [
+    {
+      "id": "streamer2_ru_narrate_scan_01",
+      "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "file": "assets/voices/lively_v3/preserved/ru/NARRATE_SCAN/streamer2_ru_narrate_scan_01.mp3",
+      "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+      "duration_sec": 6.034187,
+      "owner_status": "ref",
+      "owner_note": "О тут прикольная подача и харизма и фраза в тему, улыбнуло и по факту все, так и должно быть",
+      "acceptance_basis": "owner_review_notes_and_explicit_delivery_direction",
+      "delivery": "curious, conversational",
+      "request_payload": {
+        "text": "[curious, conversational] Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "agent_listened": false
+    },
+    {
+      "id": "lively3_ru_narrate_engage_009",
+      "text": "Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+      "file": "assets/voices/lively_v3/ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_009.mp3",
+      "sha256": "8bbccea09c3b349133869ed5a9dad909827eacca022611d8c739ab7cd90615a4",
+      "duration_sec": 4.728063,
+      "owner_status": "ref",
+      "owner_note": "тут тоже прикольная подача и харизма, улыбнуло)",
+      "acceptance_basis": "owner_review_notes_and_explicit_delivery_direction",
+      "delivery": "conversational",
+      "request_payload": {
+        "text": "[conversational] Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+        "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+        "language": "ru",
+        "format": "mp3",
+        "sample_rate": 44100,
+        "mp3_bitrate": 128,
+        "latency": "balanced",
+        "normalize": true,
+        "temperature": 0.82,
+        "top_p": 0.85,
+        "prosody": {
+          "speed": 1.06,
+          "volume": 0,
+          "normalize_loudness": true
+        }
+      },
+      "agent_listened": false
+    }
+  ],
+  "new_audio_generated": false,
+  "reference_voice": "Marin RU",
+  "runtime_restarted": false
+}
