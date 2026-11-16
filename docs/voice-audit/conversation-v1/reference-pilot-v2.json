@@ -1,0 +1,131 @@
+{
+  "version": 2,
+  "status": "awaiting_owner_text_review",
+  "reference": "owner_selected_shylily_with_neuro_conversation_mechanics",
+  "records": [
+    {
+      "id": "conversation_reference_v2_hello_01",
+      "scene": "hello",
+      "scene_title": "Первый зритель: появляется общий повод остаться",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Подтверждена открытая сделка вверх. Первый зритель: «Привет».",
+      "text": "О, привет! Я как раз вверх открыла. Оставайся, сейчас будем вместе переживать.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_hello_02",
+      "scene": "hello",
+      "scene_title": "Первый зритель: появляется общий повод остаться",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Тот же зритель сначала написал «Я только посмотреть», а после ожидания добавил: «Ладно, я уже болею за тебя».",
+      "text": "Вот! Уже не просто посмотреть. Всё, оставайся со мной.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_flirt_01",
+      "scene": "flirt",
+      "scene_title": "Флирт: реакция именно на внимание зрителя",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Зритель: «Я на график вообще не смотрю».",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_flirt_02",
+      "scene": "flirt",
+      "scene_title": "Флирт: реакция именно на внимание зрителя",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Тот же зритель: «На тебя, конечно».",
+      "text": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_banter_01",
+      "scene": "banter",
+      "scene_title": "Дружеское несогласие и возвращение к словам зрителя",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Подтверждённая сделка ещё идёт. Зритель: «Сейчас минус будет».",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_banter_02",
+      "scene": "banter",
+      "scene_title": "Дружеское несогласие и возвращение к словам зрителя",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Та сделка действительно закрылась в плюс. Тот же зритель написал: «Ну ладно, зашла».",
+      "text": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_novice_01",
+      "scene": "novice",
+      "scene_title": "Новичок: объяснение с личной реакцией",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Открыта реальная сделка вверх. Зритель: «Я вообще ничего не понимаю».",
+      "text": "Тогда давай со мной эту досмотрим. Я открыла вверх — к закрытию цена должна быть выше точки входа, чтобы был плюс.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_novice_02",
+      "scene": "novice",
+      "scene_title": "Новичок: объяснение с личной реакцией",
+      "lang": "ru",
+      "category": "CHAT_REPLY",
+      "purpose": "chat_answer",
+      "cue": "Тот же зритель: «А если проиграешь?»",
+      "text": "Буду возмущаться, ты уже предупреждён. Но минус на экране останется.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_reference_v2_loss_01",
+      "scene": "loss",
+      "scene_title": "Проигрыш: правка владельца",
+      "lang": "ru",
+      "category": "TRADE_LOSS",
+      "purpose": "result_loss",
+      "cue": "Подтверждён LOSS и переход на перекрытие $110 или $242. При сбросе ставки на $50 эта реплика не подходит.",
+      "text": "А, ну класс… Минус. Да, бесит. Беру перекрытие.",
+      "status": "draft",
+      "text_review_accepted": false,
+      "auditory_verified": false,
+      "conditions": {
+        "outcome": "LOSS",
+        "next_stake": [
+          110,
+          242
+        ]
+      }
+    }
+  ]
+}

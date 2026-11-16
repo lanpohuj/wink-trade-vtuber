@@ -15,5 +15,8 @@
     "bad": 10,
     "change": 1
   },
-  "style_reference_status": "awaiting_owner_selection"
+  "style_reference_status": "selected_shylily_with_neuro_conversation_mechanics",
+  "current_pilot": "reference-pilot-v2.json",
+  "current_pilot_count": 9,
+  "current_pilot_status": "awaiting_owner_text_review"
 }
