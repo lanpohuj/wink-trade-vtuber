@@ -46,3 +46,17 @@ test('jump has preparation, two flights and landing, with no sustained floating'
  const spans=[];let start=-1;inAir.forEach((yes,i)=>{if(yes&&start<0)start=i;if(!yes&&start>=0){spans.push((i-start)/200);start=-1;}});
  assert.equal(spans.length,2);assert.ok(spans.every(t=>t>.19&&t<.27),'short small hops, without slow floating');
 });
+test('serious speech defers a fresh win for at most five seconds without duplicate dances',()=>{
+ const c=new CelebrationDirector();c.setSpeech('explain',true);
+ assert.ok(c.context(context(1)));assert.equal(c.active,null);assert.ok(c.pending);
+ for(let i=0;i<12;i++)c.tick(.5);
+ assert.equal(c.pending,null);c.setSpeech('',false);assert.equal(c.active,null);
+ assert.equal(c.context(context(1)),false);
+});
+test('a natural short boundary releases a pending win; new loss or stop cancels it',()=>{
+ const c=new CelebrationDirector();c.setSpeech('reassure',true);c.context(context(1));
+ c.tick(.5);c.setSpeech('',false);assert.equal(c.active.key,'session:1:result');
+ c.tick(.5);c.setSpeech('explain',true);assert.equal(c.pending,null,'a partly seen dance is not restarted');
+ c.context(context(2));assert.ok(c.pending);c.context(context(3,{result:'LOSS'}));assert.equal(c.pending,null);
+ c.context(context(4));c.cancel();assert.equal(c.pending,null);assert.equal(c.active,null);
+});

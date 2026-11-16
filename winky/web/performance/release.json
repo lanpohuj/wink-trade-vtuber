@@ -1,18 +1,18 @@
 {
-  "source_revision": "e89cf20",
+  "source_revision": "8f7d9b2",
   "release": "speech-sync-v1",
   "files": {
-    "celebration.mjs": "179625e8bfb9b0fea597a3771c9087e22fb6f8ec2c1f66eed0770203f6a0842a",
-    "controller.mjs": "6d7cea0c1941f4200e62a81102465a482b93f82af373765e3653566a0ecdd915",
+    "celebration.mjs": "f1c0f15e54ab84e01aada9839ab06713005544ce49d71f0293b2b5044b2f8d81",
+    "controller.mjs": "b715db1e0183693de5cbc83074bcc37f0a695a7ee5b6f8d9aa01da1ecbf1d915",
     "extra-motions.mjs": "968832cd927a1de7ed045c433aa84d134548b2790a6e9abb505fd0927211a59d",
     "framing.mjs": "a5dbe4e7a27409de8f503fbe7a18e580f7b4f03a5c1e60c86b92222264fc5823",
     "idle.mjs": "668f2b3ff9321aba2470af8e72f272cc23df6d11519e2a60f22f2adfd2d432ac",
     "motion-tracks.mjs": "e1b5279a7c1a88f0bc691b6fc7b7795deb40b49ee24251110a0466d97b74a238",
-    "policy.mjs": "070575c50fe8ae33e7601912aa9a17684bc533cd53dac83ef64e38f2a206e04a",
+    "policy.mjs": "37ad49a7971179bafa59c4704ccee097fb7ec23d3972e4498ac81bcb7d3fb06a",
     "sync-event.mjs": "cbbf53f991e6e6627ee13dbca7b8f5dfe2d49b4365b5f8c0477645098a64acd5",
     "victory-motions.mjs": "00da419146f0e6512f9a6c3871f5305e6c71d6c396879c6ba4bc9d493555bc99",
     "victory-poses.mjs": "97f957f0d0202af2dc202c15b51f71b78f7e2ecd49f64f1abca119bce32668b7"
   },
-  "notes": "Faster raise/lower transitions and stronger asymmetric hand waves on the stable anatomical elbow hinge. Fixed large portrait, hop clock and result routing preserved.",
-  "feature_revision": "expressive-arm-tempo-v4"
+  "notes": "Original motion repertoire and idle restored at owner request. Only speech/result arbitration, approved recording timing metadata and missing-clock watchdog added; no new body gestures or vivid pose profiles.",
+  "feature_revision": "conversation-arbitration-v1"
 }

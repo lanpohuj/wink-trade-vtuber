@@ -4,7 +4,21 @@ export function tradeKey(session,seq){
   return session&&seq!==undefined&&seq!==null&&String(seq)!==''?`${session}:${seq}:result`:'';
 }
 export class CelebrationDirector {
-  constructor(random=Math.random){this.random=random;this.bag=[];this.previous='';this.seen=new Set();this.latest=new Map();this.active=null;this.serial=0;}
+  constructor(random=Math.random){this.random=random;this.bag=[];this.previous='';this.seen=new Set();this.latest=new Map();this.active=null;this.serial=0;
+    this.time=0;this.pending=null;this.speechProfile='';this.speechPlaying=false;this.smallUntil=0;}
+  blocked(){return this.speechPlaying&&['reassure','explain','focus','analysis','thoughtful'].includes(this.speechProfile);}
+  setSpeech(profile='',playing=false){
+    this.speechProfile=profile;this.speechPlaying=playing;
+    if(this.blocked()&&this.active){
+      // Do not restart a partly seen dance after the answer.
+      this.pending=this.active.time<.1?{reaction:this.active,until:this.time+5}:null;
+      this.active=null;this.smallUntil=this.time+.8;
+    }
+    if(!this.blocked()&&this.pending){
+      if(this.time<=this.pending.until)this.active=this.pending.reaction;
+      this.pending=null;
+    }
+  }
   next(){
     if(!this.bag.length){
       this.bag=[...WIN_GESTURES];
@@ -25,7 +39,10 @@ export class CelebrationDirector {
     if(this.seen.has(key))return false;
     this.seen.add(key);if(this.seen.size>4096)this.seen.delete(this.seen.values().next().value);
     if(outcome!=='WIN'){if(['LOSS','REFUND','UNKNOWN'].includes(outcome))this.cancel();return false;}
-    this.active={id:++this.serial,key,gesture:this.next(),time:0,duration:3.8};return true;
+    this.pending=null;
+    this.active={id:++this.serial,key,gesture:this.next(),time:0,duration:3.8};
+    if(this.blocked())this.setSpeech(this.speechProfile,true);
+    return true;
   }
   context(c={}){return this.result({key:c.result_key,outcome:c.result,age:Number(c.result_age_sec),connected:c.connected===true});}
   speech(event,now=Date.now()/1000){
@@ -37,9 +54,11 @@ export class CelebrationDirector {
       age:Number.isFinite(stamp)&&stamp>0?now-stamp:Infinity});
   }
   tick(dt){
+    this.time+=Math.max(0,Math.min(.5,dt));
+    if(this.pending&&this.time>this.pending.until)this.pending=null;
     const a=this.active;if(!a)return null;
     a.time+=Math.max(0,Math.min(.5,dt));if(a.time>=a.duration){this.active=null;return null;}
     return a;
   }
-  cancel(){this.active=null;}
+  cancel(){this.active=null;this.pending=null;this.smallUntil=0;}
 }

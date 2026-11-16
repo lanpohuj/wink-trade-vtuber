@@ -278,7 +278,7 @@ class StreamDirector:
                     try:
                         reply_text = self._brain.reply(item.text, nickname=item.user,
                             profile=item.profile, recent_context=item.recent_context,
-                            stream_context=self.reply_context())
+                            stream_context=self.reply_context(item.user_key))
                     except Exception as ex:
                         logger.warning("Ошибка brain.reply: %s", ex)
                 if not reply_text:
@@ -355,13 +355,14 @@ class StreamDirector:
             item.ready = True
             self._log_event({'type': 'chat_cancel', 'reason': 'generation_or_synthesis_failed', 'time': time.time()})
 
-    def reply_context(self):
+    def reply_context(self, viewer_key=''):
         from winky.commentary import context_valid
         with self._lock:
+            conversation = self.conversation.context(viewer_key, time.time())
             if not context_valid(self.context, self._last_phase_update):
-                return {'phase': 'UNKNOWN', 'facts_available': False}
+                return {'phase': 'UNKNOWN', 'facts_available': False, 'conversation': conversation}
             return {**{k: self.context[k] for k in ('session_id', 'trade_seq', 'pair', 'direction', 'open_observed', 'setup', 'setup_confirmed', 'last_result') if k in self.context},
-                    'phase': self._trade_phase, 'facts_available': True}
+                    'phase': self._trade_phase, 'facts_available': True, 'conversation': conversation}
 
     def dialogue_active(self, now=None):
         now = time.time() if now is None else now
@@ -380,10 +381,20 @@ class StreamDirector:
             return False
         if self.dialogue_active(now) and (category.startswith('NARRATE_') or event.get('chat_kind') == 'like'):
             return False
+        if self.dialogue_active(now) and category in ('OPEN_TRADE_CALL', 'OPEN_TRADE_PUT'):
+            return False
         if category in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
             key = (event.get('session_id'), event.get('trade_seq'))
             if all(v is not None for v in key) and self._announced_result == key:
                 return False
+            if event.get('session_id') and self.context.get('session_id') and event['session_id'] != self.context['session_id']:
+                return False
+            latest = self.context.get('last_result') or {}
+            try:
+                if int(event.get('trade_seq')) < int(latest.get('seq')):
+                    return False
+            except (TypeError, ValueError):
+                pass
         return True
 
     # ---------- Диспетчер режиссуры ----------
@@ -404,6 +415,8 @@ class StreamDirector:
                          'text': event.get('text'), 'source': event.get('voice_source'),
                          'pair': event.get('pair'), 'trade_seq': event.get('trade_seq'), 'purpose': event.get('purpose'), 'episode_key': event.get('episode_key'),
                          'selection_reason': event.get('selection_reason'),
+                         'arbitration_reason': event.get('arbitration_reason'),
+                         'audio_clock': event.get('audio_clock'),
                          'latency_sec': round(time.time() - event['received_at'], 3) if event.get('received_at') else None,
                          'time': time.time()})
         if event.get('category') in ('TRADE_WIN', 'TRADE_LOSS', 'TRADE_REFUND'):
@@ -609,6 +622,8 @@ class StreamDirector:
                 "last_hook_at": self.conversation.last_hook_at,
                 "hook_due": self.conversation.hook_due(time.time()),
                 "spoken_episodes": len(self.conversation.spoken_episodes),
+                "spoken_turns": len(self.conversation.turns),
+                "interrupted_by": self.conversation.interrupted_by,
             },
             "recent_events": self.get_recent_events(),
         }

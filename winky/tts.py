@@ -1503,6 +1503,7 @@ class SpeechStatus:
     last_blocked: str = ""
     queue_len: int = 0
     queue_size: int = 0
+    audio_clock: str = ''
 
 
 class SmartCategoryDeck:
@@ -1563,11 +1564,14 @@ class SpeechController:
         self._volume = 1.0
         self._speaking = False
         self._current_text = ""
+        self._audio_clock = ''
         self.last_speech_ended_at = 0.0
         self._last_blocked = ""
         self._worker: threading.Thread | None = None
         self._afplay_proc: subprocess.Popen | None = None
         self._cancel_generation = 0
+        from winky.speech_policy import SpeechArbiter
+        self._arbiter = SpeechArbiter()
         self.last_recording: dict | None = None
         self._synth_pool = concurrent.futures.ThreadPoolExecutor(max_workers=2, thread_name_prefix="winky-synth")
 
@@ -1773,7 +1777,7 @@ class SpeechController:
             bank_id=_reservation,
             priority=speech_priority,
             event=dict(event or {}), generation=self._cancel_generation,
-            max_age_sec=45 if speech_priority==3 else 30 if speech_priority==0 else 5 if source=='signal_announcement' else 35,
+            max_age_sec=25 if speech_priority==3 else 12 if speech_priority==0 else 5 if source=='signal_announcement' else 35,
         )
 
         with self._lock:
@@ -1961,6 +1965,8 @@ class SpeechController:
         """Очищает очередь и останавливает текущее воспроизведение."""
         with self._lock:
             self._cancel_generation += 1
+            from winky.speech_policy import SpeechArbiter
+            self._arbiter = SpeechArbiter()
             for item in self._playback_queue:
                 item.failed = True
                 if item.chat_item:
@@ -2031,6 +2037,7 @@ class SpeechController:
             last_blocked=self._last_blocked,
             queue_len=q_len,
             queue_size=q_len,
+            audio_clock=self._audio_clock,
         )
 
     def speak_chat_item(self, chat_item: Any) -> bool:
@@ -2071,6 +2078,7 @@ class SpeechController:
             generation=self._cancel_generation,
             event={'category':'CHAT_REPLY','intent':getattr(chat_item,'intent',''),
                    'comment':getattr(chat_item,'text',''),
+                   'viewer_key':getattr(chat_item,'user_key','') or getattr(chat_item,'user',''),
                    'received_at':getattr(chat_item,'created_at',time.time()),
                    'max_duration_sec':getattr(chat_item,'max_duration_sec',15),
                    'purpose':'chat_answer'},
@@ -2132,7 +2140,9 @@ class SpeechController:
         with self._lock:
             if event_id and event_id in self._voice_events:
                 return {'ok': True, 'duplicate': True}
-        event_ttl = 30 if priority(event['category']) == 0 else 5 if priority(event['category']) == 1 else 15
+        event_ttl = (12 if priority(event['category']) == 0 else
+                     5 if priority(event['category']) == 1 else
+                     25 if event['category'] == 'CHAT_REACTION' else 15)
         try:
             event_ttl = min(event_ttl, max(0, float(event.get('ttl_sec', event_ttl))))
         except (ValueError, TypeError):
@@ -2148,6 +2158,11 @@ class SpeechController:
         event.setdefault('purpose', selected.get('purpose'))
         event.setdefault('semantic_group', selected.get('semantic_group'))
         event.setdefault('selection_reason', 'confirmed_event' if priority(event['category']) < 4 else 'episode_beat')
+        # Only the selected recording can supply its authored timing metadata.
+        event.pop('performance', None)
+        if (selected.get('performance', {}).get('review_accepted') is True
+                and selected['performance'].get('audio_sha256') == selected.get('sha256')):
+            event['performance'] = selected['performance']
         item = SpeechItem(text=selected['text'], lang=event['lang'],
             emotion=event.get('emotion', 'happy'), action=event.get('action'),
             media_path=selected['path'], source='bank_' + event['category'],
@@ -2155,6 +2170,7 @@ class SpeechController:
             created_at=created, max_age_sec=event_ttl)
         item.generation = self._cancel_generation
         item.ready_event.set()
+        coalesced = []
         with self._lock:
             if event_id and event_id in self._voice_events:
                 self.voice_bank.release(item.bank_id, event)
@@ -2169,9 +2185,22 @@ class SpeechController:
                         self._playback_queue.remove(pending)
                         if pending.bank_id:
                             self.voice_bank.release(pending.bank_id, pending.event)
+            if event.get('chat_kind') in ('gift', 'follow', 'like'):
+                # Unnamed stock acknowledgements can cover a real burst once.
+                for pending in list(self._playback_queue):
+                    if (pending.event.get('chat_kind') == event['chat_kind']
+                            and pending.event.get('category') == 'CHAT_REACTION'
+                            and not pending.event.get('viewer_key')):
+                        self._playback_queue.remove(pending)
+                        pending.failed = True
+                        self.voice_bank.release(pending.bank_id, pending.event)
+                        coalesced.append(pending)
             self._playback_queue.append(item)
             if event['category'] == 'CHAT_ACK':
                 self._last_ack_at = time.time()
+        for pending in coalesced:
+            stream_director._log_event({'type':'voice_cancel','reason':'social_burst_coalesced',
+                                       'category':pending.event.get('category'),'file_id':pending.bank_id,'time':time.time()})
         self._wake.set()
         self._emit_status()
         return {'ok': True, 'file_id': selected['id'], 'queued': True}
@@ -2296,14 +2325,8 @@ class SpeechController:
             ready = [i for i in self._playback_queue if i.ready_event.is_set() and self._fits_window(i)]
             if not ready:
                 return None
-            def rank(item):
-                if item.priority == 3:
-                    # Thank a gift at the next boundary; short direct answers
-                    # precede ambient joins/likes. All of them outrank commentary.
-                    kind=item.event.get('chat_kind')
-                    return (0, {'gift':0,'follow':2,'join':3,'like':3}.get(kind,1), item.created_at)
-                return (1,item.priority,item.created_at)
-            selected = min(ready, key=rank)
+            selected, reason = self._arbiter.choose(ready)
+            selected.event['arbitration_reason'] = reason
             self._playback_queue.remove(selected)
             return selected
 
@@ -2391,16 +2414,30 @@ class SpeechController:
                 if item and not self._item_valid(item):
                     end_reason = 'cancelled'
                     return
-                afplay_proc = subprocess.Popen(
-                    ["/usr/bin/afplay", "-v", str(max(0.0, self._volume)), str(media)],
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                )
+                from winky.audio_player import start_player, playback_position
+                afplay_proc = start_player(media, max(0.0, self._volume))
                 self._afplay_proc = afplay_proc
             start_play = time.monotonic()
+            clock_source = getattr(afplay_proc, 'clock_source', 'process_elapsed')
+            if clock_source == 'native_playhead':
+                duration = float(afplay_proc.duration)
+                # Loading a device is not speech. Wait for the media clock to move.
+                while afplay_proc.poll() is None and playback_position(afplay_proc, start_play) <= 0:
+                    if time.monotonic() - start_play > 2:
+                        afplay_proc.kill()
+                        raise RuntimeError('Native audio clock did not start')
+                    time.sleep(.005)
             # An immediate player failure must not consume a phrase or CTA timer.
             if afplay_proc.poll() not in (None, 0):
                 raise RuntimeError('afplay failed before playback')
+            if item:
+                with self._lock:
+                    if item.generation is not None and item.generation != self._cancel_generation:
+                        end_reason = 'cancelled'
+                        return
+                    self._arbiter.started(item, time.time())
+                    item.event['audio_clock'] = clock_source
+            self._audio_clock = clock_source
             if item:
                 if item.chat_item:
                     item.chat_item.played = True
@@ -2419,7 +2456,7 @@ class SpeechController:
                 from winky.director import stream_director
                 stream_director.note_voice_started({**item.event, 'file_id': item.bank_id,
                                                     'text': item.text, 'voice_source': item.source,
-                                                    'duration_sec': measured_duration})
+                                                    'duration_sec': duration})
                 if item.event.get('commentary'):
                     stream_director.note_commentary_started({**item.event, 'file_id': item.bank_id})
                 try:
@@ -2434,6 +2471,7 @@ class SpeechController:
                     performance_started = True
                     performance({'type':'begin','event':{
                         **(item.event if item else {}), 'id':playback_id,'text':text,
+                        'audio_clock':clock_source,
                         'emotion':emotion,'action':item.action if item else None,
                         'lang':lang,'source':item.source if item else 'manual','duration':duration}})
                 else:
@@ -2448,7 +2486,7 @@ class SpeechController:
                     end_reason = 'player_timeout'
                     afplay_proc.kill()
                     break
-                elapsed = time.monotonic() - start_play
+                elapsed = playback_position(afplay_proc, start_play)
                 idx = int(elapsed / chunk_sec)
                 if self.on_performance is not None:
                     if idx != last_idx:

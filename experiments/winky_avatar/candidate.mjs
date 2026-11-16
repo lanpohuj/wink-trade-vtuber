@@ -148,6 +148,7 @@ controller.smoothSetMorph=function(name,target,dt,speed=20){
 controller.update = function(dt, elapsed) {
   dt = Math.max(0, Math.min(.5, dt));
   frame = director.frame(dt);
+  celebrations.setSpeech(frame.profile,!!director.active&&!director.active.ended);
   const celebration=celebrations.tick(dt);
   const activity=idle.tick(dt,{speech:!!director.active||!!celebration,manual:idle.time<manualUntil});
   if(activity){
@@ -163,6 +164,7 @@ controller.update = function(dt, elapsed) {
       phase:'celebration',profile:'celebrate',poseTime:celebration.time,poseDuration:celebration.duration};
     this.currentEmotion='happy';this.emotionResetTimer=.8;
   }
+  if(!celebration&&celebrations.time<celebrations.smallUntil){this.currentEmotion='happy';this.emotionResetTimer=.3;}
   if (hasSession && !frame.speaking) this.speechHoldTimer = 0;
   const scheduled=(celebration||activity||hasSession&&director.active&&['during','tail'].includes(frame.phase))
     && (Object.hasOwn(TRACKS,frame.gesture)||LEGACY_ACTIONS.includes(frame.gesture));
@@ -219,7 +221,8 @@ controller.update = function(dt, elapsed) {
   kissWasActive=kissing;
   framing.update(dt);
   window.avatarLabState = { ...frame, id: director.active?.id || null, time: director.active?.time || 0, rms: audioRms,
-    idle:activity?.gesture||null,idleMood:idle.mood(),celebration:celebration?.key||null,celebrationId:celebration?.id||null,framing:framing.state };
+    idle:activity?.gesture||null,idleMood:idle.mood(),celebration:celebration?.key||null,celebrationId:celebration?.id||null,
+    pendingCelebration:celebrations.pending?.reaction.key||null,framing:framing.state };
 };
 function receive(m) {
   if(m.type==='context'){idle.setContext(m.context);if(celebrations.context(m.context))idle.interrupt(5);return;}
@@ -231,6 +234,7 @@ function receive(m) {
     if(tradeResult&&!director.seen.has(event.id))celebrations.speech(event);
     const a = director.begin(tradeResult&&event.category==='TRADE_WIN'?{...event,gesture:'listen',result_reacted:true}:event);
     if (!a) return;
+    celebrations.setSpeech(a.profile,true);
     idle.speech(a.profile,a.gesture);
     hasSession = true;
     scheduledKey='';
@@ -244,6 +248,7 @@ function receive(m) {
     director.clock(m.id, m.time,m.playing!==false); audioRms = Math.max(0, Math.min(1, Number(m.rms) || 0));
   } else if (m.type === 'end' && director.active?.id === m.id) {
     director.end(m.id); audioRms = 0; controller.waveTimer = 0;
+    celebrations.setSpeech('',false);
     controller.actionMode=null;controller.actionTimer=0;
     controller.currentEmotion = 'idle'; controller.emotionResetTimer = 0;
   } else if (m.type === 'legacy' || m.type === 'preview') {

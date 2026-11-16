@@ -123,10 +123,12 @@ def build_catalog(recordings):
         if name != 'POOLS' or not isinstance(value,dict):
             continue
         for intent, pool in value.items():
-            for pair in pool.strip().splitlines():
-                parts=pair.split(' | ')
+            pairs = [pair.split(' | ') for pair in pool.strip().splitlines()] if isinstance(pool,str) else pool
+            for parts in pairs:
                 for lang, text in zip(['ru','en'],parts):
-                    add('[wink] ' + text.strip(),source='local_reply',route='local_'+intent,
+                    if not text.strip():
+                        continue
+                    add(text.strip(),source='local_reply',route='local_'+intent,
                         lang=lang,intent=intent,line=line)
     for name, value, line in literal_assignments(ROOT / 'winky/scenarios.py'):
         if name != 'STREAM_VOICE_BANK' or not isinstance(value,dict):

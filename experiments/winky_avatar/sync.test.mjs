@@ -61,7 +61,7 @@ test('a new voice preempts only the old post-speech tail and stale ends are harm
 });
 test('all finite source rows have a valid, playable animation plan',async()=>{
   const c=await(await fetch('http://127.0.0.1:8794/sync-catalog.json')).json();
-  assert.ok(c.rows.length>2100);assert.equal(c.routes.length,12);
+  assert.ok(c.rows.length>2000);assert.equal(c.routes.length,12); // Removed forced-sarcasm fallbacks must stay absent.
   const ids=new Set(),sources={},plans=[];
   for(const r of c.rows){
     assert.ok(!ids.has(r.id));ids.add(r.id);const plan=performancePlan(r);assert.ok(plan.variants.length);

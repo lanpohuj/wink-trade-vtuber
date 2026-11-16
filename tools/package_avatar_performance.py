@@ -1,5 +1,6 @@
 """Copy an explicitly reviewed lab snapshot into the local avatar adapter."""
 import hashlib
+import argparse
 import json
 import subprocess
 from pathlib import Path
@@ -8,6 +9,10 @@ LAB=ROOT/'experiments/winky_avatar'
 OUT=ROOT/'winky/web/performance'
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--feature-revision',default='expressive-arm-tempo-v4')
+    parser.add_argument('--notes',default='Faster raise/lower transitions and stronger asymmetric hand waves on the stable anatomical elbow hinge. Fixed large portrait, hop clock and result routing preserved.')
+    args=parser.parse_args()
     source=(LAB/'candidate.mjs').read_text()
     source=source.replace('const director = new Director();', 'export function installPerformance(controller) {\nconst director = new Director();',1)
     source=source.replace('const controller = window.vtuber;\n','',1)
@@ -20,7 +25,7 @@ def main():
         (OUT/(name+'.mjs')).write_bytes((LAB/(name+'.mjs')).read_bytes())
     release=json.loads((OUT/'release.json').read_text())
     release['source_revision']=subprocess.check_output(['git','rev-parse','--short','HEAD'],cwd=ROOT,text=True).strip()
-    release.update(feature_revision='expressive-arm-tempo-v4',notes='Faster raise/lower transitions and stronger asymmetric hand waves on the stable anatomical elbow hinge. Fixed large portrait, hop clock and result routing preserved.')
+    release.update(feature_revision=args.feature_revision,notes=args.notes)
     release['files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.mjs'))}
     (OUT/'release.json').write_text(json.dumps(release,ensure_ascii=False,indent=2)+'\n')
     print('Packaged',len(release['files']),'reviewed modules')

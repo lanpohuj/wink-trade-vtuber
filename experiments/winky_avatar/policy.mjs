@@ -34,6 +34,7 @@ export function profileFor(input = {}) {
   if (c === 'TRADE_WIN') return 'celebrate';
   if(c==='NARRATE_RESULT' && /^WIN/.test(String(event.result_kind||event.conditions.result_kind||'')))return 'celebrate';
   if (['TRADE_LOSS', 'TRADE_REFUND', 'NARRATE_RESULT'].includes(c)) return 'reassure';
+  if(c==='CHAT_REPLY'&&Number(event.max_duration_sec)>15)return 'explain';
   if(['ANALYZING_CHART','NARRATE_SCAN'].includes(c))return 'analysis';
   if (['NARRATE_PAIR', 'PAIR_SWITCHED_NEW_SCAN', 'ANALYZING_CHART', 'NARRATE_SCAN',
     'NARRATE_TRADE', 'NARRATE_EXPIRY', 'IN_TRADE_WAITING', 'PREPARE_ENTRY',
@@ -67,6 +68,21 @@ export function profileFor(input = {}) {
 }
 const actionHint=event=>event.promised_action||(['dance','cheer','win'].includes(event.legacy_action)||['dance','cheer','win'].includes(event.emotion)?'':event.action);
 const smooth = x => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); };
+export function recordingBeats(event,profile,duration){
+  const raw=event.performance?.beats;
+  if(!Array.isArray(raw))return [];
+  const serious=['focus','analysis','reassure','explain','thoughtful'].includes(profile);
+  const safe=['nod','listen','ponder','peek_closer','tilt','explain_left','explain_right'];
+  const beats=[];
+  for(const b of raw.slice(0,3)){
+    const start=Number(b.start),length=Number(b.duration),gesture=String(b.gesture||'');
+    if(!Number.isFinite(start)||!Number.isFinite(length)||start<0||length<.6||start+length>duration
+       ||!Object.hasOwn(LABELS,gesture)||gesture==='flirt_kiss'||(serious&&!safe.includes(gesture))
+       ||(beats.length&&start<beats.at(-1).start+beats.at(-1).duration))return [];
+    beats.push({start,duration:length,gesture});
+  }
+  return beats;
+}
 export function envelope(t, duration) {
   if (t < 0 || t >= duration) return 0;
   return smooth(t / .45) * smooth((duration - t) / .65);
@@ -96,27 +112,34 @@ export class Director {
     const secondary={explain:['explain_left','nod'],focus:['nod','tilt'],analysis:['tilt','nod'],
       reassure:['tilt','nod'],engage:['joy','tilt'],celebrate:['joy','nod']}[profile]||['tilt','nod'];
     const speechDuration=Math.max(.8,Number(event.duration)||3);
+    const beats=recordingBeats(event,profile,speechDuration);
     this.active = { id: event.id, profile, gesture, time: 0, duration: Math.min(3.2, Math.max(.8, Number(event.duration) || 3)),
-      start:.12,deferred:gesture==='flirt_kiss',ended:false,playing:true,tailTime:0,source:event.source||'',text:event.text,
+      start:.12,deferred:!beats.length&&gesture==='flirt_kiss',ended:false,playing:true,tailTime:0,source:event.source||'',text:event.text,
+      beats,clockAge:0,wallTime:0,speechDuration,
       secondary:!event.result_reacted&&speechDuration>=6.4?{gesture:secondary[index%secondary.length],start:4.3,duration:Math.min(2.5,speechDuration-4.5)}:null };
     return this.active;
   }
-  clock(id, time, playing=true) { if (this.active && this.active.id === id && Number.isFinite(time)) {this.active.time = Math.max(0, time);this.active.playing=playing;} }
+  clock(id, time, playing=true) { if (this.active && this.active.id === id && Number.isFinite(time)) {this.active.time = Math.max(0, time);this.active.playing=playing;this.active.clockAge=0;} }
   end(id) { if (this.active && this.active.id === id && !this.active.ended) { this.active.ended = true; this.active.release = 1; } }
   cancel(){this.active=null;}
   frame(dt) {
     const a = this.active;
     if (!a) return { gesture: 'listen', weight: 0, speaking: false };
+    const delta=Math.max(0,Math.min(.5,dt));a.clockAge+=delta;a.wallTime+=delta;
+    if(!a.ended&&a.clockAge>1.5)a.playing=false;
+    if(!a.ended&&a.wallTime>a.speechDuration+3&&a.clockAge>1.5){a.deferred=false;this.end(a.id);}
     if (a.ended) {
       if(a.deferred && a.tailTime<3.6){a.tailTime+=Math.max(0,Math.min(.5,dt));return {gesture:'flirt_kiss',weight:envelope(a.tailTime,3.2),speaking:false,profile:a.profile,phase:'tail',poseTime:Math.min(3.2,a.tailTime),poseDuration:3.2};}
       a.release *= Math.exp(-Math.max(0, Math.min(.5, dt)) * 10);
       if (a.release < .001) { this.active = null; return { gesture: 'listen', weight: 0, speaking: false }; }
     }
-    const beat=a.secondary&&a.time>=a.secondary.start?a.secondary:{gesture:a.deferred?'tilt':a.gesture,start:a.start,duration:a.duration};
+    const beat=a.beats.length?(a.beats.find(b=>a.time>=b.start&&a.time<b.start+b.duration)
+      ||{gesture:'listen',start:a.time,duration:0}):
+      a.secondary&&a.time>=a.secondary.start?a.secondary:{gesture:a.deferred?'tilt':a.gesture,start:a.start,duration:a.duration};
     const time=Math.max(0,a.time-beat.start),gesture=beat.gesture;
     return { gesture,plannedGesture:a.gesture, weight:a.ended&&a.deferred?0:envelope(time,beat.duration)*(a.ended?a.release:1),
       speaking:!a.ended&&a.playing,profile:a.profile,phase:a.ended?'release':a.time<beat.start?'before':time<beat.duration?'during':'after',
-      poseTime:Math.min(beat.duration,time),poseDuration:beat.duration,beat:beat===a.secondary?1:0 };
+      poseTime:Math.min(beat.duration,time),poseDuration:beat.duration,beat:a.beats.length?a.beats.indexOf(beat):beat===a.secondary?1:0 };
   }
 }
 export function performancePlan(input){

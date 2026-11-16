@@ -42,12 +42,12 @@ class LiveSpeechTests(unittest.TestCase):
             self.assertEqual(self.controller._next_item().event['category'],'TRADE_WIN')
         self.assertEqual(stream_director.context,original)
 
-    def test_ready_gift_precedes_chat_answer_and_join_without_cutting_current_voice(self):
+    def test_new_chat_precedes_gift_and_join_without_cutting_current_voice(self):
         reply=self.chat();join=self.chat();gift=self.chat()
         join.event={'chat_kind':'join'};gift.event={'chat_kind':'gift'}
         self.controller._playback_queue.extend([join,reply,gift]);self.controller._speaking=True
-        self.assertIs(self.controller._next_item(),gift)
         self.assertIs(self.controller._next_item(),reply)
+        self.assertIs(self.controller._next_item(),gift)
         self.assertIsNone(self.controller._next_item())  # Quiet joins are feed-only.
         self.assertTrue(self.controller.speaking)
 
@@ -92,7 +92,7 @@ class LiveSpeechTests(unittest.TestCase):
                 self.assertTrue(d._chat_queue[0].ready)
                 d.tick(clock[0])
                 self.assertEqual(self.controller._next_item().priority,3)
-                self.assertEqual(self.controller._next_item().priority,0)
+                self.assertIsNone(self.controller._next_item())  # Old result expired during Fish delay.
                 self.controller.engine.synthesize.assert_called_once_with('Спасибо за интересный вопрос!','ru')
         finally:release.set();d.stop();d._chat_workers.shutdown(wait=True)
 
@@ -132,6 +132,10 @@ class LiveSpeechTests(unittest.TestCase):
         now=time.time()
         self.assertEqual(self.controller.enqueue_voice_event({'category':'TRADE_WIN','created_at':now-31})['error'],'expired_event')
         self.assertEqual(self.controller.enqueue_voice_event({'category':'OPEN_TRADE_CALL','direction':'BUY','created_at':now-6})['error'],'expired_event')
+
+    def test_result_loses_relevance_after_twelve_seconds(self):
+        now=time.time()
+        self.assertEqual(self.controller.enqueue_voice_event({'category':'TRADE_WIN','created_at':now-13})['error'],'expired_event')
 
     def test_stop_invalidates_a_selected_item_before_player_start(self):
         self.controller.enqueue_voice_event({'category':'TRADE_WIN'})

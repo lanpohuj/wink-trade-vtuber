@@ -378,7 +378,8 @@ class DirectorTests(unittest.TestCase):
         self.d._pre_synthesize(item)
         brain.reply.assert_called_once_with('Привет', nickname='Viewer', profile=profile,
                                             recent_context=[dict(who='Another', text='Hello')],
-                                            stream_context={'phase':'UNKNOWN','facts_available':False})
+                                            stream_context={'phase':'UNKNOWN','facts_available':False,
+                                                            'conversation':{'spoken_turns':[], 'interrupted_by':''}})
         self.assertTrue(item.ready)
         self.assertFalse(profile.history)
 

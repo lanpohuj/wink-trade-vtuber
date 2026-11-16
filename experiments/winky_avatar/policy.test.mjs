@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {Director, profileFor, envelope, PROFILES} from './policy.mjs';
+import {Director, profileFor, envelope, PROFILES, recordingBeats} from './policy.mjs';
 
 test('semantics override broad excited emotion, likes do not cheer', () => {
   assert.equal(profileFor({category:'NARRATE_PAIR',emotion:'excited'}),'focus');
@@ -65,4 +65,19 @@ test('long phrases have a second contextual gesture on the same media clock',()=
  d.clock('long',5,false);for(let n=0;n<60;n++)d.frame(.02);assert.equal(d.frame(.02).poseTime,f.poseTime);
  assert.equal(d.frame(.02).speaking,false);
  d.end('long');for(let n=0;n<180;n++)d.frame(1/60);assert.equal(d.active,null);
+});
+test('authored recording beats follow actual audio time, with silence between gestures',()=>{
+ const d=new Director();d.begin({id:'beats',duration:8,performance:{beats:[
+  {start:.3,duration:2,gesture:'joy'}, {start:4,duration:2,gesture:'hand_heart'}]}});
+ d.clock('beats',1);assert.equal(d.frame(.01).gesture,'joy');
+ d.clock('beats',3);assert.equal(d.frame(.01).gesture,'listen');assert.equal(d.frame(.01).weight,0);
+ d.clock('beats',5);assert.equal(d.frame(.01).gesture,'hand_heart');
+ const invalid=[{start:0,duration:2,gesture:'hip_groove'}];
+ assert.deepEqual(recordingBeats({performance:{beats:invalid}},'reassure',8),[]);
+ assert.deepEqual(recordingBeats({performance:{beats:[{start:7,duration:2,gesture:'joy'}]}},'conversation',8),[]);
+});
+test('lost audio clock stops articulation and eventually releases an orphaned speech session',()=>{
+ const d=new Director();d.begin({id:'lost',duration:4});d.clock('lost',.2);
+ for(let i=0;i<110;i++)d.frame(1/60);assert.equal(d.frame(.01).speaking,false);
+ for(let i=0;i<420;i++)d.frame(1/60);assert.equal(d.active,null);
 });

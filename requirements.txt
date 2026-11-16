@@ -24,6 +24,7 @@ python-multipart>=0.0.9
 
 # --- VTuber-агент Winky (этап 2) ---
 pywebview>=5
+pyobjc-framework-AVFoundation>=12.2.2; sys_platform == "darwin"
 PyYAML>=6
 pynput>=1.7
 

@@ -18,9 +18,9 @@ class CatalogTests(unittest.TestCase):
         catalog=build_catalog([])
         self.assertEqual(Counter(r['source'] for r in catalog['rows']),{
             'scenario':67,'keyword':14,'scenario_social':36,'scenario_cta':18,
-            'router_fallback':61,'local_reply':104,'legacy_scenario_text':242,'app_compat_text':33,
+            'router_fallback':61,'local_reply':3,'legacy_scenario_text':242,'app_compat_text':33,
         })
-        self.assertEqual(len({r['id'] for r in catalog['rows']}),575)
+        self.assertEqual(len({r['id'] for r in catalog['rows']}),474)
         self.assertEqual(len({r['id'] for r in catalog['routes']}),12)
         self.assertTrue(all(r['audio'] is None and r['playback']=='visual_only_no_synthesis' for r in catalog['rows']))
         compat=list(compat_phrases())
