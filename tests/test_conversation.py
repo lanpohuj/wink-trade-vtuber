@@ -19,7 +19,7 @@ from winky.voice_bank import VoiceBank
 class EditorialTests(unittest.TestCase):
     def test_every_owner_decision_is_enforced_and_english_is_not_auto_approved(self):
         review = json.loads((ROOT / 'docs/voice-audit/conversation-v1/owner-review.json').read_text())['items']
-        original = [r for r in review if not r['id'].startswith('conversation_')]
+        original = [r for r in review if not r['id'].startswith(('conversation_', 'autonomous_'))]
         self.assertEqual(Counter(r['status'] for r in original), dict(bad=828, good=39, ref=3, change=2))
         latest = {fingerprint(row['text']): row for row in review}
         for row in latest.values():
