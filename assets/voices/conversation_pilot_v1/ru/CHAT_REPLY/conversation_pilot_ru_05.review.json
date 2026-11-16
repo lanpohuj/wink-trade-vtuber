@@ -1,0 +1,42 @@
+{
+  "id": "conversation_pilot_ru_05",
+  "lang": "ru",
+  "category": "CHAT_REPLY",
+  "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+  "tts_text": "[conversational] А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "delivery": "conversational",
+  "text_version": 1,
+  "text_sha256": "dcb1a7c046723f9404996c49a6ec5bab4345a45c63dc652f6f844e9b8e628226",
+  "conditions": {},
+  "max_duration_sec": 15,
+  "requires_listening": true,
+  "text_review_accepted": true,
+  "owner_text_source": "conversation_reference_v2_flirt_01",
+  "delivery_reference_ids": [
+    "streamer2_ru_narrate_scan_01",
+    "lively3_ru_narrate_engage_009"
+  ],
+  "auditory_verified": false,
+  "file": "ru/CHAT_REPLY/conversation_pilot_ru_05.mp3",
+  "duration": 4.101125,
+  "sha256": "ad08f8f21762545ec4a8aa3eb24487cbb289bbb3e41b35eec9938950629721ac",
+  "request_payload": {
+    "text": "[conversational] А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending"
+}

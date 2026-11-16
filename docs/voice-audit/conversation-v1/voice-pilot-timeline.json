@@ -1,0 +1,114 @@
+{
+  "records": [
+    {
+      "id": "streamer2_ru_narrate_scan_01",
+      "text": "Та-ак, что тут у нас? Сейчас сверю пару интервалов — хочу понять, где движение, а где просто суета.",
+      "sha256": "77e56626afffce30ae2c6c0db2babbde01ce0c1e67cd347df73e47c28a0771f5",
+      "reference": true,
+      "start": 0,
+      "end": 6.034,
+      "file": "assets/voices/lively_v3/preserved/ru/NARRATE_SCAN/streamer2_ru_narrate_scan_01.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_01",
+      "text": "Плюс! Ну, это было вкусно!",
+      "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
+      "reference": false,
+      "start": 7.034,
+      "end": 10.143,
+      "file": "assets/voices/conversation_pilot_v1/ru/TRADE_WIN/conversation_pilot_ru_01.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_02",
+      "text": "Ой, спасибо! Мне очень приятно.",
+      "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
+      "reference": false,
+      "start": 11.143,
+      "end": 14.147,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_02.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_03",
+      "text": "А ты не отвлекайся. Хотя… мне приятно.",
+      "sha256": "c7010726efbc554d4ec108355678c77d7afba0d5cd2ecf78cb2f3e686336ed5c",
+      "reference": false,
+      "start": 15.147,
+      "end": 19.3,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_03.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_04",
+      "text": "Оставайся. Мне с тобой уже интереснее.",
+      "sha256": "edc4ea7fe0266cb3129f93aae3d70bc5fd90a991561f56f6a10e413f315332a5",
+      "reference": false,
+      "start": 20.3,
+      "end": 23.357,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_04.mp3"
+    },
+    {
+      "id": "lively3_ru_narrate_engage_009",
+      "text": "Открыть приложение и забыть зачем — это база или я одна такая легенда?",
+      "sha256": "8bbccea09c3b349133869ed5a9dad909827eacca022611d8c739ab7cd90615a4",
+      "reference": true,
+      "start": 24.357,
+      "end": 29.085,
+      "file": "assets/voices/lively_v3/ru/NARRATE_ENGAGE/lively3_ru_narrate_engage_009.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_05",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "sha256": "ad08f8f21762545ec4a8aa3eb24487cbb289bbb3e41b35eec9938950629721ac",
+      "reference": false,
+      "start": 30.085,
+      "end": 34.186,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_05.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_09",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f",
+      "reference": false,
+      "start": 35.186,
+      "end": 39.392,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_09.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_06",
+      "text": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b",
+      "reference": false,
+      "start": 40.392,
+      "end": 44.467,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_06.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_07",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75",
+      "reference": false,
+      "start": 45.467,
+      "end": 50.273,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_07.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_10",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "sha256": "b4ddd698b4d0ad6af5b73325c9eb37c8d274892d7b4fd4021a22f4fbfc38d989",
+      "reference": false,
+      "start": 51.273,
+      "end": 56.263,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_10.mp3"
+    },
+    {
+      "id": "conversation_pilot_ru_08",
+      "text": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной.",
+      "sha256": "e81d4bd61691381881d060628056bc0a21f8b655b5ec7d73a08df3245005bb8a",
+      "reference": false,
+      "start": 57.263,
+      "end": 61.808,
+      "file": "assets/voices/conversation_pilot_v1/ru/CHAT_REPLY/conversation_pilot_ru_08.mp3"
+    }
+  ],
+  "gap_sec": 1,
+  "duration_sec": 61.808
+}

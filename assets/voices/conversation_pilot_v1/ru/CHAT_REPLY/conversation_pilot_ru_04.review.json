@@ -1,0 +1,42 @@
+{
+  "id": "conversation_pilot_ru_04",
+  "lang": "ru",
+  "category": "CHAT_REPLY",
+  "text": "Оставайся. Мне с тобой уже интереснее.",
+  "tts_text": "[conversational] Оставайся. Мне с тобой уже интереснее.",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "delivery": "conversational",
+  "text_version": 1,
+  "text_sha256": "0266a69b4e2fe799556f2e0fb4e05c953237aec447a73c309b583e38234c709c",
+  "conditions": {},
+  "max_duration_sec": 15,
+  "requires_listening": true,
+  "text_review_accepted": true,
+  "owner_text_source": "conversation_ru_flirt_04",
+  "delivery_reference_ids": [
+    "streamer2_ru_narrate_scan_01",
+    "lively3_ru_narrate_engage_009"
+  ],
+  "auditory_verified": false,
+  "file": "ru/CHAT_REPLY/conversation_pilot_ru_04.mp3",
+  "duration": 3.05625,
+  "sha256": "edc4ea7fe0266cb3129f93aae3d70bc5fd90a991561f56f6a10e413f315332a5",
+  "request_payload": {
+    "text": "[conversational] Оставайся. Мне с тобой уже интереснее.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending"
+}

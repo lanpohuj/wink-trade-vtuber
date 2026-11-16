@@ -1,0 +1,42 @@
+{
+  "id": "conversation_pilot_ru_07",
+  "lang": "ru",
+  "category": "CHAT_REPLY",
+  "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+  "tts_text": "[conversational] Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "delivery": "conversational",
+  "text_version": 1,
+  "text_sha256": "c78b6a0d73052d5302d13364c8930b01550603a53e43431ff440a6669377833c",
+  "conditions": {},
+  "max_duration_sec": 15,
+  "requires_listening": true,
+  "text_review_accepted": true,
+  "owner_text_source": "conversation_reference_v2_banter_01",
+  "delivery_reference_ids": [
+    "streamer2_ru_narrate_scan_01",
+    "lively3_ru_narrate_engage_009"
+  ],
+  "auditory_verified": false,
+  "file": "ru/CHAT_REPLY/conversation_pilot_ru_07.mp3",
+  "duration": 4.806438,
+  "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75",
+  "request_payload": {
+    "text": "[conversational] Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending"
+}

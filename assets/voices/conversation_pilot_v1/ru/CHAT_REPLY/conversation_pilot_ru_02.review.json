@@ -1,0 +1,42 @@
+{
+  "id": "conversation_pilot_ru_02",
+  "lang": "ru",
+  "category": "CHAT_REPLY",
+  "text": "Ой, спасибо! Мне очень приятно.",
+  "tts_text": "[conversational] Ой, спасибо! Мне очень приятно.",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "delivery": "conversational",
+  "text_version": 1,
+  "text_sha256": "dbfdfed4db79efd8cb714b01853e2ef8119fccc2d52c1ac84bd7f1a4ef664e82",
+  "conditions": {},
+  "max_duration_sec": 15,
+  "requires_listening": true,
+  "text_review_accepted": true,
+  "owner_text_source": "conversation_ru_flirt_01",
+  "delivery_reference_ids": [
+    "streamer2_ru_narrate_scan_01",
+    "lively3_ru_narrate_engage_009"
+  ],
+  "auditory_verified": false,
+  "file": "ru/CHAT_REPLY/conversation_pilot_ru_02.mp3",
+  "duration": 3.004,
+  "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
+  "request_payload": {
+    "text": "[conversational] Ой, спасибо! Мне очень приятно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending"
+}

@@ -1,0 +1,281 @@
+{
+  "model": "faster-whisper-small-local",
+  "paid_asr_requests": 0,
+  "auditory_review_complete": false,
+  "records": [
+    {
+      "id": "conversation_pilot_ru_01",
+      "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315",
+      "text": "Плюс! Ну, это было вкусно!",
+      "transcript": "Плюс! Ну, это было вкусно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.109,
+        "rms": 0.07236,
+        "peak": 0.33085,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.129,
+        "sha256": "3c919f4d07d3ef25ff4570fedf2228ac00685886678de130a7f54bdd06f60315"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Плюс! Ну, это было вкусно!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_02",
+      "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b",
+      "text": "Ой, спасибо! Мне очень приятно.",
+      "transcript": "Ой, спасибо! Мне очень приятно!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.004,
+        "rms": 0.08364,
+        "peak": 0.33835,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.104,
+        "sha256": "39d8d97109ab7d9c510ad652b96c758985bf2bb9f03a648214bfa7adb31f109b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Ой, спасибо! Мне очень приятно!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_03",
+      "sha256": "c7010726efbc554d4ec108355678c77d7afba0d5cd2ecf78cb2f3e686336ed5c",
+      "text": "А ты не отвлекайся. Хотя… мне приятно.",
+      "transcript": "А ты не отвлекайся, хотя мне приятно.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.154,
+        "rms": 0.08007,
+        "peak": 0.38029,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.114,
+        "sha256": "c7010726efbc554d4ec108355678c77d7afba0d5cd2ecf78cb2f3e686336ed5c"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.12,
+          "text": " А ты не отвлекайся, хотя мне приятно."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_04",
+      "sha256": "edc4ea7fe0266cb3129f93aae3d70bc5fd90a991561f56f6a10e413f315332a5",
+      "text": "Оставайся. Мне с тобой уже интереснее.",
+      "transcript": "Оставайся! Мне с тобой уже интереснее!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 3.056,
+        "rms": 0.08686,
+        "peak": 0.35801,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.26,
+        "trailing_silence": 0.116,
+        "sha256": "edc4ea7fe0266cb3129f93aae3d70bc5fd90a991561f56f6a10e413f315332a5"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " Оставайся! Мне с тобой уже интереснее!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_05",
+      "sha256": "ad08f8f21762545ec4a8aa3eb24487cbb289bbb3e41b35eec9938950629721ac",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "transcript": "она что смотришь хотя ладно кажется я уже догадалась",
+      "similarity": 0.977,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.101,
+        "rms": 0.08553,
+        "peak": 0.38206,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.101,
+        "sha256": "ad08f8f21762545ec4a8aa3eb24487cbb289bbb3e41b35eec9938950629721ac"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.76,
+          "text": " она что смотришь хотя ладно кажется я уже догадалась"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_06",
+      "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b",
+      "text": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "transcript": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.075,
+        "rms": 0.06939,
+        "peak": 0.29499,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.22,
+        "trailing_silence": 0.115,
+        "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.0,
+          "text": " Ну вот, так бы сразу. Мне нравится, когда со мной честно."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_07",
+      "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "transcript": "Ты еще до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.807,
+        "rms": 0.083,
+        "peak": 0.35273,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.107,
+        "sha256": "8a06ca8eae1e358d1302c18f6079ec006bfebde8703d8285550c11e5b39d0f75"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.8,
+          "text": " Ты еще до закрытия решил меня расстроить? Подожди, я пока надеюсь."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_08",
+      "sha256": "e81d4bd61691381881d060628056bc0a21f8b655b5ec7d73a08df3245005bb8a",
+      "text": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной.",
+      "transcript": "А ты меня уже в минус записал! Нет уж, теперь радуйся со мной!",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.545,
+        "rms": 0.08661,
+        "peak": 0.38222,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.065,
+        "sha256": "e81d4bd61691381881d060628056bc0a21f8b655b5ec7d73a08df3245005bb8a"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.0,
+          "text": " А ты меня уже в минус записал!"
+        },
+        {
+          "start": 2.0,
+          "end": 4.0,
+          "text": " Нет уж, теперь радуйся со мной!"
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_09",
+      "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f",
+      "text": "А на что смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "transcript": "Она что, смотришь? Хотя ладно, кажется, я уже догадалась.",
+      "similarity": 0.977,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.206,
+        "rms": 0.07332,
+        "peak": 0.32012,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.18,
+        "trailing_silence": 0.126,
+        "sha256": "db0a9429151d86a9fc736f5c70163cafc7b6fff2a744f83b64fe7efaecdabe9f"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " Она что, смотришь? Хотя ладно, кажется, я уже догадалась."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    },
+    {
+      "id": "conversation_pilot_ru_10",
+      "sha256": "b4ddd698b4d0ad6af5b73325c9eb37c8d274892d7b4fd4021a22f4fbfc38d989",
+      "text": "Ты ещё до закрытия решил меня расстроить? Подожди, я пока надеюсь.",
+      "transcript": "Ты ещё до закрытия решил меня расстроить. Подожди, я пока надеюсь.",
+      "similarity": 1.0,
+      "metrics": {
+        "decode_ok": true,
+        "duration": 4.989,
+        "rms": 0.07678,
+        "peak": 0.3539,
+        "clipped_fraction": 0.0,
+        "leading_silence": 0.2,
+        "trailing_silence": 0.129,
+        "sha256": "b4ddd698b4d0ad6af5b73325c9eb37c8d274892d7b4fd4021a22f4fbfc38d989"
+      },
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 5.0,
+          "text": " Ты ещё до закрытия решил меня расстроить. Подожди, я пока надеюсь."
+        }
+      ],
+      "issues": [],
+      "auditory_verified": false
+    }
+  ],
+  "owner_listening_notes": [
+    {
+      "ids": [
+        "conversation_pilot_ru_05",
+        "conversation_pilot_ru_09"
+      ],
+      "note": "ASR joins «А на» into «она»; check pronunciation at the beginning by listening. Similarity 0.977, no paid retake requested."
+    }
+  ]
+}

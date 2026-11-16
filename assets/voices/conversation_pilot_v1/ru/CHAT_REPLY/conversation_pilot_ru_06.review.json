@@ -1,0 +1,42 @@
+{
+  "id": "conversation_pilot_ru_06",
+  "lang": "ru",
+  "category": "CHAT_REPLY",
+  "text": "Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+  "tts_text": "[conversational] Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+  "voice_id": "1db1618b6eaf4571ac7db70e20eb6727",
+  "delivery": "conversational",
+  "text_version": 1,
+  "text_sha256": "cbb959a86cf20af7a671cdfd8836bfbe725e134b6fee788bf802614dfce836b9",
+  "conditions": {},
+  "max_duration_sec": 15,
+  "requires_listening": true,
+  "text_review_accepted": true,
+  "owner_text_source": "conversation_reference_v2_flirt_02",
+  "delivery_reference_ids": [
+    "streamer2_ru_narrate_scan_01",
+    "lively3_ru_narrate_engage_009"
+  ],
+  "auditory_verified": false,
+  "file": "ru/CHAT_REPLY/conversation_pilot_ru_06.mp3",
+  "duration": 4.075,
+  "sha256": "35446b8ff1d552c033f17fd1b1b31ca23df18bcf2af692c15f972af6c55f6e4b",
+  "request_payload": {
+    "text": "[conversational] Ну вот, так бы сразу. Мне нравится, когда со мной честно.",
+    "reference_id": "1db1618b6eaf4571ac7db70e20eb6727",
+    "language": "ru",
+    "format": "mp3",
+    "sample_rate": 44100,
+    "mp3_bitrate": 128,
+    "latency": "balanced",
+    "normalize": true,
+    "temperature": 0.82,
+    "top_p": 0.85,
+    "prosody": {
+      "speed": 1.06,
+      "volume": 0,
+      "normalize_loudness": true
+    }
+  },
+  "status": "review_pending"
+}

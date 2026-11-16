@@ -3,7 +3,7 @@
   "python_tests": 177,
   "python_result": "passed",
   "virtual_quiet_rehearsal_seconds": 900,
-  "paid_tts_requests": 0,
+  "paid_tts_requests": 10,
   "live_tiktok_verified": false,
   "live_pocket_verified": false,
   "browser_render_verified": false,
@@ -18,8 +18,16 @@
   "style_reference_status": "owner_selected_existing_audio_delivery",
   "current_pilot": "voice-pilot-10.json",
   "current_pilot_count": 10,
-  "current_pilot_status": "awaiting_exact_pilot_spend_approval",
+  "current_pilot_status": "awaiting_owner_audio_review",
   "delivery_references": "delivery-references.json",
   "reference_audio_sha256_verified": 2,
-  "pilot_estimate_usd": 0.016125
+  "pilot_estimate_usd": 0.016125,
+  "paid_asr_requests": 0,
+  "new_reserved_usd": 0.016125,
+  "technical_qc_pass": 10,
+  "owner_audio_acceptance": false,
+  "listening_album": "voice-pilot-listening.mp3",
+  "listening_duration_sec": 61.808,
+  "provider_verified_debit_usd": 0.016125,
+  "package_credits_used": 0
 }
