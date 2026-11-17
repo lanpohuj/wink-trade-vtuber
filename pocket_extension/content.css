@@ -1097,6 +1097,7 @@
 /* ==================== 4. CIRCULAR ORB LIVE COUNTER (WINK TRADE) ==================== */
 
 #winky-score-root {
+  --winky-orb-scale: 1;
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
@@ -1116,6 +1117,52 @@
 }
 #winky-score-root:active {
   cursor: grabbing;
+}
+
+.winky-orb-scale-wrap {
+  transform: scale(var(--winky-orb-scale, 1));
+  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  pointer-events: auto;
+  transition: transform 0.08s ease-out;
+}
+
+/* Скрытие кнопок управления при активном чекбоксе */
+#winky-score-root.winky-controls-hidden #winkyOrbControls {
+  display: none !important;
+}
+
+/* Появление кнопки шестерёнки ⚙ по одиночному клику на орб при скрытых кнопках */
+#winky-score-root.winky-controls-hidden.winky-orb--show-gear #winkyOrbControls {
+  display: flex !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  margin-top: 2px !important;
+}
+
+#winky-score-root.winky-controls-hidden.winky-orb--show-gear #winkyOrbControls .winky-orb-btn:not(.gear) {
+  display: none !important;
+}
+
+#winky-score-root.winky-controls-hidden.winky-orb--show-gear #btnOrbGear {
+  display: inline-flex !important;
+  background: rgba(14, 26, 33, 0.94) !important;
+  border: 1px solid rgba(0, 255, 136, 0.45) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.35) !important;
+  animation: winkyGearPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes winkyGearPop {
+  from { opacity: 0; transform: translateY(-4px) scale(0.85); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* 1. Верхняя плашка-капсула (над кругом) */
@@ -1444,6 +1491,67 @@
 }
 .winky-orb-settings-apply:hover {
   filter: brightness(1.1);
+}
+
+/* Слайдер масштабирования счётчика */
+.winky-orb-scale-row {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 4px !important;
+  margin-top: 4px !important;
+  padding-top: 4px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.winky-orb-scale-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.winky-orb-scale-header span {
+  color: #00FF88 !important;
+  font-family: var(--wn-font-mono) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+}
+
+#cfgOrbScaleSlider {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 100% !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  accent-color: #00FF88 !important;
+  padding: 0 !important;
+  margin: 3px 0 !important;
+}
+
+#cfgOrbScaleSlider::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: #00FF88 !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.6) !important;
+  border: 1px solid #FFFFFF !important;
+}
+
+#cfgOrbScaleSlider::-moz-range-thumb {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: #00FF88 !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.6) !important;
+  border: 1px solid #FFFFFF !important;
 }
 
 /* ==================== STAKE MODE BADGE ==================== */

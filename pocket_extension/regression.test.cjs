@@ -20,13 +20,13 @@ function loadContent() {
   };
   let source = fs.readFileSync(path.join(__dirname, 'content.js'), 'utf8');
   source = source.replace('  // Ensure DOM ready', `
-    globalThis.testing = { state, commentaryContext, commentaryVolatility, commentaryNearLoss, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance,
+    globalThis.testing = { state, commentaryContext, commentaryVolatility, commentaryNearLoss, getExpectedStake, parsePocketMoney, evaluateTradeOutcome, getDomBalance:getPocketBalance, localStorage,
       readClosedDealsFirstRow, matchesTradeEvidence, onSignalTimerFinished, aggregateCandles, chartPeriodSeconds,
       LiveTickBuffer, ProTraderEngine, ChartAnalyzer, POAutomation, startSignalAnalysis,
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment, buildLiveScoreHTML, setupEventListeners,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setVisualTradeEvidence(value) { visualTradeEvidence = value; },
       getVisualTradeEvidence() { return visualTradeEvidence; },
@@ -338,6 +338,7 @@ test('known M1 visual fallback is stored without pretending to supply S15', () =
 function searchFixture(readyPair=null, ranked=false) {
   const c=loadContent(),pairs=['EUR/USD OTC','GBP/USD OTC','AUD/USD OTC','USD/JPY OTC','EUR/JPY OTC'],executed=[],switches=[],samples=[];
   c.state.targetPair=pairs[0];
+  c.state.autoStream=true;
   const analysis=()=>{samples.push(c.state.targetPair);return {shouldTrade:ranked || c.state.targetPair===readyPair,direction:'BUY',confidence:90,
     setup:'TREND_PULLBACK_30S',recommendedExpiry:'30s',trendRegime:'STRONG_UPTREND',rsi:55,pctB:.6,sr:{distToRes:2,distToSup:1},line1:'Live setup'};};
   const score=()=>ranked?(c.state.targetPair===pairs[0]?3.9:3.6):4.5;
@@ -347,6 +348,16 @@ function searchFixture(readyPair=null, ranked=false) {
     execute:async(a)=>{executed.push({pair:c.state.targetPair,direction:a.direction});c.state.tradeContext={test:true};c.state.botState='IN_TRADE';}});
   return {...c,pairs,executed,switches,samples};
 }
+test('Manual mode (!state.autoStream) scans only selected pair with 4 confirmed green stages and enters immediately', async () => {
+  const c = searchFixture();
+  c.state.autoStream = false;
+  c.state.targetPair = 'EUR/USD OTC';
+  await c.startSignalAnalysis();
+  assert.equal(c.state.pairCandidates.length, 1);
+  assert.equal(c.switches.length, 0);
+  assert.equal(c.executed.length, 1);
+  assert.equal(c.executed[0].pair, 'EUR/USD OTC');
+});
 test('a ready setup on first or second pair enters immediately',async()=>{
   for(const index of [0,1]) {
     const c=searchFixture(['EUR/USD OTC','GBP/USD OTC'][index]);
@@ -1114,4 +1125,84 @@ test('suppressPocketDemoUpsellPopups removes elements by upsell link /cabinet/qu
   assert.equal(card.style.display, 'none');
   assert.equal(card.style.visibility, 'hidden');
 });
+
+test('buildLiveScoreHTML includes .winky-orb-scale-wrap and cfgOrbScaleSlider range 60..140', () => {
+  const c = loadContent();
+  const html = c.buildLiveScoreHTML();
+  assert.ok(html.includes('class="winky-orb-scale-wrap"'));
+  assert.ok(html.includes('id="cfgOrbScaleSlider"'));
+  assert.ok(html.includes('min="60"'));
+  assert.ok(html.includes('max="140"'));
+  assert.ok(html.includes('id="cfgOrbScaleVal"'));
+  assert.ok(html.includes('id="cfgOrbHideControls"'));
+});
+
+test('orb scale and hide controls initialize from localStorage and handle toggle logic', () => {
+  const c = loadContent();
+  c.localStorage.setItem('winky_orb_scale', '125');
+  c.localStorage.setItem('winky_orb_hide_controls', 'true');
+
+  const set = new Set();
+  const scoreRoot = {
+    classList: {
+      add: cls => set.add(cls),
+      remove: cls => set.delete(cls),
+      contains: cls => set.has(cls),
+      toggle: cls => (set.has(cls) ? (set.delete(cls), false) : (set.add(cls), true))
+    },
+    style: {
+      setProperty(prop, val) { this[prop] = val; }
+    }
+  };
+
+  const slider = { value: '100', addEventListener(evt, fn) { this._onInput = fn; } };
+  const valSpan = { textContent: '' };
+  const hideCheckbox = { checked: false, addEventListener(evt, fn) { this._onChange = fn; } };
+  const dial = { closest: () => null, addEventListener(evt, fn) { this['_' + evt] = fn; } };
+
+  c.document.getElementById = (id) => {
+    if (id === 'winky-score-root') return scoreRoot;
+    if (id === 'cfgOrbScaleSlider') return slider;
+    if (id === 'cfgOrbScaleVal') return valSpan;
+    if (id === 'cfgOrbHideControls') return hideCheckbox;
+    if (id === 'winkyOrbMedallion') return dial;
+    return null;
+  };
+
+  c.setupEventListeners();
+
+  // 1. Initialized values
+  assert.equal(scoreRoot.style['--winky-orb-scale'], '1.25');
+  assert.equal(slider.value, 125);
+  assert.equal(valSpan.textContent, '125%');
+  assert.equal(hideCheckbox.checked, true);
+  assert.ok(scoreRoot.classList.contains('winky-controls-hidden'));
+
+  // 2. User moves scale slider to 80%
+  slider._onInput({ target: { value: 80 } });
+  assert.equal(scoreRoot.style['--winky-orb-scale'], '0.8');
+  assert.equal(valSpan.textContent, '80%');
+  assert.equal(c.localStorage.getItem('winky_orb_scale'), '80');
+
+  // 3. User unchecks hide controls
+  hideCheckbox._onChange({ target: { checked: false } });
+  assert.ok(!scoreRoot.classList.contains('winky-controls-hidden'));
+  assert.equal(c.localStorage.getItem('winky_orb_hide_controls'), 'false');
+
+  // 4. User checks hide controls back
+  hideCheckbox._onChange({ target: { checked: true } });
+  assert.ok(scoreRoot.classList.contains('winky-controls-hidden'));
+  assert.equal(c.localStorage.getItem('winky_orb_hide_controls'), 'true');
+
+  // 5. Dial click without drag toggles winky-orb--show-gear
+  dial._pointerdown({ clientX: 100, clientY: 100, target: dial });
+  dial._pointerup({ clientX: 102, clientY: 101 }); // dist < 6px
+  assert.ok(scoreRoot.classList.contains('winky-orb--show-gear'));
+
+  // Clicking again closes gear
+  dial._pointerdown({ clientX: 100, clientY: 100, target: dial });
+  dial._pointerup({ clientX: 101, clientY: 101 });
+  assert.ok(!scoreRoot.classList.contains('winky-orb--show-gear'));
+});
+
 

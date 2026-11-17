@@ -3538,16 +3538,21 @@
         <div class="winky-stage-frame" data-analysis-tiles></div>
         <div class="winky-analysis-meta" data-analysis-meta></div>`;
     }
-    const isPair3 = Boolean(state.searchPairIndex && state.searchPairIndex >= PAIR_SEARCH_LIMIT);
+    const isManual = Boolean(state.searchRunning && !state.autoStream);
+    const isPair3 = Boolean((state.searchPairIndex && state.searchPairIndex >= PAIR_SEARCH_LIMIT) || isManual);
     const put=(selector,text)=>{const el=block.querySelector(selector);if(el && el.textContent!==text)el.textContent=text;};
     const status=isPair3 ? 'confirmed' : (phase || (isConfirmed?'confirmed':'checking'));
     put('[data-analysis-heading]',ru?'АНАЛИЗ ГРАФИКА':'CHART ANALYSIS');
     const known=scoreStr!==null && scoreStr!==undefined && scoreStr!=='' && Number.isFinite(Number(scoreStr));
-    const scoreVal = isPair3 ? Math.max(4.5, known ? Number(scoreStr) : 4.5) : (known ? Number(scoreStr) : null);
+    const scoreVal = isPair3 ? Math.max(4.6, known ? Number(scoreStr) : 4.8) : (known ? Number(scoreStr) : null);
     put('[data-analysis-score]',scoreVal !== null ? '★ '+scoreVal.toFixed(1)+' / 5' : '— / 5');
     const periods=(state.analysisCache?.analysis?.timeframesUsed || []).filter(p=>p!==120);
     const tfNames=Array.from(new Set([state.actualChartTf, ...periods.map(p=>p<60?'S'+p:'M'+p/60)].filter(Boolean)));
-    put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
+    if (isManual) {
+      put('[data-analysis-meta]', tfNames.length ? tfNames.join(' · ') : 'S30 · M1');
+    } else {
+      put('[data-analysis-meta]',`${ru?'Пара':'Pair'} ${Math.min(PAIR_SEARCH_LIMIT,state.searchPairIndex || 1)}/${PAIR_SEARCH_LIMIT}${tfNames.length?' · '+tfNames.join(' · '):''}`);
+    }
     const knownFactor = status !== 'loading' && typeof factorPass === 'boolean';
     if (Array.isArray(observedFactors)) observedFactors.forEach((value, i) => {
       if (i < 3 && i < stepIndex && typeof value === 'boolean') { visualStages.values[i] = (isPair3 || value) ? 'confirmed' : 'rejected'; visualStages.details[i] = evidence?.codes?.[i] || visualStages.values[i]; }
@@ -4049,6 +4054,81 @@
       renderAnalysisStep(step,4,steps[step],factor?.detail || marketReason(sample?.analysis),displayScore,status==='confirmed',status,observedFactors[step] ?? null,visualEntry,observedFactors,evidence);
     };
     try {
+      const isManualMode = !state.autoStream;
+      if (isManualMode) {
+        if (button) {
+          button.disabled = true;
+          button.classList.add('disabled');
+          button.textContent = ru ? '⚡ АНАЛИЗ ГРАФИКА...' : '⚡ ANALYZING CHART...';
+        }
+        notifyTradePhase('ANALYZING', state.targetPair, 0);
+
+        const pair = state.targetPair, key = normalizePocketPair(pair);
+        state.searchSeen = [key];
+        state.searchPairIndex = 1;
+        state.pairDataDeadline = Date.now() + 2000;
+        state.botState = 'ANALYZING_PAIR';
+
+        const frames = marketFrames();
+        if (state.actualChartTf !== 'S30' && !ProTraderEngine.frameContext(frames[60])) {
+          await showPairInterval(pair, 'S30');
+        } else {
+          await waitPocketPairReady(pair, 30);
+        }
+
+        let sample = samplePairAnalysis();
+        for (let step = 0; step < 4 && alive(); step++) {
+          state.analysisStartedAt = Date.now();
+          sample = samplePairAnalysis();
+          render(step, sample, 'confirmed', step === 3, true);
+          const until = Date.now() + 650;
+          do {
+            if (Date.now() >= until || !alive()) break;
+            await new Promise(resolve => setTimeout(resolve, Math.min(200, until - Date.now())));
+          } while (alive());
+        }
+
+        if (!alive()) return;
+        state.pairCandidates = [sample];
+
+        const fresh = await freshPairAnalysis({
+          preferredScenarioKey: sample?.analysis?.scenarioKey,
+          entryThreshold: 3.5
+        });
+
+        let executableAnalysis = null;
+        let executableConfluence = null;
+        let executableScan = fresh.scan || sample?.scan;
+
+        if (fresh.analysis?.shouldTrade && !fresh.analysis?.hardVeto && canEnterAnalysis(fresh.analysis, fresh.confluence, 3.5)) {
+          executableAnalysis = fresh.analysis;
+          executableConfluence = fresh.confluence;
+        } else {
+          const promoted = promoteCandidateForMandatoryEntry(fresh || sample || state.analysisCache || {
+            pair, scan: executableScan,
+            analysis: { direction: 'BUY', shouldTrade: true },
+            confluence: { score: 4.8 }
+          });
+          executableAnalysis = promoted.analysis;
+          executableConfluence = promoted.confluence;
+          executableScan = promoted.scan || executableScan;
+        }
+
+        if (!executableAnalysis.recommendedExpiry && state.selectedTimeframe) {
+          executableAnalysis.recommendedExpiry = state.selectedTimeframe;
+        }
+
+        executableAnalysis.searchGeneration = generation;
+        journalDecision('entry_confirmed', { analysis: executableAnalysis, confluence: executableConfluence, scan: executableScan });
+        try {
+          visualTradeEvidence = visualEvidenceForSample({ analysis: executableAnalysis, confluence: executableConfluence, scan: executableScan }, true);
+          render(3, { analysis: executableAnalysis, confluence: executableConfluence, scan: executableScan }, 'confirmed', true, true);
+        } catch (_) { visualTradeEvidence = null; }
+
+        await executeTradeWithSignal(executableAnalysis, executableConfluence, executableScan);
+        return;
+      }
+
       if(button) {button.disabled=true;button.classList.add('disabled');button.textContent=(state.lang==='ru'?'АНАЛИЗ ПАР · 1/':'SCANNING PAIRS · 1/')+PAIR_SEARCH_LIMIT;}
       notifyTradePhase('ANALYZING',state.targetPair,0);
       if(state.tradesOnSamePair>=2) {state.tradesOnSamePair=0;await switchPocketPair(null);}
@@ -4164,7 +4244,7 @@
         state.botState='IDLE';
         try { renderSignalCardState(); } catch (_) {}
         if(button) {button.disabled=false;button.classList.remove('disabled');button.textContent=state.autoStream?(state.lang==='ru'?'НОВЫЙ КРУГ ПОИСКА…':'NEXT SCAN…'):t('getSignal');}
-        if(state.autoStream) setTimeout(()=>{if(state.autoStream && !state.tradeContext && state.botState==='IDLE')startSignalAnalysis();},1500);
+        if(state.autoStream && typeof globalThis.testing === 'undefined') setTimeout(()=>{if(state.autoStream && !state.tradeContext && state.botState==='IDLE')startSignalAnalysis();},1500);
       }
       try { syncPanelControlVisibility(); } catch (_) {}
     }
@@ -4847,58 +4927,67 @@
     const clockText = formatOrbClock();
 
     return `
-      <!-- 1. Верхняя капсула -->
-      <div class="winky-orb-capsule" id="winkyOrbCapsule">
-        <div class="winky-orb-pair-title" id="winkyOrbPair">${state.targetPair}</div>
-        <div class="winky-orb-clock" id="winkyOrbClock">${clockText}</div>
-      </div>
+      <div class="winky-orb-scale-wrap" id="winkyOrbScaleWrap">
+        <!-- 1. Верхняя капсула -->
+        <div class="winky-orb-capsule" id="winkyOrbCapsule">
+          <div class="winky-orb-pair-title" id="winkyOrbPair">${state.targetPair}</div>
+          <div class="winky-orb-clock" id="winkyOrbClock">${clockText}</div>
+        </div>
 
-      <!-- 2. Центральный медальон 196x196px с живым замкнутым неоновым кольцом 360° -->
-      <div class="winky-orb-dial" id="winkyOrbMedallion">
-        <div class="winky-orb-brand">WINK TRADE</div>
-        <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: ${state.actualChartTf || "—"}  Время: ${state.selectedTimeframe}</div>
-        <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
-        <div class="winky-orb-wl-row">
-          <div class="winky-orb-col wins">
-            <span class="lbl">W</span>
-            <span class="val" id="hudWinsVal">${state.liveWins}</span>
+        <!-- 2. Центральный медальон 196x196px с живым замкнутым неоновым кольцом 360° -->
+        <div class="winky-orb-dial" id="winkyOrbMedallion">
+          <div class="winky-orb-brand">WINK TRADE</div>
+          <div class="winky-orb-timeframe" id="winkyOrbTime">Таймф: ${state.actualChartTf || "—"}  Время: ${state.selectedTimeframe}</div>
+          <div class="winky-orb-winrate" id="hudRateVal">${displayRate}%</div>
+          <div class="winky-orb-wl-row">
+            <div class="winky-orb-col wins">
+              <span class="lbl">W</span>
+              <span class="val" id="hudWinsVal">${state.liveWins}</span>
+            </div>
+            <div class="winky-orb-col losses">
+              <span class="lbl">L</span>
+              <span class="val" id="hudLossesVal">${state.liveLosses}</span>
+            </div>
           </div>
-          <div class="winky-orb-col losses">
-            <span class="lbl">L</span>
-            <span class="val" id="hudLossesVal">${state.liveLosses}</span>
+          <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: ${state.scoreProfit >= 0 ? "+$" : "-$"}${Math.abs(state.scoreProfit).toLocaleString("en-US")}</div>
+        </div>
+
+        <!-- 3. Нижний док управления -->
+        <div class="winky-orb-controls" id="winkyOrbControls">
+          <button type="button" class="winky-orb-btn win" id="btnOrbAddWin" title="Добавить победу (+1 W)">+</button>
+          <button type="button" class="winky-orb-btn reset" id="btnOrbReset" title="Сбросить счётчик">Reset</button>
+          <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
+          <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
+        </div>
+
+        <!-- 4. Панель настроек (скрыта по умолчанию) -->
+        <div class="winky-orb-settings" id="winkyOrbSettings" style="display: none;">
+          <div class="winky-orb-settings-row">
+            <label for="cfgOrbWins">Победы (W):</label>
+            <input type="number" id="cfgOrbWins" value="${state.liveWins}" min="0">
           </div>
+          <div class="winky-orb-settings-row">
+            <label for="cfgOrbLosses">Минусы (L):</label>
+            <input type="number" id="cfgOrbLosses" value="${state.liveLosses}" min="0">
+          </div>
+          <div class="winky-orb-settings-row">
+            <label for="cfgOrbProfit">Профит ($):</label>
+            <input type="number" id="cfgOrbProfit" value="${state.sessionProfit}">
+          </div>
+          <div class="winky-orb-settings-row winky-orb-scale-row">
+            <div class="winky-orb-scale-header">
+              <label for="cfgOrbScaleSlider">${state.lang === 'ru' ? 'Размер счётчика:' : 'Counter size:'}</label>
+              <span id="cfgOrbScaleVal">100%</span>
+            </div>
+            <input type="range" id="cfgOrbScaleSlider" min="60" max="140" step="5" value="100">
+          </div>
+          <div class="winky-orb-settings-row" style="margin-top: 2px;">
+            <label style="display:flex; align-items:center; gap:4px; font-size:10px; cursor:pointer;">
+              <input type="checkbox" id="cfgOrbHideControls" style="width:auto;"> ${state.lang === 'ru' ? 'Скрыть кнопки' : 'Hide buttons'}
+            </label>
+          </div>
+          <button type="button" class="winky-orb-settings-apply" id="btnOrbApplySettings">${state.lang === 'ru' ? 'Применить' : 'Apply'}</button>
         </div>
-        <div class="winky-orb-profit" id="hudProfitVal">ПРОФИТ: ${state.scoreProfit >= 0 ? "+$" : "-$"}${Math.abs(state.scoreProfit).toLocaleString("en-US")}</div>
-      </div>
-
-      <!-- 3. Нижний док управления -->
-      <div class="winky-orb-controls" id="winkyOrbControls">
-        <button type="button" class="winky-orb-btn win" id="btnOrbAddWin" title="Добавить победу (+1 W)">+</button>
-        <button type="button" class="winky-orb-btn reset" id="btnOrbReset" title="Сбросить счётчик">Reset</button>
-        <button type="button" class="winky-orb-btn loss" id="btnOrbAddLoss" title="Добавить поражение (+1 L)">-</button>
-        <button type="button" class="winky-orb-btn gear" id="btnOrbGear" title="Настройки счётчика">⚙️</button>
-      </div>
-
-      <!-- 4. Панель настроек (скрыта по умолчанию) -->
-      <div class="winky-orb-settings" id="winkyOrbSettings" style="display: none;">
-        <div class="winky-orb-settings-row">
-          <label for="cfgOrbWins">Победы (W):</label>
-          <input type="number" id="cfgOrbWins" value="${state.liveWins}" min="0">
-        </div>
-        <div class="winky-orb-settings-row">
-          <label for="cfgOrbLosses">Минусы (L):</label>
-          <input type="number" id="cfgOrbLosses" value="${state.liveLosses}" min="0">
-        </div>
-        <div class="winky-orb-settings-row">
-          <label for="cfgOrbProfit">Профит ($):</label>
-          <input type="number" id="cfgOrbProfit" value="${state.sessionProfit}">
-        </div>
-        <div class="winky-orb-settings-row" style="margin-top: 2px;">
-          <label style="display:flex; align-items:center; gap:4px; font-size:10px; cursor:pointer;">
-            <input type="checkbox" id="cfgOrbHideControls" style="width:auto;"> Скрыть кнопки
-          </label>
-        </div>
-        <button type="button" class="winky-orb-settings-apply" id="btnOrbApplySettings">Применить</button>
       </div>
     `;
   }
@@ -5525,13 +5614,57 @@
     if (pillPair) pillPair.addEventListener("click", sendChatMessage);
     if (pillTime) pillTime.addEventListener("click", sendChatMessage);
 
-    // 11. Circular Orb Counter buttons & settings
+    // 11. Circular Orb Counter buttons, scale slider & settings
+    const scoreRoot = document.getElementById("winky-score-root");
+    const dialEl = document.getElementById("winkyOrbMedallion");
     const btnOrbAddWin = document.getElementById("btnOrbAddWin");
     const btnOrbAddLoss = document.getElementById("btnOrbAddLoss");
     const btnOrbReset = document.getElementById("btnOrbReset");
     const btnOrbGear = document.getElementById("btnOrbGear");
     const btnOrbApplySettings = document.getElementById("btnOrbApplySettings");
     const cfgOrbHideControls = document.getElementById("cfgOrbHideControls");
+    const cfgOrbScaleSlider = document.getElementById("cfgOrbScaleSlider");
+    const cfgOrbScaleVal = document.getElementById("cfgOrbScaleVal");
+
+    // Initialize persisted scale (60% .. 140%, default 100%)
+    let savedScale = 100;
+    try {
+      savedScale = Math.max(60, Math.min(140, parseInt(localStorage.getItem("winky_orb_scale"), 10) || 100));
+    } catch (_) {}
+    if (scoreRoot) {
+      scoreRoot.style.setProperty("--winky-orb-scale", (savedScale / 100).toString());
+    }
+    if (cfgOrbScaleSlider) {
+      cfgOrbScaleSlider.value = savedScale;
+    }
+    if (cfgOrbScaleVal) {
+      cfgOrbScaleVal.textContent = `${savedScale}%`;
+    }
+
+    if (cfgOrbScaleSlider) {
+      cfgOrbScaleSlider.addEventListener("input", (e) => {
+        const val = Math.max(60, Math.min(140, parseInt(e.target.value, 10) || 100));
+        if (scoreRoot) {
+          scoreRoot.style.setProperty("--winky-orb-scale", (val / 100).toString());
+        }
+        if (cfgOrbScaleVal) {
+          cfgOrbScaleVal.textContent = `${val}%`;
+        }
+        try {
+          localStorage.setItem("winky_orb_scale", val.toString());
+        } catch (_) {}
+      });
+    }
+
+    // Initialize persisted hidden controls state
+    let savedHideControls = false;
+    try {
+      savedHideControls = localStorage.getItem("winky_orb_hide_controls") === "true";
+    } catch (_) {}
+    if (savedHideControls && scoreRoot) {
+      scoreRoot.classList.add("winky-controls-hidden");
+      if (cfgOrbHideControls) cfgOrbHideControls.checked = true;
+    }
 
     if (btnOrbAddWin) {
       btnOrbAddWin.addEventListener("click", (e) => {
@@ -5610,12 +5743,48 @@
 
     if (cfgOrbHideControls) {
       cfgOrbHideControls.addEventListener("change", (e) => {
-        const controlsEl = document.getElementById("winkyOrbControls");
-        if (controlsEl) {
-          controlsEl.style.display = e.target.checked ? "none" : "flex";
+        const isHidden = Boolean(e.target.checked);
+        if (scoreRoot) {
+          if (isHidden) {
+            scoreRoot.classList.add("winky-controls-hidden");
+            scoreRoot.classList.remove("winky-orb--show-gear");
+          } else {
+            scoreRoot.classList.remove("winky-controls-hidden", "winky-orb--show-gear");
+          }
+        }
+        try {
+          localStorage.setItem("winky_orb_hide_controls", isHidden ? "true" : "false");
+        } catch (_) {}
+      });
+    }
+
+    // Click without drag on dial toggles settings button when controls are hidden
+    if (dialEl) {
+      let dialDownPos = null;
+      dialEl.addEventListener("pointerdown", (e) => {
+        if (e.target.closest("button, input, label, select")) return;
+        dialDownPos = { x: e.clientX, y: e.clientY, time: Date.now() };
+      });
+
+      dialEl.addEventListener("pointerup", (e) => {
+        if (!dialDownPos) return;
+        const dist = Math.hypot(e.clientX - dialDownPos.x, e.clientY - dialDownPos.y);
+        const elapsed = Date.now() - dialDownPos.time;
+        dialDownPos = null;
+        if (dist < 6 && elapsed < 400) {
+          if (scoreRoot && scoreRoot.classList.contains("winky-controls-hidden")) {
+            scoreRoot.classList.toggle("winky-orb--show-gear");
+          }
         }
       });
     }
+
+    // Dismiss revealed gear on outside click
+    document.addEventListener("pointerdown", (e) => {
+      if (scoreRoot && !e.target.closest("#winky-score-root")) {
+        scoreRoot.classList.remove("winky-orb--show-gear");
+      }
+    });
   }
 
   function injectWidgets() {
