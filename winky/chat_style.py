@@ -17,14 +17,16 @@ POOLS = {
 def reply_pool(comment, lang='ru'):
     low = comment.lower()
     kind = 'general'
-    if re.search(r'бот|ссылк|шапк|био|\bbot\b|\bbio\b|\blink\b|\baccess\b|доступ|как начать|как зайти', low):
-        kind = 'bot'
-    elif re.search(r'отыгр|ва.?банк|гарант|all.?in|recover.*loss|guarantee', low):
+    if re.search(r'отыгр|ва.?банк|гарант|all.?in|recover.*loss|guarantee', low):
         kind = 'gambler'
-    elif re.search(r'красот|мил[а-я]*|краш|люблю|cute|pretty|beautiful|marry|love you', low):
-        kind = 'compliment'
     elif re.search(r'скам|развод|обман|scam|fake|не верю', low):
         kind = 'skeptic'
+    elif re.search(r'(?:ты|она|это)\s+(?:[а-яё]+\s+){0,2}(?:бот|ии)\b|\b(?:are you|you are|you[’\x27]re|is this|this is)\s+(?:an?\s+)?(?:ai\s+)?(?:bot|ai)\b',low):
+        kind = 'identity'
+    elif re.search(r'ссылк|шапк|био|\bbio\b|\blink\b|\baccess\b|доступ|как начать|как зайти|(?:где|дай|скинь|пришли|найти|хочу|нужен).{0,30}бот|бот.{0,30}(?:где|найти|зайти|подключ|сигнал|инструмент|телеграм)|\b(?:where|get|join).{0,30}\bbot\b', low):
+        kind = 'bot'
+    elif re.search(r'красот|мил[а-я]*|краш|люблю|cute|pretty|beautiful|marry|love you', low):
+        kind = 'compliment'
     elif re.search(r'привет|салют|здаров|\b(?:hi|hey|hello)\b', low):
         kind = 'greeting'
     elif re.search(r'стратег|анализ|сценар|strategy|setup|analysis', low):

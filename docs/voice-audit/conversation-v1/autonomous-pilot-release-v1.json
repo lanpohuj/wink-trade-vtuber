@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "released_at": "2026-11-17T06:36:50.694464+00:00",
+  "previous_pointer": {
+    "path": "lively_v3"
+  },
+  "previous_pointer_sha256": "546e8995a245e10340e09965e5f672c137c19616d98b50daf83e1d237b96f3c3",
+  "source_manifest_sha256": "a0973ffa7a4aba1b85e5e8148cf2525d85063fe8bed5a092095f19378b9199c3",
+  "active_manifest_sha256": "e457d45a3fd94c5f6ece8d230b376e2ec88471ef8e5b104ebe90ab6ac148b17a",
+  "queue_proof_sha256": "f6eec917ccab94a201a10018cf714f91228164adf5833d6357e848f884a0faf3",
+  "ready": 75,
+  "held": 1,
+  "native_two_hour_playback": false,
+  "live_pocket_verified": false,
+  "live_tiktok_verified": false
+}

@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "duration_sec": 7200,
+  "clock": "accelerated_virtual_time",
+  "real_queue": true,
+  "bank_manifest_sha256": "a0973ffa7a4aba1b85e5e8148cf2525d85063fe8bed5a092095f19378b9199c3",
+  "runtime_sources": {
+    "winky/tts.py": "2619a0b09d9f781923f94925b043ac1ed614f8e47e97ab65577a8c8c0d266185",
+    "winky/director.py": "75e59fcc81ea159014be94dc40ec904ed9518b13aa9f421f6103b74ddbe7d95a",
+    "winky/voice_bank.py": "f5e7b94ef20fc06b50c814f7462c3f79feb99d65c8479c22f9e087f7ad980368",
+    "winky/speech_rotation.py": "bde0aef30825e6b9baa78a3297c78ae4576a0709da8e378aa3ad07f8ee921fff",
+    "winky/conversation.py": "8aaed0f76ec9c045ad6cf2889b8c762feb132a295313b428cbcdeeae49ec2014",
+    "winky/commentary.py": "5c3c74b8e7c6f6ed83ac3325c42247ab263a23357e1827690a102c2e90094da2",
+    "winky/phrase_context.py": "38f889fb88511cd345d239f09120d221e7c26f20c7c007b6be39ff0f4a82b851",
+    "winky/chat_style.py": "61427ce976a0b18cf27d6c6c6401a285ce5865a06ebc3c03846cb9bc61c3df24",
+    "winky/app.py": "eb73f546d2f34e7ca5141f8e9c6e46d502cdcb7f7fdaf49ab45e9c9267892c8b"
+  },
+  "real_audio_files": true,
+  "native_two_hour_playback": false,
+  "live_llm": false,
+  "live_tiktok": false,
+  "live_broker": false,
+  "paid_tts_requests": 0,
+  "network_requests": 0,
+  "model_latency_verified": false,
+  "max_concurrent_voices": 1,
+  "max_queues": {
+    "speech_queue": 9,
+    "chat_queue": 6,
+    "reservations": 9
+  },
+  "remaining_speech_queue": 0,
+  "cancellations": {
+    "expired_or_failed": 174,
+    "social_burst_coalesced": 1,
+    "superseded_by_current_chat": 52,
+    "stale_or_ineligible": 91,
+    "generation_or_synthesis_failed": 15
+  },
+  "counts": {
+    "NARRATE_SCAN": 10,
+    "OPEN_TRADE_PUT": 4,
+    "NARRATE_MOMENT": 5,
+    "TRADE_WIN": 15,
+    "OPEN_TRADE_CALL": 4,
+    "TRADE_LOSS": 26,
+    "NARRATE_CTA": 21,
+    "TRADE_REFUND": 7,
+    "CHAT_REPLY": 65,
+    "CHAT_REACTION": 20
+  },
+  "first_15_minutes": {
+    "NARRATE_SCAN": 2,
+    "OPEN_TRADE_PUT": 4,
+    "NARRATE_MOMENT": 2,
+    "TRADE_WIN": 2,
+    "OPEN_TRADE_CALL": 4,
+    "TRADE_LOSS": 3,
+    "NARRATE_CTA": 3,
+    "TRADE_REFUND": 1
+  },
+  "fixture_cached_file_lookups": 165,
+  "fixture_tts_failures": 15,
+  "fixture_llm_calls": 306,
+  "stress_answers": "concatenated_existing_waveforms_test_only",
+  "passed": true
+}

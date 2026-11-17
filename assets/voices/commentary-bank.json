@@ -1,3 +1,6 @@
 {
-  "path": "lively_v3"
+  "version": 1,
+  "path": "autonomous_v1",
+  "release": "owner_reviewed_ru_pilot",
+  "acceptance": "owner_sampled_scene"
 }

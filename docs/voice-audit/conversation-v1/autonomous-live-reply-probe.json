@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "created_at": "2026-11-17T06:36:33.359715+00:00",
+  "scope": "single_real_model_and_paid_tts_muted_native_probe",
+  "input": "Я просто смотрю, Винки. Можно я без разговоров побуду?",
+  "reply": "Конечно, можно. Смотрю в чат — вижу тебя, и этого достаточно.",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "provider": "api.river.ai",
+  "received_to_ready_sec": 4.605,
+  "received_to_begin_sec": 5.0036,
+  "target_8_sec_met": true,
+  "audio_clock": "native_playhead",
+  "volume": 0,
+  "posted_to_chat": false,
+  "live_tiktok": false,
+  "agent_listened": false,
+  "extra_tts_spend_usd": 0.00189,
+  "probe_tts_cap_usd": 0.01,
+  "waveform_sha256": "18984aec7a39205caed5a1192050695d55ed1687433ef67d3a0658bbb896af1b",
+  "audio_path": "artifacts/winky-autonomous/two-hour-v1/real-reply-probe.mp3",
+  "note": "One observation, not a latency percentile or a quality acceptance of live replies."
+}

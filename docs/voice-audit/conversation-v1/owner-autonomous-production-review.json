@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "kind": "autonomous_production_voice_review_v1",
+  "created_at": "2026-11-17T06:13:22.407125+00:00",
+  "scene_accepted": true,
+  "sampled_bank_accepted": true,
+  "records": [],
+  "instruction": "окей, продолжай дальше по плану",
+  "review_basis": "owner_accepts_presented_staged_scene_and_resumes_plan",
+  "bank_audio_set_sha256": "c39c01233510899d86eb9608e3bcafe4bab0445b9b41d25c8a30f8f9d44b28ec",
+  "scene_timeline_sha256": "67d460e1188941176b60385047a74fe44e7280b279d0f8d05857c3d168e08ded"
+}

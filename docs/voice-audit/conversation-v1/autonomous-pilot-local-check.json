@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "checked_at": "2026-11-17T06:43:50.872676+00:00",
+  "scope": "local_running_winky_and_extension_heartbeat_only",
+  "active_bank": "autonomous_v1",
+  "manifest_sha256": "e457d45a3fd94c5f6ece8d230b376e2ec88471ef8e5b104ebe90ab6ac148b17a",
+  "ready": 75,
+  "held": [
+    "autonomous_ru_loss_04"
+  ],
+  "extension_connected": true,
+  "heartbeat_age_sec": 0.49,
+  "auto_stream": false,
+  "phase": "IDLE",
+  "speech": {
+    "state": "idle",
+    "engine": "Fish Audio",
+    "queue_size": 0,
+    "audio_clock": "native_playhead",
+    "performance_ready": true,
+    "tiktok_status": "off"
+  },
+  "tiktok_username_configured": false,
+  "played_new_bank_ids": [
+    "autonomous_ru_bot_07",
+    "autonomous_ru_bot_05"
+  ],
+  "protected_files_unchanged": {
+    "winky/web/avatar.js": true,
+    "experiments/winky_avatar/motion-tracks.mjs": true,
+    "experiments/winky_avatar/extra-motions.mjs": true,
+    "experiments/winky_avatar/idle.mjs": true
+  },
+  "live_order_cycle_verified": false,
+  "live_tiktok_verified": false,
+  "broker_ui_observation": {
+    "url_environment": "demo-quick-high-low",
+    "visible_header": "QT Real",
+    "account_selection_unambiguous": false
+  },
+  "orders_placed_by_this_run": 0,
+  "extension_reloaded": false
+}
