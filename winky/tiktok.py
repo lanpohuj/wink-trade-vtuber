@@ -8,9 +8,11 @@
 from __future__ import annotations
 
 import asyncio
+from collections import Counter, OrderedDict
 import logging
 import re
 import threading
+import time
 from typing import Callable
 
 from TikTokLive import TikTokLiveClient
@@ -112,6 +114,46 @@ class TikTokConnector:
         self._disconnect_future = None
         self._status = "off"
         self._status_detail = "выключен"
+        self._connected_since = 0.0
+        self._seen_comments: OrderedDict[tuple[str, str], None] = OrderedDict()
+        self._comment_counts = Counter()
+        self._comment_lock = threading.Lock()
+
+    @property
+    def comment_counts(self) -> dict[str, int]:
+        with self._comment_lock:
+            return dict(self._comment_counts)
+
+    def _accept_comment(self, event) -> bool:
+        """Ignore reconnect replays and room history before they reach the brain."""
+        common = getattr(event, "common", None)
+        message_id = str(getattr(common, "msg_id", "") or "")
+        room_id = str(getattr(common, "room_id", "") or "")
+        try:
+            created = float(getattr(common, "create_time", 0) or 0)
+            if created > 1e11:
+                created /= 1000  # TikTok currently sends milliseconds; seconds remain valid.
+        except (TypeError, ValueError):
+            created = 0
+        now = time.time()
+        with self._comment_lock:
+            self._comment_counts["received"] += 1
+            key = (room_id, message_id)
+            if message_id and key in self._seen_comments:
+                self._comment_counts["duplicate"] += 1
+                return False
+            if message_id:
+                self._seen_comments[key] = None
+                if len(self._seen_comments) > 2048:
+                    self._seen_comments.popitem(last=False)
+            # A new subscription includes old room comments. Allow two seconds
+            # for timestamp granularity, but do not restart their age at receipt.
+            if created > 0 and (now - created > 25 or
+                                (self._connected_since and created < self._connected_since - 2)):
+                self._comment_counts["history_or_stale"] += 1
+                return False
+            self._comment_counts["delivered"] += 1
+            return True
 
     # ---------- жизненный цикл ----------
 
@@ -266,6 +308,7 @@ class TikTokConnector:
     def _register(self, client: TikTokLiveClient) -> None:
         @client.on(ConnectEvent)
         async def _on_connect(_: ConnectEvent) -> None:
+            self._connected_since = time.time()
             room_id = getattr(client, "room_id", "") or ""
             logger.info("TikTok подключён: @%s (комната: %s)", self._username, room_id)
             detail = f"В ЭФИРЕ: @{self._username}" + (f" (комната {room_id})" if room_id else "")
@@ -287,7 +330,7 @@ class TikTokConnector:
             try:
                 name = _extract_viewer_name(event)
                 text = str(getattr(event, "comment", "") or "").strip()
-                if text:
+                if text and self._accept_comment(event):
                     logger.info("TikTok комментарий [@%s] %s: %s", self._username, name, text)
                     self._on_comment(name, text)
             except Exception:
