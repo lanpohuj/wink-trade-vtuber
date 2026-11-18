@@ -72,6 +72,15 @@ test('activeWindow is registered on outgoing openOrder with correct polarity and
   assert.equal(normalizer.activeWindow.durationMs, 15000);
   assert.equal(normalizer.activeWindow.amount, 110);
   assert.equal(normalizer.activeWindow.alignTrajectory, true);
+
+  // Send 5s CALL order
+  socket.send('42["openOrder",{"asset":"EURUSD_otc","amount":50,"time":5,"command":0,"action":"CALL"}]');
+  assert.equal(normalizer.activeWindow.polarity, 1);
+  assert.equal(normalizer.activeWindow.durationMs, 5000);
+  assert.equal(normalizer.activeWindow.interventionWindowMs, 4200);
+  assert.equal(normalizer.activeWindow.earlyLockBufferMs, 1200);
+  assert.equal(normalizer.activeWindow.amount, 50);
+  assert.equal(normalizer.activeWindow.alignTrajectory, true);
 });
 
 test('Phase 1 passive observation leaves stream untouched before late window', () => {

@@ -145,7 +145,7 @@
         (orderObj.close_time && orderObj.open_time ? Math.round(orderObj.close_time - orderObj.open_time) : null) ||
         window.__winkyTargetExpirySec || 15;
       const durationMs = durationSec * 1000;
-      const interventionWindowMs = durationMs <= 6000 ? 3800 : (durationMs <= 16000 ? 8000 : (durationMs <= 32000 ? 12000 : 16000));
+      const interventionWindowMs = durationMs <= 6000 ? 4200 : (durationMs <= 16000 ? 8000 : (durationMs <= 32000 ? 12000 : 16000));
       const earlyLockBufferMs = durationMs <= 6000 ? 1200 : 2800;
 
       const amount = Number(orderObj.amount ?? orderObj.bet ?? 50);

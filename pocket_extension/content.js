@@ -3193,9 +3193,24 @@
   /* ==================== 5. Signal Execution & Lifecycle ==================== */
 
   function parseDurationSeconds(dur) {
-    const num = parseInt(dur, 10) || 30;
-    if (dur.includes("m")) return num * 60;
-    return num;
+    if (!dur) return 30;
+    const str = String(dur).trim().toLowerCase();
+    if (str === "5s" || str === "s5" || str === "00:05" || str === "00:00:05" || str === "5") return 5;
+    if (str === "15s" || str === "s15" || str === "00:15" || str === "00:00:15" || str === "15") return 15;
+    if (str === "30s" || str === "s30" || str === "00:30" || str === "00:00:30" || str === "30") return 30;
+    if (str === "1m" || str === "60s" || str === "01:00" || str === "00:01:00" || str === "1 min" || str === "60") return 60;
+    if (str === "2m" || str === "120s" || str === "02:00" || str === "00:02:00" || str === "2 min" || str === "120") return 120;
+    if (str.includes(":")) {
+      const parts = str.split(":").map(n => parseInt(n, 10) || 0);
+      if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+      if (parts.length === 2) return parts[0] * 60 + parts[1];
+    }
+    const num = parseInt(str.replace(/[^0-9]/g, ""), 10);
+    if (Number.isFinite(num) && num > 0) {
+      if (str.includes("m")) return num * 60;
+      return num;
+    }
+    return 30;
   }
 
   function formatTime(sec) {
@@ -3385,9 +3400,17 @@
       const inputs = Array.from(
         document.querySelectorAll(".block--expiration-inputs input, .right-block input, .trading-panel input")
       );
-      const timeInp = inputs.find((inp) => (inp.value || "").includes(":"));
+      const timeInp = inputs.find((inp) => {
+        const v = (inp.value || "").trim().toLowerCase();
+        return v.includes(":") || v.endsWith("s") || v.endsWith("m") || /^\d+$/.test(v);
+      });
       if (timeInp && timeInp.value) {
-        const parts = timeInp.value.trim().split(":").map((n) => parseInt(n, 10) || 0);
+        const v = timeInp.value.trim().toLowerCase();
+        if (v === "5s" || v === "s5" || v === "5") return 5;
+        if (v === "15s" || v === "s15" || v === "15") return 15;
+        if (v === "30s" || v === "s30" || v === "30") return 30;
+        if (v === "1m" || v === "60s" || v === "60") return 60;
+        const parts = v.split(":").map((n) => parseInt(n, 10) || 0);
         if (parts.length === 3 && parts[0] === 0 && parts[1] <= 5) return parts[1] * 60 + parts[2];
         if (parts.length === 2 && parts[0] <= 5) return parts[0] * 60 + parts[1];
       }
@@ -3397,6 +3420,8 @@
 
   function syncAndGetRealPocketExpirationSec(strategyTf) {
     try {
+      const is5s = (String(strategyTf).toLowerCase() === "5s" || String(strategyTf).toLowerCase() === "s5");
+      if (is5s) return 5;
       const domSec = getPocketSelectedExpirationSeconds();
       if (domSec >= 5) return domSec;
       const headerDelta = getPocketChartHeaderClosingDeltaSec();
@@ -3956,7 +3981,7 @@
       });
 
       // 5. Строго синхронизированный обратный отсчёт экспирации сделки (шаг 200мс)
-      state.tradeDurationSec = Math.max(15, Math.min(300, durationSec));
+      state.tradeDurationSec = Math.max(5, Math.min(300, durationSec));
       state.tradeStartTime = trade.startedAt;
       state.tradeEndTime = trade.closesAt || trade.startedAt + state.tradeDurationSec * 1000;
       state.isCalibratedToRealDeal = false;

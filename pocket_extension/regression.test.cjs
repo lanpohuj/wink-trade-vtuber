@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, generateRealisticWaveCandles, quoteIsFresh, readTradersSentiment, buildLiveScoreHTML, setupEventListeners,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, generateRealisticWaveCandles, parseDurationSeconds, syncAndGetRealPocketExpirationSec, quoteIsFresh, readTradersSentiment, buildLiveScoreHTML, setupEventListeners,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setVisualTradeEvidence(value) { visualTradeEvidence = value; },
       getVisualTradeEvidence() { return visualTradeEvidence; },
@@ -1223,7 +1223,27 @@ test('Manual mode honors userSelectedTimeframe (5s, 15s, 30s, 1m) in executeTrad
     assert.equal(c.state.activeSignal.duration, exp, `activeSignal.duration must match user choice ${exp}`);
     const expectedSec = exp === '1m' ? 60 : (exp === '30s' ? 30 : (exp === '5s' ? 5 : 15));
     assert.equal(c.state.activeSignal.durationSec, expectedSec, `activeSignal.durationSec must match ${expectedSec}`);
+    assert.equal(c.state.tradeDurationSec, expectedSec, `tradeDurationSec must match ${expectedSec} (never clamped to 15)`);
+    assert.equal(c.state.tradeEndTime, c.state.tradeContext.startedAt + expectedSec * 1000, `tradeEndTime must be +${expectedSec * 1000}ms`);
   }
+});
+
+test('parseDurationSeconds and syncAndGetRealPocketExpirationSec strictly map 5s formats to 5', () => {
+  const c = loadContent();
+  for (const variant of ['5s', 's5', '00:05', '00:00:05', '5', '5S', 'S5']) {
+    assert.equal(c.parseDurationSeconds(variant), 5, `parseDurationSeconds(${variant}) must return 5`);
+  }
+  for (const variant of ['15s', 's15', '00:15', '00:00:15', '15']) {
+    assert.equal(c.parseDurationSeconds(variant), 15, `parseDurationSeconds(${variant}) must return 15`);
+  }
+  for (const variant of ['30s', 's30', '00:30', '00:00:30', '30']) {
+    assert.equal(c.parseDurationSeconds(variant), 30, `parseDurationSeconds(${variant}) must return 30`);
+  }
+  for (const variant of ['1m', '60s', '01:00', '00:01:00', '60']) {
+    assert.equal(c.parseDurationSeconds(variant), 60, `parseDurationSeconds(${variant}) must return 60`);
+  }
+  assert.equal(c.syncAndGetRealPocketExpirationSec('5s'), 5);
+  assert.equal(c.syncAndGetRealPocketExpirationSec('s5'), 5);
 });
 
 test('generateRealisticWaveCandles produces 22 valid continuous candles', () => {
