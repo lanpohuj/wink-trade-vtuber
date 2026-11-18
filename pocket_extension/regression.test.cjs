@@ -26,7 +26,7 @@ function loadContent() {
       executeTradeWithSignal, announceObservedOpening,
       updateScoreOnTradeClose,
       rankPairCandidate, bestPairCandidate, promoteCandidateForMandatoryEntry, canEnterAnalysis,
-      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, quoteIsFresh, readTradersSentiment, buildLiveScoreHTML, setupEventListeners,
+      marketFrames, rememberMarketFrame, acceptMarketEvidence, cleanMarketFrame, frameIsReady, evaluate5FactorConfluence, observedAnalysisFactors, visualEvidenceForSample, visualStageText, renderAnalysisStep, renderSignalCardState, updateCardPairUI, syncPanelControlVisibility, suppressPocketDemoUpsellPopups, currentDisplayCandles, refreshDisplayChart, generateRealisticWaveCandles, quoteIsFresh, readTradersSentiment, buildLiveScoreHTML, setupEventListeners,
       setVisualTradeOutcome(value) { visualTradeOutcome = value; },
       setVisualTradeEvidence(value) { visualTradeEvidence = value; },
       getVisualTradeEvidence() { return visualTradeEvidence; },
@@ -1126,13 +1126,13 @@ test('suppressPocketDemoUpsellPopups removes elements by upsell link /cabinet/qu
   assert.equal(card.style.visibility, 'hidden');
 });
 
-test('buildLiveScoreHTML includes .winky-orb-scale-wrap and cfgOrbScaleSlider range 60..140', () => {
+test('buildLiveScoreHTML includes .winky-orb-scale-wrap and cfgOrbScaleSlider range 50..180', () => {
   const c = loadContent();
   const html = c.buildLiveScoreHTML();
   assert.ok(html.includes('class="winky-orb-scale-wrap"'));
   assert.ok(html.includes('id="cfgOrbScaleSlider"'));
-  assert.ok(html.includes('min="60"'));
-  assert.ok(html.includes('max="140"'));
+  assert.ok(html.includes('min="50"'));
+  assert.ok(html.includes('max="180"'));
   assert.ok(html.includes('id="cfgOrbScaleVal"'));
   assert.ok(html.includes('id="cfgOrbHideControls"'));
 });
@@ -1204,5 +1204,52 @@ test('orb scale and hide controls initialize from localStorage and handle toggle
   dial._pointerup({ clientX: 101, clientY: 101 });
   assert.ok(!scoreRoot.classList.contains('winky-orb--show-gear'));
 });
+
+test('Manual mode honors userSelectedTimeframe (5s, 15s, 30s, 1m) in executeTradeWithSignal', async () => {
+  const c = loadContent();
+  c.prepareExecution();
+  c.state.autoStream = false;
+  c.state.targetPair = 'EUR/USD OTC';
+  c.document.title = 'EUR/USD OTC';
+  c.state.lastRealQuote = { pair: 'EUR/USD OTC', price: 1, timestamp: c.now(), receivedAt: c.now() };
+
+  for (const exp of ['5s', '15s', '30s', '1m']) {
+    c.state.userSelectedTimeframe = exp;
+    c.state.tradeContext = null;
+    let clicked = false;
+    c.POAutomation.clickTrade = async () => { clicked = true; return true; };
+    await c.executeTradeWithSignal({ direction: 'BUY', recommendedExpiry: '30s', searchGeneration: 1 }, { score: 4.8 }, {});
+    assert.ok(clicked, `Trade must click for ${exp}`);
+    assert.equal(c.state.activeSignal.duration, exp, `activeSignal.duration must match user choice ${exp}`);
+    const expectedSec = exp === '1m' ? 60 : (exp === '30s' ? 30 : (exp === '5s' ? 5 : 15));
+    assert.equal(c.state.activeSignal.durationSec, expectedSec, `activeSignal.durationSec must match ${expectedSec}`);
+  }
+});
+
+test('generateRealisticWaveCandles produces 22 valid continuous candles', () => {
+  const c = loadContent();
+  const buyCandles = c.generateRealisticWaveCandles('EUR/USD OTC', 'BUY');
+  assert.equal(buyCandles.length, 22);
+  for (let i = 0; i < buyCandles.length; i++) {
+    const bar = buyCandles[i];
+    assert.ok(bar.high >= Math.max(bar.open, bar.close));
+    assert.ok(bar.low <= Math.min(bar.open, bar.close));
+    if (i > 0) {
+      assert.equal(bar.open, buyCandles[i - 1].close, `Bar ${i} open must equal bar ${i - 1} close`);
+    }
+  }
+
+  const sellCandles = c.generateRealisticWaveCandles('GBP/USD OTC', 'SELL');
+  assert.equal(sellCandles.length, 22);
+  for (let i = 0; i < sellCandles.length; i++) {
+    const bar = sellCandles[i];
+    assert.ok(bar.high >= Math.max(bar.open, bar.close));
+    assert.ok(bar.low <= Math.min(bar.open, bar.close));
+    if (i > 0) {
+      assert.equal(bar.open, sellCandles[i - 1].close, `Bar ${i} open must equal bar ${i - 1} close`);
+    }
+  }
+});
+
 
 

@@ -1131,13 +1131,8 @@
   transition: transform 0.08s ease-out;
 }
 
-/* Скрытие кнопок управления при активном чекбоксе */
+/* Скрытие кнопок управления при активном чекбоксе: кнопки + / Reset / - скрыты, контейнер и шестерёнка остаются в DOM */
 #winky-score-root.winky-controls-hidden #winkyOrbControls {
-  display: none !important;
-}
-
-/* Появление кнопки шестерёнки ⚙ по одиночному клику на орб при скрытых кнопках */
-#winky-score-root.winky-controls-hidden.winky-orb--show-gear #winkyOrbControls {
   display: flex !important;
   background: transparent !important;
   border: none !important;
@@ -1148,15 +1143,25 @@
   margin-top: 2px !important;
 }
 
-#winky-score-root.winky-controls-hidden.winky-orb--show-gear #winkyOrbControls .winky-orb-btn:not(.gear) {
+#winky-score-root.winky-controls-hidden #winkyOrbControls .winky-orb-btn:not(.gear) {
   display: none !important;
 }
 
-#winky-score-root.winky-controls-hidden.winky-orb--show-gear #btnOrbGear {
+#winky-score-root.winky-controls-hidden #btnOrbGear {
   display: inline-flex !important;
+  opacity: 0;
+  pointer-events: none;
   background: rgba(14, 26, 33, 0.94) !important;
   border: 1px solid rgba(0, 255, 136, 0.45) !important;
   box-shadow: 0 0 12px rgba(0, 255, 136, 0.35) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Появление кнопки шестерёнки ⚙ при наведении на виджет ИЛИ по клику на орб */
+#winky-score-root.winky-controls-hidden:hover #btnOrbGear,
+#winky-score-root.winky-controls-hidden.winky-orb--show-gear #btnOrbGear {
+  opacity: 1 !important;
+  pointer-events: auto !important;
   animation: winkyGearPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
