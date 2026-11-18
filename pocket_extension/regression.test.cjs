@@ -1271,5 +1271,79 @@ test('generateRealisticWaveCandles produces 22 valid continuous candles', () => 
   }
 });
 
+test('Manual mode (!state.autoStream) startSignalAnalysis syncs state.targetPair from Pocket Option DOM scanPocketOptionCurrentPair', async () => {
+  const c = searchFixture();
+  c.state.autoStream = false;
+  c.state.targetPair = 'AUD/CAD OTC';
+  c.document.title = 'CAD/CHF OTC - Pocket Option';
+  await c.startSignalAnalysis();
+  assert.equal(c.state.pairCandidates.length, 1);
+  assert.equal(c.state.targetPair, 'CAD/CHF OTC');
+  assert.equal(c.executed.length, 1);
+  assert.equal(c.executed[0].pair, 'CAD/CHF OTC');
+});
+
+test('refreshDisplayChart in manual mode during active search (!state.autoStream && state.searchRunning) hides waiting text and draws realistic wave candles when currentDisplayCandles returns null', () => {
+  const c = loadContent();
+  c.state.autoStream = false;
+  c.state.searchRunning = true;
+  c.state.botState = 'ANALYZING_PAIR';
+  c.state.targetPair = 'CAD/CHF OTC';
+  c.state.forceDir = 'BUY';
+
+  const chart = { innerHTML: '', dataset: {}, clientWidth: 300, clientHeight: 148, tagName: 'DIV' };
+  const status = { hidden: false, textContent: 'Initial' };
+  c.document.getElementById = (id) => {
+    if (id === 'winkyVisualChart') return chart;
+    if (id === 'winkyVisualChartStatus') return status;
+    return null;
+  };
+
+  c.refreshDisplayChart();
+  assert.equal(status.hidden, true, 'status.hidden must be true during manual analysis');
+  assert.ok(chart.innerHTML.includes('<rect'), 'chart must contain rendered SVG candle rects');
+  assert.ok(chart.innerHTML.includes('#10F587'), 'chart must contain green candles for BUY');
+});
+
+test('executeTradeWithSignal with forcedManualEntry = true forces trade execution even if pair differs or microEntry vetoes', async () => {
+  const c = loadContent();
+  c.prepareExecution();
+  c.state.autoStream = false;
+  c.state.targetPair = 'AUD/CAD OTC';
+  c.document.title = 'CAD/CHF OTC';
+  c.state.searchGeneration = 1;
+  c.state.searchRunning = true;
+
+  let clicked = false;
+  let clickedDir = null;
+  c.POAutomation.clickTrade = async (dir) => {
+    clicked = true;
+    clickedDir = dir;
+    return true;
+  };
+  c.state.lastRealQuote = { pair: 'CAD/CHF OTC', price: 0.95, timestamp: c.now(), receivedAt: c.now() };
+  c.setMicroEntry(async () => ({ ok: false, reason: 'MICRO_ENTRY_VETO' }));
+  c.setFinalAnalysis(async () => ({
+    analysis: { shouldTrade: false, direction: 'SELL', scenarioKey: 'DIFFERENT_SCENARIO' },
+    confluence: { score: 1.0 },
+    scan: {}
+  }));
+
+  await c.executeTradeWithSignal({
+    direction: 'BUY',
+    recommendedExpiry: '30s',
+    searchGeneration: 1,
+    scenarioKey: 'ORIGINAL_SCENARIO',
+    forcedManualEntry: true
+  }, { score: 4.8 }, {});
+
+  assert.ok(clicked, 'clickTrade must be called for forcedManualEntry');
+  assert.equal(clickedDir, 'BUY');
+  assert.equal(c.state.targetPair, 'CAD/CHF OTC', 'state.targetPair must synchronize to the current live pair');
+  assert.ok(c.state.tradeContext);
+  assert.equal(c.state.botState, 'IN_TRADE');
+});
+
+
 
 
